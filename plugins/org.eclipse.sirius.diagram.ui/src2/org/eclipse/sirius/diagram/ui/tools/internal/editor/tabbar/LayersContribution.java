@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor.tabbar;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,9 +27,9 @@ import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponent
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.Layer;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.LayersActivationAction;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.LayersActivationAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.layers.LayersActivationAdapter;
 import org.eclipse.swt.graphics.Image;
 
@@ -44,7 +44,7 @@ import com.google.common.collect.Iterables;
 public class LayersContribution extends AbstractMenuContributionItem {
 
     /** The layers icon descriptor. */
-    private static final ImageDescriptor DESC_LAYER = SiriusDiagramEditorPlugin.getBundledImageDescriptor("icons/layers.gif");
+    private static final ImageDescriptor DESC_LAYER = DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/layers.gif");
 
     private LayersActivationAdapter adapter;
 
@@ -61,11 +61,11 @@ public class LayersContribution extends AbstractMenuContributionItem {
             if (diagram instanceof DDiagram) {
                 super.setDiagram((DDiagram) diagram);
                 if (!getActivatedLayers().isEmpty()) {
-                    return SiriusDiagramEditorPlugin.getDecoratedCheckedImage(DESC_LAYER);
+                    return DiagramUIPlugin.Implementation.getDecoratedCheckedImage(DESC_LAYER);
                 }
             }
         }
-        return SiriusDiagramEditorPlugin.getInstance().getImage(DESC_LAYER);
+        return DiagramUIPlugin.getPlugin().getImage(DESC_LAYER);
     }
 
     /**

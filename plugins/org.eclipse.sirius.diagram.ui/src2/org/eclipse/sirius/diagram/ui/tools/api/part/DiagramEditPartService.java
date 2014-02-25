@@ -9,7 +9,7 @@
  *    IBM Corporation - initial API and implementation 
  *    Obeo - Renamed, completed and adapted for Sirius.
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.api.part;
+package org.eclipse.sirius.diagram.ui.tools.api.part;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -35,9 +35,9 @@ import org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramGenerator;
 import org.eclipse.gmf.runtime.diagram.ui.render.util.CopyToImageUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.internal.refresh.layout.SiriusCanonicalLayoutHandler;
-import org.eclipse.sirius.diagram.tools.internal.part.OffscreenEditPartFactory;
-import org.eclipse.sirius.diagram.tools.internal.part.SiriusImageLoader;
+import org.eclipse.sirius.diagram.ui.internal.refresh.layout.SiriusCanonicalLayoutHandler;
+import org.eclipse.sirius.diagram.ui.tools.internal.part.OffscreenEditPartFactory;
+import org.eclipse.sirius.diagram.ui.tools.internal.part.SiriusImageLoader;
 import org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;

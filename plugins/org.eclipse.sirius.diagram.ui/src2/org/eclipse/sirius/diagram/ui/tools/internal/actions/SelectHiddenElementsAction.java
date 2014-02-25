@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -31,14 +31,14 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilterHelper;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.tools.api.ui.actions.ActionIds;
-import org.eclipse.sirius.diagram.tools.internal.actions.visibility.HideDDiagramElementAction;
-import org.eclipse.sirius.diagram.tools.internal.editor.DDiagramEditorImpl;
 import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.DiagramElementsSelectionDialog;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ext.base.Option;
@@ -106,7 +106,7 @@ public class SelectHiddenElementsAction extends DiagramAction {
     private static final String ICON_PATH = "icons/categoryWizard.gif";
 
     /** The hide icon descriptor. */
-    private static final ImageDescriptor DESC_HIDE = SiriusDiagramEditorPlugin.getBundledImageDescriptor(ICON_PATH);
+    private static final ImageDescriptor DESC_HIDE = DiagramUIPlugin.Implementation.getBundledImageDescriptor(ICON_PATH);
 
     private final Predicate<Object> isVisible = new Predicate<Object>() {
         public boolean apply(Object input) {
@@ -189,7 +189,7 @@ public class SelectHiddenElementsAction extends DiagramAction {
                 EObject diagram = gmfDiagram.getElement();
                 if (diagram instanceof DDiagram) {
                     if (!((DDiagram) diagram).getHiddenElements().isEmpty()) {
-                        return SiriusDiagramEditorPlugin.getDecoratedCheckedImageDescriptor(DESC_HIDE);
+                        return DiagramUIPlugin.Implementation.getDecoratedCheckedImageDescriptor(DESC_HIDE);
                     }
                 }
             }

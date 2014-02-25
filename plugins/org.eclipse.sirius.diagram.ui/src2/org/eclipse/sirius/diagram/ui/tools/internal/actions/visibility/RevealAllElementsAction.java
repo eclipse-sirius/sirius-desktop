@@ -8,13 +8,13 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions.visibility;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility;
 
 import org.eclipse.gef.Request;
 import org.eclipse.gef.requests.GroupRequest;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
-import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 
 /**
  * Reveal (un-hide) a {@link org.eclipse.sirius.diagram.DDiagramElement} from a

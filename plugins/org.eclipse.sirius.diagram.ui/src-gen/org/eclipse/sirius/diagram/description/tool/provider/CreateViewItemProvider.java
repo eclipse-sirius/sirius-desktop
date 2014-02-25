@@ -27,9 +27,10 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.description.tool.CreateView;
+import org.eclipse.sirius.diagram.description.tool.ToolFactory;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.provider.ContainerModelOperationItemProvider;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This is the item provider adapter for a
@@ -158,6 +159,15 @@ public class CreateViewItemProvider extends ContainerModelOperationItemProvider 
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
+
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS,
+                ToolFactory.eINSTANCE.createCreateView()));
+
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS,
+                ToolFactory.eINSTANCE.createCreateEdgeView()));
+
+        newChildDescriptors.add(createChildParameter(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS,
+                ToolFactory.eINSTANCE.createNavigation()));
     }
 
     /**
@@ -168,7 +178,7 @@ public class CreateViewItemProvider extends ContainerModelOperationItemProvider 
      */
     @Override
     public ResourceLocator getResourceLocator() {
-        return SiriusEditPlugin.INSTANCE;
+        return DiagramUIPlugin.INSTANCE;
     }
 
 }

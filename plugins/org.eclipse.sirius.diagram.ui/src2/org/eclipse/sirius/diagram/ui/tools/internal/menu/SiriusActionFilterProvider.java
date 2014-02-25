@@ -9,7 +9,7 @@
  *    IBM Corporation - initial API and implementation 
  ****************************************************************************/
 
-package org.eclipse.sirius.diagram.tools.internal.menu;
+package org.eclipse.sirius.diagram.ui.tools.internal.menu;
 
 import org.eclipse.gmf.runtime.common.core.service.IOperation;
 import org.eclipse.gmf.runtime.emf.ui.services.action.AbstractModelActionFilterProvider;

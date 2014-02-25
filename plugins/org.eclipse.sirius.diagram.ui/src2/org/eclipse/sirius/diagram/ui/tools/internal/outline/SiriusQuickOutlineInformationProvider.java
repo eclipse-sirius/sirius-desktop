@@ -8,14 +8,14 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.outline;
+package org.eclipse.sirius.diagram.ui.tools.internal.outline;
 
 import org.eclipse.jface.text.IRegion;
 import org.eclipse.jface.text.ITextViewer;
 import org.eclipse.jface.text.Region;
 import org.eclipse.jface.text.information.IInformationProvider;
 import org.eclipse.jface.text.information.IInformationProviderExtension;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditor;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 
 /**
  * This will provide the information for the quick outline dialog.

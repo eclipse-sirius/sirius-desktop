@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.api.query;
+package org.eclipse.sirius.diagram.ui.business.api.query;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -28,16 +28,16 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceConverter;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeBeginNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeEndNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerName2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListName2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.NotationViewIDs;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerName2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListName2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.NotationViewIDs;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.FontData;
@@ -81,7 +81,8 @@ public class ViewQuery {
         }
     }
 
-    private View view;
+    /** The starting point. */
+    protected View view;
 
     /**
      * Create a new query.
@@ -102,59 +103,6 @@ public class ViewQuery {
         // CHECKSTYLE:ON
 
         return isStylePropertyExistingInSiriusStyleModel;
-    }
-
-    /**
-     * Tests whether the queried View corresponds to a NameEditPart.
-     * 
-     * @return <code>true</code> if the queried View corresponds to a
-     *         NameEditPart.
-     */
-    public boolean isForNameEditPart() {
-        int type = SiriusVisualIDRegistry.getVisualID(this.view.getType());
-        boolean result = type == NotationViewIDs.DNODE_NAME_EDIT_PART_VISUAL_ID || type == NotationViewIDs.DNODE_NAME_2_EDIT_PART_VISUAL_ID || type == NotationViewIDs.DNODE_NAME_3_EDIT_PART_VISUAL_ID;
-        result = result || type == NotationViewIDs.DNODE_NAME_4_EDIT_PART_VISUAL_ID;
-        result = result || type == DNodeContainerNameEditPart.VISUAL_ID || type == DNodeContainerName2EditPart.VISUAL_ID;
-        result = result || type == DNodeListNameEditPart.VISUAL_ID || type == DNodeListName2EditPart.VISUAL_ID;
-        result = result || type == DEdgeNameEditPart.VISUAL_ID || type == DEdgeEndNameEditPart.VISUAL_ID;
-        result = result || type == DEdgeBeginNameEditPart.VISUAL_ID;
-        return result;
-    }
-
-    /**
-     * Tests whether the queried View corresponds to an edge name edit part.
-     * 
-     * @return <code>true</code> if the queried View corresponds to an edge name
-     *         edit part.
-     */
-    public boolean isForEdgeNameEditPart() {
-        int type = SiriusVisualIDRegistry.getVisualID(this.view.getType());
-        boolean result = type == DEdgeNameEditPart.VISUAL_ID;
-        result = result || type == DEdgeEndNameEditPart.VISUAL_ID;
-        result = result || type == DEdgeBeginNameEditPart.VISUAL_ID;
-        return result;
-    }
-
-    /**
-     * Tests whether the queried View corresponds to a NameEditPart that is
-     * located on the border of its node.
-     * 
-     * @return <code>true</code> if the queried View corresponds to a
-     *         NameEditPart.
-     */
-    public boolean isForNameEditPartOnBorder() {
-        boolean result = false;
-        if (isForNameEditPart()) {
-            if (view.getElement() instanceof DStylizable) {
-                DStylizable dStylizable = (DStylizable) view.getElement();
-                if (dStylizable.getStyle() instanceof NodeStyle) {
-                    if (LabelPosition.BORDER_LITERAL.equals(((NodeStyle) dStylizable.getStyle()).getLabelPosition())) {
-                        result = true;
-                    }
-                }
-            }
-        }
-        return result;
     }
 
     /**
@@ -260,5 +208,58 @@ public class ViewQuery {
             defaultValue = eAttribute.getDefaultValue();
         }
         return defaultValue;
+    }
+
+    /**
+     * Tests whether the queried View corresponds to a NameEditPart.
+     * 
+     * @return <code>true</code> if the queried View corresponds to a
+     *         NameEditPart.
+     */
+    public boolean isForNameEditPart() {
+        int type = SiriusVisualIDRegistry.getVisualID(this.view.getType());
+        boolean result = type == NotationViewIDs.DNODE_NAME_EDIT_PART_VISUAL_ID || type == NotationViewIDs.DNODE_NAME_2_EDIT_PART_VISUAL_ID || type == NotationViewIDs.DNODE_NAME_3_EDIT_PART_VISUAL_ID;
+        result = result || type == NotationViewIDs.DNODE_NAME_4_EDIT_PART_VISUAL_ID;
+        result = result || type == DNodeContainerNameEditPart.VISUAL_ID || type == DNodeContainerName2EditPart.VISUAL_ID;
+        result = result || type == DNodeListNameEditPart.VISUAL_ID || type == DNodeListName2EditPart.VISUAL_ID;
+        result = result || type == DEdgeNameEditPart.VISUAL_ID || type == DEdgeEndNameEditPart.VISUAL_ID;
+        result = result || type == DEdgeBeginNameEditPart.VISUAL_ID;
+        return result;
+    }
+
+    /**
+     * Tests whether the queried View corresponds to an edge name edit part.
+     * 
+     * @return <code>true</code> if the queried View corresponds to an edge name
+     *         edit part.
+     */
+    public boolean isForEdgeNameEditPart() {
+        int type = SiriusVisualIDRegistry.getVisualID(this.view.getType());
+        boolean result = type == DEdgeNameEditPart.VISUAL_ID;
+        result = result || type == DEdgeEndNameEditPart.VISUAL_ID;
+        result = result || type == DEdgeBeginNameEditPart.VISUAL_ID;
+        return result;
+    }
+
+    /**
+     * Tests whether the queried View corresponds to a NameEditPart that is
+     * located on the border of its node.
+     * 
+     * @return <code>true</code> if the queried View corresponds to a
+     *         NameEditPart.
+     */
+    public boolean isForNameEditPartOnBorder() {
+        boolean result = false;
+        if (isForNameEditPart()) {
+            if (view.getElement() instanceof DStylizable) {
+                DStylizable dStylizable = (DStylizable) view.getElement();
+                if (dStylizable.getStyle() instanceof NodeStyle) {
+                    if (LabelPosition.BORDER_LITERAL.equals(((NodeStyle) dStylizable.getStyle()).getLabelPosition())) {
+                        result = true;
+                    }
+                }
+            }
+        }
+        return result;
     }
 }

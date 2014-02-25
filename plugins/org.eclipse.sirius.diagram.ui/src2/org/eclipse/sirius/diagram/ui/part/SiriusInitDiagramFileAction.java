@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.part;
+package org.eclipse.sirius.diagram.ui.part;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.URI;
@@ -25,7 +25,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
-import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;

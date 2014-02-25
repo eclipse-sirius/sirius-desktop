@@ -8,10 +8,10 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor;
 
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.ToolFilter;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.ToolFilter;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 /**

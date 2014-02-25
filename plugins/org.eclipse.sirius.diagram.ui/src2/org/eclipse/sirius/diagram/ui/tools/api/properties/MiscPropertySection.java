@@ -19,7 +19,7 @@ import org.eclipse.gmf.runtime.diagram.ui.properties.sections.AdvancedPropertySe
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.diagram.tools.internal.properties.DefaultPropertySource;
+import org.eclipse.sirius.diagram.ui.tools.internal.properties.DefaultPropertySource;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertySource;

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.parts;
+package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.FlowLayout;
@@ -33,19 +33,19 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramBorderNodeEditPart;
-import org.eclipse.sirius.diagram.internal.edit.policies.BorderedNodeLayoutEditPolicy;
-import org.eclipse.sirius.diagram.internal.edit.policies.DNode2ItemSemanticEditPolicy;
-import org.eclipse.sirius.diagram.internal.edit.policies.canonicals.DumnySiriusCanonicalEditPolicy;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.BorderedNodeLayoutEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNode2ItemSemanticEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.canonicals.DumnySiriusCanonicalEditPolicy;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirDefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.DBorderedNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleAwareClippingStrategy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.swt.graphics.Color;
 

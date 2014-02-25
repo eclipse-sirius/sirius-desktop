@@ -13,8 +13,10 @@
 package org.eclipse.sirius.diagram.ui.tools.api.figure;
 
 import java.lang.ref.WeakReference;
+import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.StringTokenizer;
 import java.util.WeakHashMap;
 
 import org.eclipse.draw2d.ColorConstants;
@@ -34,9 +36,6 @@ import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontMetrics;
 import org.eclipse.swt.graphics.Image;
-
-import com.ibm.icu.text.BreakIterator;
-import com.ibm.icu.util.StringTokenizer;
 
 /**
  * An extended label that has the following extra features:

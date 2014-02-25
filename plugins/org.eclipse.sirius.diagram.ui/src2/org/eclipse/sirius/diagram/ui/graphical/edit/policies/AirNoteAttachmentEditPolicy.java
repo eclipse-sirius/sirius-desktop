@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.graphical.edit.policies;
+package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -19,7 +19,7 @@ import org.eclipse.gef.requests.GroupRequest;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editpolicies.ConnectionEditPolicy;
 import org.eclipse.gmf.runtime.notation.Edge;
-import org.eclipse.sirius.diagram.tools.api.command.GMFCommandWrapper;
+import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.tools.api.command.semantic.RemoveDanglingReferences;
 
 /**

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.parts;
+package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.IFigure;
@@ -27,9 +27,9 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
-import org.eclipse.sirius.diagram.internal.providers.SiriusElementTypes;
-import org.eclipse.sirius.diagram.internal.providers.SiriusParserProvider;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.internal.providers.SiriusElementTypes;
+import org.eclipse.sirius.diagram.ui.internal.providers.SiriusParserProvider;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 
 /**

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.commands;
+package org.eclipse.sirius.diagram.ui.internal.edit.commands;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -20,7 +20,7 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.ReorientRelationshipReques
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.internal.edit.policies.SiriusBaseItemSemanticEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.SiriusBaseItemSemanticEditPolicy;
 
 /**
  * @was-generated

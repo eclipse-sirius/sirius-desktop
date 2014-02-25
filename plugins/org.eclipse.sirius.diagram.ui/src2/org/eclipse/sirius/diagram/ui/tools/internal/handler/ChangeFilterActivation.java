@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.handler;
+package org.eclipse.sirius.diagram.ui.tools.internal.handler;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,7 +29,7 @@ import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
 import org.eclipse.sirius.diagram.description.filter.Filter;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.description.filter.VariableFilter;
-import org.eclipse.sirius.diagram.tools.internal.filter.FilterTools;
+import org.eclipse.sirius.diagram.ui.tools.internal.filter.FilterTools;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 

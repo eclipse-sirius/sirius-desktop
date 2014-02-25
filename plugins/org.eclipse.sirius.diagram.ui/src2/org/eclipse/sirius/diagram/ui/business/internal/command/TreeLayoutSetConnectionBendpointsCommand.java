@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.command;
+package org.eclipse.sirius.diagram.ui.business.internal.command;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +26,7 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.commands.SetConnectionBendpoi
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
-import org.eclipse.sirius.diagram.tools.internal.util.GMFNotationUtilities;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.GMFNotationUtilities;
 import org.eclipse.sirius.ext.base.Option;
 
 /**

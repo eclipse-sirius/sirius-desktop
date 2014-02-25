@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.dialect;
+package org.eclipse.sirius.diagram.ui.business.internal.dialect;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -66,9 +66,6 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
-import org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizer;
-import org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizerFactory;
-import org.eclipse.sirius.diagram.business.internal.command.CreateAndStoreGMFDiagramCommand;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.Layer;
@@ -78,11 +75,14 @@ import org.eclipse.sirius.diagram.description.provider.DescriptionItemProviderAd
 import org.eclipse.sirius.diagram.description.style.provider.StyleItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.description.tool.ToolFactory;
 import org.eclipse.sirius.diagram.description.tool.provider.ToolItemProviderAdapterFactory;
-import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.tools.api.part.DiagramEditPartService;
+import org.eclipse.sirius.diagram.ui.business.api.view.refresh.CanonicalSynchronizer;
+import org.eclipse.sirius.diagram.ui.business.api.view.refresh.CanonicalSynchronizerFactory;
+import org.eclipse.sirius.diagram.ui.business.internal.command.CreateAndStoreGMFDiagramCommand;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;

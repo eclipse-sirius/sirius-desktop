@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.api.helper.graphicalfilters;
+package org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ import org.eclipse.sirius.diagram.business.api.diagramtype.ICollapseUpdater;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
-import org.eclipse.sirius.diagram.business.api.query.NodeQuery;
+import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 

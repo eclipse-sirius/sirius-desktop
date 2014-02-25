@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions.repair.commands;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.repair.commands;
 
 import java.util.Iterator;
 import java.util.LinkedList;

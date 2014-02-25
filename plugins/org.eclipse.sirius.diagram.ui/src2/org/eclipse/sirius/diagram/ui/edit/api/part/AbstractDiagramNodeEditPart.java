@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.edit.api.part;
+package org.eclipse.sirius.diagram.ui.edit.api.part;
 
 import java.util.Iterator;
 import java.util.List;
@@ -57,24 +57,24 @@ import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
-import org.eclipse.sirius.diagram.business.internal.query.RequestQuery;
-import org.eclipse.sirius.diagram.edit.internal.part.AbstractDiagramNodeEditPartOperation;
-import org.eclipse.sirius.diagram.edit.internal.part.CommonEditPartOperation;
-import org.eclipse.sirius.diagram.edit.internal.part.DefaultDirectEditOperation;
-import org.eclipse.sirius.diagram.edit.internal.part.DiagramElementEditPartOperation;
-import org.eclipse.sirius.diagram.edit.internal.part.DiagramNodeEditPartOperation;
-import org.eclipse.sirius.diagram.edit.internal.part.PortLayoutHelper;
-import org.eclipse.sirius.diagram.edit.internal.validators.ResizeValidator;
-import org.eclipse.sirius.diagram.graphical.edit.policies.SpecificBorderItemSelectionEditPolicy;
-import org.eclipse.sirius.diagram.internal.edit.policies.canonicals.DumnySiriusCanonicalEditPolicy;
-import org.eclipse.sirius.diagram.internal.view.factories.ViewLocationHint;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration;
-import org.eclipse.sirius.diagram.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
+import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.AbstractDiagramNodeEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DefaultDirectEditOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramNodeEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
+import org.eclipse.sirius.diagram.ui.edit.internal.validators.ResizeValidator;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SpecificBorderItemSelectionEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.canonicals.DumnySiriusCanonicalEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.view.factories.ViewLocationHint;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirDefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
+import org.eclipse.sirius.diagram.ui.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
 import org.eclipse.swt.graphics.Color;
 
 import com.google.common.collect.Iterables;

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.properties;
+package org.eclipse.sirius.diagram.ui.tools.internal.properties;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;

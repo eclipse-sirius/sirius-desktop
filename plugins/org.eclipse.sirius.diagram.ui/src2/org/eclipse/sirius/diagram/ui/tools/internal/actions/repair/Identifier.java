@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions.repair;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.repair;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.tools.api.migration.IDiagramIdentifierProvider;
+import org.eclipse.sirius.diagram.ui.tools.api.migration.IDiagramIdentifierProvider;
 import org.eclipse.sirius.viewpoint.Customizable;
 
 /**

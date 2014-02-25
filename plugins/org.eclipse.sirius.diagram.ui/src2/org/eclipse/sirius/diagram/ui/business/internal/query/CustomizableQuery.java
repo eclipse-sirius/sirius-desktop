@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.query;
+package org.eclipse.sirius.diagram.ui.business.internal.query;
 
 import java.util.ArrayList;
 import java.util.List;

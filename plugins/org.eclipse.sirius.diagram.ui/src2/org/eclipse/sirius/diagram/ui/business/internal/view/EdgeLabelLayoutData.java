@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.view;
+package org.eclipse.sirius.diagram.ui.business.internal.view;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -17,7 +17,7 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.business.api.view.SiriusGMFHelper;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 
 /**
  * Store the layout information of a DEdge label at a given time. This class is

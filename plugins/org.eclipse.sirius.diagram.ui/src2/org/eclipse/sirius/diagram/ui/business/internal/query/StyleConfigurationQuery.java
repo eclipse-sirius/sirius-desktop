@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.query;
+package org.eclipse.sirius.diagram.ui.business.internal.query;
 
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -16,8 +16,8 @@ import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.swt.graphics.Image;
 
 /**
@@ -57,8 +57,7 @@ public class StyleConfigurationQuery {
      * </p>
      * <p>
      * * <b>Note : </b> If end-user wants to hide this element's icon (see
-     * {@link SiriusDiagramPreferencesKeys#PREF_HIDE_LABEL_ICONS_ON_SHAPES}
-     * and
+     * {@link SiriusDiagramPreferencesKeys#PREF_HIDE_LABEL_ICONS_ON_SHAPES} and
      * {@link SiriusDiagramPreferencesKeys#PREF_HIDE_LABEL_ICONS_ON_CONNECTORS}
      * ), this will always return null.
      * </p>

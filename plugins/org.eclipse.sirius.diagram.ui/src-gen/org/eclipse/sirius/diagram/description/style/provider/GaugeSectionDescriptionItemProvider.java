@@ -30,7 +30,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.ColorQuery;
 import org.eclipse.sirius.diagram.description.style.GaugeSectionDescription;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 
 /**
  * This is the item provider adapter for a
@@ -225,7 +225,7 @@ public class GaugeSectionDescriptionItemProvider extends ItemProviderAdapter imp
      */
     @Override
     public ResourceLocator getResourceLocator() {
-        return SiriusEditPlugin.INSTANCE;
+        return DiagramUIPlugin.INSTANCE;
     }
 
 }

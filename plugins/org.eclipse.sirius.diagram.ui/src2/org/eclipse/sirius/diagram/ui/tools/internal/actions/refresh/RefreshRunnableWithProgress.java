@@ -6,7 +6,7 @@
  *      Obeo - Initial API and implementation
  *******************************************************************************/
 
-package org.eclipse.sirius.diagram.tools.internal.actions.refresh;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.refresh;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -27,9 +27,9 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramEditDomain;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
-import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 

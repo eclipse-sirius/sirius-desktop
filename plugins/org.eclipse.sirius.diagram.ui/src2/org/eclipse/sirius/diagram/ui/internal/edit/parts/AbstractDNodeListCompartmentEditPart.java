@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.parts;
+package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,15 +44,15 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
-import org.eclipse.sirius.diagram.business.internal.query.RequestQuery;
-import org.eclipse.sirius.diagram.edit.internal.part.DiagramElementEditPartOperation;
-import org.eclipse.sirius.diagram.edit.internal.part.SelectionCommandAppender;
-import org.eclipse.sirius.diagram.graphical.edit.policies.LaunchToolEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.NodeCreationEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.SiriusContainerDropPolicy;
-import org.eclipse.sirius.diagram.internal.edit.policies.DNodeListViewNodeListCompartmentItemSemanticEditPolicy;
-import org.eclipse.sirius.diagram.internal.edit.policies.canonicals.DumnySiriusCanonicalEditPolicy;
-import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
+import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.SelectionCommandAppender;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LaunchToolEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.NodeCreationEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusContainerDropPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeListViewNodeListCompartmentItemSemanticEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.canonicals.DumnySiriusCanonicalEditPolicy;
+import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;

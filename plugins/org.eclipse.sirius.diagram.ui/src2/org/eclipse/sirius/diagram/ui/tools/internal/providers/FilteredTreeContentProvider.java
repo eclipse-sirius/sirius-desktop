@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.providers;
+package org.eclipse.sirius.diagram.ui.tools.internal.providers;
 
 import java.util.List;
 

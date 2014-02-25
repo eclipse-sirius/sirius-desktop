@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.graphical.edit.policies;
+package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
@@ -35,18 +35,18 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.business.api.query.ContainerCreationDescriptionQuery;
 import org.eclipse.sirius.diagram.business.api.query.NodeCreationDescriptionQuery;
-import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
-import org.eclipse.sirius.diagram.business.internal.view.RootLayoutData;
 import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.RequestDescription;
-import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
-import org.eclipse.sirius.diagram.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
-import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
-import org.eclipse.sirius.diagram.tools.internal.commands.emf.AbstractSelectionWizardCommand;
-import org.eclipse.sirius.diagram.tools.internal.commands.emf.PaneBasedSelectionWizardCommand;
-import org.eclipse.sirius.diagram.tools.internal.commands.emf.SelectionWizardCommand;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
+import org.eclipse.sirius.diagram.ui.business.internal.view.RootLayoutData;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
+import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
+import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.AbstractSelectionWizardCommand;
+import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.PaneBasedSelectionWizardCommand;
+import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.SelectionWizardCommand;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.graphical.edit.policies;
+package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -30,11 +30,11 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.business.internal.query.RequestQuery;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramElementContainerEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
-import org.eclipse.sirius.diagram.internal.operation.RegionContainerUpdateLayoutOperation;
+import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.internal.operation.RegionContainerUpdateLayoutOperation;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;

@@ -28,8 +28,8 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.description.concern.ConcernFactory;
 import org.eclipse.sirius.diagram.description.concern.ConcernPackage;
 import org.eclipse.sirius.diagram.description.concern.ConcernSet;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemProvider;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This is the item provider adapter for a
@@ -163,7 +163,7 @@ public class ConcernSetItemProvider extends DocumentedElementItemProvider implem
      */
     @Override
     public ResourceLocator getResourceLocator() {
-        return SiriusEditPlugin.INSTANCE;
+        return DiagramUIPlugin.INSTANCE;
     }
 
 }

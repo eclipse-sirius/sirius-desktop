@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.resource;
+package org.eclipse.sirius.diagram.ui.tools.internal.resource;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -43,8 +43,9 @@ import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.resource.ResourceLoaderListener;
 import org.eclipse.sirius.common.tools.api.resource.ResourceTools;
-import org.eclipse.sirius.diagram.part.Messages;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.part.Messages;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
@@ -206,7 +207,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
                      * Init the extension stuffs
                      */
                 } else {
-                    SiriusDiagramEditorPlugin.getInstance().getResourceMissingDocumentProvider().setDocumentContent(document, element);
+                    DiagramUIPlugin.getPlugin().getResourceMissingDocumentProvider().setDocumentContent(document, element);
                 }
                 return;
             } else {
@@ -221,7 +222,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
                         return;
                     }
                 }
-                SiriusDiagramEditorPlugin.getInstance().getResourceMissingDocumentProvider()
+                DiagramUIPlugin.getPlugin().getResourceMissingDocumentProvider()
                         .setDocumentContent(document, element, "You should use the Model Explorer view and the Design perspective to open aird files.");
             }
             // We do not throw a RuntimeException anymore if there is no

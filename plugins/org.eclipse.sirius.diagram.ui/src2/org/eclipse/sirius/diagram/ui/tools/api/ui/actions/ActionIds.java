@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.api.ui.actions;
+package org.eclipse.sirius.diagram.ui.tools.api.ui.actions;
 
 /**
  * A list of constants defining the diagram action and menu action ids.

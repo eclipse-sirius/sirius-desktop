@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.migration;
+package org.eclipse.sirius.diagram.ui.business.internal.migration;
 
 import java.util.Iterator;
 import java.util.List;
@@ -31,9 +31,10 @@ import org.eclipse.sirius.business.api.helper.SiriusHelper;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.ResizeKind;
-import org.eclipse.sirius.diagram.business.api.query.EdgeQuery;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
-import org.eclipse.sirius.diagram.tools.internal.util.GMFNotationUtilities;
+import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.GMFNotationUtilities;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -189,7 +190,7 @@ public class DiagramRepresentationsFileMigrationParticipantV650 {
                 Node node = (Node) next;
                 DNode dNode = (DNode) node.getElement();
                 Size size = (Size) node.getLayoutConstraint();
-                Dimension dNodeSize = new org.eclipse.sirius.diagram.business.internal.query.DNodeQuery(dNode).getDefaultDimension();
+                Dimension dNodeSize = new DNodeQuery(dNode).getDefaultDimension();
                 size.setWidth(dNodeSize.width);
                 size.setHeight(dNodeSize.height);
             }

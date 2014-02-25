@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions.visibility;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -18,8 +18,8 @@ import org.eclipse.gef.RootEditPart;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.tools.internal.editor.DiagramOutlinePage;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.DiagramOutlinePage;
 
 /**
  * Action to reveal elements in outline.

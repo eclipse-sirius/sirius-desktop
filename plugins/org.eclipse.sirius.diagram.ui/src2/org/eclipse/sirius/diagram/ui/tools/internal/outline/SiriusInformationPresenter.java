@@ -10,7 +10,7 @@
  *     Obeo - remove ITextViewer information
  *******************************************************************************/
 
-package org.eclipse.sirius.diagram.tools.internal.outline;
+package org.eclipse.sirius.diagram.ui.tools.internal.outline;
 
 import java.util.HashMap;
 import java.util.Map;

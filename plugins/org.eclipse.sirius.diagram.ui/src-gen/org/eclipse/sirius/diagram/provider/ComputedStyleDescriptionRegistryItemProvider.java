@@ -30,7 +30,7 @@ import org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.style.StyleFactory;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 
 /**
  * This is the item provider adapter for a
@@ -200,7 +200,7 @@ public class ComputedStyleDescriptionRegistryItemProvider extends ItemProviderAd
      */
     @Override
     public ResourceLocator getResourceLocator() {
-        return SiriusEditPlugin.INSTANCE;
+        return DiagramUIPlugin.INSTANCE;
     }
 
 }

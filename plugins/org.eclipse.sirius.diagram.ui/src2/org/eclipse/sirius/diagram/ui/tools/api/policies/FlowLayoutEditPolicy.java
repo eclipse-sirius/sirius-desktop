@@ -9,7 +9,7 @@
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
 
-package org.eclipse.sirius.diagram.tools.api.policies;
+package org.eclipse.sirius.diagram.ui.tools.api.policies;
 
 import org.eclipse.gef.Request;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;

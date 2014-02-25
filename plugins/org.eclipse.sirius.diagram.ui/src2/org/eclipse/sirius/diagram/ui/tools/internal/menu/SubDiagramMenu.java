@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.menu;
+package org.eclipse.sirius.diagram.ui.tools.internal.menu;
 
 import java.util.Iterator;
 
@@ -39,7 +39,7 @@ import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.tool.DiagramCreationDescription;
-import org.eclipse.sirius.diagram.tools.internal.actions.CreateRepresentationFromRepresentationCreationDescription;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.CreateRepresentationFromRepresentationCreationDescription;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;

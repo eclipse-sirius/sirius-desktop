@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -21,7 +21,7 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.DiagramUIPlugin;
 import org.eclipse.gmf.runtime.diagram.ui.internal.DiagramUIStatusCodes;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramCommandStack;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramEditDomain;
-import org.eclipse.sirius.diagram.tools.internal.commands.WrappingCommandIgnoringAffectedFiles;
+import org.eclipse.sirius.diagram.ui.tools.internal.commands.WrappingCommandIgnoringAffectedFiles;
 import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 

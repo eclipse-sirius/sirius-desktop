@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.api.view.refresh;
+package org.eclipse.sirius.diagram.ui.business.api.view.refresh;
 
 /**
  * A canonical synchronizer is in charge of applying changes made on

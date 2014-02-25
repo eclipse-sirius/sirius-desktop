@@ -9,7 +9,7 @@
  *      Cedric Brun    (Obeo) <cedric.brun@obeo.fr>  - Initial API and implementation
  *******************************************************************************/
 //CHECKSTYLE:OFF
-package org.eclipse.sirius.diagram.tools.internal.ui;
+package org.eclipse.sirius.diagram.ui.tools.internal.ui;
 
 import org.eclipse.core.runtime.Platform;
 import org.osgi.framework.Version;

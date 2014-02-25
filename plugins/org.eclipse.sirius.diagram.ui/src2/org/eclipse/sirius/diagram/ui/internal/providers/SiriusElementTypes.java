@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.providers;
+package org.eclipse.sirius.diagram.ui.internal.providers;
 
 import java.util.HashSet;
 import java.util.IdentityHashMap;
@@ -25,7 +25,7 @@ import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.swt.graphics.Image;
 
 /**
@@ -191,7 +191,7 @@ public class SiriusElementTypes extends ElementInitializers {
         if (element instanceof EClass) {
             EClass eClass = (EClass) element;
             if (!eClass.isAbstract()) {
-                return SiriusDiagramEditorPlugin.getInstance().getItemImageDescriptor(eClass.getEPackage().getEFactoryInstance().create(eClass));
+                return DiagramUIPlugin.getPlugin().getItemImageDescriptor(eClass.getEPackage().getEFactoryInstance().create(eClass));
             }
         }
         // TODO : support structural features

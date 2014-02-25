@@ -8,12 +8,12 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions;
 
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.TabbarArrangeMenuManager;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.TabbarSelectMenuManager;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions.expressions.DDiagramAndDDiagramElementTabbarExpression;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions.expressions.DDiagramTabbarExpression;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarArrangeMenuManager;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarSelectMenuManager;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.expressions.DDiagramAndDDiagramElementTabbarExpression;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.expressions.DDiagramTabbarExpression;
 import org.eclipse.ui.menus.IContributionRoot;
 import org.eclipse.ui.services.IServiceLocator;
 

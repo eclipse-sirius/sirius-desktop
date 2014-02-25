@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.graphical.edit.policies;
+package org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gmf.runtime.common.core.service.IOperation;
 import org.eclipse.gmf.runtime.common.core.service.IProviderChangeListener;
 import org.eclipse.gmf.runtime.diagram.ui.services.editpolicy.IEditPolicyProvider;
-import org.eclipse.sirius.diagram.tools.internal.part.SiriusDiagramGraphicalViewer;
+import org.eclipse.sirius.diagram.ui.tools.internal.part.SiriusDiagramGraphicalViewer;
 
 /**
  * An Edit Policy provider installing a RequestRecorderEditPolicy on every edit

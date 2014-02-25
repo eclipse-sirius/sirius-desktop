@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.edit.internal.validators;
+package org.eclipse.sirius.diagram.ui.edit.internal.validators;
 
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -19,7 +19,7 @@ import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.business.api.query.DNodeQuery;
-import org.eclipse.sirius.diagram.business.internal.query.RequestQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 
 /**
  * A validator for a {@link ChangeBoundsRequest} which ask resize of a

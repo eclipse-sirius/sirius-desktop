@@ -28,8 +28,8 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.description.CompositeLayout;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemProvider;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This is the item provider adapter for a
@@ -155,7 +155,7 @@ public class CompositeLayoutItemProvider extends DocumentedElementItemProvider i
      */
     @Override
     public ResourceLocator getResourceLocator() {
-        return SiriusEditPlugin.INSTANCE;
+        return DiagramUIPlugin.INSTANCE;
     }
 
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.refresh;
+package org.eclipse.sirius.diagram.ui.internal.refresh;
 
 import java.util.Collection;
 import java.util.Set;
@@ -21,10 +21,10 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizer;
-import org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementSpecOperations;
-import org.eclipse.sirius.diagram.tools.internal.graphical.edit.DiagramCreationUtil;
+import org.eclipse.sirius.diagram.ui.business.api.view.refresh.CanonicalSynchronizer;
+import org.eclipse.sirius.diagram.ui.business.api.view.refresh.CanonicalSynchronizerFactory;
+import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.DiagramCreationUtil;
 
 import com.google.common.collect.Sets;
 

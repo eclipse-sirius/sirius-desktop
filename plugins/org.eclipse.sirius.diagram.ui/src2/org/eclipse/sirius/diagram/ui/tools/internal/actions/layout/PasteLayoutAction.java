@@ -9,7 +9,7 @@
  *    IBM Corporation - initial API and implementation 
  ****************************************************************************/
 
-package org.eclipse.sirius.diagram.tools.internal.actions.layout;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.layout;
 
 import java.util.Iterator;
 import java.util.List;
@@ -27,10 +27,10 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
-import org.eclipse.sirius.diagram.tools.api.ui.actions.ActionIds;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManagerForSemanticElementsFactory;
+import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.data.extension.LayoutDataManagerRegistry;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ext.base.Option;

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.print;
+package org.eclipse.sirius.diagram.ui.tools.internal.print;
 
 import org.eclipse.gmf.runtime.common.ui.action.actions.IPrintActionHelper;
 import org.eclipse.gmf.runtime.diagram.ui.printing.actions.PrintPreviewAction;

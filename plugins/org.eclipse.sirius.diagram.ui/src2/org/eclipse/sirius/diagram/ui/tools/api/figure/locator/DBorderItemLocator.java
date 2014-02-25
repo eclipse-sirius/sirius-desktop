@@ -67,7 +67,7 @@ public class DBorderItemLocator extends BorderItemLocator {
 
     /**
      * This list of figures is set during the build of the command in
-     * {@link org.eclipse.sirius.diagram.graphical.edit.policies.SpecificBorderItemSelectionEditPolicy}
+     * {@link org.eclipse.sirius.diagram.ui.graphical.edit.policies.SpecificBorderItemSelectionEditPolicy}
      * to be able to know the figures to ignore when draw2d will launch the
      * redraw.
      */
@@ -790,7 +790,7 @@ public class DBorderItemLocator extends BorderItemLocator {
     /**
      * This method must be used only when commands are build to move a bordered
      * node (for example in
-     * {@link org.eclipse.sirius.diagram.graphical.edit.policies.SpecificBorderItemSelectionEditPolicy}
+     * {@link org.eclipse.sirius.diagram.ui.graphical.edit.policies.SpecificBorderItemSelectionEditPolicy}
      * ) after calling {@link #getValidLocation(Rectangle, IFigure, Collection)}
      * .
      * 

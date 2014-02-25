@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.edit.internal.part;
+package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LineBorder;
@@ -24,14 +24,14 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
-import org.eclipse.sirius.diagram.business.internal.edit.helpers.LabelAlignmentHelper;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramNameEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.DiagramNameEditPartOperation;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramListEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramNameEditPart;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IContainerLabelOffsets;
+import org.eclipse.sirius.diagram.ui.business.internal.edit.helpers.LabelAlignmentHelper;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramListEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.LabelAlignment;
 import org.eclipse.sirius.viewpoint.RGBValues;

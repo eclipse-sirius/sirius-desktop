@@ -8,16 +8,16 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions.pinning;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning;
 
 import java.util.Collection;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.ImagesPath;
-import org.eclipse.sirius.diagram.tools.api.ui.actions.ActionIds;
-import org.eclipse.sirius.diagram.tools.internal.commands.emf.UnpinElementsCommand;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
+import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
+import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.UnpinElementsCommand;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 
 /**
@@ -33,7 +33,7 @@ public class UnpinElementsEclipseAction extends AbstractPinUnpinElementsEclipseA
      * Constructor.
      */
     public UnpinElementsEclipseAction() {
-        super(UNPIN_SELECTED_ELEMENTS, ActionIds.UNPIN_ELEMENTS, UNPIN_SELECTED_ELEMENTS, ImagesPath.UNPIN_ELEMENTS_ICON);
+        super(UNPIN_SELECTED_ELEMENTS, ActionIds.UNPIN_ELEMENTS, UNPIN_SELECTED_ELEMENTS, DiagramImagesPath.UNPIN_ELEMENTS_ICON);
     }
 
     /**

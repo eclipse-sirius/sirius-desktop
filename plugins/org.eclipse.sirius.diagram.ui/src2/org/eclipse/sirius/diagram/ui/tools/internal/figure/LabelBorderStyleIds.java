@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.figure;
+package org.eclipse.sirius.diagram.ui.tools.internal.figure;
 
 /**
  * Store all ids of label border style descriptions.

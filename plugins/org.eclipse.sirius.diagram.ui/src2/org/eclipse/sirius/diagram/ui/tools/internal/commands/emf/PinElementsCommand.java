@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.commands.emf;
+package org.eclipse.sirius.diagram.ui.tools.internal.commands.emf;
 
 import java.util.Collection;
 

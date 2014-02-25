@@ -8,22 +8,22 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions;
 
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.sirius.diagram.ImagesPath;
-import org.eclipse.sirius.diagram.part.SiriusDiagramActionBarContributor;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.internal.actions.delete.DeleteFromDiagramAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.delete.DeleteFromModelWithHookAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.visibility.HideDDiagramElementAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.visibility.HideDDiagramElementLabelAction;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.HideDDiagramElementLabelActionContributionItem;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions.expressions.DDiagramElementTabbarExpression;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramActionBarContributor;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.action.DeleteFromDiagramContributionItem;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromDiagramAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromModelWithHookAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementLabelAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.HideDDiagramElementLabelActionContributionItem;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.expressions.DDiagramElementTabbarExpression;
 import org.eclipse.ui.menus.IContributionRoot;
 import org.eclipse.ui.services.IServiceLocator;
 
@@ -49,7 +49,7 @@ public class DiagramElementHideDeleteExtensionContributionFactory extends Sirius
 
         final DeleteFromDiagramContributionItem deleteFromDiagram = new DeleteFromDiagramContributionItem(new DeleteFromDiagramAction(DiagramUIMessages.DiagramEditor_Delete_from_Diagram,
                 SiriusDiagramActionBarContributor.DELETE_FROM_DIAGRAM, ActionIds.ACTION_DELETE_FROM_DIAGRAM,
-                SiriusDiagramEditorPlugin.getBundledImageDescriptor(ImagesPath.DELETE_FROM_DIAGRAM_ICON)), getPage());
+                DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETE_FROM_DIAGRAM_ICON)), getPage());
         deleteFromDiagram.setItemPart(getPart());
         additions.addContributionItem(deleteFromDiagram, new DDiagramElementTabbarExpression());
 

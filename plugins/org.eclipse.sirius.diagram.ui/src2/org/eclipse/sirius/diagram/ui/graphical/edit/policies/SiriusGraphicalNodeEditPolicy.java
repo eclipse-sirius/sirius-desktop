@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.graphical.edit.policies;
+package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -75,14 +75,6 @@ import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.query.EdgeCreationDescriptionQuery;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.api.query.ReconnectEdgeDescriptionQuery;
-import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
-import org.eclipse.sirius.diagram.business.internal.command.SiriusSetConnectionAnchorsCommand;
-import org.eclipse.sirius.diagram.business.internal.command.TreeLayoutSetConnectionAnchorsCommand;
-import org.eclipse.sirius.diagram.business.internal.query.DEdgeQuery;
-import org.eclipse.sirius.diagram.business.internal.query.RequestQuery;
-import org.eclipse.sirius.diagram.business.internal.view.EdgeLayoutData;
-import org.eclipse.sirius.diagram.business.internal.view.LayoutData;
-import org.eclipse.sirius.diagram.business.internal.view.RootLayoutData;
 import org.eclipse.sirius.diagram.description.CompositeLayout;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.Layout;
@@ -90,15 +82,23 @@ import org.eclipse.sirius.diagram.description.OrderedTreeLayout;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.diagram.description.tool.ReconnectionKind;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramEdgeEditPart;
-import org.eclipse.sirius.diagram.edit.internal.part.DiagramEdgeEditPartOperation;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeEditPart;
-import org.eclipse.sirius.diagram.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.tools.internal.command.builders.EdgeCreationCommandBuilder;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
+import org.eclipse.sirius.diagram.ui.business.internal.command.SiriusSetConnectionAnchorsCommand;
+import org.eclipse.sirius.diagram.ui.business.internal.command.TreeLayoutSetConnectionAnchorsCommand;
+import org.eclipse.sirius.diagram.ui.business.internal.query.DEdgeQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.view.EdgeLayoutData;
+import org.eclipse.sirius.diagram.ui.business.internal.view.LayoutData;
+import org.eclipse.sirius.diagram.ui.business.internal.view.RootLayoutData;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramEdgeEditPartOperation;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DMappingBased;

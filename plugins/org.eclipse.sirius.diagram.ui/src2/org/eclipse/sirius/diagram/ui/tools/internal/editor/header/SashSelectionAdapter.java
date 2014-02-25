@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor.header;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor.header;
 
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.swt.SWT;

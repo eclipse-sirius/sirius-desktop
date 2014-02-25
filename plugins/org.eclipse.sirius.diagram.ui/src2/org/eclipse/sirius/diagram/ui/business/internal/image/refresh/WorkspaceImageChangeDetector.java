@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.image.refresh;
+package org.eclipse.sirius.diagram.ui.business.internal.image.refresh;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -21,6 +21,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.swt.ImageFileFormat;
@@ -129,7 +130,7 @@ public class WorkspaceImageChangeDetector implements IResourceDeltaVisitor {
                 return false;
             }
             ImageDescriptor bundledImageDescriptor = ImageDescriptor.createFromURL(url);
-            boolean removed = SiriusDiagramEditorPlugin.getInstance().removeCacheImage(bundledImageDescriptor);
+            boolean removed = DiagramUIPlugin.getPlugin().removeCacheImage(bundledImageDescriptor);
             // If a removed cache action is do, a refresh opened editors
             // is
             // required

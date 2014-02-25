@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.providers;
+package org.eclipse.sirius.diagram.ui.internal.providers;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.gmf.runtime.common.core.service.AbstractProvider;

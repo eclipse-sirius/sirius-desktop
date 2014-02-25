@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.figure.util;
+package org.eclipse.sirius.diagram.ui.tools.internal.figure.util;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

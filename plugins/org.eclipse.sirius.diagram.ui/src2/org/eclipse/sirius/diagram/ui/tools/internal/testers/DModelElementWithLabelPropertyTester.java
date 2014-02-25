@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.testers;
+package org.eclipse.sirius.diagram.ui.tools.internal.testers;
 
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.emf.ecore.EObject;

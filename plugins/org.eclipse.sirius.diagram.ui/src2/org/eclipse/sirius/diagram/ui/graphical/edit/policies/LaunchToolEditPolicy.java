@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.graphical.edit.policies;
+package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Point;
@@ -24,12 +24,12 @@ import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
-import org.eclipse.sirius.diagram.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.description.tool.RequestDescription;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
-import org.eclipse.sirius.diagram.tools.api.draw2d.ui.figures.FigureUtilities;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
+import org.eclipse.sirius.diagram.ui.tools.api.draw2d.ui.figures.FigureUtilities;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;

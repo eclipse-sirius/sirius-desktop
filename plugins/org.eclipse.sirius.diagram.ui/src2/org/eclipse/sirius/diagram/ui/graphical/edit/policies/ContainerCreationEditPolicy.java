@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.graphical.edit.policies;
+package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.ecore.EObject;
@@ -24,7 +24,7 @@ import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 /**

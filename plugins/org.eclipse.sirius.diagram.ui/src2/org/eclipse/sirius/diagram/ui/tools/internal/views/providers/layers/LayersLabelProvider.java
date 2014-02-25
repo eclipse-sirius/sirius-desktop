@@ -23,9 +23,9 @@ import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.ImageProvider;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.ImagesPath;
 import org.eclipse.sirius.diagram.description.Layer;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
@@ -68,9 +68,9 @@ public class LayersLabelProvider extends ColumnLabelProvider {
                     final List<Layer> activatedLayers = ((DDiagram) designerElement).getActivatedLayers();
                     Image img = null;
                     if (EqualityHelper.contains(activatedLayers, (EObject) element)) {
-                        img = SiriusDiagramEditorPlugin.getInstance().getBundledImage(ImagesPath.ACTIVE_LAYER_ICON);
+                        img = DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.ACTIVE_LAYER_ICON);
                     } else {
-                        img = SiriusDiagramEditorPlugin.getInstance().getBundledImage(ImagesPath.INACTIVE_LAYER_ICON);
+                        img = DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.INACTIVE_LAYER_ICON);
                     }
                     result = img;
                 }

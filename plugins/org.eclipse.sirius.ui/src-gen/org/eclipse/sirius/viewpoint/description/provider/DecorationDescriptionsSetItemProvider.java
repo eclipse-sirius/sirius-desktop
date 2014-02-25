@@ -152,9 +152,6 @@ public class DecorationDescriptionsSetItemProvider extends ItemProviderAdapter i
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DECORATION_DESCRIPTIONS_SET__DECORATION_DESCRIPTIONS, DescriptionFactory.eINSTANCE.createSemanticBasedDecoration()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DECORATION_DESCRIPTIONS_SET__DECORATION_DESCRIPTIONS,
-                org.eclipse.sirius.diagram.description.DescriptionFactory.eINSTANCE.createMappingBasedDecoration()));
     }
 
     /**

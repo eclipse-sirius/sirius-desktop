@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.providers.decorators;
+package org.eclipse.sirius.diagram.ui.tools.internal.providers.decorators;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -34,7 +34,7 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditor;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 import org.eclipse.sirius.viewpoint.DNavigable;
 
 /**

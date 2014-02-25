@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.clipboard;
+package org.eclipse.sirius.diagram.ui.tools.internal.clipboard;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -52,22 +52,22 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
-import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.business.internal.query.PasteTargetQuery;
-import org.eclipse.sirius.diagram.business.internal.view.RootLayoutData;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
-import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
-import org.eclipse.sirius.diagram.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.tools.internal.command.builders.PasteCommandBuilder;
-import org.eclipse.sirius.diagram.tools.internal.commands.emf.CopyToSiriusClipboardCommand;
-import org.eclipse.sirius.diagram.tools.internal.commands.emf.PasteFromSiriusClipboardCommand;
-import org.eclipse.sirius.diagram.tools.internal.delete.DeleteWrapperHookExecutorCommand;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
+import org.eclipse.sirius.diagram.ui.business.internal.view.RootLayoutData;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
+import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.CopyToSiriusClipboardCommand;
+import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.PasteFromSiriusClipboardCommand;
+import org.eclipse.sirius.diagram.ui.tools.internal.delete.DeleteWrapperHookExecutorCommand;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
@@ -80,7 +80,8 @@ import com.google.common.collect.Sets;
 /**
  * Handle for clipboard action.
  * 
- * It allows Sirius to make a semantic copy/cut/paste for semantic elements and to let GFM handle notes.
+ * It allows Sirius to make a semantic copy/cut/paste for semantic elements and
+ * to let GFM handle notes.
  * 
  * @author glefur
  * 

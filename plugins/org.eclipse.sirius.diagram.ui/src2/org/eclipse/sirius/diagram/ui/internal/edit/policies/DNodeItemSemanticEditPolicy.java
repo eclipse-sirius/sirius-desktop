@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.policies;
+package org.eclipse.sirius.diagram.ui.internal.edit.policies;
 
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
@@ -17,8 +17,8 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.internal.edit.commands.DNode2CreateCommand;
-import org.eclipse.sirius.diagram.internal.providers.SiriusElementTypes;
+import org.eclipse.sirius.diagram.ui.internal.edit.commands.DNode2CreateCommand;
+import org.eclipse.sirius.diagram.ui.internal.providers.SiriusElementTypes;
 
 /**
  * @was-generated

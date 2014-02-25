@@ -14,7 +14,7 @@ import java.util.Collection;
 
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.sirius.diagram.business.internal.operation.AbstractModelChangeOperation;
+import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 
 /**
  * A Recording Command used in CommandFactory to execute a collection of

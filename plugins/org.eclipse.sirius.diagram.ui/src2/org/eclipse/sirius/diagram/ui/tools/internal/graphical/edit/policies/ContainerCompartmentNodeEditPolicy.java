@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.graphical.edit.policies;
+package org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies;
 
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.Graphics;
@@ -23,8 +23,8 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.INodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.ContainerNodeEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateConnectionViewRequest;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 

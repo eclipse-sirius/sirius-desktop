@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.refresh.listeners;
+package org.eclipse.sirius.diagram.ui.internal.refresh.listeners;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -33,8 +33,8 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.EdgeStyle;
-import org.eclipse.sirius.diagram.internal.refresh.SynchronizeDDiagramElementStylePropertiesCommand;
-import org.eclipse.sirius.diagram.internal.refresh.diagram.ViewPropertiesSynchronizer;
+import org.eclipse.sirius.diagram.ui.internal.refresh.SynchronizeDDiagramElementStylePropertiesCommand;
+import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSynchronizer;
 import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.Style;

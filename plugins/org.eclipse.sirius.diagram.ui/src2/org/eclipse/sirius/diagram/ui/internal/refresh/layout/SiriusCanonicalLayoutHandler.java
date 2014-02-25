@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.refresh.layout;
+package org.eclipse.sirius.diagram.ui.internal.refresh.layout;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -27,10 +27,10 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
-import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;

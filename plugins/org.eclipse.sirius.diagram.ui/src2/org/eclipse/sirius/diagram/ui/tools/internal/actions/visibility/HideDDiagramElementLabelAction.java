@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions.visibility;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -31,14 +31,14 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.ImagesPath;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.tools.internal.editor.DiagramOutlinePage;
 import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.DiagramOutlinePage;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
@@ -69,7 +69,7 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
      *            String
      */
     public HideDDiagramElementLabelAction(final String text) {
-        this(text, SiriusDiagramEditorPlugin.getBundledImageDescriptor(ImagesPath.HIDE_LABEL_ELEMENT_IMG));
+        this(text, DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.HIDE_LABEL_ELEMENT_IMG));
     }
 
     /**

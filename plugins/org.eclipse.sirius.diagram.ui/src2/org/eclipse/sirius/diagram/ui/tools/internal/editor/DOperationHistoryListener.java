@@ -8,11 +8,11 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor;
 
 import org.eclipse.core.commands.operations.IOperationHistoryListener;
 import org.eclipse.core.commands.operations.OperationHistoryEvent;
-import org.eclipse.sirius.diagram.internal.refresh.layout.SiriusCanonicalLayoutHandler;
+import org.eclipse.sirius.diagram.ui.internal.refresh.layout.SiriusCanonicalLayoutHandler;
 
 /**
  * .

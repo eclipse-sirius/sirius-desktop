@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions.delete;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.delete;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.action.Action;

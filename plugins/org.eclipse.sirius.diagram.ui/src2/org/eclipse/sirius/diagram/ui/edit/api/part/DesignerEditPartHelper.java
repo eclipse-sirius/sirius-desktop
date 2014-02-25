@@ -8,15 +8,15 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.edit.api.part;
+package org.eclipse.sirius.diagram.ui.edit.api.part;
 
-import org.eclipse.sirius.diagram.internal.edit.parts.BundledImageEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.CustomStyleEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DotEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.GaugeCompositeEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.NoteEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.SquareEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.WorkspaceImageEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.BundledImageEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.CustomStyleEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DotEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.GaugeCompositeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.NoteEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.SquareEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.WorkspaceImageEditPart;
 
 /**
  * Useful operations for edit part.

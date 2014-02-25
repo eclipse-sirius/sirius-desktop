@@ -25,7 +25,7 @@ import org.eclipse.sirius.diagram.description.concern.ConcernDescription;
 import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.description.filter.VariableFilter;
-import org.eclipse.sirius.diagram.tools.internal.filter.FilterTools;
+import org.eclipse.sirius.diagram.ui.tools.internal.filter.FilterTools;
 
 /**
  * Specific command to set the current concern.

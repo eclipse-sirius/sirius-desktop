@@ -19,9 +19,9 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.ITableLabelProvider;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.ImagesPath;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.swt.graphics.Image;
 
 /**
@@ -60,9 +60,9 @@ public class FiltersLabelProvider extends LabelProvider implements ITableLabelPr
                     final List<FilterDescription> activatedFilters = ((DDiagram) designerElement).getActivatedFilters();
                     Image img = null;
                     if (activatedFilters.contains(element)) {
-                        img = SiriusDiagramEditorPlugin.getInstance().getBundledImage(ImagesPath.ACTIVE_FILTER_ICON);
+                        img = DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.ACTIVE_FILTER_ICON);
                     } else {
-                        img = SiriusDiagramEditorPlugin.getInstance().getBundledImage(ImagesPath.INACTIVE_FILTER_ICON);
+                        img = DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.INACTIVE_FILTER_ICON);
                     }
                     return img;
                 }

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.part;
+package org.eclipse.sirius.diagram.ui.part;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -31,32 +31,32 @@ import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.NodeStyle;
-import org.eclipse.sirius.diagram.graphical.edit.part.specific.BracketEdgeEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.BundledImageEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.CustomStyleEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNode2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNode3EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNode4EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainer2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeList2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListElementEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListViewNodeListCompartment2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListViewNodeListCompartmentEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DotEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.EllipseEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.GaugeCompositeEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.LozengeEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.NoteEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.SquareEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.WorkspaceImageEditPart;
-import org.eclipse.sirius.diagram.internal.providers.SiriusElementTypes;
+import org.eclipse.sirius.diagram.ui.graphical.edit.part.specific.BracketEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.BundledImageEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.CustomStyleEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode3EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListViewNodeListCompartment2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListViewNodeListCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DotEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.EllipseEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.GaugeCompositeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.LozengeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.NoteEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.SquareEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.WorkspaceImageEditPart;
+import org.eclipse.sirius.diagram.ui.internal.providers.SiriusElementTypes;
 
 /**
  * @was-generated NOT

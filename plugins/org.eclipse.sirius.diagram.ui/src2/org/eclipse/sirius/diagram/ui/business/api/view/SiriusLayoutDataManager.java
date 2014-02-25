@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.api.view;
+package org.eclipse.sirius.diagram.ui.business.api.view;
 
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -27,11 +27,11 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.business.internal.view.AbstractLayoutData;
-import org.eclipse.sirius.diagram.business.internal.view.EdgeLabelLayoutData;
-import org.eclipse.sirius.diagram.business.internal.view.EdgeLayoutData;
-import org.eclipse.sirius.diagram.business.internal.view.LayoutData;
-import org.eclipse.sirius.diagram.business.internal.view.SiriusLayoutDataManagerImpl;
+import org.eclipse.sirius.diagram.ui.business.internal.view.AbstractLayoutData;
+import org.eclipse.sirius.diagram.ui.business.internal.view.EdgeLabelLayoutData;
+import org.eclipse.sirius.diagram.ui.business.internal.view.EdgeLayoutData;
+import org.eclipse.sirius.diagram.ui.business.internal.view.LayoutData;
+import org.eclipse.sirius.diagram.ui.business.internal.view.SiriusLayoutDataManagerImpl;
 import org.eclipse.sirius.ext.base.Option;
 
 /**

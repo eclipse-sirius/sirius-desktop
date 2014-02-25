@@ -33,11 +33,11 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.ImagesPath;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
-import org.eclipse.sirius.diagram.tools.internal.providers.FilteredTreeContentProvider;
 import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
+import org.eclipse.sirius.diagram.ui.tools.internal.providers.FilteredTreeContentProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.outline.OutlineLabelProvider;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -71,6 +71,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
+
 /**
  * A dialog box which allows the user to edit a boolean property/flag of a
  * sub-set of the elements in a diagram. The dialog presents all the elements in
@@ -326,7 +327,7 @@ public class DiagramElementsSelectionDialog {
 
             data = new GridData(GridData.HORIZONTAL_ALIGN_FILL | GridData.GRAB_HORIZONTAL);
             data.grabExcessHorizontalSpace = true;
-            addButton(buttonComposite, "Check All", SiriusDiagramEditorPlugin.getInstance().getBundledImage(ImagesPath.CHECK_ALL_ICON), new SelectionAdapter() {
+            addButton(buttonComposite, "Check All", DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.CHECK_ALL_ICON), new SelectionAdapter() {
                 @Override
                 public void widgetSelected(SelectionEvent e) {
                     checkAll();
@@ -338,7 +339,7 @@ public class DiagramElementsSelectionDialog {
                 }
             }).setLayoutData(data);
 
-            addButton(buttonComposite, "Uncheck All", SiriusDiagramEditorPlugin.getInstance().getBundledImage(ImagesPath.UNCHECK_ALL_ICON), new SelectionAdapter() {
+            addButton(buttonComposite, "Uncheck All", DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.UNCHECK_ALL_ICON), new SelectionAdapter() {
                 @Override
                 public void widgetSelected(SelectionEvent e) {
                     uncheckAll();
@@ -350,14 +351,14 @@ public class DiagramElementsSelectionDialog {
                 }
             }).setLayoutData(data);
 
-            addButton(buttonComposite, "Expand All", SiriusDiagramEditorPlugin.getInstance().getBundledImage(ImagesPath.EXPAND_ALL_ICON), new SelectionAdapter() {
+            addButton(buttonComposite, "Expand All", DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.EXPAND_ALL_ICON), new SelectionAdapter() {
                 @Override
                 public void widgetSelected(SelectionEvent e) {
                     expandAll();
                 }
             }).setLayoutData(data);
 
-            addButton(buttonComposite, "Collapse All", SiriusDiagramEditorPlugin.getInstance().getBundledImage(ImagesPath.COLLAPSE_ALL_ICON), new SelectionAdapter() {
+            addButton(buttonComposite, "Collapse All", DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.COLLAPSE_ALL_ICON), new SelectionAdapter() {
                 @Override
                 public void widgetSelected(SelectionEvent e) {
                     collapseAll();

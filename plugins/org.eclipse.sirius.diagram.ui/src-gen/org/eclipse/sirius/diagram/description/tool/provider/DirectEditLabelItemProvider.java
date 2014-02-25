@@ -29,9 +29,9 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 import org.eclipse.sirius.viewpoint.description.tool.provider.MappingBasedToolDescriptionItemProvider;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This is the item provider adapter for a
@@ -186,7 +186,7 @@ public class DirectEditLabelItemProvider extends MappingBasedToolDescriptionItem
      */
     @Override
     public ResourceLocator getResourceLocator() {
-        return SiriusEditPlugin.INSTANCE;
+        return DiagramUIPlugin.INSTANCE;
     }
 
 }

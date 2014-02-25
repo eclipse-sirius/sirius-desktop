@@ -10,7 +10,7 @@
  *    Obeo - Allow ports selection (IBorderItemEditPart)
  ****************************************************************************/
 // CHECKSTYLE:OFF
-package org.eclipse.sirius.diagram.tools.internal.ui;
+package org.eclipse.sirius.diagram.ui.tools.internal.ui;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;

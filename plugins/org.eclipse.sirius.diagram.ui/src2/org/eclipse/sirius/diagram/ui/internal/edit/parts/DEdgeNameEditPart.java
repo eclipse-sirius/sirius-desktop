@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.parts;
+package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import org.eclipse.draw2d.ConnectionLocator;
 import org.eclipse.draw2d.geometry.Point;
@@ -18,11 +18,11 @@ import org.eclipse.gef.editparts.AbstractConnectionEditPart;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.business.internal.bracket.locators.BracketLabelLocator;
-import org.eclipse.sirius.diagram.business.internal.bracket.locators.BracketResizableLabelLocator;
-import org.eclipse.sirius.diagram.graphical.edit.part.specific.BracketEdgeEditPart;
-import org.eclipse.sirius.diagram.graphical.edit.policies.BracketResizableShapeLabelEditPolicy;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.business.internal.bracket.locators.BracketLabelLocator;
+import org.eclipse.sirius.diagram.ui.business.internal.bracket.locators.BracketResizableLabelLocator;
+import org.eclipse.sirius.diagram.ui.graphical.edit.part.specific.BracketEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.BracketResizableShapeLabelEditPolicy;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 
 /**
  * @was-generated NOT
@@ -38,7 +38,7 @@ public class DEdgeNameEditPart extends AbstractDEdgeNameEditPart {
      * @not-generated
      */
     static {
-        registerSnapBackPosition(SiriusVisualIDRegistry.getType(org.eclipse.sirius.diagram.internal.edit.parts.DEdgeNameEditPart.VISUAL_ID), new Point(0, -10));
+        registerSnapBackPosition(SiriusVisualIDRegistry.getType(org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart.VISUAL_ID), new Point(0, -10));
     }
 
     /**

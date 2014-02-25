@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.resource;
+package org.eclipse.sirius.diagram.ui.tools.internal.resource;
 
 /**
  * Constants for specific navigation markers.

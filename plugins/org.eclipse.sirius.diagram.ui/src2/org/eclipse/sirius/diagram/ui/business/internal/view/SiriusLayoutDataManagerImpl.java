@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.view;
+package org.eclipse.sirius.diagram.ui.business.internal.view;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -60,9 +60,9 @@ import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
-import org.eclipse.sirius.diagram.graphical.figures.SiriusLayoutHelper;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
+import org.eclipse.sirius.diagram.ui.graphical.figures.SiriusLayoutHelper;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
@@ -110,7 +110,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
         }
 
         public void notifyChanged(final Notification notification) {
-        }
+        };
 
         public boolean isAdapterForType(final Object type) {
             return type instanceof SiriusLayoutDataManager;

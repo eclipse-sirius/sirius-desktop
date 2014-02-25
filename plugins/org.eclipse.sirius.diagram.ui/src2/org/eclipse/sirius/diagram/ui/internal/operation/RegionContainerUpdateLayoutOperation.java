@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.operation;
+package org.eclipse.sirius.diagram.ui.internal.operation;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -25,14 +25,14 @@ import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.business.api.view.SiriusGMFHelper;
-import org.eclipse.sirius.diagram.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
-import org.eclipse.sirius.diagram.internal.refresh.GMFHelper;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
+import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 

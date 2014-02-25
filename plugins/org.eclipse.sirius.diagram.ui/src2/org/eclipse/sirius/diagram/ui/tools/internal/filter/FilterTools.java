@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.filter;
+package org.eclipse.sirius.diagram.ui.tools.internal.filter;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -27,7 +27,7 @@ import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.FilterVariableValue;
 import org.eclipse.sirius.diagram.description.filter.FilterVariable;
 import org.eclipse.sirius.diagram.description.filter.VariableFilter;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -84,7 +84,7 @@ public final class FilterTools {
             FilterTools.computeInput(diagram, model, var, input);
 
             if (!var.isMultiple()) {
-                final EObject modelElement = uiCallback.askForEObject(var.getMessage(), input, SiriusDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory());
+                final EObject modelElement = uiCallback.askForEObject(var.getMessage(), input, DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory());
 
                 final FilterVariableValue newValue = DiagramFactory.eINSTANCE.createFilterVariableValue();
                 newValue.setModelElement(modelElement);
@@ -94,7 +94,7 @@ public final class FilterTools {
                 }
             } else {
                 EList<EObject> values = new BasicEList<EObject>();
-                final Collection<EObject> modelElements = uiCallback.askForEObjects(var.getMessage(), input, SiriusDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory());
+                final Collection<EObject> modelElements = uiCallback.askForEObjects(var.getMessage(), input, DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory());
 
                 values.addAll(modelElements);
                 EList<FilterVariableValue> variables = new BasicEList<FilterVariableValue>();

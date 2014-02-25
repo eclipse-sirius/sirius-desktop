@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.policies.canonicals;
+package org.eclipse.sirius.diagram.ui.internal.edit.policies.canonicals;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -42,10 +42,10 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.DiagramUIStatusCodes;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.util.EditPartUtil;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.internal.refresh.IsOrphanedSwitch;
-import org.eclipse.sirius.diagram.part.SiriusDiagramUpdater;
-import org.eclipse.sirius.diagram.part.SiriusNodeDescriptor;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.internal.refresh.IsOrphanedSwitch;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramUpdater;
+import org.eclipse.sirius.diagram.ui.part.SiriusNodeDescriptor;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 
 /**
  * Dumny {@link CanonicalEditPolicy} to have CanonicalRefresh in post-commit

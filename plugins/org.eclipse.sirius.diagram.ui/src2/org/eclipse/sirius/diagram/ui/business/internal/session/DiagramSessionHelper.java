@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.session;
+package org.eclipse.sirius.diagram.ui.business.internal.session;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;

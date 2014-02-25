@@ -8,16 +8,16 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions;
 
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.FontDialogAction;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.FontStyleAction;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.sirius.diagram.ImagesPath;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.TabbarColorPropertyContributionItem;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions.expressions.DDiagramElementTabbarExpression;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarColorPropertyContributionItem;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.expressions.DDiagramElementTabbarExpression;
 import org.eclipse.ui.menus.IContributionRoot;
 import org.eclipse.ui.services.IServiceLocator;
 
@@ -41,7 +41,7 @@ public class DiagramElementFontExtensionContributionFactory extends SiriusTabbar
         createFontColorMenu(additions);
 
         IAction fontDialogAction = new FontDialogAction(getPage());
-        fontDialogAction.setImageDescriptor(SiriusDiagramEditorPlugin.getBundledImageDescriptor(ImagesPath.FONT_WIZARD));
+        fontDialogAction.setImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.FONT_WIZARD));
 
         additions.addContributionItem(new ActionContributionItem(fontDialogAction), new DDiagramElementTabbarExpression());
 

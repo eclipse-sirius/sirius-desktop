@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.api.editor;
+package org.eclipse.sirius.diagram.ui.tools.api.editor;
 
 import java.util.Collection;
 
@@ -25,9 +25,9 @@ import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.business.internal.command.CreateAndStoreGMFDiagramCommand;
-import org.eclipse.sirius.diagram.business.internal.dialect.DiagramDialectArrangeOperation;
-import org.eclipse.sirius.diagram.tools.internal.editor.DDiagramEditorImpl;
+import org.eclipse.sirius.diagram.ui.business.internal.command.CreateAndStoreGMFDiagramCommand;
+import org.eclipse.sirius.diagram.ui.business.internal.dialect.DiagramDialectArrangeOperation;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
 import org.eclipse.sirius.ui.business.api.editor.SpecificEditor;
 import org.eclipse.sirius.ui.business.api.editor.SpecificEditorInputTranformer;
 import org.eclipse.sirius.viewpoint.DRepresentation;

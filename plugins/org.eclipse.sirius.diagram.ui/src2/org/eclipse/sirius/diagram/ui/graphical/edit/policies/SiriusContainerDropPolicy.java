@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.graphical.edit.policies;
+package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
@@ -46,23 +46,23 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
-import org.eclipse.sirius.diagram.business.internal.command.AddLayoutDataToManageCommand;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementContainerSpecOperations;
-import org.eclipse.sirius.diagram.business.internal.query.RequestQuery;
-import org.eclipse.sirius.diagram.business.internal.view.AbstractLayoutData;
-import org.eclipse.sirius.diagram.business.internal.view.RootLayoutData;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramBorderNodeEditPart;
-import org.eclipse.sirius.diagram.graphical.edit.internal.policies.validators.DragAndDropValidator;
-import org.eclipse.sirius.diagram.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
-import org.eclipse.sirius.diagram.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
-import org.eclipse.sirius.diagram.tools.api.draw2d.ui.figures.FigureUtilities;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
+import org.eclipse.sirius.diagram.ui.business.internal.command.AddLayoutDataToManageCommand;
+import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.view.AbstractLayoutData;
+import org.eclipse.sirius.diagram.ui.business.internal.view.RootLayoutData;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.graphical.edit.internal.policies.validators.DragAndDropValidator;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
+import org.eclipse.sirius.diagram.ui.tools.api.draw2d.ui.figures.FigureUtilities;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.dnd.DragAndDropWrapper;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.DragSource;

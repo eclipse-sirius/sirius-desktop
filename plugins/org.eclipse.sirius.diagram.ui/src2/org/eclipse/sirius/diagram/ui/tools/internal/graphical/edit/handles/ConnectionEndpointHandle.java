@@ -8,7 +8,7 @@
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.graphical.edit.handles;
+package org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.handles;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.draw2d.ConnectionLocator;

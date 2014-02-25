@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.menu;
+package org.eclipse.sirius.diagram.ui.tools.internal.menu;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -31,9 +31,9 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.common.ui.tools.api.editor.IEObjectNavigable;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.ImagesPath;
-import org.eclipse.sirius.diagram.business.internal.navigation.MappingDefinitionFinder;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.business.internal.navigation.MappingDefinitionFinder;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbench;
@@ -108,7 +108,7 @@ public class SpecificationMenuContribution implements IContributionItemProvider 
         if (description != null && description.eResource() != null) {
             final IFile modelFile = WorkspaceSynchronizer.getFile(description.eResource());
 
-            ImageDescriptor imageDescriptor = SiriusTransPlugin.getBundledImageDescriptor(ImagesPath.LINK_TO_VIEWPOINT_IMG);
+            ImageDescriptor imageDescriptor = SiriusTransPlugin.getBundledImageDescriptor(DiagramImagesPath.LINK_TO_VIEWPOINT_IMG);
             final IItemLabelProvider labelProvider = (IItemLabelProvider) getAdapterFactory().adapt(description, IItemLabelProvider.class);
             if (labelProvider != null) {
                 imageDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(labelProvider.getImage(description));
@@ -197,7 +197,7 @@ public class SpecificationMenuContribution implements IContributionItemProvider 
     }
 
     private AdapterFactory getAdapterFactory() {
-        return SiriusDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory();
+        return DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory();
     }
 
 }

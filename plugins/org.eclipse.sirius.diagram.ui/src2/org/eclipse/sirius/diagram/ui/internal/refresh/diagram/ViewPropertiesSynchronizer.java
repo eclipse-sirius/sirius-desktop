@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.refresh.diagram;
+package org.eclipse.sirius.diagram.ui.internal.refresh.diagram;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,7 +47,7 @@ import org.eclipse.sirius.diagram.Note;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.Square;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.business.api.query.ViewQuery;
+import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.FontFormat;

@@ -8,9 +8,9 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.api.properties;
+package org.eclipse.sirius.diagram.ui.tools.api.properties;
 
-import org.eclipse.sirius.diagram.tools.internal.properties.SiriusDiagramEditorPropertiesProvider;
+import org.eclipse.sirius.diagram.ui.tools.internal.properties.SiriusDiagramEditorPropertiesProvider;
 import org.eclipse.sirius.tools.api.ui.property.IPropertiesProvider;
 
 /**

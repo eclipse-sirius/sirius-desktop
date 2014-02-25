@@ -29,8 +29,8 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
 import org.eclipse.sirius.diagram.description.filter.FilterVariable;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This is the item provider adapter for a
@@ -232,7 +232,7 @@ public class FilterVariableItemProvider extends ItemProviderAdapter implements I
      */
     @Override
     public ResourceLocator getResourceLocator() {
-        return SiriusEditPlugin.INSTANCE;
+        return DiagramUIPlugin.INSTANCE;
     }
 
 }

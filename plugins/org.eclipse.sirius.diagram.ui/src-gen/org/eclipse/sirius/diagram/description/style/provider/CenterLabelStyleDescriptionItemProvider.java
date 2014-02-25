@@ -24,8 +24,8 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.sirius.diagram.description.style.CenterLabelStyleDescription;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.description.style.provider.BasicLabelStyleDescriptionItemProvider;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This is the item provider adapter for a
@@ -80,8 +80,8 @@ public class CenterLabelStyleDescriptionItemProvider extends BasicLabelStyleDesc
      */
     @Override
     public String getText(Object object) {
-        String label = ((CenterLabelStyleDescription) object).getLabelExpression();
-        return label == null || label.length() == 0 ? getString("_UI_CenterLabelStyleDescription_type") : getString("_UI_CenterLabelStyleDescription_type") + " " + label;
+        CenterLabelStyleDescription centerLabelStyleDescription = (CenterLabelStyleDescription) object;
+        return getString("_UI_CenterLabelStyleDescription_type") + " " + centerLabelStyleDescription.getLabelSize();
     }
 
     /**
@@ -118,7 +118,7 @@ public class CenterLabelStyleDescriptionItemProvider extends BasicLabelStyleDesc
      */
     @Override
     public ResourceLocator getResourceLocator() {
-        return SiriusEditPlugin.INSTANCE;
+        return DiagramUIPlugin.INSTANCE;
     }
 
 }

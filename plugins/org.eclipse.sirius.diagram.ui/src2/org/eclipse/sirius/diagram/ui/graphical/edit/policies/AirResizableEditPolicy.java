@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.graphical.edit.policies;
+package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import java.util.List;
 import java.util.Map;
@@ -51,18 +51,18 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
-import org.eclipse.sirius.diagram.business.api.query.ConnectionEditPartQuery;
-import org.eclipse.sirius.diagram.business.api.query.ConnectionQuery;
-import org.eclipse.sirius.diagram.business.internal.operation.ShiftDirectBorderedNodesOperation;
-import org.eclipse.sirius.diagram.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramNodeEditPart;
-import org.eclipse.sirius.diagram.edit.internal.validators.ResizeValidator;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration;
-import org.eclipse.sirius.diagram.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
+import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery;
+import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.operation.ShiftDirectBorderedNodesOperation;
+import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.internal.validators.ResizeValidator;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
+import org.eclipse.sirius.diagram.ui.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;

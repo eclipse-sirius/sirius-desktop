@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.part;
+package org.eclipse.sirius.diagram.ui.part;
 
 import java.io.File;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gmf.runtime.common.ui.services.marker.MarkerNavigationService;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
-import org.eclipse.gmf.runtime.diagram.ui.internal.DiagramUIPlugin;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDiagramDocument;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocument;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
@@ -32,7 +31,9 @@ import org.eclipse.jface.preference.PreferenceStore;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.diagram.business.api.view.SiriusGMFHelper;
+import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerView;
 import org.eclipse.ui.ide.IGotoMarker;
@@ -97,8 +98,7 @@ public class SiriusDiagramEditor extends DiagramDocumentEditor implements IGotoM
      * @was-generated
      */
     @Override
-    public Object getAdapter(@SuppressWarnings("rawtypes")
-    Class type) {
+    public Object getAdapter(@SuppressWarnings("rawtypes") Class type) {
 
         if (type == IShowInTargetList.class) {
             return new IShowInTargetList() {
@@ -109,7 +109,7 @@ public class SiriusDiagramEditor extends DiagramDocumentEditor implements IGotoM
         }
 
         if (type == AdapterFactory.class) {
-            return SiriusDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory();
+            return DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory();
         }
         return super.getAdapter(type);
     }
@@ -147,7 +147,7 @@ public class SiriusDiagramEditor extends DiagramDocumentEditor implements IGotoM
             return workspaceViewerPreferenceStore;
         } else {
             // Try to load it
-            IPath path = DiagramUIPlugin.getInstance().getStateLocation();
+            IPath path = DiagramUIPlugin.getPlugin().getStateLocation();
             String viewId = SiriusGMFHelper.getViewId(getDiagram());
 
             String fileName = path.toString() + "/" + viewId;//$NON-NLS-1$

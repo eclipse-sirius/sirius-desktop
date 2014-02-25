@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.edit.internal.part;
+package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
 import java.util.Iterator;
 
@@ -30,28 +30,28 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.edit.api.part.IAbstractDiagramNodeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramBorderNodeEditPart;
-import org.eclipse.sirius.diagram.graphical.edit.policies.DeleteFromDiagramEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.HideSiriusElementEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.LaunchBehaviorToolEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.LaunchToolEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.NodeCreationEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.NodeDeletionEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.RefreshSiriusElementEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.SiriusGraphicalNodeEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.SiriusPopupBarEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.SiriusPropertyHandlerEditPolicy;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNode2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNode3EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNode4EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeEditPart;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.BorderItemLocatorProvider;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration;
-import org.eclipse.sirius.diagram.tools.api.part.NodePlateProvider;
-import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.DeleteFromDiagramEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.HideSiriusElementEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LaunchBehaviorToolEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LaunchToolEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.NodeCreationEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.NodeDeletionEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.RefreshSiriusElementEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusGraphicalNodeEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusPopupBarEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusPropertyHandlerEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode3EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.BorderItemLocatorProvider;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
+import org.eclipse.sirius.diagram.ui.tools.api.part.NodePlateProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
+import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.Style;
 

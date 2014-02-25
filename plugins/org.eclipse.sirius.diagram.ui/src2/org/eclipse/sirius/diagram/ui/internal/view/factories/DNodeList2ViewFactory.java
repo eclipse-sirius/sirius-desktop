@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.view.factories;
+package org.eclipse.sirius.diagram.ui.internal.view.factories;
 
 import java.util.List;
 
@@ -19,10 +19,10 @@ import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeList2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListName2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListViewNodeListCompartmentEditPart;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListName2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListViewNodeListCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 
 import com.google.common.collect.Lists;
 

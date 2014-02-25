@@ -30,18 +30,18 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData;
 import org.eclipse.sirius.diagram.layoutdata.EdgeLayoutData;
 import org.eclipse.sirius.diagram.layoutdata.LayoutdataFactory;
 import org.eclipse.sirius.diagram.layoutdata.NodeLayoutData;
 import org.eclipse.sirius.diagram.layoutdata.Point;
-import org.eclipse.sirius.diagram.tools.api.draw2d.ui.figures.FigureUtilities;
+import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutDataKey;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.semantic.SemanticEdgeLayoutDataKey;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.semantic.SemanticNodeLayoutDataKey;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.draw2d.figure.FigureUtilities;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Maps;
@@ -305,6 +305,7 @@ public class LayoutDataHelperImpl implements LayoutDataHelper {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Map<? extends LayoutDataKey, ? extends AbstractLayoutData> getRootLayoutData(final Map<? extends LayoutDataKey, ? extends AbstractLayoutData> collection) {
         return Maps.filterValues(collection, ROOT_PREDICATE);
     }

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.refresh;
+package org.eclipse.sirius.diagram.ui.internal.refresh;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -33,11 +33,11 @@ import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
-import org.eclipse.sirius.diagram.business.api.query.NodeQuery;
-import org.eclipse.sirius.diagram.business.api.query.ViewQuery;
-import org.eclipse.sirius.diagram.business.internal.query.DNodeQuery;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramElementContainerEditPart;
-import org.eclipse.sirius.diagram.internal.refresh.borderednode.CanonicalDBorderItemLocator;
+import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
+import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
+import org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -74,6 +74,58 @@ public final class GMFHelper {
             absoluteNodeLocation.translate(parentNodeLocation);
         }
         return absoluteNodeLocation;
+    }
+
+    /**
+     * Compute the location of a GMF node.
+     * 
+     * @param node
+     *            the node whose location to compute.
+     * @return the location of the node.
+     */
+    public static Point getLocation(Node node) {
+        Point location = new Point(0, 0);
+        LayoutConstraint layoutConstraint = node.getLayoutConstraint();
+        if (layoutConstraint instanceof Bounds) {
+            Bounds gmfBounds = (Bounds) layoutConstraint;
+            location.x = gmfBounds.getX();
+            location.y = gmfBounds.getY();
+            // manage location of bordered node with closest side
+            if (node.getElement() instanceof DNode && node.getElement().eContainer() instanceof AbstractDNode) {
+                DNode dNode = (DNode) node.getElement();
+                AbstractDNode parentAbstractDNode = (AbstractDNode) dNode.eContainer();
+                if (parentAbstractDNode.getOwnedBorderedNodes().contains(dNode)) {
+                    Node parentNode = (Node) node.eContainer();
+                    LayoutConstraint parentLayoutConstraint = parentNode.getLayoutConstraint();
+                    if (parentLayoutConstraint instanceof Bounds) {
+                        Bounds parentBounds = (Bounds) parentLayoutConstraint;
+                        int position = CanonicalDBorderItemLocator.findClosestSideOfParent(new Rectangle(gmfBounds.getX(), gmfBounds.getY(), gmfBounds.getWidth(), gmfBounds.getHeight()),
+                                new Rectangle(parentBounds.getX(), parentBounds.getY(), parentBounds.getWidth(), parentBounds.getHeight()));
+                        updateLocation(location, position, parentBounds, gmfBounds);
+                    }
+                }
+            }
+        }
+        return location;
+    }
+
+    private static void updateLocation(Point location, int position, Bounds parentBounds, Bounds gmfBounds) {
+        switch (position) {
+        case PositionConstants.NORTH:
+        case PositionConstants.SOUTH:
+            if (location.x == 0) {
+                location.x += (parentBounds.getWidth() - gmfBounds.getWidth()) / 2;
+            }
+            break;
+        case PositionConstants.WEST:
+        case PositionConstants.EAST:
+            if (location.y == 0) {
+                location.y += (parentBounds.getHeight() - gmfBounds.getHeight()) / 2;
+            }
+            break;
+        default:
+            break;
+        }
     }
 
     /**
@@ -130,58 +182,6 @@ public final class GMFHelper {
             result = getAbsoluteBounds((Edge) view);
         }
         return result;
-    }
-
-    /**
-     * Compute the location of a GMF node.
-     * 
-     * @param node
-     *            the node whose location to compute.
-     * @return the location of the node.
-     */
-    public static Point getLocation(Node node) {
-        Point location = new Point(0, 0);
-        LayoutConstraint layoutConstraint = node.getLayoutConstraint();
-        if (layoutConstraint instanceof Bounds) {
-            Bounds gmfBounds = (Bounds) layoutConstraint;
-            location.x = gmfBounds.getX();
-            location.y = gmfBounds.getY();
-            // manage location of bordered node with closest side
-            if (node.getElement() instanceof DNode && node.getElement().eContainer() instanceof AbstractDNode) {
-                DNode dNode = (DNode) node.getElement();
-                AbstractDNode parentAbstractDNode = (AbstractDNode) dNode.eContainer();
-                if (parentAbstractDNode.getOwnedBorderedNodes().contains(dNode)) {
-                    Node parentNode = (Node) node.eContainer();
-                    LayoutConstraint parentLayoutConstraint = parentNode.getLayoutConstraint();
-                    if (parentLayoutConstraint instanceof Bounds) {
-                        Bounds parentBounds = (Bounds) parentLayoutConstraint;
-                        int position = CanonicalDBorderItemLocator.findClosestSideOfParent(new Rectangle(gmfBounds.getX(), gmfBounds.getY(), gmfBounds.getWidth(), gmfBounds.getHeight()),
-                                new Rectangle(parentBounds.getX(), parentBounds.getY(), parentBounds.getWidth(), parentBounds.getHeight()));
-                        updateLocation(location, position, parentBounds, gmfBounds);
-                    }
-                }
-            }
-        }
-        return location;
-    }
-
-    private static void updateLocation(Point location, int position, Bounds parentBounds, Bounds gmfBounds) {
-        switch (position) {
-        case PositionConstants.NORTH:
-        case PositionConstants.SOUTH:
-            if (location.x == 0) {
-                location.x += (parentBounds.getWidth() - gmfBounds.getWidth()) / 2;
-            }
-            break;
-        case PositionConstants.WEST:
-        case PositionConstants.EAST:
-            if (location.y == 0) {
-                location.y += (parentBounds.getHeight() - gmfBounds.getHeight()) / 2;
-            }
-            break;
-        default:
-            break;
-        }
     }
 
     /**

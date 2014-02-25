@@ -32,8 +32,8 @@ import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.StyleFactory;
 import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.description.provider.ConditionalStyleDescriptionItemProvider;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This is the item provider adapter for a
@@ -224,7 +224,7 @@ public class ConditionalNodeStyleDescriptionItemProvider extends ConditionalStyl
      */
     @Override
     public ResourceLocator getResourceLocator() {
-        return SiriusEditPlugin.INSTANCE;
+        return DiagramUIPlugin.INSTANCE;
     }
 
 }

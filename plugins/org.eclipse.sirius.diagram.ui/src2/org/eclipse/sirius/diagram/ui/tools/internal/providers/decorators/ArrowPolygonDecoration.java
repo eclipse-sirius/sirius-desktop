@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.providers.decorators;
+package org.eclipse.sirius.diagram.ui.tools.internal.providers.decorators;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.PolygonDecoration;

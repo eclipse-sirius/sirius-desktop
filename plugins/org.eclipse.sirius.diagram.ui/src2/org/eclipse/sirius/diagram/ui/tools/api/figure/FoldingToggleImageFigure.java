@@ -15,10 +15,10 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.business.internal.query.EdgeTargetQuery;
-import org.eclipse.sirius.diagram.edit.api.part.IAbstractDiagramNodeEditPart;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.internal.commands.ToggleFoldingStateCommand;
+import org.eclipse.sirius.diagram.ui.business.internal.query.EdgeTargetQuery;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.internal.commands.ToggleFoldingStateCommand;
 import org.eclipse.sirius.ext.draw2d.figure.ActionTriggerImageFigure;
 import org.eclipse.swt.graphics.Image;
 
@@ -41,9 +41,9 @@ public class FoldingToggleImageFigure extends ActionTriggerImageFigure {
      */
     protected static final int FOLD_ICON_HEIGHT = FOLD_ICON_WIDTH;
 
-    private static final Image MINUS_IMAGE = SiriusDiagramEditorPlugin.getInstance().getImage(SiriusDiagramEditorPlugin.getBundledImageDescriptor("/icons/collapse.gif"));
+    private static final Image MINUS_IMAGE = DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor("/icons/collapse.gif"));
 
-    private static final Image PLUS_IMAGE = SiriusDiagramEditorPlugin.getInstance().getImage(SiriusDiagramEditorPlugin.getBundledImageDescriptor("/icons/expand.gif"));
+    private static final Image PLUS_IMAGE = DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor("/icons/expand.gif"));
 
     private final IAbstractDiagramNodeEditPart part;
 

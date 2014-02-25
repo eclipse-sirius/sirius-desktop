@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.policies;
+package org.eclipse.sirius.diagram.ui.internal.edit.policies;
 
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
@@ -17,14 +17,14 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderItemEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramBorderNodeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramNameEditPart;
-import org.eclipse.sirius.diagram.graphical.edit.policies.SpecificBorderItemSelectionEditPolicy;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SpecificBorderItemSelectionEditPolicy;
 
 /**
  * The common LayoutEditPolicy for all bordered nodes.
  */
-public class BorderedNodeLayoutEditPolicy extends org.eclipse.sirius.diagram.tools.api.policies.LayoutEditPolicy {
+public class BorderedNodeLayoutEditPolicy extends org.eclipse.sirius.diagram.ui.tools.api.policies.LayoutEditPolicy {
     /**
      * {@inheritDoc}
      */

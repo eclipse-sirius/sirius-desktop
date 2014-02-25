@@ -36,7 +36,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget.Direction;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;

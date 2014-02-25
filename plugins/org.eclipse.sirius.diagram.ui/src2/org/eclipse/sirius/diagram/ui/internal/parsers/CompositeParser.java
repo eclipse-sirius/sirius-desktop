@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.parsers;
+package org.eclipse.sirius.diagram.ui.internal.parsers;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;

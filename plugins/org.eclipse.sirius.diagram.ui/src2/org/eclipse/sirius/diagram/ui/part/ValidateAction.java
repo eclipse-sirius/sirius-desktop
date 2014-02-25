@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.part;
+package org.eclipse.sirius.diagram.ui.part;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -48,10 +48,11 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
-import org.eclipse.sirius.diagram.internal.providers.SiriusMarkerNavigationProvider;
-import org.eclipse.sirius.diagram.internal.providers.SiriusValidationProvider;
-import org.eclipse.sirius.diagram.tools.internal.marker.SiriusMarkerNavigationProviderSpec;
+import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.internal.providers.SiriusMarkerNavigationProvider;
+import org.eclipse.sirius.diagram.ui.internal.providers.SiriusValidationProvider;
+import org.eclipse.sirius.diagram.ui.tools.internal.marker.SiriusMarkerNavigationProviderSpec;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.tools.api.validation.constraint.RuleWrappingStatus;
@@ -158,9 +159,10 @@ public class ValidateAction extends Action {
     }
 
     /**
-     * @was-generated NOT it is not necessary to call the createMarkers operation
-     *            since the markers are automatically added for EMF validation. <br/>
-     *            Validation is run on view elements and its children.<br/>
+     * @was-generated NOT it is not necessary to call the createMarkers
+     *                operation since the markers are automatically added for
+     *                EMF validation. <br/>
+     *                Validation is run on view elements and its children.<br/>
      */
     private static void validate(DiagramEditPart diagramEditPart, View view) {
         IFile target = getFileToMark(diagramEditPart, view);
@@ -201,7 +203,6 @@ public class ValidateAction extends Action {
      * the user session when clicking on the marker if the corresponding session
      * is closed (referenced analysis cases or CDO for which the main aird is
      * local file with information concerning the server).
-     * 
      * @was-generated NOT
      */
     private static IFile getFileToMark(DiagramEditPart diagramEditPart, View view) {

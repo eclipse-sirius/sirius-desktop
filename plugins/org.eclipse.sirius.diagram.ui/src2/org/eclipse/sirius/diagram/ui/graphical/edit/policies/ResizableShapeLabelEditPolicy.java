@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.graphical.edit.policies;
+package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import org.eclipse.draw2d.ConnectionLocator;
 import org.eclipse.draw2d.Graphics;
@@ -33,7 +33,7 @@ import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.PointListUtilities;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.internal.edit.parts.AbstractDEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
 
 /**
  * Edit policy which supports TARGET and SOURCE label connections for feedback

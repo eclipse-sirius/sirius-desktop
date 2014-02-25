@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.migration;
+package org.eclipse.sirius.diagram.ui.business.internal.migration;
 
 import java.util.Iterator;
 import java.util.List;
@@ -21,10 +21,10 @@ import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
-import org.eclipse.sirius.diagram.business.api.query.ViewQuery;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.osgi.framework.Version;
 
 import com.google.common.base.Predicate;

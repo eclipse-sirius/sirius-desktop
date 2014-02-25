@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.view;
+package org.eclipse.sirius.diagram.ui.business.internal.view;
 
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.sirius.diagram.DEdge;

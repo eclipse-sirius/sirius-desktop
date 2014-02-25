@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.menu;
+package org.eclipse.sirius.diagram.ui.tools.internal.menu;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -50,10 +50,10 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.ImagesPath;
 import org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil;
-import org.eclipse.sirius.diagram.tools.internal.commands.NavigateToCommand;
-import org.eclipse.sirius.diagram.tools.internal.commands.emf.EMFCommandFactoryUI;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
+import org.eclipse.sirius.diagram.ui.tools.internal.commands.NavigateToCommand;
+import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.EMFCommandFactoryUI;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -253,7 +253,7 @@ public class NavigateToMenuContribution implements IContributionItemProvider {
             imageDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(labelProvider.getImage(representation));
         }
         if (imageDescriptor == null) {
-            imageDescriptor = SiriusTransPlugin.getBundledImageDescriptor(ImagesPath.LINK_TO_VIEWPOINT_IMG);
+            imageDescriptor = SiriusTransPlugin.getBundledImageDescriptor(DiagramImagesPath.LINK_TO_VIEWPOINT_IMG);
         }
 
         return new Action(label, imageDescriptor) {

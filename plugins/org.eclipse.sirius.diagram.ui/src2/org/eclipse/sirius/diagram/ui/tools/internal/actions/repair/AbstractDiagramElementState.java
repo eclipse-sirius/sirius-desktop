@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions.repair;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.repair;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -34,11 +34,11 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.GraphicalFilter;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilterHelper;
-import org.eclipse.sirius.diagram.business.api.image.ImageSelectorService;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.edit.api.part.DesignerEditPartHelper;
-import org.eclipse.sirius.diagram.tools.api.migration.DiagramCrossReferencer;
+import org.eclipse.sirius.diagram.ui.business.api.image.ImageSelectorService;
+import org.eclipse.sirius.diagram.ui.edit.api.part.DesignerEditPartHelper;
+import org.eclipse.sirius.diagram.ui.tools.api.migration.DiagramCrossReferencer;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.Style;

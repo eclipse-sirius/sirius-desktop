@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.figure;
+package org.eclipse.sirius.diagram.ui.tools.internal.figure;
 
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Graphics;
@@ -16,9 +16,9 @@ import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.BorderedStyle;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IContainerLabelOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.LabelAlignment;
 import org.eclipse.sirius.viewpoint.LabelStyle;

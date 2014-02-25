@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.edit.api.part;
+package org.eclipse.sirius.diagram.ui.edit.api.part;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.gef.editparts.ZoomManager;

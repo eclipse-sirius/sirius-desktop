@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions;
 
 import org.eclipse.gef.editparts.ZoomManager;
 import org.eclipse.gef.ui.actions.ZoomComboContributionItem;
@@ -16,11 +16,11 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.l10n.DiagramUIPluginImages;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.TabbarZoomAction;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.TabbarZoomInAction;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.TabbarZoomOutAction;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions.expressions.DDiagramTabbarExpression;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarZoomAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarZoomInAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarZoomOutAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.expressions.DDiagramTabbarExpression;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.ui.IPartListener;

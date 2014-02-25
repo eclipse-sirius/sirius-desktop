@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.edit.api.part;
+package org.eclipse.sirius.diagram.ui.edit.api.part;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -57,21 +57,21 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
-import org.eclipse.sirius.diagram.edit.internal.part.CommonEditPartOperation;
-import org.eclipse.sirius.diagram.edit.internal.part.DiagramElementEditPartOperation;
-import org.eclipse.sirius.diagram.graphical.edit.policies.SiriusPopupBarEditPolicy;
-import org.eclipse.sirius.diagram.tools.api.command.GMFCommandWrapper;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.tools.api.permission.EditPartAuthorityListener;
-import org.eclipse.sirius.diagram.tools.internal.editor.DDiagramEditorImpl;
-import org.eclipse.sirius.diagram.tools.internal.ui.RubberbandDragTracker;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusPopupBarEditPolicy;
+import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.AbstractEdgeViewOrdering;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.ViewOrdering;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.ViewOrderingHint;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.ViewOrderingProvider;
+import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListener;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.InitializeHiddenElementsCommand;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.ordering.ViewOrderingProviderRegistry;
 import org.eclipse.sirius.diagram.ui.tools.internal.providers.decorators.SubDiagramDecoratorProvider;
+import org.eclipse.sirius.diagram.ui.tools.internal.ui.RubberbandDragTracker;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ext.base.Option;

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.graphical.edit.internal.policies.validators;
+package org.eclipse.sirius.diagram.ui.graphical.edit.internal.policies.validators;
 
 import java.util.HashSet;
 import java.util.Iterator;

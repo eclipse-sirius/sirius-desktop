@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.graphical.edit.styles;
+package org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.styles;
 
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.IFigure;
@@ -17,12 +17,12 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.ResizeKind;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.BorderItemLocatorProvider;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.DefaultBorderItemLocatorProvider;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.SimpleStyleConfiguration;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirDefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.BorderItemLocatorProvider;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.DefaultBorderItemLocatorProvider;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.SimpleStyleConfiguration;
 
 /**
  * A
@@ -53,7 +53,7 @@ class SquareStyleConfiguration extends SimpleStyleConfiguration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.SimpleStyleConfiguration#adaptNodeLabel(org.eclipse.sirius.viewpoint.DNode,
+     * @see org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.SimpleStyleConfiguration#adaptNodeLabel(org.eclipse.sirius.viewpoint.DNode,
      *      org.eclipse.sirius.common.ui.tools.api.draw2d.ui.figures.SiriusWrapLabel)
      */
     @Override
@@ -73,7 +73,7 @@ class SquareStyleConfiguration extends SimpleStyleConfiguration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.SimpleStyleConfiguration#adaptViewNodeSizeWithLabel(org.eclipse.sirius.viewpoint.DNode,
+     * @see org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.SimpleStyleConfiguration#adaptViewNodeSizeWithLabel(org.eclipse.sirius.viewpoint.DNode,
      *      org.eclipse.sirius.common.ui.tools.api.draw2d.ui.figures.SiriusWrapLabel,
      *      int)
      */
@@ -97,7 +97,7 @@ class SquareStyleConfiguration extends SimpleStyleConfiguration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.SimpleStyleConfiguration#getAnchorProvider()
+     * @see org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.SimpleStyleConfiguration#getAnchorProvider()
      */
     @Override
     public AnchorProvider getAnchorProvider() {

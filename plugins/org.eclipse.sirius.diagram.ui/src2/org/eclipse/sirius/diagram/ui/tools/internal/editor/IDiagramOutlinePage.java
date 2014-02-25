@@ -8,10 +8,10 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor;
 
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 
 /**
  * This interface store Resources handle for {@link DiagramOutlinePage}.
@@ -27,9 +27,9 @@ public interface IDiagramOutlinePage {
     String OUTLINE_VIEW_OVERVIEW_TIP_TEXT = "Overview"; //$NON-NLS-1$
 
     /** The outline icon descriptor. */
-    ImageDescriptor DESC_OUTLINE = SiriusDiagramEditorPlugin.getBundledImageDescriptor("icons/outline.gif");
+    ImageDescriptor DESC_OUTLINE = DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/outline.gif");
 
     /** the overview icon descriptor. */
-    ImageDescriptor DESC_OVERVIEW = SiriusDiagramEditorPlugin.getBundledImageDescriptor("icons/overview.gif");
+    ImageDescriptor DESC_OVERVIEW = DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/overview.gif");
 
 }

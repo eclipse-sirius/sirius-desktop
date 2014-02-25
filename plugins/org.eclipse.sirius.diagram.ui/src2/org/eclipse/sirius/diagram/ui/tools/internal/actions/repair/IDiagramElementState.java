@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions.repair;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.repair;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;

@@ -51,15 +51,15 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.business.api.query.ViewQuery;
-import org.eclipse.sirius.diagram.business.internal.query.DNodeQuery;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.BorderItemLocatorProvider;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration;
-import org.eclipse.sirius.diagram.tools.api.part.DiagramEditPartService;
-import org.eclipse.sirius.diagram.tools.internal.graphical.edit.DiagramCreationUtil;
+import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.BorderItemLocatorProvider;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
+import org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService;
+import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.DiagramCreationUtil;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.LayoutUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -75,11 +75,6 @@ import org.eclipse.swt.widgets.Shell;
 public final class LayoutUtils {
 
     /**
-     * Default width.
-     */
-    public static final int DEFAULT_WIDTH = 10;
-
-    /**
      * Scale factor for width and height from diagram node size to draw2d
      * bounds.
      */
@@ -89,6 +84,11 @@ public final class LayoutUtils {
      * The default container dimension.
      */
     public static final Dimension DEFAULT_CONTAINER_DIMENSION = new Dimension(150, 70);
+
+    /**
+     * Default width.
+     */
+    public static final int DEFAULT_WIDTH = 10;
 
     private static final int TOP_MARGIN = 50;
 
@@ -129,7 +129,7 @@ public final class LayoutUtils {
             mainFigure.getBounds().height = defaultDimension.height;
             mainFigure.getBounds().width = defaultDimension.width;
         } else if (mainFigure.getBounds().getSize().height == 0 && mainFigure.getBounds().getSize().width == 0 && owner instanceof DDiagramElementContainer) {
-            final Dimension defaultDimension = DEFAULT_CONTAINER_DIMENSION;
+            final Dimension defaultDimension = LayoutUtils.DEFAULT_CONTAINER_DIMENSION;
             mainFigure.getBounds().height = defaultDimension.height;
             mainFigure.getBounds().width = defaultDimension.width;
         }

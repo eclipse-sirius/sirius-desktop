@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.parts;
+package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -51,20 +51,20 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.edit.internal.part.DCompartmentConnectionRefreshMgr;
-import org.eclipse.sirius.diagram.edit.internal.part.DiagramElementEditPartOperation;
-import org.eclipse.sirius.diagram.edit.internal.part.SelectionCommandAppender;
-import org.eclipse.sirius.diagram.graphical.edit.policies.AirXYLayoutEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.LaunchToolEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.NodeCreationEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.SiriusContainerDropPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.SiriusPopupBarEditPolicy;
-import org.eclipse.sirius.diagram.internal.edit.policies.DNodeContainerViewNodeContainerCompartmentItemSemanticEditPolicy;
-import org.eclipse.sirius.diagram.internal.edit.policies.canonicals.DumnySiriusCanonicalEditPolicy;
-import org.eclipse.sirius.diagram.internal.operation.RegionContainerUpdateLayoutOperation;
-import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
-import org.eclipse.sirius.diagram.tools.internal.graphical.edit.policies.ContainerCompartmentNodeEditPolicy;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DCompartmentConnectionRefreshMgr;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.SelectionCommandAppender;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AirXYLayoutEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LaunchToolEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.NodeCreationEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusContainerDropPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusPopupBarEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeContainerViewNodeContainerCompartmentItemSemanticEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.canonicals.DumnySiriusCanonicalEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.operation.RegionContainerUpdateLayoutOperation;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.InvisibleResizableCompartmentFigure;
+import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
+import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.ContainerCompartmentNodeEditPolicy;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;

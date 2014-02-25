@@ -9,7 +9,7 @@
  *    IBM Corporation - initial API and implementation 
  *    Michael Golubev (Borland) - Fix for Bug 261192
  ****************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.commands;
+package org.eclipse.sirius.diagram.ui.tools.internal.commands;
 
 import java.util.List;
 
@@ -45,7 +45,7 @@ import org.eclipse.gmf.runtime.notation.View;
  * are passed in as the parameter.
  * 
  * Duplicate class for
- * {@link org.eclipse.sirius.diagram.graphical.edit.policies.SiriusContainerEditPolicy}
+ * {@link org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusContainerEditPolicy}
  * needs.
  * 
  * @author carson_li

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions;
 
 import org.eclipse.gef.Disposable;
 import org.eclipse.gef.editparts.ZoomListener;

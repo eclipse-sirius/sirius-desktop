@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.graphical.edit.policies;
+package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -39,8 +39,8 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
-import org.eclipse.sirius.diagram.internal.refresh.diagram.ViewPropertiesSynchronizer;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSynchronizer;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;

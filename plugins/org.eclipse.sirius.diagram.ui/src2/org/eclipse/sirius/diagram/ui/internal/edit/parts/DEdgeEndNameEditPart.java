@@ -8,13 +8,13 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.parts;
+package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import org.eclipse.draw2d.ConnectionLocator;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 
 /**
  * @was-generated
@@ -30,7 +30,7 @@ public class DEdgeEndNameEditPart extends AbstractDEdgeNameEditPart {
      * @not-generated
      */
     static {
-        registerSnapBackPosition(SiriusVisualIDRegistry.getType(org.eclipse.sirius.diagram.internal.edit.parts.DEdgeEndNameEditPart.VISUAL_ID), new Point(0, 10));
+        registerSnapBackPosition(SiriusVisualIDRegistry.getType(org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart.VISUAL_ID), new Point(0, 10));
     }
 
     /**

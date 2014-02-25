@@ -8,15 +8,15 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.graphical.figures;
+package org.eclipse.sirius.diagram.ui.graphical.figures;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Viewport;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.sirius.diagram.tools.api.draw2d.ui.figures.FigureUtilities;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
+import org.eclipse.sirius.ext.draw2d.figure.FigureUtilities;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 /**
  * Override GMF LayoutHelper to use the center of the visible part of the

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor.tabbar;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar;
 
 import java.util.Collection;
 import java.util.List;
@@ -23,8 +23,8 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.internal.handler.ChangeFilterActivation;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.internal.handler.ChangeFilterActivation;
 import org.eclipse.swt.graphics.Image;
 
 /**
@@ -35,7 +35,7 @@ import org.eclipse.swt.graphics.Image;
 public class FiltersContributionItem extends AbstractMenuContributionItem {
 
     /** The filters icon descriptor. */
-    private static final ImageDescriptor DESC_FILTER = SiriusDiagramEditorPlugin.getBundledImageDescriptor("icons/filters.gif");
+    private static final ImageDescriptor DESC_FILTER = DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/filters.gif");
 
     /**
      * {@inheritDoc}
@@ -57,11 +57,11 @@ public class FiltersContributionItem extends AbstractMenuContributionItem {
             if (diagram instanceof DDiagram) {
                 super.setDiagram((DDiagram) diagram);
                 if (!((DDiagram) diagram).getActivatedFilters().isEmpty()) {
-                    return SiriusDiagramEditorPlugin.getDecoratedCheckedImage(DESC_FILTER);
+                    return DiagramUIPlugin.Implementation.getDecoratedCheckedImage(DESC_FILTER);
                 }
             }
         }
-        return SiriusDiagramEditorPlugin.getInstance().getImage(DESC_FILTER);
+        return DiagramUIPlugin.getPlugin().getImage(DESC_FILTER);
     }
 
     /**

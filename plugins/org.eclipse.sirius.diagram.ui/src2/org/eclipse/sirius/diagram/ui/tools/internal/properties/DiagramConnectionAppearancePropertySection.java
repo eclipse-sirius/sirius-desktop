@@ -36,9 +36,9 @@ import org.eclipse.sirius.diagram.BracketEdgeStyle;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
-import org.eclipse.sirius.diagram.internal.refresh.diagram.ViewPropertiesSynchronizer;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
+import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSynchronizer;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.ColorPalettePopup;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
@@ -165,7 +165,7 @@ public class DiagramConnectionAppearancePropertySection extends ConnectionAppear
         final Composite toolBar = super.createFontsGroup(parent);
 
         final String path = "icons/undo_edit.gif";
-        final Image image = SiriusDiagramEditorPlugin.getInstance().getBundledImage(path);
+        final Image image = DiagramUIPlugin.getPlugin().getBundledImage(path);
 
         resetStylePropertiesToDefaultValuesButton = new Button(toolBar, SWT.PUSH);
         resetStylePropertiesToDefaultValuesButton.setToolTipText(ResetStylePropertiesToDefaultValuesAction.ACTION_NAME);

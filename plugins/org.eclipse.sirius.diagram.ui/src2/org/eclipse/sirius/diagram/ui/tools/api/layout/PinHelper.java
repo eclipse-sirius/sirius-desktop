@@ -24,7 +24,7 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;

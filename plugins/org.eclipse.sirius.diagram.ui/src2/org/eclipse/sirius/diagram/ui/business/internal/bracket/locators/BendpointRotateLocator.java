@@ -8,11 +8,11 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.bracket.locators;
+package org.eclipse.sirius.diagram.ui.business.internal.bracket.locators;
 
 import org.eclipse.draw2d.BendpointLocator;
 import org.eclipse.draw2d.Connection;
-import org.eclipse.sirius.diagram.business.internal.bracket.BracketConnectionQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.bracket.BracketConnectionQuery;
 
 /**
  * A BendpointHandle that is used to rotate an existing bendpoint.

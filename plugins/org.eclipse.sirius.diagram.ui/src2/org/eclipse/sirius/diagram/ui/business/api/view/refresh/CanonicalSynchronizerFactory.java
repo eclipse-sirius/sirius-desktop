@@ -8,10 +8,10 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.api.view.refresh;
+package org.eclipse.sirius.diagram.ui.business.api.view.refresh;
 
 import org.eclipse.gmf.runtime.notation.Diagram;
-import org.eclipse.sirius.diagram.internal.refresh.factory.CanonicalSynchronizerFactoryImpl;
+import org.eclipse.sirius.diagram.ui.internal.refresh.factory.CanonicalSynchronizerFactoryImpl;
 
 /**
  * Factory for {@link CanonicalSynchronizer}.

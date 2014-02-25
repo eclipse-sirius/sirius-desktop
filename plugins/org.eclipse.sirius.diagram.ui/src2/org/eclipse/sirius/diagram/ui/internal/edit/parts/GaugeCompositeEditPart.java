@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.parts;
+package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import java.util.Iterator;
 
@@ -30,10 +30,10 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.GaugeCompositeStyle;
 import org.eclipse.sirius.diagram.GaugeSection;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractNotSelectableShapeNodeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramBorderNodeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IStyleEditPart;
-import org.eclipse.sirius.diagram.edit.internal.part.DiagramBorderNodeEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractNotSelectableShapeNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramBorderNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirStyleDefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GaugeCompositeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GaugeSectionFigure;
@@ -77,7 +77,7 @@ public class GaugeCompositeEditPart extends AbstractNotSelectableShapeNodeEditPa
      * @not-generated
      */
     protected LayoutEditPolicy createLayoutEditPolicy() {
-        final LayoutEditPolicy lep = new org.eclipse.sirius.diagram.tools.api.policies.LayoutEditPolicy() {
+        final LayoutEditPolicy lep = new org.eclipse.sirius.diagram.ui.tools.api.policies.LayoutEditPolicy() {
 
             protected EditPolicy createChildEditPolicy(final EditPart child) {
                 EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);

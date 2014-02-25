@@ -8,13 +8,14 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions;
 
 import org.eclipse.gmf.runtime.common.ui.action.IDisposableAction;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.RouterMenuManager;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.TabbarRouterAction;
 import org.eclipse.ui.IWorkbenchPage;
 
 /**
@@ -66,9 +67,9 @@ public class TabbarRouterMenuManager extends RouterMenuManager {
     public void setVisible(boolean visible) {
         super.setVisible(visible);
         if (isEmpty() && visible) {
-            add(org.eclipse.sirius.diagram.tools.internal.actions.TabbarRouterAction.createRectilinearRouterAction(page));
-            add(org.eclipse.sirius.diagram.tools.internal.actions.TabbarRouterAction.createObliqueRouterAction(page));
-            add(org.eclipse.sirius.diagram.tools.internal.actions.TabbarRouterAction.createTreeRouterAction(page));
+            add(TabbarRouterAction.createRectilinearRouterAction(page));
+            add(TabbarRouterAction.createObliqueRouterAction(page));
+            add(TabbarRouterAction.createTreeRouterAction(page));
         }
     }
 }

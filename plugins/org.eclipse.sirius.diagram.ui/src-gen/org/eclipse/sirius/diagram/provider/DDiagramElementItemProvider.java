@@ -30,10 +30,10 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.provider.DRepresentationElementItemProvider;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This is the item provider adapter for a
@@ -239,7 +239,7 @@ public class DDiagramElementItemProvider extends DRepresentationElementItemProvi
      */
     @Override
     public ResourceLocator getResourceLocator() {
-        return SiriusEditPlugin.INSTANCE;
+        return DiagramUIPlugin.INSTANCE;
     }
 
 }

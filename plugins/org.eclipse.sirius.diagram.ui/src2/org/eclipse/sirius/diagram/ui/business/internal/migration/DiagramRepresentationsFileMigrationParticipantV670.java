@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.migration;
+package org.eclipse.sirius.diagram.ui.business.internal.migration;
 
 import java.util.Iterator;
 import java.util.List;
@@ -37,22 +37,22 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.GraphicalFilter;
 import org.eclipse.sirius.diagram.IndirectlyCollapseFilter;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
-import org.eclipse.sirius.diagram.edit.internal.part.PortLayoutHelper;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNode2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNode3EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNode4EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainer2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeList2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.NotationViewIDs;
-import org.eclipse.sirius.diagram.internal.refresh.GMFHelper;
-import org.eclipse.sirius.diagram.internal.refresh.borderednode.CanonicalDBorderItemLocator;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IBorderItemOffsets;
+import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode3EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.NotationViewIDs;
+import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
+import org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBorderItemLocator;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.osgi.framework.Version;
 
 import com.google.common.base.Predicate;

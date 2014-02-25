@@ -16,7 +16,7 @@ import org.eclipse.draw2d.RoundedRectangle;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
 import org.eclipse.sirius.diagram.BackgroundStyle;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IContainerLabelOffsets;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
 import org.eclipse.swt.graphics.Color;
 
 /**

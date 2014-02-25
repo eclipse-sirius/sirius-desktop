@@ -8,13 +8,13 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.view.factories;
+package org.eclipse.sirius.diagram.ui.internal.view.factories;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.ui.view.factories.ConnectionViewFactory;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.internal.refresh.diagram.ViewPropertiesSynchronizer;
+import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSynchronizer;
 import org.eclipse.sirius.viewpoint.DStylizable;
 
 /**

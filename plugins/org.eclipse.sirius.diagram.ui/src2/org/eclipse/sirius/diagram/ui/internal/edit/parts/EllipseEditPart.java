@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.parts;
+package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import org.eclipse.draw2d.Ellipse;
 import org.eclipse.draw2d.IFigure;
@@ -26,11 +26,11 @@ import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractNotSelectableShapeNodeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramBorderNodeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IStyleEditPart;
-import org.eclipse.sirius.diagram.edit.internal.part.DiagramBorderNodeEditPartOperation;
-import org.eclipse.sirius.diagram.edit.internal.part.DiagramNodeEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractNotSelectableShapeNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramBorderNodeEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirStyleDefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ODesignEllipseFigure;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
@@ -120,7 +120,7 @@ public class EllipseEditPart extends AbstractNotSelectableShapeNodeEditPart impl
      * @not-generated
      */
     protected LayoutEditPolicy createLayoutEditPolicy() {
-        LayoutEditPolicy lep = new org.eclipse.sirius.diagram.tools.api.policies.LayoutEditPolicy() {
+        LayoutEditPolicy lep = new org.eclipse.sirius.diagram.ui.tools.api.policies.LayoutEditPolicy() {
 
             protected EditPolicy createChildEditPolicy(EditPart child) {
                 EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);

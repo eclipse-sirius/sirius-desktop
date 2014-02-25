@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions;
 
 import org.eclipse.gef.Disposable;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
@@ -17,8 +17,8 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.IToolBarContextService;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.IToolBarContextService;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.ui.ISelectionListener;

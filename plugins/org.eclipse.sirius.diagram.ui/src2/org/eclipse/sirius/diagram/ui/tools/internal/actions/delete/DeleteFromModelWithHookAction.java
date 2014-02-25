@@ -10,7 +10,7 @@
  *    Obeo - Adaptations.
  ****************************************************************************/
 
-package org.eclipse.sirius.diagram.tools.internal.actions.delete;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.delete;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -41,12 +41,12 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.ImagesPath;
 import org.eclipse.sirius.diagram.business.api.helper.delete.DeleteHookHelper;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
-import org.eclipse.sirius.diagram.part.SiriusDiagramActionBarContributor;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramActionBarContributor;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
@@ -119,8 +119,8 @@ public class DeleteFromModelWithHookAction extends DeleteFromModelAction {
         super.init();
         setToolTipText(SiriusDiagramActionBarContributor.DELETE_FROM_MODEL);
         setAccelerator(KEY_BINDING);
-        setImageDescriptor(SiriusDiagramEditorPlugin.getBundledImageDescriptor(ImagesPath.DELETE_FROM_MODEL_ICON));
-        setHoverImageDescriptor(SiriusDiagramEditorPlugin.getBundledImageDescriptor(ImagesPath.DELETE_FROM_MODEL_ICON));
+        setImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETE_FROM_MODEL_ICON));
+        setHoverImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETE_FROM_MODEL_ICON));
         // Setting disabled image descriptor to null, so that it can be computed
         // from the new image descriptor
         setDisabledImageDescriptor(null);

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.providers.decorators;
+package org.eclipse.sirius.diagram.ui.tools.internal.providers.decorators;
 
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.common.core.service.AbstractProvider;
@@ -16,7 +16,7 @@ import org.eclipse.gmf.runtime.common.core.service.IOperation;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.CreateDecoratorsOperation;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorProvider;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 
 /**
  * This decorator is installed on SiriusElements edit parts. It display an

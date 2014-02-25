@@ -10,7 +10,7 @@
  *    Maxime Porhel (Obeo) <maxime.porhel@obeo.fr> - Trac bug #1502 : Print / PrintPreview freezes Eclipse : use of SiriusDiagramWithPrintGlobalActionHandler.
  *    Maxime Porhel (Obeo) <maxime.porhel@obeo.fr> - Trac bug #1502 : Renaming and checkstyle.
  ****************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.print;
+package org.eclipse.sirius.diagram.ui.tools.internal.print;
 
 import java.util.Hashtable;
 

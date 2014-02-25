@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.part;
+package org.eclipse.sirius.diagram.ui.part;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EAnnotation;
@@ -19,39 +19,40 @@ import org.eclipse.sirius.diagram.BracketEdgeStyle;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.graphical.edit.part.specific.BracketEdgeEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.BundledImageEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.CustomStyleEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeBeginNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeEndNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNode2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNode3EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNode4EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainer2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerName2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeList2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListElementEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListName2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListViewNodeListCompartment2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListViewNodeListCompartmentEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DotEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.EllipseEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.GaugeCompositeEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.LozengeEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.NotationViewIDs;
-import org.eclipse.sirius.diagram.internal.edit.parts.NoteEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.SquareEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.WorkspaceImageEditPart;
+import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.graphical.edit.part.specific.BracketEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.BundledImageEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.CustomStyleEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode3EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerName2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListName2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListViewNodeListCompartment2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListViewNodeListCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DotEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.EllipseEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.GaugeCompositeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.LozengeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.NotationViewIDs;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.NoteEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.SquareEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.WorkspaceImageEditPart;
 import org.eclipse.sirius.viewpoint.Style;
 
 /**
@@ -79,7 +80,7 @@ public class SiriusVisualIDRegistry {
                 return -1;
             }
         }
-        return org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry.getVisualID(view.getType());
+        return org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry.getVisualID(view.getType());
     }
 
     /**
@@ -138,13 +139,13 @@ public class SiriusVisualIDRegistry {
         if (domainElement == null) {
             return -1;
         }
-        String containerModelID = org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry.getModelID(containerView);
+        String containerModelID = org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry.getModelID(containerView);
         if (!DDiagramEditPart.MODEL_ID.equals(containerModelID)) {
             return -1;
         }
         int containerVisualID;
         if (DDiagramEditPart.MODEL_ID.equals(containerModelID)) {
-            containerVisualID = org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry.getVisualID(containerView);
+            containerVisualID = org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry.getVisualID(containerView);
         } else {
             if (containerView instanceof Diagram) {
                 containerVisualID = DDiagramEditPart.VISUAL_ID;
@@ -346,13 +347,13 @@ public class SiriusVisualIDRegistry {
      * @was-generated
      */
     public static boolean canCreateNode(View containerView, int nodeVisualID) {
-        String containerModelID = org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry.getModelID(containerView);
+        String containerModelID = org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry.getModelID(containerView);
         if (!DDiagramEditPart.MODEL_ID.equals(containerModelID)) {
             return false;
         }
         int containerVisualID;
         if (DDiagramEditPart.MODEL_ID.equals(containerModelID)) {
-            containerVisualID = org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry.getVisualID(containerView);
+            containerVisualID = org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry.getVisualID(containerView);
         } else {
             if (containerView instanceof Diagram) {
                 containerVisualID = DDiagramEditPart.VISUAL_ID;

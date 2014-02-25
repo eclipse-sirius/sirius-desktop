@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.commands.emf;
+package org.eclipse.sirius.diagram.ui.tools.internal.commands.emf;
 
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.ui.tools.api.command.AbstractSWTCallback;

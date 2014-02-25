@@ -8,13 +8,13 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions.visibility;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility;
 
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
-import org.eclipse.sirius.diagram.tools.internal.graphical.edit.part.DDiagramHelper;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.part.DDiagramHelper;
 
 /**
  * Common behavior for all actions which need to reveal elements with a request

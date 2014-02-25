@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.refresh.listeners;
+package org.eclipse.sirius.diagram.ui.internal.refresh.listeners;
 
 import java.util.Collection;
 import java.util.HashSet;

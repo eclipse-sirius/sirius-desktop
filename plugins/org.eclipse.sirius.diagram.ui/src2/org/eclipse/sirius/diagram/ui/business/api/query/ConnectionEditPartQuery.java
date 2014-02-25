@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.api.query;
+package org.eclipse.sirius.diagram.ui.business.api.query;
 
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;

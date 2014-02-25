@@ -8,12 +8,12 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor.tabbar;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.business.api.query.ViewQuery;
+import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**

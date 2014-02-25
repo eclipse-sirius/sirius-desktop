@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions.delete;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.delete;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -36,12 +36,12 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
-import org.eclipse.sirius.diagram.business.internal.navigation.MappingDefinitionFinder;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramNameEditPart;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
+import org.eclipse.sirius.diagram.ui.business.internal.navigation.MappingDefinitionFinder;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;

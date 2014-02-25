@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.palette;
+package org.eclipse.sirius.diagram.ui.tools.internal.palette;
 
 import java.text.MessageFormat;
 import java.util.Collection;
@@ -37,7 +37,6 @@ import org.eclipse.gef.palette.PaletteStack;
 import org.eclipse.gef.requests.CreationFactory;
 import org.eclipse.gef.tools.CreationTool;
 import org.eclipse.gef.ui.palette.PaletteViewer;
-import org.eclipse.gmf.runtime.diagram.ui.internal.DiagramUIPlugin;
 import org.eclipse.gmf.runtime.diagram.ui.internal.services.palette.PaletteToolEntry;
 import org.eclipse.gmf.runtime.diagram.ui.services.palette.PaletteFactory;
 import org.eclipse.gmf.runtime.notation.Diagram;
@@ -63,8 +62,8 @@ import org.eclipse.sirius.diagram.description.tool.ToolGroup;
 import org.eclipse.sirius.diagram.description.tool.ToolGroupExtension;
 import org.eclipse.sirius.diagram.description.tool.ToolSection;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.PaletteManager;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.ToolFilter;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.ToolFilter;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.description.Environment;
@@ -385,7 +384,7 @@ public class PaletteManagerImpl implements PaletteManager {
      */
     private void replaceNoteAttachmentCreationToolIfNeeded() {
         // Get the container of the Note Attachment Creation Tool
-        String notesContainerLabel = Platform.getResourceString(DiagramUIPlugin.getInstance().getBundle(), "%NoteStack.Label");
+        String notesContainerLabel = Platform.getResourceString(org.eclipse.gmf.runtime.diagram.ui.internal.DiagramUIPlugin.getInstance().getBundle(), "%NoteStack.Label");
         PaletteContainer notesContainer = getPaletteContainer(paletteRoot, notesContainerLabel);
         if (notesContainer != null) {
             // Get the current noteAttachment tool
@@ -407,7 +406,7 @@ public class PaletteManagerImpl implements PaletteManager {
     }
 
     private CreationToolEntry getNoteAttachementToolEntry(final PaletteContainer container) {
-        String noteAttachmentToolLabel = Platform.getResourceString(DiagramUIPlugin.getInstance().getBundle(), "%NoteAttachmentTool.Label");
+        String noteAttachmentToolLabel = Platform.getResourceString(org.eclipse.gmf.runtime.diagram.ui.internal.DiagramUIPlugin.getInstance().getBundle(), "%NoteAttachmentTool.Label");
         for (Object child : container.getChildren()) {
             if (child instanceof CreationToolEntry) {
                 CreationToolEntry paletteToolEntry = (CreationToolEntry) child;
@@ -641,7 +640,7 @@ public class PaletteManagerImpl implements PaletteManager {
         if (StringUtil.isEmpty(iconPath)) {
             iconPath = "icons/obj16/ToolSection.gif";
         }
-        final ImageDescriptor descIcon = SiriusDiagramEditorPlugin.findImageDescriptor(iconPath);
+        final ImageDescriptor descIcon = org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin.Implementation.findImageDescriptor(iconPath);
         if (descIcon != null) {
             paletteDrawner.setSmallIcon(descIcon);
         }

@@ -195,15 +195,6 @@ public class ExternalJavaActionItemProvider extends MenuItemDescriptionItemProvi
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createSwitch()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS,
-                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createCreateView()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS,
-                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createCreateEdgeView()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS,
-                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createNavigation()));
-
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.EXTERNAL_JAVA_ACTION__PARAMETERS, ToolFactory.eINSTANCE.createExternalJavaActionParameter()));
     }
 

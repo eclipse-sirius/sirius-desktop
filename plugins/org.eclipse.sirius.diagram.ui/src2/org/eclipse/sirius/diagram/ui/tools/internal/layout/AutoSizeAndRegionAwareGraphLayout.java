@@ -46,10 +46,10 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.edit.api.part.IAbstractDiagramNodeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramContainerEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 

@@ -28,7 +28,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramColorRegistry;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.figures.TransparentBorder;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
@@ -103,11 +103,11 @@ public class DiagramSemanticElementLockedNotificationFigure extends Ellipse {
 
         if (LockStatus.LOCKED_BY_ME.equals(lockStatus)) {
             this.setForegroundColor(DiagramColorRegistry.getInstance().getColor(BORDER_COLOR_LOCKED_BY_ME));
-            lockStatusImage = SiriusDiagramEditorPlugin.getInstance().getImage(LOCK_BY_ME_IMAGE_DESCRIPTOR);
+            lockStatusImage = DiagramUIPlugin.getPlugin().getImage(LOCK_BY_ME_IMAGE_DESCRIPTOR);
             label = new Label(message, lockStatusImage);
         } else if (LockStatus.LOCKED_BY_OTHER.equals(lockStatus)) {
             this.setForegroundColor(DiagramColorRegistry.getInstance().getColor(BORDER_COLOR_LOCKED_BY_OTHER));
-            lockStatusImage = SiriusDiagramEditorPlugin.getInstance().getImage(LOCK_BY_OTHER_IMAGE_DESCRIPTOR);
+            lockStatusImage = DiagramUIPlugin.getPlugin().getImage(LOCK_BY_OTHER_IMAGE_DESCRIPTOR);
             label = new Label(message, lockStatusImage);
         } else {
             label = new Label(message);

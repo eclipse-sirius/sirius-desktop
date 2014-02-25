@@ -8,13 +8,13 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.policies;
+package org.eclipse.sirius.diagram.ui.internal.edit.policies;
 
 import java.util.List;
 
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.handles.MoveHandle;
-import org.eclipse.sirius.diagram.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
+import org.eclipse.sirius.diagram.ui.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
 
 /**
  * A {@link NonResizableEditPolicy} that forbidds duplication of graphical

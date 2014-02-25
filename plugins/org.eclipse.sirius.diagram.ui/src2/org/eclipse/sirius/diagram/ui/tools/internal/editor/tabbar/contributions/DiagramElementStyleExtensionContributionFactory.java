@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions;
 
 import java.util.Collection;
 
@@ -16,13 +16,13 @@ import org.eclipse.gmf.runtime.diagram.ui.actions.internal.CopyAppearancePropert
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.sirius.diagram.graphical.edit.part.specific.BracketEdgeEditPart;
-import org.eclipse.sirius.diagram.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.style.SetStyleToWorkspaceImageAction;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.TabbarColorPropertyContributionItem;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.TabbarRouterMenuManager;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions.expressions.DDiagramElementTabbarExpression;
+import org.eclipse.sirius.diagram.ui.graphical.edit.part.specific.BracketEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.action.SetStyleToWorkspaceImageContributionItem;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.SetStyleToWorkspaceImageAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarColorPropertyContributionItem;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarRouterMenuManager;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.expressions.DDiagramElementTabbarExpression;
 import org.eclipse.ui.menus.IContributionRoot;
 import org.eclipse.ui.services.IServiceLocator;
 

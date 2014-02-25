@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.edit.helpers;
+package org.eclipse.sirius.diagram.ui.business.internal.edit.helpers;
 
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.ToolbarLayout;

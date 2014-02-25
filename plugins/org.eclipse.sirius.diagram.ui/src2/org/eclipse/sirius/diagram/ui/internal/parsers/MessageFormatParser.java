@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.parsers;
+package org.eclipse.sirius.diagram.ui.internal.parsers;
 
 import java.text.FieldPosition;
 import java.text.MessageFormat;
@@ -26,8 +26,8 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramElementMappingHelper;
 import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
-import org.eclipse.sirius.diagram.part.Messages;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.part.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
@@ -202,7 +202,8 @@ public class MessageFormatParser extends AbstractParser {
             DirectEditLabel directEditLabelTool = ((DDiagramElement) element).getDiagramElementMapping().getLabelDirectEdit();
             if (directEditLabelTool != null && !StringUtil.isEmpty(directEditLabelTool.getInputLabelExpression())) {
                 final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(element);
-                String result = DiagramElementMappingHelper.computeInputLabelOfDirectEditLabel(((DDiagramElement) element), ((DDiagramElement) element).getParentDiagram(), directEditLabelTool, interpreter);
+                String result = DiagramElementMappingHelper.computeInputLabelOfDirectEditLabel(((DDiagramElement) element), ((DDiagramElement) element).getParentDiagram(), directEditLabelTool,
+                        interpreter);
                 return result == null ? "" : result;
             }
         }

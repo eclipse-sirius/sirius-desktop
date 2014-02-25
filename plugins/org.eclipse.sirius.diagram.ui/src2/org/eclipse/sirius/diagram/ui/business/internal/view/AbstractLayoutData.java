@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.view;
+package org.eclipse.sirius.diagram.ui.business.internal.view;
 
 /**
  * An abstract class for all Sirius LayoutData.

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.graphical.edit.policies;
+package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -24,7 +24,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.commands.SetConnectionBendpointsCommand;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 // CHECKSTYLE:OFF
 /**

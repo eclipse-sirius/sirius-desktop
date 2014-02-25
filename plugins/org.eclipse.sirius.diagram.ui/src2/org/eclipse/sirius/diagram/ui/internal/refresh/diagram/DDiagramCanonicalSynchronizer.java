@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.refresh.diagram;
+package org.eclipse.sirius.diagram.ui.internal.refresh.diagram;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -36,15 +36,15 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.business.api.diagramtype.ICollapseUpdater;
-import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.CollapseUpdater;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
-import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
-import org.eclipse.sirius.diagram.internal.operation.RegionContainerUpdateLayoutOperation;
-import org.eclipse.sirius.diagram.internal.refresh.AbstractCanonicalSynchronizer;
-import org.eclipse.sirius.diagram.part.SiriusDiagramUpdater;
-import org.eclipse.sirius.diagram.part.SiriusLinkDescriptor;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters.CollapseUpdater;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.internal.operation.RegionContainerUpdateLayoutOperation;
+import org.eclipse.sirius.diagram.ui.internal.refresh.AbstractCanonicalSynchronizer;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramUpdater;
+import org.eclipse.sirius.diagram.ui.part.SiriusLinkDescriptor;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 

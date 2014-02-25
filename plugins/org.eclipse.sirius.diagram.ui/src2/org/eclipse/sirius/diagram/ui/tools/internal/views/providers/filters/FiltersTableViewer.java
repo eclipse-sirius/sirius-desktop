@@ -16,8 +16,8 @@ import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.CheckboxCellEditor;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.ImagesPath;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
@@ -59,7 +59,7 @@ public final class FiltersTableViewer {
         TableColumn tc = new TableColumn(table, SWT.LEFT, 0);
         tc.setText(COLUMNS[0]);
         tc.setWidth(30);
-        tc.setImage(SiriusDiagramEditorPlugin.getInstance().getBundledImage(ImagesPath.FILTER_ACTIVATION_ICON));
+        tc.setImage(DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.FILTER_ACTIVATION_ICON));
 
         tc = new TableColumn(table, SWT.LEFT, 1);
         tc.setText(COLUMNS[1]);

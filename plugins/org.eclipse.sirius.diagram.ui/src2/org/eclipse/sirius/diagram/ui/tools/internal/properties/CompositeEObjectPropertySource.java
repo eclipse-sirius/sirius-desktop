@@ -15,10 +15,10 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.gef.requests.GroupRequest;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditor;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.ui.tools.api.properties.AbstractCompositeEObjectPropertySource;
 import org.eclipse.ui.IEditorPart;
 
@@ -75,7 +75,7 @@ public class CompositeEObjectPropertySource extends AbstractCompositeEObjectProp
         if (part instanceof DDiagramEditor) {
             adapterFactory = ((DDiagramEditor) part).getAdapterFactory();
         } else {
-            adapterFactory = SiriusDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory();
+            adapterFactory = DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory();
         }
         return adapterFactory;
     }

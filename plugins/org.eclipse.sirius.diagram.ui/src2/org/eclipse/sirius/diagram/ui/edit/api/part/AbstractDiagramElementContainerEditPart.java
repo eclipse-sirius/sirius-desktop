@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.edit.api.part;
+package org.eclipse.sirius.diagram.ui.edit.api.part;
 
 import java.util.List;
 
@@ -46,19 +46,19 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.edit.internal.part.AbstractDiagramNodeEditPartOperation;
-import org.eclipse.sirius.diagram.edit.internal.part.DiagramContainerEditPartOperation;
-import org.eclipse.sirius.diagram.edit.internal.part.DiagramElementEditPartOperation;
-import org.eclipse.sirius.diagram.graphical.edit.policies.SiriusGraphicalNodeEditPolicy;
-import org.eclipse.sirius.diagram.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNode4EditPart;
-import org.eclipse.sirius.diagram.internal.edit.policies.canonicals.DumnySiriusCanonicalEditPolicy;
-import org.eclipse.sirius.diagram.internal.view.factories.ViewLocationHint;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IContainerLabelOffsets;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.AbstractDiagramNodeEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramContainerEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusGraphicalNodeEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.canonicals.DumnySiriusCanonicalEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.view.factories.ViewLocationHint;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AlphaDropShadowBorder;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleAwareClippingStrategy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.OneLineMarginBorder;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 
 import com.google.common.collect.Iterables;

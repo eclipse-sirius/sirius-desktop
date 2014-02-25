@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.edit.internal.part;
+package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
 import java.util.Iterator;
 
@@ -30,17 +30,17 @@ import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.edit.api.part.IAbstractDiagramNodeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramBorderNodeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramNodeEditPart;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IBorderItemOffsets;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.IWorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.ext.swt.ImageFileFormat;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;

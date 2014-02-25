@@ -26,7 +26,7 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 
 /**
  * This is the item provider adapter for a
@@ -132,7 +132,7 @@ public class AppliedCompositeFiltersItemProvider extends ItemProviderAdapter imp
      */
     @Override
     public ResourceLocator getResourceLocator() {
-        return SiriusEditPlugin.INSTANCE;
+        return DiagramUIPlugin.INSTANCE;
     }
 
 }

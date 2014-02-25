@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions;
 
 import java.util.Iterator;
 
@@ -30,12 +30,12 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.tools.internal.editor.DDiagramEditorImpl;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.DiagramElementsSelectionDialog;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.swt.widgets.Shell;
@@ -105,7 +105,7 @@ public class SelectPinnedElementsAction extends DiagramAction {
     private static final String ICON_PATH = "icons/pinWizard.gif";
 
     /** The pin icon descriptor. */
-    private static final ImageDescriptor DESC_PIN = SiriusDiagramEditorPlugin.getBundledImageDescriptor(ICON_PATH);
+    private static final ImageDescriptor DESC_PIN = DiagramUIPlugin.Implementation.getBundledImageDescriptor(ICON_PATH);
 
     private final Predicate<Object> isPinned = new Predicate<Object>() {
         public boolean apply(Object input) {
@@ -145,7 +145,7 @@ public class SelectPinnedElementsAction extends DiagramAction {
         setText(TITLE);
         setToolTipText(TOOLTIP);
         setId(ACTION_ID);
-        setImageDescriptor(SiriusDiagramEditorPlugin.getDecoratedCheckedImageDescriptor(DESC_PIN));
+        setImageDescriptor(DiagramUIPlugin.Implementation.getDecoratedCheckedImageDescriptor(DESC_PIN));
     }
 
     /**
@@ -175,7 +175,7 @@ public class SelectPinnedElementsAction extends DiagramAction {
                 EObject diagram = gmfDiagram.getElement();
                 if (diagram instanceof DDiagram) {
                     if (hasPinnedElements((DDiagram) diagram)) {
-                        return SiriusDiagramEditorPlugin.getDecoratedCheckedImageDescriptor(DESC_PIN);
+                        return DiagramUIPlugin.Implementation.getDecoratedCheckedImageDescriptor(DESC_PIN);
                     }
                 }
             }

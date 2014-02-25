@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.refresh;
+package org.eclipse.sirius.diagram.ui.internal.refresh;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -51,22 +51,22 @@ import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.business.api.query.ViewQuery;
-import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
-import org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.business.internal.query.DNodeQuery;
-import org.eclipse.sirius.diagram.business.internal.view.LayoutData;
-import org.eclipse.sirius.diagram.internal.providers.SiriusViewProvider;
-import org.eclipse.sirius.diagram.internal.refresh.borderednode.CanonicalDBorderItemLocator;
-import org.eclipse.sirius.diagram.internal.view.factories.AbstractContainerViewFactory;
-import org.eclipse.sirius.diagram.internal.view.factories.ViewSizeHint;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.part.SiriusDiagramUpdater;
-import org.eclipse.sirius.diagram.part.SiriusNodeDescriptor;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IBorderItemOffsets;
+import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
+import org.eclipse.sirius.diagram.ui.business.api.view.refresh.CanonicalSynchronizer;
+import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.view.LayoutData;
+import org.eclipse.sirius.diagram.ui.internal.providers.SiriusViewProvider;
+import org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBorderItemLocator;
+import org.eclipse.sirius.diagram.ui.internal.view.factories.AbstractContainerViewFactory;
+import org.eclipse.sirius.diagram.ui.internal.view.factories.ViewSizeHint;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramUpdater;
+import org.eclipse.sirius.diagram.ui.part.SiriusNodeDescriptor;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.collect.Iterables;

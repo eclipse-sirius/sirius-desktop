@@ -20,7 +20,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.ICellModifier;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
-import org.eclipse.sirius.diagram.tools.internal.handler.ChangeFilterActivation;
+import org.eclipse.sirius.diagram.ui.tools.internal.handler.ChangeFilterActivation;
 import org.eclipse.swt.widgets.Item;
 
 /**

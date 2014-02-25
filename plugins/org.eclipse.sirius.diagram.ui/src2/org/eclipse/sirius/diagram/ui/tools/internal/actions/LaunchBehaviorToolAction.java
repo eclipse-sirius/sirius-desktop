@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,7 +24,7 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
+import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.RetargetAction;

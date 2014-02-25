@@ -9,7 +9,7 @@
  *    IBM Corporation - initial API and implementation 
  *    Goulwen Le Fur (Obeo) <goulwen.lefur@obeo.fr> - Trac bug #1754 : Remove or make unavailable Copy / Duplicate from menu
  ****************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.clipboard;
+package org.eclipse.sirius.diagram.ui.tools.internal.clipboard;
 
 import java.util.Hashtable;
 

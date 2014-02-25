@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions.layout;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.layout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +21,10 @@ import org.eclipse.gmf.runtime.common.core.util.ObjectAdapter;
 import org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.services.layout.LayoutType;
-import org.eclipse.sirius.diagram.ImagesPath;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditor;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.ui.actions.ActionIds;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
+import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.BorderItemAwareLayoutProvider;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
@@ -73,7 +73,7 @@ public class ArrangeBorderedNodesAction extends DiagramAction {
         setText(text);
         setToolTipText("Arrange all the linked bordered nodes of the diagram.");
 
-        setImageDescriptor(SiriusDiagramEditorPlugin.getBundledImageDescriptor(ImagesPath.ARRANGE_BORDERED_NODES_ICON));
+        setImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.ARRANGE_BORDERED_NODES_ICON));
         // setDisabledImageDescriptor(DiagramUIActionsPluginImages.DESC_ARRANGE_ALL_DISABLED);
         // setHoverImageDescriptor(DiagramUIActionsPluginImages.DESC_ARRANGE_ALL);
     }

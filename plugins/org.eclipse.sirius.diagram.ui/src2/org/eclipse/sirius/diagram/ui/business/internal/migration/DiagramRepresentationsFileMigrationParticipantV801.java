@@ -5,7 +5,7 @@
  * Contributors:
  *      Obeo - Initial API and implementation
  *****************************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.migration;
+package org.eclipse.sirius.diagram.ui.business.internal.migration;
 
 import java.util.Iterator;
 import java.util.List;
@@ -16,11 +16,11 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilterHelper;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.business.api.query.ViewQuery;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeBeginNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeEndNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeNameEditPart;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.osgi.framework.Version;
 
 /**

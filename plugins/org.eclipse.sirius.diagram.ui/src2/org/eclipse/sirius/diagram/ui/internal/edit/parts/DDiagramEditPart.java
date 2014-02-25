@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.parts;
+package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPolicy;
@@ -16,20 +16,20 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDDiagramEditPart;
-import org.eclipse.sirius.diagram.graphical.edit.policies.AirXYLayoutEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.ContainerCreationEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.LaunchBehaviorToolEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.LaunchToolEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.RefreshSiriusElementEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.RevealElementsEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.RevealSelectedElementsEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.SiriusContainerDropPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.SiriusPropertyHandlerEditPolicy;
-import org.eclipse.sirius.diagram.internal.edit.policies.DDiagramItemSemanticEditPolicy;
-import org.eclipse.sirius.diagram.internal.edit.policies.canonicals.DumnySiriusCanonicalConnectionEditPolicy;
-import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AirXYLayoutEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ContainerCreationEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LaunchBehaviorToolEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LaunchToolEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.RefreshSiriusElementEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.RevealElementsEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.RevealSelectedElementsEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusContainerDropPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusPropertyHandlerEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.DDiagramItemSemanticEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.canonicals.DumnySiriusCanonicalConnectionEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
+import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 
 /**

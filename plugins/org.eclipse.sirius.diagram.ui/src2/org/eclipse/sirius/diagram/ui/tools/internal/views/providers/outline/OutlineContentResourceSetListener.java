@@ -25,7 +25,6 @@ import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -34,10 +33,11 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil;
 import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
-import org.eclipse.sirius.diagram.tools.internal.editor.DiagramOutlinePageListener;
-import org.eclipse.sirius.ui.business.api.provider.DEdgeLabelItemProvider;
-import org.eclipse.sirius.ui.business.api.provider.DNodeLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.business.api.provider.DEdgeLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.business.api.provider.DNodeLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.DiagramOutlinePageListener;
 import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 import org.eclipse.swt.widgets.Display;
 
@@ -183,7 +183,7 @@ public class OutlineContentResourceSetListener extends DemultiplexingListener im
 
         switch (featureID) {
         case DiagramPackage.DDIAGRAM_ELEMENT__VISIBLE:
-            addToRefresh(SiriusUtil.findDiagram(diagramElement));
+            addToRefresh(SiriusDiagramUtil.findDiagram(diagramElement));
             break;
         case DiagramPackage.DDIAGRAM_ELEMENT__NAME:
             addToUpdate(diagramElement);
@@ -199,7 +199,7 @@ public class OutlineContentResourceSetListener extends DemultiplexingListener im
         switch (featureID) {
         case DiagramPackage.ABSTRACT_DNODE__OWNED_BORDERED_NODES:
         case DiagramPackage.ABSTRACT_DNODE__GRAPHICAL_FILTERS:
-            addToRefresh(SiriusUtil.findDiagram(node));
+            addToRefresh(SiriusDiagramUtil.findDiagram(node));
             break;
         default:
             break;
@@ -245,7 +245,7 @@ public class OutlineContentResourceSetListener extends DemultiplexingListener im
 
         switch (featureID) {
         case DiagramPackage.DNODE_CONTAINER__OWNED_DIAGRAM_ELEMENTS:
-            addToRefresh(SiriusUtil.findDiagram(nodeContainer));
+            addToRefresh(SiriusDiagramUtil.findDiagram(nodeContainer));
             break;
         default:
             break;
@@ -257,7 +257,7 @@ public class OutlineContentResourceSetListener extends DemultiplexingListener im
 
         switch (featureID) {
         case DiagramPackage.DNODE_LIST__OWNED_ELEMENTS:
-            addToRefresh(SiriusUtil.findDiagram(nodeList));
+            addToRefresh(SiriusDiagramUtil.findDiagram(nodeList));
             break;
         default:
             break;

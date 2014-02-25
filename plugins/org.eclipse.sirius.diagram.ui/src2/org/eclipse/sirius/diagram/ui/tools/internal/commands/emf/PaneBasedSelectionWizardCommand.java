@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.commands.emf;
+package org.eclipse.sirius.diagram.ui.tools.internal.commands.emf;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -27,9 +27,9 @@ import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.common.ui.tools.api.selection.EObjectPaneBasedSelectionWizard;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil;
-import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
@@ -82,7 +82,7 @@ public class PaneBasedSelectionWizardCommand extends AbstractSelectionWizardComm
         final Collection<EObject> preSelection = computePreSelection();
         final Shell shell = new Shell();
         final EObjectPaneBasedSelectionWizard wizard = new EObjectPaneBasedSelectionWizard(this.tool.getWindowTitle(), this.tool.getMessage(), getImage(), this.tool.getChoiceOfValuesMessage(),
-                this.tool.getSelectedValuesMessage(), SiriusDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory());
+                this.tool.getSelectedValuesMessage(), DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory());
         wizard.init(input, preSelection);
         final WizardDialog dlg = new WizardDialog(shell, wizard);
         final int result = dlg.open();
@@ -114,7 +114,7 @@ public class PaneBasedSelectionWizardCommand extends AbstractSelectionWizardComm
         if (StringUtil.isEmpty(tool.getWindowImagePath())) {
             return null;
         } else {
-            return SiriusDiagramEditorPlugin.findImageDescriptor(tool.getWindowImagePath());
+            return DiagramUIPlugin.Implementation.findImageDescriptor(tool.getWindowImagePath());
         }
     }
 

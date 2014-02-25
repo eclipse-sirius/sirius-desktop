@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.command;
+package org.eclipse.sirius.diagram.ui.business.internal.command;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -28,8 +28,8 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.IdentityAnchor;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
-import org.eclipse.sirius.diagram.internal.refresh.GMFHelper;
-import org.eclipse.sirius.diagram.tools.internal.util.GMFNotationUtilities;
+import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.GMFNotationUtilities;
 import org.eclipse.sirius.ext.base.Option;
 
 /**

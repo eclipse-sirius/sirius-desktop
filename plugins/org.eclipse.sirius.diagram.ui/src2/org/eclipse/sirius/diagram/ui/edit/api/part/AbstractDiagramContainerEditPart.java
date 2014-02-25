@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.edit.api.part;
+package org.eclipse.sirius.diagram.ui.edit.api.part;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -63,18 +63,16 @@ import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
-import org.eclipse.sirius.diagram.edit.internal.part.CommonEditPartOperation;
-import org.eclipse.sirius.diagram.edit.internal.part.DiagramContainerEditPartOperation;
-import org.eclipse.sirius.diagram.edit.internal.part.PortLayoutHelper;
-import org.eclipse.sirius.diagram.edit.internal.validators.ResizeValidator;
-import org.eclipse.sirius.diagram.internal.edit.policies.DNodeContainerItemSemanticEditPolicy;
-import org.eclipse.sirius.diagram.internal.edit.policies.NonResizableAndNonDuplicableEditPolicy;
-import org.eclipse.sirius.diagram.tools.internal.figure.ContainerWithTitleBlockFigure;
-import org.eclipse.sirius.diagram.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramContainerEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
+import org.eclipse.sirius.diagram.ui.edit.internal.validators.ResizeValidator;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeContainerItemSemanticEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.NonResizableAndNonDuplicableEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.InvisibleResizableCompartmentFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
@@ -82,6 +80,8 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDes
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerParallelogram;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangleFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.ContainerWithTitleBlockFigure;
+import org.eclipse.sirius.diagram.ui.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DStylizable;
@@ -410,7 +410,7 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
      * @was-generated specific BorderItemEditPolicy and getCommand
      */
     protected LayoutEditPolicy createLayoutEditPolicy() {
-        LayoutEditPolicy lep = new org.eclipse.sirius.diagram.tools.api.policies.LayoutEditPolicy() {
+        LayoutEditPolicy lep = new org.eclipse.sirius.diagram.ui.tools.api.policies.LayoutEditPolicy() {
 
             protected EditPolicy createChildEditPolicy(EditPart child) {
                 if (child instanceof AbstractBorderItemEditPart) {

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions;
 
 import java.util.List;
 import java.util.ListIterator;
@@ -50,7 +50,7 @@ public class TabbarRouterAction extends RouterAction {
     // CHECKSTYLE:OFF
     @Override
     protected boolean calculateEnabled() {
-        if (org.eclipse.sirius.diagram.tools.api.ui.actions.ActionIds.ROUTING_STYLE.equals(getId())) {
+        if (org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ROUTING_STYLE.equals(getId())) {
             List<?> selected = getSelectedObjects();
             if (selected.size() < 1) {
                 return false;
@@ -78,7 +78,7 @@ public class TabbarRouterAction extends RouterAction {
      */
     public static RouterAction createTreeRouterAction(IWorkbenchPage workbenchPage) {
         RouterAction action = new TabbarRouterAction(workbenchPage, Routing.TREE_LITERAL);
-        action.setId(org.eclipse.sirius.diagram.tools.api.ui.actions.ActionIds.ROUTING_STYLE);
+        action.setId(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ROUTING_STYLE);
         action.setText(DiagramUIActionsMessages.ChangeRouterAction_Tree_ActionLabelText);
         action.setToolTipText(DiagramUIActionsMessages.ChangeRouterAction_Tree_ActionToolTipText);
 

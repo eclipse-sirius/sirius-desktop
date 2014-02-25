@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.api.wizards.page;
+package org.eclipse.sirius.diagram.ui.tools.api.wizards.page;
 
 import java.util.Arrays;
 import java.util.Collection;

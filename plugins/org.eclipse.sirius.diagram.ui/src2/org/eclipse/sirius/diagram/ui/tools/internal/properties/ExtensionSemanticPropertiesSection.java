@@ -24,8 +24,8 @@ import org.eclipse.gmf.runtime.diagram.ui.properties.sections.AdvancedPropertySe
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.views.properties.IPropertySource;
@@ -84,7 +84,7 @@ public class ExtensionSemanticPropertiesSection extends AdvancedPropertySection 
             if (part instanceof DDiagramEditor) {
                 adapterFactory = ((DDiagramEditor) part).getAdapterFactory();
             } else {
-                adapterFactory = SiriusDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory();
+                adapterFactory = DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory();
             }
         }
         return adapterFactory;

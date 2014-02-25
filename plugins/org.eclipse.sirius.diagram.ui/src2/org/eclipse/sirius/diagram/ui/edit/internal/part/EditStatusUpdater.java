@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.edit.internal.part;
+package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
 import java.util.Iterator;
 import java.util.List;
@@ -23,8 +23,8 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DecorationEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
-import org.eclipse.sirius.diagram.tools.api.part.IDiagramDialectGraphicalViewer;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer;
 
 /**
  * Class responsible for updating the edit part status when the semantic

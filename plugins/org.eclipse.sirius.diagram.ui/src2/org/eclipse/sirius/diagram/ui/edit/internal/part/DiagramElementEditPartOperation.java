@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.edit.internal.part;
+package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -47,19 +47,19 @@ import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramElementSynchronizer;
-import org.eclipse.sirius.diagram.business.internal.query.StyleConfigurationQuery;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramBorderNodeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramNameEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramNodeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IStyleEditPart;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration;
-import org.eclipse.sirius.diagram.tools.api.part.IDiagramDialectGraphicalViewer;
+import org.eclipse.sirius.diagram.ui.business.internal.query.StyleConfigurationQuery;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.StyledFigure;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
+import org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.SemanticChangedCommand;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;

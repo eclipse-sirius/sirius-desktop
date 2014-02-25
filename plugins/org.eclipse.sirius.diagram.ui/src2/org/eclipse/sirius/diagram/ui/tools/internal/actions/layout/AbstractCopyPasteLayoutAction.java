@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions.layout;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.layout;
 
 import java.util.Collection;
 import java.util.Collections;

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.policies;
+package org.eclipse.sirius.diagram.ui.internal.edit.policies;
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -55,15 +55,15 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.graphical.edit.policies.AirDestroyElementRequest;
 import org.eclipse.sirius.diagram.internal.edit.helpers.SiriusBaseEditHelper;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
-import org.eclipse.sirius.diagram.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.tools.internal.graphical.edit.policies.DeleteHelper;
-import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramInternalPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AirDestroyElementRequest;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.DeleteHelper;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 
@@ -169,7 +169,7 @@ public class SiriusBaseItemSemanticEditPolicy extends SemanticEditPolicy {
                                 IDiagramCommandFactoryProvider cmdFactoryProvider = (IDiagramCommandFactoryProvider) (adapter);
                                 org.eclipse.emf.common.command.Command cmd = cmdFactoryProvider.getCommandFactory(editingDomain).buildDeleteFromDiagramCommand(viewPointElement);
                                 boolean removeHideNote = SiriusDiagramEditorPlugin.getInstance().getPluginPreferences()
-                                        .getBoolean(SiriusDiagramPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name());
+                                        .getBoolean(SiriusDiagramInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name());
                                 if (removeHideNote) {
                                     DeleteHelper.addDeleteLinkedNotesTask(cmd, view);
                                 }
@@ -196,7 +196,7 @@ public class SiriusBaseItemSemanticEditPolicy extends SemanticEditPolicy {
                     if (cmd.canExecute()) {
                         CompositeCommand compositeCommand = new CompositeCommand("Delete element");
                         boolean removeHideNote = SiriusDiagramEditorPlugin.getInstance().getPluginPreferences()
-                                .getBoolean(SiriusDiagramPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name());
+                                .getBoolean(SiriusDiagramInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name());
                         if (removeHideNote) {
                             DeleteHelper.addDeleteLinkedNotesTask(cmd, view);
                         }

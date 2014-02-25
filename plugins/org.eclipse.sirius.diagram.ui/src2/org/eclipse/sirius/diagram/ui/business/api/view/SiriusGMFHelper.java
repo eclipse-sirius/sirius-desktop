@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.api.view;
+package org.eclipse.sirius.diagram.ui.business.api.view;
 
 import java.util.Arrays;
 
@@ -24,10 +24,10 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeBeginNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeEndNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeNameEditPart;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**

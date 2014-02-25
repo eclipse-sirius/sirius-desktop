@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.policies;
+package org.eclipse.sirius.diagram.ui.internal.edit.policies;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -40,11 +40,11 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
-import org.eclipse.sirius.diagram.part.Messages;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorUtil;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.part.Messages;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorUtil;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
@@ -83,7 +83,7 @@ public class OpenDiagramEditPolicy extends OpenEditPolicy {
         private final HintedDiagramLinkStyle diagramFacet;
 
         /**
-         * @param transactionalEditingDomain 
+         * @param transactionalEditingDomain
          * @was-generated
          */
         OpenDiagramCommand(TransactionalEditingDomain transactionalEditingDomain, HintedDiagramLinkStyle linkStyle) {

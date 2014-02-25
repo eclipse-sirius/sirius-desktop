@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.part;
+package org.eclipse.sirius.diagram.ui.part;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -67,8 +67,9 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.swt.widgets.Shell;
@@ -190,8 +191,8 @@ public class SiriusDiagramEditorUtil {
                 }
 
                 try {
-                    modelResource.save(org.eclipse.sirius.diagram.part.SiriusDiagramEditorUtil.getSaveOptions());
-                    diagramResource.save(org.eclipse.sirius.diagram.part.SiriusDiagramEditorUtil.getSaveOptions());
+                    modelResource.save(org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorUtil.getSaveOptions());
+                    diagramResource.save(org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorUtil.getSaveOptions());
                 } catch (IOException e) {
 
                     SiriusDiagramEditorPlugin.getInstance().logError("Unable to store model and diagram resources", e); //$NON-NLS-1$

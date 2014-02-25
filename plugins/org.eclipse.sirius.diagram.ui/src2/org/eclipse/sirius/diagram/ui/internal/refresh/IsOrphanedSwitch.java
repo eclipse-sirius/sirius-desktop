@@ -8,36 +8,36 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.refresh;
+package org.eclipse.sirius.diagram.ui.internal.refresh;
 
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.internal.edit.parts.BundledImageEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.CustomStyleEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNode2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNode3EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNode4EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainer2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeList2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListElementEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListViewNodeListCompartment2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListViewNodeListCompartmentEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DotEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.EllipseEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.GaugeCompositeEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.LozengeEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.NoteEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.SquareEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.WorkspaceImageEditPart;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.BundledImageEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.CustomStyleEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode3EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListViewNodeListCompartment2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListViewNodeListCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DotEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.EllipseEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.GaugeCompositeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.LozengeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.NoteEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.SquareEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.WorkspaceImageEditPart;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 
 /**
  * A switch to determine if a GMF View is orphaned.
@@ -205,7 +205,7 @@ public class IsOrphanedSwitch {
         }
         return Boolean.FALSE;
     }
-    
+
     /**
      * Checks an element owned by a DNodeList2EditPart.
      * 
@@ -286,7 +286,7 @@ public class IsOrphanedSwitch {
         }
         return Boolean.FALSE;
     }
-    
+
     /**
      * Checks an element owned by a DNodeListEditPart.
      * 

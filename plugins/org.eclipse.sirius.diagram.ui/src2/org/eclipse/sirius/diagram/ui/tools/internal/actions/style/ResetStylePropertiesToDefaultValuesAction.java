@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions.style;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.style;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -25,12 +25,12 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.ImagesPath;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.business.api.query.ViewQuery;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.tools.internal.commands.ResetStylePropertiesToDefaultValuesCommand;
+import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
+import org.eclipse.sirius.diagram.ui.tools.internal.commands.ResetStylePropertiesToDefaultValuesCommand;
 import org.eclipse.swt.SWT;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
@@ -64,7 +64,7 @@ public class ResetStylePropertiesToDefaultValuesAction extends Action implements
     public ResetStylePropertiesToDefaultValuesAction(IWorkbenchPage page) {
         super(ACTION_NAME);
         this.page = page;
-        final ImageDescriptor enabledImage = SiriusDiagramEditorPlugin.getBundledImageDescriptor(ImagesPath.UNDO_ICON);
+        final ImageDescriptor enabledImage = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.UNDO_ICON);
         final ImageDescriptor disabledImage = ImageDescriptor.createWithFlags(enabledImage, SWT.IMAGE_DISABLE);
         this.setId(ID);
         this.setImageDescriptor(enabledImage);

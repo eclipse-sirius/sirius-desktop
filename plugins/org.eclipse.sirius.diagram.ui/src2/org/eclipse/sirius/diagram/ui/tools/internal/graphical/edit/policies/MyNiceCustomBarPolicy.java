@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.graphical.edit.policies;
+package org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,17 +39,17 @@ import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.ImagesPath;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.tools.internal.figure.DropDownMenuFigure;
-import org.eclipse.sirius.diagram.tools.internal.figure.PopupBarFigure;
-import org.eclipse.sirius.diagram.tools.internal.handler.ChangeFilterActivation;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.ChangeLayerActivationCommand;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.DropDownMenuFigure;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.PopupBarFigure;
+import org.eclipse.sirius.diagram.ui.tools.internal.handler.ChangeFilterActivation;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 import com.google.common.collect.Iterables;
@@ -62,18 +62,18 @@ import com.google.common.collect.Iterables;
 public class MyNiceCustomBarPolicy extends DiagramAssistantEditPolicy implements LayerConstants {
 
     /** The layers icon descriptor. */
-    private static final ImageDescriptor DESC_LAYER = SiriusDiagramEditorPlugin.getBundledImageDescriptor("icons/layers.gif");
+    private static final ImageDescriptor DESC_LAYER = DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/layers.gif");
 
     /** The filters icon descriptor. */
-    private static final ImageDescriptor DESC_FILTER = SiriusDiagramEditorPlugin.getBundledImageDescriptor("icons/filters.gif");
+    private static final ImageDescriptor DESC_FILTER = DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/filters.gif");
 
-    private static final ImageDescriptor DESC_ACTIVE_LAYER = SiriusDiagramEditorPlugin.getBundledImageDescriptor(ImagesPath.ACTIVE_LAYER_ICON);
+    private static final ImageDescriptor DESC_ACTIVE_LAYER = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.ACTIVE_LAYER_ICON);
 
-    private static final ImageDescriptor DESC_INACTIVE_LAYER = SiriusDiagramEditorPlugin.getBundledImageDescriptor(ImagesPath.INACTIVE_LAYER_ICON);
+    private static final ImageDescriptor DESC_INACTIVE_LAYER = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.INACTIVE_LAYER_ICON);
 
-    private static final ImageDescriptor DESC_ACTIVE_FILTER = SiriusDiagramEditorPlugin.getBundledImageDescriptor(ImagesPath.ACTIVE_LAYER_ICON);
+    private static final ImageDescriptor DESC_ACTIVE_FILTER = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.ACTIVE_LAYER_ICON);
 
-    private static final ImageDescriptor DESC_INACTIVE_FILTER = SiriusDiagramEditorPlugin.getBundledImageDescriptor(ImagesPath.INACTIVE_LAYER_ICON);
+    private static final ImageDescriptor DESC_INACTIVE_FILTER = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.INACTIVE_LAYER_ICON);
 
     private IFigure layer;
 

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions.repair;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.repair;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.ArrangeConstraint;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.tools.api.migration.DiagramCrossReferencer;
+import org.eclipse.sirius.diagram.ui.tools.api.migration.DiagramCrossReferencer;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;

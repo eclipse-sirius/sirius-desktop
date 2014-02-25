@@ -8,12 +8,12 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.refresh;
+package org.eclipse.sirius.diagram.ui.internal.refresh;
 
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.internal.refresh.diagram.ViewPropertiesSynchronizer;
+import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSynchronizer;
 
 /**
  * A {@link RecordingCommand} to execute

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.graphical.edit.policies;
+package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Point;
@@ -22,13 +22,13 @@ import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
-import org.eclipse.sirius.diagram.tools.api.draw2d.ui.figures.FigureUtilities;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
+import org.eclipse.sirius.diagram.ui.tools.api.draw2d.ui.figures.FigureUtilities;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 /**
@@ -122,8 +122,7 @@ public class NodeCreationEditPolicy extends SiriusContainerEditPolicy {
      * 
      * @param request
      *            the creation request.
-     * @return the Sirius tool description associated with the request, if
-     *         any.
+     * @return the Sirius tool description associated with the request, if any.
      */
     protected AbstractToolDescription getTool(CreateRequest request) {
         if (request.getNewObject() instanceof AbstractToolDescription) {

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.policies;
+package org.eclipse.sirius.diagram.ui.internal.edit.policies;
 
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.commands.Command;
@@ -17,10 +17,10 @@ import org.eclipse.gmf.runtime.emf.commands.core.commands.DuplicateEObjectsComma
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DuplicateElementsRequest;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.internal.edit.commands.DNodeContainerCreateCommand;
-import org.eclipse.sirius.diagram.internal.edit.commands.DNodeCreateCommand;
-import org.eclipse.sirius.diagram.internal.edit.commands.DNodeListCreateCommand;
-import org.eclipse.sirius.diagram.internal.providers.SiriusElementTypes;
+import org.eclipse.sirius.diagram.ui.internal.edit.commands.DNodeContainerCreateCommand;
+import org.eclipse.sirius.diagram.ui.internal.edit.commands.DNodeCreateCommand;
+import org.eclipse.sirius.diagram.ui.internal.edit.commands.DNodeListCreateCommand;
+import org.eclipse.sirius.diagram.ui.internal.providers.SiriusElementTypes;
 
 /**
  * @was-generated

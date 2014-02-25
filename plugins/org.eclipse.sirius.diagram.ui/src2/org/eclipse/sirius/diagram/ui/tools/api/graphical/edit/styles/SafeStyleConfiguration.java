@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.api.graphical.edit.styles;
+package org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -17,8 +17,8 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.business.internal.query.StyleConfigurationQuery;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.business.internal.query.StyleConfigurationQuery;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
 import org.eclipse.swt.graphics.Image;

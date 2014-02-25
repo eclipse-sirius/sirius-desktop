@@ -8,9 +8,9 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.image;
+package org.eclipse.sirius.diagram.ui.business.internal.image;
 
-import org.eclipse.sirius.diagram.business.api.image.ImageSelector;
+import org.eclipse.sirius.diagram.ui.business.api.image.ImageSelector;
 
 
 /**

@@ -8,9 +8,9 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.commands;
+package org.eclipse.sirius.diagram.ui.tools.internal.commands;
 
-import org.eclipse.sirius.diagram.tools.internal.outline.QuickOutlineAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.outline.QuickOutlineAction;
 
 /**
  * A command to show the quick outline.

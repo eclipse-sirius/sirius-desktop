@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions;
 
 import org.eclipse.gef.internal.GEFMessages;
 import org.eclipse.gef.internal.InternalImages;

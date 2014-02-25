@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -27,8 +27,8 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
-import org.eclipse.sirius.diagram.tools.internal.actions.layout.ArrangeBorderedNodesAction;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.ArrangeBorderedNodesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.ArrangeAllOnlyLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.LayoutService;
 import org.eclipse.ui.ISelectionListener;
@@ -201,7 +201,7 @@ public class TabbarArrangeMenuManager extends ArrangeMenuManager implements ISel
             toolbarArrangeAllAction = ArrangeAction.createToolbarArrangeAllAction(page);
             add(toolbarArrangeAllAction);
         }
-        if (find(org.eclipse.sirius.diagram.tools.api.ui.actions.ActionIds.ARRANGE_BORDERED_NODES_TOOLBAR) == null) {
+        if (find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDERED_NODES_TOOLBAR) == null) {
             toolBarArrangeBorderedNodesAction = ArrangeBorderedNodesAction.createToolBarArrangeBorderedNodesAction(page);
             add(toolBarArrangeBorderedNodesAction);
         }

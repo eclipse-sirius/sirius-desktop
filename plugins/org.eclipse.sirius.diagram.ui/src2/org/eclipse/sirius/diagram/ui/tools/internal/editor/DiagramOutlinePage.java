@@ -11,7 +11,7 @@
  *    Obeo - Extracted from org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor.DiagramOutlinePage
  *           and adapted for Sirius.
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor;
 
 import java.util.ArrayList;
 import java.util.Collection;

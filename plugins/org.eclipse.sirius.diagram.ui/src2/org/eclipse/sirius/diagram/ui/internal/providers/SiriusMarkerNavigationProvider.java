@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.providers;
+package org.eclipse.sirius.diagram.ui.internal.providers;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -24,7 +24,7 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.emf.ui.providers.marker.AbstractModelMarkerNavigationProvider;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorUtil;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorUtil;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 /**

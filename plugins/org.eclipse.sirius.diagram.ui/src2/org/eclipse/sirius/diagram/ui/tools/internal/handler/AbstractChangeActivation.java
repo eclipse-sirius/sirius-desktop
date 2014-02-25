@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.handler;
+package org.eclipse.sirius.diagram.ui.tools.internal.handler;
 
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.RootEditPart;

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.parts;
+package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import java.util.Collections;
 import java.util.List;
@@ -33,18 +33,18 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.business.internal.edit.helpers.LabelAlignmentHelper;
-import org.eclipse.sirius.diagram.edit.api.part.DiagramNameEditPartOperation;
-import org.eclipse.sirius.diagram.edit.internal.part.DiagramElementEditPartOperation;
-import org.eclipse.sirius.diagram.graphical.edit.policies.LaunchToolEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.ListItemDeletionEditPolicy;
-import org.eclipse.sirius.diagram.internal.edit.policies.DNodeListElementItemSemanticEditPolicy;
-import org.eclipse.sirius.diagram.internal.edit.policies.SiriusTextNonResizableEditPolicy;
-import org.eclipse.sirius.diagram.internal.providers.SiriusElementTypes;
-import org.eclipse.sirius.diagram.internal.providers.SiriusParserProvider;
-import org.eclipse.sirius.diagram.tools.api.permission.EditPartAuthorityListener;
-import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
+import org.eclipse.sirius.diagram.ui.business.internal.edit.helpers.LabelAlignmentHelper;
+import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LaunchToolEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ListItemDeletionEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeListElementItemSemanticEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.SiriusTextNonResizableEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.providers.SiriusElementTypes;
+import org.eclipse.sirius.diagram.ui.internal.providers.SiriusParserProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
+import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListener;
+import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.viewpoint.LabelAlignment;
@@ -157,7 +157,6 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
         // ViewNodeEditPartOperations.refreshFont(resolveSemanticElement(),
         // getFigure());
         /*
-         * 
          * FontStyle style = (FontStyle)
          * getFontStyleOwnerView().getStyle(NotationPackage
          * .eINSTANCE.getFontStyle()); if (style != null) { FontData fontData =

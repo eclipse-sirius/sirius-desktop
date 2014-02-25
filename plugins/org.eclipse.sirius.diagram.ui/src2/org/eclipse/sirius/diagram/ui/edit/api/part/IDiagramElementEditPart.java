@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.edit.api.part;
+package org.eclipse.sirius.diagram.ui.edit.api.part;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import org.eclipse.gmf.runtime.diagram.core.listener.NotificationListener;
 import org.eclipse.gmf.runtime.diagram.core.listener.NotificationPreCommitListener;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.tools.api.permission.EditPartAuthorityListener;
+import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListener;
 import org.eclipse.swt.graphics.Image;
 
 /**

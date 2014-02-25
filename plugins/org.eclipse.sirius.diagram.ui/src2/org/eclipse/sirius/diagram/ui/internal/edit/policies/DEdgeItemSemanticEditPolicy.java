@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.policies;
+package org.eclipse.sirius.diagram.ui.internal.edit.policies;
 
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.commands.Command;
@@ -16,9 +16,9 @@ import org.eclipse.gef.requests.ReconnectRequest;
 import org.eclipse.gmf.runtime.emf.type.core.commands.DestroyElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.ReorientRelationshipRequest;
-import org.eclipse.sirius.diagram.graphical.edit.part.specific.BracketEdgeEditPart;
-import org.eclipse.sirius.diagram.internal.edit.commands.DEdgeReorientCommand;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.graphical.edit.part.specific.BracketEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.commands.DEdgeReorientCommand;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 
 /**
  * @was-generated

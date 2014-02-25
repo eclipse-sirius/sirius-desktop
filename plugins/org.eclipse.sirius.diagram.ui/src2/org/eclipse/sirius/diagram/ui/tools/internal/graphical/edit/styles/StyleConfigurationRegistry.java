@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.graphical.edit.styles;
+package org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.styles;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -35,11 +35,11 @@ import org.eclipse.sirius.diagram.Square;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IStyleConfigurationProvider;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.SafeStyleConfiguration;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.SimpleStyleConfiguration;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationProvider;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.SafeStyleConfiguration;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.SimpleStyleConfiguration;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
@@ -114,7 +114,7 @@ public final class StyleConfigurationRegistry extends SessionManagerListener.Stu
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IStyleConfigurationRegistry#getStyleConfiguration(org.eclipse.sirius.viewpoint.description.DiagramElementMapping,
+     * @see org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry#getStyleConfiguration(org.eclipse.sirius.viewpoint.description.DiagramElementMapping,
      *      org.eclipse.sirius.viewpoint.Style)
      */
     public StyleConfiguration getStyleConfiguration(final DiagramElementMapping vpElementMapping, final Style style) {

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.bracket;
+package org.eclipse.sirius.diagram.ui.business.internal.bracket;
 
 import org.eclipse.draw2d.AbstractConnectionAnchor;
 import org.eclipse.draw2d.IFigure;

@@ -8,13 +8,15 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.api.query;
+package org.eclipse.sirius.diagram.ui.business.api.query;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
+import org.eclipse.sirius.diagram.business.api.query.DiagramDescriptionQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;

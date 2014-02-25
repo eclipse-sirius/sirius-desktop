@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.bracket.locators;
+package org.eclipse.sirius.diagram.ui.business.internal.bracket.locators;
 
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.ConnectionLocator;
@@ -19,8 +19,8 @@ import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.sirius.diagram.business.internal.bracket.BracketConnectionQuery;
-import org.eclipse.sirius.diagram.business.internal.bracket.Direction;
+import org.eclipse.sirius.diagram.ui.business.internal.bracket.BracketConnectionQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.bracket.Direction;
 
 /**
  * A {@link ConnectionLocator} to locate decorator.

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.menu;
+package org.eclipse.sirius.diagram.ui.tools.internal.menu;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -53,15 +53,15 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.api.query.ToolSectionQuery;
-import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
-import org.eclipse.sirius.diagram.business.internal.view.RootLayoutData;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.tool.ToolSection;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
-import org.eclipse.sirius.diagram.tools.api.draw2d.ui.figures.FigureUtilities;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
+import org.eclipse.sirius.diagram.ui.business.internal.view.RootLayoutData;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
+import org.eclipse.sirius.diagram.ui.tools.api.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.ui.ExternalJavaActionProvider;
@@ -415,7 +415,7 @@ public class PopupMenuContribution implements IContributionItemProvider {
             final GMFCommandWrapper gefCommandWrapper = new GMFCommandWrapper(transactionalEditingDomain, command);
             if (command.canExecute()) {
                 if (javaActionMenuItem.getIcon() != null && !"".equals(javaActionMenuItem.getIcon())) {
-                    imageDescriptor = SiriusDiagramEditorPlugin.findImageDescriptor(javaActionMenuItem.getIcon());
+                    imageDescriptor = DiagramUIPlugin.Implementation.findImageDescriptor(javaActionMenuItem.getIcon());
                 }
                 result = new Action(new IdentifiedElementQuery(javaActionMenuItem).getLabel(), imageDescriptor) {
 
@@ -458,7 +458,7 @@ public class PopupMenuContribution implements IContributionItemProvider {
         cc.add(new ICommandProxy(new GMFCommandWrapper(transactionalEditingDomain, command)));
         ImageDescriptor imageDescriptor = null;
         if (operationAction.getIcon() != null && !"".equals(operationAction.getIcon()))
-            imageDescriptor = SiriusDiagramEditorPlugin.findImageDescriptor(operationAction.getIcon());
+            imageDescriptor = DiagramUIPlugin.Implementation.findImageDescriptor(operationAction.getIcon());
         return new Action(new IdentifiedElementQuery(operationAction).getLabel(), imageDescriptor) {
             public void run() {
                 super.run();

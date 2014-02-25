@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.edit.internal.part.listener;
+package org.eclipse.sirius.diagram.ui.edit.internal.part.listener;
 
 import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
@@ -16,7 +16,7 @@ import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.tools.internal.editor.header.DiagramHeaderComposite;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.header.DiagramHeaderComposite;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.ui.PlatformUI;
 

@@ -8,9 +8,9 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.commands;
+package org.eclipse.sirius.diagram.ui.tools.internal.commands;
 
-import org.eclipse.sirius.diagram.tools.internal.actions.pinning.PinElementsEclipseAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.PinElementsEclipseAction;
 
 /**
  * The default handler for the "Unpin Elements" handler.

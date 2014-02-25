@@ -17,9 +17,9 @@ import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.common.ui.tools.api.util.IObjectActionDelegateWrapper;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.internal.editor.DiagramOutlinePage;
-import org.eclipse.sirius.diagram.tools.internal.editor.DiagramOutlinePageListener;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.DiagramOutlinePage;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.DiagramOutlinePageListener;
 import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.filters.FiltersTableViewer;
 import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.layers.LayersTableViewer;
 import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.outline.OutlineComparator;
@@ -50,10 +50,10 @@ public class DiagramOutlineWithBookPages extends DiagramOutlinePage {
     private static final String FILTER_TIP_TEXT = "Filters";
 
     /** The layers icon descriptor. */
-    private static final ImageDescriptor DESC_LAYER = SiriusDiagramEditorPlugin.getBundledImageDescriptor("icons/layers.gif");
+    private static final ImageDescriptor DESC_LAYER = DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/layers.gif");
 
     /** The filters icon descriptor. */
-    private static final ImageDescriptor DESC_FILTER = SiriusDiagramEditorPlugin.getBundledImageDescriptor("icons/filters.gif");
+    private static final ImageDescriptor DESC_FILTER = DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/filters.gif");
 
     /** The show layers action */
     private IAction showLayersAction;

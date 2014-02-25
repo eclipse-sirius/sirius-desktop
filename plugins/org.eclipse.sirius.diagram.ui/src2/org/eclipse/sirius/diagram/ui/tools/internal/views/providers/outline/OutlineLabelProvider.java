@@ -20,13 +20,13 @@ import org.eclipse.jface.viewers.DecorationOverlayIcon;
 import org.eclipse.jface.viewers.IDecoration;
 import org.eclipse.jface.viewers.IFontProvider;
 import org.eclipse.jface.viewers.LabelProvider;
-import org.eclipse.sirius.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
-import org.eclipse.sirius.ui.tools.api.image.ImagesPath;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Font;
@@ -48,7 +48,7 @@ public class OutlineLabelProvider extends LabelProvider implements IFontProvider
      * @param adapterFactory
      */
     public OutlineLabelProvider() {
-        this.factory = SiriusDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory();
+        this.factory = DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory();
     }
 
     /**
@@ -81,13 +81,13 @@ public class OutlineLabelProvider extends LabelProvider implements IFontProvider
         if (descriptor == null) {
             descriptor = ImageDescriptor.getMissingImageDescriptor();
         }
-        result = SiriusDiagramEditorPlugin.getInstance().getImage(descriptor);
+        result = DiagramUIPlugin.getPlugin().getImage(descriptor);
 
         Option<DDiagramElement> optionTarget = element.getDiagramElementTarget();
         if (optionTarget.some() && new DDiagramElementQuery(optionTarget.get()).isLabelHidden()) {
-            final ImageDescriptor decoratorDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(SiriusEditPlugin.INSTANCE.getImage(ImagesPath.HIDDEN_DECORATOR));
+            final ImageDescriptor decoratorDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(SiriusEditPlugin.INSTANCE.getImage(DiagramImagesPath.HIDDEN_DECORATOR));
             final DecorationOverlayIcon finalDescriptor = new DecorationOverlayIcon(result, decoratorDescriptor, IDecoration.TOP_LEFT);
-            result = SiriusDiagramEditorPlugin.getInstance().getImage(finalDescriptor);
+            result = DiagramUIPlugin.getPlugin().getImage(finalDescriptor);
         }
 
         return result;
@@ -111,20 +111,20 @@ public class OutlineLabelProvider extends LabelProvider implements IFontProvider
                 if (descriptor == null) {
                     descriptor = ImageDescriptor.getMissingImageDescriptor();
                 }
-                result = SiriusDiagramEditorPlugin.getInstance().getImage(descriptor);
+                result = DiagramUIPlugin.getPlugin().getImage(descriptor);
 
                 if (element instanceof DEdge) {
-                    final ImageDescriptor decoratorDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(SiriusEditPlugin.INSTANCE.getImage(ImagesPath.VIEW_EDGE_DECORATOR));
+                    final ImageDescriptor decoratorDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(SiriusEditPlugin.INSTANCE.getImage(DiagramImagesPath.VIEW_EDGE_DECORATOR));
                     final DecorationOverlayIcon finalDescriptor = new DecorationOverlayIcon(result, decoratorDescriptor, IDecoration.BOTTOM_LEFT);
-                    result = SiriusDiagramEditorPlugin.getInstance().getImage(finalDescriptor);
+                    result = DiagramUIPlugin.getPlugin().getImage(finalDescriptor);
 
                     result = computeFoldDecorator(result, (DEdge) element);
                 }
 
                 if (element instanceof DDiagramElement && new DDiagramElementQuery((DDiagramElement) element).isHidden()) {
-                    final ImageDescriptor decoratorDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(SiriusEditPlugin.INSTANCE.getImage(ImagesPath.HIDDEN_DECORATOR));
+                    final ImageDescriptor decoratorDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(SiriusEditPlugin.INSTANCE.getImage(DiagramImagesPath.HIDDEN_DECORATOR));
                     final DecorationOverlayIcon finalDescriptor = new DecorationOverlayIcon(result, decoratorDescriptor, IDecoration.TOP_LEFT);
-                    result = SiriusDiagramEditorPlugin.getInstance().getImage(finalDescriptor);
+                    result = DiagramUIPlugin.getPlugin().getImage(finalDescriptor);
 
                 }
             }
@@ -134,9 +134,9 @@ public class OutlineLabelProvider extends LabelProvider implements IFontProvider
 
     private Image computeFoldDecorator(final Image baseImage, final DEdge edge) {
         if (new DDiagramElementQuery(edge).isFolded()) {
-            final ImageDescriptor foldDescription = ExtendedImageRegistry.getInstance().getImageDescriptor(SiriusEditPlugin.INSTANCE.getImage(ImagesPath.FOLD_DECORATOR));
+            final ImageDescriptor foldDescription = ExtendedImageRegistry.getInstance().getImageDescriptor(SiriusEditPlugin.INSTANCE.getImage(DiagramImagesPath.FOLD_DECORATOR));
             final DecorationOverlayIcon finalFoldDescriptor = new DecorationOverlayIcon(baseImage, foldDescription, IDecoration.TOP_RIGHT);
-            return SiriusDiagramEditorPlugin.getInstance().getImage(finalFoldDescriptor);
+            return DiagramUIPlugin.getPlugin().getImage(finalFoldDescriptor);
         }
         return baseImage;
     }

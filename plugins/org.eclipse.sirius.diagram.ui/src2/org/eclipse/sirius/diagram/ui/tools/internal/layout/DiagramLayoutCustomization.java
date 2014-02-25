@@ -23,8 +23,8 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.CompositeLayout;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.Layout;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramBorderNodeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramElementContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Collections2;

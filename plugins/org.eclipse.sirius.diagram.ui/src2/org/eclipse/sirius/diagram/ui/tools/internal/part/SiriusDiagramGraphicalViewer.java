@@ -10,7 +10,7 @@
  *    Obeo - Adaptation
  ****************************************************************************/
 
-package org.eclipse.sirius.diagram.tools.internal.part;
+package org.eclipse.sirius.diagram.ui.tools.internal.part;
 
 import java.lang.reflect.Field;
 import java.util.List;
@@ -24,9 +24,9 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.parts.PaletteToolTransferDrop
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
 import org.eclipse.jface.util.TransferDropTargetListener;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.part.IDiagramDialectGraphicalViewer;
-import org.eclipse.sirius.diagram.tools.internal.editor.SiriusPaletteToolDropTargetListener;
-import org.eclipse.sirius.diagram.tools.internal.graphical.edit.policies.ChangeBoundRequestRecorder;
+import org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.SiriusPaletteToolDropTargetListener;
+import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.ChangeBoundRequestRecorder;
 import org.eclipse.ui.PlatformUI;
 
 /**
@@ -58,7 +58,7 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.part.IDiagramDialectGraphicalViewer#registerEditPartForSemanticElement(org.eclipse.emf.ecore.EObject,
+     * @see org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer#registerEditPartForSemanticElement(org.eclipse.emf.ecore.EObject,
      *      org.eclipse.gef.EditPart)
      */
     public void registerEditPartForSemanticElement(final EObject element, final EditPart ep) {
@@ -68,7 +68,7 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.part.IDiagramDialectGraphicalViewer#unregisterEditPartForSemanticElement(org.eclipse.emf.ecore.EObject,
+     * @see org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer#unregisterEditPartForSemanticElement(org.eclipse.emf.ecore.EObject,
      *      org.eclipse.gef.EditPart)
      */
     public void unregisterEditPartForSemanticElement(final EObject element, final EditPart ep) {
@@ -78,7 +78,7 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.part.IDiagramDialectGraphicalViewer#unregisterEditPart(org.eclipse.gef.EditPart)
+     * @see org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer#unregisterEditPart(org.eclipse.gef.EditPart)
      */
     public void unregisterEditPart(final EditPart ep) {
         elementToEditPartsMap.unregisterEditPart(ep);
@@ -87,7 +87,7 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.part.IDiagramDialectGraphicalViewer#findEditPartsForElement(String,
+     * @see org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer#findEditPartsForElement(String,
      *      Class)
      */
     public <T extends EditPart> List<T> findEditPartsForElement(final EObject element, final Class<T> editPartClass) {

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.api.permission;
+package org.eclipse.sirius.diagram.ui.tools.api.permission;
 
 import java.util.Collection;
 
@@ -19,10 +19,10 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DecorationEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.DiagramSemanticElementLockedNotificationFigure;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.navigation;
+package org.eclipse.sirius.diagram.ui.business.internal.navigation;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;

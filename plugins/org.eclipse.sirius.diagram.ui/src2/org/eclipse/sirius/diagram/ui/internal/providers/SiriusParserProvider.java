@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.providers;
+package org.eclipse.sirius.diagram.ui.internal.providers;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EAttribute;
@@ -22,17 +22,17 @@ import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.emf.ui.services.parser.ParserHintAdapter;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeBeginNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeEndNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerName2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeContainerNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListElementEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListName2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.NotationViewIDs;
-import org.eclipse.sirius.diagram.internal.parsers.MessageFormatParser;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerName2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListName2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.NotationViewIDs;
+import org.eclipse.sirius.diagram.ui.internal.parsers.MessageFormatParser;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**

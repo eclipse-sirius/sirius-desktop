@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.graphical.edit.policies;
+package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.geometry.Point;
@@ -20,9 +20,9 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editpolicies.ConnectionLineSegEditPolicy;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.Edge;
-import org.eclipse.sirius.diagram.business.api.query.ConnectionEditPartQuery;
-import org.eclipse.sirius.diagram.business.api.query.ConnectionQuery;
-import org.eclipse.sirius.diagram.business.internal.command.TreeLayoutSetConnectionBendpointsCommand;
+import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery;
+import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.command.TreeLayoutSetConnectionBendpointsCommand;
 
 /**
  * A specific ConnectionLineSegEditPolicy to override

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.refresh.listeners;
+package org.eclipse.sirius.diagram.ui.internal.refresh.listeners;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -41,13 +41,13 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.HideLabelFilter;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeBeginNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeEndNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.NotationViewIDs;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
-import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramInternalPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.NotationViewIDs;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 
 import com.google.common.collect.Iterables;
@@ -98,7 +98,7 @@ public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
         Command cmd = null;
         Map<View, Boolean> viewsToUpdate = new HashMap<View, Boolean>();
         boolean removeHideNote = SiriusDiagramEditorPlugin.getInstance().getPluginPreferences()
-                .getBoolean(SiriusDiagramPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name());
+                .getBoolean(SiriusDiagramInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name());
         for (Notification notification : event.getNotifications()) {
             if (notification.getNotifier() instanceof DDiagramElement) {
                 DDiagramElement dDiagramElement = (DDiagramElement) notification.getNotifier();

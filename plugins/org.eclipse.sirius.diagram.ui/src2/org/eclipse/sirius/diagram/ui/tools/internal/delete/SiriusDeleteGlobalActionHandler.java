@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.delete;
+package org.eclipse.sirius.diagram.ui.tools.internal.delete;
 
 import java.util.ArrayList;
 import java.util.Collection;

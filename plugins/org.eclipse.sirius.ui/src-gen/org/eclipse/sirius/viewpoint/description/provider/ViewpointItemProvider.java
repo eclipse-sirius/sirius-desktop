@@ -331,15 +331,6 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider impleme
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__VALIDATION_SET, ValidationFactory.eINSTANCE.createValidationSet()));
 
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATIONS,
-                org.eclipse.sirius.diagram.description.DescriptionFactory.eINSTANCE.createDiagramDescription()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATIONS,
-                org.eclipse.sirius.diagram.description.DescriptionFactory.eINSTANCE.createDiagramImportDescription()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATION_EXTENSIONS,
-                org.eclipse.sirius.diagram.description.DescriptionFactory.eINSTANCE.createDiagramExtensionDescription()));
-
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_JAVA_EXTENSIONS, DescriptionFactory.eINSTANCE.createJavaExtension()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_MM_EXTENSIONS, DescriptionFactory.eINSTANCE.createMetamodelExtensionSetting()));

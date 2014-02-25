@@ -8,12 +8,12 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.graphical.edit.styles;
+package org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.styles;
 
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.Square;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.SimpleStyleConfiguration;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.SimpleStyleConfiguration;
 
 /**
  * The style configuration for the simple square.
@@ -25,7 +25,7 @@ public class SimpleSquareStyleConfiguration extends SimpleStyleConfiguration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.SimpleStyleConfiguration#getBorderDimension(org.eclipse.sirius.viewpoint.DNode)
+     * @see org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.SimpleStyleConfiguration#getBorderDimension(org.eclipse.sirius.viewpoint.DNode)
      */
     @Override
     public Insets getBorderDimension(final DNode node) {

@@ -9,7 +9,7 @@
  *     IBM Corporation - initial API and implementation
  *     Obeo - Adaptations.
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor;
 
 import java.util.ArrayList;
 import java.util.Iterator;

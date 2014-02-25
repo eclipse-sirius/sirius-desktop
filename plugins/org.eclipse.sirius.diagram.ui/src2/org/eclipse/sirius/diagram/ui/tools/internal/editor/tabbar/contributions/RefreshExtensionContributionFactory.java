@@ -8,14 +8,14 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions;
 
 import org.eclipse.jface.action.ActionContributionItem;
-import org.eclipse.sirius.diagram.ImagesPath;
-import org.eclipse.sirius.diagram.part.SiriusDiagramActionBarContributor;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.internal.actions.refresh.RefreshDiagramAction;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions.expressions.DDiagramTabbarExpression;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramActionBarContributor;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.refresh.RefreshDiagramAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.expressions.DDiagramTabbarExpression;
 import org.eclipse.ui.menus.IContributionRoot;
 import org.eclipse.ui.services.IServiceLocator;
 
@@ -32,7 +32,7 @@ public class RefreshExtensionContributionFactory extends SiriusTabbarExtensionCo
     public void createContributionItems(IServiceLocator serviceLocator, IContributionRoot additions) {
 
         super.createContributionItems(serviceLocator, additions);
-        RefreshDiagramAction action = new RefreshDiagramAction(SiriusDiagramActionBarContributor.REFRESH_DIAGRAM, SiriusDiagramEditorPlugin.getBundledImageDescriptor(ImagesPath.REFRESH_IMG));
+        RefreshDiagramAction action = new RefreshDiagramAction(SiriusDiagramActionBarContributor.REFRESH_DIAGRAM, DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.REFRESH_IMG));
 
         additions.addContributionItem(new ActionContributionItem(action), new DDiagramTabbarExpression());
     }

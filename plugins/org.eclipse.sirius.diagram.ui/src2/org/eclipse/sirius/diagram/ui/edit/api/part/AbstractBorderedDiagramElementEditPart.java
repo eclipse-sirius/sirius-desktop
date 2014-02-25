@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.edit.api.part;
+package org.eclipse.sirius.diagram.ui.edit.api.part;
 
 import java.util.List;
 
@@ -21,10 +21,10 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPar
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.edit.internal.part.AbstractDiagramNodeEditPartOperation;
-import org.eclipse.sirius.diagram.edit.internal.part.DiagramElementEditPartOperation;
-import org.eclipse.sirius.diagram.edit.internal.part.EditStatusUpdater;
-import org.eclipse.sirius.diagram.tools.api.permission.EditPartAuthorityListener;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.AbstractDiagramNodeEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.EditStatusUpdater;
+import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListener;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.swt.graphics.Image;

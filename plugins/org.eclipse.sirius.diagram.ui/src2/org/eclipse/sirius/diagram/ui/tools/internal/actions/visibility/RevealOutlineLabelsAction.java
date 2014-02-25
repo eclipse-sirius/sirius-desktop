@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions.visibility;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -17,14 +17,14 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.RootEditPart;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.ImagesPath;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.tools.internal.editor.DiagramOutlinePage;
 import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.DiagramOutlinePage;
 import org.eclipse.sirius.ext.base.Option;
 
 /**
@@ -53,7 +53,7 @@ public class RevealOutlineLabelsAction extends AbstractRevealElementsAction<Obje
      *            the action's text, or <code>null</code> if there is no text
      */
     public RevealOutlineLabelsAction(final String text) {
-        this(text, SiriusDiagramEditorPlugin.getBundledImageDescriptor(ImagesPath.REVEAL_LABEL_IMG));
+        this(text, DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.REVEAL_LABEL_IMG));
     }
 
     /**

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.graphical.edit.policies;
+package org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies;
 
 import java.util.Collection;
 import java.util.Collections;

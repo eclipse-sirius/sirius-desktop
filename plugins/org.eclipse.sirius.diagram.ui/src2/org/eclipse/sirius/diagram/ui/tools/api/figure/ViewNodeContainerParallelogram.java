@@ -11,7 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.api.figure;
 
 import org.eclipse.draw2d.MarginBorder;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IContainerLabelOffsets;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
 
 /**
  * Figure for the parallelogram shape.

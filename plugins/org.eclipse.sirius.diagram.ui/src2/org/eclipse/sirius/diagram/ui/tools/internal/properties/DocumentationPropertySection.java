@@ -26,9 +26,9 @@ import org.eclipse.jface.text.source.SourceViewer;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditor;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
@@ -290,7 +290,7 @@ public class DocumentationPropertySection extends AbstractPropertySection {
      * @return The help icon to show in our label.
      */
     protected Image getHelpIcon() {
-        ImageDescriptor findImageDescriptor = SiriusDiagramEditorPlugin.findImageDescriptor(ICONS_PREFERENCES_HELP);
-        return SiriusDiagramEditorPlugin.getInstance().getImage(findImageDescriptor);
+        ImageDescriptor findImageDescriptor = DiagramUIPlugin.Implementation.findImageDescriptor(ICONS_PREFERENCES_HELP);
+        return DiagramUIPlugin.getPlugin().getImage(findImageDescriptor);
     }
 }

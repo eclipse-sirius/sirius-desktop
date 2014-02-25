@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.palette;
+package org.eclipse.sirius.diagram.ui.tools.internal.palette;
 
 import org.eclipse.gmf.runtime.diagram.ui.internal.parts.PaletteToolTransferDragSourceListener;
 import org.eclipse.gmf.runtime.gef.ui.palette.customize.PaletteViewerEx;

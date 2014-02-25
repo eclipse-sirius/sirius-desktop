@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.edit.api.part;
+package org.eclipse.sirius.diagram.ui.edit.api.part;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,16 +35,16 @@ import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DNodeList;
-import org.eclipse.sirius.diagram.business.internal.query.RequestQuery;
-import org.eclipse.sirius.diagram.edit.internal.part.CommonEditPartOperation;
-import org.eclipse.sirius.diagram.edit.internal.part.DiagramContainerEditPartOperation;
-import org.eclipse.sirius.diagram.edit.internal.part.DiagramListEditPartOperation;
-import org.eclipse.sirius.diagram.internal.edit.policies.DNodeListItemSemanticEditPolicy;
-import org.eclipse.sirius.diagram.internal.edit.policies.NonResizableAndNonDuplicableEditPolicy;
-import org.eclipse.sirius.diagram.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
+import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramContainerEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramListEditPartOperation;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeListItemSemanticEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.NonResizableAndNonDuplicableEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc;
+import org.eclipse.sirius.diagram.ui.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
 
 import com.google.common.collect.Iterables;
 
@@ -249,7 +249,7 @@ public abstract class AbstractDiagramListEditPart extends AbstractDiagramElement
      * @was-generated
      */
     protected LayoutEditPolicy createLayoutEditPolicy() {
-        LayoutEditPolicy lep = new org.eclipse.sirius.diagram.tools.api.policies.LayoutEditPolicy() {
+        LayoutEditPolicy lep = new org.eclipse.sirius.diagram.ui.tools.api.policies.LayoutEditPolicy() {
 
             protected EditPolicy createChildEditPolicy(EditPart child) {
                 if (child instanceof IBorderItemEditPart) {

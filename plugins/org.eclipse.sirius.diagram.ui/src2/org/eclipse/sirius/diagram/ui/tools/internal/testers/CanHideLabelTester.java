@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.testers;
+package org.eclipse.sirius.diagram.ui.tools.internal.testers;
 
 import java.util.Iterator;
 
@@ -16,7 +16,7 @@ import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 
 /**
  * Tester to know if all selected elements have a label that can be hide and

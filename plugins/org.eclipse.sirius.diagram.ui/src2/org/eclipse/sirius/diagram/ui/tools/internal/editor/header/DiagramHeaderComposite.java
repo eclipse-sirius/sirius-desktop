@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor.header;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor.header;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -35,7 +35,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.api.diagramtype.HeaderData;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ControlEvent;

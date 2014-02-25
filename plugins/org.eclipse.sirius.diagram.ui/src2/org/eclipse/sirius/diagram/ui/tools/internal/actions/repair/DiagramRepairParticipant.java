@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions.repair;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.repair;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -33,12 +33,12 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.helper.concern.ConcernService;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
-import org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizer;
-import org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
-import org.eclipse.sirius.diagram.internal.refresh.listeners.GMFDiagramUpdater;
-import org.eclipse.sirius.diagram.tools.api.migration.DiagramCrossReferencer;
-import org.eclipse.sirius.diagram.tools.internal.actions.repair.commands.RemoveInvalidViewsCommand;
+import org.eclipse.sirius.diagram.ui.business.api.view.refresh.CanonicalSynchronizer;
+import org.eclipse.sirius.diagram.ui.business.api.view.refresh.CanonicalSynchronizerFactory;
+import org.eclipse.sirius.diagram.ui.internal.refresh.listeners.GMFDiagramUpdater;
+import org.eclipse.sirius.diagram.ui.tools.api.migration.DiagramCrossReferencer;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.repair.commands.RemoveInvalidViewsCommand;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
 

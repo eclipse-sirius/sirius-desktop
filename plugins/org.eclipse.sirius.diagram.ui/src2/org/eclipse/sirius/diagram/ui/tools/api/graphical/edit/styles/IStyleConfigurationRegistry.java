@@ -8,10 +8,10 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.api.graphical.edit.styles;
+package org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles;
 
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.tools.internal.graphical.edit.styles.StyleConfigurationRegistry;
+import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.styles.StyleConfigurationRegistry;
 import org.eclipse.sirius.viewpoint.Style;
 
 /**

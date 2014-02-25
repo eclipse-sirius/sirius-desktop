@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.refresh.listeners;
+package org.eclipse.sirius.diagram.ui.internal.refresh.listeners;
 
 import java.util.Collection;
 
@@ -18,8 +18,8 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.CompositeFilterApplicationBuilder;
-import org.eclipse.sirius.diagram.internal.refresh.SiriusDiagramSessionEventBroker;
+import org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters.CompositeFilterApplicationBuilder;
+import org.eclipse.sirius.diagram.ui.internal.refresh.SiriusDiagramSessionEventBroker;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 

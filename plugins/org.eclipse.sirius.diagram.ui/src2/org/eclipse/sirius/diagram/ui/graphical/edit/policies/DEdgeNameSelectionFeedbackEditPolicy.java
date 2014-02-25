@@ -8,13 +8,13 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.graphical.edit.policies;
+package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramEdgeEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.AbstractDEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
 
 /**
  * An edit policy that can show feedback for selection on a

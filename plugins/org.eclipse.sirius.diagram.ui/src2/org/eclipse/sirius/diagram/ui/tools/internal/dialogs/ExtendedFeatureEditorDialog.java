@@ -44,7 +44,7 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ExtensionFeatureDescription;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -130,14 +130,14 @@ public class ExtendedFeatureEditorDialog extends Dialog {
                 ImageDescriptor descriptor = null;
                 if (element instanceof EObject) {
                     final EObject target = (EObject) element;
-                    final IItemLabelProvider myLabelProvider = (IItemLabelProvider) SiriusDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory().adapt(target, IItemLabelProvider.class);
+                    final IItemLabelProvider myLabelProvider = (IItemLabelProvider) DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory().adapt(target, IItemLabelProvider.class);
                     descriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(myLabelProvider.getImage(target));
 
                 }
                 if (descriptor == null) {
                     descriptor = ImageDescriptor.getMissingImageDescriptor();
                 }
-                return SiriusDiagramEditorPlugin.getInstance().getImage(descriptor);
+                return DiagramUIPlugin.getPlugin().getImage(descriptor);
             }
 
         };

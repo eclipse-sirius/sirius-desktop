@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.refresh.listeners;
+package org.eclipse.sirius.diagram.ui.internal.refresh.listeners;
 
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;

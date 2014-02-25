@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.preferences;
+package org.eclipse.sirius.diagram.ui.internal.preferences;
 
 import org.eclipse.gmf.runtime.diagram.ui.preferences.PrintingPreferencePage;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;

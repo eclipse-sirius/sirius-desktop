@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.refresh.edge;
+package org.eclipse.sirius.diagram.ui.internal.refresh.edge;
 
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Point;
@@ -25,7 +25,7 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.internal.refresh.GMFHelper;
+import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.ext.base.Option;
 
 /**

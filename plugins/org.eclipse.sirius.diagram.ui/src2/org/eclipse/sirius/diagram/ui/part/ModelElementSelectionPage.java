@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.part;
+package org.eclipse.sirius.diagram.ui.part;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.FeatureMap;
@@ -21,6 +21,7 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -96,8 +97,8 @@ public class ModelElementSelectionPage extends WizardPage {
         layoutData.heightHint = 300;
         layoutData.widthHint = 300;
         modelVewer.getTree().setLayoutData(layoutData);
-        modelVewer.setContentProvider(new AdapterFactoryContentProvider(SiriusDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory()));
-        modelVewer.setLabelProvider(new AdapterFactoryLabelProvider(SiriusDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory()));
+        modelVewer.setContentProvider(new AdapterFactoryContentProvider(DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory()));
+        modelVewer.setLabelProvider(new AdapterFactoryLabelProvider(DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory()));
         if (selectedModelElement != null) {
             modelVewer.setInput(selectedModelElement.eResource());
             modelVewer.setSelection(new StructuredSelection(selectedModelElement));

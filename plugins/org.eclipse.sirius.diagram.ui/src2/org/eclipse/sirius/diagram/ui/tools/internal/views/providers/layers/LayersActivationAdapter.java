@@ -17,7 +17,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.Layer;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.PaletteManager;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
 import org.eclipse.ui.PlatformUI;
 
 /**

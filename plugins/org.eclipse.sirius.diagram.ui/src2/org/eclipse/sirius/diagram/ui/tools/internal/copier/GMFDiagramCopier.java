@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.copier;
+package org.eclipse.sirius.diagram.ui.tools.internal.copier;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +23,7 @@ import org.eclipse.sirius.business.api.dialect.identifier.RepresentationElementI
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.NodeStyle;
-import org.eclipse.sirius.diagram.business.internal.dialect.identifier.DiagramIdentifier;
+import org.eclipse.sirius.diagram.ui.business.internal.dialect.identifier.DiagramIdentifier;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 

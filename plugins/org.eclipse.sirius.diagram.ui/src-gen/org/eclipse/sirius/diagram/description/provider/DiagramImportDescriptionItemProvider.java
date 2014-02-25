@@ -35,10 +35,10 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.concern.ConcernFactory;
 import org.eclipse.sirius.diagram.description.filter.FilterFactory;
 import org.eclipse.sirius.diagram.description.tool.ToolFactory;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemProvider;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationFactory;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This is the item provider adapter for a
@@ -679,7 +679,7 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
      */
     @Override
     public ResourceLocator getResourceLocator() {
-        return SiriusEditPlugin.INSTANCE;
+        return DiagramUIPlugin.INSTANCE;
     }
 
 }

@@ -9,7 +9,7 @@
  *     Research Group Software Construction,
  *     RWTH Aachen University, Germany - initial API and implementation
  */
-package org.eclipse.sirius.diagram.tools.internal.ui;
+package org.eclipse.sirius.diagram.ui.tools.internal.ui;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.graphical.edit.part.specific;
+package org.eclipse.sirius.diagram.ui.graphical.edit.part.specific;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,7 +22,7 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.AbstractNodeDecorateSemanticElementOrdering;
 
 /**

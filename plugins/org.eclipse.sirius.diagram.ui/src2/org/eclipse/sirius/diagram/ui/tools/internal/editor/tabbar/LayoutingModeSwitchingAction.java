@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor.tabbar;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar;
 
 import java.util.List;
 
@@ -31,9 +31,9 @@ import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
-import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.ui.actions.ActionIds;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IEditorPart;
@@ -72,13 +72,13 @@ public class LayoutingModeSwitchingAction extends DiagramAction {
 
     // private static final ImageDescriptor
     // ACTIVATE_LAYOUTING_MODE_IMAGE_DESCRIPTOR =
-    // SiriusDiagramEditorPlugin.getBundledImageDescriptor("icons/layoutingMode_activate.png");
+    // DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/layoutingMode_activate.png");
 
     /**
      * The Image used in the editor's status line to indicate that LayoutingMode
      * is on.
      */
-    private static final Image ACTIVATE_LAYOUTING_MODE_IMAGE = SiriusDiagramEditorPlugin.getInstance().getImage(ACTIVATE_LAYOUTING_MODE_IMAGE_DESCRIPTOR);
+    private static final Image ACTIVATE_LAYOUTING_MODE_IMAGE = DiagramUIPlugin.getPlugin().getImage(ACTIVATE_LAYOUTING_MODE_IMAGE_DESCRIPTOR);
 
     /**
      * The {@link DDiagram} on witch the layouting mode should be switched.

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor.tabbar;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar;
 
 import org.eclipse.gef.ui.actions.ZoomComboContributionItem;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.AutoSizeAction;
@@ -20,19 +20,19 @@ import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
-import org.eclipse.sirius.diagram.part.SiriusDiagramActionBarContributor;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.tools.internal.actions.SelectHiddenElementsAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.SelectPinnedElementsAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.visibility.HideDDiagramElementAction;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.HideDDiagramElementLabelActionContributionItem;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.TabbarAlignMenuManager;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.TabbarArrangeMenuManager;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.TabbarColorPropertyContributionItem;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.TabbarSelectMenuManager;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions.SiriusTabbarExtensionContributionFactory.TabbarActionContributionItem;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramActionBarContributor;
 import org.eclipse.sirius.diagram.ui.tools.api.action.ConcernComboContributionItem;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.SelectHiddenElementsAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.SelectPinnedElementsAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.HideDDiagramElementLabelActionContributionItem;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarAlignMenuManager;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarArrangeMenuManager;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarColorPropertyContributionItem;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarSelectMenuManager;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.SiriusTabbarExtensionContributionFactory.TabbarActionContributionItem;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.ui.IWorkbenchPage;

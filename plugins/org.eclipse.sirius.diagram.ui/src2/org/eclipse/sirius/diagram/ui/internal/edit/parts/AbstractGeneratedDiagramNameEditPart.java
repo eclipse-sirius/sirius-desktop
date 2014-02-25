@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.parts;
+package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import java.util.Collections;
 import java.util.List;
@@ -39,8 +39,8 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.text.contentassist.IContentAssistProcessor;
 import org.eclipse.jface.viewers.ICellEditorValidator;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.policies.SiriusTextSelectionEditPolicy;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.SiriusTextSelectionEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;

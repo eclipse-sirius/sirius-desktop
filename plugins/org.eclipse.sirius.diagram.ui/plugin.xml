@@ -18,4 +18,1850 @@
    <extension-point id="layoutProvider" name="org.eclipse.sirius.diagram.ui.layoutProvider" schema="schema/layoutProvider.exsd"/>
    <extension-point id="layoutDataManager" name="org.eclipse.sirius.diagram.ui.layoutDataManager" schema="schema/layoutDataManager.exsd"/>
    <extension-point id="imageSelector" name="org.eclipse.sirius.diagram.ui.imageSelector" schema="schema/imageSelector.exsd"/>
+
+   <extension point="org.eclipse.ui.elementFactories">
+     <factory
+         class="org.eclipse.sirius.ui.business.api.session.SessionEditorInputFactory"
+         id="org.eclipse.sirius.ui.business.api.session.SessionEditorInputFactory"/>
+  </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <?gmfgen generated="true"?>
+      <editor
+         id="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID"
+         name="%editorName"
+         icon="icons/obj16/DDiagram.gif"
+         extensions="ddiagram"
+         default="true"
+         class="org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl"
+         matchingStrategy="org.eclipse.sirius.diagram.ui.part.SiriusMatchingStrategy"
+         contributorClass="org.eclipse.sirius.diagram.ui.part.SiriusDiagramActionBarContributor">
+      </editor>
+   </extension>
+
+   <extension point="org.eclipse.ui.contexts">
+      <?gmfgen generated="true"?>
+      <context
+         description="%context.description"
+         id="org.eclipse.sirius.diagram.ui.diagramContext"
+         name="%context.name"
+         parentId="org.eclipse.gmf.runtime.diagram.ui.diagramContext">
+      </context>
+   </extension>
+
+
+
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.action.globalActionHandlerProviders">
+      <?gmfgen generated="true"?>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramGlobalActionHandlerProvider"
+         id="SiriusPresentation">
+         <Priority name="Lowest"/>
+         <ViewId id="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="delete"/>
+            </ElementType>
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+               <GlobalActionId actionId="save"/>
+            </ElementType>
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+              <GlobalActionId actionId="save">
+              </GlobalActionId>
+           </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.sirius.diagram.ui.tools.internal.print.SiriusDiagramWithPrintGlobalActionHandlerProvider"
+         id="SiriusPresentationPrint">
+         <Priority name="Lowest"/>
+         <ViewId id="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="print"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.providers.ide.providers.DiagramIDEGlobalActionHandlerProvider"
+         id="SiriusPresentationIDE">
+         <Priority name="Lowest"/>
+         <ViewId id="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="bookmark"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+            class="org.eclipse.sirius.diagram.ui.tools.internal.clipboard.SiriusClipboardGlobalActionHandlerProvider"
+            id="SiriusRender">
+         <Priority name="High"/>
+         <ViewId id="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="cut"/>
+               <GlobalActionId actionId="copy"/>
+               <GlobalActionId actionId="paste"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+            class="org.eclipse.sirius.diagram.ui.tools.internal.delete.SiriusDeleteGlobalActionHandlerProvider"
+            id="SiriusDelete">
+         <Priority name="High"/>
+         <ViewId id="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="delete"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+   </extension>
+
+    <extension id="actionFilterProviders" name="%ext.actionFilterProviders" point="org.eclipse.gmf.runtime.common.ui.services.action.actionFilterProviders">
+         <ActionFilterProvider class="org.eclipse.sirius.diagram.ui.tools.internal.menu.SiriusActionFilterProvider">
+            <Priority name="Highest"/>
+            <Attribute name="canDuplicate" value="enablement"/>
+            <Attribute name="canDuplicate" value="visibility"/>
+         </ActionFilterProvider>
+      </extension>
+
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
+      <?gmfgen generated="false"?>
+     <contributionItemProvider class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContributionItemProvider" checkPluginLoaded="false">
+        <Priority name="Low">
+        </Priority>
+        <partContribution class="org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart">
+           <partAction menubarPath="/diagramMenu/sizeGroup" toolbarPath="/toolbarFormatGroup" id="makeSameSizeBothAction">
+           </partAction>
+        </partContribution>
+        <popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+           <popupAction
+                 id="makeSameSizeBothAction"
+                 path="/formatMenu/sizeGroup">
+           </popupAction>
+        </popupContribution>
+     </contributionItemProvider>
+      <?gmfgen generated="true"?>
+      <contributionItemProvider class="org.eclipse.sirius.diagram.ui.internal.providers.SiriusContributionItemProvider">
+         <Priority name="Low" />
+         <partContribution id="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID">
+           <partMenuGroup menubarPath="/edit/" id="copyLayoutGroup" separator="true" />
+           <partAction menubarPath="/edit/copyLayoutGroup" id="copyLayoutAction" />
+           <partAction menubarPath="/edit/copyLayoutGroup" id="pasteLayoutAction" />
+           <partAction menubarPath="/diagramMenu/arrangeMenu/arrangeGroup" id="arrangeBorderedNodesAction"/>
+           <!--partAction menubarPath="/diagramMenu/routerMenu/routerGroup" id="treeRoutingStyleAction"/-->
+           <partAction toolbarPath="/arrangeMenu/arrangeGroup" id="arrangeBorderedNodesActionToolBar">
+           </partAction>
+         </partContribution>
+
+         <popupContribution class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
+            <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart" />
+            <popupMenuGroup path="/editMenu/" id="copyLayoutGroup" />
+            <popupAction path="/editMenu/copyGroup" id="copyLayoutAction" />
+            <popupAction path="/editMenu/copyGroup" id="pasteLayoutAction" />
+            <popupAction path="/formatMenu/routerMenu/routerGroup" id="treeRoutingStyleAction"/>
+
+            <popupMenuGroup path="/formatMenu/" id="pinGroup" />
+            <popupAction path="/formatMenu/pinGroup" id="pinElementsAction" />
+            <popupAction path="/formatMenu/pinGroup" id="unpinElementsAction" />
+            <popupAction path="/formatMenu/arrangeMenu/arrangeGroup" id="arrangeBorderedNodesAction"/>
+         </popupContribution>
+         <popupContribution
+               class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
+            <popupStructuredContributionCriteria
+                  objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+            </popupStructuredContributionCriteria>
+            <popupAction
+                  id="newCopyToImageAction"
+                  path="/additions">
+            </popupAction>
+            <popupAction
+                  id="selectHiddenElementsAction" path="/additions"/>
+         </popupContribution>
+
+      </contributionItemProvider>
+
+
+      <contributionItemProvider
+            class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContributionItemProvider"
+            checkPluginLoaded="false">
+         <Priority name="High"/>
+         <popupContribution
+               class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+            <popupStructuredContributionCriteria
+                  objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+            </popupStructuredContributionCriteria>
+            <popupMenu
+                  id="arrangeMenu"
+                  path="/filterFormatGroup">
+            </popupMenu>
+            <popupMenuGroup
+                  id="myArrangeGroup"
+                  path="/arrangeMenu/">
+            </popupMenuGroup>
+            <popupAction
+                  id="toolbarArrangeAllAction"
+                  path="/arrangeMenu/myArrangeGroup">
+            </popupAction>
+         </popupContribution>
+         <popupContribution
+               class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+            <popupPredefinedItem
+             id="deleteFromDiagramAction"
+              remove="true"/>
+            <popupPredefinedItem
+              path="/fileMenu/saveGroup"
+              id="CopyToImageAction"
+              remove="true" />
+            <popupPredefinedItem
+                  id="compartmentMenu"
+                  path="/filtersMenu/expandFilterGroup"
+                  remove="true">
+            </popupPredefinedItem>
+            <popupPredefinedItem
+                  id="allCompartmentsGroup"
+                  path="/filtersMenu/compartmentMenu/"
+                  remove="true">
+            </popupPredefinedItem>
+            <popupPredefinedItem
+                  id="filtersMenu"
+                  path="/filterFormatGroup"
+                  remove="true">
+            </popupPredefinedItem>
+            <popupPredefinedItem
+                  id="addNoteLinkAction"
+                  path="/addGroup"
+                  remove="true">
+            </popupPredefinedItem>
+            <popupPredefinedItem
+                  id="allCompartmentsAction"
+                  path="/filtersMenu/compartmentMenu/allCompartmentsGroup"
+                  remove="true">
+            </popupPredefinedItem>
+            <popupPredefinedItem
+                  id="noCompartmentsAction"
+                  path="/filtersMenu/compartmentMenu/allCompartmentsGroup"
+                  remove="true">
+            </popupPredefinedItem>
+            <popupPredefinedItem
+                  id="undo"
+                  path="/editMenu/undoGroup"
+                  remove="true">
+            </popupPredefinedItem>
+            <popupPredefinedItem
+                  id="redo"
+                  path="/editMenu/undoGroup"
+                  remove="true">
+            </popupPredefinedItem>
+            <popupPredefinedItem
+                  id="addNoteAction"
+                  path="/diagramAddmenu/addDiagramGeneralGroup"
+                  remove="true">
+            </popupPredefinedItem>
+            <popupPredefinedItem
+                  id="addTextAction"
+                  path="/diagramAddmenu/addDiagramGeneralGroup"
+                  remove="true">
+            </popupPredefinedItem>
+            <popupPredefinedItem
+                  id="diagramAddMenu"
+                  path="/addGroup"
+                  remove="true">
+            </popupPredefinedItem>
+            <popupPredefinedItem
+                  id="print"
+                  path="/fileMenu/printGroup"
+                  remove="true">
+            </popupPredefinedItem>
+            <popupPredefinedItem
+                  id="connectorLabelMenu"
+                  path="/filtersMenu/expandFilterGroup"
+                  remove="true">
+            </popupPredefinedItem>
+            <popupPredefinedItem
+                  id="allConnectorLabelsGroup"
+                  path="/filtersMenu/connectorLabelMenu/"
+                  remove="true">
+            </popupPredefinedItem>
+            <popupPredefinedItem
+                  id="showConnectorLabels"
+                  path="/filtersMenu/connectorLabelMenu/allConnectorLabelsGroup"
+                  remove="true">
+            </popupPredefinedItem>
+            <popupPredefinedItem
+                  id="hideConnectorLabels"
+                  path="/filtersMenu/connectorLabelMenu/allConnectorLabelsGroup"
+                  remove="true">
+            </popupPredefinedItem>
+            <popupPredefinedItem
+                  id="viewMenu"
+                  path="/viewGroup"
+                  remove="true">
+            </popupPredefinedItem>
+            <popupPredefinedItem
+                  id="showCompartmentTitle"
+                  path="/filtersMenu/miscellaneousGroup"
+                  remove="true">
+            </popupPredefinedItem>
+            <popupPredefinedItem
+                  id="zoomContributionItem"
+                  path="/viewMenu"
+                  remove="true">
+            </popupPredefinedItem>
+            <popupPredefinedItem
+                  id="undoGroup"
+                  path="/editMenu/"
+                  remove="true">
+            </popupPredefinedItem>
+            <popupPredefinedItem
+                  id="propertiesGroup"
+                  remove="true">
+            </popupPredefinedItem>
+            <popupPredefinedItem
+                  id="toolbarArrangeAllAction"
+                  path="/filterFormatGroup"
+                  remove="true">
+            </popupPredefinedItem>
+            <popupPredefinedItem
+                  id="treeRouterAction"
+                  path="/formatMenu/routerMenu/routerGroup"
+                  remove="true">
+            </popupPredefinedItem>
+            <popupStructuredContributionCriteria
+                  objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"
+                  policyClass="org.eclipse.sirius.diagram.ui.tools.internal.menu.SiriusPopupMenuContributionPolicy">
+            </popupStructuredContributionCriteria>
+         </popupContribution>
+      </contributionItemProvider>
+
+      <contributionItemProvider
+            class="org.eclipse.sirius.diagram.ui.internal.providers.SiriusContributionItemProvider"
+            checkPluginLoaded="false">
+         <Priority name="Lowest"/>
+         <popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+            <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+            </popupStructuredContributionCriteria>
+            <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart">
+            </popupStructuredContributionCriteria>
+            <!-- added popup menu declaration here for display ordering purposes (see plugin.xml of org.eclipse.gmf.runtime.diagram.ui.providers -->
+            <popupMenuGroup id="umlAddGroup">
+            </popupMenuGroup>
+            <popupMenuGroup id="addGroup">
+            </popupMenuGroup>
+            <popupMenuGroup id="navigateGroup">
+            </popupMenuGroup>
+            <popupMenuGroup id="fileGroup">
+            </popupMenuGroup>
+            <popupMenuGroup id="editGroup">
+            </popupMenuGroup>
+            <popupMenuGroup id="findGroup">
+            </popupMenuGroup>
+            <popupMenuGroup id="filterFormatGroup">
+            </popupMenuGroup>
+         </popupContribution>
+      </contributionItemProvider>
+      <!-- Remove the geoshape add menus -->
+    <contributionItemProvider
+            checkPluginLoaded="false"
+            class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContributionItemProvider">
+          <Priority name="Highest"/>
+      <popupContribution
+        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+              <popupPredefinedItem
+          id="addLineAction"
+          path="/diagramAddMenu/addGeoShapesGroup"
+          remove="true">
+              </popupPredefinedItem>
+              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
+          </popupContribution>
+      <popupContribution
+        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+              <popupPredefinedItem
+          id="addOvalAction"
+          path="/diagramAddMenu/addGeoShapesGroup"
+          remove="true">
+              </popupPredefinedItem>
+              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
+          </popupContribution>
+      <popupContribution
+        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+              <popupPredefinedItem
+          id="addTriangleAction"
+          path="/diagramAddMenu/addGeoShapesGroup"
+          remove="true">
+              </popupPredefinedItem>
+              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
+          </popupContribution>
+      <popupContribution
+        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+              <popupPredefinedItem
+          id="addRectangleAction"
+          path="/diagramAddMenu/addGeoShapesGroup"
+          remove="true">
+              </popupPredefinedItem>
+              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
+          </popupContribution>
+      <popupContribution
+        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+              <popupPredefinedItem
+          id="addHexagonAction"
+          path="/diagramAddMenu/addGeoShapesGroup"
+          remove="true">
+              </popupPredefinedItem>
+              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
+          </popupContribution>
+      <popupContribution
+        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+              <popupPredefinedItem
+          id="addOctagonAction"
+          path="/diagramAddMenu/addGeoShapesGroup"
+          remove="true">
+              </popupPredefinedItem>
+              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
+          </popupContribution>
+      <popupContribution
+        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+              <popupPredefinedItem
+          id="addPentagonAction"
+          path="/diagramAddMenu/addGeoShapesGroup"
+          remove="true">
+              </popupPredefinedItem>
+              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
+          </popupContribution>
+      <popupContribution
+        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+              <popupPredefinedItem
+          id="addDiamondAction"
+          path="/diagramAddMenu/addGeoShapesGroup"
+          remove="true">
+              </popupPredefinedItem>
+              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
+          </popupContribution>
+      <popupContribution
+        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+              <popupPredefinedItem
+          id="addPolygonAction"
+          path="/diagramAddMenu/addGeoShapesGroup"
+          remove="true">
+              </popupPredefinedItem>
+              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
+          </popupContribution>
+      <popupContribution
+        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+              <popupPredefinedItem
+          id="addShadowRectangleAction"
+          path="/diagramAddMenu/addGeoShapes2Group"
+          remove="true">
+              </popupPredefinedItem>
+              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
+          </popupContribution>
+      <popupContribution
+        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+              <popupPredefinedItem
+          id="add3DRectangleAction"
+          path="/diagramAddMenu/addGeoShapes2Group"
+          remove="true">
+              </popupPredefinedItem>
+              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
+          </popupContribution>
+      <popupContribution
+        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+              <popupPredefinedItem
+          id="addRoundRectangleAction"
+          path="/diagramAddMenu/addGeoShapes2Group"
+          remove="true">
+              </popupPredefinedItem>
+              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
+          </popupContribution>
+      <popupContribution
+        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+              <popupPredefinedItem
+          id="addCylinderAction"
+          path="/diagramAddMenu/addGeoShapes2Group"
+          remove="true">
+              </popupPredefinedItem>
+              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
+          </popupContribution>
+    </contributionItemProvider>
+  <contributionItemProvider
+        class="org.eclipse.sirius.diagram.ui.internal.providers.SiriusContributionItemProvider">
+     <Priority
+           name="Low">
+     </Priority>
+     <popupContribution
+           class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
+        <popupStructuredContributionCriteria
+              objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+        </popupStructuredContributionCriteria>
+        <popupAction
+              id="arrangeBorderedNodesAction">
+        </popupAction>
+     </popupContribution>
+  </contributionItemProvider>
+  </extension>
+
+   <extension point="org.eclipse.core.runtime.preferences">
+      <?gmfgen generated="true"?>
+      <initializer class="org.eclipse.sirius.diagram.ui.internal.preferences.DiagramPreferenceInitializer"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.preferencePages">
+      <?gmfgen generated="true"?>
+      <page
+            id="org.eclipse.sirius.diagram.ui.general"
+            name="%preference.page.title.org.eclipse.sirius.diagram.ui.general"
+            class="org.eclipse.sirius.diagram.ui.internal.preferences.DiagramGeneralPreferencePage"
+            category="org.eclipse.sirius.ui.page">
+      </page>
+      <page
+            id="org.eclipse.sirius.diagram.ui.appearance"
+            name="%preference.page.title.org.eclipse.sirius.diagram.ui.appearance"
+            category="org.eclipse.sirius.diagram.ui.general"
+            class="org.eclipse.sirius.diagram.ui.internal.preferences.DiagramAppearancePreferencePage">
+      </page>
+      <page
+            id="org.eclipse.sirius.diagram.ui.connections"
+            name="%preference.page.title.org.eclipse.sirius.diagram.ui.connections"
+            category="org.eclipse.sirius.diagram.ui.general"
+            class="org.eclipse.sirius.diagram.ui.internal.preferences.DiagramConnectionsPreferencePage">
+      </page>
+      <page
+            id="org.eclipse.sirius.diagram.ui.printing"
+            name="%preference.page.title.org.eclipse.sirius.diagram.ui.printing"
+            category="org.eclipse.sirius.diagram.ui.general"
+            class="org.eclipse.sirius.diagram.ui.internal.preferences.DiagramPrintingPreferencePage">
+      </page>
+      <page
+            id="org.eclipse.sirius.diagram.ui.rulersAndGrid"
+            name="%preference.page.title.org.eclipse.sirius.diagram.ui.rulersAndGrid"
+            category="org.eclipse.sirius.diagram.ui.general"
+            class="org.eclipse.sirius.diagram.ui.internal.preferences.DiagramRulersAndGridPreferencePage">
+      </page>
+      <!--
+      <page
+            id="org.eclipse.sirius.diagram.ui.pathmaps"
+            name="%preference.page.title.org.eclipse.sirius.diagram.ui.pathmaps"
+            category="org.eclipse.sirius.diagram.ui.general"
+            class="org.eclipse.gmf.runtime.emf.ui.preferences.PathmapsPreferencePage">
+      </page>
+      -->
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <?gmfgen generated="false"?>
+      <propertyContributor
+            contributorId="org.eclipse.sirius.diagram"
+            labelProvider="org.eclipse.sirius.diagram.ui.internal.sheet.SiriusSheetLabelProvider">
+         <propertyCategory
+               category="semantic &amp; extension">
+         </propertyCategory>
+         <propertyCategory
+               category="semantic">
+         </propertyCategory>
+         <propertyCategory
+               category="extension">
+         </propertyCategory>
+         <propertyCategory
+               category="behaviors">
+         </propertyCategory>
+         <propertyCategory
+               category="documentation">
+         </propertyCategory>
+         <!--
+         <propertyCategory category="validation"/>
+         -->
+         <propertyCategory
+               category="style">
+         </propertyCategory>
+         <propertyCategory category="visual"/>
+         <propertyCategory category="domain"/>
+         <propertyCategory category="extra"/>
+         <propertyCategory
+               category="misc">
+         </propertyCategory>
+      </propertyContributor>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <?gmfgen generated="false"?>
+      <propertyTabs contributorId="org.eclipse.sirius.diagram">
+          <propertyTab
+                category="semantic &amp; extension"
+                id="property.tab.semantic.extension"
+                label="%tab.semantic.extension">
+          </propertyTab>
+          <propertyTab
+                category="style"
+                id="property.tab.style"
+                label="%tab.style">
+          </propertyTab>
+          <propertyTab
+                category="semantic"
+                id="property.tab.semantic"
+                label="%tab.semantic">
+          </propertyTab>
+          <propertyTab
+                category="extension"
+                id="property.tab.extension"
+                label="%tab.extension">
+          </propertyTab>
+          <propertyTab
+                category="behaviors"
+                id="property.tab.behaviors"
+                label="%tab.behaviors">
+          </propertyTab>
+          <propertyTab
+                category="documentation"
+                id="property.tab.documentation"
+                label="%tab.documentation">
+          </propertyTab>
+          <!--
+          Let's activate the tab once we are sure everything is working fine
+         <propertyTab
+                afterTab="filters"
+                category="validation"
+                id="property.tab.validation"
+                label="%tab.validation">
+          </propertyTab>
+          -->
+         <propertyTab
+               category="visual"
+               id="property.tab.AppearancePropertySection"
+               label="%tab.appearance"/>
+          <propertyTab
+             category="visual"
+             id="property.tab.DiagramPropertySection"
+             label="%tab.diagram"/>
+             <!--
+          <propertyTab
+             category="domain"
+             id="property.tab.domain"
+             label="%tab.domain"/>
+
+          <propertyTab
+                category="misc"
+                id="property.tab.misc"
+                label="%tab.misc">
+          </propertyTab>
+          -->
+      </propertyTabs>
+   </extension>
+
+   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <?gmfgen generated="false"?>
+      <propertySections contributorId="org.eclipse.sirius.diagram">
+         <propertySection id="property.section.ConnectorAppearancePropertySection"
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.ConnectionEditPartPropertySectionFilter"
+            class="org.eclipse.sirius.diagram.ui.tools.internal.properties.DiagramConnectionAppearancePropertySection"
+            tab="property.tab.AppearancePropertySection">
+         </propertySection>
+         <propertySection id="property.section.ShapeColorAndFontPropertySection"
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.ShapeEditPartPropertySectionFilter"
+            class="org.eclipse.sirius.diagram.ui.tools.internal.properties.DiagramShapeColorAndFontPropertySection"
+            tab="property.tab.AppearancePropertySection">
+         </propertySection>
+         <propertySection id="property.section.DiagramColorsAndFontsPropertySection"
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.DiagramEditPartPropertySectionFilter"
+            class="org.eclipse.sirius.diagram.ui.tools.internal.properties.DiagramColorAndFontPropertySection"
+            tab="property.tab.AppearancePropertySection">
+         </propertySection>
+         <propertySection id="property.section.RulerGridPropertySection"
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.DiagramEditPartPropertySectionFilter"
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.grid.RulerGridPropertySection"
+            tab="property.tab.DiagramPropertySection">
+         </propertySection>
+         <propertySection
+               class="org.eclipse.sirius.diagram.ui.tools.internal.properties.SemanticPropertySection"
+               filter="org.eclipse.sirius.diagram.ui.tools.internal.properties.filter.SemanticPropertyFilter"
+               id="property.section.semantic"
+               tab="property.tab.semantic">
+            <input
+                  type="org.eclipse.gmf.runtime.notation.View">
+            </input>
+            <input
+                  type="org.eclipse.gef.EditPart">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.sirius.diagram.ui.tools.internal.properties.ExtensionSemanticPropertiesSection"
+               filter="org.eclipse.sirius.diagram.ui.tools.internal.properties.filter.ExtendedPropertyFilter"
+               id="property.section.extension"
+               tab="property.tab.extension">
+            <input
+                  type="org.eclipse.gmf.runtime.notation.View">
+            </input>
+            <input
+                  type="org.eclipse.gef.EditPart">
+            </input>
+         </propertySection>
+         <propertySection
+               class="org.eclipse.sirius.diagram.ui.tools.internal.properties.SemanticAndExtensionPropertySection"
+               filter="org.eclipse.sirius.diagram.ui.tools.internal.properties.filter.SemanticExtensionPropertyFilter"
+               id="property.section.semantic.extension"
+               tab="property.tab.semantic.extension">
+            <input
+                  type="org.eclipse.gmf.runtime.notation.View">
+            </input>
+            <input
+                  type="org.eclipse.gef.EditPart">
+            </input>
+         </propertySection>
+           <propertySection
+                 afterSection="property.section.semantic"
+                 class="org.eclipse.sirius.diagram.ui.tools.internal.properties.BehaviorsPropertySection"
+                 id="property.section.behaviors"
+                 tab="property.tab.behaviors">
+              <input
+                    type="org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart">
+              </input>
+           </propertySection>
+           <propertySection
+                 afterSection="property.section.behaviors"
+                 class="org.eclipse.sirius.diagram.ui.tools.internal.properties.DocumentationPropertySection"
+                 id="property.section.documentation"
+                 tab="property.tab.documentation">
+              <input
+                    type="org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart">
+              </input>
+           </propertySection>
+         <propertySection
+               class="org.eclipse.sirius.diagram.ui.tools.internal.properties.StylePropertySection"
+               filter="org.eclipse.sirius.diagram.ui.tools.internal.properties.filter.StylePropertyFilter"
+               id="property.section.style"
+               tab="property.tab.style">
+            <input
+                  type="org.eclipse.gef.EditPart">
+            </input>
+            <input
+                  type="org.eclipse.gmf.runtime.notation.View">
+            </input>
+         </propertySection>
+
+         <!-- This section is only usefull for debug purpose..
+         <propertySection
+               class="org.eclipse.sirius.diagram.ui.tools.api.properties.MiscPropertySection"
+               filter="org.eclipse.sirius.diagram.ui.tools.api.properties.filter.MiscPropertyFilter"
+               id="property.section.misc"
+               tab="property.tab.misc">
+            <input
+                  type="org.eclipse.gef.EditPart">
+            </input>
+         </propertySection>
+         -->
+
+      </propertySections>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+      <?gmfgen generated="true"?>
+      <viewProvider class="org.eclipse.sirius.diagram.ui.internal.providers.SiriusViewProvider">
+         <Priority name="Lowest"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="Sirius"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints=""/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints=""/>
+      </viewProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+      <?gmfgen generated="true"?>
+      <editpartProvider class="org.eclipse.sirius.diagram.ui.internal.providers.SiriusEditPartProvider">
+         <Priority name="Medium"/>
+      </editpartProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders">
+      <?gmfgen generated="true"?>
+      <modelingAssistantProvider class="org.eclipse.sirius.diagram.ui.internal.providers.SiriusModelingAssistantProvider">
+         <Priority name="Lowest"/>
+      </modelingAssistantProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.iconProviders">
+      <?gmfgen generated="true"?>
+      <IconProvider class="org.eclipse.sirius.diagram.ui.internal.providers.SiriusIconProvider">
+         <Priority name="Low"/>
+      </IconProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.common.ui.services.parserProviders">
+      <?gmfgen generated="true"?>
+      <ParserProvider class="org.eclipse.sirius.diagram.ui.internal.providers.SiriusParserProvider">
+         <Priority name="Lowest"/>
+      </ParserProvider>
+   </extension>
+
+   <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypeBindings">
+      <?gmfgen generated="false"?>
+      <clientContext id="AnalysisClientContext">
+         <enablement>
+            <test
+               property="org.eclipse.gmf.runtime.emf.core.editingDomain"
+               value="org.eclipse.sirius.analysis.diagram.EditingDomain"/>
+         </enablement>
+      </clientContext>
+      <binding context="AnalysisClientContext">
+         <elementType ref="org.eclipse.sirius.diagram.DDiagram_1000"/>
+         <elementType ref="org.eclipse.sirius.diagram.DNode_2001"/>
+         <elementType ref="org.eclipse.sirius.diagram.DNodeContainer_2002"/>
+         <elementType ref="org.eclipse.sirius.diagram.DNodeList_2003"/>
+         <elementType ref="org.eclipse.sirius.diagram.DNode_3001"/>
+         <elementType ref="org.eclipse.sirius.diagram.BundledImage_3004"/>
+         <elementType ref="org.eclipse.sirius.diagram.Dot_3002"/>
+         <elementType ref="org.eclipse.sirius.diagram.GaugeCompositeStyle_3006"/>
+         <elementType ref="org.eclipse.sirius.diagram.Square_3003"/>
+         <elementType ref="org.eclipse.sirius.diagram.Ellipse_3016"/>
+         <elementType ref="org.eclipse.sirius.diagram.Lozenge_3017"/>
+         <elementType ref="org.eclipse.sirius.diagram.WorkspaceImage_3005"/>
+         <elementType ref="org.eclipse.sirius.diagram.Note_3013"/>
+         <elementType ref="org.eclipse.sirius.diagram.CustomStyle_3014"/>
+         <elementType ref="org.eclipse.sirius.diagram.DNode_3007"/>
+         <elementType ref="org.eclipse.sirius.diagram.DNodeContainer_3008"/>
+         <elementType ref="org.eclipse.sirius.diagram.DNodeList_3009"/>
+         <elementType ref="org.eclipse.sirius.diagram.DNodeListElement_3010"/>
+         <elementType ref="org.eclipse.sirius.diagram.DNode_3012"/>
+         <elementType ref="org.eclipse.sirius.diagram.DEdge_4001"/>
+         <elementType ref="org.eclipse.sirius.diagram.BracketEdge_4002"/>
+         <advice ref="org.eclipse.gmf.runtime.diagram.core.advice.notationDepdendents"/>
+      </binding>
+   </extension>
+
+   <extension point="org.eclipse.ui.commands">
+      <?gmfgen generated="true"?>
+      <command
+         categoryId="org.eclipse.ui.category.edit"
+         defaultHandler="org.eclipse.sirius.diagram.ui.part.SiriusDiagramUpdateCommand"
+         description="%update.diagram.description"
+         id="org.eclipse.sirius.diagram.ui.updateDiagram"
+         name="%update.diagram.name"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.commands">
+      <?gmfgen generated="false"?>
+      <command
+         categoryId="org.eclipse.ui.category.edit"
+         description="Refresh the element"
+         id="org.eclipse.sirius.diagram.ui.refreshSirius"
+         name="Refresh Sirius"/>
+       <command
+         categoryId="org.eclipse.ui.category.edit"
+         description="Hide the element"
+         id="org.eclipse.sirius.diagram.ui.hideElement"
+         name="Hide element"/>
+       <command
+         categoryId="org.eclipse.ui.category.edit"
+         description="Hide the label of the element"
+         id="org.eclipse.sirius.diagram.ui.hideLabel"
+         name="Hide label"/>
+       <command
+         categoryId="org.eclipse.ui.category.edit"
+         description="Reveal all the elements"
+         id="org.eclipse.sirius.diagram.ui.revealElements"
+         name="Reveal hidden elements"/>
+     <command
+         categoryId="org.eclipse.ui.category.edit"
+         description="Show the label of the element"
+         id="org.eclipse.sirius.diagram.ui.revealLabel"
+         name="Show label"/>
+       <command
+             categoryId="org.eclipse.ui.category.edit"
+             description="Launch all rules"
+             id="org.eclipse.sirius.diagram.ui.launchRules"
+             name="Launch Rules">
+       </command>
+       <command
+             categoryId="org.eclipse.sirius.ui.tools.commands"
+             defaultHandler="org.eclipse.sirius.diagram.ui.tools.internal.commands.PinElementsHandler"
+             description="Mark diagram elements as pinned"
+             id="org.eclipse.sirius.diagram.ui.pinElementsCommand"
+             name="Pin elements">
+       </command>
+       <command
+             categoryId="org.eclipse.sirius.ui.tools.commands"
+             defaultHandler="org.eclipse.sirius.diagram.ui.tools.internal.commands.UnpinElementsHandler"
+             description="Mark diagram elements as unpinned"
+             id="org.eclipse.sirius.diagram.ui.unpinElementsCommand"
+             name="Unpin elements">
+       </command>
+       <command
+           id="org.eclipse.sirius.diagram.ui.command.revealAllElements"
+           name="Reveal all elements">
+     </command>
+     <command
+           id="org.eclipse.sirius.diagram.ui.command.hideElement"
+           name="Hide element">
+     </command>
+   <command
+           id="org.eclipse.sirius.diagram.ui.command.hideLabel"
+           name="Hide label">
+     </command>
+     <command
+           id="org.eclipse.sirius.diagram.ui.command.showLabel"
+           name="Show label">
+     </command>
+     <command
+           id="org.eclipse.sirius.diagram.ui.command.refreshElement"
+           name="Refresh element">
+     </command>
+     <command
+           id="org.eclipse.sirius.diagram.ui.command.synchronizedDiagram"
+           name="Synchronized Diagram">
+     </command>
+     <command
+           id="org.eclipse.sirius.diagram.ui.command.validateDiagram"
+           name="Validate Diagram">
+     </command>
+     <command
+           id="org.eclipse.sirius.diagram.ui.command.deleteFromDiagram"
+           name="Delete From Diagram">
+     </command>
+     <command
+           id="org.eclipse.sirius.diagram.ui.command.show.outline"
+           name="Quick outline">
+     </command>
+   </extension>
+
+   <extension point="org.eclipse.ui.bindings">
+      <?gmfgen generated="true"?>
+      <key
+         commandId="org.eclipse.sirius.diagram.ui.command.refreshElement"
+         contextId="org.eclipse.sirius.diagram.ui.diagramContext"
+         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+         sequence="F5"/>
+      <key
+            commandId="org.eclipse.sirius.diagram.ui.command.hideElement"
+            contextId="org.eclipse.sirius.diagram.ui.diagramContext"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+H">
+      </key>
+      <key
+            commandId="org.eclipse.sirius.diagram.ui.command.hideLabel"
+            contextId="org.eclipse.sirius.diagram.ui.diagramContext"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+L">
+      </key>
+    <key
+            commandId="org.eclipse.sirius.diagram.ui.command.showLabel"
+            contextId="org.eclipse.sirius.diagram.ui.diagramContext"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M2+L">
+      </key>
+      <key
+            commandId="org.eclipse.sirius.diagram.ui.command.revealAllElements"
+            contextId="org.eclipse.sirius.diagram.ui.diagramContext"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+R">
+      </key>
+      <key
+            commandId="org.eclipse.sirius.diagram.ui.command.deleteFromDiagram"
+            contextId="org.eclipse.sirius.diagram.ui.diagramContext"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M2+D">
+      </key>
+      <key
+           commandId="org.eclipse.sirius.diagram.ui.command.show.outline"
+           contextId="org.eclipse.sirius.diagram.ui.diagramContext"
+           schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+           sequence="M1+O">
+     </key>
+   </extension>
+
+
+
+<extension id="ValidationContributionItemProvider" name="Validation"
+      point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
+      <?gmfgen generated="true"?>
+      <contributionItemProvider
+         class="org.eclipse.sirius.diagram.ui.internal.providers.SiriusValidationProvider">
+         <Priority name="Low"/>
+         <partContribution id="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID">
+            <partMenuGroup menubarPath="/diagramMenu/" id="validationGroup"/>
+            <partAction id="validateAction" menubarPath="/diagramMenu/validationGroup"/>
+         </partContribution>
+      </contributionItemProvider>
+   </extension>
+<extension point="org.eclipse.gmf.runtime.common.ui.services.markerNavigationProviders">
+      <?gmfgen generated="false"?>
+      <MarkerNavigationProvider class="org.eclipse.sirius.diagram.ui.tools.internal.marker.SiriusMarkerNavigationProviderSpec">
+         <MarkerType name="org.eclipse.sirius.diagram.ui.diagnostic"/>
+         <Priority name="Lowest"/>
+      </MarkerNavigationProvider>
+   </extension>
+<extension id="diagnostic" name="Sirius diagram editor Plugin problems" point="org.eclipse.core.resources.markers">
+      <?gmfgen generated="true"?>
+      <super type="org.eclipse.core.resources.problemmarker"/>
+      <super type="org.eclipse.gmf.runtime.common.ui.services.marker"/>
+      <persistent value="true"/>
+   </extension>
+<extension id="validationDecoratorProvider" name="ValidationDecorations" point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
+      <?gmfgen generated="true"?>
+      <decoratorProvider class="org.eclipse.sirius.diagram.ui.internal.providers.SiriusValidationDecoratorProvider">
+         <Priority name="Lowest"/>
+         <object class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)" id="PRIMARY_VIEW"/>
+         <context decoratorTargets="PRIMARY_VIEW"/>
+      </decoratorProvider>
+   </extension>
+
+    <!-- gmf generator persistent region begin -->
+
+   <extension point="org.eclipse.core.expressions.propertyTesters">
+       <propertyTester
+           id="org.eclipse.sirius.diagram.ui.DModelElementPropertyTester"
+           type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"
+           namespace="org.eclipse.sirius.diagram"
+           properties="isDModelElement"
+           class="org.eclipse.sirius.diagram.ui.tools.internal.testers.DModelElementPropertyTester">
+       </propertyTester>
+       <propertyTester
+           id="org.eclipse.sirius.diagram.ui.DDiagramPropertyTester"
+           type="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"
+           namespace="org.eclipse.sirius.diagram"
+           properties="isDDiagram"
+           class="org.eclipse.sirius.diagram.ui.tools.internal.testers.DModelElementPropertyTester">
+       </propertyTester>
+       <propertyTester
+             class="org.eclipse.sirius.diagram.ui.tools.internal.testers.DModelElementPropertyTester"
+             id="org.eclipse.sirius.diagram.ui.DDiagramElementPropertyTester"
+             namespace="org.eclipse.sirius.diagram"
+             properties="isDDiagramElement"
+             type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+       </propertyTester>
+       <propertyTester
+           id="org.eclipse.sirius.diagram.ui.HiddenElementsTester"
+           type="org.eclipse.jface.viewers.ISelection"
+           namespace="org.eclipse.sirius.diagram"
+           properties="diagramHasHiddenElements"
+           class="org.eclipse.sirius.diagram.ui.tools.internal.testers.HiddenElementsTester">
+       </propertyTester>
+       <propertyTester
+           id="org.eclipse.sirius.diagram.ui.DModelElementWithLabelPropertyTester"
+           type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"
+           namespace="org.eclipse.sirius.diagram"
+           properties="isDModelElementWithLabel"
+           class="org.eclipse.sirius.diagram.ui.tools.internal.testers.DModelElementWithLabelPropertyTester">
+       </propertyTester>
+       <propertyTester
+           id="org.eclipse.sirius.diagram.ui.HiddenLabelTester"
+           type="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart"
+           namespace="org.eclipse.sirius.diagram"
+           properties="isLabelHidden"
+           class="org.eclipse.sirius.diagram.ui.tools.internal.testers.HiddenLabelTester">
+       </propertyTester>
+       <propertyTester
+           id="org.eclipse.sirius.diagram.ui.CanHideLabelTester"
+           type="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart"
+           namespace="org.eclipse.sirius.diagram"
+           properties="canHideLabel"
+           class="org.eclipse.sirius.diagram.ui.tools.internal.testers.CanHideLabelTester">
+       </propertyTester>
+       <propertyTester
+             class="org.eclipse.sirius.diagram.ui.tools.internal.testers.CanHideElementTester"
+             id="org.eclipse.sirius.diagram.ui.CanHideElementTester"
+             namespace="org.eclipse.sirius.diagram"
+             properties="canHideElement"
+             type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+       </propertyTester>
+        <propertyTester
+           id="org.eclipse.sirius.diagram.ui.CanDeleteFromDiagram"
+           type="java.lang.Object"
+           namespace="org.eclipse.sirius.diagram"
+           properties="canDeleteFromDiagram"
+           class="org.eclipse.sirius.diagram.ui.tools.internal.testers.CanDeleteFromDiagramTester">
+       </propertyTester>
+       
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.AlignMenutExtensionContributionFactory"
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.arrangeselection">
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.DiagramElementPinUnPinExtensionContributionFactory"
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.hidepin">
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.DiagramElementCopyExtensionContributionFactory"
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.past">
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.DiagramElementHideDeleteExtensionContributionFactory"
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.hidedelete">
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.DiagramElementFontExtensionContributionFactory"
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.font">
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.DiagramElementStyleExtensionContributionFactory"
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.style">
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.DiagramElementSizeExtensionContributionFactory"
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.size">
+      </menuContribution>
+   </extension>
+
+<extension
+      point="org.eclipse.ui.menus">
+      
+   <menuContribution
+         locationURI="popup:org.eclipse.sirius.diagram.ui.popup.hideReveal">
+      <command
+            commandId="org.eclipse.sirius.diagram.ui.command.hideElement"
+            icon="icons/categoryHidden.gif"
+            label="Hide element"
+            style="push">
+         <visibleWhen
+               checkEnabled="false">
+            <with
+                  variable="activeMenuSelection">
+               <iterate
+                     operator="and">
+                  <instanceof
+                        value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+                  </instanceof>
+                  <test
+                        property="org.eclipse.sirius.diagram.ui.isDModelElement">
+                  </test>
+                  <test
+                        property="org.eclipse.sirius.diagram.ui.canHideElement">
+                  </test>
+               </iterate>
+            </with>
+         </visibleWhen>
+      </command>
+      <command
+            commandId="org.eclipse.sirius.diagram.ui.command.hideLabel"
+            icon="icons/categoryLabelHidden.gif"
+            label="Hide label"
+            style="push">
+         <visibleWhen
+               checkEnabled="false">
+            <with
+                  variable="activeMenuSelection">
+               <iterate
+                     operator="and">
+                  <instanceof
+                        value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart">
+                  </instanceof>
+                  <test
+                        property="org.eclipse.sirius.diagram.ui.canHideLabel">
+                  </test>
+               </iterate>
+            </with>
+         </visibleWhen>
+      </command>
+      <command
+            commandId="org.eclipse.sirius.diagram.ui.command.showLabel"
+            icon="icons/categoryLabelVisible.gif"
+            label="Show label"
+            style="push">
+         <visibleWhen
+               checkEnabled="false">
+            <with
+                  variable="activeMenuSelection">
+               <iterate
+                     operator="and">
+                  <instanceof
+                        value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart">
+                  </instanceof>
+                  <test
+                        property="org.eclipse.sirius.diagram.ui.isLabelHidden">
+                  </test>
+               </iterate>
+            </with>
+         </visibleWhen>
+      </command>
+   </menuContribution>
+   <menuContribution
+         locationURI="popup:org.eclipse.ui.popup.any?after=filterFormatGroup">
+      <command
+            commandId="org.eclipse.sirius.diagram.ui.command.refreshElement"
+            icon="images/refresh.gif"
+            label="Refresh"
+            style="push">
+         <visibleWhen
+               checkEnabled="false">
+            <with
+                  variable="activeMenuSelection">
+               <iterate>
+                  <instanceof
+                        value="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+                  </instanceof>
+                  <test
+                        property="org.eclipse.sirius.diagram.ui.isDModelElement">
+                  </test>
+               </iterate>
+            </with>
+         </visibleWhen>
+      </command>
+      <command
+            commandId="org.eclipse.sirius.diagram.ui.command.synchronizedDiagram"
+            label="Synchronized"
+            style="toggle">
+         <visibleWhen
+               checkEnabled="false">
+            <with
+                  variable="activeMenuSelection">
+               <iterate>
+                  <instanceof
+                        value="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+                  </instanceof>
+                  <test
+                        property="org.eclipse.sirius.diagram.ui.isDDiagram">
+                  </test>
+               </iterate>
+            </with>
+         </visibleWhen>
+      </command>
+      <menu
+            id="org.eclipse.sirius.diagram.ui.popup.hideReveal"
+            label="Show/Hide">
+         <visibleWhen
+               checkEnabled="false">
+            <with
+                  variable="selection">
+               <iterate>
+                  <instanceof
+                        value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+                  </instanceof>
+                  <test
+                        property="org.eclipse.sirius.diagram.ui.isDModelElement">
+                  </test>
+                  <not>
+                     <instanceof
+                           value="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+                     </instanceof>
+                  </not>
+               </iterate>
+            </with>
+         </visibleWhen>
+      </menu>
+   </menuContribution>
+   <menuContribution
+         locationURI="popup:org.eclipse.ui.popup.any?before=additions">
+      <separator
+            name="org.eclipse.sirius.diagram.ui.popup.otherActions"
+            visible="true">
+      </separator>
+   </menuContribution>
+   <menuContribution
+         locationURI="popup:org.eclipse.ui.popup.any?after=org.eclipse.sirius.diagram.ui.popup.otherActions">
+      <command
+            commandId="org.eclipse.sirius.diagram.ui.command.validateDiagram"
+            label="Validate diagram"
+            style="push">
+         <visibleWhen
+               checkEnabled="false">
+            <with
+                  variable="activeMenuSelection">
+               <count
+                     value="+">
+               </count>
+               <iterate
+                     operator="and">
+                  <instanceof
+                        value="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+                  </instanceof>
+               </iterate>
+            </with>
+         </visibleWhen>
+      </command>
+   </menuContribution>
+   <!--<menuContribution
+         allPopups="false"
+         locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.refresh">
+      <command
+            commandId="org.eclipse.sirius.diagram.ui.toolbarArrangeAllAction"
+            id="org.eclipse.sirius.diagram.ui.toolbar.arrangeAllMenu"
+            label="Arrange All"
+            style="pulldown">
+         <visibleWhen
+               checkEnabled="false">
+            <with
+                  variable="selection">
+               <iterate
+                     operator="or">
+                  <test
+                        property="org.eclipse.sirius.diagram.ui.isDDiagram">
+                  </test>
+               </iterate>
+            </with>
+         </visibleWhen>
+      </command>
+   </menuContribution>
+   <menuContribution
+         allPopups="false"
+         locationURI="menu:org.eclipse.sirius.diagram.ui.toolbar.arrangeAllMenu">
+      <command
+            commandId="org.eclipse.sirius.diagram.ui.toolbarArrangeAllAction"
+            label="Arrange All"
+            style="push">
+      </command>
+      <command
+            commandId="org.eclipse.sirius.diagram.ui.arrangeLinkedBorderedNodes"
+            label="Arrange Linked Bordered Nodes"
+            style="push">
+      </command>
+   </menuContribution>-->
+   <menuContribution
+         allPopups="false"
+         class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.ArrangeAllContributionFactory"
+         locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.arrangeselection">
+   </menuContribution>
+   <menuContribution
+         allPopups="false"
+         class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.LayerFilterExtensionContributionFactory"
+         locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.layerfilter">
+   </menuContribution>
+      <menuContribution
+            allPopups="false"
+            class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.RefreshExtensionContributionFactory"
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.refresh">
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.ShowHidePinUnPinExtensionContributionFactory"
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.hidepin">
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.PasteExtensionContributionFactory"
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.past">
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.ZoomExtensionContributionFactory"
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.zoom">
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.ExportExtensionContributionFactory"
+            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.export">
+      </menuContribution>
+   
+</extension>
+
+
+
+   <!-- create diagram menu -->
+  <extension point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="org.eclipse.sirius.diagram.ui.edit.parts.ViewNodeEditPartMenu"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+         <action
+               class="org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromDiagramAction"
+               definitionId="org.eclipse.sirius.diagram.ui.command.deleteFromDiagram"
+               enablesFor="+"
+               icon="icons/delete.gif"
+               id="org.eclipse.sirius.diagram.ui.actions.DeleteFromDiagramActionID"
+               label="Delete from Diagram"
+               menubarPath="editMenu/additions">
+         </action>
+      </objectContribution>
+  </extension>
+
+<extension point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="org.eclipse.sirius.diagram.ui.show.outline"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+    <action
+          class="org.eclipse.sirius.diagram.ui.tools.internal.outline.QuickOutlineAction"
+           definitionId="org.eclipse.sirius.diagram.ui.command.show.outline"
+           enablesFor="*"
+           id="org.eclipse.sirius.diagram.ui.action.show.outline"
+         label="Quick search">
+         </action>
+ </objectContribution>
+  </extension>
+
+     <extension
+            point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
+         <contributionItemProvider
+               checkPluginLoaded="false"
+               class="org.eclipse.sirius.diagram.ui.tools.internal.menu.SubDiagramMenu">
+            <Priority name="Highest"/>
+         </contributionItemProvider>
+      </extension>
+
+      <!-- adapters for information -->
+
+
+
+  <extension
+        point="org.eclipse.gmf.runtime.diagram.ui.layoutProviders">
+     <layoutProvider class="org.eclipse.sirius.diagram.ui.tools.api.layout.provider.DefaultLayoutProvider">
+        <Priority name="Medium"/>
+     </layoutProvider>
+  </extension>
+
+  <extension id="subDiagramDecoratorProvider" name="SubDiagramDecorations" point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
+      <decoratorProvider class="org.eclipse.sirius.diagram.ui.tools.internal.providers.decorators.SubDiagramDecoratorProvider">
+         <Priority name="High"/>
+         <object class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)" id="PRIMARY_VIEW"/>
+         <context decoratorTargets="PRIMARY_VIEW"/>
+      </decoratorProvider>
+   </extension>
+  <extension
+        point="org.eclipse.gmf.runtime.emf.clipboard.core.clipboardSupport">
+     <factory
+           class="org.eclipse.sirius.diagram.ui.tools.internal.clipboard.ClipboardSupportFactory"
+           nsURI="http://www.eclipse.org/gmf/runtime/1.0.1/notation"
+           priority="high">
+     </factory>
+  </extension>
+
+   <extension id="describedDecoratorProvider" name="DescribedDecorations" point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
+      <decoratorProvider class="org.eclipse.sirius.diagram.ui.tools.internal.providers.decorators.DescribedDecoratorProvider">
+         <Priority name="High"/>
+         <object class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)" id="PRIMARY_VIEW"/>
+         <context decoratorTargets="PRIMARY_VIEW"/>
+      </decoratorProvider>
+   </extension>
+
+      <extension id="editModeDecoratorProvider" name="EditModeDecorator" point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders">
+      <decoratorProvider class="org.eclipse.sirius.diagram.ui.tools.internal.providers.decorators.EditModeDecoratorProvider">
+         <Priority name="High"/>
+         <object class="org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart(org.eclipse.gmf.runtime.diagram.ui)" id="PRIMARY_VIEW"/>
+         <context decoratorTargets="PRIMARY_VIEW"/>
+      </decoratorProvider>
+   </extension>
+
+
+ <extension
+         point="org.eclipse.ui.ide.markerResolution">
+      <markerResolutionGenerator
+            markerType="org.eclipse.sirius.diagram.ui.diagnostic"
+            class="org.eclipse.sirius.diagram.ui.internal.quickfix.DesignerResolutionGenerator">
+      </markerResolutionGenerator>
+   </extension>
+
+  <!-- gmf generator persistent region end -->
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <?gmfgen generated="false"?>
+      <parser
+         type="aird"
+         class="org.eclipse.sirius.diagram.ui.business.internal.parser.AirDResourceFactory">
+      </parser>
+   </extension>
+
+  <extension
+            point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
+         <contributionItemProvider
+               checkPluginLoaded="false"
+               class="org.eclipse.sirius.diagram.ui.tools.internal.menu.SpecificationMenuContribution">
+            <Priority name="High"/>
+         </contributionItemProvider>
+      </extension>
+  <extension
+            point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
+         <contributionItemProvider
+               checkPluginLoaded="false"
+               class="org.eclipse.sirius.diagram.ui.tools.internal.menu.NavigateToMenuContribution">
+            <Priority name="High"/>
+         </contributionItemProvider>
+  </extension>
+  
+  <extension
+        point="org.eclipse.sirius.diagram.ui.layoutProvider">
+     <layoutProvider
+           priority="low"
+           providerClass="org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.CompositeLeftRightProvider">
+     </layoutProvider>
+     <layoutProvider
+           priority="low"
+           providerClass="org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.CompositeTopDownProvider">
+     </layoutProvider>
+      <layoutProvider
+           priority="lowest"
+           providerClass="org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.CompositeDownTopProvider">
+     </layoutProvider>
+     <layoutProvider
+           priority="high"
+           providerClass="org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.OrderedTreeLayoutProvider">
+     </layoutProvider>
+  </extension>
+  <extension
+        point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">
+     <editpolicyProvider
+           class="org.eclipse.sirius.diagram.ui.graphical.edit.policies.AirNoteAttachmentEditPolicyProvider">
+        <Priority
+              name="Medium">
+        </Priority>
+     </editpolicyProvider>
+  </extension>
+  <extension
+        point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">
+     <editpolicyProvider
+           class="org.eclipse.sirius.diagram.ui.graphical.edit.policies.DoubleClickEditPolicyProvider">
+        <Priority
+              name="Lowest">
+        </Priority>
+     </editpolicyProvider>
+  </extension>
+  <extension
+        point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">
+     <editpolicyProvider
+           class="org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.ChangeBoundRequestRecorderEditPolicyProvider">
+        <Priority
+              name="Low">
+        </Priority>
+     </editpolicyProvider>
+  </extension>  
+  <extension
+        point="org.eclipse.sirius.diagram.ui.viewOrderingProvider">
+     <viewOrderingProvider
+           providerClass="org.eclipse.sirius.diagram.ui.tools.internal.layout.ordering.OrderedTreeViewOrderingProvider">
+     </viewOrderingProvider>
+  </extension>
+  <extension
+        id="test"
+        name="Test"
+        point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
+     <contributionItemProvider
+           checkPluginLoaded="false"
+           class="org.eclipse.sirius.diagram.ui.tools.internal.menu.PopupMenuContribution">
+        <Priority
+              name="High">
+        </Priority>
+     </contributionItemProvider>
+  </extension>
+  <extension
+        point="org.eclipse.sirius.ui.dialectui">
+     <dialectUI
+           class="org.eclipse.sirius.diagram.ui.business.internal.dialect.DiagramDialectUI">
+     </dialectUI>
+  </extension>
+
+  <extension
+        point="org.eclipse.sirius.dialect">
+     <dialect
+           class="org.eclipse.sirius.diagram.ui.business.internal.dialect.DiagramDialect"></dialect>
+  </extension>
+    <extension
+        point="org.eclipse.ui.handlers">
+     <handler
+           class="org.eclipse.sirius.diagram.ui.tools.internal.commands.RevealAllElementsCommand"
+           commandId="org.eclipse.sirius.diagram.ui.command.revealAllElements">
+           <activeWhen>
+            <with variable="activeMenuSelection">
+               <reference definitionId="diagramHasHiddenElements" />
+            </with>
+           </activeWhen>
+     </handler>
+     <handler
+           class="org.eclipse.sirius.diagram.ui.tools.internal.commands.RevealAllElementsCommand"
+           commandId="org.eclipse.sirius.diagram.ui.command.revealAllElements">
+           <activeWhen>
+            <with variable="selection">
+               <reference definitionId="diagramHasHiddenElements" />
+            </with>
+           </activeWhen>
+     </handler>
+     <handler
+           class="org.eclipse.sirius.diagram.ui.tools.internal.commands.HideElementCommand"
+           commandId="org.eclipse.sirius.diagram.ui.command.hideElement">
+           <activeWhen>
+              <with variable="activeMenuSelection">
+                <reference definitionId="allInstanceOfIDiagramElementEditPart" />
+              </with>
+           </activeWhen>
+     </handler>
+     <handler
+           class="org.eclipse.sirius.diagram.ui.tools.internal.commands.HideElementCommand"
+           commandId="org.eclipse.sirius.diagram.ui.command.hideElement">
+           <activeWhen>
+              <with variable="selection">
+                <reference definitionId="allInstanceOfIDiagramElementEditPart" />
+              </with>
+           </activeWhen>
+     </handler>
+     <handler
+           class="org.eclipse.sirius.diagram.ui.tools.internal.commands.HideLabelCommand"
+           commandId="org.eclipse.sirius.diagram.ui.command.hideLabel">
+           <activeWhen>
+              <with variable="activeMenuSelection">
+                <reference definitionId="canHideLabel" />
+              </with>
+           </activeWhen>
+     </handler>
+     <handler
+           class="org.eclipse.sirius.diagram.ui.tools.internal.commands.HideLabelCommand"
+           commandId="org.eclipse.sirius.diagram.ui.command.hideLabel">
+           <activeWhen>
+              <with variable="selection">
+                <reference definitionId="canHideLabel" />
+              </with>
+           </activeWhen>
+     </handler>
+     <handler
+           class="org.eclipse.sirius.diagram.ui.tools.internal.commands.ShowLabelCommand"
+           commandId="org.eclipse.sirius.diagram.ui.command.showLabel">
+           <activeWhen>
+              <with variable="activeMenuSelection">
+                <reference definitionId="isLabelHidden" />
+              </with>
+           </activeWhen>
+     </handler>
+     <handler
+           class="org.eclipse.sirius.diagram.ui.tools.internal.commands.ShowLabelCommand"
+           commandId="org.eclipse.sirius.diagram.ui.command.showLabel">
+           <activeWhen>
+              <with variable="selection">
+                <reference definitionId="isLabelHidden" />
+              </with>
+           </activeWhen>
+     </handler>
+     <handler
+           class="org.eclipse.sirius.diagram.ui.tools.internal.commands.RefreshElementCommand"
+           commandId="org.eclipse.sirius.diagram.ui.command.refreshElement">
+     </handler>
+     <handler
+           class="org.eclipse.sirius.diagram.ui.tools.internal.commands.SynchronizedDiagramCommand"
+           commandId="org.eclipse.sirius.diagram.ui.command.synchronizedDiagram">
+     </handler>
+     <handler
+           class="org.eclipse.sirius.diagram.ui.tools.internal.commands.ValidateDiagramCommand"
+           commandId="org.eclipse.sirius.diagram.ui.command.validateDiagram">
+     </handler>
+     <handler
+           class="org.eclipse.sirius.diagram.ui.tools.internal.commands.QuickOutlineCommand"
+           commandId="org.eclipse.sirius.diagram.ui.command.show.outline">
+     </handler>
+     <handler
+           class="org.eclipse.sirius.diagram.ui.tools.internal.commands.DeleteFromDiagramHandler"
+           commandId="org.eclipse.sirius.diagram.ui.command.deleteFromDiagram">
+        <activeWhen>
+           <with
+                 variable="selection">
+              <iterate
+                    operator="and">
+                 <test
+                       property="org.eclipse.sirius.diagram.ui.canDeleteFromDiagram">
+                 </test>
+              </iterate>
+           </with>
+        </activeWhen>
+     </handler>
+  </extension>
+  <extension
+        point="org.eclipse.sirius.externalJavaAction">
+     <javaActions
+           actionClass="org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.PinElementsAction"
+           id="org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.pinElementsActionId">
+     </javaActions>
+     <javaActions
+           actionClass="org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.UnpinElementsAction"
+           id="org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.unpinElementsActionId">
+     </javaActions>
+  </extension>
+  <extension
+        point="org.eclipse.core.expressions.definitions">
+     <definition id="isInstanceOfIDiagramElementEditPart">
+           <instanceof value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart" />
+     </definition>
+     <definition id="allInstanceOfIDiagramElementEditPart">
+           <iterate operator="and">
+              <reference definitionId="isInstanceOfIDiagramElementEditPart" />
+           </iterate>
+     </definition>
+     <definition id="diagramHasHiddenElements">
+           <test property="org.eclipse.sirius.diagram.ui.diagramHasHiddenElements" />
+     </definition>
+     <definition id="isLabelHidden">
+      <iterate operator="and">
+         <and>
+              <reference
+                    definitionId="isInstanceOfIDiagramElementEditPart">
+              </reference>
+              <test property="org.eclipse.sirius.diagram.ui.isLabelHidden" />
+         </and>
+        </iterate>
+     </definition>
+     <definition id="canHideLabel">
+      <iterate operator="and">
+         <and>
+              <reference
+                    definitionId="isInstanceOfIDiagramElementEditPart">
+              </reference>
+              <test property="org.eclipse.sirius.diagram.ui.canHideLabel" />
+         </and>
+        </iterate>
+     </definition>
+  </extension>
+  
+     <extension point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="org.eclipse.sirius.common.ui.oc.findelement"
+            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+         <menu 
+            id="org.eclipse.sirius.common.ui.menu.findelement" 
+            label="Find" 
+            path="additions"> 
+            <separator name="group1"/>
+         </menu>
+         <action
+               class="org.eclipse.sirius.diagram.ui.tools.api.action.FindElementAction"
+               definitionId="org.eclipse.sirius.diagram.ui.find.binding.FindElementAction"
+               id="org.eclipse.sirius.diagram.ui.find.binding.FindElementAction"
+               label="Find"
+               style="push"/>
+       </objectContribution>
+   </extension>
+  <extension point="org.eclipse.ui.bindings">
+    <key commandId="org.eclipse.sirius.diagram.ui.find.binding.FindElementAction" sequence="M2+M1+M3+F" schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+  </extension>
+    <extension point="org.eclipse.ui.commands">
+    <category name="Sirius" id="org.eclipse.sirius.common.ui.category"/>
+    <command categoryId="org.eclipse.sirius.common.ui.category" description="Find in model" id="org.eclipse.sirius.diagram.ui.find.binding.FindElementAction" name="Find Element"/>
+  </extension>
+   <extension
+       point="org.eclipse.ui.handlers">
+    <handler
+          class="org.eclipse.sirius.diagram.ui.tools.internal.commands.FindElementCommand"
+          commandId="org.eclipse.sirius.diagram.ui.find.binding.FindElementAction">
+    </handler>
+ </extension>
+   <extension
+         point="org.eclipse.sirius.repairParticipant">
+      <repairParticipant
+            class="org.eclipse.sirius.diagram.ui.tools.internal.actions.repair.DiagramRepairParticipant">
+      </repairParticipant>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.migrationParticipant">
+      <participant
+            class="org.eclipse.sirius.diagram.ui.business.internal.migration.DiagramRepresentationsFileMigrationParticipant"
+            kind="RepresentationsFile">
+      </participant>
+      <participant
+            class="org.eclipse.sirius.diagram.ui.business.internal.migration.StyleCustomizationsRepresentationsFileMigrationParticipant"
+            kind="RepresentationsFile">
+      </participant>
+      <participant
+            class="org.eclipse.sirius.diagram.ui.business.internal.migration.SetGMFViewsToNillMigrationParticipant"
+            kind="RepresentationsFile">
+      </participant>
+      <participant
+            class="org.eclipse.sirius.diagram.ui.business.internal.migration.description.ListContainerAttributeMigrationParticipant"
+            kind="VSM">
+      </participant>
+      <participant
+            class="org.eclipse.sirius.diagram.ui.business.internal.migration.description.OptionalLayersVSMMigrationParticipant"
+            kind="VSM">
+      </participant>
+            <participant
+            class="org.eclipse.sirius.diagram.ui.business.internal.migration.DiagramSplitMigrationParticipant"
+            kind="RepresentationsFile">
+      </participant>
+      <participant
+             class="org.eclipse.sirius.diagram.ui.business.internal.migration.DiagramSplitMigrationParticipant"
+             kind="VSM">
+       </participant>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated diagram -->
+      <factory
+            uri="http://www.eclipse.org/sirius/diagram/1.1.0"
+            class="org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated diagram -->
+      <factory
+            uri="http://www.eclipse.org/sirius/diagram/description/1.1.0"
+            class="org.eclipse.sirius.diagram.description.provider.DescriptionItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated diagram -->
+      <factory
+            uri="http://www.eclipse.org/sirius/diagram/description/style/1.1.0"
+            class="org.eclipse.sirius.diagram.description.style.provider.StyleItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated diagram -->
+      <factory
+            uri="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0"
+            class="org.eclipse.sirius.diagram.description.tool.provider.ToolItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated diagram -->
+      <factory
+            uri="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0"
+            class="org.eclipse.sirius.diagram.description.filter.provider.FilterItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated diagram -->
+      <factory
+            uri="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0"
+            class="org.eclipse.sirius.diagram.description.concern.provider.ConcernItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+  <extension
+        point="org.eclipse.ui.popupMenus">
+     <objectContribution
+           id="org.eclipse.sirius.diagram.ui.action.exportRepresentationsAsImages"
+           nameFilter="*.aird"
+           objectClass="org.eclipse.core.resources.IFile">
+        <action
+              class="org.eclipse.sirius.diagram.ui.tools.internal.actions.export.ExportRepresentationsFromFileAction"
+              enablesFor="1"
+              icon="icons/full/others/image.gif"
+              id="org.eclipse.sirius.diagram.ui.action.exportRepresentationsAsImages"
+              label="%exportDiagramsAsImagesActionLabel"
+              menubarPath="group.port">
+        </action>
+     </objectContribution>
+  </extension>
 </plugin>

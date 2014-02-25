@@ -5,7 +5,7 @@
  * Contributors:
  *      Obeo - Initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.migration;
+package org.eclipse.sirius.diagram.ui.business.internal.migration;
 
 import java.util.Collection;
 

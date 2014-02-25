@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.edit.internal.part;
+package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LineBorder;
@@ -28,13 +28,12 @@ import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
-import org.eclipse.sirius.diagram.business.internal.edit.helpers.LabelAlignmentHelper;
 import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramContainerEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.DiagramNameEditPartOperation;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramContainerEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramNameEditPart;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IContainerLabelOffsets;
+import org.eclipse.sirius.diagram.ui.business.internal.edit.helpers.LabelAlignmentHelper;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.IWorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure;
@@ -42,6 +41,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDes
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerParallelogram;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangleFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IContainerLabelOffsets;
 import org.eclipse.sirius.ext.swt.ImageFileFormat;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.DStylizable;

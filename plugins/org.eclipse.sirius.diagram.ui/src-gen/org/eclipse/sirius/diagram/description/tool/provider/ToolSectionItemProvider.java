@@ -36,10 +36,10 @@ import org.eclipse.sirius.diagram.description.tool.DiagramNavigationDescription;
 import org.eclipse.sirius.diagram.description.tool.ToolFactory;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.diagram.description.tool.ToolSection;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemProvider;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This is the item provider adapter for a
@@ -337,7 +337,7 @@ public class ToolSectionItemProvider extends DocumentedElementItemProvider imple
      */
     @Override
     public ResourceLocator getResourceLocator() {
-        return SiriusEditPlugin.INSTANCE;
+        return DiagramUIPlugin.INSTANCE;
     }
 
 }

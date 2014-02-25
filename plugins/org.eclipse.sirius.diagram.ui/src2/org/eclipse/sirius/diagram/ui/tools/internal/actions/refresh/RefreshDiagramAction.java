@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions.refresh;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.refresh;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -26,8 +26,8 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.business.internal.dialect.DiagramDialectUIServices;
-import org.eclipse.sirius.diagram.tools.internal.graphical.edit.part.DDiagramHelper;
+import org.eclipse.sirius.diagram.ui.business.internal.dialect.DiagramDialectUIServices;
+import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.part.DDiagramHelper;
 import org.eclipse.sirius.ui.business.api.action.RefreshActionListenerRegistry;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.widgets.Event;

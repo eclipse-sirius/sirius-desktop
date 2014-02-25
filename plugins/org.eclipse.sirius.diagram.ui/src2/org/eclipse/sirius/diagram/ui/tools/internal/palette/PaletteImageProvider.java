@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.palette;
+package org.eclipse.sirius.diagram.ui.tools.internal.palette;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.diagram.ImagesPath;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
@@ -29,7 +28,8 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
@@ -66,12 +66,12 @@ public class PaletteImageProvider {
                  */
                 try {
                     final EObject anInstance = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(abstractToolDescription).createInstance(domainClassToUse);
-                    return SiriusDiagramEditorPlugin.getInstance().getItemImageDescriptor(anInstance);
+                    return DiagramUIPlugin.getPlugin().getItemImageDescriptor(anInstance);
                 } catch (final MetaClassNotFoundException e) {
                     SiriusPlugin.getDefault().warning("No icon is available for the tool " + abstractToolDescription.getName() + ". A default icon has been set instead.", null);
                 }
             }
-            path = ImagesPath.PALETTE_FACTORY_DEFAULT_PATH;
+            path = DiagramImagesPath.PALETTE_FACTORY_DEFAULT_PATH;
         }
 
         final Image res = getImageFromPath(path);
@@ -79,7 +79,7 @@ public class PaletteImageProvider {
         ImageDescriptor desc;
 
         if (res == null) {
-            desc = SiriusDiagramEditorPlugin.getBundledImageDescriptor(ImagesPath.PALETTE_FACTORY_ERROR_PATH);
+            desc = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.PALETTE_FACTORY_ERROR_PATH);
         } else {
             desc = ImageDescriptor.createFromImage(res);
         }
@@ -92,7 +92,7 @@ public class PaletteImageProvider {
         ImageDescriptor desc = null;
         if (imageFile != null && imageFile.exists() && imageFile.canRead()) {
             try {
-                desc = SiriusDiagramEditorPlugin.findImageDescriptor(imageFile.toURI().toURL());
+                desc = DiagramUIPlugin.Implementation.findImageDescriptor(imageFile.toURI().toURL());
             } catch (MalformedURLException e) {
                 // do nothing
             }
@@ -102,7 +102,7 @@ public class PaletteImageProvider {
 
     private Image flyWeightImage(final ImageDescriptor desc) {
         if (desc != null) {
-            return SiriusDiagramEditorPlugin.getInstance().getImage(desc);
+            return DiagramUIPlugin.getPlugin().getImage(desc);
         } else {
             return null;
         }

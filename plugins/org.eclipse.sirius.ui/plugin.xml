@@ -171,84 +171,6 @@
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
    </extension>
 
-   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <!-- @generated viewpoint -->
-      <factory
-            uri="http://www.eclipse.org/sirius/diagram/1.1.0"
-            class="org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory"
-            supportedTypes=
-              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
-               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
-               org.eclipse.emf.edit.provider.ITreeItemContentProvider
-               org.eclipse.emf.edit.provider.IItemLabelProvider
-               org.eclipse.emf.edit.provider.IItemPropertySource"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <!-- @generated viewpoint -->
-      <factory
-            uri="http://www.eclipse.org/sirius/diagram/description/1.1.0"
-            class="org.eclipse.sirius.diagram.description.provider.DescriptionItemProviderAdapterFactory"
-            supportedTypes=
-              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
-               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
-               org.eclipse.emf.edit.provider.ITreeItemContentProvider
-               org.eclipse.emf.edit.provider.IItemLabelProvider
-               org.eclipse.emf.edit.provider.IItemPropertySource"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <!-- @generated viewpoint -->
-      <factory
-            uri="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0"
-            class="org.eclipse.sirius.diagram.description.filter.provider.FilterItemProviderAdapterFactory"
-            supportedTypes=
-              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
-               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
-               org.eclipse.emf.edit.provider.ITreeItemContentProvider
-               org.eclipse.emf.edit.provider.IItemLabelProvider
-               org.eclipse.emf.edit.provider.IItemPropertySource"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <!-- @generated viewpoint -->
-      <factory
-            uri="http://www.eclipse.org/sirius/diagram/description/style/1.1.0"
-            class="org.eclipse.sirius.diagram.description.style.provider.StyleItemProviderAdapterFactory"
-            supportedTypes=
-              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
-               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
-               org.eclipse.emf.edit.provider.ITreeItemContentProvider
-               org.eclipse.emf.edit.provider.IItemLabelProvider
-               org.eclipse.emf.edit.provider.IItemPropertySource"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <!-- @generated viewpoint -->
-      <factory
-            uri="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0"
-            class="org.eclipse.sirius.diagram.description.tool.provider.ToolItemProviderAdapterFactory"
-            supportedTypes=
-              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
-               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
-               org.eclipse.emf.edit.provider.ITreeItemContentProvider
-               org.eclipse.emf.edit.provider.IItemLabelProvider
-               org.eclipse.emf.edit.provider.IItemPropertySource"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <!-- @generated contribution -->
-      <factory
-            uri="http://www.eclipse.org/sirius/description/contribution/1.0.0"
-            class="org.eclipse.sirius.description.contribution.provider.ContributionItemProviderAdapterFactory"
-            supportedTypes=
-              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
-               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
-               org.eclipse.emf.edit.provider.ITreeItemContentProvider
-               org.eclipse.emf.edit.provider.IItemLabelProvider
-               org.eclipse.emf.edit.provider.IItemPropertySource"/>
-   </extension>
-
     <extension
         point="org.eclipse.core.runtime.preferences">
      <initializer
@@ -267,19 +189,6 @@
   <extension
         point="org.eclipse.ui.popupMenus">
      <objectContribution
-           id="org.eclipse.sirius.ui.action.exportRepresentationsAsImages"
-           nameFilter="*.aird"
-           objectClass="org.eclipse.core.resources.IFile">
-        <action
-              class="org.eclipse.sirius.ui.tools.internal.actions.export.ExportRepresentationsFromFileAction"
-              enablesFor="1"
-              icon="icons/full/others/image.gif"
-              id="org.eclipse.sirius.ui.action.exportRepresentationsAsImages"
-              label="%exportDiagramsAsImagesActionLabel"
-              menubarPath="group.port">
-        </action>
-     </objectContribution>
-             <objectContribution
             id="org.eclipse.sirius.ui.action.migration.representationFiles"
             objectClass="org.eclipse.core.resources.IFile"
             nameFilter="*.aird">

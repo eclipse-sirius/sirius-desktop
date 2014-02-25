@@ -32,7 +32,7 @@ import org.eclipse.sirius.diagram.LineStyle;
 import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.StyleFactory;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 
 /**
  * This is the item provider adapter for a
@@ -283,7 +283,7 @@ public class EdgeStyleDescriptionItemProvider extends ItemProviderAdapter implem
      */
     @Override
     public ResourceLocator getResourceLocator() {
-        return SiriusEditPlugin.INSTANCE;
+        return DiagramUIPlugin.INSTANCE;
     }
 
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.providers.decorators;
+package org.eclipse.sirius.diagram.ui.tools.internal.providers.decorators;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -31,9 +31,9 @@ import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
-import org.eclipse.sirius.ui.tools.api.image.ImagesPath;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -121,7 +121,7 @@ public class SubDiagramDecorator extends AbstractDecorator {
     }
 
     private Image getSubDiagramImage() {
-        return WorkspaceImageFigure.flyWeightImage(SiriusEditPlugin.INSTANCE.getImageDescriptor(ImagesPath.HAS_DIAG_IMG));
+        return WorkspaceImageFigure.flyWeightImage(SiriusEditPlugin.INSTANCE.getImageDescriptor(DiagramImagesPath.HAS_DIAG_IMG));
     }
 
     private boolean shouldHaveSubDiagDecoration(DRepresentationElement node) {

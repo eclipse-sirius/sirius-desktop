@@ -10,7 +10,7 @@
  *    Mariot Chauvin <mariot.chauvin@obeo.fr> - bug 233344 
  *    Obeo - Copied and adapted from org.eclipse.gmf.runtime.draw2d.ui.internal.routers.TreeRouter.
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.api.query;
+package org.eclipse.sirius.diagram.ui.business.api.query;
 
 import java.util.List;
 

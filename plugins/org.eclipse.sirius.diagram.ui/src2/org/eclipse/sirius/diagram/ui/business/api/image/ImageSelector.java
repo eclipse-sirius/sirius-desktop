@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.api.image;
+package org.eclipse.sirius.diagram.ui.business.api.image;
 
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 

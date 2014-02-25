@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.parts;
+package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
@@ -20,10 +20,10 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewAndElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramListEditPart;
-import org.eclipse.sirius.diagram.graphical.edit.policies.NodeCreationEditPolicy;
-import org.eclipse.sirius.diagram.internal.providers.SiriusElementTypes;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.NodeCreationEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.providers.SiriusElementTypes;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 
 /**
  * @was-generated

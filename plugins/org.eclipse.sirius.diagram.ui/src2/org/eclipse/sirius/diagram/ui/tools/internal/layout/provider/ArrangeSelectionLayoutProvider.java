@@ -23,8 +23,8 @@ import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutProvider;
 

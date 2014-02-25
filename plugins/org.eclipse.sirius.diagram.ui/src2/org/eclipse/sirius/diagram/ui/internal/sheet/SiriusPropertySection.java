@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.sheet;
+package org.eclipse.sirius.diagram.ui.internal.sheet;
 
 import java.util.ArrayList;
 import java.util.Iterator;

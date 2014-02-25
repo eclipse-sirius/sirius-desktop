@@ -8,13 +8,13 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.testers;
+package org.eclipse.sirius.diagram.ui.tools.internal.testers;
 
 import java.util.Collections;
 
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.sirius.diagram.tools.internal.actions.delete.DeleteFromDiagramAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromDiagramAction;
 
 /**
  * A property tester that test if selection can be deleted from diagram.

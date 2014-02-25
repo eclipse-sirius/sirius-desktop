@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.util;
+package org.eclipse.sirius.diagram.ui.tools.internal.util;
 
 import java.util.List;
 
@@ -24,8 +24,8 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
-import org.eclipse.sirius.diagram.business.api.query.EdgeQuery;
-import org.eclipse.sirius.diagram.internal.refresh.GMFHelper;
+import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
+import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 

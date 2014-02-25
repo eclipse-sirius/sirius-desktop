@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.command;
+package org.eclipse.sirius.diagram.ui.business.internal.command;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -30,9 +30,9 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
-import org.eclipse.sirius.diagram.business.api.query.EdgeQuery;
 import org.eclipse.sirius.diagram.description.tool.ReconnectionKind;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
 import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.base.Predicate;

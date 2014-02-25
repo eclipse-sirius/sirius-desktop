@@ -9,7 +9,7 @@
  *    IBM Corporation - initial API and implementation 
  ****************************************************************************/
 
-package org.eclipse.sirius.diagram.tools.internal.actions.layout;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.layout;
 
 import java.util.Iterator;
 
@@ -25,10 +25,10 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.ui.actions.ActionIds;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager;
+import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.data.extension.LayoutDataManagerRegistry;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
@@ -60,7 +60,7 @@ public class CopyLayoutAction extends AbstractCopyPasteLayoutAction {
         setToolTipText("Copy the layout of the selected diagram elements");
 
         setImageDescriptor(SiriusEditPlugin.INSTANCE.getImageDescriptor("obj16/copyLayout.gif"));
-        setDisabledImageDescriptor(SiriusDiagramEditorPlugin.getBundledImageDescriptor("obj16/copyLayoutDisabled.gif"));
+        setDisabledImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor("obj16/copyLayoutDisabled.gif"));
         setHoverImageDescriptor(SiriusEditPlugin.INSTANCE.getImageDescriptor("obj16/copyLayout.gif"));
     }
 

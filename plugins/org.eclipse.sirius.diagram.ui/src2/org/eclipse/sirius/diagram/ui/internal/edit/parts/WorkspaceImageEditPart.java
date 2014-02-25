@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.parts;
+package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
@@ -30,17 +30,17 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.WorkspaceImage;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractNotSelectableShapeNodeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramBorderNodeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IStyleEditPart;
-import org.eclipse.sirius.diagram.edit.internal.part.DiagramBorderNodeEditPartOperation;
-import org.eclipse.sirius.diagram.edit.internal.part.DiagramNodeEditPartOperation;
-import org.eclipse.sirius.diagram.tools.internal.image.ImagesPath;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractNotSelectableShapeNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramBorderNodeEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirStyleDefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ITransparentFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.IWorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.ext.swt.ImageFileFormat;
 
 /**
@@ -103,7 +103,7 @@ public class WorkspaceImageEditPart extends AbstractNotSelectableShapeNodeEditPa
      * @not-generated
      */
     protected LayoutEditPolicy createLayoutEditPolicy() {
-        LayoutEditPolicy lep = new org.eclipse.sirius.diagram.tools.api.policies.LayoutEditPolicy() {
+        LayoutEditPolicy lep = new org.eclipse.sirius.diagram.ui.tools.api.policies.LayoutEditPolicy() {
 
             protected EditPolicy createChildEditPolicy(EditPart child) {
                 EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
@@ -133,7 +133,7 @@ public class WorkspaceImageEditPart extends AbstractNotSelectableShapeNodeEditPa
         if (wkImage != null) {
             String workspacePath = wkImage.getWorkspacePath();
             if (StringUtil.isEmpty(workspacePath)) {
-                wif = WorkspaceImageFigure.createImageFigure(ImagesPath.IMAGE_NOT_FOUND);
+                wif = WorkspaceImageFigure.createImageFigure(DiagramImagesPath.IMAGE_NOT_FOUND);
             } else if (workspacePath.toUpperCase().endsWith(ImageFileFormat.SVG.getName())) {
                 wif = SVGWorkspaceImageFigure.createImageFigure(wkImage);
             } else {

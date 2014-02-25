@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.parser;
+package org.eclipse.sirius.diagram.ui.business.internal.parser;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EClassifier;

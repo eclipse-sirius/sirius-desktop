@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.commands;
+package org.eclipse.sirius.diagram.ui.tools.internal.commands;
 
 import java.util.Map;
 import java.util.Map.Entry;
@@ -29,12 +29,12 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.NodeStyle;
-import org.eclipse.sirius.diagram.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.StyleHelper;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.internal.refresh.diagram.ViewPropertiesSynchronizer;
-import org.eclipse.sirius.diagram.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
+import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
+import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSynchronizer;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.Style;

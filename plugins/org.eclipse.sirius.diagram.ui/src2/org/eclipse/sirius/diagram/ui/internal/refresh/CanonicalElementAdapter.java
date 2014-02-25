@@ -8,7 +8,7 @@
  * Contributors:
  *    IBM Corporation - initial API and implementation 
  ****************************************************************************/
-package org.eclipse.sirius.diagram.internal.refresh;
+package org.eclipse.sirius.diagram.ui.internal.refresh;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;

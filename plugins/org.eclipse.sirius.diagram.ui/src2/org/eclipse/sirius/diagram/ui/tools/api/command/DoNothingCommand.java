@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.api.command;
+package org.eclipse.sirius.diagram.ui.tools.api.command;
 
 import org.eclipse.gef.commands.Command;
 

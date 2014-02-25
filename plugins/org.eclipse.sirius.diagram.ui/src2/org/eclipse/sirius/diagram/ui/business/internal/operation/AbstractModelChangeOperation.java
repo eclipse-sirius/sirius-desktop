@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.operation;
+package org.eclipse.sirius.diagram.ui.business.internal.operation;
 
 /**
  * Abstract base class for operations which will need to modify an EMF Model.

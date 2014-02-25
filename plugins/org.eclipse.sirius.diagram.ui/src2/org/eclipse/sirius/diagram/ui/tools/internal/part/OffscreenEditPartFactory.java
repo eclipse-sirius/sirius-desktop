@@ -10,7 +10,7 @@
  *    Laurent Redor    (Obeo) <laurent.redor@obeo.fr>      - Trac bug #1182 : OBEO_0420 : Import aird dans desc
  *    Mariot Chauvin   (Obeo) <mariot.chauvin@obeo.fr>  - Trac task #1044 : Refactor "repair / migrate model" action
  ****************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.part;
+package org.eclipse.sirius.diagram.ui.tools.internal.part;
 
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.RootEditPart;

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.parts;
+package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.IFigure;
@@ -24,10 +24,10 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
-import org.eclipse.sirius.diagram.graphical.edit.policies.DEdgeNameSelectionFeedbackEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.ResizableShapeLabelEditPolicy;
-import org.eclipse.sirius.diagram.internal.providers.SiriusElementTypes;
-import org.eclipse.sirius.diagram.internal.providers.SiriusParserProvider;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.DEdgeNameSelectionFeedbackEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ResizableShapeLabelEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.providers.SiriusElementTypes;
+import org.eclipse.sirius.diagram.ui.internal.providers.SiriusParserProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
 import org.eclipse.sirius.ext.base.Option;

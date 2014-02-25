@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.edit.internal.part;
+package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
 import org.eclipse.draw2d.LineBorder;
 import org.eclipse.draw2d.PositionConstants;
@@ -43,13 +43,13 @@ import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.query.DNodeQuery;
-import org.eclipse.sirius.diagram.edit.api.part.DiagramNameEditPartOperation;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramBorderNodeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramNameEditPart;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration;
+import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ITransparentFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.StyledFigure;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.ICollapseMode;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 

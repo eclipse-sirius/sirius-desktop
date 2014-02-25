@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.providers;
+package org.eclipse.sirius.diagram.ui.internal.providers;
 
 import java.lang.ref.WeakReference;
 
@@ -23,10 +23,10 @@ import org.eclipse.gmf.runtime.diagram.ui.services.editpart.CreateRootEditPartOp
 import org.eclipse.gmf.runtime.diagram.ui.services.editpart.IEditPartOperation;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.SiriusEditPartFactory;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
-import org.eclipse.sirius.diagram.tools.internal.graphical.edit.part.DDiagramRootEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusEditPartFactory;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.part.DDiagramRootEditPart;
 
 /**
  * @was-generated

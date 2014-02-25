@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.edit.internal.part;
+package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
 import java.util.Iterator;
 
@@ -34,15 +34,15 @@ import org.eclipse.jface.text.contentassist.IContentAssistProcessor;
 import org.eclipse.jface.viewers.ICellEditorValidator;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramNameEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.DiagramNameEditPartOperation;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
-import org.eclipse.sirius.diagram.graphical.edit.policies.ToolBasedLabelDirectEditPolicy;
-import org.eclipse.sirius.diagram.internal.edit.parts.NotationViewIDs;
-import org.eclipse.sirius.diagram.internal.edit.parts.SiriusEditPartFactory;
-import org.eclipse.sirius.diagram.internal.providers.SiriusElementTypes;
-import org.eclipse.sirius.diagram.internal.providers.SiriusParserProvider;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ToolBasedLabelDirectEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.NotationViewIDs;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusEditPartFactory;
+import org.eclipse.sirius.diagram.ui.internal.providers.SiriusElementTypes;
+import org.eclipse.sirius.diagram.ui.internal.providers.SiriusParserProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 

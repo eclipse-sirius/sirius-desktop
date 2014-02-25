@@ -8,10 +8,10 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.parts;
+package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.part.Messages;
+import org.eclipse.sirius.diagram.ui.part.Messages;
 
 /**
  * @was-generated

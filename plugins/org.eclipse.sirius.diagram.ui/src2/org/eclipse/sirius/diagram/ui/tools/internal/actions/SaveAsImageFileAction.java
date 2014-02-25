@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -19,10 +19,10 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
-import org.eclipse.sirius.diagram.edit.api.part.IDDiagramEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.ui.actions.ActionIds;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.export.AbstractExportRepresentationsAction;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.ui.PlatformUI;
@@ -38,7 +38,7 @@ public class SaveAsImageFileAction extends AbstractExportRepresentationsAction {
      * Default constructor.
      */
     public SaveAsImageFileAction() {
-        super("Export diagram as image", SiriusDiagramEditorPlugin.getBundledImageDescriptor("icons/screenshot.gif"));
+        super("Export diagram as image", DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/screenshot.gif"));
 
         /* set the id */
         setId(ActionIds.COPY_TO_IMAGE);

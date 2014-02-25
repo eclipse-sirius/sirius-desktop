@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.api.query;
+package org.eclipse.sirius.diagram.ui.business.api.query;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Insets;
@@ -22,12 +22,13 @@ import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.sirius.diagram.CollapseFilter;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
-import org.eclipse.sirius.diagram.edit.internal.part.PortLayoutHelper;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNode2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNode4EditPart;
-import org.eclipse.sirius.diagram.internal.refresh.GMFHelper;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
+import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.ICollapseMode;
 import org.eclipse.sirius.ext.base.Option;
@@ -54,6 +55,108 @@ public class NodeQuery {
      */
     public NodeQuery(Node node) {
         this.node = node;
+    }
+
+    /**
+     * Return the expected collapsed node dimension according to the
+     * preferences.
+     * 
+     * @return The expected collapsed node dimension.
+     */
+    public Dimension getCollapsedSize() {
+        Dimension expectedDim = ICollapseMode.COLLAPSED_DIMENSION;
+        if (!ICollapseMode.DEFAULT) {
+            expectedDim = ICollapseMode.MINIMIZED_DIMENSION;
+        }
+        return expectedDim;
+    }
+
+    /**
+     * Retrieves the node dimension before collapse from {@link CollapseFilter}.
+     * In case of the collapse filter width and height attributes are equal to
+     * zero, the default dimension is returned.
+     * 
+     * @return the original dimension.
+     */
+    public Dimension getOriginalDimensionBeforeCollapse() {
+        EObject element = node.getElement();
+        Dimension dim = new Dimension(0, 0);
+        if (element instanceof DDiagramElement) {
+            CollapseFilter filter = (CollapseFilter) Iterables.getFirst(Iterables.filter(((DDiagramElement) element).getGraphicalFilters(), Predicates.instanceOf(CollapseFilter.class)), null);
+            if (filter == null || filter.getWidth() == 0 || filter.getHeight() == 0) {
+                dim.setSize(getDefaultDim((DDiagramElement) element));
+            } else {
+                dim.setSize(new Dimension(filter.getWidth(), filter.getHeight()));
+            }
+        }
+        return dim;
+    }
+
+    /**
+     * Returns if the node is collapsed or is indirectly collapsed (contains at
+     * least one {@link CollapseFilter}) via the {@link DDiagramElementQuery}.
+     * 
+     * @return true if the node is collapsed, false otherwise.
+     */
+    public boolean isCollapsed() {
+        EObject element = node.getElement();
+        if (element instanceof DDiagramElement) {
+            DDiagramElementQuery dDiagramElementQuery = new DDiagramElementQuery((DDiagramElement) element);
+            return dDiagramElementQuery.isIndirectlyCollapsed();
+        }
+        return false;
+    }
+
+    /**
+     * Returns if the node is directly collapsed (contains at least one
+     * {@link CollapseFilter} that is not a
+     * {@link org.eclipse.sirius.viewpoint.IndirectlyCollapseFilter}) via the
+     * {@link DDiagramElementQuery}.
+     * 
+     * @return true if the node is indirectly collapsed, false otherwise.
+     */
+    public boolean isDirectlyCollapsed() {
+        EObject element = node.getElement();
+        if (element instanceof DDiagramElement) {
+            return new DDiagramElementQuery((DDiagramElement) element).isCollapsed();
+        }
+        return false;
+    }
+
+    /**
+     * Returns if the node is indirectly collapsed (contains at least one
+     * {@link org.eclipse.sirius.viewpoint.IndirectlyCollapseFilter}) via the
+     * {@link DDiagramElementQuery}.
+     * 
+     * @return true if the node is indirectly collapsed, false otherwise.
+     */
+    public boolean isIndirectlyCollapsed() {
+        EObject element = node.getElement();
+        if (element instanceof DDiagramElement) {
+            return new DDiagramElementQuery((DDiagramElement) element).isOnlyIndirectlyCollapsed();
+        }
+        return false;
+    }
+
+    /**
+     * Return default dimension of this {@link DDiagramElement}.
+     * 
+     * @param element
+     *            the concerned {@link DDiagramElement}.
+     * @return default dimension
+     */
+    protected Dimension getDefaultDim(DDiagramElement element) {
+        Dimension dim;
+        if (element instanceof DNode) {
+            int originalDNodeWidth = ((DNode) element).getWidth();
+            int originalDNodeHeight = ((DNode) element).getHeight();
+            dim = new Dimension(originalDNodeWidth * LayoutUtils.SCALE, originalDNodeHeight * LayoutUtils.SCALE);
+        } else {
+            // TODO FBA: set default VSM dim if filter dim are
+            // zero.
+            dim = new Dimension(0, 0);
+        }
+        return dim;
     }
 
     /**
@@ -143,101 +246,6 @@ public class NodeQuery {
             return Options.newSome(newBounds);
         }
         return Options.newNone();
-    }
-
-    /**
-     * Return the expected collapsed node dimension according to the
-     * preferences.
-     * 
-     * @return The expected collapsed node dimension.
-     */
-    public Dimension getCollapsedSize() {
-        Dimension expectedDim = ICollapseMode.COLLAPSED_DIMENSION;
-        if (!ICollapseMode.DEFAULT) {
-            expectedDim = ICollapseMode.MINIMIZED_DIMENSION;
-        }
-        return expectedDim;
-    }
-
-    /**
-     * Retrieves the node dimension before collapse from {@link CollapseFilter}.
-     * In case of the collapse filter width and height attributes are equal to
-     * zero, the default dimension is returned.
-     * 
-     * @return the original dimension.
-     */
-    public Dimension getOriginalDimensionBeforeCollapse() {
-        EObject element = node.getElement();
-        Dimension dim = new Dimension(0, 0);
-        if (element instanceof DDiagramElement) {
-            CollapseFilter filter = (CollapseFilter) Iterables.getFirst(Iterables.filter(((DDiagramElement) element).getGraphicalFilters(), Predicates.instanceOf(CollapseFilter.class)), null);
-            if (filter == null || filter.getWidth() == 0 || filter.getHeight() == 0) {
-                dim.setSize(getDefaultDim((DDiagramElement) element));
-            } else {
-                dim.setSize(new Dimension(filter.getWidth(), filter.getHeight()));
-            }
-        }
-        return dim;
-    }
-
-    /**
-     * Returns if the node is collapsed or is indirectly collapsed (contains at
-     * least one {@link CollapseFilter}) via the {@link DDiagramElementQuery}.
-     * 
-     * @return true if the node is collapsed, false otherwise.
-     */
-    public boolean isCollapsed() {
-        EObject element = node.getElement();
-        if (element instanceof DDiagramElement) {
-            DDiagramElementQuery dDiagramElementQuery = new DDiagramElementQuery((DDiagramElement) element);
-            return dDiagramElementQuery.isIndirectlyCollapsed();
-        }
-        return false;
-    }
-
-    /**
-     * Returns if the node is directly collapsed (contains at least one
-     * {@link CollapseFilter} that is not a
-     * {@link org.eclipse.sirius.viewpoint.IndirectlyCollapseFilter}) via the
-     * {@link DDiagramElementQuery}.
-     * 
-     * @return true if the node is indirectly collapsed, false otherwise.
-     */
-    public boolean isDirectlyCollapsed() {
-        EObject element = node.getElement();
-        if (element instanceof DDiagramElement) {
-            return new DDiagramElementQuery((DDiagramElement) element).isCollapsed();
-        }
-        return false;
-    }
-
-    /**
-     * Returns if the node is indirectly collapsed (contains at least one
-     * {@link org.eclipse.sirius.viewpoint.IndirectlyCollapseFilter}) via the
-     * {@link DDiagramElementQuery}.
-     * 
-     * @return true if the node is indirectly collapsed, false otherwise.
-     */
-    public boolean isIndirectlyCollapsed() {
-        EObject element = node.getElement();
-        if (element instanceof DDiagramElement) {
-            return new DDiagramElementQuery((DDiagramElement) element).isOnlyIndirectlyCollapsed();
-        }
-        return false;
-    }
-
-    private Dimension getDefaultDim(DDiagramElement element) {
-        Dimension dim;
-        if (element instanceof DNode) {
-            int originalDNodeWidth = ((DNode) element).getWidth();
-            int originalDNodeHeight = ((DNode) element).getHeight();
-            dim = new Dimension(originalDNodeWidth * LayoutUtils.SCALE, originalDNodeHeight * LayoutUtils.SCALE);
-        } else {
-            // TODO FBA: set default VSM dim if filter dim are
-            // zero.
-            dim = new Dimension(0, 0);
-        }
-        return dim;
     }
 
     private Option<Rectangle> getParentBorder() {

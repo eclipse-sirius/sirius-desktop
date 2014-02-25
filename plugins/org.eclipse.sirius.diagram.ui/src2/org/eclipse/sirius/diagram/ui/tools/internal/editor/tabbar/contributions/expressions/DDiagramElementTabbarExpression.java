@@ -8,11 +8,11 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor.tabbar.contributions.expressions;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.expressions;
 
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 
 /**
  * Expression returning true if selection contains diagram elements.

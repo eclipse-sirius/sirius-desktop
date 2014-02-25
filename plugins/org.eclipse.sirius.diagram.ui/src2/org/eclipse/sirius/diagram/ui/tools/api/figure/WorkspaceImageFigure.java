@@ -19,8 +19,8 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.internal.image.ImagesPath;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.swt.graphics.Image;
 
 /**
@@ -108,7 +108,7 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
             ImageDescriptor desc = null;
             if (imageFile != null && imageFile.exists() && imageFile.canRead()) {
                 try {
-                    desc = SiriusDiagramEditorPlugin.findImageDescriptor(imageFile.toURI().toURL());
+                    desc = DiagramUIPlugin.getPlugin().findImageDescriptor(imageFile.toURI().toURL());
                 } catch (MalformedURLException e) {
                     // do nothing
                 }
@@ -127,14 +127,14 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
      */
     public static Image flyWeightImage(final ImageDescriptor desc) {
         if (desc != null) {
-            return SiriusDiagramEditorPlugin.getInstance().getImage(desc);
+            return DiagramUIPlugin.getPlugin().getImage(desc);
         } else {
             return WorkspaceImageFigure.getImageNotFound();
         }
     }
 
     private static Image getImageNotFound() {
-        return SiriusDiagramEditorPlugin.getInstance().getImage(SiriusDiagramEditorPlugin.findImageWithDimensionDescriptor(ImagesPath.IMAGE_NOT_FOUND));
+        return DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.getPlugin().findImageWithDimensionDescriptor(DiagramImagesPath.IMAGE_NOT_FOUND));
     }
 
     /**

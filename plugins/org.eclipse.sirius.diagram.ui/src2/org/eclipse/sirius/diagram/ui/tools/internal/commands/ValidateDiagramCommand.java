@@ -8,14 +8,14 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.commands;
+package org.eclipse.sirius.diagram.ui.tools.internal.commands;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor;
 import org.eclipse.gmf.runtime.common.ui.util.WorkbenchPartDescriptor;
-import org.eclipse.sirius.diagram.part.ValidateAction;
+import org.eclipse.sirius.diagram.ui.part.ValidateAction;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.handlers.HandlerUtil;
 

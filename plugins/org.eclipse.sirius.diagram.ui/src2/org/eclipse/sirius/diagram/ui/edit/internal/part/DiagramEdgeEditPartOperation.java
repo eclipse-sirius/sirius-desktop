@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.edit.internal.part;
+package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -56,13 +56,13 @@ import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.LineStyle;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramEdgeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.DiagramNameEditPartOperation;
-import org.eclipse.sirius.diagram.edit.api.part.IAbstractDiagramNodeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramEdgeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeNameEditPart;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.PolygoneAndPolylineDecoraction;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.EdgeRoutingStyleChangedCommand;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;

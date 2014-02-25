@@ -164,15 +164,6 @@ public class ContainerModelOperationItemProvider extends ModelOperationItemProvi
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createDeleteView()));
 
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS,
-                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createCreateView()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS,
-                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createCreateEdgeView()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS,
-                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createNavigation()));
-
         Switch switchCase = ToolFactory.eINSTANCE.createSwitch();
         Case caseCase = ToolFactory.eINSTANCE.createCase();
         switchCase.getCases().add(caseCase);
@@ -217,14 +208,5 @@ public class ContainerModelOperationItemProvider extends ModelOperationItemProvi
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createDeleteView()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createSwitch()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS,
-                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createCreateView()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS,
-                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createCreateEdgeView()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS,
-                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createNavigation()));
     }
 }

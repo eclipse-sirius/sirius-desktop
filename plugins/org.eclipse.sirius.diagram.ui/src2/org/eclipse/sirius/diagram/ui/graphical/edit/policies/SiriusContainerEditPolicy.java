@@ -10,7 +10,7 @@
  *    Obeo - Adaptations.
  *******************************************************************************/
 
-package org.eclipse.sirius.diagram.graphical.edit.policies;
+package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,8 +45,8 @@ import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalC
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.sirius.diagram.tools.internal.commands.SnapCommand;
-import org.eclipse.sirius.diagram.tools.internal.ui.GMFRuntimeCompatibility;
+import org.eclipse.sirius.diagram.ui.tools.internal.commands.SnapCommand;
+import org.eclipse.sirius.diagram.ui.tools.internal.ui.GMFRuntimeCompatibility;
 
 /**
  * A specific class to override the arrangeCommand for the GMF runtime version

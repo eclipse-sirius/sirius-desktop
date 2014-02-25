@@ -32,7 +32,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.ui.business.api.provider.DEdgeLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.business.api.provider.DEdgeLabelItemProvider;
 
 /**
  * This is the item provider adapter for a

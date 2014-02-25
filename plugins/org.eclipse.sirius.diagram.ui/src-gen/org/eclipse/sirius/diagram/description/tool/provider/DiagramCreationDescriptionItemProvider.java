@@ -26,8 +26,8 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.sirius.diagram.description.tool.DiagramCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.provider.RepresentationCreationDescriptionItemProvider;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This is the item provider adapter for a
@@ -134,7 +134,7 @@ public class DiagramCreationDescriptionItemProvider extends RepresentationCreati
      */
     @Override
     public ResourceLocator getResourceLocator() {
-        return SiriusEditPlugin.INSTANCE;
+        return DiagramUIPlugin.INSTANCE;
     }
 
 }

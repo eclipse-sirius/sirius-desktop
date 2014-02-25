@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.migration;
+package org.eclipse.sirius.diagram.ui.business.internal.migration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.business.api.query.DDiagramGraphicalQuery;
+import org.eclipse.sirius.diagram.ui.business.api.query.DDiagramGraphicalQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;

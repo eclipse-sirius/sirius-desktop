@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.dialect;
+package org.eclipse.sirius.diagram.ui.business.internal.dialect;
 
 import java.util.LinkedList;
 import java.util.List;

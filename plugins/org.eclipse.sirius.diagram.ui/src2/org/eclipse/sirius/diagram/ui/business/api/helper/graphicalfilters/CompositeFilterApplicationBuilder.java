@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.api.helper.graphicalfilters;
+package org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters;
 
 import java.util.Collection;
 import java.util.List;

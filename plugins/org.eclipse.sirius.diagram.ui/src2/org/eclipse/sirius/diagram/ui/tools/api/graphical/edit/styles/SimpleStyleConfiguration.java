@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.api.graphical.edit.styles;
+package org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -36,10 +36,10 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.ResizeKind;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeBeginNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeEndNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeNameEditPart;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GaugeCompositeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
@@ -141,7 +141,7 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
                 if (useCustomIcon(vpElement, editPart)) {
                     descriptor = getCustomIconDescriptor(vpElement, editPart);
                 } else if (target != null) {
-                    final IItemLabelProvider labelProvider = (IItemLabelProvider) SiriusDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory().adapt(target, IItemLabelProvider.class);
+                    final IItemLabelProvider labelProvider = (IItemLabelProvider) DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory().adapt(target, IItemLabelProvider.class);
                     if (labelProvider != null) {
                         descriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(labelProvider.getImage(target));
                     }
@@ -150,7 +150,7 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
                 if (descriptor == null) {
                     descriptor = ImageDescriptor.getMissingImageDescriptor();
                 }
-                icon = SiriusDiagramEditorPlugin.getInstance().getImage(descriptor);
+                icon = DiagramUIPlugin.getPlugin().getImage(descriptor);
             }
         }
         return icon;
@@ -164,7 +164,7 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
             final File imageFile = FileProvider.getDefault().getFile(new Path(iconPath));
             if (imageFile != null && imageFile.exists() && imageFile.canRead()) {
                 try {
-                    imgDesc = SiriusDiagramEditorPlugin.findImageDescriptor(imageFile.toURI().toURL());
+                    imgDesc = DiagramUIPlugin.Implementation.findImageDescriptor(imageFile.toURI().toURL());
                 } catch (MalformedURLException e) {
                     logIconNotFoundWarning(iconPath, e);
                 }

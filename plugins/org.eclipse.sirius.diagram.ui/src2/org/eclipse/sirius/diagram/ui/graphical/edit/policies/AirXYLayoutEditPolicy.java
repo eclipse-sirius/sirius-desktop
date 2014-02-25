@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.graphical.edit.policies;
+package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import java.util.List;
 
@@ -39,13 +39,13 @@ import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalC
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.business.internal.view.LayoutData;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramContainerEditPart;
-import org.eclipse.sirius.diagram.graphical.figures.SiriusLayoutHelper;
-import org.eclipse.sirius.diagram.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
-import org.eclipse.sirius.diagram.internal.view.factories.ViewSizeHint;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
+import org.eclipse.sirius.diagram.ui.business.internal.view.LayoutData;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
+import org.eclipse.sirius.diagram.ui.graphical.figures.SiriusLayoutHelper;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.internal.view.factories.ViewSizeHint;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 
 /**

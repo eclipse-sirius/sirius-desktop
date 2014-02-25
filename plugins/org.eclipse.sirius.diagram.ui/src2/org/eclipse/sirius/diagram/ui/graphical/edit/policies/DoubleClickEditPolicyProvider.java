@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.graphical.edit.policies;
+package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +23,9 @@ import org.eclipse.gmf.runtime.diagram.ui.services.editpolicy.IEditPolicyProvide
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.edit.api.part.IAbstractDiagramNodeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramEdgeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramNameEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 
 /**
  * Provides Edit Policy for double clicking on Diagram elements.

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.api.requests;
+package org.eclipse.sirius.diagram.ui.tools.api.requests;
 
 /**
  * Constants.

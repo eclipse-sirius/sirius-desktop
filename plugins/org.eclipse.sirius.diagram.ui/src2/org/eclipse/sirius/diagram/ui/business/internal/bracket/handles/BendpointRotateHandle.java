@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.bracket.handles;
+package org.eclipse.sirius.diagram.ui.business.internal.bracket.handles;
 
 import org.eclipse.draw2d.BendpointLocator;
 import org.eclipse.gef.ConnectionEditPart;
@@ -16,8 +16,8 @@ import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.SharedCursors;
 import org.eclipse.gef.handles.BendpointHandle;
 import org.eclipse.gef.tools.ConnectionBendpointTracker;
-import org.eclipse.sirius.diagram.business.internal.bracket.locators.BendpointRotateLocator;
-import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
+import org.eclipse.sirius.diagram.ui.business.internal.bracket.locators.BendpointRotateLocator;
+import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 
 /**
  * A BendpointHandle that is used to rotate an existing bendpoint.

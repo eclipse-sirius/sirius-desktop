@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.clipboard;
+package org.eclipse.sirius.diagram.ui.tools.internal.clipboard;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.gmf.runtime.emf.clipboard.core.IClipboardSupport;

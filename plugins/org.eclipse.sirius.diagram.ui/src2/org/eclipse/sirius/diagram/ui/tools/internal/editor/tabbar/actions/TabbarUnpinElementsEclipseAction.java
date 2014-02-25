@@ -8,10 +8,10 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions;
 
 import org.eclipse.jface.action.IAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.pinning.UnpinElementsEclipseAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.UnpinElementsEclipseAction;
 
 /**
  * A tabbar pin action which reference an opposite action.

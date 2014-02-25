@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.parser;
+package org.eclipse.sirius.diagram.ui.business.internal.parser;
 
 import java.io.IOException;
 import java.util.Map;

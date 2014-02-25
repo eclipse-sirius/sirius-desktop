@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.graphical.edit.policies;
+package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import java.util.List;
 
@@ -23,11 +23,11 @@ import org.eclipse.gef.handles.BendpointMoveHandle;
 import org.eclipse.gef.handles.ConnectionEndHandle;
 import org.eclipse.gef.handles.ConnectionStartHandle;
 import org.eclipse.gef.handles.NonResizableHandleKit;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramEdgeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramNameEditPart;
-import org.eclipse.sirius.diagram.edit.internal.part.DiagramEdgeEditPartOperation;
-import org.eclipse.sirius.diagram.internal.edit.parts.AbstractDEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramEdgeEditPartOperation;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 

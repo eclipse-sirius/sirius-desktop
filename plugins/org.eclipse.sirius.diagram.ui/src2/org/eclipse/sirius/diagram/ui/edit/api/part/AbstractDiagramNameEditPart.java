@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.edit.api.part;
+package org.eclipse.sirius.diagram.ui.edit.api.part;
 
 import java.util.List;
 
@@ -31,12 +31,12 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
-import org.eclipse.sirius.diagram.edit.internal.part.DiagramElementEditPartOperation;
-import org.eclipse.sirius.diagram.graphical.edit.policies.LabelDeletionEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.LabelSemanticEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.ToolBasedLabelDirectEditPolicy;
-import org.eclipse.sirius.diagram.tools.api.permission.EditPartAuthorityListener;
-import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LabelDeletionEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LabelSemanticEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ToolBasedLabelDirectEditPolicy;
+import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListener;
+import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.swt.graphics.Image;
 

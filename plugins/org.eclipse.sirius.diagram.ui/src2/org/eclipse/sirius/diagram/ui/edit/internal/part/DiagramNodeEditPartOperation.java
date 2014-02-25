@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.edit.internal.part;
+package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
 import java.util.Iterator;
 import java.util.List;
@@ -26,18 +26,18 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.ResizeKind;
-import org.eclipse.sirius.diagram.business.internal.edit.helpers.LabelAlignmentHelper;
-import org.eclipse.sirius.diagram.business.internal.query.StyleConfigurationQuery;
-import org.eclipse.sirius.diagram.edit.api.part.DiagramNameEditPartOperation;
-import org.eclipse.sirius.diagram.edit.api.part.IAbstractDiagramNodeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramNameEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramNodeEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.NotationViewIDs;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration;
+import org.eclipse.sirius.diagram.ui.business.internal.edit.helpers.LabelAlignmentHelper;
+import org.eclipse.sirius.diagram.ui.business.internal.query.StyleConfigurationQuery;
+import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNodeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.NotationViewIDs;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.StyledFigure;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.LabelAlignment;
 import org.eclipse.sirius.viewpoint.LabelStyle;

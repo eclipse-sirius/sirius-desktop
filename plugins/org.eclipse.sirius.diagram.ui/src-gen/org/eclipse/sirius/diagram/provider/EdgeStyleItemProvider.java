@@ -31,8 +31,8 @@ import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.LineStyle;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.sirius.viewpoint.provider.StyleItemProvider;
 
 /**
@@ -264,7 +264,7 @@ public class EdgeStyleItemProvider extends StyleItemProvider implements IEditing
      */
     @Override
     public ResourceLocator getResourceLocator() {
-        return SiriusEditPlugin.INSTANCE;
+        return DiagramUIPlugin.INSTANCE;
     }
 
 }

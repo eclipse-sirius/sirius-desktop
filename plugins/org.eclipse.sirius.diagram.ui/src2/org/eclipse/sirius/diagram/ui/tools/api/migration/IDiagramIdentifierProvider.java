@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.api.migration;
+package org.eclipse.sirius.diagram.ui.tools.api.migration;
 
 import org.eclipse.sirius.diagram.DDiagramElement;
 

@@ -8,12 +8,12 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor.tabbar;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar;
 
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.sirius.diagram.tools.internal.editor.DDiagramEditorImpl;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;

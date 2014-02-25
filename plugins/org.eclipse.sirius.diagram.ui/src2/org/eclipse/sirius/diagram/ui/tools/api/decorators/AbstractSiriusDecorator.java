@@ -26,13 +26,13 @@ import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget.Direction;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramListEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramNameEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListElementEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeListNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeNameEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeNameEditPart;
 import org.eclipse.swt.graphics.Image;
 
 /**

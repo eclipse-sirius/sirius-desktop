@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.part;
+package org.eclipse.sirius.diagram.ui.part;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Preferences;
@@ -22,24 +22,26 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.Separator;
-import org.eclipse.sirius.diagram.ImagesPath;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
-import org.eclipse.sirius.diagram.tools.internal.actions.LaunchBehaviorToolAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.SelectHiddenElementsAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.TabbarRouterAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.delete.DeleteFromDiagramAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.delete.DeleteFromModelAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.layout.CopyLayoutAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.layout.PasteLayoutAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.refresh.RefreshDiagramAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.style.SetStyleToWorkspaceImageAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.visibility.HideDDiagramElementAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.visibility.HideDDiagramElementLabelAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.visibility.RevealAllElementsAction;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.action.ConcernComboContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.api.action.DeleteFromDiagramContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.api.action.SetStyleToWorkspaceImageContributionItem;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.LaunchBehaviorToolAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.SelectHiddenElementsAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.TabbarRouterAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromDiagramAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromModelAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.CopyLayoutAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteLayoutAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.refresh.RefreshDiagramAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.SetStyleToWorkspaceImageAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementLabelAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.RevealAllElementsAction;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.actions.RetargetAction;
 import org.osgi.framework.Bundle;
@@ -107,10 +109,10 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
      */
     protected void buildActions() {
         super.buildActions();
-        final RetargetAction action = new LaunchBehaviorToolAction(LAUNCH_BEHAVIOR, SiriusDiagramEditorPlugin.getBundledImageDescriptor(ImagesPath.GO_IMG));
+        final RetargetAction action = new LaunchBehaviorToolAction(LAUNCH_BEHAVIOR, DiagramUIPlugin.getPlugin().getBundledImageDescriptor(DiagramImagesPath.GO_IMG));
         addAction(action);
 
-        final RetargetAction refresh = new RefreshDiagramAction(REFRESH_DIAGRAM, SiriusDiagramEditorPlugin.getBundledImageDescriptor(ImagesPath.REFRESH_IMG));
+        final RetargetAction refresh = new RefreshDiagramAction(REFRESH_DIAGRAM, DiagramUIPlugin.getPlugin().getBundledImageDescriptor(DiagramImagesPath.REFRESH_IMG));
         addAction(refresh);
 
         final Action setStyleToWorkspaceImageAction = new SetStyleToWorkspaceImageAction();
@@ -126,11 +128,11 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
         addAction(revealElementsAction);
 
         final RetargetAction deleteFromDiagramAction = new DeleteFromDiagramAction(DiagramUIMessages.DiagramEditor_Delete_from_Diagram, DELETE_FROM_DIAGRAM, ActionIds.ACTION_DELETE_FROM_DIAGRAM,
-                SiriusDiagramEditorPlugin.getBundledImageDescriptor(ImagesPath.DELETE_FROM_DIAGRAM_ICON));
+                DiagramUIPlugin.getPlugin().getBundledImageDescriptor(DiagramImagesPath.DELETE_FROM_DIAGRAM_ICON));
         addAction(deleteFromDiagramAction);
 
-        final IAction deleteFromModelAction = new DeleteFromModelAction(DiagramUIMessages.DiagramEditor_Delete_from_Model, DELETE_FROM_MODEL, ActionIds.ACTION_DELETE_FROM_MODEL,
-                SiriusDiagramEditorPlugin.getBundledImageDescriptor(ImagesPath.DELETE_FROM_MODEL_ICON));
+        final IAction deleteFromModelAction = new DeleteFromModelAction(DiagramUIMessages.DiagramEditor_Delete_from_Model, DELETE_FROM_MODEL, ActionIds.ACTION_DELETE_FROM_MODEL, DiagramUIPlugin
+                .getPlugin().getBundledImageDescriptor(DiagramImagesPath.DELETE_FROM_MODEL_ICON));
         addAction(deleteFromModelAction);
 
         final IAction copyLayoutAction = new CopyLayoutAction(getPage());
@@ -171,10 +173,10 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
             toolBarManager.add(getActionRegistry().getAction(REVEAL_ELEMENTS));
             toolBarManager.add(new DeleteFromDiagramContributionItem(getActionRegistry().getAction(ActionIds.ACTION_DELETE_FROM_DIAGRAM), getPage()));
             toolBarManager.add(getActionRegistry().getAction(ActionIds.ACTION_DELETE_FROM_MODEL));
-            toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.tools.api.ui.actions.ActionIds.COPY_LAYOUT));
-            toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.tools.api.ui.actions.ActionIds.PASTE_LAYOUT));
-            toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.tools.api.ui.actions.ActionIds.SELECT_HIDDEN_ELEMENTS));
-            toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.tools.api.ui.actions.ActionIds.ROUTING_STYLE));
+            toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.COPY_LAYOUT));
+            toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.PASTE_LAYOUT));
+            toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.SELECT_HIDDEN_ELEMENTS));
+            toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ROUTING_STYLE));
         } else {
 
         }

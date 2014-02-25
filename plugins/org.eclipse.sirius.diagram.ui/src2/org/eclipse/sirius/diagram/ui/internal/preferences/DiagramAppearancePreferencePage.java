@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.preferences;
+package org.eclipse.sirius.diagram.ui.internal.preferences;
 
 import org.eclipse.gmf.runtime.diagram.ui.preferences.AppearancePreferencePage;
 import org.eclipse.jface.preference.BooleanFieldEditor;
@@ -51,15 +51,16 @@ public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
      * Title of the group containing all options related to label icons hiding.
      */
     public static final String LABEL_ICONS_GROUP_TITLE = "Label icons (does not affect existing elements of opened diagrams)"; //$NON-NLS-1$
-    
+
     /**
      * Title of the group containing display header option.
      */
     public static final String LABEL_DISPLAY_HEADER_TITLE = "Display header"; //$NON-NLS-1$/**
+
     /**
-    * Message explaining user the action of display header.
-    */
-   public static final String DISPLAY_HEADER_MESSAGE = "Display header"; //$NON-NLS-1$
+     * Message explaining user the action of display header.
+     */
+    public static final String DISPLAY_HEADER_MESSAGE = "Display header"; //$NON-NLS-1$
 
     private BooleanFieldEditor hideLabelIconsOfShapes;
 
@@ -80,8 +81,6 @@ public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
         createFontAndColorGroup(main);
         createDisplayHeadergroup(main);
     }
-
-   
 
     /**
      * Create the font and color group for the "Label Icons" group of this
@@ -139,8 +138,9 @@ public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
         layout.marginHeight = 0;
         layout.horizontalSpacing = 8;
         composite.setLayout(layout);
-        
+
     }
+
     /**
      * Adds field of the "Display header" group.
      * 
@@ -150,7 +150,7 @@ public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
     protected void addDisplayHeaderField(Composite composite) {
         displayHeader = new BooleanFieldEditor(SiriusDiagramPreferencesKeys.PREF_DISPLAY_HEADER_SECTION.name(), DISPLAY_HEADER_MESSAGE, composite);
         addField(displayHeader);
-        
+
     }
 
     /**

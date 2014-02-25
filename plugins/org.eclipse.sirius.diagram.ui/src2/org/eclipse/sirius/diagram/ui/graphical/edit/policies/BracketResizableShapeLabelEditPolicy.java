@@ -8,14 +8,14 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.graphical.edit.policies;
+package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.editparts.AbstractConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
-import org.eclipse.sirius.diagram.business.internal.bracket.BracketConnectionQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.bracket.BracketConnectionQuery;
 
 /**
  * A Bracket specific {@link ResizableShapeLabelEditPolicy} to customize tether

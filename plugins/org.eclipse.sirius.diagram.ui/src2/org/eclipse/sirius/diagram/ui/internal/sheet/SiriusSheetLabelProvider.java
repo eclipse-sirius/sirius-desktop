@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.sheet;
+package org.eclipse.sirius.diagram.ui.internal.sheet;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -21,7 +21,7 @@ import org.eclipse.jface.viewers.DecoratingLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.common.ui.business.api.views.properties.tabbed.LabelProviderProviderService;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.swt.graphics.Image;
 
@@ -36,7 +36,7 @@ public class SiriusSheetLabelProvider extends DecoratingLabelProvider {
      * @was-generated
      */
     public SiriusSheetLabelProvider() {
-        super(new AdapterFactoryLabelProvider(SiriusDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory()), null);
+        super(new AdapterFactoryLabelProvider(DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory()), null);
         labelProviderProviderService = new LabelProviderProviderService();
     }
 
@@ -53,7 +53,7 @@ public class SiriusSheetLabelProvider extends DecoratingLabelProvider {
             // begin change YMO.
             if (selected instanceof DSemanticDecorator && ((DSemanticDecorator) selected).getTarget() != null) {
                 EObject eObject = ((DSemanticDecorator) selected).getTarget();
-                AdapterFactory adapterFactory = SiriusDiagramEditorPlugin.getInstance().getItemProvidersAdapterFactory();
+                AdapterFactory adapterFactory = DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory();
                 IItemLabelProvider itemLabelProvider = (IItemLabelProvider) adapterFactory.adapt(eObject, IItemLabelProvider.class);
                 text = itemLabelProvider.getText(eObject);
             } else {
@@ -75,7 +75,7 @@ public class SiriusSheetLabelProvider extends DecoratingLabelProvider {
             Object selected = unwrap(element);
             if (selected instanceof DSemanticDecorator && ((DSemanticDecorator) selected).getTarget() != null) {
                 EObject eObject = ((DSemanticDecorator) selected).getTarget();
-                image = SiriusDiagramEditorPlugin.getInstance().getImage(SiriusDiagramEditorPlugin.getInstance().getItemImageDescriptor(eObject));
+                image = DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.getPlugin().getItemImageDescriptor(eObject));
             } else {
                 image = super.getImage(selected);
             }

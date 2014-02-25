@@ -8,14 +8,14 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.print;
+package org.eclipse.sirius.diagram.ui.tools.internal.print;
 
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.printing.render.util.RenderedDiagramPrinter;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.IMapMode;
 import org.eclipse.gmf.runtime.notation.Diagram;
-import org.eclipse.sirius.diagram.tools.api.part.DiagramEditPartService;
+import org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService;
 import org.eclipse.swt.widgets.Shell;
 
 /**

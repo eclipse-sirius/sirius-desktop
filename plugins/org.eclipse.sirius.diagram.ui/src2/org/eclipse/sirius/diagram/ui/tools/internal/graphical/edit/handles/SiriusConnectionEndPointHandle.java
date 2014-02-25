@@ -8,13 +8,13 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.graphical.edit.handles;
+package org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.handles;
 
 import org.eclipse.draw2d.ConnectionLocator;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.RequestConstants;
-import org.eclipse.sirius.diagram.tools.internal.ui.SiriusConnectionEndPointTracker;
+import org.eclipse.sirius.diagram.ui.tools.internal.ui.SiriusConnectionEndPointTracker;
 
 /**
  * Override ConnectionEndPointHandle to call our connection end point tracker

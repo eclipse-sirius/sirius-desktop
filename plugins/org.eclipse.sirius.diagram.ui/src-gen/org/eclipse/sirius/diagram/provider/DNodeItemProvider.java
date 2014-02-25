@@ -32,7 +32,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.ui.business.api.provider.DNodeLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.business.api.provider.DNodeLabelItemProvider;
 
 /**
  * This is the item provider adapter for a

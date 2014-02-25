@@ -8,9 +8,9 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.commands;
+package org.eclipse.sirius.diagram.ui.tools.internal.commands;
 
-import org.eclipse.sirius.diagram.tools.internal.actions.visibility.RevealAllElementsAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.RevealAllElementsAction;
 
 /**
  * Command to wrap reveal all elements action.

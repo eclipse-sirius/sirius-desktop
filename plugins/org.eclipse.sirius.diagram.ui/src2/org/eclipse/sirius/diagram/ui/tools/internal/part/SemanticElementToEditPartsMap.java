@@ -9,7 +9,7 @@
  *    IBM Corporation - initial API and implementation 
  ****************************************************************************/
 
-package org.eclipse.sirius.diagram.tools.internal.part;
+package org.eclipse.sirius.diagram.ui.tools.internal.part;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -67,7 +67,7 @@ public class SemanticElementToEditPartsMap {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.part.IDiagramDialectGraphicalViewer#registerEditPartForSemanticElement(EObject,
+     * @see org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer#registerEditPartForSemanticElement(EObject,
      *      EditPart)
      */
     public void registerEditPartForElement(final EObject element, final EditPart ep) {
@@ -91,7 +91,7 @@ public class SemanticElementToEditPartsMap {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.part.IDiagramDialectGraphicalViewer#unregisterEditPartForSemanticElement(EObject,
+     * @see org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer#unregisterEditPartForSemanticElement(EObject,
      *      EditPart)
      */
     public void unregisterEditPartForElement(final EObject element, final EditPart ep) {
@@ -112,7 +112,7 @@ public class SemanticElementToEditPartsMap {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.tools.api.part.IDiagramDialectGraphicalViewer#unregisterEditPart(org.eclipse.gef.EditPart)
+     * @see org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer#unregisterEditPart(org.eclipse.gef.EditPart)
      */
     public void unregisterEditPart(final EditPart ep) {
         Collection<EObject> keysToRemove = Lists.newArrayList();

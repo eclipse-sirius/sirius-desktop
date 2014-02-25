@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.graphical.edit.part.specific;
+package org.eclipse.sirius.diagram.ui.graphical.edit.part.specific;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,20 +31,20 @@ import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.sirius.diagram.BracketEdgeStyle;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeStyle;
-import org.eclipse.sirius.diagram.business.internal.bracket.BracketConnectionAnchor;
-import org.eclipse.sirius.diagram.business.internal.bracket.BracketConnectionQuery;
-import org.eclipse.sirius.diagram.business.internal.bracket.BracketRelativeBendpoint;
-import org.eclipse.sirius.diagram.business.internal.bracket.DiagramTargetingTool;
-import org.eclipse.sirius.diagram.business.internal.bracket.locators.BracketConnectionDecoratorLocator;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramEdgeEditPart;
-import org.eclipse.sirius.diagram.graphical.edit.policies.BracketBendpointEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.DeleteFromDiagramEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.HideSiriusElementEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.SiriusGraphicalNodeEditPolicy;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeBeginNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeEndNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeNameEditPart;
-import org.eclipse.sirius.diagram.internal.edit.policies.DEdgeItemSemanticEditPolicy;
+import org.eclipse.sirius.diagram.ui.business.internal.bracket.BracketConnectionAnchor;
+import org.eclipse.sirius.diagram.ui.business.internal.bracket.BracketConnectionQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.bracket.BracketRelativeBendpoint;
+import org.eclipse.sirius.diagram.ui.business.internal.bracket.DiagramTargetingTool;
+import org.eclipse.sirius.diagram.ui.business.internal.bracket.locators.BracketConnectionDecoratorLocator;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.BracketBendpointEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.DeleteFromDiagramEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.HideSiriusElementEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusGraphicalNodeEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.DEdgeItemSemanticEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.internal.routers.BracketConnectionRouter;
 

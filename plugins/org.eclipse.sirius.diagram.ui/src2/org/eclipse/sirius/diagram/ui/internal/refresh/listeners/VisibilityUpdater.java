@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.refresh.listeners;
+package org.eclipse.sirius.diagram.ui.internal.refresh.listeners;
 
 import java.util.Collection;
 
@@ -39,7 +39,7 @@ import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsM
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.properties.PropertiesService;
+import org.eclipse.sirius.diagram.ui.tools.api.properties.PropertiesService;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.tools.api.ui.property.IPropertiesProvider;
 

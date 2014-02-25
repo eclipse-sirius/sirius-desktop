@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.quickfix;
+package org.eclipse.sirius.diagram.ui.internal.quickfix;
 
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.emf.common.util.URI;

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor.tabbar.util;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.util;
 
 import org.eclipse.gmf.runtime.common.ui.util.IPartSelector;
 import org.eclipse.ui.IWorkbenchPart;

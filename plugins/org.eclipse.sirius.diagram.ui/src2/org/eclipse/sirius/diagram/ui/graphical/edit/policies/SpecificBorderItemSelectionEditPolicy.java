@@ -10,7 +10,7 @@
  *    Obeo - adaptation
  ****************************************************************************/
 
-package org.eclipse.sirius.diagram.graphical.edit.policies;
+package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -57,16 +57,16 @@ import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.AbstractDNodeQuery;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.business.api.query.NodeQuery;
-import org.eclipse.sirius.diagram.business.internal.query.RequestQuery;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramBorderNodeEditPart;
-import org.eclipse.sirius.diagram.edit.internal.part.PortLayoutHelper;
-import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNodeNameEditPart;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IBorderItemOffsets;
-import org.eclipse.sirius.diagram.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
+import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.locator.FeedbackDBorderItemLocator;
+import org.eclipse.sirius.diagram.ui.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
 
 import com.google.common.collect.Lists;
 

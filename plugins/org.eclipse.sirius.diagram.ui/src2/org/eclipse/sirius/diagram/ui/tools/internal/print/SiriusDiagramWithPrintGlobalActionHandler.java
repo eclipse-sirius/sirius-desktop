@@ -8,11 +8,11 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.print;
+package org.eclipse.sirius.diagram.ui.tools.internal.print;
 
 import org.eclipse.gmf.runtime.common.ui.action.actions.IPrintActionHelper;
 import org.eclipse.gmf.runtime.common.ui.services.action.global.IGlobalActionContext;
-import org.eclipse.gmf.runtime.diagram.ui.printing.render.providers.DiagramWithPrintGlobalActionHandler;
+import org.eclipse.gmf.runtime.diagram.ui.printing.providers.DiagramWithPrintGlobalActionHandler;
 
 /**
  * A specialized <code>DiagramWithPrintGlobalActionHandler</code> that supports

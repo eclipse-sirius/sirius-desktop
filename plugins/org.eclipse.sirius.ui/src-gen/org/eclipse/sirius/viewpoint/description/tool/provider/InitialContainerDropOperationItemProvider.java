@@ -176,15 +176,6 @@ public class InitialContainerDropOperationItemProvider extends ItemProviderAdapt
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_CONTAINER_DROP_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createDeleteView()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_CONTAINER_DROP_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createSwitch()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_CONTAINER_DROP_OPERATION__FIRST_MODEL_OPERATIONS,
-                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createCreateView()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_CONTAINER_DROP_OPERATION__FIRST_MODEL_OPERATIONS,
-                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createCreateEdgeView()));
-
-        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_CONTAINER_DROP_OPERATION__FIRST_MODEL_OPERATIONS,
-                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createNavigation()));
     }
 
     /**

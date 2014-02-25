@@ -24,8 +24,8 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.sirius.diagram.description.style.EndLabelStyleDescription;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.description.style.provider.BasicLabelStyleDescriptionItemProvider;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This is the item provider adapter for a
@@ -80,8 +80,8 @@ public class EndLabelStyleDescriptionItemProvider extends BasicLabelStyleDescrip
      */
     @Override
     public String getText(Object object) {
-        String label = ((EndLabelStyleDescription) object).getLabelExpression();
-        return label == null || label.length() == 0 ? getString("_UI_EndLabelStyleDescription_type") : getString("_UI_EndLabelStyleDescription_type") + " " + label;
+        EndLabelStyleDescription endLabelStyleDescription = (EndLabelStyleDescription) object;
+        return getString("_UI_EndLabelStyleDescription_type") + " " + endLabelStyleDescription.getLabelSize();
     }
 
     /**
@@ -118,7 +118,7 @@ public class EndLabelStyleDescriptionItemProvider extends BasicLabelStyleDescrip
      */
     @Override
     public ResourceLocator getResourceLocator() {
-        return SiriusEditPlugin.INSTANCE;
+        return DiagramUIPlugin.INSTANCE;
     }
 
 }

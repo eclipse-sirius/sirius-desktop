@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions.refresh;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.refresh;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;

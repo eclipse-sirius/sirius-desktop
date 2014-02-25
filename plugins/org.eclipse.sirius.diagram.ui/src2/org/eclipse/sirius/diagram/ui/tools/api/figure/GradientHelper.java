@@ -14,7 +14,7 @@ import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.SWTGraphics;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.BackgroundStyle;
-import org.eclipse.sirius.diagram.tools.internal.figure.util.GraphicsUtilities;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.util.GraphicsUtilities;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Pattern;

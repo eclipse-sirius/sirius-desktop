@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.marker;
+package org.eclipse.sirius.diagram.ui.tools.internal.marker;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -26,12 +26,12 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.internal.providers.SiriusMarkerNavigationProvider;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorUtil;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.tools.internal.resource.NavigationMarkerConstants;
+import org.eclipse.sirius.diagram.ui.internal.providers.SiriusMarkerNavigationProvider;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorUtil;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.internal.resource.NavigationMarkerConstants;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob;

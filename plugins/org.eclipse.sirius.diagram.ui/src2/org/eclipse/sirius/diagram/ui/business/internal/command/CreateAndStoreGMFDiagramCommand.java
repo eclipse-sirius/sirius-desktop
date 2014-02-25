@@ -8,12 +8,12 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.command;
+package org.eclipse.sirius.diagram.ui.business.internal.command;
 
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.business.internal.dialect.DiagramDialectServices;
+import org.eclipse.sirius.diagram.ui.business.internal.dialect.DiagramDialectServices;
 
 /**
  * Specific command to create and store gmf diagram.

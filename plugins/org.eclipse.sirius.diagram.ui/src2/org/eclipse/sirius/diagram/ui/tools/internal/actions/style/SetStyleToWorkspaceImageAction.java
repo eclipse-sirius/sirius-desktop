@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions.style;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.style;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,12 +18,12 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.ImagesPath;
-import org.eclipse.sirius.diagram.business.api.image.ImageSelector;
-import org.eclipse.sirius.diagram.business.api.image.ImageSelectorService;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.business.api.image.ImageSelector;
+import org.eclipse.sirius.diagram.ui.business.api.image.ImageSelectorService;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.swt.SWT;
@@ -49,7 +49,7 @@ public class SetStyleToWorkspaceImageAction extends Action {
     public SetStyleToWorkspaceImageAction() {
         super(SET_STYLE_TO_WORKSPACE_IMAGE_ACTION_NAME);
         setId(SET_STYLE_TO_WORKSPACE_IMAGE_ACTION_ID);
-        final ImageDescriptor enabledImage = SiriusDiagramEditorPlugin.getBundledImageDescriptor(ImagesPath.IMAGE_ICON);
+        final ImageDescriptor enabledImage = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.IMAGE_ICON);
         final ImageDescriptor disabledImage = ImageDescriptor.createWithFlags(enabledImage, SWT.IMAGE_DISABLE);
         this.setImageDescriptor(enabledImage);
         this.setDisabledImageDescriptor(disabledImage);

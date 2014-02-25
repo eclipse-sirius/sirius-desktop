@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.menu;
+package org.eclipse.sirius.diagram.ui.tools.internal.menu;
 
 import java.lang.reflect.Field;
 import java.util.Iterator;
@@ -33,8 +33,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
-import org.eclipse.sirius.diagram.tools.internal.actions.delete.DeleteFromModelWithHookAction;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.actions.ColorPropertyContributionItem;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromModelWithHookAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.ColorPropertyContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.ArrangeAllOnlyLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.LayoutService;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -117,10 +117,10 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
                     // Add the arrangeBorderedNodesActionToolBar just after the
                     // toolbarArrangeAllAction (Arrange All action of GMF)
                     // This is needed just in case of diagram selection.
-                    final IContributionItem item1 = menu.find(org.eclipse.sirius.diagram.tools.api.ui.actions.ActionIds.ARRANGE_BORDERED_NODES);
+                    final IContributionItem item1 = menu.find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDERED_NODES);
                     if (item1 != null) {
                         menu.remove(item1);
-                        final IMenuManager arrangeMenu = menu.findMenuUsingPath(org.eclipse.sirius.diagram.tools.api.ui.actions.ActionIds.MENU_ARRANGE);
+                        final IMenuManager arrangeMenu = menu.findMenuUsingPath(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.MENU_ARRANGE);
                         updateArrangeMenuName(arrangeMenu);
                         arrangeMenu.insertAfter(ActionIds.ACTION_TOOLBAR_ARRANGE_ALL, item1);
                     }
@@ -129,12 +129,12 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
                     moveArrangeMenuForDiagramElements(menu);
 
                     // move Show/Hide and Export digram as image after refresh
-                    final IContributionItem item3 = menu.find(org.eclipse.sirius.diagram.tools.api.ui.actions.ActionIds.SELECT_HIDDEN_ELEMENTS);
+                    final IContributionItem item3 = menu.find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.SELECT_HIDDEN_ELEMENTS);
                     if (item3 != null) {
                         menu.remove(item3);
                         menu.insertAfter(FILTER_FORMAT_GROUP, item3);
                     }
-                    final IContributionItem item2 = menu.find(org.eclipse.sirius.diagram.tools.api.ui.actions.ActionIds.COPY_TO_IMAGE);
+                    final IContributionItem item2 = menu.find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.COPY_TO_IMAGE);
                     if (item2 != null) {
                         menu.remove(item2);
                         menu.insertAfter(FILTER_FORMAT_GROUP, item2);
@@ -202,7 +202,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
     private void moveArrangeMenuForDiagramElements(IMenuManager menu) {
         final IMenuManager formatMenu = menu.findMenuUsingPath(ActionIds.MENU_FORMAT);
         if (formatMenu != null) {
-            final IMenuManager arrangeMenu = formatMenu.findMenuUsingPath(org.eclipse.sirius.diagram.tools.api.ui.actions.ActionIds.MENU_ARRANGE);
+            final IMenuManager arrangeMenu = formatMenu.findMenuUsingPath(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.MENU_ARRANGE);
             if (arrangeMenu != null) {
                 // We check the enablement of the arrange actions according to
                 // the current selected elements.
@@ -213,12 +213,12 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
                     formatMenu.remove(pinSeparator);
                     arrangeMenu.add(pinSeparator);
                 }
-                final IContributionItem pinItem = formatMenu.find(org.eclipse.sirius.diagram.tools.api.ui.actions.ActionIds.PIN_ELEMENTS);
+                final IContributionItem pinItem = formatMenu.find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.PIN_ELEMENTS);
                 if (pinItem != null) {
                     formatMenu.remove(pinItem);
                     arrangeMenu.add(pinItem);
                 }
-                final IContributionItem unpinItem = formatMenu.find(org.eclipse.sirius.diagram.tools.api.ui.actions.ActionIds.UNPIN_ELEMENTS);
+                final IContributionItem unpinItem = formatMenu.find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.UNPIN_ELEMENTS);
                 if (unpinItem != null) {
                     formatMenu.remove(unpinItem);
                     arrangeMenu.add(unpinItem);

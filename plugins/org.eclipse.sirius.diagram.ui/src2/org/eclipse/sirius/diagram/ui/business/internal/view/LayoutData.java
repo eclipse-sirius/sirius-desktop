@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.view;
+package org.eclipse.sirius.diagram.ui.business.internal.view;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +30,8 @@ import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 
 /**
  * Store the layout information of an AbstractDNode at a given time.

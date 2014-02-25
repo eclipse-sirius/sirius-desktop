@@ -55,6 +55,7 @@ import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionStatus;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.export.ExportRepresentationsAction;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
@@ -69,7 +70,6 @@ import org.eclipse.sirius.ui.tools.internal.actions.control.DesignerControlActio
 import org.eclipse.sirius.ui.tools.internal.actions.copy.CopyRepresentationAction;
 import org.eclipse.sirius.ui.tools.internal.actions.creation.CreateRepresentationAction;
 import org.eclipse.sirius.ui.tools.internal.actions.creation.CreateRepresentationFromSessionAction;
-import org.eclipse.sirius.ui.tools.internal.actions.export.ExportRepresentationsAction;
 import org.eclipse.sirius.ui.tools.internal.actions.session.CloseSessionsAction;
 import org.eclipse.sirius.ui.tools.internal.actions.session.OpenRepresentationsAction;
 import org.eclipse.sirius.ui.tools.internal.actions.session.OpenViewpointSelectionAction;

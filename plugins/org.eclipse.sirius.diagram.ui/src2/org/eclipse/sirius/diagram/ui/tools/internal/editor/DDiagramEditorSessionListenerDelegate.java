@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +17,10 @@ import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.business.api.session.SessionListener;
-import org.eclipse.sirius.diagram.ImagesPath;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.PaletteManager;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.ToolFilter;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.ToolFilter;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
@@ -224,7 +224,7 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
         if (initialTitleImage == null || initialTitleImage.isDisposed()) {
             IEditorRegistry editorRegistry = PlatformUI.getWorkbench().getEditorRegistry();
             IEditorDescriptor editorDesc = editorRegistry.findEditor(dDiagramEditorImpl.getSite().getId());
-            initialTitleImage = SiriusDiagramEditorPlugin.getInstance().getImage(editorDesc.getImageDescriptor());
+            initialTitleImage = DiagramUIPlugin.getPlugin().getImage(editorDesc.getImageDescriptor());
         }
         return initialTitleImage;
     }
@@ -236,7 +236,7 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
      */
     private Image getLockByMeImage() {
         if (lockByMeImage == null || lockByMeImage.isDisposed()) {
-            lockByMeImage = SiriusDiagramEditorPlugin.getInstance().getImage(LOCK_BY_ME_IMAGE_DESCRIPTOR);
+            lockByMeImage = DiagramUIPlugin.getPlugin().getImage(LOCK_BY_ME_IMAGE_DESCRIPTOR);
         }
         return lockByMeImage;
     }
@@ -248,7 +248,7 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
      */
     private Image getLockByOtherImage() {
         if (lockByOtherImage == null || lockByOtherImage.isDisposed()) {
-            lockByOtherImage = SiriusDiagramEditorPlugin.getInstance().getImage(LOCK_BY_OTHER_IMAGE_DESCRIPTOR);
+            lockByOtherImage = DiagramUIPlugin.getPlugin().getImage(LOCK_BY_OTHER_IMAGE_DESCRIPTOR);
         }
         return lockByOtherImage;
     }
@@ -260,14 +260,14 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
      */
     private Image getFrozenRepresentationImage() {
         if (frozenRepresentationImage == null || frozenRepresentationImage.isDisposed()) {
-            Image refreshImage = SiriusDiagramEditorPlugin.getInstance().getImage(SiriusDiagramEditorPlugin.getBundledImageDescriptor(ImagesPath.REFRESH_IMG));
+            Image refreshImage = DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.REFRESH_IMG));
             List<Object> images = new ArrayList<Object>(2);
             images.add(refreshImage);
             Image lockByOtherOverlayImage = SiriusEditPlugin.getPlugin()
                     .getImage(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied_overlay.gif"));
             images.add(lockByOtherOverlayImage);
             ImageDescriptor composedImageDescriptor = new ComposedImageDescriptor(new ComposedImage(images));
-            frozenRepresentationImage = SiriusDiagramEditorPlugin.getInstance().getImage(composedImageDescriptor);
+            frozenRepresentationImage = DiagramUIPlugin.getPlugin().getImage(composedImageDescriptor);
         }
         return frozenRepresentationImage;
     }
@@ -281,7 +281,7 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
      */
     private Image getNoWritePermissionImage() {
         if (noWritePermissionImage == null || noWritePermissionImage.isDisposed()) {
-            noWritePermissionImage = SiriusDiagramEditorPlugin.getInstance().getImage(NO_WRITE_PERMISSION_IMAGE_DESCRIPTOR);
+            noWritePermissionImage = DiagramUIPlugin.getPlugin().getImage(NO_WRITE_PERMISSION_IMAGE_DESCRIPTOR);
         }
         return noWritePermissionImage;
     }

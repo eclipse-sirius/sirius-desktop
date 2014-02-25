@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions.repair;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.repair;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -24,7 +24,7 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.tools.api.migration.DiagramCrossReferencer;
+import org.eclipse.sirius.diagram.ui.tools.api.migration.DiagramCrossReferencer;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 

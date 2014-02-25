@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor;
 
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.Request;
@@ -17,7 +17,7 @@ import org.eclipse.gef.dnd.TemplateTransfer;
 import org.eclipse.gef.dnd.TemplateTransferDropTargetListener;
 import org.eclipse.gef.requests.CreationFactory;
 import org.eclipse.gmf.runtime.diagram.ui.internal.services.palette.PaletteToolEntry;
-import org.eclipse.sirius.diagram.tools.internal.palette.CreationTool;
+import org.eclipse.sirius.diagram.ui.tools.internal.palette.CreationTool;
 
 /**
  * A Sirius specific {@link TemplateTransferDropTargetListener} to support

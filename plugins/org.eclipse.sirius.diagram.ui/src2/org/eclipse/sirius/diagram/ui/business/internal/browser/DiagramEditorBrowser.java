@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.browser;
+package org.eclipse.sirius.diagram.ui.business.internal.browser;
 
 import java.util.Collections;
 import java.util.Iterator;

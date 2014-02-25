@@ -38,18 +38,18 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramBorderNodeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramElementContainerEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramNameEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramContainerEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramListEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.SquareEditPart;
-import org.eclipse.sirius.diagram.internal.operation.RegionContainerUpdateLayoutOperation;
-import org.eclipse.sirius.diagram.internal.view.factories.AbstractContainerViewFactory;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramInternalPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramListEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.SquareEditPart;
+import org.eclipse.sirius.diagram.ui.internal.operation.RegionContainerUpdateLayoutOperation;
+import org.eclipse.sirius.diagram.ui.internal.view.factories.AbstractContainerViewFactory;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.AbstractCompositeLayoutProvider;
@@ -138,7 +138,7 @@ public class ArrangeAllWithAutoSize {
      *         preferences.
      */
     public static boolean isEnabled() {
-        return SiriusDiagramEditorPlugin.getInstance().getPluginPreferences().getBoolean(SiriusDiagramPreferencesKeys.PREF_AUTOSIZE_ON_ARRANGE.name());
+        return SiriusDiagramEditorPlugin.getInstance().getPluginPreferences().getBoolean(SiriusDiagramInternalPreferencesKeys.PREF_AUTOSIZE_ON_ARRANGE.name());
     }
 
     /**

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.parts;
+package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.FlowLayout;
@@ -38,20 +38,20 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramNameEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramNodeEditPart;
-import org.eclipse.sirius.diagram.graphical.edit.policies.SiriusContainerDropPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.SpecificBorderItemSelectionEditPolicy;
-import org.eclipse.sirius.diagram.internal.edit.policies.DNode3ItemSemanticEditPolicy;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusContainerDropPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SpecificBorderItemSelectionEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNode3ItemSemanticEditPolicy;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirDefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.DBorderedNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleAwareClippingStrategy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.viewpoint.DStylizable;
 
 /**
@@ -142,7 +142,7 @@ public class DNode3EditPart extends AbstractDiagramNodeEditPart {
      */
     protected LayoutEditPolicy createLayoutEditPolicy() {
 
-        final FlowLayoutEditPolicy lep = new org.eclipse.sirius.diagram.tools.api.policies.FlowLayoutEditPolicy() {
+        final FlowLayoutEditPolicy lep = new org.eclipse.sirius.diagram.ui.tools.api.policies.FlowLayoutEditPolicy() {
 
             protected EditPolicy createChildEditPolicy(final EditPart child) {
                 if (child instanceof AbstractDiagramNameEditPart) {

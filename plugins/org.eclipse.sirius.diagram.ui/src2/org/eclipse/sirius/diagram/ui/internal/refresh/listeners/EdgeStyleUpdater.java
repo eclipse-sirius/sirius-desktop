@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.refresh.listeners;
+package org.eclipse.sirius.diagram.ui.internal.refresh.listeners;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -23,8 +23,8 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.EdgeStyle;
-import org.eclipse.sirius.diagram.business.api.view.SiriusGMFHelper;
-import org.eclipse.sirius.diagram.tools.internal.commands.UpdateGMFEdgeStyleCommand;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
+import org.eclipse.sirius.diagram.ui.tools.internal.commands.UpdateGMFEdgeStyleCommand;
 
 /**
  * This listener is in charge of updating the GMF informations related to Edge

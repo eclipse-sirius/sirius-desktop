@@ -8,15 +8,15 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.providers.decorators;
+package org.eclipse.sirius.diagram.ui.tools.internal.providers.decorators;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.editparts.AbstractConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget.Direction;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.decorators.AbstractSiriusDecorator;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
@@ -127,7 +127,7 @@ public class EditModeDecorator extends AbstractSiriusDecorator {
         } else {
             // It means that the semantic element referenced by this edit part
             // is not editable, we return a "locked" image (red padlock)
-            return SiriusDiagramEditorPlugin.getInstance().getImage(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied.gif"));
+            return DiagramUIPlugin.getPlugin().getImage(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied.gif"));
         }
     }
 

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.actions.pinning;
+package org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -24,8 +24,8 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramEdgeEditPart;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPage;
@@ -62,10 +62,10 @@ public abstract class AbstractPinUnpinElementsEclipseAction extends Action imple
      *            Tooltip text.
      * @param iconPath
      *            Icon path (from
-     *            {@link org.eclipse.sirius.diagram.ImagesPath}.
+     *            {@link org.eclipse.sirius.diagram.DiagramImagesPath}.
      */
     public AbstractPinUnpinElementsEclipseAction(final String text, final String actionId, final String toolTipText, final String iconPath) {
-        super(text, SiriusDiagramEditorPlugin.getBundledImageDescriptor(iconPath));
+        super(text, DiagramUIPlugin.Implementation.getBundledImageDescriptor(iconPath));
         setId(actionId);
         setToolTipText(toolTipText);
     }

@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.palette;
+package org.eclipse.sirius.diagram.ui.tools.internal.palette;
 
 import java.util.Collection;
 
@@ -17,7 +17,7 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.business.api.tool.ToolFilterDescriptionListener;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.PaletteManager;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
 
 import com.google.common.collect.Sets;

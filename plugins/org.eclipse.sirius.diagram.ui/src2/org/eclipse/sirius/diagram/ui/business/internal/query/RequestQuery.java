@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.query;
+package org.eclipse.sirius.diagram.ui.business.internal.query;
 
 import java.util.Collections;
 import java.util.List;
@@ -30,9 +30,9 @@ import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.tool.impl.NodeCreationDescriptionImpl;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.GraphicalHelper;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;

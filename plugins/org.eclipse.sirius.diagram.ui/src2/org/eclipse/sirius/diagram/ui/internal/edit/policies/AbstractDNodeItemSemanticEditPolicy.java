@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.policies;
+package org.eclipse.sirius.diagram.ui.internal.edit.policies;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.gef.commands.Command;
@@ -20,25 +20,25 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.ReorientRelationshipReques
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.graphical.edit.part.specific.BracketEdgeEditPart;
-import org.eclipse.sirius.diagram.internal.edit.commands.CreateSiriusElementCommand;
-import org.eclipse.sirius.diagram.internal.edit.commands.DEdgeCreateCommand;
-import org.eclipse.sirius.diagram.internal.edit.commands.DEdgeReorientCommand;
-import org.eclipse.sirius.diagram.internal.edit.commands.WorkspaceImageCreateCommand;
-import org.eclipse.sirius.diagram.internal.edit.parts.BundledImageEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.CustomStyleEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DEdgeEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNode2EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DNode4EditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.DotEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.EllipseEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.GaugeCompositeEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.LozengeEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.NoteEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.SquareEditPart;
-import org.eclipse.sirius.diagram.internal.edit.parts.WorkspaceImageEditPart;
-import org.eclipse.sirius.diagram.internal.providers.SiriusElementTypes;
-import org.eclipse.sirius.diagram.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.graphical.edit.part.specific.BracketEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.commands.CreateSiriusElementCommand;
+import org.eclipse.sirius.diagram.ui.internal.edit.commands.DEdgeCreateCommand;
+import org.eclipse.sirius.diagram.ui.internal.edit.commands.DEdgeReorientCommand;
+import org.eclipse.sirius.diagram.ui.internal.edit.commands.WorkspaceImageCreateCommand;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.BundledImageEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.CustomStyleEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DotEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.EllipseEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.GaugeCompositeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.LozengeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.NoteEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.SquareEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.WorkspaceImageEditPart;
+import org.eclipse.sirius.diagram.ui.internal.providers.SiriusElementTypes;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 
 import com.google.common.collect.Iterables;
 

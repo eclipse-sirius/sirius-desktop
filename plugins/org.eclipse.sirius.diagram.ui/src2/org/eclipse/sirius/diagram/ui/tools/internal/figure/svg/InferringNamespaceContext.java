@@ -10,7 +10,7 @@
  *    Dmitry Stadnik - initial API and implementation
  *    Obeo - Adaptations.
  */
-package org.eclipse.sirius.diagram.tools.internal.figure.svg;
+package org.eclipse.sirius.diagram.ui.tools.internal.figure.svg;
 
 import java.util.Iterator;
 

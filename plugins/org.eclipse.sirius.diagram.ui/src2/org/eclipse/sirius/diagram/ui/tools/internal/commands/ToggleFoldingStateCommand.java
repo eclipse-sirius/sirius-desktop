@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.commands;
+package org.eclipse.sirius.diagram.ui.tools.internal.commands;
 
 import java.util.Iterator;
 import java.util.Set;
@@ -21,10 +21,10 @@ import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.GraphicalFilter;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.business.internal.query.DEdgeQuery;
-import org.eclipse.sirius.diagram.business.internal.query.EdgeTargetQuery;
-import org.eclipse.sirius.diagram.business.internal.query.EdgeTargetQuery.FoldingState;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.business.internal.query.DEdgeQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.query.EdgeTargetQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.query.EdgeTargetQuery.FoldingState;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;

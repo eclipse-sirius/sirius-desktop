@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.edit.internal.part;
+package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -19,12 +19,12 @@ import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest.ViewDescrip
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
-import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
-import org.eclipse.sirius.diagram.business.internal.view.LayoutData;
-import org.eclipse.sirius.diagram.internal.refresh.borderednode.CanonicalDBorderItemLocator;
-import org.eclipse.sirius.diagram.internal.view.factories.ViewLocationHint;
-import org.eclipse.sirius.diagram.internal.view.factories.ViewSizeHint;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IBorderItemOffsets;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
+import org.eclipse.sirius.diagram.ui.business.internal.view.LayoutData;
+import org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBorderItemLocator;
+import org.eclipse.sirius.diagram.ui.internal.view.factories.ViewLocationHint;
+import org.eclipse.sirius.diagram.ui.internal.view.factories.ViewSizeHint;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 
 /**

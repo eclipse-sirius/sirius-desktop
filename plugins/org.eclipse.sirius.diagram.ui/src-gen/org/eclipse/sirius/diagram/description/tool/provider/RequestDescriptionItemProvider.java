@@ -29,8 +29,8 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.diagram.description.tool.RequestDescription;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.provider.AbstractToolDescriptionItemProvider;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This is the item provider adapter for a
@@ -142,7 +142,7 @@ public class RequestDescriptionItemProvider extends AbstractToolDescriptionItemP
      */
     @Override
     public ResourceLocator getResourceLocator() {
-        return SiriusEditPlugin.INSTANCE;
+        return DiagramUIPlugin.INSTANCE;
     }
 
 }

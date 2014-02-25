@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.edit.parts;
+package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
@@ -30,12 +30,12 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.BundledImage;
 import org.eclipse.sirius.diagram.BundledImageShape;
 import org.eclipse.sirius.diagram.DiagramFactory;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractNotSelectableShapeNodeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramBorderNodeEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.IStyleEditPart;
-import org.eclipse.sirius.diagram.edit.internal.part.DiagramBorderNodeEditPartOperation;
-import org.eclipse.sirius.diagram.edit.internal.part.DiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractNotSelectableShapeNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramBorderNodeEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirStyleDefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.BundledImageFigure;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
@@ -103,7 +103,7 @@ public class BundledImageEditPart extends AbstractNotSelectableShapeNodeEditPart
      * @not-generated
      */
     protected LayoutEditPolicy createLayoutEditPolicy() {
-        final LayoutEditPolicy lep = new org.eclipse.sirius.diagram.tools.api.policies.LayoutEditPolicy() {
+        final LayoutEditPolicy lep = new org.eclipse.sirius.diagram.ui.tools.api.policies.LayoutEditPolicy() {
 
             protected EditPolicy createChildEditPolicy(final EditPart child) {
                 EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);

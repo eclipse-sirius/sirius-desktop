@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.edit.api.part;
+package org.eclipse.sirius.diagram.ui.edit.api.part;
 
 import java.util.List;
 
@@ -44,19 +44,19 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.description.tool.RequestDescription;
-import org.eclipse.sirius.diagram.edit.internal.part.CommonEditPartOperation;
-import org.eclipse.sirius.diagram.edit.internal.part.DiagramEdgeEditPartOperation;
-import org.eclipse.sirius.diagram.edit.internal.part.DiagramElementEditPartOperation;
-import org.eclipse.sirius.diagram.edit.internal.part.EditStatusUpdater;
-import org.eclipse.sirius.diagram.graphical.edit.policies.DEdgeSelectionFeedbackEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.EdgeCreationEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.LaunchToolEditPolicy;
-import org.eclipse.sirius.diagram.graphical.edit.policies.SiriusPropertyHandlerEditPolicy;
-import org.eclipse.sirius.diagram.tools.api.permission.EditPartAuthorityListener;
-import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
-import org.eclipse.sirius.diagram.tools.internal.graphical.edit.policies.SiriusConnectionEndPointEditPolicy;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramEdgeEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.EditStatusUpdater;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.DEdgeSelectionFeedbackEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.EdgeCreationEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LaunchToolEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusPropertyHandlerEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
+import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListener;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
+import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
+import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.SiriusConnectionEndPointEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.internal.routers.SiriusBendpointConnectionRouter;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;

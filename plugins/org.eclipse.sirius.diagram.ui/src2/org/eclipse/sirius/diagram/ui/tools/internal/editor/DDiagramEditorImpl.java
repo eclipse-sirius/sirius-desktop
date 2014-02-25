@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.editor;
+package org.eclipse.sirius.diagram.ui.tools.internal.editor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -100,57 +100,58 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.business.api.query.DDiagramGraphicalQuery;
-import org.eclipse.sirius.diagram.business.api.view.SiriusGMFHelper;
-import org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizer;
-import org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizerFactory;
-import org.eclipse.sirius.diagram.business.internal.command.RefreshDiagramOnOpeningCommand;
-import org.eclipse.sirius.diagram.business.internal.session.DiagramSessionHelper;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDDiagramEditPart;
-import org.eclipse.sirius.diagram.edit.api.part.AbstractDiagramNameEditPart;
-import org.eclipse.sirius.diagram.edit.internal.part.listener.DiagramHeaderPostCommitListener;
-import org.eclipse.sirius.diagram.edit.internal.part.listener.VisibilityPostCommitListener;
-import org.eclipse.sirius.diagram.internal.refresh.SiriusDiagramSessionEventBroker;
-import org.eclipse.sirius.diagram.internal.refresh.SynchronizeGMFModelCommand;
-import org.eclipse.sirius.diagram.internal.refresh.layout.SiriusCanonicalLayoutHandler;
-import org.eclipse.sirius.diagram.internal.refresh.listeners.GMFDiagramUpdater;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorUtil;
-import org.eclipse.sirius.diagram.part.ValidateAction;
 import org.eclipse.sirius.diagram.tools.api.command.DiagramCommandFactoryService;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.diagram.tools.api.command.view.HideDDiagramElement;
 import org.eclipse.sirius.diagram.tools.api.command.view.HideDDiagramElementLabel;
-import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.PaletteManager;
-import org.eclipse.sirius.diagram.tools.api.graphical.edit.palette.ToolFilter;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
-import org.eclipse.sirius.diagram.tools.api.properties.PropertiesService;
-import org.eclipse.sirius.diagram.tools.internal.actions.delete.DeleteFromModelWithHookAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.delete.DeleteWithHookAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.visibility.HideDDiagramElementAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.visibility.HideDDiagramElementLabelAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.visibility.RevealOutlineElementsAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.visibility.RevealOutlineLabelsAction;
-import org.eclipse.sirius.diagram.tools.internal.commands.emf.EMFCommandFactoryUI;
-import org.eclipse.sirius.diagram.tools.internal.editor.header.DiagramHeaderComposite;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.Tabbar;
-import org.eclipse.sirius.diagram.tools.internal.editor.tabbar.TabbarRefresher;
-import org.eclipse.sirius.diagram.tools.internal.graphical.edit.part.DDiagramRootEditPart;
-import org.eclipse.sirius.diagram.tools.internal.menu.DiagramEditorContextMenuProvider;
-import org.eclipse.sirius.diagram.tools.internal.menu.DiagramMenuUpdater;
-import org.eclipse.sirius.diagram.tools.internal.outline.QuickOutlineControl;
-import org.eclipse.sirius.diagram.tools.internal.outline.SiriusInformationPresenter;
-import org.eclipse.sirius.diagram.tools.internal.outline.SiriusQuickOutlineInformationProvider;
-import org.eclipse.sirius.diagram.tools.internal.palette.PaletteManagerImpl;
-import org.eclipse.sirius.diagram.tools.internal.palette.SiriusPaletteViewer;
-import org.eclipse.sirius.diagram.tools.internal.part.SiriusDiagramGraphicalViewer;
-import org.eclipse.sirius.diagram.tools.internal.resource.CustomSiriusDocumentProvider;
 import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.business.api.query.DDiagramGraphicalQuery;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
+import org.eclipse.sirius.diagram.ui.business.api.view.refresh.CanonicalSynchronizer;
+import org.eclipse.sirius.diagram.ui.business.api.view.refresh.CanonicalSynchronizerFactory;
+import org.eclipse.sirius.diagram.ui.business.internal.command.RefreshDiagramOnOpeningCommand;
+import org.eclipse.sirius.diagram.ui.business.internal.session.DiagramSessionHelper;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.listener.DiagramHeaderPostCommitListener;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.listener.VisibilityPostCommitListener;
+import org.eclipse.sirius.diagram.ui.internal.refresh.SiriusDiagramSessionEventBroker;
+import org.eclipse.sirius.diagram.ui.internal.refresh.SynchronizeGMFModelCommand;
+import org.eclipse.sirius.diagram.ui.internal.refresh.layout.SiriusCanonicalLayoutHandler;
+import org.eclipse.sirius.diagram.ui.internal.refresh.listeners.GMFDiagramUpdater;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorUtil;
+import org.eclipse.sirius.diagram.ui.part.ValidateAction;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.ToolFilter;
+import org.eclipse.sirius.diagram.ui.tools.api.properties.PropertiesService;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromModelWithHookAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteWithHookAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementLabelAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.RevealOutlineElementsAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.RevealOutlineLabelsAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.EMFCommandFactoryUI;
 import org.eclipse.sirius.diagram.ui.tools.internal.dnd.DragAndDropWrapper;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.header.DiagramHeaderComposite;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.Tabbar;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.TabbarRefresher;
+import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.part.DDiagramRootEditPart;
+import org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider;
+import org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramMenuUpdater;
+import org.eclipse.sirius.diagram.ui.tools.internal.outline.QuickOutlineControl;
+import org.eclipse.sirius.diagram.ui.tools.internal.outline.SiriusInformationPresenter;
+import org.eclipse.sirius.diagram.ui.tools.internal.outline.SiriusQuickOutlineInformationProvider;
+import org.eclipse.sirius.diagram.ui.tools.internal.palette.PaletteManagerImpl;
+import org.eclipse.sirius.diagram.ui.tools.internal.palette.SiriusPaletteViewer;
+import org.eclipse.sirius.diagram.ui.tools.internal.part.SiriusDiagramGraphicalViewer;
 import org.eclipse.sirius.diagram.ui.tools.internal.providers.decorators.SubDiagramDecoratorProvider;
+import org.eclipse.sirius.diagram.ui.tools.internal.resource.CustomSiriusDocumentProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.views.outlineview.DiagramOutlineWithBookPages;
 import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.outline.OutlineComparator;
 import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.outline.OutlineContentProvider;
@@ -615,7 +616,6 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         // Initialize drag'n drop listener from palette
         paletteTransferDropTargetListener = new SiriusPaletteToolDropTargetListener(getGraphicalViewer());
         getDiagramGraphicalViewer().addDropTargetListener(paletteTransferDropTargetListener);
-
 
         /* initialize Java Service. */
         EObject semantic = ViewUtil.resolveSemanticElement(gmfDiagram);
@@ -1088,7 +1088,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                                  * && (input instanceof IFileEditorInput ||
                                  * input instanceof URIEditorInput)
                                  */) {
-            setDocumentProvider(SiriusDiagramEditorPlugin.getInstance().getDocumentProvider(getSession().getTransactionalEditingDomain()));
+            setDocumentProvider(DiagramUIPlugin.getPlugin().getDocumentProvider(getSession().getTransactionalEditingDomain()));
         } else {
             // super.setDocumentProvider(input);
             setDocumentProvider(new CustomSiriusDocumentProvider());
@@ -1101,7 +1101,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     @Override
     protected IDocumentProvider getDocumentProvider(final IEditorInput input) {
         if (input instanceof IFileEditorInput || input instanceof URIEditorInput) {
-            return SiriusDiagramEditorPlugin.getInstance().getDocumentProvider(getSession().getTransactionalEditingDomain());
+            return DiagramUIPlugin.getPlugin().getDocumentProvider(getSession().getTransactionalEditingDomain());
         }
         return super.getDocumentProvider(input);
     }
@@ -1277,8 +1277,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      * @see org.eclipse.sirius.diagram.part.SiriusDiagramEditor#getAdapter(java.lang.Class)
      */
     @Override
-    public Object getAdapter(@SuppressWarnings("rawtypes")
-    final Class type) {
+    public Object getAdapter(@SuppressWarnings("rawtypes") final Class type) {
         Object adapter = null;
         if (type == IDiagramCommandFactoryProvider.class) {
             adapter = this.emfCommandFactoryProvider;
@@ -1760,7 +1759,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     public AdapterFactory getAdapterFactory() {
         if (adapterFactory == null) {
             // Create an adapter factory that yields item providers.
-            adapterFactory = SiriusDiagramEditorPlugin.getInstance().getNewAdapterFactory();
+            adapterFactory = DiagramUIPlugin.getPlugin().getNewAdapterFactory();
         }
         return adapterFactory;
     }

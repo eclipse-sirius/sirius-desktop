@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.api.image;
+package org.eclipse.sirius.diagram.ui.business.api.image;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -39,13 +39,13 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
-import org.eclipse.sirius.diagram.business.internal.image.ImageSelectorDescriptor;
-import org.eclipse.sirius.diagram.business.internal.image.ImageSelectorDescriptorRegistry;
-import org.eclipse.sirius.diagram.business.internal.image.refresh.WorkspaceImageFigureRefresher;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.StyleHelper;
-import org.eclipse.sirius.diagram.business.internal.query.CustomizableQuery;
 import org.eclipse.sirius.diagram.description.style.StyleFactory;
 import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
+import org.eclipse.sirius.diagram.ui.business.internal.image.ImageSelectorDescriptor;
+import org.eclipse.sirius.diagram.ui.business.internal.image.ImageSelectorDescriptorRegistry;
+import org.eclipse.sirius.diagram.ui.business.internal.image.refresh.WorkspaceImageFigureRefresher;
+import org.eclipse.sirius.diagram.ui.business.internal.query.CustomizableQuery;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.LabelStyle;

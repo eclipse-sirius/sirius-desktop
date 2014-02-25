@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.outline;
+package org.eclipse.sirius.diagram.ui.tools.internal.outline;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -33,11 +33,11 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.business.api.view.SiriusGMFHelper;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
-import org.eclipse.sirius.diagram.tools.internal.providers.FilteredTreeContentProvider;
 import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.internal.providers.FilteredTreeContentProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.outline.OutlineLabelProvider;
 import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 import org.eclipse.swt.SWT;

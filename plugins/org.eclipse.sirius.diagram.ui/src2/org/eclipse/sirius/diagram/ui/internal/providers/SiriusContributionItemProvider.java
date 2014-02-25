@@ -8,23 +8,23 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.internal.providers;
+package org.eclipse.sirius.diagram.ui.internal.providers;
 
 import org.eclipse.gmf.runtime.common.ui.services.action.contributionitem.AbstractContributionItemProvider;
 import org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor;
 import org.eclipse.gmf.runtime.diagram.ui.printing.actions.PrintPreviewAction;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.sirius.diagram.tools.api.ui.actions.ActionIds;
-import org.eclipse.sirius.diagram.tools.internal.actions.SaveAsImageFileAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.SelectHiddenElementsAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.TabbarRouterAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.layout.ArrangeBorderedNodesAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.layout.CopyLayoutAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.layout.PasteLayoutAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.pinning.PinElementsEclipseAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.pinning.UnpinElementsEclipseAction;
-import org.eclipse.sirius.diagram.tools.internal.print.SiriusDiagramPrintPreviewAction;
-import org.eclipse.sirius.diagram.tools.internal.print.SiriusEnhancedPrintActionHelper;
+import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.SaveAsImageFileAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.SelectHiddenElementsAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.TabbarRouterAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.ArrangeBorderedNodesAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.CopyLayoutAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteLayoutAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.PinElementsEclipseAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.UnpinElementsEclipseAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.print.SiriusDiagramPrintPreviewAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.print.SiriusEnhancedPrintActionHelper;
 import org.eclipse.ui.IWorkbenchPage;
 
 /**

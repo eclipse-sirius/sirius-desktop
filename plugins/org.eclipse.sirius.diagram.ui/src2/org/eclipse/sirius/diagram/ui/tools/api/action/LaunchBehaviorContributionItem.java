@@ -18,10 +18,10 @@ import org.eclipse.gef.Request;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.render.editparts.RenderedDiagramRootEditPart;
 import org.eclipse.jface.action.ContributionItem;
-import org.eclipse.sirius.diagram.ImagesPath;
-import org.eclipse.sirius.diagram.internal.edit.parts.DDiagramEditPart;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.requests.RequestConstants;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
+import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -118,7 +118,7 @@ public class LaunchBehaviorContributionItem extends ContributionItem {
                 viewPointEditPart.performRequest(request);
             }
         });
-        final Image image = SiriusDiagramEditorPlugin.getInstance().getImage(SiriusDiagramEditorPlugin.findImageDescriptor(ImagesPath.GO_IMG));
+        final Image image = DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.findImageDescriptor(DiagramImagesPath.GO_IMG));
         button.setImage(image);
         button.setSize(image.getBounds().width + button.getBorderWidth(), image.getBounds().height + button.getBorderWidth());
         return button;

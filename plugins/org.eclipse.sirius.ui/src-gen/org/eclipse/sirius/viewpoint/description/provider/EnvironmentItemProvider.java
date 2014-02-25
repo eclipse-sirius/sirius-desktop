@@ -175,43 +175,6 @@ public class EnvironmentItemProvider extends ItemProviderAdapter implements IEdi
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS, ToolFactory.eINSTANCE.createPopupMenu()));
 
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS, org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createToolGroup()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS,
-                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createNodeCreationDescription()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS,
-                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createEdgeCreationDescription()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS,
-                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createContainerCreationDescription()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS,
-                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createDeleteElementDescription()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS,
-                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createDoubleClickDescription()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS,
-                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createReconnectEdgeDescription()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS,
-                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createRequestDescription()));
-
-        newChildDescriptors
-                .add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS, org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createDirectEditLabel()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS, org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createBehaviorTool()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS,
-                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createDiagramCreationDescription()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS,
-                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createDiagramNavigationDescription()));
-
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS,
-                org.eclipse.sirius.diagram.description.tool.ToolFactory.eINSTANCE.createContainerDropDescription()));
-
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__LABEL_BORDER_STYLES, StyleFactory.eINSTANCE.createLabelBorderStyles()));
     }
 

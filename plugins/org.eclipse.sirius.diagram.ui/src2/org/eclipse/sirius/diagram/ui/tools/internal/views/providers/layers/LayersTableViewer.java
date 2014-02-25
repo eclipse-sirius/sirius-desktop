@@ -18,8 +18,8 @@ import org.eclipse.jface.viewers.ColumnViewerToolTipSupport;
 import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.window.ToolTip;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.ImagesPath;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
@@ -62,7 +62,7 @@ public final class LayersTableViewer {
         TableColumn tc = new TableColumn(table, SWT.LEFT, 0);
         tc.setText(COLUMNS[0]);
         tc.setWidth(30);
-        tc.setImage(SiriusDiagramEditorPlugin.getInstance().getBundledImage(ImagesPath.LAYER_ACTIVATION_ICON));
+        tc.setImage(DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.LAYER_ACTIVATION_ICON));
 
         tc = new TableColumn(table, SWT.CENTER, 1);
         tc.setText(COLUMNS[1]);

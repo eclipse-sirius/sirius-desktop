@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.testers;
+package org.eclipse.sirius.diagram.ui.tools.internal.testers;
 
 import java.util.Iterator;
 
@@ -17,7 +17,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
-import org.eclipse.sirius.diagram.tools.internal.graphical.edit.part.DDiagramHelper;
+import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.part.DDiagramHelper;
 
 /**
  * Tester to know some elements are hidden in a diagram.

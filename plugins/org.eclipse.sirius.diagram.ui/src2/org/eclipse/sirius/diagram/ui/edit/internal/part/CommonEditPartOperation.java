@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.edit.internal.part;
+package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
 import java.util.Collections;
 
@@ -22,12 +22,12 @@ import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.api.command.GMFCommandWrapper;
-import org.eclipse.sirius.diagram.tools.internal.commands.emf.PinElementsCommand;
-import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramInternalPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
+import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.PinElementsCommand;
 
 /**
  * Common operations for edit parts.
@@ -98,7 +98,7 @@ public final class CommonEditPartOperation {
     }
 
     private static boolean autoPinOnMoveEnabled() {
-        return SiriusDiagramEditorPlugin.getInstance().getPluginPreferences().getBoolean(SiriusDiagramPreferencesKeys.PREF_AUTO_PIN_ON_MOVE.name());
+        return SiriusDiagramEditorPlugin.getInstance().getPluginPreferences().getBoolean(SiriusDiagramInternalPreferencesKeys.PREF_AUTO_PIN_ON_MOVE.name());
     }
 
     /*

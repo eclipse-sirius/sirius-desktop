@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal.commands.emf;
+package org.eclipse.sirius.diagram.ui.tools.internal.commands.emf;
 
 import java.util.Collection;
 
@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.PasteFromClipboardCommand;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.sirius.diagram.tools.internal.clipboard.SiriusClipboardManager;
+import org.eclipse.sirius.diagram.ui.tools.internal.clipboard.SiriusClipboardManager;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 import com.google.common.base.Predicates;

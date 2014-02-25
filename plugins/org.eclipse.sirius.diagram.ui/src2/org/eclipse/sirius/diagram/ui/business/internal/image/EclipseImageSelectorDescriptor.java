@@ -8,15 +8,15 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.image;
+package org.eclipse.sirius.diagram.ui.business.internal.image;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.sirius.diagram.business.api.image.ImageSelector;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.business.api.image.ImageSelector;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**

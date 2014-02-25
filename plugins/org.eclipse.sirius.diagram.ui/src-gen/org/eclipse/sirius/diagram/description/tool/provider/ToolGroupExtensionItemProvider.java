@@ -30,7 +30,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.description.tool.ToolFactory;
 import org.eclipse.sirius.diagram.description.tool.ToolGroupExtension;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 
 /**
  * This is the item provider adapter for a
@@ -217,7 +217,7 @@ public class ToolGroupExtensionItemProvider extends ItemProviderAdapter implemen
      */
     @Override
     public ResourceLocator getResourceLocator() {
-        return SiriusEditPlugin.INSTANCE;
+        return DiagramUIPlugin.INSTANCE;
     }
 
 }

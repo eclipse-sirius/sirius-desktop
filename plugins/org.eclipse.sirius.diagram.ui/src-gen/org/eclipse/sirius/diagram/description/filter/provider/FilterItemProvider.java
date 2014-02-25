@@ -30,7 +30,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.description.filter.Filter;
 import org.eclipse.sirius.diagram.description.filter.FilterKind;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 
 /**
  * This is the item provider adapter for a
@@ -131,7 +131,7 @@ public class FilterItemProvider extends ItemProviderAdapter implements IEditingD
      */
     @Override
     public ResourceLocator getResourceLocator() {
-        return SiriusEditPlugin.INSTANCE;
+        return DiagramUIPlugin.INSTANCE;
     }
 
 }

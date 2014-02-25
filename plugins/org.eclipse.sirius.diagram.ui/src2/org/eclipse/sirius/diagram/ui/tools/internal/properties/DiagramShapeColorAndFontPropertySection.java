@@ -34,16 +34,16 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.ImagesPath;
-import org.eclipse.sirius.diagram.business.api.image.ImageSelector;
-import org.eclipse.sirius.diagram.business.api.image.ImageSelectorService;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
-import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
-import org.eclipse.sirius.diagram.internal.refresh.diagram.ViewPropertiesSynchronizer;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
-import org.eclipse.sirius.diagram.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
-import org.eclipse.sirius.diagram.tools.internal.actions.style.SetStyleToWorkspaceImageAction;
+import org.eclipse.sirius.diagram.ui.business.api.image.ImageSelector;
+import org.eclipse.sirius.diagram.ui.business.api.image.ImageSelectorService;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSynchronizer;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.SetStyleToWorkspaceImageAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.ColorPalettePopup;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
@@ -204,10 +204,10 @@ public class DiagramShapeColorAndFontPropertySection extends ShapeColorsAndFonts
     protected Composite createFontsGroup(final Composite parent) {
         final Composite toolBar = super.createFontsGroup(parent);
 
-        final Image imageUndo = SiriusDiagramEditorPlugin.getInstance().getBundledImage(ImagesPath.UNDO_ICON);
-        final Image imageImage = SiriusDiagramEditorPlugin.getInstance().getBundledImage(ImagesPath.IMAGE_ICON);
-        final Image imageUnderline = SiriusDiagramEditorPlugin.getInstance().getBundledImage(ImagesPath.UNDERLINE_ICON);
-        final Image imageStrikeThrough = SiriusDiagramEditorPlugin.getInstance().getBundledImage(ImagesPath.STRIKE_THROUGH_ICON);
+        final Image imageUndo = DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.UNDO_ICON);
+        final Image imageImage = DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.IMAGE_ICON);
+        final Image imageUnderline = DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.UNDERLINE_ICON);
+        final Image imageStrikeThrough = DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.STRIKE_THROUGH_ICON);
 
         fontUnderlineButton = new Button(toolBar, SWT.TOGGLE);
         fontUnderlineButton.setImage(imageUnderline);
