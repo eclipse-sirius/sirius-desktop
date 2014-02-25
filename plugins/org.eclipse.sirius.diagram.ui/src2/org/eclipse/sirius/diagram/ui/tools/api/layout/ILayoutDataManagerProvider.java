@@ -14,7 +14,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 
 /**
  * Interface used be the extension point
- * <code>org.eclipse.sirius.diagram.layoutDataManager</code> to implements to
+ * <code>org.eclipse.sirius.diagram.ui.layoutDataManager</code> to implements to
  * override the default behavior of Copy/Paste layout actions.
  * 
  * @author <a href="mailto:maxime.porhel@obeo.fr">Maxime Porhel</a>

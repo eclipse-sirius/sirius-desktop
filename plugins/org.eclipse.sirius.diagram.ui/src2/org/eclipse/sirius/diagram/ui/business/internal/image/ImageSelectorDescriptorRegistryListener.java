@@ -21,7 +21,7 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.IRegistryChangeEvent;
 import org.eclipse.core.runtime.IRegistryChangeListener;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 
 /**
  * This listener will allow us to be aware of contribution changes against the
@@ -32,7 +32,7 @@ import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
 public class ImageSelectorDescriptorRegistryListener implements IRegistryChangeListener {
 
     /** Name of the extension point to parse for extensions. */
-    public static final String IMAGE_SELECTOR_EXTENSION_POINT = SiriusDiagramEditorPlugin.ID + ".imageSelector"; //$NON-NLS-1$
+    public static final String IMAGE_SELECTOR_EXTENSION_POINT = DiagramUIPlugin.Implementation.ID + ".imageSelector"; //$NON-NLS-1$
 
     /** Name of the extension point's "imageSelector" tag. */
     private static final String IMAGE_SELECTOR_TAG_EXTENSION = "imageSelector"; //$NON-NLS-1$

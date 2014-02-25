@@ -34,7 +34,7 @@ public final class ViewOrderingProviderRegistry {
     private static ViewOrderingProviderRegistry instance = new ViewOrderingProviderRegistry();
 
     /** Name of the extension point to parse for style configuration providers. */
-    private static final String VIEW_ORDERING_PROVIDER_EXTENSION_POINT = "org.eclipse.sirius.diagram.viewOrderingProvider"; //$NON-NLS-1$
+    private static final String VIEW_ORDERING_PROVIDER_EXTENSION_POINT = "org.eclipse.sirius.diagram.ui.viewOrderingProvider"; //$NON-NLS-1$
 
     /** Externalized here to avoid too many distinct usages. */
     private static final String TAG_ENGINE = "viewOrderingProvider";

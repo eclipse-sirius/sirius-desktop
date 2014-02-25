@@ -57,7 +57,7 @@ public final class StyleConfigurationRegistry extends SessionManagerListener.Stu
     private static List<IStyleConfigurationProvider> styleConfigurationProviders = new ArrayList<IStyleConfigurationProvider>();
 
     /** Name of the extension point to parse for style configuration providers. */
-    private static final String STYLE_CONFIGURATION_PROVIDER_EXTENSION_POINT = "org.eclipse.sirius.diagram.styleConfigurationProvider"; //$NON-NLS-1$
+    private static final String STYLE_CONFIGURATION_PROVIDER_EXTENSION_POINT = "org.eclipse.sirius.diagram.ui.styleConfigurationProvider"; //$NON-NLS-1$
 
     /** Externalized here to avoid too many distinct usages. */
     private static final String TAG_ENGINE = "styleConfigurationProvider";

@@ -41,7 +41,7 @@ public final class Identifier {
     public static final Identifier EMPTY_ID = new Identifier(StringUtil.EMPTY_STRING);
 
     /** The extension point ID. */
-    private static final String PROVIDERS_ID = "org.eclipse.sirius.diagram.diagramIdentifierProvider";
+    private static final String PROVIDERS_ID = "org.eclipse.sirius.diagram.ui.diagramIdentifierProvider";
 
     /** The class attribute. */
     private static final String PROVIDERS_ATTRIBUTE = "providerClass";

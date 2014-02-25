@@ -29,7 +29,7 @@
   </extension>
   
      <extension
-        point="org.eclipse.sirius.diagram.layoutProvider">
+        point="org.eclipse.sirius.diagram.ui.layoutProvider">
      <layoutProvider
            providerClass="org.eclipse.sirius.diagram.sequence.ui.tool.internal.provider.SequenceDiagramLayoutProvider">
      </layoutProvider>

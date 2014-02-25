@@ -34,7 +34,7 @@ import com.google.common.collect.Sets;
 public class LayoutDataManagerRegistryListener implements IRegistryChangeListener {
 
     /** Name of the extension point to parse for extensions. */
-    public static final String LAYOUT_DATA_MANAGER_PROVIDER_EXTENSION_POINT = "org.eclipse.sirius.diagram.layoutDataManager"; //$NON-NLS-1$
+    public static final String LAYOUT_DATA_MANAGER_PROVIDER_EXTENSION_POINT = "org.eclipse.sirius.diagram.ui.layoutDataManager"; //$NON-NLS-1$
 
     /** Name of the extension point's "Layout Data Manager Extension" tag. */
     private static final String LAYOUT_DATA_MANAGER_PROVIDER_EXTENSION = "layoutDataManagerProvider"; //$NON-NLS-1$

@@ -37,7 +37,7 @@ public final class LayoutService {
     }
 
     /** Name of the extension point to parse for extender providers. */
-    private static final String LAYOUT_PROVIDER_EXTENSION_POINT = "org.eclipse.sirius.diagram.layoutProvider"; //$NON-NLS-1$
+    private static final String LAYOUT_PROVIDER_EXTENSION_POINT = "org.eclipse.sirius.diagram.ui.layoutProvider"; //$NON-NLS-1$
 
     /** Externalized here to avoid too many distinct usages. */
     private static final String TAG_ENGINE = "layoutProvider";

@@ -131,7 +131,7 @@ For nodes you can use the following styles:
 * _Note_ to represent nodes as a square with one folded corner.
 * _Gauge_ to display gauges, for instance progress indicators.
 * _Image_ to represent nodes with an image (from the workspace or from inside a plug-in).
-* _Custom Style_ can be used when none of the predefined styles correspond to your need. Custom style are implemented in Java and use the @org.eclipse.sirius.diagram.styleConfigurationProvider@ extension point.
+* _Custom Style_ can be used when none of the predefined styles correspond to your need. Custom style are implemented in Java and use the @org.eclipse.sirius.diagram.ui.styleConfigurationProvider@ extension point.
 
 table(table table-striped table-condensed).
 |!images/styles/Node_Style_Basic_Square.png!|!images/styles/Node_Style_Basic_Stroke.png!|!images/styles/Node_Style_Basic_Triangle.png!|!images/styles/Node_Style_Basic_Dot.png!|!images/styles/Node_Style_Basic_Ring.png!|
