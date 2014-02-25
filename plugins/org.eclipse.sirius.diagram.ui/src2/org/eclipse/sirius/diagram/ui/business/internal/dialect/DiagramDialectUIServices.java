@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,6 +32,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.CommandParameter;
@@ -55,6 +56,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.helper.SiriusResourceHelper;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
@@ -68,6 +70,7 @@ import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptor
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.concern.provider.ConcernItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.description.filter.provider.FilterItemProviderAdapterFactory;
@@ -83,6 +86,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.command.CreateAndStoreGMF
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -99,6 +103,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
@@ -288,7 +293,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
                 // we might have an exception closing an editor which is
                 // already in trouble
                 SiriusDiagramEditorPlugin.getInstance().getLog()
-                        .log(new Status(IStatus.WARNING, SiriusDiagramEditorPlugin.ID, "Error while deactivating the representation, the remote server may be unreachable."));
+                .log(new Status(IStatus.WARNING, SiriusDiagramEditorPlugin.ID, "Error while deactivating the representation, the remote server may be unreachable."));
             }
 
             try {
@@ -298,7 +303,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
                 // already in trouble
                 if (SiriusDiagramEditorPlugin.getInstance().isDebugging()) {
                     SiriusDiagramEditorPlugin.getInstance().getLog()
-                            .log(new Status(IStatus.WARNING, SiriusDiagramEditorPlugin.ID, "Error while closing the representation, the remote server may be unreachable."));
+                    .log(new Status(IStatus.WARNING, SiriusDiagramEditorPlugin.ID, "Error while closing the representation, the remote server may be unreachable."));
                 }
             }
 
@@ -410,6 +415,25 @@ public class DiagramDialectUIServices implements DialectUIServices {
      */
     public boolean canHandle(final DRepresentation representation) {
         return representation instanceof DSemanticDiagram;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.description.RepresentationDescription)
+     */
+    public boolean canHandle(final RepresentationDescription description) {
+        return description instanceof DiagramDescription;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription)
+     *      )
+     */
+    public boolean canHandle(final RepresentationExtensionDescription description) {
+        return description instanceof DiagramExtensionDescription;
     }
 
     /**
@@ -718,4 +742,34 @@ public class DiagramDialectUIServices implements DialectUIServices {
         return found;
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#completeToolTipText(String,
+     *      EObject)
+     */
+    public String completeToolTipText(String toolTipText, EObject eObject) {
+        String toolTip = toolTipText;
+
+        EPackage parentPackage = null;
+        Option<EObject> parentDiagramDescription = new EObjectQuery(eObject).getFirstAncestorOfType(org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getDiagramDescription());
+        if (parentDiagramDescription.some()) {
+            parentPackage = parentDiagramDescription.get().eClass().getEPackage();
+        } else {
+            Option<EObject> parentDiagramExtensionDescription = new EObjectQuery(eObject).getFirstAncestorOfType(org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE
+                    .getDiagramExtensionDescription());
+            if (parentDiagramExtensionDescription.some()) {
+                parentPackage = parentDiagramExtensionDescription.get().eClass().getEPackage();
+            }
+        }
+
+        if (parentPackage != null) {
+            for (final IDiagramTypeDescriptor diagramTypeDescriptor : DiagramTypeDescriptorRegistry.getInstance().getAllDiagramTypeDescriptors()) {
+                if (diagramTypeDescriptor.getDiagramDescriptionProvider().handles(parentPackage)) {
+                    toolTip = diagramTypeDescriptor.getDiagramDescriptionProvider().completeToolTipText(toolTip, eObject);
+                }
+            }
+        }
+        return toolTip;
+    }
 }

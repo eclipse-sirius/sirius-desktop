@@ -41,7 +41,7 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.MappingBasedToolDe
  * @generated
  */
 public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescriptionItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
-        IItemLabelProvider, IItemPropertySource {
+IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -133,6 +133,19 @@ public class EdgeCreationDescriptionItemProvider extends MappingBasedToolDescrip
                 getString("_UI_PropertyDescriptor_description", "_UI_EdgeCreationDescription_connectionStartPrecondition_feature", "_UI_EdgeCreationDescription_type"),
                 ToolPackage.Literals.EDGE_CREATION_DESCRIPTION__CONNECTION_START_PRECONDITION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
                 getString("_UI_GeneralPropertyCategory"), null));
+    }
+
+    /**
+     * This adds a property descriptor for the Connection Completion Precondition (
+     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated-not
+     */
+    protected void addPreconditionPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_EdgeCreationDescription_precondition_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_AbstractToolDescription_precondition_feature", "_UI_AbstractToolDescription_type"),
+                org.eclipse.sirius.viewpoint.description.tool.ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**

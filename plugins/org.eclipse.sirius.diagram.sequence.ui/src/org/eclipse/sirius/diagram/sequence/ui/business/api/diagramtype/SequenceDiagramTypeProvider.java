@@ -27,6 +27,7 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.diagramtype.HeaderData;
@@ -416,7 +417,7 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
             }
             return expressionTarget;
         }
-        
+
         /**
          * {@inheritDoc}
          */
@@ -440,4 +441,22 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
         return Options.newNone();
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public String completeToolTipText(String toolTipText, EObject eObject) {
+        StringBuilder sb = new StringBuilder();
+        if (!StringUtil.isEmpty(toolTipText)) {
+            sb.append(toolTipText + "\n");
+            sb.append("\n");
+        }
+
+        sb.append("Additional available variable for Sequence Diagram:");
+        sb.append("\n . ");
+        sb.append("endBefore");
+        sb.append(": ");
+        sb.append("an EventEnd referencing the semantic event end ");
+
+        return sb.toString();
+    }
 }

@@ -12,10 +12,17 @@ h4(#separationOfDiagramSpecificConcept-step3). Move diagram.ecore in its own plu
 
 This milestone (Sirius 1.0M7) includes the third, and final, step towards a full separation of the diagram-specific stuff out of the core of Sirius (see "Step1":#separationOfDiagramSpecificConcept-step1 and "Step2":#separationOfDiagramSpecificConcept-step2 for more details).
 
-* To break the dependencies from Core to Diagram, several services have been added to the @DialectServices@, with default implementations in @AbstractRepresentationDialectServices@:
-** @createTask(CommandContext, ModelAccessor, ModelOperation, Session, UICallBack)@: create a new task corresponding to the ModelOperation. Only needed for ModelOperation specific to one dialect.
-** @allowsEStructuralFeatureCustomization(EObject)@: allows dialects to indicate if they allow EStrucuralFeaturesCustomization for the given VSM element. It is currently supported for style descriptions in diagrams only.
-* @org.eclipse.sirius.ui.business.api.dialect.DialectUIManager.canExport(DRepresentation, ExportFormat)@: New method returning true if at least one dialect is able to export this representation to this format, false otherwise.
+* To break the dependencies from Core to Diagram, several services have been added to:
+** @DialectServices@, with default implementations in @AbstractRepresentationDialectServices@:
+*** @createTask(CommandContext, ModelAccessor, ModelOperation, Session, UICallBack)@: create a new task corresponding to the ModelOperation. Only needed for ModelOperation specific to one dialect.
+*** @allowsEStructuralFeatureCustomization(EObject)@: allows dialects to indicate if they allow EStrucuralFeaturesCustomization for the given VSM element. It is currently supported for style descriptions in diagrams only.
+** @DialectUIServices@
+*** @canHandle(RepresentationDescription)@ and @canHandle(RepresentationExtensionDescription)@: tell whether the dialect is able to handle the given representation description or extension description.
+*** @completeToolTipText(String, EObject)@ allows the dialect to customize the tooltip displayed in a property section of a given VSM element.
+** @DialectUIManager@
+*** @canExport(DRepresentation, ExportFormat)@: New method returning true if at least one dialect is able to export this representation to this format, false otherwise.
+** @IDiagramDescriptionProvider@
+***  @completeToolTipText(String, EObject)@ allows the diagram type to customize the tooltip displayed in a property section of a given VSM element. @SequenceDiagramTypeProvider@ implements this method to  mention some Sequence specific variable available in core and diagram tool preconditions in the context of a Sequence diagram.
 
 h2(#sirius1.0M6). Changes in Sirius 1.0.0M6 (from Sirius 1.0M5)
 

@@ -39,20 +39,49 @@
 			<a href="#separationOfDiagramSpecificConcept-step2">Step2</a> for more details).
 		</p>
 		<ul>
-			<li>To break the dependencies from Core to Diagram, several services have been added to the 
-				<code>DialectServices</code>, with default implementations in 
-				<code>AbstractRepresentationDialectServices</code>:
+			<li>To break the dependencies from Core to Diagram, several services have been added to:
 				<ul>
 					<li>
-						<code>createTask(CommandContext, ModelAccessor, ModelOperation, Session, UICallBack)</code>: create a new task corresponding to the ModelOperation. Only needed for ModelOperation specific to one dialect.
+						<code>DialectServices</code>, with default implementations in 
+						<code>AbstractRepresentationDialectServices</code>:
+						<ul>
+							<li>
+								<code>createTask(CommandContext, ModelAccessor, ModelOperation, Session, UICallBack)</code>: create a new task corresponding to the ModelOperation. Only needed for ModelOperation specific to one dialect.
+							</li>
+							<li>
+								<code>allowsEStructuralFeatureCustomization(EObject)</code>: allows dialects to indicate if they allow EStrucuralFeaturesCustomization for the given VSM element. It is currently supported for style descriptions in diagrams only.
+							</li>
+						</ul>
 					</li>
 					<li>
-						<code>allowsEStructuralFeatureCustomization(EObject)</code>: allows dialects to indicate if they allow EStrucuralFeaturesCustomization for the given VSM element. It is currently supported for style descriptions in diagrams only.
+						<code>DialectUIServices</code>
+						<ul>
+							<li>
+								<code>canHandle(RepresentationDescription)</code> and 
+								<code>canHandle(RepresentationExtensionDescription)</code>: tell whether the dialect is able to handle the given representation description or extension description.
+							</li>
+							<li>
+								<code>completeToolTipText(String, EObject)</code> allows the dialect to customize the tooltip displayed in a property section of a given VSM element.
+							</li>
+						</ul>
+					</li>
+					<li>
+						<code>DialectUIManager</code>
+						<ul>
+							<li>
+								<code>canExport(DRepresentation, ExportFormat)</code>: New method returning true if at least one dialect is able to export this representation to this format, false otherwise.
+							</li>
+						</ul>
+					</li>
+					<li>
+						<code>IDiagramDescriptionProvider</code>
+						<ul>
+							<li> <code>completeToolTipText(String, EObject)</code> allows the diagram type to customize the tooltip displayed in a property section of a given VSM element. 
+								<code>SequenceDiagramTypeProvider</code> implements this method to  mention some Sequence specific variable available in core and diagram tool preconditions in the context of a Sequence diagram.
+							</li>
+						</ul>
 					</li>
 				</ul>
-			</li>
-			<li>
-				<code>org.eclipse.sirius.ui.business.api.dialect.DialectUIManager.canExport(DRepresentation, ExportFormat)</code>: New method returning true if at least one dialect is able to export this representation to this format, false otherwise.
 			</li>
 		</ul>
 		<h2 id="sirius1.0M6">Changes in Sirius 1.0.0M6 (from Sirius 1.0M5)</h2>

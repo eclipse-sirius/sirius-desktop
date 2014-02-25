@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,6 +39,7 @@ import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescriptio
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionFactory;
 import org.eclipse.sirius.table.metamodel.table.description.EditionTableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription;
+import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription;
 import org.eclipse.sirius.table.metamodel.table.description.provider.DescriptionItemProviderAdapterFactory;
 import org.eclipse.sirius.table.metamodel.table.provider.TableItemProviderAdapterFactory;
@@ -59,6 +60,7 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
@@ -254,6 +256,25 @@ public class TableDialectUIServices implements DialectUIServices {
 
     /**
      * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.description.RepresentationDescription))
+     */
+    public boolean canHandle(final RepresentationDescription representation) {
+        return representation instanceof TableDescription;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription)
+     *      )
+     */
+    public boolean canHandle(final RepresentationExtensionDescription description) {
+        return false;
+    }
+
+    /**
+     * {@inheritDoc}
      */
     public boolean canExport(ExportFormat format) {
         return format.getDocumentFormat().equals(ExportDocumentFormat.CSV);
@@ -339,4 +360,12 @@ public class TableDialectUIServices implements DialectUIServices {
         return selection;
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#completeToolTipText(String, EObject)
+     */
+    public String completeToolTipText(String toolTipText, EObject eObject) {
+        return toolTipText;
+    }
 }

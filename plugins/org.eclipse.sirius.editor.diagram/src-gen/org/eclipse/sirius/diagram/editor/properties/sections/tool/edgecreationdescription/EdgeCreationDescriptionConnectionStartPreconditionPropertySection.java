@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.tools.api.assist.ContentProposalClient;
 import org.eclipse.sirius.ui.tools.api.assist.IAssistContentProvider;
 import org.eclipse.swt.SWT;
@@ -168,6 +169,15 @@ public class EdgeCreationDescriptionConnectionStartPreconditionPropertySection e
     }
 
     // Start of user code user operations
+
+    @Override
+    protected String getToolTipText() {
+        String toolTipText = super.getToolTipText();
+
+        toolTipText = DialectUIManager.INSTANCE.completeToolTipText(toolTipText, eObject);
+
+        return toolTipText;
+    }
 
     // End of user code user operations
 }

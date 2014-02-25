@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -180,9 +180,9 @@ public interface IDiagramDescriptionProvider {
     LinkedList<HeaderData> getHeaderData(DDiagram diagram);
 
     /**
-     * Get the {@link ICollapseUpdater} if this <code>diagram</code> is
-     * handle by this {@link IDiagramDescriptionProvider} or an empty
-     * {@link Option} otherwise.
+     * Get the {@link ICollapseUpdater} if this <code>diagram</code> is handle
+     * by this {@link IDiagramDescriptionProvider} or an empty {@link Option}
+     * otherwise.
      * 
      * @param diagram
      *            the current diagram
@@ -191,4 +191,18 @@ public interface IDiagramDescriptionProvider {
      *         <code>diagram</code>.
      */
     Option<? extends ICollapseUpdater> getCollapseUpdater(DDiagram diagram);
+
+    /**
+     * Allows the {@link IDiagramDescriptionProvider} to customize the tooltip
+     * displayed in VSM editor.
+     * 
+     * @param toolTipText
+     *            the initial tool tip
+     * @param eObject
+     *            the current eObject
+     * 
+     * @return a customized tooltip if needed, the initial tooltip otherwise.
+     * @since 1.0.0 M6
+     */
+    String completeToolTipText(String toolTipText, EObject eObject);
 }

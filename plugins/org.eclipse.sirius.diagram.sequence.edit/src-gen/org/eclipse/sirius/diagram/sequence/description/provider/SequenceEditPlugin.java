@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.sequence.description.provider;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
@@ -44,7 +45,7 @@ public final class SequenceEditPlugin extends EMFPlugin {
      * @generated
      */
     public SequenceEditPlugin() {
-        super(new ResourceLocator[] { EcoreEditPlugin.INSTANCE, SiriusEditPlugin.INSTANCE, });
+        super(new ResourceLocator[] { EcoreEditPlugin.INSTANCE, SiriusEditPlugin.INSTANCE, DiagramUIPlugin.INSTANCE});
     }
 
     /**

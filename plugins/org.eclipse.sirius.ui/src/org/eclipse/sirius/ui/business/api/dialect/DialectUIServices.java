@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.ui.IEditorPart;
 
 /**
@@ -216,11 +217,35 @@ public interface DialectUIServices {
      * Tell whether the dialect is able to handle the given representation.
      * 
      * @param representation
-     *            representation to export as image.
+     *            representation to test.
      * @return true if the dialect can handle the representation, false
      *         otherwise.
      */
     boolean canHandle(DRepresentation representation);
+
+    /**
+     * Tell whether the dialect is able to handle the given representation
+     * description.
+     * 
+     * @param description
+     *            the representation description to test.
+     * @return true if the dialect can handle the representation description,
+     *         false otherwise.
+     * @since 1.0.0 M6
+     */
+    boolean canHandle(RepresentationDescription description);
+
+    /**
+     * Tell whether the dialect is able to handle the given representation
+     * extension description.
+     * 
+     * @param description
+     *            the representation extension description to test.
+     * @return true if the dialect can handle the representation extension description,
+     *         false otherwise.
+     * @since 1.0.0 M6
+     */
+    boolean canHandle(RepresentationExtensionDescription description);
 
     /**
      * Return Hierachical LabelProvider.
@@ -231,4 +256,18 @@ public interface DialectUIServices {
      * @return a LabelProvider
      */
     ILabelProvider getHierarchyLabelProvider(ILabelProvider currentLabelProvider);
+
+    /**
+     * Allows the {@link DialectUIServices} to customize the tooltip displayed
+     * in the VSM editor.
+     * 
+     * @param toolTipText
+     *            the initial tool tip
+     * @param eObject
+     *            the current eObject
+     * 
+     * @return a customized tooltip if needed, the initial tooltip otherwise.
+     * @since 1.0.0 M6
+     */
+    String completeToolTipText(String toolTipText, EObject eObject);
 }

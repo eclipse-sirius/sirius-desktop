@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,8 +25,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUI;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -36,7 +38,9 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.provider.DescriptionItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.style.provider.StyleItemProviderAdapterFactory;
@@ -257,6 +261,34 @@ public class DialectUIManagerImpl implements DialectUIManager {
 
     /**
      * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.description.RepresentationDescription)
+     */
+    public boolean canHandle(final RepresentationDescription description) {
+        for (final DialectUI dialect : dialects.values()) {
+            if (dialect.getServices().canHandle(description)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription)
+     */
+    public boolean canHandle(final RepresentationExtensionDescription description) {
+        for (final DialectUI dialect : dialects.values()) {
+            if (dialect.getServices().canHandle(description)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * {@inheritDoc}
      */
     public boolean canExport(ExportFormat format) {
         for (final DialectUI dialect : dialects.values()) {
@@ -347,5 +379,31 @@ public class DialectUIManagerImpl implements DialectUIManager {
             }
         }
         return false;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String completeToolTipText(String toolTipText, EObject eObject) {
+        String toolTip = toolTipText;
+        Option<EObject> parentRepresentationDescription = new EObjectQuery(eObject).getFirstAncestorOfType(DescriptionPackage.eINSTANCE.getRepresentationDescription());
+        if (parentRepresentationDescription.some()) {
+            for (final DialectUI dialect : dialects.values()) {
+                if (dialect.getServices().canHandle((RepresentationDescription) parentRepresentationDescription.get())) {
+                    toolTip = dialect.getServices().completeToolTipText(toolTipText, eObject);
+                }
+            }
+        } else {
+            Option<EObject> parentRepresentationExtensionDescription = new EObjectQuery(eObject).getFirstAncestorOfType(DescriptionPackage.eINSTANCE.getRepresentationExtensionDescription());
+            if (parentRepresentationDescription.some()) {
+                for (final DialectUI dialect : dialects.values()) {
+                    if (dialect.getServices().canHandle((RepresentationExtensionDescription) parentRepresentationExtensionDescription.get())) {
+                        toolTip = dialect.getServices().completeToolTipText(toolTipText, eObject);
+                    }
+                }
+            }
+        }
+        return toolTip;
     }
 }
