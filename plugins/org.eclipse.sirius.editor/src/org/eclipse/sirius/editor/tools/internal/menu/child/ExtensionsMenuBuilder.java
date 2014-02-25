@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,11 +31,7 @@ public class ExtensionsMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
         addValidType(AuditPackage.eINSTANCE.getTemplateInformationSection());
         addValidType(DescriptionPackage.eINSTANCE.getJavaExtension());
         addValidType(DescriptionPackage.eINSTANCE.getMetamodelExtensionSetting());
-        addValidType(org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getDiagramExtensionDescription());
         addValidType(ToolPackage.eINSTANCE.getExternalJavaAction());
-        addValidType(org.eclipse.sirius.diagram.description.tool.ToolPackage.eINSTANCE.getRequestDescription());
-        addValidType(org.eclipse.sirius.diagram.description.tool.ToolPackage.eINSTANCE.getToolGroupExtension());
-
     }
 
     /**

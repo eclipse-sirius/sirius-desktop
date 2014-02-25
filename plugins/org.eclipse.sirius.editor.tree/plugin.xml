@@ -13,34 +13,23 @@
 -->
 
 <plugin>
-<!-- Menu builders for the VSM editor -->
-
+  
+  <!-- Menu builders for the VSM editor -->
   <extension
         point="org.eclipse.sirius.editor.menuBuilder">
      <builder
            class="org.eclipse.sirius.editor.tree.tools.internal.menu.TreeTreeElementMenuBuilder">
      </builder>
-  </extension>
-  <extension
-        point="org.eclipse.sirius.editor.menuBuilder">
      <builder
            class="org.eclipse.sirius.editor.tree.tools.internal.menu.TreeToolsMenuBuilder">
      </builder>
-  </extension>
-   <extension
-        point="org.eclipse.sirius.editor.menuBuilder">
      <builder
            class="org.eclipse.sirius.editor.tree.tools.internal.menu.TreePopupMenuMenuBuilder">
      </builder>     
-  </extension>
-  
-  <extension
-        point="org.eclipse.sirius.editor.menuBuilder">
      <builder
            class="org.eclipse.sirius.editor.tree.tools.internal.menu.TreeWizardMenuBuilder">
      </builder>
   </extension>
-
   
  <!-- End of user code plugin.xml start specifics  -->
   

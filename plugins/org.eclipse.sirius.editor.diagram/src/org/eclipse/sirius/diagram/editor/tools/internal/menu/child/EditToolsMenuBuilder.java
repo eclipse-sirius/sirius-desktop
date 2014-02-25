@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,26 +8,27 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.tools.internal.menu.child;
+package org.eclipse.sirius.diagram.editor.tools.internal.menu.child;
 
-import org.eclipse.sirius.diagram.description.concern.ConcernPackage;
-import org.eclipse.sirius.diagram.description.filter.FilterPackage;
+import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractTypeRestrictingMenuBuilder;
 
 /**
- * The filters menu.
+ * The edit menu.
  * 
  * @author cbrun
  * 
  */
-public class FiltersMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
+public class EditToolsMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
     /**
      * build the menu.
      */
-    public FiltersMenuBuilder() {
+    public EditToolsMenuBuilder() {
         super();
-        addValidType(FilterPackage.eINSTANCE.getFilterDescription());
-        addValidType(ConcernPackage.eINSTANCE.getConcernSet());
+        addValidType(ToolPackage.eINSTANCE.getDirectEditLabel());
+        addValidType(ToolPackage.eINSTANCE.getReconnectEdgeDescription());
+        addValidType(ToolPackage.eINSTANCE.getContainerDropDescription());
+        addValidType(ToolPackage.eINSTANCE.getDeleteElementDescription());
     }
 
     /**
@@ -35,7 +36,7 @@ public class FiltersMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
      */
     @Override
     protected String getLabel() {
-        return "New Filter...";
+        return "New Element Edition...";
     }
 
 }

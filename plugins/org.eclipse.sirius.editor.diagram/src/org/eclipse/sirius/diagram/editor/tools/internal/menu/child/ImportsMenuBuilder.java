@@ -8,26 +8,27 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.tools.internal.menu.child;
+package org.eclipse.sirius.diagram.editor.tools.internal.menu.child;
 
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractTypeRestrictingMenuBuilder;
-import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * The edit menu.
+ * The imports menu.
  * 
  * @author cbrun
  * 
  */
-public class EditToolsMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
+public class ImportsMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
     /**
      * build the menu.
      */
-    public EditToolsMenuBuilder() {
+    public ImportsMenuBuilder() {
         super();
-        addValidType(ToolPackage.eINSTANCE.getPasteDescription());
-        addValidType(ToolPackage.eINSTANCE.getSelectionWizardDescription());
-        addValidType(ToolPackage.eINSTANCE.getPaneBasedSelectionWizardDescription());
+        addValidType(DescriptionPackage.eINSTANCE.getContainerMappingImport());
+        addValidType(DescriptionPackage.eINSTANCE.getNodeMappingImport());
+        addValidType(DescriptionPackage.eINSTANCE.getDiagramImportDescription());
+        addValidType(DescriptionPackage.eINSTANCE.getEdgeMappingImport());
     }
 
     /**
@@ -35,6 +36,7 @@ public class EditToolsMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
      */
     @Override
     protected String getLabel() {
-        return "New Element Edition...";
+        return "New Import...";
     }
+
 }

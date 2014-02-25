@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,23 +47,16 @@ import org.eclipse.sirius.editor.tools.internal.menu.OthersMenuBuilder;
 import org.eclipse.sirius.editor.tools.internal.menu.child.ConditionalStyleMenuBuilder;
 import org.eclipse.sirius.editor.tools.internal.menu.child.CustomizationMenuBuilder;
 import org.eclipse.sirius.editor.tools.internal.menu.child.EditToolsMenuBuilder;
-import org.eclipse.sirius.editor.tools.internal.menu.child.ElementCreationMenuBuilder;
 import org.eclipse.sirius.editor.tools.internal.menu.child.ExtensionsMenuBuilder;
-import org.eclipse.sirius.editor.tools.internal.menu.child.FiltersMenuBuilder;
-import org.eclipse.sirius.editor.tools.internal.menu.child.ImportsMenuBuilder;
-import org.eclipse.sirius.editor.tools.internal.menu.child.LayoutsMenuBuilder;
 import org.eclipse.sirius.editor.tools.internal.menu.child.MenuToolsMenuBuilder;
 import org.eclipse.sirius.editor.tools.internal.menu.child.NavigationToolsMenuBuilder;
 import org.eclipse.sirius.editor.tools.internal.menu.child.OperationsMenuBuilder;
 import org.eclipse.sirius.editor.tools.internal.menu.child.RepresentationCreationToolsMenuBuilder;
 import org.eclipse.sirius.editor.tools.internal.menu.child.RepresentationMenuBuilder;
 import org.eclipse.sirius.editor.tools.internal.menu.child.RepresentationTemplateMenuBuilder;
-import org.eclipse.sirius.editor.tools.internal.menu.child.SimulationMenuBuilder;
 import org.eclipse.sirius.editor.tools.internal.menu.child.StyleMenuBuilder;
-import org.eclipse.sirius.editor.tools.internal.menu.child.ToolsMenuBuilder;
 import org.eclipse.sirius.editor.tools.internal.menu.child.ValidationMenuBuilder;
 import org.eclipse.sirius.editor.tools.internal.menu.child.VariablesMenuBuilder;
-import org.eclipse.sirius.editor.tools.internal.menu.child.VisualMenuBuilder;
 import org.eclipse.sirius.editor.tools.internal.menu.refactoring.RefactoringMenu;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
@@ -189,17 +182,12 @@ public class CustomSiriusActionBarContributor extends EditingDomainActionBarCont
         controlAction = new ControlAction();
         builders = new ArrayList<AbstractMenuBuilder>();
 
-        builders.add(new VisualMenuBuilder());
-
-        builders.add(new ElementCreationMenuBuilder());
         builders.add(new EditToolsMenuBuilder());
         builders.add(new RepresentationCreationToolsMenuBuilder());
-        builders.add(new ToolsMenuBuilder());
         builders.add(new MenuToolsMenuBuilder());
         builders.add(new RepresentationMenuBuilder());
         builders.add(new RepresentationTemplateMenuBuilder());
         builders.add(new NavigationToolsMenuBuilder());
-        builders.add(new SimulationMenuBuilder());
 
         builders.add(new VariablesMenuBuilder());
 
@@ -208,9 +196,6 @@ public class CustomSiriusActionBarContributor extends EditingDomainActionBarCont
         builders.add(new ConditionalStyleMenuBuilder());
         builders.add(new OperationsMenuBuilder());
         builders.add(new ValidationMenuBuilder());
-        builders.add(new FiltersMenuBuilder());
-        builders.add(new ImportsMenuBuilder());
-        builders.add(new LayoutsMenuBuilder());
         builders.add(new ExtensionsMenuBuilder());
 
         builders.addAll(MenuBuildersManager.getInstance().getContributedMenuBuilders());

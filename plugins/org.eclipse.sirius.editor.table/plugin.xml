@@ -323,22 +323,12 @@
      <builder
            class="org.eclipse.sirius.editor.table.tools.internal.menu.ToolsMenuBuilder">
      </builder>
-  </extension>
-  <extension
-        point="org.eclipse.sirius.editor.menuBuilder">
      <builder
            class="org.eclipse.sirius.editor.table.tools.internal.menu.TableElementsMenuBuilder">
      </builder>
-  </extension>
-   <extension
-        point="org.eclipse.sirius.editor.menuBuilder">
      <builder
            class="org.eclipse.sirius.editor.table.tools.internal.menu.StyleMenuBuilder">
      </builder>     
-  </extension>
-  
-   <extension
-        point="org.eclipse.sirius.editor.menuBuilder">
      <builder
            class="org.eclipse.sirius.editor.table.tools.internal.menu.ConditionalStyleMenuBuilder">
      </builder>

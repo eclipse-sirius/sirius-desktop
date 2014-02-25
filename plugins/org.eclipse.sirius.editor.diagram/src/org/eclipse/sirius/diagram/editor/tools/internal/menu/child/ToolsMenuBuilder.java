@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,26 +8,29 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.tools.internal.menu.child;
+package org.eclipse.sirius.diagram.editor.tools.internal.menu.child;
 
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractTypeRestrictingMenuBuilder;
 
 /**
- * The element creation menu.
+ * The tools menu.
  * 
  * @author cbrun
  * 
  */
-public class ElementCreationMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
+public class ToolsMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
     /**
      * build the menu.
      */
-    public ElementCreationMenuBuilder() {
+    public ToolsMenuBuilder() {
         super();
-        addValidType(ToolPackage.eINSTANCE.getNodeCreationDescription());
-        addValidType(ToolPackage.eINSTANCE.getContainerCreationDescription());
-        addValidType(ToolPackage.eINSTANCE.getEdgeCreationDescription());
+        addValidType(ToolPackage.eINSTANCE.getToolSection());
+        addValidType(ToolPackage.eINSTANCE.getToolGroup());
+
+        addRestrictedType(ToolPackage.eINSTANCE.getNodeCreationDescription());
+        addRestrictedType(ToolPackage.eINSTANCE.getContainerCreationDescription());
+        addRestrictedType(ToolPackage.eINSTANCE.getEdgeCreationDescription());
     }
 
     /**
@@ -35,7 +38,7 @@ public class ElementCreationMenuBuilder extends AbstractTypeRestrictingMenuBuild
      */
     @Override
     protected String getLabel() {
-        return "New Element Creation...";
+        return "New Tool...";
     }
 
 }

@@ -14,6 +14,36 @@
 -->
 
 <plugin>
+
+  <!-- Menu builders for the VSM editor -->
+  <extension
+        point="org.eclipse.sirius.editor.menuBuilder">
+     <builder
+           class="org.eclipse.sirius.diagram.editor.tools.internal.menu.refactoring.DiagramRefactoringMenu">
+     </builder>
+     <builder
+           class="org.eclipse.sirius.diagram.editor.tools.internal.menu.child.ElementCreationMenuBuilder">
+     </builder>
+      <builder
+           class="org.eclipse.sirius.diagram.editor.tools.internal.menu.child.FiltersMenuBuilder">
+     </builder>
+       <builder
+           class="org.eclipse.sirius.diagram.editor.tools.internal.menu.child.ImportsMenuBuilder">
+     </builder>
+     <builder
+           class="org.eclipse.sirius.diagram.editor.tools.internal.menu.child.LayoutsMenuBuilder">
+     </builder>
+     <builder
+           class="org.eclipse.sirius.diagram.editor.tools.internal.menu.child.SimulationMenuBuilder">
+     </builder>
+     <builder
+           class="org.eclipse.sirius.diagram.editor.tools.internal.menu.child.ToolsMenuBuilder">
+     </builder>
+     <builder
+           class="org.eclipse.sirius.diagram.editor.tools.internal.menu.child.VisualMenuBuilder">
+     </builder>
+  </extension>
+
  <!-- End of user code plugin.xml start specifics  -->
   
   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">

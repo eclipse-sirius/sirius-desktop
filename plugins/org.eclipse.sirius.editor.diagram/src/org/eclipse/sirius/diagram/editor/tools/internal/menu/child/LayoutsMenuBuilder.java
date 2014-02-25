@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,29 +8,26 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.editor.tools.internal.menu.child;
+package org.eclipse.sirius.diagram.editor.tools.internal.menu.child;
 
-import org.eclipse.sirius.diagram.description.tool.ToolPackage;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractTypeRestrictingMenuBuilder;
 
 /**
- * The tools menu.
+ * The layouts menu.
  * 
  * @author cbrun
  * 
  */
-public class ToolsMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
+public class LayoutsMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
     /**
      * build the menu.
      */
-    public ToolsMenuBuilder() {
+    public LayoutsMenuBuilder() {
         super();
-        addValidType(ToolPackage.eINSTANCE.getToolSection());
-        addValidType(ToolPackage.eINSTANCE.getToolGroup());
+        addValidType(DescriptionPackage.eINSTANCE.getOrderedTreeLayout());
+        addValidType(DescriptionPackage.eINSTANCE.getCompositeLayout());
 
-        addRestrictedType(ToolPackage.eINSTANCE.getNodeCreationDescription());
-        addRestrictedType(ToolPackage.eINSTANCE.getContainerCreationDescription());
-        addRestrictedType(ToolPackage.eINSTANCE.getEdgeCreationDescription());
     }
 
     /**
@@ -38,7 +35,7 @@ public class ToolsMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
      */
     @Override
     protected String getLabel() {
-        return "New Tool...";
+        return "New Layout...";
     }
 
 }
