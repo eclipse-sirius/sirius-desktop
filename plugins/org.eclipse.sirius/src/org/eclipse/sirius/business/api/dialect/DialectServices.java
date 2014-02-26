@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -305,4 +305,16 @@ public interface DialectServices {
      * @return an optional task
      */
     Option<? extends AbstractCommandTask> createTask(CommandContext context, ModelAccessor extPackage, ModelOperation op, Session session, UICallBack uiCallback);
+
+    /**
+     * Indicates if the current dialect allows the customization of the given
+     * specification element.
+     * 
+     * @param element
+     *            a VSM element.
+     * @return true if the current dialect allows the customization of the given
+     *         VSM element.
+     * @since 1.0.0 M6
+     */
+    boolean allowsEStructuralFeatureCustomization(EObject element);
 }

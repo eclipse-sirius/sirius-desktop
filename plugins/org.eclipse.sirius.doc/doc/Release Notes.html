@@ -39,10 +39,17 @@
 			<a href="#separationOfDiagramSpecificConcept-step2">Step2</a> for more details).
 		</p>
 		<ul>
-			<li>To break the dependencies from Core to Diagram, a service has been added to the 
-				<code>DialectServices</code>. It has a default implementation in 
-				<code>AbstractRepresentationDialectServices</code>: 
-				<code>createTask(CommandContext, ModelAccessor, ModelOperation, Session, UICallBack)</code>: Create a new task corresponding to the ModelOperation. Only needed for ModelOperation specific to one dialect.
+			<li>To break the dependencies from Core to Diagram, several services have been added to the 
+				<code>DialectServices</code>, with default implementations in 
+				<code>AbstractRepresentationDialectServices</code>:
+				<ul>
+					<li>
+						<code>createTask(CommandContext, ModelAccessor, ModelOperation, Session, UICallBack)</code>: create a new task corresponding to the ModelOperation. Only needed for ModelOperation specific to one dialect.
+					</li>
+					<li>
+						<code>allowsEStructuralFeatureCustomization(EObject)</code>: allows dialects to indicate if they allow EStrucuralFeaturesCustomization for the given VSM element. It is currently supported for style descriptions in diagrams only.
+					</li>
+				</ul>
 			</li>
 			<li>
 				<code>org.eclipse.sirius.ui.business.api.dialect.DialectUIManager.canExport(DRepresentation, ExportFormat)</code>: New method returning true if at least one dialect is able to export this representation to this format, false otherwise.

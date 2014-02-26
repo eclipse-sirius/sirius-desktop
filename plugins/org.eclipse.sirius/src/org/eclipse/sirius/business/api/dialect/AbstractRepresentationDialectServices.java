@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -480,5 +480,14 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     @Override
     public Option<? extends AbstractCommandTask> createTask(CommandContext context, ModelAccessor extPackage, ModelOperation op, Session session, UICallBack uiCallback) {
         return Options.newNone();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean allowsEStructuralFeatureCustomization(EObject choice) {
+        // Do not support structural feature customization by default
+        return false;
     }
 }

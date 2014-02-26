@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,9 +17,11 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractEditorDialogPropertySection;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -29,7 +31,6 @@ import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
-import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.FormAttachment;
@@ -128,55 +129,52 @@ public class EStructuralFeatureCustomizationAppliedOnPropertySection extends Abs
      */
     @Override
     protected List<?> getChoiceOfValues(List<?> currentValues) {
-        List<EObject> availableStyleDescriptions = new ArrayList<EObject>();
+        List<EObject> customizableElements = new ArrayList<EObject>();
         for (Object choiceOfValue : super.getChoiceOfValues(currentValues)) {
             if (choiceOfValue instanceof EObject) {
                 EObject choice = (EObject) choiceOfValue;
-                if ((choice instanceof StyleDescription || choice.eContainer() instanceof StyleDescription)
-                        && (choice.eClass().getEPackage() == StylePackage.eINSTANCE || choice.eClass().getEPackage() == org.eclipse.sirius.diagram.description.style.StylePackage.eINSTANCE)) {
-                    if (isStyleDescriptionEltConformToEAttributeCustomization(choice) || isStyleDescriptionEltConformToEReferenceCustomization(choice)) {
-                        availableStyleDescriptions.add(choice);
-                    }
+
+                // Let the dialect tell us if they allow the customizations.
+                if (DialectManager.INSTANCE.allowsEStructuralFeatureCustomization(choice) && isConformToCustomization(choice)) {
+                    customizableElements.add(choice);
                 }
             }
         }
-        return availableStyleDescriptions;
+        return customizableElements;
     }
 
-    private boolean isStyleDescriptionEltConformToEAttributeCustomization(EObject choice) {
-        boolean isStyleDescriptionEltConformToEAttributeCustomization = false;
+    private boolean isConformToCustomization(EObject choice) {
+        boolean isConform = false;
+        // if the feature is null, let the user choose the value, the completion
+        // will then help him to find the attribute name or the reference name
+        // from the values.
+        // See
+        // org.eclipse.sirius.editor.tools.internal.assist.EAttributeCustomizationAttributeNameContentProposalProvider.bindCompletionProcessor(EAttributeCustomizationAttributeNamePropertySection,
+        // Text) and
+        // org.eclipse.sirius.editor.tools.internal.assist.EReferenceCustomizationReferenceNameContentProposalProvider.bindCompletionProcessor(EReferenceCustomizationReferenceNamePropertySection,
+        // Text)
         if (eObject instanceof EAttributeCustomization) {
             EAttributeCustomization eAttributeCustomization = (EAttributeCustomization) eObject;
-            String attributeName = eAttributeCustomization.getAttributeName();
-            if (attributeName != null && attributeName.length() > 0) {
-                isStyleDescriptionEltConformToEAttributeCustomization = choice.eClass().getEStructuralFeature(attributeName) instanceof EAttribute;
-            } else {
-                isStyleDescriptionEltConformToEAttributeCustomization = true;
-            }
+            EStructuralFeature feature = getEStructuralFeature(choice.eClass(), eAttributeCustomization.getAttributeName());
+            isConform = feature == null || feature instanceof EAttribute;
+        } else if (eObject instanceof EReferenceCustomization) {
+            EReferenceCustomization eReferenceCustomization = (EReferenceCustomization) eObject;
+            EStructuralFeature feature = getEStructuralFeature(choice.eClass(), eReferenceCustomization.getReferenceName());
+            isConform = feature == null || feature instanceof EReference && checkValue((EReference) feature, eReferenceCustomization.getValue());
         }
-        return isStyleDescriptionEltConformToEAttributeCustomization;
+        return isConform;
     }
 
-    private boolean isStyleDescriptionEltConformToEReferenceCustomization(EObject choice) {
-        boolean isStyleDescriptionEltConformToEReferenceCustomization = false;
-        if (eObject instanceof EReferenceCustomization) {
-            EReferenceCustomization eReferenceCustomization = (EReferenceCustomization) eObject;
-            String referenceName = eReferenceCustomization.getReferenceName();
-            EObject value = eReferenceCustomization.getValue();
-            if (referenceName != null && referenceName.length() > 0) {
-                isStyleDescriptionEltConformToEReferenceCustomization = choice.eClass().getEStructuralFeature(referenceName) instanceof EReference;
-                if (isStyleDescriptionEltConformToEReferenceCustomization && value != null) {
-                    EClassifier eType = choice.eClass().getEStructuralFeature(referenceName).getEType();
-                    if (eType instanceof EClass) {
-                        EClass type = (EClass) eType;
-                        isStyleDescriptionEltConformToEReferenceCustomization = type.isSuperTypeOf(value.eClass());
-                    }
-                }
-            } else {
-                isStyleDescriptionEltConformToEReferenceCustomization = true;
-            }
+    private boolean checkValue(EReference ref, EObject value) {
+        EClass eType = ref.getEReferenceType();
+        return value != null && eType != null && eType.isSuperTypeOf(value.eClass());
+    }
+
+    private EStructuralFeature getEStructuralFeature(EClass eClass, String featureName) {
+        if (!StringUtil.isEmpty(featureName) && eClass != null) {
+            return eClass.getEStructuralFeature(featureName);
         }
-        return isStyleDescriptionEltConformToEReferenceCustomization;
+        return null;
     }
 
     @Override

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -520,6 +520,9 @@ public class DialectManagerImpl implements DialectManager {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Option<? extends AbstractCommandTask> createTask(CommandContext context, ModelAccessor extPackage, ModelOperation op, Session session, UICallBack uiCallback) {
         Option<? extends AbstractCommandTask> task = Options.newNone();
@@ -529,5 +532,18 @@ public class DialectManagerImpl implements DialectManager {
             task = dialect.getServices().createTask(context, extPackage, op, session, uiCallback);
         }
         return task;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean allowsEStructuralFeatureCustomization(EObject element) {
+        boolean customizationAllowed = false;
+        Iterator<Dialect> dialectsValueIterator = dialects.values().iterator();
+        while (dialectsValueIterator.hasNext() && !customizationAllowed) {
+            customizationAllowed = dialectsValueIterator.next().getServices().allowsEStructuralFeatureCustomization(element);
+        }
+        return customizationAllowed;
     }
 }

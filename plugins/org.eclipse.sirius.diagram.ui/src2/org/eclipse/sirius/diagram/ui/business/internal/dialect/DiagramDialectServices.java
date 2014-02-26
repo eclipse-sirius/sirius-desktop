@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -78,6 +79,7 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 
 /**
@@ -477,5 +479,20 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
             task = Options.newSome(new NavigationTask(context, extPackage, doubleClickNavigation, session, uiCallback));
         }
         return task;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * The diagram dialect allows the feature customizations on style descriptions.
+     */
+    @Override
+    public boolean allowsEStructuralFeatureCustomization(EObject element) {
+        if (element instanceof StyleDescription || element.eContainer() instanceof StyleDescription) {
+            EPackage ePackage = element.eClass().getEPackage();
+            return ePackage == org.eclipse.sirius.viewpoint.description.style.StylePackage.eINSTANCE || ePackage == org.eclipse.sirius.diagram.description.style.StylePackage.eINSTANCE;
+        }
+        return false;
+
     }
 }
