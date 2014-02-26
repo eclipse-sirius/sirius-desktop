@@ -20,7 +20,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentMap;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -60,10 +59,11 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
-import com.google.common.collect.MapMaker;
 import com.google.common.collect.Maps;
 
 public class ViewpointRegistryImpl extends ViewpointRegistry {
@@ -183,13 +183,12 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
         prepareFoundCache();
     }
 
-    private ConcurrentMap<EObject, EObject> prepareFoundCache() {
-        return new MapMaker().weakKeys().makeComputingMap(new Function<EObject, EObject>() {
-
+    private Map<EObject, EObject> prepareFoundCache() {
+        return CacheBuilder.newBuilder().weakKeys().build(CacheLoader.from(new Function<EObject, EObject>() {
             public EObject apply(EObject from) {
                 return lookForEquivalentInRegistry(from);
             }
-        });
+        })).asMap();
     }
 
     /**

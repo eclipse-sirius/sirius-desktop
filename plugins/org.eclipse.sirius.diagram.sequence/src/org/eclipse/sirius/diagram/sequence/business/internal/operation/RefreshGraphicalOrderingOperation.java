@@ -25,9 +25,10 @@ import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
 
 import com.google.common.base.Functions;
 import com.google.common.base.Predicate;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.MapMaker;
 import com.google.common.collect.Ordering;
 
 /**
@@ -84,7 +85,7 @@ public class RefreshGraphicalOrderingOperation extends AbstractModelChangeOperat
      *            event ends.
      */
     private void refreshGlobalOrdering(EventEndsOrdering graphicalOrdering, VerticalPositionFunction verticalPosition) {
-        final Map<EventEnd, Integer> positions = new MapMaker().makeComputingMap(verticalPosition);
+        final Map<EventEnd, Integer> positions = CacheBuilder.newBuilder().build(CacheLoader.from(verticalPosition)).asMap();
         Predicate<EventEnd> isValidEnd = new Predicate<EventEnd>() {
             public boolean apply(EventEnd input) {
                 Integer pos = positions.get(input);

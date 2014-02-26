@@ -27,11 +27,12 @@ import com.google.common.base.Functions;
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.ListMultimap;
-import com.google.common.collect.MapMaker;
 import com.google.common.collect.Ordering;
 import com.google.common.collect.Sets;
 /**
@@ -129,7 +130,7 @@ public class MaskingPolicy {
      * resource A. A resource (and all the Viewpoints it defines) is visible if
      * and only if this sum is 0.
      */
-    private final Map<Resource, Integer> score = new MapMaker().makeComputingMap(Functions.constant(0));
+    private final Map<Resource, Integer> score = CacheBuilder.newBuilder().<Resource, Integer>build(CacheLoader.from(Functions.constant(0))).asMap();
 
     /**
      * The handler used to find Sirius instances inside loaded resources.
