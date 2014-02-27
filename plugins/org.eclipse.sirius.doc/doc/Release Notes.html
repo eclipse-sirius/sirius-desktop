@@ -13,6 +13,9 @@
 				<a href="#ReleaseNotesforSirius">Release Notes for Sirius</a>
 				<ol style="list-style: disc;">
 					<li>
+						<a href="#sirius1.0M7">Changes in Sirius 1.0.0M7 (from Sirius 1.0M6)</a>
+					</li>
+					<li>
 						<a href="#sirius1.0M6">Changes in Sirius 1.0.0M6 (from Sirius 1.0M5)</a>
 					</li>
 					<li>
@@ -28,8 +31,22 @@
 			</li>
 		</ol>
 		<p>This document contains the release notes for all major releases of Sirius.</p>
-		<h2 id="sirius1.0M6">Changes in Sirius 1.0.0M6 (from Sirius 1.0M5)</h2>
+		<h2 id="sirius1.0M7">Changes in Sirius 1.0.0M7 (from Sirius 1.0M6)</h2>
 		<h3 id="APIChanges">API Changes</h3>
+		<h4 id="separationOfDiagramSpecificConcept-step3">Move diagram.ecore in its own plugin</h4>
+		<p>This milestone (Sirius 1.0M7) includes the third, and final, step towards a full separation of the diagram-specific stuff out of the core of Sirius (see 
+			<a href="#separationOfDiagramSpecificConcept-step1">Step1</a> and 
+			<a href="#separationOfDiagramSpecificConcept-step2">Step2</a> for more details).
+		</p>
+		<ul>
+			<li>To break the dependencies from Core to Diagram, a service has been added to the 
+				<code>DialectServices</code>. It has a default implementation in 
+				<code>AbstractRepresentationDialectServices</code>: 
+				<code>createTask(CommandContext, ModelAccessor, ModelOperation, Session, UICallBack)</code>: Create a new task corresponding to the ModelOperation. Only needed for ModelOperation specific to one dialect.
+			</li>
+		</ul>
+		<h2 id="sirius1.0M6">Changes in Sirius 1.0.0M6 (from Sirius 1.0M5)</h2>
+		<h3 id="APIChanges2">API Changes</h3>
 		<h4 id="separationOfDiagramSpecificConcept-step2">Move diagram-specific EPackages into their own diagram.ecore model</h4>
 		<p>This milestone (Sirius 1.0M6) includes the second step towards a full separation of the diagram-specific stuff out of the core of Sirius (see 
 			<a href="#separationOfDiagramSpecificConcept-step1">Step1</a> for more details).
@@ -106,7 +123,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 		<ul>
 			<li>The table csv export has been improved to handle cropped label. In some specific cases, the cell label is automatically cropped and &#8249;...&#8250; is concatenated to the resulting value. This cropped displayed label was previously exported, now the complete semantic value is exported.</li>
 		</ul>
-		<h3 id="APIChanges2">API Changes</h3>
+		<h3 id="APIChanges3">API Changes</h3>
 		<h4 id="LibraryExtensions">Library Extensions</h4>
 		<p>This milestone (Sirius 1.0M5) introduces several new plug-ins, collectively called &#171;library extensions&#187;. They are all named 
 			<code>org.eclipse.sirius.ext.LIB</code>, where 
@@ -234,7 +251,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 		<ul>
 			<li>The ability to print table representations, which had been disabled for the 0.9 release, has been re-enabled.</li>
 		</ul>
-		<h3 id="APIChanges3">API Changes</h3>
+		<h3 id="APIChanges4">API Changes</h3>
 		<p>Sirius 1.0.0M4 includes a lots of API-breaking changes, as part of a global effort to improve the quality of the Sirius internals. In this milestone in particular, most of the APIs which were marked as deprecated in previous versions of Sirius (and before that of Viewpoint) have been either removed (if a replacement exists) or marked as non-deprecated (if no replacement exists yet).</p>
 		<h4 id="Changesinorg.eclipse.sirius.common">Changes in  
 			<code>org.eclipse.sirius.common</code>

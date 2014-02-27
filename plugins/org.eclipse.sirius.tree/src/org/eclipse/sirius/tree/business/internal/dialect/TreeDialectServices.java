@@ -257,5 +257,4 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
     public boolean handles(RepresentationExtensionDescription representationExtensionDescription) {
         return false;
     }
-
 }

@@ -30,6 +30,7 @@ import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.internal.helper.task.DeleteDDiagramElementTask;
+import org.eclipse.sirius.business.internal.helper.task.DeleteDRepresentationTask;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
@@ -41,7 +42,6 @@ import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
-import org.eclipse.sirius.diagram.business.internal.helper.task.DeleteDDiagramTask;
 import org.eclipse.sirius.diagram.business.internal.helper.task.DeleteSeveralDDiagramElementsTask;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
@@ -402,7 +402,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
      * Delete commands
      */
     private void addDeleteDiagramTask(final DCommand cmd, final DDiagram vp) {
-        cmd.getTasks().add(new DeleteDDiagramTask(vp));
+        cmd.getTasks().add(new DeleteDRepresentationTask(vp));
     }
 
     /**

@@ -27,6 +27,7 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.identifier.RepresentationElementIdentifier;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
@@ -44,11 +45,15 @@ import org.eclipse.sirius.diagram.business.api.helper.display.DisplayMode;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.diagram.business.api.query.DiagramDescriptionQuery;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSynchronizer;
+import org.eclipse.sirius.diagram.business.internal.helper.task.operations.CreateViewTask;
+import org.eclipse.sirius.diagram.business.internal.helper.task.operations.NavigationTask;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.DiagramImportDescription;
 import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.diagram.description.tool.CreateView;
+import org.eclipse.sirius.diagram.description.tool.Navigation;
 import org.eclipse.sirius.diagram.tools.api.command.DiagramCommandFactoryService;
 import org.eclipse.sirius.diagram.ui.business.api.view.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.ui.business.api.view.refresh.CanonicalSynchronizerFactory;
@@ -61,7 +66,11 @@ import org.eclipse.sirius.diagram.ui.business.internal.dialect.identifier.NodeSt
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.ChangeLayerActivationCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.DiagramCreationUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.DCommand;
+import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
@@ -69,6 +78,7 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 
 /**
  * Services for diagram.
@@ -453,4 +463,19 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
         DiagramDescriptionMappingsRegistry.INSTANCE.computeMappings();
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Option<? extends AbstractCommandTask> createTask(CommandContext context, ModelAccessor extPackage, ModelOperation op, Session session, UICallBack uiCallback) {
+        Option<? extends AbstractCommandTask> task = Options.newNone();
+        if (op instanceof CreateView) {
+            final CreateView createView = (CreateView) op;
+            task = Options.newSome(new CreateViewTask(context, extPackage, createView, session.getInterpreter()));
+        } else if (op instanceof Navigation) {
+            final Navigation doubleClickNavigation = (Navigation) op;
+            task = Options.newSome(new NavigationTask(context, extPackage, doubleClickNavigation, session, uiCallback));
+        }
+        return task;
+    }
 }

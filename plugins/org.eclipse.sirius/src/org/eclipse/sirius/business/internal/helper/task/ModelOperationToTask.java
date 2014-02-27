@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.helper.task;
 
+import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.helper.task.operations.AbstractOperationTask;
@@ -19,15 +21,12 @@ import org.eclipse.sirius.business.internal.helper.task.operations.ExternalJavaA
 import org.eclipse.sirius.business.internal.helper.task.operations.ForTask;
 import org.eclipse.sirius.business.internal.helper.task.operations.IfTask;
 import org.eclipse.sirius.business.internal.helper.task.operations.MoveElementTask;
+import org.eclipse.sirius.business.internal.helper.task.operations.RemoveElementTask;
 import org.eclipse.sirius.business.internal.helper.task.operations.SetValueTask;
 import org.eclipse.sirius.business.internal.helper.task.operations.SwitchTask;
 import org.eclipse.sirius.business.internal.helper.task.operations.UnsetTask;
-import org.eclipse.sirius.diagram.business.internal.helper.task.operations.CreateViewTask;
-import org.eclipse.sirius.diagram.business.internal.helper.task.operations.NavigationTask;
-import org.eclipse.sirius.diagram.business.internal.helper.task.operations.RemoveElementTask;
-import org.eclipse.sirius.diagram.description.tool.CreateView;
-import org.eclipse.sirius.diagram.description.tool.Navigation;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
@@ -105,7 +104,10 @@ public class ModelOperationToTask implements Function<ModelOperation, ICommandTa
     public AbstractOperationTask createTask(final ModelOperation op) {
 
         AbstractOperationTask task = null;
-        if (op instanceof CreateInstance) {
+        Option<? extends AbstractCommandTask> optionalDialectTask = DialectManager.INSTANCE.createTask(context, extPackage, op, session, uiCallback);
+        if (optionalDialectTask.some() && optionalDialectTask.get() instanceof AbstractOperationTask) {
+            task = (AbstractOperationTask) optionalDialectTask.get();
+        } else if (op instanceof CreateInstance) {
             final CreateInstance createOp = (CreateInstance) op;
             task = new CreateInstanceTask(context, extPackage, createOp, session.getInterpreter());
         } else if (op instanceof SetValue) {
@@ -129,9 +131,6 @@ public class ModelOperationToTask implements Function<ModelOperation, ICommandTa
         } else if (op instanceof Unset) {
             final Unset unset = (Unset) op;
             task = new UnsetTask(context, extPackage, unset, session);
-        } else if (op instanceof CreateView) {
-            final CreateView createView = (CreateView) op;
-            task = new CreateViewTask(context, extPackage, createView, session.getInterpreter());
         } else if (op instanceof If) {
             final If ifOp = (If) op;
             task = new IfTask(context, extPackage, ifOp, session);
@@ -144,9 +143,6 @@ public class ModelOperationToTask implements Function<ModelOperation, ICommandTa
         } else if (op instanceof ExternalJavaActionCall) {
             final ExternalJavaActionCall call = (ExternalJavaActionCall) op;
             task = new ExternalJavaActionTask(context, extPackage, call.getAction(), session, uiCallback);
-        } else if (op instanceof Navigation) {
-            final Navigation doubleClickNavigation = (Navigation) op;
-            task = new NavigationTask(context, extPackage, doubleClickNavigation, session, uiCallback);
         } else if (op instanceof Switch) {
             final Switch switchOp = (Switch) op;
             task = new SwitchTask(context, extPackage, switchOp, session, uiCallback);

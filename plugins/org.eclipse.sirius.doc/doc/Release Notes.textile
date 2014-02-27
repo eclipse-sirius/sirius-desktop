@@ -4,6 +4,16 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for all major releases of Sirius.
 
+h2(#sirius1.0M7). Changes in Sirius 1.0.0M7 (from Sirius 1.0M6)
+
+h3. API Changes
+
+h4(#separationOfDiagramSpecificConcept-step3). Move diagram.ecore in its own plugin
+
+This milestone (Sirius 1.0M7) includes the third, and final, step towards a full separation of the diagram-specific stuff out of the core of Sirius (see "Step1":#separationOfDiagramSpecificConcept-step1 and "Step2":#separationOfDiagramSpecificConcept-step2 for more details).
+
+* To break the dependencies from Core to Diagram, a service has been added to the @DialectServices@. It has a default implementation in @AbstractRepresentationDialectServices@: @createTask(CommandContext, ModelAccessor, ModelOperation, Session, UICallBack)@: Create a new task corresponding to the ModelOperation. Only needed for ModelOperation specific to one dialect.
+
 h2(#sirius1.0M6). Changes in Sirius 1.0.0M6 (from Sirius 1.0M5)
 
 h3. API Changes

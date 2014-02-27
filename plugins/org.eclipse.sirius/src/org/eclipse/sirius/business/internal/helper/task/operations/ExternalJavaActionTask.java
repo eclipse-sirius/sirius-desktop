@@ -30,7 +30,7 @@ import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.helper.task.DeleteDDiagramElementTask;
-import org.eclipse.sirius.diagram.business.internal.helper.task.DeleteDDiagramTask;
+import org.eclipse.sirius.business.internal.helper.task.DeleteDRepresentationTask;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.listener.ChangeListenerFactory;
@@ -245,7 +245,7 @@ public class ExternalJavaActionTask extends AbstractOperationTask {
                     DeleteDDiagramElementTask task = new DeleteDDiagramElementTask(dElement, modelAccessor);
                     tasks.add(task);
                 } else if (dElement instanceof DRepresentation) {
-                    DeleteDDiagramTask task = new DeleteDDiagramTask((DRepresentation) dElement);
+                    DeleteDRepresentationTask task = new DeleteDRepresentationTask((DRepresentation) dElement);
                     task.setDeleteIncomingReferences(true);
                     tasks.add(task);
                 }

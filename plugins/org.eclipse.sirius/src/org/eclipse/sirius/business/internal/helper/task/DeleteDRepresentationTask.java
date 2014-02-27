@@ -8,11 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.helper.task;
-
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+package org.eclipse.sirius.business.internal.helper.task;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -20,12 +16,9 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DDiagramLink;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.command.semantic.RemoveDanglingReferences;
 import org.eclipse.sirius.tools.internal.util.GMFUtil;
-import org.eclipse.sirius.viewpoint.DNavigable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -35,11 +28,13 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
  * 
  * @author mchauvin
  */
-public class DeleteDDiagramTask extends AbstractCommandTask {
+public class DeleteDRepresentationTask extends AbstractCommandTask {
 
-    private DRepresentation representation;
+    /** The representation to delete. */
+    protected DRepresentation representation;
 
-    private boolean deleteReferences;
+    /** Also delete the dangling references. */
+    protected boolean deleteReferences;
 
     /**
      * Default constructor.
@@ -47,7 +42,7 @@ public class DeleteDDiagramTask extends AbstractCommandTask {
      * @param representation
      *            the representation to delete
      */
-    public DeleteDDiagramTask(final DRepresentation representation) {
+    public DeleteDRepresentationTask(final DRepresentation representation) {
         this.representation = representation;
     }
 
@@ -74,11 +69,6 @@ public class DeleteDDiagramTask extends AbstractCommandTask {
             } else {
 
                 final EObject root = EcoreUtil.getRootContainer(representation);
-
-                if (representation instanceof DDiagram) {
-                    // remove the links to the diagram
-                    removeSiriusLinks(root, (DDiagram) representation);
-                }
 
                 // tear down incoming references
                 GMFUtil.tearDownIncomingReferences(representation);
@@ -113,40 +103,5 @@ public class DeleteDDiagramTask extends AbstractCommandTask {
      */
     public String getLabel() {
         return null;
-    }
-
-    /**
-     * Remove the {@link DDiagramLink} instances if they point to the target
-     * {@link DDiagram}.
-     * 
-     * @param root
-     *            the root container of {@link DDiagramLink} instances
-     * @param viewpoint
-     *            the target
-     */
-    private void removeSiriusLinks(final EObject root, final DDiagram diagram) {
-
-        final Map<DDiagramLink, DNavigable> removedLinks = new HashMap<DDiagramLink, DNavigable>(4);
-
-        final Iterator<EObject> it = root.eAllContents();
-        while (it.hasNext()) {
-            final EObject child = it.next();
-            if (child instanceof DDiagramLink) {
-                if (((DDiagramLink) child).getTarget() == diagram) {
-                    final EObject container = child.eContainer();
-                    if (container instanceof DNavigable) {
-                        removedLinks.put((DDiagramLink) child, (DNavigable) container);
-                    }
-                }
-            }
-        }
-
-        final Iterator<Map.Entry<DDiagramLink, DNavigable>> itRemovedLinks = removedLinks.entrySet().iterator();
-        while (it.hasNext()) {
-            final Map.Entry<DDiagramLink, DNavigable> entry = itRemovedLinks.next();
-            final DNavigable container = entry.getValue();
-            final DDiagramLink child = entry.getKey();
-            container.getOwnedNavigationLinks().remove(child);
-        }
     }
 }

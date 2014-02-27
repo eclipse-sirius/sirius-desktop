@@ -28,14 +28,21 @@ import org.eclipse.sirius.business.api.dialect.RepresentationNotification;
 import org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.identifier.RepresentationElementIdentifier;
+import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.tools.api.command.CommandContext;
+import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 
 /**
  * Class able to manage a set of dialects to provides the usual dialect services
@@ -511,5 +518,16 @@ public class DialectManagerImpl implements DialectManager {
         for (Dialect dialect : dialects.values()) {
             dialect.getServices().invalidateMappingCache();
         }
+    }
+
+    @Override
+    public Option<? extends AbstractCommandTask> createTask(CommandContext context, ModelAccessor extPackage, ModelOperation op, Session session, UICallBack uiCallback) {
+        Option<? extends AbstractCommandTask> task = Options.newNone();
+        Iterator<Dialect> iterDialect = dialects.values().iterator();
+        while (iterDialect.hasNext() && !task.some()) {
+            Dialect dialect = iterDialect.next();
+            task = dialect.getServices().createTask(context, extPackage, op, session, uiCallback);
+        }
+        return task;
     }
 }

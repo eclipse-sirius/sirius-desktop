@@ -18,11 +18,17 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.dialect.identifier.RepresentationElementIdentifier;
+import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.tools.api.command.CommandContext;
+import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 
 /**
  * Stateless services.
@@ -282,4 +288,21 @@ public interface DialectServices {
      * selected viewpoints list is changed).
      */
     void invalidateMappingCache();
+
+    /**
+     * Create a new task from the {@link ModelOperation}.
+     * 
+     * @param context
+     *            current context.
+     * @param extPackage
+     *            access to semantic model.
+     * @param op
+     *            the operation to transform to Task
+     * @param session
+     *            the {@link Session} to be used.
+     * @param uiCallback
+     *            user interface interactions.
+     * @return an optional task
+     */
+    Option<? extends AbstractCommandTask> createTask(CommandContext context, ModelAccessor extPackage, ModelOperation op, Session session, UICallBack uiCallback);
 }
