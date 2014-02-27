@@ -208,6 +208,11 @@
 			<a href="http://www.obeonetwork.com/page/building-an-acceleo-generator">http://www.obeonetwork.com/page/building-an-acceleo-generator</a> to ensure the project is built correctly, or the queries defined in the 
 			<code>.mtl</code> files may not be available when the project is deployed as a plug-in.
 		</p>
+		<p>
+			<em>Note:</em> due to an incompatible change in serialization format in EMF 2.9, if you use external 
+			<code>.mtl</code> files in your modeler definitions and build your modeler plug-ins using EMF 2.9 or later, the resulting modeler will not work with previous versions of EMF (as the resulting 
+			<code>.emtl</code> files will not load correctly with EMF 2.8 and earlier). For reference, EMF 2.9 corresponds to Eclipse 4.3 (Kepler). 
+		</p>
 		<p>Acceleo is more precise than the legacy language, but also more demanding, about the types of elements your queries are executed on. This generally means you get better auto-completion and more useful validation and diagnostics. However sometimes Sirius is not able to statically determine the precise type of the model elements on which an expression will be evaluated. In that case, it assumes a plain 
 			<em>EObject</em>. If you know the actual type which will be used, prefix your expression with 
 			<code>filter(ExpectedType)</code> to help Sirius. Note that if the actual type at runtime is not compatible with 
