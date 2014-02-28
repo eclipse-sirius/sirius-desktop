@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.eclipse.sirius" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.eclipse.sirius.diagram" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appInfo>
-         <meta.schema plugin="org.eclipse.sirius" id="diagramTypeProvider" name="org.eclipse.sirius.diagram.diagramTypeProvider"/>
+         <meta.schema plugin="org.eclipse.sirius.diagram" id="diagramTypeProvider" name="org.eclipse.sirius.diagram.diagramTypeProvider"/>
       </appInfo>
       <documentation>
          This extension register new Diagram Types that can be managed by the diagram dialect.
