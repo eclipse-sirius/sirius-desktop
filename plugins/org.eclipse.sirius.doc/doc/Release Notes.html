@@ -38,7 +38,50 @@
 			<a href="#separationOfDiagramSpecificConcept-step1">Step1</a> and 
 			<a href="#separationOfDiagramSpecificConcept-step2">Step2</a> for more details).
 		</p>
+		<p>All classes related to diagrams in 
+			<code>org.eclipse.sirius</code> have been moved to 
+			<code>org.eclipse.sirius.diagram</code>.
+			<br/>All classes related to diagrams in 
+			<code>org.eclipse.sirius.ui</code> have been moved to 
+			<code>org.eclipse.sirius.diagram.ui</code>.
+			<br/>All classes related to diagrams in 
+			<code>org.eclipse.sirius.editor</code> have been moved to 
+			<code>org.eclipse.sirius.editor.diagram</code>.
+			<br/>In the same way, all classes related to UI in 
+			<code>org.eclipse.diagram</code> have been moved to 
+			<code>org.eclipse.sirius.diagram.ui</code>. To simplify this step almost all classes of 
+			<code>org.eclipse.diagram</code> have been moved in 
+			<code>org.eclipse.sirius.diagram.ui</code> (and probably not only UI classes). These classes have been moved in 
+			<code>src2</code> source folder to facilitate future work about moving some of these classes in 
+			<code>org.eclipse.diagram</code> again.
+		</p>
+		<p>Unlike, the 
+			<a href="#separationOfDiagramSpecificConcept-step1">Step1</a>, a simple &#171;Organize Imports&#187; operation is not enough. First, you will probably need to add dependencies to 
+			<code>org.eclipse.sirius.diagram</code>, 
+			<code>org.eclipse.sirius.diagram.ui</code> or 
+			<code>org.eclipse.sirius.editor.diagram</code> in the MANIFEST.MF of your projects that depend on Sirius diagram classes. The dependencies to add depend on what you really use.
+		</p>
 		<ul>
+			<li>
+				<code>ViewpointRegistry.getDiagramDescriptionMappingsRegistry()</code> has been removed. You can now directly call 
+				<code>org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsRegistry.INSTANCE</code>.
+			</li>
+			<li>@DialectServices.</li>
+			<li>New methods have been added to 
+				<code>IRepairParticipant</code> to isolate specific diagram repair steps.
+				<ul>
+					<li>
+						<code>removeElements(DView, TransactionalEditingDomain, IProgressMonitor)</code>: Removes elements from the 
+						<code>DView</code> that will be recreated by the refresh (called later).
+					</li>
+					<li>
+						<code>cleanRepresentations(EList&lt;DRepresentation&gt;)</code>: Cleans representations (specific representation states like filters) and eventually returns some of them if they need to be removed.
+					</li>
+					<li>
+						<code>refreshRepresentations(DAnalysis, DView)</code>: This method is only implemented by the diagram participant. To simplify work for this step, this method manages core and diagram elements. It should be clean up once the split will be done.
+					</li>
+				</ul>
+			</li>
 			<li>To break the dependencies from Core to Diagram, several services have been added to:
 				<ul>
 					<li>
@@ -46,7 +89,14 @@
 						<code>AbstractRepresentationDialectServices</code>:
 						<ul>
 							<li>
-								<code>createTask(CommandContext, ModelAccessor, ModelOperation, Session, UICallBack)</code>: create a new task corresponding to the ModelOperation. Only needed for ModelOperation specific to one dialect.
+								<code>createTask(CommandContext, ModelAccessor, ModelOperation, Session, UICallBack)</code>: Creates a new task corresponding to the ModelOperation. Only needed for ModelOperation specific to one dialect.
+							</li>
+							<li>
+								<code>handles(RepresentationExtensionDescription)</code>: Tells if the current dialect handles the given 
+								<code>RepresentationExtensionDescription</code>.
+							</li>
+							<li>
+								<code>invalidateMappingCache()</code>: Allows each dialect to clean and compute again its proper mapping cache.
 							</li>
 							<li>
 								<code>allowsEStructuralFeatureCustomization(EObject)</code>: allows dialects to indicate if they allow EStrucuralFeaturesCustomization for the given VSM element. It is currently supported for style descriptions in diagrams only.
@@ -82,6 +132,79 @@
 							</li>
 						</ul>
 					</li>
+				</ul>
+			</li>
+			<li>All methods of 
+				<code>SiriusHelper</code> concerning diagrams have been moved to 
+				<code>org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramHelper</code>.
+			</li>
+			<li>All methods of 
+				<code>SiriusUtil</code> concerning diagrams have been moved to 
+				<code>org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil</code>.
+			</li>
+			<li>All methods of 
+				<code>org.eclipse.sirius.business.api.query.EObjectQuery</code> concerning diagrams have been moved to 
+				<code>org.eclipse.sirius.diagram.business.api.query.EObjectQuery</code>.
+			</li>
+			<li>
+				<a href="https://wiki.eclipse.org/Sirius/Modularization#Library_Extensions">Library Extensions</a>:
+				<ul>
+					<li>All methods depending only on draw2d of 
+						<code>org.eclipse.sirius.diagram.ui.tools.api.draw2d.ui.figures.FigureUtilities</code> have been moved in 
+						<code>org.eclipse.sirius.ext.draw2d.figure.FigureUtilities</code>
+					</li>
+					<li>
+						<code>fr.obeo.dsl.viewpoint.diagram.ui.tools.api.layout.GraphicalHelper</code> has been moved to 
+						<code>org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper</code>.
+					</li>
+				</ul>
+			</li>
+			<li>Images
+				<ul>
+					<li>Images of 
+						<code>org.eclipse.sirius.diagram</code> have been moved to 
+						<code>org.eclipse.sirius.diagram.ui</code>. In your code, you should replace 
+						<code>SiriusDiagramEditorPlugin.getInstance().getImage()</code> by 
+						<code>DiagramUIPlugin.getPlugin().getImage()</code>. That is the case for all methods concerning images in 
+						<code>SiriusDiagramEditorPlugin</code>.
+					</li>
+					<li>Some images of 
+						<code>org.eclipse.sirius.ui</code> have been moved to 
+						<code>org.eclipse.sirius.diagram.ui</code>, the corresponding constants in 
+						<code>org.eclipse.sirius.ui.tools.api.image.ImagesPath</code> have been moved in 
+						<code>org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath</code>.
+					</li>
+				</ul>
+			</li>
+			<li>The method 
+				<code>static void refreshSelection(DiagramElementMapping)</code> from 
+				<code>org.eclipse.sirius.editor.tools.api.menu.AbstractEObjectRefactoringAction</code> is not available anymore.
+			</li>
+		</ul>
+		<h5 id="Movedextensionpoints">Moved extension points</h5>
+		<p>Several extension points have been moved:</p>
+		<ul>
+			<li>from 
+				<code>org.eclipse.sirius</code> to 
+				<code>org.eclipse.sirius.diagram</code>. You should change the id of the following extension point in your plugin.xml (
+				<code>org.eclipse.sirius.xxxx</code> replaced by 
+				<code>org.eclipse.sirius.diagram.xxxx</code>):
+				<ul>
+					<li>diagramTypeProvider</li>
+				</ul>
+			</li>
+			<li>from 
+				<code>org.eclipse.sirius.diagram</code> to 
+				<code>org.eclipse.sirius.diagram.ui</code>. You should change the id of the following extension points in your plugin.xml (
+				<code>org.eclipse.sirius.diagram.xxxx</code> replaced by 
+				<code>org.eclipse.sirius.diagram.ui.xxxx</code>):
+				<ul>
+					<li>diagramIdentifierProvider</li>
+					<li>imageSelector</li>
+					<li>layoutDataManager</li>
+					<li>layoutProvider</li>
+					<li>styleConfigurationProvider</li>
+					<li>viewOrderingProvider</li>
 				</ul>
 			</li>
 		</ul>

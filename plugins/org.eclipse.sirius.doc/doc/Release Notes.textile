@@ -12,9 +12,24 @@ h4(#separationOfDiagramSpecificConcept-step3). Move diagram.ecore in its own plu
 
 This milestone (Sirius 1.0M7) includes the third, and final, step towards a full separation of the diagram-specific stuff out of the core of Sirius (see "Step1":#separationOfDiagramSpecificConcept-step1 and "Step2":#separationOfDiagramSpecificConcept-step2 for more details).
 
+All classes related to diagrams in @org.eclipse.sirius@ have been moved to @org.eclipse.sirius.diagram@.
+All classes related to diagrams in @org.eclipse.sirius.ui@ have been moved to @org.eclipse.sirius.diagram.ui@.
+All classes related to diagrams in @org.eclipse.sirius.editor@ have been moved to @org.eclipse.sirius.editor.diagram@.
+In the same way, all classes related to UI in @org.eclipse.diagram@ have been moved to @org.eclipse.sirius.diagram.ui@. To simplify this step almost all classes of @org.eclipse.diagram@ have been moved in @org.eclipse.sirius.diagram.ui@ (and probably not only UI classes). These classes have been moved in @src2@ source folder to facilitate future work about moving some of these classes in @org.eclipse.diagram@ again.
+
+Unlike, the "Step1":#separationOfDiagramSpecificConcept-step1, a simple "Organize Imports" operation is not enough. First, you will probably need to add dependencies to @org.eclipse.sirius.diagram@, @org.eclipse.sirius.diagram.ui@ or @org.eclipse.sirius.editor.diagram@ in the MANIFEST.MF of your projects that depend on Sirius diagram classes. The dependencies to add depend on what you really use.
+
+* @ViewpointRegistry.getDiagramDescriptionMappingsRegistry()@ has been removed. You can now directly call @org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsRegistry.INSTANCE@.
+* @DialectServices.
+* New methods have been added to @IRepairParticipant@ to isolate specific diagram repair steps.
+** @removeElements(DView, TransactionalEditingDomain, IProgressMonitor)@: Removes elements from the @DView@ that will be recreated by the refresh (called later).
+** @cleanRepresentations(EList<DRepresentation>)@: Cleans representations (specific representation states like filters) and eventually returns some of them if they need to be removed.
+** @refreshRepresentations(DAnalysis, DView)@: This method is only implemented by the diagram participant. To simplify work for this step, this method manages core and diagram elements. It should be clean up once the split will be done.
 * To break the dependencies from Core to Diagram, several services have been added to:
 ** @DialectServices@, with default implementations in @AbstractRepresentationDialectServices@:
-*** @createTask(CommandContext, ModelAccessor, ModelOperation, Session, UICallBack)@: create a new task corresponding to the ModelOperation. Only needed for ModelOperation specific to one dialect.
+*** @createTask(CommandContext, ModelAccessor, ModelOperation, Session, UICallBack)@: Creates a new task corresponding to the ModelOperation. Only needed for ModelOperation specific to one dialect.
+*** @handles(RepresentationExtensionDescription)@: Tells if the current dialect handles the given @RepresentationExtensionDescription@.
+*** @invalidateMappingCache()@: Allows each dialect to clean and compute again its proper mapping cache.
 *** @allowsEStructuralFeatureCustomization(EObject)@: allows dialects to indicate if they allow EStrucuralFeaturesCustomization for the given VSM element. It is currently supported for style descriptions in diagrams only.
 ** @DialectUIServices@
 *** @canHandle(RepresentationDescription)@ and @canHandle(RepresentationExtensionDescription)@: tell whether the dialect is able to handle the given representation description or extension description.
@@ -23,7 +38,30 @@ This milestone (Sirius 1.0M7) includes the third, and final, step towards a full
 *** @canExport(DRepresentation, ExportFormat)@: New method returning true if at least one dialect is able to export this representation to this format, false otherwise.
 ** @IDiagramDescriptionProvider@
 ***  @completeToolTipText(String, EObject)@ allows the diagram type to customize the tooltip displayed in a property section of a given VSM element. @SequenceDiagramTypeProvider@ implements this method to  mention some Sequence specific variable available in core and diagram tool preconditions in the context of a Sequence diagram.
+* All methods of @SiriusHelper@ concerning diagrams have been moved to @org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramHelper@.
+* All methods of @SiriusUtil@ concerning diagrams have been moved to @org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil@.
+* All methods of @org.eclipse.sirius.business.api.query.EObjectQuery@ concerning diagrams have been moved to @org.eclipse.sirius.diagram.business.api.query.EObjectQuery@.
+* "Library Extensions":https://wiki.eclipse.org/Sirius/Modularization#Library_Extensions:
+** All methods depending only on draw2d of @org.eclipse.sirius.diagram.ui.tools.api.draw2d.ui.figures.FigureUtilities@ have been moved in @org.eclipse.sirius.ext.draw2d.figure.FigureUtilities@
+** @fr.obeo.dsl.viewpoint.diagram.ui.tools.api.layout.GraphicalHelper@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper@.
+* Images
+** Images of @org.eclipse.sirius.diagram@ have been moved to @org.eclipse.sirius.diagram.ui@. In your code, you should replace @SiriusDiagramEditorPlugin.getInstance().getImage()@ by @DiagramUIPlugin.getPlugin().getImage()@. That is the case for all methods concerning images in @SiriusDiagramEditorPlugin@.
+** Some images of @org.eclipse.sirius.ui@ have been moved to @org.eclipse.sirius.diagram.ui@, the corresponding constants in @org.eclipse.sirius.ui.tools.api.image.ImagesPath@ have been moved in @org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath@.
+* The method @static void refreshSelection(DiagramElementMapping)@ from @org.eclipse.sirius.editor.tools.api.menu.AbstractEObjectRefactoringAction@ is not available anymore.
 
+h5. Moved extension points
+
+Several extension points have been moved:
+* from @org.eclipse.sirius@ to @org.eclipse.sirius.diagram@. You should change the id of the following extension point in your plugin.xml (@org.eclipse.sirius.xxxx@ replaced by @org.eclipse.sirius.diagram.xxxx@):
+** diagramTypeProvider
+* from @org.eclipse.sirius.diagram@ to @org.eclipse.sirius.diagram.ui@. You should change the id of the following extension points in your plugin.xml (@org.eclipse.sirius.diagram.xxxx@ replaced by @org.eclipse.sirius.diagram.ui.xxxx@):
+** diagramIdentifierProvider
+** imageSelector
+** layoutDataManager
+** layoutProvider
+** styleConfigurationProvider
+** viewOrderingProvider
+ 
 h2(#sirius1.0M6). Changes in Sirius 1.0.0M6 (from Sirius 1.0M5)
 
 h3. API Changes
