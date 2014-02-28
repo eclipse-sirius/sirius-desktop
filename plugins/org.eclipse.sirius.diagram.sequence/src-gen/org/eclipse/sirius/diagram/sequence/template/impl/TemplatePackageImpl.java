@@ -46,7 +46,6 @@ import org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping;
 import org.eclipse.sirius.diagram.sequence.template.TTransformer;
 import org.eclipse.sirius.diagram.sequence.template.TemplateFactory;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
@@ -233,7 +232,6 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
         isInited = true;
 
         // Initialize simple dependencies
-        ViewpointPackage.eINSTANCE.eClass();
         DiagramPackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies

@@ -39,7 +39,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * @generated
  */
 public class MessageCreationToolItemProvider extends SequenceDiagramToolDescriptionItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
-IItemLabelProvider, IItemPropertySource {
+        IItemLabelProvider, IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -112,8 +112,8 @@ IItemLabelProvider, IItemPropertySource {
     }
 
     /**
-     * This adds a property descriptor for the Connection Completion Precondition (
-     * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * This adds a property descriptor for the Connection Completion
+     * Precondition ( feature. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated-not
      */

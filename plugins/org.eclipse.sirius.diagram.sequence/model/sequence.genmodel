@@ -7,7 +7,7 @@
     editorPluginClass="org.eclipse.sirius.diagram.sequence.description.presentation.SequenceEditorPlugin"
     codeFormatting="true" testsDirectory="" testSuiteClass="org.eclipse.sirius.diagram.sequence.description.tests.SequenceAllTests"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
-    runtimeVersion="2.3" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius/model/viewpoint.genmodel#//viewpoint ../../org.eclipse.sirius/model/viewpoint.genmodel#//diagram">
+    runtimeVersion="2.3" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius/model/viewpoint.genmodel#//viewpoint ../../org.eclipse.sirius.diagram/model/diagram.genmodel#//diagram">
   <foreignModel>sequence.ecore</foreignModel>
   <genPackages prefix="Sequence" basePackage="org.eclipse.sirius.diagram" disposableProviderFactory="true"
       ecorePackage="sequence.ecore#/">

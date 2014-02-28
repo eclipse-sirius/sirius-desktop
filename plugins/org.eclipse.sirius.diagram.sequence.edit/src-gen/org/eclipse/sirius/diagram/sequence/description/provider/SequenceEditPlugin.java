@@ -45,7 +45,7 @@ public final class SequenceEditPlugin extends EMFPlugin {
      * @generated
      */
     public SequenceEditPlugin() {
-        super(new ResourceLocator[] { EcoreEditPlugin.INSTANCE, SiriusEditPlugin.INSTANCE, DiagramUIPlugin.INSTANCE});
+        super(new ResourceLocator[] { EcoreEditPlugin.INSTANCE, SiriusEditPlugin.INSTANCE, DiagramUIPlugin.INSTANCE, });
     }
 
     /**

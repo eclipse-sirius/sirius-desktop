@@ -39,7 +39,6 @@ import org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage;
 import org.eclipse.sirius.diagram.sequence.ordering.impl.OrderingPackageImpl;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
 import org.eclipse.sirius.diagram.sequence.template.impl.TemplatePackageImpl;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
@@ -197,7 +196,6 @@ public class ToolPackageImpl extends EPackageImpl implements ToolPackage {
         isInited = true;
 
         // Initialize simple dependencies
-        ViewpointPackage.eINSTANCE.eClass();
         DiagramPackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
