@@ -20,6 +20,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ExecutionException;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -61,6 +62,7 @@ import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
@@ -83,7 +85,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
 
     private boolean shouldInvalidateCache;
 
-    private Map<EObject, EObject> foundCache = prepareFoundCache();
+    private LoadingCache<EObject, EObject> foundCache = prepareFoundCache();
 
     private final DiagramDescriptionMappingsRegistry mappingsRegistry = DiagramDescriptionMappingsRegistry.INSTANCE;
 
@@ -183,12 +185,12 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
         prepareFoundCache();
     }
 
-    private Map<EObject, EObject> prepareFoundCache() {
+    private LoadingCache<EObject, EObject> prepareFoundCache() {
         return CacheBuilder.newBuilder().weakKeys().build(CacheLoader.from(new Function<EObject, EObject>() {
             public EObject apply(EObject from) {
                 return lookForEquivalentInRegistry(from);
             }
-        })).asMap();
+        }));
     }
 
     /**
@@ -870,7 +872,11 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      * @return the eObject instance if found, the given object otherwise
      */
     public EObject find(final EObject eObject) {
-        return foundCache.get(eObject);
+        try {
+            return foundCache.get(eObject);
+        } catch (ExecutionException e) {
+            return eObject;
+        }
     }
 
     private EObject lookForEquivalentInRegistry(final EObject eObject) {
