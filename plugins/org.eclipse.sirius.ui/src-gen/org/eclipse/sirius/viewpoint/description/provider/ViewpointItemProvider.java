@@ -47,7 +47,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationFactory;
  * @generated
  */
 public class ViewpointItemProvider extends DocumentedElementItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -242,7 +242,7 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider impleme
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((Viewpoint) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_Sirius_type") : label;
+        return label == null || label.length() == 0 ? getString("_UI_Viewpoint_type") : label;
     }
 
     /**

@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    IBM Corporation - initial API and implementation 
+ *    IBM Corporation - initial API and implementation
  *    Obeo - Renamed, completed and adapted for Sirius.
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.part;
@@ -36,11 +36,11 @@ import org.eclipse.gmf.runtime.diagram.ui.render.util.CopyToImageUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.ui.internal.refresh.layout.SiriusCanonicalLayoutHandler;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.internal.part.OffscreenEditPartFactory;
 import org.eclipse.sirius.diagram.ui.tools.internal.part.SiriusImageLoader;
 import org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
 import org.eclipse.swt.graphics.PaletteData;
@@ -159,7 +159,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
         List<?> editParts = diagramEP.getPrimaryEditParts();
         org.eclipse.swt.graphics.Rectangle imageRect = gen.calculateImageRectangle(editParts);
         // Define max size in properties file.
-        int maxSize = Integer.parseInt(SiriusEditPlugin.INSTANCE.getString("_Pref_RepresentationExportSizeMax"));
+        int maxSize = Integer.parseInt(DiagramUIPlugin.INSTANCE.getString("_Pref_DiagramExportSizeMax"));
         if (imageRect.height * imageRect.width > maxSize && format != ImageFileFormat.SVG) {
             String representationName = ((DSemanticDiagram) ((Diagram) diagramEP.getModel()).getElement()).getName();
             throw new SizeTooLargeException(new Status(IStatus.ERROR, SiriusPlugin.ID, representationName));
