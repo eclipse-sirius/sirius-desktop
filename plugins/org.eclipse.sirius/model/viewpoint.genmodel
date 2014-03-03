@@ -546,7 +546,7 @@
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/OperationAction/initialOperation"/>
         </genClasses>
         <genClasses ecoreClass="viewpoint.ecore#//description/tool/ExternalJavaAction">
-          <genFeatures createChild="false" propertyCategory="General" propertyDescription="The id of the extension using \&quot;fr.obeo.dsl.viewpoint.externalJavaAction\&quot; extension point to define this action."
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="The id of the extension using \&quot;org.eclipse.sirius.externalJavaAction\&quot; extension point to define this action."
               ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/ExternalJavaAction/id"/>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ExternalJavaAction/parameters"/>
         </genClasses>
@@ -1597,7 +1597,7 @@
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/DoubleClickDescription/initialOperation"/>
         </genClasses>
         <genClasses ecoreClass="diagram.ecore#//description/tool/DeleteHook">
-          <genFeatures createChild="false" propertyCategory="General" propertyDescription="An id of an extension to fr.obeo.dsl.viewpoint.deleteHook extension point. It may be used to add a confirmation dialog before deletion"
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="An id of an extension to org.eclipse.sirius.deleteHook extension point. It may be used to add a confirmation dialog before deletion"
               ecoreFeature="ecore:EAttribute diagram.ecore#//description/tool/DeleteHook/id"/>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/DeleteHook/parameters"/>
         </genClasses>
