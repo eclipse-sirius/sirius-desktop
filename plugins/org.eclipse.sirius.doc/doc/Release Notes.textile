@@ -28,6 +28,14 @@ h2(#sirius1.0M6). Changes in Sirius 1.0.0M6 (from Sirius 1.0M5)
 
 h3. API Changes
 
+h4(#tests). High-level API for Automated Tests Using JUnit and SWTBot
+
+Starting from version 1.0.0M6, Sirius includes high-level APIs to help creating automated tests using JUnit and/or SWTBot. These can be used either to test Sirius itself or to test Sirius-based modelers. These APIs are provided by two plug-ins:
+* @org.eclipse.sirius.tests.support@: support code for JUnit (plug-in) tests using Sirius.
+* @org.eclipse.sirius.tests.swtbot.support@: support code for SWTBot tests using Sirius.
+
+Both plug-ins are only available if you install the new @org.eclipse.sirius.tests@ feature.
+
 h4(#separationOfDiagramSpecificConcept-step2). Move diagram-specific EPackages into their own diagram.ecore model
 
 This milestone (Sirius 1.0M6) includes the second step towards a full separation of the diagram-specific stuff out of the core of Sirius (see "Step1":#separationOfDiagramSpecificConcept-step1 for more details).

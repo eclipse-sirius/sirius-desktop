@@ -28,7 +28,6 @@ import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
-import org.eclipse.sirius.viewpoint.DView;
 
 import com.google.common.collect.Iterables;
 
@@ -48,14 +47,20 @@ public class VisibilityPropagatorAdapter extends EContentAdapter implements Noti
 
     private Session session;
 
+    private DDiagram diagram;
+
     /**
      * Create a new adapter.
      * 
      * @param session
      *            the current session.
+     * @param diagram
+     *            the current diagram.
      */
-    public VisibilityPropagatorAdapter(Session session) {
+    public VisibilityPropagatorAdapter(Session session, DDiagram diagram) {
         this.session = session;
+        this.diagram = diagram;
+        this.diagram.eAdapters().add(this);
     }
 
     /**
@@ -153,7 +158,7 @@ public class VisibilityPropagatorAdapter extends EContentAdapter implements Noti
 
     @Override
     protected void addAdapter(Notifier notifier) {
-        if (notifier instanceof DView || notifier instanceof DSemanticDiagram || notifier instanceof DDiagramElement) {
+        if (notifier instanceof DSemanticDiagram || notifier instanceof DDiagramElement) {
             super.addAdapter(notifier);
         }
     }
@@ -193,4 +198,14 @@ public class VisibilityPropagatorAdapter extends EContentAdapter implements Noti
         return DisplayServiceManager.INSTANCE.getDisplayService().computeVisibility(mappingManager, parentDiagram, element);
     }
 
+    /**
+     * Dispose the current content adapter: remove it from the diagram.
+     */
+    public void dispose() {
+        if (diagram != null) {
+            diagram.eAdapters().remove(this);
+        }
+        diagram = null;
+        session = null;
+    }
 }

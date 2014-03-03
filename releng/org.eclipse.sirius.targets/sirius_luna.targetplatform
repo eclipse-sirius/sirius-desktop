@@ -4,7 +4,7 @@ target "sirius_luna"
 location "http://download.eclipse.org/releases/luna" {
 	with source, requirements
 	com.ibm.icu;version="[50.1.1,51.0.0)"
-	com.google.guava;version="[11.0.2,12.0.0)"
+	com.google.guava;version="[11.0.2,16.0)"
 	org.eclipse.platform.feature.group;version="[4.4.0,4.5.0)"
 	org.eclipse.equinox.sdk.feature.group;version="[3.10.0.0,4.0.0)"
 	org.eclipse.sdk.feature.group;version="[4.4.0,4.5.0)"
@@ -35,4 +35,26 @@ location "http://download.eclipse.org/releases/luna" {
 location "http://download.eclipse.org/sirius/targetplatform/0.9.0/all/nebula/N201309241436" {
 	with source, requirements
 	org.eclipse.nebula.widgets.paperclips.feature.feature.group;version="[2.0.0,3.0.0)"
+}
+
+// JUnit, Hamcrest & EasyMock
+location "http://download.eclipse.org/tools/orbit/downloads/drops/S20130914154012/repository/" {
+	with source, requirements
+	com.google.guava;version="11.0.2"
+	org.junit;version="[4.11.0,5.0.0)"
+	org.hamcrest.core;version="[1.3.0,2.0.0)"
+	org.hamcrest.library;version="[1.3.0,2.0.0)"
+	org.apache.log4j;version="[1.2.0,1.3.0)"
+	org.easymock
+}
+
+// SWTBot
+location "http://download.eclipse.org/technology/swtbot/releases/2.1.1/" {
+	with source, requirements
+	org.eclipse.swtbot.forms.feature.group;version="[2.1.0,2.2.0)"
+	org.eclipse.swtbot.eclipse.feature.group;version="[2.1.0,2.2.0)"
+	org.eclipse.swtbot.eclipse.gef.feature.group;version="[2.1.0,2.2.0)"
+	org.eclipse.swtbot.feature.group;version="[2.1.0,2.2.0)"
+	org.eclipse.swtbot.ide.feature.group;version="[2.1.0,2.2.0)"
+	org.eclipse.swtbot.eclipse.test.junit.feature.group;version="[2.1.0,2.2.0)"
 }

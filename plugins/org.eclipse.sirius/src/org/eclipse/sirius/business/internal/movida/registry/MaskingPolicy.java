@@ -12,8 +12,8 @@ package org.eclipse.sirius.business.internal.movida.registry;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ExecutionException;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -27,11 +27,13 @@ import com.google.common.base.Functions;
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.ListMultimap;
-import com.google.common.collect.MapMaker;
 import com.google.common.collect.Ordering;
 import com.google.common.collect.Sets;
 /**
@@ -129,7 +131,7 @@ public class MaskingPolicy {
      * resource A. A resource (and all the Viewpoints it defines) is visible if
      * and only if this sum is 0.
      */
-    private final Map<Resource, Integer> score = new MapMaker().makeComputingMap(Functions.constant(0));
+    private final LoadingCache<Resource, Integer> score = CacheBuilder.newBuilder().<Resource, Integer>build(CacheLoader.from(Functions.constant(0)));
 
     /**
      * The handler used to find Sirius instances inside loaded resources.
@@ -228,7 +230,7 @@ public class MaskingPolicy {
                 updateScore(providers.get(i).provider, -1, change);
             }
         }
-        score.remove(unloaded);
+        score.invalidate(unloaded);
         change.masked.add(unloaded);
         assert change.isConsistent();
         return change;
@@ -283,7 +285,12 @@ public class MaskingPolicy {
     }
 
     private void updateScore(Resource res, int delta, MaskingChange change) {
-        int oldValue = score.get(res);
+        int oldValue;
+        try {
+            oldValue = score.get(res);
+        } catch (ExecutionException e) {
+            oldValue = 0;
+        }
         int newValue = oldValue + delta;
         assert newValue >= 0;
         score.put(res, newValue);
@@ -303,7 +310,7 @@ public class MaskingPolicy {
      *         another resource.
      */
     public synchronized boolean isMasked(Resource res) {
-        return score.containsKey(res) && score.get(res).intValue() > 0;
+        return score.asMap().containsKey(res) && score.getIfPresent(res).intValue() > 0;
     }
 
     /**
@@ -313,7 +320,7 @@ public class MaskingPolicy {
      */
     public synchronized Set<Resource> getUnmaskedResources() {
         Set<Resource> unmasked = Sets.newHashSet();
-        for (Resource resource : score.keySet()) {
+        for (Resource resource : score.asMap().keySet()) {
             if (!isMasked(resource)) {
                 unmasked.add(resource);
             }
@@ -327,6 +334,6 @@ public class MaskingPolicy {
      * @return all the loaded but masked resources.
      */
     public synchronized Set<Resource> getMaskedResources() {
-        return ImmutableSet.copyOf(Sets.difference(score.keySet(), getUnmaskedResources()));
+        return ImmutableSet.copyOf(Sets.difference(score.asMap().keySet(), getUnmaskedResources()));
     }
 }

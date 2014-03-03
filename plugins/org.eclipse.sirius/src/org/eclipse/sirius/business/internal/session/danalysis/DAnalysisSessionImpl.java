@@ -1,6 +1,6 @@
 //CHECKSTYLE:OFF
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -206,8 +206,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /** The listener suitable for refresh the opened viewpoint editors. */
     protected RefreshEditorsPrecommitListener refreshEditorsListeners;
 
-    private VisibilityPropagatorAdapter visibilityPropagator;
-
     private final RepresentationsChangeAdapter representationsChangeAdapter;
 
     private final ResourceSetListener representationNameListener;
@@ -225,7 +223,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         this.mainDAnalysis = mainDAnalysis;
         this.sessionResource = mainDAnalysis.eResource();
         this.interpreter = new ODesignGenericInterpreter();
-        this.visibilityPropagator = new VisibilityPropagatorAdapter(this);
         this.representationsChangeAdapter = new RepresentationsChangeAdapter(this);
         this.representationNameListener = new RepresentationNameListener();
         this.controlledResourcesDetector = new ControlledResourcesDetector(this);
@@ -1228,9 +1225,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     @Override
     public void addAdaptersOnAnalysis(final DAnalysis analysis) {
-        if (this.visibilityPropagator != null) {
-            analysis.eAdapters().add(this.visibilityPropagator);
-        }
         if (this.representationsChangeAdapter != null) {
             this.representationsChangeAdapter.registerAnalysis(analysis);
         }
@@ -1241,9 +1235,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     @Override
     public void removeAdaptersOnAnalysis(final DAnalysis analysis) {
-        if (this.visibilityPropagator != null) {
-            analysis.eAdapters().remove(this.visibilityPropagator);
-        }
         if (this.representationsChangeAdapter != null) {
             this.representationsChangeAdapter.unregisterAnalysis(analysis);
         }
@@ -1756,7 +1747,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
         interpreter = null;
         crossReferencer = null;
-        visibilityPropagator = null;
         transactionalEditingDomain.removeResourceSetListener(representationNameListener);
         // TODO deinitialize model accessor, authority..
         // dispose the SessionEventBroker

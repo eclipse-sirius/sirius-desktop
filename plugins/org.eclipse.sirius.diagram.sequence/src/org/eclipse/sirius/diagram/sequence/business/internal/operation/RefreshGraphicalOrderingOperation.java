@@ -12,7 +12,7 @@ package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.VerticalPositionFunction;
@@ -23,11 +23,13 @@ import org.eclipse.sirius.diagram.sequence.ordering.EventEndsOrdering;
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 
-import com.google.common.base.Functions;
+import com.google.common.base.Function;
 import com.google.common.base.Predicate;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.MapMaker;
 import com.google.common.collect.Ordering;
 
 /**
@@ -84,15 +86,28 @@ public class RefreshGraphicalOrderingOperation extends AbstractModelChangeOperat
      *            event ends.
      */
     private void refreshGlobalOrdering(EventEndsOrdering graphicalOrdering, VerticalPositionFunction verticalPosition) {
-        final Map<EventEnd, Integer> positions = new MapMaker().makeComputingMap(verticalPosition);
+        final LoadingCache<EventEnd, Integer> positions = CacheBuilder.newBuilder().build(CacheLoader.from(verticalPosition));
         Predicate<EventEnd> isValidEnd = new Predicate<EventEnd>() {
             public boolean apply(EventEnd input) {
-                Integer pos = positions.get(input);
-                return pos != VerticalPositionFunction.INVALID_POSITION && pos != -VerticalPositionFunction.INVALID_POSITION;
+                try {
+                    Integer pos = positions.get(input);
+                    return pos != VerticalPositionFunction.INVALID_POSITION && pos != -VerticalPositionFunction.INVALID_POSITION;
+                } catch (ExecutionException e) {
+                    return false;
+                }
             }
         };
         List<EventEnd> allEnds = Lists.newArrayList(Iterables.filter(RefreshOrderingHelper.getAllEventEnds(sequenceDiagram), isValidEnd));
-        Collections.sort(allEnds, Ordering.natural().onResultOf(Functions.forMap(positions)));
+        Collections.sort(allEnds, Ordering.natural().onResultOf(new Function<EventEnd, Integer>() {
+            @Override
+            public Integer apply(EventEnd input) {
+                try {
+                    return positions.get(input);
+                } catch (ExecutionException e) {
+                    return VerticalPositionFunction.INVALID_POSITION;
+                }
+            }
+        }));
         RefreshOrderingHelper.updateIfNeeded(graphicalOrdering.getEventEnds(), allEnds);
     }
 

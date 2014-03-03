@@ -76,7 +76,8 @@
 					<li>
 						<code>IDiagramDescriptionProvider</code>
 						<ul>
-							<li> <code>completeToolTipText(String, EObject)</code> allows the diagram type to customize the tooltip displayed in a property section of a given VSM element. 
+							<li> 
+								<code>completeToolTipText(String, EObject)</code> allows the diagram type to customize the tooltip displayed in a property section of a given VSM element. 
 								<code>SequenceDiagramTypeProvider</code> implements this method to  mention some Sequence specific variable available in core and diagram tool preconditions in the context of a Sequence diagram.
 							</li>
 						</ul>
@@ -86,6 +87,19 @@
 		</ul>
 		<h2 id="sirius1.0M6">Changes in Sirius 1.0.0M6 (from Sirius 1.0M5)</h2>
 		<h3 id="APIChanges2">API Changes</h3>
+		<h4 id="tests">High-level API for Automated Tests Using JUnit and SWTBot</h4>
+		<p>Starting from version 1.0.0M6, Sirius includes high-level APIs to help creating automated tests using JUnit and/or SWTBot. These can be used either to test Sirius itself or to test Sirius-based modelers. These APIs are provided by two plug-ins:</p>
+		<ul>
+			<li>
+				<code>org.eclipse.sirius.tests.support</code>: support code for JUnit (plug-in) tests using Sirius.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.tests.swtbot.support</code>: support code for SWTBot tests using Sirius.
+			</li>
+		</ul>
+		<p>Both plug-ins are only available if you install the new 
+			<code>org.eclipse.sirius.tests</code> feature.
+		</p>
 		<h4 id="separationOfDiagramSpecificConcept-step2">Move diagram-specific EPackages into their own diagram.ecore model</h4>
 		<p>This milestone (Sirius 1.0M6) includes the second step towards a full separation of the diagram-specific stuff out of the core of Sirius (see 
 			<a href="#separationOfDiagramSpecificConcept-step1">Step1</a> for more details).

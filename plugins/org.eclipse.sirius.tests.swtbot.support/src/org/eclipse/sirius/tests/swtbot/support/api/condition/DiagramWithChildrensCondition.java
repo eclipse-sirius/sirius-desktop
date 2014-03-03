@@ -1,0 +1,53 @@
+/**
+ * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *      Obeo - Initial API and implementation
+ */
+package org.eclipse.sirius.tests.swtbot.support.api.condition;
+
+import org.eclipse.gef.RootEditPart;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
+import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
+import org.junit.ComparisonFailure;
+
+/**
+ * Condition testing the number of diagram elements is the expected one.
+ * 
+ * @author smonnier
+ */
+public class DiagramWithChildrensCondition extends DefaultCondition {
+
+    private final SWTBotDesignerEditor editor;
+
+    private final int expectedChildrenOnDiagramLevel;
+
+    /**
+     * Default constructor.
+     * 
+     * @param editor
+     *            the current editor
+     * @param expectedChildrenOnDiagramLevel
+     *            expected number of children on diagram level
+     */
+    public DiagramWithChildrensCondition(SWTBotDesignerEditor editor, int expectedChildrenOnDiagramLevel) {
+        super();
+        this.editor = editor;
+        this.expectedChildrenOnDiagramLevel = expectedChildrenOnDiagramLevel;
+    }
+
+    @Override
+    public boolean test() throws Exception {
+        return ((RootEditPart) editor.rootEditPart().part()).getContents().getChildren().size() == expectedChildrenOnDiagramLevel;
+    }
+
+    @Override
+    public String getFailureMessage() {
+        return new ComparisonFailure("There is not the expected number of children on the diagram level", Integer.toString(expectedChildrenOnDiagramLevel), Integer.toString(((RootEditPart) editor
+                .rootEditPart().part()).getContents().getChildren().size())).getMessage();
+    }
+}

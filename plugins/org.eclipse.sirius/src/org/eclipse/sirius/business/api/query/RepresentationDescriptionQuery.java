@@ -36,11 +36,11 @@ public class RepresentationDescriptionQuery {
     }
 
     /**
-     * return the Sirius defining the representation description.
+     * return the Viewpoint defining the representation description.
      * 
-     * @return the Sirius defining the representation description.
+     * @return the Viewpoint defining the representation description.
      */
-    public Viewpoint getParentSirius() {
+    public Viewpoint getParentViewpoint() {
         EObject current = vp;
         while (current != null) {
             current = current.eContainer();

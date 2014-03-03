@@ -15,12 +15,9 @@ import java.util.List;
 
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
-
-import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
-import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
 
 /**
  * The provider for the content of the table.
@@ -28,27 +25,6 @@ import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
  * @author lredor
  */
 public class DTableContentProvider implements ITreeContentProvider {
-
-    private Session session;
-
-    /** The EMF adapter */
-    private DTableContentAdapter dTableContentAdapter;
-
-    /**
-     * Creates a table content provider.
-     * 
-     * @param session
-     *            the {@link Session} on which this
-     *            {@link DTableContentProvider} is used.
-     * @param dTableViewerManager
-     *            the {@link DTableViewerManager} managing the DTableViewer for
-     *            which provide a content
-     */
-    public DTableContentProvider(Session session, DTableViewerManager dTableViewerManager) {
-        this.session = session;
-        this.dTableContentAdapter = new DTableContentAdapter(dTableViewerManager);
-        this.session.getTransactionalEditingDomain().addResourceSetListener(dTableContentAdapter);
-    }
 
     /**
      * Returns the elements to display in the viewer (only the visible one).
@@ -141,7 +117,5 @@ public class DTableContentProvider implements ITreeContentProvider {
      * @see org.eclipse.jface.viewers.IContentProvider#dispose()
      */
     public void dispose() {
-        session.getTransactionalEditingDomain().removeResourceSetListener(dTableContentAdapter);
-        dTableContentAdapter = null;
     }
 }

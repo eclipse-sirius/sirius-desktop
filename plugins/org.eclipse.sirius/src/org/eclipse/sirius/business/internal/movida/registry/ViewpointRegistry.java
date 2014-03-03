@@ -653,7 +653,7 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
      * {@inheritDoc}
      */
     public Viewpoint getViewpoint(RepresentationDescription description) {
-        return new RepresentationDescriptionQuery(description).getParentSirius();
+        return new RepresentationDescriptionQuery(description).getParentViewpoint();
     }
 
     /**

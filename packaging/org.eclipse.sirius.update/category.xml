@@ -69,6 +69,12 @@
    <feature id="org.eclipse.sirius.samples.source" version="0.0.0">
       <category name="Sirius.SDK"/>
    </feature>
+   <feature id="org.eclipse.sirius.tests" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.tests.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
    <feature id="org.eclipse.nebula.widgets.paperclips.feature" version="0.0.0">
       <category name="Sirius.Dependencies"/>
    </feature>

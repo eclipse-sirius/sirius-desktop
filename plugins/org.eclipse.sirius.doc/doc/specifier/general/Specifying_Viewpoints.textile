@@ -104,7 +104,7 @@ h3(#interpreted_expressions). Interpreted Expressions
 
 Many _VSM_ elements require you to specify _Interpreted Expressions_ to configure them. These can be queries to select elements (as in mappings for example), or more general expressions to compute value (like the text to use for the elements' labels).
 
-You can easily identify _Interpreted Expressions_ by their yellow background in the _Prorperties_ sheet of an element. For all such field, you can use any of the supported languages to write the expression. Refer to the "queries documentation":Writing_Queries.html for more details.
+You can easily identify _Interpreted Expressions_ by their yellow background in the _Properties_ sheet of an element. For all such field, you can use any of the supported languages to write the expression. Refer to the "queries documentation":Writing_Queries.html for more details.
 
 !images/interpreted_expressions.png!
 

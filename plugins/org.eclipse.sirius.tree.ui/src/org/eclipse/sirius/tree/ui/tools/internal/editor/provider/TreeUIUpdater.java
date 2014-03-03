@@ -17,12 +17,8 @@ import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.ui.PlatformUI;
-
-import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
@@ -32,15 +28,16 @@ import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeViewer;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeViewerManager;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.ui.PlatformUI;
+
+import com.google.common.collect.Iterables;
 
 /**
- * This class is an EMF Adapter which listen change in the model to update a
- * {@link org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeViewer}.
+ * A class responsible to update the UI part of a {@link DTree}.
  * 
  * @author nlepine
- * 
  */
-public class DTreeContentAdapter extends ResourceSetListenerImpl {
+public class TreeUIUpdater extends ResourceSetListenerImpl {
 
     private DTreeViewerManager dTreeViewerManager;
 
@@ -53,9 +50,10 @@ public class DTreeContentAdapter extends ResourceSetListenerImpl {
      * @param dTreeViewerManager
      *            the structured viewer to update
      */
-    public DTreeContentAdapter(DTreeViewerManager dTreeViewerManager) {
+    public TreeUIUpdater(DTreeViewerManager dTreeViewerManager) {
         this.dTreeViewerManager = dTreeViewerManager;
         this.dTreeViewer = (DTreeViewer) dTreeViewerManager.getTreeViewer();
+        dTreeViewerManager.getEditingDomain().addResourceSetListener(this);
     }
 
     /**
@@ -285,6 +283,15 @@ public class DTreeContentAdapter extends ResourceSetListenerImpl {
             if (!isCustom(notif)) {
                 notifyChanged(notif);
             }
+        }
+    }
+
+    /**
+     * Dispose this {@link TreeUIUpdater}.
+     */
+    public void dispose() {
+        if (getTarget() != null) {
+            getTarget().removeResourceSetListener(this);
         }
     }
 }

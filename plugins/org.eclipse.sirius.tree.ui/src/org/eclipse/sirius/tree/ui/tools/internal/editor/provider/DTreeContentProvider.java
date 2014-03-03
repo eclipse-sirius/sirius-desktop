@@ -14,12 +14,9 @@ import java.util.List;
 
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
-
-import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.DTreeItemContainer;
-import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeViewerManager;
 
 /**
  * The provider for the content of the tree.
@@ -27,25 +24,6 @@ import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeViewerManager;
  * @author nlepine
  */
 public class DTreeContentProvider implements ITreeContentProvider {
-
-    private Session session;
-
-    /** The EMF adapter */
-    private DTreeContentAdapter dTreeContentAdapter;
-
-    /**
-     * Creates a tree with the given session.
-     * 
-     * @param session
-     *            the session.
-     * @param dTreeViewerManager
-     *            the manager of the structured viewer to update
-     */
-    public DTreeContentProvider(final Session session, DTreeViewerManager dTreeViewerManager) {
-        this.session = session;
-        this.dTreeContentAdapter = new DTreeContentAdapter(dTreeViewerManager);
-        this.session.getTransactionalEditingDomain().addResourceSetListener(dTreeContentAdapter);
-    }
 
     /**
      * Returns the elements to display in the viewer (only the visible one).
@@ -132,8 +110,6 @@ public class DTreeContentProvider implements ITreeContentProvider {
      * @see org.eclipse.jface.viewers.IContentProvider#dispose()
      */
     public void dispose() {
-        session.getTransactionalEditingDomain().removeResourceSetListener(dTreeContentAdapter);
-        dTreeContentAdapter = null;
     }
 
 }

@@ -19,6 +19,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
 import com.google.common.collect.Iterators;
+import com.google.common.collect.Sets;
 
 /**
  * This adapter might be used as a marker to retrieve a {@link Session} from any
@@ -68,7 +69,7 @@ public class SessionTransientAttachment extends AdapterImpl {
      * @return an optional SessionTransientAttachment.
      */
     public static Option<SessionTransientAttachment> getSessionTransientAttachement(Notifier eObj) {
-        Iterator<SessionTransientAttachment> it = Iterators.filter(eObj.eAdapters().iterator(), SessionTransientAttachment.class);
+        Iterator<SessionTransientAttachment> it = Iterators.filter(Sets.newLinkedHashSet(eObj.eAdapters()).iterator(), SessionTransientAttachment.class);
         if (it.hasNext()) {
             return Options.newSome(it.next());
         }

@@ -14,6 +14,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionEventBroker;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.business.internal.helper.display.VisibilityPropagatorAdapter;
 
 /**
  * Register all gmf diagram updaters.
@@ -37,8 +38,10 @@ public class GMFDiagramUpdater {
     private ComputedStyleDescriptionCacheCleaner computedStyleDescriptionCacheCleaner;
 
     private EdgeStyleUpdater edgeStyleUpdater;
-    
+
     private SessionEventBroker eventBroker;
+
+    private VisibilityPropagatorAdapter visibilityPropagator;
 
     /**
      * Default constructor.
@@ -60,6 +63,7 @@ public class GMFDiagramUpdater {
         gmfBoundsUpdater = new GMFBoundsUpdater(domain, dDiagram);
         visibilityUpdater = new VisibilityUpdater(domain, dDiagram);
         dDiagramHiddenElementsUpdater = new DDiagramHiddenElementsUpdater(domain, dDiagram);
+        visibilityPropagator = new VisibilityPropagatorAdapter(session, dDiagram);
 
         computedStyleDescriptionCacheCleaner = new ComputedStyleDescriptionCacheCleaner(domain, dDiagram);
         edgeStyleUpdater = new EdgeStyleUpdater(domain, session.getSemanticCrossReferencer());
@@ -69,6 +73,7 @@ public class GMFDiagramUpdater {
      * Dispose the gmf diagram updaters.
      */
     public void dispose() {
+        visibilityPropagator.dispose();
         notationVisibilityUpdater.dispose();
         viewFontChangesRefactorer.dispose();
         gmfBoundsUpdater.dispose();
