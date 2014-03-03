@@ -117,16 +117,12 @@ public class EdgeCreationCommandBuilder extends AbstractCommandBuilder {
             EObject sourceTarget = ((DSemanticDecorator) source).getTarget();
             EObject targetTarget = ((DSemanticDecorator) target).getTarget();
 
-            DDiagram diagram = SiriusUtil.findDiagram(source);
-
-            if (diagram == null) {
-                diagram = SiriusUtil.findDiagram(target);
-            }
+            Option<DDiagram> diagram = getDDiagram();
 
             EObject container = null;
 
-            if (diagram instanceof DSemanticDecorator) {
-                container = ((DSemanticDecorator) diagram).getTarget();
+            if (diagram.some() && diagram.get() instanceof DSemanticDecorator) {
+                container = ((DSemanticDecorator) diagram.get()).getTarget();
             } else {
                 SiriusPlugin.getDefault().warning(ISiriusMessages.IS_NOT_A_DECORATE_SEMANTIC_ELEMENT, null);
             }
@@ -138,7 +134,7 @@ public class EdgeCreationCommandBuilder extends AbstractCommandBuilder {
             interpreter.setVariable(IInterpreterSiriusVariables.SOURCE_VIEW_PRE, source);
             interpreter.setVariable(IInterpreterSiriusVariables.TARGET_VIEW_PRE, target);
             interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER, container);
-            interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diagram);
+            interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diagram.get());
 
             valid = evaluatePrecondition(interpreter, sourceTarget, tool.getPrecondition());
 
@@ -147,7 +143,7 @@ public class EdgeCreationCommandBuilder extends AbstractCommandBuilder {
             interpreter.unSetVariable(IInterpreterSiriusVariables.SOURCE_VIEW_PRE);
             interpreter.unSetVariable(IInterpreterSiriusVariables.TARGET_VIEW_PRE);
             interpreter.unSetVariable(IInterpreterSiriusVariables.CONTAINER);
-            interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diagram);
+            interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diagram.get());
         }
 
         return valid;
@@ -253,6 +249,18 @@ public class EdgeCreationCommandBuilder extends AbstractCommandBuilder {
      */
     protected String getEnclosingCommandLabel() {
         return new IdentifiedElementQuery(tool).getLabel();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Option<DDiagram> getDDiagram() {
+        Option<DDiagram> diagram = new EObjectQuery(source).getParentDiagram();
+        if (!diagram.some()) {
+            diagram = new EObjectQuery(target).getParentDiagram();
+        }
+        return diagram;
     }
 
 }

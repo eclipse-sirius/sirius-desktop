@@ -77,7 +77,7 @@ public class DoubleClickCommandBuilder extends AbstractCommandBuilder {
         IInterpreter interpreter = InterpreterUtil.getInterpreter(dDiagramElement);
         cmd.getTasks().add(new InitInterpreterVariablesTask(variables, interpreter, uiCallback));
 
-        Option<DDiagram> parentDiagram = new EObjectQuery(dDiagramElement).getParentDiagram();
+        Option<DDiagram> parentDiagram = getDDiagram();
         if (tool.getInitialOperation() != null && tool.getInitialOperation().getFirstModelOperations() != null) {
             cmd.getTasks().add(taskHelper.buildTaskFromModelOperation(parentDiagram.get(), dDiagramElement, tool.getInitialOperation().getFirstModelOperations()));
             addPostOperationTasks(cmd, interpreter);
@@ -105,5 +105,13 @@ public class DoubleClickCommandBuilder extends AbstractCommandBuilder {
      */
     protected String getEnclosingCommandLabel() {
         return new IdentifiedElementQuery(tool).getLabel();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Option<DDiagram> getDDiagram() {
+        return new EObjectQuery(dDiagramElement).getParentDiagram();
     }
 }

@@ -98,8 +98,8 @@ public class ReconnectionCommandBuilder extends AbstractCommandBuilder {
         Command result = UnexecutableCommand.INSTANCE;
 
         if (permissionAuthority.canEditInstance(reconnectionSource) && permissionAuthority.canEditInstance(reconnectionTarget) && permissionAuthority.canEditInstance(edge)
-        // Layouting mode on diagrams
-        // if the ddiagram is in LayoutingMode, we do not allow reconnection
+                // Layouting mode on diagrams
+                // if the ddiagram is in LayoutingMode, we do not allow reconnection
                 && !isInLayoutingModeDiagram(edge)) {
 
             final EObject semanticSource = SiriusUtil.getNearestDecorateSemanticElement(reconnectionSource).getTarget();
@@ -120,7 +120,7 @@ public class ReconnectionCommandBuilder extends AbstractCommandBuilder {
             final DCommand cmd = createEnclosingCommand();
             cmd.getTasks().add(createOtherEndVariableTask);
             cmd.getTasks().add(new InitInterpreterVariablesTask(variables, InterpreterUtil.getInterpreter(reconnectionSource), uiCallback));
-            Option<DDiagram> parentDiagram = new EObjectQuery(edge).getParentDiagram();
+            Option<DDiagram> parentDiagram = getDDiagram();
             if (tool.getInitialOperation() != null && tool.getInitialOperation().getFirstModelOperations() != null) {
                 cmd.getTasks().add(taskHelper.buildTaskFromModelOperation(parentDiagram.get(), edge.getTarget(), tool.getInitialOperation().getFirstModelOperations()));
             }
@@ -280,5 +280,13 @@ public class ReconnectionCommandBuilder extends AbstractCommandBuilder {
      */
     protected String getEnclosingCommandLabel() {
         return new IdentifiedElementQuery(tool).getLabel();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Option<DDiagram> getDDiagram() {
+        return new EObjectQuery(edge).getParentDiagram();
     }
 }

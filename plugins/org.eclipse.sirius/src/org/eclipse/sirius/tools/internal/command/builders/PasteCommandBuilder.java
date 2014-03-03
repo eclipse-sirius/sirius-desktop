@@ -27,6 +27,7 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -100,7 +101,7 @@ public class PasteCommandBuilder extends AbstractCommandBuilder {
 
                 // Launch a refresh to build the GMF elements according
                 // to the DDiagram modifications
-                final DDiagram diagram = pasteTarget instanceof DDiagram ? (DDiagram) pasteTarget : ((DDiagramElement) pasteTarget).getParentDiagram();
+                final DDiagram diagram = getDDiagram().get();
                 this.addRefreshTask(diagram, cmd, tool);
                 return cmd;
             }
@@ -186,5 +187,19 @@ public class PasteCommandBuilder extends AbstractCommandBuilder {
      */
     protected String getEnclosingCommandLabel() {
         return tool != null ? new IdentifiedElementQuery(tool).getLabel() : "Paste";
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Option<DDiagram> getDDiagram() {
+        DDiagram diagram = null;
+        if (pasteTarget instanceof DDiagram) {
+            diagram = (DDiagram) pasteTarget;
+        } else {
+            diagram = ((DDiagramElement) pasteTarget).getParentDiagram();
+        }
+        return Options.newSome(diagram);
     }
 }

@@ -72,7 +72,7 @@ public class DirectEditCommandBuilder extends AbstractCommandBuilder {
             IInterpreter interpreter = InterpreterUtil.getInterpreter(labeled);
             result.getTasks().add(new InitInterpreterFromParsedVariableTask(interpreter, messageFormat, newValue));
 
-            Option<DDiagram> parentDiagram = new EObjectQuery(labeled).getParentDiagram();
+            Option<DDiagram> parentDiagram = getDDiagram();
             if (parentDiagram.some() && labeled instanceof DSemanticDecorator && ((DSemanticDecorator) labeled).getTarget() != null && directEditTool.getInitialOperation() != null) {
                 final ICommandTask operations = taskHelper.buildTaskFromModelOperation(parentDiagram.get(), ((DSemanticDecorator) labeled).getTarget(), directEditTool.getInitialOperation()
                         .getFirstModelOperations());
@@ -105,4 +105,11 @@ public class DirectEditCommandBuilder extends AbstractCommandBuilder {
         return EDIT_LABEL;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Option<DDiagram> getDDiagram() {
+        return new EObjectQuery(labeled).getParentDiagram();
+    }
 }

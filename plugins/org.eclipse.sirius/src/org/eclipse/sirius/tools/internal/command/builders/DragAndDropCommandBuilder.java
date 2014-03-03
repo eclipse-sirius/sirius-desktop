@@ -39,6 +39,7 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.tools.api.ui.resource.ISiriusMessages;
@@ -121,8 +122,8 @@ public class DragAndDropCommandBuilder extends AbstractCommandBuilder {
      */
     public Command buildCommand() {
         if (permissionAuthority.canEditInstance(container) && permissionAuthority.canEditInstance(dragSemantic ? droppedElement : diagramElement)
-        // Layouting mode on diagrams
-        // if the ddiagram is in LayoutingMode, we do not allow DnD
+                // Layouting mode on diagrams
+                // if the ddiagram is in LayoutingMode, we do not allow DnD
                 && !isInLayoutingModeDiagram(diagramElement)) {
             if (container instanceof DSemanticDecorator) {
                 final EObject semanticContainer = ((DSemanticDecorator) container).getTarget();
@@ -148,7 +149,7 @@ public class DragAndDropCommandBuilder extends AbstractCommandBuilder {
                         cleanAfterDropinCommand(cmd, oldContainer);
                         // Launch a refresh to build the GMF elements according
                         // to the DDiagram modifications
-                        final DDiagram diagram = container instanceof DDiagram ? (DDiagram) container : ((DDiagramElement) container).getParentDiagram();
+                        final DDiagram diagram = getDDiagram().get();
                         this.addRefreshTask(diagram, cmd, tool);
                         return cmd;
                     }
@@ -252,5 +253,19 @@ public class DragAndDropCommandBuilder extends AbstractCommandBuilder {
      */
     protected String getEnclosingCommandLabel() {
         return new IdentifiedElementQuery(tool).getLabel();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Option<DDiagram> getDDiagram() {
+        DDiagram diag = null;
+        if (container instanceof DDiagram) {
+            diag = (DDiagram) container;
+        } else {
+            diag = ((DDiagramElement) container).getParentDiagram();
+        }
+        return Options.newSome(diag);
     }
 }

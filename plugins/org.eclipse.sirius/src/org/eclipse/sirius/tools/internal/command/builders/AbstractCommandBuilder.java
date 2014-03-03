@@ -13,7 +13,6 @@ package org.eclipse.sirius.tools.internal.command.builders;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
@@ -30,6 +29,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
@@ -227,8 +227,8 @@ public abstract class AbstractCommandBuilder implements CommandBuilder {
      *            .
      */
     protected void addDiagramVariable(final DCommand command, final EObject containerView, final IInterpreter interpreter) {
-        final DDiagram diag = SiriusUtil.findDiagram(containerView);
-        if (diag != null) {
+        final Option<DDiagram> diag = getDDiagram();
+        if (diag.some()) {
             command.getTasks().add(new AbstractCommandTask() {
 
                 public String getLabel() {
@@ -236,7 +236,7 @@ public abstract class AbstractCommandBuilder implements CommandBuilder {
                 }
 
                 public void execute() {
-                    interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diag);
+                    interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diag.get());
                 }
             });
         }
@@ -285,4 +285,11 @@ public abstract class AbstractCommandBuilder implements CommandBuilder {
      * @return the label of the enclosing command.
      */
     protected abstract String getEnclosingCommandLabel();
+
+    /**
+     * Return the current diagram.
+     * 
+     * @return the current DDiagram.
+     */
+    protected abstract Option<DDiagram> getDDiagram();
 }

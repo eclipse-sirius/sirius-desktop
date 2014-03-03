@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -188,16 +189,10 @@ public final class SiriusUtil {
      *            the {@link EObject} instance
      * @return the first parent of element which is an instance of
      *         {@link DDiagram} or null if not found
+     * @deprecated Use {@link EObjectQuery#getParentDiagram()} instead.
      */
     public static DDiagram findDiagram(final EObject element) {
-        EObject current = element;
-        while (current != null) {
-            if (current instanceof DDiagram) {
-                return (DDiagram) current;
-            }
-            current = current.eContainer();
-        }
-        return null;
+        return new EObjectQuery(element).getParentDiagram().get();
     }
 
     /**

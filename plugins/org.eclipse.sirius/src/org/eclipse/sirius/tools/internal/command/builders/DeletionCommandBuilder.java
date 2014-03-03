@@ -40,6 +40,7 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.NoNullResourceCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
@@ -418,5 +419,16 @@ public class DeletionCommandBuilder extends AbstractCommandBuilder {
             }
         }
         return commandLabel;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Option<DDiagram> getDDiagram() {
+        if (diagram == null && diagramElement != null) {
+            return Options.newSome(diagramElement.getParentDiagram());
+        }
+        return Options.newSome(diagram);
     }
 }

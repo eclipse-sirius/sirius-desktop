@@ -27,7 +27,6 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
@@ -77,7 +76,7 @@ public class SelectionWizardCommandBuilder extends AbstractCommandBuilder {
         final DCommand result = createEnclosingCommand();
         final IInterpreter interpreter = InterpreterUtil.getInterpreter(containerView);
         if (checkGenericToolPrecondition(interpreter)) {
-            Option<DRepresentation> representation = new EObjectQuery(containerView).getRepresentation();
+            Option<DDiagram> representation = getDDiagram();
             if (representation.some() && tool.getInitialOperation() != null && tool.getInitialOperation().getFirstModelOperations() != null) {
                 addPreOperationTasks(result, interpreter);
 
@@ -165,5 +164,13 @@ public class SelectionWizardCommandBuilder extends AbstractCommandBuilder {
      */
     protected String getEnclosingCommandLabel() {
         return new IdentifiedElementQuery(tool).getLabel();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Option<DDiagram> getDDiagram() {
+        return new EObjectQuery(containerView).getParentDiagram();
     }
 }
