@@ -130,7 +130,7 @@
   &lt;extension
          point="org.eclipse.ui.views.properties.tabbed.propertySections"&gt;
       &lt;propertySections
-            contributorId="org.eclipse.sirius.diagram"&gt;
+            contributorId="org.eclipse.sirius.diagram.ui"&gt;
          &lt;propertySection
                class="org.eclipse.emf.samples.conference.parts.forms.ConferencePropertiesEditionPartForm"
                filter="org.eclipse.emf.samples.conference.providers.ConferencePropertiesEditionProvider$EditionFilter"
@@ -203,7 +203,7 @@
 		<pre><code>   &lt;extension
          point="org.eclipse.ui.views.properties.tabbed.propertyTabs"&gt;
       &lt;propertyTabs
-            contributorId="org.eclipse.sirius.diagram"&gt;
+            contributorId="org.eclipse.sirius.diagram.ui"&gt;
          &lt;propertyTab
                label="Base"
                category="semantic &amp;amp; extension"
@@ -222,7 +222,7 @@
 		<pre><code>   &lt;extension
          point="org.eclipse.ui.views.properties.tabbed.propertyTabs"&gt;
       &lt;propertyTabs
-            contributorId="org.eclipse.sirius.diagram"&gt;
+            contributorId="org.eclipse.sirius.diagram.ui"&gt;
          &lt;propertyTab
                afterTab="top"
                label="Base"
@@ -296,7 +296,7 @@
 			<code>plugin.xml</code> file, the tabs declaration should appear like this (notice that in this sample we use viewpoints categories in order to make our tabs appear at first as described in the previous paragraph, which is not mandatory) :
 		</p>
 		<pre><code>&lt;extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs"&gt;
-   &lt;propertyTabs contributorId="org.eclipse.sirius.diagram"&gt;
+   &lt;propertyTabs contributorId="org.eclipse.sirius.diagram.ui"&gt;
       &lt;!-- 
           Other declarations : Base, ... 
         --&gt;
@@ -316,7 +316,7 @@
 		<p></p>
 		<p>And the property sections declaration should appear like this :</p>
 		<pre><code>&lt;extension point="org.eclipse.ui.views.properties.tabbed.propertySections"&gt;
-   &lt;propertySections contributorId="org.eclipse.sirius.diagram"&gt;
+   &lt;propertySections contributorId="org.eclipse.sirius.diagram.ui"&gt;
       &lt;!-- 
           Other declarations : Base, ... 
         --&gt;
@@ -416,7 +416,7 @@
 		<pre><code>&lt;extension
       point="org.eclipse.sirius.eef.adapters.sectionFilters"&gt;
    &lt;propertyContributorFilters
-         contributorId="org.eclipse.sirius.diagram"&gt;
+         contributorId="org.eclipse.sirius.diagram.ui"&gt;
       &lt;sectionFilter
             id="property.section.semantic"&gt;
       &lt;/sectionFilter&gt;

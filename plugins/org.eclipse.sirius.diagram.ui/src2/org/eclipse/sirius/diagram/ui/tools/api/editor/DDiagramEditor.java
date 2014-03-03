@@ -31,7 +31,7 @@ public interface DDiagramEditor extends IAdaptable, DialectEditor {
     /**
      * The editor ID.
      */
-    String EDITOR_ID = "org.eclipse.sirius.diagram.part.SiriusDiagramEditorID"; //$NON-NLS-1$
+    String EDITOR_ID = "org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID"; //$NON-NLS-1$
 
     /**
      * Get the permission authority.

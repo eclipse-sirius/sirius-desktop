@@ -549,7 +549,7 @@
    <extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <?gmfgen generated="false"?>
       <propertyContributor
-            contributorId="org.eclipse.sirius.diagram"
+            contributorId="org.eclipse.sirius.diagram.ui"
             labelProvider="org.eclipse.sirius.diagram.ui.internal.sheet.SiriusSheetLabelProvider">
          <propertyCategory
                category="semantic &amp; extension">
@@ -583,7 +583,7 @@
 
    <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
       <?gmfgen generated="false"?>
-      <propertyTabs contributorId="org.eclipse.sirius.diagram">
+      <propertyTabs contributorId="org.eclipse.sirius.diagram.ui">
           <propertyTab
                 category="semantic &amp; extension"
                 id="property.tab.semantic.extension"
@@ -648,7 +648,7 @@
 
    <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
       <?gmfgen generated="false"?>
-      <propertySections contributorId="org.eclipse.sirius.diagram">
+      <propertySections contributorId="org.eclipse.sirius.diagram.ui">
          <propertySection id="property.section.ConnectorAppearancePropertySection"
             filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.ConnectionEditPartPropertySectionFilter"
             class="org.eclipse.sirius.diagram.ui.tools.internal.properties.DiagramConnectionAppearancePropertySection"
@@ -1006,63 +1006,63 @@
        <propertyTester
            id="org.eclipse.sirius.diagram.ui.DModelElementPropertyTester"
            type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"
-           namespace="org.eclipse.sirius.diagram"
+           namespace="org.eclipse.sirius.diagram.ui"
            properties="isDModelElement"
            class="org.eclipse.sirius.diagram.ui.tools.internal.testers.DModelElementPropertyTester">
        </propertyTester>
        <propertyTester
            id="org.eclipse.sirius.diagram.ui.DDiagramPropertyTester"
            type="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"
-           namespace="org.eclipse.sirius.diagram"
+           namespace="org.eclipse.sirius.diagram.ui"
            properties="isDDiagram"
            class="org.eclipse.sirius.diagram.ui.tools.internal.testers.DModelElementPropertyTester">
        </propertyTester>
        <propertyTester
              class="org.eclipse.sirius.diagram.ui.tools.internal.testers.DModelElementPropertyTester"
              id="org.eclipse.sirius.diagram.ui.DDiagramElementPropertyTester"
-             namespace="org.eclipse.sirius.diagram"
+             namespace="org.eclipse.sirius.diagram.ui"
              properties="isDDiagramElement"
              type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
        </propertyTester>
        <propertyTester
            id="org.eclipse.sirius.diagram.ui.HiddenElementsTester"
            type="org.eclipse.jface.viewers.ISelection"
-           namespace="org.eclipse.sirius.diagram"
+           namespace="org.eclipse.sirius.diagram.ui"
            properties="diagramHasHiddenElements"
            class="org.eclipse.sirius.diagram.ui.tools.internal.testers.HiddenElementsTester">
        </propertyTester>
        <propertyTester
            id="org.eclipse.sirius.diagram.ui.DModelElementWithLabelPropertyTester"
            type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"
-           namespace="org.eclipse.sirius.diagram"
+           namespace="org.eclipse.sirius.diagram.ui"
            properties="isDModelElementWithLabel"
            class="org.eclipse.sirius.diagram.ui.tools.internal.testers.DModelElementWithLabelPropertyTester">
        </propertyTester>
        <propertyTester
            id="org.eclipse.sirius.diagram.ui.HiddenLabelTester"
            type="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart"
-           namespace="org.eclipse.sirius.diagram"
+           namespace="org.eclipse.sirius.diagram.ui"
            properties="isLabelHidden"
            class="org.eclipse.sirius.diagram.ui.tools.internal.testers.HiddenLabelTester">
        </propertyTester>
        <propertyTester
            id="org.eclipse.sirius.diagram.ui.CanHideLabelTester"
            type="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart"
-           namespace="org.eclipse.sirius.diagram"
+           namespace="org.eclipse.sirius.diagram.ui"
            properties="canHideLabel"
            class="org.eclipse.sirius.diagram.ui.tools.internal.testers.CanHideLabelTester">
        </propertyTester>
        <propertyTester
              class="org.eclipse.sirius.diagram.ui.tools.internal.testers.CanHideElementTester"
              id="org.eclipse.sirius.diagram.ui.CanHideElementTester"
-             namespace="org.eclipse.sirius.diagram"
+             namespace="org.eclipse.sirius.diagram.ui"
              properties="canHideElement"
              type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
        </propertyTester>
         <propertyTester
            id="org.eclipse.sirius.diagram.ui.CanDeleteFromDiagram"
            type="java.lang.Object"
-           namespace="org.eclipse.sirius.diagram"
+           namespace="org.eclipse.sirius.diagram.ui"
            properties="canDeleteFromDiagram"
            class="org.eclipse.sirius.diagram.ui.tools.internal.testers.CanDeleteFromDiagramTester">
        </propertyTester>

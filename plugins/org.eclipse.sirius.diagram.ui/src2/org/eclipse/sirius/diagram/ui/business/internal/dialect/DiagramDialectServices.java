@@ -443,15 +443,20 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
     }
 
     /**
-     * 
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.business.api.dialect.DialectServices#handles(org.eclipse.sirius.viewpoint.description.RepresentationDescription)
      */
+    @Override
     public boolean handles(RepresentationDescription representationDescription) {
         return (representationDescription instanceof DiagramDescription) || (representationDescription instanceof DiagramImportDescription);
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.business.api.dialect.DialectServices#handles(org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription)
+     */
     @Override
     public boolean handles(RepresentationExtensionDescription representationExtensionDescription) {
         return representationExtensionDescription instanceof DiagramExtensionDescription;

@@ -15,6 +15,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.BundleContext;
 
 /**
  * @was-generated NOT
@@ -44,6 +45,21 @@ public class SiriusDiagramEditorPlugin extends AbstractUIPlugin {
      * @was-generated
      */
     public SiriusDiagramEditorPlugin() {
+    }
+
+    /**
+     * @was-generated
+     */
+    public void start(BundleContext context) throws Exception {
+        super.start(context);
+        instance = this;
+    }
+
+    /**
+     * @was-generated
+     */
+    public void stop(BundleContext context) throws Exception {
+        instance = null;
     }
 
     /**

@@ -53,6 +53,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.NotationViewIDs;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.NoteEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SquareEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.WorkspaceImageEditPart;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.Style;
 
 /**
@@ -67,7 +68,7 @@ public class SiriusVisualIDRegistry {
     /**
      * @was-generated
      */
-    private static final String DEBUG_KEY = SiriusDiagramEditorPlugin.getInstance().getBundle().getSymbolicName() + "/debug/visualID"; //$NON-NLS-1$
+    private static final String DEBUG_KEY = DiagramUIPlugin.getPlugin().getSymbolicName() + "/debug/visualID"; //$NON-NLS-1$
 
     /**
      * @was-generated

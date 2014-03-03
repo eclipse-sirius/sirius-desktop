@@ -138,7 +138,7 @@ public class ArrangeAllWithAutoSize {
      *         preferences.
      */
     public static boolean isEnabled() {
-        return SiriusDiagramEditorPlugin.getInstance().getPluginPreferences().getBoolean(SiriusDiagramInternalPreferencesKeys.PREF_AUTOSIZE_ON_ARRANGE.name());
+        return SiriusDiagramEditorPlugin.getInstance().getPreferenceStore().getBoolean(SiriusDiagramInternalPreferencesKeys.PREF_AUTOSIZE_ON_ARRANGE.name());
     }
 
     /**

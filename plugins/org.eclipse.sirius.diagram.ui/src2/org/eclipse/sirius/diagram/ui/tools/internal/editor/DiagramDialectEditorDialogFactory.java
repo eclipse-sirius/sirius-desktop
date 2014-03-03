@@ -53,7 +53,7 @@ public class DiagramDialectEditorDialogFactory extends DefaultDialectEditorDialo
 
         // Step 1 : if the preference says that messages
         // should not be displayed using pop ups
-        if (!SiriusDiagramEditorPlugin.getInstance().getPluginPreferences().getBoolean(SiriusDiagramPreferencesKeys.PREF_DIAGRAM_SHOULD_DISPLAY_MESSAGES_USING_POP_UPS.name())) {
+        if (!SiriusDiagramEditorPlugin.getInstance().getPreferenceStore().getBoolean(SiriusDiagramPreferencesKeys.PREF_DIAGRAM_SHOULD_DISPLAY_MESSAGES_USING_POP_UPS.name())) {
             // We try to log it as a notification figure
             if (this.editor.getDiagramEditPart() != null) {
                 RootEditPart rootEditPart = this.editor.getDiagramEditPart().getRoot();

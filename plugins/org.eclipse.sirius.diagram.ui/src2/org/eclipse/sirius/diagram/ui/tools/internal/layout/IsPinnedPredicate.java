@@ -83,7 +83,7 @@ public class IsPinnedPredicate implements Predicate<IGraphicalEditPart> {
         if (connectedToPinnedElement) {
             result = true;
         } else {
-            if (!SiriusDiagramEditorPlugin.getInstance().getPluginPreferences().getBoolean(SiriusDiagramPreferencesKeys.PREF_MOVE_NOTES_DURING_LATOUT.name())) {
+            if (!SiriusDiagramEditorPlugin.getInstance().getPreferenceStore().getBoolean(SiriusDiagramPreferencesKeys.PREF_MOVE_NOTES_DURING_LATOUT.name())) {
                 result = true;
             }
         }

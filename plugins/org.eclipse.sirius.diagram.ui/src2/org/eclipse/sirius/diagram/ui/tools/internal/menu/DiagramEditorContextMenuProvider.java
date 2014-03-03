@@ -155,8 +155,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
      *         SiriusDiagramPreferencesKeys.PREF_CLIPBOOARD_SUPPORT_ONLY_ON_NOTE
      */
     private boolean clipboardSupportOnlyOnNote() {
-        boolean clipboardSupportOnlyOnNote = SiriusDiagramEditorPlugin.getInstance().getPreferenceStore().getBoolean(SiriusDiagramPreferencesKeys.PREF_CLIPBOOARD_SUPPORT_ONLY_ON_NOTE.name());
-        return clipboardSupportOnlyOnNote;
+        return SiriusDiagramEditorPlugin.getInstance().getPreferenceStore().getBoolean(SiriusDiagramPreferencesKeys.PREF_CLIPBOOARD_SUPPORT_ONLY_ON_NOTE.name());
     }
 
     /**

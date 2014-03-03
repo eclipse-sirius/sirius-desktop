@@ -91,7 +91,7 @@ public class SiriusDiagramEditor extends DiagramDocumentEditor implements IGotoM
      */
     @Override
     public String getContributorId() {
-        return SiriusDiagramEditorPlugin.ID;
+        return DiagramUIPlugin.Implementation.ID;
     }
 
     /**

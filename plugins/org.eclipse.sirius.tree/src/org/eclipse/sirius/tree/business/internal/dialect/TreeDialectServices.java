@@ -244,15 +244,20 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
     }
 
     /**
-     * 
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.business.api.dialect.DialectServices#handles(org.eclipse.sirius.viewpoint.description.RepresentationDescription)
      */
+    @Override
     public boolean handles(RepresentationDescription representationDescription) {
         return representationDescription instanceof TreeDescription;
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.business.api.dialect.DialectServices#handles(org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription)
+     */
     @Override
     public boolean handles(RepresentationExtensionDescription representationExtensionDescription) {
         return false;
