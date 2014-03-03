@@ -19,15 +19,15 @@ import java.util.Set;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.internal.componentization.mappings.AbstractSessionCloseListener;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsRegistry;
+import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
  * The implementation of {@link DiagramDescriptionMappingsRegistry}.
- * 
+ *
  * @author mchauvin
  * @since 0.9.0
  */
@@ -39,10 +39,7 @@ public final class DiagramDescriptionMappingsRegistryImpl implements DiagramDesc
      * Avoid instantiation.
      */
     private DiagramDescriptionMappingsRegistryImpl() {
-        SessionManager.INSTANCE.addSessionsListener(new AbstractSessionCloseListener() {
-            /**
-             * {@inheritDoc}
-             */
+        SessionManager.INSTANCE.addSessionsListener(new SessionManagerListener.Stub() {
             @Override
             public void notifyRemoveSession(final Session removedSession) {
                 // In normal condition this clean was already done during the
@@ -50,25 +47,16 @@ public final class DiagramDescriptionMappingsRegistryImpl implements DiagramDesc
                 cleanDiagramDescriptionMappingsManagers(removedSession);
             }
 
-            /**
-             * {@inheritDoc}
-             */
             @Override
             public void viewpointDeselected(final Viewpoint deselectedSirius) {
                 computeMappings();
             }
 
-            /**
-             * {@inheritDoc}
-             */
             @Override
             public void viewpointSelected(final Viewpoint selectedSirius) {
                 computeMappings();
             }
 
-            /**
-             * {@inheritDoc}
-             */
             @Override
             public void notify(Session closingSession, int notification) {
                 if (notification == SessionListener.CLOSING) {
@@ -80,7 +68,7 @@ public final class DiagramDescriptionMappingsRegistryImpl implements DiagramDesc
 
     /**
      * Create a new instance.
-     * 
+     *
      * @return a new instance
      */
     public static DiagramDescriptionMappingsRegistry init() {
@@ -89,7 +77,7 @@ public final class DiagramDescriptionMappingsRegistryImpl implements DiagramDesc
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsRegistry#getDiagramDescriptionMappingsManager(org.eclipse.sirius.business.api.session.Session,
      *      org.eclipse.sirius.viewpoint.description.DiagramDescription)
      */
@@ -111,7 +99,7 @@ public final class DiagramDescriptionMappingsRegistryImpl implements DiagramDesc
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsRegistry#computeMappings()
      */
     public void computeMappings() {
@@ -158,7 +146,7 @@ public final class DiagramDescriptionMappingsRegistryImpl implements DiagramDesc
 
     /**
      * A class to serve as key in the map
-     * 
+     *
      * @author mchauvin
      */
     private class Key {
@@ -174,7 +162,7 @@ public final class DiagramDescriptionMappingsRegistryImpl implements DiagramDesc
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see java.lang.Object#hashCode()
          */
         @Override
@@ -189,7 +177,7 @@ public final class DiagramDescriptionMappingsRegistryImpl implements DiagramDesc
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see java.lang.Object#equals(java.lang.Object)
          */
         // CHECKSTYLE:OFF

@@ -22,7 +22,7 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.internal.componentization.mappings.AbstractSessionCloseListener;
+import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
@@ -37,7 +37,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
  * Registry of diagram mappings.
- * 
+ *
  * @author mchauvin
  * @since 0.9.0
  */
@@ -50,7 +50,7 @@ public final class DiagramMappingsManagerRegistryImpl extends AdapterImpl implem
      */
     private DiagramMappingsManagerRegistryImpl() {
         diagramMappingsManagers = new HashMap<DDiagram, DiagramMappingsManager>();
-        SessionManager.INSTANCE.addSessionsListener(new AbstractSessionCloseListener() {
+        SessionManager.INSTANCE.addSessionsListener(new SessionManagerListener.Stub() {
             @Override
             public void notifyRemoveSession(final Session removedSession) {
                 // In normal condition this clean was already done during the
@@ -58,12 +58,6 @@ public final class DiagramMappingsManagerRegistryImpl extends AdapterImpl implem
                 cleanDiagramMappingsManagers(removedSession);
             }
 
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.eclipse.sirius.business.api.session.SessionManagerListener.Stub#notify(org.eclipse.sirius.business.api.session.Session,
-             *      int)
-             */
             @Override
             public void notify(Session closingSession, int notification) {
                 if (notification == SessionListener.CLOSING) {
@@ -75,7 +69,7 @@ public final class DiagramMappingsManagerRegistryImpl extends AdapterImpl implem
 
     /**
      * Construct a new instance.
-     * 
+     *
      * @return a new instance
      */
     public static DiagramMappingsManagerRegistry init() {
@@ -84,7 +78,7 @@ public final class DiagramMappingsManagerRegistryImpl extends AdapterImpl implem
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry#getDiagramMappingsManager(Session,
      *      DDiagram)
      */
@@ -113,7 +107,7 @@ public final class DiagramMappingsManagerRegistryImpl extends AdapterImpl implem
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.emf.common.notify.impl.AdapterImpl#notifyChanged(org.eclipse.emf.common.notify.Notification)
      */
     @Override
@@ -173,7 +167,7 @@ public final class DiagramMappingsManagerRegistryImpl extends AdapterImpl implem
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry#removeDiagramMappingsManagers(org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager)
      */
     public void removeDiagramMappingsManagers(DiagramMappingsManager manager) {
