@@ -112,7 +112,7 @@ public class DeleteHookIdPropertySection extends AbstractTextPropertySection {
      * {@inheritDoc}
      */
     protected String getPropertyDescription() {
-        return "An id of an extension to fr.obeo.dsl.viewpoint.deleteHook extension point. It may be used to add a confirmation dialog before deletion";
+        return "An id of an extension to  org.eclipse.sirius.deleteHook extension point. It may be used to add a confirmation dialog before deletion";
     }
 
     // Start of user code user operations

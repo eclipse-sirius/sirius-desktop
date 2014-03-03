@@ -862,7 +862,7 @@
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/DoubleClickDescription/initialOperation"/>
         </genClasses>
         <genClasses ecoreClass="diagram.ecore#//description/tool/DeleteHook">
-          <genFeatures createChild="false" propertyCategory="General" propertyDescription="An id of an extension to fr.obeo.dsl.viewpoint.deleteHook extension point. It may be used to add a confirmation dialog before deletion"
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="An id of an extension to org.eclipse.sirius.deleteHook extension point. It may be used to add a confirmation dialog before deletion"
               ecoreFeature="ecore:EAttribute diagram.ecore#//description/tool/DeleteHook/id"/>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/DeleteHook/parameters"/>
         </genClasses>

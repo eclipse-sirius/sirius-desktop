@@ -112,7 +112,7 @@ public class ExternalJavaActionIdPropertySection extends AbstractTextPropertySec
      * {@inheritDoc}
      */
     protected String getPropertyDescription() {
-        return "The id of the extension using \"fr.obeo.dsl.viewpoint.externalJavaAction\" extension point to define this action.";
+        return "The id of the extension using \"org.eclipse.sirius.externalJavaAction\" extension point to define this action.";
     }
 
     // Start of user code user operations

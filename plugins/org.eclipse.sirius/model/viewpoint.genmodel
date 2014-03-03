@@ -545,7 +545,7 @@
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/OperationAction/initialOperation"/>
         </genClasses>
         <genClasses ecoreClass="viewpoint.ecore#//description/tool/ExternalJavaAction">
-          <genFeatures createChild="false" propertyCategory="General" propertyDescription="The id of the extension using \&quot;fr.obeo.dsl.viewpoint.externalJavaAction\&quot; extension point to define this action."
+          <genFeatures createChild="false" propertyCategory="General" propertyDescription="The id of the extension using \&quot;org.eclipse.sirius.externalJavaAction\&quot; extension point to define this action."
               ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/ExternalJavaAction/id"/>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ExternalJavaAction/parameters"/>
         </genClasses>
