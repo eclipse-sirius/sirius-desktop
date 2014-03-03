@@ -100,7 +100,6 @@ import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.utils.ClassUtils;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.utils.SWTUtils;
-import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
@@ -434,21 +433,6 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                 + SWTBotPreferences.SCREENSHOT_FORMAT.toLowerCase();
         new File("screenshots").mkdirs(); //$NON-NLS-1$
         SWTUtils.captureScreenshot(fileName);
-    }
-
-    /**
-     * Open error log.
-     * 
-     * @deprecated Use {@link #openErrorLogViewByAPI()} instead. This method is
-     *             faster.
-     */
-    @Deprecated
-    protected void openErrorLogView() {
-        bot.menu("Window").menu("Show View").menu("Other...").click();
-        bot.waitUntil(Conditions.shellIsActive("Show View"));
-        bot.text().setText("err");
-        bot.tree().expandNode("General").select("Error Log");
-        bot.button("OK").click();
     }
 
     /**
