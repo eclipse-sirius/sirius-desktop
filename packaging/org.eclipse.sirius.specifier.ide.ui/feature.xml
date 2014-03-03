@@ -27,6 +27,7 @@
   </license>
 
   <plugin id="org.eclipse.sirius.editor" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+  <plugin id="org.eclipse.sirius.editor.diagram" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.eclipse.sirius.editor.sequence" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.eclipse.sirius.editor.table" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.eclipse.sirius.editor.tree" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
