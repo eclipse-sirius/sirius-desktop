@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
-import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -180,19 +179,6 @@ public final class SiriusUtil {
             current = current.eContainer();
         }
         return null;
-    }
-
-    /**
-     * Find parent {@link DDiagram} from a {@link EObject}.
-     * 
-     * @param element
-     *            the {@link EObject} instance
-     * @return the first parent of element which is an instance of
-     *         {@link DDiagram} or null if not found
-     * @deprecated Use {@link EObjectQuery#getParentDiagram()} instead.
-     */
-    public static DDiagram findDiagram(final EObject element) {
-        return new EObjectQuery(element).getParentDiagram().get();
     }
 
     /**

@@ -40,6 +40,7 @@ import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -54,6 +55,7 @@ import org.eclipse.sirius.diagram.ImagesPath;
 import org.eclipse.sirius.diagram.tools.internal.commands.NavigateToCommand;
 import org.eclipse.sirius.diagram.tools.internal.commands.emf.EMFCommandFactoryUI;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -157,7 +159,12 @@ public class NavigateToMenuContribution implements IContributionItemProvider {
         navigate.add(createGroup);
         for (RepresentationNavigationDescription navDesc : element.getMapping().getNavigationDescriptions()) {
             final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(element.getTarget());
-            interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, SiriusUtil.findDiagram(element));
+            Option<DDiagram> diagram = new EObjectQuery(element).getParentDiagram();
+            if (diagram.some()) {
+                interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diagram.get());
+            } else {
+                interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, null);
+            }
 
             final Map<AbstractVariable, Object> variables = new HashMap<AbstractVariable, Object>();
             variables.put(navDesc.getContainerVariable(), element.getTarget());

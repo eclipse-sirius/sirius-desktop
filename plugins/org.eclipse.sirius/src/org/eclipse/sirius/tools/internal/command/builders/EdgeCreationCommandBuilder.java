@@ -17,7 +17,6 @@ import java.util.Map;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
@@ -159,13 +158,10 @@ public class EdgeCreationCommandBuilder extends AbstractCommandBuilder {
 
         if (tool.getConnectionStartPrecondition() != null && !StringUtil.isEmpty(tool.getConnectionStartPrecondition().trim())) {
             EObject sourceTarget = ((DSemanticDecorator) source).getTarget();
-
-            DDiagram diagram = SiriusUtil.findDiagram(source);
-
+            Option<DDiagram> diagram = new EObjectQuery(source).getParentDiagram();
             EObject container = null;
-
-            if (diagram instanceof DSemanticDecorator) {
-                container = ((DSemanticDecorator) diagram).getTarget();
+            if (diagram.some() && diagram.get() instanceof DSemanticDecorator) {
+                container = ((DSemanticDecorator) diagram.get()).getTarget();
             } else {
                 SiriusPlugin.getDefault().warning(ISiriusMessages.IS_NOT_A_DECORATE_SEMANTIC_ELEMENT, null);
             }

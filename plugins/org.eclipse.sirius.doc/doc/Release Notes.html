@@ -119,6 +119,10 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>org.eclipse.sirius.business.api.helper.task.AbstractDeleteDRepresentationElementTask.DSEMANTICDECORATOR_REFERENCE_T0_IGNORE_PREDICATE</code> has been removed, the internal predicate 
 				<code>DanglingRefRemovalTrigger.DSEMANTICDECORATOR_REFERENCE_T0_IGNORE_PREDICATE</code> is used instead.
 			</li>
+			<li>The 
+				<code>org.eclipse.sirius.business.api.helper.SiriusUtil.findDiagram(EObject)</code> method has been removed. Use the equivalent 
+				<code>new org.eclipse.sirius.business.api.query.EObjectQuery(element).getParentDiagram()</code> instead.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
 			<code>org.eclipse.sirius.ui</code>

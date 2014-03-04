@@ -25,7 +25,6 @@ import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
@@ -310,16 +309,15 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
     }
 
     private void addDiagramVariable(final DCommand command, final EObject containerView, final IInterpreter interpreter) {
-        final DDiagram diag = SiriusUtil.findDiagram(containerView);
-        if (diag != null) {
+        final Option<DDiagram> diag = new EObjectQuery(containerView).getParentDiagram();
+        if (diag.some()) {
             command.getTasks().add(new AbstractCommandTask() {
-
                 public String getLabel() {
                     return "Add diagram variable";
                 }
 
                 public void execute() {
-                    interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diag);
+                    interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diag.get());
                 }
             });
         }

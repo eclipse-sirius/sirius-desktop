@@ -19,15 +19,17 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.sirius.business.api.helper.SelectionDescriptionHelper;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.common.ui.tools.api.selection.EObjectSelectionWizard;
 import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -106,7 +108,12 @@ public class SelectionWizardCommand extends AbstractSelectionWizardCommand {
 
             // variables
             interpreter.setVariable(tool.getContainerView().getName(), containerView);
-            interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, SiriusUtil.findDiagram(containerView));
+            Option<DDiagram> diagram = new EObjectQuery(containerView).getParentDiagram();
+            if (diagram.some()) {
+                interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diagram.get());
+            } else {
+                interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, null);
+            }
             interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER_VIEW, containerView);
             interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER, container);
 
