@@ -1,12 +1,12 @@
 /******************************************************************************
- * Copyright (c) 2002, 2008 IBM Corporation and others.
+ * Copyright (c) 2002, 2014 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    IBM Corporation - initial API and implementation 
+ *    IBM Corporation - initial API and implementation
  ****************************************************************************/
 
 package org.eclipse.sirius.diagram.ui.tools.internal.actions.layout;
@@ -27,11 +27,11 @@ import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCo
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.data.extension.LayoutDataManagerRegistry;
 import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
@@ -59,9 +59,9 @@ public class CopyLayoutAction extends AbstractCopyPasteLayoutAction {
         setId(ActionIds.COPY_LAYOUT);
         setToolTipText("Copy the layout of the selected diagram elements");
 
-        setImageDescriptor(SiriusEditPlugin.INSTANCE.getImageDescriptor("obj16/copyLayout.gif"));
-        setDisabledImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor("obj16/copyLayoutDisabled.gif"));
-        setHoverImageDescriptor(SiriusEditPlugin.INSTANCE.getImageDescriptor("obj16/copyLayout.gif"));
+        setImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.COPY_LAYOUT_ICON));
+        setDisabledImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.COPY_LAYOUT_DISABLED_ICON));
+        setHoverImageDescriptor(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.COPY_LAYOUT_ICON));
     }
 
     /**

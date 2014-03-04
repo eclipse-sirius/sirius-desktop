@@ -30,7 +30,7 @@
       <editor
          id="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID"
          name="%editorName"
-         icon="icons/obj16/DDiagram.gif"
+         icon="icons/DDiagram.gif"
          extensions="ddiagram"
          default="true"
          class="org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl"

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -428,7 +428,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
          */
         public static ImageDescriptor getDecoratedImageDescriptor(final ImageDescriptor imageDescriptor, String decoratorPath) {
             if (imageDescriptor != null) {
-                return getOverlayedDescriptor(SiriusEditPlugin.getPlugin().getImage(imageDescriptor), decoratorPath);
+                return getOverlayedDescriptor(DiagramUIPlugin.getPlugin().getImage(imageDescriptor), decoratorPath);
             }
             return imageDescriptor;
         }
@@ -450,7 +450,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
         public static Image getDecoratedImage(final ImageDescriptor imageDescriptor, String decoratorPath) {
             Image image = DiagramUIPlugin.getPlugin().getImage(imageDescriptor);
             if (image != null) {
-                return SiriusEditPlugin.getPlugin().getImage(getOverlayedDescriptor(image, decoratorPath));
+                return DiagramUIPlugin.getPlugin().getImage(getOverlayedDescriptor(image, decoratorPath));
             }
             return image;
         }
@@ -462,13 +462,13 @@ public final class DiagramUIPlugin extends EMFPlugin {
          */
         public static Image getDecoratedImage(Image image, String decoratorPath) {
             if (image != null) {
-                return SiriusEditPlugin.getPlugin().getImage(getOverlayedDescriptor(image, decoratorPath));
+                return DiagramUIPlugin.getPlugin().getImage(getOverlayedDescriptor(image, decoratorPath));
             }
             return image;
         }
 
         private static ImageDescriptor getOverlayedDescriptor(final Image baseImage, final String decoratorPath) {
-            final ImageDescriptor decoratorDescriptor = SiriusEditPlugin.Implementation.getBundledImageDescriptor(decoratorPath);
+            final ImageDescriptor decoratorDescriptor = DiagramUIPlugin.Implementation.getBundledImageDescriptor(decoratorPath);
             return new DecorationOverlayIcon(baseImage, decoratorDescriptor, IDecoration.BOTTOM_RIGHT);
         }
 

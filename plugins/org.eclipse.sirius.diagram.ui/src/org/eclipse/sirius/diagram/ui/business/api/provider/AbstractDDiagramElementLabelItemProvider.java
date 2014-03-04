@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,9 +22,9 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * A custom ItemProvider to add the label of DDiagramElement. This ItemProvider
@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
  * 
  */
 public abstract class AbstractDDiagramElementLabelItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
-        IItemLabelProvider, IItemPropertySource {
+IItemLabelProvider, IItemPropertySource {
 
     /**
      * Label to compute when name of the DDiagramElement associated to this
@@ -121,7 +121,7 @@ public abstract class AbstractDDiagramElementLabelItemProvider extends ItemProvi
      */
     @Override
     public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("obj16/label_obj"));
+        return overlayImage(object, getResourceLocator().getImage("label_obj"));
     }
 
     /**
@@ -131,7 +131,7 @@ public abstract class AbstractDDiagramElementLabelItemProvider extends ItemProvi
      */
     @Override
     protected ResourceLocator getResourceLocator() {
-        return SiriusEditPlugin.INSTANCE;
+        return DiagramUIPlugin.INSTANCE;
     }
 
     /**

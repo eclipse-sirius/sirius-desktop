@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,8 +33,8 @@ import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptor
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
@@ -68,11 +68,7 @@ public class LayoutingModeSwitchingAction extends DiagramAction {
     /**
      * Icon used in the tabbar to allow end-user to activate layouting mode.
      */
-    private static final ImageDescriptor ACTIVATE_LAYOUTING_MODE_IMAGE_DESCRIPTOR = SiriusEditPlugin.INSTANCE.getImageDescriptor("obj16/layoutingMode_activate.png");
-
-    // private static final ImageDescriptor
-    // ACTIVATE_LAYOUTING_MODE_IMAGE_DESCRIPTOR =
-    // DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/layoutingMode_activate.png");
+    private static final ImageDescriptor ACTIVATE_LAYOUTING_MODE_IMAGE_DESCRIPTOR = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.LAYOUTING_MODE_ACTIVE_ICON);
 
     /**
      * The Image used in the editor's status line to indicate that LayoutingMode

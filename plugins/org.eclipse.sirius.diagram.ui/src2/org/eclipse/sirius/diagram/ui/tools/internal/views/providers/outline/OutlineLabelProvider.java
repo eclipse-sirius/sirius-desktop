@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,6 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Image;
 
@@ -85,7 +84,7 @@ public class OutlineLabelProvider extends LabelProvider implements IFontProvider
 
         Option<DDiagramElement> optionTarget = element.getDiagramElementTarget();
         if (optionTarget.some() && new DDiagramElementQuery(optionTarget.get()).isLabelHidden()) {
-            final ImageDescriptor decoratorDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(SiriusEditPlugin.INSTANCE.getImage(DiagramImagesPath.HIDDEN_DECORATOR));
+            final ImageDescriptor decoratorDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(DiagramUIPlugin.INSTANCE.getImage(DiagramImagesPath.HIDDEN_DECORATOR));
             final DecorationOverlayIcon finalDescriptor = new DecorationOverlayIcon(result, decoratorDescriptor, IDecoration.TOP_LEFT);
             result = DiagramUIPlugin.getPlugin().getImage(finalDescriptor);
         }
@@ -114,7 +113,7 @@ public class OutlineLabelProvider extends LabelProvider implements IFontProvider
                 result = DiagramUIPlugin.getPlugin().getImage(descriptor);
 
                 if (element instanceof DEdge) {
-                    final ImageDescriptor decoratorDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(SiriusEditPlugin.INSTANCE.getImage(DiagramImagesPath.VIEW_EDGE_DECORATOR));
+                    final ImageDescriptor decoratorDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(DiagramUIPlugin.INSTANCE.getImage(DiagramImagesPath.VIEW_EDGE_DECORATOR));
                     final DecorationOverlayIcon finalDescriptor = new DecorationOverlayIcon(result, decoratorDescriptor, IDecoration.BOTTOM_LEFT);
                     result = DiagramUIPlugin.getPlugin().getImage(finalDescriptor);
 
@@ -122,7 +121,7 @@ public class OutlineLabelProvider extends LabelProvider implements IFontProvider
                 }
 
                 if (element instanceof DDiagramElement && new DDiagramElementQuery((DDiagramElement) element).isHidden()) {
-                    final ImageDescriptor decoratorDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(SiriusEditPlugin.INSTANCE.getImage(DiagramImagesPath.HIDDEN_DECORATOR));
+                    final ImageDescriptor decoratorDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(DiagramUIPlugin.INSTANCE.getImage(DiagramImagesPath.HIDDEN_DECORATOR));
                     final DecorationOverlayIcon finalDescriptor = new DecorationOverlayIcon(result, decoratorDescriptor, IDecoration.TOP_LEFT);
                     result = DiagramUIPlugin.getPlugin().getImage(finalDescriptor);
 
@@ -134,7 +133,7 @@ public class OutlineLabelProvider extends LabelProvider implements IFontProvider
 
     private Image computeFoldDecorator(final Image baseImage, final DEdge edge) {
         if (new DDiagramElementQuery(edge).isFolded()) {
-            final ImageDescriptor foldDescription = ExtendedImageRegistry.getInstance().getImageDescriptor(SiriusEditPlugin.INSTANCE.getImage(DiagramImagesPath.FOLD_DECORATOR));
+            final ImageDescriptor foldDescription = ExtendedImageRegistry.getInstance().getImageDescriptor(DiagramUIPlugin.INSTANCE.getImage(DiagramImagesPath.FOLD_DECORATOR));
             final DecorationOverlayIcon finalFoldDescriptor = new DecorationOverlayIcon(baseImage, foldDescription, IDecoration.TOP_RIGHT);
             return DiagramUIPlugin.getPlugin().getImage(finalFoldDescriptor);
         }

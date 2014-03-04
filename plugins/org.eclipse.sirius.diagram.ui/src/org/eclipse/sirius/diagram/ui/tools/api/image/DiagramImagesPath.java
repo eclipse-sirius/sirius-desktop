@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -119,6 +119,12 @@ public interface DiagramImagesPath {
     /** expand all icon. */
     String EXPAND_ALL_ICON = "icons/expandall.gif"; //$NON-NLS-1$
 
+    /** pin elements icon. */
+    String LAYOUTING_MODE_ACTIVE_ICON = "icons/layoutingMode_activate.png"; //$NON-NLS-1$
+
+    /** path of the image displayed thanks to this decorator. */
+    String HAS_DIAG_IMG = "icons/HasLink.gif"; //$NON-NLS-1$
+
     /** The default directory path. */
     String DEFAULT_PATH = "full/"; //$NON-NLS-1$
 
@@ -133,9 +139,6 @@ public interface DiagramImagesPath {
 
     /** The fold decorator path. */
     String FOLD_DECORATOR = DEFAULT_DECORATOR_PATH + "fold"; //$NON-NLS-1$
-
-    /** path of the image displayed thanks to this decorator. */
-    String HAS_DIAG_IMG = "obj16/HasLink.gif"; //$NON-NLS-1$
 
     /** path to image not found. */
     String IMAGE_NOT_FOUND = "/org.eclipse.sirius.common.ui/images/NotFound.png";

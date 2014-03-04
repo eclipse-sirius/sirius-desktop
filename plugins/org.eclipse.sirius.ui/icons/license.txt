@@ -167,11 +167,5 @@ icons/obj16/SessionResourceFile.gif  org.eclipse.osgi - org.eclipse.osgi/bundles
 icons/obj16/SiriusFile.gif - org.eclipse.osgi - org.eclipse.osgi/bundles/385/1/.cp/icons/full/obj16/fileType_filter.gif
 icons/obj16/ViewpointSpecificationFile.gif - org.eclipse.osgi - org.eclipse.osgi/bundles/385/1/.cp/icons/full/obj16/fileType_filter.gif
 icons/obj16/ViewpointSpecificationProject.gif - org.eclipse.ui - org.eclipse.ui/icons/obj16/prj_obj.gif
-icons/obj16/copyLayout - org.eclipse.ui - org.eclipse.ui/icons/etool16/copy_edit.gif
-icons/obj16/copyLayoutDisabled - org.eclipse.ui - org.eclipse.ui/icons/etool16/copy_edit.gif
-icons/obj16/label_obj.gif - org.eclipse.sirius.ui - org.eclipse.sirius.ui/icons/obj16/label_obj.gif
-icons/obj16/layoutingMode_activate.png - icons/full/obj16/CompositeLayout.gif - org.eclipse.sirius.ui/icons/full/obj16/CompositeLayout.gif
-icons/obj16/pasteLayout - org.eclipse.ui - org.eclipse.ui/icons/etool16/paste_edit.gif
-icons/obj16/pasteLayoutDisabled - org.eclipse.ui - org.eclipse.ui/icons/etool16/paste_edit.gif
 icons/wizban/banner_aird.gif - org.eclipse.jst.j2ee - org.eclipse.jst.j2ee/icons/wizban/resource_ref_wiz
 icons/wizban/banner_modeling_project - org.eclipse.cdt.debug.ui - org.eclipse.cdt.debug.ui/icons/wizban/add_prj_source_location_wiz

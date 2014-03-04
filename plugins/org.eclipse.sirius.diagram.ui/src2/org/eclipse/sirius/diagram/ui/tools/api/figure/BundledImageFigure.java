@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.XYLayout;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.BundledImage;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.color.ColorManager;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.swt.graphics.Color;
@@ -33,6 +33,7 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
      * The stroke tag in the SVG file.
      */
     private static final String SVG_STROKE = "stroke";
+
     /**
      * The fill tag in the SVG file.
      */
@@ -234,7 +235,7 @@ public class BundledImageFigure extends AbstractCachedSVGFigure {
      */
     private static String getImageFileURI(String shapeName) {
         final String path = new StringBuffer(IMAGE_DIR).append(shapeName).append(IMAGE_EXT).toString();
-        String pluginId = SiriusDiagramEditorPlugin.getInstance().getBundle().getSymbolicName();
+        String pluginId = DiagramUIPlugin.getPlugin().getSymbolicName();
         return "platform:/plugin/" + pluginId + "/" + path;
     }
 

@@ -144,9 +144,6 @@ icons/layers.gif - org.eclipse.ui - org.eclipse.ui.cheatsheets/icons/elcl16/coll
 icons/linkSourceNavigatorGroup.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/obj16/packagefolder_obj.gif
 icons/linkTargetNavigatorGroup.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/obj16/packagefolder_obj.gif
 icons/linksNavigatorGroup.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/obj16/packagefolder_obj.gif
-icons/obj16/DDiagram.gif - org.topcased.modeler.uml - org.topcased.modeler.uml/icons/diagram/ClassDiagram.gif
-icons/obj16/HasLink.gif - org.topcased.modeler.uml - org.topcased.modeler.uml/icons/diagram/ClassDiagram.gif
-icons/obj16/Layer.gif - org.eclipse.ui - org.eclipse.ui.cheatsheets/icons/elcl16/collapseall.gif
 icons/outgoingLinksNavigatorGroup.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/obj16/packagefolder_obj.gif
 icons/outline.gif - org.eclipse.ui.cheatsheets - org.eclipse.ui.cheatsheets/icons/elcl16/tree_explorer.gif
 icons/overview.gif - org.eclipse.gmf.runtime.diagram.ui - org.eclipse.gmf.runtime.diagram.ui/icons/overview.gif
@@ -158,3 +155,12 @@ icons/underline.gif - org.eclipse.sirius.diagram - org.eclipse.sirius.diagram/ic
 icons/undo_edit.gif - org.eclipse.ui - org.eclipse.ui/icons/full/etool16/undo_edit.gif
 icons/unpin.gif - Custom-made from icons/pin.gif and the red cross from org.eclipse.jdt.junit/icons/full/obj16/testerr.gif
 icons/wizban/NewSiriusWizard.gif - org.eclipse.uml2.diagram.deploy - org.eclipse.uml2.diagram.deploy/icons/wizban/NewUMLWizard.gif
+icons/DDiagram.gif - org.topcased.modeler.uml - org.topcased.modeler.uml/icons/diagram/ClassDiagram.gif
+icons/HasLink.gif - org.topcased.modeler.uml - org.topcased.modeler.uml/icons/diagram/ClassDiagram.gif
+icons/Layer.gif - org.eclipse.ui - org.eclipse.ui.cheatsheets/icons/elcl16/collapseall.gif
+icons/copyLayout.gif - org.eclipse.ui - org.eclipse.ui/icons/etool16/copy_edit.gif
+icons/copyLayoutDisabled.gif - org.eclipse.ui - org.eclipse.ui/icons/etool16/copy_edit.gif
+icons/label_obj.gif - org.eclipse.sirius.diagram.ui - org.eclipse.sirius.diagram.ui/icons/obj16/label_obj.gif
+icons/layoutingMode_activate.png - icons/full/obj16/CompositeLayout.gif - org.eclipse.sirius.ui/icons/full/obj16/CompositeLayout.gif
+icons/pasteLayout.gif - org.eclipse.ui - org.eclipse.ui/icons/etool16/paste_edit.gif
+icons/pasteLayoutDisabled.gif - org.eclipse.ui - org.eclipse.ui/icons/etool16/paste_edit.gif

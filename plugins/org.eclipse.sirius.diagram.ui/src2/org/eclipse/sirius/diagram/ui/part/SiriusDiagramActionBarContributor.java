@@ -109,10 +109,10 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
      */
     protected void buildActions() {
         super.buildActions();
-        final RetargetAction action = new LaunchBehaviorToolAction(LAUNCH_BEHAVIOR, DiagramUIPlugin.getPlugin().getBundledImageDescriptor(DiagramImagesPath.GO_IMG));
+        final RetargetAction action = new LaunchBehaviorToolAction(LAUNCH_BEHAVIOR, DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.GO_IMG));
         addAction(action);
 
-        final RetargetAction refresh = new RefreshDiagramAction(REFRESH_DIAGRAM, DiagramUIPlugin.getPlugin().getBundledImageDescriptor(DiagramImagesPath.REFRESH_IMG));
+        final RetargetAction refresh = new RefreshDiagramAction(REFRESH_DIAGRAM, DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.REFRESH_IMG));
         addAction(refresh);
 
         final Action setStyleToWorkspaceImageAction = new SetStyleToWorkspaceImageAction();
@@ -128,11 +128,11 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
         addAction(revealElementsAction);
 
         final RetargetAction deleteFromDiagramAction = new DeleteFromDiagramAction(DiagramUIMessages.DiagramEditor_Delete_from_Diagram, DELETE_FROM_DIAGRAM, ActionIds.ACTION_DELETE_FROM_DIAGRAM,
-                DiagramUIPlugin.getPlugin().getBundledImageDescriptor(DiagramImagesPath.DELETE_FROM_DIAGRAM_ICON));
+                DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETE_FROM_DIAGRAM_ICON));
         addAction(deleteFromDiagramAction);
 
         final IAction deleteFromModelAction = new DeleteFromModelAction(DiagramUIMessages.DiagramEditor_Delete_from_Model, DELETE_FROM_MODEL, ActionIds.ACTION_DELETE_FROM_MODEL, DiagramUIPlugin
-                .getPlugin().getBundledImageDescriptor(DiagramImagesPath.DELETE_FROM_MODEL_ICON));
+                .Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETE_FROM_MODEL_ICON));
         addAction(deleteFromModelAction);
 
         final IAction copyLayoutAction = new CopyLayoutAction(getPage());
