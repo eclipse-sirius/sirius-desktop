@@ -10,10 +10,15 @@
  */
 package org.eclipse.sirius.tests.swtbot.support.api.condition;
 
+import java.util.Collection;
+
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
+import org.eclipse.swtbot.swt.finder.waits.ICondition;
+
+import com.google.common.collect.Lists;
 
 /**
  * Class to check if the edit part is selected.
@@ -30,7 +35,7 @@ public class CheckSelectedCondition extends DefaultCondition {
     /**
      * the edit part to wait for its selection.
      */
-    private IGraphicalEditPart editPartToWaitForSelection;
+    private EditPart editPartToWaitForSelection;
 
     /**
      * the class of the edit part to wait for its selection.
@@ -40,7 +45,7 @@ public class CheckSelectedCondition extends DefaultCondition {
     /**
      * Current editor.
      */
-    private final SWTBotDesignerEditor editor;
+    private SWTBotDesignerEditor editor;
 
     /**
      * Constructor.
@@ -49,7 +54,7 @@ public class CheckSelectedCondition extends DefaultCondition {
      *            the current editor.
      * 
      * @param labelOfEditPart
-     *            name of the edit part to wait for its selection.
+     *            name of the edit part to wait for selection.
      */
     public CheckSelectedCondition(SWTBotDesignerEditor editor, String labelOfEditPart) {
         this.editor = editor;
@@ -61,11 +66,10 @@ public class CheckSelectedCondition extends DefaultCondition {
      * 
      * @param editor
      *            the current editor.
-     * 
      * @param editPartToWaitForSelection
-     *            the edit part to wait for its selection.
+     *            the edit part to wait for selection.
      */
-    public CheckSelectedCondition(SWTBotDesignerEditor editor, IGraphicalEditPart editPartToWaitForSelection) {
+    public CheckSelectedCondition(SWTBotDesignerEditor editor, EditPart editPartToWaitForSelection) {
         this.editor = editor;
         this.editPartToWaitForSelection = editPartToWaitForSelection;
     }
@@ -75,12 +79,10 @@ public class CheckSelectedCondition extends DefaultCondition {
      * 
      * @param editor
      *            the current editor.
-     * 
      * @param labelOfEditPart
-     *            name of the edit part to wait for its selection.
-     * 
+     *            name of the edit part to wait for selection.
      * @param editPartClass
-     *            edit part class to wait for its selection.
+     *            edit part class to wait for selection.
      */
     public CheckSelectedCondition(SWTBotDesignerEditor editor, String labelOfEditPart, Class<? extends IGraphicalEditPart> editPartClass) {
         this.editor = editor;
@@ -91,28 +93,79 @@ public class CheckSelectedCondition extends DefaultCondition {
     /**
      * {@inheritDoc}
      */
-    @Override
     public boolean test() throws Exception {
-        boolean result = false;
-        if (editPartToWaitForSelection != null) {
-            result = editPartToWaitForSelection.getSelected() == EditPart.SELECTED_PRIMARY || editPartToWaitForSelection.getSelected() == EditPart.SELECTED;
-        } else if (labelOfEditPart != null) {
+        return isSelected(getEditPart());
+    }
+
+    private boolean isSelected(EditPart part) {
+        return part != null && part.getSelected() == EditPart.SELECTED_PRIMARY || part.getSelected() == EditPart.SELECTED;
+    }
+
+    private EditPart getEditPart() {
+        EditPart part = editPartToWaitForSelection;
+        if (part == null) {
             if (editPartClass != null) {
-                result = editor.getEditPart(labelOfEditPart, editPartClass).part().getSelected() == EditPart.SELECTED_PRIMARY
-                        || editor.getEditPart(labelOfEditPart, editPartClass).part().getSelected() == EditPart.SELECTED;
+                part = editor.getEditPart(labelOfEditPart, editPartClass).part();
             } else {
-                result = editor.getEditPart(labelOfEditPart).part().getParent().getSelected() == EditPart.SELECTED_PRIMARY
-                        || editor.getEditPart(labelOfEditPart).part().getParent().getSelected() == EditPart.SELECTED;
+                part = editor.getEditPart(labelOfEditPart).part().getParent();
             }
         }
-        return result;
+        return part;
     }
 
     /**
      * {@inheritDoc}
      */
-    @Override
     public String getFailureMessage() {
         return "The edit part has not been selected";
+    }
+
+    /**
+     * Create a compound condition to check the selection of the given parts.
+     * 
+     * @param editor
+     *            the current editor.
+     * @param editPartLabels
+     *            names of the edit parts to wait for selection.
+     * @return a compound condition to check the selection of the given parts.
+     */
+    public static CompoundCondition multipleSelection(SWTBotDesignerEditor editor, String... editPartLabels) {
+        return multipleSelection(editor, null, editPartLabels);
+    }
+
+    /**
+     * Create a compound condition to check the selection of the given parts.
+     * 
+     * @param editor
+     *            the current editor.
+     * @param editPartLabels
+     *            names of the edit parts to wait for selection.
+     * @param editPartClass
+     *            edit part class to wait for selection.
+     * @return a compound condition to check the selection of the given parts.
+     */
+    public static CompoundCondition multipleSelection(SWTBotDesignerEditor editor, Class<? extends IGraphicalEditPart> editPartClass, String... editPartLabels) {
+        Collection<ICondition> conditions = Lists.newArrayList();
+        for (String label : editPartLabels) {
+            conditions.add(new CheckSelectedCondition(editor, label, editPartClass));
+        }
+        return new CompoundCondition(conditions);
+    }
+
+    /**
+     * Create a compound condition to check the selection of the given parts.
+     * 
+     * @param editor
+     *            the current editor.
+     * @param editPartsToWaitForSelection
+     *            the edit part to wait for selection.
+     * @return a compound condition to check the selection of the given parts.
+     */
+    public static CompoundCondition multipleSelection(SWTBotDesignerEditor editor, EditPart... editPartsToWaitForSelection) {
+        Collection<ICondition> conditions = Lists.newArrayList();
+        for (EditPart part : editPartsToWaitForSelection) {
+            conditions.add(new CheckSelectedCondition(editor, part));
+        }
+        return new CompoundCondition(conditions);
     }
 }

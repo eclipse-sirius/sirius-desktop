@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,6 @@ import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
-import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.internal.helper.task.CreateContainerTask;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -27,9 +26,9 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 
 /**
@@ -114,9 +113,6 @@ public class ContainerCreationCommandBuilder extends AbstractCommandBuilder {
                 final DCommand result = buildCreateNodeCommandFromTool(model, diagram);
                 result.getTasks().add(new CreateContainerTask(tool, result, modelAccessor, diagram));
                 addRefreshTask(diagram, result, tool);
-                if (diagram instanceof DSemanticDecorator) {
-                    addRemoveDanglingReferencesTask(result, tool, (DSemanticDecorator) diagram);
-                }
                 return result;
             }
         }
@@ -130,7 +126,6 @@ public class ContainerCreationCommandBuilder extends AbstractCommandBuilder {
                 final DCommand result = buildCreateNodeCommandFromTool(model, nodeContainer);
                 result.getTasks().add(new CreateContainerTask(tool, result, modelAccessor, nodeContainer));
                 addRefreshTask(nodeContainer, result, tool);
-                addRemoveDanglingReferencesTask(result, tool, nodeContainer);
                 return result;
             }
         }
@@ -146,7 +141,8 @@ public class ContainerCreationCommandBuilder extends AbstractCommandBuilder {
      *            the semantic container.
      * @param container
      *            the container
-     * @return a command able to create the {@link org.eclipse.sirius.viewpoint.DNode}.
+     * @return a command able to create the
+     *         {@link org.eclipse.sirius.viewpoint.DNode}.
      */
     protected DCommand buildCreateNodeCommandFromTool(final EObject semanticContainer, final EObject container) {
         final DCommand result = createEnclosingCommand();
@@ -158,8 +154,7 @@ public class ContainerCreationCommandBuilder extends AbstractCommandBuilder {
             variables.put(tool.getViewVariable(), container);
             addDiagramVariable(result, container, interpreter);
 
-            Option<DDiagram> parentDiagram = new EObjectQuery(container).getParentDiagram();
-            result.getTasks().add(taskHelper.buildTaskFromModelOperation(parentDiagram.get(), semanticContainer, tool.getInitialOperation().getFirstModelOperations()));
+            result.getTasks().add(taskHelper.buildTaskFromModelOperation(diagram, semanticContainer, tool.getInitialOperation().getFirstModelOperations()));
         } else {
             result.getTasks().add(UnexecutableTask.INSTANCE);
         }
@@ -171,5 +166,13 @@ public class ContainerCreationCommandBuilder extends AbstractCommandBuilder {
      */
     protected String getEnclosingCommandLabel() {
         return new IdentifiedElementQuery(tool).getLabel();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Option<DDiagram> getDDiagram() {
+        return Options.newSome(diagram);
     }
 }

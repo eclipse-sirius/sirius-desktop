@@ -65,24 +65,41 @@ public class RemoveDanglingReferences extends RecordingCommand {
 
     /**
      * Remove all dangling references of all objects that are contained by the
-     * root element.
+     * element's resource. It will be done only if the permission authority can
+     * not edit the element.
      * 
-     * @param root
-     *            the root element
+     * @param element
+     *            an element
      */
-    public static void removeDanglingReferences(final EObject root) {
+    public static void removeDanglingReferences(final EObject element) {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.REMOVE_DANGLING_REFERENCE_KEY);
         ModelAccessor accessor = null;
-        if (root.eResource() != null && root.eResource().getResourceSet() != null) {
-            accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(root);
-            IPermissionAuthority authority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(root.eResource().getResourceSet());
-            if (authority != null && !authority.canEditInstance(root)) {
+        if (element.eResource() != null && element.eResource().getResourceSet() != null) {
+            accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(element);
+            IPermissionAuthority authority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(element.eResource().getResourceSet());
+            if (authority != null && !authority.canEditInstance(element)) {
                 DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.REMOVE_DANGLING_REFERENCE_KEY);
                 return;
             }
         }
 
-        removeDanglingReferences(accessor, new DanglingReferencesDetector(root.eResource()));
+        removeDanglingReferences(accessor, new DanglingReferencesDetector(element.eResource()));
+        DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.REMOVE_DANGLING_REFERENCE_KEY);
+    }
+
+    /**
+     * Removes all dangling references from all the elements in the given
+     * resource.
+     * 
+     * @param resource
+     *            The resource which has to be cleaned of dangling references.
+     */
+    public static void removeDanglingReferences(final Resource resource) {
+        DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.REMOVE_DANGLING_REFERENCE_KEY);
+        if (resource != null && resource.getResourceSet() != null) {
+            ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(resource.getResourceSet());
+            removeDanglingReferences(accessor, new DanglingReferencesDetector(resource));
+        }
         DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.REMOVE_DANGLING_REFERENCE_KEY);
     }
 
@@ -91,7 +108,8 @@ public class RemoveDanglingReferences extends RecordingCommand {
      * resourceSet.
      * 
      * @param resourceSet
-     *            The resourceSet which is to be cleaned of dangling references.
+     *            The resourceSet which has to be cleaned of dangling
+     *            references.
      */
     public static void removeDanglingReferences(final ResourceSet resourceSet) {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.REMOVE_DANGLING_REFERENCE_KEY);

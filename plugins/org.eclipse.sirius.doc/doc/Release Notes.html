@@ -98,6 +98,27 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>org.eclipse.sirius.business.api.session.SessionManagerListener.notifyUpdatedSession(Session)</code> has been removed. Use 
 				<code>org.eclipse.sirius.business.api.session.SessionManagerListener.notify(Session, int)</code> instead.
 			</li>
+			<li>
+				<code>org.eclipse.sirius.business.api.helper.task.RemoveDanglingReferencesTask</code> and 
+				<code>org.eclipse.sirius.business.api.helper.task.RemoveSemanticDanglingReferenceTask</code> and 
+				<code>org.eclipse.sirius.tools.api.command.AbstractCommandFactory.addRemoveDanglingReferencesTask()</code> have been removed. These tasks were added to in several commands to remove dangling references at the end. They are now replaced by a specific 
+				<code>ModelChangeTrigger</code> to detect the detachment of 
+				<code>EObject</code> and remove the dangling references. It is added to the 
+				<code>SessionEventBroker</code> during the session opening.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener</code> was a precommit 
+				<code>ResourceSetListener</code>, it became a 
+				<code>ModelChangeTrigger</code> and is now added to the SessionEventBroker during the session opening. This modification allows to correctly manage the order of our different precommit commands. It is triggered after the dangling reference remover.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.tools.api.command.semantic.RemoveDanglingReferences</code> is no more used in Sirius commands. It can still be used to clean a resourceSet or a resource (repair tool, import/export, ..). It also has a new static method 
+				<code>removeDanglingReferences(final Resource resource)</code> to remove dangling references as an entry point.
+			</li>
+			<li>The protected predicate 
+				<code>org.eclipse.sirius.business.api.helper.task.AbstractDeleteDRepresentationElementTask.DSEMANTICDECORATOR_REFERENCE_T0_IGNORE_PREDICATE</code> has been removed, the internal predicate 
+				<code>DanglingRefRemovalTrigger.DSEMANTICDECORATOR_REFERENCE_T0_IGNORE_PREDICATE</code> is used instead.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
 			<code>org.eclipse.sirius.ui</code>
@@ -112,6 +133,16 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 			<li>The deprecated class 
 				<code>org.eclipse.sirius.ui.tools.api.dialogs.ExportRepresentationsAsImagesDialog</code> has been removed. Use 
 				<code>org.eclipse.sirius.ui.tools.api.dialogs.ExportSeveralRepresentationsAsImagesDialog</code> instead.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
+			<code>org.eclipse.sirius.diagram</code>
+		</h4>
+		<ul>
+			<li>
+				<code>org.sirius.diagram.graphical.edit.policies.AirNoteAttachmentEditPolicy</code> has been removed, with the new dangling reference management, it became identical to its superclass, use 
+				<code>org.eclipse.gmf.runtime.diagram.ui.internal.editpolicies.ConnectionEditPolicy</code> instead. Its provider 
+				<code>org.sirius.diagram.graphicalou .edit.policies.AirNoteAttachmentEditPolicyProvider</code> and declaration in plugin.xml have been removed too.
 			</li>
 		</ul>
 		<h2 id="sirius1.0M5">Changes in Sirius 1.0.0M5 (from Sirius 1.0M4)</h2>
@@ -462,7 +493,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>DiagramDescription</code> has been removed from the viewpoint.ecore meta-model. This reference always returns empty list.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram2">Changes in  
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>

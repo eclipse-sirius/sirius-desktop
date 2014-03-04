@@ -47,12 +47,19 @@ h4. Changes in @org.eclipse.sirius@
 * The deprecated interface @org.eclipse.sirius.business.api.componentization.ViewpointRegistryListener@ has been removed. Use  @org.eclipse.sirius.business.api.componentization.ViewpointRegistryListener2@ instead.
 * @org.eclipse.sirius.business.api.session.SessionManagerListener2@ and @org.eclipse.sirius.business.api.session.SessionManagerListener@ have been merged into @org.eclipse.sirius.business.api.session.SessionManagerListener@ which is not deprecated any more.
 * The deprecated method @org.eclipse.sirius.business.api.session.SessionManagerListener.notifyUpdatedSession(Session)@ has been removed. Use @org.eclipse.sirius.business.api.session.SessionManagerListener.notify(Session, int)@ instead.
-
+* @org.eclipse.sirius.business.api.helper.task.RemoveDanglingReferencesTask@ and @org.eclipse.sirius.business.api.helper.task.RemoveSemanticDanglingReferenceTask@ and @org.eclipse.sirius.tools.api.command.AbstractCommandFactory.addRemoveDanglingReferencesTask()@ have been removed. These tasks were added to in several commands to remove dangling references at the end. They are now replaced by a specific @ModelChangeTrigger@ to detect the detachment of @EObject@ and remove the dangling references. It is added to the @SessionEventBroker@ during the session opening.
+* @org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener@ was a precommit @ResourceSetListener@, it became a @ModelChangeTrigger@ and is now added to the SessionEventBroker during the session opening. This modification allows to correctly manage the order of our different precommit commands. It is triggered after the dangling reference remover.
+* @org.eclipse.sirius.tools.api.command.semantic.RemoveDanglingReferences@ is no more used in Sirius commands. It can still be used to clean a resourceSet or a resource (repair tool, import/export, ..). It also has a new static method @removeDanglingReferences(final Resource resource)@ to remove dangling references as an entry point.
+* The protected predicate @org.eclipse.sirius.business.api.helper.task.AbstractDeleteDRepresentationElementTask.DSEMANTICDECORATOR_REFERENCE_T0_IGNORE_PREDICATE@ has been removed, the internal predicate @DanglingRefRemovalTrigger.DSEMANTICDECORATOR_REFERENCE_T0_IGNORE_PREDICATE@ is used instead.
 
 h4. Changes in @org.eclipse.sirius.ui@
 
 * The @org.eclipse.sirius.ui.tools.api.perspectives.DesignPerspective@ interface has been moved to @org.eclipse.sirius.editor.tools.api.perspectives@ package in @org.eclipse.sirius.editor@ plugin. This perspective is now provided through the @org.eclipse.sirius.editor@ plugin. The perspective ID is kept unchanged for a compatibility reason.
 * The deprecated class @org.eclipse.sirius.ui.tools.api.dialogs.ExportRepresentationsAsImagesDialog@ has been removed. Use @org.eclipse.sirius.ui.tools.api.dialogs.ExportSeveralRepresentationsAsImagesDialog@ instead.
+
+h4. Changes in @org.eclipse.sirius.diagram@
+
+* @org.sirius.diagram.graphical.edit.policies.AirNoteAttachmentEditPolicy@ has been removed, with the new dangling reference management, it became identical to its superclass, use @org.eclipse.gmf.runtime.diagram.ui.internal.editpolicies.ConnectionEditPolicy@ instead. Its provider @org.sirius.diagram.graphicalou .edit.policies.AirNoteAttachmentEditPolicyProvider@ and declaration in plugin.xml have been removed too.
 
 h2(#sirius1.0M5). Changes in Sirius 1.0.0M5 (from Sirius 1.0M4)
 

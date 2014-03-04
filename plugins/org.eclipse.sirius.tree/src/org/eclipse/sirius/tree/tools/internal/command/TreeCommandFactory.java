@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,6 @@
 package org.eclipse.sirius.tree.tools.internal.command;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -19,24 +18,19 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.command.AbstractCommand;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
-import org.eclipse.sirius.business.api.helper.task.RemoveDanglingReferencesTask;
-import org.eclipse.sirius.business.api.helper.task.RemoveSemanticDanglingReferenceTask;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
 import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
 import org.eclipse.sirius.business.api.helper.task.label.InitInterpreterFromParsedVariableTask2;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
@@ -67,7 +61,6 @@ import org.eclipse.sirius.tree.description.TreeItemCreationTool;
 import org.eclipse.sirius.tree.description.TreeItemDeletionTool;
 import org.eclipse.sirius.tree.description.TreeItemEditionTool;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
@@ -134,6 +127,7 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
      *            {@link DTargetColumn}).
      * @return a command that can delete the specified element.
      */
+    @Override
     public Command buildDeleteTreeElement(final DTreeElement element) {
         Command cmd = UnexecutableCommand.INSTANCE;
         if (element instanceof DTreeItem) {
@@ -144,22 +138,29 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
                     cmd = new InvalidPermissionCommand(domain, element.eContainer());
                 } else {
                     final SiriusCommand result = new SiriusCommand(domain);
-                    final boolean automaticRefresh = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
-                    if (getDeleteTool(element) != null) {
-                        addDeleteTreeElementFromTool(result, element, getDeleteTool(element));
-                        if (automaticRefresh) {
-                            result.getTasks().add(new RemoveDanglingReferencesTask(EcoreUtil.getRootContainer(((DSemanticDecorator) element).getTarget())));
-                            result.getTasks().add(new RemoveDanglingReferencesTask(EcoreUtil.getRootContainer(element)));
-                            addRefreshTask(TreeHelper.getTree(element), result, getDeleteTool(element));
-                        } else {
-                            result.getTasks().add(new RemoveSemanticDanglingReferenceTask(getPermissionAuthority(), Collections.singleton(element.getTarget()), uiCallBack));
-                        }
+                    TreeItemDeletionTool deleteTool = getDeleteTool(element);
+                    DTree parentTree = TreeHelper.getTree(element);
+                    if (deleteTool != null) {
+                        addDeleteTreeElementFromTool(result, element, deleteTool);
+                        addRefreshTask(parentTree, result, deleteTool);
                         cmd = new NoNullResourceCommand(result, element);
                     } else {
                         final Set<EObject> allSemanticElements = new HashSet<EObject>();
                         // Get the corresponding semanticElement (and its
                         // children)
                         addSemanticElementsToDestroy(element, allSemanticElements);
+
+                        /*
+                         * Now delete all the treen elements corresponding to
+                         * the semantic elements to delete
+                         */
+                        if (parentTree != null) {
+                            final Set<DSemanticDecorator> tableElements = commandTaskHelper.getDElementToClearFromSemanticElements(parentTree, allSemanticElements);
+                            for (final DSemanticDecorator decorator : tableElements) {
+                                result.getTasks().add(new DeleteTreeElementTask(decorator, modelAccessor));
+                            }
+                        }
+
                         /*
                          * Now delete all the semantic elements
                          */
@@ -168,16 +169,7 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
                             final EObject eObj = it.next();
                             result.getTasks().add(new DeleteTreeElementTask(eObj, modelAccessor));
                         }
-                        /*
-                         * and remove possible dangling references
-                         */
-                        if (automaticRefresh) {
-                            result.getTasks().add(new RemoveDanglingReferencesTask(EcoreUtil.getRootContainer(((DSemanticDecorator) element).getTarget())));
-                            result.getTasks().add(new RemoveDanglingReferencesTask(EcoreUtil.getRootContainer(element)));
-                        } else {
-                            result.getTasks().add(new RemoveSemanticDanglingReferenceTask(getPermissionAuthority(), Collections.singleton(element.getTarget()), uiCallBack));
-                        }
-                        addRefreshTask(TreeHelper.getTree(element), result, getDeleteTool(element));
+                        addRefreshTask(parentTree, result, deleteTool);
                         cmd = new NoNullResourceCommand(result, element);
                     }
                 }
@@ -244,39 +236,7 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
             if (!getPermissionAuthority().canEditInstance(tree.eContainer())) {
                 cmd.chain(new InvalidPermissionCommand(domain, tree.eContainer()));
             } else {
-                /*
-                 * If the viewpoint is a root viewpoint then we should not
-                 * delete it !
-                 */
-                // if (tree.getView() != null &&
-                // tree.getView().getOwnedRepresentations().contains(tree)) {
                 cmd.getTasks().add(UnexecutableTask.INSTANCE);
-                // } else {
-                // // delete the viewpoint
-                // addDeleteSiriusTask(cmd, tree);
-                //
-                // // delete the subviewpoints
-                // final Iterator<EObject> it = tree.eAllContents();
-                // while (it.hasNext()) {
-                // final EObject eObj = it.next();
-                // if (eObj instanceof DDiagram) {
-                // addDeleteSiriusTask(cmd, (DDiagram) eObj);
-                // }
-                // }
-                //
-                // // remove the dangling references of the viewpoint
-                // cmd.getTasks().add(new AbstractCommandTask() {
-                //
-                // public void execute() {
-                // RemoveDanglingReferences.removeDanglingReferences(EcoreUtil.
-                // getRootContainer(tree));
-                // }
-                //
-                // public String getLabel() {
-                // return null;
-                // }
-                // });
-                // }
             }
         }
     }
@@ -364,7 +324,6 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
             if (commandTaskHelper.checkPrecondition(semanticCurrentElement, tool)) {
                 SiriusCommand createLineCommand = buildCommandFromModelOfTool(semanticCurrentElement, tool, lineContainer);
                 addRefreshTask(lineContainer, createLineCommand, tool);
-                addRemoveDanglingReferencesTask(createLineCommand, tool, lineContainer);
                 result = createLineCommand;
             }
         }
@@ -417,7 +376,6 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
         final ICommandTask initInterpreterVariables = new InitInterpreterVariablesTask(variables, stringVariables, InterpreterUtil.getInterpreter(target), uiCallBack);
         cmd.getTasks().add(initInterpreterVariables);
         cmd.getTasks().add(commandTaskHelper.buildTaskFromModelOperation(TreeHelper.getTree(target), target.getTarget(), desc.getInitialOperation().getFirstModelOperations()));
-        addRemoveDanglingReferencesTask(cmd, desc, target);
         return cmd;
     }
 
@@ -456,11 +414,6 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
                     // Step 2 : build the task from the model operations
                     // specified in this tool
                     result.getTasks().add(commandTaskHelper.buildTaskFromModelOperation(TreeHelper.getTree(editedTreeItem), interpreterContext, directEditTool.getFirstModelOperation()));
-
-                    // Step 3 : adding task to refresh and remove dangling
-                    // references
-                    DTree tree = TreeHelper.getTree(editedTreeItem);
-                    addRemoveDanglingReferencesTask(result, editedTreeItem.getUpdater().getDirectEdit(), tree);
 
                     // Add a RefreshTreeElementTask to have DTreeItem refreshed
                     // on direct edit even in REFRESH_AUTO mode at false
@@ -511,15 +464,11 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
         if (dropTool.getFirstModelOperation() != null) {
             result.getTasks().add(commandTaskHelper.buildTaskFromModelOperation(droppedTree, interpreterContext, dropTool.getFirstModelOperation()));
         }
-        // Step 3 : adding task to refresh and remove dangling
-        // references
-
+        // Step 3 : adding task to refresh
         if (droppedTree != null) {
-            addRemoveDanglingReferencesTask(result, dropTool, droppedTree);
             addRefreshTask(droppedTree, result, dropTool);
         }
         if (dropDec != null) {
-            addRemoveDanglingReferencesTask(result, dropTool, dropDec);
             addRefreshTask(dropDec, result, dropTool);
         }
 
@@ -559,9 +508,7 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
         DTree targetTree = TreeHelper.getTree(selectedItem);
         result.getTasks().add(commandTaskHelper.buildTaskFromModelOperation(targetTree, interpreterContext, operationAction.getInitialOperation().getFirstModelOperations()));
 
-        // Step 3 : adding task to refresh and remove dangling
-        // references
-        addRemoveDanglingReferencesTask(result, operationAction, targetTree);
+        // Step 3 : adding task to refresh
         addRefreshTask(targetTree, result, null);
 
         return result.chain(new RecordingCommand(domain) {

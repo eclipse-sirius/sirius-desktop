@@ -1759,15 +1759,6 @@
   <extension
         point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">
      <editpolicyProvider
-           class="org.eclipse.sirius.diagram.graphical.edit.policies.AirNoteAttachmentEditPolicyProvider">
-        <Priority
-              name="Medium">
-        </Priority>
-     </editpolicyProvider>
-  </extension>
-  <extension
-        point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">
-     <editpolicyProvider
            class="org.eclipse.sirius.diagram.graphical.edit.policies.DoubleClickEditPolicyProvider">
         <Priority
               name="Lowest">

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -72,7 +72,7 @@ public class DirectEditCommandBuilder extends AbstractCommandBuilder {
             IInterpreter interpreter = InterpreterUtil.getInterpreter(labeled);
             result.getTasks().add(new InitInterpreterFromParsedVariableTask(interpreter, messageFormat, newValue));
 
-            Option<DDiagram> parentDiagram = new EObjectQuery(labeled).getParentDiagram();
+            Option<DDiagram> parentDiagram = getDDiagram();
             if (parentDiagram.some() && labeled instanceof DSemanticDecorator && ((DSemanticDecorator) labeled).getTarget() != null && directEditTool.getInitialOperation() != null) {
                 final ICommandTask operations = taskHelper.buildTaskFromModelOperation(parentDiagram.get(), ((DSemanticDecorator) labeled).getTarget(), directEditTool.getInitialOperation()
                         .getFirstModelOperations());
@@ -96,12 +96,6 @@ public class DirectEditCommandBuilder extends AbstractCommandBuilder {
         if (labeled instanceof DDiagramElement) {
             addRefreshTask((DDiagramElement) labeled, command, directEditTool);
         }
-        /**
-         * FIX to update the node list element
-         */
-        if (labeled instanceof DSemanticDecorator) {
-            addRemoveDanglingReferencesTask(command, directEditTool, (DSemanticDecorator) labeled);
-        }
     }
 
     /**
@@ -111,4 +105,11 @@ public class DirectEditCommandBuilder extends AbstractCommandBuilder {
         return EDIT_LABEL;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Option<DDiagram> getDDiagram() {
+        return new EObjectQuery(labeled).getParentDiagram();
+    }
 }

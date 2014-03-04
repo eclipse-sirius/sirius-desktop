@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,7 +27,6 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
@@ -77,7 +76,7 @@ public class SelectionWizardCommandBuilder extends AbstractCommandBuilder {
         final DCommand result = createEnclosingCommand();
         final IInterpreter interpreter = InterpreterUtil.getInterpreter(containerView);
         if (checkGenericToolPrecondition(interpreter)) {
-            Option<DRepresentation> representation = new EObjectQuery(containerView).getRepresentation();
+            Option<DDiagram> representation = getDDiagram();
             if (representation.some() && tool.getInitialOperation() != null && tool.getInitialOperation().getFirstModelOperations() != null) {
                 addPreOperationTasks(result, interpreter);
 
@@ -119,7 +118,6 @@ public class SelectionWizardCommandBuilder extends AbstractCommandBuilder {
         } else if (containerView instanceof DDiagram) {
             addRefreshTask((DDiagram) containerView, command, tool);
         }
-        addRemoveDanglingReferencesTask(command, tool, containerView);
     }
 
     private InitInterpreterVariablesTask buildInitVariablesTasks(final IInterpreter interpreter) {
@@ -160,11 +158,19 @@ public class SelectionWizardCommandBuilder extends AbstractCommandBuilder {
         }
         return checked;
     }
-    
+
     /**
      * {@inheritDoc}
      */
     protected String getEnclosingCommandLabel() {
         return new IdentifiedElementQuery(tool).getLabel();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Option<DDiagram> getDDiagram() {
+        return new EObjectQuery(containerView).getParentDiagram();
     }
 }
