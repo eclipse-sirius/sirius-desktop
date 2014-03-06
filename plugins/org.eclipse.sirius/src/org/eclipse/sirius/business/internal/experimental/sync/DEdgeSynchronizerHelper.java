@@ -137,15 +137,36 @@ public class DEdgeSynchronizerHelper extends AbstractSynchronizerHelper {
     private void handlePreviousCandidates(final Collection<DEdgeCandidate> result, final Iterable<DDiagramElement> previousDiagramElements, final EdgeMapping mapping,
             final Map<EObject, Collection<EdgeTarget>> sourceViewsSemantics, final Map<EObject, Collection<EdgeTarget>> targetViewsSemantics) {
 
+        final EdgeMappingQuery edgeMappingQuery = new EdgeMappingQuery(mapping);
+
         Predicate<DEdge> stillCandidate = new Predicate<DEdge>() {
             public boolean apply(DEdge input) {
+                // Validate source node (and its semantic target) exists in the
+                // sourceViewsSemantics
                 boolean stillCandidate = validateNode(input.getSourceNode(), sourceViewsSemantics);
+                // Validate target node (and its semantic target) exists in the
+                // targetViewsSemantics
                 stillCandidate = stillCandidate && validateNode(input.getTargetNode(), targetViewsSemantics);
+                if (stillCandidate) {
+                    EObject target = input.getTarget();
+                    if (mapping.isUseDomainElement()) {
+                        // Validate that semantic source is always in the list
+                        // returns by the source finder expression for this
+                        // edge. This is necessary only for edge that use domain
+                        // element as target.
+                        Collection<EObject> edgeSourceSemantics = edgeMappingQuery.evaluateSourceFinderExpression(diagram, interpreter, target);
+                        stillCandidate = edgeSourceSemantics.contains(((DSemanticDecorator) input.getSourceNode()).getTarget());
+                    }
+                    if (stillCandidate) {
+                        // Validate that semantic target is always in the list
+                        // returns by the target finder expression for this edge
+                        Collection<EObject> edgeTargetSemantics = edgeMappingQuery.evaluateTargetFinderExpression(diagram, interpreter, target);
+                        stillCandidate = edgeTargetSemantics.contains(((DSemanticDecorator) input.getTargetNode()).getTarget());
+                    }
+                }
                 return stillCandidate;
             }
         };
-
-        EdgeMappingQuery edgeMappingQuery = new EdgeMappingQuery(mapping);
 
         for (DEdge prevDEdge : Iterables.filter(Iterables.filter(previousDiagramElements, DEdge.class), stillCandidate)) {
             final EdgeTarget sourceView = prevDEdge.getSourceNode();
@@ -169,29 +190,9 @@ public class DEdgeSynchronizerHelper extends AbstractSynchronizerHelper {
 
     private void handleCandidatesFromSemanticTargets(Collection<DEdgeCandidate> result, EObject target, EdgeMapping mapping, Map<EObject, Collection<EdgeTarget>> sourceViewsSemantics,
             Map<EObject, Collection<EdgeTarget>> targetViewsSemantics) {
-        Collection<EObject> edgeSourceSemantics = new ArrayList<EObject>();
-        Collection<EObject> edgeTargetSemantics = new ArrayList<EObject>();
-
-        interpreter.setVariable(IInterpreterSiriusVariables.VIEWPOINT_2, diagram);
-        interpreter.setVariable(IInterpreterSiriusVariables.VIEWPOINT, diagram);
-        interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diagram);
-
-        try {
-            edgeSourceSemantics = interpreter.evaluateCollection(target, mapping.getSourceFinderExpression());
-        } catch (final EvaluationException e) {
-            RuntimeLoggerManager.INSTANCE.error(mapping, DescriptionPackage.eINSTANCE.getEdgeMapping_SourceFinderExpression(), e);
-        }
-        try {
-            edgeTargetSemantics = interpreter.evaluateCollection(target, mapping.getTargetFinderExpression());
-        } catch (final EvaluationException e) {
-            RuntimeLoggerManager.INSTANCE.error(mapping, DescriptionPackage.eINSTANCE.getEdgeMapping_TargetFinderExpression(), e);
-        }
-
-        interpreter.unSetVariable(IInterpreterSiriusVariables.DIAGRAM);
-        interpreter.unSetVariable(IInterpreterSiriusVariables.VIEWPOINT);
-        interpreter.unSetVariable(IInterpreterSiriusVariables.VIEWPOINT_2);
-
         EdgeMappingQuery edgeMappingQuery = new EdgeMappingQuery(mapping);
+        Collection<EObject> edgeSourceSemantics = edgeMappingQuery.evaluateSourceFinderExpression(diagram, interpreter, target);
+        Collection<EObject> edgeTargetSemantics = edgeMappingQuery.evaluateTargetFinderExpression(diagram, interpreter, target);
 
         for (final EObjectCouple couple : new CartesianProduct(edgeSourceSemantics, edgeTargetSemantics)) {
             final Collection<EdgeTarget> sourceViews = sourceViewsSemantics.get(couple.getObj1());
