@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,9 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.business.internal.dialect.editor;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
@@ -38,7 +41,20 @@ public class DialectEditorCloserFilter extends NotificationFilter.Custom {
 
     @Override
     public boolean matches(Notification notification) {
-        return notification.getNotifier() == dRepresentation && notification.getFeature() == ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET
-                && notification.getEventType() == Notification.REMOVE;
+        boolean remove = notification.getEventType() == Notification.REMOVE || notification.getEventType() == Notification.UNSET;
+        boolean unsetTarget = remove && notification.getNotifier() == dRepresentation && notification.getFeature() == ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET;
+
+        boolean representationDeleted = false;
+        if (!unsetTarget && notification.getFeature() == ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATIONS) {
+            // If the representation eContainer is still a DView, this remove
+            // notification does not indicate a delete but a move. No need to
+            // close the editor.
+            if (remove) {
+                representationDeleted = notification.getOldValue() == dRepresentation && !(dRepresentation.eContainer() instanceof DView);
+            } else if (notification.getEventType() == Notification.REMOVE_MANY) {
+                representationDeleted = ((Collection<?>) notification.getOldValue()).contains(dRepresentation) && !(dRepresentation.eContainer() instanceof DView);
+            }
+        }
+        return unsetTarget || representationDeleted;
     }
 }

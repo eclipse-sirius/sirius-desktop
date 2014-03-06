@@ -21,7 +21,7 @@ import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.swt.widgets.Display;
 
 /**
- * A {@link ResourceSetListener} to close a {@link DialectEditor} when its
+ * A {@link ResourceSetListener} to close a {@link DialectEditor} when its DRepresentation or its
  * DRepresentation's target has been deleted.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
@@ -86,6 +86,11 @@ public class DialectEditorCloser extends ResourceSetListenerImpl implements Reso
 
             public void run() {
                 if (dialectEditor != null) {
+                    // We open a dialog informing the user that the
+                    // representation or its target has been deleted, and close the editor
+                    if (dialectEditor.getSite() != null && dialectEditor.getSite().getShell() != null) {
+                        dialectEditor.getDialogFactory().editorWillBeClosedInformationDialog(dialectEditor.getSite().getShell());
+                    }
                     DialectUIManager.INSTANCE.closeEditor(dialectEditor, false);
                     editingSession.detachEditor(dialectEditor);
                 }
