@@ -456,16 +456,6 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
     }
 
     /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.tools.api.command.ITableCommandFactory#setAutoRefreshDTable(boolean)
-     */
-    public void setAutoRefreshDTable(final boolean autoRefreshDTable) {
-        // TODO Feature not implemented.
-    }
-
-    /**
      * Appends a command that delete the specified table to the specified
      * command.
      * 

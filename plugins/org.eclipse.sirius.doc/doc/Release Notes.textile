@@ -62,6 +62,15 @@ h4. Changes in @org.eclipse.sirius.diagram@
 
 * @org.sirius.diagram.graphical.edit.policies.AirNoteAttachmentEditPolicy@ has been removed, with the new dangling reference management, it became identical to its superclass, use @org.eclipse.gmf.runtime.diagram.ui.internal.editpolicies.ConnectionEditPolicy@ instead. Its provider @org.sirius.diagram.graphicalou .edit.policies.AirNoteAttachmentEditPolicyProvider@ and declaration in plugin.xml have been removed too.
 
+h4. Changes in @org.eclipse.sirius.table@
+
+* The @org.eclipse.sirius.table.tools.api.command.ITableCommandFactory.setAutoRefreshDTable()@ method was removed. It had no effect, any code which called it can simply be removed.
+
+
+h4. Changes in @org.eclipse.sirius.tree@
+
+* The @org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory.setAutoRefreshDTree()@ method was removed. It had no effect, any code which called it can simply be removed.
+
 h2(#sirius1.0M5). Changes in Sirius 1.0.0M5 (from Sirius 1.0M4)
 
 h3. User-Visible Changes

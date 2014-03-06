@@ -93,13 +93,6 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
     }
 
     /**
-     * {@inheritDoc}
-     */
-    public void setAutoRefreshDTree(boolean autoRefreshDTree) {
-        // TODO Feature not implemented.
-    }
-
-    /**
      * Return the commandTaskHelper.
      * 
      * @return the commandTaskHelper

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,6 +47,35 @@ import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.window.Window;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.table.business.internal.refresh.DTableElementSynchronizerSpec;
+import org.eclipse.sirius.table.metamodel.table.DTable;
+import org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer;
+import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
+import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
+import org.eclipse.sirius.table.tools.api.command.TableCommandFactoryService;
+import org.eclipse.sirius.table.ui.tools.api.editor.DTableEditor;
+import org.eclipse.sirius.table.ui.tools.internal.command.EMFCommandFactoryUI;
+import org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableEditorUtil;
+import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
+import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
+import org.eclipse.sirius.ui.business.api.descriptor.ComposedImageDescriptor;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.ui.business.api.dialect.marker.TraceabilityMarkerNavigationProvider;
+import org.eclipse.sirius.ui.business.api.session.IEditingSession;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
+import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
+import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
@@ -66,36 +95,6 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.contexts.IContextService;
 import org.eclipse.ui.dialogs.SaveAsDialog;
 import org.eclipse.ui.part.FileEditorInput;
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.table.business.internal.refresh.DTableElementSynchronizerSpec;
-import org.eclipse.sirius.table.metamodel.table.DTable;
-import org.eclipse.sirius.table.metamodel.table.DTableElementSynchronizer;
-import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
-import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
-import org.eclipse.sirius.table.tools.api.command.TableCommandFactoryService;
-import org.eclipse.sirius.table.ui.tools.api.editor.DTableEditor;
-import org.eclipse.sirius.table.ui.tools.internal.command.EMFCommandFactoryUI;
-import org.eclipse.sirius.table.ui.tools.internal.editor.preferences.SiriusPreferenceChangeListener;
-import org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableEditorUtil;
-import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
-import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
-import org.eclipse.sirius.ui.business.api.descriptor.ComposedImageDescriptor;
-import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.ui.business.api.dialect.marker.TraceabilityMarkerNavigationProvider;
-import org.eclipse.sirius.ui.business.api.session.IEditingSession;
-import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
-import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
-import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**
  * Provides generic support for DTable editors. <BR>
@@ -313,15 +312,9 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
     private void configureCommandFactoryProviders() {
         /* get IEMFCommandFactories */
         emfCommandFactory = TableCommandFactoryService.getInstance().getNewProvider().getCommandFactory(getEditingDomain());
-        // Set the automatic refresh according to the preference
-        ((ITableCommandFactory) emfCommandFactory).setAutoRefreshDTable(isAutoRefresh());
-        /*
-         * We add a callback for UI stuffs
-         */
-        emfCommandFactory.setUserInterfaceCallBack(new EMFCommandFactoryUI());
 
-        /* Set viewpoint preference change listener */
-        viewPointPreferenceChangeListener = new SiriusPreferenceChangeListener((ITableCommandFactory) emfCommandFactory);
+        /* We add a callback for UI stuffs */
+        emfCommandFactory.setUserInterfaceCallBack(new EMFCommandFactoryUI());
     }
 
     /**

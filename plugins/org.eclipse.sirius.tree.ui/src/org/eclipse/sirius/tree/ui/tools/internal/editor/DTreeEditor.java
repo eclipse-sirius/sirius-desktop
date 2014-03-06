@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,6 +42,31 @@ import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.window.Window;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
+import org.eclipse.sirius.tree.DTree;
+import org.eclipse.sirius.tree.DTreeElementSynchronizer;
+import org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory;
+import org.eclipse.sirius.tree.business.api.command.TreeCommandFactoryService;
+import org.eclipse.sirius.tree.business.internal.helper.TreeHelper;
+import org.eclipse.sirius.tree.business.internal.refresh.DTreeElementSynchronizerSpec;
+import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
+import org.eclipse.sirius.tree.ui.tools.internal.command.EMFCommandFactoryUI;
+import org.eclipse.sirius.ui.business.api.descriptor.ComposedImageDescriptor;
+import org.eclipse.sirius.ui.business.api.dialect.marker.TraceabilityMarkerNavigationProvider;
+import org.eclipse.sirius.ui.business.api.session.IEditingSession;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
+import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
+import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
@@ -61,32 +86,6 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.contexts.IContextService;
 import org.eclipse.ui.dialogs.SaveAsDialog;
 import org.eclipse.ui.part.FileEditorInput;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
-import org.eclipse.sirius.tree.DTree;
-import org.eclipse.sirius.tree.DTreeElementSynchronizer;
-import org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory;
-import org.eclipse.sirius.tree.business.api.command.TreeCommandFactoryService;
-import org.eclipse.sirius.tree.business.internal.helper.TreeHelper;
-import org.eclipse.sirius.tree.business.internal.refresh.DTreeElementSynchronizerSpec;
-import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
-import org.eclipse.sirius.tree.ui.tools.internal.command.EMFCommandFactoryUI;
-import org.eclipse.sirius.tree.ui.tools.internal.editor.preferences.SiriusPreferenceChangeListener;
-import org.eclipse.sirius.ui.business.api.descriptor.ComposedImageDescriptor;
-import org.eclipse.sirius.ui.business.api.dialect.marker.TraceabilityMarkerNavigationProvider;
-import org.eclipse.sirius.ui.business.api.session.IEditingSession;
-import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
-import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
-import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**
  * Editor for tree representations.
@@ -132,8 +131,7 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
             Image refreshImage = TreeUIPlugin.getImage(TreeUIPlugin.getBundledImageDescriptor("icons/" + DTreeViewerManager.REFRESH_IMG + ".gif"));
             List<Object> images = new ArrayList<Object>(2);
             images.add(refreshImage);
-            Image lockByOtherOverlayImage = SiriusEditPlugin.getPlugin()
-                    .getImage(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied_overlay.gif"));
+            Image lockByOtherOverlayImage = SiriusEditPlugin.getPlugin().getImage(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied_overlay.gif"));
             images.add(lockByOtherOverlayImage);
             ImageDescriptor composedImageDescriptor = new ComposedImageDescriptor(new ComposedImage(images));
             frozenRepresentationImage = SiriusEditPlugin.getPlugin().getImage(composedImageDescriptor);
@@ -315,16 +313,9 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
     private void initCommandFactoryProviders() {
         /* get IEMFCommandFactories */
         emfCommandFactory = TreeCommandFactoryService.getInstance().getNewProvider().getCommandFactory(getEditingDomain());
-        // Set the automatic refresh according to the preference
-        ((ITreeCommandFactory) emfCommandFactory).setAutoRefreshDTree(isAutoRefresh());
-        /*
-         * We add a callback for UI stuffs
-         */
+
+        /* We add a callback for UI stuffs */
         emfCommandFactory.setUserInterfaceCallBack(new EMFCommandFactoryUI());
-
-        /* Set viewpoint preference change listener */
-        viewPointPreferenceChangeListener = new SiriusPreferenceChangeListener((ITreeCommandFactory) emfCommandFactory);
-
     }
 
     private IInterpreter getInterpreter() {
