@@ -52,7 +52,7 @@ public class AbstractDeleteDRepresentationElementTask extends AbstractCommandTas
     public AbstractDeleteDRepresentationElementTask(EObject objectToDelete, ModelAccessor accessor) {
         this.objectToDelete = objectToDelete;
         this.accessor = accessor;
-        this.danglingEReferencesToIgnores = DanglingRefRemovalTrigger.DSEMANTICDECORATOR_REFERENCE_T0_IGNORE_PREDICATE;
+        this.danglingEReferencesToIgnores = DanglingRefRemovalTrigger.DSEMANTICDECORATOR_REFERENCE_TO_IGNORE_PREDICATE;
     }
 
     /**
@@ -69,7 +69,7 @@ public class AbstractDeleteDRepresentationElementTask extends AbstractCommandTas
     public AbstractDeleteDRepresentationElementTask(EObject objectToDelete, ModelAccessor accessor, Predicate<EReference> danglingEReferencesToIgnores) {
         this.objectToDelete = objectToDelete;
         this.accessor = accessor;
-        this.danglingEReferencesToIgnores = Predicates.or(DanglingRefRemovalTrigger.DSEMANTICDECORATOR_REFERENCE_T0_IGNORE_PREDICATE, danglingEReferencesToIgnores);
+        this.danglingEReferencesToIgnores = Predicates.or(DanglingRefRemovalTrigger.DSEMANTICDECORATOR_REFERENCE_TO_IGNORE_PREDICATE, danglingEReferencesToIgnores);
     }
 
     /**

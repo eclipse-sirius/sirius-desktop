@@ -92,9 +92,10 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
 
     /**
      * A predicate to ignore DSemanticDecorator references in the dangling
-     * references deletion.
+     * references deletion. Allows to avoid changes in non opened diagrams and
+     * the corresponding abusive locks.
      */
-    public static final Predicate<EReference> DSEMANTICDECORATOR_REFERENCE_T0_IGNORE_PREDICATE = new Predicate<EReference>() {
+    public static final Predicate<EReference> DSEMANTICDECORATOR_REFERENCE_TO_IGNORE_PREDICATE = new Predicate<EReference>() {
 
         /**
          * {@inheritDoc}
@@ -194,7 +195,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
             final Set<EObject> allAttachedObjects = getChangedEObjectsAndChildren(Iterables.filter(notifications, IS_ATTACHMENT), ignoreNotifierInDetachedObjects);
             final Set<EObject> toRemoveXRefFrom = Sets.difference(allDetachedObjects, allAttachedObjects);
             if (toRemoveXRefFrom.size() > 0) {
-                Predicate<EReference> refToIgnore = Predicates.or(DSEMANTICDECORATOR_REFERENCE_T0_IGNORE_PREDICATE, NOTATION_VIEW_ELEMENT_REFERENCE_TO_IGNORE_PREDICATE,
+                Predicate<EReference> refToIgnore = Predicates.or(DSEMANTICDECORATOR_REFERENCE_TO_IGNORE_PREDICATE, NOTATION_VIEW_ELEMENT_REFERENCE_TO_IGNORE_PREDICATE,
                         EPACKAGE_EFACTORYINSTANCE_REFERENCE_TO_IGNORE_PREDICATE);
                 Command removeDangling = new RemoveDanglingReferencesCommand(domain, accessor, xRef, toRemoveXRefFrom, refToIgnore);
                 DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.CLEANING_REMOVEDANGLING_KEY);
@@ -244,7 +245,8 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
         final Set<EObject> values = Sets.newLinkedHashSet();
         Object value = notification.getOldValue();
         if (IS_ATTACHMENT.apply(notification)) {
-            // IS_DETACHMENT is the default case : notification.getOldValue and the two predicates are mutually exclusive: see the SET case.
+            // IS_DETACHMENT is the default case : notification.getOldValue and
+            // the two predicates are mutually exclusive: see the SET case.
             value = notification.getNewValue();
         }
         if (value instanceof Collection) {

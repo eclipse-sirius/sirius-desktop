@@ -13,8 +13,11 @@ package org.eclipse.sirius.ui.business.internal.dialect.editor;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.NotificationFilter;
+import org.eclipse.sirius.business.internal.session.danalysis.DanglingRefRemovalTrigger;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
@@ -41,20 +44,45 @@ public class DialectEditorCloserFilter extends NotificationFilter.Custom {
 
     @Override
     public boolean matches(Notification notification) {
-        boolean remove = notification.getEventType() == Notification.REMOVE || notification.getEventType() == Notification.UNSET;
-        boolean unsetTarget = remove && notification.getNotifier() == dRepresentation && notification.getFeature() == ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET;
+        return isTargetUnset(notification) || isRepresentationDeletion(notification) || isTargetDetachment(notification);
+    }
 
+    private boolean isTargetUnset(Notification notification) {
+        boolean remove = notification.getEventType() == Notification.REMOVE || notification.getEventType() == Notification.UNSET;
+        return remove && notification.getNotifier() == dRepresentation && notification.getFeature() == ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET;
+    }
+
+    private boolean isRepresentationDeletion(Notification notification) {
         boolean representationDeleted = false;
-        if (!unsetTarget && notification.getFeature() == ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATIONS) {
-            // If the representation eContainer is still a DView, this remove
-            // notification does not indicate a delete but a move. No need to
-            // close the editor.
-            if (remove) {
-                representationDeleted = notification.getOldValue() == dRepresentation && !(dRepresentation.eContainer() instanceof DView);
-            } else if (notification.getEventType() == Notification.REMOVE_MANY) {
-                representationDeleted = ((Collection<?>) notification.getOldValue()).contains(dRepresentation) && !(dRepresentation.eContainer() instanceof DView);
+        if (notification.getFeature() == ViewpointPackage.Literals.DVIEW__OWNED_REPRESENTATIONS) {
+            int eventType = notification.getEventType();
+            if (eventType == Notification.REMOVE || eventType == Notification.UNSET || eventType == Notification.REMOVE_MANY) {
+                // If the representation eContainer is still a DView, this
+                // remove notification does not indicate a delete but a move.
+                // No need to close the editor.
+                representationDeleted = isInOldValue(notification, dRepresentation) && !(dRepresentation.eContainer() instanceof DView);
             }
         }
-        return unsetTarget || representationDeleted;
+
+        return representationDeleted;
     }
+
+    private boolean isInOldValue(Notification notification, Object obj) {
+        if (notification.getOldValue() instanceof Collection) {
+            return ((Collection<?>) notification.getOldValue()).contains(dRepresentation);
+        } else {
+            return notification.getOldValue() == obj;
+        }
+    }
+
+    private boolean isTargetDetachment(Notification notification) {
+        boolean detachedTarget = false;
+        if (DanglingRefRemovalTrigger.IS_DETACHMENT.apply(notification) && dRepresentation instanceof DSemanticDecorator) {
+            EObject target = ((DSemanticDecorator) dRepresentation).getTarget();
+            detachedTarget = isInOldValue(notification, target) && target.eContainer() == null;
+        }
+
+        return detachedTarget;
+    }
+
 }
