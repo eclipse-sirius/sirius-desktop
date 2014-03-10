@@ -24,8 +24,6 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.preferences.IEclipsePreferences.IPreferenceChangeListener;
-import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -109,8 +107,6 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
     private IPartListener refreshAtOpeningActivator;
 
     private DTree treeModel;
-
-    private IPreferenceChangeListener viewPointPreferenceChangeListener;
 
     /**
      * {@inheritDoc}
@@ -196,9 +192,6 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
 
             /* Update title. Semantic tree could have been renamed */
             notify(PROP_TITLE);
-
-            /* handle preferences */
-            InstanceScope.INSTANCE.getNode(SiriusPlugin.ID).addPreferenceChangeListener(viewPointPreferenceChangeListener);
 
             // Launch the refresh if needed
             if (DialectManager.INSTANCE.isRefreshActivatedOnRepresentationOpening()) {
@@ -574,9 +567,6 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         if (getAdapterFactory() instanceof IDisposable) {
             ((IDisposable) getAdapterFactory()).dispose();
         }
-
-        InstanceScope.INSTANCE.getNode(SiriusPlugin.ID).removePreferenceChangeListener(viewPointPreferenceChangeListener);
-        viewPointPreferenceChangeListener = null;
     }
 
     /**

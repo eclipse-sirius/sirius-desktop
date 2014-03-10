@@ -28,8 +28,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.preferences.IEclipsePreferences.IPreferenceChangeListener;
-import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
@@ -121,8 +119,6 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
     private DTable tableModel;
 
     private IPartListener refreshAtOpeningActivator;
-
-    private IPreferenceChangeListener viewPointPreferenceChangeListener;
 
     private IInterpreter getInterpreter() {
         return SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(getTableModel().getTarget());
@@ -292,9 +288,6 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
 
             /* Update title. Semantic table could have been renamed */
             notify(PROP_TITLE);
-
-            /* handle preferences */
-            InstanceScope.INSTANCE.getNode(SiriusPlugin.ID).addPreferenceChangeListener(viewPointPreferenceChangeListener);
 
             // Launch the refresh if needed
             if (DialectManager.INSTANCE.isRefreshActivatedOnRepresentationOpening()) {
@@ -634,9 +627,5 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
             getSite().getPage().removePartListener(refreshAtOpeningActivator);
             refreshAtOpeningActivator = null;
         }
-
-        InstanceScope.INSTANCE.getNode(SiriusPlugin.ID).removePreferenceChangeListener(viewPointPreferenceChangeListener);
-        viewPointPreferenceChangeListener = null;
-
     }
 }
