@@ -1549,10 +1549,8 @@ public abstract class SiriusTestCase extends TestCase {
      * 
      * @param editor
      *            The editor on which disable the dialogs.
-     * @param shouldReloadSession
-     *            true if the session must be reload, false otherwise
      */
-    protected void disableUICallBackOnDialectEditor(DialectEditor editor, final boolean shouldReloadSession) {
+    protected void disableUICallBackOnDialectEditor(DialectEditor editor) {
         editor.setDialogFactory(new DialectEditorDialogFactory() {
 
             @Override

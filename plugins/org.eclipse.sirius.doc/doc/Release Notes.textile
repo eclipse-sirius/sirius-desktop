@@ -4,6 +4,14 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for all major releases of Sirius.
 
+h2(#sirius1.0M7). Changes in Sirius 1.0.0M7 (from Sirius 1.0M6)
+
+h3. API Changes
+
+h4. Changes in @org.eclipse.sirius.tests.support@
+
+* The @shouldReloadSession@ boolean parameter has been removed from @org.eclipse.sirius.tests.support.api.SiriusTestCase.disableUICallBackOnDialectEditor(DialectEditor)@, it was not used and could let the tester think he can change the reload behavior from the dialog factory.
+
 h2(#sirius1.0M6). Changes in Sirius 1.0.0M6 (from Sirius 1.0M5)
 
 h3. API Changes
