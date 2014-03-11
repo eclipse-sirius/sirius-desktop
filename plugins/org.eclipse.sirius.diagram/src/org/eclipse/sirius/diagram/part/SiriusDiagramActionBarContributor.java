@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,7 +41,10 @@ import org.eclipse.sirius.diagram.ui.tools.api.action.ConcernComboContributionIt
 import org.eclipse.sirius.diagram.ui.tools.api.action.DeleteFromDiagramContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.api.action.SetStyleToWorkspaceImageContributionItem;
 import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.RetargetAction;
+import org.eclipse.ui.internal.WorkbenchWindow;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.Version;
 
@@ -182,89 +185,131 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
 
     @Override
     public void init(IActionBars bars) {
-        super.init(bars);
-        final Preferences prefs = SiriusDiagramEditorPlugin.getInstance().getPluginPreferences();
+        disableActionBarUIUpdates();
 
-        IToolBarManager toolBarManager = bars.getToolBarManager();
+        try {
+            super.init(bars);
+            final Preferences prefs = SiriusDiagramEditorPlugin.getInstance().getPluginPreferences();
 
-        toolBarManager.remove(ActionIds.MENU_COMPARTMENT);
-        toolBarManager.remove(ActionIds.ACTION_COMPARTMENT_ALL);
-        toolBarManager.remove(ActionIds.ACTION_COMPARTMENT_NONE);
-        toolBarManager.remove(ActionIds.ACTION_HIDE_CONNECTION_LABELS);
-        toolBarManager.remove(ActionIds.ACTION_SHOW_CONNECTION_LABELS);
-        toolBarManager.remove(ActionIds.ACTION_SHOW_COMPARTMENT_TITLE);
+            IToolBarManager toolBarManager = bars.getToolBarManager();
+            toolBarManager.remove(ActionIds.MENU_COMPARTMENT);
+            toolBarManager.remove(ActionIds.ACTION_COMPARTMENT_ALL);
+            toolBarManager.remove(ActionIds.ACTION_COMPARTMENT_NONE);
+            toolBarManager.remove(ActionIds.ACTION_HIDE_CONNECTION_LABELS);
+            toolBarManager.remove(ActionIds.ACTION_SHOW_CONNECTION_LABELS);
+            toolBarManager.remove(ActionIds.ACTION_SHOW_COMPARTMENT_TITLE);
 
-        if (!prefs.getBoolean(SiriusDiagramPreferencesKeys.PREF_OLD_UI.name())) {
-            // The actions create for the default GMF toolbar are no longer
-            // useful. They must be removed from the toolbarManager and
-            // disposed. This avoids unnecessary notifications and calculations
-            // on these actions.
-            cleanOldToolBarGMFAction(toolBarManager, ActionIds.CUSTOM_FONT_NAME);
-            cleanOldToolBarGMFAction(toolBarManager, ActionIds.CUSTOM_FONT_COLOR);
-            cleanOldToolBarGMFAction(toolBarManager, ActionIds.CUSTOM_FONT_SIZE);
-            cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_FONT_ITALIC);
-            cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_FONT_BOLD);
-            cleanOldToolBarGMFAction(toolBarManager, ActionIds.CUSTOM_FILL_COLOR);
-            cleanOldToolBarGMFAction(toolBarManager, ActionIds.CUSTOM_LINE_COLOR);
-            cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_MAKE_SAME_SIZE_BOTH);
-            cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_AUTOSIZE);
-            cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_COPY_APPEARANCE_PROPERTIES);
-            cleanOldToolBarGMFAction(toolBarManager, ActionIds.MENU_ARRANGE_TOOLBAR);
-            cleanOldToolBarGMFAction(toolBarManager, ActionIds.MENU_SELECT_TOOLBAR);
-            cleanOldToolBarGMFAction(toolBarManager, ActionIds.MENU_ALIGN);
-            cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_ARRANGE_ALL);
-            cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_ARRANGE_SELECTION);
-            cleanOldToolBarGMFAction(toolBarManager, ActionIds.CUSTOM_ZOOM);
-            cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_SELECT_ALL_CONNECTIONS);
-            cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_SELECT_ALL_SHAPES);
-            cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_TOOLBAR_SELECT_ALL_SHAPES);
-            cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_TOOLBAR_SELECT_ALL_CONNECTIONS);
-            cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_TOOLBAR_SELECT_ALL);
-            cleanOldToolBarGMFAction(toolBarManager, ActionIds.MENU_ROUTER);
-            cleanOldToolBarGMFAction(toolBarManager, ActionIds.MENU_SELECT);
-            cleanOldToolBarGMFAction(toolBarManager, ActionIds.MENU_ARRANGE);
-        } else {
-            Bundle uiWorkbenchBundle = Platform.getBundle("org.eclipse.ui.workbench"); //$NON-NLS-1$
-            Version junoStart = Version.parseVersion("3.103");
-            // Version keplerStart = Version.parseVersion("3.105");
+            if (!prefs.getBoolean(SiriusDiagramPreferencesKeys.PREF_OLD_UI.name())) {
+                // The actions create for the default GMF toolbar are no longer
+                // useful. They must be removed from the toolbarManager and
+                // disposed. This avoids unnecessary notifications and
+                // calculations
+                // on these actions.
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.CUSTOM_FONT_NAME);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.CUSTOM_FONT_COLOR);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.CUSTOM_FONT_SIZE);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_FONT_ITALIC);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_FONT_BOLD);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.CUSTOM_FILL_COLOR);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.CUSTOM_LINE_COLOR);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_MAKE_SAME_SIZE_BOTH);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_AUTOSIZE);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_COPY_APPEARANCE_PROPERTIES);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.CUSTOM_ZOOM);
 
-            if (uiWorkbenchBundle != null && uiWorkbenchBundle.getVersion().compareTo(junoStart) < 0) {
-                // Do not reorder old ui toolbar for 4.x.
-                IContributionItem arrange = toolBarManager.find(ActionIds.MENU_ARRANGE);
-                IContributionItem diagram = toolBarManager.find(REFRESH_DIAGRAM);
-                if (arrange != null && diagram != null) {
-                    toolBarManager.remove(arrange);
-                    toolBarManager.insertBefore(REFRESH_DIAGRAM, arrange);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.MENU_ARRANGE);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_ARRANGE_ALL);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_ARRANGE_SELECTION);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.MENU_ARRANGE_TOOLBAR);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_TOOLBAR_ARRANGE_ALL);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_TOOLBAR_ARRANGE_SELECTION);
 
-                    IContributionItem select = toolBarManager.find(ActionIds.MENU_SELECT);
-                    if (select != null) {
-                        toolBarManager.remove(select);
-                        toolBarManager.insertAfter(ActionIds.MENU_ARRANGE, select);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.MENU_SELECT);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_SELECT_ALL_CONNECTIONS);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_SELECT_ALL_SHAPES);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.MENU_SELECT_TOOLBAR);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_TOOLBAR_SELECT_ALL_SHAPES);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_TOOLBAR_SELECT_ALL_CONNECTIONS);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_TOOLBAR_SELECT_ALL);
 
-                        IContributionItem align = toolBarManager.find(ActionIds.MENU_ALIGN);
-                        if (align != null) {
-                            toolBarManager.remove(align);
-                            toolBarManager.insertAfter(ActionIds.MENU_SELECT, align);
-                            toolBarManager.insertAfter(ActionIds.MENU_ALIGN, new Separator());
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.MENU_ALIGN);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_ALIGN_BOTTOM);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_ALIGN_CENTER);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_ALIGN_LEFT);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_ALIGN_MIDDLE);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_ALIGN_RIGHT);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_ALIGN_TOP);
+
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.MENU_ROUTER);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_ROUTER_OBLIQUE);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_ROUTER_RECTILINEAR);
+                cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_ROUTER_TREE);
+            } else {
+                Bundle uiWorkbenchBundle = Platform.getBundle("org.eclipse.ui.workbench"); //$NON-NLS-1$
+                Version junoStart = Version.parseVersion("3.103");
+                // Version keplerStart = Version.parseVersion("3.105");
+
+                if (uiWorkbenchBundle != null && uiWorkbenchBundle.getVersion().compareTo(junoStart) < 0) {
+                    // Do not reorder old ui toolbar for 4.x.
+                    IContributionItem arrange = toolBarManager.find(ActionIds.MENU_ARRANGE);
+                    IContributionItem diagram = toolBarManager.find(REFRESH_DIAGRAM);
+                    if (arrange != null && diagram != null) {
+                        toolBarManager.remove(arrange);
+                        toolBarManager.insertBefore(REFRESH_DIAGRAM, arrange);
+
+                        IContributionItem select = toolBarManager.find(ActionIds.MENU_SELECT);
+                        if (select != null) {
+                            toolBarManager.remove(select);
+                            toolBarManager.insertAfter(ActionIds.MENU_ARRANGE, select);
+
+                            IContributionItem align = toolBarManager.find(ActionIds.MENU_ALIGN);
+                            if (align != null) {
+                                toolBarManager.remove(align);
+                                toolBarManager.insertAfter(ActionIds.MENU_SELECT, align);
+                                toolBarManager.insertAfter(ActionIds.MENU_ALIGN, new Separator());
+                            }
                         }
                     }
-                }
 
-                IContributionItem setStyleItem = toolBarManager.find(SetStyleToWorkspaceImageAction.SET_STYLE_TO_WORKSPACE_IMAGE_ACTION_ID);
-                IContributionItem copyApparenceItem = toolBarManager.find(ActionIds.ACTION_COPY_APPEARANCE_PROPERTIES);
-                if (setStyleItem != null && copyApparenceItem != null) {
-                    toolBarManager.remove(setStyleItem);
-                    toolBarManager.insertBefore(ActionIds.ACTION_COPY_APPEARANCE_PROPERTIES, setStyleItem);
-                }
+                    IContributionItem setStyleItem = toolBarManager.find(SetStyleToWorkspaceImageAction.SET_STYLE_TO_WORKSPACE_IMAGE_ACTION_ID);
+                    IContributionItem copyApparenceItem = toolBarManager.find(ActionIds.ACTION_COPY_APPEARANCE_PROPERTIES);
+                    if (setStyleItem != null && copyApparenceItem != null) {
+                        toolBarManager.remove(setStyleItem);
+                        toolBarManager.insertBefore(ActionIds.ACTION_COPY_APPEARANCE_PROPERTIES, setStyleItem);
+                    }
 
-                IContributionItem zoom = toolBarManager.find(ActionIds.CUSTOM_ZOOM);
-                IContributionItem launchBehavior = toolBarManager.find(LAUNCH_BEHAVIOR);
-                if (zoom != null && launchBehavior != null) {
-                    toolBarManager.remove(zoom);
-                    toolBarManager.insertAfter(LAUNCH_BEHAVIOR, zoom);
+                    IContributionItem zoom = toolBarManager.find(ActionIds.CUSTOM_ZOOM);
+                    IContributionItem launchBehavior = toolBarManager.find(LAUNCH_BEHAVIOR);
+                    if (zoom != null && launchBehavior != null) {
+                        toolBarManager.remove(zoom);
+                        toolBarManager.insertAfter(LAUNCH_BEHAVIOR, zoom);
+                    }
                 }
             }
+        } finally {
+            reenableActionBarUIUpdates();
         }
+    }
+
+    /**
+     * See {@link WorkbenchWindow#largeUpdateStart()}
+     */
+    private void disableActionBarUIUpdates() {
+        IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+        if (window instanceof WorkbenchWindow) {
+            ((WorkbenchWindow) window).largeUpdateStart();
+        }
+    }
+
+    /**
+     * See {@link WorkbenchWindow#largeUpdateEnd()}
+     */
+    private void reenableActionBarUIUpdates() {
+        IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+        if (window instanceof WorkbenchWindow) {
+            ((WorkbenchWindow) window).largeUpdateEnd();
+        }
+
     }
 
     /**
