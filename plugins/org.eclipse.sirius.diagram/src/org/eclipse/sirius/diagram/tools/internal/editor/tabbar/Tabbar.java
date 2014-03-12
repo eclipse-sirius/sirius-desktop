@@ -37,8 +37,6 @@ import org.eclipse.ui.PlatformUI;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.Version;
 
-import com.google.common.collect.Ranges;
-
 /**
  * A beautiful tab bar.
  * 
@@ -139,7 +137,7 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
         // org.eclipse.core.runtime to be able to differentiate juno3 and juno
         // (both have 3.8 as version on the org.eclipse.core.runtime plugin).
         // Range must not be in [3.103..3.106)
-        return uiWorkbenchBundle != null && !Ranges.closedOpen(junoStart, lunaStart).contains(uiWorkbenchBundle.getVersion());
+        return uiWorkbenchBundle != null && uiWorkbenchBundle.getVersion().compareTo(junoStart) < 0 && uiWorkbenchBundle.getVersion().compareTo(lunaStart) >= 0;
     }
 
     /**
