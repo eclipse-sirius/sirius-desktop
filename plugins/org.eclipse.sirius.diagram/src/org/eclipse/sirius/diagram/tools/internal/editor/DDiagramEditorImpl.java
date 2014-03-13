@@ -361,11 +361,6 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
             super.init(site, correctedInput);
 
-            EObject element = getDiagram().getElement();
-            if (element instanceof DDiagram) {
-                gmfDiagramUpdater = new GMFDiagramUpdater(getSession(), (DDiagram) element);
-            }
-
             if (getSession() != null) {
                 getSession().addListener(this);
 
@@ -615,7 +610,6 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         // Initialize drag'n drop listener from palette
         paletteTransferDropTargetListener = new SiriusPaletteToolDropTargetListener(getGraphicalViewer());
         getDiagramGraphicalViewer().addDropTargetListener(paletteTransferDropTargetListener);
-
 
         /* initialize Java Service. */
         EObject semantic = ViewUtil.resolveSemanticElement(gmfDiagram);
@@ -1277,8 +1271,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      * @see org.eclipse.sirius.diagram.part.SiriusDiagramEditor#getAdapter(java.lang.Class)
      */
     @Override
-    public Object getAdapter(@SuppressWarnings("rawtypes")
-    final Class type) {
+    public Object getAdapter(@SuppressWarnings("rawtypes") final Class type) {
         Object adapter = null;
         if (type == IDiagramCommandFactoryProvider.class) {
             adapter = this.emfCommandFactoryProvider;
@@ -1794,6 +1787,14 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         }
         if (diagramHeaderComposite != null && !diagramHeaderComposite.isDisposed()) {
             diagramHeaderComposite.rebuildHeaderSection();
+        }
+
+        // The input has changed, replace the existing gmfDiagramUpdater
+        if (gmfDiagramUpdater != null) {
+            gmfDiagramUpdater.dispose();
+        }
+        if (representation instanceof DDiagram) {
+            gmfDiagramUpdater = new GMFDiagramUpdater(getSession(), (DDiagram) representation);
         }
     }
 
