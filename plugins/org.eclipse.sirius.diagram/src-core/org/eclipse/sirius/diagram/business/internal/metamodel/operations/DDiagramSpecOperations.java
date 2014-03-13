@@ -10,17 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.metamodel.operations;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
-import java.util.List;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
@@ -34,7 +29,6 @@ import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * Implementation of DDiagramImpl.java.
@@ -192,25 +186,13 @@ public final class DDiagramSpecOperations {
      *         has target and that are instances of the specified type.
      */
     public static EList<DDiagramElement> findDiagramElements(final DDiagram diagram, final EObject semanticElement, final EClass type) {
-        List<EObject> tmpResult = Collections.emptyList();
-        final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(diagram);
-        final String evaluation = "<%eAllContents(\"" + type.getName() + "\").filter(\"DSemanticDecorator\")[target == $semantic]%>";
-        interpreter.setVariable("semantic", semanticElement);
-        try {
-            tmpResult = new ArrayList<EObject>(interpreter.evaluateCollection(diagram, evaluation));
-        } catch (final EvaluationException e) {
-            // do not log anything in this case
-        }
-        interpreter.unSetVariable("semantic");
-        final EList<DDiagramElement> result = new BasicEList<DDiagramElement>(tmpResult.size());
-        final Iterator<EObject> iterTmpResult = tmpResult.iterator();
-        while (iterTmpResult.hasNext()) {
-            final EObject next = iterTmpResult.next();
-            if (next instanceof DDiagramElement) {
-                result.add((DDiagramElement) next);
-            }
-        }
-        return result;
+        /*
+         * The method is deprecated (see DDiagram.findDiagramElements and
+         * SequenceDDiagram.findDiagramElements), unused, and the previous
+         * implementation broken. This is no more broken, and at least it is
+         * fast.
+         */
+        return new BasicEList<DDiagramElement>();
     }
 
 }
