@@ -25,7 +25,7 @@ import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription
 
 /**
  * Queries for DEdges.
- * 
+ *
  * @author nlepine
  */
 public class DEdgeQuery extends DDiagramElementQuery {
@@ -33,7 +33,7 @@ public class DEdgeQuery extends DDiagramElementQuery {
 
     /**
      * Constructor.
-     * 
+     *
      * @param edge
      *            the DEdge to query.
      */
@@ -45,7 +45,7 @@ public class DEdgeQuery extends DDiagramElementQuery {
     /**
      * Indicates if the node as a non-empty name definition, i.e. that its label
      * expression don't always return an empty string.
-     * 
+     *
      * @return true if the node as a non-null and non-empty name, false
      *         otherwise
      */
@@ -63,7 +63,6 @@ public class DEdgeQuery extends DDiagramElementQuery {
                 if (labelStyle instanceof BasicLabelStyleDescription) {
                     String labelExpression = ((BasicLabelStyleDescription) labelStyle).getLabelExpression();
                     hasEmptyNameDefinition = labelExpression.trim().length() != 0;
-                    hasEmptyNameDefinition = hasEmptyNameDefinition && isLabelExpressionEmpty(labelExpression);
                 }
             }
         }
@@ -73,7 +72,7 @@ public class DEdgeQuery extends DDiagramElementQuery {
     /**
      * Indicates if the node as a non-empty name definition, i.e. that its label
      * expression don't always return an empty string.
-     * 
+     *
      * @return true if the node as a non-null and non-empty name, false
      *         otherwise
      */
@@ -82,17 +81,9 @@ public class DEdgeQuery extends DDiagramElementQuery {
     }
 
     /**
-     * @param labelExpression
-     * @return
-     */
-    private boolean isLabelExpressionEmpty(String labelExpression) {
-        return labelExpression.replace("<%", "").replace("%>", "").trim().length() != 0;
-    }
-
-    /**
      * Indicates if the node as a non-empty name definition, i.e. that its label
      * expression don't always return an empty string.
-     * 
+     *
      * @return true if the node as a non-null and non-empty name, false
      *         otherwise
      */
@@ -103,7 +94,7 @@ public class DEdgeQuery extends DDiagramElementQuery {
     /**
      * Indicates if the node as a non-empty name definition, i.e. that its label
      * expression don't always return an empty string.
-     * 
+     *
      * @return true if the node as a non-null and non-empty name, false
      *         otherwise
      */
@@ -113,7 +104,7 @@ public class DEdgeQuery extends DDiagramElementQuery {
 
     /**
      * Return if the edge has a name.
-     * 
+     *
      * @return if the edge has a name
      */
     public boolean hasBeginName() {
@@ -122,7 +113,7 @@ public class DEdgeQuery extends DDiagramElementQuery {
 
     /**
      * Return if the edge has a name.
-     * 
+     *
      * @return if the edge has a name
      */
     public boolean hasEndName() {
@@ -131,7 +122,7 @@ public class DEdgeQuery extends DDiagramElementQuery {
 
     /**
      * Return if the edge has a name.
-     * 
+     *
      * @return if the edge has a name
      */
     public boolean hasCenterName() {
@@ -140,7 +131,7 @@ public class DEdgeQuery extends DDiagramElementQuery {
 
     /**
      * Get the {@link CenterLabelStyle} of the current {@link DEdge}.
-     * 
+     *
      * @return a {@link CenterLabelStyle}
      */
     public Option<CenterLabelStyle> getCenterLabelStyle() {
@@ -149,7 +140,7 @@ public class DEdgeQuery extends DDiagramElementQuery {
 
     /**
      * Get the {@link BeginLabelStyle} of the current {@link DEdge}.
-     * 
+     *
      * @return a {@link BeginLabelStyle}
      */
     public Option<BeginLabelStyle> getBeginLabelStyle() {
@@ -158,7 +149,7 @@ public class DEdgeQuery extends DDiagramElementQuery {
 
     /**
      * Get the {@link EndLabelStyle} of the current {@link DEdge}.
-     * 
+     *
      * @return a {@link EndLabelStyle}
      */
     public Option<EndLabelStyle> getEndLabelStyle() {
@@ -167,7 +158,7 @@ public class DEdgeQuery extends DDiagramElementQuery {
 
     /**
      * Return if the edge has a name.
-     * 
+     *
      * @return if the edge has a name
      */
     public boolean hasName() {
@@ -177,7 +168,7 @@ public class DEdgeQuery extends DDiagramElementQuery {
 
     /**
      * Check if the edgeStyle or one of its label style is custom.
-     * 
+     *
      * @see org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery#isCustomized
      *      ()
      * @return true if the edgeStyle or one of its label style is custom, false

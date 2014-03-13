@@ -90,7 +90,6 @@ public class DNodeQuery {
             if (style != null) {
                 String labelExpression = node.getActualMapping().getStyle().getLabelExpression();
                 hasEmptyNameDefinition = labelExpression.trim().length() != 0;
-                hasEmptyNameDefinition = hasEmptyNameDefinition && labelExpression.replace("<%", "").replace("%>", "").trim().length() != 0;
             }
         }
         return hasEmptyNameDefinition;
