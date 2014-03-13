@@ -207,7 +207,7 @@ class TreeDescriptionBuilderFromEClass {
         if (lookForEditableName(eClassToStartFrom).some()) {
             style.setLabelExpression("feature:name");
         } else {
-            style.setLabelExpression("<%eClass.name%>");
+            style.setLabelExpression("[eClass().name/]");
         }
         style.setLabelSize(10);
 
@@ -238,7 +238,7 @@ class TreeDescriptionBuilderFromEClass {
                 map.getPopupMenus().add(menu);
             }
             for (EClass leaf : concreteSubclasses) {
-                String semanticCandidateExpression = "<%" + ownedReferences.getName() + "%>";
+                String semanticCandidateExpression = "feature:" + ownedReferences.getName();
                 TreeItemMapping childMap = getAlreadyExistingMapping(leaf, semanticCandidateExpression);
                 if (childMap == null) {
                     childMap = buildMappingRecursively(map, leaf, semanticCandidateExpression);
@@ -260,7 +260,7 @@ class TreeDescriptionBuilderFromEClass {
                     newMenuItem.setView(var);
 
                     ChangeContext goToElement = ToolFactory.eINSTANCE.createChangeContext();
-                    goToElement.setBrowseExpression("<%self.target%>");
+                    goToElement.setBrowseExpression("feature:target");
 
                     CreateInstance newChild = ToolFactory.eINSTANCE.createCreateInstance();
                     newChild.setReferenceName(ownedReferences.getName());
@@ -293,7 +293,7 @@ class TreeDescriptionBuilderFromEClass {
 
         SetValue setVal = ToolFactory.eINSTANCE.createSetValue();
         setVal.setFeatureName(editableFeature.getName());
-        setVal.setValueExpression("<%$0%>");
+        setVal.setValueExpression("var:arg0");
 
         ElementDropVariable elementVar = ToolFactory.eINSTANCE.createElementDropVariable();
         elementVar.setName("element");

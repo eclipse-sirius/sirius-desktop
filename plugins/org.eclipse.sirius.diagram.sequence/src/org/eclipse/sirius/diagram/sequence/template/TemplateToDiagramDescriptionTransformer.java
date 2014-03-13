@@ -120,7 +120,7 @@ public class TemplateToDiagramDescriptionTransformer {
 
     private class Lifeline2ExecutionMapping extends AbstractRule<TLifelineMapping, ExecutionMapping> {
 
-        private static final String SELF = "<%self%>";
+        private static final String SELF = "var:self";
 
         public Lifeline2ExecutionMapping(ModelGeneratedMaker marker) {
             super(marker);
@@ -152,7 +152,7 @@ public class TemplateToDiagramDescriptionTransformer {
 
     private class Lifeline2EndOfLifeMapping extends AbstractRule<TLifelineMapping, EndOfLifeMapping> {
 
-        private static final String SELF = "<%self%>";
+        private static final String SELF = "var:self";
 
         public Lifeline2EndOfLifeMapping(ModelGeneratedMaker marker) {
             super(marker);
@@ -343,7 +343,7 @@ public class TemplateToDiagramDescriptionTransformer {
             to.setLineStyle(from.getLineStyle());
             to.setSourceArrow(from.getSourceArrow());
             to.setStrokeColor(from.getStrokeColor());
-            to.setSizeComputationExpression("<%2%>");
+            to.setSizeComputationExpression("2");
             to.setTargetArrow(from.getTargetArrow());
             return to;
         }
@@ -428,7 +428,7 @@ public class TemplateToDiagramDescriptionTransformer {
             to.setBorderSizeComputationExpression(from.getBorderSizeComputationExpression());
             to.setResizeKind(ResizeKind.NORTH_SOUTH_LITERAL);
             to.setShowIcon(false);
-            to.setLabelExpression("<%\"\"%>");
+            to.setLabelExpression("[''/]");
             to.setWidth(2);
             to.setHeight(3);
             return to;
