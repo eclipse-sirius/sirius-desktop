@@ -38,7 +38,7 @@ h3(#for). For
 
 The _For_ element is used to loop over collections of model elements and execute some operations on all of them. The _Expression_ of the _For_ element is executed in the current context, and should return a collection of model elements. The _Iterator name_ property is a fixed string (@i@ by default) which give the name of the variable used for the iteration.
 
-After evaluating the _Expression_, each of the element in the returned collection will be bound in turn to a variable named as specified in _Iterator name_ before the sub-operations of the _For_ element are executed in sequence (once for each of the returned element). Inside the sub-operations, you can access the current element of the iteration using the variable named in _Iterator name_. The actual syntax will vary depending on the query language; for the legacy query language it would be @$i@, for Acceleo 3 simply @i@.
+After evaluating the _Expression_, each of the element in the returned collection will be bound in turn to a variable named as specified in _Iterator name_ before the sub-operations of the _For_ element are executed in sequence (once for each of the returned element). Inside the sub-operations, you can access the current element of the iteration using the variable named in _Iterator name_. The actual syntax will vary depending on the query language you use.
 
 h2(#model_change). Model Change Operations
 
@@ -82,7 +82,7 @@ This operation is specific to diagrams. It can be used to explicitly create a vi
 
 The _Container View Expression_ is evaluated in the context of the current semantic element, and should return the view (@DDiagram@, @DNode@ or @DNodeContainer@) in which the new view should appear. The _Mapping_ indicates the kind of view to create. If the container view expression returns an element which can contain a view for the current semantic element and specified mapping (and does not already contain one), the view will be created, even if the diagram and/or mapping is not synchronized.
 
-Note that because the _Container View Expression_ is evaluated in the context of a semantic element and must return a view, you must use the cross-referencer to navigate from the semantic model to the view model. Using the legacy language you can use the @~@ syntax, as in @self.~target@ to find which elements point to the current one through a reference named @target@ (the views in Sirius diagrams reference their target semantic element through this reference). Using the Acceleo 3 language, you need to use the @eInverse()@ service.
+Note that because the _Container View Expression_ is evaluated in the context of a semantic element and must return a view, you must use the cross-referencer to navigate from the semantic model to the view model. Using the Acceleo 3 language you can use  the @eInverse()@ service to find which elements point to the current one and then select only those which do it  through a reference named @target@ (the views in Sirius diagrams reference their target semantic element through this reference).
 
 The _Variable Name_ property can be set to any valid variable name (@createdView@ by default). The named variable is assigned with the newly created view, so that it can be accessed from the remaining operations in the tool.
 

@@ -352,8 +352,7 @@
 			<em>Ends Ordering</em> handles the vertical order of events. It specifies with an expression how semantic elements must be ordered. These elements should be execution1 start/finish and message send/receive occurrences. 
 		</p>
 		<p>A specific variable exists for this expression: 
-			<code>eventEnds</code> (
-			<code>$eventEnds</code> if you use the legacy Acceleo 2 language). The variable 
+			<code>eventEnds</code> . The variable 
 			<code>eventEnds</code> contains the list of all 
 			<code>EventEnds</code> existing for the current interaction.
 		</p>
@@ -368,8 +367,8 @@
 			<code>Interaction</code> contains all the execution occurrences and the message occurrences. Execution occurrences and messages occurrences are 
 			<code>EventEnd</code> elements. But the fragment reference contains also some other types of elements as execution specifications. In order that the 
 			<em>Ends Ordering</em> property only references 
-			<code>EventEnd</code> elements we need to do an intersection of fragments elements and eventEnds: 
-			<code>&lt;%fragment &amp;&amp; $eventEnds%&gt;</code>. 
+			<code>EventEnd</code> elements we need to do an intersection of fragments elements and eventEnds (using either Acceleo or delegating to a Java service using 
+			<code>service:</code>).. 
 		</p>
 		<p>Furthermore, the lifeline reference defined in an 
 			<code>Interaction</code> contains all the 

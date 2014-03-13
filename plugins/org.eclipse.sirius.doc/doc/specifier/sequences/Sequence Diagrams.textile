@@ -145,13 +145,13 @@ The ordered elements in a sequence diagram are defined with the _Ends Ordering_ 
 
 The _Ends Ordering_ handles the vertical order of events. It specifies with an expression how semantic elements must be ordered. These elements should be execution1 start/finish and message send/receive occurrences. 
 
-A specific variable exists for this expression: @eventEnds@ (@$eventEnds@ if you use the legacy Acceleo 2 language). The variable @eventEnds@ contains the list of all @EventEnds@ existing for the current interaction.
+A specific variable exists for this expression: @eventEnds@ . The variable @eventEnds@ contains the list of all @EventEnds@ existing for the current interaction.
 
 Pay attention: the evaluation of the _Ends Ordering_ expression should returned only elements contained in the @eventEnds@ list.
 
 The _Instance Roles Ordering_ handles the horizontal order of instance roles / lifelines. It specifies with an expression how semantic elements must be ordered. These elements should be the semantic elements which will be represented as instance role. 
 
-If we have a look at the UML2 meta-model, the fragment reference defined in an @Interaction@ contains all the execution occurrences and the message occurrences. Execution occurrences and messages occurrences are @EventEnd@ elements. But the fragment reference contains also some other types of elements as execution specifications. In order that the _Ends Ordering_ property only references @EventEnd@ elements we need to do an intersection of fragments elements and eventEnds: @<%fragment && $eventEnds%>@. 
+If we have a look at the UML2 meta-model, the fragment reference defined in an @Interaction@ contains all the execution occurrences and the message occurrences. Execution occurrences and messages occurrences are @EventEnd@ elements. But the fragment reference contains also some other types of elements as execution specifications. In order that the _Ends Ordering_ property only references @EventEnd@ elements we need to do an intersection of fragments elements and eventEnds (using either Acceleo or delegating to a Java service using @service:@).. 
 
 Furthermore, the lifeline reference defined in an @Interaction@ contains all the @Lifeline@ representing both lifeline and instance role.
 

@@ -495,8 +495,6 @@ Inside a _Direct Edit Label_ tool, you _must_ specify an _Edit Mask Variable_ el
 
 _Note:_ Edges can have up to three different labels (one in the center and one at each extremity), but currently if a _Direct Edit_ tool is associated to an _Edge Mapping_, only the center label (if it exists) can be edited. This restriction will probably be lifted in future versions.
 
-_Note:_ If you use the legacy Acceleo 2-based query language, where variables are prefixed with a @$@-sign, the edit mask variables are also available directly as @$0@, @$1@, etc. This is still supported for compatibility reasons, but it is recommended that you use the new @argN@ variables from now on. The old names are not usable with languages like Acceleo 3 which do not have a prefix for variables.
-
 h4(#selection_wizard). Selection Wizard Description
 
 This tool can be used to open a wizard dialog asking the user to select one or several model elements. The body of the tool is then executed in the context of the element selected by the user.

@@ -102,9 +102,7 @@
 		</p>
 		<ul>
 			<li>At the meta-model level, if you control it, make sure any derived feature always return its values in the same order. If you do not control the meta-model and it has unordered references which can cause problems (UML is an example), you can impose your own ordering by sorting the elements whenever they are used in a Sirius query.</li>
-			<li>At the Sirius query level, make sure you call only operations which are deterministic in the query language(s) you use. For example, the 
-				<code>nMinimize()</code> standard service on the legacy query language is not. Unfortunately, this information is not often documented in the query languages semantics, so some trial and error experimentation is required for now.
-			</li>
+			<li>At the Sirius query level, make sure you call only operations which are deterministic in the query language(s) you use. Unfortunately, this information is not often documented in the query languages semantics, so some trial and error experimentation is required for now.</li>
 			<li>At the service level, if you create your own 
 				<a href="#service_methods">Java services</a>, make sure to use data structures which ensure a fixed iteration order, like 
 				<code>LinkedHashSet</code> instead of 
@@ -117,13 +115,10 @@
 			<li>
 				<strong>
 					<code>var:</code>
-				</strong> This interpreter can only do direct access to the value of a named variable. For example, instead of <code>[containerView/]</code> (using Acceleo) or 
-				<code>&lt;%$containerView%&gt;</code> (using the legacy language), the equivalent using the specialized interpreter would be 
+				</strong> This interpreter can only do direct access to the value of a named variable. For example, instead of <code>[containerView/]</code> (using Acceleo), the equivalent using the specialized interpreter would be 
 				<code>var:containerView</code>. As a special case, the pseudo-variable 
 				<code>self</code> is available to access the current element (the evaluation context): 
-				<code>var:self</code> is equivalent to <code>[self/]</code> in Acceleo, 
-				<code>&lt;%self%&gt;</code> and 
-				<code>&lt;%current%&gt;</code> using the legacy language.
+				<code>var:self</code> is equivalent to <code>[self/]</code> in Acceleo.
 			</li>
 			<li>
 				<strong>
@@ -213,7 +208,7 @@
 			<code>.mtl</code> files in your modeler definitions and build your modeler plug-ins using EMF 2.9 or later, the resulting modeler will not work with previous versions of EMF (as the resulting 
 			<code>.emtl</code> files will not load correctly with EMF 2.8 and earlier). For reference, EMF 2.9 corresponds to Eclipse 4.3 (Kepler). 
 		</p>
-		<p>Acceleo is more precise than the legacy language, but also more demanding, about the types of elements your queries are executed on. This generally means you get better auto-completion and more useful validation and diagnostics. However sometimes Sirius is not able to statically determine the precise type of the model elements on which an expression will be evaluated. In that case, it assumes a plain 
+		<p>Acceleo is very precise (and  very demanding) about the types of elements your queries are executed on. This generally means you get better auto-completion and more useful validation and diagnostics. However sometimes Sirius is not able to statically determine the precise type of the model elements on which an expression will be evaluated. In that case, it assumes a plain 
 			<em>EObject</em>. If you know the actual type which will be used, prefix your expression with 
 			<code>filter(ExpectedType)</code> to help Sirius. Note that if the actual type at runtime is not compatible with 
 			<code>ExpectedType</code>, the rest of your expression will silently be ignored.
@@ -266,8 +261,8 @@
    &lt;/extension&gt;
 </code></pre>
 		<h2 id="service_methods">Writing Java Services</h2>
-		<p>Both Acceleo and the legacy language (which is an older, incompatible version of Acceleo) support the notion of 
-			<em>Java services</em>, which are methods written in Java that can be transparently invoked from interpreted expressions in Sirius. All you need to do is to create a Java class whose methods follow some conventions (described below) in your Viewpoint Specification Project, and declare the class (using its fully qualified Java name) in the VSM. You can then use the services defined in that class in any of you interpreted expressions written in either Acceleo or the legacy language.
+		<p>Query languages may support the notion of 
+			<em>Java services</em>, which are methods written in Java that can be transparently invoked from interpreted expressions in Sirius. Acceleo 3 includes this support. All you need to do is to create a Java class whose methods follow some conventions (described below) in your Viewpoint Specification Project, and declare the class (using its fully qualified Java name) in the VSM. You can then use the services defined in that class in any of you interpreted expressions written in either Acceleo or another language which supports services (refer to the query language&#8217;s documentation for details).
 		</p>
 		<p>A service is simply a public Java methods which follows some conventions:</p>
 		<ul>
@@ -303,15 +298,11 @@
     }
 }
 </code></pre>
-		<p>Once a service has been defined and its class is registered in your VSM, you can invoke it in the expressions of languages which support it (Acceleo and the legacy language) like this: <code>[aFamily.getFamiliesContainingParents()/]</code>. The invocation looks as if the service was a normal feature of the 
+		<p>Once a service has been defined and its class is registered in your VSM, you can invoke it in the expressions of languages which support it  like this: <code>[aFamily.getFamiliesContainingParents()/]</code>. (using Acceleo syntax) The invocation looks as if the service was a normal feature of the 
 			<code>Family</code> type. When the service is invoked, the model element on which it is invoked is used as the first argument to the Java method. If arguments are passed in the expression, they are mapped to the second, third, etc. parameters of the Java method, assuming the types are compatible. The result of evaluating a service invocation is the result of the Java method.
 		</p>
 		<p>
 			<em>Warning:</em> Java service methods should be stateless. There is no guarantee that two successive invocations of the same service method on two model elements (or even on the same one) will use the same instance of the service class.
-		</p>
-		<p>
-			<em>Warning:</em> To test a Java service invoked through a legacy language expression, you have to launch an Eclipse runtime or to type its parameters with 
-			<code>EObject</code> and then cast them to your domain types in the service body.The legacy language interpreter is not able to retrieve non-deployed service with domain types parameters.
 		</p>
 		<p>
 			<em>Warning:</em> There are currently some limitations on the use of Java services from Acceleo:

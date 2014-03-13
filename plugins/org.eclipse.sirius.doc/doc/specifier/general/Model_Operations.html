@@ -171,9 +171,7 @@
 			<em>Expression</em>, each of the element in the returned collection will be bound in turn to a variable named as specified in 
 			<em>Iterator name</em> before the sub-operations of the 
 			<em>For</em> element are executed in sequence (once for each of the returned element). Inside the sub-operations, you can access the current element of the iteration using the variable named in 
-			<em>Iterator name</em>. The actual syntax will vary depending on the query language; for the legacy query language it would be 
-			<code>$i</code>, for Acceleo 3 simply 
-			<code>i</code>.
+			<em>Iterator name</em>. The actual syntax will vary depending on the query language you use.
 		</p>
 		<h2 id="model_change">Model Change Operations</h2>
 		<h3 id="create_instance">Create Instance</h3>
@@ -242,11 +240,9 @@
 			<em>Mapping</em> indicates the kind of view to create. If the container view expression returns an element which can contain a view for the current semantic element and specified mapping (and does not already contain one), the view will be created, even if the diagram and/or mapping is not synchronized.
 		</p>
 		<p>Note that because the 
-			<em>Container View Expression</em> is evaluated in the context of a semantic element and must return a view, you must use the cross-referencer to navigate from the semantic model to the view model. Using the legacy language you can use the 
-			<code>~</code> syntax, as in 
-			<code>self.~target</code> to find which elements point to the current one through a reference named 
-			<code>target</code> (the views in Sirius diagrams reference their target semantic element through this reference). Using the Acceleo 3 language, you need to use the 
-			<code>eInverse()</code> service.
+			<em>Container View Expression</em> is evaluated in the context of a semantic element and must return a view, you must use the cross-referencer to navigate from the semantic model to the view model. Using the Acceleo 3 language you can use  the 
+			<code>eInverse()</code> service to find which elements point to the current one and then select only those which do it  through a reference named 
+			<code>target</code> (the views in Sirius diagrams reference their target semantic element through this reference).
 		</p>
 		<p>The 
 			<em>Variable Name</em> property can be set to any valid variable name (
