@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.api.query;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.diagram.BeginLabelStyle;
 import org.eclipse.sirius.diagram.CenterLabelStyle;
 import org.eclipse.sirius.diagram.DEdge;
@@ -17,8 +18,10 @@ import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EndLabelStyle;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
+import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
 
 /**
  * Queries for DEdges.
@@ -47,14 +50,21 @@ public class DEdgeQuery extends DDiagramElementQuery {
      *         otherwise
      */
     public boolean hasNonEmptyNameDefinition() {
+        return hasNonEmptyNameDefinition(StylePackage.Literals.EDGE_STYLE_DESCRIPTION__CENTER_LABEL_STYLE_DESCRIPTION);
+    }
+
+    private boolean hasNonEmptyNameDefinition(EStructuralFeature labelStyleFeature) {
         boolean hasEmptyNameDefinition = true;
         if (edge.getActualMapping() instanceof EdgeMapping) {
             EdgeMapping actualMapping = (EdgeMapping) edge.getActualMapping();
             EdgeStyleDescription style = actualMapping.getStyle();
-            if (style != null && style.getCenterLabelStyleDescription() != null) {
-                String labelExpression = style.getCenterLabelStyleDescription().getLabelExpression();
-                hasEmptyNameDefinition = labelExpression.trim().length() != 0;
-                hasEmptyNameDefinition = hasEmptyNameDefinition && isLabelExpressionEmpty(labelExpression);
+            if (style != null) {
+                Object labelStyle = style.eGet(labelStyleFeature);
+                if (labelStyle instanceof BasicLabelStyleDescription) {
+                    String labelExpression = ((BasicLabelStyleDescription) labelStyle).getLabelExpression();
+                    hasEmptyNameDefinition = labelExpression.trim().length() != 0;
+                    hasEmptyNameDefinition = hasEmptyNameDefinition && isLabelExpressionEmpty(labelExpression);
+                }
             }
         }
         return hasEmptyNameDefinition;
@@ -87,17 +97,7 @@ public class DEdgeQuery extends DDiagramElementQuery {
      *         otherwise
      */
     public boolean hasNonEmptyBeginNameDefinition() {
-        boolean hasEmptyNameDefinition = true;
-        if (edge.getActualMapping() instanceof EdgeMapping) {
-            EdgeMapping actualMapping = (EdgeMapping) edge.getActualMapping();
-            EdgeStyleDescription style = actualMapping.getStyle();
-            if (style != null && style.getBeginLabelStyleDescription() != null) {
-                String labelExpression = style.getBeginLabelStyleDescription().getLabelExpression();
-                hasEmptyNameDefinition = labelExpression.trim().length() != 0;
-                hasEmptyNameDefinition = hasEmptyNameDefinition && isLabelExpressionEmpty(labelExpression);
-            }
-        }
-        return hasEmptyNameDefinition;
+        return hasNonEmptyNameDefinition(StylePackage.Literals.EDGE_STYLE_DESCRIPTION__BEGIN_LABEL_STYLE_DESCRIPTION);
     }
 
     /**
@@ -108,17 +108,7 @@ public class DEdgeQuery extends DDiagramElementQuery {
      *         otherwise
      */
     public boolean hasNonEmptyEndNameDefinition() {
-        boolean hasEmptyNameDefinition = true;
-        if (edge.getActualMapping() instanceof EdgeMapping) {
-            EdgeMapping actualMapping = (EdgeMapping) edge.getActualMapping();
-            EdgeStyleDescription style = actualMapping.getStyle();
-            if (style != null && style.getEndLabelStyleDescription() != null) {
-                String labelExpression = style.getEndLabelStyleDescription().getLabelExpression();
-                hasEmptyNameDefinition = labelExpression.trim().length() != 0;
-                hasEmptyNameDefinition = hasEmptyNameDefinition && isLabelExpressionEmpty(labelExpression);
-            }
-        }
-        return hasEmptyNameDefinition;
+        return hasNonEmptyNameDefinition(StylePackage.Literals.EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION);
     }
 
     /**
