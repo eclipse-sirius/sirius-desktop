@@ -178,54 +178,6 @@ public final class DDiagramSpecOperations {
         throw new UnsupportedOperationException("Should no more be called");
     }
 
-    // /**
-    // * Defines the current concern of the specified diagram. Updates filters,
-    // * behaviors and rules of the diagram.
-    // *
-    // * @param diagram
-    // * the diagram.
-    // * @param newCurrentConcern
-    // * the concern of the viewpoint.
-    // */
-    // public static void setCurrentConcern(final DDiagram diagram, final
-    // ConcernDescription newCurrentConcern) {
-    // diagram.setCurrentConcern(newCurrentConcern);
-    //
-    // diagram.getActivatedFilters().clear();
-    // diagram.getActivatedRules().clear();
-    // diagram.getActivateBehaviors().clear();
-    // if (newCurrentConcern != null) {
-    // /*
-    // * We want to activate the filters associated with the concern...
-    // */
-    // diagram.getActivatedFilters().addAll(newCurrentConcern.getFilters());
-    // /*
-    // * We want to activate the validation rules associated with the
-    // * concern...
-    // */
-    // diagram.getActivatedRules().addAll(newCurrentConcern.getRules());
-    // /*
-    // * We want to activate the behaviors associated with the concern...
-    // */
-    // diagram.getActivateBehaviors().addAll(newCurrentConcern.getBehaviors());
-    // }
-    //
-    // }
-    //
-    // /**
-    // * Reset the current concern of the specified diagram. Keep filters,
-    // * behaviors and rules of the diagram.
-    // *
-    // * @param diagram
-    // * the diagram.
-    // * @param newCurrentConcern
-    // * the concern of the viewpoint.
-    // */
-    // public static void resetCurrentConcern(final DDiagram diagram, final
-    // ConcernDescription newCurrentConcern) {
-    // diagram.setCurrentConcern(newCurrentConcern);
-    // }
-
     /**
      * Finds all view point elements that have the specified semantic element
      * has target and that are instances of the specified type.
