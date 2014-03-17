@@ -123,21 +123,27 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
     }
 
     /**
-     * Indicates if the tabbar can be dynamic (if the workbench version supports it).
-     * Issues exist with visibleWhen and contributions in Juno and Kepler.
+     * Indicates if the tabbar can be dynamic (if the workbench version supports
+     * it). Issues exist with visibleWhen and contributions in Juno and Kepler.
      * 
      * @return true if the tabbar can be dynamic.
      */
     public static boolean canBeDynamic() {
-        Bundle uiWorkbenchBundle = Platform.getBundle("org.eclipse.ui.workbench"); //$NON-NLS-1$
-        Version junoStart = Version.parseVersion("3.103");
-        Version lunaStart = Version.parseVersion("3.106");
+        boolean canBeDynamic = false;
 
         // The check is done on org.eclipse.ui.workbench and not on
         // org.eclipse.core.runtime to be able to differentiate juno3 and juno
         // (both have 3.8 as version on the org.eclipse.core.runtime plugin).
-        // Range must not be in [3.103..3.106)
-        return uiWorkbenchBundle != null && uiWorkbenchBundle.getVersion().compareTo(junoStart) < 0 && uiWorkbenchBundle.getVersion().compareTo(lunaStart) >= 0;
+        Bundle uiWorkbenchBundle = Platform.getBundle("org.eclipse.ui.workbench"); //$NON-NLS-1$
+        if (uiWorkbenchBundle != null) {
+            Version junoStart = Version.parseVersion("3.103");
+            Version lunaStart = Version.parseVersion("3.106");
+            Version currentVersion = uiWorkbenchBundle.getVersion();
+
+            // Range must not be in [3.103..3.106)
+            canBeDynamic = currentVersion.compareTo(junoStart) < 0 || currentVersion.compareTo(lunaStart) >= 0;
+        }
+        return canBeDynamic;
     }
 
     /**
