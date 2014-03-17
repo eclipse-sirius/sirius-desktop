@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,7 +39,6 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -160,7 +159,6 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
                 }
             }
             addRefreshTask(rootObject, result, tool);
-            addRemoveDanglingReferencesTask(result, tool, rootObject);
             return result;
         }
         return UnexecutableCommand.INSTANCE;
@@ -268,7 +266,6 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
         for (final DSemanticDecorator containerView : containerViews) {
             addRefreshTask(containerView, dCommand, tool);
         }
-        addRemoveDanglingReferencesTask(dCommand, tool, containerViews.iterator().next());
         return compoundCommand;
     }
 
@@ -288,7 +285,6 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
         for (final DSemanticDecorator containerView : containerViews) {
             addRefreshTask(containerView, command, tool);
         }
-        addRemoveDanglingReferencesTask(command, tool, containerViews.iterator().next());
         return command;
     }
 
@@ -313,16 +309,15 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
     }
 
     private void addDiagramVariable(final DCommand command, final EObject containerView, final IInterpreter interpreter) {
-        final DDiagram diag = SiriusDiagramUtil.findDiagram(containerView);
-        if (diag != null) {
+        final Option<DDiagram> diag = new EObjectQuery(containerView).getParentDiagram();
+        if (diag.some()) {
             command.getTasks().add(new AbstractCommandTask() {
-
                 public String getLabel() {
                     return "Add diagram variable";
                 }
 
                 public void execute() {
-                    interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diag);
+                    interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diag.get());
                 }
             });
         }
@@ -411,7 +406,6 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
         if (representation.some() && desc.getInitialOperation() != null && desc.getInitialOperation().getFirstModelOperations() != null) {
             cmd.getTasks().add(commandTaskHelper.buildTaskFromModelOperation(representation.get(), target.getTarget(), desc.getInitialOperation().getFirstModelOperations()));
         }
-        addRemoveDanglingReferencesTask(cmd, desc, target);
         return cmd;
     }
 

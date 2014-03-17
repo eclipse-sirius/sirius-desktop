@@ -33,11 +33,12 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil;
+import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.ui.business.api.provider.DEdgeLabelItemProvider;
 import org.eclipse.sirius.diagram.ui.business.api.provider.DNodeLabelItemProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DiagramOutlinePageListener;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 import org.eclipse.swt.widgets.Display;
 
@@ -183,7 +184,10 @@ public class OutlineContentResourceSetListener extends DemultiplexingListener im
 
         switch (featureID) {
         case DiagramPackage.DDIAGRAM_ELEMENT__VISIBLE:
-            addToRefresh(SiriusDiagramUtil.findDiagram(diagramElement));
+            Option<DDiagram> parentDiagram = new EObjectQuery(diagramElement).getParentDiagram();
+            if (parentDiagram.some()) {
+                addToRefresh(parentDiagram.get());
+            }
             break;
         case DiagramPackage.DDIAGRAM_ELEMENT__NAME:
             addToUpdate(diagramElement);
@@ -199,7 +203,7 @@ public class OutlineContentResourceSetListener extends DemultiplexingListener im
         switch (featureID) {
         case DiagramPackage.ABSTRACT_DNODE__OWNED_BORDERED_NODES:
         case DiagramPackage.ABSTRACT_DNODE__GRAPHICAL_FILTERS:
-            addToRefresh(SiriusDiagramUtil.findDiagram(node));
+            addOptionalParentDiagramRefresh(node);
             break;
         default:
             break;
@@ -213,16 +217,6 @@ public class OutlineContentResourceSetListener extends DemultiplexingListener im
         if (DEdgeLabelItemProvider.hasRelevantLabelItem(edge)) {
             addToUpdate(new DEdgeLabelItemProvider(getAdapterFactoryForNodeLabelItems(), edge));
         }
-        // if (DEdgeBeginLabelItemProvider.hasRelevantLabelItem(edge)) {
-        // addToUpdate(new
-        // DEdgeBeginLabelItemProvider(getAdapterFactoryForNodeLabelItems(),
-        // (DEdge) edge));
-        // }
-        // if (DEdgeEndLabelItemProvider.hasRelevantLabelItem(edge)) {
-        // addToUpdate(new
-        // DEdgeEndLabelItemProvider(getAdapterFactoryForNodeLabelItems(),
-        // (DEdge) edge));
-        // }
     }
 
     /**
@@ -242,10 +236,9 @@ public class OutlineContentResourceSetListener extends DemultiplexingListener im
 
     private void caseDNodeContainer(final Notification n, final DNodeContainer nodeContainer) {
         final int featureID = n.getFeatureID(DNodeContainer.class);
-
         switch (featureID) {
         case DiagramPackage.DNODE_CONTAINER__OWNED_DIAGRAM_ELEMENTS:
-            addToRefresh(SiriusDiagramUtil.findDiagram(nodeContainer));
+            addOptionalParentDiagramRefresh(nodeContainer);
             break;
         default:
             break;
@@ -254,10 +247,9 @@ public class OutlineContentResourceSetListener extends DemultiplexingListener im
 
     private void caseDNodeList(final Notification n, final DNodeList nodeList) {
         final int featureID = n.getFeatureID(DNodeList.class);
-
         switch (featureID) {
         case DiagramPackage.DNODE_LIST__OWNED_ELEMENTS:
-            addToRefresh(SiriusDiagramUtil.findDiagram(nodeList));
+            addOptionalParentDiagramRefresh(nodeList);
             break;
         default:
             break;
@@ -286,6 +278,13 @@ public class OutlineContentResourceSetListener extends DemultiplexingListener im
             default:
                 break;
             }
+        }
+    }
+
+    private void addOptionalParentDiagramRefresh(DDiagramElement element) {
+        Option<DDiagram> parentDiagram = new EObjectQuery(element).getParentDiagram();
+        if (parentDiagram.some()) {
+            addToRefresh(parentDiagram.get());
         }
     }
 

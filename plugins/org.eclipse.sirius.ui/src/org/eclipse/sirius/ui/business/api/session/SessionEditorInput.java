@@ -52,6 +52,8 @@ public class SessionEditorInput extends URIEditorInput {
      */
     private String name;
 
+    private URI sessionResourceURI;
+
     /**
      * Create a new SessionEditorInput with the current session and ui session.
      * 
@@ -66,6 +68,9 @@ public class SessionEditorInput extends URIEditorInput {
         super(uri, name);
         this.name = name;
         this.session = session;
+        if (session.getSessionResource() != null) {
+            this.sessionResourceURI = session.getSessionResource().getURI();
+        }
     }
 
     /**
@@ -77,6 +82,10 @@ public class SessionEditorInput extends URIEditorInput {
      */
     public SessionEditorInput(final IMemento memento) {
         super(memento);
+        String sessionResourceURIString = memento.getString(SESSION_RESOURCE_URI);
+        if (sessionResourceURIString != null) {
+            sessionResourceURI = URI.createURI(sessionResourceURIString);
+        }
     }
 
     /**
@@ -88,7 +97,11 @@ public class SessionEditorInput extends URIEditorInput {
         if (session == null) {
             // It will probably be clean during the dispose, so recreate it from
             // URI.
-            session = getSession(getURI().trimFragment());
+            URI sessionModelURI = getURI().trimFragment();
+            if (sessionResourceURI != null) {
+                sessionModelURI = sessionResourceURI;
+            }
+            session = getSession(sessionModelURI);
         }
         return session;
     }
@@ -119,12 +132,8 @@ public class SessionEditorInput extends URIEditorInput {
         super.saveState(memento);
         memento.putString(NAME_TAG, getName());
         memento.putString(CLASS_TAG, getClass().getName());
-        if (session != null) {
-            Resource sessionResource = session.getSessionResource();
-            if (sessionResource != null) {
-                URI sessionResourceURI = sessionResource.getURI();
-                memento.putString(SESSION_RESOURCE_URI, sessionResourceURI.toString());
-            }
+        if (sessionResourceURI != null) {
+            memento.putString(SESSION_RESOURCE_URI, sessionResourceURI.toString());
         }
     }
 
@@ -135,10 +144,10 @@ public class SessionEditorInput extends URIEditorInput {
     protected void loadState(final IMemento memento) {
         super.loadState(memento);
         setName(memento.getString(NAME_TAG));
-        final String sessionResourceURI = memento.getString(SESSION_RESOURCE_URI);
-        if (sessionResourceURI != null) {
-            final URI sessionModelURI = URI.createURI(sessionResourceURI);
-            session = getSession(sessionModelURI);
+        final String sessionResourceURIString = memento.getString(SESSION_RESOURCE_URI);
+        if (sessionResourceURIString != null) {
+            sessionResourceURI = URI.createURI(sessionResourceURIString);
+            session = getSession(sessionResourceURI);
         }
     }
 
@@ -252,8 +261,7 @@ public class SessionEditorInput extends URIEditorInput {
     }
 
     @Override
-    public Object getAdapter(@SuppressWarnings("rawtypes")
-    Class adapter) {
+    public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
         Object a = super.getAdapter(adapter);
         if (IFile.class == adapter && a == null) {
             if (EMFPlugin.IS_RESOURCES_BUNDLE_AVAILABLE) {

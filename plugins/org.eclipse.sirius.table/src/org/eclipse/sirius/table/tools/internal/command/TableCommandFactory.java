@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.tools.internal.command;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -18,23 +17,18 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.command.AbstractCommand;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
-import org.eclipse.sirius.business.api.helper.task.RemoveDanglingReferencesTask;
-import org.eclipse.sirius.business.api.helper.task.RemoveSemanticDanglingReferenceTask;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
 import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
 import org.eclipse.sirius.business.api.helper.task.label.InitInterpreterFromParsedVariableTask2;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
@@ -132,22 +126,29 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
                 } else {
 
                     final SiriusCommand result = new SiriusCommand(domain);
-                    final boolean automaticRefresh = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
-                    if (getDeleteTool(element) != null) {
-                        addDeleteTableElementFromTool(result, element, getDeleteTool(element));
-                        if (automaticRefresh) {
-                            result.getTasks().add(new RemoveDanglingReferencesTask(EcoreUtil.getRootContainer(((DSemanticDecorator) element).getTarget())));
-                            result.getTasks().add(new RemoveDanglingReferencesTask(EcoreUtil.getRootContainer(element)));
-                        } else {
-                            result.getTasks().add(new RemoveSemanticDanglingReferenceTask(getPermissionAuthority(), Collections.singleton(element.getTarget()), uiCallBack));
-                        }
-                        addRefreshTask(TableHelper.getTable(element), result, getDeleteTool(element));
+                    DeleteTool deleteTool = getDeleteTool(element);
+                    DTable parentTable = TableHelper.getTable(element);
+                    if (deleteTool != null) {
+                        addDeleteTableElementFromTool(result, element, deleteTool);
+                        addRefreshTask(parentTable, result, deleteTool);
                         cmd = new NoNullResourceCommand(result, element);
                     } else {
                         final Set<EObject> allSemanticElements = new HashSet<EObject>();
                         // Get the corresponding semanticElement (and its
                         // children)
                         addSemanticElementsToDestroy(element, allSemanticElements);
+
+                        /*
+                         * Now delete all the table corresponding to the
+                         * semantic elements to delete
+                         */
+                        if (parentTable != null) {
+                            final Set<DSemanticDecorator> tableElements = commandTaskHelper.getDElementToClearFromSemanticElements(parentTable, allSemanticElements);
+                            for (final DSemanticDecorator decorator : tableElements) {
+                                result.getTasks().add(new DeleteTableElementTask(decorator, modelAccessor));
+                            }
+                        }
+
                         /*
                          * Now delete all the semantic elements
                          */
@@ -156,16 +157,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
                             final EObject eObj = it.next();
                             result.getTasks().add(new DeleteTableElementTask(eObj, modelAccessor));
                         }
-                        /*
-                         * and remove possible dangling references
-                         */
-                        if (automaticRefresh) {
-                            result.getTasks().add(new RemoveDanglingReferencesTask(EcoreUtil.getRootContainer(((DSemanticDecorator) element).getTarget())));
-                            result.getTasks().add(new RemoveDanglingReferencesTask(element));
-                        } else {
-                            result.getTasks().add(new RemoveSemanticDanglingReferenceTask(getPermissionAuthority(), Collections.singleton(element.getTarget()), uiCallBack));
-                        }
-                        addRefreshTask(TableHelper.getTable(element), result, getDeleteTool(element));
+                        addRefreshTask(parentTable, result, deleteTool);
                         cmd = new NoNullResourceCommand(result, element);
                     }
                 }
@@ -195,7 +187,6 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
             if (commandTaskHelper.checkPrecondition(semanticCurrentElement, tool)) {
                 SiriusCommand createLineCommand = buildCommandFromModelOfTool(semanticCurrentElement, tool, lineContainer);
                 addRefreshTask(lineContainer, createLineCommand, tool);
-                addRemoveDanglingReferencesTask(createLineCommand, tool, lineContainer);
                 result = createLineCommand;
             }
         }
@@ -226,7 +217,6 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
                 // result.getTasks().add(new CreateDLineTask(tool, result,
                 // modelAccessor, lineContainer));
                 addRefreshTask(containerView, createColumnCommand, tool);
-                addRemoveDanglingReferencesTask(createColumnCommand, tool, containerView);
                 result = createColumnCommand;
             }
         }
@@ -466,16 +456,6 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
     }
 
     /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.tools.api.command.ITableCommandFactory#setAutoRefreshDTable(boolean)
-     */
-    public void setAutoRefreshDTable(final boolean autoRefreshDTable) {
-        // TODO Feature not implemented.
-    }
-
-    /**
      * Appends a command that delete the specified table to the specified
      * command.
      * 
@@ -491,39 +471,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
             if (!getPermissionAuthority().canEditInstance(table.eContainer())) {
                 cmd.chain(new InvalidPermissionCommand(domain, table.eContainer()));
             } else {
-                /*
-                 * If the viewpoint is a root viewpoint then we should not
-                 * delete it !
-                 */
-                // if (table.getView() != null &&
-                // table.getView().getOwnedRepresentations().contains(table)) {
                 cmd.getTasks().add(UnexecutableTask.INSTANCE);
-                // } else {
-                // // delete the viewpoint
-                // addDeleteSiriusTask(cmd, table);
-                //
-                // // delete the subviewpoints
-                // final Iterator<EObject> it = table.eAllContents();
-                // while (it.hasNext()) {
-                // final EObject eObj = it.next();
-                // if (eObj instanceof DDiagram) {
-                // addDeleteSiriusTask(cmd, (DDiagram) eObj);
-                // }
-                // }
-                //
-                // // remove the dangling references of the viewpoint
-                // cmd.getTasks().add(new AbstractCommandTask() {
-                //
-                // public void execute() {
-                // RemoveDanglingReferences.removeDanglingReferences(EcoreUtil.
-                // getRootContainer(table));
-                // }
-                //
-                // public String getLabel() {
-                // return null;
-                // }
-                // });
-                // }
             }
         }
     }
@@ -576,7 +524,6 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
             if (editedCell.getUpdater() != null) {
                 if (editedCell.getUpdater().getDirectEdit() != null) {
                     result = buildCommandFromCell(editedCell, editedCell.getUpdater().getDirectEdit(), newValue);
-                    addRemoveDanglingReferencesTask((DCommand) result, editedCell.getUpdater().getDirectEdit(), TableHelper.getTable(editedCell));
                     addRefreshTask(TableHelper.getTable(editedCell), (SiriusCommand) result, null);
                 }
             }
@@ -602,7 +549,6 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
                 final Option<CreateCellTool> optionalCreateCellTool = TableHelper.getCreateCellTool(line, column);
                 if (optionalCreateCellTool.some()) {
                     result = buildCommandFromIntersection(line, column, optionalCreateCellTool.get(), newValue);
-                    addRemoveDanglingReferencesTask((DCommand) result, optionalCreateCellTool.get(), TableHelper.getTable(line));
                     addRefreshTask(TableHelper.getTable(line), (SiriusCommand) result, optionalCreateCellTool.get());
                 }
             }
@@ -813,7 +759,6 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
         final ICommandTask initInterpreterVariables = new InitInterpreterVariablesTask(variables, stringVariables, InterpreterUtil.getInterpreter(target), uiCallBack);
         cmd.getTasks().add(initInterpreterVariables);
         cmd.getTasks().add(commandTaskHelper.buildTaskFromModelOperation(TableHelper.getTable(target), target.getTarget(), desc.getInitialOperation().getFirstModelOperations()));
-        addRemoveDanglingReferencesTask(cmd, desc, target);
         return cmd;
     }
 }

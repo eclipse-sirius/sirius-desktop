@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.draw2d.IFigure;
@@ -20,7 +19,6 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
@@ -38,8 +36,6 @@ import org.eclipse.gmf.runtime.diagram.ui.figures.BorderedNodeFigure;
 import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.sirius.business.api.helper.task.ICommandTask;
-import org.eclipse.sirius.business.api.helper.task.RemoveDanglingReferencesTask;
 import org.eclipse.sirius.business.api.resource.WorkspaceDragAndDropSupport;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -63,15 +59,9 @@ import org.eclipse.sirius.diagram.ui.tools.api.draw2d.ui.figures.FigureUtilities
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.dnd.DragAndDropWrapper;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
-import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.DragSource;
 import org.eclipse.swt.graphics.Color;
-
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * EditPolicy used to handle Drop of ViewNodes in a DDiagramElementContainer.
@@ -329,9 +319,6 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
                         command.append(cmd);
                     }
                 }
-                if (structuredSelection.size() > 1) {
-                    minimizeRefresh(command, editingDomain);
-                }
                 AbstractLayoutData abstractLayoutData = new RootLayoutData(getHost(), adaptedRequestLocation, new Dimension(-1, -1));
                 org.eclipse.emf.common.command.Command addLayoutDataToManageCommand = new AddLayoutDataToManageCommand(abstractLayoutData);
                 if (addLayoutDataToManageCommand != null && addLayoutDataToManageCommand.canExecute()) {
@@ -370,49 +357,6 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
             current = current.eContainer();
         }
         return semanticContainer;
-    }
-
-    private void minimizeRefresh(org.eclipse.emf.common.command.CompoundCommand command, TransactionalEditingDomain editingDomain) {
-        SiriusCommand vc = new SiriusCommand(editingDomain);
-        Set<RemoveDanglingReferencesTask> removeDanglingReferencesTasks = extractRemoveDanglingReferencesTasks(command);
-
-        // add a unique remove dangling referenceTask for each resource*/
-        Set<Resource> knownResources = Sets.newLinkedHashSet();
-        for (RemoveDanglingReferencesTask task : removeDanglingReferencesTasks) {
-            EObject root = task.getRoot();
-            Resource res = root == null ? null : root.eResource();
-            if (res != null && !knownResources.contains(res)) {
-                vc.getTasks().add(task);
-                knownResources.add(res);
-            }
-        }
-        knownResources.clear();
-
-        if (!vc.getTasks().isEmpty()) {
-            command.append(vc);
-        }
-    }
-
-    /**
-     * Extract RemoveDanglingReferencesTask.
-     * 
-     * @param command
-     *            The command to deal with.
-     * @return List of RemoveDanglingReferencesTask.
-     */
-    private Set<RemoveDanglingReferencesTask> extractRemoveDanglingReferencesTasks(org.eclipse.emf.common.command.CompoundCommand command) {
-        Set<RemoveDanglingReferencesTask> tasks = new LinkedHashSet<RemoveDanglingReferencesTask>();
-        for (org.eclipse.emf.common.command.Command cmdChild : command.getCommandList()) {
-            if (cmdChild instanceof SiriusCommand) {
-                SiriusCommand vCmd = (SiriusCommand) cmdChild;
-
-                for (ICommandTask task : Lists.newArrayList(Iterables.filter(vCmd.getTasks(), Predicates.instanceOf(RemoveDanglingReferencesTask.class)))) {
-                    vCmd.getTasks().remove(task);
-                    tasks.add((RemoveDanglingReferencesTask) task);
-                }
-            }
-        }
-        return tasks;
     }
 
     private org.eclipse.emf.common.command.Command getSaveLayoutCommand(final Point moveDelta, final Iterable<IGraphicalEditPart> editPartsToDrop, TransactionalEditingDomain editingDomain,

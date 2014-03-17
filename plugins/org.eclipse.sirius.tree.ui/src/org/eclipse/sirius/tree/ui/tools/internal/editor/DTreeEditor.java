@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,8 +24,6 @@ import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.preferences.IEclipsePreferences.IPreferenceChangeListener;
-import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -58,7 +56,6 @@ import org.eclipse.sirius.tree.business.internal.helper.TreeHelper;
 import org.eclipse.sirius.tree.business.internal.refresh.DTreeElementSynchronizerSpec;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
 import org.eclipse.sirius.tree.ui.tools.internal.command.EMFCommandFactoryUI;
-import org.eclipse.sirius.tree.ui.tools.internal.editor.preferences.SiriusPreferenceChangeListener;
 import org.eclipse.sirius.ui.business.api.descriptor.ComposedImageDescriptor;
 import org.eclipse.sirius.ui.business.api.dialect.marker.TraceabilityMarkerNavigationProvider;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
@@ -111,8 +108,6 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
     private IPartListener refreshAtOpeningActivator;
 
     private DTree treeModel;
-
-    private IPreferenceChangeListener viewPointPreferenceChangeListener;
 
     /**
      * {@inheritDoc}
@@ -198,9 +193,6 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
 
             /* Update title. Semantic tree could have been renamed */
             notify(PROP_TITLE);
-
-            /* handle preferences */
-            InstanceScope.INSTANCE.getNode(SiriusPlugin.ID).addPreferenceChangeListener(viewPointPreferenceChangeListener);
 
             // Launch the refresh if needed
             if (DialectManager.INSTANCE.isRefreshActivatedOnRepresentationOpening()) {
@@ -315,16 +307,9 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
     private void initCommandFactoryProviders() {
         /* get IEMFCommandFactories */
         emfCommandFactory = TreeCommandFactoryService.getInstance().getNewProvider().getCommandFactory(getEditingDomain());
-        // Set the automatic refresh according to the preference
-        ((ITreeCommandFactory) emfCommandFactory).setAutoRefreshDTree(isAutoRefresh());
-        /*
-         * We add a callback for UI stuffs
-         */
+
+        /* We add a callback for UI stuffs */
         emfCommandFactory.setUserInterfaceCallBack(new EMFCommandFactoryUI());
-
-        /* Set viewpoint preference change listener */
-        viewPointPreferenceChangeListener = new SiriusPreferenceChangeListener((ITreeCommandFactory) emfCommandFactory);
-
     }
 
     private IInterpreter getInterpreter() {
@@ -594,9 +579,6 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
         if (getAdapterFactory() instanceof IDisposable) {
             ((IDisposable) getAdapterFactory()).dispose();
         }
-
-        InstanceScope.INSTANCE.getNode(SiriusPlugin.ID).removePreferenceChangeListener(viewPointPreferenceChangeListener);
-        viewPointPreferenceChangeListener = null;
     }
 
     /**

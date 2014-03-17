@@ -362,11 +362,6 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
             super.init(site, correctedInput);
 
-            EObject element = getDiagram().getElement();
-            if (element instanceof DDiagram) {
-                gmfDiagramUpdater = new GMFDiagramUpdater(getSession(), (DDiagram) element);
-            }
-
             if (getSession() != null) {
                 getSession().addListener(this);
 
@@ -1793,6 +1788,14 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         }
         if (diagramHeaderComposite != null && !diagramHeaderComposite.isDisposed()) {
             diagramHeaderComposite.rebuildHeaderSection();
+        }
+
+        // The input has changed, replace the existing gmfDiagramUpdater
+        if (gmfDiagramUpdater != null) {
+            gmfDiagramUpdater.dispose();
+        }
+        if (representation instanceof DDiagram) {
+            gmfDiagramUpdater = new GMFDiagramUpdater(getSession(), (DDiagram) representation);
         }
     }
 

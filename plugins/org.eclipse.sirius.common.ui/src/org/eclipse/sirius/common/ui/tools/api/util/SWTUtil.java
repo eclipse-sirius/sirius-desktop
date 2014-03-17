@@ -18,6 +18,9 @@ import org.eclipse.jface.dialogs.MessageDialogWithToggle;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.window.Window;
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.sirius.common.ui.tools.api.dialog.SiriusMessageDialogWithToggle;
+import org.eclipse.sirius.common.ui.tools.internal.util.ISaveDialogExtensionDescriptor;
+import org.eclipse.sirius.common.ui.tools.internal.util.ISaveDialogExtensionRegistry;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.DisposeEvent;
 import org.eclipse.swt.events.DisposeListener;
@@ -40,10 +43,6 @@ import org.eclipse.ui.internal.WorkbenchMessages;
 import org.eclipse.ui.part.PageBook;
 
 import com.google.common.collect.Maps;
-
-import org.eclipse.sirius.common.ui.tools.api.dialog.SiriusMessageDialogWithToggle;
-import org.eclipse.sirius.common.ui.tools.internal.util.ISaveDialogExtensionDescriptor;
-import org.eclipse.sirius.common.ui.tools.internal.util.ISaveDialogExtensionRegistry;
 
 /**
  * Utility class to avoid verbose SWT code.
@@ -467,9 +466,9 @@ public final class SWTUtil {
 
                 choice = dialog.open();
 
-                // User pressed "Escape"
+                // User has pressed "Escape" or has closed the dialog
                 if (choice == SWT.DEFAULT) {
-                    choice = ISaveablePart2.CANCEL;
+                    choice = IDialogConstants.CANCEL_ID;
                 }
 
                 // React to the use preference choice.

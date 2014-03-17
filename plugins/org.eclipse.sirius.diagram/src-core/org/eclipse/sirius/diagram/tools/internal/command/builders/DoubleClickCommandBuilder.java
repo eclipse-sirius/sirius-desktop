@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -77,7 +77,7 @@ public class DoubleClickCommandBuilder extends AbstractDiagramCommandBuilder {
         IInterpreter interpreter = InterpreterUtil.getInterpreter(dDiagramElement);
         cmd.getTasks().add(new InitInterpreterVariablesTask(variables, interpreter, uiCallback));
 
-        Option<DDiagram> parentDiagram = new EObjectQuery(dDiagramElement).getParentDiagram();
+        Option<DDiagram> parentDiagram = getDDiagram();
         if (tool.getInitialOperation() != null && tool.getInitialOperation().getFirstModelOperations() != null) {
             cmd.getTasks().add(taskHelper.buildTaskFromModelOperation(parentDiagram.get(), dDiagramElement, tool.getInitialOperation().getFirstModelOperations()));
             addPostOperationTasks(cmd, interpreter);
@@ -97,7 +97,6 @@ public class DoubleClickCommandBuilder extends AbstractDiagramCommandBuilder {
     protected void addPostOperationTasks(final DCommand command, IInterpreter interpreter) {
         if (dDiagramElement != null) {
             addRefreshTask(dDiagramElement, command, tool);
-            addRemoveDanglingReferencesTask(command, tool, dDiagramElement);
         }
     }
 
@@ -106,5 +105,13 @@ public class DoubleClickCommandBuilder extends AbstractDiagramCommandBuilder {
      */
     protected String getEnclosingCommandLabel() {
         return new IdentifiedElementQuery(tool).getLabel();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Option<DDiagram> getDDiagram() {
+        return new EObjectQuery(dDiagramElement).getParentDiagram();
     }
 }

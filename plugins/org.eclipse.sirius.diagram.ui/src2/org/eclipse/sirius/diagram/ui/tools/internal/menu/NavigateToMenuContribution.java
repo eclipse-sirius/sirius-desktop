@@ -50,11 +50,12 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil;
+import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.NavigateToCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.EMFCommandFactoryUI;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -158,7 +159,12 @@ public class NavigateToMenuContribution implements IContributionItemProvider {
         navigate.add(createGroup);
         for (RepresentationNavigationDescription navDesc : element.getMapping().getNavigationDescriptions()) {
             final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(element.getTarget());
-            interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, SiriusDiagramUtil.findDiagram(element));
+            Option<DDiagram> diagram = new EObjectQuery(element).getParentDiagram();
+            if (diagram.some()) {
+                interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diagram.get());
+            } else {
+                interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, null);
+            }
 
             final Map<AbstractVariable, Object> variables = new HashMap<AbstractVariable, Object>();
             variables.put(navDesc.getContainerVariable(), element.getTarget());

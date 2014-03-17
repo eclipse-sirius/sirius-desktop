@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,37 +21,59 @@ import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.transaction.NotificationFilter;
-import org.eclipse.emf.transaction.ResourceSetChangeEvent;
-import org.eclipse.emf.transaction.ResourceSetListenerImpl;
-import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.business.api.session.SessionListener;
+import org.eclipse.sirius.business.internal.session.danalysis.DanglingRefRemovalTrigger;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.command.ui.RefreshFilterManager;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
-import com.google.common.collect.Iterables;
+import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;
 
 /**
  * A listener to refresh all Sirius opened editors. It is used as :
  * <UL>
- * <LI>precommit listener : on semantic modifications (with
- * transactionAboutToCommit())</LI>
+ * <LI>precommit listener (a model change trigger of the
+ * {@link org.eclipse.sirius.business.api.session.SessionEventBroker}) : on
+ * semantic modifications (with localChangesAboutToCommit())</LI>
  * <LI>session listener : on reloading of resources detecting by the session
  * itself (with notify())</LI>
  * </UL>
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
-public class RefreshEditorsPrecommitListener extends ResourceSetListenerImpl implements SessionListener {
+public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, SessionListener {
+
+    /**
+     * Priority of this {@link ModelChangeTrigger}.
+     */
+    public static final int REFRESH_EDITOR_PRIORITY = DanglingRefRemovalTrigger.DANGLING_REFERENCE_REMOVAL_PRIORITY + 1;
+
+    /**
+     * Filter {@link Notification}s which are not touch. More filtering work is
+     * done later in localChangesAboutToCommit, see
+     * isImpactingNotification(Collection<Notification>) which return true as
+     * soon as an impacting notification is found. This is not done here for
+     * performance reason: we need the container resource of the notifier.
+     */
+    public static final Predicate<Notification> IS_IMPACTING = new Predicate<Notification>() {
+
+        /**
+         * {@inheritDoc}
+         */
+        public boolean apply(Notification input) {
+            return !input.isTouch();
+        }
+    };
 
     /**
      * The editing domain used to create the refresh command.
@@ -67,36 +89,30 @@ public class RefreshEditorsPrecommitListener extends ResourceSetListenerImpl imp
     /**
      * Representations to refresh even if any editors is opened on it.
      */
-    private Collection<DRepresentation> representationsToForceRefresh = new ArrayList<DRepresentation>();
+    private final Collection<DRepresentation> representationsToForceRefresh = new ArrayList<DRepresentation>();
 
     /**
      * A list of {@link PostRefreshCommandFactory} that is called to complete
      * the refresh command. The commands provided by the factory is added after
      * the refresh command if it can be executed.
      */
-    private Collection<PostRefreshCommandFactory> postRefreshCommandFactories = new ArrayList<PostRefreshCommandFactory>();
+    private final Collection<PostRefreshCommandFactory> postRefreshCommandFactories = new ArrayList<PostRefreshCommandFactory>();
 
     /**
      * Default constructor.
      * 
      * @param transactionalEditingDomain
-     *            The editing domain used to create the refresh command, this
-     *            {@link TransactionalEditingDomain} must be the same as
-     *            indicated by received {@link ResourceSetChangeEvent}s.
+     *            The editing domain used to create the refresh command.
      */
     public RefreshEditorsPrecommitListener(TransactionalEditingDomain transactionalEditingDomain) {
-        super(NotificationFilter.NOT_TOUCH);
         this.transactionalEditingDomain = transactionalEditingDomain;
     }
 
-    @Override
-    public boolean isPrecommitOnly() {
-        return true;
-    }
-
-    @Override
-    public boolean isAggregatePrecommitListener() {
-        return true;
+    /**
+     * {@inheritDoc}
+     */
+    public int priority() {
+        return REFRESH_EDITOR_PRIORITY;
     }
 
     /**
@@ -104,15 +120,12 @@ public class RefreshEditorsPrecommitListener extends ResourceSetListenerImpl imp
      * 
      * Do a refresh only if there is at least one notification that concern
      * another thing that an aird Resource.
-     * 
-     * @see org.eclipse.emf.transaction.ResourceSetListenerImpl#transactionAboutToCommit(org.eclipse.emf.transaction.ResourceSetChangeEvent)
      */
-    @Override
-    public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
+    public Option<Command> localChangesAboutToCommit(Collection<Notification> notifications) {
         Command result = null;
         if (needsRefresh()) {
 
-            boolean impactingNotification = isImpactingNotification(event);
+            boolean impactingNotification = isImpactingNotification(notifications);
             // Do nothing if the notification concern only elements of aird
             // resource and that the representationsToForceRefresh is empty.
             if (impactingNotification || !representationsToForceRefresh.isEmpty()) {
@@ -124,15 +137,12 @@ public class RefreshEditorsPrecommitListener extends ResourceSetListenerImpl imp
         }
         setForceRefresh(false);
         representationsToForceRefresh.clear();
-        if (result == null) {
-            result = super.transactionAboutToCommit(event);
-        }
-        return result;
+        return Options.newSome(result);
     }
 
-    private boolean isImpactingNotification(final ResourceSetChangeEvent event) {
+    private boolean isImpactingNotification(final Collection<Notification> notifications) {
         boolean isImpactingNotification = false;
-        for (Notification notification : Iterables.filter(event.getNotifications(), Notification.class)) {
+        for (Notification notification : notifications) {
             Object notifier = notification.getNotifier();
             if (notifier instanceof EObject) {
                 EObject eObjectNotifier = (EObject) notifier;
@@ -169,6 +179,8 @@ public class RefreshEditorsPrecommitListener extends ResourceSetListenerImpl imp
         // Refresh only the editors of the current editing domain.
         for (DRepresentation rep : Lists.newArrayList(representationsToRefresh)) {
             if (transactionalEditingDomain != TransactionUtil.getEditingDomain(rep)) {
+                representationsToRefresh.remove(rep);
+            } else if (rep instanceof DSemanticDecorator && transactionalEditingDomain != TransactionUtil.getEditingDomain(((DSemanticDecorator) rep).getTarget())) {
                 representationsToRefresh.remove(rep);
             }
         }

@@ -120,7 +120,7 @@ public class SiriusDiagramTestCase extends SiriusTestCase {
 
     private static final String TOOL_NAME_INCORRECT = "The tool name is not correct";
 
-    private static final String LAYER_NAME_INCORRECT = "The layer name is not correct";
+    private static final String LAYER_NAME_INCORRECT = "The layer name is not correct (not found in the diagram description of this diagram)";
 
     private static final String FILTER_NAME_INCORRECT = "The filter name is not correct";
 

@@ -26,10 +26,12 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.common.ui.tools.api.selection.EObjectPaneBasedSelectionWizard;
 import org.eclipse.sirius.diagram.AbstractDNode;
-import org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
@@ -91,7 +93,12 @@ public class PaneBasedSelectionWizardCommand extends AbstractSelectionWizardComm
             final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(containerView.getTarget());
             // variables
             interpreter.setVariable(tool.getContainerView().getName(), containerView);
-            interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, SiriusDiagramUtil.findDiagram(containerView));
+            Option<DDiagram> diagram = new EObjectQuery(containerView).getParentDiagram();
+            if (diagram.some()) {
+                interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diagram.get());
+            } else {
+                interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, null);
+            }
             interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER_VIEW, containerView);
             interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER, containerView.getTarget());
 
@@ -137,7 +144,12 @@ public class PaneBasedSelectionWizardCommand extends AbstractSelectionWizardComm
 
             // variables
             interpreter.setVariable(tool.getContainerView().getName(), containerView);
-            interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, SiriusDiagramUtil.findDiagram(containerView));
+            Option<DDiagram> diagram = new EObjectQuery(containerView).getParentDiagram();
+            if (diagram.some()) {
+                interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diagram.get());
+            } else {
+                interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, null);
+            }
             interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER_VIEW, containerView);
             interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER, container);
 
@@ -160,7 +172,12 @@ public class PaneBasedSelectionWizardCommand extends AbstractSelectionWizardComm
         if (AbstractSelectionWizardCommand.checkPrecondition(tool, containerView, container)) {
             // variables
             interpreter.setVariable(tool.getContainerView().getName(), containerView);
-            interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, SiriusDiagramUtil.findDiagram(containerView));
+            Option<DDiagram> diagram = new EObjectQuery(containerView).getParentDiagram();
+            if (diagram.some()) {
+                interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diagram.get());
+            } else {
+                interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, null);
+            }
             interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER_VIEW, containerView);
             interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER, container);
 

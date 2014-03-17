@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,8 +28,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.preferences.IEclipsePreferences.IPreferenceChangeListener;
-import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
@@ -63,7 +61,6 @@ import org.eclipse.sirius.table.tools.api.command.ITableCommandFactoryProvider;
 import org.eclipse.sirius.table.tools.api.command.TableCommandFactoryService;
 import org.eclipse.sirius.table.ui.tools.api.editor.DTableEditor;
 import org.eclipse.sirius.table.ui.tools.internal.command.EMFCommandFactoryUI;
-import org.eclipse.sirius.table.ui.tools.internal.editor.preferences.SiriusPreferenceChangeListener;
 import org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableEditorUtil;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
@@ -123,8 +120,6 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
     private DTable tableModel;
 
     private IPartListener refreshAtOpeningActivator;
-
-    private IPreferenceChangeListener viewPointPreferenceChangeListener;
 
     private IInterpreter getInterpreter() {
         return SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(getTableModel().getTarget());
@@ -295,9 +290,6 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
             /* Update title. Semantic table could have been renamed */
             notify(PROP_TITLE);
 
-            /* handle preferences */
-            InstanceScope.INSTANCE.getNode(SiriusPlugin.ID).addPreferenceChangeListener(viewPointPreferenceChangeListener);
-
             // Launch the refresh if needed
             if (DialectManager.INSTANCE.isRefreshActivatedOnRepresentationOpening()) {
                 launchRefresh();
@@ -314,15 +306,9 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
     private void configureCommandFactoryProviders() {
         /* get IEMFCommandFactories */
         emfCommandFactory = TableCommandFactoryService.getInstance().getNewProvider().getCommandFactory(getEditingDomain());
-        // Set the automatic refresh according to the preference
-        ((ITableCommandFactory) emfCommandFactory).setAutoRefreshDTable(isAutoRefresh());
-        /*
-         * We add a callback for UI stuffs
-         */
-        emfCommandFactory.setUserInterfaceCallBack(new EMFCommandFactoryUI());
 
-        /* Set viewpoint preference change listener */
-        viewPointPreferenceChangeListener = new SiriusPreferenceChangeListener((ITableCommandFactory) emfCommandFactory);
+        /* We add a callback for UI stuffs */
+        emfCommandFactory.setUserInterfaceCallBack(new EMFCommandFactoryUI());
     }
 
     /**
@@ -653,9 +639,5 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
             getSite().getPage().removePartListener(refreshAtOpeningActivator);
             refreshAtOpeningActivator = null;
         }
-
-        InstanceScope.INSTANCE.getNode(SiriusPlugin.ID).removePreferenceChangeListener(viewPointPreferenceChangeListener);
-        viewPointPreferenceChangeListener = null;
-
     }
 }

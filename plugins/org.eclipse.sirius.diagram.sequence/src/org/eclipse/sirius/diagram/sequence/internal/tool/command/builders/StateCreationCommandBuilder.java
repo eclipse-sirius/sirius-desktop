@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,15 +17,12 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.State;
 import org.eclipse.sirius.diagram.sequence.description.tool.OrderedElementCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.StateCreationTool;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.tools.internal.command.builders.NodeCreationCommandBuilder;
-import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
@@ -72,7 +69,6 @@ public class StateCreationCommandBuilder extends NodeCreationCommandBuilder {
      */
     @Override
     protected DCommand buildCreateNodeCommandFromTool(EObject semanticContainer, EObject container) {
-        Option<DDiagram> parentDiagram = new EObjectQuery(container).getParentDiagram();
         final DCommand result = createEnclosingCommand();
         if (permissionAuthority.canEditInstance(diagramElement)) {
             final IInterpreter interpreter = InterpreterUtil.getInterpreter(semanticContainer);
@@ -88,9 +84,8 @@ public class StateCreationCommandBuilder extends NodeCreationCommandBuilder {
             }
             // </added for ExecutionCreationTool>
             addDiagramVariable(result, container, interpreter);
-
-            if (parentDiagram.some() && tool.getInitialOperation().getFirstModelOperations() != null) {
-                result.getTasks().add(taskHelper.buildTaskFromModelOperation(parentDiagram.get(), semanticContainer, tool.getInitialOperation().getFirstModelOperations()));
+            if (tool.getInitialOperation().getFirstModelOperations() != null) {
+                result.getTasks().add(taskHelper.buildTaskFromModelOperation(diagram, semanticContainer, tool.getInitialOperation().getFirstModelOperations()));
             }
 
         } else {

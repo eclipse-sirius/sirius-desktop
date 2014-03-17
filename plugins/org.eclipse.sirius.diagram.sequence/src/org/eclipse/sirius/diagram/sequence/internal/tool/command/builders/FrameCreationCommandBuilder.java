@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,6 @@ import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionUse;
@@ -28,7 +27,6 @@ import org.eclipse.sirius.diagram.sequence.description.tool.CoveringElementCreat
 import org.eclipse.sirius.diagram.sequence.description.tool.OrderedElementCreationTool;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.tools.internal.command.builders.ContainerCreationCommandBuilder;
-import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
@@ -59,8 +57,6 @@ public class FrameCreationCommandBuilder extends ContainerCreationCommandBuilder
      */
     protected List<EObject> coverage;
 
-    private final DDiagram dDiagram;
-
     /**
      * Constructor to renseign default elts needed by NodeCreationCommandBuilder
      * and value needed by StateCreationTool.
@@ -78,7 +74,6 @@ public class FrameCreationCommandBuilder extends ContainerCreationCommandBuilder
      */
     public FrameCreationCommandBuilder(ContainerCreationDescription tool, DDiagram diagram, EventEnd startingEndPredecessor, EventEnd finishingEndPredecessor, List<EObject> coverage) {
         super(tool, diagram);
-        dDiagram = diagram;
         this.startingEndPredecessor = startingEndPredecessor;
         this.finishingEndPredecessor = finishingEndPredecessor;
         this.coverage = coverage;
@@ -106,10 +101,9 @@ public class FrameCreationCommandBuilder extends ContainerCreationCommandBuilder
                 CoveringElementCreationTool cect = (CoveringElementCreationTool) tool;
                 variables.put(cect.getCoveredLifelines(), coverage);
             }
-            addDiagramVariable(result, container, interpreter);
 
-            Option<DDiagram> parentDiagram = new EObjectQuery(container).getParentDiagram();
-            result.getTasks().add(taskHelper.buildTaskFromModelOperation(parentDiagram.get(), semanticContainer, tool.getInitialOperation().getFirstModelOperations()));
+            addDiagramVariable(result, container, interpreter);
+            result.getTasks().add(taskHelper.buildTaskFromModelOperation(diagram, semanticContainer, tool.getInitialOperation().getFirstModelOperations()));
         } else {
             result.getTasks().add(UnexecutableTask.INSTANCE);
         }
@@ -122,7 +116,7 @@ public class FrameCreationCommandBuilder extends ContainerCreationCommandBuilder
     @Override
     protected DCommand createEnclosingCommand() {
         Predicate<DDiagramElement> shouldFlag = Predicates.or(CombinedFragment.viewpointElementPredicate(), InteractionUse.viewpointElementPredicate());
-        return new SequenceCreatedEventsFlaggingSiriusCommand(editingDomain, getEnclosingCommandLabel(), dDiagram, shouldFlag);
+        return new SequenceCreatedEventsFlaggingSiriusCommand(editingDomain, getEnclosingCommandLabel(), diagram, shouldFlag);
     }
 
     /**

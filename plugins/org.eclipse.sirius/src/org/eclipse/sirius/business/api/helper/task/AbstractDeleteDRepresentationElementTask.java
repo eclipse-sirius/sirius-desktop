@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.internal.session.danalysis.DanglingRefRemovalTrigger;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
@@ -31,19 +32,6 @@ import com.google.common.base.Predicates;
  * 
  */
 public class AbstractDeleteDRepresentationElementTask extends AbstractCommandTask {
-
-    /**
-     * A predicate to ignore DSemanticDecorator references in the dangling
-     * references deletion.
-     */
-    protected static final Predicate<EReference> DSEMANTICDECORATOR_REFERENCE_T0_IGNORE_PREDICATE = new Predicate<EReference>() {
-
-        public boolean apply(EReference reference) {
-            // We should ignore any EReference which container is a
-            // DSemanticDecorator (or any subclass)
-            return DSemanticDecorator.class.isAssignableFrom(reference.getContainerClass());
-        }
-    };;
 
     /** The object to delete. */
     protected final EObject objectToDelete;
@@ -64,7 +52,7 @@ public class AbstractDeleteDRepresentationElementTask extends AbstractCommandTas
     public AbstractDeleteDRepresentationElementTask(EObject objectToDelete, ModelAccessor accessor) {
         this.objectToDelete = objectToDelete;
         this.accessor = accessor;
-        this.danglingEReferencesToIgnores = DSEMANTICDECORATOR_REFERENCE_T0_IGNORE_PREDICATE;
+        this.danglingEReferencesToIgnores = DanglingRefRemovalTrigger.DSEMANTICDECORATOR_REFERENCE_TO_IGNORE_PREDICATE;
     }
 
     /**
@@ -81,7 +69,7 @@ public class AbstractDeleteDRepresentationElementTask extends AbstractCommandTas
     public AbstractDeleteDRepresentationElementTask(EObject objectToDelete, ModelAccessor accessor, Predicate<EReference> danglingEReferencesToIgnores) {
         this.objectToDelete = objectToDelete;
         this.accessor = accessor;
-        this.danglingEReferencesToIgnores = Predicates.or(DSEMANTICDECORATOR_REFERENCE_T0_IGNORE_PREDICATE, danglingEReferencesToIgnores);
+        this.danglingEReferencesToIgnores = Predicates.or(DanglingRefRemovalTrigger.DSEMANTICDECORATOR_REFERENCE_TO_IGNORE_PREDICATE, danglingEReferencesToIgnores);
     }
 
     /**

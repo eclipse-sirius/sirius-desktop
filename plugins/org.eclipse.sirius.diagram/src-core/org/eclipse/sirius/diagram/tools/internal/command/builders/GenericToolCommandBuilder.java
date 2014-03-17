@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,15 +17,14 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
-import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
@@ -70,15 +69,15 @@ public class GenericToolCommandBuilder extends AbstractDiagramCommandBuilder {
         final DCommand result = createEnclosingCommand();
         final IInterpreter interpreter = InterpreterUtil.getInterpreter(containerView);
         if (checkGenericToolPrecondition(interpreter)) {
-            Option<DRepresentation> representation = new EObjectQuery(containerView).getRepresentation();
-            if (representation.some() && tool.getInitialOperation() != null && tool.getInitialOperation().getFirstModelOperations() != null) {
+            Option<DDiagram> parentDiagram = getDDiagram();
+            if (parentDiagram.some() && tool.getInitialOperation() != null && tool.getInitialOperation().getFirstModelOperations() != null) {
                 addPreOperationTasks(result, interpreter);
 
                 EObject container = containerView;
                 if (containerView instanceof DSemanticDecorator) {
                     container = ((DSemanticDecorator) containerView).getTarget();
                 }
-                result.getTasks().add(taskHelper.buildTaskFromModelOperation(representation.get(), container, tool.getInitialOperation().getFirstModelOperations()));
+                result.getTasks().add(taskHelper.buildTaskFromModelOperation(parentDiagram.get(), container, tool.getInitialOperation().getFirstModelOperations()));
 
                 addPostOperationTasks(result, interpreter);
             }
@@ -115,9 +114,6 @@ public class GenericToolCommandBuilder extends AbstractDiagramCommandBuilder {
             addRefreshTask((DDiagramElement) containerView, command, tool);
         } else if (containerView instanceof DDiagram) {
             addRefreshTask((DDiagram) containerView, command, tool);
-        }
-        if (containerView instanceof DSemanticDecorator) {
-            addRemoveDanglingReferencesTask(command, tool, (DSemanticDecorator) containerView);
         }
     }
 
@@ -162,5 +158,13 @@ public class GenericToolCommandBuilder extends AbstractDiagramCommandBuilder {
      */
     protected String getEnclosingCommandLabel() {
         return new IdentifiedElementQuery(tool).getLabel();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Option<DDiagram> getDDiagram() {
+        return new EObjectQuery(containerView).getParentDiagram();
     }
 }

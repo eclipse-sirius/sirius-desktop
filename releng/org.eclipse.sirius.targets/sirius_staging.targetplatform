@@ -1,8 +1,8 @@
-target "sirius_luna"
+target "sirius_staging"
 
 with source, requirements
 
-location "http://download.eclipse.org/releases/luna" {
+location "http://download.eclipse.org/releases/staging" {
 	com.ibm.icu;version=[50.1.1,51.0.0)
 	com.google.guava;version=[11.0.2,16.0)
 	org.eclipse.platform.feature.group;version=[4.4.0,4.5.0)
@@ -18,13 +18,13 @@ location "http://download.eclipse.org/releases/luna" {
 	org.eclipse.emf.transaction.feature.group;version=[1.8.0,1.9.0)
 	org.eclipse.emf.transaction.sdk.feature.group;version=[1.8.0,1.9.0)
 	org.eclipse.emf.validation.sdk.feature.group;version=[1.8.0,1.9.0)
-	org.eclipse.ocl.all.feature.group;version=[4.2.0,5.1.0)
-	org.eclipse.ocl.core.sdk.feature.group;version=[4.2.0,5.1.0)
+	org.eclipse.ocl.all.feature.group;version=[5.0.0,5.1.0)
+	org.eclipse.ocl.core.sdk.feature.group;version=[5.0.0,5.1.0)
 	org.eclipse.gef.feature.group;version=[3.9.0,4.0.0)
 	org.eclipse.gef.sdk.feature.group;version=[3.9.0,4.0.0)
 	org.eclipse.gmf.runtime.notation.sdk.feature.group;version=[1.8.0,1.9.0)
 	org.eclipse.gmf.runtime.sdk.feature.group;version=[1.8.0,1.9.0)
-	org.eclipse.xtext.sdk.feature.group;version=[2.5.0,2.7.0)
+	org.eclipse.xtext.sdk.feature.group;version=[2.6.0,2.7.0)
 	org.eclipse.emf.compare.feature.group;version=[2.2.0, 3.0.0)
 	org.eclipse.acceleo.feature.group;version=[3.5.0,4.0.0)
 	org.eclipse.acceleo.ide.ui;version=[3.5.0,4.0.0)

@@ -52,25 +52,6 @@ public final class SiriusDiagramUtil {
     }
 
     /**
-     * Find parent {@link DDiagram} from a {@link EObject}.
-     * 
-     * @param element
-     *            the {@link EObject} instance
-     * @return the first parent of element which is an instance of
-     *         {@link DDiagram} or null if not found
-     */
-    public static DDiagram findDiagram(final EObject element) {
-        EObject current = element;
-        while (current != null) {
-            if (current instanceof DDiagram) {
-                return (DDiagram) current;
-            }
-            current = current.eContainer();
-        }
-        return null;
-    }
-
-    /**
      * Find parent {@link DiagramDescription} from a
      * {@link DiagramElementMapping}.
      * 

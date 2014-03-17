@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,14 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.helper.task;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.tools.api.command.semantic.RemoveDanglingReferences;
 import org.eclipse.sirius.tools.internal.util.GMFUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -67,9 +64,6 @@ public class DeleteDRepresentationTask extends AbstractCommandTask {
                 }
                 accessor.eDelete(representation, session != null ? session.getSemanticCrossReferencer() : null);
             } else {
-
-                final EObject root = EcoreUtil.getRootContainer(representation);
-
                 // tear down incoming references
                 GMFUtil.tearDownIncomingReferences(representation);
 
@@ -84,9 +78,6 @@ public class DeleteDRepresentationTask extends AbstractCommandTask {
                 final Resource res = representation.eResource();
                 if (res != null) {
                     res.getContents().remove(representation);
-                }
-                if (root != null) {
-                    RemoveDanglingReferences.removeDanglingReferences(root);
                 }
             }
         }

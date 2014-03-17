@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -100,9 +101,8 @@ public class PasteCommandBuilder extends AbstractDiagramCommandBuilder {
 
                 // Launch a refresh to build the GMF elements according
                 // to the DDiagram modifications
-                final DDiagram diagram = pasteTarget instanceof DDiagram ? (DDiagram) pasteTarget : ((DDiagramElement) pasteTarget).getParentDiagram();
+                final DDiagram diagram = getDDiagram().get();
                 this.addRefreshTask(diagram, cmd, tool);
-                addRemoveDanglingReferencesTask(cmd, tool, pasteTarget);
                 return cmd;
             }
 
@@ -187,5 +187,19 @@ public class PasteCommandBuilder extends AbstractDiagramCommandBuilder {
      */
     protected String getEnclosingCommandLabel() {
         return tool != null ? new IdentifiedElementQuery(tool).getLabel() : "Paste";
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Option<DDiagram> getDDiagram() {
+        DDiagram diagram = null;
+        if (pasteTarget instanceof DDiagram) {
+            diagram = (DDiagram) pasteTarget;
+        } else {
+            diagram = ((DDiagramElement) pasteTarget).getParentDiagram();
+        }
+        return Options.newSome(diagram);
     }
 }

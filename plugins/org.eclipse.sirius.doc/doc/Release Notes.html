@@ -208,6 +208,18 @@
 				</ul>
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.tests.support">Changes in 
+			<code>org.eclipse.sirius.tests.support</code>
+		</h4>
+		<ul>
+			<li>The 
+				<code>shouldReloadSession</code> boolean parameter has been removed from 
+				<code>org.eclipse.sirius.tests.support.api.SiriusTestCase.disableUICallBackOnDialectEditor(DialectEditor)</code>, it was not used and could let the tester think he can change the reload behavior from the dialog factory.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase.refreshDiagram()</code> has been removed. This method did not handle the non dynamic tabbar and was a duplicate of manualRefresh(). Callers must select the diagram before the call,the click(0,0) instruction was not sufficient in several cases (for example if there is a node/container in (0,0)).
+			</li>
+		</ul>
 		<h2 id="sirius1.0M6">Changes in Sirius 1.0.0M6 (from Sirius 1.0M5)</h2>
 		<h3 id="APIChanges2">API Changes</h3>
 		<h4 id="tests">High-level API for Automated Tests Using JUnit and SWTBot</h4>
@@ -278,6 +290,31 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>org.eclipse.sirius.business.api.session.SessionManagerListener.notifyUpdatedSession(Session)</code> has been removed. Use 
 				<code>org.eclipse.sirius.business.api.session.SessionManagerListener.notify(Session, int)</code> instead.
 			</li>
+			<li>
+				<code>org.eclipse.sirius.business.api.helper.task.RemoveDanglingReferencesTask</code> and 
+				<code>org.eclipse.sirius.business.api.helper.task.RemoveSemanticDanglingReferenceTask</code> and 
+				<code>org.eclipse.sirius.tools.api.command.AbstractCommandFactory.addRemoveDanglingReferencesTask()</code> have been removed. These tasks were added to in several commands to remove dangling references at the end. They are now replaced by a specific 
+				<code>ModelChangeTrigger</code> to detect the detachment of 
+				<code>EObject</code> and remove the dangling references. It is added to the 
+				<code>SessionEventBroker</code> during the session opening.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener</code> was a precommit 
+				<code>ResourceSetListener</code>, it became a 
+				<code>ModelChangeTrigger</code> and is now added to the SessionEventBroker during the session opening. This modification allows to correctly manage the order of our different precommit commands. It is triggered after the dangling reference remover.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.tools.api.command.semantic.RemoveDanglingReferences</code> is no more used in Sirius commands. It can still be used to clean a resourceSet or a resource (repair tool, import/export, ..). It also has a new static method 
+				<code>removeDanglingReferences(final Resource resource)</code> to remove dangling references as an entry point.
+			</li>
+			<li>The protected predicate 
+				<code>org.eclipse.sirius.business.api.helper.task.AbstractDeleteDRepresentationElementTask.DSEMANTICDECORATOR_REFERENCE_T0_IGNORE_PREDICATE</code> has been removed, the internal predicate 
+				<code>DanglingRefRemovalTrigger.DSEMANTICDECORATOR_REFERENCE_T0_IGNORE_PREDICATE</code> is used instead.
+			</li>
+			<li>The 
+				<code>org.eclipse.sirius.business.api.helper.SiriusUtil.findDiagram(EObject)</code> method has been removed. Use the equivalent 
+				<code>new org.eclipse.sirius.business.api.query.EObjectQuery(element).getParentDiagram()</code> instead.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
 			<code>org.eclipse.sirius.ui</code>
@@ -292,6 +329,32 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 			<li>The deprecated class 
 				<code>org.eclipse.sirius.ui.tools.api.dialogs.ExportRepresentationsAsImagesDialog</code> has been removed. Use 
 				<code>org.eclipse.sirius.ui.tools.api.dialogs.ExportSeveralRepresentationsAsImagesDialog</code> instead.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
+			<code>org.eclipse.sirius.diagram</code>
+		</h4>
+		<ul>
+			<li>
+				<code>org.sirius.diagram.graphical.edit.policies.AirNoteAttachmentEditPolicy</code> has been removed, with the new dangling reference management, it became identical to its superclass, use 
+				<code>org.eclipse.gmf.runtime.diagram.ui.internal.editpolicies.ConnectionEditPolicy</code> instead. Its provider 
+				<code>org.sirius.diagram.graphicalou .edit.policies.AirNoteAttachmentEditPolicyProvider</code> and declaration in plugin.xml have been removed too.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.table">Changes in 
+			<code>org.eclipse.sirius.table</code>
+		</h4>
+		<ul>
+			<li>The 
+				<code>org.eclipse.sirius.table.tools.api.command.ITableCommandFactory.setAutoRefreshDTable()</code> method was removed. It had no effect, any code which called it can simply be removed.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.tree">Changes in 
+			<code>org.eclipse.sirius.tree</code>
+		</h4>
+		<ul>
+			<li>The 
+				<code>org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory.setAutoRefreshDTree()</code> method was removed. It had no effect, any code which called it can simply be removed.
 			</li>
 		</ul>
 		<h2 id="sirius1.0M5">Changes in Sirius 1.0.0M5 (from Sirius 1.0M4)</h2>
@@ -395,7 +458,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>org.eclipse.sirius.common.ui.tools.api.util.ISimpleAction</code> interface has been removed.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.table">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.table2">Changes in 
 			<code>org.eclipse.sirius.table</code>
 		</h4>
 		<ul>
@@ -642,7 +705,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>DiagramDescription</code> has been removed from the viewpoint.ecore meta-model. This reference always returns empty list.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram2">Changes in  
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -706,7 +769,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>CreateRepresentationFromRepresentationCreationDescription</code> classes (iof plug-ins sirius.diagram, sirius.table.ui, sirius.tree.ui).
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.table2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.table3">Changes in 
 			<code>org.eclipse.sirius.table</code>
 		</h4>
 		<ul>
@@ -714,7 +777,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>TableHelper.getCell(DLine, String)</code> has been removed. Use the variant which take a DLine and a DColumn as parameters.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tree">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tree2">Changes in 
 			<code>org.eclipse.sirius.tree</code>
 		</h4>
 		<ul>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -98,8 +98,8 @@ public class ReconnectionCommandBuilder extends AbstractDiagramCommandBuilder {
         Command result = UnexecutableCommand.INSTANCE;
 
         if (permissionAuthority.canEditInstance(reconnectionSource) && permissionAuthority.canEditInstance(reconnectionTarget) && permissionAuthority.canEditInstance(edge)
-        // Layouting mode on diagrams
-        // if the ddiagram is in LayoutingMode, we do not allow reconnection
+                // Layouting mode on diagrams
+                // if the ddiagram is in LayoutingMode, we do not allow reconnection
                 && !isInLayoutingModeDiagram(edge)) {
 
             final EObject semanticSource = SiriusUtil.getNearestDecorateSemanticElement(reconnectionSource).getTarget();
@@ -120,7 +120,7 @@ public class ReconnectionCommandBuilder extends AbstractDiagramCommandBuilder {
             final DCommand cmd = createEnclosingCommand();
             cmd.getTasks().add(createOtherEndVariableTask);
             cmd.getTasks().add(new InitInterpreterVariablesTask(variables, InterpreterUtil.getInterpreter(reconnectionSource), uiCallback));
-            Option<DDiagram> parentDiagram = new EObjectQuery(edge).getParentDiagram();
+            Option<DDiagram> parentDiagram = getDDiagram();
             if (tool.getInitialOperation() != null && tool.getInitialOperation().getFirstModelOperations() != null) {
                 cmd.getTasks().add(taskHelper.buildTaskFromModelOperation(parentDiagram.get(), edge.getTarget(), tool.getInitialOperation().getFirstModelOperations()));
             }
@@ -135,7 +135,6 @@ public class ReconnectionCommandBuilder extends AbstractDiagramCommandBuilder {
 
             final EdgeMapping newEdgeMapping = getEdgeMappingReconnector();
             addRefreshTask(edge, cmd, tool);
-            addRemoveDanglingReferencesTask(cmd, tool, edge);
             final CompoundCommand cc = new CompoundCommand();
             if (newEdgeMapping != null && !newEdgeMapping.equals(edge.getActualMapping())) {
                 cc.append(new SetEdgeActualMappingCommand(editingDomain, edge, newEdgeMapping));
@@ -281,5 +280,13 @@ public class ReconnectionCommandBuilder extends AbstractDiagramCommandBuilder {
      */
     protected String getEnclosingCommandLabel() {
         return new IdentifiedElementQuery(tool).getLabel();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Option<DDiagram> getDDiagram() {
+        return new EObjectQuery(edge).getParentDiagram();
     }
 }

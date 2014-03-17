@@ -12,13 +12,15 @@ package org.eclipse.sirius.diagram.business.internal.experimental.sync;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.common.tools.api.util.RefreshIDFactory;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil;
+import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.cache.KeyCache;
 
 /**
@@ -91,7 +93,9 @@ public class DEdgeCandidate {
      * @return <code>true</code> if it is invalid. <code>false</code> otherwise.
      */
     public boolean isInvalid() {
-        return SiriusDiagramUtil.findDiagram(sourceView) == null || SiriusDiagramUtil.findDiagram(targetView) == null;
+        Option<DDiagram> sourceDiagram = new EObjectQuery(sourceView).getParentDiagram();
+        Option<DDiagram> targetDiagram = new EObjectQuery(targetView).getParentDiagram();
+        return !sourceDiagram.some() || !targetDiagram.some();
     }
 
     /**

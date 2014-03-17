@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -91,14 +91,6 @@ public interface ITreeCommandFactory extends ICommandFactory {
      */
     // Command buildSetCellValueFromTool(final DCell editedCell, final Object
     // newValue);
-
-    /**
-     * Set the autoRefresh.
-     * 
-     * @param autoRefreshDTree
-     *            true to activate
-     */
-    void setAutoRefreshDTree(final boolean autoRefreshDTree);
 
     /**
      * Set the model accessor.

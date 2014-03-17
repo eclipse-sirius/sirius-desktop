@@ -20,9 +20,9 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -129,8 +129,8 @@ public abstract class AbstractDiagramCommandBuilder extends org.eclipse.sirius.t
      *            .
      */
     protected void addDiagramVariable(final DCommand command, final EObject containerView, final IInterpreter interpreter) {
-        final DDiagram diag = SiriusDiagramUtil.findDiagram(containerView);
-        if (diag != null) {
+        final Option<DDiagram> diag = getDDiagram();
+        if (diag.some()) {
             command.getTasks().add(new AbstractCommandTask() {
 
                 public String getLabel() {
@@ -138,7 +138,7 @@ public abstract class AbstractDiagramCommandBuilder extends org.eclipse.sirius.t
                 }
 
                 public void execute() {
-                    interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diag);
+                    interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diag.get());
                 }
             });
         }
@@ -202,4 +202,11 @@ public abstract class AbstractDiagramCommandBuilder extends org.eclipse.sirius.t
         }
         return result;
     }
+
+    /**
+     * Return the current diagram.
+     * 
+     * @return the current DDiagram.
+     */
+    protected abstract Option<DDiagram> getDDiagram();
 }
