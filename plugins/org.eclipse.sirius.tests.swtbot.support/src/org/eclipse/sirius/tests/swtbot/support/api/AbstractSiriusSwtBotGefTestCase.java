@@ -806,15 +806,6 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Do a diagram refresh.
-     */
-    protected void refreshDiagram() {
-        editor.click(0, 0);
-        bot.toolbarButtonWithTooltip("Refresh diagram").click();
-        SWTBotUtils.waitProgressMonitorClose("Progress Information");
-    }
-
-    /**
      * Get all the representation with the given representation description
      * name.
      * 
