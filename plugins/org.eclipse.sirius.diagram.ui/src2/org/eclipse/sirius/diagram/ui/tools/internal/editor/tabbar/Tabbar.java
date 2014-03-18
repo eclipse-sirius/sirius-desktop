@@ -48,7 +48,7 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
      * Tabbar id used to look for extensions through the "org.eclipse.ui.menus"
      * extension point with toolbar scheme.
      */
-    public static final String TABBAR_ID = "org.eclipse.sirius.diagram.tabbar"; //$NON-NLS-1$
+    public static final String TABBAR_ID = "org.eclipse.sirius.diagram.ui.tabbar"; //$NON-NLS-1$
 
     private IDiagramWorkbenchPart part;
 
