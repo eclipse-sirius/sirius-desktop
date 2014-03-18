@@ -13,10 +13,12 @@
 <project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,plugins/org.eclipse.sirius.diagram.sequence"/>
 <project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,plugins/org.eclipse.sirius.diagram.sequence.edit"/>
 <project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,plugins/org.eclipse.sirius.diagram.sequence.ui"/>
+<project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,plugins/org.eclipse.sirius.diagram.ui"/>
 <project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,plugins/org.eclipse.sirius.doc"/>
 <project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,packaging/org.eclipse.sirius.doc.feature"/>
 <project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,plugins/org.eclipse.sirius.ecore.extender"/>
 <project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,plugins/org.eclipse.sirius.editor"/>
+<project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,plugins/org.eclipse.sirius.editor.diagram"/>
 <project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,plugins/org.eclipse.sirius.editor.sequence"/>
 <project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,plugins/org.eclipse.sirius.editor.table"/>
 <project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,plugins/org.eclipse.sirius.editor.tree"/>
