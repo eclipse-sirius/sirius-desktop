@@ -45,7 +45,7 @@ The created project is a Java plug-in project with EMF dependencies and EMF mode
          point="org.eclipse.ui.editors">
       <editor
             class="org.eclipse.sirius.sample.ecore.design.editor.EcoreEntitiesReadOnlyEditor"
-            contributorClass="org.eclipse.sirius.diagram.part.SiriusDiagramActionBarContributor"
+            contributorClass="org.eclipse.sirius.diagram.ui.part.SiriusDiagramActionBarContributor"
             default="false"
             extensions="ecore"
             icon="icons/full/obj16/EcoreModelFile.gif"
