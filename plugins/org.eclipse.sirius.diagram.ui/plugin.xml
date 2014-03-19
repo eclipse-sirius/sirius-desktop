@@ -1415,6 +1415,7 @@
      <factory
            class="org.eclipse.sirius.diagram.ui.tools.internal.clipboard.ClipboardSupportFactory"
            nsURI="http://www.eclipse.org/gmf/runtime/1.0.1/notation"
+           policy="org.eclipse.sirius.diagram.ui.tools.internal.clipboard.ClipboardSupportPolicy"
            priority="high">
      </factory>
   </extension>
