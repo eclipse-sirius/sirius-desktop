@@ -15,7 +15,7 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.image.ImageSelector;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
@@ -52,7 +52,7 @@ public class EclipseImageSelectorDescriptor extends AbstractImageSelectorDescrip
                     imageSelector = (ImageSelector) element.createExecutableExtension(IMAGE_SELECTOR_CLASS_ATTRIBUTE);
                 } catch (CoreException e) {
                     SiriusEditPlugin.getPlugin().getLog()
-                            .log(new Status(IStatus.ERROR, SiriusDiagramEditorPlugin.ID, "Error while loading the extension " + element.getDeclaringExtension().getUniqueIdentifier(), e));
+                            .log(new Status(IStatus.ERROR, DiagramPlugin.ID, "Error while loading the extension " + element.getDeclaringExtension().getUniqueIdentifier(), e));
                 }
             }
         }

@@ -15,7 +15,7 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.swt.graphics.Image;
@@ -89,7 +89,7 @@ public class StyleConfigurationQuery {
     protected boolean labelIconsMustBeHidden(DDiagramElement element) {
 
         boolean mustHideLabelIconsOnShape = false;
-        IPreferenceStore prefs = SiriusDiagramEditorPlugin.getInstance().getPreferenceStore();
+        IPreferenceStore prefs = DiagramPlugin.getInstance().getPreferenceStore();
 
         // We get the preference according to the given element's type
         if (element instanceof DEdge) {

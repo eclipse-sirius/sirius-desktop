@@ -11,7 +11,7 @@
 package org.eclipse.sirius.diagram.ui.internal.preferences;
 
 import org.eclipse.gmf.runtime.diagram.ui.preferences.RulerGridPreferencePage;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 
 /**
  * @was-generated
@@ -22,6 +22,6 @@ public class DiagramRulersAndGridPreferencePage extends RulerGridPreferencePage 
      * @was-generated
      */
     public DiagramRulersAndGridPreferencePage() {
-        setPreferenceStore(SiriusDiagramEditorPlugin.getInstance().getPreferenceStore());
+        setPreferenceStore(DiagramPlugin.getInstance().getPreferenceStore());
     }
 }

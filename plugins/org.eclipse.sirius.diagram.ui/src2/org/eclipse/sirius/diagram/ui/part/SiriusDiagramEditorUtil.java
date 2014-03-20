@@ -67,7 +67,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -116,7 +116,7 @@ public class SiriusDiagramEditorUtil {
         try {
             file.setCharset("UTF-8", new NullProgressMonitor()); //$NON-NLS-1$
         } catch (CoreException e) {
-            SiriusDiagramEditorPlugin.getInstance().logError("Unable to set charset for file " + file.getFullPath(), e); //$NON-NLS-1$
+            DiagramPlugin.getInstance().logError("Unable to set charset for file " + file.getFullPath(), e); //$NON-NLS-1$
         }
     }
 
@@ -153,7 +153,7 @@ public class SiriusDiagramEditorUtil {
      * @was-generated
      */
     public static void runWizard(Shell shell, Wizard wizard, String settingsKey) {
-        IDialogSettings pluginDialogSettings = SiriusDiagramEditorPlugin.getInstance().getDialogSettings();
+        IDialogSettings pluginDialogSettings = DiagramPlugin.getInstance().getDialogSettings();
         IDialogSettings wizardDialogSettings = pluginDialogSettings.getSection(settingsKey);
         if (wizardDialogSettings == null) {
             wizardDialogSettings = pluginDialogSettings.addNewSection(settingsKey);
@@ -183,7 +183,7 @@ public class SiriusDiagramEditorUtil {
                 DDiagram model = createInitialModel();
                 attachModelToResource(model, modelResource);
 
-                Diagram diagram = ViewService.createDiagram(model, DDiagramEditPart.MODEL_ID, SiriusDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT);
+                Diagram diagram = ViewService.createDiagram(model, DDiagramEditPart.MODEL_ID, DiagramPlugin.DIAGRAM_PREFERENCES_HINT);
                 if (diagram != null) {
                     diagramResource.getContents().add(diagram);
                     diagram.setName(diagramName);
@@ -195,7 +195,7 @@ public class SiriusDiagramEditorUtil {
                     diagramResource.save(org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorUtil.getSaveOptions());
                 } catch (IOException e) {
 
-                    SiriusDiagramEditorPlugin.getInstance().logError("Unable to store model and diagram resources", e); //$NON-NLS-1$
+                    DiagramPlugin.getInstance().logError("Unable to store model and diagram resources", e); //$NON-NLS-1$
                 }
                 return CommandResult.newOKCommandResult();
             }
@@ -203,7 +203,7 @@ public class SiriusDiagramEditorUtil {
         try {
             OperationHistoryFactory.getOperationHistory().execute(command, new SubProgressMonitor(progressMonitor, 1), null);
         } catch (ExecutionException e) {
-            SiriusDiagramEditorPlugin.getInstance().logError("Unable to create model and diagram", e); //$NON-NLS-1$
+            DiagramPlugin.getInstance().logError("Unable to create model and diagram", e); //$NON-NLS-1$
         }
         setCharset(WorkspaceSynchronizer.getFile(modelResource));
         setCharset(WorkspaceSynchronizer.getFile(diagramResource));

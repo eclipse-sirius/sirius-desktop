@@ -38,7 +38,7 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramInternalPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
@@ -138,7 +138,7 @@ public class ArrangeAllWithAutoSize {
      *         preferences.
      */
     public static boolean isEnabled() {
-        return SiriusDiagramEditorPlugin.getInstance().getPreferenceStore().getBoolean(SiriusDiagramInternalPreferencesKeys.PREF_AUTOSIZE_ON_ARRANGE.name());
+        return DiagramPlugin.getInstance().getPreferenceStore().getBoolean(SiriusDiagramInternalPreferencesKeys.PREF_AUTOSIZE_ON_ARRANGE.name());
     }
 
     /**

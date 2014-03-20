@@ -16,7 +16,7 @@ import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
@@ -83,7 +83,7 @@ public class IsPinnedPredicate implements Predicate<IGraphicalEditPart> {
         if (connectedToPinnedElement) {
             result = true;
         } else {
-            if (!SiriusDiagramEditorPlugin.getInstance().getPreferenceStore().getBoolean(SiriusDiagramPreferencesKeys.PREF_MOVE_NOTES_DURING_LATOUT.name())) {
+            if (!DiagramPlugin.getInstance().getPreferenceStore().getBoolean(SiriusDiagramPreferencesKeys.PREF_MOVE_NOTES_DURING_LATOUT.name())) {
                 result = true;
             }
         }

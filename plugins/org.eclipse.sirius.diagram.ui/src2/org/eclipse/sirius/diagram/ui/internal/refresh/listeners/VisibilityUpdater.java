@@ -38,7 +38,7 @@ import org.eclipse.sirius.diagram.GraphicalFilter;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.properties.PropertiesService;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.tools.api.ui.property.IPropertiesProvider;
@@ -141,7 +141,7 @@ public class VisibilityUpdater extends ResourceSetListenerImpl {
         try {
             autoRefresh = PropertiesService.getInstance().getPropertiesProvider().getProperty(IPropertiesProvider.KEY_AUTO_REFRESH);
         } catch (final IllegalArgumentException e) {
-            SiriusDiagramEditorPlugin.getInstance().logError(e.getMessage());
+            DiagramPlugin.getInstance().logError(e.getMessage());
         }
         return autoRefresh;
     }

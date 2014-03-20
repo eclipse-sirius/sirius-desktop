@@ -40,7 +40,7 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.part.Messages;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorUtil;
@@ -173,7 +173,7 @@ public class OpenDiagramEditPolicy extends OpenEditPolicy {
          */
         protected PreferencesHint getPreferencesHint() {
             // XXX prefhint from target diagram's editor?
-            return SiriusDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT;
+            return DiagramPlugin.DIAGRAM_PREFERENCES_HINT;
         }
 
         /**

@@ -34,7 +34,7 @@ import org.eclipse.sirius.diagram.BundledImageShape;
 import org.eclipse.sirius.diagram.Square;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.SafeStyleConfiguration;
@@ -94,7 +94,7 @@ public final class StyleConfigurationRegistry extends SessionManagerListener.Stu
                             final IStyleConfigurationProvider styleConfigurationProvider = (IStyleConfigurationProvider) configElement.createExecutableExtension("providerClass");
                             StyleConfigurationRegistry.styleConfigurationProviders.add(styleConfigurationProvider);
                         } catch (final CoreException e) {
-                            SiriusDiagramEditorPlugin.getInstance().logError("Impossible to load the style configuration provider : " + configElement.getName(), e);
+                            DiagramPlugin.getInstance().logError("Impossible to load the style configuration provider : " + configElement.getName(), e);
                         }
                     }
                 }
@@ -203,7 +203,7 @@ public final class StyleConfigurationRegistry extends SessionManagerListener.Stu
             // CHECKSTYLE:OFF
         } catch (final Exception e) {
             // CHECKSTYLE:ON
-            SiriusDiagramEditorPlugin.getInstance().logError(
+            DiagramPlugin.getInstance().logError(
                     "The style configuration provider " + styleConfigurationProvider.getClass().getName() + " has threw an exception in its provides method and has been deactivated.", e);
             currentIterator.remove();
         }

@@ -34,7 +34,7 @@ import org.eclipse.jface.text.contentassist.IContentAssistProcessor;
 import org.eclipse.jface.viewers.ICellEditorValidator;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
@@ -103,7 +103,7 @@ public final class DefaultDirectEditOperation {
                 }
             });
         } catch (final InterruptedException e) {
-            SiriusDiagramEditorPlugin.getInstance().logError(e.getMessage(), e);
+            DiagramPlugin.getInstance().logError(e.getMessage(), e);
         }
     }
 

@@ -17,7 +17,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.internal.query.StyleConfigurationQuery;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
@@ -157,7 +157,7 @@ public class SafeStyleConfiguration implements StyleConfiguration {
     // CHECKSTYLE:ON
 
     private void log(final Exception e) {
-        SiriusDiagramEditorPlugin.getInstance().logError("Error while invoking custom style configuration : " + this.delegated.getClass().getName(), e);
+        DiagramPlugin.getInstance().logError("Error while invoking custom style configuration : " + this.delegated.getClass().getName(), e);
     }
 
 }

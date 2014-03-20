@@ -19,7 +19,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DecorationEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
@@ -129,7 +129,7 @@ public class EditPartAuthorityListener implements IAuthorityListener {
 
             // Step 2: launch the refresh synchronously or not according to
             // preferences
-            boolean refreshShouldBePerformedSynchronously = SiriusDiagramEditorPlugin.getInstance().getPreferenceStore()
+            boolean refreshShouldBePerformedSynchronously = DiagramPlugin.getInstance().getPreferenceStore()
                     .getBoolean(SiriusDiagramPreferencesKeys.PREF_REFRESH_DECORATORS_SYNCHRONOUSLY.name());
             // If refresh should be performed synchronously, we directly launch
             // the refresh

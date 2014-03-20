@@ -157,6 +157,10 @@
 						<code>fr.obeo.dsl.viewpoint.diagram.ui.tools.api.layout.GraphicalHelper</code> has been moved to 
 						<code>org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper</code>.
 					</li>
+					<li>
+						<code>org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin</code> has been renamed into 
+						<code>DiagramPlugin</code>.
+					</li>
 				</ul>
 			</li>
 			<li>Images
@@ -164,9 +168,11 @@
 					<li>Images of 
 						<code>org.eclipse.sirius.diagram</code> have been moved to 
 						<code>org.eclipse.sirius.diagram.ui</code>. In your code, you should replace 
-						<code>SiriusDiagramEditorPlugin.getInstance().getImage()</code> by 
+						<code>SiriusDiagramEditorPlugin.getInstance().getImage()</code> and 
+						<code>DiagramPlugin.getInstance().getImage()</code/> by 
 						<code>DiagramUIPlugin.getPlugin().getImage()</code>. That is the case for all methods concerning images in 
-						<code>SiriusDiagramEditorPlugin</code>.
+						<code>DiagramPlugin</code> (previously named 
+						<code>SiriusDiagramEditorPlugin</code>).
 					</li>
 					<li>Some images of 
 						<code>org.eclipse.sirius.ui</code> have been moved to 

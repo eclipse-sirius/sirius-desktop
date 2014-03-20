@@ -18,7 +18,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -57,7 +57,7 @@ public class WorkspaceImageFigureRefresher implements IResourceChangeListener {
                     refreshOpenedEditors();
                 }
             } catch (CoreException e) {
-                SiriusDiagramEditorPlugin.getInstance().logError("Update image descriptor failed.", e);
+                DiagramPlugin.getInstance().logError("Update image descriptor failed.", e);
             }
 
         }

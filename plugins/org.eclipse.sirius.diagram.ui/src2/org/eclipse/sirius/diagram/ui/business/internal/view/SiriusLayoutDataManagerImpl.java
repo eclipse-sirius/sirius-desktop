@@ -60,7 +60,7 @@ import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.graphical.figures.SiriusLayoutHelper;
 import org.eclipse.sirius.ext.base.Option;
@@ -210,7 +210,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
                 LayoutData aLayoutDataInParam = (LayoutData) aLayoutData;
                 if (existingLayoutData.getTarget().equals(aLayoutDataInParam.getTarget())) {
                     iterator.remove();
-                    // SiriusDiagramEditorPlugin.getInstance().logWarning("The previous layout data were replaced by new ones. It may leads to unexpected layout behavior.");
+                    // DiagramPlugin.getInstance().logWarning("The previous layout data were replaced by new ones. It may leads to unexpected layout behavior.");
                 }
             }
         }
@@ -237,7 +237,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
                 } else if (node.eContainer() instanceof DDiagram) {
                     result = getData((DDiagram) node.eContainer());
                 } else {
-                    SiriusDiagramEditorPlugin.getInstance().logWarning("This kind of container  (" + node.eContainer().getClass().getName() + ") is not yet managed by the LayoutDataManager.");
+                    DiagramPlugin.getInstance().logWarning("This kind of container  (" + node.eContainer().getClass().getName() + ") is not yet managed by the LayoutDataManager.");
                 }
             }
             if (result == null) {

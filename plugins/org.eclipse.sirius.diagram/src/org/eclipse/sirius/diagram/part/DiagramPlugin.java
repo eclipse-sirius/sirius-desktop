@@ -20,7 +20,7 @@ import org.osgi.framework.BundleContext;
 /**
  * @was-generated NOT
  */
-public class SiriusDiagramEditorPlugin extends AbstractUIPlugin {
+public class DiagramPlugin extends AbstractUIPlugin {
 
     /**
      * @was-generated
@@ -35,7 +35,7 @@ public class SiriusDiagramEditorPlugin extends AbstractUIPlugin {
     /**
      * @was-generated
      */
-    private static SiriusDiagramEditorPlugin instance;
+    private static DiagramPlugin instance;
 
     /**
      * @was-generated
@@ -44,7 +44,7 @@ public class SiriusDiagramEditorPlugin extends AbstractUIPlugin {
     /**
      * @was-generated
      */
-    public SiriusDiagramEditorPlugin() {
+    public DiagramPlugin() {
     }
 
     /**
@@ -65,7 +65,7 @@ public class SiriusDiagramEditorPlugin extends AbstractUIPlugin {
     /**
      * @was-generated
      */
-    public static SiriusDiagramEditorPlugin getInstance() {
+    public static DiagramPlugin getInstance() {
         return instance;
     }
 
@@ -92,7 +92,7 @@ public class SiriusDiagramEditorPlugin extends AbstractUIPlugin {
         if (error == null && throwable != null) {
             error = throwable.getMessage();
         }
-        getLog().log(new Status(IStatus.ERROR, SiriusDiagramEditorPlugin.ID, IStatus.OK, error, throwable));
+        getLog().log(new Status(IStatus.ERROR, DiagramPlugin.ID, IStatus.OK, error, throwable));
         debug(error, throwable);
     }
 
@@ -110,7 +110,7 @@ public class SiriusDiagramEditorPlugin extends AbstractUIPlugin {
         if (message == null && throwable != null) {
             message = throwable.getMessage();
         }
-        getLog().log(new Status(IStatus.INFO, SiriusDiagramEditorPlugin.ID, IStatus.OK, message, throwable));
+        getLog().log(new Status(IStatus.INFO, DiagramPlugin.ID, IStatus.OK, message, throwable));
         debug(message, throwable);
     }
 
@@ -136,7 +136,7 @@ public class SiriusDiagramEditorPlugin extends AbstractUIPlugin {
         if (message == null && throwable != null) {
             message = throwable.getMessage();
         }
-        getLog().log(new Status(IStatus.WARNING, SiriusDiagramEditorPlugin.ID, IStatus.OK, message, throwable));
+        getLog().log(new Status(IStatus.WARNING, DiagramPlugin.ID, IStatus.OK, message, throwable));
         debug(message, throwable);
     }
 

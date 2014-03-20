@@ -31,7 +31,7 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromModelWithHookAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.ColorPropertyContributionItem;
@@ -155,7 +155,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
      *         SiriusDiagramPreferencesKeys.PREF_CLIPBOOARD_SUPPORT_ONLY_ON_NOTE
      */
     private boolean clipboardSupportOnlyOnNote() {
-        return SiriusDiagramEditorPlugin.getInstance().getPreferenceStore().getBoolean(SiriusDiagramPreferencesKeys.PREF_CLIPBOOARD_SUPPORT_ONLY_ON_NOTE.name());
+        return DiagramPlugin.getInstance().getPreferenceStore().getBoolean(SiriusDiagramPreferencesKeys.PREF_CLIPBOOARD_SUPPORT_ONLY_ON_NOTE.name());
     }
 
     /**

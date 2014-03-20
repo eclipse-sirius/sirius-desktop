@@ -22,7 +22,7 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.Separator;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.action.ConcernComboContributionItem;
@@ -158,7 +158,7 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
      */
     public void contributeToToolBar(final IToolBarManager toolBarManager) {
         super.contributeToToolBar(toolBarManager);
-        Preferences prefs = SiriusDiagramEditorPlugin.getInstance().getPluginPreferences();
+        Preferences prefs = DiagramPlugin.getInstance().getPluginPreferences();
         if (prefs.getBoolean(SiriusDiagramPreferencesKeys.PREF_OLD_UI.name())) {
 
             toolBarManager.add(getActionRegistry().getAction(REFRESH_DIAGRAM));
@@ -191,7 +191,7 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
 
         try {
             super.init(bars);
-            final Preferences prefs = SiriusDiagramEditorPlugin.getInstance().getPluginPreferences();
+            final Preferences prefs = DiagramPlugin.getInstance().getPluginPreferences();
 
             IToolBarManager toolBarManager = bars.getToolBarManager();
             toolBarManager.remove(ActionIds.MENU_COMPARTMENT);

@@ -43,7 +43,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
@@ -65,7 +65,7 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
     /**
      * @was-generated
      */
-    private static final String MARKER_TYPE = SiriusDiagramEditorPlugin.ID + ".diagnostic"; //$NON-NLS-1$
+    private static final String MARKER_TYPE = DiagramPlugin.ID + ".diagnostic"; //$NON-NLS-1$
 
     /**
      * @was-generated
@@ -142,7 +142,7 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
                         }
                     });
                 } catch (Exception e) {
-                    SiriusDiagramEditorPlugin.getInstance().logError("Decorator refresh failure", e); //$NON-NLS-1$
+                    DiagramPlugin.getInstance().logError("Decorator refresh failure", e); //$NON-NLS-1$
                 }
             }
         });
@@ -172,7 +172,7 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
                     }
                 });
             } catch (Exception e) {
-                SiriusDiagramEditorPlugin.getInstance().logError("ViewID access failure", e); //$NON-NLS-1$			
+                DiagramPlugin.getInstance().logError("ViewID access failure", e); //$NON-NLS-1$			
             }
         }
 
@@ -205,7 +205,7 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
             try {
                 markers = resource.findMarkers(MARKER_TYPE, true, IResource.DEPTH_INFINITE);
             } catch (CoreException e) {
-                SiriusDiagramEditorPlugin.getInstance().logError("Validation markers refresh failure", e); //$NON-NLS-1$
+                DiagramPlugin.getInstance().logError("Validation markers refresh failure", e); //$NON-NLS-1$
             }
             if (markers == null || markers.length == 0) {
                 return;
@@ -405,7 +405,7 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
             try {
                 return marker.getType();
             } catch (CoreException e) {
-                SiriusDiagramEditorPlugin.getInstance().logError("Validation marker refresh failure", e); //$NON-NLS-1$
+                DiagramPlugin.getInstance().logError("Validation marker refresh failure", e); //$NON-NLS-1$
                 return ""; //$NON-NLS-1$
             }
         }

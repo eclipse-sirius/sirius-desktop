@@ -25,7 +25,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IObjectActionDelegate;
@@ -85,7 +85,7 @@ public class SiriusInitDiagramFileAction implements IObjectActionDelegate {
             Resource resource = set.getResource(domainModelURI, true);
             diagramRoot = resource.getContents().get(0);
         } catch (WrappedException ex) {
-            SiriusDiagramEditorPlugin.getInstance().logError("Unable to load resource: " + domainModelURI, ex); //$NON-NLS-1$
+            DiagramPlugin.getInstance().logError("Unable to load resource: " + domainModelURI, ex); //$NON-NLS-1$
         }
         if (diagramRoot == null) {
             MessageDialog.openError(getShell(), Messages.SiriusInitDiagramFileAction_InitDiagramFileResourceErrorDialogTitle,

@@ -40,7 +40,7 @@ import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.CenterLabelStyle;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.view.EdgeLayoutData;
@@ -126,7 +126,7 @@ public class ConnectionsFactory {
                 String semanticHint = null;
                 int index = ViewUtil.APPEND;
                 boolean persisted = true;
-                PreferencesHint preferencesHint = SiriusDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT;
+                PreferencesHint preferencesHint = DiagramPlugin.DIAGRAM_PREFERENCES_HINT;
 
                 Edge edge = viewpointViewProvider.createEdge(semanticAdapter, containerView, semanticHint, index, persisted, preferencesHint);
 
@@ -167,7 +167,7 @@ public class ConnectionsFactory {
 
                     createdEdge = edge;
                 } else {
-                    SiriusDiagramEditorPlugin.getInstance().logError("GMF Edge not created between source element : " + sourceEdgeTarget + ", and target element : " + targetEdgeTarget);
+                    DiagramPlugin.getInstance().logError("GMF Edge not created between source element : " + sourceEdgeTarget + ", and target element : " + targetEdgeTarget);
                 }
             }
         }

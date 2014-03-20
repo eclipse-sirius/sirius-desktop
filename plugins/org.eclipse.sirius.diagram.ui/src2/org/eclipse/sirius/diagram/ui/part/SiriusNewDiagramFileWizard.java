@@ -36,7 +36,7 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.osgi.util.NLS;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
@@ -119,7 +119,7 @@ public class SiriusNewDiagramFileWizard extends Wizard {
                 if (diagramVID != DDiagramEditPart.VISUAL_ID) {
                     return CommandResult.newErrorCommandResult(Messages.SiriusNewDiagramFileWizard_IncorrectRootError);
                 }
-                Diagram diagram = ViewService.createDiagram(diagramRootElementSelectionPage.getModelElement(), DDiagramEditPart.MODEL_ID, SiriusDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT);
+                Diagram diagram = ViewService.createDiagram(diagramRootElementSelectionPage.getModelElement(), DDiagramEditPart.MODEL_ID, DiagramPlugin.DIAGRAM_PREFERENCES_HINT);
                 diagramResource.getContents().add(diagram);
                 return CommandResult.newOKCommandResult();
             }
@@ -129,11 +129,11 @@ public class SiriusNewDiagramFileWizard extends Wizard {
             diagramResource.save(SiriusDiagramEditorUtil.getSaveOptions());
             SiriusDiagramEditorUtil.openDiagram(diagramResource);
         } catch (ExecutionException e) {
-            SiriusDiagramEditorPlugin.getInstance().logError("Unable to create model and diagram", e); //$NON-NLS-1$
+            DiagramPlugin.getInstance().logError("Unable to create model and diagram", e); //$NON-NLS-1$
         } catch (IOException ex) {
-            SiriusDiagramEditorPlugin.getInstance().logError("Save operation failed for: " + diagramModelURI, ex); //$NON-NLS-1$
+            DiagramPlugin.getInstance().logError("Save operation failed for: " + diagramModelURI, ex); //$NON-NLS-1$
         } catch (PartInitException ex) {
-            SiriusDiagramEditorPlugin.getInstance().logError("Unable to open editor", ex); //$NON-NLS-1$
+            DiagramPlugin.getInstance().logError("Unable to open editor", ex); //$NON-NLS-1$
         }
         return true;
     }
@@ -166,7 +166,7 @@ public class SiriusNewDiagramFileWizard extends Wizard {
                 return false;
             }
             boolean result = ViewService.getInstance().provides(
-                    new CreateDiagramViewOperation(new EObjectAdapter(selectedModelElement), DDiagramEditPart.MODEL_ID, SiriusDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT));
+                    new CreateDiagramViewOperation(new EObjectAdapter(selectedModelElement), DDiagramEditPart.MODEL_ID, DiagramPlugin.DIAGRAM_PREFERENCES_HINT));
             setErrorMessage(result ? null : Messages.SiriusNewDiagramFileWizard_RootSelectionPageInvalidSelectionMessage);
             return result;
         }

@@ -26,7 +26,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusMarkerNavigationProvider;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorUtil;
@@ -190,7 +190,7 @@ public class SiriusMarkerNavigationProviderSpec extends SiriusMarkerNavigationPr
             marker.setAttribute(NavigationMarkerConstants.SEMANTIC_URI, semanticURI);
             marker.setAttribute(IDE.EDITOR_ID_ATTR, DDiagramEditor.EDITOR_ID);
         } catch (final CoreException e) {
-            SiriusDiagramEditorPlugin.getInstance().logError("Failed to create validation marker", e); //$NON-NLS-1$
+            DiagramPlugin.getInstance().logError("Failed to create validation marker", e); //$NON-NLS-1$
         }
         return marker;
     }
@@ -228,7 +228,7 @@ public class SiriusMarkerNavigationProviderSpec extends SiriusMarkerNavigationPr
             marker.setAttribute(NavigationMarkerConstants.SEMANTIC_URI, semanticURI);
             marker.setAttribute(IDE.EDITOR_ID_ATTR, DDiagramEditor.EDITOR_ID);
         } catch (final CoreException e) {
-            SiriusDiagramEditorPlugin.getInstance().logError("Failed to create validation marker", e); //$NON-NLS-1$
+            DiagramPlugin.getInstance().logError("Failed to create validation marker", e); //$NON-NLS-1$
         }
         return marker;
     }

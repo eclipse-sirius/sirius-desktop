@@ -12,7 +12,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.layout.provider;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.LayoutProvider;
 
 /**
@@ -45,7 +45,7 @@ public class LayoutProviderDescriptor extends AbstractProviderDescriptor {
             try {
                 provider = (LayoutProvider) element.createExecutableExtension("providerClass"); //$NON-NLS-1$
             } catch (final CoreException e) {
-                SiriusDiagramEditorPlugin.getInstance().logError("CoreException during the initialization of the AIR Layout Provider " + this.getProviderClassName(), e);
+                DiagramPlugin.getInstance().logError("CoreException during the initialization of the AIR Layout Provider " + this.getProviderClassName(), e);
             }
         }
         return provider;

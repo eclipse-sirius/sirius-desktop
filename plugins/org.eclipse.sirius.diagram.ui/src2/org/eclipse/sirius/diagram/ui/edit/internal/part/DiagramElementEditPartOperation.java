@@ -48,7 +48,7 @@ import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceMana
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramElementSynchronizer;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.internal.query.StyleConfigurationQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
@@ -492,8 +492,8 @@ public final class DiagramElementEditPartOperation {
                     } catch (IllegalStateException e) {
                         // An issue has been encountered while connecting to
                         // remote
-                        if (SiriusDiagramEditorPlugin.getInstance().isDebugging()) {
-                            SiriusDiagramEditorPlugin.getInstance().getLog().log(new Status(IStatus.WARNING, SiriusDiagramEditorPlugin.ID, "Error while connecting to remote CDO server"));
+                        if (DiagramPlugin.getInstance().isDebugging()) {
+                            DiagramPlugin.getInstance().getLog().log(new Status(IStatus.WARNING, DiagramPlugin.ID, "Error while connecting to remote CDO server"));
                         }
                     }
                 }

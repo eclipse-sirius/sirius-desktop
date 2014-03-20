@@ -20,7 +20,7 @@ import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.ViewOrderingProvider;
 
 /**
@@ -65,7 +65,7 @@ public final class ViewOrderingProviderRegistry {
                             final ViewOrderingProvider viewOrderingProvider = (ViewOrderingProvider) configElement.createExecutableExtension("providerClass");
                             this.viewOrderingProviders.add(viewOrderingProvider);
                         } catch (final CoreException e) {
-                            SiriusDiagramEditorPlugin.getInstance().logError("Impossible to load the view ordering provider : " + configElement.getName(), e);
+                            DiagramPlugin.getInstance().logError("Impossible to load the view ordering provider : " + configElement.getName(), e);
                         }
                     }
                 }
@@ -110,7 +110,7 @@ public final class ViewOrderingProviderRegistry {
                 return currentProvider;
             }
             // } catch (final RuntimeException e) {
-            // SiriusDiagramEditorPlugin.getInstance().logWarning(
+            // DiagramPlugin.getInstance().logWarning(
             // "The view ordering provider " +
             // currentProvider.getClass().getName()
             // + " has been removed from the ViewOrderingProviderRegistry since

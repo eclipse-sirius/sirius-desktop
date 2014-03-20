@@ -23,7 +23,7 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.parts.PaletteToolTransferDropTargetListener;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
 import org.eclipse.jface.util.TransferDropTargetListener;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.part.IDiagramDialectGraphicalViewer;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.SiriusPaletteToolDropTargetListener;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.ChangeBoundRequestRecorder;
@@ -152,9 +152,9 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
                 field.setAccessible(true);
                 return field;
             } catch (final SecurityException e) {
-                SiriusDiagramEditorPlugin.getInstance().logError("Error while getting the " + name + " field.", e);
+                DiagramPlugin.getInstance().logError("Error while getting the " + name + " field.", e);
             } catch (final NoSuchFieldException e) {
-                SiriusDiagramEditorPlugin.getInstance().logError("Error while getting the " + name + " field.", e);
+                DiagramPlugin.getInstance().logError("Error while getting the " + name + " field.", e);
             }
             return null;
         }
@@ -230,9 +230,9 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
                 try {
                     return (List) invalidFiguresField.get(this);
                 } catch (final IllegalArgumentException e) {
-                    SiriusDiagramEditorPlugin.getInstance().logError(ERROR_INVALID_FIGURES_FIELD, e);
+                    DiagramPlugin.getInstance().logError(ERROR_INVALID_FIGURES_FIELD, e);
                 } catch (final IllegalAccessException e) {
-                    SiriusDiagramEditorPlugin.getInstance().logError(ERROR_INVALID_FIGURES_FIELD, e);
+                    DiagramPlugin.getInstance().logError(ERROR_INVALID_FIGURES_FIELD, e);
                 }
             }
             return null;
@@ -248,9 +248,9 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
                 try {
                     return validatingField.getBoolean(this);
                 } catch (final IllegalArgumentException e) {
-                    SiriusDiagramEditorPlugin.getInstance().logError(ERROR_VALIDATING_FIELD, e);
+                    DiagramPlugin.getInstance().logError(ERROR_VALIDATING_FIELD, e);
                 } catch (final IllegalAccessException e) {
-                    SiriusDiagramEditorPlugin.getInstance().logError(ERROR_VALIDATING_FIELD, e);
+                    DiagramPlugin.getInstance().logError(ERROR_VALIDATING_FIELD, e);
                 }
             }
             return false;
@@ -267,9 +267,9 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
                 try {
                     validatingField.setBoolean(this, validating);
                 } catch (final IllegalArgumentException e) {
-                    SiriusDiagramEditorPlugin.getInstance().logError(ERROR_VALIDATING_FIELD, e);
+                    DiagramPlugin.getInstance().logError(ERROR_VALIDATING_FIELD, e);
                 } catch (final IllegalAccessException e) {
-                    SiriusDiagramEditorPlugin.getInstance().logError(ERROR_VALIDATING_FIELD, e);
+                    DiagramPlugin.getInstance().logError(ERROR_VALIDATING_FIELD, e);
                 }
             }
         }

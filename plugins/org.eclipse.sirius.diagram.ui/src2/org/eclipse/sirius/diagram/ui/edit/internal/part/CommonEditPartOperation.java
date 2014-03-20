@@ -22,7 +22,7 @@ import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramInternalPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
@@ -98,7 +98,7 @@ public final class CommonEditPartOperation {
     }
 
     private static boolean autoPinOnMoveEnabled() {
-        return SiriusDiagramEditorPlugin.getInstance().getPluginPreferences().getBoolean(SiriusDiagramInternalPreferencesKeys.PREF_AUTO_PIN_ON_MOVE.name());
+        return DiagramPlugin.getInstance().getPluginPreferences().getBoolean(SiriusDiagramInternalPreferencesKeys.PREF_AUTO_PIN_ON_MOVE.name());
     }
 
     /*

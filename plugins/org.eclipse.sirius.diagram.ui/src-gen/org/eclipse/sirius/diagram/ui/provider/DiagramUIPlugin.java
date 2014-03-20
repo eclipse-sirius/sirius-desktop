@@ -46,7 +46,7 @@ import org.eclipse.jface.viewers.IDecoration;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.sirius.diagram.description.concern.provider.ConcernItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.description.filter.provider.FilterItemProviderAdapterFactory;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.ui.business.internal.image.ImageSelectorDescriptorRegistryListener;
 import org.eclipse.sirius.diagram.ui.business.internal.image.refresh.WorkspaceImageFigureRefresher;
@@ -164,7 +164,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
          */
         public void start(BundleContext context) throws Exception {
             super.start(context);
-            PreferencesHint.registerPreferenceStore(SiriusDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT, getPreferenceStore());
+            PreferencesHint.registerPreferenceStore(DiagramPlugin.DIAGRAM_PREFERENCES_HINT, getPreferenceStore());
             adapterFactory = createAdapterFactory();
             descriptorsToImages = new HashMap<ImageWithDimensionDescriptor, Image>();
             ressourceMissingDocumentProvider = new ResourceMissingDocumentProvider();

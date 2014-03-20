@@ -39,7 +39,7 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.business.internal.dialect.DiagramDialectUIServices;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
@@ -1482,7 +1482,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
     }
 
     private boolean useTabbar() {
-        Preferences prefs = SiriusDiagramEditorPlugin.getInstance().getPluginPreferences();
+        Preferences prefs = DiagramPlugin.getInstance().getPluginPreferences();
         return !prefs.getBoolean(SiriusDiagramPreferencesKeys.PREF_OLD_UI.name());
     }
 

@@ -31,7 +31,7 @@ import org.eclipse.jface.preference.PreferenceStore;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
@@ -83,7 +83,7 @@ public class SiriusDiagramEditor extends DiagramDocumentEditor implements IGotoM
      */
     @Override
     protected PreferencesHint getPreferencesHint() {
-        return SiriusDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT;
+        return DiagramPlugin.DIAGRAM_PREFERENCES_HINT;
     }
 
     /**

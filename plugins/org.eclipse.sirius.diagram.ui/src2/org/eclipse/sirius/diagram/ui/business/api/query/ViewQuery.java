@@ -28,7 +28,7 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceConverter;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
@@ -163,7 +163,7 @@ public class ViewQuery {
      */
     public Object getDefaultValue(EAttribute eAttribute) {
         Object defaultValue = null;
-        IPreferenceStore preferenceStore = (IPreferenceStore) SiriusDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT.getPreferenceStore();
+        IPreferenceStore preferenceStore = (IPreferenceStore) DiagramPlugin.DIAGRAM_PREFERENCES_HINT.getPreferenceStore();
         if (eAttribute == NotationPackage.Literals.FONT_STYLE__BOLD) {
             FontData fontData = PreferenceConverter.getFontData(preferenceStore, IPreferenceConstants.PREF_DEFAULT_FONT);
             defaultValue = Boolean.valueOf((fontData.getStyle() & SWT.BOLD) != 0);

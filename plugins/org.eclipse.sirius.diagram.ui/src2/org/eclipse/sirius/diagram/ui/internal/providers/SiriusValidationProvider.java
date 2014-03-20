@@ -25,7 +25,7 @@ import org.eclipse.gmf.runtime.common.ui.services.action.contributionitem.Abstra
 import org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.part.ValidateAction;
@@ -78,7 +78,7 @@ public class SiriusValidationProvider extends AbstractContributionItemProvider {
             try {
                 txDomain.runExclusive(task);
             } catch (Exception e) {
-                SiriusDiagramEditorPlugin.getInstance().logError("Validation action failed", e); //$NON-NLS-1$
+                DiagramPlugin.getInstance().logError("Validation action failed", e); //$NON-NLS-1$
             }
         } else {
             task.run();

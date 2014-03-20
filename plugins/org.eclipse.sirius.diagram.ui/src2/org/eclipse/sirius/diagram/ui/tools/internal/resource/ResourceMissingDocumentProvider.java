@@ -21,7 +21,7 @@ import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocument;
 import org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 import org.eclipse.ui.IEditorInput;
 
@@ -136,7 +136,7 @@ public class ResourceMissingDocumentProvider {
             }
 
             resource.getContents().add(diagram);
-            GMFNotationHelper.createNote(diagram, noteMessage, SiriusDiagramEditorPlugin.getInstance().getPreferenceStore());
+            GMFNotationHelper.createNote(diagram, noteMessage, DiagramPlugin.getInstance().getPreferenceStore());
         }
     }
 }

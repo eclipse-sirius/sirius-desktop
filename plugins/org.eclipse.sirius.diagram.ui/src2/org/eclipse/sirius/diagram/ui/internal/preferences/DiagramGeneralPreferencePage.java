@@ -13,7 +13,7 @@ package org.eclipse.sirius.diagram.ui.internal.preferences;
 import org.eclipse.gmf.runtime.diagram.ui.preferences.DiagramsPreferencePage;
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramInternalPreferencesKeys;
 
 /**
@@ -35,7 +35,7 @@ public class DiagramGeneralPreferencePage extends DiagramsPreferencePage {
      * @was-generated
      */
     public DiagramGeneralPreferencePage() {
-        setPreferenceStore(SiriusDiagramEditorPlugin.getInstance().getPreferenceStore());
+        setPreferenceStore(DiagramPlugin.getInstance().getPreferenceStore());
     }
 
     /**

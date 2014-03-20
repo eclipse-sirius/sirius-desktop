@@ -12,7 +12,7 @@ package org.eclipse.sirius.tests.swtbot.support.api.business;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IPreferencesService;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerHelper;
@@ -221,7 +221,7 @@ public class UIDiagramRepresentation extends AbstractUIRepresentation<SWTBotDesi
 
     private boolean useTabbar() {
         IPreferencesService prefs = Platform.getPreferencesService();
-        return !prefs.getBoolean(SiriusDiagramEditorPlugin.ID, SiriusDiagramPreferencesKeys.PREF_OLD_UI.name(), false, null);
+        return !prefs.getBoolean(DiagramPlugin.ID, SiriusDiagramPreferencesKeys.PREF_OLD_UI.name(), false, null);
     }
 
     /**

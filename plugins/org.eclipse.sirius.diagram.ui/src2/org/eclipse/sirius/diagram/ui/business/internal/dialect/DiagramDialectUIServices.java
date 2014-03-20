@@ -78,7 +78,7 @@ import org.eclipse.sirius.diagram.description.provider.DescriptionItemProviderAd
 import org.eclipse.sirius.diagram.description.style.provider.StyleItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.description.tool.ToolFactory;
 import org.eclipse.sirius.diagram.description.tool.provider.ToolItemProviderAdapterFactory;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.ui.business.api.view.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.ui.business.api.view.refresh.CanonicalSynchronizerFactory;
@@ -201,7 +201,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
                         setResult((DialectEditor) editorPart);
                     }
                 } catch (final PartInitException e) {
-                    SiriusDiagramEditorPlugin.getInstance().logError("diagram editor opening error", e);
+                    DiagramPlugin.getInstance().logError("diagram editor opening error", e);
                 }
             }
 
@@ -292,8 +292,8 @@ public class DiagramDialectUIServices implements DialectUIServices {
             } catch (final NullPointerException e) {
                 // we might have an exception closing an editor which is
                 // already in trouble
-                SiriusDiagramEditorPlugin.getInstance().getLog()
-                .log(new Status(IStatus.WARNING, SiriusDiagramEditorPlugin.ID, "Error while deactivating the representation, the remote server may be unreachable."));
+                DiagramPlugin.getInstance().getLog()
+                .log(new Status(IStatus.WARNING, DiagramPlugin.ID, "Error while deactivating the representation, the remote server may be unreachable."));
             }
 
             try {
@@ -301,9 +301,9 @@ public class DiagramDialectUIServices implements DialectUIServices {
             } catch (final NullPointerException e) {
                 // we might have an exception closing an editor which is
                 // already in trouble
-                if (SiriusDiagramEditorPlugin.getInstance().isDebugging()) {
-                    SiriusDiagramEditorPlugin.getInstance().getLog()
-                    .log(new Status(IStatus.WARNING, SiriusDiagramEditorPlugin.ID, "Error while closing the representation, the remote server may be unreachable."));
+                if (DiagramPlugin.getInstance().isDebugging()) {
+                    DiagramPlugin.getInstance().getLog()
+                    .log(new Status(IStatus.WARNING, DiagramPlugin.ID, "Error while closing the representation, the remote server may be unreachable."));
                 }
             }
 

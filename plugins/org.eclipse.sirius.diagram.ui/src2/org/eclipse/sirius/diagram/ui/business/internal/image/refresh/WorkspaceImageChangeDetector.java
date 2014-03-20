@@ -20,7 +20,7 @@ import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure;
 import org.eclipse.sirius.ext.base.Option;
@@ -126,7 +126,7 @@ public class WorkspaceImageChangeDetector implements IResourceDeltaVisitor {
             try {
                 url = new File(ResourcesPlugin.getWorkspace().getRoot().getLocation().append(resource.getFullPath()).toOSString()).toURI().toURL();
             } catch (MalformedURLException e) {
-                SiriusDiagramEditorPlugin.getInstance().logError("Invalid uri : " + e.getMessage());
+                DiagramPlugin.getInstance().logError("Invalid uri : " + e.getMessage());
                 return false;
             }
             ImageDescriptor bundledImageDescriptor = ImageDescriptor.createFromURL(url);

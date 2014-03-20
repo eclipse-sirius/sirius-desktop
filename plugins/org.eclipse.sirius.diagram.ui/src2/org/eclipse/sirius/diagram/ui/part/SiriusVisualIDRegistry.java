@@ -19,7 +19,7 @@ import org.eclipse.sirius.diagram.BracketEdgeStyle;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.graphical.edit.part.specific.BracketEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.BundledImageEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.CustomStyleEditPart;
@@ -107,7 +107,7 @@ public class SiriusVisualIDRegistry {
             return Integer.parseInt(type);
         } catch (NumberFormatException e) {
             if (Boolean.TRUE.toString().equalsIgnoreCase(Platform.getDebugOption(DEBUG_KEY))) {
-                SiriusDiagramEditorPlugin.getInstance().logError("Unable to parse view type as a visualID number: " + type);
+                DiagramPlugin.getInstance().logError("Unable to parse view type as a visualID number: " + type);
             }
         }
         return -1;

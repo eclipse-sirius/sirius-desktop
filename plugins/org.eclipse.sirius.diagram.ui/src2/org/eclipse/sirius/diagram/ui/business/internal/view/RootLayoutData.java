@@ -23,7 +23,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.util.EditPartTools;
 
 /**
@@ -62,7 +62,7 @@ public class RootLayoutData extends LayoutData {
         } else if (adaptObject instanceof DEdge) {
             init((DEdge) adaptObject, location, size);
         } else {
-            SiriusDiagramEditorPlugin.getInstance().logWarning("This kind of diagram element  (" + adaptObject.getClass().getName() + ") is not yet managed by the LayoutDataManager.");
+            DiagramPlugin.getInstance().logWarning("This kind of diagram element  (" + adaptObject.getClass().getName() + ") is not yet managed by the LayoutDataManager.");
         }
     }
 
@@ -111,7 +111,7 @@ public class RootLayoutData extends LayoutData {
         } else if (adaptObject instanceof DEdge) {
             init((DEdge) adaptObject, location, size);
         } else {
-            SiriusDiagramEditorPlugin.getInstance().logWarning("This kind of diagram element  (" + adaptObject.getClass().getName() + ") is not yet managed by the LayoutDataManager.");
+            DiagramPlugin.getInstance().logWarning("This kind of diagram element  (" + adaptObject.getClass().getName() + ") is not yet managed by the LayoutDataManager.");
         }
     }
 

@@ -41,7 +41,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.HideLabelFilter;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramInternalPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
@@ -97,7 +97,7 @@ public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
     public Command transactionAboutToCommit(final ResourceSetChangeEvent event) throws RollbackException {
         Command cmd = null;
         Map<View, Boolean> viewsToUpdate = new HashMap<View, Boolean>();
-        boolean removeHideNote = SiriusDiagramEditorPlugin.getInstance().getPluginPreferences()
+        boolean removeHideNote = DiagramPlugin.getInstance().getPluginPreferences()
                 .getBoolean(SiriusDiagramInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name());
         for (Notification notification : event.getNotifications()) {
             if (notification.getNotifier() instanceof DDiagramElement) {

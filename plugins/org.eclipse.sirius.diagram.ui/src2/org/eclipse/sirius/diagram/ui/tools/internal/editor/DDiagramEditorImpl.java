@@ -100,7 +100,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.command.DiagramCommandFactoryService;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
@@ -379,7 +379,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             initCollaborativeIPermissionAuthority();
 
         } catch (NullPointerException e) {
-            SiriusDiagramEditorPlugin.getInstance().getLog().log(new Status(IStatus.ERROR, SiriusDiagramEditorPlugin.ID, "Error while getting the session.", e));
+            DiagramPlugin.getInstance().getLog().log(new Status(IStatus.ERROR, DiagramPlugin.ID, "Error while getting the session.", e));
         }
 
     }
@@ -869,7 +869,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                     }
                 }, };
 
-        if (Platform.getPreferencesService().getBoolean(SiriusDiagramEditorPlugin.ID, SiriusDiagramPreferencesKeys.PREF_OLD_UI.name(), false, null)) {
+        if (Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, SiriusDiagramPreferencesKeys.PREF_OLD_UI.name(), false, null)) {
             diagramOutline = new DiagramOutlineWithBookPages(this.getDiagramEditPart().getModel(), getGraphicalViewer(), outlinePopupMenuActions);
         } else {
             diagramOutline = new DiagramOutlinePage(this.getDiagramEditPart().getModel(), new OutlineLabelProvider(), new OutlineContentProvider(), new OutlineComparator(), getGraphicalViewer(),
@@ -1002,8 +1002,8 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                         } catch (IllegalStateException e) {
                             // An issue has been encountered while connecting to
                             // remote CDO server
-                            if (SiriusDiagramEditorPlugin.getInstance().isDebugging()) {
-                                SiriusDiagramEditorPlugin.getInstance().getLog().log(new Status(IStatus.WARNING, SiriusDiagramEditorPlugin.ID, "Error while connecting to remote CDO server"));
+                            if (DiagramPlugin.getInstance().isDebugging()) {
+                                DiagramPlugin.getInstance().getLog().log(new Status(IStatus.WARNING, DiagramPlugin.ID, "Error while connecting to remote CDO server"));
                             }
                         }
                     } else {
@@ -1196,7 +1196,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         try {
             autoRefresh = PropertiesService.getInstance().getPropertiesProvider().getProperty(IPropertiesProvider.KEY_AUTO_REFRESH);
         } catch (final IllegalArgumentException e) {
-            SiriusDiagramEditorPlugin.getInstance().logError(e.getMessage());
+            DiagramPlugin.getInstance().logError(e.getMessage());
         }
         return autoRefresh;
     }
@@ -1325,7 +1325,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     protected void createGraphicalViewer(final Composite parent) {
         this.diagramMenuUpdater = new DiagramMenuUpdater(this);
         parentComposite = createParentComposite(parent);
-        if (!Platform.getPreferencesService().getBoolean(SiriusDiagramEditorPlugin.ID, SiriusDiagramPreferencesKeys.PREF_OLD_UI.name(), false, null)) {
+        if (!Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, SiriusDiagramPreferencesKeys.PREF_OLD_UI.name(), false, null)) {
             setTabbar(new Tabbar(parentComposite, this));
         }
         createHeaderSection(parentComposite);

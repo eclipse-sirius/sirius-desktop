@@ -13,7 +13,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.editor;
 import org.eclipse.gef.RootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.NotificationFigure;
 import org.eclipse.sirius.ui.business.api.dialect.DefaultDialectEditorDialogFactory;
@@ -53,7 +53,7 @@ public class DiagramDialectEditorDialogFactory extends DefaultDialectEditorDialo
 
         // Step 1 : if the preference says that messages
         // should not be displayed using pop ups
-        if (!SiriusDiagramEditorPlugin.getInstance().getPreferenceStore().getBoolean(SiriusDiagramPreferencesKeys.PREF_DIAGRAM_SHOULD_DISPLAY_MESSAGES_USING_POP_UPS.name())) {
+        if (!DiagramPlugin.getInstance().getPreferenceStore().getBoolean(SiriusDiagramPreferencesKeys.PREF_DIAGRAM_SHOULD_DISPLAY_MESSAGES_USING_POP_UPS.name())) {
             // We try to log it as a notification figure
             if (this.editor.getDiagramEditPart() != null) {
                 RootEditPart rootEditPart = this.editor.getDiagramEditPart().getRoot();

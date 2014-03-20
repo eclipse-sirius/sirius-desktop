@@ -43,7 +43,7 @@ import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.resource.ResourceLoaderListener;
 import org.eclipse.sirius.common.tools.api.resource.ResourceTools;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.part.Messages;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
@@ -91,7 +91,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
     @Override
     protected IDocument createDocument(final Object element) throws CoreException {
         if (!(element instanceof FileEditorInput) && !(element instanceof URIEditorInput)) {
-            throw new CoreException(new Status(IStatus.ERROR, SiriusDiagramEditorPlugin.ID, 0, NLS.bind(Messages.SiriusDocumentProvider_IncorrectInputError, new Object[] { element,
+            throw new CoreException(new Status(IStatus.ERROR, DiagramPlugin.ID, 0, NLS.bind(Messages.SiriusDocumentProvider_IncorrectInputError, new Object[] { element,
                     "org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput", }), //$NON-NLS-1$ //$NON-NLS-2$ 
                     null));
         }
@@ -141,7 +141,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
                 } else if (element instanceof URIEditorInput) {
                     caseURIEditorInput(document, (URIEditorInput) element, domain);
                 } else {
-                    throw new CoreException(new Status(IStatus.ERROR, SiriusDiagramEditorPlugin.ID, 0, NLS.bind(Messages.SiriusDocumentProvider_IncorrectInputError, new Object[] { element,
+                    throw new CoreException(new Status(IStatus.ERROR, DiagramPlugin.ID, 0, NLS.bind(Messages.SiriusDocumentProvider_IncorrectInputError, new Object[] { element,
                             "org.eclipse.ui.part.FileEditorInput", "org.eclipse.emf.common.ui.URIEditorInput", }), //$NON-NLS-1$ //$NON-NLS-2$ 
                             null));
                 }
@@ -236,7 +236,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
                 thrownExcp = (CoreException) e;
             } else {
                 final String msg = e.getLocalizedMessage();
-                thrownExcp = new CoreException(new Status(IStatus.ERROR, SiriusDiagramEditorPlugin.ID, 0, msg != null ? msg : Messages.SiriusDocumentProvider_DiagramLoadingError, e));
+                thrownExcp = new CoreException(new Status(IStatus.ERROR, DiagramPlugin.ID, 0, msg != null ? msg : Messages.SiriusDocumentProvider_DiagramLoadingError, e));
             }
             throw thrownExcp;
         }
@@ -348,7 +348,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
                 URI resourceURI = inputURI.trimFragment();
                 Resource resource = resourceSet.getResource(resourceURI, false);
                 if (resource == null) {
-                    SiriusDiagramEditorPlugin.getInstance().logError("No resource in resourceSet corresponding to " + resourceURI.toString());
+                    DiagramPlugin.getInstance().logError("No resource in resourceSet corresponding to " + resourceURI.toString());
                     return isModifiable;
                 }
                 String fragment = inputURI.fragment();

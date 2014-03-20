@@ -48,7 +48,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusMarkerNavigationProvider;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusValidationProvider;
@@ -104,7 +104,7 @@ public class ValidateAction extends Action {
                     }
                 }).run(new NullProgressMonitor());
             } catch (Exception e) {
-                SiriusDiagramEditorPlugin.getInstance().logError("Validation action failed", e); //$NON-NLS-1$
+                DiagramPlugin.getInstance().logError("Validation action failed", e); //$NON-NLS-1$
             }
         }
     }
@@ -123,7 +123,7 @@ public class ValidateAction extends Action {
                 }
             }
         } catch (Exception e) {
-            SiriusDiagramEditorPlugin.getInstance().logError("Validation action failed", e); //$NON-NLS-1$
+            DiagramPlugin.getInstance().logError("Validation action failed", e); //$NON-NLS-1$
         }
     }
 

@@ -70,7 +70,7 @@ import org.eclipse.sirius.business.internal.migration.RepresentationsFileVersion
 import org.eclipse.sirius.business.internal.migration.description.VSMMigrationService;
 import org.eclipse.sirius.business.internal.migration.description.VSMVersionSAXParser;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.command.DiagramCommandFactoryService;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
@@ -1271,7 +1271,7 @@ public abstract class SiriusTestCase extends TestCase {
      *            The new value.
      */
     protected void changeDiagramPreference(String preferenceKey, Integer newValue) {
-        final IPreferenceStore prefs = SiriusDiagramEditorPlugin.getInstance().getPreferenceStore();
+        final IPreferenceStore prefs = DiagramPlugin.getInstance().getPreferenceStore();
         oldValueDiagramPreferences.put(preferenceKey, prefs.getInt(preferenceKey));
         prefs.setValue(preferenceKey, newValue);
     }
@@ -1288,7 +1288,7 @@ public abstract class SiriusTestCase extends TestCase {
      *            The new value.
      */
     protected void changeDiagramPreference(String preferenceKey, Boolean newValue) {
-        final IPreferenceStore prefs = SiriusDiagramEditorPlugin.getInstance().getPreferenceStore();
+        final IPreferenceStore prefs = DiagramPlugin.getInstance().getPreferenceStore();
         oldValueDiagramPreferences.put(preferenceKey, prefs.getBoolean(preferenceKey));
         prefs.setValue(preferenceKey, newValue);
     }
@@ -1302,7 +1302,7 @@ public abstract class SiriusTestCase extends TestCase {
      *            The key of the preference.
      */
     protected void resetDiagramPreference(String preferenceKey) {
-        final IPreferenceStore prefs = SiriusDiagramEditorPlugin.getInstance().getPreferenceStore();
+        final IPreferenceStore prefs = DiagramPlugin.getInstance().getPreferenceStore();
         for (String key : oldValueDiagramPreferences.keySet()) {
             if (key.equals(preferenceKey)) {
                 if (oldValueDiagramPreferences.get(key) instanceof Boolean) {
@@ -1516,7 +1516,7 @@ public abstract class SiriusTestCase extends TestCase {
         TestsUtil.emptyEventsFromUIThread();
         // Reset the preferences changed during the test with the method
         // changePreference
-        IPreferenceStore diagramPreferences = SiriusDiagramEditorPlugin.getInstance().getPreferenceStore();
+        IPreferenceStore diagramPreferences = DiagramPlugin.getInstance().getPreferenceStore();
         for (String key : oldValueDiagramPreferences.keySet()) {
             if (oldValueDiagramPreferences.get(key) instanceof Boolean) {
                 diagramPreferences.setValue(key, (Boolean) oldValueDiagramPreferences.get(key));

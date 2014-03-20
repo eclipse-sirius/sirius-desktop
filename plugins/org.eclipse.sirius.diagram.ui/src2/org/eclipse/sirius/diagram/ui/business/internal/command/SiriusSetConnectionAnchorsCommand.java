@@ -31,7 +31,7 @@ import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.description.tool.ReconnectionKind;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
 import org.eclipse.sirius.ext.base.Option;
 
@@ -113,7 +113,7 @@ public class SiriusSetConnectionAnchorsCommand extends SetConnectionAnchorsComma
             if (edge == null) {
                 String message = "The semantic model was not correctly updated by the reconnect tool, the diagram part of the reconnect cannot be done";
                 commandResult = CommandResult.newErrorCommandResult(message);
-                SiriusDiagramEditorPlugin.getInstance().logWarning(message);
+                DiagramPlugin.getInstance().logWarning(message);
             } else {
 
                 // If there is tree brothers on the new source, we must use the

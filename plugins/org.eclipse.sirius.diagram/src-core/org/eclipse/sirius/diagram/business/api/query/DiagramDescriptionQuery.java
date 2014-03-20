@@ -20,7 +20,7 @@ import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptor
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramImportDescription;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -162,7 +162,7 @@ public class DiagramDescriptionQuery {
 
         // Look for global preference
         String headerPrefKey = SiriusDiagramPreferencesKeys.PREF_DISPLAY_HEADER_SECTION.name();
-        boolean prefHeaderEnabled = Platform.getPreferencesService().getBoolean(SiriusDiagramEditorPlugin.ID, headerPrefKey, false, null);
+        boolean prefHeaderEnabled = Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, headerPrefKey, false, null);
         if (prefHeaderEnabled) {
             // Look for header contributions.
             for (final IDiagramTypeDescriptor diagramTypeDescriptor : DiagramTypeDescriptorRegistry.getInstance().getAllDiagramTypeDescriptors()) {

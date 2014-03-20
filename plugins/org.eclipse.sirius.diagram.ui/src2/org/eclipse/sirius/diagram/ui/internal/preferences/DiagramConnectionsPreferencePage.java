@@ -19,7 +19,7 @@ import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.util.PropertyChangeEvent;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -78,7 +78,7 @@ public class DiagramConnectionsPreferencePage extends ConnectionsPreferencePage 
      * @was-generated
      */
     public DiagramConnectionsPreferencePage() {
-        setPreferenceStore(SiriusDiagramEditorPlugin.getInstance().getPreferenceStore());
+        setPreferenceStore(DiagramPlugin.getInstance().getPreferenceStore());
     }
 
 

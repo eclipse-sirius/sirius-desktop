@@ -53,7 +53,7 @@ import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.api.view.refresh.CanonicalSynchronizer;
@@ -798,7 +798,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
      * @return a create <i>non-persisted</i> view descriptor
      */
     protected CreateViewRequest.ViewDescriptor getViewDescriptor(final IAdaptable elementAdapter, final Class<?> viewKind, final String hint, final int index) {
-        return new CreateViewRequest.ViewDescriptor(elementAdapter, viewKind, hint, index, true, SiriusDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT);
+        return new CreateViewRequest.ViewDescriptor(elementAdapter, viewKind, hint, index, true, DiagramPlugin.DIAGRAM_PREFERENCES_HINT);
     }
 
     private List<View> cleanCanonicalSemanticChildren(View currentView, Collection<View> viewChildren, Collection<SiriusNodeDescriptor> semanticChildren) {

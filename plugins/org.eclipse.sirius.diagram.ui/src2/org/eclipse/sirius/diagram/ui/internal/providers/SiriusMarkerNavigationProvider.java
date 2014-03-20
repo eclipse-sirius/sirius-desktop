@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.emf.ui.providers.marker.AbstractModelMarkerNavigationProvider;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorUtil;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
@@ -35,7 +35,7 @@ public class SiriusMarkerNavigationProvider extends AbstractModelMarkerNavigatio
     /**
      * @was-generated
      */
-    public static final String MARKER_TYPE = SiriusDiagramEditorPlugin.ID + ".diagnostic"; //$NON-NLS-1$
+    public static final String MARKER_TYPE = DiagramPlugin.ID + ".diagnostic"; //$NON-NLS-1$
 
     /**
      * @was-generated
@@ -64,7 +64,7 @@ public class SiriusMarkerNavigationProvider extends AbstractModelMarkerNavigatio
         try {
             resource.deleteMarkers(MARKER_TYPE, true, IResource.DEPTH_ZERO);
         } catch (CoreException e) {
-            SiriusDiagramEditorPlugin.getInstance().logError("Failed to delete validation markers", e); //$NON-NLS-1$
+            DiagramPlugin.getInstance().logError("Failed to delete validation markers", e); //$NON-NLS-1$
         }
     }
 
@@ -86,7 +86,7 @@ public class SiriusMarkerNavigationProvider extends AbstractModelMarkerNavigatio
             }
             marker.setAttribute(IMarker.SEVERITY, markerSeverity);
         } catch (CoreException e) {
-            SiriusDiagramEditorPlugin.getInstance().logError("Failed to create validation marker", e); //$NON-NLS-1$
+            DiagramPlugin.getInstance().logError("Failed to create validation marker", e); //$NON-NLS-1$
         }
         return marker;
     }
@@ -110,7 +110,7 @@ public class SiriusMarkerNavigationProvider extends AbstractModelMarkerNavigatio
             }
             marker.setAttribute(IMarker.SEVERITY, markerSeverity);
         } catch (CoreException e) {
-            SiriusDiagramEditorPlugin.getInstance().logError("Failed to create validation marker", e); //$NON-NLS-1$
+            DiagramPlugin.getInstance().logError("Failed to create validation marker", e); //$NON-NLS-1$
         }
         return marker;
     }

@@ -26,7 +26,7 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramElementMappingHelper;
 import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.part.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
@@ -217,7 +217,7 @@ public class MessageFormatParser extends AbstractParser {
         ParsePosition pos = new ParsePosition(0);
         Object[] values = getEditProcessor().parse(editString, pos);
         if (values == null) {
-            return new ParserEditStatus(SiriusDiagramEditorPlugin.ID, IParserEditStatus.UNEDITABLE, NLS.bind(Messages.MessageFormatParser_InvalidInputError, new Integer(pos.getErrorIndex())));
+            return new ParserEditStatus(DiagramPlugin.ID, IParserEditStatus.UNEDITABLE, NLS.bind(Messages.MessageFormatParser_InvalidInputError, new Integer(pos.getErrorIndex())));
         }
         return validateNewValues(values);
     }

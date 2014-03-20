@@ -32,7 +32,7 @@ import org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
 import org.eclipse.jface.text.contentassist.IContentAssistProcessor;
 import org.eclipse.osgi.util.NLS;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.part.Messages;
 
 /**
@@ -207,7 +207,7 @@ public abstract class AbstractParser implements IParser {
         for (int i = 0; i < values.length; i++) {
             Object value = getValidNewValue(features[i], values[i]);
             if (value instanceof InvalidValue) {
-                return new ParserEditStatus(SiriusDiagramEditorPlugin.ID, IParserEditStatus.UNEDITABLE, value.toString());
+                return new ParserEditStatus(DiagramPlugin.ID, IParserEditStatus.UNEDITABLE, value.toString());
             }
         }
         return ParserEditStatus.EDITABLE_STATUS;

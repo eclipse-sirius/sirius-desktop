@@ -12,7 +12,7 @@ package org.eclipse.sirius.diagram.ui.internal.preferences;
 
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 
 /**
  * @was-generated
@@ -35,6 +35,6 @@ public class DiagramPreferenceInitializer extends AbstractPreferenceInitializer 
      * @was-generated
      */
     protected IPreferenceStore getPreferenceStore() {
-        return SiriusDiagramEditorPlugin.getInstance().getPreferenceStore();
+        return DiagramPlugin.getInstance().getPreferenceStore();
     }
 }

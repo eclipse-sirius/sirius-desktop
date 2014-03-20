@@ -60,7 +60,7 @@ import org.eclipse.sirius.diagram.layoutdata.LayoutdataFactory;
 import org.eclipse.sirius.diagram.layoutdata.LayoutdataPackage;
 import org.eclipse.sirius.diagram.layoutdata.NodeLayoutData;
 import org.eclipse.sirius.diagram.layoutdata.Point;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
@@ -367,7 +367,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
         }
 
         if (logWarn) {
-            SiriusDiagramEditorPlugin.getInstance().logWarning("This kind of diagram element  (" + semanticDecorator.getClass().getName() + ") is not yet managed by the LayoutDataManager.");
+            DiagramPlugin.getInstance().logWarning("This kind of diagram element  (" + semanticDecorator.getClass().getName() + ") is not yet managed by the LayoutDataManager.");
         }
     }
 

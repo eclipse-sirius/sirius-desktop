@@ -30,7 +30,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.BundledImage;
 import org.eclipse.sirius.diagram.BundledImageShape;
 import org.eclipse.sirius.diagram.DiagramFactory;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractNotSelectableShapeNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
@@ -132,7 +132,7 @@ public class BundledImageEditPart extends AbstractNotSelectableShapeNodeEditPart
         if (this.getMetamodelType().isInstance(this.resolveSemanticElement())) {
             bif = (BundledImageFigure) BundledImageFigure.createImageFigure((BundledImage) resolveSemanticElement());
         } else {
-            SiriusDiagramEditorPlugin.getInstance().logWarning("The element is not a BundledImage");
+            DiagramPlugin.getInstance().logWarning("The element is not a BundledImage");
             final BundledImage bundle = DiagramFactory.eINSTANCE.createBundledImage();
             bundle.setShape(BundledImageShape.SQUARE_LITERAL);
             bundle.setLabelFormat(FontFormat.NORMAL_LITERAL);

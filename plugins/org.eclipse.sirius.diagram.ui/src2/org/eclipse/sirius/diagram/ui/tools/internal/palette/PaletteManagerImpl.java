@@ -61,7 +61,7 @@ import org.eclipse.sirius.diagram.description.tool.RequestDescription;
 import org.eclipse.sirius.diagram.description.tool.ToolGroup;
 import org.eclipse.sirius.diagram.description.tool.ToolGroupExtension;
 import org.eclipse.sirius.diagram.description.tool.ToolSection;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.ToolFilter;
 import org.eclipse.sirius.ext.base.Option;
@@ -371,7 +371,7 @@ public class PaletteManagerImpl implements PaletteManager {
             // Here no matching candidate has been found, we will return
             // Options.newNone
         } catch (IllegalArgumentException e) {
-            SiriusDiagramEditorPlugin.getInstance().logWarning(MessageFormat.format(SEVERAL_CANDIDATES_IN_PALETTE_FOUND, type.getName(), id));
+            DiagramPlugin.getInstance().logWarning(MessageFormat.format(SEVERAL_CANDIDATES_IN_PALETTE_FOUND, type.getName(), id));
             // Here no matching candidate has been found, we will return
             // Options.newNone
         }

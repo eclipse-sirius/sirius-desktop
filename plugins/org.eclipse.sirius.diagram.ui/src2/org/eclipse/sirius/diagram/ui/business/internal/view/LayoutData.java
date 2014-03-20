@@ -30,7 +30,7 @@ import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin;
+import org.eclipse.sirius.diagram.part.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 
 /**
@@ -104,7 +104,7 @@ public class LayoutData extends AbstractLayoutData {
         } else if (target instanceof DNodeList) {
             addNodeListChildren();
         } else {
-            SiriusDiagramEditorPlugin.getInstance().logWarning("This kind of diagram element  (" + target.getClass().getName() + ") is not yet managed by the LayoutDataManager.");
+            DiagramPlugin.getInstance().logWarning("This kind of diagram element  (" + target.getClass().getName() + ") is not yet managed by the LayoutDataManager.");
         }
         if (target instanceof EdgeTarget) {
             addOutgoingEdge();
