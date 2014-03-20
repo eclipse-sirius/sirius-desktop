@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.part;
+package org.eclipse.sirius.diagram;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
@@ -17,6 +17,7 @@ import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
+//CHECKSTYLE:OFF
 /**
  * @was-generated NOT
  */
@@ -154,5 +155,5 @@ public class DiagramPlugin extends AbstractUIPlugin {
             throwable.printStackTrace();
         }
     }
-
+    // CHECKSTYLE:ON
 }

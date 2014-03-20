@@ -13,7 +13,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.editor;
 import org.eclipse.gef.RootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.sirius.diagram.part.DiagramPlugin;
+import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.NotificationFigure;
 import org.eclipse.sirius.ui.business.api.dialect.DefaultDialectEditorDialogFactory;

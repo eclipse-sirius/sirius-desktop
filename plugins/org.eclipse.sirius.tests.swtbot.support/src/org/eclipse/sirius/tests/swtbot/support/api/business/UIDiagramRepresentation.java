@@ -12,7 +12,7 @@ package org.eclipse.sirius.tests.swtbot.support.api.business;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IPreferencesService;
-import org.eclipse.sirius.diagram.part.DiagramPlugin;
+import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerHelper;

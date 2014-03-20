@@ -19,6 +19,7 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyReferenceRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.IEditCommandRequest;
 
+//CHECKSTYLE:OFF
 /**
  * @was-generated
  */
@@ -75,4 +76,5 @@ public class SiriusBaseEditHelper extends AbstractEditHelper {
     protected ICommand getDestroyReferenceCommand(DestroyReferenceRequest req) {
         return null;
     }
+    // CHECKSTYLE:ON
 }

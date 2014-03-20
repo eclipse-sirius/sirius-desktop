@@ -30,7 +30,7 @@ import org.apache.batik.util.XMLResourceDescriptor;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.sirius.diagram.part.DiagramPlugin;
+import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.InferringNamespaceContext;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SVGUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SimpleImageTranscoder;
