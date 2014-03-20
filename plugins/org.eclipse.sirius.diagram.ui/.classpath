@@ -7,7 +7,7 @@
 		</accessrules>
 	</classpathentry>
 	<classpathentry kind="src" path="src-gen"/>
-	<classpathentry kind="src" path="src2"/>
+	<classpathentry kind="src" path="src-diag"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

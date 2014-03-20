@@ -15,7 +15,7 @@ This milestone (Sirius 1.0M7) includes the third, and final, step towards a full
 All classes related to diagrams in @org.eclipse.sirius@ have been moved to @org.eclipse.sirius.diagram@.
 All classes related to diagrams in @org.eclipse.sirius.ui@ have been moved to @org.eclipse.sirius.diagram.ui@.
 All classes related to diagrams in @org.eclipse.sirius.editor@ have been moved to @org.eclipse.sirius.editor.diagram@.
-In the same way, all classes related to UI in @org.eclipse.diagram@ have been moved to @org.eclipse.sirius.diagram.ui@. To simplify this step almost all classes of @org.eclipse.diagram@ have been moved in @org.eclipse.sirius.diagram.ui@ (and probably not only UI classes). These classes have been moved in @src2@ source folder to facilitate future work about moving some of these classes in @org.eclipse.diagram@ again.
+In the same way, all classes related to UI in @org.eclipse.diagram@ have been moved to @org.eclipse.sirius.diagram.ui@. To simplify this step almost all classes of @org.eclipse.diagram@ have been moved in @org.eclipse.sirius.diagram.ui@ (and probably not only UI classes). These classes have been moved in @src-diag@ source folder to facilitate future work about moving some of these classes in @org.eclipse.diagram@ again.
 
 Unlike, the "Step1":#separationOfDiagramSpecificConcept-step1, a simple "Organize Imports" operation is not enough. First, you will probably need to add dependencies to @org.eclipse.sirius.diagram@, @org.eclipse.sirius.diagram.ui@ or @org.eclipse.sirius.editor.diagram@ in the MANIFEST.MF of your projects that depend on Sirius diagram classes. The dependencies to add depend on what you really use.
 
