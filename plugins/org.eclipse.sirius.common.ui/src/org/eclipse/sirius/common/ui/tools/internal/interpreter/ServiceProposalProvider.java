@@ -47,7 +47,7 @@ public class ServiceProposalProvider implements IProposalProvider {
      * {@inheritDoc}
      */
     public ContentProposal getNewEmtpyExpression() {
-        return new ContentProposal(ServiceInterpreter.PREFIX, ServiceInterpreter.PREFIX, "New variable expression.", ServiceInterpreter.PREFIX.length());
+        return new ContentProposal(ServiceInterpreter.PREFIX, ServiceInterpreter.PREFIX, "New service calls expression.", ServiceInterpreter.PREFIX.length());
     }
 
     /**

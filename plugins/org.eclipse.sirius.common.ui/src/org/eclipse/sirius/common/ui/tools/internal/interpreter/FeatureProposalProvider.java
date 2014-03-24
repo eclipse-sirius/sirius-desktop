@@ -17,7 +17,6 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
@@ -44,7 +43,7 @@ public class FeatureProposalProvider implements IProposalProvider {
      * {@inheritDoc}
      */
     public ContentProposal getNewEmtpyExpression() {
-        return new ContentProposal(FeatureInterpreter.PREFIX, FeatureInterpreter.PREFIX, "New variable expression.", FeatureInterpreter.PREFIX.length());
+        return new ContentProposal(FeatureInterpreter.PREFIX, FeatureInterpreter.PREFIX, "New feature access expression.", FeatureInterpreter.PREFIX.length());
     }
 
     /**

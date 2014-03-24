@@ -40,7 +40,7 @@ public class VariableProposalProvider implements IProposalProvider {
      * {@inheritDoc}
      */
     public ContentProposal getNewEmtpyExpression() {
-        return new ContentProposal(VariableInterpreter.PREFIX, VariableInterpreter.PREFIX, "New variable expression.", VariableInterpreter.PREFIX.length());
+        return new ContentProposal(VariableInterpreter.PREFIX, VariableInterpreter.PREFIX, "New variable access expression.", VariableInterpreter.PREFIX.length());
     }
 
     /**
