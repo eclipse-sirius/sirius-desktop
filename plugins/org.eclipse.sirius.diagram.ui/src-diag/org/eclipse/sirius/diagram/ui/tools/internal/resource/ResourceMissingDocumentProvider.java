@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,7 @@ import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocument;
 import org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
-import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 import org.eclipse.ui.IEditorInput;
 
@@ -136,7 +136,7 @@ public class ResourceMissingDocumentProvider {
             }
 
             resource.getContents().add(diagram);
-            GMFNotationHelper.createNote(diagram, noteMessage, DiagramPlugin.getInstance().getPreferenceStore());
+            GMFNotationHelper.createNote(diagram, noteMessage, DiagramUIPlugin.getPlugin().getPreferenceStore());
         }
     }
 }

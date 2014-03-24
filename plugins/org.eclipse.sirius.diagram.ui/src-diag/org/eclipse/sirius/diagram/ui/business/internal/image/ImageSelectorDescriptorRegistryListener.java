@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -32,7 +32,7 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 public class ImageSelectorDescriptorRegistryListener implements IRegistryChangeListener {
 
     /** Name of the extension point to parse for extensions. */
-    public static final String IMAGE_SELECTOR_EXTENSION_POINT = DiagramUIPlugin.Implementation.ID + ".imageSelector"; //$NON-NLS-1$
+    public static final String IMAGE_SELECTOR_EXTENSION_POINT = DiagramUIPlugin.ID + ".imageSelector"; //$NON-NLS-1$
 
     /** Name of the extension point's "imageSelector" tag. */
     private static final String IMAGE_SELECTOR_TAG_EXTENSION = "imageSelector"; //$NON-NLS-1$

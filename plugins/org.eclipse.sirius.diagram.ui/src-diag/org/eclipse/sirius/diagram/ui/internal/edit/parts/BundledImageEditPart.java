@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -132,7 +132,7 @@ public class BundledImageEditPart extends AbstractNotSelectableShapeNodeEditPart
         if (this.getMetamodelType().isInstance(this.resolveSemanticElement())) {
             bif = (BundledImageFigure) BundledImageFigure.createImageFigure((BundledImage) resolveSemanticElement());
         } else {
-            DiagramPlugin.getInstance().logWarning("The element is not a BundledImage");
+            DiagramPlugin.getDefault().logWarning("The element is not a BundledImage");
             final BundledImage bundle = DiagramFactory.eINSTANCE.createBundledImage();
             bundle.setShape(BundledImageShape.SQUARE_LITERAL);
             bundle.setLabelFormat(FontFormat.NORMAL_LITERAL);

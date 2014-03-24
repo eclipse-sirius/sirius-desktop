@@ -159,7 +159,11 @@
 					</li>
 					<li>
 						<code>org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin</code> has been renamed into 
-						<code>org.eclipse.sirius.diagram.DiagramPlugin</code>.
+						<code>org.eclipse.sirius.diagram.DiagramPlugin</code>. This plugin is not a UI plugin any more, 
+						<code>org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin.getPlugin()</code> should be used instead for UI related aspects. For example 
+						<code>DiagramUIPlugin.getPlugin().getPreferenceStore()</code> should be used instead of  
+						<code>DiagramPlugin.getDefault().getPreferenceStore()</code> or 
+						<code>SiriusDiagramEditorPlugin.getInstance().getPreferenceStore()</code>.
 					</li>
 				</ul>
 			</li>

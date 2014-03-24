@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -90,7 +90,7 @@ public class NodeDeletionEditPolicy extends ComponentEditPolicy {
     private Command buildGlobalDeleteCommand(final IDiagramCommandFactory commandFactory, final View view, final DDiagramElement diagramElement) {
         final CompositeCommand compositeCommand = new CompositeCommand("Delete element");
         org.eclipse.emf.common.command.Command buildedCommand = commandFactory.buildDeleteDiagramElement(diagramElement);
-        boolean removeHideNote = DiagramPlugin.getInstance().getPluginPreferences()
+        boolean removeHideNote = DiagramPlugin.getDefault().getPluginPreferences()
                 .getBoolean(SiriusDiagramInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name());
         if (removeHideNote) {
             DeleteHelper.addDeleteLinkedNotesTask(buildedCommand, view);

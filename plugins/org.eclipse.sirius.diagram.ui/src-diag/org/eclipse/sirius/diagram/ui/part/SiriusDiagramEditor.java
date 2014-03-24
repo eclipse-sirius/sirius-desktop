@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,6 @@ import org.eclipse.jface.preference.PreferenceStore;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
@@ -83,7 +82,7 @@ public class SiriusDiagramEditor extends DiagramDocumentEditor implements IGotoM
      */
     @Override
     protected PreferencesHint getPreferencesHint() {
-        return DiagramPlugin.DIAGRAM_PREFERENCES_HINT;
+        return DiagramUIPlugin.DIAGRAM_PREFERENCES_HINT;
     }
 
     /**
@@ -91,7 +90,7 @@ public class SiriusDiagramEditor extends DiagramDocumentEditor implements IGotoM
      */
     @Override
     public String getContributorId() {
-        return DiagramUIPlugin.Implementation.ID;
+        return DiagramUIPlugin.ID;
     }
 
     /**

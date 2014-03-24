@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -190,7 +190,7 @@ public class SiriusMarkerNavigationProviderSpec extends SiriusMarkerNavigationPr
             marker.setAttribute(NavigationMarkerConstants.SEMANTIC_URI, semanticURI);
             marker.setAttribute(IDE.EDITOR_ID_ATTR, DDiagramEditor.EDITOR_ID);
         } catch (final CoreException e) {
-            DiagramPlugin.getInstance().logError("Failed to create validation marker", e); //$NON-NLS-1$
+            DiagramPlugin.getDefault().logError("Failed to create validation marker", e); //$NON-NLS-1$
         }
         return marker;
     }
@@ -228,7 +228,7 @@ public class SiriusMarkerNavigationProviderSpec extends SiriusMarkerNavigationPr
             marker.setAttribute(NavigationMarkerConstants.SEMANTIC_URI, semanticURI);
             marker.setAttribute(IDE.EDITOR_ID_ATTR, DDiagramEditor.EDITOR_ID);
         } catch (final CoreException e) {
-            DiagramPlugin.getInstance().logError("Failed to create validation marker", e); //$NON-NLS-1$
+            DiagramPlugin.getDefault().logError("Failed to create validation marker", e); //$NON-NLS-1$
         }
         return marker;
     }

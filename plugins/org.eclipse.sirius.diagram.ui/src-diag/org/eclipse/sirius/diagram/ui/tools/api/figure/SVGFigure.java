@@ -93,7 +93,7 @@ public class SVGFigure extends Figure {
             transcoder = new SimpleImageTranscoder(document);
             failedToLoadDocument = false;
         } catch (IOException e) {
-            DiagramPlugin.getInstance().logError("Error loading SVG file", e);
+            DiagramPlugin.getDefault().logError("Error loading SVG file", e);
         }
     }
 

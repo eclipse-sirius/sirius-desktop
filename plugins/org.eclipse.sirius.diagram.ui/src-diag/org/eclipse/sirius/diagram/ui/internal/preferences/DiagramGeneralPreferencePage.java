@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,8 +13,8 @@ package org.eclipse.sirius.diagram.ui.internal.preferences;
 import org.eclipse.gmf.runtime.diagram.ui.preferences.DiagramsPreferencePage;
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramInternalPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 
 /**
  * @was-generated
@@ -35,7 +35,7 @@ public class DiagramGeneralPreferencePage extends DiagramsPreferencePage {
      * @was-generated
      */
     public DiagramGeneralPreferencePage() {
-        setPreferenceStore(DiagramPlugin.getInstance().getPreferenceStore());
+        setPreferenceStore(DiagramUIPlugin.getPlugin().getPreferenceStore());
     }
 
     /**

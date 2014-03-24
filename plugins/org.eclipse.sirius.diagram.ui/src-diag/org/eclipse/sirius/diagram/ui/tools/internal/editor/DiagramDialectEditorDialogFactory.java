@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,8 +13,8 @@ package org.eclipse.sirius.diagram.ui.tools.internal.editor;
 import org.eclipse.gef.RootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.NotificationFigure;
 import org.eclipse.sirius.ui.business.api.dialect.DefaultDialectEditorDialogFactory;
 import org.eclipse.ui.IWorkbenchPartSite;
@@ -53,7 +53,7 @@ public class DiagramDialectEditorDialogFactory extends DefaultDialectEditorDialo
 
         // Step 1 : if the preference says that messages
         // should not be displayed using pop ups
-        if (!DiagramPlugin.getInstance().getPreferenceStore().getBoolean(SiriusDiagramPreferencesKeys.PREF_DIAGRAM_SHOULD_DISPLAY_MESSAGES_USING_POP_UPS.name())) {
+        if (!DiagramUIPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusDiagramPreferencesKeys.PREF_DIAGRAM_SHOULD_DISPLAY_MESSAGES_USING_POP_UPS.name())) {
             // We try to log it as a notification figure
             if (this.editor.getDiagramEditPart() != null) {
                 RootEditPart rootEditPart = this.editor.getDiagramEditPart().getRoot();

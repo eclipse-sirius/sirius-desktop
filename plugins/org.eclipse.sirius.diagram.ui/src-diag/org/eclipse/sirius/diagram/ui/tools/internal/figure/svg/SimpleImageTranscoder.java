@@ -148,7 +148,7 @@ public class SimpleImageTranscoder extends SVGAbstractTranscoder {
             }
             transcode(new TranscoderInput(document), new TranscoderOutput());
         } catch (TranscoderException e) {
-            DiagramPlugin.getInstance().logError("Error transcoding SVG image", e);
+            DiagramPlugin.getDefault().logError("Error transcoding SVG image", e);
         }
     }
 

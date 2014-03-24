@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,7 +35,7 @@ public abstract class SiriusAbstractExpression {
      * @was-generated
      */
     private static final boolean DISABLED_NO_IMPL_EXCEPTION_LOG = Boolean.valueOf(
-            Platform.getDebugOption(DiagramPlugin.getInstance().getBundle().getSymbolicName() + "/debug/disableNoExprImplExceptionLog")).booleanValue();
+            Platform.getDebugOption(DiagramPlugin.getDefault().getBundle().getSymbolicName() + "/debug/disableNoExprImplExceptionLog")).booleanValue();
 
     /**
      * @was-generated
@@ -74,7 +74,7 @@ public abstract class SiriusAbstractExpression {
         String pluginID = DiagramPlugin.ID;
         this.status = new Status(severity, pluginID, -1, (message != null) ? message : "", throwable); //$NON-NLS-1$
         if (!this.status.isOK()) {
-            DiagramPlugin.getInstance().logError("Expression problem:" + message + "body:" + body, throwable); //$NON-NLS-1$ //$NON-NLS-2$
+            DiagramPlugin.getDefault().logError("Expression problem:" + message + "body:" + body, throwable); //$NON-NLS-1$ //$NON-NLS-2$
 
         }
     }
@@ -102,7 +102,7 @@ public abstract class SiriusAbstractExpression {
                 if (DISABLED_NO_IMPL_EXCEPTION_LOG && e instanceof NoImplException) {
                     return null;
                 }
-                DiagramPlugin.getInstance().logError("Expression evaluation failure: " + body, e);
+                DiagramPlugin.getDefault().logError("Expression evaluation failure: " + body, e);
             }
         }
         return null;

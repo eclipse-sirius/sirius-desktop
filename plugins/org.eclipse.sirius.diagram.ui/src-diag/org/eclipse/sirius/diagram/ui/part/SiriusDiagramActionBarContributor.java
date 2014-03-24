@@ -158,7 +158,7 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
      */
     public void contributeToToolBar(final IToolBarManager toolBarManager) {
         super.contributeToToolBar(toolBarManager);
-        Preferences prefs = DiagramPlugin.getInstance().getPluginPreferences();
+        Preferences prefs = DiagramPlugin.getDefault().getPluginPreferences();
         if (prefs.getBoolean(SiriusDiagramPreferencesKeys.PREF_OLD_UI.name())) {
 
             toolBarManager.add(getActionRegistry().getAction(REFRESH_DIAGRAM));
@@ -191,7 +191,7 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
 
         try {
             super.init(bars);
-            final Preferences prefs = DiagramPlugin.getInstance().getPluginPreferences();
+            final Preferences prefs = DiagramPlugin.getDefault().getPluginPreferences();
 
             IToolBarManager toolBarManager = bars.getToolBarManager();
             toolBarManager.remove(ActionIds.MENU_COMPARTMENT);

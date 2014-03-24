@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -107,7 +107,7 @@ public class SiriusVisualIDRegistry {
             return Integer.parseInt(type);
         } catch (NumberFormatException e) {
             if (Boolean.TRUE.toString().equalsIgnoreCase(Platform.getDebugOption(DEBUG_KEY))) {
-                DiagramPlugin.getInstance().logError("Unable to parse view type as a visualID number: " + type);
+                DiagramPlugin.getDefault().logError("Unable to parse view type as a visualID number: " + type);
             }
         }
         return -1;

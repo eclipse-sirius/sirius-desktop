@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,8 +15,8 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.swt.graphics.Image;
 
@@ -89,7 +89,7 @@ public class StyleConfigurationQuery {
     protected boolean labelIconsMustBeHidden(DDiagramElement element) {
 
         boolean mustHideLabelIconsOnShape = false;
-        IPreferenceStore prefs = DiagramPlugin.getInstance().getPreferenceStore();
+        IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
 
         // We get the preference according to the given element's type
         if (element instanceof DEdge) {

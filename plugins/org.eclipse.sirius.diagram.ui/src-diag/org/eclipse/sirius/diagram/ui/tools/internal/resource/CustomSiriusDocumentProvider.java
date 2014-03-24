@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -348,7 +348,7 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
                 URI resourceURI = inputURI.trimFragment();
                 Resource resource = resourceSet.getResource(resourceURI, false);
                 if (resource == null) {
-                    DiagramPlugin.getInstance().logError("No resource in resourceSet corresponding to " + resourceURI.toString());
+                    DiagramPlugin.getDefault().logError("No resource in resourceSet corresponding to " + resourceURI.toString());
                     return isModifiable;
                 }
                 String fragment = inputURI.fragment();

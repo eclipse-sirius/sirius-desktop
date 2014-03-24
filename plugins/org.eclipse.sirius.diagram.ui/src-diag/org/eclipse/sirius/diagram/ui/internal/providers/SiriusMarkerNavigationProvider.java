@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -64,7 +64,7 @@ public class SiriusMarkerNavigationProvider extends AbstractModelMarkerNavigatio
         try {
             resource.deleteMarkers(MARKER_TYPE, true, IResource.DEPTH_ZERO);
         } catch (CoreException e) {
-            DiagramPlugin.getInstance().logError("Failed to delete validation markers", e); //$NON-NLS-1$
+            DiagramPlugin.getDefault().logError("Failed to delete validation markers", e); //$NON-NLS-1$
         }
     }
 
@@ -86,7 +86,7 @@ public class SiriusMarkerNavigationProvider extends AbstractModelMarkerNavigatio
             }
             marker.setAttribute(IMarker.SEVERITY, markerSeverity);
         } catch (CoreException e) {
-            DiagramPlugin.getInstance().logError("Failed to create validation marker", e); //$NON-NLS-1$
+            DiagramPlugin.getDefault().logError("Failed to create validation marker", e); //$NON-NLS-1$
         }
         return marker;
     }
@@ -110,7 +110,7 @@ public class SiriusMarkerNavigationProvider extends AbstractModelMarkerNavigatio
             }
             marker.setAttribute(IMarker.SEVERITY, markerSeverity);
         } catch (CoreException e) {
-            DiagramPlugin.getInstance().logError("Failed to create validation marker", e); //$NON-NLS-1$
+            DiagramPlugin.getDefault().logError("Failed to create validation marker", e); //$NON-NLS-1$
         }
         return marker;
     }

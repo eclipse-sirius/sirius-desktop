@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -97,7 +97,7 @@ public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
     public Command transactionAboutToCommit(final ResourceSetChangeEvent event) throws RollbackException {
         Command cmd = null;
         Map<View, Boolean> viewsToUpdate = new HashMap<View, Boolean>();
-        boolean removeHideNote = DiagramPlugin.getInstance().getPluginPreferences()
+        boolean removeHideNote = DiagramPlugin.getDefault().getPluginPreferences()
                 .getBoolean(SiriusDiagramInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name());
         for (Notification notification : event.getNotifications()) {
             if (notification.getNotifier() instanceof DDiagramElement) {

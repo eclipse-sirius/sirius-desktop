@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2010 IBM Corporation and others.
+ * Copyright (c) 2002, 2014 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -152,9 +152,9 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
                 field.setAccessible(true);
                 return field;
             } catch (final SecurityException e) {
-                DiagramPlugin.getInstance().logError("Error while getting the " + name + " field.", e);
+                DiagramPlugin.getDefault().logError("Error while getting the " + name + " field.", e);
             } catch (final NoSuchFieldException e) {
-                DiagramPlugin.getInstance().logError("Error while getting the " + name + " field.", e);
+                DiagramPlugin.getDefault().logError("Error while getting the " + name + " field.", e);
             }
             return null;
         }
@@ -230,9 +230,9 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
                 try {
                     return (List) invalidFiguresField.get(this);
                 } catch (final IllegalArgumentException e) {
-                    DiagramPlugin.getInstance().logError(ERROR_INVALID_FIGURES_FIELD, e);
+                    DiagramPlugin.getDefault().logError(ERROR_INVALID_FIGURES_FIELD, e);
                 } catch (final IllegalAccessException e) {
-                    DiagramPlugin.getInstance().logError(ERROR_INVALID_FIGURES_FIELD, e);
+                    DiagramPlugin.getDefault().logError(ERROR_INVALID_FIGURES_FIELD, e);
                 }
             }
             return null;
@@ -248,9 +248,9 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
                 try {
                     return validatingField.getBoolean(this);
                 } catch (final IllegalArgumentException e) {
-                    DiagramPlugin.getInstance().logError(ERROR_VALIDATING_FIELD, e);
+                    DiagramPlugin.getDefault().logError(ERROR_VALIDATING_FIELD, e);
                 } catch (final IllegalAccessException e) {
-                    DiagramPlugin.getInstance().logError(ERROR_VALIDATING_FIELD, e);
+                    DiagramPlugin.getDefault().logError(ERROR_VALIDATING_FIELD, e);
                 }
             }
             return false;
@@ -267,9 +267,9 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
                 try {
                     validatingField.setBoolean(this, validating);
                 } catch (final IllegalArgumentException e) {
-                    DiagramPlugin.getInstance().logError(ERROR_VALIDATING_FIELD, e);
+                    DiagramPlugin.getDefault().logError(ERROR_VALIDATING_FIELD, e);
                 } catch (final IllegalAccessException e) {
-                    DiagramPlugin.getInstance().logError(ERROR_VALIDATING_FIELD, e);
+                    DiagramPlugin.getDefault().logError(ERROR_VALIDATING_FIELD, e);
                 }
             }
         }

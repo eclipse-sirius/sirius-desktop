@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -48,6 +48,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.view.LayoutData;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.internal.refresh.edge.SlidableAnchor;
 import org.eclipse.sirius.diagram.ui.part.SiriusLinkDescriptor;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.GMFNotationUtilities;
 import org.eclipse.sirius.ext.base.Option;
 
@@ -126,7 +127,7 @@ public class ConnectionsFactory {
                 String semanticHint = null;
                 int index = ViewUtil.APPEND;
                 boolean persisted = true;
-                PreferencesHint preferencesHint = DiagramPlugin.DIAGRAM_PREFERENCES_HINT;
+                PreferencesHint preferencesHint = DiagramUIPlugin.DIAGRAM_PREFERENCES_HINT;
 
                 Edge edge = viewpointViewProvider.createEdge(semanticAdapter, containerView, semanticHint, index, persisted, preferencesHint);
 
@@ -167,7 +168,7 @@ public class ConnectionsFactory {
 
                     createdEdge = edge;
                 } else {
-                    DiagramPlugin.getInstance().logError("GMF Edge not created between source element : " + sourceEdgeTarget + ", and target element : " + targetEdgeTarget);
+                    DiagramPlugin.getDefault().logError("GMF Edge not created between source element : " + sourceEdgeTarget + ", and target element : " + targetEdgeTarget);
                 }
             }
         }

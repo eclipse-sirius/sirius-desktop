@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -142,7 +142,7 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
                         }
                     });
                 } catch (Exception e) {
-                    DiagramPlugin.getInstance().logError("Decorator refresh failure", e); //$NON-NLS-1$
+                    DiagramPlugin.getDefault().logError("Decorator refresh failure", e); //$NON-NLS-1$
                 }
             }
         });
@@ -172,7 +172,7 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
                     }
                 });
             } catch (Exception e) {
-                DiagramPlugin.getInstance().logError("ViewID access failure", e); //$NON-NLS-1$			
+                DiagramPlugin.getDefault().logError("ViewID access failure", e); //$NON-NLS-1$			
             }
         }
 
@@ -205,7 +205,7 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
             try {
                 markers = resource.findMarkers(MARKER_TYPE, true, IResource.DEPTH_INFINITE);
             } catch (CoreException e) {
-                DiagramPlugin.getInstance().logError("Validation markers refresh failure", e); //$NON-NLS-1$
+                DiagramPlugin.getDefault().logError("Validation markers refresh failure", e); //$NON-NLS-1$
             }
             if (markers == null || markers.length == 0) {
                 return;
@@ -405,7 +405,7 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
             try {
                 return marker.getType();
             } catch (CoreException e) {
-                DiagramPlugin.getInstance().logError("Validation marker refresh failure", e); //$NON-NLS-1$
+                DiagramPlugin.getDefault().logError("Validation marker refresh failure", e); //$NON-NLS-1$
                 return ""; //$NON-NLS-1$
             }
         }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -168,7 +168,7 @@ public class SiriusBaseItemSemanticEditPolicy extends SemanticEditPolicy {
                                 CompositeCommand compositeCommand = new CompositeCommand("Delete element from diagram");
                                 IDiagramCommandFactoryProvider cmdFactoryProvider = (IDiagramCommandFactoryProvider) (adapter);
                                 org.eclipse.emf.common.command.Command cmd = cmdFactoryProvider.getCommandFactory(editingDomain).buildDeleteFromDiagramCommand(viewPointElement);
-                                boolean removeHideNote = DiagramPlugin.getInstance().getPluginPreferences()
+                                boolean removeHideNote = DiagramPlugin.getDefault().getPluginPreferences()
                                         .getBoolean(SiriusDiagramInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name());
                                 if (removeHideNote) {
                                     DeleteHelper.addDeleteLinkedNotesTask(cmd, view);
@@ -195,7 +195,7 @@ public class SiriusBaseItemSemanticEditPolicy extends SemanticEditPolicy {
                     org.eclipse.emf.common.command.Command cmd = cmdFactoryProvider.getCommandFactory(editingDomain).buildDeleteDiagramElement(viewPointElement);
                     if (cmd.canExecute()) {
                         CompositeCommand compositeCommand = new CompositeCommand("Delete element");
-                        boolean removeHideNote = DiagramPlugin.getInstance().getPluginPreferences()
+                        boolean removeHideNote = DiagramPlugin.getDefault().getPluginPreferences()
                                 .getBoolean(SiriusDiagramInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name());
                         if (removeHideNote) {
                             DeleteHelper.addDeleteLinkedNotesTask(cmd, view);

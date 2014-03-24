@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,7 +44,6 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.DecorationOverlayIcon;
 import org.eclipse.jface.viewers.IDecoration;
 import org.eclipse.jface.viewers.ILabelProvider;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.description.concern.provider.ConcernItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.description.filter.provider.FilterItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
@@ -73,6 +72,13 @@ import org.osgi.framework.BundleContext;
 public final class DiagramUIPlugin extends EMFPlugin {
 
     private static final String DECORATOR_CHECK_PATH = "icons/full/decorator/active.gif";
+
+    public static final String ID = "org.eclipse.sirius.diagram.ui"; //$NON-NLS-1$
+
+    /**
+     * @was-generated
+     */
+    public static final PreferencesHint DIAGRAM_PREFERENCES_HINT = new PreferencesHint(ID);
 
     /**
      * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc
@@ -130,8 +136,6 @@ public final class DiagramUIPlugin extends EMFPlugin {
      */
     public static class Implementation extends EclipseUIPlugin {
 
-        public static final String ID = "org.eclipse.sirius.diagram.ui"; //$NON-NLS-1$
-
         private ComposedAdapterFactory adapterFactory;
 
         private ILabelProvider labelProvider;
@@ -164,7 +168,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
          */
         public void start(BundleContext context) throws Exception {
             super.start(context);
-            PreferencesHint.registerPreferenceStore(DiagramPlugin.DIAGRAM_PREFERENCES_HINT, getPreferenceStore());
+            PreferencesHint.registerPreferenceStore(DIAGRAM_PREFERENCES_HINT, getPreferenceStore());
             adapterFactory = createAdapterFactory();
             descriptorsToImages = new HashMap<ImageWithDimensionDescriptor, Image>();
             ressourceMissingDocumentProvider = new ResourceMissingDocumentProvider();

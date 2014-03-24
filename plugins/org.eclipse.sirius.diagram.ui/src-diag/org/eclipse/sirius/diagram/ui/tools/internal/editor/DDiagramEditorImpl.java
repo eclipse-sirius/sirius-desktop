@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -379,7 +379,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             initCollaborativeIPermissionAuthority();
 
         } catch (NullPointerException e) {
-            DiagramPlugin.getInstance().getLog().log(new Status(IStatus.ERROR, DiagramPlugin.ID, "Error while getting the session.", e));
+            DiagramPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, DiagramPlugin.ID, "Error while getting the session.", e));
         }
 
     }
@@ -539,7 +539,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             keyHandler.put(KeyStroke.getPressed(SWT.DEL, 127, 0), getActionRegistry().getAction(ActionFactory.DELETE.getId()));
 
             keyHandler.put(/* CTRL + D */
-            KeyStroke.getPressed((char) 0x4, 100, SWT.CTRL), getActionRegistry().getAction(ActionIds.ACTION_DELETE_FROM_MODEL));
+                    KeyStroke.getPressed((char) 0x4, 100, SWT.CTRL), getActionRegistry().getAction(ActionIds.ACTION_DELETE_FROM_MODEL));
         }
         return keyHandler;
     }
@@ -1002,8 +1002,8 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                         } catch (IllegalStateException e) {
                             // An issue has been encountered while connecting to
                             // remote CDO server
-                            if (DiagramPlugin.getInstance().isDebugging()) {
-                                DiagramPlugin.getInstance().getLog().log(new Status(IStatus.WARNING, DiagramPlugin.ID, "Error while connecting to remote CDO server"));
+                            if (DiagramUIPlugin.getPlugin().isDebugging()) {
+                                DiagramUIPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, DiagramUIPlugin.ID, "Error while connecting to remote CDO server"));
                             }
                         }
                     } else {
@@ -1080,9 +1080,9 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     @Override
     protected void setDocumentProvider(final IEditorInput input) {
         if (getSession() != null/*
-                                 * && (input instanceof IFileEditorInput ||
-                                 * input instanceof URIEditorInput)
-                                 */) {
+         * && (input instanceof IFileEditorInput ||
+         * input instanceof URIEditorInput)
+         */) {
             setDocumentProvider(DiagramUIPlugin.getPlugin().getDocumentProvider(getSession().getTransactionalEditingDomain()));
         } else {
             // super.setDocumentProvider(input);
@@ -1196,7 +1196,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         try {
             autoRefresh = PropertiesService.getInstance().getPropertiesProvider().getProperty(IPropertiesProvider.KEY_AUTO_REFRESH);
         } catch (final IllegalArgumentException e) {
-            DiagramPlugin.getInstance().logError(e.getMessage());
+            DiagramPlugin.getDefault().logError(e.getMessage());
         }
         return autoRefresh;
     }

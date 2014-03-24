@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,7 +49,6 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
@@ -66,6 +65,7 @@ import org.eclipse.sirius.diagram.ui.internal.view.factories.ViewSizeHint;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramUpdater;
 import org.eclipse.sirius.diagram.ui.part.SiriusNodeDescriptor;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.ext.base.Option;
 
@@ -798,7 +798,7 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
      * @return a create <i>non-persisted</i> view descriptor
      */
     protected CreateViewRequest.ViewDescriptor getViewDescriptor(final IAdaptable elementAdapter, final Class<?> viewKind, final String hint, final int index) {
-        return new CreateViewRequest.ViewDescriptor(elementAdapter, viewKind, hint, index, true, DiagramPlugin.DIAGRAM_PREFERENCES_HINT);
+        return new CreateViewRequest.ViewDescriptor(elementAdapter, viewKind, hint, index, true, DiagramUIPlugin.DIAGRAM_PREFERENCES_HINT);
     }
 
     private List<View> cleanCanonicalSemanticChildren(View currentView, Collection<View> viewChildren, Collection<SiriusNodeDescriptor> semanticChildren) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -85,7 +85,7 @@ public class SiriusInitDiagramFileAction implements IObjectActionDelegate {
             Resource resource = set.getResource(domainModelURI, true);
             diagramRoot = resource.getContents().get(0);
         } catch (WrappedException ex) {
-            DiagramPlugin.getInstance().logError("Unable to load resource: " + domainModelURI, ex); //$NON-NLS-1$
+            DiagramPlugin.getDefault().logError("Unable to load resource: " + domainModelURI, ex); //$NON-NLS-1$
         }
         if (diagramRoot == null) {
             MessageDialog.openError(getShell(), Messages.SiriusInitDiagramFileAction_InitDiagramFileResourceErrorDialogTitle,

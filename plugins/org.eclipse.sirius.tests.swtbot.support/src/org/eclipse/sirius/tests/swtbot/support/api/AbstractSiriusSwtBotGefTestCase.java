@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -54,10 +54,10 @@ import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.business.internal.dialect.DiagramDialectUIServices;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
@@ -246,7 +246,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             UIThreadRunnable.syncExec(new VoidResult() {
                 @Override
                 public void run() {
-                    IPreferenceStore preferenceStore = DiagramPlugin.getInstance().getPreferenceStore();
+                    IPreferenceStore preferenceStore = DiagramUIPlugin.getPlugin().getPreferenceStore();
                     defaultEnableAnimatedZoom = preferenceStore.getBoolean(IPreferenceConstants.PREF_ENABLE_ANIMATED_ZOOM);
                     preferenceStore.setValue(IPreferenceConstants.PREF_ENABLE_ANIMATED_ZOOM, false);
                     defaultEnableAnimatedLayout = preferenceStore.getBoolean(IPreferenceConstants.PREF_ENABLE_ANIMATED_LAYOUT);
@@ -583,7 +583,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      *            The new value.
      */
     protected void changeDiagramPreference(final String preferenceKey, final Boolean newValue) {
-        final IPreferenceStore prefs = DiagramPlugin.getInstance().getPreferenceStore();
+        final IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
         oldValuePreferences.put(preferenceKey, prefs.getBoolean(preferenceKey));
         UIThreadRunnable.syncExec(new VoidResult() {
             @Override
@@ -1306,7 +1306,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             UIThreadRunnable.syncExec(new VoidResult() {
                 @Override
                 public void run() {
-                    IPreferenceStore preferenceStore = DiagramPlugin.getInstance().getPreferenceStore();
+                    IPreferenceStore preferenceStore = DiagramUIPlugin.getPlugin().getPreferenceStore();
                     preferenceStore.setValue(IPreferenceConstants.PREF_ENABLE_ANIMATED_ZOOM, defaultEnableAnimatedZoom);
                     preferenceStore.setValue(IPreferenceConstants.PREF_ENABLE_ANIMATED_LAYOUT, defaultEnableAnimatedLayout);
                 }
@@ -1321,7 +1321,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         // Reset the preferences changed during the test with the method
         // changePreference. This is done in the finally block in case of
         // ConcurrentModificationException during closeAllSession.
-        IPreferenceStore prefs = DiagramPlugin.getInstance().getPreferenceStore();
+        IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
         for (String key : oldValuePreferences.keySet()) {
             prefs.setValue(key, (Boolean) oldValuePreferences.get(key));
         }
@@ -1447,7 +1447,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * @return the previous default font name.
      */
     protected String changeDefaultFontName(String fontName) {
-        IPreferenceStore preferenceStore = (IPreferenceStore) DiagramPlugin.DIAGRAM_PREFERENCES_HINT.getPreferenceStore();
+        IPreferenceStore preferenceStore = (IPreferenceStore) DiagramUIPlugin.DIAGRAM_PREFERENCES_HINT.getPreferenceStore();
         FontData fontData = PreferenceConverter.getFontData(preferenceStore, IPreferenceConstants.PREF_DEFAULT_FONT);
 
         // Get the actual font.

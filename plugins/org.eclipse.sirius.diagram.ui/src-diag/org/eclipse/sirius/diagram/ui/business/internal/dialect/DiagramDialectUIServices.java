@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -84,6 +84,7 @@ import org.eclipse.sirius.diagram.ui.business.api.view.refresh.CanonicalSynchron
 import org.eclipse.sirius.diagram.ui.business.api.view.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.ui.business.internal.command.CreateAndStoreGMFDiagramCommand;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService;
 import org.eclipse.sirius.ext.base.Option;
@@ -201,7 +202,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
                         setResult((DialectEditor) editorPart);
                     }
                 } catch (final PartInitException e) {
-                    DiagramPlugin.getInstance().logError("diagram editor opening error", e);
+                    DiagramPlugin.getDefault().logError("diagram editor opening error", e);
                 }
             }
 
@@ -292,7 +293,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
             } catch (final NullPointerException e) {
                 // we might have an exception closing an editor which is
                 // already in trouble
-                DiagramPlugin.getInstance().getLog()
+                DiagramPlugin.getDefault().getLog()
                 .log(new Status(IStatus.WARNING, DiagramPlugin.ID, "Error while deactivating the representation, the remote server may be unreachable."));
             }
 
@@ -301,9 +302,9 @@ public class DiagramDialectUIServices implements DialectUIServices {
             } catch (final NullPointerException e) {
                 // we might have an exception closing an editor which is
                 // already in trouble
-                if (DiagramPlugin.getInstance().isDebugging()) {
-                    DiagramPlugin.getInstance().getLog()
-                    .log(new Status(IStatus.WARNING, DiagramPlugin.ID, "Error while closing the representation, the remote server may be unreachable."));
+                if (DiagramUIPlugin.getPlugin().isDebugging()) {
+                    DiagramUIPlugin.getPlugin().getLog()
+                    .log(new Status(IStatus.WARNING, DiagramUIPlugin.ID, "Error while closing the representation, the remote server may be unreachable."));
                 }
             }
 

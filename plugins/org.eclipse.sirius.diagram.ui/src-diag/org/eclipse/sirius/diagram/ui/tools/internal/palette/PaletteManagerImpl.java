@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -371,7 +371,7 @@ public class PaletteManagerImpl implements PaletteManager {
             // Here no matching candidate has been found, we will return
             // Options.newNone
         } catch (IllegalArgumentException e) {
-            DiagramPlugin.getInstance().logWarning(MessageFormat.format(SEVERAL_CANDIDATES_IN_PALETTE_FOUND, type.getName(), id));
+            DiagramPlugin.getDefault().logWarning(MessageFormat.format(SEVERAL_CANDIDATES_IN_PALETTE_FOUND, type.getName(), id));
             // Here no matching candidate has been found, we will return
             // Options.newNone
         }

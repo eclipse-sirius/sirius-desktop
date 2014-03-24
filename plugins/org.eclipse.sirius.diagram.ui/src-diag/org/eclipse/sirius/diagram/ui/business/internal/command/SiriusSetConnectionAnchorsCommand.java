@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -113,7 +113,7 @@ public class SiriusSetConnectionAnchorsCommand extends SetConnectionAnchorsComma
             if (edge == null) {
                 String message = "The semantic model was not correctly updated by the reconnect tool, the diagram part of the reconnect cannot be done";
                 commandResult = CommandResult.newErrorCommandResult(message);
-                DiagramPlugin.getInstance().logWarning(message);
+                DiagramPlugin.getDefault().logWarning(message);
             } else {
 
                 // If there is tree brothers on the new source, we must use the

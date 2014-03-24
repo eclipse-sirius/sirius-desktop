@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -65,7 +65,7 @@ public final class ViewOrderingProviderRegistry {
                             final ViewOrderingProvider viewOrderingProvider = (ViewOrderingProvider) configElement.createExecutableExtension("providerClass");
                             this.viewOrderingProviders.add(viewOrderingProvider);
                         } catch (final CoreException e) {
-                            DiagramPlugin.getInstance().logError("Impossible to load the view ordering provider : " + configElement.getName(), e);
+                            DiagramPlugin.getDefault().logError("Impossible to load the view ordering provider : " + configElement.getName(), e);
                         }
                     }
                 }
@@ -110,7 +110,7 @@ public final class ViewOrderingProviderRegistry {
                 return currentProvider;
             }
             // } catch (final RuntimeException e) {
-            // DiagramPlugin.getInstance().logWarning(
+            // DiagramPlugin.getDefault().logWarning(
             // "The view ordering provider " +
             // currentProvider.getClass().getName()
             // + " has been removed from the ViewOrderingProviderRegistry since

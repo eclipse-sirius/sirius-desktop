@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,7 +26,6 @@ import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceConverter;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
@@ -38,6 +37,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListName2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.NotationViewIDs;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.FontData;
@@ -163,7 +163,7 @@ public class ViewQuery {
      */
     public Object getDefaultValue(EAttribute eAttribute) {
         Object defaultValue = null;
-        IPreferenceStore preferenceStore = (IPreferenceStore) DiagramPlugin.DIAGRAM_PREFERENCES_HINT.getPreferenceStore();
+        IPreferenceStore preferenceStore = (IPreferenceStore) DiagramUIPlugin.DIAGRAM_PREFERENCES_HINT.getPreferenceStore();
         if (eAttribute == NotationPackage.Literals.FONT_STYLE__BOLD) {
             FontData fontData = PreferenceConverter.getFontData(preferenceStore, IPreferenceConstants.PREF_DEFAULT_FONT);
             defaultValue = Boolean.valueOf((fontData.getStyle() & SWT.BOLD) != 0);

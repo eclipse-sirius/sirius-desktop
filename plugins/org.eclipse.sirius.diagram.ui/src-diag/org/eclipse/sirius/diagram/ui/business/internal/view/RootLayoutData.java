@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -62,7 +62,7 @@ public class RootLayoutData extends LayoutData {
         } else if (adaptObject instanceof DEdge) {
             init((DEdge) adaptObject, location, size);
         } else {
-            DiagramPlugin.getInstance().logWarning("This kind of diagram element  (" + adaptObject.getClass().getName() + ") is not yet managed by the LayoutDataManager.");
+            DiagramPlugin.getDefault().logWarning("This kind of diagram element  (" + adaptObject.getClass().getName() + ") is not yet managed by the LayoutDataManager.");
         }
     }
 
@@ -111,7 +111,7 @@ public class RootLayoutData extends LayoutData {
         } else if (adaptObject instanceof DEdge) {
             init((DEdge) adaptObject, location, size);
         } else {
-            DiagramPlugin.getInstance().logWarning("This kind of diagram element  (" + adaptObject.getClass().getName() + ") is not yet managed by the LayoutDataManager.");
+            DiagramPlugin.getDefault().logWarning("This kind of diagram element  (" + adaptObject.getClass().getName() + ") is not yet managed by the LayoutDataManager.");
         }
     }
 

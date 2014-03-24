@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,107 +12,94 @@ package org.eclipse.sirius.diagram;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.osgi.framework.BundleContext;
 
-//CHECKSTYLE:OFF
 /**
- * @was-generated NOT
+ * Sirius Diagram plug-in.
+ * 
+ * @was-generated
  */
-public class DiagramPlugin extends AbstractUIPlugin {
+public class DiagramPlugin extends Plugin {
 
-    /**
-     * @was-generated
-     */
+    /** The id. */
     public static final String ID = "org.eclipse.sirius.diagram"; //$NON-NLS-1$
 
-    /**
-     * @was-generated
-     */
-    public static final PreferencesHint DIAGRAM_PREFERENCES_HINT = new PreferencesHint(ID);
+    /** The shared instance. */
+    private static DiagramPlugin defaultPlugin;
 
     /**
-     * @was-generated
-     */
-    private static DiagramPlugin instance;
-
-    /**
-     * @was-generated
-     */
-
-    /**
-     * @was-generated
-     */
-    public DiagramPlugin() {
-    }
-
-    /**
-     * @was-generated
-     */
-    public void start(BundleContext context) throws Exception {
-        super.start(context);
-        instance = this;
-    }
-
-    /**
-     * @was-generated
-     */
-    public void stop(BundleContext context) throws Exception {
-        instance = null;
-    }
-
-    /**
-     * @was-generated
-     */
-    public static DiagramPlugin getInstance() {
-        return instance;
-    }
-
-    /**
-     * Returns string from plug-in's resource bundle
+     * Creates a new plugin.
      * 
      * @was-generated
      */
-    public static String getString(String key) {
-        return Platform.getResourceString(getInstance().getBundle(), "%" + key); //$NON-NLS-1$
+    public DiagramPlugin() {
+        defaultPlugin = this;
     }
 
     /**
+     * Returns the shared instance.
+     * 
+     * @return the shared instance.
+     */
+    public static DiagramPlugin getDefault() {
+        return DiagramPlugin.defaultPlugin;
+    }
+
+    /**
+     * Returns string from plug-in's resource bundle.
+     * 
+     * @param key
+     *            the property name
+     * @return the corresponding property value
      * @was-generated
+     */
+    public static String getString(String key) {
+        return Platform.getResourceString(getDefault().getBundle(), "%" + key); //$NON-NLS-1$
+    }
+
+    /**
+     * Logs an error.
+     * 
+     * @param error
+     *            the error message.
      */
     public void logError(String error) {
         logError(error, null);
     }
 
     /**
-     * @was-generated
+     * Logs an error.
+     * 
+     * @param error
+     *            the error message.
+     * @param throwable
+     *            the throwable.
      */
     public void logError(String error, Throwable throwable) {
-        if (error == null && throwable != null) {
-            error = throwable.getMessage();
-        }
-        getLog().log(new Status(IStatus.ERROR, DiagramPlugin.ID, IStatus.OK, error, throwable));
-        debug(error, throwable);
+        logMessage(error, throwable, IStatus.ERROR);
     }
 
     /**
-     * @was-generated
+     * Logs an info.
+     * 
+     * @param message
+     *            the info message.
      */
     public void logInfo(String message) {
         logInfo(message, null);
     }
 
     /**
-     * @was-generated
+     * Logs an info.
+     * 
+     * @param message
+     *            the info message.
+     * @param throwable
+     *            the throwable.
      */
     public void logInfo(String message, Throwable throwable) {
-        if (message == null && throwable != null) {
-            message = throwable.getMessage();
-        }
-        getLog().log(new Status(IStatus.INFO, DiagramPlugin.ID, IStatus.OK, message, throwable));
-        debug(message, throwable);
+        logMessage(message, throwable, IStatus.INFO);
     }
 
     /**
@@ -134,11 +121,17 @@ public class DiagramPlugin extends AbstractUIPlugin {
      *            the throwable.
      */
     public void logWarning(String message, Throwable throwable) {
+        logMessage(message, throwable, IStatus.WARNING);
+    }
+
+    private void logMessage(String message, Throwable throwable, int code) {
+        String msg = message;
         if (message == null && throwable != null) {
-            message = throwable.getMessage();
+            msg = throwable.getMessage();
         }
-        getLog().log(new Status(IStatus.WARNING, DiagramPlugin.ID, IStatus.OK, message, throwable));
-        debug(message, throwable);
+
+        getLog().log(new Status(code, DiagramPlugin.ID, IStatus.OK, msg, throwable));
+        debug(msg, throwable);
     }
 
     /**
@@ -148,12 +141,14 @@ public class DiagramPlugin extends AbstractUIPlugin {
         if (!isDebugging()) {
             return;
         }
+        // CHECKSTYLE:OFF
         if (message != null) {
             System.err.println(message);
         }
         if (throwable != null) {
             throwable.printStackTrace();
         }
+        // CHECKSTYLE:ON
     }
-    // CHECKSTYLE:ON
+
 }

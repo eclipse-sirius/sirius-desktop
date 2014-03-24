@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -210,7 +210,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
                 LayoutData aLayoutDataInParam = (LayoutData) aLayoutData;
                 if (existingLayoutData.getTarget().equals(aLayoutDataInParam.getTarget())) {
                     iterator.remove();
-                    // DiagramPlugin.getInstance().logWarning("The previous layout data were replaced by new ones. It may leads to unexpected layout behavior.");
+                    // DiagramPlugin.getDefault().logWarning("The previous layout data were replaced by new ones. It may leads to unexpected layout behavior.");
                 }
             }
         }
@@ -237,7 +237,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
                 } else if (node.eContainer() instanceof DDiagram) {
                     result = getData((DDiagram) node.eContainer());
                 } else {
-                    DiagramPlugin.getInstance().logWarning("This kind of container  (" + node.eContainer().getClass().getName() + ") is not yet managed by the LayoutDataManager.");
+                    DiagramPlugin.getDefault().logWarning("This kind of container  (" + node.eContainer().getClass().getName() + ") is not yet managed by the LayoutDataManager.");
                 }
             }
             if (result == null) {

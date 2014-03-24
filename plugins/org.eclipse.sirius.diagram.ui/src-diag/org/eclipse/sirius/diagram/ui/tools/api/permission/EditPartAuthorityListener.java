@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,9 +19,9 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DecorationEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.DiagramSemanticElementLockedNotificationFigure;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IAuthorityListener;
@@ -129,7 +129,7 @@ public class EditPartAuthorityListener implements IAuthorityListener {
 
             // Step 2: launch the refresh synchronously or not according to
             // preferences
-            boolean refreshShouldBePerformedSynchronously = DiagramPlugin.getInstance().getPreferenceStore()
+            boolean refreshShouldBePerformedSynchronously = DiagramUIPlugin.getPlugin().getPreferenceStore()
                     .getBoolean(SiriusDiagramPreferencesKeys.PREF_REFRESH_DECORATORS_SYNCHRONOUSLY.name());
             // If refresh should be performed synchronously, we directly launch
             // the refresh

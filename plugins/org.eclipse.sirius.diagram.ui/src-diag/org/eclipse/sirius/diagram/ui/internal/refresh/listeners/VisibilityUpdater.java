@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -141,7 +141,7 @@ public class VisibilityUpdater extends ResourceSetListenerImpl {
         try {
             autoRefresh = PropertiesService.getInstance().getPropertiesProvider().getProperty(IPropertiesProvider.KEY_AUTO_REFRESH);
         } catch (final IllegalArgumentException e) {
-            DiagramPlugin.getInstance().logError(e.getMessage());
+            DiagramPlugin.getDefault().logError(e.getMessage());
         }
         return autoRefresh;
     }
