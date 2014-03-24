@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,8 +25,11 @@ import org.eclipse.sirius.ext.base.Options;
  */
 public class URIQuery {
 
-    /** The {@link URI} of viewpoint environment xmi resource. */
-    public static final URI VIEWPOINT_ENVIRONMENT_QUERY = URI.createURI("environment:/viewpoint");
+    /** The {@link URI} scheme used for Sirius environment xmi resources. */
+    public static final String ENVIRONMENT_URI_SCHEME = "environment";
+
+    /** The {@link URI} of Sirius core environment xmi resource. */
+    public static final URI VIEWPOINT_ENVIRONMENT_QUERY = URI.createURI(ENVIRONMENT_URI_SCHEME + ":/viewpoint");
 
     /** The {@link URI} scheme used for InMemory URIs. */
     public static final String INMEMORY_URI_SCHEME = "memory";
@@ -77,13 +80,23 @@ public class URIQuery {
     }
 
     /**
-     * Check if this URI is the Sirius environment URI.
+     * Check if this URI is the Sirius core environment URI.
      * 
-     * @return true if this URI is the URI of the Sirius environment, false
-     *         otherwise..
+     * @return true if this URI is the URI of the Sirius core environment, false
+     *         otherwise.
      */
-    public boolean isSiriusEnvironmentURI() {
+    public boolean isSiriusCoreEnvironmentURI() {
         return VIEWPOINT_ENVIRONMENT_QUERY.equals(uri);
+    }
+
+    /**
+     * Check if this URI is a Sirius environment URI.
+     * 
+     * @return true if this URI is the URI of a Sirius environment resource,
+     *         false otherwise.
+     */
+    public boolean isEnvironmentURI() {
+        return ENVIRONMENT_URI_SCHEME.equals(uri.scheme());
     }
 
     /**

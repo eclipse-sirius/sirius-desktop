@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Environment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_2="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 viewpoint.ecore#//description http://www.eclipse.org/sirius/description/tool/1.1.0 viewpoint.ecore#//description/tool viewpoint.ecore#//diagram/description/tool">
+<description:Environment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 viewpoint.ecore#//description http://www.eclipse.org/sirius/description/tool/1.1.0 viewpoint.ecore#//description/tool">
   <systemColors>
     <entries red="255" green="255" blue="255" name="white"/>
     <entries red="0" green="0" blue="0" name="black"/>
@@ -28,26 +28,6 @@
     <entries red="156" green="12" blue="12" name="dark_red"/>
     <entries red="214" green="197" blue="66" name="dark_yellow"/>
   </systemColors>
-  <defaultTools xsi:type="tool_2:ToolGroup" name="Pinning">
-    <tools xsi:type="tool:ToolDescription" documentation="Mark element as pinned" name="Pin" iconPath="/org.eclipse.sirius.diagram.ui/icons/pin.gif">
-      <element name="element"/>
-      <elementView name="elementView"/>
-      <initialOperation>
-        <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Pin" id="org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.pinElementsActionId">
-          <parameters name="view" value="var:elementView"/>
-        </firstModelOperations>
-      </initialOperation>
-    </tools>
-    <tools xsi:type="tool:ToolDescription" documentation="Mark element as un-pinned" name="Unpin" iconPath="/org.eclipse.sirius.diagram.ui/icons/unpin.gif">
-      <element name="element"/>
-      <elementView name="elementView"/>
-      <initialOperation>
-        <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Unpin" id="org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.unpinElementsActionId">
-          <parameters name="view" value="var:elementView"/>
-        </firstModelOperations>
-      </initialOperation>
-    </tools>
-  </defaultTools>
   <labelBorderStyles>
     <labelBorderStyleDescriptions id="labelBorderStyleWithBeveledCorner" name="Label Border Style With Beveled Corner" cornerHeight="5" cornerWidth="5"/>
   </labelBorderStyles>

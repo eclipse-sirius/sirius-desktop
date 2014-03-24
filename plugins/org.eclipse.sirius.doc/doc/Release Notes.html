@@ -218,6 +218,23 @@
 				</ul>
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+			<code>org.eclipse.sirius</code>
+		</h4>
+		<ul>
+			<li>
+				<code>org.eclipse.sirius.business.api.query.URIQuery.isSiriusEnvironmentURI</code> has been replaced by 
+				<ul>
+					<li>
+						<code>isSiriusCoreEnvironmentURI</code> which checks that the given resource is the Sirius core Environment.xmi file. 
+					</li>
+					<li>and 
+						<code>isEnvironmentURI</code> which checks that the given resource has an 
+						<code>environment</code> uri scheme.  
+					</li>
+				</ul>
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.support">Changes in 
 			<code>org.eclipse.sirius.tests.support</code>
 		</h4>
@@ -280,7 +297,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 		<p>if 
 			<code>element</code> is a Diagram concept.
 		</p>
-		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -444,7 +461,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>viewpoint/diagram/description/concern</code> 
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -528,7 +545,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables</code> instead. 
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>

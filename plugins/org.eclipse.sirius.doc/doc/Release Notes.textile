@@ -62,6 +62,12 @@ Several extension points have been moved:
 ** layoutProvider
 ** styleConfigurationProvider
 ** viewOrderingProvider
+
+h4. Changes in @org.eclipse.sirius@
+
+* @org.eclipse.sirius.business.api.query.URIQuery.isSiriusEnvironmentURI@ has been replaced by 
+** @isSiriusCoreEnvironmentURI@ which checks that the given resource is the Sirius core Environment.xmi file. 
+** and @isEnvironmentURI@ which checks that the given resource has an @environment@ uri scheme.  
  
 h4. Changes in @org.eclipse.sirius.tests.support@
 
