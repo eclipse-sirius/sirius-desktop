@@ -2266,7 +2266,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 !IS_DERIVED, IS_ORDERED);
 
         initEClass(interpolatedColorEClass, InterpolatedColor.class, "InterpolatedColor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getInterpolatedColor_ColorValueComputationExpression(), this.getInterpretedExpression(), "colorValueComputationExpression", "<%eContents().nSize%>", 1, 1,
+        initEAttribute(getInterpolatedColor_ColorValueComputationExpression(), this.getInterpretedExpression(), "colorValueComputationExpression", "[eContents()->size()/]", 1, 1,
                 InterpolatedColor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getInterpolatedColor_MinValueComputationExpression(), this.getInterpretedExpression(), "minValueComputationExpression", "0", 1, 1, InterpolatedColor.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

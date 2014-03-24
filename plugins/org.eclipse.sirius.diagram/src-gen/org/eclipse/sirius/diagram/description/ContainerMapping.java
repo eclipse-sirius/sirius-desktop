@@ -16,8 +16,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.ContainerLayout;
 import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '

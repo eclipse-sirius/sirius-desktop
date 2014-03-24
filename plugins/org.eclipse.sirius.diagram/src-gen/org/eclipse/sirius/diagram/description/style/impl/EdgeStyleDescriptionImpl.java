@@ -149,7 +149,7 @@ public class EdgeStyleDescriptionImpl extends EObjectImpl implements EdgeStyleDe
      * @generated
      * @ordered
      */
-    protected static final String SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "<%eContents().nSize%>";
+    protected static final String SIZE_COMPUTATION_EXPRESSION_EDEFAULT = "[eContents()->size()/]";
 
     /**
      * The cached value of the '{@link #getSizeComputationExpression()

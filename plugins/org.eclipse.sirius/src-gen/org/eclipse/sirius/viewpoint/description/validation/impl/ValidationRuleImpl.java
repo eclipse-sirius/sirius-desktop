@@ -81,7 +81,7 @@ public abstract class ValidationRuleImpl extends EObjectImpl implements Validati
      * @generated
      * @ordered
      */
-    protected static final String MESSAGE_EDEFAULT = "The <%name%> element has...";
+    protected static final String MESSAGE_EDEFAULT = "The element has...";
 
     /**
      * The cached value of the '{@link #getMessage() <em>Message</em>}'

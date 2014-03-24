@@ -82,7 +82,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
      * @generated
      * @ordered
      */
-    protected static final String COLOR_VALUE_COMPUTATION_EXPRESSION_EDEFAULT = "<%eContents().nSize%>";
+    protected static final String COLOR_VALUE_COMPUTATION_EXPRESSION_EDEFAULT = "[eContents()->size()/]";
 
     /**
      * The cached value of the '{@link #getColorValueComputationExpression()

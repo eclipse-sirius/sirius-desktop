@@ -474,8 +474,8 @@ public class ValidationPackageImpl extends EPackageImpl implements ValidationPac
         initEClass(validationRuleEClass, ValidationRule.class, "ValidationRule", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getValidationRule_Level(), this.getERROR_LEVEL(), "level", "INFO", 1, 1, ValidationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
                 !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getValidationRule_Message(), theDescriptionPackage.getInterpretedExpression(), "message", "The <%name%> element has...", 0, 1, ValidationRule.class, !IS_TRANSIENT,
-                !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getValidationRule_Message(), theDescriptionPackage.getInterpretedExpression(), "message", "The element has...", 0, 1, ValidationRule.class, !IS_TRANSIENT, !IS_VOLATILE,
+                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getValidationRule_Audits(), this.getRuleAudit(), null, "audits", null, 0, -1, ValidationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getValidationRule_Fixes(), this.getValidationFix(), null, "fixes", null, 0, -1, ValidationRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,

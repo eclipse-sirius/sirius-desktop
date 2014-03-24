@@ -1280,7 +1280,7 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getEdgeStyleDescription_TargetArrow(), theDiagramPackage.getEdgeArrows(), "targetArrow", "InputArrow", 1, 1, EdgeStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getEdgeStyleDescription_SizeComputationExpression(), theDescriptionPackage_1.getInterpretedExpression(), "sizeComputationExpression", "<%eContents().nSize%>", 1, 1,
+        initEAttribute(getEdgeStyleDescription_SizeComputationExpression(), theDescriptionPackage_1.getInterpretedExpression(), "sizeComputationExpression", "[eContents()->size()/]", 1, 1,
                 EdgeStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getEdgeStyleDescription_RoutingStyle(), theDiagramPackage.getEdgeRouting(), "routingStyle", "straight", 1, 1, EdgeStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

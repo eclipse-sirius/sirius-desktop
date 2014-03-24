@@ -1138,8 +1138,8 @@ public class TemplatePackageImpl extends EPackageImpl implements TemplatePackage
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getTMessageStyle_TargetArrow(), theDiagramPackage.getEdgeArrows(), "targetArrow", "InputArrow", 1, 1, TMessageStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getTMessageStyle_LabelExpression(), theDescriptionPackage_1.getInterpretedExpression(), "labelExpression", "<%name%>", 0, 1, TMessageStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getTMessageStyle_LabelExpression(), theDescriptionPackage_1.getInterpretedExpression(), "labelExpression", "feature:name", 0, 1, TMessageStyle.class, !IS_TRANSIENT,
+                !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(tConditionalMessageStyleEClass, TConditionalMessageStyle.class, "TConditionalMessageStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getTConditionalMessageStyle_PredicateExpression(), theDescriptionPackage_1.getInterpretedExpression(), "predicateExpression", null, 1, 1, TConditionalMessageStyle.class,

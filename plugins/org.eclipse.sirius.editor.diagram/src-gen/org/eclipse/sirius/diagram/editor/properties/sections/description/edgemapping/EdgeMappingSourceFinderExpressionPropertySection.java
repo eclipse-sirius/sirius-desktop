@@ -163,7 +163,7 @@ public class EdgeMappingSourceFinderExpressionPropertySection extends AbstractTe
      * {@inheritDoc}
      */
     protected String getPropertyDescription() {
-        return "Only needed in domain based edges, it should return the source semantic element. For instance for an UML2 Association \nthe expression will look like <%eAllContents(\"Property\").nFirst.type%> and will return the source class.";
+        return "Only needed in domain based edges, it should return the source semantic element. For instance for an UML2 Association \nthe expression will look like [eAllContents(uml::Property)->first().type/] and will return the source class.";
     }
 
     // Start of user code user operations

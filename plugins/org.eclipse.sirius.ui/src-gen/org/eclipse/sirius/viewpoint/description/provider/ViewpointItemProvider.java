@@ -47,7 +47,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationFactory;
  * @generated
  */
 public class ViewpointItemProvider extends DocumentedElementItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-IItemPropertySource {
+        IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->

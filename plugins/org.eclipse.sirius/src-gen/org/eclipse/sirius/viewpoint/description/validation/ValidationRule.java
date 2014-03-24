@@ -78,8 +78,7 @@ public interface ValidationRule extends EObject {
 
     /**
      * Returns the value of the '<em><b>Message</b></em>' attribute. The default
-     * value is <code>"The <%name%> element has..."</code>. <!-- begin-user-doc
-     * -->
+     * value is <code>"The element has..."</code>. <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Message</em>' attribute isn't clear, there
      * really should be more of a description here...
@@ -89,7 +88,7 @@ public interface ValidationRule extends EObject {
      * @return the value of the '<em>Message</em>' attribute.
      * @see #setMessage(String)
      * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationRule_Message()
-     * @model default="The <%name%> element has..." dataType=
+     * @model default="The element has..." dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"

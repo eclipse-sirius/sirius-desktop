@@ -1,13 +1,14 @@
-/*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+/**
+ * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- *
+ * 
  * Contributors:
  *    Obeo - initial API and implementation
- *******************************************************************************/
+ * 
+ */
 package org.eclipse.sirius.diagram.sequence.template;
 
 import org.eclipse.sirius.diagram.EdgeArrows;
@@ -73,12 +74,12 @@ public interface TMessageStyle extends TTransformer {
     /**
      * Returns the value of the '<em><b>Line Style</b></em>' attribute. The
      * literals are from the enumeration
-     * {@link org.eclipse.sirius.viewpoint.LineStyle} . <!-- begin-user-doc -->
+     * {@link org.eclipse.sirius.diagram.LineStyle}. <!-- begin-user-doc -->
      * <!-- end-user-doc --> <!-- begin-model-doc --> The style of the line.
      * <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Line Style</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.LineStyle
+     * @see org.eclipse.sirius.diagram.LineStyle
      * @see #setLineStyle(LineStyle)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTMessageStyle_LineStyle()
      * @model
@@ -103,12 +104,12 @@ public interface TMessageStyle extends TTransformer {
     /**
      * Returns the value of the '<em><b>Source Arrow</b></em>' attribute. The
      * default value is <code>"NoDecoration"</code>. The literals are from the
-     * enumeration {@link org.eclipse.sirius.viewpoint.EdgeArrows}. <!--
+     * enumeration {@link org.eclipse.sirius.diagram.EdgeArrows}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * source decoration. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Source Arrow</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.EdgeArrows
+     * @see org.eclipse.sirius.diagram.EdgeArrows
      * @see #setSourceArrow(EdgeArrows)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTMessageStyle_SourceArrow()
      * @model default="NoDecoration" required="true"
@@ -133,12 +134,12 @@ public interface TMessageStyle extends TTransformer {
     /**
      * Returns the value of the '<em><b>Target Arrow</b></em>' attribute. The
      * default value is <code>"InputArrow"</code>. The literals are from the
-     * enumeration {@link org.eclipse.sirius.viewpoint.EdgeArrows}. <!--
+     * enumeration {@link org.eclipse.sirius.diagram.EdgeArrows}. <!--
      * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
      * target decoration. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Target Arrow</em>' attribute.
-     * @see org.eclipse.sirius.viewpoint.EdgeArrows
+     * @see org.eclipse.sirius.diagram.EdgeArrows
      * @see #setTargetArrow(EdgeArrows)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTMessageStyle_TargetArrow()
      * @model default="InputArrow" required="true"
@@ -162,15 +163,15 @@ public interface TMessageStyle extends TTransformer {
 
     /**
      * Returns the value of the '<em><b>Label Expression</b></em>' attribute.
-     * The default value is <code>"<%name%>"</code>. <!-- begin-user-doc -->
+     * The default value is <code>"feature:name"</code>. <!-- begin-user-doc -->
      * <!-- end-user-doc --> <!-- begin-model-doc --> Expression that computes
      * the name of a node. <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Label Expression</em>' attribute.
      * @see #setLabelExpression(String)
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTMessageStyle_LabelExpression()
-     * @model default="<%name%>"
-     *        dataType="org.eclipse.sirius.description.InterpretedExpression"
+     * @model default="feature:name" dataType=
+     *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation
      *        ="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
      *        annotation=

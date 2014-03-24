@@ -547,11 +547,11 @@
             ecoreFeature="ecore:EReference diagram.ecore#//description/EdgeMapping/targetMapping"/>
         <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression which should return, starting from the target element (which may be the domain class\n if the edge is domain based, otherwhise it's the target of the source node) the target semantic element."
             ecoreFeature="ecore:EAttribute diagram.ecore#//description/EdgeMapping/targetFinderExpression"/>
-        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Only needed in domain based edges, it should return the source semantic element. For instance for an UML2 Association \nthe expression will look like &lt;%eAllContents(\&quot;Property\&quot;).nFirst.type%> and will return the source class."
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Only needed in domain based edges, it should return the source semantic element. For instance for an UML2 Association \nthe expression will look like [eAllContents(uml::Property)->first().type/] and will return the source class."
             ecoreFeature="ecore:EAttribute diagram.ecore#//description/EdgeMapping/sourceFinderExpression"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/EdgeMapping/style"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/EdgeMapping/conditionnalStyles"/>
-        <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Expression used to retrieve the main semantic element of the Edge. Using domain based Edges the expression is generally &lt;%self%>."
+        <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Expression used to retrieve the main semantic element of the Edge. Using domain based Edges the expression is generally var:self."
             ecoreFeature="ecore:EAttribute diagram.ecore#//description/EdgeMapping/targetExpression"/>
         <genFeatures createChild="false" propertyCategory="General" propertyDescription="Type name of the domain class triggering the creation of a new Edge.\nFor instance in UML2 you can have 'Association' here.\nOnly needed if 'use domain element' is set to true."
             ecoreFeature="ecore:EAttribute diagram.ecore#//description/EdgeMapping/domainClass"/>

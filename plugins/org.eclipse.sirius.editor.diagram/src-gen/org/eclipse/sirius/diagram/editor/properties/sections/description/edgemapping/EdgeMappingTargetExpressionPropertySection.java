@@ -163,7 +163,7 @@ public class EdgeMappingTargetExpressionPropertySection extends AbstractTextProp
      * {@inheritDoc}
      */
     protected String getPropertyDescription() {
-        return "Expression used to retrieve the main semantic element of the Edge. Using domain based Edges the expression is generally <%self%>.";
+        return "Expression used to retrieve the main semantic element of the Edge. Using domain based Edges the expression is generally var:self.";
     }
 
     // Start of user code user operations
