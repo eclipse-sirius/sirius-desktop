@@ -261,7 +261,7 @@ public class ExistingExpressionVariablesConstraint extends AbstractConstraint {
      * @return the validation status.
      */
     protected IStatus checkCreateInstanceReferenceName(final IValidationContext ctx, final CreateInstance createInstanceOp) {
-        if (createInstanceOp.getReferenceName() != null && createInstanceOp.getReferenceName().startsWith("<%")) {
+        if (createInstanceOp.getReferenceName() != null) {
             return this.checkVariables(ctx, createInstanceOp.getReferenceName(), getDeclaredVariables(createInstanceOp), createInstanceOp, ToolPackage.eINSTANCE.getCreateInstance_ReferenceName()
                     .getName());
         }
