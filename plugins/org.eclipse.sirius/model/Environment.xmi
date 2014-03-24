@@ -29,20 +29,20 @@
     <entries red="214" green="197" blue="66" name="dark_yellow"/>
   </systemColors>
   <defaultTools xsi:type="tool_2:ToolGroup" name="Pinning">
-    <tools xsi:type="tool:ToolDescription" documentation="Mark element as pinned" name="Pin" iconPath="/org.eclipse.sirius.diagram/icons/pin.gif">
+    <tools xsi:type="tool:ToolDescription" documentation="Mark element as pinned" name="Pin" iconPath="/org.eclipse.sirius.diagram.ui/icons/pin.gif">
       <element name="element"/>
       <elementView name="elementView"/>
       <initialOperation>
-        <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Pin" id="org.eclipse.sirius.diagram.tools.internal.actions.pinning.pinElementsActionId">
+        <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Pin" id="org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.pinElementsActionId">
           <parameters name="view" value="var:elementView"/>
         </firstModelOperations>
       </initialOperation>
     </tools>
-    <tools xsi:type="tool:ToolDescription" documentation="Mark element as un-pinned" name="Unpin" iconPath="/org.eclipse.sirius.diagram/icons/unpin.gif">
+    <tools xsi:type="tool:ToolDescription" documentation="Mark element as un-pinned" name="Unpin" iconPath="/org.eclipse.sirius.diagram.ui/icons/unpin.gif">
       <element name="element"/>
       <elementView name="elementView"/>
       <initialOperation>
-        <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Unpin" id="org.eclipse.sirius.diagram.tools.internal.actions.pinning.unpinElementsActionId">
+        <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Unpin" id="org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.unpinElementsActionId">
           <parameters name="view" value="var:elementView"/>
         </firstModelOperations>
       </initialOperation>
