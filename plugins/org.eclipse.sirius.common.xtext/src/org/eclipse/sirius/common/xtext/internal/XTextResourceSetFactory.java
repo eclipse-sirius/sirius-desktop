@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,10 +29,9 @@ import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.JavaModelException;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.ui.util.JdtClasspathUriResolver;
-
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
 
 /**
  * Class overriding the default {@link ResourceSet} factory to correctly setup
@@ -53,7 +52,7 @@ public class XTextResourceSetFactory extends org.eclipse.sirius.common.tools.api
         if (prj != null) {
             configure(set, prj);
         }
-        return new XtextResourceSet();
+        return set;
     }
 
     private IProject findProjectFromURI(URI resourceURI) {
