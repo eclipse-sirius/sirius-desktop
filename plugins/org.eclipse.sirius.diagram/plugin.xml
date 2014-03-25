@@ -14,22 +14,6 @@
 <plugin>
    <extension-point id="diagramTypeProvider" name="org.eclipse.sirius.diagram.diagramTypeProvider" schema="schema/diagramTypeProvider.exsd"/>
 
-   <extension point="org.eclipse.team.core.fileTypes">
-      <?gmfgen generated="true"?>
-      <fileTypes
-         type="text"
-         extension="airview">
-      </fileTypes>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.extension_parser">
-      <?gmfgen generated="true"?>
-      <parser
-         type="airview"
-         class="org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory">
-      </parser>
-   </extension>
-
    <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
       <?gmfgen generated="false"?>
       <metamodel nsURI="http://www.eclipse.org/sirius/diagram/1.1.0">
