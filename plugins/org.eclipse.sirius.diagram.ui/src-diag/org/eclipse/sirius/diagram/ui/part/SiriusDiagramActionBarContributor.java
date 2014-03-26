@@ -11,7 +11,6 @@
 package org.eclipse.sirius.diagram.ui.part;
 
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Preferences;
 import org.eclipse.gef.Disposable;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
@@ -22,14 +21,13 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.Separator;
-import org.eclipse.sirius.diagram.DiagramPlugin;
-import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.action.ConcernComboContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.api.action.DeleteFromDiagramContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.api.action.SetStyleToWorkspaceImageContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
+import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.LaunchBehaviorToolAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SelectHiddenElementsAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.TabbarRouterAction;
@@ -158,18 +156,12 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
      */
     public void contributeToToolBar(final IToolBarManager toolBarManager) {
         super.contributeToToolBar(toolBarManager);
-        Preferences prefs = DiagramPlugin.getDefault().getPluginPreferences();
-        if (prefs.getBoolean(SiriusDiagramPreferencesKeys.PREF_OLD_UI.name())) {
-
+        if (isOldUIEnabled()) {
             toolBarManager.add(getActionRegistry().getAction(REFRESH_DIAGRAM));
-
             toolBarManager.add(new Separator());
-
             toolBarManager.add(new ConcernComboContributionItem(getPage(), ""));
             toolBarManager.add(getActionRegistry().getAction(LAUNCH_BEHAVIOR));
-
             toolBarManager.add(new Separator());
-
             toolBarManager.add(new SetStyleToWorkspaceImageContributionItem(getActionRegistry().getAction(SetStyleToWorkspaceImageAction.SET_STYLE_TO_WORKSPACE_IMAGE_ACTION_ID), getPage()));
             toolBarManager.add(getActionRegistry().getAction(HIDE_ELEMENT));
             toolBarManager.add(getActionRegistry().getAction(HIDE_LABEL));
@@ -180,8 +172,6 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
             toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.PASTE_LAYOUT));
             toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.SELECT_HIDDEN_ELEMENTS));
             toolBarManager.add(getActionRegistry().getAction(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ROUTING_STYLE));
-        } else {
-
         }
     }
 
@@ -191,7 +181,6 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
 
         try {
             super.init(bars);
-            final Preferences prefs = DiagramPlugin.getDefault().getPluginPreferences();
 
             IToolBarManager toolBarManager = bars.getToolBarManager();
             toolBarManager.remove(ActionIds.MENU_COMPARTMENT);
@@ -201,7 +190,7 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
             toolBarManager.remove(ActionIds.ACTION_SHOW_CONNECTION_LABELS);
             toolBarManager.remove(ActionIds.ACTION_SHOW_COMPARTMENT_TITLE);
 
-            if (!prefs.getBoolean(SiriusDiagramPreferencesKeys.PREF_OLD_UI.name())) {
+            if (!isOldUIEnabled()) {
                 // The actions create for the default GMF toolbar are no longer
                 // useful. They must be removed from the toolbarManager and
                 // disposed. This avoids unnecessary notifications and
@@ -331,5 +320,9 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
             }
         }
         toolBarManager.remove(contribution);
+    }
+
+    private boolean isOldUIEnabled() {
+        return Platform.getPreferencesService().getBoolean(DiagramUIPlugin.ID, SiriusDiagramUiPreferencesKeys.PREF_OLD_UI.name(), false, null);
     }
 }

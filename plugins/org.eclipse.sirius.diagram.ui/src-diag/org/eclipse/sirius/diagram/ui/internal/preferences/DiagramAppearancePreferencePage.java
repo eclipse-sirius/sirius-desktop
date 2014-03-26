@@ -10,16 +10,20 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.preferences;
 
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.gmf.runtime.diagram.ui.preferences.AppearancePreferencePage;
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.ui.preferences.ScopedPreferenceStore;
 
 /**
  * @was-generated
@@ -160,22 +164,24 @@ public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
      *            the group on which create the fields
      */
     protected void addLabelIconsFields(Composite composite) {
-        hideLabelIconsOfShapes = new BooleanFieldEditor(SiriusDiagramPreferencesKeys.PREF_HIDE_LABEL_ICONS_ON_SHAPES.name(), HIDE_LABEL_ICONS_ON_SHAPES_MESSAGE, composite);
+        hideLabelIconsOfShapes = new BooleanFieldEditor(SiriusDiagramUiPreferencesKeys.PREF_HIDE_LABEL_ICONS_ON_SHAPES.name(), HIDE_LABEL_ICONS_ON_SHAPES_MESSAGE, composite);
         addField(hideLabelIconsOfShapes);
 
-        hideLabelIconsOfConnectors = new BooleanFieldEditor(SiriusDiagramPreferencesKeys.PREF_HIDE_LABEL_ICONS_ON_CONNECTORS.name(), HIDE_LABEL_ICONS_ON_CONNECTORS_MESSAGE, composite);
+        hideLabelIconsOfConnectors = new BooleanFieldEditor(SiriusDiagramUiPreferencesKeys.PREF_HIDE_LABEL_ICONS_ON_CONNECTORS.name(), HIDE_LABEL_ICONS_ON_CONNECTORS_MESSAGE, composite);
         addField(hideLabelIconsOfConnectors);
     }
 
     /**
      * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.preference.FieldEditorPreferencePage#createFieldEditors()
      */
     @Override
-    protected void createFieldEditors() {
-        super.createFieldEditors();
+    protected void initialize() {
+        super.initialize();
 
+        // Set preference store to Diagram core plugin
+        IPreferenceStore diagramCorePreferenceStore = new ScopedPreferenceStore(new InstanceScope(), DiagramPlugin.ID);
+        displayHeader.setPreferenceStore(diagramCorePreferenceStore);
+        displayHeader.load();
     }
 
     /**
@@ -185,8 +191,8 @@ public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
      */
     public static void initDefaults(IPreferenceStore store) {
         AppearancePreferencePage.initDefaults(store);
-        store.setDefault(SiriusDiagramPreferencesKeys.PREF_OLD_UI.name(), false);
-        store.setDefault(SiriusDiagramPreferencesKeys.PREF_HIDE_LABEL_ICONS_ON_SHAPES.name(), false);
-        store.setDefault(SiriusDiagramPreferencesKeys.PREF_HIDE_LABEL_ICONS_ON_CONNECTORS.name(), false);
+        store.setDefault(SiriusDiagramUiPreferencesKeys.PREF_OLD_UI.name(), false);
+        store.setDefault(SiriusDiagramUiPreferencesKeys.PREF_HIDE_LABEL_ICONS_ON_SHAPES.name(), false);
+        store.setDefault(SiriusDiagramUiPreferencesKeys.PREF_HIDE_LABEL_ICONS_ON_CONNECTORS.name(), false);
     }
 }

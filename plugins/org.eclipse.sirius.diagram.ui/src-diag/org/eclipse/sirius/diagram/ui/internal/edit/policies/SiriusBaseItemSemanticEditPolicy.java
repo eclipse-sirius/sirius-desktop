@@ -52,18 +52,18 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.internal.edit.helpers.SiriusBaseEditHelper;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
-import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramInternalPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AirDestroyElementRequest;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.DeleteHelper;
+import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiInternalPreferencesKeys;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 
@@ -126,7 +126,7 @@ public class SiriusBaseItemSemanticEditPolicy extends SemanticEditPolicy {
             editHelperContext = ViewUtil.resolveSemanticElement((View) getHost().getModel());
         }
         IElementType elementType = ElementTypeRegistry.getInstance().getElementType(editHelperContext);
-        if (elementType == ElementTypeRegistry.getInstance().getType("org.eclipse.gmf.runtime.emf.type.core.default")) { //$NON-NLS-1$ 
+        if (elementType == ElementTypeRegistry.getInstance().getType("org.eclipse.gmf.runtime.emf.type.core.default")) { //$NON-NLS-1$
             elementType = null;
         }
         Command semanticCommand = getSemanticCommandSwitch(completedRequest);
@@ -168,9 +168,7 @@ public class SiriusBaseItemSemanticEditPolicy extends SemanticEditPolicy {
                                 CompositeCommand compositeCommand = new CompositeCommand("Delete element from diagram");
                                 IDiagramCommandFactoryProvider cmdFactoryProvider = (IDiagramCommandFactoryProvider) (adapter);
                                 org.eclipse.emf.common.command.Command cmd = cmdFactoryProvider.getCommandFactory(editingDomain).buildDeleteFromDiagramCommand(viewPointElement);
-                                boolean removeHideNote = DiagramPlugin.getDefault().getPluginPreferences()
-                                        .getBoolean(SiriusDiagramInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name());
-                                if (removeHideNote) {
+                                if (shouldImpactLinkedNotesOnHideOrRemove()) {
                                     DeleteHelper.addDeleteLinkedNotesTask(cmd, view);
                                 }
                                 compositeCommand.add(new GMFCommandWrapper(getEditingDomain(), cmd));
@@ -195,9 +193,7 @@ public class SiriusBaseItemSemanticEditPolicy extends SemanticEditPolicy {
                     org.eclipse.emf.common.command.Command cmd = cmdFactoryProvider.getCommandFactory(editingDomain).buildDeleteDiagramElement(viewPointElement);
                     if (cmd.canExecute()) {
                         CompositeCommand compositeCommand = new CompositeCommand("Delete element");
-                        boolean removeHideNote = DiagramPlugin.getDefault().getPluginPreferences()
-                                .getBoolean(SiriusDiagramInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name());
-                        if (removeHideNote) {
+                        if (shouldImpactLinkedNotesOnHideOrRemove()) {
                             DeleteHelper.addDeleteLinkedNotesTask(cmd, view);
                         }
                         compositeCommand.add(new GMFCommandWrapper(this.getEditingDomain(), cmd));
@@ -209,6 +205,10 @@ public class SiriusBaseItemSemanticEditPolicy extends SemanticEditPolicy {
             return semanticCommand;
         }
         return null;
+    }
+
+    private boolean shouldImpactLinkedNotesOnHideOrRemove() {
+        return DiagramUIPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusDiagramUiInternalPreferencesKeys.PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE.name());
     }
 
     /**

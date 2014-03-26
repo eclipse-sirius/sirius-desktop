@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.business.internal.sync;
 
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
@@ -54,7 +55,8 @@ public class DDiagramSynchronizer extends org.eclipse.sirius.diagram.business.in
     @Override
     public void initDiagram(final String name, final EObject target, final IProgressMonitor monitor) {
         super.initDiagram(name, target, monitor);
-        getDiagram().setSynchronized(DiagramPlugin.getDefault().getPluginPreferences().getBoolean(SiriusDiagramInternalPreferencesKeys.PREF_SYNCHRONIZE_DIAGRAM_ON_CREATION.name()));
+        boolean syncOnCreation = Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, SiriusDiagramInternalPreferencesKeys.PREF_SYNCHRONIZE_DIAGRAM_ON_CREATION.name(), false, null);
+        getDiagram().setSynchronized(syncOnCreation);
     }
 
     /**

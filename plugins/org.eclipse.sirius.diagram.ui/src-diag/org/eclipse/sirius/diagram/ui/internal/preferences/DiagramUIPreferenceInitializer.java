@@ -17,7 +17,7 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 /**
  * @was-generated
  */
-public class DiagramPreferenceInitializer extends AbstractPreferenceInitializer {
+public class DiagramUIPreferenceInitializer extends AbstractPreferenceInitializer {
 
     /**
      * @was-generated

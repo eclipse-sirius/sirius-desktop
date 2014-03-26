@@ -54,11 +54,16 @@ import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
+import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramInternalPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.business.internal.dialect.DiagramDialectUIServices;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiInternalPreferencesKeys;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestCaseCleaner;
@@ -200,7 +205,12 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
     private boolean defaultEnableAnimatedLayout;
 
-    private final HashMap<String, Object> oldValuePreferences = new HashMap<String, Object>();
+    /**
+     * HashMaps to store the initial values of preferences before changes.
+     */
+    private final HashMap<String, Object> oldValueDiagramPreferences = new HashMap<String, Object>();
+
+    private final HashMap<String, Object> oldValueDiagramUIPreferences = new HashMap<String, Object>();
 
     private final HashMap<String, Object> oldValueSiriusPreferences = new HashMap<String, Object>();
 
@@ -582,15 +592,105 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * @param newValue
      *            The new value.
      */
-    protected void changeDiagramPreference(final String preferenceKey, final Boolean newValue) {
+    protected void changeDiagramPreference(String preferenceKey, Boolean newValue) {
+        assertNoDiagramUIPreferenceChangedinDiagramCoreStore(preferenceKey);
+
+        boolean oldValue = Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, preferenceKey, false, null);
+        oldValueDiagramPreferences.put(preferenceKey, oldValue);
+
+        IEclipsePreferences diagramCorePreferences = InstanceScope.INSTANCE.getNode(DiagramPlugin.ID);
+        diagramCorePreferences.putBoolean(preferenceKey, newValue);
+
+        boolean valueToCheck = Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, preferenceKey, false, null);
+        TestCase.assertEquals(getErrorMessage(preferenceKey, DiagramPlugin.ID), newValue.booleanValue(), valueToCheck);
+    }
+
+    /**
+     * Restore this preference to its initial value. Should be called after
+     * {@link #changeDiagramPreference(String, Boolean)} of
+     * {@link #changeDiagramPreference(String, Integer)} to have effect.
+     * 
+     * @param preferenceKey
+     *            The key of the preference.
+     */
+    protected void resetDiagramPreference(String preferenceKey) {
+        IEclipsePreferences diagramCorePreferences = InstanceScope.INSTANCE.getNode(DiagramPlugin.ID);
+        resetDiagramPreference(preferenceKey, diagramCorePreferences);
+    }
+
+    /**
+     * Restore this preference to its initial value. Should be called after
+     * {@link #changeDiagramPreference(String, Boolean)} of
+     * {@link #changeDiagramPreference(String, Integer)} to have effect.
+     * 
+     * @param preferenceKey
+     *            The key of the preference.
+     * @param diagramCorePreferences
+     *            The {@link IEclipsePreferences} to use.
+     */
+    private void resetDiagramPreference(String preferenceKey, IEclipsePreferences diagramCorePreferences) {
+        Object initialValue = oldValueDiagramPreferences.get(preferenceKey);
+        if (initialValue instanceof Boolean) {
+            diagramCorePreferences.putBoolean(preferenceKey, (Boolean) initialValue);
+        } else if (initialValue instanceof Integer) {
+            diagramCorePreferences.putInt(preferenceKey, (Integer) initialValue);
+        }
+    }
+
+    /**
+     * Change a boolean preference and store the old value. It will be
+     * automatically reset during tear down.
+     * 
+     * TO CALL ONLY ONCE PER TEST (set up + test)
+     * 
+     * @param preferenceKey
+     *            The key of the preference.
+     * @param newValue
+     *            The new value.
+     */
+    protected void changeDiagramUIPreference(final String preferenceKey, final Boolean newValue) {
+        assertNoDiagramCorePreferenceChangedinDiagramUIStore(preferenceKey);
+
         final IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
-        oldValuePreferences.put(preferenceKey, prefs.getBoolean(preferenceKey));
+        oldValueDiagramUIPreferences.put(preferenceKey, prefs.getBoolean(preferenceKey));
         UIThreadRunnable.syncExec(new VoidResult() {
             @Override
             public void run() {
                 prefs.setValue(preferenceKey, newValue);
             }
         });
+    }
+
+    /**
+     * Restore this preference to its initial value. Should be called after
+     * {@link #changeDiagramUIPreference(String, Boolean)} of
+     * {@link #changeDiagramUIPreference(String, Integer)} to have effect.
+     * 
+     * @param preferenceKey
+     *            The key of the preference.
+     */
+    protected void resetDiagramUIPreference(String preferenceKey) {
+        IPreferenceStore diagramUIPreferences = DiagramUIPlugin.getPlugin().getPreferenceStore();
+        resetDiagramUIPreference(preferenceKey, diagramUIPreferences);
+    }
+
+    /**
+     * Restore this preference to its initial value. Should be called after
+     * {@link #changeDiagramUIPreference(String, Boolean)} of
+     * {@link #changeDiagramUIPreference(String, Integer)} to have effect.
+     * 
+     * @param preferenceKey
+     *            The key of the preference.
+     * @param diagramUIPreferences
+     *            The {@link IPreferenceStore} to use.
+     */
+    private void resetDiagramUIPreference(String preferenceKey, IPreferenceStore diagramUIPreferences) {
+        Object initialValue = oldValueDiagramUIPreferences.get(preferenceKey);
+        if (initialValue instanceof Boolean) {
+            diagramUIPreferences.setValue(preferenceKey, (Boolean) initialValue);
+        } else if (initialValue instanceof Integer) {
+            diagramUIPreferences.setValue(preferenceKey, (Integer) initialValue);
+        }
     }
 
     /**
@@ -611,9 +711,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         IEclipsePreferences corePreferences = InstanceScope.INSTANCE.getNode(SiriusPlugin.ID);
         corePreferences.putBoolean(preferenceKey, newValue);
 
-        String message = "The " + preferenceKey + " preference value was not changed for plugin " + SiriusPlugin.ID;
         boolean valueToCheck = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, preferenceKey, false, null);
-        TestCase.assertEquals(message, newValue.booleanValue(), valueToCheck);
+        TestCase.assertEquals(getErrorMessage(preferenceKey, SiriusPlugin.ID), newValue.booleanValue(), valueToCheck);
     }
 
     /**
@@ -628,15 +727,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      *            The new value.
      */
     protected void changeSiriusUIPreference(String preferenceKey, Boolean newValue) {
-        Collection<SiriusPreferencesKeys> coreValues = Lists.newArrayList(SiriusPreferencesKeys.values());
-        Function<SiriusPreferencesKeys, String> prefToName = new Function<SiriusPreferencesKeys, String>() {
-            @Override
-            public String apply(SiriusPreferencesKeys input) {
-                return input.name();
-            }
-        };
-        TestCase.assertFalse("The DesignerPreferenceKey named " + preferenceKey + " should not be modified in the UI store.",
-                Lists.newArrayList(Iterables.transform(coreValues, prefToName)).contains(preferenceKey));
+        assertNoSiriusCorePreferenceChangedinSiriusUIStore(preferenceKey);
 
         IPreferenceStore viewpointUIPrefs = SiriusEditPlugin.getPlugin().getPreferenceStore();
         oldValueSiriusUIPreferences.put(preferenceKey, viewpointUIPrefs.getBoolean(preferenceKey));
@@ -656,6 +747,47 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         IPreferenceStore viewpointUIPrefs = PlatformUI.getPreferenceStore();
         oldPlatformUIPreferences.put(preferenceKey, viewpointUIPrefs.getBoolean(preferenceKey));
         viewpointUIPrefs.setValue(preferenceKey, newValue);
+    }
+
+    private void assertNoSiriusCorePreferenceChangedinSiriusUIStore(String preferenceKey) {
+        Collection<SiriusPreferencesKeys> coreKeys = Lists.newArrayList(SiriusPreferencesKeys.values());
+        Function<SiriusPreferencesKeys, String> prefToName = new Function<SiriusPreferencesKeys, String>() {
+            @Override
+            public String apply(SiriusPreferencesKeys input) {
+                return input.name();
+            }
+        };
+        TestCase.assertFalse("The DesignerPreferenceKey named " + preferenceKey + " should not be modified in the UI store.",
+                Lists.newArrayList(Iterables.transform(coreKeys, prefToName)).contains(preferenceKey));
+    }
+
+    private void assertNoDiagramCorePreferenceChangedinDiagramUIStore(String preferenceKey) {
+        Collection<String> coreKeys = Lists.newArrayList();
+        for (SiriusDiagramInternalPreferencesKeys key : SiriusDiagramInternalPreferencesKeys.values()) {
+            coreKeys.add(key.name());
+        }
+        for (SiriusDiagramPreferencesKeys key : SiriusDiagramPreferencesKeys.values()) {
+            coreKeys.add(key.name());
+        }
+        coreKeys.add(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE);
+        coreKeys.add(SiriusDiagramCorePreferences.PREF_LINE_STYLE);
+        assertFalse("The Diagram core preference named " + preferenceKey + " should not be modified in the Diagram UI store.", coreKeys.contains(preferenceKey));
+    }
+
+    private void assertNoDiagramUIPreferenceChangedinDiagramCoreStore(String preferenceKey) {
+        Collection<String> uiKeys = Lists.newArrayList();
+        for (SiriusDiagramUiInternalPreferencesKeys key : SiriusDiagramUiInternalPreferencesKeys.values()) {
+            uiKeys.add(key.name());
+        }
+        for (SiriusDiagramUiPreferencesKeys key : SiriusDiagramUiPreferencesKeys.values()) {
+            uiKeys.add(key.name());
+        }
+
+        assertFalse("The Diagram UI preference named " + preferenceKey + " should not be modified in the Diagram core store.", uiKeys.contains(preferenceKey));
+    }
+
+    private String getErrorMessage(String preferenceKey, String pluginId) {
+        return "The " + preferenceKey + " preference value was not changed for plugin " + pluginId;
     }
 
     /**
@@ -1321,19 +1453,21 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         // Reset the preferences changed during the test with the method
         // changePreference. This is done in the finally block in case of
         // ConcurrentModificationException during closeAllSession.
-        IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
-        for (String key : oldValuePreferences.keySet()) {
-            prefs.setValue(key, (Boolean) oldValuePreferences.get(key));
+
+        IEclipsePreferences diagamCorePreferences = InstanceScope.INSTANCE.getNode(DiagramPlugin.ID);
+        for (String key : oldValueDiagramPreferences.keySet()) {
+            resetDiagramPreference(key, diagamCorePreferences);
         }
 
-        boolean currentUiPreference = prefs.getBoolean(SiriusDiagramPreferencesKeys.PREF_OLD_UI.name());
+        IPreferenceStore diagramUIPreferences = DiagramUIPlugin.getPlugin().getPreferenceStore();
+        for (String key : oldValueDiagramUIPreferences.keySet()) {
+            resetDiagramUIPreference(key, diagramUIPreferences);
+        }
+        boolean currentUiPreference = diagramUIPreferences.getBoolean(SiriusDiagramUiPreferencesKeys.PREF_OLD_UI.name());
         if (currentUiPreference) {
             System.out.println("This test has not reset the oldUiPreference : " + this.getClass().getName() + " (it is currently true).");
         }
 
-        // Reset the preferences changed during the test with the method
-        // changePreference. This is done in the finally block in case of
-        // ConcurrentModificationException during closeAllSession.
         IPreferenceStore platformPrefs = PlatformUI.getPreferenceStore();
         for (String key : oldPlatformUIPreferences.keySet()) {
             platformPrefs.setValue(key, (Boolean) oldPlatformUIPreferences.get(key));

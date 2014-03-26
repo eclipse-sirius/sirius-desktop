@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,6 +40,7 @@ import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.Dot;
 import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.EdgeStyle;
@@ -287,10 +288,10 @@ public final class StyleHelper {
             // VSM style but less that the manual customization.
             final IPreferencesService service = Platform.getPreferencesService();
             Option<EdgeRouting> overrideEdgeRouting = Options.newNone();
-            boolean isOverideEnabled = service.getBoolean("org.eclipse.sirius.diagram", SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE,
+            boolean isOverideEnabled = service.getBoolean(DiagramPlugin.ID, SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE,
                     SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE_DEFAULT_VALUE, null);
             if (isOverideEnabled) {
-                int routingStyle = service.getInt("org.eclipse.sirius.diagram", SiriusDiagramCorePreferences.PREF_LINE_STYLE, SiriusDiagramCorePreferences.PREF_LINE_STYLE_DEFAULT_VALUE, null);
+                int routingStyle = service.getInt(DiagramPlugin.ID, SiriusDiagramCorePreferences.PREF_LINE_STYLE, SiriusDiagramCorePreferences.PREF_LINE_STYLE_DEFAULT_VALUE, null);
                 overrideEdgeRouting = Options.newSome(EdgeRouting.get(routingStyle));
             }
             // If a previous style exists, we are not on a creation of an edge

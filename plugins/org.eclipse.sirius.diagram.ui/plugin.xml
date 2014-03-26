@@ -501,7 +501,7 @@
 
    <extension point="org.eclipse.core.runtime.preferences">
       <?gmfgen generated="true"?>
-      <initializer class="org.eclipse.sirius.diagram.ui.internal.preferences.DiagramPreferenceInitializer"/>
+      <initializer class="org.eclipse.sirius.diagram.ui.internal.preferences.DiagramUIPreferenceInitializer"/>
    </extension>
 
    <extension point="org.eclipse.ui.preferencePages">

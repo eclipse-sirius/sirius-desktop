@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.preferences;
 
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.gmf.runtime.common.ui.preferences.CheckBoxFieldEditor;
 import org.eclipse.gmf.runtime.common.ui.preferences.ComboFieldEditor;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
@@ -19,12 +20,14 @@ import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.util.PropertyChangeEvent;
+import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.preferences.ScopedPreferenceStore;
 
 /**
  * This preference page change the behavior of the default GMF preference page.<BR>
@@ -70,8 +73,6 @@ public class DiagramConnectionsPreferencePage extends ConnectionsPreferencePage 
      */
     public static void initDefaults(IPreferenceStore preferenceStore) {
         ConnectionsPreferencePage.initDefaults(preferenceStore);
-        preferenceStore.setDefault(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE, SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE_DEFAULT_VALUE);
-        preferenceStore.setDefault(SiriusDiagramCorePreferences.PREF_LINE_STYLE, SiriusDiagramCorePreferences.PREF_LINE_STYLE_DEFAULT_VALUE);
     }
 
     /**
@@ -80,7 +81,6 @@ public class DiagramConnectionsPreferencePage extends ConnectionsPreferencePage 
     public DiagramConnectionsPreferencePage() {
         setPreferenceStore(DiagramUIPlugin.getPlugin().getPreferenceStore());
     }
-
 
     /**
      * Override this method to customize this preference page.
@@ -113,6 +113,21 @@ public class DiagramConnectionsPreferencePage extends ConnectionsPreferencePage 
         });
         // Set the initial state of the lineStyle field
         enableLineStyleField(getPreferenceStore().getBoolean(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void initialize() {
+        super.initialize();
+
+        // Set preference store to Diagram core plugin
+        IPreferenceStore diagramCorePreferenceStore = new ScopedPreferenceStore(new InstanceScope(), DiagramPlugin.ID);
+        enableOverrideFieldEditor.setPreferenceStore(diagramCorePreferenceStore);
+        enableOverrideFieldEditor.load();
+        lineStyleFieldEditor.setPreferenceStore(diagramCorePreferenceStore);
+        lineStyleFieldEditor.load();
     }
 
     /**
@@ -155,5 +170,4 @@ public class DiagramConnectionsPreferencePage extends ConnectionsPreferencePage 
         lineStyleFieldEditor.setEnabled(enable, fieldsParent);
         lineStyleFieldEditor.getComboControl().setEnabled(enable);
     }
-
 }

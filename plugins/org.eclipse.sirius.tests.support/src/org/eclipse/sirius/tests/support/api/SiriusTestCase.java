@@ -70,9 +70,15 @@ import org.eclipse.sirius.business.internal.migration.RepresentationsFileVersion
 import org.eclipse.sirius.business.internal.migration.description.VSMMigrationService;
 import org.eclipse.sirius.business.internal.migration.description.VSMVersionSAXParser;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.command.DiagramCommandFactoryService;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
+import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
+import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramInternalPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiInternalPreferencesKeys;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.ext.base.Option;
@@ -196,6 +202,8 @@ public abstract class SiriusTestCase extends TestCase {
      */
     private final HashMap<String, Object> oldValueDiagramPreferences = new HashMap<String, Object>();
 
+    private final HashMap<String, Object> oldValueDiagramUiPreferences = new HashMap<String, Object>();
+
     private final HashMap<String, Object> oldValueSiriusPreferences = new HashMap<String, Object>();
 
     private final HashMap<String, Object> oldValueSiriusUIPreferences = new HashMap<String, Object>();
@@ -203,8 +211,7 @@ public abstract class SiriusTestCase extends TestCase {
     private final HashMap<String, Object> oldPlatformUIPreferences = new HashMap<String, Object>();
 
     /**
-     * Overridden to create the project.
-     * {@inheritDoc}
+     * Overridden to create the project. {@inheritDoc}
      */
     @Override
     protected void setUp() throws Exception {
@@ -1271,9 +1278,16 @@ public abstract class SiriusTestCase extends TestCase {
      *            The new value.
      */
     protected void changeDiagramPreference(String preferenceKey, Integer newValue) {
-        final IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
-        oldValueDiagramPreferences.put(preferenceKey, prefs.getInt(preferenceKey));
-        prefs.setValue(preferenceKey, newValue);
+        assertNoDiagramUIPreferenceChangedinDiagramCoreStore(preferenceKey);
+
+        int oldValue = Platform.getPreferencesService().getInt(DiagramPlugin.ID, preferenceKey, 0, null);
+        oldValueDiagramPreferences.put(preferenceKey, oldValue);
+
+        IEclipsePreferences diagramCorePreferences = InstanceScope.INSTANCE.getNode(DiagramPlugin.ID);
+        diagramCorePreferences.putInt(preferenceKey, newValue);
+
+        int valueToCheck = Platform.getPreferencesService().getInt(DiagramPlugin.ID, preferenceKey, 0, null);
+        TestCase.assertEquals(getErrorMessage(preferenceKey, DiagramPlugin.ID), newValue.intValue(), valueToCheck);
     }
 
     /**
@@ -1288,9 +1302,16 @@ public abstract class SiriusTestCase extends TestCase {
      *            The new value.
      */
     protected void changeDiagramPreference(String preferenceKey, Boolean newValue) {
-        final IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
-        oldValueDiagramPreferences.put(preferenceKey, prefs.getBoolean(preferenceKey));
-        prefs.setValue(preferenceKey, newValue);
+        assertNoDiagramUIPreferenceChangedinDiagramCoreStore(preferenceKey);
+
+        boolean oldValue = Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, preferenceKey, false, null);
+        oldValueDiagramPreferences.put(preferenceKey, oldValue);
+
+        IEclipsePreferences diagramCorePreferences = InstanceScope.INSTANCE.getNode(DiagramPlugin.ID);
+        diagramCorePreferences.putBoolean(preferenceKey, newValue);
+
+        boolean valueToCheck = Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, preferenceKey, false, null);
+        TestCase.assertEquals(getErrorMessage(preferenceKey, DiagramPlugin.ID), newValue.booleanValue(), valueToCheck);
     }
 
     /**
@@ -1302,15 +1323,96 @@ public abstract class SiriusTestCase extends TestCase {
      *            The key of the preference.
      */
     protected void resetDiagramPreference(String preferenceKey) {
+        IEclipsePreferences diagramCorePreferences = InstanceScope.INSTANCE.getNode(DiagramPlugin.ID);
+        resetDiagramPreference(preferenceKey, diagramCorePreferences);
+    }
+
+    /**
+     * Restore this preference to its initial value. Should be called after
+     * {@link #changeDiagramPreference(String, Boolean)} of
+     * {@link #changeDiagramPreference(String, Integer)} to have effect.
+     * 
+     * @param preferenceKey
+     *            The key of the preference.
+     * @param diagramCorePreferences
+     *            The {@link IEclipsePreferences} to use.
+     */
+    private void resetDiagramPreference(String preferenceKey, IEclipsePreferences diagramCorePreferences) {
+        Object initialValue = oldValueDiagramPreferences.get(preferenceKey);
+        if (initialValue instanceof Boolean) {
+            diagramCorePreferences.putBoolean(preferenceKey, (Boolean) initialValue);
+        } else if (initialValue instanceof Integer) {
+            diagramCorePreferences.putInt(preferenceKey, (Integer) initialValue);
+        }
+    }
+
+    /**
+     * Change a preference and store the old value. It will be automatically
+     * reset during tear down.
+     * 
+     * TO CALL ONLY ONCE PER TEST (set up + test)
+     * 
+     * @param preferenceKey
+     *            The key of the preference.
+     * @param newValue
+     *            The new value.
+     */
+    protected void changeDiagramUIPreference(String preferenceKey, Integer newValue) {
+        assertNoDiagramCorePreferenceChangedinDiagramUIStore(preferenceKey);
+
         final IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
-        for (String key : oldValueDiagramPreferences.keySet()) {
-            if (key.equals(preferenceKey)) {
-                if (oldValueDiagramPreferences.get(key) instanceof Boolean) {
-                    prefs.setValue(key, (Boolean) oldValueDiagramPreferences.get(key));
-                } else if (oldValueDiagramPreferences.get(key) instanceof Integer) {
-                    prefs.setValue(key, (Integer) oldValueDiagramPreferences.get(key));
-                }
-            }
+        oldValueDiagramUiPreferences.put(preferenceKey, prefs.getInt(preferenceKey));
+        prefs.setValue(preferenceKey, newValue);
+    }
+
+    /**
+     * Change a boolean preference and store the old value. It will be
+     * automatically reset during tear down.
+     * 
+     * TO CALL ONLY ONCE PER TEST (set up + test)
+     * 
+     * @param preferenceKey
+     *            The key of the preference.
+     * @param newValue
+     *            The new value.
+     */
+    protected void changeDiagramUIPreference(String preferenceKey, Boolean newValue) {
+        assertNoDiagramCorePreferenceChangedinDiagramUIStore(preferenceKey);
+
+        final IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
+        oldValueDiagramUiPreferences.put(preferenceKey, prefs.getBoolean(preferenceKey));
+        prefs.setValue(preferenceKey, newValue);
+    }
+
+    /**
+     * Restore this preference to its initial value. Should be called after
+     * {@link #changeDiagramUIPreference(String, Boolean)} of
+     * {@link #changeDiagramUIPreference(String, Integer)} to have effect.
+     * 
+     * @param preferenceKey
+     *            The key of the preference.
+     */
+    protected void resetDiagramUiPreference(String preferenceKey) {
+        final IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
+        resetDiagramUiPreference(preferenceKey, prefs);
+    }
+
+    /**
+     * Restore this preference to its initial value. Should be called after
+     * {@link #changeDiagramUIPreference(String, Boolean)} of
+     * {@link #changeDiagramUIPreference(String, Integer)} to have effect.
+     * 
+     * @param preferenceKey
+     *            The key of the preference.
+     * @param diagramUIPreferences
+     *            The preference store to use.
+     */
+    private void resetDiagramUiPreference(String preferenceKey, IPreferenceStore diagramUIPreferences) {
+        Object initialValue = oldValueDiagramUiPreferences.get(preferenceKey);
+        if (initialValue instanceof Boolean) {
+            diagramUIPreferences.setValue(preferenceKey, (Boolean) initialValue);
+        } else if (initialValue instanceof Integer) {
+            diagramUIPreferences.setValue(preferenceKey, (Integer) initialValue);
         }
     }
 
@@ -1347,9 +1449,8 @@ public abstract class SiriusTestCase extends TestCase {
         IEclipsePreferences corePreferences = InstanceScope.INSTANCE.getNode(SiriusPlugin.ID);
         corePreferences.putBoolean(preferenceKey, newValue);
 
-        String message = "The " + preferenceKey + " preference value was not changed for plugin " + SiriusPlugin.ID;
         boolean valueToCheck = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, preferenceKey, false, null);
-        TestCase.assertEquals(message, newValue.booleanValue(), valueToCheck);
+        TestCase.assertEquals(getErrorMessage(preferenceKey, SiriusPlugin.ID), newValue.booleanValue(), valueToCheck);
     }
 
     /**
@@ -1364,7 +1465,15 @@ public abstract class SiriusTestCase extends TestCase {
      *            The new value.
      */
     protected void changeSiriusUIPreference(String preferenceKey, Boolean newValue) {
-        Collection<SiriusPreferencesKeys> coreValues = Lists.newArrayList(SiriusPreferencesKeys.values());
+        assertNoSiriusCorePreferenceChangedinSiriusUIStore(preferenceKey);
+
+        IPreferenceStore viewpointUIPrefs = SiriusEditPlugin.getPlugin().getPreferenceStore();
+        oldValueSiriusUIPreferences.put(preferenceKey, viewpointUIPrefs.getBoolean(preferenceKey));
+        viewpointUIPrefs.setValue(preferenceKey, newValue);
+    }
+
+    private void assertNoSiriusCorePreferenceChangedinSiriusUIStore(String preferenceKey) {
+        Collection<SiriusPreferencesKeys> coreKeys = Lists.newArrayList(SiriusPreferencesKeys.values());
         Function<SiriusPreferencesKeys, String> prefToName = new Function<SiriusPreferencesKeys, String>() {
             @Override
             public String apply(SiriusPreferencesKeys input) {
@@ -1372,11 +1481,36 @@ public abstract class SiriusTestCase extends TestCase {
             }
         };
         TestCase.assertFalse("The DesignerPreferenceKey named " + preferenceKey + " should not be modified in the UI store.",
-                Lists.newArrayList(Iterables.transform(coreValues, prefToName)).contains(preferenceKey));
+                Lists.newArrayList(Iterables.transform(coreKeys, prefToName)).contains(preferenceKey));
+    }
 
-        IPreferenceStore viewpointUIPrefs = SiriusEditPlugin.getPlugin().getPreferenceStore();
-        oldValueSiriusUIPreferences.put(preferenceKey, viewpointUIPrefs.getBoolean(preferenceKey));
-        viewpointUIPrefs.setValue(preferenceKey, newValue);
+    private void assertNoDiagramCorePreferenceChangedinDiagramUIStore(String preferenceKey) {
+        Collection<String> coreKeys = Lists.newArrayList();
+        for (SiriusDiagramInternalPreferencesKeys key : SiriusDiagramInternalPreferencesKeys.values()) {
+            coreKeys.add(key.name());
+        }
+        for (SiriusDiagramPreferencesKeys key : SiriusDiagramPreferencesKeys.values()) {
+            coreKeys.add(key.name());
+        }
+        coreKeys.add(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE);
+        coreKeys.add(SiriusDiagramCorePreferences.PREF_LINE_STYLE);
+        assertFalse("The Diagram core preference named " + preferenceKey + " should not be modified in the Diagram UI store.", coreKeys.contains(preferenceKey));
+    }
+
+    private void assertNoDiagramUIPreferenceChangedinDiagramCoreStore(String preferenceKey) {
+        Collection<String> uiKeys = Lists.newArrayList();
+        for (SiriusDiagramUiInternalPreferencesKeys key : SiriusDiagramUiInternalPreferencesKeys.values()) {
+            uiKeys.add(key.name());
+        }
+        for (SiriusDiagramUiPreferencesKeys key : SiriusDiagramUiPreferencesKeys.values()) {
+            uiKeys.add(key.name());
+        }
+
+        assertFalse("The Diagram UI preference named " + preferenceKey + " should not be modified in the Diagram core store.", uiKeys.contains(preferenceKey));
+    }
+
+    private String getErrorMessage(String preferenceKey, String pluginId) {
+        return "The " + preferenceKey + " preference value was not changed for plugin " + pluginId;
     }
 
     /**
@@ -1495,9 +1629,7 @@ public abstract class SiriusTestCase extends TestCase {
             if (domain.getCommandStack() != null) {
                 domain.getCommandStack().flush();
             }
-            /* dispose the editing domain */    /**
-             * {@inheritDoc}
-             */
+            /* dispose the editing domain */
             // CHECKSTYLE:OFF
             try {
                 domain.dispose();
@@ -1516,13 +1648,13 @@ public abstract class SiriusTestCase extends TestCase {
         TestsUtil.emptyEventsFromUIThread();
         // Reset the preferences changed during the test with the method
         // changePreference
-        IPreferenceStore diagramPreferences = DiagramUIPlugin.getPlugin().getPreferenceStore();
+        IEclipsePreferences diagamCorePreferences = InstanceScope.INSTANCE.getNode(DiagramPlugin.ID);
         for (String key : oldValueDiagramPreferences.keySet()) {
-            if (oldValueDiagramPreferences.get(key) instanceof Boolean) {
-                diagramPreferences.setValue(key, (Boolean) oldValueDiagramPreferences.get(key));
-            } else if (oldValueDiagramPreferences.get(key) instanceof Integer) {
-                diagramPreferences.setValue(key, (Integer) oldValueDiagramPreferences.get(key));
-            }
+            resetDiagramPreference(key, diagamCorePreferences);
+        }
+        IPreferenceStore diagramUIPreferences = DiagramUIPlugin.getPlugin().getPreferenceStore();
+        for (String key : oldValueDiagramUiPreferences.keySet()) {
+            resetDiagramUiPreference(key, diagramUIPreferences);
         }
         IEclipsePreferences corePreferences = InstanceScope.INSTANCE.getNode(SiriusPlugin.ID);
         for (String key : oldValueSiriusPreferences.keySet()) {

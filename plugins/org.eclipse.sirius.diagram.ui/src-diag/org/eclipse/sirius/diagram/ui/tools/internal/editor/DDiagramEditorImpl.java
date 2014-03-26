@@ -106,7 +106,6 @@ import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.diagram.tools.api.command.view.HideDDiagramElement;
 import org.eclipse.sirius.diagram.tools.api.command.view.HideDDiagramElementLabel;
-import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
 import org.eclipse.sirius.diagram.ui.business.api.query.DDiagramGraphicalQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
@@ -129,6 +128,7 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.ToolFilter;
+import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.api.properties.PropertiesService;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromModelWithHookAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteWithHookAction;
@@ -869,7 +869,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                     }
                 }, };
 
-        if (Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, SiriusDiagramPreferencesKeys.PREF_OLD_UI.name(), false, null)) {
+        if (isOldUIEnabled()) {
             diagramOutline = new DiagramOutlineWithBookPages(this.getDiagramEditPart().getModel(), getGraphicalViewer(), outlinePopupMenuActions);
         } else {
             diagramOutline = new DiagramOutlinePage(this.getDiagramEditPart().getModel(), new OutlineLabelProvider(), new OutlineContentProvider(), new OutlineComparator(), getGraphicalViewer(),
@@ -1325,11 +1325,15 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     protected void createGraphicalViewer(final Composite parent) {
         this.diagramMenuUpdater = new DiagramMenuUpdater(this);
         parentComposite = createParentComposite(parent);
-        if (!Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, SiriusDiagramPreferencesKeys.PREF_OLD_UI.name(), false, null)) {
+        if (!isOldUIEnabled()) {
             setTabbar(new Tabbar(parentComposite, this));
         }
         createHeaderSection(parentComposite);
         createMainDiagramSection(parentComposite);
+    }
+
+    private boolean isOldUIEnabled() {
+        return Platform.getPreferencesService().getBoolean(DiagramUIPlugin.ID, SiriusDiagramUiPreferencesKeys.PREF_OLD_UI.name(), false, null);
     }
 
     private void createMainDiagramSection(Composite composite) {

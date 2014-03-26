@@ -12,13 +12,14 @@ package org.eclipse.sirius.diagram.ui.tools.internal.layout;
 
 import java.util.ArrayList;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
-import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
 
 import com.google.common.base.Predicate;
@@ -82,10 +83,8 @@ public class IsPinnedPredicate implements Predicate<IGraphicalEditPart> {
         }
         if (connectedToPinnedElement) {
             result = true;
-        } else {
-            if (!DiagramUIPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusDiagramPreferencesKeys.PREF_MOVE_NOTES_DURING_LATOUT.name())) {
-                result = true;
-            }
+        } else if (!Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, SiriusDiagramPreferencesKeys.PREF_MOVE_NOTES_DURING_LATOUT.name(), false, null)) {
+            result = true;
         }
         return result;
     }

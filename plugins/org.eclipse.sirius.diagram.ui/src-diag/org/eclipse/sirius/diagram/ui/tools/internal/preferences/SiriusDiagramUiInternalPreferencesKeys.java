@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,30 +8,32 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.api.preferences;
+package org.eclipse.sirius.diagram.ui.tools.internal.preferences;
 
 /**
  * Sirius preferences keys dedicated to diagrams.
  * 
- * @author jdupont
+ * @author cbrun
  * 
  */
-public enum SiriusDiagramPreferencesKeys {
+public enum SiriusDiagramUiInternalPreferencesKeys {
 
     /**
-     * Says if notes unlinked should be moved during layout of arrange all.
+     * Says whether the container should be automatically auto-sized during the
+     * arrange all or not.
      */
-    PREF_MOVE_NOTES_DURING_LATOUT(boolean.class),
+    PREF_AUTOSIZE_ON_ARRANGE(boolean.class),
 
     /**
-     * Indicates that clipboard support should be disabled except for note.
+     * Says if diagram elements should be marked as pinned automatically when
+     * moved by the user.
      */
-    PREF_CLIPBOOARD_SUPPORT_ONLY_ON_NOTE(boolean.class),
-    
+    PREF_AUTO_PIN_ON_MOVE(boolean.class),
+
     /**
-     * Says if the header section should be display in the diagram or not.
+     * Says if Note must be hiden or removed when the associated element is hidden or removed.
      */
-    PREF_DISPLAY_HEADER_SECTION(boolean.class);
+    PREF_REMOVE_HIDE_NOTE_WHEN_ANNOTED_ELEMENT_HIDDEN_OR_REMOVE(boolean.class);
 
     /** The type of the preference. */
     private Class<?> type;
@@ -39,11 +41,10 @@ public enum SiriusDiagramPreferencesKeys {
     /**
      * Creates a new DesignerPreferencesKeys with the given type.
      * 
-     * @since 0.9.0
      * @param type
      *            the type of the value of the preference.
      */
-    private SiriusDiagramPreferencesKeys(final Class<?> type) {
+    private SiriusDiagramUiInternalPreferencesKeys(final Class<?> type) {
         this.type = type;
     }
 

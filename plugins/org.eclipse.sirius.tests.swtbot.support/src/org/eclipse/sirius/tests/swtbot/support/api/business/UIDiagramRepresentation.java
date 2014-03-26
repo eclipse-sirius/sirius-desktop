@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,8 +12,8 @@ package org.eclipse.sirius.tests.swtbot.support.api.business;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IPreferencesService;
-import org.eclipse.sirius.diagram.DiagramPlugin;
-import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
@@ -221,7 +221,7 @@ public class UIDiagramRepresentation extends AbstractUIRepresentation<SWTBotDesi
 
     private boolean useTabbar() {
         IPreferencesService prefs = Platform.getPreferencesService();
-        return !prefs.getBoolean(DiagramPlugin.ID, SiriusDiagramPreferencesKeys.PREF_OLD_UI.name(), false, null);
+        return !prefs.getBoolean(DiagramUIPlugin.ID, SiriusDiagramUiPreferencesKeys.PREF_OLD_UI.name(), false, null);
     }
 
     /**
