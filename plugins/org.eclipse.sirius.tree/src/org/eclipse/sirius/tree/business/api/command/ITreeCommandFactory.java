@@ -49,22 +49,6 @@ public interface ITreeCommandFactory extends ICommandFactory {
     Command buildCreateLineCommandFromTool(final DTreeItemContainer lineContainer, final EObject semanticCurrentElement, final TreeItemCreationTool tool);
 
     /**
-     * Create a command that creates a column.
-     * 
-     * @param containerView
-     *            container element in which the command should put the created
-     *            line.
-     * @param semanticCurrentElement
-     *            the semantic current element
-     * @param tool
-     *            {@link CreateTool} used to build the command.
-     * @return a command able to create the line and putting it in the
-     *         container, corresponding to the {@link CreateTool}.
-     */
-    // Command buildCreateColumnCommandFromTool(final DTable containerView,
-    // final EObject semanticCurrentElement, final CreateTool tool);
-
-    /**
      * Returns a command that can delete the specified element.
      * 
      * @param element
@@ -77,67 +61,12 @@ public interface ITreeCommandFactory extends ICommandFactory {
     Command buildDeleteTreeElement(final DTreeElement element);
 
     /**
-     * Create a command that set the content of a crossTable cell.
-     * 
-     * @param editedCell
-     *            The cell to set
-     * @param newValue
-     *            the new value for this cell
-     * @return a command able to set the content of a cell, corresponding to the
-     *         {@link org.eclipse.sirius.table.metamodel.table.description.LabelEditTool
-     *         LabelEditTool} or
-     *         {@link org.eclipse.sirius.table.metamodel.table.description.CreateCellTool
-     *         CreateCellTool}.
-     */
-    // Command buildSetCellValueFromTool(final DCell editedCell, final Object
-    // newValue);
-
-    /**
      * Set the model accessor.
      * 
      * @param modelAccessor
      *            the modelAccessor to set
      */
     void setModelAccessor(final ModelAccessor modelAccessor);
-
-    /**
-     * Create a command that set a value on an instance feature.
-     * 
-     * @param instance
-     *            current {@link EObject}.
-     * @param name
-     *            name of the feature to set.
-     * @param value
-     *            value to set
-     * @return a command able to set the value of an instance feature
-     */
-    // Command buildSetValue(final EObject instance, final String name, final
-    // Object value);
-
-    /**
-     * Create a command that add a value on an instance feature.
-     * 
-     * @param instance
-     *            current {@link EObject}.
-     * @param name
-     *            name of the feature to add.
-     * @param value
-     *            value to add
-     * @return a command able to add the value of an instance feature
-     */
-    // Command buildAddValue(final EObject instance, final String name, final
-    // Object value);
-
-    /**
-     * Create a command that clear ths values of an instance feature.
-     * 
-     * @param instance
-     *            current {@link EObject}.
-     * @param name
-     *            name of the feature to clear.
-     * @return a command able to clear the values of an instance feature
-     */
-    // Command buildClearValue(final EObject instance, final String name);
 
     /**
      * Build a direct edit label command using the corresponding tool
