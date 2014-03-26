@@ -21,7 +21,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
-import org.eclipse.sirius.ui.business.api.preferences.DesignerUIPreferencesKeys;
+import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonLabelProvider;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -68,10 +68,10 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
         final Throwable exception = getFinalCause(status);
         // Step 1: check preferences (should indicate that errors should be
         // logged through a pop-up)
-        if (SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(DesignerUIPreferencesKeys.PREF_REACT_TO_PERMISSION_ISSUES_BY_GRAPHICAL_DISPLAY.name())) {
+        if (SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusUIPreferencesKeys.PREF_REACT_TO_PERMISSION_ISSUES_BY_GRAPHICAL_DISPLAY.name())) {
             // Step 2: logging this error using a through the dialect if
             // possible and required
-            if (SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(DesignerUIPreferencesKeys.PREF_DISPLAY_PERMISSION_ISSUES_THROUGH_DIALOG.name())) {
+            if (SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusUIPreferencesKeys.PREF_DISPLAY_PERMISSION_ISSUES_THROUGH_DIALOG.name())) {
                 IEditorPart activeEditor = EclipseUIUtil.getActiveEditor();
                 if ((activeEditor != null) && (activeEditor instanceof DialectEditor)) {
                     if (shouldBeLoggedThroughDialect((DialectEditor) activeEditor, exception)) {

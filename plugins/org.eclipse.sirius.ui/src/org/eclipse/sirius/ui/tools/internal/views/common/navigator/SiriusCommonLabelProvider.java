@@ -25,7 +25,7 @@ import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ui.business.api.preferences.DesignerUIPreferencesKeys;
+import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
@@ -180,7 +180,7 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
         if (session != null && uiSession != null && session.isOpen() && uiSession.isOpen()) {
 
             IPreferenceStore preferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
-            boolean shouldBeSavedWithoutEditor = preferenceStore != null && preferenceStore.getBoolean(DesignerUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name());
+            boolean shouldBeSavedWithoutEditor = preferenceStore != null && preferenceStore.getBoolean(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name());
 
             // When option PREF_SAVE_WHEN_NO_EDITOR is enabled, show dirty
             // status only when there si no editors to detect bugs.

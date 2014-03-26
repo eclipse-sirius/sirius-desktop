@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,7 @@ import org.eclipse.jface.preference.IntegerFieldEditor;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
-import org.eclipse.sirius.ui.business.api.preferences.DesignerUIPreferencesKeys;
+import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
@@ -31,7 +31,7 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
  * 
  * @author ymortier
  */
-public class DesignerPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
+public class SiriusPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
     /**
      * Label of the check box emptyAirdFragmentOnControl.
@@ -91,7 +91,7 @@ public class DesignerPreferencePage extends FieldEditorPreferencePage implements
     private void addRefreshFields(Composite parent) {
         Composite refreshComposite = createGroup(parent, "Refresh");
 
-        refreshOnRepresentationOpening = new BooleanFieldEditor(DesignerUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), "Do refresh on representation opening", new Composite(
+        refreshOnRepresentationOpening = new BooleanFieldEditor(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), "Do refresh on representation opening", new Composite(
                 refreshComposite, SWT.NONE));
         addField(refreshOnRepresentationOpening);
 

@@ -31,7 +31,7 @@ import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
 import org.eclipse.sirius.tools.api.command.EditingDomainUndoContext;
-import org.eclipse.sirius.ui.business.api.preferences.DesignerUIPreferencesKeys;
+import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
@@ -117,7 +117,7 @@ public class RestoreToLastSavePointListener implements ResourceSyncClient, IOper
      */
     public static boolean isAllowedToReturnToSyncState() {
         IPreferenceStore preferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
-        return preferenceStore != null && preferenceStore.getBoolean(DesignerUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name());
+        return preferenceStore != null && preferenceStore.getBoolean(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name());
     }
 
     /**

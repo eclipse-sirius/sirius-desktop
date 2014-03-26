@@ -24,7 +24,7 @@ import org.eclipse.sirius.business.internal.session.danalysis.SaveSessionJob;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
-import org.eclipse.sirius.ui.business.api.preferences.DesignerUIPreferencesKeys;
+import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.ui.business.api.session.EditingSessionEvent;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
@@ -92,7 +92,7 @@ public class SaveSessionWhenNoDialectEditorsListener implements ResourceSyncClie
 
     private boolean newMode() {
         final IPreferenceStore preferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
-        return preferenceStore != null && preferenceStore.getBoolean(DesignerUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name());
+        return preferenceStore != null && preferenceStore.getBoolean(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name());
     }
 
     /**

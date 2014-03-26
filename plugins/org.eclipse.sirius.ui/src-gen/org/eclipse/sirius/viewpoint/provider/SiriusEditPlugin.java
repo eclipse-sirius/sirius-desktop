@@ -47,7 +47,7 @@ import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.preferences.DCorePreferences;
-import org.eclipse.sirius.ui.business.api.preferences.DesignerUIPreferencesKeys;
+import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.ui.business.internal.dialect.LogThroughActiveDialectEditorLogListener;
 import org.eclipse.sirius.ui.business.internal.session.GenericSWTCallBack;
 import org.eclipse.sirius.ui.business.internal.session.factory.UISessionFactoryDescriptorRegistryListener;
@@ -252,7 +252,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
             /* should be in dialect ui, and not in the start stop of the plugin */
             getPreferenceStore().addPropertyChangeListener(new IPropertyChangeListener() {
                 public void propertyChange(PropertyChangeEvent event) {
-                    DialectManager.INSTANCE.setRefreshActivatedOnRepresentationOpening(getPreferenceStore().getBoolean(DesignerUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name()));
+                    DialectManager.INSTANCE.setRefreshActivatedOnRepresentationOpening(getPreferenceStore().getBoolean(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name()));
                 }
             });
             /*
@@ -260,7 +260,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
              * should be in DialectUI init
              */
             if (DialectManager.INSTANCE != null)
-                DialectManager.INSTANCE.setRefreshActivatedOnRepresentationOpening(getPreferenceStore().getBoolean(DesignerUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name()));
+                DialectManager.INSTANCE.setRefreshActivatedOnRepresentationOpening(getPreferenceStore().getBoolean(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name()));
         }
 
         private void reflectAllPreferencesOnCore() {

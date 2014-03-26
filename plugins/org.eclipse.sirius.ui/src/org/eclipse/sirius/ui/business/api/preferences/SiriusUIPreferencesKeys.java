@@ -15,7 +15,7 @@ package org.eclipse.sirius.ui.business.api.preferences;
  * 
  * @author ymortier
  */
-public enum DesignerUIPreferencesKeys {
+public enum SiriusUIPreferencesKeys {
 
     /**
      * Says if the refresh should automatically be done on representation
