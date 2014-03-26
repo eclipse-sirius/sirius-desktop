@@ -67,7 +67,10 @@ h4. Changes in @org.eclipse.sirius@
 
 * @org.eclipse.sirius.business.api.query.URIQuery.isSiriusEnvironmentURI@ has been replaced by 
 ** @isSiriusCoreEnvironmentURI@ which checks that the given resource is the Sirius core Environment.xmi file. 
-** and @isEnvironmentURI@ which checks that the given resource has an @environment@ uri scheme.  
+** and @isEnvironmentURI@ which checks that the given resource has an @environment@ uri scheme. 
+* In @org.eclipse.sirius.business.api.dialect.DialectManager@
+** the setter @setRefreshActivatedOnRepresentationOpening(boolean)@ has been removed as the refresh on opening should be managed from the corresponding preference @org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING@.
+** @isRefreshActivatedOnRepresentationOpening()@ has been moved into @org.eclipse.sirius.ui.business.api.dialect.DialectUIManager@ as it refers to an UI behavior.
 
 h4. Changes in @org.eclipse.sirius.ui@
 

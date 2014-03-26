@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -54,8 +54,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 public class DialectManagerImpl implements DialectManager {
 
     Map<String, Dialect> dialects = new HashMap<String, Dialect>();
-
-    private boolean refreshOnDiagramOpening;
 
     /**
      * Init a default manager implementation.
@@ -346,24 +344,6 @@ public class DialectManagerImpl implements DialectManager {
         for (final Dialect dialect : dialects.values()) {
             dialect.getServices().initRepresentations(vp, semantic, monitor);
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectManager#isRefreshActivatedOnRepresentationOpening()
-     */
-    public boolean isRefreshActivatedOnRepresentationOpening() {
-        return this.refreshOnDiagramOpening;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.DialectManager#setRefreshActivatedOnRepresentationOpening(boolean)
-     */
-    public void setRefreshActivatedOnRepresentationOpening(final boolean activated) {
-        this.refreshOnDiagramOpening = activated;
     }
 
     /**

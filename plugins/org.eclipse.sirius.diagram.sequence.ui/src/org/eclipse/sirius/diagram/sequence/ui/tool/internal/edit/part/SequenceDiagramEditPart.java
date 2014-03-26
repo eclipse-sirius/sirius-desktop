@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,6 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.business.api.session.SessionEventBroker;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
@@ -43,6 +42,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.properties.PropertiesService;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.ui.property.IPropertiesProvider;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -62,7 +62,7 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
     private IDiagramCommandFactoryProvider previousProvider;
 
     private ModelChangeTrigger refreshLayout;
-    
+
     private ModelChangeTrigger sequenceCanonicalSynchronizer;
 
     private ResourceSetListener refreshZorder = new ResourceSetListenerImpl() {
@@ -145,7 +145,7 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
          * ordering to work.
          */
         boolean autoRefresh = PropertiesService.getInstance().getPropertiesProvider().getProperty(IPropertiesProvider.KEY_AUTO_REFRESH);
-        boolean refreshOnOpen = DialectManager.INSTANCE.isRefreshActivatedOnRepresentationOpening();
+        boolean refreshOnOpen = DialectUIManager.INSTANCE.isRefreshActivatedOnRepresentationOpening();
         getEditingDomain().getCommandStack().execute(new RefreshLayoutCommand(getEditingDomain(), getDiagramView(), autoRefresh || refreshOnOpen));
         getEditingDomain().addResourceSetListener(semanticOrderingSynchronizer);
         getEditingDomain().addResourceSetListener(refreshZorder);
@@ -153,11 +153,11 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
         Option<SessionEventBroker> broker = getSessionBroker();
         if (broker.some()) {
             SessionEventBroker sessionEventBroker = broker.get();
-            
+
             Predicate<Notification> refreshLayoutScope = new RefreshLayoutScope();
             refreshLayout = new RefreshLayoutTrigger(getDiagramView());
             sessionEventBroker.addLocalTrigger(refreshLayoutScope, refreshLayout);
-            
+
             Predicate<Notification> sequenceCanonicalSynchronizerLayoutScope = new SequenceCanonicalSynchronizerAdapterScope();
             sequenceCanonicalSynchronizer = new SequenceCanonicalSynchronizerAdapter();
             sessionEventBroker.addLocalTrigger(sequenceCanonicalSynchronizerLayoutScope, sequenceCanonicalSynchronizer);

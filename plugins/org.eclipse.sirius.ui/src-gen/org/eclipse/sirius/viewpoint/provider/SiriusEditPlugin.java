@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,12 +42,10 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.preferences.DCorePreferences;
-import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.ui.business.internal.dialect.LogThroughActiveDialectEditorLogListener;
 import org.eclipse.sirius.ui.business.internal.session.GenericSWTCallBack;
 import org.eclipse.sirius.ui.business.internal.session.factory.UISessionFactoryDescriptorRegistryListener;
@@ -249,18 +247,6 @@ public final class SiriusEditPlugin extends EMFPlugin {
                         reflectPreferencesOnCore(key);
                 }
             });
-            /* should be in dialect ui, and not in the start stop of the plugin */
-            getPreferenceStore().addPropertyChangeListener(new IPropertyChangeListener() {
-                public void propertyChange(PropertyChangeEvent event) {
-                    DialectManager.INSTANCE.setRefreshActivatedOnRepresentationOpening(getPreferenceStore().getBoolean(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name()));
-                }
-            });
-            /*
-             * FIXME DO NOT CALL DIALECTMANGER.INSTANCE in start or stop =>
-             * should be in DialectUI init
-             */
-            if (DialectManager.INSTANCE != null)
-                DialectManager.INSTANCE.setRefreshActivatedOnRepresentationOpening(getPreferenceStore().getBoolean(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name()));
         }
 
         private void reflectAllPreferencesOnCore() {

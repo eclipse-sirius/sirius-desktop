@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,13 +12,13 @@ package org.eclipse.sirius.table.ui.tools.internal.editor;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.ui.tools.internal.command.ChangeColumnWidthCommand;
 import org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableEditorUtil;
 import org.eclipse.sirius.table.ui.tools.internal.editor.utils.TreeColumnWidthQuery;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
@@ -105,7 +105,7 @@ public class RefreshAtOpeningActivator implements IPartListener {
     }
 
     private void refreshDTableModelFromTreeColumnWidth() {
-        if (DialectManager.INSTANCE.isRefreshActivatedOnRepresentationOpening()) {
+        if (DialectUIManager.INSTANCE.isRefreshActivatedOnRepresentationOpening()) {
             CompoundCommand refreshDTableAtOpeningCmd = new CompoundCommand("refresh table model at opening");
 
             TreeColumn[] treeColumns = tree.getColumns();

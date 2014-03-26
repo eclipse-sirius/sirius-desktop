@@ -87,7 +87,6 @@ import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
@@ -539,7 +538,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             keyHandler.put(KeyStroke.getPressed(SWT.DEL, 127, 0), getActionRegistry().getAction(ActionFactory.DELETE.getId()));
 
             keyHandler.put(/* CTRL + D */
-                    KeyStroke.getPressed((char) 0x4, 100, SWT.CTRL), getActionRegistry().getAction(ActionIds.ACTION_DELETE_FROM_MODEL));
+            KeyStroke.getPressed((char) 0x4, 100, SWT.CTRL), getActionRegistry().getAction(ActionIds.ACTION_DELETE_FROM_MODEL));
         }
         return keyHandler;
     }
@@ -1080,9 +1079,9 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     @Override
     protected void setDocumentProvider(final IEditorInput input) {
         if (getSession() != null/*
-         * && (input instanceof IFileEditorInput ||
-         * input instanceof URIEditorInput)
-         */) {
+                                 * && (input instanceof IFileEditorInput ||
+                                 * input instanceof URIEditorInput)
+                                 */) {
             setDocumentProvider(DiagramUIPlugin.getPlugin().getDocumentProvider(getSession().getTransactionalEditingDomain()));
         } else {
             // super.setDocumentProvider(input);
@@ -1452,7 +1451,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         /*
          * Refresh diagram if needed. Must be done before that
          */
-        if (DialectManager.INSTANCE.isRefreshActivatedOnRepresentationOpening()) {
+        if (DialectUIManager.INSTANCE.isRefreshActivatedOnRepresentationOpening()) {
             launchRefresh(true);
         }
 

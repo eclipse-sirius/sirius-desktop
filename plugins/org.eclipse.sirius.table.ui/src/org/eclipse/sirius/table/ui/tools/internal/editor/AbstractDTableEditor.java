@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,7 +45,6 @@ import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.window.Window;
 import org.eclipse.osgi.util.NLS;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -291,7 +290,7 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
             notify(PROP_TITLE);
 
             // Launch the refresh if needed
-            if (DialectManager.INSTANCE.isRefreshActivatedOnRepresentationOpening()) {
+            if (DialectUIManager.INSTANCE.isRefreshActivatedOnRepresentationOpening()) {
                 launchRefresh();
             }
 

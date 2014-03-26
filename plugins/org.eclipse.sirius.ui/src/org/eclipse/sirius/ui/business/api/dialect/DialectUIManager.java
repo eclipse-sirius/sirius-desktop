@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -64,4 +64,13 @@ public interface DialectUIManager extends DialectUIServices {
      *         <code>format<code>, false otherwise
      */
     boolean canExport(DRepresentation representation, ExportFormat format);
+
+    /**
+     * Returns <code>true</code> if the refresh should be done on representation
+     * opening.
+     * 
+     * @return <code>true</code> if the refresh should be done on representation
+     *         opening.
+     */
+    boolean isRefreshActivatedOnRepresentationOpening();
 }

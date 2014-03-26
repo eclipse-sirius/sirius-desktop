@@ -230,7 +230,20 @@
 					</li>
 					<li>and 
 						<code>isEnvironmentURI</code> which checks that the given resource has an 
-						<code>environment</code> uri scheme.  
+						<code>environment</code> uri scheme. 
+					</li>
+				</ul>
+			</li>
+			<li>In 
+				<code>org.eclipse.sirius.business.api.dialect.DialectManager</code>
+				<ul>
+					<li>the setter 
+						<code>setRefreshActivatedOnRepresentationOpening(boolean)</code> has been removed as the refresh on opening should be managed from the corresponding preference 
+						<code>org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING</code>.
+					</li>
+					<li>
+						<code>isRefreshActivatedOnRepresentationOpening()</code> has been moved into 
+						<code>org.eclipse.sirius.ui.business.api.dialect.DialectUIManager</code> as it refers to an UI behavior.
 					</li>
 				</ul>
 			</li>
