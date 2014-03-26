@@ -37,8 +37,14 @@ public class DiagramPreferenceInitializer extends AbstractPreferenceInitializer 
         diagramCoreDefaultPreferences.putBoolean(SiriusDiagramPreferencesKeys.PREF_MOVE_NOTES_DURING_LATOUT.name(), false);
         diagramCoreDefaultPreferences.putBoolean(SiriusDiagramPreferencesKeys.PREF_CLIPBOOARD_SUPPORT_ONLY_ON_NOTE.name(), false);
         diagramCoreDefaultPreferences.putBoolean(SiriusDiagramPreferencesKeys.PREF_DISPLAY_HEADER_SECTION.name(), true);
+        diagramCoreDefaultPreferences.putBoolean(SiriusDiagramPreferencesKeys.PREF_AUTO_PIN_ON_CREATE.name(), getValue("_Pref_AutoPinOnCreate"));
 
         diagramCoreDefaultPreferences.putBoolean(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE, SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE_DEFAULT_VALUE);
         diagramCoreDefaultPreferences.putInt(SiriusDiagramCorePreferences.PREF_LINE_STYLE, SiriusDiagramCorePreferences.PREF_LINE_STYLE_DEFAULT_VALUE);
+    }
+
+    private boolean getValue(final String key) {
+        final String value = DiagramPlugin.getString(key);
+        return Boolean.valueOf(value);
     }
 }

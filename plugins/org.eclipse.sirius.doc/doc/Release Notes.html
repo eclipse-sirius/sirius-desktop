@@ -190,6 +190,14 @@
 				<code>static void refreshSelection(DiagramElementMapping)</code> from 
 				<code>org.eclipse.sirius.editor.tools.api.menu.AbstractEObjectRefactoringAction</code> is not available anymore.
 			</li>
+			<li>Preferences
+				<ul>
+					<li>
+						<code>org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys.PREF_AUTO_PIN_ON_CREATE</code> has been moved to 
+						<code>org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys</code>.
+					</li>
+				</ul>
+			</li>
 		</ul>
 		<h5 id="Movedextensionpoints">Moved extension points</h5>
 		<p>Several extension points have been moved:</p>
@@ -354,7 +362,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 			</li>
 			<li>
 				<code>org.eclipse.sirius.tools.api.command.semantic.RemoveDanglingReferences</code> is no more used in Sirius commands. It can still be used to clean a resourceSet or a resource (repair tool, import/export, ..). It also has a new static method 
-				<code>removeDanglingReferences(final Resource resource)</code> to remove dangling references as an entry point.
+				<code>removeDanglingReferences(Resource)</code> to remove dangling references as an entry point.
 			</li>
 			<li>The protected predicate 
 				<code>org.eclipse.sirius.business.api.helper.task.AbstractDeleteDRepresentationElementTask.DSEMANTICDECORATOR_REFERENCE_T0_IGNORE_PREDICATE</code> has been removed, the internal predicate 

@@ -49,6 +49,8 @@ Unlike, the "Step1":#separationOfDiagramSpecificConcept-step1, a simple "Organiz
 ** Images of @org.eclipse.sirius.diagram@ have been moved to @org.eclipse.sirius.diagram.ui@. In your code, you should replace @SiriusDiagramEditorPlugin.getInstance().getImage()@ and @DiagramPlugin.getInstance().getImage()@ by @DiagramUIPlugin.getPlugin().getImage()@. That is the case for all methods concerning images in @DiagramPlugin@ (previously named @SiriusDiagramEditorPlugin@).
 ** Some images of @org.eclipse.sirius.ui@ have been moved to @org.eclipse.sirius.diagram.ui@, the corresponding constants in @org.eclipse.sirius.ui.tools.api.image.ImagesPath@ have been moved in @org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath@.
 * The method @static void refreshSelection(DiagramElementMapping)@ from @org.eclipse.sirius.editor.tools.api.menu.AbstractEObjectRefactoringAction@ is not available anymore.
+* Preferences
+** @org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys.PREF_AUTO_PIN_ON_CREATE@ has been moved to @org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys@.
 
 h5. Moved extension points
 
@@ -126,7 +128,7 @@ h4. Changes in @org.eclipse.sirius@
 * The deprecated method @org.eclipse.sirius.business.api.session.SessionManagerListener.notifyUpdatedSession(Session)@ has been removed. Use @org.eclipse.sirius.business.api.session.SessionManagerListener.notify(Session, int)@ instead.
 * @org.eclipse.sirius.business.api.helper.task.RemoveDanglingReferencesTask@ and @org.eclipse.sirius.business.api.helper.task.RemoveSemanticDanglingReferenceTask@ and @org.eclipse.sirius.tools.api.command.AbstractCommandFactory.addRemoveDanglingReferencesTask()@ have been removed. These tasks were added to in several commands to remove dangling references at the end. They are now replaced by a specific @ModelChangeTrigger@ to detect the detachment of @EObject@ and remove the dangling references. It is added to the @SessionEventBroker@ during the session opening.
 * @org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener@ was a precommit @ResourceSetListener@, it became a @ModelChangeTrigger@ and is now added to the SessionEventBroker during the session opening. This modification allows to correctly manage the order of our different precommit commands. It is triggered after the dangling reference remover.
-* @org.eclipse.sirius.tools.api.command.semantic.RemoveDanglingReferences@ is no more used in Sirius commands. It can still be used to clean a resourceSet or a resource (repair tool, import/export, ..). It also has a new static method @removeDanglingReferences(final Resource resource)@ to remove dangling references as an entry point.
+* @org.eclipse.sirius.tools.api.command.semantic.RemoveDanglingReferences@ is no more used in Sirius commands. It can still be used to clean a resourceSet or a resource (repair tool, import/export, ..). It also has a new static method @removeDanglingReferences(Resource)@ to remove dangling references as an entry point.
 * The protected predicate @org.eclipse.sirius.business.api.helper.task.AbstractDeleteDRepresentationElementTask.DSEMANTICDECORATOR_REFERENCE_T0_IGNORE_PREDICATE@ has been removed, the internal predicate @DanglingRefRemovalTrigger.DSEMANTICDECORATOR_REFERENCE_T0_IGNORE_PREDICATE@ is used instead.
 * The @org.eclipse.sirius.business.api.helper.SiriusUtil.findDiagram(EObject)@ method has been removed. Use the equivalent @new org.eclipse.sirius.business.api.query.EObjectQuery(element).getParentDiagram()@ instead.
 

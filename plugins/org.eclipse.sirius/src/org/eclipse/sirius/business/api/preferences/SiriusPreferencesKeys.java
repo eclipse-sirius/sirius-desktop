@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,13 +21,6 @@ public enum SiriusPreferencesKeys {
      * Says if the refresh should automatically be done or not.
      */
     PREF_AUTO_REFRESH(boolean.class),
-
-    /**
-     * Says if diagram elements should be marked as pinned automatically when
-     * created using a creation tool, when the user specifies explicitly the
-     * location of the element.
-     */
-    PREF_AUTO_PIN_ON_CREATE(boolean.class),
 
     /**
      * Says if an empty aird fragment should be created on control even if there

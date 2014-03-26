@@ -46,10 +46,6 @@ public class GenericPreferencesInitializer extends AbstractPreferenceInitializer
         defaultCorePreferences.putBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), autoRefreshDefValue);
         uiPreferenceStore.setDefault(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), autoRefreshDefValue);
 
-        final boolean autoPinOnCreate = getValue("_Pref_AutoPinOnCreate");
-        defaultCorePreferences.putBoolean(SiriusPreferencesKeys.PREF_AUTO_PIN_ON_CREATE.name(), autoPinOnCreate);
-        uiPreferenceStore.setDefault(SiriusPreferencesKeys.PREF_AUTO_PIN_ON_CREATE.name(), autoPinOnCreate);
-
         final boolean emptyAirdFragOnControl = getValue("_Pref_EmptyAirdFragmentOnControl");
         defaultCorePreferences.putBoolean(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), emptyAirdFragOnControl);
         uiPreferenceStore.setDefault(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), emptyAirdFragOnControl);
@@ -59,5 +55,4 @@ public class GenericPreferencesInitializer extends AbstractPreferenceInitializer
         final String value = SiriusEditPlugin.INSTANCE.getString(key);
         return Boolean.valueOf(value);
     }
-
 }
