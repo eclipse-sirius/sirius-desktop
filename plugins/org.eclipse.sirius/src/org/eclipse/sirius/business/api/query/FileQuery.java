@@ -70,7 +70,7 @@ public class FileQuery {
         Object fileResourceFactory = Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().get(fileExtension);
         // A session resource file should be associated to the same
         // ResourceFactory than "aird" files
-        return getSessionResourceFactory().equals(fileResourceFactory);
+        return fileResourceFactory != null && fileResourceFactory.equals(getSessionResourceFactory());
     }
 
     private static Object getSessionResourceFactory() {
