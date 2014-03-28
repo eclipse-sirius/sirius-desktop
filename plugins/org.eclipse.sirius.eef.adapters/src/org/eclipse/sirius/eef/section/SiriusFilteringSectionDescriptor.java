@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009-2012 Obeo.
+ * Copyright (c) 2009-2014 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,13 +21,12 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.viewers.IFilter;
+import org.eclipse.sirius.eef.adapters.Activator;
 import org.eclipse.ui.views.properties.tabbed.AbstractSectionDescriptor;
 import org.eclipse.ui.views.properties.tabbed.ISection;
 import org.eclipse.ui.views.properties.tabbed.ISectionDescriptor;
 import org.eclipse.ui.views.properties.tabbed.ISectionDescriptorProvider;
 import org.eclipse.ui.views.properties.tabbed.ITabDescriptor;
-
-import org.eclipse.sirius.eef.adapters.Activator;
 
 /**
  * A section descriptor provider which is invoked by the
@@ -110,8 +109,8 @@ class SectionDescriptor extends AbstractSectionDescriptor {
     /** The target tab */
     private String targetTab;
 
-    /** The section */
-    private ISection section;
+    /** The configuration element for this {@link SectionDescriptor} */
+    private IConfigurationElement configurationElement;
 
     /** The input types */
     private List<String> inputTypes = new ArrayList<String>();
@@ -136,6 +135,7 @@ class SectionDescriptor extends AbstractSectionDescriptor {
      */
     protected SectionDescriptor(IConfigurationElement cfgElement) {
         super();
+        this.configurationElement = cfgElement;
         id = cfgElement.getAttribute("id");
         targetTab = cfgElement.getAttribute("tab");
         afterSection = cfgElement.getAttribute(afterSection);
@@ -154,9 +154,6 @@ class SectionDescriptor extends AbstractSectionDescriptor {
         try {
             if (cfgElement.getAttribute("filter") != null) {
                 filter = (IFilter) cfgElement.createExecutableExtension("filter");
-            }
-            if (cfgElement.getAttribute("class") != null) {
-                section = (ISection) cfgElement.createExecutableExtension("class");
             }
             IConfigurationElement[] elements = cfgElement.getChildren("input");
             for (int i = 0; i < elements.length; i++) {
@@ -195,6 +192,12 @@ class SectionDescriptor extends AbstractSectionDescriptor {
      * {@inheritDoc}
      */
     public ISection getSectionClass() {
+        ISection section = null;
+        try {
+            section = (ISection) configurationElement.createExecutableExtension("class");
+        } catch (CoreException exception) {
+            Activator.getDefault().getLog().log(exception.getStatus());
+        }
         return section;
     }
 
