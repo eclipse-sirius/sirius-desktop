@@ -45,7 +45,6 @@ import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescripti
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayMode;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.diagram.business.api.query.DiagramDescriptionQuery;
-import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.helper.task.operations.CreateViewTask;
 import org.eclipse.sirius.diagram.business.internal.helper.task.operations.NavigationTask;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
@@ -64,6 +63,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.dialect.identifier.EdgeId
 import org.eclipse.sirius.diagram.ui.business.internal.dialect.identifier.NodeContainerIdentifier;
 import org.eclipse.sirius.diagram.ui.business.internal.dialect.identifier.NodeIdentifier;
 import org.eclipse.sirius.diagram.ui.business.internal.dialect.identifier.NodeStyleIdentifier;
+import org.eclipse.sirius.diagram.ui.business.internal.sync.DDiagramSynchronizer;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.ChangeLayerActivationCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.DiagramCreationUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
@@ -489,7 +489,8 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
     /**
      * {@inheritDoc}
      * 
-     * The diagram dialect allows the feature customizations on style descriptions.
+     * The diagram dialect allows the feature customizations on style
+     * descriptions.
      */
     @Override
     public boolean allowsEStructuralFeatureCustomization(EObject element) {
