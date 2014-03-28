@@ -1,76 +1,34 @@
 target "sirius_kepler"
 
+include "modules/acceleo-3.4.tpd"
+include "modules/eef-1.2.tpd"
+include "modules/emf-compare-2.1.tpd"
+include "modules/orbit.tpd"
+include "modules/paperclips-2.0.tpd"
+include "modules/swtbot-2.1.tpd"
+include "modules/xtext-2.4.tpd"
+
 with source, requirements
 
 location "http://download.eclipse.org/releases/kepler" {
-	com.ibm.icu;version=[50.1.1,51.0.0)
-	org.eclipse.platform.feature.group;version=[4.3.0,4.4.0)
-	org.eclipse.equinox.sdk.feature.group;version=[3.9.0.0,4.0.0)
-	org.eclipse.sdk.feature.group;version=[4.3.0,4.4.0)
-	org.eclipse.draw2d.sdk.feature.group;version=[3.9.0,4.0.0)
-	org.eclipse.emf.feature.group;version=[2.9.0,3.0.0)
-	org.eclipse.emf.sdk.feature.group;version=[2.8.0,3.0.0)
-	org.eclipse.emf.edit.feature.group;version=[2.9.0,3.0.0)
-	org.eclipse.emf.common.feature.group;version=[2.9.0,3.0.0)
-	org.eclipse.emf.ecore.feature.group;version=[2.9.0,3.0.0)
-	org.eclipse.emf.workspace.feature.group;version=[1.6.0,1.8.0)
-	org.eclipse.emf.transaction.feature.group;version=[1.6.0,1.8.0)
-	org.eclipse.emf.transaction.sdk.feature.group;version=[1.6.0,1.8.0)
-	org.eclipse.emf.validation.sdk.feature.group;version=[1.6.0,1.8.0)
-	org.eclipse.ocl.all.feature.group;version=[4.0.0,5.0.0)
-	org.eclipse.ocl.core.sdk.feature.group;version=[4.0.0,5.0.0)
-	org.eclipse.gef.feature.group;version=[3.9.0,4.0.0)
-	org.eclipse.gef.sdk.feature.group;version=[3.9.0,4.0.0)
-	org.eclipse.gmf.runtime.notation.sdk.feature.group;version=[1.6.0,1.8.0)
-	org.eclipse.gmf.runtime.sdk.feature.group;version=[1.6.0,1.8.0)
-}
-
-// EMF Compare 2
-location "http://download.eclipse.org/modeling/emf/compare/updates/releases/2.1" {
-	org.eclipse.emf.compare.feature.group;version=[2.1.0, 3.0.0)
-}
-
-// Acceleo 3
-location "http://download.eclipse.org/acceleo/updates/releases/3.4/" {
-	org.eclipse.acceleo.feature.group;version=[3.0.0,4.0.0)
-	org.eclipse.acceleo.doc.feature.group;version=[3.0.0,4.0.0)
-	org.eclipse.acceleo.examples.feature.group;version=[3.0.0,4.0.0)
-	org.eclipse.acceleo.runtime.feature.group;version=[3.0.0,4.0.0)
-	org.eclipse.acceleo.sdk.feature.group;version=[3.0.0,4.0.0)
-	org.eclipse.acceleo.ui.capabilities.feature.group;version=[3.0.0,4.0.0)
-}
-
-// EEF 2
-location "http://download.eclipse.org/modeling/emft/eef/updates/releases/1.2" {
-	org.eclipse.emf.eef.runtime;version=[1.0.0,2.0.0)
-}
-
-// Guava, JUnit, Hamcrest & EasyMock
-location "http://download.eclipse.org/tools/orbit/downloads/drops/S20130914154012/repository/" {
-	com.google.guava;version=[11.0.2,16.0)
-	org.junit;version=[4.11.0,5.0.0)
-	org.hamcrest.core;version=[1.3.0,2.0.0)
-	org.hamcrest.library;version=[1.3.0,2.0.0)
-	org.apache.log4j;version=[1.2.0,1.3.0)
-	org.easymock
-}
-
-// PaperClips
-location "http://download.eclipse.org/sirius/targetplatform/0.9.0/all/nebula/N201309241436" {
-	org.eclipse.nebula.widgets.paperclips.feature.feature.group;version=[2.0.0,3.0.0)
-}
-
-// Xtext
-location "http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases" {
-	org.eclipse.xtext.sdk.feature.group;version=[2.4.1,2.5.0)
-}
-
-// SWTBot
-location "http://download.eclipse.org/technology/swtbot/releases/2.1.1/" {
-	org.eclipse.swtbot.forms.feature.group;version=[2.1.0,2.2.0)
-	org.eclipse.swtbot.eclipse.feature.group;version=[2.1.0,2.2.0)
-	org.eclipse.swtbot.eclipse.gef.feature.group;version=[2.1.0,2.2.0)
-	org.eclipse.swtbot.feature.group;version=[2.1.0,2.2.0)
-	org.eclipse.swtbot.ide.feature.group;version=[2.1.0,2.2.0)
-	org.eclipse.swtbot.eclipse.test.junit.feature.group;version=[2.1.0,2.2.0)
+        com.ibm.icu;version=[50.1.1,51.0.0)
+        org.eclipse.draw2d.sdk.feature.group;version=[3.9.0,4.0.0)
+        org.eclipse.emf.common.feature.group;version=[2.9.0,3.0.0)
+        org.eclipse.emf.ecore.feature.group;version=[2.9.0,3.0.0)
+        org.eclipse.emf.edit.feature.group;version=[2.9.0,3.0.0)
+        org.eclipse.emf.feature.group;version=[2.9.0,3.0.0)
+        org.eclipse.emf.sdk.feature.group;version=[2.8.0,3.0.0)
+        org.eclipse.emf.transaction.feature.group;version=[1.6.0,1.8.0)
+        org.eclipse.emf.transaction.sdk.feature.group;version=[1.6.0,1.8.0)
+        org.eclipse.emf.validation.sdk.feature.group;version=[1.6.0,1.8.0)
+        org.eclipse.emf.workspace.feature.group;version=[1.6.0,1.8.0)
+        org.eclipse.equinox.sdk.feature.group;version=[3.9.0.0,4.0.0)
+        org.eclipse.gef.feature.group;version=[3.9.0,4.0.0)
+        org.eclipse.gef.sdk.feature.group;version=[3.9.0,4.0.0)
+        org.eclipse.gmf.runtime.notation.sdk.feature.group;version=[1.6.0,1.8.0)
+        org.eclipse.gmf.runtime.sdk.feature.group;version=[1.6.0,1.8.0)
+        org.eclipse.ocl.all.feature.group;version=[4.0.0,5.0.0)
+        org.eclipse.ocl.core.sdk.feature.group;version=[4.0.0,5.0.0)
+        org.eclipse.platform.feature.group;version=[4.3.0,4.4.0)
+        org.eclipse.sdk.feature.group;version=[4.3.0,4.4.0)
 }

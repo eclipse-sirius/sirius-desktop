@@ -1,0 +1,7 @@
+target "eef-1.2"
+
+with source, requirements
+
+location "http://download.eclipse.org/modeling/emft/eef/updates/releases/1.2" {
+        org.eclipse.emf.eef.runtime-feature.feature.group;version=[1.0.0,2.0.0)
+}

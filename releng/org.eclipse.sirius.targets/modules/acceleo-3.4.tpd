@@ -1,0 +1,12 @@
+target "acceleo-3.4"
+
+with source, requirements
+
+location "http://download.eclipse.org/acceleo/updates/releases/3.4/" {
+        org.eclipse.acceleo.doc.feature.group;version=[3.0.0,4.0.0)
+        org.eclipse.acceleo.examples.feature.group;version=[3.0.0,4.0.0)
+        org.eclipse.acceleo.feature.group;version=[3.0.0,4.0.0)
+        org.eclipse.acceleo.runtime.feature.group;version=[3.0.0,4.0.0)
+        org.eclipse.acceleo.sdk.feature.group;version=[3.0.0,4.0.0)
+        org.eclipse.acceleo.ui.capabilities.feature.group;version=[3.0.0,4.0.0)
+}
