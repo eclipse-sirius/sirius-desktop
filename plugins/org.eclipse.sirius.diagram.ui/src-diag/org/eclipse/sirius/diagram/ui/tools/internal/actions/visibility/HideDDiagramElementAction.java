@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.gef.Disposable;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.RootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -61,7 +62,7 @@ import com.google.common.collect.Sets;
  * @author cbrun
  * 
  */
-public class HideDDiagramElementAction extends Action implements IObjectActionDelegate {
+public class HideDDiagramElementAction extends Action implements IObjectActionDelegate, Disposable {
 
     /** The selection. */
     private ISelection selection;
@@ -312,4 +313,9 @@ public class HideDDiagramElementAction extends Action implements IObjectActionDe
         return permissionAuthority.canEditInstance(diagram);
     }
 
+    @Override
+    public void dispose() {
+        this.representationPart = null;
+        this.selection = null;
+    }
 }

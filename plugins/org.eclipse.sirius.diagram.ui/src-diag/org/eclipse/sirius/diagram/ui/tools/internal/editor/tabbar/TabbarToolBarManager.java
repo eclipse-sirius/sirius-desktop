@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,8 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar;
 
-import org.eclipse.gef.ui.actions.ZoomInAction;
-import org.eclipse.gef.ui.actions.ZoomOutAction;
+import org.eclipse.gef.Disposable;
 import org.eclipse.gmf.runtime.common.ui.action.IDisposableAction;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
@@ -73,10 +72,8 @@ public class TabbarToolBarManager extends ToolBarManager {
                 ((IDisposableAction) action).dispose();
             } else if (action instanceof IWorkbenchAction) {
                 ((IWorkbenchAction) action).dispose();
-            } else if (action instanceof ZoomInAction) {
-                ((ZoomInAction) action).dispose();
-            } else if (action instanceof ZoomOutAction) {
-                ((ZoomOutAction) action).dispose();
+            } else if (action instanceof Disposable) {
+                ((Disposable) action).dispose();
             }
         }
         item.dispose();

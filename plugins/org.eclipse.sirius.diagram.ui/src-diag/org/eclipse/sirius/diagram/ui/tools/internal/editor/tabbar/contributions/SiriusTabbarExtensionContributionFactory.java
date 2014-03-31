@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions;
 
 import org.eclipse.gef.Disposable;
+import org.eclipse.gmf.runtime.common.ui.action.IDisposableAction;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
@@ -25,6 +26,7 @@ import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 import org.eclipse.ui.menus.ExtensionContributionFactory;
 import org.eclipse.ui.menus.IContributionRoot;
 import org.eclipse.ui.services.IServiceLocator;
@@ -167,8 +169,13 @@ public abstract class SiriusTabbarExtensionContributionFactory extends Extension
             }
             representationPart = null;
 
-            if (getAction() instanceof Disposable) {
-                ((Disposable) getAction()).dispose();
+            IAction action = getAction();
+            if (action instanceof IDisposableAction) {
+                ((IDisposableAction) action).dispose();
+            } else if (action instanceof IWorkbenchAction) {
+                ((IWorkbenchAction) action).dispose();
+            } else if (action instanceof Disposable) {
+                ((Disposable) action).dispose();
             }
         }
     }
