@@ -88,7 +88,7 @@ import com.google.common.collect.Lists;
  * 
  * @author nlepine
  */
-public class SWTBotDesignerEditor extends SWTBotGefEditor {
+public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     static final String EXPECTED_TO_FIND_WIDGET_S = "Expected to find widget %s";
 
     private static final String EXPECTED_TO_FIND_WIDGET_X_Y = "Expected to find widget at %s, %s";
@@ -112,7 +112,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
      * @throws WidgetNotFoundException
      *             if an exception occurs
      */
-    public SWTBotDesignerEditor(final IEditorReference reference, final SWTWorkbenchBot bot) throws WidgetNotFoundException {
+    public SWTBotSiriusDiagramEditor(final IEditorReference reference, final SWTWorkbenchBot bot) throws WidgetNotFoundException {
         super(reference, bot);
 
         GraphicalViewer graphicalViewer = UIThreadRunnable.syncExec(new Result<GraphicalViewer>() {
@@ -124,7 +124,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
             }
         });
 
-        ReflectionHelper.setFieldValueWithoutException(this, "viewer", new SWTBotDesignerGefViewer(graphicalViewer), this.getClass().getSuperclass());
+        ReflectionHelper.setFieldValueWithoutException(this, "viewer", new SWTBotSiriusGefViewer(graphicalViewer), this.getClass().getSuperclass());
     }
 
     /**
@@ -145,7 +145,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
     public void click(final String label) {
         final SWTBotGefEditPart selectedEP = getEditPart(label);
         if (selectedEP == null) {
-            throw new WidgetNotFoundException(String.format(SWTBotDesignerEditor.EXPECTED_TO_FIND_WIDGET_S, label));
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_S, label));
         }
         final Rectangle bounds = ((GraphicalEditPart) selectedEP.part()).getFigure().getBounds().getCopy();
         ((GraphicalEditPart) selectedEP.part()).getFigure().translateToAbsolute(bounds);
@@ -165,7 +165,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
     public void click(final String label, final Class<? extends EditPart> expectedEditPartType) {
         final SWTBotGefEditPart selectedEP = getEditPart(label, expectedEditPartType);
         if (selectedEP == null) {
-            throw new WidgetNotFoundException(String.format(SWTBotDesignerEditor.EXPECTED_TO_FIND_WIDGET_S, label));
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_S, label));
         }
         final Rectangle bounds = ((GraphicalEditPart) selectedEP.part()).getFigure().getBounds().getCopy();
         ((GraphicalEditPart) selectedEP.part()).getFigure().translateToAbsolute(bounds);
@@ -200,7 +200,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
     public Rectangle clickCentered(final String label) {
         final SWTBotGefEditPart selectedEP = getEditPart(label);
         if (selectedEP == null) {
-            throw new WidgetNotFoundException(String.format(SWTBotDesignerEditor.EXPECTED_TO_FIND_WIDGET_S, label));
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_S, label));
         }
         final Rectangle bounds;
         if (selectedEP.part() instanceof AbstractDiagramNameEditPart) {
@@ -231,7 +231,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
         // Get the corresponding edit part.
         final SWTBotGefEditPart selectedEP = getEditPart(label, expectedEditPartType);
         if (selectedEP == null) {
-            throw new WidgetNotFoundException(String.format(SWTBotDesignerEditor.EXPECTED_TO_FIND_WIDGET_S, label));
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_S, label));
         }
         return clickCentered(selectedEP);
     }
@@ -288,7 +288,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
     public void drag(final String label, final int toXPosition, final int toYPosition) {
         final SWTBotGefEditPart selectedEP = getEditPart(label);
         if (selectedEP == null) {
-            throw new WidgetNotFoundException(String.format(SWTBotDesignerEditor.EXPECTED_TO_FIND_WIDGET_S, label));
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_S, label));
         }
         final Rectangle bounds = ((GraphicalEditPart) selectedEP.part()).getFigure().getBounds();
         drag(bounds.x, bounds.y + bounds.height / 2, toXPosition, toYPosition);
@@ -312,7 +312,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
     public void dragCentered(final String label, final int toXPosition, final int toYPosition) {
         final SWTBotGefEditPart selectedEP = getEditPart(label);
         if (selectedEP == null) {
-            throw new WidgetNotFoundException(String.format(SWTBotDesignerEditor.EXPECTED_TO_FIND_WIDGET_S, label));
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_S, label));
         }
         final Rectangle bounds = ((GraphicalEditPart) selectedEP.part()).getFigure().getBounds();
         drag(bounds.x + bounds.width / 2, bounds.y + bounds.height / 2, toXPosition, toYPosition);
@@ -378,7 +378,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
     public SWTBotGefEditPart getEditPart(final String label) {
         final SWTBotGefEditPart selectedEP = super.getEditPart(label);
         if (selectedEP == null) {
-            throw new WidgetNotFoundException(String.format(SWTBotDesignerEditor.EXPECTED_TO_FIND_WIDGET_S, label));
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_S, label));
         }
         return selectedEP;
     }
@@ -397,7 +397,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
     public SWTBotGefEditPart getEditPart(final String label, final Class<? extends EditPart> expectedEditPartType) {
         SWTBotGefEditPart selectedEP = super.getEditPart(label);
         if (selectedEP == null) {
-            throw new WidgetNotFoundException(String.format(SWTBotDesignerEditor.EXPECTED_TO_FIND_WIDGET_S, label));
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_S, label));
         }
         if (!expectedEditPartType.isInstance(selectedEP.part())) {
             selectedEP = getParentEditPart(selectedEP, expectedEditPartType);
@@ -418,7 +418,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
     private SWTBotGefEditPart getParentEditPart(SWTBotGefEditPart editPart, final Class<? extends EditPart> expectedEditPartType) {
         SWTBotGefEditPart parent = editPart.parent();
         if (parent == null || parent.part() == null) {
-            throw new WidgetNotFoundException(String.format(SWTBotDesignerEditor.EXPECTED_TO_FIND_WIDGET_OF_TYPE_T, expectedEditPartType.getCanonicalName()));
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_OF_TYPE_T, expectedEditPartType.getCanonicalName()));
         }
         if (!expectedEditPartType.isInstance(parent.part())) {
             parent = getParentEditPart(parent, expectedEditPartType);
@@ -432,7 +432,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
      * @return the corresponding SWTBotGefEditPart
      */
     public SWTBotGefEditPart getPaletteRootEditPartBot() {
-        return ((SWTBotDesignerGefViewer) getSWTBotGefViewer()).getPaletteRootEditPartBot();
+        return ((SWTBotSiriusGefViewer) getSWTBotGefViewer()).getPaletteRootEditPartBot();
     }
 
     /**
@@ -442,7 +442,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
      * @return the corresponding SWTBotGefEditPart
      */
     public SWTBotGefEditPart getSiriusPaletteGroupEditPartBot() {
-        return ((SWTBotDesignerGefViewer) getSWTBotGefViewer()).getSiriusPaletteGroupEditPartBot();
+        return ((SWTBotSiriusGefViewer) getSWTBotGefViewer()).getSiriusPaletteGroupEditPartBot();
     }
 
     /**
@@ -900,7 +900,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
      *            The label of the searched edit part
      */
     public void reveal(String label) {
-        ((SWTBotDesignerGefViewer) getSWTBotGefViewer()).reveal(label);
+        ((SWTBotSiriusGefViewer) getSWTBotGefViewer()).reveal(label);
     }
 
     /**
@@ -910,7 +910,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
      *            the searched edit part
      */
     public void reveal(final EditPart revealedEP) {
-        ((SWTBotDesignerGefViewer) getSWTBotGefViewer()).reveal(revealedEP);
+        ((SWTBotSiriusGefViewer) getSWTBotGefViewer()).reveal(revealedEP);
     }
 
     /**
@@ -920,7 +920,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
      *            The location to scroll to (the new origin)
      */
     public void scrollTo(Point location) {
-        ((SWTBotDesignerGefViewer) getSWTBotGefViewer()).scrollTo(location);
+        ((SWTBotSiriusGefViewer) getSWTBotGefViewer()).scrollTo(location);
     }
 
     /**
@@ -932,7 +932,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
      *            the y coordinate to scroll to
      */
     public void scrollTo(final int x, final int y) {
-        ((SWTBotDesignerGefViewer) getSWTBotGefViewer()).scrollTo(x, y);
+        ((SWTBotSiriusGefViewer) getSWTBotGefViewer()).scrollTo(x, y);
     }
 
     /**
@@ -948,7 +948,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
     public void doubleClick(String label, Class<? extends EditPart> editPartClass) {
         SWTBotGefEditPart selectedEP = getEditPart(label, editPartClass);
         if (selectedEP == null) {
-            throw new WidgetNotFoundException(String.format(SWTBotDesignerEditor.EXPECTED_TO_FIND_WIDGET_S, label));
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_S, label));
         }
         Rectangle bounds = ((GraphicalEditPart) selectedEP.part()).getFigure().getBounds();
         // 3 = MOVE in overridden code
@@ -968,7 +968,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
     public void doubleClickCentered(String label, Class<? extends EditPart> editPartClass) {
         SWTBotGefEditPart selectedEP = getEditPart(label, editPartClass);
         if (selectedEP == null) {
-            throw new WidgetNotFoundException(String.format(SWTBotDesignerEditor.EXPECTED_TO_FIND_WIDGET_S, label));
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_S, label));
         }
         Rectangle bounds = ((GraphicalEditPart) selectedEP.part()).getFigure().getBounds();
         // 3 = MOVE in overridden code
@@ -995,7 +995,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
     public Point getLocation(final String editPartName, final Class<? extends EditPart> expectedEditPartType) {
         final SWTBotGefEditPart editPartBot = getEditPart(editPartName, expectedEditPartType);
         if (editPartBot == null) {
-            throw new WidgetNotFoundException(String.format(SWTBotDesignerEditor.EXPECTED_TO_FIND_WIDGET_S, editPartName));
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_S, editPartName));
         }
         return getLocation(editPartBot);
     }
@@ -1038,7 +1038,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
         }
         final EditPart editPart = swtBotGefEditPart.part();
         if (!(editPart instanceof IGraphicalEditPart)) {
-            throw new WidgetNotFoundException(String.format(SWTBotDesignerEditor.EXPECTED_TO_FIND_GRAPHICAL_EDIT_PART_S, swtBotGefEditPart));
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_GRAPHICAL_EDIT_PART_S, swtBotGefEditPart));
         }
         IGraphicalEditPart part = (IGraphicalEditPart) editPart;
         Rectangle figureLocation = part.getFigure().getBounds().getCopy();
@@ -1066,7 +1066,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
         }
         final ConnectionEditPart connectionEditPart = swtBotGefConnectionEditPart.part();
         if (!(connectionEditPart instanceof AbstractConnectionEditPart)) {
-            throw new WidgetNotFoundException(String.format(SWTBotDesignerEditor.EXPECTED_TO_FIND_GRAPHICAL_EDIT_PART_S, swtBotGefConnectionEditPart));
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_GRAPHICAL_EDIT_PART_S, swtBotGefConnectionEditPart));
         }
         AbstractConnectionEditPart part = (AbstractConnectionEditPart) connectionEditPart;
         Rectangle figureLocation = part.getConnectionFigure().getPoints().getBounds();
@@ -1092,11 +1092,11 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
     public Dimension getDimension(final String editPartName, final Class<? extends EditPart> expectedEditPartType) {
         final SWTBotGefEditPart editPartBot = getEditPart(editPartName, expectedEditPartType);
         if (editPartBot == null) {
-            throw new WidgetNotFoundException(String.format(SWTBotDesignerEditor.EXPECTED_TO_FIND_WIDGET_S, editPartName));
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_S, editPartName));
         }
         final EditPart editPart = editPartBot.part();
         if (!(editPart instanceof IGraphicalEditPart)) {
-            throw new WidgetNotFoundException(String.format(SWTBotDesignerEditor.EXPECTED_TO_FIND_GRAPHICAL_EDIT_PART_S, editPartName));
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_GRAPHICAL_EDIT_PART_S, editPartName));
         }
         IGraphicalEditPart part = (IGraphicalEditPart) editPart;
         Dimension figureDimension = part.getFigure().getBounds().getSize();
@@ -1118,7 +1118,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
         }
         final EditPart editPart = swtBotGefEditPart.part();
         if (!(editPart instanceof IGraphicalEditPart)) {
-            throw new WidgetNotFoundException(String.format(SWTBotDesignerEditor.EXPECTED_TO_FIND_GRAPHICAL_EDIT_PART_S, swtBotGefEditPart));
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_GRAPHICAL_EDIT_PART_S, swtBotGefEditPart));
         }
         IGraphicalEditPart part = (IGraphicalEditPart) editPart;
         Rectangle figureBounds = part.getFigure().getBounds().getCopy();
@@ -1145,11 +1145,11 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
     public Point getAbsoluteLocation(final String editPartName, final Class<? extends EditPart> expectedEditPartType) {
         final SWTBotGefEditPart editPartBot = getEditPart(editPartName, expectedEditPartType);
         if (editPartBot == null) {
-            throw new WidgetNotFoundException(String.format(SWTBotDesignerEditor.EXPECTED_TO_FIND_WIDGET_S, editPartName));
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_S, editPartName));
         }
         final EditPart editPart = editPartBot.part();
         if (!(editPart instanceof IGraphicalEditPart)) {
-            throw new WidgetNotFoundException(String.format(SWTBotDesignerEditor.EXPECTED_TO_FIND_GRAPHICAL_EDIT_PART_S, editPartName));
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_GRAPHICAL_EDIT_PART_S, editPartName));
         }
         IGraphicalEditPart part = (IGraphicalEditPart) editPart;
         return getAbsoluteLocation(part);
@@ -1247,7 +1247,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
     public void clickNearest(final int xPosition, final int yPosition) {
         final SWTBotGefEditPart selectedEP = getNearestEditPart(xPosition, yPosition);
         if (selectedEP == null) {
-            throw new WidgetNotFoundException(String.format(SWTBotDesignerEditor.EXPECTED_TO_FIND_WIDGET_X_Y, xPosition, yPosition));
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_X_Y, xPosition, yPosition));
         }
         final Rectangle bounds = ((GraphicalEditPart) selectedEP.part()).getFigure().getBounds();
         ((GraphicalEditPart) selectedEP.part()).getFigure().translateToAbsolute(bounds);
@@ -1268,7 +1268,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
     public void clickNearestFoldingFigure(final int xPosition, final int yPosition) {
         final IFigure foldingFigure = getNearestFoldingFigure(new Point(xPosition, yPosition));
         if (foldingFigure == null) {
-            throw new WidgetNotFoundException(String.format(SWTBotDesignerEditor.EXPECTED_TO_FIND_WIDGET_X_Y, xPosition, yPosition));
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_X_Y, xPosition, yPosition));
         }
         final Rectangle bounds = foldingFigure.getBounds();
         // ((GraphicalEditPart)
@@ -1437,7 +1437,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
      * 
      * @return Current representation.
      */
-    public SWTBotDesignerEditor zoom(final ZoomLevel zoomLevel) {
+    public SWTBotSiriusDiagramEditor zoom(final ZoomLevel zoomLevel) {
         final ToolItem item = designerBot.toolbarSpecialDropDownButtonWithTooltip("&Zoom");
 
         UIThreadRunnable.syncExec(new VoidResult() {
@@ -1476,7 +1476,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
      * 
      * @return Current representation.
      */
-    public SWTBotDesignerEditor zoomDefault() {
+    public SWTBotSiriusDiagramEditor zoomDefault() {
         return zoom(UIDiagramRepresentation.ZOOM_DEFAULT);
     }
 
@@ -1496,7 +1496,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
     public SWTBotGefEditPart getSelectableEditPart(final String label) {
         SWTBotGefEditPart selectedEP = super.getEditPart(label);
         if (selectedEP == null) {
-            throw new WidgetNotFoundException(String.format(SWTBotDesignerEditor.EXPECTED_TO_FIND_WIDGET_S, label));
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_S, label));
         }
 
         if (!isSelectableEditPart(selectedEP.part())) {
@@ -1522,7 +1522,7 @@ public class SWTBotDesignerEditor extends SWTBotGefEditor {
     private SWTBotGefEditPart getSelectableParentEditPart(SWTBotGefEditPart editPart) {
         SWTBotGefEditPart parent = editPart.parent();
         if (parent == null || parent.part() == null) {
-            throw new WidgetNotFoundException(String.format(SWTBotDesignerEditor.EXPECTED_TO_FIND_GRAPHICAL_EDIT_PART_S, editPart));
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_GRAPHICAL_EDIT_PART_S, editPart));
         }
         if (!isSelectableEditPart(parent.part())) {
             parent = getSelectableParentEditPart(parent);

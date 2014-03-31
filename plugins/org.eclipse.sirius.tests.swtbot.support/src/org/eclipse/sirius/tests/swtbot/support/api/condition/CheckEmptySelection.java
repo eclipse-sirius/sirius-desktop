@@ -13,7 +13,7 @@ package org.eclipse.sirius.tests.swtbot.support.api.condition;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 
 /**
@@ -24,7 +24,7 @@ import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
  */
 public class CheckEmptySelection extends DefaultCondition {
 
-    private final SWTBotDesignerEditor editor;
+    private final SWTBotSiriusDiagramEditor editor;
 
     /**
      * Constructor.
@@ -33,7 +33,7 @@ public class CheckEmptySelection extends DefaultCondition {
      *            current Editor
      * 
      */
-    public CheckEmptySelection(SWTBotDesignerEditor editor) {
+    public CheckEmptySelection(SWTBotSiriusDiagramEditor editor) {
         this.editor = editor;
     }
 

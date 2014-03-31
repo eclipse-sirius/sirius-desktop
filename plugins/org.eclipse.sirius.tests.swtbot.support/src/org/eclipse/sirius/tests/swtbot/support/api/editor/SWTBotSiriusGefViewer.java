@@ -42,7 +42,7 @@ import org.junit.Assert;
  * @author nlepine
  * 
  */
-public class SWTBotDesignerGefViewer extends SWTBotGefViewer {
+public class SWTBotSiriusGefViewer extends SWTBotGefViewer {
 
     /**
      * 
@@ -53,7 +53,7 @@ public class SWTBotDesignerGefViewer extends SWTBotGefViewer {
      * @throws WidgetNotFoundException
      *             Exception
      */
-    public SWTBotDesignerGefViewer(GraphicalViewer graphicalViewer) throws WidgetNotFoundException {
+    public SWTBotSiriusGefViewer(GraphicalViewer graphicalViewer) throws WidgetNotFoundException {
         super(graphicalViewer);
         init();
     }
@@ -148,7 +148,7 @@ public class SWTBotDesignerGefViewer extends SWTBotGefViewer {
     public void reveal(String label) {
         final SWTBotGefEditPart revealedEP = getEditPart(label);
         if (revealedEP == null) {
-            throw new WidgetNotFoundException(String.format(SWTBotDesignerEditor.EXPECTED_TO_FIND_WIDGET_S, label));
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_S, label));
         }
         UIThreadRunnable.syncExec(new VoidResult() {
             @Override
@@ -166,7 +166,7 @@ public class SWTBotDesignerGefViewer extends SWTBotGefViewer {
      */
     public void reveal(final EditPart revealedEP) {
         if (revealedEP == null) {
-            throw new WidgetNotFoundException(String.format(SWTBotDesignerEditor.EXPECTED_TO_FIND_WIDGET_S, revealedEP));
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_S, revealedEP));
         }
         UIThreadRunnable.syncExec(new VoidResult() {
             @Override

@@ -12,7 +12,7 @@ package org.eclipse.sirius.tests.swtbot.support.api.condition;
 
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart;
-import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 
@@ -31,7 +31,7 @@ public class DragAndDropCondition extends DefaultCondition {
 
     private final Class<? extends EditPart> targetContainerClass;
 
-    private final SWTBotDesignerEditor editor;
+    private final SWTBotSiriusDiagramEditor editor;
 
     /**
      * Constructor.
@@ -48,7 +48,7 @@ public class DragAndDropCondition extends DefaultCondition {
      *            used editor for the drag and drop action
      */
     public DragAndDropCondition(String dropedElementName, Class<? extends EditPart> droppedElementClass, String targetContainerName, Class<? extends EditPart> targetContainerClass,
-            SWTBotDesignerEditor editor) {
+            SWTBotSiriusDiagramEditor editor) {
         this.dropedElementName = dropedElementName;
         this.droppedElementClass = droppedElementClass;
         this.targetContainerName = targetContainerName;

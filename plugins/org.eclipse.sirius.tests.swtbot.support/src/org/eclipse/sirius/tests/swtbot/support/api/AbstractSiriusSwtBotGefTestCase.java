@@ -54,6 +54,7 @@ import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
@@ -75,8 +76,8 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIProject;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationRedoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationUndoneCondition;
-import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
-import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerHelper;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.perspective.DesignerPerspectives;
@@ -194,7 +195,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     /**
      * The DialectEditor (opened on representation creation) wrapper.
      */
-    protected SWTBotDesignerEditor editor;
+    protected SWTBotSiriusDiagramEditor editor;
 
     /**
      * The reported errors.
@@ -404,7 +405,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             bot.toolbarButtonWithTooltip(DiagramDialectUIServices.REFRESH_DIAGRAM).click();
         } else {
             // Use context menu instead of tabbar
-            new SWTBotDesignerEditor(bot.activeEditor().getReference(), bot).clickContextMenu("Refresh");
+            new SWTBotSiriusDiagramEditor(bot.activeEditor().getReference(), bot).clickContextMenu("Refresh");
         }
         SWTBotUtils.waitProgressMonitorClose("Progress Information");
     }
@@ -827,9 +828,9 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
     /**
      * Toggle Active view/editor maximize. If possible call directly
-     * {@link #maximizeEditor(SWTBotDesignerEditor)} and
-     * {@link #restoreEditor(SWTBotDesignerEditor)}, they are faster because
-     * they use directly Eclipse API.
+     * {@link #maximizeEditor(SWTBotSiriusDiagramEditor)} and
+     * {@link #restoreEditor(SWTBotSiriusDiagramEditor)}, they are faster
+     * because they use directly Eclipse API.
      */
     protected void maximizeEditor() {
         bot.menu("Window").menu("Navigation").menu("Maximize Active View or Editor").click();
@@ -841,7 +842,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * @param swtBotDesignerEditor
      *            The editor to maximize
      */
-    protected void maximizeEditor(SWTBotDesignerEditor swtBotDesignerEditor) {
+    protected void maximizeEditor(SWTBotSiriusDiagramEditor swtBotDesignerEditor) {
         swtBotDesignerEditor.maximize();
     }
 
@@ -851,7 +852,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * @param swtBotDesignerEditor
      *            The current editor
      */
-    protected void pressZoomInButton(SWTBotDesignerEditor swtBotDesignerEditor) {
+    protected void pressZoomInButton(SWTBotSiriusDiagramEditor swtBotDesignerEditor) {
         pressZoomInButton(swtBotDesignerEditor, 1);
     }
 
@@ -863,7 +864,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * @param pressCount
      *            the number of times to press zoom in
      */
-    protected void pressZoomInButton(SWTBotDesignerEditor swtBotDesignerEditor, int pressCount) {
+    protected void pressZoomInButton(SWTBotSiriusDiagramEditor swtBotDesignerEditor, int pressCount) {
         for (int i = 1; i <= pressCount; i++) {
             if (TestsUtil.isDynamicTabbar()) {
                 // 2 possible values for this tooltip according to the target
@@ -888,7 +889,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * @param swtBotDesignerEditor
      *            The current editor
      */
-    protected void pressZoomOutButton(SWTBotDesignerEditor swtBotDesignerEditor) {
+    protected void pressZoomOutButton(SWTBotSiriusDiagramEditor swtBotDesignerEditor) {
         pressZoomOutButton(swtBotDesignerEditor, 1);
     }
 
@@ -900,7 +901,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * @param pressCount
      *            the number of times to press zoom in
      */
-    protected void pressZoomOutButton(SWTBotDesignerEditor swtBotDesignerEditor, int pressCount) {
+    protected void pressZoomOutButton(SWTBotSiriusDiagramEditor swtBotDesignerEditor, int pressCount) {
         for (int i = 1; i <= pressCount; i++) {
             if (TestsUtil.isDynamicTabbar()) {
                 swtBotDesignerEditor.bot().toolbarButtonWithTooltip("Zoom Out (Ctrl+-)").click();
@@ -917,7 +918,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * @param swtBotDesignerEditor
      *            The editor to restore
      */
-    protected void restoreEditor(SWTBotDesignerEditor swtBotDesignerEditor) {
+    protected void restoreEditor(SWTBotSiriusDiagramEditor swtBotDesignerEditor) {
         swtBotDesignerEditor.restore();
     }
 
@@ -992,6 +993,65 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
+     * Open the first diagram with the given diagram description name and
+     * diagram name.
+     * 
+     * @param session
+     *            The session containing the searched representations.
+     * @param diagramDescriptionName
+     *            the name of the diagram description. <code>null</code> is not
+     *            excepted.
+     * @param diagramName
+     *            the name of the diagram
+     * @param expectedRepresentationClass
+     *            the expected type of representation to found
+     * @return the editor of the first corresponding diagram
+     * @deprecated To replace by
+     *             {@link #openRepresentation(Session, String, String, Class)}
+     */
+    @Deprecated
+    protected SWTBotSiriusDiagramEditor openDiagram(Session session, String diagramDescriptionName, final String diagramName, Class<? extends DRepresentation> expectedRepresentationClass) {
+        return openDiagram(session, diagramDescriptionName, diagramName, expectedRepresentationClass, false);
+    }
+
+    /**
+     * Open the first representation with the given representation description
+     * name and representation name.
+     * 
+     * @param session
+     *            The session containing the searched representations.
+     * @param diagramDescriptionName
+     *            the name of the diagram description. <code>null</code> is not
+     *            excepted.
+     * @param diagramName
+     *            the name of the diagram
+     * @param expectedRepresentationClass
+     *            the expected type of representation to found
+     * @param disableSnapToGridOnThisEditor
+     *            true if the snapToGrid must be disable for this editor, false
+     *            otherwise
+     * @return the editor of the first corresponding diagram
+     * @deprecated To replace by
+     *             {@link #openRepresentation(Session, String, String, Class, boolean)}
+     */
+    @Deprecated
+    protected SWTBotSiriusDiagramEditor openDiagram(Session session, String diagramDescriptionName, final String diagramName, Class<? extends DRepresentation> expectedRepresentationClass,
+            boolean disableSnapToGridOnThisEditor) {
+        // Get the diagram with this name
+        DRepresentation representation = getRepresentationWithName(session, diagramDescriptionName, diagramName);
+        TestCase.assertTrue("This representation should be a " + expectedRepresentationClass.getSimpleName(), expectedRepresentationClass.isInstance(representation));
+        // Open the corresponding editor
+        IEditorPart editorPart = DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
+        SWTBotUtils.waitAllUiEvents();
+        // Get the corresponding SWtBotEditor
+        SWTBotSiriusDiagramEditor swtBotEditor = SWTBotSiriusHelper.getSiriusDiagramEditor(editorPart.getTitle());
+        if (disableSnapToGridOnThisEditor) {
+            swtBotEditor.disableSnapToGrid();
+        }
+        return swtBotEditor;
+    }
+
+    /**
      * Open the first representation with the given representation description
      * name and representation name.
      * 
@@ -1006,8 +1066,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      *            the expected type of representation to found
      * @return the editor of the first corresponding representation
      */
-    protected SWTBotDesignerEditor openRepresentation(Session session, String representationDescriptionName, final String representationName,
-            Class<? extends DRepresentation> expectedRepresentationClass) {
+    protected SWTBotEditor openRepresentation(Session session, String representationDescriptionName, final String representationName, Class<? extends DRepresentation> expectedRepresentationClass) {
         return openRepresentation(session, representationDescriptionName, representationName, expectedRepresentationClass, false);
     }
 
@@ -1029,8 +1088,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      *            otherwise
      * @return the editor of the first corresponding representation
      */
-    protected SWTBotDesignerEditor openRepresentation(Session session, String representationDescriptionName, final String representationName,
-            Class<? extends DRepresentation> expectedRepresentationClass, boolean disableSnapToGridOnThisEditor) {
+    protected SWTBotEditor openRepresentation(Session session, String representationDescriptionName, final String representationName, Class<? extends DRepresentation> expectedRepresentationClass,
+            boolean disableSnapToGridOnThisEditor) {
         // Get the diagram with this name
         DRepresentation representation = getRepresentationWithName(session, representationDescriptionName, representationName);
         TestCase.assertTrue("This representation should be a " + expectedRepresentationClass.getSimpleName(), expectedRepresentationClass.isInstance(representation));
@@ -1038,10 +1097,16 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         IEditorPart editorPart = DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
         SWTBotUtils.waitAllUiEvents();
         // Get the corresponding SWtBotEditor
-        SWTBotDesignerEditor swtBotEditor = SWTBotDesignerHelper.getDesignerEditor(editorPart.getTitle());
-        if (disableSnapToGridOnThisEditor) {
-            swtBotEditor.disableSnapToGrid();
+        SWTBotEditor swtBotEditor = null;
+        if (DDiagram.class.isAssignableFrom(expectedRepresentationClass)) {
+            swtBotEditor = SWTBotSiriusHelper.getSiriusDiagramEditor(editorPart.getTitle());
+            if (disableSnapToGridOnThisEditor) {
+                ((SWTBotSiriusDiagramEditor) swtBotEditor).disableSnapToGrid();
+            }
+        } else {
+            swtBotEditor = SWTBotSiriusHelper.getSiriusEditor(editorPart.getTitle());
         }
+
         return swtBotEditor;
     }
 
@@ -1171,7 +1236,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     protected SWTBotButton getSectionButton(int index, String tooltip) {
         SWTBot propertiesBot = bot.viewByTitle("Properties").bot();
         bot.viewByTitle("Properties").setFocus();
-        SWTBotDesignerHelper.selectPropertyTabItem("Appearance");
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
         SWTBotButton button = propertiesBot.buttonInGroup("Fonts and Colors:", index);
 
         TestCase.assertNotNull(button);
@@ -1203,9 +1268,9 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                     if (!"org.eclipse.ui.views.properties.tabbed".equals(status.getPlugin())
                             && status.getMessage() != null
                             && !status
-                            .getMessage()
-                            .startsWith(
-                                    "Contributor org.eclipse.ui.navigator.ProjectExplorer cannot be created., exception: org.eclipse.core.runtime.CoreException: Plug-in \"org.eclipse.ui.navigator.resources\" was unable to instantiate class \"org.eclipse.ui.internal.navigator.resources.workbench.TabbedPropertySheetTitleProvider\".")) {
+                                    .getMessage()
+                                    .startsWith(
+                                            "Contributor org.eclipse.ui.navigator.ProjectExplorer cannot be created., exception: org.eclipse.core.runtime.CoreException: Plug-in \"org.eclipse.ui.navigator.resources\" was unable to instantiate class \"org.eclipse.ui.internal.navigator.resources.workbench.TabbedPropertySheetTitleProvider\".")) {
                         errorOccurs(status, plugin);
                     }
                 }
@@ -1515,7 +1580,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Explore the current {@link SWTBotDesignerEditor} edit part children
+     * Explore the current {@link SWTBotSiriusDiagramEditor} edit part children
      * recursively to find out a {@link TextEditPart} with the expected label.
      * 
      * @param label
@@ -1528,18 +1593,18 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Explore the {@link SWTBotDesignerEditor} edit part children recursively
-     * to find out a {@link TextEditPart} with the expected label.
+     * Explore the {@link SWTBotSiriusDiagramEditor} edit part children
+     * recursively to find out a {@link TextEditPart} with the expected label.
      * 
      * @param designerEditor
-     *            the current {@link SWTBotDesignerEditor} to look for a
+     *            the current {@link SWTBotSiriusDiagramEditor} to look for a
      *            {@link TextEditPart}
      * @param label
      *            the label of the expected {@link TextEditPart}
      * @return a {@link TextEditPart} with the expected label if existing, null
      *         otherwise
      */
-    public SWTBotGefEditPart findTextEditPart(SWTBotDesignerEditor designerEditor, String label) {
+    public SWTBotGefEditPart findTextEditPart(SWTBotSiriusDiagramEditor designerEditor, String label) {
         return findTextEditPart(designerEditor.rootEditPart(), label);
     }
 

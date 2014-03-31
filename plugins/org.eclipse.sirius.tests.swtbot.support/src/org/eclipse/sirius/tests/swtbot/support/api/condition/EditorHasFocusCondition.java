@@ -10,7 +10,7 @@
  */
 package org.eclipse.sirius.tests.swtbot.support.api.condition;
 
-import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPart;
@@ -23,15 +23,15 @@ import org.eclipse.ui.PlatformUI;
  */
 public class EditorHasFocusCondition extends DefaultCondition {
 
-    private final SWTBotDesignerEditor swtbotEditor;
+    private final SWTBotSiriusDiagramEditor swtbotEditor;
 
     /**
      * Default constructor.
      * 
      * @param swtbotEditor
-     *            the {@link SWTBotDesignerEditor} that should has the focus.
+     *            the {@link SWTBotSiriusDiagramEditor} that should has the focus.
      */
-    public EditorHasFocusCondition(SWTBotDesignerEditor swtbotEditor) {
+    public EditorHasFocusCondition(SWTBotSiriusDiagramEditor swtbotEditor) {
         super();
         this.swtbotEditor = swtbotEditor;
     }

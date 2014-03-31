@@ -14,8 +14,8 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UINewRepresentationB
 import org.eclipse.sirius.tests.swtbot.support.api.business.UINewRepresentationBuilderFlow.ItemChoice;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UINewRepresentationBuilderFlow.NameChoice;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.ItemEnabledCondition;
-import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
-import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerHelper;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.tests.swtbot.support.utils.business.UIRepresentationUtils;
 import org.eclipse.sirius.ui.tools.api.Messages;
@@ -135,7 +135,7 @@ public class UINewRepresentationBuilder<R extends AbstractUIRepresentation<?>> i
         finish();
 
         // Get the corresponding SWtBotEditor
-        SWTBotDesignerEditor swtBotEditor = SWTBotDesignerHelper.getDesignerEditor(newRepresentationName);
+        SWTBotSiriusDiagramEditor swtBotEditor = SWTBotSiriusHelper.getSiriusDiagramEditor(newRepresentationName);
         if (swtBotEditor != null && disableSnapToGridOnThisEditor) {
             swtBotEditor.disableSnapToGrid();
         }

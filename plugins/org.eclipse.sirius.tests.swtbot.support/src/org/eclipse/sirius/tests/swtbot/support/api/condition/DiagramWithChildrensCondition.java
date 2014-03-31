@@ -11,7 +11,7 @@
 package org.eclipse.sirius.tests.swtbot.support.api.condition;
 
 import org.eclipse.gef.RootEditPart;
-import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.junit.ComparisonFailure;
 
@@ -22,7 +22,7 @@ import org.junit.ComparisonFailure;
  */
 public class DiagramWithChildrensCondition extends DefaultCondition {
 
-    private final SWTBotDesignerEditor editor;
+    private final SWTBotSiriusDiagramEditor editor;
 
     private final int expectedChildrenOnDiagramLevel;
 
@@ -34,7 +34,7 @@ public class DiagramWithChildrensCondition extends DefaultCondition {
      * @param expectedChildrenOnDiagramLevel
      *            expected number of children on diagram level
      */
-    public DiagramWithChildrensCondition(SWTBotDesignerEditor editor, int expectedChildrenOnDiagramLevel) {
+    public DiagramWithChildrensCondition(SWTBotSiriusDiagramEditor editor, int expectedChildrenOnDiagramLevel) {
         super();
         this.editor = editor;
         this.expectedChildrenOnDiagramLevel = expectedChildrenOnDiagramLevel;

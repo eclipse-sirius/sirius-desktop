@@ -276,6 +276,37 @@
 			<li>
 				<code>org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase.refreshDiagram()</code> has been removed. This method did not handle the non dynamic tabbar and was a duplicate of manualRefresh(). Callers must select the diagram before the call,the click(0,0) instruction was not sufficient in several cases (for example if there is a node/container in (0,0)).
 			</li>
+			<li>
+				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerEditor</code> has been renamed into 
+				<code>SWTBotSiriusDiagramEditor</code>.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerGefViewer</code> has been renamed into 
+				<code>SWTBotSiriusGefViewer</code>.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerHelper</code> has been renamed into 
+				<code>SWTBotSiriusHelper</code>.
+			</li>
+			<li>Methods 
+				<code>AbstractSiriusSwtBotGefTestCase.openRepresentation</code> with 
+				<code>SWTBotDesignerEditor</code> as returned type have been renamed into 
+				<code>openDiagram</code>, marked as deprecated and replaced with methods returning a 
+				<code>SWTBotEditor</code>. You can now use methods 
+				<code>openRepresentation</code> for DTree or DTable. If the 
+				<code>expectedRepresentationClass</code> is 
+				<code>DDiagram.class</code>, the returned type will be a 
+				<code>SWTBotSiriusDiagramEditor</code>.
+			</li>
+			<li>Method 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper.getDesignerEditor(String)</code> has been renamed into 
+				<code>getSiriusDiagramEditor</code>.
+			</li>
+			<li>Add 
+				<code>SWTBotSiriusHelper.getSiriusEditor(String)</code> to return the 
+				<code>SWTBotEditor</code> (diagram, tree or table editor) with the given name. The name is the name as displayed on the editor&#8217;s tab in Eclipse. In case of multiple editors with the same fileName, the same method with an additional parameter, the index, has been added 
+				<code>SWTBotSiriusHelper.getSiriusEditor(String, int)</code>.
+			</li>
 		</ul>
 		<h2 id="sirius1.0M6">Changes in Sirius 1.0.0M6 (from Sirius 1.0M5)</h2>
 		<h3 id="APIChanges2">API Changes</h3>

@@ -12,7 +12,7 @@ package org.eclipse.sirius.tests.swtbot.support.api.condition;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 
@@ -36,7 +36,7 @@ public class CheckEditPartMoved extends DefaultCondition {
     /**
      * Current editor.
      */
-    private final SWTBotDesignerEditor editor;
+    private final SWTBotSiriusDiagramEditor editor;
 
     /**
      * name of the edit part to wait for its selection.
@@ -74,7 +74,7 @@ public class CheckEditPartMoved extends DefaultCondition {
      * @param initialLocation
      *            Initial position of the edit part
      */
-    public CheckEditPartMoved(SWTBotDesignerEditor editor, String labelOfEditPart, Class<? extends IGraphicalEditPart> editPartClass, Point initialLocation) {
+    public CheckEditPartMoved(SWTBotSiriusDiagramEditor editor, String labelOfEditPart, Class<? extends IGraphicalEditPart> editPartClass, Point initialLocation) {
         this.labelOfEditPart = labelOfEditPart;
         this.editPartClass = editPartClass;
         this.initialLocation = initialLocation;

@@ -14,8 +14,8 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IPreferencesService;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
-import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
-import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerHelper;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
 import org.eclipse.sirius.tests.swtbot.support.api.view.SiriusOutlineView;
 import org.eclipse.swt.widgets.MenuItem;
@@ -30,7 +30,7 @@ import org.hamcrest.Matcher;
  * 
  * @author dlecan
  */
-public class UIDiagramRepresentation extends AbstractUIRepresentation<SWTBotDesignerEditor> {
+public class UIDiagramRepresentation extends AbstractUIRepresentation<SWTBotSiriusDiagramEditor> {
 
     /**
      * Zoom levels.
@@ -228,7 +228,7 @@ public class UIDiagramRepresentation extends AbstractUIRepresentation<SWTBotDesi
      * {@inheritDoc}
      */
     @Override
-    public SWTBotDesignerEditor getEditor() {
-        return SWTBotDesignerHelper.getDesignerEditorContainingName(getRepresentationName());
+    public SWTBotSiriusDiagramEditor getEditor() {
+        return SWTBotSiriusHelper.getDesignerEditorContainingName(getRepresentationName());
     }
 }

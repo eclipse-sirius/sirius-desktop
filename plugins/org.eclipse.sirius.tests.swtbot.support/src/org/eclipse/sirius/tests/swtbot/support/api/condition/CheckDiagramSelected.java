@@ -13,7 +13,7 @@ package org.eclipse.sirius.tests.swtbot.support.api.condition;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 
 /**
@@ -27,7 +27,7 @@ public class CheckDiagramSelected extends DefaultCondition {
     /**
      * Current editor.
      */
-    private final SWTBotDesignerEditor editor;
+    private final SWTBotSiriusDiagramEditor editor;
 
     /**
      * Default constructor.
@@ -35,7 +35,7 @@ public class CheckDiagramSelected extends DefaultCondition {
      * @param editor
      *            the current editor.
      */
-    public CheckDiagramSelected(SWTBotDesignerEditor editor) {
+    public CheckDiagramSelected(SWTBotSiriusDiagramEditor editor) {
         super();
         this.editor = editor;
     }

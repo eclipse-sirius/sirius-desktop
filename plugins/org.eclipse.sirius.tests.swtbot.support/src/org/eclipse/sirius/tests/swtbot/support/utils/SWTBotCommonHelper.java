@@ -19,7 +19,7 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
-import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
 import org.eclipse.sirius.tests.swtbot.support.api.view.SiriusOutlineView;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
@@ -160,7 +160,7 @@ public final class SWTBotCommonHelper {
      *            Current editor.
      * @return All {@link EdgeData}.
      */
-    public static List<EdgeData> getEdgeData(final SWTBotGefEditPart source, final SWTBotGefEditPart target, final SWTBotDesignerEditor editor) {
+    public static List<EdgeData> getEdgeData(final SWTBotGefEditPart source, final SWTBotGefEditPart target, final SWTBotSiriusDiagramEditor editor) {
         final List<SWTBotGefConnectionEditPart> connectionEditParts = editor.getConnectionEditPart(source, target);
 
         return Lists.transform(connectionEditParts, new Function<SWTBotGefConnectionEditPart, EdgeData>() {

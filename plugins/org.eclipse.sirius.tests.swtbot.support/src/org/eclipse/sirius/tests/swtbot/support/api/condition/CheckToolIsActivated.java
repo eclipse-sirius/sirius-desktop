@@ -10,7 +10,7 @@
  */
 package org.eclipse.sirius.tests.swtbot.support.api.condition;
 
-import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 
 /**
@@ -22,18 +22,18 @@ public class CheckToolIsActivated extends DefaultCondition {
 
     private final String toolLabel;
 
-    private final SWTBotDesignerEditor editor;
+    private final SWTBotSiriusDiagramEditor editor;
 
     /**
      * Constructor.
      * 
      * @param editor
-     *            the {@link SWTBotDesignerEditor}.
+     *            the {@link SWTBotSiriusDiagramEditor}.
      * 
      * @param toolLabel
      *            the label of the tool
      */
-    public CheckToolIsActivated(SWTBotDesignerEditor editor, String toolLabel) {
+    public CheckToolIsActivated(SWTBotSiriusDiagramEditor editor, String toolLabel) {
         this.toolLabel = toolLabel;
         this.editor = editor;
     }

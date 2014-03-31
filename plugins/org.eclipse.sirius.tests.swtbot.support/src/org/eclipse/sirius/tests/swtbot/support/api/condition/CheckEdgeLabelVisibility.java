@@ -11,7 +11,7 @@
 package org.eclipse.sirius.tests.swtbot.support.api.condition;
 
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
-import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 
 /**
@@ -23,7 +23,7 @@ public class CheckEdgeLabelVisibility extends DefaultCondition {
 
     private final String label;
 
-    private final SWTBotDesignerEditor editor;
+    private final SWTBotSiriusDiagramEditor editor;
 
     private final boolean isVisible;
 
@@ -37,7 +37,7 @@ public class CheckEdgeLabelVisibility extends DefaultCondition {
      * @param isVisible
      *            check is the label should be visible or hidden
      */
-    public CheckEdgeLabelVisibility(SWTBotDesignerEditor editor, String label, boolean isVisible) {
+    public CheckEdgeLabelVisibility(SWTBotSiriusDiagramEditor editor, String label, boolean isVisible) {
         this.label = label;
         this.editor = editor;
         this.isVisible = isVisible;

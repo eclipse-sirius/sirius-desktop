@@ -82,6 +82,13 @@ h4. Changes in @org.eclipse.sirius.tests.support@
 
 * The @shouldReloadSession@ boolean parameter has been removed from @org.eclipse.sirius.tests.support.api.SiriusTestCase.disableUICallBackOnDialectEditor(DialectEditor)@, it was not used and could let the tester think he can change the reload behavior from the dialog factory.
 * @org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase.refreshDiagram()@ has been removed. This method did not handle the non dynamic tabbar and was a duplicate of manualRefresh(). Callers must select the diagram before the call,the click(0,0) instruction was not sufficient in several cases (for example if there is a node/container in (0,0)).
+* @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerEditor@ has been renamed into @SWTBotSiriusDiagramEditor@.
+* @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerGefViewer@ has been renamed into @SWTBotSiriusGefViewer@.
+* @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerHelper@ has been renamed into @SWTBotSiriusHelper@.
+* Methods @AbstractSiriusSwtBotGefTestCase.openRepresentation@ with @SWTBotDesignerEditor@ as returned type have been renamed into @openDiagram@, marked as deprecated and replaced with methods returning a @SWTBotEditor@. You can now use methods @openRepresentation@ for DTree or DTable. If the @expectedRepresentationClass@ is @DDiagram.class@, the returned type will be a @SWTBotSiriusDiagramEditor@.
+* Method @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper.getDesignerEditor(String)@ has been renamed into @getSiriusDiagramEditor@.
+* Add @SWTBotSiriusHelper.getSiriusEditor(String)@ to return the @SWTBotEditor@ (diagram, tree or table editor) with the given name. The name is the name as displayed on the editor's tab in Eclipse. In case of multiple editors with the same fileName, the same method with an additional parameter, the index, has been added @SWTBotSiriusHelper.getSiriusEditor(String, int)@.
+
 
 h2(#sirius1.0M6). Changes in Sirius 1.0.0M6 (from Sirius 1.0M5)
 

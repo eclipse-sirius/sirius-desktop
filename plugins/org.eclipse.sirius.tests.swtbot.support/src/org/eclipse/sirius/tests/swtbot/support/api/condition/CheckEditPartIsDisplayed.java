@@ -10,7 +10,7 @@
  */
 package org.eclipse.sirius.tests.swtbot.support.api.condition;
 
-import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 
@@ -23,7 +23,7 @@ public class CheckEditPartIsDisplayed extends DefaultCondition {
 
     private final String label;
 
-    private final SWTBotDesignerEditor editor;
+    private final SWTBotSiriusDiagramEditor editor;
 
     /**
      * Constructor.
@@ -34,7 +34,7 @@ public class CheckEditPartIsDisplayed extends DefaultCondition {
      * @param editor
      *            the editor containing the edit part we are looking for.
      */
-    public CheckEditPartIsDisplayed(String label, SWTBotDesignerEditor editor) {
+    public CheckEditPartIsDisplayed(String label, SWTBotSiriusDiagramEditor editor) {
         this.label = label;
         this.editor = editor;
     }

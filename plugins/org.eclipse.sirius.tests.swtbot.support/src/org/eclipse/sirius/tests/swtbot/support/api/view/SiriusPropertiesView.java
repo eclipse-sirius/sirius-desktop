@@ -10,7 +10,7 @@
  */
 package org.eclipse.sirius.tests.swtbot.support.api.view;
 
-import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerHelper;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 
@@ -49,7 +49,7 @@ public class SiriusPropertiesView {
      */
     public void setName(String name) {
         propertiesView.setFocus();
-        SWTBotDesignerHelper.selectPropertyTabItem("General");
+        SWTBotSiriusHelper.selectPropertyTabItem("General");
         bot.textWithLabel("Name").setText(name);
     }
 
@@ -60,7 +60,7 @@ public class SiriusPropertiesView {
      */
     public String getName() {
         propertiesView.setFocus();
-        SWTBotDesignerHelper.selectPropertyTabItem("General");
+        SWTBotSiriusHelper.selectPropertyTabItem("General");
         /*
          * maybe will have pb, in other case there has a .setfocus before the
          * getText
