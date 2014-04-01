@@ -145,9 +145,9 @@ public class EStructuralFeatureCustomizationAppliedOnPropertySection extends Abs
 
     private boolean isConformToCustomization(EObject choice) {
         boolean isConform = false;
-        // if the feature is null, let the user choose the value, the completion
-        // will then help him to find the attribute name or the reference name
-        // from the values.
+        // If the feature name (attribute name or reference name) is null or
+        // empty, let the user choose the value, the completion will then help
+        // him to find the attribute name or the reference name from the values.
         // See
         // org.eclipse.sirius.editor.tools.internal.assist.EAttributeCustomizationAttributeNameContentProposalProvider.bindCompletionProcessor(EAttributeCustomizationAttributeNamePropertySection,
         // Text) and
@@ -155,12 +155,20 @@ public class EStructuralFeatureCustomizationAppliedOnPropertySection extends Abs
         // Text)
         if (eObject instanceof EAttributeCustomization) {
             EAttributeCustomization eAttributeCustomization = (EAttributeCustomization) eObject;
-            EStructuralFeature feature = getEStructuralFeature(choice.eClass(), eAttributeCustomization.getAttributeName());
-            isConform = feature == null || feature instanceof EAttribute;
+            if (StringUtil.isEmpty(eAttributeCustomization.getAttributeName())) {
+                isConform = true;
+            } else {
+                EStructuralFeature feature = getEStructuralFeature(choice.eClass(), eAttributeCustomization.getAttributeName());
+                isConform = feature instanceof EAttribute;
+            }
         } else if (eObject instanceof EReferenceCustomization) {
             EReferenceCustomization eReferenceCustomization = (EReferenceCustomization) eObject;
-            EStructuralFeature feature = getEStructuralFeature(choice.eClass(), eReferenceCustomization.getReferenceName());
-            isConform = feature == null || feature instanceof EReference && checkValue((EReference) feature, eReferenceCustomization.getValue());
+            if (StringUtil.isEmpty(eReferenceCustomization.getReferenceName())) {
+                isConform = true;
+            } else {
+                EStructuralFeature feature = getEStructuralFeature(choice.eClass(), eReferenceCustomization.getReferenceName());
+                isConform = feature instanceof EReference && checkValue((EReference) feature, eReferenceCustomization.getValue());
+            }
         }
         return isConform;
     }
