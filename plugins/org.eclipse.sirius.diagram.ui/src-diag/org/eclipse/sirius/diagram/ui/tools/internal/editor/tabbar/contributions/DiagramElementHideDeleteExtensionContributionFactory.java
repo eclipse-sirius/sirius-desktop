@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramActionBarContributor;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
-import org.eclipse.sirius.diagram.ui.tools.api.action.DeleteFromDiagramContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromDiagramAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromModelWithHookAction;
@@ -47,11 +46,9 @@ public class DiagramElementHideDeleteExtensionContributionFactory extends Sirius
 
         createHideDDiagramElementLabelMenu(additions);
 
-        final DeleteFromDiagramContributionItem deleteFromDiagram = new DeleteFromDiagramContributionItem(new DeleteFromDiagramAction(DiagramUIMessages.DiagramEditor_Delete_from_Diagram,
-                SiriusDiagramActionBarContributor.DELETE_FROM_DIAGRAM, ActionIds.ACTION_DELETE_FROM_DIAGRAM,
-                DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETE_FROM_DIAGRAM_ICON)), getPage());
-        deleteFromDiagram.setItemPart(getPart());
-        additions.addContributionItem(deleteFromDiagram, new DDiagramElementTabbarExpression());
+        DeleteFromDiagramAction deleteFromDiagramAction = new DeleteFromDiagramAction(DiagramUIMessages.DiagramEditor_Delete_from_Diagram, SiriusDiagramActionBarContributor.DELETE_FROM_DIAGRAM,
+                ActionIds.ACTION_DELETE_FROM_DIAGRAM, DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETE_FROM_DIAGRAM_ICON));
+        additions.addContributionItem(new TabbarActionContributionItem(deleteFromDiagramAction, getPart()), new DDiagramElementTabbarExpression());
 
         final DeleteFromModelWithHookAction deleteFromModelAction = new DeleteFromModelWithHookAction(getPage(), getPart());
         deleteFromModelAction.init();

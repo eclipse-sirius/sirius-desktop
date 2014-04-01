@@ -19,8 +19,7 @@ In the same way, all classes related to UI in @org.eclipse.diagram@ have been mo
 
 Unlike, the "Step1":#separationOfDiagramSpecificConcept-step1, a simple "Organize Imports" operation is not enough. First, you will probably need to add dependencies to @org.eclipse.sirius.diagram@, @org.eclipse.sirius.diagram.ui@ or @org.eclipse.sirius.editor.diagram@ in the MANIFEST.MF of your projects that depend on Sirius diagram classes. The dependencies to add depend on what you really use.
 
-* @ViewpointRegistry.getDiagramDescriptionMappingsRegistry()@ has been removed. You can now directly call @org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsRegistry.INSTANCE@.
-* @DialectServices.
+* @ViewpointRegistry.getDiagramDescriptionMappingsRegistry()@ has been removed. You can now directly call @org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsRegistry.INSTANCE.DialectServices@.
 * New methods have been added to @IRepairParticipant@ to isolate specific diagram repair steps.
 ** @removeElements(DView, TransactionalEditingDomain, IProgressMonitor)@: Removes elements from the @DView@ that will be recreated by the refresh (called later).
 ** @cleanRepresentations(EList<DRepresentation>)@: Cleans representations (specific representation states like filters) and eventually returns some of them if they need to be removed.
@@ -45,6 +44,7 @@ Unlike, the "Step1":#separationOfDiagramSpecificConcept-step1, a simple "Organiz
 ** All methods depending only on draw2d of @org.eclipse.sirius.diagram.ui.tools.api.draw2d.ui.figures.FigureUtilities@ have been moved in @org.eclipse.sirius.ext.draw2d.figure.FigureUtilities@
 ** @fr.obeo.dsl.viewpoint.diagram.ui.tools.api.layout.GraphicalHelper@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper@.
 ** @org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin@ has been renamed into @org.eclipse.sirius.diagram.DiagramPlugin@. This plugin is not a UI plugin any more, @org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin.getPlugin()@ should be used instead for UI related aspects. For example @DiagramUIPlugin.getPlugin().getPreferenceStore()@ should be used instead of  @DiagramPlugin.getDefault().getPreferenceStore()@ or @SiriusDiagramEditorPlugin.getInstance().getPreferenceStore()@.
+* @DeleteFromDiagramContributionItem@ and @SetStyleToWorkspaceImageContributionItem@ have been merged into @SiriusActionBarActionContributionItem@
 * Images
 ** Images of @org.eclipse.sirius.diagram@ have been moved to @org.eclipse.sirius.diagram.ui@. In your code, you should replace @SiriusDiagramEditorPlugin.getInstance().getImage()@ and @DiagramPlugin.getInstance().getImage()@ by @DiagramUIPlugin.getPlugin().getImage()@. That is the case for all methods concerning images in @DiagramPlugin@ (previously named @SiriusDiagramEditorPlugin@).
 ** Some images of @org.eclipse.sirius.ui@ have been moved to @org.eclipse.sirius.diagram.ui@, the corresponding constants in @org.eclipse.sirius.ui.tools.api.image.ImagesPath@ have been moved in @org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath@.

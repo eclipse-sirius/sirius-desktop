@@ -17,7 +17,6 @@ import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.ui.graphical.edit.part.specific.BracketEdgeEditPart;
-import org.eclipse.sirius.diagram.ui.tools.api.action.SetStyleToWorkspaceImageContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.SetStyleToWorkspaceImageAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarColorPropertyContributionItem;
@@ -43,7 +42,7 @@ public class DiagramElementStyleExtensionContributionFactory extends SiriusTabba
 
         createRouterManagerMenu(additions);
 
-        additions.addContributionItem(new SetStyleToWorkspaceImageContributionItem(new SetStyleToWorkspaceImageAction(), getPage(), getPart()), new DDiagramElementTabbarExpression());
+        additions.addContributionItem(new TabbarActionContributionItem(new SetStyleToWorkspaceImageAction(), getPart()), new DDiagramElementTabbarExpression());
         ResetStylePropertiesToDefaultValuesAction resetStylePropertiesToDefaultValuesAction = new ResetStylePropertiesToDefaultValuesAction(getPage());
         additions.addContributionItem(new TabbarActionContributionItem(resetStylePropertiesToDefaultValuesAction, getPart()), new DDiagramElementTabbarExpression());
 

@@ -64,9 +64,8 @@
 		<ul>
 			<li>
 				<code>ViewpointRegistry.getDiagramDescriptionMappingsRegistry()</code> has been removed. You can now directly call 
-				<code>org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsRegistry.INSTANCE</code>.
+				<code>org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsRegistry.INSTANCE.DialectServices</code>.
 			</li>
-			<li>@DialectServices.</li>
 			<li>New methods have been added to 
 				<code>IRepairParticipant</code> to isolate specific diagram repair steps.
 				<ul>
@@ -166,6 +165,11 @@
 						<code>SiriusDiagramEditorPlugin.getInstance().getPreferenceStore()</code>.
 					</li>
 				</ul>
+			</li>
+			<li>
+				<code>DeleteFromDiagramContributionItem</code> and 
+				<code>SetStyleToWorkspaceImageContributionItem</code> have been merged into 
+				<code>SiriusActionBarActionContributionItem</code>
 			</li>
 			<li>Images
 				<ul>

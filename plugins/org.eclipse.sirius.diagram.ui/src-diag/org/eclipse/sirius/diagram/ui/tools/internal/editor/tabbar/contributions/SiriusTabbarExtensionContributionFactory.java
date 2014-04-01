@@ -22,6 +22,8 @@ import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.IToolBarContextService;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.ui.IActionDelegate;
+import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.IWorkbenchPage;
@@ -149,6 +151,12 @@ public abstract class SiriusTabbarExtensionContributionFactory extends Extension
             // we refresh action only if selection is in the same part than
             // current action tabbar.
             if (representationPart != null && representationPart.equals(part)) {
+                IAction action = getAction();
+                if (action instanceof IActionDelegate) {
+                    ((IObjectActionDelegate) action).selectionChanged(action, selection);
+                } else if (action instanceof ISelectionListener) {
+                    ((ISelectionListener) action).selectionChanged(part, selection);
+                }
                 update();
             }
         }
