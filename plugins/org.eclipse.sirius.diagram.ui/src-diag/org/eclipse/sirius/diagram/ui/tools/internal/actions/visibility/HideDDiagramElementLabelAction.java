@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.gef.Disposable;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.RootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -50,7 +51,7 @@ import org.eclipse.ui.PlatformUI;
  * @author lredor
  * 
  */
-public class HideDDiagramElementLabelAction extends Action implements IObjectActionDelegate {
+public class HideDDiagramElementLabelAction extends Action implements IObjectActionDelegate, Disposable {
 
     /** The selection. */
     private ISelection selection;
@@ -236,11 +237,14 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
         if (s instanceof DiagramOutlinePage.TreeSelectionWrapper) {
             // Action of the outline
             this.setEnabled(HideDDiagramElementLabelAction.isEnabled(((DiagramOutlinePage.TreeSelectionWrapper) s).toList()));
-
         } else if (s instanceof IStructuredSelection) {
             // Action of the tabber or
             this.setEnabled(HideDDiagramElementLabelAction.isEnabled(((IStructuredSelection) s).toList()));
         }
+    }
 
+    @Override
+    public void dispose() {
+        selection = null;
     }
 }

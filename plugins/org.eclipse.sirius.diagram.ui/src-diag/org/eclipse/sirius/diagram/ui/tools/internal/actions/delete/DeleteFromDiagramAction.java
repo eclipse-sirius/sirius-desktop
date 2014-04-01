@@ -273,4 +273,10 @@ public class DeleteFromDiagramAction extends RetargetAction implements IObjectAc
         return Lists.newArrayList();
     }
 
+    @Override
+    public void dispose() {
+        selection = null;
+        super.dispose();
+    }
+
 }

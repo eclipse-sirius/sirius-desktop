@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -65,9 +65,7 @@ public abstract class AbstractMenuContributionItem extends AbstractTabbarContrib
      * @see org.eclipse.sirius.diagram.tools.internal.editor.tabbar.TabbarContribution#create(org.eclipse.swt.widgets.ToolBar)
      */
     public void create(final ToolBarManager tb, String groupId) {
-
         tb.insertAfter(groupId, createContributionItem(tb));
-
     }
 
     /**
@@ -186,6 +184,7 @@ public abstract class AbstractMenuContributionItem extends AbstractTabbarContrib
             menuManager.dispose();
             menuManager = null;
         }
+        tooltips = null;
         listener = null;
     }
 
@@ -197,7 +196,7 @@ public abstract class AbstractMenuContributionItem extends AbstractTabbarContrib
      */
     private class TabbarContributionItem extends ContributionItem {
 
-        private ToolItem layersItem;
+        private ToolItem menuItem;
 
         private ToolBarManager toolBarManager;
 
@@ -207,13 +206,13 @@ public abstract class AbstractMenuContributionItem extends AbstractTabbarContrib
 
         @Override
         public void fill(final ToolBar parent, final int index) {
-            layersItem = new ToolItem(parent, SWT.DROP_DOWN, index);
-            layersItem.setToolTipText(getLabel());
+            menuItem = new ToolItem(parent, SWT.DROP_DOWN, index);
+            menuItem.setToolTipText(getLabel());
 
             computeEnable();
 
-            layersItem.setImage(getMenuImage());
-            layersItem.addSelectionListener(new SelectionAdapter() {
+            menuItem.setImage(getMenuImage());
+            menuItem.addSelectionListener(new SelectionAdapter() {
                 @Override
                 public void widgetSelected(SelectionEvent e) {
                     final int offset = computeOffset(parent);
@@ -237,21 +236,26 @@ public abstract class AbstractMenuContributionItem extends AbstractTabbarContrib
                 final DDiagram editorDiagram = (DDiagram) editor.getRepresentation();
                 IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(editor.getSession().getSessionResource().getResourceSet());
                 canEditInstance = permissionAuthority.canEditInstance(editorDiagram);
-                layersItem.setEnabled(canEditInstance);
+                menuItem.setEnabled(canEditInstance);
             }
         }
 
         @Override
         public void dispose() {
             doDispose();
+            if (menuItem != null) {
+                menuItem.dispose();
+                menuItem = null;
+            }
+            toolBarManager = null;
             super.dispose();
         }
 
         @Override
         public void update() {
             super.update();
-            if (layersItem != null && !layersItem.isDisposed()) {
-                layersItem.setImage(getMenuImage());
+            if (menuItem != null && !menuItem.isDisposed()) {
+                menuItem.setImage(getMenuImage());
                 computeEnable();
             }
         }
