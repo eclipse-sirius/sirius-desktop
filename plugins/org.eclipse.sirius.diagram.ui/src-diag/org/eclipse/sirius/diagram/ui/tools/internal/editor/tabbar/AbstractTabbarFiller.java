@@ -113,6 +113,8 @@ public abstract class AbstractTabbarFiller implements TabbarFiller {
         // current workbench window).
         IMenuService menuService = (IMenuService) part.getSite().getService(IMenuService.class);
         menuService.populateContributionManager(manager, "toolbar:" + Tabbar.TABBAR_ID);
+
+        IToolBarContextService.INSTANCE.dispose();
     }
 
     /**
@@ -125,7 +127,6 @@ public abstract class AbstractTabbarFiller implements TabbarFiller {
         // current workbench window).
         IMenuService menuService = (IMenuService) part.getSite().getService(IMenuService.class);
         menuService.releaseContributions(manager);
-        IToolBarContextService.INSTANCE.dispose();
     }
 
     /**
