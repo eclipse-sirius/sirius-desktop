@@ -72,8 +72,10 @@ mkdir -p "$TARGET_DIR"
 # The actual publication of the p2 repo produced by the build
 cp -a "$WORKSPACE"/packaging/org.eclipse.sirius.update/target/repository/* "$TARGET_DIR"
 # Publish the target platform definitions used, so that dowstream projects can reference them
-cp -a "$WORKSPACE/releng/org.eclipse.sirius.targets/modules" "$TARGET_DIR"
-cp -a "$WORKSPACE"/releng/org.eclipse.sirius.targets/*.targetplatform "$TARGET_DIR"
+mkdir -p "$TARGET_DIR/targets"
+cp -a "$WORKSPACE/releng/org.eclipse.sirius.targets/*" "$TARGET_DIR/targets"
+mkdir -p "$TARGET_ROOT/targets"
+cp -a "$WORKSPACE/releng/org.eclipse.sirius.targets/*" "$TARGET_ROOT/targets"
 # Publish a dump of the build environment, may be useful to debug
 env | sort > "$TARGET_DIR/build_env.txt"
 
