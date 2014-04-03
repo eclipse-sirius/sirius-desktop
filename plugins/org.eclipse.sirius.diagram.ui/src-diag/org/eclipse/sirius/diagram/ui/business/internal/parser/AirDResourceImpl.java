@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,11 +20,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.gmf.runtime.emf.core.resources.GMFResource;
-import org.eclipse.sirius.business.api.query.AirDResouceQuery;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;
 import org.eclipse.sirius.business.api.session.resource.DResource;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
-import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
@@ -177,15 +175,6 @@ public class AirDResourceImpl extends GMFResource implements DResource, AirdReso
         // AirDResourceMigration migration = new AirDResourceMigration(this);
         // // Notify user only if there is no more load in progress.
         // migration.migrate(!AirDResourceImpl.hasLoadInProgress());
-    }
-
-    @Override
-    protected void doUnload() {
-        Option<AirDCrossReferenceAdapter> result = new AirDResouceQuery(this).getAirDCrossReferenceAdapter();
-        if (result.some()) {
-            eAdapters().remove(result.get());
-        }
-        super.doUnload();
     }
 
     @Override

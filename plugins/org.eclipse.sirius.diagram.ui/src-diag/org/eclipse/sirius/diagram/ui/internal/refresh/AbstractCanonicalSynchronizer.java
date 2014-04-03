@@ -29,6 +29,7 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
 import org.eclipse.gmf.runtime.diagram.core.providers.IViewProvider;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
@@ -846,7 +847,11 @@ public abstract class AbstractCanonicalSynchronizer implements CanonicalSynchron
      */
     protected boolean deleteViews(Collection<? extends View> views) {
         for (View view : views) {
-            ViewUtil.destroy(view);
+            // org.eclipse.gmf.runtime.diagram.core.util.ViewUtil.destroy(v) is no more needed, simply remove the view
+            // from its container, DanglinRefRemovalTrigger will complete
+            // the work. This prevents GMF to install its
+            // CrossReferencerAdapter
+            EcoreUtil.remove(view);
         }
         return !views.isEmpty();
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,11 +27,8 @@ import org.eclipse.sirius.business.internal.migration.RepresentationsFileExtende
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileResourceHandler;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileVersionSAXParser;
-import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
 import org.osgi.framework.Version;
 
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
 
 /**
@@ -115,10 +112,6 @@ public class AirDResourceFactory extends XMIResourceFactoryImpl {
 
         if (!resource.getEncoding().equals(XMI_ENCODING)) {
             resource.setEncoding(XMI_ENCODING);
-        }
-
-        if (!Iterables.any(resource.eAdapters(), Predicates.instanceOf(AirDCrossReferenceAdapter.class))) {
-            resource.eAdapters().add(new AirDCrossReferenceAdapterImpl());
         }
 
         return resource;

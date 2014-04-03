@@ -70,6 +70,7 @@ import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestCaseCleaner;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.support.internal.helper.CrossReferenceAdapterDetector;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIPerspective;
@@ -1261,9 +1262,9 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                     if (!"org.eclipse.ui.views.properties.tabbed".equals(status.getPlugin())
                             && status.getMessage() != null
                             && !status
-                                    .getMessage()
-                                    .startsWith(
-                                            "Contributor org.eclipse.ui.navigator.ProjectExplorer cannot be created., exception: org.eclipse.core.runtime.CoreException: Plug-in \"org.eclipse.ui.navigator.resources\" was unable to instantiate class \"org.eclipse.ui.internal.navigator.resources.workbench.TabbedPropertySheetTitleProvider\".")) {
+                            .getMessage()
+                            .startsWith(
+                                    "Contributor org.eclipse.ui.navigator.ProjectExplorer cannot be created., exception: org.eclipse.core.runtime.CoreException: Plug-in \"org.eclipse.ui.navigator.resources\" was unable to instantiate class \"org.eclipse.ui.internal.navigator.resources.workbench.TabbedPropertySheetTitleProvider\".")) {
                         errorOccurs(status, plugin);
                     }
                 }
@@ -1422,6 +1423,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     // Cannot be overriden, we are trying to preserve and cleanup workspace for
     // next tests
     private void failureTearDown() throws Exception {
+        CrossReferenceAdapterDetector crossRefDetector = new CrossReferenceAdapterDetector();
         try {
             SWTBotUtils.waitAllUiEvents();
 
@@ -1461,6 +1463,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             closeAllEditors();
 
             SWTBotUtils.waitAllUiEvents();
+
+            crossRefDetector.checkNoCrossReferenceAdapter();
 
             closeAllSessions();
 
@@ -1502,6 +1506,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                 }
             });
             setErrorCatchActive(false);
+            crossRefDetector.assertNoCrossReferenceAdapterFound();
             checkErrors();
         }
 
@@ -1709,5 +1714,4 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         super.tearDown();
         setErrorCatchActive(false);
     }
-
 }

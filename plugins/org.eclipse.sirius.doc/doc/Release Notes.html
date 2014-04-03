@@ -361,6 +361,11 @@
 				<code>org.eclipse.sirius.business.api.session.Session</code> interface has a new 
 				<code>getSavingPolicy()</code> method which gives access to the currently configured saving policy.
 			</li>
+			<li>
+				<code>org.eclipse.sirius.business.api.query.AirdResourceQuery.getAirDCrossReferenceAdapter()</code> and 
+				<code>org.eclipse.sirius.business.internal.resource.AirdCrossReferencerAdapter</code> have been removed. The adapter was here to customize GMF&#8217;s own 
+				<code>org.eclipse.gmf.runtime.emf.core.util.CrossReferenceAdapter</code>. However considering the way Sirius uses GMF, this adapter is not needed.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
