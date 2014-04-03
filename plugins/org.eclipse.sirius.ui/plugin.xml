@@ -761,7 +761,7 @@
               enablesFor="1"
               icon="icons/full/others/image.gif"
               id="org.eclipse.sirius.diagram.ui.action.exportRepresentationsAsImages"
-              label="%exportDiagramsAsImagesActionLabel"
+              label="%exportRepresentationsAsImagesActionLabel"
               menubarPath="group.port">
         </action>
      </objectContribution>

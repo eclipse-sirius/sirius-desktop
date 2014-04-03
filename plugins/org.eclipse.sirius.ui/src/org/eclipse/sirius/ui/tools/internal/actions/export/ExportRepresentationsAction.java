@@ -51,7 +51,7 @@ public class ExportRepresentationsAction extends AbstractExportRepresentationsAc
      *            the selected {@link DRepresentation}.
      */
     public ExportRepresentationsAction(final Session session, final Collection<DRepresentation> selectedRepresentations) {
-        super("Export diagrams as images", AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/image.gif"));
+        super(SiriusEditPlugin.INSTANCE.getString("exportRepresentationsAsImagesActionLabel"), AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/image.gif"));
         this.session = session;
         this.selectedRepresentations = selectedRepresentations;
     }
