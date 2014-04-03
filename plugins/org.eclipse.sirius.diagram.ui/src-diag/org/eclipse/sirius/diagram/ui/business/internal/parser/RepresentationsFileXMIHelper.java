@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,16 +7,19 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
+ *    IBM Corporation and others - The deresolve() method was lifted from GMF's
+ *         org.eclipse.gmf.runtime.emf.core.resources.GMFHelper
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.internal.parser;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.gmf.runtime.emf.core.resources.GMFHelper;
+import org.eclipse.emf.ecore.xmi.impl.XMIHelperImpl;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileVersionSAXParser;
 import org.osgi.framework.Version;
@@ -28,7 +31,9 @@ import org.osgi.framework.Version;
  * @author fbarbin
  * 
  */
-public class RepresentationsFileXMIHelper extends GMFHelper {
+public class RepresentationsFileXMIHelper extends XMIHelperImpl {
+
+    private static final String PLATFORM_SCHEME = "platform"; //$NON-NLS-1$
 
     private String version;
 
@@ -81,5 +86,27 @@ public class RepresentationsFileXMIHelper extends GMFHelper {
             }
         }
         return super.createObject(factory, type);
+    }
+
+    /**
+     * Extracted from
+     * org.eclipse.gmf.runtime.emf.core.resources.GMFHelper.deresolve(URI).
+     * 
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.gmf.runtime.emf.core.resources.GMFHelper.deresolve(URI)
+     * @see org.eclipse.emf.ecore.xmi.XMLHelper#deresolve(org.eclipse.emf.common.util.URI)
+     */
+    public URI deresolve(URI uri) {
+
+        // if this both target and container are within a platform resource and
+        // projects or plugins are different then do not deresolve.
+        // CHECKSTYLE:OFF
+        if (((PLATFORM_SCHEME.equals(uri.scheme())) && (PLATFORM_SCHEME.equals(resourceURI.scheme()))) && ((uri.segmentCount() > 2) && (resourceURI.segmentCount() > 2))
+                && ((!uri.segments()[0].equals(resourceURI.segments()[0])) || (!uri.segments()[1].equals(resourceURI.segments()[1])))) {
+            // CHECKSTYLE:ON
+            return uri;
+        }
+        return super.deresolve(uri);
     }
 }
