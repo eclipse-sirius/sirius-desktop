@@ -73,7 +73,7 @@ mkdir -p "$TARGET_DIR"
 cp -a "$WORKSPACE"/packaging/org.eclipse.sirius.update/target/repository/* "$TARGET_DIR"
 # Publish the target platform definitions used, so that dowstream projects can reference them
 cp -a "$WORKSPACE/releng/org.eclipse.sirius.targets/modules" "$TARGET_DIR"
-cp -a "$WORKSPACE/releng/org.eclipse.sirius.targets/*.targetplatform" "$TARGET_DIR"
+cp -a "$WORKSPACE"/releng/org.eclipse.sirius.targets/*.targetplatform "$TARGET_DIR"
 # Publish a dump of the build environment, may be useful to debug
 env | sort > "$TARGET_DIR/build_env.txt"
 
