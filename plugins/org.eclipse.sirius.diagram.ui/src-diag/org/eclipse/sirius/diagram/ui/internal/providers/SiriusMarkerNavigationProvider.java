@@ -25,6 +25,7 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.emf.ui.providers.marker.AbstractModelMarkerNavigationProvider;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorUtil;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 /**
@@ -35,7 +36,7 @@ public class SiriusMarkerNavigationProvider extends AbstractModelMarkerNavigatio
     /**
      * @was-generated
      */
-    public static final String MARKER_TYPE = DiagramPlugin.ID + ".diagnostic"; //$NON-NLS-1$
+    public static final String MARKER_TYPE = DiagramUIPlugin.ID + ".diagnostic"; //$NON-NLS-1$
 
     /**
      * @was-generated
@@ -90,9 +91,9 @@ public class SiriusMarkerNavigationProvider extends AbstractModelMarkerNavigatio
         }
         return marker;
     }
-    
+
     /**
-     * @param validationRule 
+     * @param validationRule
      */
     public static IMarker addValidationRuleMarker(ValidationRule validationRule, IFile file, String elementId, String location, String message, int statusSeverity) {
         IMarker marker = null;
@@ -114,5 +115,5 @@ public class SiriusMarkerNavigationProvider extends AbstractModelMarkerNavigatio
         }
         return marker;
     }
-    
+
 }
