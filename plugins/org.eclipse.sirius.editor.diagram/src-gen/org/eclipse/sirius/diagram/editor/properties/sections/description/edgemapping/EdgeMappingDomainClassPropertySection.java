@@ -60,6 +60,9 @@ public class EdgeMappingDomainClassPropertySection extends AbstractTextPropertyS
         labelText = super.getLabelText() + ":"; //$NON-NLS-1$
         // Start of user code get label text
 
+        // Only displayed and required when isUsedDomainElement()
+        labelText = super.getLabelText() + "*:"; //$NON-NLS-1$
+
         // End of user code get label text
         return labelText;
     }
