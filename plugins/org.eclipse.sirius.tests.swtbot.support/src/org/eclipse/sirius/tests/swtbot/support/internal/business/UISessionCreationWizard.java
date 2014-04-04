@@ -25,6 +25,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UISessionCreationWiz
 import org.eclipse.sirius.tests.swtbot.support.api.condition.ItemEnabledCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.dialog.ViewpointSelectionDialog;
 import org.eclipse.sirius.tests.swtbot.support.api.widget.WrappedSWTBotRadio;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
@@ -176,7 +177,7 @@ public class UISessionCreationWizard implements SessionChoice {
         final SWTBotButton button = bot.button("Finish");
         bot.waitUntil(new ItemEnabledCondition(button));
         button.click();
-
+        SWTBotUtils.waitProgressMonitorClose("New Representations File");
         return airdPickingChoice;
     }
 
