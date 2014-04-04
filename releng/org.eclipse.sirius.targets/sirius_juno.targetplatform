@@ -10,7 +10,7 @@ include "modules/xtext-2.3.tpd"
 
 with source, requirements
 
-location "http://download.eclipse.org/releases/juno" {
+location Eclipse-Juno "http://download.eclipse.org/releases/juno" {
         com.ibm.icu;version=[4.0.0,5.0.0)
         org.eclipse.draw2d.feature.group;version=[3.8.0,4.0.0)
         org.eclipse.draw2d.sdk.feature.group;version=[3.8.0,4.0.0)

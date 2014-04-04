@@ -2,6 +2,6 @@ target "xtext-2.4"
 
 with source, requirements
 
-location "http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases" {
+location XText-2_4 "http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases" {
         org.eclipse.xtext.sdk.feature.group;version=[2.4.1,2.5.0)
 }

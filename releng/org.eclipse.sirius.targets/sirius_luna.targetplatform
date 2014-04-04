@@ -6,7 +6,7 @@ include "modules/swtbot-2.1.tpd"
 
 with source, requirements
 
-location "http://download.eclipse.org/releases/luna" {
+location Eclipse-Luna "http://download.eclipse.org/releases/luna" {
         com.google.guava;version=[11.0.2,16.0)
         com.ibm.icu;version=[50.1.1,51.0.0)
         org.eclipse.acceleo.feature.group;version=[3.5.0,4.0.0)

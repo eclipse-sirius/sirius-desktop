@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_kepler" sequenceNumber="1396517023">
+<target name="sirius_kepler" sequenceNumber="1396612259">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.acceleo.doc.feature.group" version="3.4.1.201309031307"/>
@@ -10,15 +10,15 @@
       <unit id="org.eclipse.acceleo.runtime.feature.group" version="3.4.1.201309031307"/>
       <unit id="org.eclipse.acceleo.sdk.feature.group" version="3.4.1.201309031307"/>
       <unit id="org.eclipse.acceleo.ui.capabilities.feature.group" version="3.4.1.201309031307"/>
-      <repository location="http://download.eclipse.org/acceleo/updates/releases/3.4/"/>
+      <repository id="Acceleo-3_4" location="http://download.eclipse.org/acceleo/updates/releases/3.4/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.eef.runtime-feature.feature.group" version="1.2.2.201309121245"/>
-      <repository location="http://download.eclipse.org/modeling/emft/eef/updates/releases/1.2"/>
+      <repository id="EEF-1_2" location="http://download.eclipse.org/modeling/emft/eef/updates/releases/1.2"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.compare.feature.group" version="2.1.2.201310031412"/>
-      <repository location="http://download.eclipse.org/modeling/emf/compare/updates/releases/2.1"/>
+      <repository id="EMF-Compare-2_1" location="http://download.eclipse.org/modeling/emf/compare/updates/releases/2.1"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="com.google.guava" version="12.0.0.v201212092141"/>
@@ -27,11 +27,11 @@
       <unit id="org.hamcrest.core" version="1.3.0.v201303031735"/>
       <unit id="org.hamcrest.library" version="1.3.0.v201305281000"/>
       <unit id="org.junit" version="4.11.0.v201303080030"/>
-      <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/S20130914154012/repository/"/>
+      <repository id="Orbit" location="http://download.eclipse.org/tools/orbit/downloads/drops/S20130914154012/repository/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.nebula.widgets.paperclips.feature.feature.group" version="2.0.0.201309241436"/>
-      <repository location="http://download.eclipse.org/sirius/targetplatform/0.9.0/all/nebula/N201309241436"/>
+      <repository id="Paperclips-2_0" location="http://download.eclipse.org/sirius/targetplatform/0.9.0/all/nebula/N201309241436"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.1.1.201307101628"/>
@@ -40,11 +40,11 @@
       <unit id="org.eclipse.swtbot.feature.group" version="2.1.1.201307101628"/>
       <unit id="org.eclipse.swtbot.forms.feature.group" version="2.1.1.201307101628"/>
       <unit id="org.eclipse.swtbot.ide.feature.group" version="2.1.1.201307101628"/>
-      <repository location="http://download.eclipse.org/technology/swtbot/releases/2.1.1/"/>
+      <repository id="SWTBot-2_1" location="http://download.eclipse.org/technology/swtbot/releases/2.1.1/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.xtext.sdk.feature.group" version="2.4.3.v201309030823"/>
-      <repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases"/>
+      <repository id="XText-2_4" location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="com.ibm.icu" version="50.1.1.v201304230130"/>
@@ -67,7 +67,7 @@
       <unit id="org.eclipse.ocl.core.sdk.feature.group" version="4.1.0.v20140120-1508"/>
       <unit id="org.eclipse.platform.feature.group" version="4.3.2.v20140221-1852"/>
       <unit id="org.eclipse.sdk.feature.group" version="4.3.2.v20140221-1852"/>
-      <repository location="http://download.eclipse.org/releases/kepler"/>
+      <repository id="Eclipse-Kepler" location="http://download.eclipse.org/releases/kepler"/>
     </location>
   </locations>
 </target>

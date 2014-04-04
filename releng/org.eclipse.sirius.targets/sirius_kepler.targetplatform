@@ -10,7 +10,7 @@ include "modules/xtext-2.4.tpd"
 
 with source, requirements
 
-location "http://download.eclipse.org/releases/kepler" {
+location Eclipse-Kepler "http://download.eclipse.org/releases/kepler" {
         com.ibm.icu;version=[50.1.1,51.0.0)
         org.eclipse.draw2d.sdk.feature.group;version=[3.9.0,4.0.0)
         org.eclipse.emf.common.feature.group;version=[2.9.0,3.0.0)
