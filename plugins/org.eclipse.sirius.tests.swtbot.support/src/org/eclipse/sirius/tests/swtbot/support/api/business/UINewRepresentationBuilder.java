@@ -20,6 +20,7 @@ import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.tests.swtbot.support.utils.business.UIRepresentationUtils;
 import org.eclipse.sirius.ui.tools.api.Messages;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
@@ -135,9 +136,14 @@ public class UINewRepresentationBuilder<R extends AbstractUIRepresentation<?>> i
         finish();
 
         // Get the corresponding SWtBotEditor
-        SWTBotSiriusDiagramEditor swtBotEditor = SWTBotSiriusHelper.getSiriusDiagramEditor(newRepresentationName);
+        SWTBotEditor swtBotEditor = SWTBotSiriusHelper.getSiriusEditor(newRepresentationName);
+        if (disableSnapToGridOnThisEditor) {
+            swtBotEditor = SWTBotSiriusHelper.getSiriusDiagramEditor(newRepresentationName);
+        } else {
+            swtBotEditor = SWTBotSiriusHelper.getSiriusEditor(newRepresentationName);
+        }
         if (swtBotEditor != null && disableSnapToGridOnThisEditor) {
-            swtBotEditor.disableSnapToGrid();
+            ((SWTBotSiriusDiagramEditor) swtBotEditor).disableSnapToGrid();
         }
         return UIRepresentationUtils.buildRepresentation(null, getRealNewRepresentationName(), getRepresentationType());
     }
