@@ -34,12 +34,14 @@ import com.google.common.collect.Iterables;
  * 
  */
 public class RGBValuesProvider {
+    private static final RGBValues RED = makeColor(255, 0, 0);
+
+    private static final RGBValues GREEN = makeColor(0, 255, 0);
 
     /**
-     * Predicate that validate a LevelColor.
+     * Predicate that validate a ColorSet.
      */
-    private Predicate<ColorStep> definedLevelColors = new Predicate<ColorStep>() {
-
+    private static final Predicate<ColorStep> WELL_DEFINED_STEP = new Predicate<ColorStep>() {
         public boolean apply(ColorStep input) {
             return input.getAssociatedColor() != null && input.getAssociatedValue() != null && !"".equals(input.getAssociatedValue());
         }
@@ -87,12 +89,7 @@ public class RGBValuesProvider {
         if (blue == null) {
             blue = 0;
         }
-
-        final RGBValues rgb = ViewpointFactory.eINSTANCE.createRGBValues();
-        rgb.setBlue(blue);
-        rgb.setGreen(green);
-        rgb.setRed(red);
-        return rgb;
+        return makeColor(red, green, blue);
     }
 
     /**
@@ -107,7 +104,7 @@ public class RGBValuesProvider {
      * @return the rgb values from the color definition.
      */
     public RGBValues getRGBValues(final InterpolatedColor object, final EObject evaluationContext, final IInterpreter interpreter) {
-        if (object.getColorSteps().isEmpty() || !Iterables.any(object.getColorSteps(), definedLevelColors)) {
+        if (object.getColorSteps().isEmpty() || !Iterables.any(object.getColorSteps(), WELL_DEFINED_STEP)) {
             return getDefaultRGBValues(object, evaluationContext, interpreter);
         } else {
             return getInterpolatedRGBValues(object, evaluationContext, interpreter);
@@ -115,11 +112,6 @@ public class RGBValuesProvider {
     }
 
     private RGBValues getInterpolatedRGBValues(final InterpolatedColor object, final EObject evaluationContext, final IInterpreter interpreter) {
-        final RGBValues rgb = ViewpointFactory.eINSTANCE.createRGBValues();
-        rgb.setBlue(0);
-        rgb.setGreen(0);
-        rgb.setRed(0);
-
         Integer closestLowerBound = Integer.MIN_VALUE;
         FixedColor closestLowerFixedColor = null;
         Integer minBound = Integer.MAX_VALUE;
@@ -138,7 +130,7 @@ public class RGBValuesProvider {
         // Investigate colors to find the closest lower and upper LevelColor
         // Also find the min and max color if the value is out of LevelColors
         // range
-        for (ColorStep colorStep : Iterables.filter(object.getColorSteps(), definedLevelColors)) {
+        for (ColorStep colorStep : Iterables.filter(object.getColorSteps(), WELL_DEFINED_STEP)) {
             Integer associatedValue = RGBValuesProvider.getIntFromAcceleoExpression(interpreter, evaluationContext, colorStep, DescriptionPackage.eINSTANCE.getColorStep_AssociatedValue());
             if (associatedValue != null && associatedValue > closestLowerBound && associatedValue <= value) {
                 closestLowerBound = associatedValue;
@@ -198,19 +190,10 @@ public class RGBValuesProvider {
         final int valRed = (int) (closestLowerFixedColor.getRed() + ((closestUpperFixedColor.getRed() - closestLowerFixedColor.getRed()) * scale));
         final int valGreen = (int) (closestLowerFixedColor.getGreen() + ((closestUpperFixedColor.getGreen() - closestLowerFixedColor.getGreen()) * scale));
         final int valBlue = (int) (closestLowerFixedColor.getBlue() + ((closestUpperFixedColor.getBlue() - closestLowerFixedColor.getBlue()) * scale));
-        rgb.setRed(EnvironmentSystemColorFactory.clamp(valRed, 0, 255));
-        rgb.setGreen(EnvironmentSystemColorFactory.clamp(valGreen, 0, 255));
-        rgb.setBlue(EnvironmentSystemColorFactory.clamp(valBlue, 0, 255));
-        return rgb;
-
+        return makeColor(valRed, valGreen, valBlue);
     }
 
     private RGBValues getDefaultRGBValues(final InterpolatedColor object, final EObject evaluationContext, final IInterpreter interpreter) {
-        final RGBValues rgb = ViewpointFactory.eINSTANCE.createRGBValues();
-        rgb.setBlue(0);
-        rgb.setGreen(0);
-        rgb.setRed(0);
-
         Integer min = RGBValuesProvider.getIntFromAcceleoExpression(interpreter, evaluationContext, object, DescriptionPackage.eINSTANCE.getInterpolatedColor_MinValueComputationExpression());
         Integer max = RGBValuesProvider.getIntFromAcceleoExpression(interpreter, evaluationContext, object, DescriptionPackage.eINSTANCE.getInterpolatedColor_MaxValueComputationExpression());
         Integer value = RGBValuesProvider.getIntFromAcceleoExpression(interpreter, evaluationContext, object, DescriptionPackage.eINSTANCE.getInterpolatedColor_ColorValueComputationExpression());
@@ -229,9 +212,6 @@ public class RGBValuesProvider {
             value = Integer.valueOf(max.intValue());
         }
 
-        final RGBValues red = red();
-        final RGBValues green = green();
-
         if (max <= min) {
             max = min + 1;
         }
@@ -243,30 +223,18 @@ public class RGBValuesProvider {
         }
 
         final float scale = ((float) value - min) / (max - min);
-        final int valRed = (int) (green.getRed() + ((red.getRed() - green.getRed()) * scale));
-        final int valGreen = (int) (green.getGreen() + ((red.getGreen() - green.getGreen()) * scale));
-        final int valBlue = (int) (green.getBlue() + ((red.getBlue() - green.getBlue()) * scale));
-        rgb.setRed(EnvironmentSystemColorFactory.clamp(valRed, 0, 255));
-        rgb.setGreen(EnvironmentSystemColorFactory.clamp(valGreen, 0, 255));
-        rgb.setBlue(EnvironmentSystemColorFactory.clamp(valBlue, 0, 255));
-        return rgb;
-
+        final int valRed = (int) (GREEN.getRed() + ((RED.getRed() - GREEN.getRed()) * scale));
+        final int valGreen = (int) (GREEN.getGreen() + ((RED.getGreen() - GREEN.getGreen()) * scale));
+        final int valBlue = (int) (GREEN.getBlue() + ((RED.getBlue() - GREEN.getBlue()) * scale));
+        return makeColor(valRed, valGreen, valBlue);
     }
 
-    private RGBValues red() {
-        final RGBValues values = ViewpointFactory.eINSTANCE.createRGBValues();
-        values.setRed(255);
-        values.setBlue(0);
-        values.setGreen(0);
-        return values;
-    }
-
-    private RGBValues green() {
-        final RGBValues values = ViewpointFactory.eINSTANCE.createRGBValues();
-        values.setRed(0);
-        values.setBlue(0);
-        values.setGreen(255);
-        return values;
+    private static RGBValues makeColor(int red, int green, int blue) {
+        RGBValues color = ViewpointFactory.eINSTANCE.createRGBValues();
+        color.setRed(EnvironmentSystemColorFactory.clamp(red, 0, 255));
+        color.setGreen(EnvironmentSystemColorFactory.clamp(green, 0, 255));
+        color.setBlue(EnvironmentSystemColorFactory.clamp(blue, 0, 255));
+        return color;
     }
 
     private static Integer getIntFromAcceleoExpression(final IInterpreter interpreter, final EObject context, final EObject descriptionObject, final EStructuralFeature eFeature) {
