@@ -14,7 +14,6 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.internal.query.DModelElementInternalQuery;
@@ -76,38 +75,6 @@ public class DSemanticDiagramSpec extends DSemanticDiagramImpl {
     public EList<DDiagramElement> getDiagramElements() {
         final Collection<DDiagramElement> result = new DDiagramInternalQuery(this).getDiagramElements();
         return new EcoreEList.UnmodifiableEList<DDiagramElement>(eInternalContainer(), DiagramPackage.eINSTANCE.getDDiagram_DiagramElements(), result.size(), result.toArray());
-    }
-
-    /**
-     * Create the contents of the viewpoint.
-     * 
-     * @see org.eclipse.sirius.viewpoint.impl.DDiagramImpl#createContents()
-     */
-    @Override
-    public void createContents() {
-        refresh();
-    }
-
-    /**
-     * Create the contents of the viewpoint with the specified root element.
-     * 
-     * @param rootElement
-     *            the root element.
-     * @see org.eclipse.sirius.viewpoint.impl.DDiagramImpl#createContents(org.eclipse.emf.ecore.EObject)
-     */
-    @Override
-    public void createContents(final EObject rootElement) {
-        refresh();
-    }
-
-    /**
-     * Update the content of the viewpoint.
-     * 
-     * @see org.eclipse.sirius.viewpoint.impl.DDiagramImpl#updateContent()
-     */
-    @Override
-    public void updateContent() {
-        refresh();
     }
 
     /**

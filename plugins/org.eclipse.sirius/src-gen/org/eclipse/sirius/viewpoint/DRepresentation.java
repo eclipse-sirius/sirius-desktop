@@ -12,7 +12,6 @@
 package org.eclipse.sirius.viewpoint;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.DModelElement;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
@@ -119,42 +118,5 @@ public interface DRepresentation extends DocumentedElement, DRefreshable, DModel
      * @generated
      */
     EList<AnnotationEntry> getOwnedAnnotationEntries();
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Initialize the contents (ViewNode, ViewNodeContainer, etc.) of the
-     * viewpoint. <!-- end-model-doc -->
-     * 
-     * @model
-     * @generated
-     */
-    @Deprecated
-    void createContents();
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Initialize the content (ViewNode, ViewNodeContainer, etc.) of the
-     * viewpoint.
-     * 
-     * @param rootElement
-     *            The root EObject of the semantic model. The content of the
-     *            viewpoint is computed from this object. <!-- end-model-doc -->
-     * @model
-     * @generated
-     */
-    @Deprecated
-    void createContents(EObject rootElement);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Update the content of the viewpoint according to the semantic model
-     * changes. It deletes useless elements and adds new elements. <!--
-     * end-model-doc -->
-     * 
-     * @model
-     * @generated
-     */
-    @Deprecated
-    void updateContent();
 
 } // DRepresentation

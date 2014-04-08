@@ -73,6 +73,7 @@ h4. Changes in @org.eclipse.sirius@
 * In @org.eclipse.sirius.business.api.dialect.DialectManager@
 ** the setter @setRefreshActivatedOnRepresentationOpening(boolean)@ has been removed as the refresh on opening should be managed from the corresponding preference @org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING@.
 ** @isRefreshActivatedOnRepresentationOpening()@ has been moved into @org.eclipse.sirius.ui.business.api.dialect.DialectUIManager@ as it refers to an UI behavior.
+* The @DRepresentation.createContents()@ (both variants) and @DRepresentation.updateContents()@ EOperations have been removed. They were not used anywhere.
 
 h4. Changes in @org.eclipse.sirius.diagram@
 

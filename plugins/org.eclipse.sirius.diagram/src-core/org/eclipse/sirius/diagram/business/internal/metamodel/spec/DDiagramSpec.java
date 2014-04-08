@@ -14,7 +14,6 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.internal.query.DModelElementInternalQuery;
@@ -122,36 +121,6 @@ public class DDiagramSpec extends DDiagramImpl {
         final Collection<DDiagramElementContainer> result = new DDiagramInternalQuery(this).getContainers();
         return new EcoreEList.UnmodifiableEList<DDiagramElementContainer>(eInternalContainer(), DiagramPackage.eINSTANCE.getDDiagram_Containers(), result.size(), result.toArray());
 
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.impl.DDiagramImpl#createContents()
-     */
-    @Override
-    public void createContents() {
-        refresh();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.impl.DDiagramImpl#createContents(org.eclipse.emf.ecore.EObject)
-     */
-    @Override
-    public void createContents(final EObject rootElement) {
-        refresh();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.impl.DDiagramImpl#updateContent()
-     */
-    @Override
-    public void updateContent() {
-        refresh();
     }
 
     /**

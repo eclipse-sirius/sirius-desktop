@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -1544,13 +1543,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
                 !IS_DERIVED, IS_ORDERED);
         initEReference(getDRepresentation_OwnedAnnotationEntries(), theDescriptionPackage.getAnnotationEntry(), null, "ownedAnnotationEntries", null, 0, -1, DRepresentation.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-        addEOperation(dRepresentationEClass, null, "createContents", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-        EOperation op = addEOperation(dRepresentationEClass, null, "createContents", 0, 1, IS_UNIQUE, IS_ORDERED);
-        addEParameter(op, theEcorePackage.getEObject(), "rootElement", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-        addEOperation(dRepresentationEClass, null, "updateContent", 0, 1, IS_UNIQUE, IS_ORDERED);
 
         initEClass(dRepresentationElementEClass, DRepresentationElement.class, "DRepresentationElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getDRepresentationElement_Name(), ecorePackage.getEString(), "name", "", 0, 1, DRepresentationElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,

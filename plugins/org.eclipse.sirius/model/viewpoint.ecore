@@ -102,26 +102,6 @@
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DRepresentation" abstract="true" eSuperTypes="#//description/DocumentedElement #//DRefreshable #//description/DModelElement">
-    <eOperations name="createContents">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Initialize the contents (ViewNode, ViewNodeContainer, etc.) of the viewpoint."/>
-      </eAnnotations>
-    </eOperations>
-    <eOperations name="createContents">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Initialize the content (ViewNode, ViewNodeContainer, etc.) of the viewpoint."/>
-      </eAnnotations>
-      <eParameters name="rootElement" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The root EObject of the semantic model.&#xD;&#xA;The content of the viewpoint is computed from this object."/>
-        </eAnnotations>
-      </eParameters>
-    </eOperations>
-    <eOperations name="updateContent">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Update the content of the viewpoint according to the semantic model changes. It deletes useless elements and adds new elements."/>
-      </eAnnotations>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedRepresentationElements"
         upperBound="-1" eType="#//DRepresentationElement" changeable="false" volatile="true"
         transient="true" derived="true">
