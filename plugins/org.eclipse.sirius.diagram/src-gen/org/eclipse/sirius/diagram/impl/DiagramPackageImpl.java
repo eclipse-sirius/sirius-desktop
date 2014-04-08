@@ -643,7 +643,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getDDiagram_SubDiagrams() {
+    public EReference getDDiagram_Edges() {
         return (EReference) dDiagramEClass.getEStructuralFeatures().get(3);
     }
 
@@ -652,7 +652,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getDDiagram_Edges() {
+    public EReference getDDiagram_Nodes() {
         return (EReference) dDiagramEClass.getEStructuralFeatures().get(4);
     }
 
@@ -661,7 +661,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getDDiagram_Nodes() {
+    public EReference getDDiagram_NodeListElements() {
         return (EReference) dDiagramEClass.getEStructuralFeatures().get(5);
     }
 
@@ -670,7 +670,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getDDiagram_NodeListElements() {
+    public EReference getDDiagram_Containers() {
         return (EReference) dDiagramEClass.getEStructuralFeatures().get(6);
     }
 
@@ -679,7 +679,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getDDiagram_Containers() {
+    public EReference getDDiagram_CurrentConcern() {
         return (EReference) dDiagramEClass.getEStructuralFeatures().get(7);
     }
 
@@ -688,7 +688,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getDDiagram_CurrentConcern() {
+    public EReference getDDiagram_ActivatedFilters() {
         return (EReference) dDiagramEClass.getEStructuralFeatures().get(8);
     }
 
@@ -697,7 +697,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getDDiagram_ActivatedFilters() {
+    public EReference getDDiagram_AllFilters() {
         return (EReference) dDiagramEClass.getEStructuralFeatures().get(9);
     }
 
@@ -706,7 +706,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getDDiagram_AllFilters() {
+    public EReference getDDiagram_ActivatedRules() {
         return (EReference) dDiagramEClass.getEStructuralFeatures().get(10);
     }
 
@@ -715,7 +715,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getDDiagram_ActivatedRules() {
+    public EReference getDDiagram_ActivateBehaviors() {
         return (EReference) dDiagramEClass.getEStructuralFeatures().get(11);
     }
 
@@ -724,7 +724,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getDDiagram_ActivateBehaviors() {
+    public EReference getDDiagram_FilterVariableHistory() {
         return (EReference) dDiagramEClass.getEStructuralFeatures().get(12);
     }
 
@@ -733,7 +733,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getDDiagram_FilterVariableHistory() {
+    public EReference getDDiagram_ActivatedLayers() {
         return (EReference) dDiagramEClass.getEStructuralFeatures().get(13);
     }
 
@@ -742,17 +742,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getDDiagram_ActivatedLayers() {
-        return (EReference) dDiagramEClass.getEStructuralFeatures().get(14);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public EAttribute getDDiagram_Synchronized() {
-        return (EAttribute) dDiagramEClass.getEStructuralFeatures().get(15);
+        return (EAttribute) dDiagramEClass.getEStructuralFeatures().get(14);
     }
 
     /**
@@ -761,7 +752,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     public EReference getDDiagram_HiddenElements() {
-        return (EReference) dDiagramEClass.getEStructuralFeatures().get(16);
+        return (EReference) dDiagramEClass.getEStructuralFeatures().get(15);
     }
 
     /**
@@ -770,7 +761,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     public EAttribute getDDiagram_IsInLayoutingMode() {
-        return (EAttribute) dDiagramEClass.getEStructuralFeatures().get(17);
+        return (EAttribute) dDiagramEClass.getEStructuralFeatures().get(16);
     }
 
     /**
@@ -779,7 +770,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     public EAttribute getDDiagram_HeaderHeight() {
-        return (EAttribute) dDiagramEClass.getEStructuralFeatures().get(18);
+        return (EAttribute) dDiagramEClass.getEStructuralFeatures().get(17);
     }
 
     /**
@@ -2345,7 +2336,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         createEReference(dDiagramEClass, DDIAGRAM__OWNED_DIAGRAM_ELEMENTS);
         createEReference(dDiagramEClass, DDIAGRAM__DIAGRAM_ELEMENTS);
         createEReference(dDiagramEClass, DDIAGRAM__DESCRIPTION);
-        createEReference(dDiagramEClass, DDIAGRAM__SUB_DIAGRAMS);
         createEReference(dDiagramEClass, DDIAGRAM__EDGES);
         createEReference(dDiagramEClass, DDIAGRAM__NODES);
         createEReference(dDiagramEClass, DDIAGRAM__NODE_LIST_ELEMENTS);
@@ -2692,8 +2682,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
         initEReference(getDDiagram_Description(), theDescriptionPackage.getDiagramDescription(), null, "description", null, 0, 1, DDiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDDiagram_SubDiagrams(), this.getDDiagram(), null, "subDiagrams", null, 0, -1, DDiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
-                !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getDDiagram_Edges(), this.getDEdge(), null, "edges", null, 0, -1, DDiagram.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
                 IS_UNIQUE, IS_DERIVED, IS_ORDERED);
         initEReference(getDDiagram_Nodes(), this.getDNode(), null, "nodes", null, 0, -1, DDiagram.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,

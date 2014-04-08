@@ -55,8 +55,6 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationImpl;
  * <em>Diagram Elements</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getDescription <em>
  * Description</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getSubDiagrams <em>
- * Sub Diagrams</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getEdges <em>Edges
  * </em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getNodes <em>Nodes
@@ -114,16 +112,6 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * @ordered
      */
     protected DiagramDescription description;
-
-    /**
-     * The cached value of the '{@link #getSubDiagrams() <em>Sub Diagrams</em>}'
-     * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see #getSubDiagrams()
-     * @generated
-     * @ordered
-     */
-    protected EList<DDiagram> subDiagrams;
 
     /**
      * The cached value of the '{@link #getCurrentConcern()
@@ -350,18 +338,6 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
         description = newDescription;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DDIAGRAM__DESCRIPTION, oldDescription, description));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EList<DDiagram> getSubDiagrams() {
-        if (subDiagrams == null) {
-            subDiagrams = new EObjectContainmentEList.Resolving<DDiagram>(DDiagram.class, this, DiagramPackage.DDIAGRAM__SUB_DIAGRAMS);
-        }
-        return subDiagrams;
     }
 
     /**
@@ -742,8 +718,6 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
         switch (featureID) {
         case DiagramPackage.DDIAGRAM__OWNED_DIAGRAM_ELEMENTS:
             return ((InternalEList<?>) getOwnedDiagramElements()).basicRemove(otherEnd, msgs);
-        case DiagramPackage.DDIAGRAM__SUB_DIAGRAMS:
-            return ((InternalEList<?>) getSubDiagrams()).basicRemove(otherEnd, msgs);
         case DiagramPackage.DDIAGRAM__FILTER_VARIABLE_HISTORY:
             return basicSetFilterVariableHistory(null, msgs);
         }
@@ -766,8 +740,6 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
             if (resolve)
                 return getDescription();
             return basicGetDescription();
-        case DiagramPackage.DDIAGRAM__SUB_DIAGRAMS:
-            return getSubDiagrams();
         case DiagramPackage.DDIAGRAM__EDGES:
             return getEdges();
         case DiagramPackage.DDIAGRAM__NODES:
@@ -822,10 +794,6 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
         case DiagramPackage.DDIAGRAM__DESCRIPTION:
             setDescription((DiagramDescription) newValue);
             return;
-        case DiagramPackage.DDIAGRAM__SUB_DIAGRAMS:
-            getSubDiagrams().clear();
-            getSubDiagrams().addAll((Collection<? extends DDiagram>) newValue);
-            return;
         case DiagramPackage.DDIAGRAM__CURRENT_CONCERN:
             setCurrentConcern((ConcernDescription) newValue);
             return;
@@ -879,9 +847,6 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
         case DiagramPackage.DDIAGRAM__DESCRIPTION:
             setDescription((DiagramDescription) null);
             return;
-        case DiagramPackage.DDIAGRAM__SUB_DIAGRAMS:
-            getSubDiagrams().clear();
-            return;
         case DiagramPackage.DDIAGRAM__CURRENT_CONCERN:
             setCurrentConcern((ConcernDescription) null);
             return;
@@ -930,8 +895,6 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
             return !getDiagramElements().isEmpty();
         case DiagramPackage.DDIAGRAM__DESCRIPTION:
             return description != null;
-        case DiagramPackage.DDIAGRAM__SUB_DIAGRAMS:
-            return subDiagrams != null && !subDiagrams.isEmpty();
         case DiagramPackage.DDIAGRAM__EDGES:
             return !getEdges().isEmpty();
         case DiagramPackage.DDIAGRAM__NODES:

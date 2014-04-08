@@ -288,7 +288,6 @@ public class DDiagramItemProvider extends DRepresentationItemProvider implements
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
             childrenFeatures.add(DiagramPackage.Literals.DDIAGRAM__OWNED_DIAGRAM_ELEMENTS);
-            childrenFeatures.add(DiagramPackage.Literals.DDIAGRAM__SUB_DIAGRAMS);
             childrenFeatures.add(DiagramPackage.Literals.DDIAGRAM__FILTER_VARIABLE_HISTORY);
         }
         return childrenFeatures;
@@ -349,7 +348,6 @@ public class DDiagramItemProvider extends DRepresentationItemProvider implements
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case DiagramPackage.DDIAGRAM__OWNED_DIAGRAM_ELEMENTS:
-        case DiagramPackage.DDIAGRAM__SUB_DIAGRAMS:
         case DiagramPackage.DDIAGRAM__FILTER_VARIABLE_HISTORY:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
@@ -377,10 +375,6 @@ public class DDiagramItemProvider extends DRepresentationItemProvider implements
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.DDIAGRAM__OWNED_DIAGRAM_ELEMENTS, DiagramFactory.eINSTANCE.createDNodeListElement()));
 
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.DDIAGRAM__OWNED_DIAGRAM_ELEMENTS, DiagramFactory.eINSTANCE.createDEdge()));
-
-        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.DDIAGRAM__SUB_DIAGRAMS, DiagramFactory.eINSTANCE.createDDiagram()));
-
-        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.DDIAGRAM__SUB_DIAGRAMS, DiagramFactory.eINSTANCE.createDSemanticDiagram()));
 
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.DDIAGRAM__FILTER_VARIABLE_HISTORY, DiagramFactory.eINSTANCE.createFilterVariableHistory()));
     }

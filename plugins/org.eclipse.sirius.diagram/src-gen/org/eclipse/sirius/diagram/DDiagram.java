@@ -44,8 +44,6 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
  * Elements</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DDiagram#getDescription <em>Description
  * </em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DDiagram#getSubDiagrams <em>Sub
- * Diagrams</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DDiagram#getEdges <em>Edges</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DDiagram#getNodes <em>Nodes</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DDiagram#getNodeListElements <em>Node
@@ -136,21 +134,6 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * @generated
      */
     void setDescription(DiagramDescription value);
-
-    /**
-     * Returns the value of the '<em><b>Sub Diagrams</b></em>' containment
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.DDiagram}. <!-- begin-user-doc --> <!--
-     * end-user-doc --> <!-- begin-model-doc --> Diagrams that are owned by this
-     * diagram. <!-- end-model-doc -->
-     * 
-     * @return the value of the '<em>Sub Diagrams</em>' containment reference
-     *         list.
-     * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_SubDiagrams()
-     * @model containment="true" resolveProxies="true"
-     * @generated
-     */
-    EList<DDiagram> getSubDiagrams();
 
     /**
      * Returns the value of the '<em><b>Edges</b></em>' reference list. The list
