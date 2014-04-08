@@ -55,6 +55,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
@@ -1037,18 +1038,10 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     @Deprecated
     protected SWTBotSiriusDiagramEditor openDiagram(Session session, String diagramDescriptionName, final String diagramName, Class<? extends DRepresentation> expectedRepresentationClass,
             boolean disableSnapToGridOnThisEditor) {
-        // Get the diagram with this name
-        DRepresentation representation = getRepresentationWithName(session, diagramDescriptionName, diagramName);
-        TestCase.assertTrue("This representation should be a " + expectedRepresentationClass.getSimpleName(), expectedRepresentationClass.isInstance(representation));
-        // Open the corresponding editor
-        IEditorPart editorPart = DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
-        SWTBotUtils.waitAllUiEvents();
-        // Get the corresponding SWtBotEditor
-        SWTBotSiriusDiagramEditor swtBotEditor = SWTBotSiriusHelper.getSiriusDiagramEditor(editorPart.getTitle());
-        if (disableSnapToGridOnThisEditor) {
-            swtBotEditor.disableSnapToGrid();
-        }
-        return swtBotEditor;
+        assertTrue("This method is only able to deal with diagrams.", DiagramPackage.Literals.DDIAGRAM.getInstanceClass().isAssignableFrom(expectedRepresentationClass));
+        SWTBotEditor diagramEditor = openRepresentation(session, diagramDescriptionName, diagramName, expectedRepresentationClass, disableSnapToGridOnThisEditor);
+        assertTrue(diagramEditor instanceof SWTBotSiriusDiagramEditor);
+        return (SWTBotSiriusDiagramEditor) diagramEditor;
     }
 
     /**
