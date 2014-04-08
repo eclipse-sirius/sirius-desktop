@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DSemanticDiagramHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementSpecOperations;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.impl.DNodeListElementImpl;
@@ -74,7 +75,7 @@ public class DNodeListElementSpec extends DNodeListElementImpl {
             final EObject representedParent = getFirstParentWithSemantic();
             EObject representedParentSemantic = getFirstParentWithSemantic().getTarget();
             if (representedParent instanceof DSemanticDiagram) {
-                representedParentSemantic = ((DSemanticDiagram) representedParent).getRootContent();
+                representedParentSemantic = DSemanticDiagramHelper.getRootContent((DSemanticDiagram) representedParent);
             }
             if (!getActualMapping().getNodesCandidates(representedParentSemantic, ((DSemanticDecorator) representedParent).getTarget(), this.eContainer()).contains(mySemanticElement)) {
                 DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.VALIDATE_NODE_KEY);

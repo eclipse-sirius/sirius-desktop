@@ -36,6 +36,7 @@ import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.query.EdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DSemanticDiagramHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementSpecOperations;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -131,7 +132,7 @@ public class DEdgeSpec extends DEdgeImpl {
         final DSemanticDiagram diagram;
         if (getParentDiagram() instanceof DSemanticDiagram) {
             diagram = (DSemanticDiagram) getParentDiagram();
-            root = diagram.getRootContent();
+            root = DSemanticDiagramHelper.getRootContent(diagram);
         } else {
             diagram = null;
         }

@@ -2752,8 +2752,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
         initEClass(dSemanticDiagramEClass, DSemanticDiagram.class, "DSemanticDiagram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-        addEOperation(dSemanticDiagramEClass, theEcorePackage.getEObject(), "getRootContent", 0, 1, IS_UNIQUE, IS_ORDERED);
-
         initEClass(dDiagramElementEClass, DDiagramElement.class, "DDiagramElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getDDiagramElement_Visible(), theEcorePackage.getEBoolean(), "visible", "true", 0, 1, DDiagramElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
                 IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

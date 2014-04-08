@@ -110,9 +110,7 @@
         <genParameters ecoreParameter="diagram.ecore#//DDiagram/findDiagramElements/type"/>
       </genOperations>
     </genClasses>
-    <genClasses ecoreClass="diagram.ecore#//DSemanticDiagram">
-      <genOperations ecoreOperation="diagram.ecore#//DSemanticDiagram/getRootContent"/>
-    </genClasses>
+    <genClasses ecoreClass="diagram.ecore#//DSemanticDiagram"/>
     <genClasses image="false" ecoreClass="diagram.ecore#//DDiagramElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//DDiagramElement/visible"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//DDiagramElement/tooltipText"/>

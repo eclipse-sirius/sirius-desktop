@@ -25,7 +25,6 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DSemanticDiagramHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramSpecOperations;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramInternalQuery;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
@@ -120,16 +119,6 @@ public class DSemanticDiagramSpec extends DSemanticDiagramImpl {
     @Override
     public void refresh() {
         DialectManager.INSTANCE.refresh(this, new NullProgressMonitor());
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.impl.DSemanticDiagramImpl#getRootContent()
-     */
-    @Override
-    public EObject getRootContent() {
-        return DSemanticDiagramHelper.getRootContent(this);
     }
 
     /*

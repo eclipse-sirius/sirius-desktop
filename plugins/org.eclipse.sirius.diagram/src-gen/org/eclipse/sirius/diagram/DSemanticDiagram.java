@@ -11,7 +11,6 @@
  */
 package org.eclipse.sirius.diagram;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
@@ -27,15 +26,5 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
  * @generated
  */
 public interface DSemanticDiagram extends DDiagram, DSemanticDecorator {
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Return the EObject from where the creation of the viewpoint starts. <!--
-     * end-model-doc -->
-     * 
-     * @model kind="operation"
-     * @generated
-     */
-    @Deprecated
-    EObject getRootContent();
 
 } // DSemanticDiagram

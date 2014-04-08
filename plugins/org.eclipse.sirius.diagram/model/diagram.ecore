@@ -154,11 +154,6 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A semantic viewpoint is a viewpoint that is rattached to a semantic element."/>
     </eAnnotations>
-    <eOperations name="getRootContent" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Return the EObject from where the creation of the viewpoint starts."/>
-      </eAnnotations>
-    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DDiagramElement" abstract="true" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//DRepresentationElement ../../org.eclipse.sirius/model/viewpoint.ecore#//DValidable ../../org.eclipse.sirius/model/viewpoint.ecore#//DNavigable">
     <eOperations name="getParentDiagram" eType="#//DDiagram">

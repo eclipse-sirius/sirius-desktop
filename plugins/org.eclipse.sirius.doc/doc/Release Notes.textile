@@ -82,6 +82,7 @@ h4. Changes in @org.eclipse.sirius.diagram@
 ** The @org.eclipse.sirius.diagram.tools.api.validation.constraint.AbstractDDiagramConstraint.activate()@ and @deactivate()@ methods.
 ** The @org.eclipse.sirius.business.api.helper.SiriusHelper.unSetHarmlessDanglingReferences()@ method.
 ** The @org.eclipse.sirius.tools.api.profiler.SiriusTasksKey.CLEANING_NODES_KEY@ constant.
+* The @DSemanticDiagram.getRootContents()@ method (which was deprecated) has been removed.
 
 h4. Changes in @org.eclipse.sirius.ui@
 
