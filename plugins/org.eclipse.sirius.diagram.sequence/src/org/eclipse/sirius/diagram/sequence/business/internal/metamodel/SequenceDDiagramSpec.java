@@ -113,16 +113,6 @@ public class SequenceDDiagramSpec extends SequenceDDiagramImpl {
     }
 
     /**
-     * Clean the viewpoint, delete all elements that are obsolete.
-     * 
-     * @see org.eclipse.sirius.viewpoint.impl.DDiagramImpl#clean()
-     */
-    @Override
-    public void clean() {
-        DSemanticDiagramHelper.clean(this);
-    }
-
-    /**
      * Refresh the viewpoint.
      * 
      * @see org.eclipse.sirius.viewpoint.impl.DDiagramImpl#refresh()

@@ -168,11 +168,6 @@ public final class SiriusTasksKey {
     /**
      * Task singleton.
      */
-    public static final String CLEANING_NODES_KEY = "Cleaning all nodes";
-
-    /**
-     * Task singleton.
-     */
     public static final String CLEANING_REMOVEDANGLING_KEY = "Cleaning : remove dangling references";
 
     /**

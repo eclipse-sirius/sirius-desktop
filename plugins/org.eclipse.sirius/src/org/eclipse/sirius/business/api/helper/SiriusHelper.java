@@ -10,17 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.helper;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationElement;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 
@@ -36,38 +28,6 @@ public final class SiriusHelper {
      */
     private SiriusHelper() {
 
-    }
-
-    /**
-     * Clear all the harmless dangling references from the given element.
-     * 
-     * @param elem
-     *            nay representation element.
-     */
-    public static void unSetHarmlessDanglingReferences(final DRepresentationElement elem) {
-        final Iterator<EObject> semantics = elem.getSemanticElements().iterator();
-        final Set<EObject> referedElementsToRemove = new HashSet<EObject>();
-        while (semantics.hasNext()) {
-            final EObject semantic = semantics.next();
-            if (semantic.eResource() == null) {
-                referedElementsToRemove.add(semantic);
-            }
-        }
-        final Iterator<EObject> toRemoves = referedElementsToRemove.iterator();
-        while (toRemoves.hasNext()) {
-            EcoreUtil.remove(elem, ViewpointPackage.eINSTANCE.getDRepresentationElement_SemanticElements(), toRemoves.next());
-        }
-        /*
-         * We'll do the same kind of trick for possible dangling reference to an
-         * OriginalStyle. Then let's just re-set the value with the best style.
-         */
-        final EStructuralFeature originalStyleFeat = elem.eClass().getEStructuralFeature("originalStyle");
-        if (originalStyleFeat != null) {
-            final EObject originalStyle = (EObject) elem.eGet(originalStyleFeat);
-            if (originalStyle != null && originalStyle.eResource() == null) {
-                elem.eSet(originalStyleFeat, null);
-            }
-        }
     }
 
     /**

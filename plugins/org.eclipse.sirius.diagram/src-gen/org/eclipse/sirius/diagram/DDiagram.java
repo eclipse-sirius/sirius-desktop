@@ -481,17 +481,6 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Clean the viewpoint. It deletes useless elements that have been deleted
-     * from the semantic model. <!-- end-model-doc -->
-     * 
-     * @model
-     * @generated
-     */
-    @Deprecated
-    void clean();
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Returns all nodes owned (directly or not) by this viewpoint that have
      * been created from the specified mapping.
      * 

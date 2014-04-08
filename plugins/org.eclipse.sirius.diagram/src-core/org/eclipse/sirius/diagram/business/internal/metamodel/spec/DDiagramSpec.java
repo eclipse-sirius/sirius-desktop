@@ -158,16 +158,6 @@ public class DDiagramSpec extends DDiagramImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.impl.DDiagramImpl#clean()
-     */
-    @Override
-    public void clean() {
-        DDiagramSpecOperations.clean(this);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.eclipse.sirius.viewpoint.impl.DDiagramImpl#getNodesFromMapping(org.eclipse.sirius.viewpoint.description.NodeMapping)
      */
     @Override

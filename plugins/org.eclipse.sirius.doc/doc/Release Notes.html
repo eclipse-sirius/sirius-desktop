@@ -125,7 +125,7 @@
 					<li>
 						<code>IDiagramDescriptionProvider</code>
 						<ul>
-							<li> 
+							<li>
 								<code>completeToolTipText(String, EObject)</code> allows the diagram type to customize the tooltip displayed in a property section of a given VSM element. 
 								<code>SequenceDiagramTypeProvider</code> implements this method to  mention some Sequence specific variable available in core and diagram tool preconditions in the context of a Sequence diagram.
 							</li>
@@ -270,6 +270,21 @@
 			</li>
 			<li>The 
 				<code>DDiagramLink</code> EClass has been removed from the meta-model, along with the corresponding generated Java code. It was not used in practice.
+			</li>
+			<li>The 
+				<code>DDiagram.clean()</code> EOperation has been removed. It was deprecated and not used anymore. All the Java code which existed only to help in the implementation of that operation has also been removed. This includes:
+				<ul>
+					<li>The 
+						<code>org.eclipse.sirius.diagram.tools.api.validation.constraint.AbstractDDiagramConstraint.activate()</code> and 
+						<code>deactivate()</code> methods.
+					</li>
+					<li>The 
+						<code>org.eclipse.sirius.business.api.helper.SiriusHelper.unSetHarmlessDanglingReferences()</code> method.
+					</li>
+					<li>The 
+						<code>org.eclipse.sirius.tools.api.profiler.SiriusTasksKey.CLEANING_NODES_KEY</code> constant.
+					</li>
+				</ul>
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 

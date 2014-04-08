@@ -64,16 +64,6 @@ public final class DDiagramSpecOperations {
     }
 
     /**
-     * Cleans the specified viewpoint.
-     * 
-     * @param vp
-     *            the viewpoint to clean.
-     */
-    public static void clean(final DDiagram vp) {
-        // redefine if needed
-    }
-
-    /**
      * Returns all nodes that are in the specified viewpoint and that have been
      * created from the specified mapping.
      * 

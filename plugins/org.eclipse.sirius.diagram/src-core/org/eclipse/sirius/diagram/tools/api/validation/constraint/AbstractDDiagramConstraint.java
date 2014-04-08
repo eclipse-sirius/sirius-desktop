@@ -49,45 +49,23 @@ import org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule;
  * 
  */
 public abstract class AbstractDDiagramConstraint extends AbstractModelConstraint {
-
-    private static boolean activated = true;
-
-    /**
-     * Deactivate the rules validation.
-     */
-    public static synchronized void deactivate() {
-        activated = false;
-    }
-
-    /**
-     * Activate the rules validation.
-     */
-    public static synchronized void activate() {
-        activated = true;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public IStatus validate(final IValidationContext ctx) {
-        if (activated) {
-            final EObject objetTeste = ctx.getTarget();
-            final EMFEventType typeEvenement = ctx.getEventType();
-            if (typeEvenement == EMFEventType.NULL && (objetTeste instanceof DDiagramElement)) {
-                final Collection<ValidationRule> failures = getFailingRules((DDiagramElement) objetTeste);
-                if (failures.size() > 0) {
-                    final MultiStatus parentStatus = new MultiStatus(SiriusPlugin.ID, getHighestStatusCode(failures), "Validation issues", null);
-                    for (ValidationRule failedRule : failures) {
-                        EObject target = objetTeste;
-                        if (failedRule instanceof SemanticValidationRule) {
-                            target = ((DDiagramElement) objetTeste).getTarget();
-                        }
-                        final ConstraintStatus emfStatus = (ConstraintStatus) ctx.createFailureStatus(new Object[] { failedRule.getMessage(target) });
-                        parentStatus.add(new RuleWrappingStatus(emfStatus, failedRule));
+        final EObject objetTeste = ctx.getTarget();
+        final EMFEventType typeEvenement = ctx.getEventType();
+        if (typeEvenement == EMFEventType.NULL && (objetTeste instanceof DDiagramElement)) {
+            final Collection<ValidationRule> failures = getFailingRules((DDiagramElement) objetTeste);
+            if (failures.size() > 0) {
+                final MultiStatus parentStatus = new MultiStatus(SiriusPlugin.ID, getHighestStatusCode(failures), "Validation issues", null);
+                for (ValidationRule failedRule : failures) {
+                    EObject target = objetTeste;
+                    if (failedRule instanceof SemanticValidationRule) {
+                        target = ((DDiagramElement) objetTeste).getTarget();
                     }
-                    return parentStatus;
+                    final ConstraintStatus emfStatus = (ConstraintStatus) ctx.createFailureStatus(new Object[] { failedRule.getMessage(target) });
+                    parentStatus.add(new RuleWrappingStatus(emfStatus, failedRule));
                 }
+                return parentStatus;
             }
         }
         return ctx.createSuccessStatus();

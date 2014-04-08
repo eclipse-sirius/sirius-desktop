@@ -726,17 +726,6 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * 
      * @generated
      */
-    public void clean() {
-        // TODO: implement this method
-        // Ensure that you remove @generated or mark it @generated NOT
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public EList<DNode> getNodesFromMapping(NodeMapping mapping) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT

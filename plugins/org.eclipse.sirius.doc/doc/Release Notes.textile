@@ -36,7 +36,7 @@ Unlike, the "Step1":#separationOfDiagramSpecificConcept-step1, a simple "Organiz
 ** @DialectUIManager@
 *** @canExport(DRepresentation, ExportFormat)@: New method returning true if at least one dialect is able to export this representation to this format, false otherwise.
 ** @IDiagramDescriptionProvider@
-***  @completeToolTipText(String, EObject)@ allows the diagram type to customize the tooltip displayed in a property section of a given VSM element. @SequenceDiagramTypeProvider@ implements this method to  mention some Sequence specific variable available in core and diagram tool preconditions in the context of a Sequence diagram.
+*** @completeToolTipText(String, EObject)@ allows the diagram type to customize the tooltip displayed in a property section of a given VSM element. @SequenceDiagramTypeProvider@ implements this method to  mention some Sequence specific variable available in core and diagram tool preconditions in the context of a Sequence diagram.
 * All methods of @SiriusHelper@ concerning diagrams have been moved to @org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramHelper@.
 * All methods of @SiriusUtil@ concerning diagrams have been moved to @org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil@.
 * All methods of @org.eclipse.sirius.business.api.query.EObjectQuery@ concerning diagrams have been moved to @org.eclipse.sirius.diagram.business.api.query.EObjectQuery@.
@@ -78,6 +78,10 @@ h4. Changes in @org.eclipse.sirius.diagram@
 
 * The references @DNode.ownedDetails@ and @DDiagramElementContainerImpl.ownedDetails@ have been removed from the metamodel, along with the corresponding implementation methods. They were not used in practice.
 * The @DDiagramLink@ EClass has been removed from the meta-model, along with the corresponding generated Java code. It was not used in practice.
+* The @DDiagram.clean()@ EOperation has been removed. It was deprecated and not used anymore. All the Java code which existed only to help in the implementation of that operation has also been removed. This includes:
+** The @org.eclipse.sirius.diagram.tools.api.validation.constraint.AbstractDDiagramConstraint.activate()@ and @deactivate()@ methods.
+** The @org.eclipse.sirius.business.api.helper.SiriusHelper.unSetHarmlessDanglingReferences()@ method.
+** The @org.eclipse.sirius.tools.api.profiler.SiriusTasksKey.CLEANING_NODES_KEY@ constant.
 
 h4. Changes in @org.eclipse.sirius.ui@
 

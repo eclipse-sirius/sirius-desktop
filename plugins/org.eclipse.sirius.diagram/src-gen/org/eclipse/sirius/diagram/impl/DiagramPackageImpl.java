@@ -2737,8 +2737,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         initEAttribute(getDDiagram_HeaderHeight(), theEcorePackage.getEInt(), "headerHeight", "1", 0, 1, DDiagram.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
                 !IS_DERIVED, IS_ORDERED);
 
-        addEOperation(dDiagramEClass, null, "clean", 0, 1, IS_UNIQUE, IS_ORDERED);
-
         EOperation op = addEOperation(dDiagramEClass, this.getDNode(), "getNodesFromMapping", 0, -1, IS_UNIQUE, IS_ORDERED);
         addEParameter(op, theDescriptionPackage.getNodeMapping(), "mapping", 0, 1, IS_UNIQUE, IS_ORDERED);
 

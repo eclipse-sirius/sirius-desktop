@@ -6,11 +6,6 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="ViewPoint is the type of all diagrams in AIR.&#xD;&#xA;A viewpoint is composed of nodes, containers and connections. It is owned by an anlysis or by a parent viewpoint. In this last case the viewpoint should be called detailed viewpoint."/>
     </eAnnotations>
-    <eOperations name="clean">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Clean the viewpoint. It deletes useless elements that have been deleted from the semantic model."/>
-      </eAnnotations>
-    </eOperations>
     <eOperations name="getNodesFromMapping" upperBound="-1" eType="#//DNode">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Returns all nodes owned (directly or not) by this viewpoint that have been created from the specified mapping."/>

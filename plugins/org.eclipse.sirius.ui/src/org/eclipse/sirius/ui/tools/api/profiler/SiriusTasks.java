@@ -143,11 +143,6 @@ public final class SiriusTasks {
     /**
      * Task singleton.
      */
-    public static final ProfilerTask CLEANING_NODES = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.CLEANING_NODES_KEY, getImagePath(IMAGES_VIEWPOINT));
-
-    /**
-     * Task singleton.
-     */
     public static final ProfilerTask CLEANING_REMOVEDANGLING = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, SiriusTasksKey.CLEANING_REMOVEDANGLING_KEY, getImagePath(IMAGES_VIEWPOINT));
 
     /**
@@ -404,7 +399,6 @@ public final class SiriusTasks {
         TimeProfiler.PROFILER_TASK_REGISTRY.put(CREATE_MISSING_EDGES.getName(), CREATE_MISSING_EDGES);
         TimeProfiler.PROFILER_TASK_REGISTRY.put(CREATE_MISSING_CONTAINER.getName(), CREATE_MISSING_CONTAINER);
         TimeProfiler.PROFILER_TASK_REGISTRY.put(REFRESH_DIAGRAM.getName(), REFRESH_DIAGRAM);
-        TimeProfiler.PROFILER_TASK_REGISTRY.put(CLEANING_NODES.getName(), CLEANING_NODES);
         TimeProfiler.PROFILER_TASK_REGISTRY.put(CLEANING_REMOVEDANGLING.getName(), CLEANING_REMOVEDANGLING);
         TimeProfiler.PROFILER_TASK_REGISTRY.put(CLEANING_EDGES.getName(), CLEANING_EDGES);
         TimeProfiler.PROFILER_TASK_REGISTRY.put(VALIDATE_NODE.getName(), VALIDATE_NODE);
