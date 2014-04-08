@@ -30,8 +30,6 @@ import org.eclipse.sirius.viewpoint.Style;
  * </em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DNode#getLabelPosition <em>Label
  * Position</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DNode#getOwnedDetails <em>Owned Details
- * </em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DNode#getResizeKind <em>Resize Kind
  * </em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DNode#getOriginalStyle <em>Original
@@ -162,21 +160,6 @@ public interface DNode extends AbstractDNode, EdgeTarget, DragAndDropTarget {
      * @generated
      */
     void setLabelPosition(LabelPosition value);
-
-    /**
-     * Returns the value of the '<em><b>Owned Details</b></em>' containment
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.DDiagram}. <!-- begin-user-doc --> <!--
-     * end-user-doc --> <!-- begin-model-doc --> Detailed viewpoints owned by
-     * this node. <!-- end-model-doc -->
-     * 
-     * @return the value of the '<em>Owned Details</em>' containment reference
-     *         list.
-     * @see org.eclipse.sirius.diagram.DiagramPackage#getDNode_OwnedDetails()
-     * @model containment="true" resolveProxies="true"
-     * @generated
-     */
-    EList<DDiagram> getOwnedDetails();
 
     /**
      * Returns the value of the '<em><b>Resize Kind</b></em>' attribute. The

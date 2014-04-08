@@ -222,7 +222,6 @@ public class DNodeItemProvider extends DDiagramElementItemProvider implements IE
             super.getChildrenFeatures(object);
             childrenFeatures.add(DiagramPackage.Literals.ABSTRACT_DNODE__OWNED_BORDERED_NODES);
             childrenFeatures.add(DiagramPackage.Literals.DNODE__OWNED_STYLE);
-            childrenFeatures.add(DiagramPackage.Literals.DNODE__OWNED_DETAILS);
         }
         return childrenFeatures;
     }
@@ -285,7 +284,6 @@ public class DNodeItemProvider extends DDiagramElementItemProvider implements IE
             return;
         case DiagramPackage.DNODE__OWNED_BORDERED_NODES:
         case DiagramPackage.DNODE__OWNED_STYLE:
-        case DiagramPackage.DNODE__OWNED_DETAILS:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -322,10 +320,6 @@ public class DNodeItemProvider extends DDiagramElementItemProvider implements IE
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.DNODE__OWNED_STYLE, DiagramFactory.eINSTANCE.createGaugeCompositeStyle()));
 
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.DNODE__OWNED_STYLE, DiagramFactory.eINSTANCE.createNote()));
-
-        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.DNODE__OWNED_DETAILS, DiagramFactory.eINSTANCE.createDDiagram()));
-
-        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.DNODE__OWNED_DETAILS, DiagramFactory.eINSTANCE.createDSemanticDiagram()));
     }
 
     /**

@@ -74,6 +74,10 @@ h4. Changes in @org.eclipse.sirius@
 ** the setter @setRefreshActivatedOnRepresentationOpening(boolean)@ has been removed as the refresh on opening should be managed from the corresponding preference @org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING@.
 ** @isRefreshActivatedOnRepresentationOpening()@ has been moved into @org.eclipse.sirius.ui.business.api.dialect.DialectUIManager@ as it refers to an UI behavior.
 
+h4. Changes in @org.eclipse.sirius.diagram@
+
+* The references @DNode.ownedDetails@ and @DDiagramElementContainerImpl.ownedDetails@ have been removed from the metamodel, along with the corresponding implementation methods. They were not used in practice.
+
 h4. Changes in @org.eclipse.sirius.ui@
 
 * @org.eclipse.sirius.ui.business.api.preferences.DesignerUIPreferencesKeys@ has been renamed into @org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys@

@@ -231,7 +231,6 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
             super.getChildrenFeatures(object);
             childrenFeatures.add(DiagramPackage.Literals.ABSTRACT_DNODE__OWNED_BORDERED_NODES);
             childrenFeatures.add(DiagramPackage.Literals.DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE);
-            childrenFeatures.add(DiagramPackage.Literals.DDIAGRAM_ELEMENT_CONTAINER__OWNED_DETAILS);
         }
         return childrenFeatures;
     }
@@ -282,7 +281,6 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
             return;
         case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_BORDERED_NODES:
         case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE:
-        case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_DETAILS:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -307,10 +305,6 @@ public class DDiagramElementContainerItemProvider extends DDiagramElementItemPro
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE, DiagramFactory.eINSTANCE.createShapeContainerStyle()));
 
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE, DiagramFactory.eINSTANCE.createWorkspaceImage()));
-
-        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.DDIAGRAM_ELEMENT_CONTAINER__OWNED_DETAILS, DiagramFactory.eINSTANCE.createDDiagram()));
-
-        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.DDIAGRAM_ELEMENT_CONTAINER__OWNED_DETAILS, DiagramFactory.eINSTANCE.createDSemanticDiagram()));
     }
 
 }

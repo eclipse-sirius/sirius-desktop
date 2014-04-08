@@ -1083,17 +1083,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getDNode_OwnedDetails() {
-        return (EReference) dNodeEClass.getEStructuralFeatures().get(4);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public EAttribute getDNode_ResizeKind() {
-        return (EAttribute) dNodeEClass.getEStructuralFeatures().get(5);
+        return (EAttribute) dNodeEClass.getEStructuralFeatures().get(4);
     }
 
     /**
@@ -1102,7 +1093,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     public EReference getDNode_OriginalStyle() {
-        return (EReference) dNodeEClass.getEStructuralFeatures().get(6);
+        return (EReference) dNodeEClass.getEStructuralFeatures().get(5);
     }
 
     /**
@@ -1111,7 +1102,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     public EReference getDNode_ActualMapping() {
-        return (EReference) dNodeEClass.getEStructuralFeatures().get(7);
+        return (EReference) dNodeEClass.getEStructuralFeatures().get(6);
     }
 
     /**
@@ -1120,7 +1111,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     public EReference getDNode_CandidatesMapping() {
-        return (EReference) dNodeEClass.getEStructuralFeatures().get(8);
+        return (EReference) dNodeEClass.getEStructuralFeatures().get(7);
     }
 
     /**
@@ -1173,7 +1164,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getDDiagramElementContainer_OwnedDetails() {
+    public EReference getDDiagramElementContainer_OriginalStyle() {
         return (EReference) dDiagramElementContainerEClass.getEStructuralFeatures().get(4);
     }
 
@@ -1182,7 +1173,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getDDiagramElementContainer_OriginalStyle() {
+    public EReference getDDiagramElementContainer_ActualMapping() {
         return (EReference) dDiagramElementContainerEClass.getEStructuralFeatures().get(5);
     }
 
@@ -1191,7 +1182,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getDDiagramElementContainer_ActualMapping() {
+    public EReference getDDiagramElementContainer_CandidatesMapping() {
         return (EReference) dDiagramElementContainerEClass.getEStructuralFeatures().get(6);
     }
 
@@ -1200,17 +1191,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getDDiagramElementContainer_CandidatesMapping() {
-        return (EReference) dDiagramElementContainerEClass.getEStructuralFeatures().get(7);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public EAttribute getDDiagramElementContainer_Width() {
-        return (EAttribute) dDiagramElementContainerEClass.getEStructuralFeatures().get(8);
+        return (EAttribute) dDiagramElementContainerEClass.getEStructuralFeatures().get(7);
     }
 
     /**
@@ -1219,7 +1201,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     public EAttribute getDDiagramElementContainer_Height() {
-        return (EAttribute) dDiagramElementContainerEClass.getEStructuralFeatures().get(9);
+        return (EAttribute) dDiagramElementContainerEClass.getEStructuralFeatures().get(8);
     }
 
     /**
@@ -2467,7 +2449,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         createEAttribute(dNodeEClass, DNODE__HEIGHT);
         createEReference(dNodeEClass, DNODE__OWNED_STYLE);
         createEAttribute(dNodeEClass, DNODE__LABEL_POSITION);
-        createEReference(dNodeEClass, DNODE__OWNED_DETAILS);
         createEAttribute(dNodeEClass, DNODE__RESIZE_KIND);
         createEReference(dNodeEClass, DNODE__ORIGINAL_STYLE);
         createEReference(dNodeEClass, DNODE__ACTUAL_MAPPING);
@@ -2478,7 +2459,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         createEReference(dDiagramElementContainerEClass, DDIAGRAM_ELEMENT_CONTAINER__CONTAINERS);
         createEReference(dDiagramElementContainerEClass, DDIAGRAM_ELEMENT_CONTAINER__ELEMENTS);
         createEReference(dDiagramElementContainerEClass, DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE);
-        createEReference(dDiagramElementContainerEClass, DDIAGRAM_ELEMENT_CONTAINER__OWNED_DETAILS);
         createEReference(dDiagramElementContainerEClass, DDIAGRAM_ELEMENT_CONTAINER__ORIGINAL_STYLE);
         createEReference(dDiagramElementContainerEClass, DDIAGRAM_ELEMENT_CONTAINER__ACTUAL_MAPPING);
         createEReference(dDiagramElementContainerEClass, DDIAGRAM_ELEMENT_CONTAINER__CANDIDATES_MAPPING);
@@ -2885,8 +2865,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
                 !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getDNode_LabelPosition(), this.getLabelPosition(), "labelPosition", null, 0, 1, DNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
                 !IS_DERIVED, IS_ORDERED);
-        initEReference(getDNode_OwnedDetails(), this.getDDiagram(), null, "ownedDetails", null, 0, -1, DNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
-                !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getDNode_ResizeKind(), this.getResizeKind(), "resizeKind", "NONE", 0, 1, DNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
                 !IS_DERIVED, IS_ORDERED);
         initEReference(getDNode_OriginalStyle(), theViewpointPackage.getStyle(), null, "originalStyle", null, 0, 1, DNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
@@ -2904,8 +2882,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         initEReference(getDDiagramElementContainer_Elements(), this.getDDiagramElement(), null, "elements", null, 0, -1, DDiagramElementContainer.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE,
                 !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
         initEReference(getDDiagramElementContainer_OwnedStyle(), this.getContainerStyle(), null, "ownedStyle", null, 0, 1, DDiagramElementContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDDiagramElementContainer_OwnedDetails(), this.getDDiagram(), null, "ownedDetails", null, 0, -1, DDiagramElementContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getDDiagramElementContainer_OriginalStyle(), theViewpointPackage.getStyle(), null, "originalStyle", null, 0, 1, DDiagramElementContainer.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

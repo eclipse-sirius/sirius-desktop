@@ -35,9 +35,6 @@ import org.eclipse.sirius.viewpoint.Style;
  * <li>{@link org.eclipse.sirius.diagram.DDiagramElementContainer#getOwnedStyle
  * <em>Owned Style</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.diagram.DDiagramElementContainer#getOwnedDetails
- * <em>Owned Details</em>}</li>
- * <li>
  * {@link org.eclipse.sirius.diagram.DDiagramElementContainer#getOriginalStyle
  * <em>Original Style</em>}</li>
  * <li>
@@ -125,21 +122,6 @@ public interface DDiagramElementContainer extends AbstractDNode, EdgeTarget, Dra
      * @generated
      */
     void setOwnedStyle(ContainerStyle value);
-
-    /**
-     * Returns the value of the '<em><b>Owned Details</b></em>' containment
-     * reference list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.DDiagram}. <!-- begin-user-doc --> <!--
-     * end-user-doc --> <!-- begin-model-doc --> The details of this container.
-     * <!-- end-model-doc -->
-     * 
-     * @return the value of the '<em>Owned Details</em>' containment reference
-     *         list.
-     * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagramElementContainer_OwnedDetails()
-     * @model containment="true" resolveProxies="true"
-     * @generated
-     */
-    EList<DDiagram> getOwnedDetails();
 
     /**
      * Returns the value of the '<em><b>Original Style</b></em>' reference. <!--

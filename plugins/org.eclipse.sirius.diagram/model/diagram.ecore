@@ -296,12 +296,6 @@
         <details key="documentation" value="The position of the label :&#xD;&#xA;BORDER : The label is around the node, on the border.&#xD;&#xA;NODE : the label is in the node."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedDetails" upperBound="-1"
-        eType="#//DDiagram" containment="true">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Detailed viewpoints owned by this node."/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="resizeKind" eType="#//ResizeKind"
         defaultValueLiteral="NONE">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -376,12 +370,6 @@
         containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The style of the container."/>
-      </eAnnotations>
-    </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedDetails" upperBound="-1"
-        eType="#//DDiagram" containment="true">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The details of this container."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="originalStyle" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//Style">

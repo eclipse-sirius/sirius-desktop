@@ -1244,22 +1244,13 @@ public interface DiagramPackage extends EPackage {
     int DNODE__LABEL_POSITION = ABSTRACT_DNODE_FEATURE_COUNT + 5;
 
     /**
-     * The feature id for the '<em><b>Owned Details</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DNODE__OWNED_DETAILS = ABSTRACT_DNODE_FEATURE_COUNT + 6;
-
-    /**
      * The feature id for the '<em><b>Resize Kind</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int DNODE__RESIZE_KIND = ABSTRACT_DNODE_FEATURE_COUNT + 7;
+    int DNODE__RESIZE_KIND = ABSTRACT_DNODE_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Original Style</b></em>' reference. <!--
@@ -1268,7 +1259,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE__ORIGINAL_STYLE = ABSTRACT_DNODE_FEATURE_COUNT + 8;
+    int DNODE__ORIGINAL_STYLE = ABSTRACT_DNODE_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Actual Mapping</b></em>' reference. <!--
@@ -1277,7 +1268,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE__ACTUAL_MAPPING = ABSTRACT_DNODE_FEATURE_COUNT + 9;
+    int DNODE__ACTUAL_MAPPING = ABSTRACT_DNODE_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Candidates Mapping</b></em>' reference
@@ -1286,7 +1277,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE__CANDIDATES_MAPPING = ABSTRACT_DNODE_FEATURE_COUNT + 10;
+    int DNODE__CANDIDATES_MAPPING = ABSTRACT_DNODE_FEATURE_COUNT + 9;
 
     /**
      * The number of structural features of the '<em>DNode</em>' class. <!--
@@ -1295,7 +1286,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DNODE_FEATURE_COUNT = ABSTRACT_DNODE_FEATURE_COUNT + 11;
+    int DNODE_FEATURE_COUNT = ABSTRACT_DNODE_FEATURE_COUNT + 10;
 
     /**
      * The meta object id for the '
@@ -1472,22 +1463,13 @@ public interface DiagramPackage extends EPackage {
     int DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE = ABSTRACT_DNODE_FEATURE_COUNT + 5;
 
     /**
-     * The feature id for the '<em><b>Owned Details</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DDIAGRAM_ELEMENT_CONTAINER__OWNED_DETAILS = ABSTRACT_DNODE_FEATURE_COUNT + 6;
-
-    /**
      * The feature id for the '<em><b>Original Style</b></em>' reference. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__ORIGINAL_STYLE = ABSTRACT_DNODE_FEATURE_COUNT + 7;
+    int DDIAGRAM_ELEMENT_CONTAINER__ORIGINAL_STYLE = ABSTRACT_DNODE_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Actual Mapping</b></em>' reference. <!--
@@ -1496,7 +1478,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__ACTUAL_MAPPING = ABSTRACT_DNODE_FEATURE_COUNT + 8;
+    int DDIAGRAM_ELEMENT_CONTAINER__ACTUAL_MAPPING = ABSTRACT_DNODE_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Candidates Mapping</b></em>' reference
@@ -1505,7 +1487,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__CANDIDATES_MAPPING = ABSTRACT_DNODE_FEATURE_COUNT + 9;
+    int DDIAGRAM_ELEMENT_CONTAINER__CANDIDATES_MAPPING = ABSTRACT_DNODE_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
@@ -1514,7 +1496,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__WIDTH = ABSTRACT_DNODE_FEATURE_COUNT + 10;
+    int DDIAGRAM_ELEMENT_CONTAINER__WIDTH = ABSTRACT_DNODE_FEATURE_COUNT + 9;
 
     /**
      * The feature id for the '<em><b>Height</b></em>' attribute. <!--
@@ -1523,7 +1505,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER__HEIGHT = ABSTRACT_DNODE_FEATURE_COUNT + 11;
+    int DDIAGRAM_ELEMENT_CONTAINER__HEIGHT = ABSTRACT_DNODE_FEATURE_COUNT + 10;
 
     /**
      * The number of structural features of the '
@@ -1533,7 +1515,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DDIAGRAM_ELEMENT_CONTAINER_FEATURE_COUNT = ABSTRACT_DNODE_FEATURE_COUNT + 12;
+    int DDIAGRAM_ELEMENT_CONTAINER_FEATURE_COUNT = ABSTRACT_DNODE_FEATURE_COUNT + 11;
 
     /**
      * The meta object id for the '
@@ -1708,15 +1690,6 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int DNODE_CONTAINER__OWNED_STYLE = DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE;
-
-    /**
-     * The feature id for the '<em><b>Owned Details</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DNODE_CONTAINER__OWNED_DETAILS = DDIAGRAM_ELEMENT_CONTAINER__OWNED_DETAILS;
 
     /**
      * The feature id for the '<em><b>Original Style</b></em>' reference. <!--
@@ -1962,15 +1935,6 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int DNODE_LIST__OWNED_STYLE = DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE;
-
-    /**
-     * The feature id for the '<em><b>Owned Details</b></em>' containment
-     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DNODE_LIST__OWNED_DETAILS = DDIAGRAM_ELEMENT_CONTAINER__OWNED_DETAILS;
 
     /**
      * The feature id for the '<em><b>Original Style</b></em>' reference. <!--
@@ -6226,19 +6190,6 @@ public interface DiagramPackage extends EPackage {
     EAttribute getDNode_LabelPosition();
 
     /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.diagram.DNode#getOwnedDetails
-     * <em>Owned Details</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the containment reference list '
-     *         <em>Owned Details</em>'.
-     * @see org.eclipse.sirius.diagram.DNode#getOwnedDetails()
-     * @see #getDNode()
-     * @generated
-     */
-    EReference getDNode_OwnedDetails();
-
-    /**
      * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.DNode#getResizeKind
      * <em>Resize Kind</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -6348,19 +6299,6 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     EReference getDDiagramElementContainer_OwnedStyle();
-
-    /**
-     * Returns the meta object for the containment reference list '
-     * {@link org.eclipse.sirius.diagram.DDiagramElementContainer#getOwnedDetails
-     * <em>Owned Details</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the containment reference list '
-     *         <em>Owned Details</em>'.
-     * @see org.eclipse.sirius.diagram.DDiagramElementContainer#getOwnedDetails()
-     * @see #getDDiagramElementContainer()
-     * @generated
-     */
-    EReference getDDiagramElementContainer_OwnedDetails();
 
     /**
      * Returns the meta object for the reference '
@@ -8483,15 +8421,6 @@ public interface DiagramPackage extends EPackage {
         EAttribute DNODE__LABEL_POSITION = eINSTANCE.getDNode_LabelPosition();
 
         /**
-         * The meta object literal for the '<em><b>Owned Details</b></em>'
-         * containment reference list feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference DNODE__OWNED_DETAILS = eINSTANCE.getDNode_OwnedDetails();
-
-        /**
          * The meta object literal for the '<em><b>Resize Kind</b></em>'
          * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
@@ -8567,15 +8496,6 @@ public interface DiagramPackage extends EPackage {
          * @generated
          */
         EReference DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE = eINSTANCE.getDDiagramElementContainer_OwnedStyle();
-
-        /**
-         * The meta object literal for the '<em><b>Owned Details</b></em>'
-         * containment reference list feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference DDIAGRAM_ELEMENT_CONTAINER__OWNED_DETAILS = eINSTANCE.getDDiagramElementContainer_OwnedDetails();
 
         /**
          * The meta object literal for the '<em><b>Original Style</b></em>'

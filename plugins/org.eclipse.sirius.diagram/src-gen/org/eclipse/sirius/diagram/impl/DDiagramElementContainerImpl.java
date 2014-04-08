@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.diagram.ArrangeConstraint;
 import org.eclipse.sirius.diagram.ContainerStyle;
-import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
@@ -70,9 +69,6 @@ import org.eclipse.sirius.viewpoint.Style;
  * <li>
  * {@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getOwnedStyle
  * <em>Owned Style</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getOwnedDetails
- * <em>Owned Details</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.diagram.impl.DDiagramElementContainerImpl#getOriginalStyle
  * <em>Original Style</em>}</li>
@@ -147,17 +143,6 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * @ordered
      */
     protected ContainerStyle ownedStyle;
-
-    /**
-     * The cached value of the '{@link #getOwnedDetails()
-     * <em>Owned Details</em>}' containment reference list. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @see #getOwnedDetails()
-     * @generated
-     * @ordered
-     */
-    protected EList<DDiagram> ownedDetails;
 
     /**
      * The cached value of the '{@link #getOriginalStyle()
@@ -422,18 +407,6 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
      * 
      * @generated
      */
-    public EList<DDiagram> getOwnedDetails() {
-        if (ownedDetails == null) {
-            ownedDetails = new EObjectContainmentEList.Resolving<DDiagram>(DDiagram.class, this, DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_DETAILS);
-        }
-        return ownedDetails;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public Style getOriginalStyle() {
         if (originalStyle != null && originalStyle.eIsProxy()) {
             InternalEObject oldOriginalStyle = (InternalEObject) originalStyle;
@@ -625,8 +598,6 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
             return ((InternalEList<?>) getIncomingEdges()).basicRemove(otherEnd, msgs);
         case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE:
             return basicSetOwnedStyle(null, msgs);
-        case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_DETAILS:
-            return ((InternalEList<?>) getOwnedDetails()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -657,8 +628,6 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
             if (resolve)
                 return getOwnedStyle();
             return basicGetOwnedStyle();
-        case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_DETAILS:
-            return getOwnedDetails();
         case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__ORIGINAL_STYLE:
             if (resolve)
                 return getOriginalStyle();
@@ -705,10 +674,6 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
         case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE:
             setOwnedStyle((ContainerStyle) newValue);
             return;
-        case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_DETAILS:
-            getOwnedDetails().clear();
-            getOwnedDetails().addAll((Collection<? extends DDiagram>) newValue);
-            return;
         case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__ORIGINAL_STYLE:
             setOriginalStyle((Style) newValue);
             return;
@@ -751,9 +716,6 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
             return;
         case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE:
             setOwnedStyle((ContainerStyle) null);
-            return;
-        case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_DETAILS:
-            getOwnedDetails().clear();
             return;
         case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__ORIGINAL_STYLE:
             setOriginalStyle((Style) null);
@@ -798,8 +760,6 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
             return !getElements().isEmpty();
         case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_STYLE:
             return ownedStyle != null;
-        case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_DETAILS:
-            return ownedDetails != null && !ownedDetails.isEmpty();
         case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__ORIGINAL_STYLE:
             return originalStyle != null;
         case DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__ACTUAL_MAPPING:

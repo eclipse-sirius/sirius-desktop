@@ -25,7 +25,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.diagram.ArrangeConstraint;
-import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DiagramPackage;
@@ -60,8 +59,6 @@ import org.eclipse.sirius.viewpoint.Style;
  * Style</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getLabelPosition <em>
  * Label Position</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getOwnedDetails <em>
- * Owned Details</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getResizeKind <em>Resize
  * Kind</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DNodeImpl#getOriginalStyle <em>
@@ -192,17 +189,6 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      */
     @Deprecated
     protected LabelPosition labelPosition = LABEL_POSITION_EDEFAULT;
-
-    /**
-     * The cached value of the '{@link #getOwnedDetails()
-     * <em>Owned Details</em>}' containment reference list. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @see #getOwnedDetails()
-     * @generated
-     * @ordered
-     */
-    protected EList<DDiagram> ownedDetails;
 
     /**
      * The default value of the '{@link #getResizeKind() <em>Resize Kind</em>}'
@@ -462,18 +448,6 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
      * 
      * @generated
      */
-    public EList<DDiagram> getOwnedDetails() {
-        if (ownedDetails == null) {
-            ownedDetails = new EObjectContainmentEList.Resolving<DDiagram>(DDiagram.class, this, DiagramPackage.DNODE__OWNED_DETAILS);
-        }
-        return ownedDetails;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public ResizeKind getResizeKind() {
         return resizeKind;
     }
@@ -622,8 +596,6 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
             return ((InternalEList<?>) getIncomingEdges()).basicRemove(otherEnd, msgs);
         case DiagramPackage.DNODE__OWNED_STYLE:
             return basicSetOwnedStyle(null, msgs);
-        case DiagramPackage.DNODE__OWNED_DETAILS:
-            return ((InternalEList<?>) getOwnedDetails()).basicRemove(otherEnd, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -654,8 +626,6 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
             return basicGetOwnedStyle();
         case DiagramPackage.DNODE__LABEL_POSITION:
             return getLabelPosition();
-        case DiagramPackage.DNODE__OWNED_DETAILS:
-            return getOwnedDetails();
         case DiagramPackage.DNODE__RESIZE_KIND:
             return getResizeKind();
         case DiagramPackage.DNODE__ORIGINAL_STYLE:
@@ -709,10 +679,6 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
         case DiagramPackage.DNODE__LABEL_POSITION:
             setLabelPosition((LabelPosition) newValue);
             return;
-        case DiagramPackage.DNODE__OWNED_DETAILS:
-            getOwnedDetails().clear();
-            getOwnedDetails().addAll((Collection<? extends DDiagram>) newValue);
-            return;
         case DiagramPackage.DNODE__RESIZE_KIND:
             setResizeKind((ResizeKind) newValue);
             return;
@@ -762,9 +728,6 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
         case DiagramPackage.DNODE__LABEL_POSITION:
             setLabelPosition(LABEL_POSITION_EDEFAULT);
             return;
-        case DiagramPackage.DNODE__OWNED_DETAILS:
-            getOwnedDetails().clear();
-            return;
         case DiagramPackage.DNODE__RESIZE_KIND:
             setResizeKind(RESIZE_KIND_EDEFAULT);
             return;
@@ -805,8 +768,6 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
             return ownedStyle != null;
         case DiagramPackage.DNODE__LABEL_POSITION:
             return labelPosition != LABEL_POSITION_EDEFAULT;
-        case DiagramPackage.DNODE__OWNED_DETAILS:
-            return ownedDetails != null && !ownedDetails.isEmpty();
         case DiagramPackage.DNODE__RESIZE_KIND:
             return resizeKind != RESIZE_KIND_EDEFAULT;
         case DiagramPackage.DNODE__ORIGINAL_STYLE:
