@@ -113,9 +113,6 @@
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference diagram.ecore#//DDiagramElement/diagramElementMapping"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//DDiagramElement/graphicalFilters"/>
       <genOperations ecoreOperation="diagram.ecore#//DDiagramElement/getParentDiagram"/>
-      <genOperations ecoreOperation="diagram.ecore#//DDiagramElement/isFold">
-        <genParameters ecoreParameter="diagram.ecore#//DDiagramElement/isFold/alreadyManagedElements"/>
-      </genOperations>
     </genClasses>
     <genClasses image="false" ecoreClass="diagram.ecore#//GraphicalFilter"/>
     <genClasses ecoreClass="diagram.ecore#//HideFilter"/>

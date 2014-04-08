@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.business.internal.metamodel.spec;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
@@ -100,17 +99,6 @@ public class DEdgeSpec extends DEdgeImpl {
     @Override
     public DDiagram getParentDiagram() {
         return DDiagramElementSpecOperations.getParentDiagram(this);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.impl.DEdgeImpl#isFold(java.util.Map)
-     */
-    @Override
-    @Deprecated
-    public boolean isFold(final Map<?, ?> alreadyManagedElements) {
-        throw new UnsupportedOperationException("Deprecated method.");
     }
 
     /**

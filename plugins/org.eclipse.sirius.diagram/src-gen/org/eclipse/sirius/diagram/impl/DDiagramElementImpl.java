@@ -12,7 +12,6 @@
 package org.eclipse.sirius.diagram.impl;
 
 import java.util.Collection;
-import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -289,17 +288,6 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
      * @generated
      */
     public DDiagram getParentDiagram() {
-        // TODO: implement this method
-        // Ensure that you remove @generated or mark it @generated NOT
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public boolean isFold(Map<?, ?> alreadyManagedElements) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
         throw new UnsupportedOperationException();

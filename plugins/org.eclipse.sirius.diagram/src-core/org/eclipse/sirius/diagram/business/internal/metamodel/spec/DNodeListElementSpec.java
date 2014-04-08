@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.metamodel.spec;
 
-import java.util.Map;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -106,22 +104,6 @@ public class DNodeListElementSpec extends DNodeListElementImpl {
     @Override
     public Style getStyle() {
         return getOwnedStyle();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.impl.DNodeListElementImpl#isFold(java.util.Map)
-     */
-    @Override
-    public boolean isFold(final Map alreadyManagedElements) {
-        final Object hash = Integer.valueOf(this.hashCode());
-        final Boolean valueNode = (Boolean) alreadyManagedElements.get(hash);
-        if (valueNode != null) {
-            return valueNode.booleanValue();
-        }
-        alreadyManagedElements.put(hash, Boolean.FALSE);
-        return false;
     }
 
     /**

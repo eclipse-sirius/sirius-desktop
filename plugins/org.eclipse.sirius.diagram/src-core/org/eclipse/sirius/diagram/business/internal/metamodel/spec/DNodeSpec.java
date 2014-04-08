@@ -13,7 +13,6 @@ package org.eclipse.sirius.diagram.business.internal.metamodel.spec;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
@@ -98,17 +97,6 @@ public class DNodeSpec extends DNodeImpl {
     @Override
     public DDiagram getParentDiagram() {
         return DDiagramElementSpecOperations.getParentDiagram(this);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.impl.DNodeImpl#isFold(java.util.Map)
-     */
-    @Override
-    @Deprecated
-    public boolean isFold(final Map<?, ?> alreadyManagedElements) {
-        throw new UnsupportedOperationException("Deprecated method.");
     }
 
     /**

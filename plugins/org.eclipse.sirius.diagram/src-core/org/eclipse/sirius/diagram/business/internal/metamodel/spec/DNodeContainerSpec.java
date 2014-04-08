@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Map;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -177,32 +176,12 @@ public class DNodeContainerSpec extends DNodeContainerImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.impl.DDiagramElementContainerImpl#isFold(java.util.Map)
-     */
-    @Override
-    @Deprecated
-    public boolean isFold(final Map<?, ?> alreadyManagedElements) {
-        throw new UnsupportedOperationException("Deprecated method.");
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.eclipse.sirius.viewpoint.impl.DDiagramElementContainerImpl#validate()
      */
     @Override
     public boolean validate() {
         return DDiagramElementContainerSpecOperations.validate(this);
     }
-
-    // /**
-    // *
-    // * @return
-    // */
-    // public DSemanticDecorator getFirstParentWithSemantic() {
-    // return
-    // DDiagramElementContainerSpecOperations.getFirstParentWithSemantic(this);
-    // }
 
     /**
      * {@inheritDoc}

@@ -86,6 +86,7 @@ h4. Changes in @org.eclipse.sirius.diagram@
 * The @DDiagram.findDiagramElements()@ EOperation has been removed. It was deprecated and always returned an empty list if called.
 * The @DDiagram.info@ attribute has been removed. It was not used anywhere.
 * The @DDiagram.subDiagram@ reference has been removed. It was not used anywhere.
+* The @DDiagramElement.isFold()@] EOperation has been removed. It was deprecated and edge folding has long been implemented using different mechanisms.
 
 h4. Changes in @org.eclipse.sirius.ui@
 

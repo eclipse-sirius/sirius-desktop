@@ -11,8 +11,6 @@
  */
 package org.eclipse.sirius.diagram;
 
-import java.util.Map;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.Layer;
@@ -173,18 +171,5 @@ public interface DDiagramElement extends DRepresentationElement, DValidable, DNa
      * @generated
      */
     DDiagram getParentDiagram();
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Return <code>true</code> if this element is fold.
-     * 
-     * @param alreadyManagedElements
-     *            Maps all elements with their isFold attribute value. <!--
-     *            end-model-doc -->
-     * @model
-     * @generated
-     */
-    @Deprecated
-    boolean isFold(Map<?, ?> alreadyManagedElements);
 
 } // DDiagramElement

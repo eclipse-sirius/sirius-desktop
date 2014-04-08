@@ -16,7 +16,6 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -2739,14 +2738,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
                 IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         addEOperation(dDiagramElementEClass, this.getDDiagram(), "getParentDiagram", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-        op = addEOperation(dDiagramElementEClass, theEcorePackage.getEBoolean(), "isFold", 0, 1, IS_UNIQUE, IS_ORDERED);
-        EGenericType g1 = createEGenericType(theEcorePackage.getEMap());
-        EGenericType g2 = createEGenericType();
-        g1.getETypeArguments().add(g2);
-        g2 = createEGenericType();
-        g1.getETypeArguments().add(g2);
-        addEParameter(op, g1, "alreadyManagedElements", 0, 1, IS_UNIQUE, IS_ORDERED);
 
         initEClass(graphicalFilterEClass, GraphicalFilter.class, "GraphicalFilter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

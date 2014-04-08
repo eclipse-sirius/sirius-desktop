@@ -142,20 +142,6 @@
         <details key="documentation" value="Return the parent of this ViewPointElement."/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="isFold" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Return &lt;code>true&lt;/code> if this element is fold."/>
-      </eAnnotations>
-      <eParameters name="alreadyManagedElements">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Maps all elements with their isFold attribute value."/>
-        </eAnnotations>
-        <eGenericType eClassifier="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EMap">
-          <eTypeArguments/>
-          <eTypeArguments/>
-        </eGenericType>
-      </eParameters>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="visible" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
         defaultValueLiteral="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
