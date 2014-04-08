@@ -12,8 +12,6 @@
 package org.eclipse.sirius.diagram;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
@@ -517,17 +515,5 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * @generated
      */
     EList<DDiagramElementContainer> getContainersFromMapping(ContainerMapping mapping);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Finds all view point elements that have the specified semantic element
-     * has target and that are instances of the specified type. <!--
-     * end-model-doc -->
-     * 
-     * @model
-     * @generated
-     */
-    @Deprecated
-    EList<DDiagramElement> findDiagramElements(EObject semanticElement, EClass type);
 
 } // DDiagram

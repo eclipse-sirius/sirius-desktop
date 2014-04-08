@@ -14,10 +14,8 @@ import java.util.Iterator;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
@@ -161,28 +159,4 @@ public final class DDiagramSpecOperations {
     public static boolean validate(final DDiagram diagram) {
         throw new UnsupportedOperationException("Should no more be called");
     }
-
-    /**
-     * Finds all view point elements that have the specified semantic element
-     * has target and that are instances of the specified type.
-     * 
-     * @param diagram
-     *            the diagram.
-     * @param semanticElement
-     *            the semantic element.
-     * @param type
-     *            the type.
-     * @return all view point elements that have the specified semantic element
-     *         has target and that are instances of the specified type.
-     */
-    public static EList<DDiagramElement> findDiagramElements(final DDiagram diagram, final EObject semanticElement, final EClass type) {
-        /*
-         * The method is deprecated (see DDiagram.findDiagramElements and
-         * SequenceDDiagram.findDiagramElements), unused, and the previous
-         * implementation broken. This is no more broken, and at least it is
-         * fast.
-         */
-        return new BasicEList<DDiagramElement>();
-    }
-
 }

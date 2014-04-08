@@ -2746,10 +2746,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         op = addEOperation(dDiagramEClass, this.getDDiagramElementContainer(), "getContainersFromMapping", 0, -1, IS_UNIQUE, IS_ORDERED);
         addEParameter(op, theDescriptionPackage.getContainerMapping(), "mapping", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-        op = addEOperation(dDiagramEClass, this.getDDiagramElement(), "findDiagramElements", 0, -1, IS_UNIQUE, IS_ORDERED);
-        addEParameter(op, theEcorePackage.getEObject(), "semanticElement", 0, 1, IS_UNIQUE, IS_ORDERED);
-        addEParameter(op, theEcorePackage.getEClass(), "type", 0, 1, IS_UNIQUE, IS_ORDERED);
-
         initEClass(dSemanticDiagramEClass, DSemanticDiagram.class, "DSemanticDiagram", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         initEClass(dDiagramElementEClass, DDiagramElement.class, "DDiagramElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

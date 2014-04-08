@@ -36,13 +36,6 @@
         </eAnnotations>
       </eParameters>
     </eOperations>
-    <eOperations name="findDiagramElements" upperBound="-1" eType="#//DDiagramElement">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Finds all view point elements that have the specified semantic element has target and that are instances of the specified type."/>
-      </eAnnotations>
-      <eParameters name="semanticElement" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-      <eParameters name="type" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass"/>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedDiagramElements" upperBound="-1"
         eType="#//DDiagramElement" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

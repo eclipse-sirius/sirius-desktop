@@ -105,10 +105,6 @@
       <genOperations ecoreOperation="diagram.ecore#//DDiagram/getContainersFromMapping">
         <genParameters ecoreParameter="diagram.ecore#//DDiagram/getContainersFromMapping/mapping"/>
       </genOperations>
-      <genOperations ecoreOperation="diagram.ecore#//DDiagram/findDiagramElements">
-        <genParameters ecoreParameter="diagram.ecore#//DDiagram/findDiagramElements/semanticElement"/>
-        <genParameters ecoreParameter="diagram.ecore#//DDiagram/findDiagramElements/type"/>
-      </genOperations>
     </genClasses>
     <genClasses ecoreClass="diagram.ecore#//DSemanticDiagram"/>
     <genClasses image="false" ecoreClass="diagram.ecore#//DDiagramElement">

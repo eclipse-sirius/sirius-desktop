@@ -14,7 +14,6 @@ import java.util.Collection;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
@@ -250,16 +249,4 @@ public class DSemanticDiagramSpec extends DSemanticDiagramImpl {
     public DragAndDropTargetDescription getDragAndDropDescription() {
         return new DDiagramInternalQuery(this).getDragAndDropDescription();
     }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.impl.DDiagramImpl#findSiriusElements(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.EClass)
-     */
-    @Override
-    public EList<DDiagramElement> findDiagramElements(final EObject semanticElement, final EClass type) {
-        return DDiagramSpecOperations.findDiagramElements(this, semanticElement, type);
-    }
-
 }
