@@ -102,15 +102,6 @@ public interface DiagramFactory extends EFactory {
     AbsoluteBoundsFilter createAbsoluteBoundsFilter();
 
     /**
-     * Returns a new object of class '<em>DDiagram Link</em>'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return a new object of class '<em>DDiagram Link</em>'.
-     * @generated
-     */
-    DDiagramLink createDDiagramLink();
-
-    /**
      * Returns a new object of class '<em>DNode</em>'. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 

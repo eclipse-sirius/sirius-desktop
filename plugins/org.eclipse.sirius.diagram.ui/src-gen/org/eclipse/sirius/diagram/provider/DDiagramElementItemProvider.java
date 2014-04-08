@@ -206,8 +206,6 @@ public class DDiagramElementItemProvider extends DRepresentationElementItemProvi
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DNAVIGABLE__OWNED_NAVIGATION_LINKS, DiagramFactory.eINSTANCE.createDDiagramLink()));
-
         newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DNAVIGABLE__OWNED_NAVIGATION_LINKS, ViewpointFactory.eINSTANCE.createDEObjectLink()));
 
         newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DNAVIGABLE__OWNED_NAVIGATION_LINKS, ViewpointFactory.eINSTANCE.createDSourceFileLink()));

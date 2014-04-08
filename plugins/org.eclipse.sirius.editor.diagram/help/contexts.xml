@@ -119,18 +119,6 @@
    
       </description>
    </context>
-   <context id="DDiagramLink">
-     <description>
-       A link that references a ViewPoint.
-
-       
-         
-   <!-- Start of user code DDiagramLink description -->
-   
-   <!-- End of user code DDiagramLink description -->
-   
-      </description>
-   </context>
    <context id="AbstractDNode">
      <description>
        

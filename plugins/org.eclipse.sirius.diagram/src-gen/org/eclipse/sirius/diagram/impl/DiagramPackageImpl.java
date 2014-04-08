@@ -43,7 +43,6 @@ import org.eclipse.sirius.diagram.CustomStyle;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
-import org.eclipse.sirius.diagram.DDiagramLink;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
@@ -169,13 +168,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     private EClass absoluteBoundsFilterEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass dDiagramLinkEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -977,33 +969,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      */
     public EAttribute getAbsoluteBoundsFilter_Width() {
         return (EAttribute) absoluteBoundsFilterEClass.getEStructuralFeatures().get(3);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EClass getDDiagramLink() {
-        return dDiagramLinkEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getDDiagramLink_Target() {
-        return (EReference) dDiagramLinkEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getDDiagramLink_Node() {
-        return (EReference) dDiagramLinkEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -2436,10 +2401,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         createEAttribute(absoluteBoundsFilterEClass, ABSOLUTE_BOUNDS_FILTER__HEIGHT);
         createEAttribute(absoluteBoundsFilterEClass, ABSOLUTE_BOUNDS_FILTER__WIDTH);
 
-        dDiagramLinkEClass = createEClass(DDIAGRAM_LINK);
-        createEReference(dDiagramLinkEClass, DDIAGRAM_LINK__TARGET);
-        createEReference(dDiagramLinkEClass, DDIAGRAM_LINK__NODE);
-
         abstractDNodeEClass = createEClass(ABSTRACT_DNODE);
         createEReference(abstractDNodeEClass, ABSTRACT_DNODE__OWNED_BORDERED_NODES);
         createEAttribute(abstractDNodeEClass, ABSTRACT_DNODE__ARRANGE_CONSTRAINTS);
@@ -2692,7 +2653,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         foldingFilterEClass.getESuperTypes().add(this.getGraphicalFilter());
         appliedCompositeFiltersEClass.getESuperTypes().add(this.getGraphicalFilter());
         absoluteBoundsFilterEClass.getESuperTypes().add(this.getGraphicalFilter());
-        dDiagramLinkEClass.getESuperTypes().add(theViewpointPackage.getDNavigationLink());
         abstractDNodeEClass.getESuperTypes().add(this.getDDiagramElement());
         dNodeEClass.getESuperTypes().add(this.getAbstractDNode());
         dNodeEClass.getESuperTypes().add(this.getEdgeTarget());
@@ -2843,12 +2803,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getAbsoluteBoundsFilter_Width(), ecorePackage.getEIntegerObject(), "width", null, 0, 1, AbsoluteBoundsFilter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
                 !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-        initEClass(dDiagramLinkEClass, DDiagramLink.class, "DDiagramLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDDiagramLink_Target(), this.getDDiagram(), null, "target", null, 1, 1, DDiagramLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-                !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDDiagramLink_Node(), this.getEdgeTarget(), null, "node", null, 0, 1, DDiagramLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
-                !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(abstractDNodeEClass, AbstractDNode.class, "AbstractDNode", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getAbstractDNode_OwnedBorderedNodes(), this.getDNode(), null, "ownedBorderedNodes", null, 0, -1, AbstractDNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,

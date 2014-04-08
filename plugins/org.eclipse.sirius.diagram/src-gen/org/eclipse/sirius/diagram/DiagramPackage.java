@@ -887,63 +887,6 @@ public interface DiagramPackage extends EPackage {
 
     /**
      * The meta object id for the '
-     * {@link org.eclipse.sirius.diagram.impl.DDiagramLinkImpl
-     * <em>DDiagram Link</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     * 
-     * @see org.eclipse.sirius.diagram.impl.DDiagramLinkImpl
-     * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDDiagramLink()
-     * @generated
-     */
-    int DDIAGRAM_LINK = 10;
-
-    /**
-     * The feature id for the '<em><b>Target Type</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DDIAGRAM_LINK__TARGET_TYPE = ViewpointPackage.DNAVIGATION_LINK__TARGET_TYPE;
-
-    /**
-     * The feature id for the '<em><b>Label</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DDIAGRAM_LINK__LABEL = ViewpointPackage.DNAVIGATION_LINK__LABEL;
-
-    /**
-     * The feature id for the '<em><b>Target</b></em>' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DDIAGRAM_LINK__TARGET = ViewpointPackage.DNAVIGATION_LINK_FEATURE_COUNT + 0;
-
-    /**
-     * The feature id for the '<em><b>Node</b></em>' reference. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DDIAGRAM_LINK__NODE = ViewpointPackage.DNAVIGATION_LINK_FEATURE_COUNT + 1;
-
-    /**
-     * The number of structural features of the '<em>DDiagram Link</em>' class.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DDIAGRAM_LINK_FEATURE_COUNT = ViewpointPackage.DNAVIGATION_LINK_FEATURE_COUNT + 2;
-
-    /**
-     * The meta object id for the '
      * {@link org.eclipse.sirius.diagram.AbstractDNode <em>Abstract DNode</em>}'
      * class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -951,7 +894,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getAbstractDNode()
      * @generated
      */
-    int ABSTRACT_DNODE = 11;
+    int ABSTRACT_DNODE = 10;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
@@ -1079,7 +1022,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDNode()
      * @generated
      */
-    int DNODE = 12;
+    int DNODE = 11;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
@@ -1298,7 +1241,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDDiagramElementContainer()
      * @generated
      */
-    int DDIAGRAM_ELEMENT_CONTAINER = 13;
+    int DDIAGRAM_ELEMENT_CONTAINER = 12;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
@@ -1527,7 +1470,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDNodeContainer()
      * @generated
      */
-    int DNODE_CONTAINER = 14;
+    int DNODE_CONTAINER = 13;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
@@ -1772,7 +1715,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDNodeList()
      * @generated
      */
-    int DNODE_LIST = 15;
+    int DNODE_LIST = 14;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
@@ -2018,7 +1961,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDNodeListElement()
      * @generated
      */
-    int DNODE_LIST_ELEMENT = 16;
+    int DNODE_LIST_ELEMENT = 15;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
@@ -2182,7 +2125,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDEdge()
      * @generated
      */
-    int DEDGE = 17;
+    int DEDGE = 16;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!--
@@ -2427,7 +2370,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getNodeStyle()
      * @generated
      */
-    int NODE_STYLE = 18;
+    int NODE_STYLE = 17;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -2565,7 +2508,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDot()
      * @generated
      */
-    int DOT = 19;
+    int DOT = 18;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -2723,7 +2666,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getGaugeSection()
      * @generated
      */
-    int GAUGE_SECTION = 20;
+    int GAUGE_SECTION = 19;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -2807,7 +2750,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getContainerStyle()
      * @generated
      */
-    int CONTAINER_STYLE = 21;
+    int CONTAINER_STYLE = 20;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -2928,7 +2871,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getFlatContainerStyle()
      * @generated
      */
-    int FLAT_CONTAINER_STYLE = 22;
+    int FLAT_CONTAINER_STYLE = 21;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -3076,7 +3019,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getShapeContainerStyle()
      * @generated
      */
-    int SHAPE_CONTAINER_STYLE = 23;
+    int SHAPE_CONTAINER_STYLE = 22;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -3214,7 +3157,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getSquare()
      * @generated
      */
-    int SQUARE = 24;
+    int SQUARE = 23;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -3379,7 +3322,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getEllipse()
      * @generated
      */
-    int ELLIPSE = 25;
+    int ELLIPSE = 24;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -3544,7 +3487,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getLozenge()
      * @generated
      */
-    int LOZENGE = 26;
+    int LOZENGE = 25;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -3710,7 +3653,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getBundledImage()
      * @generated
      */
-    int BUNDLED_IMAGE = 27;
+    int BUNDLED_IMAGE = 26;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -3867,7 +3810,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getWorkspaceImage()
      * @generated
      */
-    int WORKSPACE_IMAGE = 28;
+    int WORKSPACE_IMAGE = 27;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -4015,7 +3958,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getCustomStyle()
      * @generated
      */
-    int CUSTOM_STYLE = 29;
+    int CUSTOM_STYLE = 28;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -4163,7 +4106,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getEdgeTarget()
      * @generated
      */
-    int EDGE_TARGET = 30;
+    int EDGE_TARGET = 29;
 
     /**
      * The feature id for the '<em><b>Outgoing Edges</b></em>' reference list.
@@ -4201,7 +4144,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getEdgeStyle()
      * @generated
      */
-    int EDGE_STYLE = 31;
+    int EDGE_STYLE = 30;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -4330,7 +4273,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getGaugeCompositeStyle()
      * @generated
      */
-    int GAUGE_COMPOSITE_STYLE = 32;
+    int GAUGE_COMPOSITE_STYLE = 31;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -4487,7 +4430,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getBorderedStyle()
      * @generated
      */
-    int BORDERED_STYLE = 33;
+    int BORDERED_STYLE = 32;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -4553,7 +4496,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getNote()
      * @generated
      */
-    int NOTE = 34;
+    int NOTE = 33;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -4701,7 +4644,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getFilterVariableHistory()
      * @generated
      */
-    int FILTER_VARIABLE_HISTORY = 35;
+    int FILTER_VARIABLE_HISTORY = 34;
 
     /**
      * The feature id for the '<em><b>Owned Values</b></em>' containment
@@ -4732,7 +4675,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getFilterVariableValue()
      * @generated
      */
-    int FILTER_VARIABLE_VALUE = 36;
+    int FILTER_VARIABLE_VALUE = 35;
 
     /**
      * The feature id for the '<em><b>Variable Definition</b></em>' reference.
@@ -4771,7 +4714,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getCollapseFilter()
      * @generated
      */
-    int COLLAPSE_FILTER = 37;
+    int COLLAPSE_FILTER = 36;
 
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
@@ -4810,7 +4753,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getIndirectlyCollapseFilter()
      * @generated
      */
-    int INDIRECTLY_COLLAPSE_FILTER = 38;
+    int INDIRECTLY_COLLAPSE_FILTER = 37;
 
     /**
      * The feature id for the '<em><b>Width</b></em>' attribute. <!--
@@ -4850,7 +4793,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getBeginLabelStyle()
      * @generated
      */
-    int BEGIN_LABEL_STYLE = 39;
+    int BEGIN_LABEL_STYLE = 38;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -4925,7 +4868,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getCenterLabelStyle()
      * @generated
      */
-    int CENTER_LABEL_STYLE = 40;
+    int CENTER_LABEL_STYLE = 39;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -5000,7 +4943,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getEndLabelStyle()
      * @generated
      */
-    int END_LABEL_STYLE = 41;
+    int END_LABEL_STYLE = 40;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -5075,7 +5018,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getBracketEdgeStyle()
      * @generated
      */
-    int BRACKET_EDGE_STYLE = 42;
+    int BRACKET_EDGE_STYLE = 41;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -5204,7 +5147,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getComputedStyleDescriptionRegistry()
      * @generated
      */
-    int COMPUTED_STYLE_DESCRIPTION_REGISTRY = 43;
+    int COMPUTED_STYLE_DESCRIPTION_REGISTRY = 42;
 
     /**
      * The feature id for the '<em><b>Computed Style Descriptions</b></em>'
@@ -5244,7 +5187,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDiagramElementMapping2ModelElement()
      * @generated
      */
-    int DIAGRAM_ELEMENT_MAPPING2_MODEL_ELEMENT = 44;
+    int DIAGRAM_ELEMENT_MAPPING2_MODEL_ELEMENT = 43;
 
     /**
      * The feature id for the '<em><b>Key</b></em>' reference. <!--
@@ -5284,7 +5227,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getModelElement2ViewVariable()
      * @generated
      */
-    int MODEL_ELEMENT2_VIEW_VARIABLE = 45;
+    int MODEL_ELEMENT2_VIEW_VARIABLE = 44;
 
     /**
      * The feature id for the '<em><b>Key</b></em>' reference. <!--
@@ -5324,7 +5267,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getViewVariable2ContainerVariable()
      * @generated
      */
-    int VIEW_VARIABLE2_CONTAINER_VARIABLE = 46;
+    int VIEW_VARIABLE2_CONTAINER_VARIABLE = 45;
 
     /**
      * The feature id for the '<em><b>Key</b></em>' reference. <!--
@@ -5364,7 +5307,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getContainerVariable2StyleDescription()
      * @generated
      */
-    int CONTAINER_VARIABLE2_STYLE_DESCRIPTION = 47;
+    int CONTAINER_VARIABLE2_STYLE_DESCRIPTION = 46;
 
     /**
      * The feature id for the '<em><b>Key</b></em>' reference. <!--
@@ -5404,7 +5347,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDragAndDropTarget()
      * @generated
      */
-    int DRAG_AND_DROP_TARGET = 48;
+    int DRAG_AND_DROP_TARGET = 47;
 
     /**
      * The number of structural features of the '<em>Drag And Drop Target</em>'
@@ -5425,7 +5368,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getContainerLayout()
      * @generated
      */
-    int CONTAINER_LAYOUT = 49;
+    int CONTAINER_LAYOUT = 48;
 
     /**
      * The meta object id for the '
@@ -5436,7 +5379,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getLabelPosition()
      * @generated
      */
-    int LABEL_POSITION = 50;
+    int LABEL_POSITION = 49;
 
     /**
      * The meta object id for the '
@@ -5448,7 +5391,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getContainerShape()
      * @generated
      */
-    int CONTAINER_SHAPE = 51;
+    int CONTAINER_SHAPE = 50;
 
     /**
      * The meta object id for the '
@@ -5460,7 +5403,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getBackgroundStyle()
      * @generated
      */
-    int BACKGROUND_STYLE = 52;
+    int BACKGROUND_STYLE = 51;
 
     /**
      * The meta object id for the '
@@ -5472,7 +5415,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getBundledImageShape()
      * @generated
      */
-    int BUNDLED_IMAGE_SHAPE = 53;
+    int BUNDLED_IMAGE_SHAPE = 52;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.LineStyle
@@ -5482,7 +5425,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getLineStyle()
      * @generated
      */
-    int LINE_STYLE = 54;
+    int LINE_STYLE = 53;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.EdgeArrows
@@ -5493,7 +5436,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getEdgeArrows()
      * @generated
      */
-    int EDGE_ARROWS = 55;
+    int EDGE_ARROWS = 54;
 
     /**
      * The meta object id for the '
@@ -5504,7 +5447,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getEdgeRouting()
      * @generated
      */
-    int EDGE_ROUTING = 56;
+    int EDGE_ROUTING = 55;
 
     /**
      * The meta object id for the '
@@ -5515,7 +5458,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getAlignmentKind()
      * @generated
      */
-    int ALIGNMENT_KIND = 57;
+    int ALIGNMENT_KIND = 56;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.ResizeKind
@@ -5526,7 +5469,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getResizeKind()
      * @generated
      */
-    int RESIZE_KIND = 58;
+    int RESIZE_KIND = 57;
 
     /**
      * The meta object id for the '
@@ -5538,7 +5481,7 @@ public interface DiagramPackage extends EPackage {
      * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getArrangeConstraint()
      * @generated
      */
-    int ARRANGE_CONSTRAINT = 59;
+    int ARRANGE_CONSTRAINT = 58;
 
     /**
      * Returns the meta object for class '
@@ -6054,41 +5997,6 @@ public interface DiagramPackage extends EPackage {
      * @generated
      */
     EAttribute getAbsoluteBoundsFilter_Width();
-
-    /**
-     * Returns the meta object for class '
-     * {@link org.eclipse.sirius.diagram.DDiagramLink <em>DDiagram Link</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for class '<em>DDiagram Link</em>'.
-     * @see org.eclipse.sirius.diagram.DDiagramLink
-     * @generated
-     */
-    EClass getDDiagramLink();
-
-    /**
-     * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.diagram.DDiagramLink#getTarget <em>Target</em>}
-     * '. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the reference '<em>Target</em>'.
-     * @see org.eclipse.sirius.diagram.DDiagramLink#getTarget()
-     * @see #getDDiagramLink()
-     * @generated
-     */
-    EReference getDDiagramLink_Target();
-
-    /**
-     * Returns the meta object for the reference '
-     * {@link org.eclipse.sirius.diagram.DDiagramLink#getNode <em>Node</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the reference '<em>Node</em>'.
-     * @see org.eclipse.sirius.diagram.DDiagramLink#getNode()
-     * @see #getDDiagramLink()
-     * @generated
-     */
-    EReference getDDiagramLink_Node();
 
     /**
      * Returns the meta object for class '
@@ -8318,34 +8226,6 @@ public interface DiagramPackage extends EPackage {
          * @generated
          */
         EAttribute ABSOLUTE_BOUNDS_FILTER__WIDTH = eINSTANCE.getAbsoluteBoundsFilter_Width();
-
-        /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.diagram.impl.DDiagramLinkImpl
-         * <em>DDiagram Link</em>}' class. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         * 
-         * @see org.eclipse.sirius.diagram.impl.DDiagramLinkImpl
-         * @see org.eclipse.sirius.diagram.impl.DiagramPackageImpl#getDDiagramLink()
-         * @generated
-         */
-        EClass DDIAGRAM_LINK = eINSTANCE.getDDiagramLink();
-
-        /**
-         * The meta object literal for the '<em><b>Target</b></em>' reference
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference DDIAGRAM_LINK__TARGET = eINSTANCE.getDDiagramLink_Target();
-
-        /**
-         * The meta object literal for the '<em><b>Node</b></em>' reference
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EReference DDIAGRAM_LINK__NODE = eINSTANCE.getDDiagramLink_Node();
 
         /**
          * The meta object literal for the '

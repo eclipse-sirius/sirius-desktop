@@ -282,31 +282,6 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.diagram.DDiagramLink} instances. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected DDiagramLinkItemProvider dDiagramLinkItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.diagram.DDiagramLink}. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createDDiagramLinkAdapter() {
-        if (dDiagramLinkItemProvider == null) {
-            dDiagramLinkItemProvider = new DDiagramLinkItemProvider(this);
-        }
-
-        return dDiagramLinkItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.diagram.DNode} instances. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
@@ -1233,8 +1208,6 @@ public class DiagramItemProviderAdapterFactory extends DiagramAdapterFactory imp
             appliedCompositeFiltersItemProvider.dispose();
         if (absoluteBoundsFilterItemProvider != null)
             absoluteBoundsFilterItemProvider.dispose();
-        if (dDiagramLinkItemProvider != null)
-            dDiagramLinkItemProvider.dispose();
         if (dNodeItemProvider != null)
             dNodeItemProvider.dispose();
         if (dNodeContainerItemProvider != null)

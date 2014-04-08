@@ -57,7 +57,6 @@ icons/full/obj16/CreateView.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.u
 icons/full/obj16/CustomStyle.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/obj16/java_model_obj.gif
 icons/full/obj16/CustomStyleDescription.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/obj16/java_model_obj.gif
 icons/full/obj16/DDiagram.gif - org.topcased.modeler.uml - org.topcased.modeler.uml/icons/diagram/ClassDiagram.gif
-icons/full/obj16/DDiagramLink.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/fldr_obj.gif
 icons/full/obj16/DEdge.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/ovr16/skip_breakpoint_ov.gif
 icons/full/obj16/DeleteElementDescription.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/delete_obj.gif
 icons/full/obj16/DeleteHook.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/etool16/java_app.png

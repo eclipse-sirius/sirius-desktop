@@ -77,6 +77,7 @@ h4. Changes in @org.eclipse.sirius@
 h4. Changes in @org.eclipse.sirius.diagram@
 
 * The references @DNode.ownedDetails@ and @DDiagramElementContainerImpl.ownedDetails@ have been removed from the metamodel, along with the corresponding implementation methods. They were not used in practice.
+* The @DDiagramLink@ EClass has been removed from the meta-model, along with the corresponding generated Java code. It was not used in practice.
 
 h4. Changes in @org.eclipse.sirius.ui@
 

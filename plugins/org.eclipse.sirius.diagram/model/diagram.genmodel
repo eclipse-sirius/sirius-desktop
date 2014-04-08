@@ -140,10 +140,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//AbsoluteBoundsFilter/height"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//AbsoluteBoundsFilter/width"/>
     </genClasses>
-    <genClasses ecoreClass="diagram.ecore#//DDiagramLink">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//DDiagramLink/target"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//DDiagramLink/node"/>
-    </genClasses>
     <genClasses image="false" ecoreClass="diagram.ecore#//AbstractDNode">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//AbstractDNode/ownedBorderedNodes"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//AbstractDNode/arrangeConstraints"/>

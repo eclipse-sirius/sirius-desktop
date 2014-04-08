@@ -37,7 +37,6 @@ import org.eclipse.sirius.diagram.ContainerLayout;
 import org.eclipse.sirius.diagram.ContainerShape;
 import org.eclipse.sirius.diagram.CustomStyle;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DDiagramLink;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
@@ -73,7 +72,6 @@ import org.eclipse.sirius.diagram.Square;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.BundledImageSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.CustomStyleSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DDiagramLinkSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DDiagramSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DEdgeSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeContainerSpec;
@@ -153,8 +151,6 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
             return createAppliedCompositeFilters();
         case DiagramPackage.ABSOLUTE_BOUNDS_FILTER:
             return createAbsoluteBoundsFilter();
-        case DiagramPackage.DDIAGRAM_LINK:
-            return createDDiagramLink();
         case DiagramPackage.DNODE:
             return createDNode();
         case DiagramPackage.DNODE_CONTAINER:
@@ -374,16 +370,6 @@ public class DiagramFactoryImpl extends EFactoryImpl implements DiagramFactory {
     public AbsoluteBoundsFilter createAbsoluteBoundsFilter() {
         AbsoluteBoundsFilterImpl absoluteBoundsFilter = new AbsoluteBoundsFilterImpl();
         return absoluteBoundsFilter;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @not-generated
-     */
-    public DDiagramLink createDDiagramLink() {
-        DDiagramLinkImpl dDiagramLink = new DDiagramLinkSpec();
-        return dDiagramLink;
     }
 
     /**

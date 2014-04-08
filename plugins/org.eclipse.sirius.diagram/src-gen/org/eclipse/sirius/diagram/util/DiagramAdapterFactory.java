@@ -33,7 +33,6 @@ import org.eclipse.sirius.diagram.CustomStyle;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
-import org.eclipse.sirius.diagram.DDiagramLink;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
@@ -71,7 +70,6 @@ import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DLabelled;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DNavigable;
-import org.eclipse.sirius.viewpoint.DNavigationLink;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -187,11 +185,6 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseAbsoluteBoundsFilter(AbsoluteBoundsFilter object) {
             return createAbsoluteBoundsFilterAdapter();
-        }
-
-        @Override
-        public Adapter caseDDiagramLink(DDiagramLink object) {
-            return createDDiagramLinkAdapter();
         }
 
         @Override
@@ -445,11 +438,6 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
         }
 
         @Override
-        public Adapter caseDNavigationLink(DNavigationLink object) {
-            return createDNavigationLinkAdapter();
-        }
-
-        @Override
         public Adapter caseCustomizable(Customizable object) {
             return createCustomizableAdapter();
         }
@@ -643,21 +631,6 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createAbsoluteBoundsFilterAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.diagram.DDiagramLink <em>DDiagram Link</em>}'.
-     * <!-- begin-user-doc --> This default implementation returns null so that
-     * we can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.diagram.DDiagramLink
-     * @generated
-     */
-    public Adapter createDDiagramLinkAdapter() {
         return null;
     }
 
@@ -1431,22 +1404,6 @@ public class DiagramAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createDNavigableAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DNavigationLink
-     * <em>DNavigation Link</em>}'. <!-- begin-user-doc --> This default
-     * implementation returns null so that we can easily ignore cases; it's
-     * useful to ignore a case when inheritance will catch all the cases anyway.
-     * <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.DNavigationLink
-     * @generated
-     */
-    public Adapter createDNavigationLinkAdapter() {
         return null;
     }
 

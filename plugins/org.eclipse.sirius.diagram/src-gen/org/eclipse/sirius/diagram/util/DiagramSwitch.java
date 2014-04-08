@@ -32,7 +32,6 @@ import org.eclipse.sirius.diagram.CustomStyle;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
-import org.eclipse.sirius.diagram.DDiagramLink;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
@@ -70,7 +69,6 @@ import org.eclipse.sirius.viewpoint.DContainer;
 import org.eclipse.sirius.viewpoint.DLabelled;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DNavigable;
-import org.eclipse.sirius.viewpoint.DNavigationLink;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -282,15 +280,6 @@ public class DiagramSwitch<T> {
             T result = caseAbsoluteBoundsFilter(absoluteBoundsFilter);
             if (result == null)
                 result = caseGraphicalFilter(absoluteBoundsFilter);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case DiagramPackage.DDIAGRAM_LINK: {
-            DDiagramLink dDiagramLink = (DDiagramLink) theEObject;
-            T result = caseDDiagramLink(dDiagramLink);
-            if (result == null)
-                result = caseDNavigationLink(dDiagramLink);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -1121,23 +1110,6 @@ public class DiagramSwitch<T> {
      * @generated
      */
     public T caseAbsoluteBoundsFilter(AbsoluteBoundsFilter object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>DDiagram Link</em>'. <!-- begin-user-doc --> This implementation
-     * returns null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>DDiagram Link</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDDiagramLink(DDiagramLink object) {
         return null;
     }
 
@@ -1988,23 +1960,6 @@ public class DiagramSwitch<T> {
      * @generated
      */
     public T caseDNavigable(DNavigable object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>DNavigation Link</em>'. <!-- begin-user-doc --> This implementation
-     * returns null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>DNavigation Link</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDNavigationLink(DNavigationLink object) {
         return null;
     }
 
