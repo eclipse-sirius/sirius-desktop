@@ -79,7 +79,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//DDiagram/ownedDiagramElements"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference diagram.ecore#//DDiagram/diagramElements"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//DDiagram/description"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//DDiagram/info"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//DDiagram/subDiagrams"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference diagram.ecore#//DDiagram/edges"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference diagram.ecore#//DDiagram/nodes"/>

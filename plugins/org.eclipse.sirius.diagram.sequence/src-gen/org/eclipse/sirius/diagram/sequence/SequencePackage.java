@@ -153,15 +153,6 @@ public interface SequencePackage extends EPackage {
     int SEQUENCE_DDIAGRAM__DESCRIPTION = DiagramPackage.DSEMANTIC_DIAGRAM__DESCRIPTION;
 
     /**
-     * The feature id for the '<em><b>Info</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int SEQUENCE_DDIAGRAM__INFO = DiagramPackage.DSEMANTIC_DIAGRAM__INFO;
-
-    /**
      * The feature id for the '<em><b>Sub Diagrams</b></em>' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 

@@ -54,12 +54,6 @@
         <details key="documentation" value="The description of the diagram. It may be null."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="info" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The information of the diagram."/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="subDiagrams" upperBound="-1"
         eType="#//DDiagram" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

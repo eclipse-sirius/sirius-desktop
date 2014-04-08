@@ -55,8 +55,6 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationImpl;
  * <em>Diagram Elements</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getDescription <em>
  * Description</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getInfo <em>Info
- * </em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getSubDiagrams <em>
  * Sub Diagrams</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getEdges <em>Edges
@@ -116,26 +114,6 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * @ordered
      */
     protected DiagramDescription description;
-
-    /**
-     * The default value of the '{@link #getInfo() <em>Info</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see #getInfo()
-     * @generated
-     * @ordered
-     */
-    protected static final String INFO_EDEFAULT = "";
-
-    /**
-     * The cached value of the '{@link #getInfo() <em>Info</em>}' attribute.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see #getInfo()
-     * @generated
-     * @ordered
-     */
-    protected String info = INFO_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getSubDiagrams() <em>Sub Diagrams</em>}'
@@ -372,27 +350,6 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
         description = newDescription;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DDIAGRAM__DESCRIPTION, oldDescription, description));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public String getInfo() {
-        return info;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void setInfo(String newInfo) {
-        String oldInfo = info;
-        info = newInfo;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DDIAGRAM__INFO, oldInfo, info));
     }
 
     /**
@@ -809,8 +766,6 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
             if (resolve)
                 return getDescription();
             return basicGetDescription();
-        case DiagramPackage.DDIAGRAM__INFO:
-            return getInfo();
         case DiagramPackage.DDIAGRAM__SUB_DIAGRAMS:
             return getSubDiagrams();
         case DiagramPackage.DDIAGRAM__EDGES:
@@ -866,9 +821,6 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
             return;
         case DiagramPackage.DDIAGRAM__DESCRIPTION:
             setDescription((DiagramDescription) newValue);
-            return;
-        case DiagramPackage.DDIAGRAM__INFO:
-            setInfo((String) newValue);
             return;
         case DiagramPackage.DDIAGRAM__SUB_DIAGRAMS:
             getSubDiagrams().clear();
@@ -927,9 +879,6 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
         case DiagramPackage.DDIAGRAM__DESCRIPTION:
             setDescription((DiagramDescription) null);
             return;
-        case DiagramPackage.DDIAGRAM__INFO:
-            setInfo(INFO_EDEFAULT);
-            return;
         case DiagramPackage.DDIAGRAM__SUB_DIAGRAMS:
             getSubDiagrams().clear();
             return;
@@ -981,8 +930,6 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
             return !getDiagramElements().isEmpty();
         case DiagramPackage.DDIAGRAM__DESCRIPTION:
             return description != null;
-        case DiagramPackage.DDIAGRAM__INFO:
-            return INFO_EDEFAULT == null ? info != null : !INFO_EDEFAULT.equals(info);
         case DiagramPackage.DDIAGRAM__SUB_DIAGRAMS:
             return subDiagrams != null && !subDiagrams.isEmpty();
         case DiagramPackage.DDIAGRAM__EDGES:
@@ -1030,9 +977,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
             return super.toString();
 
         StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (info: ");
-        result.append(info);
-        result.append(", synchronized: ");
+        result.append(" (synchronized: ");
         result.append(synchronized_);
         result.append(", isInLayoutingMode: ");
         result.append(isInLayoutingMode);

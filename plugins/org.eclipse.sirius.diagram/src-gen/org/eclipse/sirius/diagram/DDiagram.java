@@ -44,7 +44,6 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
  * Elements</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DDiagram#getDescription <em>Description
  * </em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.DDiagram#getInfo <em>Info</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DDiagram#getSubDiagrams <em>Sub
  * Diagrams</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.DDiagram#getEdges <em>Edges</em>}</li>
@@ -137,32 +136,6 @@ public interface DDiagram extends DRepresentation, DocumentedElement, DragAndDro
      * @generated
      */
     void setDescription(DiagramDescription value);
-
-    /**
-     * Returns the value of the '<em><b>Info</b></em>' attribute. The default
-     * value is <code>""</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * <!-- begin-model-doc --> The information of the diagram. <!--
-     * end-model-doc -->
-     * 
-     * @return the value of the '<em>Info</em>' attribute.
-     * @see #setInfo(String)
-     * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram_Info()
-     * @model default=""
-     * @generated
-     */
-    String getInfo();
-
-    /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.diagram.DDiagram#getInfo <em>Info</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @param value
-     *            the new value of the '<em>Info</em>' attribute.
-     * @see #getInfo()
-     * @generated
-     */
-    void setInfo(String value);
 
     /**
      * Returns the value of the '<em><b>Sub Diagrams</b></em>' containment

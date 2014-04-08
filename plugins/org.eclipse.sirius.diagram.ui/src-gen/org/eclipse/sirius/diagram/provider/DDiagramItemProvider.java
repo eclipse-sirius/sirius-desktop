@@ -65,7 +65,6 @@ public class DDiagramItemProvider extends DRepresentationItemProvider implements
 
             addDiagramElementsPropertyDescriptor(object);
             addDescriptionPropertyDescriptor(object);
-            addInfoPropertyDescriptor(object);
             addEdgesPropertyDescriptor(object);
             addNodesPropertyDescriptor(object);
             addNodeListElementsPropertyDescriptor(object);
@@ -106,18 +105,6 @@ public class DDiagramItemProvider extends DRepresentationItemProvider implements
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_DDiagram_description_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DDiagram_description_feature", "_UI_DDiagram_type"),
                 DiagramPackage.Literals.DDIAGRAM__DESCRIPTION, true, false, true, null, null, null));
-    }
-
-    /**
-     * This adds a property descriptor for the Info feature. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected void addInfoPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DDiagram_info_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DDiagram_info_feature", "_UI_DDiagram_type"), DiagramPackage.Literals.DDIAGRAM__INFO, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -356,7 +343,6 @@ public class DDiagramItemProvider extends DRepresentationItemProvider implements
         updateChildren(notification);
 
         switch (notification.getFeatureID(DDiagram.class)) {
-        case DiagramPackage.DDIAGRAM__INFO:
         case DiagramPackage.DDIAGRAM__SYNCHRONIZED:
         case DiagramPackage.DDIAGRAM__IS_IN_LAYOUTING_MODE:
         case DiagramPackage.DDIAGRAM__HEADER_HEIGHT:
