@@ -27,11 +27,13 @@ import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.editparts.AbstractConnectionEditPart;
+import org.eclipse.gef.editparts.ZoomManager;
 import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gef.requests.DirectEditRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.properties.WorkspaceViewerProperties;
+import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
@@ -1430,7 +1432,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Zoom to next zoom value.
+     * Zoom to next zoom value. Get the zoom manager and change the zoom level.
      * 
      * @param zoomLevel
      *            Zoom level
@@ -1438,7 +1440,27 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      * @return Current representation.
      */
     public SWTBotSiriusDiagramEditor zoom(final ZoomLevel zoomLevel) {
-        final ToolItem item = designerBot.toolbarSpecialDropDownButtonWithTooltip("&Zoom");
+        UIThreadRunnable.syncExec(SWTUtils.display(), new VoidResult() {
+            @Override
+            public void run() {
+                ZoomManager zoomManager = (ZoomManager) partReference.getEditor(false).getAdapter(ZoomManager.class);
+                zoomManager.setZoomAsText(zoomLevel.getLevel());
+            }
+        });
+        return this;
+    }
+
+    /**
+     * Zoom to next zoom value. Change the zoom using the combo from the tabbar
+     * (or action bar if the tabbar is not active).
+     * 
+     * @param zoomLevel
+     *            Zoom level
+     * 
+     * @return Current representation.
+     */
+    public SWTBotSiriusDiagramEditor zoomFromToolbar(final ZoomLevel zoomLevel) {
+        final ToolItem item = designerBot.toolbarSpecialDropDownButtonWithTooltip(DiagramUIMessages.ZoomActionMenu_ZoomLabel);
 
         UIThreadRunnable.syncExec(new VoidResult() {
             @Override

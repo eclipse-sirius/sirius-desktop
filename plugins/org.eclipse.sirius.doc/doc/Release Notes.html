@@ -323,6 +323,12 @@
 				<code>SWTBotEditor</code> (diagram, tree or table editor) with the given name. The name is the name as displayed on the editor&#8217;s tab in Eclipse. In case of multiple editors with the same fileName, the same method with an additional parameter, the index, has been added 
 				<code>SWTBotSiriusHelper.getSiriusEditor(String, int)</code>.
 			</li>
+			<li>Change the behavior of 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.zoom(ZoomLevel)</code> to directly change the zoom level of the current diagram editor without trying to change it from the zoom combo in the tabbar.
+			</li>
+			<li>Add 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.zoomFromToolbar(ZoomLevel)</code> to add possibility to explicitly change the zoom level from the tabbar.
+			</li>
 		</ul>
 		<h2 id="sirius1.0M6">Changes in Sirius 1.0.0M6 (from Sirius 1.0M5)</h2>
 		<h3 id="APIChanges2">API Changes</h3>

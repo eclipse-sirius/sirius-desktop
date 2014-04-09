@@ -93,7 +93,8 @@ h4. Changes in @org.eclipse.sirius.tests.support@
 * Methods @AbstractSiriusSwtBotGefTestCase.openRepresentation@ with @SWTBotDesignerEditor@ as returned type have been renamed into @openDiagram@, marked as deprecated and replaced with methods returning a @SWTBotEditor@. You can now use methods @openRepresentation@ for DTree or DTable. If the @expectedRepresentationClass@ is @DDiagram.class@, the returned type will be a @SWTBotSiriusDiagramEditor@.
 * Method @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper.getDesignerEditor(String)@ has been renamed into @getSiriusDiagramEditor@.
 * Add @SWTBotSiriusHelper.getSiriusEditor(String)@ to return the @SWTBotEditor@ (diagram, tree or table editor) with the given name. The name is the name as displayed on the editor's tab in Eclipse. In case of multiple editors with the same fileName, the same method with an additional parameter, the index, has been added @SWTBotSiriusHelper.getSiriusEditor(String, int)@.
-
+* Change the behavior of @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.zoom(ZoomLevel)@ to directly change the zoom level of the current diagram editor without trying to change it from the zoom combo in the tabbar.
+* Add @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.zoomFromToolbar(ZoomLevel)@ to add possibility to explicitly change the zoom level from the tabbar.
 
 h2(#sirius1.0M6). Changes in Sirius 1.0.0M6 (from Sirius 1.0M5)
 
