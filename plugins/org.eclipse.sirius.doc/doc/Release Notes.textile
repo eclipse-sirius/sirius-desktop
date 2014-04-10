@@ -79,6 +79,10 @@ h4. Changes in @org.eclipse.sirius@
 * In class @org.eclipse.sirius.business.api.dialect.description.AbstractInterpretedExpressionQuery@, the protected methods @appendAllLocalVariableDefinitions()@ and @appendEditMaskVariables()@ now take a @Map<String, Collection<String>>@ instead of a Guava-specific @Multimap@. The new protected method @addDefinition()@ can be used to make it easier to add entries to the map. Subclasses in Sirius have been updated to match the new signature.
 * The message @org.eclipse.sirius.business.api.modelingproject.ModelingProject.ZERO_REPRESENTATIONS_FILE_FOUND_IN@ has been removed without replacement. It was not really an API constant.
 * The behavior of method @org.eclipse.sirius.business.api.modelingproject.ModelingProject.getMainRepresentationsFileURI()@ has changed. It now marks this project as invalid and adds a marker on it, if it is considered as invalid (no or many representations files).
+* A new query @org.eclipse.sirius.business.api.query.IFileQuery@ has been added with a method to check if file is handled by an opened session, ie:
+** a semantic resource of this session,</LI>
+** a referenced sub representations file,</LI>
+** a controlled resource.
 
 h4. Changes in @org.eclipse.sirius.diagram@
 

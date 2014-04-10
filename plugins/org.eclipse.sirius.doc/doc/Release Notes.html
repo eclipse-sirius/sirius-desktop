@@ -285,6 +285,14 @@
 			<li>The behavior of method 
 				<code>org.eclipse.sirius.business.api.modelingproject.ModelingProject.getMainRepresentationsFileURI()</code> has changed. It now marks this project as invalid and adds a marker on it, if it is considered as invalid (no or many representations files).
 			</li>
+			<li>A new query 
+				<code>org.eclipse.sirius.business.api.query.IFileQuery</code> has been added with a method to check if file is handled by an opened session, ie:
+				<ul>
+					<li>a semantic resource of this session,</LI></li>
+					<li>a referenced sub representations file,</LI></li>
+					<li>a controlled resource.</li>
+				</ul>
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
 			<code>org.eclipse.sirius.diagram</code>

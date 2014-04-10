@@ -17,11 +17,15 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.viewers.DecorationOverlayIcon;
 import org.eclipse.jface.viewers.IColorProvider;
+import org.eclipse.jface.viewers.IDecoration;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
+import org.eclipse.sirius.business.api.query.IFileQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.ext.base.Option;
@@ -40,8 +44,10 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IMemento;
+import org.eclipse.ui.model.IWorkbenchAdapter;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonLabelProvider;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -54,6 +60,11 @@ import com.google.common.collect.Lists;
  * 
  */
 public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorProvider {
+
+    /**
+     * Default image descriptor for the "Sirius Modeling" overlay.
+     */
+    public static final ImageDescriptor SIRIUS_MODELING_OVERLAY_DESC = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/ovr16/SessionDecorator.gif"); //$NON-NLS-1$;
 
     private static final String DIRTY = "*";
 
@@ -86,6 +97,37 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
                 // This can happen when trying to get the label of a CDOObject
                 // which transaction has just been closed
                 // Nothing to do, null will returned
+            }
+        } else if (element instanceof IFile) {
+            // This file is not in a ModelingProject (check in
+            // <possibleChildren> and <triggerPoints> of
+            // "org.eclipse.ui.navigator.navigatorContent" of plugin.xml)
+            IFile file = (IFile) element;
+
+            if (new IFileQuery(file).isResourceHandledByOpenedSession()) {
+                // Add "Sirius Modeling" overlay on this semantic file.
+                String fileExtension = file.getFileExtension();
+                // Create a key to store/restore the image in image registry of
+                // SiriusEditPlugin
+                String imgKey = fileExtension + "Decorated";
+                // Get the existing image (if any)
+                img = SiriusEditPlugin.getPlugin().getImageRegistry().get(imgKey);
+                // If the image has already been computed, use it.
+                if (img == null) {
+                    // Get the base image to overlay
+                    ImageDescriptor imageDescriptor = null;
+                    IWorkbenchAdapter wbAdapter = (IWorkbenchAdapter) file.getAdapter(IWorkbenchAdapter.class);
+                    if (wbAdapter != null) {
+                        imageDescriptor = wbAdapter.getImageDescriptor(file);
+                    }
+                    if (imageDescriptor != null) {
+                        // Add an overlay with the "Sirius Modeling" overlay
+                        ImageDescriptor[] imageDescriptors = new ImageDescriptor[5];
+                        imageDescriptors[IDecoration.TOP_RIGHT] = SIRIUS_MODELING_OVERLAY_DESC;
+                        img = new DecorationOverlayIcon(imageDescriptor.createImage(), imageDescriptors).createImage();
+                        SiriusEditPlugin.getPlugin().getImageRegistry().put(imgKey, img);
+                    }
+                }
             }
         }
         return img;
