@@ -18,8 +18,13 @@ import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.query.FileQuery;
 
 /**
- * Property tester to check that an {@link IFile} is a semantic resource for a
- * transient session.
+ * Property tester to check that an {@link IFile} is:
+ * <UL>
+ * <LI>in a modeling project,</LI>
+ * <LI>or a session resource file,</LI>
+ * <LI>or the semantic resource of a transient session (no session file, the
+ * session data is in memory).</LI>
+ * </UL>
  * 
  * @author mporhel
  */
