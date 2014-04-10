@@ -13,6 +13,7 @@ package org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.manage
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -41,7 +42,6 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
-import org.eclipse.sirius.business.internal.modelingproject.manager.InitializeModelingProjectJob;
 import org.eclipse.sirius.business.internal.modelingproject.marker.ModelingMarker;
 import org.eclipse.sirius.business.internal.query.ModelingProjectQuery;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
@@ -56,6 +56,7 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * A manager for modeling projects.
@@ -92,11 +93,11 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
     };
 
     /**
-     * List of representations files that are currently loading. There can be
+     * Set of representations files that are currently loading. There can be
      * only one representations file in loading at same time. However there may
      * be many waiting to be loaded.
      */
-    private List<URI> sessionFileLoading = Lists.newArrayList();
+    private Set<URI> sessionFileLoading = Sets.newHashSet();
 
     /**
      * Avoid instantiation.
@@ -116,20 +117,6 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager#initializeAfterLoad()
-     */
-    public void initializeAfterLoad() {
-        SessionManager.INSTANCE.addSessionsListener(sessionManagerListener);
-        // Look over all projects to determine the main representations file of
-        // each modeling project.
-        Job job = new InitializeModelingProjectJob();
-        job.setPriority(Job.SHORT);
-        job.schedule();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager#loadAndOpenRepresentationsFile(org.eclipse.emf.common.util.URI)
      */
     public void loadAndOpenRepresentationsFile(final URI representationsFileURI) {
@@ -142,6 +129,9 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
      * @see org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager#loadAndOpenRepresentationsFiles(java.util.List)
      */
     public void loadAndOpenRepresentationsFiles(final List<URI> representationsFilesURIs) {
+        // Add the specific sessions listener (if not already added).
+        SessionManager.INSTANCE.addSessionsListener(sessionManagerListener);
+
         // List only the representations files that are not already loaded or
         // that are not currently in loading.
         Iterator<URI> representationsFilesURIsToLoadIterator = Iterators.filter(representationsFilesURIs.iterator(),

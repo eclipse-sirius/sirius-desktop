@@ -31,15 +31,6 @@ public interface ModelingProjectManager {
     ModelingProjectManager INSTANCE = ModelingProjectManagerImpl.init();
 
     /**
-     * Initialize the modeling project manager. This method should be called
-     * only once by the
-     * {@link org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.manager.ui.tools.internal.views.common.modelingproject.manager.ModelingProjectManagerStartup}
-     * .<BR>
-     * Not intended to be used by client.
-     */
-    void initializeAfterLoad();
-
-    /**
      * Load and open a representations file.
      * 
      * @param representationsFileURI

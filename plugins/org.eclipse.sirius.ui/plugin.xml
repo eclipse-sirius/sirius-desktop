@@ -662,11 +662,6 @@
       </objectContribution>
    </extension>
   -->
-  <extension point="org.eclipse.ui.startup">
-    <startup
-      class="org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.manager.ModelingProjectManagerStartup">
-    </startup>
-  </extension>  
 
   <extension
          point="org.eclipse.ui.commands">
