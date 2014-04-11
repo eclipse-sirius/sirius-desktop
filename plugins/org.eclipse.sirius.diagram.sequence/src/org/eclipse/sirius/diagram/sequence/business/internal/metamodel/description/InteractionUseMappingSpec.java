@@ -169,13 +169,4 @@ public class InteractionUseMappingSpec extends InteractionUseMappingImpl impleme
     public EList<NodeMapping> getAllBorderedNodeMappings() {
         return AbstractNodeMappingSpecOperations.getAllBorderedNodeMappings(this);
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public EList<DDiagramElement> getDNodesDone() {
-        return ContainerMappingHelper.getDNodesDone(this);
-    }
-
 }

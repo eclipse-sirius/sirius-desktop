@@ -107,17 +107,6 @@ public interface AbstractNodeMapping extends DiagramElementMapping, DocumentedEl
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Return all nodes that have been created by this mapping. <!--
-     * end-model-doc -->
-     * 
-     * @model kind="operation"
-     * @generated
-     */
-    @Deprecated
-    EList<DDiagramElement> getDNodesDone();
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Return the node that has been created by this mapping and the specified
      * EObject as semantic element.
      * 

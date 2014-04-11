@@ -1736,8 +1736,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         initEReference(getAbstractNodeMapping_ReusedBorderedNodeMappings(), this.getNodeMapping(), null, "reusedBorderedNodeMappings", null, 0, -1, AbstractNodeMapping.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-        addEOperation(abstractNodeMappingEClass, theDiagramPackage.getDDiagramElement(), "getDNodesDone", 0, -1, IS_UNIQUE, IS_ORDERED);
-
         op = addEOperation(abstractNodeMappingEClass, theDiagramPackage.getDDiagramElement(), "findDNodeFromEObject", 0, -1, IS_UNIQUE, IS_ORDERED);
         addEParameter(op, theEcorePackage.getEObject(), "eObject", 0, 1, IS_UNIQUE, IS_ORDERED);
 

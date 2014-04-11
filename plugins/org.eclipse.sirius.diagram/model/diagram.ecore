@@ -1301,11 +1301,6 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="An abstract mapping."/>
       </eAnnotations>
-      <eOperations name="getDNodesDone" upperBound="-1" eType="#//DDiagramElement">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Return all nodes that have been created by this mapping."/>
-        </eAnnotations>
-      </eOperations>
       <eOperations name="findDNodeFromEObject" upperBound="-1" eType="#//DDiagramElement">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="Return the node that has been created by this mapping and the specified EObject as semantic element."/>

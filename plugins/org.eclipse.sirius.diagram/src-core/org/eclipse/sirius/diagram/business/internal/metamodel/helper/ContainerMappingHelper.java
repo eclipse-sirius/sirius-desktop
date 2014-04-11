@@ -350,23 +350,6 @@ public final class ContainerMappingHelper {
         return new BasicEList.UnmodifiableEList<DiagramElementMapping>(allMappings.size(), allMappings.toArray());
     }
 
-    /**
-     * Implementation of {@link ContainerMapping#getDNodesDone()}.
-     * 
-     * @param self
-     *            the container mapping.
-     * @return all nodes that have been created by this mapping.
-     */
-    public static EList<DDiagramElement> getDNodesDone(IContainerMappingExt self) {
-        final EList result = new BasicEList();
-        final Iterator<EList<DSemanticDecorator>> iterValues = self.getViewContainerDone().values().iterator();
-        while (iterValues.hasNext()) {
-            final EList<DSemanticDecorator> list = iterValues.next();
-            result.addAll(list);
-        }
-        return result;
-    }
-
     private static boolean isInstanceOf(EObject eObj, final String typename) {
         return SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(eObj).eInstanceOf(eObj, typename);
     }
