@@ -1368,22 +1368,6 @@
           </eAnnotations>
         </eParameters>
       </eOperations>
-      <eOperations name="getBestStyle" eType="#//NodeStyle">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Retrieve the best style to use."/>
-        </eAnnotations>
-        <eParameters name="modelElement" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The model element."/>
-          </eAnnotations>
-        </eParameters>
-        <eParameters name="viewVariable" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The view of the element."/>
-          </eAnnotations>
-        </eParameters>
-        <eParameters name="containerVariable" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-      </eOperations>
       <eOperations name="createListElement" eType="#//DNodeListElement">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="Create a list element. This method is equivalent of createNode but returns a ViewNodeListElement."/>

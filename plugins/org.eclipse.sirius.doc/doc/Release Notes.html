@@ -347,6 +347,12 @@
 			<li>The 
 				<code>AbstractNodeMapping.getDNodesDone()</code> EOperation has been removed. It was not used anywhere.
 			</li>
+			<li>The 
+				<code>NodeMapping.getBestStyle()</code> EOperation has been removed. It was not used anywhere.  Although its usage is highly discouraged, if you really need to  you can currently use the internal method 
+				<code>MappingHelper.getBestStyle()</code> instead (use 
+				<code>SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticElement)</code> to obtain the 
+				<code>IInterpreter</code> this method need). As with all internal code, there is no guarantee this method will still exist in future versions.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.sequence">Changes in 
 			<code>org.eclipse.sirius.diagram.sequence</code>

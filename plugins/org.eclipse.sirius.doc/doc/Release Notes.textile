@@ -99,6 +99,7 @@ h4. Changes in @org.eclipse.sirius.diagram@
 * The @DDiagramElement.isFold()@ EOperation has been removed. It was deprecated and edge folding has long been implemented using different mechanisms.
 * In the @ContainerMapping@ type, the following EOperations have been removed: @createContainer()@, @updateContainer()@, and @getNodesCandidate()@. Although their usage is highly discouraged, if you really need to  you can currently use the corresponding methods in the internal @ContainerMappingHelper@ instead (use @SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticElement)@ to obtain the @IInterpreter@ those methods need). As with all internal code, there is no guarantee these methods will still exist in future versions.
 * The @AbstractNodeMapping.getDNodesDone()@ EOperation has been removed. It was not used anywhere.
+* The @NodeMapping.getBestStyle()@ EOperation has been removed. It was not used anywhere.  Although its usage is highly discouraged, if you really need to  you can currently use the internal method @MappingHelper.getBestStyle()@ instead (use @SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticElement)@ to obtain the @IInterpreter@ this method need). As with all internal code, there is no guarantee this method will still exist in future versions.
 
 h4. Changes in @org.eclipse.sirius.diagram.sequence@
 

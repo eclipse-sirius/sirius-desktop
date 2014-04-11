@@ -25,12 +25,9 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeListElement;
-import org.eclipse.sirius.diagram.NodeStyle;
-import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.INodeMappingExt;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.AbstractNodeMappingSpecOperations;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.NodeMappingHelper;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
@@ -96,15 +93,6 @@ public class ExecutionMappingSpec extends ExecutionMappingImpl implements INodeM
     public void updateNode(final DNode node) {
         IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(node);
         new NodeMappingHelper(interpreter).updateNode(this, node);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public NodeStyle getBestStyle(final EObject modelElement, final EObject viewVariable, final EObject containerVariable) {
-        IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement);
-        return (NodeStyle) new MappingHelper(interpreter).getBestStyle(this, modelElement, viewVariable, containerVariable, new EObjectQuery(viewVariable).getParentDiagram().get());
     }
 
     /**

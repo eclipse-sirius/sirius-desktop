@@ -12,15 +12,10 @@ package org.eclipse.sirius.diagram.business.internal.metamodel.description.spec;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.diagram.NodeStyle;
-import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.NodeMappingImport;
@@ -28,7 +23,6 @@ import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
 import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 
 /**
@@ -118,30 +112,6 @@ public class NodeMappingImportSpec extends NodeMappingSpec implements NodeMappin
             getImportedMapping().addDoneNode(node);
         }
     }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.NodeMappingSpec#getBestStyle(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.EObject, org.eclipse.emf.ecore.EObject)
-     */
-    @Override
-    public NodeStyle getBestStyle(final EObject modelElement, final EObject viewVariable, final EObject containerVariable) {
-        IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(containerVariable);
-        final NodeStyle result = (NodeStyle) new MappingHelper(interpreter).getBestStyle(this, modelElement, viewVariable, containerVariable, new EObjectQuery(viewVariable).getParentDiagram().get());
-        if (result == null && getImportedMapping() != null && getImportedMapping() != this) {
-            /*
-             * Here if you are importing a node and if we did not used custom
-             * styles, then we want to re-use it's styles.
-             * 
-             * One of the main advantages to import a node is to redefined the
-             * style.
-             */
-            return getImportedMapping().getBestStyle(modelElement, viewVariable, containerVariable);
-        }
-        return result;
-    }
-
     /**
      * {@inheritDoc}
      * 

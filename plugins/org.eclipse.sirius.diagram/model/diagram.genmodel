@@ -448,11 +448,6 @@
         <genOperations ecoreOperation="diagram.ecore#//description/NodeMapping/updateNode">
           <genParameters ecoreParameter="diagram.ecore#//description/NodeMapping/updateNode/node"/>
         </genOperations>
-        <genOperations ecoreOperation="diagram.ecore#//description/NodeMapping/getBestStyle">
-          <genParameters ecoreParameter="diagram.ecore#//description/NodeMapping/getBestStyle/modelElement"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/NodeMapping/getBestStyle/viewVariable"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/NodeMapping/getBestStyle/containerVariable"/>
-        </genOperations>
         <genOperations ecoreOperation="diagram.ecore#//description/NodeMapping/createListElement">
           <genParameters ecoreParameter="diagram.ecore#//description/NodeMapping/createListElement/modelElement"/>
           <genParameters ecoreParameter="diagram.ecore#//description/NodeMapping/createListElement/diagram"/>

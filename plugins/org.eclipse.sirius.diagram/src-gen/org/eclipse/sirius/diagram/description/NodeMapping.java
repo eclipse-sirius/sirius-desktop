@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeListElement;
-import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 
 /**
@@ -107,20 +106,6 @@ public interface NodeMapping extends AbstractNodeMapping, DragAndDropTargetDescr
      */
     @Deprecated
     void updateNode(DNode node);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Retrieve the best style to use.
-     * 
-     * @param modelElement
-     *            The model element.
-     * @param viewVariable
-     *            The view of the element. <!-- end-model-doc -->
-     * @model
-     * @generated
-     */
-    @Deprecated
-    NodeStyle getBestStyle(EObject modelElement, EObject viewVariable, EObject containerVariable);
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
