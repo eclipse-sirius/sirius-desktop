@@ -48,6 +48,7 @@ import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSy
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DEdgeCandidate;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.NodeMappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementContainerSpecOperations;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -122,11 +123,11 @@ public final class DnDTasksOperations {
                 public void execute() {
                     DNodeListElement viewNodeListElement;
                     if (droppedDiagramElement != null && mapping.equals(droppedDiagramElement.getMapping())) {
-                        // The mapping is the same so we don't create a new
-                        // DNode
+                        // The mapping is the same so we don't create a new DNode
                         viewNodeListElement = (DNodeListElement) droppedDiagramElement;
                     } else {
-                        viewNodeListElement = mapping.createListElement(droppedElement, parentDiagram);
+                        IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(droppedElement);
+                        viewNodeListElement = new NodeMappingHelper(interpreter).createListElement(mapping, droppedDiagramElement, parentDiagram);
                     }
                     ((DNodeList) target).getOwnedElements().add(viewNodeListElement);
                     if (!viewNodeListElement.equals(droppedDiagramElement)) {
@@ -144,8 +145,7 @@ public final class DnDTasksOperations {
                 public void execute() {
                     DNode dNode;
                     if (droppedDiagramElement != null && mapping.equals(droppedDiagramElement.getMapping())) {
-                        // The mapping is the same so we don't create a new
-                        // DNode
+                        // The mapping is the same so we don't create a new DNode
                         dNode = (DNode) droppedDiagramElement;
                     } else {
                         dNode = mapping.createNode(droppedElement, semanticContainer, parentDiagram);

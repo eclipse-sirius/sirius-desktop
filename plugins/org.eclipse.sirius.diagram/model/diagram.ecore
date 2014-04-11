@@ -1368,17 +1368,6 @@
           </eAnnotations>
         </eParameters>
       </eOperations>
-      <eOperations name="createListElement" eType="#//DNodeListElement">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Create a list element. This method is equivalent of createNode but returns a ViewNodeListElement."/>
-        </eAnnotations>
-        <eParameters name="modelElement" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The semantic model element."/>
-          </eAnnotations>
-        </eParameters>
-        <eParameters name="diagram" eType="#//DDiagram"/>
-      </eOperations>
       <eOperations name="updateListElement">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="Update a ViewNodeListElement."/>

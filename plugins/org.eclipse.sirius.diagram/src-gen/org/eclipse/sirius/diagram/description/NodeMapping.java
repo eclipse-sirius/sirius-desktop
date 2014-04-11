@@ -109,19 +109,6 @@ public interface NodeMapping extends AbstractNodeMapping, DragAndDropTargetDescr
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-     * Create a list element. This method is equivalent of createNode but
-     * returns a ViewNodeListElement.
-     * 
-     * @param modelElement
-     *            The semantic model element. <!-- end-model-doc -->
-     * @model
-     * @generated
-     */
-    @Deprecated
-    DNodeListElement createListElement(EObject modelElement, DDiagram diagram);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
      * Update a ViewNodeListElement.
      * 
      * @param listElement

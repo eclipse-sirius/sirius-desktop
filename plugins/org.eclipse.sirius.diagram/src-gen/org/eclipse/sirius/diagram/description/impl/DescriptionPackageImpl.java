@@ -1760,10 +1760,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         op = addEOperation(nodeMappingEClass, null, "updateNode", 0, 1, IS_UNIQUE, IS_ORDERED);
         addEParameter(op, theDiagramPackage.getDNode(), "node", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-        op = addEOperation(nodeMappingEClass, theDiagramPackage.getDNodeListElement(), "createListElement", 0, 1, IS_UNIQUE, IS_ORDERED);
-        addEParameter(op, theEcorePackage.getEObject(), "modelElement", 0, 1, IS_UNIQUE, IS_ORDERED);
-        addEParameter(op, theDiagramPackage.getDDiagram(), "diagram", 0, 1, IS_UNIQUE, IS_ORDERED);
-
         op = addEOperation(nodeMappingEClass, null, "updateListElement", 0, 1, IS_UNIQUE, IS_ORDERED);
         addEParameter(op, theDiagramPackage.getDNodeListElement(), "listElement", 0, 1, IS_UNIQUE, IS_ORDERED);
 

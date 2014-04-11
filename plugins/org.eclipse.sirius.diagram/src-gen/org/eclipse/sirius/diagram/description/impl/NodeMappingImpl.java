@@ -227,17 +227,6 @@ public class NodeMappingImpl extends AbstractNodeMappingImpl implements NodeMapp
      * 
      * @generated
      */
-    public DNodeListElement createListElement(EObject modelElement, DDiagram diagram) {
-        // TODO: implement this method
-        // Ensure that you remove @generated or mark it @generated NOT
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public void updateListElement(DNodeListElement listElement) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT

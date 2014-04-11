@@ -99,15 +99,6 @@ public class ObservationPointMappingSpec extends ObservationPointMappingImpl imp
      * {@inheritDoc}
      */
     @Override
-    public DNodeListElement createListElement(final EObject modelElement, final DDiagram diagram) {
-        IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement);
-        return new NodeMappingHelper(interpreter).createListElement(this, modelElement, diagram);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public void updateListElement(final DNodeListElement listElement) {
         IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(listElement);
         new NodeMappingHelper(interpreter).updateListElement(this, listElement);
