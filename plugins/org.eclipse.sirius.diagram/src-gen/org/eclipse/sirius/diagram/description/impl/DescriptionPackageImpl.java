@@ -1805,9 +1805,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         initEAttribute(getContainerMapping_ChildrenPresentation(), theDiagramPackage.getContainerLayout(), "childrenPresentation", "FreeForm", 1, 1, ContainerMapping.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-        op = addEOperation(containerMappingEClass, null, "updateContainer", 0, 1, IS_UNIQUE, IS_ORDERED);
-        addEParameter(op, theDiagramPackage.getDDiagramElementContainer(), "node", 0, 1, IS_UNIQUE, IS_ORDERED);
-
         op = addEOperation(containerMappingEClass, theDiagramPackage.getContainerStyle(), "getBestStyle", 0, 1, IS_UNIQUE, IS_ORDERED);
         addEParameter(op, theEcorePackage.getEObject(), "modelElement", 0, 1, IS_UNIQUE, IS_ORDERED);
         addEParameter(op, theEcorePackage.getEObject(), "viewVariable", 0, 1, IS_UNIQUE, IS_ORDERED);

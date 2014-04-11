@@ -488,9 +488,6 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/ContainerMapping/conditionnalStyles"/>
         <genFeatures createChild="false" propertyCategory="General" propertyDescription="Tell whether the container will display it's children as list elements, as shapes or as regions."
             ecoreFeature="ecore:EAttribute diagram.ecore#//description/ContainerMapping/childrenPresentation"/>
-        <genOperations ecoreOperation="diagram.ecore#//description/ContainerMapping/updateContainer">
-          <genParameters ecoreParameter="diagram.ecore#//description/ContainerMapping/updateContainer/node"/>
-        </genOperations>
         <genOperations ecoreOperation="diagram.ecore#//description/ContainerMapping/getBestStyle">
           <genParameters ecoreParameter="diagram.ecore#//description/ContainerMapping/getBestStyle/modelElement"/>
           <genParameters ecoreParameter="diagram.ecore#//description/ContainerMapping/getBestStyle/viewVariable"/>

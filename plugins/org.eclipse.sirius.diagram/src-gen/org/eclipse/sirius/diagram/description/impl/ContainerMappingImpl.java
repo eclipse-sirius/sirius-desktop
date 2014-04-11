@@ -25,7 +25,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.diagram.ContainerLayout;
 import org.eclipse.sirius.diagram.ContainerStyle;
-import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
@@ -389,17 +388,6 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
         childrenPresentation = newChildrenPresentation == null ? CHILDREN_PRESENTATION_EDEFAULT : newChildrenPresentation;
         if (eNotificationRequired())
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.CONTAINER_MAPPING__CHILDREN_PRESENTATION, oldChildrenPresentation, childrenPresentation));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void updateContainer(DDiagramElementContainer node) {
-        // TODO: implement this method
-        // Ensure that you remove @generated or mark it @generated NOT
-        throw new UnsupportedOperationException();
     }
 
     /**

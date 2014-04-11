@@ -23,7 +23,6 @@ import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
 import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.AbstractNodeMappingSpecOperations;
@@ -104,15 +103,6 @@ public class OperandMappingSpec extends OperandMappingImpl implements IContainer
     @Override
     public EList<DDiagramElement> findDNodeFromEObject(final EObject object) {
         return ContainerMappingHelper.findDNodeFromEObject(this, object);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void updateContainer(final DDiagramElementContainer container) {
-        IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(container);
-        new ContainerMappingHelper(interpreter).updateContainer(this, container);
     }
 
     /**

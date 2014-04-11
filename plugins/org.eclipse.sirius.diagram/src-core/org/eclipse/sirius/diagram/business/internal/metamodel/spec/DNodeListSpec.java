@@ -17,18 +17,22 @@ import java.util.Iterator;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreEList;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementContainerSpecOperations;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.impl.DNodeListImpl;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.Style;
 
 import com.google.common.base.Predicates;
@@ -59,7 +63,8 @@ public class DNodeListSpec extends DNodeListImpl {
      */
     @Override
     public void refresh() {
-        getActualMapping().updateContainer(this);
+        IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(this);
+        new ContainerMappingHelper(interpreter).updateContainer((IContainerMappingExt) getActualMapping(), this);
         final Iterator<DDiagramElement> iterElements = this.getElements().iterator();
         while (iterElements.hasNext()) {
             iterElements.next().refresh();

@@ -340,6 +340,11 @@
 				<code>ContainerMappingHelper</code> instead: 
 				<code>new ContainerMappingHelper(SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticParent)).createContainer(mapping, semanticElement, semanticParent, diagram)</code>.
 			</li>
+			<li>The 
+				<code>ContainerMapping.updateContainer()</code> EOperation has been removed. Although its usage is discouraged, if you really need to  you can use the internal 
+				<code>ContainerMappingHelper</code> instead: 
+				<code>new ContainerMappingHelper(SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(containerView)).updateContainer(mapping, containerView)</code>.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.sequence">Changes in 
 			<code>org.eclipse.sirius.diagram.sequence</code>

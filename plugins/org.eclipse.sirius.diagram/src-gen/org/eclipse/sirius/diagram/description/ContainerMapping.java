@@ -266,15 +266,6 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * @model
      * @generated
      */
-    @Deprecated
-    void updateContainer(DDiagramElementContainer node);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @model
-     * @generated
-     */
     ContainerStyle getBestStyle(EObject modelElement, EObject viewVariable, EObject containerVariable);
 
     /**
