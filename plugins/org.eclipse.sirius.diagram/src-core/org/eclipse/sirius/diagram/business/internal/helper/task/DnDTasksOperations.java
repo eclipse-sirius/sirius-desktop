@@ -46,6 +46,8 @@ import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramElementSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DEdgeCandidate;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementContainerSpecOperations;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -233,36 +235,34 @@ public final class DnDTasksOperations {
     public static AbstractCommandTask createDropinForContainerTask(final DragAndDropTarget target, final ContainerMapping mapping, final DDiagramElement droppedDiagramElement,
             final EObject droppedElement, final EObject semanticContainer, final ContainerDropDescription tool) {
         return new AbstractCommandTask() {
-            /**
-             * {@inheritDoc}
-             */
+            @Override
             public void execute() {
                 final DDiagram parentDiagram = DnDTasksOperations.getParentDiagram(target);
-                DDiagramElementContainer newDiagramElementContainer;
+                DDiagramElementContainer newDiagramElementContainer = null;
                 if (droppedDiagramElement != null && mapping.equals(droppedDiagramElement.getMapping())) {
-                    // The mapping is the same so we don't create a new
-                    // DDiagramElementContainer
+                    // The mapping is the same so we don't create a new DDiagramElementContainer
                     newDiagramElementContainer = (DDiagramElementContainer) droppedDiagramElement;
-                } else {
-                    // Create the new DiagramElement for the dropped container
-                    newDiagramElementContainer = mapping.createContainer(droppedElement, semanticContainer, parentDiagram);
+                } else if (mapping instanceof IContainerMappingExt) {
+                    IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticContainer);
+                    newDiagramElementContainer = new ContainerMappingHelper(interpreter).createContainer((IContainerMappingExt) mapping, droppedElement, semanticContainer, parentDiagram);
                 }
-                if (target instanceof DDiagram) {
-                    ((DDiagram) target).getOwnedDiagramElements().add(newDiagramElementContainer);
-                } else if (target instanceof DNodeContainer) {
-                    ((DNodeContainer) target).getOwnedDiagramElements().add(newDiagramElementContainer);
-                }
-                // move contains children
-                if (droppedDiagramElement instanceof DNodeContainer && newDiagramElementContainer instanceof DNodeContainer) {
-                    DnDTasksOperations.moveSubNodes((DNodeContainer) droppedDiagramElement, droppedElement, tool, (DNodeContainer) newDiagramElementContainer);
-                }
-                // move edges
-                if (!newDiagramElementContainer.equals(droppedDiagramElement)) {
-                    if (tool.isMoveEdges()) {
-                        DnDTasksOperations.moveEdges(target, semanticContainer, droppedDiagramElement, newDiagramElementContainer);
+                if (newDiagramElementContainer != null) {
+                    if (target instanceof DDiagram) {
+                        ((DDiagram) target).getOwnedDiagramElements().add(newDiagramElementContainer);
+                    } else if (target instanceof DNodeContainer) {
+                        ((DNodeContainer) target).getOwnedDiagramElements().add(newDiagramElementContainer);
                     }
-
-                    DnDTasksOperations.deletePreviousEdges(target, droppedDiagramElement);
+                    // move contains children
+                    if (droppedDiagramElement instanceof DNodeContainer && newDiagramElementContainer instanceof DNodeContainer) {
+                        DnDTasksOperations.moveSubNodes((DNodeContainer) droppedDiagramElement, droppedElement, tool, (DNodeContainer) newDiagramElementContainer);
+                    }
+                    // move edges
+                    if (!newDiagramElementContainer.equals(droppedDiagramElement)) {
+                        if (tool.isMoveEdges()) {
+                            DnDTasksOperations.moveEdges(target, semanticContainer, droppedDiagramElement, newDiagramElementContainer);
+                        }
+                        DnDTasksOperations.deletePreviousEdges(target, droppedDiagramElement);
+                    }
                 }
             }
 

@@ -110,15 +110,6 @@ public class InteractionUseMappingSpec extends InteractionUseMappingImpl impleme
      * {@inheritDoc}
      */
     @Override
-    public DDiagramElementContainer createContainer(final EObject modelElement, final EObject container, final DDiagram viewPoint) {
-        IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(container);
-        return new ContainerMappingHelper(interpreter).createContainer(this, modelElement, container, viewPoint);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public void updateContainer(final DDiagramElementContainer container) {
         IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(container);
         new ContainerMappingHelper(interpreter).updateContainer(this, container);

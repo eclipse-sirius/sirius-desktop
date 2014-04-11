@@ -333,7 +333,12 @@
 				<code>DDiagram.subDiagram</code> reference has been removed. It was not used anywhere.
 			</li>
 			<li>The 
-				<code>DDiagramElement.isFold()</code>] EOperation has been removed. It was deprecated and edge folding has long been implemented using different mechanisms.
+				<code>DDiagramElement.isFold()</code> EOperation has been removed. It was deprecated and edge folding has long been implemented using different mechanisms.
+			</li>
+			<li>The 
+				<code>ContainerMapping.createContainer()</code> EOperation has been removed. Although its usage is discouraged, if you really need to  you can use the internal 
+				<code>ContainerMappingHelper</code> instead: 
+				<code>new ContainerMappingHelper(SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticParent)).createContainer(mapping, semanticElement, semanticParent, diagram)</code>.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.sequence">Changes in 

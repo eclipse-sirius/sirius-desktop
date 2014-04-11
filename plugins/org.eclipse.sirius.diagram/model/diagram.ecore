@@ -1462,11 +1462,6 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A container mapping allows to create containers (ViewNodeContainer or ViewNodeList)."/>
       </eAnnotations>
-      <eOperations name="createContainer" eType="#//DDiagramElementContainer">
-        <eParameters name="modelElement" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-        <eParameters name="container" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
-        <eParameters name="viewPoint" eType="#//DDiagram"/>
-      </eOperations>
       <eOperations name="updateContainer">
         <eParameters name="node" eType="#//DDiagramElementContainer"/>
       </eOperations>

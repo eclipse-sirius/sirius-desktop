@@ -16,6 +16,7 @@ import java.util.Iterator;
 import org.eclipse.emf.common.util.AbstractEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -26,10 +27,12 @@ import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.business.api.query.GroupQuery;
-import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingHelper;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
@@ -63,8 +66,9 @@ public final class SiriusDiagramHelper {
         if (mapping instanceof NodeMapping) {
             created = ((NodeMapping) mapping).createNode(modelElement, diagram.getTarget(), diagram);
         }
-        if (mapping instanceof ContainerMapping) {
-            created = ((ContainerMapping) mapping).createContainer(modelElement, diagram.getTarget(), diagram);
+        if (mapping instanceof IContainerMappingExt) {
+            IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(diagram.getTarget());
+            return new ContainerMappingHelper(interpreter).createContainer((IContainerMappingExt) mapping, modelElement, diagram.getTarget(), diagram);
         }
         return created;
     }
