@@ -32,6 +32,8 @@ import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DSemanticDiagramHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -235,7 +237,7 @@ public final class DDiagramElementContainerSpecOperations {
             if (representedParent instanceof DSemanticDiagram) {
                 representedParentSemantic = DSemanticDiagramHelper.getRootContent((DSemanticDiagram) representedParent);
             }
-            if (!container.getActualMapping().getNodesCandidates(representedParentSemantic, ((DSemanticDecorator) representedParent).getTarget(), container).contains(mySemanticElement)) {
+            if (!ContainerMappingHelper.getNodesCandidates((IContainerMappingExt) container.getActualMapping(), representedParentSemantic, ((DSemanticDecorator) representedParent).getTarget(), container).contains(mySemanticElement)) {
                 return false;
             }
         }

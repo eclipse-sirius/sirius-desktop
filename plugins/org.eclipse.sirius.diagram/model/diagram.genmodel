@@ -493,15 +493,6 @@
           <genParameters ecoreParameter="diagram.ecore#//description/ContainerMapping/getBestStyle/viewVariable"/>
           <genParameters ecoreParameter="diagram.ecore#//description/ContainerMapping/getBestStyle/containerVariable"/>
         </genOperations>
-        <genOperations ecoreOperation="diagram.ecore#//description/ContainerMapping/getNodesCandidates">
-          <genParameters ecoreParameter="diagram.ecore#//description/ContainerMapping/getNodesCandidates/semanticOrigin"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/ContainerMapping/getNodesCandidates/container"/>
-        </genOperations>
-        <genOperations ecoreOperation="diagram.ecore#//description/ContainerMapping/getNodesCandidates.1">
-          <genParameters ecoreParameter="diagram.ecore#//description/ContainerMapping/getNodesCandidates.1/semanticOrigin"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/ContainerMapping/getNodesCandidates.1/container"/>
-          <genParameters ecoreParameter="diagram.ecore#//description/ContainerMapping/getNodesCandidates.1/containerView"/>
-        </genOperations>
       </genClasses>
       <genClasses ecoreClass="diagram.ecore#//description/NodeMappingImport">
         <genFeatures createChild="false" propertyCategory="Import" propertyDescription="Imported node mapping"

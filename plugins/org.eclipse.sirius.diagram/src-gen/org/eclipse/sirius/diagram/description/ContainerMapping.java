@@ -15,11 +15,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.ContainerLayout;
 import org.eclipse.sirius.diagram.ContainerStyle;
-import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
@@ -267,50 +263,5 @@ public interface ContainerMapping extends AbstractNodeMapping, DragAndDropTarget
      * @generated
      */
     ContainerStyle getBestStyle(EObject modelElement, EObject viewVariable, EObject containerVariable);
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @model
-     * @generated
-     */
-    @Deprecated
-    EList<EObject> getNodesCandidates(EObject semanticOrigin, EObject container);
-
-    /**
-     * <!-- begin-user-doc -->
-     * <p>
-     * Return all semantic candidates for this mapping. It checks the
-     * {@link DiagramElementMapping#getPreconditionExpression()} and return all
-     * objects that satisfied the expression.
-     * </p>
-     * <p>
-     * Default candidates are all objects under <code>semanticOrigin</code> if
-     * the {@link DiagramElementMapping#getSemanticCandidatesExpression()} is
-     * set then default candidates are the elements that are returned by the
-     * evaluation of the expression (the context is <code>semanticOrigin</code>
-     * ).
-     * </p>
-     * <p>
-     * 
-     * @param semanticOrigin
-     *            the origin of the computation.
-     * @param container
-     *            the semantic element ({@link DSemanticDecorator#getTarget()})
-     *            of the {@link DDiagramElement} (or
-     *            {@link DDiagramElementContainer} or {@link DDiagram}) that
-     *            contains the containers.
-     * @param containerView
-     *            the {@link DDiagramElement} (or
-     *            {@link DDiagramElementContainer} or {@link DDiagram}) that
-     *            contains the containers.
-     * 
-     *            </p>
-     *            <!-- end-user-doc -->
-     * @model
-     * @generated
-     */
-    @Deprecated
-    EList<EObject> getNodesCandidates(EObject semanticOrigin, EObject container, EObject containerView);
 
 } // ContainerMapping

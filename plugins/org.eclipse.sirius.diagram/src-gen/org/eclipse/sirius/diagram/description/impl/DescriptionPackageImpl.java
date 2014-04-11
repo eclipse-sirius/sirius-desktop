@@ -1810,15 +1810,6 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         addEParameter(op, theEcorePackage.getEObject(), "viewVariable", 0, 1, IS_UNIQUE, IS_ORDERED);
         addEParameter(op, theEcorePackage.getEObject(), "containerVariable", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-        op = addEOperation(containerMappingEClass, theEcorePackage.getEObject(), "getNodesCandidates", 0, -1, IS_UNIQUE, IS_ORDERED);
-        addEParameter(op, theEcorePackage.getEObject(), "semanticOrigin", 0, 1, IS_UNIQUE, IS_ORDERED);
-        addEParameter(op, theEcorePackage.getEObject(), "container", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-        op = addEOperation(containerMappingEClass, theEcorePackage.getEObject(), "getNodesCandidates", 0, -1, IS_UNIQUE, IS_ORDERED);
-        addEParameter(op, theEcorePackage.getEObject(), "semanticOrigin", 0, 1, IS_UNIQUE, IS_ORDERED);
-        addEParameter(op, theEcorePackage.getEObject(), "container", 0, 1, IS_UNIQUE, IS_ORDERED);
-        addEParameter(op, theEcorePackage.getEObject(), "containerView", 0, 1, IS_UNIQUE, IS_ORDERED);
-
         initEClass(nodeMappingImportEClass, NodeMappingImport.class, "NodeMappingImport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getNodeMappingImport_ImportedMapping(), this.getNodeMapping(), null, "importedMapping", null, 1, 1, NodeMappingImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

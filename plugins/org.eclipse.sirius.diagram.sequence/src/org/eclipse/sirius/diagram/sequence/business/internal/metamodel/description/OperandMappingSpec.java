@@ -85,14 +85,6 @@ public class OperandMappingSpec extends OperandMappingImpl implements IContainer
      * {@inheritDoc}
      */
     @Override
-    public EList<EObject> getNodesCandidates(final EObject semanticOrigin, final EObject container, final EObject containerView) {
-        return ContainerMappingHelper.getNodesCandidates(this, semanticOrigin, container, containerView);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public void clearDNodesDone() {
         ContainerMappingHelper.clearDNodesDone(this);
     }

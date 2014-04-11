@@ -97,8 +97,7 @@ h4. Changes in @org.eclipse.sirius.diagram@
 * The @DDiagram.info@ attribute has been removed. It was not used anywhere.
 * The @DDiagram.subDiagram@ reference has been removed. It was not used anywhere.
 * The @DDiagramElement.isFold()@ EOperation has been removed. It was deprecated and edge folding has long been implemented using different mechanisms.
-* The @ContainerMapping.createContainer()@ EOperation has been removed. Although its usage is discouraged, if you really need to  you can use the internal @ContainerMappingHelper@ instead: @new ContainerMappingHelper(SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticParent)).createContainer(mapping, semanticElement, semanticParent, diagram)@.
-* The @ContainerMapping.updateContainer()@ EOperation has been removed. Although its usage is discouraged, if you really need to  you can use the internal @ContainerMappingHelper@ instead: @new ContainerMappingHelper(SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(containerView)).updateContainer(mapping, containerView)@.
+* In the @ContainerMapping@ type, the following EOperations have been removed: @createContainer()@, @updateContainer()@, and @getNodesCandidate()@. Although their usage is highly discouraged, if you really need to  you can currently use the corresponding methods in the internal @ContainerMappingHelper@ instead (use @SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticElement)@ to obtain the @IInterpreter@ those methods need). As with all internal code, there is no guarantee these methods will still exist in future versions.
 
 h4. Changes in @org.eclipse.sirius.diagram.sequence@
 

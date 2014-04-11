@@ -335,15 +335,14 @@
 			<li>The 
 				<code>DDiagramElement.isFold()</code> EOperation has been removed. It was deprecated and edge folding has long been implemented using different mechanisms.
 			</li>
-			<li>The 
-				<code>ContainerMapping.createContainer()</code> EOperation has been removed. Although its usage is discouraged, if you really need to  you can use the internal 
-				<code>ContainerMappingHelper</code> instead: 
-				<code>new ContainerMappingHelper(SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticParent)).createContainer(mapping, semanticElement, semanticParent, diagram)</code>.
-			</li>
-			<li>The 
-				<code>ContainerMapping.updateContainer()</code> EOperation has been removed. Although its usage is discouraged, if you really need to  you can use the internal 
-				<code>ContainerMappingHelper</code> instead: 
-				<code>new ContainerMappingHelper(SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(containerView)).updateContainer(mapping, containerView)</code>.
+			<li>In the 
+				<code>ContainerMapping</code> type, the following EOperations have been removed: 
+				<code>createContainer()</code>, 
+				<code>updateContainer()</code>, and 
+				<code>getNodesCandidate()</code>. Although their usage is highly discouraged, if you really need to  you can currently use the corresponding methods in the internal 
+				<code>ContainerMappingHelper</code> instead (use 
+				<code>SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticElement)</code> to obtain the 
+				<code>IInterpreter</code> those methods need). As with all internal code, there is no guarantee these methods will still exist in future versions.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.sequence">Changes in 
