@@ -12,7 +12,6 @@ package org.eclipse.sirius.business.internal.modelingproject.manager;
 
 import java.util.List;
 
-import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -31,6 +30,7 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
+
 /**
  * A job to compute the main representations file of each modeling project of
  * the workspace.
@@ -142,18 +142,8 @@ public class InitializeModelingProjectJob extends WorkspaceJob {
                     try {
                         optionalModelingProject.get().getMainRepresentationsFileURI(new SubProgressMonitor(monitor, 1), forceInit, true);
                     } catch (IllegalArgumentException e) {
-                        // Add a marker on this project
-                        try {
-                            final IMarker marker = optionalModelingProject.get().getProject().createMarker(ModelingMarker.MARKER_TYPE);
-                            marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_ERROR);
-                            marker.setAttribute(IMarker.MESSAGE, e.getMessage());
-                        } catch (final CoreException ce) {
-                            SiriusPlugin.getDefault().getLog().log(ce.getStatus());
-                        }
                         // Add the problem to the result status of this job
                         errorStatus.add(new Status(IStatus.ERROR, SiriusPlugin.ID, IStatus.OK, e.getMessage(), null)); //$NON-NLS-1$)
-                        // Set this project in invalid state
-                        optionalModelingProject.get().setValid(false);
                     }
                 } else {
                     monitor.worked(1);

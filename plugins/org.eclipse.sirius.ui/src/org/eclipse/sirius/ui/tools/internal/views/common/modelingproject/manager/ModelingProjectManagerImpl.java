@@ -331,7 +331,7 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
                         OpenRepresentationsFileJob.scheduleNewWhenPossible(mainRepresentationsFileURI.get(), true);
                     }
                 } catch (IllegalArgumentException e) {
-                    if (e.getMessage().contains(ModelingProject.ZERO_REPRESENTATIONS_FILE_FOUND_IN)) {
+                    if (e.getMessage().contains(ModelingProjectQuery.ZERO_REPRESENTATIONS_FILE_FOUND_IN)) {
                         // 0 files has been found : create a representation
                         ModelingProjectManager.INSTANCE.createLocalRepresentationsFile(project, new SubProgressMonitor(monitor, 1));
                     } else if (e.getMessage().contains(ModelingProjectQuery.A_MODELING_PROJECT_MUST_CONTAIN_ONLY_ONE)) {

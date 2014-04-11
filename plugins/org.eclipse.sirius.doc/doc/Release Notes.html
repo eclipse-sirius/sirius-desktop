@@ -279,6 +279,12 @@
 				<code>Multimap</code>. The new protected method 
 				<code>addDefinition()</code> can be used to make it easier to add entries to the map. Subclasses in Sirius have been updated to match the new signature.
 			</li>
+			<li>The message 
+				<code>org.eclipse.sirius.business.api.modelingproject.ModelingProject.ZERO_REPRESENTATIONS_FILE_FOUND_IN</code> has been removed without replacement. It was not really an API constant.
+			</li>
+			<li>The behavior of method 
+				<code>org.eclipse.sirius.business.api.modelingproject.ModelingProject.getMainRepresentationsFileURI()</code> has changed. It now marks this project as invalid and adds a marker on it, if it is considered as invalid (no or many representations files).
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
 			<code>org.eclipse.sirius.diagram</code>

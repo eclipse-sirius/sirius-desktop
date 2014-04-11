@@ -11,8 +11,10 @@
 package org.eclipse.sirius.business.api.modelingproject;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectNature;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -20,9 +22,11 @@ import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.internal.modelingproject.marker.ModelingMarker;
 import org.eclipse.sirius.business.internal.query.ModelingProjectQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * A modeling project nature is used to know which projects should be handled in
@@ -31,11 +35,6 @@ import org.eclipse.sirius.ext.base.Options;
  * @author mchauvin
  */
 public class ModelingProject implements IProjectNature, IModelingElement {
-
-    /**
-     * error message when no representation file found.
-     */
-    public static final String ZERO_REPRESENTATIONS_FILE_FOUND_IN = "Zero representations file found in \"";
 
     /** The nature id. */
     public static final String NATURE_ID = "org.eclipse.sirius.nature.modelingproject";
@@ -188,7 +187,9 @@ public class ModelingProject implements IProjectNature, IModelingElement {
      * Return an optional URI corresponding to the main representations file of
      * this project. If the main representations file is not known, it will be
      * computed by a specific SaxParser that analyzes representations files of
-     * this project to determine which is never referenced.
+     * this project to determine which is never referenced.<BR>
+     * This method marks this project as invalid and adds a marker on it, if it
+     * is considered as invalid.
      * 
      * @param monitor
      *            the monitor to be used for reporting progress and responding
@@ -215,16 +216,27 @@ public class ModelingProject implements IProjectNature, IModelingElement {
             }
             if (valid && mainRepresentationsFileURI == null) {
                 // The main representations file is not known (or is known but
-                // must
-                // be recompute). We must compute it.
+                // must be recomputed). We must compute it.
                 try {
-                    Option<URI> result = new ModelingProjectQuery(this).computeMainRepresentationsFileURI(new SubProgressMonitor(monitor, 1));
-                    if (result.some()) {
-                        mainRepresentationsFileURI = result.get();
-                    } else {
-                        throw new IllegalArgumentException(ZERO_REPRESENTATIONS_FILE_FOUND_IN + getProject().getName() + "\". A modeling project must contain one.");
-                    }
+                    mainRepresentationsFileURI = new ModelingProjectQuery(this).computeMainRepresentationsFileURI(new SubProgressMonitor(monitor, 1));
                 } catch (IllegalArgumentException e) {
+                    // Clean existing marker if exists
+                    try {
+                        getProject().deleteMarkers(ModelingMarker.MARKER_TYPE, false, IResource.DEPTH_ZERO);
+                    } catch (final CoreException ce) {
+                        SiriusPlugin.getDefault().getLog().log(ce.getStatus());
+                    }
+                    // Add a marker on this project
+                    try {
+                        final IMarker marker = getProject().createMarker(ModelingMarker.MARKER_TYPE);
+                        marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_ERROR);
+                        marker.setAttribute(IMarker.MESSAGE, e.getMessage());
+                    } catch (final CoreException ce) {
+                        SiriusPlugin.getDefault().getLog().log(ce.getStatus());
+                    }
+                    // Set this project in invalid state
+                    setValid(false);
+                    // Throw exception if asked
                     if (throwException) {
                         throw e;
                     }

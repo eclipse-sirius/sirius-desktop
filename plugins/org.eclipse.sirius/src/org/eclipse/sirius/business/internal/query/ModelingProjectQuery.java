@@ -26,8 +26,6 @@ import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.internal.session.parser.RepresentationsFileSaxParser;
 import org.eclipse.sirius.common.tools.api.util.WorkspaceUtil;
-import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.base.Options;
 
 /**
  * A class aggregating all the queries (read-only!) having a
@@ -36,6 +34,11 @@ import org.eclipse.sirius.ext.base.Options;
  * @author lredor
  */
 public class ModelingProjectQuery {
+
+    /**
+     * error message when no representation file found.
+     */
+    public static final String ZERO_REPRESENTATIONS_FILE_FOUND_IN = "Zero representations file found in \"";
 
     /**
      * error message when several representation files found.
@@ -76,50 +79,45 @@ public class ModelingProjectQuery {
      * @return an optional URI corresponding to the main representations file of
      *         this project.
      * @throws IllegalArgumentException
-     *             In case of multiples main representations file in the
+     *             In case of zero or multiples main representations file in the
      *             references.
      */
-    public Option<URI> computeMainRepresentationsFileURI(IProgressMonitor monitor) throws IllegalArgumentException {
+    public URI computeMainRepresentationsFileURI(IProgressMonitor monitor) throws IllegalArgumentException {
         URI result = null;
-        try {
-            List<IFile> sessionFiles = getRepresentationFiles();
-            monitor.beginTask("", sessionFiles.size() + 1);
-            Map<URI, Set<URI>> references = new HashMap<URI, Set<URI>>(sessionFiles.size());
-            for (IFile sessionFile : sessionFiles) {
-                final RepresentationsFileSaxParser sessionSaxParser = new RepresentationsFileSaxParser(sessionFile);
-                sessionSaxParser.analyze(new SubProgressMonitor(monitor, 1));
-                references.put(sessionSaxParser.getRepresentationsFileURI(), sessionSaxParser.getReferencedAnalysis());
-            }
-            List<URI> notReferencedURIs = new ArrayList<URI>();
-            List<URI> keys = new ArrayList<URI>(references.keySet());
-            for (URI uri : references.keySet()) {
-                boolean referenced = false;
-                for (URI uri2 : keys) {
-                    if (references.get(uri2).contains(uri)) {
-                        referenced = true;
-                        break;
-                    }
-                }
-                if (!referenced) {
-                    notReferencedURIs.add(uri);
+        List<IFile> sessionFiles = getRepresentationFiles();
+        monitor.beginTask("", sessionFiles.size() + 1);
+        Map<URI, Set<URI>> references = new HashMap<URI, Set<URI>>(sessionFiles.size());
+        for (IFile sessionFile : sessionFiles) {
+            final RepresentationsFileSaxParser sessionSaxParser = new RepresentationsFileSaxParser(sessionFile);
+            sessionSaxParser.analyze(new SubProgressMonitor(monitor, 1));
+            references.put(sessionSaxParser.getRepresentationsFileURI(), sessionSaxParser.getReferencedAnalysis());
+        }
+        List<URI> notReferencedURIs = new ArrayList<URI>();
+        List<URI> keys = new ArrayList<URI>(references.keySet());
+        for (URI uri : references.keySet()) {
+            boolean referenced = false;
+            for (URI uri2 : keys) {
+                if (references.get(uri2).contains(uri)) {
+                    referenced = true;
+                    break;
                 }
             }
-            monitor.worked(1);
+            if (!referenced) {
+                notReferencedURIs.add(uri);
+            }
+        }
+        monitor.worked(1);
 
-            if (notReferencedURIs.size() == 1) {
-                result = notReferencedURIs.get(0);
-            } else if (notReferencedURIs.size() > 1) {
-                throw new IllegalArgumentException("Found " + notReferencedURIs.size() + " main representations files (that means not referenced by another) in \""
-                        + modelingProject.getProject().getName() + "\": " + getFragments(notReferencedURIs) + A_MODELING_PROJECT_MUST_CONTAIN_ONLY_ONE);
-            }
-        } finally {
-            monitor.done();
-        }
-        if (result == null) {
-            return Options.newNone();
+        if (notReferencedURIs.isEmpty()) {
+            throw new IllegalArgumentException(ZERO_REPRESENTATIONS_FILE_FOUND_IN + modelingProject.getProject().getName() + "\". A modeling project must contain one.");
+        } else if (notReferencedURIs.size() == 1) {
+            result = notReferencedURIs.get(0);
         } else {
-            return Options.newSome(result);
+            throw new IllegalArgumentException("Found " + notReferencedURIs.size() + " main representations files (that means not referenced by another) in \""
+                    + modelingProject.getProject().getName() + "\": " + getFragments(notReferencedURIs) + A_MODELING_PROJECT_MUST_CONTAIN_ONLY_ONE);
         }
+        monitor.done();
+        return result;
     }
 
     /**

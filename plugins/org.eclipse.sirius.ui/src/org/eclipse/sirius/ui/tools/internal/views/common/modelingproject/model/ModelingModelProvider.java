@@ -27,9 +27,9 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
+import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.ext.base.Option;
@@ -89,8 +89,7 @@ public class ModelingModelProvider extends ModelProvider {
                 ResourceDeltaVisitor visitor = new ResourceDeltaVisitor();
                 delta.accept(visitor);
                 if (visitor.getProjectContainingSessionToSaveToDelete().size() == 1) {
-                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID,
-                            "This modeling project contains unsaved data. This data will be lost.");
+                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID, "This modeling project contains unsaved data. This data will be lost.");
                 } else if (visitor.getProjectContainingSessionToSaveToDelete().size() > 1) {
                     result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID, "Some modeling projects ("
                             + getProjectsName(visitor.getProjectContainingSessionToSaveToDelete()) + ") contain unsaved data. This data will be lost.");
@@ -98,8 +97,8 @@ public class ModelingModelProvider extends ModelProvider {
                     result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID, "Deletion of the main representations file of \""
                             + visitor.getMainRepresentationsFilesToDelete().get(0).getProject().getName() + "\" will invalidate it.");
                 } else if (visitor.getMainRepresentationsFilesToDelete().size() > 1) {
-                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID,
-                            "Deletion of the main representations files of some modeling projects (" + getFilesProjectName(visitor.getMainRepresentationsFilesToDelete()) + ") will invalidate them.");
+                    result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID, "Deletion of the main representations files of some modeling projects ("
+                            + getFilesProjectName(visitor.getMainRepresentationsFilesToDelete()) + ") will invalidate them.");
                 } else if (visitor.getRepresentationsFileToAddOnValidModelingProject().size() == 1) {
                     result = new ModelStatus(IStatus.ERROR, SiriusPlugin.ID, ModelingModelProvider.MODELING_MODEL_PROVIDER_ID, "Add another representations file to \""
                             + visitor.getRepresentationsFileToAddOnValidModelingProject().get(0).getProject().getName() + "\" may invalidate it.");
@@ -243,12 +242,16 @@ public class ModelingModelProvider extends ModelProvider {
             final Option<ModelingProject> optionalModelingProject = ModelingProject.asModelingProject(currentFile.getProject());
             if (optionalModelingProject.some()) {
                 if (IResourceDelta.REMOVED == delta.getKind()) {
-                    // Check that this IFile is not the main representations
-                    // file of this project
-                    URI currentURI = URI.createPlatformResourceURI(currentFile.getFullPath().toString(), true);
-                    Option<URI> optionalMainURI = optionalModelingProject.get().getMainRepresentationsFileURI(new NullProgressMonitor(), false, false);
-                    if (optionalMainURI.some() && currentURI.equals(optionalMainURI.get())) {
-                        mainRepresentationsFileToDelete.add(currentFile);
+                    if (optionalModelingProject.get().isValid()) {
+                        // Check that this IFile is not the main representations
+                        // file of this project
+                        if (optionalModelingProject.get().isMainRepresentationsFile(currentFile)) {
+                            mainRepresentationsFileToDelete.add(currentFile);
+                        }
+                    } else if (new FileQuery(currentFile).isSessionResourceFile()) {
+                        // If the project is not valid and the deleted file is a
+                        // representations file, validate the project again.
+                        optionalModelingProject.get().getMainRepresentationsFileURI(new NullProgressMonitor(), true, false);
                     }
                 } else if (IResourceDelta.ADDED == delta.getKind()) {
                     // Check that the corresponding project does not already

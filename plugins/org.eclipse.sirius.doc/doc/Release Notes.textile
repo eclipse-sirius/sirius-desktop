@@ -77,6 +77,8 @@ h4. Changes in @org.eclipse.sirius@
 * The @org.eclipse.sirius.business.api.modelingproject.ModelingProject.MODELING_PROJECT_PREDICATE@ constant has been removed to reduce Sirius's exposure of Guava'specific types. Use the equivalent @ModelingProject.hasModelingProjectNature()@ method instead.
 * The method @org.eclipse.sirius.business.api.query.EObjectQuery.getInverseReferences(Predicate<Setting>)@ has been removed from API to avoid exposing a the Guava-specific @Predicate@ type.
 * In class @org.eclipse.sirius.business.api.dialect.description.AbstractInterpretedExpressionQuery@, the protected methods @appendAllLocalVariableDefinitions()@ and @appendEditMaskVariables()@ now take a @Map<String, Collection<String>>@ instead of a Guava-specific @Multimap@. The new protected method @addDefinition()@ can be used to make it easier to add entries to the map. Subclasses in Sirius have been updated to match the new signature.
+* The message @org.eclipse.sirius.business.api.modelingproject.ModelingProject.ZERO_REPRESENTATIONS_FILE_FOUND_IN@ has been removed without replacement. It was not really an API constant.
+* The behavior of method @org.eclipse.sirius.business.api.modelingproject.ModelingProject.getMainRepresentationsFileURI()@ has changed. It now marks this project as invalid and adds a marker on it, if it is considered as invalid (no or many representations files).
 
 h4. Changes in @org.eclipse.sirius.diagram@
 
