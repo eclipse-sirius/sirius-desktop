@@ -95,6 +95,7 @@ import org.eclipse.ui.Saveable;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
+import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
@@ -687,7 +688,6 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
         Collection<EObject> eObjects = Collections.emptyList();
         if (selection != null) {
             // Keep only EObjects, not Resources (CDOResources are EObjects).
-            // Keep order, remove doublons.
             eObjects = Sets.newLinkedHashSet(Iterables.filter(Iterables.filter(selection, EObject.class), Predicates.not(Predicates.instanceOf(Resource.class))));
         }
         return eObjects;
@@ -696,7 +696,6 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
     private Collection<ProjectDependenciesItem> getModelDependencies(Collection<?> selection) {
         Collection<ProjectDependenciesItem> deps = Collections.emptyList();
         if (selection != null) {
-            // Keep order, remove doublons.
             deps = Sets.newLinkedHashSet(Iterables.filter(selection, ProjectDependenciesItem.class));
         }
         return deps;
@@ -705,8 +704,12 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
     private Collection<IProject> getModelingProjects(Collection<?> selection) {
         Collection<IProject> projects = Collections.emptyList();
         if (selection != null) {
-            // Keep order, remove doublons.
-            projects = Sets.newLinkedHashSet(Iterables.filter(Iterables.filter(selection, IProject.class), ModelingProject.MODELING_PROJECT_PREDICATE));
+            projects = Sets.newLinkedHashSet(Iterables.filter(Iterables.filter(selection, IProject.class), new Predicate<IProject>() {
+                @Override
+                public boolean apply(IProject input) {
+                    return ModelingProject.hasModelingProjectNature(input);
+                }
+            }));
         }
         return projects;
     }
@@ -724,7 +727,6 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
     private Collection<AnalysisResourceItem> getRepresentationResources(final Collection<?> selection) {
         Collection<AnalysisResourceItem> airdResItems = Collections.emptyList();
         if (selection != null) {
-            // Keep order, remove doublons.
             airdResItems = Sets.newLinkedHashSet(Iterables.filter(selection, AnalysisResourceItem.class));
         }
         return airdResItems;
@@ -733,7 +735,6 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
     private Collection<Resource> getSemanticResources(final Collection<?> selection) {
         Collection<Resource> semRes = Collections.emptyList();
         if (selection != null) {
-            // Keep order, remove doublons.
             semRes = Sets.newLinkedHashSet(Iterables.filter(selection, Resource.class));
         }
         return semRes;

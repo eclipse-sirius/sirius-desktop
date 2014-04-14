@@ -263,6 +263,10 @@
 				<code>DRepresentation.createContents()</code> (both variants) and 
 				<code>DRepresentation.updateContents()</code> EOperations have been removed. They were not used anywhere.
 			</li>
+			<li>The 
+				<code>org.eclipse.sirius.business.api.modelingproject.ModelingProject.MODELING_PROJECT_PREDICATE</code> constant has been removed to reduce Sirius&#8217;s exposure of Guava&#8217;specific types. Use the equivalent 
+				<code>ModelingProject.hasModelingProjectNature()</code> method instead.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
 			<code>org.eclipse.sirius.diagram</code>

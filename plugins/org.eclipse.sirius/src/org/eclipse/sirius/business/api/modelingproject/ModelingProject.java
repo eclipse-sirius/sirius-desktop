@@ -24,8 +24,6 @@ import org.eclipse.sirius.business.internal.query.ModelingProjectQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
-import com.google.common.base.Predicate;
-
 /**
  * A modeling project nature is used to know which projects should be handled in
  * project mode by the modeling explorer.
@@ -44,15 +42,6 @@ public class ModelingProject implements IProjectNature, IModelingElement {
 
     /** The default name for the representations file of a modeling project. */
     public static final String DEFAULT_REPRESENTATIONS_FILE_NAME = "representations.aird";
-
-    /**
-     * Predicate to test if a {@link IProject} has the modeling nature.
-     */
-    public static final Predicate<IProject> MODELING_PROJECT_PREDICATE = new Predicate<IProject>() {
-        public boolean apply(IProject input) {
-            return hasModelingProjectNature(input);
-        }
-    };
 
     /** the project on which the nature is applied. */
     private IProject project;
