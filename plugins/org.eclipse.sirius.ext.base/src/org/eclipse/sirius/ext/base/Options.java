@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.ext.base;
 
-import com.google.common.base.Predicate;
 
 /**
  * Factory class to create new instances of Options.
@@ -25,22 +24,7 @@ public final class Options {
     private Options() {
 
     }
-
-    /**
-     * Returns a predicate version of {@link Option#some()}.
-     * 
-     * @param <T>
-     *            the type of the option.
-     * @return a predicate version of {@link Option#some()}.
-     */
-    public static <T> Predicate<Option<T>> isSome() {
-        return new Predicate<Option<T>>() {
-            public boolean apply(Option<T> input) {
-                return input.some();
-            }
-        };
-    }
-
+    
     /**
      * create a new option representing a None value.
      * 

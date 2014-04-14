@@ -93,6 +93,10 @@ h4. Changes in @org.eclipse.sirius.diagram@
 h4. Changes in @org.eclipse.sirius.ui@
 
 * @org.eclipse.sirius.ui.business.api.preferences.DesignerUIPreferencesKeys@ has been renamed into @org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys@
+
+h4. Changes in @org.eclipse.sirius.ext.base@
+
+* The @org.eclipse.sirius.ext.base.Options.isSome()@ method has been removed to reduce Sirius's exposure of Guava'specific types. Use @Option.some()@ directly instead.
  
 h4. Changes in @org.eclipse.sirius.tests.support@
 
