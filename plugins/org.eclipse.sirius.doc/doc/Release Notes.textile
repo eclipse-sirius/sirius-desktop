@@ -97,6 +97,7 @@ h4. Changes in @org.eclipse.sirius.ui@
 h4. Changes in @org.eclipse.sirius.ext.base@
 
 * The @org.eclipse.sirius.ext.base.Options.isSome()@ method has been removed to reduce Sirius's exposure of Guava'specific types. Use @Option.some()@ directly instead.
+* @org.eclipse.sirius.ext.base.relations.Relation@ no longer inherits from @com.google.common.base.Function@, but keeps the same API otherwise.
  
 h4. Changes in @org.eclipse.sirius.tests.support@
 

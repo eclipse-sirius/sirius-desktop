@@ -12,14 +12,12 @@ package org.eclipse.sirius.ext.base.relations;
 
 import java.util.Set;
 
-import com.google.common.base.Function;
-
 /**
  * Defines a binary relation between elements of type <code>T</code>.
  * 
  * @author pierre-charles.david@obeo.fr
  */
-public interface Relation<T> extends Function<T, Set<T>> {
+public interface Relation<T> {
     /**
      * Returns all the elements which are related to the specified element
      * through this relation.
