@@ -21,7 +21,6 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.business.api.query.NodeStyleQuery;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
-import org.eclipse.sirius.diagram.sequence.util.NotationPredicate;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;

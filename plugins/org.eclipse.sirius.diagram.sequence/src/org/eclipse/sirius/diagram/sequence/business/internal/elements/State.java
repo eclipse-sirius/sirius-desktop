@@ -25,7 +25,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.util.ParentOperandF
 import org.eclipse.sirius.diagram.sequence.business.internal.util.RangeSetter;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
-import org.eclipse.sirius.diagram.sequence.util.NotationPredicate;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.ext.base.Option;
 
