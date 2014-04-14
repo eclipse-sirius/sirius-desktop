@@ -90,6 +90,10 @@ h4. Changes in @org.eclipse.sirius.diagram@
 * The @DDiagram.subDiagram@ reference has been removed. It was not used anywhere.
 * The @DDiagramElement.isFold()@] EOperation has been removed. It was deprecated and edge folding has long been implemented using different mechanisms.
 
+h4. Changes in @org.eclipse.sirius.diagram.sequence@
+
+* The @org.eclipse.sirius.diagram.sequence.util.SiriusFunctions@ class has been removed. It was not used anywhere.
+
 h4. Changes in @org.eclipse.sirius.ui@
 
 * @org.eclipse.sirius.ui.business.api.preferences.DesignerUIPreferencesKeys@ has been renamed into @org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys@
