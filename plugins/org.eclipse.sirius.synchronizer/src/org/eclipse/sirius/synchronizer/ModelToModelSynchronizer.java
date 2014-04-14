@@ -45,7 +45,7 @@ public class ModelToModelSynchronizer {
 
         if (container.getChildSupport().some()) {
 
-            ChildCreationSupport containerChildSupport = container.getChildSupport().value();
+            ChildCreationSupport containerChildSupport = container.getChildSupport().get();
             for (CreatedOutput outDesc : plan.getDescriptorsToDelete()) {
                 containerChildSupport.deleteChild(outDesc);
             }

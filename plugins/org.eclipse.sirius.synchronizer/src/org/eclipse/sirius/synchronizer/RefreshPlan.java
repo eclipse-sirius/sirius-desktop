@@ -13,6 +13,9 @@ package org.eclipse.sirius.synchronizer;
 import java.util.Collection;
 import java.util.Map;
 
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
+
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
@@ -74,15 +77,15 @@ public class RefreshPlan {
     public void appendOutputDescritorsKeepingTheMostSpecific(Collection<? extends OutputDescriptor> computeDescriptors) {
 
         for (OutputDescriptor newDescriptor : computeDescriptors) {
-            Maybe<CreatedOutput> wasHere = getDescriptorAlreadyHereWeWantToKeep(newDescriptor);
+            Option<CreatedOutput> wasHere = getDescriptorAlreadyHereWeWantToKeep(newDescriptor);
             if (wasHere.some()) {
-                if (wasHere.value().getDescriptor().getIndex() != newDescriptor.getIndex()) {
-                    shouldBeReordered(wasHere.value(), newDescriptor.getIndex());
+                if (wasHere.get().getDescriptor().getIndex() != newDescriptor.getIndex()) {
+                    shouldBeReordered(wasHere.get(), newDescriptor.getIndex());
                 }
-                if (wasHere.value().getDescriptor().getMapping() != newDescriptor.getMapping()) {
-                    shouldUpdateTheMapping(wasHere.value(), newDescriptor.getMapping());
+                if (wasHere.get().getDescriptor().getMapping() != newDescriptor.getMapping()) {
+                    shouldUpdateTheMapping(wasHere.get(), newDescriptor.getMapping());
                 }
-                shouldBeRefreshed(wasHere.value());
+                shouldBeRefreshed(wasHere.get());
             } else {
                 shouldBeCreated(newDescriptor);
             }
@@ -112,11 +115,11 @@ public class RefreshPlan {
 
     private void shouldBeRefreshed(CreatedOutput outputDescriptor) {
         Signature signature = signatureProvider.getSignature(outputDescriptor.getDescriptor());
-        Maybe<CreatedOutput> element = getDescriptorAlreadyHereWeWantToKeep(outputDescriptor.getDescriptor());
+        Option<CreatedOutput> element = getDescriptorAlreadyHereWeWantToKeep(outputDescriptor.getDescriptor());
         if (element.some()) {
-            outputToRemove.remove(signature, element.value());
+            outputToRemove.remove(signature, element.get());
             if (!outputToRefresh.containsKey(signature)) {
-                outputToRefresh.put(signature, element.value());
+                outputToRefresh.put(signature, element.get());
             }
         }
     }
@@ -125,12 +128,12 @@ public class RefreshPlan {
         newDescriptor.setNewIndex(nextIndex);
     }
 
-    private Maybe<CreatedOutput> getDescriptorAlreadyHereWeWantToKeep(OutputDescriptor newDescriptor) {
+    private Option<CreatedOutput> getDescriptorAlreadyHereWeWantToKeep(OutputDescriptor newDescriptor) {
         Collection<CreatedOutput> toRemove = outputToRemove.get(signatureProvider.getSignature(newDescriptor));
         if (toRemove.size() > 0) {
-            return MaybeFactory.newSome(toRemove.iterator().next());
+            return Options.newSome(toRemove.iterator().next());
         }
-        return MaybeFactory.newNone();
+        return Options.newNone();
     }
 
     public Collection<CreatedOutput> getDescriptorsToDelete() {

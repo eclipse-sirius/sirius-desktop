@@ -11,7 +11,7 @@
 package org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.synchronizer.Maybe;
+import org.eclipse.sirius.ext.base.Option;
 
 public class SpecifierMonitor {
 
@@ -25,7 +25,7 @@ public class SpecifierMonitor {
      * @param specificationAttachment
      *            the specification attachment
      */
-    public void warning(String string, Exception e, Maybe<? extends EObject> specificationAttachment) {
+    public void warning(String string, Exception e, Option<? extends EObject> specificationAttachment) {
         // TODO Auto-generated method stub
 
     }

@@ -19,6 +19,8 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.synchronizer.AutomaticCreator;
 import org.eclipse.sirius.synchronizer.ChildCreationSupport;
 import org.eclipse.sirius.synchronizer.CreatedOutput;
@@ -26,8 +28,6 @@ import org.eclipse.sirius.synchronizer.IntegerProvider;
 import org.eclipse.sirius.synchronizer.Mapping;
 import org.eclipse.sirius.synchronizer.MappingHiearchy;
 import org.eclipse.sirius.synchronizer.MappingHiearchyTable;
-import org.eclipse.sirius.synchronizer.Maybe;
-import org.eclipse.sirius.synchronizer.MaybeFactory;
 import org.eclipse.sirius.synchronizer.ModelToModelSynchronizer;
 import org.eclipse.sirius.synchronizer.OutputDescriptor;
 import org.eclipse.sirius.synchronizer.PreRefreshStatus;
@@ -37,6 +37,15 @@ import org.eclipse.sirius.synchronizer.SemanticPartitions;
 import org.eclipse.sirius.synchronizer.Signature;
 import org.eclipse.sirius.synchronizer.SignatureProvider;
 import org.eclipse.sirius.synchronizer.StringSignature;
+import org.eclipse.sirius.tree.DTree;
+import org.eclipse.sirius.tree.DTreeItem;
+import org.eclipse.sirius.tree.DTreeItemContainer;
+import org.eclipse.sirius.tree.TreeFactory;
+import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
+import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.MappingBasedPartition;
+import org.eclipse.sirius.tree.business.internal.refresh.DTreeElementSynchronizerSpec;
+import org.eclipse.sirius.tree.description.TreeDescription;
+import org.eclipse.sirius.tree.description.TreeItemMapping;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
@@ -49,16 +58,6 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multiset;
 import com.google.common.collect.Ordering;
-
-import org.eclipse.sirius.tree.DTree;
-import org.eclipse.sirius.tree.DTreeItem;
-import org.eclipse.sirius.tree.DTreeItemContainer;
-import org.eclipse.sirius.tree.TreeFactory;
-import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
-import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.MappingBasedPartition;
-import org.eclipse.sirius.tree.business.internal.refresh.DTreeElementSynchronizerSpec;
-import org.eclipse.sirius.tree.description.TreeDescription;
-import org.eclipse.sirius.tree.description.TreeItemMapping;
 
 /**
  * Update the {@link DTree} model according to the semantic model and the
@@ -156,19 +155,19 @@ class DTreePreRefreshStatus implements PreRefreshStatus {
 
     private TreeMappingProvider provider;
 
-    private Maybe<List<CreatedOutput>> computedOutputs;
+    private Option<List<CreatedOutput>> computedOutputs;
 
     private GlobalContext ctx;
 
     public DTreePreRefreshStatus(GlobalContext ctx, TreeMappingProvider provider) {
         this.provider = provider;
-        computedOutputs = MaybeFactory.newNone();
+        computedOutputs = Options.newNone();
         this.ctx = ctx;
     }
 
     public Iterable<CreatedOutput> getExistingOutputs() {
         if (computedOutputs.some()) {
-            return computedOutputs.value();
+            return computedOutputs.get();
         }
         return Lists.newArrayList();
     }
@@ -188,7 +187,7 @@ class DTreePreRefreshStatus implements PreRefreshStatus {
             result.add(newOuput);
             i++;
         }
-        computedOutputs = MaybeFactory.newSome(result);
+        computedOutputs = Options.newSome(result);
     }
 }
 
@@ -235,7 +234,7 @@ class SemanticPartitionProvider {
     }
 
     public SemanticPartition getSemanticPartition(TreeItemMapping nm) {
-        return new MappingBasedPartition(ctx, nm.getDomainClass(), MaybeFactory.newSome(nm.getSemanticCandidatesExpression()), MaybeFactory.newSome(nm));
+        return new MappingBasedPartition(ctx, nm.getDomainClass(), Options.newSome(nm.getSemanticCandidatesExpression()), Options.newSome(nm));
     }
 
 }
@@ -254,8 +253,8 @@ class RTreeMapping implements Mapping {
         this.semPartition = SemanticPartitions.eAllContents(description.getDomainClass());
     }
 
-    public Maybe<Mapping> getSuper() {
-        return MaybeFactory.newNone();
+    public Option<Mapping> getSuper() {
+        return Options.newNone();
     }
 
     public SemanticPartition getSemanticPartition() {
@@ -275,8 +274,8 @@ class RTreeMapping implements Mapping {
         return true;
     }
 
-    public Maybe<AutomaticCreator> getCreator() {
-        return MaybeFactory.newNone();
+    public Option<AutomaticCreator> getCreator() {
+        return Options.newNone();
     }
 
 }
@@ -289,7 +288,7 @@ class CreatedTreeItem extends AbstractCreatedDTreeItemContainer {
 
     private int newIndex;
 
-    private Maybe<Mapping> newMapping = MaybeFactory.newNone();
+    private Option<Mapping> newMapping = Options.newNone();
 
     public CreatedTreeItem(GlobalContext ctx, DTreeItem tItem, OutputTreeItemDescriptor descriptor) {
         super(ctx);
@@ -316,7 +315,7 @@ class CreatedTreeItem extends AbstractCreatedDTreeItemContainer {
 
     public void updateMapping() {
         if (newMapping.some()) {
-            tItem.setActualMapping(((RTreeItemMapping) newMapping.value()).getDescription());
+            tItem.setActualMapping(((RTreeItemMapping) newMapping.get()).getDescription());
         } else {
             throw new RuntimeException("no mapping to set");
         }
@@ -329,12 +328,12 @@ class CreatedTreeItem extends AbstractCreatedDTreeItemContainer {
     }
 
     public void setNewMapping(Mapping map) {
-        newMapping = MaybeFactory.newSome(map);
+        newMapping = Options.newSome(map);
 
     }
 
-    public Maybe<? extends ChildCreationSupport> getChildSupport() {
-        return MaybeFactory.newSome(new TreeItemContainerChildSupport(getGlobalContext(), tItem));
+    public Option<? extends ChildCreationSupport> getChildSupport() {
+        return Options.newSome(new TreeItemContainerChildSupport(getGlobalContext(), tItem));
     }
 
     public List<Mapping> getChildMappings() {
@@ -481,8 +480,8 @@ class CreatedDTree extends AbstractCreatedDTreeItemContainer {
         throw new IllegalArgumentException(ILLEGAL_ARGUMENT_MESSAGE);
     }
 
-    public Maybe<? extends ChildCreationSupport> getChildSupport() {
-        return MaybeFactory.newSome(new TreeItemContainerChildSupport(getGlobalContext(), dnode));
+    public Option<? extends ChildCreationSupport> getChildSupport() {
+        return Options.newSome(new TreeItemContainerChildSupport(getGlobalContext(), dnode));
     }
 
     public List<Mapping> getChildMappings() {
@@ -539,11 +538,11 @@ class RTreeItemMapping implements Mapping {
         this.creator = new TreeItemCreator(nm, provider);
     }
 
-    public Maybe<? extends Mapping> getSuper() {
+    public Option<? extends Mapping> getSuper() {
         if (nm.getSpecialize() != null) {
-            return MaybeFactory.newSome(provider.getOrCreate(nm.getSpecialize()));
+            return Options.newSome(provider.getOrCreate(nm.getSpecialize()));
         }
-        return MaybeFactory.newNone();
+        return Options.newNone();
     }
 
     public SemanticPartition getSemanticPartition() {
@@ -569,8 +568,8 @@ class RTreeItemMapping implements Mapping {
         return nm;
     }
 
-    public Maybe<AutomaticCreator> getCreator() {
-        return MaybeFactory.newSome(creator);
+    public Option<AutomaticCreator> getCreator() {
+        return Options.newSome(creator);
     }
 }
 

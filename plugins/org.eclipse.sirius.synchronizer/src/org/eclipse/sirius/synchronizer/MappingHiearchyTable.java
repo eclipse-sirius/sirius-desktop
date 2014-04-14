@@ -66,7 +66,7 @@ public class MappingHiearchyTable {
         Set<Mapping> hasChildren = Sets.newLinkedHashSet();
         for (Mapping mapping : mappings) {
             if (mapping.getSuper().some()) {
-                hasChildren.add(mapping.getSuper().value());
+                hasChildren.add(mapping.getSuper().get());
             }
         }
         return Sets.difference(Sets.newLinkedHashSet(mappings), hasChildren);

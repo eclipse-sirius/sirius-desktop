@@ -13,6 +13,9 @@ package org.eclipse.sirius.synchronizer;
 import java.util.Collection;
 import java.util.Iterator;
 
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
+
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -95,11 +98,11 @@ public class RefreshPlanner {
             while (it.hasNext()) {
                 Mapping cur = it.next();
                 if (cur.isEnabled() && cur.getCreator().some()) {
-                    Maybe<EvaluatedSemanticPartition> par = invalidator.hasFastResult(container.getDescriptor().getSourceElement(), cur.getSemanticPartition());
+                    Option<EvaluatedSemanticPartition> par = invalidator.hasFastResult(container.getDescriptor().getSourceElement(), cur.getSemanticPartition());
                     if (!par.some()) {
-                        par = MaybeFactory.newSome(cur.getSemanticPartition().evaluate(container.getDescriptor().getSourceElement()));
+                        par = Options.newSome(cur.getSemanticPartition().evaluate(container.getDescriptor().getSourceElement()));
                     }
-                    Collection<? extends OutputDescriptor> allCandidateDescriptors = cur.getCreator().value().computeDescriptors(container, par.value().elements());
+                    Collection<? extends OutputDescriptor> allCandidateDescriptors = cur.getCreator().get().computeDescriptors(container, par.get().elements());
                     post.appendOutputDescritorsKeepingTheMostSpecific(allCandidateDescriptors);
                 }
             }

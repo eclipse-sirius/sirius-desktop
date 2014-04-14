@@ -16,8 +16,9 @@ import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.synchronizer.EvaluatedSemanticPartition;
-import org.eclipse.sirius.synchronizer.Maybe;
 import org.eclipse.sirius.synchronizer.SemanticPartition;
 import org.eclipse.sirius.synchronizer.SemanticPartitions;
 
@@ -25,8 +26,6 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 
 /**
  * TODO .
@@ -37,11 +36,11 @@ public class MappingBasedPartition implements SemanticPartition {
 
     private String domainClass;
 
-    private Maybe<String> semanticCandidate;
+    private Option<String> semanticCandidate;
 
     private GlobalContext ctx;
 
-    private Maybe<? extends EObject> specificationAttachment;
+    private Option<? extends EObject> specificationAttachment;
 
     /**
      * Creates a new MappingBasedPartition.
@@ -55,7 +54,7 @@ public class MappingBasedPartition implements SemanticPartition {
      * @param specificationAttachment
      *            the specification attachment
      */
-    public MappingBasedPartition(GlobalContext ctx, String domainClass, Maybe<String> semanticCandidate, Maybe<? extends EObject> specificationAttachment) {
+    public MappingBasedPartition(GlobalContext ctx, String domainClass, Option<String> semanticCandidate, Option<? extends EObject> specificationAttachment) {
         this.domainClass = domainClass;
         this.ctx = ctx;
         this.semanticCandidate = semanticCandidate;
@@ -71,7 +70,7 @@ public class MappingBasedPartition implements SemanticPartition {
         Iterator<EObject> elements = Collections.<EObject> emptyList().iterator();
         if (semanticCandidate.some()) {
             try {
-                elements = ctx.getInterpreter().evaluateCollection(root, semanticCandidate.value()).iterator();
+                elements = ctx.getInterpreter().evaluateCollection(root, semanticCandidate.get()).iterator();
             } catch (EvaluationException e) {
                 ctx.getSpecifierFeedBack().warning("Error while evaluating semantic candidate expression", e, specificationAttachment);
             }

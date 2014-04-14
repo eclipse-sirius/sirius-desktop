@@ -340,6 +340,14 @@
 				<code>org.eclipse.sirius.synchronizer.Mapping.IS_CHECK_ONLY</code> constant has been removed to reduce Sirius&#8217;s exposure of Guava&#8217;specific types. Use 
 				<code>!Mapping.getCreator().some()</code> instead.
 			</li>
+			<li>The 
+				<code>Maybe</code> and 
+				<code>MaybeFactory</code> types have been removed, and all their uses in 
+				<code>org.eclipse.sirius.synchronizer</code> converted to the equivalent 
+				<code>Option</code> and 
+				<code>Options</code> types from 
+				<code>org.eclipse.sirius.ext.base</code>.  
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.support">Changes in 
 			<code>org.eclipse.sirius.tests.support</code>

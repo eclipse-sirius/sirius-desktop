@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.synchronizer;
 
+import org.eclipse.sirius.ext.base.Option;
+
 
 /**
  * A mapping is a transformation rule from something in the input model to
@@ -24,14 +26,14 @@ public interface Mapping {
      * 
      * @return the super mapping of the current mapping
      */
-    Maybe<? extends Mapping> getSuper();
+    Option<? extends Mapping> getSuper();
 
     /**
      * Return the {@link AutomaticCreator} of this Mapping.
      * 
      * @return the {@link AutomaticCreator} of this Mapping
      */
-    Maybe<? extends AutomaticCreator> getCreator();
+    Option<? extends AutomaticCreator> getCreator();
 
     /**
      * Returns the semantic partition associated to this mapping.

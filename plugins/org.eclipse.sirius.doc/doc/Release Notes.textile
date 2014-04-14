@@ -102,6 +102,7 @@ h4. Changes in @org.eclipse.sirius.ext.base@
 h4. Changes in @org.eclipse.sirius.synchronizer@
 
 * The @org.eclipse.sirius.synchronizer.Mapping.IS_CHECK_ONLY@ constant has been removed to reduce Sirius's exposure of Guava'specific types. Use @!Mapping.getCreator().some()@ instead.
+* The @Maybe@ and @MaybeFactory@ types have been removed, and all their uses in @org.eclipse.sirius.synchronizer@ converted to the equivalent @Option@ and @Options@ types from @org.eclipse.sirius.ext.base@.  
  
 h4. Changes in @org.eclipse.sirius.tests.support@
 
