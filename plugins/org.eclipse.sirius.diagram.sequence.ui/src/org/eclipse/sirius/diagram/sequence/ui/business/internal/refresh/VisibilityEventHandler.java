@@ -22,7 +22,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.ui.SequenceDiagramPlugin;
 import org.eclipse.sirius.diagram.sequence.ui.business.api.diagramtype.SequenceDiagramTypeProvider;
-import org.eclipse.sirius.diagram.sequence.util.NotificationQuery;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.NotificationQuery;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;

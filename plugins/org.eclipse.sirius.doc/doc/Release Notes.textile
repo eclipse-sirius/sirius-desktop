@@ -93,6 +93,7 @@ h4. Changes in @org.eclipse.sirius.diagram@
 h4. Changes in @org.eclipse.sirius.diagram.sequence@
 
 * The @org.eclipse.sirius.diagram.sequence.util.SiriusFunctions@ class has been removed. It was not used anywhere.
+* The @org.eclipse.sirius.diagram.sequence.util.NotificationQuery@ class has been removed. It had been exposed by mistake.
 
 h4. Changes in @org.eclipse.sirius.ui@
 
