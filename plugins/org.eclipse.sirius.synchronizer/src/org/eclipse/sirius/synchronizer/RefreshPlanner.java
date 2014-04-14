@@ -14,7 +14,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import com.google.common.base.Function;
-import com.google.common.base.Predicates;
+import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
@@ -81,7 +81,12 @@ public class RefreshPlanner {
         pre.computeStatus(container, childMappings);
         post.addPreviousStatus(pre.getExistingOutputs());
 
-        Iterable<? extends Mapping> mappingsCreatingElements = Iterables.filter(childMappings, Predicates.not(Mapping.IS_CHECK_ONLY));
+        Iterable<? extends Mapping> mappingsCreatingElements = Iterables.filter(childMappings, new Predicate<Mapping>() {
+            @Override
+            public boolean apply(Mapping input) {
+                return input.getCreator().some();
+            }
+        });
         Iterable<Collection<MappingHiearchy>> transformedHiearchy = Iterables.transform(mappingsCreatingElements, toHierarchy);
         Iterable<MappingHiearchy> childHiearchies = Sets.newLinkedHashSet(Iterables.concat(transformedHiearchy));
 

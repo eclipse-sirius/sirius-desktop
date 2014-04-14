@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.synchronizer;
 
-import com.google.common.base.Predicate;
 
 /**
  * A mapping is a transformation rule from something in the input model to
@@ -20,17 +19,6 @@ import com.google.common.base.Predicate;
  * 
  */
 public interface Mapping {
-
-    /**
-     * Predicates indicating if the mapping is check only.
-     */
-    Predicate<Mapping> IS_CHECK_ONLY = new Predicate<Mapping>() {
-
-        public boolean apply(Mapping input) {
-            return !input.getCreator().some();
-        }
-    };
-
     /**
      * Returns the super mapping of the current mapping.
      * 
