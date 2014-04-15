@@ -24,7 +24,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 
-import com.google.common.base.Function;
+import com.google.common.base.Objects;
 import com.google.common.collect.Sets;
 
 /**
@@ -45,8 +45,6 @@ public class DefaultInterpretedExpressionTargetSwitch implements IInterpretedExp
 
     private ValidationInterpretedExpressionTargetSwitch validationSwitch;
 
-    private final Function<EObject, EObject> firstRelevantContainerFinder;
-
     /**
      * Default constructor.
      * 
@@ -56,33 +54,7 @@ public class DefaultInterpretedExpressionTargetSwitch implements IInterpretedExp
      *            the global switch to use
      */
     public DefaultInterpretedExpressionTargetSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch globalSwitch) {
-        this(feature, globalSwitch, null);
-    }
-
-    /**
-     * Default constructor.
-     * 
-     * @param feature
-     *            the feature containing the Interpreted expression to determine
-     *            the target from
-     * @param globalSwitch
-     *            the global switch to use
-     * @param firstRelevantContainerFunction
-     *            d
-     */
-    public DefaultInterpretedExpressionTargetSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch globalSwitch, Function<EObject, EObject> firstRelevantContainerFunction) {
-        IInterpretedExpressionTargetSwitch theGlobalSwitch = globalSwitch;
-        if (theGlobalSwitch == null) {
-            theGlobalSwitch = this;
-        }
-
-        // Init the relevant container finder
-        if (firstRelevantContainerFunction != null) {
-            this.firstRelevantContainerFinder = firstRelevantContainerFunction;
-        } else {
-            this.firstRelevantContainerFinder = new FirstRelevantContainerDefaultFunction();
-        }
-
+        IInterpretedExpressionTargetSwitch theGlobalSwitch = Objects.firstNonNull(globalSwitch, this);
         this.descriptionSwitch = new DescriptionInterpretedExpressionTargetSwitch(feature, theGlobalSwitch);
         this.styleSwitch = new StyleInterpretedExpressionTargetSwitch(feature, theGlobalSwitch);
         this.toolSwitch = new ToolInterpretedExpressionTargetSwitch(feature, theGlobalSwitch);
@@ -122,37 +94,22 @@ public class DefaultInterpretedExpressionTargetSwitch implements IInterpretedExp
         }
         return expressionTarget;
     }
-    
+
     @Override
     public EObject getFirstRelevantContainer(EObject obj) {
-        return firstRelevantContainerFinder.apply(obj);
-    }
-
-    /**
-     * A function to compute the first relevant container for the given EObject,
-     * i.e. the first container from which a domain class can be determined.
-     * <p>
-     * For example: for a given RepresentationElementMapping, it will return the
-     * first parent RepresentationElementMapping or RepresentationDescription.
-     * mapping.
-     * </p>
-     */
-    private static class FirstRelevantContainerDefaultFunction implements Function<EObject, EObject> {
-        @Override
-        public EObject apply(EObject input) {
-            if (input != null) {
-                EObject container = input.eContainer();
-                while (container != null && !isRelevant(container)) {
-                    container = container.eContainer();
-                }
-                return container;
-            } else {
-                return null;
+        if (obj != null) {
+            EObject container = obj.eContainer();
+            while (container != null && !isRelevant(container)) {
+                container = container.eContainer();
             }
-        }
-
-        protected boolean isRelevant(EObject container) {
-            return container instanceof RepresentationDescription || container instanceof RepresentationElementMapping || container instanceof RepresentationExtensionDescription;
+            return container;
+        } else {
+            return null;
         }
     }
+
+    private boolean isRelevant(EObject container) {
+        return container instanceof RepresentationDescription || container instanceof RepresentationElementMapping || container instanceof RepresentationExtensionDescription;
+    }
+
 }

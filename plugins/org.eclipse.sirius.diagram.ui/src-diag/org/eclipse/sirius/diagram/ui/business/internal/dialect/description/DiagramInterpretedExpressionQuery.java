@@ -30,7 +30,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
 
-import com.google.common.base.Function;
 import com.google.common.collect.Sets;
 
 /**
@@ -91,9 +90,11 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
      */
     private class DiagramGlobalInterpretedTargetSwitch implements IInterpretedExpressionTargetSwitch {
 
-        private final Function<EObject, EObject> diagramFirstRelevantContainerFinder = new FirstRelevantContainerDiagramFunction();
-
-        private DefaultInterpretedExpressionTargetSwitch defaultSwitch = new DefaultInterpretedExpressionTargetSwitch(feature, this, diagramFirstRelevantContainerFinder);
+        private DefaultInterpretedExpressionTargetSwitch defaultSwitch = new DefaultInterpretedExpressionTargetSwitch(feature, this) {
+            public EObject getFirstRelevantContainer(EObject obj) {
+                return DiagramGlobalInterpretedTargetSwitch.this.getFirstRelevantContainer(obj);
+            }
+        };
 
         private DiagramInterpretedExpressionTargetSwitch diagramDescriptionSwitch = new DiagramInterpretedExpressionTargetSwitch(feature, this);
 
@@ -162,25 +163,8 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
 
         @Override
         public EObject getFirstRelevantContainer(EObject obj) {
-            return diagramFirstRelevantContainerFinder.apply(obj);
-        }
-
-    }
-
-    /**
-     * Returns the first relevant for the given EObject, i.e. the first
-     * container from which a domain class can be determined.
-     * <p>
-     * For example, for a given NodeMapping will return the first
-     * ContainerMapping or DiagramRepresentationDescription that contains this
-     * mapping.
-     * </p>
-     */
-    private static class FirstRelevantContainerDiagramFunction implements Function<EObject, EObject> {
-        @Override
-        public EObject apply(EObject input) {
-            if (input != null) {
-                EObject container = input.eContainer();
+            if (obj != null) {
+                EObject container = obj.eContainer();
                 while (container != null && !isRelevant(container)) {
                     container = container.eContainer();
                 }
@@ -190,9 +174,8 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
             }
         }
 
-        protected boolean isRelevant(EObject container) {
+        private boolean isRelevant(EObject container) {
             return container instanceof RepresentationDescription || container instanceof RepresentationElementMapping || container instanceof EdgeMappingImport || container instanceof DiagramExtensionDescription;
         }
     }
-
 }

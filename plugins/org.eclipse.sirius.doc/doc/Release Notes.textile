@@ -89,6 +89,7 @@ h4. Changes in @org.eclipse.sirius@
 ** a controlled resource.
 * The @EObjectLink@ class has been removed from the metamodel. It was not used anywhere. 
 * In interface @org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch@, the @getFirstRelevantContainerFinder()@ method which returned a Guava @Function<EObject, EObject>@ has been replaced with the new method @getFirstRelevantContainer(EObject)@ which directly returns the result of applying the previously returned function. All implementers in Sirius itself have been updated. 
+* The constructor @org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionTargetSwitch(EStructuralFeature, IInterpretedExpressionTargetSwitch, Function<EObject, EObject>)@ has been removed to avoid exposing a the Guava-specific @Predicate@ type. Sub-classes which used it with a non-null @Function@ should override the @getFirstRelevantContainer(EObject)@ method to return the result of that function instead.
 
 h4. Changes in @org.eclipse.sirius.diagram@
 

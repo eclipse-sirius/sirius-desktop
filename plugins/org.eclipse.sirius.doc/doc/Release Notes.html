@@ -309,6 +309,12 @@
 				<code>Function&lt;EObject, EObject&gt;</code> has been replaced with the new method 
 				<code>getFirstRelevantContainer(EObject)</code> which directly returns the result of applying the previously returned function. All implementers in Sirius itself have been updated. 
 			</li>
+			<li>The constructor 
+				<code>org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionTargetSwitch(EStructuralFeature, IInterpretedExpressionTargetSwitch, Function&lt;EObject, EObject&gt;)</code> has been removed to avoid exposing a the Guava-specific 
+				<code>Predicate</code> type. Sub-classes which used it with a non-null 
+				<code>Function</code> should override the 
+				<code>getFirstRelevantContainer(EObject)</code> method to return the result of that function instead.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
