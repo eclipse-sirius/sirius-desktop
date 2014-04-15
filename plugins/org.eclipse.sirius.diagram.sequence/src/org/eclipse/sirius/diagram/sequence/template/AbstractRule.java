@@ -41,7 +41,7 @@ import com.google.common.collect.Lists;
  * @param <F>
  * @param <T>
  */
-public abstract class AbstractRule<F extends TTransformer, T extends EObject> implements Function<F, T> {
+public abstract class AbstractRule<F extends TTransformer, T extends EObject> implements Transformer<F, T> {
 
     private ModelGeneratedMaker marker;
 
@@ -161,7 +161,7 @@ public abstract class AbstractRule<F extends TTransformer, T extends EObject> im
      * 
      * @param fromCollection
      *            the original collection.
-     * @param function
+     * @param transformer
      *            transformer of the collection.
      * 
      * 
@@ -172,8 +172,13 @@ public abstract class AbstractRule<F extends TTransformer, T extends EObject> im
      *            type of the target collection.
      * @return a collection with transformed element.
      */
-    public static <FC, TC> Collection<TC> transform(Collection<FC> fromCollection, Function<? super FC, TC> function) {
-        return Collections2.transform(fromCollection, function);
+    public static <FC, TC> Collection<TC> transform(Collection<FC> fromCollection, final Transformer<? super FC, TC> transformer) {
+        return Collections2.transform(fromCollection, new Function<FC, TC>() {
+            @Override
+            public TC apply(FC input) {
+                return transformer.apply(input);
+            }
+        });
     }
 
 }
