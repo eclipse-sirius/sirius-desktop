@@ -102,6 +102,7 @@ h4. Changes in @org.eclipse.sirius.diagram.sequence@
 h4. Changes in @org.eclipse.sirius.ui@
 
 * @org.eclipse.sirius.ui.business.api.preferences.DesignerUIPreferencesKeys@ has been renamed into @org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys@
+* Methods @getMissingDependencies()@ and @getMissingDependenciesErrorMessage()@ from @org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection@ now use @Map<String, Collection<String>>@ instead of Guava's @Multimap@.
 
 h4. Changes in @org.eclipse.sirius.ext.base@
 

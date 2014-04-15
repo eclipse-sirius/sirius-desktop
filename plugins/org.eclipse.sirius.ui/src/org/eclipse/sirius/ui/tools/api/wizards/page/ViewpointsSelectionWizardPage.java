@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.resources.IResource;
@@ -73,7 +74,6 @@ import org.osgi.framework.Bundle;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 
 /**
@@ -177,7 +177,7 @@ public class ViewpointsSelectionWizardPage extends WizardPage {
         boolean complete = false;
 
         if (!viewpoints.isEmpty()) {
-            Multimap<String, String> missingDependencies = ViewpointSelection.getMissingDependencies(Sets.newHashSet(viewpoints));
+            Map<String, Collection<String>> missingDependencies = ViewpointSelection.getMissingDependencies(Sets.newHashSet(viewpoints));
             if (missingDependencies.isEmpty()) {
                 complete = true;
             } else {

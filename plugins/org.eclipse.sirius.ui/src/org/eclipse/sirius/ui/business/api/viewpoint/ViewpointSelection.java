@@ -315,7 +315,7 @@ public final class ViewpointSelection {
 
                 @Override
                 protected void okPressed() {
-                    Multimap<String, String> missingDependencies = getMissingDependencies(Maps.filterValues(copyOfViewpointsMap, Predicates.equalTo(Boolean.TRUE)).keySet());
+                    Map<String, Collection<String>> missingDependencies = getMissingDependencies(Maps.filterValues(copyOfViewpointsMap, Predicates.equalTo(Boolean.TRUE)).keySet());
                     if (missingDependencies.isEmpty()) {
                         super.okPressed();
                     } else {
@@ -343,17 +343,16 @@ public final class ViewpointSelection {
      * selection.
      * 
      * @param missingDependencies
-     *            a multimap, for example the result
-     *            {@link ViewpointSelection#getMissingDependencies(Set)} which
-     *            contains for each selected viewpoint which has missing
-     *            dependencies, an entry with the selected viewpoint's name as
-     *            key and the list of the missing viewpoints' names as value.
+     *            a map with an entry for each select viewpoint which has
+     *            missing dependencies. The entry's key is the viewpoint name,
+     *            and the value is the list of names of all the missing
+     *            viewpoints it depends on.
      * @return an error message which indicates the required viewpoint
      *         activation to complete the current selection.
      */
-    public static String getMissingDependenciesErrorMessage(Multimap<String, String> missingDependencies) {
+    public static String getMissingDependenciesErrorMessage(Map<String, Collection<String>> missingDependencies) {
         return "The list of selected viewpoints is invalid; please fix the problems:\n" + "- "
-                + Joiner.on("\n- ").withKeyValueSeparator(" requires: ").join(Maps.transformValues(missingDependencies.asMap(), new Function<Collection<String>, String>() {
+                + Joiner.on("\n- ").withKeyValueSeparator(" requires: ").join(Maps.transformValues(missingDependencies, new Function<Collection<String>, String>() {
                     public String apply(java.util.Collection<String> from) {
                         return Joiner.on(", ").join(from);
                     }
@@ -414,9 +413,9 @@ public final class ViewpointSelection {
      *            the viewpoints selection request by the user.
      * @return for each selected viewpoint which has missing dependencies, an
      *         entry with the selected viewpoint's name as key and the list of
-     *         the missing viewpoints' names as key.
+     *         the missing viewpoints' names as value.
      */
-    public static Multimap<String, String> getMissingDependencies(Set<Viewpoint> selected) {
+    public static Map<String, Collection<String>> getMissingDependencies(Set<Viewpoint> selected) {
         Set<String> selectedURIs = Sets.newHashSet(Iterables.filter(Iterables.transform(selected, new Function<Viewpoint, String>() {
             public String apply(Viewpoint from) {
                 Option<URI> uri = new ViewpointQuery(from).getViewpointURI();
@@ -438,7 +437,7 @@ public final class ViewpointSelection {
                 }
             }
         }
-        return result;
+        return result.asMap();
     }
 
     private static boolean atLeastOneUriMatchesPattern(Set<String> selectedURIs, Pattern pattern) {

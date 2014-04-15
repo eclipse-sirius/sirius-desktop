@@ -346,6 +346,13 @@
 				<code>org.eclipse.sirius.ui.business.api.preferences.DesignerUIPreferencesKeys</code> has been renamed into 
 				<code>org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys</code>
 			</li>
+			<li>Methods 
+				<code>getMissingDependencies()</code> and 
+				<code>getMissingDependenciesErrorMessage()</code> from 
+				<code>org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection</code> now use 
+				<code>Map&lt;String, Collection&lt;String&gt;&gt;</code> instead of Guava&#8217;s 
+				<code>Multimap</code>.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ext.base">Changes in 
 			<code>org.eclipse.sirius.ext.base</code>
