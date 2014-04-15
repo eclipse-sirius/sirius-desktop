@@ -52,7 +52,7 @@ public class UIPerspective {
     private static final String VIEWPOINT = "Sirius";
 
     // Seconds
-    private static final int TIMEOUT = 60;
+    private static final int TIMEOUT = 15;
 
     private static final String WIZARDS_LIST_TITLE = "New";
 
