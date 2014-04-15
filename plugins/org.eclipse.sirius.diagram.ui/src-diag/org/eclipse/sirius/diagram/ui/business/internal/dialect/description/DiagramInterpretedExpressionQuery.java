@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.business.internal.dialect.description;
 
 import java.util.Collection;
+import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -30,7 +31,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
 
 import com.google.common.base.Function;
-import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 
 /**
@@ -72,7 +72,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
      * {@inheritDoc}
      */
     @Override
-    protected void appendAllLocalVariableDefinitions(Multimap<String, String> definitions, EObject context) {
+    protected void appendAllLocalVariableDefinitions(Map<String, Collection<String>> definitions, EObject context) {
         super.appendAllLocalVariableDefinitions(definitions, context);
         // Direct edit defines numbered variables based on their mask.
         if (context instanceof DirectEditLabel && ((DirectEditLabel) context).getMask() != null) {

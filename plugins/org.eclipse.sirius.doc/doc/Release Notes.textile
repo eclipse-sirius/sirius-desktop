@@ -67,15 +67,16 @@ Several extension points have been moved:
 
 h4. Changes in @org.eclipse.sirius@
 
-* @org.eclipse.sirius.business.api.query.URIQuery.isSiriusEnvironmentURI@ has been replaced by 
-** @isSiriusCoreEnvironmentURI@ which checks that the given resource is the Sirius core Environment.xmi file. 
-** and @isEnvironmentURI@ which checks that the given resource has an @environment@ uri scheme. 
+* @org.eclipse.sirius.business.api.query.URIQuery.isSiriusEnvironmentURI@ has been replaced by
+** @isSiriusCoreEnvironmentURI@ which checks that the given resource is the Sirius core Environment.xmi file.
+** and @isEnvironmentURI@ which checks that the given resource has an @environment@ uri scheme.
 * In @org.eclipse.sirius.business.api.dialect.DialectManager@
 ** the setter @setRefreshActivatedOnRepresentationOpening(boolean)@ has been removed as the refresh on opening should be managed from the corresponding preference @org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING@.
 ** @isRefreshActivatedOnRepresentationOpening()@ has been moved into @org.eclipse.sirius.ui.business.api.dialect.DialectUIManager@ as it refers to an UI behavior.
 * The @DRepresentation.createContents()@ (both variants) and @DRepresentation.updateContents()@ EOperations have been removed. They were not used anywhere.
 * The @org.eclipse.sirius.business.api.modelingproject.ModelingProject.MODELING_PROJECT_PREDICATE@ constant has been removed to reduce Sirius's exposure of Guava'specific types. Use the equivalent @ModelingProject.hasModelingProjectNature()@ method instead.
 * The method @org.eclipse.sirius.business.api.query.EObjectQuery.getInverseReferences(Predicate<Setting>)@ has been removed from API to avoid exposing a the Guava-specific @Predicate@ type.
+* In class @org.eclipse.sirius.business.api.dialect.description.AbstractInterpretedExpressionQuery@, the protected methods @appendAllLocalVariableDefinitions()@ and @appendEditMaskVariables()@ now take a @Map<String, Collection<String>>@ instead of a Guava-specific @Multimap@. The new protected method @addDefinition()@ can be used to make it easier to add entries to the map. Subclasses in Sirius have been updated to match the new signature.
 
 h4. Changes in @org.eclipse.sirius.diagram@
 
@@ -97,7 +98,7 @@ h4. Changes in @org.eclipse.sirius.diagram.sequence@
 * The @org.eclipse.sirius.diagram.sequence.util.NotificationQuery@ class has been removed. It had been exposed by mistake.
 * The @org.eclipse.sirius.diagram.sequence.business.internal.util.NotationPredicate@ class has been removed from API,  to reduce Sirius's exposure of Guava'specific types.
 * All the static methods in @org.eclipse.sirius.diagram.sequence.util.Range@ which returned Guava-specific types (@Function@ or @Ordering@) have been removed from API.
-* @org.eclipse.sirius.diagram.sequence.template.AbstractRule@ no longer inherits from Guava's @Function@ interface, but from the news ad-hoc @org.eclipse.sirius.diagram.sequence.template.Transformer@ interface instead, which is functionally equivalent. 
+* @org.eclipse.sirius.diagram.sequence.template.AbstractRule@ no longer inherits from Guava's @Function@ interface, but from the news ad-hoc @org.eclipse.sirius.diagram.sequence.template.Transformer@ interface instead, which is functionally equivalent.
 
 h4. Changes in @org.eclipse.sirius.ui@
 
@@ -112,8 +113,8 @@ h4. Changes in @org.eclipse.sirius.ext.base@
 h4. Changes in @org.eclipse.sirius.synchronizer@
 
 * The @org.eclipse.sirius.synchronizer.Mapping.IS_CHECK_ONLY@ constant has been removed to reduce Sirius's exposure of Guava'specific types. Use @!Mapping.getCreator().some()@ instead.
-* The @Maybe@ and @MaybeFactory@ types have been removed, and all their uses in @org.eclipse.sirius.synchronizer@ converted to the equivalent @Option@ and @Options@ types from @org.eclipse.sirius.ext.base@.  
- 
+* The @Maybe@ and @MaybeFactory@ types have been removed, and all their uses in @org.eclipse.sirius.synchronizer@ converted to the equivalent @Option@ and @Options@ types from @org.eclipse.sirius.ext.base@.
+
 h4. Changes in @org.eclipse.sirius.tests.support@
 
 * The @shouldReloadSession@ boolean parameter has been removed from @org.eclipse.sirius.tests.support.api.SiriusTestCase.disableUICallBackOnDialectEditor(DialectEditor)@, it was not used and could let the tester think he can change the reload behavior from the dialog factory.
@@ -155,13 +156,13 @@ Warning: If you have some code based on the root EPackage of an EClass, it may b
 pre. 
 EPackage rootPackage = (EPackage) EcoreUtil.getRootContainer(element.eClass());
 if (rootPackage != null && rootPackage.getNsURI().equals(ViewpointPackage.eINSTANCE.getNsURI())) {
- 
+
 should be adapted in
 
 pre. 
 EPackage rootPackage = (EPackage) EcoreUtil.getRootContainer(element.eClass());
 if (rootPackage != null && rootPackage.getNsURI().equals(DiagramPackage.eINSTANCE.getNsURI())) {
- 
+
 if @element@ is a Diagram concept.
 
 h4. Changes in @org.eclipse.sirius@
@@ -211,24 +212,24 @@ This milestone (Sirius 1.0M5) introduces several new plug-ins, collectively call
 h4(#separationOfDiagramSpecificConcept-step1). Move diagram-specific EClasses into a separate EPackage
 
 For historical reasons, the core Sirius metamodels defined in viewpoint.ecore contain both generic (dialect-independant like Viewpoint, RepresentationDescription, DAnalysis...) concepts and diagram-specific ones (e.g. DNode, EdgeStyle, ContainerCreationDescription...). The table and tree metamodels are more cleanly separated.
-This milestone (Sirius 1.0M5) includes the first step towards a full separation of the diagram-specific stuff out of the core of Sirius. So many EClasses have been moved. 
+This milestone (Sirius 1.0M5) includes the first step towards a full separation of the diagram-specific stuff out of the core of Sirius. So many EClasses have been moved.
 
 Most of the time, existing code which used these Sirius EClasses will only need to perform a simple "Organize Imports" operation, which should find the classes and interfaces in their new locations.
-The "Organize imports" is not sufficient in case of imported classes existing several time in different packages (@EFactory@ classes for example with @DescriptionFactory@, or @EPackage@ classes for example with @DescriptionPackage@). And in some cases @ViewpointFactory@ (and @ViewpointPackage@) will have to be replaced by @DiagramFactory@ (and @DiagramPackage@). 
+The "Organize imports" is not sufficient in case of imported classes existing several time in different packages (@EFactory@ classes for example with @DescriptionFactory@, or @EPackage@ classes for example with @DescriptionPackage@). And in some cases @ViewpointFactory@ (and @ViewpointPackage@) will have to be replaced by @DiagramFactory@ (and @DiagramPackage@).
 
 The @Switch@ classes if overridden also require a particular attention.
- 
+
 The existing VSM (@*.odesign@) and representations file (@*.aird@) are automatically migrated.
 Warning: Nevertheless, if you reference these Sirius concepts with the EPackage qualifier in your VSM (@*.odesign@), in interpreted expressions for example, you must change @viewpoint@ in @diagram@. For example @viewpoint::DDiagramElement@ becomes @diagram::DDiagramElement@.
- 
-The impacted EPackages are : 
+
+The impacted EPackages are :
 * @viewpoint@ : some of its EClasses have been moved to @viewpoint/diagram@
 * @viewpoint/description@ : some of its EClasses have been moved to @viewpoint/diagram/description@
 * @viewpoint/description/style@ : some of its EClasses have been moved to @viewpoint/diagram/description/style@
 * @viewpoint/description/tool@ : some of its EClasses have been moved to @viewpoint/diagram/description/tool@
 * @viewpoint/description/filter@ : this EPackage has been moved to @viewpoint/diagram/description/filter@
 * @viewpoint/description/validation@ : this EPackage has been moved to @viewpoint/diagram/description/validation@
-* @viewpoint/description/concern@ : this EPackage has been moved to @viewpoint/diagram/description/concern@ 
+* @viewpoint/description/concern@ : this EPackage has been moved to @viewpoint/diagram/description/concern@
 
 h4. Changes in @org.eclipse.sirius@
 
@@ -268,11 +269,11 @@ h4. Changes in  @org.eclipse.sirius.common@
 * The deprecated method @IEditingDomainFactory.createEditingDomain()@ has been removed. Use the (inherited) @createEditingDomain(ResourceSet)@ instead, which ensures correct behavior for all kinds of models (Xtext for example).
 * The deprecated field @org.eclipse.sirius.common.tools.api.listener.Notification.FOLD@ has been removed. It was never used by Sirius itself, so if your code tried to listen to this kind of notification it was never actually called and can be safely removed.
 * The deprecated methods @getExtensionPlugins()@ and @getElementsProvidedByPlugin@ from @EcliseUtil@ have been removed. If you need this kind of functionality, use the Eclipse APIs directly instead.
-* The deprecated fields @COLUMN_SEMANTIC@ and @LINE_SEMANTIC@ of @IInterpreterSiriusVariables@ have been removed. Use the constants of @org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables@ instead. 
+* The deprecated fields @COLUMN_SEMANTIC@ and @LINE_SEMANTIC@ of @IInterpreterSiriusVariables@ have been removed. Use the constants of @org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables@ instead.
 
 h4. Changes in @org.eclipse.sirius@
 
-* The deprecated method @DialectServices.initRepresentations(Viewpoint, EObject)@ has been removed. Use the version which takes an additional @IProgressMonitor@ instead. 
+* The deprecated method @DialectServices.initRepresentations(Viewpoint, EObject)@ has been removed. Use the version which takes an additional @IProgressMonitor@ instead.
 * The deprecated constructor in @CreateRepresentationCommand@ has been removed. Use the alternative constructor which takes an additional @IProgressMonitor@ instead.
 * The two deprecated constructors in @RefreshRepresentationCommand@ have been removed. Use the alternative constructors which take an additional @IProgressMonitor@ instead.
 * The deprecated method @DisplayService.computeVisibility(Session, DDiagram, DDiagramElement)@ has been removed. Use the variant @computeVisibility()@ which takes a @DiagramMappingsManager@ instead of a @Session@.
@@ -354,7 +355,7 @@ The latest version of Viewpoint which was available in an Obeo Designer release 
 
 If you were using Obeo Designer, you must thus first migrate your projects and models to Obeo Designer 6.2, and then consult the "release notes for Viewpoint 6.9 and 6.10":release_notes_vp.html, which lists the API changes from Viewpoint 6.8 to 6.10.
 
-Once your projects are compatible with the latest Viewpoint available to you, you can migrate to Sirius, first by updating your Viewpoint Specification Projects and plug-ins which use the Viewpoint APIs, then by updating any Modeling Project and representation files (@*.aird@). 
+Once your projects are compatible with the latest Viewpoint available to you, you can migrate to Sirius, first by updating your Viewpoint Specification Projects and plug-ins which use the Viewpoint APIs, then by updating any Modeling Project and representation files (@*.aird@).
 
 h4. Migrating Viewpoint Specification Projects
 
@@ -363,7 +364,7 @@ h4. Migrating Viewpoint Specification Projects
 * The migration of your VSMs (@*.odesign@ files) is automatic: simply open your files once in the VSM editor, perform some no-op change to make the editor "dirty" and save it. The saved version will have been migrated to Sirius.
 * If you had Java code which used the Viewpoint APIs, you will need to update it to use the Sirius APIs. A simple "Source > Organize Imports" on your source folders should find most classes you used in their new namespace. The Viewpoint code base and APIs used the term "Viewpoint" both for the name of the product and for the name of the concept. When it refered to the name of the product, the names were changed to use "Sirius" instead, so you may need to adjust some names in your code beyond just updating the imports (for example, @ViewpointControlCommand@ is now @SiriusControlCommand@).
 
-Note that if you used Obeo Designer, you may have used the legacy Acceleo 2.x language for the computed expressions inside the @*.odesign@ files (if your expressions are of the form @<%something%>@ then you used the legacy language). That language is not supported anymore in Sirius 0.9, so you must migrate your expressions to use Acceleo 3 and/or the specialized interpreters (@var:@, @feature:@ and @service:@, see the documentation). 
+Note that if you used Obeo Designer, you may have used the legacy Acceleo 2.x language for the computed expressions inside the @*.odesign@ files (if your expressions are of the form @<%something%>@ then you used the legacy language). That language is not supported anymore in Sirius 0.9, so you must migrate your expressions to use Acceleo 3 and/or the specialized interpreters (@var:@, @feature:@ and @service:@, see the documentation).
 
 h4. Migrating Modeling Projects and Representation Files
 
@@ -436,9 +437,9 @@ All namespace URIs have also been changed from "http://www.obeo.fr/dsl/viewpoint
 
 If you have created VSM file (.odesign) or representations file (.aird) with Viewpoint, the changes of the namespace URIs will be automatically migrated during the loading of your VSM or your representations file. These new nsURIs will be stored physically in the file during the first save. If the file is not saved, the automatic migration will be replayed at the next opening.
 
-h3. Nature ID 
+h3. Nature ID
 
-The modeling project has a specific nature (@org.eclipse.sirius.nature.modelingproject@). 
+The modeling project has a specific nature (@org.eclipse.sirius.nature.modelingproject@).
 If you have modeling project created with Viewpoint, you must launch the action "Configure/Convert to Modeling Project" to replace old nature id (@fr.obeo.dsl.viewpoint.nature.modelingproject@) by the new one.
 If you have many modeling projects to "migrate", you can easily make a script to replace @fr.obeo.dsl.viewpoint.nature.modelingproject@ by @org.eclipse.sirius.nature.modelingproject@ in all @.project@ file of each modeling projects.
 
@@ -449,13 +450,14 @@ This section only lists API changes in Sirius 0.9.0 compared to the latest versi
 h4. API Added
 
 * Add @IMigrationParticipant.getPackage()@ to return the EPackage to use for the given namespace. This change concerns our internal migration framework. This is useful to handle our namespace changes (from Viewpoint to Sirius).
- 
+
 h4. API Removal
 
 * Removed @org.eclipse.sirius.common.tools.api.interpreter.IAcceleoInterpreterVariables@: This interface only defined a single constant, which refered to the syntax of an obsolete version of the Acceleo language.
 * Removed @org.eclipse.sirius.common.tools.api.resource.IFileContributorExtension@: This interface only defined a few constants relative to an extension point which does not exist anymore.
 * Removed the @org.eclipse.sirius.reconciler@ extension point definition (which used to be defined in the @org.eclipse.sirius@ plug-in): This extension point is not supported anymore (and has not been for a long time).
 * Removed all the deprecated methods from @Session@ and replaced the internal calls with the equivalent versions with @IProgressMonitors@. The removed methods are:
+
 pre.. 
 void open();
 void addSemanticResource(Resource newResource, boolean addCrossReferencedResources);
@@ -482,4 +484,3 @@ New variables are available for @sizeComputationExpression@ to compute the size 
 h3. User-Visible Changes
 
 * The ability to print table representations has been disabled for the 0.9 release due to an external dependency issue (see "bug #422223":https://bugs.eclipse.org/bugs/show_bug.cgi?id=422223 for the details). It should be re-introduced in 1.0.
- 

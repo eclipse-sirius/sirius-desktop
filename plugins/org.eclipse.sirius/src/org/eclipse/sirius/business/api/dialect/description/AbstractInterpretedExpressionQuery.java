@@ -36,10 +36,9 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 
 /**
@@ -293,9 +292,9 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      * <code>bottom</code> (lexical scoping).
      */
     private void collectContextualVariableDefinitions(Map<String, String> vars, EObject top, EObject bottom) {
-        // A multimap is not strictly required as we only use one value, but it
-        // is useful when debugging to have all the information.
-        Multimap<String, String> definitions = ArrayListMultimap.create();
+        // A map with multiple values is not strictly required as we only use
+        // one value, but it is useful when debugging to have all the information.
+        Map<String, Collection<String>> definitions = Maps.newHashMap();
         // Walk up from bottom to top and gather every definition in the scope.
         EObject context = bottom;
         do {
@@ -343,7 +342,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      * @param context
      *            the element which may define new variables.
      */
-    protected void appendAllLocalVariableDefinitions(Multimap<String, String> definitions, EObject context) {
+    protected void appendAllLocalVariableDefinitions(Map<String, Collection<String>> definitions, EObject context) {
         // Tool definitions can contain variables, but they do not share a
         // common type/feature name for this containment, so we must do a
         // eAllContent(). This is ugly, and possibly broken if AbstractVariables
@@ -351,7 +350,7 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
         // defined.
         if (context instanceof AbstractToolDescription) {
             for (AbstractVariable var : Iterables.filter(AllContents.of(context, false), AbstractVariable.class)) {
-                definitions.put(var.getName(), getVariableTypeName(var));
+                addDefinition(definitions, var.getName(), getVariableTypeName(var));
             }
         }
         // Some variables may contain sub-variables defined by the user: recurse
@@ -364,13 +363,13 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
         // Base case for normal variable definitions.
         if (context instanceof AbstractVariable) {
             AbstractVariable var = (AbstractVariable) context;
-            definitions.put(var.getName(), getVariableTypeName(var));
+            addDefinition(definitions, var.getName(), getVariableTypeName(var));
         }
         // The CreateInstance model operation implicitly defines a variable to
         // reference the newly created instance.
         if (context instanceof CreateInstance) {
             CreateInstance ci = (CreateInstance) context;
-            definitions.put(ci.getVariableName(), ci.getTypeName());
+            addDefinition(definitions, ci.getVariableName(), ci.getTypeName());
         }
     }
 
@@ -386,17 +385,36 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      * @param definitions
      *            the set of variables definition to which to append.
      */
-    protected void appendEditMaskVariables(EditMaskVariables mask, Multimap<String, String> definitions) {
+    protected void appendEditMaskVariables(EditMaskVariables mask, Map<String, Collection<String>> definitions) {
         Pattern p = Pattern.compile("\\{\\d\\}");
         Matcher m = p.matcher(mask.getMask());
         while (m.find()) {
             String group = m.group();
             String index = group.substring(1, group.length() - 1);
             // Old Acceleo 2-style variables.
-            definitions.put(index, "String");
+            addDefinition(definitions, index, "String");
             // New variable names which should be legal in all query
             // languages, including Acceleo 3.
-            definitions.put("arg" + index, "String");
+            addDefinition(definitions, "arg" + index, "String");
         }
+    }
+
+    /**
+     * Add a new definition for a variable, shadowing any previously added ones.
+     * 
+     * @param definitions
+     *            the definitions of all the variables.
+     * @param name
+     *            the name of the variable to (re-)define.
+     * @param value
+     *            the value of the variable to (re-)define.
+     */
+    protected void addDefinition(Map<String, Collection<String>> definitions, String name, String value) {
+        Collection<String> defs = definitions.get(name);
+        if (defs == null) {
+            defs = Lists.newArrayList();
+            definitions.put(name, defs);
+        }
+        defs.add(value);
     }
 }

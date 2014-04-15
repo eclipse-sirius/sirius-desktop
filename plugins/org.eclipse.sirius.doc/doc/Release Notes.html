@@ -235,14 +235,14 @@
 		</h4>
 		<ul>
 			<li>
-				<code>org.eclipse.sirius.business.api.query.URIQuery.isSiriusEnvironmentURI</code> has been replaced by 
+				<code>org.eclipse.sirius.business.api.query.URIQuery.isSiriusEnvironmentURI</code> has been replaced by
 				<ul>
 					<li>
-						<code>isSiriusCoreEnvironmentURI</code> which checks that the given resource is the Sirius core Environment.xmi file. 
+						<code>isSiriusCoreEnvironmentURI</code> which checks that the given resource is the Sirius core Environment.xmi file.
 					</li>
 					<li>and 
 						<code>isEnvironmentURI</code> which checks that the given resource has an 
-						<code>environment</code> uri scheme. 
+						<code>environment</code> uri scheme.
 					</li>
 				</ul>
 			</li>
@@ -270,6 +270,14 @@
 			<li>The method 
 				<code>org.eclipse.sirius.business.api.query.EObjectQuery.getInverseReferences(Predicate&lt;Setting&gt;)</code> has been removed from API to avoid exposing a the Guava-specific 
 				<code>Predicate</code> type.
+			</li>
+			<li>In class 
+				<code>org.eclipse.sirius.business.api.dialect.description.AbstractInterpretedExpressionQuery</code>, the protected methods 
+				<code>appendAllLocalVariableDefinitions()</code> and 
+				<code>appendEditMaskVariables()</code> now take a 
+				<code>Map&lt;String, Collection&lt;String&gt;&gt;</code> instead of a Guava-specific 
+				<code>Multimap</code>. The new protected method 
+				<code>addDefinition()</code> can be used to make it easier to add entries to the map. Subclasses in Sirius have been updated to match the new signature.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
@@ -335,7 +343,7 @@
 			<li>
 				<code>org.eclipse.sirius.diagram.sequence.template.AbstractRule</code> no longer inherits from Guava&#8217;s 
 				<code>Function</code> interface, but from the news ad-hoc 
-				<code>org.eclipse.sirius.diagram.sequence.template.Transformer</code> interface instead, which is functionally equivalent. 
+				<code>org.eclipse.sirius.diagram.sequence.template.Transformer</code> interface instead, which is functionally equivalent.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
@@ -381,7 +389,7 @@
 				<code>org.eclipse.sirius.synchronizer</code> converted to the equivalent 
 				<code>Option</code> and 
 				<code>Options</code> types from 
-				<code>org.eclipse.sirius.ext.base</code>.  
+				<code>org.eclipse.sirius.ext.base</code>.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.support">Changes in 
@@ -590,7 +598,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 		</ol>
 		<h4 id="separationOfDiagramSpecificConcept-step1">Move diagram-specific EClasses into a separate EPackage</h4>
 		<p>For historical reasons, the core Sirius metamodels defined in viewpoint.ecore contain both generic (dialect-independant like Viewpoint, RepresentationDescription, DAnalysis...) concepts and diagram-specific ones (e.g. DNode, EdgeStyle, ContainerCreationDescription...). The table and tree metamodels are more cleanly separated.
-			<br/>This milestone (Sirius 1.0M5) includes the first step towards a full separation of the diagram-specific stuff out of the core of Sirius. So many EClasses have been moved. 
+			<br/>This milestone (Sirius 1.0M5) includes the first step towards a full separation of the diagram-specific stuff out of the core of Sirius. So many EClasses have been moved.
 		</p>
 		<p>Most of the time, existing code which used these Sirius EClasses will only need to perform a simple &#171;Organize Imports&#187; operation, which should find the classes and interfaces in their new locations.
 			<br/>The &#171;Organize imports&#187; is not sufficient in case of imported classes existing several time in different packages (
@@ -601,7 +609,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 			<code>ViewpointFactory</code> (and 
 			<code>ViewpointPackage</code>) will have to be replaced by 
 			<code>DiagramFactory</code> (and 
-			<code>DiagramPackage</code>). 
+			<code>DiagramPackage</code>).
 		</p>
 		<p>The 
 			<code>Switch</code> classes if overridden also require a particular attention.
@@ -616,7 +624,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 			<code>viewpoint::DDiagramElement</code> becomes 
 			<code>diagram::DDiagramElement</code>.
 		</p>
-		<p>The impacted EPackages are : </p>
+		<p>The impacted EPackages are :</p>
 		<ul>
 			<li>
 				<code>viewpoint</code> : some of its EClasses have been moved to 
@@ -644,7 +652,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 			</li>
 			<li>
 				<code>viewpoint/description/concern</code> : this EPackage has been moved to 
-				<code>viewpoint/diagram/description/concern</code> 
+				<code>viewpoint/diagram/description/concern</code>
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
@@ -728,7 +736,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>COLUMN_SEMANTIC</code> and 
 				<code>LINE_SEMANTIC</code> of 
 				<code>IInterpreterSiriusVariables</code> have been removed. Use the constants of 
-				<code>org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables</code> instead. 
+				<code>org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables</code> instead.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
@@ -737,7 +745,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 		<ul>
 			<li>The deprecated method 
 				<code>DialectServices.initRepresentations(Viewpoint, EObject)</code> has been removed. Use the version which takes an additional 
-				<code>IProgressMonitor</code> instead. 
+				<code>IProgressMonitor</code> instead.
 			</li>
 			<li>The deprecated constructor in 
 				<code>CreateRepresentationCommand</code> has been removed. Use the alternative constructor which takes an additional 
@@ -1012,7 +1020,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 			<a href="release_notes_vp.html">release notes for Viewpoint 6.9 and 6.10</a>, which lists the API changes from Viewpoint 6.8 to 6.10.
 		</p>
 		<p>Once your projects are compatible with the latest Viewpoint available to you, you can migrate to Sirius, first by updating your Viewpoint Specification Projects and plug-ins which use the Viewpoint APIs, then by updating any Modeling Project and representation files (
-			<code>*.aird</code>). 
+			<code>*.aird</code>).
 		</p>
 		<h4 id="MigratingViewpointSpecificationProjects">Migrating Viewpoint Specification Projects</h4>
 		<ul>
@@ -1036,7 +1044,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 			<code>&lt;%something%&gt;</code> then you used the legacy language). That language is not supported anymore in Sirius 0.9, so you must migrate your expressions to use Acceleo 3 and/or the specialized interpreters (
 			<code>var:</code>, 
 			<code>feature:</code> and 
-			<code>service:</code>, see the documentation). 
+			<code>service:</code>, see the documentation).
 		</p>
 		<h4 id="MigratingModelingProjectsandRepresentationFiles">Migrating Modeling Projects and Representation Files</h4>
 		<ul>
@@ -1225,9 +1233,9 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 		<h4 id="ModelsnamespaceURIs">Models namespace URIs</h4>
 		<p>All namespace URIs have also been changed from &#171;http://www.obeo.fr/dsl/viewpoint*&#187; to &#171;http://www.eclipse.org/sirius/&#187;.</p>
 		<p>If you have created VSM file (.odesign) or representations file (.aird) with Viewpoint, the changes of the namespace URIs will be automatically migrated during the loading of your VSM or your representations file. These new nsURIs will be stored physically in the file during the first save. If the file is not saved, the automatic migration will be replayed at the next opening.</p>
-		<h3 id="NatureID">Nature ID </h3>
+		<h3 id="NatureID">Nature ID</h3>
 		<p>The modeling project has a specific nature (
-			<code>org.eclipse.sirius.nature.modelingproject</code>). 
+			<code>org.eclipse.sirius.nature.modelingproject</code>).
 			<br/>If you have modeling project created with Viewpoint, you must launch the action &#171;Configure/Convert to Modeling Project&#187; to replace old nature id (
 			<code>fr.obeo.dsl.viewpoint.nature.modelingproject</code>) by the new one.
 			<br/>If you have many modeling projects to &#171;migrate&#187;, you can easily make a script to replace 
