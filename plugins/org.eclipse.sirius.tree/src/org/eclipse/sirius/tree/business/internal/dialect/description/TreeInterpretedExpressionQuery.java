@@ -24,7 +24,6 @@ import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.TreeItemEditionTool;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
 
-import com.google.common.base.Function;
 import com.google.common.collect.Sets;
 
 /**
@@ -113,13 +112,10 @@ public class TreeInterpretedExpressionQuery extends AbstractInterpretedExpressio
             return expressionTarget;
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
-        public Function<EObject, EObject> getFirstRelevantContainerFinder() {
+        public EObject getFirstRelevantContainer(EObject obj) {
             // Can be null only during default switch initialization.
-            return defaultSwitch != null ? defaultSwitch.getFirstRelevantContainerFinder() : null;
+            return defaultSwitch != null ? defaultSwitch.getFirstRelevantContainer(obj) : null;
         }
     }
 }

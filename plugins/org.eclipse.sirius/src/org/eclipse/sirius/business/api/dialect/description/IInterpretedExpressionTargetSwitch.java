@@ -15,8 +15,6 @@ import java.util.Collection;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.ext.base.Option;
 
-import com.google.common.base.Function;
-
 /**
  * A switch that will return the Target Types associated to a given element and
  * feature corresponding to an Interpreted Expression. For example, for a
@@ -61,16 +59,17 @@ public interface IInterpretedExpressionTargetSwitch {
     Option<Collection<String>> doSwitch(EObject target, boolean considerFeature);
 
     /**
-     * Returns a function to compute the first relevant container for the given
-     * EObject, i.e. the first container from which a domain class can be
-     * determined.
+     * Compute the first relevant container for the given EObject, i.e. the
+     * first container from which a domain class can be determined.
      * <p>
      * For example: for a given RepresentationElementMapping, it will return the
      * first parent RepresentationElementMapping or RepresentationDescription.
      * mapping.
      * </p>
      * 
-     * @return a Function to compute the first relevant container.
+     * @param obj
+     *            the object for which to compute the container.
+     * @return the first relevant container of obj.
      */
-    Function<EObject, EObject> getFirstRelevantContainerFinder();
+    EObject getFirstRelevantContainer(EObject obj);
 }

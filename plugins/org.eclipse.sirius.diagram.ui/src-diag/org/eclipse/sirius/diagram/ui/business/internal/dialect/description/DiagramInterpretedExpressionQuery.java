@@ -161,8 +161,8 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
         }
 
         @Override
-        public Function<EObject, EObject> getFirstRelevantContainerFinder() {
-            return diagramFirstRelevantContainerFinder;
+        public EObject getFirstRelevantContainer(EObject obj) {
+            return diagramFirstRelevantContainerFinder.apply(obj);
         }
 
     }

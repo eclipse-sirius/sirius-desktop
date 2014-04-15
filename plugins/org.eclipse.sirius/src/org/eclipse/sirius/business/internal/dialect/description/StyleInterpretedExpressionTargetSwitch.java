@@ -108,10 +108,10 @@ public class StyleInterpretedExpressionTargetSwitch extends StyleSwitch<Option<C
     }
 
     /*
-     * @see IInterpretedExpressionTargetSwitch#getFirstRelevantContainerFinder()
+     * @see IInterpretedExpressionTargetSwitch#getFirstRelevantContainer()
      */
     private EObject getFirstRelevantContainer(EObject element) {
-        return globalSwitch.getFirstRelevantContainerFinder().apply(element);
+        return globalSwitch.getFirstRelevantContainer(element);
     }
 
     /**

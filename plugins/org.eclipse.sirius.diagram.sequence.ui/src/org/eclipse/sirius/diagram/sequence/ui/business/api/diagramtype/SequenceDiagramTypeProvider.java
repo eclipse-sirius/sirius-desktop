@@ -70,7 +70,6 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 
-import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
@@ -418,13 +417,10 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
             return expressionTarget;
         }
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
-        public Function<EObject, EObject> getFirstRelevantContainerFinder() {
+        public EObject getFirstRelevantContainer(EObject obj) {
             // Can be null only during default switch initialization.
-            return defaultSwitch != null ? defaultSwitch.getFirstRelevantContainerFinder() : null;
+            return defaultSwitch != null ? defaultSwitch.getFirstRelevantContainer(obj) : null;
         }
     }
 

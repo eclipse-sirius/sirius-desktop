@@ -102,10 +102,10 @@ public class TreeInterpretedExpressionTargetSwitch extends DescriptionSwitch<Opt
     }
 
     /*
-     * @see IInterpretedExpressionTargetSwitch#getFirstRelevantContainerFinder()
+     * @see IInterpretedExpressionTargetSwitch#getFirstRelevantContainer()
      */
     private EObject getFirstRelevantContainer(EObject element) {
-        return globalSwitch.getFirstRelevantContainerFinder().apply(element);
+        return globalSwitch.getFirstRelevantContainer(element);
     }
 
     /**

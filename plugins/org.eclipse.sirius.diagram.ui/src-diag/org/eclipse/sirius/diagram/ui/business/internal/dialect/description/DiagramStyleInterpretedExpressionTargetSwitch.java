@@ -107,10 +107,10 @@ public class DiagramStyleInterpretedExpressionTargetSwitch extends StyleSwitch<O
     }
     
     /*
-     * @see IInterpretedExpressionTargetSwitch#getFirstRelevantContainerFinder()
+     * @see IInterpretedExpressionTargetSwitch#getFirstRelevantContainer()
      */
     private EObject getFirstRelevantContainer(EObject element) {
-        return globalSwitch.getFirstRelevantContainerFinder().apply(element);
+        return globalSwitch.getFirstRelevantContainer(element);
     }
 
     /**

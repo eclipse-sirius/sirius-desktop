@@ -118,18 +118,6 @@ public class SequenceDiagramInterpretedExpressionSwitch extends DescriptionSwitc
     }
 
     /**
-     * Apply the
-     * IInterpretedExpressionTargetSwitch#getFirstRelevantContainerFinder() of
-     * the global switch.
-     * 
-     * @see IInterpretedExpressionTargetSwitch#getFirstRelevantContainerFinder()
-     */
-    @SuppressWarnings("unused")
-    private EObject getFirstRelevantContainer(EObject element) {
-        return globalSwitch.getFirstRelevantContainerFinder().apply(element);
-    }
-
-    /**
      * {@inheritDoc}
      */
     @Override

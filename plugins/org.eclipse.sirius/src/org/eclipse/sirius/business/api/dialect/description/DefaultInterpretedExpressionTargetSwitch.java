@@ -79,8 +79,6 @@ public class DefaultInterpretedExpressionTargetSwitch implements IInterpretedExp
         // Init the relevant container finder
         if (firstRelevantContainerFunction != null) {
             this.firstRelevantContainerFinder = firstRelevantContainerFunction;
-        } else if (globalSwitch != null && globalSwitch.getFirstRelevantContainerFinder() != null) {
-            this.firstRelevantContainerFinder = globalSwitch.getFirstRelevantContainerFinder();
         } else {
             this.firstRelevantContainerFinder = new FirstRelevantContainerDefaultFunction();
         }
@@ -124,13 +122,10 @@ public class DefaultInterpretedExpressionTargetSwitch implements IInterpretedExp
         }
         return expressionTarget;
     }
-
-    /**
-     * {@inheritDoc}
-     */
+    
     @Override
-    public Function<EObject, EObject> getFirstRelevantContainerFinder() {
-        return firstRelevantContainerFinder;
+    public EObject getFirstRelevantContainer(EObject obj) {
+        return firstRelevantContainerFinder.apply(obj);
     }
 
     /**
@@ -144,9 +139,6 @@ public class DefaultInterpretedExpressionTargetSwitch implements IInterpretedExp
      */
     private static class FirstRelevantContainerDefaultFunction implements Function<EObject, EObject> {
 
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public EObject apply(EObject input) {
             EObject container = input.eContainer();
