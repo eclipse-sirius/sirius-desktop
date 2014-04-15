@@ -18,10 +18,10 @@ import java.util.List;
 import org.eclipse.emf.common.util.AbstractTreeIterator;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.ecore.extender.business.internal.common.ExtenderDescriptor;
+import org.eclipse.sirius.ext.emf.EReferencePredicate;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -75,9 +75,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         return extenders.iterator();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void init(final ResourceSet set) {
         for (final IMetamodelExtender extender : extenders) {
             extender.init(set);
@@ -107,9 +105,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         };
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public EObject createInstance(final String name) {
         for (final IMetamodelExtender extender : getActivatedExtenders()) {
             final EObject instance = extender.createInstance(name);
@@ -120,9 +116,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean eIsKnownType(final String name) {
         for (final IMetamodelExtender extender : getActivatedExtenders()) {
             final boolean isKnown = extender.eIsKnownType(name);
@@ -134,9 +128,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void dispose() {
         for (final IMetamodelExtender extender : extenders) {
             if (isActive()) {
@@ -146,9 +138,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Object eAdd(final EObject instance, final String name, final Object value) {
         for (final IMetamodelExtender extender : getActivatedExtenders()) {
             Object addedValue = extender.eAdd(instance, name, value);
@@ -159,9 +149,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Object eClear(final EObject instance, final String name) {
         for (final IMetamodelExtender extender : getActivatedExtenders()) {
             final Object clearedInstance = extender.eClear(instance, name);
@@ -172,9 +160,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public EObject eContainer(final EObject instance) {
         for (final IMetamodelExtender extender : getActivatedExtenders()) {
             final EObject eContainer = extender.eContainer(instance);
@@ -185,9 +171,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public String eContainingFeatureName(final EObject instance) {
         for (final IMetamodelExtender extender : getActivatedExtenders()) {
             final String feature = extender.eContainingFeatureName(instance);
@@ -198,9 +182,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Iterator<EObject> eContents(final EObject root) {
         final List<Iterator<EObject>> iterators = Lists.newArrayList();
         final IMetamodelExtender browsingBlocker = hasBrowsingBlocker(root);
@@ -233,26 +215,13 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         return null;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ecore.extender.business.api.accessor.IMetamodelExtender#eDelete(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.util.ECrossReferenceAdapter)
-     */
+    @Override
     public EObject eDelete(final EObject objectToRemove, final ECrossReferenceAdapter xref) {
         return eDelete(objectToRemove, xref, null);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ecore.extender.business.api.accessor.IMetamodelExtender#eDelete(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.util.ECrossReferenceAdapter,
-     *      com.google.common.base.Predicate)
-     */
-    public EObject eDelete(EObject objectToRemove, ECrossReferenceAdapter xref, Predicate<EReference> isReferencesToIgnorePredicate) {
+    @Override
+    public EObject eDelete(EObject objectToRemove, ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate) {
         EObject result = null;
         /*
          * we want every extender to be notified when an instance should be
@@ -264,9 +233,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Object eGet(final EObject instance, final String name) {
         for (final IMetamodelExtender extender : getActivatedExtenders()) {
             final Object result = extender.eGet(instance, name);
@@ -277,9 +244,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean eInstanceOf(final EObject instance, final String typeName) {
         /*
          * If any extenders says it is an instance of, then it is
@@ -294,9 +259,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Boolean eIsContainment(final EObject instance, final String featureName) {
         for (final IMetamodelExtender extender : getActivatedExtenders()) {
             final Boolean result = extender.eIsContainment(instance, featureName);
@@ -307,9 +270,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Boolean eIsMany(final EObject instance, final String featureName) {
         for (final IMetamodelExtender extender : getActivatedExtenders()) {
             final Boolean result = extender.eIsMany(instance, featureName);
@@ -320,9 +281,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Object eRemove(final EObject instance, final String name, final Object value) {
         Object result = null;
         /*
@@ -335,9 +294,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Object eSet(final EObject instance, final String name, final Object value) {
         for (final IMetamodelExtender extender : getActivatedExtenders()) {
             final Object result = extender.eSet(instance, name, value);
@@ -348,9 +305,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean eValid(final EObject object, final String name) {
         /*
          * If any extenders says it is valid, then it is.
@@ -363,9 +318,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Iterator<String> getContributedAttributeNames(final EObject next) {
         final List<Iterator<String>> iterators = Lists.newArrayList();
         for (final IMetamodelExtender extender : getActivatedExtenders()) {
@@ -374,9 +327,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         return Iterators.concat(iterators.iterator());
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Iterator<String> getContributedReferenceNames(final EObject instance) {
         final List<Iterator<String>> iterators = Lists.newArrayList();
         for (final IMetamodelExtender extender : getActivatedExtenders()) {
@@ -386,9 +337,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean hasExtension(final EObject next) {
         /*
          * If any extenders says it has an extension, then it has one.
@@ -401,9 +350,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean isExtension(final EObject next) {
         /*
          * If any extenders says it is an extension, then it has one.
@@ -438,9 +385,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean isExtension(final EObject next, final String name) {
         /*
          * If any extenders says it is an extension, then it has one.
@@ -453,9 +398,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public String getQualifiedName(final EObject element, final boolean b) {
         for (final IMetamodelExtender extender : getActivatedExtenders()) {
             final String result = extender.getQualifiedName(element, b);
@@ -466,9 +409,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Collection<ExtensionFeatureDescription> getAllExtensionFeatureDescriptions(final EObject target) {
         final Collection<ExtensionFeatureDescription> result = Lists.newArrayList();
         for (final IMetamodelExtender extender : getActivatedExtenders()) {
@@ -477,9 +418,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean preventFromBrowsing(final EObject root) {
         /*
          * If any extenders says it is an extension, then it has one.
@@ -492,11 +431,6 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ecore.extender.business.api.accessor.AbstractMetamodelExtender#activate()
-     */
     @Override
     public void updateMetamodels(final Collection<? extends MetamodelDescriptor> mmDescriptors) {
         super.updateMetamodels(mmDescriptors);
@@ -507,10 +441,6 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         }
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public void activate() {
         super.activate();
@@ -519,11 +449,6 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ecore.extender.business.api.accessor.AbstractMetamodelExtender#deactivate()
-     */
     @Override
     public void deactivate() {
         for (final IMetamodelExtender extender : extenders) {
@@ -541,6 +466,7 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
     protected synchronized Iterable<IMetamodelExtender> getActivatedExtenders() {
         if (activeExtenders == null) {
             activeExtenders = Iterables.filter(extenders, new Predicate<IMetamodelExtender>() {
+                @Override
                 public boolean apply(IMetamodelExtender extender) {
                     return extender.isActive();
                 }

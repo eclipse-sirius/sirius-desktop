@@ -36,6 +36,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
+import org.eclipse.sirius.ext.emf.EReferencePredicate;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
@@ -166,7 +167,8 @@ public class DAnalysisRefresher extends ResourceSetListenerImpl implements Resou
      * references).
      */
     public void forceLoadingOfEveryLinkedResource() {
-        ModelUtils.resolveAll(session.getTransactionalEditingDomain().getResourceSet(), new Predicate<EReference>() {
+        ModelUtils.resolveAll(session.getTransactionalEditingDomain().getResourceSet(), new EReferencePredicate() {
+            @Override
             public boolean apply(EReference input) {
                 // Do not resolve derived features.
                 // Do not resolve containment/container references : they are

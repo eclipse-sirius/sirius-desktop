@@ -19,10 +19,8 @@ import org.eclipse.sirius.business.internal.session.danalysis.DanglingRefRemoval
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
+import org.eclipse.sirius.ext.emf.EReferencePredicate;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 
 /**
  * A task allowing to delete any DRepresentationElement or any EObject.
@@ -39,7 +37,7 @@ public class AbstractDeleteDRepresentationElementTask extends AbstractCommandTas
     /** The model accessor to use to perform the deletion. */
     private ModelAccessor accessor;
 
-    private Predicate<EReference> danglingEReferencesToIgnores;
+    private EReferencePredicate danglingEReferencesToIgnores;
 
     /**
      * Creates a new Delete task.
@@ -63,13 +61,18 @@ public class AbstractDeleteDRepresentationElementTask extends AbstractCommandTas
      * @param accessor
      *            the {@link ModelAccessor} to use to perform the deletion
      * @param danglingEReferencesToIgnores
-     *            a {@link Predicate} to tell which {@link EReference} to ignore
-     *            in the dangling references deletion
+     *            a predicate to tell which {@link EReference} to ignore in the
+     *            dangling references deletion
      */
-    public AbstractDeleteDRepresentationElementTask(EObject objectToDelete, ModelAccessor accessor, Predicate<EReference> danglingEReferencesToIgnores) {
+    public AbstractDeleteDRepresentationElementTask(EObject objectToDelete, ModelAccessor accessor, final EReferencePredicate danglingEReferencesToIgnores) {
         this.objectToDelete = objectToDelete;
         this.accessor = accessor;
-        this.danglingEReferencesToIgnores = Predicates.or(DanglingRefRemovalTrigger.DSEMANTICDECORATOR_REFERENCE_TO_IGNORE_PREDICATE, danglingEReferencesToIgnores);
+        this.danglingEReferencesToIgnores = new EReferencePredicate() {
+            @Override
+            public boolean apply(EReference ref) {
+                return DanglingRefRemovalTrigger.DSEMANTICDECORATOR_REFERENCE_TO_IGNORE_PREDICATE.apply(ref) || danglingEReferencesToIgnores.apply(ref);
+            }
+        };
     }
 
     /**

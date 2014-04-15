@@ -27,8 +27,7 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuth
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
 import org.eclipse.sirius.ecore.extender.business.internal.permission.PermissionService;
-
-import com.google.common.base.Predicate;
+import org.eclipse.sirius.ext.emf.EReferencePredicate;
 
 /**
  * This class is the common layer to access emf models. You may want to use it
@@ -429,7 +428,7 @@ public class ModelAccessor {
      *            during deletion or not (can be null if all references should
      *            be considered)
      */
-    public void eDelete(EObject objectToRemove, ECrossReferenceAdapter xref, Predicate<EReference> isReferencesToIgnorePredicate) {
+    public void eDelete(EObject objectToRemove, ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate) {
         eDelete(objectToRemove, xref, isReferencesToIgnorePredicate, true);
     }
 
@@ -455,7 +454,7 @@ public class ModelAccessor {
      *            can be deleted and leave the not changeable features
      *            unchanged.
      */
-    private void eDelete(EObject objectToRemove, ECrossReferenceAdapter xref, Predicate<EReference> isReferencesToIgnorePredicate,
+    private void eDelete(EObject objectToRemove, ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate,
             boolean simpleRemoveShouldBePerformedIfDanglingReferenceIsNotChangeable) {
         // Step 1: getting cross referencer for the adapters of the object to
         // remove (if needed)
@@ -519,7 +518,7 @@ public class ModelAccessor {
      *            a predicate indicating if a given reference should be ignored
      *            during deletion or not
      */
-    private boolean allReferencesCanBeEdited(final EObject target, final ECrossReferenceAdapter xref, Predicate<EReference> isReferencesToIgnorePredicate) {
+    private boolean allReferencesCanBeEdited(final EObject target, final ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate) {
         boolean allReferencesCanBeEdited = true;
         if (xref != null) {
             final Collection<Setting> refs = xref.getInverseReferences(target, true);

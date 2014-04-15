@@ -327,6 +327,19 @@
 				<code>Function</code> should override the 
 				<code>getFirstRelevantContainer(EObject)</code> method to return the result of that function instead.
 			</li>
+			<li>The 
+				<code>org.eclipse.sirius.business.api.helper.task.AbstractDeleteDRepresentationElementTask</code> constructor which took a Guava 
+				<code>Predicate&lt;EReference&gt;</code> now takes an equivalent 
+				<code>EReferencePredicate</code> (from 
+				<code>org.eclipse.sirius.ext.emf</code>).
+			</li>
+			<li>The constants 
+				<code>DSEMANTICDECORATOR_REFERENCE_TO_IGNORE_PREDICATE</code> and 
+				<code>NOTATION_VIEW_ELEMENT_REFERENCE_TO_IGNORE_PREDICATE</code> from 
+				<code>org.eclipse.sirius.business.internal.session.danalysis.DanglingRefRemovalTrigger</code> are now instances of 
+				<code>EReferencePredicate</code> instead of Guava&#8217;s 
+				<code>Predicate&lt;EReference&gt;</code>.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
@@ -449,6 +462,25 @@
 			</li>
 			<li>
 				<code>org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager.initializeAfterLoad()</code> method has been removed. There is no replacement for this method documented as &#171;Not intended to be used by client&#187;.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ecore.extender">Changes in 
+			<code>org.eclipse.sirius.ecore.extender</code>
+		</h4>
+		<ul>
+			<li>All variants of 
+				<code>eDelete()</code> methods which took a 
+				<code>Predicate&lt;EReference&gt;</code> in types 
+				<code>ModelAccessore</code>, 
+				<code>IMetamodelExtender</code> and 
+				<code>CompositeMetamodelExtender</code> now take an equivalent 
+				<code>EReferencePredicate</code> (from 
+				<code>org.eclipse.sirius.ext.emf</code>).
+			</li>
+			<li>The 
+				<code>ModelUtils.resolveAll(ResourceSet set, EReferencePredicate)</code> now takes an 
+				<code>EReferencePredicate</code> instead of a Guava-specific 
+				<code>Predicate&lt;EReference&gt;</code>.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ext.base">Changes in 
@@ -1024,7 +1056,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>AbstractDiagramEdgeEditPart.refreshPath()</code> have been removed. It is not called in Sirius code anymore
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ecore.extender">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ecore.extender2">Changes in 
 			<code>org.eclipse.sirius.ecore.extender</code>
 		</h4>
 		<ul>

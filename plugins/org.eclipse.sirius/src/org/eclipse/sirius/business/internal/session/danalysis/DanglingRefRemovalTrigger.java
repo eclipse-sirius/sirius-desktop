@@ -26,6 +26,7 @@ import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.ext.emf.EReferencePredicate;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
@@ -95,7 +96,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
      * references deletion. Allows to avoid changes in non opened diagrams and
      * the corresponding abusive locks.
      */
-    public static final Predicate<EReference> DSEMANTICDECORATOR_REFERENCE_TO_IGNORE_PREDICATE = new Predicate<EReference>() {
+    public static final EReferencePredicate DSEMANTICDECORATOR_REFERENCE_TO_IGNORE_PREDICATE = new EReferencePredicate() {
 
         /**
          * {@inheritDoc}
@@ -111,7 +112,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
      * A predicate to ignore org.eclipse.gmf.runtime.notation.View#element
      * references in the dangling references deletion.
      */
-    public static final Predicate<EReference> NOTATION_VIEW_ELEMENT_REFERENCE_TO_IGNORE_PREDICATE = new Predicate<EReference>() {
+    public static final EReferencePredicate NOTATION_VIEW_ELEMENT_REFERENCE_TO_IGNORE_PREDICATE = new EReferencePredicate() {
 
         /**
          * {@inheritDoc}
@@ -195,8 +196,13 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
             final Set<EObject> allAttachedObjects = getChangedEObjectsAndChildren(Iterables.filter(notifications, IS_ATTACHMENT), ignoreNotifierInDetachedObjects);
             final Set<EObject> toRemoveXRefFrom = Sets.difference(allDetachedObjects, allAttachedObjects);
             if (toRemoveXRefFrom.size() > 0) {
-                Predicate<EReference> refToIgnore = Predicates.or(DSEMANTICDECORATOR_REFERENCE_TO_IGNORE_PREDICATE, NOTATION_VIEW_ELEMENT_REFERENCE_TO_IGNORE_PREDICATE,
-                        EPACKAGE_EFACTORYINSTANCE_REFERENCE_TO_IGNORE_PREDICATE);
+                EReferencePredicate refToIgnore = new EReferencePredicate() {
+                    @Override
+                    public boolean apply(EReference ref) {
+                        return DSEMANTICDECORATOR_REFERENCE_TO_IGNORE_PREDICATE.apply(ref) || NOTATION_VIEW_ELEMENT_REFERENCE_TO_IGNORE_PREDICATE.apply(ref) || EPACKAGE_EFACTORYINSTANCE_REFERENCE_TO_IGNORE_PREDICATE.apply(ref);
+                    }
+                };
+                        
                 Command removeDangling = new RemoveDanglingReferencesCommand(domain, accessor, xRef, toRemoveXRefFrom, refToIgnore);
                 DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.CLEANING_REMOVEDANGLING_KEY);
                 return Options.newSome(removeDangling);
@@ -271,7 +277,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
 
         private final Collection<EObject> toRemoveXRefFrom = Sets.newLinkedHashSet();
 
-        private final Predicate<EReference> isReferenceToIgnorePredicate;
+        private final EReferencePredicate isReferenceToIgnorePredicate;
 
         private ModelAccessor modelAccessor;
 
@@ -295,7 +301,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
          * 
          */
         public RemoveDanglingReferencesCommand(TransactionalEditingDomain domain, ModelAccessor accessor, ECrossReferenceAdapter xRef, Collection<EObject> toRemoveXRefFrom,
-                Predicate<EReference> isReferenceToIgnore) {
+                EReferencePredicate isReferenceToIgnore) {
             super(domain, "Remove dangling references");
             this.modelAccessor = accessor;
             this.xReferencer = xRef;

@@ -94,6 +94,8 @@ h4. Changes in @org.eclipse.sirius@
 * The @EObjectLink@ class has been removed from the metamodel. It was not used anywhere. 
 * In interface @org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch@, the @getFirstRelevantContainerFinder()@ method which returned a Guava @Function<EObject, EObject>@ has been replaced with the new method @getFirstRelevantContainer(EObject)@ which directly returns the result of applying the previously returned function. All implementers in Sirius itself have been updated. 
 * The constructor @org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionTargetSwitch(EStructuralFeature, IInterpretedExpressionTargetSwitch, Function<EObject, EObject>)@ has been removed to avoid exposing a the Guava-specific @Predicate@ type. Sub-classes which used it with a non-null @Function@ should override the @getFirstRelevantContainer(EObject)@ method to return the result of that function instead.
+* The @org.eclipse.sirius.business.api.helper.task.AbstractDeleteDRepresentationElementTask@ constructor which took a Guava @Predicate<EReference>@ now takes an equivalent @EReferencePredicate@ (from @org.eclipse.sirius.ext.emf@).
+* The constants @DSEMANTICDECORATOR_REFERENCE_TO_IGNORE_PREDICATE@ and @NOTATION_VIEW_ELEMENT_REFERENCE_TO_IGNORE_PREDICATE@ from @org.eclipse.sirius.business.internal.session.danalysis.DanglingRefRemovalTrigger@ are now instances of @EReferencePredicate@ instead of Guava's @Predicate<EReference>@.
 
 h4. Changes in @org.eclipse.sirius.diagram@
 
@@ -127,6 +129,11 @@ h4. Changes in @org.eclipse.sirius.ui@
 * @org.eclipse.sirius.ui.business.api.preferences.DesignerUIPreferencesKeys@ has been renamed into @org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys@
 * Methods @getMissingDependencies()@ and @getMissingDependenciesErrorMessage()@ from @org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection@ now use @Map<String, Collection<String>>@ instead of Guava's @Multimap@.
 * @org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager.initializeAfterLoad()@ method has been removed. There is no replacement for this method documented as "Not intended to be used by client".
+
+h4. Changes in @org.eclipse.sirius.ecore.extender@
+
+* All variants of @eDelete()@ methods which took a @Predicate<EReference>@ in types @ModelAccessore@, @IMetamodelExtender@ and @CompositeMetamodelExtender@ now take an equivalent @EReferencePredicate@ (from @org.eclipse.sirius.ext.emf@).
+* The @ModelUtils.resolveAll(ResourceSet set, EReferencePredicate)@ now takes an @EReferencePredicate@ instead of a Guava-specific @Predicate<EReference>@.
 
 h4. Changes in @org.eclipse.sirius.ext.base@
 

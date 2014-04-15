@@ -26,7 +26,6 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
@@ -42,8 +41,8 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuth
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ecore.extender.tool.internal.ReferencesResolver;
 import org.eclipse.sirius.ecore.extender.tool.internal.StringUtil;
+import org.eclipse.sirius.ext.emf.EReferencePredicate;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
@@ -413,7 +412,7 @@ public final class ModelUtils {
      *            predicate responsible to say wether the reference should be
      *            resolved or not.
      */
-    public static void resolveAll(final ResourceSet set, Predicate<EReference> filter) {
+    public static void resolveAll(final ResourceSet set, EReferencePredicate filter) {
         final IPermissionAuthority authority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(set);
         final List<Resource> cachedIdsResources = ReferencesResolver.prepareResolveAll(set, authority);
         new ReferencesResolver(set, filter).resolve(new NullProgressMonitor());

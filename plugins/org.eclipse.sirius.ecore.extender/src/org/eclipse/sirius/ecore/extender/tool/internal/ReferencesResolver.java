@@ -28,6 +28,7 @@ import com.google.common.collect.Lists;
 
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.ext.emf.EReferencePredicate;
 
 /**
  * Class responsible for resolving some references.
@@ -49,8 +50,13 @@ public class ReferencesResolver {
      * @param set
      *            resource set to resolve.
      */
-    public ReferencesResolver(ResourceSet set, Predicate<EReference> filter) {
-        this.filter = filter;
+    public ReferencesResolver(ResourceSet set, final EReferencePredicate filter) {
+        this.filter = new Predicate<EReference>() {
+            @Override
+            public boolean apply(EReference input) {
+                return filter.apply(input);
+            }
+        };
         this.set = set;
     }
 

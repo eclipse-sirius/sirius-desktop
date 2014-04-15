@@ -24,3 +24,4 @@ Eclipse-LazyStart: true
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
+Import-Package: org.eclipse.sirius.ext.emf;version="1.0.0"

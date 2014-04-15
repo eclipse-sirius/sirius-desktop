@@ -34,8 +34,8 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.AbstractMetamodel
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ExtensionFeatureDescription;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
+import org.eclipse.sirius.ext.emf.EReferencePredicate;
 
-import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
@@ -58,9 +58,7 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
 
     private Collection<? extends MetamodelDescriptor> lastDescriptors;
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public EObject createInstance(final String name) {
         EObject result = null;
         final Iterator<EClass> it = getEClassesFromName(name);
@@ -80,16 +78,12 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean eIsKnownType(final String name) {
         return findFirstEClassFromName(name) != null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     @SuppressWarnings("unchecked")
     public Object eAdd(final EObject instance, final String name, final Object value) {
         if (eValid(instance, name)) {
@@ -109,16 +103,12 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Iterator<EObject> eContents(final EObject root) {
         return root.eContents().iterator();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Object eClear(final EObject instance, final String name) {
         if (eValid(instance, name)) {
             final EStructuralFeature feat = instance.eClass().getEStructuralFeature(name);
@@ -136,16 +126,12 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public EObject eContainer(final EObject instance) {
         return instance.eContainer();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public String eContainingFeatureName(final EObject objectToRemove) {
         if (objectToRemove.eContainingFeature() != null) {
             return objectToRemove.eContainingFeature().getName();
@@ -153,22 +139,13 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public EObject eDelete(final EObject objectToRemove, final ECrossReferenceAdapter xref) {
         return eDelete(objectToRemove, xref, null);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ecore.extender.business.api.accessor.IMetamodelExtender#eDelete(org.eclipse.emf.ecore.EObject,
-     *      org.eclipse.emf.ecore.util.ECrossReferenceAdapter,
-     *      com.google.common.base.Predicate)
-     */
-    public EObject eDelete(EObject objectToRemove, ECrossReferenceAdapter xref, Predicate<EReference> isReferencesToIgnorePredicate) {
+    @Override
+    public EObject eDelete(EObject objectToRemove, ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate) {
         if (xref == null) {
             // If no cross referencer can be found,
             // we simply remove the element from its container
@@ -237,9 +214,7 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
         return containmentReferences;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Object eGet(final EObject instance, final String name) {
         if (instance.eClass().getEStructuralFeature(name) != null) {
             return instance.eGet(instance.eClass().getEStructuralFeature(name));
@@ -249,9 +224,7 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean eInstanceOf(final EObject instance, final String name) {
         if ("EObject".equals(name) && instance != null) {
             return true;
@@ -287,9 +260,7 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Boolean eIsContainment(final EObject instance, final String featureName) {
         Boolean result = null;
         if (instance.eClass().getEStructuralFeature(featureName) instanceof EReference) {
@@ -301,9 +272,7 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Boolean eIsMany(final EObject instance, final String featureName) {
         if (instance.eClass().getEStructuralFeature(featureName) != null) {
             return new Boolean(instance.eClass().getEStructuralFeature(featureName).isMany());
@@ -311,9 +280,7 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Object eRemove(final EObject instance, final String name, final Object value) {
         if (eValid(instance, name)) {
             EcoreUtil.remove(instance, instance.eClass().getEStructuralFeature(name), value);
@@ -322,12 +289,7 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ecore.extender.business.api.accessor.IMetamodelExtender#eSet(org.eclipse.emf.ecore.EObject,
-     *      java.lang.String, java.lang.Object)
-     */
+    @Override
     public Object eSet(final EObject instance, final String name, final Object value) {
         if (eValid(instance, name)) {
             final EStructuralFeature feature = instance.eClass().getEStructuralFeature(name);
@@ -362,16 +324,12 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
         return literal;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean eValid(final EObject object, final String name) {
         return object.eClass().getEStructuralFeature(name) != null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Iterator<String> getContributedAttributeNames(final EObject next) {
         final Collection<String> attributeNames = new ArrayList<String>();
         final Iterator<EAttribute> it = next.eClass().getEAllAttributes().iterator();
@@ -382,9 +340,7 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
         return attributeNames.iterator();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Iterator<String> getContributedReferenceNames(final EObject instance) {
         final Collection<String> referencesNames = new ArrayList<String>();
         final Iterator<EReference> it = instance.eClass().getEAllReferences().iterator();
@@ -395,16 +351,12 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
         return referencesNames.iterator();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean hasExtension(final EObject next) {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void init(final ResourceSet set) {
         // platformIndex.init();
     }
@@ -416,9 +368,7 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean isExtension(final EObject next) {
         return false;
     }
@@ -446,45 +396,31 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
         return EcoreUtil.create(eClass);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void dispose() {
         // platformIndex.clear();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public String getQualifiedName(final EObject element, final boolean b) {
         return EMFUtil.getQualifiedName(element, b);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean isExtension(final EObject next, final String name) {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Collection<ExtensionFeatureDescription> getAllExtensionFeatureDescriptions(final EObject target) {
         return Collections.emptyList();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean preventFromBrowsing(final EObject root) {
         return false;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public void updateMetamodels(final Collection<? extends MetamodelDescriptor> metamodelDescriptors) {
         if (lastDescriptors != null) {
