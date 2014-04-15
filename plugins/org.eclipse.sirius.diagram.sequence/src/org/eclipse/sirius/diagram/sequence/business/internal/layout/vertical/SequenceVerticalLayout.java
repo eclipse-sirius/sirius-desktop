@@ -27,6 +27,7 @@ import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
+import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
@@ -163,7 +164,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
             Rectangle rect = oldFlaggedLayoutData.get(from);
             Range result = null;
             if (rect != null) {
-                result = Range.verticalRange(rect);
+                result = RangeHelper.verticalRange(rect);
             }
             return Options.newSome(result);
         }
@@ -827,7 +828,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
             };
 
             Collection<Lifeline> lifelinesToConsider = Lists.newArrayList(Iterables.filter(lifelinesWithoutDestruction, isMaxRangeCandidate));
-            Ordering<ISequenceEvent> maxOrdering = Ordering.natural().onResultOf(Functions.compose(Range.upperBoundFunction(), ISequenceEvent.VERTICAL_RANGE));
+            Ordering<ISequenceEvent> maxOrdering = Ordering.natural().onResultOf(Functions.compose(RangeHelper.upperBoundFunction(), ISequenceEvent.VERTICAL_RANGE));
             if (!lifelinesToConsider.isEmpty()) {
                 Lifeline lep = maxOrdering.max(lifelinesToConsider);
                 max = lep.getVerticalRange().getUpperBound();

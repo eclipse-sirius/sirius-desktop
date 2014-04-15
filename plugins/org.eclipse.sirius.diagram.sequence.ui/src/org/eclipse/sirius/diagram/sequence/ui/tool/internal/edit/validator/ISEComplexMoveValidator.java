@@ -19,6 +19,7 @@ import java.util.Set;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
+import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
@@ -215,7 +216,7 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
         Iterables.addAll(topLevelElements, move);
 
         Rectangle movedRange = new Rectangle(0, globalMovedRange.getLowerBound(), 0, globalMovedRange.width());
-        globalMovedRange = Range.verticalRange(request.getLogicalTransformedRectangle(movedRange));
+        globalMovedRange = RangeHelper.verticalRange(request.getLogicalTransformedRectangle(movedRange));
     }
 
     private void checkMoves() {

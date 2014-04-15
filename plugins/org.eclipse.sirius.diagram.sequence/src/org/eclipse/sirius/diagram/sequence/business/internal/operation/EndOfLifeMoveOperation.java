@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
+import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
@@ -46,7 +47,7 @@ public class EndOfLifeMoveOperation extends AbstractModelChangeOperation<Void> {
      */
     @Override
     public Void execute() {
-        Range movedRange = Range.verticalRange(lifeline.getProperLogicalBounds());
+        Range movedRange = RangeHelper.verticalRange(lifeline.getProperLogicalBounds());
         lifeline.setVerticalRange(new Range(movedRange.getLowerBound(), movedRange.getUpperBound() + rangeDeltaWidth));
         return null;
     }

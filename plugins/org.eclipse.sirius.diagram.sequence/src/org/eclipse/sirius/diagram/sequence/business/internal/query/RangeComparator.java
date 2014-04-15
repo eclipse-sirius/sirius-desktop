@@ -14,6 +14,7 @@ import java.io.Serializable;
 import java.util.Comparator;
 import java.util.List;
 
+import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
@@ -40,8 +41,8 @@ public class RangeComparator implements Comparator<ISequenceElement>, Serializab
      * {@inheritDoc}
      */
     public int compare(ISequenceElement sequenceElement1, ISequenceElement sequenceElement2) {
-        Range sequenceElement1Range = Range.verticalRange(sequenceElement1.getProperLogicalBounds());
-        Range sequenceElement2Range = Range.verticalRange(sequenceElement2.getProperLogicalBounds());
+        Range sequenceElement1Range = RangeHelper.verticalRange(sequenceElement1.getProperLogicalBounds());
+        Range sequenceElement2Range = RangeHelper.verticalRange(sequenceElement2.getProperLogicalBounds());
         int comparison = sequenceElement1Range.getLowerBound() - sequenceElement2Range.getLowerBound();
         if (comparison == 0) {
             if (sequenceElement1 instanceof ISequenceEvent && sequenceElement2 instanceof ISequenceEvent) {

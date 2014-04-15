@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
@@ -86,7 +87,7 @@ public final class SubEventsHelper {
      */
     public List<ISequenceEvent> getSubEvents() {
         List<ISequenceEvent> result = getValidSubEvents();
-        Collections.sort(result, Range.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+        Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
         return result;
     }
 

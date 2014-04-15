@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.Set;
 
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
@@ -127,7 +128,7 @@ public class FinalParentHelper {
         if (newBounds.width < 0 || newBounds.height < 0) {
             return null;
         }
-        Range fullFinalRange = Range.verticalRange(newBounds);
+        Range fullFinalRange = RangeHelper.verticalRange(newBounds);
 
         if (self instanceof Execution) {
             Execution execution = (Execution) self;

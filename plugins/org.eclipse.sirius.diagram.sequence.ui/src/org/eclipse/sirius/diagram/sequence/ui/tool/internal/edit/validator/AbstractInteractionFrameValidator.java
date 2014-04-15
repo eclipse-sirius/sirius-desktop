@@ -16,6 +16,7 @@ import java.util.Set;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
+import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
@@ -213,7 +214,7 @@ public abstract class AbstractInteractionFrameValidator {
             return false;
         }
 
-        finalRange = Range.verticalRange(newBounds);
+        finalRange = RangeHelper.verticalRange(newBounds);
         return true;
     }
 

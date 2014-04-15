@@ -95,6 +95,7 @@ h4. Changes in @org.eclipse.sirius.diagram.sequence@
 * The @org.eclipse.sirius.diagram.sequence.util.SiriusFunctions@ class has been removed. It was not used anywhere.
 * The @org.eclipse.sirius.diagram.sequence.util.NotificationQuery@ class has been removed. It had been exposed by mistake.
 * The @org.eclipse.sirius.diagram.sequence.business.internal.util.NotationPredicate@ class has been removed from API,  to reduce Sirius's exposure of Guava'specific types.
+* All the static methods in @org.eclipse.sirius.diagram.sequence.util.Range@ which returned Guava-specific types (@Function@ or @Ordering@) have been removed from API.
 
 h4. Changes in @org.eclipse.sirius.ui@
 

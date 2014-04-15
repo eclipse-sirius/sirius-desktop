@@ -23,6 +23,7 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.business.internal.ordering.EventEndHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceEventQuery;
@@ -453,7 +454,7 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
         };
 
         List<ISequenceEvent> impactingEvents = Lists.newArrayList(Iterables.filter(events, toConsider));
-        Collections.sort(impactingEvents, Ordering.natural().onResultOf(Functions.compose(Range.lowerBoundFunction(), ISequenceEvent.VERTICAL_RANGE)));
+        Collections.sort(impactingEvents, Ordering.natural().onResultOf(Functions.compose(RangeHelper.lowerBoundFunction(), ISequenceEvent.VERTICAL_RANGE)));
         int subMessagesMaxRight = 0;
         for (Message msg : Iterables.filter(impactingEvents, Message.class)) {
             int reflexiveMessageWidth = msg.getReflexiveMessageWidth();

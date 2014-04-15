@@ -39,6 +39,7 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.SquareDescription;
 import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
+import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
@@ -180,7 +181,7 @@ public class ExecutionSemanticEditPolicy extends DNode2ItemSemanticEditPolicy {
                     Range verticalRange = ise.getVerticalRange();
                     Rectangle screenRange = new Rectangle(0, verticalRange.getLowerBound(), 0, LayoutConstants.COMBINED_FRAGMENT_TITLE_HEIGHT);
                     screenRange.performScale(GraphicalHelper.getZoom((IGraphicalEditPart) getHost()));
-                    Range forbiddenRange = Range.verticalRange(screenRange);
+                    Range forbiddenRange = RangeHelper.verticalRange(screenRange);
 
                     forbiddenRangeArea = new RangeGuide(ColorConstants.red, forbiddenRange, true);
                     Rectangle bounds = layer.getBounds().getCopy();

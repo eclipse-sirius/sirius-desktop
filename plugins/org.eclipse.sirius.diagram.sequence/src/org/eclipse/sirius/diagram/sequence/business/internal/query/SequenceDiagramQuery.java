@@ -15,6 +15,7 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceNode;
@@ -223,7 +224,7 @@ public class SequenceDiagramQuery {
 
         Set<ISequenceNode> sequenceNodeLowers = new TreeSet<ISequenceNode>(new RangeComparator());
         for (ISequenceNode sequenceNode : getAllSequenceNodes()) {
-            Range sequenceNodeRange = Range.verticalRange(sequenceNode.getBounds());
+            Range sequenceNodeRange = RangeHelper.verticalRange(sequenceNode.getBounds());
             if (sequenceNodeRange.getLowerBound() < timePoint) {
                 sequenceNodeLowers.add(sequenceNode);
             }
@@ -248,7 +249,7 @@ public class SequenceDiagramQuery {
 
         Set<ISequenceNode> sequenceNodeUnders = new TreeSet<ISequenceNode>(new RangeComparator());
         for (ISequenceNode sequenceNode : getAllSequenceNodes()) {
-            Range sequenceEventRange = Range.verticalRange(sequenceNode.getBounds());
+            Range sequenceEventRange = RangeHelper.verticalRange(sequenceNode.getBounds());
             if (sequenceEventRange.includes(timePoint)) {
                 sequenceNodeUnders.add(sequenceNode);
             }
@@ -272,7 +273,7 @@ public class SequenceDiagramQuery {
 
         Set<ISequenceNode> sequenceNodeUnders = new TreeSet<ISequenceNode>(new RangeComparator());
         for (ISequenceNode sequenceNode : getAllSequenceNodes()) {
-            Range sequenceNodeRange = Range.verticalRange(sequenceNode.getBounds());
+            Range sequenceNodeRange = RangeHelper.verticalRange(sequenceNode.getBounds());
             if (sequenceNodeRange.getLowerBound() > timePoint) {
                 sequenceNodeUnders.add(sequenceNode);
             }

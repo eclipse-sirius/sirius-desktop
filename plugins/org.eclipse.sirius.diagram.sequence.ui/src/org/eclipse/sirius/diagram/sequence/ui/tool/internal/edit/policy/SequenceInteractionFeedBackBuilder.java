@@ -18,6 +18,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.AbstractSequenceInteractionValidator;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.HorizontalGuide;
@@ -108,7 +109,7 @@ public class SequenceInteractionFeedBackBuilder {
         for (Range conflict : validator.getInvalidRanges()) {
             Rectangle screenRange = new Rectangle(0, conflict.getLowerBound(), 0, conflict.width());
             screenRange.performScale(GraphicalHelper.getZoom(hostPart));
-            Range conflictRange = Range.verticalRange(screenRange);
+            Range conflictRange = RangeHelper.verticalRange(screenRange);
 
             Rectangle bounds = feedBackLayer.getBounds().getCopy();
             bounds.y = conflictRange.getLowerBound();
@@ -129,7 +130,7 @@ public class SequenceInteractionFeedBackBuilder {
     private void addFeedBack(ISequenceEvent event, Color color, boolean fill, Collection<Figure> feedbacks, Range movedRange) {
         Rectangle screenRange = new Rectangle(0, movedRange.getLowerBound(), 0, movedRange.width());
         screenRange.performScale(GraphicalHelper.getZoom(hostPart));
-        Range moveRange = Range.verticalRange(screenRange);
+        Range moveRange = RangeHelper.verticalRange(screenRange);
 
         Rectangle bounds = feedBackLayer.getBounds().getCopy();
         if (event != null && event.isLogicallyInstantaneous()) {
@@ -153,7 +154,7 @@ public class SequenceInteractionFeedBackBuilder {
         if (expansionZone != null && !expansionZone.isEmpty() && expansionZone.width() != 0) {
             Rectangle screenRange = new Rectangle(0, expansionZone.getLowerBound(), 0, expansionZone.width());
             screenRange.performScale(GraphicalHelper.getZoom(hostPart));
-            Range expand = Range.verticalRange(screenRange);
+            Range expand = RangeHelper.verticalRange(screenRange);
 
             RangeGuide expansion = new RangeGuide(validator.isValid() ? ColorConstants.blue : ColorConstants.red, expand, true);
             bounds.height = expand.width();

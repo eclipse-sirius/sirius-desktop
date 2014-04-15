@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
@@ -118,10 +119,10 @@ public abstract class AbstractOperandValidator {
                 } else {
                     // The minimum heights are validated, we can save the final
                     // ranges
-                    finalSiblingOperandRange = Range.verticalRange(siblingOperandNewBounds);
+                    finalSiblingOperandRange = RangeHelper.verticalRange(siblingOperandNewBounds);
                 }
             }
-            finalOperandRange = Range.verticalRange(newBounds);
+            finalOperandRange = RangeHelper.verticalRange(newBounds);
         }
         return result;
     }

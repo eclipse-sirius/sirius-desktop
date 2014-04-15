@@ -38,6 +38,7 @@ import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
@@ -350,7 +351,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         Rectangle bounds = self.getProperLogicalBounds().getCopy();
         bounds.translate(logicalDelta.getLocation());
         bounds.resize(logicalDelta.getSize());
-        Range thisFinalRange = Range.verticalRange(bounds);
+        Range thisFinalRange = RangeHelper.verticalRange(bounds);
 
         List<ISequenceEvent> toIgnore = Lists.newArrayList();
         boolean isReplyMessage = message.getKind() == Message.Kind.REPLY;
@@ -380,7 +381,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
             Range finalSrcRange = (srcLifeline.get() == selfLifeline && sourceElement == self) ? thisFinalRange : finalSrc.getVerticalRange();
             smrc.setSource(finalSrc.getNotationView(), new Rectangle(0, finalSrcRange.getLowerBound(), 0, finalSrcRange.width()));
         } else {
-            Range finalSrcRange = Range.verticalRange(sourceElement.getProperLogicalBounds());
+            Range finalSrcRange = RangeHelper.verticalRange(sourceElement.getProperLogicalBounds());
             smrc.setSource(sourceElement.getNotationView(), new Rectangle(0, finalSrcRange.getLowerBound(), 0, finalSrcRange.width()));
         }
 
@@ -412,7 +413,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
                 smrc.setTarget(finalTgt.getNotationView(), new Rectangle(0, finalTgtRange.getLowerBound(), 0, finalTgtRange.width()));
             }
         } else {
-            Range finalTgtRange = Range.verticalRange(targetElement.getProperLogicalBounds());
+            Range finalTgtRange = RangeHelper.verticalRange(targetElement.getProperLogicalBounds());
             smrc.setTarget(targetElement.getNotationView(), new Rectangle(0, finalTgtRange.getLowerBound(), 0, finalTgtRange.width()));
         }
 
@@ -537,7 +538,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         if (expansionZone != null && !expansionZone.isEmpty() && expansionZone.width() != 0) {
             Rectangle screenRange = new Rectangle(0, expansionZone.getLowerBound(), 0, expansionZone.width());
             screenRange.performScale(GraphicalHelper.getZoom((IGraphicalEditPart) getHost()));
-            Range expand = Range.verticalRange(screenRange);
+            Range expand = RangeHelper.verticalRange(screenRange);
 
             Rectangle bounds = feedbackLayer.getBounds().getCopy();
             bounds.height = expand.width();
@@ -576,9 +577,9 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
             ISequenceEvent iSequenceEvent = ((ISequenceEventEditPart) getHost()).getISequenceEvent();
             GraphicalHelper.screen2logical(newBounds, (IGraphicalEditPart) getHost());
             GraphicalHelper.screen2logical(oldBounds, (IGraphicalEditPart) getHost());
-            Range oldRange = Range.verticalRange(oldBounds);
-            Range execRange = Range.verticalRange(newBounds);
-            Range fullFinalRange = Range.verticalRange(newBounds);
+            Range oldRange = RangeHelper.verticalRange(oldBounds);
+            Range execRange = RangeHelper.verticalRange(newBounds);
+            Range fullFinalRange = RangeHelper.verticalRange(newBounds);
             List<ISequenceEvent> delimitingMessages = EventEndHelper.getCompoundEvents(iSequenceEvent);
             if (delimitingMessages.size() > 0) {
                 ISequenceEvent callMessage = delimitingMessages.get(0);
@@ -618,7 +619,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         Rectangle bounds = getFeedbackLayer().getBounds().getCopy();
         execBounds.height = Math.max(execBounds.height, 0);
 
-        Figure execGuide = new RangeGuide(EXECUTION_FEEDBACK_COLOR, Range.verticalRange(execBounds), false);
+        Figure execGuide = new RangeGuide(EXECUTION_FEEDBACK_COLOR, RangeHelper.verticalRange(execBounds), false);
         bounds.height = execBounds.height + 1;
         bounds.y = execBounds.y;
         execGuide.setBounds(bounds);

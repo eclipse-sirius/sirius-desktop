@@ -27,6 +27,7 @@ import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gef.requests.AlignmentRequest;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
@@ -140,7 +141,7 @@ public abstract class AbstractFrameResizableEditPolicy extends AirResizableEditP
         if (!expansionZone.isEmpty()) {
             Rectangle screenRange = new Rectangle(0, expansionZone.getLowerBound(), 0, expansionZone.width());
             screenRange.performScale(GraphicalHelper.getZoom((IGraphicalEditPart) getHost()));
-            Range expand = Range.verticalRange(screenRange);
+            Range expand = RangeHelper.verticalRange(screenRange);
 
             RangeGuide expansion = new RangeGuide(validator.isValid() ? ColorConstants.blue : ColorConstants.red, expand, true);
             bounds.height = expand.width();

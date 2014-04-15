@@ -19,6 +19,7 @@ import java.util.Map;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.notation.Location;
+import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
@@ -183,18 +184,18 @@ public class AbstractNodeEventResizeSelectionValidator {
              * so the resize is constrained by the range currently occupied by
              * them.
              */
-            boolean okForChildren = isMove || Range.verticalRange(newBounds).includes(self.getISequenceEvent().getOccupiedRange());
+            boolean okForChildren = isMove || RangeHelper.verticalRange(newBounds).includes(self.getISequenceEvent().getOccupiedRange());
             // linkedMessages are moved during execution resize too
             // boolean okForLinkedMessages = isMove ||
             // validateMessageToSelfMinRanges(self, request,
             // GraphicalHelper.verticalRange(bounds),
             // GraphicalHelper.verticalRange(newBounds));
-            boolean okForParent = ((AbstractNodeEvent) self.getISequenceEvent()).getLifeline().get().getValidSubEventsRange().includes(Range.verticalRange(newBounds));
+            boolean okForParent = ((AbstractNodeEvent) self.getISequenceEvent()).getLifeline().get().getValidSubEventsRange().includes(RangeHelper.verticalRange(newBounds));
             /*
              * Do not allow resize to expand beyond the range of the parent.
              */
             if (requestQuery.isResize()) {
-                if (!parent.getVerticalRange().includes(Range.verticalRange(newBounds))) {
+                if (!parent.getVerticalRange().includes(RangeHelper.verticalRange(newBounds))) {
                     okForParent = false;
                 }
             }
@@ -223,8 +224,8 @@ public class AbstractNodeEventResizeSelectionValidator {
             Message callMessage = delimitingMessages.get(0);
             Message returnMessage = delimitingMessages.get(1);
 
-            Range oldRange = Range.verticalRange(bounds);
-            Range newRange = Range.verticalRange(newBounds);
+            Range oldRange = RangeHelper.verticalRange(bounds);
+            Range newRange = RangeHelper.verticalRange(newBounds);
             int deltaYStart = newRange.getLowerBound() - oldRange.getLowerBound();
             int deltaYFinish = newRange.getUpperBound() - oldRange.getUpperBound();
             int deltaHStart = 0;
@@ -260,8 +261,8 @@ public class AbstractNodeEventResizeSelectionValidator {
             List<EventEnd> ends = EventEndHelper.findEndsFromSemanticOrdering(self.getISequenceEvent());
             SingleEventEnd delimitedSee = getDelimitedSingleEventEnd(self, ends);
 
-            Range oldRange = Range.verticalRange(bounds);
-            Range newRange = Range.verticalRange(newBounds);
+            Range oldRange = RangeHelper.verticalRange(bounds);
+            Range newRange = RangeHelper.verticalRange(newBounds);
             int deltaYStart = newRange.getLowerBound() - oldRange.getLowerBound();
             int deltaYFinish = newRange.getUpperBound() - oldRange.getUpperBound();
 
@@ -446,7 +447,7 @@ public class AbstractNodeEventResizeSelectionValidator {
         if (newBounds.height < 0) {
             safeMove = false;
         } else {
-            final Range finalRange = Range.verticalRange(newBounds);
+            final Range finalRange = RangeHelper.verticalRange(newBounds);
             Function<ISequenceEvent, Range> futureRangeFunction = new Function<ISequenceEvent, Range>() {
 
                 public Range apply(ISequenceEvent from) {

@@ -25,10 +25,10 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
+import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.ordering.EventEndHelper;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
-import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.emf.AllContents;
@@ -142,7 +142,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
                 return input.getProperLogicalBounds().intersects(area) && input.getVerticalRange().includes(area.getTop().y);
             }
         }));
-        Collections.sort(result, Range.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+        Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
         return Sets.newLinkedHashSet(result);
     }
 
@@ -195,7 +195,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
             }
         };
         List<Lifeline> result = Lists.newArrayList(Iterables.transform(allInstanceRoles, lifelineFunction));
-        Collections.sort(result, Range.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+        Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
         return result;
     }
 
@@ -256,7 +256,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
             assert message.some() : INTERNAL_ERROR;
             result.add(message.get());
         }
-        Collections.sort(result, Range.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+        Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
         return Sets.newLinkedHashSet(result);
     }
 
@@ -272,7 +272,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
             assert exec.some() : INTERNAL_ERROR;
             result.add(exec.get());
         }
-        Collections.sort(result, Range.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+        Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
         return Sets.newLinkedHashSet(result);
     }
 
@@ -288,7 +288,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
             assert exec.some() : INTERNAL_ERROR;
             result.add(exec.get());
         }
-        Collections.sort(result, Range.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+        Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
         return Sets.newLinkedHashSet(result);
     }
 
@@ -304,7 +304,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
             assert exec.some() : INTERNAL_ERROR;
             result.add(exec.get());
         }
-        Collections.sort(result, Range.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+        Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
         return Sets.newLinkedHashSet(result);
     }
 
@@ -322,7 +322,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
                 result.add((AbstractFrame) exec.get());
             }
         }
-        Collections.sort(result, Range.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+        Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
         return Sets.newLinkedHashSet(result);
     }
 
@@ -338,7 +338,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
             assert exec.some() : INTERNAL_ERROR;
             result.add(exec.get());
         }
-        Collections.sort(result, Range.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+        Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
         return Sets.newLinkedHashSet(result);
     }
 
@@ -354,7 +354,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
             assert exec.some() : INTERNAL_ERROR;
             result.add(exec.get());
         }
-        Collections.sort(result, Range.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+        Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
         return Sets.newLinkedHashSet(result);
     }
 
@@ -370,7 +370,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
             assert exec.some() : INTERNAL_ERROR;
             result.add(exec.get());
         }
-        Collections.sort(result, Range.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+        Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
         return Sets.newLinkedHashSet(result);
     }
 
@@ -399,7 +399,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
         List<ISequenceEvent> result = Lists.newArrayList();
         Iterables.addAll(result, getAllDelimitedSequenceEvents());
 
-        Collections.sort(result, Range.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+        Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
         return Sets.newLinkedHashSet(result);
     }
 

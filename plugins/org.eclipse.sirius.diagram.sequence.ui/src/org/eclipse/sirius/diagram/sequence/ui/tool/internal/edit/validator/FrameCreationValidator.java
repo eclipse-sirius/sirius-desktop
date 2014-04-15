@@ -20,6 +20,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
+import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
@@ -401,7 +402,7 @@ public class FrameCreationValidator extends AbstractSequenceInteractionValidator
 
     private boolean coveredByDeepestOperand(Lifeline lifeline, Set<Lifeline> graphicallyCoveredLifelines) {
         boolean coveredByDeepestOperand = true;
-        Range inclusionRange = Range.verticalRange(creationBounds);
+        Range inclusionRange = RangeHelper.verticalRange(creationBounds);
         Option<Operand> findDeepestCoveringOperand = findDeepestCoveringOperand(graphicallyCoveredLifelines);
         if (findDeepestCoveringOperand.some()) {
             Option<Operand> parentOperand = lifeline.getParentOperand(inclusionRange);
@@ -423,7 +424,7 @@ public class FrameCreationValidator extends AbstractSequenceInteractionValidator
         Option<Operand> deepestOperandOption = Options.newNone();
         for (Lifeline lifeline : graphicallyCoveredLifelines) {
             // get the operand option for the current lifeline
-            Option<Operand> currentOperandOption = lifeline.getParentOperand(Range.verticalRange(creationBounds));
+            Option<Operand> currentOperandOption = lifeline.getParentOperand(RangeHelper.verticalRange(creationBounds));
             if (deepestOperandOption.some() && currentOperandOption.some()) {
                 // save the deepest operand
                 Operand deepestOperand = deepestOperandOption.get();
