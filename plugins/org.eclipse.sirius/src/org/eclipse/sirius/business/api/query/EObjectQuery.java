@@ -172,7 +172,7 @@ public class EObjectQuery {
      * @return all the EObjects in the same session as this EObject which point
      *         to it through a matching setting.
      */
-    public Collection<EObject> getInverseReferences(Predicate<Setting> predicate) {
+    private Collection<EObject> getInverseReferences(Predicate<Setting> predicate) {
         Preconditions.checkNotNull(predicate);
         Session session = getSession();
         if (session != null) {

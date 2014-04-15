@@ -75,6 +75,7 @@ h4. Changes in @org.eclipse.sirius@
 ** @isRefreshActivatedOnRepresentationOpening()@ has been moved into @org.eclipse.sirius.ui.business.api.dialect.DialectUIManager@ as it refers to an UI behavior.
 * The @DRepresentation.createContents()@ (both variants) and @DRepresentation.updateContents()@ EOperations have been removed. They were not used anywhere.
 * The @org.eclipse.sirius.business.api.modelingproject.ModelingProject.MODELING_PROJECT_PREDICATE@ constant has been removed to reduce Sirius's exposure of Guava'specific types. Use the equivalent @ModelingProject.hasModelingProjectNature()@ method instead.
+* The method @org.eclipse.sirius.business.api.query.EObjectQuery.getInverseReferences(Predicate<Setting>)@ has been removed from API to avoid exposing a the Guava-specific @Predicate@ type.
 
 h4. Changes in @org.eclipse.sirius.diagram@
 
