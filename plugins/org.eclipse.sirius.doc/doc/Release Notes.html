@@ -237,6 +237,18 @@
 				</ul>
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
+			<code>org.eclipse.sirius.common</code>
+		</h4>
+		<ul>
+			<li>In class 
+				<code>org.eclipse.sirius.common.tools.api.util.EclipseUtil</code>, the method 
+				<code>getExtensionPlugins(Class&lt;T&gt;, String, String, String, Predicate&lt;String&gt;)</code> has been removed from API to avoid exposing a Guava-specific 
+				<code>Predicate</code>. Instead, use the new method 
+				<code>getExtensionPluginsByKey()</code> which returns all the extensions organized by the specified key, and filter the result according to whatever critera the 
+				<code>Predicate</code> tested on the key.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
@@ -772,7 +784,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 		</ul>
 		<h3 id="APIChanges4">API Changes</h3>
 		<p>Sirius 1.0.0M4 includes a lots of API-breaking changes, as part of a global effort to improve the quality of the Sirius internals. In this milestone in particular, most of the APIs which were marked as deprecated in previous versions of Sirius (and before that of Viewpoint) have been either removed (if a replacement exists) or marked as non-deprecated (if no replacement exists yet).</p>
-		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>

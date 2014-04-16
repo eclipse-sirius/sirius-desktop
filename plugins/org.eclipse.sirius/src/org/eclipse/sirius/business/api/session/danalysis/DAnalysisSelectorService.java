@@ -10,13 +10,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.session.danalysis;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
+import com.google.common.collect.Lists;
 
 /**
  * Service to get analysis selectors.
@@ -24,6 +26,7 @@ import com.google.common.base.Predicates;
  * @author ymortier
  */
 public final class DAnalysisSelectorService {
+
 
     /**
      * analysis selector extension point ID.
@@ -34,6 +37,8 @@ public final class DAnalysisSelectorService {
      * Extension point attribute for the analysis selector provider class.
      */
     public static final String CLASS_ATTRIBUTE = "providerClass";
+    
+    private static final String DEFAULT_PROVIDER_ID = "org.eclipse.sirius.analysisSelectorProvider.default";
 
     private static DAnalysisSelectorProvider defaultSiriusProvider;
 
@@ -93,22 +98,21 @@ public final class DAnalysisSelectorService {
      * Initialize the customer providers and the Sirius default provider.
      */
     private static void initializeProviders() {
-        // Load the default provider
-        Predicate<String> isDefaultSiriusProvider = Predicates.equalTo("org.eclipse.sirius.analysisSelectorProvider.default");
-        for (DAnalysisSelectorProvider potentialDefaultProvider : EclipseUtil.getExtensionPlugins(DAnalysisSelectorProvider.class, ID, CLASS_ATTRIBUTE, "id", isDefaultSiriusProvider)) {
-            if (defaultSiriusProvider == null) {
-                defaultSiriusProvider = potentialDefaultProvider;
-            } else {
-                SiriusPlugin.getDefault().error(
-                        "Sirius must provide one (and only one) analysis selector provider (through extension point \"org.eclipse.sirius.analysisSelectorProvider\").", null);
-            }
+        Map<String, Collection<DAnalysisSelectorProvider>> providers = EclipseUtil.getExtensionPluginsByKey(DAnalysisSelectorProvider.class, ID, CLASS_ATTRIBUTE, "id");
+        Collection<DAnalysisSelectorProvider> defaults = providers.get(DAnalysisSelectorService.DEFAULT_PROVIDER_ID);
+        if (defaults.isEmpty()) {
+            SiriusPlugin.getDefault().error(String.format("No default analysis selector provider found at extension point \"%s\".", ID), null);
+        } else if (defaultSiriusProvider == null) {
+            defaultSiriusProvider = defaults.iterator().next();
         }
-
-        // Load customers providers
-        customerProviders = EclipseUtil.getExtensionPlugins(DAnalysisSelectorProvider.class, ID, CLASS_ATTRIBUTE, "id", Predicates.not(isDefaultSiriusProvider));
-
-        if (defaultSiriusProvider == null) {
-            SiriusPlugin.getDefault().error("Sirius must provide one analysis selector provider (through extension point \"org.eclipse.sirius.analysisSelectorProvider\").", null);
+        if (defaults.size() > 1) {
+            SiriusPlugin.getDefault().error(String.format("Multiple default analysis selector providers found at extension point \"%s\": took only the first found.", ID), null);
+        }
+        customerProviders = Lists.newArrayList();
+        for (Entry<String, Collection<DAnalysisSelectorProvider>> entry : providers.entrySet()) {
+            if (!DAnalysisSelectorService.DEFAULT_PROVIDER_ID.equals(entry.getKey())) {
+                customerProviders.addAll(entry.getValue());
+            }
         }
     }
 }

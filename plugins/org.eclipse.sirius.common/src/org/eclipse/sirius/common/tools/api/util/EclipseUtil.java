@@ -11,7 +11,9 @@
 package org.eclipse.sirius.common.tools.api.util;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -27,9 +29,11 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 
+import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 /**
  * This class is should contains useful static functions related to Eclipse
@@ -117,7 +121,7 @@ public final class EclipseUtil {
      * @return a List of clazz instance
      * @since 0.9.0
      */
-    public static <T> List<T> getExtensionPlugins(final Class<T> clazz, final String extensionId, final String executableAttribute, final String attributeName,
+    private static <T> List<T> getExtensionPlugins(final Class<T> clazz, final String extensionId, final String executableAttribute, final String attributeName,
             final Predicate<String> attributeValuePredicate) {
 
         final IExtension[] extensions = EclipseUtil.getExtensions(extensionId);
@@ -133,6 +137,63 @@ public final class EclipseUtil {
                         obj = element.createExecutableExtension(executableAttribute);
                         if (clazz.isInstance(obj)) {
                             contributors.add(clazz.cast(obj));
+                        }
+                    } catch (final CoreException e) {
+                        DslCommonPlugin.getDefault().error("Impossible to load the extension " + ext.getLabel(), e);
+                        DslCommonPlugin.getDefault().getLog().log(e.getStatus());
+                    }
+                }
+
+            }
+        }
+        return contributors;
+    }
+
+    /**
+     * Get instances of an executable extension, classified by the extensions's
+     * value of a specific attriute (typically an id).
+     * 
+     * @param clazz
+     *            the class that plug-ins need to extend or implement
+     * @param extensionId
+     *            the extension point id
+     * @param executableAttribute
+     *            the executable attribute. Most often "class" is used
+     * @param keyAttributeName
+     *            the name of the extension's attribute to use to classify them.
+     * @param <T>
+     *            the class to implements for contributors
+     * @return a map with a key for each value of the keyAttributeName found and
+     *         where values are instances of all the extensions found with that
+     *         value as the key attribute. Extensions which do not specify a
+     *         value for they key attribute are grouped in the bucket for the
+     *         empty string ("").
+     * @since 1.0.0M7
+     */
+    public static <T> Map<String, Collection<T>> getExtensionPluginsByKey(Class<T> clazz, String extensionId, String executableAttribute, String keyAttributeName) {
+        final IExtension[] extensions = EclipseUtil.getExtensions(extensionId);
+        final Map<String, Collection<T>> contributors = Maps.newLinkedHashMap();
+
+        for (final IExtension ext : extensions) {
+            final IConfigurationElement[] ce = ext.getConfigurationElements();
+            for (IConfigurationElement element : ce) {
+
+                if (EclipseUtil.checkAttribute(element, keyAttributeName, Predicates.<String> alwaysTrue())) {
+                    Object obj;
+                    try {
+                        obj = element.createExecutableExtension(executableAttribute);
+                        if (clazz.isInstance(obj)) {
+                            String key = null;
+                            if (keyAttributeName != null) {
+                                key = element.getAttribute(keyAttributeName);
+                            }
+                            key = Objects.firstNonNull(key, "");
+                            Collection<T> val = contributors.get(key);
+                            if (val == null) {
+                                val = Lists.newArrayList();
+                                contributors.put(key, val);
+                            }
+                            val.add(clazz.cast(obj));
                         }
                     } catch (final CoreException e) {
                         DslCommonPlugin.getDefault().error("Impossible to load the extension " + ext.getLabel(), e);

@@ -69,6 +69,10 @@ Several extension points have been moved:
 ** styleConfigurationProvider
 ** viewOrderingProvider
 
+h4. Changes in @org.eclipse.sirius.common@
+
+* In class @org.eclipse.sirius.common.tools.api.util.EclipseUtil@, the method @getExtensionPlugins(Class<T>, String, String, String, Predicate<String>)@ has been removed from API to avoid exposing a Guava-specific @Predicate@. Instead, use the new method @getExtensionPluginsByKey()@ which returns all the extensions organized by the specified key, and filter the result according to whatever critera the @Predicate@ tested on the key.
+
 h4. Changes in @org.eclipse.sirius@
 
 * @org.eclipse.sirius.business.api.query.URIQuery.isSiriusEnvironmentURI@ has been replaced by
