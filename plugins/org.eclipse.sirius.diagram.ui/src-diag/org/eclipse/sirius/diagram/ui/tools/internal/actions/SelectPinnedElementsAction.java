@@ -44,7 +44,6 @@ import org.eclipse.ui.IWorkbenchPart;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 
 /**
  * Action to open a dialog box where the user can select/deselect the diagram
@@ -77,16 +76,10 @@ public class SelectPinnedElementsAction extends DiagramAction {
         }
 
         private Predicate<Object> getNonSelectablePredicate() {
-            final Predicate<DDiagramElement> allowsPinUnpin = PinHelper.allowsPinUnpin(diagram);
-
-            if (Predicates.alwaysTrue().equals(allowsPinUnpin)) {
-                return Predicates.alwaysFalse();
-            }
-
             return new Predicate<Object>() {
                 public boolean apply(Object input) {
                     if (input instanceof DDiagramElement) {
-                        return !allowsPinUnpin.apply((DDiagramElement) input);
+                        return !PinHelper.allowsPinUnpin((DDiagramElement) input);
                     }
                     return false;
                 }

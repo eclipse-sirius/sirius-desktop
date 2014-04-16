@@ -78,7 +78,7 @@ public class VisibilityEventHandler extends ResourceSetListenerImpl {
                 if (notifier instanceof DDiagramElement) {
                     DDiagramElement dde = (DDiagramElement) notifier;
                     DDiagram parentDiagram = dde.getParentDiagram();
-                    return parentDiagram instanceof SequenceDDiagram && !(new SequenceDiagramTypeProvider().allowsHideReveal().apply(dde));
+                    return parentDiagram instanceof SequenceDDiagram && !(new SequenceDiagramTypeProvider().allowsHideReveal(dde));
                 }
                 return false;
             }

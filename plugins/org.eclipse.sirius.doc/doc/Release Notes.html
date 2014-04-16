@@ -389,6 +389,24 @@
 				<code>SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticElement)</code> to obtain the 
 				<code>IInterpreter</code> these methods need). As with all internal code, there is no guarantee these methods will still exist in future versions.
 			</li>
+			<li>In interface 
+				<code>org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider</code>, the methods 
+				<code>allowsPinUnpin()</code>, 
+				<code>allowsHideReveal</code>, and 
+				<code>allowsCopyPasteLayout()</code>  have been modified to take directly the 
+				<code>DDiagramElement</code> to test (and return a 
+				<code>boolean</code>) instead of returning a Guava-specific 
+				<code>Predicate</code> which then had to be invoked.
+			</li>
+			<li>In class 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper</code>, .the method 
+				<code>allowsPinUnpin()</code> has been modified to take a 
+				<code>DDiagramElement</code> directly and return a 
+				<code>boolean</code>, instead of taking a 
+				<code>DDiagram</code> and return a Guava-specific 
+				<code>Predicate</code> which then had to be invoked on actual 
+				<code>DDiagramElements</code>.. 
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.sequence">Changes in 
 			<code>org.eclipse.sirius.diagram.sequence</code>

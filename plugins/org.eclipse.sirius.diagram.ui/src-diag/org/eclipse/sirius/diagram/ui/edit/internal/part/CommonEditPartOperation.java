@@ -20,7 +20,6 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
-import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -80,8 +79,7 @@ public final class CommonEditPartOperation {
             if (RequestConstants.REQ_MOVE.equals(request.getType()) && !new PinHelper().isPinned(dDiagramElement) && CommonEditPartOperation.autoPinOnMoveEnabled()
                     && CommonEditPartOperation.isInteractiveMove()) {
 
-                DDiagram parentDiagram = dDiagramElement.getParentDiagram();
-                if (PinHelper.allowsPinUnpin(parentDiagram).apply(dDiagramElement)) {
+                if (PinHelper.allowsPinUnpin(dDiagramElement)) {
 
                     CompoundCommand cc = new CompoundCommand();
                     cc.add(cmd);

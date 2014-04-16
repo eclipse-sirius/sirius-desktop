@@ -168,10 +168,14 @@ public abstract class AbstractPinUnpinElementsEclipseAction extends Action imple
     @Override
     public final boolean isEnabled() {
         Collection<DDiagramElement> selectedDiagramElements = getSelectedDiagramElements(getCurrentSelection());
-
         if (!selectedDiagramElements.isEmpty()) {
-            Predicate<DDiagramElement> allowsPinUnpin = PinHelper.allowsPinUnpin(selectedDiagramElements.iterator().next().getParentDiagram());
-            if (Iterables.all(selectedDiagramElements, allowsPinUnpin)) {
+            Predicate<DDiagramElement> pred = new Predicate<DDiagramElement>() {
+                @Override
+                public boolean apply(DDiagramElement input) {
+                    return PinHelper.allowsPinUnpin(input);
+                }
+            };
+            if (Iterables.all(selectedDiagramElements, pred)) {
                 return doIsEnabled(selectedDiagramElements);
             }
         }

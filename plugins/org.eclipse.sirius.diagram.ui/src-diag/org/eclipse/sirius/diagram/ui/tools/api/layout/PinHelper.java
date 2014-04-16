@@ -22,6 +22,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
+import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
@@ -157,6 +158,17 @@ public final class PinHelper {
     }
 
     /**
+     * Indicates if the given element can be pinned/unpinned.
+     * 
+     * @param element
+     *            the element to check.
+     * @return true if the given element can be pinned/unpinned.
+     */
+    public static boolean allowsPinUnpin(DDiagramElement element) {
+        return element != null && allowsPinUnpin(element.getParentDiagram()).apply(element);
+    }
+
+    /**
      * Indicates if the given ddiagram is allowing pin/unpin.
      * 
      * @param diagram
@@ -164,7 +176,7 @@ public final class PinHelper {
      * @return true if the given ddiagram is allowing layouting mode, false
      *         otherwise
      */
-    public static Predicate<DDiagramElement> allowsPinUnpin(DDiagram diagram) {
+    private static Predicate<DDiagramElement> allowsPinUnpin(DDiagram diagram) {
         // default return value is true for non-Region element (for basic
         // DDiagram that are not handled
         // by any DiagramDescriptionProvider).
@@ -189,11 +201,14 @@ public final class PinHelper {
         for (final IDiagramTypeDescriptor diagramTypeDescriptor : DiagramTypeDescriptorRegistry.getInstance().getAllDiagramTypeDescriptors()) {
             if (diagramTypeDescriptor.getDiagramDescriptionProvider().handles(diagram.getDescription().eClass().getEPackage())) {
                 // This DiagramDescriptionProvider may forbid pin/unpin actions.
-                Predicate<DDiagramElement> allowsPinUnpin = diagramTypeDescriptor.getDiagramDescriptionProvider().allowsPinUnpin();
-                if (allowsPinUnpin != null) {
-                    result = allowsPinUnpin;
-                    break;
-                }
+                final IDiagramDescriptionProvider provider = diagramTypeDescriptor.getDiagramDescriptionProvider();
+                result = new Predicate<DDiagramElement>() {
+                    @Override
+                    public boolean apply(DDiagramElement input) {
+                        return provider.allowsPinUnpin(input);
+                    }
+                };
+                break;
             }
         }
 

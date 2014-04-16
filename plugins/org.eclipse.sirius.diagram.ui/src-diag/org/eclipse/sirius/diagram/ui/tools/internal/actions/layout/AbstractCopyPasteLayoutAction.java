@@ -21,6 +21,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
+import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.ui.IWorkbenchPage;
@@ -161,11 +162,14 @@ public abstract class AbstractCopyPasteLayoutAction extends DiagramAction {
         for (final IDiagramTypeDescriptor diagramTypeDescriptor : DiagramTypeDescriptorRegistry.getInstance().getAllDiagramTypeDescriptors()) {
             if (diagramTypeDescriptor.getDiagramDescriptionProvider().handles(diagram.getDescription().eClass().getEPackage())) {
                 // This DiagramDescriptionProvider may forbid copy/paste layout.
-                Predicate<DSemanticDecorator> allowsPasteLayout = diagramTypeDescriptor.getDiagramDescriptionProvider().allowsCopyPasteLayout();
-                if (allowsPasteLayout != null) {
-                    result = allowsPasteLayout;
-                    break;
-                }
+                final IDiagramDescriptionProvider provider = diagramTypeDescriptor.getDiagramDescriptionProvider();
+                result = new Predicate<DSemanticDecorator>() {
+                    @Override
+                    public boolean apply(DSemanticDecorator input) {
+                        return provider.allowsCopyPasteLayout(input);
+                    }
+                };
+                break;
             }
         }
 

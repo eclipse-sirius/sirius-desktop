@@ -35,6 +35,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
+import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
@@ -297,11 +298,14 @@ public class HideDDiagramElementAction extends Action implements IObjectActionDe
             if (diagramTypeDescriptor.getDiagramDescriptionProvider().handles(diagram.getDescription().eClass().getEPackage())) {
                 // This DiagramDescriptionProvider may forbid hide/reveal
                 // actions.
-                Predicate<DDiagramElement> allowsHideReveal = diagramTypeDescriptor.getDiagramDescriptionProvider().allowsHideReveal();
-                if (allowsHideReveal != null) {
-                    result = allowsHideReveal;
-                    break;
-                }
+                final IDiagramDescriptionProvider provider = diagramTypeDescriptor.getDiagramDescriptionProvider();
+                result = new Predicate<DDiagramElement>() {
+                    @Override
+                    public boolean apply(DDiagramElement input) {
+                        return provider.allowsHideReveal(input);
+                    }
+                };
+                break;
             }
         }
 

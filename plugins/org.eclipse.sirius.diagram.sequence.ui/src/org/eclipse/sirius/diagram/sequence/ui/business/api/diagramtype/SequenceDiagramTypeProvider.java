@@ -71,7 +71,6 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 
 import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
@@ -205,34 +204,19 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
         return false;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider#allowsPinUnpin()
-     */
-    public Predicate<DDiagramElement> allowsPinUnpin() {
-        return Predicates.not(isSequenceDDiagramElement);
+    @Override
+    public boolean allowsPinUnpin(DDiagramElement element) {
+        return !isSequenceDDiagramElement.apply(element);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider#allowsHideReveal()
-     */
-    public Predicate<DDiagramElement> allowsHideReveal() {
-        return Predicates.not(isSequenceDDiagramElement);
+    @Override
+    public boolean allowsHideReveal(DDiagramElement element) {
+        return !isSequenceDDiagramElement.apply(element);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider#allowsCopyPasteLayout()
-     */
-    public Predicate<DSemanticDecorator> allowsCopyPasteLayout() {
-        return Predicates.not(isSequenceSemanticDecorator);
+    @Override
+    public boolean allowsCopyPasteLayout(DSemanticDecorator element) {
+        return !isSequenceSemanticDecorator.apply(element);
     }
 
     private void collectInstanceRoleCreation(Collection<CommandParameter> result, EReference ref) {

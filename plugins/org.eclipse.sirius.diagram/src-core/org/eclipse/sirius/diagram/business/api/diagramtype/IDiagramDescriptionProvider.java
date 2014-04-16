@@ -25,8 +25,6 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
-import com.google.common.base.Predicate;
-
 /**
  * Provides a new Diagram Type that can be managed by the diagram dialect.
  * 
@@ -113,47 +111,46 @@ public interface IDiagramDescriptionProvider {
     boolean allowsLayoutingModeActivation();
 
     /**
-     * Indicates if the given Diagram description provider allows the Pin/Unpin
-     * actions on handled representations.
+     * Indicates if this Diagram description provider allows the Pin/Unpin
+     * actions on the specified element.
      * 
-     * A <code>null</code> value will be interpreted as the default value for
-     * standard diagrams: {@link Predicates.alwaysTrue()}.
+     * @param element
+     *            the element to check.
      * 
-     * @return true if the given Diagram description provider allows the
-     *         Pin/Unpin actions on handled representations, false otherwise.
+     * @return true if this provider allows the specified element to be Pinned
+     *         or Unpinned, false otherwise.
      * 
-     * @since 0.9.0
+     * @since 1.0.0M7
      */
-    Predicate<DDiagramElement> allowsPinUnpin();
+    boolean allowsPinUnpin(DDiagramElement element);
 
     /**
-     * Indicates if the given Diagram description provider allows the Show/Hide
-     * actions on handled representations.
+     * Indicates if this Diagram description provider allows the Show/hide
+     * actions on the specified element.
      * 
-     * A <code>null</code> value will be interpreted as the default value for
-     * standard diagrams: {@link Predicates.alwaysTrue()}.
+     * @param element
+     *            the element to check.
      * 
-     * @return true if the given Diagram description provider allows the
-     *         Show/Hide actions on handled representations, false otherwise.
+     * @return true if this provider allows the specified element to be Hiddend
+     *         or Revealed, false otherwise.
      * 
-     * @since 0.9.0
+     * @since 1.0.0M7
      */
-    Predicate<DDiagramElement> allowsHideReveal();
+    boolean allowsHideReveal(DDiagramElement element);
 
     /**
-     * Indicates if the given Diagram description provider allows the Copy/Paste
-     * Layout actions on handled representations.
+     * Indicates if this Diagram description provider allows the Copy/Paster
+     * Layout actions on the specified element.
      * 
-     * A <code>null</code> value will be interpreted as the default value for
-     * standard diagrams: {@link Predicates.alwaysTrue()}.
+     * @param element
+     *            the element to check.
      * 
-     * @return true if the given Diagram description provider allows the
-     *         Copy/Paste Layout actions on handled representations, false
-     *         otherwise.
+     * @return true if this provider allows the Copy/Paster Layout actions on
+     *         the specified element, false otherwise.
      * 
-     * @since 0.9.0
+     * @since 1.0.0M7
      */
-    Predicate<DSemanticDecorator> allowsCopyPasteLayout();
+    boolean allowsCopyPasteLayout(DSemanticDecorator element);
 
     /**
      * Indicates if the given Diagram description provider support the header
