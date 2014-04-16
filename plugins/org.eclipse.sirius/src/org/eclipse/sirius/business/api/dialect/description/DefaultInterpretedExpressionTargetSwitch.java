@@ -138,14 +138,21 @@ public class DefaultInterpretedExpressionTargetSwitch implements IInterpretedExp
      * </p>
      */
     private static class FirstRelevantContainerDefaultFunction implements Function<EObject, EObject> {
-
         @Override
         public EObject apply(EObject input) {
-            EObject container = input.eContainer();
-            while (!(container instanceof RepresentationDescription || container instanceof RepresentationElementMapping || container instanceof RepresentationExtensionDescription)) {
-                container = container.eContainer();
+            if (input != null) {
+                EObject container = input.eContainer();
+                while (container != null && !isRelevant(container)) {
+                    container = container.eContainer();
+                }
+                return container;
+            } else {
+                return null;
             }
-            return container;
+        }
+
+        protected boolean isRelevant(EObject container) {
+            return container instanceof RepresentationDescription || container instanceof RepresentationElementMapping || container instanceof RepresentationExtensionDescription;
         }
     }
 }

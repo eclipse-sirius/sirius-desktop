@@ -177,18 +177,21 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
      * </p>
      */
     private static class FirstRelevantContainerDiagramFunction implements Function<EObject, EObject> {
-
-        /**
-         * {@inheritDoc}
-         */
         @Override
         public EObject apply(EObject input) {
-            EObject container = input.eContainer();
-            while ((!(container instanceof RepresentationDescription)) && (!(container instanceof RepresentationElementMapping)) && (!(container instanceof EdgeMappingImport))
-                    && (!(container instanceof DiagramExtensionDescription))) {
-                container = container.eContainer();
+            if (input != null) {
+                EObject container = input.eContainer();
+                while (container != null && !isRelevant(container)) {
+                    container = container.eContainer();
+                }
+                return container;
+            } else {
+                return null;
             }
-            return container;
+        }
+
+        protected boolean isRelevant(EObject container) {
+            return container instanceof RepresentationDescription || container instanceof RepresentationElementMapping || container instanceof EdgeMappingImport || container instanceof DiagramExtensionDescription;
         }
     }
 
