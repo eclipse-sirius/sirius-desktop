@@ -49,7 +49,7 @@ public class MappingHiearchy {
         return new HiearchyIterator(mostSpecific);
     }
 
-    class HiearchyIterator extends AbstractIterator<Mapping> {
+    private static class HiearchyIterator extends AbstractIterator<Mapping> {
 
         private Option<? extends Mapping> cur;
 
