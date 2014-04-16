@@ -20,6 +20,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.internal.session.SessionEventBrokerImpl;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
@@ -71,7 +72,7 @@ public final class SiriusDiagramSessionEventBroker implements ModelChangeTrigger
         SiriusDiagramSessionEventBroker reference = INSTANCES_MAP.get(session);
         if (reference == null) {
             SiriusDiagramSessionEventBroker viewpointDiagramSessionEventBroker = new SiriusDiagramSessionEventBroker();
-            session.getEventBroker().addLocalTrigger(scope, viewpointDiagramSessionEventBroker);
+            session.getEventBroker().addLocalTrigger(SessionEventBrokerImpl.asFilter(scope), viewpointDiagramSessionEventBroker);
             reference = viewpointDiagramSessionEventBroker;
             INSTANCES_MAP.put(session, reference);
         }

@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.ui.internal.refresh.listeners;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionEventBroker;
+import org.eclipse.sirius.business.internal.session.SessionEventBrokerImpl;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.internal.helper.display.VisibilityPropagatorAdapter;
 
@@ -58,7 +59,7 @@ public class GMFDiagramUpdater {
 
         eventBroker = session.getEventBroker();
         filterListener = new FilterListener(dDiagram, session.getTransactionalEditingDomain());
-        eventBroker.addLocalTrigger(new FilterListenerScope(), filterListener);
+        eventBroker.addLocalTrigger(SessionEventBrokerImpl.asFilter(new FilterListenerScope()), filterListener);
 
         gmfBoundsUpdater = new GMFBoundsUpdater(domain, dDiagram);
         visibilityUpdater = new VisibilityUpdater(domain, dDiagram);

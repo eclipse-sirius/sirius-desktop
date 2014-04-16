@@ -36,6 +36,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Ordering;
+
 /**
  * This class keeps track of registered listeners and notify them when something
  * did change on the elements they are listening. It has pretty much the same
@@ -48,6 +49,7 @@ public class SessionEventBrokerImpl extends ResourceSetListenerImpl implements S
 
     private static Function<ModelChangeTrigger, Integer> getPriorityFunction = new Function<ModelChangeTrigger, Integer>() {
 
+        @Override
         public Integer apply(ModelChangeTrigger from) {
             return Integer.valueOf(from.priority());
         }
@@ -59,7 +61,7 @@ public class SessionEventBrokerImpl extends ResourceSetListenerImpl implements S
 
     private Map<EStructuralFeature, Multimap<EObject, ModelChangeTrigger>> featuresToListeners = Maps.newHashMap();
 
-    private Multimap<Predicate<Notification>, ModelChangeTrigger> scopedTriggers = HashMultimap.create();
+    private Multimap<NotificationFilter, ModelChangeTrigger> scopedTriggers = HashMultimap.create();
 
     /**
      * create a new broker.
@@ -74,8 +76,24 @@ public class SessionEventBrokerImpl extends ResourceSetListenerImpl implements S
     }
 
     /**
-     * {@inheritDoc}
+     * Converts a Guava predicate on EMF Notification into a NotificationFilter
+     * as expected by the
+     * {@link #addLocalTrigger(NotificationFilter, ModelChangeTrigger)} method.
+     * 
+     * @param pred
+     *            a Guava predicate on EMF notifications.
+     * @return an equivalent NotificationFilter.
      */
+    public static NotificationFilter asFilter(final Predicate<Notification> pred) {
+        return new NotificationFilter.Custom() {
+            @Override
+            public boolean matches(Notification notification) {
+                return pred.apply(notification);
+            }
+        };
+    }
+
+    @Override
     public void addLocalTrigger(EObject element, EStructuralFeature feature, ModelChangeTrigger trigger) {
         Multimap<EObject, ModelChangeTrigger> listeners = featuresToListeners.get(feature);
         if (listeners == null) {
@@ -86,9 +104,7 @@ public class SessionEventBrokerImpl extends ResourceSetListenerImpl implements S
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void addLocalTrigger(EObject element, ModelChangeTrigger trigger) {
         eObjectsToListeners.put(element, trigger);
     }
@@ -103,13 +119,13 @@ public class SessionEventBrokerImpl extends ResourceSetListenerImpl implements S
     }
 
     private void collectScopedListeners(final Notification msg, final EObject changedObj, Multimap<ModelChangeTrigger, Notification> result) {
-        Iterable<Predicate<Notification>> filteredScoped = Iterables.filter(scopedTriggers.keys(), new Predicate<Predicate<Notification>>() {
-
-            public boolean apply(Predicate<Notification> input) {
-                return input.apply(msg);
+        Iterable<NotificationFilter> filteredScoped = Iterables.filter(scopedTriggers.keys(), new Predicate<NotificationFilter>() {
+            @Override
+            public boolean apply(NotificationFilter input) {
+                return input.matches(msg);
             }
         });
-        for (Predicate<Notification> predicate : filteredScoped) {
+        for (NotificationFilter predicate : filteredScoped) {
             Collection<ModelChangeTrigger> triggersValidForThisNotification = scopedTriggers.get(predicate);
             if (triggersValidForThisNotification != null) {
                 for (ModelChangeTrigger modelChangeTrigger : triggersValidForThisNotification) {
@@ -120,10 +136,8 @@ public class SessionEventBrokerImpl extends ResourceSetListenerImpl implements S
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public void addLocalTrigger(Predicate<Notification> scope, ModelChangeTrigger trigger) {
+    @Override
+    public void addLocalTrigger(NotificationFilter scope, ModelChangeTrigger trigger) {
         if (!scopedTriggers.containsEntry(scope, trigger)) {
             scopedTriggers.put(scope, trigger);
         }
@@ -169,9 +183,7 @@ public class SessionEventBrokerImpl extends ResourceSetListenerImpl implements S
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void removeLocalTrigger(ModelChangeTrigger listenerToRemove) {
         removeListenerFromMap(listenerToRemove, eObjectsToListeners);
         for (Multimap<EObject, ModelChangeTrigger> map : featuresToListeners.values()) {
@@ -180,9 +192,6 @@ public class SessionEventBrokerImpl extends ResourceSetListenerImpl implements S
         removeListenerFromMap(listenerToRemove, scopedTriggers);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
         final Multimap<ModelChangeTrigger, Notification> listenersToNotify = collectListenersToNotify(event.getNotifications());
@@ -192,9 +201,7 @@ public class SessionEventBrokerImpl extends ResourceSetListenerImpl implements S
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void dispose() {
         domain.removeResourceSetListener(this);
         eObjectsToListeners.clear();
@@ -209,7 +216,6 @@ public class SessionEventBrokerImpl extends ResourceSetListenerImpl implements S
      * @author mporhel
      */
     private static final class PreCommitPriorityNotifyListenersCommand extends RecordingCommand {
-
         private final Multimap<ModelChangeTrigger, Notification> listenersToNotify;
 
         /**
@@ -230,7 +236,7 @@ public class SessionEventBrokerImpl extends ResourceSetListenerImpl implements S
          */
         @Override
         protected void doExecute() {
-            Ordering<ModelChangeTrigger> priorityOrdering = Ordering.natural().onResultOf(getPriorityFunction);
+            Ordering<ModelChangeTrigger> priorityOrdering = Ordering.natural().onResultOf(SessionEventBrokerImpl.getPriorityFunction);
             List<ModelChangeTrigger> sortedKeys = priorityOrdering.sortedCopy(listenersToNotify.keySet());
             for (ModelChangeTrigger key : sortedKeys) {
                 launchCommands(key);

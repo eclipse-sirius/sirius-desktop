@@ -19,6 +19,7 @@ import org.eclipse.gef.EditPolicy;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.business.api.session.SessionEventBroker;
+import org.eclipse.sirius.business.internal.session.SessionEventBrokerImpl;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.refresh.RefreshLayoutCommand;
@@ -156,11 +157,11 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
 
             Predicate<Notification> refreshLayoutScope = new RefreshLayoutScope();
             refreshLayout = new RefreshLayoutTrigger(getDiagramView());
-            sessionEventBroker.addLocalTrigger(refreshLayoutScope, refreshLayout);
+            sessionEventBroker.addLocalTrigger(SessionEventBrokerImpl.asFilter(refreshLayoutScope), refreshLayout);
 
             Predicate<Notification> sequenceCanonicalSynchronizerLayoutScope = new SequenceCanonicalSynchronizerAdapterScope();
             sequenceCanonicalSynchronizer = new SequenceCanonicalSynchronizerAdapter();
-            sessionEventBroker.addLocalTrigger(sequenceCanonicalSynchronizerLayoutScope, sequenceCanonicalSynchronizer);
+            sessionEventBroker.addLocalTrigger(SessionEventBrokerImpl.asFilter(sequenceCanonicalSynchronizerLayoutScope), sequenceCanonicalSynchronizer);
         }
     }
 

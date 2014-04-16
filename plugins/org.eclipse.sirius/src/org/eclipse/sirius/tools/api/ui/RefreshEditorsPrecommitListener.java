@@ -21,6 +21,7 @@ import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
@@ -36,7 +37,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;
 
 /**
@@ -65,13 +65,10 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
      * soon as an impacting notification is found. This is not done here for
      * performance reason: we need the container resource of the notifier.
      */
-    public static final Predicate<Notification> IS_IMPACTING = new Predicate<Notification>() {
-
-        /**
-         * {@inheritDoc}
-         */
-        public boolean apply(Notification input) {
-            return !input.isTouch();
+    public static final NotificationFilter IS_IMPACTING = new NotificationFilter.Custom() {
+        @Override
+        public boolean matches(Notification notification) {
+            return !notification.isTouch();
         }
     };
 

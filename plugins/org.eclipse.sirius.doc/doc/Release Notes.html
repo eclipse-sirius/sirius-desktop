@@ -340,6 +340,18 @@
 				<code>EReferencePredicate</code> instead of Guava&#8217;s 
 				<code>Predicate&lt;EReference&gt;</code>.
 			</li>
+			<li>In class 
+				<code>org.eclipse.sirius.business.api.session.SessionEventBroker</code>, the method 
+				<code>addlLocalTrigger()</code> now takes a 
+				<code>org.eclipse.emf.transaction.NotificationFilter</code> instead of a Guava-specific 
+				<code>Predicate&lt;Notification&gt;</code> as first argument.
+			</li>
+			<li>The constant 
+				<code>org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener.IS_IMPACTING</code> is now a 
+				<code>NotificationFilter</code> instead of a 
+				<code>Predicate</code>, to match the API change in 
+				<code>SessionEventBroker.addLocalTrigger()</code>.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
 			<code>org.eclipse.sirius.diagram</code>

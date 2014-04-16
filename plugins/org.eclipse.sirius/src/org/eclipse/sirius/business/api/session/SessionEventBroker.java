@@ -10,11 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.session;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import com.google.common.base.Predicate;
+import org.eclipse.emf.transaction.NotificationFilter;
 
 /**
  * The session event broker allows clients to do trigger specific operations
@@ -42,8 +40,9 @@ public interface SessionEventBroker {
      *            scope which should cause the trigger to get fired.
      * @param trigger
      *            trigger to fire.
+     * @since 1.0.0M7
      */
-    void addLocalTrigger(Predicate<Notification> scope, ModelChangeTrigger trigger);
+    void addLocalTrigger(NotificationFilter scope, ModelChangeTrigger trigger);
 
     /**
      * Add a new trigger listening to local changes on the given element.
