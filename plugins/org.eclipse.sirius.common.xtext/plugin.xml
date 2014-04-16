@@ -18,5 +18,11 @@
             class="org.eclipse.sirius.common.xtext.internal.XTextResourceSetFactory">
       </factory>
    </extension>
+   <extension
+         point="org.eclipse.sirius.sessionManagerListener">
+      <listener
+            class="org.eclipse.sirius.common.xtext.internal.XtextSessionManagerListener">
+      </listener>
+   </extension>
 
 </plugin>

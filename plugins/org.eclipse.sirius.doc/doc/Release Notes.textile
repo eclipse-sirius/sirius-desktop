@@ -99,6 +99,7 @@ h4. Changes in @org.eclipse.sirius@
 * The constants @DSEMANTICDECORATOR_REFERENCE_TO_IGNORE_PREDICATE@ and @NOTATION_VIEW_ELEMENT_REFERENCE_TO_IGNORE_PREDICATE@ from @org.eclipse.sirius.business.internal.session.danalysis.DanglingRefRemovalTrigger@ are now instances of @EReferencePredicate@ instead of Guava's @Predicate<EReference>@.
 * In class @org.eclipse.sirius.business.api.session.SessionEventBroker@, the method @addlLocalTrigger()@ now takes a @org.eclipse.emf.transaction.NotificationFilter@ instead of a Guava-specific @Predicate<Notification>@ as first argument.
 * The constant @org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener.IS_IMPACTING@ is now a @NotificationFilter@ instead of a @Predicate@, to match the API change in @SessionEventBroker.addLocalTrigger()@.
+* The @org.eclipse.sirius.business.api.session.Session@ interface has a new @getSavingPolicy()@ method which gives access to the currently configured saving policy.
 
 h4. Changes in @org.eclipse.sirius.diagram@
 

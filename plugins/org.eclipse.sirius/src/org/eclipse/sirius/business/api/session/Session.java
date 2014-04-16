@@ -361,6 +361,17 @@ public interface Session {
     void setSavingPolicy(SavingPolicy savingPolicy);
 
     /**
+     * Returns the custom saving policy the session should use; if no
+     * SavingPolicy has been defined, creates a default one.<br/>
+     * Subclasses can override this method to define a new default Saving
+     * Policy.
+     * 
+     * @return the saving policy the session is using.
+     * @since 1.0.0M7
+     */
+    SavingPolicy getSavingPolicy();
+
+    /**
      * Return the session event broker suitable for identifying local or remote
      * atomic changes.
      * 

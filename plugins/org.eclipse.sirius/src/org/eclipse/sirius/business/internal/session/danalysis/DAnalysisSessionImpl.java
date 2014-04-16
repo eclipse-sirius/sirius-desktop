@@ -1618,7 +1618,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * 
      * @return the custom saving policy the session should use
      */
-    protected SavingPolicy getSavingPolicy() {
+    public SavingPolicy getSavingPolicy() {
         return savingPolicy != null ? savingPolicy : new SavingPolicyImpl(transactionalEditingDomain);
     }
 
