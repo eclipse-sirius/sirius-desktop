@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.AbsoluteBoundsFilter;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.LostMessageEnd;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
@@ -57,7 +58,18 @@ public abstract class AbstractSequenceAbsoluteBoundsFlagger {
 
             // Update flag
             if (flag != null && absBounds != null) {
-                if (!(ise instanceof Message)) {
+                if (ise instanceof Message) {
+                    // Reset default values, x and width are not used for
+                    // Message standard layout.
+                    // Specific flags set by commands and refresh
+                    // extensions (LayoutConstants.TOOL_CREATION_FLAG,
+                    // LayoutConstants.TOOL_CREATION_FLAG_FROM_SEMANTIC,
+                    // LayoutConstants.EXTERNAL_CHANGE_FLAG) to detect unsafe
+                    // situations have been used by the SequenceLayout triggered
+                    // by those commands.
+                    flag.setX((Integer) DiagramPackage.eINSTANCE.getAbsoluteBoundsFilter_X().getDefaultValue());
+                    flag.setWidth((Integer) DiagramPackage.eINSTANCE.getAbsoluteBoundsFilter_Width().getDefaultValue());
+                } else {
                     flag.setX(absBounds.x);
                     flag.setWidth(absBounds.width);
                 }

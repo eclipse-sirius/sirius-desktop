@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,13 +19,16 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
+import org.eclipse.sirius.diagram.AbsoluteBoundsFilter;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.CollapseFilter;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.GraphicalFilter;
 import org.eclipse.sirius.diagram.IndirectlyCollapseFilter;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
@@ -58,14 +61,25 @@ import com.google.common.collect.Lists;
  * @author mporhel
  */
 public class SequenceDiagramRepresentationsFileMigrationParticipant extends AbstractRepresentationsFileMigrationParticipant {
+
+    /**
+     * Sequence Message flag reset migration version.
+     */
+    public static final Version MESSAGE_FLAG_MIGRATION_VERSION = new Version("8.1.1");
+
+    /**
+     * Sequence GMF bounds migration version.
+     */
+    public static final Version GMF_BOUNDS_MIGRATION_VERSION = new Version("6.7.0.201302181200");
+
+    private static final Version GMF_BOUNDS_ALREADY_MIGRATED_VERSION = new Version("6.5.3");
+
+    private static final Version GMF_BOUNDS_NOT_MIGRATED_VERSION = new Version("6.6.0");
+
     /**
      * The latest VP version for this participant.
      */
-    private static final Version MIGRATION_VERSION = new Version("6.7.0.201302181200");
-
-    private static final Version ALREADY_MIGRATED_VERSION = new Version("6.5.3");
-
-    private static final Version NOT_MIGRATED_VERSION = new Version("6.6.0");
+    private static final Version MIGRATION_VERSION = MESSAGE_FLAG_MIGRATION_VERSION;
 
     private Predicate<Node> isNode = new IsNode();
 
@@ -88,14 +102,38 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
     public void postLoad(DAnalysis dAnalysis, Version loadedVersion) {
         super.postLoad(dAnalysis, loadedVersion);
 
-        if (loadedVersion.compareTo(MIGRATION_VERSION) < 0) {
+        if (loadedVersion.compareTo(GMF_BOUNDS_MIGRATION_VERSION) < 0) {
             // The 6.5.3 maintenance version already contains the migration,
             // migration should be done for versions in
             // [0.0.0, 6.5.3[ U [6.6.0, 6.7.0[.
-            if (loadedVersion.compareTo(ALREADY_MIGRATED_VERSION) < 0 || loadedVersion.compareTo(NOT_MIGRATED_VERSION) >= 0) {
+            if (loadedVersion.compareTo(GMF_BOUNDS_ALREADY_MIGRATED_VERSION) < 0 || loadedVersion.compareTo(GMF_BOUNDS_NOT_MIGRATED_VERSION) >= 0) {
                 List<Diagram> sequenceDiagrams = getGMFSequenceDiagrams(dAnalysis);
                 if (!sequenceDiagrams.isEmpty()) {
                     migrateGMFBoundsOfCollapsedBorderedNode(sequenceDiagrams);
+                }
+            }
+        }
+
+        if (loadedVersion.compareTo(MESSAGE_FLAG_MIGRATION_VERSION) < 0) {
+            List<SequenceDDiagram> sequenceDDiagrams = getSequenceDDiagrams(dAnalysis);
+            if (!sequenceDDiagrams.isEmpty()) {
+                for (SequenceDDiagram diagram : sequenceDDiagrams) {
+                    for (DEdge edge : diagram.getEdges()) {
+                        for (AbsoluteBoundsFilter flag : Iterables.filter(edge.getGraphicalFilters(), AbsoluteBoundsFilter.class)) {
+                            // Reset default values, x and width are not used
+                            // for Message standard layout.
+                            // Specific flags set by commands and refresh
+                            // extensions (LayoutConstants.TOOL_CREATION_FLAG,
+                            // LayoutConstants.TOOL_CREATION_FLAG_FROM_SEMANTIC,
+                            // LayoutConstants.EXTERNAL_CHANGE_FLAG) to detect
+                            // unsafe situations have been used by the
+                            // SequenceLayout triggered by those commands. But
+                            // the reset was not done for Message on previous
+                            // versions.
+                            flag.setX((Integer) DiagramPackage.eINSTANCE.getAbsoluteBoundsFilter_X().getDefaultValue());
+                            flag.setWidth((Integer) DiagramPackage.eINSTANCE.getAbsoluteBoundsFilter_Width().getDefaultValue());
+                        }
+                    }
                 }
             }
         }
@@ -110,17 +148,28 @@ public class SequenceDiagramRepresentationsFileMigrationParticipant extends Abst
      */
     protected List<Diagram> getGMFSequenceDiagrams(DAnalysis dAnalysis) {
         List<Diagram> diagrams = new ArrayList<Diagram>();
-
-        for (DView view : dAnalysis.getOwnedViews()) {
-            for (SequenceDDiagram diagram : Iterables.filter(view.getOwnedRepresentations(), SequenceDDiagram.class)) {
-                DDiagramGraphicalQuery query = new DDiagramGraphicalQuery(diagram);
-                Option<Diagram> option = query.getAssociatedGMFDiagram();
-                if (option.some()) {
-                    diagrams.add(option.get());
-                }
+        for (SequenceDDiagram diagram : getSequenceDDiagrams(dAnalysis)) {
+            DDiagramGraphicalQuery query = new DDiagramGraphicalQuery(diagram);
+            Option<Diagram> option = query.getAssociatedGMFDiagram();
+            if (option.some()) {
+                diagrams.add(option.get());
             }
         }
+        return diagrams;
+    }
 
+    /**
+     * Retrieve all {@link SequenceDDiagram} of the {@link DAnalysis}.
+     * 
+     * @param dAnalysis
+     *            The analysis of the resource to migrate
+     * @return {@link SequenceDDiagram} diagrams of this {@link DAnalysis}
+     */
+    protected List<SequenceDDiagram> getSequenceDDiagrams(DAnalysis dAnalysis) {
+        List<SequenceDDiagram> diagrams = new ArrayList<SequenceDDiagram>();
+        for (DView view : dAnalysis.getOwnedViews()) {
+            Iterables.addAll(diagrams, Iterables.filter(view.getOwnedRepresentations(), SequenceDDiagram.class));
+        }
         return diagrams;
     }
 
