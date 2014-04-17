@@ -207,31 +207,6 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
 
     /**
      * This keeps track of the one adapter used for all
-     * {@link org.eclipse.sirius.viewpoint.DEObjectLink} instances. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected DEObjectLinkItemProvider deObjectLinkItemProvider;
-
-    /**
-     * This creates an adapter for a
-     * {@link org.eclipse.sirius.viewpoint.DEObjectLink}. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public Adapter createDEObjectLinkAdapter() {
-        if (deObjectLinkItemProvider == null) {
-            deObjectLinkItemProvider = new DEObjectLinkItemProvider(this);
-        }
-
-        return deObjectLinkItemProvider;
-    }
-
-    /**
-     * This keeps track of the one adapter used for all
      * {@link org.eclipse.sirius.viewpoint.DSourceFileLink} instances. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -636,8 +611,6 @@ public class ViewpointItemProviderAdapterFactory extends ViewpointAdapterFactory
             metaModelExtensionItemProvider.dispose();
         if (decorationItemProvider != null)
             decorationItemProvider.dispose();
-        if (deObjectLinkItemProvider != null)
-            deObjectLinkItemProvider.dispose();
         if (dSourceFileLinkItemProvider != null)
             dSourceFileLinkItemProvider.dispose();
         if (dAnalysisCustomDataItemProvider != null)

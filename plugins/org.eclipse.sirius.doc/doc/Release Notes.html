@@ -127,7 +127,7 @@
 						<ul>
 							<li>
 								<code>completeToolTipText(String, EObject)</code> allows the diagram type to customize the tooltip displayed in a property section of a given VSM element. 
-								<code>SequenceDiagramTypeProvider</code> implements this method to  mention some Sequence specific variable available in core and diagram tool preconditions in the context of a Sequence diagram.
+								<code>SequenceDiagramTypeProvider</code> implements this method to mention some Sequence specific variable available in core and diagram tool preconditions in the context of a Sequence diagram.
 							</li>
 						</ul>
 					</li>
@@ -160,7 +160,7 @@
 						<code>org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin</code> has been renamed into 
 						<code>org.eclipse.sirius.diagram.DiagramPlugin</code>. This plugin is not a UI plugin any more, 
 						<code>org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin.getPlugin()</code> should be used instead for UI related aspects. For example 
-						<code>DiagramUIPlugin.getPlugin().getPreferenceStore()</code> should be used instead of  
+						<code>DiagramUIPlugin.getPlugin().getPreferenceStore()</code> should be used instead of 
 						<code>DiagramPlugin.getDefault().getPreferenceStore()</code> or 
 						<code>SiriusDiagramEditorPlugin.getInstance().getPreferenceStore()</code>.
 					</li>
@@ -293,6 +293,9 @@
 					<li>a controlled resource.</li>
 				</ul>
 			</li>
+			<li>The 
+				<code>EObjectLink</code> class has been removed from the metamodel. It was not used anywhere. 
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
@@ -339,7 +342,7 @@
 				<code>ContainerMapping</code> type, the following EOperations have been removed: 
 				<code>createContainer()</code>, 
 				<code>updateContainer()</code>, and 
-				<code>getNodesCandidate()</code>. Although their usage is highly discouraged, if you really need to  you can currently use the corresponding methods in the internal 
+				<code>getNodesCandidate()</code>. Although their usage is highly discouraged, if you really need to you can currently use the corresponding methods in the internal 
 				<code>ContainerMappingHelper</code> instead (use 
 				<code>SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticElement)</code> to obtain the 
 				<code>IInterpreter</code> those methods need). As with all internal code, there is no guarantee these methods will still exist in future versions.
@@ -350,7 +353,7 @@
 			<li>In the 
 				<code>NodeMapping</code> type, the 
 				<code>getBestStyle()</code> and 
-				<code>createListElement()</code> EOperations have been removed. Although their usage is highly discouraged, if you really need to  you can currently use the corresponding methods in the internal 
+				<code>createListElement()</code> EOperations have been removed. Although their usage is highly discouraged, if you really need to you can currently use the corresponding methods in the internal 
 				<code>MappingHelper</code> instead (use 
 				<code>SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticElement)</code> to obtain the 
 				<code>IInterpreter</code> these methods need). As with all internal code, there is no guarantee these methods will still exist in future versions.
@@ -367,7 +370,7 @@
 				<code>org.eclipse.sirius.diagram.sequence.util.NotificationQuery</code> class has been removed. It had been exposed by mistake.
 			</li>
 			<li>The 
-				<code>org.eclipse.sirius.diagram.sequence.business.internal.util.NotationPredicate</code> class has been removed from API,  to reduce Sirius&#8217;s exposure of Guava&#8217;specific types.
+				<code>org.eclipse.sirius.diagram.sequence.business.internal.util.NotationPredicate</code> class has been removed from API, to reduce Sirius&#8217;s exposure of Guava&#8217;specific types.
 			</li>
 			<li>All the static methods in 
 				<code>org.eclipse.sirius.diagram.sequence.util.Range</code> which returned Guava-specific types (
@@ -536,7 +539,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>org.eclipse.sirius.tools.api.command.IDiagramCommandFactory.setAutoRefreshDView()</code> method was removed. It had no effect, any code which called it can simply be removed.
 			</li>
 			<li>The deprecated interface 
-				<code>org.eclipse.sirius.business.api.componentization.ViewpointRegistryListener</code> has been removed. Use  
+				<code>org.eclipse.sirius.business.api.componentization.ViewpointRegistryListener</code> has been removed. Use 
 				<code>org.eclipse.sirius.business.api.componentization.ViewpointRegistryListener2</code> instead.
 			</li>
 			<li>
@@ -750,7 +753,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 		</ul>
 		<h3 id="APIChanges4">API Changes</h3>
 		<p>Sirius 1.0.0M4 includes a lots of API-breaking changes, as part of a global effort to improve the quality of the Sirius internals. In this milestone in particular, most of the APIs which were marked as deprecated in previous versions of Sirius (and before that of Viewpoint) have been either removed (if a replacement exists) or marked as non-deprecated (if no replacement exists yet).</p>
-		<h4 id="Changesinorg.eclipse.sirius.common">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
@@ -904,7 +907,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>RefreshRepresentationsCommand</code> instead.
 			</li>
 			<li>Deprecated classes 
-				<code>RevealSiriusElement</code> and  
+				<code>RevealSiriusElement</code> and 
 				<code>RevealDDiagramElement</code> have been removed. Use the class 
 				<code>RevealDDiagramElements</code> instead.
 			</li>
@@ -963,7 +966,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>DiagramDescription</code> has been removed from the viewpoint.ecore meta-model. This reference always returns empty list.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram3">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram3">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -972,7 +975,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>AbstractDiagramEdgeEditPart.refreshPath()</code> have been removed. It is not called in Sirius code anymore
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ecore.extender">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.ecore.extender">Changes in 
 			<code>org.eclipse.sirius.ecore.extender</code>
 		</h4>
 		<ul>
@@ -984,7 +987,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>ECrossReferenceAdapter</code> can be null.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui4">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.ui4">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -1061,7 +1064,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 		</p>
 		<h4 id="MigratingViewpointSpecificationProjects">Migrating Viewpoint Specification Projects</h4>
 		<ul>
-			<li>Any plug-in dependencies towards Viewpoint plug-ins must be updated to the corresponding Sirius plug-in and version number. See the  correspondence table below for the plug-in names to use.</li>
+			<li>Any plug-in dependencies towards Viewpoint plug-ins must be updated to the corresponding Sirius plug-in and version number. See the correspondence table below for the plug-in names to use.</li>
 			<li>If your plug-ins used any of the extension points defined in Viewpoint, you will need to update your 
 				<code>plugin.xml</code> files to reference the correct extension points identifiers. In particular, all Viewpoint Specification Projects created using Viewpoint use the 
 				<code>fr.obeo.dsl.viewpoint.componentization</code> in their 
@@ -1093,7 +1096,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 		</ul>
 		<h3 id="Pluginsversionnumbers.">Plug-ins version numbers.</h3>
 		<p>As of Sirius 0.9, and probably at least until Sirius 1.0 when the APIs will be more stable, all the bundles share the same version, which is also the version for the feature. If you used versioned dependencies to the old Viewpoint code (e.g. dependencies towards Viewpoint 6.8), you need to adjust the versions in your 
-			<code>MANIFEST.MF</code>  files in addition to the namespaces.
+			<code>MANIFEST.MF</code> files in addition to the namespaces.
 		</p>
 		<h3 id="Majornamespacechanges">Major namespace changes</h3>
 		<p>In the context of the move as an official Eclipse project named Sirius, all the namespaces used in the code have changed.</p>
@@ -1262,7 +1265,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 			</tr>
 		</table>
 		<h4 id="JavaPackagesandClassesNames">Java Packages and Classes Names</h4>
-		<p>The Java package names have changed to start with the identifier of the plug-in they are defined in (which has changed).  A simple &#171;Source &gt; Organize Imports&#187; on your source folders should find most classes you used in their new namespace.</p>
+		<p>The Java package names have changed to start with the identifier of the plug-in they are defined in (which has changed). A simple &#171;Source &gt; Organize Imports&#187; on your source folders should find most classes you used in their new namespace.</p>
 		<p>The Viewpoint code base and APIs used the term &#171;Viewpoint&#187; both for the name of the product and for the name of the concept. When it refered to the name of the product, the names where changed to use &#171;Sirius&#187; instead (for example, 
 			<code>ViewpointControlCommand</code> is now 
 			<code>SiriusControlCommand</code>).

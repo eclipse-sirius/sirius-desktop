@@ -91,9 +91,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DNavigationLink/label"/>
       <genOperations ecoreOperation="viewpoint.ecore#//DNavigationLink/isAvailable"/>
     </genClasses>
-    <genClasses ecoreClass="viewpoint.ecore#//DEObjectLink">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DEObjectLink/target"/>
-    </genClasses>
     <genClasses ecoreClass="viewpoint.ecore#//DSourceFileLink">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DSourceFileLink/filePath"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DSourceFileLink/startPosition"/>

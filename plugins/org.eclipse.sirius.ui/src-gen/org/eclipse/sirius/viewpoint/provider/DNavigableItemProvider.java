@@ -139,8 +139,6 @@ public class DNavigableItemProvider extends ItemProviderAdapter implements IEdit
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DNAVIGABLE__OWNED_NAVIGATION_LINKS, ViewpointFactory.eINSTANCE.createDEObjectLink()));
-
         newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.DNAVIGABLE__OWNED_NAVIGATION_LINKS, ViewpointFactory.eINSTANCE.createDSourceFileLink()));
     }
 

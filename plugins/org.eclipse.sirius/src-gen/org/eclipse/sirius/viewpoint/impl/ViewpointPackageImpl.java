@@ -26,7 +26,6 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DAnalysisCustomData;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 import org.eclipse.sirius.viewpoint.DContainer;
-import org.eclipse.sirius.viewpoint.DEObjectLink;
 import org.eclipse.sirius.viewpoint.DFeatureExtension;
 import org.eclipse.sirius.viewpoint.DFile;
 import org.eclipse.sirius.viewpoint.DFolder;
@@ -194,13 +193,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     private EClass dNavigationLinkEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    private EClass deObjectLinkEClass = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -835,24 +827,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * 
      * @generated
      */
-    public EClass getDEObjectLink() {
-        return deObjectLinkEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getDEObjectLink_Target() {
-        return (EReference) deObjectLinkEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public EClass getDSourceFileLink() {
         return dSourceFileLinkEClass;
     }
@@ -1353,9 +1327,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         createEAttribute(dNavigationLinkEClass, DNAVIGATION_LINK__TARGET_TYPE);
         createEAttribute(dNavigationLinkEClass, DNAVIGATION_LINK__LABEL);
 
-        deObjectLinkEClass = createEClass(DE_OBJECT_LINK);
-        createEReference(deObjectLinkEClass, DE_OBJECT_LINK__TARGET);
-
         dSourceFileLinkEClass = createEClass(DSOURCE_FILE_LINK);
         createEAttribute(dSourceFileLinkEClass, DSOURCE_FILE_LINK__FILE_PATH);
         createEAttribute(dSourceFileLinkEClass, DSOURCE_FILE_LINK__START_POSITION);
@@ -1469,7 +1440,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         dRepresentationElementEClass.getESuperTypes().add(this.getDRefreshable());
         dRepresentationElementEClass.getESuperTypes().add(this.getDSemanticDecorator());
         dViewEClass.getESuperTypes().add(this.getDRefreshable());
-        deObjectLinkEClass.getESuperTypes().add(this.getDNavigationLink());
         dSourceFileLinkEClass.getESuperTypes().add(this.getDNavigationLink());
         labelStyleEClass.getESuperTypes().add(this.getBasicLabelStyle());
         styleEClass.getESuperTypes().add(this.getDRefreshable());
@@ -1581,10 +1551,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
                 !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         addEOperation(dNavigationLinkEClass, theEcorePackage.getEBoolean(), "isAvailable", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-        initEClass(deObjectLinkEClass, DEObjectLink.class, "DEObjectLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDEObjectLink_Target(), theEcorePackage.getEObject(), null, "target", null, 1, 1, DEObjectLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(dSourceFileLinkEClass, DSourceFileLink.class, "DSourceFileLink", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getDSourceFileLink_FilePath(), theEcorePackage.getEString(), "filePath", null, 1, 1, DSourceFileLink.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,

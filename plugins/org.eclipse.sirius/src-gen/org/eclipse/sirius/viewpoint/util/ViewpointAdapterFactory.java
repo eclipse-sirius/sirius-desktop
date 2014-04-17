@@ -21,7 +21,6 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DAnalysisCustomData;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 import org.eclipse.sirius.viewpoint.DContainer;
-import org.eclipse.sirius.viewpoint.DEObjectLink;
 import org.eclipse.sirius.viewpoint.DFeatureExtension;
 import org.eclipse.sirius.viewpoint.DFile;
 import org.eclipse.sirius.viewpoint.DFolder;
@@ -190,11 +189,6 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseDNavigationLink(DNavigationLink object) {
             return createDNavigationLinkAdapter();
-        }
-
-        @Override
-        public Adapter caseDEObjectLink(DEObjectLink object) {
-            return createDEObjectLinkAdapter();
         }
 
         @Override
@@ -562,21 +556,6 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createDNavigationLinkAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.DEObjectLink <em>DE Object Link</em>}
-     * '. <!-- begin-user-doc --> This default implementation returns null so
-     * that we can easily ignore cases; it's useful to ignore a case when
-     * inheritance will catch all the cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.DEObjectLink
-     * @generated
-     */
-    public Adapter createDEObjectLinkAdapter() {
         return null;
     }
 

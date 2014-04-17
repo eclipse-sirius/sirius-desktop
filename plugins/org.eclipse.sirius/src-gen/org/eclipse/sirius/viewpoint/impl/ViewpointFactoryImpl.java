@@ -24,7 +24,6 @@ import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DAnalysisCustomData;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
-import org.eclipse.sirius.viewpoint.DEObjectLink;
 import org.eclipse.sirius.viewpoint.DFile;
 import org.eclipse.sirius.viewpoint.DFolder;
 import org.eclipse.sirius.viewpoint.DModel;
@@ -97,8 +96,6 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
             return createMetaModelExtension();
         case ViewpointPackage.DECORATION:
             return createDecoration();
-        case ViewpointPackage.DE_OBJECT_LINK:
-            return createDEObjectLink();
         case ViewpointPackage.DSOURCE_FILE_LINK:
             return createDSourceFileLink();
         case ViewpointPackage.DANALYSIS_CUSTOM_DATA:
@@ -218,16 +215,6 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
     public Decoration createDecoration() {
         DecorationImpl decoration = new DecorationImpl();
         return decoration;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public DEObjectLink createDEObjectLink() {
-        DEObjectLinkImpl deObjectLink = new DEObjectLinkImpl();
-        return deObjectLink;
     }
 
     /**

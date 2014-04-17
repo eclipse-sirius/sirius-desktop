@@ -21,7 +21,6 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DAnalysisCustomData;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 import org.eclipse.sirius.viewpoint.DContainer;
-import org.eclipse.sirius.viewpoint.DEObjectLink;
 import org.eclipse.sirius.viewpoint.DFeatureExtension;
 import org.eclipse.sirius.viewpoint.DFile;
 import org.eclipse.sirius.viewpoint.DFolder;
@@ -262,15 +261,6 @@ public class ViewpointSwitch<T> {
         case ViewpointPackage.DNAVIGATION_LINK: {
             DNavigationLink dNavigationLink = (DNavigationLink) theEObject;
             T result = caseDNavigationLink(dNavigationLink);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ViewpointPackage.DE_OBJECT_LINK: {
-            DEObjectLink deObjectLink = (DEObjectLink) theEObject;
-            T result = caseDEObjectLink(deObjectLink);
-            if (result == null)
-                result = caseDNavigationLink(deObjectLink);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -699,23 +689,6 @@ public class ViewpointSwitch<T> {
      * @generated
      */
     public T caseDNavigationLink(DNavigationLink object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>DE Object Link</em>'. <!-- begin-user-doc --> This implementation
-     * returns null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>DE Object Link</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDEObjectLink(DEObjectLink object) {
         return null;
     }
 

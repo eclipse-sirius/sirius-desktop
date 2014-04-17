@@ -75,15 +75,6 @@ public interface ViewpointFactory extends EFactory {
     Decoration createDecoration();
 
     /**
-     * Returns a new object of class '<em>DE Object Link</em>'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return a new object of class '<em>DE Object Link</em>'.
-     * @generated
-     */
-    DEObjectLink createDEObjectLink();
-
-    /**
      * Returns a new object of class '<em>DSource File Link</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
