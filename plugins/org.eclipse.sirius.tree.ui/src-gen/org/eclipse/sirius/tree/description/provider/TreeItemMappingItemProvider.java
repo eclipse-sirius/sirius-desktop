@@ -254,6 +254,7 @@ public class TreeItemMappingItemProvider extends TreeMappingItemProvider impleme
 
         TreeItemMapping newItemMapping = DescriptionFactory.eINSTANCE.createTreeItemMapping();
         newItemMapping.setDefaultStyle(DescriptionFactory.eINSTANCE.createTreeItemStyleDescription());
+        newItemMapping.setSemanticCandidatesExpression("feature:eAllContents");
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.TREE_ITEM_MAPPING_CONTAINER__SUB_ITEM_MAPPINGS, newItemMapping));
 
