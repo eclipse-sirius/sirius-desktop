@@ -17,7 +17,7 @@
       plugin="org.eclipse.sirius">
 
    <description url="http://www.eclipse.org/sirius">
-      Support for writing Acceleo 3 expressions in the VSM editor.
+      Provides completion and validation for Acceleo 3 expressions in the VSM editor. Install this if you want to create Sirius-based modelers which use Acceleo expressions in their definitions.
    </description>
 
    <copyright>

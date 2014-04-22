@@ -17,7 +17,8 @@
       plugin="org.eclipse.sirius">
 
    <description url="http://www.eclipse.org/sirius">
-      APIs and runtime to write and run automated tests on Sirius-based modelers, using JUnit or SWTbot.
+      APIs and runtime to write and run automated tests on Sirius-based
+modelers, using JUnit or SWTbot. Install this if you want to write automated tests for your own Sirius-based modelers.
    </description>
 
    <copyright>

@@ -17,7 +17,7 @@
       plugin="org.eclipse.sirius">
 
    <description url="http://www.eclipse.org/sirius">
-      The core runtime of Sirius, UI-independant and dialect-agnostic.
+      The core runtime of Sirius, UI-independant and dialect-agnostic. Install this if you want to either use existing Sirius-based modelers or create new ones.
    </description>
 
    <copyright>

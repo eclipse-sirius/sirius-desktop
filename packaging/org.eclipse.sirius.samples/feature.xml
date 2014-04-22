@@ -17,7 +17,7 @@
       plugin="org.eclipse.sirius">
 
    <description url="http://www.eclipse.org/sirius">
-      Samples for Sirius.
+      Sample Sirius-based modelers, which can be used as examples and reference by specifiers. Install this if you plan to create Sirius-based modelers and want to have working examples to study.
    </description>
 
    <copyright>
