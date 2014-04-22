@@ -41,3 +41,7 @@ promote()
 }
 
 promote "packaging/org.eclipse.sirius.update" "org.eclipse.sirius/master/$PLATFORM"
+
+# Publish the target platform definitions used, so that dowstream projects can reference them
+ssh "$SSH_ACCOUNT" mkdir -p "$PROMOTION_ROOT/$MODULE/targets"
+scp -r "$WORKSPACE"/releng/org.eclipse.sirius.targets/* "$SSH_ACCOUNT:$PROMOTION_ROOT/$MODULE/targets"
