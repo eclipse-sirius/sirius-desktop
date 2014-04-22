@@ -9,6 +9,7 @@ h2(#sirius1.0M7). Changes in Sirius 1.0.0M7 (from Sirius 1.0M6)
 h3. Specifier-Visible Changes
 
 * The default value of the _Semantic Candidates Expression_ for Tree Items has changed from an empty string (meaning "any compatible element in the session") to @feature:eAllContents@ which only looks for compatible candidates inside the current element (recursively). The new behavior is more efficient on large models and consistent with what happens for diagrams. The change does not affect existing VSMs which continue to work as before whatever was the expression they used. Users who want the old behavior on specific mappings can simply remove the expression in the properties view.
+* In the _Time Profiler_ view, the _Time (hh:mm:ss,ms)_ has been removed. It was redundant with the existing _Time (ms)_ column, harder to read/sort, and showed wrongly formatted results. 
 
 h3. API Changes
 

@@ -12,7 +12,6 @@ package org.eclipse.sirius.common.ui.tools.api.profiler.view;
 
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
-
 import org.eclipse.sirius.common.tools.api.profiler.TimeProfiler2;
 import org.eclipse.sirius.common.tools.api.profiler.TimeProfiler2.CompositeTask;
 
@@ -25,11 +24,7 @@ public class TimeProfiler2TreeViewContentProvider extends ArrayContentProvider i
 
     private static final Object[] EMPTY_ARRAY = {};
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
-     */
+    @Override
     public Object[] getChildren(final Object parentElement) {
         if (parentElement instanceof CompositeTask) {
             return ((CompositeTask) parentElement).getChildren().toArray();
@@ -37,11 +32,7 @@ public class TimeProfiler2TreeViewContentProvider extends ArrayContentProvider i
         return EMPTY_ARRAY;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
-     */
+    @Override
     public Object getParent(final Object element) {
         if (element instanceof CompositeTask) {
             return ((CompositeTask) element).getParent();
@@ -49,11 +40,6 @@ public class TimeProfiler2TreeViewContentProvider extends ArrayContentProvider i
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ArrayContentProvider#getElements(java.lang.Object)
-     */
     @Override
     public Object[] getElements(final Object inputElement) {
         if (inputElement instanceof TimeProfiler2) {
@@ -62,11 +48,7 @@ public class TimeProfiler2TreeViewContentProvider extends ArrayContentProvider i
         return super.getElements(inputElement);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
-     */
+    @Override
     public boolean hasChildren(final Object element) {
         if (element instanceof CompositeTask) {
             return !((CompositeTask) element).getChildren().isEmpty();

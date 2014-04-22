@@ -210,11 +210,6 @@ public class TimeProfilerView extends ViewPart implements ProfilerListener {
         DslCommonPlugin.PROFILER.addProfilerListener(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.part.WorkbenchPart#createPartControl(org.eclipse.swt.widgets.Composite)
-     */
     @Override
     public void createPartControl(final Composite parent) {
         viewer = new TreeViewer(parent, SWT.FULL_SELECTION | SWT.H_SCROLL | SWT.V_SCROLL);
@@ -222,9 +217,9 @@ public class TimeProfilerView extends ViewPart implements ProfilerListener {
         viewer.getTree().setHeaderVisible(true);
         viewer.setLabelProvider(new TimeProfiler2ViewLabelProvider());
         viewer.setContentProvider(new TimeProfiler2TreeViewContentProvider());
-        final String[] columnNames = { "Task Category", "Task Name", "Time (ms)", "Time (hh:mm:ss,ms)", "Occurences", "Minimum", "Maximum", "Average" };
-        final int[] columnWidths = { 100, 100, 100, 150, 100, 100, 100, 100 };
-        final int[] columnAlignments = { SWT.LEFT, SWT.LEFT, SWT.RIGHT, SWT.RIGHT, SWT.RIGHT, SWT.RIGHT, SWT.RIGHT, SWT.RIGHT };
+        final String[] columnNames = { "Task Category", "Task Name", "Time (ms)", "Occurences", "Minimum", "Maximum", "Average" };
+        final int[] columnWidths = { 100, 100, 100, 100, 100, 100, 100 };
+        final int[] columnAlignments = { SWT.LEFT, SWT.LEFT, SWT.RIGHT, SWT.RIGHT, SWT.RIGHT, SWT.RIGHT, SWT.RIGHT };
         for (int i = 0; i < columnNames.length; i++) {
             final TreeColumn treeColumn = new TreeColumn(viewer.getTree(), SWT.FULL_SELECTION | columnAlignments[i]);
             treeColumn.setText(columnNames[i]);
@@ -251,30 +246,17 @@ public class TimeProfilerView extends ViewPart implements ProfilerListener {
         viewer.setInput(DslCommonPlugin.PROFILER);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.part.WorkbenchPart#setFocus()
-     */
     @Override
     public void setFocus() {
         viewer.getControl().setFocus();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.profiler.ProfilerListener#taskStarted(org.eclipse.sirius.common.tools.api.profiler.ProfilerEvent)
-     */
+    @Override
     public void taskStarted(final ProfilerEvent event) {
         // do nothing.
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.profiler.ProfilerListener#taskStopped(org.eclipse.sirius.common.tools.api.profiler.ProfilerEvent)
-     */
+    @Override
     public void taskStopped(final ProfilerEvent event) {
         // do nothing.
     }
@@ -335,14 +317,9 @@ public class TimeProfilerView extends ViewPart implements ProfilerListener {
         getViewSite().getActionBars().getToolBarManager().add(this.printAction);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.common.tools.api.profiler.ProfilerListener#profilerReinited(org.eclipse.sirius.common.tools.api.profiler.ProfilerEvent)
-     */
+    @Override
     public void profilerReinited(final ProfilerEvent event) {
         // this.viewer.refresh();
-
     }
 
     private void setSorter(final int column) {
@@ -364,7 +341,6 @@ public class TimeProfilerView extends ViewPart implements ProfilerListener {
             }
             break;
         case 2:
-        case 3:
             if (viewer.getSorter() != timeSorter) {
                 viewer.setSorter(timeSorter);
             } else {
@@ -372,7 +348,7 @@ public class TimeProfilerView extends ViewPart implements ProfilerListener {
                 viewer.setSorter(inverseSorter);
             }
             break;
-        case 4:
+        case 3:
             if (viewer.getSorter() != occurencesSorter) {
                 viewer.setSorter(occurencesSorter);
             } else {
@@ -405,12 +381,6 @@ public class TimeProfilerView extends ViewPart implements ProfilerListener {
             this.sorter = sorter;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.jface.viewers.ViewerComparator#compare(org.eclipse.jface.viewers.Viewer,
-         *      java.lang.Object, java.lang.Object)
-         */
         @Override
         public int compare(final Viewer v, final Object e1, final Object e2) {
             return this.sorter == null ? super.compare(v, e1, e2) : -this.sorter.compare(v, e1, e2);

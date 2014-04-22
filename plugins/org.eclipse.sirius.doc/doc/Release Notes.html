@@ -38,6 +38,11 @@
 				<em>Semantic Candidates Expression</em> for Tree Items has changed from an empty string (meaning &#171;any compatible element in the session&#187;) to 
 				<code>feature:eAllContents</code> which only looks for compatible candidates inside the current element (recursively). The new behavior is more efficient on large models and consistent with what happens for diagrams. The change does not affect existing VSMs which continue to work as before whatever was the expression they used. Users who want the old behavior on specific mappings can simply remove the expression in the properties view.
 			</li>
+			<li>In the 
+				<em>Time Profiler</em> view, the 
+				<em>Time (hh:mm:ss,ms)</em> has been removed. It was redundant with the existing 
+				<em>Time (ms)</em> column, harder to read/sort, and showed wrongly formatted results. 
+			</li>
 		</ul>
 		<h3 id="APIChanges">API Changes</h3>
 		<h4 id="separationOfDiagramSpecificConcept-step3">Move diagram.ecore in its own plugin</h4>

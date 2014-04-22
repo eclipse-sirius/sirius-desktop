@@ -42,33 +42,23 @@ public class TimeProfiler2ViewLabelProvider extends LabelProvider implements ITa
     /** The index of the time column. */
     public static final int TIME_COL_MS = 2;
 
-    /** The index of the time column in minutes. */
-    public static final int TIME_COL_MIN = 3;
-
     /** The index of the occurences column. */
-    public static final int OCCURENCES_COL = 4;
+    public static final int OCCURENCES_COL = 3;
 
     /** The index of the minimum time. */
-    private static final int MINIMUM = 5;
+    private static final int MINIMUM = 4;
 
     /** The index of the maximum time. */
-    private static final int MAXIMUM = 6;
+    private static final int MAXIMUM = 5;
 
     /** The index of the average time. */
-    private static final int AVERAGE = 7;
+    private static final int AVERAGE = 6;
 
     private Map<Boolean, Font> fontCache = Maps.newHashMap();
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ITableLabelProvider#getColumnImage(java.lang.Object,
-     *      int)
-     */
+    @Override
     public Image getColumnImage(final Object element, final int columnIndex) {
-
         Image image = null;
-
         if (element instanceof CompositeTask) {
             final CompositeTask item = (CompositeTask) element;
             switch (columnIndex) {
@@ -84,8 +74,6 @@ public class TimeProfiler2ViewLabelProvider extends LabelProvider implements ITa
                 break;
             case TIME_COL_MS:
                 break;
-            case TIME_COL_MIN:
-                break;
             case OCCURENCES_COL:
                 break;
             default:
@@ -95,16 +83,9 @@ public class TimeProfiler2ViewLabelProvider extends LabelProvider implements ITa
         return image;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ITableLabelProvider#getColumnText(java.lang.Object,
-     *      int)
-     */
+    @Override
     public String getColumnText(final Object element, final int columnIndex) {
-
         String text = StringUtil.EMPTY_STRING;
-
         if (element instanceof CompositeTask) {
             final CompositeTask item = (CompositeTask) element;
             switch (columnIndex) {
@@ -116,20 +97,6 @@ public class TimeProfiler2ViewLabelProvider extends LabelProvider implements ITa
                 break;
             case TIME_COL_MS:
                 text = Long.valueOf(item.getEllapsedTime()).toString();
-                break;
-            case TIME_COL_MIN:
-                final long hours = item.getEllapsedTime() / 1000 / 60 / 60;
-                final long minutes = item.getEllapsedTime() / 1000 / 60 - (hours * 60);
-                final long seconds = item.getEllapsedTime() / 1000 - (hours * 60 * 60) - (minutes * 60);
-                final long milliseconds = item.getEllapsedTime() - (hours * 60 * 60 * 1000) - (minutes * 60 * 1000) - (seconds * 1000);
-                final StringBuffer hhMmSsMs = new StringBuffer(Long.toString(hours));
-                hhMmSsMs.append(":");
-                hhMmSsMs.append(Long.toString(minutes));
-                hhMmSsMs.append(":");
-                hhMmSsMs.append(Long.toString(seconds));
-                hhMmSsMs.append(",");
-                hhMmSsMs.append(Long.toString(milliseconds));
-                text = hhMmSsMs.toString();
                 break;
             case OCCURENCES_COL:
                 text = Integer.valueOf(item.getOccurences()).toString();
@@ -150,11 +117,7 @@ public class TimeProfiler2ViewLabelProvider extends LabelProvider implements ITa
         return text;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.IFontProvider#getFont(java.lang.Object)
-     */
+    @Override
     public Font getFont(final Object element) {
         if (element instanceof CompositeTask) {
             final CompositeTask task = (CompositeTask) element;
@@ -162,7 +125,7 @@ public class TimeProfiler2ViewLabelProvider extends LabelProvider implements ITa
         }
         return null;
     }
-
+    
     /**
      * This method helps avoiding memory leaks by keeping track of the already
      * built fonts.
@@ -171,11 +134,10 @@ public class TimeProfiler2ViewLabelProvider extends LabelProvider implements ITa
      *            : bold of the font
      * @return the default font with the given bold value.
      */
-    public Font getFontFromValue(final boolean bold) {
+    private Font getFontFromValue(final boolean bold) {
         if (!fontCache.containsKey(Boolean.valueOf(bold))) {
             fontCache.put(Boolean.valueOf(bold), new Font(Display.getDefault(), "ARIAL", 8, !bold ? SWT.NORMAL : SWT.BOLD));
         }
         return fontCache.get(Boolean.valueOf(bold));
-
     }
 }
