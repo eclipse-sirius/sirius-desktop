@@ -168,7 +168,7 @@ public class CommandContext {
         if (result == null) {
             contextTargets = Lists.newArrayList();
         } else if (result instanceof Collection) {
-            contextTargets = (List<Object>) result;
+            contextTargets = Lists.newArrayList((Collection<?>) result);
         } else {
             contextTargets = Lists.newArrayList(result);
         }
