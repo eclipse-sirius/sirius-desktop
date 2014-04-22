@@ -9,23 +9,30 @@
   Contributors:
        Obeo - Initial API and implementation
 -->
-<feature id="org.eclipse.sirius.runtime.ocl"
-	 label="%featureName"
-	 version="1.0.0.qualifier"
-	 provider-name="%providerName">
+<feature
+      id="org.eclipse.sirius.runtime.ocl"
+      label="%featureName"
+      version="1.0.0.qualifier"
+      provider-name="%providerName"
+      plugin="org.eclipse.sirius">
 
-  <description url="http://www.eclipse.org/sirius">
-    Sirius runtime support for interpreting OCL queries used in Viewpoint Specification Models.
-  </description>
+   <description url="http://www.eclipse.org/sirius">
+      Sirius runtime support for interpreting OCL queries used in Viewpoint Specification Models.
+   </description>
 
-  <copyright>
-    %copyright
-  </copyright>
+   <copyright>
+      %copyright
+   </copyright>
 
-  <license url="%licenseURL">
-    %license
-  </license>
+   <license url="%licenseURL">
+      %license
+   </license>
 
-  <plugin id="org.eclipse.sirius.common.ocl" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+   <plugin
+         id="org.eclipse.sirius.common.ocl"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>

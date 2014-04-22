@@ -9,23 +9,30 @@
   Contributors:
        Obeo - Initial API and implementation
 -->
-<feature id="org.eclipse.sirius.specifier.ide.ui.acceleo"
-	 label="%featureName"
-	 version="1.0.0.qualifier"
-	 provider-name="%providerName">
+<feature
+      id="org.eclipse.sirius.specifier.ide.ui.acceleo"
+      label="%featureName"
+      version="1.0.0.qualifier"
+      provider-name="%providerName"
+      plugin="org.eclipse.sirius">
 
-  <description url="http://www.eclipse.org/sirius">
-    Support for writing Acceleo 3 expressions in the VSM editor.
-  </description>
+   <description url="http://www.eclipse.org/sirius">
+      Support for writing Acceleo 3 expressions in the VSM editor.
+   </description>
 
-  <copyright>
-    %copyright
-  </copyright>
+   <copyright>
+      %copyright
+   </copyright>
 
-  <license url="%licenseURL">
-    %license
-  </license>
+   <license url="%licenseURL">
+      %license
+   </license>
 
-  <plugin id="org.eclipse.sirius.common.acceleo.mtl.ide" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+   <plugin
+         id="org.eclipse.sirius.common.acceleo.mtl.ide"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>

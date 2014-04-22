@@ -13,7 +13,8 @@
       id="org.eclipse.sirius.samples"
       label="%featureName"
       version="1.0.0.qualifier"
-      provider-name="%providerName">
+      provider-name="%providerName"
+      plugin="org.eclipse.sirius">
 
    <description url="http://www.eclipse.org/sirius">
       Samples for Sirius.

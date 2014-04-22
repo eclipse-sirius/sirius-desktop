@@ -9,23 +9,29 @@
   Contributors:
        Obeo - Initial API and implementation
 -->
-<feature id="org.eclipse.sirius.doc.feature"
-	 label="%featureName"
-	 version="1.0.0.qualifier"
-	 provider-name="%providerName">
+<feature
+      id="org.eclipse.sirius.doc.feature"
+      label="%featureName"
+      version="1.0.0.qualifier"
+      provider-name="%providerName"
+      plugin="org.eclipse.sirius">
 
-  <description url="http://www.eclipse.org/sirius">
+   <description url="http://www.eclipse.org/sirius">
     Sirius documentation.
-  </description>
+   </description>
 
-  <copyright>
-    %copyright
-  </copyright>
+   <copyright>
+      %copyright
+   </copyright>
 
-  <license url="%licenseURL">
-    %license
-  </license>
+   <license url="%licenseURL">
+      %license
+   </license>
 
-  <plugin id="org.eclipse.sirius.doc" download-size="0" install-size="0" version="0.0.0"/>
+   <plugin
+         id="org.eclipse.sirius.doc"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
 
 </feature>
