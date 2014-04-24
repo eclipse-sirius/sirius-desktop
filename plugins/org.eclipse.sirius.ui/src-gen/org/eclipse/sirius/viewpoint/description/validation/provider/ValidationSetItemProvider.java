@@ -16,7 +16,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -31,7 +30,6 @@ import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemPr
 import org.eclipse.sirius.viewpoint.description.validation.ValidationFactory;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 /**
  * This is the item provider adapter for a
@@ -199,17 +197,6 @@ public class ValidationSetItemProvider extends DocumentedElementItemProvider imp
         newChildDescriptors.add(createChildParameter(ValidationPackage.Literals.VALIDATION_SET__OWNED_RULES, ValidationFactory.eINSTANCE.createSemanticValidationRule()));
 
         newChildDescriptors.add(createChildParameter(ValidationPackage.Literals.VALIDATION_SET__OWNED_RULES, ValidationFactory.eINSTANCE.createViewValidationRule()));
-    }
-
-    /**
-     * Return the resource locator for this item provider's resources. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public ResourceLocator getResourceLocator() {
-        return SiriusEditPlugin.INSTANCE;
     }
 
 }

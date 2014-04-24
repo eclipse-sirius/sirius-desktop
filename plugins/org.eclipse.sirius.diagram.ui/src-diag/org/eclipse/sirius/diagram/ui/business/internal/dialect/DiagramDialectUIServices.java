@@ -69,7 +69,6 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
-import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.Layer;
@@ -320,9 +319,6 @@ public class DiagramDialectUIServices implements DialectUIServices {
      */
     public Collection<CommandParameter> provideNewChildDescriptors() {
         final Collection<CommandParameter> newChilds = new ArrayList<CommandParameter>();
-        newChilds.add(new CommandParameter(null, DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATIONS, DescriptionFactory.eINSTANCE.createDiagramDescription()));
-        newChilds.add(new CommandParameter(null, DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATIONS, DescriptionFactory.eINSTANCE.createDiagramImportDescription()));
-        newChilds.add(new CommandParameter(null, DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATION_EXTENSIONS, DescriptionFactory.eINSTANCE.createDiagramExtensionDescription()));
         newChilds.addAll(this.getDiagramTypesCreation());
         return newChilds;
     }

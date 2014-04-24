@@ -13,14 +13,20 @@ package org.eclipse.sirius.diagram.description.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.CommandParameter;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IChangeNotifier;
+import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.IDisposable;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -28,7 +34,13 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.util.DescriptionAdapterFactory;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.viewpoint.description.DecorationDescriptionsSet;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support
@@ -638,6 +650,108 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
             layerItemProvider.dispose();
         if (additionalLayerItemProvider != null)
             additionalLayerItemProvider.dispose();
+    }
+
+    /**
+     * A child creation extender for the {@link DescriptionPackage}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public static class DescriptionChildCreationExtender implements IChildCreationExtender {
+        /**
+         * The switch for creating child descriptors specific to each extended
+         * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        protected static class CreationSwitch extends DescriptionSwitch<Object> {
+            /**
+             * The child descriptors being populated. <!-- begin-user-doc -->
+             * <!-- end-user-doc -->
+             * 
+             * @generated
+             */
+            protected List<Object> newChildDescriptors;
+
+            /**
+             * The domain in which to create the children. <!-- begin-user-doc
+             * --> <!-- end-user-doc -->
+             * 
+             * @generated
+             */
+            protected EditingDomain editingDomain;
+
+            /**
+             * Creates the a switch for populating child descriptors in the
+             * given domain. <!-- begin-user-doc --> <!-- end-user-doc -->
+             * 
+             * @generated
+             */
+            CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
+                this.newChildDescriptors = newChildDescriptors;
+                this.editingDomain = editingDomain;
+            }
+
+            /**
+             * <!-- begin-user-doc --> <!-- end-user-doc -->
+             * 
+             * @generated
+             */
+            @Override
+            public Object caseViewpoint(Viewpoint object) {
+                newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATIONS, DescriptionFactory.eINSTANCE.createDiagramDescription()));
+
+                newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATIONS, DescriptionFactory.eINSTANCE.createDiagramImportDescription()));
+
+                newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.VIEWPOINT__OWNED_REPRESENTATION_EXTENSIONS, DescriptionFactory.eINSTANCE.createDiagramExtensionDescription()));
+
+                return null;
+            }
+
+            /**
+             * <!-- begin-user-doc --> <!-- end-user-doc -->
+             * 
+             * @generated
+             */
+            @Override
+            public Object caseDecorationDescriptionsSet(DecorationDescriptionsSet object) {
+                newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.DECORATION_DESCRIPTIONS_SET__DECORATION_DESCRIPTIONS,
+                        DescriptionFactory.eINSTANCE.createMappingBasedDecoration()));
+
+                return null;
+            }
+
+            /**
+             * <!-- begin-user-doc --> <!-- end-user-doc -->
+             * 
+             * @generated
+             */
+            protected CommandParameter createChildParameter(Object feature, Object child) {
+                return new CommandParameter(null, feature, child);
+            }
+
+        }
+
+        /**
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
+            ArrayList<Object> result = new ArrayList<Object>();
+            new CreationSwitch(result, editingDomain).doSwitch((EObject) object);
+            return result;
+        }
+
+        /**
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        public ResourceLocator getResourceLocator() {
+            return DiagramUIPlugin.INSTANCE;
+        }
     }
 
 }

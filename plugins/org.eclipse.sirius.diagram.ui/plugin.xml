@@ -1788,6 +1788,13 @@
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
    </extension>
 
+   <extension point="org.eclipse.emf.edit.childCreationExtenders">
+      <!-- @generated diagram -->
+      <extender
+            uri="http://www.eclipse.org/sirius/description/1.1.0"
+            class="org.eclipse.sirius.diagram.description.provider.DescriptionItemProviderAdapterFactory$DescriptionChildCreationExtender"/>
+   </extension>
+
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated diagram -->
       <factory
@@ -1812,6 +1819,16 @@
                org.eclipse.emf.edit.provider.ITreeItemContentProvider
                org.eclipse.emf.edit.provider.IItemLabelProvider
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.childCreationExtenders">
+      <!-- @generated diagram -->
+      <extender
+            uri="http://www.eclipse.org/sirius/description/1.1.0"
+            class="org.eclipse.sirius.diagram.description.tool.provider.ToolItemProviderAdapterFactory$DescriptionChildCreationExtender"/>
+      <extender
+            uri="http://www.eclipse.org/sirius/description/tool/1.1.0"
+            class="org.eclipse.sirius.diagram.description.tool.provider.ToolItemProviderAdapterFactory$ToolChildCreationExtender"/>
    </extension>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">

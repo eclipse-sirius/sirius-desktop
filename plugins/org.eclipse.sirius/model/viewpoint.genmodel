@@ -145,7 +145,8 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EAttribute viewpoint.ecore#//Customizable/customFeatures"/>
     </genClasses>
     <nestedGenPackages prefix="Description" basePackage="org.eclipse.sirius.viewpoint"
-        resource="XMI" disposableProviderFactory="true" ecorePackage="viewpoint.ecore#//description">
+        resource="XMI" disposableProviderFactory="true" extensibleProviderFactory="true"
+        ecorePackage="viewpoint.ecore#//description">
       <genEnums ecoreEnum="viewpoint.ecore#//description/NavigationTargetType">
         <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/NavigationTargetType/model"/>
         <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/NavigationTargetType/file"/>
@@ -414,7 +415,7 @@
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/DAnnotationEntry/details"/>
       </genClasses>
       <nestedGenPackages prefix="Style" basePackage="org.eclipse.sirius.viewpoint.description"
-          disposableProviderFactory="true" ecorePackage="viewpoint.ecore#//description/style">
+          disposableProviderFactory="true" extensibleProviderFactory="true" ecorePackage="viewpoint.ecore#//description/style">
         <genClasses image="false" ecoreClass="viewpoint.ecore#//description/style/StyleDescription"/>
         <genClasses ecoreClass="viewpoint.ecore#//description/style/BasicLabelStyleDescription">
           <genFeatures createChild="false" propertyCategory="Label" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/style/BasicLabelStyleDescription/labelSize"/>
@@ -445,7 +446,7 @@
         </genClasses>
       </nestedGenPackages>
       <nestedGenPackages prefix="Tool" basePackage="org.eclipse.sirius.viewpoint.description"
-          disposableProviderFactory="true" ecorePackage="viewpoint.ecore#//description/tool">
+          disposableProviderFactory="true" extensibleProviderFactory="true" ecorePackage="viewpoint.ecore#//description/tool">
         <genEnums ecoreEnum="viewpoint.ecore#//description/tool/DragSource">
           <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/tool/DragSource/DIAGRAM"/>
           <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/tool/DragSource/PROJECT_EXPLORER"/>
@@ -675,7 +676,7 @@
         </genClasses>
       </nestedGenPackages>
       <nestedGenPackages prefix="Validation" basePackage="org.eclipse.sirius.viewpoint.description"
-          disposableProviderFactory="true" ecorePackage="viewpoint.ecore#//description/validation">
+          disposableProviderFactory="true" extensibleProviderFactory="true" ecorePackage="viewpoint.ecore#//description/validation">
         <genEnums ecoreEnum="viewpoint.ecore#//description/validation/ERROR_LEVEL">
           <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/validation/ERROR_LEVEL/INFO"/>
           <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/validation/ERROR_LEVEL/WARNING"/>
@@ -718,7 +719,7 @@
         </genClasses>
       </nestedGenPackages>
       <nestedGenPackages prefix="Audit" basePackage="org.eclipse.sirius.viewpoint.description"
-          disposableProviderFactory="true" ecorePackage="viewpoint.ecore#//description/audit">
+          disposableProviderFactory="true" extensibleProviderFactory="true" ecorePackage="viewpoint.ecore#//description/audit">
         <genClasses image="false" ecoreClass="viewpoint.ecore#//description/audit/InformationSection">
           <genOperations ecoreOperation="viewpoint.ecore#//description/audit/InformationSection/getContent">
             <genParameters ecoreParameter="viewpoint.ecore#//description/audit/InformationSection/getContent/eObj"/>

@@ -329,7 +329,7 @@
       <genOperations ecoreOperation="diagram.ecore#//DragAndDropTarget/getDragAndDropDescription"/>
     </genClasses>
     <nestedGenPackages prefix="Description" basePackage="org.eclipse.sirius.diagram"
-        disposableProviderFactory="true" ecorePackage="diagram.ecore#//description">
+        disposableProviderFactory="true" childCreationExtenders="true" ecorePackage="diagram.ecore#//description">
       <genEnums ecoreEnum="diagram.ecore#//description/FoldingStyle">
         <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//description/FoldingStyle/NONE"/>
         <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//description/FoldingStyle/SOURCE"/>
@@ -620,7 +620,7 @@
             propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//description/DragAndDropTargetDescription/dropDescriptions"/>
       </genClasses>
       <nestedGenPackages prefix="Style" basePackage="org.eclipse.sirius.diagram.description"
-          disposableProviderFactory="true" ecorePackage="diagram.ecore#//description/style">
+          disposableProviderFactory="true" childCreationExtenders="true" ecorePackage="diagram.ecore#//description/style">
         <genClasses ecoreClass="diagram.ecore#//description/style/BorderedStyleDescription">
           <genFeatures createChild="false" propertyCategory="Border" propertyDescription="Expression returning the size of the border."
               ecoreFeature="ecore:EAttribute diagram.ecore#//description/style/BorderedStyleDescription/borderSizeComputationExpression"/>
@@ -728,7 +728,7 @@
         <genClasses ecoreClass="diagram.ecore#//description/style/BracketEdgeStyleDescription"/>
       </nestedGenPackages>
       <nestedGenPackages prefix="Tool" basePackage="org.eclipse.sirius.diagram.description"
-          disposableProviderFactory="true" ecorePackage="diagram.ecore#//description/tool">
+          disposableProviderFactory="true" childCreationExtenders="true" ecorePackage="diagram.ecore#//description/tool">
         <genEnums ecoreEnum="diagram.ecore#//description/tool/ReconnectionKind">
           <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//description/tool/ReconnectionKind/RECONNECT_TARGET"/>
           <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//description/tool/ReconnectionKind/RECONNECT_SOURCE"/>
@@ -910,7 +910,7 @@
         </genClasses>
       </nestedGenPackages>
       <nestedGenPackages prefix="Filter" basePackage="org.eclipse.sirius.diagram.description"
-          disposableProviderFactory="true" ecorePackage="diagram.ecore#//description/filter">
+          disposableProviderFactory="true" childCreationExtenders="true" ecorePackage="diagram.ecore#//description/filter">
         <genEnums ecoreEnum="diagram.ecore#//description/filter/FilterKind">
           <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//description/filter/FilterKind/HIDE"/>
           <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//description/filter/FilterKind/COLLAPSE"/>
@@ -948,7 +948,7 @@
         </genClasses>
       </nestedGenPackages>
       <nestedGenPackages prefix="Concern" basePackage="org.eclipse.sirius.diagram.description"
-          disposableProviderFactory="true" ecorePackage="diagram.ecore#//description/concern">
+          disposableProviderFactory="true" childCreationExtenders="true" ecorePackage="diagram.ecore#//description/concern">
         <genClasses ecoreClass="diagram.ecore#//description/concern/ConcernSet">
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/concern/ConcernSet/ownedConcernDescriptions"/>
         </genClasses>

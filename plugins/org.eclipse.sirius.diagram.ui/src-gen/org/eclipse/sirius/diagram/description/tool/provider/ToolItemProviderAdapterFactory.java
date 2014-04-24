@@ -13,14 +13,20 @@ package org.eclipse.sirius.diagram.description.tool.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.CommandParameter;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IChangeNotifier;
+import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.IDisposable;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -28,7 +34,20 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.sirius.diagram.description.tool.ToolFactory;
 import org.eclipse.sirius.diagram.description.tool.util.ToolAdapterFactory;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.Environment;
+import org.eclipse.sirius.viewpoint.description.tool.ContainerModelOperation;
+import org.eclipse.sirius.viewpoint.description.tool.InitEdgeCreationOperation;
+import org.eclipse.sirius.viewpoint.description.tool.InitialContainerDropOperation;
+import org.eclipse.sirius.viewpoint.description.tool.InitialNodeCreationOperation;
+import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
+import org.eclipse.sirius.viewpoint.description.tool.SwitchChild;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+import org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch;
+import org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support
@@ -881,6 +900,284 @@ public class ToolItemProviderAdapterFactory extends ToolAdapterFactory implement
             diagramNavigationDescriptionItemProvider.dispose();
         if (containerDropDescriptionItemProvider != null)
             containerDropDescriptionItemProvider.dispose();
+    }
+
+    /**
+     * A child creation extender for the {@link DescriptionPackage}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public static class DescriptionChildCreationExtender implements IChildCreationExtender {
+        /**
+         * The switch for creating child descriptors specific to each extended
+         * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        protected static class CreationSwitch extends DescriptionSwitch<Object> {
+            /**
+             * The child descriptors being populated. <!-- begin-user-doc -->
+             * <!-- end-user-doc -->
+             * 
+             * @generated
+             */
+            protected List<Object> newChildDescriptors;
+
+            /**
+             * The domain in which to create the children. <!-- begin-user-doc
+             * --> <!-- end-user-doc -->
+             * 
+             * @generated
+             */
+            protected EditingDomain editingDomain;
+
+            /**
+             * Creates the a switch for populating child descriptors in the
+             * given domain. <!-- begin-user-doc --> <!-- end-user-doc -->
+             * 
+             * @generated
+             */
+            CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
+                this.newChildDescriptors = newChildDescriptors;
+                this.editingDomain = editingDomain;
+            }
+
+            /**
+             * <!-- begin-user-doc --> <!-- end-user-doc -->
+             * 
+             * @generated
+             */
+            @Override
+            public Object caseEnvironment(Environment object) {
+                newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS, ToolFactory.eINSTANCE.createToolGroup()));
+
+                newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS, ToolFactory.eINSTANCE.createNodeCreationDescription()));
+
+                newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS, ToolFactory.eINSTANCE.createEdgeCreationDescription()));
+
+                newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS, ToolFactory.eINSTANCE.createContainerCreationDescription()));
+
+                newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS, ToolFactory.eINSTANCE.createDeleteElementDescription()));
+
+                newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS, ToolFactory.eINSTANCE.createDoubleClickDescription()));
+
+                newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS, ToolFactory.eINSTANCE.createReconnectEdgeDescription()));
+
+                newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS, ToolFactory.eINSTANCE.createRequestDescription()));
+
+                newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS, ToolFactory.eINSTANCE.createDirectEditLabel()));
+
+                newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS, ToolFactory.eINSTANCE.createBehaviorTool()));
+
+                newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS, ToolFactory.eINSTANCE.createDiagramCreationDescription()));
+
+                newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS, ToolFactory.eINSTANCE.createDiagramNavigationDescription()));
+
+                newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.ENVIRONMENT__DEFAULT_TOOLS, ToolFactory.eINSTANCE.createContainerDropDescription()));
+
+                return null;
+            }
+
+            /**
+             * <!-- begin-user-doc --> <!-- end-user-doc -->
+             * 
+             * @generated
+             */
+            protected CommandParameter createChildParameter(Object feature, Object child) {
+                return new CommandParameter(null, feature, child);
+            }
+
+        }
+
+        /**
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
+            ArrayList<Object> result = new ArrayList<Object>();
+            new CreationSwitch(result, editingDomain).doSwitch((EObject) object);
+            return result;
+        }
+
+        /**
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        public ResourceLocator getResourceLocator() {
+            return DiagramUIPlugin.INSTANCE;
+        }
+    }
+
+    /**
+     * A child creation extender for the {@link ToolPackage}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public static class ToolChildCreationExtender implements IChildCreationExtender {
+        /**
+         * The switch for creating child descriptors specific to each extended
+         * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        protected static class CreationSwitch extends ToolSwitch<Object> {
+            /**
+             * The child descriptors being populated. <!-- begin-user-doc -->
+             * <!-- end-user-doc -->
+             * 
+             * @generated
+             */
+            protected List<Object> newChildDescriptors;
+
+            /**
+             * The domain in which to create the children. <!-- begin-user-doc
+             * --> <!-- end-user-doc -->
+             * 
+             * @generated
+             */
+            protected EditingDomain editingDomain;
+
+            /**
+             * Creates the a switch for populating child descriptors in the
+             * given domain. <!-- begin-user-doc --> <!-- end-user-doc -->
+             * 
+             * @generated
+             */
+            CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) {
+                this.newChildDescriptors = newChildDescriptors;
+                this.editingDomain = editingDomain;
+            }
+
+            /**
+             * <!-- begin-user-doc --> <!-- end-user-doc -->
+             * 
+             * @generated
+             */
+            @Override
+            public Object caseContainerModelOperation(ContainerModelOperation object) {
+                newChildDescriptors.add(createChildParameter(ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createCreateView()));
+
+                newChildDescriptors.add(createChildParameter(ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createCreateEdgeView()));
+
+                newChildDescriptors.add(createChildParameter(ToolPackage.Literals.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createNavigation()));
+
+                return null;
+            }
+
+            /**
+             * <!-- begin-user-doc --> <!-- end-user-doc -->
+             * 
+             * @generated
+             */
+            @Override
+            public Object caseInitialNodeCreationOperation(InitialNodeCreationOperation object) {
+                newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createCreateView()));
+
+                newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createCreateEdgeView()));
+
+                newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_NODE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createNavigation()));
+
+                return null;
+            }
+
+            /**
+             * <!-- begin-user-doc --> <!-- end-user-doc -->
+             * 
+             * @generated
+             */
+            @Override
+            public Object caseInitialOperation(InitialOperation object) {
+                newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createCreateView()));
+
+                newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createCreateEdgeView()));
+
+                newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createNavigation()));
+
+                return null;
+            }
+
+            /**
+             * <!-- begin-user-doc --> <!-- end-user-doc -->
+             * 
+             * @generated
+             */
+            @Override
+            public Object caseInitEdgeCreationOperation(InitEdgeCreationOperation object) {
+                newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INIT_EDGE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createCreateView()));
+
+                newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INIT_EDGE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createCreateEdgeView()));
+
+                newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INIT_EDGE_CREATION_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createNavigation()));
+
+                return null;
+            }
+
+            /**
+             * <!-- begin-user-doc --> <!-- end-user-doc -->
+             * 
+             * @generated
+             */
+            @Override
+            public Object caseInitialContainerDropOperation(InitialContainerDropOperation object) {
+                newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_CONTAINER_DROP_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createCreateView()));
+
+                newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_CONTAINER_DROP_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createCreateEdgeView()));
+
+                newChildDescriptors.add(createChildParameter(ToolPackage.Literals.INITIAL_CONTAINER_DROP_OPERATION__FIRST_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createNavigation()));
+
+                return null;
+            }
+
+            /**
+             * <!-- begin-user-doc --> <!-- end-user-doc -->
+             * 
+             * @generated
+             */
+            @Override
+            public Object caseSwitchChild(SwitchChild object) {
+                newChildDescriptors.add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createCreateView()));
+
+                newChildDescriptors.add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createCreateEdgeView()));
+
+                newChildDescriptors.add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createNavigation()));
+
+                return null;
+            }
+
+            /**
+             * <!-- begin-user-doc --> <!-- end-user-doc -->
+             * 
+             * @generated
+             */
+            protected CommandParameter createChildParameter(Object feature, Object child) {
+                return new CommandParameter(null, feature, child);
+            }
+
+        }
+
+        /**
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
+            ArrayList<Object> result = new ArrayList<Object>();
+            new CreationSwitch(result, editingDomain).doSwitch((EObject) object);
+            return result;
+        }
+
+        /**
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        public ResourceLocator getResourceLocator() {
+            return DiagramUIPlugin.INSTANCE;
+        }
     }
 
 }
