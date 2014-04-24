@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde?>
+<!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
+<target name="sirius_canary" sequenceNumber="1398324895">
+  <locations>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.nebula.widgets.paperclips.feature.feature.group" version="2.0.0.201309241436"/>
+      <repository id="Paperclips-2_0" location="http://download.eclipse.org/sirius/targetplatform/0.9.0/all/nebula/N201309241436"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.platform.ide" version="4.4.0.I20140422-0800"/>
+      <unit id="org.eclipse.platform.sdk" version="4.4.0.I20140422-0800"/>
+      <unit id="org.eclipse.sdk.ide" version="4.4.0.I20140422-0800"/>
+      <repository id="Eclipse-Luna-Integration" location="http://download.eclipse.org/eclipse/updates/4.4-I-builds"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="com.google.guava" version="0.0.0"/>
+      <unit id="org.junit" version="0.0.0"/>
+      <unit id="org.hamcrest.core" version="0.0.0"/>
+      <unit id="org.hamcrest.library" version="0.0.0"/>
+      <unit id="org.apache.log4j" version="0.0.0"/>
+      <unit id="org.easymock" version="0.0.0"/>
+      <repository id="Orbit-Integration" location="http://download.eclipse.org/modeling/emf/cdo/orbit/latest-I"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.draw2d.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.gef.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.gef.sdk.feature.group" version="0.0.0"/>
+      <repository id="GEF-LastSuccessful" location="https://hudson.eclipse.org/hudson/job/gef-master/lastSuccessfulBuild/artifact/update-site/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.swtbot.eclipse.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.swtbot.eclipse.gef.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.swtbot.eclipse.test.junit.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.swtbot.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.swtbot.forms.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.swtbot.ide.feature.group" version="0.0.0"/>
+      <repository id="SWTBot-LastSuccessful" location="https://hudson.eclipse.org/swtbot/job/swtbot-tycho/ws/org.eclipse.swtbot.updatesite/target/repository/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.edit.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.common.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.ecore.feature.group" version="0.0.0"/>
+      <repository id="EMF-LastSuccessful" location="https://hudson.eclipse.org/xtext/view/EMF/job/emf-core/lastSuccessfulBuild/artifact/build-result/p2.repository/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.uml2.sdk.feature.group" version="0.0.0"/>
+      <repository id="UML2-LastSuccessful" location="https://hudson.eclipse.org/hudson/job/mdt-uml2-master/lastSuccessfulBuild/artifact/UML2.p2.repository/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.ocl.all.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.ocl.core.sdk.feature.group" version="0.0.0"/>
+      <repository id="OCL-LastSuccessful" location="https://hudson.eclipse.org/ocl/job/buckminster-ocl-core-luna-master/lastSuccessfulBuild/artifact/MDT-OCL.p2.repository/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.validation.sdk.feature.group" version="0.0.0"/>
+      <repository id="EMF-Validation-LastSuccessful" location="https://hudson.eclipse.org/hudson/job/emf-validation-master/lastSuccessfulBuild/artifact/update-site/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.query.sdk.feature.group" version="0.0.0"/>
+      <repository id="EMF-Query-LastSuccessful" location="https://hudson.eclipse.org/hudson/job/emf-query-master/lastSuccessfulBuild/artifact/update-site/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.workspace.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.transaction.sdk.feature.group" version="0.0.0"/>
+      <repository id="EMF-Transaction-LastSuccessful" location="https://hudson.eclipse.org/hudson/job/emf-transaction-master/lastSuccessfulBuild/artifact/update-site/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.eef.runtime" version="0.0.0"/>
+      <repository id="EEF-LastSuccessful" location="https://hudson.eclipse.org/hudson/job/emf-eef-master/lastSuccessfulBuild/artifact/releng/org.eclipse.emf.eef.update/target/repository/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.acceleo.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.acceleo.ide.ui" version="0.0.0"/>
+      <repository id="Acceleo-LastSuccessful" location="https://hudson.eclipse.org/acceleo/job/acceleo-master/lastSuccessfulBuild/artifact/releng/org.eclipse.acceleo-updatesite/target/repository/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.compare.feature.group" version="0.0.0"/>
+      <repository id="EMF-Compare-Nightly" location="http://download.eclipse.org/modeling/emf/compare/updates/nightly/latest/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.gmf.runtime.notation.sdk.feature.group" version="0.0.0"/>
+      <repository id="GMF-Notation-LastSuccessful" location="https://hudson.eclipse.org/gmf-notation/job/gmf-notation-master/lastSuccessfulBuild/artifact/update-site/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="0.0.0"/>
+      <repository id="GMF-Runtime-LastSuccessful" location="https://hudson.eclipse.org/gmf-runtime/job/gmf-runtime-master/lastSuccessfulBuild/artifact/update-site/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
+      <repository id="XText-Latest" location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/latest/"/>
+    </location>
+  </locations>
+</target>
