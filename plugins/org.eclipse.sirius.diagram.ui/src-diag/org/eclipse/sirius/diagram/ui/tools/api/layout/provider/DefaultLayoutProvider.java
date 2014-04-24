@@ -26,11 +26,16 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.services.layout.AbstractLayoutEditPartProvider;
+import org.eclipse.gmf.runtime.diagram.ui.services.layout.ILayoutNode;
 import org.eclipse.gmf.runtime.diagram.ui.services.layout.ILayoutNodeOperation;
 import org.eclipse.gmf.runtime.diagram.ui.services.layout.LayoutType;
+import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.LayoutService;
+
+import com.google.common.collect.Iterables;
 
 /**
  * Default layout provider. It delegates the operation using the
@@ -40,30 +45,31 @@ import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.LayoutServic
  */
 public class DefaultLayoutProvider extends AbstractLayoutProvider {
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.business.api.layout.provider.AbstractLayoutProvider#provides(org.eclipse.gmf.runtime.common.core.service.IOperation)
-     */
     @Override
-    public boolean provides(final IOperation operation) {
+    public boolean provides(IOperation operation) {
         if (operation instanceof ILayoutNodeOperation) {
-            final ILayoutNodeOperation layoutNodeOperation = (ILayoutNodeOperation) operation;
-            final IAdaptable layoutHint = layoutNodeOperation.getLayoutHint();
-            final String layoutType = (String) layoutHint.getAdapter(String.class);
-            if (LayoutType.DEFAULT.equals(layoutType)) {
+            ILayoutNodeOperation layoutNodeOperation = (ILayoutNodeOperation) operation;
+            IAdaptable layoutHint = layoutNodeOperation.getLayoutHint();
+            String layoutType = (String) layoutHint.getAdapter(String.class);
+            return LayoutType.DEFAULT.equals(layoutType) && isLayoutForSiriusDiagram(layoutNodeOperation);
+        }
+        return false;
+    }
+
+    /**
+     * Check that at least one of the nodes we'are asked to layout is part of a
+     * Sirius diagram.
+     */
+    private boolean isLayoutForSiriusDiagram(ILayoutNodeOperation layoutOperation) {
+        for (ILayoutNode node : Iterables.filter(layoutOperation.getLayoutNodes(), ILayoutNode.class)) {
+            Diagram diag = node.getNode() != null ? node.getNode().getDiagram() : null;
+            if (diag != null && DiagramPackage.Literals.DDIAGRAM.isInstance(diag.getElement())) {
                 return true;
             }
         }
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.services.layout.AbstractLayoutEditPartProvider#layoutEditParts(java.util.List,
-     *      org.eclipse.core.runtime.IAdaptable)
-     */
     @Override
     public Command layoutEditParts(final List selectedObjects, final IAdaptable layoutHint) {
         DslCommonPlugin.PROFILER.startWork(ARRANGE_ALL);
@@ -75,7 +81,6 @@ public class DefaultLayoutProvider extends AbstractLayoutProvider {
             final IGraphicalEditPart container = (IGraphicalEditPart) currentEntry.getKey();
             final List<EditPart> children = currentEntry.getValue();
             if (container instanceof DiagramEditPart) {
-                // addConnection.
                 final DiagramEditPart diagramEditPart = (DiagramEditPart) container;
                 children.addAll(diagramEditPart.getConnections());
             }
@@ -89,13 +94,10 @@ public class DefaultLayoutProvider extends AbstractLayoutProvider {
                     cc.add(gmfLayoutProvider.layoutEditParts(children, layoutHint));
                     if (gmfLayoutProvider instanceof AbstractLayoutProvider) {
                         this.getViewsToChangeBoundsRequest().putAll(((AbstractLayoutProvider) gmfLayoutProvider).getViewsToChangeBoundsRequest());
-                        // ((AbstractAirLayoutProvider)
-                        // gmfLayoutProvider).getViewsToChangeBoundsRequest().clear();
                     }
                 }
             }
         }
-        // this.getViewsToChangeBoundsRequest().clear();
         DslCommonPlugin.PROFILER.stopWork(ARRANGE_ALL);
         return cc;
     }
