@@ -193,10 +193,14 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
         };
         if (associatedInstance != null) {
             TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(associatedInstance);
-            try {
-                TransactionUtil.runExclusive(domain, runnable);
-            } catch (InterruptedException e) {
-                SiriusPlugin.getDefault().error(e.getLocalizedMessage(), e);
+            if (domain != null) {
+                try {
+                    TransactionUtil.runExclusive(domain, runnable);
+                } catch (InterruptedException e) {
+                    SiriusPlugin.getDefault().error(e.getLocalizedMessage(), e);
+                }
+            } else {
+                runnable.run();
             }
         } else {
             runnable.run();
