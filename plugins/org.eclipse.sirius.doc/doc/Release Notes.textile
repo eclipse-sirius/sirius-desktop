@@ -89,8 +89,8 @@ h4. Changes in @org.eclipse.sirius@
 * The message @org.eclipse.sirius.business.api.modelingproject.ModelingProject.ZERO_REPRESENTATIONS_FILE_FOUND_IN@ has been removed without replacement. It was not really an API constant.
 * The behavior of method @org.eclipse.sirius.business.api.modelingproject.ModelingProject.getMainRepresentationsFileURI()@ has changed. It now marks this project as invalid and adds a marker on it, if it is considered as invalid (no or many representations files).
 * A new query @org.eclipse.sirius.business.api.query.IFileQuery@ has been added with a method to check if file is handled by an opened session, ie:
-** a semantic resource of this session,</LI>
-** a referenced sub representations file,</LI>
+** a semantic resource of this session,
+** a referenced sub representations file,
 ** a controlled resource.
 * The @EObjectLink@ class has been removed from the metamodel. It was not used anywhere. 
 * In interface @org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch@, the @getFirstRelevantContainerFinder()@ method which returned a Guava @Function<EObject, EObject>@ has been replaced with the new method @getFirstRelevantContainer(EObject)@ which directly returns the result of applying the previously returned function. All implementers in Sirius itself have been updated. 
