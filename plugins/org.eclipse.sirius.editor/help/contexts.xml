@@ -200,18 +200,6 @@
    
       </description>
    </context>
-   <context id="DEObjectLink">
-     <description>
-       A link that references an EObject.
-
-       
-         
-   <!-- Start of user code DEObjectLink description -->
-   
-   <!-- End of user code DEObjectLink description -->
-   
-      </description>
-   </context>
    <context id="DSourceFileLink">
      <description>
        A link that references a Source File.
