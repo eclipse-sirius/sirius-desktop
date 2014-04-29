@@ -9,7 +9,7 @@
   Contributors:
        Obeo - Initial API and implementation
 -->
-<toc label="Sirius">
+<toc label="Sirius" topic="doc/index.html">
   <topic href="doc/Release Notes.html" label="Release Notes">
   </topic>
   <topic href="doc/user/Sirius User Manual.html" label="Sirius User Manual">
