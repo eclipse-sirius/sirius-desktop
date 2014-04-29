@@ -142,7 +142,7 @@ public class EdgeCreationCommandBuilder extends AbstractDiagramCommandBuilder {
             interpreter.unSetVariable(IInterpreterSiriusVariables.SOURCE_VIEW_PRE);
             interpreter.unSetVariable(IInterpreterSiriusVariables.TARGET_VIEW_PRE);
             interpreter.unSetVariable(IInterpreterSiriusVariables.CONTAINER);
-            interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diagram.get());
+            interpreter.unSetVariable(IInterpreterSiriusVariables.DIAGRAM);
         }
 
         return valid;
@@ -171,14 +171,14 @@ public class EdgeCreationCommandBuilder extends AbstractDiagramCommandBuilder {
             interpreter.setVariable(IInterpreterSiriusVariables.SOURCE_PRE, sourceTarget);
             interpreter.setVariable(IInterpreterSiriusVariables.SOURCE_VIEW_PRE, source);
             interpreter.setVariable(IInterpreterSiriusVariables.CONTAINER, container);
-            interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diagram);
+            interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diagram.get());
 
             valid = evaluatePrecondition(interpreter, sourceTarget, tool.getConnectionStartPrecondition());
 
             interpreter.unSetVariable(IInterpreterSiriusVariables.SOURCE_PRE);
             interpreter.unSetVariable(IInterpreterSiriusVariables.SOURCE_VIEW_PRE);
             interpreter.unSetVariable(IInterpreterSiriusVariables.CONTAINER);
-            interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, diagram);
+            interpreter.unSetVariable(IInterpreterSiriusVariables.DIAGRAM);
         }
 
         return valid;
