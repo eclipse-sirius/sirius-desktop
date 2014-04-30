@@ -10,7 +10,7 @@
  *    IBM Corporation and others - The code for default load/save options was lifted
  *      from GMF's org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory.
  *******************************************************************************/
-package org.eclipse.sirius.diagram.ui.business.internal.parser;
+package org.eclipse.sirius.business.internal.resource.parser;
 
 import java.util.HashMap;
 import java.util.Map;

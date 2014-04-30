@@ -10,7 +10,7 @@
  *    IBM Corporation and others - The deresolve() method was lifted from GMF's
  *         org.eclipse.gmf.runtime.emf.core.resources.GMFHelper
  *******************************************************************************/
-package org.eclipse.sirius.diagram.ui.business.internal.parser;
+package org.eclipse.sirius.business.internal.resource.parser;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;

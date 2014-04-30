@@ -1447,14 +1447,6 @@
 
   <!-- gmf generator persistent region end -->
 
-   <extension point="org.eclipse.emf.ecore.extension_parser">
-      <?gmfgen generated="false"?>
-      <parser
-         type="aird"
-         class="org.eclipse.sirius.diagram.ui.business.internal.parser.AirDResourceFactory">
-      </parser>
-   </extension>
-
   <extension
             point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
          <contributionItemProvider

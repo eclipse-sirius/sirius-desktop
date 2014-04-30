@@ -321,4 +321,12 @@
             genModel="model/contribution.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <?gmfgen generated="false"?>
+      <parser
+         type="aird"
+         class="org.eclipse.sirius.business.internal.resource.parser.AirDResourceFactory">
+      </parser>
+   </extension>
+
 </plugin>
