@@ -100,7 +100,6 @@ h4. Changes in @org.eclipse.sirius@
 * In class @org.eclipse.sirius.business.api.session.SessionEventBroker@, the method @addlLocalTrigger()@ now takes a @org.eclipse.emf.transaction.NotificationFilter@ instead of a Guava-specific @Predicate<Notification>@ as first argument.
 * The constant @org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener.IS_IMPACTING@ is now a @NotificationFilter@ instead of a @Predicate@, to match the API change in @SessionEventBroker.addLocalTrigger()@.
 * The @org.eclipse.sirius.business.api.session.Session@ interface has a new @getSavingPolicy()@ method which gives access to the currently configured saving policy.
-* @org.eclipse.sirius.business.api.query.AirdResourceQuery.getAirDCrossReferenceAdapter()@ and @org.eclipse.sirius.business.internal.resource.AirdCrossReferencerAdapter@ have been removed. The adapter was here to customize GMF's own @org.eclipse.gmf.runtime.emf.core.util.CrossReferenceAdapter@. However considering the way Sirius uses GMF, this adapter is not needed.
 
 h4. Changes in @org.eclipse.sirius.diagram@
 

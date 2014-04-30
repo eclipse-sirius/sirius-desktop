@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,7 @@ import java.util.Set;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
@@ -123,11 +123,7 @@ public final class DeleteHelper {
             }
 
             for (final View v : allViewsToDelete) {
-                // ViewUtil.destroy(v) is no more needed, simply remove the view
-                // from its container, DanglinRefRemovalTrigger will complete
-                // the work. This prevents GMF to install its
-                // CrossReferencerAdapter
-                EcoreUtil.remove(v);
+                ViewUtil.destroy(v);
             }
 
             // Hide notes associated to element hide in model.

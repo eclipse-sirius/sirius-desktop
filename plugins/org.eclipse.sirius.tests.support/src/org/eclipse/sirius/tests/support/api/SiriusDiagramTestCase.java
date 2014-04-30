@@ -95,7 +95,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.commands.ResetStylePropertie
 import org.eclipse.sirius.diagram.ui.tools.internal.handler.ChangeFilterActivation;
 import org.eclipse.sirius.tests.support.command.CreateNoteAttachmentRecordingCommand;
 import org.eclipse.sirius.tests.support.command.CreateNoteRecordingCommand;
-import org.eclipse.sirius.tests.support.internal.helper.CrossReferenceAdapterDetector;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -1389,15 +1388,5 @@ public class SiriusDiagramTestCase extends SiriusTestCase {
      */
     protected IFile getFile(String fileName) {
         return ResourcesPlugin.getWorkspace().getRoot().getProject(SiriusTestCase.TEMPORARY_PROJECT_NAME).getFile(fileName);
-    }
-
-    @Override
-    protected void tearDown() throws Exception {
-        CrossReferenceAdapterDetector crossRefDetector = new CrossReferenceAdapterDetector();
-        crossRefDetector.checkNoCrossReferenceAdapter();
-
-        super.tearDown();
-
-        crossRefDetector.assertNoCrossReferenceAdapterFound();
     }
 }

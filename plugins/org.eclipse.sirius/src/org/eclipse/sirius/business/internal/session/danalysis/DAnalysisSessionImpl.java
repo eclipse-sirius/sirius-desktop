@@ -1,6 +1,6 @@
 //CHECKSTYLE:OFF
 /*******************************************************************************
- * Copyright (c) 2013, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2013, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -62,6 +62,7 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.extender.MetamodelDescriptorManager;
 import org.eclipse.sirius.business.api.helper.SiriusResourceHelper;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.business.api.query.AirDResouceQuery;
 import org.eclipse.sirius.business.api.query.DAnalysisQuery;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
@@ -83,11 +84,13 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelectorServic
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionService;
+import org.eclipse.sirius.business.api.session.resource.AirdResource;
 import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
 import org.eclipse.sirius.business.internal.migration.resource.ResourceFileExtensionPredicate;
 import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistryListener;
 import org.eclipse.sirius.business.internal.query.DAnalysisesInternalQuery;
+import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
 import org.eclipse.sirius.business.internal.session.ReloadingPolicyImpl;
 import org.eclipse.sirius.business.internal.session.RepresentationNameListener;
 import org.eclipse.sirius.business.internal.session.SessionEventBrokerImpl;
@@ -105,6 +108,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.Illegal
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.semantic.RemoveSemanticResourceCommand;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
@@ -447,9 +451,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     /**
      * This method allows adding {@link ModelChangeTrigger} to the current
-     * session {@link SessionEventBroker}. This method is called during the
-     * opening of the Session, before setting the open attribute to true and
-     * before launching the SessionListener.OPENED notifications.
+     * session {@link SessionEventBroker}. This method is called during the opening of
+     * the Session, before setting the open attribute to true and before
+     * launching the SessionListener.OPENED notifications.
      */
     protected void initLocalTriggers() {
         Predicate<Notification> danglingRemovalPredicate = Predicates.or(DanglingRefRemovalTrigger.IS_DETACHMENT, DanglingRefRemovalTrigger.IS_ATTACHMENT);
@@ -1706,8 +1710,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             ViewpointRegistry.getInstance().removeListener(this);
         }
         notifyListeners(SessionListener.CLOSING);
-        // Disable resolution of proxy for the ECrossReferenceAdapter of
-        // session during the closing
+        // Disable resolution of proxy for all airdCrossReferenceAdapter of
+        // session resources and for semanticCrossReferencer during the closing
+        List<AirDCrossReferenceAdapter> airdCrossReferenceAdapters = disableCrossReferenceAdaptersResolution(Iterables.filter(getAllSessionResources(), AirdResource.class));
         if (getSemanticCrossReferencer() instanceof LazyCrossReferencer) {
             ((LazyCrossReferencer) getSemanticCrossReferencer()).disableResolve();
         }
@@ -1778,8 +1783,11 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (semanticResources != null) {
             semanticResources.clear();
         }
-        // Re-enable resolution of proxy for the ECrossReferenceAdapter of
-        // session during the closing
+        // Enable resolution for all airdCrossReferenceAdapter of session
+        // resources after the closing
+        for (AirDCrossReferenceAdapter airDCrossReferenceAdapter : airdCrossReferenceAdapters) {
+            airDCrossReferenceAdapter.enableResolve();
+        }
         if (getSemanticCrossReferencer() instanceof LazyCrossReferencer) {
             ((LazyCrossReferencer) getSemanticCrossReferencer()).enableResolve();
         }
@@ -1818,6 +1826,25 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      */
     protected void doDisposePermissionAuthority(ResourceSet resourceSet) {
         PermissionAuthorityRegistry.getDefault().getPermissionAuthority(resourceSet).dispose(resourceSet);
+    }
+
+    /**
+     * @param resources
+     *            List of resources that potentially having a
+     *            AirDCrossReferenceAdapter.
+     * @return The list of airDCrossReferenceAdapter for which the resolution
+     *         has been disabled.
+     */
+    private List<AirDCrossReferenceAdapter> disableCrossReferenceAdaptersResolution(Iterable<AirdResource> resources) {
+        List<AirDCrossReferenceAdapter> airdCrossReferenceAdapters = Lists.newArrayList();
+        for (AirdResource representationsFileResource : resources) {
+            Option<AirDCrossReferenceAdapter> optionalAirdCrossReferenceAdapter = new AirDResouceQuery(representationsFileResource).getAirDCrossReferenceAdapter();
+            if (optionalAirdCrossReferenceAdapter.some()) {
+                airdCrossReferenceAdapters.add(optionalAirdCrossReferenceAdapter.get());
+                optionalAirdCrossReferenceAdapter.get().disableResolve();
+            }
+        }
+        return airdCrossReferenceAdapters;
     }
 
     /**

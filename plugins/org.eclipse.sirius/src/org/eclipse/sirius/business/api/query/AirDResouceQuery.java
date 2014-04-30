@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2011 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.query;
 
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;
+import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -78,4 +80,17 @@ public class AirDResouceQuery {
         return annotation.some();
     }
 
+    /**
+     * Return the airDCrossReferenceAdapter of this resource.
+     * 
+     * @return the airDCrossReferenceAdapter of this resource.
+     */
+    public Option<AirDCrossReferenceAdapter> getAirDCrossReferenceAdapter() {
+        for (Adapter adapter : resource.eAdapters()) {
+            if (adapter instanceof AirDCrossReferenceAdapter) {
+                return Options.newSome((AirDCrossReferenceAdapter) adapter);
+            }
+        }
+        return Options.newNone();
+    }
 }
