@@ -1587,7 +1587,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                 }
                 // Add the unknown resources to the semantic resources of this
                 // session.
-                dAnalysisRefresher.addAutomaticallyLoadedResourcesToSemanticResources(resourcesBeforeReload);
+                if (dAnalysisRefresher != null) {
+                    dAnalysisRefresher.addAutomaticallyLoadedResourcesToSemanticResources(resourcesBeforeReload);
+                }
                 notifyListeners(SessionListener.REPLACED);
             }
         } catch (InterruptedException e) {
