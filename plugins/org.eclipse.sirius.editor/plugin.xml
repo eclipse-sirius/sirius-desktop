@@ -1016,16 +1016,16 @@
                 tab="viewpoint.tab.behavior">
         <input type="org.eclipse.sirius.viewpoint.description.RepresentationElementMapping"/>        
       </propertySection>
-  	  <propertySection
+  	  <!--propertySection
                class="org.eclipse.sirius.editor.properties.sections.description.identifiedelement.IdentifiedElementLabelPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.description.identifiedelement.IdentifiedElementLabelFilter"
                id="description.section.identifiedElement.Label"
                afterSection="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.viewpoint.description.IdentifiedElement"/>        
-      </propertySection>
+      </propertySection-->
   	  <propertySection
-               class="org.eclipse.sirius.editor.properties.sections.description.identifiedelement.IdentifiedElementNamePropertySection"
+               class="org.eclipse.sirius.editor.properties.sections.description.identifiedelement.IdentifiedElementNamePropertySectionSpec"
                filter="org.eclipse.sirius.editor.properties.filters.description.identifiedelement.IdentifiedElementNameFilter"
                id="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.general">
