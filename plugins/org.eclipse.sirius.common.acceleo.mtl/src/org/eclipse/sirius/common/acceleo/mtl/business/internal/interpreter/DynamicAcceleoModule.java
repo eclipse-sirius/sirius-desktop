@@ -753,7 +753,7 @@ public class DynamicAcceleoModule {
                 compiledModules.put(actualModule, result);
             }
 
-            boolean resultOK = result != null && result.getCompiledExpression() instanceof EObject && result.getStatus().getSeverity() != IStatus.ERROR;
+            boolean resultOK = result != null && result.getCompiledExpression() instanceof EObject && (result.getStatus() == null || result.getStatus().getSeverity() < IStatus.ERROR);
             if (resultOK) {
                 // The module is created with an "http acceleo" URI ...
                 // which won't allow us to retrieve the corresponding java
