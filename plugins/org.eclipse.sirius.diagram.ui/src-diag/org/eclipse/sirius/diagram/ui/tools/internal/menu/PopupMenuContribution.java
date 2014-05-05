@@ -44,7 +44,6 @@ import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -59,6 +58,7 @@ import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.view.RootLayoutData;
+import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.ui.tools.api.draw2d.ui.figures.FigureUtilities;
@@ -161,7 +161,7 @@ public class PopupMenuContribution implements IContributionItemProvider {
                         primarySelection = editpart;
                     }
                     domain = editpart.getViewer().getEditDomain();
-                    if (editpart instanceof IGraphicalEditPart && SiriusUtil.isFromSirius(editpart)) {
+                    if (editpart instanceof IGraphicalEditPart && editpart instanceof ISiriusEditPart) {
                         final IGraphicalEditPart curPart = (IGraphicalEditPart) editpart;
                         final EObject designerObj = curPart.resolveSemanticElement();
                         if (designerObj instanceof DSemanticDecorator) {

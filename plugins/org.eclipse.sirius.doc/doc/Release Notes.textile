@@ -118,7 +118,8 @@ h4. Changes in @org.eclipse.sirius.diagram@
 * The @AbstractNodeMapping.getDNodesDone()@ EOperation has been removed. It was not used anywhere.
 * In the @NodeMapping@ type, the @getBestStyle()@ and @createListElement()@ EOperations have been removed. Although their usage is highly discouraged, if you really need to you can currently use the corresponding methods in the internal @MappingHelper@ instead (use @SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticElement)@ to obtain the @IInterpreter@ these methods need). As with all internal code, there is no guarantee these methods will still exist in future versions.
 * In interface @org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider@, the methods @allowsPinUnpin()@, @allowsHideReveal@, and @allowsCopyPasteLayout()@  have been modified to take directly the @DDiagramElement@ to test (and return a @boolean@) instead of returning a Guava-specific @Predicate@ which then had to be invoked.
-* In class @org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper@, .the method @allowsPinUnpin()@ has been modified to take a @DDiagramElement@ directly and return a @boolean@, instead of taking a @DDiagram@ and return a Guava-specific @Predicate@ which then had to be invoked on actual @DDiagramElements@.. 
+* In class @org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper@, .the method @allowsPinUnpin()@ has been modified to take a @DDiagramElement@ directly and return a @boolean@, instead of taking a @DDiagram@ and return a Guava-specific @Predicate@ which then had to be invoked on actual @DDiagramElements@..
+* The interface @org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart@ has been added and is now part of all the type hierarchy of any EditPart provided by Sirius. This allows a simple @instanceof ISiriusEditPart@ to discriminate the edit part instances coming from Sirius.
 
 h4. Changes in @org.eclipse.sirius.diagram.sequence@
 

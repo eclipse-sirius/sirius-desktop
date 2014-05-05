@@ -25,7 +25,7 @@ import org.eclipse.swt.graphics.Image;
  * 
  * @author ymortier
  */
-public interface IDiagramElementEditPart extends IGraphicalEditPart {
+public interface IDiagramElementEditPart extends IGraphicalEditPart, ISiriusEditPart {
 
     /**
      * Returns the diagram element that is represented by this edit part.
@@ -36,8 +36,8 @@ public interface IDiagramElementEditPart extends IGraphicalEditPart {
 
     /**
      * Returns the target value of the
-     * {@link org.eclipse.sirius.viewpoint.DSemanticDecorator} that is represented by
-     * this edit part.
+     * {@link org.eclipse.sirius.viewpoint.DSemanticDecorator} that is
+     * represented by this edit part.
      * 
      * @return the target value of the
      *         {@link org.eclipse.sirius.viewpoint.DSemanticDecorator} that is

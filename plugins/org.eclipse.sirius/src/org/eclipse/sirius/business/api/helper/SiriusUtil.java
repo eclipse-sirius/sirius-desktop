@@ -157,12 +157,15 @@ public final class SiriusUtil {
     }
 
     /**
-     * Return <code>true</code> if the specified object is a instance of the
-     * viewpoint meta model.
+     * Return <code>true</code> if the specified object is an instance of a
+     * class coming from Sirius. Using this method has strong implications
+     * regarding extensibility as subtypes of classes or interfaces coming from
+     * Sirius will return false here. You might want to pause a minute before
+     * using it.
      * 
      * @param ep
-     *            : any {@link EditPart}
-     * @return true if this editpart is coming from a DDiagram editor, false
+     *            : any {@link Object}
+     * @return true if this object class is from the Sirius project false
      *         otherwise.
      */
     public static boolean isFromSirius(final Object ep) {

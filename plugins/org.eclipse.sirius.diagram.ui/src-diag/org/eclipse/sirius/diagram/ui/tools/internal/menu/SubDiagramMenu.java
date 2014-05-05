@@ -26,7 +26,6 @@ import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocument
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
@@ -39,6 +38,7 @@ import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.tool.DiagramCreationDescription;
+import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.CreateRepresentationFromRepresentationCreationDescription;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -90,7 +90,7 @@ public class SubDiagramMenu implements IContributionItemProvider {
                         return;
                     }
                 }
-                if (SiriusUtil.isFromSirius(eObj)) {
+                if (editpart instanceof ISiriusEditPart) {
                     final IMenuManager navigate = (IMenuManager) menu.find("navigateMenu");
                     final Separator createGroup = new Separator(CREATE_REPRESENTATION_GROUP_SEPARATOR);
                     navigate.add(createGroup);

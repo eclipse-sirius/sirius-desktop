@@ -51,6 +51,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DCompartmentConnectionRefreshMgr;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.SelectionCommandAppender;
@@ -84,7 +85,7 @@ import com.google.common.collect.Maps;
  * @see {@link ShapeCompartmentEditPart}
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  */
-public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCompartmentEditPart implements INotableEditPart {
+public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCompartmentEditPart implements INotableEditPart, ISiriusEditPart {
 
     private static final int DEFAULT_MARGIN = 4;
 

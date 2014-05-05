@@ -439,7 +439,11 @@
 				<code>boolean</code>, instead of taking a 
 				<code>DDiagram</code> and return a Guava-specific 
 				<code>Predicate</code> which then had to be invoked on actual 
-				<code>DDiagramElements</code>.. 
+				<code>DDiagramElements</code>..
+			</li>
+			<li>The interface 
+				<code>org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart</code> has been added and is now part of all the type hierarchy of any EditPart provided by Sirius. This allows a simple 
+				<code>instanceof ISiriusEditPart</code> to discriminate the edit part instances coming from Sirius.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.sequence">Changes in 

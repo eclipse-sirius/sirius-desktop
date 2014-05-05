@@ -45,6 +45,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
+import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.SelectionCommandAppender;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LaunchToolEditPolicy;
@@ -67,7 +68,7 @@ import com.google.common.collect.Iterables;
  * @see {@link ListCompartmentEditPart}
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
-public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartmentEditPart implements INotableEditPart, ISurfaceEditPart {
+public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartmentEditPart implements INotableEditPart, ISurfaceEditPart, ISiriusEditPart {
 
     /**
      * @not-generated : copy/paste support

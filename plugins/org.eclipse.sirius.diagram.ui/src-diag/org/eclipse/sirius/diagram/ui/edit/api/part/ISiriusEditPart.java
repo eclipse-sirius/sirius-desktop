@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,13 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.edit.api.part;
 
-import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-
 /**
- * The top level edit part of all Style.
+ * A marker interface for all the edit parts which should be managed in some way
+ * by Sirius.
  * 
- * @author ymortier
+ * @author cbrun
+ * 
  */
-public interface IStyleEditPart extends IGraphicalEditPart, ISiriusEditPart {
+public interface ISiriusEditPart {
 
 }

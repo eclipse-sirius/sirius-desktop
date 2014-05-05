@@ -36,7 +36,6 @@ import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
@@ -104,7 +103,7 @@ public class NavigateToMenuContribution implements IContributionItemProvider {
                 if (editpart instanceof IGraphicalEditPart) {
                     final IGraphicalEditPart curPart = (IGraphicalEditPart) editpart;
                     final EObject designerObj = curPart.resolveSemanticElement();
-                    if (designerObj instanceof DSemanticDecorator && SiriusUtil.isFromSirius(designerObj)) {
+                    if (designerObj instanceof DSemanticDecorator) {
                         buildOpenExistingRepresentationsMenu(menu, designerDiag, editpart, designerObj);
                     }
                 }

@@ -19,7 +19,7 @@ import org.eclipse.sirius.ext.base.Option;
  * 
  * @author ymortier
  */
-public interface IDDiagramEditPart extends IGraphicalEditPart {
+public interface IDDiagramEditPart extends IGraphicalEditPart, ISiriusEditPart {
 
     /**
      * Returns the diagram that is represented by this edit part.
