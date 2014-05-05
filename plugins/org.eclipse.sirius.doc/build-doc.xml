@@ -10,11 +10,11 @@
        Obeo - Initial API and implementation
 -->
 <project name="org.eclipse.sirius.doc" default="generate-html">
-	<property name="wikitext.standalone" value="${user.home}/.local/ant" description="Path to the WikiText standalone JARs" />
+	<property name="wikitext.standalone" value="${basedir}/lib" description="Path to the WikiText standalone JARs" />
 
 	<path id="wikitext.classpath">
 		<fileset dir="${wikitext.standalone}">
-			<include name="org.eclipse.mylyn.wikitext.*core*_1.8.*.jar" />
+			<include name="org.eclipse.mylyn.wikitext.*core*.jar" />
 		</fileset>
 	</path>
 
