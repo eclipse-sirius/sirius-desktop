@@ -8,30 +8,30 @@ include "modules/shared-license.tpd"
 with source, requirements
 
 location Eclipse-Staging "http://download.eclipse.org/releases/staging" {
-        com.google.guava;version=[11.0.2,16.0)
-        com.ibm.icu;version=50.1.1
-        org.eclipse.acceleo.feature.group;version=[3.5.0,4.0.0)
-        org.eclipse.acceleo.ide.ui;version=[3.5.0,4.0.0)
-        org.eclipse.draw2d.sdk.feature.group;version=[3.9.0,4.0.0)
-        org.eclipse.emf.common.feature.group;version=[2.10.0,2.11.0)
-        org.eclipse.emf.compare.feature.group;version=[3.0.0,3.1.0)
-        org.eclipse.emf.ecore.feature.group;version=[2.10.0,2.11.0)
-        org.eclipse.emf.edit.feature.group;version=[2.10.0,2.11.0)
-        org.eclipse.emf.eef.runtime;version=[1.2.0,2.0.0)
-        org.eclipse.emf.feature.group;version=[2.10.0,2.11.0)
-        org.eclipse.emf.sdk.feature.group;version=[2.10.0,2.11.0)
-        org.eclipse.emf.transaction.feature.group;version=[1.8.0,1.9.0)
-        org.eclipse.emf.transaction.sdk.feature.group;version=[1.8.0,1.9.0)
-        org.eclipse.emf.validation.sdk.feature.group;version=[1.8.0,1.9.0)
-        org.eclipse.emf.workspace.feature.group;version=[1.8.0,1.9.0)
-        org.eclipse.equinox.sdk.feature.group;version=[3.10.0.0,4.0.0)
-        org.eclipse.gef.feature.group;version=[3.9.0,4.0.0)
-        org.eclipse.gef.sdk.feature.group;version=[3.9.0,4.0.0)
-        org.eclipse.gmf.runtime.notation.sdk.feature.group;version=[1.8.0,1.9.0)
-        org.eclipse.gmf.runtime.sdk.feature.group;version=[1.8.0,1.9.0)
-        org.eclipse.ocl.all.feature.group;version=[5.0.0,5.1.0)
-        org.eclipse.ocl.core.sdk.feature.group;version=[5.0.0,5.1.0)
-        org.eclipse.platform.feature.group;version=[4.4.0,4.5.0)
-        org.eclipse.sdk.feature.group;version=[4.4.0,4.5.0)
-        org.eclipse.xtext.sdk.feature.group;version=[2.6.0,2.7.0)
+        com.google.guava;version=lazy
+        com.ibm.icu;version=lazy
+        org.eclipse.acceleo.feature.group;version=lazy
+        org.eclipse.acceleo.ide.ui;version=lazy
+        org.eclipse.draw2d.sdk.feature.group;version=lazy
+        org.eclipse.emf.common.feature.group;version=lazy
+        org.eclipse.emf.compare.feature.group;version=lazy
+        org.eclipse.emf.ecore.feature.group;version=lazy
+        org.eclipse.emf.edit.feature.group;version=lazy
+        org.eclipse.emf.eef.runtime;version=lazy
+        org.eclipse.emf.feature.group;version=lazy
+        org.eclipse.emf.sdk.feature.group;version=lazy
+        org.eclipse.emf.transaction.feature.group;version=lazy
+        org.eclipse.emf.transaction.sdk.feature.group;version=lazy
+        org.eclipse.emf.validation.sdk.feature.group;version=lazy
+        org.eclipse.emf.workspace.feature.group;version=lazy
+        org.eclipse.equinox.sdk.feature.group;version=lazy
+        org.eclipse.gef.feature.group;version=lazy
+        org.eclipse.gef.sdk.feature.group;version=lazy
+        org.eclipse.gmf.runtime.notation.sdk.feature.group;version=lazy
+        org.eclipse.gmf.runtime.sdk.feature.group;version=lazy
+        org.eclipse.ocl.all.feature.group;version=lazy
+        org.eclipse.ocl.core.sdk.feature.group;version=lazy
+        org.eclipse.platform.feature.group;version=lazy
+        org.eclipse.sdk.feature.group;version=lazy
+        org.eclipse.xtext.sdk.feature.group;version=lazy
 }
