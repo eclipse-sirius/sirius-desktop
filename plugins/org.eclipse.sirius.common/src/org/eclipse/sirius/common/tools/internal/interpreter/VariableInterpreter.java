@@ -94,7 +94,7 @@ public class VariableInterpreter extends AbstractInterpreter implements org.ecli
             } else if (variables.containsKey(variableName)) {
                 result = variables.get(variableName);
             } else {
-                throw new EvaluationException("Unknown variable " + variableName + ".");
+                throw new EvaluationException("Unknown variable \"" + variableName + "\".");
             }
         }
         return result;

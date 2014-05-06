@@ -107,7 +107,7 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
     public Object evaluate(EObject target, String expression) throws EvaluationException {
         Object evaluation = null;
         if (target != null && expression != null && expression.startsWith(PREFIX)) {
-            String serviceCall = expression.substring(PREFIX.length());
+            String serviceCall = expression.substring(PREFIX.length()).trim();
             Option<String> receiverVariableName = getReceiverVariableName(serviceCall);
             EObject receiver = target;
             String serviceName = serviceCall;
@@ -143,7 +143,7 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
             IService service = services.get(serviceName);
             return service.call(target);
         } else {
-            throw new EvaluationException("Unknown service " + serviceName);
+            throw new EvaluationException("Unknown service \"" + serviceName + "\"");
         }
     }
 
