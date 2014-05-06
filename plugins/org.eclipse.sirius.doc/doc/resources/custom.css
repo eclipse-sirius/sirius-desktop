@@ -12,14 +12,14 @@ body {
 @media (max-width : 1224px) {	
 	body {
 		background-color: #fff;
-	width: 800px;
+	width: 690px;
 	margin: 0 auto;
 	padding-bottom: 30px;
 	color: #383838;
 }
 	
-	img {
-	max-width: 90%;
+img {
+	max-width: 70%;
 	}
 }
 
