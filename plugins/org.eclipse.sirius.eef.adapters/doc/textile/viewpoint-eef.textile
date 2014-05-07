@@ -17,7 +17,7 @@ Initialize EEF generation models with the action _EEF > Initialize EEF models_ i
 !(shadow)../images/1 - Initializing EEF models.png!
 
 The created files use a simple strategy to define EEF properties. You can change theses settings to improve the logic of your properties. 
-If you plan to use EEF properties only in a designer  (for diagrams, tables, ... but not on the EMF treeviewer), you can configure the viewpoint contributor ID for the EEF views. Open the generated EEFGen model, under the root element   _Model_, select the _Gen Edition Context_   and set the value *org.eclipse.sirius.diagram* to the _Descriptors contributorID_ properties.  
+If you plan to use EEF properties only in a designer  (for diagrams, tables, ... but not on the EMF treeviewer), you can configure the viewpoint contributor ID for the EEF views. Open the generated EEFGen model, under the root element   _Model_, select the _Gen Edition Context_   and set the value *org.eclipse.sirius.diagram.ui* to the _Descriptors contributorID_ properties.  
 
 !(shadow)../images/2 - VP Contributor ID.png!
 
@@ -76,7 +76,7 @@ Note: this configuration can also be cloned to be used with viewpoint tables and
 
 A @propertySection@ must be declared for each *tab* generated in the  @org.eclipse.ui.views.properties.tabbed.propertyTabs@ extension.
 
-Note: if you have not set *Descriptors Contributor ID* in the @.eefgen@ model and you override the @org.eclipse.sirius.diagram@, @org.eclipse.sirius.table.ui.EditorID@ or @org.eclipse.sirius.tree.ui.EditorID@ contributorId, do not forget to remove the use of @org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider@ as labelProvider. Otherwise you will get a viewpoint type name as title of the properties view instead of the type name of the semantic model element.
+Note: if you have not set *Descriptors Contributor ID* in the @.eefgen@ model and you override the @org.eclipse.sirius.diagram.ui@, @org.eclipse.sirius.table.ui.EditorID@ or @org.eclipse.sirius.tree.ui.EditorID@ contributorId, do not forget to remove the use of @org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider@ as labelProvider. Otherwise you will get a viewpoint type name as title of the properties view instead of the type name of the semantic model element.
 
 h2. Testing properties view
 
@@ -101,7 +101,7 @@ To do this, you have to modify the @org.eclipse.ui.views.properties.tabbed.prope
 * @extension@
 * @behaviors@
 * ...
-(please refer to the @plugin.xml@ file of @org.eclipse.sirius.diagram@ for a complete list).
+(please refer to the @plugin.xml@ file of @org.eclipse.sirius.diagram.ui@ for a complete list).
 
 Example :
 

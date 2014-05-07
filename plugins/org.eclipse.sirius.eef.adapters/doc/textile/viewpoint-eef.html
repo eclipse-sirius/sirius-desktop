@@ -82,7 +82,7 @@
 			<br/>If you plan to use EEF properties only in a designer  (for diagrams, tables, ... but not on the EMF treeviewer), you can configure the viewpoint contributor ID for the EEF views. Open the generated EEFGen model, under the root element   
 			<em>Model</em>, select the 
 			<em>Gen Edition Context</em>   and set the value 
-			<strong>org.eclipse.sirius.diagram</strong> to the 
+			<strong>org.eclipse.sirius.diagram.ui</strong> to the 
 			<em>Descriptors contributorID</em> properties.  
 		</p>
 		<p>
@@ -158,7 +158,7 @@
 		<p>Note: if you have not set 
 			<strong>Descriptors Contributor ID</strong> in the 
 			<code>.eefgen</code> model and you override the 
-			<code>org.eclipse.sirius.diagram</code>, 
+			<code>org.eclipse.sirius.diagram.ui</code>, 
 			<code>org.eclipse.sirius.table.ui.EditorID</code> or 
 			<code>org.eclipse.sirius.tree.ui.EditorID</code> contributorId, do not forget to remove the use of 
 			<code>org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider</code> as labelProvider. Otherwise you will get a viewpoint type name as title of the properties view instead of the type name of the semantic model element.
@@ -197,7 +197,7 @@
 		</ul>
 		<p>(please refer to the 
 			<code>plugin.xml</code> file of 
-			<code>org.eclipse.sirius.diagram</code> for a complete list).
+			<code>org.eclipse.sirius.diagram.ui</code> for a complete list).
 		</p>
 		<p>Example :</p>
 		<pre><code>   &lt;extension

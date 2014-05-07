@@ -56,6 +56,9 @@ Unlike, the "Step1":#separationOfDiagramSpecificConcept-step1, a simple "Organiz
 * The method @static void refreshSelection(DiagramElementMapping)@ from @org.eclipse.sirius.editor.tools.api.menu.AbstractEObjectRefactoringAction@ is not available anymore.
 * Preferences
 ** @org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys.PREF_AUTO_PIN_ON_CREATE@ has been moved to @org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys@.
+* Ids
+** The Sirius diagram editor id is now @org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID@
+** Its property contributor is now @org.eclipse.sirius.diagram.ui@. This id has to be changed in plugins providing additional property sections to the Sirius diagram editor (created with EEF for example).
 
 h5. Moved extension points
 
