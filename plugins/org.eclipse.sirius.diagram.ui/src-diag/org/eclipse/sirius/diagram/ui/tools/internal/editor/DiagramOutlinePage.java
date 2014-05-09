@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    IBM Corporation - initial API and implementation 
+ *    IBM Corporation - initial API and implementation
  *    Dmitry Stadnik (Borland) - contribution for bugzilla 136582
  *    Obeo - Extracted from org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor.DiagramOutlinePage
  *           and adapted for Sirius.
@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.editor;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -80,6 +81,10 @@ public class DiagramOutlinePage extends AbstractExtendedContentOutlinePage {
     /** The id of the over view. 1 */
     protected static final int ID_OVERVIEW = 1;
 
+    private static final String SIRIUS_DIAGRAM_OUTLINE_SHOW_OUTLINE = "sirius.diagram.outline.show.outline";
+
+    private static final String SIRIUS_DIAGRAM_OUTLINE_SHOW_OVERVIEW = "sirius.diagram.outline.show.overview";
+
     /** The diagram workbench part. */
     protected IDiagramWorkbenchPart diagramWorkbenchPart;
 
@@ -129,9 +134,9 @@ public class DiagramOutlinePage extends AbstractExtendedContentOutlinePage {
     private GraphicalViewer graphicalViewer;
 
     /** */
-    private IObjectActionDelegateWrapper[] menuContributions;
+    private final Collection<IObjectActionDelegateWrapper> menuContributions = Lists.newArrayList();
 
-    private Collection<DiagramOutlinePageListener> listeners;
+    private final Collection<DiagramOutlinePageListener> listeners = Lists.newArrayList();
 
     /**
      * Constructor.
@@ -156,9 +161,10 @@ public class DiagramOutlinePage extends AbstractExtendedContentOutlinePage {
         this.graphicalViewer = viewer;
         this.contentProvider = contentProvider;
         this.labelProvider = labelProvider;
-        this.menuContributions = menuContributions;
         this.viewerComparator = comparator;
-        this.listeners = Lists.newArrayList();
+        if (menuContributions != null) {
+            Collections.addAll(this.menuContributions, menuContributions);
+        }
     }
 
     /**
@@ -321,26 +327,42 @@ public class DiagramOutlinePage extends AbstractExtendedContentOutlinePage {
     public void dispose() {
         if (disposeListener != null && getEditor() != null && !getEditor().isDisposed()) {
             getEditor().removeDisposeListener(disposeListener);
+            disposeListener = null;
         }
 
-        this.diagramWorkbenchPart = null;
+        IToolBarManager tbm = this.getSite().getActionBars().getToolBarManager();
+        if (showOutlineAction != null) {
+            tbm.remove(SIRIUS_DIAGRAM_OUTLINE_SHOW_OUTLINE);
+            showOutlineAction = null;
+        }
+        if (showOverviewAction != null) {
+            tbm.remove(SIRIUS_DIAGRAM_OUTLINE_SHOW_OVERVIEW);
+            showOverviewAction = null;
+        }
 
         if (thumbnail != null) {
             thumbnail.deactivate();
+            thumbnail = null;
         }
         if (overview != null) {
             overview.dispose();
+            overview = null;
         }
+        overviewInitialized = false;
 
         pageBook.dispose();
         contentProvider.dispose();
         labelProvider.dispose();
-        showOutlineAction = null;
-        showOverviewAction = null;
-        this.overviewInitialized = false;
+
         outlineViewer.getTree().dispose();
         outline.dispose();
+
         listeners.clear();
+        menuContributions.clear();
+
+        diagramWorkbenchPart = null;
+        graphicalViewer = null;
+
         super.dispose();
     }
 
@@ -411,6 +433,7 @@ public class DiagramOutlinePage extends AbstractExtendedContentOutlinePage {
         };
         showOutlineAction.setImageDescriptor(IDiagramOutlinePage.DESC_OUTLINE);
         showOutlineAction.setToolTipText(IDiagramOutlinePage.OUTLINE_VIEW_OUTLINE_TIP_TEXT);
+        showOutlineAction.setId(SIRIUS_DIAGRAM_OUTLINE_SHOW_OUTLINE);
         tbm.add(showOutlineAction);
     }
 
@@ -430,6 +453,7 @@ public class DiagramOutlinePage extends AbstractExtendedContentOutlinePage {
         };
         showOverviewAction.setImageDescriptor(IDiagramOutlinePage.DESC_OVERVIEW);
         showOverviewAction.setToolTipText(IDiagramOutlinePage.OUTLINE_VIEW_OVERVIEW_TIP_TEXT);
+        showOverviewAction.setId(SIRIUS_DIAGRAM_OUTLINE_SHOW_OVERVIEW);
         tbm.add(showOverviewAction);
     }
 

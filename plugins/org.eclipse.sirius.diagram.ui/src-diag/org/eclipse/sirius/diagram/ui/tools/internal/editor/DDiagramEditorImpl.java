@@ -253,9 +253,6 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     private DiagramOutlinePage diagramOutline;
 
-    /** the outline popup menu items and associated actions */
-    private IObjectActionDelegateWrapper[] outlinePopupMenuActions;
-
     private boolean isClosing;
 
     private IPermissionAuthority authority;
@@ -538,7 +535,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             keyHandler.put(KeyStroke.getPressed(SWT.DEL, 127, 0), getActionRegistry().getAction(ActionFactory.DELETE.getId()));
 
             keyHandler.put(/* CTRL + D */
-            KeyStroke.getPressed((char) 0x4, 100, SWT.CTRL), getActionRegistry().getAction(ActionIds.ACTION_DELETE_FROM_MODEL));
+                    KeyStroke.getPressed((char) 0x4, 100, SWT.CTRL), getActionRegistry().getAction(ActionIds.ACTION_DELETE_FROM_MODEL));
         }
         return keyHandler;
     }
@@ -739,9 +736,6 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         if (diagramOutline != null) {
             this.diagramOutline = null;
         }
-        if (outlinePopupMenuActions != null) {
-            this.outlinePopupMenuActions = null;
-        }
     }
 
     private void disposePostCommitListener() {
@@ -779,7 +773,8 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     }
 
     private void initOutline() {
-        outlinePopupMenuActions = new IObjectActionDelegateWrapper[] {
+        /** the outline popup menu items and associated actions */
+        IObjectActionDelegateWrapper[] outlinePopupMenuActions = new IObjectActionDelegateWrapper[] {
                 new IObjectActionDelegateWrapper(new HideDDiagramElementAction(HideDDiagramElement.HIDE_ELEMENT_LABEL), HideDDiagramElement.HIDE_ELEMENT_LABEL) {
 
                     @Override
@@ -871,8 +866,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         if (isOldUIEnabled()) {
             diagramOutline = new DiagramOutlineWithBookPages(this.getDiagramEditPart().getModel(), getGraphicalViewer(), outlinePopupMenuActions);
         } else {
-            diagramOutline = new DiagramOutlinePage(this.getDiagramEditPart().getModel(), new OutlineLabelProvider(), new OutlineContentProvider(), new OutlineComparator(), getGraphicalViewer(),
-                    outlinePopupMenuActions);
+            diagramOutline = new DiagramOutlinePage(this.getDiagramEditPart().getModel(), new OutlineLabelProvider(), new OutlineContentProvider(), new OutlineComparator(), getGraphicalViewer(), outlinePopupMenuActions);
         }
 
     }
@@ -1079,9 +1073,9 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     @Override
     protected void setDocumentProvider(final IEditorInput input) {
         if (getSession() != null/*
-                                 * && (input instanceof IFileEditorInput ||
-                                 * input instanceof URIEditorInput)
-                                 */) {
+         * && (input instanceof IFileEditorInput ||
+         * input instanceof URIEditorInput)
+         */) {
             setDocumentProvider(DiagramUIPlugin.getPlugin().getDocumentProvider(getSession().getTransactionalEditingDomain()));
         } else {
             // super.setDocumentProvider(input);
