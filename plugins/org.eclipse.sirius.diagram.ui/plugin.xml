@@ -1302,7 +1302,7 @@
                <iterate
                      operator="and">
                   <instanceof
-                        value="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+                        value="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
                   </instanceof>
                </iterate>
             </with>
