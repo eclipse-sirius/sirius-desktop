@@ -14,7 +14,7 @@ location Eclipse-Luna "http://download.eclipse.org/releases/luna" {
         org.eclipse.acceleo.ide.ui;version=[3.5.0,4.0.0)
         org.eclipse.draw2d.sdk.feature.group;version=[3.9.0,4.0.0)
         org.eclipse.emf.common.feature.group;version=[2.10.0,2.11.0)
-        org.eclipse.emf.compare.feature.group;version=[2.2.0, 3.0.0)
+        org.eclipse.emf.compare.feature.group;version=2.2.0
         org.eclipse.emf.ecore.feature.group;version=[2.10.0,2.11.0)
         org.eclipse.emf.edit.feature.group;version=[2.10.0,2.11.0)
         org.eclipse.emf.eef.runtime;version=[1.2.0,2.0.0)
