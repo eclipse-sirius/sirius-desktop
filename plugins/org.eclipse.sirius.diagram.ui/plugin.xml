@@ -962,6 +962,11 @@
            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
            sequence="M1+O">
      </key>
+      <key
+            commandId="org.eclipse.sirius.diagram.ui.find.binding.FindElementAction"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M2+M1+M3+F">
+      </key>
    </extension>
 
 
@@ -1354,7 +1359,7 @@
       <objectContribution
             adaptable="false"
             id="org.eclipse.sirius.diagram.ui.edit.parts.ViewNodeEditPartMenu"
-            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+            objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart">
          <action
                class="org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromDiagramAction"
                definitionId="org.eclipse.sirius.diagram.ui.command.deleteFromDiagram"
@@ -1365,22 +1370,40 @@
                menubarPath="editMenu/additions">
          </action>
       </objectContribution>
-  </extension>
-
-<extension point="org.eclipse.ui.popupMenus">
       <objectContribution
             adaptable="false"
             id="org.eclipse.sirius.diagram.ui.show.outline"
-            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
-    <action
-          class="org.eclipse.sirius.diagram.ui.tools.internal.outline.QuickOutlineAction"
-           definitionId="org.eclipse.sirius.diagram.ui.command.show.outline"
-           enablesFor="*"
-           id="org.eclipse.sirius.diagram.ui.action.show.outline"
-         label="Quick search">
+            objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
+         <action
+               class="org.eclipse.sirius.diagram.ui.tools.internal.outline.QuickOutlineAction"
+               definitionId="org.eclipse.sirius.diagram.ui.command.show.outline"
+               enablesFor="*"
+               id="org.eclipse.sirius.diagram.ui.action.show.outline"
+               label="Quick search">
          </action>
- </objectContribution>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="org.eclipse.sirius.common.ui.oc.findelement"
+            objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
+         <menu
+               id="org.eclipse.sirius.common.ui.menu.findelement"
+               label="Find"
+               path="additions">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               class="org.eclipse.sirius.diagram.ui.tools.api.action.FindElementAction"
+               definitionId="org.eclipse.sirius.diagram.ui.find.binding.FindElementAction"
+               id="org.eclipse.sirius.diagram.ui.find.binding.FindElementAction"
+               label="Find"
+               style="push">
+         </action>
+      </objectContribution>
   </extension>
+
 
      <extension
             point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
@@ -1682,28 +1705,6 @@
      </definition>
   </extension>
   
-     <extension point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            adaptable="false"
-            id="org.eclipse.sirius.common.ui.oc.findelement"
-            objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
-         <menu 
-            id="org.eclipse.sirius.common.ui.menu.findelement" 
-            label="Find" 
-            path="additions"> 
-            <separator name="group1"/>
-         </menu>
-         <action
-               class="org.eclipse.sirius.diagram.ui.tools.api.action.FindElementAction"
-               definitionId="org.eclipse.sirius.diagram.ui.find.binding.FindElementAction"
-               id="org.eclipse.sirius.diagram.ui.find.binding.FindElementAction"
-               label="Find"
-               style="push"/>
-       </objectContribution>
-   </extension>
-  <extension point="org.eclipse.ui.bindings">
-    <key commandId="org.eclipse.sirius.diagram.ui.find.binding.FindElementAction" sequence="M2+M1+M3+F" schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
-  </extension>
     <extension point="org.eclipse.ui.commands">
     <category name="Sirius" id="org.eclipse.sirius.common.ui.category"/>
     <command categoryId="org.eclipse.sirius.common.ui.category" description="Find in model" id="org.eclipse.sirius.diagram.ui.find.binding.FindElementAction" name="Find Element"/>
