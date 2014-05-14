@@ -497,6 +497,36 @@
         </popupAction>
      </popupContribution>
   </contributionItemProvider>
+  <?gmfgen generated="true"?>
+  <contributionItemProvider
+        class="org.eclipse.sirius.diagram.ui.internal.providers.SiriusValidationProvider">
+     <Priority name="Low"/>
+        <partContribution id="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID">
+        <partMenuGroup menubarPath="/diagramMenu/" id="validationGroup"/>
+        <partAction id="validateAction" menubarPath="/diagramMenu/validationGroup"/>
+     </partContribution>
+  </contributionItemProvider>
+  <?gmfgen generated="false"?>
+  <contributionItemProvider
+        checkPluginLoaded="false"
+        class="org.eclipse.sirius.diagram.ui.tools.internal.menu.SubDiagramMenu">
+     <Priority name="Highest"/>
+  </contributionItemProvider>
+  <contributionItemProvider
+        checkPluginLoaded="false"
+        class="org.eclipse.sirius.diagram.ui.tools.internal.menu.SpecificationMenuContribution">
+     <Priority name="High"/>
+  </contributionItemProvider>
+  <contributionItemProvider
+        checkPluginLoaded="false"
+        class="org.eclipse.sirius.diagram.ui.tools.internal.menu.NavigateToMenuContribution">
+     <Priority name="High"/>
+  </contributionItemProvider>
+  <contributionItemProvider
+        checkPluginLoaded="false"
+        class="org.eclipse.sirius.diagram.ui.tools.internal.menu.PopupMenuContribution">
+     <Priority name="High"/>
+  </contributionItemProvider>
   </extension>
 
    <extension point="org.eclipse.core.runtime.preferences">
@@ -832,9 +862,6 @@
          description="%update.diagram.description"
          id="org.eclipse.sirius.diagram.ui.updateDiagram"
          name="%update.diagram.name"/>
-   </extension>
-
-   <extension point="org.eclipse.ui.commands">
       <?gmfgen generated="false"?>
       <command
          categoryId="org.eclipse.ui.category.edit"
@@ -917,6 +944,8 @@
            id="org.eclipse.sirius.diagram.ui.command.show.outline"
            name="Quick outline">
      </command>
+     <category name="Sirius" id="org.eclipse.sirius.common.ui.category"/>
+     <command categoryId="org.eclipse.sirius.common.ui.category" description="Find in model" id="org.eclipse.sirius.diagram.ui.find.binding.FindElementAction" name="Find Element"/>
    </extension>
 
    <extension point="org.eclipse.ui.bindings">
@@ -969,20 +998,6 @@
       </key>
    </extension>
 
-
-
-<extension id="ValidationContributionItemProvider" name="Validation"
-      point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
-      <?gmfgen generated="true"?>
-      <contributionItemProvider
-         class="org.eclipse.sirius.diagram.ui.internal.providers.SiriusValidationProvider">
-         <Priority name="Low"/>
-         <partContribution id="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID">
-            <partMenuGroup menubarPath="/diagramMenu/" id="validationGroup"/>
-            <partAction id="validateAction" menubarPath="/diagramMenu/validationGroup"/>
-         </partContribution>
-      </contributionItemProvider>
-   </extension>
 <extension point="org.eclipse.gmf.runtime.common.ui.services.markerNavigationProviders">
       <?gmfgen generated="false"?>
       <MarkerNavigationProvider class="org.eclipse.sirius.diagram.ui.tools.internal.marker.SiriusMarkerNavigationProviderSpec">
@@ -1405,14 +1420,6 @@
   </extension>
 
 
-     <extension
-            point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
-         <contributionItemProvider
-               checkPluginLoaded="false"
-               class="org.eclipse.sirius.diagram.ui.tools.internal.menu.SubDiagramMenu">
-            <Priority name="Highest"/>
-         </contributionItemProvider>
-      </extension>
 
       <!-- adapters for information -->
 
@@ -1469,22 +1476,6 @@
 
   <!-- gmf generator persistent region end -->
 
-  <extension
-            point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
-         <contributionItemProvider
-               checkPluginLoaded="false"
-               class="org.eclipse.sirius.diagram.ui.tools.internal.menu.SpecificationMenuContribution">
-            <Priority name="High"/>
-         </contributionItemProvider>
-      </extension>
-  <extension
-            point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
-         <contributionItemProvider
-               checkPluginLoaded="false"
-               class="org.eclipse.sirius.diagram.ui.tools.internal.menu.NavigateToMenuContribution">
-            <Priority name="High"/>
-         </contributionItemProvider>
-  </extension>
   
   <extension
         point="org.eclipse.sirius.diagram.ui.layoutProvider">
@@ -1513,33 +1504,18 @@
               name="Lowest">
         </Priority>
      </editpolicyProvider>
-  </extension>
-  <extension
-        point="org.eclipse.gmf.runtime.diagram.ui.editpolicyProviders">
      <editpolicyProvider
            class="org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.ChangeBoundRequestRecorderEditPolicyProvider">
         <Priority
               name="Low">
         </Priority>
      </editpolicyProvider>
-  </extension>  
+  </extension>
   <extension
         point="org.eclipse.sirius.diagram.ui.viewOrderingProvider">
      <viewOrderingProvider
            providerClass="org.eclipse.sirius.diagram.ui.tools.internal.layout.ordering.OrderedTreeViewOrderingProvider">
      </viewOrderingProvider>
-  </extension>
-  <extension
-        id="test"
-        name="Test"
-        point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
-     <contributionItemProvider
-           checkPluginLoaded="false"
-           class="org.eclipse.sirius.diagram.ui.tools.internal.menu.PopupMenuContribution">
-        <Priority
-              name="High">
-        </Priority>
-     </contributionItemProvider>
   </extension>
   <extension
         point="org.eclipse.sirius.ui.dialectui">
@@ -1658,6 +1634,10 @@
            </with>
         </activeWhen>
      </handler>
+     <handler
+           class="org.eclipse.sirius.diagram.ui.tools.internal.commands.FindElementCommand"
+           commandId="org.eclipse.sirius.diagram.ui.find.binding.FindElementAction">
+     </handler>
   </extension>
   <extension
         point="org.eclipse.sirius.externalJavaAction">
@@ -1705,17 +1685,6 @@
      </definition>
   </extension>
   
-    <extension point="org.eclipse.ui.commands">
-    <category name="Sirius" id="org.eclipse.sirius.common.ui.category"/>
-    <command categoryId="org.eclipse.sirius.common.ui.category" description="Find in model" id="org.eclipse.sirius.diagram.ui.find.binding.FindElementAction" name="Find Element"/>
-  </extension>
-   <extension
-       point="org.eclipse.ui.handlers">
-    <handler
-          class="org.eclipse.sirius.diagram.ui.tools.internal.commands.FindElementCommand"
-          commandId="org.eclipse.sirius.diagram.ui.find.binding.FindElementAction">
-    </handler>
- </extension>
    <extension
          point="org.eclipse.sirius.repairParticipant">
       <repairParticipant
