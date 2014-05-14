@@ -129,11 +129,11 @@
      <contributionItemProvider class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContributionItemProvider" checkPluginLoaded="false">
         <Priority name="Low">
         </Priority>
-        <partContribution class="org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart">
+        <partContribution id="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID">
            <partAction menubarPath="/diagramMenu/sizeGroup" toolbarPath="/toolbarFormatGroup" id="makeSameSizeBothAction">
            </partAction>
         </partContribution>
-        <popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+        <popupContribution class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
            <popupAction
                  id="makeSameSizeBothAction"
                  path="/formatMenu/sizeGroup">
@@ -186,7 +186,7 @@
             checkPluginLoaded="false">
          <Priority name="High"/>
          <popupContribution
-               class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+               class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
             <popupStructuredContributionCriteria
                   objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
             </popupStructuredContributionCriteria>
