@@ -16,7 +16,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Sets;
@@ -102,8 +102,13 @@ public class ResourceQuery {
         }
         isRepresentationsResource = isRepresentationsResource && new FileQuery(resource.getURI().fileExtension()).isSessionResourceFile();
         isRepresentationsResource = isRepresentationsResource || resource instanceof AirdResource;
-        if (!isRepresentationsResource && resource.getContents() != null && resource.getContents().size() == 1) {
-            isRepresentationsResource = resource.getContents().get(0).eClass().equals(ViewpointPackage.eINSTANCE.getDAnalysis());
+        if (!isRepresentationsResource && !resource.getContents().isEmpty()) {
+            for (EObject contentEObject : resource.getContents()) {
+                if (contentEObject != null && contentEObject instanceof DAnalysis) {
+                    isRepresentationsResource = true;
+                    break;
+                }
+            }
         }
         return isRepresentationsResource;
     }
