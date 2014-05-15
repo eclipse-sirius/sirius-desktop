@@ -240,10 +240,14 @@
           <version>${tycho-version}</version>
           <configuration>
             <encoding>UTF-8</encoding>
-            <compilerArguments>
+<!--
+     Disabled for build performance reasons: the current code and rules produce thousands of warnings which take a
+     significant amount of time to output during the build. We already have the information in our Eclipse worbenches.
+             <compilerArguments>
               <properties>${project.basedir}/.settings/org.eclipse.jdt.core.prefs</properties>
             </compilerArguments>
-          </configuration>
+ -->
+           </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
