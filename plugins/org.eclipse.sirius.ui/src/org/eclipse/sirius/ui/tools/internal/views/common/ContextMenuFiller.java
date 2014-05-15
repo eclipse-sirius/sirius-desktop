@@ -387,7 +387,8 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
     private boolean hasSharedObjectInSelection(Collection<EObject> selection) {
         boolean hasSharedObjectInSelection = false;
         for (EObject selectedEObject : selection) {
-            if (selectedEObject.eResource() != null && URIQuery.CDO_URI_SCHEME.equals(selectedEObject.eResource().getURI().scheme())) {
+            Resource selectedEObjectResource = selectedEObject.eResource();
+            if (selectedEObjectResource != null && URIQuery.CDO_URI_SCHEME.equals(selectedEObjectResource.getURI().scheme())) {
                 hasSharedObjectInSelection = true;
                 break;
             }

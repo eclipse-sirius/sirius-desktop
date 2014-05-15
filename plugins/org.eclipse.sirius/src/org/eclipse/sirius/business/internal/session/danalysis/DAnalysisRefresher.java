@@ -85,12 +85,12 @@ public class DAnalysisRefresher extends ResourceSetListenerImpl implements Resou
     public NotificationFilter getFilter() {
         return NotificationFilter.createEventTypeFilter(Notification.ADD);
     }
-    
+
     @Override
     public boolean isPrecommitOnly() {
         return true;
     }
-    
+
     @Override
     public boolean isAggregatePrecommitListener() {
         return true;
@@ -191,9 +191,9 @@ public class DAnalysisRefresher extends ResourceSetListenerImpl implements Resou
         List<Resource> resolvedResources = Lists.newArrayList();
         for (DAnalysis dAnalysis : allAnalysis) {
             for (DView dView : dAnalysis.getOwnedViews()) {
-                if (dView.getViewpoint() != null && dView.getViewpoint().eResource() != null) {
+                if (dView.getViewpoint() != null) {
                     Resource vsmResource = dView.getViewpoint().eResource();
-                    if (!resolvedResources.contains(vsmResource)) {
+                    if (vsmResource != null && !resolvedResources.contains(vsmResource)) {
                         ModelUtils.resolveAll(vsmResource, true);
                         resolvedResources.add(vsmResource);
                     }

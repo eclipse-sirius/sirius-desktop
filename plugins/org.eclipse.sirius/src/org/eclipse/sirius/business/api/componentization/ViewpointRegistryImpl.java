@@ -359,9 +359,10 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
         URI vpURI = ViewpointProtocolParser.buildViewpointUri(EcoreUtil.getURI(viewpoint));
         URI mappedURI = URIMappingRegistryImpl.INSTANCE.get(vpURI);
 
-        if (mappedURI != null && mappedURI.isPlatformPlugin() && viewpoint.eResource() != null && mappedURI.toPlatformString(true).equals(viewpoint.eResource().getURI().toPlatformString(true))) {
+        Resource vpResource = viewpoint.eResource();
+        if (mappedURI != null && mappedURI.isPlatformPlugin() && vpResource != null && mappedURI.toPlatformString(true).equals(vpResource.getURI().toPlatformString(true))) {
             final String vpName = viewpoint.getName();
-            final String pluginName = viewpoint.eResource().getURI().segment(1);
+            final String pluginName = vpResource.getURI().segment(1);
 
             if (vpName != null && pluginName != null) {
                 Iterable<Viewpoint> sameNameAndPluginViewpoints = Iterables.filter(viewpointsFromPlugin, new Predicate<Viewpoint>() {
@@ -379,7 +380,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
         }
 
         for (final Viewpoint viewpointFromPlugin : viewpointsFromPlugin) {
-            if (viewpointFromPlugin.eResource().equals(viewpoint.eResource())) {
+            if (viewpointFromPlugin.eResource().equals(vpResource)) {
                 return;
             }
         }
@@ -761,10 +762,11 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      */
     private void removeViewpointsNotPersistedInAFile() {
         for (final Viewpoint viewpoint : new ArrayList<Viewpoint>(this.viewpointsFromWorkspace)) {
-            if (viewpoint.eResource() == null) {
+            Resource viewpointResource = viewpoint.eResource();
+            if (viewpointResource == null) {
                 removeFromWorkspaceAndUpdateURiMapping(viewpoint);
             } else {
-                final Path path = new Path(viewpoint.eResource().getURI().toPlatformString(true));
+                final Path path = new Path(viewpointResource.getURI().toPlatformString(true));
                 final IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(path);
                 if (!file.exists()) {
                     removeFromWorkspaceAndUpdateURiMapping(viewpoint);
@@ -776,8 +778,8 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
     private void reloadFile(final IFile odesignFile) {
         /* Removes all viewpoints. */
         for (final Viewpoint viewpoint : new ArrayList<Viewpoint>(this.viewpointsFromWorkspace)) {
-            final Resource resource = viewpoint.eResource();
-            if (resource != null && resource.getURI().toPlatformString(true).equals(odesignFile.getFullPath().toString())) {
+            final Resource viewpointResource = viewpoint.eResource();
+            if (viewpointResource != null && viewpointResource.getURI().toPlatformString(true).equals(odesignFile.getFullPath().toString())) {
                 /* Removes this viewpoint */
                 removeFromWorkspaceAndUpdateURiMapping(viewpoint);
             }

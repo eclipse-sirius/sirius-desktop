@@ -16,6 +16,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.logger.MarkerRuntimeLogger;
 import org.eclipse.sirius.business.api.logger.RuntimeLogger;
@@ -114,24 +115,27 @@ public class MarkerRuntimeLoggerImpl implements RuntimeLogger, MarkerRuntimeLogg
      *            EObject we want to clearAll logged entries
      */
     public void clear(final EObject object) {
-        if (object != null && object.eResource() != null) {
-            final String relativePath = object.eResource().getURI().toPlatformString(true);
+        if (object != null) {
+            Resource objectResource = object.eResource();
+            if (objectResource != null) {
+                final String relativePath = objectResource.getURI().toPlatformString(true);
 
-            // relativePath can be null if the ODesign is located on a
-            // CDO Repository
-            if (relativePath != null) {
-                try {
-                    if (!"".equals(relativePath) && ResourcesPlugin.getWorkspace().getRoot().findMember(relativePath) != null) {
-                        final IMarker[] markers = ResourcesPlugin.getWorkspace().getRoot().findMember(relativePath).findMarkers(MarkerRuntimeLogger.MARKER_TYPE, false, IResource.DEPTH_ZERO);
-                        for (final IMarker marker : markers) {
-                            marker.delete();
+                // relativePath can be null if the ODesign is located on a
+                // CDO Repository
+                if (relativePath != null) {
+                    try {
+                        if (!"".equals(relativePath) && ResourcesPlugin.getWorkspace().getRoot().findMember(relativePath) != null) {
+                            final IMarker[] markers = ResourcesPlugin.getWorkspace().getRoot().findMember(relativePath).findMarkers(MarkerRuntimeLogger.MARKER_TYPE, false, IResource.DEPTH_ZERO);
+                            for (final IMarker marker : markers) {
+                                marker.delete();
+                            }
                         }
+                    } catch (final CoreException e) {
+                        SiriusPlugin.getDefault().getLog().log(e.getStatus());
                     }
-                } catch (final CoreException e) {
-                    SiriusPlugin.getDefault().getLog().log(e.getStatus());
-                }
-                for (final EObject subobject : object.eContents()) {
-                    this.clear(subobject);
+                    for (final EObject subobject : object.eContents()) {
+                        this.clear(subobject);
+                    }
                 }
             }
         }
@@ -177,9 +181,12 @@ public class MarkerRuntimeLoggerImpl implements RuntimeLogger, MarkerRuntimeLogg
      * @return The IResource of markerTarget
      */
     private static IResource findMarkerTargetResource(final EObject markerTarget) {
-        if (markerTarget != null && markerTarget.eResource() != null) {
-            final String relativePath = markerTarget.eResource().getURI().toPlatformString(true);
-            return ResourcesPlugin.getWorkspace().getRoot().findMember(relativePath);
+        if (markerTarget != null) {
+            Resource markerTargetResource = markerTarget.eResource();
+            if (markerTargetResource != null) {
+                final String relativePath = markerTargetResource.getURI().toPlatformString(true);
+                return ResourcesPlugin.getWorkspace().getRoot().findMember(relativePath);
+            }
         }
         return null;
     }

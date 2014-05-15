@@ -375,8 +375,9 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
                 anyEObject = res.getContents().get(0);
             }
         }
-        if (anyEObject.eResource().getResourceSet() != getEditingDomain().getResourceSet()) {
-            anyEObject.eResource().unload();
+        Resource resource = anyEObject.eResource();
+        if (resource.getResourceSet() != getEditingDomain().getResourceSet()) {
+            resource.unload();
         }
         if (anyEObject != null) {
             final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(anyEObject);

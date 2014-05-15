@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.tools.internal.validation.description.constra
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
@@ -36,8 +37,10 @@ public class PreconditionForDndToolsConstraint extends AbstractModelConstraint {
         EObject eObj = ctx.getTarget();
         EMFEventType eventType = ctx.getEventType();
         // In the case of batch mode.
-        if (eventType == EMFEventType.NULL && eObj.eResource() != null && eObj.eResource().getResourceSet() != null) {
-            if (eObj instanceof ContainerDropDescription) {
+
+        if (eventType == EMFEventType.NULL) {
+            Resource eObjResource = eObj.eResource();
+            if (eObjResource != null && eObjResource.getResourceSet() != null && eObj instanceof ContainerDropDescription) {
                 ContainerDropDescription cdd = (ContainerDropDescription) eObj;
                 if (acceptsArbitraryElementsFromModel(cdd) && StringUtil.isEmpty(cdd.getPrecondition())) {
                     return ctx.createFailureStatus(new Object[] { new IdentifiedElementQuery(cdd).getLabel() });

@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning;
 import java.util.Collection;
 
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
@@ -54,8 +55,9 @@ public class PinElementsEclipseAction extends AbstractPinUnpinElementsEclipseAct
         for (final DDiagramElement dDiagramElement : selectedDiagramElements) {
             result = result && pinHelper.isPinned(dDiagramElement);
 
-            if (dDiagramElement.eResource() == null
-                    || !PermissionAuthorityRegistry.getDefault().getPermissionAuthority(dDiagramElement.eResource().getResourceSet()).canEditInstance(dDiagramElement.getParentDiagram())) {
+            Resource dDiagramElementResource = dDiagramElement.eResource();
+            if (dDiagramElementResource == null
+                    || !PermissionAuthorityRegistry.getDefault().getPermissionAuthority(dDiagramElementResource.getResourceSet()).canEditInstance(dDiagramElement.getParentDiagram())) {
                 result = true;
                 break;
             }

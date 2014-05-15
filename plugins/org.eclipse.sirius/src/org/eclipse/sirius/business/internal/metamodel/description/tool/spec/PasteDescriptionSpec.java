@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
@@ -39,10 +40,11 @@ public class PasteDescriptionSpec extends PasteDescriptionImpl {
      */
     @Override
     public EList<PasteTargetDescription> getContainers() {
-        if (this.eResource() == null) {
+        Resource r = this.eResource();
+        if (r == null) {
             throw new UnsupportedOperationException();
         }
-        ECrossReferenceAdapter crossReferencer = ECrossReferenceAdapter.getCrossReferenceAdapter(this.eResource());
+        ECrossReferenceAdapter crossReferencer = ECrossReferenceAdapter.getCrossReferenceAdapter(r);
         if (crossReferencer == null) {
             throw new UnsupportedOperationException();
         }

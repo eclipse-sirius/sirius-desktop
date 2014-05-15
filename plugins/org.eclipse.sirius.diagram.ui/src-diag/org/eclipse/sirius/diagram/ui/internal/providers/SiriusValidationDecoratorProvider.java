@@ -22,6 +22,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.Label;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.gef.EditDomain;
@@ -182,7 +183,11 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
         public void refresh() {
             removeDecoration();
             View view = (View) getDecoratorTarget().getAdapter(View.class);
-            if (view == null || view.eResource() == null) {
+            Resource viewResource = null;
+            if (view != null) {
+                viewResource = view.eResource();
+            }
+            if (viewResource == null) {
                 return;
             }
             EditPart editPart = (EditPart) getDecoratorTarget().getAdapter(EditPart.class);
@@ -197,7 +202,7 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
             }
             int severity = IMarker.SEVERITY_INFO;
             IMarker foundMarker = null;
-            IResource resource = WorkspaceSynchronizer.getFile(view.eResource());
+            IResource resource = WorkspaceSynchronizer.getFile(viewResource);
             if (resource == null || !resource.exists()) {
                 return;
             }

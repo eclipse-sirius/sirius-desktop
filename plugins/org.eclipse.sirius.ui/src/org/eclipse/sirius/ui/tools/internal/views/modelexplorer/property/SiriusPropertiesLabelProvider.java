@@ -41,13 +41,15 @@ public class SiriusPropertiesLabelProvider extends DecoratingLabelProvider {
     public String getText(Object element) {
         String text = "";
         EObject selected = adapt(element);
-        if (selected instanceof DSemanticDecorator && ((DSemanticDecorator) selected).eResource() != null && ((DSemanticDecorator) selected).getTarget() != null) {
-            EObject eObject = ((DSemanticDecorator) selected).getTarget();
-            AdapterFactory adapterFactory = SiriusEditPlugin.getPlugin().getItemProvidersAdapterFactory();
-            IItemLabelProvider itemLabelProvider = (IItemLabelProvider) adapterFactory.adapt(eObject, IItemLabelProvider.class);
-            text = itemLabelProvider.getText(eObject);
-        } else if (selected != null && selected.eResource() != null) {
-            text = super.getText(selected);
+        if (selected != null && selected.eResource() != null) {
+            if (selected instanceof DSemanticDecorator && ((DSemanticDecorator) selected).getTarget() != null) {
+                EObject eObject = ((DSemanticDecorator) selected).getTarget();
+                AdapterFactory adapterFactory = SiriusEditPlugin.getPlugin().getItemProvidersAdapterFactory();
+                IItemLabelProvider itemLabelProvider = (IItemLabelProvider) adapterFactory.adapt(eObject, IItemLabelProvider.class);
+                text = itemLabelProvider.getText(eObject);
+            } else {
+                text = super.getText(selected);
+            }
         }
         return text;
     }
@@ -58,11 +60,13 @@ public class SiriusPropertiesLabelProvider extends DecoratingLabelProvider {
     public Image getImage(Object element) {
         Image image = null;
         EObject selected = adapt(element);
-        if (selected instanceof DSemanticDecorator && ((DSemanticDecorator) selected).eResource() != null && ((DSemanticDecorator) selected).getTarget() != null) {
-            EObject eObject = ((DSemanticDecorator) selected).getTarget();
-            image = SiriusEditPlugin.getPlugin().getImage(SiriusEditPlugin.getPlugin().getItemImageDescriptor(eObject));
-        } else if (selected != null && selected.eResource() != null) {
-            image = super.getImage(selected);
+        if (selected != null && selected.eResource() != null) {
+            if (selected instanceof DSemanticDecorator && ((DSemanticDecorator) selected).getTarget() != null) {
+                EObject eObject = ((DSemanticDecorator) selected).getTarget();
+                image = SiriusEditPlugin.getPlugin().getImage(SiriusEditPlugin.getPlugin().getItemImageDescriptor(eObject));
+            } else {
+                image = super.getImage(selected);
+            }
         }
         return image;
     }

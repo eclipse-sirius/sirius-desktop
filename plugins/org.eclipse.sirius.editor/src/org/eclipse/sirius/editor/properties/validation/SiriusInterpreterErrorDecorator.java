@@ -21,6 +21,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.provider.ComposedImage;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.IDecorationContext;
@@ -149,9 +150,11 @@ public class SiriusInterpreterErrorDecorator extends LabelDecorator implements I
     private String getURIForElement(Object element) {
         String uri = null;
         if (element instanceof EObject) {
-            if (((EObject) element).eResource() != null) {
-                String uriFragment = ((EObject) element).eResource().getURIFragment((EObject) element);
-                uri = ((EObject) element).eResource().getURI().toString() + "#" + uriFragment;
+            EObject eObject = (EObject) element;
+            Resource emfResource = eObject.eResource();
+            if (emfResource != null) {
+                String uriFragment = emfResource.getURIFragment((EObject) element);
+                uri = emfResource.getURI().toString() + "#" + uriFragment;
             }
         }
         return uri;

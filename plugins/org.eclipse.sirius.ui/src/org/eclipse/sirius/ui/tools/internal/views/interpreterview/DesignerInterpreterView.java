@@ -276,8 +276,9 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
                         // resolve available dependencies.
                         final List<String> filePaths = new ArrayList<String>();
                         for (final Viewpoint vp : ViewpointRegistry.getInstance().getViewpoints()) {
-                            if (vp.eResource() != null) {
-                                filePaths.add(vp.eResource().getURI().toPlatformString(true));
+                            Resource vpResource = vp.eResource();
+                            if (vpResource != null) {
+                                filePaths.add(vpResource.getURI().toPlatformString(true));
                             }
                         }
                         interpreter.setProperty(IInterpreter.FILES, filePaths);
@@ -403,12 +404,11 @@ public class DesignerInterpreterView extends ViewPart implements InterpreterView
 
     private void addVariable(final List<?> list) {
         if (list.size() > 0 && interpreter != null) {
-            final InputDialog askSiriusName = new InputDialog(Display.getDefault().getActiveShell(), "Variable name", "Type variable name", IInterpreterSiriusVariables.ELEMENT,
-                    new IInputValidator() {
-                        public String isValid(final String newText) {
-                            return null;
-                        }
-                    });
+            final InputDialog askSiriusName = new InputDialog(Display.getDefault().getActiveShell(), "Variable name", "Type variable name", IInterpreterSiriusVariables.ELEMENT, new IInputValidator() {
+                public String isValid(final String newText) {
+                    return null;
+                }
+            });
             if (askSiriusName.open() == Window.OK) {
                 if (list.size() == 1) {
                     if (askSiriusName.getValue().startsWith(variableTag)) {

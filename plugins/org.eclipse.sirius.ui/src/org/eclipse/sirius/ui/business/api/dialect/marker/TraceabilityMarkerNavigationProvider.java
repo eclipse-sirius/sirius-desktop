@@ -386,7 +386,7 @@ public class TraceabilityMarkerNavigationProvider implements IGotoMarker {
         try {
             shadowMarker = res.createMarker(marker.getType());
             shadowMarker.setAttribute(TRACEABILITY_SEMANTIC_ELEMENT_URI_ATTRIBUTE, EcoreUtil.getURI(this.representationToFocus).toString());
-            shadowMarker.setAttribute(REPRESENTATION_ELEMENT_ID, this.representationToFocus.eResource().getURIFragment(representationElementToSelect).toString());
+            shadowMarker.setAttribute(REPRESENTATION_ELEMENT_ID, resource.getURIFragment(representationElementToSelect).toString());
             shadowMarker.setAttribute(REPRESENTATION_URI, EcoreUtil.getURI(this.representationToFocus).toString());
             shadowMarker.setAttribute(TRACEABILITY_INTERNAL_ATTRIBUTE, "active");
 

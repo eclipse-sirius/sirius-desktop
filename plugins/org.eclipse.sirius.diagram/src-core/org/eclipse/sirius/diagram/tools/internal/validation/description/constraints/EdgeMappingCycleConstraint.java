@@ -15,6 +15,7 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.EMFEventType;
 import org.eclipse.emf.validation.IValidationContext;
@@ -36,8 +37,9 @@ public class EdgeMappingCycleConstraint extends AbstractModelConstraint {
         EObject eObj = ctx.getTarget();
         EMFEventType eventType = ctx.getEventType();
         // In the case of batch mode.
-        if (eventType == EMFEventType.NULL && eObj.eResource() != null && eObj.eResource().getResourceSet() != null) {
-            if (eObj instanceof EdgeMapping) {
+        if (eventType == EMFEventType.NULL) {
+            Resource eObjResource = eObj.eResource();
+            if (eObjResource != null && eObjResource.getResourceSet() != null && eObj instanceof EdgeMapping) {
                 EdgeMapping edgeMapping = (EdgeMapping) eObj;
                 boolean findCycle = hasCycle(
                         edgeMapping,

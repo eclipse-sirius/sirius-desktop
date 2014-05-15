@@ -30,11 +30,10 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-
-import com.google.common.collect.Sets;
-
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
+
+import com.google.common.collect.Sets;
 
 /**
  * EPackage registry leveraging ecore files from the workspace. Any change to
@@ -187,11 +186,13 @@ public class WorkspaceEPackageRegistry extends HashMap<String, Object> implement
         boolean containsAlreadyEPackage = false;
         if (containsKey(ePackage.getNsURI())) {
             EPackage alreadyRegistredEPackage = (EPackage) get(ePackage.getNsURI());
-            URI alreadyRegistredEPackageResourceURI = alreadyRegistredEPackage.eResource().getURI();
-            URI ePackageResourceURI = ePackage.eResource().getURI();
+            Resource alreadtRegisteredResource = alreadyRegistredEPackage.eResource();
+            URI alreadyRegistredEPackageResourceURI = alreadtRegisteredResource.getURI();
+            Resource ePackageResource = ePackage.eResource();
+            URI ePackageResourceURI = ePackageResource.getURI();
             if (alreadyRegistredEPackageResourceURI.equals(ePackageResourceURI)) {
-                String alreadyRegistredEPackageURIFragment = alreadyRegistredEPackage.eResource().getURIFragment(alreadyRegistredEPackage);
-                String ePackageURIFragment = ePackage.eResource().getURIFragment(ePackage);
+                String alreadyRegistredEPackageURIFragment = alreadtRegisteredResource.getURIFragment(alreadyRegistredEPackage);
+                String ePackageURIFragment = ePackageResource.getURIFragment(ePackage);
                 if (alreadyRegistredEPackageURIFragment.equals(ePackageURIFragment)) {
                     containsAlreadyEPackage = true;
                 }

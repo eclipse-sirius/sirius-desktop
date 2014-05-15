@@ -977,10 +977,14 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
 
             if (notifier instanceof DRepresentation && ViewpointPackage.eINSTANCE.getDRepresentation_Name().equals(notification.getFeature())) {
                 result = true;
-            } else if (notifier instanceof EObject && ((EObject) notifier).eResource() != null && session != null && session.isOpen()) {
-                result = isSemanticChange(((EObject) notifier).eResource());
-            } else if (notifier instanceof Resource && Resource.RESOURCE__CONTENTS == notification.getFeatureID(Resource.class)) {
+            }
+            if (!result && notifier instanceof Resource && Resource.RESOURCE__CONTENTS == notification.getFeatureID(Resource.class)) {
                 result = isSemanticChange((Resource) notifier);
+            } else if (!result && notifier instanceof EObject) {
+                Resource notifierResource = ((EObject) notifier).eResource();
+                if (notifierResource != null && session != null && session.isOpen()) {
+                    result = isSemanticChange(notifierResource);
+                }
             }
 
             // semantic has changed, viewer should be refreshed.

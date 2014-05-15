@@ -13,6 +13,7 @@ package org.eclipse.sirius.business.api.query;
 import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -76,14 +77,15 @@ public class ViewpointQuery {
     }
 
     /**
-     * Returns the logical Sirius URI identifying this viewpoint, if it is
-     * from a platform resource.
+     * Returns the logical Sirius URI identifying this viewpoint, if it is from
+     * a platform resource.
      * 
      * @return the logical Sirius URI identifying this viewpoint.
      */
     public Option<URI> getViewpointURI() {
-        if (vp.eResource() != null && vp.eResource().getURI().isPlatform()) {
-            URI resourceURI = vp.eResource().getURI();
+        Resource vpResource = vp.eResource();
+        if (vpResource != null && vpResource.getURI().isPlatform()) {
+            URI resourceURI = vpResource.getURI();
             String pluginId = resourceURI.segment(1);
             String uri = ViewpointURIQuery.VIEWPOINT_URI_SCHEME + ":/" + pluginId + "/" + vp.getName();
             return Options.newSome(URI.createURI(uri));
@@ -92,13 +94,13 @@ public class ViewpointQuery {
     }
 
     /**
-     * Tests whether the queried Sirius has the same logical Sirius URI as
-     * the specified Sirius.
+     * Tests whether the queried Sirius has the same logical Sirius URI as the
+     * specified Sirius.
      * 
      * @param other
      *            another Sirius.
-     * @return <code>true</code> iff the queried Sirius has the same logical
-     *         URI as <code>other</code>.
+     * @return <code>true</code> iff the queried Sirius has the same logical URI
+     *         as <code>other</code>.
      */
     public boolean hasSameSiriusURI(Viewpoint other) {
         Preconditions.checkNotNull(other);
@@ -110,8 +112,8 @@ public class ViewpointQuery {
     /**
      * Tests whether this viewpoint can handle semantic model contained in files
      * with the specified extension. In this context, "handles" means that the
-     * Sirius supports representations on semantic elements which may appear
-     * in this kind of resources, as defined in the Sirius's
+     * Sirius supports representations on semantic elements which may appear in
+     * this kind of resources, as defined in the Sirius's
      * <code>modelFileExtension</code> attribute.
      * 
      * @param ext

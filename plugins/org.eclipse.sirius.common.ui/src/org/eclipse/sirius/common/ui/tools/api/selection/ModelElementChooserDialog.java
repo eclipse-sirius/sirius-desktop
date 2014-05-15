@@ -237,10 +237,15 @@ public class ModelElementChooserDialog extends Dialog {
             if (parent == null) {
                 if (element instanceof EObject) {
                     final EObject eObject = (EObject) element;
-                    if (eObject.eContainer() == null && eObject.eResource().getURI().isFile()) {
-                        final String path = eObject.eResource().getURI().path();
-                        parent = ResourcesPlugin.getWorkspace().getRoot().getFileForLocation(new Path(path));
-                    } else {
+
+                    if (eObject.eContainer() == null) {
+                        final URI eObjectResourceURI = eObject.eResource().getURI();
+                        if (eObjectResourceURI.isFile()) {
+                            final String path = eObjectResourceURI.path();
+                            parent = ResourcesPlugin.getWorkspace().getRoot().getFileForLocation(new Path(path));
+                        }
+                    }
+                    if (parent == null) {
                         parent = myAdapterFactoryContentProvider.getParent(eObject);
                     }
                 }

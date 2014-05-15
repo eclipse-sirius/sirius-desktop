@@ -375,8 +375,9 @@ public class RepresentationsSelectionWizardPage extends WizardPage {
                 filtered.add(object);
             }
             for (final Object object : semantic) {
-                if (object instanceof EObject && ((EObject) object).eResource() != null) {
-                    if (resource != ((EObject) object).eResource() && session.getSemanticResources().contains(((EObject) object).eResource())) {
+                if (object instanceof EObject) {
+                    Resource r = ((EObject) object).eResource();
+                    if (r != null && resource != r && session.getSemanticResources().contains(r)) {
                         filtered.remove(object);
                     }
                 }

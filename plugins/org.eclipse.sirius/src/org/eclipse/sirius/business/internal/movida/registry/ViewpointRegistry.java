@@ -621,12 +621,14 @@ public class ViewpointRegistry extends org.eclipse.sirius.business.api.component
      * {@inheritDoc}
      */
     public boolean isFromPlugin(Viewpoint viewpoint) {
-        if (viewpoint != null && viewpoint.eResource() != null) {
-            URI uri = viewpoint.eResource().getURI();
-            return uri.isPlatformPlugin();
-        } else {
-            return false;
+        if (viewpoint != null) {
+            Resource viewpointResource = viewpoint.eResource();
+            if (viewpointResource != null) {
+                URI uri = viewpointResource.getURI();
+                return uri.isPlatformPlugin();
+            }
         }
+        return false;
     }
 
     /**

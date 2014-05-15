@@ -33,8 +33,8 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import com.google.common.base.Objects;
 
 /**
- * An helper uses to manage the Sirius resource (between the
- * {@link ResourceSet} of the
+ * An helper uses to manage the Sirius resource (between the {@link ResourceSet}
+ * of the
  * {@link org.eclipse.sirius.business.api.componentization.ViewpointRegistry
  * registry} and the {@link ResourceSet} of the editing domaine (used by session
  * and editors).
@@ -123,6 +123,7 @@ public final class SiriusResourceHelper {
      */
     public static Viewpoint getCorrespondingViewpoint(final Session session, final Viewpoint registryViewpoint) {
         Viewpoint editingDomainViewpoint = null;
+        Resource registryViewpointResource = null;
 
         /*
          * Search the corresponding viewpoint in the resources of the
@@ -131,13 +132,15 @@ public final class SiriusResourceHelper {
         final TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
         for (final Iterator<Resource> iterator = domain.getResourceSet().getResources().iterator(); iterator.hasNext() && editingDomainViewpoint == null; /**/) {
             final Resource editingDomainResource = iterator.next();
-            if (Boolean.valueOf(System.getProperty("org.eclipse.sirius.enableUnsafeOptimisations", "false")) && !SiriusUtil.DESCRIPTION_MODEL_EXTENSION.equals(editingDomainResource.getURI().fileExtension())) {
+            if (Boolean.valueOf(System.getProperty("org.eclipse.sirius.enableUnsafeOptimisations", "false"))
+                    && !SiriusUtil.DESCRIPTION_MODEL_EXTENSION.equals(editingDomainResource.getURI().fileExtension())) {
                 continue;
             }
             try {
                 editingDomainResource.load(Collections.EMPTY_MAP);
                 /* check URI and then viewpoint name */
-                if (SiriusResourceHelper.sameURIs(registryViewpoint.eResource(), editingDomainResource)) {
+                registryViewpointResource = registryViewpoint.eResource();
+                if (SiriusResourceHelper.sameURIs(registryViewpointResource, editingDomainResource)) {
                     editingDomainViewpoint = SiriusUtil.findViewpoint(editingDomainResource, registryViewpoint.getName());
                 }
             } catch (final Resource.IOWrappedException resException) {
@@ -158,8 +161,10 @@ public final class SiriusResourceHelper {
              * to add the corresponding viewpoint in the editingDomain
              * resourceSet.
              */
-
-            final Resource editingDomainResource = domain.getResourceSet().getResource(registryViewpoint.eResource().getURI(), true);
+            if (registryViewpointResource == null) {
+                registryViewpointResource = registryViewpoint.eResource();
+            }
+            final Resource editingDomainResource = domain.getResourceSet().getResource(registryViewpointResource.getURI(), true);
             try {
                 editingDomainResource.load(Collections.EMPTY_MAP);
                 /*

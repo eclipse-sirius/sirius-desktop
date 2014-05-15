@@ -210,10 +210,15 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
                 decoratingLabelProvider = new GeneratedElementsLabelProvider((ILabelProvider) selectionViewer.getLabelProvider(), validationDecorator) {
                     public String getText(Object element) {
                         String result = super.getText(element);
-                        if (element instanceof Viewpoint && ((Viewpoint) element).eResource() != null) {
-                            Resource res = ((Viewpoint) element).eResource();
-                            if (res.getResourceSet().getResources().indexOf(res) != 0) {
-                                result = result + " (" + res.getURI() + ")";
+                        if (element instanceof Viewpoint) {
+                            Viewpoint viewpoint = (Viewpoint) element;
+                            Resource resource = viewpoint.eResource();
+                            if (resource != null) {
+                                // CHECKSTYLE:OFF
+                                if (resource.getResourceSet().getResources().indexOf(resource) != 0) {
+                                    result = result + " (" + resource.getURI() + ")";
+                                }
+                                // CHECKSTYLE:ON
                             }
                         }
                         return result;
@@ -268,7 +273,8 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
                     Resource mainResource = ((ResourceSet) object).getResources().get(0);
                     elements.add(mainResource);
                     for (Viewpoint additionalVP : Iterables.filter(viewpoints, Viewpoint.class)) {
-                        if (additionalVP.eResource() != null && additionalVP.eResource() != mainResource) {
+                        Resource resource = additionalVP.eResource();
+                        if (resource != null && resource != mainResource) {
                             elements.add(additionalVP);
                         }
                     }

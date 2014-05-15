@@ -63,11 +63,14 @@ public class EcoreService {
      * @return the resource
      */
     public String eResourceName(final EObject current) {
-        if (current != null && current.eResource() != null) {
-            return current.eResource().getURI().lastSegment();
-        } else {
-            return null;
+        String eResourceName = null;
+        if (current != null) {
+            Resource resource = current.eResource();
+            if (resource != null) {
+                eResourceName = current.eResource().getURI().lastSegment();
+            }
         }
+        return eResourceName;
     }
 
     /**
@@ -108,14 +111,14 @@ public class EcoreService {
     public EOperation performEdit(EOperation op, String editString) {
         return new EOperationServices().performEdit(op, editString);
     }
-    
+
     public List<ENamedElement> getAllAssociatedElements(EOperation op) {
-    	return new EOperationServices().getAllAssociatedElements(op);
+        return new EOperationServices().getAllAssociatedElements(op);
     }
-    
+
     public String renderTooltip(EClass klass) {
-    	// [eContainer()->filter(ecore::ENamedElement).name + '.' + name/]
-    	return ((EPackage) klass.eContainer()).getName() + "." + klass.getName();
+        // [eContainer()->filter(ecore::ENamedElement).name + '.' + name/]
+        return ((EPackage) klass.eContainer()).getName() + "." + klass.getName();
     }
 
     /**

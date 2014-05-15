@@ -96,8 +96,9 @@ public abstract class AbstractConstraint extends AbstractModelConstraint {
      */
     protected boolean shouldValidate(final EObject instance) {
         boolean result = true;
-        if (instance.eResource() != null && instance.eResource().getResourceSet() != null) {
-            final Iterator<Resource> it = instance.eResource().getResourceSet().getResources().iterator();
+        Resource instanceResource = instance.eResource();
+        if (instanceResource != null && instanceResource.getResourceSet() != null) {
+            final Iterator<Resource> it = instanceResource.getResourceSet().getResources().iterator();
             while (result && it.hasNext()) {
                 final Resource resource = it.next();
                 ResourceQuery resourceQuery = new ResourceQuery(resource);

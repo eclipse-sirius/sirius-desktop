@@ -51,33 +51,35 @@ public class DeleteDRepresentationTask extends AbstractCommandTask {
     public void execute() {
 
         /* only destroy attached elements */
-        if ((representation != null) && (representation.eResource() != null)) {
+        if (representation != null) {
+            Resource resource = representation.eResource();
+            if (resource != null) {
+                ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(representation);
 
-            ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(representation);
-
-            if (deleteReferences) {
-                final Session session;
-                if (representation instanceof DSemanticDecorator) {
-                    session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) representation).getTarget());
+                if (deleteReferences) {
+                    final Session session;
+                    if (representation instanceof DSemanticDecorator) {
+                        session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) representation).getTarget());
+                    } else {
+                        session = SessionManager.INSTANCE.getSession(representation);
+                    }
+                    accessor.eDelete(representation, session != null ? session.getSemanticCrossReferencer() : null);
                 } else {
-                    session = SessionManager.INSTANCE.getSession(representation);
-                }
-                accessor.eDelete(representation, session != null ? session.getSemanticCrossReferencer() : null);
-            } else {
-                // tear down incoming references
-                GMFUtil.tearDownIncomingReferences(representation);
+                    // tear down incoming references
+                    GMFUtil.tearDownIncomingReferences(representation);
 
-                // also tear down outgoing references, because we don't want
-                // reverse-reference lookups to find destroyed objects
-                GMFUtil.tearDownOutgoingReferences(representation);
+                    // also tear down outgoing references, because we don't want
+                    // reverse-reference lookups to find destroyed objects
+                    GMFUtil.tearDownOutgoingReferences(representation);
 
-                // remove the object from its container
-                SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(representation).eRemove(representation);
+                    // remove the object from its container
+                    SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(representation).eRemove(representation);
 
-                // in case it was cross-resource-contained
-                final Resource res = representation.eResource();
-                if (res != null) {
-                    res.getContents().remove(representation);
+                    // in case it was cross-resource-contained
+                    final Resource res = representation.eResource();
+                    if (res != null) {
+                        res.getContents().remove(representation);
+                    }
                 }
             }
         }

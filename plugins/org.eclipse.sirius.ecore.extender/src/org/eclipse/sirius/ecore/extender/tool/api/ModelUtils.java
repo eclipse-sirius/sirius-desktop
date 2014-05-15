@@ -431,8 +431,9 @@ public final class ModelUtils {
             authority.setListening(false);
         }
         List<Resource> cachedIDsResources = Collections.emptyList();
-        if (root.eResource() != null && root.eResource().getResourceSet() != null) {
-            cachedIDsResources = ModelUtils.cachedEObjectIDs(root.eResource().getResourceSet());
+        Resource rootResource = root.eResource();
+        if (rootResource != null && rootResource.getResourceSet() != null) {
+            cachedIDsResources = ModelUtils.cachedEObjectIDs(rootResource.getResourceSet());
         }
         EcoreUtil.resolveAll(root);
         ModelUtils.uncachedEObejctIDs(cachedIDsResources);

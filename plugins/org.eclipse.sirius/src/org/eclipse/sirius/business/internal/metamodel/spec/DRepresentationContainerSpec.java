@@ -18,6 +18,7 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -100,8 +101,11 @@ public class DRepresentationContainerSpec extends DRepresentationContainerImpl {
     }
 
     private EObject getModel(final EObject target) {
-        if (target != null && target.eResource() != null) {
-            return target.eResource().getContents().iterator().next();
+        if (target != null) {
+            Resource targetResource = target.eResource();
+            if (targetResource != null) {
+                return targetResource.getContents().iterator().next();
+            }
         }
         return target;
     }

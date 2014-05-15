@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.menu;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
@@ -105,38 +106,41 @@ public class SpecificationMenuContribution implements IContributionItemProvider 
      */
     private void buildOpenExistingSpecification(final IMenuManager menu, final EObject designerObj) {
         final EObject description = getDescription(designerObj);
-        if (description != null && description.eResource() != null) {
-            final IFile modelFile = WorkspaceSynchronizer.getFile(description.eResource());
+        if (description != null) {
+            Resource resource = description.eResource();
+            if (resource != null) {
+                final IFile modelFile = WorkspaceSynchronizer.getFile(resource);
 
-            ImageDescriptor imageDescriptor = SiriusTransPlugin.getBundledImageDescriptor(DiagramImagesPath.LINK_TO_VIEWPOINT_IMG);
-            final IItemLabelProvider labelProvider = (IItemLabelProvider) getAdapterFactory().adapt(description, IItemLabelProvider.class);
-            if (labelProvider != null) {
-                imageDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(labelProvider.getImage(description));
-            }
+                ImageDescriptor imageDescriptor = SiriusTransPlugin.getBundledImageDescriptor(DiagramImagesPath.LINK_TO_VIEWPOINT_IMG);
+                final IItemLabelProvider labelProvider = (IItemLabelProvider) getAdapterFactory().adapt(description, IItemLabelProvider.class);
+                if (labelProvider != null) {
+                    imageDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(labelProvider.getImage(description));
+                }
 
-            if (modelFile != null) {
-                final Action openAction = new Action("Open Definition", imageDescriptor) {
+                if (modelFile != null) {
+                    final Action openAction = new Action("Open Definition", imageDescriptor) {
 
-                    @Override
-                    public void run() {
-                        super.run();
+                        @Override
+                        public void run() {
+                            super.run();
 
-                        final IWorkbench workbench = PlatformUI.getWorkbench();
-                        final IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
-                        final IWorkbenchPage page = workbenchWindow.getActivePage();
-                        try {
-                            final IEditorPart editor = page.openEditor(new FileEditorInput(modelFile), workbench.getEditorRegistry().getDefaultEditor(modelFile.getFullPath().toString()).getId());
-                            if (editor instanceof IEObjectNavigable) {
-                                ((IEObjectNavigable) editor).navigateToEObject(EcoreUtil.getURI(description));
+                            final IWorkbench workbench = PlatformUI.getWorkbench();
+                            final IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
+                            final IWorkbenchPage page = workbenchWindow.getActivePage();
+                            try {
+                                final IEditorPart editor = page.openEditor(new FileEditorInput(modelFile), workbench.getEditorRegistry().getDefaultEditor(modelFile.getFullPath().toString()).getId());
+                                if (editor instanceof IEObjectNavigable) {
+                                    ((IEObjectNavigable) editor).navigateToEObject(EcoreUtil.getURI(description));
+                                }
+                            } catch (final PartInitException exception) {
+                                // TODO log
                             }
-                        } catch (final PartInitException exception) {
-                            // TODO log
-                        }
 
-                    }
-                };
-                openAction.setId("Open Definition");
-                menu.insertAfter(IWorkbenchActionConstants.MB_ADDITIONS, openAction);
+                        }
+                    };
+                    openAction.setId("Open Definition");
+                    menu.insertAfter(IWorkbenchActionConstants.MB_ADDITIONS, openAction);
+                }
             }
         }
     }

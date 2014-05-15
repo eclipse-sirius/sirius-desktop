@@ -255,8 +255,11 @@ public class SiriusUncontrolCommand extends UncontrolCommand {
 
     private void markContainerResourceAsModified(final EObject obj) {
         EObject resourceContainer = getRootContainer(obj);
-        if (obj != null && resourceContainer != null && resourceContainer.eResource() != null) {
-            resourceContainer.eResource().setModified(true);
+        if (obj != null && resourceContainer != null) {
+            Resource containerResource = resourceContainer.eResource();
+            if (containerResource != null) {
+                containerResource.setModified(true);
+            }
         }
     }
 

@@ -16,7 +16,6 @@ import java.util.WeakHashMap;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthorityRegistry;
 
@@ -52,7 +51,11 @@ public class PermissionAuthorityRegistryImpl implements IPermissionAuthorityRegi
         if (modelElement instanceof Resource && ((Resource) modelElement).getResourceSet() != null) {
             authority = getPermissionAuthority(((Resource) modelElement).getResourceSet());
         } else {
-            if (modelElement == null || modelElement.eResource() == null || modelElement.eResource().getResourceSet() == null) {
+            Resource modelElementResource = null;
+            if (modelElement != null) {
+                modelElementResource = modelElement.eResource();
+            }
+            if (modelElement == null || modelElementResource == null || modelElementResource.getResourceSet() == null) {
                 if (resourceSetToAuthority.size() > 0) {
                     authority = resourceSetToAuthority.values().iterator().next();
                 } else {
@@ -60,7 +63,7 @@ public class PermissionAuthorityRegistryImpl implements IPermissionAuthorityRegi
                     throw new RuntimeException("No resource to get the ExtendedPackage");
                 }
             } else {
-                authority = getPermissionAuthority(modelElement.eResource().getResourceSet());
+                authority = getPermissionAuthority(modelElementResource.getResourceSet());
             }
         }
         return authority;

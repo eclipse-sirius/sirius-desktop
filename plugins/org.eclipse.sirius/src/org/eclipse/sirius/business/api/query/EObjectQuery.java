@@ -251,8 +251,9 @@ public class EObjectQuery {
             }
         }
         addResolvedDependencies(eObject, dependencies);
-        if (eObject.eResource() != null) {
-            dependencies.remove(eObject.eResource().getURI());
+        Resource eObjectResource = eObject.eResource();
+        if (eObjectResource != null) {
+            dependencies.remove(eObjectResource.getURI());
         }
         return dependencies;
     }
@@ -271,8 +272,11 @@ public class EObjectQuery {
     }
 
     private void addNonProxyResourceURI(EObject value, Collection<URI> dependencies) {
-        if (value != null && !value.eIsProxy() && value.eResource() != this.eObject.eResource() && value.eResource() != null) {
-            dependencies.add(value.eResource().getURI());
+        if (value != null && !value.eIsProxy()) {
+            Resource valueResource = value.eResource();
+            if (valueResource != this.eObject.eResource() && valueResource != null) {
+                dependencies.add(valueResource.getURI());
+            }
         }
     }
 

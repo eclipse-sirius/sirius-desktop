@@ -73,9 +73,10 @@ public class SequenceDiagramRepairParticipant implements IRepairParticipant {
      * {@inheritDoc}
      */
     public void restoreModelElementState(DView view, IProgressMonitor monitor) {
-        TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(view.eResource());
+        Resource resource = view.eResource();
+        TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(resource);
 
-        new MigrationCommandExecutor().execute(editingDomain, migrateModel(view.eResource(), editingDomain));
+        new MigrationCommandExecutor().execute(editingDomain, migrateModel(resource, editingDomain));
 
     }
 

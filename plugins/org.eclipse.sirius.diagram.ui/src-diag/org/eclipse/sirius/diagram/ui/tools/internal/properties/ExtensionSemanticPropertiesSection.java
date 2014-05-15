@@ -17,6 +17,7 @@ import java.util.List;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.ui.provider.PropertySource;
 import org.eclipse.gef.EditPart;
@@ -167,8 +168,11 @@ public class ExtensionSemanticPropertiesSection extends AdvancedPropertySection 
             boolean isValid = true;
             while (inputs.hasNext() && isValid) {
                 final Object input = inputs.next();
-                if (input instanceof DSemanticDecorator && (((DSemanticDecorator) input).eResource() == null || ((DSemanticDecorator) input).eResource().getResourceSet() == null)) {
-                    isValid = false;
+                if (input instanceof DSemanticDecorator) {
+                    Resource resource = ((DSemanticDecorator) input).eResource();
+                    if (resource == null || resource.getResourceSet() == null) {
+                        isValid = false;
+                    }
                 }
             }
             if (!isValid) {

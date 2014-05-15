@@ -68,7 +68,11 @@ public class ModelAccessorsRegistry {
      */
     public ModelAccessor getModelAccessor(final EObject modelElement) {
         ModelAccessor result = null;
-        if (modelElement == null || modelElement.eResource() == null || modelElement.eResource().getResourceSet() == null) {
+        Resource modelElementResource = null;
+        if (modelElement != null) {
+            modelElementResource = modelElement.eResource();
+        }
+        if (modelElement == null || modelElementResource == null || modelElementResource.getResourceSet() == null) {
             if (nullResourceModelAccessor != null) {
                 result = nullResourceModelAccessor;
             } else if (root2ExPackage.size() > 0) {
@@ -78,7 +82,7 @@ public class ModelAccessorsRegistry {
                 throw new RuntimeException("No resource to get the ExtendedPackage");
             }
         } else {
-            result = getModelAccessor(modelElement.eResource().getResourceSet());
+            result = getModelAccessor(modelElementResource.getResourceSet());
         }
         return result;
     }
@@ -109,8 +113,9 @@ public class ModelAccessorsRegistry {
      *            the discriminant file extension.
      */
     public void disposeModelAccessor(final EObject modelElement, final String airDescriptionExtension) {
-        if (modelElement.eResource() != null && modelElement.eResource().getResourceSet() != null) {
-            final String root = getMapKeyFromResource(modelElement.eResource().getResourceSet());
+        Resource modelElementResource = modelElement.eResource();
+        if (modelElementResource != null && modelElementResource.getResourceSet() != null) {
+            final String root = getMapKeyFromResource(modelElementResource.getResourceSet());
             if (root2ExPackage.containsKey(root)) {
                 root2ExPackage.remove(root);
             }

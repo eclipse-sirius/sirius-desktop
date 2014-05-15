@@ -11,6 +11,7 @@
 package org.eclipse.sirius.ecore.extender.business.api.accessor;
 
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.resource.Resource;
 
 import com.google.common.base.Objects;
 
@@ -65,8 +66,9 @@ public class EcoreMetamodelDescriptor implements MetamodelDescriptor {
     }
 
     private boolean isInPlugin(final EPackage package1) {
-        if (package1.eResource() != null && package1.eResource().getURI() != null) {
-            return package1.eResource().getURI().isPlatformPlugin();
+        Resource package1Resource = package1.eResource();
+        if (package1Resource != null && package1Resource.getURI() != null) {
+            return package1Resource.getURI().isPlatformPlugin();
         }
         return false;
     }

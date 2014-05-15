@@ -271,11 +271,12 @@ public class SiriusControlHandler extends AbstractHandler {
      */
     protected String getDefaultControlURI(final EObject obj) {
         final StringBuilder uri = new StringBuilder();
-        uri.append(URI.decode(obj.eResource().getURI().trimFileExtension().toString()));
+        URI objResourceURI = obj.eResource().getURI();
+        uri.append(URI.decode(objResourceURI.trimFileExtension().toString()));
         uri.append("_");
         uri.append(EMFCoreUtil.getName(obj));
         uri.append(".");
-        uri.append(obj.eResource().getURI().fileExtension());
+        uri.append(objResourceURI.fileExtension());
         return uri.toString();
     }
 

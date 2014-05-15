@@ -392,8 +392,9 @@ public final class DAnalysisSessionHelper {
             final EObject root = diagramResource.getContents().get(0);
             if (root instanceof DAnalysis) {
                 for (final EObject model : ((DAnalysis) root).getModels()) {
-                    if (model.eResource() != null) {
-                        semanticResources.add(model.eResource());
+                    Resource modelResource = model.eResource();
+                    if (modelResource != null) {
+                        semanticResources.add(modelResource);
                     }
                 }
             }

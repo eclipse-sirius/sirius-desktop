@@ -314,8 +314,9 @@ public class SiriusDiagramEditorUtil {
      */
     public static View findView(DiagramEditPart diagramEditPart, EObject targetElement, LazyElement2ViewMap lazyElement2ViewMap) {
         boolean hasStructuralURI = false;
-        if (targetElement.eResource() instanceof XMLResource) {
-            hasStructuralURI = ((XMLResource) targetElement.eResource()).getID(targetElement) == null;
+        Resource targetElementResource = targetElement.eResource();
+        if (targetElementResource instanceof XMLResource) {
+            hasStructuralURI = ((XMLResource) targetElementResource).getID(targetElement) == null;
         }
 
         final EPackage rootPackage = (EPackage) EcoreUtil.getRootContainer(targetElement.eClass());

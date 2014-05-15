@@ -43,6 +43,7 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.ocl.ecore.BooleanLiteralExp;
@@ -193,8 +194,12 @@ public class DynamicAcceleoModule {
 
                 if (shouldEvict) {
                     Object compiledExpression = eldest.getValue().getCompiledExpression();
-                    if (compiledExpression instanceof EObject && ((EObject) compiledExpression).eResource() != null) {
-                        resourceSet.getResources().remove(((EObject) compiledExpression).eResource());
+                    if (compiledExpression instanceof EObject) {
+                        EObject compiledExpressionEObject = (EObject) compiledExpression;
+                        Resource resource = compiledExpressionEObject.eResource();
+                        if (resource != null) {
+                            resourceSet.getResources().remove(resource);
+                        }
                     }
                 }
 

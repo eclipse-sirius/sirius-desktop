@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.ui.business.api.view;
 import java.util.Arrays;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.gmf.runtime.common.core.util.StringStatics;
 import org.eclipse.gmf.runtime.notation.Diagram;
@@ -327,8 +328,9 @@ public final class SiriusGMFHelper {
      */
     public static String getViewId(final View view) {
         String viewId = StringStatics.BLANK;
-        if (view.eResource() != null) {
-            String uriFragment = view.eResource().getURIFragment(view);
+        Resource viewResource = view.eResource();
+        if (viewResource != null) {
+            String uriFragment = viewResource.getURIFragment(view);
             if (uriFragment != null) {
                 viewId = uriFragment;
             }

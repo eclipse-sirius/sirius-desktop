@@ -14,6 +14,7 @@ import java.util.Collections;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.componentization.ISiriusComponent;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
@@ -25,9 +26,10 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
+
 /**
- * A monitor which provides compatibility with the legacy APIs used for
- * Sirius registration.
+ * A monitor which provides compatibility with the legacy APIs used for Sirius
+ * registration.
  * 
  * @author pierre-charles.david@obeo.fr
  */
@@ -89,7 +91,8 @@ public class LegacyPluginMonitor extends AbstractViewpointResourceMonitor {
         }
         return ImmutableSet.copyOf(Iterables.filter(registry.getViewpoints(), new Predicate<Viewpoint>() {
             public boolean apply(Viewpoint input) {
-                return input.eResource() != null && input.eResource().getURI().equals(uri);
+                Resource r = input.eResource();
+                return r != null && r.getURI().equals(uri);
             }
         }));
     }

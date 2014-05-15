@@ -122,7 +122,8 @@ public class DiagramRepairParticipant implements IRepairParticipant {
         // Creates a new CrossReferencer before restoring the model state (This
         // cross referencer will return all the references named "element" on
         // GMF Nodes)
-        DiagramCrossReferencer crossReferencer = new DiagramCrossReferencer(view.eResource());
+        Resource viewResource = view.eResource();
+        DiagramCrossReferencer crossReferencer = new DiagramCrossReferencer(viewResource);
         UnmodifiableIterator<DDiagramElement> analysisIterator = Iterators.filter(view.eAllContents(), DDiagramElement.class);
 
         Map<IDiagramElementState<DDiagramElement>, DDiagramElement> states = new LinkedHashMap<IDiagramElementState<DDiagramElement>, DDiagramElement>();
@@ -157,7 +158,7 @@ public class DiagramRepairParticipant implements IRepairParticipant {
         // Synchronize the GMF views to remove orphan and create new after
         // migration
         List<Diagram> diagrams = Lists.newArrayList();
-        Iterators.addAll(diagrams, Iterators.filter(view.eResource().getAllContents(), Diagram.class));
+        Iterators.addAll(diagrams, Iterators.filter(viewResource.getAllContents(), Diagram.class));
         for (Diagram currentDiagram : diagrams) {
             if (ViewUtil.resolveSemanticElement(currentDiagram) != null) {
                 CanonicalSynchronizer canonicalSynchronizer = CanonicalSynchronizerFactory.INSTANCE.createCanonicalSynchronizer(currentDiagram);
@@ -254,7 +255,8 @@ public class DiagramRepairParticipant implements IRepairParticipant {
                 if (description != null && description.getDefaultConcern() != null && diagram.getCurrentConcern() != null && diagram.getCurrentConcern().equals(description.getDefaultConcern())) {
                     // Clean the context if the current context doesn't exist
                     // any more.
-                    if (diagram.getCurrentConcern().eResource() == null || !diagram.getCurrentConcern().eResource().isLoaded()) {
+                    Resource currentConcernResource = diagram.getCurrentConcern().eResource();
+                    if (currentConcernResource == null || !currentConcernResource.isLoaded()) {
                         ConcernService.setCurrentConcern(diagram, description.getDefaultConcern());
                     }
                 }

@@ -968,12 +968,15 @@ public class AcceleoMTLInterpreter implements IInterpreter {
      */
     private void addContextImports(IInterpreterContext context) {
         final EObject element = context.getElement();
-        if (element != null && element.eResource() != null) {
-            final URI uri = element.eResource().getURI();
-            if (existsInWorkspace(uri.toPlatformString(true))) {
-                viewpointProjects.add(uri.segment(1));
-            } else if (existsInPlugins(uri.toPlatformString(true))) {
-                viewpointPlugins.add(uri.segment(1));
+        if (element != null) {
+            Resource resource = element.eResource();
+            if (resource != null) {
+                final URI uri = element.eResource().getURI();
+                if (existsInWorkspace(uri.toPlatformString(true))) {
+                    viewpointProjects.add(uri.segment(1));
+                } else if (existsInPlugins(uri.toPlatformString(true))) {
+                    viewpointPlugins.add(uri.segment(1));
+                }
             }
         }
 

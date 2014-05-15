@@ -191,11 +191,12 @@ public class ControlAction extends CommandActionHandler {
         protected Control createDialogArea(Composite parent) {
             final Control control = super.createDialogArea(parent);
             final StringBuilder defaultURI = new StringBuilder();
-            defaultURI.append(URI.decode(controledObject.eResource().getURI().trimFileExtension().toString()));
+            URI controledObjectResourceURI = controledObject.eResource().getURI();
+            defaultURI.append(URI.decode(controledObjectResourceURI.trimFileExtension().toString()));
             defaultURI.append("_");
             defaultURI.append(EMFCoreUtil.getName(controledObject));
             defaultURI.append(".");
-            defaultURI.append(controledObject.eResource().getURI().fileExtension());
+            defaultURI.append(controledObjectResourceURI.fileExtension());
             this.uriField.setText(URI.encodeFragment(defaultURI.toString(), true));
             return control;
         }

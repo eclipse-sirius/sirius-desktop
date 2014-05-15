@@ -221,10 +221,11 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      */
     public DAnalysisSessionImpl(DAnalysis mainDAnalysis) {
         Preconditions.checkNotNull(mainDAnalysis);
-        Preconditions.checkNotNull(mainDAnalysis.eResource(), "A session must be inside a resource.");
+        this.sessionResource = mainDAnalysis.eResource();
+        Preconditions.checkNotNull(this.sessionResource, "A session must be inside a resource.");
         this.transactionalEditingDomain = Preconditions.checkNotNull(TransactionUtil.getEditingDomain(mainDAnalysis), "A session must be associated to an EditingDomain");
         this.mainDAnalysis = mainDAnalysis;
-        this.sessionResource = mainDAnalysis.eResource();
+
         this.interpreter = new ODesignGenericInterpreter();
         this.representationsChangeAdapter = new RepresentationsChangeAdapter(this);
         this.representationNameListener = new RepresentationNameListener();
@@ -452,9 +453,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     /**
      * This method allows adding {@link ModelChangeTrigger} to the current
-     * session {@link SessionEventBroker}. This method is called during the opening of
-     * the Session, before setting the open attribute to true and before
-     * launching the SessionListener.OPENED notifications.
+     * session {@link SessionEventBroker}. This method is called during the
+     * opening of the Session, before setting the open attribute to true and
+     * before launching the SessionListener.OPENED notifications.
      */
     protected void initLocalTriggers() {
         Predicate<Notification> danglingRemovalPredicate = Predicates.or(DanglingRefRemovalTrigger.IS_DETACHMENT, DanglingRefRemovalTrigger.IS_ATTACHMENT);
@@ -513,8 +514,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         // Calculate paths of the activated representation description files
         final List<String> filePaths = new ArrayList<String>();
         for (final Viewpoint vp : getSelectedViewpointsSpecificToGeneric()) {
-            if (vp.eResource() != null) {
-                filePaths.add(vp.eResource().getURI().toPlatformString(true));
+            Resource vpResource = vp.eResource();
+            if (vpResource != null) {
+                filePaths.add(vpResource.getURI().toPlatformString(true));
             }
         }
         this.interpreter.setProperty(IInterpreter.FILES, filePaths);
@@ -878,8 +880,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         final Collection<DAnalysis> allAnalyses = allAnalyses();
         if (!allAnalyses.isEmpty()) {
             for (final DAnalysis analysis : allAnalyses) {
-                if (analysis.eResource() != null && analysis.eResource().getURI() != null) {
-                    builder.append(analysis.eResource().getURI().toString()).append(' ');
+                Resource analysisResource = analysis.eResource();
+                if (analysisResource != null && analysisResource.getURI() != null) {
+                    builder.append(analysisResource.getURI().toString()).append(' ');
                 } else {
                     return Session.INVALID_SESSION;
                 }
@@ -1068,14 +1071,16 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             monitor.beginTask("Update selected Viewpoints data", selectedViewpoints.size() + difference.size() + 1);
             // FIXME : it is useful?
             for (Viewpoint viewpoint : selectedViewpoints) {
-                if (viewpoint.eResource() != null) {
-                    registerResourceInCrossReferencer(viewpoint.eResource());
+                Resource viewpointResource = viewpoint.eResource();
+                if (viewpointResource != null) {
+                    registerResourceInCrossReferencer(viewpointResource);
                 }
                 monitor.worked(1);
             }
             for (Viewpoint viewpoint : difference) {
-                if (viewpoint.eResource() != null) {
-                    unregisterResourceInCrossReferencer(viewpoint.eResource());
+                Resource viewpointResource = viewpoint.eResource();
+                if (viewpointResource != null) {
+                    unregisterResourceInCrossReferencer(viewpointResource);
                 }
                 monitor.worked(1);
             }
@@ -1173,8 +1178,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     public Set<Resource> getAllSessionResources() {
         final Set<Resource> analysisResources = new LinkedHashSet<Resource>();
         for (final DAnalysis analysis : allAnalyses()) {
-            if (analysis.eResource() != null) {
-                analysisResources.add(analysis.eResource());
+            Resource analysisResource = analysis.eResource();
+            if (analysisResource != null) {
+                analysisResources.add(analysisResource);
             }
         }
         return Collections.unmodifiableSet(analysisResources);
@@ -1708,8 +1714,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
         for (final DAnalysis analysis : Iterables.filter(allAnalyses(), Predicates.notNull())) {
             removeAdaptersOnAnalysis(analysis);
-            if (analysis.eResource() != null) {
-                unregisterResourceInCrossReferencer(analysis.eResource());
+            Resource analysisResource = analysis.eResource();
+            if (analysisResource != null) {
+                unregisterResourceInCrossReferencer(analysisResource);
             }
         }
         ResourceSet resourceSet = transactionalEditingDomain.getResourceSet();

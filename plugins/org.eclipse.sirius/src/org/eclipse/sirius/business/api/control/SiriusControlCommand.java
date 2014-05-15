@@ -154,8 +154,11 @@ public class SiriusControlCommand extends ControlCommand {
 
     private void markContainerResourceAsModified(final EObject obj) {
         EObject rootContainer = getRootContainer(obj);
-        if (obj != null && rootContainer != null && rootContainer.eResource() != null) {
-            rootContainer.eResource().setModified(true);
+        if (obj != null && rootContainer != null) {
+            Resource rootContainerResource = rootContainer.eResource();
+            if (rootContainerResource != null) {
+                rootContainerResource.setModified(true);
+            }
         }
     }
 

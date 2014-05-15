@@ -74,16 +74,17 @@ public class RemoveDanglingReferences extends RecordingCommand {
     public static void removeDanglingReferences(final EObject element) {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.REMOVE_DANGLING_REFERENCE_KEY);
         ModelAccessor accessor = null;
-        if (element.eResource() != null && element.eResource().getResourceSet() != null) {
+        Resource elementResource = element.eResource();
+        if (elementResource != null && elementResource.getResourceSet() != null) {
             accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(element);
-            IPermissionAuthority authority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(element.eResource().getResourceSet());
+            IPermissionAuthority authority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(elementResource.getResourceSet());
             if (authority != null && !authority.canEditInstance(element)) {
                 DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.REMOVE_DANGLING_REFERENCE_KEY);
                 return;
             }
         }
 
-        removeDanglingReferences(accessor, new DanglingReferencesDetector(element.eResource()));
+        removeDanglingReferences(accessor, new DanglingReferencesDetector(elementResource));
         DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.REMOVE_DANGLING_REFERENCE_KEY);
     }
 

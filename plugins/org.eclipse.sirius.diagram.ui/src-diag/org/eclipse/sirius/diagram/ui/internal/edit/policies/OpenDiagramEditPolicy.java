@@ -135,13 +135,14 @@ public class OpenDiagramEditPolicy extends OpenEditPolicy {
                 throw new ExecutionException("Can't create diagram of '" + getDiagramKind() + "' kind");
             }
             diagramFacet.setDiagramLink(d);
-            assert diagramFacet.eResource() != null;
-            diagramFacet.eResource().getContents().add(d);
+            final Resource diagramFacetResource = diagramFacet.eResource();
+            assert diagramFacetResource != null;
+            diagramFacetResource.getContents().add(d);
             try {
                 new WorkspaceModifyOperation() {
                     protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException {
                         try {
-                            for (Iterator<Resource> it = diagramFacet.eResource().getResourceSet().getResources().iterator(); it.hasNext();) {
+                            for (Iterator<Resource> it = diagramFacetResource.getResourceSet().getResources().iterator(); it.hasNext();) {
                                 Resource nextResource = it.next();
                                 if (nextResource.isLoaded() && !getEditingDomain().isReadOnly(nextResource)) {
                                     nextResource.save(SiriusDiagramEditorUtil.getSaveOptions());

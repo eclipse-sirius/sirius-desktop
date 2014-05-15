@@ -50,6 +50,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
@@ -60,8 +61,6 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.internal.ide.IIDEHelpContextIds;
 import org.eclipse.ui.model.WorkbenchContentProvider;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
-
-import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 
 /**
  * Wizard page useful to select an EMF element from the workspace.
@@ -323,10 +322,14 @@ public class SelectModelElementWizardPage extends WizardPage {
             }
             if (element instanceof EObject) {
                 final EObject eObject = (EObject) element;
-                if (eObject.eContainer() == null && eObject.eResource().getURI().isFile()) {
-                    final String path = eObject.eResource().getURI().path();
-                    parent = ResourcesPlugin.getWorkspace().getRoot().getFileForLocation(new Path(path));
-                } else {
+                if (eObject.eContainer() == null) {
+                    final URI eObjectResourceURI = eObject.eResource().getURI();
+                    if (eObjectResourceURI.isFile()) {
+                        final String path = eObjectResourceURI.path();
+                        parent = ResourcesPlugin.getWorkspace().getRoot().getFileForLocation(new Path(path));
+                    }
+                }
+                if (parent == null) {
                     parent = myAdapterFactoryContentProvider.getParent(eObject);
                 }
             }
