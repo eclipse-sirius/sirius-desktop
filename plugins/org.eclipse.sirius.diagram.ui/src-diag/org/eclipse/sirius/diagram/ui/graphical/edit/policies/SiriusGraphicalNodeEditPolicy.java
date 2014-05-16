@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
@@ -59,7 +60,6 @@ import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateConnectionViewRequest;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
-import org.eclipse.gmf.runtime.notation.ConnectorStyle;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
@@ -87,6 +87,7 @@ import org.eclipse.sirius.diagram.description.tool.ReconnectionKind;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.diagram.tools.internal.command.builders.EdgeCreationCommandBuilder;
+import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.command.SiriusSetConnectionAnchorsCommand;
 import org.eclipse.sirius.diagram.ui.business.internal.command.TreeLayoutSetConnectionAnchorsCommand;
@@ -193,8 +194,14 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             } else if (applySpecificTreeLayout(request.getConnectionEditPart())) {
                 cmd = getReconnectSourceForTreeLayoutCommand(request);
             } else {
-                cmd = super.getReconnectSourceCommand(request);
+                ConnectionEditPartQuery cepq = new ConnectionEditPartQuery(request.getConnectionEditPart());
+                if (cepq.isEdgeWithObliqueRoutingStyle() || cepq.isEdgeWithRectilinearRoutingStyle()) {
+                    cmd = getReconnectSourceOrTargetForObliqueOrRectilinearCommand(request, true);
+                } else {
+                    cmd = super.getReconnectSourceCommand(request);
+                }
             }
+
         }
 
         return cmd;
@@ -263,13 +270,69 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
                     result.add(getReconnectTargetCommandAfterTool(request));
                     cmd = result;
                 }
-            } else if (applySpecificTreeLayout(request.getConnectionEditPart())) {
-                cmd = getReconnectTargetForTreeLayoutCommand(request);
             } else {
-                cmd = super.getReconnectTargetCommand(request);
+                ConnectionEditPartQuery cepq = new ConnectionEditPartQuery(request.getConnectionEditPart());
+                if (cepq.isEdgeWithTreeRoutingStyle() && applySpecificTreeLayout(request.getConnectionEditPart())) {
+                    cmd = getReconnectTargetForTreeLayoutCommand(request);
+                } else if (cepq.isEdgeWithObliqueRoutingStyle() || cepq.isEdgeWithRectilinearRoutingStyle()) {
+                    cmd = getReconnectSourceOrTargetForObliqueOrRectilinearCommand(request, false);
+                } else {
+                    cmd = super.getReconnectTargetCommand(request);
+                }
             }
         }
         return cmd;
+    }
+
+    private Command getReconnectSourceOrTargetForObliqueOrRectilinearCommand(ReconnectRequest request, boolean source) {
+        INodeEditPart node = getConnectableEditPart();
+        INodeEditPart targetEP = getConnectionCompleteEditPart(request);
+        if (node == null || targetEP == null)
+            return null;
+
+        TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
+
+        ConnectionAnchor targetAnchor = getConnectionTargetAnchor(request);
+
+        // Creation of the command that set the connection end points (source
+        // and target)
+        SetConnectionEndsCommand sceCommand = new SetConnectionEndsCommand(editingDomain, StringStatics.BLANK);
+        sceCommand.setEdgeAdaptor(new EObjectAdapter((EObject) request.getConnectionEditPart().getModel()));
+        if (source) {
+            sceCommand.setNewSourceAdaptor(targetEP);
+        } else {
+            sceCommand.setNewTargetAdaptor(targetEP);
+        }
+        // Creation of the command that set the connection anchors (also source
+        // and target)
+        SetConnectionAnchorsCommand scaCommand = new SetConnectionAnchorsCommand(editingDomain, StringStatics.BLANK);
+        scaCommand.setEdgeAdaptor(new EObjectAdapter((EObject) request.getConnectionEditPart().getModel()));
+        if (source) {
+            scaCommand.setNewSourceTerminal(targetEP.mapConnectionAnchorToTerminal(targetAnchor));
+        } else {
+            scaCommand.setNewTargetTerminal(targetEP.mapConnectionAnchorToTerminal(targetAnchor));
+        }
+        // Both command are composed in a composite command
+        CompositeCommand cc = new CompositeCommand(DiagramUIMessages.Commands_SetConnectionEndsCommand_Target);
+        cc.compose(sceCommand);
+        cc.compose(scaCommand);
+        // Set points of Edge as they are graphically
+        Connection connection = (Connection) ((GraphicalEditPart) request.getConnectionEditPart()).getFigure();
+        Point tempSourceRefPoint = connection.getSourceAnchor().getReferencePoint();
+        connection.translateToRelative(tempSourceRefPoint);
+
+        Point tempTargetRefPoint = connection.getTargetAnchor().getReferencePoint();
+        connection.translateToRelative(tempTargetRefPoint);
+
+        PointList connectionPointList = connection.getPoints().getCopy();
+
+        // Set the connection bendpoints with a PointList using a command
+        SetConnectionBendpointsCommand sbbCommand = new SetConnectionBendpointsCommand(editingDomain);
+        sbbCommand.setEdgeAdapter(request.getConnectionEditPart());
+        sbbCommand.setNewPointList(connectionPointList, tempSourceRefPoint, tempTargetRefPoint);
+        cc.compose(sbbCommand);
+
+        return new ICommandProxy(cc);
     }
 
     /**
@@ -988,7 +1051,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
      */
     private boolean applySpecificTreeLayout(ConnectionEditPart connectionEditPart) {
         boolean isLayoutComponent = false;
-        if (isEdgeTreeRoutingStyle(connectionEditPart) && !isSourceOrTargetIsEdge(connectionEditPart)) {
+        if (!isSourceOrTargetIsEdge(connectionEditPart)) {
             Diagram diagram = getDiagram(connectionEditPart);
             if (diagram != null && diagram.getElement() instanceof DSemanticDiagram) {
                 DSemanticDiagram dSemanticDiagram = (DSemanticDiagram) diagram.getElement();
@@ -1010,22 +1073,6 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
      */
     private boolean isSourceOrTargetIsEdge(ConnectionEditPart connectionEditPart) {
         return connectionEditPart.getSource() instanceof ConnectionEditPart || connectionEditPart.getTarget() instanceof ConnectionEditPart;
-    }
-
-    private boolean isEdgeTreeRoutingStyle(ConnectionEditPart connectionEditPart) {
-        boolean isEdgeTreeRoutingStyle = false;
-        if (connectionEditPart.getModel() instanceof Edge) {
-            Edge edge = (Edge) connectionEditPart.getModel();
-            if (!edge.getStyles().isEmpty()) {
-                if (edge.getStyles().get(0) instanceof ConnectorStyle) {
-                    ConnectorStyle connectorStyle = (ConnectorStyle) edge.getStyles().get(0);
-                    if (Routing.TREE_LITERAL.getLiteral().equals(connectorStyle.getRouting().getLiteral())) {
-                        isEdgeTreeRoutingStyle = true;
-                    }
-                }
-            }
-        }
-        return isEdgeTreeRoutingStyle;
     }
 
     private Diagram getDiagram(ConnectionEditPart connectionEditPart) {

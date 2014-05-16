@@ -186,4 +186,40 @@ public class EdgeQuery {
         }
         return isEdgeTreeRoutingStyle;
     }
+
+    /**
+     * Check if the edge has a rectilinear routing style.
+     * 
+     * @return true if the edge has a rectilinear routing style.
+     */
+    public boolean isEdgeWithRectilinearRoutingStyle() {
+        boolean isEdgeRectilinearRoutingStyle = false;
+        for (Object style : edge.getStyles()) {
+            if (style instanceof ConnectorStyle) {
+                ConnectorStyle connectorStyle = (ConnectorStyle) style;
+                if (Routing.RECTILINEAR_LITERAL.getLiteral().equals(connectorStyle.getRouting().getLiteral())) {
+                    isEdgeRectilinearRoutingStyle = true;
+                }
+            }
+        }
+        return isEdgeRectilinearRoutingStyle;
+    }
+
+    /**
+     * Check if the edge has an oblique routing style.
+     * 
+     * @return true if the edge has an oblique routing style.
+     */
+    public boolean isEdgeWithObliqueRoutingStyle() {
+        boolean isEdgeObliqueRoutingStyle = false;
+        for (Object style : edge.getStyles()) {
+            if (style instanceof ConnectorStyle) {
+                ConnectorStyle connectorStyle = (ConnectorStyle) style;
+                if (Routing.MANUAL_LITERAL.getLiteral().equals(connectorStyle.getRouting().getLiteral())) {
+                    isEdgeObliqueRoutingStyle = true;
+                }
+            }
+        }
+        return isEdgeObliqueRoutingStyle;
+    }
 }

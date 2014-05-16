@@ -14,17 +14,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.draw2d.AbsoluteBendpoint;
+import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.ConnectionLocator;
 import org.eclipse.draw2d.RelativeBendpoint;
+import org.eclipse.draw2d.XYAnchor;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.gef.editpolicies.ConnectionEndpointEditPolicy;
 import org.eclipse.gef.requests.ReconnectRequest;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
+import org.eclipse.gmf.runtime.draw2d.ui.geometry.LineSeg;
+import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.handles.SiriusConnectionEndPointHandle;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.gmf.runtime.draw2d.ui.geometry.LineSegQuery;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 import com.google.common.collect.Lists;
 
@@ -67,47 +75,26 @@ public class SiriusConnectionEndPointEditPolicy extends ConnectionEndpointEditPo
 
     /**
      * {@inheritDoc} <BR>
-     * Override this method to fix the points of the edge if it is on orthogonal
-     * tree branch. Without this fix, a move of the source or the target has
-     * incidence on all the points.
+     * Override this method to fix the points of the edge:
+     * <UL>
+     * <LI>if it is on orthogonal tree branch</LI>
+     * <LI>if connection has oblique or rectilinear router, to move only the
+     * points corresponding to the last segment.</LI>
+     * </UL>
+     * Without this fix, a move of the source or the target has incidence on all
+     * the points.
      * 
      * @see org.eclipse.gef.editpolicies.ConnectionEndpointEditPolicy#showConnectionMoveFeedback(org.eclipse.gef.requests.ReconnectRequest)
      */
     @Override
     protected void showConnectionMoveFeedback(ReconnectRequest request) {
-        boolean isOrthogonalTreeBranch = new ConnectionQuery(getConnection()).isOrthogonalTreeBranch(getConnection().getPoints());
         ConnectionQuery connectionQuery = new ConnectionQuery(getConnection());
-        if (isOrthogonalTreeBranch) {
-            if (originalAnchor == null) {
-                if (request.isMovingStartAnchor()) {
-                    originalAnchor = getConnection().getSourceAnchor();
-                } else {
-                    originalAnchor = getConnection().getTargetAnchor();
-                }
-                originalPoints = Lists.newLinkedList();
-                originalConstraint = getConnection().getRoutingConstraint();
-                Option<List<RelativeBendpoint>> optionalRelativeBendpointsContraint = connectionQuery.getTreeRelativeBendpointsConstraint();
-                if (optionalRelativeBendpointsContraint.some()) {
-                    for (RelativeBendpoint relativeBendpoint : optionalRelativeBendpointsContraint.get()) {
-                        originalPoints.add(relativeBendpoint.getLocation());
-                    }
-                } else {
-                    Option<List<AbsoluteBendpoint>> optionalAsboluteBendpointsContraint = connectionQuery.getTreeAbsoluteBendpointsConstraint();
-                    if (optionalAsboluteBendpointsContraint.some()) {
-                        for (AbsoluteBendpoint absoluteBendpoint : optionalAsboluteBendpointsContraint.get()) {
-                            originalPoints.add(absoluteBendpoint.getLocation().getCopy());
-                        }
-                    }
-                }
-                if (originalPoints.isEmpty()) {
-                    // The constraint probably contains only 2 points (it's
-                    // possible just after an edge creation for example). So in
-                    // this case, we use the points of the edge
-                    for (int i = 0; i < getConnection().getPoints().size(); i++) {
-                        originalPoints.add(getConnection().getPoints().getPoint(i).getCopy());
-                    }
-                }
-            }
+        ConnectionEditPartQuery cepq = new ConnectionEditPartQuery((ConnectionEditPart) getHost());
+        boolean isOrthogonalTreeBranch = connectionQuery.isOrthogonalTreeBranch(getConnection().getPoints());
+        boolean isEdgeWithObliqueRoutingStyle = cepq.isEdgeWithObliqueRoutingStyle();
+        boolean isEdgeWithRectilinearRoutingStyle = cepq.isEdgeWithRectilinearRoutingStyle();
+        if (isOrthogonalTreeBranch || isEdgeWithObliqueRoutingStyle || isEdgeWithRectilinearRoutingStyle) {
+            preShowConnectionMoveFeedback(request);
         } else if (originalAnchor != null) {
             // We probably go out of the previous target node so erase the
             // previous custom feedback
@@ -115,61 +102,215 @@ public class SiriusConnectionEndPointEditPolicy extends ConnectionEndpointEditPo
         }
         super.showConnectionMoveFeedback(request);
         if (isOrthogonalTreeBranch) {
-            // Change the constraints of the connection according to the new
-            // anchor
-            Option<List<RelativeBendpoint>> optionalRelativeBendpointsContraint = connectionQuery.getTreeRelativeBendpointsConstraint();
-            Option<List<AbsoluteBendpoint>> optionalAsboluteBendpointsContraint = connectionQuery.getTreeAbsoluteBendpointsConstraint();
-            List<Point> points = Lists.newArrayList();
-            for (Point point : originalPoints) {
-                points.add(point.getCopy());
-            }
-            Point newSourceRefPoint = getConnection().getSourceAnchor().getReferencePoint();
-            getConnection().translateToRelative(newSourceRefPoint);
-            Point newTargetRefPoint = getConnection().getTargetAnchor().getReferencePoint();
-            getConnection().translateToRelative(newTargetRefPoint);
+            postShowConnectionMoveFeedbackForOrthogonalTreeBranch(request);
+        } else if (isEdgeWithObliqueRoutingStyle || isEdgeWithRectilinearRoutingStyle) {
+            postShowConnectionMoveFeedbackForObliqueOrRectilinearConnection(request);
+        }
+
+    }
+
+    /**
+     * Store the original anchor (source or target), routing constraint and
+     * points.
+     * 
+     * @param request
+     *            the reconnect request
+     */
+    private void preShowConnectionMoveFeedback(ReconnectRequest request) {
+        if (originalAnchor == null) {
             if (request.isMovingStartAnchor()) {
-                // Compute the x delta
-                int deltaX = points.get(0).x - newSourceRefPoint.x;
-                // The first and the second points must be shift on the x
-                // coordinate
-                points.get(0).translate(deltaX, 0);
-                points.get(1).translate(deltaX, 0);
+                originalAnchor = getConnection().getSourceAnchor();
             } else {
-                // Compute the x delta
-                int deltaX = newTargetRefPoint.x - points.get(3).x;
-                // The third and the last points must be shift on the x
-                // coordinate
-                points.get(2).translate(deltaX, 0);
-                points.get(3).translate(deltaX, 0);
+                originalAnchor = getConnection().getTargetAnchor();
             }
-            if (optionalRelativeBendpointsContraint.some() || optionalAsboluteBendpointsContraint.some()) {
-                if (optionalRelativeBendpointsContraint.some()) {
-                    for (int i = 0; i < points.size(); i++) {
-                        Dimension s = points.get(i).getDifference(newSourceRefPoint);
-                        Dimension t = points.get(i).getDifference(newTargetRefPoint);
-                        optionalRelativeBendpointsContraint.get().get(i).setRelativeDimensions(s, t);
-                    }
-                    getConnection().setRoutingConstraint(optionalRelativeBendpointsContraint.get());
-                } else {
-                    for (int i = 0; i < points.size(); i++) {
-                        optionalAsboluteBendpointsContraint.get().get(i).setLocation(points.get(i));
-                    }
-                    getConnection().setRoutingConstraint(optionalAsboluteBendpointsContraint.get());
+            originalPoints = Lists.newLinkedList();
+            originalConstraint = getConnection().getRoutingConstraint();
+            ConnectionQuery connectionQuery = new ConnectionQuery(getConnection());
+            Option<List<RelativeBendpoint>> optionalRelativeBendpointsContraint = connectionQuery.getTreeRelativeBendpointsConstraint();
+            if (optionalRelativeBendpointsContraint.some()) {
+                for (RelativeBendpoint relativeBendpoint : optionalRelativeBendpointsContraint.get()) {
+                    originalPoints.add(relativeBendpoint.getLocation());
                 }
             } else {
-                List<RelativeBendpoint> newConstraint = Lists.newLinkedList();
-                for (int i = 0; i < points.size(); i++) {
-                    Dimension s = points.get(i).getDifference(newSourceRefPoint);
-                    Dimension t = points.get(i).getDifference(newTargetRefPoint);
-                    RelativeBendpoint rb = new RelativeBendpoint(getConnection());
-                    rb.setRelativeDimensions(s, t);
-                    rb.setWeight(i / ((float) points.size() - 1));
-                    newConstraint.add(rb);
+                Option<List<AbsoluteBendpoint>> optionalAsboluteBendpointsContraint = connectionQuery.getTreeAbsoluteBendpointsConstraint();
+                if (optionalAsboluteBendpointsContraint.some()) {
+                    for (AbsoluteBendpoint absoluteBendpoint : optionalAsboluteBendpointsContraint.get()) {
+                        originalPoints.add(absoluteBendpoint.getLocation().getCopy());
+                    }
                 }
-                getConnection().setRoutingConstraint(newConstraint);
+            }
+            if (originalPoints.isEmpty()) {
+                // The constraint probably contains only 2 points (it's
+                // possible just after an edge creation for example). So in
+                // this case, we use the points of the edge
+                for (int i = 0; i < getConnection().getPoints().size(); i++) {
+                    originalPoints.add(getConnection().getPoints().getPoint(i).getCopy());
+                }
+            }
+        }
+    }
+
+    /**
+     * Change the routing constraint of the Connection according to a change of
+     * the first vertical segment or of the last vertical segment.
+     * 
+     * @param request
+     *            the reconnect request
+     */
+    private void postShowConnectionMoveFeedbackForOrthogonalTreeBranch(ReconnectRequest request) {
+        // Change the constraints of the connection according to the new anchor
+        // (move the vertical first segment or the vertical last segment).
+        List<Point> points = Lists.newArrayList();
+        for (Point point : originalPoints) {
+            points.add(point.getCopy());
+        }
+        Point newSourceRefPoint = getConnection().getSourceAnchor().getReferencePoint();
+        getConnection().translateToRelative(newSourceRefPoint);
+        Point newTargetRefPoint = getConnection().getTargetAnchor().getReferencePoint();
+        getConnection().translateToRelative(newTargetRefPoint);
+        if (request.isMovingStartAnchor()) {
+            // Compute the x delta
+            int deltaX = points.get(0).x - newSourceRefPoint.x;
+            // The first and the second points must be shift on the x
+            // coordinate
+            points.get(0).translate(deltaX, 0);
+            points.get(1).translate(deltaX, 0);
+        } else {
+            // Compute the x delta
+            int deltaX = newTargetRefPoint.x - points.get(3).x;
+            // The third and the last points must be shift on the x
+            // coordinate
+            points.get(2).translate(deltaX, 0);
+            points.get(3).translate(deltaX, 0);
+        }
+        // Change the routing constraint (bendpoints constraints) of the
+        // Connection according to this new points.
+        changeRoutingConstraint(points, newSourceRefPoint, newTargetRefPoint);
+    }
+
+    /**
+     * Change the routing constraint (bendpoints constraints) of the
+     * {@link Connection} according to this new points.
+     * 
+     * @param points
+     *            List of points to follow
+     * @param sourceRefPoint
+     *            Source reference point
+     * @param targetRefPoint
+     *            Target reference point
+     */
+    private void changeRoutingConstraint(List<Point> points, Point sourceRefPoint, Point targetRefPoint) {
+        ConnectionQuery connectionQuery = new ConnectionQuery(getConnection());
+        Option<List<RelativeBendpoint>> optionalRelativeBendpointsContraint = connectionQuery.getTreeRelativeBendpointsConstraint();
+        Option<List<AbsoluteBendpoint>> optionalAsboluteBendpointsContraint = connectionQuery.getTreeAbsoluteBendpointsConstraint();
+        if (optionalRelativeBendpointsContraint.some() || optionalAsboluteBendpointsContraint.some()) {
+            if (optionalRelativeBendpointsContraint.some()) {
+                for (int i = 0; i < points.size(); i++) {
+                    Dimension s = points.get(i).getDifference(sourceRefPoint);
+                    Dimension t = points.get(i).getDifference(targetRefPoint);
+                    optionalRelativeBendpointsContraint.get().get(i).setRelativeDimensions(s, t);
+                }
+                getConnection().setRoutingConstraint(optionalRelativeBendpointsContraint.get());
+            } else {
+                for (int i = 0; i < points.size(); i++) {
+                    optionalAsboluteBendpointsContraint.get().get(i).setLocation(points.get(i));
+                }
+                getConnection().setRoutingConstraint(optionalAsboluteBendpointsContraint.get());
+            }
+        } else {
+            List<RelativeBendpoint> newConstraint = Lists.newLinkedList();
+            for (int i = 0; i < points.size(); i++) {
+                Dimension s = points.get(i).getDifference(sourceRefPoint);
+                Dimension t = points.get(i).getDifference(targetRefPoint);
+                RelativeBendpoint rb = new RelativeBendpoint(getConnection());
+                rb.setRelativeDimensions(s, t);
+                rb.setWeight(i / ((float) points.size() - 1));
+                newConstraint.add(rb);
+            }
+            getConnection().setRoutingConstraint(newConstraint);
+        }
+    }
+
+    /**
+     * Change the routing constraint of the Connection according to a change of
+     * the first or of the last segment.
+     * 
+     * @param request
+     *            the reconnect request
+     */
+    private void postShowConnectionMoveFeedbackForObliqueOrRectilinearConnection(ReconnectRequest request) {
+        // Compute the move delta
+        PrecisionPoint moveDelta;
+        List<Point> points = Lists.newArrayList();
+        for (Point point : originalPoints) {
+            points.add(point.getCopy());
+        }
+        Connection connection = getConnection();
+        ConnectionEditPart connectionEditPart = (ConnectionEditPart) getHost();
+
+        Point newSourceRefPoint = connection.getSourceAnchor().getReferencePoint();
+        connection.translateToRelative(newSourceRefPoint);
+        Point newTargetRefPoint = connection.getTargetAnchor().getReferencePoint();
+        connection.translateToRelative(newTargetRefPoint);
+
+        PrecisionPoint scrollSize = new PrecisionPoint(GraphicalHelper.getScrollSize(connectionEditPart));
+        GraphicalHelper.applyInverseZoomOnPoint(connectionEditPart, scrollSize);
+
+        // If the source or target is disconnected, the anchor is changed from a
+        // SlidableAnchor to a XYAnchor. The location computation is different
+        // and we need to introduce scroll and zoom. Otherwise the dragged
+        // extremity will not be under the mouse.
+        if (!request.isMovingStartAnchor() && !connectionEditPart.getTarget().equals(request.getTarget()) && connection.getTargetAnchor() instanceof XYAnchor) {
+            ((XYAnchor) connection.getTargetAnchor()).setLocation(GraphicalHelper.applyZoomOnPoint(connectionEditPart, newTargetRefPoint.getTranslated(-scrollSize.x, -scrollSize.y)));
+            newTargetRefPoint = connection.getTargetAnchor().getReferencePoint().getCopy();
+            connection.translateToRelative(newTargetRefPoint);
+        } else if (request.isMovingStartAnchor() && !connectionEditPart.getSource().equals(request.getTarget()) && connection.getSourceAnchor() instanceof XYAnchor) {
+            ((XYAnchor) connection.getSourceAnchor()).setLocation(GraphicalHelper.applyZoomOnPoint(connectionEditPart, newSourceRefPoint.getTranslated(-scrollSize.x, -scrollSize.y)));
+            newSourceRefPoint = connection.getSourceAnchor().getReferencePoint().getCopy();
+            connection.translateToRelative(newSourceRefPoint);
+        }
+
+        if (request.isMovingStartAnchor()) {
+            moveDelta = new PrecisionPoint(points.get(0).x - newSourceRefPoint.x, points.get(0).y - newSourceRefPoint.y);
+        } else {
+            moveDelta = new PrecisionPoint(newTargetRefPoint.x - points.get(points.size() - 1).x, newTargetRefPoint.y - points.get(points.size() - 1).y);
+        }
+        // Change the constraints of the connection according to the new anchor
+        // (move the first or the last segment).
+        if (request.isMovingStartAnchor()) {
+            moveDelta.negate();
+            LineSeg firstSegment = new LineSeg(points.get(0), points.get(1));
+            LineSegQuery lineSegQuery = new LineSegQuery(firstSegment);
+            // Change the first point according to the move
+            points.set(0, points.get(0).getTranslated(moveDelta));
+            if (new ConnectionEditPartQuery(connectionEditPart).isEdgeWithRectilinearRoutingStyle()) {
+                // and also change the second point only if the edge has a
+                // rectilinear routing constraint.
+                if (lineSegQuery.isHorizontal()) {
+                    points.set(1, points.get(1).getTranslated(0, moveDelta.preciseY()));
+                } else {
+                    points.set(1, points.get(1).getTranslated(moveDelta.preciseX(), 0));
+                }
+            }
+        } else {
+            LineSeg lastSegment = new LineSeg(points.get(points.size() - 2), points.get(points.size() - 1));
+            LineSegQuery lineSegQuery = new LineSegQuery(lastSegment);
+            // Change the last point according to the move
+            points.set(points.size() - 1, points.get(points.size() - 1).getTranslated(moveDelta));
+            // and also change the penultimate point only if the edge has a
+            // rectilinear routing constraint.
+            if (new ConnectionEditPartQuery(connectionEditPart).isEdgeWithRectilinearRoutingStyle()) {
+                if (lineSegQuery.isHorizontal()) {
+                    points.set(points.size() - 2, points.get(points.size() - 2).getTranslated(0, moveDelta.preciseY()));
+                } else {
+                    points.set(points.size() - 2, points.get(points.size() - 2).getTranslated(moveDelta.preciseX(), 0));
+                }
             }
         }
 
+        // Change the routing constraint (bendpoints constraints) of the
+        // Connection according to this new points.
+        changeRoutingConstraint(points, newSourceRefPoint, newTargetRefPoint);
     }
 
     /**

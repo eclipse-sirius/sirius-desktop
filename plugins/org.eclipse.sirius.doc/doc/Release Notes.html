@@ -40,7 +40,8 @@
 		<h2 id="sirius2.0.0">Changes in Sirius 2.0.0 (from Sirius 1.0.0)</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
-			<li>It is now possible to select element that intersects the selection rectangle and not that is completely contained by the selection rectangle. This new behavior is enabled when user selects elements from right to left. The normal mode (previous mode) remains when the user selects elements from left to right. </li>
+			<li>It is now possible to select element that intersects the selection rectangle and not that is completely contained by the selection rectangle. This new behavior is enabled when user selects elements from right to left. The normal mode (previous mode) remains when the user selects elements from left to right.</li>
+			<li>The edges appearance is now kept, as much as possible, when one of its extremity is moved. A move of an extremity should move only the closest segment of the edge.</li>
 		</ul>
 		<h3 id="APIChanges">API Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius">Changes in 
@@ -76,6 +77,24 @@
 				<code>additionalFiguresForConflictDetection</code> has been added to several methods of 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator</code>. This parameter is used in case of simultaneous border nodes moves. This list corresponds to the already known border nodes feedbacks. They are used to detect conflicts with other moved nodes.
 			</li>
+			<li>
+				<code>org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery</code> now provides two new methods 
+				<code>isEdgeWithRectilinearRoutingStyle()</code> and 
+				<code>isEdgeWithObliqueRoutingStyle()</code> that respectively checks if an edge has a rectilinear routing style or an oblique routing style.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.diagram.ui.business.api.query.ConnectionQuery</code> now provides two new methods 
+				<code>getAbsoluteBendpointsConstraint()</code> and 
+				<code>getRelativeBendpointsConstraint()</code> that returns an option of list of 
+				<code>Bendpoint</code> of a connection whether they are respectively 
+				<code>AbsoluteBendpoint</code> or 
+				<code>RelatveBendpoint</code>.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery</code> also provides two new methods 
+				<code>isEdgeWithRectilinearRoutingStyle()</code> and 
+				<code>isEdgeWithObliqueRoutingStyle()</code> that respectively checks if an edge has a rectilinear routing style or an oblique routing style.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ext.gmf.runtime">Changes in 
 			<code>org.eclipse.sirius.ext.gmf.runtime</code>
@@ -87,12 +106,14 @@
 					<li>
 						<code>applyZoomOnPoint(IGraphicalEditPart, Point)</code>: Apply the current zoom (of 
 						<code>IGraphicalEditPart</code>'s diagram) on the 
-						<code>Point</code>.
+						<code>Point</code> and return the 
+						<code>Point</code> for convenience.
 					</li>
 					<li>
 						<code>applyInverseZoomOnPoint(IGraphicalEditPart, Point)</code>: Apply the inverse of the current zoom (of 
 						<code>IGraphicalEditPart</code>'s diagram) on the 
-						<code>Point</code>.
+						<code>Point</code> and return the 
+						<code>Point</code> for convenience.
 					</li>
 					<li>
 						<code>appliedZoomOnRelativePoint(IGraphicalEditPart, Point)</code> is now deprecated. Use 

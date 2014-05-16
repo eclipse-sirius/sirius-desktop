@@ -90,7 +90,7 @@ public final class GraphicalHelper {
     }
 
     /**
-     * Applied zoom on a point.<BR>
+     * Applies zoom on a point and returns this point for convenience.<BR>
      * For example:
      * <UL>
      * <LI>For a zoom of 200%, the result of this method for the point (100,
@@ -103,18 +103,20 @@ public final class GraphicalHelper {
      *            the current part
      * @param point
      *            a point
+     * @return <code>point</code> for convenience
      */
-    public static void applyZoomOnPoint(IGraphicalEditPart part, Point point) {
+    public static Point applyZoomOnPoint(IGraphicalEditPart part, Point point) {
         double zoom = getZoom(part);
         if (point instanceof PrecisionPoint) {
             ((PrecisionPoint) point).setPreciseLocation(point.preciseX() * zoom, point.preciseY() * zoom);
         } else {
             point.setLocation((int) (point.x * zoom), (int) (point.y * zoom));
         }
+        return point;
     }
 
     /**
-     * Apply inverse zoom on a point.<BR>
+     * Applies inverse zoom on a point and returns this point for convenience.<BR>
      * For example:
      * <UL>
      * <LI>For a zoom of 200%, the result of this method for the point (100,
@@ -127,14 +129,16 @@ public final class GraphicalHelper {
      *            the current part
      * @param point
      *            a point
+     * @return <code>point</code> for convenience
      */
-    public static void applyInverseZoomOnPoint(IGraphicalEditPart part, Point point) {
+    public static Point applyInverseZoomOnPoint(IGraphicalEditPart part, Point point) {
         double zoom = getZoom(part);
         if (point instanceof PrecisionPoint) {
             ((PrecisionPoint) point).setPreciseLocation(point.preciseX() / zoom, point.preciseY() / zoom);
         } else {
             point.setLocation((int) (point.x / zoom), (int) (point.y / zoom));
         }
+        return point;
     }
 
     /**

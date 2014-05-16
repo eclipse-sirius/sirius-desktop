@@ -8,7 +8,8 @@ h2(#sirius2.0.0). Changes in Sirius 2.0.0 (from Sirius 1.0.0)
 
 h3. User-Visible Changes
 
-* It is now possible to select element that intersects the selection rectangle and not that is completely contained by the selection rectangle. This new behavior is enabled when user selects elements from right to left. The normal mode (previous mode) remains when the user selects elements from left to right. 
+* It is now possible to select element that intersects the selection rectangle and not that is completely contained by the selection rectangle. This new behavior is enabled when user selects elements from right to left. The normal mode (previous mode) remains when the user selects elements from left to right.
+* The edges appearance is now kept, as much as possible, when one of its extremity is moved. A move of an extremity should move only the closest segment of the edge.
 
 h3. API Changes
 
@@ -26,12 +27,15 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 
 * The method @org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery.getDefaultDimension()@ has been added to compute the default size of a DNodeContainer.
 * The parameter @additionalFiguresForConflictDetection@ has been added to several methods of @org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator@. This parameter is used in case of simultaneous border nodes moves. This list corresponds to the already known border nodes feedbacks. They are used to detect conflicts with other moved nodes.
+* @org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery@ now provides two new methods @isEdgeWithRectilinearRoutingStyle()@ and @isEdgeWithObliqueRoutingStyle()@ that respectively checks if an edge has a rectilinear routing style or an oblique routing style.
+* @org.eclipse.sirius.diagram.ui.business.api.query.ConnectionQuery@ now provides two new methods @getAbsoluteBendpointsConstraint()@ and @getRelativeBendpointsConstraint()@ that returns an option of list of @Bendpoint@ of a connection whether they are respectively @AbsoluteBendpoint@ or @RelatveBendpoint@.
+* @org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery@ also provides two new methods @isEdgeWithRectilinearRoutingStyle()@ and @isEdgeWithObliqueRoutingStyle()@ that respectively checks if an edge has a rectilinear routing style or an oblique routing style.
 
 h4. Changes in @org.eclipse.sirius.ext.gmf.runtime@
 
 * Several utilities have been added in @org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper@:
-** @applyZoomOnPoint(IGraphicalEditPart, Point)@: Apply the current zoom (of @IGraphicalEditPart@'s diagram) on the @Point@.
-** @applyInverseZoomOnPoint(IGraphicalEditPart, Point)@: Apply the inverse of the current zoom (of @IGraphicalEditPart@'s diagram) on the @Point@.
+** @applyZoomOnPoint(IGraphicalEditPart, Point)@: Apply the current zoom (of @IGraphicalEditPart@'s diagram) on the @Point@ and return the @Point@ for convenience.
+** @applyInverseZoomOnPoint(IGraphicalEditPart, Point)@: Apply the inverse of the current zoom (of @IGraphicalEditPart@'s diagram) on the @Point@ and return the @Point@ for convenience.
 ** @appliedZoomOnRelativePoint(IGraphicalEditPart, Point)@ is now deprecated. Use @applyZoomOnPoint(IGraphicalEditPart, Point)@ instead.
 ** @getAnchorPoint(IGraphicalEditPart parent, Anchor anchor)@: Get the @Point@ (absolute draw2d coordinates) corresponding to this @Anchor@.
 ** @getAnchorPoint(IGraphicalEditPart parent, IdentityAnchor anchor)@: Get the @Point@ (absolute draw2d coordinates) corresponding to this @IdentityAnchor@.
