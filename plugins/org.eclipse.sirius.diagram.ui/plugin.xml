@@ -1476,72 +1476,56 @@
            class="org.eclipse.sirius.diagram.ui.tools.internal.commands.RevealAllElementsCommand"
            commandId="org.eclipse.sirius.diagram.ui.command.revealAllElements">
            <activeWhen>
-            <with variable="activeMenuSelection">
+            <or>
+             <with variable="activeMenuSelection"> 
                <reference definitionId="diagramHasHiddenElements" />
-            </with>
-           </activeWhen>
-     </handler>
-     <handler
-           class="org.eclipse.sirius.diagram.ui.tools.internal.commands.RevealAllElementsCommand"
-           commandId="org.eclipse.sirius.diagram.ui.command.revealAllElements">
-           <activeWhen>
-            <with variable="selection">
+             </with>
+             <with variable="selection">
                <reference definitionId="diagramHasHiddenElements" />
-            </with>
+             </with>
+            </or>
            </activeWhen>
      </handler>
      <handler
            class="org.eclipse.sirius.diagram.ui.tools.internal.commands.HideElementCommand"
            commandId="org.eclipse.sirius.diagram.ui.command.hideElement">
            <activeWhen>
+             <or>
               <with variable="activeMenuSelection">
                 <reference definitionId="allInstanceOfIDiagramElementEditPart" />
               </with>
-           </activeWhen>
-     </handler>
-     <handler
-           class="org.eclipse.sirius.diagram.ui.tools.internal.commands.HideElementCommand"
-           commandId="org.eclipse.sirius.diagram.ui.command.hideElement">
-           <activeWhen>
               <with variable="selection">
                 <reference definitionId="allInstanceOfIDiagramElementEditPart" />
               </with>
+             </or>
            </activeWhen>
      </handler>
      <handler
            class="org.eclipse.sirius.diagram.ui.tools.internal.commands.HideLabelCommand"
            commandId="org.eclipse.sirius.diagram.ui.command.hideLabel">
            <activeWhen>
+            <or>
               <with variable="activeMenuSelection">
                 <reference definitionId="canHideLabel" />
               </with>
-           </activeWhen>
-     </handler>
-     <handler
-           class="org.eclipse.sirius.diagram.ui.tools.internal.commands.HideLabelCommand"
-           commandId="org.eclipse.sirius.diagram.ui.command.hideLabel">
-           <activeWhen>
               <with variable="selection">
                 <reference definitionId="canHideLabel" />
               </with>
+            </or>  
            </activeWhen>
      </handler>
      <handler
            class="org.eclipse.sirius.diagram.ui.tools.internal.commands.ShowLabelCommand"
            commandId="org.eclipse.sirius.diagram.ui.command.showLabel">
            <activeWhen>
+            <or>
               <with variable="activeMenuSelection">
                 <reference definitionId="isLabelHidden" />
               </with>
-           </activeWhen>
-     </handler>
-     <handler
-           class="org.eclipse.sirius.diagram.ui.tools.internal.commands.ShowLabelCommand"
-           commandId="org.eclipse.sirius.diagram.ui.command.showLabel">
-           <activeWhen>
               <with variable="selection">
                 <reference definitionId="isLabelHidden" />
               </with>
+            </or>
            </activeWhen>
      </handler>
      <handler
