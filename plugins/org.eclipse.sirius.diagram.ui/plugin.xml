@@ -1179,11 +1179,8 @@
                <iterate
                      operator="and">
                   <instanceof
-                        value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+                        value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart">
                   </instanceof>
-                  <test
-                        property="org.eclipse.sirius.diagram.ui.isDModelElement">
-                  </test>
                   <test
                         property="org.eclipse.sirius.diagram.ui.canHideElement">
                   </test>
@@ -1247,11 +1244,8 @@
                   variable="activeMenuSelection">
                <iterate>
                   <instanceof
-                        value="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+                        value="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
                   </instanceof>
-                  <test
-                        property="org.eclipse.sirius.diagram.ui.isDModelElement">
-                  </test>
                </iterate>
             </with>
          </visibleWhen>
@@ -1266,11 +1260,8 @@
                   variable="activeMenuSelection">
                <iterate>
                   <instanceof
-                        value="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+                        value="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
                   </instanceof>
-                  <test
-                        property="org.eclipse.sirius.diagram.ui.isDDiagram">
-                  </test>
                </iterate>
             </with>
          </visibleWhen>
@@ -1284,14 +1275,11 @@
                   variable="selection">
                <iterate>
                   <instanceof
-                        value="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+                        value="org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart">
                   </instanceof>
-                  <test
-                        property="org.eclipse.sirius.diagram.ui.isDModelElement">
-                  </test>
                   <not>
                      <instanceof
-                           value="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+                           value="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
                      </instanceof>
                   </not>
                </iterate>
