@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,7 +22,6 @@ import org.eclipse.gmf.runtime.common.ui.services.action.internal.contributionit
 import org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
@@ -39,6 +38,7 @@ import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.tool.DiagramCreationDescription;
 import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.CreateRepresentationFromRepresentationCreationDescription;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -72,9 +72,9 @@ public class SubDiagramMenu implements IContributionItemProvider {
      */
     public void contributeToPopupMenu(final IMenuManager menu, final IWorkbenchPart part) {
 
-        if (part instanceof DiagramDocumentEditor) {
+        if (part instanceof SiriusDiagramEditor) {
 
-            final DiagramDocumentEditor diagrampart = (DiagramDocumentEditor) part;
+            final SiriusDiagramEditor diagrampart = (SiriusDiagramEditor) part;
 
             final EditPart editpart = diagrampart.getDiagramGraphicalViewer().getFocusEditPart();
 

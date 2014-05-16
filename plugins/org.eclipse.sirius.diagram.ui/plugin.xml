@@ -154,7 +154,7 @@
          </partContribution>
 
          <popupContribution class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
-            <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart" />
+            <popupStructuredContributionCriteria objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart" />
             <popupMenuGroup path="/editMenu/" id="copyLayoutGroup" />
             <popupAction path="/editMenu/copyGroup" id="copyLayoutAction" />
             <popupAction path="/editMenu/copyGroup" id="pasteLayoutAction" />
@@ -168,7 +168,7 @@
          <popupContribution
                class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
             <popupStructuredContributionCriteria
-                  objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+                  objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
             </popupStructuredContributionCriteria>
             <popupAction
                   id="newCopyToImageAction"
@@ -188,7 +188,7 @@
          <popupContribution
                class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
             <popupStructuredContributionCriteria
-                  objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+                  objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
             </popupStructuredContributionCriteria>
             <popupMenu
                   id="arrangeMenu"
@@ -205,6 +205,10 @@
          </popupContribution>
          <popupContribution
                class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+            <popupStructuredContributionCriteria
+                  objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"
+                  policyClass="org.eclipse.sirius.diagram.ui.tools.internal.menu.SiriusPopupMenuContributionPolicy">
+            </popupStructuredContributionCriteria>
             <popupPredefinedItem
              id="deleteFromDiagramAction"
               remove="true"/>
@@ -326,10 +330,6 @@
                   path="/formatMenu/routerMenu/routerGroup"
                   remove="true">
             </popupPredefinedItem>
-            <popupStructuredContributionCriteria
-                  objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"
-                  policyClass="org.eclipse.sirius.diagram.ui.tools.internal.menu.SiriusPopupMenuContributionPolicy">
-            </popupStructuredContributionCriteria>
          </popupContribution>
       </contributionItemProvider>
 
@@ -338,9 +338,9 @@
             checkPluginLoaded="false">
          <Priority name="Lowest"/>
          <popupContribution class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
-            <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+            <popupStructuredContributionCriteria objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
             </popupStructuredContributionCriteria>
-            <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart">
+            <popupStructuredContributionCriteria objectClass="org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart">
             </popupStructuredContributionCriteria>
             <!-- added popup menu declaration here for display ordering purposes (see plugin.xml of org.eclipse.gmf.runtime.diagram.ui.providers -->
             <popupMenuGroup id="umlAddGroup">
@@ -366,120 +366,73 @@
           <Priority name="Highest"/>
       <popupContribution
         class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+         <popupStructuredContributionCriteria
+               objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart"/>
               <popupPredefinedItem
           id="addLineAction"
           path="/diagramAddMenu/addGeoShapesGroup"
           remove="true">
               </popupPredefinedItem>
-              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
-          </popupContribution>
-      <popupContribution
-        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
               <popupPredefinedItem
-          id="addOvalAction"
-          path="/diagramAddMenu/addGeoShapesGroup"
-          remove="true">
+                    id="addOvalAction"
+                    path="/diagramAddMenu/addGeoShapesGroup"
+                    remove="true">
               </popupPredefinedItem>
-              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
-          </popupContribution>
-      <popupContribution
-        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
               <popupPredefinedItem
-          id="addTriangleAction"
-          path="/diagramAddMenu/addGeoShapesGroup"
-          remove="true">
+                    id="addTriangleAction"
+                    path="/diagramAddMenu/addGeoShapesGroup"
+                    remove="true">
               </popupPredefinedItem>
-              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
-          </popupContribution>
-      <popupContribution
-        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
               <popupPredefinedItem
-          id="addRectangleAction"
-          path="/diagramAddMenu/addGeoShapesGroup"
-          remove="true">
+                    id="addRectangleAction"
+                    path="/diagramAddMenu/addGeoShapesGroup"
+                    remove="true">
               </popupPredefinedItem>
-              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
-          </popupContribution>
-      <popupContribution
-        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
               <popupPredefinedItem
-          id="addHexagonAction"
-          path="/diagramAddMenu/addGeoShapesGroup"
-          remove="true">
+                    id="addHexagonAction"
+                    path="/diagramAddMenu/addGeoShapesGroup"
+                    remove="true">
               </popupPredefinedItem>
-              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
-          </popupContribution>
-      <popupContribution
-        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
               <popupPredefinedItem
-          id="addOctagonAction"
-          path="/diagramAddMenu/addGeoShapesGroup"
-          remove="true">
+                    id="addOctagonAction"
+                    path="/diagramAddMenu/addGeoShapesGroup"
+                    remove="true">
               </popupPredefinedItem>
-              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
-          </popupContribution>
-      <popupContribution
-        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
               <popupPredefinedItem
-          id="addPentagonAction"
-          path="/diagramAddMenu/addGeoShapesGroup"
-          remove="true">
+                    id="addPentagonAction"
+                    path="/diagramAddMenu/addGeoShapesGroup"
+                    remove="true">
               </popupPredefinedItem>
-              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
-          </popupContribution>
-      <popupContribution
-        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
               <popupPredefinedItem
-          id="addDiamondAction"
-          path="/diagramAddMenu/addGeoShapesGroup"
-          remove="true">
+                    id="addDiamondAction"
+                    path="/diagramAddMenu/addGeoShapesGroup"
+                    remove="true">
               </popupPredefinedItem>
-              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
-          </popupContribution>
-      <popupContribution
-        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
               <popupPredefinedItem
-          id="addPolygonAction"
-          path="/diagramAddMenu/addGeoShapesGroup"
-          remove="true">
+                    id="addPolygonAction"
+                    path="/diagramAddMenu/addGeoShapesGroup"
+                    remove="true">
               </popupPredefinedItem>
-              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
-          </popupContribution>
-      <popupContribution
-        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
               <popupPredefinedItem
-          id="addShadowRectangleAction"
-          path="/diagramAddMenu/addGeoShapes2Group"
-          remove="true">
+                    id="addShadowRectangleAction"
+                    path="/diagramAddMenu/addGeoShapes2Group"
+                    remove="true">
               </popupPredefinedItem>
-              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
-          </popupContribution>
-      <popupContribution
-        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
               <popupPredefinedItem
-          id="add3DRectangleAction"
-          path="/diagramAddMenu/addGeoShapes2Group"
-          remove="true">
+                    id="add3DRectangleAction"
+                    path="/diagramAddMenu/addGeoShapes2Group"
+                    remove="true">
               </popupPredefinedItem>
-              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
-          </popupContribution>
-      <popupContribution
-        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
               <popupPredefinedItem
-          id="addRoundRectangleAction"
-          path="/diagramAddMenu/addGeoShapes2Group"
-          remove="true">
+                    id="addRoundRectangleAction"
+                    path="/diagramAddMenu/addGeoShapes2Group"
+                    remove="true">
               </popupPredefinedItem>
-              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
-          </popupContribution>
-      <popupContribution
-        class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
               <popupPredefinedItem
-          id="addCylinderAction"
-          path="/diagramAddMenu/addGeoShapes2Group"
-          remove="true">
+                    id="addCylinderAction"
+                    path="/diagramAddMenu/addGeoShapes2Group"
+                    remove="true">
               </popupPredefinedItem>
-              <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart"/>
           </popupContribution>
     </contributionItemProvider>
   <contributionItemProvider
@@ -490,7 +443,7 @@
      <popupContribution
            class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
         <popupStructuredContributionCriteria
-              objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+              objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
         </popupStructuredContributionCriteria>
         <popupAction
               id="arrangeBorderedNodesAction">

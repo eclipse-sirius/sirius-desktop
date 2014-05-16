@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,7 +37,6 @@ import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
-import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
@@ -59,6 +58,7 @@ import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvid
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.view.RootLayoutData;
 import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.ui.tools.api.draw2d.ui.figures.FigureUtilities;
@@ -110,9 +110,9 @@ public class PopupMenuContribution implements IContributionItemProvider {
      *      org.eclipse.ui.IWorkbenchPart)
      */
     public void contributeToPopupMenu(final IMenuManager menu, final IWorkbenchPart part) {
-        if (part instanceof DiagramDocumentEditor) {
+        if (part instanceof SiriusDiagramEditor) {
 
-            final DiagramDocumentEditor diagrampart = (DiagramDocumentEditor) part;
+            final SiriusDiagramEditor diagrampart = (SiriusDiagramEditor) part;
 
             final Object adapter = diagrampart.getAdapter(IDiagramCommandFactoryProvider.class);
             if (adapter == null) {

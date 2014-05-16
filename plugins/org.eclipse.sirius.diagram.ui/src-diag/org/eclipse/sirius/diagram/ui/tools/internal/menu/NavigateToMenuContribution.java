@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,6 @@ import org.eclipse.gmf.runtime.common.core.service.IProviderChangeListener;
 import org.eclipse.gmf.runtime.common.ui.services.action.internal.contributionitem.IContributionItemProvider;
 import org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuManager;
@@ -50,6 +49,7 @@ import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
+import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.NavigateToCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.EMFCommandFactoryUI;
@@ -94,8 +94,8 @@ public class NavigateToMenuContribution implements IContributionItemProvider {
      * {@inheritDoc}
      */
     public void contributeToPopupMenu(final IMenuManager menu, final IWorkbenchPart part) {
-        if (part instanceof DiagramDocumentEditor) {
-            final DiagramDocumentEditor diagrampart = (DiagramDocumentEditor) part;
+        if (part instanceof SiriusDiagramEditor) {
+            final SiriusDiagramEditor diagrampart = (SiriusDiagramEditor) part;
             final EObject element = diagrampart.getDiagramEditPart().resolveSemanticElement();
             if (element instanceof DSemanticDiagram) {
                 final DSemanticDiagram designerDiag = (DSemanticDiagram) element;
