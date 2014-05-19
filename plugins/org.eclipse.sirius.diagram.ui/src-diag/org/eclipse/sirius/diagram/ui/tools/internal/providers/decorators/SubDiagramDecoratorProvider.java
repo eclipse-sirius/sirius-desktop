@@ -39,8 +39,8 @@ import org.eclipse.sirius.viewpoint.DNavigable;
 
 /**
  * 
- * This decorator is installed on SiriusElements edit parts. It display an
- * icon on the bottom right corner when the element provides detail diagrams.
+ * This decorator is installed on SiriusElements edit parts. It display an icon
+ * on the bottom right corner when the element provides detail diagrams.
  * 
  * @author cbrun
  */
@@ -55,10 +55,15 @@ public class SubDiagramDecoratorProvider extends AbstractProvider implements IDe
         if (!(operation instanceof CreateDecoratorsOperation)) {
             return false;
         }
+
+        boolean provide = false;
         IDecoratorTarget decoratorTarget = ((CreateDecoratorsOperation) operation).getDecoratorTarget();
         View view = (View) decoratorTarget.getAdapter(View.class);
-        EObject model = view.getElement();
-        return model instanceof DNode || model instanceof DDiagramElementContainer;
+        if (view != null) {
+            EObject model = view.getElement();
+            provide = model instanceof DNode || model instanceof DDiagramElementContainer;
+        }
+        return provide;
     }
 
     /**
