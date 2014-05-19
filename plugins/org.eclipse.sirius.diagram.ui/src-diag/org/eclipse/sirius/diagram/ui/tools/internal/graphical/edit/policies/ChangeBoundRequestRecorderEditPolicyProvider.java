@@ -17,7 +17,9 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gmf.runtime.common.core.service.IOperation;
 import org.eclipse.gmf.runtime.common.core.service.IProviderChangeListener;
+import org.eclipse.gmf.runtime.diagram.ui.services.editpolicy.CreateEditPoliciesOperation;
 import org.eclipse.gmf.runtime.diagram.ui.services.editpolicy.IEditPolicyProvider;
+import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.part.SiriusDiagramGraphicalViewer;
 
 /**
@@ -46,10 +48,12 @@ public class ChangeBoundRequestRecorderEditPolicyProvider implements IEditPolicy
      * {@inheritDoc}
      */
     public boolean provides(IOperation operation) {
-        /*
-         * It's our own role, no harm can be done
-         */
-        return true;
+        if (operation instanceof CreateEditPoliciesOperation) {
+            CreateEditPoliciesOperation castedOperation = (CreateEditPoliciesOperation) operation;
+            EditPart editPart = castedOperation.getEditPart();
+            return editPart instanceof ISiriusEditPart;
+        }
+        return false;
     }
 
     /**

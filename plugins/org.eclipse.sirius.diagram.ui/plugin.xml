@@ -752,6 +752,12 @@
       <?gmfgen generated="true"?>
       <modelingAssistantProvider class="org.eclipse.sirius.diagram.ui.internal.providers.SiriusModelingAssistantProvider">
          <Priority name="Lowest"/>
+         <object
+              class="org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart(org.eclipse.sirius.diagram.ui)"
+              id="SIRIUS_EDIT_PART">
+        </object>
+         <context
+               elements="SIRIUS_EDIT_PART"></context>
       </modelingAssistantProvider>
    </extension>
 
@@ -1434,12 +1440,26 @@
         <Priority
               name="Lowest">
         </Priority>
+        <object
+              class="org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart(org.eclipse.sirius.diagram.ui)"
+              id="SIRIUS_EDIT_PART">
+        </object>
+        <context
+              editparts="SIRIUS_EDIT_PART">
+        </context>
      </editpolicyProvider>
      <editpolicyProvider
            class="org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.ChangeBoundRequestRecorderEditPolicyProvider">
         <Priority
               name="Low">
         </Priority>
+        <object
+              class="org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart(org.eclipse.sirius.diagram.ui)"
+              id="SIRIUS_EDIT_PART">
+        </object>
+        <context
+              editparts="SIRIUS_EDIT_PART">
+        </context>
      </editpolicyProvider>
   </extension>
   <extension
