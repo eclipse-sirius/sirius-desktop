@@ -10,6 +10,12 @@ h3. User-Visible Changes
 
 * The ability to print table representations has been disabled for the 1.0.0 release due to an external dependency issue (see "bug #435204":https://bugs.eclipse.org/bugs/show_bug.cgi?id=435204 for the details).
 
+h3. API Changes
+
+h4. Changes in @org.eclipse.sirius.diagram.ui@
+
+* To enable the resize of border nodes whose parent is a list, the @createLayoutEditPolicy@ and @getResizeBorderItemCommand@ methods have been extracted from  @org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerPart@ and placed into @org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart@. The @org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart.createLayoutEditPolicy@ implementation has been removed.
+
 h2(#sirius1.0M7). Changes in Sirius 1.0.0M7 (from Sirius 1.0M6)
 
 h3. Specifier-Visible Changes

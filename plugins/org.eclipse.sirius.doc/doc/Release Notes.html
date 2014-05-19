@@ -41,6 +41,19 @@
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=435204">bug #435204</a> for the details).
 			</li>
 		</ul>
+		<h3 id="APIChanges">API Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
+			<code>org.eclipse.sirius.diagram.ui</code>
+		</h4>
+		<ul>
+			<li>To enable the resize of border nodes whose parent is a list, the 
+				<code>createLayoutEditPolicy</code> and 
+				<code>getResizeBorderItemCommand</code> methods have been extracted from  
+				<code>org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerPart</code> and placed into 
+				<code>org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart</code>. The 
+				<code>org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart.createLayoutEditPolicy</code> implementation has been removed.
+			</li>
+		</ul>
 		<h2 id="sirius1.0M7">Changes in Sirius 1.0.0M7 (from Sirius 1.0M6)</h2>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
@@ -54,7 +67,7 @@
 				<em>Time (ms)</em> column, harder to read/sort, and showed wrongly formatted results. 
 			</li>
 		</ul>
-		<h3 id="APIChanges">API Changes</h3>
+		<h3 id="APIChanges2">API Changes</h3>
 		<h4 id="separationOfDiagramSpecificConcept-step3">Move diagram.ecore in its own plugin</h4>
 		<p>This milestone (Sirius 1.0M7) includes the third, and final, step towards a full separation of the diagram-specific stuff out of the core of Sirius (see 
 			<a href="#separationOfDiagramSpecificConcept-step1">Step1</a> and 
@@ -611,7 +624,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius1.0M6">Changes in Sirius 1.0.0M6 (from Sirius 1.0M5)</h2>
-		<h3 id="APIChanges2">API Changes</h3>
+		<h3 id="APIChanges3">API Changes</h3>
 		<h4 id="tests">High-level API for Automated Tests Using JUnit and SWTBot</h4>
 		<p>Starting from version 1.0.0M6, Sirius includes high-level APIs to help creating automated tests using JUnit and/or SWTBot. These can be used either to test Sirius itself or to test Sirius-based modelers. These APIs are provided by two plug-ins:</p>
 		<ul>
@@ -752,7 +765,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 		<ul>
 			<li>The table csv export has been improved to handle cropped label. In some specific cases, the cell label is automatically cropped and &#8249;...&#8250; is concatenated to the resulting value. This cropped displayed label was previously exported, now the complete semantic value is exported.</li>
 		</ul>
-		<h3 id="APIChanges3">API Changes</h3>
+		<h3 id="APIChanges4">API Changes</h3>
 		<h4 id="LibraryExtensions">Library Extensions</h4>
 		<p>This milestone (Sirius 1.0M5) introduces several new plug-ins, collectively called &#171;library extensions&#187;. They are all named 
 			<code>org.eclipse.sirius.ext.LIB</code>, where 
@@ -880,7 +893,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 		<ul>
 			<li>The ability to print table representations, which had been disabled for the 0.9 release, has been re-enabled.</li>
 		</ul>
-		<h3 id="APIChanges4">API Changes</h3>
+		<h3 id="APIChanges5">API Changes</h3>
 		<p>Sirius 1.0.0M4 includes a lots of API-breaking changes, as part of a global effort to improve the quality of the Sirius internals. In this milestone in particular, most of the APIs which were marked as deprecated in previous versions of Sirius (and before that of Viewpoint) have been either removed (if a replacement exists) or marked as non-deprecated (if no replacement exists yet).</p>
 		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in 
 			<code>org.eclipse.sirius.common</code>
