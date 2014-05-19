@@ -24,6 +24,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
@@ -66,6 +67,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.locator.FeedbackDBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
@@ -126,6 +128,7 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
         getBorderNodeFeedbacks(request).remove(getDragSourceFeedbackFigure());
         if ((REQ_MOVE.equals(request.getType()) && isDragAllowed()) || REQ_CLONE.equals(request.getType()) || REQ_ADD.equals(request.getType())) {
             eraseChangeBoundsFeedback((ChangeBoundsRequest) request);
+
         }
         if (RequestConstants.REQ_DROP.equals(request.getType()) || org.eclipse.gef.RequestConstants.REQ_RESIZE.equals(request.getType())
                 || org.eclipse.gef.RequestConstants.REQ_RESIZE_CHILDREN.equals(request.getType())) {
@@ -610,7 +613,11 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
             final Dimension d = realLocation.getTopLeft().getDifference(parentOrigin);
             final Point location = new Point(d.width, d.height);
             final ICommand moveCommand = new SetBoundsCommand(borderItemEP.getEditingDomain(), DiagramUIMessages.Commands_MoveElement, new EObjectAdapter((View) getHost().getModel()), location);
-            return new ICommandProxy(moveCommand);
+            Command originalMoveCommand = new ICommandProxy(moveCommand);
+
+            PrecisionPoint delta = new PrecisionPoint(realLocation.getTopLeft().getTranslated(borderItemEP.getFigure().getBounds().getTopLeft().getNegated()));
+            GraphicalHelper.applyZoomOnPoint((IGraphicalEditPart) getHost(), delta);
+            return AirResizableEditPolicy.changeBendpointsOfEdges(getHost(), originalMoveCommand, delta, getHost().getViewer().getSelectedEditParts());
         }
         return null;
     }

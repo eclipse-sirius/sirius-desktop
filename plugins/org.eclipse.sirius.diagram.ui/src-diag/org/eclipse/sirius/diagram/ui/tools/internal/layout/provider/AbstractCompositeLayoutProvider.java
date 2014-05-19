@@ -300,7 +300,7 @@ public abstract class AbstractCompositeLayoutProvider extends CompositeLayoutPro
     protected NodeList buildNodes(List selectedObjects, Map editPartToNodeDict, Subgraph rootGraph) {
         ListIterator li = selectedObjects.listIterator();
         // <added for auto-size>
-        autoSize.prepareForArrangeAll(Iterators.filter(li, AbstractDiagramElementContainerEditPart.class));
+        autoSize.prepareForArrangeAll(Iterators.filter(li, AbstractDiagramElementContainerEditPart.class), elementsToKeepFixed);
         // </added for auto-size>
 
         NodeList nodes = new NodeList();

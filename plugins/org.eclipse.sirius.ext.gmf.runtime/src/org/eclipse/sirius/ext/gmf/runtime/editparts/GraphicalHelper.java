@@ -346,14 +346,34 @@ public final class GraphicalHelper {
      * @return Intersection between a line and a rectangle.
      */
     public static Option<Point> getIntersection(Point lineOrigin, Point lineTerminus, IGraphicalEditPart part, boolean minimalDistancefromLineOrigin) {
+        // Get the bounds of the part
+        Rectangle bounds = getAbsoluteBoundsIn100Percent(part);
+        return getIntersection(lineOrigin, lineTerminus, bounds, minimalDistancefromLineOrigin);
+    }
+
+    /**
+     * Get intersection between a line between lineOrigin and lineTerminus, and
+     * a rectangle. If there are several intersections, the shortest is
+     * returned.
+     * 
+     * @param lineOrigin
+     *            Origin of the line
+     * @param lineTerminus
+     *            Terminus of the line
+     * @param rectangle
+     *            rectangle to detect intersection.
+     * @param minimalDistancefromLineOrigin
+     *            true if the shortest distance is between the line origin and
+     *            the part, false otherwise.
+     * @return Intersection between a line and a rectangle.
+     */
+    public static Option<Point> getIntersection(Point lineOrigin, Point lineTerminus, Rectangle rectangle, boolean minimalDistancefromLineOrigin) {
         // Create the line segment
         PointList line = new PointList();
         line.addPoint(lineOrigin);
         line.addPoint(lineTerminus);
-        // Get the bounds of the part
-        Rectangle bounds = getAbsoluteBoundsIn100Percent(part);
         // Get the intersection
-        PointList partBoundsPointList = PointListUtilities.createPointsFromRect(bounds);
+        PointList partBoundsPointList = PointListUtilities.createPointsFromRect(rectangle);
         PointList distances = new PointList();
         PointList intersections = new PointList();
         PointListUtilities.findIntersections(line, partBoundsPointList, intersections, distances);

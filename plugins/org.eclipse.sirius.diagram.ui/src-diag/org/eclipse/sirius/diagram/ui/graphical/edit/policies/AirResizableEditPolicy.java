@@ -14,12 +14,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.eclipse.draw2d.Bendpoint;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
-import org.eclipse.draw2d.geometry.PointList;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
+import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -31,8 +31,10 @@ import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gef.handles.MoveHandle;
+import org.eclipse.gef.requests.AlignmentRequest;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
+import org.eclipse.gmf.runtime.common.core.util.StringStatics;
 import org.eclipse.gmf.runtime.diagram.core.commands.SetConnectionAnchorsCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.CommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
@@ -43,7 +45,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.INodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableShapeEditPolicy;
-import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
@@ -68,6 +69,8 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.Style;
 
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
@@ -114,47 +117,89 @@ public class AirResizableEditPolicy extends ResizableShapeEditPolicy {
      */
     @Override
     protected Command getMoveCommand(final ChangeBoundsRequest request) {
-        final ChangeBoundsRequest req = new ChangeBoundsRequest(REQ_MOVE_CHILDREN);
-        req.setEditParts(getHost());
+        Command originalMoveCommand = super.getMoveCommand(request);
 
-        req.setMoveDelta(request.getMoveDelta());
-        req.setSizeDelta(request.getSizeDelta());
-        req.setLocation(request.getLocation());
-        req.setExtendedData(request.getExtendedData());
         if (getHost().getParent() != null) {
-            return changeBendpointsOfTreeEdges(getHost(), getHost().getParent().getCommand(req), request.getMoveDelta());
+            return changeBendpointsOfEdges(getHost(), originalMoveCommand, request.getMoveDelta(), getHost().getViewer().getSelectedEditParts());
         } else {
             return null;
         }
     }
 
-    // CHECKSTYLE:OFF
-    protected Command changeBendpointsOfTreeEdges(EditPart host, Command command, Point moveDelta) {
-        CompoundCommand result = new CompoundCommand(command.getLabel());
-        if (host instanceof AbstractGraphicalEditPart) {
-            AbstractGraphicalEditPart graphicalEditPart = (AbstractGraphicalEditPart) host;
+    @Override
+    protected Command getAlignCommand(AlignmentRequest request) {
+        Command originalAlignCommand = super.getAlignCommand(request);
+
+        Point delta = request.getMoveDelta();
+        if (getHost() instanceof AbstractGraphicalEditPart) {
+            Rectangle locationAndSize = new PrecisionRectangle(((AbstractGraphicalEditPart) getHost()).getFigure().getBounds());
+            ((AbstractGraphicalEditPart) getHost()).getFigure().translateToAbsolute(locationAndSize);
+            Rectangle newLocationAndSize = request.getTransformedRectangle(locationAndSize);
+            delta = newLocationAndSize.getTopLeft().getTranslated(locationAndSize.getTopLeft().getNegated());
+        }
+        // The primary selection is removed from this selected list because it
+        // is not moved.
+        List<?> movedEditParts = removePrimarySelection(getHost().getViewer().getSelectedEditParts());
+
+        return changeBendpointsOfEdges(getHost(), originalAlignCommand, delta, movedEditParts);
+    }
+
+    private List<AbstractGraphicalEditPart> removePrimarySelection(List<?> selectedEditParts) {
+        List<AbstractGraphicalEditPart> result = Lists.newArrayList();
+        Iterable<AbstractGraphicalEditPart> selectedEditPartsWithoutPrimary = Iterables.filter(Iterables.filter(selectedEditParts, AbstractGraphicalEditPart.class),
+                new Predicate<AbstractGraphicalEditPart>() {
+                    @Override
+                    public boolean apply(AbstractGraphicalEditPart input) {
+                        return input.getSelected() != EditPart.SELECTED_PRIMARY;
+                    }
+                });
+        Iterables.addAll(result, selectedEditPartsWithoutPrimary);
+        return result;
+    }
+
+    /**
+     * Add commands to the <code>originalCommand</code> to adapt the bendpoints
+     * to avoid unexpected moves of segment.<BR>
+     * For oblique and rectilinear edges, only the last segment must move.
+     * 
+     * @param host
+     *            the <i>host</i> EditPart on which this policy is installed.
+     * @param originalCommand
+     *            The command to complete with the potential bendpoints impact.
+     * @param moveDelta
+     *            The move delta
+     * @param movedEditParts
+     *            Selected edit parts that will be moved
+     * @return the completed command
+     */
+    public static Command changeBendpointsOfEdges(EditPart host, Command originalCommand, Point moveDelta, List<?> movedEditParts) {
+        CompoundCommand result = new CompoundCommand(originalCommand.getLabel());
+        // It's possible that host is not in the list of movedEditParts in case
+        // of "Arrange Selection" action. Indeed, in this case, the arrange
+        // selection launch a "false" arrange all (see
+        // ArrangeSelectionLayoutProvider.layoutEditParts(List, IAdaptable) for
+        // more details). In this case we do not consider the move given it
+        // will be "revert" later by the "PinnedElementsHandler".
+        if (movedEditParts.contains(host) && host instanceof AbstractGraphicalEditPart) {
+            List<AbstractGraphicalEditPart> allMovedEditParts = getMovedChildren(Iterables.filter(movedEditParts, AbstractGraphicalEditPart.class), true);
+            AbstractGraphicalEditPart currentMovedEditPart = (AbstractGraphicalEditPart) host;
+            List<AbstractGraphicalEditPart> currentMovedEditPartAndItsChildren = getMovedChildren(currentMovedEditPart, true);
             final TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(host.getModel());
-            List<Object> sourceConnections = graphicalEditPart.getSourceConnections();
-            for (int i = 0; i < sourceConnections.size(); i++) {
-                if (sourceConnections.get(i) instanceof ConnectionEditPart) {
-                    ConnectionEditPart connectionEditPart = (ConnectionEditPart) sourceConnections.get(i);
-                    Option<? extends Command> optionalCommand = getBendpointsChangedCommand(transactionalEditingDomain, moveDelta, connectionEditPart, true);
+            for (AbstractGraphicalEditPart movedEditPart : currentMovedEditPartAndItsChildren) {
+                for (ConnectionEditPart connectionEditPart : Iterables.filter(movedEditPart.getSourceConnections(), ConnectionEditPart.class)) {
+                    Option<? extends Command> optionalCommand = getBendpointsChangedCommand(transactionalEditingDomain, moveDelta, connectionEditPart, allMovedEditParts, true);
                     if (optionalCommand.some()) {
                         if (result.isEmpty()) {
-                            result.add(command);
+                            result.add(originalCommand);
                         }
                         result.add(optionalCommand.get());
                     }
                 }
-            }
-            List<Object> targetConnections = graphicalEditPart.getTargetConnections();
-            for (int i = 0; i < targetConnections.size(); i++) {
-                if (targetConnections.get(i) instanceof ConnectionEditPart) {
-                    ConnectionEditPart connectionEditPart = (ConnectionEditPart) targetConnections.get(i);
-                    Option<? extends Command> optionalCommand = getBendpointsChangedCommand(transactionalEditingDomain, moveDelta, connectionEditPart, false);
+                for (ConnectionEditPart connectionEditPart : Iterables.filter(movedEditPart.getTargetConnections(), ConnectionEditPart.class)) {
+                    Option<? extends Command> optionalCommand = getBendpointsChangedCommand(transactionalEditingDomain, moveDelta, connectionEditPart, allMovedEditParts, false);
                     if (optionalCommand.some()) {
                         if (result.isEmpty()) {
-                            result.add(command);
+                            result.add(originalCommand);
                         }
                         result.add(optionalCommand.get());
                     }
@@ -162,25 +207,58 @@ public class AirResizableEditPolicy extends ResizableShapeEditPolicy {
             }
         }
         if (result.isEmpty()) {
-            return command;
+            return originalCommand;
         } else {
             return result;
         }
     }
 
+    private static List<AbstractGraphicalEditPart> getMovedChildren(Iterable<AbstractGraphicalEditPart> parentEditParts, boolean addSelf) {
+        List<AbstractGraphicalEditPart> result = Lists.newArrayList();
+        for (AbstractGraphicalEditPart abstractGraphicalEditPart : parentEditParts) {
+            result.addAll(getMovedChildren(abstractGraphicalEditPart, true));
+        }
+        return result;
+    }
+
+    private static List<AbstractGraphicalEditPart> getMovedChildren(AbstractGraphicalEditPart parentEditPart, boolean addSelf) {
+        List<AbstractGraphicalEditPart> result = Lists.newArrayList();
+        if (addSelf) {
+            result.add(parentEditPart);
+        }
+        result.addAll(getMovedChildren(Iterables.filter(parentEditPart.getChildren(), AbstractGraphicalEditPart.class), true));
+        return result;
+    }
+
     /**
-     * @param host
-     * @param command
+     * Compute the command needed to adapt the bendpoints of the
+     * <code>connectionEditPart</code> if needed.
+     * 
+     * @param transactionalEditingDomain
+     *            the editing domain through which model changes are made
      * @param moveDelta
-     * @param result
+     *            The move delta
      * @param connectionEditPart
-     * @return
+     *            the connectionEditPart to deal with
+     * @param allMovedEditParts
+     *            This list is used to check if the other end (source or target)
+     *            is also moved. In this case, there is nothing to do for the
+     *            last segment of oblique and rectilinear edges. If empty all
+     *            parts of diagram are considered as moved (case of arrange all)
+     * @param sourceMove
+     *            true if the source of the <code>connectionEditPart</code> is
+     *            moved, false if this is the target.
+     * @return An optional command that computes the new bendpoints of the
+     *         <code>connectionEditPart</code> if needed.
      */
-    protected Option<? extends Command> getBendpointsChangedCommand(TransactionalEditingDomain transactionalEditingDomain, Point moveDelta, ConnectionEditPart connectionEditPart, boolean sourceMove) {
+    protected static Option<? extends Command> getBendpointsChangedCommand(TransactionalEditingDomain transactionalEditingDomain, Point moveDelta, ConnectionEditPart connectionEditPart,
+            List<AbstractGraphicalEditPart> allMovedEditParts, boolean sourceMove) {
+        Option<? extends Command> result = Options.newNone();
         Connection connectionFigure = connectionEditPart.getConnectionFigure();
         // Check that this connectionEditPart is orthogonal tree branch and is a
         // layout component
-        if (new ConnectionQuery(connectionFigure).isOrthogonalTreeBranch(connectionFigure.getPoints()) && new ConnectionEditPartQuery(connectionEditPart).isLayoutComponent()) {
+        ConnectionEditPartQuery connectionEditPartQuery = new ConnectionEditPartQuery(connectionEditPart);
+        if (new ConnectionQuery(connectionFigure).isOrthogonalTreeBranch(connectionFigure.getPoints()) && connectionEditPartQuery.isLayoutComponent()) {
             CompoundCommand command = new CompoundCommand("Map GMF to Draw2D");
 
             SetConnectionAnchorsCommand setConnectionAnchorsCommand = new SetConnectionAnchorsCommand(transactionalEditingDomain, "Map GMF anchor to Draw2D anchor");
@@ -192,74 +270,39 @@ public class AirResizableEditPolicy extends ResizableShapeEditPolicy {
             SetConnectionBendpointsAccordingToDraw2DCommand setConnectionBendpointsCommand = new SetConnectionBendpointsAccordingToDraw2DCommand(transactionalEditingDomain);
             setConnectionBendpointsCommand.setLabel("Map GMF points to Draw2D points");
             setConnectionBendpointsCommand.setSourceMove(sourceMove);
-            setConnectionBendpointsCommand.setMoveDelta(moveDelta);
+            setConnectionBendpointsCommand.setMoveDelta(new PrecisionPoint(moveDelta));
             setConnectionBendpointsCommand.setEdgeAdapter(connectionEditPart);
             command.add(new ICommandProxy(setConnectionBendpointsCommand));
-            return Options.newSome(command);
-        }
-        return Options.newNone();
-    }
-
-    /**
-     * getPointsFromConstraint Utility method retrieve the PointList equivalent
-     * of the bendpoint constraint set in the Connection.
-     * 
-     * @param conn
-     *            Connection to retrieve the constraint from.
-     * @return PointList list of points that is the direct equivalent of the set
-     *         constraint.
-     */
-    public PointList getPointsFromConstraint(Connection conn) {
-        List bendpoints = (List) conn.getRoutingConstraint();
-        if (bendpoints == null)
-            return new PointList();
-
-        PointList points = new PointList(bendpoints.size());
-        for (int i = 0; i < bendpoints.size(); i++) {
-            Bendpoint bp = (Bendpoint) bendpoints.get(i);
-            points.addPoint(bp.getLocation());
-        }
-
-        straightenPoints(points, MapModeUtil.getMapMode(conn).DPtoLP(3));
-        return points;
-    }
-
-    /**
-     * straightenPoints This is a simpler version of the @see
-     * updateIfNotRectilinear that simply ensures that the lines are horizontal
-     * or vertical without any intelligence in terms of shortest distance around
-     * a rectangle.
-     * 
-     * @param newLine
-     *            PointList to check for rectilinear qualities and change if
-     *            necessary.
-     * @param tolerance
-     *            int tolerance value by which points will be straightened in
-     *            HiMetrics
-     */
-    static protected void straightenPoints(PointList newLine, int tolerance) {
-        for (int i = 0; i < newLine.size() - 1; i++) {
-            Point ptCurrent = newLine.getPoint(i);
-            Point ptNext = newLine.getPoint(i + 1);
-
-            int xDelta = Math.abs(ptNext.x - ptCurrent.x);
-            int yDelta = Math.abs(ptNext.y - ptCurrent.y);
-
-            if (xDelta < yDelta) {
-                if (xDelta > tolerance)
-                    return;
-                ptNext.x = ptCurrent.x;
-            } else {
-                if (yDelta > tolerance)
-                    return;
-                ptNext.y = ptCurrent.y;
+            result = Options.newSome(command);
+        } else if (connectionEditPartQuery.isEdgeWithObliqueRoutingStyle() || connectionEditPartQuery.isEdgeWithRectilinearRoutingStyle()) {
+            if (!allMovedEditParts.isEmpty()) {
+                if ((sourceMove && !allMovedEditParts.contains(connectionEditPart.getTarget())) || (!sourceMove && !allMovedEditParts.contains(connectionEditPart.getSource()))) {
+                    SetConnectionBendpointsAccordingToExtremityMoveCommmand setConnectionBendpointsCommand = new SetConnectionBendpointsAccordingToExtremityMoveCommmand(transactionalEditingDomain);
+                    setConnectionBendpointsCommand.setSourceMove(sourceMove);
+                    setConnectionBendpointsCommand.setMoveDelta(new PrecisionPoint(moveDelta));
+                    setConnectionBendpointsCommand.setEdgeAdapter(connectionEditPart);
+                    result = Options.newSome(new ICommandProxy(setConnectionBendpointsCommand));
+                }
             }
 
-            newLine.setPoint(ptNext, i + 1);
+            if (result.some()) {
+                CompoundCommand command = new CompoundCommand("Map GMF to Draw2D");
+                // Reset the connection anchor source and target considering it
+                // can be wrongly modified by the arrange selection (see
+                // ArrangeSelectionLayoutProvider.layoutEditParts(List,
+                // IAdaptable) and previous comment in changeBendpointsOfEdges
+                // for more details)
+                SetConnectionAnchorsCommand setConnectionAnchorsCommand = new SetConnectionAnchorsCommand(transactionalEditingDomain, StringStatics.BLANK);
+                setConnectionAnchorsCommand.setEdgeAdaptor(connectionEditPart);
+                setConnectionAnchorsCommand.setNewSourceTerminal(((INodeEditPart) connectionEditPart.getSource()).mapConnectionAnchorToTerminal(connectionFigure.getSourceAnchor()));
+                setConnectionAnchorsCommand.setNewTargetTerminal(((INodeEditPart) connectionEditPart.getTarget()).mapConnectionAnchorToTerminal(connectionFigure.getTargetAnchor()));
+                command.add(new ICommandProxy(setConnectionAnchorsCommand));
+                command.add(result.get());
+                result = Options.newSome(command);
+            }
         }
+        return result;
     }
-
-    // CHECKSTYLE:ON
 
     /**
      * {@inheritDoc}

@@ -42,7 +42,11 @@
 		<ul>
 			<li>It is now possible to select element that intersects the selection rectangle and not that is completely contained by the selection rectangle. This new behavior is enabled when user selects elements from right to left. The normal mode (previous mode) remains when the user selects elements from left to right.</li>
 			<li>The edges appearance is now kept, as much as possible, when one of its extremity is moved. A move of an extremity should move only the closest segment of the edge.</li>
+			<li>The edges appearance is kept as much as possible when a node (container or not) is moved. A move of a node now impacts only the closest segment of the linked edges.</li>
 		</ul>
+		<p>
+			<img border="0" src="images/Old vs New behavior.gif"/>
+		</p>
 		<h3 id="APIChanges">API Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius">Changes in 
 			<code>org.eclipse.sirius</code>

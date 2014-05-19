@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.layout;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -152,10 +153,26 @@ public class ArrangeAllWithAutoSize {
      *            list iterator of edit parts.
      */
     public void prepareForArrangeAll(final Iterator<AbstractDiagramElementContainerEditPart> unmodifiableIterator) {
+        prepareForArrangeAll(unmodifiableIterator, null);
+    }
+
+    /**
+     * Prepare the auto-size support for an incoming arrange all. This
+     * preparation involve activating specific behavior on edit parts figures so
+     * that they are able, later on, to provide their 'incoming size after
+     * auto-size has been applied' so that the layout can leverage this
+     * information.
+     * 
+     * @param unmodifiableIterator
+     *            list iterator of edit parts.
+     * @param elementsToKeepFixed
+     *            list of elements to keep fixed even if they are not pinned.
+     */
+    public void prepareForArrangeAll(Iterator<AbstractDiagramElementContainerEditPart> unmodifiableIterator, ArrayList<IDiagramElementEditPart> elementsToKeepFixed) {
         final Set<IFigure> parentFiguresToValidateToGetAutosizeDimensions = Sets.newLinkedHashSet();
         while (unmodifiableIterator.hasNext()) {
             final AbstractDiagramElementContainerEditPart ep = unmodifiableIterator.next();
-            if (ArrangeAllWithAutoSize.shouldBeAutosized(ep)) {
+            if ((elementsToKeepFixed == null || !elementsToKeepFixed.contains(ep)) && ArrangeAllWithAutoSize.shouldBeAutosized(ep)) {
                 ep.forceFigureAutosize();
                 if (ep.getParent() instanceof AbstractGraphicalEditPart) {
                     parentFiguresToValidateToGetAutosizeDimensions.add(((AbstractGraphicalEditPart) ep.getParent()).getFigure());
