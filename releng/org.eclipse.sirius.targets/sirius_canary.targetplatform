@@ -1,6 +1,5 @@
 target "sirius_canary"
 
-include "modules/paperclips-2.0.tpd"
 include "modules/shared-license.tpd"
 
 with source, requirements

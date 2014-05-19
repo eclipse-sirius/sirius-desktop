@@ -1,7 +1,6 @@
 target "sirius_luna"
 
 include "modules/orbit.tpd"
-include "modules/paperclips-2.0.tpd"
 include "modules/swtbot-2.1.tpd"
 include "modules/shared-license.tpd"
 
