@@ -26,6 +26,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.ToolBar;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 import org.eclipse.ui.forms.FormColors;
@@ -81,15 +82,27 @@ public class TabbarToolBarManager extends ToolBarManager {
 
     @Override
     public void update(boolean force) {
-        IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-        if (activePage != null && tabbarPart instanceof DDiagramEditor && activePage.getActivePart() != tabbarPart) {
+        IWorkbenchPage activePage = getSafeActivePage();
+        if (activePage == null) {
+            // No active page -> return.
+            return;
+        } else if (tabbarPart instanceof DDiagramEditor && activePage.getActivePart() != tabbarPart) {
             if (getControl().getItems().length > 0) {
                 // part is not focused -> return.
                 return;
             }
         }
+
         super.update(force);
         updateGradientBackground();
+    }
+
+    private IWorkbenchPage getSafeActivePage() {
+        IWorkbenchWindow activeWorkbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+        if (activeWorkbenchWindow != null) {
+            return activeWorkbenchWindow.getActivePage();
+        }
+        return null;
     }
 
     /**
