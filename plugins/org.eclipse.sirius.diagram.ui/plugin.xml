@@ -152,9 +152,9 @@
 
          <popupContribution class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
             <popupStructuredContributionCriteria objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart" />
-            <popupMenuGroup path="/editMenu/" id="copyLayoutGroup" />
-            <popupAction path="/editMenu/copyGroup" id="copyLayoutAction" />
-            <popupAction path="/editMenu/copyGroup" id="pasteLayoutAction" />
+            <popupMenuGroup path="/editMenu/" id="copyLayoutGroup" separator="true"/>
+            <popupAction path="/editMenu/copyLayoutGroup" id="copyLayoutAction" />
+            <popupAction path="/editMenu/copyLayoutGroup" id="pasteLayoutAction" />
             <popupAction path="/formatMenu/routerMenu/routerGroup" id="treeRoutingStyleAction"/>
 
             <popupMenuGroup path="/formatMenu/" id="pinGroup" />
@@ -173,6 +173,19 @@
             </popupAction>
             <popupAction
                   id="selectHiddenElementsAction" path="/additions"/>
+         </popupContribution>
+         <popupContribution
+               class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider"
+               id="SiriusDeleteFromDiagramContribution">
+            <popupStructuredContributionCriteria
+                  objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"
+                  policyClass="org.eclipse.sirius.diagram.ui.tools.internal.menu.SiriusPopupMenuContributionPolicy">
+            </popupStructuredContributionCriteria>
+            <popupMenuGroup
+                  id="deleteFromGroup"
+                  path="/editMenu/"
+                  separator="true">
+            </popupMenuGroup>
          </popupContribution>
 
       </contributionItemProvider>
@@ -201,7 +214,7 @@
             </popupAction>
          </popupContribution>
          <popupContribution
-               class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramContextMenuProvider">
+               class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
             <popupStructuredContributionCriteria
                   objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"
                   policyClass="org.eclipse.sirius.diagram.ui.tools.internal.menu.SiriusPopupMenuContributionPolicy">
@@ -1318,7 +1331,7 @@
                icon="icons/delete.gif"
                id="org.eclipse.sirius.diagram.ui.actions.DeleteFromDiagramActionID"
                label="Delete from Diagram"
-               menubarPath="editMenu/additions">
+               menubarPath="editMenu/deleteFromGroup">
          </action>
       </objectContribution>
       <objectContribution

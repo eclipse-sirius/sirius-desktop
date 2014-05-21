@@ -107,7 +107,12 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
                     updateFormatMenu(menu);
 
                     final IMenuManager manager = menu.findMenuUsingPath(ActionIds.MENU_EDIT);
-                    manager.add(deleteAction);
+                    IContributionItem find = manager.find("deleteFromGroup");
+                    if (find != null) {
+                        manager.appendToGroup("deleteFromGroup", deleteAction);
+                    } else {
+                        manager.add(deleteAction);
+                    }
 
                     if (clipboardSupportOnlyOnNote() && hasViewOfDDiagramElementSelected()) {
                         manager.remove(GlobalActionId.CUT);
