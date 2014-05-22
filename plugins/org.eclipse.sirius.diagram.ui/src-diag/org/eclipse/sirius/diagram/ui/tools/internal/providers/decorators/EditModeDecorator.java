@@ -18,7 +18,7 @@ import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget.Di
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.decorators.AbstractSiriusDecorator;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
@@ -123,7 +123,7 @@ public class EditModeDecorator extends AbstractSiriusDecorator {
         if (isBroken(editPart)) {
             // If the edit part is borken, we return a "delete" image (red
             // cross)
-            return WorkspaceImageFigure.flyWeightImage("/org.eclipse.sirius.diagram/icons/delete.gif");
+            return DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETE_FROM_DIAGRAM_ICON));
         } else {
             // It means that the semantic element referenced by this edit part
             // is not editable, we return a "locked" image (red padlock)

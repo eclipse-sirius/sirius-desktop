@@ -10,8 +10,9 @@
  */
 package org.eclipse.sirius.tests.swtbot.support.api.matcher;
 
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.hamcrest.Description;
 
 /**
@@ -23,7 +24,7 @@ public class DeletedDecoratorMatcher extends AbstractDecoratorMatcher {
     @Override
     protected Image getImage() {
 
-        return AbstractUIPlugin.imageDescriptorFromPlugin("/org.eclipse.sirius.diagram", "/icons/delete.gif").createImage();
+        return DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETE_FROM_DIAGRAM_ICON));
     }
 
     @Override
