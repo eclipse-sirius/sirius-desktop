@@ -53,6 +53,12 @@ public class SiriusUncontrolCommand extends UncontrolCommand {
      * to the semantic elements.
      */
     private final boolean uncontrolRepresentations;
+    
+    /**
+     * A boolean to set if the session should be save at the end of this
+     * command.
+     */
+    private final boolean shouldEndBySaving;
 
     private IProgressMonitor monitor;
 
@@ -67,14 +73,37 @@ public class SiriusUncontrolCommand extends UncontrolCommand {
      * @param monitor
      *            a {@link IProgressMonitor} to show progression of uncontrol
      *            operation
+     * @deprecated use the other constructor instead, which requires mentioning
+     *             explicitly whether or not to save the session as part of the
+     *             command (most code should do the saving themselves outside of
+     *             the command).
      */
+    @Deprecated
     public SiriusUncontrolCommand(final EObject semanticRoot, final boolean uncontrolRepresentations, IProgressMonitor monitor) {
+        this(semanticRoot, uncontrolRepresentations, true, monitor);
+    }
+    
+    /**
+     * Create a new {@link SiriusUncontrolCommand}.
+     * 
+     * @param semanticRoot
+     *            the semantic model element to uncontrol.
+     * @param uncontrolRepresentations
+     *            indicate if we should uncontrol the representations in
+     *            addition to the semantic elements.
+     * @param shouldEndBySaving
+     *            A boolean to set if the session should be save at the end of
+     * @param monitor
+     *            a {@link IProgressMonitor} to show progression of uncontrol
+     *            operation
+     */
+    public SiriusUncontrolCommand(final EObject semanticRoot, final boolean uncontrolRepresentations, boolean shouldEndBySaving, IProgressMonitor monitor) {
         super(semanticRoot);
         this.uncontrolRepresentations = uncontrolRepresentations;
         this.session = SessionManager.INSTANCE.getSession(semanticRoot);
+        this.shouldEndBySaving = shouldEndBySaving;
         this.monitor = monitor;
     }
-
     /**
      * Get root container of specified object.<br>
      * Default implementation consists in getting the resource container i.e the
@@ -113,7 +142,9 @@ public class SiriusUncontrolCommand extends UncontrolCommand {
             monitor.worked(1);
             cleanupChildrenResources(childSemanticResource, childAirdResource);
             monitor.worked(1);
-            session.save(new SubProgressMonitor(monitor, 1));
+            if (shouldEndBySaving) {
+                session.save(new SubProgressMonitor(monitor, 1));
+            }
         } finally {
             monitor.done();
         }

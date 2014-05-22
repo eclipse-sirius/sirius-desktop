@@ -12,6 +12,10 @@ h3. User-Visible Changes
 
 h3. API Changes
 
+h4. Changes in @org.eclipse.sirius@
+
+* In package @org.eclipse.sirius.business.api.control@,  the constructors of @SiriusControlCommand@ and @SiriusUncontrolCommand@ which assume implicitly that the session should be saved as part of the command are now deprecated. Use the alternative constructors (a new one has been added to @SiriusUncontrolCommand@) to say explicitly if the command should save the session. Most code should do the save themselves outside of the command, and thus pass @false@  to the @shouldEndBySaving@ argument of these constructors.
+
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
 * To enable the resize of border nodes whose parent is a list, the @createLayoutEditPolicy@ and @getResizeBorderItemCommand@ methods have been extracted from  @org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerPart@ and placed into @org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart@. The @org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart.createLayoutEditPolicy@ implementation has been removed.

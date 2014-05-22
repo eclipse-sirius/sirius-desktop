@@ -42,6 +42,19 @@
 			</li>
 		</ul>
 		<h3 id="APIChanges">API Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+			<code>org.eclipse.sirius</code>
+		</h4>
+		<ul>
+			<li>In package 
+				<code>org.eclipse.sirius.business.api.control</code>,  the constructors of 
+				<code>SiriusControlCommand</code> and 
+				<code>SiriusUncontrolCommand</code> which assume implicitly that the session should be saved as part of the command are now deprecated. Use the alternative constructors (a new one has been added to 
+				<code>SiriusUncontrolCommand</code>) to say explicitly if the command should save the session. Most code should do the save themselves outside of the command, and thus pass 
+				<code>false</code>  to the 
+				<code>shouldEndBySaving</code> argument of these constructors.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
@@ -287,7 +300,7 @@
 				<code>Predicate</code> tested on the key.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -673,7 +686,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 		<p>if 
 			<code>element</code> is a Diagram concept.
 		</p>
-		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -837,7 +850,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>viewpoint/diagram/description/concern</code>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -921,7 +934,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables</code> instead.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius5">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>

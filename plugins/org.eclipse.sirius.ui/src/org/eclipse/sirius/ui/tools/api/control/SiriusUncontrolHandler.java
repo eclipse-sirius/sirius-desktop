@@ -28,6 +28,8 @@ import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.control.SiriusUncontrolCommand;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
@@ -85,9 +87,13 @@ public class SiriusUncontrolHandler extends AbstractHandler {
      *            a {@link IProgressMonitor} to show progression of uncontrol
      */
     public void performUncontrol(final Shell shell, final EObject semanticRoot, IProgressMonitor monitor) {
-        final boolean uncontrolRepresentations = shouldUncontrolRepresentations(shell);
-        Command vuc = new SiriusUncontrolCommand(semanticRoot, uncontrolRepresentations, new SubProgressMonitor(monitor, 1));
-        TransactionUtil.getEditingDomain(semanticRoot).getCommandStack().execute(vuc);
+        Session session = SessionManager.INSTANCE.getSession(semanticRoot);
+        if (session != null) {
+            boolean uncontrolRepresentations = shouldUncontrolRepresentations(shell);
+            Command vuc = new SiriusUncontrolCommand(semanticRoot, uncontrolRepresentations, false, new SubProgressMonitor(monitor, 1));
+            TransactionUtil.getEditingDomain(semanticRoot).getCommandStack().execute(vuc);
+            session.save(new SubProgressMonitor(monitor, 1));
+        }
     }
 
     /**

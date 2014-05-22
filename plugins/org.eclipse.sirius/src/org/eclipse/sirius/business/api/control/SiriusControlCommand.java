@@ -90,7 +90,12 @@ public class SiriusControlCommand extends ControlCommand {
      * @param monitor
      *            a {@link IProgressMonitor} to show progression of control
      *            operation
+     * @deprecated use the other constructor instead, which requires mentioning
+     *             explicitly whether or not to save the session as part of the
+     *             command (most code should do the saving themselves outside of
+     *             the command).
      */
+    @Deprecated
     public SiriusControlCommand(final EObject semanticRoot, final URI semanticDest, final Set<DRepresentation> representations, final URI representationsDest, IProgressMonitor monitor) {
         this(semanticRoot, semanticDest, representations, representationsDest, true, monitor);
     }
@@ -166,7 +171,6 @@ public class SiriusControlCommand extends ControlCommand {
     protected EObject getRootContainer(EObject eObject) {
         return new EObjectQuery(eObject).getResourceContainer();
     }
-
 
     /**
      * Create a new representations resource if needed :
