@@ -969,6 +969,7 @@
                class="org.eclipse.sirius.editor.properties.sections.description.pastetargetdescription.PasteTargetDescriptionPasteDescriptionsPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.description.pastetargetdescription.PasteTargetDescriptionPasteDescriptionsFilter"
                id="description.section.pasteTargetDescription.PasteDescriptions"
+               afterSection="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.behavior">
         <input type="org.eclipse.sirius.viewpoint.description.PasteTargetDescription"/>        
       </propertySection>
