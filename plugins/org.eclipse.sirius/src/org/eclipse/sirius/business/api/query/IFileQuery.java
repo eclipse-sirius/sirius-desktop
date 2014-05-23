@@ -20,6 +20,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link IFile} as a
@@ -58,7 +59,7 @@ public class IFileQuery {
     public boolean isResourceHandledByOpenedSession() {
         boolean result = false;
         URI fileURI = URI.createPlatformResourceURI(file.getFullPath().toString(), true);
-        for (Session session : SessionManager.INSTANCE.getSessions()) {
+        for (Session session : Lists.newArrayList(SessionManager.INSTANCE.getSessions())) {
             if (session.isOpen() && fileURI != null) {
 
                 Iterable<Resource> handledResources = Iterables.concat(session.getSemanticResources(), session.getReferencedSessionResources());
