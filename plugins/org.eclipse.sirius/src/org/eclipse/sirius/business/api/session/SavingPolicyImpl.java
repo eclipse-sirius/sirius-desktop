@@ -11,20 +11,13 @@
 package org.eclipse.sirius.business.api.session;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
-import org.eclipse.core.resources.IWorkspace;
-import org.eclipse.core.resources.IWorkspaceRunnable;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.SubProgressMonitor;
-import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.internal.session.danalysis.ResourceSaveDiagnose;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
@@ -41,10 +34,7 @@ import com.google.common.collect.Lists;
  * @author mchauvin
  * @since 0.9.0
  */
-public class SavingPolicyImpl implements SavingPolicy {
-
-    private TransactionalEditingDomain domain;
-
+public class SavingPolicyImpl extends AbstractSavingPolicy {
     private Map<?, ?> saveOptions;
 
     /**
@@ -53,20 +43,26 @@ public class SavingPolicyImpl implements SavingPolicy {
      * @param domain
      *            the editing domain to use
      */
-    public SavingPolicyImpl(final TransactionalEditingDomain domain) {
-        this.domain = domain;
+    public SavingPolicyImpl(TransactionalEditingDomain domain) {
+        super(domain);
     }
 
     /**
-     * Tells if a save is needed for the specified resource
+     * Determines if a resource should be saved by actually saving it in a
+     * temporary location and comaring the result to the current serialization.
+     * The result is safe, but the method is costly.
+     * <p>
+     * {@inheritDoc}
      */
-    private boolean shouldSave(final Resource resource) {
-        boolean shouldSave = hasChangesToSave(resource);
-        if (!shouldSave) {
-            final ResourceStatus resourceStatus = ResourceSetSync.getStatus(resource);
-            shouldSave = resourceStatus == ResourceStatus.DELETED || resourceStatus == ResourceStatus.CONFLICTING_DELETED;
-        }
-        return shouldSave;
+    @Override
+    protected Collection<Resource> computeResourcesToSave(Set<Resource> scope, Map<?, ?> options, IProgressMonitor monitor) {
+        this.saveOptions = options;
+        final Predicate<Resource> savingFilter = new Predicate<Resource>() {
+            public boolean apply(final Resource input) {
+                return shouldSave(input);
+            }
+        };
+        return Lists.newArrayList(Iterables.filter(scope, savingFilter));
     }
 
     /**
@@ -93,67 +89,15 @@ public class SavingPolicyImpl implements SavingPolicy {
     }
 
     /**
-     * {@inheritDoc}
+     * Tells if a save is needed for the specified resource
      */
-    public Collection<Resource> save(final Iterable<Resource> allResources, final Map<?, ?> options, IProgressMonitor monitor) {
-        this.saveOptions = options;
-        final Predicate<Resource> savingFilter = new Predicate<Resource>() {
-            public boolean apply(final Resource input) {
-                return shouldSave(input);
-            }
-        };
-        final Collection<Resource> resourcesToSave = new ArrayList<Resource>();
-        try {
-            monitor.beginTask("Save Session", IProgressMonitor.UNKNOWN);
-            if (alreadyIsInWorkspaceModificationOperation()) {
-                resourcesToSave.addAll(Lists.newArrayList(Iterables.filter(allResources, savingFilter)));
-                wrappedSave(resourcesToSave, allResources, options, new SubProgressMonitor(monitor, IProgressMonitor.UNKNOWN));
-            } else {
-                final IWorkspace workspace = ResourcesPlugin.getWorkspace();
-                try {
-                    workspace.run(new IWorkspaceRunnable() {
-                        public void run(final IProgressMonitor monitor) throws CoreException {
-                            resourcesToSave.addAll(Lists.newArrayList(Iterables.filter(allResources, savingFilter)));
-                            wrappedSave(resourcesToSave, allResources, options, monitor);
-                        }
-                    }, new SubProgressMonitor(monitor, IProgressMonitor.UNKNOWN));
-                } catch (final CoreException e) {
-                    SiriusPlugin.getDefault().error("Core exception while saving session", e);
-                }
-            }
-        } finally {
-            monitor.done();
+    private boolean shouldSave(final Resource resource) {
+        boolean shouldSave = hasChangesToSave(resource);
+        if (!shouldSave) {
+            final ResourceStatus resourceStatus = ResourceSetSync.getStatus(resource);
+            shouldSave = resourceStatus == ResourceStatus.DELETED || resourceStatus == ResourceStatus.CONFLICTING_DELETED;
         }
-        return resourcesToSave;
-    }
-
-    private void wrappedSave(final Iterable<Resource> resourcesToSave, final Iterable<Resource> allResources, final Map<?, ?> options, IProgressMonitor monitor) {
-        try {
-            monitor.beginTask("Session Saving", IProgressMonitor.UNKNOWN);
-            if (options == null) {
-                ResourceSetSync.getOrInstallResourceSetSync(domain).save(resourcesToSave, allResources, getDefaultSaveOptions());
-            } else {
-                ResourceSetSync.getOrInstallResourceSetSync(domain).save(resourcesToSave, allResources, options);
-            }
-        } catch (final IOException e) {
-            SiriusPlugin.getDefault().error("error while saving session", e);
-        } catch (final InterruptedException e) {
-            SiriusPlugin.getDefault().error("error while saving session", e);
-        } finally {
-            monitor.done();
-        }
-    }
-
-    private boolean alreadyIsInWorkspaceModificationOperation() {
-        final Job currentJob = Job.getJobManager().currentJob();
-        return currentJob != null && currentJob.getRule() != null;
-    }
-
-    private Map<?, ?> getDefaultSaveOptions() {
-        final Map<Object, Object> defaultSaveOptions = new HashMap<Object, Object>();
-        defaultSaveOptions.put(XMLResource.OPTION_FLUSH_THRESHOLD, Integer.valueOf(0x01000000));
-        defaultSaveOptions.put(XMLResource.OPTION_USE_FILE_BUFFER, Boolean.TRUE);
-        return defaultSaveOptions;
+        return shouldSave;
     }
 
 }
