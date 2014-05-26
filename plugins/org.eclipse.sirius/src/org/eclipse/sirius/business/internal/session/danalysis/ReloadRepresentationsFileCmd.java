@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.session.danalysis;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -47,28 +49,24 @@ public class ReloadRepresentationsFileCmd extends RecordingCommand {
         super(domain, name);
         this.session = session;
         this.resource = analysisResource;
-        this.oldAnalysis = (DAnalysis) analysisResource.getContents().get(0);
+        EList<EObject> contents = analysisResource.getContents();
+        if (contents.isEmpty()) {
+            this.oldAnalysis = null;
+        } else {
+            this.oldAnalysis = (DAnalysis) contents.get(0);
+        }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean canUndo() {
         return false;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean canRedo() {
         return false;
     }
 
-    /**
-     * Execute the command.
-     */
     @Override
     protected void doExecute() {
         DAnalysisSession analysisSession = getAnalysisSession();
