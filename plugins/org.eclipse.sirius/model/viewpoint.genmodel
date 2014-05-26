@@ -491,9 +491,9 @@
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/containerView"/>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/container"/>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/initialOperation"/>
-          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/iconPath"/>
-          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/windowTitle"/>
-          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/windowImagePath"/>
+          <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/iconPath"/>
+          <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/windowTitle"/>
+          <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/windowImagePath"/>
           <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/message"/>
           <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/choiceOfValuesMessage"/>
           <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/PaneBasedSelectionWizardDescription/candidatesExpression"/>

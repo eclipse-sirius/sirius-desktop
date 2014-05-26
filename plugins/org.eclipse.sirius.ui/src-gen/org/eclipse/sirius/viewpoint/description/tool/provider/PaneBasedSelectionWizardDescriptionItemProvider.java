@@ -82,12 +82,11 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
      * @generated
      */
     protected void addIconPathPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                        getString("_UI_PaneBasedSelectionWizardDescription_iconPath_feature"),
-                        getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_iconPath_feature", "_UI_PaneBasedSelectionWizardDescription_type"),
-                        ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__ICON_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                        getString("_UI_GeneralPropertyCategory"), null));
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_PaneBasedSelectionWizardDescription_iconPath_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_iconPath_feature", "_UI_PaneBasedSelectionWizardDescription_type"),
+                ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__ICON_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"),
+                null));
     }
 
     /**
@@ -100,7 +99,7 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_PaneBasedSelectionWizardDescription_windowTitle_feature"),
                 getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_windowTitle_feature", "_UI_PaneBasedSelectionWizardDescription_type"),
-                ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__WINDOW_TITLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"),
+                ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__WINDOW_TITLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"),
                 null));
     }
 
@@ -115,7 +114,7 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
                 getString("_UI_PaneBasedSelectionWizardDescription_windowImagePath_feature"),
                 getString("_UI_PropertyDescriptor_description", "_UI_PaneBasedSelectionWizardDescription_windowImagePath_feature", "_UI_PaneBasedSelectionWizardDescription_type"),
                 ToolPackage.Literals.PANE_BASED_SELECTION_WIZARD_DESCRIPTION__WINDOW_IMAGE_PATH, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                getString("_UI_GeneralPropertyCategory"), null));
+                getString("_UI_AdvancedPropertyCategory"), null));
     }
 
     /**

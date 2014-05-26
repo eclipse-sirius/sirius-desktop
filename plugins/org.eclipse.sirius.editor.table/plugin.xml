@@ -21,7 +21,7 @@
                class="org.eclipse.sirius.table.editor.properties.sections.description.tablenavigationdescription.TableNavigationDescriptionTableDescriptionPropertySection"
                id="description.section.tableNavigationDescription.TableDescription"
                filter="org.eclipse.sirius.table.editor.properties.filters.description.tablenavigationdescription.TableNavigationDescriptionTableDescriptionFilter"
-               afterSection="tool.section.representationCreationDescription.Mappings"
+               afterSection="tool.section.representationNavigationDescription.Mappings"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription"/>
       </propertySection>

@@ -46,7 +46,7 @@
                class="org.eclipse.sirius.tree.editor.properties.sections.description.treenavigationdescription.TreeNavigationDescriptionTreeDescriptionPropertySection"
                id="description.section.treeNavigationDescription.TreeDescription"
                filter="org.eclipse.sirius.tree.editor.properties.filters.description.treenavigationdescription.TreeNavigationDescriptionTreeDescriptionFilter"
-               afterSection="tool.section.representationCreationDescription.Mappings"
+               afterSection="tool.section.representationNavigationDescription.Mappings"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.tree.description.TreeNavigationDescription"/>
       </propertySection>

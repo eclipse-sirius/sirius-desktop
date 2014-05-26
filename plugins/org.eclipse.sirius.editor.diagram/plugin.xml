@@ -121,7 +121,7 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.tool.containerdropdescription.ContainerDropDescriptionMappingsPropertySection"
                id="tool.section.containerDropDescription.Mappings"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.tool.containerdropdescription.ContainerDropDescriptionMappingsFilter"
-               afterSection="tool.section.containerDropDescription.MoveEdges"
+               afterSection="tool.section.containerDropDescription.Containers"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.description.tool.ContainerDropDescription"/>
       </propertySection>
@@ -137,6 +137,7 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.tool.containerdropdescription.ContainerDropDescriptionDragSourcePropertySection"
                id="tool.section.containerDropDescription.DragSource"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.tool.containerdropdescription.ContainerDropDescriptionDragSourceFilter"
+               afterSection="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.description.tool.ContainerDropDescription"/>
       </propertySection>
@@ -144,7 +145,7 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.tool.diagramnavigationdescription.DiagramNavigationDescriptionDiagramDescriptionPropertySection"
                id="tool.section.diagramNavigationDescription.DiagramDescription"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.tool.diagramnavigationdescription.DiagramNavigationDescriptionDiagramDescriptionFilter"
-               afterSection="tool.section.representationCreationDescription.Mappings"
+               afterSection="tool.section.representationNavigationDescription.Mappings"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.description.tool.DiagramNavigationDescription"/>
       </propertySection>
@@ -213,6 +214,7 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.tool.behaviortool.BehaviorToolDomainClassPropertySection"
                id="tool.section.behaviorTool.DomainClass"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.tool.behaviortool.BehaviorToolDomainClassFilter"
+               afterSection="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.description.tool.BehaviorTool"/>
       </propertySection>
@@ -220,7 +222,7 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.tool.directeditlabel.DirectEditLabelInputLabelExpressionPropertySection"
                id="tool.section.directEditLabel.InputLabelExpression"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.tool.directeditlabel.DirectEditLabelInputLabelExpressionFilter"
-               afterSection="tool.section.directEditLabel.Mapping"
+               afterSection="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.description.tool.DirectEditLabel"/>
       </propertySection>
@@ -228,6 +230,7 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.tool.requestdescription.RequestDescriptionTypePropertySection"
                id="tool.section.requestDescription.Type"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.tool.requestdescription.RequestDescriptionTypeFilter"
+               afterSection="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.description.tool.RequestDescription"/>
       </propertySection>
@@ -235,6 +238,7 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.tool.reconnectedgedescription.ReconnectEdgeDescriptionReconnectionKindPropertySection"
                id="tool.section.reconnectEdgeDescription.ReconnectionKind"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.tool.reconnectedgedescription.ReconnectEdgeDescriptionReconnectionKindFilter"
+               afterSection="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription"/>
       </propertySection>
@@ -264,6 +268,7 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.tool.doubleclickdescription.DoubleClickDescriptionMappingsPropertySection"
                id="tool.section.doubleClickDescription.Mappings"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.tool.doubleclickdescription.DoubleClickDescriptionMappingsFilter"
+               afterSection="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.description.tool.DoubleClickDescription"/>
       </propertySection>
@@ -287,6 +292,7 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.tool.containercreationdescription.ContainerCreationDescriptionContainerMappingsPropertySection"
                id="tool.section.containerCreationDescription.ContainerMappings"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.tool.containercreationdescription.ContainerCreationDescriptionContainerMappingsFilter"
+               afterSection="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription"/>
       </propertySection>
@@ -294,7 +300,7 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.tool.edgecreationdescription.EdgeCreationDescriptionConnectionStartPreconditionPropertySection"
                id="tool.section.edgeCreationDescription.ConnectionStartPrecondition"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.tool.edgecreationdescription.EdgeCreationDescriptionConnectionStartPreconditionFilter"
-               afterSection="description.section.decorationDescription.PreconditionExpression"
+               afterSection="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription"/>
       </propertySection>
@@ -326,6 +332,7 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.tool.edgecreationdescription.EdgeCreationDescriptionEdgeMappingsPropertySection"
                id="tool.section.edgeCreationDescription.EdgeMappings"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.tool.edgecreationdescription.EdgeCreationDescriptionEdgeMappingsFilter"
+               afterSection="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription"/>
       </propertySection>
@@ -349,6 +356,7 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.tool.nodecreationdescription.NodeCreationDescriptionNodeMappingsPropertySection"
                id="tool.section.nodeCreationDescription.NodeMappings"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.tool.nodecreationdescription.NodeCreationDescriptionNodeMappingsFilter"
+               afterSection="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.description.tool.NodeCreationDescription"/>
       </propertySection>
@@ -1108,6 +1116,7 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.tool.directeditlabel.DirectEditLabelMappingPropertySection"
                id="tool.section.directEditLabel.Mapping"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.tool.directeditlabel.DirectEditLabelMappingFilter"
+               afterSection="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.description.tool.DirectEditLabel"/>
       </propertySection>
@@ -1123,6 +1132,7 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.tool.deleteelementdescription.DeleteElementDescriptionMappingsPropertySection"
                id="tool.section.deleteElementDescription.Mappings"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.tool.deleteelementdescription.DeleteElementDescriptionMappingsFilter"
+               afterSection="description.section.identifiedElement.Name"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.description.tool.DeleteElementDescription"/>
       </propertySection>
