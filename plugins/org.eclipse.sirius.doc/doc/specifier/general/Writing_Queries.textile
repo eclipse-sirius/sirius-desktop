@@ -120,7 +120,7 @@ A service is simply a public Java methods which follows some conventions:
 ** Java collections of EMF types (note that array types are *not* supported).
 * A service method may return a value, which can have the same kinds of types as parameters.
 
-Here is an example of a Java service taken from the @com.obeodesigner.sample.family.design@ example (you can obtain the project's sources using _New... > Example... > Obeo Designer > Family Designer_):
+Here is an example of a Java service:
 
 bc(#ecore_services). 
 public class EObjectServices {
