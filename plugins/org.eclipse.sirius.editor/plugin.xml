@@ -24,8 +24,8 @@
     <propertyTabs contributorId="org.eclipse.sirius.editor.editorPlugin.SiriusEditorContributor">
       <propertyTab category="default" id="viewpoint.tab.path" label="Path" afterTab="viewpoint.tab.general"/>
       <propertyTab category="default" id="viewpoint.tab.decorators" label="Decorators" afterTab="viewpoint.tab.label"/>
-      <propertyTab category="default" id="viewpoint.tab.corner" label="Corner" afterTab="viewpoint.tab.border"/>
-      <propertyTab category="default" id="viewpoint.tab.border" label="Border" afterTab="viewpoint.tab.color"/>
+      <!--propertyTab category="default" id="viewpoint.tab.corner" label="Corner" afterTab="viewpoint.tab.border"/-->
+      <!--propertyTab category="default" id="viewpoint.tab.border" label="Border" afterTab="viewpoint.tab.color"/-->
       <propertyTab category="default" id="viewpoint.tab.domain_based" label="Domain based" afterTab="viewpoint.tab.general"/>
       <propertyTab category="default" id="viewpoint.tab.all" label="All" afterTab="viewpoint.tab.documentation"/>
     </propertyTabs>
@@ -61,11 +61,13 @@
       <propertyTab category="default" id="viewpoint.tab.default" label="default"/>
       <propertyTab category="default" id="viewpoint.tab.label" label="Label" afterTab="viewpoint.tab.general"/>
       <propertyTab category="default" id="viewpoint.tab.import" label="Import" afterTab="viewpoint.tab.path"/>
+      <propertyTab category="default" id="viewpoint.tab.corner" label="Corner" afterTab="viewpoint.tab.border"/>
       <propertyTab category="default" id="viewpoint.tab.general" label="General"/>
       <propertyTab category="default" id="viewpoint.tab.documentation" label="Documentation" afterTab="viewpoint.tab.import"/>
       <propertyTab category="default" id="viewpoint.tab.color" label="Color" afterTab="viewpoint.tab.label"/>
       <propertyTab category="default" id="viewpoint.tab.behavior" label="Behavior" afterTab="viewpoint.tab.label"/>
       <propertyTab category="default" id="viewpoint.tab.metamodels" label="Metamodels" afterTab="viewpoint.tab.behavior"/>
+      <propertyTab category="default" id="viewpoint.tab.border" label="Border" afterTab="viewpoint.tab.color"/>
       <propertyTab category="default" id="viewpoint.tab.advanced" label="Advanced" afterTab="viewpoint.tab.border"/>
     </propertyTabs>
   </extension>
