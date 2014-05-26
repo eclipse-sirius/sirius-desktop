@@ -125,7 +125,6 @@
       <topic href="doc/specifier/general/Writing_Queries.html#general" label="General Rules" />
       <topic href="doc/specifier/general/Writing_Queries.html#specialized" label="Using the Specialized interpreters" />
       <topic href="doc/specifier/general/Writing_Queries.html#acceleo" label="Using Acceleo" />
-      <topic href="doc/specifier/general/Writing_Queries.html#legacy" label="Using the Legacy Language" />
       <topic href="doc/specifier/general/Writing_Queries.html#ocl" label="Using Raw OCL" />
       <topic href="doc/specifier/general/Writing_Queries.html#custom" label="Providing a Custom Language" />
       <topic href="doc/specifier/general/Writing_Queries.html#service_methods" label="Writing Java Services" />
