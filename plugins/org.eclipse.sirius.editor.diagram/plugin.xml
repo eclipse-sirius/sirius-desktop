@@ -881,6 +881,14 @@
                 tab="viewpoint.tab.advanced">
         <input type="org.eclipse.sirius.diagram.description.EdgeMapping"/>
       </propertySection>
+      <propertySection
+               class="org.eclipse.sirius.diagram.editor.properties.sections.description.edgemapping.EdgeMappingSourceMappingPropertySection"
+               id="description.section.edgeMapping.SourceMapping"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.description.edgemapping.EdgeMappingSourceMappingFilter"
+               afterSection="description.section.edgeMapping.DomainClass"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.diagram.description.EdgeMapping"/>
+      </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.diagram.editor.properties.sections.description.edgemapping.EdgeMappingSourceFinderExpressionPropertySection"
                id="description.section.edgeMapping.SourceFinderExpression"
@@ -889,15 +897,7 @@
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.description.EdgeMapping"/>
       </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.diagram.editor.properties.sections.description.edgemapping.EdgeMappingTargetFinderExpressionPropertySection"
-               id="description.section.edgeMapping.TargetFinderExpression"
-               filter="org.eclipse.sirius.diagram.editor.properties.filters.description.edgemapping.EdgeMappingTargetFinderExpressionFilter"
-               afterSection="description.section.edgeMapping.TargetMapping"
-                tab="viewpoint.tab.general">
-        <input type="org.eclipse.sirius.diagram.description.EdgeMapping"/>
-      </propertySection>
-  	  <propertySection
+      <propertySection
                class="org.eclipse.sirius.diagram.editor.properties.sections.description.edgemapping.EdgeMappingTargetMappingPropertySection"
                id="description.section.edgeMapping.TargetMapping"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.description.edgemapping.EdgeMappingTargetMappingFilter"
@@ -906,10 +906,10 @@
         <input type="org.eclipse.sirius.diagram.description.EdgeMapping"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.diagram.editor.properties.sections.description.edgemapping.EdgeMappingSourceMappingPropertySection"
-               id="description.section.edgeMapping.SourceMapping"
-               filter="org.eclipse.sirius.diagram.editor.properties.filters.description.edgemapping.EdgeMappingSourceMappingFilter"
-               afterSection="description.section.edgeMapping.DomainClass"
+               class="org.eclipse.sirius.diagram.editor.properties.sections.description.edgemapping.EdgeMappingTargetFinderExpressionPropertySection"
+               id="description.section.edgeMapping.TargetFinderExpression"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.description.edgemapping.EdgeMappingTargetFinderExpressionFilter"
+               afterSection="description.section.edgeMapping.TargetMapping"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.description.EdgeMapping"/>
       </propertySection>
@@ -989,7 +989,7 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.description.diagramelementmapping.DiagramElementMappingSemanticCandidatesExpressionPropertySection"
                id="description.section.diagramElementMapping.SemanticCandidatesExpression"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.description.diagramelementmapping.DiagramElementMappingSemanticCandidatesExpressionFilter"
-               afterSection="description.section.edgeMapping.TargetFinderExpression"
+               afterSection="description.section.diagramElementMapping.SemanticElements"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.description.DiagramElementMapping"/>
       </propertySection>
