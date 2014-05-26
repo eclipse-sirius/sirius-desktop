@@ -15,6 +15,7 @@ h3. API Changes
 h4. Changes in @org.eclipse.sirius@
 
 * In package @org.eclipse.sirius.business.api.control@,  the constructors of @SiriusControlCommand@ and @SiriusUncontrolCommand@ which assume implicitly that the session should be saved as part of the command are now deprecated. Use the alternative constructors (a new one has been added to @SiriusUncontrolCommand@) to say explicitly if the command should save the session. Most code should do the save themselves outside of the command, and thus pass @false@  to the @shouldEndBySaving@ argument of these constructors.
+* In package @org.eclipse.sirius.business.api.session@, class @SavingPolicyImpl@ (the default session saving policy) now inherits from the new @AbstractSavingPolicy@ class. The new abstract class can be used as a base to implement different policies by simply overriding the @computeResourcesToSave()@ method.
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 

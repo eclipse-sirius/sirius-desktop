@@ -54,6 +54,12 @@
 				<code>false</code>  to the 
 				<code>shouldEndBySaving</code> argument of these constructors.
 			</li>
+			<li>In package 
+				<code>org.eclipse.sirius.business.api.session</code>, class 
+				<code>SavingPolicyImpl</code> (the default session saving policy) now inherits from the new 
+				<code>AbstractSavingPolicy</code> class. The new abstract class can be used as a base to implement different policies by simply overriding the 
+				<code>computeResourcesToSave()</code> method.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
