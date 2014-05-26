@@ -578,8 +578,7 @@
                class="org.eclipse.sirius.editor.properties.sections.style.basiclabelstyledescription.BasicLabelStyleDescriptionIconPathPropertySection"
                filter="org.eclipse.sirius.editor.properties.filters.style.basiclabelstyledescription.BasicLabelStyleDescriptionIconPathFilter"
                id="style.section.basicLabelStyleDescription.IconPath"
-               afterSection="style.section.basicLabelStyleDescription.LabelColor"
-                tab="viewpoint.tab.advanced">
+                 tab="viewpoint.tab.advanced">
         <input type="org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription"/>        
       </propertySection>
   	  <propertySection

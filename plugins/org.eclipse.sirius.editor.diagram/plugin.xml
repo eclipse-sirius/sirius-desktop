@@ -449,7 +449,6 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.style.shapecontainerstyledescription.ShapeContainerStyleDescriptionBackgroundColorPropertySection"
                id="style.section.shapeContainerStyleDescription.BackgroundColor"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.style.shapecontainerstyledescription.ShapeContainerStyleDescriptionBackgroundColorFilter"
-               afterSection="style.section.shapeContainerStyleDescription.Shape"
                 tab="viewpoint.tab.color">
         <input type="org.eclipse.sirius.diagram.description.style.ShapeContainerStyleDescription"/>
       </propertySection>
@@ -468,19 +467,20 @@
                 tab="viewpoint.tab.label">
         <input type="org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription"/>
       </propertySection>
+     <propertySection
+               class="org.eclipse.sirius.diagram.editor.properties.sections.style.flatcontainerstyledescription.FlatContainerStyleDescriptionBackgroundColorPropertySection"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.style.flatcontainerstyledescription.FlatContainerStyleDescriptionBackgroundColorFilter"
+               id="style.section.flatContainerStyleDescription.BackgroundColor"
+                tab="viewpoint.tab.color">
+        <input
+              type="org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription">
+        </input>
+     </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.diagram.editor.properties.sections.style.flatcontainerstyledescription.FlatContainerStyleDescriptionForegroundColorPropertySection"
                id="style.section.flatContainerStyleDescription.ForegroundColor"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.style.flatcontainerstyledescription.FlatContainerStyleDescriptionForegroundColorFilter"
                afterSection="style.section.flatContainerStyleDescription.BackgroundColor"
-                tab="viewpoint.tab.color">
-        <input type="org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription"/>
-      </propertySection>
-  	  <propertySection
-               class="org.eclipse.sirius.diagram.editor.properties.sections.style.flatcontainerstyledescription.FlatContainerStyleDescriptionBackgroundColorPropertySection"
-               id="style.section.flatContainerStyleDescription.BackgroundColor"
-               filter="org.eclipse.sirius.diagram.editor.properties.filters.style.flatcontainerstyledescription.FlatContainerStyleDescriptionBackgroundColorFilter"
-               afterSection="style.section.flatContainerStyleDescription.BackgroundStyle"
                 tab="viewpoint.tab.color">
         <input type="org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription"/>
       </propertySection>
@@ -503,7 +503,6 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.style.roundedcornerstyledescription.RoundedCornerStyleDescriptionArcHeightPropertySection"
                id="style.section.roundedCornerStyleDescription.ArcHeight"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.style.roundedcornerstyledescription.RoundedCornerStyleDescriptionArcHeightFilter"
-               afterSection="style.section.roundedCornerStyleDescription.ArcWidth"
                 tab="viewpoint.tab.corner">
         <input type="org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription"/>
       </propertySection>
@@ -511,6 +510,7 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.style.roundedcornerstyledescription.RoundedCornerStyleDescriptionArcWidthPropertySection"
                id="style.section.roundedCornerStyleDescription.ArcWidth"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.style.roundedcornerstyledescription.RoundedCornerStyleDescriptionArcWidthFilter"
+               afterSection="style.section.roundedCornerStyleDescription.ArcHeight"
                 tab="viewpoint.tab.corner">
         <input type="org.eclipse.sirius.diagram.description.style.RoundedCornerStyleDescription"/>
       </propertySection>
@@ -518,7 +518,6 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.style.sizecomputationcontainerstyledescription.SizeComputationContainerStyleDescriptionHeightComputationExpressionPropertySection"
                id="style.section.sizeComputationContainerStyleDescription.HeightComputationExpression"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.style.sizecomputationcontainerstyledescription.SizeComputationContainerStyleDescriptionHeightComputationExpressionFilter"
-               afterSection="style.section.sizeComputationContainerStyleDescription.WidthComputationExpression"
                 tab="viewpoint.tab.advanced">
         <input type="org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription"/>
       </propertySection>
@@ -526,6 +525,7 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.style.sizecomputationcontainerstyledescription.SizeComputationContainerStyleDescriptionWidthComputationExpressionPropertySection"
                id="style.section.sizeComputationContainerStyleDescription.WidthComputationExpression"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.style.sizecomputationcontainerstyledescription.SizeComputationContainerStyleDescriptionWidthComputationExpressionFilter"
+               afterSection="style.section.sizeComputationContainerStyleDescription.HeightComputationExpression"
                 tab="viewpoint.tab.advanced">
         <input type="org.eclipse.sirius.diagram.description.style.SizeComputationContainerStyleDescription"/>
       </propertySection>
@@ -587,7 +587,6 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.style.dotdescription.DotDescriptionStrokeSizeComputationExpressionPropertySection"
                id="style.section.dotDescription.StrokeSizeComputationExpression"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.style.dotdescription.DotDescriptionStrokeSizeComputationExpressionFilter"
-               afterSection="style.section.dotDescription.BackgroundColor"
                 tab="viewpoint.tab.advanced">
         <input type="org.eclipse.sirius.diagram.description.style.DotDescription"/>
       </propertySection>
@@ -609,7 +608,6 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.style.bundledimagedescription.BundledImageDescriptionColorPropertySection"
                id="style.section.bundledImageDescription.Color"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.style.bundledimagedescription.BundledImageDescriptionColorFilter"
-               afterSection="style.section.bundledImageDescription.Shape"
                 tab="viewpoint.tab.color">
         <input type="org.eclipse.sirius.diagram.description.style.BundledImageDescription"/>
       </propertySection>
@@ -644,18 +642,18 @@
         <input type="org.eclipse.sirius.diagram.description.style.EllipseNodeDescription"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.diagram.editor.properties.sections.style.lozengenodedescription.LozengeNodeDescriptionHeightComputationExpressionPropertySection"
-               id="style.section.lozengeNodeDescription.HeightComputationExpression"
-               filter="org.eclipse.sirius.diagram.editor.properties.filters.style.lozengenodedescription.LozengeNodeDescriptionHeightComputationExpressionFilter"
-               afterSection="style.section.lozengeNodeDescription.WidthComputationExpression"
-                tab="viewpoint.tab.general">
+           afterSection="style.section.tooltipStyleDescription.TooltipExpression"
+           class="org.eclipse.sirius.diagram.editor.properties.sections.style.lozengenodedescription.LozengeNodeDescriptionHeightComputationExpressionPropertySection"
+           filter="org.eclipse.sirius.diagram.editor.properties.filters.style.lozengenodedescription.LozengeNodeDescriptionHeightComputationExpressionFilter"
+           id="style.section.lozengeNodeDescription.HeightComputationExpression"
+           tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.description.style.LozengeNodeDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.diagram.editor.properties.sections.style.lozengenodedescription.LozengeNodeDescriptionWidthComputationExpressionPropertySection"
                id="style.section.lozengeNodeDescription.WidthComputationExpression"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.style.lozengenodedescription.LozengeNodeDescriptionWidthComputationExpressionFilter"
-               afterSection="style.section.tooltipStyleDescription.TooltipExpression"
+               afterSection="style.section.lozengeNodeDescription.HeightComputationExpression"
                 tab="viewpoint.tab.general">
         <input type="org.eclipse.sirius.diagram.description.style.LozengeNodeDescription"/>
       </propertySection>
@@ -663,22 +661,21 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.style.lozengenodedescription.LozengeNodeDescriptionColorPropertySection"
                id="style.section.lozengeNodeDescription.Color"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.style.lozengenodedescription.LozengeNodeDescriptionColorFilter"
-               afterSection="style.section.lozengeNodeDescription.HeightComputationExpression"
                 tab="viewpoint.tab.color">
         <input type="org.eclipse.sirius.diagram.description.style.LozengeNodeDescription"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.diagram.editor.properties.sections.style.squaredescription.SquareDescriptionHeightPropertySection"
-               id="style.section.squareDescription.Height"
-               filter="org.eclipse.sirius.diagram.editor.properties.filters.style.squaredescription.SquareDescriptionHeightFilter"
-               afterSection="style.section.squareDescription.Width"
-                tab="viewpoint.tab.advanced">
+           class="org.eclipse.sirius.diagram.editor.properties.sections.style.squaredescription.SquareDescriptionHeightPropertySection"
+           filter="org.eclipse.sirius.diagram.editor.properties.filters.style.squaredescription.SquareDescriptionHeightFilter"
+           id="style.section.squareDescription.Height"
+           tab="viewpoint.tab.advanced">
         <input type="org.eclipse.sirius.diagram.description.style.SquareDescription"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.diagram.editor.properties.sections.style.squaredescription.SquareDescriptionWidthPropertySection"
                id="style.section.squareDescription.Width"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.style.squaredescription.SquareDescriptionWidthFilter"
+               afterSection="style.section.squareDescription.Height"
                 tab="viewpoint.tab.advanced">
         <input type="org.eclipse.sirius.diagram.description.style.SquareDescription"/>
       </propertySection>
@@ -686,7 +683,6 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.style.squaredescription.SquareDescriptionColorPropertySection"
                id="style.section.squareDescription.Color"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.style.squaredescription.SquareDescriptionColorFilter"
-               afterSection="style.section.squareDescription.Height"
                 tab="viewpoint.tab.color">
         <input type="org.eclipse.sirius.diagram.description.style.SquareDescription"/>
       </propertySection>
@@ -714,20 +710,20 @@
         <input type="org.eclipse.sirius.diagram.description.style.NodeStyleDescription"/>
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.diagram.editor.properties.sections.style.nodestyledescription.NodeStyleDescriptionSizeComputationExpressionPropertySection"
-               id="style.section.nodeStyleDescription.SizeComputationExpression"
-               filter="org.eclipse.sirius.diagram.editor.properties.filters.style.nodestyledescription.NodeStyleDescriptionSizeComputationExpressionFilter"
-               afterSection="style.section.tooltipStyleDescription.TooltipExpression"
-                tab="viewpoint.tab.advanced">
-        <input type="org.eclipse.sirius.diagram.description.style.NodeStyleDescription"/>
-      </propertySection>
-  	  <propertySection
                class="org.eclipse.sirius.diagram.editor.properties.sections.style.nodestyledescription.NodeStyleDescriptionResizeKindPropertySectionSpec"
                id="style.section.nodeStyleDescription.ResizeKind"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.style.nodestyledescription.NodeStyleDescriptionResizeKindFilter"
                 tab="viewpoint.tab.advanced">
         <input type="org.eclipse.sirius.diagram.description.style.NodeStyleDescription"/>
       </propertySection>
+     <propertySection
+               class="org.eclipse.sirius.diagram.editor.properties.sections.style.nodestyledescription.NodeStyleDescriptionSizeComputationExpressionPropertySection"
+               id="style.section.nodeStyleDescription.SizeComputationExpression"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.style.nodestyledescription.NodeStyleDescriptionSizeComputationExpressionFilter"
+               afterSection="style.section.nodeStyleDescription.ResizeKind"
+                tab="viewpoint.tab.advanced">
+        <input type="org.eclipse.sirius.diagram.description.style.NodeStyleDescription"/>
+     </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.diagram.editor.properties.sections.style.borderedstyledescription.BorderedStyleDescriptionBorderSizeComputationExpressionPropertySection"
                id="style.section.borderedStyleDescription.BorderSizeComputationExpression"
@@ -739,7 +735,7 @@
                class="org.eclipse.sirius.diagram.editor.properties.sections.style.borderedstyledescription.BorderedStyleDescriptionBorderColorPropertySection"
                id="style.section.borderedStyleDescription.BorderColor"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.style.borderedstyledescription.BorderedStyleDescriptionBorderColorFilter"
-               afterSection="style.section.borderedStyleDescription.BorderSizeComputationExpression"
+               afterSection="style.section.basicLabelStyleDescription.LabelColor"
                 tab="viewpoint.tab.color">
         <input type="org.eclipse.sirius.diagram.description.style.BorderedStyleDescription"/>
       </propertySection>
