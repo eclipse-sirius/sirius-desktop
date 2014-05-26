@@ -10,10 +10,6 @@
  *****************************************************************************************/
 package org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter;
 
-import com.google.common.base.Objects;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-
 import java.math.BigDecimal;
 import java.text.MessageFormat;
 import java.util.Collection;
@@ -29,7 +25,6 @@ import java.util.regex.Pattern;
 
 import org.eclipse.acceleo.common.IAcceleoConstants;
 import org.eclipse.acceleo.common.internal.utils.AcceleoPackageRegistry;
-import org.eclipse.acceleo.common.internal.utils.LazyEPackageDescriptor;
 import org.eclipse.acceleo.common.interpreter.CompilationResult;
 import org.eclipse.acceleo.common.interpreter.EvaluationResult;
 import org.eclipse.acceleo.engine.AcceleoEngineMessages;
@@ -61,6 +56,10 @@ import org.eclipse.ocl.types.OCLStandardLibrary;
 import org.eclipse.ocl.util.Bag;
 import org.eclipse.sirius.common.acceleo.mtl.AcceleoMTLInterpreterPlugin;
 import org.eclipse.sirius.ext.base.cache.LRUCache;
+
+import com.google.common.base.Objects;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 
 /**
  * This class has been mostly copy/pasted from
@@ -768,8 +767,7 @@ public class DynamicAcceleoModule {
         resourceSet = new ResourceSetImpl();
         resourceSet.setPackageRegistry(AcceleoPackageRegistry.INSTANCE);
         for (EPackage pack : additionalEPackages) {
-            LazyEPackageDescriptor lazyEPackageDescriptor = LazyEPackageDescriptor.create(pack, AcceleoPackageRegistry.INSTANCE);
-            resourceSet.getPackageRegistry().put(pack.getNsURI(), lazyEPackageDescriptor);
+            AcceleoPackageRegistry.INSTANCE.registerEcorePackage(pack);
         }
     }
 
