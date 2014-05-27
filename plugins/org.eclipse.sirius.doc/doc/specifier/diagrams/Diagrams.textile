@@ -573,7 +573,7 @@ A diagram can define any number of filters, which can be enabled or disabled dyn
 * they are purely graphical: even if some representation elements are hidden from the user's view, they still exist;
 * they have no links with tools, they can not show or hide tools. 
 
-To add a filter to a diagram, create a _Filter Group_ inside the _Diagram Description_ element, specify its _Name_ (a fixed string), and add one or several _Mapping Filter_ or _Variable Filter_ elements inside of it.
+To add a filter to a diagram, create a _Composite Filter_ inside the _Diagram Description_ element, specify its _Name_ (a fixed string), and add one or several _Mapping Filter_ or _Variable Filter_ elements inside of it.
 
 h3(#mapping_filter). Mapping Filter
 
