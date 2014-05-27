@@ -10,15 +10,15 @@ h2(#flow). Flow Control Operations
 
 h3(#begin). Begin
 
-This element has no property. It only serves as an entry point to the specification of a tool's behavior. Note that a _Begin_ element can only contain a single operation. It is recommended to begin a tool's specification by creating a no-op "_Go To_":#goto operation directly inside the _Begin_, as a _Go To_ can contain multiple operations.
+This element has no property. It only serves as an entry point to the specification of a tool's behavior. Note that a _Begin_ element can only contain a single operation. It is recommended to begin a tool's specification by creating a no-op "_Change Context_":#goto operation directly inside the _Begin_, as a _Change Context_ can contain multiple operations.
 
-h3(#goto). Go To
+h3(#goto). Change Context
 
-Every model operation is executed in the context of a specific model element (the equivalent of @this@ or @self@ in a programming language). Usually, at the beginning of a tool, the context is the semantic element to which the tool is applied (the actual details can vary from tool to tool, refer to their documentation). The _Go To_ operation changes the context to a new element and then executes any sub-operations it contains in sequence (in the order of definition).
+Every model operation is executed in the context of a specific model element (the equivalent of @this@ or @self@ in a programming language). Usually, at the beginning of a tool, the context is the semantic element to which the tool is applied (the actual details can vary from tool to tool, refer to their documentation). The _Change Context_ operation changes the context to a new element and then executes any sub-operations it contains in sequence (in the order of definition).
 
-The new context element to go to is specified by the _Browse Expression_ property of the _Go To_ operation. It is executed in the context element of the _Go To_ operation itself, and should return another model element (which will become the context for the sub-operations). If the expression does not return any element, it is not an error, but the sub-operations are not executed. If the expression returns several elements, only the first one is retained and used as the context for the sub-operations.
+The new context element to go to is specified by the _Browse Expression_ property of the _Change Context_ operation. It is executed in the context element of the _Change Context_ operation itself, and should return another model element (which will become the context for the sub-operations). If the expression does not return any element, it is not an error, but the sub-operations are not executed. If the expression returns several elements, only the first one is retained and used as the context for the sub-operations.
 
-_Tip:_ Using a no-op _Go To_ (with a browse expression like @[self/]@  which does not actually change the context) can be useful to group multiple operations into a single "block", especially in contexts where only one model operation is supported (e.g. inside a _Begin_ element).
+_Tip:_ Using a no-op _Change Context_ (with a browse expression like @[self/]@  which does not actually change the context) can be useful to group multiple operations into a single "block", especially in contexts where only one model operation is supported (e.g. inside a _Begin_ element).
 
 h3(#if). If
 
