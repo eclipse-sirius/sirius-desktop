@@ -213,12 +213,12 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Viewpoint/ownedJavaExtensions"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Viewpoint/ownedMMExtensions"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Viewpoint/ownedFeatureExtensions"/>
-        <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Viewpoint/icon"/>
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Viewpoint/icon"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/Viewpoint/ownedTemplates"/>
-        <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription=""
+        <genFeatures createChild="false" propertyCategory="" propertyDescription=""
             ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Viewpoint/conflicts"/>
-        <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Viewpoint/reuses"/>
-        <genFeatures createChild="false" propertyCategory="Advanced" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Viewpoint/customizes"/>
+        <genFeatures createChild="false" propertyCategory="" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Viewpoint/reuses"/>
+        <genFeatures createChild="false" propertyCategory="" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/Viewpoint/customizes"/>
         <genOperations ecoreOperation="viewpoint.ecore#//description/Viewpoint/initView">
           <genParameters ecoreParameter="viewpoint.ecore#//description/Viewpoint/initView/model"/>
         </genOperations>

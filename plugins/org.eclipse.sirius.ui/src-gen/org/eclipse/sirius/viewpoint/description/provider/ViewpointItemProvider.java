@@ -139,7 +139,7 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider impleme
     protected void addIconPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Viewpoint_icon_feature"),
                 getString("_UI_PropertyDescriptor_description", "_UI_Viewpoint_icon_feature", "_UI_Viewpoint_type"), DescriptionPackage.Literals.VIEWPOINT__ICON, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**
@@ -151,7 +151,7 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider impleme
     protected void addConflictsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_Viewpoint_conflicts_feature"), getString("_UI_PropertyDescriptor_description", "_UI_Viewpoint_conflicts_feature", "_UI_Viewpoint_type"),
-                DescriptionPackage.Literals.VIEWPOINT__CONFLICTS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                DescriptionPackage.Literals.VIEWPOINT__CONFLICTS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -163,7 +163,7 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider impleme
     protected void addReusesPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_Viewpoint_reuses_feature"),
                 getString("_UI_PropertyDescriptor_description", "_UI_Viewpoint_reuses_feature", "_UI_Viewpoint_type"), DescriptionPackage.Literals.VIEWPOINT__REUSES, true, false, false,
-                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -175,7 +175,7 @@ public class ViewpointItemProvider extends DocumentedElementItemProvider impleme
     protected void addCustomizesPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_Viewpoint_customizes_feature"), getString("_UI_PropertyDescriptor_description", "_UI_Viewpoint_customizes_feature", "_UI_Viewpoint_type"),
-                DescriptionPackage.Literals.VIEWPOINT__CUSTOMIZES, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_AdvancedPropertyCategory"), null));
+                DescriptionPackage.Literals.VIEWPOINT__CUSTOMIZES, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
