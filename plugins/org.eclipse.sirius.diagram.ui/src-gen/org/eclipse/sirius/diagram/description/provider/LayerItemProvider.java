@@ -52,7 +52,7 @@ import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemPr
  * @generated
  */
 public class LayerItemProvider extends DocumentedElementItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider,
-        IItemPropertySource {
+IItemPropertySource {
     /**
      * This constructs an instance from a factory and a notifier. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -132,7 +132,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider implements 
     protected void addReusedMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_Layer_reusedMappings_feature"), getString("_UI_PropertyDescriptor_description", "_UI_Layer_reusedMappings_feature", "_UI_Layer_type"),
-                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__REUSED_MAPPINGS, true, false, true, null, getString("_UI_AdvancedPropertyCategory"), null));
+                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__REUSED_MAPPINGS, true, false, true, null, getString("_UI_ImportPropertyCategory"), null));
     }
 
     /**
@@ -156,7 +156,7 @@ public class LayerItemProvider extends DocumentedElementItemProvider implements 
     protected void addReusedToolsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_Layer_reusedTools_feature"), getString("_UI_PropertyDescriptor_description", "_UI_Layer_reusedTools_feature", "_UI_Layer_type"),
-                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__REUSED_TOOLS, true, false, true, null, getString("_UI_AdvancedPropertyCategory"), null));
+                org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.LAYER__REUSED_TOOLS, true, false, true, null, getString("_UI_ImportPropertyCategory"), null));
     }
 
     /**

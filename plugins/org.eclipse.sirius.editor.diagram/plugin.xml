@@ -768,15 +768,15 @@
                id="description.section.layer.ReusedTools"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.description.layer.LayerReusedToolsFilter"
                afterSection="description.section.layer.AllTools"
-                tab="viewpoint.tab.advanced">
+                tab="viewpoint.tab.import">
         <input type="org.eclipse.sirius.diagram.description.Layer"/>
       </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.diagram.editor.properties.sections.description.layer.LayerReusedMappingsPropertySection"
                id="description.section.layer.ReusedMappings"
                filter="org.eclipse.sirius.diagram.editor.properties.filters.description.layer.LayerReusedMappingsFilter"
-               afterSection="description.section.identifiedElement.Label"
-                tab="viewpoint.tab.advanced">
+               afterSection="description.section.layer.AllTools"
+                tab="viewpoint.tab.import">
         <input type="org.eclipse.sirius.diagram.description.Layer"/>
       </propertySection>
   	  <propertySection

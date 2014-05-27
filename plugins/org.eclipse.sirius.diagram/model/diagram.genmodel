@@ -596,11 +596,11 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/Layer/edgeMappings"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/Layer/edgeMappingImports"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/Layer/containerMappings"/>
-        <genFeatures notify="false" createChild="false" propertyCategory="Advanced"
+        <genFeatures notify="false" createChild="false" propertyCategory="Import"
             propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//description/Layer/reusedMappings"/>
         <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference diagram.ecore#//description/Layer/allTools"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/Layer/toolSections"/>
-        <genFeatures notify="false" createChild="false" propertyCategory="Advanced"
+        <genFeatures notify="false" createChild="false" propertyCategory="Import"
             propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//description/Layer/reusedTools"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/Layer/decorationDescriptionsSet"/>
         <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Optional icon for the layer."
