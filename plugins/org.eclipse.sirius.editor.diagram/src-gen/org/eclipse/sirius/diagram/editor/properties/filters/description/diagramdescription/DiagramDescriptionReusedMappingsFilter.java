@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.editor.properties.filters.description.diagram
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
 
 // End of user code specific imports
@@ -37,6 +38,24 @@ public class DiagramDescriptionReusedMappingsFilter extends ViewpointPropertyFil
     }
 
     // Start of user code user methods
+
+    @Override
+    public boolean select(Object arg0) {
+        boolean select = super.select(arg0);
+
+        // Display reused mappings property section only if there are some reused
+        // mappings, this is done for compatibility reasons with old VSMs.
+        // The possibility to add mappings as direct children of a
+        // DiagramDescription has been disabled
+        // Specifier can reuse mappings on layers.
+        // This section will be completely hidden in a future version.
+        if (select && arg0 instanceof org.eclipse.sirius.diagram.description.DiagramDescription) {
+            DiagramDescription desc = (DiagramDescription) arg0;
+            select = !desc.getReusedMappings().isEmpty();
+        }
+
+        return select;
+    }
 
     // End of user code user methods
 
