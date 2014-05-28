@@ -50,15 +50,15 @@ Some tools which apply to the whole table are specified directly inside the _Edi
 
 h3(#line_mappings). Line Mappings
 
-The lines which will appear in a table (and their organization in sub-lines) are defined by the _Line Mapping_ elements inside the _Table Description_ element. A _Table Description_ contains _Line Mappings_ which define which elements will appear as top-level lines of the table, while each _Line Mapping_ can contain sub-mappings which define its own direct sub-lines. If an element (the table or a line mapping) contains several sub-mappings, the element's content will appear in the order of the mappings: first all the instances of the first mapping, then the instances of the second one, etc.
+The lines which will appear in a table (and their organization in sub-lines) are defined by the _Line_ mapping elements inside the _Table Description_ element. A _Table Description_ contains _Line_ mappings which define which elements will appear as top-level lines of the table, while each _Line_ mapping can contain sub-mappings which define its own direct sub-lines. If an element (the table or a line mapping) contains several sub-mappings, the element's content will appear in the order of the mappings: first all the instances of the first mapping, then the instances of the second one, etc.
 
-A _Line Mapping_ is defined by a _Domain Class_ and a _Semantic Candidates Expression_. The _Semantic Candidates Expression_ indicates where to look in the semantic model for elements which should be represented by the mapping. The expression is evaluated in the context of the parent's semantic element (the parent being either the table itself or a parent line). It should return a set of semantic elements. Only those which are instances of the specified _Domain Class_ are retained and actually represented as instances of this mapping. The semantic element thus associated to each line is called the line's _target_ element.
+A _Line_ mapping is defined by a _Domain Class_ and a _Semantic Candidates Expression_. The _Semantic Candidates Expression_ indicates where to look in the semantic model for elements which should be represented by the mapping. The expression is evaluated in the context of the parent's semantic element (the parent being either the table itself or a parent line). It should return a set of semantic elements. Only those which are instances of the specified _Domain Class_ are retained and actually represented as instances of this mapping. The semantic element thus associated to each line is called the line's _target_ element.
 
 You can associate more semantic elements to a line by defining the _Associated Elements Expression_ (in the _Advanced Category_), which is evaluated in the context of the target and may return more semantic elements. Any change in the target element or one of the associated elements will automatically trigger a refresh of the line.
 
 The _Header Label Expression_ (in the _Label_ category) is evaluated in the context of a line's target and should return the text to be shown for the line in the header column (on the left of the table).
 
-A _Line Mapping_ may _Reuse Sub Lines_ (see the _Import_ category), including itself, as sub-mappings. The effect is exactly the same as if the reused mapping(s) were created as children if the parent. However because a mapping can reuse itself or one of its parent mapping, this allows to create table of infinite depth (or at least not bounded a priori). The _Reused in Mappings_ property is the symmetrical of _Reused Sub Lines_: it shows you which line mappings reuse this one as a sub-line.
+A _Line_ mapping may _Reuse Sub Lines_ (see the _Import_ category), including itself, as sub-mappings. The effect is exactly the same as if the reused mapping(s) were created as children if the parent. However because a mapping can reuse itself or one of its parent mapping, this allows to create table of infinite depth (or at least not bounded a priori). The _Reused in Mappings_ property is the symmetrical of _Reused Sub Lines_: it shows you which line mappings reuse this one as a sub-line.
 
 h4(#line_style). Line Style
 
@@ -76,9 +76,9 @@ There are two kinds of tools which can be created inside line mappings (and appl
 
 h3(#feature_column_mapping). Feature Column Mappings
 
-The columns which will appear in an edition table are defined by the _Feature Column Mapping_ elements inside the _Table Description_ element. They are named _Feature Column Mappings_ because they normally represent a property (maybe computed) of the elements which are represented by the table's lines, and also to distinguish them from the kind of columns which appear in "cross tables":#cross_tables. 
+The columns which will appear in an edition table are defined by the _Feature Column_ mapping elements inside the _Table Description_ element. They are named _Feature Column_ mappings because they normally represent a property (maybe computed) of the elements which are represented by the table's lines, and also to distinguish them from the kind of columns which appear in "cross tables":#cross_tables. 
 
-A _Feature Column Mapping_ is defined by its _Feature Name_, which should normally be the name of a valid feature (attribute or reference) of the element which appear in the tables' lines. If a line represents a semantic element _S1_ but you want on some column to show a property of an element reachable from _S1_ instead of _S1_ itself, you can use the _Feature Parent Expression_ (_Advanced_ category), which is evaluated in the context of _S1_ and should return an element _S2_. _S2_ will be considered the _target_ element of the cell at this intersection instead of _S1_.
+A _Feature Column_ mapping is defined by its _Feature Name_, which should normally be the name of a valid feature (attribute or reference) of the element which appear in the tables' lines. If a line represents a semantic element _S1_ but you want on some column to show a property of an element reachable from _S1_ instead of _S1_ itself, you can use the _Feature Parent Expression_ (_Advanced_ category), which is evaluated in the context of _S1_ and should return an element _S2_. _S2_ will be considered the _target_ element of the cell at this intersection instead of _S1_.
 
 You can associate more semantic elements to the mapping using the _Associated elements expression_ in the _Advanced_ category. The expression will be evaluated in the context of the target semantic element of the cell.
 
@@ -104,21 +104,21 @@ Cross tables are specified using a _Cross Table Description_ element, which work
 
 h3(#cross_table_tools). Table Tools
 
-Cross tables can contain the same kinds of tools as edition tables (see "the corresponding section":#table_tools for details). In addition, they can contain _Create Column Tools_, which behave exactly like _Create Line_ tools, except that they apply to "_Element Column Mappings_":#element_column_mapping (see below) and are used to create new columns in the table.
+Cross tables can contain the same kinds of tools as edition tables (see "the corresponding section":#table_tools for details). In addition, they can contain _Create Column Tools_, which behave exactly like _Create Line_ tools, except that they apply to "_Element Column_ mappings":#element_column_mapping (see below) and are used to create new columns in the table.
 
 h3(#element_column_mapping). Element Column Mappings
 
-In cross tables, columns represent elements instead of elements' properties (as is the case for edition tables). The set of columns is defined by one or more _Element Column Mappings_. They are almost identical to "line mappings":#line_mappings, except that:
+In cross tables, columns represent elements instead of elements' properties (as is the case for edition tables). The set of columns is defined by one or more _Element Column_ mappings. They are almost identical to "line mappings":#line_mappings, except that:
 * they can not be nested (there are no "sub-columns" like there are sub-lines), and thus can not "reuse" column mappings either;
 * they can have an _Initial width_ (set in the _Advanced_ category). 
 
-_Element Column Mappings_ can contain a _Create Column Tool_ and a _Delete Column Tool_, which are specified and behave in a similar way than the _Create Line_ and _Delete Line_ "tools for line mappings":#line_tools.
+_Element Column_ mappings can contain a _Create Column Tool_ and a _Delete Column Tool_, which are specified and behave in a similar way than the _Create Line_ and _Delete Line_ "tools for line mappings":#line_tools.
 
 They can also contain style definitions (including conditional style), which apply to all the cells in the column (unless overridden by the intersection mapping). For a given cell, the styles defined on the column mapping overrides the styles which are defined on the line mapping (if any).
 
 h3(#intersection_mapping). Intersection Mappings
 
-The line and element column mappings in a cross table define which lines and columns will be present in the tables, but not the contents of the cells. This is defined by _Intersection Mappings_. The _Line Mapping_ and _Column Mapping_ properties indicate which cells the mapping describes. The _Label Expression_, evaluated in the context of the cell's targets semantic element, should return the text to show in the cell, while the _Can Edit_ expression indicates whether or not the cell's value can be edited by end-users.
+The line and element column mappings in a cross table define which lines and columns will be present in the tables, but not the contents of the cells. This is defined by _Intersection_ mappings. The _Line Mapping_ and _Column Mapping_ properties indicate which cells the mapping describes. The _Label Expression_, evaluated in the context of the cell's targets semantic element, should return the text to show in the cell, while the _Can Edit_ expression indicates whether or not the cell's value can be edited by end-users.
 
 There are two slightly different use cases for intersection mapping, which use different sub-sets of the remaining properties:
 # Intersections which represent a relation between the element on a line and the element on a column. For example, if both lines and columns represented UML classes, this could be the "super-class" reference between a class and those it inherits from;
@@ -132,7 +132,7 @@ The second use case ("element-based intersection") is enabled by setting the _Us
 
 h4(#intersection_mapping_style). Intersection Style
 
-An _Intersection Mapping_ can contain style elements, including conditional styles. If they are present, they override any style set on the corresponding column mapping or line mapping.
+An _Intersection_ mapping can contain style elements, including conditional styles. If they are present, they override any style set on the corresponding column mapping or line mapping.
 
 h4(#intersection_mapping_tools). Intersection Tools
 

@@ -75,7 +75,7 @@ table(table table-striped table-condensed).
 |!images/styles/Graphical_Vocabulary_Node.png!|!images/styles/Graphical_Vocabulary_Container.png!|!images/styles/Graphical_Vocabulary_List_Container.png!|!images/styles/Graphical_Vocabulary_Bordered_Node.png!|
 |_. Nodes|_. Containers|_. List Containers|_. BorderedNodes|
 
-p(#mappings). *Mappings.* All these graphical elements are described using the concept of a _mapping_ (for example a _Node Mapping_ to describe a kind of nodes). A mapping is an element defined inside the VSM which identifies a sub-set of the elements in the semantic model and associates a graphical representation to them: it _maps_ semantic elements onto some graphical notation. At runtime, each active mapping  (i.e. defined in a layer which is enabled) will produce zero or more graphical elements on the diagram, depending on how many semantic elements currently match the mapping's definition. In the default functioning mode, whenever the semantic model changes Sirius will automatically re-compute which graphical elements should appear on the diagram according to the active mappings, and create or remove the necessary elements.
+p(#mappings). *Mappings.* All these graphical elements are described using the concept of a _mapping_ (for example a _Node_ mapping to describe a kind of nodes). A mapping is an element defined inside the VSM which identifies a sub-set of the elements in the semantic model and associates a graphical representation to them: it _maps_ semantic elements onto some graphical notation. At runtime, each active mapping  (i.e. defined in a layer which is enabled) will produce zero or more graphical elements on the diagram, depending on how many semantic elements currently match the mapping's definition. In the default functioning mode, whenever the semantic model changes Sirius will automatically re-compute which graphical elements should appear on the diagram according to the active mappings, and create or remove the necessary elements.
 
 You can think of the set of mappings defined in a diagram as a description of how to _project_ the concepts in your semantic model onto the graphical language provided by Sirius (nodes, containers, edges...) according to the _viewpoint_ you want the diagram to represent.
 
@@ -107,15 +107,15 @@ This order of evaluation should be kept in mind when specifying diagrams. In par
 
 h3(#nodes). Nodes
 
-A _Node Mapping_ is used to represent model elements graphically as atomic elements, i.e. elements which can not contain other elements. _Node Mappings_ can appear directly inside a layer description, in which case the node will appear directly on the diagram, or inside another element (for example a container). A node mapping which is defined inside another element can be either a _sub-node mapping_, in which case it will appear inside its parent (which must be a container), or a _bordered node mapping_, in which case it will appear on the border of its parent (which may be a container or a node, including another bordered node). Bordered node mappings are useful to represent ports.
+A _Node_ mapping is used to represent model elements graphically as atomic elements, i.e. elements which can not contain other elements. _Node_ mappings can appear directly inside a layer description, in which case the node will appear directly on the diagram, or inside another element (for example a container). A node mapping which is defined inside another element can be either a _sub-node mapping_, in which case it will appear inside its parent (which must be a container), or a _bordered node mapping_, in which case it will appear on the border of its parent (which may be a container or a node, including another bordered node). Bordered node mappings are useful to represent ports.
 
 table(table table-striped table-condensed).
 |!images/styles/Graphical_Vocabulary_Node.png!|!images/styles/Graphical_Vocabulary_Container.png!|!images/styles/Graphical_Vocabulary_List_Container.png!|!images/styles/Graphical_Vocabulary_Bordered_Node.png!|
 |_. Nodes on a diagram|_. Nodes in container|_. Nodes in containers displayed as lists|_. Nodes on borders|
 
-The definition of a node mapping follows the general rules described "above":#mappings to determine the semantic elements for which a node should be created. All the properties available in the _Behavior_ category of the _Node Mapping_ configuration allow you to see all the various tools, defined elsewhere in the VSM, which apply to this mapping.
+The definition of a node mapping follows the general rules described "above":#mappings to determine the semantic elements for which a node should be created. All the properties available in the _Behavior_ category of the _Node_ mapping configuration allow you to see all the various tools, defined elsewhere in the VSM, which apply to this mapping.
 
-A node can not contain sub-nodes, but it can have _bordered nodes_, which are defined inside the node mapping (_New Diagram Element > Bordered Node_). You can also _reuse_ node mappings defined elsewhere in the VSM using the _Reused Bordered Node Mappings_ property in the _Import_ category. The effect at runtime is the same as if you had created an equivalent _Bordered Node Mapping_ inside the node mapping.
+A node can not contain sub-nodes, but it can have _bordered nodes_, which are defined inside the node mapping (_New Diagram Element > Bordered Node_). You can also _reuse_ node mappings defined elsewhere in the VSM using the _Reused Bordered Node Mappings_ property in the _Import_ category. The effect at runtime is the same as if you had created an equivalent _Bordered Node_ mapping inside the node mapping.
 
 <div style="display: none">
 *TODO* Bordered Node Import
@@ -168,11 +168,11 @@ By default, your node creation tools will be available on all the graphical elem
 
 h3(#containers). Containers
 
-A _Container Mapping_ is used to represent model elements graphically as containers, which can contain sub-elements (including other containers, recursively). A container can also have _bordered nodes_, which are like normal nodes but appear on the border of the container, for example to represent ports. _Container Mappings_ can appear directly inside a layer description, in which case the container will appear directly on the diagram, or inside another container mapping. 
+A _Container_ mapping is used to represent model elements graphically as containers, which can contain sub-elements (including other containers, recursively). A container can also have _bordered nodes_, which are like normal nodes but appear on the border of the container, for example to represent ports. _Container_  mappings can appear directly inside a layer description, in which case the container will appear directly on the diagram, or inside another container mapping. 
 
 !images/styles/Containers_on_diagram_or_another_container.png!
 
-The definition of a container mapping follows the general rules described "above":#mappings to determine the semantic elements for which a container should be created. All the properties available in the _Behavior_ category of the _Container Mapping_ configuration allow you to see all the various tools, defined elsewhere in the VSM, which apply to this mapping.
+The definition of a container mapping follows the general rules described "above":#mappings to determine the semantic elements for which a container should be created. All the properties available in the _Behavior_ category of the _Container_ mapping configuration allow you to see all the various tools, defined elsewhere in the VSM, which apply to this mapping.
 
 A container can contain _sub-containers_, _sub-nodes_, and _bordered nodes_, all of which are defined inside the container mapping (_New Diagram Element > Container_, _Sub-node_ and _Bordered Node_, respectively). You can also _reuse_ node and container mappings defined elsewhere in the VSM in any of these three roles using the corresponding _Reused X Mappings_ properties in the _Import_ category. The effect at runtime is the same as if you had created an equivalent mappings inside the container mapping.
 
@@ -211,7 +211,7 @@ See the "tools":#tools section for a general presentation of how tools are defin
 
 By default, your container creation tools will be available on all the graphical elements which can contain an instance of the _Container Mappings_ you specified in the tool, and users will see a "forbidden" sign if they try to apply the tool on an incompatible type of element. You can specify a _Precondition_ to forbid the application of the tool on some of the elements where it would normally be allowed. The precondition is evaluated in the context of the _view element_ on which the user has put the mouse. If it returns a false value, the tool's application will be forbidden. Symmetrically, you can specify _Extra Mappings_ (_Advanced_ section) on which the tool should be applicable, even though these mapping can not contain containers of the type you will create. In this case, the container created by the tool will actually appear elsewhere on the diagram, but it can often help usability to allow users to click on related elements.
 
-*Container Drop Description* You can associate a _Container Drop Description_ to your container mappings to react to drag'n'drop operations into the container. The _Drag Source_ property indicates if you want to react to graphical elements from a diagram, to semantic model elements dragged from another Eclipse view (for example from the _Model Explorer_), or both. The _Containers_ property indicates for which drop kind of container mappings this tool applies. The _Mappings_ property indicates what kinds of graphical elements can be dropped into the specified containers, when the _Drag Source_ is _Diagram_ or _Both_. The body of the tool (the "model operations":../general/Model_Operations.html ) specify how to react when an element is dropped into a container.
+*Container Drop Description* You can associate a _Container Drop_ description to your container mappings to react to drag'n'drop operations into the container. The _Drag Source_ property indicates if you want to react to graphical elements from a diagram, to semantic model elements dragged from another Eclipse view (for example from the _Model Explorer_), or both. The _Containers_ property indicates for which drop kind of container mappings this tool applies. The _Mappings_ property indicates what kinds of graphical elements can be dropped into the specified containers, when the _Drag Source_ is _Diagram_ or _Both_. The body of the tool (the "model operations":../general/Model_Operations.html ) specify how to react when an element is dropped into a container.
 
 __WARNING__: if you choose _Model_ or _Both_ as source, your tool must be prepared to accept any type of source element which can be present in the _Model Explorer_ view, including elements which have no relation to the source mappings you specified for the tool. Use a precondition to check the nature of the element being dragged (available through the @element@ variable) to disable the tool source elements your tool does not support.
 
@@ -420,7 +420,7 @@ h3(#tools_specification). Tools Specification
 
 All tools are specified in roughly the same way. Like most elements inside the VSM, they have an _Id_ and a _Label_. For elements which will appear to the end-user (in the palette or in menus), make sure the _Label_ is meaningful to them.
 
-*Tools Applicability*. Most tools apply to a set of _Mappings_, sometimes only on certain kinds of mappings (e.g. _Container Drop Description_ only makes sense for container mappings). For tools which create new elements, the _Mappings_ correspond to the kinds of elements the tool will create. For other tools, it corresponds to the kinds of element the tool can be applied to.
+*Tools Applicability*. Most tools apply to a set of _Mappings_, sometimes only on certain kinds of mappings (e.g. _Container Drop_ description only makes sense for container mappings). For tools which create new elements, the _Mappings_ correspond to the kinds of elements the tool will create. For other tools, it corresponds to the kinds of element the tool can be applied to.
 
 Many tools also support the notion of _Extra Mappings_. If these are specified, they indicate other kinds of elements than the primary ones on which the tool can be applied.
 
@@ -493,7 +493,7 @@ For example, you can display a class with a stereotype, @<<utility>> Math@, and 
 
 Inside a _Direct Edit Label_ tool, you _must_ specify an _Edit Mask Variable_ element. The mask is used to parse the new label's value as entered by the user, and to select part of this label as input variables to the editing action's body. The mask can contain substrings of the form <code>{N}</code> where @N@ is a number. The parts of the new label's value which corresponds to these substring will be available as variables name @argN@ (strings) in the body of the direct edit action. The default mask is <code>{0}</code>, which means the whole text entered by the user will be available through the variable @arg0@.
 
-_Note:_ Edges can have up to three different labels (one in the center and one at each extremity), but currently if a _Direct Edit_ tool is associated to an _Edge Mapping_, only the center label (if it exists) can be edited. This restriction will probably be lifted in future versions.
+_Note:_ Edges can have up to three different labels (one in the center and one at each extremity), but currently if a _Direct Edit_ tool is associated to an _Edge_ mapping, only the center label (if it exists) can be edited. This restriction will probably be lifted in future versions.
 
 h4(#selection_wizard). Selection Wizard Description
 
@@ -523,13 +523,13 @@ The _Pane-Based Selection Wizard_ is very similar to the "Selection Wizard Descr
 
 h4(#representation_creation). Representation Creation
 
-Each dialect supported by Sirius defines a tool which can be used to create a new representation using this dialect. They are (using the default supported dialects): _Diagram Creation Description_, _Table Creation Description_ and _Tree Creation Description_.
+Each dialect supported by Sirius defines a tool which can be used to create a new representation using this dialect. They are (using the default supported dialects): _Diagram Creation_ description, _Table Creation_ description and _Tree Creation_ description.
 
 These tools (one for each kind of representation supported by Sirius) can be used to create (and open) a new representation from an existing diagram element. They will be available to end-users in the _Navigate_ context menu on compatible diagram elements. To configure the tool, simply select in the _Mappings_ property which kinds of elements the tool should appear on (you can be more precise using the _Precondition_ expression if necessary), and select the representation which should be created using the _Representation Description_ property (in practice, one of _Diagram Description_, _Table Description_ or _Tree Description_ depending on the tool). Normally, the new representation will be created on the semantic element represented by the diagram element on which the user invoked the tool. Sometimes you want the tool to appear on one element, but create a representation on another one. In this case, use the _Browse expression_ (in the _Advanced_ category) to navigate from the element selected to the one one which the new representation should actually be created. The _Title Expression_ (_Advanced_ category) can be used to set the title of the newly created representation. Finally, any operation you specify in the body of the tool will be executed when the tool is invoked; you can use it to initialize the content of the model represented. 
 
 h4(#representation_navigation). Representation Navigation
 
-Each dialect supported by Sirius defines a tool which can be used to navigate to existing representation of this dialect. They are (using the default supported dialects): _Diagram Navigation Description_, _Table Navigation Description_ and _Tree Navigation Description_.
+Each dialect supported by Sirius defines a tool which can be used to navigate to existing representation of this dialect. They are (using the default supported dialects): _Diagram Navigation_ description, _Table Navigation_ description and _Tree Navigation_ description.
 
 These tools are very similar to the "representation creation tools":#representation_creation. The only differences is that they allow users to navigate to existing representation instead of creating new ones. If such a tool exists, the _Navigate_ context menu on an element will contains an entry for each corresponding representation which already exists on the element selected (or reachable from the selected element using the _Browse expression_). You can specify a _Navigation name expression_ (_Advanced_ category) to be used in the menu entry instead of using the title of the existing representation. This can be useful to make it more explicit what the relationship is between the current element and the target tree.
 
@@ -559,7 +559,7 @@ The _External Java Action_ tool simply creates a menu entry in the context menu 
 
 h4(#request_description). Request Description
 
-This tool is for advanced uses only. It requires understanding and extending GMF, the graphical framework used by Sirius to display diagrams. A _Request Description_ tool will contribute an item in the palette, and when invoked on a graphical element it will send a GMF request to the corresponding edit part. The type of the request to send is specified as a fixed string in the _Type_ property. The target edit part should have an edit policy capable of understanding and reacting to the request.
+This tool is for advanced uses only. It requires understanding and extending GMF, the graphical framework used by Sirius to display diagrams. A _Request_ description tool will contribute an item in the palette, and when invoked on a graphical element it will send a GMF request to the corresponding edit part. The type of the request to send is specified as a fixed string in the _Type_ property. The target edit part should have an edit policy capable of understanding and reacting to the request.
 
 <div style="display: none">
 h4(#behavior_tool). Behavior Tool
