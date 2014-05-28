@@ -26,7 +26,7 @@
       Once you have a basic representation defined, even if it is just a skeleton with no behavior, start to test it and refine the definition. In most cases, it is possible to test your VSMs dynamically, with no need to compile or deploy anything.
     </description>
     <subitem label="In the same workspace in which you are defining your VSM, create a Modeling project with a sample domain model." />
-    <subitem label="On the Modeling project, enable the Sirius which you are currently specifying." />
+    <subitem label="On the Modeling project, enable the Viewpoint which you are currently specifying." />
     <subitem label="Create an instance of the representation your are developing." />
     <subitem label="Keep both the representation and the VSM opened. When you change and save your VSM, the representation will automatically be updated to take the new, improved definition into account." />
     <subitem label="Continue to develop your representation(s) interactively and interactively until you are satisfied. "/> 
