@@ -41,6 +41,20 @@
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=435204">bug #435204</a> for the details).
 			</li>
 		</ul>
+		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
+		<ul>
+			<li>
+				<em>Node</em>, 
+				<em>Container</em> and 
+				<em>Edge</em> mappings can not be created as direct children of a 
+				<em>Diagram Description</em> anymore, the first level mappings must be created as direct children of a 
+				<em>Layer</em>.
+			</li>
+			<li>Mapping (resp. tools) can not be added as reused mapping (resp. tools) of a 
+				<em>Diagram Description</em>, they must be added to the reused mappings (resp. tools) of a 
+				<em>Layer</em>. The corresponding property sections will be shown only for old VSM with reused elements.
+			</li>
+		</ul>
 		<h3 id="APIChanges">API Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius">Changes in 
 			<code>org.eclipse.sirius</code>
@@ -74,7 +88,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius1.0M7">Changes in Sirius 1.0.0M7 (from Sirius 1.0M6)</h2>
-		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
 		<ul>
 			<li>The default value of the 
 				<em>Semantic Candidates Expression</em> for Tree Items has changed from an empty string (meaning &#171;any compatible element in the session&#187;) to 
@@ -1484,7 +1498,7 @@ void addSelectedView(DView view) throws IllegalArgumentException;
 void removeSelectedView(DView view);
 
 </pre>
-		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges3">Specifier-Visible Changes</h3>
 		<p>New variables are available for 
 			<code>sizeComputationExpression</code> to compute the size of edges on 
 			<code>EdgeStyleDescription</code> and 

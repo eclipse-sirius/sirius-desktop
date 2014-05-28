@@ -10,6 +10,11 @@ h3. User-Visible Changes
 
 * The ability to print table representations has been disabled for the 1.0.0 release due to an external dependency issue (see "bug #435204":https://bugs.eclipse.org/bugs/show_bug.cgi?id=435204 for the details).
 
+h3. Specifier-Visible Changes
+
+* _Node_, _Container_ and _Edge_ mappings can not be created as direct children of a _Diagram Description_ anymore, the first level mappings must be created as direct children of a _Layer_.
+* Mapping (resp. tools) can not be added as reused mapping (resp. tools) of a _Diagram Description_, they must be added to the reused mappings (resp. tools) of a _Layer_. The corresponding property sections will be shown only for old VSM with reused elements.
+
 h3. API Changes
 
 h4. Changes in @org.eclipse.sirius@
