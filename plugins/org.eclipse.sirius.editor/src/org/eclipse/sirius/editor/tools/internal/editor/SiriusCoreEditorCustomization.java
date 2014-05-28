@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2014 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,22 +8,21 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.editor.tools.internal.editor;
+package org.eclipse.sirius.editor.tools.internal.editor;
 
 import java.util.LinkedHashSet;
 
 import org.eclipse.emf.ecore.EModelElement;
-import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.editor.tools.api.editor.EditorCustomization;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * We deactivate several menu creations. We shouldn't have tool section or
- * mappings out of a layer.
+ * We deactivate the SetEObject model operation.
  * 
- * @author fbarbin
+ * @author mporhel
  * 
  */
-public class SiriusDiagramEditorCustomization implements EditorCustomization {
+public class SiriusCoreEditorCustomization implements EditorCustomization {
 
     // Features referenced in this list will not have corresponding new child
     // creation menus.
@@ -32,15 +31,9 @@ public class SiriusDiagramEditorCustomization implements EditorCustomization {
     /**
      * Create the customization.
      */
-    public SiriusDiagramEditorCustomization() {
+    public SiriusCoreEditorCustomization() {
         deprecation = new LinkedHashSet<EModelElement>();
-        deprecation.add(DescriptionPackage.eINSTANCE.getDiagramDescription_NodeMappings());
-        deprecation.add(DescriptionPackage.eINSTANCE.getDiagramDescription_EdgeMappings());
-        deprecation.add(DescriptionPackage.eINSTANCE.getDiagramDescription_ContainerMappings());
-        deprecation.add(DescriptionPackage.eINSTANCE.getDiagramDescription_EdgeMappingImports());
-        deprecation.add(DescriptionPackage.eINSTANCE.getDiagramDescription_ToolSection());
-        deprecation.add(DescriptionPackage.eINSTANCE.getDiagramDescription_ReusedTools());
-        deprecation.add(DescriptionPackage.eINSTANCE.getDiagramDescription_ReusedMappings());
+        deprecation.add(ToolPackage.eINSTANCE.getSetObject());
     }
 
     /**
@@ -56,5 +49,4 @@ public class SiriusDiagramEditorCustomization implements EditorCustomization {
     public boolean showAllTab() {
         return false;
     }
-
 }

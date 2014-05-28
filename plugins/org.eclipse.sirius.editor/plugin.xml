@@ -1294,5 +1294,11 @@
        </perspective>
     </extension>
     
+  <extension
+        point="org.eclipse.sirius.editor.editorCustomization">
+     <customizer
+           class="org.eclipse.sirius.editor.tools.internal.editor.SiriusCoreEditorCustomization"></customizer>
+  </extension>
+    
  <!-- End of user code plugin.xml end specifics  -->
 </plugin>
