@@ -25,13 +25,6 @@
       <cheatsheet
             category="org.eclipse.sirius.doc.cheatSheets"
             composite="false"
-            contentFile="doc/specifier/cheatsheets/CreatingDomainModel.xml"
-            id="org.eclipse.sirius.doc.cheatsheet.domainModelWizard"
-            name="Creating your own domain model">
-      </cheatsheet>
-      <cheatsheet
-            category="org.eclipse.sirius.doc.cheatSheets"
-            composite="false"
             contentFile="doc/specifier/cheatsheets/CreatingViewpointSpecification.xml"
             id="org.eclipse.sirius.doc.cheatsheet.createVSP"
             name="Creating a viewpoint specification project">
