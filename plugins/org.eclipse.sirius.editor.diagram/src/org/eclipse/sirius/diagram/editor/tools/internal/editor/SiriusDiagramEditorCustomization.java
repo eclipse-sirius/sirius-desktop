@@ -27,7 +27,8 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  */
 public class SiriusDiagramEditorCustomization implements EditorCustomization {
 
-    // Features referenced in this list will not have corresponding new child creation menus.
+    // Features referenced in this list will not have corresponding new child
+    // creation menus.
     private final LinkedHashSet<EModelElement> deprecation;
 
     /**
@@ -40,7 +41,6 @@ public class SiriusDiagramEditorCustomization implements EditorCustomization {
         deprecation.add(DescriptionPackage.eINSTANCE.getDiagramDescription_ContainerMappings());
         deprecation.add(DescriptionPackage.eINSTANCE.getDiagramDescription_EdgeMappingImports());
         deprecation.add(DescriptionPackage.eINSTANCE.getDiagramDescription_ToolSection());
-        deprecation.add(DescriptionPackage.eINSTANCE.getDiagramDescription_DiagramInitialisation());
         deprecation.add(DescriptionPackage.eINSTANCE.getDiagramDescription_ReusedTools());
         deprecation.add(DescriptionPackage.eINSTANCE.getDiagramDescription_ReusedMappings());
         deprecation.add(StylePackage.eINSTANCE.getDotDescription());
