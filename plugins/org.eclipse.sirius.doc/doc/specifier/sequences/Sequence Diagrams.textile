@@ -178,7 +178,7 @@ We want to represent on a sequence diagram four different elements and then asso
 
   !images/mappings.png!
 
-h3. Instance Role Mapping
+h3. Instance Role
 
 Firstly, create the instance role mapping. It graphically corresponds to the box at the top of the lifeline.
 
@@ -194,7 +194,7 @@ Don't forget to create a new Style for the instance role mapping.
 
  !images/instance_role_mapping_style.png!
  
-h3. Execution Mappings
+h3. Executions
 
 Execution mappings are used when you have an element which is composed by a start, a duration and a finish element. 
 
@@ -230,7 +230,7 @@ For both execution mappings, don't forget to create a New Style:
 
   !images/execution_mapping_style.png!
 
-h3. Basic Message Mapping
+h3. Basic Messages
 
 Now, we will define the basic message mapping:
 
@@ -261,7 +261,7 @@ Set the mandatory properties:
 
   !images/basic_message_mapping_visual3.png!
 
-h4. Lost and Found messages
+h4. Lost and Found Messages
 
 Standard node mappings, direct children of a layer of the current sequence diagram description, can be used to represent the unknown message end. Lost and found messages should be created using a generic tool.
 

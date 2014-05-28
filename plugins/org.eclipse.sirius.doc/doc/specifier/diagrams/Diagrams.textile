@@ -162,7 +162,7 @@ h4(#node_tools). Node Tools
 
 See the "tools":#tools section for a general presentation of how tools are defined. This section only presents tools which are specific to nodes.
 
-*Node Creation.* The only type of tool which is really specific to node mappings is the _Node Creation Tool_, used to create new nodes. These work like all the other creation tools. You simply specify the _Node Mappings_ that this tool can create and specify the behavior of the tool inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
+*Node Creation.* The only type of tool which is really specific to node mappings is the _Node Creation_ tool, used to create new nodes. These work like all the other creation tools. You simply specify the _Node Mappings_ that this tool can create and specify the behavior of the tool inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
 
 By default, your node creation tools will be available on all the graphical elements which can contain an instance of the _Node Mappings_ you specified in the tool, and users will see a "forbidden" sign if they try to apply the tool on an incompatible type of element. You can specify a _Precondition_ to forbid the application of the tool on some of the elements where it would normally be allowed. The precondition is evaluated in the context of the _view element_ on which the user has put the mouse. If it returns a false value, the tool's application will be forbidden. Symmetrically, you can specify _Extra Mappings_ (_Advanced_ section) on which the tool should be applicable, even though these mapping can not contain nodes of the type you will create. In this case, the node created by the tool will actually appear elsewhere on the diagram, but it can often help usability to allow users to click on related elements.
 
@@ -211,7 +211,7 @@ See the "tools":#tools section for a general presentation of how tools are defin
 
 By default, your container creation tools will be available on all the graphical elements which can contain an instance of the _Container Mappings_ you specified in the tool, and users will see a "forbidden" sign if they try to apply the tool on an incompatible type of element. You can specify a _Precondition_ to forbid the application of the tool on some of the elements where it would normally be allowed. The precondition is evaluated in the context of the _view element_ on which the user has put the mouse. If it returns a false value, the tool's application will be forbidden. Symmetrically, you can specify _Extra Mappings_ (_Advanced_ section) on which the tool should be applicable, even though these mapping can not contain containers of the type you will create. In this case, the container created by the tool will actually appear elsewhere on the diagram, but it can often help usability to allow users to click on related elements.
 
-*Container Drop Description* You can associate a _Container Drop_ description to your container mappings to react to drag'n'drop operations into the container. The _Drag Source_ property indicates if you want to react to graphical elements from a diagram, to semantic model elements dragged from another Eclipse view (for example from the _Model Explorer_), or both. The _Containers_ property indicates for which drop kind of container mappings this tool applies. The _Mappings_ property indicates what kinds of graphical elements can be dropped into the specified containers, when the _Drag Source_ is _Diagram_ or _Both_. The body of the tool (the "model operations":../general/Model_Operations.html ) specify how to react when an element is dropped into a container.
+*Container Drop* You can associate a _Container Drop_ description to your container mappings to react to drag'n'drop operations into the container. The _Drag Source_ property indicates if you want to react to graphical elements from a diagram, to semantic model elements dragged from another Eclipse view (for example from the _Model Explorer_), or both. The _Containers_ property indicates for which drop kind of container mappings this tool applies. The _Mappings_ property indicates what kinds of graphical elements can be dropped into the specified containers, when the _Drag Source_ is _Diagram_ or _Both_. The body of the tool (the "model operations":../general/Model_Operations.html ) specify how to react when an element is dropped into a container.
 
 __WARNING__: if you choose _Model_ or _Both_ as source, your tool must be prepared to accept any type of source element which can be present in the _Model Explorer_ view, including elements which have no relation to the source mappings you specified for the tool. Use a precondition to check the nature of the element being dragged (available through the @element@ variable) to disable the tool source elements your tool does not support.
 
@@ -298,7 +298,7 @@ h4(#edge_tools). Edge Tools
 
 See the "tools":#tools section for a general presentation of how tools are defined. This section only presents tools which are specific to edges.
 
-*Edge Creation Tool.* This tool is used to create new edges. They work like all the other creation tools. You simply specify the _Edge Mappings_ that this tool can create and specify the behavior of the tool inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
+*Edge Creation.* This tool is used to create new edges. They work like all the other creation tools. You simply specify the _Edge Mappings_ that this tool can create and specify the behavior of the tool inside the _Begin_ element using all the standard "model operations":../general/Model_Operations.html.
 
 Because edges have two ends, their creation requires users to specify both the source and target elements. By default, the possible sources are all the instances of one of the _Source Mappings_ specified for this kind of edge (and similarly for the possible targets). You can restrict this using the _Connection Start Precondition_ (resp. _Connection Complete Precondition_) to forbid the use of the tool from (resp. to) some element. 
 
@@ -458,15 +458,15 @@ h4(#edge_creation). Edge Creation
 
 See the description in the "edge-specific tools section":#edge_tools.
 
-h4(#container_drop). Container Drop Description
+h4(#container_drop). Container Drop
 
 See the description in the "container-specific tools section":#container_tools.
 
-h4(#reconnect_edge). Reconnect Edge Description
+h4(#reconnect_edge). Reconnect Edge
 
 See the description in the "edge-specific tools section":#edge_tools.
 
-h4(#paste_description). Paste Description
+h4(#paste_description). Paste
 
 The paste tool aims to define operations to paste the given copied semantic element, accessible through the _copiedElement_ variable, into the semantic paste receiver, accessible through the _container_ variable. The _copiedView_ and _containerView_ variables reference the corresponding graphical element. The _Containers_ property indicates the mappings to which this tool apply.
 
@@ -478,11 +478,11 @@ Its semantic target is the copied semantic element. If the copied element was a 
 *TODO* Description not clear at all.
 </div>
 
-h4(#delete_tool). Delete Element Description
+h4(#delete_tool). Delete Element
 
-If you do not associate a _Delete Tool_ to a mapping, the default delete behavior when the user deletes a graphical element is to remove the target semantic element and all the associated semantic elements from the semantic model. If you want a different behavior or if you want to forbid the deletion of some elements, you must set an explicit _Delete Tool_. Delete tools are invoked when the user select the _Delete from model_ action (from the context menu, from the tab-bar or using the _Delete_ key). The _element_ variable will be set to the main semantic target element being deleted (excluding any associated semantic elements) while the _elementView_ and _containerView_ tell you which graphical view is being deleted and in which context it is.
+If you do not associate a _Delete_ tool to a mapping, the default delete behavior when the user deletes a graphical element is to remove the target semantic element and all the associated semantic elements from the semantic model. If you want a different behavior or if you want to forbid the deletion of some elements, you must set an explicit _Delete_ tool. Delete tools are invoked when the user select the _Delete from model_ action (from the context menu, from the tab-bar or using the _Delete_ key). The _element_ variable will be set to the main semantic target element being deleted (excluding any associated semantic elements) while the _elementView_ and _containerView_ tell you which graphical view is being deleted and in which context it is.
 
-If you want to completely disable deletion for some elements, you can either create a _Delete Tool_ which does nothing for these elements or, if possible, setup the tool's _Precondition_ to return _false_ for these elements. Setting a precondition is usually preferred as it will mark the _Delete_ action as disabled in the UI (tab-bar and context menu) while a tool which simply does nothing can still be invoked by users, but with no effect. Note however that the _Precondition_ will be evaluated each time the user selects and element to decide whether or not the delete action should be enabled in the UI. A precondition which is complex to evaluate can have a negative impact on the perceived performance of the modeler.
+If you want to completely disable deletion for some elements, you can either create a _Delete_ tool which does nothing for these elements or, if possible, setup the tool's _Precondition_ to return _false_ for these elements. Setting a precondition is usually preferred as it will mark the _Delete_ action as disabled in the UI (tab-bar and context menu) while a tool which simply does nothing can still be invoked by users, but with no effect. Note however that the _Precondition_ will be evaluated each time the user selects and element to decide whether or not the delete action should be enabled in the UI. A precondition which is complex to evaluate can have a negative impact on the perceived performance of the modeler.
 
 h4(#direct_edit). Direct Edit Label
 
@@ -495,7 +495,7 @@ Inside a _Direct Edit Label_ tool, you _must_ specify an _Edit Mask Variable_ el
 
 _Note:_ Edges can have up to three different labels (one in the center and one at each extremity), but currently if a _Direct Edit_ tool is associated to an _Edge_ mapping, only the center label (if it exists) can be edited. This restriction will probably be lifted in future versions.
 
-h4(#selection_wizard). Selection Wizard Description
+h4(#selection_wizard). Selection Wizard
 
 This tool can be used to open a wizard dialog asking the user to select one or several model elements. The body of the tool is then executed in the context of the element selected by the user.
 
@@ -511,9 +511,9 @@ The _Candidates Expression_ should return a list of elements from which the user
 
 !images/styles/Selection_Tool.png!
 
-h4(#pane_based_selection_wizard). Pane-Based Selection Wizard Description
+h4(#pane_based_selection_wizard). Pane-Based Selection Wizard
 
-The _Pane-Based Selection Wizard_ is very similar to the "Selection Wizard Description":#selection_wizard. It differs only in the presentation of the selection window. The pane-based wizard offers two panels: on the left are all the candidates, which corresponds to the contents of the basic _Selection Wizard_. On the right is the current selection. The user has buttons to add or remove candidates from the left panel into the right one. The _Pre Selected Candidates Expression_ can be used to define the initial content of the right-side panel.
+The _Pane-Based Selection Wizard_ is very similar to the "Selection Wizard":#selection_wizard. It differs only in the presentation of the selection window. The pane-based wizard offers two panels: on the left are all the candidates, which corresponds to the contents of the basic _Selection Wizard_. On the right is the current selection. The user has buttons to add or remove candidates from the left panel into the right one. The _Pre Selected Candidates Expression_ can be used to define the initial content of the right-side panel.
 
 <div style="display: none">
 *TODO* What is the context where the tool's body is executed if several elements are selected?
@@ -533,7 +533,7 @@ Each dialect supported by Sirius defines a tool which can be used to navigate to
 
 These tools are very similar to the "representation creation tools":#representation_creation. The only differences is that they allow users to navigate to existing representation instead of creating new ones. If such a tool exists, the _Navigate_ context menu on an element will contains an entry for each corresponding representation which already exists on the element selected (or reachable from the selected element using the _Browse expression_). You can specify a _Navigation name expression_ (_Advanced_ category) to be used in the menu entry instead of using the title of the existing representation. This can be useful to make it more explicit what the relationship is between the current element and the target tree.
 
-h4(#double_click_tool). Double-Click Tool
+h4(#double_click_tool). Double-Click
 
 This tool is used to trigger operations when the user double-clicks on an element. The _Mappings_ property indicate for what kinds of element this tool is applicable.  
 
@@ -557,7 +557,7 @@ h4(#external_java_action). External Java Action
 
 The _External Java Action_ tool simply creates a menu entry in the context menu which directly invokes any "External Java Action":../general/Model_Operations.html#external_java_action you can define.
 
-h4(#request_description). Request Description
+h4(#request_description). Request
 
 This tool is for advanced uses only. It requires understanding and extending GMF, the graphical framework used by Sirius to display diagrams. A _Request_ description tool will contribute an item in the palette, and when invoked on a graphical element it will send a GMF request to the corresponding edit part. The type of the request to send is specified as a fixed string in the _Type_ property. The target edit part should have an edit policy capable of understanding and reacting to the request.
 

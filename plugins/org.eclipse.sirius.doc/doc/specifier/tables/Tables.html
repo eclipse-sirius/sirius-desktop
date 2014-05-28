@@ -162,14 +162,14 @@
 		</ul>
 		<h3 id="line_mappings">Line Mappings</h3>
 		<p>The lines which will appear in a table (and their organization in sub-lines) are defined by the 
-			<em>Line Mapping</em> elements inside the 
+			<em>Line</em> mapping elements inside the 
 			<em>Table Description</em> element. A 
 			<em>Table Description</em> contains 
-			<em>Line Mappings</em> which define which elements will appear as top-level lines of the table, while each 
-			<em>Line Mapping</em> can contain sub-mappings which define its own direct sub-lines. If an element (the table or a line mapping) contains several sub-mappings, the element&#8217;s content will appear in the order of the mappings: first all the instances of the first mapping, then the instances of the second one, etc.
+			<em>Line</em> mappings which define which elements will appear as top-level lines of the table, while each 
+			<em>Line</em> mapping can contain sub-mappings which define its own direct sub-lines. If an element (the table or a line mapping) contains several sub-mappings, the element&#8217;s content will appear in the order of the mappings: first all the instances of the first mapping, then the instances of the second one, etc.
 		</p>
 		<p>A 
-			<em>Line Mapping</em> is defined by a 
+			<em>Line</em> mapping is defined by a 
 			<em>Domain Class</em> and a 
 			<em>Semantic Candidates Expression</em>. The 
 			<em>Semantic Candidates Expression</em> indicates where to look in the semantic model for elements which should be represented by the mapping. The expression is evaluated in the context of the parent&#8217;s semantic element (the parent being either the table itself or a parent line). It should return a set of semantic elements. Only those which are instances of the specified 
@@ -185,7 +185,7 @@
 			<em>Label</em> category) is evaluated in the context of a line&#8217;s target and should return the text to be shown for the line in the header column (on the left of the table).
 		</p>
 		<p>A 
-			<em>Line Mapping</em> may 
+			<em>Line</em> mapping may 
 			<em>Reuse Sub Lines</em> (see the 
 			<em>Import</em> category), including itself, as sub-mappings. The effect is exactly the same as if the reused mapping(s) were created as children if the parent. However because a mapping can reuse itself or one of its parent mapping, this allows to create table of infinite depth (or at least not bounded a priori). The 
 			<em>Reused in Mappings</em> property is the symmetrical of 
@@ -224,13 +224,13 @@
 		</ul>
 		<h3 id="feature_column_mapping">Feature Column Mappings</h3>
 		<p>The columns which will appear in an edition table are defined by the 
-			<em>Feature Column Mapping</em> elements inside the 
+			<em>Feature Column</em> mapping elements inside the 
 			<em>Table Description</em> element. They are named 
-			<em>Feature Column Mappings</em> because they normally represent a property (maybe computed) of the elements which are represented by the table&#8217;s lines, and also to distinguish them from the kind of columns which appear in 
+			<em>Feature Column</em> mappings because they normally represent a property (maybe computed) of the elements which are represented by the table&#8217;s lines, and also to distinguish them from the kind of columns which appear in 
 			<a href="#cross_tables">cross tables</a>. 
 		</p>
 		<p>A 
-			<em>Feature Column Mapping</em> is defined by its 
+			<em>Feature Column</em> mapping is defined by its 
 			<em>Feature Name</em>, which should normally be the name of a valid feature (attribute or reference) of the element which appear in the tables' lines. If a line represents a semantic element 
 			<em>S1</em> but you want on some column to show a property of an element reachable from 
 			<em>S1</em> instead of 
@@ -288,12 +288,12 @@
 			<em>Create Column Tools</em>, which behave exactly like 
 			<em>Create Line</em> tools, except that they apply to 
 			<a href="#element_column_mapping">
-				<em>Element Column Mappings</em>
+				<em>Element Column</em> mappings
 			</a> (see below) and are used to create new columns in the table.
 		</p>
 		<h3 id="element_column_mapping">Element Column Mappings</h3>
 		<p>In cross tables, columns represent elements instead of elements' properties (as is the case for edition tables). The set of columns is defined by one or more 
-			<em>Element Column Mappings</em>. They are almost identical to 
+			<em>Element Column</em> mappings. They are almost identical to 
 			<a href="#line_mappings">line mappings</a>, except that:
 		</p>
 		<ul>
@@ -304,7 +304,7 @@
 			</li>
 		</ul>
 		<p>
-			<em>Element Column Mappings</em> can contain a 
+			<em>Element Column</em> mappings can contain a 
 			<em>Create Column Tool</em> and a 
 			<em>Delete Column Tool</em>, which are specified and behave in a similar way than the 
 			<em>Create Line</em> and 
@@ -314,7 +314,7 @@
 		<p>They can also contain style definitions (including conditional style), which apply to all the cells in the column (unless overridden by the intersection mapping). For a given cell, the styles defined on the column mapping overrides the styles which are defined on the line mapping (if any).</p>
 		<h3 id="intersection_mapping">Intersection Mappings</h3>
 		<p>The line and element column mappings in a cross table define which lines and columns will be present in the tables, but not the contents of the cells. This is defined by 
-			<em>Intersection Mappings</em>. The 
+			<em>Intersection</em> mappings. The 
 			<em>Line Mapping</em> and 
 			<em>Column Mapping</em> properties indicate which cells the mapping describes. The 
 			<em>Label Expression</em>, evaluated in the context of the cell&#8217;s targets semantic element, should return the text to show in the cell, while the 
@@ -349,7 +349,7 @@
 		</p>
 		<h4 id="intersection_mapping_style">Intersection Style</h4>
 		<p>An 
-			<em>Intersection Mapping</em> can contain style elements, including conditional styles. If they are present, they override any style set on the corresponding column mapping or line mapping.
+			<em>Intersection</em> mapping can contain style elements, including conditional styles. If they are present, they override any style set on the corresponding column mapping or line mapping.
 		</p>
 		<h4 id="intersection_mapping_tools">Intersection Tools</h4>
 		<p>Intersection mappings can contain two kinds of tools:</p>

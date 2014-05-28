@@ -299,7 +299,7 @@
 		<p id="mappings">
 			<strong>Mappings.</strong> All these graphical elements are described using the concept of a 
 			<em>mapping</em> (for example a 
-			<em>Node Mapping</em> to describe a kind of nodes). A mapping is an element defined inside the VSM which identifies a sub-set of the elements in the semantic model and associates a graphical representation to them: it 
+			<em>Node</em> mapping to describe a kind of nodes). A mapping is an element defined inside the VSM which identifies a sub-set of the elements in the semantic model and associates a graphical representation to them: it 
 			<em>maps</em> semantic elements onto some graphical notation. At runtime, each active mapping  (i.e. defined in a layer which is enabled) will produce zero or more graphical elements on the diagram, depending on how many semantic elements currently match the mapping&#8217;s definition. In the default functioning mode, whenever the semantic model changes Sirius will automatically re-compute which graphical elements should appear on the diagram according to the active mappings, and create or remove the necessary elements.
 		</p>
 		<p>You can think of the set of mappings defined in a diagram as a description of how to 
@@ -398,8 +398,8 @@
 		</p>
 		<h3 id="nodes">Nodes</h3>
 		<p>A 
-			<em>Node Mapping</em> is used to represent model elements graphically as atomic elements, i.e. elements which can not contain other elements. 
-			<em>Node Mappings</em> can appear directly inside a layer description, in which case the node will appear directly on the diagram, or inside another element (for example a container). A node mapping which is defined inside another element can be either a 
+			<em>Node</em> mapping is used to represent model elements graphically as atomic elements, i.e. elements which can not contain other elements. 
+			<em>Node</em> mappings can appear directly inside a layer description, in which case the node will appear directly on the diagram, or inside another element (for example a container). A node mapping which is defined inside another element can be either a 
 			<em>sub-node mapping</em>, in which case it will appear inside its parent (which must be a container), or a 
 			<em>bordered node mapping</em>, in which case it will appear on the border of its parent (which may be a container or a node, including another bordered node). Bordered node mappings are useful to represent ports.
 		</p>
@@ -428,7 +428,7 @@
 		<p>The definition of a node mapping follows the general rules described 
 			<a href="#mappings">above</a> to determine the semantic elements for which a node should be created. All the properties available in the 
 			<em>Behavior</em> category of the 
-			<em>Node Mapping</em> configuration allow you to see all the various tools, defined elsewhere in the VSM, which apply to this mapping.
+			<em>Node</em> mapping configuration allow you to see all the various tools, defined elsewhere in the VSM, which apply to this mapping.
 		</p>
 		<p>A node can not contain sub-nodes, but it can have 
 			<em>bordered nodes</em>, which are defined inside the node mapping (
@@ -436,7 +436,7 @@
 			<em>reuse</em> node mappings defined elsewhere in the VSM using the 
 			<em>Reused Bordered Node Mappings</em> property in the 
 			<em>Import</em> category. The effect at runtime is the same as if you had created an equivalent 
-			<em>Bordered Node Mapping</em> inside the node mapping.
+			<em>Bordered Node</em> mapping inside the node mapping.
 		</p>
 		<p><div style="display: none">
 			<br/>
@@ -579,7 +579,7 @@
 		</p>
 		<p>
 			<strong>Node Creation.</strong> The only type of tool which is really specific to node mappings is the 
-			<em>Node Creation Tool</em>, used to create new nodes. These work like all the other creation tools. You simply specify the 
+			<em>Node Creation</em> tool, used to create new nodes. These work like all the other creation tools. You simply specify the 
 			<em>Node Mappings</em> that this tool can create and specify the behavior of the tool inside the 
 			<em>Begin</em> element using all the standard 
 			<a href="../general/Model_Operations.html">model operations</a>.
@@ -593,9 +593,9 @@
 		</p>
 		<h3 id="containers">Containers</h3>
 		<p>A 
-			<em>Container Mapping</em> is used to represent model elements graphically as containers, which can contain sub-elements (including other containers, recursively). A container can also have 
+			<em>Container</em> mapping is used to represent model elements graphically as containers, which can contain sub-elements (including other containers, recursively). A container can also have 
 			<em>bordered nodes</em>, which are like normal nodes but appear on the border of the container, for example to represent ports. 
-			<em>Container Mappings</em> can appear directly inside a layer description, in which case the container will appear directly on the diagram, or inside another container mapping. 
+			<em>Container</em>  mappings can appear directly inside a layer description, in which case the container will appear directly on the diagram, or inside another container mapping. 
 		</p>
 		<p>
 			<img border="0" src="images/styles/Containers_on_diagram_or_another_container.png"/>
@@ -603,7 +603,7 @@
 		<p>The definition of a container mapping follows the general rules described 
 			<a href="#mappings">above</a> to determine the semantic elements for which a container should be created. All the properties available in the 
 			<em>Behavior</em> category of the 
-			<em>Container Mapping</em> configuration allow you to see all the various tools, defined elsewhere in the VSM, which apply to this mapping.
+			<em>Container</em> mapping configuration allow you to see all the various tools, defined elsewhere in the VSM, which apply to this mapping.
 		</p>
 		<p>A container can contain 
 			<em>sub-containers</em>, 
@@ -690,8 +690,8 @@
 			<em>Advanced</em> section) on which the tool should be applicable, even though these mapping can not contain containers of the type you will create. In this case, the container created by the tool will actually appear elsewhere on the diagram, but it can often help usability to allow users to click on related elements.
 		</p>
 		<p>
-			<strong>Container Drop Description</strong> You can associate a 
-			<em>Container Drop Description</em> to your container mappings to react to drag&#8217;n&#8217;drop operations into the container. The 
+			<strong>Container Drop</strong> You can associate a 
+			<em>Container Drop</em> description to your container mappings to react to drag&#8217;n&#8217;drop operations into the container. The 
 			<em>Drag Source</em> property indicates if you want to react to graphical elements from a diagram, to semantic model elements dragged from another Eclipse view (for example from the 
 			<em>Model Explorer</em>), or both. The 
 			<em>Containers</em> property indicates for which drop kind of container mappings this tool applies. The 
@@ -930,7 +930,7 @@
 			<a href="#tools">tools</a> section for a general presentation of how tools are defined. This section only presents tools which are specific to edges.
 		</p>
 		<p>
-			<strong>Edge Creation Tool.</strong> This tool is used to create new edges. They work like all the other creation tools. You simply specify the 
+			<strong>Edge Creation.</strong> This tool is used to create new edges. They work like all the other creation tools. You simply specify the 
 			<em>Edge Mappings</em> that this tool can create and specify the behavior of the tool inside the 
 			<em>Begin</em> element using all the standard 
 			<a href="../general/Model_Operations.html">model operations</a>.
@@ -1189,7 +1189,7 @@
 		<p>
 			<strong>Tools Applicability</strong>. Most tools apply to a set of 
 			<em>Mappings</em>, sometimes only on certain kinds of mappings (e.g. 
-			<em>Container Drop Description</em> only makes sense for container mappings). For tools which create new elements, the 
+			<em>Container Drop</em> description only makes sense for container mappings). For tools which create new elements, the 
 			<em>Mappings</em> correspond to the kinds of elements the tool will create. For other tools, it corresponds to the kinds of element the tool can be applied to.
 		</p>
 		<p>Many tools also support the notion of 
@@ -1265,15 +1265,15 @@
 		<p>See the description in the 
 			<a href="#edge_tools">edge-specific tools section</a>.
 		</p>
-		<h4 id="container_drop">Container Drop Description</h4>
+		<h4 id="container_drop">Container Drop</h4>
 		<p>See the description in the 
 			<a href="#container_tools">container-specific tools section</a>.
 		</p>
-		<h4 id="reconnect_edge">Reconnect Edge Description</h4>
+		<h4 id="reconnect_edge">Reconnect Edge</h4>
 		<p>See the description in the 
 			<a href="#edge_tools">edge-specific tools section</a>.
 		</p>
-		<h4 id="paste_description">Paste Description</h4>
+		<h4 id="paste_description">Paste</h4>
 		<p>The paste tool aims to define operations to paste the given copied semantic element, accessible through the 
 			<em>copiedElement</em> variable, into the semantic paste receiver, accessible through the 
 			<em>container</em> variable. The 
@@ -1290,10 +1290,10 @@
 			<strong>TODO</strong> Description not clear at all.
 			<br/></div>
 		</p>
-		<h4 id="delete_tool">Delete Element Description</h4>
+		<h4 id="delete_tool">Delete Element</h4>
 		<p>If you do not associate a 
-			<em>Delete Tool</em> to a mapping, the default delete behavior when the user deletes a graphical element is to remove the target semantic element and all the associated semantic elements from the semantic model. If you want a different behavior or if you want to forbid the deletion of some elements, you must set an explicit 
-			<em>Delete Tool</em>. Delete tools are invoked when the user select the 
+			<em>Delete</em> tool to a mapping, the default delete behavior when the user deletes a graphical element is to remove the target semantic element and all the associated semantic elements from the semantic model. If you want a different behavior or if you want to forbid the deletion of some elements, you must set an explicit 
+			<em>Delete</em> tool. Delete tools are invoked when the user select the 
 			<em>Delete from model</em> action (from the context menu, from the tab-bar or using the 
 			<em>Delete</em> key). The 
 			<em>element</em> variable will be set to the main semantic target element being deleted (excluding any associated semantic elements) while the 
@@ -1301,7 +1301,7 @@
 			<em>containerView</em> tell you which graphical view is being deleted and in which context it is.
 		</p>
 		<p>If you want to completely disable deletion for some elements, you can either create a 
-			<em>Delete Tool</em> which does nothing for these elements or, if possible, setup the tool&#8217;s 
+			<em>Delete</em> tool which does nothing for these elements or, if possible, setup the tool&#8217;s 
 			<em>Precondition</em> to return 
 			<em>false</em> for these elements. Setting a precondition is usually preferred as it will mark the 
 			<em>Delete</em> action as disabled in the UI (tab-bar and context menu) while a tool which simply does nothing can still be invoked by users, but with no effect. Note however that the 
@@ -1329,9 +1329,9 @@
 		<p>
 			<em>Note:</em> Edges can have up to three different labels (one in the center and one at each extremity), but currently if a 
 			<em>Direct Edit</em> tool is associated to an 
-			<em>Edge Mapping</em>, only the center label (if it exists) can be edited. This restriction will probably be lifted in future versions.
+			<em>Edge</em> mapping, only the center label (if it exists) can be edited. This restriction will probably be lifted in future versions.
 		</p>
-		<h4 id="selection_wizard">Selection Wizard Description</h4>
+		<h4 id="selection_wizard">Selection Wizard</h4>
 		<p>This tool can be used to open a wizard dialog asking the user to select one or several model elements. The body of the tool is then executed in the context of the element selected by the user.</p>
 		<p>When the tool is selected, the user must first select a diagram element as the tool&#8217;s target. Then a dialog box opens with a list of candidate elements to select. The list is computed from the target using expressions you specify in the tool&#8217;s description.</p>
 		<p>The 
@@ -1354,10 +1354,10 @@
 		<p>
 			<img border="0" src="images/styles/Selection_Tool.png"/>
 		</p>
-		<h4 id="pane_based_selection_wizard">Pane-Based Selection Wizard Description</h4>
+		<h4 id="pane_based_selection_wizard">Pane-Based Selection Wizard</h4>
 		<p>The 
 			<em>Pane-Based Selection Wizard</em> is very similar to the 
-			<a href="#selection_wizard">Selection Wizard Description</a>. It differs only in the presentation of the selection window. The pane-based wizard offers two panels: on the left are all the candidates, which corresponds to the contents of the basic 
+			<a href="#selection_wizard">Selection Wizard</a>. It differs only in the presentation of the selection window. The pane-based wizard offers two panels: on the left are all the candidates, which corresponds to the contents of the basic 
 			<em>Selection Wizard</em>. On the right is the current selection. The user has buttons to add or remove candidates from the left panel into the right one. The 
 			<em>Pre Selected Candidates Expression</em> can be used to define the initial content of the right-side panel.
 		</p>
@@ -1371,9 +1371,9 @@
 		</p>
 		<h4 id="representation_creation">Representation Creation</h4>
 		<p>Each dialect supported by Sirius defines a tool which can be used to create a new representation using this dialect. They are (using the default supported dialects): 
-			<em>Diagram Creation Description</em>, 
-			<em>Table Creation Description</em> and 
-			<em>Tree Creation Description</em>.
+			<em>Diagram Creation</em> description, 
+			<em>Table Creation</em> description and 
+			<em>Tree Creation</em> description.
 		</p>
 		<p>These tools (one for each kind of representation supported by Sirius) can be used to create (and open) a new representation from an existing diagram element. They will be available to end-users in the 
 			<em>Navigate</em> context menu on compatible diagram elements. To configure the tool, simply select in the 
@@ -1390,9 +1390,9 @@
 		</p>
 		<h4 id="representation_navigation">Representation Navigation</h4>
 		<p>Each dialect supported by Sirius defines a tool which can be used to navigate to existing representation of this dialect. They are (using the default supported dialects): 
-			<em>Diagram Navigation Description</em>, 
-			<em>Table Navigation Description</em> and 
-			<em>Tree Navigation Description</em>.
+			<em>Diagram Navigation</em> description, 
+			<em>Table Navigation</em> description and 
+			<em>Tree Navigation</em> description.
 		</p>
 		<p>These tools are very similar to the 
 			<a href="#representation_creation">representation creation tools</a>. The only differences is that they allow users to navigate to existing representation instead of creating new ones. If such a tool exists, the 
@@ -1401,7 +1401,7 @@
 			<em>Navigation name expression</em> (
 			<em>Advanced</em> category) to be used in the menu entry instead of using the title of the existing representation. This can be useful to make it more explicit what the relationship is between the current element and the target tree.
 		</p>
-		<h4 id="double_click_tool">Double-Click Tool</h4>
+		<h4 id="double_click_tool">Double-Click</h4>
 		<p>This tool is used to trigger operations when the user double-clicks on an element. The 
 			<em>Mappings</em> property indicate for what kinds of element this tool is applicable.  
 		</p>
@@ -1434,9 +1434,9 @@
 			<em>External Java Action</em> tool simply creates a menu entry in the context menu which directly invokes any 
 			<a href="../general/Model_Operations.html#external_java_action">External Java Action</a> you can define.
 		</p>
-		<h4 id="request_description">Request Description</h4>
+		<h4 id="request_description">Request</h4>
 		<p>This tool is for advanced uses only. It requires understanding and extending GMF, the graphical framework used by Sirius to display diagrams. A 
-			<em>Request Description</em> tool will contribute an item in the palette, and when invoked on a graphical element it will send a GMF request to the corresponding edit part. The type of the request to send is specified as a fixed string in the 
+			<em>Request</em> description tool will contribute an item in the palette, and when invoked on a graphical element it will send a GMF request to the corresponding edit part. The type of the request to send is specified as a fixed string in the 
 			<em>Type</em> property. The target edit part should have an edit policy capable of understanding and reacting to the request.
 		</p>
 		<p><div style="display: none">

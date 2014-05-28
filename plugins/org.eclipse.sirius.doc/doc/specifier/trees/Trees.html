@@ -132,7 +132,7 @@
 		<p>The main concepts which define a tree are:</p>
 		<ul>
 			<li>
-				<em>Tree Item Mappings</em>, which describe the elements that will appear on this tree, and how they map to the underlying semantic elements they represent;
+				<em>Tree Item</em> mappings, which describe the elements that will appear on this tree, and how they map to the underlying semantic elements they represent;
 			</li>
 			<li>
 				<em>Styles</em>, which describe the graphical appearance of these representation elements;
@@ -171,7 +171,7 @@
 				<code>element</code> variable) to disable the tool source elements your tool does not support.
 			</li>
 			<li>
-				<em>Tree Creation Description</em>: This tool can be used to create (and open) a new tree from an existing tree item. It will be available to end-users in the 
+				<em>Tree Creation</em>: This tool can be used to create (and open) a new tree from an existing tree item. It will be available to end-users in the 
 				<em>Navigate</em> context menu on compatible tree items. To configure the tool, simply select in the 
 				<em>Mappings</em> property which kinds of tree items the tool should appear on (you can be more precise using the 
 				<em>Precondition</em> expression if necessary), and select which kind of tree should be created using the 
@@ -180,7 +180,7 @@
 				<em>Advanced</em> category) to navigate from the element selected to the one one which the new tree should actually be created. Finally, any operation you specify in the body of the tool will be executed when the tool is invoked; you can use it to initialize the content of the model represented.
 			</li>
 			<li>
-				<em>Tree Navigation Description</em>: This tool is very similar to the previous one. The only differences is that it allows users to navigate to existing trees instead of creating new ones. If such a tool exists, the 
+				<em>Tree Navigation</em>: This tool is very similar to the previous one. The only differences is that it allows users to navigate to existing trees instead of creating new ones. If such a tool exists, the 
 				<em>Navigate</em> context menu on an item will contains an entry for each corresponding tree which already exists on the element selected (or reachable from the selected element using the 
 				<em>Browse expression</em>). You can specify a 
 				<em>Navigation name expression</em> (
@@ -189,13 +189,13 @@
 		</ul>
 		<h2 id="mappings">Tree Item Mappings</h2>
 		<p>Trees are recursive by nature. There contents is specified using a single concept of 
-			<em>Tree Item Mapping</em> which can be composed recursively. A 
+			<em>Tree Item</em> mapping which can be composed recursively. A 
 			<em>Tree Description</em> contains 
-			<em>Tree Item Mappings</em> which define which elements will appear at the top-level of the tree, while each 
-			<em>Tree Item Mapping</em> can contain sub-mappings which define its own direct content. If an element (the tree or a tree item mapping) contains several sub-mappings, the element&#8217;s content will appear in the order of the mappings: first all the instances of the first mapping, then the instances of the second one, etc.
+			<em>Tree Item</em> mappings which define which elements will appear at the top-level of the tree, while each 
+			<em>Tree Item</em> mapping can contain sub-mappings which define its own direct content. If an element (the tree or a tree item mapping) contains several sub-mappings, the element&#8217;s content will appear in the order of the mappings: first all the instances of the first mapping, then the instances of the second one, etc.
 		</p>
 		<p>A 
-			<em>Tree Item Mapping</em> is defined by a 
+			<em>Tree Item</em> mapping is defined by a 
 			<em>Domain Class</em>, a 
 			<em>Semantic Candidates Expression</em> and an optional 
 			<em>Precondition Expression</em> (in the 
@@ -210,11 +210,11 @@
 			<em>Advanced Category</em>), which is evaluated in the context of the target and may return more semantic elements. Any change in the target element or one of the associated elements will automatically trigger a refresh of the tree item.
 		</p>
 		<p>A 
-			<em>Tree Item Mapping</em> may 
+			<em>Tree Item</em> mapping may 
 			<em>Specialize</em> another mapping, in which case it will inherit all of the specialized mapping&#8217;s properties for which it does not specify an explicit value.
 		</p>
 		<p>A 
-			<em>Tree Item Mapping</em> may 
+			<em>Tree Item</em> mapping may 
 			<em>Reuse</em> (see the 
 			<em>Imports</em> category) existing mappings, including itself, as sub-mappings. The effect is exactly the same as if the reused mapping(s) were created as children if the parent. However because a mapping can reuse itself or one of its parent mapping, this allows to create trees of infinite depth (or at least not bounded a priori).
 		</p>
@@ -237,7 +237,7 @@
 			<em>Advanced</em> category). This is especially useful if you have several items which represent different aspects of the same semantic element and thus share the same target.
 		</p>
 		<p>
-			<em>Tree Item Mappings</em> can have one ore more 
+			<em>Tree Item</em> mappings can have one ore more 
 			<em>Conditional Style</em>. They are normal style elements with the same properties as described above, but wrapped in a 
 			<em>Conditional Style</em> element which defines a boolean expression. If an item mapping contains such styles, then for each instance of the mapping, the conditional styles will first be tried, in the order of their definitions. The first style whose condition returns 
 			<code>true</code> for the item&#8217;s target is used (and the remaining ones are not tested). If none of the conditional style apply, the default one is used. Note that because the conditions are tested in the order of definition, you should order them from the most likely to the least likely to optimize performance.
@@ -270,7 +270,7 @@
 			</li>
 			<li>
 				<em>Drop Tool</em>: When defined inside a 
-				<em>Tree Item Mapping</em>, a 
+				<em>Tree Item</em> mapping, a 
 				<em>Drop Tool</em> specifies what happens when the user drops an element onto an instance of the mapping. The 
 				<em>Drag source</em> property indicates whether the tool accepts elements dragged from a tree representation (value 
 				<em>Tree</em>), from the 
