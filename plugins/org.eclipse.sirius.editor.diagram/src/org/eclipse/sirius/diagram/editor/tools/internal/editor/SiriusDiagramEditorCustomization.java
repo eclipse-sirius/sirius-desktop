@@ -14,7 +14,6 @@ import java.util.LinkedHashSet;
 
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
-import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.editor.tools.api.editor.EditorCustomization;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
@@ -43,7 +42,6 @@ public class SiriusDiagramEditorCustomization implements EditorCustomization {
         deprecation.add(DescriptionPackage.eINSTANCE.getDiagramDescription_ToolSection());
         deprecation.add(DescriptionPackage.eINSTANCE.getDiagramDescription_ReusedTools());
         deprecation.add(DescriptionPackage.eINSTANCE.getDiagramDescription_ReusedMappings());
-        deprecation.add(StylePackage.eINSTANCE.getDotDescription());
         deprecation.add(ToolPackage.eINSTANCE.getSetObject());
     }
 
