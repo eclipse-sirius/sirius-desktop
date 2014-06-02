@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,7 @@ import org.eclipse.sirius.editor.tools.api.menu.AbstractMenuBuilder;
 
 /**
  * A specific menu builder providing any action not provided by the given
- * builders. Also known as the "Others..." menu.
+ * builders. Also known as the "Others" menu.
  * 
  * @author cbrun
  * 
@@ -41,7 +41,7 @@ public class OthersMenuBuilder extends AbstractMenuBuilder {
      */
     @Override
     protected String getLabel() {
-        return "New...";
+        return "New";
     }
 
     /**

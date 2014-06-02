@@ -38,7 +38,7 @@ public class ToolsMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
      */
     @Override
     protected String getLabel() {
-        return "New Tool...";
+        return "New Tool";
     }
 
 }

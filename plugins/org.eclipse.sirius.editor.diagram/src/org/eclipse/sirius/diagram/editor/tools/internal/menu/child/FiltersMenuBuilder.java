@@ -35,7 +35,7 @@ public class FiltersMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
      */
     @Override
     protected String getLabel() {
-        return "New Filter...";
+        return "New Filter";
     }
 
 }

@@ -35,7 +35,7 @@ public class DiagramRefactoringMenu extends AbstractMenuBuilder {
      */
     @Override
     protected String getLabel() {
-        return "Refactoring...";
+        return "Refactoring";
     }
 
     /**

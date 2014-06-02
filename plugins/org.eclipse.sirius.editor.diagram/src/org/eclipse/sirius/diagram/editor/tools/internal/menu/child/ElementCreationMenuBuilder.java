@@ -35,7 +35,7 @@ public class ElementCreationMenuBuilder extends AbstractTypeRestrictingMenuBuild
      */
     @Override
     protected String getLabel() {
-        return "New Element Creation...";
+        return "New Element Creation";
     }
 
 }

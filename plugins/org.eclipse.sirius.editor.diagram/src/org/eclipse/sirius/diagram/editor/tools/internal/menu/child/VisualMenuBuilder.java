@@ -40,7 +40,7 @@ public class VisualMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
      */
     @Override
     protected String getLabel() {
-        return "New Diagram Element...";
+        return "New Diagram Element";
     }
 
 }
