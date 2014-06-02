@@ -10,7 +10,7 @@ include "modules/shared-license.tpd"
 
 with source, requirements
 
-location Orbit "http://download.eclipse.org/tools/orbit/downloads/drops/S20130914154012/repository/" {
+location Orbit "http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/" {
         com.google.guava;version=[11.0.2,16.0)
 }
 
