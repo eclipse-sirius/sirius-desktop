@@ -37,7 +37,7 @@ public class ExtensionsMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
      */
     @Override
     protected String getLabel() {
-        return "New Extension...";
+        return "New Extension";
     }
 
 }

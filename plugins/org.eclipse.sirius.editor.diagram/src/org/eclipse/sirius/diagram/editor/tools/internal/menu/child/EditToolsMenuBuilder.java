@@ -36,7 +36,7 @@ public class EditToolsMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
      */
     @Override
     protected String getLabel() {
-        return "New Element Edition...";
+        return "New Element Edition";
     }
 
 }

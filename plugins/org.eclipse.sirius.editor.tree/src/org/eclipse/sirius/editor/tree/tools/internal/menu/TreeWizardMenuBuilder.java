@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,16 +26,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.ui.IEditorPart;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
-
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractEObjectRefactoringAction;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractMenuBuilder;
@@ -59,12 +49,21 @@ import org.eclipse.sirius.viewpoint.description.tool.MenuItemDescriptionReferenc
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.sirius.viewpoint.description.tool.SetValue;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
+import org.eclipse.ui.IEditorPart;
+
+import com.google.common.base.Predicate;
+import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.Sets;
 
 public class TreeWizardMenuBuilder extends AbstractMenuBuilder {
 
     @Override
     protected String getLabel() {
-        return "Initialize ...";
+        return "Initialize";
     }
 
     /**
@@ -222,7 +221,7 @@ class TreeDescriptionBuilderFromEClass {
          * Popup menu for childs.
          */
         TreePopupMenu menu = DescriptionFactory.eINSTANCE.createTreePopupMenu();
-        menu.setName("New...");
+        menu.setName("New");
 
         for (EReference ownedReferences : Iterables.filter(eClassToStartFrom.getEAllReferences(), new Predicate<EReference>() {
 

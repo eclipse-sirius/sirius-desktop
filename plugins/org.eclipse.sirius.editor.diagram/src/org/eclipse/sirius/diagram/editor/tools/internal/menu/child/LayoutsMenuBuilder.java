@@ -35,7 +35,7 @@ public class LayoutsMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
      */
     @Override
     protected String getLabel() {
-        return "New Layout...";
+        return "New Layout";
     }
 
 }

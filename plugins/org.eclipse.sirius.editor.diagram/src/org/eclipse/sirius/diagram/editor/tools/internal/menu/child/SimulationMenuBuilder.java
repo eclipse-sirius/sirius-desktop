@@ -33,7 +33,7 @@ public class SimulationMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
      */
     @Override
     protected String getLabel() {
-        return "New Simulation...";
+        return "New Simulation";
     }
 
 }

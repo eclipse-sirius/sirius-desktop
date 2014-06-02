@@ -36,7 +36,7 @@ public class ImportsMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
      */
     @Override
     protected String getLabel() {
-        return "New Import...";
+        return "New Import";
     }
 
 }
