@@ -32,6 +32,7 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
+import org.eclipse.sirius.viewpoint.description.tool.For;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
 
@@ -370,6 +371,12 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
         if (context instanceof CreateInstance) {
             CreateInstance ci = (CreateInstance) context;
             addDefinition(definitions, ci.getVariableName(), ci.getTypeName());
+        }
+        // The CreateInstance model operation implicitly defines a variable to
+        // reference the newly created instance.
+        if (context instanceof For) {
+            For f = (For) context;
+            addDefinition(definitions, f.getIteratorName(), AbstractInterpretedExpressionQuery.DEFAULT_VARIABLE_TYPE);
         }
     }
 
