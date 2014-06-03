@@ -416,6 +416,12 @@
      <contexts file="help/contexts.xml" plugin="org.eclipse.sirius.editor.sequence">
      </contexts>
   </extension>
+  <extension
+        point="org.eclipse.sirius.editor.menuBuilder">
+     <builder
+           class="org.eclipse.sirius.diagram.sequence.editor.tools.internal.menu.child.ReorderToolsMenuBuilder">
+     </builder>
+  </extension>
   
 </plugin>    
 <!-- End of user code plugin.xml end specifics  -->
