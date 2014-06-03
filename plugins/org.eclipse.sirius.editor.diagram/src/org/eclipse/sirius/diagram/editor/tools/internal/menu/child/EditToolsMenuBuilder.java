@@ -29,6 +29,7 @@ public class EditToolsMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
         addValidType(ToolPackage.eINSTANCE.getReconnectEdgeDescription());
         addValidType(ToolPackage.eINSTANCE.getContainerDropDescription());
         addValidType(ToolPackage.eINSTANCE.getDeleteElementDescription());
+        addValidType(ToolPackage.eINSTANCE.getDoubleClickDescription());
     }
 
     /**

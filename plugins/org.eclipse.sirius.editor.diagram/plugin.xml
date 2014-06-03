@@ -24,6 +24,9 @@
      <builder
            class="org.eclipse.sirius.diagram.editor.tools.internal.menu.child.ElementCreationMenuBuilder">
      </builder>
+     <builder
+           class="org.eclipse.sirius.diagram.editor.tools.internal.menu.child.EditToolsMenuBuilder">
+     </builder>
       <builder
            class="org.eclipse.sirius.diagram.editor.tools.internal.menu.child.FiltersMenuBuilder">
      </builder>
@@ -41,6 +44,9 @@
      </builder>
      <builder
            class="org.eclipse.sirius.diagram.editor.tools.internal.menu.child.VisualMenuBuilder">
+     </builder>
+     <builder
+           class="org.eclipse.sirius.diagram.editor.tools.internal.menu.child.ExtensionsMenuBuilder">
      </builder>
   </extension>
 

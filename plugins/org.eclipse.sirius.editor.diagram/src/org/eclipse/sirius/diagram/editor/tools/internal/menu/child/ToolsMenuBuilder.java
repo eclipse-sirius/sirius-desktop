@@ -27,6 +27,7 @@ public class ToolsMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
         super();
         addValidType(ToolPackage.eINSTANCE.getToolSection());
         addValidType(ToolPackage.eINSTANCE.getToolGroup());
+        addValidType(org.eclipse.sirius.viewpoint.description.tool.ToolPackage.eINSTANCE.getToolDescription());
 
         addRestrictedType(ToolPackage.eINSTANCE.getNodeCreationDescription());
         addRestrictedType(ToolPackage.eINSTANCE.getContainerCreationDescription());
