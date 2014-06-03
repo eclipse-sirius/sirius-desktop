@@ -34,7 +34,7 @@ public class RefactoringMenu extends AbstractMenuBuilder {
     /**
      * Refactoring menu label.
      */
-    public static final String REFACTORING_MENU_LABEL = "Refactoring";
+    public static final String REFACTORING_MENU_LABEL = "Refactor";
 
     /**
      * {@inheritDoc}
