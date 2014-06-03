@@ -27,6 +27,7 @@ public class ExtensionsMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
      */
     public ExtensionsMenuBuilder() {
         super();
+        addValidType(DescriptionPackage.eINSTANCE.getRepresentationExtensionDescription());
         addValidType(DescriptionPackage.eINSTANCE.getFeatureExtensionDescription());
         addValidType(AuditPackage.eINSTANCE.getTemplateInformationSection());
         addValidType(DescriptionPackage.eINSTANCE.getJavaExtension());
