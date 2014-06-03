@@ -10,9 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.tools.internal.presentation;
 
+import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -217,15 +221,23 @@ public class CustomSiriusActionBarContributor extends EditingDomainActionBarCont
         for (AbstractMenuBuilder builder : allMenusBuilders) {
             c.put(builder.getLabel(), builder);
         }
-
+        List<AbstractMenuBuilder> computedBuilders = Lists.newArrayList();
         for (String label : c.keySet()) {
             if (c.get(label).size() > 1) {
-                builders.add(new CompositeMenuBuilder(label, c.get(label)));
+                computedBuilders.add(new CompositeMenuBuilder(label, c.get(label)));
             } else {
-                builders.add(c.get(label).iterator().next());
+                computedBuilders.add(c.get(label).iterator().next());
             }
         }
 
+        Comparator<AbstractMenuBuilder> comparator = new Comparator<AbstractMenuBuilder>() {
+            @Override
+            public int compare(AbstractMenuBuilder builder1, AbstractMenuBuilder builder2) {
+                return Collator.getInstance().compare(builder1.getLabel(), builder2.getLabel());
+            }
+        };
+        Collections.sort(computedBuilders, comparator);
+        builders.addAll(computedBuilders);
     }
 
     /**
