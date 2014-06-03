@@ -302,7 +302,7 @@
       <constraintProvider
             cache="false"            
             mode="Batch">
-         <package namespaceUri="http://www.eclipse.org/sirius/1.1.0"/>
+         <package namespaceUri="http://www.eclipse.org/sirius/diagram/1.1.0"/>
          <constraints categories="org.eclipse.sirius.diagram.category">
             <constraint
                   lang="Java"
