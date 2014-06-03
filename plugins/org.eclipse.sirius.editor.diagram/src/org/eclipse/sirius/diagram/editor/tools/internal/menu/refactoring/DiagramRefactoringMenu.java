@@ -18,6 +18,7 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.sirius.diagram.editor.tools.internal.menu.refactoring.border.BorderRefactoringAction;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractEObjectRefactoringAction;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractMenuBuilder;
+import org.eclipse.sirius.editor.tools.internal.menu.refactoring.RefactoringMenu;
 import org.eclipse.ui.IEditorPart;
 
 import com.google.common.base.Predicate;
@@ -34,8 +35,8 @@ public class DiagramRefactoringMenu extends AbstractMenuBuilder {
      * {@inheritDoc}
      */
     @Override
-    protected String getLabel() {
-        return "Refactoring";
+    public String getLabel() {
+        return RefactoringMenu.REFACTORING_MENU_LABEL;
     }
 
     /**

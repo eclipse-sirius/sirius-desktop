@@ -32,7 +32,7 @@ public class ConditionalStyleMenuBuilder extends AbstractTypeRestrictingMenuBuil
      * {@inheritDoc}
      */
     @Override
-    protected String getLabel() {
+    public String getLabel() {
         return "New Conditional Style";
     }
 

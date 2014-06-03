@@ -34,7 +34,7 @@ public class CustomizationMenuBuilder extends AbstractTypeRestrictingMenuBuilder
     }
 
     @Override
-    protected String getLabel() {
+    public String getLabel() {
         return "New Customization";
     }
 

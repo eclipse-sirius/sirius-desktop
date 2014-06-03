@@ -32,7 +32,7 @@ public class RepresentationCreationToolsMenuBuilder extends AbstractTypeRestrict
      * {@inheritDoc}
      */
     @Override
-    protected String getLabel() {
+    public String getLabel() {
         return "New Representation Creation";
     }
 

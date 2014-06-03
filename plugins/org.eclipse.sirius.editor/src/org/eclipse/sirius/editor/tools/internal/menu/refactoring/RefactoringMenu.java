@@ -30,12 +30,18 @@ import com.google.common.collect.Sets;
  * 
  */
 public class RefactoringMenu extends AbstractMenuBuilder {
+
+    /**
+     * Refactoring menu label.
+     */
+    public static final String REFACTORING_MENU_LABEL = "Refactoring";
+
     /**
      * {@inheritDoc}
      */
     @Override
-    protected String getLabel() {
-        return "Refactoring";
+    public String getLabel() {
+        return REFACTORING_MENU_LABEL;
     }
 
     /**

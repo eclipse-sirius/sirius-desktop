@@ -35,7 +35,7 @@ public class TreeTreeElementMenuBuilder extends AbstractTypeRestrictingMenuBuild
      * @see org.eclipse.sirius.editor.tools.api.menu.AbstractMenuBuilder#getLabel()
      */
     @Override
-    protected String getLabel() {
+    public String getLabel() {
         return "New Tree Element";
     }
 

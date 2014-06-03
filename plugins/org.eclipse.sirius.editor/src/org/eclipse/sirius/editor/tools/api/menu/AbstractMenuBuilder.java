@@ -12,7 +12,6 @@ package org.eclipse.sirius.editor.tools.api.menu;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 
 import org.eclipse.emf.ecore.EModelElement;
@@ -33,6 +32,8 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.ui.IEditorPart;
+
+import com.google.common.collect.Iterables;
 
 /**
  * Abstract class to dynamicaly build treeview menus.
@@ -101,7 +102,7 @@ public abstract class AbstractMenuBuilder {
      * 
      * @return the menu label.
      */
-    protected abstract String getLabel();
+    public abstract String getLabel();
 
     /**
      * Attache the menu to its parent.
@@ -227,8 +228,8 @@ public abstract class AbstractMenuBuilder {
     protected Collection generateCreateChildActions(final Collection actionDescriptors, final ISelection selection, final IEditorPart editor) {
         final Collection actions = new ArrayList();
         if (actionDescriptors != null) {
-            for (final Iterator i = actionDescriptors.iterator(); i.hasNext(); /* */) {
-                actions.add(new CreateChildAction(editor, selection, i.next()));
+            for (final Object actionDescriptor : actionDescriptors) {
+                actions.add(new CreateChildAction(editor, selection, actionDescriptor));
             }
         }
         return actions;
@@ -264,8 +265,7 @@ public abstract class AbstractMenuBuilder {
      */
     protected void populateManager(final IContributionManager manager, final Collection actions, final String contributionID) {
         if (actions != null) {
-            for (final Iterator i = actions.iterator(); i.hasNext(); /* */) {
-                final IAction action = (IAction) i.next();
+            for (final IAction action : Iterables.filter(actions, IAction.class)) {
                 if (contributionID != null) {
                     manager.insertBefore(contributionID, action);
                 } else {
@@ -286,7 +286,6 @@ public abstract class AbstractMenuBuilder {
         createMenuManager();
         populateMenu();
         parent.insertBefore(EDIT, myMenuManager);
-
     }
 
     /**
@@ -299,7 +298,6 @@ public abstract class AbstractMenuBuilder {
         createMenuManager();
         populateMenu();
         parent.insertAfter(EDIT, myMenuManager);
-
     }
 
 }

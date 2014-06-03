@@ -32,7 +32,7 @@ public class StyleMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
      * {@inheritDoc}
      */
     @Override
-    protected String getLabel() {
+    public String getLabel() {
         return "New Style";
     }
 

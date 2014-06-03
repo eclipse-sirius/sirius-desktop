@@ -180,17 +180,16 @@ public class CustomSiriusActionBarContributor extends EditingDomainActionBarCont
         }
         validateAction = new ValidateAction();
         controlAction = new ControlAction();
-        builders = new ArrayList<AbstractMenuBuilder>();
 
+        //Init menu builders
+        builders = new ArrayList<AbstractMenuBuilder>();
         builders.add(new EditToolsMenuBuilder());
         builders.add(new RepresentationCreationToolsMenuBuilder());
         builders.add(new MenuToolsMenuBuilder());
         builders.add(new RepresentationMenuBuilder());
         builders.add(new RepresentationTemplateMenuBuilder());
         builders.add(new NavigationToolsMenuBuilder());
-
         builders.add(new VariablesMenuBuilder());
-
         builders.add(new StyleMenuBuilder());
         builders.add(new CustomizationMenuBuilder());
         builders.add(new ConditionalStyleMenuBuilder());
@@ -198,10 +197,10 @@ public class CustomSiriusActionBarContributor extends EditingDomainActionBarCont
         builders.add(new ValidationMenuBuilder());
         builders.add(new ExtensionsMenuBuilder());
 
+        //Add contributions
         builders.addAll(MenuBuildersManager.getInstance().getContributedMenuBuilders());
 
         other = new OthersMenuBuilder(builders);
-
         refactoring = new RefactoringMenu();
     }
 
@@ -311,14 +310,11 @@ public class CustomSiriusActionBarContributor extends EditingDomainActionBarCont
         }
 
         // Generate actions for selection; populate and redraw the menus.
-        //
         if (newChildDescriptors != null) {
             updateChildDescriptorMenus(selection, newChildDescriptors);
-
         }
 
         populateMenus();
-
     }
 
     private void depopulateMenus() {
@@ -327,10 +323,6 @@ public class CustomSiriusActionBarContributor extends EditingDomainActionBarCont
         }
         other.depopulateMenu();
         refactoring.depopulateMenu();
-    }
-
-    private void updateMenusConsideringSelection(final ISelection selection) {
-
     }
 
     private void updateChildDescriptorMenus(final ISelection selection, Collection<?> newChildDescriptors) {
@@ -393,14 +385,6 @@ public class CustomSiriusActionBarContributor extends EditingDomainActionBarCont
     @Override
     public void menuAboutToShow(final IMenuManager menuManager) {
         super.menuAboutToShow(menuManager);
-        // for (final AbstractMenuBuilder builder : builders) {
-        // builder.attach(menuManager);
-        // }
-        // other.attach(menuManager);
-        // refactoring.attach(menuManager);
-
-        ISelection curSelection = activeEditorPart.getEditorSite().getSelectionProvider().getSelection();
-        updateMenusConsideringSelection(curSelection);
 
         insertInParentMenu(menuManager);
 
@@ -414,7 +398,13 @@ public class CustomSiriusActionBarContributor extends EditingDomainActionBarCont
 
     private void insertInParentMenu(final IMenuManager menuManager) {
         for (final AbstractMenuBuilder builder : builders) {
-            builder.insertBeforeInContainer(menuManager);
+            if (RefactoringMenu.REFACTORING_MENU_LABEL.equals(builder.getLabel())) {
+                // Refactoring menu should be added after the edit group
+                builder.insertAfterInContainer(menuManager);
+            } else {
+                builder.insertBeforeInContainer(menuManager);
+            }
+
         }
         other.insertBeforeInContainer(menuManager);
         refactoring.insertAfterInContainer(menuManager);

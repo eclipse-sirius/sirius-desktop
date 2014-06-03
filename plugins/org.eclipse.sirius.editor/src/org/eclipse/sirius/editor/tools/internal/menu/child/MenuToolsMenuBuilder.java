@@ -33,7 +33,7 @@ public class MenuToolsMenuBuilder extends AbstractTypeRestrictingMenuBuilder {
      * {@inheritDoc}
      */
     @Override
-    protected String getLabel() {
+    public String getLabel() {
         return "New Menu";
     }
 

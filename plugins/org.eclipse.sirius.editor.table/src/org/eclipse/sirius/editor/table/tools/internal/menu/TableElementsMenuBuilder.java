@@ -31,7 +31,7 @@ public class TableElementsMenuBuilder extends AbstractTypeRestrictingMenuBuilder
      * {@inheritDoc}
      */
     @Override
-    protected String getLabel() {
+    public String getLabel() {
         return "New Table Element";
     }
 
