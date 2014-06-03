@@ -42,6 +42,7 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractMenuBuilder;
+import org.eclipse.sirius.editor.tools.api.menu.CompositeMenuBuilder;
 import org.eclipse.sirius.editor.tools.internal.menu.MenuBuildersManager;
 import org.eclipse.sirius.editor.tools.internal.menu.OthersMenuBuilder;
 import org.eclipse.sirius.editor.tools.internal.menu.child.ConditionalStyleMenuBuilder;
@@ -60,6 +61,10 @@ import org.eclipse.sirius.editor.tools.internal.menu.child.VariablesMenuBuilder;
 import org.eclipse.sirius.editor.tools.internal.menu.refactoring.RefactoringMenu;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
+
+import com.google.common.collect.LinkedHashMultimap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Multimap;
 
 /**
  * Specific class to provide actions.
@@ -164,7 +169,7 @@ public class CustomSiriusActionBarContributor extends EditingDomainActionBarCont
      */
     protected IAction showType = new ShowTypeAction();
 
-    private Collection<AbstractMenuBuilder> builders;
+    private final Collection<AbstractMenuBuilder> builders;
 
     private final OthersMenuBuilder other;
 
@@ -181,27 +186,46 @@ public class CustomSiriusActionBarContributor extends EditingDomainActionBarCont
         validateAction = new ValidateAction();
         controlAction = new ControlAction();
 
-        //Init menu builders
+        // Init menu builders
         builders = new ArrayList<AbstractMenuBuilder>();
-        builders.add(new EditToolsMenuBuilder());
-        builders.add(new RepresentationCreationToolsMenuBuilder());
-        builders.add(new MenuToolsMenuBuilder());
-        builders.add(new RepresentationMenuBuilder());
-        builders.add(new RepresentationTemplateMenuBuilder());
-        builders.add(new NavigationToolsMenuBuilder());
-        builders.add(new VariablesMenuBuilder());
-        builders.add(new StyleMenuBuilder());
-        builders.add(new CustomizationMenuBuilder());
-        builders.add(new ConditionalStyleMenuBuilder());
-        builders.add(new OperationsMenuBuilder());
-        builders.add(new ValidationMenuBuilder());
-        builders.add(new ExtensionsMenuBuilder());
-
-        //Add contributions
-        builders.addAll(MenuBuildersManager.getInstance().getContributedMenuBuilders());
-
+        initMenusBuilders();
         other = new OthersMenuBuilder(builders);
         refactoring = new RefactoringMenu();
+    }
+
+    private void initMenusBuilders() {
+        Collection<AbstractMenuBuilder> allMenusBuilders = Lists.newArrayList();
+        allMenusBuilders.add(new EditToolsMenuBuilder());
+        allMenusBuilders.add(new RepresentationCreationToolsMenuBuilder());
+        allMenusBuilders.add(new MenuToolsMenuBuilder());
+        allMenusBuilders.add(new RepresentationMenuBuilder());
+        allMenusBuilders.add(new RepresentationTemplateMenuBuilder());
+        allMenusBuilders.add(new NavigationToolsMenuBuilder());
+        allMenusBuilders.add(new VariablesMenuBuilder());
+        allMenusBuilders.add(new StyleMenuBuilder());
+        allMenusBuilders.add(new CustomizationMenuBuilder());
+        allMenusBuilders.add(new ConditionalStyleMenuBuilder());
+        allMenusBuilders.add(new OperationsMenuBuilder());
+        allMenusBuilders.add(new ValidationMenuBuilder());
+        allMenusBuilders.add(new ExtensionsMenuBuilder());
+
+        // Add contributions
+        allMenusBuilders.addAll(MenuBuildersManager.getInstance().getContributedMenuBuilders());
+
+        // Avoid menu duplication
+        Multimap<String, AbstractMenuBuilder> c = LinkedHashMultimap.create();
+        for (AbstractMenuBuilder builder : allMenusBuilders) {
+            c.put(builder.getLabel(), builder);
+        }
+
+        for (String label : c.keySet()) {
+            if (c.get(label).size() > 1) {
+                builders.add(new CompositeMenuBuilder(label, c.get(label)));
+            } else {
+                builders.add(c.get(label).iterator().next());
+            }
+        }
+
     }
 
     /**

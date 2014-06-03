@@ -29,6 +29,7 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
 * @org.eclipse.sirius.editor.tools.api.menu.AbstractMenuBuilder.getLabel()@ visibility has been changed from protected to public.
+* @org.eclipse.sirius.editor.tools.api.menu.CompositeMenuBuilder@ has been introduced to avoid duplicated menu. A @CompositeMenuBuilder@ is created to encapsulate @AbstractMenuBuilder@ with the same label.
 
 h2(#sirius1.0M7). Changes in Sirius 1.0.0M7 (from Sirius 1.0M6)
 
