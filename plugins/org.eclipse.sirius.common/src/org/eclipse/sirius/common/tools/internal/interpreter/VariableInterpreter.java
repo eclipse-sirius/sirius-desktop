@@ -21,8 +21,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
 import org.eclipse.sirius.common.tools.api.interpreter.InterpreterStatusFactory;
-
-import com.google.common.collect.Maps;
+import org.eclipse.sirius.common.tools.api.interpreter.VariableManager;
 
 /**
  * A specialized interpreter which can only directly access variables (and
@@ -38,7 +37,15 @@ public class VariableInterpreter extends AbstractInterpreter implements org.ecli
     /** The self variable name. */
     public static final String SELF_VARIABLE_NAME = "self";
 
-    private final Map<String, Object> variables = Maps.newHashMap();
+    /** The variables manager. */
+    private final VariableManager variablesManager;
+
+    /**
+     * Default constructor.
+     */
+    public VariableInterpreter() {
+        variablesManager = new VariableManager();
+    }
 
     public String getPrefix() {
         return VariableInterpreter.PREFIX;
@@ -46,21 +53,26 @@ public class VariableInterpreter extends AbstractInterpreter implements org.ecli
 
     @Override
     public void setVariable(String name, Object value) {
-        variables.put(name, value);
+        variablesManager.setVariable(name, value);
+    }
+
+    @Override
+    public void unSetVariable(String name) {
+        variablesManager.unSetVariable(name);
     }
 
     @Override
     public Object getVariable(String name) {
-        return variables.get(name);
+        return variablesManager.getVariable(name);
     }
 
     @Override
     public void clearVariables() {
-        variables.clear();
+        variablesManager.clearVariables();
     }
 
     public Map<String, Object> getVariables() {
-        return Maps.newHashMap(variables);
+        return variablesManager.getVariables();
     }
 
     /**
@@ -91,8 +103,8 @@ public class VariableInterpreter extends AbstractInterpreter implements org.ecli
         if (target != null && variableName != null) {
             if (SELF_VARIABLE_NAME.equals(variableName)) {
                 result = target;
-            } else if (variables.containsKey(variableName)) {
-                result = variables.get(variableName);
+            } else if (variablesManager.getVariables().containsKey(variableName)) {
+                result = variablesManager.getVariable(variableName);
             } else {
                 throw new EvaluationException("Unknown variable \"" + variableName + "\".");
             }
