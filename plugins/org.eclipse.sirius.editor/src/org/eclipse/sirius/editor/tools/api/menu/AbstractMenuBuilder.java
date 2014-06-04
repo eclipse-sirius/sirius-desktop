@@ -10,9 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.tools.api.menu;
 
+import java.text.Collator;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedHashSet;
+import java.util.List;
 
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
@@ -34,6 +38,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.ui.IEditorPart;
 
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Abstract class to dynamicaly build treeview menus.
@@ -265,7 +270,16 @@ public abstract class AbstractMenuBuilder {
      */
     protected void populateManager(final IContributionManager manager, final Collection actions, final String contributionID) {
         if (actions != null) {
-            for (final IAction action : Iterables.filter(actions, IAction.class)) {
+            List<IAction> sortedActions = Lists.newArrayList(Iterables.filter(actions, IAction.class));
+            Comparator<IAction> comparator = new Comparator<IAction>() {
+                @Override
+                public int compare(IAction a1, IAction a2) {
+                    return Collator.getInstance().compare(a1.getText(), a2.getText());
+                }
+            };
+            Collections.sort(sortedActions, comparator);
+
+            for (final IAction action : sortedActions) {
                 if (contributionID != null) {
                     manager.insertBefore(contributionID, action);
                 } else {
