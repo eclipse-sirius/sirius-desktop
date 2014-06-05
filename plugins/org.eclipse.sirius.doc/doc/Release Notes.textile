@@ -4,6 +4,16 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for all major releases of Sirius.
 
+h2(#sirius2.0.0). Changes in Sirius 2.0.0 (from Sirius 1.0)
+
+h3. API Changes
+
+h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
+
+* The method @SWTBotSiriusDiagramEditor.setSnapToGrid(boolean)@ has been added. It allows to disable or enable the snapToGrid option for this editor.
+* The method @SWTBotSiriusDiagramEditor.setSnapToGrid(boolean, double, int)@ has been added. It allows to disable or enable the snapToGrid option for this editor. In case of activation, you can also set the grid spacing and the ruler units. 
+* The method @SWTBotSiriusDiagramEditor.disableSnapToGrid()@ has been deprecated, use @SWTBotSiriusDiagramEditor.setSnapToGrid(false)@ instead.
+
 h2(#sirius1.0.0). Changes in Sirius 1.0.0 (from Sirius 1.0.0M7)
 
 h3. User-Visible Changes

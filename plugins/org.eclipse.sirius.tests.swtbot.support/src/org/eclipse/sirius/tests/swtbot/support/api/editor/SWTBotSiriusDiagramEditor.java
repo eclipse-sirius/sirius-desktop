@@ -1393,9 +1393,44 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
 
     /**
      * Disable the snapToGrid option for this editor.
+     * 
+     * @deprecated Use {@link #setSnapToGrid(boolean)} instead.
      */
+    @Deprecated
     public void disableSnapToGrid() {
-        ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore().setValue(WorkspaceViewerProperties.SNAPTOGRID, false);
+        setSnapToGrid(false);
+    }
+
+    /**
+     * Disable or enable the snapToGrid option for this editor.
+     * 
+     * @param snap
+     *            true to enable, false to disable snap to grid property
+     */
+    public void setSnapToGrid(boolean snap) {
+        ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore().setValue(WorkspaceViewerProperties.SNAPTOGRID, snap);
+    }
+
+    /**
+     * Disable or enable the snapToGrid option for this editor.
+     * 
+     * @param snap
+     *            true to enable, false to disable snap to grid property
+     * @param gridSpacing
+     *            The grid spacing parameter
+     * @param rulerUnits
+     *            The ruler units value (0 for Inches, 1 for Centimeters, 2 for
+     *            Pixels)
+     */
+    public void setSnapToGrid(final boolean snap, final double gridSpacing, final int rulerUnits) {
+        PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
+            @Override
+            public void run() {
+                ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore().setValue(WorkspaceViewerProperties.SNAPTOGRID, snap);
+                ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore().setValue(WorkspaceViewerProperties.GRIDSPACING, gridSpacing);
+                ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore().setValue(WorkspaceViewerProperties.RULERUNIT, rulerUnits);
+            }
+        });
     }
 
     /**
