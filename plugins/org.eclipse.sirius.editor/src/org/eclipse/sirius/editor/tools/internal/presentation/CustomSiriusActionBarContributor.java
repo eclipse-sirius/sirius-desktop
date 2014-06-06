@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
+ *    Joao Martins <joaomartins27396@gmail.com> - Bug 436332
  *******************************************************************************/
 package org.eclipse.sirius.editor.tools.internal.presentation;
 
@@ -337,12 +338,17 @@ public class CustomSiriusActionBarContributor extends EditingDomainActionBarCont
         depopulateMenus();
         Collection<?> newChildDescriptors = null;
 
-        if (selection instanceof IStructuredSelection && ((IStructuredSelection) selection).size() == 1) {
-            final Object object = ((IStructuredSelection) selection).getFirstElement();
+        if (selection instanceof IStructuredSelection) {
+            IStructuredSelection stsel = (IStructuredSelection) selection;
+            if (stsel.size() == 1) {
+                final Object object = ((IStructuredSelection) selection).getFirstElement();
 
-            final EditingDomain domain = ((IEditingDomainProvider) activeEditorPart).getEditingDomain();
+                final EditingDomain domain = ((IEditingDomainProvider) activeEditorPart).getEditingDomain();
 
-            newChildDescriptors = domain.getNewChildDescriptors(object, null);
+                newChildDescriptors = domain.getNewChildDescriptors(object, null);
+            } else if (stsel.size() > 1) {
+                newChildDescriptors = Lists.newArrayList();
+            }
         }
 
         // Generate actions for selection; populate and redraw the menus.
