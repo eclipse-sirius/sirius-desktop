@@ -7,7 +7,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
- *    Joao Martins <joaomartins27396@gmail.com> - Bug 436332
+ *    Joao Martins <joaomartins27396@gmail.com> - Bug 434698
  *******************************************************************************/
 package org.eclipse.sirius.editor.tools.internal.presentation;
 
