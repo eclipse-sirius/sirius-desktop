@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.tests.swtbot.support;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.1.qualifier
 Bundle-Activator: org.eclipse.sirius.tests.swtbot.support.internal.DesignerSWTBotTestsSupportPlugin
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui;visibility:=reexport,
@@ -30,7 +30,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.sirius.diagram,
  org.eclipse.emf.common.ui;bundle-version="2.5.0",
  org.eclipse.ui.ide,
- org.eclipse.sirius.tests.support;bundle-version="1.0.0",
+ org.eclipse.sirius.tests.support;bundle-version="1.0.1",
  org.eclipse.sirius.common,
  org.eclipse.sirius.ecore.extender,
  org.eclipse.ui.views.log,
@@ -64,6 +64,6 @@ Export-Package: org.eclipse.sirius.tests.swtbot.support.api;uses:="org.eclipse.s
  org.eclipse.sirius.tests.swtbot.support.utils.tree
 Bundle-Vendor: %providerName
 Import-Package: org.eclipse.gmf.runtime.diagram.ui.actions.internal.l10n,
- org.eclipse.sirius.ext.base;version="1.0.0",
- org.eclipse.sirius.ext.draw2d.figure;version="1.0.0",
- org.eclipse.sirius.ext.gmf.runtime.editparts;version="1.0.0"
+ org.eclipse.sirius.ext.base;version="1.0.1",
+ org.eclipse.sirius.ext.draw2d.figure;version="1.0.1",
+ org.eclipse.sirius.ext.gmf.runtime.editparts;version="1.0.1"
