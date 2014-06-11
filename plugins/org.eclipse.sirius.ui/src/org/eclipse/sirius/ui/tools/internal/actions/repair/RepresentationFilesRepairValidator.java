@@ -168,7 +168,7 @@ public class RepresentationFilesRepairValidator {
                 if (saveSessions) {
                     session.save(new NullProgressMonitor());
                 }
-                session.save(new NullProgressMonitor());
+                session.close(new NullProgressMonitor());
             }
         }
     }
