@@ -14,6 +14,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.IPreferencesService;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
@@ -24,6 +25,8 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.hamcrest.Matcher;
+
+import com.google.common.base.Objects;
 
 /**
  * Object to manage diagram representations.
@@ -224,11 +227,12 @@ public class UIDiagramRepresentation extends AbstractUIRepresentation<SWTBotSiri
         return !prefs.getBoolean(DiagramUIPlugin.ID, SiriusDiagramUiPreferencesKeys.PREF_OLD_UI.name(), false, null);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public SWTBotSiriusDiagramEditor getEditor() {
-        return SWTBotSiriusHelper.getDesignerEditorContainingName(getRepresentationName());
+        String expectedTitle = getRepresentationName();
+        if (TestsUtil.isLunaPlatform()) {
+            expectedTitle = Objects.firstNonNull(getRepresentationName(), "").trim();
+        }
+        return SWTBotSiriusHelper.getDesignerEditorContainingName(expectedTitle);
     }
 }
