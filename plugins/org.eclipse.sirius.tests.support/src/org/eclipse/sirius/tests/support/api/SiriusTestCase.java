@@ -1683,7 +1683,18 @@ public abstract class SiriusTestCase extends TestCase {
      *            The editor on which disable the dialogs.
      */
     protected void disableUICallBackOnDialectEditor(DialectEditor editor) {
-        editor.setDialogFactory(new DummyDialectEditorDialogFactory());
+        editor.setDialogFactory(new DialectEditorDialogFactory() {
+
+            @Override
+            public void editorWillBeClosedInformationDialog(Shell parent) {
+                // do nothing
+            }
+
+            @Override
+            public void informUserOfEvent(int severity, String message) {
+                // do nothing
+            }
+        });
     }
 
     /**
