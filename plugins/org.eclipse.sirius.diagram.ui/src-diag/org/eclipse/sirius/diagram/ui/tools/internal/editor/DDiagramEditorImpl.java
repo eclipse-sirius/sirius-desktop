@@ -1790,6 +1790,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         // The input has changed, replace the existing gmfDiagramUpdater
         if (gmfDiagramUpdater != null) {
             gmfDiagramUpdater.dispose();
+            gmfDiagramUpdater = null;
         }
         if (representation instanceof DDiagram) {
             gmfDiagramUpdater = new GMFDiagramUpdater(getSession(), (DDiagram) representation);
