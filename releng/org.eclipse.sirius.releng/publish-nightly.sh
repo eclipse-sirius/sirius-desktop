@@ -64,18 +64,25 @@ export TARGET_ROOT="$SIRIUS_UPDATES_ROOT/$BUILD_TYPE"
 export TARGET_DIR="$TARGET_ROOT/$FULL_VERSION/$PLATFORM"
 
 ######################################################################
-# Publish the build
+# Publish the build and target definitions used
 ######################################################################
+
+publish_targets() {
+  TO="$1"
+  mkdir -p "$TO"
+  cp -a "$WORKSPACE"/releng/org.eclipse.sirius.targets/* "$TO"
+}
 
 # Ensure the target folder exists
 mkdir -p "$TARGET_DIR"
+
 # The actual publication of the p2 repo produced by the build
 cp -a "$WORKSPACE"/packaging/org.eclipse.sirius.update/target/repository/* "$TARGET_DIR"
-# Publish the target platform definitions used, so that dowstream projects can reference them
-mkdir -p "$TARGET_DIR/targets"
-cp -a "$WORKSPACE"/releng/org.eclipse.sirius.targets/* "$TARGET_DIR/targets"
-mkdir -p "$TARGET_ROOT/targets"
-cp -a "$WORKSPACE"/releng/org.eclipse.sirius.targets/* "$TARGET_ROOT/targets"
+
+# Publish the targets
+publish_targets "$TARGET_DIR/targets"
+publish_targets "$TARGET_ROOT/targets"
+
 # Publish a dump of the build environment, may be useful to debug
 env | sort > "$TARGET_DIR/build_env.txt"
 
@@ -119,9 +126,14 @@ EOF
 
 # First, a link for the $VERSION (e.g. "1.2.0/luna" => "1.2.0-NYYYYMMDD-HHMM/luna")
 create_redirect "$TARGET_ROOT/$VERSION/$PLATFORM" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM"
+publish_targets "$TARGET_ROOT/$VERSION/targets"
+
 # Also create a link for the $STREAM (e.g. "1.2.x/luna" => "1.2.0-NYYYYMMDD-HHMM/luna")
 create_redirect "$TARGET_ROOT/$STREAM/$PLATFORM" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM"
+publish_targets "$TARGET_ROOT/$STREAM/targets"
+
 # Also update the global "latest" links if we are building master
 if [ "master" = "$GIT_BRANCH" ]; then
     create_redirect "$TARGET_ROOT/latest/$PLATFORM" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM"
+    publish_targets "$TARGET_ROOT/latest/targets"
 fi
