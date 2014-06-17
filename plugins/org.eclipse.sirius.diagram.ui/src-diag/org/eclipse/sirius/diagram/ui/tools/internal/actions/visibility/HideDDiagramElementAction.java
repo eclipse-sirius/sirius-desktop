@@ -19,6 +19,7 @@ import java.util.Set;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -313,8 +314,13 @@ public class HideDDiagramElementAction extends Action implements IObjectActionDe
     }
 
     private static boolean isEditable(DDiagram diagram) {
-        IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(diagram.eResource().getResourceSet());
-        return permissionAuthority.canEditInstance(diagram);
+        boolean isEditable = false;
+        Resource resource = diagram.eResource();
+        if (resource != null) {
+            IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(resource.getResourceSet());
+            isEditable = permissionAuthority.canEditInstance(diagram);
+        }
+        return isEditable;
     }
 
     @Override
