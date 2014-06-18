@@ -202,7 +202,7 @@ public class VisibilityPropagatorAdapter extends EContentAdapter implements Noti
      * Dispose the current content adapter: remove it from the diagram.
      */
     public void dispose() {
-        if (diagram != null) {
+        if (diagram != null && diagram.eResource() != null) {
             diagram.eAdapters().remove(this);
         }
         diagram = null;
