@@ -8,6 +8,7 @@ _Summary_: If "Snap To Grid" property is enabled (in the "Rulers & Grid" tab of 
 | v0.1        | DRAFT    | 2014-05-22 | lredor    | Initial version. |
 | v0.2        | DRAFT    | 2014-05-28 | lredor    | Updates after team review. |
 | v0.3        | PROPOSAL    | 2014-06-11 | lredor    | Add screenshots. |
+| v0.4        | PROPOSAL    | 2014-06-19 | lredor    | Add ref to bugzilla 437544. |
 
 _Relevant tickets_:
 * "Bugzilla #435507", Element creation should support Snap To Grid":https://bugs.eclipse.org/bugs/show_bug.cgi?id=435507
@@ -35,7 +36,7 @@ Limits:
 h3. Existing bugs
 
 During the analysis of this issue, bugs have been discovered. They should be ideally be fixed but it is not in the scope of this evolution.
-* Create a border node on the left side of a container with vertical scroll: The creation location is wrongly shifted according to the container scroll and can be, in some case, created to the bottom side.
+* Create a border node on the left side of a container with vertical scroll: The creation location is wrongly shifted according to the container scroll and can be, in some case, created to the bottom side. The corresponding bug is "Bugzilla #437544":https://bugs.eclipse.org/bugs/show_bug.cgi?id=437544 .
 !images/bug-borderNodeCreationWithContainerScroll.png!
 * Moving a collapsed border node with the snap to grid enabled, aligns the collapsed border node with the grid crossing. It should align the expanded state to the grid crossing (and not the collapsed state).
 !images/bug-borderNodeMovedWithSnapToGridEnabled.png!
