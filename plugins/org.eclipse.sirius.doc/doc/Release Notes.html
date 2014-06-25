@@ -43,15 +43,6 @@
 			<li>It is now possible to select element that intersects the selection rectangle and not that is completely contained by the selection rectangle. This new behavior is enabled when user selects elements from right to left. The normal mode (previous mode) remains when the user selects elements from left to right. </li>
 		</ul>
 		<h3 id="APIChanges">API Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
-			<code>org.eclipse.sirius.common</code>
-		</h4>
-		<ul>
-			<li>The method 
-				<code>org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.getResourceSetSync(TransactionalEditingDomain)</code> has been added to look for a 
-				<code>ResourceSetSync</code> without creating a new one if no synchronizer currently exists.
-			</li>
-		</ul>
 		<h4 id="Changesinorg.eclipse.sirius">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
@@ -60,6 +51,18 @@
 				<code>VIEWPOINT_REGISTRY_INITIAL_SIZE</code> preference and 
 				<code>VIEWPOINT_REGISTRY_INITIAL_SIZE_DEFAULT_VALUE</code> default value has been removed from 
 				<code>org.eclipse.sirius.tools.api.preferences.DCorePreferences</code>.
+			</li>
+			<li>The method 
+				<code>org.eclipse.sirius.business.api.query.DRepresentationQuery.isDanglingRepresentation()</code> has been added to introduce the possibility to check if a representation is a dangling representation, ie. if its a DSemanticDecorator, its target is null or does not belong to a session.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
+			<code>org.eclipse.sirius.common</code>
+		</h4>
+		<ul>
+			<li>The method 
+				<code>org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.getResourceSetSync(TransactionalEditingDomain)</code> has been added to look for a 
+				<code>ResourceSetSync</code> without creating a new one if no synchronizer currently exists.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 

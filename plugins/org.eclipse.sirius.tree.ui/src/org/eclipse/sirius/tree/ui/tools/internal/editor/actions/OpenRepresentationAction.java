@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,7 +40,7 @@ public final class OpenRepresentationAction extends Action {
      * @param image
      *            the action's image, or <code>null</code> if there is no image
      * @param representation
-     *            the representation to open.
+     *            the representation to open. Caller has to check this is not a dangling representation, see {@link org.eclipse.sirius.business.api.query.DRepresentationQuery.isDanglingRepresentation()}.
      * @param session
      *            the session in which to open it.
      */
