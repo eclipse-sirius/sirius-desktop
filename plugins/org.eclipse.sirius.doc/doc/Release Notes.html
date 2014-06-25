@@ -39,6 +39,46 @@
 		<p>This document contains the release notes for all major releases of Sirius.</p>
 		<h2 id="sirius2.0.0">Changes in Sirius 2.0.0 (from Sirius 1.0)</h2>
 		<h3 id="APIChanges">API Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius.ext.gmf.runtime">Changes in 
+			<code>org.eclipse.sirius.ext.gmf.runtime</code>
+		</h4>
+		<ul>
+			<li>Several utilities have been added in 
+				<code>org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper</code>:
+				<ul>
+					<li>
+						<code>applyZoomOnPoint(IGraphicalEditPart, Point)</code>: Apply the current zoom, of the diagram of the 
+						<code>IGraphicalEditPart</code>, to the 
+						<code>Point</code>.
+					</li>
+					<li>
+						<code>getAnchorPoint(IGraphicalEditPart parent, Anchor anchor)</code>: Get the 
+						<code>Point</code> (absolute draw2d coordinates) corresponding to this 
+						<code>Anchor</code>.
+					</li>
+					<li>
+						<code>getAnchorPoint(IGraphicalEditPart parent, IdentityAnchor anchor)</code>: Get the 
+						<code>Point</code> (absolute draw2d coordinates) corresponding to this 
+						<code>IdentityAnchor</code>.
+					</li>
+					<li>
+						<code>getIntersection(Point, Point, IGraphicalEditPart, boolean)</code>: Get intersection between a line between lineOrigin and lineTerminus, and the rectangle bounds of the 
+						<code>IGraphicalEditPart</code>. If there are several intersections, the shortest is returned.
+					</li>
+					<li>
+						<code>getAbsoluteBounds(IGraphicalEditPart)</code>: Get the absolute bounds of this 
+						<code>IGraphicalEditPart</code>.
+					</li>
+					<li>
+						<code>getAbsoluteBoundsIn100Percent(IGraphicalEditPart)</code>: Get the absolute bounds of this 
+						<code>IGraphicalEditPart</code> but adapted according to the current zoom level.
+					</li>
+					<li>
+						<code>isSnapToGridEnabled(EditPart)</code>: Return true if the snapToGrid is enabled for the diagram containing this edit part, false otherwise.
+					</li>
+				</ul>
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>

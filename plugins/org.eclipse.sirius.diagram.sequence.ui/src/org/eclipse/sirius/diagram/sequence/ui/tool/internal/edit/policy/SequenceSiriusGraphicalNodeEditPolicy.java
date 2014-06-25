@@ -25,6 +25,7 @@ import org.eclipse.gef.editpolicies.FeedbackHelper;
 import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.gef.requests.ReconnectRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.INodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateConnectionViewRequest;
 import org.eclipse.gmf.runtime.notation.View;
@@ -255,4 +256,15 @@ public class SequenceSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNodeEd
         return result;
     }
 
+    /**
+     * The snap to grid should be disabled in sequence diagram, but to avoid
+     * confusion the specific method for edge behavior with snap to grid is
+     * disabled.
+     * 
+     * {@inheritDoc}
+     */
+    @Override
+    protected EdgeLayoutData getEdgeLayoutDataWithSnapToGrid(CreateConnectionRequest request, INodeEditPart sourceEditPart, INodeEditPart targetEditPart, Point sourceLocation, Point targetLocation) {
+        return super.getEdgeLayoutData(request, sourceEditPart, targetEditPart, sourceLocation, targetLocation);
+    }
 }
