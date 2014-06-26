@@ -30,13 +30,13 @@ import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsM
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramElementSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSynchronizer;
+import org.eclipse.sirius.diagram.business.internal.experimental.sync.DEdgeCandidate;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.tools.api.refresh.BestMappingGetter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
@@ -117,10 +117,10 @@ public class CreateDEdgeTask extends AbstractCommandTask implements ICreationTas
             BestMappingGetter bestMappingGetter = new BestMappingGetter(sourceView, targetView, semanticElt);
             EdgeMapping bestEdgeMapping = bestMappingGetter.getBestEdgeMapping(tool.getEdgeMappings());
             if (bestEdgeMapping != null) {
-                Option<DEdge> createdDEdgeOption = dDiagramSynchronizer.createEdgeMapping(mappingManager, mappingsToEdgeTargets, bestEdgeMapping, edgeToMappingBasedDecoration,
-                        edgeToSemanticBasedDecoration);
-                if (createdDEdgeOption.some()) {
-                    createdDEdges.add(createdDEdgeOption.get());
+                DEdgeCandidate dEdgeCandidate = new DEdgeCandidate(bestEdgeMapping, semanticElt, sourceView, targetView);
+                DEdge createdDEdge = dDiagramElementSynchronizer.createNewEdge(mappingManager, dEdgeCandidate, mappingsToEdgeTargets, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration);
+                if (createdDEdge != null) {
+                    createdDEdges.add(createdDEdge);
                 }
             }
         }
