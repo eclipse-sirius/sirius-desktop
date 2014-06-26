@@ -26,7 +26,6 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gef.requests.AlignmentRequest;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
@@ -140,7 +139,7 @@ public abstract class AbstractFrameResizableEditPolicy extends AirResizableEditP
         Range expansionZone = validator.getExpansionZone();
         if (!expansionZone.isEmpty()) {
             Rectangle screenRange = new Rectangle(0, expansionZone.getLowerBound(), 0, expansionZone.width());
-            screenRange.performScale(GraphicalHelper.getZoom((IGraphicalEditPart) getHost()));
+            screenRange.performScale(GraphicalHelper.getZoom(getHost()));
             Range expand = RangeHelper.verticalRange(screenRange);
 
             RangeGuide expansion = new RangeGuide(validator.isValid() ? ColorConstants.blue : ColorConstants.red, expand, true);
@@ -155,7 +154,7 @@ public abstract class AbstractFrameResizableEditPolicy extends AirResizableEditP
     private void feedBackConflicts(AbstractInteractionFrameValidator validator) {
         for (Integer conflict : validator.getInvalidPositions()) {
             Point conflictingPosition = new Point(0, conflict);
-            conflictingPosition.performScale(GraphicalHelper.getZoom((IGraphicalEditPart) getHost()));
+            conflictingPosition.performScale(GraphicalHelper.getZoom(getHost()));
 
             Rectangle bounds = getFeedbackLayer().getBounds().getCopy();
             bounds.y = conflictingPosition.y;

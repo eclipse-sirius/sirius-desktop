@@ -15,6 +15,7 @@ import org.eclipse.draw2d.FreeformViewport;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.ext.draw2d.figure.FigureUtilities;
@@ -39,7 +40,7 @@ public final class GraphicalHelper {
      *            the current part
      * @return the zoom factor
      */
-    public static double getZoom(IGraphicalEditPart part) {
+    public static double getZoom(EditPart part) {
         Preconditions.checkNotNull(part);
         double scale = 1.0;
         if (part.getRoot() instanceof DiagramRootEditPart) {

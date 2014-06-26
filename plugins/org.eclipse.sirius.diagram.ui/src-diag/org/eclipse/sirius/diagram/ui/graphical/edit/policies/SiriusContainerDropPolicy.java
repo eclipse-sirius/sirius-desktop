@@ -374,7 +374,7 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
                     final Point absoluteLayoutConstraint = shapeEditPart.getFigure().getBounds().getTopLeft().getCopy();
                     shapeEditPart.getFigure().translateToAbsolute(absoluteLayoutConstraint);
                     GraphicalHelper.screen2logical(absoluteLayoutConstraint, (IGraphicalEditPart) getHost());
-                    absoluteLayoutConstraint.translate(moveDelta.getScaled(1.0d / GraphicalHelper.getZoom((IGraphicalEditPart) getHost())));
+                    absoluteLayoutConstraint.translate(moveDelta.getScaled(1.0d / GraphicalHelper.getZoom(getHost())));
 
                     boolean isBorderedTarget = editPart instanceof AbstractDiagramBorderNodeEditPart;
                     final Point computedLayoutConstraint = computeLocationHint(absoluteLayoutConstraint, isBorderedTarget, isConcernedBorderedNode);
