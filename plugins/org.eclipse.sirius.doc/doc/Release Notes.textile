@@ -8,6 +8,10 @@ h2(#sirius2.0.0). Changes in Sirius 2.0.0 (from Sirius 1.0)
 
 h3. API Changes
 
+h4. Changes in @org.eclipse.sirius.diagram.ui@
+
+* The method @org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery.getDefaultDimension()@ has been added to compute the default size of a DNodeContainer.
+
 h4. Changes in @org.eclipse.sirius.ext.gmf.runtime@
 
 * Several utilities have been added in @org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper@:

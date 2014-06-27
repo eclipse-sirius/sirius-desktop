@@ -16,6 +16,7 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.DragTracker;
@@ -46,10 +47,10 @@ import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
-import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.description.style.FlatContainerStyleDescription;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
+import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramContainerEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
@@ -350,30 +351,22 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
      * {@inheritDoc}
      */
     protected NodeFigure createNodePlate() {
-        NodeFigure result;
+        Dimension defaultSize = LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION;
         final EObject eObj = resolveSemanticElement();
+        if (eObj instanceof DNodeContainer) {
+            defaultSize = new DNodeContainerQuery((DNodeContainer) eObj).getDefaultDimension();
+        }
+        NodeFigure result;
         if (eObj instanceof DStylizable && eObj instanceof DDiagramElement) {
             final DStylizable viewNode = (DStylizable) eObj;
             Option<LabelBorderStyleDescription> hasLabelBorderStyle = hasLabelBorderStyle(viewNode);
             if (hasLabelBorderStyle.some()) {
-                result = new ContainerWithTitleBlockFigure(getMapMode().DPtoLP(40), getMapMode().DPtoLP(40), viewNode, hasLabelBorderStyle.get());
+                result = new ContainerWithTitleBlockFigure(getMapMode().DPtoLP(defaultSize.width), getMapMode().DPtoLP(defaultSize.height), viewNode, hasLabelBorderStyle.get());
             } else {
-                result = new DefaultSizeNodeFigure(getMapMode().DPtoLP(40), getMapMode().DPtoLP(40));
+                result = new DefaultSizeNodeFigure(getMapMode().DPtoLP(defaultSize.width), getMapMode().DPtoLP(defaultSize.height));
             }
         } else {
-            result = new DefaultSizeNodeFigure(getMapMode().DPtoLP(40), getMapMode().DPtoLP(40));
-        }
-
-        /*
-         * here we need to set a default size to 150, 70 because this was the
-         * image size before the 4.0
-         */
-        if (result instanceof DefaultSizeNodeFigure && eObj instanceof DNodeContainer) {
-            final DNodeContainer container = (DNodeContainer) eObj;
-            if (container.getOwnedStyle() instanceof FlatContainerStyle && !new DDiagramElementContainerExperimentalQuery(container).isRegion()
-                    && !new DNodeContainerExperimentalQuery(container).isRegionContainer()) {
-                ((DefaultSizeNodeFigure) result).setDefaultSize(LayoutUtils.DEFAULT_CONTAINER_DIMENSION);
-            }
+            result = new DefaultSizeNodeFigure(getMapMode().DPtoLP(defaultSize.width), getMapMode().DPtoLP(defaultSize.height));
         }
 
         return result;

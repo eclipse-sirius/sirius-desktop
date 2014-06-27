@@ -35,6 +35,7 @@ import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBorderItemLocator;
@@ -370,8 +371,10 @@ public final class GMFHelper {
         Dimension defaultSize = new Dimension(-1, -1);
         if (abstractDNode instanceof DNode) {
             defaultSize = new DNodeQuery((DNode) abstractDNode).getDefaultDimension();
-        } else if (abstractDNode instanceof DNodeContainer || abstractDNode instanceof DNodeList) {
-            defaultSize = LayoutUtils.DEFAULT_CONTAINER_DIMENSION;
+        } else if (abstractDNode instanceof DNodeContainer) {
+            defaultSize = new DNodeContainerQuery((DNodeContainer) abstractDNode).getDefaultDimension();
+        } else if (abstractDNode instanceof DNodeList) {
+            defaultSize = LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION;
         }
         return defaultSize;
     }
