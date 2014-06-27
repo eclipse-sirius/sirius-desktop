@@ -93,7 +93,8 @@ public class WorkspaceImagePathSelector extends SelectionAdapter {
                 // In the case of a file, we'll check if its extension is one of
                 // the expected
                 IFile file = (IFile) element;
-                isValid = extensions.contains(file.getFileExtension().toLowerCase());
+                String fileExtension = file.getFileExtension();
+                isValid = fileExtension != null && extensions.contains(fileExtension.toLowerCase());
             } else if (element instanceof IContainer) {
                 // In the case of a container, we'll probe its content to see if
                 // it contains a valid file
