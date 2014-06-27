@@ -565,19 +565,19 @@ public class DBorderItemLocator extends BorderItemLocator {
             if (suggestedLocation.x != westX) {
                 newX = westX;
             }
-            if (suggestedLocation.y < bounds.getTopLeft().y) {
-                newY = northY + borderItemSize.height;
+            if (suggestedLocation.y < parentFigureY) {
+                newY = parentFigureY;
             } else if (suggestedLocation.y > bounds.getBottomLeft().y - borderItemSize.height) {
-                newY = southY - borderItemSize.height;
+                newY = bounds.getBottomLeft().y - borderItemSize.height;
             }
         } else if (suggestedSide == PositionConstants.EAST) {
             if (suggestedLocation.x != eastX) {
                 newX = eastX;
             }
-            if (suggestedLocation.y < bounds.getTopLeft().y) {
-                newY = northY + borderItemSize.height;
+            if (suggestedLocation.y < parentFigureY) {
+                newY = parentFigureY;
             } else if (suggestedLocation.y > bounds.getBottomLeft().y - borderItemSize.height) {
-                newY = southY - borderItemSize.height;
+                newY = bounds.getBottomLeft().y - borderItemSize.height;
             }
         } else if (suggestedSide == PositionConstants.SOUTH) {
             if (suggestedLocation.y != southY) {
@@ -588,10 +588,10 @@ public class DBorderItemLocator extends BorderItemLocator {
                 // case, we will center the border item on the south side of the
                 // parent.
                 newX = parentFigureX - (borderItemSize.width - bounds.width) / 2;
-            } else if (suggestedLocation.x < bounds.getBottomLeft().x) {
-                newX = westX + borderItemSize.width;
+            } else if (suggestedLocation.x < parentFigureX) {
+                newX = parentFigureX;
             } else if (suggestedLocation.x > bounds.getBottomRight().x - borderItemSize.width) {
-                newX = eastX - borderItemSize.width;
+                newX = bounds.getBottomRight().x - borderItemSize.width;
             }
         } else { // NORTH
             if (suggestedLocation.y != northY) {
@@ -602,10 +602,10 @@ public class DBorderItemLocator extends BorderItemLocator {
                 // case, we will center the border item on the north side of the
                 // parent.
                 newX = parentFigureX - (borderItemSize.width - bounds.width) / 2;
-            } else if (suggestedLocation.x < bounds.getBottomLeft().x) {
-                newX = westX + borderItemSize.width;
+            } else if (suggestedLocation.x < parentFigureX) {
+                newX = parentFigureX;
             } else if (suggestedLocation.x > bounds.getBottomRight().x - borderItemSize.width) {
-                newX = eastX - borderItemSize.width;
+                newX = bounds.getBottomRight().x - borderItemSize.width;
             }
         }
         return new Point(newX, newY);
