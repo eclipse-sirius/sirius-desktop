@@ -1004,6 +1004,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
                 if (!result.isEmpty()) {
                     try {
+                        getDiagramGraphicalViewer().reveal(result.get(0));
                         getDiagramGraphicalViewer().setSelection(new StructuredSelection(result));
                     } catch (IllegalArgumentException e) {
                         // This can happen when selected a CDOObject
