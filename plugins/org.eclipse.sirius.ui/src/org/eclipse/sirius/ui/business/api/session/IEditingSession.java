@@ -25,7 +25,7 @@ import org.eclipse.ui.IEditorPart;
  * @author cbrun
  */
 public interface IEditingSession {
-    
+
     /**
      * Get the wrapped {@link Session}.
      * 
@@ -33,9 +33,11 @@ public interface IEditingSession {
      * @since 0.9.0
      */
     Session getSession();
-    
+
     /**
      * Attach an editor to the current {@link IEditingSession}.
+     * 
+     * This is called when a {@link DialectEditor} is opened
      * 
      * @param editor
      *            editor to attach.
@@ -54,6 +56,8 @@ public interface IEditingSession {
 
     /**
      * Detach an editor from the current Session.
+     * 
+     * This is called when a {@link DialectEditor} is closed
      * 
      * @param editor
      *            editor to detach.
@@ -191,11 +195,12 @@ public interface IEditingSession {
      */
     DialectEditor getEditor(DRepresentation representation);
 
-    
     /**
      * Notify the editing session about the event given as parameter.
-     * @param event the event
+     * 
+     * @param event
+     *            the event
      */
     void notify(EditingSessionEvent event);
-    
+
 }

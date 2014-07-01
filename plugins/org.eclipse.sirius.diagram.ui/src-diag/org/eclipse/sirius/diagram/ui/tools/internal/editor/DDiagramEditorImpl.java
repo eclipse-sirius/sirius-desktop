@@ -1248,20 +1248,6 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor#disposeDocumentProvider()
-     */
-    @Override
-    protected void disposeDocumentProvider() {
-        final IEditingSession sess = getUISession();
-        if (sess != null) {
-            sess.detachEditor(this);
-        }
-        super.disposeDocumentProvider();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.eclipse.sirius.diagram.part.SiriusDiagramEditor#getAdapter(java.lang.Class)
      */
     @Override
