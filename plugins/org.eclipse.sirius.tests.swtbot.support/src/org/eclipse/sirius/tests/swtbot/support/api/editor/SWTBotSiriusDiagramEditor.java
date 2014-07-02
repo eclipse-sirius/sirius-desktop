@@ -18,21 +18,27 @@ import java.util.Set;
 
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gef.Request;
+import org.eclipse.gef.SnapToHelper;
 import org.eclipse.gef.editparts.AbstractConnectionEditPart;
 import org.eclipse.gef.editparts.ZoomManager;
 import org.eclipse.gef.palette.ToolEntry;
+import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gef.requests.DirectEditRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.properties.WorkspaceViewerProperties;
+import org.eclipse.gmf.runtime.diagram.ui.internal.ruler.SnapToGridEx;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
@@ -79,6 +85,8 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
+import org.hamcrest.BaseMatcher;
+import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.junit.Assert;
 
@@ -1623,5 +1631,42 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
         } else {
             throw new WidgetNotFoundException(String.format("Expected to find one text control, but found %s.  Is the editor in direct-edit mode?", controls.size()));
         }
+    }
+
+    /**
+     * Get the diagram edit part of this editor.
+     * 
+     * @return The diagram edit part of this editor.
+     */
+    public DiagramEditPart getDiagramEditPart() {
+        final List<SWTBotGefEditPart> parts = editParts(new BaseMatcher<EditPart>() {
+
+            public void describeTo(final Description description) {
+            }
+
+            public boolean matches(final Object item) {
+                return item instanceof DiagramEditPart;
+            }
+
+        });
+        return (DiagramEditPart) parts.iterator().next().part();
+    }
+
+    /**
+     * Adapt location according to SnapToHelper.
+     * 
+     * @param expectedAbsoluteLocation
+     *            The initial expected location
+     * @return The adapted location
+     */
+    public PrecisionPoint adaptLocationToSnap(Point expectedAbsoluteLocation) {
+        IGraphicalEditPart diagramEditPart = getDiagramEditPart();
+        SnapToHelper snapToHelper = new SnapToGridEx(diagramEditPart);
+        PrecisionPoint preciseLocation = new PrecisionPoint(expectedAbsoluteLocation);
+        diagramEditPart.getFigure().translateToAbsolute(preciseLocation);
+        PrecisionPoint result = new PrecisionPoint(preciseLocation);
+        snapToHelper.snapPoint(new CreateRequest(), PositionConstants.HORIZONTAL | PositionConstants.VERTICAL, preciseLocation, result);
+        diagramEditPart.getFigure().translateToRelative(result);
+        return result;
     }
 }

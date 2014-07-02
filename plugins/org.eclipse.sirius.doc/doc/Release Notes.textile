@@ -28,6 +28,8 @@ h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 * The method @SWTBotSiriusDiagramEditor.setSnapToGrid(boolean)@ has been added. It allows to disable or enable the snapToGrid option for this editor.
 * The method @SWTBotSiriusDiagramEditor.setSnapToGrid(boolean, double, int)@ has been added. It allows to disable or enable the snapToGrid option for this editor. In case of activation, you can also set the grid spacing and the ruler units. 
 * The method @SWTBotSiriusDiagramEditor.disableSnapToGrid()@ has been deprecated, use @SWTBotSiriusDiagramEditor.setSnapToGrid(false)@ instead.
+* The method @SWTBotSiriusDiagramEditor.adaptLocationToSnap(Point)@ has been added. It allows to adapt location according to SnapToHelper of the current editor.
+* The method @SWTBotSiriusDiagramEditor.getDiagramEditPart()@ has been added. It allows to retrieve the diagram edit part of the current editor.
 
 h2(#sirius1.0.0). Changes in Sirius 1.0.0 (from Sirius 1.0.0M7)
 
