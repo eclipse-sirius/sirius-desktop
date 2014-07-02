@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 import org.eclipse.draw2d.ColorConstants;
-import org.eclipse.draw2d.Cursors;
+import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.Graphics;
@@ -30,6 +30,7 @@ import org.eclipse.draw2d.Viewport;
 import org.eclipse.draw2d.ViewportUtilities;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.GraphicalEditPart;
@@ -38,6 +39,7 @@ import org.eclipse.gef.KeyHandler;
 import org.eclipse.gef.LayerConstants;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.RequestConstants;
+import org.eclipse.gef.SharedCursors;
 import org.eclipse.gef.editparts.LayerManager;
 import org.eclipse.gef.tools.AbstractTool;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
@@ -117,7 +119,7 @@ public class RubberbandSelectionTool extends AbstractTool {
      * Creates a new MarqueeSelectionTool.
      */
     public RubberbandSelectionTool() {
-        setDefaultCursor(Cursors.CROSS);
+        setDefaultCursor(SharedCursors.CROSS);
         setUnloadWhenFinished(false);
     }
 
@@ -125,6 +127,7 @@ public class RubberbandSelectionTool extends AbstractTool {
 
         List newSelections = new ArrayList();
         Iterator children = getAllChildren().iterator();
+        Rectangle marqueeBounds = getMarqueeBounds();
 
         int selectionMode = SELECTION_CONTAINED_MODE;
         if (feedBackStartLocation != null && feedBackStartLocation.x != getMarqueeBounds().getLeft().x) {
@@ -138,22 +141,26 @@ public class RubberbandSelectionTool extends AbstractTool {
         // children who are not visible
         while (children.hasNext()) {
             EditPart child = (EditPart) children.next();
-            if (!child.isSelectable()) {
+            IFigure figure = ((GraphicalEditPart) child).getFigure();
+            if (!child.isSelectable() || child.getTargetEditPart(MARQUEE_REQUEST) != child || !((child instanceof IBorderItemEditPart && isBorderFigureVisible(figure)) || isFigureVisible(figure))) {
                 continue;
             }
-            IFigure figure = ((GraphicalEditPart) child).getFigure();
-            Rectangle r = figure.getBounds().getCopy();
+            Rectangle r;
+            if (child instanceof ConnectionEditPart) {
+                // RATLC00569348 For connection, get the bounds of connection
+                // points rather than connection figure since the
+                // figure's bounds contain the bounds of all connection children
+                // and would require selection rectangle
+                // to be larger than expected in some cases
+                r = ((Connection) figure).getPoints().getBounds().getCopy();
+            } else {
+                r = figure.getBounds().getCopy();
+            }
             figure.translateToAbsolute(r);
-
-            Rectangle marqueeBounds = getMarqueeBounds();
             getMarqueeFeedbackFigure().translateToRelative(r);
-            if (child.getTargetEditPart(MARQUEE_REQUEST) == child) {
-                if ((selectionMode == SELECTION_CONTAINED_MODE && marqueeBounds.contains(r.getTopLeft()) && marqueeBounds.contains(r.getBottomRight()))
-                        || (selectionMode == SELECTION_TOUCHED_MODE && marqueeBounds.intersects(r))) {
-                    if ((child instanceof IBorderItemEditPart && isBorderFigureVisible(figure)) || isFigureVisible(figure)) {
-                        newSelections.add(child);
-                    }
-                }
+            if ((selectionMode == SELECTION_CONTAINED_MODE && marqueeBounds.contains(r.getTopLeft()) && marqueeBounds.contains(r.getBottomRight()))
+                    || (selectionMode == SELECTION_TOUCHED_MODE && marqueeBounds.intersects(r))) {
+                newSelections.add(child);
             }
         }
         return newSelections;
@@ -489,9 +496,9 @@ public class RubberbandSelectionTool extends AbstractTool {
         }
         super.setViewer(viewer);
         if (viewer instanceof GraphicalViewer) {
-            setDefaultCursor(Cursors.CROSS);
+            setDefaultCursor(SharedCursors.CROSS);
         } else {
-            setDefaultCursor(Cursors.NO);
+            setDefaultCursor(SharedCursors.NO);
         }
         if (viewer != null) {
             weakReference = new WeakReference(viewer);
