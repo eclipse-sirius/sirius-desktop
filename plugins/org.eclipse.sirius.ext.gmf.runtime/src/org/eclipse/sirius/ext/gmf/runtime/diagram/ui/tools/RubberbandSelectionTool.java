@@ -11,7 +11,7 @@
  *    Obeo - Add "Touched" mode
  ****************************************************************************/
 // CHECKSTYLE:OFF
-package org.eclipse.sirius.diagram.ui.tools.internal.ui;
+package org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -27,6 +27,7 @@ import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Viewport;
+import org.eclipse.draw2d.ViewportUtilities;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.EditPart;
