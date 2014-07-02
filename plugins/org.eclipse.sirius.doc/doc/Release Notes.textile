@@ -4,6 +4,12 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for all major releases of Sirius.
 
+h2(#sirius2.0.0). Changes in Sirius 2.0.0 (from Sirius 1.0.0)
+
+h3. User-Visible Changes
+
+* It is now possible to select element that intersects the selection rectangle and not that is completely contained by the selection rectangle. This new behavior is enabled when user selects elements from right to left. The normal mode (previous mode) remains when the user selects elements from left to right. 
+
 h2(#sirius1.0.0). Changes in Sirius 1.0.0 (from Sirius 1.0.0M7)
 
 h3. User-Visible Changes

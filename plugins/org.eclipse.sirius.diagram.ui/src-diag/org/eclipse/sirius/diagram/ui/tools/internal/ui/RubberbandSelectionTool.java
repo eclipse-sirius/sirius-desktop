@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2000, 2008 IBM Corporation and others.
+ * Copyright (c) 2000, 2014 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  *    IBM Corporation - initial API and implementation
  *    Obeo - Allow ports selection (IBorderItemEditPart)
+ *    Obeo - Add "Touched" mode
  ****************************************************************************/
 // CHECKSTYLE:OFF
 package org.eclipse.sirius.diagram.ui.tools.internal.ui;
@@ -51,6 +52,11 @@ import org.eclipse.swt.widgets.Display;
  * key is pressed at the beginning of the drag, the enclosed items will have
  * their selection state inverted.
  * <P>
+ * If the selection is made from left to right, the behavior is the one
+ * described previously. But if the selection is made from right to left the
+ * items that intersect the selection rectangle are concerned (and not only
+ * enclosed items).
+ * <P>
  * By default, only editparts whose figure's are on the primary layer will be
  * considered within the enclosed rectangle.
  * 
@@ -77,6 +83,18 @@ public class RubberbandSelectionTool extends AbstractTool {
     static final int TOGGLE_MODE = 1;
 
     static final int APPEND_MODE = 2;
+
+    /**
+     * When marquee is made from left to right, it is a standard selection:
+     * select elements wholly inside the marquee selection rectangle
+     */
+    static final int SELECTION_CONTAINED_MODE = 1;
+
+    /**
+     * When marquee is made from right to left, it is an alternative selection:
+     * select elements partially inside the marquee selection rectangle
+     */
+    static final int SELECTION_TOUCHED_MODE = 2;
 
     private int mode;
 
@@ -107,6 +125,13 @@ public class RubberbandSelectionTool extends AbstractTool {
         List newSelections = new ArrayList();
         Iterator children = getAllChildren().iterator();
 
+        int selectionMode = SELECTION_CONTAINED_MODE;
+        if (feedBackStartLocation != null && feedBackStartLocation.x != getMarqueeBounds().getLeft().x) {
+            // Marquee from right to left (alternative selection: select
+            // elements partially inside the marquee selection rectangle
+            selectionMode = SELECTION_TOUCHED_MODE;
+        }
+
         // Calculate new selections based on which children fall
         // inside the marquee selection rectangle. Do not select
         // children who are not visible
@@ -121,9 +146,12 @@ public class RubberbandSelectionTool extends AbstractTool {
 
             Rectangle marqueeBounds = getMarqueeBounds();
             getMarqueeFeedbackFigure().translateToRelative(r);
-            if (marqueeBounds.contains(r.getTopLeft()) && marqueeBounds.contains(r.getBottomRight()) && child.getTargetEditPart(MARQUEE_REQUEST) == child) {
-                if ((child instanceof IBorderItemEditPart && isBorderFigureVisible(figure)) || isFigureVisible(figure)) {
-                    newSelections.add(child);
+            if (child.getTargetEditPart(MARQUEE_REQUEST) == child) {
+                if ((selectionMode == SELECTION_CONTAINED_MODE && marqueeBounds.contains(r.getTopLeft()) && marqueeBounds.contains(r.getBottomRight()))
+                        || (selectionMode == SELECTION_TOUCHED_MODE && marqueeBounds.intersects(r))) {
+                    if ((child instanceof IBorderItemEditPart && isBorderFigureVisible(figure)) || isFigureVisible(figure)) {
+                        newSelections.add(child);
+                    }
                 }
             }
         }
