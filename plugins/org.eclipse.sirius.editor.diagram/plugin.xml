@@ -421,6 +421,30 @@
                 tab="viewpoint.tab.advanced">
         <input type="org.eclipse.sirius.diagram.description.style.EdgeStyleDescription"/>
       </propertySection>
+       <propertySection
+               class="org.eclipse.sirius.diagram.editor.properties.sections.style.edgestyledescription.EdgeStyleDescriptionEndsCenteringPropertySection"
+               id="style.section.edgeStyleDescription.EndsCentering"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.style.edgestyledescription.EdgeStyleDescriptionEndsCenteringFilter"
+               afterSection="style.section.edgeStyleDescription.FoldingStyle"
+                tab="viewpoint.tab.advanced">
+        <input type="org.eclipse.sirius.diagram.description.style.EdgeStyleDescription"/>
+      </propertySection>
+      <propertySection
+               class="org.eclipse.sirius.diagram.editor.properties.sections.style.edgestyledescription.EdgeStyleDescriptionCenteredTargetMappingsPropertySection"
+               id="style.section.edgeStyleDescription.CenteredTargetMappings"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.style.edgestyledescription.EdgeStyleDescriptionCenteredTargetMappingsFilter"
+               afterSection="style.section.edgeStyleDescription.CenteredSourceMappings"
+                tab="viewpoint.tab.advanced">
+        <input type="org.eclipse.sirius.diagram.description.style.EdgeStyleDescription"/>
+      </propertySection>
+  	  <propertySection
+               class="org.eclipse.sirius.diagram.editor.properties.sections.style.edgestyledescription.EdgeStyleDescriptionCenteredSourceMappingsPropertySection"
+               id="style.section.edgeStyleDescription.CenteredSourceMappings"
+               filter="org.eclipse.sirius.diagram.editor.properties.filters.style.edgestyledescription.EdgeStyleDescriptionCenteredSourceMappingsFilter"
+               afterSection="style.section.edgeStyleDescription.EndsCentering"
+                tab="viewpoint.tab.advanced">
+        <input type="org.eclipse.sirius.diagram.description.style.EdgeStyleDescription"/>
+      </propertySection>
   	  <propertySection
                class="org.eclipse.sirius.diagram.editor.properties.sections.style.edgestyledescription.EdgeStyleDescriptionTargetArrowPropertySection"
                id="style.section.edgeStyleDescription.TargetArrow"
