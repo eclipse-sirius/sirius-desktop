@@ -2567,13 +2567,40 @@ public interface StylePackage extends EPackage {
     int EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 9;
 
     /**
+     * The feature id for the '<em><b>Ends Centering</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int EDGE_STYLE_DESCRIPTION__ENDS_CENTERING = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 10;
+
+    /**
+     * The feature id for the '<em><b>Centered Source Mappings</b></em>'
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int EDGE_STYLE_DESCRIPTION__CENTERED_SOURCE_MAPPINGS = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 11;
+
+    /**
+     * The feature id for the '<em><b>Centered Target Mappings</b></em>'
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int EDGE_STYLE_DESCRIPTION__CENTERED_TARGET_MAPPINGS = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 12;
+
+    /**
      * The number of structural features of the '<em>Edge Style Description</em>
      * ' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int EDGE_STYLE_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 10;
+    int EDGE_STYLE_DESCRIPTION_FEATURE_COUNT = org.eclipse.sirius.viewpoint.description.style.StylePackage.STYLE_DESCRIPTION_FEATURE_COUNT + 13;
 
     /**
      * The meta object id for the '
@@ -2904,6 +2931,33 @@ public interface StylePackage extends EPackage {
      * @ordered
      */
     int BRACKET_EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION = EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION;
+
+    /**
+     * The feature id for the '<em><b>Ends Centering</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int BRACKET_EDGE_STYLE_DESCRIPTION__ENDS_CENTERING = EDGE_STYLE_DESCRIPTION__ENDS_CENTERING;
+
+    /**
+     * The feature id for the '<em><b>Centered Source Mappings</b></em>'
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int BRACKET_EDGE_STYLE_DESCRIPTION__CENTERED_SOURCE_MAPPINGS = EDGE_STYLE_DESCRIPTION__CENTERED_SOURCE_MAPPINGS;
+
+    /**
+     * The feature id for the '<em><b>Centered Target Mappings</b></em>'
+     * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int BRACKET_EDGE_STYLE_DESCRIPTION__CENTERED_TARGET_MAPPINGS = EDGE_STYLE_DESCRIPTION__CENTERED_TARGET_MAPPINGS;
 
     /**
      * The number of structural features of the '
@@ -3790,6 +3844,46 @@ public interface StylePackage extends EPackage {
     EReference getEdgeStyleDescription_EndLabelStyleDescription();
 
     /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getEndsCentering
+     * <em>Ends Centering</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the attribute '<em>Ends Centering</em>'.
+     * @see org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getEndsCentering()
+     * @see #getEdgeStyleDescription()
+     * @generated
+     */
+    EAttribute getEdgeStyleDescription_EndsCentering();
+
+    /**
+     * Returns the meta object for the reference list '
+     * {@link org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getCenteredSourceMappings
+     * <em>Centered Source Mappings</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for the reference list '
+     *         <em>Centered Source Mappings</em>'.
+     * @see org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getCenteredSourceMappings()
+     * @see #getEdgeStyleDescription()
+     * @generated
+     */
+    EReference getEdgeStyleDescription_CenteredSourceMappings();
+
+    /**
+     * Returns the meta object for the reference list '
+     * {@link org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getCenteredTargetMappings
+     * <em>Centered Target Mappings</em>}'. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @return the meta object for the reference list '
+     *         <em>Centered Target Mappings</em>'.
+     * @see org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getCenteredTargetMappings()
+     * @see #getEdgeStyleDescription()
+     * @generated
+     */
+    EReference getEdgeStyleDescription_CenteredTargetMappings();
+
+    /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.description.style.BeginLabelStyleDescription
      * <em>Begin Label Style Description</em>}'. <!-- begin-user-doc --> <!--
@@ -4501,6 +4595,32 @@ public interface StylePackage extends EPackage {
          * @generated
          */
         EReference EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION = eINSTANCE.getEdgeStyleDescription_EndLabelStyleDescription();
+
+        /**
+         * The meta object literal for the '<em><b>Ends Centering</b></em>'
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute EDGE_STYLE_DESCRIPTION__ENDS_CENTERING = eINSTANCE.getEdgeStyleDescription_EndsCentering();
+
+        /**
+         * The meta object literal for the '
+         * <em><b>Centered Source Mappings</b></em>' reference list feature.
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference EDGE_STYLE_DESCRIPTION__CENTERED_SOURCE_MAPPINGS = eINSTANCE.getEdgeStyleDescription_CenteredSourceMappings();
+
+        /**
+         * The meta object literal for the '
+         * <em><b>Centered Target Mappings</b></em>' reference list feature.
+         * <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EReference EDGE_STYLE_DESCRIPTION__CENTERED_TARGET_MAPPINGS = eINSTANCE.getEdgeStyleDescription_CenteredTargetMappings();
 
         /**
          * The meta object literal for the '

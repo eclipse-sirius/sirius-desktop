@@ -11,15 +11,21 @@
  */
 package org.eclipse.sirius.diagram.description.style.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.sirius.diagram.EdgeArrows;
 import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.LineStyle;
+import org.eclipse.sirius.diagram.description.CenteringStyle;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.FoldingStyle;
 import org.eclipse.sirius.diagram.description.style.BeginLabelStyleDescription;
 import org.eclipse.sirius.diagram.description.style.CenterLabelStyleDescription;
@@ -64,6 +70,15 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl#getEndLabelStyleDescription
  * <em>End Label Style Description</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl#getEndsCentering
+ * <em>Ends Centering</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl#getCenteredSourceMappings
+ * <em>Centered Source Mappings</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.description.style.impl.EdgeStyleDescriptionImpl#getCenteredTargetMappings
+ * <em>Centered Target Mappings</em>}</li>
  * </ul>
  * </p>
  * 
@@ -238,6 +253,50 @@ public class EdgeStyleDescriptionImpl extends EObjectImpl implements EdgeStyleDe
      * @ordered
      */
     protected EndLabelStyleDescription endLabelStyleDescription;
+
+    /**
+     * The default value of the '{@link #getEndsCentering()
+     * <em>Ends Centering</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getEndsCentering()
+     * @generated
+     * @ordered
+     */
+    protected static final CenteringStyle ENDS_CENTERING_EDEFAULT = CenteringStyle.NONE;
+
+    /**
+     * The cached value of the '{@link #getEndsCentering()
+     * <em>Ends Centering</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getEndsCentering()
+     * @generated
+     * @ordered
+     */
+    protected CenteringStyle endsCentering = ENDS_CENTERING_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getCenteredSourceMappings()
+     * <em>Centered Source Mappings</em>}' reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @see #getCenteredSourceMappings()
+     * @generated
+     * @ordered
+     */
+    protected EList<DiagramElementMapping> centeredSourceMappings;
+
+    /**
+     * The cached value of the '{@link #getCenteredTargetMappings()
+     * <em>Centered Target Mappings</em>}' reference list. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     * 
+     * @see #getCenteredTargetMappings()
+     * @generated
+     * @ordered
+     */
+    protected EList<DiagramElementMapping> centeredTargetMappings;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -642,6 +701,51 @@ public class EdgeStyleDescriptionImpl extends EObjectImpl implements EdgeStyleDe
      * 
      * @generated
      */
+    public CenteringStyle getEndsCentering() {
+        return endsCentering;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public void setEndsCentering(CenteringStyle newEndsCentering) {
+        CenteringStyle oldEndsCentering = endsCentering;
+        endsCentering = newEndsCentering == null ? ENDS_CENTERING_EDEFAULT : newEndsCentering;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, StylePackage.EDGE_STYLE_DESCRIPTION__ENDS_CENTERING, oldEndsCentering, endsCentering));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EList<DiagramElementMapping> getCenteredSourceMappings() {
+        if (centeredSourceMappings == null) {
+            centeredSourceMappings = new EObjectResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, StylePackage.EDGE_STYLE_DESCRIPTION__CENTERED_SOURCE_MAPPINGS);
+        }
+        return centeredSourceMappings;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EList<DiagramElementMapping> getCenteredTargetMappings() {
+        if (centeredTargetMappings == null) {
+            centeredTargetMappings = new EObjectResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, StylePackage.EDGE_STYLE_DESCRIPTION__CENTERED_TARGET_MAPPINGS);
+        }
+        return centeredTargetMappings;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
@@ -691,6 +795,12 @@ public class EdgeStyleDescriptionImpl extends EObjectImpl implements EdgeStyleDe
             if (resolve)
                 return getEndLabelStyleDescription();
             return basicGetEndLabelStyleDescription();
+        case StylePackage.EDGE_STYLE_DESCRIPTION__ENDS_CENTERING:
+            return getEndsCentering();
+        case StylePackage.EDGE_STYLE_DESCRIPTION__CENTERED_SOURCE_MAPPINGS:
+            return getCenteredSourceMappings();
+        case StylePackage.EDGE_STYLE_DESCRIPTION__CENTERED_TARGET_MAPPINGS:
+            return getCenteredTargetMappings();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -700,6 +810,7 @@ public class EdgeStyleDescriptionImpl extends EObjectImpl implements EdgeStyleDe
      * 
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
@@ -732,6 +843,17 @@ public class EdgeStyleDescriptionImpl extends EObjectImpl implements EdgeStyleDe
             return;
         case StylePackage.EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION:
             setEndLabelStyleDescription((EndLabelStyleDescription) newValue);
+            return;
+        case StylePackage.EDGE_STYLE_DESCRIPTION__ENDS_CENTERING:
+            setEndsCentering((CenteringStyle) newValue);
+            return;
+        case StylePackage.EDGE_STYLE_DESCRIPTION__CENTERED_SOURCE_MAPPINGS:
+            getCenteredSourceMappings().clear();
+            getCenteredSourceMappings().addAll((Collection<? extends DiagramElementMapping>) newValue);
+            return;
+        case StylePackage.EDGE_STYLE_DESCRIPTION__CENTERED_TARGET_MAPPINGS:
+            getCenteredTargetMappings().clear();
+            getCenteredTargetMappings().addAll((Collection<? extends DiagramElementMapping>) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -775,6 +897,15 @@ public class EdgeStyleDescriptionImpl extends EObjectImpl implements EdgeStyleDe
         case StylePackage.EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION:
             setEndLabelStyleDescription((EndLabelStyleDescription) null);
             return;
+        case StylePackage.EDGE_STYLE_DESCRIPTION__ENDS_CENTERING:
+            setEndsCentering(ENDS_CENTERING_EDEFAULT);
+            return;
+        case StylePackage.EDGE_STYLE_DESCRIPTION__CENTERED_SOURCE_MAPPINGS:
+            getCenteredSourceMappings().clear();
+            return;
+        case StylePackage.EDGE_STYLE_DESCRIPTION__CENTERED_TARGET_MAPPINGS:
+            getCenteredTargetMappings().clear();
+            return;
         }
         super.eUnset(featureID);
     }
@@ -807,6 +938,12 @@ public class EdgeStyleDescriptionImpl extends EObjectImpl implements EdgeStyleDe
             return centerLabelStyleDescription != null;
         case StylePackage.EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION:
             return endLabelStyleDescription != null;
+        case StylePackage.EDGE_STYLE_DESCRIPTION__ENDS_CENTERING:
+            return endsCentering != ENDS_CENTERING_EDEFAULT;
+        case StylePackage.EDGE_STYLE_DESCRIPTION__CENTERED_SOURCE_MAPPINGS:
+            return centeredSourceMappings != null && !centeredSourceMappings.isEmpty();
+        case StylePackage.EDGE_STYLE_DESCRIPTION__CENTERED_TARGET_MAPPINGS:
+            return centeredTargetMappings != null && !centeredTargetMappings.isEmpty();
         }
         return super.eIsSet(featureID);
     }
@@ -834,6 +971,8 @@ public class EdgeStyleDescriptionImpl extends EObjectImpl implements EdgeStyleDe
         result.append(routingStyle);
         result.append(", foldingStyle: ");
         result.append(foldingStyle);
+        result.append(", endsCentering: ");
+        result.append(endsCentering);
         result.append(')');
         return result.toString();
     }

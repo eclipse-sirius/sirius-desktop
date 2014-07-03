@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
+import org.eclipse.sirius.diagram.description.CenteringStyle;
 import org.eclipse.sirius.diagram.description.CompositeLayout;
 import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription;
@@ -232,6 +233,13 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     private EEnum layoutDirectionEEnum = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EEnum centeringStyleEEnum = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with
@@ -1372,6 +1380,15 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * 
      * @generated
      */
+    public EEnum getCenteringStyle() {
+        return centeringStyleEEnum;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     public DescriptionFactory getDescriptionFactory() {
         return (DescriptionFactory) getEFactoryInstance();
     }
@@ -1535,6 +1552,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         // Create enums
         foldingStyleEEnum = createEEnum(FOLDING_STYLE);
         layoutDirectionEEnum = createEEnum(LAYOUT_DIRECTION);
+        centeringStyleEEnum = createEEnum(CENTERING_STYLE);
     }
 
     /**
@@ -1961,6 +1979,12 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         addEEnumLiteral(layoutDirectionEEnum, LayoutDirection.TOP_TO_BOTTOM);
         addEEnumLiteral(layoutDirectionEEnum, LayoutDirection.LEFT_TO_RIGHT);
         addEEnumLiteral(layoutDirectionEEnum, LayoutDirection.BOTTOM_TO_TOP);
+
+        initEEnum(centeringStyleEEnum, CenteringStyle.class, "CenteringStyle");
+        addEEnumLiteral(centeringStyleEEnum, CenteringStyle.NONE);
+        addEEnumLiteral(centeringStyleEEnum, CenteringStyle.BOTH);
+        addEEnumLiteral(centeringStyleEEnum, CenteringStyle.SOURCE);
+        addEEnumLiteral(centeringStyleEEnum, CenteringStyle.TARGET);
 
         // Create annotations
         // http://www.eclipse.org/sirius/interpreted/expression/returnType

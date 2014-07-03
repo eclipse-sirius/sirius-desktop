@@ -11,9 +11,12 @@
  */
 package org.eclipse.sirius.diagram.description.style;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.diagram.EdgeArrows;
 import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.LineStyle;
+import org.eclipse.sirius.diagram.description.CenteringStyle;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.FoldingStyle;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
@@ -57,6 +60,15 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  * <li>
  * {@link org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getEndLabelStyleDescription
  * <em>End Label Style Description</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getEndsCentering
+ * <em>Ends Centering</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getCenteredSourceMappings
+ * <em>Centered Source Mappings</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getCenteredTargetMappings
+ * <em>Centered Target Mappings</em>}</li>
  * </ul>
  * </p>
  * 
@@ -374,5 +386,68 @@ public interface EdgeStyleDescription extends StyleDescription {
      * @generated
      */
     void setEndLabelStyleDescription(EndLabelStyleDescription value);
+
+    /**
+     * Returns the value of the '<em><b>Ends Centering</b></em>' attribute. The
+     * default value is <code>"None"</code>. The literals are from the
+     * enumeration {@link org.eclipse.sirius.diagram.description.CenteringStyle}
+     * . <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * Use this feature to generalize the centered edge behavior to all source
+     * mappings, all target mappings or both. <!-- end-model-doc -->
+     * 
+     * @return the value of the '<em>Ends Centering</em>' attribute.
+     * @see org.eclipse.sirius.diagram.description.CenteringStyle
+     * @see #setEndsCentering(CenteringStyle)
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getEdgeStyleDescription_EndsCentering()
+     * @model default="None"
+     * @generated
+     */
+    CenteringStyle getEndsCentering();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.diagram.description.style.EdgeStyleDescription#getEndsCentering
+     * <em>Ends Centering</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @param value
+     *            the new value of the '<em>Ends Centering</em>' attribute.
+     * @see org.eclipse.sirius.diagram.description.CenteringStyle
+     * @see #getEndsCentering()
+     * @generated
+     */
+    void setEndsCentering(CenteringStyle value);
+
+    /**
+     * Returns the value of the '<em><b>Centered Source Mappings</b></em>'
+     * reference list. The list contents are of type
+     * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping}.
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * The mapping that creates EdgeTargets that are the sources of the
+     * ViewEdges that are created by this EdgeMapping. <!-- end-model-doc -->
+     * 
+     * @return the value of the '<em>Centered Source Mappings</em>' reference
+     *         list.
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getEdgeStyleDescription_CenteredSourceMappings()
+     * @model required="true"
+     * @generated
+     */
+    EList<DiagramElementMapping> getCenteredSourceMappings();
+
+    /**
+     * Returns the value of the '<em><b>Centered Target Mappings</b></em>'
+     * reference list. The list contents are of type
+     * {@link org.eclipse.sirius.diagram.description.DiagramElementMapping}.
+     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * The mapping that creates EdgeTargets that are the targets of the
+     * ViewEdges that are created by this EdgeMapping. <!-- end-model-doc -->
+     * 
+     * @return the value of the '<em>Centered Target Mappings</em>' reference
+     *         list.
+     * @see org.eclipse.sirius.diagram.description.style.StylePackage#getEdgeStyleDescription_CenteredTargetMappings()
+     * @model required="true"
+     * @generated
+     */
+    EList<DiagramElementMapping> getCenteredTargetMappings();
 
 } // EdgeStyleDescription

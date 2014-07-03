@@ -71,6 +71,9 @@ public class EdgeStyleDescriptionItemProvider extends ItemProviderAdapter implem
             addSizeComputationExpressionPropertyDescriptor(object);
             addRoutingStylePropertyDescriptor(object);
             addFoldingStylePropertyDescriptor(object);
+            addEndsCenteringPropertyDescriptor(object);
+            addCenteredSourceMappingsPropertyDescriptor(object);
+            addCenteredTargetMappingsPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -168,6 +171,45 @@ public class EdgeStyleDescriptionItemProvider extends ItemProviderAdapter implem
     }
 
     /**
+     * This adds a property descriptor for the Ends Centering feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addEndsCenteringPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_EdgeStyleDescription_endsCentering_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_endsCentering_feature", "_UI_EdgeStyleDescription_type"),
+                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__ENDS_CENTERING, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Centered Source Mappings feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addCenteredSourceMappingsPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_EdgeStyleDescription_centeredSourceMappings_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_centeredSourceMappings_feature", "_UI_EdgeStyleDescription_type"),
+                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__CENTERED_SOURCE_MAPPINGS, true, false, true, null, getString("_UI_AdvancedPropertyCategory"), null));
+    }
+
+    /**
+     * This adds a property descriptor for the Centered Target Mappings feature.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addCenteredTargetMappingsPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_EdgeStyleDescription_centeredTargetMappings_feature"),
+                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_centeredTargetMappings_feature", "_UI_EdgeStyleDescription_type"),
+                StylePackage.Literals.EDGE_STYLE_DESCRIPTION__CENTERED_TARGET_MAPPINGS, true, false, true, null, getString("_UI_AdvancedPropertyCategory"), null));
+    }
+
+    /**
      * This specifies how to implement {@link #getChildren} and is used to
      * deduce an appropriate feature for an
      * {@link org.eclipse.emf.edit.command.AddCommand},
@@ -246,6 +288,7 @@ public class EdgeStyleDescriptionItemProvider extends ItemProviderAdapter implem
         case StylePackage.EDGE_STYLE_DESCRIPTION__SIZE_COMPUTATION_EXPRESSION:
         case StylePackage.EDGE_STYLE_DESCRIPTION__ROUTING_STYLE:
         case StylePackage.EDGE_STYLE_DESCRIPTION__FOLDING_STYLE:
+        case StylePackage.EDGE_STYLE_DESCRIPTION__ENDS_CENTERING:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case StylePackage.EDGE_STYLE_DESCRIPTION__BEGIN_LABEL_STYLE_DESCRIPTION:

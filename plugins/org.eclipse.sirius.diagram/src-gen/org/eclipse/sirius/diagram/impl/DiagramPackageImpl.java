@@ -1866,6 +1866,15 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
+    public EAttribute getEdgeStyle_Centered() {
+        return (EAttribute) edgeStyleEClass.getEStructuralFeatures().get(10);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     public EClass getGaugeCompositeStyle() {
         return gaugeCompositeStyleEClass;
     }
@@ -2501,6 +2510,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         createEReference(edgeStyleEClass, EDGE_STYLE__BEGIN_LABEL_STYLE);
         createEReference(edgeStyleEClass, EDGE_STYLE__CENTER_LABEL_STYLE);
         createEReference(edgeStyleEClass, EDGE_STYLE__END_LABEL_STYLE);
+        createEAttribute(edgeStyleEClass, EDGE_STYLE__CENTERED);
 
         gaugeCompositeStyleEClass = createEClass(GAUGE_COMPOSITE_STYLE);
         createEAttribute(gaugeCompositeStyleEClass, GAUGE_COMPOSITE_STYLE__ALIGNMENT);
@@ -2972,6 +2982,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getEdgeStyle_EndLabelStyle(), this.getEndLabelStyle(), null, "endLabelStyle", null, 0, 1, EdgeStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getEdgeStyle_Centered(), theDescriptionPackage.getCenteringStyle(), "centered", "None", 1, 1, EdgeStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+                !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(gaugeCompositeStyleEClass, GaugeCompositeStyle.class, "GaugeCompositeStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getGaugeCompositeStyle_Alignment(), this.getAlignmentKind(), "alignment", "SQUARE", 0, 1, GaugeCompositeStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,

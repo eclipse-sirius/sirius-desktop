@@ -4219,13 +4219,22 @@ public interface DiagramPackage extends EPackage {
     int EDGE_STYLE__END_LABEL_STYLE = ViewpointPackage.STYLE_FEATURE_COUNT + 9;
 
     /**
+     * The feature id for the '<em><b>Centered</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int EDGE_STYLE__CENTERED = ViewpointPackage.STYLE_FEATURE_COUNT + 10;
+
+    /**
      * The number of structural features of the '<em>Edge Style</em>' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int EDGE_STYLE_FEATURE_COUNT = ViewpointPackage.STYLE_FEATURE_COUNT + 10;
+    int EDGE_STYLE_FEATURE_COUNT = ViewpointPackage.STYLE_FEATURE_COUNT + 11;
 
     /**
      * The meta object id for the '
@@ -5091,6 +5100,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int BRACKET_EDGE_STYLE__END_LABEL_STYLE = EDGE_STYLE__END_LABEL_STYLE;
+
+    /**
+     * The feature id for the '<em><b>Centered</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int BRACKET_EDGE_STYLE__CENTERED = EDGE_STYLE__CENTERED;
 
     /**
      * The number of structural features of the '<em>Bracket Edge Style</em>'
@@ -7178,6 +7196,18 @@ public interface DiagramPackage extends EPackage {
     EReference getEdgeStyle_EndLabelStyle();
 
     /**
+     * Returns the meta object for the attribute '
+     * {@link org.eclipse.sirius.diagram.EdgeStyle#getCentered
+     * <em>Centered</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for the attribute '<em>Centered</em>'.
+     * @see org.eclipse.sirius.diagram.EdgeStyle#getCentered()
+     * @see #getEdgeStyle()
+     * @generated
+     */
+    EAttribute getEdgeStyle_Centered();
+
+    /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.GaugeCompositeStyle
      * <em>Gauge Composite Style</em>}'. <!-- begin-user-doc --> <!--
@@ -9054,6 +9084,14 @@ public interface DiagramPackage extends EPackage {
          * @generated
          */
         EReference EDGE_STYLE__END_LABEL_STYLE = eINSTANCE.getEdgeStyle_EndLabelStyle();
+
+        /**
+         * The meta object literal for the '<em><b>Centered</b></em>' attribute
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * 
+         * @generated
+         */
+        EAttribute EDGE_STYLE__CENTERED = eINSTANCE.getEdgeStyle_Centered();
 
         /**
          * The meta object literal for the '

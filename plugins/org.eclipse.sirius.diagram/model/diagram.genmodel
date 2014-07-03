@@ -259,6 +259,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//EdgeStyle/beginLabelStyle"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//EdgeStyle/centerLabelStyle"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//EdgeStyle/endLabelStyle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//EdgeStyle/centered"/>
     </genClasses>
     <genClasses ecoreClass="diagram.ecore#//GaugeCompositeStyle">
       <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute diagram.ecore#//GaugeCompositeStyle/alignment"/>
@@ -339,6 +340,12 @@
         <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//description/LayoutDirection/TopToBottom"/>
         <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//description/LayoutDirection/LeftToRight"/>
         <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//description/LayoutDirection/BottomToTop"/>
+      </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="diagram.ecore#//description/CenteringStyle">
+        <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//description/CenteringStyle/None"/>
+        <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//description/CenteringStyle/Both"/>
+        <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//description/CenteringStyle/Source"/>
+        <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//description/CenteringStyle/Target"/>
       </genEnums>
       <genClasses ecoreClass="diagram.ecore#//description/DiagramDescription">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/DiagramDescription/filters"/>
@@ -721,6 +728,11 @@
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/style/EdgeStyleDescription/beginLabelStyleDescription"/>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/style/EdgeStyleDescription/centerLabelStyleDescription"/>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/style/EdgeStyleDescription/endLabelStyleDescription"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/style/EdgeStyleDescription/endsCentering"/>
+          <genFeatures notify="false" createChild="false" propertyCategory="Advanced"
+              propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//description/style/EdgeStyleDescription/centeredSourceMappings"/>
+          <genFeatures notify="false" createChild="false" propertyCategory="Advanced"
+              propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//description/style/EdgeStyleDescription/centeredTargetMappings"/>
         </genClasses>
         <genClasses ecoreClass="diagram.ecore#//description/style/BeginLabelStyleDescription"/>
         <genClasses ecoreClass="diagram.ecore#//description/style/CenterLabelStyleDescription"/>

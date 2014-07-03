@@ -3211,6 +3211,18 @@ public interface DescriptionPackage extends EPackage {
     int LAYOUT_DIRECTION = 23;
 
     /**
+     * The meta object id for the '
+     * {@link org.eclipse.sirius.diagram.description.CenteringStyle
+     * <em>Centering Style</em>}' enum. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see org.eclipse.sirius.diagram.description.CenteringStyle
+     * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getCenteringStyle()
+     * @generated
+     */
+    int CENTERING_STYLE = 24;
+
+    /**
      * Returns the meta object for class '
      * {@link org.eclipse.sirius.diagram.description.DiagramDescription
      * <em>Diagram Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc
@@ -4701,6 +4713,17 @@ public interface DescriptionPackage extends EPackage {
     EEnum getLayoutDirection();
 
     /**
+     * Returns the meta object for enum '
+     * {@link org.eclipse.sirius.diagram.description.CenteringStyle
+     * <em>Centering Style</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @return the meta object for enum '<em>Centering Style</em>'.
+     * @see org.eclipse.sirius.diagram.description.CenteringStyle
+     * @generated
+     */
+    EEnum getCenteringStyle();
+
+    /**
      * Returns the factory that creates the instances of the model. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -5783,6 +5806,18 @@ public interface DescriptionPackage extends EPackage {
          * @generated
          */
         EEnum LAYOUT_DIRECTION = eINSTANCE.getLayoutDirection();
+
+        /**
+         * The meta object literal for the '
+         * {@link org.eclipse.sirius.diagram.description.CenteringStyle
+         * <em>Centering Style</em>}' enum. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         * 
+         * @see org.eclipse.sirius.diagram.description.CenteringStyle
+         * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getCenteringStyle()
+         * @generated
+         */
+        EEnum CENTERING_STYLE = eINSTANCE.getCenteringStyle();
 
     }
 

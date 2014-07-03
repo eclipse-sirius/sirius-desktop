@@ -70,6 +70,7 @@ public class EdgeStyleItemProvider extends StyleItemProvider implements IEditing
             addFoldingStylePropertyDescriptor(object);
             addSizePropertyDescriptor(object);
             addRoutingStylePropertyDescriptor(object);
+            addCenteredPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -144,6 +145,18 @@ public class EdgeStyleItemProvider extends StyleItemProvider implements IEditing
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_EdgeStyle_routingStyle_feature"), getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyle_routingStyle_feature", "_UI_EdgeStyle_type"),
                 DiagramPackage.Literals.EDGE_STYLE__ROUTING_STYLE, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Centered feature. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    protected void addCenteredPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_EdgeStyle_centered_feature"), getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyle_centered_feature", "_UI_EdgeStyle_type"),
+                DiagramPackage.Literals.EDGE_STYLE__CENTERED, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -224,6 +237,7 @@ public class EdgeStyleItemProvider extends StyleItemProvider implements IEditing
         case DiagramPackage.EDGE_STYLE__FOLDING_STYLE:
         case DiagramPackage.EDGE_STYLE__SIZE:
         case DiagramPackage.EDGE_STYLE__ROUTING_STYLE:
+        case DiagramPackage.EDGE_STYLE__CENTERED:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case DiagramPackage.EDGE_STYLE__STROKE_COLOR:

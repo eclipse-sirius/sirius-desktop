@@ -25,6 +25,7 @@ import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EndLabelStyle;
 import org.eclipse.sirius.diagram.LineStyle;
 import org.eclipse.sirius.diagram.business.internal.color.DiagramStyleColorUpdater;
+import org.eclipse.sirius.diagram.description.CenteringStyle;
 import org.eclipse.sirius.diagram.description.FoldingStyle;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.impl.StyleImpl;
@@ -55,6 +56,8 @@ import org.eclipse.sirius.viewpoint.impl.StyleImpl;
  * <em>Center Label Style</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getEndLabelStyle
  * <em>End Label Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getCentered <em>
+ * Centered</em>}</li>
  * </ul>
  * </p>
  * 
@@ -227,6 +230,26 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * @ordered
      */
     protected EndLabelStyle endLabelStyle;
+
+    /**
+     * The default value of the '{@link #getCentered() <em>Centered</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #getCentered()
+     * @generated
+     * @ordered
+     */
+    protected static final CenteringStyle CENTERED_EDEFAULT = CenteringStyle.NONE;
+
+    /**
+     * The cached value of the '{@link #getCentered() <em>Centered</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #getCentered()
+     * @generated
+     * @ordered
+     */
+    protected CenteringStyle centered = CENTERED_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -659,6 +682,27 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * 
      * @generated
      */
+    public CenteringStyle getCentered() {
+        return centered;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public void setCentered(CenteringStyle newCentered) {
+        CenteringStyle oldCentered = centered;
+        centered = newCentered == null ? CENTERED_EDEFAULT : newCentered;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.EDGE_STYLE__CENTERED, oldCentered, centered));
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
@@ -710,6 +754,8 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
             if (resolve)
                 return getEndLabelStyle();
             return basicGetEndLabelStyle();
+        case DiagramPackage.EDGE_STYLE__CENTERED:
+            return getCentered();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -751,6 +797,9 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
             return;
         case DiagramPackage.EDGE_STYLE__END_LABEL_STYLE:
             setEndLabelStyle((EndLabelStyle) newValue);
+            return;
+        case DiagramPackage.EDGE_STYLE__CENTERED:
+            setCentered((CenteringStyle) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -794,6 +843,9 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
         case DiagramPackage.EDGE_STYLE__END_LABEL_STYLE:
             setEndLabelStyle((EndLabelStyle) null);
             return;
+        case DiagramPackage.EDGE_STYLE__CENTERED:
+            setCentered(CENTERED_EDEFAULT);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -826,6 +878,8 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
             return centerLabelStyle != null;
         case DiagramPackage.EDGE_STYLE__END_LABEL_STYLE:
             return endLabelStyle != null;
+        case DiagramPackage.EDGE_STYLE__CENTERED:
+            return centered != CENTERED_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -853,6 +907,8 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
         result.append(size);
         result.append(", routingStyle: ");
         result.append(routingStyle);
+        result.append(", centered: ");
+        result.append(centered);
         result.append(')');
         return result.toString();
     }

@@ -11,6 +11,7 @@
  */
 package org.eclipse.sirius.diagram;
 
+import org.eclipse.sirius.diagram.description.CenteringStyle;
 import org.eclipse.sirius.diagram.description.FoldingStyle;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.Style;
@@ -43,6 +44,8 @@ import org.eclipse.sirius.viewpoint.Style;
  * Center Label Style</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.EdgeStyle#getEndLabelStyle <em>End
  * Label Style</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.EdgeStyle#getCentered <em>Centered
+ * </em>}</li>
  * </ul>
  * </p>
  * 
@@ -352,5 +355,39 @@ public interface EdgeStyle extends Style {
      * @generated
      */
     void setEndLabelStyle(EndLabelStyle value);
+
+    /**
+     * Returns the value of the '<em><b>Centered</b></em>' attribute. The
+     * default value is <code>"None"</code>. The literals are from the
+     * enumeration {@link org.eclipse.sirius.diagram.description.CenteringStyle}
+     * . <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Centered</em>' attribute isn't clear, there
+     * really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * 
+     * @return the value of the '<em>Centered</em>' attribute.
+     * @see org.eclipse.sirius.diagram.description.CenteringStyle
+     * @see #setCentered(CenteringStyle)
+     * @see org.eclipse.sirius.diagram.DiagramPackage#getEdgeStyle_Centered()
+     * @model default="None" required="true"
+     * @generated
+     */
+    CenteringStyle getCentered();
+
+    /**
+     * Sets the value of the '
+     * {@link org.eclipse.sirius.diagram.EdgeStyle#getCentered
+     * <em>Centered</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     * 
+     * @param value
+     *            the new value of the '<em>Centered</em>' attribute.
+     * @see org.eclipse.sirius.diagram.description.CenteringStyle
+     * @see #getCentered()
+     * @generated
+     */
+    void setCentered(CenteringStyle value);
 
 } // EdgeStyle

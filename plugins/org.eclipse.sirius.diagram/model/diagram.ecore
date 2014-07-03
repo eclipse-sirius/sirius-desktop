@@ -777,6 +777,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="endLabelStyle" eType="#//EndLabelStyle"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="centered" lowerBound="1"
+        eType="#//description/CenteringStyle" defaultValueLiteral="None"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="LineStyle">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -1778,6 +1780,12 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="dropDescriptions" upperBound="-1"
           eType="#//description/tool/ContainerDropDescription"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="CenteringStyle">
+      <eLiterals name="None"/>
+      <eLiterals name="Both" value="1"/>
+      <eLiterals name="Source" value="2"/>
+      <eLiterals name="Target" value="3"/>
+    </eClassifiers>
     <eSubpackages name="style" nsURI="http://www.eclipse.org/sirius/diagram/description/style/1.1.0"
         nsPrefix="style">
       <eClassifiers xsi:type="ecore:EClass" name="BorderedStyleDescription" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/style/StyleDescription">
@@ -2186,6 +2194,24 @@
             eType="#//description/style/CenterLabelStyleDescription" containment="true"/>
         <eStructuralFeatures xsi:type="ecore:EReference" name="endLabelStyleDescription"
             eType="#//description/style/EndLabelStyleDescription" containment="true"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="endsCentering" eType="#//description/CenteringStyle"
+            defaultValueLiteral="None">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Use this feature to generalize the centered edge behavior to all source mappings, all target mappings or both."/>
+          </eAnnotations>
+        </eStructuralFeatures>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="centeredSourceMappings"
+            upperBound="-1" eType="#//description/DiagramElementMapping">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="The mappings for which the edge source will be centered."/>
+          </eAnnotations>
+        </eStructuralFeatures>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="centeredTargetMappings"
+            upperBound="-1" eType="#//description/DiagramElementMapping">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="The mappings for which the edge target will be centered."/>
+          </eAnnotations>
+        </eStructuralFeatures>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="BeginLabelStyleDescription" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/style/BasicLabelStyleDescription">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

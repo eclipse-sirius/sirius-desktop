@@ -30,6 +30,7 @@ import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.L
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.NodeMappingImportSpec;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.NodeMappingSpec;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
+import org.eclipse.sirius.diagram.description.CenteringStyle;
 import org.eclipse.sirius.diagram.description.CompositeLayout;
 import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription;
@@ -145,6 +146,8 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
             return createFoldingStyleFromString(eDataType, initialValue);
         case DescriptionPackage.LAYOUT_DIRECTION:
             return createLayoutDirectionFromString(eDataType, initialValue);
+        case DescriptionPackage.CENTERING_STYLE:
+            return createCenteringStyleFromString(eDataType, initialValue);
         default:
             throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -162,6 +165,8 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
             return convertFoldingStyleToString(eDataType, instanceValue);
         case DescriptionPackage.LAYOUT_DIRECTION:
             return convertLayoutDirectionToString(eDataType, instanceValue);
+        case DescriptionPackage.CENTERING_STYLE:
+            return convertCenteringStyleToString(eDataType, instanceValue);
         default:
             throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -389,6 +394,27 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * @generated
      */
     public String convertLayoutDirectionToString(EDataType eDataType, Object instanceValue) {
+        return instanceValue == null ? null : instanceValue.toString();
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public CenteringStyle createCenteringStyleFromString(EDataType eDataType, String initialValue) {
+        CenteringStyle result = CenteringStyle.get(initialValue);
+        if (result == null)
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+        return result;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public String convertCenteringStyleToString(EDataType eDataType, Object instanceValue) {
         return instanceValue == null ? null : instanceValue.toString();
     }
 

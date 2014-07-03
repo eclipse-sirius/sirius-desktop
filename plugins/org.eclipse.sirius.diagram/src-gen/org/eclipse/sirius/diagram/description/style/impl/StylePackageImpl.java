@@ -929,6 +929,33 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
      * 
      * @generated
      */
+    public EAttribute getEdgeStyleDescription_EndsCentering() {
+        return (EAttribute) edgeStyleDescriptionEClass.getEStructuralFeatures().get(10);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getEdgeStyleDescription_CenteredSourceMappings() {
+        return (EReference) edgeStyleDescriptionEClass.getEStructuralFeatures().get(11);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EReference getEdgeStyleDescription_CenteredTargetMappings() {
+        return (EReference) edgeStyleDescriptionEClass.getEStructuralFeatures().get(12);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
     public EClass getBeginLabelStyleDescription() {
         return beginLabelStyleDescriptionEClass;
     }
@@ -1075,6 +1102,9 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         createEReference(edgeStyleDescriptionEClass, EDGE_STYLE_DESCRIPTION__BEGIN_LABEL_STYLE_DESCRIPTION);
         createEReference(edgeStyleDescriptionEClass, EDGE_STYLE_DESCRIPTION__CENTER_LABEL_STYLE_DESCRIPTION);
         createEReference(edgeStyleDescriptionEClass, EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION);
+        createEAttribute(edgeStyleDescriptionEClass, EDGE_STYLE_DESCRIPTION__ENDS_CENTERING);
+        createEReference(edgeStyleDescriptionEClass, EDGE_STYLE_DESCRIPTION__CENTERED_SOURCE_MAPPINGS);
+        createEReference(edgeStyleDescriptionEClass, EDGE_STYLE_DESCRIPTION__CENTERED_TARGET_MAPPINGS);
 
         beginLabelStyleDescriptionEClass = createEClass(BEGIN_LABEL_STYLE_DESCRIPTION);
 
@@ -1292,6 +1322,12 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getEdgeStyleDescription_EndLabelStyleDescription(), this.getEndLabelStyleDescription(), null, "endLabelStyleDescription", null, 0, 1, EdgeStyleDescription.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getEdgeStyleDescription_EndsCentering(), theDescriptionPackage.getCenteringStyle(), "endsCentering", "None", 0, 1, EdgeStyleDescription.class, !IS_TRANSIENT, !IS_VOLATILE,
+                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getEdgeStyleDescription_CenteredSourceMappings(), theDescriptionPackage.getDiagramElementMapping(), null, "centeredSourceMappings", null, 0, -1, EdgeStyleDescription.class,
+                !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEReference(getEdgeStyleDescription_CenteredTargetMappings(), theDescriptionPackage.getDiagramElementMapping(), null, "centeredTargetMappings", null, 0, -1, EdgeStyleDescription.class,
+                !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(beginLabelStyleDescriptionEClass, BeginLabelStyleDescription.class, "BeginLabelStyleDescription", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
