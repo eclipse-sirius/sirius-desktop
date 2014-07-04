@@ -180,7 +180,7 @@ public class ExecutionSemanticEditPolicy extends DNode2ItemSemanticEditPolicy {
                 if (layer != null && ise instanceof CombinedFragment) {
                     Range verticalRange = ise.getVerticalRange();
                     Rectangle screenRange = new Rectangle(0, verticalRange.getLowerBound(), 0, LayoutConstants.COMBINED_FRAGMENT_TITLE_HEIGHT);
-                    screenRange.performScale(GraphicalHelper.getZoom((IGraphicalEditPart) getHost()));
+                    screenRange.performScale(GraphicalHelper.getZoom(getHost()));
                     Range forbiddenRange = RangeHelper.verticalRange(screenRange);
 
                     forbiddenRangeArea = new RangeGuide(ColorConstants.red, forbiddenRange, true);

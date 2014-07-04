@@ -1094,7 +1094,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         if (DDiagram.class.isAssignableFrom(expectedRepresentationClass)) {
             swtBotEditor = SWTBotSiriusHelper.getSiriusDiagramEditor(editorPart.getTitle());
             if (disableSnapToGridOnThisEditor) {
-                ((SWTBotSiriusDiagramEditor) swtBotEditor).disableSnapToGrid();
+                ((SWTBotSiriusDiagramEditor) swtBotEditor).setSnapToGrid(false);
             }
         } else {
             swtBotEditor = SWTBotSiriusHelper.getSiriusEditor(editorPart.getTitle());

@@ -55,36 +55,39 @@ public final class FigureUtilities {
      *         and its children
      */
     public static Point getShiftFromMarginOffset(ResizableCompartmentFigure fig, boolean isConcernedBorderedNode, EditPart editPart) {
-        // ignore shift for creation of bordered node.
+        // Ignore shift for creation of bordered node.
         if (isConcernedBorderedNode) {
             return new Point(0, 0);
         }
-        int leftShift = 0;
-        int topShif = 0;
-        // DnD and Node Creation in a container add extra x
-        // and y values of 5 pixels
-        // If the target EditPart is an
+        Point shift = new Point();
+        // DnD and Node Creation in a container add extra x and y values of 5
+        // pixels. If the target EditPart is an
         // AbstractDNodeContainerCompartmentEditPart, we consider the shift
         // Margins associated to the figure linked with this editPart
         if (editPart instanceof AbstractDNodeContainerCompartmentEditPart) {
-
+            // Current figure border
+            shiftBorderInsets(shift, fig);
+            // Children figures
             Iterator<?> childrenFiguresIterator = fig.getChildren().iterator();
             while (childrenFiguresIterator.hasNext()) {
                 Object next = childrenFiguresIterator.next();
 
                 if (next instanceof IFigure) {
                     IFigure childrenFigure = (IFigure) next;
-                    Border border = childrenFigure.getBorder();
-                    if (border != null) {
-                        Insets insets = border.getInsets(childrenFigure);
-                        if (insets != null) {
-                            leftShift += insets.left;
-                            topShif += insets.top;
-                        }
-                    }
+                    shiftBorderInsets(shift, childrenFigure);
                 }
             }
         }
-        return new Point(leftShift, topShif);
+        return shift;
+    }
+
+    private static void shiftBorderInsets(Point shift, IFigure figure) {
+        Border border = figure.getBorder();
+        if (border != null) {
+            Insets insets = border.getInsets(figure);
+            if (insets != null) {
+                shift.translate(insets.left, insets.top);
+            }
+        }
     }
 }
