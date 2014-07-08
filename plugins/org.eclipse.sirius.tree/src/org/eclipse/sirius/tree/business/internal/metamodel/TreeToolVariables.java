@@ -160,7 +160,7 @@ public class TreeToolVariables extends DescriptionSwitch<Object> {
         containerViewVariable.setName("containerView");
         object.setContainerViewVariable(containerViewVariable);
         final ElementSelectVariable containerVariable = ToolFactory.eINSTANCE.createElementSelectVariable();
-        containerViewVariable.setName("container");
+        containerVariable.setName("container");
         object.setContainerVariable(containerVariable);
         final NameVariable treeNameVariable = ToolFactory.eINSTANCE.createNameVariable();
         treeNameVariable.setName("treeName");
