@@ -36,7 +36,6 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
-import org.eclipse.sirius.diagram.description.tool.DiagramCreationDescription;
 import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.CreateRepresentationFromRepresentationCreationDescription;
@@ -215,35 +214,32 @@ public class SubDiagramMenu implements IContributionItemProvider {
         if (edgeMapping.some()) {
             final Iterator<RepresentationCreationDescription> it = edgeMapping.get().getDetailDescriptions().iterator();
             while (it.hasNext()) {
-                final RepresentationCreationDescription repCreation = it.next();
-                if (repCreation instanceof DiagramCreationDescription) {
-                    final DiagramCreationDescription desc = (DiagramCreationDescription) repCreation;
-                    final String precondition = desc.getPrecondition();
-                    boolean append = true;
-                    final EList<EObject> semanticElements = viewedge.getSemanticElements();
-                    if (semanticElements != null && !semanticElements.isEmpty()) {
-                        final Session session = SessionManager.INSTANCE.getSession(semanticElements.get(0));
-                        if (!isFromActiveSirius(session, desc.getRepresentationDescription())) {
-                            append = false;
-                        }
-                    } else if (viewedge.getTarget() != null) {
-                        final Session session = SessionManager.INSTANCE.getSession(viewedge.getTarget());
-                        if (!isFromActiveSirius(session, desc.getRepresentationDescription())) {
-                            append = false;
-                        }
-                    }
-                    if (precondition != null && !StringUtil.isEmpty(precondition.trim())) {
+                final RepresentationCreationDescription desc = it.next();
+                final String precondition = desc.getPrecondition();
+                boolean append = true;
+                final EList<EObject> semanticElements = viewedge.getSemanticElements();
+                if (semanticElements != null && !semanticElements.isEmpty()) {
+                    final Session session = SessionManager.INSTANCE.getSession(semanticElements.get(0));
+                    if (!isFromActiveSirius(session, desc.getRepresentationDescription())) {
                         append = false;
-                        final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(viewedge);
-                        try {
-                            append = interpreter.evaluateBoolean(viewedge.getTarget(), precondition);
-                        } catch (final EvaluationException e) {
-                            // do nothing
-                        }
                     }
-                    if (append) {
-                        navigate.appendToGroup(CREATE_REPRESENTATION_GROUP_SEPARATOR, new CreateRepresentationFromRepresentationCreationDescription(desc, viewedge, editingDomain, curPart));
+                } else if (viewedge.getTarget() != null) {
+                    final Session session = SessionManager.INSTANCE.getSession(viewedge.getTarget());
+                    if (!isFromActiveSirius(session, desc.getRepresentationDescription())) {
+                        append = false;
                     }
+                }
+                if (precondition != null && !StringUtil.isEmpty(precondition.trim())) {
+                    append = false;
+                    final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(viewedge);
+                    try {
+                        append = interpreter.evaluateBoolean(viewedge.getTarget(), precondition);
+                    } catch (final EvaluationException e) {
+                        // do nothing
+                    }
+                }
+                if (append) {
+                    navigate.appendToGroup(CREATE_REPRESENTATION_GROUP_SEPARATOR, new CreateRepresentationFromRepresentationCreationDescription(desc, viewedge, editingDomain, curPart));
                 }
             }
         }
