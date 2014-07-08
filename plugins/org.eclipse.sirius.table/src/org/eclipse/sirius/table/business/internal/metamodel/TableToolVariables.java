@@ -112,7 +112,7 @@ public class TableToolVariables extends DescriptionSwitch<Object> {
         containerViewVariable.setName("containerView");
         object.setContainerViewVariable(containerViewVariable);
         final ElementSelectVariable containerVariable = ToolFactory.eINSTANCE.createElementSelectVariable();
-        containerViewVariable.setName("container");
+        containerVariable.setName("container");
         object.setContainerVariable(containerVariable);
         final NameVariable tableNameVariable = ToolFactory.eINSTANCE.createNameVariable();
         tableNameVariable.setName("tableName");
