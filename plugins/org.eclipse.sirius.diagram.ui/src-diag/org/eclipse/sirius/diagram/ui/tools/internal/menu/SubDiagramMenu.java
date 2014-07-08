@@ -96,41 +96,40 @@ public class SubDiagramMenu implements IContributionItemProvider {
 
     }
 
-    private boolean isFromActiveSirius(final Session session, final RepresentationDescription description) {
+    private boolean isFromActiveViewpoint(final Session session, final RepresentationDescription description) {
         final Viewpoint vp = ViewpointRegistry.getInstance().getViewpoint(description);
         return vp != null && session.getSelectedViewpoints(false).contains(vp);
     }
 
     private void createDetailsActions(final DDiagramElement dde, final IMenuManager navigate, final TransactionalEditingDomain editingDomain, final IGraphicalEditPart curPart) {
         if (dde.getMapping() != null) {
-            for (RepresentationCreationDescription desc : dde.getMapping().getDetailDescriptions()) {
-                boolean append = true;
-
-                final EList<EObject> semanticElements = dde.getSemanticElements();
-                if (semanticElements != null && !semanticElements.isEmpty()) {
-                    final Session session = SessionManager.INSTANCE.getSession(semanticElements.get(0));
-                    if (!isFromActiveSirius(session, desc.getRepresentationDescription())) {
+            EObject sessionFinder = null;
+            final EList<EObject> semanticElements = dde.getSemanticElements();
+            if (semanticElements != null && !semanticElements.isEmpty()) {
+                sessionFinder = semanticElements.get(0);
+            } else if (dde.getTarget() != null) {
+                sessionFinder = dde.getTarget();
+            }
+            final Session session = sessionFinder != null ? SessionManager.INSTANCE.getSession(sessionFinder) : null;
+            if (session != null) {
+                for (RepresentationCreationDescription desc : dde.getMapping().getDetailDescriptions()) {
+                    boolean append = true;
+                    if (!isFromActiveViewpoint(session, desc.getRepresentationDescription())) {
                         append = false;
                     }
-                } else if (dde.getTarget() != null) {
-                    final Session session = SessionManager.INSTANCE.getSession(dde.getTarget());
-                    if (!isFromActiveSirius(session, desc.getRepresentationDescription())) {
+                    final String precondition = desc.getPrecondition();
+                    if (append && !StringUtil.isEmpty(precondition)) {
                         append = false;
+                        final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(dde);
+                        try {
+                            append = interpreter.evaluateBoolean(dde.getTarget(), precondition);
+                        } catch (final EvaluationException e) {
+                            // do nothing
+                        }
                     }
-                }
-
-                final String precondition = desc.getPrecondition();
-                if (append && precondition != null && !StringUtil.isEmpty(precondition.trim())) {
-                    append = false;
-                    final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(dde);
-                    try {
-                        append = interpreter.evaluateBoolean(dde.getTarget(), precondition);
-                    } catch (final EvaluationException e) {
-                        // do nothing
+                    if (append) {
+                        navigate.appendToGroup(CREATE_REPRESENTATION_GROUP_SEPARATOR, new CreateRepresentationFromRepresentationCreationDescription(desc, dde, editingDomain, curPart));
                     }
-                }
-                if (append) {
-                    navigate.appendToGroup(CREATE_REPRESENTATION_GROUP_SEPARATOR, new CreateRepresentationFromRepresentationCreationDescription(desc, dde, editingDomain, curPart));
                 }
             }
         }
