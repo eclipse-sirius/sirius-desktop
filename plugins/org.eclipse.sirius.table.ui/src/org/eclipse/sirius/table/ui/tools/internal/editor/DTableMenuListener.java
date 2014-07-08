@@ -33,6 +33,7 @@ import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.action.SubContributionItem;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
@@ -79,6 +80,8 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
@@ -638,9 +641,16 @@ public class DTableMenuListener implements IMenuListener {
 
     private void createDetailsActions(final DTableElement currentElement, final List<RepresentationCreationDescription> detailDescriptions, final SubContributionItem navigate) {
         for (RepresentationCreationDescription desc : detailDescriptions) {
-            final String precondition = desc.getPrecondition();
             boolean append = true;
-            if (precondition != null && !StringUtil.isEmpty(precondition.trim())) {
+            if (currentElement.getTarget() != null) {
+                final Session session = SessionManager.INSTANCE.getSession(currentElement.getTarget());
+                if (!isFromActiveSirius(session, desc.getRepresentationDescription())) {
+                    append = false;
+                }
+            }
+
+            final String precondition = desc.getPrecondition();
+            if (append && precondition != null && !StringUtil.isEmpty(precondition.trim())) {
                 append = false;
                 final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(currentElement.getTarget());
                 try {
@@ -655,6 +665,11 @@ public class DTableMenuListener implements IMenuListener {
                         treeViewManager.getEditingDomain(), treeViewManager.getTableCommandFactory()));
             }
         }
+    }
+
+    private boolean isFromActiveSirius(final Session session, final RepresentationDescription description) {
+        final Viewpoint vp = ViewpointRegistry.getInstance().getViewpoint(description);
+        return vp != null && session.getSelectedViewpoints(false).contains(vp);
     }
 
     protected Map<TableMapping, DeleteTargetColumnAction> getMappingToDeleteActions() {
