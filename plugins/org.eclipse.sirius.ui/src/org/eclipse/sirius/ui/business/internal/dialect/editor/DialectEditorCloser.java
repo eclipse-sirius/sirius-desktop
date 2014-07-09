@@ -10,19 +10,17 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.business.internal.dialect.editor;
 
-import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListener;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
-import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.swt.widgets.Display;
 
 /**
- * A {@link ResourceSetListener} to close a {@link DialectEditor} when its DRepresentation or its
- * DRepresentation's target has been deleted.
+ * A {@link ResourceSetListener} to close a {@link DialectEditor} when its
+ * DRepresentation or its DRepresentation's target has been deleted.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -31,8 +29,6 @@ public class DialectEditorCloser extends ResourceSetListenerImpl implements Reso
     private IEditingSession editingSession;
 
     private DialectEditor dialectEditor;
-
-    private NotificationFilter notificationFilter;
 
     /**
      * Default constructor.
@@ -45,23 +41,11 @@ public class DialectEditorCloser extends ResourceSetListenerImpl implements Reso
      *            DRepresentation's root semantic deletion
      */
     public DialectEditorCloser(IEditingSession editingSession, DialectEditor dialectEditor) {
-        super();
+        super(new DialectEditorCloserFilter(dialectEditor.getRepresentation()));
         this.dialectEditor = dialectEditor;
         this.editingSession = editingSession;
-        notificationFilter = new DialectEditorCloserFilter(dialectEditor.getRepresentation());
         TransactionalEditingDomain domain = editingSession.getSession().getTransactionalEditingDomain();
         domain.addResourceSetListener(this);
-    }
-
-    /**
-     * Overridden to have this listener only notified on DRepresentation's
-     * target deletion.
-     * 
-     * {@inheritDoc}
-     */
-    @Override
-    public NotificationFilter getFilter() {
-        return notificationFilter;
     }
 
     /**
@@ -82,21 +66,7 @@ public class DialectEditorCloser extends ResourceSetListenerImpl implements Reso
      */
     @Override
     public void resourceSetChanged(ResourceSetChangeEvent event) {
-        Display.getDefault().asyncExec(new Runnable() {
-
-            public void run() {
-                if (dialectEditor != null) {
-                    // We open a dialog informing the user that the
-                    // representation or its target has been deleted, and close the editor
-                    if (dialectEditor.getSite() != null && dialectEditor.getSite().getShell() != null) {
-                        dialectEditor.getDialogFactory().editorWillBeClosedInformationDialog(dialectEditor.getSite().getShell());
-                    }
-                    DialectUIManager.INSTANCE.closeEditor(dialectEditor, false);
-                    editingSession.detachEditor(dialectEditor);
-                }
-            }
-
-        });
+        Display.getDefault().asyncExec(new DialectEditorCloserRunnable(editingSession, dialectEditor));
     }
 
     /**
@@ -104,6 +74,8 @@ public class DialectEditorCloser extends ResourceSetListenerImpl implements Reso
      */
     public void dispose() {
         getTarget().removeResourceSetListener(this);
+        dialectEditor = null;
+        editingSession = null;
     }
 
 }

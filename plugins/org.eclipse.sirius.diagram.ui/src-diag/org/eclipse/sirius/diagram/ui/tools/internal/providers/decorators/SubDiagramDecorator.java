@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.gmf.runtime.diagram.ui.services.decorator.AbstractDecorator;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
@@ -39,6 +40,8 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.swt.graphics.Image;
@@ -159,30 +162,36 @@ public class SubDiagramDecorator extends AbstractDecorator {
             IInterpreter interpreter = session.getInterpreter();
 
             for (RepresentationNavigationDescription navDesc : element.getMapping().getNavigationDescriptions()) {
+                if (isFromActiveViewpoint(navDesc.getRepresentationDescription())) {
+                    interpreter.setVariable(navDesc.getContainerVariable().getName(), target);
+                    interpreter.setVariable(navDesc.getContainerViewVariable().getName(), element);
 
-                interpreter.setVariable(navDesc.getContainerVariable().getName(), target);
-                interpreter.setVariable(navDesc.getContainerViewVariable().getName(), element);
-
-                boolean precondition = true;
-                if (!StringUtil.isEmpty(navDesc.getPrecondition())) {
-                    try {
-                        precondition = interpreter.evaluateBoolean(target, navDesc.getPrecondition());
-                    } catch (EvaluationException e) {
-                        RuntimeLoggerManager.INSTANCE.error(navDesc, ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition(), e);
+                    boolean precondition = true;
+                    if (!StringUtil.isEmpty(navDesc.getPrecondition())) {
+                        try {
+                            precondition = interpreter.evaluateBoolean(target, navDesc.getPrecondition());
+                        } catch (EvaluationException e) {
+                            RuntimeLoggerManager.INSTANCE.error(navDesc, ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition(), e);
+                        }
                     }
-                }
 
-                if (precondition) {
-                    if (checkRepresentationNavigationDescription(interpreter, navDesc, element)) {
-                        return true;
+                    if (precondition) {
+                        if (checkRepresentationNavigationDescription(interpreter, navDesc, element)) {
+                            return true;
+                        }
                     }
-                }
 
-                interpreter.unSetVariable(navDesc.getContainerVariable().getName());
-                interpreter.unSetVariable(navDesc.getContainerViewVariable().getName());
+                    interpreter.unSetVariable(navDesc.getContainerVariable().getName());
+                    interpreter.unSetVariable(navDesc.getContainerViewVariable().getName());
+                }
             }
         }
         return false;
+    }
+
+    private boolean isFromActiveViewpoint(final RepresentationDescription description) {
+        final Viewpoint vp = ViewpointRegistry.getInstance().getViewpoint(description);
+        return vp != null && session.getSelectedViewpoints(false).contains(vp);
     }
 
     private boolean checkRepresentationNavigationDescription(IInterpreter interpreter, RepresentationNavigationDescription navDesc, DRepresentationElement element) {

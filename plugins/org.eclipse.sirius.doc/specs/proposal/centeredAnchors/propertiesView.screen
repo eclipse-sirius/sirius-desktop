@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:TabbedPane" id="4" x="56" y="40" width="801" height="217" text="General, Decorators, Color, Advanced" measuredWidth="801" measuredHeight="217" selection="3" position="left">
+    <items x="0" y="10" width="83" height="27" text="General"/>
+    <items x="0" y="37" width="83" height="27" text="Decorators"/>
+    <items x="0" y="64" width="83" height="27" text="Color"/>
+    <items x="0" y="91" width="83" height="27" text="Advanced"/>
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="5" x="328" y="50" width="519" measuredWidth="519" measuredHeight="25">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="6" x="149" y="50" text="Size Computation Expression*:" measuredWidth="183" measuredHeight="25">
+    <font bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="7" x="149" y="88" text="Folding Style:" measuredWidth="80" measuredHeight="25">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:RadioButton" id="9" x="337" y="88" text="None" measuredWidth="48" measuredHeight="25" selected="true">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:RadioButton" id="10" x="390" y="88" text="Source" measuredWidth="57" measuredHeight="25">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:RadioButton" id="11" x="456" y="88" text="Target" measuredWidth="56" measuredHeight="25">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Panel" id="12" x="328" y="84" width="193" height="33" measuredWidth="193" measuredHeight="33" alpha="0"/>
+  <widgets xsi:type="model:Label" id="13" x="149" y="128" text="Centered Source Mappings:" measuredWidth="152" measuredHeight="25">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="14" x="149" y="160" text="Centered Target Mappings:" measuredWidth="151" measuredHeight="25">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="15" x="328" y="128" width="483" measuredWidth="483" measuredHeight="25">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="16" x="810" y="127" width="37" text="..." measuredWidth="37" measuredHeight="27">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="17" x="328" y="160" width="483" measuredWidth="483" measuredHeight="25">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="18" x="810" y="159" width="37" text="..." measuredWidth="37" measuredHeight="27">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="20" x="149" y="192" text="Always center:" measuredWidth="86" measuredHeight="25">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:RadioButton" id="21" x="390" y="192" text="Both" measuredWidth="46" measuredHeight="25">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:RadioButton" id="22" x="446" y="192" text="Source" measuredWidth="57" measuredHeight="25">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:RadioButton" id="23" x="510" y="192" text="Target" measuredWidth="56" measuredHeight="25">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:RadioButton" id="25" x="338" y="192" text="None" measuredWidth="48" measuredHeight="25" selected="true">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Panel" id="26" x="328" y="188" width="249" height="33" measuredWidth="249" measuredHeight="33" alpha="0"/>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

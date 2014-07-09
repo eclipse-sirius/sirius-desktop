@@ -62,7 +62,6 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.extender.MetamodelDescriptorManager;
 import org.eclipse.sirius.business.api.helper.SiriusResourceHelper;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
-import org.eclipse.sirius.business.api.query.AirDResouceQuery;
 import org.eclipse.sirius.business.api.query.DAnalysisQuery;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
@@ -84,7 +83,6 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelectorServic
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionService;
-import org.eclipse.sirius.business.api.session.resource.AirdResource;
 import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
 import org.eclipse.sirius.business.internal.migration.resource.ResourceFileExtensionPredicate;
 import org.eclipse.sirius.business.internal.movida.Movida;
@@ -108,7 +106,6 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.Illegal
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
-import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.semantic.RemoveSemanticResourceCommand;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
@@ -771,7 +768,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         registerResourceInCrossReferencer(newResource);
     }
 
-
     /**
      * Add the cross referencer (if exists and is not present) to the eAdapters
      * list of the given resource.
@@ -1360,7 +1356,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         set.getResources().remove(res);
     }
 
-
     @Override
     public void statusChanged(final Resource resource, final ResourceStatus oldStatus, final ResourceStatus newStatus) {
         // Do nothing while processing.
@@ -1695,12 +1690,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             ViewpointRegistry.getInstance().removeListener(this);
         }
         notifyListeners(SessionListener.CLOSING);
-        // Disable resolution of proxy for all airdCrossReferenceAdapter of
-        // session resources and for semanticCrossReferencer during the closing
-        List<AirDCrossReferenceAdapter> airdCrossReferenceAdapters = disableCrossReferenceAdaptersResolution(Iterables.filter(getAllSessionResources(), AirdResource.class));
-        if (getSemanticCrossReferencer() instanceof LazyCrossReferencer) {
-            ((LazyCrossReferencer) getSemanticCrossReferencer()).disableResolve();
-        }
+        disableAndRemoveECrossReferenceAdapters();
+
         if (controlledResourcesDetector != null) {
             controlledResourcesDetector.dispose();
         }
@@ -1708,18 +1699,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             dAnalysisRefresher.dispose();
             dAnalysisRefresher = null;
         }
-        // Let's clear the cross referencer if it's still there.
-        for (final Resource res : getSemanticResources()) {
-            unregisterResourceInCrossReferencer(res);
-        }
-        for (final DAnalysis analysis : Iterables.filter(allAnalyses(), Predicates.notNull())) {
-            removeAdaptersOnAnalysis(analysis);
-            Resource analysisResource = analysis.eResource();
-            if (analysisResource != null) {
-                unregisterResourceInCrossReferencer(analysisResource);
-            }
-        }
-        ResourceSet resourceSet = transactionalEditingDomain.getResourceSet();
+
         if (interpreter != null) {
             interpreter.dispose();
         }
@@ -1730,10 +1710,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
          * Let's clear the cross referencer of the VSM resource if it's still
          * there (added by the updateSelectedViewpointsData).
          */
-        Iterable<Resource> resources = Lists.newArrayList(resourceSet.getResources());
-        for (Resource resource : Iterables.filter(resources, new ResourceFileExtensionPredicate(SiriusUtil.DESCRIPTION_MODEL_EXTENSION, false))) {
-            unregisterResourceInCrossReferencer(resource);
-        }
+        ResourceSet resourceSet = getTransactionalEditingDomain().getResourceSet();
+
         if (currentResourceCollector != null) {
             currentResourceCollector.dispose();
             currentResourceCollector = null;
@@ -1769,19 +1747,59 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (semanticResources != null) {
             semanticResources.clear();
         }
-        // Enable resolution for all airdCrossReferenceAdapter of session
-        // resources after the closing
-        for (AirDCrossReferenceAdapter airDCrossReferenceAdapter : airdCrossReferenceAdapters) {
-            airDCrossReferenceAdapter.enableResolve();
-        }
-        if (getSemanticCrossReferencer() instanceof LazyCrossReferencer) {
-            ((LazyCrossReferencer) getSemanticCrossReferencer()).enableResolve();
-        }
+        reenableECrossReferenceAdaptersBeforeEndOfClosing();
+
         if (disposeEditingDomainOnClose) {
             transactionalEditingDomain.dispose();
             doDisposePermissionAuthority(resourceSet);
         }
         mainDAnalysis = null;
+    }
+
+    private void disableAndRemoveECrossReferenceAdapters() {
+        ResourceSet resourceSet = getTransactionalEditingDomain().getResourceSet();
+        // Disable resolution of proxy for AirDCrossReferenceAdapter of
+        // session and for semanticCrossReferencer during the closing
+        Adapter existingAirDCrossReferenceAdapter = EcoreUtil.getExistingAdapter(resourceSet, AirDCrossReferenceAdapter.class);
+        AirDCrossReferenceAdapter airDCrossReferenceAdapter = null;
+        if (existingAirDCrossReferenceAdapter instanceof AirDCrossReferenceAdapter) {
+            airDCrossReferenceAdapter = (AirDCrossReferenceAdapter) existingAirDCrossReferenceAdapter;
+            airDCrossReferenceAdapter.disableResolve();
+            resourceSet.eAdapters().remove(airDCrossReferenceAdapter);
+        }
+        if (getSemanticCrossReferencer() instanceof LazyCrossReferencer) {
+            ((LazyCrossReferencer) getSemanticCrossReferencer()).disableResolve();
+        }
+        // Let's clear the cross referencer if it's still there.
+        for (final Resource res : getSemanticResources()) {
+            unregisterResourceInCrossReferencer(res);
+        }
+        for (final DAnalysis analysis : Iterables.filter(allAnalyses(), Predicates.notNull())) {
+            removeAdaptersOnAnalysis(analysis);
+            Resource analysisResource = analysis.eResource();
+            if (analysisResource != null) {
+                unregisterResourceInCrossReferencer(analysisResource);
+            }
+        }
+        Iterable<Resource> resources = Lists.newArrayList(resourceSet.getResources());
+        for (Resource resource : Iterables.filter(resources, new ResourceFileExtensionPredicate(SiriusUtil.DESCRIPTION_MODEL_EXTENSION, false))) {
+            unregisterResourceInCrossReferencer(resource);
+        }
+    }
+
+    private void reenableECrossReferenceAdaptersBeforeEndOfClosing() {
+        ResourceSet resourceSet = getTransactionalEditingDomain().getResourceSet();
+        // Enable resolution for AirdCrossReferenceAdapter of session at the end
+        // of closing
+        Adapter existingAirDCrossReferenceAdapter = EcoreUtil.getExistingAdapter(resourceSet, AirDCrossReferenceAdapter.class);
+        AirDCrossReferenceAdapter airDCrossReferenceAdapter = null;
+        if (existingAirDCrossReferenceAdapter instanceof AirDCrossReferenceAdapter) {
+            airDCrossReferenceAdapter = (AirDCrossReferenceAdapter) existingAirDCrossReferenceAdapter;
+            airDCrossReferenceAdapter.enableResolve();
+        }
+        if (getSemanticCrossReferencer() instanceof LazyCrossReferencer) {
+            ((LazyCrossReferencer) getSemanticCrossReferencer()).enableResolve();
+        }
     }
 
     private void flushOperations() {
@@ -1812,25 +1830,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      */
     protected void doDisposePermissionAuthority(ResourceSet resourceSet) {
         PermissionAuthorityRegistry.getDefault().getPermissionAuthority(resourceSet).dispose(resourceSet);
-    }
-
-    /**
-     * @param resources
-     *            List of resources that potentially having a
-     *            AirDCrossReferenceAdapter.
-     * @return The list of airDCrossReferenceAdapter for which the resolution
-     *         has been disabled.
-     */
-    private List<AirDCrossReferenceAdapter> disableCrossReferenceAdaptersResolution(Iterable<AirdResource> resources) {
-        List<AirDCrossReferenceAdapter> airdCrossReferenceAdapters = Lists.newArrayList();
-        for (AirdResource representationsFileResource : resources) {
-            Option<AirDCrossReferenceAdapter> optionalAirdCrossReferenceAdapter = new AirDResouceQuery(representationsFileResource).getAirDCrossReferenceAdapter();
-            if (optionalAirdCrossReferenceAdapter.some()) {
-                airdCrossReferenceAdapters.add(optionalAirdCrossReferenceAdapter.get());
-                optionalAirdCrossReferenceAdapter.get().disableResolve();
-            }
-        }
-        return airdCrossReferenceAdapters;
     }
 
     /**

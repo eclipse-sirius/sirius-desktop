@@ -31,6 +31,7 @@ import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointURIConverter;
+import org.eclipse.sirius.business.internal.resource.parser.AirDCrossReferenceAdapterImpl;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.common.tools.api.editing.EditingDomainFactoryService;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
@@ -75,7 +76,8 @@ public final class SessionFactoryImpl implements SessionFactory {
      */
     public Session createSession(final URI sessionResourceURI, IProgressMonitor monitor) throws CoreException {
         final ResourceSet set = ResourceSetFactory.createFactory().createResourceSet(sessionResourceURI);
-
+        set.eAdapters().add(new AirDCrossReferenceAdapterImpl());
+        
         final TransactionalEditingDomain transactionalEditingDomain = EditingDomainFactoryService.INSTANCE.getEditingDomainFactory().createEditingDomain(set);
         if (Movida.isEnabled()) {
             transactionalEditingDomain.getResourceSet()

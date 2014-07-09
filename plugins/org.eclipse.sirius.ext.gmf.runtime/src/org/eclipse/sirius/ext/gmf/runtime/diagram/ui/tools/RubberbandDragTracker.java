@@ -9,7 +9,7 @@
  *    IBM Corporation - initial API and implementation 
  ****************************************************************************/
 // CHECKSTYLE:OFF
-package org.eclipse.sirius.diagram.ui.tools.internal.ui;
+package org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools;
 
 import org.eclipse.gef.DragTracker;
 

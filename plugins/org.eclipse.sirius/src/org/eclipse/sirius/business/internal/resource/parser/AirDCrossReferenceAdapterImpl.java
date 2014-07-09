@@ -10,9 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.resource.parser;
 
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.gmf.runtime.emf.core.util.CrossReferenceAdapter;
+import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
 
 /**
@@ -20,23 +21,31 @@ import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
  * AirDResource.
  * 
  * @author smonnier
- * 
  */
 public class AirDCrossReferenceAdapterImpl extends CrossReferenceAdapter implements AirDCrossReferenceAdapter {
     boolean resolve = true;
 
     /**
-     * This method has been overridden to filter only the AirDResource and its
-     * elements.
+     * Overridden to have this {@link AirDCrossReferenceAdapter} installed only
+     * on aird resource.
      * 
-     * {@inheritDoc}
+     * @param notifier
+     *            a model element of the ResourceSet
      */
     @Override
-    public void selfAdapt(Notification notification) {
-        if (!notification.isTouch()
-                && (notification.getNotifier() instanceof AirDResourceImpl || (notification.getNotifier() instanceof EObject && ((EObject) notification.getNotifier()).eResource() instanceof AirDResourceImpl))) {
-            super.selfAdapt(notification);
+    protected void addAdapter(Notifier notifier) {
+        if (notifier instanceof Resource) {
+            Resource resource = (Resource) notifier;
+            if (!new ResourceQuery(resource).isRepresentationsResource()) {
+                return;
+            }
         }
+        super.addAdapter(notifier);
+    }
+
+    @Override
+    public boolean isAdapterForType(Object type) {
+        return type == AirDCrossReferenceAdapter.class;
     }
 
     /**

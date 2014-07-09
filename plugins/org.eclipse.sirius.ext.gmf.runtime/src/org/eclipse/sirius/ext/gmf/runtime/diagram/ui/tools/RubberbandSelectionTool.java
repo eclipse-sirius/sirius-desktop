@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2000, 2008 IBM Corporation and others.
+ * Copyright (c) 2000, 2014 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,9 +8,10 @@
  * Contributors:
  *    IBM Corporation - initial API and implementation
  *    Obeo - Allow ports selection (IBorderItemEditPart)
+ *    Obeo - Add "Touched" mode
  ****************************************************************************/
 // CHECKSTYLE:OFF
-package org.eclipse.sirius.diagram.ui.tools.internal.ui;
+package org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -20,14 +21,16 @@ import java.util.List;
 import java.util.ListIterator;
 
 import org.eclipse.draw2d.ColorConstants;
-import org.eclipse.draw2d.Cursors;
+import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.FigureCanvas;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Viewport;
+import org.eclipse.draw2d.ViewportUtilities;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.GraphicalEditPart;
@@ -36,6 +39,7 @@ import org.eclipse.gef.KeyHandler;
 import org.eclipse.gef.LayerConstants;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.RequestConstants;
+import org.eclipse.gef.SharedCursors;
 import org.eclipse.gef.editparts.LayerManager;
 import org.eclipse.gef.tools.AbstractTool;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
@@ -50,6 +54,11 @@ import org.eclipse.swt.widgets.Display;
  * the enclosed items will be appended to the current selection. If the CONTROL
  * key is pressed at the beginning of the drag, the enclosed items will have
  * their selection state inverted.
+ * <P>
+ * If the selection is made from left to right, the behavior is the one
+ * described previously. But if the selection is made from right to left the
+ * items that intersect the selection rectangle are concerned (and not only
+ * enclosed items).
  * <P>
  * By default, only editparts whose figure's are on the primary layer will be
  * considered within the enclosed rectangle.
@@ -78,6 +87,18 @@ public class RubberbandSelectionTool extends AbstractTool {
 
     static final int APPEND_MODE = 2;
 
+    /**
+     * When marquee is made from left to right, it is a standard selection:
+     * select elements wholly inside the marquee selection rectangle
+     */
+    static final int SELECTION_CONTAINED_MODE = 1;
+
+    /**
+     * When marquee is made from right to left, it is an alternative selection:
+     * select elements partially inside the marquee selection rectangle
+     */
+    static final int SELECTION_TOUCHED_MODE = 2;
+
     private int mode;
 
     private Figure marqueeRectangleFigure;
@@ -98,7 +119,7 @@ public class RubberbandSelectionTool extends AbstractTool {
      * Creates a new MarqueeSelectionTool.
      */
     public RubberbandSelectionTool() {
-        setDefaultCursor(Cursors.CROSS);
+        setDefaultCursor(SharedCursors.CROSS);
         setUnloadWhenFinished(false);
     }
 
@@ -106,25 +127,40 @@ public class RubberbandSelectionTool extends AbstractTool {
 
         List newSelections = new ArrayList();
         Iterator children = getAllChildren().iterator();
+        Rectangle marqueeBounds = getMarqueeBounds();
+
+        int selectionMode = SELECTION_CONTAINED_MODE;
+        if (feedBackStartLocation != null && feedBackStartLocation.x != getMarqueeBounds().getLeft().x) {
+            // Marquee from right to left (alternative selection: select
+            // elements partially inside the marquee selection rectangle
+            selectionMode = SELECTION_TOUCHED_MODE;
+        }
 
         // Calculate new selections based on which children fall
         // inside the marquee selection rectangle. Do not select
         // children who are not visible
         while (children.hasNext()) {
             EditPart child = (EditPart) children.next();
-            if (!child.isSelectable()) {
+            IFigure figure = ((GraphicalEditPart) child).getFigure();
+            if (!child.isSelectable() || child.getTargetEditPart(MARQUEE_REQUEST) != child || !((child instanceof IBorderItemEditPart && isBorderFigureVisible(figure)) || isFigureVisible(figure))) {
                 continue;
             }
-            IFigure figure = ((GraphicalEditPart) child).getFigure();
-            Rectangle r = figure.getBounds().getCopy();
+            Rectangle r;
+            if (child instanceof ConnectionEditPart) {
+                // RATLC00569348 For connection, get the bounds of connection
+                // points rather than connection figure since the
+                // figure's bounds contain the bounds of all connection children
+                // and would require selection rectangle
+                // to be larger than expected in some cases
+                r = ((Connection) figure).getPoints().getBounds().getCopy();
+            } else {
+                r = figure.getBounds().getCopy();
+            }
             figure.translateToAbsolute(r);
-
-            Rectangle marqueeBounds = getMarqueeBounds();
             getMarqueeFeedbackFigure().translateToRelative(r);
-            if (marqueeBounds.contains(r.getTopLeft()) && marqueeBounds.contains(r.getBottomRight()) && child.getTargetEditPart(MARQUEE_REQUEST) == child) {
-                if ((child instanceof IBorderItemEditPart && isBorderFigureVisible(figure)) || isFigureVisible(figure)) {
-                    newSelections.add(child);
-                }
+            if ((selectionMode == SELECTION_CONTAINED_MODE && marqueeBounds.contains(r.getTopLeft()) && marqueeBounds.contains(r.getBottomRight()))
+                    || (selectionMode == SELECTION_TOUCHED_MODE && marqueeBounds.intersects(r))) {
+                newSelections.add(child);
             }
         }
         return newSelections;
@@ -460,9 +496,9 @@ public class RubberbandSelectionTool extends AbstractTool {
         }
         super.setViewer(viewer);
         if (viewer instanceof GraphicalViewer) {
-            setDefaultCursor(Cursors.CROSS);
+            setDefaultCursor(SharedCursors.CROSS);
         } else {
-            setDefaultCursor(Cursors.NO);
+            setDefaultCursor(SharedCursors.NO);
         }
         if (viewer != null) {
             weakReference = new WeakReference(viewer);

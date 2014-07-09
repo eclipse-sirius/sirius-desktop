@@ -86,6 +86,11 @@ public final class LayoutUtils {
     public static final Dimension DEFAULT_CONTAINER_DIMENSION = new Dimension(150, 70);
 
     /**
+     * The default container dimension (since 4.0).
+     */
+    public static final Dimension NEW_DEFAULT_CONTAINER_DIMENSION = new Dimension(40, 40);
+
+    /**
      * Default width.
      */
     public static final int DEFAULT_WIDTH = 10;

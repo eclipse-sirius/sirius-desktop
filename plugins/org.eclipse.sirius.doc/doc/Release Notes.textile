@@ -4,6 +4,37 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for all major releases of Sirius.
 
+h2(#sirius2.0.0). Changes in Sirius 2.0.0 (from Sirius 1.0.0)
+
+h3. User-Visible Changes
+
+* It is now possible to select element that intersects the selection rectangle and not that is completely contained by the selection rectangle. This new behavior is enabled when user selects elements from right to left. The normal mode (previous mode) remains when the user selects elements from left to right. 
+
+h3. API Changes
+
+h4. Changes in @org.eclipse.sirius.diagram.ui@
+
+* The method @org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery.getDefaultDimension()@ has been added to compute the default size of a DNodeContainer.
+
+h4. Changes in @org.eclipse.sirius.ext.gmf.runtime@
+
+* Several utilities have been added in @org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper@:
+** @applyZoomOnPoint(IGraphicalEditPart, Point)@: Apply the current zoom, of the diagram of the @IGraphicalEditPart@, to the @Point@.
+** @getAnchorPoint(IGraphicalEditPart parent, Anchor anchor)@: Get the @Point@ (absolute draw2d coordinates) corresponding to this @Anchor@.
+** @getAnchorPoint(IGraphicalEditPart parent, IdentityAnchor anchor)@: Get the @Point@ (absolute draw2d coordinates) corresponding to this @IdentityAnchor@.
+** @getIntersection(Point, Point, IGraphicalEditPart, boolean)@: Get intersection between a line between lineOrigin and lineTerminus, and the rectangle bounds of the @IGraphicalEditPart@. If there are several intersections, the shortest is returned.
+** @getAbsoluteBounds(IGraphicalEditPart)@: Get the absolute bounds of this @IGraphicalEditPart@.
+** @getAbsoluteBoundsIn100Percent(IGraphicalEditPart)@: Get the absolute bounds of this @IGraphicalEditPart@ but adapted according to the current zoom level.
+** @isSnapToGridEnabled(EditPart)@: Return true if the snapToGrid is enabled for the diagram containing this edit part, false otherwise.
+
+h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
+
+* The method @SWTBotSiriusDiagramEditor.setSnapToGrid(boolean)@ has been added. It allows to disable or enable the snapToGrid option for this editor.
+* The method @SWTBotSiriusDiagramEditor.setSnapToGrid(boolean, double, int)@ has been added. It allows to disable or enable the snapToGrid option for this editor. In case of activation, you can also set the grid spacing and the ruler units. 
+* The method @SWTBotSiriusDiagramEditor.disableSnapToGrid()@ has been deprecated, use @SWTBotSiriusDiagramEditor.setSnapToGrid(false)@ instead.
+* The method @SWTBotSiriusDiagramEditor.adaptLocationToSnap(Point)@ has been added. It allows to adapt location according to SnapToHelper of the current editor.
+* The method @SWTBotSiriusDiagramEditor.getDiagramEditPart()@ has been added. It allows to retrieve the diagram edit part of the current editor.
+
 h2(#sirius1.0.0). Changes in Sirius 1.0.0 (from Sirius 1.0.0M7)
 
 h3. User-Visible Changes

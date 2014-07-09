@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import java.util.Map;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.action.IAction;
@@ -28,6 +29,7 @@ import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.action.SubContributionItem;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
@@ -55,6 +57,8 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
@@ -230,11 +234,13 @@ public class DTreeMenuListener implements IMenuListener {
         if (session != null) {
             final Collection<DRepresentation> otherRepresentations = DialectManager.INSTANCE.getRepresentations(semanticElement, session);
             for (final DRepresentation representation : otherRepresentations) {
-                navigate.setVisible(true);
-                ((IMenuManager) navigate.getInnerItem()).appendToGroup(EXISTING_REPRESENTATION_GROUP_SEPARATOR, buildOpenRepresentationAction(session, representation));
+                if (!EcoreUtil.equals(dTree, representation) && isFromActiveViewpoint(session, representation)) {
+                    navigate.setVisible(true);
+                    ((IMenuManager) navigate.getInnerItem()).appendToGroup(EXISTING_REPRESENTATION_GROUP_SEPARATOR, buildOpenRepresentationAction(session, representation));
+                }
             }
             if (decorator instanceof DRepresentationElement) {
-                if (buildNavigableRepresentationsMenu((IMenuManager) navigate.getInnerItem(), decorator, session)) {
+                if (buildNavigableRepresentationsMenu((IMenuManager) navigate.getInnerItem(), (DRepresentationElement) decorator, session)) {
                     // if at least one navigable representation menu
                     // has been created, we have to make the navigate menu
                     // visible
@@ -244,11 +250,15 @@ public class DTreeMenuListener implements IMenuListener {
         }
     }
 
-    private boolean buildNavigableRepresentationsMenu(final IMenuManager navigate, final EObject designerObj, final Session session) {
-        final DRepresentationElement element = (DRepresentationElement) designerObj;
+    private boolean buildNavigableRepresentationsMenu(final IMenuManager navigate, final DRepresentationElement element, final Session session) {
         if (element.getMapping() != null) {
 
             for (final RepresentationNavigationDescription navDesc : element.getMapping().getNavigationDescriptions()) {
+                boolean append = true;
+                if (!isFromActiveViewpoint(session, navDesc.getRepresentationDescription())) {
+                    append = false;
+                }
+
                 final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(element.getTarget());
 
                 final Map<AbstractVariable, Object> variables = new HashMap<AbstractVariable, Object>();
@@ -258,16 +268,18 @@ public class DTreeMenuListener implements IMenuListener {
                 final InitInterpreterVariablesTask init = new InitInterpreterVariablesTask(variables, interpreter, new EMFCommandFactoryUI());
                 init.execute();
 
-                boolean precondition = true;
-                if (!StringUtil.isEmpty(navDesc.getPrecondition())) {
+                final String precondition = navDesc.getPrecondition();
+                if (append && !StringUtil.isEmpty(precondition)) {
+                    append = false;
+
                     try {
-                        precondition = interpreter.evaluateBoolean(element.getTarget(), navDesc.getPrecondition());
+                        append = interpreter.evaluateBoolean(element.getTarget(), navDesc.getPrecondition());
                     } catch (final EvaluationException e) {
                         RuntimeLoggerManager.INSTANCE.error(navDesc, ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition(), e);
                     }
                 }
 
-                if (precondition) {
+                if (append) {
                     // VP-2659 : we return true if at least one action has been
                     // added in the menu to make it visible
                     return buildOpenRepresentationActions(navigate, interpreter, navDesc, element, session);
@@ -382,28 +394,65 @@ public class DTreeMenuListener implements IMenuListener {
     }
 
     private void createDetailsActions(final DTreeItem currentElement, final SubContributionItem navigate) {
-        if (currentElement.getActualMapping() != null) {
-            final Iterator<RepresentationCreationDescription> it = currentElement.getActualMapping().getDetailDescriptions().iterator();
-            while (it.hasNext()) {
-                final RepresentationCreationDescription desc = it.next();
-                final String precondition = desc.getPrecondition();
-                boolean append = true;
-                if (precondition != null && !StringUtil.isEmpty(precondition.trim())) {
-                    append = false;
-                    final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(currentElement.getTarget());
-                    try {
-                        append = interpreter.evaluateBoolean(currentElement.getTarget(), precondition);
-                    } catch (final EvaluationException e) {
-                        // do nothing
+        if (currentElement.getMapping() != null) {
+            final Session session = currentElement.getTarget() != null ? SessionManager.INSTANCE.getSession(currentElement.getTarget()) : null;
+            if (session != null) {
+                for (RepresentationCreationDescription desc : currentElement.getMapping().getDetailDescriptions()) {
+                    boolean append = true;
+                    if (!isFromActiveViewpoint(session, desc.getRepresentationDescription())) {
+                        append = false;
                     }
-                }
-                if (append) {
-                    navigate.setVisible(true);
-                    ((IMenuManager) navigate.getInnerItem()).appendToGroup(NEW_REPRESENTATION_GROUP_SEPARATOR, new CreateRepresentationFromRepresentationCreationDescription(desc, currentElement,
-                            treeViewManager.getEditingDomain(), treeViewManager.getTreeCommandFactory()));
+
+                    final String precondition = desc.getPrecondition();
+                    if (append && !StringUtil.isEmpty(precondition)) {
+                        append = false;
+                        final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(currentElement.getTarget());
+                        try {
+                            append = interpreter.evaluateBoolean(currentElement.getTarget(), precondition);
+                        } catch (final EvaluationException e) {
+                            // do nothing
+                        }
+                    }
+                    if (append) {
+                        navigate.setVisible(true);
+                        ((IMenuManager) navigate.getInnerItem()).appendToGroup(NEW_REPRESENTATION_GROUP_SEPARATOR, new CreateRepresentationFromRepresentationCreationDescription(desc, currentElement,
+                                treeViewManager.getEditingDomain(), treeViewManager.getTreeCommandFactory()));
+                    }
                 }
             }
         }
+    }
+
+    /**
+     * Tests whether a representation description belongs to a viewpoint which
+     * is currently active in the session.
+     * 
+     * @param session
+     *            the current session.
+     * @param representationDescription
+     *            the representation description to check.
+     * @return <code>true</code> if the representation description belongs to a
+     *         viewpoint which is currently active in the session.
+     */
+    private boolean isFromActiveViewpoint(final Session session, final RepresentationDescription representationDescription) {
+        final Viewpoint vp = ViewpointRegistry.getInstance().getViewpoint(representationDescription);
+        return vp != null && session.getSelectedViewpoints(false).contains(vp);
+    }
+
+    /**
+     * Tests whether a representation belongs to a viewpoint which is currently
+     * active in the session.
+     * 
+     * @param session
+     *            the current session.
+     * @param representation
+     *            the representation to check.
+     * @return <code>true</code> if the representation belongs to a viewpoint
+     *         which is currently active in the session.
+     */
+    private boolean isFromActiveViewpoint(final Session session, final DRepresentation representation) {
+        final RepresentationDescription description = DialectManager.INSTANCE.getDescription(representation);
+        return isFromActiveViewpoint(session, description);
     }
 
     protected Map<TreeMapping, List<AbstractToolAction>> getMappingToCreateActions() {

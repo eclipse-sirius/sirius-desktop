@@ -99,15 +99,17 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
     private void deactivateLayoutingMode() {
         if (getModel() instanceof Diagram) {
             Diagram diagramGMF = (Diagram) getModel();
-            if (diagramGMF.getElement() instanceof DDiagram) {
-                try {
+            try {
+                if (diagramGMF.getElement() instanceof DDiagram) {
+
                     DDiagram dDiagram = (DDiagram) diagramGMF.getElement();
                     if (dDiagram.isIsInLayoutingMode()) {
                         getEditingDomain().getCommandStack().execute(new SetLayoutingModeCommand(getEditingDomain(), dDiagram, false));
                     }
-                } catch (IllegalStateException e) {
-                    // In case of collab session closing with opened editor
                 }
+            } catch (IllegalStateException e) {
+                // If the DDiagram associated to this GMF Diagram is not
+                // accessible any more, we do not modify layouting mode
             }
         }
     }

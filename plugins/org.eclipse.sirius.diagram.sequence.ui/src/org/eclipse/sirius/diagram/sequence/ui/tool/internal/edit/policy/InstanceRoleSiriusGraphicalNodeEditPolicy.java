@@ -23,6 +23,7 @@ import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.gmf.runtime.diagram.ui.commands.CommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.INodeEditPart;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.EdgeTarget;
@@ -302,5 +303,17 @@ public class InstanceRoleSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNo
         SequenceEditPartsOperations.buildCreateEdgeCommand((IGraphicalEditPart) getHost(), result, request, source, target, edgeCreationDescription, cmdFactoryProvider);
         SequenceEditPartsOperations.appendFullRefresh((IGraphicalEditPart) getHost(), result);
         return result;
+    }
+
+    /**
+     * The snap to grid should be disabled in sequence diagram, but to avoid
+     * confusion the specific method for edge behavior with snap to grid is
+     * disabled.
+     * 
+     * {@inheritDoc}
+     */
+    @Override
+    protected EdgeLayoutData getEdgeLayoutDataWithSnapToGrid(CreateConnectionRequest request, INodeEditPart sourceEditPart, INodeEditPart targetEditPart, Point sourceLocation, Point targetLocation) {
+        return super.getEdgeLayoutData(request, sourceEditPart, targetEditPart, sourceLocation, targetLocation);
     }
 }

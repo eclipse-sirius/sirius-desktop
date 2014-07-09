@@ -143,7 +143,7 @@ public class UINewRepresentationBuilder<R extends AbstractUIRepresentation<?>> i
             swtBotEditor = SWTBotSiriusHelper.getSiriusEditor(newRepresentationName);
         }
         if (swtBotEditor != null && disableSnapToGridOnThisEditor) {
-            ((SWTBotSiriusDiagramEditor) swtBotEditor).disableSnapToGrid();
+            ((SWTBotSiriusDiagramEditor) swtBotEditor).setSnapToGrid(false);
         }
         return UIRepresentationUtils.buildRepresentation(null, getRealNewRepresentationName(), getRepresentationType());
     }
