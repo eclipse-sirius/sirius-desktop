@@ -62,7 +62,6 @@ import org.eclipse.sirius.viewpoint.description.style.provider.StyleItemProvider
 import org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.validation.provider.ValidationItemProviderAdapterFactory;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -209,9 +208,6 @@ public final class SiriusEditPlugin extends EMFPlugin {
                 final IStatus status = new Status(IStatus.ERROR, SiriusEditPlugin.ID, IStatus.OK, e.getMessage(), e);
                 SiriusEditPlugin.getPlugin().getLog().log(status);
             }
-
-            /* set ecore editor as default editor. */
-            PlatformUI.getWorkbench().getEditorRegistry().setDefaultEditor("*.ecore", "org.eclipse.emf.ecore.presentation.EcoreEditorID");
 
             try {
                 // Just a call to load all plugins that provide a specific
