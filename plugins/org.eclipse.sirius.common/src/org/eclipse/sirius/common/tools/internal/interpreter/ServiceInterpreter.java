@@ -34,6 +34,7 @@ import org.osgi.framework.Bundle;
 import com.google.common.base.Function;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
@@ -246,8 +247,12 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
     public void setProperty(Object key, Object value) {
         properties.put(key, value);
         if (IInterpreter.FILES.equals(key) && (value instanceof List<?>)) {
+            // Reload all the imported services using the new bundle path
             updateBundlePath(Iterables.filter((List<?>) value, String.class));
             services.clear();
+            for (String imp : Lists.newArrayList(imports)) {
+                addImport(imp);
+            }
         }
     }
 
