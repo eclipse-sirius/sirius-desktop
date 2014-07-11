@@ -2,7 +2,7 @@
 <?eclipse version="3.0"?>
 <!-- Start of user code plugin.xml start specifics  -->
 <!--
-   Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
+   Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
    All rights reserved. This program and the accompanying materials
    are made available under the terms of the Eclipse Public License v1.0
    which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
 
    Contributors:
       Obeo - initial API and implementation
+      Joao Martins <joaomartins27396@gmail.com> - Bug 438074
 
 -->
 
@@ -20,6 +21,9 @@
         point="org.eclipse.sirius.editor.menuBuilder">
      <builder
            class="org.eclipse.sirius.diagram.editor.tools.internal.menu.refactoring.DiagramRefactoringMenu">
+     </builder>
+     <builder
+           class="org.eclipse.sirius.diagram.editor.tools.internal.menu.initializer.DiagramInitializerMenu">
      </builder>
      <builder
            class="org.eclipse.sirius.diagram.editor.tools.internal.menu.child.ElementCreationMenuBuilder">

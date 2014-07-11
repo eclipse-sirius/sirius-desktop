@@ -8,6 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *    Joao Martins <joaomartins27396@gmail.com> - Bug 434698
+ *    Joao Martins <joaomartins27396@gmail.com> - Bug 438074
  *******************************************************************************/
 package org.eclipse.sirius.editor.tools.internal.presentation;
 
@@ -63,6 +64,7 @@ import org.eclipse.sirius.editor.tools.internal.menu.child.RepresentationTemplat
 import org.eclipse.sirius.editor.tools.internal.menu.child.StyleMenuBuilder;
 import org.eclipse.sirius.editor.tools.internal.menu.child.ValidationMenuBuilder;
 import org.eclipse.sirius.editor.tools.internal.menu.child.VariablesMenuBuilder;
+import org.eclipse.sirius.editor.tools.internal.menu.initializer.InitializerMenu;
 import org.eclipse.sirius.editor.tools.internal.menu.refactoring.RefactoringMenu;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PartInitException;
@@ -440,8 +442,8 @@ public class CustomSiriusActionBarContributor extends EditingDomainActionBarCont
 
     private void insertInParentMenu(final IMenuManager menuManager) {
         for (final AbstractMenuBuilder builder : builders) {
-            if (RefactoringMenu.REFACTORING_MENU_LABEL.equals(builder.getLabel())) {
-                // Refactoring menu should be added after the edit group
+            if (RefactoringMenu.REFACTORING_MENU_LABEL.equals(builder.getLabel()) || InitializerMenu.INITIALIZER_MENU_LABEL.equals(builder.getLabel())) {
+                //Refactoring and Initializer menu should be added after the edit group.
                 builder.insertAfterInContainer(menuManager);
             } else {
                 builder.insertBeforeInContainer(menuManager);
