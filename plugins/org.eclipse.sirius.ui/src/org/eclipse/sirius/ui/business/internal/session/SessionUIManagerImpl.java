@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
@@ -46,6 +47,13 @@ public final class SessionUIManagerImpl extends SessionManagerListener.Stub impl
 
     private SessionUIManagerImpl() {
         SessionManager.INSTANCE.addSessionsListener(this);
+
+        // Init UI sessions corresponding to already opened sessions.
+        for (Session alreadyManagedSession : SessionManager.INSTANCE.getSessions()) {
+            if (alreadyManagedSession.isOpen()) {
+                createAndOpenUiSession(alreadyManagedSession);
+            }
+        }
     }
 
     /**
@@ -120,6 +128,15 @@ public final class SessionUIManagerImpl extends SessionManagerListener.Stub impl
     @Override
     public void notify(Session updated, int notification) {
         super.notify(updated, notification);
+
+        switch (notification) {
+        case SessionListener.OPENED:
+            createAndOpenUiSession(updated);
+            break;
+        default:
+            // do nothing as we will be notified in other way
+            break;
+        }
         cleanUISessions();
     }
 
@@ -137,6 +154,13 @@ public final class SessionUIManagerImpl extends SessionManagerListener.Stub impl
         }
         for (final Session session : sessionToRemove) {
             this.sessionToUISession.remove(session);
+        }
+    }
+
+    private void createAndOpenUiSession(final Session openedSession) {
+        final IEditingSession uiSession = getOrCreateUISession(openedSession);
+        if (uiSession != null) {
+            uiSession.open();
         }
     }
 
@@ -236,9 +260,9 @@ public final class SessionUIManagerImpl extends SessionManagerListener.Stub impl
      * {@inheritDoc}
      */
     public IEditingSession getOrCreateUISession(final Session session) {
-        IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
+        IEditingSession uiSession = getUISession(session);
         if (uiSession == null) {
-            uiSession = SessionUIManager.INSTANCE.createUISession(session);
+            uiSession = createUISession(session);
         }
         return uiSession;
     }

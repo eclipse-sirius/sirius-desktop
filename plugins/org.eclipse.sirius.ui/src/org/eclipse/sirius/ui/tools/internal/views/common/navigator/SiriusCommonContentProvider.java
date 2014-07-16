@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,8 +50,6 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider;
 import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ui.business.api.session.IEditingSession;
-import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.ui.tools.internal.views.common.FileSessionFinder;
 import org.eclipse.sirius.ui.tools.internal.views.common.SessionWrapperContentProvider;
@@ -122,9 +120,6 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
         doubleClickListener = new OpenRepresentationListener();
     }
 
-    /**
-     * 
-     */
     private void initExpandListener() {
         expandListener = new OpenSessionOnExpandListener();
     }
@@ -135,18 +130,8 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
 
         for (Session alreadyManagedSession : SessionManager.INSTANCE.getSessions()) {
             if (alreadyManagedSession.isOpen()) {
-                createAndOpenUiSession(alreadyManagedSession);
                 addRefreshViewerTrigger(alreadyManagedSession);
             }
-        }
-
-    }
-
-    private void createAndOpenUiSession(final Session openedSession) {
-        // Creates UI Session to listen the dirty state.
-        final IEditingSession uiSession = SessionUIManager.INSTANCE.getOrCreateUISession(openedSession);
-        if (uiSession != null) {
-            uiSession.open();
         }
     }
 
@@ -861,8 +846,6 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
 
             case SessionListener.OPENED:
                 refreshViewer(updated);
-
-                createAndOpenUiSession(updated);
                 addRefreshViewerTrigger(updated);
                 break;
 
