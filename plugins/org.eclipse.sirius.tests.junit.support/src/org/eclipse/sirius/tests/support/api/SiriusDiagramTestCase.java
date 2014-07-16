@@ -85,12 +85,12 @@ import org.eclipse.sirius.diagram.tools.api.command.DiagramCommandFactoryService
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.view.HideDDiagramElementLabel;
 import org.eclipse.sirius.diagram.tools.api.command.view.RevealDDiagramElementsLabel;
+import org.eclipse.sirius.diagram.tools.internal.command.ChangeLayerActivationCommand;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromDiagramAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromModelAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteWithHookAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.commands.ChangeLayerActivationCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.ResetStylePropertiesToDefaultValuesCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.handler.ChangeFilterActivation;
 import org.eclipse.sirius.tests.support.command.CreateNoteAttachmentRecordingCommand;

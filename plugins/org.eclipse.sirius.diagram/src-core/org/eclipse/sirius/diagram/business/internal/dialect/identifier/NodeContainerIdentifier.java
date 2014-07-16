@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,21 +8,15 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.ui.business.internal.dialect;
+package org.eclipse.sirius.diagram.business.internal.dialect.identifier;
 
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
+import org.eclipse.sirius.business.api.dialect.identifier.RepresentationElementIdentifier;
 
 /**
- * A marker to do some operations after first diagram opening.
+ * Identifies a state that can contains NodeState.
  * 
- * @author mchauvin
+ * @author ymortier
  */
-final class NotYetOpenedDiagramAdapter extends AdapterImpl {
-
-    public static final NotYetOpenedDiagramAdapter INSTANCE = new NotYetOpenedDiagramAdapter();
-
-    private NotYetOpenedDiagramAdapter() {
-
-    }
+public interface NodeContainerIdentifier extends RepresentationElementIdentifier {
 
 }

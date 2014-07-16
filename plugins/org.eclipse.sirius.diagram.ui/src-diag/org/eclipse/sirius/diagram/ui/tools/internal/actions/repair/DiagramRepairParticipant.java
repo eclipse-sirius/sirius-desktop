@@ -43,6 +43,8 @@ import org.eclipse.sirius.diagram.FilterVariableValue;
 import org.eclipse.sirius.diagram.business.api.helper.concern.ConcernService;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
+import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
+import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.business.internal.repair.resource.DiagramKey;
 import org.eclipse.sirius.diagram.business.internal.repair.resource.RepairRepresentationRefresher;
 import org.eclipse.sirius.diagram.business.internal.repair.resource.session.diagram.data.LostEdgeData;
@@ -51,8 +53,6 @@ import org.eclipse.sirius.diagram.business.internal.repair.resource.session.diag
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.description.tool.BehaviorTool;
-import org.eclipse.sirius.diagram.ui.business.api.view.refresh.CanonicalSynchronizer;
-import org.eclipse.sirius.diagram.ui.business.api.view.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.ui.internal.refresh.listeners.GMFDiagramUpdater;
 import org.eclipse.sirius.diagram.ui.tools.api.migration.DiagramCrossReferencer;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.repair.commands.RemoveInvalidViewsCommand;

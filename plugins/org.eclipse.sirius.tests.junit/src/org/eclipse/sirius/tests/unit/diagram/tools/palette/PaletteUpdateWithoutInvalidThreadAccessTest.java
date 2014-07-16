@@ -28,9 +28,10 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.diagram.tools.internal.command.ChangeLayerActivationCommand;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.ui.tools.internal.commands.ChangeLayerActivationCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.DiagramComponentizationTestSupport;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -41,8 +42,6 @@ import org.eclipse.ui.PlatformUI;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * A test ensuring that when the palette gets updated (e.g. when a filter has

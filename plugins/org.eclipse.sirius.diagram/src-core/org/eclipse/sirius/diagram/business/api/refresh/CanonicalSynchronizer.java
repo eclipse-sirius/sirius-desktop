@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.ui.business.api.view.refresh;
+package org.eclipse.sirius.diagram.business.api.refresh;
 
 /**
  * A canonical synchronizer is in charge of applying changes made on
@@ -44,4 +44,14 @@ public interface CanonicalSynchronizer {
      *            true to store in SiriusLayoutDataManager, false else
      */
     void storeViewsToArrange(boolean storeViewsToArrange);
+
+    /**
+     * Called only once, after the diagram got created and a first synchronize
+     * call has been done. This hook gives the chance to a canonical
+     * synchronizer to adapt model information based on the current model
+     * content when the diagram got created. once created.
+     * 
+     * @since 2.0.0
+     */
+    void postCreation();
 }

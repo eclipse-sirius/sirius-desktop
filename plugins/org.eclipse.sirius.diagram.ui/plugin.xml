@@ -1605,11 +1605,6 @@
      </dialectUI>
   </extension>
 
-  <extension
-        point="org.eclipse.sirius.dialect">
-     <dialect
-           class="org.eclipse.sirius.diagram.ui.business.internal.dialect.DiagramDialect"></dialect>
-  </extension>
     <extension
         point="org.eclipse.ui.handlers">
      <handler
@@ -1915,5 +1910,11 @@
                org.eclipse.emf.edit.provider.ITreeItemContentProvider
                org.eclipse.emf.edit.provider.IItemLabelProvider
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.diagram.canonicalSynchronizerFactoryOverride">
+      <factory
+            class="org.eclipse.sirius.diagram.ui.internal.refresh.factory.CanonicalSynchronizerFactoryImpl">
+      </factory>
    </extension>
 </plugin>

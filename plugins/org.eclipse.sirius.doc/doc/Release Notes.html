@@ -104,6 +104,9 @@
 		</h4>
 		<ul>
 			<li>The 
+				<code>org.eclipse.sirius.business.api.session.ViewpointSelector</code> class has been added, with easy-to-use methods to select/deselect viewpoint in a given session.
+			</li>
+			<li>The 
 				<code>VIEWPOINT_REGISTRY_INITIAL_SIZE</code> preference and 
 				<code>VIEWPOINT_REGISTRY_INITIAL_SIZE_DEFAULT_VALUE</code> default value has been removed from 
 				<code>org.eclipse.sirius.tools.api.preferences.DCorePreferences</code>.
@@ -208,6 +211,19 @@
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
+			<li>The 
+				<code>org.eclipse.sirius.diagram.ui.business.api.view.refresh</code> package and all its content has been move into the 
+				<code>org.eclipse.sirius.diagram</code> plug-in, under the name 
+				<code>org.eclipse.sirius.diagram.business.api.view.refresh</code>.
+			</li>
+			<li>A new extension point 
+				<code>org.eclipse.sirius.diagram.canonicalSynchronizerFactoryOverride</code> has been defined. Its only intended implementer is the 
+				<code>org.eclipse.sirius.diagram.ui</code> plug-in. It is used by the diagram dialect&#8217;s core to delegate to the UI plug-in the canonical synchronizer logic, which depends on the UI.
+			</li>
+			<li>In 
+				<code>org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer</code>, a new method 
+				<code>postCreation()</code> has been added. It is called exactly once, right after a diagram has been created and synchronized the first time.
+			</li>
 			<li>
 				<code>org.eclipse.sirius.diagram.description.style.EdgeStyleDescription</code> metamodel class has three more features: 
 				<code>centeredSourceMappings</code>, 
@@ -226,6 +242,11 @@
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
+			<li>The 
+				<code>org.eclipse.sirius.diagram.ui.business.api.view.refresh</code> package and all its content has been move into the 
+				<code>org.eclipse.sirius.diagram</code> plug-in, under the name 
+				<code>org.eclipse.sirius.diagram.business.api.view.refresh</code>.  
+			</li>
 			<li>The method 
 				<code>org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery.getDefaultDimension()</code> has been added to compute the default size of a DNodeContainer.
 			</li>

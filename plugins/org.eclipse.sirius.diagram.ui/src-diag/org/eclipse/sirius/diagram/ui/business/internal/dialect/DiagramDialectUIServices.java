@@ -69,6 +69,8 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
+import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
+import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.Layer;
@@ -79,8 +81,6 @@ import org.eclipse.sirius.diagram.description.style.provider.StyleItemProviderAd
 import org.eclipse.sirius.diagram.description.tool.ToolFactory;
 import org.eclipse.sirius.diagram.description.tool.provider.ToolItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
-import org.eclipse.sirius.diagram.ui.business.api.view.refresh.CanonicalSynchronizer;
-import org.eclipse.sirius.diagram.ui.business.api.view.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.ui.business.internal.command.CreateAndStoreGMFDiagramCommand;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;

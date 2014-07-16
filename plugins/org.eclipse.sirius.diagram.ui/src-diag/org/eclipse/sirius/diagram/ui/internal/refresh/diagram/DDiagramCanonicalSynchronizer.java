@@ -21,11 +21,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.util.AbstractTreeIterator;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
@@ -37,8 +40,10 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.business.api.diagramtype.ICollapseUpdater;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.diagram.business.api.query.DiagramDescriptionQuery;
 import org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters.CollapseUpdater;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
+import org.eclipse.sirius.diagram.ui.business.internal.dialect.SetBestHeightHeaderCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.internal.operation.RegionContainerUpdateLayoutOperation;
 import org.eclipse.sirius.diagram.ui.internal.refresh.AbstractCanonicalSynchronizer;
@@ -90,7 +95,7 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
      * 
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizer#synchronize()
+     * @see org.eclipse.sirius.diagram.business.api.refresh.view.refresh.CanonicalSynchronizer#synchronize()
      */
     public void synchronize() {
         refreshSemantic();
@@ -417,6 +422,20 @@ public class DDiagramCanonicalSynchronizer extends AbstractCanonicalSynchronizer
                     if (filter != null && filter.getWidth() == 0 && filter.getHeight() == 0) {
                         ((CollapseUpdater) cu).storeInFilterAndCollapseBounds(dde, Options.newSome(node), false);
                     }
+                }
+            }
+        }
+
+    }
+
+    @Override
+    public void postCreation() {
+        if (gmfDiagram != null && gmfDiagram.getElement() instanceof DDiagram && ((DDiagram) gmfDiagram.getElement()).getDescription() != null) {
+            if (new DiagramDescriptionQuery(((DDiagram) gmfDiagram.getElement()).getDescription()).isHeaderSectionEnabled()) {
+                TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(gmfDiagram.getElement());
+                if (domain != null) {
+                    Command setBestHeightHeaderCommand = new SetBestHeightHeaderCommand(domain, gmfDiagram);
+                    setBestHeightHeaderCommand.execute();
                 }
             }
         }

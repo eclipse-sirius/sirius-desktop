@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.ui.business.internal.dialect;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.business.internal.dialect.NotYetOpenedDiagramAdapter;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.LayoutUtil;
 import org.eclipse.ui.IEditorPart;
 
@@ -24,16 +25,7 @@ import org.eclipse.ui.IEditorPart;
  */
 public class DiagramDialectArrangeOperation {
 
-    /**
-     * Mark this diagram as needing a arrange all.
-     * 
-     * @param diagram
-     *            the diagram to mark
-     */
-    public void markAsToArrange(final DDiagram diagram) {
-        diagram.eAdapters().add(NotYetOpenedDiagramAdapter.INSTANCE);
-    }
-
+  
     /**
      * Arrange the given representation contained in the given editor, if it was
      * marked as to arrange.

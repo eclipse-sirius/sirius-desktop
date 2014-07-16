@@ -8,10 +8,10 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.ui.business.api.view.refresh;
+package org.eclipse.sirius.diagram.business.api.refresh;
 
 import org.eclipse.gmf.runtime.notation.Diagram;
-import org.eclipse.sirius.diagram.ui.internal.refresh.factory.CanonicalSynchronizerFactoryImpl;
+import org.eclipse.sirius.diagram.business.internal.dialect.CanonicalSynchronizerFactoryImpl;
 
 /**
  * Factory for {@link CanonicalSynchronizer}.
@@ -25,9 +25,20 @@ import org.eclipse.sirius.diagram.ui.internal.refresh.factory.CanonicalSynchroni
 public interface CanonicalSynchronizerFactory {
 
     /**
+     * The extension point ID.
+     */
+    String ID = "org.eclipse.sirius.diagram.canonicalSynchronizerFactoryOverride";
+
+    /**
+     * Extension point attribute for the factory class.
+     */
+    String CLASS_ATTRIBUTE = "class";
+
+    
+    /**
      * The shared default implementation of the validator factory interface.
      */
-    CanonicalSynchronizerFactory INSTANCE = new CanonicalSynchronizerFactoryImpl();
+    CanonicalSynchronizerFactory INSTANCE = CanonicalSynchronizerFactoryImpl.init();
 
     /**
      * Operation to create a new {@link CanonicalSynchronizer}.

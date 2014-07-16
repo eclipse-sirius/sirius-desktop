@@ -43,6 +43,7 @@ h3. API Changes
 
 h4. Changes in @org.eclipse.sirius@
 
+* The @org.eclipse.sirius.business.api.session.ViewpointSelector@ class has been added, with easy-to-use methods to select/deselect viewpoint in a given session.
 * The @VIEWPOINT_REGISTRY_INITIAL_SIZE@ preference and @VIEWPOINT_REGISTRY_INITIAL_SIZE_DEFAULT_VALUE@ default value has been removed from @org.eclipse.sirius.tools.api.preferences.DCorePreferences@.
 * The method @org.eclipse.sirius.business.api.query.DRepresentationQuery.isDanglingRepresentation()@ has been added to introduce the possibility to check if a representation is a dangling representation, ie. if its a DSemanticDecorator, its target is null or does not belong to a session.
 * @org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException@ now can take several EObjects in constructor and a method @LockedInstanceException.getLockedElements()@ has been added to get all EObjects put in constructor.
@@ -74,13 +75,16 @@ h4. Changes in @org.eclipse.sirius.common.ui@
 
 h4. Changes in @org.eclipse.sirius.diagram@
 
-
+* The @org.eclipse.sirius.diagram.ui.business.api.view.refresh@ package and all its content has been move into the @org.eclipse.sirius.diagram@ plug-in, under the name @org.eclipse.sirius.diagram.business.api.view.refresh@.
+* A new extension point @org.eclipse.sirius.diagram.canonicalSynchronizerFactoryOverride@ has been defined. Its only intended implementer is the @org.eclipse.sirius.diagram.ui@ plug-in. It is used by the diagram dialect's core to delegate to the UI plug-in the canonical synchronizer logic, which depends on the UI.
+* In @org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer@, a new method @postCreation()@ has been added. It is called exactly once, right after a diagram has been created and synchronized the first time.
 * @org.eclipse.sirius.diagram.description.style.EdgeStyleDescription@ metamodel class has three more features: @centeredSourceMappings@, @centeredTargetMappings@ and @AlwaysCenter@. Those features let the specifier determine for which mappings the edge source/target should be centered or whether the source/target should be systematically centered. The @endsCentering@ values are restricted by the new @org.eclipse.sirius.diagram.description.CenteringStyle@ enumeration.
 * @org.eclipse.sirius.diagram.EdgeStyle@ metamodel class has now an attribute @centered@ of type @org.eclipse.sirius.diagram.description.CenteringStyle@, to determine whether the edge target or source ends should be centered.
 
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
+* The @org.eclipse.sirius.diagram.ui.business.api.view.refresh@ package and all its content has been move into the @org.eclipse.sirius.diagram@ plug-in, under the name @org.eclipse.sirius.diagram.business.api.view.refresh@.  
 * The method @org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery.getDefaultDimension()@ has been added to compute the default size of a DNodeContainer.
 * The parameter @additionalFiguresForConflictDetection@ has been added to several methods of @org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator@. This parameter is used in case of simultaneous border nodes moves. This list corresponds to the already known border nodes feedbacks. They are used to detect conflicts with other moved nodes.
 * @org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery@ now provides two new methods @isEdgeWithRectilinearRoutingStyle()@ and @isEdgeWithObliqueRoutingStyle()@ that respectively checks if an edge has a rectilinear routing style or an oblique routing style.

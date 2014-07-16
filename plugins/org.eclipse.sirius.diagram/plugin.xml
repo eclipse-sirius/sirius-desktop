@@ -13,6 +13,7 @@
 
 <plugin>
    <extension-point id="diagramTypeProvider" name="org.eclipse.sirius.diagram.diagramTypeProvider" schema="schema/diagramTypeProvider.exsd"/>
+   <extension-point id="canonicalSynchronizerFactoryOverride" name="org.eclipse.sirius.diagram.canonicalSynchronizerFactoryOverride" schema="schema/canonicalSynchronizerFactoryOverride.exsd"/>
 
    <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
       <?gmfgen generated="false"?>
@@ -531,4 +532,10 @@
       <initializer class="org.eclipse.sirius.diagram.internal.preferences.DiagramPreferenceInitializer"/>
    </extension>
    
+   
+  <extension
+        point="org.eclipse.sirius.dialect">
+     <dialect
+           class="org.eclipse.sirius.diagram.business.internal.dialect.DiagramDialect"></dialect>
+  </extension>
 </plugin>

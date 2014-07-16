@@ -8,14 +8,13 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.ui.business.internal.dialect;
+package org.eclipse.sirius.diagram.business.internal.dialect;
 
 import java.util.Map;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
-import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -44,9 +43,18 @@ import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsRegistry;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayMode;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
-import org.eclipse.sirius.diagram.business.api.query.DiagramDescriptionQuery;
+import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
+import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizerFactory;
+import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
+import org.eclipse.sirius.diagram.business.internal.dialect.description.DiagramInterpretedExpressionQuery;
+import org.eclipse.sirius.diagram.business.internal.dialect.identifier.DiagramIdentifier;
+import org.eclipse.sirius.diagram.business.internal.dialect.identifier.EdgeIdentifier;
+import org.eclipse.sirius.diagram.business.internal.dialect.identifier.NodeContainerIdentifier;
+import org.eclipse.sirius.diagram.business.internal.dialect.identifier.NodeIdentifier;
+import org.eclipse.sirius.diagram.business.internal.dialect.identifier.NodeStyleIdentifier;
 import org.eclipse.sirius.diagram.business.internal.helper.task.operations.CreateViewTask;
 import org.eclipse.sirius.diagram.business.internal.helper.task.operations.NavigationTask;
+import org.eclipse.sirius.diagram.business.internal.sync.DDiagramSynchronizer;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
@@ -55,17 +63,7 @@ import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.tool.CreateView;
 import org.eclipse.sirius.diagram.description.tool.Navigation;
 import org.eclipse.sirius.diagram.tools.api.command.DiagramCommandFactoryService;
-import org.eclipse.sirius.diagram.ui.business.api.view.refresh.CanonicalSynchronizer;
-import org.eclipse.sirius.diagram.ui.business.api.view.refresh.CanonicalSynchronizerFactory;
-import org.eclipse.sirius.diagram.ui.business.internal.dialect.description.DiagramInterpretedExpressionQuery;
-import org.eclipse.sirius.diagram.ui.business.internal.dialect.identifier.DiagramIdentifier;
-import org.eclipse.sirius.diagram.ui.business.internal.dialect.identifier.EdgeIdentifier;
-import org.eclipse.sirius.diagram.ui.business.internal.dialect.identifier.NodeContainerIdentifier;
-import org.eclipse.sirius.diagram.ui.business.internal.dialect.identifier.NodeIdentifier;
-import org.eclipse.sirius.diagram.ui.business.internal.dialect.identifier.NodeStyleIdentifier;
-import org.eclipse.sirius.diagram.ui.business.internal.sync.DDiagramSynchronizer;
-import org.eclipse.sirius.diagram.ui.tools.internal.commands.ChangeLayerActivationCommand;
-import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.DiagramCreationUtil;
+import org.eclipse.sirius.diagram.tools.internal.command.ChangeLayerActivationCommand;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -176,17 +174,9 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
                 CanonicalSynchronizer canonicalSynchronizer = CanonicalSynchronizerFactory.INSTANCE.createCanonicalSynchronizer(gmfDiag);
                 canonicalSynchronizer.storeViewsToArrange(true);
                 canonicalSynchronizer.synchronize();
+                canonicalSynchronizer.postCreation();
                 monitor.worked(10);
-                if (gmfDiag != null && description instanceof DiagramDescription) {
-                    if (new DiagramDescriptionQuery((DiagramDescription) description).isHeaderSectionEnabled()) {
-                        TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(diagram);
-                        if (domain != null) {
-                            Command setBestHeightHeaderCommand = new SetBestHeightHeaderCommand(domain, gmfDiag);
-                            setBestHeightHeaderCommand.execute();
-                            monitor.worked(1);
-                        }
-                    }
-                }
+                
             }
         } finally {
             monitor.done();
@@ -212,7 +202,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
         if (gmfDiag != null) {
             session.getServices().putCustomData(CustomDataConstants.GMF_DIAGRAMS, diagram, gmfDiag);
         }
-        new DiagramDialectArrangeOperation().markAsToArrange(diagram);
+        NotYetOpenedDiagramAdapter.markAsToArrange(diagram);
         return gmfDiag;
     }
 

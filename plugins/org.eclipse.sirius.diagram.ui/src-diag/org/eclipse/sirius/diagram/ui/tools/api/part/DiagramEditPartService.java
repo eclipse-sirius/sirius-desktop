@@ -111,7 +111,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
 
     /**
      * Layout GMF views created by a
-     * {@link org.eclipse.sirius.diagram.business.api.view.refresh.CanonicalSynchronizer#synchronize()}
+     * {@link org.eclipse.sirius.diagram.business.api.refresh.view.refresh.CanonicalSynchronizer#synchronize()}
      * .
      * 
      * NOTE : a set of

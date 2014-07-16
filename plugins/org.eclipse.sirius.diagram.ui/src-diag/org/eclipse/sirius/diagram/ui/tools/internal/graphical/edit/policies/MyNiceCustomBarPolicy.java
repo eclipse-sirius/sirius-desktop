@@ -43,10 +43,10 @@ import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponent
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
+import org.eclipse.sirius.diagram.tools.internal.command.ChangeLayerActivationCommand;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
-import org.eclipse.sirius.diagram.ui.tools.internal.commands.ChangeLayerActivationCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.DropDownMenuFigure;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.PopupBarFigure;
 import org.eclipse.sirius.diagram.ui.tools.internal.handler.ChangeFilterActivation;
