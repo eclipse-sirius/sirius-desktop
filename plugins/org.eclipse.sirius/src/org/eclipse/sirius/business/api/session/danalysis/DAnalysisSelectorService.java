@@ -27,7 +27,6 @@ import com.google.common.collect.Lists;
  */
 public final class DAnalysisSelectorService {
 
-
     /**
      * analysis selector extension point ID.
      */
@@ -37,7 +36,7 @@ public final class DAnalysisSelectorService {
      * Extension point attribute for the analysis selector provider class.
      */
     public static final String CLASS_ATTRIBUTE = "providerClass";
-    
+
     private static final String DEFAULT_PROVIDER_ID = "org.eclipse.sirius.analysisSelectorProvider.default";
 
     private static DAnalysisSelectorProvider defaultSiriusProvider;
@@ -70,8 +69,8 @@ public final class DAnalysisSelectorService {
     }
 
     /**
-     * Returns the Sirius default provider (that is used if there is no
-     * customer provider).
+     * Returns the Sirius default provider (that is used if there is no customer
+     * provider).
      * 
      * @return the Sirius default provider
      */
@@ -100,12 +99,13 @@ public final class DAnalysisSelectorService {
     private static void initializeProviders() {
         Map<String, Collection<DAnalysisSelectorProvider>> providers = EclipseUtil.getExtensionPluginsByKey(DAnalysisSelectorProvider.class, ID, CLASS_ATTRIBUTE, "id");
         Collection<DAnalysisSelectorProvider> defaults = providers.get(DAnalysisSelectorService.DEFAULT_PROVIDER_ID);
-        if (defaults.isEmpty()) {
-            SiriusPlugin.getDefault().error(String.format("No default analysis selector provider found at extension point \"%s\".", ID), null);
+        if (defaults == null || defaults.isEmpty()) {
+            SiriusPlugin.getDefault().warning(String.format("No default analysis selector provider found at extension point \"%s\", using the DefaultAnalysisSelectorProvider instead.", ID), null);
+            defaultSiriusProvider = new DefaultAnalysisSelectorProvider();
         } else if (defaultSiriusProvider == null) {
             defaultSiriusProvider = defaults.iterator().next();
         }
-        if (defaults.size() > 1) {
+        if (defaults != null && defaults.size() > 1) {
             SiriusPlugin.getDefault().error(String.format("Multiple default analysis selector providers found at extension point \"%s\": took only the first found.", ID), null);
         }
         customerProviders = Lists.newArrayList();
