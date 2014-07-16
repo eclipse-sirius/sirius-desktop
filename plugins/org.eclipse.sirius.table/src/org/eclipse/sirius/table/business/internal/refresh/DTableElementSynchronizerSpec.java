@@ -24,20 +24,17 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.jface.viewers.ILabelProvider;
-import org.eclipse.jface.viewers.LabelProvider;
-
-import com.google.common.collect.Lists;
-
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
-import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.business.api.query.DCellQuery;
 import org.eclipse.sirius.table.business.api.query.DTableElementStyleQuery;
@@ -74,8 +71,8 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.FixedColor;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
+
+import com.google.common.collect.Lists;
 
 /**
  * Synchronizer for the table elements.
@@ -132,7 +129,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
                 // If there is no headerLabelExpression, we use the label
                 // provider
                 // to get label to diplay
-                final String label = getLabelProvider(line.getTarget()).getText(line.getTarget());
+                final String label = getItemProviderLabel(line.getTarget());
                 // We change the value only if it's different
                 if (isDifferent(line.getLabel(), label)) {
                     line.setLabel(label);
@@ -205,7 +202,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
                 // If there is no headerLabelExpression, we use the label
                 // provider
                 // to get label to display
-                final String label = getLabelProvider(column.getTarget()).getText(column.getTarget());
+                final String label = getItemProviderLabel(column.getTarget());
                 // We change the value only if it's different
                 if (isDifferent(column.getLabel(), label)) {
                     column.setLabel(label);
@@ -1133,18 +1130,13 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      *            The object for which it wishes to obtain the labelProvider
      * @return A label provider
      */
-    private ILabelProvider getLabelProvider(final EObject element) {
+    private String getItemProviderLabel(final EObject element) {
         final IItemLabelProvider itemLabelProvider = (IItemLabelProvider) pluginRegisteredAdapterFactory.adapt(element, IItemLabelProvider.class);
-        return new LabelProvider() {
-            @Override
-            public String getText(final Object element) {
-                if (itemLabelProvider != null) {
-                    return itemLabelProvider.getText(element);
-                } else {
-                    return super.getText(element);
-                }
-            }
-        };
+        if (itemLabelProvider != null) {
+            return itemLabelProvider.getText(element);
+        } else {
+            return element.toString();
+        }
     }
 
     /**
