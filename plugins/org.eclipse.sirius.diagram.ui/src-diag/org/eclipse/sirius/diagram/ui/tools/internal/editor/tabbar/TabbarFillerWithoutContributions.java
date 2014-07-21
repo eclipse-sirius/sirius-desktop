@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -92,11 +92,11 @@ public class TabbarFillerWithoutContributions extends AbstractTabbarFiller {
         arrangeMenu.setVisible(true);
         manager.add(arrangeMenu);
 
-        TabbarSelectMenuManager selectMenu = new TabbarSelectMenuManager(page);
+        TabbarSelectMenuManager selectMenu = new TabbarSelectMenuManager();
         selectMenu.setVisible(true);
         manager.add(selectMenu);
 
-        TabbarAlignMenuManager alignMenu = new TabbarAlignMenuManager(page);
+        TabbarAlignMenuManager alignMenu = new TabbarAlignMenuManager();
         alignMenu.setVisible(true);
         manager.add(alignMenu);
     }

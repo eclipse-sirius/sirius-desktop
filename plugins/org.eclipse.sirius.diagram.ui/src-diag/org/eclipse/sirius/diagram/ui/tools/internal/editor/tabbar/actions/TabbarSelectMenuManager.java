@@ -19,6 +19,7 @@ import org.eclipse.gmf.runtime.diagram.ui.actions.internal.SelectMenuManager;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.ui.IWorkbenchPage;
 
 /**
@@ -28,19 +29,6 @@ import org.eclipse.ui.IWorkbenchPage;
  * @author mchauvin
  */
 public class TabbarSelectMenuManager extends SelectMenuManager {
-
-    private IWorkbenchPage page;
-
-    /**
-     * Create a new instance.
-     * 
-     * @param page
-     *            the current page;
-     */
-    public TabbarSelectMenuManager(IWorkbenchPage page) {
-        super();
-        this.page = page;
-    }
 
     /**
      * {@inheritDoc}
@@ -76,7 +64,6 @@ public class TabbarSelectMenuManager extends SelectMenuManager {
     @Override
     public void dispose() {
         removeAll();
-        page = null;
         super.dispose();
     }
 
@@ -128,11 +115,13 @@ public class TabbarSelectMenuManager extends SelectMenuManager {
     public void setVisible(boolean visible) {
         super.setVisible(visible);
         if (isEmpty() && visible) {
-            add(SelectAllAction.createToolbarSelectAllAction(page));
-            add(SelectAllAction.createToolbarSelectAllConnectionsAction(page));
-            add(SelectAllAction.createToolbarSelectAllShapesAction(page));
-            setDefaultAction("toolbarSelectAllAction");
+            IWorkbenchPage page = EclipseUIUtil.getActivePage();
+            if (page != null) {
+                add(SelectAllAction.createToolbarSelectAllAction(page));
+                add(SelectAllAction.createToolbarSelectAllConnectionsAction(page));
+                add(SelectAllAction.createToolbarSelectAllShapesAction(page));
+                setDefaultAction("toolbarSelectAllAction");
+            }
         }
     }
-
 }

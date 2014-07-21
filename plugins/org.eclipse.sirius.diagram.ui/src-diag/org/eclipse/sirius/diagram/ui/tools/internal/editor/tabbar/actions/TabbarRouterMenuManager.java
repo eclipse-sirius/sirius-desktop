@@ -15,6 +15,7 @@ import org.eclipse.gmf.runtime.diagram.ui.actions.internal.RouterMenuManager;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.TabbarRouterAction;
 import org.eclipse.ui.IWorkbenchPage;
 
@@ -25,18 +26,6 @@ import org.eclipse.ui.IWorkbenchPage;
  */
 @SuppressWarnings("restriction")
 public class TabbarRouterMenuManager extends RouterMenuManager {
-    private IWorkbenchPage page;
-
-    /**
-     * constructor.
-     * 
-     * @param page
-     *            the current page.
-     */
-    public TabbarRouterMenuManager(IWorkbenchPage page) {
-        super();
-        this.page = page;
-    }
 
     @Override
     public void add(IAction action) {
@@ -60,7 +49,6 @@ public class TabbarRouterMenuManager extends RouterMenuManager {
     @Override
     public void dispose() {
         removeAll();
-        page = null;
         super.dispose();
     }
 
@@ -68,9 +56,12 @@ public class TabbarRouterMenuManager extends RouterMenuManager {
     public void setVisible(boolean visible) {
         super.setVisible(visible);
         if (isEmpty() && visible) {
-            add(TabbarRouterAction.createRectilinearRouterAction(page));
-            add(TabbarRouterAction.createObliqueRouterAction(page));
-            add(TabbarRouterAction.createTreeRouterAction(page));
+            IWorkbenchPage page = EclipseUIUtil.getActivePage();
+            if (page != null) {
+                add(TabbarRouterAction.createRectilinearRouterAction(page));
+                add(TabbarRouterAction.createObliqueRouterAction(page));
+                add(TabbarRouterAction.createTreeRouterAction(page));
+            }
         }
     }
 }

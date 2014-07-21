@@ -21,6 +21,7 @@ import org.eclipse.gmf.runtime.diagram.ui.actions.internal.AlignMenuManager;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.ui.IWorkbenchPage;
 
 /**
@@ -30,18 +31,6 @@ import org.eclipse.ui.IWorkbenchPage;
  * @author mchauvin
  */
 public class TabbarAlignMenuManager extends AlignMenuManager {
-    IWorkbenchPage page;
-
-    /**
-     * constructor.
-     * 
-     * @param page
-     *            the current page.
-     */
-    public TabbarAlignMenuManager(IWorkbenchPage page) {
-        super();
-        this.page = page;
-    }
 
     /**
      * {@inheritDoc}
@@ -78,7 +67,6 @@ public class TabbarAlignMenuManager extends AlignMenuManager {
     @Override
     public void dispose() {
         removeAll();
-        page = null;
         super.dispose();
     }
 
@@ -130,6 +118,7 @@ public class TabbarAlignMenuManager extends AlignMenuManager {
     public void setVisible(boolean visible) {
         super.setVisible(visible);
         if (isEmpty() && visible) {
+            IWorkbenchPage page = EclipseUIUtil.getActivePage();
             if (page != null) {
                 add(new AlignAction(page, GEFActionConstants.ALIGN_LEFT, PositionConstants.LEFT));
                 add(new AlignAction(page, GEFActionConstants.ALIGN_CENTER, PositionConstants.CENTER));
@@ -138,7 +127,6 @@ public class TabbarAlignMenuManager extends AlignMenuManager {
                 add(new AlignAction(page, GEFActionConstants.ALIGN_MIDDLE, PositionConstants.MIDDLE));
                 add(new AlignAction(page, GEFActionConstants.ALIGN_BOTTOM, PositionConstants.BOTTOM));
                 setDefaultAction(GEFActionConstants.ALIGN_LEFT);
-
             }
         }
     }
