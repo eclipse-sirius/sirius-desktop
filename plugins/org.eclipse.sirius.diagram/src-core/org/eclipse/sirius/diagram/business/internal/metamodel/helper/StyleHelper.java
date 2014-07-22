@@ -44,6 +44,7 @@ import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.Dot;
 import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.EdgeStyle;
+import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.Ellipse;
 import org.eclipse.sirius.diagram.EndLabelStyle;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
@@ -55,7 +56,10 @@ import org.eclipse.sirius.diagram.Note;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.Square;
 import org.eclipse.sirius.diagram.WorkspaceImage;
+import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.business.internal.color.DiagramStyleColorUpdater;
+import org.eclipse.sirius.diagram.description.CenteringStyle;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.style.BeginLabelStyleDescription;
 import org.eclipse.sirius.diagram.description.style.BorderedStyleDescription;
 import org.eclipse.sirius.diagram.description.style.BracketEdgeStyleDescription;
@@ -288,8 +292,7 @@ public final class StyleHelper {
             // VSM style but less that the manual customization.
             final IPreferencesService service = Platform.getPreferencesService();
             Option<EdgeRouting> overrideEdgeRouting = Options.newNone();
-            boolean isOverideEnabled = service.getBoolean(DiagramPlugin.ID, SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE,
-                    SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE_DEFAULT_VALUE, null);
+            boolean isOverideEnabled = service.getBoolean(DiagramPlugin.ID, SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE, SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE_DEFAULT_VALUE, null);
             if (isOverideEnabled) {
                 int routingStyle = service.getInt(DiagramPlugin.ID, SiriusDiagramCorePreferences.PREF_LINE_STYLE, SiriusDiagramCorePreferences.PREF_LINE_STYLE_DEFAULT_VALUE, null);
                 overrideEdgeRouting = Options.newSome(EdgeRouting.get(routingStyle));
@@ -319,6 +322,7 @@ public final class StyleHelper {
                 edgeStyle.setRoutingStyle(edgeDescription.getRoutingStyle());
             }
             updateLabels(edgeDescription, edgeStyle, previousStyle);
+            updateEdgeCenteringInformations(edgeDescription, edgeStyle);
         }
     }
 
@@ -371,6 +375,89 @@ public final class StyleHelper {
             edgeStyle.setEndLabelStyle(endLabelStyle);
         }
         updateEdgeLabel(edgeDescription.getEndLabelStyleDescription(), edgeStyle.getEndLabelStyle());
+    }
+
+    private void updateEdgeCenteringInformations(EdgeStyleDescription edgeDescription, EdgeStyle edgeStyle) {
+
+        switch (edgeDescription.getEndsCentering().getValue()) {
+        case CenteringStyle.BOTH_VALUE:
+            edgeStyle.setCentered(CenteringStyle.BOTH);
+            break;
+        case CenteringStyle.SOURCE_VALUE:
+            if (isTargetCentered(edgeDescription, edgeStyle)) {
+                edgeStyle.setCentered(CenteringStyle.BOTH);
+            } else {
+                edgeStyle.setCentered(CenteringStyle.SOURCE);
+            }
+            break;
+        case CenteringStyle.TARGET_VALUE:
+            if (isSourceCentered(edgeDescription, edgeStyle)) {
+                edgeStyle.setCentered(CenteringStyle.BOTH);
+            } else {
+                edgeStyle.setCentered(CenteringStyle.TARGET);
+            }
+
+            break;
+        case CenteringStyle.NONE_VALUE:
+            boolean isSourceCentered = isSourceCentered(edgeDescription, edgeStyle);
+            boolean isTargetCentered = isTargetCentered(edgeDescription, edgeStyle);
+            if (isSourceCentered && isTargetCentered) {
+                edgeStyle.setCentered(CenteringStyle.BOTH);
+            } else if (isSourceCentered) {
+                edgeStyle.setCentered(CenteringStyle.SOURCE);
+            } else if (isTargetCentered) {
+                edgeStyle.setCentered(CenteringStyle.TARGET);
+            } else {
+                edgeStyle.setCentered(CenteringStyle.NONE);
+            }
+            break;
+        default:
+            // This case should not append
+            break;
+        }
+    }
+
+    private boolean isTargetCentered(EdgeStyleDescription edgeDescription, EdgeStyle edgeStyle) {
+        EObject dEdgeEObject = edgeStyle.eContainer();
+
+        // if the edge style is affected to a DEdge
+        if (dEdgeEObject instanceof DEdge) {
+            EdgeTarget edgeTarget = ((DEdge) dEdgeEObject).getTargetNode();
+            if (edgeTarget instanceof DDiagramElement) {
+
+                List<DiagramElementMapping> centeredTargetMappings = edgeDescription.getCenteredTargetMappings();
+                return isHierarchyPartOfMappingsList(edgeTarget, centeredTargetMappings);
+
+            }
+        }
+        return false;
+    }
+
+    private boolean isSourceCentered(EdgeStyleDescription edgeDescription, EdgeStyle edgeStyle) {
+        EObject dEdgeEObject = edgeStyle.eContainer();
+
+        // if the edge style is affected to a DEdge
+        if (dEdgeEObject instanceof DEdge) {
+            EdgeTarget edgeSource = ((DEdge) dEdgeEObject).getSourceNode();
+            if (edgeSource instanceof DDiagramElement) {
+
+                List<DiagramElementMapping> centeredSourceMappings = edgeDescription.getCenteredSourceMappings();
+                return isHierarchyPartOfMappingsList(edgeSource, centeredSourceMappings);
+            }
+        }
+        return false;
+    }
+
+    private boolean isHierarchyPartOfMappingsList(EdgeTarget edgeTarget, List<DiagramElementMapping> mappingsList) {
+
+        DiagramElementMapping diagramElementMapping = ((DDiagramElement) edgeTarget).getDiagramElementMapping();
+        DiagramElementMappingQuery mappingQuery = new DiagramElementMappingQuery(diagramElementMapping);
+        for (DiagramElementMapping currentMapping : mappingsList) {
+            if (EqualityHelper.areEquals(diagramElementMapping, currentMapping) || mappingQuery.isSubTypeOf(currentMapping)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void updateEdgeLabel(BasicLabelStyleDescription description, BasicLabelStyle style) {
