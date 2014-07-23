@@ -48,6 +48,7 @@ import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
@@ -65,7 +66,7 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
     /**
      * @was-generated
      */
-    private static final String MARKER_TYPE = DiagramPlugin.ID + ".diagnostic"; //$NON-NLS-1$
+    private static final String MARKER_TYPE = DiagramUIPlugin.ID + ".diagnostic"; //$NON-NLS-1$
 
     /**
      * @was-generated
