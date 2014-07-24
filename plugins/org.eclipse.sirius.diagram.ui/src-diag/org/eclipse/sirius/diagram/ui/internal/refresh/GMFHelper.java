@@ -388,15 +388,34 @@ public final class GMFHelper {
      *            The view element that is searched
      * @return The optional corresponding edit part.
      */
-    private static Option<GraphicalEditPart> getGraphicalEditPart(View view) {
+    public static Option<GraphicalEditPart> getGraphicalEditPart(View view) {
         Option<GraphicalEditPart> result = Options.newNone();
-        final IEditorPart editor = EclipseUIUtil.getActiveEditor();
-        if (view != null && editor instanceof DiagramEditor) {
-            final Map<?, ?> editPartRegistry = ((DiagramEditor) editor).getDiagramGraphicalViewer().getEditPartRegistry();
-            final EditPart targetEditPart = (EditPart) editPartRegistry.get(view);
-            if (targetEditPart instanceof GraphicalEditPart) {
-                result = Options.newSome((GraphicalEditPart) targetEditPart);
+        if (view != null) {
+            final IEditorPart editor = EclipseUIUtil.getActiveEditor();
+            if (editor instanceof DiagramEditor) {
+                return getGraphicalEditPart(view, (DiagramEditor) editor);
             }
+        }
+        return result;
+    }
+
+    /**
+     * Return an option with the editPart corresponding to the <code>view</code>
+     * in the current diagram or an empty Option if there is no corresponding
+     * editPart.
+     * 
+     * @param view
+     *            The view element that is searched
+     * @param editor
+     *            the editor where looking for the edit part.
+     * @return The optional corresponding edit part.
+     */
+    public static Option<GraphicalEditPart> getGraphicalEditPart(View view, DiagramEditor editor) {
+        Option<GraphicalEditPart> result = Options.newNone();
+        final Map<?, ?> editPartRegistry = editor.getDiagramGraphicalViewer().getEditPartRegistry();
+        final EditPart targetEditPart = (EditPart) editPartRegistry.get(view);
+        if (targetEditPart instanceof GraphicalEditPart) {
+            result = Options.newSome((GraphicalEditPart) targetEditPart);
         }
         return result;
     }

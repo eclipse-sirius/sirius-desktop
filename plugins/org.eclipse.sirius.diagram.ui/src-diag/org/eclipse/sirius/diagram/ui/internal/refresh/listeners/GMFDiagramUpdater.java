@@ -44,6 +44,8 @@ public class GMFDiagramUpdater {
 
     private VisibilityPropagatorAdapter visibilityPropagator;
 
+    private EdgeLayoutUpdaterModelChangeTrigger edgeLayoutUpdaterChangeTrigger;
+
     /**
      * Default constructor.
      * 
@@ -59,8 +61,9 @@ public class GMFDiagramUpdater {
 
         eventBroker = session.getEventBroker();
         filterListener = new FilterListener(dDiagram, session.getTransactionalEditingDomain());
-        eventBroker.addLocalTrigger(SessionEventBrokerImpl.asFilter(new FilterListenerScope()), filterListener);
 
+        eventBroker.addLocalTrigger(SessionEventBrokerImpl.asFilter(new FilterListenerScope()), filterListener);
+        edgeLayoutUpdaterChangeTrigger = new EdgeLayoutUpdaterModelChangeTrigger(session, dDiagram);
         gmfBoundsUpdater = new GMFBoundsUpdater(domain, dDiagram);
         visibilityUpdater = new VisibilityUpdater(domain, dDiagram);
         dDiagramHiddenElementsUpdater = new DDiagramHiddenElementsUpdater(domain, dDiagram);
@@ -84,6 +87,8 @@ public class GMFDiagramUpdater {
         computedStyleDescriptionCacheCleaner = null;
         edgeStyleUpdater.dispose();
         eventBroker.removeLocalTrigger(filterListener);
+        edgeLayoutUpdaterChangeTrigger.dispose();
+        edgeLayoutUpdaterChangeTrigger = null;
         eventBroker = null;
     }
 }
