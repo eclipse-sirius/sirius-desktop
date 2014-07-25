@@ -166,7 +166,7 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
                 result = super.getCommand(request);
             }
         } else {
-            Command cmd = CommonEditPartOperation.appendSelectionCommand(super.getCommand(request), this);
+            Command cmd = super.getCommand(request);
             result = CommonEditPartOperation.handleAutoPinOnInteractiveMove(this, request, cmd);
         }
         return result;

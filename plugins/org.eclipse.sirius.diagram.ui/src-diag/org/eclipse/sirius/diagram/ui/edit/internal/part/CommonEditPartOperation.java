@@ -19,7 +19,6 @@ import org.eclipse.gef.RequestConstants;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -39,22 +38,6 @@ public final class CommonEditPartOperation {
      * Avoid instantiation.
      */
     private CommonEditPartOperation() {
-    }
-
-    /**
-     * Append a selection command if necessary.
-     * 
-     * @param command
-     *            the selection command
-     * @param editPart
-     *            the current editPart
-     * @return the resulted command
-     */
-    public static Command appendSelectionCommand(final Command command, GraphicalEditPart editPart) {
-        if (command != null) {
-            return SelectionCommandAppender.addSelectionCommand(command, editPart);
-        }
-        return command;
     }
 
     /**

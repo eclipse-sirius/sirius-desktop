@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,6 @@ import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.requests.CreateConnectionRequest;
-import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gef.requests.ReconnectRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.INotableEditPart;
@@ -54,7 +53,6 @@ import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperime
 import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DCompartmentConnectionRefreshMgr;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
-import org.eclipse.sirius.diagram.ui.edit.internal.part.SelectionCommandAppender;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AirXYLayoutEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LaunchToolEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.NodeCreationEditPolicy;
@@ -70,7 +68,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.RGBValues;
-import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -135,13 +132,7 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
                 return getParent().getCommand(_request);
             }
         }
-        if (_request instanceof CreateRequest && ((CreateRequest) _request).getNewObject() instanceof MappingBasedToolDescription) {
-            final Command command = super.getCommand(_request);
-            if (command != null)
-                return SelectionCommandAppender.addSelectionCommand(command, this);
-        }
-        Command command = super.getCommand(_request);
-        return command;
+        return super.getCommand(_request);
     }
 
     /**

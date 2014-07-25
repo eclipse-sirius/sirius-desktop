@@ -133,7 +133,7 @@ public abstract class AbstractDiagramListEditPart extends AbstractDiagramElement
                 result = lcep.getCommand(request);
             }
         } else {
-            final Command cmd = CommonEditPartOperation.appendSelectionCommand(super.getCommand(request), this);
+            Command cmd = super.getCommand(request);
             return CommonEditPartOperation.handleAutoPinOnInteractiveMove(this, request, cmd);
         }
 
