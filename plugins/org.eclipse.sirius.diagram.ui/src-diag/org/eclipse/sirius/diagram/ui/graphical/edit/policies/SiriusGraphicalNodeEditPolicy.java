@@ -73,10 +73,12 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.query.EdgeCreationDescriptionQuery;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.api.query.ReconnectEdgeDescriptionQuery;
+import org.eclipse.sirius.diagram.description.CenteringStyle;
 import org.eclipse.sirius.diagram.description.CompositeLayout;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.Layout;
@@ -191,6 +193,8 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
                     result.add(getReconnectSourceCommandAfterTool(request));
                     cmd = result;
                 }
+            } else if (isCenteredEnd(edge, CenteringStyle.SOURCE)) {
+                cmd = UnexecutableCommand.INSTANCE;
             } else if (applySpecificTreeLayout(request.getConnectionEditPart())) {
                 cmd = getReconnectSourceForTreeLayoutCommand(request);
             } else {
@@ -270,6 +274,8 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
                     result.add(getReconnectTargetCommandAfterTool(request));
                     cmd = result;
                 }
+            } else if (isCenteredEnd(edge, CenteringStyle.TARGET)) {
+                cmd = UnexecutableCommand.INSTANCE;
             } else {
                 ConnectionEditPartQuery cepq = new ConnectionEditPartQuery(request.getConnectionEditPart());
                 if (cepq.isEdgeWithTreeRoutingStyle() && applySpecificTreeLayout(request.getConnectionEditPart())) {
@@ -333,6 +339,14 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         cc.compose(sbbCommand);
 
         return new ICommandProxy(cc);
+    }
+
+    private boolean isCenteredEnd(DEdge edge, CenteringStyle centeringStyle) {
+        EdgeStyle edgeStyle = edge.getOwnedStyle();
+        if (edgeStyle != null) {
+            return edgeStyle.getCentered() == CenteringStyle.BOTH || edgeStyle.getCentered() == centeringStyle;
+        }
+        return false;
     }
 
     /**
