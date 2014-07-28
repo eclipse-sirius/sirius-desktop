@@ -543,8 +543,10 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
         newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DIAGRAM_INITIALISATION,
                 org.eclipse.sirius.viewpoint.description.tool.ToolFactory.eINSTANCE.createInitialOperation()));
 
-        newChildDescriptors
-                .add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER, DescriptionFactory.eINSTANCE.createLayer()));
+        // Do not add a default layer: See DiagramImportDescriptionSpec which
+        // will only return the default layer of the imported diagram.
+        // newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER,
+        // DescriptionFactory.eINSTANCE.createLayer()));
 
         // Do not add additional layer as default layer.
         // newChildDescriptors.add(createChildParameter(org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER,
@@ -643,14 +645,13 @@ public class DiagramImportDescriptionItemProvider extends DocumentedElementItemP
      */
     @Override
     public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-        Object childFeature = feature;
-        Object childObject = child;
-
-        boolean qualify = childFeature == org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER
-                || childFeature == org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS;
-
-        if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+        if (feature == org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__DEFAULT_LAYER) {
+            // We do not use the getFeatureText method here, as we want only the
+            // first term in "Default Layer" and put the Type text after (in
+            // this case we could also put only the Feature text as the only
+            // child type currently available for is Layer (see
+            // collectNewChildDescriptors).
+            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(child), "Default", getTypeText(owner) });
         }
         String createChildText = super.getCreateChildText(owner, feature, child, selection);
         if (child != null && isNormalEdgeMapping(child)) {
