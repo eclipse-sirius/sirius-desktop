@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.preferences.IPreferencesService;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
@@ -23,7 +22,6 @@ import org.eclipse.sirius.business.internal.helper.delete.DeleteHookDescriptorRe
 import org.eclipse.sirius.business.internal.session.factory.SessionFactoryRegistryListener;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessorsRegistry;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
-import org.eclipse.sirius.tools.api.preferences.DCorePreferences;
 import org.eclipse.sirius.tools.internal.ui.ExternalJavaActionRegistryListener;
 import org.eclipse.sirius.tools.internal.validation.EValidatorAdapter;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -151,7 +149,6 @@ public final class SiriusPlugin extends Plugin {
     @Override
     public void start(final BundleContext context) throws Exception {
         super.start(context);
-        initPreferences();
 
         // Sets the validator for these model.
         EValidator.Registry.INSTANCE.put(ViewpointPackage.eINSTANCE, new EValidatorAdapter());
@@ -164,13 +161,6 @@ public final class SiriusPlugin extends Plugin {
         deleteHookDescriptorRegistryListener.init();
         javaActionRegistryListener = new ExternalJavaActionRegistryListener();
         javaActionRegistryListener.init();
-    }
-
-    private void initPreferences() {
-        final IPreferencesService service = Platform.getPreferencesService();
-        /* init the viewpoints registry with an initial size */
-        final int initialSize = service.getInt(ID, DCorePreferences.VIEWPOINT_REGISTRY_INITIAL_SIZE, DCorePreferences.VIEWPOINT_REGISTRY_INITIAL_SIZE_DEFAULT_VALUE, null);
-        ViewpointRegistry.getInstance().init(initialSize);
     }
 
     /**

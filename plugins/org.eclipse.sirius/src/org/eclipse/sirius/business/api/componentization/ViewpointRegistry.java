@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,12 +16,16 @@ import java.util.Set;
 
 import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.preferences.IPreferencesService;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.internal.movida.Movida;
+import org.eclipse.sirius.tools.api.preferences.DCorePreferences;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.Component;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -37,10 +41,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * @author mchauvin
  */
 public class ViewpointRegistry implements IResourceChangeListener {
-
-    private static final ViewpointRegistry LEGACY_INSTANCE = new ViewpointRegistryImpl();
-
-    private static final org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry MOVIDA_INSTANCE = new org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry();
 
     /**
      * Comparator for viewpoints, to use in UI to provide a standard and
@@ -121,10 +121,29 @@ public class ViewpointRegistry implements IResourceChangeListener {
      * @return the global viewpoints registry.
      */
     public static ViewpointRegistry getInstance() {
-        if (Movida.isEnabled()) {
-            return MOVIDA_INSTANCE;
-        } else {
-            return LEGACY_INSTANCE;
+        return ViewpointRegistryHolder.instance;
+    }
+
+    /*
+     * This class *will not* be initialized (hence the static block not
+     * triggered) until the ViewpointRegistry.getInstance() method is called.
+     * This is actually the 'Initialization on demand Holder' pattern which is
+     * both thread safe, lazy, and does not introduce extra synchronization
+     * locks.
+     */
+    private static class ViewpointRegistryHolder {
+        private static ViewpointRegistry instance;
+        static {
+            if (Movida.isEnabled()) {
+                instance = new org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry();
+            } else {
+                instance = new ViewpointRegistryImpl();
+            }
+
+            final IPreferencesService service = Platform.getPreferencesService();
+            /* init the viewpoints registry with an initial size */
+            final int initialSize = service.getInt(SiriusPlugin.ID, DCorePreferences.VIEWPOINT_REGISTRY_INITIAL_SIZE, DCorePreferences.VIEWPOINT_REGISTRY_INITIAL_SIZE_DEFAULT_VALUE, null);
+            instance.init(initialSize);
         }
     }
 
