@@ -16,6 +16,10 @@ h4. Changes in @org.eclipse.sirius.common@
 
 * The method @org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.getResourceSetSync(TransactionalEditingDomain)@ has been added to look for a @ResourceSetSync@ without creating a new one if no synchronizer currently exists.
 
+h4. Changes in @org.eclipse.sirius@
+
+* The @VIEWPOINT_REGISTRY_INITIAL_SIZE@ preference and @VIEWPOINT_REGISTRY_INITIAL_SIZE_DEFAULT_VALUE@ default value has been removed from @org.eclipse.sirius.tools.api.preferences.DCorePreferences@.
+
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
 * The method @org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery.getDefaultDimension()@ has been added to compute the default size of a DNodeContainer.
