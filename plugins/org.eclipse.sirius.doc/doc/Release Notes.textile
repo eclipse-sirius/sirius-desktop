@@ -12,6 +12,10 @@ h3. User-Visible Changes
 
 h3. API Changes
 
+h4. Changes in @org.eclipse.sirius.common@
+
+* The method @org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.getResourceSetSync(TransactionalEditingDomain)@ has been added to look for a @ResourceSetSync@ without creating a new one if no synchronizer currently exists.
+
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
 * The method @org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery.getDefaultDimension()@ has been added to compute the default size of a DNodeContainer.

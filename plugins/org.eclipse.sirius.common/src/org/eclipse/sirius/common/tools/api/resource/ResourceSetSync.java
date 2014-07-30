@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,16 +39,17 @@ import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.api.query.NotificationQuery;
+import org.eclipse.sirius.common.tools.internal.resource.WorkspaceBackend;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.common.tools.api.query.NotificationQuery;
-import org.eclipse.sirius.common.tools.internal.resource.WorkspaceBackend;
 
 /**
  * A new implementation of a common synchronizer for the EMF Resource with
@@ -138,10 +139,11 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
     }
 
     /**
-     * This method is an utility method to retrieve the synchronizer from a
-     * resourceset. If not is found, then it install a new one. Don't forget to
-     * uninstall this synchronizer once you're done with it or you'll have a
-     * major memory leak.
+     * This method is an utility method to retrieve or create the synchronizer
+     * from a resourceset. If not is found, then it install a new one.
+     * 
+     * Do not forget to uninstall this synchronizer once you're done with it or
+     * you'll have a major memory leak.
      * 
      * @param domain
      *            editing domain to inspect.
@@ -156,6 +158,21 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
             domain.addResourceSetListener(sync);
         }
         return sync;
+    }
+
+    /**
+     * This method is an utility method to retrieve an existing synchronizer
+     * from a resourceset.
+     * 
+     * Do not forget to uninstall this synchronizer once you're done with it or
+     * you'll have a major memory leak.
+     * 
+     * @param domain
+     *            editing domain to inspect.
+     * @return an optional synchronizer.
+     */
+    public static Option<ResourceSetSync> getResourceSetSync(final TransactionalEditingDomain domain) {
+        return Options.newSome(getResourceSetSync(domain.getResourceSet()));
     }
 
     private static ResourceSetSync getResourceSetSync(final ResourceSet resourceSet) {

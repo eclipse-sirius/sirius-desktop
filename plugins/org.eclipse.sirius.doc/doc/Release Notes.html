@@ -43,6 +43,15 @@
 			<li>It is now possible to select element that intersects the selection rectangle and not that is completely contained by the selection rectangle. This new behavior is enabled when user selects elements from right to left. The normal mode (previous mode) remains when the user selects elements from left to right. </li>
 		</ul>
 		<h3 id="APIChanges">API Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
+			<code>org.eclipse.sirius.common</code>
+		</h4>
+		<ul>
+			<li>The method 
+				<code>org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.getResourceSetSync(TransactionalEditingDomain)</code> has been added to look for a 
+				<code>ResourceSetSync</code> without creating a new one if no synchronizer currently exists.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
@@ -399,7 +408,7 @@
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
@@ -1019,7 +1028,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 		</ul>
 		<h3 id="APIChanges6">API Changes</h3>
 		<p>Sirius 1.0.0M4 includes a lots of API-breaking changes, as part of a global effort to improve the quality of the Sirius internals. In this milestone in particular, most of the APIs which were marked as deprecated in previous versions of Sirius (and before that of Viewpoint) have been either removed (if a replacement exists) or marked as non-deprecated (if no replacement exists yet).</p>
-		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common3">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>

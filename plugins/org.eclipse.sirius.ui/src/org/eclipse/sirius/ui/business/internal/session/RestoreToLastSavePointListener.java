@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.EditingDomainUndoContext;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -69,7 +70,12 @@ public class RestoreToLastSavePointListener implements ResourceSyncClient, IOper
      */
     public void unregister() {
         OperationHistoryFactory.getOperationHistory().removeOperationHistoryListener(this);
-        ResourceSetSync.getOrInstallResourceSetSync(session.getTransactionalEditingDomain()).unregisterClient(this);
+        // Do not call ResourceSetSync.getOrInstallResourceSetSync as the
+        // ResourceSetSync could already have been removed.
+        Option<ResourceSetSync> resourceSetSync = ResourceSetSync.getResourceSetSync(session.getTransactionalEditingDomain());
+        if (resourceSetSync.some()) {
+            resourceSetSync.get().unregisterClient(this);
+        }
     }
 
     /**
