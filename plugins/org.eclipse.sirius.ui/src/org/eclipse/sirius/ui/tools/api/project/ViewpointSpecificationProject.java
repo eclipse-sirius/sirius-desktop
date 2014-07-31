@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -330,24 +330,27 @@ public final class ViewpointSpecificationProject {
         // WARNING: variable names should not share any common prefix.
         // applyReplacements() does not deal with this case.
         final Map<String, String> replacements = new HashMap<String, String>();
-        final String projectName;
+        final String projectName = prj.getName().replaceAll(UNAUTHORIZED_CHARACTER, "_");
+
         final String packageName;
-        if (SourceVersion.isIdentifier(prj.getName())) {
+        if (SourceVersion.isName(prj.getName())) {
             packageName = prj.getName();
+        } else if (SourceVersion.isName(projectName)) {
+            packageName = projectName;
         } else {
             packageName = DEFAULT_PACKAGE_NAME;
         }
-        projectName = prj.getName().replaceAll(UNAUTHORIZED_CHARACTER, "_");
+
         replacements.put("pluginId", projectName); //$NON-NLS-1$
         replacements.put("projectName", projectName); //$NON-NLS-1$
         replacements.put("modelName", modelNameWithoutExtension); //$NON-NLS-1$
         replacements.put("packageName", packageName);
 
-        ViewpointSpecificationProject.createFileFromTemplate(prj, "build.properties", "resources/build.properties", replacements, monitor); //$NON-NLS-1$ $NON-NLS-2$ 
+        ViewpointSpecificationProject.createFileFromTemplate(prj, "build.properties", "resources/build.properties", replacements, monitor); //$NON-NLS-1$ $NON-NLS-2$
         ViewpointSpecificationProject.createFileFromTemplate(prj, "src/" + packageName.replaceAll("\\.", "/") + "/Activator.java", "resources/Activator.java_", replacements, monitor);
-        ViewpointSpecificationProject.createFileFromTemplate(prj, ".classpath", "resources/classpath.xml", replacements, monitor); //$NON-NLS-1$ $NON-NLS-2$ 
-        ViewpointSpecificationProject.createFileFromTemplate(prj, "META-INF/MANIFEST.MF", "resources/MANIFEST.MF", replacements, monitor); //$NON-NLS-1$ $NON-NLS-2$ 
-        ViewpointSpecificationProject.createFileFromTemplate(prj, ".project", "resources/project.xml", replacements, monitor); //$NON-NLS-1$ $NON-NLS-2$ 
+        ViewpointSpecificationProject.createFileFromTemplate(prj, ".classpath", "resources/classpath.xml", replacements, monitor); //$NON-NLS-1$ $NON-NLS-2$
+        ViewpointSpecificationProject.createFileFromTemplate(prj, "META-INF/MANIFEST.MF", "resources/MANIFEST.MF", replacements, monitor); //$NON-NLS-1$ $NON-NLS-2$
+        ViewpointSpecificationProject.createFileFromTemplate(prj, ".project", "resources/project.xml", replacements, monitor); //$NON-NLS-1$ $NON-NLS-2$
         ViewpointSpecificationProject.createFileFromTemplate(prj, "plugin.xml", "resources/plugin.xml", replacements, monitor); //$NON-NLS-1$ $NON-NLS-2$
 
         addAcceleoNature(prj);
@@ -360,10 +363,12 @@ public final class ViewpointSpecificationProject {
 
         // If the acceleo interpreter is not present, do not configure.
         // the acceleo conversion command is not API yet, so, it
-        // is declared by the org.eclipse.sirius.common.acceleo.mtl.ide plugin, to
+        // is declared by the org.eclipse.sirius.common.acceleo.mtl.ide plugin,
+        // to
         // avoid dependencies from viewpoint.ui to Acceleo.
         if (addAcceleoNatureCommand != null && addAcceleoNatureCommand.isDefined()) {
-            // Force org.eclipse.sirius.common.acceleo.mtl.ide plugin inialization.
+            // Force org.eclipse.sirius.common.acceleo.mtl.ide plugin
+            // inialization.
             ProposalProviderRegistry.getAllProviders();
             ParameterizedCommand parmCommand = new ParameterizedCommand(addAcceleoNatureCommand, null);
             try {
