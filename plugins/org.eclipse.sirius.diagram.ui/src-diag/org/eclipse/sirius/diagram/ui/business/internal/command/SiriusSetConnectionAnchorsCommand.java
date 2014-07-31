@@ -33,6 +33,7 @@ import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.description.tool.ReconnectionKind;
 import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
+import org.eclipse.sirius.diagram.ui.internal.operation.CenterEdgeEndModelChangeOperation;
 import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.base.Predicate;
@@ -134,6 +135,9 @@ public class SiriusSetConnectionAnchorsCommand extends SetConnectionAnchorsComma
                     setNewTargetTerminal(optionalTargetBortherAnchor.get().getId());
                 }
                 updateTargetAnchor(edge);
+
+                CenterEdgeEndModelChangeOperation centerEdgeEndModelChangeOperation = new CenterEdgeEndModelChangeOperation(edge);
+                centerEdgeEndModelChangeOperation.execute();
             }
         }
         return commandResult;
