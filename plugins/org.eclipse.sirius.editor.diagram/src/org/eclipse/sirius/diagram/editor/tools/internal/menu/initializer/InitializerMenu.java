@@ -12,16 +12,20 @@
 
 package org.eclipse.sirius.diagram.editor.tools.internal.menu.initializer;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.CommandParameter;
+import org.eclipse.jface.action.Action;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.sirius.editor.tools.api.menu.AbstractEObjectRefactoringAction;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.editor.tools.api.menu.AbstractMenuBuilder;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IEditorPart;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Sets;
 
 /**
@@ -30,7 +34,7 @@ import com.google.common.collect.Sets;
  * @author Joao Martins
  * 
  */
-public class DiagramInitializerMenu extends AbstractMenuBuilder {
+public class InitializerMenu extends AbstractMenuBuilder {
 
     /**
      * Initializer menu label.
@@ -48,22 +52,29 @@ public class DiagramInitializerMenu extends AbstractMenuBuilder {
     @Override
     public void update(final Collection newChildDescriptors, final ISelection selection, final IEditorPart editor) {
         depopulate();
-        advancedChildActions = generateInitializerActions(selection, editor);
+
+        IStructuredSelection sselection = (IStructuredSelection) selection;
+        List<?> list = sselection.toList();
+        Collection<Object> collection = new ArrayList<Object>(list);
+
+        final Collection<EObject> selected = new ArrayList<EObject>();
+        for (final Object object : collection) {
+            if (object instanceof EObject) {
+                selected.add((EObject) object);
+            }
+        }
+        if (!selected.isEmpty() && selected.iterator().next() instanceof Viewpoint) {
+            Viewpoint viewpoint = (Viewpoint) selected.iterator().next();
+            advancedChildActions = generateInitializerActions(viewpoint, editor);
+        }
     }
 
-    private Collection generateInitializerActions(final ISelection selection, final IEditorPart editor) {
+    private Collection generateInitializerActions(final Viewpoint viewpoint, final IEditorPart editor) {
 
         // We first build all candidate Actions
-        Set<AbstractEObjectRefactoringAction> allActions = Sets.newLinkedHashSet();
-        allActions.add(new InitializerAction(editor, selection));
-
-        // We only add to the menu the actions that have a valid selection
-        return Sets.filter(allActions, new Predicate<AbstractEObjectRefactoringAction>() {
-
-            public boolean apply(AbstractEObjectRefactoringAction candidateAction) {
-                return candidateAction.isSelectionValid();
-            }
-        });
+        Set<Action> allActions = Sets.newLinkedHashSet();
+        allActions.add(new InitializerOpenWizardAction(editor, viewpoint));
+        return allActions;
     }
 
     @Override

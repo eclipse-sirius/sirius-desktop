@@ -23,7 +23,7 @@
            class="org.eclipse.sirius.diagram.editor.tools.internal.menu.refactoring.DiagramRefactoringMenu">
      </builder>
      <builder
-           class="org.eclipse.sirius.diagram.editor.tools.internal.menu.initializer.DiagramInitializerMenu">
+           class="org.eclipse.sirius.diagram.editor.tools.internal.menu.initializer.InitializerMenu">
      </builder>
      <builder
            class="org.eclipse.sirius.diagram.editor.tools.internal.menu.child.ElementCreationMenuBuilder">

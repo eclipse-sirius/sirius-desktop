@@ -12,9 +12,6 @@
 
 package org.eclipse.sirius.diagram.editor.tools.internal.menu.initializer;
 
-import java.util.Collection;
-
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.diagram.ContainerLayout;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
@@ -42,42 +39,54 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * @author Joao Martins
  * 
  */
-public class InitializerCommand extends AbstractUndoRecordingCommand {
+public class ClassDiagramSkeleteonCreationCommand extends AbstractUndoRecordingCommand {
 
     /**
      * Command Label.
      */
     public static final String TEXT = "Class diagram skeleton creation command";
 
-    /**
-     * Default ID.
-     */
-    private static final String BASE_ID = "pattern.class.diagram";
+    private String baseId;
 
     private final Viewpoint viewpoint;
+
+    private boolean globalEditTool;
+
+    private boolean globalDeleteTool;
 
     /**
      * Constructor.
      * 
      * @param set
      *            set.
-     * @param selection
+     * @param viewpoint
      *            selection.
+     * @param globalDeleteTool
+     *            To know if we Will initializer a single or multiple delete
+     *            Tool.
+     * @param globalEditTool
+     *            To know if we Will initializer a single or multiple edit Tool.
+     * @param baseid
+     *            Id of the pattern.
      */
-    public InitializerCommand(ResourceSet set, final Collection<EObject> selection) {
+    public ClassDiagramSkeleteonCreationCommand(ResourceSet set, final Viewpoint viewpoint, boolean globalEditTool, boolean globalDeleteTool, String baseid) {
         super(set);
-        this.viewpoint = (Viewpoint) selection.iterator().next();
+        this.viewpoint = viewpoint;
         this.setLabel(TEXT);
+        this.globalDeleteTool = globalDeleteTool;
+        this.globalEditTool = globalEditTool;
+        this.baseId = baseid;
     }
 
     @Override
     protected void doExecute() {
         // Create the Pattern Elements
         DiagramDescription diagramdesc = DescriptionFactory.eINSTANCE.createDiagramDescription();
-        diagramdesc.setName(BASE_ID + ".default.layer");
+        diagramdesc.setName(baseId);
         viewpoint.getOwnedRepresentations().add(diagramdesc);
 
         Layer layer = DescriptionFactory.eINSTANCE.createLayer();
+        layer.setName(baseId + ".default.layer");
         diagramdesc.setDefaultLayer(layer);
         ToolSection toolSection = createToolSection(layer);
 
@@ -95,14 +104,14 @@ public class InitializerCommand extends AbstractUndoRecordingCommand {
 
     private ContainerMapping createPackageMapping(Layer layer, ToolSection toolSection) {
         ContainerMapping packageMapping = DescriptionFactory.eINSTANCE.createContainerMapping();
-        packageMapping.setLabel("packageMapping");
-        packageMapping.setName(BASE_ID + ".package.container");
+        packageMapping.setLabel("Package Mapping");
+        packageMapping.setName(baseId + ".package.container");
         packageMapping.setStyle(StyleFactory.eINSTANCE.createFlatContainerStyleDescription());
         layer.getContainerMappings().add(packageMapping);
         packageMapping.setSemanticCandidatesExpression("feature:eContents");
 
         ContainerCreationDescription containerPackageMapping = ToolFactory.eINSTANCE.createContainerCreationDescription();
-        containerPackageMapping.setName(BASE_ID + ".package.container.creation");
+        containerPackageMapping.setName(baseId + ".package.container.creation");
         containerPackageMapping.setLabel("Package");
         toolSection.getOwnedTools().add(containerPackageMapping);
         containerPackageMapping.getContainerMappings().add(packageMapping);
@@ -113,10 +122,10 @@ public class InitializerCommand extends AbstractUndoRecordingCommand {
     private NodeMapping createAttribute(ContainerMapping classMapping, ToolSection toolSection) {
         NodeMapping attribute = DescriptionFactory.eINSTANCE.createNodeMapping();
         attribute.setLabel("Attribute");
-        attribute.setName(BASE_ID + "class.list.attribute");
+        attribute.setName(baseId + "class.list.attribute");
 
         NodeCreationDescription nodeCreation = ToolFactory.eINSTANCE.createNodeCreationDescription();
-        nodeCreation.setName(BASE_ID + ".class.list.attribute.creation");
+        nodeCreation.setName(baseId + ".class.list.attribute.creation");
         nodeCreation.setLabel("Attribute");
         toolSection.getOwnedTools().add(nodeCreation);
         nodeCreation.getNodeMappings().add(attribute);
@@ -130,12 +139,12 @@ public class InitializerCommand extends AbstractUndoRecordingCommand {
         classMapping.setChildrenPresentation(ContainerLayout.LIST);
 
         classMapping.setLabel("classMapping");
-        classMapping.setName(BASE_ID + ".class.list");
+        classMapping.setName(baseId + ".class.list");
         layer.getContainerMappings().add(classMapping);
         classMapping.setSemanticCandidatesExpression("feature:eContents");
 
         ContainerCreationDescription containerClassMapping = ToolFactory.eINSTANCE.createContainerCreationDescription();
-        containerClassMapping.setName(BASE_ID + ".class.list.creation");
+        containerClassMapping.setName(baseId + ".class.list.creation");
         containerClassMapping.setLabel("Class");
         toolSection.getOwnedTools().add(containerClassMapping);
         containerClassMapping.getContainerMappings().add(classMapping);
@@ -146,7 +155,7 @@ public class InitializerCommand extends AbstractUndoRecordingCommand {
         EdgeMapping edgeMappingInheritance = DescriptionFactory.eINSTANCE.createEdgeMapping();
         EdgeStyleDescription edgeStyleI = StyleFactory.eINSTANCE.createEdgeStyleDescription();
 
-        edgeMappingInheritance.setName(BASE_ID + ".edge.inheritance");
+        edgeMappingInheritance.setName(baseId + ".edge.inheritance");
         edgeMappingInheritance.setLabel("Inheritance");
 
         edgeStyleI.setCenterLabelStyleDescription(StyleFactory.eINSTANCE.createCenterLabelStyleDescription());
@@ -159,9 +168,9 @@ public class InitializerCommand extends AbstractUndoRecordingCommand {
         layer.getEdgeMappings().add(edgeMappingInheritance);
 
         EdgeCreationDescription edgeCreationDescription = ToolFactory.eINSTANCE.createEdgeCreationDescription();
-        edgeCreationDescription.setName(BASE_ID + ".edge.inheritance.creation");
+        edgeCreationDescription.setName(baseId + ".edge.inheritance.creation");
         edgeCreationDescription.setLabel("Inheritance");
-        
+
         edgeCreationDescription.getEdgeMappings().add(edgeMappingInheritance);
         toolSection.getOwnedTools().add(edgeCreationDescription);
 
@@ -172,7 +181,7 @@ public class InitializerCommand extends AbstractUndoRecordingCommand {
         EdgeMapping edgeMappingReference = DescriptionFactory.eINSTANCE.createEdgeMapping();
         EdgeStyleDescription edgeStyleR = StyleFactory.eINSTANCE.createEdgeStyleDescription();
 
-        edgeMappingReference.setName(BASE_ID + ".edge.reference");
+        edgeMappingReference.setName(baseId + ".edge.reference");
         edgeMappingReference.setLabel("Reference");
 
         edgeMappingReference.setUseDomainElement(true);
@@ -187,9 +196,9 @@ public class InitializerCommand extends AbstractUndoRecordingCommand {
         layer.getEdgeMappings().add(edgeMappingReference);
 
         EdgeCreationDescription edgeCreationDescription = ToolFactory.eINSTANCE.createEdgeCreationDescription();
-        edgeCreationDescription.setName(BASE_ID + ".edge.reference.creation");
+        edgeCreationDescription.setName(baseId + ".edge.reference.creation");
         edgeCreationDescription.setLabel("Reference");
-        
+
         edgeCreationDescription.getEdgeMappings().add(edgeMappingReference);
         toolSection.getOwnedTools().add(edgeCreationDescription);
 
@@ -199,30 +208,55 @@ public class InitializerCommand extends AbstractUndoRecordingCommand {
     private ToolSection createToolSection(Layer layer) {
         ToolSection toolSection = ToolFactory.eINSTANCE.createToolSection();
         toolSection.setLabel("Tool Section");
-        toolSection.setName(BASE_ID + ".package.toolsection");
+        toolSection.setName(baseId + ".package.toolsection");
         layer.getToolSections().add(toolSection);
         return toolSection;
     }
 
     private void createDeleteTool(ToolSection toolSection, DiagramElementMapping... mappings) {
-        DeleteElementDescription deleteElement = ToolFactory.eINSTANCE.createDeleteElementDescription();
-        deleteElement.setName(BASE_ID + "global.delete");
-        deleteElement.setLabel("Delete Tool");
-        toolSection.getOwnedTools().add(deleteElement);
+        if (!globalDeleteTool) {
+            DeleteElementDescription deleteElement = ToolFactory.eINSTANCE.createDeleteElementDescription();
+            deleteElement.setName(baseId + "global.delete");
+            deleteElement.setLabel("Delete Tool");
+            toolSection.getOwnedTools().add(deleteElement);
 
-        for (DiagramElementMapping dem : mappings) {
-            deleteElement.getMappings().add(dem);
+            for (DiagramElementMapping dem : mappings) {
+                deleteElement.getMappings().add(dem);
+            }
+        } else {
+            for (DiagramElementMapping dem : mappings) {
+                DeleteElementDescription deleteElement = ToolFactory.eINSTANCE.createDeleteElementDescription();
+
+                deleteElement.setName(baseId + ".global.delete" + "." + dem.getName());
+                deleteElement.setLabel("Delete Tool" + " " + dem.getLabel());
+                toolSection.getOwnedTools().add(deleteElement);
+
+                deleteElement.getMappings().add(dem);
+            }
         }
+
     }
 
     private void createEditTool(ToolSection toolSection, DiagramElementMapping... mappings) {
-        DirectEditLabel directEditElement = ToolFactory.eINSTANCE.createDirectEditLabel();
-        directEditElement.setName(BASE_ID + ".global.directedit");
-        directEditElement.setLabel("Edit Tool");
-        toolSection.getOwnedTools().add(directEditElement);
+        if (!globalEditTool) {
+            DirectEditLabel directEditElement = ToolFactory.eINSTANCE.createDirectEditLabel();
+            directEditElement.setName(baseId + ".global.directedit");
+            directEditElement.setLabel("Edit Tool");
+            toolSection.getOwnedTools().add(directEditElement);
 
-        for (DiagramElementMapping dem : mappings) {
-            directEditElement.getMapping().add(dem);
+            for (DiagramElementMapping dem : mappings) {
+                directEditElement.getMapping().add(dem);
+            }
+        } else {
+            for (DiagramElementMapping dem : mappings) {
+                DirectEditLabel directEditElement = ToolFactory.eINSTANCE.createDirectEditLabel();
+                directEditElement.setName(baseId + ".global.directedit" + "." + dem.getName());
+                directEditElement.setLabel("Edit Tool" + " " + dem.getLabel());
+                toolSection.getOwnedTools().add(directEditElement);
+
+                directEditElement.getMapping().add(dem);
+            }
+
         }
     }
 
