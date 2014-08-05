@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.palette;
 
 import org.eclipse.gef.Request;
 import org.eclipse.gef.requests.CreationFactory;
+import org.eclipse.swt.SWT;
 
 /**
  * CreationTool so that the current tool will remain active (locked) if the user
@@ -50,11 +51,11 @@ public class CreationTool extends org.eclipse.gef.tools.CreationTool {
 
     /**
      * Overridden so that the current tool will remain active (locked) if the
-     * user is pressing the ctrl key.
+     * user is pressing the ctrl key (or cmd key for mac users).
      */
     @Override
     protected void handleFinished() {
-        if (!getCurrentInput().isControlKeyDown()) {
+        if (!getCurrentInput().isModKeyDown(SWT.MOD1)) {
             super.handleFinished();
         } else {
             reactivate();
