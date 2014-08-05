@@ -16,6 +16,7 @@ import org.eclipse.gef.SnapToHelper;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.gef.requests.CreationFactory;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Cursor;
 
 /**
@@ -63,11 +64,11 @@ public class ConnectionCreationTool extends org.eclipse.gef.tools.ConnectionCrea
 
     /**
      * Overridden so that the current tool will remain active (locked) if the
-     * user is pressing the ctrl key.
+     * user is pressing the ctrl key (or cmd key for mac users).
      */
     @Override
     protected void handleFinished() {
-        if (!getCurrentInput().isControlKeyDown()) {
+        if (!getCurrentInput().isModKeyDown(SWT.MOD1)) {
             super.handleFinished();
         } else {
             reactivate();
