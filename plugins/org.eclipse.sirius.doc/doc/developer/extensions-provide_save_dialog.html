@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>extensions-provide_save_dialog</title>
+		<link type="text/css" rel="stylesheet" href="../resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SiriusProvidecustomsavedialog">Sirius &#8211; Provide custom save dialog</h1>
+		<h2 id="Goals">Goals</h2>
+		<p>Sirius uses the same 
+			<em>Save Dialog</em> for any operation that implies to the end-user whether changes made on session should be saved or discarded (when closing a session through the 
+			<code>CloseUISessionCommand</code>, when controlling resources...).
+		</p>
+		<p>Developer may need to extend this save dialog to propose other choices to the end-user.</p>
+		<h2 id="CustomizeSiriussavedialogs">Customize Sirius save dialogs</h2>
+		<h3 id="TheISaveDialogExtensioninterface">The 
+			<code>ISaveDialogExtension</code> interface
+		</h3>
+		<p>This interface allows to:</p>
+		<ul>
+			<li>Customize the choices given to the end-user when a save dialog opens (for example default is 
+				<em>Save</em> and 
+				<em>Discard</em>)
+			</li>
+			<li>Add additional behavior according to the choice made by user.</li>
+		</ul>
+		<ul>
+			<li>
+				<code>boolean isSaveDialogFor(Object objectToSave)</code> : allows to indicates whether this extension should be applied (condition on the Session for example)
+			</li>
+			<li>
+				<code>Collection&lt;String&gt; getButtons();</code> : returns a collection of String corresponding to the available choices for a save dialog (do no override CANCEL, this will be added automatically if possible)
+			</li>
+			<li>
+				<code>int reactToValue(Object objectToSave, int userChoice);</code> : defines the behavior to apply when faced to the given user choice.
+			</li>
+		</ul>
+		<h3 id="ProvideyourISaveDialogExtensionusingtheorg.eclipse.sirius.common.ui.savedialogextensionextensionpoint">Provide your 
+			<code>ISaveDialogExtension</code> using the 
+			<code>org.eclipse.sirius.common.ui.savedialogextension</code> extension point
+		</h3>
+		<p>Please refer to this extension point documentation  for more details.</p>
+		<h2 id="Example">Example</h2>
+		<pre><code>package myPackage;
+
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.ui.ISaveablePart2;
+
+public class CustomSaveDialogExtension {
+
+    public boolean isSaveDialogFor(Object objectToSave) {
+        // This save dialog is active if
+        // - the saved element is a session
+        return (objectToSave instanceof Session)
+        // - the session ID is "SaveSession"
+                &amp;&amp; "SaveSession".equals(((Session) objectToSave).getID());
+    }
+
+    public Collection&lt;String&gt; getButtons() {
+        return Lists.newArrayList("Save", "Make something special", "Discard");
+    }
+
+    public int reactToValue(Object objectToSave, int temporaryResult) {
+        Session session = (Session) objectToSave;
+        int returnedValue = ISaveablePart2.YES;
+
+        switch (temporaryResult) {
+        // Case 0 : "Save"
+        case 0:
+            // we will return ISaveablePart2.YES =&gt; the session will be saved
+            // normally
+            break;
+        // Case 1 : "Make something special"
+        case 1:
+            makeSomethingSpecial(session);
+            // we will return CANCEL =&gt; nothing else willl be done
+            returnedValue = ISaveablePart2.CANCEL;
+            break;
+        // Case 2 : "Discard"
+        case 2:
+            // we return NO =&gt; changes will be discarded
+            returnedValue = ISaveablePart2.NO;
+            break;
+        // Default : "CANCEL" or any other
+        default:
+            returnedValue = ISaveablePart2.CANCEL;
+            break;
+
+        }
+        return returnedValue;
+    }
+}
+
+</code></pre>
+	</body>
+</html>

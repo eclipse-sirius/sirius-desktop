@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>extensions-provide_custom_permission_authority</title>
+		<link type="text/css" rel="stylesheet" href="../resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="ProvidingaCustomPermissionAuthority">Providing a Custom Permission Authority</h1>
+		<p>Both read and write operations on the model are executed through an accessibility layer called the model accessor, implemented by 
+			<code>org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor</code>.  Each session has an an associated 
+			<code>ModelAccessor</code> which can be obtained with 
+			<code>Session.getModelAccessor()</code>.
+		</p>
+		<p>The model accessor itself delegates the permission checking to an 
+			<code>IPermissionAuthority</code> , which is responsible for checking which operations are permitted on a given model element. The permission authority is also used to lock model elements (both representation and semantic elements), query their lock status and be notified (through 
+			<code>IAuthorityListener</code>) when a lock is taken or released. 
+		</p>
+		<p>You can provide a custom permission authority by implementing the interface 
+			<code>org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority</code>  and registering your custom implementation with the 
+			<code>org.eclipse.sirius.ecore.extender.PermissionProvider</code> extension point.
+		</p>
+	</body>
+</html>

@@ -1,0 +1,15 @@
+h1. Sirius Developer Manual
+
+This document gives an overview of the internals of the _Sirius_ platform, and describes the main APIs and extension points.
+* "*Architecture Overview*":Architecture_Overview.html provides a high-level view of how Sirius is structured.
+* "*Architecture and Concepts*":Architecture.html describes the general architecture of the system, the main concepts and top-level entry points in the APIs.
+* "*Meta-models*":Meta-models.html gives a high-level description of the various meta-models used internally by Sirius, to represent both _VSMs_ and representation files.
+* The Sirius platform is extensible, and the next sections describe some common extension scenarios:
+** "*Integration with Product Life Cycle Management*":integration-plm.html
+** "*Deploy a Modeler Description File*":integration-modeler_description_file_deployment.html
+** "*Provide custom save dialog*":extensions-provide_save_dialog.html
+** "*Provide custom arrange-all*":extensions-provide_custom-arrange-all.html
+** "*Provide custom style*":extensions-provide_custom_style.html
+** "*Provide tab-bar extensions*":extensions-provide_tabbar_extensions.html
+** "*Provide custom representation files migration*":extensions-provide_migrate_contribution.html
+** "*Provide custom repair participant*":extensions-provide_repair_contribution.html

@@ -1,0 +1,98 @@
+h1. Integration with Product Life Cycle Management
+
+h2. API
+
+h3. Description
+
+Sirius can be used in a concurrent environment and should therefore provide a mean to lock/unlock elements and adapt its behavior according to this information. The PermissionAuthority is responsible for telling whether an element feature is locked or not.
+
+h3. Getting the current Permission Authority
+
+The @org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionProvider@ service will return an instance of @org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority@ given a resource set. Convenience methods have been added in @ModelAccessor@ to retrieve the current authority.
+
+h3. Writing your own Permission authority
+
+Custom Permission Authorities can be implemented in order to activate the lock/unlock support for your own concurrent handling
+mechanism within Sirius.
+ 
+Providing your own Permission Authority to determine whether an element (either semantic or diagrammatic) is locked or not can
+be done through the @org.eclipse.sirius.ecore.extender.PermissionProvider@ extension point.
+
+Permission Authorities must implement the interface @IPermissionAuthority@ and be described in the plug-in's plugin.xml:
+
+pre. 
+<extension point="org.eclipse.sirius.ecore.extender.PermissionProvider">
+    <permissionprovider priority="high" providerClass="com.example.MyAuthorityProvider" />
+</extension>
+
+Your provider will the be prompted whether this permission authority should be provided considering a ResourceSet.
+
+h2. Implementation notes
+
+Dynamic PLM allows for the locking and unlocking of any element as well as determining at any moment if an element has been
+modified, created, ...
+   
+These features require a tight integration of the tooling (Modelers and editors) with the permission manager. 
+
+We can logically divide these aspects in a number of components of Sirius:
+* Core components
+** File Modification Validation
+** Semantic Model Access
+** ViewPoint Model Access
+* Editor components
+** GMF model access
+** Graphical Viewer access
+** Tool Access
+** Properties Access (Semantic, Extension, Style and Graphical Properties)
+ 
+h3. File Modification Validation
+ 
+You can provide specific file modification validator to integrate with your legacy SCM System.
+A file modification validator should implement  @IFileModificationValidator@ interface and could be contributed through  an extension point :
+
+@org.elipse.sirius.common.fileModificationValidator@
+
+An default implementation (which override default eclipse to handle a Clearcase SCM specific issue) is provided in the @org.elipse.sirius.common.ui@ plug-in, by the class @FileModificationValidator@.
+ 
+h3. Semantic Access
+
+Every semantic access to model elements is done through the "ModelAccessor". This accessor is the common facade of the Ecore intrinsic data access and of any kind of extended data access. It also handles the inter-weaving of the elements provided by both the Ecore semantic model and the annotations.
+
+Having the permission to set/unset a value or to create an instance of the semantic model are therefore done through instances of this class and a permission authority coupled with this class may be used to prompt for permission or notify changes and element creations.
+
+h3. Sirius Model Access
+
+Every access made to the viewpoint model checks whether it has the rights to create/delete/update an element, which means every possible creation or setting of a value automatically request the permission beforehand.
+
+h3. GMF Model Access
+
+GMF models should be understood as the Annotation model used by GMF to keep track of the diagram data. It is composed of @Node@\ s, @Edge@\ s and positions for instance. The GMF model is automatically updated trough the @CannonicalEditPolicy@ of every edit part in the diagram editor. We have virtually no control on that though we can tell if an edit part's "edit mode" is enabled or not. If the edit mode is disabled then nothing *should* lead to a change in the GMF model.
+
+We ensure that when a @DDiagram@ cannot be edited, GMF won't bypass any EditPart to refresh the annotation model at the diagram opening.
+
+h3. Graphical Viewer access
+
+Mouse or keyboard editing will be prevented thanks to the disable/enable edit mode in the GMF edit parts and specific code in the properties view.
+
+h3. Tool Access
+
+Every tool in the modeler's palette can cause changes in the model. As every command launched re-uses the @ModelAccessor@, it wouldn't really change anything in a locked model. Yet since we don't want the tool to be enabled on a locked element either, the EMFCommandFactory asks for permission before allowing the usage of a tool. When no permission is given, it will return an UnexecutableCommand.
+
+h3. Properties Access
+
+Properties will ask for permission on a "per instance" basis right now, when not given, no CellEditor will be returned which means the feature won't be editable.
+
+h3. Notifying the changes
+
+The Permission authority should be notified on instances creation and modification. To this end the PermissionAuthority initialization will install a listener on the ResourceSet and will automatically be notified when a change occurs. This will also help in checking for unauthorized changes. In *strict* mode the permission authority will throw Exceptions when a change is made to a locked element. If the process was in a transactional environment, a rollback will then happen.
+
+h3. Access errors
+
+The current implementation provides 2 modes for the ModelAccessor. The "silent" mode won't complain about an invalid access on a locked element, it will simply ignore it. When not in "silent" mode, an Exception will be thrown in these cases. 
+
+h3. Status
+
+Semantic Model accesses are handled through the command or properties. Extended information too. Notification are handled through the usual EMF notifiers + the notification of instance creation in the Model Accessor.
+
+EditParts are disabled when the corresponding semantic element is locked. Permission listeners are set up to handle dynamic locking/unlocking.
+

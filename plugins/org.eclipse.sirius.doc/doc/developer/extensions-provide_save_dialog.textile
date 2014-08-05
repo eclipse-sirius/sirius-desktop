@@ -1,0 +1,79 @@
+h1. Sirius - Provide custom save dialog
+
+h2. Goals
+
+Sirius uses the same _Save Dialog_ for any operation that implies to the end-user whether changes made on session should be saved or discarded (when closing a session through the @CloseUISessionCommand@, when controlling resources...).
+
+Developer may need to extend this save dialog to propose other choices to the end-user.
+
+h2. Customize Sirius save dialogs
+
+h3. The @ISaveDialogExtension@ interface
+
+This interface allows to:
+* Customize the choices given to the end-user when a save dialog opens (for example default is _Save_ and _Discard_)
+* Add additional behavior according to the choice made by user.
+ 
+* @boolean isSaveDialogFor(Object objectToSave)@ : allows to indicates whether this extension should be applied (condition on the Session for example)
+* @Collection<String> getButtons();@ : returns a collection of String corresponding to the available choices for a save dialog (do no override CANCEL, this will be added automatically if possible)
+* @int reactToValue(Object objectToSave, int userChoice);@ : defines the behavior to apply when faced to the given user choice.
+
+h3. Provide your @ISaveDialogExtension@ using the @org.eclipse.sirius.common.ui.savedialogextension@ extension point
+
+Please refer to this extension point documentation  for more details.
+
+h2. Example
+
+bc.. 
+package myPackage;
+
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.ui.ISaveablePart2;
+
+public class CustomSaveDialogExtension {
+
+    public boolean isSaveDialogFor(Object objectToSave) {
+        // This save dialog is active if
+        // - the saved element is a session
+        return (objectToSave instanceof Session)
+        // - the session ID is "SaveSession"
+                && "SaveSession".equals(((Session) objectToSave).getID());
+    }
+
+    public Collection<String> getButtons() {
+        return Lists.newArrayList("Save", "Make something special", "Discard");
+    }
+
+    public int reactToValue(Object objectToSave, int temporaryResult) {
+        Session session = (Session) objectToSave;
+        int returnedValue = ISaveablePart2.YES;
+
+        switch (temporaryResult) {
+        // Case 0 : "Save"
+        case 0:
+            // we will return ISaveablePart2.YES => the session will be saved
+            // normally
+            break;
+        // Case 1 : "Make something special"
+        case 1:
+            makeSomethingSpecial(session);
+            // we will return CANCEL => nothing else willl be done
+            returnedValue = ISaveablePart2.CANCEL;
+            break;
+        // Case 2 : "Discard"
+        case 2:
+            // we return NO => changes will be discarded
+            returnedValue = ISaveablePart2.NO;
+            break;
+        // Default : "CANCEL" or any other
+        default:
+            returnedValue = ISaveablePart2.CANCEL;
+            break;
+
+        }
+        return returnedValue;
+    }
+}
+

@@ -1,0 +1,35 @@
+h1. Overview of the Sirius Meta-Models
+
+h2(#introduction). Introduction
+
+Sirius uses EMF models to store both _Viewpoint Specification Models_ (the @*.odesign@ files) and representation data (the @*.aird@ files). If you need to extend the Sirius platform in Java, sooner or later you will have to deal with elements from these meta-models, so this document gives a very brief overview of which meta-models are used, where they are defined and how they are organized.
+
+h2(#vsm_metamodels). Viewpoint Specification Meta-Models
+
+The structure of the _VSMs_ is defined by several meta-models. The @org.eclipse.sirius@ plug-in contains the @http://www.eclipse.org/sirius/1.1.0@ Ecore package and its sub-packages, which defines the general structure of a VSM:
+* @http://www.eclipse.org/sirius/description/1.1.0@: defines the overall structure (@Group@, @Viewpoint@, the abstract @RepresentationDescription@ type used for all dialects).
+* @http://www.eclipse.org/sirius/description/style/1.1.0@: defines the abstract and generic @StyleDescription@ and associated types which are used by all dialects.
+* @http://www.eclipse.org/sirius/description/tool/1.1.0@: defines the generic @AbstractToolDescription@ and generic tool types. This package also contains the definitions for all the "Model Operations":../specifier/general/Model_Operations.html like @If@, @CreateInstance@, etc.
+* @http://www.eclipse.org/sirius/description/validation/1.1.0@: defines the validation rules which can be added to viewpoints and diagrams, include the quick-fixes definitions.
+
+The other dialects define their own extensions to these packages, in their own plug-ins. They follow the same structure:
+* @org.eclipse.sirius.diagram@ defines @http://www.eclipse.org/sirius/diagram/description/1.1.0@ and its sub-packages, with all the elements that are used to specify a diagram description inside a VSM.
+* @org.eclipse.sirius.diagram.sequence@ defines @http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0@ and @http://www.eclipse.org/sirius/diagram/sequence/description//tool/2.0.0@ for sequence diagrams-specific mappings and tools.
+* @org.eclipse.sirius.table@ defines @http://www.eclipse.org/sirius/table/description/1.1.0@  for table mappings and tools.
+* @org.eclipse.sirius.tree@  defines @http://www.eclipse.org/sirius/tree/description/1.1.0@  for tree mappings and tools.
+
+h2(#representation_metamodels). Representation Meta-Models
+
+The meta-models described above correspond to the elements which are found inside the @*.odesign@ files. The _representation files_ (@*.aird@) are also stored as models. A representation can be though of as a serialized version of a session. It includes references to the semantic models represented in the session, and the model for each actual representation (diagram, table or tree). These representation models are organized into groups corresponding to which viewpoint defines them, and the representation file also stores the set of currently enabled viewpoints in the session.
+
+This means the representation file _contains_ the representation and session data, _references_ the semantic models, and also _references_ the _VSMs_ which define the representations it contains.
+
+The meta-model for representation files is defined in the @http://www.eclipse.org/sirius/1.1.0@ package, from the main @org.eclipse.sirius@ plug-in. Diagrams, sequence diagrams, tables and trees define their own meta-models to describe their representations' data:
+* @http://www.eclipse.org/sirius/diagram/1.1.0@ defined in @org.eclipse.sirius.diagram@.
+* @http://www.eclipse.org/sirius/diagram/sequence/2.0.0@ defined in @org.eclipse.sirius.diagram.sequence@.
+* @http://www.eclipse.org/sirius/table/1.1.0@ defined in @org.eclipse.sirius.table@.
+* @http://www.eclipse.org/sirius/tree/1.0.0@ defined in @org.eclipse.sirius.tree@.
+
+The concrete structure of an @aird@ file is the following: An @aird@ resource contains a single @DAnalysis@. The analysis references the top-level elements of all the semantic resources in the session, via its @models@ reference, and may reference other "sub-aird" through its @referencedAnalysis@ reference. It also contains through @ownedViews@ a @DRepresentationContainer@ for every Viewpoint which was ever enabled in the session. The sub-set of @ownedViews@ in @selectedViews@ corresponds to the Viewpoints currently enabled in the session. Each @DRepresentationContainer@ references (through @viewpoint@) the viewpoint definition it is an "instance" of, and contains actual representations (from that viewpoint) in @ownedRepresentations@.
+
+The structure of the representations themselves depend on each dialect, which defines its own meta-model as mentioned above. However, they all use the @org.eclipse.sirius.viewpoint.DSemanticDecorator@ interface for representation elements which stand for semantic elements. The @getTarget()@ method of @DSemanticDecorator@ can be used to obtain the actual semantic target element being represented. This means that both a node on a diagram (which is a @DNode@) and a cell in a table (a @DCell@), and any other representation element in Sirius, share the same API to retrieve the element in the user's semantic model that it represents.

@@ -1,0 +1,60 @@
+=================================
+Sirius - Provide specific editor
+=================================
+
+Description
+============
+
+Overview
+---------------------
+
+Sirius allows one to define eclipse editor dedicated to a viewpoint and a representation description.
+A specific editor hides session creation, opening, viewpoint activation, and session closing to end user.
+
+API
+=======
+
+Interface
+-------------------------------
+
+To provide a new specific editor you simply need to create an editor.
+
+For the first step the easiest is to extend one existing editor for your kind of representation. For instance for diagram you simply need to extend
+`org.eclipse.sirius.diagram.tools.api.editor.AbstractSpecificDDiagramEditor``. Your implementation should like this ::
+
+public class MySpecificEditor extends AbstractSpecificDDiagramEditor {
+
+    public String getDiagramDescriptionName() {
+        return "YourDiagramDescriptionName";
+    }
+
+    public URI getViewpointURI() {
+        return URI.createURI("viewpoint:/com.yourcompany.yourproject.odesign/YourViewpointName");
+    }
+
+    public boolean isSessionStoredInWorkspace() {
+        return false;
+    }
+}
+
+Second and last step is to contribute to eclipse editor extension point.
+
+Extension points
+-------------------------------
+
+To contribute our specific editor, we have to provide one extension to ``org.eclipse.ui.editors`` extension point.
+Here is a example ::
+
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="com.yourcompany.yourproject.design.editor.MySpecificEditor"
+            contributorClass="org.eclipse.sirius.diagram.part.ViewpointDiagramActionBarContributor"
+            default="false"
+            extensions="YourModelFileExtension"
+            icon="icons/full/obj16/YourModelFile.gif"
+            id="com.yourcompany.yourproject.design.editor."
+            name="YourModel Editor">
+      </editor>
+   </extension>
+	

@@ -1,0 +1,30 @@
+h1. Sirius - Provide Custom Migration Participants
+
+h2. Goals
+
+In some cases, a migration of representation files or VSMs between two versions of meta-model is required. The migration process has been rewritten to be performed automatically at resource loading time. This migration is transparent for the end-user.
+If you have extended Sirius meta-models, you may need to implement your own migration rules.
+
+To contribute to the Sirius migration process, you need to implement an @org.eclipse.sirius.business.api.migration.IMigrationParticipant@ and provide it through the @org.eclipse.sirius.migrationParticipant@ extension point.
+
+h2. Extension point
+
+The @org.eclipse.sirius.migrationParticipant@ extension point allows to contribute migration participants. Each contribution must provide an implementation of @IMigrationParticipant@ and a "kind" attribute which gives informations about what kind of file is concerned (@REPRESENTATIONSFILE_KIND@ for Representation files and @VSM_KIND@ for VSMs).
+
+h2. MigrationParticipants implementation
+
+Each methods of an @IMigrationParticipant@ receives the current version of the model to migrate, corresponding to the @org.eclipse.sirius@ bundle version.
+* @EStructuralFeature getAttribute(EClass eClass, String name, String version)@ is called during the parsing of XMIResources (at loading time). It allows to retrieve a renamed @EAttribute@ from its old name. For example, if an attribute _foo_ has been renamed to _bar_, then your MigrationParticipant should return the _bar_ attribute when given the _'foo'_ name.
+* @EStructuralFeature getLocalElement(EClass eClass, String name, String version)@ is called during the parsing of XMIResources (at loading time). If the feature name has changed, you should return the correct one.
+* @EClassifier getType(EPackage ePackage, String name, String version)@ is called during the parsing of XMIResources (at loading time). If an @EClassifier@ name has changed, then you should return the correct one.
+* @Object getValue(EObject object, EStructuralFeature feature, Object value, String version)@ is called during the parsing of XMIResources (at loading time). If a feature value has changed since a previous version, use this method to return the correct expected value. 
+* @void postLoad(XMLResource resource, String version)@ is called after the resource loading. All other structural changes in meta-models should be migrated here.
+* @Version getMigrationVersion()@ is used by the migration framework to determine if at least one migration is needed. This method has to provide the Sirius version for which your migration is written. The framework doesn't decide whether your participant need to be launched or not, you have to make sure that the Sirius version number of the loaded resource (available via the version parameter) requires a migration.
+
+h2. Manage the version number
+
+Your migration participant has to return the Sirius version number where your migration is introduced. For example, you have to write a new migration for viewpoint 6.7.0, your migration participant @getMigrationVersion()@ has to return 6.7.0.qualifier, where the qualifier may be the current date.
+
+@getMigrationVersion()@ is used by the migration framework to determine if at least one participant has to be called, in that case the migration mechanism is launched.
+
+*Your migration participant is responsible to make sure that it has to perform its migration*. Indeed, @getMigrationVersion()@ is only used by the migration framework to determine if at least one migration is needed. You have to make sure that the viewpoint version number of the loaded resource requires a migration.

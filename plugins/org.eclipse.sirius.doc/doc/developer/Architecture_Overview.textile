@@ -1,0 +1,38 @@
+h1. ﻿Sirius Architecture Overview
+
+
+Sirius is a platform for developing and using graphical model editors for any domain. It is based on the Eclipse Platform, and in particular the Eclipse Modeling stack based on EMF. The Sirius platform itself is domain-agnostic, in that it can be used to create modelers for any business domain as long as they can described using EMF.
+There are two categories of users of Sirius:
+#  *Architects*  use Sirius to develop modelers for their specific business domains, provided they have defined their domain using EMF’s Ecore.
+# *End Users*  use the resulting modelers to create, view, edit, and in general manipulate actual business models of their domain.
+The general architecture of Sirius is illustrated in the figure below and reflects this split:
+
+ !{width: 600px}images/Sirius - High-Level Architecture Overview.svg! 
+
+On top of Eclipse and EMF, Sirius is made of two main parts.
+
+
+The Sirius *tooling*   (on the right hand of the figure), is the part used by architects. It provides an environment in which they can specify the modeler(s) they want to give to their end-users. This specification is done in a declarative way, by configuring a _description model_ . For each modeler, the architect must specify in the description model:
+# _what_  is to be represented in the modeler, i.e. which elements of the domain model should be visible;
+# how these elements should _look_ , i.e. visual styling information;
+# how these elements should _behave_ , i.e. which tools and interaction modes are available to the end-users to modify the business models, and how each tool behaves.
+The Sirius Tooling provides a complete, easy to use environment for architects to create these specifications. The result is a (set of) _description model(s)_ , optionally with some accompanying Java code, that can be deployed as a normal Eclipse plug-in.
+
+The Sirius *runtime*  (on the left hand of the figure), is the part used by end-users, along with the modeler definition(s) produced by the architects. End-users do not need the Sirius Tooling (the part in the dotted rectangle on the figure) in order to use Sirius-based modelers. The runtime is responsible for _interpreting_  the modeler description models and presenting to the user actual modeler(s) which look and behave as specified in the description.
+To do this, the runtime uses a _representation model_  (and the corresponding meta-model), which describes the concrete representation(s) of end-users business models according to what is configured in the modelers’ specifications (i.e. which concrete business elements are represented, and how they look). These representation models are produced by the Sirius runtime using a refresh algorithm which produces a “projection” of the business data onto the representation domain using the rules defined in the modeler’s definitions.
+The representation model is then shown to the end-user in a _graphical editor_ , integrated into the Eclipse workbench. Through the editor, the end-user can visualize his business model according to the rules defined by the architect in the modeler’s specification. The end-user can  also _interact_  with his models as represented, but only in the ways configured by the architect. When the user interacts with the representation in the editor, some interactions (e.g. dragging and dropping and element on a diagram) can trigger behaviors defined by the architect, which will modify the underlying business model in ways that are consistent with the business rules. Whenever the business model is modified, Sirius re-launches the refresh algorithm, which is incremental: instead of creating a new representation model for the updated business model’s state, it updates the existing model and only changes the parts that need it. The ends-user can then see the effect of his changes immediately in the editor.
+
+!{width: 800px}images/Sirius - Representation Refresh-Sync.svg!
+
+An important property of the refresh algorithm(s) is that they are not only incremental in terms of changes in the business model, but also in terms of changes in the modeler description model itself. This gives rise to one of the most important and distinctive features of Sirius: support for dynamic and incremental development of modelers by architects, with real-time feedback. In practice, this means that when an architect is developing a new modeler definition (or changing an existing one), he can have both the modeler’s definition open (using the Sirius Tooling) and an example representation also open alongside, and whenever he changes the modeler’s definition and saves it, the updated definition is automatically picked-up by the runtime and taken into account instantaneously by issuing a refresh.
+
+In addition to the _runtime_  vs _tooling_  split, the Sirius architecture also separates the core part of the platform, which is independent on any specific kind of representation, and the _dialect-specific extensions_ . Each dialect, which handles a specific kind of representation, is built on top of the core architecture. For example by default Sirius supports three different dialects: diagrams, tables, and trees. More dialects can be implemented by other parties using the public APIs exposed by the Sirius core parts.
+Each dialect provides its own specific extensions to the architecture elements in the core:
+# The representation meta-model is extended with the dialect’s own concepts. For example a diagram can have nodes and connections between these nodes.
+# The core description meta-model is extended to support the definition of these specific concepts. The tooling environment must then be extended to allow architects to specify these new concepts (in general this part can mostly be inferred from the structure of description metamodel and thus automatically generated).
+# Each dialect must provide its own refresh algorithm (although the Sirius core provides some common code to facilitate this).
+# Finally, each dialect must implement the editor(s) used to present their representations to the end-users and allow them to interact with them. This is where dialects make use of additional frameworks and technologies, like GMF for example to render diagrams.
+
+The Sirius architecture as described in this document has the following important properties:
+* separation of tooling from the runtime: smaller runtime for end-users (which are much more numerous) with no UI “pollution” by architects-specific concepts; the runtime does not care how the modeler definitions where produced: using the standard tooling, using an alternate tooling developed completely separately, produced by a program… the only requirement is that the resulting definition conforms to the metamodel.
+* separation of the core from dialect-specific parts: isolates technical dependencies required by some dialects out of the core; allow installations with only a subset of all the supported dialects; extensible; by making even the standard dialects normal clients of the core, keeps us “honest” about our APIs: the standard dialect do not (or at least should not) have privileged access to core features that externally-developed dialects can not access; the core still provides a good place to share common abstractions and code, which results in less code in dialects, a better integration and more uniform end-user experience across different types of representations.

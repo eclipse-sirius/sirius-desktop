@@ -1,0 +1,85 @@
+============================================
+ Sirius - Provide custom representation
+============================================
+
+Description
+============
+
+Overview
+---------------------
+
+Sirius allows one to define new kind of representations.
+A representation kind is called "dialect".
+
+API
+=======
+
+Interface
+-------------------------------
+
+To provide a new dialect you must implement four interfaces.
+
+First step is to implement`org.eclipse.sirius.business.api.dialect.Dialect``. Your implementation should like this ::
+
+   public class ExampleDialect implements Dialect {
+
+     private DialectServices services;
+
+      public String getName() {
+          return "example";
+      }
+
+      public DialectServices getServices() {
+        if (services == null) {
+          services = new ExampleDialectServices();
+        }
+        return services;
+      }
+  }
+
+Second step is to implement ``org.eclipse.sirius.business.api.dialect.DialectServices``.
+
+Third step is to implement ``org.eclipse.sirius.ui.business.api.dialect.DialectUI``. Your implementation should look like this ::
+
+  public class ExampleDialectUI implements DialectUI {
+
+      private DialectUIServices services;
+
+      public String getName() {
+          return "example";
+      }
+
+      public DialectUIServices getServices() {
+          if (services == null) {
+              services = new ExampleDialectUIServices();
+          }
+          return services;
+      }
+  }
+
+Last step is to implement ``org.eclipse.sirius.ui.business.api.dialect.DialectUIServices``.
+When you have finished, you can contribute to dialect extension points.
+
+Extension points
+-------------------------------
+
+To contribute our dialect implementation, we have to provide two extensions.
+First to contribute to ``org.eclipse.sirius.dialect`` extension point.
+Here is a example ::
+
+	<extension point="org.eclipse.sirius.dialect">
+	    <dialect
+	    class="com.example.project.extension.dialect.ExampleDialect">
+	    </dialect>
+	</extension>
+
+Then we need to contribute to ``org.eclipse.sirius.ui.dialectui``
+Here is a example ::
+
+   <extension
+         point="org.eclipse.sirius.ui.dialectui">
+      <dialectUI
+            class="com.example.project.ui.extension.dialect.ExampleDialectUI">
+      </dialectUI>
+   </extension>
+	

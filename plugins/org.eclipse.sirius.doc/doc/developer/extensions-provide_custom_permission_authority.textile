@@ -1,0 +1,7 @@
+h1. Providing a Custom Permission Authority
+
+Both read and write operations on the model are executed through an accessibility layer called the model accessor, implemented by @org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor@.  Each session has an an associated @ModelAccessor@ which can be obtained with @Session.getModelAccessor()@.
+
+The model accessor itself delegates the permission checking to an @IPermissionAuthority@ , which is responsible for checking which operations are permitted on a given model element. The permission authority is also used to lock model elements (both representation and semantic elements), query their lock status and be notified (through @IAuthorityListener@) when a lock is taken or released. 
+
+You can provide a custom permission authority by implementing the interface @org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority@  and registering your custom implementation with the @org.eclipse.sirius.ecore.extender.PermissionProvider@ extension point.

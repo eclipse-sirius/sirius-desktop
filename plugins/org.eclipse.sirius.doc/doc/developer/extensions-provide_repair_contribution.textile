@@ -1,0 +1,4 @@
+h1. Sirius - Provide Custom Repair Participants
+
+In some cases, some repair operations are specific to representation nature (like sequence diagram for example). You need to implement @org.eclipse.sirius.business.api.repair.IRepairParticipant@ through the @org.eclipse.sirius.viewpoint.repair.repairParticipant@ extension point to contribute to repair process.
+

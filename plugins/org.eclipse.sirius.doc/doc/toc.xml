@@ -131,5 +131,23 @@
     </topic>
     <anchor id="moreSpecifierRefs"/>
   </topic>
+  <topic href="doc/developer/Sirius Developer Manual.html" label="Sirius Developer Manual">
+    <anchor id="developerStart"/>
+    <topic href="doc/developer/Architecture_Overview.html" label="Architecture Overview"/>
+    <topic href="doc/developer/Architecture.html" label="Architecture and Concepts"/>
+    <topic href="doc/developer/Meta-models.html" label="Meta-models"/>
+    <topic label="Extension Points">
+      <topic href="doc/developer/integration-plm.html" label="Integration with Product Life Cycle Management"/>
+      <topic href="doc/developer/integration-modeler_description_file_deployment.html" label="Deploy a Modeler Description File"/>
+      <topic href="doc/developer/extensions-provide_save_dialog.html" label="Provide custom save dialog"/>
+      <topic href="doc/developer/extensions-provide_custom-arrange-all.html" label="Provide custom arrange-all"/>
+      <topic href="doc/developer/extensions-provide_custom_style.html" label="Provide custom style"/>
+      <topic href="doc/developer/extensions-provide_tabbar_extensions.html" label="Provide tab-bar extensions"/>
+      <topic href="doc/developer/extensions-provide_migrate_contribution.html" label="Provide custom representation files migration"/>
+      <topic href="doc/developer/extensions-provide_repair_contribution.html" label="Provide custom repair participant"/>
+      <anchor id="moreExtensionPointsRefs"/>
+    </topic>
+    <anchor id="moreDeveloperRefs"/>
+  </topic>
   <topic href="doc/Glossary.html" label="Glossary"></topic>
 </toc>

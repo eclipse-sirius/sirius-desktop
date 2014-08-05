@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>extensions-provide_migrate_contribution</title>
+		<link type="text/css" rel="stylesheet" href="../resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SiriusProvideCustomMigrationParticipants">Sirius &#8211; Provide Custom Migration Participants</h1>
+		<h2 id="Goals">Goals</h2>
+		<p>In some cases, a migration of representation files or VSMs between two versions of meta-model is required. The migration process has been rewritten to be performed automatically at resource loading time. This migration is transparent for the end-user.
+			<br/>If you have extended Sirius meta-models, you may need to implement your own migration rules.
+		</p>
+		<p>To contribute to the Sirius migration process, you need to implement an 
+			<code>org.eclipse.sirius.business.api.migration.IMigrationParticipant</code> and provide it through the 
+			<code>org.eclipse.sirius.migrationParticipant</code> extension point.
+		</p>
+		<h2 id="Extensionpoint">Extension point</h2>
+		<p>The 
+			<code>org.eclipse.sirius.migrationParticipant</code> extension point allows to contribute migration participants. Each contribution must provide an implementation of 
+			<code>IMigrationParticipant</code> and a &#171;kind&#187; attribute which gives informations about what kind of file is concerned (
+			<code>REPRESENTATIONSFILE_KIND</code> for Representation files and 
+			<code>VSM_KIND</code> for VSMs).
+		</p>
+		<h2 id="MigrationParticipantsimplementation">MigrationParticipants implementation</h2>
+		<p>Each methods of an 
+			<code>IMigrationParticipant</code> receives the current version of the model to migrate, corresponding to the 
+			<code>org.eclipse.sirius</code> bundle version.
+		</p>
+		<ul>
+			<li>
+				<code>EStructuralFeature getAttribute(EClass eClass, String name, String version)</code> is called during the parsing of XMIResources (at loading time). It allows to retrieve a renamed 
+				<code>EAttribute</code> from its old name. For example, if an attribute 
+				<em>foo</em> has been renamed to 
+				<em>bar</em>, then your MigrationParticipant should return the 
+				<em>bar</em> attribute when given the 
+				<em>'foo'</em> name.
+			</li>
+			<li>
+				<code>EStructuralFeature getLocalElement(EClass eClass, String name, String version)</code> is called during the parsing of XMIResources (at loading time). If the feature name has changed, you should return the correct one.
+			</li>
+			<li>
+				<code>EClassifier getType(EPackage ePackage, String name, String version)</code> is called during the parsing of XMIResources (at loading time). If an 
+				<code>EClassifier</code> name has changed, then you should return the correct one.
+			</li>
+			<li>
+				<code>Object getValue(EObject object, EStructuralFeature feature, Object value, String version)</code> is called during the parsing of XMIResources (at loading time). If a feature value has changed since a previous version, use this method to return the correct expected value. 
+			</li>
+			<li>
+				<code>void postLoad(XMLResource resource, String version)</code> is called after the resource loading. All other structural changes in meta-models should be migrated here.
+			</li>
+			<li>
+				<code>Version getMigrationVersion()</code> is used by the migration framework to determine if at least one migration is needed. This method has to provide the Sirius version for which your migration is written. The framework doesn&#8217;t decide whether your participant need to be launched or not, you have to make sure that the Sirius version number of the loaded resource (available via the version parameter) requires a migration.
+			</li>
+		</ul>
+		<h2 id="Managetheversionnumber">Manage the version number</h2>
+		<p>Your migration participant has to return the Sirius version number where your migration is introduced. For example, you have to write a new migration for viewpoint 6.7.0, your migration participant 
+			<code>getMigrationVersion()</code> has to return 6.7.0.qualifier, where the qualifier may be the current date.
+		</p>
+		<p>
+			<code>getMigrationVersion()</code> is used by the migration framework to determine if at least one participant has to be called, in that case the migration mechanism is launched.
+		</p>
+		<p>
+			<strong>Your migration participant is responsible to make sure that it has to perform its migration</strong>. Indeed, 
+			<code>getMigrationVersion()</code> is only used by the migration framework to determine if at least one migration is needed. You have to make sure that the viewpoint version number of the loaded resource requires a migration.
+		</p>
+	</body>
+</html>

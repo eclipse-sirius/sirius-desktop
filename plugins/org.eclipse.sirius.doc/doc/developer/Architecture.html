@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Architecture</title>
+		<link type="text/css" rel="stylesheet" href="../resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SiriusArchitectureandConcepts">Sirius Architecture and Concepts</h1>
+		<ol class="toc" style="list-style: disc;">
+			<li>
+				<a href="#SiriusArchitectureandConcepts">Sirius Architecture and Concepts</a>
+				<ol style="list-style: disc;">
+					<li>
+						<a href="#introduction">Introduction</a>
+					</li>
+					<li>
+						<a href="#session">Sessions</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#ted">Transactional Editing Domain</a>
+							</li>
+							<li>
+								<a href="#vp_selection">Changing the Viewpoint Selection</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="#uisession">Editing Sessions</a>
+					</li>
+					<li>
+						<a href="#model_accessor">The Model Accessor</a>
+					</li>
+					<li>
+						<a href="#dialects">Dialects</a>
+					</li>
+					<li>
+						<a href="#viewpoint_registry">The Viewpoint Registry</a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+		<h2 id="introduction">Introduction</h2>
+		<p>This document presents an overview of the internal architecture of Sirius, and the main concepts and APIs.</p>
+		<p>Sirius relies heavily on the Eclipse platform, and reuses (and extends) many of the standard Eclipse frameworks, in particular the Eclipse Modeling Platform. This documents assumes that you are already familiar with these frameworks and libraries, in particular EMF and EMF Transaction, GEF and GMF for diagrams. Refer to these frameworks' own documentation for more details about them.</p>
+		<h2 id="session">Sessions</h2>
+		<p>The central concept of Sirius&#8217;s API is the 
+			<code>Session</code>. In Sirius, all data is stored in EMF models: the semantic models themselves obviously, but also the representations (diagrams, tables) and the viewpoint configuration (the 
+			<em>Viewpoint Specification Models</em>). A session is a wrapper around a 
+			<em>Transactional Editing Domain</em> and its 
+			<em>Resource Set</em>. It ensure the consistency of the models inside the editing domain, from the platform&#8217;s point of view; for example it makes sure the representation files correctly reference all the semantic models they need to in order to handle the representations in the session. The session also provides high-level, Sirius-specific services through its own APIs and support classes and interfaces.
+		</p>
+		<p>In the standard UI, each 
+			<em>Modeling Project</em>  corresponds to exactly one 
+			<code>Session</code>, and each session contains its own 
+			<em>Editing Domain</em> and 
+			<em>Resource Set</em>. This means that sessions (and thus modeling projects) are isolated from each other.
+		</p>
+		<p>The 
+			<em>representation files</em> (
+			<code>*.aird</code> files) can be though as the serialized form of a 
+			<code>Session</code>, and symmetrically a session is the runtime incarnation of a representation file (or more precisely of the unique top-level representation file in a modeling project).
+		</p>
+		<p>A session, inside its resource set, contains three kinds of resources:</p>
+		<ul>
+			<li>the 
+				<em>semantic resources</em>, which contain the user&#8217;s semantic model;
+			</li>
+			<li>the 
+				<em>representation resources</em>, which correspond to the 
+				<code>aird</code> file(s), and contain representation data (e.g. diagrams);
+			</li>
+			<li>the 
+				<em>Viewpoint Specification Models</em> which contain all the viewpoints used by the representations inside the session. These are the 
+				<code>*.odesign</code> files, and are typically loaded from installed plug-in instead of from the workspace (except when using the 
+				<em>dynamic mode</em> to develop viewpoints).
+			</li>
+		</ul>
+		<p>The 
+			<code>SessionManager</code> is a global object which references all the sessions currently opened in the system. It can also be used to find which session is responsible for a given semantic element. This is very important because many Sirius APIs require that you provide a 
+			<code>Session</code> parameter. If what you have is an element from a user semantic model, you can use 
+			<code>SessionManager.INSTANCE.getSession(theSemanticElement)</code> to find in which of  the opened session, if any, this object is loaded. Note that this method can be relatively costly, so do not call it in tight loops to avoid hurting performance.
+		</p>
+		<p>To create a Session programmatically:</p>
+		<pre><code>URI sessionResourceURI = URI.createPlatformResourceURI("/Project/archi.aird", true);
+Session createdSession = SessionManager.INSTANCE.getSession(sessionResourceURI);
+createdSession.open();
+</code></pre>
+		<p>The 
+			<code>Session</code> API provides several methods to manage the different kind of resources it contains: finding all the 
+			<em>semantic resources</em> and adding new ones, finding about all the referenced session resources (all the secondary 
+			<code>*.aird</code> files which are part of the same session), etc. Refer to the 
+			<code>Session</code> interface&#8217;s JavaDoc for details.
+		</p>
+		<p>The 
+			<code>Session.getInterpreter()</code> method can be used to obtain an 
+			<code>IInterpreter</code> properly configured to query the models in that session. The interpreter it returns will handle expression from any of the supported query languages, and you can use it to run your own queries (see the 
+			<code>IInterpreter</code> API).
+		</p>
+		<p>Another interesting method in 
+			<code>Session</code> is 
+			<code>Session.getEventBroker()</code>. It returns a 
+			<code>SessionEventBroker</code> object, which can be used to add trigger actions that will be performed whenever a change in the session&#8217;s model occurs. See 
+			<code>SessionEventBroker</code> and 
+			<code>ModelChangeTrigger</code> for details.
+		</p>
+		<p>When you are finished working with a session, you must 
+			<code>close()</code> it. This will unload all the models in its resource set and free the corresponding memory. After a session has been close it can not be reopened, but you can open a new one on the same files if needed.
+		</p>
+		<h3 id="ted">Transactional Editing Domain</h3>
+		<p>The editing domain associated to each session is an EMFT 
+			<em>Transactional Editing Domain</em>. In addition to basic undo/redo, it supports advanced features like atomicity and pre- and post-commit listeners, which are triggered after a command has been executed, and can be used to perform additional work (for pre-commit listeners) or to update external application data like UI state for post-commit listeners.
+		</p>
+		<p>The 
+			<code>Session.getTransactionalEditingDomain()</code> will return the 
+			<code>TransactionlEditingDomain</code> for a session. 
+		</p>
+		<p>To modify a model element with a transactional editing domain, you must use a 
+			<code>RecordingCommand</code>. If you try to modify the models inside a session (semantic model or representations) outside the context of a recording command, you will get an exception. The proper usage pattern is:
+		</p>
+		<pre><code>TransactionalEditingDomain ted = ...;
+ted.getCommandStack().execute(myCommand);
+</code></pre>
+		<p>where 
+			<code>myCommand</code> is a 
+			<code>RecordingCommand</code>.
+		</p>
+		<h3 id="vp_selection">Changing the Viewpoint Selection</h3>
+		<p>Each session has its own set of Viewpoints enabled, which determine which representations and extension are available. Users can change that selection using the 
+			<em>Viewpoint Selection</em> action (for example on a 
+			<em>Modeling Project</em>). You can also change this selection programmatically.
+		</p>
+		<p>The simplest way to to this is to use the 
+			<code>UserSession</code> API; for example:
+		</p>
+		<pre><code>Session userSession = UserSession.from(createdSession);
+userSession.selectViewpoint("Design");
+</code></pre>
+		<h2 id="uisession">Editing Sessions</h2>
+		<p>An 
+			<em>editing sesssion</em>, represented by an instance of 
+			<code>org.eclipse.sirius.ui.business.api.session.IEditingSession</code>,  manages the graphical editors associated to a session. A session can exist without an associated editing session, but some operations require that an editing session is explicitly opened. At most one editing session can exist for a given session.
+		</p>
+		<p>To retrieve the editing session associated to a session or create a new one, use the 
+			<code>org.eclipse.sirius.ui.business.api.session.SessionUIManager</code>  API. The manager serves both as a factory for editing sessions and as a registry of all the ones which are opened at a given time and which session they correspond to.
+		</p>
+		<p>The main services opened by an editing session is to open, close, save, and generally manage the lifecycle of the Eclipse editors associated with a session. Every time a representation (e.g. a diagram) is opened on a model, it happens through the corresponding editing session.</p>
+		<p>You can use the editing session&#8217;s APIs yourself to open representations, check their dirty states, save them, etc. Refer to the 
+			<code>EditingSession</code>'s JavaDoc for details.
+		</p>
+		<p>You can also register 
+			<code>IEditingSessionListeners</code> on an editing session, to be notified of state changes in the session, in particular when it becomes 
+			<em>dirty</em>, meaning that it contains unsaved changes.
+		</p>
+		<h2 id="model_accessor">The Model Accessor</h2>
+		<p>The semantic models inside a session are never manipulated directly by Sirius. All access to these models is mediated through the session&#8217;s 
+			<code>ModelAccessor</code> instead of directly through the normal EMF reflective APIs. This accessor serves two purposes:
+		</p>
+		<ul>
+			<li>It enables seamless extension (or restriction) of how the session views the semantic model. For example a model accessor could give access to virtual elements or properties, which do not exist &#171;physically&#187; inside the semantic model; it could also decide to hide some parts of the semantic model to viewpoint.</li>
+			<li>It allows the verification of any access or modification using the associated 
+				<code>IPermissionAuthorithy</code>. The permission authority is used to lock model elements (both diagram and semantic elements), and to check if you have read and/or write access to each element and feature before access or modification.
+			</li>
+		</ul>
+		<p>You can obtain the model accessor associated to a session using the 
+			<code>Session.getModelAccessor()</code> method, and the permission authority using 
+			<code>ModelAccessor.getPermissionAuthority()</code>.  If you extend Sirius, you should make sure to uses the model accessor API to read and write the semantic model, and to use the permission authority to check any change you want to perform beforehand.
+		</p>
+		<h2 id="dialects">Dialects</h2>
+		<p>Sirius supports different kinds of representations: diagrams, tables and trees. These are all 
+			<strong>dialects</strong>, which are supported by default by the platform. The core of the platform only deals with the abstract notion of a dialect, and each one is simply an extension.
+		</p>
+		<p>The 
+			<code>DialectManager</code>  (
+			<code>org.eclipse.sirius.business.api.dialect.DialectManager</code>) offers some general APIs which can be used to manipulate representations in a uniform way, independently of which concrete dialect provides them. The 
+			<code>DialectManager</code> can be used to:
+		</p>
+		<ul>
+			<li>create new representations;</li>
+			<li>synchronize representations;</li>
+			<li>delete representations;</li>
+			<li>find existing representations.</li>
+		</ul>
+		<p>The 
+			<code>DialectManager</code> is a global object but the services it offers work on representations inside sessions, so all the methods it provides require a 
+			<code>Session</code> object as argument.
+		</p>
+		<p>In the same way as sessions are split in a core 
+			<code>Session</code> API and an 
+			<code>EditingSession</code> API to handle UI-specific services, the 
+			<code>DialectManager</code> is complemented with the 
+			<code>DialectUIManager</code>  (
+			<code>org.eclipse.sirius.ui.business.api.dialect.DialectUIManager</code>), which offers generic APIs to representations services which depend on the UI. The main ones are:
+		</p>
+		<ul>
+			<li>opening and closing editors;</li>
+			<li>exporting representations into external files (e.g. images).</li>
+		</ul>
+		<h2 id="viewpoint_registry">The Viewpoint Registry</h2>
+		<p>The 
+			<code>ViewpointRegistry</code> is a global object which knows about all the Viewpoint definitions available in the system at every time.
+		</p>
+		<p>When a plug-in containing properly packaged 
+			<em>VSMs</em> is deployed, the registry will be notified (through the 
+			<code>org.eclipse.sirius.componentization</code> extension point) and register all the viewpoints defined in any of these 
+			<em>VSMs</em>. The registry also listens to changes in the Eclipse workspace to detect the creation, modification and deletion of any 
+			<code>*.odesign</code> files; this is (part of) what enables dynamic development of VSMs, with no need for a costly deployment of plug-ins to test your changes: the latest version of a Viewpoint definition from the workspace is always known from the registry.
+		</p>
+		<p>You can use the registry to discover about all the viewpoint definitions which are available, and introspect the corresponding models. However be aware that the Viewpoint registry maintains its own editing domain and EMF 
+			<code>ResourceSet</code> in which the viewpoints are loaded. The model loaded in the registry are 
+			<strong>not</strong> the same as the ones loaded in a session that uses a given viewpoint. It is a different instance of the same model. This means you must be careful when comparing or passing around elements from a viewpoint definition. For example if you have defined a viewpoint named 
+			<em>A</em>, and have two different sessions where 
+			<em>A</em> is enabled, you will have three equivalent but different instances of 
+			<em>A</em>: one in each of the sessions' 
+			<code>ResourceSet</code>, and one in the 
+			<code>ViewpointRegistry</code>'s private 
+			<code>ResourceSet</code>.
+		</p>
+		<p>You can register listeners on the 
+			<code>ViewpointRegistry</code> to be notified when Viewpoints are registered, unregistered, or when the definition of a viewpoint changes (for example because it was defined from an 
+			<code>*.odesign</code> file in the workspace that you have just modified, and the registry detected it and reloaded the new definition);
+		</p>
+	</body>
+</html>

@@ -1,0 +1,39 @@
+=================================================
+Sirius - Provide custom representation export
+=================================================
+
+Description
+============
+
+Overview
+---------------------
+
+Viewpoint has the functionality to export representations as images. Currently it works only with diagrams.
+
+The default export behavior is customizable in an aspect like way.
+
+API
+=======
+
+Interfaces to extends export
+------------------------------------------------
+``org.eclipse.sirius.ui.tools.api.actions.export.IBeforeExport``
+
+It contains methods that will be executed *before* representation export operations.
+
+``org.eclipse.sirius.ui.tools.api.actions.export.IAfterExport``
+
+It contains methods that will be executed *after* representation export operations.
+
+Interface to override export
+------------------------------------------------
+
+``org.eclipse.sirius.ui.tools.api.actions.export.IAroundExport``
+
+It contains one method that will be executed *instead* of the standard export
+
+Extension point
+----------------------------
+
+``org.eclipse.sirius.ui.exportRepresentationsAsImagesExtension``.
+

@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>integration-modeler_description_file_deployment</title>
+		<link type="text/css" rel="stylesheet" href="../resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SiriusDeployaModelerdescriptionfile">Sirius &#8211; Deploy a Modeler description file</h1>
+		<p>This document describes how to deploy a modeler description file as an Eclipse plug-in through the available APIs.</p>
+		<h2 id="CreateanewEclipseplugin">Create a new Eclipse plug-in</h2>
+		<ul>
+			<li>Select 
+				<strong>File -&gt; New -&gt; Plug-in project</strong>
+			</li>
+			<li>Choose a name; for instance 
+				<code>com.yourcompany.yourproject.mymodeler</code>
+			</li>
+			<li>Select 
+				<em>Generate an activator</em> and uncheck the checkbox labelled 
+				<em>This plug-in will make contributions to the UI</em>
+			</li>
+			<li>Create a new folder named &quot;description&quot; in the created project&#8217;s root</li>
+			<li>Activate to true the option &quot;Activate this plug-in when one of its classes is loaded&quot; of your plugin.xml</li>
+		</ul>
+		<h2 id="Importyourmodeler">Import your modeler</h2>
+		<ul>
+			<li>Select 
+				<strong>File -&gt; Import... -&gt; File System</strong>
+			</li>
+			<li>Select the directory where your modeler description file is located.</li>
+			<li>Check that the modeler description file is checked as file to import.</li>
+			<li>import it in the previously created project</li>
+		</ul>
+		<h2 id="Contributetoorg.eclipse.sirius.componentization">Contribute to 
+			<code>org.eclipse.sirius.componentization</code>
+		</h2>
+		<ul>
+			<li>Open the 
+				<em>META-INF/MANIFEST.MF</em> file.
+			</li>
+			<li>In the 
+				<em>Extensions</em> tab, add a new extensions based on the 
+				<code>org.eclipse.sirius.componentization</code> extension point
+			</li>
+			<li>Fill the properties with the following values :
+				<ul>
+					<li>id: an identifier string</li>
+					<li>name: a name string</li>
+					<li>class: the activator of the previously created plug-in</li>
+				</ul>
+			</li>
+		</ul>
+		<p>Here is an example :</p>
+		<pre> id="com.mycompany.yourproject.mymodeler.modeler"
+ name="com.mycompany.yourproject.mymodeler.modeler"
+ class="com.mycompany.yourproject.mymodeler.modeler.MyActivator"
+</pre>
+		<h2 id="Registeryourviewpointsatthestartofyourplugin">Register your viewpoints at the start of your plug-in</h2>
+		<ul>
+			<li>Add your viewpoints in the function start of the activator of your plug-in:</li>
+		</ul>
+		<pre>viewpoints = new HashSet&amp;lt;Viewpoint&amp;gt;();
+viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN&amp;#95;ID+&amp;quot;/&amp;lt;path&amp;#95;from&amp;#95;the&amp;#95;plugin&amp;#95;project&amp;gt;/&amp;lt;myModeler&amp;gt;.odesign&amp;quot;));
+</pre>
+		<ul>
+			<li>Suppress your viewpoints in the function stop of the activator of your plug-in</li>
+		</ul>
+		<pre>if (viewpoints != null) {
+  for (Viewpoint viewpoint : viewpoints) {
+    ViewpointRegistry.getInstance().disposeFromPlugin(viewpoint);
+  }
+  viewpoints.clear();
+}
+</pre>
+	</body>
+</html>

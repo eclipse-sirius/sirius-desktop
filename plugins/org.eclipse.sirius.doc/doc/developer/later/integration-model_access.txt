@@ -1,0 +1,91 @@
+===================================================
+Sirius - Model Access
+===================================================
+
+Description
+============
+
+Overview
+-----------
+
+Every access (set or get) to the semantic model is going through a unified layer called the *ModelAccessor*. This model accessor is 
+responsible for setting and getting values in an unified way, not knowing whether we are setting an intrinsic data attribute or an extended one
+from a annotation.   
+
+The ModelAccessor uses a set of Extenders which are responsible for a part of the model data. For instance we have an EcoreIntrinsicExtender which handle
+the classical (defined in the metamodel) attributes accesses. And an AnnotationExtender which use an annotation model to add data to an existing model 
+without changing the metamodel implementation.
+
+All these extenders are working together and provides, through the ModelAccessor instance, an unified model access layer.
+
+
+   Dynamic PLM is about being able to lock/unlock a given element and  being able to tell at any moment if this element has been modified or not, if it's a new element and so on.
+   
+   
+All these features requires a tight integration of the tooling (Modelers and editors) and the permission manager. 
+
+We can logically cut these aspects in a number of components in Viewpoint :
+
+# Core components considering
+  -  Semantic Model Access
+  -  ViewPoint Model Access
+# Editor components
+  -  GMF model access
+  -  Graphical Viewer access
+  -  Tool Access
+  -  Properties Access (Semantic, Extension, Style and Graphical Properties)
+ 
+Semantic Access
+---------------
+ 
+ Every semantic access of model elements is done through the "ModelAccessor". This accessor is the common facade of the Ecore intrinsic data access and 
+ of any kind of extended data access. It also handle the inter-weaving of the elements provided by both the Ecore semantic model and the annotations.
+ 
+ Having the permission to set/unset a value or to create an instance of the semantic model is then done in this class and a permission authority coupled with this class may then be used 
+ to ask for permission or notify a change or instance creation.
+ 
+ 
+ViewPoint Model Access
+----------------------
+ 
+ Every access made to the viewpoint model is manually checking whether it has rights or not to create/delete/update an element. That means every possible creation or setting of a value manually request the permission at first.
+ 
+GMF Model Access
+----------------
+GMF model should be understood as the Annotation model used by GMF to keep track of the diagram data. It is composed of "Node" and "Edge" and positions for instance.
+The GMF model is automatically updated trough the CannonicalEditPolicy of every edit part in the diagram editor. 
+We pretty much have no control on that but we can tell an edit part its "edit mode" is enabled or not. If the edit mode is disabled then nothing *should* lead to a change in the GMF model.    
+
+We make sure that if a "ViewPoint" can't be edited, then at the diagram opening GMF won't bypass any EditPart to refresh the annotation model.
+
+Graphical Viewer access
+-----------------------
+Mouse or keyboard editing is prevented thanks to the disable/enable edit mode in the GMF edit parts and specific code in the properties.
+
+Tool Access
+-----------
+Every tool in the modeler palette is able to cause the a change in the model. As every command launched re-use the ModelAccessor it won't really change something in the model, 
+but as  we don't want the tool to be enabled on a locked element, then the EMFCommandFactory ask for permission too, and if no permission is given, will return an UnexecutableCommand.
+
+Properties Access
+-----------------
+Properties will ask for permission on a "per instance" basis right now, if it is not given, no CellEditor will be returned meaning the feature won't be editable.
+
+Notifying the changes
+----------------------
+The Permission authority should be notified on new instance creation and on changes of the instances. To do so the PermissionAuthority initialization will install a listener on the given ResourceSet and will automatically notify it-self when a change appears.
+This system will also help in checking that some unauthorized changes are not done.   
+In *strict* mode the permission authority will throw Exceptions when a change is made to a locked element. Then if the process was in a transactional environment, then a rollback will happen.
+
+Access errors
+-------------
+Current implementation provides 2 modes of usage of the ModelAccessor. The "silent" mode won't complain about an invalid access on a locked element, it will just ignore it.
+If the current model accessor is not in silent mode then an Exception will be thrown in these cases. 
+
+Status
+------
+
+Semantic Model accesses are handled through the command or properties. Extended information too.
+Notification are handled through the usual EMF notifiers  + the notification of instance creation in the Model Accessor.
+
+EditParts are disabled when the corresponding semantic element is locked. Permission listeners are setup to handle dynamic locking/unlocking.

@@ -1,0 +1,190 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>extensions-provide_tabbar_extensions</title>
+		<link type="text/css" rel="stylesheet" href="../resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SiriusProvidetabbarextensions">Sirius &#8211; Provide tab-bar extensions</h1>
+		<h2 id="Goals">Goals</h2>
+		<p>The top area of all Sirius diagram editors is filled with the 
+			<em>tab-bar</em>, which provides access to many operations on diagrams and their elements. The content of the tab-bar will depends on whether the current selection is the diagram itself (i.e. no element is selected) or one or several diagram elements.
+		</p>
+		<p>When the diagram itself (and not a specific element) is selected, the tab-bar contains the following buttons: 
+			<br/>	
+			<img border="0" src="images/tabbar01.png"/>
+		</p>
+		<p>The tab-bar contains a different set of actions when at least one element is selected:	
+			<br/>	
+			<img border="0" src="images/tabbar02.png"/>
+		</p>
+		<p>Sirius allows to define new operations and to add them at the end of the tab-bar.</p>
+		<h2 id="Defineatabbarextension">Define a tab-bar extension</h2>
+		<p>Sirius asks the workbench&#8217;s 
+			<code>IMenuService</code> service to populate the tab-bar with provided contributions. This service leans on the 
+			<code>org.eclipse.ui.menus</code> extension point.
+		</p>
+		<p>Sirius defines the tab-bar as a toolbar with the id 
+			<em>org.eclipse.sirius.diagram.ui.tabbar</em>. 
+			<br/>Menu contributions to tab-bar must be declared with the 
+			<em>toolbar</em> scheme and the Sirius tab-bar id.
+		</p>
+		<p>You can use the insertion point part of the 
+			<em>locationUri</em> to organize your contributions. Sirius defines the 
+			<em>additions</em> group, this group and all contribution will be placed at the end of the tab-bar.
+		</p>
+		<p>You can choose when to make your contribution visible (see the example) with the 
+			<em>visibleWhen</em> element and some property testers: show a menu for diagram selection or only on some diagram with a specific description, ... Sirius defines several property tester like 
+			<em>org.eclipse.sirius.diagram.ui.isDDiagram</em> and 
+			<em>org.eclipse.sirius.diagram.ui.isDDiagramElement</em>, but you can define your own domain specific testers.
+		</p>
+		<h3 id="Provideyourtabbarextensionusingtheorg.eclipse.ui.menusextensionpoint">Provide your tab-bar extension using the 
+			<code>org.eclipse.ui.menus</code> extension point
+		</h3>
+		<p>Please refer to this extension point documentation for more details.</p>
+		<h3 id="Provideyouroperationusingtheorg.eclipse.ui.commandsextensionpoint">Provide your operation using the 
+			<code>org.eclipse.ui.commands</code> extension point
+		</h3>
+		<p>Please refer to this extension point documentation for more details.</p>
+		<h2 id="Example">Example</h2>
+		<p>The following example defines a new push button for the tab-bar. The contribution will only be visible when an element is selected on diagram which correspond to a specific description.</p>
+		<p>You have to add you menu contribution in the plugin.xml file.</p>
+		<p>	
+			<img border="0" src="images/tabbar_extension_plugin_xml.png"/>
+		</p>
+		<p>The first step is to create the menu contribution to reference an existing command:</p>
+		<pre> &lt;extension point="org.eclipse.ui.menus"&gt;
+    &lt;menuContribution
+          allPopups="false"
+          locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=additions"&gt;
+        &lt;command
+              commandId="org.example.myproject.command.id"
+              icon="images/action.gif"
+              id="org.eclipse.sirius.diagram.tabbar.test.action.on.diagramelement"
+              label="Action on DDiagramElement"
+              tooltip="Action on DDiagramElement"&gt;
+   &lt;!-- [...] a visible when element will be added later to control the visibility --&gt;
+        &lt;/command&gt;
+    &lt;/menuContribution&gt;
+ &lt;/extension&gt;
+
+</pre>
+		<p>The 
+			<em>locationURI</em> references the Sirius tabbar with 
+			<code>toolbar:org.eclipse.sirius.diagram.ui.tabbar</code> and and insertion point 
+			<code>?after=additions</code>.
+			<br/> The command element references an existing 
+			<em>commandID</em>, and defines its own menu id (can be used as insertion/organization point in other contributions 
+			<em>locationURI</em>), its label and tooltip. If a key binding exists on the referenced command, the workbench will add it to the tooltip.
+		</p>
+		<p>Then you can control the visibility of your contribution with a visible when element. </p>
+		<pre>   &lt;!-- [...] continued from the example above --&gt;
+   &lt;visibleWhen checkEnabled="false"&gt;
+      &lt;and&gt;
+         &lt;with variable="activeEditorId"&gt;
+            &lt;equals value="org.eclipse.sirius.diagram.part.SiriusDiagramEditorID"/&gt;
+         &lt;/with&gt;
+         &lt;with variable="activeEditor"&gt;
+             &lt;test property="org.eclipse.sirius.sample.tabbar.isConcernedEditor"/&gt;
+         &lt;/with&gt;
+         &lt;with variable="selection"&gt;
+            &lt;iterate ifEmpty="false" operator="or"&gt;
+               &lt;and&gt;
+                  &lt;test property="org.eclipse.sirius.diagram.isDDiagramElement"/&gt;
+                  &lt;test property="org.eclipse.sirius.sample.tabbar.shouldActivateTabbarExtension"/&gt;
+               &lt;/and&gt;
+            &lt;/iterate&gt;
+         &lt;/with&gt;
+      &lt;/and&gt;
+   &lt;/visibleWhen&gt;
+&lt;/command&gt;
+     
+</pre>
+		<p>The sample contribution declares four conditions to enable its visibility:</p>
+		<ul>
+			<li>it checks that the active editor is a Sirius Diagram Editor using the workbench variable 
+				<em>activeEditorId</em> and the Sirius Diagram Editor id.
+			</li>
+			<li>it asks a property tester if the active editor should trigger the contribution visibility (see next section for the sample property tester explanation)</li>
+			<li>it iterates over the selection with a &#171;OR&#187; operator between elements and a false result for empty selection:
+				<ul>
+					<li>it uses the Sirius predefined property tester to check that a selected element is a diagram element.</li>
+					<li>it asks a property tester if the current element should trigger the contribution visibility (see next section for the sample property tester explanation)</li>
+				</ul>
+			</li>
+		</ul>
+		<p>Property testers are defined in the plug-in.xml file. They define namespace, some properties and the type of elements they can test.</p>
+		<pre>&lt;extension point="org.eclipse.core.expressions.propertyTesters"&gt;
+   &lt;propertyTester
+         class="org.eclipse.sirius.sample.tabbar.SampleTestTabbarExtensionActivationPropertyTester"
+         shouldActivateTabbarExtensionid="org.eclipse.sirius.sample.tabbar.ActiveExtensionTester"
+         namespace="org.eclipse.sirius.sample.tabbar"
+         properties="shouldActivateTabbarExtension"
+         type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"&gt;
+   &lt;/propertyTester&gt;
+         &lt;propertyTester
+         class="org.eclipse.sirius.sample.tabbar.SampleTestTabbarExtensionActivationPropertyTester"
+         id="org.eclipse.sirius.sample.tabbar.ConcernEditorTester"
+         namespace="org.eclipse.sirius.sample.tabbar"
+         properties="isConcernedEditor"
+         type="org.eclipse.ui.IEditorPart"&gt;
+   &lt;/propertyTester&gt;
+&lt;/extension&gt;
+
+</pre>
+		<p>Here is the implementation of the corresponding property tester. The 
+			<em>isConcerned</em> property will lead to check the 
+			<code>DiagramDescription</code> id of the current editor. The 
+			<em>shouldActivateTabbarExtension</em> will lead to check a property of the selected domain object.
+		</p>
+		<pre><code>package org.eclipse.sirius.sample.tabbar;
+
+import org.eclipse.core.expressions.PropertyTester;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DRepresentation;
+import org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
+
+/**
+ * Sample property tester.
+ * 
+ * @author mporhel
+ */
+public class SampleTestTabbarExtensionActivationPropertyTester extends PropertyTester {
+    public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
+        if ("isConcerned".equals(property)) {
+            // called in a with activeEditor element
+            if (receiver instanceof DialectEditor) {
+                DRepresentation activeRepresentation = ((DialectEditor) receiver).getRepresentation();
+                if (activeRepresentation instanceof DDiagram) {
+                    // the id property in the VSM editor : name in the meta
+                    // model.
+                    return "diagram.description.sample.id".equals(((DDiagram) activeRepresentation).getDescription().getName());
+                }
+            }
+        } else if ("shouldActivateTabbarExtension".equals(property)) {
+            if (receiver instanceof IDiagramElementEditPart) {
+                EObject domainElement = ((IDiagramElementEditPart) receiver).resolveTargetSemanticElement();
+                // sample condition
+                return domainElement instanceof EClass &amp;&amp; ((EClass) domainElement).isAbstract();
+            }
+        }
+        return false;
+    }
+}
+
+
+</code></pre>
+		<p>The a new button is added to the tab-bar only when the selection contains an abstract 
+			<code>EClass</code> is selected and the active editor corresponds to the expected description id: 
+		</p>
+		<p>	
+			<img border="0" src="images/tabbar_extension_result.png"/>
+		</p>
+	</body>
+</html>

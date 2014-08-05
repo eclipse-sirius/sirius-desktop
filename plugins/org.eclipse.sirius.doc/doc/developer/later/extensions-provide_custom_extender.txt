@@ -1,0 +1,76 @@
+===================================================
+Sirius - Model Extension
+===================================================
+
+Writing your own Extender
+-------------------------
+You may want to write your own Extender if you want to define a new Metamodel extension mechanism or if you want to change the way 
+the model accesses are done on EMF objects.
+ 
+To provide your own Extender you should use the ::
+ 
+  org.eclipse.sirius.ecore.extender.ExtenderProvider 
+
+extension point and provides your own::
+
+  org.eclipse.sirius.ecore.extender.business.api.accessor.IExtenderProvider
+
+implementation.
+ 
+And then describe it through plugin.xml::
+
+  <extension
+         point="org.eclipse.sirius.ecore.extender.ExtenderProvider">
+      <extenderprovider
+            priority="highest"
+            providerClass="com.example.MyExtenderProvider">
+      </extenderprovider>
+   </extension>
+   
+And your provider will be asked to tell if yes or no the extender should be provided considering the resourceset.
+
+The priority field will be used to organize the order of the extender calls. 
+If you set the priority to highest, then you are sure every model access request will first go through
+your extender. If it set to lowest, then you know your extender will only be called if no other extenders 
+fullfilled the request.
+
+Dynamic update of the Extender
+------------------------------
+
+Your extender might need to update it's state depending on the selected viewpoints. A new API is available for that need. You can provide a MetamodelDescriptorProviders (org.eclipse.sirius.api.extender.MetamodelDescriptorProvider)  which will be asked
+for each change in the viewpoint selection, whether it provides MetamodelDescriptors or not. Then these descriptors will be passed by the ModelAccessor API to every instance of IMetamodelExtender so 
+that it can change it's internal state. For instance the EcoreIntrinsicExtender provides MetamodelDescriptors ::
+
+    DiagramDescription diag = (DiagramDescription) desc;
+                for (EPackage pak : diag.getMetamodel()) {
+                    String nsURI = pak.getNsURI();
+                    EPackage registeredPackage = EPackage.Registry.INSTANCE.getEPackage(nsURI);
+                    if (registeredPackage != null) {
+                        result.add(new EcoreMetamodelDescriptor(registeredPackage));
+                    } else {
+
+                        result.add(new EcoreMetamodelDescriptor(pak));
+                    }
+                }
+
+And then the extender reuse them in the updateMetamodels(..) Method ::
+
+	public void updateMetamodels(final Collection metamodelDescriptors) {
+	        final Iterator it = metamodelDescriptors.iterator();
+	        while (it.hasNext()) {
+	            final Object obj = it.next();
+	            if (obj instanceof EcoreMetamodelDescriptor) {
+	                final EPackage pak = ((EcoreMetamodelDescriptor) obj).resolve();
+	                if (pak != null)
+	                    addEClassFromEPackage(pak);
+	            }
+	
+	        }
+	
+	    }                
+
+
+
+
+
+

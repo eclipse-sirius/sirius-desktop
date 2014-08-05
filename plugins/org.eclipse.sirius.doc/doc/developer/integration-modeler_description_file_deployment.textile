@@ -1,0 +1,54 @@
+h1. Sirius - Deploy a Modeler description file
+
+This document describes how to deploy a modeler description file as an Eclipse plug-in through the available APIs.
+
+h2. Create a new Eclipse plug-in
+
+* Select *File -&gt; New -&gt; Plug-in project*
+* Choose a name; for instance @com.yourcompany.yourproject.mymodeler@
+* Select _Generate an activator_ and uncheck the checkbox labelled _This plug-in will make contributions to the UI_
+* Create a new folder named &quot;description&quot; in the created project's root
+* Activate to true the option &quot;Activate this plug-in when one of its classes is loaded&quot; of your plugin.xml
+
+h2. Import your modeler
+
+* Select *File -&gt; Import... -&gt; File System*
+* Select the directory where your modeler description file is located.
+* Check that the modeler description file is checked as file to import.
+* import it in the previously created project
+
+h2. Contribute to @org.eclipse.sirius.componentization@
+
+* Open the _META-INF/MANIFEST.MF_ file.
+* In the _Extensions_ tab, add a new extensions based on the @org.eclipse.sirius.componentization@ extension point
+* Fill the properties with the following values :
+** id: an identifier string
+** name: a name string
+** class: the activator of the previously created plug-in
+
+Here is an example :
+
+pre. 
+ id="com.mycompany.yourproject.mymodeler.modeler"
+ name="com.mycompany.yourproject.mymodeler.modeler"
+ class="com.mycompany.yourproject.mymodeler.modeler.MyActivator"
+
+h2. Register your viewpoints at the start of your plug-in
+
+* Add your viewpoints in the function start of the activator of your plug-in:
+
+pre. 
+viewpoints = new HashSet&lt;Viewpoint&gt;();
+viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN&#95;ID+&quot;/&lt;path&#95;from&#95;the&#95;plugin&#95;project&gt;/&lt;myModeler&gt;.odesign&quot;));
+
+* Suppress your viewpoints in the function stop of the activator of your plug-in
+
+pre. 
+if (viewpoints != null) {
+  for (Viewpoint viewpoint : viewpoints) {
+    ViewpointRegistry.getInstance().disposeFromPlugin(viewpoint);
+  }
+  viewpoints.clear();
+}
+
+

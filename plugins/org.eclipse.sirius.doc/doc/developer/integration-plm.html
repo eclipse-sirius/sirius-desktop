@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>integration-plm</title>
+		<link type="text/css" rel="stylesheet" href="../resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="IntegrationwithProductLifeCycleManagement">Integration with Product Life Cycle Management</h1>
+		<h2 id="API">API</h2>
+		<h3 id="Description">Description</h3>
+		<p>Sirius can be used in a concurrent environment and should therefore provide a mean to lock/unlock elements and adapt its behavior according to this information. The PermissionAuthority is responsible for telling whether an element feature is locked or not.</p>
+		<h3 id="GettingthecurrentPermissionAuthority">Getting the current Permission Authority</h3>
+		<p>The 
+			<code>org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionProvider</code> service will return an instance of 
+			<code>org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority</code> given a resource set. Convenience methods have been added in 
+			<code>ModelAccessor</code> to retrieve the current authority.
+		</p>
+		<h3 id="WritingyourownPermissionauthority">Writing your own Permission authority</h3>
+		<p>Custom Permission Authorities can be implemented in order to activate the lock/unlock support for your own concurrent handling
+			<br/>mechanism within Sirius.
+		</p>
+		<p>Providing your own Permission Authority to determine whether an element (either semantic or diagrammatic) is locked or not can
+			<br/>be done through the 
+			<code>org.eclipse.sirius.ecore.extender.PermissionProvider</code> extension point.
+		</p>
+		<p>Permission Authorities must implement the interface 
+			<code>IPermissionAuthority</code> and be described in the plug-in&#8217;s plugin.xml:
+		</p>
+		<pre>&lt;extension point="org.eclipse.sirius.ecore.extender.PermissionProvider"&gt;
+    &lt;permissionprovider priority="high" providerClass="com.example.MyAuthorityProvider" /&gt;
+&lt;/extension&gt;
+</pre>
+		<p>Your provider will the be prompted whether this permission authority should be provided considering a ResourceSet.</p>
+		<h2 id="Implementationnotes">Implementation notes</h2>
+		<p>Dynamic PLM allows for the locking and unlocking of any element as well as determining at any moment if an element has been
+			<br/>modified, created, ...
+		</p>
+		<p>These features require a tight integration of the tooling (Modelers and editors) with the permission manager. </p>
+		<p>We can logically divide these aspects in a number of components of Sirius:</p>
+		<ul>
+			<li>Core components
+				<ul>
+					<li>File Modification Validation</li>
+					<li>Semantic Model Access</li>
+					<li>ViewPoint Model Access</li>
+				</ul>
+			</li>
+			<li>Editor components
+				<ul>
+					<li>GMF model access</li>
+					<li>Graphical Viewer access</li>
+					<li>Tool Access</li>
+					<li>Properties Access (Semantic, Extension, Style and Graphical Properties)</li>
+				</ul>
+			</li>
+		</ul>
+		<h3 id="FileModificationValidation">File Modification Validation</h3>
+		<p>You can provide specific file modification validator to integrate with your legacy SCM System.
+			<br/>A file modification validator should implement  
+			<code>IFileModificationValidator</code> interface and could be contributed through  an extension point :
+		</p>
+		<p>
+			<code>org.elipse.sirius.common.fileModificationValidator</code>
+		</p>
+		<p>An default implementation (which override default eclipse to handle a Clearcase SCM specific issue) is provided in the 
+			<code>org.elipse.sirius.common.ui</code> plug-in, by the class 
+			<code>FileModificationValidator</code>.
+		</p>
+		<h3 id="SemanticAccess">Semantic Access</h3>
+		<p>Every semantic access to model elements is done through the &#171;ModelAccessor&#187;. This accessor is the common facade of the Ecore intrinsic data access and of any kind of extended data access. It also handles the inter-weaving of the elements provided by both the Ecore semantic model and the annotations.</p>
+		<p>Having the permission to set/unset a value or to create an instance of the semantic model are therefore done through instances of this class and a permission authority coupled with this class may be used to prompt for permission or notify changes and element creations.</p>
+		<h3 id="SiriusModelAccess">Sirius Model Access</h3>
+		<p>Every access made to the viewpoint model checks whether it has the rights to create/delete/update an element, which means every possible creation or setting of a value automatically request the permission beforehand.</p>
+		<h3 id="GMFModelAccess">GMF Model Access</h3>
+		<p>GMF models should be understood as the Annotation model used by GMF to keep track of the diagram data. It is composed of 
+			<code>Node</code>\ s, 
+			<code>Edge</code>\ s and positions for instance. The GMF model is automatically updated trough the 
+			<code>CannonicalEditPolicy</code> of every edit part in the diagram editor. We have virtually no control on that though we can tell if an edit part&#8217;s &#171;edit mode&#187; is enabled or not. If the edit mode is disabled then nothing 
+			<strong>should</strong> lead to a change in the GMF model.
+		</p>
+		<p>We ensure that when a 
+			<code>DDiagram</code> cannot be edited, GMF won&#8217;t bypass any EditPart to refresh the annotation model at the diagram opening.
+		</p>
+		<h3 id="GraphicalVieweraccess">Graphical Viewer access</h3>
+		<p>Mouse or keyboard editing will be prevented thanks to the disable/enable edit mode in the GMF edit parts and specific code in the properties view.</p>
+		<h3 id="ToolAccess">Tool Access</h3>
+		<p>Every tool in the modeler&#8217;s palette can cause changes in the model. As every command launched re-uses the 
+			<code>ModelAccessor</code>, it wouldn&#8217;t really change anything in a locked model. Yet since we don&#8217;t want the tool to be enabled on a locked element either, the EMFCommandFactory asks for permission before allowing the usage of a tool. When no permission is given, it will return an UnexecutableCommand.
+		</p>
+		<h3 id="PropertiesAccess">Properties Access</h3>
+		<p>Properties will ask for permission on a &#171;per instance&#187; basis right now, when not given, no CellEditor will be returned which means the feature won&#8217;t be editable.</p>
+		<h3 id="Notifyingthechanges">Notifying the changes</h3>
+		<p>The Permission authority should be notified on instances creation and modification. To this end the PermissionAuthority initialization will install a listener on the ResourceSet and will automatically be notified when a change occurs. This will also help in checking for unauthorized changes. In 
+			<strong>strict</strong> mode the permission authority will throw Exceptions when a change is made to a locked element. If the process was in a transactional environment, a rollback will then happen.
+		</p>
+		<h3 id="Accesserrors">Access errors</h3>
+		<p>The current implementation provides 2 modes for the ModelAccessor. The &#171;silent&#187; mode won&#8217;t complain about an invalid access on a locked element, it will simply ignore it. When not in &#171;silent&#187; mode, an Exception will be thrown in these cases. </p>
+		<h3 id="Status">Status</h3>
+		<p>Semantic Model accesses are handled through the command or properties. Extended information too. Notification are handled through the usual EMF notifiers + the notification of instance creation in the Model Accessor.</p>
+		<p>EditParts are disabled when the corresponding semantic element is locked. Permission listeners are set up to handle dynamic locking/unlocking.</p>
+	</body>
+</html>
