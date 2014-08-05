@@ -26,6 +26,9 @@
 								<a href="#ManagingDiagrams">Managing Diagrams</a>
 							</li>
 							<li>
+								<a href="#Resizingelements">Resizing elements</a>
+							</li>
+							<li>
 								<a href="#Hidingelements">Hiding elements</a>
 							</li>
 							<li>
@@ -170,6 +173,15 @@
 		<p>Opening existing diagrams and renaming or deleting them works exactly as for any other kind of representation. Refer to the general documentation about the 
 			<em>Modeling Project</em> UI for details.
 		</p>
+		<h3 id="Resizingelements">Resizing elements</h3>
+		<p>If the specifier has authorized it, it is possible to resize a shape by dragging them until they are the size that you want.</p>
+		<p>There are specific shortcuts to change the resize behavior:</p>
+		<ul>
+			<li>CTRL (or ALT for Mac users): Centered resize (expands the shape on both opposite sides)</li>
+			<li>SHIFT: Resize that keeps the ratio</li>
+			<li>ALT (or CTRL for Mac users): Resize without snap (temporarily disables the snap during the resize if it is activated). </li>
+			<li>F3: Resize with children location relative to the parent. If the shape is resized to the left, upwards, or both, the children (contained nodes for container and border nodes for all shapes) are moved with the same offset that the resize.</li>
+		</ul>
 		<h3 id="Hidingelements">Hiding elements</h3>
 		<p>Every graphical element on a diagram can be hidden explicitly. To do that, simply right click on the graphical element (or elements if you want to hide several elements at once) you want to hide. Then, choose 
 			<i>Show/Hide</i> / 

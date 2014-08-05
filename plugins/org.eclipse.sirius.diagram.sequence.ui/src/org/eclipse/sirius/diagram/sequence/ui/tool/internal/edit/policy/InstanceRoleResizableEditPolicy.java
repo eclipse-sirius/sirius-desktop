@@ -38,7 +38,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.LostMessageEnd;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
-import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.MoveViewOperation;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.ResizeViewOperation;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRoleEditPart;
@@ -46,6 +45,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.Insta
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.InstanceRoleResizeValidator;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
+import org.eclipse.sirius.diagram.ui.business.internal.operation.MoveViewOperation;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AirResizableEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.command.DoNothingCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;

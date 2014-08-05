@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -33,6 +34,7 @@ import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gef.handles.MoveHandle;
 import org.eclipse.gef.requests.AlignmentRequest;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
+import org.eclipse.gef.tools.ResizeTracker;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.common.core.util.StringStatics;
 import org.eclipse.gmf.runtime.diagram.core.commands.SetConnectionAnchorsCommand;
@@ -45,6 +47,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.INodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableShapeEditPolicy;
+import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
@@ -55,10 +58,12 @@ import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.operation.MoveViewOperation;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.ShiftDirectBorderedNodesOperation;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.validators.ResizeValidator;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
@@ -67,6 +72,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.ui.NoCopyDragEditPartsTracke
 import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.viewpoint.Style;
 
 import com.google.common.base.Predicate;
@@ -79,6 +85,18 @@ import com.google.common.collect.Lists;
  * @author ymortier
  */
 public class AirResizableEditPolicy extends ResizableShapeEditPolicy {
+
+    /**
+     * {@inheritDoc}
+     * 
+     * Use our own ResizeTracker to set the "flag"
+     * SiriusResizeTracker.FIX_CHILDREN_KEY when the corresponding shortcut is
+     * pressed.
+     */
+    @Override
+    protected ResizeTracker getResizeTracker(int direction) {
+        return new SiriusResizeTracker((GraphicalEditPart) getHost(), direction);
+    }
 
     /**
      * {@inheritDoc}
@@ -347,85 +365,161 @@ public class AirResizableEditPolicy extends ResizableShapeEditPolicy {
     }
 
     /**
-     * Build a specific command from the request that resize the editpart as the
-     * normal command and change the location of the borderedNodes if needed.
+     * Build a specific command from the request that resize the edit part as
+     * the normal command and change the location of children if needed:
+     * <UL>
+     * <LI>border nodes: to avoid an unexpected change of side</LI>
+     * <LI>children nodes (container or not): The GMF coordinates of these nodes
+     * are moved in order to keep these nodes at the same location graphically
+     * (on screen). The GMF coordinates of these nodes are relative to its
+     * parent.</LI>
+     * </UL>
      * 
      * @param request
-     *            request the resize request
+     *            the resize request
      * @return <code>null</code> or a Command
      */
     private ICommand buildResizeCommand(ChangeBoundsRequest request) {
+        ICommand result;
         Command cmd = super.getResizeCommand(request);
         if (cmd == null) {
-            return null;
-        }
-        GraphicalEditPart hostPart = (GraphicalEditPart) getHost();
-        TransactionalEditingDomain editingDomain = hostPart.getEditingDomain();
-        CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(editingDomain, cmd.getLabel());
-        ctc.add(new CommandProxy(cmd));
+            result = null;
+        } else {
+            GraphicalEditPart hostPart = (GraphicalEditPart) getHost();
+            TransactionalEditingDomain editingDomain = hostPart.getEditingDomain();
+            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(editingDomain, cmd.getLabel());
+            ctc.add(new CommandProxy(cmd));
+            RequestQuery rq = new RequestQuery(request);
+            boolean keepSameAbsoluteLocation = false;
+            if (rq.isResizeFromTop() || rq.isResizeFromLeft() || request.isCenteredResize()) {
+                Object childrenMoveModeExtendedData = request.getExtendedData().get(SiriusResizeTracker.CHILDREN_MOVE_MODE_KEY);
+                keepSameAbsoluteLocation = (childrenMoveModeExtendedData == null && SiriusResizeTracker.DEFAULT_CHILDREN_MOVE_MODE)
+                        || (childrenMoveModeExtendedData != null && ((Boolean) childrenMoveModeExtendedData).booleanValue());
+                if (keepSameAbsoluteLocation) {
+                    addChildrenAdjustmentCommands(hostPart, ctc, request);
+                }
+            }
 
-        if (hostPart instanceof IBorderedShapeEditPart) {
-            addChildrenAdjustmentCommands(hostPart, ctc, editingDomain, request);
+            if (hostPart instanceof IBorderedShapeEditPart) {
+                addBorderChildrenAdjustmentCommands(hostPart, ctc, request, keepSameAbsoluteLocation);
+            }
+            if (ctc.size() == 1) {
+                result = new CommandProxy(cmd);
+            } else {
+                result = ctc;
+            }
         }
-        return ctc;
+        return result;
     }
 
     /**
-     * Add the needed commands to move the bordered nodes to the
-     * CompositeTransactionalCommand.
+     * Add the needed commands, to move the children nodes, to the original
+     * command.
      * 
      * @param resizedPart
-     *            The part that has been resized (parent of the bordered nodes
-     *            to move)
+     *            The part that will be resized
      * @param cc
-     *            The current command that resize the parent part
-     * @param editingDomain
-     *            The editing domain use
+     *            The current command that resizes the parent part, command to
+     *            complete with the moves of children
      * @param cbr
+     *            The original request
      */
-    private void addChildrenAdjustmentCommands(GraphicalEditPart resizedPart, CompositeTransactionalCommand cc, TransactionalEditingDomain editingDomain, final ChangeBoundsRequest cbr) {
+    private void addChildrenAdjustmentCommands(GraphicalEditPart resizedPart, CompositeTransactionalCommand cc, ChangeBoundsRequest cbr) {
+        PrecisionPoint delta = new PrecisionPoint(cbr.getMoveDelta().getNegated());
+        GraphicalHelper.applyInverseZoomOnPoint(resizedPart, delta);
+        DNodeContainerViewNodeContainerCompartmentEditPart compartment = Iterables
+                .getFirst(Iterables.filter(resizedPart.getChildren(), DNodeContainerViewNodeContainerCompartmentEditPart.class), null);
+        if (compartment != null) {
+            Iterable<EditPart> childrenExceptBorderItemPart = Iterables.filter(compartment.getChildren(), EditPart.class);
+            for (EditPart editPart : childrenExceptBorderItemPart) {
+                IAdaptable adapter = new EObjectAdapter((Node) editPart.getModel());
+                // Shift this view by the delta
+                cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new MoveViewOperation(DiagramUIMessages.SetLocationCommand_Label_Resize, adapter, delta)));
+            }
+        }
+    }
+
+    /**
+     * Add the needed commands, to move the border nodes, to the original
+     * command.
+     * 
+     * @param resizedPart
+     *            The part that will be resized (parent of the border nodes to
+     *            move)
+     * @param cc
+     *            The current command that resizes the parent part, command to
+     *            complete with the moves of border nodes
+     * @param cbr
+     *            The resize request
+     * @param keepSameAbsoluteLocation
+     *            true if the children must stay at the same absolute location,
+     *            false otherwise. The location can change in one axis of there
+     *            border node is on the moved side.
+     */
+    private void addBorderChildrenAdjustmentCommands(GraphicalEditPart resizedPart, CompositeTransactionalCommand cc, final ChangeBoundsRequest cbr, boolean keepSameAbsoluteLocation) {
         RequestQuery rq = new RequestQuery(cbr);
         Rectangle logicalDelta = rq.getLogicalDelta();
+        EditPartQuery resizedPartQuery = new EditPartQuery(resizedPart);
         if (rq.isResizeFromTop() || rq.isResizeFromBottom()) {
             int verticalSizeDelta = logicalDelta.height;
-            // The bordered nodes of the bottom size must be shift to stay on
+
+            // The border nodes of the bottom side must be shift to stay on
             // the bottom side.
-            List<Node> childrenToMove = new EditPartQuery(resizedPart).getBorderedNodes(PositionConstants.SOUTH);
+            List<Node> childrenToMove = resizedPartQuery.getBorderedNodes(PositionConstants.SOUTH);
             if (!childrenToMove.isEmpty()) {
-                cc.compose(CommandFactory.createICommand(editingDomain, new ShiftDirectBorderedNodesOperation(childrenToMove, verticalSizeDelta, PositionConstants.VERTICAL)));
+                cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectBorderedNodesOperation(childrenToMove, verticalSizeDelta, PositionConstants.VERTICAL)));
             }
-            // The bordered nodes of the east or west size must eventually be
+            // The border nodes of the east and west side must eventually be
             // shift to stay in the parent bounds.
-            Map<Node, Integer> eastChildrenToMoveWithDelta = new EditPartQuery(resizedPart).getBorderedNodesToMoveWithDelta(PositionConstants.EAST, verticalSizeDelta);
-            for (Entry<Node, Integer> entry : eastChildrenToMoveWithDelta.entrySet()) {
-                cc.compose(CommandFactory.createICommand(editingDomain, new ShiftDirectBorderedNodesOperation(Lists.newArrayList(entry.getKey()), entry.getValue().intValue(),
+            Map<Node, Integer> childrenToMoveWithDelta = resizedPartQuery.getBorderedNodesToMoveWithDelta(PositionConstants.EAST, verticalSizeDelta);
+            childrenToMoveWithDelta.putAll(resizedPartQuery.getBorderedNodesToMoveWithDelta(PositionConstants.WEST, verticalSizeDelta));
+            for (Entry<Node, Integer> entry : childrenToMoveWithDelta.entrySet()) {
+                cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectBorderedNodesOperation(Lists.newArrayList(entry.getKey()), entry.getValue().intValue(),
                         PositionConstants.VERTICAL)));
             }
-            Map<Node, Integer> westChildrenToMoveWithDelta = new EditPartQuery(resizedPart).getBorderedNodesToMoveWithDelta(PositionConstants.WEST, verticalSizeDelta);
-            for (Entry<Node, Integer> entry : westChildrenToMoveWithDelta.entrySet()) {
-                cc.compose(CommandFactory.createICommand(editingDomain, new ShiftDirectBorderedNodesOperation(Lists.newArrayList(entry.getKey()), entry.getValue().intValue(),
-                        PositionConstants.VERTICAL)));
+
+            if (keepSameAbsoluteLocation && (rq.isResizeFromTop() || cbr.isCenteredResize())) {
+                if (cbr.isCenteredResize()) {
+                    verticalSizeDelta = verticalSizeDelta + logicalDelta.y;
+                }
+                // The border nodes of the west and east sides must be shift to
+                // stay at the same absolute location (except if they have
+                // already moved to stay in the parent bounds).
+                List<Node> borderNodes = resizedPartQuery.getBorderedNodes(PositionConstants.WEST);
+                borderNodes.addAll(resizedPartQuery.getBorderedNodes(PositionConstants.EAST));
+                borderNodes.removeAll(childrenToMoveWithDelta.keySet());
+                cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectBorderedNodesOperation(borderNodes, verticalSizeDelta, PositionConstants.VERTICAL)));
             }
+
         }
         if (rq.isResizeFromRight() || rq.isResizeFromLeft()) {
             int horizontalSizeDelta = logicalDelta.width;
-            // The bordered node of the east size must be shift to stay on the
+            // The border node of the east size must be shift to stay on the
             // east side.
-            List<Node> childrenToMove = new EditPartQuery(resizedPart).getBorderedNodes(PositionConstants.EAST);
+            List<Node> childrenToMove = resizedPartQuery.getBorderedNodes(PositionConstants.EAST);
             if (!childrenToMove.isEmpty()) {
-                cc.compose(CommandFactory.createICommand(editingDomain, new ShiftDirectBorderedNodesOperation(childrenToMove, horizontalSizeDelta, PositionConstants.HORIZONTAL)));
+                cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectBorderedNodesOperation(childrenToMove, horizontalSizeDelta, PositionConstants.HORIZONTAL)));
             }
-            // The bordered nodes of the north or south size must eventually be
+            // The border nodes of the north or south size must eventually be
             // shift to stay in the parent bounds.
-            Map<Node, Integer> eastChildrenToMoveWithDelta = new EditPartQuery(resizedPart).getBorderedNodesToMoveWithDelta(PositionConstants.NORTH, horizontalSizeDelta);
-            for (Entry<Node, Integer> entry : eastChildrenToMoveWithDelta.entrySet()) {
-                cc.compose(CommandFactory.createICommand(editingDomain, new ShiftDirectBorderedNodesOperation(Lists.newArrayList(entry.getKey()), entry.getValue().intValue(),
+            Map<Node, Integer> childrenToMoveWithDelta = resizedPartQuery.getBorderedNodesToMoveWithDelta(PositionConstants.NORTH, horizontalSizeDelta);
+            childrenToMoveWithDelta.putAll(resizedPartQuery.getBorderedNodesToMoveWithDelta(PositionConstants.SOUTH, horizontalSizeDelta));
+            for (Entry<Node, Integer> entry : childrenToMoveWithDelta.entrySet()) {
+                cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectBorderedNodesOperation(Lists.newArrayList(entry.getKey()), entry.getValue().intValue(),
                         PositionConstants.HORIZONTAL)));
             }
-            Map<Node, Integer> westChildrenToMoveWithDelta = new EditPartQuery(resizedPart).getBorderedNodesToMoveWithDelta(PositionConstants.SOUTH, horizontalSizeDelta);
-            for (Entry<Node, Integer> entry : westChildrenToMoveWithDelta.entrySet()) {
-                cc.compose(CommandFactory.createICommand(editingDomain, new ShiftDirectBorderedNodesOperation(Lists.newArrayList(entry.getKey()), entry.getValue().intValue(),
-                        PositionConstants.HORIZONTAL)));
+
+            if (keepSameAbsoluteLocation && (rq.isResizeFromLeft() || cbr.isCenteredResize())) {
+                if (cbr.isCenteredResize()) {
+                    horizontalSizeDelta = horizontalSizeDelta + logicalDelta.x;
+                }
+                // The border nodes of the north and south sides must be shift
+                // to stay at the same absolute location (except if they have
+                // already moved to stay in the parent bounds).
+                List<Node> borderNodes = resizedPartQuery.getBorderedNodes(PositionConstants.NORTH);
+                borderNodes.addAll(resizedPartQuery.getBorderedNodes(PositionConstants.SOUTH));
+                borderNodes.removeAll(childrenToMoveWithDelta.keySet());
+                cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectBorderedNodesOperation(borderNodes, horizontalSizeDelta, PositionConstants.HORIZONTAL)));
             }
         }
     }

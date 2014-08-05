@@ -23,7 +23,7 @@ With the new behavior, the children remain at the same location.
 
 h2. Detailed Specification
 
-The old behavior, the current one, will remain available with a specific shortcut. Shift, Ctrl and Alt is already used by other GMF behaviors during resize. So we must use function key as shortcut. The chosen function is *F4* (not used by other functions on diagram as F5 for refresh for example).
+The old behavior, the current one, will remain available with a specific shortcut. Shift, Ctrl and Alt is already used by other GMF behaviors during resize. So we must use function key as shortcut. The chosen function is *F3* (not used by other functions on diagram as F5 for refresh for example).
 
 For information the other shortcuts used by GMF are:
 * Control key: Centered resize

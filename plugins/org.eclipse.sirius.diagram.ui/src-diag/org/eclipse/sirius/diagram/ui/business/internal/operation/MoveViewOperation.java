@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation;
+package org.eclipse.sirius.diagram.ui.business.internal.operation;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.IAdaptable;
@@ -18,10 +18,9 @@ import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 
 /**
- * Shift a view of a delta.
+ * Shift a view by the delta.
  * 
  * @author edugueperoux
  */
@@ -39,7 +38,8 @@ public class MoveViewOperation extends AbstractModelChangeOperation<Void> {
      * @param adapter
      *            adapter for the view
      * @param moveDelta
-     *            delta to move the view
+     *            delta by which view is shifted
+     * 
      */
     public MoveViewOperation(String label, IAdaptable adapter, Point moveDelta) {
         super(label);

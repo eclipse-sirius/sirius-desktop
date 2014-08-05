@@ -45,7 +45,13 @@
 			<li>The edges appearance is kept as much as possible when a node (container or not) is moved. A move of a node now impacts only the closest segment of the linked edges.</li>
 		</ul>
 		<p>
-			<img border="0" src="images/Old vs New behavior.gif"/>
+			<img border="0" src="images/moveNode-edgeImpact-changedBehavior.gif"/>
+		</p>
+		<ul>
+			<li>When a node, container or not, is resized to the left, upwards, or both, the location of its children (elements inside a container and border nodes) is not changed. It is possible to retrieve the previous behavior by pressing the F3 function key during the resize.</li>
+		</ul>
+		<p>
+			<img border="0" src="images/containerResize-changedBehavior.gif"/>
 		</p>
 		<h3 id="APIChanges">API Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius">Changes in 
