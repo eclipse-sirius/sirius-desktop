@@ -66,22 +66,31 @@
 			<li>The method 
 				<code>org.eclipse.sirius.business.api.query.DRepresentationQuery.isDanglingRepresentation()</code> has been added to introduce the possibility to check if a representation is a dangling representation, ie. if its a DSemanticDecorator, its target is null or does not belong to a session.
 			</li>
-			<li>The 
-				<code>org.eclipse.sirius.business.api.helper.task.AbstractDeleteDRepresentationElementTask</code> class has been renamed into 
-				<code>DeleteEObjectTask</code>.
-			</li>
 			<li>
 				<code>org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException</code> now can take several EObjects in constructor and a method 
 				<code>LockedInstanceException.getLockedElements()</code> has been added to get all EObjects put in constructor.
-			</li>
-			<li>The 
-				<code>org.eclipse.sirius.tools.api.ui.IExternalAction2</code> interface has been removed. It was created to disable the change listener when the action indicates it will not delete elements.
 			</li>
 		</ul>
 		<p>
 			<code>org.eclipse.sirius.tools.api.command.InvalidPermissionCommand</code> now can take several EObjects in constructor to throw a 
 			<code>LockedInstanceException</code> with several EObjects.
 		</p>
+		<ul>
+			<li>The 
+				<code>org.eclipse.sirius.business.api.helper.task.AbstractDeleteDRepresentationElementTask</code> class has been renamed into 
+				<code>DeleteEObjectTask</code>.
+			</li>
+			<li>The interface 
+				<code>org.eclipse.sirius.tools.api.command.listener.IChangeListener</code> and all classes related to this mechanism (
+				<code>ChangeListenerFactory</code>, 
+				<code>TriggerOperation</code>) have been removed as this mechanism proves to be inefficient. It can be replaced by a pre/post commit listener or a 
+				<code>org.eclipse.sirius.business.api.session.ModelChangeTrigger</code>
+			</li>
+			<li>The 
+				<code>org.eclipse.sirius.tools.api.ui.IExternalAction2</code> interface has been removed. It was created to disable some 
+				<code>IChangeListener</code> when the action indicates it will not delete elements.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
@@ -89,6 +98,10 @@
 			<li>The method 
 				<code>org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.getResourceSetSync(TransactionalEditingDomain)</code> has been added to look for a 
 				<code>ResourceSetSync</code> without creating a new one if no synchronizer currently exists.
+			</li>
+			<li>The class 
+				<code>org.eclipse.sirius.common.tools.api.util.SmartAdapter</code> has been removed as this mechanism proves to be inefficient. The only user of its mechanism was the 
+				<code>org.eclipse.sirius.tools.api.command.listener.IChangeListener</code> which has also been removed.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
