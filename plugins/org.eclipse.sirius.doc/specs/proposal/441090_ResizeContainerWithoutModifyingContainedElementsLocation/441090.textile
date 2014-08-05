@@ -1,0 +1,58 @@
+h1. Increase size of a container without modifying location of contained elements
+
+h2. Preamble
+
+_Summary_: Resize a container to the left, upwards, or both, without modifying the location of contained elements.
+
+|_. Version |_. Status |_. Date        |_. Authors |_. Changes |
+| v0.1        | DRAFT    | 2014-08-05 | lredor    | Initial version. |
+| v0.1        | PROPOSAL | 2014-08-14 | lredor    | Fix typo. |
+
+
+_Relevant tickets_:
+* "441090, Increase size of a container without modifying location of contained elements":https://bugs.eclipse.org/bugs/show_bug.cgi?id=441090
+
+h2. Introduction
+
+The goal of this feature is to be able to resize a container to the left, upwards, or both, without modifying the location of contained elements.
+!images/containerResize.gif!
+Currently, as you can see above, with the old behavior, the location of contained elements are relative to the container.
+With the new behavior, the contained elements remain at the same location.
+
+h2. Detailed Specification
+
+The old behavior, the current one, will remain available with a specific shortcut. Shift, Ctrl and Alt is already used by other GMF behaviors during resize. So we must use a character key as shortcut. The chosen character shortcut key is *m* as in "move children".
+
+For information the other shortcuts used by GMF are:
+* Control key: Centered resize
+* Shift key: Resize that keeps ratio
+* Alt key: Resize that disables the snap
+
+The possible contained elements are:
+* Another container (list or not)
+* A child node
+* A border node. In this case, the border node can move, but only to stay on the same side.
+
+h2. Backward Compatibility and Migration Paths
+
+This evolution does not change any API.
+
+h3. User Interface Changes
+
+No user interface change.
+
+h3. Documentation Changes
+
+This new behavior should be added in the New and Noteworthy documentation. 
+A note should also be added in the user doc to explain the shortcut for the current behavior (and possibly for the existing resize shortcuts).
+
+h2. Tests and Non-regression strategy
+
+Add new tests that resize container with at least one border node and one child node, with the shortcut and without the shortcut.
+Sample of tests that resize elements:
+* org.eclipse.sirius.tests.swtbot.sequence.InteractionUseResizeTests
+* org.eclipse.sirius.tests.swtbot.PortPositionStabilityTest
+
+h2. Implementation choices and tradeoffs
+
+It would actually be a good idea to make the new behavior the default one. Another choice would be to enable the new behavior with the shortcut.
