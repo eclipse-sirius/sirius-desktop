@@ -310,8 +310,10 @@ public class TreeDialectUIServices implements DialectUIServices {
     public void setSelection(DialectEditor dialectEditor, List<DRepresentationElement> selection) {
         if (dialectEditor instanceof DTreeEditor) {
             Viewer viewer = ((DTreeEditor) dialectEditor).getViewer();
-            Iterable<DTreeItem> items = Iterables.filter(selection, DTreeItem.class);
-            viewer.setSelection(new StructuredSelection(Lists.newArrayList(items)));
+            Iterable<DTreeItem> treeElements = Iterables.filter(selection, DTreeItem.class);
+            if (viewer != null) {
+                viewer.setSelection(new StructuredSelection(Lists.newArrayList(treeElements)));
+            }
         }
     }
 

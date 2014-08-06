@@ -257,7 +257,8 @@ public class TableDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.description.RepresentationDescription))
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#canHandle(org.eclipse.sirius.viewpoint.description.RepresentationDescription)
+     *      )
      */
     public boolean canHandle(final RepresentationDescription representation) {
         return representation instanceof TableDescription;
@@ -338,7 +339,9 @@ public class TableDialectUIServices implements DialectUIServices {
         if (dialectEditor instanceof DTableEditor && dialectEditor instanceof IViewerProvider) {
             Viewer viewer = ((IViewerProvider) dialectEditor).getViewer();
             Iterable<DTableElement> tableElements = Iterables.filter(selection, DTableElement.class);
-            viewer.setSelection(new StructuredSelection(Lists.newArrayList(tableElements)));
+            if (viewer != null) {
+                viewer.setSelection(new StructuredSelection(Lists.newArrayList(tableElements)));
+            }
         }
     }
 
@@ -363,7 +366,8 @@ public class TableDialectUIServices implements DialectUIServices {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#completeToolTipText(String, EObject)
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#completeToolTipText(String,
+     *      EObject)
      */
     public String completeToolTipText(String toolTipText, EObject eObject) {
         return toolTipText;
