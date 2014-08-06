@@ -63,13 +63,22 @@ public final class SelectCreatedDRepresentationElementsListener extends Resource
             final DialectEditor dialectEditor = (DialectEditor) activeEditor;
             DRepresentation currentRep = dialectEditor.getRepresentation();
 
-            final Collection<DRepresentationElement> newElementsToSelect = Sets.newLinkedHashSet();
+            final Collection<DRepresentationElement> newElements = Sets.newLinkedHashSet();
             for (Notification n : event.getNotifications()) {
                 Set<DRepresentationElement> notificationValues = getNotificationValues(n);
                 for (DRepresentationElement elt : notificationValues) {
                     if (currentRep == new DRepresentationElementQuery(elt).getParentRepresentation()) {
-                        newElementsToSelect.add(elt);
+                        newElements.add(elt);
                     }
+                }
+            }
+
+            // Minimize the elements to select: do not select the elements whose
+            // parent is itself newly created and will be selected.
+            final Collection<DRepresentationElement> newElementsToSelect = Sets.newLinkedHashSet();
+            for (DRepresentationElement elt : newElements) {
+                if (!newElements.contains(elt.eContainer())) {
+                    newElementsToSelect.add(elt);
                 }
             }
 
