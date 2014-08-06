@@ -14,6 +14,8 @@ import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.commands.Command;
+import org.eclipse.gef.commands.CompoundCommand;
+import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -23,6 +25,8 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.command.TreeLayoutSetConnectionBendpointsCommand;
+import org.eclipse.sirius.diagram.ui.internal.operation.CenterEdgeEndModelChangeOperation;
+import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 
 /**
  * A specific ConnectionLineSegEditPolicy to override
@@ -51,8 +55,16 @@ public class TreeLayoutConnectionLineSegEditPolicy extends ConnectionLineSegEdit
                 }
             }
         }
+
+        TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
         if (!isTreeLayout) {
-            return super.getBendpointsChangedCommand(connection, edge);
+            // we add a new command based on CenterEdgeEndModelChangeOperation
+            // to center the edge end(s) if needed.
+            CompoundCommand compoundCommand = new CompoundCommand();
+            compoundCommand.add(super.getBendpointsChangedCommand(connection, edge));
+            ICommand command = CommandFactory.createICommand(editingDomain, new CenterEdgeEndModelChangeOperation(connection, edge));
+            compoundCommand.add(new ICommandProxy(command));
+            return compoundCommand;
         }
 
         Point ptRef1 = connection.getSourceAnchor().getReferencePoint();
@@ -61,7 +73,6 @@ public class TreeLayoutConnectionLineSegEditPolicy extends ConnectionLineSegEdit
         Point ptRef2 = connection.getTargetAnchor().getReferencePoint();
         getConnection().translateToRelative(ptRef2);
 
-        TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
         TreeLayoutSetConnectionBendpointsCommand sbbCommand = new TreeLayoutSetConnectionBendpointsCommand(editingDomain);
         sbbCommand.setEdgeAdapter(new EObjectAdapter(edge));
         sbbCommand.setNewPointList(connection.getPoints(), ptRef1, ptRef2);

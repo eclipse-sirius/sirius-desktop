@@ -77,6 +77,11 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
 
     private Connection connection;
 
+    public CenterEdgeEndModelChangeOperation(Connection connection, Edge edge) {
+        this(edge);
+        this.connection = connection;
+    }
+
     public CenterEdgeEndModelChangeOperation(Edge edge) {
         this.edge = edge;
     }
