@@ -11,7 +11,9 @@ package org.eclipse.sirius.diagram.editor.properties.filters.style.edgestyledesc
 
 // Start of user code specific imports
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.editor.properties.filters.common.ViewpointPropertyFilter;
 
@@ -37,7 +39,13 @@ public class EdgeStyleDescriptionCenteredSourceMappingsFilter extends ViewpointP
     }
 
     // Start of user code user methods
+    public boolean select(Object arg0) {
+        return super.select(arg0) && isNormalEdgeMapping(arg0);
+    }
 
+    private boolean isNormalEdgeMapping(Object obj) {
+        return ((EObject) obj).eContainer().eClass() == DescriptionPackage.Literals.EDGE_MAPPING;
+    }
     // End of user code user methods
 
 }
