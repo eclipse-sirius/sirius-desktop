@@ -15,6 +15,8 @@ h3. User-Visible Changes
 * When a node, container or not, is resized to the left, upwards, or both, the location of its children (elements inside a container and border nodes) is not changed. It is possible to retrieve the previous behavior by pressing the F3 function key during the resize.
 !images/containerResize-changedBehavior.gif!
 
+* The specifier can now choose to hold the edge ends toward the center of the source, target or both. New fields within the "advance" tab of EdgeStyle description have been added to choose for which source or target mappings an edge should be centered.
+
 h3. API Changes
 
 h4. Changes in @org.eclipse.sirius@
@@ -31,6 +33,13 @@ h4. Changes in @org.eclipse.sirius.common@
 
 * The method @org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.getResourceSetSync(TransactionalEditingDomain)@ has been added to look for a @ResourceSetSync@ without creating a new one if no synchronizer currently exists.
 * The class @org.eclipse.sirius.common.tools.api.util.SmartAdapter@ has been removed as this mechanism proves to be inefficient. The only user of this mechanism was the @org.eclipse.sirius.tools.api.command.listener.IChangeListener@ which has also been removed.
+
+
+h4. Changes in @org.eclipse.sirius.diagram@
+
+
+* @org.eclipse.sirius.diagram.description.style.EdgeStyleDescription@ metamodel class has three more features: @centeredSourceMappings@, @centeredTargetMappings@ and @AlwaysCenter@. Those features let the specifier determine for which mappings the edge source/target should be centered or whether the source/target should be systematically centered. The @endsCentering@ values are restricted by the new @org.eclipse.sirius.diagram.description.CenteringStyle@ enumeration.
+* @org.eclipse.sirius.diagram.EdgeStyle@ metamodel class has now an attribute @centered@ of type @org.eclipse.sirius.diagram.description.CenteringStyle@, to determine whether the edge target or source ends should be centered.
 
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
