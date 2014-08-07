@@ -11,15 +11,24 @@ package org.eclipse.sirius.diagram.editor.properties.sections.style.edgestyledes
 
 // Start of user code imports
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractEditorDialogPropertySection;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
+
+import com.google.common.base.Predicates;
+import com.google.common.collect.Collections2;
 
 // End of user code imports
 
@@ -91,6 +100,22 @@ public class EdgeStyleDescriptionCenteredSourceMappingsPropertySection extends A
     }
 
     // Start of user code user operations
+
+    @Override
+    protected List<?> getChoiceOfValues(List<?> currentValues) {
+        List<?> choiceOfValues = super.getChoiceOfValues(currentValues);
+        removeUnrelatedMappings(choiceOfValues);
+        Collection<?> collection = Collections2.filter(choiceOfValues, Predicates.instanceOf(AbstractNodeMapping.class));
+        return new ArrayList<Object>(collection);
+    }
+
+    private void removeUnrelatedMappings(List<?> choiceOfValues) {
+        EObject container = eObject.eContainer();
+        if (container instanceof EdgeMapping) {
+            EList<DiagramElementMapping> sourceMappingsList = ((EdgeMapping) container).getSourceMapping();
+            choiceOfValues.retainAll(sourceMappingsList);
+        }
+    }
 
     // End of user code user operations
 }
