@@ -48,6 +48,8 @@ import org.eclipse.ui.IWorkbenchPart;
  */
 public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider {
 
+    private static final String DELETE_FROM_GROUP = "deleteFromGroup";
+
     private static final String PIN_GROUP = "pinGroup";
 
     private static final String FILTER_FORMAT_GROUP = "filterFormatGroup";
@@ -107,9 +109,14 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
                     updateFormatMenu(menu);
 
                     final IMenuManager manager = menu.findMenuUsingPath(ActionIds.MENU_EDIT);
-                    IContributionItem find = manager.find("deleteFromGroup");
+                    IContributionItem find = manager.find(DELETE_FROM_GROUP);
                     if (find != null) {
-                        manager.appendToGroup("deleteFromGroup", deleteAction);
+                        IContributionItem deleteFromDiagram = menu.find(ActionIds.ACTION_DELETE_FROM_DIAGRAM);
+                        if (deleteFromDiagram != null) {
+                            menu.remove(ActionIds.ACTION_DELETE_FROM_DIAGRAM);
+                            manager.appendToGroup(DELETE_FROM_GROUP, deleteFromDiagram);
+                        }
+                        manager.appendToGroup(DELETE_FROM_GROUP, deleteAction);
                     } else {
                         manager.add(deleteAction);
                     }

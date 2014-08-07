@@ -216,12 +216,19 @@
          <popupContribution
                class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
             <popupStructuredContributionCriteria
-                  objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"
+                  objectClass="org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart"
                   policyClass="org.eclipse.sirius.diagram.ui.tools.internal.menu.SiriusPopupMenuContributionPolicy">
             </popupStructuredContributionCriteria>
             <popupPredefinedItem
              id="deleteFromDiagramAction"
               remove="true"/>
+         </popupContribution>
+         <popupContribution
+               class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
+            <popupStructuredContributionCriteria
+                  objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart"
+                  policyClass="org.eclipse.sirius.diagram.ui.tools.internal.menu.SiriusPopupMenuContributionPolicy">
+            </popupStructuredContributionCriteria>
             <popupPredefinedItem
               path="/fileMenu/saveGroup"
               id="CopyToImageAction"
