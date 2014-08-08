@@ -354,10 +354,11 @@ public class TableDialectUIServices implements DialectUIServices {
         Collection<DSemanticDecorator> selection = Sets.newLinkedHashSet();
         if (editor instanceof DTableEditor) {
             DTableEditor dEditor = (DTableEditor) editor;
-            ISelection sel = dEditor.getSite().getSelectionProvider().getSelection();
-
-            if (sel instanceof IStructuredSelection) {
-                Iterables.addAll(selection, Iterables.filter(((IStructuredSelection) sel).toList(), DSemanticDecorator.class));
+            if (editor.getSite() != null && editor.getSite().getSelectionProvider() != null) {
+                ISelection sel = dEditor.getSite().getSelectionProvider().getSelection();
+                if (sel instanceof IStructuredSelection) {
+                    Iterables.addAll(selection, Iterables.filter(((IStructuredSelection) sel).toList(), DSemanticDecorator.class));
+                }
             }
         }
         return selection;
