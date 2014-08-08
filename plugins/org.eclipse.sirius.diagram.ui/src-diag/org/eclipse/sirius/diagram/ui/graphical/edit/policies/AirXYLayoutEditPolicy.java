@@ -24,9 +24,12 @@ import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
+import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gef.requests.CreateRequest;
+import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.common.core.util.Proxy;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewType;
+import org.eclipse.gmf.runtime.diagram.ui.commands.CommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -45,8 +48,10 @@ import org.eclipse.sirius.diagram.ui.business.internal.view.LayoutData;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.graphical.figures.SiriusLayoutHelper;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.internal.operation.ShiftEdgeIdentityAnchorOperation;
 import org.eclipse.sirius.diagram.ui.internal.view.factories.ViewSizeHint;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
+import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 
 /**
  * The {@link AirXYLayoutEditPolicy}. import
@@ -299,5 +304,32 @@ public class AirXYLayoutEditPolicy extends XYLayoutEditPolicy {
             layoutHelper = new SiriusLayoutHelper();
         }
         return layoutHelper;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * Override to keep the incoming or outgoing edges at the same location.
+     * 
+     * @see org.eclipse.gef.editpolicies.ConstrainedLayoutEditPolicy#
+     *      getResizeChildrenCommand(org.eclipse.gef.requests.ChangeBoundsRequest)
+     */
+    @Override
+    protected Command getResizeChildrenCommand(ChangeBoundsRequest request) {
+        Command superCommand = super.getResizeChildrenCommand(request);
+
+        EditPart host = getHost();
+
+        if (host instanceof IGraphicalEditPart) {
+            TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) host).getEditingDomain();
+            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(editingDomain, "Resize Children");
+            ctc.add(new CommandProxy(superCommand));
+
+            ShiftEdgeIdentityAnchorOperation operation = new ShiftEdgeIdentityAnchorOperation(request);
+            ICommand command = CommandFactory.createICommand(editingDomain, operation);
+            ctc.add(command);
+            return new ICommandProxy(ctc);
+        }
+        return superCommand;
     }
 }
