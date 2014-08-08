@@ -29,7 +29,9 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 h4. Changes in @org.eclipse.sirius.ext.gmf.runtime@
 
 * Several utilities have been added in @org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper@:
-** @applyZoomOnPoint(IGraphicalEditPart, Point)@: Apply the current zoom, of the diagram of the @IGraphicalEditPart@, to the @Point@.
+** @applyZoomOnPoint(IGraphicalEditPart, Point)@: Apply the current zoom (of @IGraphicalEditPart@'s diagram) on the @Point@.
+** @applyInverseZoomOnPoint(IGraphicalEditPart, Point)@: Apply the inverse of the current zoom(of @IGraphicalEditPart@'s diagram) on the @Point@.
+** @appliedZoomOnRelativePoint(IGraphicalEditPart, Point)@ is now deprecated. Use @applyZoomOnPoint(IGraphicalEditPart, Point)@ instead.
 ** @getAnchorPoint(IGraphicalEditPart parent, Anchor anchor)@: Get the @Point@ (absolute draw2d coordinates) corresponding to this @Anchor@.
 ** @getAnchorPoint(IGraphicalEditPart parent, IdentityAnchor anchor)@: Get the @Point@ (absolute draw2d coordinates) corresponding to this @IdentityAnchor@.
 ** @getIntersection(Point, Point, IGraphicalEditPart, boolean)@: Get intersection between a line between lineOrigin and lineTerminus, and the rectangle bounds of the @IGraphicalEditPart@. If there are several intersections, the shortest is returned.

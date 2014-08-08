@@ -54,9 +54,9 @@ public class SetConnectionBendpointsAccordingToDraw2DCommand extends SetConnecti
     protected IStatus doExecute(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
         if (getEdgeAdaptor() instanceof ConnectionEditPart) {
             ConnectionEditPart connectionEditPart = (ConnectionEditPart) getEdgeAdaptor();
-            // Applied zoom on moveDelta, because moveDelta is only element in
-            // relative value
-            GraphicalHelper.appliedZoomOnRelativePoint(connectionEditPart, moveDelta);
+            // Apply inverse zoom on moveDelta, because moveDelta is only
+            // element in relative value
+            GraphicalHelper.applyInverseZoomOnPoint(connectionEditPart, moveDelta);
             Connection connection = connectionEditPart.getConnectionFigure();
 
             Point tempSourceRefPoint = connection.getSourceAnchor().getReferencePoint();

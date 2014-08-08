@@ -66,19 +66,27 @@ public final class GraphicalHelper {
      * For example:
      * <UL>
      * <LI>For a zoom of 200%, the result of this method for the point (100,
-     * 100) is (50, 50)</LI>
+     * 100) is (200, 200)</LI>
      * <LI>For a zoom of 50%, the result of this method for the point (100, 100)
-     * is (200, 200)</LI>
+     * is (50, 50)</LI>
      * </UL>
      * 
      * @param part
      *            the current part
      * @param relativePoint
      *            relative point
+     * @deprecated Use
+     *             {@link #applyInverseZoomOnPoint(IGraphicalEditPart, Point)}
+     *             instead
      */
+    @Deprecated
     public static void appliedZoomOnRelativePoint(IGraphicalEditPart part, Point relativePoint) {
         double zoom = getZoom(part);
-        relativePoint.setLocation((int) (relativePoint.x / zoom), (int) (relativePoint.y / zoom));
+        if (relativePoint instanceof PrecisionPoint) {
+            ((PrecisionPoint) relativePoint).setPreciseLocation(relativePoint.preciseX() / zoom, relativePoint.preciseY() / zoom);
+        } else {
+            relativePoint.setLocation((int) (relativePoint.x * zoom), (int) (relativePoint.y * zoom));
+        }
     }
 
     /**
@@ -98,7 +106,35 @@ public final class GraphicalHelper {
      */
     public static void applyZoomOnPoint(IGraphicalEditPart part, Point point) {
         double zoom = getZoom(part);
-        point.setLocation((int) (point.x / zoom), (int) (point.y / zoom));
+        if (point instanceof PrecisionPoint) {
+            ((PrecisionPoint) point).setPreciseLocation(point.preciseX() * zoom, point.preciseY() * zoom);
+        } else {
+            point.setLocation((int) (point.x * zoom), (int) (point.y * zoom));
+        }
+    }
+
+    /**
+     * Apply inverse zoom on a point.<BR>
+     * For example:
+     * <UL>
+     * <LI>For a zoom of 200%, the result of this method for the point (100,
+     * 100) is (50, 50)</LI>
+     * <LI>For a zoom of 50%, the result of this method for the point (100, 100)
+     * is (200, 200)</LI>
+     * </UL>
+     * 
+     * @param part
+     *            the current part
+     * @param point
+     *            a point
+     */
+    public static void applyInverseZoomOnPoint(IGraphicalEditPart part, Point point) {
+        double zoom = getZoom(part);
+        if (point instanceof PrecisionPoint) {
+            ((PrecisionPoint) point).setPreciseLocation(point.preciseX() / zoom, point.preciseY() / zoom);
+        } else {
+            point.setLocation((int) (point.x / zoom), (int) (point.y / zoom));
+        }
     }
 
     /**

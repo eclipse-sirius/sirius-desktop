@@ -650,9 +650,9 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         // Applied the zoom of the current diagram to set the pointList, the
         // source reference point and the target reference point.
         Point absoluteSourceLocationSnap = absoluteSourceLocationSnapIn100Percent.getCopy();
-        GraphicalHelper.applyZoomOnPoint((IGraphicalEditPart) sourceEditPart, absoluteSourceLocationSnap);
+        GraphicalHelper.applyInverseZoomOnPoint((IGraphicalEditPart) sourceEditPart, absoluteSourceLocationSnap);
         Point absoluteTargteLoactionSnap = absoluteTargetLocationSnapIn100Percent.getCopy();
-        GraphicalHelper.applyZoomOnPoint((IGraphicalEditPart) targetEditPart, absoluteTargteLoactionSnap);
+        GraphicalHelper.applyInverseZoomOnPoint((IGraphicalEditPart) targetEditPart, absoluteTargteLoactionSnap);
 
         edgeLayoutData.setSourceRefPoint(absoluteSourceLocationSnap);
         edgeLayoutData.setTargetRefPoint(absoluteTargteLoactionSnap);

@@ -81,9 +81,18 @@
 				<code>org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper</code>:
 				<ul>
 					<li>
-						<code>applyZoomOnPoint(IGraphicalEditPart, Point)</code>: Apply the current zoom, of the diagram of the 
-						<code>IGraphicalEditPart</code>, to the 
+						<code>applyZoomOnPoint(IGraphicalEditPart, Point)</code>: Apply the current zoom (of 
+						<code>IGraphicalEditPart</code>'s diagram) on the 
 						<code>Point</code>.
+					</li>
+					<li>
+						<code>applyInverseZoomOnPoint(IGraphicalEditPart, Point)</code>: Apply the inverse of the current zoom(of 
+						<code>IGraphicalEditPart</code>'s diagram) on the 
+						<code>Point</code>.
+					</li>
+					<li>
+						<code>appliedZoomOnRelativePoint(IGraphicalEditPart, Point)</code> is now deprecated. Use 
+						<code>applyZoomOnPoint(IGraphicalEditPart, Point)</code> instead.
 					</li>
 					<li>
 						<code>getAnchorPoint(IGraphicalEditPart parent, Anchor anchor)</code>: Get the 
