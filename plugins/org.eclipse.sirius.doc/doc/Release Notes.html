@@ -72,6 +72,10 @@
 			<li>The method 
 				<code>org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery.getDefaultDimension()</code> has been added to compute the default size of a DNodeContainer.
 			</li>
+			<li>The parameter 
+				<code>additionalFiguresForConflictDetection</code> has been added to several methods of 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator</code>. This parameter is used in case of simultaneous border nodes moves. This list corresponds to the already known border nodes feedbacks. They are used to detect conflicts with other moved nodes.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ext.gmf.runtime">Changes in 
 			<code>org.eclipse.sirius.ext.gmf.runtime</code>
@@ -86,7 +90,7 @@
 						<code>Point</code>.
 					</li>
 					<li>
-						<code>applyInverseZoomOnPoint(IGraphicalEditPart, Point)</code>: Apply the inverse of the current zoom(of 
+						<code>applyInverseZoomOnPoint(IGraphicalEditPart, Point)</code>: Apply the inverse of the current zoom (of 
 						<code>IGraphicalEditPart</code>'s diagram) on the 
 						<code>Point</code>.
 					</li>

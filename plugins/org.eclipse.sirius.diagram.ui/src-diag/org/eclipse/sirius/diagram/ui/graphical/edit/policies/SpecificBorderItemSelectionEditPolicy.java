@@ -61,13 +61,14 @@ import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.locator.FeedbackDBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
 
+import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
@@ -79,6 +80,14 @@ import com.google.common.collect.Lists;
  * @author jdupont
  */
 public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx {
+
+    /**
+     * Key for extended data of request. This key corresponds to feedback
+     * figures. This figures are added during drawing of feedback when several
+     * border nodes are move simultaneously. The last moved figure is not added
+     * to this list (because there will be no further feedback after this one).
+     */
+    private static final String BORDER_NODE_FEEDBACKS_KEY = "borderNodeFeedbacks";
 
     /**
      * We keep all created feedbacks to delete them at the end of the drag
@@ -113,6 +122,8 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
         if (!(request instanceof ChangeBoundsRequest)) {
             return;
         }
+        // Remove the feedback from request extended data
+        getBorderNodeFeedbacks(request).remove(getDragSourceFeedbackFigure());
         if ((REQ_MOVE.equals(request.getType()) && isDragAllowed()) || REQ_CLONE.equals(request.getType()) || REQ_ADD.equals(request.getType())) {
             eraseChangeBoundsFeedback((ChangeBoundsRequest) request);
         }
@@ -120,6 +131,25 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
                 || org.eclipse.gef.RequestConstants.REQ_RESIZE_CHILDREN.equals(request.getType())) {
             eraseChangeBoundsFeedback((ChangeBoundsRequest) request);
             eraseChangeBoundsProhibitedFeedbackWhenDrop();
+        }
+    }
+
+    /**
+     * Return the list of existing feedback figures containing in the request.
+     * If the request does not contains feedback figures, an empty list is
+     * returned.
+     * 
+     * @param request
+     *            The request containing the extended data.
+     * @return the list of existing feedback figures contained in the request.
+     */
+    @SuppressWarnings("unchecked")
+    private List<IFigure> getBorderNodeFeedbacks(Request request) {
+        Object result = request.getExtendedData().get(BORDER_NODE_FEEDBACKS_KEY);
+        if (result instanceof List<?> && Iterables.all((List<?>) result, Predicates.instanceOf(IFigure.class))) {
+            return (List<IFigure>) result;
+        } else {
+            return new ArrayList<IFigure>();
         }
     }
 
@@ -181,7 +211,6 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
             Rectangle realLocation = null;
             // Only necessary in the case of bordered node dropping
             if (isFeedbackForBorderedNodeDropping(request, targetAbstractGraphicalEditPart)) {
-
                 activateProhibitedFeedbacks(targetAbstractGraphicalEditPart, request);
 
                 DBorderItemLocator borderItemLocator = new FeedbackDBorderItemLocator(targetFigure);
@@ -213,14 +242,13 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
                     borderItemLocator.setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);
                     rect.setBounds(newBoundsAbsolute);
                 }
-                realLocation = borderItemLocator.getValidLocation(rect, feedback, Collections.singleton(feedback));
+                realLocation = borderItemLocator.getValidLocation(rect, feedback, getFiguresToIgnore(request), getBorderNodeFeedbacks(request));
 
                 targetFigure.translateToAbsolute(realLocation);
                 feedback.translateToRelative(realLocation);
                 feedback.setBounds(realLocation);
-                // doesn't allows drop feedback of borderedNode to Diagram
-            } else if (!(targetEditPart instanceof DDiagramEditPart)) {
-
+                storeFeedback(feedback, request);
+            } else {
                 activateProhibitedFeedbacks(hostEditPart.getParent(), request);
                 final IBorderItemLocator borderItemLocator = borderItemEP.getBorderItemLocator();
 
@@ -235,7 +263,7 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
                         // Compute the list of figures to ignore during the
                         // conflict detection.
                         List<IFigure> figuresToIgnore = getFiguresToIgnore(request);
-                        realLocation = ((DBorderItemLocator) borderItemLocator).getValidLocation(rect, borderItemEP.getFigure(), figuresToIgnore);
+                        realLocation = ((DBorderItemLocator) borderItemLocator).getValidLocation(rect, borderItemEP.getFigure(), figuresToIgnore, getBorderNodeFeedbacks(request));
                     } else {
                         realLocation = borderItemLocator.getValidLocation(rect.getCopy(), borderItemEP.getFigure());
                     }
@@ -246,8 +274,34 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
 
                     feedback.translateToRelative(realLocation);
                     feedback.setBounds(realLocation);
+                    storeFeedback(feedback, request);
                 }
             }
+        }
+    }
+
+    /**
+     * The feedback is stored only if the request corresponds to several
+     * elements and that the current element is not the last.
+     * 
+     * @param feedback
+     *            The figure to store.
+     * @param request
+     *            The request to store in.
+     */
+    @SuppressWarnings("unchecked")
+    private void storeFeedback(IFigure feedback, ChangeBoundsRequest request) {
+        if (request.getEditParts().size() > 1 && !getHost().equals(request.getEditParts().get(request.getEditParts().size() - 1))) {
+            // Store the feedback new location in request to use it for
+            // other feedback conflict detection
+            List<IFigure> borderNodeFeedbacks = getBorderNodeFeedbacks(request);
+            int currentIndex = borderNodeFeedbacks.indexOf(feedback);
+            if (currentIndex != -1) {
+                borderNodeFeedbacks.set(currentIndex, feedback);
+            } else {
+                borderNodeFeedbacks.add(feedback);
+            }
+            request.getExtendedData().put(BORDER_NODE_FEEDBACKS_KEY, borderNodeFeedbacks);
         }
     }
 
@@ -337,7 +391,7 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
             if (!request.getEditParts().contains(child) && child instanceof AbstractDiagramBorderNodeEditPart) {
                 AbstractDiagramBorderNodeEditPart borderNodeEditPart = (AbstractDiagramBorderNodeEditPart) child;
                 if (isCollapsed(borderNodeEditPart)) {
-                    configureFeedback(borderNodeEditPart);
+                    configureFeedback(borderNodeEditPart, getBorderNodeFeedbacks(request));
                 }
             }
         }
@@ -372,8 +426,12 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
      * 
      * @param borderNodeEditPart
      *            the edit part hosting the collapsed node figure.
+     * @param otherFeedbackFigures
+     *            In case of simultaneous moves, this list corresponds to the
+     *            already known border nodes after move (generally the feedback
+     *            figure)
      */
-    private void configureFeedback(AbstractBorderItemEditPart borderNodeEditPart) {
+    private void configureFeedback(AbstractBorderItemEditPart borderNodeEditPart, List<IFigure> otherFeedbackFigures) {
 
         IFigure figure = borderNodeEditPart.getFigure();
         EditPart parentEditPart = borderNodeEditPart.getParent();
@@ -392,7 +450,7 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
             Rectangle newBounds = PortLayoutHelper.getUncollapseCandidateLocation(initialDim, bounds, parentBounds);
             final IBorderItemLocator borderItemLocator = borderNodeEditPart.getBorderItemLocator();
             // get real location from DBorderItemLocator
-            Rectangle realNewBounds = getRealExpandedBounds(figure, newBounds, borderItemLocator);
+            Rectangle realNewBounds = getRealExpandedBounds(figure, newBounds, borderItemLocator, otherFeedbackFigures);
 
             PrecisionRectangle precisionRectangle = new PrecisionRectangle(realNewBounds);
             // // Use a ghost rectangle for feedback
@@ -432,9 +490,13 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
      *            the new bounds candidates.
      * @param borderItemLocator
      *            the figure edit part border item locator.
+     * @param otherFeedbackFigures
+     *            In case of simultaneous moves, this list corresponds to the
+     *            already known border nodes after move (generally the feedback
+     *            figure)
      * @return the real location from the border item locator.
      */
-    private Rectangle getRealExpandedBounds(IFigure figure, Rectangle candidateNewBounds, final IBorderItemLocator borderItemLocator) {
+    private Rectangle getRealExpandedBounds(IFigure figure, Rectangle candidateNewBounds, final IBorderItemLocator borderItemLocator, List<IFigure> otherFeedbackFigures) {
         Rectangle realNewBounds = candidateNewBounds;
         if (borderItemLocator instanceof DBorderItemLocator) {
             Rectangle oldConstraint = ((DBorderItemLocator) borderItemLocator).getCurrentConstraint();
@@ -443,7 +505,7 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
             Dimension oldOffset = ((DBorderItemLocator) borderItemLocator).getBorderItemOffset();
             ((DBorderItemLocator) borderItemLocator).setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);
 
-            realNewBounds = ((DBorderItemLocator) borderItemLocator).getValidLocation(candidateNewBounds, figure, Collections.singleton(figure));
+            realNewBounds = ((DBorderItemLocator) borderItemLocator).getValidLocation(candidateNewBounds, figure, Collections.singleton(figure), otherFeedbackFigures);
 
             ((DBorderItemLocator) borderItemLocator).setBorderItemOffset(oldOffset);
             borderItemLocator.setConstraint(oldConstraint);
@@ -464,7 +526,7 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
     /**
      * Tell if according to the <code>request</code>'s location we must provide
      * a feedback for a drop of borderedNode to another parent or a feedback for
-     * a simple move of borderedNode without changing visually the parent/
+     * a simple move of borderedNode without changing visually the parent.
      * 
      * @param request
      *            the {@link ChangeBoundsRequest} providing the location of the
@@ -484,13 +546,10 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
 
             IFigure targetFigure = targetAbstractGraphicalEditPart.getFigure();
 
-            // verify not case of a label and not on the diagram to the
-            // ghost
-            // appears only on the nodes and not on the diagram during a
-            // drop
+            // verify not case of a label and not on the diagram to the ghost
+            // appears only on the nodes and not on the diagram during a drop
             if (targetFigure != diagramFigure && !(hostEditPart instanceof DNodeNameEditPart)) {
-                // Necessary for sequence diagrams, for the feedback does
-                // not
+                // Necessary for sequence diagrams, for the feedback does not
                 // shift
                 isFeedbackForBorderedNodeDropping = targetAbstractGraphicalEditPart != hostEditPart && targetAbstractGraphicalEditPart != hostEditPart.getParent();
             }
@@ -531,7 +590,7 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
                     rect.setBounds(newBounds);
                 }
 
-                realLocation = ((DBorderItemLocator) borderItemLocator).getValidLocation(rect, borderItemEP.getFigure(), figuresToIgnore);
+                realLocation = ((DBorderItemLocator) borderItemLocator).getValidLocation(rect, borderItemEP.getFigure(), figuresToIgnore, getBorderNodeFeedbacks(request));
                 if (collapsedRectangle != null) {
                     restoreCollapsedNode(borderItemEP);
                     IFigure parentFigure = ((DBorderItemLocator) borderItemLocator).getParentFigure();
@@ -571,6 +630,7 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
                 figuresToIgnore.add(((org.eclipse.gef.GraphicalEditPart) part).getFigure());
             }
         }
+        figuresToIgnore.add(getDragSourceFeedbackFigure());
         return figuresToIgnore;
     }
 

@@ -25,12 +25,13 @@ h4. Changes in @org.eclipse.sirius.common@
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
 * The method @org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery.getDefaultDimension()@ has been added to compute the default size of a DNodeContainer.
+* The parameter @additionalFiguresForConflictDetection@ has been added to several methods of @org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator@. This parameter is used in case of simultaneous border nodes moves. This list corresponds to the already known border nodes feedbacks. They are used to detect conflicts with other moved nodes.
 
 h4. Changes in @org.eclipse.sirius.ext.gmf.runtime@
 
 * Several utilities have been added in @org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper@:
 ** @applyZoomOnPoint(IGraphicalEditPart, Point)@: Apply the current zoom (of @IGraphicalEditPart@'s diagram) on the @Point@.
-** @applyInverseZoomOnPoint(IGraphicalEditPart, Point)@: Apply the inverse of the current zoom(of @IGraphicalEditPart@'s diagram) on the @Point@.
+** @applyInverseZoomOnPoint(IGraphicalEditPart, Point)@: Apply the inverse of the current zoom (of @IGraphicalEditPart@'s diagram) on the @Point@.
 ** @appliedZoomOnRelativePoint(IGraphicalEditPart, Point)@ is now deprecated. Use @applyZoomOnPoint(IGraphicalEditPart, Point)@ instead.
 ** @getAnchorPoint(IGraphicalEditPart parent, Anchor anchor)@: Get the @Point@ (absolute draw2d coordinates) corresponding to this @Anchor@.
 ** @getAnchorPoint(IGraphicalEditPart parent, IdentityAnchor anchor)@: Get the @Point@ (absolute draw2d coordinates) corresponding to this @IdentityAnchor@.
