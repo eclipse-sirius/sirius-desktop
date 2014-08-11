@@ -54,7 +54,7 @@ public abstract class AbstractInterpreter implements IInterpreter {
             result = Lists.newArrayList(Iterables.filter((Collection<?>) raw, EObject.class));
         } else if (raw instanceof EObject) {
             result = Collections.singleton((EObject) raw);
-        } else if (raw.getClass().isArray()) {
+        } else if (raw != null && raw.getClass().isArray()) {
             result = Lists.newArrayList(Iterables.filter(Lists.newArrayList((Object[]) raw), EObject.class));
         } else {
             result = Collections.emptySet();

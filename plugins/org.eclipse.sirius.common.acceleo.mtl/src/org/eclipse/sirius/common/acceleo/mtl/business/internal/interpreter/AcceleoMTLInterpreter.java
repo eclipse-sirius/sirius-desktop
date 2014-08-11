@@ -641,7 +641,7 @@ public class AcceleoMTLInterpreter implements IInterpreter {
         Collection<EObject> coercedResult = Lists.newArrayList();
         if (result instanceof Collection<?>) {
             Iterables.addAll(coercedResult, Iterables.filter((Collection<?>) result, EObject.class));
-        } else if (result.getClass().isArray()) {
+        } else if (result != null && result.getClass().isArray()) {
             Iterables.addAll(coercedResult, Iterables.filter(Lists.newArrayList((Object[]) result), EObject.class));
         } else {
             EObject coerced = coerceValue(result, EObject.class);

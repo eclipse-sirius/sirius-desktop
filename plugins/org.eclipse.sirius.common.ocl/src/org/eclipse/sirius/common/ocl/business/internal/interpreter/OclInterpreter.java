@@ -205,7 +205,7 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
                     result.add((EObject) object);
                 }
             }
-        } else if (value.getClass().isArray()) {
+        } else if (value != null && value.getClass().isArray()) {
             result = new ArrayList<EObject>(((Object[]) value).length);
             for (final Object object : (Object[]) value) {
                 if (object instanceof EObject) {
