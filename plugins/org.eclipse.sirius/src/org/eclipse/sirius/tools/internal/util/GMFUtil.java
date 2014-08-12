@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,13 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.tools.internal.util;
 
-import java.util.Collection;
 import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature.Setting;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * Useful operations linked to GMF.
@@ -30,35 +27,6 @@ public final class GMFUtil {
      */
     private GMFUtil() {
 
-    }
-
-    /**
-     * This method comes from GMF. Tears down references to the object that we
-     * are destroying, from all other objects in the resource set.
-     * 
-     * @param destructee
-     *            the object being destroyed
-     */
-    public static void tearDownIncomingReferences(final EObject destructee) {
-        final CrossReferenceAdapter crossReferencer = CrossReferenceAdapter.getExistingCrossReferenceAdapter(destructee);
-        if (crossReferencer != null) {
-            final Collection<Setting> inverseReferences = crossReferencer.getInverseReferences(destructee);
-            if (inverseReferences != null) {
-                final int size = inverseReferences.size();
-                if (size > 0) {
-                    Setting setting;
-                    EReference eRef;
-                    final Setting[] settings = inverseReferences.toArray(new Setting[size]);
-                    for (int i = 0; i < size; ++i) {
-                        setting = settings[i];
-                        eRef = (EReference) setting.getEStructuralFeature();
-                        if (eRef.isChangeable() && (!eRef.isDerived()) && (!eRef.isContainment()) && (!eRef.isContainer())) {
-                            EcoreUtil.remove(setting.getEObject(), eRef, destructee);
-                        }
-                    }
-                }
-            }
-        }
     }
 
     /**

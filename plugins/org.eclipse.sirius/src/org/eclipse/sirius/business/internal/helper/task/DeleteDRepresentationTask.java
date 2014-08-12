@@ -65,10 +65,7 @@ public class DeleteDRepresentationTask extends AbstractCommandTask {
                     }
                     accessor.eDelete(representation, session != null ? session.getSemanticCrossReferencer() : null);
                 } else {
-                    // tear down incoming references
-                    GMFUtil.tearDownIncomingReferences(representation);
-
-                    // also tear down outgoing references, because we don't want
+                    // Tear down outgoing references, because we don't want
                     // reverse-reference lookups to find destroyed objects
                     GMFUtil.tearDownOutgoingReferences(representation);
 
