@@ -92,6 +92,9 @@ public class DeleteDRepresentationTask extends AbstractCommandTask {
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
      */
     public String getLabel() {
-        return null;
+        if (representation != null) {
+            return "Delete " + representation.getName();
+        }
+        return "Delete representation";
     }
 }
