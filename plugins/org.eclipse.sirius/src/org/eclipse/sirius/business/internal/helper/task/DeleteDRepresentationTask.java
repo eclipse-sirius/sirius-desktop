@@ -71,12 +71,6 @@ public class DeleteDRepresentationTask extends AbstractCommandTask {
 
                     // remove the object from its container
                     SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(representation).eRemove(representation);
-
-                    // in case it was cross-resource-contained
-                    final Resource res = representation.eResource();
-                    if (res != null) {
-                        res.getContents().remove(representation);
-                    }
                 }
             }
         }
