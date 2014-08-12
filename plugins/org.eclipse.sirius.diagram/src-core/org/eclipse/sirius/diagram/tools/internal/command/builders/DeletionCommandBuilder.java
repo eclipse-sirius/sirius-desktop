@@ -11,7 +11,6 @@
 package org.eclipse.sirius.diagram.tools.internal.command.builders;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -137,16 +136,10 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
     private Command buildDeleteDiagram() {
         Command cmd = UnexecutableCommand.INSTANCE;
         if (permissionAuthority.canEditInstance(diagram) && permissionAuthority.canEditInstance(diagram.eContainer())) {
-            /*
-             * If the viewpoint is a root viewpoint then we should not delete it
-             * !
-             */
             final DCommand vpCmd = createEnclosingCommand();
             /* delete the diagram */
             addDeleteDiagramTask(vpCmd, diagram);
-
             cmd = vpCmd;
-
         }
         return cmd;
     }
@@ -364,19 +357,8 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
      */
     public void addDeleteDiagramTasks(final DCommand cmd, final DDiagram diagramToDelete) {
         if (permissionAuthority.canEditInstance(diagramToDelete) && permissionAuthority.canEditInstance(diagramToDelete.eContainer())) {
-
             /* delete the diagram */
             addDeleteDiagramTask(cmd, diagramToDelete);
-
-            /* delete the subdiagrams */
-            final Iterator<EObject> it = diagramToDelete.eAllContents();
-            while (it.hasNext()) {
-                final EObject eObj = it.next();
-                if (eObj instanceof DDiagram) {
-                    addDeleteDiagramTask(cmd, (DDiagram) eObj);
-                }
-            }
-
         } else {
             cmd.getTasks().add(UnexecutableTask.INSTANCE);
         }
