@@ -25,6 +25,7 @@ import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.helper.task.DeleteDRepresentationElementTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
@@ -50,7 +51,6 @@ import org.eclipse.sirius.tree.DTreeElement;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.DTreeItemContainer;
 import org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory;
-import org.eclipse.sirius.tree.business.internal.helper.DeleteTreeElementTask;
 import org.eclipse.sirius.tree.business.internal.helper.DeleteTreeElementsTask;
 import org.eclipse.sirius.tree.business.internal.helper.RefreshTreeElementTask;
 import org.eclipse.sirius.tree.business.internal.helper.TreeHelper;
@@ -150,7 +150,7 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
                         if (parentTree != null) {
                             final Set<DSemanticDecorator> tableElements = commandTaskHelper.getDElementToClearFromSemanticElements(parentTree, allSemanticElements);
                             for (final DSemanticDecorator decorator : tableElements) {
-                                result.getTasks().add(new DeleteTreeElementTask(decorator, modelAccessor));
+                                result.getTasks().add(new DeleteDRepresentationElementTask(decorator, modelAccessor));
                             }
                         }
 
@@ -160,7 +160,7 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
                         final Iterator<EObject> it = allSemanticElements.iterator();
                         while (it.hasNext()) {
                             final EObject eObj = it.next();
-                            result.getTasks().add(new DeleteTreeElementTask(eObj, modelAccessor));
+                            result.getTasks().add(new DeleteDRepresentationElementTask(eObj, modelAccessor));
                         }
                         addRefreshTask(parentTree, result, deleteTool);
                         cmd = new NoNullResourceCommand(result, element);

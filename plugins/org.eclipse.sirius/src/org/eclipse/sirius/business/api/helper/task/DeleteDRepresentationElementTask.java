@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  * 
  */
-public class AbstractDeleteDRepresentationElementTask extends AbstractCommandTask {
+public class DeleteDRepresentationElementTask extends AbstractCommandTask {
 
     /** The object to delete. */
     protected final EObject objectToDelete;
@@ -47,10 +47,8 @@ public class AbstractDeleteDRepresentationElementTask extends AbstractCommandTas
      * @param accessor
      *            the {@link ModelAccessor} to use to perform the deletion
      */
-    public AbstractDeleteDRepresentationElementTask(EObject objectToDelete, ModelAccessor accessor) {
-        this.objectToDelete = objectToDelete;
-        this.accessor = accessor;
-        this.danglingEReferencesToIgnores = DanglingRefRemovalTrigger.DSEMANTICDECORATOR_REFERENCE_TO_IGNORE_PREDICATE;
+    public DeleteDRepresentationElementTask(EObject objectToDelete, ModelAccessor accessor) {
+        this(objectToDelete, accessor, null);
     }
 
     /**
@@ -60,17 +58,18 @@ public class AbstractDeleteDRepresentationElementTask extends AbstractCommandTas
      *            the object to delete
      * @param accessor
      *            the {@link ModelAccessor} to use to perform the deletion
-     * @param danglingEReferencesToIgnores
+     * @param eReferencesToIgnores
      *            a predicate to tell which {@link EReference} to ignore in the
      *            dangling references deletion
      */
-    public AbstractDeleteDRepresentationElementTask(EObject objectToDelete, ModelAccessor accessor, final EReferencePredicate danglingEReferencesToIgnores) {
+    public DeleteDRepresentationElementTask(EObject objectToDelete, ModelAccessor accessor, final EReferencePredicate eReferencesToIgnores) {
         this.objectToDelete = objectToDelete;
         this.accessor = accessor;
         this.danglingEReferencesToIgnores = new EReferencePredicate() {
             @Override
             public boolean apply(EReference ref) {
-                return DanglingRefRemovalTrigger.DSEMANTICDECORATOR_REFERENCE_TO_IGNORE_PREDICATE.apply(ref) || danglingEReferencesToIgnores.apply(ref);
+                return DanglingRefRemovalTrigger.DSEMANTICDECORATOR_REFERENCE_TO_IGNORE_PREDICATE.apply(ref)
+                        || DanglingRefRemovalTrigger.NOTATION_VIEW_ELEMENT_REFERENCE_TO_IGNORE_PREDICATE.apply(ref) || (eReferencesToIgnores != null && eReferencesToIgnores.apply(ref));
             }
         };
     }
@@ -115,7 +114,7 @@ public class AbstractDeleteDRepresentationElementTask extends AbstractCommandTas
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
      */
     public String getLabel() {
-        return "delete view point element task";
+        return "Delete representation element task";
     }
 
 }

@@ -21,9 +21,9 @@ h4. Changes in @org.eclipse.sirius@
 
 * The @VIEWPOINT_REGISTRY_INITIAL_SIZE@ preference and @VIEWPOINT_REGISTRY_INITIAL_SIZE_DEFAULT_VALUE@ default value has been removed from @org.eclipse.sirius.tools.api.preferences.DCorePreferences@.
 * The method @org.eclipse.sirius.business.api.query.DRepresentationQuery.isDanglingRepresentation()@ has been added to introduce the possibility to check if a representation is a dangling representation, ie. if its a DSemanticDecorator, its target is null or does not belong to a session.
+* The @org.eclipse.sirius.business.api.helper.task.AbstractDeleteDRepresentationElementTask@ class has been renamed into @DeleteDRepresentationElementTask@.
 * @org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException@ now can take several EObjects in constructor and a method @LockedInstanceException.getLockedElements()@ has been added to get all EObjects put in constructor.
 @org.eclipse.sirius.tools.api.command.InvalidPermissionCommand@ now can take several EObjects in constructor to throw a @LockedInstanceException@ with several EObjects.
-
 
 h4. Changes in @org.eclipse.sirius.common@
 

@@ -22,6 +22,7 @@ import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.helper.task.DeleteDRepresentationElementTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.TaskExecutor;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
@@ -29,7 +30,6 @@ import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.internal.helper.task.DeleteDDiagramElementTask;
 import org.eclipse.sirius.business.internal.helper.task.DeleteDRepresentationTask;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.command.CommandContext;
@@ -240,7 +240,7 @@ public class ExternalJavaActionTask extends AbstractOperationTask {
             for (final DSemanticDecorator dElement : dElements) {
                 if (dElement instanceof DRepresentationElement) {
                     ModelAccessor modelAccessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(dElement);
-                    DeleteDDiagramElementTask task = new DeleteDDiagramElementTask(dElement, modelAccessor);
+                    DeleteDRepresentationElementTask task = new DeleteDRepresentationElementTask(dElement, modelAccessor);
                     tasks.add(task);
                 } else if (dElement instanceof DRepresentation) {
                     DeleteDRepresentationTask task = new DeleteDRepresentationTask((DRepresentation) dElement);

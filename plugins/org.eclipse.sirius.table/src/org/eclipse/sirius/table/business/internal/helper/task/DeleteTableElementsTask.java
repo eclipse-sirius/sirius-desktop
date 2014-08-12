@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,16 +23,17 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
+import org.eclipse.sirius.business.api.helper.task.DeleteDRepresentationElementTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.TaskExecutor;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.table.tools.internal.command.TableCommandFactory;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
 /**
  * A task to delete {@link DTableElement} instances.
@@ -103,7 +104,7 @@ public class DeleteTableElementsTask extends AbstractCommandTask {
         final Iterator<DSemanticDecorator> it = vpElements.iterator();
         while (it.hasNext()) {
             final DSemanticDecorator eObj = it.next();
-            tasks.add(new DeleteTableElementTask(eObj, modelAccessor));
+            tasks.add(new DeleteDRepresentationElementTask(eObj, modelAccessor));
 
             if (eObj instanceof DTable) {
                 // TODOMCH change this really crappy code ! ! ! !

@@ -23,6 +23,7 @@ import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
+import org.eclipse.sirius.business.api.helper.task.DeleteDRepresentationElementTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
@@ -40,7 +41,6 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.exception.Locke
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.business.internal.helper.task.CreateTableTask;
-import org.eclipse.sirius.table.business.internal.helper.task.DeleteTableElementTask;
 import org.eclipse.sirius.table.business.internal.helper.task.DeleteTableElementsTask;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DLine;
@@ -145,7 +145,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
                         if (parentTable != null) {
                             final Set<DSemanticDecorator> tableElements = commandTaskHelper.getDElementToClearFromSemanticElements(parentTable, allSemanticElements);
                             for (final DSemanticDecorator decorator : tableElements) {
-                                result.getTasks().add(new DeleteTableElementTask(decorator, modelAccessor));
+                                result.getTasks().add(new DeleteDRepresentationElementTask(decorator, modelAccessor));
                             }
                         }
 
@@ -155,7 +155,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
                         final Iterator<EObject> it = allSemanticElements.iterator();
                         while (it.hasNext()) {
                             final EObject eObj = it.next();
-                            result.getTasks().add(new DeleteTableElementTask(eObj, modelAccessor));
+                            result.getTasks().add(new DeleteDRepresentationElementTask(eObj, modelAccessor));
                         }
                         addRefreshTask(parentTable, result, deleteTool);
                         cmd = new NoNullResourceCommand(result, element);
