@@ -32,6 +32,7 @@ import org.eclipse.sirius.business.api.helper.task.TaskHelper;
 import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
 import org.eclipse.sirius.business.api.helper.task.label.InitInterpreterFromParsedVariableTask2;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.business.internal.helper.task.DeleteDRepresentationElementsTask;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
@@ -51,7 +52,6 @@ import org.eclipse.sirius.tree.DTreeElement;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.DTreeItemContainer;
 import org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory;
-import org.eclipse.sirius.tree.business.internal.helper.DeleteTreeElementsTask;
 import org.eclipse.sirius.tree.business.internal.helper.RefreshTreeElementTask;
 import org.eclipse.sirius.tree.business.internal.helper.TreeHelper;
 import org.eclipse.sirius.tree.business.internal.refresh.CreateTreeTask;
@@ -207,30 +207,9 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
         }
         if (delete) {
             cmd.getTasks().addAll(buildCommandFromModelOfTool(semanticElement, deleteTool, element.eContainer()).getTasks());
-            cmd.getTasks().add(new DeleteTreeElementsTask(domain, modelAccessor, cmd, this, element));
+            cmd.getTasks().add(new DeleteDRepresentationElementsTask(modelAccessor, cmd, commandTaskHelper, element));
         } else {
             cmd.getTasks().add(UnexecutableTask.INSTANCE);
-        }
-    }
-
-    /**
-     * Appends a command that delete the specified tree to the specified
-     * command.
-     * 
-     * @param cmd
-     *            the command.
-     * @param tree
-     *            the tree to delete.
-     */
-    public void addDeleteTableTasks(final SiriusCommand cmd, final DTree tree) {
-        if (!getPermissionAuthority().canEditInstance(tree)) {
-            cmd.chain(new InvalidPermissionCommand(domain, tree));
-        } else {
-            if (!getPermissionAuthority().canEditInstance(tree.eContainer())) {
-                cmd.chain(new InvalidPermissionCommand(domain, tree.eContainer()));
-            } else {
-                cmd.getTasks().add(UnexecutableTask.INSTANCE);
-            }
         }
     }
 

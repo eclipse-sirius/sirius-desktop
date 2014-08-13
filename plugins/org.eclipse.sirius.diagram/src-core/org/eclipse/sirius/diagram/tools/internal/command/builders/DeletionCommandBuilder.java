@@ -23,6 +23,7 @@ import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.business.internal.helper.task.DeleteDRepresentationElementsTask;
 import org.eclipse.sirius.business.internal.helper.task.DeleteDRepresentationTask;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -34,7 +35,6 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
-import org.eclipse.sirius.diagram.business.internal.helper.task.DeleteSeveralDDiagramElementsTask;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
@@ -232,7 +232,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
         if (delete) {
 
             cmd.getTasks().addAll(buildDeleteFromToolTask(semanticContainer, viewContainer).getTasks());
-            cmd.getTasks().add(new DeleteSeveralDDiagramElementsTask(editingDomain, modelAccessor, uiCallback, cmd, diagramElement));
+            cmd.getTasks().add(new DeleteDRepresentationElementsTask(modelAccessor, cmd, taskHelper, diagramElement));
             if (diagramElement instanceof DEdge) {
                 Option<EdgeMapping> edgeMapping = new IEdgeMappingQuery(((DEdge) diagramElement).getActualMapping()).getEdgeMapping();
                 if (edgeMapping.some() && !edgeMapping.get().isUseDomainElement()) {

@@ -8,79 +8,69 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.helper.task;
+package org.eclipse.sirius.business.internal.helper.task;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.helper.task.DeleteDRepresentationElementTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.TaskExecutor;
+import org.eclipse.sirius.business.api.helper.task.TaskHelper;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
-import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
-import org.eclipse.sirius.diagram.tools.internal.command.builders.DeletionCommandBuilder;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.command.DCommand;
-import org.eclipse.sirius.tools.api.command.SiriusCommand;
-import org.eclipse.sirius.tools.api.command.ui.UICallBack;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Sets;
+
 /**
- * A task to delete several {@link DDiagramElement} instances.
+ * A task to delete several {@link DRepresentationElement} instances.
  * 
  * @author ymortier
  */
-public class DeleteSeveralDDiagramElementsTask extends AbstractCommandTask {
+public class DeleteDRepresentationElementsTask extends AbstractCommandTask {
 
     /** the previous command. */
     private DCommand cmd;
 
-    /** a viewpoint element. */
-    private DDiagramElement dde;
+    /** a representation element. */
+    private DRepresentationElement repElt;
 
-    private TransactionalEditingDomain domain;
-
-    private ModelAccessor modelAcessor;
+    private ModelAccessor modelAccessor;
 
     /** List of executed task, useful for undo * */
     private List<ICommandTask> executedTask;
 
-    private DeletionCommandBuilder deletionCommandBuilder;
+    private TaskHelper taskHelper;
 
     /**
      * Default constructor.
      * 
-     * @param domain
-     *            the editing domain.
      * @param modelAcessor
      *            the model accessor.
-     * @param callback
-     *            the user interface callback
      * @param cmd
      *            the current command.
-     * @param dde
-     *            the diagram element to delete.
+     * @param taskHelper
+     *            the command task helper.
+     * @param repElt
+     *            the representation element to delete.
      */
-    public DeleteSeveralDDiagramElementsTask(final TransactionalEditingDomain domain, final ModelAccessor modelAcessor, final UICallBack callback, final DCommand cmd, final DDiagramElement dde) {
+    public DeleteDRepresentationElementsTask(final ModelAccessor modelAcessor, final DCommand cmd, TaskHelper taskHelper, final DRepresentationElement repElt) {
         this.cmd = cmd;
-        this.dde = dde;
-        this.domain = domain;
-        this.modelAcessor = modelAcessor;
-        this.deletionCommandBuilder = new DeletionCommandBuilder();
-        this.deletionCommandBuilder.init(modelAcessor, domain, callback);
+        this.modelAccessor = modelAcessor;
+        this.taskHelper = taskHelper;
+        this.repElt = repElt;
     }
 
     /**
@@ -90,38 +80,23 @@ public class DeleteSeveralDDiagramElementsTask extends AbstractCommandTask {
      */
     public void execute() {
         /*
-         * Now delete all the viewpoints corresponding to the semantic elements
+         * Now delete all the DSemanticDecorators corresponding to the semantic elements
          */
         final List<ICommandTask> tasks = new ArrayList<ICommandTask>();
         EObject root = null;
         final boolean automaticRefresh = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
         if (automaticRefresh) {
-            root = EcoreUtil.getRootContainer(this.dde);
+            root = EcoreUtil.getRootContainer(this.repElt);
         } else {
-            EObjectQuery eObjectQuery = new EObjectQuery(dde);
+            EObjectQuery eObjectQuery = new EObjectQuery(repElt);
             root = eObjectQuery.getRepresentation().get();
         }
-        final Set<DSemanticDecorator> vpElements = deletionCommandBuilder.getDElementToClearFromSemanticElements(root, completeCollection(this.cmd.getDeletedObjects()));
 
-        final Iterator<DSemanticDecorator> it = vpElements.iterator();
-        while (it.hasNext()) {
-            final DSemanticDecorator eObj = it.next();
-            tasks.add(new DeleteDRepresentationElementTask(eObj, modelAcessor));
-
-            if (eObj instanceof DDiagram) {
-                final DCommand temp = new SiriusCommand(domain);
-                deletionCommandBuilder.addDeleteDiagramTasks(temp, (DDiagram) eObj);
-                final List<ICommandTask> tempTasks = temp.getTasks();
-                if (TaskExecutor.canExecute(tempTasks)) {
-                    TaskExecutor.execute(tempTasks);
-                    if (this.executedTask == null) {
-                        this.executedTask = new LinkedList<ICommandTask>();
-                    }
-                    this.executedTask.addAll(tempTasks);
-                }
-
-            }
+        final Set<DSemanticDecorator> vpElements = taskHelper.getDElementToClearFromSemanticElements(root, completeCollection(this.cmd.getDeletedObjects()));
+        for (DSemanticDecorator semDec : vpElements) {
+            tasks.add(new DeleteDRepresentationElementTask(semDec, modelAccessor));
         }
+
         if (TaskExecutor.canExecute(tasks)) {
             TaskExecutor.execute(tasks);
             if (this.executedTask != null) {
@@ -130,7 +105,6 @@ public class DeleteSeveralDDiagramElementsTask extends AbstractCommandTask {
                 this.executedTask = tasks;
             }
         }
-
     }
 
     /**
@@ -163,20 +137,14 @@ public class DeleteSeveralDDiagramElementsTask extends AbstractCommandTask {
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
      */
     public String getLabel() {
-        return "delete diagram elements task";
+        return "Delete representation elements task";
     }
 
     private Set<EObject> completeCollection(final Collection<EObject> semantics) {
-        final Set<EObject> result = new HashSet<EObject>(semantics);
-        final Iterator<EObject> iterSemantics = semantics.iterator();
-        while (iterSemantics.hasNext()) {
-            final EObject sem = iterSemantics.next();
-            final Iterator<EObject> iterContent = sem.eAllContents();
-            while (iterContent.hasNext()) {
-                result.add(iterContent.next());
-            }
+        final Set<EObject> result = Sets.newHashSet(semantics);
+        for (EObject sem : semantics) {
+            Iterators.addAll(result, sem.eAllContents());
         }
         return result;
     }
-
 }
