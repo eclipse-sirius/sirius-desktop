@@ -8,6 +8,7 @@ _Summary_: This evolution is an ergonomics feature. The main goal is to keep, as
 | v0.1        | DRAFT       | 2014-05-16 | lredor    | Initial version. |
 | v0.2        | PROPOSAL    | 2014-05-21 | lredor    | Sirius Obeo team review. |
 | v0.3        | PROPOSAL    | 2014-06-11 | lredor    | Another review. |
+| v0.4        | PROPOSAL    | 2014-08-13 | lredor    | Another review. |
 
 _Relevant tickets_ :
 * "Bugzilla #437097, Move only the edge closest segment when moving a node":https://bugs.eclipse.org/bugs/show_bug.cgi?id=437097
@@ -28,7 +29,7 @@ The edge "ref" has 3 segments.
 The first bendpoint has a ponderation of 1/3 (a move of 66 pixels : 200/3). The new x location is 416 pixels instead of 350 pixels.
 The second bendpoint has a ponderation of 2/3 (a move of 133 pixels : 200/3*2). The new x location is 383 pixels instead of 250 pixels.
 
-This behavior is not user friendly. If the user has layout this edge to avoid other nodes for example, the move of the source or of the target of this edge moves all the layout, all the bendpoints, of this edge.
+This behavior is not user friendly. If the user has layed out this edge to avoid other nodes for example, the move of the source or of the target of this edge moves all the layout, all the bendpoints, of this edge.
 
 It will be better to move only the latest segment.
 !images/Sample1-OriginalState.png! !images/Sample1-AfterMove.png!
@@ -93,13 +94,13 @@ h3. Limits
 
 * This evolution concerns only oblique and rectilinear router. The tree router has already specific behaviors and is not impacted by this evolution.
 * This evolution does not deal the moving of the edge label. The move of an edge causing by the move of one of its node extremity, can cause strange label move but this is out of the scope of this evolution.
-* Closest distance: If this feature is enabled on a edge, the evolution will change the current behavior. Ie the existing bendpoints (not visible with closest distance) will be lost.
+* Closest distance: If this feature is enabled on an edge, the evolution will change the current behavior. Ie the existing bendpoints (not visible with closest distance) will be lost.
 * Note attachment: This evolution is not applicable to the link of kind "note attachment".
-* The case on edge connected on another edge is not handled here, there are specific behaviors for anchor bendpoints for edges. The specific behaviors will be analyzed during this feature to detail the remaining tasks to address this case. 
+* The case on edge connected on another edge is not handled here, there are specific behaviors for anchor bendpoints for edges. The specific behaviors will be analyzed during this feature to detail the remaining tasks to address this case.
 
 h3. Rejected approach
 
-Another approach will be to used a new ModelChangeTrigger added to the SessionEventBroker. With this approach, we have only one call after the move of the selected nodes. The computing will be made only with GMF data. This approach was rejected because it does not respect the GMF philosophy.
+Another approach will be to use a new ModelChangeTrigger added to the SessionEventBroker. With this approach, we have only one call after the move of the selected nodes. The calculation will be made only with GMF data. This approach was rejected because it does not respect the GMF philosophy.
 
 h2. Backward Compatibility and Migration Paths
 
@@ -122,7 +123,7 @@ This new behavior should be added in the New and Noteworthy documentation. There
 h2. Tests and Non-regression strategy
 
 All combinatorial of "different move cases" need to be tested.
-All existing tests should be verify to see if some of them depends on the old behavior. It this case, they should be adapted to the new behavior.
+All existing tests should be verify to see if some of them depends on the old behavior. In this case, they should be adapted to the new behavior.
 
 h2. Implementation choices and tradeoffs
 
