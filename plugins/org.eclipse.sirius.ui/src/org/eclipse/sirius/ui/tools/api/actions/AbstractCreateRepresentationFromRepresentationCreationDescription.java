@@ -124,7 +124,7 @@ public abstract class AbstractCreateRepresentationFromRepresentationCreationDesc
     @Override
     public String getText() {
         final IdentifiedElementQuery query = new IdentifiedElementQuery(desc);
-        return new StringBuffer("New detail : ").append(query.getLabel()).toString();
+        return query.getLabel();
     }
 
     /**
