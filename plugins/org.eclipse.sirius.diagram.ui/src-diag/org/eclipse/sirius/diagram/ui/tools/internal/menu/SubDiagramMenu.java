@@ -21,6 +21,7 @@ import org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
 import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.session.Session;
@@ -49,6 +50,8 @@ import org.eclipse.ui.IWorkbenchPart;
 public class SubDiagramMenu implements IContributionItemProvider {
 
     private static final String CREATE_REPRESENTATION_GROUP_SEPARATOR = "createRepresentationGroup";
+
+    private static final String MENU_NEW_REPRESENTATION_ID = "popup.new";
 
     /**
      * {@inheritDoc}
@@ -82,11 +85,19 @@ public class SubDiagramMenu implements IContributionItemProvider {
                     }
                 }
                 if (editpart instanceof ISiriusEditPart) {
-                    final IMenuManager navigate = (IMenuManager) menu.find("navigateMenu");
+                    // Create a new sub-menu manager
+                    final MenuManager newMenuManager = new MenuManager("New", SubDiagramMenu.MENU_NEW_REPRESENTATION_ID);
+                    // Create the item to add to the top of main manager, just
+                    // before the open menu
+                    if (!menu.isEmpty()) {
+                        menu.insertBefore(menu.getItems()[0].getId(), newMenuManager);
+                    } else {
+                        menu.add(newMenuManager);
+                    }
                     final Separator createGroup = new Separator(CREATE_REPRESENTATION_GROUP_SEPARATOR);
-                    navigate.add(createGroup);
+                    newMenuManager.add(createGroup);
                     if (eObj instanceof DDiagramElement) {
-                        createDetailsActions((DDiagramElement) eObj, navigate, diagrampart.getEditingDomain(), curPart);
+                        createDetailsActions((DDiagramElement) eObj, newMenuManager, diagrampart.getEditingDomain(), curPart);
                     }
                 } else {
                     // no focused edit part
@@ -101,7 +112,7 @@ public class SubDiagramMenu implements IContributionItemProvider {
         return vp != null && session.getSelectedViewpoints(false).contains(vp);
     }
 
-    private void createDetailsActions(final DDiagramElement dde, final IMenuManager navigate, final TransactionalEditingDomain editingDomain, final IGraphicalEditPart curPart) {
+    private void createDetailsActions(final DDiagramElement dde, final IMenuManager newMenu, final TransactionalEditingDomain editingDomain, final IGraphicalEditPart curPart) {
         if (dde.getMapping() != null) {
             EObject sessionFinder = null;
             final EList<EObject> semanticElements = dde.getSemanticElements();
@@ -128,7 +139,7 @@ public class SubDiagramMenu implements IContributionItemProvider {
                         }
                     }
                     if (append) {
-                        navigate.appendToGroup(CREATE_REPRESENTATION_GROUP_SEPARATOR, new CreateRepresentationFromRepresentationCreationDescription(desc, dde, editingDomain, curPart));
+                        newMenu.appendToGroup(CREATE_REPRESENTATION_GROUP_SEPARATOR, new CreateRepresentationFromRepresentationCreationDescription(desc, dde, editingDomain, curPart));
                     }
                 }
             }

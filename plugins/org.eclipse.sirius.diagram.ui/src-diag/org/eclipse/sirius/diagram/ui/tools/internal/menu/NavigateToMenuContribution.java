@@ -31,6 +31,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
@@ -79,7 +80,9 @@ import com.google.common.collect.Lists;
  */
 public class NavigateToMenuContribution implements IContributionItemProvider {
 
-    private static final String NAVIGATE_REPRESENTATION_GROUP_SEPARATOR = "navigateRepresentationGroup";
+    private static final String OPEN_REPRESENTATION_GROUP_SEPARATOR = "openRepresentationGroup";
+
+    private static final String MENU_OPEN_REPRESENTATION_ID = "popup.open";
 
     private AdapterFactory adapterFactory;
 
@@ -117,19 +120,28 @@ public class NavigateToMenuContribution implements IContributionItemProvider {
             final Session session = SessionManager.INSTANCE.getSession(semantic);
             if (session != null) {
                 menu.insertBefore("additions", new Separator("generator")); //$NON-NLS-1$ //$NON-NLS-2$
-                final IMenuManager navigate = (IMenuManager) menu.find("navigateMenu"); //$NON-NLS-1$
-
+                // Remove Open action in navigate menu which is not used in
+                // Sirius and avoid to have a gray "Open" item menu in Navigate
+                // menu
+                final IMenuManager navigateManager = (IMenuManager) menu.find("navigateMenu");
+                navigateManager.remove("open");
+                // Add menus to open existing representations
+                final MenuManager openMenuManager = new MenuManager("Open", MENU_OPEN_REPRESENTATION_ID);
+                if (!menu.isEmpty()) {
+                    menu.insertBefore(menu.getItems()[0].getId(), openMenuManager);
+                } else {
+                    menu.add(openMenuManager);
+                }
+                contributeToPopupMenu(openMenuManager, null);
                 final TransactionalEditingDomain transDomain = TransactionUtil.getEditingDomain(designerDiag);
-
                 final Collection<DRepresentation> otherRepresentations = DialectManager.INSTANCE.getRepresentations(semantic, session);
-
                 for (final DRepresentation representation : otherRepresentations) {
                     if (!EcoreUtil.equals(designerDiag, representation) && isFromActiveViewpoint(session, representation)) {
-                        navigate.add(buildOpenRepresentationAction(session, representation, editpart, transDomain));
+                        openMenuManager.add(buildOpenRepresentationAction(session, representation, editpart, transDomain));
                     }
                 }
                 if (designerObj instanceof DRepresentationElement) {
-                    buildNavigableRepresentationsMenu(navigate, designerObj, session, editpart, transDomain);
+                    buildOpenableRepresentationsMenu(openMenuManager, designerObj, session, editpart, transDomain);
                 }
             }
         }
@@ -167,10 +179,10 @@ public class NavigateToMenuContribution implements IContributionItemProvider {
         return isFromActiveViewpoint(session, description);
     }
 
-    private void buildNavigableRepresentationsMenu(final IMenuManager navigate, final EObject designerObj, final Session session, final EditPart editpart, final TransactionalEditingDomain transDomain) {
+    private void buildOpenableRepresentationsMenu(final IMenuManager openMenu, final EObject designerObj, final Session session, final EditPart editpart, final TransactionalEditingDomain transDomain) {
         final DRepresentationElement element = (DRepresentationElement) designerObj;
-        final Separator createGroup = new Separator(NAVIGATE_REPRESENTATION_GROUP_SEPARATOR);
-        navigate.add(createGroup);
+        final Separator createGroup = new Separator(OPEN_REPRESENTATION_GROUP_SEPARATOR);
+        openMenu.add(createGroup);
         for (RepresentationNavigationDescription navDesc : element.getMapping().getNavigationDescriptions()) {
             boolean append = true;
             if (!isFromActiveViewpoint(session, navDesc.getRepresentationDescription())) {
@@ -204,14 +216,14 @@ public class NavigateToMenuContribution implements IContributionItemProvider {
             }
 
             if (append) {
-                buildOpenRepresentationActions(navigate, interpreter, navDesc, element, session, editpart, transDomain);
+                buildOpenRepresentationActions(openMenu, interpreter, navDesc, element, session, editpart, transDomain);
             }
 
             interpreter.unSetVariable(IInterpreterSiriusVariables.DIAGRAM);
         }
     }
 
-    private void buildOpenRepresentationActions(final IMenuManager navigate, final IInterpreter interpreter, final RepresentationNavigationDescription navDesc, final DRepresentationElement element,
+    private void buildOpenRepresentationActions(final IMenuManager openMenu, final IInterpreter interpreter, final RepresentationNavigationDescription navDesc, final DRepresentationElement element,
             final Session session, final EditPart editpart, final TransactionalEditingDomain transDomain) {
         final Collection<EObject> candidates = findCandidates(element, navDesc, interpreter);
         final Collection<DRepresentation> representations = DialectManager.INSTANCE.getRepresentations(navDesc.getRepresentationDescription(), session);
@@ -226,7 +238,7 @@ public class NavigateToMenuContribution implements IContributionItemProvider {
                         RuntimeLoggerManager.INSTANCE.error(navDesc, ToolPackage.eINSTANCE.getRepresentationNavigationDescription_NavigationNameExpression(), e);
                     }
                 }
-                navigate.appendToGroup(NAVIGATE_REPRESENTATION_GROUP_SEPARATOR, buildOpenRepresentationAction(session, representation, editpart, transDomain, label));
+                openMenu.appendToGroup(OPEN_REPRESENTATION_GROUP_SEPARATOR, buildOpenRepresentationAction(session, representation, editpart, transDomain, label));
             }
         }
     }

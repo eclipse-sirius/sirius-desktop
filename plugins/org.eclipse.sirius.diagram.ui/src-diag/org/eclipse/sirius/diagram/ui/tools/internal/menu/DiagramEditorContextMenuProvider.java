@@ -107,7 +107,6 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
                     ContributionItemService.getInstance().contributeToPopupMenu(DiagramEditorContextMenuProvider.this, part);
                     menu.remove(ActionIds.ACTION_DELETE_FROM_MODEL);
                     updateFormatMenu(menu);
-
                     final IMenuManager manager = menu.findMenuUsingPath(ActionIds.MENU_EDIT);
                     IContributionItem find = manager.find(DELETE_FROM_GROUP);
                     if (find != null) {

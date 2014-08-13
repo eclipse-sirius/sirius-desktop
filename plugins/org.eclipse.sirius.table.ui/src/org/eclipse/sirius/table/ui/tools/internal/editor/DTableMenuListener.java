@@ -106,7 +106,9 @@ import com.google.common.collect.Lists;
  * 
  */
 public class DTableMenuListener implements IMenuListener {
-    private static final String MENU_NAVIGATE_ID = "popup.navigate";
+    private static final String MENU_OPEN_REPRESENTATION_ID = "popup.open";
+
+    private static final String MENU_NEW_REPRESENTATION_ID = "popup.new";
 
     private static final String MENU_HIDEREVEAL_ID = "popup.hidereveal";
 
@@ -116,7 +118,7 @@ public class DTableMenuListener implements IMenuListener {
 
     private static final String EXISTING_REPRESENTATION_GROUP_SEPARATOR = "existingRepresentation";
 
-    private static final String NAVIGATE_REPRESENTATION_GROUP_SEPARATOR = "navigateRepresentationGroup";
+    private static final String OPEN_REPRESENTATION_GROUP_SEPARATOR = "navigateRepresentationGroup";
 
     private static final String VIEWPOINT_GROUP_SEPARATOR = "viewpoint";
 
@@ -210,8 +212,10 @@ public class DTableMenuListener implements IMenuListener {
     public void menuAboutToShow(final IMenuManager manager) {
         // Refresh the cached actions if needed
         treeViewManager.fillMenu();
-        // Add navigate menus
-        addNavigateMenu(manager);
+        // Add Open representation menu
+        addOpenRepresentationMenu(manager);
+        // Add New representation menu
+        addNewRepresentationMenu(manager);
         manager.add(new Separator());
         // Add viewpoint menus
         addRefreshMenu(manager);
@@ -267,42 +271,57 @@ public class DTableMenuListener implements IMenuListener {
     }
 
     /**
-     * Add the navigate sub menu and its actions if needed.
+     * Add the open sub menu and its actions if needed.
      * 
      * @param manager
      *            The menu manager
      */
-    private void addNavigateMenu(final IMenuManager manager) {
+    private void addOpenRepresentationMenu(final IMenuManager manager) {
         // Create a new sub-menu manager
-        final MenuManager navigateMenuManager = new MenuManager("Navigate", DTableMenuListener.MENU_NAVIGATE_ID);
+        final MenuManager openMenuManager = new MenuManager("Open", DTableMenuListener.MENU_OPEN_REPRESENTATION_ID);
         // Create the item to add to the main manager
-        final SubContributionItem navigateMenuItem = new SubContributionItem(navigateMenuManager);
-        manager.add(navigateMenuItem);
-        // Add menus to navigate through existing representations (created by
+        final SubContributionItem openMenuItem = new SubContributionItem(openMenuManager);
+        manager.add(openMenuItem);
+        // Add menus to open existing representations (created by
         // RepresentationCreationDescription)
         final Separator existingGroup = new Separator(DTableMenuListener.EXISTING_REPRESENTATION_GROUP_SEPARATOR);
-        navigateMenuManager.add(existingGroup);
-        // Add menus to navigate through existing representations (corresponding
+        openMenuManager.add(existingGroup);
+        // Add menus to open existing representations (corresponding
         // to the RepresentationNavigationDescription)
-        final Separator navigateRepresentationGroup = new Separator(NAVIGATE_REPRESENTATION_GROUP_SEPARATOR);
-        navigateMenuManager.add(navigateRepresentationGroup);
-        // Add menus to navigate through new representations (corresponding to
-        // the RepresentationCreationDescription)
-        final Separator createGroup = new Separator(DTableMenuListener.NEW_REPRESENTATION_GROUP_SEPARATOR);
-        navigateMenuManager.add(createGroup);
+        final Separator openRepresentationGroup = new Separator(OPEN_REPRESENTATION_GROUP_SEPARATOR);
+        openMenuManager.add(openRepresentationGroup);
         final DTableElement currentTableElement = getCurrentTableElement();
         if (currentTableElement != null) {
-            // Add actions to navigate to existing representation
-            createNavigationAction(navigateMenuItem, currentTableElement);
-            // Add actions to navigate to new representation
-            if (currentTableElement instanceof DCell) {
-                createDetailsActions(currentTableElement, navigateMenuItem);
-            } else if (currentTableElement instanceof DLine) {
-                createDetailsActions(currentTableElement, navigateMenuItem);
-            }
+            // Add actions to open existing representation
+            createOpenAction(openMenuItem, currentTableElement);
         } else {
-            // Add actions to navigate to existing representation
-            createNavigationAction(navigateMenuItem, dTable);
+            // Add actions to open representation
+            createOpenAction(openMenuItem, dTable);
+        }
+    }
+
+    /**
+     * Add the new sub menu and its actions if needed.
+     * 
+     * @param manager
+     *            The menu manager
+     */
+    private void addNewRepresentationMenu(final IMenuManager manager) {
+        // Create a new sub-menu manager
+        final MenuManager newMenuManager = new MenuManager("New", DTableMenuListener.MENU_NEW_REPRESENTATION_ID);
+        // Create the item to add to the main manager
+        final SubContributionItem newMenuItem = new SubContributionItem(newMenuManager);
+        manager.add(newMenuItem);
+        // Add menus to create new representations (corresponding to
+        // the RepresentationCreationDescription)
+        final Separator createGroup = new Separator(DTableMenuListener.NEW_REPRESENTATION_GROUP_SEPARATOR);
+        newMenuManager.add(createGroup);
+        final DTableElement currentTableElement = getCurrentTableElement();
+        // Add actions to create new representation
+        if (currentTableElement instanceof DCell) {
+            createDetailsActions(currentTableElement, newMenuItem);
+        } else if (currentTableElement instanceof DLine) {
+            createDetailsActions(currentTableElement, newMenuItem);
         }
     }
 
@@ -310,29 +329,29 @@ public class DTableMenuListener implements IMenuListener {
      * @param navigateMenuItem
      * @param semanticElement
      */
-    private void createNavigationAction(final SubContributionItem navigate, final DSemanticDecorator decorator) {
+    private void createOpenAction(final SubContributionItem openRepresentation, final DSemanticDecorator decorator) {
         final EObject semanticElement = decorator.getTarget();
         final Session session = SessionManager.INSTANCE.getSession(semanticElement);
         if (session != null) {
             final Collection<DRepresentation> otherRepresentations = DialectManager.INSTANCE.getRepresentations(semanticElement, session);
             for (final DRepresentation representation : otherRepresentations) {
                 if (!EcoreUtil.equals(dTable, representation) && isFromActiveViewpoint(session, representation)) {
-                    navigate.setVisible(true);
-                    ((IMenuManager) navigate.getInnerItem()).appendToGroup(EXISTING_REPRESENTATION_GROUP_SEPARATOR, buildOpenRepresentationAction(session, representation));
+                    openRepresentation.setVisible(true);
+                    ((IMenuManager) openRepresentation.getInnerItem()).appendToGroup(EXISTING_REPRESENTATION_GROUP_SEPARATOR, buildOpenRepresentationAction(session, representation));
                 }
             }
             if (decorator instanceof DRepresentationElement) {
-                if (buildNavigableRepresentationsMenu((IMenuManager) navigate.getInnerItem(), decorator, session)) {
+                if (buildOpenRepresentationsMenu((IMenuManager) openRepresentation.getInnerItem(), decorator, session)) {
                     // If at least one navigable representation menu
                     // has been created, we have to make the navigate menu
                     // visible
-                    navigate.setVisible(true);
+                    openRepresentation.setVisible(true);
                 }
             }
         }
     }
 
-    private boolean buildNavigableRepresentationsMenu(final IMenuManager navigate, final EObject designerObj, final Session session) {
+    private boolean buildOpenRepresentationsMenu(final IMenuManager open, final EObject designerObj, final Session session) {
         final DRepresentationElement element = (DRepresentationElement) designerObj;
         if (element.getMapping() != null) {
 
@@ -365,15 +384,15 @@ public class DTableMenuListener implements IMenuListener {
                 if (append) {
                     // We return true if at least one action has been
                     // added in the menu to make it visible
-                    return buildOpenRepresentationActions(navigate, interpreter, navDesc, element, session);
+                    return buildOpenRepresentationActions(open, interpreter, navDesc, element, session);
                 }
             }
         }
         return false;
     }
 
-    private boolean buildOpenRepresentationActions(final IMenuManager navigate, final IInterpreter interpreter, final RepresentationNavigationDescription navDesc,
-            final DRepresentationElement element, final Session session) {
+    private boolean buildOpenRepresentationActions(final IMenuManager open, final IInterpreter interpreter, final RepresentationNavigationDescription navDesc, final DRepresentationElement element,
+            final Session session) {
         boolean atLeastOneRepresentationActionsWasCreated = false;
         Collection<EObject> candidates;
         if (!StringUtil.isEmpty(navDesc.getBrowseExpression())) {
@@ -390,7 +409,7 @@ public class DTableMenuListener implements IMenuListener {
         for (final DRepresentation representation : representations) {
             if (representation instanceof DSemanticDecorator && candidates.contains(((DSemanticDecorator) representation).getTarget())) {
                 interpreter.setVariable(navDesc.getRepresentationNameVariable().getName(), representation.getName());
-                String label = new StringBuffer("Open ").append(navDesc.getName()).append(" : ").append(representation.getName()).toString();
+                String label = new StringBuffer().append(navDesc.getName()).append(representation.getName()).toString();
                 if (!StringUtil.isEmpty(navDesc.getNavigationNameExpression())) {
                     try {
                         label = interpreter.evaluateString(element.getTarget(), navDesc.getNavigationNameExpression());
@@ -398,7 +417,7 @@ public class DTableMenuListener implements IMenuListener {
                         RuntimeLoggerManager.INSTANCE.error(navDesc, ToolPackage.eINSTANCE.getRepresentationNavigationDescription_NavigationNameExpression(), e);
                     }
                 }
-                navigate.appendToGroup(NAVIGATE_REPRESENTATION_GROUP_SEPARATOR, buildOpenRepresentationAction(session, representation, label));
+                open.appendToGroup(OPEN_REPRESENTATION_GROUP_SEPARATOR, buildOpenRepresentationAction(session, representation, label));
                 atLeastOneRepresentationActionsWasCreated = true;
             }
         }
@@ -413,7 +432,7 @@ public class DTableMenuListener implements IMenuListener {
                 representationName += " " + new IdentifiedElementQuery(((DTable) representation).getDescription()).getLabel();
             }
         }
-        return buildOpenRepresentationAction(session, representation, "Open " + representationName);
+        return buildOpenRepresentationAction(session, representation, representationName);
     }
 
     private IAction buildOpenRepresentationAction(final Session session, final DRepresentation representation, final String label) {
@@ -637,7 +656,7 @@ public class DTableMenuListener implements IMenuListener {
         }
     }
 
-    private void createDetailsActions(final DTableElement currentElement, final SubContributionItem navigate) {
+    private void createDetailsActions(final DTableElement currentElement, final SubContributionItem newMenuItems) {
         if (currentElement.getMapping() != null) {
             final Session session = currentElement.getTarget() != null ? SessionManager.INSTANCE.getSession(currentElement.getTarget()) : null;
             if (session != null) {
@@ -658,9 +677,9 @@ public class DTableMenuListener implements IMenuListener {
                         }
                     }
                     if (append) {
-                        navigate.setVisible(true);
-                        ((IMenuManager) navigate.getInnerItem()).appendToGroup(NEW_REPRESENTATION_GROUP_SEPARATOR, new CreateRepresentationFromRepresentationCreationDescription(desc, currentElement,
-                                treeViewManager.getEditingDomain(), treeViewManager.getTableCommandFactory()));
+                        newMenuItems.setVisible(true);
+                        ((IMenuManager) newMenuItems.getInnerItem()).appendToGroup(NEW_REPRESENTATION_GROUP_SEPARATOR, new CreateRepresentationFromRepresentationCreationDescription(desc,
+                                currentElement, treeViewManager.getEditingDomain(), treeViewManager.getTableCommandFactory()));
                     }
                 }
             }
