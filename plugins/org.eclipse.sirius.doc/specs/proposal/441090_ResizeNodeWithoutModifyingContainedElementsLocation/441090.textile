@@ -1,23 +1,24 @@
-h1. Increase size of a container without modifying location of contained elements
+h1. Increase size of a node without modifying location of its children
 
 h2. Preamble
 
-_Summary_: Resize a container to the left, upwards, or both, without modifying the location of contained elements.
+_Summary_: Resize a node to the left, upwards, or both, without modifying the location of its children.
 
 |_. Version |_. Status |_. Date        |_. Authors |_. Changes |
 | v0.1        | DRAFT    | 2014-08-05 | lredor    | Initial version. |
-| v0.1        | PROPOSAL | 2014-08-14 | lredor    | Fix typo. |
+| v1.0        | PROPOSAL | 2014-08-14 | lredor    | Fix typo. |
+| v1.1        | PROPOSAL | 2014-08-14 | lredor    | Consider "comment 6 of bugzilla":https://bugs.eclipse.org/bugs/show_bug.cgi?id=441090#c6. |
 
 
 _Relevant tickets_:
-* "441090, Increase size of a container without modifying location of contained elements":https://bugs.eclipse.org/bugs/show_bug.cgi?id=441090
+* "441090, Increase size of a node without modifying location of its children":https://bugs.eclipse.org/bugs/show_bug.cgi?id=441090
 
 h2. Introduction
 
-The goal of this feature is to be able to resize a container to the left, upwards, or both, without modifying the location of contained elements.
+The goal of this feature is to be able to resize a node to the left, upwards, or both, without modifying the location of its children (elements inside a container and border nodes).
 !images/containerResize.gif!
-Currently, as you can see above, with the old behavior, the location of contained elements are relative to the container.
-With the new behavior, the contained elements remain at the same location.
+Currently, as you can see above, with the old behavior, the location of the children are relative to the container.
+With the new behavior, the children remain at the same location.
 
 h2. Detailed Specification
 
