@@ -138,7 +138,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
         if (permissionAuthority.canEditInstance(diagram) && permissionAuthority.canEditInstance(diagram.eContainer())) {
             final DCommand vpCmd = createEnclosingCommand();
             /* delete the diagram */
-            addDeleteDiagramTask(vpCmd, diagram);
+            vpCmd.getTasks().add(new DeleteDRepresentationTask(diagram));
             cmd = vpCmd;
         }
         return cmd;
@@ -337,31 +337,6 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
 
     private Set<EObject> getAllChildren(final EObject semanticElement) {
         return Sets.newHashSet(semanticElement.eAllContents());
-    }
-
-    /**
-     * Delete commands
-     */
-    private void addDeleteDiagramTask(final DCommand cmd, final DDiagram vp) {
-        cmd.getTasks().add(new DeleteDRepresentationTask(vp));
-    }
-
-    /**
-     * Appends a command that delete the specified diagram to the specified
-     * command.
-     * 
-     * @param cmd
-     *            the command.
-     * @param diagramToDelete
-     *            the diagram to delete.
-     */
-    public void addDeleteDiagramTasks(final DCommand cmd, final DDiagram diagramToDelete) {
-        if (permissionAuthority.canEditInstance(diagramToDelete) && permissionAuthority.canEditInstance(diagramToDelete.eContainer())) {
-            /* delete the diagram */
-            addDeleteDiagramTask(cmd, diagramToDelete);
-        } else {
-            cmd.getTasks().add(UnexecutableTask.INSTANCE);
-        }
     }
 
     /**
