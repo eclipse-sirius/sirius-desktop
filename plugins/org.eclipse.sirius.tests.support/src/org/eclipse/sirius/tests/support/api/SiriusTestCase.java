@@ -683,7 +683,7 @@ public abstract class SiriusTestCase extends TestCase {
      *            the name of the viewpoint to initialize.
      */
     protected final void initViewpoint(final String viewpointName) {
-        initSirius(viewpointName, session, semanticModel);
+        initViewpoint(viewpointName, session, semanticModel);
     }
 
     /**
@@ -697,16 +697,16 @@ public abstract class SiriusTestCase extends TestCase {
      *            the model to use to initialize the viewpoint
      * @since 1.1
      */
-    protected final void initSirius(final String viewpointName, final Session alternateSession, final EObject alternateSemanticModel) {
-        Viewpoint localSessionSirius = null;
+    protected final void initViewpoint(final String viewpointName, final Session alternateSession, final EObject alternateSemanticModel) {
+        Viewpoint localSessionViewpoint = null;
         for (final Viewpoint viewpoint : viewpoints) {
             if (viewpointName != null && viewpointName.equals(viewpoint.getName())) {
-                localSessionSirius = getViewpointFromName(viewpointName, alternateSession);
+                localSessionViewpoint = getViewpointFromName(viewpointName, alternateSession);
                 break;
             }
         }
-        if (localSessionSirius != null) {
-            Command changeSiriussSelectionCmd = new ChangeViewpointSelectionCommand(alternateSession, new ViewpointSelectionCallback(), Collections.singleton(localSessionSirius),
+        if (localSessionViewpoint != null) {
+            Command changeSiriussSelectionCmd = new ChangeViewpointSelectionCommand(alternateSession, new ViewpointSelectionCallback(), Collections.singleton(localSessionViewpoint),
                     Collections.<Viewpoint> emptySet(), new NullProgressMonitor());
             alternateSession.getTransactionalEditingDomain().getCommandStack().execute(changeSiriussSelectionCmd);
         }
@@ -719,18 +719,18 @@ public abstract class SiriusTestCase extends TestCase {
      *            the viewpoint name to activate
      */
     protected final void activateViewpoint(final String name) {
-        boolean activatedSirius = false;
+        boolean activatedViewpoint = false;
         for (final Viewpoint viewpoint : viewpoints) {
             if (name.equals(viewpoint.getName())) {
                 Viewpoint viewpointFromName = getViewpointFromName(name, session);
                 Command changeSiriussSelection = new ChangeViewpointSelectionCommand(session, selectionCallback, Collections.singleton(viewpointFromName), Collections.<Viewpoint> emptySet(),
                         new NullProgressMonitor());
                 session.getTransactionalEditingDomain().getCommandStack().execute(changeSiriussSelection);
-                activatedSirius = true;
+                activatedViewpoint = true;
                 break;
             }
         }
-        if (!activatedSirius) {
+        if (!activatedViewpoint) {
             for (final Viewpoint viewpoint : ViewpointRegistry.getInstance().getViewpoints()) {
                 if (name.equals(viewpoint.getName())) {
                     Viewpoint viewpointFromName = getViewpointFromName(name, session);
@@ -741,7 +741,7 @@ public abstract class SiriusTestCase extends TestCase {
                     Command changeSiriussSelection = new ChangeViewpointSelectionCommand(session, selectionCallback, Collections.singleton(viewpointFromName), Collections.<Viewpoint> emptySet(),
                             new NullProgressMonitor());
                     session.getTransactionalEditingDomain().getCommandStack().execute(changeSiriussSelection);
-                    activatedSirius = true;
+                    activatedViewpoint = true;
                     break;
                 }
             }
@@ -754,26 +754,26 @@ public abstract class SiriusTestCase extends TestCase {
      * @param name
      *            the viewpoint name to deactivate
      */
-    protected final void deactivateSirius(final String name) {
-        boolean deactivatedSirius = false;
+    protected final void deactivateViewpoint(final String name) {
+        boolean deactivatedViewpoint = false;
         for (final Viewpoint viewpoint : viewpoints) {
             if (name.equals(viewpoint.getName())) {
                 Viewpoint viewpointFromName = getViewpointFromName(name, session);
                 Command changeSiriussSelection = new ChangeViewpointSelectionCommand(session, selectionCallback, Collections.<Viewpoint> emptySet(), Collections.singleton(viewpointFromName),
                         new NullProgressMonitor());
                 session.getTransactionalEditingDomain().getCommandStack().execute(changeSiriussSelection);
-                deactivatedSirius = true;
+                deactivatedViewpoint = true;
                 break;
             }
         }
-        if (!deactivatedSirius) {
+        if (!deactivatedViewpoint) {
             for (final Viewpoint viewpoint : ViewpointRegistry.getInstance().getViewpoints()) {
                 if (name.equals(viewpoint.getName())) {
                     Viewpoint viewpointFromName = getViewpointFromName(name, session);
                     Command changeSiriussSelection = new ChangeViewpointSelectionCommand(session, selectionCallback, Collections.<Viewpoint> emptySet(), Collections.singleton(viewpointFromName),
                             new NullProgressMonitor());
                     session.getTransactionalEditingDomain().getCommandStack().execute(changeSiriussSelection);
-                    deactivatedSirius = true;
+                    deactivatedViewpoint = true;
                     break;
                 }
             }
@@ -867,8 +867,8 @@ public abstract class SiriusTestCase extends TestCase {
                 for (final RepresentationDescription description : descriptions) {
                     if (description.getName().equals(representationDescriptionName)) {
                         Viewpoint viewpointOfRegistry = (Viewpoint) description.eContainer();
-                        Viewpoint localSirius = getViewpointFromName(viewpointOfRegistry.getName());
-                        RepresentationDescription localDescription = getLocalSessionRepresentationDescription(localSirius, representationDescriptionName);
+                        Viewpoint localViewpoint = getViewpointFromName(viewpointOfRegistry.getName());
+                        RepresentationDescription localDescription = getLocalSessionRepresentationDescription(localViewpoint, representationDescriptionName);
                         representation = DialectManager.INSTANCE.createRepresentation(name, semantic, localDescription, sessionToUse, new NullProgressMonitor());
                         return;
                     }
@@ -891,7 +891,7 @@ public abstract class SiriusTestCase extends TestCase {
      * Get a {@link RepresentationDescription} ref from the current session
      * ResourceSet.
      * 
-     * @param localSirius
+     * @param localViewpoint
      *            the Sirius local to the current session ResourceSet containing
      *            the {@link RepresentationDescription} to get
      * 
@@ -900,8 +900,8 @@ public abstract class SiriusTestCase extends TestCase {
      * 
      * @return the {@link RepresentationDescription} to get
      */
-    private RepresentationDescription getLocalSessionRepresentationDescription(Viewpoint localSirius, String representationDescriptionName) {
-        Iterable<RepresentationDescription> candidates = new ViewpointQuery(localSirius).getAllRepresentationDescriptions();
+    private RepresentationDescription getLocalSessionRepresentationDescription(Viewpoint localViewpoint, String representationDescriptionName) {
+        Iterable<RepresentationDescription> candidates = new ViewpointQuery(localViewpoint).getAllRepresentationDescriptions();
         RepresentationDescription result = null;
         for (RepresentationDescription localDescription : candidates) {
             if (representationDescriptionName.equals(localDescription.getName())) {
@@ -931,20 +931,20 @@ public abstract class SiriusTestCase extends TestCase {
      *            the viewpointName to look for
      * 
      * @param sessionToUse
-     *            the Session from which ResourceSet to return the Sirius
+     *            the Session from which ResourceSet to return the Viewpoint
      * 
      * @return the first {@link Viewpoint} of the viewpoints Set, return a
-     *         logical Sirius from the session's ResourceSet and not from the
-     *         SiriusRegistry's ResourceSet
+     *         logical Viewpoint from the session's ResourceSet and not from the
+     *         {@link ViewpointRegistry}'s ResourceSet
      */
     public Viewpoint getViewpointFromName(String viewpointName, Session sessionToUse) {
         Viewpoint localViewpoint = null;
         for (Viewpoint viewpoint : viewpoints) {
             if (viewpoint.getName() != null && viewpoint.getName().equals(viewpointName)) {
                 URI viewpointResourceURI = viewpoint.eResource().getURI();
-                Resource newSiriusResource = sessionToUse.getTransactionalEditingDomain().getResourceSet().getResource(viewpointResourceURI, true);
-                if (!newSiriusResource.getContents().isEmpty() && newSiriusResource.getContents().get(0) instanceof Group) {
-                    Group group = (Group) newSiriusResource.getContents().get(0);
+                Resource newViewpointResource = sessionToUse.getTransactionalEditingDomain().getResourceSet().getResource(viewpointResourceURI, true);
+                if (!newViewpointResource.getContents().isEmpty() && newViewpointResource.getContents().get(0) instanceof Group) {
+                    Group group = (Group) newViewpointResource.getContents().get(0);
                     Iterator<Viewpoint> iter = group.getOwnedViewpoints().iterator();
 
                     while (iter.hasNext() && localViewpoint == null) {
@@ -1688,12 +1688,12 @@ public abstract class SiriusTestCase extends TestCase {
      * Find a viewpoint by name from the global registry.
      * 
      * @param name
-     *            name of the Sirius to look for.
-     * @return the first Sirius found in the registry with the specified name,
-     *         if any. The instance returned is the one from the Sirius
+     *            name of the {@link Viewpoint} to look for.
+     * @return the first {@link Viewpoint} found in the registry with the specified name,
+     *         if any. The instance returned is the one from the {@link Viewpoint}
      *         registry's editing domain.
      */
-    protected Option<Viewpoint> findSirius(String name) {
+    protected Option<Viewpoint> findViewpoint(String name) {
         for (Viewpoint vp : ViewpointRegistry.getInstance().getViewpoints()) {
             if (vp.getName().equals(name)) {
                 return Options.newSome(vp);
