@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,9 +51,9 @@ import com.google.common.collect.Collections2;
 
 /**
  * Transform operation object to task.
- *
+ * 
  * @author jdupont
- *
+ * 
  */
 public class ModelOperationToTask implements Function<ModelOperation, ICommandTask> {
 
@@ -80,10 +80,9 @@ public class ModelOperationToTask implements Function<ModelOperation, ICommandTa
      */
     private final CommandContext context;
 
-
     /**
      * Transform model operations to tasks instances.
-     *
+     * 
      * @param extPackage
      *            access to semantic model.
      * @param uiCallback
@@ -103,7 +102,7 @@ public class ModelOperationToTask implements Function<ModelOperation, ICommandTa
 
     /**
      * Create a new task.
-     *
+     * 
      * @param op
      *            the operation
      * @return the created task
@@ -134,9 +133,9 @@ public class ModelOperationToTask implements Function<ModelOperation, ICommandTa
         } else if (op instanceof DeleteView) {
             task = new RemoveElementTask(extPackage, context, (DeleteView) op, interpreter);
         } else if (op instanceof ExternalJavaAction) {
-            task = new ExternalJavaActionTask(context, extPackage, (ExternalJavaAction) op, session, uiCallback);
+            task = new ExternalJavaActionTask(context, extPackage, (ExternalJavaAction) op, interpreter, uiCallback);
         } else if (op instanceof ExternalJavaActionCall) {
-            task = new ExternalJavaActionTask(context, extPackage, ((ExternalJavaActionCall) op).getAction(), session, uiCallback);
+            task = new ExternalJavaActionTask(context, extPackage, ((ExternalJavaActionCall) op).getAction(), interpreter, uiCallback);
         } else if (op instanceof Switch) {
             task = new SwitchTask(context, extPackage, (Switch) op, session, uiCallback);
         }

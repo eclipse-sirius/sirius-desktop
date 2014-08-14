@@ -24,6 +24,7 @@ h4. Changes in @org.eclipse.sirius@
 * The @org.eclipse.sirius.business.api.helper.task.AbstractDeleteDRepresentationElementTask@ class has been renamed into @DeleteEObjectTask@.
 * @org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException@ now can take several EObjects in constructor and a method @LockedInstanceException.getLockedElements()@ has been added to get all EObjects put in constructor.
 @org.eclipse.sirius.tools.api.command.InvalidPermissionCommand@ now can take several EObjects in constructor to throw a @LockedInstanceException@ with several EObjects.
+* The @org.eclipse.sirius.tools.api.ui.IExternalAction2@ interface has been removed. It was created to disable the change listener when the action indicates it will not delete elements.
 
 h4. Changes in @org.eclipse.sirius.common@
 
