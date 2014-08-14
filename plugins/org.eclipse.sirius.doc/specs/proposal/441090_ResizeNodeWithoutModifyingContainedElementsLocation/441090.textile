@@ -8,6 +8,7 @@ _Summary_: Resize a node to the left, upwards, or both, without modifying the lo
 | v0.1        | DRAFT    | 2014-08-05 | lredor    | Initial version. |
 | v1.0        | PROPOSAL | 2014-08-14 | lredor    | Fix typo. |
 | v1.1        | PROPOSAL | 2014-08-14 | lredor    | Consider "comment 6 of bugzilla":https://bugs.eclipse.org/bugs/show_bug.cgi?id=441090#c6. |
+| v1.2        | PROPOSAL | 2014-08-14 | lredor    | Consider "comment 5 of bugzilla":https://bugs.eclipse.org/bugs/show_bug.cgi?id=441090#c6. |
 
 
 _Relevant tickets_:
@@ -22,7 +23,7 @@ With the new behavior, the children remain at the same location.
 
 h2. Detailed Specification
 
-The old behavior, the current one, will remain available with a specific shortcut. Shift, Ctrl and Alt is already used by other GMF behaviors during resize. So we must use a character key as shortcut. The chosen character shortcut key is *m* as in "move children".
+The old behavior, the current one, will remain available with a specific shortcut. Shift, Ctrl and Alt is already used by other GMF behaviors during resize. So we must use a combination of "CTRL" + a character key as shortcut. The chosen character shortcut key is *r* as in "relative" (the position of the children would remain relative to the resized node).
 
 For information the other shortcuts used by GMF are:
 * Control key: Centered resize
@@ -57,3 +58,8 @@ Sample of tests that resize elements:
 h2. Implementation choices and tradeoffs
 
 It would actually be a good idea to make the new behavior the default one. Another choice would be to enable the new behavior with the shortcut.
+
+Excluded shortcuts:
+* The shortcut is not only a character key because this can be in conflict with the direct edit mode (if enabled).
+* The combination with ALT key is already used to activate menu.
+* The combination with SHIFT key is already used for uppercase key of direct edit mode.
