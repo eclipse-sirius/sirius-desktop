@@ -18,7 +18,7 @@ import java.util.Set;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.business.api.helper.task.DeleteDRepresentationElementTask;
+import org.eclipse.sirius.business.api.helper.task.DeleteEObjectTask;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
@@ -147,7 +147,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
     private Command buildDeleteDiagramElementFromDiagram() {
         if (permissionAuthority.canEditInstance(diagramElement) && permissionAuthority.canEditInstance(diagramElement.eContainer())) {
             final DCommand cmd = createEnclosingCommand();
-            cmd.getTasks().add(new DeleteDRepresentationElementTask(diagramElement, modelAccessor));
+            cmd.getTasks().add(new DeleteEObjectTask(diagramElement, modelAccessor));
 
             final List<EObject> contents = Lists.newArrayList(this.modelAccessor.eAllContents(diagramElement, "EdgeTarget"));
             contents.add(diagramElement);
@@ -155,7 +155,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
                 if (element instanceof EdgeTarget) {
                     final EdgeTarget target = (EdgeTarget) element;
                     for (final DEdge edge : Iterables.concat(target.getIncomingEdges(), target.getOutgoingEdges())) {
-                        cmd.getTasks().add(new DeleteDRepresentationElementTask(edge, modelAccessor));
+                        cmd.getTasks().add(new DeleteEObjectTask(edge, modelAccessor));
                     }
                 }
             }
@@ -237,7 +237,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
                 Option<EdgeMapping> edgeMapping = new IEdgeMappingQuery(((DEdge) diagramElement).getActualMapping()).getEdgeMapping();
                 if (edgeMapping.some() && !edgeMapping.get().isUseDomainElement()) {
                     // Add the delete task for relation edges only.
-                    cmd.getTasks().add(new DeleteDRepresentationElementTask(diagramElement, modelAccessor));
+                    cmd.getTasks().add(new DeleteEObjectTask(diagramElement, modelAccessor));
                 }
             }
         } else {
@@ -286,14 +286,14 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
             if (parentDiagram != null) {
                 final Set<DSemanticDecorator> diagramElements = taskHelper.getDElementToClearFromSemanticElements(parentDiagram, allSemanticElements);
                 for (final DSemanticDecorator decorator : diagramElements) {
-                    result.getTasks().add(new DeleteDRepresentationElementTask(decorator, modelAccessor));
+                    result.getTasks().add(new DeleteEObjectTask(decorator, modelAccessor));
                     // If the semantic decorator is related to edges, these
                     // edges
                     // should also be deleted
                     if (decorator instanceof EdgeTarget) {
                         EdgeTarget edgeTarget = (EdgeTarget) decorator;
                         for (final DEdge edge : Iterables.concat(edgeTarget.getIncomingEdges(), edgeTarget.getOutgoingEdges())) {
-                            result.getTasks().add(new DeleteDRepresentationElementTask(edge, modelAccessor));
+                            result.getTasks().add(new DeleteEObjectTask(edge, modelAccessor));
                         }
                     }
                 }
@@ -303,7 +303,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
              * Now delete all the semantic elements
              */
             for (final EObject semantic : allSemanticElements) {
-                DeleteDRepresentationElementTask deleteSemanticElementTask = new DeleteDRepresentationElementTask(semantic, modelAccessor);
+                DeleteEObjectTask deleteSemanticElementTask = new DeleteEObjectTask(semantic, modelAccessor);
                 result.getTasks().add(deleteSemanticElementTask);
             }
 

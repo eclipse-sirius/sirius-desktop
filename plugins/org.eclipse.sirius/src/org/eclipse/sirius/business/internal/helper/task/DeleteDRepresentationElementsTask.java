@@ -19,7 +19,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
-import org.eclipse.sirius.business.api.helper.task.DeleteDRepresentationElementTask;
+import org.eclipse.sirius.business.api.helper.task.DeleteEObjectTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.TaskExecutor;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
@@ -94,7 +94,7 @@ public class DeleteDRepresentationElementsTask extends AbstractCommandTask {
 
         final Set<DSemanticDecorator> vpElements = taskHelper.getDElementToClearFromSemanticElements(root, completeCollection(this.cmd.getDeletedObjects()));
         for (DSemanticDecorator semDec : vpElements) {
-            tasks.add(new DeleteDRepresentationElementTask(semDec, modelAccessor));
+            tasks.add(new DeleteEObjectTask(semDec, modelAccessor));
         }
 
         if (TaskExecutor.canExecute(tasks)) {

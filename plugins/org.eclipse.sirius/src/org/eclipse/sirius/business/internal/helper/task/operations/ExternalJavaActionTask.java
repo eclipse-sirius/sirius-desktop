@@ -22,7 +22,7 @@ import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.api.helper.task.DeleteDRepresentationElementTask;
+import org.eclipse.sirius.business.api.helper.task.DeleteEObjectTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.TaskExecutor;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
@@ -240,7 +240,7 @@ public class ExternalJavaActionTask extends AbstractOperationTask {
             for (final DSemanticDecorator dElement : dElements) {
                 if (dElement instanceof DRepresentationElement) {
                     ModelAccessor modelAccessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(dElement);
-                    DeleteDRepresentationElementTask task = new DeleteDRepresentationElementTask(dElement, modelAccessor);
+                    DeleteEObjectTask task = new DeleteEObjectTask(dElement, modelAccessor);
                     tasks.add(task);
                 } else if (dElement instanceof DRepresentation) {
                     DeleteDRepresentationTask task = new DeleteDRepresentationTask((DRepresentation) dElement);

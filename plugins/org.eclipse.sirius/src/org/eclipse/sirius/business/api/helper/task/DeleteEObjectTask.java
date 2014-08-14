@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  * 
  */
-public class DeleteDRepresentationElementTask extends AbstractCommandTask {
+public class DeleteEObjectTask extends AbstractCommandTask {
 
     /** The object to delete. */
     protected final EObject objectToDelete;
@@ -47,7 +47,7 @@ public class DeleteDRepresentationElementTask extends AbstractCommandTask {
      * @param accessor
      *            the {@link ModelAccessor} to use to perform the deletion
      */
-    public DeleteDRepresentationElementTask(EObject objectToDelete, ModelAccessor accessor) {
+    public DeleteEObjectTask(EObject objectToDelete, ModelAccessor accessor) {
         this(objectToDelete, accessor, null);
     }
 
@@ -62,7 +62,7 @@ public class DeleteDRepresentationElementTask extends AbstractCommandTask {
      *            a predicate to tell which {@link EReference} to ignore in the
      *            dangling references deletion
      */
-    public DeleteDRepresentationElementTask(EObject objectToDelete, ModelAccessor accessor, final EReferencePredicate eReferencesToIgnores) {
+    public DeleteEObjectTask(EObject objectToDelete, ModelAccessor accessor, final EReferencePredicate eReferencesToIgnores) {
         this.objectToDelete = objectToDelete;
         this.accessor = accessor;
         this.danglingEReferencesToIgnores = new EReferencePredicate() {
@@ -114,7 +114,7 @@ public class DeleteDRepresentationElementTask extends AbstractCommandTask {
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
      */
     public String getLabel() {
-        return "Delete representation element task";
+        return "Delete EObject task";
     }
 
 }
