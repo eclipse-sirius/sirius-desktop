@@ -114,44 +114,31 @@ public class ModelOperationToTask implements Function<ModelOperation, ICommandTa
         if (optionalDialectTask.some() && optionalDialectTask.get() instanceof AbstractOperationTask) {
             task = (AbstractOperationTask) optionalDialectTask.get();
         } else if (op instanceof CreateInstance) {
-            final CreateInstance createOp = (CreateInstance) op;
-            task = new CreateInstanceTask(context, extPackage, createOp, interpreter);
+            task = new CreateInstanceTask(context, extPackage, (CreateInstance) op, interpreter);
         } else if (op instanceof SetValue) {
-            final SetValue setOp = (SetValue) op;
-            task = new SetValueTask(context, extPackage, setOp, interpreter);
+            task = new SetValueTask(context, extPackage, (SetValue) op, interpreter);
         } else if (op instanceof SetObject) {
-            final SetObject setOp = (SetObject) op;
-            task = new SetValueTask(context, extPackage, setOp, interpreter);
+            task = new SetValueTask(context, extPackage, (SetObject) op, interpreter);
         } else if (op instanceof ChangeContext) {
-            final ChangeContext changeOp = (ChangeContext) op;
-            task = new ChangeContextTask(context, extPackage, changeOp, interpreter);
+            task = new ChangeContextTask(context, extPackage, (ChangeContext) op, interpreter);
         } else if (op instanceof MoveElement) {
-            final MoveElement moveOp = (MoveElement) op;
-            task = new MoveElementTask(context, extPackage, moveOp, interpreter);
+            task = new MoveElementTask(context, extPackage, (MoveElement) op, interpreter);
         } else if (op instanceof RemoveElement) {
-            final RemoveElement removeOp = (RemoveElement) op;
-            task = new RemoveElementTask(context, extPackage, removeOp, interpreter);
+            task = new RemoveElementTask(context, extPackage, (RemoveElement) op, interpreter);
         } else if (op instanceof For) {
-            final For forOp = (For) op;
-            task = new ForTask(context, extPackage, forOp, interpreter, uiCallback);
+            task = new ForTask(context, extPackage, (For) op, interpreter, uiCallback);
         } else if (op instanceof Unset) {
-            final Unset unset = (Unset) op;
-            task = new UnsetTask(context, extPackage, unset, interpreter);
+            task = new UnsetTask(context, extPackage, (Unset) op, interpreter);
         } else if (op instanceof If) {
-            final If ifOp = (If) op;
-            task = new IfTask(context, extPackage, ifOp, interpreter);
+            task = new IfTask(context, extPackage, (If) op, interpreter);
         } else if (op instanceof DeleteView) {
-            final DeleteView deleteView = (DeleteView) op;
-            task = new RemoveElementTask(extPackage, context, deleteView, interpreter);
+            task = new RemoveElementTask(extPackage, context, (DeleteView) op, interpreter);
         } else if (op instanceof ExternalJavaAction) {
-            final ExternalJavaAction externalJavaAction = (ExternalJavaAction) op;
-            task = new ExternalJavaActionTask(context, extPackage, externalJavaAction, session, uiCallback);
+            task = new ExternalJavaActionTask(context, extPackage, (ExternalJavaAction) op, session, uiCallback);
         } else if (op instanceof ExternalJavaActionCall) {
-            final ExternalJavaActionCall call = (ExternalJavaActionCall) op;
-            task = new ExternalJavaActionTask(context, extPackage, call.getAction(), session, uiCallback);
+            task = new ExternalJavaActionTask(context, extPackage, ((ExternalJavaActionCall) op).getAction(), session, uiCallback);
         } else if (op instanceof Switch) {
-            final Switch switchOp = (Switch) op;
-            task = new SwitchTask(context, extPackage, switchOp, session, uiCallback);
+            task = new SwitchTask(context, extPackage, (Switch) op, session, uiCallback);
         }
         return task;
     }
