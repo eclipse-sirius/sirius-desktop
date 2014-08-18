@@ -29,6 +29,7 @@ import org.eclipse.sirius.table.metamodel.table.description.CreateCrossColumnToo
 import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionFactory;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
+import org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping;
 
 /**
  * This is the item provider adapter for a
@@ -157,7 +158,11 @@ public class CrossTableDescriptionItemProvider extends TableDescriptionItemProvi
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CROSS_TABLE_DESCRIPTION__OWNED_COLUMN_MAPPINGS, DescriptionFactory.eINSTANCE.createElementColumnMapping()));
 
-        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CROSS_TABLE_DESCRIPTION__INTERSECTION, DescriptionFactory.eINSTANCE.createIntersectionMapping()));
+        IntersectionMapping newIntersection = DescriptionFactory.eINSTANCE.createIntersectionMapping();
+
+        newIntersection.setLabelExpression("X");
+
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CROSS_TABLE_DESCRIPTION__INTERSECTION, newIntersection));
 
         collectCreateCrossColumnTool(newChildDescriptors);
     }
