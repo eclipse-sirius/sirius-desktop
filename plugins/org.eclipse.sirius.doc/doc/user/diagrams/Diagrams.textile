@@ -67,6 +67,50 @@ The user defines some bend-points:
 The user executes the "Remove Bend-points" action:
 !images/afterRemoveBendpoints.png!
  
+h3(#distribute). Distribute elements
+
+Four new actions allow to distribute shapes: 
+
+!images/distribute_initialState.png!
+
+* Distribute centers evenly horizontally: Distributes the selected shapes so that the gap between horizontal centers of each selected shapes will be the same.
+
+!images/distribute_Centers.png!
+
+* Distribute with uniform gaps horizontally: Distributes the selected shapes so that the gap between the left side and the right side of each consecutive shapes will be the same.
+
+!images/distribute_WithUniformGap.png!
+
+* Distribute centers evenly vertically: Distributes the selected shapes so that the gap between vertical centers of each selected shapes will be the same.
+
+* Distribute with uniform gaps vertically: the gap between the bottom side and the top side of each consecutive shapes will be the same.
+
+These new actions are also available in contextual menu _Format/Distribute_ or in menu bar _ Diagram/Distribute_.
+
+Only the top level shapes of the selection are retained for these actions: if inner shapes, border labels or edges are selected, they are ignored. 
+These actions are enabled only if the selected shapes have the same direct parent. At least 3 shapes should be selected to enable distribute actions.
+For border nodes, they will be enabled only if all selected border nodes have the same parent and are on the same axis (top and bottom sides for horizontal actions, left and right for vertical actions). The overlap is forbidden for border nodes, so in some conditions (location already used), these actions may not have accurate results.
+
+h4. First and last shapes
+
+For all distribute actions, the first and the last shapes do not move. The first and last shapes do not depend on the selection order. They depend on the location of each selected shapes and the chosen action.
+
+For horizontal distribution with uniform gaps:
+* the first shape is the leftmost one (with the minimum x location). If several shapes have the same x location, the highest one is the first.
+* the last shape is the rightmost one (with the right side with the maximum x coordinate). If several shapes are aligned to the right, the lowest one is the last.
+
+For horizontal centered distribution:
+* the first shape is the leftmost one (with its center at the minimum x coordinate). If several shapes are aligned on center, the one with the highest center is the first.
+* the last shape is the rightmost one (with its center at the maximum x coordinate). If several shapes are aligned by center, the one with the lowest center is the last.
+
+For vertical distribution with uniform gaps:
+* the first shape is the highest one (with the minimum y location). If several shapes have the same y location, the leftmost one is the first.
+* the last shape is the lowest one (with the bottom side with the maximum y coordinate). If several shapes are aligned to the bottom, the rightmost one is the last.
+
+For vertical centered distribution:
+* the first shape is the highest one (with its center at the minimum y coordinate). If several shapes are aligned on middle, the leftmost one is the first.
+* the last shape is the lowest one (with the bottom side with the maximum y coordinate). If several shapes are aligned by middle, the rightmost one is the last.
+ 
 h3. Hiding elements
 
 Every graphical element on a diagram can be hidden explicitly. To do that, simply right click on the graphical element (or elements if you want to hide several elements at once) you want to hide. Then, choose __Show/Hide__ / __Hide Element__. The graphical element is now hidden from view.

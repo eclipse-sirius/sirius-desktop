@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,5 +40,8 @@ public interface RequestConstants extends org.eclipse.gmf.runtime.diagram.ui.req
 
     /** request type for quotation rotation. */
     String REQ_ROTATE_BENDPOINT = "rotateBendpoint";
+
+    /** request to distribute shapes. */
+    String REQ_DISTRIBUTE = "distribute";
 
 }

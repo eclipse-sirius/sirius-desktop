@@ -15,11 +15,9 @@ h3. User-Visible Changes
 * When a node, container or not, is resized to the left, upwards, or both, the location of its children (elements inside a container and border nodes) is not changed. It is possible to retrieve the previous behavior by pressing the F3 function key during the resize.
 !images/containerResize-changedBehavior.gif!
 * The "snap to shapes" is now enabled by default (see  _Sirius > Sirius Diagram > Rulers and Grid_ preference page). This is true only for new diagrams. The existing diagrams are not impacted.
-
 * The "Navigate" top-level contextual menu entry with mixed actions for creating new representations and opening existing ones has been changed by two top-level menus:
 ** One named "New", which lists only the available actions to create new representations on the selected element.
 ** One named "Open", which lists only the existing representations on the selected element. 
-
 * When a shape is resized (no matter the direction), the edge(s) connection location (toward or from this one) is kept. Before that, edges connections moved according to the ratio of the resizing.
 Example with this initial state before resizing:
 !images/shapeResize1.png!
@@ -27,6 +25,11 @@ Result after resizing without this feature (the edges have moved):
 !images/shapeResize2.png!
 Result after resizing with this feature (the edges keep the same location):
 !images/shapeResize3.png!
+* There is now the possibility to distribute the selected shapes (see "Sirius User Manual/Diagrams/Features Overview/Distribute elements":user/diagrams/Diagrams.html#distribute for more details):
+** Distribute horizontally with uniform gaps
+** Distribute centers evenly horizontally
+** Distribute vertically with uniform gaps
+** Distribute centers evenly vertically
 
 h3. Specifier-Visible Changes
 
@@ -82,6 +85,10 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 * @org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery@ now provides two new methods @isEdgeWithRectilinearRoutingStyle()@ and @isEdgeWithObliqueRoutingStyle()@ that respectively checks if an edge has a rectilinear routing style or an oblique routing style.
 * @org.eclipse.sirius.diagram.ui.business.api.query.ConnectionQuery@ now provides two new methods @getAbsoluteBendpointsConstraint()@ and @getRelativeBendpointsConstraint()@ that returns an option of list of @Bendpoint@ of a connection whether they are respectively @AbsoluteBendpoint@ or @RelatveBendpoint@.
 * @org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery@ also provides two new methods @isEdgeWithRectilinearRoutingStyle()@ and @isEdgeWithObliqueRoutingStyle()@ that respectively checks if an edge has a rectilinear routing style or an oblique routing style.
+* @org.eclipse.sirius.diagram.ui.tools.api.requests.DistributeRequest@: A new @ChangeBoundsRequest@ to manage distribution of shapes.
+* A constant @REQ_DISTRIBUTE@ has been added in @org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants@ to identify the new type of request, @DistributeRequest@.
+* Constants have been added in @org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds@ for the new drop down menu in tabbar and for the four new distribute actions.
+* Constants have been added in @org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath@ for the icon path of the four new distribute actions.
 
 h4. Changes in @org.eclipse.sirius.tree.ui@
 

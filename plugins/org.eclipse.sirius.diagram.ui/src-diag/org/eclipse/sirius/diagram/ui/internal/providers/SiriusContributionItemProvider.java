@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,16 +14,19 @@ import org.eclipse.gmf.runtime.common.ui.services.action.contributionitem.Abstra
 import org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor;
 import org.eclipse.gmf.runtime.diagram.ui.printing.actions.PrintPreviewAction;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.DeselectAllAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SaveAsImageFileAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SelectHiddenElementsAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.TabbarRouterAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.DistributeAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.ArrangeBorderedNodesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.CopyLayoutAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.PasteLayoutAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.PinElementsEclipseAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.UnpinElementsEclipseAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.DistributeMenuManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.print.SiriusDiagramPrintPreviewAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.print.SiriusEnhancedPrintActionHelper;
 import org.eclipse.ui.IWorkbenchPage;
@@ -64,9 +67,25 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
             result = TabbarRouterAction.createTreeRouterAction(workbenchPage);
         } else if (ActionIds.DESELECT_ALL.equals(actionId)) {
             result = new DeselectAllAction();
+        } else if (ActionIds.DISTRIBUTE_HORIZONTALLY_WITH_UNIFORM_GAPS.equals(actionId)) {
+            result = DistributeAction.createDistributeHorizontallyWithUniformGapsAction(workbenchPage, false);
+        } else if (ActionIds.DISTRIBUTE_CENTERS_HORIZONTALLY.equals(actionId)) {
+            result = DistributeAction.createDistributeCentersHorizontallyAction(workbenchPage, false);
+        } else if (ActionIds.DISTRIBUTE_VERTICALLY_WITH_UNIFORM_GAPS.equals(actionId)) {
+            result = DistributeAction.createDistributeVerticallyWithUniformGapsAction(workbenchPage, false);
+        } else if (ActionIds.DISTRIBUTE_CENTERS_VERTICALLY.equals(actionId)) {
+            result = DistributeAction.createDistributeCentersVerticallyAction(workbenchPage, false);
         } else {
             result = super.createAction(actionId, partDescriptor);
         }
         return result;
+    }
+
+    @Override
+    protected IMenuManager createMenuManager(String menuId, IWorkbenchPartDescriptor partDescriptor) {
+        if (menuId.equals(ActionIds.MENU_DISTRIBUTE)) {
+            return new DistributeMenuManager();
+        }
+        return super.createMenuManager(menuId, partDescriptor);
     }
 }

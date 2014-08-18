@@ -148,4 +148,22 @@ public interface DiagramImagesPath {
 
     /** deselect all icon. */
     String DESELECT_ALL_ICON = "icons/deselectAll.gif"; //$NON-NLS-1$
+
+    /**
+     * Path of the action's image to distribute centers horizontally.
+     */
+    String DISTRIBUTE_CENTERS_HORIZONTALLY = "icons/distributeCentersHorizontal.gif";
+
+    /**
+     * Path of the action's image to distribute with uniform gaps horizontally.
+     */
+    String DISTRIBUTE_WITH_UNIFORM_GAPS_HORIZONTALLY = "icons/distributeWithUniformGapHorizontal.gif";
+
+    /**
+     * Path of the action's image to distribute middle vertically.
+     */
+    String DISTRIBUTE_CENTERS_VERTICALLY = "icons/distributeCentersVertical.gif";
+
+    /** Path of the action's image to distribute with uniform gaps vertically. */
+    String DISTRIBUTE_WITH_UNIFORM_GAPS_VERTICALLY = "icons/distributeWithUniformGapVertical.gif";
 }

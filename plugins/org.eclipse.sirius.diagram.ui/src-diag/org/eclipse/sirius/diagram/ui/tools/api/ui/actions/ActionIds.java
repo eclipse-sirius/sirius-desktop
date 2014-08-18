@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.ui.actions;
+
+import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 
 /**
  * A list of constants defining the diagram action and menu action ids.
@@ -59,4 +61,20 @@ public interface ActionIds {
 
     /** Action to deselect all elements (select diagram). **/
     String DESELECT_ALL = "deselectAll";
+
+    /** Id of menu that groups distribute actions. **/
+    String MENU_DISTRIBUTE = "distributeMenu";
+
+    /** Action's id to distribute centers horizontally. */
+    String DISTRIBUTE_CENTERS_HORIZONTALLY = RequestConstants.REQ_DISTRIBUTE + "CentersHorizontally";
+
+    /** Action's id to distribute horizontally with uniform gaps. */
+    String DISTRIBUTE_HORIZONTALLY_WITH_UNIFORM_GAPS = RequestConstants.REQ_DISTRIBUTE + "HorizontallyWithUniformGaps";
+
+    /** Action's id to distribute centers vertically. */
+    String DISTRIBUTE_CENTERS_VERTICALLY = RequestConstants.REQ_DISTRIBUTE + "CentersVertically";
+
+    /** Action's id to distribute vertically with uniform gaps. */
+    String DISTRIBUTE_VERTICALLY_WITH_UNIFORM_GAPS = RequestConstants.REQ_DISTRIBUTE + "VerticallyWithUniformGaps";
+
 }

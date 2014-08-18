@@ -14,6 +14,10 @@ icons/collapseall.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/e
 icons/delete.gif - org.eclipse.ui	org.eclipse.ui/icons/full/obj16/delete_obj.gif
 icons/deleteModel.gif - org.eclipse.search - org.eclipse.search/icons/full/elcl16/search_remall.gif
 icons/disabled_co.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/disabled_co.gif
+icons/distributeCentersHorizontal.gif - org.eclipse.gef - org.eclipse.gef/src/org/eclipse/gef/internal/icons/alignleft.gif
+icons/distributeCentersVertical.gif - org.eclipse.gef - org.eclipse.gef/src/org/eclipse/gef/internal/icons/alignleft.gif
+icons/distributeWithUniformGapHorizontal.gif - org.eclipse.gef - org.eclipse.gef/src/org/eclipse/gef/internal/icons/alignleft.gif
+icons/distributeWithUniformGapVertical.gif - org.eclipse.gef - org.eclipse.gef/src/org/eclipse/gef/internal/icons/alignleft.gif
 icons/enabled_co.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/enabled_co.gif
 icons/expand.gif - org.eclipse.gmf.runtime.diagram.ui - org.eclipse.gmf.runtime.diagram.ui/icons/expand.gif
 icons/expandall.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/expandall.gif

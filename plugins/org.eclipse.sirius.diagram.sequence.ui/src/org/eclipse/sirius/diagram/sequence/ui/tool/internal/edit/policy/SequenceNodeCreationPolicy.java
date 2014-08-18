@@ -57,6 +57,7 @@ import org.eclipse.sirius.diagram.ui.graphical.edit.policies.CreationUtil;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.NodeCreationEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
+import org.eclipse.sirius.diagram.ui.tools.api.requests.DistributeRequest;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
@@ -241,5 +242,10 @@ public class SequenceNodeCreationPolicy extends NodeCreationEditPolicy {
         final IDiagramCommandFactoryProvider cmdFactoryProvider = (IDiagramCommandFactoryProvider) adapter;
         final IDiagramCommandFactory diagramCommandFactory = cmdFactoryProvider.getCommandFactory(domain);
         return new SequenceDelegatingCommandFactory(diagramCommandFactory, domain, seqDiag, startingEndPredecessor, finishingEndPredecessor, location);
+    }
+
+    @Override
+    protected Command getDistributeCommand(DistributeRequest request) {
+        return UnexecutableCommand.INSTANCE;
     }
 }

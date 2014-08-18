@@ -45,6 +45,8 @@ import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalC
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.sirius.diagram.ui.internal.edit.commands.DistributeCommand;
+import org.eclipse.sirius.diagram.ui.tools.api.requests.DistributeRequest;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.SnapCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.GMFRuntimeCompatibility;
 
@@ -57,6 +59,16 @@ import org.eclipse.sirius.diagram.ui.tools.internal.ui.GMFRuntimeCompatibility;
  * 
  */
 public class SiriusContainerEditPolicy extends ContainerEditPolicy {
+
+    @Override
+    public Command getCommand(Request request) {
+        if (org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants.REQ_DISTRIBUTE.equals(request.getType())) {
+            return getDistributeCommand((DistributeRequest) request);
+        }
+
+        return super.getCommand(request);
+    }
+
     // CHECKSTYLE:OFF
     /**
      * Override this method for version before GMF 1.5.0 with Eclipse 3.6.
@@ -186,5 +198,21 @@ public class SiriusContainerEditPolicy extends ContainerEditPolicy {
         }
         return null;
     }
+
     // CHECKSTYLE:ON
+
+    /**
+     * Gets a distribute command.
+     * 
+     * @param request
+     *            The distribute request
+     * @return command
+     */
+    protected Command getDistributeCommand(DistributeRequest request) {
+        List<IGraphicalEditPart> editparts = request.getEditParts();
+        if (!editparts.isEmpty() && getHost() instanceof IGraphicalEditPart) {
+            return new ICommandProxy(new DistributeCommand(((IGraphicalEditPart) getHost()).getEditingDomain(), editparts, request.getDistributeType()));
+        }
+        return null;
+    }
 }

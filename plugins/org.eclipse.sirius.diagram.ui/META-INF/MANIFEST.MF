@@ -131,6 +131,7 @@ Export-Package: org.eclipse.sirius.diagram.description.concern.provider;version=
  org.eclipse.sirius.diagram.ui.tools.api.wizards.page;version="2.0.0",
  org.eclipse.sirius.diagram.ui.tools.internal.actions;version="2.0.0";x-internal:=true,
  org.eclipse.sirius.diagram.ui.tools.internal.actions.delete;version="2.0.0";x-internal:=true,
+ org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute;version="2.0.0";x-internal:=true,
  org.eclipse.sirius.diagram.ui.tools.internal.actions.layout;version="2.0.0";x-internal:=true,
  org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning;version="2.0.0";x-internal:=true,
  org.eclipse.sirius.diagram.ui.tools.internal.actions.refresh;version="2.0.0";x-internal:=true,
