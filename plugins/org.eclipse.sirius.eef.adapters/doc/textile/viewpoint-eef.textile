@@ -17,11 +17,11 @@ Initialize EEF generation models with the action _EEF > Initialize EEF models_ i
 !(shadow)../images/1 - Initializing EEF models.png!
 
 The created files use a simple strategy to define EEF properties. You can change theses settings to improve the logic of your properties. 
-If you plan to use EEF properties only in a designer  (for diagrams, tables, ... but not on the EMF treeviewer), you can configure the viewpoint contributor ID for the EEF views. Open the generated EEFGen model, under the root element   _Model_, select the _Gen Edition Context_   and set the value *org.eclipse.sirius.diagram.ui* to the _Descriptors contributorID_ properties.  
+If you plan to use EEF properties only in a designer  (for diagrams, tables, ... but not on the EMF treeviewer), you can configure the Sirius contributor ID for the EEF views. Open the generated EEFGen model, under the root element   _Model_, select the _Gen Edition Context_   and set the value *org.eclipse.sirius.diagram.ui* to the _Descriptors contributorID_ properties.  
 
 !(shadow)../images/2 - VP Contributor ID.png!
 
-Another interesting properties can be changed in this model, the generation directory. Default initialization set this value to the folder _src-gen_  of the plug-in containing the EEF models. 
+Another interesting properties can be changed in this model, the generation directory. Default initialization set this value to the folder _src-gen_  of the plug-in containing the EEF models.
 
 h3. Generating EEF code
 
@@ -71,12 +71,12 @@ bc..
 
 p. 
 
-Note: this configuration can also be cloned to be used with viewpoint tables and trees (by using the following property contributor ids 
+Note: this configuration can also be cloned to be used with Sirius tables and trees (by using the following property contributor ids 
 @org.eclipse.sirius.table.ui.EditorID@ and @org.eclipse.sirius.tree.ui.EditorID@).
 
 A @propertySection@ must be declared for each *tab* generated in the  @org.eclipse.ui.views.properties.tabbed.propertyTabs@ extension.
 
-Note: if you have not set *Descriptors Contributor ID* in the @.eefgen@ model and you override the @org.eclipse.sirius.diagram.ui@, @org.eclipse.sirius.table.ui.EditorID@ or @org.eclipse.sirius.tree.ui.EditorID@ contributorId, do not forget to remove the use of @org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider@ as labelProvider. Otherwise you will get a viewpoint type name as title of the properties view instead of the type name of the semantic model element.
+Note: if you have not set *Descriptors Contributor ID* in the @.eefgen@ model and you override the @org.eclipse.sirius.diagram.ui@, @org.eclipse.sirius.table.ui.EditorID@ or @org.eclipse.sirius.tree.ui.EditorID@ contributorId, do not forget to remove the use of @org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider@ as labelProvider. Otherwise you will get a Sirius type name as title of the properties view instead of the type name of the semantic model element.
 
 h2. Testing properties view
 
@@ -94,7 +94,7 @@ It is possible to move them to make them appear at the top of the tab list :
 
 !(shadow)../images/6 - Property sheet on top.png! 
 
-To do this, you have to modify the @org.eclipse.ui.views.properties.tabbed.propertyTabs@ section by changing the property category of your tabs. Instead of using the ones that have been created in the current @plugin.xml@ (through the @org.eclipse.ui.views.properties.tabbed.propertyContributor@ extension point), it is possible to use the ones defined by viewpoint :
+To do this, you have to modify the @org.eclipse.ui.views.properties.tabbed.propertyTabs@ section by changing the property category of your tabs. Instead of using the ones that have been created in the current @plugin.xml@ (through the @org.eclipse.ui.views.properties.tabbed.propertyContributor@ extension point), it is possible to use the ones defined by Sirius :
 
 * @semantic & extension@
 * @semantic@
@@ -158,7 +158,7 @@ Let's consider that we also have an @components@ file containing (at least) :
 # A view named @File Advanced@
 # A @Properties Edition Component@ binded to the semantic @File@ @Eclass@ and referencing both @File Basic@ and @File Advanced@ views
 
-In the @plugin.xml@ file, the tabs declaration should appear like this (notice that in this sample we use viewpoints categories in order to make our tabs appear at first as described in the previous paragraph, which is not mandatory) :
+In the @plugin.xml@ file, the tabs declaration should appear like this (notice that in this sample we use Sirius categories in order to make our tabs appear at first as described in the previous paragraph, which is not mandatory) :
 
 bc.. 
 <extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
@@ -212,7 +212,7 @@ h3. Programmatically hide and show EEF property sheet tabs
 
 It is possible to hide and show EEF tabbed property sheet tabs by providing a filter to the property sections (@org.eclipse.jface.viewers.IFilter@).
 
-The most simple way to do this is to create a class that extends @org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection@ (this class brings a utility method (@resolveSemanticObject@)) that helps to retrieve the semantic object that is targeted by a viewpoint figure).
+The most simple way to do this is to create a class that extends @org.eclipse.emf.eef.runtime.ui.properties.sections.PropertiesEditionSection@ (this class brings a utility method (@resolveSemanticObject@)) that helps to retrieve the semantic object that is targeted by a Sirius UI part).
 
 Example #1 (based on a test of the semantic object) : 
 
@@ -233,7 +233,7 @@ public class SemanticBasedPropertySectionFilter extends PropertiesEditionSection
 }
 p. 
 
-Example #2 (based on a test of the viewpoint diagram identifier) :
+Example #2 (based on a test of the Sirius diagram identifier) :
 
 bc.. 
 public class SiriusIdBasedPropertySectionFilter extends IFilter {
@@ -262,9 +262,9 @@ bc..
 </propertySection>
 p. 
 
-h3. Hide viewpoint built-in property sheet sections (and the corresponding tabs)
+h3. Hide Sirius built-in property sheet sections (and the corresponding tabs)
 
-The current plugin (@org.eclipse.sirius.eef.adapters@) provides an extension mechanism that allows one to hide several viewpoint built-in sections (and the corresponding tabs).
+The current plugin (@org.eclipse.sirius.eef.adapters@) provides an extension mechanism that allows one to hide several Sirius built-in sections (and the corresponding tabs).
 
 To be used, as a pre-requisite, a property section contributor must be defined (org.eclipse.ui.views.properties.tabbed.propertyContributor extension point) with the following section descriptor provider (@org.eclipse.sirius.eef.section.SiriusFilteringSectionDescriptor@):
 
@@ -278,7 +278,7 @@ bc..
 </extension>
 p. 
 
-At this point, it is possible to declare which section have to be hidden for which contributor id. The following example shows how to hide the Semantic section from the viewpoint diagrams property sheet and the Core and Semantic sections from the viewpoint table property sheet :
+At this point, it is possible to declare which section have to be hidden for which contributor id. The following example shows how to hide the Semantic section from the Sirius diagrams property sheet and the Core and Semantic sections from the Sirius table property sheet :
 
 bc.. 
 <extension
