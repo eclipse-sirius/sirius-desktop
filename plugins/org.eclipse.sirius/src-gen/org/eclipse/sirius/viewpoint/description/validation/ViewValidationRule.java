@@ -17,10 +17,10 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>View Validation Rule</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A validation rule that is applied on a view element.
  * <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
  * <em>Targets</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getViewValidationRule()
  * @model
  * @generated

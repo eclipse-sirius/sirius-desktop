@@ -52,7 +52,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptio
  * <em>On Event Moved Operation</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ReorderToolImpl extends AbstractToolDescriptionImpl implements ReorderTool {

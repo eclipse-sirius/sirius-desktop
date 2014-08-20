@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.description.SystemColor;
  * <em>Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class SystemColorImpl extends FixedColorImpl implements SystemColor {

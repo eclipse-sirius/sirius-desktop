@@ -31,7 +31,7 @@ import org.eclipse.sirius.diagram.description.filter.FilterPackage;
  * <em>Filter Kind</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class FilterImpl extends EObjectImpl implements Filter {

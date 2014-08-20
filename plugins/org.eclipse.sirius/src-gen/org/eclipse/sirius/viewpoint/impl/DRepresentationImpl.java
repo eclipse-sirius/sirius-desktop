@@ -53,7 +53,7 @@ import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
  * <em>Owned Annotation Entries</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class DRepresentationImpl extends DocumentedElementImpl implements DRepresentation {

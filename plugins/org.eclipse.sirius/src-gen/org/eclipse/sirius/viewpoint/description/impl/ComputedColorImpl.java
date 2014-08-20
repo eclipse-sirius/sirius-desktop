@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * <em>Blue</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ComputedColorImpl extends UserColorImpl implements ComputedColor {

@@ -20,10 +20,10 @@ import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Container Mapping</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A container mapping allows to create containers
  * (ViewNodeContainer or ViewNodeList). <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -55,7 +55,7 @@ import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
  * <em>Children Presentation</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getContainerMapping()
  * @model
  * @generated

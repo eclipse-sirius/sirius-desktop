@@ -15,7 +15,7 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Tree Navigation Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -24,7 +24,7 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
  * <em>Tree Description</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeNavigationDescription()
  * @model
  * @generated

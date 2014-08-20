@@ -67,7 +67,7 @@ import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
  * <em>Synchronization Lock</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class DiagramElementMappingImpl extends RepresentationElementMappingImpl implements DiagramElementMapping {

@@ -167,7 +167,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * <em>Imported Diagram</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DiagramImportDescriptionImpl extends DocumentedElementImpl implements DiagramImportDescription {

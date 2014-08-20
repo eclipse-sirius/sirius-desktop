@@ -64,7 +64,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em>Mapping</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool {

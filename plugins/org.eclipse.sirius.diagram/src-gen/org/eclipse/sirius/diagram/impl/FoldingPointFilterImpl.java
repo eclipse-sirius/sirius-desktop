@@ -21,7 +21,7 @@ import org.eclipse.sirius.diagram.FoldingPointFilter;
  * <em><b>Folding Point Filter</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class FoldingPointFilterImpl extends EObjectImpl implements FoldingPointFilter {

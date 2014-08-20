@@ -16,7 +16,7 @@ import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Tree Variable</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -24,7 +24,7 @@ import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
  * <em>Documentation</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeVariable()
  * @model
  * @generated

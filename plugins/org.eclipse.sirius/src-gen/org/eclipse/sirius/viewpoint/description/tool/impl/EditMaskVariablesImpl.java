@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em>Mask</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class EditMaskVariablesImpl extends EObjectImpl implements EditMaskVariables {

@@ -33,7 +33,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em>Data</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DAnalysisCustomDataImpl extends EObjectImpl implements DAnalysisCustomData {

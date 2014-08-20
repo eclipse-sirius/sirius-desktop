@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptio
  * <em>Type</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implements RequestDescription {

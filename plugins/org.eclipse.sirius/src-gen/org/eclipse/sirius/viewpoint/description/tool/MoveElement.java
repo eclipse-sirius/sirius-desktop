@@ -14,10 +14,10 @@ package org.eclipse.sirius.viewpoint.description.tool;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Move Element</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> Move the element of the current context to another
  * container. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -29,7 +29,7 @@ package org.eclipse.sirius.viewpoint.description.tool;
  * <em>Feature Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getMoveElement()
  * @model
  * @generated

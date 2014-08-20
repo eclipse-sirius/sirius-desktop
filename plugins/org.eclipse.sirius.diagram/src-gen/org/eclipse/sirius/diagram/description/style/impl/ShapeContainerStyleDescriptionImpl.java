@@ -41,7 +41,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <em>Background Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ShapeContainerStyleDescriptionImpl extends ContainerStyleDescriptionImpl implements ShapeContainerStyleDescription {

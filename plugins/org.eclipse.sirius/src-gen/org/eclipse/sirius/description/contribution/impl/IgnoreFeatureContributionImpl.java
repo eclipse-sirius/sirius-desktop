@@ -20,7 +20,7 @@ import org.eclipse.sirius.description.contribution.IgnoreFeatureContribution;
  * <em><b>Ignore Feature Contribution</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class IgnoreFeatureContributionImpl extends FeatureContributionImpl implements IgnoreFeatureContribution {

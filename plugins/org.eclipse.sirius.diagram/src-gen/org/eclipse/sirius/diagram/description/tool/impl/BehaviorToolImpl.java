@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptio
  * <em>Initial Operation</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class BehaviorToolImpl extends AbstractToolDescriptionImpl implements BehaviorTool {

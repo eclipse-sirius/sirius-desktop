@@ -35,7 +35,7 @@ import org.eclipse.sirius.table.metamodel.table.description.LabelEditTool;
  * <em>Can Edit</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CellUpdaterImpl extends EObjectImpl implements CellUpdater {

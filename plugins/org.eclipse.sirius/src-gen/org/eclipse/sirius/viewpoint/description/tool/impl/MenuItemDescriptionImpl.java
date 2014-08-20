@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em>Icon</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class MenuItemDescriptionImpl extends AbstractToolDescriptionImpl implements MenuItemDescription {

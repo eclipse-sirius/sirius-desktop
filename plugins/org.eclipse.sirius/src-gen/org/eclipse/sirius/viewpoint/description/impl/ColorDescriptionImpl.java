@@ -21,7 +21,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * <em><b>Color Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class ColorDescriptionImpl extends EObjectImpl implements ColorDescription {

@@ -17,10 +17,10 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Mapping Filter</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A filter that filters mappings. <!-- end-model-doc
  * -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -35,7 +35,7 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
  * <em>View Condition Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.filter.FilterPackage#getMappingFilter()
  * @model
  * @generated

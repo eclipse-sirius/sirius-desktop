@@ -16,7 +16,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ElementVariable;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Instance Role Creation Tool</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -25,7 +25,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ElementVariable;
  * <em>Predecessor</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getInstanceRoleCreationTool()
  * @model
  * @generated

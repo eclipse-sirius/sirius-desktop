@@ -20,7 +20,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
  * <em><b>Bracket Edge Style</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class BracketEdgeStyleImpl extends EdgeStyleImpl implements BracketEdgeStyle {

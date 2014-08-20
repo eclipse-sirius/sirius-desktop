@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
  * <em>Mask</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class LabelEditToolImpl extends TableToolImpl implements LabelEditTool {

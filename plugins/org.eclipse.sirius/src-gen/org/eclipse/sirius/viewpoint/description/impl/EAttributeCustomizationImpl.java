@@ -31,7 +31,7 @@ import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
  * <em>Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class EAttributeCustomizationImpl extends EStructuralFeatureCustomizationImpl implements EAttributeCustomization {

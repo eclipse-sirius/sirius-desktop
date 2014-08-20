@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.description.impl.RepresentationElementMappin
  * <em>Semantic Elements</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TableMappingImpl extends RepresentationElementMappingImpl implements TableMapping {

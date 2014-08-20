@@ -16,9 +16,9 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Dot Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> The dot style. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <em>Stroke Size Computation Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getDotDescription()
  * @model
  * @generated

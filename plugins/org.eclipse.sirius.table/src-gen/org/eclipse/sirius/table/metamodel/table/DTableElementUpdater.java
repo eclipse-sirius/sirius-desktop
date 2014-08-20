@@ -15,8 +15,8 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DTable Element Updater</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTableElementUpdater()
  * @model interface="true" abstract="true"
  * @generated

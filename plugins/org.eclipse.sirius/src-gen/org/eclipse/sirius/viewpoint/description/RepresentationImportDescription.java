@@ -14,8 +14,8 @@ package org.eclipse.sirius.viewpoint.description;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Representation Import Description</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getRepresentationImportDescription()
  * @model interface="true" abstract="true"
  * @generated

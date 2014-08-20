@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em>Owned Sessions</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class SessionManagerEObjectImpl extends EObjectImpl implements SessionManagerEObject {

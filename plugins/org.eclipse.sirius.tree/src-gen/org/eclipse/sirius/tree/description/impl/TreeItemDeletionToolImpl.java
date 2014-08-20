@@ -31,7 +31,7 @@ import org.eclipse.sirius.tree.description.TreeItemMapping;
  * <em>Mapping</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TreeItemDeletionToolImpl extends TreeItemToolImpl implements TreeItemDeletionTool {

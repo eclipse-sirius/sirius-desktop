@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  * <em>Background Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ShapeContainerStyleImpl extends ContainerStyleImpl implements ShapeContainerStyle {

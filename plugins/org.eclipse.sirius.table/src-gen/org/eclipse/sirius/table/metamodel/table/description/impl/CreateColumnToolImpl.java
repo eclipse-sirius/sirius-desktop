@@ -31,7 +31,7 @@ import org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping
  * <em>Mapping</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CreateColumnToolImpl extends CreateToolImpl implements CreateColumnTool {

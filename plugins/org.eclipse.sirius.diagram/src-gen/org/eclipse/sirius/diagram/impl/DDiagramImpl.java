@@ -88,7 +88,7 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationImpl;
  * Header Height</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DDiagramImpl extends DRepresentationImpl implements DDiagram {

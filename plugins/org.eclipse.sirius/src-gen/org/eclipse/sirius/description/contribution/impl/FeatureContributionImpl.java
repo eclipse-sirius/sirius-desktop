@@ -34,7 +34,7 @@ import org.eclipse.sirius.description.contribution.FeatureContribution;
  * <em>Target Feature</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class FeatureContributionImpl extends EObjectImpl implements FeatureContribution {

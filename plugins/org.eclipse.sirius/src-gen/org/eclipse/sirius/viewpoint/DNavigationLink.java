@@ -17,9 +17,9 @@ import org.eclipse.sirius.viewpoint.description.NavigationTargetType;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DNavigation Link</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A link for a navigable. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.NavigationTargetType;
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDNavigationLink()
  * @model abstract="true"
  * @generated

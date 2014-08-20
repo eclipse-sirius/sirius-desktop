@@ -32,7 +32,7 @@ import org.eclipse.sirius.diagram.description.style.StylePackage;
  * <em>Arc Height</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class RoundedCornerStyleDescriptionImpl extends EObjectImpl implements RoundedCornerStyleDescription {

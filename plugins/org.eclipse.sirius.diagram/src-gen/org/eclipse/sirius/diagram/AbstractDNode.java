@@ -16,7 +16,7 @@ import org.eclipse.emf.common.util.EList;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Abstract DNode</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -26,7 +26,7 @@ import org.eclipse.emf.common.util.EList;
  * <em>Arrange Constraints</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getAbstractDNode()
  * @model interface="true" abstract="true"
  * @generated

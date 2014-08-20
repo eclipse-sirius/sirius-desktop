@@ -32,7 +32,7 @@ import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
  * <em>Background Style Origin</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DCellStyleImpl extends DTableElementStyleImpl implements DCellStyle {

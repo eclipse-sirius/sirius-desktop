@@ -20,7 +20,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em><b>DFolder</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class DFolderImpl extends DResourceContainerImpl implements DFolder {

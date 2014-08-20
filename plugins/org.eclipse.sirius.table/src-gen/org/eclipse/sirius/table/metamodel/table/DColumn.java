@@ -16,7 +16,7 @@ import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DColumn</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -38,7 +38,7 @@ import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
  * <em>Current Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDColumn()
  * @model abstract="true"
  * @generated

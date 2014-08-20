@@ -46,7 +46,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptio
  * <em>Instance Role Moved</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class InstanceRoleReorderToolImpl extends AbstractToolDescriptionImpl implements InstanceRoleReorderTool {

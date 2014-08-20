@@ -34,7 +34,7 @@ import org.eclipse.sirius.description.contribution.ContributionPoint;
  * <em>Contributed</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ContributionPointImpl extends EObjectImpl implements ContributionPoint {

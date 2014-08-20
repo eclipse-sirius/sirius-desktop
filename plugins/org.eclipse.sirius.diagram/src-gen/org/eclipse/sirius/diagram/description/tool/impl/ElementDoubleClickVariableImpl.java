@@ -36,7 +36,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractVariableImpl;
  * <em>Sub Variables</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ElementDoubleClickVariableImpl extends AbstractVariableImpl implements ElementDoubleClickVariable {

@@ -36,7 +36,7 @@ import org.eclipse.sirius.diagram.EdgeTarget;
  * <em>Incoming Edges</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class EdgeTargetImpl extends EObjectImpl implements EdgeTarget {

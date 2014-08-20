@@ -14,11 +14,11 @@ package org.eclipse.sirius.viewpoint.description.tool;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Remove Element</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> Remove the element represented by the current
  * context. <!-- end-model-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getRemoveElement()
  * @model
  * @generated

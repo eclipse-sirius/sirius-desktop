@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <em>Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class BundledImageDescriptionImpl extends NodeStyleDescriptionImpl implements BundledImageDescription {

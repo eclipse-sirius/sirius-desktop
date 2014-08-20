@@ -14,7 +14,7 @@ package org.eclipse.sirius.description.contribution;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Computed EObject Reference</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -23,7 +23,7 @@ package org.eclipse.sirius.description.contribution;
  * <em>Value Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.description.contribution.ContributionPackage#getComputedEObjectReference()
  * @model
  * @generated

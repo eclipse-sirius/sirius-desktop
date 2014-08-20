@@ -40,7 +40,7 @@ import org.eclipse.sirius.diagram.GaugeSection;
  * <em>Sections</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class GaugeCompositeStyleImpl extends NodeStyleImpl implements GaugeCompositeStyle {

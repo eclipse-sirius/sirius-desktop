@@ -43,7 +43,7 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  * <em>Cache</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ComputedStyleDescriptionRegistryImpl extends EObjectImpl implements ComputedStyleDescriptionRegistry {

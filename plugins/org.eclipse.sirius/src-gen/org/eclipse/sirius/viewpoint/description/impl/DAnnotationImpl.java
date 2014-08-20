@@ -40,7 +40,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * <em>Details</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DAnnotationImpl extends EObjectImpl implements DAnnotation {

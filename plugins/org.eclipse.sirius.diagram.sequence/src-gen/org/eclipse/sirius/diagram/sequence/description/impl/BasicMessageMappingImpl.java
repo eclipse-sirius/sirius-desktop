@@ -19,7 +19,7 @@ import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
  * <em><b>Basic Message Mapping</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class BasicMessageMappingImpl extends MessageMappingImpl implements BasicMessageMapping {

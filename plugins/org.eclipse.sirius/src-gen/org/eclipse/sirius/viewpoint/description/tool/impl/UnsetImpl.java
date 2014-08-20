@@ -31,7 +31,7 @@ import org.eclipse.sirius.viewpoint.description.tool.Unset;
  * <em>Element Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class UnsetImpl extends ContainerModelOperationImpl implements Unset {

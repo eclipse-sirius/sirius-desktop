@@ -17,7 +17,7 @@ import org.eclipse.sirius.viewpoint.description.tool.MenuItemOrRef;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Tree Popup Menu</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -26,7 +26,7 @@ import org.eclipse.sirius.viewpoint.description.tool.MenuItemOrRef;
  * <em>Menu Item Descriptions</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreePopupMenu()
  * @model
  * @generated

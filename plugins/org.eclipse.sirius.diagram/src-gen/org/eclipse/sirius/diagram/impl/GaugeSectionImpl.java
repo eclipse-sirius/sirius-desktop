@@ -43,7 +43,7 @@ import org.eclipse.sirius.viewpoint.impl.CustomizableImpl;
  * <em>Foreground Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class GaugeSectionImpl extends CustomizableImpl implements GaugeSection {

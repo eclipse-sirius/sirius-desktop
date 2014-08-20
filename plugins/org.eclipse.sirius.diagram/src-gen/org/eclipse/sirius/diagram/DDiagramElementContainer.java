@@ -20,9 +20,9 @@ import org.eclipse.sirius.viewpoint.Style;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DDiagram Element Container</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> The referenced ViewPoint. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -49,7 +49,7 @@ import org.eclipse.sirius.viewpoint.Style;
  * Height</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagramElementContainer()
  * @model abstract="true"
  * @generated

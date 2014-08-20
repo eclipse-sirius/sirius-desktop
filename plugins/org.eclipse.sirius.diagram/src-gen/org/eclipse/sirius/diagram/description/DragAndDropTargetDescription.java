@@ -18,10 +18,10 @@ import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Drag And Drop Target Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A DragAndDropTargetDescription is a Description or
  * Mapping that can have many DropTools <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -30,7 +30,7 @@ import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
  * <em>Drop Descriptions</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDragAndDropTargetDescription()
  * @model abstract="true"
  * @generated

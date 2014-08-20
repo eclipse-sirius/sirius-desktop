@@ -68,7 +68,7 @@ import org.eclipse.sirius.viewpoint.Style;
  * Label</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DEdgeImpl extends DDiagramElementImpl implements DEdge {

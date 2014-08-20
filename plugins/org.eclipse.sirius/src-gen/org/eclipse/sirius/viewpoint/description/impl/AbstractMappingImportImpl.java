@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * <em>Inherits Ancestor Filters</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class AbstractMappingImportImpl extends EObjectImpl implements AbstractMappingImport {

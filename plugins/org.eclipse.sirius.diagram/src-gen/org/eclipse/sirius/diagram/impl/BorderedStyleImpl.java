@@ -37,7 +37,7 @@ import org.eclipse.sirius.viewpoint.impl.StyleImpl;
  * <em>Border Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class BorderedStyleImpl extends StyleImpl implements BorderedStyle {

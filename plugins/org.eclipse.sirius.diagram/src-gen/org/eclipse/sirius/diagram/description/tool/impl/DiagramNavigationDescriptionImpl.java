@@ -31,7 +31,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationNavigati
  * <em>Diagram Description</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DiagramNavigationDescriptionImpl extends RepresentationNavigationDescriptionImpl implements DiagramNavigationDescription {

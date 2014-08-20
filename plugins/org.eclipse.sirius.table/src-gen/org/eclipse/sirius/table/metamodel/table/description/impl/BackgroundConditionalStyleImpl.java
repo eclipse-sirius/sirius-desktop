@@ -34,7 +34,7 @@ import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
  * <em>Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class BackgroundConditionalStyleImpl extends EObjectImpl implements BackgroundConditionalStyle {

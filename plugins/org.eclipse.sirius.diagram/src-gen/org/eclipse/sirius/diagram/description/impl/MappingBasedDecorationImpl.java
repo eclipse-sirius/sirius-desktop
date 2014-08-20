@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.impl.DecorationDescriptionImpl;
  * <em>Mappings</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class MappingBasedDecorationImpl extends DecorationDescriptionImpl implements MappingBasedDecoration {

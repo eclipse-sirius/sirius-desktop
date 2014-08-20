@@ -33,7 +33,7 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * <em>Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TConditionalMessageStyleImpl extends TTransformerImpl implements TConditionalMessageStyle {

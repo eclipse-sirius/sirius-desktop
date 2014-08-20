@@ -17,10 +17,10 @@ import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Applied Composite Filters</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> Graphical filter listing the active filters applied
  * on a diagram element. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -29,7 +29,7 @@ import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
  * <em>Composite Filter Descriptions</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getAppliedCompositeFilters()
  * @model
  * @generated

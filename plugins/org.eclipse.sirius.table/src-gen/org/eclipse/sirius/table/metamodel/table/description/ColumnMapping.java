@@ -13,7 +13,7 @@ package org.eclipse.sirius.table.metamodel.table.description;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Column Mapping</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -25,7 +25,7 @@ package org.eclipse.sirius.table.metamodel.table.description;
  * <em>Initial Width</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getColumnMapping()
  * @model
  * @generated

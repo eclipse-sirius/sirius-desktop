@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class LozengeImpl extends NodeStyleImpl implements Lozenge {

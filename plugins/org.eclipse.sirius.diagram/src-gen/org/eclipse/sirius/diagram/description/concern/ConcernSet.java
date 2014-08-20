@@ -17,9 +17,9 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Set</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A set of many concerns. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  * <em>Owned Concern Descriptions</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.concern.ConcernPackage#getConcernSet()
  * @model
  * @generated

@@ -17,8 +17,8 @@ import org.eclipse.sirius.diagram.EdgeStyle;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>IEdge Mapping</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getIEdgeMapping()
  * @model interface="true" abstract="true"
  * @generated

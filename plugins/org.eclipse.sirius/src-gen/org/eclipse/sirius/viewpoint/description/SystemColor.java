@@ -14,12 +14,12 @@ package org.eclipse.sirius.viewpoint.description;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>System Color</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A subtype of FixedColor which is only used in the
  * system palette. Graphical elements which only support colors from the system
  * palette can use this type instead of the more general FixedColor. <!--
  * end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -27,7 +27,7 @@ package org.eclipse.sirius.viewpoint.description;
  * Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSystemColor()
  * @model
  * @generated

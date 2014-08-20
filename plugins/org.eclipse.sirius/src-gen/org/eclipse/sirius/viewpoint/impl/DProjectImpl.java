@@ -20,7 +20,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em><b>DProject</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class DProjectImpl extends DResourceContainerImpl implements DProject {

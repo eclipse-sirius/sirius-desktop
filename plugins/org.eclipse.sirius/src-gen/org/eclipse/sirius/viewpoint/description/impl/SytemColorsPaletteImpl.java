@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.SytemColorsPalette;
  * <em>Entries</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class SytemColorsPaletteImpl extends EObjectImpl implements SytemColorsPalette {

@@ -51,7 +51,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em>Filters</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl implements AbstractToolDescription {

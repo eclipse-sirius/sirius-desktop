@@ -46,7 +46,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <em>Label</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class GaugeSectionDescriptionImpl extends EObjectImpl implements GaugeSectionDescription {

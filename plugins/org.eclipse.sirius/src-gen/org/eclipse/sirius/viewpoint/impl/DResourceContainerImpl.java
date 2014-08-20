@@ -41,7 +41,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em>Members</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DResourceContainerImpl extends EObjectImpl implements DResourceContainer {

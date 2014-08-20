@@ -20,7 +20,7 @@ import org.eclipse.sirius.description.contribution.SetFeatureContribution;
  * <em><b>Set Feature Contribution</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class SetFeatureContributionImpl extends FeatureContributionImpl implements SetFeatureContribution {

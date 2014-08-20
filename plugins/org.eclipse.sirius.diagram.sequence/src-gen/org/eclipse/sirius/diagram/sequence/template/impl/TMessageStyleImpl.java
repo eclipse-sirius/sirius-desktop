@@ -43,7 +43,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <em>Label Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TMessageStyleImpl extends TTransformerImpl implements TMessageStyle {

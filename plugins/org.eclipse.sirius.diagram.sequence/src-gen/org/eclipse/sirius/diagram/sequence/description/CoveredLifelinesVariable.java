@@ -15,8 +15,8 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Covered Lifelines Variable</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getCoveredLifelinesVariable()
  * @model
  * @generated

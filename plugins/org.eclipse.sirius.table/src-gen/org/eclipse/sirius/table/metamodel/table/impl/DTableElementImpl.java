@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationElementImpl;
  * <em>Table Element Mapping</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class DTableElementImpl extends DRepresentationElementImpl implements DTableElement {

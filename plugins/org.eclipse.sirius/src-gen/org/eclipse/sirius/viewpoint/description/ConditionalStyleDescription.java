@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Conditional Style Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Predicate Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getConditionalStyleDescription()
  * @model abstract="true"
  * @generated

@@ -23,7 +23,7 @@ import org.eclipse.sirius.table.metamodel.table.TablePackage;
  * <em><b>DTable Element Synchronizer</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class DTableElementSynchronizerImpl extends EObjectImpl implements DTableElementSynchronizer {

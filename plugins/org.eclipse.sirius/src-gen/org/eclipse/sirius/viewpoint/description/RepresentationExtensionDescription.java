@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EPackage;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Representation Extension Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.EPackage;
  * <em>Metamodel</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getRepresentationExtensionDescription()
  * @model interface="true" abstract="true"
  * @generated

@@ -31,7 +31,7 @@ import org.eclipse.sirius.diagram.description.tool.ToolPackage;
  * <em>Target Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView {

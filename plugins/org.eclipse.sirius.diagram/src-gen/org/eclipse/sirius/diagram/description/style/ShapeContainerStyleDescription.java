@@ -17,7 +17,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Shape Container Style Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <em>Background Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getShapeContainerStyleDescription()
  * @model
  * @generated

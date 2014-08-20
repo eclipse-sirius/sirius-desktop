@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em>Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ExternalJavaActionParameterImpl extends EObjectImpl implements ExternalJavaActionParameter {

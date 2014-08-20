@@ -18,10 +18,10 @@ import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Paste Target Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A PasteTargetDescription is a Description or Mapping
  * that can have many PasteTools. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
  * <em>Paste Descriptions</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getPasteTargetDescription()
  * @model abstract="true"
  * @generated

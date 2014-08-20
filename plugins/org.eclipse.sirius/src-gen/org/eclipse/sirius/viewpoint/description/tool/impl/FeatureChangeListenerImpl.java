@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em>Feature Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class FeatureChangeListenerImpl extends EObjectImpl implements FeatureChangeListener {

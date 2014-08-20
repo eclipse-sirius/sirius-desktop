@@ -41,7 +41,7 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  * <em>Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DiagramElementMapping2ModelElementImpl extends EObjectImpl implements BasicEMap.Entry<DiagramElementMapping, EMap<EObject, EMap<EObject, EMap<EObject, StyleDescription>>>> {

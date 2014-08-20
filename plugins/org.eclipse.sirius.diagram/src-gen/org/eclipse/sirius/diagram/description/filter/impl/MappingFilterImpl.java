@@ -39,7 +39,7 @@ import org.eclipse.sirius.diagram.description.filter.MappingFilter;
  * <em>View Condition Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class MappingFilterImpl extends FilterImpl implements MappingFilter {

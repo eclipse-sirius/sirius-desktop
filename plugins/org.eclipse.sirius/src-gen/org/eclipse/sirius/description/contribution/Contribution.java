@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Contribution</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -38,7 +38,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Description</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.description.contribution.ContributionPackage#getContribution()
  * @model
  * @generated

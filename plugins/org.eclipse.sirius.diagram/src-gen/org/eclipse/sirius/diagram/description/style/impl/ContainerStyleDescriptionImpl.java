@@ -66,7 +66,7 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
  * <em>Rounded Corner</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDescriptionImpl implements ContainerStyleDescription {

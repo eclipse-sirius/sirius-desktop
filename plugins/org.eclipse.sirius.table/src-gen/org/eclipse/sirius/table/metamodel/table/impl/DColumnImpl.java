@@ -60,7 +60,7 @@ import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
  * <em>Current Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class DColumnImpl extends DTableElementImpl implements DColumn {

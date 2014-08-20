@@ -40,7 +40,7 @@ import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping
  * <em>All Column Mappings</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class EditionTableDescriptionImpl extends TableDescriptionImpl implements EditionTableDescription {

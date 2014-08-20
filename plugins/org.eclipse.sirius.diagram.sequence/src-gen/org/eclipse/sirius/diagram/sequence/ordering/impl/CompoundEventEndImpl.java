@@ -34,7 +34,7 @@ import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
  * <em>Event Ends</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CompoundEventEndImpl extends EventEndImpl implements CompoundEventEnd {

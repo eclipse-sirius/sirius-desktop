@@ -14,10 +14,10 @@ package org.eclipse.sirius.viewpoint.description.tool;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Set Value</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> This operation allows to set a value of a feature of
  * the current context. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -29,7 +29,7 @@ package org.eclipse.sirius.viewpoint.description.tool;
  * <em>Value Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSetValue()
  * @model
  * @generated

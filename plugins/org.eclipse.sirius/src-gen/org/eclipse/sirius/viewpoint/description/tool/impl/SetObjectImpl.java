@@ -33,7 +33,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em>Object</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class SetObjectImpl extends ContainerModelOperationImpl implements SetObject {

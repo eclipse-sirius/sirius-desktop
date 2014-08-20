@@ -29,12 +29,12 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DDiagram</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> ViewPoint is the type of all diagrams in AIR. A
  * viewpoint is composed of nodes, containers and connections. It is owned by an
  * anlysis or by a parent viewpoint. In this last case the viewpoint should be
  * called detailed viewpoint. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -74,7 +74,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
  * Height</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagram()
  * @model
  * @generated

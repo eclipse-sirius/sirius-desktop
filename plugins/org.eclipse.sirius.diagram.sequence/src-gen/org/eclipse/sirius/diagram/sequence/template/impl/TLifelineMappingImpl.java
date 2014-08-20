@@ -53,7 +53,7 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * <em>Conditional Life Line Styles</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TLifelineMappingImpl extends TAbstractMappingImpl implements TLifelineMapping {

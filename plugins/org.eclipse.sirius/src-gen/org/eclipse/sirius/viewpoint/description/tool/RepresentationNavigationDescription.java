@@ -18,7 +18,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Representation Navigation Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -42,7 +42,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
  * <em>Representation Name Variable</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getRepresentationNavigationDescription()
  * @model abstract="true"
  * @generated

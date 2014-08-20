@@ -16,9 +16,9 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Rule Audit</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> The validation expression. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Audit Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getRuleAudit()
  * @model
  * @generated

@@ -40,7 +40,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em>Default</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class SwitchImpl extends ModelOperationImpl implements Switch {

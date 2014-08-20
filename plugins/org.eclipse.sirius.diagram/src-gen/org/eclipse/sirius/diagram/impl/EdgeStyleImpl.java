@@ -57,7 +57,7 @@ import org.eclipse.sirius.viewpoint.impl.StyleImpl;
  * <em>End Label Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {

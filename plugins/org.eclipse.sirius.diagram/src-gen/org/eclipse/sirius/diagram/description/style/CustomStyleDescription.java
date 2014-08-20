@@ -14,7 +14,7 @@ package org.eclipse.sirius.diagram.description.style;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Custom Style Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -23,7 +23,7 @@ package org.eclipse.sirius.diagram.description.style;
  * <em>Id</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getCustomStyleDescription()
  * @model
  * @generated

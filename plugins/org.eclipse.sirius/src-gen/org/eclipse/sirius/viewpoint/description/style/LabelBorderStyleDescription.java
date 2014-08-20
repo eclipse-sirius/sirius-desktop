@@ -16,10 +16,10 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Label Border Style Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> The style of the border of a container label. <!--
  * end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -37,7 +37,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Corner Width</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getLabelBorderStyleDescription()
  * @model
  * @generated

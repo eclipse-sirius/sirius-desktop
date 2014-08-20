@@ -20,7 +20,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em><b>Remove Element</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class RemoveElementImpl extends ContainerModelOperationImpl implements RemoveElement {

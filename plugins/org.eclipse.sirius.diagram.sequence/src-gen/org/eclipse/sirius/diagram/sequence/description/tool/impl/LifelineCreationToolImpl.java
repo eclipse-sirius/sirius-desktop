@@ -20,7 +20,7 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
  * <em><b>Lifeline Creation Tool</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class LifelineCreationToolImpl extends ContainerCreationDescriptionImpl implements LifelineCreationTool {

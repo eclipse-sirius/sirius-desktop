@@ -33,7 +33,7 @@ import org.eclipse.sirius.diagram.sequence.description.StateMapping;
  * <em>Finishing End Finder Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class StateMappingImpl extends NodeMappingImpl implements StateMapping {

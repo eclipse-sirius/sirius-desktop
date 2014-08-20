@@ -17,10 +17,10 @@ import org.eclipse.sirius.viewpoint.description.tool.ContainerModelOperation;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Navigation</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> Open or create a representation for the element.
  * <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ContainerModelOperation;
  * <em>Diagram Description</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getNavigation()
  * @model
  * @generated

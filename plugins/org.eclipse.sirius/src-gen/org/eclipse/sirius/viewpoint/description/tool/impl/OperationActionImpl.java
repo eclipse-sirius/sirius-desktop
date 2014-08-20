@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em>Initial Operation</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class OperationActionImpl extends MenuItemDescriptionImpl implements OperationAction {

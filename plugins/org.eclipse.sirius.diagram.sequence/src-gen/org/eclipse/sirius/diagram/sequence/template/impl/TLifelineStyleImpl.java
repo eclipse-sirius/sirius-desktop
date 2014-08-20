@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <em>Lifeline Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TLifelineStyleImpl extends TTransformerImpl implements TLifelineStyle {

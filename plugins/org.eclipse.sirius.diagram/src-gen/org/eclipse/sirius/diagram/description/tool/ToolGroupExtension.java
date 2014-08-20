@@ -18,7 +18,7 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Group Extension</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
  * <em>Tools</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getToolGroupExtension()
  * @model
  * @generated

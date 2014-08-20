@@ -14,10 +14,10 @@ package org.eclipse.sirius.viewpoint.description.audit;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Template Information Section</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> This information section is based on an Acceleo
  * template. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -26,7 +26,7 @@ package org.eclipse.sirius.viewpoint.description.audit;
  * <em>Template Path</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.audit.AuditPackage#getTemplateInformationSection()
  * @model
  * @generated

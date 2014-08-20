@@ -14,10 +14,10 @@ package org.eclipse.sirius.viewpoint.description;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Computed Color</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> Describes a color which each value red, blue and
  * green are computed expressions. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -29,7 +29,7 @@ package org.eclipse.sirius.viewpoint.description;
  * <em>Blue</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getComputedColor()
  * @model
  * @generated

@@ -85,7 +85,7 @@ import org.eclipse.sirius.viewpoint.impl.DSemanticDecoratorImpl;
  * <em>Current Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTargetColumn {

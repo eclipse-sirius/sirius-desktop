@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationNavigati
  * <em>Tree Description</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TreeNavigationDescriptionImpl extends RepresentationNavigationDescriptionImpl implements TreeNavigationDescription {

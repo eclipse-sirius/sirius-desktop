@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.EndUserDocumentedElement;
  * <em>End User Documentation</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class EndUserDocumentedElementImpl extends EObjectImpl implements EndUserDocumentedElement {

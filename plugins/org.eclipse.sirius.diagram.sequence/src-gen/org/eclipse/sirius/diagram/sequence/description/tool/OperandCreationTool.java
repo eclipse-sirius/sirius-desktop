@@ -15,8 +15,8 @@ import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Operand Creation Tool</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getOperandCreationTool()
  * @model
  * @generated

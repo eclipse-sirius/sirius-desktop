@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.IVSMElementCustomization;
  * <em>Vsm Element Customizations</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CustomizationImpl extends EObjectImpl implements Customization {

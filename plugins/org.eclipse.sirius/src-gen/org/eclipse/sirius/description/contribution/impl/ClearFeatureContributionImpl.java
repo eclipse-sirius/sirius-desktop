@@ -20,7 +20,7 @@ import org.eclipse.sirius.description.contribution.ContributionPackage;
  * <em><b>Clear Feature Contribution</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class ClearFeatureContributionImpl extends FeatureContributionImpl implements ClearFeatureContribution {

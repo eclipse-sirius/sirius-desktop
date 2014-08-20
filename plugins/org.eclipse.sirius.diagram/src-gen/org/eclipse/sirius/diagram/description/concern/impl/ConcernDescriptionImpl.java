@@ -50,7 +50,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
  * <em>Behaviors</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ConcernDescriptionImpl extends DocumentedElementImpl implements ConcernDescription {

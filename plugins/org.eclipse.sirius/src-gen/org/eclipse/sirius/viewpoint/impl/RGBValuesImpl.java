@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class RGBValuesImpl extends EObjectImpl implements RGBValues {

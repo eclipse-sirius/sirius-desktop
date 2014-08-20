@@ -35,7 +35,7 @@ import org.eclipse.sirius.diagram.description.filter.FilterVariable;
  * <em>Model Element</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class FilterVariableValueImpl extends EObjectImpl implements FilterVariableValue {

@@ -16,9 +16,9 @@ import org.eclipse.sirius.viewpoint.LabelAlignment;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Label Style Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> The style of a label. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -27,7 +27,7 @@ import org.eclipse.sirius.viewpoint.LabelAlignment;
  * <em>Label Alignment</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getLabelStyleDescription()
  * @model
  * @generated

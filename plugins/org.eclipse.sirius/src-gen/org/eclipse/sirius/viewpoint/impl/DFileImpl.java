@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * </li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DFileImpl extends EObjectImpl implements DFile {

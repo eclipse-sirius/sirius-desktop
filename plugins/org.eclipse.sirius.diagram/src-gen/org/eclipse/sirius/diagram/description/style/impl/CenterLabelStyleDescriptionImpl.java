@@ -21,7 +21,7 @@ import org.eclipse.sirius.viewpoint.description.style.impl.BasicLabelStyleDescri
  * <em><b>Center Label Style Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class CenterLabelStyleDescriptionImpl extends BasicLabelStyleDescriptionImpl implements CenterLabelStyleDescription {

@@ -33,7 +33,7 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  * Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class BundledImageImpl extends NodeStyleImpl implements BundledImage {

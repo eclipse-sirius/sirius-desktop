@@ -47,7 +47,7 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  * <em>Default Background Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DTableElementStyleImpl extends EObjectImpl implements DTableElementStyle {

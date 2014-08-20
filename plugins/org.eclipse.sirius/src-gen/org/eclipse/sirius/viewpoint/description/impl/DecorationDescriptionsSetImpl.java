@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * <em>Decoration Descriptions</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DecorationDescriptionsSetImpl extends EObjectImpl implements DecorationDescriptionsSet {

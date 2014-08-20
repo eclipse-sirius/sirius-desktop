@@ -16,11 +16,11 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Information Section</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> The section that displays informations about the
  * selected element. <!-- end-model-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.viewpoint.description.audit.AuditPackage#getInformationSection()
  * @model abstract="true"
  * @generated

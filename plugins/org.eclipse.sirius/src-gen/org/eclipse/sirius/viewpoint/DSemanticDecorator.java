@@ -16,10 +16,10 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DSemantic Decorator</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> An element that has a link to the semantic model.
  * <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.EObject;
  * Target</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDSemanticDecorator()
  * @model abstract="true"
  * @generated

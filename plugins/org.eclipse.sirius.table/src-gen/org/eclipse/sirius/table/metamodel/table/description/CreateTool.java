@@ -15,8 +15,8 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Create Tool</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCreateTool()
  * @model abstract="true"
  * @generated

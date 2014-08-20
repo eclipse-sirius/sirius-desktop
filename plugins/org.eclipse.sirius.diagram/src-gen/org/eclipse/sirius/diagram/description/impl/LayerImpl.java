@@ -86,7 +86,7 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
  * <em>Customization</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class LayerImpl extends DocumentedElementImpl implements Layer {

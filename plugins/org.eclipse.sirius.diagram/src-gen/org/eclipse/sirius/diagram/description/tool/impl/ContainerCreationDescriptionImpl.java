@@ -55,7 +55,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescri
  * <em>Extra Mappings</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ContainerCreationDescriptionImpl extends MappingBasedToolDescriptionImpl implements ContainerCreationDescription {

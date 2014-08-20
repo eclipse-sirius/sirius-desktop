@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EPackage;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Representation Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.EPackage;
  * <em>Show On Startup</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getRepresentationDescription()
  * @model interface="true" abstract="true"
  * @generated

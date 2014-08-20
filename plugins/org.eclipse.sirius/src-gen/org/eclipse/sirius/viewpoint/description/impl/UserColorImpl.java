@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.UserColor;
  * <em>Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class UserColorImpl extends EObjectImpl implements UserColor {

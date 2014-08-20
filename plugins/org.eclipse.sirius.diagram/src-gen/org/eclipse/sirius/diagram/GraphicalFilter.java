@@ -16,11 +16,11 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Graphical Filter</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A filter that allow to graphically filter the owner
  * DDiagramElement. <!-- end-model-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getGraphicalFilter()
  * @model interface="true" abstract="true"
  * @generated

@@ -15,8 +15,8 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Delete Tool</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getDeleteTool()
  * @model abstract="true"
  * @generated

@@ -16,11 +16,11 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DContainer</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> An element that contains others diagram elements.
  * <!-- end-model-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDContainer()
  * @model interface="true" abstract="true"
  * @generated

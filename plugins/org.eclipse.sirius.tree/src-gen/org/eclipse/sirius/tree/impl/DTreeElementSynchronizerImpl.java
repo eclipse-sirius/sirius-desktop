@@ -21,7 +21,7 @@ import org.eclipse.sirius.tree.TreePackage;
  * <em><b>DTree Element Synchronizer</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class DTreeElementSynchronizerImpl extends EObjectImpl implements DTreeElementSynchronizer {

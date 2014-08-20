@@ -14,7 +14,7 @@ package org.eclipse.sirius.diagram;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Collapse Filter</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -24,7 +24,7 @@ package org.eclipse.sirius.diagram;
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getCollapseFilter()
  * @model annotation=
  *        "http://www.eclipse.org/emf/2002/GenModel Documentation='Graphical filter specifying that the owner element has to be collapsed.'"

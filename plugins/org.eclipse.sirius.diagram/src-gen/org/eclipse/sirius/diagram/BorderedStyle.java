@@ -17,7 +17,7 @@ import org.eclipse.sirius.viewpoint.Style;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Bordered Style</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.Style;
  * Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getBorderedStyle()
  * @model
  * @generated

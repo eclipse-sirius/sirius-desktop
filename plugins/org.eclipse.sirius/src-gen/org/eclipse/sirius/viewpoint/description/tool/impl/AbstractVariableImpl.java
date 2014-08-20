@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em>Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class AbstractVariableImpl extends EObjectImpl implements AbstractVariable {

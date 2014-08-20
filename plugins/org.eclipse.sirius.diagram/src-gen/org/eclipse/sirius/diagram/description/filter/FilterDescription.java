@@ -18,11 +18,11 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> Describe a filter. A filter allows to hide some
  * elements. <!-- end-model-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.diagram.description.filter.FilterPackage#getFilterDescription()
  * @model abstract="true"
  * @generated

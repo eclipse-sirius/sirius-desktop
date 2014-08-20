@@ -13,7 +13,7 @@ package org.eclipse.sirius.diagram.sequence.template;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>TAbstract Mapping</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -28,7 +28,7 @@ package org.eclipse.sirius.diagram.sequence.template;
  * <em>Semantic Candidates Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTAbstractMapping()
  * @model
  * @generated

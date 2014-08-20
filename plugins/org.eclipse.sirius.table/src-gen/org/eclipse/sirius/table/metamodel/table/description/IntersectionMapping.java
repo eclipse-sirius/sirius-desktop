@@ -15,7 +15,7 @@ import org.eclipse.emf.common.util.EList;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Intersection Mapping</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -51,7 +51,7 @@ import org.eclipse.emf.common.util.EList;
  * <em>Create</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getIntersectionMapping()
  * @model
  * @generated

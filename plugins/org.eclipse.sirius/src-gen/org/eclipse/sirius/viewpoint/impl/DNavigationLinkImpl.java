@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.NavigationTargetType;
  * <em>Label</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class DNavigationLinkImpl extends EObjectImpl implements DNavigationLink {

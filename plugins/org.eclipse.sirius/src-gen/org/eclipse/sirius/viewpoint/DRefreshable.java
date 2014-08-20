@@ -16,11 +16,11 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DRefreshable</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> An element that can be refreshed. <!-- end-model-doc
  * -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRefreshable()
  * @model interface="true" abstract="true"
  * @generated

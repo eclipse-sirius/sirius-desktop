@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <em>Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class NoteDescriptionImpl extends NodeStyleDescriptionImpl implements NoteDescription {

@@ -36,7 +36,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <em>Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements SquareDescription {

@@ -20,7 +20,7 @@ import org.eclipse.sirius.diagram.IndirectlyCollapseFilter;
  * <em><b>Indirectly Collapse Filter</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class IndirectlyCollapseFilterImpl extends CollapseFilterImpl implements IndirectlyCollapseFilter {

@@ -20,9 +20,9 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Node Style Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> Style of a node. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -40,7 +40,7 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
  * <em>Resize Kind</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getNodeStyleDescription()
  * @model abstract="true"
  * @generated

@@ -19,7 +19,7 @@ import org.eclipse.sirius.tree.description.PrecedingSiblingsVariables;
  * <em><b>Preceding Siblings Variables</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class PrecedingSiblingsVariablesImpl extends TreeVariableImpl implements PrecedingSiblingsVariables {

@@ -16,11 +16,11 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DSemantic Diagram</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A semantic viewpoint is a viewpoint that is
  * rattached to a semantic element. <!-- end-model-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getDSemanticDiagram()
  * @model
  * @generated

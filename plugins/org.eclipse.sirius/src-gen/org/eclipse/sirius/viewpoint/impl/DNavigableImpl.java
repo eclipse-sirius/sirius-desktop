@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em>Owned Navigation Links</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class DNavigableImpl extends EObjectImpl implements DNavigable {

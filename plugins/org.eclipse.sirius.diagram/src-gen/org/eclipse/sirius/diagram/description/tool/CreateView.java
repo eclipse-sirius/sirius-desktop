@@ -17,10 +17,10 @@ import org.eclipse.sirius.viewpoint.description.tool.ContainerModelOperation;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Create View</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> This operation allows to create a view. <!--
  * end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ContainerModelOperation;
  * <em>Variable Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getCreateView()
  * @model
  * @generated

@@ -17,7 +17,7 @@ import org.eclipse.sirius.tree.description.TreeItemUpdater;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DTree Item</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -33,7 +33,7 @@ import org.eclipse.sirius.tree.description.TreeItemUpdater;
  * <li>{@link org.eclipse.sirius.tree.DTreeItem#getUpdater <em>Updater</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tree.TreePackage#getDTreeItem()
  * @model
  * @generated

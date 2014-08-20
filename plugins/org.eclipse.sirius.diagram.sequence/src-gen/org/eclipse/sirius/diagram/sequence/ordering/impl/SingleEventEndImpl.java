@@ -32,7 +32,7 @@ import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
  * <em>Semantic Event</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class SingleEventEndImpl extends EventEndImpl implements SingleEventEnd {

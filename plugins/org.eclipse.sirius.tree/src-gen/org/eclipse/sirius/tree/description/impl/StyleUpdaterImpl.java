@@ -40,7 +40,7 @@ import org.eclipse.sirius.tree.description.TreeItemStyleDescription;
  * <em>Conditional Styles</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class StyleUpdaterImpl extends EObjectImpl implements StyleUpdater {

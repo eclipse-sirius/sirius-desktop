@@ -47,7 +47,7 @@ import org.eclipse.sirius.viewpoint.description.style.StylePackage;
  * <em>Icon Path</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class BasicLabelStyleDescriptionImpl extends EObjectImpl implements BasicLabelStyleDescription {

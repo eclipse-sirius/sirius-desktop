@@ -20,7 +20,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em><b>Sub Variable</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class SubVariableImpl extends AbstractVariableImpl implements SubVariable {

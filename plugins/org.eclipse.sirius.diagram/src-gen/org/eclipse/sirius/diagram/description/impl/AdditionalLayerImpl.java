@@ -31,7 +31,7 @@ import org.eclipse.sirius.diagram.description.DescriptionPackage;
  * <em>Optional</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {

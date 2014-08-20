@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Cell Updater</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Can Edit</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCellUpdater()
  * @model
  * @generated

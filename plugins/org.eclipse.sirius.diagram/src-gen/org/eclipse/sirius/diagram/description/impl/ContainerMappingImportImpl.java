@@ -37,7 +37,7 @@ import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
  * <em>Imported Mapping</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ContainerMappingImportImpl extends ContainerMappingImpl implements ContainerMappingImport {

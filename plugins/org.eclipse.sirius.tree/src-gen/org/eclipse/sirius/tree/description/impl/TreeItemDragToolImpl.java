@@ -70,7 +70,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescri
  * <em>Preceding Siblings</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 @Deprecated

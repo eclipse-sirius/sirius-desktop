@@ -35,7 +35,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
  * <em>Width</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class AbsoluteBoundsFilterImpl extends EObjectImpl implements AbsoluteBoundsFilter {

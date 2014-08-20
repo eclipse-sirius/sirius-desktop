@@ -39,7 +39,7 @@ import org.eclipse.sirius.diagram.sequence.description.FrameMapping;
  * <em>Center Label Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class FrameMappingImpl extends ContainerMappingImpl implements FrameMapping {

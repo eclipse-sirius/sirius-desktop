@@ -17,7 +17,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DCell</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -36,7 +36,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
  * <em>Intersection Mapping</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDCell()
  * @model
  * @generated

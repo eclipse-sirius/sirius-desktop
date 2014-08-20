@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
  * <em>Paste Descriptions</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class PasteTargetDescriptionImpl extends EObjectImpl implements PasteTargetDescription {

@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class SquareImpl extends NodeStyleImpl implements Square {

@@ -31,7 +31,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em>Target</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DSemanticDiagramImpl extends DDiagramImpl implements DSemanticDiagram {

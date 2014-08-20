@@ -17,11 +17,11 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DMapping Based</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> An element that has a mapping. <!-- end-model-doc
  * -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDMappingBased()
  * @model interface="true" abstract="true"
  * @generated

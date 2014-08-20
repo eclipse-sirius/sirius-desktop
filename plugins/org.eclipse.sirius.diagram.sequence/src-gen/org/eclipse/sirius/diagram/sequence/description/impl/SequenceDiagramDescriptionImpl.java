@@ -31,7 +31,7 @@ import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescriptio
  * <em>Instance Roles Ordering</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class SequenceDiagramDescriptionImpl extends DiagramDescriptionImpl implements SequenceDiagramDescription {

@@ -17,12 +17,12 @@ import org.eclipse.sirius.viewpoint.description.DecorationDescription;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Decoration</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> Represent a decoration of a diagram element with a
  * specific icon, based on its relationships with MetaElements of the MetaModel.
  * 
  * <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.DecorationDescription;
  * Description</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDecoration()
  * @model
  * @generated

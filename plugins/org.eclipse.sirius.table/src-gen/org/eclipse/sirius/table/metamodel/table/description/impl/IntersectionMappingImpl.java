@@ -90,7 +90,7 @@ import org.eclipse.sirius.table.metamodel.table.description.StyleUpdater;
  * <em>Create</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class IntersectionMappingImpl extends TableMappingImpl implements IntersectionMapping {

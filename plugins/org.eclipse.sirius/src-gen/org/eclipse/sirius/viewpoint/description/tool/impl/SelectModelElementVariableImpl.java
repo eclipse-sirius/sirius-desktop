@@ -45,7 +45,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em>Message</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class SelectModelElementVariableImpl extends SubVariableImpl implements SelectModelElementVariable {

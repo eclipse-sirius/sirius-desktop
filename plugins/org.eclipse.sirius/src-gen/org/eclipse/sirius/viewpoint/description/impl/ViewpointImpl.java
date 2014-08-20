@@ -90,7 +90,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * <em>Customizes</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {

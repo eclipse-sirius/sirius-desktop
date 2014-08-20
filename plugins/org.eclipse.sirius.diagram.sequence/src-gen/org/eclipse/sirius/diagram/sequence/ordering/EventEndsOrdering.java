@@ -17,7 +17,7 @@ import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Event Ends Ordering</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -29,7 +29,7 @@ import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
  * <em>Event Ends</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage#getEventEndsOrdering()
  * @model
  * @generated

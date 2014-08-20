@@ -48,7 +48,7 @@ import org.eclipse.sirius.table.metamodel.table.description.StyleUpdater;
  * <em>Background Conditional Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class StyleUpdaterImpl extends EObjectImpl implements StyleUpdater {

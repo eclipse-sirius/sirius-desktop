@@ -16,9 +16,9 @@ import org.eclipse.sirius.viewpoint.RGBValues;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Dot</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> The dot style. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  * <em>Stroke Size Computation Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getDot()
  * @model
  * @generated

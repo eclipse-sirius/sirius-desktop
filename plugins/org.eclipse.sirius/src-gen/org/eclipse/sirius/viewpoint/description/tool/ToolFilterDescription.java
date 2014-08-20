@@ -17,11 +17,11 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Filter Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> filter to hide a tool in UI based on preconditon
  * evaluated when specified elements to listen are modified <!-- end-model-doc
  * -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Listeners</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getToolFilterDescription()
  * @model
  * @generated

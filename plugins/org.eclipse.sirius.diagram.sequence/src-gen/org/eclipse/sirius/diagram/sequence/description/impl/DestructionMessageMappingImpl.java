@@ -19,7 +19,7 @@ import org.eclipse.sirius.diagram.sequence.description.DestructionMessageMapping
  * <em><b>Destruction Message Mapping</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class DestructionMessageMappingImpl extends MessageMappingImpl implements DestructionMessageMapping {

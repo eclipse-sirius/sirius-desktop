@@ -16,11 +16,11 @@ import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Node Mapping Import</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> Ease the reuse of existing mappings. If the feature
  * is not defined in this instance it will re-use the feature value of the
  * imported one. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
  * <em>Imported Mapping</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getNodeMappingImport()
  * @model
  * @generated

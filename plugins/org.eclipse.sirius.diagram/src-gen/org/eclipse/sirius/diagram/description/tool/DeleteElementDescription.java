@@ -21,10 +21,10 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Delete Element Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> Tool that describes how to delete a
  * ViewPointElement. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -45,7 +45,7 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
  * <em>Hook</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDeleteElementDescription()
  * @model
  * @generated

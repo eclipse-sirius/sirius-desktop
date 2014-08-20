@@ -55,7 +55,7 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationImpl;
  * <em>Description</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DTableImpl extends DRepresentationImpl implements DTable {

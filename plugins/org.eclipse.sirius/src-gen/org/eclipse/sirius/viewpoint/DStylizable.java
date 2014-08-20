@@ -16,10 +16,10 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DStylizable</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> An element that has a style. <!-- end-model-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDStylizable()
  * @model interface="true" abstract="true"
  * @generated

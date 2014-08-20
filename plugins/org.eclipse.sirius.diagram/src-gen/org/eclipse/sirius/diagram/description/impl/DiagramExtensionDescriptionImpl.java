@@ -59,7 +59,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * <em>Concerns</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DiagramExtensionDescriptionImpl extends EObjectImpl implements DiagramExtensionDescription {

@@ -32,7 +32,7 @@ import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
  * <em>Composite Filter Descriptions</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class AppliedCompositeFiltersImpl extends EObjectImpl implements AppliedCompositeFilters {

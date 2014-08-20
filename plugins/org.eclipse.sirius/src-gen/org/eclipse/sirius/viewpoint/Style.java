@@ -16,10 +16,10 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Style</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> The super class of all styles. <!-- end-model-doc
  * -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -27,7 +27,7 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getStyle()
  * @model abstract="true"
  * @generated

@@ -15,7 +15,7 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescr
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Tree Creation Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -24,7 +24,7 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescr
  * <em>Tree Description</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeCreationDescription()
  * @model
  * @generated

@@ -30,7 +30,7 @@ import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
  * <em>Finishing End Finder Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class DelimitedEventMappingImpl extends EventMappingImpl implements DelimitedEventMapping {

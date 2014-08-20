@@ -73,7 +73,7 @@ import org.eclipse.sirius.viewpoint.impl.DSemanticDecoratorImpl;
  * <em>Intersection Mapping</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DCellImpl extends DSemanticDecoratorImpl implements DCell {

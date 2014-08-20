@@ -17,11 +17,11 @@ import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Drag And Drop Target</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A DragAndDropTarget is an element that can managed
  * drop requests. <!-- end-model-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getDragAndDropTarget()
  * @model
  * @generated

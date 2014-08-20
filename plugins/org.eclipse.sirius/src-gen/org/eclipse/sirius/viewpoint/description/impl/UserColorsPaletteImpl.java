@@ -40,7 +40,7 @@ import org.eclipse.sirius.viewpoint.description.UserColorsPalette;
  * <em>Entries</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class UserColorsPaletteImpl extends EObjectImpl implements UserColorsPalette {

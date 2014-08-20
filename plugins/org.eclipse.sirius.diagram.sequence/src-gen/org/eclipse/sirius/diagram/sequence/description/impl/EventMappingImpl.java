@@ -20,7 +20,7 @@ import org.eclipse.sirius.diagram.sequence.description.EventMapping;
  * <em><b>Event Mapping</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class EventMappingImpl extends EObjectImpl implements EventMapping {

@@ -14,11 +14,11 @@ package org.eclipse.sirius.viewpoint.description.tool;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Default</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> The Default Case is executed if none of Case
  * condition are true. <!-- end-model-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getDefault()
  * @model
  * @generated

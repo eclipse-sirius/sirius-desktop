@@ -40,7 +40,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptio
  * <em>Variables</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class TreeItemToolImpl extends AbstractToolDescriptionImpl implements TreeItemTool {

@@ -37,7 +37,7 @@ import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
  * <em>Node Mapping</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class OrderedTreeLayoutImpl extends DocumentedElementImpl implements OrderedTreeLayout {

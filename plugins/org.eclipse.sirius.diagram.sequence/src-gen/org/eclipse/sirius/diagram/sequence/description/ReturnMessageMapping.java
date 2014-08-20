@@ -13,7 +13,7 @@ package org.eclipse.sirius.diagram.sequence.description;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Return Message Mapping</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -22,7 +22,7 @@ package org.eclipse.sirius.diagram.sequence.description;
  * <em>Invocation Message Finder Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getReturnMessageMapping()
  * @model
  * @generated

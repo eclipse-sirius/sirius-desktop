@@ -40,7 +40,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
  * <em>Owned Representations</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class RepresentationTemplateImpl extends EObjectImpl implements RepresentationTemplate {

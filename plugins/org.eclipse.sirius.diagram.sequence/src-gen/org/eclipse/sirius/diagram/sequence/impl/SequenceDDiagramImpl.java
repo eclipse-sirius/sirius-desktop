@@ -38,7 +38,7 @@ import org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering;
  * <em>Instance Role Semantic Ordering</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class SequenceDDiagramImpl extends DSemanticDiagramImpl implements SequenceDDiagram {

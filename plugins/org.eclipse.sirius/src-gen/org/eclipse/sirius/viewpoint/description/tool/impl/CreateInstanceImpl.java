@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em>Variable Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CreateInstanceImpl extends ContainerModelOperationImpl implements CreateInstance {

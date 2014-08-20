@@ -17,10 +17,10 @@ import org.eclipse.sirius.viewpoint.description.DecorationDescription;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Mapping Based Decoration</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A MappingBasedDecoration applies decorations on
  * views that are issued from one or more mappings. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.DecorationDescription;
  * <em>Mappings</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getMappingBasedDecoration()
  * @model
  * @generated

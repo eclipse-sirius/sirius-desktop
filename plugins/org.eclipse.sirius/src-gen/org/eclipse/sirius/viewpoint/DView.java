@@ -24,9 +24,9 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * viewpoints and Meta Model extensions.
  * </p>
  * <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> An view is the root element <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -46,7 +46,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDView()
  * @model
  * @generated

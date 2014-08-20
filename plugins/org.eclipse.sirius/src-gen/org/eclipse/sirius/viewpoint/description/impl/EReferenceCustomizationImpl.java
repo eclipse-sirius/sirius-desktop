@@ -33,7 +33,7 @@ import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;
  * <em>Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class EReferenceCustomizationImpl extends EStructuralFeatureCustomizationImpl implements EReferenceCustomization {

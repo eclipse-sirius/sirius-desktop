@@ -33,7 +33,7 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  * <em>Stroke Size Computation Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DotImpl extends NodeStyleImpl implements Dot {

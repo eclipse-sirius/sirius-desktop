@@ -16,10 +16,10 @@ import org.eclipse.sirius.viewpoint.RGBValues;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Bundled Image</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> The bundled image style allows to use the default
  * images provide by the ViewPoint editor. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -27,7 +27,7 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  * <li>{@link org.eclipse.sirius.diagram.BundledImage#getColor <em>Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getBundledImage()
  * @model
  * @generated

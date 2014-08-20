@@ -31,7 +31,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ElementVariable;
  * <em>Predecessor</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class InstanceRoleCreationToolImpl extends NodeCreationDescriptionImpl implements InstanceRoleCreationTool {

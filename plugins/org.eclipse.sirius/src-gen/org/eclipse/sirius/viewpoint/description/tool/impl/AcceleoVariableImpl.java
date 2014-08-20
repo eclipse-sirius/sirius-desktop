@@ -33,7 +33,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em>Computation Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class AcceleoVariableImpl extends VariableContainerImpl implements AcceleoVariable {

@@ -71,7 +71,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescri
  * <em>Connection Start Precondition</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl implements EdgeCreationDescription {

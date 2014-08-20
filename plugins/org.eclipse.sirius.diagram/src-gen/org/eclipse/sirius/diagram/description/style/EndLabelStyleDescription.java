@@ -16,10 +16,10 @@ import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>End Label Style Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> The style of a end label. <!-- end-model-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getEndLabelStyleDescription()
  * @model
  * @generated

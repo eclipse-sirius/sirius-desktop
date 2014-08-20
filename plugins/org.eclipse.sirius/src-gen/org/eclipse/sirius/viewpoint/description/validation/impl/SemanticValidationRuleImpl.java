@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
  * <em>Target Class</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class SemanticValidationRuleImpl extends ValidationRuleImpl implements SemanticValidationRule {

@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
  * <em>Audit Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class RuleAuditImpl extends EObjectImpl implements RuleAudit {

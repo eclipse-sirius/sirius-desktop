@@ -48,7 +48,7 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationImpl;
  * Description</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DTreeImpl extends DRepresentationImpl implements DTree {

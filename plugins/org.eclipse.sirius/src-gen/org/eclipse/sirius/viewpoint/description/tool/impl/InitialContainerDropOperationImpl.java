@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em>First Model Operations</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class InitialContainerDropOperationImpl extends EObjectImpl implements InitialContainerDropOperation {

@@ -20,9 +20,9 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Abstract Node Mapping</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> An abstract mapping. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -37,7 +37,7 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  * <em>Reused Bordered Node Mappings</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getAbstractNodeMapping()
  * @model abstract="true"
  * @generated

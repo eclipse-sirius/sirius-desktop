@@ -17,9 +17,9 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Edge Target</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> The target of a ViewEdge. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  * Incoming Edges</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getEdgeTarget()
  * @model abstract="true"
  * @generated

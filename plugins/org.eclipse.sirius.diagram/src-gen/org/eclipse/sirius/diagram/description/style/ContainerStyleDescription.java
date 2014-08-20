@@ -17,9 +17,9 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Container Style Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> The style of a container. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
  * <em>Rounded Corner</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getContainerStyleDescription()
  * @model abstract="true"
  * @generated

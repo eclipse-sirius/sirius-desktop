@@ -19,13 +19,13 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Viewpoint</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A Viewpoint defines a
  * "way of looking at your model", you could make an analogy with
  * "What is your current concern about your analysis". It defines
  * representations and might also define specific data only relevant for this
  * concern. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -63,7 +63,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * <em>Customizes</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getViewpoint()
  * @model
  * @generated

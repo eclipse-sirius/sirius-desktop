@@ -21,7 +21,7 @@ import org.eclipse.sirius.tree.TreePackage;
  * <em><b>DTree Element Updater</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class DTreeElementUpdaterImpl extends EObjectImpl implements DTreeElementUpdater {

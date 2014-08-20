@@ -32,7 +32,7 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * <em>Invocation Message Finder Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TReturnMessageMappingImpl extends TMessageMappingImpl implements TReturnMessageMapping {

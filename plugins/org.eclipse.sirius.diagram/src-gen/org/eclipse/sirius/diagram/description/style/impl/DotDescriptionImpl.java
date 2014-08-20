@@ -33,7 +33,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <em>Stroke Size Computation Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DotDescriptionImpl extends NodeStyleDescriptionImpl implements DotDescription {

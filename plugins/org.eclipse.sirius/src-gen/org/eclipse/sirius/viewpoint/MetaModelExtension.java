@@ -16,11 +16,11 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Meta Model Extension</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> Represent a Meta Model extension. A meta model
  * extension adds types, attributes and references into an existing meta model
  * <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Extension Group</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getMetaModelExtension()
  * @model
  * @generated

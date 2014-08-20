@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <em>Background Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class BackgroundStyleDescriptionImpl extends EObjectImpl implements BackgroundStyleDescription {

@@ -41,7 +41,7 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * <em>Use Domain Element</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImpl implements TSourceTargetMessageMapping {

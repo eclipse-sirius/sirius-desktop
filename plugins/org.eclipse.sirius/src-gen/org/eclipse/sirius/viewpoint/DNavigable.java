@@ -17,10 +17,10 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DNavigable</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> Represents an element that can be navigate. The user
  * can see the details in another editor. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Owned Navigation Links</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDNavigable()
  * @model abstract="true"
  * @generated

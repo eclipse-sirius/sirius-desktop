@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Point</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Contributed</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.description.contribution.ContributionPackage#getContributionPoint()
  * @model
  * @generated

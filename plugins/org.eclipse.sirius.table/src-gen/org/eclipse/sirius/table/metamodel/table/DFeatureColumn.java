@@ -13,7 +13,7 @@ package org.eclipse.sirius.table.metamodel.table;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DFeature Column</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -22,7 +22,7 @@ package org.eclipse.sirius.table.metamodel.table;
  * <em>Feature Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDFeatureColumn()
  * @model
  * @generated

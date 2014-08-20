@@ -19,7 +19,7 @@ import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
  * <em><b>Combined Fragment Mapping</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class CombinedFragmentMappingImpl extends FrameMappingImpl implements CombinedFragmentMapping {

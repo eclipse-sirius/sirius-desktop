@@ -19,12 +19,7 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.tree.description.DescriptionFactory;
@@ -45,8 +40,7 @@ import com.google.common.collect.Lists;
  * 
  * @generated
  */
-public class TreeItemContainerDropToolItemProvider extends MappingBasedToolDescriptionItemProvider implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider,
-        IItemLabelProvider, IItemPropertySource {
+public class TreeItemContainerDropToolItemProvider extends MappingBasedToolDescriptionItemProvider {
     private static final Collection<EClass> TYPES_TO_HIDE = Lists.newArrayList(ToolPackage.Literals.DELETE_VIEW);
 
     /**

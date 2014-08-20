@@ -27,7 +27,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
  * </li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CustomStyleImpl extends NodeStyleImpl implements CustomStyle {

@@ -33,7 +33,7 @@ import org.eclipse.sirius.diagram.description.style.StylePackage;
  * <em>Height Computation Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class SizeComputationContainerStyleDescriptionImpl extends EObjectImpl implements SizeComputationContainerStyleDescription {

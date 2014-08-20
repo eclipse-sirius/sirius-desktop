@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
  * <em>Owned Concern Descriptions</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ConcernSetImpl extends DocumentedElementImpl implements ConcernSet {

@@ -49,7 +49,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescri
  * <em>Hook</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DeleteElementDescriptionImpl extends MappingBasedToolDescriptionImpl implements DeleteElementDescription {

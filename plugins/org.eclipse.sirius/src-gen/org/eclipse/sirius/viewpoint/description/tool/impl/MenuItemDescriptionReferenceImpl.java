@@ -31,7 +31,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em>Item</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class MenuItemDescriptionReferenceImpl extends EObjectImpl implements MenuItemDescriptionReference {

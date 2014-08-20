@@ -16,7 +16,7 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DTable Element</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -25,7 +25,7 @@ import org.eclipse.sirius.viewpoint.DRepresentationElement;
  * <em>Table Element Mapping</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTableElement()
  * @model abstract="true"
  * @generated

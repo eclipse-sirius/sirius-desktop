@@ -16,10 +16,10 @@ import org.eclipse.emf.common.util.EList;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DNode List</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A container that shows its contents as a list. <!--
  * end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -29,7 +29,7 @@ import org.eclipse.emf.common.util.EList;
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getDNodeList()
  * @model
  * @generated

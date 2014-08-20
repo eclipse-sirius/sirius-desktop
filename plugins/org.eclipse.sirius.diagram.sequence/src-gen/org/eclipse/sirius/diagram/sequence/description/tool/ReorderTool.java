@@ -19,7 +19,7 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Reorder Tool</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -43,7 +43,7 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <em>On Event Moved Operation</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage#getReorderTool()
  * @model
  * @generated

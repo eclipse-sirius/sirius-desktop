@@ -34,7 +34,7 @@ import org.eclipse.sirius.diagram.description.filter.FilterPackage;
  * <em>Filters</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CompositeFilterDescriptionImpl extends FilterDescriptionImpl implements CompositeFilterDescription {

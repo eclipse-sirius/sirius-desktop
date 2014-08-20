@@ -17,10 +17,10 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Behavior Tool</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A tool that can be launched by the user. <!--
  * end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <em>Initial Operation</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getBehaviorTool()
  * @model
  * @generated

@@ -37,7 +37,7 @@ import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
  * <em>Apply On All</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class EStructuralFeatureCustomizationImpl extends EObjectImpl implements EStructuralFeatureCustomization {

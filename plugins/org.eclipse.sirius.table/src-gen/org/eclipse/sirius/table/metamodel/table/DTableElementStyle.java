@@ -17,7 +17,7 @@ import org.eclipse.sirius.viewpoint.RGBValues;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DTable Element Style</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -41,7 +41,7 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  * <em>Default Background Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTableElementStyle()
  * @model
  * @generated

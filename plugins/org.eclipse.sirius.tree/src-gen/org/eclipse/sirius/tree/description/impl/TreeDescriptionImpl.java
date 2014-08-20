@@ -84,7 +84,7 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
  * <em>Owned Representation Navigation Descriptions</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDescription {

@@ -49,7 +49,7 @@ import org.eclipse.sirius.viewpoint.impl.LabelStyleImpl;
  * <em>Hide Label By Default</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle {

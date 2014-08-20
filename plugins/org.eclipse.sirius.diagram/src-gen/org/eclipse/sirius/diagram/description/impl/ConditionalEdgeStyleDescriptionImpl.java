@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.impl.ConditionalStyleDescription
  * <em>Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ConditionalEdgeStyleDescriptionImpl extends ConditionalStyleDescriptionImpl implements ConditionalEdgeStyleDescription {

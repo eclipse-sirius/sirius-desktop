@@ -15,7 +15,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Tree Mapping</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -24,7 +24,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
  * <em>Semantic Elements</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeMapping()
  * @model
  * @generated

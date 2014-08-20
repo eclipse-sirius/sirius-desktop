@@ -17,9 +17,9 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Rule</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A validation rule. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -37,7 +37,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Fixes</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationRule()
  * @model abstract="true"
  * @generated

@@ -20,7 +20,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em><b>Element Select Variable</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class ElementSelectVariableImpl extends AbstractVariableImpl implements ElementSelectVariable {

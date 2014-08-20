@@ -18,9 +18,9 @@ import org.eclipse.sirius.viewpoint.Style;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Edge Style</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> The style of an edge. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -45,7 +45,7 @@ import org.eclipse.sirius.viewpoint.Style;
  * Label Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getEdgeStyle()
  * @model
  * @generated

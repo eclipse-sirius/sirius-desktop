@@ -17,8 +17,8 @@ import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Element Double Click Variable</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getElementDoubleClickVariable()
  * @model
  * @generated
