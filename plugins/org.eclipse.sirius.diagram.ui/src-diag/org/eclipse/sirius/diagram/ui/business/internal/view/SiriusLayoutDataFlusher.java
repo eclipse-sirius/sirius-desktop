@@ -53,7 +53,7 @@ public class SiriusLayoutDataFlusher implements IOperationHistoryListener {
             viewPointLayoutDataManagerImpl.flushRootLayoutDatas();
             Map<Diagram, Set<View>> createdViewsToLayout = viewPointLayoutDataManagerImpl.getCreatedViewsToLayout();
             for (Diagram diagram : new ArrayList<Diagram>(createdViewsToLayout.keySet())) {
-                if (diagram.eIsProxy()) {
+                if (diagram.eIsProxy() || diagram.eResource() == null || diagram.eResource().getResourceSet() == null) {
                     createdViewsToLayout.remove(diagram);
                 }
             }
