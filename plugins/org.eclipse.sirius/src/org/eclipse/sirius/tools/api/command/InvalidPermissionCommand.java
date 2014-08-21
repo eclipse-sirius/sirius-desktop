@@ -29,7 +29,7 @@ public class InvalidPermissionCommand extends SiriusCommand {
     /**
      * The elements that user tried to modify.
      */
-    private EObject lockedElement;
+    private EObject[] lockedElements;
 
     /**
      * Creates a new {@link InvalidPermissionCommand}.
@@ -37,7 +37,7 @@ public class InvalidPermissionCommand extends SiriusCommand {
      * @param domain
      *            the editing domain in which this command will be executed
      * @param label
-     *            the message explaning the permission issues
+     *            the message explaining the permission issues
      */
     public InvalidPermissionCommand(TransactionalEditingDomain domain, String label) {
         super(domain, label);
@@ -48,12 +48,12 @@ public class InvalidPermissionCommand extends SiriusCommand {
      * 
      * @param domain
      *            the editing domain in which this command will be executed
-     * @param lockedElement
-     *            the element that user tried to modify
+     * @param lockedElements
+     *            the elements that user tried to modify
      */
-    public InvalidPermissionCommand(TransactionalEditingDomain domain, EObject lockedElement) {
-        super(domain, "Invalid Permission : cannot modify " + lockedElement);
-        this.lockedElement = lockedElement;
+    public InvalidPermissionCommand(TransactionalEditingDomain domain, EObject... lockedElements) {
+        super(domain, "Invalid Permission : cannot modify " + lockedElements);
+        this.lockedElements = lockedElements;
     }
 
     /**
@@ -75,8 +75,8 @@ public class InvalidPermissionCommand extends SiriusCommand {
      */
     @Override
     protected void doExecute() {
-        if (lockedElement != null) {
-            throw new LockedInstanceException(lockedElement);
+        if (lockedElements != null) {
+            throw new LockedInstanceException(lockedElements);
         } else {
             throw new LockedInstanceException(getLabel());
         }

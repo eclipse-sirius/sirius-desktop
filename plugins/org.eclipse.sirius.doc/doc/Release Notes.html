@@ -60,7 +60,15 @@
 			<li>The method 
 				<code>org.eclipse.sirius.business.api.query.DRepresentationQuery.isDanglingRepresentation()</code> has been added to introduce the possibility to check if a representation is a dangling representation, ie. if its a DSemanticDecorator, its target is null or does not belong to a session.
 			</li>
+			<li>
+				<code>org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException</code> now can take several EObjects in constructor and a method 
+				<code>LockedInstanceException.getLockedElements()</code> has been added to get all EObjects put in constructor.
+			</li>
 		</ul>
+		<p>
+			<code>org.eclipse.sirius.tools.api.command.InvalidPermissionCommand</code> now can take several EObjects in constructor to throw a 
+			<code>LockedInstanceException</code> with several EObjects.
+		</p>
 		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
