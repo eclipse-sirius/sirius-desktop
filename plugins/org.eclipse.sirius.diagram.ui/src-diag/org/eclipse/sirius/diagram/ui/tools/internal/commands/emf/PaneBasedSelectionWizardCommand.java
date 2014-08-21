@@ -38,6 +38,8 @@ import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDes
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.swt.widgets.Shell;
 
+import com.google.common.collect.ImmutableSet;
+
 /**
  * A command to display a selection wizard.
  * 
@@ -208,8 +210,8 @@ public class PaneBasedSelectionWizardCommand extends AbstractSelectionWizardComm
      */
     private static void computeInput(final PaneBasedSelectionWizardDescription paneBasedSelectionWizardDescription, final EObject container, final IInterpreter interpreter, final TreeItemWrapper input) {
 
-        final Collection<EObject> referencingENode = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateCollection(container, paneBasedSelectionWizardDescription,
-                ToolPackage.eINSTANCE.getPaneBasedSelectionWizardDescription_CandidatesExpression());
+        final Collection<EObject> referencingENode = ImmutableSet.copyOf(RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateCollection(container, paneBasedSelectionWizardDescription,
+                ToolPackage.eINSTANCE.getPaneBasedSelectionWizardDescription_CandidatesExpression()));
         if (paneBasedSelectionWizardDescription.isTree()) {
             final Collection<EObject> referencingRoots = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateCollection(container, paneBasedSelectionWizardDescription,
                     ToolPackage.eINSTANCE.getPaneBasedSelectionWizardDescription_RootExpression());
@@ -226,10 +228,8 @@ public class PaneBasedSelectionWizardCommand extends AbstractSelectionWizardComm
             final Iterator<EObject> iterRoots = referencingENode.iterator();
             while (iterRoots.hasNext()) {
                 final EObject refRoot = iterRoots.next();
-                if (referencingENode.contains(refRoot)) {
-                    final TreeItemWrapper treeItem = new TreeItemWrapper(refRoot, input);
-                    input.getChildren().add(treeItem);
-                }
+                final TreeItemWrapper treeItem = new TreeItemWrapper(refRoot, input);
+                input.getChildren().add(treeItem);
             }
         }
     }

@@ -10,12 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.tools.internal.editor;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.core.commands.common.CommandException;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -94,6 +94,7 @@ import org.eclipse.ui.handlers.IHandlerService;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * A menu listener which show or hide the menu according to :
@@ -394,12 +395,12 @@ public class DTableMenuListener implements IMenuListener {
     private boolean buildOpenRepresentationActions(final IMenuManager open, final IInterpreter interpreter, final RepresentationNavigationDescription navDesc, final DRepresentationElement element,
             final Session session) {
         boolean atLeastOneRepresentationActionsWasCreated = false;
-        Collection<EObject> candidates;
+        Set<EObject> candidates;
         if (!StringUtil.isEmpty(navDesc.getBrowseExpression())) {
             final RuntimeLoggerInterpreter safeInterpreter = RuntimeLoggerManager.INSTANCE.decorate(interpreter);
-            candidates = safeInterpreter.evaluateCollection(element.getTarget(), navDesc, ToolPackage.eINSTANCE.getRepresentationNavigationDescription_BrowseExpression());
+            candidates = Sets.newLinkedHashSet(safeInterpreter.evaluateCollection(element.getTarget(), navDesc, ToolPackage.eINSTANCE.getRepresentationNavigationDescription_BrowseExpression()));
         } else {
-            candidates = new ArrayList<EObject>();
+            candidates = Sets.newLinkedHashSet();
             final Iterator<EObject> it = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(element.getTarget()).eAllContents(element.getTarget());
             while (it.hasNext()) {
                 candidates.add(it.next());

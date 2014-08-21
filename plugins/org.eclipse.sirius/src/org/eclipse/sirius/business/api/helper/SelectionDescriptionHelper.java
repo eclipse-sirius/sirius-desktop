@@ -20,6 +20,8 @@ import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.SelectionDescription;
 
+import com.google.common.collect.ImmutableSet;
+
 /**
  * Utility class for managing selection description elements.
  * 
@@ -51,8 +53,8 @@ public final class SelectionDescriptionHelper {
      */
     public static void computeInput(final SelectionDescription selectionDescription, final EObject container, final IInterpreter interpreter, final TreeItemWrapper input) {
 
-        final Collection<EObject> referencingENode = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateCollection(container, selectionDescription,
-                DescriptionPackage.eINSTANCE.getSelectionDescription_CandidatesExpression());
+        final Collection<EObject> referencingENode = ImmutableSet.copyOf(RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateCollection(container, selectionDescription,
+                DescriptionPackage.eINSTANCE.getSelectionDescription_CandidatesExpression()));
         if (selectionDescription.isTree()) {
             final Collection<EObject> referencingRoots = RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateCollection(container, selectionDescription,
                     DescriptionPackage.eINSTANCE.getSelectionDescription_RootExpression());
