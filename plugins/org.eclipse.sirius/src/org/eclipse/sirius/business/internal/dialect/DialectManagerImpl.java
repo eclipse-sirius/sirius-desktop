@@ -22,6 +22,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.business.api.dialect.Dialect;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.RepresentationNotification;
@@ -39,10 +40,13 @@ import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
+
+import com.google.common.collect.Lists;
 
 /**
  * Class able to manage a set of dialects to provides the usual dialect services
@@ -255,11 +259,26 @@ public class DialectManagerImpl implements DialectManager {
      *      org.eclipse.sirius.business.api.session.Session)
      */
     public synchronized Collection<DRepresentation> getRepresentations(final EObject semantic, final Session session) {
-        final Collection<DRepresentation> reps = new ArrayList<DRepresentation>();
-        for (final Dialect dialect : dialects.values()) {
-            reps.addAll(dialect.getServices().getRepresentations(semantic, session));
+        if (semantic != null) {
+            return findAllRepresentations(semantic, session);
+        } else {
+            final Collection<DRepresentation> reps = new ArrayList<DRepresentation>();
+            for (final Dialect dialect : dialects.values()) {
+                reps.addAll(dialect.getServices().getRepresentations(semantic, session));
+            }
+            return reps;
         }
-        return reps;
+    }
+    
+    private Collection<DRepresentation> findAllRepresentations(EObject semantic, Session session) {
+        Collection<DRepresentation> result = Lists.newArrayList();
+        ECrossReferenceAdapter xref = session.getSemanticCrossReferencer();
+        for (EStructuralFeature.Setting setting : xref.getInverseReferences(semantic)) {
+            if (ViewpointPackage.Literals.DREPRESENTATION.isInstance(setting.getEObject()) && setting.getEStructuralFeature() == ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET) {
+                result.add((DRepresentation) setting.getEObject());
+            }
+        }
+        return result;
     }
 
     /**
