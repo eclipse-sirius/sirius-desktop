@@ -10,10 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.business.internal.refresh;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-
+import org.eclipse.sirius.common.tools.api.util.RefreshIDFactory;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DLine;
@@ -42,13 +40,7 @@ public class DCellCandidate {
      */
     private DCell element;
 
-	private final URI semanticURI;
-
-	private final URI lineURI;
-
-	private final URI columnURI;
-
-	private final int hashCode;
+    private int hashcode;
 
     /**
      * Create a new candidate.
@@ -67,10 +59,7 @@ public class DCellCandidate {
         this.semantic = semanticElement;
         this.line = line;
         this.column = column;
-    	this.semanticURI = semantic != null ? EcoreUtil.getURI(semantic) : null;
-    	this.lineURI = line != null ? EcoreUtil.getURI(line) : null;
-    	this.columnURI = column != null ? EcoreUtil.getURI(column) : null;
-    	this.hashCode = computeHashCode();
+        this.hashcode = computeHashCode();
     }
 
     /**
@@ -110,11 +99,17 @@ public class DCellCandidate {
      */
     @Override
     public int hashCode() {
-        return hashCode;
+        return this.hashcode;
     }
 
-	private int computeHashCode() {
-	    return KeyCache.DEFAULT.getKey((mapping != null ? mapping.getName() : "") + semanticURI + lineURI + columnURI);
+    private int computeHashCode() {
+        final int[] parts = new int[4];
+        parts[0] = (mapping == null) ? 0 : getMappingID();
+        parts[1] = (semantic == null) ? 0 : getSemanticID();
+        parts[2] = (line == null) ? 0 : getLineID();
+        parts[3] = (column == null) ? 0 : getColumnID();
+        final String sep = "/";
+        return KeyCache.DEFAULT.getKey(parts[0] + sep + parts[1] + sep + parts[2] + sep + parts[3]);
     }
 
     /**
@@ -129,30 +124,50 @@ public class DCellCandidate {
         if (result == null && !(obj instanceof DCellCandidate))
             result = false;
         final DCellCandidate other = (DCellCandidate) obj;
-        if (result == null && mapping == null) {
-            if (other.mapping != null)
-                result = false;
-        } else if (result == null && !mapping.getName().equals(other.mapping.getName()))
-            result = false;
+        /*
+         * the semantic element, lines and columns are less likely to be the
+         * same than the mapping. We should check for those first.
+         */
         if (result == null && semantic == null) {
             if (other.semantic != null)
                 result = false;
-        } else if (result == null && !semanticURI.equals(other.semanticURI))
+        } else if (result == null && !getSemanticID().equals(other.getSemanticID()))
             result = false;
         if (result == null && line == null) {
             if (other.line != null)
                 result = false;
-        } else if (result == null && !lineURI.equals(other.lineURI))
+        } else if (result == null && !getLineID().equals(other.getLineID()))
             result = false;
         if (result == null && column == null) {
             if (other.column != null)
                 result = false;
-        } else if (result == null && !columnURI.equals(other.columnURI))
+        } else if (result == null && !getColumnID().equals(other.getColumnID()))
+            result = false;
+        if (result == null && mapping == null) {
+            if (other.mapping != null)
+                result = false;
+        } else if (result == null && !mapping.equals(other.mapping))
             result = false;
 
         if (result == null)
             result = true;
         return result;
+    }
+
+    private Integer getColumnID() {
+        return RefreshIDFactory.getOrCreateID(column);
+    }
+
+    private Integer getLineID() {
+        return RefreshIDFactory.getOrCreateID(line);
+    }
+
+    private Integer getSemanticID() {
+        return RefreshIDFactory.getOrCreateID(semantic);
+    }
+
+    private Integer getMappingID() {
+        return RefreshIDFactory.getOrCreateID(mapping);
     }
 
     public ColumnMapping getMapping() {

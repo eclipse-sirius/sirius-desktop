@@ -10,10 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.business.internal.refresh;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-
+import org.eclipse.sirius.common.tools.api.util.RefreshIDFactory;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
 import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
@@ -38,11 +36,7 @@ public class DLineCandidate {
      */
     private DLine element;
 
-	private final URI semanticURI;
-
-	private final URI viewContainerURI;
-
-	private int hashCode;
+    private int hashcode;
 
     /**
      * Create a new candidate.
@@ -58,9 +52,7 @@ public class DLineCandidate {
         this.mapping = mapping;
         this.semantic = semanticElement;
         this.viewContainer = viewContainer;
-        this.semanticURI = semantic != null ? EcoreUtil.getURI(semantic) : null;
-        this.viewContainerURI = viewContainer != null ? EcoreUtil.getURI(viewContainer) : null;
-        this.hashCode = computeHashCode();
+        this.hashcode = computeHashCode();
     }
 
     /**
@@ -70,7 +62,7 @@ public class DLineCandidate {
      *            an existing diagram element.
      */
     public DLineCandidate(final DLine tableElement) {
-    	this(tableElement.getOriginMapping(), tableElement.getTarget(), (LineContainer) tableElement.eContainer());
+        this(tableElement.getOriginMapping(), tableElement.getTarget(), (LineContainer) tableElement.eContainer());
         this.element = tableElement;
     }
 
@@ -100,44 +92,91 @@ public class DLineCandidate {
      */
     @Override
     public int hashCode() {
-        return hashCode;
+        return this.hashcode;
     }
 
-	private int computeHashCode() {
-	    return KeyCache.DEFAULT.getKey((mapping != null ? mapping.getName() : "") + semanticURI + viewContainerURI);
+    private int computeHashCode() {
+        final int[] parts = new int[3];
+        parts[0] = (mapping == null) ? 0 : getMappingID();
+        parts[1] = (semantic == null) ? 0 : getSemanticID();
+        parts[2] = (viewContainer == null) ? 0 : getViewContainerID();
+        final String sep = "/";
+        return KeyCache.DEFAULT.getKey(parts[0] + sep + parts[1] + sep + parts[2]);
     }
 
+    // CHECKSTYLE:OFF
     /**
      * {@inheritDoc}
      */
     @Override
     public boolean equals(final Object obj) {
-        Boolean result = null;
-        if (this == obj)
-            result = true;
-        if (result == null && obj == null)
-            result = false;
-        if (result == null && !(obj instanceof DLineCandidate))
-            result = false;
-        final DLineCandidate other = (DLineCandidate) obj;
-        if (result == null && mapping == null) {
-            if (other.mapping != null)
-                result = false;
-        } else if (result == null && !mapping.getName().equals(other.mapping.getName()))
-            result = false;
-        if (result == null && semantic == null) {
-            if (other.semantic != null)
-                result = false;
-        } else if (result == null && !semanticURI.equals(other.semanticURI))
-            result = false;
-        if (result == null && viewContainer == null) {
-            if (other.viewContainer != null)
-                result = false;
-        } else if (result == null && !viewContainerURI.equals(other.viewContainerURI))
-            result = false;
-        if (result == null)
-            result = true;
-        return result;
+
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof DLineCandidate)) {
+            return false;
+        }
+        DLineCandidate other = (DLineCandidate) obj;
+        /*
+         * The semantic element is less likely to be the same as the mapping, we
+         * should check for this first.
+         */
+        if (semantic == null) {
+            if (other.semantic != null) {
+                return false;
+            }
+        } else if (!getSemanticID().equals(other.getSemanticID())) {
+            return false;
+        }
+        if (mapping == null) {
+            if (other.mapping != null) {
+                return false;
+            }
+        } else if (!mapping.equals(other.mapping)) {
+            return false;
+        }
+        if (viewContainer == null) {
+            if (other.viewContainer != null) {
+                return false;
+            }
+        } else if (!getViewContainerID().equals(other.getViewContainerID())) {
+            return false;
+        }
+        return true;
+    }
+
+    // CHECKSTYLE:ON
+
+    /**
+     * return the view container URI.
+     * 
+     * @return the view container URI.
+     */
+    private Integer getViewContainerID() {
+        if (viewContainer == null) {
+            return -1;
+        }
+        return RefreshIDFactory.getOrCreateID(viewContainer);
+    }
+
+    /**
+     * return the semantic id.
+     * 
+     * @return the semantic ID
+     */
+    private Integer getSemanticID() {
+        if (semantic == null) {
+            return -1;
+        }
+        return RefreshIDFactory.getOrCreateID(semantic);
+    }
+    
+    private Integer getMappingID() {
+        return RefreshIDFactory.getOrCreateID(mapping);
     }
 
     public LineMapping getMapping() {
@@ -151,4 +190,5 @@ public class DLineCandidate {
     public LineContainer getViewContainer() {
         return this.viewContainer;
     }
+
 }

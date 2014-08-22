@@ -10,10 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.business.internal.refresh;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-
+import org.eclipse.sirius.common.tools.api.util.RefreshIDFactory;
 import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
 import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
 
@@ -36,8 +34,6 @@ public class DTargetColumnCandidate {
      */
     private DTargetColumn element;
 
-    private final URI semanticURI;
-
     private final int hashCode;
 
     /**
@@ -51,7 +47,6 @@ public class DTargetColumnCandidate {
     public DTargetColumnCandidate(final ColumnMapping mapping, final EObject semanticElement) {
         this.mapping = mapping;
         this.semantic = semanticElement;
-        this.semanticURI = semantic != null ? EcoreUtil.getURI(semantic) : null;
         this.hashCode = computeHashCode();
     }
 
@@ -65,7 +60,6 @@ public class DTargetColumnCandidate {
         this.mapping = tableElement.getOriginMapping();
         this.semantic = tableElement.getTarget();
         this.element = tableElement;
-        this.semanticURI = semantic != null ? EcoreUtil.getURI(semantic) : null;
         this.hashCode = computeHashCode();
     }
 
@@ -99,7 +93,11 @@ public class DTargetColumnCandidate {
     }
 
     private int computeHashCode() {
-        return KeyCache.DEFAULT.getKey((mapping != null ? mapping.getName() : "") + semanticURI);
+        final int[] parts = new int[2];
+        parts[0] = (mapping == null) ? 0 : getMappingID();
+        parts[1] = (semantic == null) ? 0 : getSemanticID();
+        final String sep = "/";
+        return KeyCache.DEFAULT.getKey(parts[0] + sep + parts[1]);
     }
 
     /**
@@ -115,20 +113,34 @@ public class DTargetColumnCandidate {
         if (result == null && !(obj instanceof DTargetColumnCandidate))
             result = false;
         final DTargetColumnCandidate other = (DTargetColumnCandidate) obj;
-        if (result == null && mapping == null) {
-            if (other.mapping != null)
-                result = false;
-        } else if (result == null && !mapping.getName().equals(other.mapping.getName()))
-            result = false;
         if (result == null && semantic == null) {
             if (other.semantic != null)
                 result = false;
-        } else if (result == null && !semanticURI.equals(other.semanticURI))
+        } else if (result == null && !getSemanticID().equals(other.getSemanticID()))
+            result = false;
+        if (result == null && mapping == null) {
+            if (other.mapping != null)
+                result = false;
+        } else if (result == null && !mapping.equals(other.mapping))
             result = false;
         if (result == null)
             result = true;
         return result;
     }
+
+    /**
+     * return the semantic id.
+     * 
+     * @return the semantic ID
+     */
+    private Integer getSemanticID() {
+        return RefreshIDFactory.getOrCreateID(semantic);
+    }
+    
+    private Integer getMappingID() {
+        return RefreshIDFactory.getOrCreateID(mapping);
+    }
+
 
     public ColumnMapping getMapping() {
         return this.mapping;

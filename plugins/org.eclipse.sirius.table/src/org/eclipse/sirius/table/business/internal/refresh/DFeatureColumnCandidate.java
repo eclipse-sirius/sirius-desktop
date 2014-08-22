@@ -12,6 +12,7 @@ package org.eclipse.sirius.table.business.internal.refresh;
 
 import com.google.common.base.Objects;
 
+import org.eclipse.sirius.common.tools.api.util.RefreshIDFactory;
 import org.eclipse.sirius.table.metamodel.table.DFeatureColumn;
 import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
 
@@ -93,7 +94,15 @@ public class DFeatureColumnCandidate {
     }
 
     private int computeHashCode() {
-        return KeyCache.DEFAULT.getKey(((mapping == null || mapping.getName() == null) ? "" : mapping.getName()) + Objects.firstNonNull(featureName,  ""));
+        final int[] parts = new int[2];
+        parts[0] = (mapping == null) ? 0 : getMappingID();
+        parts[1] = Objects.firstNonNull(featureName, "").hashCode();
+        final String sep = "/";
+        return KeyCache.DEFAULT.getKey(parts[0] + sep + parts[1]);
+    }
+
+    private Integer getMappingID() {
+        return RefreshIDFactory.getOrCreateID(mapping);
     }
 
     /**
@@ -116,7 +125,7 @@ public class DFeatureColumnCandidate {
             if (other.mapping != null) {
                 result = false;
             }
-        } else if (result == null && !mapping.getName().equals(other.mapping.getName())) {
+        } else if (result == null && !mapping.equals(other.mapping)) {
             result = false;
         }
         if (result == null && featureName == null) {
