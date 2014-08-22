@@ -195,7 +195,7 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
         final Session session = SessionManager.INSTANCE.getSession(eObject);
         if (session != null) {
             Collection<DRepresentation> allRepresentations = DialectManager.INSTANCE.getRepresentations(eObject, session);
-            List<DRepresentation> filteredReps = Lists.newArrayList(Iterables.filter(allRepresentations, new InActivatedSiriusPredicate(session)));
+            List<DRepresentation> filteredReps = Lists.newArrayList(Iterables.filter(allRepresentations, new InViewpointPredicate(session.getSelectedViewpoints(false))));
             // Sort the available representations alphabetically by name
             Collections.sort(filteredReps, Ordering.natural().onResultOf(new Function<DRepresentation, String>() {
                 public String apply(DRepresentation from) {
@@ -319,20 +319,19 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
         }
     }
 
-    private class InActivatedSiriusPredicate implements Predicate<DRepresentation> {
+    private class InViewpointPredicate implements Predicate<DRepresentation> {
 
-        private final Session session;
+        private final Collection<Viewpoint> scope;
 
         /**
          * Filter representations <code>allRepresentations</code> whose
-         * description belongs to a viewpoint currently selected in the session
-         * <code>session</code>.
+         * description belongs to one the specified viewpoints.
          * 
-         * @param session
-         *            The current session
+         * @param scope
+         *            the viewpoints to test.
          */
-        public InActivatedSiriusPredicate(Session session) {
-            this.session = session;
+        public InViewpointPredicate(Collection<Viewpoint> scope) {
+            this.scope = scope;
         }
 
         /**
@@ -360,7 +359,7 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
                     // case that the viewpoint has been renamed after the aird
                     // creation
                     if (reprSirius != null && !reprSirius.eIsProxy() && reprSirius.eResource() != null) {
-                        for (final Viewpoint viewpoint : session.getSelectedViewpoints(false)) {
+                        for (final Viewpoint viewpoint : scope) {
                             if (EqualityHelper.areEquals(viewpoint, reprSirius)) {
                                 return true;
                             }
