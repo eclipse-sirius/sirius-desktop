@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.obeo.fr/dsl/viewpoint/description/1.1.0" xmlns:migrationmodeler="http://www.eclipse.org/sirius/tests/sample/migrationmodeler" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0" xmlns:viewpoint="http://www.obeo.fr/dsl/viewpoint/1.1.0" xsi:schemaLocation="http://www.obeo.fr/dsl/viewpoint/description/1.1.0 http://www.obeo.fr/dsl/viewpoint/1.1.0#//description http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0 http://www.obeo.fr/dsl/viewpoint/1.1.0#//description/style" xmi:id="_6JgNsMaoEeGLbILlOYiLBg" selectedViews="_63SgwMaoEeGLbILlOYiLBg">
+  <models xmi:type="migrationmodeler:TestCase" href="TestCampaign_05.migrationmodeler#/"/>
+  <eAnnotations xmi:type="description:DAnnotationEntry" xmi:id="_6JgNscaoEeGLbILlOYiLBg" source="Migration">
+    <details>style</details>
+    <details>someViewsAreHiddenDeactivation</details>
+    <details>edgeLabels</details>
+    <details>LabelAlignmentForDNodeListElementMigrationForNotHavingSessionDirtyAtOpening</details>
+    <details>LabelAlignmentForDNodeMigrationForNotHavingSessionDirtyAtOpening</details>
+    <details>GMFViewSizeForDNodeNotResizable</details>
+    <details>GMFTreeEdgeFixAnchors_2</details>
+    <details>RoutingStyleDesynchronization</details>
+    <details>sequenceAbsoluteBoundsFlag</details>
+  </eAnnotations>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_63SgwMaoEeGLbILlOYiLBg" initialized="true">
+    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_9RLwUMaoEeGLbILlOYiLBg" name="1">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_9RTFEMaoEeGLbILlOYiLBg" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_9RTFEcaoEeGLbILlOYiLBg" type="Viewpoint" element="_9RLwUMaoEeGLbILlOYiLBg" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_9RTsIMaoEeGLbILlOYiLBg" visible="false" type="2001" element="_9RLwUcaoEeGLbILlOYiLBg">
+            <children xmi:type="notation:Node" xmi:id="_9RUTMMaoEeGLbILlOYiLBg" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_9RUTMcaoEeGLbILlOYiLBg" y="-21"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_9RUTMsaoEeGLbILlOYiLBg" type="3003" element="_9RLwUsaoEeGLbILlOYiLBg">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_9RUTM8aoEeGLbILlOYiLBg" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9RUTNMaoEeGLbILlOYiLBg"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_9RTsIcaoEeGLbILlOYiLBg" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9RTsIsaoEeGLbILlOYiLBg" x="190" y="50" width="60" height="60"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_9RTFEsaoEeGLbILlOYiLBg"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_9RLwUcaoEeGLbILlOYiLBg" name="A" visible="false" width="6" height="6" resizeKind="NSEW">
+        <target xmi:type="migrationmodeler:Node" href="TestCampaign_05.migrationmodeler#//@representations.0/@nodes.0"/>
+        <semanticElements xmi:type="migrationmodeler:Node" href="TestCampaign_05.migrationmodeler#//@representations.0/@nodes.0"/>
+        <graphicalFilters xmi:type="viewpoint:HideFilter" xmi:id="_-2b24MaoEeGLbILlOYiLBg"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="viewpoint:Square" xmi:id="_9RLwUsaoEeGLbILlOYiLBg">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_9RLwU8aoEeGLbILlOYiLBg"/>
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_9RLwVMaoEeGLbILlOYiLBg"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_9RLwVcaoEeGLbILlOYiLBg" red="194" green="239" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']"/>
+      <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_9RLwVsaoEeGLbILlOYiLBg"/>
+      <target xmi:type="migrationmodeler:Diagram" href="TestCampaign_05.migrationmodeler#//@representations.0"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_AubTQMapEeGLbILlOYiLBg" name="2">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_Augy0MapEeGLbILlOYiLBg" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_Augy0capEeGLbILlOYiLBg" type="Viewpoint" element="_AubTQMapEeGLbILlOYiLBg" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_AuhZ4MapEeGLbILlOYiLBg" visible="false" type="2002" element="_AubTQcapEeGLbILlOYiLBg">
+            <children xmi:type="notation:Node" xmi:id="_AuiA8MapEeGLbILlOYiLBg" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_AuiA8capEeGLbILlOYiLBg" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_AuiA8sapEeGLbILlOYiLBg"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_AuiA88apEeGLbILlOYiLBg"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_AuhZ4capEeGLbILlOYiLBg" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AuhZ4sapEeGLbILlOYiLBg" x="160" y="40"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_Augy0sapEeGLbILlOYiLBg"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="viewpoint:DNodeContainer" xmi:id="_AubTQcapEeGLbILlOYiLBg" name="A" visible="false">
+        <target xmi:type="migrationmodeler:Container" href="TestCampaign_05.migrationmodeler#//@representations.1/@containers.0"/>
+        <semanticElements xmi:type="migrationmodeler:Container" href="TestCampaign_05.migrationmodeler#//@representations.1/@containers.0"/>
+        <graphicalFilters xmi:type="viewpoint:HideFilter" xmi:id="_BWvQcMapEeGLbILlOYiLBg"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="viewpoint:FlatContainerStyle" xmi:id="_AubTQsapEeGLbILlOYiLBg" backgroundStyle="GradientTopToBottom">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_AubTQ8apEeGLbILlOYiLBg"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_AubTRMapEeGLbILlOYiLBg"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_AubTRcapEeGLbILlOYiLBg" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_AubTRsapEeGLbILlOYiLBg" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']"/>
+      <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_AubTR8apEeGLbILlOYiLBg"/>
+      <target xmi:type="migrationmodeler:Diagram" href="TestCampaign_05.migrationmodeler#//@representations.1"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_CnIhUMapEeGLbILlOYiLBg" name="3">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_CnQdIMapEeGLbILlOYiLBg" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_CnQdIcapEeGLbILlOYiLBg" type="Viewpoint" element="_CnIhUMapEeGLbILlOYiLBg" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_CnQdI8apEeGLbILlOYiLBg" type="2002" element="_CnIhUcapEeGLbILlOYiLBg">
+            <children xmi:type="notation:Node" xmi:id="_CnREMMapEeGLbILlOYiLBg" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_CnREMcapEeGLbILlOYiLBg" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_CnREMsapEeGLbILlOYiLBg"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_CnREM8apEeGLbILlOYiLBg"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_CnRrQMapEeGLbILlOYiLBg" visible="false" type="3012" element="_CnIhUsapEeGLbILlOYiLBg">
+              <children xmi:type="notation:Node" xmi:id="_CnSSUMapEeGLbILlOYiLBg" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_CnSSUcapEeGLbILlOYiLBg" x="31"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_CnSSUsapEeGLbILlOYiLBg" type="3016" element="_CnIhU8apEeGLbILlOYiLBg">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_CnSSU8apEeGLbILlOYiLBg" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CnSSVMapEeGLbILlOYiLBg"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_CnRrQcapEeGLbILlOYiLBg" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CnRrQsapEeGLbILlOYiLBg" x="-22" width="30" height="30"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_CnQdJMapEeGLbILlOYiLBg" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CnQdJcapEeGLbILlOYiLBg" x="215" y="75"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_CnQdIsapEeGLbILlOYiLBg"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="viewpoint:DNodeContainer" xmi:id="_CnIhUcapEeGLbILlOYiLBg" name="A">
+        <target xmi:type="migrationmodeler:Container" href="TestCampaign_05.migrationmodeler#//@representations.2/@containers.0"/>
+        <semanticElements xmi:type="migrationmodeler:Container" href="TestCampaign_05.migrationmodeler#//@representations.2/@containers.0"/>
+        <ownedBorderedNodes xmi:type="viewpoint:DNode" xmi:id="_CnIhUsapEeGLbILlOYiLBg" name="B" visible="false" width="3" height="3" resizeKind="NSEW">
+          <target xmi:type="migrationmodeler:Bordered" href="TestCampaign_05.migrationmodeler#//@representations.2/@containers.0/@elements.0"/>
+          <semanticElements xmi:type="migrationmodeler:Bordered" href="TestCampaign_05.migrationmodeler#//@representations.2/@containers.0/@elements.0"/>
+          <graphicalFilters xmi:type="viewpoint:HideFilter" xmi:id="_DbunAMapEeGLbILlOYiLBg"/>
+          <ownedStyle xmi:type="viewpoint:Ellipse" xmi:id="_CnIhU8apEeGLbILlOYiLBg">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_CnIhVMapEeGLbILlOYiLBg"/>
+            <description xmi:type="style:EllipseNodeDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']/@borderedNodeMappings[name='bordered']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_CnIhVcapEeGLbILlOYiLBg"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_CnIhVsapEeGLbILlOYiLBg" red="255" green="245" blue="181"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']/@borderedNodeMappings[name='bordered']"/>
+        </ownedBorderedNodes>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="viewpoint:FlatContainerStyle" xmi:id="_CnIhV8apEeGLbILlOYiLBg" backgroundStyle="GradientTopToBottom">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_CnIhWMapEeGLbILlOYiLBg"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_CnIhWcapEeGLbILlOYiLBg"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_CnIhWsapEeGLbILlOYiLBg" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_CnIhW8apEeGLbILlOYiLBg" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']"/>
+      <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_CnIhXMapEeGLbILlOYiLBg"/>
+      <target xmi:type="migrationmodeler:Diagram" href="TestCampaign_05.migrationmodeler#//@representations.2"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_EydJYMapEeGLbILlOYiLBg" name="4">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_EylsQMapEeGLbILlOYiLBg" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_EylsQcapEeGLbILlOYiLBg" type="Viewpoint" element="_EydJYMapEeGLbILlOYiLBg" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_EylsQ8apEeGLbILlOYiLBg" type="2002" element="_EydJYcapEeGLbILlOYiLBg">
+            <children xmi:type="notation:Node" xmi:id="_EymTUMapEeGLbILlOYiLBg" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_EymTUcapEeGLbILlOYiLBg" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_Eym6YcapEeGLbILlOYiLBg" visible="false" type="3007" element="_EydJZ8apEeGLbILlOYiLBg">
+                <children xmi:type="notation:Node" xmi:id="_EynhcMapEeGLbILlOYiLBg" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_EynhccapEeGLbILlOYiLBg" y="-21"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_EyoIgMapEeGLbILlOYiLBg" type="3003" element="_EydJaMapEeGLbILlOYiLBg">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_EyoIgcapEeGLbILlOYiLBg" fontName="Segoe UI"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EyoIgsapEeGLbILlOYiLBg"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_Eym6YsapEeGLbILlOYiLBg" fontName="Segoe UI" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Eym6Y8apEeGLbILlOYiLBg" x="50" y="24" width="60" height="60"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_EymTUsapEeGLbILlOYiLBg"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_Eym6YMapEeGLbILlOYiLBg"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_EylsRMapEeGLbILlOYiLBg" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EylsRcapEeGLbILlOYiLBg" x="225" y="65" width="213" height="123"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_EylsQsapEeGLbILlOYiLBg"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="viewpoint:DNodeContainer" xmi:id="_EydJYcapEeGLbILlOYiLBg" name="A">
+        <target xmi:type="migrationmodeler:Container" href="TestCampaign_05.migrationmodeler#//@representations.3/@containers.0"/>
+        <semanticElements xmi:type="migrationmodeler:Container" href="TestCampaign_05.migrationmodeler#//@representations.3/@containers.0"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="viewpoint:FlatContainerStyle" xmi:id="_EydJYsapEeGLbILlOYiLBg" backgroundStyle="GradientTopToBottom">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_EydJY8apEeGLbILlOYiLBg"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_EydJZMapEeGLbILlOYiLBg"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_EydJZcapEeGLbILlOYiLBg" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_EydJZsapEeGLbILlOYiLBg" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']"/>
+        <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_EydJZ8apEeGLbILlOYiLBg" name="B" visible="false" width="6" height="6" resizeKind="NSEW">
+          <target xmi:type="migrationmodeler:Node" href="TestCampaign_05.migrationmodeler#//@representations.3/@containers.0/@elements.0"/>
+          <semanticElements xmi:type="migrationmodeler:Node" href="TestCampaign_05.migrationmodeler#//@representations.3/@containers.0/@elements.0"/>
+          <graphicalFilters xmi:type="viewpoint:HideFilter" xmi:id="_FrYVcMapEeGLbILlOYiLBg"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="viewpoint:Square" xmi:id="_EydJaMapEeGLbILlOYiLBg">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_EydJacapEeGLbILlOYiLBg"/>
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_EydJasapEeGLbILlOYiLBg"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_EydJa8apEeGLbILlOYiLBg" red="194" green="239" blue="255"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <description xmi:type="description:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']"/>
+      <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_EydJbMapEeGLbILlOYiLBg"/>
+      <target xmi:type="migrationmodeler:Diagram" href="TestCampaign_05.migrationmodeler#//@representations.3"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_HpPJQMapEeGLbILlOYiLBg" name="5">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_HpXsIMapEeGLbILlOYiLBg" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_HpXsIcapEeGLbILlOYiLBg" type="Viewpoint" element="_HpPJQMapEeGLbILlOYiLBg" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_HpYTMcapEeGLbILlOYiLBg" type="2002" element="_HpPJQcapEeGLbILlOYiLBg">
+            <children xmi:type="notation:Node" xmi:id="_HpY6QMapEeGLbILlOYiLBg" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_HpY6QcapEeGLbILlOYiLBg" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_HpZhUMapEeGLbILlOYiLBg" visible="false" type="3008" element="_HpPJR8apEeGLbILlOYiLBg">
+                <children xmi:type="notation:Node" xmi:id="_HpZhU8apEeGLbILlOYiLBg" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_HpZhVMapEeGLbILlOYiLBg" type="7002">
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_HpZhVcapEeGLbILlOYiLBg"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_HpZhVsapEeGLbILlOYiLBg"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_HpZhUcapEeGLbILlOYiLBg" fontName="Segoe UI" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HpZhUsapEeGLbILlOYiLBg" x="30" y="30"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_HpY6QsapEeGLbILlOYiLBg"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_HpY6Q8apEeGLbILlOYiLBg"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_HpYTMsapEeGLbILlOYiLBg" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HpYTM8apEeGLbILlOYiLBg" x="140" y="45" width="308" height="153"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_HpYTMMapEeGLbILlOYiLBg"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="viewpoint:DNodeContainer" xmi:id="_HpPJQcapEeGLbILlOYiLBg" name="A">
+        <target xmi:type="migrationmodeler:Container" href="TestCampaign_05.migrationmodeler#//@representations.4/@containers.0"/>
+        <semanticElements xmi:type="migrationmodeler:Container" href="TestCampaign_05.migrationmodeler#//@representations.4/@containers.0"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="viewpoint:FlatContainerStyle" xmi:id="_HpPJQsapEeGLbILlOYiLBg" backgroundStyle="GradientTopToBottom">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_HpPJQ8apEeGLbILlOYiLBg"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_HpPJRMapEeGLbILlOYiLBg"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_HpPJRcapEeGLbILlOYiLBg" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_HpPJRsapEeGLbILlOYiLBg" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']"/>
+        <ownedDiagramElements xmi:type="viewpoint:DNodeContainer" xmi:id="_HpPJR8apEeGLbILlOYiLBg" name="B" visible="false">
+          <target xmi:type="migrationmodeler:Container" href="TestCampaign_05.migrationmodeler#//@representations.4/@containers.0/@elements.0"/>
+          <semanticElements xmi:type="migrationmodeler:Container" href="TestCampaign_05.migrationmodeler#//@representations.4/@containers.0/@elements.0"/>
+          <graphicalFilters xmi:type="viewpoint:HideFilter" xmi:id="_J2o08MapEeGLbILlOYiLBg"/>
+          <ownedStyle xmi:type="viewpoint:FlatContainerStyle" xmi:id="_HpPwUMapEeGLbILlOYiLBg" backgroundStyle="GradientTopToBottom">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_HpPwUcapEeGLbILlOYiLBg"/>
+            <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_HpPwUsapEeGLbILlOYiLBg"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_HpPwU8apEeGLbILlOYiLBg" red="255" green="255" blue="255"/>
+            <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_HpPwVMapEeGLbILlOYiLBg" red="209" green="209" blue="209"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <description xmi:type="description:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']"/>
+      <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_HpPwVcapEeGLbILlOYiLBg"/>
+      <target xmi:type="migrationmodeler:Diagram" href="TestCampaign_05.migrationmodeler#//@representations.4"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

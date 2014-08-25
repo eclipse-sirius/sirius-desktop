@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:tree="http://www.eclipse.org/sirius/tree/1.0.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/tree/description/1.0.0 http://www.eclipse.org/sirius/tree/1.0.0#//description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_I9qtMMElEeGUDe_3Sh31kg" selectedViews="_JsbQoMElEeGUDe_3Sh31kg" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="test.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_JsbQoMElEeGUDe_3Sh31kg" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_LoCBsMElEeGUDe_3Sh31kg" name="new dndDiagram" synchronized="false">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_LowacMElEeGUDe_3Sh31kg" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_LowaccElEeGUDe_3Sh31kg" type="Sirius" element="_LoCBsMElEeGUDe_3Sh31kg" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_LvtXAMElEeGUDe_3Sh31kg" type="2002" element="_Lo2hEMElEeGUDe_3Sh31kg">
+            <children xmi:type="notation:Node" xmi:id="_Lv8nkMElEeGUDe_3Sh31kg" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_Lv9OoMElEeGUDe_3Sh31kg" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_Lv9OocElEeGUDe_3Sh31kg"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_Lv91sMElEeGUDe_3Sh31kg"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_LvtXAcElEeGUDe_3Sh31kg" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_LvtXAsElEeGUDe_3Sh31kg"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_LowacsElEeGUDe_3Sh31kg"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_Lo2hEMElEeGUDe_3Sh31kg" name="new EClass 1">
+        <target xmi:type="ecore:EClass" href="test.ecore#//new%20EClass%201"/>
+        <semanticElements xmi:type="ecore:EClass" href="test.ecore#//new%20EClass%201"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_LuqOIMElEeGUDe_3Sh31kg">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Luq1MMElEeGUDe_3Sh31kg"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="dndTableTreeToDiag.odesign#//@ownedViewpoints[name='dnd']/@ownedRepresentations[name='dndDiagram']/@defaultLayer/@containerMappings[name='eclass']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Luq1McElEeGUDe_3Sh31kg"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Luq1MsElEeGUDe_3Sh31kg" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Luq1M8ElEeGUDe_3Sh31kg" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="dndTableTreeToDiag.odesign#//@ownedViewpoints[name='dnd']/@ownedRepresentations[name='dndDiagram']/@defaultLayer/@containerMappings[name='eclass']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="dndTableTreeToDiag.odesign#//@ownedViewpoints[name='dnd']/@ownedRepresentations[name='dndDiagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_LoCBscElEeGUDe_3Sh31kg"/>
+      <activatedLayers xmi:type="description_1:Layer" href="dndTableTreeToDiag.odesign#//@ownedViewpoints[name='dnd']/@ownedRepresentations[name='dndDiagram']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="test.ecore#/"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="table:DTable" xmi:id="_MxN3UMElEeGUDe_3Sh31kg" name="new dndTable" headerColumnWidth="906">
+      <target xmi:type="ecore:EPackage" href="test.ecore#/"/>
+      <lines xmi:type="table:DLine" xmi:id="_MxN3UcElEeGUDe_3Sh31kg" label="new EClass 1 -> new EClass 2">
+        <target xmi:type="ecore:EClass" href="test.ecore#//new%20EClass%201"/>
+        <semanticElements xmi:type="ecore:EClass" href="test.ecore#//new%20EClass%201"/>
+        <originMapping xmi:type="description_2:LineMapping" href="dndTableTreeToDiag.odesign#//@ownedViewpoints[name='dnd']/@ownedRepresentations[name='dndTable']/@ownedLineMappings[name='eclass']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_MxN3UsElEeGUDe_3Sh31kg" label="new EClass 2">
+        <target xmi:type="ecore:EClass" href="test.ecore#//new%20EClass%202"/>
+        <semanticElements xmi:type="ecore:EClass" href="test.ecore#//new%20EClass%202"/>
+        <originMapping xmi:type="description_2:LineMapping" href="dndTableTreeToDiag.odesign#//@ownedViewpoints[name='dnd']/@ownedRepresentations[name='dndTable']/@ownedLineMappings[name='eclass']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_MxN3U8ElEeGUDe_3Sh31kg" label="new EClass 3 -> new EClass 2">
+        <target xmi:type="ecore:EClass" href="test.ecore#//new%20EClass%203"/>
+        <semanticElements xmi:type="ecore:EClass" href="test.ecore#//new%20EClass%203"/>
+        <originMapping xmi:type="description_2:LineMapping" href="dndTableTreeToDiag.odesign#//@ownedViewpoints[name='dnd']/@ownedRepresentations[name='dndTable']/@ownedLineMappings[name='eclass']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_MxN3VMElEeGUDe_3Sh31kg" label="EClass4">
+        <target xmi:type="ecore:EClass" href="test.ecore#//EClass4"/>
+        <semanticElements xmi:type="ecore:EClass" href="test.ecore#//EClass4"/>
+        <originMapping xmi:type="description_2:LineMapping" href="dndTableTreeToDiag.odesign#//@ownedViewpoints[name='dnd']/@ownedRepresentations[name='dndTable']/@ownedLineMappings[name='eclass']"/>
+      </lines>
+      <description xmi:type="description_2:CrossTableDescription" href="dndTableTreeToDiag.odesign#//@ownedViewpoints[name='dnd']/@ownedRepresentations[name='dndTable']"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="tree:DTree" xmi:id="_NeZtcMElEeGUDe_3Sh31kg" name="new dndTree">
+      <target xmi:type="ecore:EPackage" href="test.ecore#/"/>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_NeZtccElEeGUDe_3Sh31kg" name="new EClass 1">
+        <target xmi:type="ecore:EClass" href="test.ecore#//new%20EClass%201"/>
+        <semanticElements xmi:type="ecore:EClass" href="test.ecore#//new%20EClass%201"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_NeZtcsElEeGUDe_3Sh31kg">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_NeZtc8ElEeGUDe_3Sh31kg"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_NeZtdMElEeGUDe_3Sh31kg" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_3:TreeItemMapping" href="dndTableTreeToDiag.odesign#//@ownedViewpoints[name='dnd']/@ownedRepresentations[name='dndTree']/@subItemMappings[name='class']"/>
+      </ownedTreeItems>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_NeZtdcElEeGUDe_3Sh31kg" name="new EClass 2">
+        <target xmi:type="ecore:EClass" href="test.ecore#//new%20EClass%202"/>
+        <semanticElements xmi:type="ecore:EClass" href="test.ecore#//new%20EClass%202"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_NeZtdsElEeGUDe_3Sh31kg">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_NeZtd8ElEeGUDe_3Sh31kg"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_NeZteMElEeGUDe_3Sh31kg" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_3:TreeItemMapping" href="dndTableTreeToDiag.odesign#//@ownedViewpoints[name='dnd']/@ownedRepresentations[name='dndTree']/@subItemMappings[name='class']"/>
+      </ownedTreeItems>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_NeZtecElEeGUDe_3Sh31kg" name="new EClass 3">
+        <target xmi:type="ecore:EClass" href="test.ecore#//new%20EClass%203"/>
+        <semanticElements xmi:type="ecore:EClass" href="test.ecore#//new%20EClass%203"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_NeZtesElEeGUDe_3Sh31kg">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_NeZte8ElEeGUDe_3Sh31kg"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_NeZtfMElEeGUDe_3Sh31kg" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_3:TreeItemMapping" href="dndTableTreeToDiag.odesign#//@ownedViewpoints[name='dnd']/@ownedRepresentations[name='dndTree']/@subItemMappings[name='class']"/>
+      </ownedTreeItems>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_NeZtfcElEeGUDe_3Sh31kg" name="EClass4">
+        <target xmi:type="ecore:EClass" href="test.ecore#//EClass4"/>
+        <semanticElements xmi:type="ecore:EClass" href="test.ecore#//EClass4"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_NeZtfsElEeGUDe_3Sh31kg">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_NeZtf8ElEeGUDe_3Sh31kg"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_NeZtgMElEeGUDe_3Sh31kg" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_3:TreeItemMapping" href="dndTableTreeToDiag.odesign#//@ownedViewpoints[name='dnd']/@ownedRepresentations[name='dndTree']/@subItemMappings[name='class']"/>
+      </ownedTreeItems>
+      <description xmi:type="description_3:TreeDescription" href="dndTableTreeToDiag.odesign#//@ownedViewpoints[name='dnd']/@ownedRepresentations[name='dndTree']"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="dndTableTreeToDiag.odesign#//@ownedViewpoints[name='dnd']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

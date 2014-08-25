@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:layoutdata="http://www.eclipse.org/sirius/dsl/layoutdata/1.1.0">
+  <layoutdata:NodeLayoutData id="//p2" width="401" height="114">
+    <location x="30" y="260"/>
+  </layoutdata:NodeLayoutData>
+  <layoutdata:NodeLayoutData id="//p4" width="150" height="70">
+    <location x="1644" y="30"/>
+  </layoutdata:NodeLayoutData>
+  <layoutdata:NodeLayoutData id="//p3" width="150" height="70">
+    <location x="30" y="400"/>
+  </layoutdata:NodeLayoutData>
+</xmi:XMI>

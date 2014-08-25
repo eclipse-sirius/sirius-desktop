@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="VP-3894" version="8.0.0">
+  <ownedViewpoints name="VP-3894_Viewpoint" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='VP-3894_Viewpoint']/@ownedRepresentations[name='VP-3894_Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='DropClass'] //@ownedViewpoints[name='VP-3894_Viewpoint']/@ownedRepresentations[name='VP-3894_Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20EPackage%20into%20EPackage']" name="VP-3894_Diagram" domainClass="ecore.EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="EClassMapping" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass" dropDescriptions="//@ownedViewpoints[name='VP-3894_Viewpoint']/@ownedRepresentations[name='VP-3894_Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='DropAttribute']">
+          <borderedNodeMappings name="EAttributeMapping" semanticCandidatesExpression="[eStructuralFeatures/]" domainClass="EAttribute">
+            <style xsi:type="style:SquareDescription" sizeComputationExpression="1" hideLabelByDefault="true">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:SquareDescription" sizeComputationExpression="5" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="EDatatypeMapping" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EDataType">
+          <style xsi:type="style:LozengeNodeDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="ESupertypeMapping" sourceMapping="//@ownedViewpoints[name='VP-3894_Viewpoint']/@ownedRepresentations[name='VP-3894_Diagram']/@defaultLayer/@nodeMappings[name='EClassMapping']" targetMapping="//@ownedViewpoints[name='VP-3894_Viewpoint']/@ownedRepresentations[name='VP-3894_Diagram']/@defaultLayer/@nodeMappings[name='EClassMapping']" targetFinderExpression="[eSuperTypes/]" reconnections="//@ownedViewpoints[name='VP-3894_Viewpoint']/@ownedRepresentations[name='VP-3894_Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='ReconnectESupertype']">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <beginLabelStyleDescription labelExpression="['Begin'+name/]">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </beginLabelStyleDescription>
+            <centerLabelStyleDescription labelExpression="[name/]">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+            <endLabelStyleDescription labelExpression="['End'+name/]">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </endLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="EAttributeTypeMapping" sourceMapping="//@ownedViewpoints[name='VP-3894_Viewpoint']/@ownedRepresentations[name='VP-3894_Diagram']/@defaultLayer/@nodeMappings[name='EClassMapping']/@borderedNodeMappings[name='EAttributeMapping']" targetMapping="//@ownedViewpoints[name='VP-3894_Viewpoint']/@ownedRepresentations[name='VP-3894_Diagram']/@defaultLayer/@nodeMappings[name='EDatatypeMapping']" targetFinderExpression="[eType/]">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <beginLabelStyleDescription labelExpression="['Begin'+name/]">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </beginLabelStyleDescription>
+            <centerLabelStyleDescription labelExpression="[name/]">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+            <endLabelStyleDescription labelExpression="['End'+name/]">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </endLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="EPackageMapping" semanticCandidatesExpression="[eSubpackages/]" domainClass="ecore.EPackage" dropDescriptions="//@ownedViewpoints[name='VP-3894_Viewpoint']/@ownedRepresentations[name='VP-3894_Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='DropClass'] //@ownedViewpoints[name='VP-3894_Viewpoint']/@ownedRepresentations[name='VP-3894_Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20EPackage%20into%20EPackage']" reusedNodeMappings="//@ownedViewpoints[name='VP-3894_Viewpoint']/@ownedRepresentations[name='VP-3894_Diagram']/@defaultLayer/@nodeMappings[name='EClassMapping']" reusedContainerMappings="//@ownedViewpoints[name='VP-3894_Viewpoint']/@ownedRepresentations[name='VP-3894_Diagram']/@defaultLayer/@containerMappings[name='EPackageMapping']">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DropClass" mappings="//@ownedViewpoints[name='VP-3894_Viewpoint']/@ownedRepresentations[name='VP-3894_Diagram']/@defaultLayer/@nodeMappings[name='EClassMapping']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[newSemanticContainer/]">
+                <subModelOperations xsi:type="tool:SetValue" featureName="eClassifiers" valueExpression="[element/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DropAttribute" mappings="//@ownedViewpoints[name='VP-3894_Viewpoint']/@ownedRepresentations[name='VP-3894_Diagram']/@defaultLayer/@nodeMappings[name='EClassMapping']/@borderedNodeMappings[name='EAttributeMapping']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[newSemanticContainer/]">
+                <subModelOperations xsi:type="tool:SetValue" featureName="eStructuralFeatures" valueExpression="[element/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="ReconnectESupertype" reconnectionKind="RECONNECT_BOTH">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[source/]">
+                <subModelOperations xsi:type="tool:If" conditionExpression="[source &lt;> element/]">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[element/]">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="[target/]"/>
+                    <subModelOperations xsi:type="tool:Unset" featureName="eSuperTypes" elementExpression="[source/]"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="[source = element/]">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="[otherEnd = sourceView/]">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="[otherEnd = edgeView.targetNode/]">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[target/]">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[element/]">
+                          <subModelOperations xsi:type="tool:Unset" featureName="eSuperTypes" elementExpression="[element/]"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="[otherEnd &lt;> edgeView.targetNode/]">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[element/]">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="[target/]"/>
+                        <subModelOperations xsi:type="tool:Unset" featureName="eSuperTypes" elementExpression="[source/]"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="[otherEnd &lt;> sourceView/]">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[target/]">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[source/]">
+                      <subModelOperations xsi:type="tool:Unset" featureName="eSuperTypes" elementExpression="[edgeView.targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop EPackage into EPackage" mappings="//@ownedViewpoints[name='VP-3894_Viewpoint']/@ownedRepresentations[name='VP-3894_Diagram']/@defaultLayer/@containerMappings[name='EPackageMapping']" dragSource="BOTH">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[newSemanticContainer/]">
+                <subModelOperations xsi:type="tool:SetValue" featureName="eSubpackages" valueExpression="[element/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="LABEL_HIDDEN_BY_DEFAULT_LAYER" activeByDefault="true">
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='VP-3894_Viewpoint']/@ownedRepresentations[name='VP-3894_Diagram']/@defaultLayer/@nodeMappings[name='EClassMapping']/@style //@ownedViewpoints[name='VP-3894_Viewpoint']/@ownedRepresentations[name='VP-3894_Diagram']/@defaultLayer/@nodeMappings[name='EClassMapping']/@borderedNodeMappings[name='EAttributeMapping']/@style //@ownedViewpoints[name='VP-3894_Viewpoint']/@ownedRepresentations[name='VP-3894_Diagram']/@defaultLayer/@nodeMappings[name='EDatatypeMapping']/@style" attributeName="hideLabelByDefault" value="true"/>
+          </vsmElementCustomizations>
+        </customization>
+      </additionalLayers>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

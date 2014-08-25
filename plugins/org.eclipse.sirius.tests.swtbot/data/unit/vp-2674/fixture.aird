@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/description/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" xmi:id="_eDh3ASJQEeGaRsaLQjZgtg" selectedViews="_eumNQCJQEeGaRsaLQjZgtg" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="fixture.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_eumNQCJQEeGaRsaLQjZgtg" initialized="true">
+    <ownedRepresentations xmi:type="table:DTable" xmi:id="_fmHrICJQEeGaRsaLQjZgtg" name="new read_only_column" headerColumnWidth="210">
+      <target xmi:type="ecore:EPackage" href="fixture.ecore#/"/>
+      <lines xmi:type="table:DLine" xmi:id="_fmHrISJQEeGaRsaLQjZgtg" label="A0">
+        <target xmi:type="ecore:EClass" href="fixture.ecore#//A0"/>
+        <lines xmi:type="table:DLine" xmi:id="_fmHrIiJQEeGaRsaLQjZgtg" label="newEReference1 : B0">
+          <target xmi:type="ecore:EReference" href="fixture.ecore#//A0/newEReference1"/>
+          <semanticElements xmi:type="ecore:EReference" href="fixture.ecore#//A0/newEReference1"/>
+          <originMapping xmi:type="description:LineMapping" href="read_only_column.odesign#//@ownedViewpoints[name='read_only_column']/@ownedRepresentations[name='read_only_column']/@ownedLineMappings[name='Class']/@ownedSubLines[name='EReference']"/>
+          <cells xmi:type="table:DCell" xmi:id="_XGmb4SWXEeGmjtF6Oi3hmg" label="false" column="_XGj_oSWXEeGmjtF6Oi3hmg">
+            <target xmi:type="ecore:EReference" href="fixture.ecore#//A0/newEReference1"/>
+            <semanticElements xmi:type="ecore:EReference" href="fixture.ecore#//A0/newEReference1"/>
+            <currentStyle xmi:type="table:DCellStyle" xmi:id="_XGnC8CWXEeGmjtF6Oi3hmg"/>
+          </cells>
+          <cells xmi:type="table:DCell" xmi:id="_a49TMSWXEeGmjtF6Oi3hmg" label="false" column="_a48sICWXEeGmjtF6Oi3hmg">
+            <target xmi:type="ecore:EReference" href="fixture.ecore#//A0/newEReference1"/>
+            <semanticElements xmi:type="ecore:EReference" href="fixture.ecore#//A0/newEReference1"/>
+            <currentStyle xmi:type="table:DCellStyle" xmi:id="_a496QCWXEeGmjtF6Oi3hmg"/>
+          </cells>
+        </lines>
+        <semanticElements xmi:type="ecore:EClass" href="fixture.ecore#//A0"/>
+        <originMapping xmi:type="description:LineMapping" href="read_only_column.odesign#//@ownedViewpoints[name='read_only_column']/@ownedRepresentations[name='read_only_column']/@ownedLineMappings[name='Class']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_fmISNyJQEeGaRsaLQjZgtg" label="B0">
+        <target xmi:type="ecore:EClass" href="fixture.ecore#//B0"/>
+        <semanticElements xmi:type="ecore:EClass" href="fixture.ecore#//B0"/>
+        <originMapping xmi:type="description:LineMapping" href="read_only_column.odesign#//@ownedViewpoints[name='read_only_column']/@ownedRepresentations[name='read_only_column']/@ownedLineMappings[name='Class']"/>
+      </lines>
+      <columns xmi:type="table:DFeatureColumn" xmi:id="_XGj_oSWXEeGmjtF6Oi3hmg" label="Containment1" cells="_XGmb4SWXEeGmjtF6Oi3hmg" featureName="containment">
+        <originMapping xmi:type="description:FeatureColumnMapping" href="read_only_column.odesign#//@ownedViewpoints[name='read_only_column']/@ownedRepresentations[name='read_only_column']/@ownedColumnMappings[name='Containment1']"/>
+      </columns>
+      <columns xmi:type="table:DFeatureColumn" xmi:id="_a48sICWXEeGmjtF6Oi3hmg" label="Containment2" cells="_a49TMSWXEeGmjtF6Oi3hmg" width="630" featureName="containment">
+        <originMapping xmi:type="description:FeatureColumnMapping" href="read_only_column.odesign#//@ownedViewpoints[name='read_only_column']/@ownedRepresentations[name='read_only_column']/@ownedColumnMappings[name='Containment2']"/>
+      </columns>
+      <description xmi:type="description:EditionTableDescription" href="read_only_column.odesign#//@ownedViewpoints[name='read_only_column']/@ownedRepresentations[name='read_only_column']"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description_1:Viewpoint" href="read_only_column.odesign#//@ownedViewpoints[name='read_only_column']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

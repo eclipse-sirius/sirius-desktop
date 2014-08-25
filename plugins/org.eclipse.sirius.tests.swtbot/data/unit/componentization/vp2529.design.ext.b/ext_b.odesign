@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="Extension_B" version="8.0.0">
+  <ownedViewpoints name="Extension_B" modelFileExtension="ecore">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Extension_B" viewpointURI="viewpoint:/vp2529.design/Base" representationName="Base Diagram">
+      <layers name="Extension_B_Layer" activeByDefault="true">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="Customized_Class_B" preconditionExpression="&lt;%interface%>">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+          </style>
+          <importedMapping href="viewpoint:/vp2529.design/Base#//@ownedViewpoints[name='Base']/@ownedRepresentations[name='Base%20Diagram']/@defaultLayer/@nodeMappings[name='Class']"/>
+        </nodeMappings>
+      </layers>
+    </ownedRepresentationExtensions>
+  </ownedViewpoints>
+</description:Group>

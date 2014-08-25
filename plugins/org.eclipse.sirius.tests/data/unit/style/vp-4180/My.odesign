@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="My" version="8.0.0">
+  <ownedViewpoints name="VP-4180" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="VP-4180" domainClass="EPackage">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="ClassMapping" semanticCandidatesExpression="[eClassifiers->filter(ecore::EClass)/]" domainClass="EClass">
+          <style xsi:type="style:SquareDescription" sizeComputationExpression="6" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="ReferenceMapping" sourceMapping="//@ownedViewpoints[name='VP-4180']/@ownedRepresentations[name='VP-4180']/@defaultLayer/@nodeMappings[name='ClassMapping']" targetMapping="//@ownedViewpoints[name='VP-4180']/@ownedRepresentations[name='VP-4180']/@defaultLayer/@nodeMappings[name='ClassMapping']" targetFinderExpression="[eType/]" sourceFinderExpression="[eContainer()/]" domainClass="EReference" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelExpression="Straight-oblique">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+          <conditionnalStyles predicateExpression="[name.contains('Tree')/]">
+            <style sizeComputationExpression="2" routingStyle="tree">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <centerLabelStyleDescription labelExpression="Tree">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="[name.contains('Manhattan')/]">
+            <style sizeComputationExpression="2" routingStyle="manhattan">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <centerLabelStyleDescription labelExpression="Manhattan-rectilinear">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappings>
+        <toolSections name="creation">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="CreateOblique" edgeMappings="//@ownedViewpoints[name='VP-4180']/@ownedRepresentations[name='VP-4180']/@defaultLayer/@edgeMappings[name='ReferenceMapping']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="[target/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['newObliqueEReference' + eContainer(EClassifier).eAllContents(EReference)->size()/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="CreateManhattan" edgeMappings="//@ownedViewpoints[name='VP-4180']/@ownedRepresentations[name='VP-4180']/@defaultLayer/@edgeMappings[name='ReferenceMapping']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="[target/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['newManhattanEReference' + eContainer(EClassifier).eAllContents(EReference)->size()/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="CreateTree" edgeMappings="//@ownedViewpoints[name='VP-4180']/@ownedRepresentations[name='VP-4180']/@defaultLayer/@edgeMappings[name='ReferenceMapping']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="[target/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['newTreeEReference' + eContainer(EClassifier).eAllContents(EReference)->size()/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

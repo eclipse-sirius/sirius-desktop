@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ePackage">
+  <eClassifiers xsi:type="ecore:EClass" name="n1*">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n2" eType="#//n2*"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bn1" eType="#//bn1"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bn3" eType="#//bn3" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="n2*">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="c2" eType="#//lc2*"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="n3">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n4" eType="#//n4"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bn2" eType="#//bn2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bn4" eType="#//bn4" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="n4">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n2" eType="#//n2*"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="c3" eType="#//c3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="n5*">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="c3" eType="#//c3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="n6*">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n4" eType="#//n4"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bn4" eType="#//bn4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="c1*">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n1*" eType="#//n1*"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="c2" eType="#//lc2*"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bn1" eType="#//bn1" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bn2" eType="#//bn2" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bn5" eType="#//bn5" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n3" eType="#//n3" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n4" eType="#//n4" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="c3" eType="#//c3" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="lc2*">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n7" eType="#//n7" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n8" eType="#//n8" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n9" eType="#//n9" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="c3">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n2" eType="#//n2*"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bn2" eType="#//bn2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="bn1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bn4" eType="#//bn4"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n3" eType="#//n3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="bn2">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="c2" eType="#//lc2*"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n5" eType="#//n5*"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="bn3"/>
+  <eClassifiers xsi:type="ecore:EClass" name="bn4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="bn5">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="c3" eType="#//c3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="n7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="n8"/>
+  <eClassifiers xsi:type="ecore:EClass" name="n9"/>
+</ecore:EPackage>

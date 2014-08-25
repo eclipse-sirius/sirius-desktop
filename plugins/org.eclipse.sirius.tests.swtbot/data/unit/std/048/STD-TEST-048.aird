@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/description/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" xmi:id="_tiUiEQQXEd-ORYTxKaLKeg" selectedViews="_GdBsIAQYEd-ORYTxKaLKeg" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="STD-TEST-048.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_GdBsIAQYEd-ORYTxKaLKeg" initialized="true">
+    <ownedRepresentations xmi:type="table:DTable" xmi:id="_gJ9ScAQaEd-ORYTxKaLKeg" name="new Classes" headerColumnWidth="140">
+      <target xmi:type="ecore:EPackage" href="STD-TEST-048.ecore#/"/>
+      <lines xmi:type="table:DLine" xmi:id="_gJ9ScQQaEd-ORYTxKaLKeg" label="Class1">
+        <target xmi:type="ecore:EClass" href="STD-TEST-048.ecore#//Class1"/>
+        <semanticElements xmi:type="ecore:EClass" href="STD-TEST-048.ecore#//Class1"/>
+        <originMapping xmi:type="description:LineMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes']/@ownedLineMappings[name='Classes%20lines']"/>
+        <cells xmi:type="table:DCell" xmi:id="_gJ9ScgQaEd-ORYTxKaLKeg" label="Class1" column="_gJ9SfgQaEd-ORYTxKaLKeg">
+          <target xmi:type="ecore:EClass" href="STD-TEST-048.ecore#//Class1"/>
+          <semanticElements xmi:type="ecore:EClass" href="STD-TEST-048.ecore#//Class1"/>
+          <currentStyle xmi:type="table:DCellStyle" xmi:id="_gJ9ScwQaEd-ORYTxKaLKeg"/>
+        </cells>
+        <currentStyle xmi:type="table:DTableElementStyle" xmi:id="_KvDqAPNbEeC6JJx9rWXyiA"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_gJ9SdAQaEd-ORYTxKaLKeg" label="Class2">
+        <target xmi:type="ecore:EClass" href="STD-TEST-048.ecore#//Class2"/>
+        <semanticElements xmi:type="ecore:EClass" href="STD-TEST-048.ecore#//Class2"/>
+        <originMapping xmi:type="description:LineMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes']/@ownedLineMappings[name='Classes%20lines']"/>
+        <cells xmi:type="table:DCell" xmi:id="_gJ9SdQQaEd-ORYTxKaLKeg" label="Class2" column="_gJ9SfgQaEd-ORYTxKaLKeg">
+          <target xmi:type="ecore:EClass" href="STD-TEST-048.ecore#//Class2"/>
+          <semanticElements xmi:type="ecore:EClass" href="STD-TEST-048.ecore#//Class2"/>
+          <currentStyle xmi:type="table:DCellStyle" xmi:id="_gJ9SdgQaEd-ORYTxKaLKeg"/>
+        </cells>
+        <currentStyle xmi:type="table:DTableElementStyle" xmi:id="_KvEREPNbEeC6JJx9rWXyiA"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_gJ9SdwQaEd-ORYTxKaLKeg" label="P2">
+        <target xmi:type="ecore:EPackage" href="STD-TEST-048.ecore#//P2"/>
+        <lines xmi:type="table:DLine" xmi:id="_gJ9SeAQaEd-ORYTxKaLKeg" label="Class1P2">
+          <target xmi:type="ecore:EClass" href="STD-TEST-048.ecore#//P2/Class1P2"/>
+          <semanticElements xmi:type="ecore:EClass" href="STD-TEST-048.ecore#//P2/Class1P2"/>
+          <originMapping xmi:type="description:LineMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes']/@ownedLineMappings[name='Package']/@ownedSubLines[name='Classes%20lines']"/>
+          <cells xmi:type="table:DCell" xmi:id="_gJ9SeQQaEd-ORYTxKaLKeg" label="Class1P2" column="_gJ9SfgQaEd-ORYTxKaLKeg">
+            <target xmi:type="ecore:EClass" href="STD-TEST-048.ecore#//P2/Class1P2"/>
+            <semanticElements xmi:type="ecore:EClass" href="STD-TEST-048.ecore#//P2/Class1P2"/>
+            <currentStyle xmi:type="table:DCellStyle" xmi:id="_gJ9SegQaEd-ORYTxKaLKeg"/>
+          </cells>
+          <currentStyle xmi:type="table:DTableElementStyle" xmi:id="_KvE4IPNbEeC6JJx9rWXyiA"/>
+        </lines>
+        <semanticElements xmi:type="ecore:EPackage" href="STD-TEST-048.ecore#//P2"/>
+        <originMapping xmi:type="description:LineMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes']/@ownedLineMappings[name='Package']"/>
+        <cells xmi:type="table:DCell" xmi:id="_gJ9SewQaEd-ORYTxKaLKeg" label="P2" column="_gJ9SfgQaEd-ORYTxKaLKeg">
+          <target xmi:type="ecore:EPackage" href="STD-TEST-048.ecore#//P2"/>
+          <semanticElements xmi:type="ecore:EPackage" href="STD-TEST-048.ecore#//P2"/>
+          <currentStyle xmi:type="table:DCellStyle" xmi:id="_gJ9SfAQaEd-ORYTxKaLKeg"/>
+        </cells>
+        <currentStyle xmi:type="table:DTableElementStyle" xmi:id="_KvEREfNbEeC6JJx9rWXyiA" defaultBackgroundStyle="true">
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_KvEREvNbEeC6JJx9rWXyiA" red="255" green="245" blue="181"/>
+        </currentStyle>
+      </lines>
+      <columns xmi:type="table:DFeatureColumn" xmi:id="_gJ9SfgQaEd-ORYTxKaLKeg" label="Name" cells="_gJ9ScgQaEd-ORYTxKaLKeg _gJ9SdQQaEd-ORYTxKaLKeg _gJ9SewQaEd-ORYTxKaLKeg _gJ9SeQQaEd-ORYTxKaLKeg" width="608" featureName="name">
+        <originMapping xmi:type="description:FeatureColumnMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes']/@ownedColumnMappings[name='Name']"/>
+        <currentStyle xmi:type="table:DTableElementStyle" xmi:id="_KvE4IfNbEeC6JJx9rWXyiA"/>
+      </columns>
+      <description xmi:type="description:EditionTableDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes']"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description_1:Viewpoint" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

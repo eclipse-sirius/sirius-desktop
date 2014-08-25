@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<migrationmodeler:TestCase xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:migrationmodeler="http://www.eclipse.org/sirius/tests/sample/migrationmodeler">
+  <representations xsi:type="migrationmodeler:Diagram" name="1">
+    <nodes id="A">
+      <nodeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']" displayed="false">
+        <layout x="195" y="45" width="60" height="60"/>
+        <ownedStyle>
+          <labelColor red="176" green="176" blue="176"/>
+        </ownedStyle>
+      </nodeRepresentations>
+    </nodes>
+    <filters id="Test Filter"/>
+    <layers id="Test Layer"/>
+  </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="2">
+    <containers id="A">
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']" displayed="false">
+        <layout x="180" y="55" width="150" height="70"/>
+        <ownedStyle>
+          <labelColor/>
+        </ownedStyle>
+      </containerRepresentations>
+    </containers>
+    <filters id="Test Filter"/>
+    <layers id="Test Layer"/>
+  </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="3">
+    <containers id="A">
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']" displayed="false">
+        <layout x="190" y="65" width="150" height="70"/>
+        <ownedStyle>
+          <labelColor/>
+        </ownedStyle>
+      </containerRepresentations>
+      <elements xsi:type="migrationmodeler:Bordered" id="B">
+        <borderedRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']/@borderedNodeMappings[name='bordered']" displayed="false">
+          <layout x="280" y="125" width="30" height="30"/>
+          <ownedStyle>
+            <labelColor red="176" green="176" blue="176"/>
+          </ownedStyle>
+        </borderedRepresentations>
+      </elements>
+    </containers>
+    <filters id="Test Filter"/>
+    <layers id="Test Layer"/>
+  </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="4">
+    <containers id="A">
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']" displayed="false">
+        <layout x="165" y="35" width="218" height="153"/>
+        <ownedStyle>
+          <labelColor/>
+        </ownedStyle>
+      </containerRepresentations>
+      <elements xsi:type="migrationmodeler:Node" id="B">
+        <nodeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']" displayed="false">
+          <layout x="55" y="29" width="60" height="60"/>
+          <ownedStyle>
+            <labelColor red="176" green="176" blue="176"/>
+          </ownedStyle>
+        </nodeRepresentations>
+      </elements>
+    </containers>
+    <filters id="Test Filter"/>
+    <layers id="Test Layer"/>
+  </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="5">
+    <containers id="A">
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']" displayed="false">
+        <layout x="195" y="50" width="268" height="153"/>
+        <ownedStyle>
+          <labelColor/>
+        </ownedStyle>
+      </containerRepresentations>
+      <elements xsi:type="migrationmodeler:Container" id="B">
+        <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']" displayed="false">
+          <layout x="50" y="39" width="150" height="70"/>
+          <ownedStyle>
+            <labelColor/>
+          </ownedStyle>
+        </containerRepresentations>
+      </elements>
+    </containers>
+    <filters id="Test Filter"/>
+    <layers id="Test Layer"/>
+  </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="6">
+    <nodes id="A">
+      <nodeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']" displayed="false">
+        <layout x="160" y="70" width="60" height="60"/>
+        <ownedStyle>
+          <labelColor red="176" green="176" blue="176"/>
+        </ownedStyle>
+      </nodeRepresentations>
+    </nodes>
+    <filters id="Test Filter"/>
+    <layers id="Test Layer"/>
+  </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="7">
+    <containers id="A">
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']" displayed="false">
+        <layout x="155" y="60" width="150" height="70"/>
+        <ownedStyle>
+          <labelColor/>
+        </ownedStyle>
+      </containerRepresentations>
+    </containers>
+    <filters id="Test Filter"/>
+    <layers id="Test Layer"/>
+  </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="8">
+    <containers id="A">
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']" displayed="false">
+        <layout x="100" y="45" width="150" height="70"/>
+        <ownedStyle>
+          <labelColor/>
+        </ownedStyle>
+      </containerRepresentations>
+      <elements xsi:type="migrationmodeler:Bordered" id="B">
+        <borderedRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']/@borderedNodeMappings[name='bordered']" displayed="false">
+          <layout x="195" y="105" width="30" height="30"/>
+          <ownedStyle>
+            <labelColor red="176" green="176" blue="176"/>
+          </ownedStyle>
+        </borderedRepresentations>
+      </elements>
+    </containers>
+    <filters id="Test Filter"/>
+    <layers id="Test Layer"/>
+  </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="9">
+    <containers id="A">
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']" displayed="false">
+        <layout x="90" y="25" width="313" height="168"/>
+        <ownedStyle>
+          <labelColor/>
+        </ownedStyle>
+      </containerRepresentations>
+      <elements xsi:type="migrationmodeler:Node" id="B">
+        <nodeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@nodeMappings[name='node']" displayed="false">
+          <layout x="135" y="59" width="60" height="60"/>
+          <ownedStyle>
+            <labelColor red="176" green="176" blue="176"/>
+          </ownedStyle>
+        </nodeRepresentations>
+      </elements>
+    </containers>
+    <filters id="Test Filter"/>
+    <layers id="Test Layer"/>
+  </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="10">
+    <containers id="A">
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']" displayed="false">
+        <layout x="160" y="15" width="313" height="173"/>
+        <ownedStyle>
+          <labelColor/>
+        </ownedStyle>
+      </containerRepresentations>
+      <elements xsi:type="migrationmodeler:Container" id="B">
+        <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']" displayed="false">
+          <layout x="105" y="29" width="150" height="70"/>
+          <ownedStyle>
+            <labelColor/>
+          </ownedStyle>
+        </containerRepresentations>
+      </elements>
+    </containers>
+    <filters id="Test Filter"/>
+    <layers id="Test Layer"/>
+  </representations>
+</migrationmodeler:TestCase>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   version="1.1"
+   width="6"
+   height="6"
+   id="svg2998"
+   sodipodi:docname="observation.svg">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     id="namedview2997"
+     showgrid="false"/>
+  <defs
+     id="defs3000" />
+  <metadata
+     id="metadata3003">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     transform="matrix(1.3259643,0,0,1.3288229,1.0041881,-16.27222)"
+     id="layer1">
+    <path
+       d="m 3.767682,14.503566 a 2.2625044,2.2576372 0 0 1 -4.52500857,0 2.2625044,2.2576372 0 1 1 4.52500857,0 z"
+       id="path3010"
+       style="fill:#999999;fill-opacity:1;fill-rule:evenodd;stroke:none"
+       />
+  </g>
+</svg>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="Root">
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 1">
+    <eOperations name="new Operation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 2">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%201"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%203"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 3" eSuperTypes="#//new%20EClass%202">
+    <eOperations name="new Operation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new MomentInterval 4">
+    <eAnnotations source="http://www.eclipse.org/sirius/dnc/archetype">
+      <details key="archetype" value="MomentInterval"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new Role 5">
+    <eAnnotations source="http://www.eclipse.org/sirius/dnc/archetype">
+      <details key="archetype" value="Role"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new Description 6">
+    <eAnnotations source="http://www.eclipse.org/sirius/dnc/archetype">
+      <details key="archetype" value="Description"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new Thing 7">
+    <eAnnotations source="http://www.eclipse.org/sirius/dnc/archetype">
+      <details key="archetype" value="Thing"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="new EReference" eType="#//new%20Description%206"
+        containment="true"/>
+  </eClassifiers>
+  <eSubpackages name="new Package 1">
+    <eSubpackages name="new Package 1">
+      <eSubpackages name="new Package 1"/>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="new Package 2"/>
+  <eSubpackages name="new Package 3"/>
+</ecore:EPackage>

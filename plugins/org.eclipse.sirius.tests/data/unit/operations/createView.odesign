@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" documentation="org.eclipse.sirius.tests.unit.diagram.tools.data" name="CreateViewTask" version="8.0.0">
+  <ownedViewpoints name="viewpoint1" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="diagram1" domainClass="EPackage">
+      <defaultLayer name="myDefaultLayer">
+        <nodeMappings name="nodeMapping1" domainClass="EClass">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <toolSections name="tools" label="my tools">
+          <ownedTools xsi:type="tool:ToolDescription" name="tool" label="my tool">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='viewpoint1']/@ownedRepresentations[name='diagram1']/@defaultLayer/@nodeMappings[name='nodeMapping1']" containerViewExpression="&lt;%$elementView.eContainer(&quot;DDiagram&quot;)%>"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

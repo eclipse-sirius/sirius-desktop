@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" version="8.0.0">
+  <ownedViewpoints name="UML2 diagrams" modelFileExtension="uml">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Use  cases diagram" name="Use Cases" domainClass="Model">
+      <nodeMappings name="Acteur" semanticCandidatesExpression="feature:eAllContents" domainClass="Actor">
+        <style xsi:type="style:BundledImageDescription" showIcon="false" labelExpression="&lt;%actorNameService%>" sizeComputationExpression="4" shape="triangle">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+        </style>
+      </nodeMappings>
+      <toolSection>
+        <subSections name="Nodes">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Actor" nodeMappings="//@ownedViewpoints[name='UML2%20diagrams']/@ownedRepresentations[name='Use%20Cases']/@nodeMappings[name='Acteur']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Actor.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Actor" referenceName="packagedElement">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New Actor &lt;%eContainer.eContents(&quot;Actor&quot;).nSize%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </subSections>
+      </toolSection>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.tests.unit.common.mock.UMLServices"/>
+  </ownedViewpoints>
+</description:Group>

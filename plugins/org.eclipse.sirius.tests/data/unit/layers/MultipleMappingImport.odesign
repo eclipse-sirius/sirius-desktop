@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" version="8.0.0">
+  <ownedViewpoints name="MultipleMappingImport" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="PC_NodeImportDiagram" initialisation="true" domainClass="EPackage" preconditionExpression="&lt;%name==&quot;RootPackage&quot;%>">
+      <defaultLayer name="default">
+        <nodeMappings name="DefaultNode" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+      </defaultLayer>
+      <additionalLayers name="alpha">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="AlphaNode" preconditionExpression="&lt;%name==&quot;ALPHA&quot;%>" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='PC_NodeImportDiagram']/@defaultLayer/@nodeMappings[name='DefaultNode']">
+          <style xsi:type="style:LozengeNodeDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+          </style>
+        </nodeMappings>
+      </additionalLayers>
+      <additionalLayers name="beta">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="BetaNode" preconditionExpression="&lt;%name==&quot;BETA&quot;%>" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='PC_NodeImportDiagram']/@defaultLayer/@nodeMappings[name='DefaultNode']">
+          <style xsi:type="style:EllipseNodeDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+          </style>
+        </nodeMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="PC_ContainerMappingImportDiagram" initialisation="true" domainClass="EPackage" preconditionExpression="&lt;%name==&quot;RootPackage&quot;%>">
+      <defaultLayer name="default">
+        <containerMappings name="DefaultContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="ENamedElement">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+      <additionalLayers name="alpha">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="AlphaContainer" preconditionExpression="&lt;%name==&quot;ALPHA_CONTAINER&quot;%>" semanticCandidatesExpression="feature:eAllContents" domainClass="ENamedElement" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='PC_ContainerMappingImportDiagram']/@defaultLayer/@containerMappings[name='DefaultContainer']">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+          </style>
+        </containerMappings>
+      </additionalLayers>
+      <additionalLayers name="beta">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="BetaContainer" preconditionExpression="&lt;%name==&quot;BETA_CONTAINER&quot;%>" semanticCandidatesExpression="feature:eAllContents" domainClass="ENamedElement" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='PC_ContainerMappingImportDiagram']/@defaultLayer/@containerMappings[name='DefaultContainer']">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+          </style>
+        </containerMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DC_NodeImportDiagram" initialisation="true" domainClass="EPackage" preconditionExpression="&lt;%name==&quot;RootPackage&quot;%>">
+      <defaultLayer name="default">
+        <nodeMappings name="DefaultNode" semanticCandidatesExpression="feature:eAllContents" domainClass="ENamedElement">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+      </defaultLayer>
+      <additionalLayers name="alpha">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="AlphaNode" semanticCandidatesExpression="feature:eAllContents" domainClass="EEnum" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='DC_NodeImportDiagram']/@defaultLayer/@nodeMappings[name='DefaultNode']">
+          <style xsi:type="style:LozengeNodeDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+          </style>
+        </nodeMappings>
+      </additionalLayers>
+      <additionalLayers name="beta">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="BetaNode" semanticCandidatesExpression="feature:eAllContents" domainClass="EPackage" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='DC_NodeImportDiagram']/@defaultLayer/@nodeMappings[name='DefaultNode']">
+          <style xsi:type="style:EllipseNodeDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+          </style>
+        </nodeMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DC_ContainerMappingImportDiagram" initialisation="true" domainClass="EPackage" preconditionExpression="&lt;%name==&quot;RootPackage&quot;%>">
+      <defaultLayer name="default">
+        <containerMappings name="DefaultContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="ENamedElement">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+      <additionalLayers name="alpha">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="AlphaContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="EEnum" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='DC_ContainerMappingImportDiagram']/@defaultLayer/@containerMappings[name='DefaultContainer']">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+          </style>
+        </containerMappings>
+      </additionalLayers>
+      <additionalLayers name="beta">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="BetaContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="EPackage" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='DC_ContainerMappingImportDiagram']/@defaultLayer/@containerMappings[name='DefaultContainer']">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+          </style>
+        </containerMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="PC_NodeImportDiagram_WithHideSubMapping" initialisation="true" domainClass="EPackage" preconditionExpression="&lt;%name==&quot;RootPackage&quot;%>">
+      <defaultLayer name="default">
+        <nodeMappings name="DefaultNode" domainClass="EClass">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+      </defaultLayer>
+      <additionalLayers name="alpha">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="AlphaNode" preconditionExpression="&lt;%name==&quot;ALPHA&quot;%>" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass" hideSubMappings="true" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='PC_NodeImportDiagram_WithHideSubMapping']/@defaultLayer/@nodeMappings[name='DefaultNode']">
+          <style xsi:type="style:LozengeNodeDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+          </style>
+        </nodeMappings>
+      </additionalLayers>
+      <additionalLayers name="beta">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="BetaNode" preconditionExpression="&lt;%name==&quot;BETA&quot;%>" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass" hideSubMappings="true" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='PC_NodeImportDiagram_WithHideSubMapping']/@defaultLayer/@nodeMappings[name='DefaultNode']">
+          <style xsi:type="style:EllipseNodeDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+          </style>
+        </nodeMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="PC_ContainerMappingImportDiagram_WithHideSubMapping" initialisation="true" domainClass="EPackage" preconditionExpression="&lt;%name==&quot;RootPackage&quot;%>">
+      <defaultLayer name="default">
+        <containerMappings name="DefaultContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="ENamedElement">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+      <additionalLayers name="alpha">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="AlphaContainer" preconditionExpression="&lt;%name==&quot;ALPHA_CONTAINER&quot;%>" semanticCandidatesExpression="feature:eAllContents" domainClass="ENamedElement" hideSubMappings="true" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='PC_ContainerMappingImportDiagram_WithHideSubMapping']/@defaultLayer/@containerMappings[name='DefaultContainer']">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+          </style>
+        </containerMappings>
+      </additionalLayers>
+      <additionalLayers name="beta">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="BetaContainer" preconditionExpression="&lt;%name==&quot;BETA_CONTAINER&quot;%>" semanticCandidatesExpression="feature:eAllContents" domainClass="ENamedElement" hideSubMappings="true" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='PC_ContainerMappingImportDiagram_WithHideSubMapping']/@defaultLayer/@containerMappings[name='DefaultContainer']">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+          </style>
+        </containerMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DC_NodeImportDiagram_WithHideSubMapping" initialisation="true" domainClass="EPackage" preconditionExpression="&lt;%name==&quot;RootPackage&quot;%>">
+      <defaultLayer name="default">
+        <nodeMappings name="DefaultNode" semanticCandidatesExpression="feature:eAllContents" domainClass="ENamedElement">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+      </defaultLayer>
+      <additionalLayers name="alpha">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="AlphaNode" semanticCandidatesExpression="feature:eAllContents" domainClass="EEnum" hideSubMappings="true" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='DC_NodeImportDiagram_WithHideSubMapping']/@defaultLayer/@nodeMappings[name='DefaultNode']">
+          <style xsi:type="style:LozengeNodeDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+          </style>
+        </nodeMappings>
+      </additionalLayers>
+      <additionalLayers name="beta">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="BetaNode" semanticCandidatesExpression="feature:eAllContents" domainClass="EPackage" hideSubMappings="true" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='DC_NodeImportDiagram_WithHideSubMapping']/@defaultLayer/@nodeMappings[name='DefaultNode']">
+          <style xsi:type="style:EllipseNodeDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+          </style>
+        </nodeMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DC_ContainerMappingImportDiagram_WithHideSubMapping" initialisation="true" domainClass="EPackage" preconditionExpression="&lt;%name==&quot;RootPackage&quot;%>">
+      <defaultLayer name="default">
+        <containerMappings name="DefaultContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="ENamedElement">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+      <additionalLayers name="alpha">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="AlphaContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="EEnum" hideSubMappings="true" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='DC_ContainerMappingImportDiagram_WithHideSubMapping']/@defaultLayer/@containerMappings[name='DefaultContainer']">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+          </style>
+        </containerMappings>
+      </additionalLayers>
+      <additionalLayers name="beta">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="BetaContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="EPackage" hideSubMappings="true" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='DC_ContainerMappingImportDiagram_WithHideSubMapping']/@defaultLayer/@containerMappings[name='DefaultContainer']">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+          </style>
+        </containerMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="PC_NodeMappingImportInContainerMappingDiagram" initialisation="true" domainClass="EPackage" preconditionExpression="&lt;%name==&quot;RootPackage&quot;%>">
+      <defaultLayer name="default">
+        <containerMappings name="DefaultContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="ENamedElement">
+          <subNodeMappings name="defaultSubNode" semanticCandidatesExpression="feature:eAllContents" domainClass="ENamedElement">
+            <style xsi:type="style:SquareDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+      <additionalLayers name="alpha">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="AlphaSubNode" preconditionExpression="&lt;%name==&quot;ALPHA&quot;%>" semanticCandidatesExpression="feature:eAllContents" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='PC_NodeMappingImportInContainerMappingDiagram']/@defaultLayer/@containerMappings[name='DefaultContainer']/@subNodeMappings[name='defaultSubNode']">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+          </style>
+        </nodeMappings>
+      </additionalLayers>
+      <additionalLayers name="beta">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="BetaSubNode" preconditionExpression="&lt;%name==&quot;BETA&quot;%>" semanticCandidatesExpression="feature:eAllContents" domainClass="ENamedElement">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+          </style>
+        </nodeMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="PC_NodeMappingImportInContainerMappingDiagram_WithHideSubMapping" initialisation="true" domainClass="EPackage" preconditionExpression="&lt;%name==&quot;RootPackage&quot;%>">
+      <defaultLayer name="default">
+        <containerMappings name="DefaultContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="ENamedElement">
+          <subNodeMappings name="defaultSubNode" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass">
+            <style xsi:type="style:SquareDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+      <additionalLayers name="alpha">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="AlphaSubNode" preconditionExpression="&lt;%name==&quot;ALPHA&quot;%>" semanticCandidatesExpression="feature:eAllContents" hideSubMappings="true" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='PC_NodeMappingImportInContainerMappingDiagram_WithHideSubMapping']/@defaultLayer/@containerMappings[name='DefaultContainer']/@subNodeMappings[name='defaultSubNode']">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+          </style>
+        </nodeMappings>
+      </additionalLayers>
+      <additionalLayers name="beta">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="BetaSubNode" preconditionExpression="&lt;%name==&quot;BETA&quot;%>" semanticCandidatesExpression="feature:eAllContents" domainClass="ENamedElement" hideSubMappings="true">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+          </style>
+        </nodeMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DC_NodeMappingImportInContainerMappingDiagram" initialisation="true" domainClass="EPackage" preconditionExpression="&lt;%name==&quot;RootPackage&quot;%>">
+      <defaultLayer name="default">
+        <containerMappings name="DefaultContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="ENamedElement">
+          <subNodeMappings name="defaultSubNode" semanticCandidatesExpression="feature:eAllContents" domainClass="ENamedElement">
+            <style xsi:type="style:SquareDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+      <additionalLayers name="alpha">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="AlphaSubNode" semanticCandidatesExpression="feature:eAllContents" domainClass="EEnum" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='DC_NodeMappingImportInContainerMappingDiagram']/@defaultLayer/@containerMappings[name='DefaultContainer']/@subNodeMappings[name='defaultSubNode']">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+          </style>
+        </nodeMappings>
+      </additionalLayers>
+      <additionalLayers name="beta">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="BetaSubNode" semanticCandidatesExpression="feature:eAllContents" domainClass="EPackage">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+          </style>
+        </nodeMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DC_NodeMappingImportInContainerMappingDiagram_WithHideSubMapping" initialisation="true" domainClass="EPackage" preconditionExpression="&lt;%name==&quot;RootPackage&quot;%>">
+      <defaultLayer name="default">
+        <containerMappings name="DefaultContainer" semanticCandidatesExpression="feature:eAllContents" domainClass="ENamedElement">
+          <subNodeMappings name="defaultSubNode" semanticCandidatesExpression="feature:eAllContents" domainClass="ENamedElement">
+            <style xsi:type="style:SquareDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+      <additionalLayers name="alpha">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="AlphaSubNode" semanticCandidatesExpression="feature:eAllContents" domainClass="EEnum" hideSubMappings="true" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='DC_NodeMappingImportInContainerMappingDiagram_WithHideSubMapping']/@defaultLayer/@containerMappings[name='DefaultContainer']/@subNodeMappings[name='defaultSubNode']">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+          </style>
+        </nodeMappings>
+      </additionalLayers>
+      <additionalLayers name="beta">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="BetaSubNode" semanticCandidatesExpression="feature:eAllContents" domainClass="EPackage" hideSubMappings="true">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+          </style>
+        </nodeMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="PC_NodeMappingImportTree" initialisation="true" domainClass="EPackage">
+      <defaultLayer name="default">
+        <nodeMappings name="Class node mapping" domainClass="EClass">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+      </defaultLayer>
+      <additionalLayers name="tree">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="F1" preconditionExpression="&lt;%name == &quot;F1&quot;%>" domainClass="EClass" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='PC_NodeMappingImportTree']/@defaultLayer/@nodeMappings[name='Class%20node%20mapping']">
+          <style xsi:type="style:LozengeNodeDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="F2" preconditionExpression="&lt;%name == &quot;F2&quot;%>" domainClass="EClass" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='PC_NodeMappingImportTree']/@defaultLayer/@nodeMappings[name='Class%20node%20mapping']">
+          <style xsi:type="style:LozengeNodeDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='chocolate']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="F11" preconditionExpression="&lt;%name == &quot;F11&quot;%>" domainClass="EClass" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='PC_NodeMappingImportTree']/@additionalLayers[name='tree']/@nodeMappings[name='F1']">
+          <style xsi:type="style:EllipseNodeDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="F12" preconditionExpression="&lt;%name == &quot;F12&quot;%>" domainClass="EClass" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='PC_NodeMappingImportTree']/@additionalLayers[name='tree']/@nodeMappings[name='F1']">
+          <style xsi:type="style:EllipseNodeDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="F21" preconditionExpression="&lt;%name == &quot;F21&quot;%>" domainClass="EClass" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='PC_NodeMappingImportTree']/@additionalLayers[name='tree']/@nodeMappings[name='F2']">
+          <style xsi:type="style:EllipseNodeDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="F22" preconditionExpression="&lt;%name == &quot;F22&quot;%>" domainClass="EClass" importedMapping="//@ownedViewpoints[name='MultipleMappingImport']/@ownedRepresentations[name='PC_NodeMappingImportTree']/@additionalLayers[name='tree']/@nodeMappings[name='F2']">
+          <style xsi:type="style:EllipseNodeDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

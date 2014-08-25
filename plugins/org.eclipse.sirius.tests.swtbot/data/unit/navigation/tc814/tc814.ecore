@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="new EPackage 0">
+  <eSubpackages name="Passenger1">
+    <eClassifiers xsi:type="ecore:EClass" name="Command Selected Movie Show">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref2" eType="#//System/Display%20Selected%20Movie%20Parameters"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Select VOD Service"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Watch Movie"/>
+    <eClassifiers xsi:type="ecore:EClass" name="new EClass 4"/>
+    <eClassifiers xsi:type="ecore:EClass" name="new EClass 5"/>
+    <eClassifiers xsi:type="ecore:EClass" name="new EClass 6"/>
+    <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  </eSubpackages>
+  <eSubpackages name="System">
+    <eClassifiers xsi:type="ecore:EClass" name="Display Availble Services">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="AAAAout" eType="#//Passenger1/Select%20VOD%20Service"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Elaborate System Mode">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref7" eType="#//System/Compute%20Video%20Status"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Broadcast Movie to Passenger">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref12" eType="#//Passenger1/Watch%20Movie"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Broadcast Video In Cabin">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref1" eType="#//Passenger1/Watch%20Movie"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Compute Video Status">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref5"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref8" eType="#//System/Broadcast%20Movie%20to%20Passenger"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref9" eType="#//System/Broadcast%20Video%20In%20Cabin"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Display Selected Movie Parameters">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref3" eType="#//Passenger1/Command%20Selected%20Movie%20Show"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="withoutType2"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Acces to Entertaintment Data">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="fromAccesToEntertaintmentData"
+          eType="#//System/Display%20VA%20Parameters"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="fromAccesToEntertaintmentData"
+          eType="#//System/Display%20Selected%20Movie%20Parameters"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Display VA Parameters">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref6"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Launch Services">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref10" eType="#//System/Display%20Selected%20Movie%20Parameters"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref11" eType="#//System/Display%20VA%20Parameters"/>
+    </eClassifiers>
+    <eSubpackages name="Sous-package">
+      <eClassifiers xsi:type="ecore:EClass" name="Display Availble Services">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="AAAAout" eType="#//Passenger1/Select%20VOD%20Service"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="Elaborate System Mode">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ref7" eType="#//System/Compute%20Video%20Status"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="Broadcast Movie to Passenger">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ref12" eType="#//Passenger1/Watch%20Movie"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="Broadcast Video In Cabin">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ref1" eType="#//Passenger1/Watch%20Movie"/>
+      </eClassifiers>
+    </eSubpackages>
+    <eSubpackages name="Sous-package 2"/>
+    <eSubpackages name="Sous-package3">
+      <eClassifiers xsi:type="ecore:EClass" name="Compute Video Status">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ref5"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ref8" eType="#//System/Broadcast%20Movie%20to%20Passenger"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ref9" eType="#//System/Broadcast%20Video%20In%20Cabin"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="Display Selected Movie Parameters">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ref3" eType="#//Passenger1/Command%20Selected%20Movie%20Show"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="withoutType2"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="Acces to Entertaintment Data">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="fromAccesToEntertaintmentData"
+            eType="#//System/Sous-package3/Display%20VA%20Parameters"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="fromAccesToEntertaintmentData"
+            eType="#//System/Sous-package3/Display%20Selected%20Movie%20Parameters"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="Display VA Parameters">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ref6"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="Launch Services">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ref10" eType="#//System/Sous-package3/Display%20Selected%20Movie%20Parameters"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ref11" eType="#//System/Sous-package3/Display%20VA%20Parameters"/>
+      </eClassifiers>
+    </eSubpackages>
+    <eSubpackages name="Sous-package4"/>
+  </eSubpackages>
+</ecore:EPackage>

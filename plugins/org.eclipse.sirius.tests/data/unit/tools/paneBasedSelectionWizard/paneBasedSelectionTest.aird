@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_7fDDUGGPEd6yy7G04z6ROA" selectedViews="_akrVcGrOEd6uxafcOG9HxQ _7wgmwGGPEd6yy7G04z6ROA" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="paneBasedSelectionTest.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_7wgmwGGPEd6yy7G04z6ROA" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_7x5t4WGPEd6yy7G04z6ROA" name="PaneBasedSelectionTestDiagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_nCD-cA8EEeK4hYX3jndOFQ" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_8dm9UGGPEd6yy7G04z6ROA" type="Sirius" element="_7x5t4WGPEd6yy7G04z6ROA" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_8dzKkGGPEd6yy7G04z6ROA" type="2001" element="_MKSicJjFEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_8dzxoGGPEd6yy7G04z6ROA" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_8dzxoWGPEd6yy7G04z6ROA" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_8d208GGPEd6yy7G04z6ROA" type="3003" element="_MKTJgJjFEeCTjf2eRUPO7Q">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_8d208WGPEd6yy7G04z6ROA" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8d208mGPEd6yy7G04z6ROA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_8dzKkWGPEd6yy7G04z6ROA" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8dzKkmGPEd6yy7G04z6ROA" x="55" y="55" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_8dzxomGPEd6yy7G04z6ROA" type="2002" element="_MKTwlpjFEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_8d0YsGGPEd6yy7G04z6ROA" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_8d0YsWGPEd6yy7G04z6ROA" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_8d4DEGGPEd6yy7G04z6ROA" type="3007" element="_MKWM0JjFEeCTjf2eRUPO7Q">
+                <children xmi:type="notation:Node" xmi:id="_8d4qIGGPEd6yy7G04z6ROA" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_8d4qIWGPEd6yy7G04z6ROA" y="5"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_8d5RMGGPEd6yy7G04z6ROA" type="3003" element="_MKWM0ZjFEeCTjf2eRUPO7Q">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_8d5RMWGPEd6yy7G04z6ROA" fontName="Segoe UI"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8d5RMmGPEd6yy7G04z6ROA"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_8d4DEWGPEd6yy7G04z6ROA" fontName="Segoe UI" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8d4DEmGPEd6yy7G04z6ROA" x="25" y="25" width="30" height="30"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_8d0YsmGPEd6yy7G04z6ROA"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_8d0Ys2GPEd6yy7G04z6ROA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_8dzxo2GPEd6yy7G04z6ROA" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8dzxpGGPEd6yy7G04z6ROA" x="145" y="55"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_8d0_wGGPEd6yy7G04z6ROA" type="2002" element="_MKTwkJjFEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_8d0_w2GPEd6yy7G04z6ROA" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_8d0_xGGPEd6yy7G04z6ROA" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_8d6fUGGPEd6yy7G04z6ROA" type="3007" element="_MKU-tpjFEeCTjf2eRUPO7Q">
+                <children xmi:type="notation:Node" xmi:id="_8d7GYGGPEd6yy7G04z6ROA" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_8d7GYWGPEd6yy7G04z6ROA" y="5"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_8d-JsGGPEd6yy7G04z6ROA" type="3003" element="_MKVlwJjFEeCTjf2eRUPO7Q">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_8d-JsWGPEd6yy7G04z6ROA" fontName="Segoe UI"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8d-JsmGPEd6yy7G04z6ROA"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_8d6fUWGPEd6yy7G04z6ROA" fontName="Segoe UI" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8d6fUmGPEd6yy7G04z6ROA" x="55" y="55" width="30" height="30"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_8d7GYmGPEd6yy7G04z6ROA" type="3007" element="_MKVlxJjFEeCTjf2eRUPO7Q">
+                <children xmi:type="notation:Node" xmi:id="_8d7tcGGPEd6yy7G04z6ROA" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_8d7tcWGPEd6yy7G04z6ROA" y="5"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_8d_X0GGPEd6yy7G04z6ROA" type="3003" element="_MKVlxZjFEeCTjf2eRUPO7Q">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_8d_X0WGPEd6yy7G04z6ROA" fontName="Segoe UI"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8d_X0mGPEd6yy7G04z6ROA"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_8d7GY2GPEd6yy7G04z6ROA" fontName="Segoe UI" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8d7GZGGPEd6yy7G04z6ROA" x="145" y="55" width="30" height="30"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_8d0_xWGPEd6yy7G04z6ROA"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_8d0_xmGPEd6yy7G04z6ROA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_8d0_wWGPEd6yy7G04z6ROA" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8d0_wmGPEd6yy7G04z6ROA" x="235" y="55"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_MKc6gJjFEeCTjf2eRUPO7Q" type="2002" element="_MKUXoJjFEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_MKc6g5jFEeCTjf2eRUPO7Q" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_MKc6hJjFEeCTjf2eRUPO7Q" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_MKc6hZjFEeCTjf2eRUPO7Q"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_MKc6hpjFEeCTjf2eRUPO7Q"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_MKc6gZjFEeCTjf2eRUPO7Q" fontName="Sans Serif" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MKc6gpjFEeCTjf2eRUPO7Q"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_MKdhkJjFEeCTjf2eRUPO7Q" type="2002" element="_MKUXppjFEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_MKdhk5jFEeCTjf2eRUPO7Q" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_MKdhlJjFEeCTjf2eRUPO7Q" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_MKdhlZjFEeCTjf2eRUPO7Q"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_MKdhlpjFEeCTjf2eRUPO7Q"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_MKdhkZjFEeCTjf2eRUPO7Q" fontName="Sans Serif" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MKdhkpjFEeCTjf2eRUPO7Q" x="180"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_MKdhl5jFEeCTjf2eRUPO7Q" type="2002" element="_MKU-sJjFEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_MKeIoJjFEeCTjf2eRUPO7Q" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_MKeIoZjFEeCTjf2eRUPO7Q" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_MKeIopjFEeCTjf2eRUPO7Q"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_MKeIo5jFEeCTjf2eRUPO7Q"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_MKdhmJjFEeCTjf2eRUPO7Q" fontName="Sans Serif" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MKdhmZjFEeCTjf2eRUPO7Q" x="360"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_8dm9UWGPEd6yy7G04z6ROA"/>
+          <edges xmi:type="notation:Edge" xmi:id="_MKeIpJjFEeCTjf2eRUPO7Q" type="4001" element="_MKXa8JjFEeCTjf2eRUPO7Q" source="_8d7GYmGPEd6yy7G04z6ROA" target="_8d6fUGGPEd6yy7G04z6ROA">
+            <children xmi:type="notation:Node" xmi:id="_MKevsJjFEeCTjf2eRUPO7Q" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MKevsZjFEeCTjf2eRUPO7Q" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_MKevspjFEeCTjf2eRUPO7Q" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MKevs5jFEeCTjf2eRUPO7Q" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_MKevtJjFEeCTjf2eRUPO7Q" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MKevtZjFEeCTjf2eRUPO7Q" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_MKeIpZjFEeCTjf2eRUPO7Q"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_MKeIppjFEeCTjf2eRUPO7Q" fontName="Sans Serif"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MKeIp5jFEeCTjf2eRUPO7Q" points="[380, 110, 380, 110]$[290, 110, 290, 110]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MKevtpjFEeCTjf2eRUPO7Q" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MKevt5jFEeCTjf2eRUPO7Q" id="(0.5,0.5)"/>
+          </edges>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_MKSicJjFEeCTjf2eRUPO7Q" name="c0" width="3" height="3">
+        <target xmi:type="ecore:EClass" href="paneBasedSelectionTest.ecore#//c0"/>
+        <semanticElements xmi:type="ecore:EClass" href="paneBasedSelectionTest.ecore#//c0"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_MKTJgJjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MKTJgZjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:SquareDescription" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@nodeMappings[name='Class']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_MKTJgpjFEeCTjf2eRUPO7Q"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_MKTJg5jFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@nodeMappings[name='Class']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_MKTwkJjFEeCTjf2eRUPO7Q" name="testPackage">
+        <target xmi:type="ecore:EPackage" href="paneBasedSelectionTest.ecore#//testPackage"/>
+        <semanticElements xmi:type="ecore:EPackage" href="paneBasedSelectionTest.ecore#//testPackage"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_MKTwkZjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MKTwkpjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@containerMappings[name='Package']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_MKTwk5jFEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_MKTwlJjFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_MKTwlZjFEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@containerMappings[name='Package']"/>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_MKU-tpjFEeCTjf2eRUPO7Q" name="c1" incomingEdges="_MKXa8JjFEeCTjf2eRUPO7Q" width="3" height="3">
+          <target xmi:type="ecore:EClass" href="paneBasedSelectionTest.ecore#//testPackage/c1"/>
+          <semanticElements xmi:type="ecore:EClass" href="paneBasedSelectionTest.ecore#//testPackage/c1"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_MKVlwJjFEeCTjf2eRUPO7Q">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MKVlwZjFEeCTjf2eRUPO7Q"/>
+            <description xmi:type="style:SquareDescription" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@nodeMappings[name='Class']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_MKVlwpjFEeCTjf2eRUPO7Q"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_MKVlw5jFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@nodeMappings[name='Class']"/>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_MKVlxJjFEeCTjf2eRUPO7Q" name="c2" outgoingEdges="_MKXa8JjFEeCTjf2eRUPO7Q" width="3" height="3">
+          <target xmi:type="ecore:EClass" href="paneBasedSelectionTest.ecore#//testPackage/c2"/>
+          <semanticElements xmi:type="ecore:EClass" href="paneBasedSelectionTest.ecore#//testPackage/c2"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_MKVlxZjFEeCTjf2eRUPO7Q">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MKVlxpjFEeCTjf2eRUPO7Q"/>
+            <description xmi:type="style:SquareDescription" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@nodeMappings[name='Class']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_MKVlx5jFEeCTjf2eRUPO7Q"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_MKVlyJjFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@nodeMappings[name='Class']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_MKTwlpjFEeCTjf2eRUPO7Q" name="p0">
+        <target xmi:type="ecore:EPackage" href="paneBasedSelectionTest.ecore#//p0"/>
+        <semanticElements xmi:type="ecore:EPackage" href="paneBasedSelectionTest.ecore#//p0"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_MKTwl5jFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MKTwmJjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@containerMappings[name='Package']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_MKTwmZjFEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_MKTwmpjFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_MKTwm5jFEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@containerMappings[name='Package']"/>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_MKWM0JjFEeCTjf2eRUPO7Q" name="c1" width="3" height="3">
+          <target xmi:type="ecore:EClass" href="paneBasedSelectionTest.ecore#//p0/c1"/>
+          <semanticElements xmi:type="ecore:EClass" href="paneBasedSelectionTest.ecore#//p0/c1"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_MKWM0ZjFEeCTjf2eRUPO7Q">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MKWM0pjFEeCTjf2eRUPO7Q"/>
+            <description xmi:type="style:SquareDescription" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@nodeMappings[name='Class']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_MKWM05jFEeCTjf2eRUPO7Q"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_MKWM1JjFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@nodeMappings[name='Class']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_MKUXoJjFEeCTjf2eRUPO7Q" name="p1">
+        <target xmi:type="ecore:EPackage" href="paneBasedSelectionTest.ecore#//p0/p1"/>
+        <semanticElements xmi:type="ecore:EPackage" href="paneBasedSelectionTest.ecore#//p0/p1"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_MKUXoZjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MKUXopjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@containerMappings[name='Package']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_MKUXo5jFEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_MKUXpJjFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_MKUXpZjFEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@containerMappings[name='Package']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_MKUXppjFEeCTjf2eRUPO7Q" name="p2">
+        <target xmi:type="ecore:EPackage" href="paneBasedSelectionTest.ecore#//p0/p1/p2"/>
+        <semanticElements xmi:type="ecore:EPackage" href="paneBasedSelectionTest.ecore#//p0/p1/p2"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_MKUXp5jFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MKUXqJjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@containerMappings[name='Package']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_MKUXqZjFEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_MKUXqpjFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_MKUXq5jFEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@containerMappings[name='Package']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_MKU-sJjFEeCTjf2eRUPO7Q" name="p3">
+        <target xmi:type="ecore:EPackage" href="paneBasedSelectionTest.ecore#//p0/p1/p3"/>
+        <semanticElements xmi:type="ecore:EPackage" href="paneBasedSelectionTest.ecore#//p0/p1/p3"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_MKU-sZjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MKU-spjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@containerMappings[name='Package']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_MKU-s5jFEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_MKU-tJjFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_MKU-tZjFEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@containerMappings[name='Package']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_MKXa8JjFEeCTjf2eRUPO7Q" sourceNode="_MKVlxJjFEeCTjf2eRUPO7Q" targetNode="_MKU-tpjFEeCTjf2eRUPO7Q">
+        <target xmi:type="ecore:EClass" href="paneBasedSelectionTest.ecore#//testPackage/c2"/>
+        <semanticElements xmi:type="ecore:EClass" href="paneBasedSelectionTest.ecore#//testPackage/c2"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_SfyTsdRSEd6UZ-XJpNkQkA" targetArrow="InputClosedArrow">
+          <description xmi:type="style:EdgeStyleDescription" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@edgeMappings[name='Supertypes']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_SfyTstRSEd6UZ-XJpNkQkA" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@edgeMappings[name='Supertypes']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_7x5t4mGPEd6yy7G04z6ROA"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/resource/description/paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer"/>
+      <activatedLayers xmi:type="description_1:Layer" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer"/>
+      <activatedLayers xmi:type="description_1:Layer" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="paneBasedSelectionTest.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_akrVcGrOEd6uxafcOG9HxQ" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_atM_UGrOEd6uxafcOG9HxQ" name="PaneBasedSelectionTestDiagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_nCElgA8EEeK4hYX3jndOFQ" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_cBjjIGrOEd6uxafcOG9HxQ" type="Sirius" element="_atM_UGrOEd6uxafcOG9HxQ" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_cB1P8GrOEd6uxafcOG9HxQ" type="2001" element="_MKk2UJjFEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_cB13AGrOEd6uxafcOG9HxQ" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_cB13AWrOEd6uxafcOG9HxQ" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_cB6IcGrOEd6uxafcOG9HxQ" type="3003" element="_MKk2UZjFEeCTjf2eRUPO7Q">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_cB6IcWrOEd6uxafcOG9HxQ" fontName="Sans"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cB6IcmrOEd6uxafcOG9HxQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_cB1P8WrOEd6uxafcOG9HxQ" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cB1P8mrOEd6uxafcOG9HxQ" x="55" y="55" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_cB13AmrOEd6uxafcOG9HxQ" type="2002" element="_MKmrhZjFEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_cB2eEGrOEd6uxafcOG9HxQ" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_cB2eEWrOEd6uxafcOG9HxQ" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_cB2eEmrOEd6uxafcOG9HxQ"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_cB2eE2rOEd6uxafcOG9HxQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_cB13A2rOEd6uxafcOG9HxQ" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cB13BGrOEd6uxafcOG9HxQ" x="145" y="55"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_cB2eFGrOEd6uxafcOG9HxQ" type="2002" element="_MKmEdZjFEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_cB3FIGrOEd6uxafcOG9HxQ" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_cB3FIWrOEd6uxafcOG9HxQ" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_cB3FImrOEd6uxafcOG9HxQ"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_cB3FI2rOEd6uxafcOG9HxQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_cB2eFWrOEd6uxafcOG9HxQ" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cB2eFmrOEd6uxafcOG9HxQ" x="145" y="140"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_cB3sMGrOEd6uxafcOG9HxQ" type="2002" element="_MKmEe5jFEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_cB3sM2rOEd6uxafcOG9HxQ" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_cB3sNGrOEd6uxafcOG9HxQ" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_cB3sNWrOEd6uxafcOG9HxQ"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_cB3sNmrOEd6uxafcOG9HxQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_cB3sMWrOEd6uxafcOG9HxQ" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cB3sMmrOEd6uxafcOG9HxQ" x="145" y="224"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_cB4TQGrOEd6uxafcOG9HxQ" type="2002" element="_MKldZpjFEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_cB4TQ2rOEd6uxafcOG9HxQ" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_cB46UGrOEd6uxafcOG9HxQ" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_cB79oGrOEd6uxafcOG9HxQ" type="3007" element="_MKn5oJjFEeCTjf2eRUPO7Q">
+                <children xmi:type="notation:Node" xmi:id="_cB79o2rOEd6uxafcOG9HxQ" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_cB79pGrOEd6uxafcOG9HxQ" y="5"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_cB8ksGrOEd6uxafcOG9HxQ" type="3003" element="_MKn5oZjFEeCTjf2eRUPO7Q">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_cB8ksWrOEd6uxafcOG9HxQ" fontName="Sans"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cB8ksmrOEd6uxafcOG9HxQ"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_cB79oWrOEd6uxafcOG9HxQ" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cB79omrOEd6uxafcOG9HxQ" x="25" y="25" width="30" height="30"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_cB46UWrOEd6uxafcOG9HxQ"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_cB46UmrOEd6uxafcOG9HxQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_cB4TQWrOEd6uxafcOG9HxQ" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cB4TQmrOEd6uxafcOG9HxQ" x="145" y="308"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_cB46U2rOEd6uxafcOG9HxQ" type="2002" element="_MKldYJjFEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_cB5hYGrOEd6uxafcOG9HxQ" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_cB5hYWrOEd6uxafcOG9HxQ" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_cB9y0GrOEd6uxafcOG9HxQ" type="3007" element="_MKnSkJjFEeCTjf2eRUPO7Q">
+                <children xmi:type="notation:Node" xmi:id="_cB9y02rOEd6uxafcOG9HxQ" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_cB9y1GrOEd6uxafcOG9HxQ" y="5"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_cB_oAGrOEd6uxafcOG9HxQ" type="3003" element="_MKnSkZjFEeCTjf2eRUPO7Q">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_cB_oAWrOEd6uxafcOG9HxQ" fontName="Sans"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cB_oAmrOEd6uxafcOG9HxQ"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_cB9y0WrOEd6uxafcOG9HxQ" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cB9y0mrOEd6uxafcOG9HxQ" x="55" y="55" width="30" height="30"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_cB-Z4GrOEd6uxafcOG9HxQ" type="3007" element="_MKnSlZjFEeCTjf2eRUPO7Q">
+                <children xmi:type="notation:Node" xmi:id="_cB-Z42rOEd6uxafcOG9HxQ" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_cB-Z5GrOEd6uxafcOG9HxQ" y="5"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_cCAPEGrOEd6uxafcOG9HxQ" type="3003" element="_MKnSlpjFEeCTjf2eRUPO7Q">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_cCAPEWrOEd6uxafcOG9HxQ" fontName="Sans"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cCAPEmrOEd6uxafcOG9HxQ"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_cB-Z4WrOEd6uxafcOG9HxQ" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cB-Z4mrOEd6uxafcOG9HxQ" x="145" y="55" width="30" height="30"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_cB5hYmrOEd6uxafcOG9HxQ"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_cB5hY2rOEd6uxafcOG9HxQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_cB46VGrOEd6uxafcOG9HxQ" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_cB46VWrOEd6uxafcOG9HxQ" x="145" y="392"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_cBjjIWrOEd6uxafcOG9HxQ"/>
+          <edges xmi:type="notation:Edge" xmi:id="_LBdCsGrPEd6uxafcOG9HxQ" type="4001" element="_MKpHwJjFEeCTjf2eRUPO7Q" source="_cB-Z4GrOEd6uxafcOG9HxQ" target="_cB9y0GrOEd6uxafcOG9HxQ">
+            <children xmi:type="notation:Node" xmi:id="_LBdCtGrPEd6uxafcOG9HxQ" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zpvWoIRLEeOg_8QSiaL3XA" x="10" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_MInugJjFEeCTjf2eRUPO7Q" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MInugZjFEeCTjf2eRUPO7Q" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_MIoVkJjFEeCTjf2eRUPO7Q" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MIoVkZjFEeCTjf2eRUPO7Q" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_LBdCsWrPEd6uxafcOG9HxQ"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_LBdCsmrPEd6uxafcOG9HxQ" fontName="Sans" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_LBdCs2rPEd6uxafcOG9HxQ" points="[-15, 0, 75, 0]$[-75, 0, 15, 0]"/>
+          </edges>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_MKk2UJjFEeCTjf2eRUPO7Q" name="c0" width="3" height="3">
+        <target xmi:type="ecore:EClass" href="paneBasedSelectionTest.ecore#//c0"/>
+        <semanticElements xmi:type="ecore:EClass" href="paneBasedSelectionTest.ecore#//c0"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_MKk2UZjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MKk2UpjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:SquareDescription" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@nodeMappings[name='Class']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_MKk2U5jFEeCTjf2eRUPO7Q"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_MKk2VJjFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@nodeMappings[name='Class']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_MKldYJjFEeCTjf2eRUPO7Q" name="testPackage">
+        <target xmi:type="ecore:EPackage" href="paneBasedSelectionTest.ecore#//testPackage"/>
+        <semanticElements xmi:type="ecore:EPackage" href="paneBasedSelectionTest.ecore#//testPackage"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_MKldYZjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MKldYpjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@containerMappings[name='Package']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_MKldY5jFEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_MKldZJjFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_MKldZZjFEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@containerMappings[name='Package']"/>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_MKnSkJjFEeCTjf2eRUPO7Q" name="c1" incomingEdges="_MKpHwJjFEeCTjf2eRUPO7Q" width="3" height="3">
+          <target xmi:type="ecore:EClass" href="paneBasedSelectionTest.ecore#//testPackage/c1"/>
+          <semanticElements xmi:type="ecore:EClass" href="paneBasedSelectionTest.ecore#//testPackage/c1"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_MKnSkZjFEeCTjf2eRUPO7Q">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MKnSkpjFEeCTjf2eRUPO7Q"/>
+            <description xmi:type="style:SquareDescription" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@nodeMappings[name='Class']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_MKnSk5jFEeCTjf2eRUPO7Q"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_MKnSlJjFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@nodeMappings[name='Class']"/>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_MKnSlZjFEeCTjf2eRUPO7Q" name="c2" outgoingEdges="_MKpHwJjFEeCTjf2eRUPO7Q" width="3" height="3">
+          <target xmi:type="ecore:EClass" href="paneBasedSelectionTest.ecore#//testPackage/c2"/>
+          <semanticElements xmi:type="ecore:EClass" href="paneBasedSelectionTest.ecore#//testPackage/c2"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_MKnSlpjFEeCTjf2eRUPO7Q">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MKnSl5jFEeCTjf2eRUPO7Q"/>
+            <description xmi:type="style:SquareDescription" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@nodeMappings[name='Class']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_MKnSmJjFEeCTjf2eRUPO7Q"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_MKnSmZjFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@nodeMappings[name='Class']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_MKldZpjFEeCTjf2eRUPO7Q" name="p0">
+        <target xmi:type="ecore:EPackage" href="paneBasedSelectionTest.ecore#//p0"/>
+        <semanticElements xmi:type="ecore:EPackage" href="paneBasedSelectionTest.ecore#//p0"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_MKmEcJjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MKmEcZjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@containerMappings[name='Package']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_MKmEcpjFEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_MKmEc5jFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_MKmEdJjFEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@containerMappings[name='Package']"/>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_MKn5oJjFEeCTjf2eRUPO7Q" name="c1" width="3" height="3">
+          <target xmi:type="ecore:EClass" href="paneBasedSelectionTest.ecore#//p0/c1"/>
+          <semanticElements xmi:type="ecore:EClass" href="paneBasedSelectionTest.ecore#//p0/c1"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_MKn5oZjFEeCTjf2eRUPO7Q">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MKn5opjFEeCTjf2eRUPO7Q"/>
+            <description xmi:type="style:SquareDescription" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@nodeMappings[name='Class']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_MKn5o5jFEeCTjf2eRUPO7Q"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_MKn5pJjFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@nodeMappings[name='Class']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_MKmEdZjFEeCTjf2eRUPO7Q" name="p1">
+        <target xmi:type="ecore:EPackage" href="paneBasedSelectionTest.ecore#//p0/p1"/>
+        <semanticElements xmi:type="ecore:EPackage" href="paneBasedSelectionTest.ecore#//p0/p1"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_MKmEdpjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MKmEd5jFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@containerMappings[name='Package']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_MKmEeJjFEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_MKmEeZjFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_MKmEepjFEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@containerMappings[name='Package']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_MKmEe5jFEeCTjf2eRUPO7Q" name="p2">
+        <target xmi:type="ecore:EPackage" href="paneBasedSelectionTest.ecore#//p0/p1/p2"/>
+        <semanticElements xmi:type="ecore:EPackage" href="paneBasedSelectionTest.ecore#//p0/p1/p2"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_MKmrgJjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MKmrgZjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@containerMappings[name='Package']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_MKmrgpjFEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_MKmrg5jFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_MKmrhJjFEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@containerMappings[name='Package']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_MKmrhZjFEeCTjf2eRUPO7Q" name="p3">
+        <target xmi:type="ecore:EPackage" href="paneBasedSelectionTest.ecore#//p0/p1/p3"/>
+        <semanticElements xmi:type="ecore:EPackage" href="paneBasedSelectionTest.ecore#//p0/p1/p3"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_MKmrhpjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MKmrh5jFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@containerMappings[name='Package']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_MKmriJjFEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_MKmriZjFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_MKmripjFEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@containerMappings[name='Package']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_MKpHwJjFEeCTjf2eRUPO7Q" sourceNode="_MKnSlZjFEeCTjf2eRUPO7Q" targetNode="_MKnSkJjFEeCTjf2eRUPO7Q">
+        <target xmi:type="ecore:EClass" href="paneBasedSelectionTest.ecore#//testPackage/c2"/>
+        <semanticElements xmi:type="ecore:EClass" href="paneBasedSelectionTest.ecore#//testPackage/c2"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_LA_IoWrPEd6uxafcOG9HxQ" targetArrow="InputClosedArrow">
+          <description xmi:type="style:EdgeStyleDescription" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@edgeMappings[name='Supertypes']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_z-aEuEgcEeClJJrVvqnbbg" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer/@edgeMappings[name='Supertypes']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_atM_UWrOEd6uxafcOG9HxQ"/>
+      <activatedLayers xmi:type="description_1:Layer" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']/@ownedRepresentations[name='PaneBasedSelectionTestDiagram']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="paneBasedSelectionTest.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="paneBasedSelection.odesign#//@ownedViewpoints[name='paneBasedSelectionTests']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

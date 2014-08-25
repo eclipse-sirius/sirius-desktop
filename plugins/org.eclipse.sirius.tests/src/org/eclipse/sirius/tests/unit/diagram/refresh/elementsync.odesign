@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="elementsync" version="8.0.0">
+  <ownedViewpoints name="VP-2075">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DDiagramElementSynchronizer" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="Node" semanticCandidatesExpression="[self/]" domainClass="EPackage">
+          <style xsi:type="style:BundledImageDescription" labelExpression="[name/]" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+          <conditionnalStyles predicateExpression="[name.startsWith('a')/]">
+            <style xsi:type="style:SquareDescription" labelExpression="[name/]" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </conditionnalStyles>
+        </nodeMappings>
+        <edgeMappings name="Edge" sourceMapping="//@ownedViewpoints[name='VP-2075']/@ownedRepresentations[name='DDiagramElementSynchronizer']/@defaultLayer/@nodeMappings[name='Node']" targetMapping="//@ownedViewpoints[name='VP-2075']/@ownedRepresentations[name='DDiagramElementSynchronizer']/@defaultLayer/@containerMappings[name='Container']" targetFinderExpression="[self/]">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+          <conditionnalStyles predicateExpression="[name.startsWith('a')/]">
+            <style xsi:type="style:BracketEdgeStyleDescription" sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <centerLabelStyleDescription>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappings>
+        <containerMappings name="Container" semanticCandidatesExpression="[self/]" domainClass="EPackage">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[name/]">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+          <conditionnalStyles predicateExpression="[name.startsWith('a')/]">
+            <style xsi:type="style:ShapeContainerStyleDescription" labelExpression="[name/]">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <containerMappings name="List" semanticCandidatesExpression="[self/]" domainClass="EPackage" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[name/]">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+          <conditionnalStyles predicateExpression="[name.startsWith('a')/]">
+            <style xsi:type="style:ShapeContainerStyleDescription" labelExpression="[name/]">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[name.startsWith('b')/]">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='VP-2075']/@ownedRepresentations[name='DDiagramElementSynchronizer']/@defaultLayer/@nodeMappings[name='Node']/@style //@ownedViewpoints[name='VP-2075']/@ownedRepresentations[name='DDiagramElementSynchronizer']/@defaultLayer/@containerMappings[name='Container']/@style //@ownedViewpoints[name='VP-2075']/@ownedRepresentations[name='DDiagramElementSynchronizer']/@defaultLayer/@nodeMappings[name='Node']/@conditionnalStyles.0/@style //@ownedViewpoints[name='VP-2075']/@ownedRepresentations[name='DDiagramElementSynchronizer']/@defaultLayer/@containerMappings[name='Container']/@conditionnalStyles.0/@style //@ownedViewpoints[name='VP-2075']/@ownedRepresentations[name='DDiagramElementSynchronizer']/@defaultLayer/@containerMappings[name='List']/@style //@ownedViewpoints[name='VP-2075']/@ownedRepresentations[name='DDiagramElementSynchronizer']/@defaultLayer/@edgeMappings[name='Edge']/@style/@centerLabelStyleDescription //@ownedViewpoints[name='VP-2075']/@ownedRepresentations[name='DDiagramElementSynchronizer']/@defaultLayer/@containerMappings[name='List']/@conditionnalStyles.0/@style //@ownedViewpoints[name='VP-2075']/@ownedRepresentations[name='DDiagramElementSynchronizer']/@defaultLayer/@edgeMappings[name='Edge']/@conditionnalStyles.0/@style/@centerLabelStyleDescription" attributeName="labelExpression" value="['[self.nsURI/]'/]"/>
+          </vsmElementCustomizations>
+        </customization>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

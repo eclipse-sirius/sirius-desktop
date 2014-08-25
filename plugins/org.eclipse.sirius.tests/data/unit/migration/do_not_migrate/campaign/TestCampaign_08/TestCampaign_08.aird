@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.obeo.fr/dsl/viewpoint/description/1.1.0" xmlns:migrationmodeler="http://www.eclipse.org/sirius/tests/sample/migrationmodeler" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:viewpoint="http://www.obeo.fr/dsl/viewpoint/1.1.0" xsi:schemaLocation="http://www.obeo.fr/dsl/viewpoint/description/1.1.0 http://www.obeo.fr/dsl/viewpoint/1.1.0#//description" xmi:id="_mxRH4dDTEeGlroXusuMEJw" selectedViews="_nX5qENDTEeGlroXusuMEJw">
+  <models xmi:type="migrationmodeler:TestCase" href="TestCampaign_08.migrationmodeler#/"/>
+  <eAnnotations xmi:type="description:DAnnotationEntry" xmi:id="_mxRH4tDTEeGlroXusuMEJw" source="Migration">
+    <details>style</details>
+    <details>someViewsAreHiddenDeactivation</details>
+    <details>edgeLabels</details>
+    <details>LabelAlignmentForDNodeListElementMigrationForNotHavingSessionDirtyAtOpening</details>
+    <details>LabelAlignmentForDNodeMigrationForNotHavingSessionDirtyAtOpening</details>
+    <details>GMFViewSizeForDNodeNotResizable</details>
+    <details>GMFTreeEdgeFixAnchors_2</details>
+    <details>RoutingStyleDesynchronization</details>
+    <details>sequenceAbsoluteBoundsFlag</details>
+  </eAnnotations>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_nX5qENDTEeGlroXusuMEJw" initialized="true">
+    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_oakA8NDTEeGlroXusuMEJw" name="1">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_obFlYNDTEeGlroXusuMEJw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_obFlYdDTEeGlroXusuMEJw" type="Viewpoint" element="_oakA8NDTEeGlroXusuMEJw" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_obFlYtDTEeGlroXusuMEJw"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']"/>
+      <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_oakoANDTEeGlroXusuMEJw"/>
+      <activatedLayers xmi:type="description:OptionalLayer" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@optionalLayers[name='Test%20Layer']"/>
+      <target xmi:type="migrationmodeler:Diagram" href="TestCampaign_08.migrationmodeler#//@representations.0"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_o--VkNDTEeGlroXusuMEJw" name="2">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_o_Lw8NDTEeGlroXusuMEJw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_o_Lw8dDTEeGlroXusuMEJw" type="Viewpoint" element="_o--VkNDTEeGlroXusuMEJw" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_o_Lw8tDTEeGlroXusuMEJw"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']"/>
+      <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_o--VkdDTEeGlroXusuMEJw"/>
+      <target xmi:type="migrationmodeler:Diagram" href="TestCampaign_08.migrationmodeler#//@representations.1"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.tests.sample.migration.design/description/migration.odesign#//@ownedViewpoints[name='migration_modeler']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

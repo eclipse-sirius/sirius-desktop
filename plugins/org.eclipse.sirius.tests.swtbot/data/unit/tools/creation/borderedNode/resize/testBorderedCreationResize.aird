@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_q3pIIHT6EeKPRMSkP5NPGw" selectedViews="_IS4Y8I13EeKx8fAg1ZduZw" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="testBorderedCreationResize.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_yE2VsHT6EeKPRMSkP5NPGw" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_zEIBYHT6EeKPRMSkP5NPGw" name="new testCollapse">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_zETnkHT6EeKPRMSkP5NPGw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_zETnkXT6EeKPRMSkP5NPGw" type="Sirius" element="_zEIBYHT6EeKPRMSkP5NPGw" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_zEVcwHT6EeKPRMSkP5NPGw" type="2002" element="_zEIBYXT6EeKPRMSkP5NPGw">
+            <children xmi:type="notation:Node" xmi:id="_zEWD0HT6EeKPRMSkP5NPGw" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_zEWq4HT6EeKPRMSkP5NPGw" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_zEXR8HT6EeKPRMSkP5NPGw" type="3008" element="_zEIBZ3T6EeKPRMSkP5NPGw">
+                <children xmi:type="notation:Node" xmi:id="_zEYgEHT6EeKPRMSkP5NPGw" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_zEYgEXT6EeKPRMSkP5NPGw" type="7002">
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_zEZHIHT6EeKPRMSkP5NPGw"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_zEZHIXT6EeKPRMSkP5NPGw"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_zEXR8XT6EeKPRMSkP5NPGw" fontName="Ubuntu" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zEXR8nT6EeKPRMSkP5NPGw" x="20" y="31"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_zEZuNHT6EeKPRMSkP5NPGw" type="3008" element="_zEIolXT6EeKPRMSkP5NPGw">
+                <children xmi:type="notation:Node" xmi:id="_zEaVQHT6EeKPRMSkP5NPGw" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_zEaVQXT6EeKPRMSkP5NPGw" type="7002">
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_zEaVQnT6EeKPRMSkP5NPGw"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_zEaVQ3T6EeKPRMSkP5NPGw"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_zEZuNXT6EeKPRMSkP5NPGw" fontName="Ubuntu" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zEZuNnT6EeKPRMSkP5NPGw" x="195" y="31"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_zEWq4XT6EeKPRMSkP5NPGw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_zEWq4nT6EeKPRMSkP5NPGw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zEVcwXT6EeKPRMSkP5NPGw" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zEVcwnT6EeKPRMSkP5NPGw" x="120" y="108"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_zETnknT6EeKPRMSkP5NPGw"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_zEIBYXT6EeKPRMSkP5NPGw">
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_zEIBYnT6EeKPRMSkP5NPGw">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIBY3T6EeKPRMSkP5NPGw"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIBZHT6EeKPRMSkP5NPGw"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIBZXT6EeKPRMSkP5NPGw" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIBZnT6EeKPRMSkP5NPGw" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_zEIBZ3T6EeKPRMSkP5NPGw" name="Test">
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_zEIohXT6EeKPRMSkP5NPGw">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIohnT6EeKPRMSkP5NPGw"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIoh3T6EeKPRMSkP5NPGw"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIoiHT6EeKPRMSkP5NPGw" red="194" green="239" blue="255"/>
+            <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIoiXT6EeKPRMSkP5NPGw" red="209" green="209" blue="209"/>
+          </ownedStyle>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_zEIolXT6EeKPRMSkP5NPGw" name="testPackage">
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_zEIolnT6EeKPRMSkP5NPGw">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIol3T6EeKPRMSkP5NPGw"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIomHT6EeKPRMSkP5NPGw"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIomXT6EeKPRMSkP5NPGw" red="255" green="255" blue="255"/>
+            <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIomnT6EeKPRMSkP5NPGw" red="255" green="245" blue="181"/>
+          </ownedStyle>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_zEIooHT6EeKPRMSkP5NPGw"/>
+    </ownedRepresentations>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_IS4Y8I13EeKx8fAg1ZduZw" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_J3oJMI13EeKx8fAg1ZduZw" name="new testBorderedCreationResize">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_J4nnsI13EeKx8fAg1ZduZw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_J4nnsY13EeKx8fAg1ZduZw" type="Sirius" element="_J3oJMI13EeKx8fAg1ZduZw" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_J457kI13EeKx8fAg1ZduZw" type="2002" element="_J3oJMY13EeKx8fAg1ZduZw">
+            <children xmi:type="notation:Node" xmi:id="_J48-4I13EeKx8fAg1ZduZw" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_J5MPcI13EeKx8fAg1ZduZw" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_J5OEoI13EeKx8fAg1ZduZw" type="3008" element="_J3oJN413EeKx8fAg1ZduZw">
+                <children xmi:type="notation:Node" xmi:id="_J5OrsI13EeKx8fAg1ZduZw" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_J5Qg4I13EeKx8fAg1ZduZw" type="7002">
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_J5RH8I13EeKx8fAg1ZduZw"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_J5RH8Y13EeKx8fAg1ZduZw"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_J5OEoY13EeKx8fAg1ZduZw" fontName="Segoe UI" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J5OEoo13EeKx8fAg1ZduZw" x="30" y="30"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_J5RH8o13EeKx8fAg1ZduZw" type="3008" element="_J3oJPY13EeKx8fAg1ZduZw">
+                <children xmi:type="notation:Node" xmi:id="_J5RvAI13EeKx8fAg1ZduZw" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_J5RvAY13EeKx8fAg1ZduZw" type="7002">
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_J5RvAo13EeKx8fAg1ZduZw"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_J5RvA413EeKx8fAg1ZduZw"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_J5RH8413EeKx8fAg1ZduZw" fontName="Segoe UI" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J5RH9I13EeKx8fAg1ZduZw" x="210" y="30"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_J5MPcY13EeKx8fAg1ZduZw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_J5MPco13EeKx8fAg1ZduZw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_J457kY13EeKx8fAg1ZduZw" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_J457ko13EeKx8fAg1ZduZw" x="390" y="230"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_J4nnso13EeKx8fAg1ZduZw"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_J3oJMY13EeKx8fAg1ZduZw">
+        <target xmi:type="ecore:EPackage" href="testBorderedCreationResize.ecore#/"/>
+        <semanticElements xmi:type="ecore:EPackage" href="testBorderedCreationResize.ecore#/"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_J3oJMo13EeKx8fAg1ZduZw">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J3oJM413EeKx8fAg1ZduZw"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="testBorderedCreationResize.odesign#//@ownedViewpoints[name='testBorderedCreationResize']/@ownedRepresentations[name='testBorderedCreationResize']/@defaultLayer/@containerMappings[name='package']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_J3oJNI13EeKx8fAg1ZduZw"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_J3oJNY13EeKx8fAg1ZduZw" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_J3oJNo13EeKx8fAg1ZduZw" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="testBorderedCreationResize.odesign#//@ownedViewpoints[name='testBorderedCreationResize']/@ownedRepresentations[name='testBorderedCreationResize']/@defaultLayer/@containerMappings[name='package']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_J3oJN413EeKx8fAg1ZduZw" name="Test">
+          <target xmi:type="ecore:EClass" href="testBorderedCreationResize.ecore#//Test"/>
+          <semanticElements xmi:type="ecore:EClass" href="testBorderedCreationResize.ecore#//Test"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_J3oJOI13EeKx8fAg1ZduZw">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J3oJOY13EeKx8fAg1ZduZw"/>
+            <description xmi:type="style:FlatContainerStyleDescription" href="testBorderedCreationResize.odesign#//@ownedViewpoints[name='testBorderedCreationResize']/@ownedRepresentations[name='testBorderedCreationResize']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='class']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_J3oJOo13EeKx8fAg1ZduZw"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_J3oJO413EeKx8fAg1ZduZw" red="194" green="239" blue="255"/>
+            <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_J3oJPI13EeKx8fAg1ZduZw" red="209" green="209" blue="209"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="testBorderedCreationResize.odesign#//@ownedViewpoints[name='testBorderedCreationResize']/@ownedRepresentations[name='testBorderedCreationResize']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='class']"/>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_J3oJPY13EeKx8fAg1ZduZw" name="testPackage">
+          <target xmi:type="ecore:EPackage" href="testBorderedCreationResize.ecore#//testPackage"/>
+          <semanticElements xmi:type="ecore:EPackage" href="testBorderedCreationResize.ecore#//testPackage"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_J3oJPo13EeKx8fAg1ZduZw">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_J3oJP413EeKx8fAg1ZduZw"/>
+            <description xmi:type="style:FlatContainerStyleDescription" href="testBorderedCreationResize.odesign#//@ownedViewpoints[name='testBorderedCreationResize']/@ownedRepresentations[name='testBorderedCreationResize']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='packages']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_J3oJQI13EeKx8fAg1ZduZw"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_J3oJQY13EeKx8fAg1ZduZw" red="255" green="255" blue="255"/>
+            <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_J3oJQo13EeKx8fAg1ZduZw" red="255" green="245" blue="181"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="testBorderedCreationResize.odesign#//@ownedViewpoints[name='testBorderedCreationResize']/@ownedRepresentations[name='testBorderedCreationResize']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='packages']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="testBorderedCreationResize.odesign#//@ownedViewpoints[name='testBorderedCreationResize']/@ownedRepresentations[name='testBorderedCreationResize']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_J3oJQ413EeKx8fAg1ZduZw"/>
+      <activatedLayers xmi:type="description_1:Layer" href="testBorderedCreationResize.odesign#//@ownedViewpoints[name='testBorderedCreationResize']/@ownedRepresentations[name='testBorderedCreationResize']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="testBorderedCreationResize.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="testBorderedCreationResize.odesign#//@ownedViewpoints[name='testBorderedCreationResize']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="MigrationCCETarget" version="8.0.0">
+  <ownedViewpoints name="MigrationCCETarget" modelFileExtension="uml">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="MigrationCCE" domainClass="Package">
+      <defaultLayer name="layer">
+        <nodeMappings name="MigrationCCEClassMapping" semanticCandidatesExpression="feature:eAllContents" domainClass="Class">
+          <style xsi:type="style:SquareDescription" sizeComputationExpression="5">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

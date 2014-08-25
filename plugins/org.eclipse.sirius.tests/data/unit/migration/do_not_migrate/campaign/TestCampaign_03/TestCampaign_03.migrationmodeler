@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<migrationmodeler:TestCase xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:migrationmodeler="http://www.eclipse.org/sirius/tests/sample/migrationmodeler" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0">
+  <representations xsi:type="migrationmodeler:Diagram" name="1">
+    <nodes id="A">
+      <layout x="385" y="147" width="60" height="60"/>
+      <ownedStyle xsi:type="viewpoint:Square">
+        <color red="194" green="239" blue="255"/>
+      </ownedStyle>
+    </nodes>
+    <filters id="Test Filter"/>
+    <layers id="Test Layer"/>
+  </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="2">
+    <containers id="A">
+      <layout x="381" y="135" width="150" height="70"/>
+      <ownedStyle xsi:type="viewpoint:FlatContainerStyle" backgroundStyle="GradientTopToBottom">
+        <backgroundColor red="255" green="255" blue="255"/>
+        <foregroundColor red="209" green="209" blue="209"/>
+      </ownedStyle>
+    </containers>
+    <filters id="Test Filter"/>
+    <layers id="Test Layer"/>
+  </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="3">
+    <containers id="A" pinned="true">
+      <layout x="330" y="185" width="150" height="70"/>
+      <elements xsi:type="migrationmodeler:Bordered" id="B">
+        <layout x="470" y="211" width="30" height="30"/>
+        <ownedStyle xsi:type="viewpoint:Square">
+          <color red="255" green="245" blue="181"/>
+        </ownedStyle>
+      </elements>
+      <ownedStyle xsi:type="viewpoint:FlatContainerStyle" backgroundStyle="GradientTopToBottom">
+        <backgroundColor red="255" green="255" blue="255"/>
+        <foregroundColor red="209" green="209" blue="209"/>
+      </ownedStyle>
+    </containers>
+    <filters id="Test Filter"/>
+    <layers id="Test Layer"/>
+  </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="4">
+    <containers id="A">
+      <layout x="395" y="153" width="213" height="145"/>
+      <elements xsi:type="migrationmodeler:Node" id="B">
+        <layout x="30" y="31" width="60" height="60"/>
+        <ownedStyle xsi:type="viewpoint:Square">
+          <color red="194" green="239" blue="255"/>
+        </ownedStyle>
+      </elements>
+      <ownedStyle xsi:type="viewpoint:FlatContainerStyle" backgroundStyle="GradientTopToBottom">
+        <backgroundColor red="255" green="255" blue="255"/>
+        <foregroundColor red="209" green="209" blue="209"/>
+      </ownedStyle>
+    </containers>
+    <filters id="Test Filter"/>
+    <layers id="Test Layer"/>
+  </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="5">
+    <containers id="A" pinned="true">
+      <layout x="335" y="140" width="293" height="173"/>
+      <elements xsi:type="migrationmodeler:Container" id="B" pinned="true">
+        <layout x="70" y="49" width="150" height="70"/>
+        <ownedStyle xsi:type="viewpoint:FlatContainerStyle" backgroundStyle="GradientTopToBottom">
+          <backgroundColor red="255" green="255" blue="255"/>
+          <foregroundColor red="209" green="209" blue="209"/>
+        </ownedStyle>
+      </elements>
+      <ownedStyle xsi:type="viewpoint:FlatContainerStyle" backgroundStyle="GradientTopToBottom">
+        <backgroundColor red="255" green="255" blue="255"/>
+        <foregroundColor red="209" green="209" blue="209"/>
+      </ownedStyle>
+    </containers>
+    <filters id="Test Filter"/>
+    <layers id="Test Layer"/>
+  </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="6">
+    <nodes id="A">
+      <layout x="278" y="205" width="60" height="60"/>
+      <ownedStyle xsi:type="viewpoint:Square">
+        <color red="194" green="239" blue="255"/>
+      </ownedStyle>
+    </nodes>
+    <nodes id="B" pinned="true">
+      <layout x="565" y="195" width="60" height="60"/>
+      <ownedStyle xsi:type="viewpoint:Square">
+        <color red="194" green="239" blue="255"/>
+      </ownedStyle>
+    </nodes>
+    <edges id="ab" source="//@representations.5/@nodes.0" target="//@representations.5/@nodes.1">
+      <layout x="323" y="196" width="258" height="56"/>
+      <bendpoints x="338" y="228"/>
+      <bendpoints x="565" y="228"/>
+      <ownedStyle>
+        <color red="136" green="136" blue="136"/>
+      </ownedStyle>
+    </edges>
+    <filters id="Test Filter"/>
+    <layers id="Test Layer"/>
+  </representations>
+</migrationmodeler:TestCase>

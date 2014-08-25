@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="VP926" version="8.0.0">
+  <ownedViewpoints name="V926">
+    <ownedRepresentations xsi:type="description_1:TreeDescription" name="Tree With DnD" domainClass="Company">
+      <subItemMappings name="RichDepartment" domainClass="RichDepartment" semanticCandidatesExpression="&lt;%eAllContents.filter(&quot;RichDepartment&quot;)%>">
+        <defaultStyle>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+        <subItemMappings name="Rich Employee" domainClass="Employee" semanticCandidatesExpression="&lt;%eAllContents.filter(&quot;Employee&quot;)%>">
+          <defaultStyle>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </defaultStyle>
+          <directEdit mapping="//@ownedViewpoints[name='V926']/@ownedRepresentations[name='Tree%20With%20DnD']/@subItemMappings[name='RichDepartment']/@subItemMappings[name='Rich%20Employee']">
+            <firstModelOperation xsi:type="tool:SetValue" featureName="name" valueExpression="_COPY&lt;%$0%>"/>
+            <mask mask="{0}"/>
+            <element name="element"/>
+            <root name="root"/>
+          </directEdit>
+          <dropTools name="Drag" precondition="&lt;%$element.filter(&quot;Employee&quot;) &amp;&amp; $oldContainer.eContainer.filter(&quot;RichDepartment&quot;)%>" forceRefresh="true">
+            <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element">
+              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$newContainer.name%>"/>
+            </firstModelOperation>
+            <oldContainer name="oldContainer"/>
+            <newContainer name="newContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newViewContainer"/>
+            <precedingSiblings name="precedingSiblings" documentation="The list of all the preceding siblings in a Drag and Drop operation"/>
+          </dropTools>
+        </subItemMappings>
+        <dropTools name="From Poor To Rich Department" precondition="&lt;%$element.filter(&quot;Employee&quot;) &amp;&amp; $element.eContainer.filter(&quot;PoorDepartment&quot;)%>" forceRefresh="true" dragSource="PROJECT_EXPLORER">
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element">
+            <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="var:newContainer" featureName="employees"/>
+            <subModelOperations xsi:type="tool:SetValue" featureName="wage" valueExpression="&lt;%self.wage * 2 %>"/>
+          </firstModelOperation>
+          <oldContainer name="oldContainer"/>
+          <newContainer name="newContainer"/>
+          <element name="element"/>
+          <newViewContainer name="newViewContainer"/>
+          <precedingSiblings name="precedingSiblings" documentation="The list of all the preceding siblings in a Drag and Drop operation"/>
+        </dropTools>
+        <dropTools name="From Rich To Rich Department" precondition="&lt;%current.filter(&quot;Employee&quot;) &amp;&amp; current.eContainer.filter(&quot;RichDepartment&quot;)%>" forceRefresh="true" dragSource="BOTH">
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element">
+            <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="var:newContainer" featureName="employees"/>
+            <subModelOperations xsi:type="tool:SetValue" featureName="wage" valueExpression="&lt;%$element.wage + 500 %>"/>
+          </firstModelOperation>
+          <oldContainer name="oldContainer"/>
+          <newContainer name="newContainer"/>
+          <element name="element"/>
+          <newViewContainer name="newViewContainer"/>
+          <precedingSiblings name="precedingSiblings" documentation="The list of all the preceding siblings in a Drag and Drop operation"/>
+        </dropTools>
+      </subItemMappings>
+      <subItemMappings name="Poor Department" domainClass="PoorDepartment" semanticCandidatesExpression="&lt;%eAllContents.filter(&quot;PoorDepartment&quot;)%>">
+        <defaultStyle>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+        <subItemMappings name="Poor Employee" domainClass="Employee" semanticCandidatesExpression="&lt;%eAllContents.filter(&quot;Employee&quot;)%>">
+          <defaultStyle>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </defaultStyle>
+        </subItemMappings>
+        <dropTools name="From Poor To Poor Department" precondition="&lt;%$element.filter(&quot;Employee&quot;) &amp;&amp; $element.eContainer.filter(&quot;PoorDepartment&quot;) &amp;&amp;  self.target.name != &quot;employe3&quot;%>" forceRefresh="true" dragSource="BOTH">
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element">
+            <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="var:newContainer" featureName="employees"/>
+            <subModelOperations xsi:type="tool:SetValue" featureName="wage" valueExpression="&lt;%self.wage - 10%>"/>
+          </firstModelOperation>
+          <oldContainer name="oldContainer"/>
+          <newContainer name="newContainer"/>
+          <element name="element"/>
+          <newViewContainer name="newViewContainer"/>
+          <precedingSiblings name="precedingSiblings" documentation="The list of all the preceding siblings in a Drag and Drop operation"/>
+        </dropTools>
+        <dropTools name="From Rich To Poor Department" precondition="&lt;%$element.filter(&quot;Employee&quot;) &amp;&amp; $element.eContainer.filter(&quot;RichDepartment&quot;)%>" forceRefresh="true" dragSource="BOTH">
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element">
+            <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="var:newContainer" featureName="employees"/>
+            <subModelOperations xsi:type="tool:SetValue" featureName="wage" valueExpression="&lt;%$element.wage /2 %>"/>
+          </firstModelOperation>
+          <oldContainer name="oldContainer"/>
+          <newContainer name="newContainer"/>
+          <element name="element"/>
+          <newViewContainer name="newViewContainer"/>
+          <precedingSiblings name="precedingSiblings" documentation="The list of all the preceding siblings in a Drag and Drop operation"/>
+        </dropTools>
+      </subItemMappings>
+      <dropTools name=" To Company" precondition="&lt;%$element.filter(&quot;Department&quot;)%>" forceRefresh="true" dragSource="BOTH">
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element">
+          <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="var:newContainer" featureName="departments"/>
+          <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$element.name%>_DROPPED"/>
+        </firstModelOperation>
+        <oldContainer name="oldContainer"/>
+        <newContainer name="newContainer"/>
+        <element name="element"/>
+        <newViewContainer name="newViewContainer"/>
+        <precedingSiblings name="precedingSiblings" documentation="The list of all the preceding siblings in a Drag and Drop operation"/>
+      </dropTools>
+    </ownedRepresentations>
+  </ownedViewpoints>
+  <userColorsPalettes name="Ecore Palette">
+    <entries xsi:type="description:InterpolatedColor" name="Size Based Color"/>
+    <entries xsi:type="description:UserFixedColor" red="250" green="190" blue="190" name="MomentIntervalColor"/>
+    <entries xsi:type="description:UserFixedColor" red="250" green="240" blue="180" name="RoleColor"/>
+    <entries xsi:type="description:UserFixedColor" red="180" green="230" blue="180" name="PartyPlaceThingColor"/>
+    <entries xsi:type="description:UserFixedColor" red="180" green="200" blue="210" name="DescriptionColor"/>
+  </userColorsPalettes>
+</description:Group>

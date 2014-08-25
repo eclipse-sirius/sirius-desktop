@@ -1,0 +1,899 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_G_4Q8SWMEeGvpuktoqN63w" selectedViews="_HfUmACWMEeGvpuktoqN63w" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="VP-2564.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_HfUmACWMEeGvpuktoqN63w" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_JFergCWMEeGvpuktoqN63w" name="new VP-2564_Diagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_JFyNgCWMEeGvpuktoqN63w" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_JFyNgSWMEeGvpuktoqN63w" type="Sirius" element="_JFergCWMEeGvpuktoqN63w" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_JPgxQCWMEeGvpuktoqN63w" type="2001" element="_JMlZECWMEeGvpuktoqN63w">
+            <children xmi:type="notation:Node" xmi:id="_JPkboCWMEeGvpuktoqN63w" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_JPkboSWMEeGvpuktoqN63w" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JQCVsCWMEeGvpuktoqN63w" type="3003" element="_JMpqgCWMEeGvpuktoqN63w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_JQCVsSWMEeGvpuktoqN63w" fontName="Ubuntu"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQCVsiWMEeGvpuktoqN63w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_JPgxQSWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JPgxQiWMEeGvpuktoqN63w" x="1315" y="190" width="86" height="51"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_JPlpwCWMEeGvpuktoqN63w" type="2001" element="_JMrfsCWMEeGvpuktoqN63w">
+            <children xmi:type="notation:Node" xmi:id="_JPxP8CWMEeGvpuktoqN63w" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_JPxP8SWMEeGvpuktoqN63w" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JQC8wCWMEeGvpuktoqN63w" type="3003" element="_JMsGwCWMEeGvpuktoqN63w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_JQC8wSWMEeGvpuktoqN63w" fontName="Ubuntu"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQDj0CWMEeGvpuktoqN63w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_JPlpwSWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JPlpwiWMEeGvpuktoqN63w" x="115" y="145" width="81" height="51"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_JPx3ACWMEeGvpuktoqN63w" type="2001" element="_JMwYMCWMEeGvpuktoqN63w">
+            <children xmi:type="notation:Node" xmi:id="_JPyeECWMEeGvpuktoqN63w" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_JPyeESWMEeGvpuktoqN63w" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JQEK4CWMEeGvpuktoqN63w" type="3001" element="_JM0poCWMEeGvpuktoqN63w">
+              <children xmi:type="notation:Node" xmi:id="_JQFZACWMEeGvpuktoqN63w" type="5001">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_JQFZASWMEeGvpuktoqN63w" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_JQS0YCWMEeGvpuktoqN63w" type="3003" element="_JM1QsCWMEeGvpuktoqN63w">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_JQS0YSWMEeGvpuktoqN63w" fontName="Ubuntu"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQS0YiWMEeGvpuktoqN63w"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_JQTbcCWMEeGvpuktoqN63w" type="3001" element="_JM5iICWMEeGvpuktoqN63w">
+                <children xmi:type="notation:Node" xmi:id="_JQUCgCWMEeGvpuktoqN63w" type="5001">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_JQUCgSWMEeGvpuktoqN63w" y="5"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_JQXs4CWMEeGvpuktoqN63w" type="3002" element="_JM6JMCWMEeGvpuktoqN63w">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_JQXs4SWMEeGvpuktoqN63w" fontName="Ubuntu"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQXs4iWMEeGvpuktoqN63w"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_JQTbcSWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQTbciWMEeGvpuktoqN63w" x="65" y="42" width="93" height="33"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_JQEK4SWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQEK4iWMEeGvpuktoqN63w" x="188" y="188" width="73" height="118"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JQQYICWMEeGvpuktoqN63w" type="3001" element="_JM2e0CWMEeGvpuktoqN63w">
+              <children xmi:type="notation:Node" xmi:id="_JQRmQCWMEeGvpuktoqN63w" type="5001">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_JQRmQSWMEeGvpuktoqN63w" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_JQYT8CWMEeGvpuktoqN63w" type="3003" element="_JM3F4CWMEeGvpuktoqN63w">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_JQYT8SWMEeGvpuktoqN63w" fontName="Ubuntu"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQYT8iWMEeGvpuktoqN63w"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_JQY7ACWMEeGvpuktoqN63w" type="3001" element="_JM8lcCWMEeGvpuktoqN63w">
+                <children xmi:type="notation:Node" xmi:id="_JQZiECWMEeGvpuktoqN63w" type="5001">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_JQZiESWMEeGvpuktoqN63w" y="5"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_JQaJICWMEeGvpuktoqN63w" type="3002" element="_JM9MgCWMEeGvpuktoqN63w">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_JQaJISWMEeGvpuktoqN63w" fontName="Ubuntu"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQaJIiWMEeGvpuktoqN63w"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_JQY7ASWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQY7AiWMEeGvpuktoqN63w" x="-110" y="50" width="118" height="33"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_JQQYISWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQQYIiWMEeGvpuktoqN63w" x="-60" y="185" width="68" height="121"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JQSNUCWMEeGvpuktoqN63w" type="3003" element="_JMxmUCWMEeGvpuktoqN63w">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_JQSNUSWMEeGvpuktoqN63w" fontName="Ubuntu"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQSNUiWMEeGvpuktoqN63w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_JPx3ASWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JPx3AiWMEeGvpuktoqN63w" x="240" y="565" width="196" height="466"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_JPzFICWMEeGvpuktoqN63w" type="2002" element="_JM_owCWMEeGvpuktoqN63w">
+            <children xmi:type="notation:Node" xmi:id="_JP0TQCWMEeGvpuktoqN63w" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_JP06UCWMEeGvpuktoqN63w" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_JP06USWMEeGvpuktoqN63w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_JP06UiWMEeGvpuktoqN63w"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JQbXQCWMEeGvpuktoqN63w" type="3012" element="_JNKA0CWMEeGvpuktoqN63w">
+              <children xmi:type="notation:Node" xmi:id="_JQclYCWMEeGvpuktoqN63w" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_JQclYSWMEeGvpuktoqN63w" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_JQhd4CWMEeGvpuktoqN63w" type="3017" element="_JNKn4CWMEeGvpuktoqN63w">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_JQhd4SWMEeGvpuktoqN63w" fontName="Ubuntu"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQhd4iWMEeGvpuktoqN63w"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_JQbXQSWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQbXQiWMEeGvpuktoqN63w" x="100" y="-45" width="56" height="53"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_JPzFISWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JPzFIiWMEeGvpuktoqN63w" x="255" y="150" width="253"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_JP1hYCWMEeGvpuktoqN63w" type="2002" element="_JNFvYCWMEeGvpuktoqN63w">
+            <children xmi:type="notation:Node" xmi:id="_JP2IcCWMEeGvpuktoqN63w" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_JP2IcSWMEeGvpuktoqN63w" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_JP2IciWMEeGvpuktoqN63w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_JP2IcyWMEeGvpuktoqN63w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_JP1hYSWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JP1hYiWMEeGvpuktoqN63w" x="785" y="1355"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_JP2IdCWMEeGvpuktoqN63w" type="2002" element="_JNG9gCWMEeGvpuktoqN63w">
+            <children xmi:type="notation:Node" xmi:id="_JP3WkCWMEeGvpuktoqN63w" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_JP3WkSWMEeGvpuktoqN63w" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_JP3WkiWMEeGvpuktoqN63w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_JP3WkyWMEeGvpuktoqN63w"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JQisACWMEeGvpuktoqN63w" type="3012" element="_JNMdECWMEeGvpuktoqN63w">
+              <children xmi:type="notation:Node" xmi:id="_JQjTECWMEeGvpuktoqN63w" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_JQjTESWMEeGvpuktoqN63w" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_JQj6ICWMEeGvpuktoqN63w" type="3017" element="_JNNEICWMEeGvpuktoqN63w">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_JQj6ISWMEeGvpuktoqN63w" fontName="Ubuntu"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQj6IiWMEeGvpuktoqN63w"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_JQisASWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQisAiWMEeGvpuktoqN63w" x="95" y="-25" width="71" height="33"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_JP2vgCWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JP2vgSWMEeGvpuktoqN63w" x="1410" y="305" width="273"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_JP3WlCWMEeGvpuktoqN63w" type="2002" element="_JNILoCWMEeGvpuktoqN63w">
+            <children xmi:type="notation:Node" xmi:id="_JP4ksCWMEeGvpuktoqN63w" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_JP4ksSWMEeGvpuktoqN63w" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_JP4ksiWMEeGvpuktoqN63w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_JP4ksyWMEeGvpuktoqN63w"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JQkhMCWMEeGvpuktoqN63w" type="3012" element="_JNO5UCWMEeGvpuktoqN63w">
+              <children xmi:type="notation:Node" xmi:id="_JQlIQCWMEeGvpuktoqN63w" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_JQlIQSWMEeGvpuktoqN63w" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_JQlvUCWMEeGvpuktoqN63w" type="3017" element="_JNPgYCWMEeGvpuktoqN63w">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_JQlvUSWMEeGvpuktoqN63w" fontName="Ubuntu"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQlvUiWMEeGvpuktoqN63w"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_JQkhMSWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQkhMiWMEeGvpuktoqN63w" x="90" y="96" width="61" height="46"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_JP3WlSWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JP3WliWMEeGvpuktoqN63w" x="1415" y="25" width="235"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_JP5LwCWMEeGvpuktoqN63w" type="2002" element="_JNQugCWMEeGvpuktoqN63w">
+            <children xmi:type="notation:Node" xmi:id="_JP6Z4CWMEeGvpuktoqN63w" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_JP6Z4SWMEeGvpuktoqN63w" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_JQm9cCWMEeGvpuktoqN63w" type="3008" element="_JNYqUCWMEeGvpuktoqN63w">
+                <children xmi:type="notation:Node" xmi:id="_JQoLkCWMEeGvpuktoqN63w" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_JQoLkSWMEeGvpuktoqN63w" type="7002">
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_JQoLkiWMEeGvpuktoqN63w"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_JQoyoCWMEeGvpuktoqN63w"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_JQm9cSWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQm9ciWMEeGvpuktoqN63w" x="20" y="24"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_JQsdACWMEeGvpuktoqN63w" type="3007" element="_JNh0QCWMEeGvpuktoqN63w">
+                <children xmi:type="notation:Node" xmi:id="_JQuSMCWMEeGvpuktoqN63w" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_JQuSMSWMEeGvpuktoqN63w" y="5"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_JQvgUCWMEeGvpuktoqN63w" type="3003" element="_JNibUCWMEeGvpuktoqN63w">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_JQvgUSWMEeGvpuktoqN63w" fontName="Ubuntu"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQvgUiWMEeGvpuktoqN63w"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_JQsdASWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQsdAiWMEeGvpuktoqN63w" x="210" y="30" width="61" height="60"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_JP6Z4iWMEeGvpuktoqN63w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_JP6Z4yWMEeGvpuktoqN63w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_JP5LwSWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JP5LwiWMEeGvpuktoqN63w" x="575" y="130" width="303" height="138"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_JP6Z5CWMEeGvpuktoqN63w" type="2002" element="_JNSjsCWMEeGvpuktoqN63w">
+            <children xmi:type="notation:Node" xmi:id="_JP7oACWMEeGvpuktoqN63w" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_JP7oASWMEeGvpuktoqN63w" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_JQwHYCWMEeGvpuktoqN63w" type="3008" element="_JNqXICWMEeGvpuktoqN63w">
+                <children xmi:type="notation:Node" xmi:id="_JQwucCWMEeGvpuktoqN63w" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_JQwucSWMEeGvpuktoqN63w" type="7002">
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_JQwuciWMEeGvpuktoqN63w"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_JQwucyWMEeGvpuktoqN63w"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_JQyjoyWMEeGvpuktoqN63w" type="3012" element="_JNuokCWMEeGvpuktoqN63w">
+                  <children xmi:type="notation:Node" xmi:id="_JQzKsCWMEeGvpuktoqN63w" type="5010">
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_JQzxwCWMEeGvpuktoqN63w" y="5"/>
+                  </children>
+                  <children xmi:type="notation:Node" xmi:id="_JQzxwSWMEeGvpuktoqN63w" type="3017" element="_JNvPoCWMEeGvpuktoqN63w">
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_JQzxwiWMEeGvpuktoqN63w" fontName="Ubuntu"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQ0Y0CWMEeGvpuktoqN63w"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_JQyjpCWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQyjpSWMEeGvpuktoqN63w" x="100" y="-35" width="63" height="43"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_JQwHYSWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQwHYiWMEeGvpuktoqN63w" x="40" y="214" width="273"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_JQxVgCWMEeGvpuktoqN63w" type="3008" element="_JNszYCWMEeGvpuktoqN63w">
+                <children xmi:type="notation:Node" xmi:id="_JQx8kCWMEeGvpuktoqN63w" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_JQyjoCWMEeGvpuktoqN63w" type="7002">
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_JQyjoSWMEeGvpuktoqN63w"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_JQyjoiWMEeGvpuktoqN63w"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_JQ0_4CWMEeGvpuktoqN63w" type="3012" element="_JNxr4CWMEeGvpuktoqN63w">
+                  <children xmi:type="notation:Node" xmi:id="_JQ1m8CWMEeGvpuktoqN63w" type="5010">
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_JQ1m8SWMEeGvpuktoqN63w" y="5"/>
+                  </children>
+                  <children xmi:type="notation:Node" xmi:id="_JQ2OACWMEeGvpuktoqN63w" type="3017" element="_JNyS8CWMEeGvpuktoqN63w">
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_JQ2OASWMEeGvpuktoqN63w" fontName="Ubuntu"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQ2OAiWMEeGvpuktoqN63w"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_JQ0_4SWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQ0_4iWMEeGvpuktoqN63w" x="110" y="95" width="68" height="45"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_JQxVgSWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQxVgiWMEeGvpuktoqN63w" x="30" y="30" width="263"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_JP7oAiWMEeGvpuktoqN63w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_JP7oAyWMEeGvpuktoqN63w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_JP6Z5SWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JP6Z5iWMEeGvpuktoqN63w" x="910" y="175" width="348" height="328"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_JP7oBCWMEeGvpuktoqN63w" type="2002" element="_JNTx0CWMEeGvpuktoqN63w">
+            <children xmi:type="notation:Node" xmi:id="_JP8PECWMEeGvpuktoqN63w" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_JP82ICWMEeGvpuktoqN63w" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_JQ3cICWMEeGvpuktoqN63w" type="3009" element="_JOHqICWMEeGvpuktoqN63w">
+                <children xmi:type="notation:Node" xmi:id="_JQ4qQCWMEeGvpuktoqN63w" type="5004"/>
+                <children xmi:type="notation:Node" xmi:id="_JQ4qQSWMEeGvpuktoqN63w" type="7003">
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_JQ4qQiWMEeGvpuktoqN63w"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_JQ4qQyWMEeGvpuktoqN63w"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_JQ3cISWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQ3cIiWMEeGvpuktoqN63w" x="30" y="30"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_JP82ISWMEeGvpuktoqN63w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_JP82IiWMEeGvpuktoqN63w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_JP7oBSWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JP7oBiWMEeGvpuktoqN63w" x="1745" y="300"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_JP82IyWMEeGvpuktoqN63w" type="2002" element="_JNU_8CWMEeGvpuktoqN63w">
+            <children xmi:type="notation:Node" xmi:id="_JP9dMCWMEeGvpuktoqN63w" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_JP-EQCWMEeGvpuktoqN63w" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_JQ5RUCWMEeGvpuktoqN63w" type="3007" element="_JOVskCWMEeGvpuktoqN63w">
+                <children xmi:type="notation:Node" xmi:id="_JQ6fcCWMEeGvpuktoqN63w" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_JQ6fcSWMEeGvpuktoqN63w" y="5"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_JQ6fciWMEeGvpuktoqN63w" type="3003" element="_JOWToCWMEeGvpuktoqN63w">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_JQ6fcyWMEeGvpuktoqN63w" fontName="Ubuntu"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQ6fdCWMEeGvpuktoqN63w"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_JQ5RUSWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQ5RUiWMEeGvpuktoqN63w" x="30" y="24" width="81" height="36"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_JP-EQSWMEeGvpuktoqN63w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_JP-EQiWMEeGvpuktoqN63w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_JP82JCWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JP82JSWMEeGvpuktoqN63w" x="1775"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_JP-rUCWMEeGvpuktoqN63w" type="2003" element="_JOdoYCWMEeGvpuktoqN63w">
+            <children xmi:type="notation:Node" xmi:id="_JP_5cCWMEeGvpuktoqN63w" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_JQAggCWMEeGvpuktoqN63w" type="7004">
+              <children xmi:type="notation:Node" xmi:id="_JQ7tkCWMEeGvpuktoqN63w" type="3010" element="_JOgrsCWMEeGvpuktoqN63w">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_JQ7tkSWMEeGvpuktoqN63w"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_JQAggSWMEeGvpuktoqN63w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_JQAggiWMEeGvpuktoqN63w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_JP-rUSWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JP-rUiWMEeGvpuktoqN63w" x="1310" y="435" width="98" height="63"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_JQAggyWMEeGvpuktoqN63w" type="2003" element="_JOe2gCWMEeGvpuktoqN63w">
+            <children xmi:type="notation:Node" xmi:id="_JQBuoCWMEeGvpuktoqN63w" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_JQBuoSWMEeGvpuktoqN63w" type="7004">
+              <children xmi:type="notation:Node" xmi:id="_JQ8UoCWMEeGvpuktoqN63w" type="3010" element="_JOjH8CWMEeGvpuktoqN63w">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_JQ8UoSWMEeGvpuktoqN63w"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_JQ87sCWMEeGvpuktoqN63w" type="3010" element="_JOkWECWMEeGvpuktoqN63w">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_JQ87sSWMEeGvpuktoqN63w"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_JQBuoiWMEeGvpuktoqN63w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_JQBuoyWMEeGvpuktoqN63w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_JQAghCWMEeGvpuktoqN63w" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JQAghSWMEeGvpuktoqN63w" x="1045" y="35"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_JFyNgiWMEeGvpuktoqN63w"/>
+          <edges xmi:type="notation:Edge" xmi:id="_JRGFoCWMEeGvpuktoqN63w" type="4001" element="_JOy_kCWMEeGvpuktoqN63w" source="_JP-rUCWMEeGvpuktoqN63w" target="_JPgxQCWMEeGvpuktoqN63w">
+            <children xmi:type="notation:Node" xmi:id="_JRHTwCWMEeGvpuktoqN63w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JRHTwSWMEeGvpuktoqN63w" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JRH60CWMEeGvpuktoqN63w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JRH60SWMEeGvpuktoqN63w" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JRIh4CWMEeGvpuktoqN63w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JRJI8CWMEeGvpuktoqN63w" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_JRGFoSWMEeGvpuktoqN63w"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_JRGFoiWMEeGvpuktoqN63w" fontName="Ubuntu"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JRGFoyWMEeGvpuktoqN63w" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JRtwsCWMEeGvpuktoqN63w" id="(0.49056603773584906,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JRtwsSWMEeGvpuktoqN63w" id="(0.5,1.0)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_JRuXwCWMEeGvpuktoqN63w" type="4001" element="_JO00wCWMEeGvpuktoqN63w" source="_JQyjoyWMEeGvpuktoqN63w" target="_JQ0_4CWMEeGvpuktoqN63w">
+            <children xmi:type="notation:Node" xmi:id="_JRu-0CWMEeGvpuktoqN63w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JRu-0SWMEeGvpuktoqN63w" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JRu-0iWMEeGvpuktoqN63w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JRu-0yWMEeGvpuktoqN63w" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JRvl4CWMEeGvpuktoqN63w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JRvl4SWMEeGvpuktoqN63w" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_JRuXwSWMEeGvpuktoqN63w"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_JRuXwiWMEeGvpuktoqN63w" fontName="Ubuntu"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JRuXwyWMEeGvpuktoqN63w" points="[52, -23, 52, -35]$[52, 37, 52, 25]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JRvl4iWMEeGvpuktoqN63w" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JRvl4yWMEeGvpuktoqN63w" id="(0.5,0.5)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_JRwM8CWMEeGvpuktoqN63w" type="4001" element="_JO2p8CWMEeGvpuktoqN63w" source="_JQ3cICWMEeGvpuktoqN63w" target="_JQ5RUCWMEeGvpuktoqN63w">
+            <children xmi:type="notation:Node" xmi:id="_JRw0ACWMEeGvpuktoqN63w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JRw0ASWMEeGvpuktoqN63w" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JRw0AiWMEeGvpuktoqN63w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JRw0AyWMEeGvpuktoqN63w" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JRw0BCWMEeGvpuktoqN63w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JRw0BSWMEeGvpuktoqN63w" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_JRwM8SWMEeGvpuktoqN63w"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_JRwM8iWMEeGvpuktoqN63w" fontName="Ubuntu"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JRwM8yWMEeGvpuktoqN63w" points="[-1, -1, -1, -1]$[0, 0, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JRxbECWMEeGvpuktoqN63w" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JRxbESWMEeGvpuktoqN63w" id="(0.5,0.5)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_JRyCICWMEeGvpuktoqN63w" type="4001" element="_JO34ECWMEeGvpuktoqN63w" source="_JQ3cICWMEeGvpuktoqN63w" target="_JQkhMCWMEeGvpuktoqN63w">
+            <children xmi:type="notation:Node" xmi:id="_JRyCJCWMEeGvpuktoqN63w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JRypMCWMEeGvpuktoqN63w" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JRypMSWMEeGvpuktoqN63w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JRypMiWMEeGvpuktoqN63w" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JRypMyWMEeGvpuktoqN63w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JRypNCWMEeGvpuktoqN63w" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_JRyCISWMEeGvpuktoqN63w"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_JRyCIiWMEeGvpuktoqN63w" fontName="Ubuntu"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JRyCIyWMEeGvpuktoqN63w" points="[-1, -1, -1, -1]$[0, 0, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JRzQQCWMEeGvpuktoqN63w" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JRzQQSWMEeGvpuktoqN63w" id="(0.5,0.5)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_JRzQQiWMEeGvpuktoqN63w" type="4001" element="_JO5GMCWMEeGvpuktoqN63w" source="_JQisACWMEeGvpuktoqN63w" target="_JQ5RUCWMEeGvpuktoqN63w">
+            <children xmi:type="notation:Node" xmi:id="_JRz3UCWMEeGvpuktoqN63w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JRz3USWMEeGvpuktoqN63w" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JRz3UiWMEeGvpuktoqN63w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JR0eYCWMEeGvpuktoqN63w" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JR0eYSWMEeGvpuktoqN63w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JR0eYiWMEeGvpuktoqN63w" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_JRzQQyWMEeGvpuktoqN63w"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_JRzQRCWMEeGvpuktoqN63w" fontName="Ubuntu"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JRzQRSWMEeGvpuktoqN63w" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JR0eYyWMEeGvpuktoqN63w" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JR1FcCWMEeGvpuktoqN63w" id="(0.5,0.5)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_JR1FcSWMEeGvpuktoqN63w" type="4001" element="_JO6UUCWMEeGvpuktoqN63w" source="_JQisACWMEeGvpuktoqN63w" target="_JQkhMCWMEeGvpuktoqN63w">
+            <children xmi:type="notation:Node" xmi:id="_JR1sgCWMEeGvpuktoqN63w" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JR1sgSWMEeGvpuktoqN63w" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JR1sgiWMEeGvpuktoqN63w" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JR1sgyWMEeGvpuktoqN63w" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JR2TkCWMEeGvpuktoqN63w" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JR2TkSWMEeGvpuktoqN63w" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_JR1FciWMEeGvpuktoqN63w"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_JR1FcyWMEeGvpuktoqN63w" fontName="Ubuntu"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JR1FdCWMEeGvpuktoqN63w" points="[82, -76, 82, 60]$[82, -16, 82, 120]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JR2TkiWMEeGvpuktoqN63w" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JR2TkyWMEeGvpuktoqN63w" id="(0.5,0.5)"/>
+          </edges>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_JMlZECWMEeGvpuktoqN63w" name="Nodes2" incomingEdges="_JOy_kCWMEeGvpuktoqN63w" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="VP-2564.ecore#//Nodes2"/>
+        <semanticElements xmi:type="ecore:EClass" href="VP-2564.ecore#//Nodes2"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_JMpqgCWMEeGvpuktoqN63w" labelAlignment="RIGHT" labelPosition="node">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JMpqgSWMEeGvpuktoqN63w"/>
+          <description xmi:type="style:SquareDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@nodeMappings[name='Nodes']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JMpqgiWMEeGvpuktoqN63w"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_JMpqgyWMEeGvpuktoqN63w" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@nodeMappings[name='Nodes']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_JMrfsCWMEeGvpuktoqN63w" name="Nodes3" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="VP-2564.ecore#//Nodes3"/>
+        <semanticElements xmi:type="ecore:EClass" href="VP-2564.ecore#//Nodes3"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_JMsGwCWMEeGvpuktoqN63w" labelAlignment="RIGHT" labelPosition="node">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JMsGwSWMEeGvpuktoqN63w"/>
+          <description xmi:type="style:SquareDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@nodeMappings[name='Nodes']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JMsGwiWMEeGvpuktoqN63w"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_JMsGwyWMEeGvpuktoqN63w" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@nodeMappings[name='Nodes']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_JMwYMCWMEeGvpuktoqN63w" name="NodeWithAttributeAsBorderedNodes1" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="VP-2564.ecore#//NodeWithAttributeAsBorderedNodes1"/>
+        <semanticElements xmi:type="ecore:EClass" href="VP-2564.ecore#//NodeWithAttributeAsBorderedNodes1"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_JM0poCWMEeGvpuktoqN63w" name="att1" width="3" height="3" resizeKind="NSEW">
+          <target xmi:type="ecore:EAttribute" href="VP-2564.ecore#//NodeWithAttributeAsBorderedNodes1/att1"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="VP-2564.ecore#//NodeWithAttributeAsBorderedNodes1/att1"/>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_JM5iICWMEeGvpuktoqN63w" name="MyDataType" width="3" height="3" resizeKind="NSEW">
+            <target xmi:type="ecore:EDataType" href="VP-2564.ecore#//MyDataType"/>
+            <semanticElements xmi:type="ecore:EDataType" href="VP-2564.ecore#//MyDataType"/>
+            <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+            <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+            <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+            <ownedStyle xmi:type="diagram:Dot" xmi:id="_JM6JMCWMEeGvpuktoqN63w" labelAlignment="RIGHT" labelPosition="node">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JM6JMSWMEeGvpuktoqN63w"/>
+              <description xmi:type="style:DotDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@nodeMappings[name='AbstractNodes']/@borderedNodeMappings[name='AttributeNodeMappingOfAbstractNodes']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfAbstractNodes']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JM6JMiWMEeGvpuktoqN63w"/>
+              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JM6JMyWMEeGvpuktoqN63w" red="173" green="127" blue="168"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@nodeMappings[name='AbstractNodes']/@borderedNodeMappings[name='AttributeNodeMappingOfAbstractNodes']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfAbstractNodes']"/>
+          </ownedBorderedNodes>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_JM1QsCWMEeGvpuktoqN63w" labelAlignment="RIGHT" labelPosition="node">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JM1QsSWMEeGvpuktoqN63w"/>
+            <description xmi:type="style:SquareDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@nodeMappings[name='AbstractNodes']/@borderedNodeMappings[name='AttributeNodeMappingOfAbstractNodes']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JM1QsiWMEeGvpuktoqN63w"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_JM1QsyWMEeGvpuktoqN63w" red="252" green="175" blue="62"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@nodeMappings[name='AbstractNodes']/@borderedNodeMappings[name='AttributeNodeMappingOfAbstractNodes']"/>
+        </ownedBorderedNodes>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_JM2e0CWMEeGvpuktoqN63w" name="att2" width="3" height="3" resizeKind="NSEW">
+          <target xmi:type="ecore:EAttribute" href="VP-2564.ecore#//NodeWithAttributeAsBorderedNodes1/att2"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="VP-2564.ecore#//NodeWithAttributeAsBorderedNodes1/att2"/>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_JM8lcCWMEeGvpuktoqN63w" name="MyDataType" width="3" height="3" resizeKind="NSEW">
+            <target xmi:type="ecore:EDataType" href="VP-2564.ecore#//MyDataType"/>
+            <semanticElements xmi:type="ecore:EDataType" href="VP-2564.ecore#//MyDataType"/>
+            <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+            <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+            <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+            <ownedStyle xmi:type="diagram:Dot" xmi:id="_JM9MgCWMEeGvpuktoqN63w" labelAlignment="RIGHT" labelPosition="node">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JM9MgSWMEeGvpuktoqN63w"/>
+              <description xmi:type="style:DotDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@nodeMappings[name='AbstractNodes']/@borderedNodeMappings[name='AttributeNodeMappingOfAbstractNodes']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfAbstractNodes']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JM9MgiWMEeGvpuktoqN63w"/>
+              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JM9MgyWMEeGvpuktoqN63w" red="173" green="127" blue="168"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@nodeMappings[name='AbstractNodes']/@borderedNodeMappings[name='AttributeNodeMappingOfAbstractNodes']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfAbstractNodes']"/>
+          </ownedBorderedNodes>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_JM3F4CWMEeGvpuktoqN63w" labelAlignment="RIGHT" labelPosition="node">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JM3F4SWMEeGvpuktoqN63w"/>
+            <description xmi:type="style:SquareDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@nodeMappings[name='AbstractNodes']/@borderedNodeMappings[name='AttributeNodeMappingOfAbstractNodes']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JM3F4iWMEeGvpuktoqN63w"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_JM3F4yWMEeGvpuktoqN63w" red="252" green="175" blue="62"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@nodeMappings[name='AbstractNodes']/@borderedNodeMappings[name='AttributeNodeMappingOfAbstractNodes']"/>
+        </ownedBorderedNodes>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_JMxmUCWMEeGvpuktoqN63w" labelAlignment="RIGHT" labelPosition="node">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JMxmUSWMEeGvpuktoqN63w"/>
+          <description xmi:type="style:SquareDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@nodeMappings[name='AbstractNodes']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JMxmUiWMEeGvpuktoqN63w"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_JMxmUyWMEeGvpuktoqN63w" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@nodeMappings[name='AbstractNodes']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_JM_owCWMEeGvpuktoqN63w" name="EPackage1">
+        <target xmi:type="ecore:EPackage" href="VP-2564.ecore#//EPackage1"/>
+        <semanticElements xmi:type="ecore:EPackage" href="VP-2564.ecore#//EPackage1"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_JNKA0CWMEeGvpuktoqN63w" name="EClass1" width="3" height="3" resizeKind="NSEW">
+          <target xmi:type="ecore:EClass" href="VP-2564.ecore#//EPackage1/EClass1"/>
+          <semanticElements xmi:type="ecore:EClass" href="VP-2564.ecore#//EPackage1/EClass1"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_JNKn4CWMEeGvpuktoqN63w" labelAlignment="RIGHT" labelPosition="node">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JNKn4SWMEeGvpuktoqN63w"/>
+            <description xmi:type="style:LozengeNodeDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingWithEClassAsBorderedNodeMapping']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JNKn4iWMEeGvpuktoqN63w"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_JNKn4yWMEeGvpuktoqN63w" red="136" green="136" blue="136"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingWithEClassAsBorderedNodeMapping']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping']"/>
+        </ownedBorderedNodes>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_JNAP0CWMEeGvpuktoqN63w" labelAlignment="RIGHT">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JNAP0SWMEeGvpuktoqN63w"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingWithEClassAsBorderedNodeMapping']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JNAP0iWMEeGvpuktoqN63w"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JNAP0yWMEeGvpuktoqN63w" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JNAP1CWMEeGvpuktoqN63w" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingWithEClassAsBorderedNodeMapping']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_JNFvYCWMEeGvpuktoqN63w" name="EPackage2">
+        <target xmi:type="ecore:EPackage" href="VP-2564.ecore#//EPackage2"/>
+        <semanticElements xmi:type="ecore:EPackage" href="VP-2564.ecore#//EPackage2"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_JNGWcCWMEeGvpuktoqN63w" labelAlignment="RIGHT">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JNGWcSWMEeGvpuktoqN63w"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingWithEClassAsBorderedNodeMapping']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JNGWciWMEeGvpuktoqN63w"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JNGWcyWMEeGvpuktoqN63w" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JNGWdCWMEeGvpuktoqN63w" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingWithEClassAsBorderedNodeMapping']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_JNG9gCWMEeGvpuktoqN63w" name="EPackage3">
+        <target xmi:type="ecore:EPackage" href="VP-2564.ecore#//EPackage3"/>
+        <semanticElements xmi:type="ecore:EPackage" href="VP-2564.ecore#//EPackage3"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_JNMdECWMEeGvpuktoqN63w" name="EClass31" outgoingEdges="_JO5GMCWMEeGvpuktoqN63w _JO6UUCWMEeGvpuktoqN63w" width="3" height="3" resizeKind="NSEW">
+          <target xmi:type="ecore:EClass" href="VP-2564.ecore#//EPackage3/EClass31"/>
+          <semanticElements xmi:type="ecore:EClass" href="VP-2564.ecore#//EPackage3/EClass31"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_JNNEICWMEeGvpuktoqN63w" labelAlignment="RIGHT" labelPosition="node">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JNNrMCWMEeGvpuktoqN63w"/>
+            <description xmi:type="style:LozengeNodeDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingWithEClassAsBorderedNodeMapping']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JNNrMSWMEeGvpuktoqN63w"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_JNNrMiWMEeGvpuktoqN63w" red="136" green="136" blue="136"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingWithEClassAsBorderedNodeMapping']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping']"/>
+        </ownedBorderedNodes>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_JNHkkCWMEeGvpuktoqN63w" labelAlignment="RIGHT">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JNHkkSWMEeGvpuktoqN63w"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingWithEClassAsBorderedNodeMapping']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JNHkkiWMEeGvpuktoqN63w"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JNHkkyWMEeGvpuktoqN63w" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JNHklCWMEeGvpuktoqN63w" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingWithEClassAsBorderedNodeMapping']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_JNILoCWMEeGvpuktoqN63w" name="EPackage4">
+        <target xmi:type="ecore:EPackage" href="VP-2564.ecore#//EPackage4"/>
+        <semanticElements xmi:type="ecore:EPackage" href="VP-2564.ecore#//EPackage4"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_JNO5UCWMEeGvpuktoqN63w" name="EClass41" incomingEdges="_JO34ECWMEeGvpuktoqN63w _JO6UUCWMEeGvpuktoqN63w" width="3" height="3" resizeKind="NSEW">
+          <target xmi:type="ecore:EClass" href="VP-2564.ecore#//EPackage4/EClass41"/>
+          <semanticElements xmi:type="ecore:EClass" href="VP-2564.ecore#//EPackage4/EClass41"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_JNPgYCWMEeGvpuktoqN63w" labelAlignment="RIGHT" labelPosition="node">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JNPgYSWMEeGvpuktoqN63w"/>
+            <description xmi:type="style:LozengeNodeDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingWithEClassAsBorderedNodeMapping']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JNPgYiWMEeGvpuktoqN63w"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_JNPgYyWMEeGvpuktoqN63w" red="136" green="136" blue="136"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingWithEClassAsBorderedNodeMapping']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping']"/>
+        </ownedBorderedNodes>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_JNIysCWMEeGvpuktoqN63w" labelAlignment="RIGHT">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JNIysSWMEeGvpuktoqN63w"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingWithEClassAsBorderedNodeMapping']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JNIysiWMEeGvpuktoqN63w"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JNIysyWMEeGvpuktoqN63w" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JNIytCWMEeGvpuktoqN63w" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingWithEClassAsBorderedNodeMapping']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_JNQugCWMEeGvpuktoqN63w" name="EPackage1">
+        <target xmi:type="ecore:EPackage" href="VP-2564.ecore#//EPackage1"/>
+        <semanticElements xmi:type="ecore:EPackage" href="VP-2564.ecore#//EPackage1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_JNRVkCWMEeGvpuktoqN63w" labelAlignment="RIGHT">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JNRVkSWMEeGvpuktoqN63w"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JNRVkiWMEeGvpuktoqN63w"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JNRVkyWMEeGvpuktoqN63w" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JNRVlCWMEeGvpuktoqN63w" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_JNYqUCWMEeGvpuktoqN63w" name="EPackage11">
+          <target xmi:type="ecore:EPackage" href="VP-2564.ecore#//EPackage1/EPackage11"/>
+          <semanticElements xmi:type="ecore:EPackage" href="VP-2564.ecore#//EPackage1/EPackage11"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_JNafgCWMEeGvpuktoqN63w" labelAlignment="RIGHT">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JNbGkCWMEeGvpuktoqN63w"/>
+            <description xmi:type="style:FlatContainerStyleDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JNbGkSWMEeGvpuktoqN63w"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JNbGkiWMEeGvpuktoqN63w" red="255" green="255" blue="255"/>
+            <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JNbGkyWMEeGvpuktoqN63w" red="209" green="209" blue="209"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']"/>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_JNh0QCWMEeGvpuktoqN63w" name="EClass1" width="3" height="3" resizeKind="NSEW">
+          <target xmi:type="ecore:EClass" href="VP-2564.ecore#//EPackage1/EClass1"/>
+          <semanticElements xmi:type="ecore:EClass" href="VP-2564.ecore#//EPackage1/EClass1"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_JNibUCWMEeGvpuktoqN63w" labelAlignment="RIGHT" labelPosition="node">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JNibUSWMEeGvpuktoqN63w"/>
+            <description xmi:type="style:SquareDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@nodeMappings[name='Nodes']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JNibUiWMEeGvpuktoqN63w"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_JNibUyWMEeGvpuktoqN63w" red="136" green="136" blue="136"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@nodeMappings[name='Nodes']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_JNSjsCWMEeGvpuktoqN63w" name="EPackage2">
+        <target xmi:type="ecore:EPackage" href="VP-2564.ecore#//EPackage2"/>
+        <semanticElements xmi:type="ecore:EPackage" href="VP-2564.ecore#//EPackage2"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_JNSjsSWMEeGvpuktoqN63w" labelAlignment="RIGHT">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JNTKwCWMEeGvpuktoqN63w"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JNTKwSWMEeGvpuktoqN63w"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JNTKwiWMEeGvpuktoqN63w" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JNTKwyWMEeGvpuktoqN63w" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_JNqXICWMEeGvpuktoqN63w" name="EPackage21">
+          <target xmi:type="ecore:EPackage" href="VP-2564.ecore#//EPackage2/EPackage21"/>
+          <semanticElements xmi:type="ecore:EPackage" href="VP-2564.ecore#//EPackage2/EPackage21"/>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_JNuokCWMEeGvpuktoqN63w" name="EClass211" outgoingEdges="_JO00wCWMEeGvpuktoqN63w" width="3" height="3" resizeKind="NSEW">
+            <target xmi:type="ecore:EClass" href="VP-2564.ecore#//EPackage2/EPackage21/EClass211"/>
+            <semanticElements xmi:type="ecore:EClass" href="VP-2564.ecore#//EPackage2/EPackage21/EClass211"/>
+            <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+            <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+            <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+            <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_JNvPoCWMEeGvpuktoqN63w" labelAlignment="RIGHT" labelPosition="node">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JNvPoSWMEeGvpuktoqN63w"/>
+              <description xmi:type="style:LozengeNodeDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JNvPoiWMEeGvpuktoqN63w"/>
+              <color xmi:type="viewpoint:RGBValues" xmi:id="_JNvPoyWMEeGvpuktoqN63w" red="136" green="136" blue="136"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping']"/>
+          </ownedBorderedNodes>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_JNsMUCWMEeGvpuktoqN63w" labelAlignment="RIGHT">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JNsMUSWMEeGvpuktoqN63w"/>
+            <description xmi:type="style:FlatContainerStyleDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JNsMUiWMEeGvpuktoqN63w"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JNsMUyWMEeGvpuktoqN63w" red="255" green="255" blue="255"/>
+            <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JNsMVCWMEeGvpuktoqN63w" red="209" green="209" blue="209"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']"/>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_JNszYCWMEeGvpuktoqN63w" name="EPackage22">
+          <target xmi:type="ecore:EPackage" href="VP-2564.ecore#//EPackage2/EPackage22"/>
+          <semanticElements xmi:type="ecore:EPackage" href="VP-2564.ecore#//EPackage2/EPackage22"/>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_JNxr4CWMEeGvpuktoqN63w" name="EClass221" incomingEdges="_JO00wCWMEeGvpuktoqN63w" width="3" height="3" resizeKind="NSEW">
+            <target xmi:type="ecore:EClass" href="VP-2564.ecore#//EPackage2/EPackage22/EClass221"/>
+            <semanticElements xmi:type="ecore:EClass" href="VP-2564.ecore#//EPackage2/EPackage22/EClass221"/>
+            <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+            <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+            <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+            <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_JNyS8CWMEeGvpuktoqN63w" labelAlignment="RIGHT" labelPosition="node">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JNyS8SWMEeGvpuktoqN63w"/>
+              <description xmi:type="style:LozengeNodeDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JNyS8iWMEeGvpuktoqN63w"/>
+              <color xmi:type="viewpoint:RGBValues" xmi:id="_JNyS8yWMEeGvpuktoqN63w" red="136" green="136" blue="136"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping']"/>
+          </ownedBorderedNodes>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_JNtacCWMEeGvpuktoqN63w" labelAlignment="RIGHT">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JNtacSWMEeGvpuktoqN63w"/>
+            <description xmi:type="style:FlatContainerStyleDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JNtaciWMEeGvpuktoqN63w"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JNtacyWMEeGvpuktoqN63w" red="255" green="255" blue="255"/>
+            <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JNtadCWMEeGvpuktoqN63w" red="209" green="209" blue="209"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_JNTx0CWMEeGvpuktoqN63w" name="EPackage3">
+        <target xmi:type="ecore:EPackage" href="VP-2564.ecore#//EPackage3"/>
+        <semanticElements xmi:type="ecore:EPackage" href="VP-2564.ecore#//EPackage3"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_JNUY4CWMEeGvpuktoqN63w" labelAlignment="RIGHT">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JNUY4SWMEeGvpuktoqN63w"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JNUY4iWMEeGvpuktoqN63w"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JNUY4yWMEeGvpuktoqN63w" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JNUY5CWMEeGvpuktoqN63w" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_JOHqICWMEeGvpuktoqN63w" name="EClass31" outgoingEdges="_JO2p8CWMEeGvpuktoqN63w _JO34ECWMEeGvpuktoqN63w">
+          <target xmi:type="ecore:EClass" href="VP-2564.ecore#//EPackage3/EClass31"/>
+          <semanticElements xmi:type="ecore:EClass" href="VP-2564.ecore#//EPackage3/EClass31"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_JOIRMCWMEeGvpuktoqN63w" labelAlignment="RIGHT">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JOIRMSWMEeGvpuktoqN63w"/>
+            <description xmi:type="style:FlatContainerStyleDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JOIRMiWMEeGvpuktoqN63w"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JOIRMyWMEeGvpuktoqN63w" red="255" green="255" blue="255"/>
+            <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JOIRNCWMEeGvpuktoqN63w" red="209" green="209" blue="209"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_JNU_8CWMEeGvpuktoqN63w" name="EPackage4">
+        <target xmi:type="ecore:EPackage" href="VP-2564.ecore#//EPackage4"/>
+        <semanticElements xmi:type="ecore:EPackage" href="VP-2564.ecore#//EPackage4"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_JNVnACWMEeGvpuktoqN63w" labelAlignment="RIGHT">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JNVnASWMEeGvpuktoqN63w"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JNVnAiWMEeGvpuktoqN63w"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JNVnAyWMEeGvpuktoqN63w" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JNVnBCWMEeGvpuktoqN63w" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']"/>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_JOVskCWMEeGvpuktoqN63w" name="EClass41" incomingEdges="_JO2p8CWMEeGvpuktoqN63w _JO5GMCWMEeGvpuktoqN63w" width="3" height="3" resizeKind="NSEW">
+          <target xmi:type="ecore:EClass" href="VP-2564.ecore#//EPackage4/EClass41"/>
+          <semanticElements xmi:type="ecore:EClass" href="VP-2564.ecore#//EPackage4/EClass41"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_JOWToCWMEeGvpuktoqN63w" labelAlignment="RIGHT" labelPosition="node">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JOWToSWMEeGvpuktoqN63w"/>
+            <description xmi:type="style:SquareDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@nodeMappings[name='Nodes']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JOWToiWMEeGvpuktoqN63w"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_JOWToyWMEeGvpuktoqN63w" red="136" green="136" blue="136"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@nodeMappings[name='Nodes']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_JOdoYCWMEeGvpuktoqN63w" name="Node1" outgoingEdges="_JOy_kCWMEeGvpuktoqN63w">
+        <target xmi:type="ecore:EClass" href="VP-2564.ecore#//Node1"/>
+        <semanticElements xmi:type="ecore:EClass" href="VP-2564.ecore#//Node1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_JOePcCWMEeGvpuktoqN63w" labelAlignment="RIGHT">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JOePcSWMEeGvpuktoqN63w"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JOePciWMEeGvpuktoqN63w"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JOePcyWMEeGvpuktoqN63w" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JOePdCWMEeGvpuktoqN63w" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']"/>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_JOgrsCWMEeGvpuktoqN63w" name="att1">
+          <target xmi:type="ecore:EAttribute" href="VP-2564.ecore#//Node1/att1"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="VP-2564.ecore#//Node1/att1"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_JOhSwCWMEeGvpuktoqN63w" labelAlignment="RIGHT" labelPosition="node">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JOhSwSWMEeGvpuktoqN63w"/>
+            <description xmi:type="style:SquareDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@subNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JOhSwiWMEeGvpuktoqN63w"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_JOhSwyWMEeGvpuktoqN63w" red="136" green="136" blue="136"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@subNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']"/>
+        </ownedElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_JOe2gCWMEeGvpuktoqN63w" name="NodeWithAttributeAsBorderedNodes1">
+        <target xmi:type="ecore:EClass" href="VP-2564.ecore#//NodeWithAttributeAsBorderedNodes1"/>
+        <semanticElements xmi:type="ecore:EClass" href="VP-2564.ecore#//NodeWithAttributeAsBorderedNodes1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_JOfdkCWMEeGvpuktoqN63w" labelAlignment="RIGHT">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JOfdkSWMEeGvpuktoqN63w"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JOfdkiWMEeGvpuktoqN63w"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JOfdkyWMEeGvpuktoqN63w" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JOfdlCWMEeGvpuktoqN63w" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']"/>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_JOjH8CWMEeGvpuktoqN63w" name="att1">
+          <target xmi:type="ecore:EAttribute" href="VP-2564.ecore#//NodeWithAttributeAsBorderedNodes1/att1"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="VP-2564.ecore#//NodeWithAttributeAsBorderedNodes1/att1"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_JOjH8SWMEeGvpuktoqN63w" labelAlignment="RIGHT" labelPosition="node">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JOjH8iWMEeGvpuktoqN63w"/>
+            <description xmi:type="style:SquareDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@subNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JOjH8yWMEeGvpuktoqN63w"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_JOjH9CWMEeGvpuktoqN63w" red="136" green="136" blue="136"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@subNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_JOkWECWMEeGvpuktoqN63w" name="att2">
+          <target xmi:type="ecore:EAttribute" href="VP-2564.ecore#//NodeWithAttributeAsBorderedNodes1/att2"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="VP-2564.ecore#//NodeWithAttributeAsBorderedNodes1/att2"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_JOk9ICWMEeGvpuktoqN63w" labelAlignment="RIGHT" labelPosition="node">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JOk9ISWMEeGvpuktoqN63w"/>
+            <description xmi:type="style:SquareDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@subNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JOk9IiWMEeGvpuktoqN63w"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_JOk9IyWMEeGvpuktoqN63w" red="136" green="136" blue="136"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@subNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']"/>
+        </ownedElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_JOy_kCWMEeGvpuktoqN63w" sourceNode="_JOdoYCWMEeGvpuktoqN63w" targetNode="_JMlZECWMEeGvpuktoqN63w">
+        <target xmi:type="ecore:EReference" href="VP-2564.ecore#//Node1/node2"/>
+        <semanticElements xmi:type="ecore:EReference" href="VP-2564.ecore#//Node1/node2"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_JO0NsCWMEeGvpuktoqN63w" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_JO0NsSWMEeGvpuktoqN63w" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_JO0NsiWMEeGvpuktoqN63w">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JO0NsyWMEeGvpuktoqN63w"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_JO00wCWMEeGvpuktoqN63w" sourceNode="_JNuokCWMEeGvpuktoqN63w" targetNode="_JNxr4CWMEeGvpuktoqN63w">
+        <target xmi:type="ecore:EReference" href="VP-2564.ecore#//EPackage2/EPackage21/EClass211/eClass221"/>
+        <semanticElements xmi:type="ecore:EReference" href="VP-2564.ecore#//EPackage2/EPackage21/EClass211/eClass221"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_JO1b0CWMEeGvpuktoqN63w" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_JO1b0SWMEeGvpuktoqN63w" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_JO1b0iWMEeGvpuktoqN63w">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JO1b0yWMEeGvpuktoqN63w"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_JO2p8CWMEeGvpuktoqN63w" sourceNode="_JOHqICWMEeGvpuktoqN63w" targetNode="_JOVskCWMEeGvpuktoqN63w">
+        <target xmi:type="ecore:EReference" href="VP-2564.ecore#//EPackage3/EClass31/eClass41"/>
+        <semanticElements xmi:type="ecore:EReference" href="VP-2564.ecore#//EPackage3/EClass31/eClass41"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_JO2p8SWMEeGvpuktoqN63w" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_JO2p8iWMEeGvpuktoqN63w" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_JO2p8yWMEeGvpuktoqN63w">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JO2p9CWMEeGvpuktoqN63w"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_JO34ECWMEeGvpuktoqN63w" sourceNode="_JOHqICWMEeGvpuktoqN63w" targetNode="_JNO5UCWMEeGvpuktoqN63w">
+        <target xmi:type="ecore:EReference" href="VP-2564.ecore#//EPackage3/EClass31/eClass41"/>
+        <semanticElements xmi:type="ecore:EReference" href="VP-2564.ecore#//EPackage3/EClass31/eClass41"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_JO34ESWMEeGvpuktoqN63w" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_JO34EiWMEeGvpuktoqN63w" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_JO34EyWMEeGvpuktoqN63w">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JO34FCWMEeGvpuktoqN63w"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_JO5GMCWMEeGvpuktoqN63w" sourceNode="_JNMdECWMEeGvpuktoqN63w" targetNode="_JOVskCWMEeGvpuktoqN63w">
+        <target xmi:type="ecore:EReference" href="VP-2564.ecore#//EPackage3/EClass31/eClass41"/>
+        <semanticElements xmi:type="ecore:EReference" href="VP-2564.ecore#//EPackage3/EClass31/eClass41"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_JO5GMSWMEeGvpuktoqN63w" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_JO5GMiWMEeGvpuktoqN63w" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_JO5tQCWMEeGvpuktoqN63w">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JO5tQSWMEeGvpuktoqN63w"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_JO6UUCWMEeGvpuktoqN63w" sourceNode="_JNMdECWMEeGvpuktoqN63w" targetNode="_JNO5UCWMEeGvpuktoqN63w">
+        <target xmi:type="ecore:EReference" href="VP-2564.ecore#//EPackage3/EClass31/eClass41"/>
+        <semanticElements xmi:type="ecore:EReference" href="VP-2564.ecore#//EPackage3/EClass31/eClass41"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_JO6UUSWMEeGvpuktoqN63w" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_JO6UUiWMEeGvpuktoqN63w" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_JO6UUyWMEeGvpuktoqN63w">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JO6UVCWMEeGvpuktoqN63w"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_JFfSkCWMEeGvpuktoqN63w"/>
+      <activatedLayers xmi:type="description_1:Layer" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']/@ownedRepresentations[name='VP-2564_Diagram']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="VP-2564.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="VP-2564.odesign#//@ownedViewpoints[name='VP-2564']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

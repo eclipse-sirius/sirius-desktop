@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Glossary</title>
+    <link type="text/css" rel="stylesheet" 
+    	href="/help/topic/org.eclipse.sirius.doc/doc/resources/html_bootstrap/css/bootstrap.css"/>
+    	<link type="text/css" rel="stylesheet" 
+    		href="/help/topic/org.eclipse.sirius.doc/doc/resources/style_customization.css"/>
+  </head>
+  <body>
+    <h1 id="Glossary" class="page-header">Glossary</h1>
+
+    <p>This document provides definitions for the technical terms and concepts used in
+      Sirius, and in particular in the rest of this documentation.</p><p>For concepts
+      which concern end-users, it assumes some basic knowledge of Eclipse terminology. If
+      you are not familiar with it, please refer to the Eclipse documentation itself. For
+      concepts targeted to specifier (and developers), it also assumes knowledge of EMF
+      and relegated technologies (including Java for developers). Again, refer to the
+      documentation of these frameworks or tools as needed.</p>
+
+  <dl>
+    <dt id="Dialect">Dialect</dt>
+    <dd>A kind of representation supported by Sirius. Out of the box, Sirius
+      supports three dialects: diagrams, tables, and trees. Sequence diagrams and
+      cross-tables, which are special kinds of diagrams (resp. tables) can also be though
+      of as dialects, although technically they are
+      not.</dd>
+
+    <dt id="ModelingProject">Modeling Project</dt>
+    <dd>A special kind of project in your workspace which makes it easy to manipulate
+      representation files and semantic models in a consistent way.</dd>
+
+	<dt id="SharedModelingProject">Shared Modeling Project</dt>
+    <dd>A <a href="#ModelingProject">Modeling Project</a> having the capability to reference semantic models or representations located on a remote Server. 
+	Provides real-time sharing of representations, automatic lock mechanism and many other collaborative features.
+	</dd>
+	  
+    <dt id="Representation">Representation</dt>
+    <dd>A particular diagram, table, or tree which you created on your semantic model. It
+      is simply a more general term than &#171;diagram&#187; which is also usable for
+      other dialects.</dd>
+
+    <dt id="RepresentationFile">Representation File</dt>
+    <dd>A file in which Sirius stores all informations related to which representations you created,
+      what appears on them, the positions and colors of the elements, etc. This files have a
+      <code>.aird</code> extension (typically <code>representations.aird</code>).
+      Representation files reference the semantic model(s) they contain representations
+      for, but you semantic models are kept unaware (and unpolluted) of any
+      Sirius-specific data.</dd>
+
+    <dt id="Resource">Resource</dt>
+    <dd>A generic term for a file (in your workspace or inside a plug-in) which contains a
+      model. The file extension (e.g. <code>.uml</code>) indicates what kind of semantic
+      model it contains.</dd>
+
+    <dt id="SemanticModel">Semantic Model</dt>
+    <dd>The model (or models) which contains your business data. It can be stored in one
+      of several resources (files) which can reference each other. The type of semantic
+      model can be different for each user. It can be based on a standard (for
+      example <code>.uml</code> files for UML models) or based on a <em>Domain Specific Model</em>
+      (sometimes called <em>Domain Specific Language</em>) which was specially
+      created for your needs.</dd>
+    
+    <dt id="Sirius">Sirius</dt>
+    <dd>A set of consistent representation descriptions which provide a specific point of
+      view on some kind of semantic model. For example we could have a <em>UML Structural</em>
+      viewpoint, which describes the sub-set of all the standard UML
+      diagrams which deal only with structural aspects of UML models (as opposed to
+      behavioral or requirements aspects). Siriuss are defined in
+      <em>Viewpoint Specification Models</em> and packaged as Eclipse plug-ins. Once you install such a
+      plug-in, the viewpoints it defines will be available to you (with all the representations
+      they define) on all compatible semantic models.</dd>
+    
+    <dt id="VSM_">VSM</dt>
+    <dd>See <a href="#VSM">Viewpoint Specification Model</a>..</dd>
+
+    <dt id="VSM">Viewpoint Specification Model</dt>
+    <dd>The model, stored in resources with the <code>.odesign</code> extension, in which an architect
+      defines and configures viewpoints and their associated representations.</dd>
+
+    <dt id="VSM_">VSP</dt>
+    <dd>See <a href="#VSP">Viewpoint Specification Project</a>..</dd>
+
+    <dt id="VSP">Viewpoint Specification Project</dt>
+    <dd>An Eclipse plug-in project which contains a <a href="VSM">VSM</a> and registers it using the
+      proper extension point so that it can be deployed correctly.</dd>
+  </dl>
+  
+  </body>
+</html>

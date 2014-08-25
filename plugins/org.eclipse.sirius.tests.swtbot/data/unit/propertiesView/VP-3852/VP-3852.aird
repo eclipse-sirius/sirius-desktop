@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:tree="http://www.eclipse.org/sirius/tree/1.0.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/tree/description/1.0.0 http://www.eclipse.org/sirius/tree/1.0.0#//description http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_l8dboWr2EeKNackHtoZEnw" selectedViews="_mU04UGr2EeKNackHtoZEnw" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="VP-3852.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_mU04UGr2EeKNackHtoZEnw" initialized="true">
+    <ownedRepresentations xmi:type="tree:DTree" xmi:id="_nIaRYGr2EeKNackHtoZEnw" name="new VP-3852_Tree">
+      <target xmi:type="ecore:EPackage" href="VP-3852.ecore#/"/>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_rI8HkGr2EeKNackHtoZEnw" name="test">
+        <target xmi:type="ecore:EPackage" href="VP-3852.ecore#//test"/>
+        <semanticElements xmi:type="ecore:EPackage" href="VP-3852.ecore#//test"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_rJHGsGr2EeKNackHtoZEnw">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_rJRewGr2EeKNackHtoZEnw"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_rJQ3sGr2EeKNackHtoZEnw" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:TreeItemMapping" href="VP-3852.odesign#//@ownedViewpoints[name='VP-3852_Viewpoint']/@ownedRepresentations[name='VP-3852_Tree']/@subItemMappings[name='EPackageMapping']"/>
+      </ownedTreeItems>
+      <description xmi:type="description:TreeDescription" href="VP-3852.odesign#//@ownedViewpoints[name='VP-3852_Viewpoint']/@ownedRepresentations[name='VP-3852_Tree']"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="table:DTable" xmi:id="_nyfwMGr2EeKNackHtoZEnw" name="new VP-3852_Table" headerColumnWidth="793">
+      <target xmi:type="ecore:EPackage" href="VP-3852.ecore#/"/>
+      <lines xmi:type="table:DLine" xmi:id="_rMd8sGr2EeKNackHtoZEnw" label="test">
+        <target xmi:type="ecore:EPackage" href="VP-3852.ecore#//test"/>
+        <semanticElements xmi:type="ecore:EPackage" href="VP-3852.ecore#//test"/>
+        <originMapping xmi:type="description_1:LineMapping" href="VP-3852.odesign#//@ownedViewpoints[name='VP-3852_Viewpoint']/@ownedRepresentations[name='VP-3852_Table']/@ownedLineMappings[name='EPackageMapping']"/>
+        <cells xmi:type="table:DCell" xmi:id="_rMnGoGr2EeKNackHtoZEnw" label="test" column="_nyfwMWr2EeKNackHtoZEnw">
+          <target xmi:type="ecore:EPackage" href="VP-3852.ecore#//test"/>
+          <semanticElements xmi:type="ecore:EPackage" href="VP-3852.ecore#//test"/>
+        </cells>
+        <currentStyle xmi:type="table:DTableElementStyle" xmi:id="_rMkqYGr2EeKNackHtoZEnw" labelSize="12" defaultForegroundStyle="true" defaultBackgroundStyle="true">
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_rMkqYWr2EeKNackHtoZEnw"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_rMkqYmr2EeKNackHtoZEnw" red="255" green="255" blue="255"/>
+        </currentStyle>
+      </lines>
+      <columns xmi:type="table:DFeatureColumn" xmi:id="_nyfwMWr2EeKNackHtoZEnw" cells="_rMnGoGr2EeKNackHtoZEnw" featureName="nsURI">
+        <originMapping xmi:type="description_1:FeatureColumnMapping" href="VP-3852.odesign#//@ownedViewpoints[name='VP-3852_Viewpoint']/@ownedRepresentations[name='VP-3852_Table']/@ownedColumnMappings[name='EPackageNSURIMapping']"/>
+      </columns>
+      <description xmi:type="description_1:EditionTableDescription" href="VP-3852.odesign#//@ownedViewpoints[name='VP-3852_Viewpoint']/@ownedRepresentations[name='VP-3852_Table']"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_odYgQGr2EeKNackHtoZEnw" name="new VP-3852_Diagram">
+      <ownedAnnotationEntries xmi:type="description_2:AnnotationEntry" xmi:id="_oe0DoGr2EeKNackHtoZEnw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_oe0DoWr2EeKNackHtoZEnw" type="Sirius" element="_odYgQGr2EeKNackHtoZEnw" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_rNP_0Gr2EeKNackHtoZEnw" type="2001" element="_rM2-QGr2EeKNackHtoZEnw">
+            <children xmi:type="notation:Node" xmi:id="_rNURQGr2EeKNackHtoZEnw" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_rNURQWr2EeKNackHtoZEnw" x="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_rNZJwGr2EeKNackHtoZEnw" type="3003" element="_rM9r8Gr2EeKNackHtoZEnw">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_rNZJwWr2EeKNackHtoZEnw" fontName="Ubuntu"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rNZJwmr2EeKNackHtoZEnw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_rNP_0Wr2EeKNackHtoZEnw" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rNP_0mr2EeKNackHtoZEnw" x="40" y="35" width="30" height="30"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_oe0Domr2EeKNackHtoZEnw"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_rM2-QGr2EeKNackHtoZEnw" name="test" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EPackage" href="VP-3852.ecore#//test"/>
+        <semanticElements xmi:type="ecore:EPackage" href="VP-3852.ecore#//test"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_rM9r8Gr2EeKNackHtoZEnw">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_rM9r8Wr2EeKNackHtoZEnw"/>
+          <description xmi:type="style:SquareDescription" href="VP-3852.odesign#//@ownedViewpoints[name='VP-3852_Viewpoint']/@ownedRepresentations[name='VP-3852_Diagram']/@defaultLayer/@nodeMappings[name='EPackageMapping']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_rM9r8mr2EeKNackHtoZEnw"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_rM9r82r2EeKNackHtoZEnw" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_3:NodeMapping" href="VP-3852.odesign#//@ownedViewpoints[name='VP-3852_Viewpoint']/@ownedRepresentations[name='VP-3852_Diagram']/@defaultLayer/@nodeMappings[name='EPackageMapping']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_3:DiagramDescription" href="VP-3852.odesign#//@ownedViewpoints[name='VP-3852_Viewpoint']/@ownedRepresentations[name='VP-3852_Diagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_oddYwGr2EeKNackHtoZEnw"/>
+      <activatedLayers xmi:type="description_3:Layer" href="VP-3852.odesign#//@ownedViewpoints[name='VP-3852_Viewpoint']/@ownedRepresentations[name='VP-3852_Diagram']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="VP-3852.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description_2:Viewpoint" href="VP-3852.odesign#//@ownedViewpoints[name='VP-3852_Viewpoint']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

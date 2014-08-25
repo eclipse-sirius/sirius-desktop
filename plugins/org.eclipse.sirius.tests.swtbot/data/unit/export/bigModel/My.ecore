@@ -1,0 +1,1394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="root">
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.88"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6 #//new%20EClass%207">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.1"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.1 #//new%20EClass%207.1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.1"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.2"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.2 #//new%20EClass%207.2">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.3"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.3"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.3"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.3 #//new%20EClass%207.3">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.3"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.5"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.4"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.5"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.4 #//new%20EClass%207.4">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.4"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.5"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.5"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.5"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.5 #//new%20EClass%207.5">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.5"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.8"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.6"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.6"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.8"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.6"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.6 #//new%20EClass%207.6">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.6"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.6"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.9"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.7"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.9"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.7 #//new%20EClass%207.7">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.7"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.7"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.12"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.8"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.8"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.12"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.8"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.8 #//new%20EClass%207.8">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.8"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.8"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.13"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.9"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.9"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.13"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.9"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.9 #//new%20EClass%207.9">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.9"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.9"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.14"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.10"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.14"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.10 #//new%20EClass%207.10">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.10"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.10"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.16"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.11"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.11"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.16"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.11"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.11 #//new%20EClass%207.11">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.11"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.11"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.17"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.12"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.12"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.17"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.12"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.12 #//new%20EClass%207.12">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.12"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.12"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.20"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.13"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.13"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.20"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.13"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.13 #//new%20EClass%207.13">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.13"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.13"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.21"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.14"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.14"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.21"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.14"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.14 #//new%20EClass%207.14">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.14"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.14"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.22"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.15"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.15"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.22"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.15"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.15 #//new%20EClass%207.15">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.15"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.15"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.24"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.16"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.16"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.24"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.16"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.16 #//new%20EClass%207.16">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.16"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.16"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.25"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.17"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.17"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.25"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.17"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.17 #//new%20EClass%207.17">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.17"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.17"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.27"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.18"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.18"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.27"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.18"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.18 #//new%20EClass%207.18">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.18"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.18"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.28"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.19"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.19"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.28"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.19"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.19 #//new%20EClass%207.19">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.19"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.19"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.29"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.20"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.20"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.29"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.20"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.20 #//new%20EClass%207.20">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.20"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.20"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.33"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.21"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.21"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.33"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.21"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.21 #//new%20EClass%207.21">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.21"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.21"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.34"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.22"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.22"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.34"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.22"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.22 #//new%20EClass%207.22">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.22"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.22"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.35"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.23"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.23"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.35"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.23"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.23 #//new%20EClass%207.23">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.23"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.23"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.37"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.24"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.24"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.37"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.24"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.24 #//new%20EClass%207.24">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.24"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.24"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.38"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.25"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.25"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.38"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.25"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.25 #//new%20EClass%207.25">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.25"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.25"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.40"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.26"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.26"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.40"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.26"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.26 #//new%20EClass%207.26">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.26"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.26"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.41"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.27"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.27"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.41"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.27"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.27 #//new%20EClass%207.27">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.27"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.27"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.42"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.28"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.28"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.42"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.28"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.28 #//new%20EClass%207.28">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.28"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.28"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.45"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.29"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.29"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.45"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.29"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.29 #//new%20EClass%207.29">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.29"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.29"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.46"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.30"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.30"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.46"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.30"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.30 #//new%20EClass%207.30">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.30"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.30"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.47"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.31"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.31"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.47"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.31"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.31 #//new%20EClass%207.31">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.31"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.31"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.49"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.32"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.32"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.49"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.32"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.32 #//new%20EClass%207.32">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.32"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.32"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.50"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.33"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.33"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.50"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.33"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.33 #//new%20EClass%207.33">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.33"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.33"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.54"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.34"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.34"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.54"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.34"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.34 #//new%20EClass%207.34">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.34"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.34"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.55"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.35"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.35"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.55"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.35"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.35 #//new%20EClass%207.35">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.35"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.35"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.56"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.36"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.36"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.56"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.36"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.36 #//new%20EClass%207.36">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.36"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.36"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.58"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.37"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.37"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.58"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.37"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.37 #//new%20EClass%207.37">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.37"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.37"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.59"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.38"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.38"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.59"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.38"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.38 #//new%20EClass%207.38">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.38"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.38"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.61"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.39"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.39"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.61"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.39"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.39 #//new%20EClass%207.39">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.39"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.39"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.62"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.40"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.40"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.62"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.40"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.40 #//new%20EClass%207.40">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.40"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.40"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.63"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.41"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.41"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.63"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.41"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.41 #//new%20EClass%207.41">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.41"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.41"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.66"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.42"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.42"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.66"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.42"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.42 #//new%20EClass%207.42">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.42"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.42"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.67"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.43"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.43"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.67"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.43"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.43 #//new%20EClass%207.43">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.43"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.43"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.68"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.44"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.44"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.68"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.44"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.44 #//new%20EClass%207.44">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.44"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.44"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.70"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.45"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.45"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.70"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.45"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.45 #//new%20EClass%207.45">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.45"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.45"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.71"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.46"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.46"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.71"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.46"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.46 #//new%20EClass%207.46">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.46"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.46"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.74"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.47"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.47"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.74"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.47"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.47 #//new%20EClass%207.47">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.47"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.47"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.75"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.48"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.48"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.75"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.48"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.48 #//new%20EClass%207.48">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.48"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.48"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.76"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.49"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.49"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.76"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.49"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.49 #//new%20EClass%207.49">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.49"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.49"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.78"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.50"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.50"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.78"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.50"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.50 #//new%20EClass%207.50">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.50"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.50"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.79"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.51"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.51"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.79"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.51"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.51 #//new%20EClass%207.51">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.51"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.51"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.81"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.52"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.52"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.81"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.52"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.52 #//new%20EClass%207.52">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.52"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.52"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.82"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.53"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.53"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.82"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.53"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.53 #//new%20EClass%207.53">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.53"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.53"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.83"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.54"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.54"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.83"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.54"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.54 #//new%20EClass%207.54">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.54"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.54"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.88"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.55"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.55"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.88"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.55"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.55 #//new%20EClass%207.55">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.55"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.55"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.89"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.56"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.56"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.89"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.56"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.56 #//new%20EClass%207.56">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.56"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.56"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.90"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.57"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.57"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.90"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.57"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.57 #//new%20EClass%207.57">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.57"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.57"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.92"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.58"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.58"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.92"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.58"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.58 #//new%20EClass%207.58">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.58"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.58"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.93"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.59"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.59"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.93"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.59"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.59 #//new%20EClass%207.59">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.59"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.59"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.95"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.60"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.60"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.95"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.60"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.60 #//new%20EClass%207.60">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.60"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.60"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.96"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.61"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.61"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.96"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.61"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.61 #//new%20EClass%207.61">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.61"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.61"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.97"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.62"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.62"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.97"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.62"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.62 #//new%20EClass%207.62">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.62"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.62"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.100"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.63"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.63"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.100"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.63"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.63 #//new%20EClass%207.63">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.63"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.63"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.101"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.64"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.64"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.101"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.64"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.64 #//new%20EClass%207.64">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.64"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.64"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.102"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.65"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.65"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.102"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.65"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.65 #//new%20EClass%207.65">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.65"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.65"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.104"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.66"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.66"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.104"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.66"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.66 #//new%20EClass%207.66">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.66"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.66"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.105"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.67"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.67"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.105"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.67"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.67 #//new%20EClass%207.67">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.67"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.67"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.108"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.68"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.68"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.108"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.68"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.68 #//new%20EClass%207.68">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.68"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.68"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.109"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.69"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.69"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.109"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.69"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.69 #//new%20EClass%207.69">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.69"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.69"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.110"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.70"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.70"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.110"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.70"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.70 #//new%20EClass%207.70">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.70"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.70"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.112"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.71"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.71"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.112"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.71"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.71 #//new%20EClass%207.71">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.71"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.71"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.113"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.72"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.72"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.113"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.72"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.72 #//new%20EClass%207.72">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.72"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.72"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.115"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.73"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.73"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.115"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.73"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.73 #//new%20EClass%207.73">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.73"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.73"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.116"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.74"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.74"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.116"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.74"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.74 #//new%20EClass%207.74">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.74"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.74"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.117"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.75"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.75"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.117"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.75"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.75 #//new%20EClass%207.75">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.75"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.75"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.121"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.76"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.76"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.121"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.76"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.76 #//new%20EClass%207.76">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.76"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.76"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.122"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.77"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.77"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.122"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.77"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.77 #//new%20EClass%207.77">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.77"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.77"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.123"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.78"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.78"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.123"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.78"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.78 #//new%20EClass%207.78">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.78"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.78"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.125"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.79"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.79"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.125"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.79"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.79 #//new%20EClass%207.79">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.79"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.79"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.126"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.80"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.80"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.126"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.80"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.80 #//new%20EClass%207.80">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.80"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.80"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.128"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.81"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.81"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.128"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.81"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.81 #//new%20EClass%207.81">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.81"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.81"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.129"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.82"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.82"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.129"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.82"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.82 #//new%20EClass%207.82">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.82"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.82"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.130"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.83"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.83"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.130"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.83"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.83 #//new%20EClass%207.83">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.83"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.83"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.133"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.84"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.84"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.133"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.84"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.84 #//new%20EClass%207.84">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.84"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.84"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.134"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.85"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.85"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.134"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.85"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.85 #//new%20EClass%207.85">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.85"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.85"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.135"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.86"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.86"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.135"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.86"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.86 #//new%20EClass%207.86">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.86"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.86"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.137"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.87"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.87"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.137"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.87"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.87 #//new%20EClass%207.87">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.87"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.87"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//C1.138"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//C4.88"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6" eSuperTypes="#//C4.88"/>
+  <eClassifiers xsi:type="ecore:EDataType"/>
+  <eClassifiers xsi:type="ecore:EEnum"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6" eSuperTypes="#//C1.138"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 7"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 8" eSuperTypes="#//C6.88"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 9" eSuperTypes="#//C6.88 #//new%20EClass%207.88">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//new%20EClass%207.88"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%2010.88"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 10"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+</ecore:EPackage>

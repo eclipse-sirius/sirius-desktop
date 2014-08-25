@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" xmi:id="_EhJqECooEeCoD9xy4ZIqpw" selectedViews="_FF4u0CooEeCoD9xy4ZIqpw" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="748.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_FF4u0CooEeCoD9xy4ZIqpw" initialized="true">
+    <viewpoint xmi:type="description:Viewpoint" href="748.odesign#//@ownedViewpoints[name='VP-748']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

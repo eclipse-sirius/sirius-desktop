@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="Aaa">
+  <eClassifiers xsi:type="ecore:EClass" name="C01"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C02" eSuperTypes="#//C01"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C03" eSuperTypes="#//C01">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="c03toC01" eType="#//C01"/>
+  </eClassifiers>
+  <eSubpackages name="P1">
+    <eClassifiers xsi:type="ecore:EClass" name="C11">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="c11ToC21" eType="#//p2/C21"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="C12">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="c12ToC22" eType="#//p2/C22"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="p2">
+    <eClassifiers xsi:type="ecore:EClass" name="C21"/>
+    <eClassifiers xsi:type="ecore:EClass" name="C22"/>
+  </eSubpackages>
+  <eSubpackages name="p3">
+    <eClassifiers xsi:type="ecore:EClass" name="C31">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="c31ToC41" eType="#//p4/C41"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="C32">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="c32ToC42" eType="#//p4/C42"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="C33">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="c33ToC43" eType="#//p4/C43"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="p4">
+    <eClassifiers xsi:type="ecore:EClass" name="C41"/>
+    <eClassifiers xsi:type="ecore:EClass" name="C43"/>
+    <eClassifiers xsi:type="ecore:EClass" name="C42"/>
+  </eSubpackages>
+  <eSubpackages name="p7">
+    <eClassifiers xsi:type="ecore:EClass" name="C71"/>
+    <eClassifiers xsi:type="ecore:EClass" name="C72"/>
+    <eClassifiers xsi:type="ecore:EClass" name="C73"/>
+  </eSubpackages>
+  <eSubpackages name="p5">
+    <eClassifiers xsi:type="ecore:EClass" name="C51">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="c51ToC61" eType="#//p6/C61"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="C52">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="c52ToC62" eType="#//p6/C62"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="C54">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="c54ToC63" eType="#//p6/C63"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="C53">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="c53ToC64" eType="#//p6/C64"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="p6">
+    <eClassifiers xsi:type="ecore:EClass" name="C61"/>
+    <eClassifiers xsi:type="ecore:EClass" name="C63"/>
+    <eClassifiers xsi:type="ecore:EClass" name="C62"/>
+    <eClassifiers xsi:type="ecore:EClass" name="C64"/>
+  </eSubpackages>
+  <eSubpackages name="p10">
+    <eClassifiers xsi:type="ecore:EClass" name="C101">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="c101toC73" eType="#//p7/C73"/>
+    </eClassifiers>
+    <eSubpackages name="p8">
+      <eClassifiers xsi:type="ecore:EClass" name="C81">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="c81toC111" eType="#//p10/p11/C111"/>
+      </eClassifiers>
+      <eSubpackages name="p9">
+        <eClassifiers xsi:type="ecore:EClass" name="C91">
+          <eStructuralFeatures xsi:type="ecore:EReference" name="c91ToC72" eType="#//p7/C72"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="C92">
+          <eStructuralFeatures xsi:type="ecore:EReference" name="c92ToC71" eType="#//p7/C71"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="C93"/>
+      </eSubpackages>
+    </eSubpackages>
+    <eSubpackages name="p11">
+      <eClassifiers xsi:type="ecore:EClass" name="C111">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="c111ToC121" eType="#//p10/p12/C121"/>
+      </eClassifiers>
+      <eSubpackages name="p14"/>
+      <eSubpackages name="p15"/>
+    </eSubpackages>
+    <eSubpackages name="p12">
+      <eClassifiers xsi:type="ecore:EClass" name="C121"/>
+      <eSubpackages name="p16"/>
+      <eSubpackages name="p17"/>
+    </eSubpackages>
+  </eSubpackages>
+</ecore:EPackage>

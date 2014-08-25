@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="root">
+  <eAnnotations source="This is an annotation to my references" references="#//C3/c1 #//C1/c2 #//C2/c3"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="c2" upperBound="-1" eType="#//C2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="C2" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="c3" upperBound="-1" eType="#//C3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="C3">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="c1" upperBound="-1" eType="#//C1"/>
+  </eClassifiers>
+</ecore:EPackage>

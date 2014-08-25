@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" version="8.0.0">
+  <ownedViewpoints name="Component Viewpoint" modelFileExtension="component">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ComponentDiagramWithPrefix" domainClass="component.Application">
+      <metamodel href="component.ecore#/"/>
+      <defaultLayer name="Default">
+        <edgeMappings name="ConnectionMapping" semanticCandidatesExpression="&lt;%connections%>" sourceMapping="//@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@borderedNodeMappings[name='PortMapping'] //@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@subContainerMappings[name='SubComponentMapping']/@borderedNodeMappings[name='PortMapping']" targetMapping="//@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@borderedNodeMappings[name='PortMapping'] //@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@subContainerMappings[name='SubComponentMapping']/@borderedNodeMappings[name='PortMapping']" targetFinderExpression="&lt;%outputPorts%>" sourceFinderExpression="&lt;%inputPorts%>" domainClass="component.Connection" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <beginLabelStyleDescription labelExpression="input">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </beginLabelStyleDescription>
+            <centerLabelStyleDescription labelExpression="&lt;%name%>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+            <endLabelStyleDescription labelExpression="output">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </endLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="ComponentMapping" semanticCandidatesExpression="&lt;%components%>" domainClass="component.Component">
+          <borderedNodeMappings name="PortMapping" semanticCandidatesExpression="&lt;%ports%>" domainClass="component.Port">
+            <style xsi:type="style:DotDescription" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </borderedNodeMappings>
+          <subContainerMappings name="SubComponentMapping" semanticCandidatesExpression="&lt;%subComponents%>" domainClass="component.Component" reusedContainerMappings="//@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@subContainerMappings[name='SubComponentMapping']">
+            <borderedNodeMappings name="PortMapping" semanticCandidatesExpression="&lt;%ports%>" domainClass="component.Port">
+              <style xsi:type="style:DotDescription" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="PortCreationTool" nodeMappings="//@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@borderedNodeMappings[name='PortMapping'] //@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@subContainerMappings[name='SubComponentMapping']/@borderedNodeMappings[name='PortMapping']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="component.Port" referenceName="ports">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="port"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="ComponentCreationTool" containerMappings="//@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping'] //@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@subContainerMappings[name='SubComponentMapping']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:Switch">
+                <cases conditionExpression="&lt;%$container.eClass.name == &quot;Application&quot;%>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="component.Component" referenceName="components">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="component">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="component"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </cases>
+                <default>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="component.Component" referenceName="subComponents"/>
+                </default>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="ConnectionCreationTool" edgeMappings="//@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithPrefix']/@defaultLayer/@edgeMappings[name='ConnectionMapping']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%eContainer(&quot;Application&quot;)%>">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="component.Connection" referenceName="connections">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="inputPorts" valueExpression="var:source"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="outputPorts" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="connection"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ComponentDiagramWithoutPrefix" domainClass="Application">
+      <metamodel href="component.ecore#/"/>
+      <defaultLayer name="Default">
+        <edgeMappings name="ConnectionMapping" semanticCandidatesExpression="&lt;%connections%>" sourceMapping="//@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithoutPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@borderedNodeMappings[name='PortMapping'] //@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithoutPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@subContainerMappings[name='SubComponentMapping']/@borderedNodeMappings[name='PortMapping']" targetMapping="//@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithoutPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@borderedNodeMappings[name='PortMapping'] //@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithoutPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@subContainerMappings[name='SubComponentMapping']/@borderedNodeMappings[name='PortMapping']" targetFinderExpression="&lt;%outputPorts%>" sourceFinderExpression="&lt;%inputPorts%>" domainClass="Connection" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <beginLabelStyleDescription labelExpression="input">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </beginLabelStyleDescription>
+            <centerLabelStyleDescription labelExpression="&lt;%name%>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+            <endLabelStyleDescription labelExpression="output">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </endLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="ComponentMapping" semanticCandidatesExpression="&lt;%components%>" domainClass="Component">
+          <borderedNodeMappings name="PortMapping" semanticCandidatesExpression="&lt;%ports%>" domainClass="Port">
+            <style xsi:type="style:DotDescription" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </borderedNodeMappings>
+          <subContainerMappings name="SubComponentMapping" semanticCandidatesExpression="&lt;%subComponents%>" domainClass="Component" reusedContainerMappings="//@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithoutPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@subContainerMappings[name='SubComponentMapping']">
+            <borderedNodeMappings name="PortMapping" semanticCandidatesExpression="&lt;%ports%>" domainClass="Port">
+              <style xsi:type="style:DotDescription" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="PortCreationTool" nodeMappings="//@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithoutPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@borderedNodeMappings[name='PortMapping'] //@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithoutPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@subContainerMappings[name='SubComponentMapping']/@borderedNodeMappings[name='PortMapping']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Port" referenceName="ports">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="port"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="ComponentCreationTool" containerMappings="//@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithoutPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping'] //@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithoutPrefix']/@defaultLayer/@containerMappings[name='ComponentMapping']/@subContainerMappings[name='SubComponentMapping']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:Switch">
+                <cases conditionExpression="&lt;%$container.eClass.name == &quot;Application&quot;%>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Component" referenceName="components">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="component">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="component"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </cases>
+                <default>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Component" referenceName="subComponents"/>
+                </default>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="ConnectionCreationTool" edgeMappings="//@ownedViewpoints[name='Component%20Viewpoint']/@ownedRepresentations[name='ComponentDiagramWithoutPrefix']/@defaultLayer/@edgeMappings[name='ConnectionMapping']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%eContainer(&quot;Application&quot;)%>">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Connection" referenceName="connections">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="inputPorts" valueExpression="var:source"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="outputPorts" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="connection"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

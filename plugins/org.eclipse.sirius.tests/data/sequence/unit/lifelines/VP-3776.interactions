@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interactions:Interaction xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:interactions="http://www.eclipse.org/sirius/sample/interactions">
+  <participants name="newParticipant1">
+    <type href="VP-3776.ecore#//Participant"/>
+  </participants>
+</interactions:Interaction>

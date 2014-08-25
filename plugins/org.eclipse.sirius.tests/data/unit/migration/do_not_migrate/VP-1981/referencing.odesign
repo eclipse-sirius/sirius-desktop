@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.obeo.fr/dsl/viewpoint/description/1.1.0" name="ReferencingGroup" version="6.7.0.201302071200">
+  <ownedViewpoints name="ReferencingViewpoint">
+    <ownedRepresentations xsi:type="description:DiagramDescription" name="ReferencingDiagram">
+      <defaultLayer name="Default">
+        <edgeMappings name="edge" semanticElements="var:self" targetFinderExpression="&lt;%eType%>" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
+          <style lineStyle="dot" sizeComputationExpression="2" routingStyle="manhattan" foldingStyle="SOURCE">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <centerLabelStyleDescription labelSize="5" labelFormat="bold" showIcon="false" labelExpression="plop1">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </defaultLayer>
+      <reusedMappings xsi:type="description:NodeMapping" href="base.odesign#//@ownedViewpoints[name='EdgeLabelRefreshPb']/@ownedRepresentations[name='EdgeLabelRefreshPb']/@defaultLayer/@nodeMappings[name='Class']"/>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

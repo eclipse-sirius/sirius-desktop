@@ -1,0 +1,7 @@
+[comment encoding = UTF-8 /]
+[module generate('http://www.eclipse.org/sirius/sample/interactions')]
+
+
+[template public generateElement(aModel : Model)]
+
+[/template]

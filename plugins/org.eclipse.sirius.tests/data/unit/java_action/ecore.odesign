@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="Ecore Editing Workbench V4.6" version="8.0.0">
+  <ownedViewpoints name="Design" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Entities" titleExpression="&lt;%name%> package entities" initialisation="true" domainClass="EPackage" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <containerMappings name="EC EClass" deletionDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.0/@ownedTools[name='StubDeleteAction']" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass" childrenPresentation="List">
+          <subNodeMappings name="EC EAttribute" deletionDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.0/@ownedTools[name='StubDeleteOtherThanSelectionAction']" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
+            <style xsi:type="style:BundledImageDescription" labelExpression="&lt;%if (derived) {%>/&lt;%}%>&lt;%name%> : &lt;%eType.name%>" labelAlignment="LEFT" sizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="Operation" semanticCandidatesExpression="feature:eAllContents" domainClass="EOperation">
+            <style xsi:type="style:BundledImageDescription" labelSize="10" labelAlignment="LEFT" tooltipExpression="&lt;%name%>(&lt;%eParameters.name.sep(&quot;, &quot;)%>) : &lt;%eType.name%>" sizeComputationExpression="2">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" tooltipExpression="&lt;%eContainer.name%>.&lt;%name%>" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Dynamic">
+          <ownedTools xsi:type="tool:ToolDescription" name="StubAction" precondition="&lt;%filter(&quot;EClass&quot;)%>" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/DynamicInstance.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Invoke stub action" id="org.eclipse.sirius.tests.unit.api.tools.stubJavaActionID">
+                <parameters name="eClass" value="var:element"/>
+                <parameters name="view" value="var:elementView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="StubActionWithPrecondition" precondition="&lt;%filter(&quot;EClass&quot;)%>" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/DynamicInstance.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Invoke stub action with precondition" precondition="var:views" id="org.eclipse.sirius.tests.unit.api.tools.stubJavaActionID">
+                <parameters name="eClass" value="var:element"/>
+                <parameters name="view" value="var:elementView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="StubDeleteAction">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Invoke stub action" id="org.eclipse.sirius.tests.unit.api.tools.stubDeleteJavaActionID">
+                <parameters name="eClass" value="var:element"/>
+                <parameters name="view" value="var:elementView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="StubDeleteOtherThanSelectionAction">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="invoke stub action" id="org.eclipse.sirius.tests.unit.api.tools.stubDeleteOtherThanSelectionJavaActionID"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="CallStubAction" precondition="&lt;%filter(&quot;EClass&quot;)%>" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/DynamicInstance.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaActionCall" name="call call" action="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.0/@ownedTools[name='StubAction']/@initialOperation/@firstModelOperations"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="CallStubActionWithPrecondition" precondition="&lt;%filter(&quot;EClass&quot;)%>" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/DynamicInstance.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaActionCall" name="call call 2" precondition="var:views" action="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.0/@ownedTools[name='StubActionWithPrecondition']/@initialOperation/@firstModelOperations"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Class" titleExpression="class" initialisation="true" domainClass="EClass"/>
+  </ownedViewpoints>
+</description:Group>

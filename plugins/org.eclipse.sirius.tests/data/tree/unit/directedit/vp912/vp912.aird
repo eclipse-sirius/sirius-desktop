@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:description_1="http://www.eclipse.org/sirius/description/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:tree="http://www.eclipse.org/sirius/tree/1.0.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/tree/description/1.0.0 http://www.eclipse.org/sirius/tree/1.0.0#//description http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" xmi:id="_BV75UAacEeC8_oY6XjcOwQ" selectedViews="_yYkFoAacEeC8_oY6XjcOwQ" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="vp912.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_yYkFoAacEeC8_oY6XjcOwQ" initialized="true">
+    <ownedRepresentations xmi:type="tree:DTree" xmi:id="_z6oVUAacEeC8_oY6XjcOwQ" name="tree">
+      <target xmi:type="ecore:EPackage" href="vp912.ecore#/"/>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_z6oVUQacEeC8_oY6XjcOwQ" name="C1" expanded="true">
+        <target xmi:type="ecore:EClass" href="vp912.ecore#//C1"/>
+        <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_z6oVUgacEeC8_oY6XjcOwQ" name="C1 Categorie">
+          <target xmi:type="ecore:EClass" href="vp912.ecore#//C1"/>
+          <semanticElements xmi:type="ecore:EClass" href="vp912.ecore#//C1"/>
+          <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_z6oVUwacEeC8_oY6XjcOwQ">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVVAacEeC8_oY6XjcOwQ"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVVQacEeC8_oY6XjcOwQ" red="255" green="255" blue="255"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description:TreeItemMapping" href="vp912.odesign#//@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']/@subItemMappings[name='Class']/@subItemMappings[name='Categorie']"/>
+        </ownedTreeItems>
+        <semanticElements xmi:type="ecore:EClass" href="vp912.ecore#//C1"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_z6oVVgacEeC8_oY6XjcOwQ" labelFormat="bold" showIcon="false">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVVwacEeC8_oY6XjcOwQ" red="39" green="76" blue="114"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVWAacEeC8_oY6XjcOwQ" red="217" green="196" blue="215"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:TreeItemMapping" href="vp912.odesign#//@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']/@subItemMappings[name='Class']"/>
+      </ownedTreeItems>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_z6oVWQacEeC8_oY6XjcOwQ" name="enum2">
+        <target xmi:type="ecore:EEnum" href="vp912.ecore#//enum2"/>
+        <semanticElements xmi:type="ecore:EEnum" href="vp912.ecore#//enum2"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_z6oVWgacEeC8_oY6XjcOwQ" labelFormat="italic">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVWwacEeC8_oY6XjcOwQ" red="114" green="73" blue="110"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVXAacEeC8_oY6XjcOwQ" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:TreeItemMapping" href="vp912.odesign#//@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']/@subItemMappings[name='Enum']"/>
+      </ownedTreeItems>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_z6oVXQacEeC8_oY6XjcOwQ" name="P2" expanded="true">
+        <target xmi:type="ecore:EPackage" href="vp912.ecore#//P2"/>
+        <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_z6oVXgacEeC8_oY6XjcOwQ" name="C4" expanded="true">
+          <target xmi:type="ecore:EClass" href="vp912.ecore#//P2/C4"/>
+          <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_z6oVXwacEeC8_oY6XjcOwQ" name="C4 Categorie" expanded="true">
+            <target xmi:type="ecore:EClass" href="vp912.ecore#//P2/C4"/>
+            <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_0cKVEAacEeC8_oY6XjcOwQ" name="myAtt">
+              <target xmi:type="ecore:EAttribute" href="vp912.ecore#//P2/C4/myAtt"/>
+              <semanticElements xmi:type="ecore:EAttribute" href="vp912.ecore#//P2/C4/myAtt"/>
+              <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_0cKVEQacEeC8_oY6XjcOwQ">
+                <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_0cKVFAacEeC8_oY6XjcOwQ"/>
+                <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_0cKVEwacEeC8_oY6XjcOwQ" red="255" green="255" blue="255"/>
+              </ownedStyle>
+              <actualMapping xmi:type="description:TreeItemMapping" href="vp912.odesign#//@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']/@subItemMappings[name='Class']/@subItemMappings[name='Categorie']/@subItemMappings[name='Attr']"/>
+            </ownedTreeItems>
+            <semanticElements xmi:type="ecore:EClass" href="vp912.ecore#//P2/C4"/>
+            <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_z6oVYAacEeC8_oY6XjcOwQ">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVYQacEeC8_oY6XjcOwQ"/>
+              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVYgacEeC8_oY6XjcOwQ" red="255" green="255" blue="255"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description:TreeItemMapping" href="vp912.odesign#//@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']/@subItemMappings[name='Class']/@subItemMappings[name='Categorie']"/>
+          </ownedTreeItems>
+          <semanticElements xmi:type="ecore:EClass" href="vp912.ecore#//P2/C4"/>
+          <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_z6oVYwacEeC8_oY6XjcOwQ" labelFormat="bold" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVZAacEeC8_oY6XjcOwQ" red="39" green="76" blue="114"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVZQacEeC8_oY6XjcOwQ" red="217" green="196" blue="215"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description:TreeItemMapping" href="vp912.odesign#//@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']/@subItemMappings[name='Class']"/>
+        </ownedTreeItems>
+        <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_z6oVZgacEeC8_oY6XjcOwQ" name="C5" expanded="true">
+          <target xmi:type="ecore:EClass" href="vp912.ecore#//P2/C5"/>
+          <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_z6oVZwacEeC8_oY6XjcOwQ" name="C5 Categorie">
+            <target xmi:type="ecore:EClass" href="vp912.ecore#//P2/C5"/>
+            <semanticElements xmi:type="ecore:EClass" href="vp912.ecore#//P2/C5"/>
+            <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_z6oVaAacEeC8_oY6XjcOwQ">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVaQacEeC8_oY6XjcOwQ"/>
+              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVagacEeC8_oY6XjcOwQ" red="255" green="255" blue="255"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description:TreeItemMapping" href="vp912.odesign#//@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']/@subItemMappings[name='Class']/@subItemMappings[name='Categorie']"/>
+          </ownedTreeItems>
+          <semanticElements xmi:type="ecore:EClass" href="vp912.ecore#//P2/C5"/>
+          <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_z6oVawacEeC8_oY6XjcOwQ" labelFormat="bold" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVbAacEeC8_oY6XjcOwQ" red="39" green="76" blue="114"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVbQacEeC8_oY6XjcOwQ" red="217" green="196" blue="215"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description:TreeItemMapping" href="vp912.odesign#//@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']/@subItemMappings[name='Class']"/>
+        </ownedTreeItems>
+        <semanticElements xmi:type="ecore:EPackage" href="vp912.ecore#//P2"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_z6oVbgacEeC8_oY6XjcOwQ">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVbwacEeC8_oY6XjcOwQ"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVcAacEeC8_oY6XjcOwQ" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:TreeItemMapping" href="vp912.odesign#//@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']/@subItemMappings[name='Package']"/>
+      </ownedTreeItems>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_z6oVcQacEeC8_oY6XjcOwQ" name="C2">
+        <target xmi:type="ecore:EClass" href="vp912.ecore#//C2"/>
+        <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_z6oVcgacEeC8_oY6XjcOwQ" name="C2 Categorie">
+          <target xmi:type="ecore:EClass" href="vp912.ecore#//C2"/>
+          <semanticElements xmi:type="ecore:EClass" href="vp912.ecore#//C2"/>
+          <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_z6oVcwacEeC8_oY6XjcOwQ">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVdAacEeC8_oY6XjcOwQ"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVdQacEeC8_oY6XjcOwQ" red="255" green="255" blue="255"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description:TreeItemMapping" href="vp912.odesign#//@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']/@subItemMappings[name='Class']/@subItemMappings[name='Categorie']"/>
+        </ownedTreeItems>
+        <semanticElements xmi:type="ecore:EClass" href="vp912.ecore#//C2"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_z6oVdgacEeC8_oY6XjcOwQ" labelFormat="bold" showIcon="false">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVdwacEeC8_oY6XjcOwQ" red="39" green="76" blue="114"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVeAacEeC8_oY6XjcOwQ" red="217" green="196" blue="215"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:TreeItemMapping" href="vp912.odesign#//@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']/@subItemMappings[name='Class']"/>
+      </ownedTreeItems>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_z6oVeQacEeC8_oY6XjcOwQ" name="P3">
+        <target xmi:type="ecore:EPackage" href="vp912.ecore#//P3"/>
+        <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_z6oVegacEeC8_oY6XjcOwQ" name="C6">
+          <target xmi:type="ecore:EClass" href="vp912.ecore#//P3/C6"/>
+          <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_z6oVewacEeC8_oY6XjcOwQ" name="C6 Categorie">
+            <target xmi:type="ecore:EClass" href="vp912.ecore#//P3/C6"/>
+            <semanticElements xmi:type="ecore:EClass" href="vp912.ecore#//P3/C6"/>
+            <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_z6oVfAacEeC8_oY6XjcOwQ">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVfQacEeC8_oY6XjcOwQ"/>
+              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVfgacEeC8_oY6XjcOwQ" red="255" green="255" blue="255"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description:TreeItemMapping" href="vp912.odesign#//@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']/@subItemMappings[name='Class']/@subItemMappings[name='Categorie']"/>
+          </ownedTreeItems>
+          <semanticElements xmi:type="ecore:EClass" href="vp912.ecore#//P3/C6"/>
+          <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_z6oVfwacEeC8_oY6XjcOwQ" labelFormat="bold" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVgAacEeC8_oY6XjcOwQ" red="39" green="76" blue="114"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVgQacEeC8_oY6XjcOwQ" red="217" green="196" blue="215"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description:TreeItemMapping" href="vp912.odesign#//@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']/@subItemMappings[name='Class']"/>
+        </ownedTreeItems>
+        <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_z6oVggacEeC8_oY6XjcOwQ" name="C7">
+          <target xmi:type="ecore:EClass" href="vp912.ecore#//P3/C7"/>
+          <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_z6oVgwacEeC8_oY6XjcOwQ" name="C7 Categorie">
+            <target xmi:type="ecore:EClass" href="vp912.ecore#//P3/C7"/>
+            <semanticElements xmi:type="ecore:EClass" href="vp912.ecore#//P3/C7"/>
+            <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_z6oVhAacEeC8_oY6XjcOwQ">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVhQacEeC8_oY6XjcOwQ"/>
+              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVhgacEeC8_oY6XjcOwQ" red="255" green="255" blue="255"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description:TreeItemMapping" href="vp912.odesign#//@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']/@subItemMappings[name='Class']/@subItemMappings[name='Categorie']"/>
+          </ownedTreeItems>
+          <semanticElements xmi:type="ecore:EClass" href="vp912.ecore#//P3/C7"/>
+          <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_z6oVhwacEeC8_oY6XjcOwQ" labelFormat="bold" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oViAacEeC8_oY6XjcOwQ" red="39" green="76" blue="114"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oViQacEeC8_oY6XjcOwQ" red="217" green="196" blue="215"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description:TreeItemMapping" href="vp912.odesign#//@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']/@subItemMappings[name='Class']"/>
+        </ownedTreeItems>
+        <semanticElements xmi:type="ecore:EPackage" href="vp912.ecore#//P3"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_z6oVigacEeC8_oY6XjcOwQ">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oViwacEeC8_oY6XjcOwQ"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVjAacEeC8_oY6XjcOwQ" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:TreeItemMapping" href="vp912.odesign#//@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']/@subItemMappings[name='Package']"/>
+      </ownedTreeItems>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_z6oVjQacEeC8_oY6XjcOwQ" name="C3">
+        <target xmi:type="ecore:EClass" href="vp912.ecore#//C3"/>
+        <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_z6oVjgacEeC8_oY6XjcOwQ" name="C3 Categorie">
+          <target xmi:type="ecore:EClass" href="vp912.ecore#//C3"/>
+          <semanticElements xmi:type="ecore:EClass" href="vp912.ecore#//C3"/>
+          <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_z6oVjwacEeC8_oY6XjcOwQ">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVkAacEeC8_oY6XjcOwQ"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVkQacEeC8_oY6XjcOwQ" red="255" green="255" blue="255"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description:TreeItemMapping" href="vp912.odesign#//@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']/@subItemMappings[name='Class']/@subItemMappings[name='Categorie']"/>
+        </ownedTreeItems>
+        <semanticElements xmi:type="ecore:EClass" href="vp912.ecore#//C3"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_z6oVkgacEeC8_oY6XjcOwQ" labelFormat="bold" showIcon="false">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVkwacEeC8_oY6XjcOwQ" red="39" green="76" blue="114"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_z6oVlAacEeC8_oY6XjcOwQ" red="217" green="196" blue="215"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:TreeItemMapping" href="vp912.odesign#//@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']/@subItemMappings[name='Class']"/>
+      </ownedTreeItems>
+      <description xmi:type="description:TreeDescription" href="vp912.odesign#//@ownedViewpoints[name='V912']/@ownedRepresentations[name='TreeWithDirectEdit']"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description_1:Viewpoint" href="vp912.odesign#//@ownedViewpoints[name='V912']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

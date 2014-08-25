@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Company Resources" version="8.0.0">
+  <ownedViewpoints name="Human Resources">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Customers"/>
+    <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="Budget"/>
+    <ownedRepresentations xsi:type="description_3:TreeDescription" name="Employee Repartition" domainClass="Company">
+      <subItemMappings name="Department" detailDescriptions="//@ownedViewpoints[name='Human%20Resources']/@ownedRepresentations[name='Employee%20Repartition']/@ownedRepresentationCreationDescriptions[name='Department%20Navigation']" domainClass="Department" semanticCandidatesExpression="[departments/]">
+        <defaultStyle labelExpression="[name/]">
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+        <directEdit name="Department Renamming" mapping="//@ownedViewpoints[name='Human%20Resources']/@ownedRepresentations[name='Employee%20Repartition']/@subItemMappings[name='Department']">
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="[element/]">
+            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[0/]"/>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+          <element name="element"/>
+          <root name="root"/>
+        </directEdit>
+        <subItemMappings name="Employee" domainClass="Employee" semanticCandidatesExpression="[employees/]">
+          <defaultStyle labelExpression="[name/]">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </defaultStyle>
+          <directEdit name="Employee Renamming" mapping="//@ownedViewpoints[name='Human%20Resources']/@ownedRepresentations[name='Employee%20Repartition']/@subItemMappings[name='Department']/@subItemMappings[name='Employee']">
+            <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="[element/]">
+              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[0/]"/>
+            </firstModelOperation>
+            <mask mask="{0}"/>
+            <element name="element"/>
+            <root name="root"/>
+          </directEdit>
+          <ownedToolDescriptions xsi:type="tool:PopupMenu" name="MyPopupMenu">
+            <menuItemDescriptions xsi:type="tool:OperationAction" name="Rename Employee" icon="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/Description.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[name/]_renammed"/>
+              </initialOperation>
+            </menuItemDescriptions>
+          </ownedToolDescriptions>
+        </subItemMappings>
+      </subItemMappings>
+      <ownedRepresentationCreationDescriptions xsi:type="description_3:TreeCreationDescription" name="Department Navigation" treeDescription="//@ownedViewpoints[name='Human%20Resources']/@ownedRepresentations[name='Department']">
+        <containerViewVariable name="containerView"/>
+        <representationNameVariable name="treeName"/>
+      </ownedRepresentationCreationDescriptions>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_3:TreeDescription" name="Department" domainClass="Department">
+      <subItemMappings name="Employee" domainClass="Employee" semanticCandidatesExpression="[employees/]">
+        <defaultStyle labelExpression="[name/]">
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+        <directEdit name="Employee Renamming" mapping="//@ownedViewpoints[name='Human%20Resources']/@ownedRepresentations[name='Department']/@subItemMappings[name='Employee']">
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="[element/]">
+            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[0/]"/>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+          <element name="element"/>
+          <root name="root"/>
+        </directEdit>
+        <ownedToolDescriptions xsi:type="tool:PopupMenu" name="MyPopupMenu">
+          <menuItemDescriptions xsi:type="tool:OperationAction" name="Rename Employee" icon="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/Description.gif">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[name/]_renammed"/>
+            </initialOperation>
+          </menuItemDescriptions>
+        </ownedToolDescriptions>
+      </subItemMappings>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:migrationmodeler="http://www.eclipse.org/sirius/tests/sample/migrationmodeler" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram" xmi:id="_jih70UYsEeOBRtSo3aK7QA" selectedViews="_kCUPIEYsEeOBRtSo3aK7QA" version="8.0.0">
+  <models xmi:type="migrationmodeler:NodeRepresentation" href="EEnumAttributeType.migrationmodeler#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_kCUPIEYsEeOBRtSo3aK7QA" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_kxEykEYsEeOBRtSo3aK7QA" name="new EEnumAttributeType">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_kx1AgEYsEeOBRtSo3aK7QA" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_kx1AgUYsEeOBRtSo3aK7QA" type="Sirius" element="_kxEykEYsEeOBRtSo3aK7QA" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_kx1AgkYsEeOBRtSo3aK7QA"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description_1:DiagramDescription" href="EEnumAttributeType.odesign#//@ownedViewpoints[name='EEnumAttributeType']/@ownedRepresentations[name='EEnumAttributeType']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_kxEylkYsEeOBRtSo3aK7QA"/>
+      <activatedLayers xmi:type="description_1:Layer" href="EEnumAttributeType.odesign#//@ownedViewpoints[name='EEnumAttributeType']/@ownedRepresentations[name='EEnumAttributeType']/@defaultLayer"/>
+      <target xmi:type="migrationmodeler:NodeRepresentation" href="EEnumAttributeType.migrationmodeler#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="EEnumAttributeType.odesign#//@ownedViewpoints[name='EEnumAttributeType']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

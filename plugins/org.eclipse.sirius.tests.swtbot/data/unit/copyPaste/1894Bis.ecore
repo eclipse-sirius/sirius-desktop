@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="package2">
+  <eClassifiers xsi:type="ecore:EClass" name="ClassBis1">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eAttributeBis1"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ErefBis" eType="#//ClassBis2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClassBis2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="nodelete_Class">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="attributee2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="pastable_Class">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="attributee2"/>
+  </eClassifiers>
+</ecore:EPackage>

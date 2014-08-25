@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sequence="http://www.eclipse.org/sirius/diagram/sequence/2.0.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0 http://www.eclipse.org/sirius/diagram/sequence/2.0.0#//description" xmi:id="_NFj8sGYvEeOaIa51zd364w" selectedViews="_Na894GYvEeOaIa51zd364w" version="7.0.0">
+  <models xmi:type="ecore:EPackage" href="split.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_Na894GYvEeOaIa51zd364w" initialized="true">
+    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_O_-a8GYvEeOaIa51zd364w" name="new splitDiagDesc">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_PAIL8GYvEeOaIa51zd364w" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_PAIL8WYvEeOaIa51zd364w" type="Sirius" element="_O_-a8GYvEeOaIa51zd364w" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_PAIL8mYvEeOaIa51zd364w"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description:DiagramDescription" href="split.odesign#//@ownedViewpoints[name='splitVP']/@ownedRepresentations[name='splitDiagDesc']"/>
+      <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_O_-a8WYvEeOaIa51zd364w"/>
+      <activatedLayers xmi:type="description:Layer" href="split.odesign#//@ownedViewpoints[name='splitVP']/@ownedRepresentations[name='splitDiagDesc']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="split.ecore#/"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="sequence:SequenceDDiagram" xmi:id="_Pyk8kGYvEeOaIa51zd364w" name="new splidSeqDiag">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_Pyljo2YvEeOaIa51zd364w" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_PyljpGYvEeOaIa51zd364w" type="Sirius" element="_Pyk8kGYvEeOaIa51zd364w" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_PyljpWYvEeOaIa51zd364w"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description_1:SequenceDiagramDescription" href="split.odesign#//@ownedViewpoints[name='splitVP']/@ownedRepresentations[name='splidSeqDiag']"/>
+      <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_Pyk8kWYvEeOaIa51zd364w"/>
+      <activatedLayers xmi:type="description:Layer" href="split.odesign#//@ownedViewpoints[name='splitVP']/@ownedRepresentations[name='splidSeqDiag']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="split.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="split.odesign#//@ownedViewpoints[name='splitVP']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

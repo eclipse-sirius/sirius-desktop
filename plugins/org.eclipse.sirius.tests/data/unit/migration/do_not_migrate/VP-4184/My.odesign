@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.obeo.fr/dsl/viewpoint/description/1.1.0" xmlns:filter="http://www.obeo.fr/dsl/viewpoint/description/filter/1.1.0" xmlns:style="http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0" name="My" version="6.7.0.201302071200">
+  <ownedViewpoints name="test">
+    <ownedRepresentations xsi:type="description:DiagramDescription" name="test" domainClass="EPackage">
+      <filters xsi:type="filter:CompositeFilterDescription" name="collapse">
+        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='test']/@ownedRepresentations[name='test']/@defaultLayer/@containerMappings[name='package']/@borderedNodeMappings[name='class']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="hide">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='test']/@ownedRepresentations[name='test']/@defaultLayer/@containerMappings[name='package']/@borderedNodeMappings[name='class']"/>
+      </filters>
+      <defaultLayer name="Default">
+        <containerMappings name="package" semanticCandidatesExpression="[eSubpackages/]" domainClass="EPackage">
+          <borderedNodeMappings name="class" semanticCandidatesExpression="[eClassifiers/]" domainClass="EClass">
+            <style xsi:type="style:SquareDescription" sizeComputationExpression="1" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="eenum" semanticCandidatesExpression="[eClassifiers/]" domainClass="EEnum">
+            <style xsi:type="style:SquareDescription" sizeComputationExpression="1" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="VP-1580 Group" version="8.0.0">
+  <ownedViewpoints endUserDocumentation="Provides graphical and tabular modelers to design an Ecore model." name="vp-1580" modelFileExtension="ecore" icon="">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" endUserDocumentation="A graphical modeler for Ecore model similar to a UML class diagram." name="Diagram" titleExpression="Diagram" domainClass="EPackage" enablePopupBars="true">
+      <defaultLayer name="Default" icon="">
+        <nodeMappings name="Class" domainClass="EClass">
+          <style xsi:type="style:BundledImageDescription" showIcon="false" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+          <conditionnalStyles predicateExpression="feature:abstract">
+            <style xsi:type="style:EllipseNodeDescription" showIcon="false" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </conditionnalStyles>
+        </nodeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+  <userColorsPalettes name="Ecore Palette">
+    <entries xsi:type="description:InterpolatedColor" name="Size Based Color"/>
+    <entries xsi:type="description:UserFixedColor" red="250" green="190" blue="190" name="MomentIntervalColor"/>
+    <entries xsi:type="description:UserFixedColor" red="250" green="240" blue="180" name="RoleColor"/>
+    <entries xsi:type="description:UserFixedColor" red="180" green="230" blue="180" name="PartyPlaceThingColor"/>
+    <entries xsi:type="description:UserFixedColor" red="180" green="200" blue="210" name="DescriptionColor"/>
+    <entries xsi:type="description:UserFixedColor" red="255" green="245" blue="182" name="Package Color"/>
+    <entries xsi:type="description:UserFixedColor" red="253" green="208" blue="142" name="External Package Color"/>
+  </userColorsPalettes>
+</description:Group>

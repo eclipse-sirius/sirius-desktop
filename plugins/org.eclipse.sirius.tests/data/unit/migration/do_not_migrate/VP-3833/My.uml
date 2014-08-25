@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_AdSGgGlYEeKHdJaiuX7XSw" name="root">
+  <packagedElement xmi:type="uml:Class" xmi:id="_GaYXEGlYEeKHdJaiuX7XSw" name="Class1">
+    <ownedAttribute xmi:id="_GaYXEWlYEeKHdJaiuX7XSw" name="aProp1"/>
+    <ownedAttribute xmi:id="_KwjGEGlYEeKHdJaiuX7XSw" name="aProp2"/>
+    <ownedAttribute xmi:id="_LEumUGlYEeKHdJaiuX7XSw" name="aProp3"/>
+    <ownedAttribute xmi:id="_RdoCEGlYEeKHdJaiuX7XSw" name="prop1"/>
+    <ownedAttribute xmi:id="_RdoCEWlYEeKHdJaiuX7XSw" name="prop2"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_HJQ1wXA8EeKU28rXM_KPgA" name="aClass">
+    <ownedAttribute xmi:id="_CvOMAHA_EeKU28rXM_KPgA" name="prop4"/>
+    <ownedAttribute xmi:id="_eZI44HBAEeKU28rXM_KPgA" name="aProp4"/>
+  </packagedElement>
+</uml:Model>

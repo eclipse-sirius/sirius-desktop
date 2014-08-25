@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<migrationmodeler:TestCase xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:migrationmodeler="http://www.eclipse.org/sirius/tests/sample/migrationmodeler">
+  <representations xsi:type="migrationmodeler:Diagram" name="1">
+    <filters id="Test Filter" activated="true"/>
+    <layers id="Test Layer"/>
+  </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="2">
+    <filters id="Test Filter"/>
+    <layers id="Test Layer"/>
+  </representations>
+</migrationmodeler:TestCase>

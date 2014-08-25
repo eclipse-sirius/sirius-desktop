@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="parent"
+    nsURI="http://www.example.com/" nsPrefix="parent">
+  <eClassifiers xsi:type="ecore:EClass" name="Prefix">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Prefix" eType="#//PrefixMiddleSuffix"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PrefixSuffix">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="AttrMiddleSuffix"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="PrefixMiddleSuffix" eType="#//PrefixMiddleSuffix"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PrefixMiddleSuffix"/>
+  <eSubpackages name="PkgMiddleSuffix">
+    <eClassifiers xsi:type="ecore:EClass" name="Prefix">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="XMiddleY" eType="#//Prefix"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="BetweenContainedClasses"
+          eType="#//PkgMiddleSuffix/Suffix"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Suffix"/>
+  </eSubpackages>
+</ecore:EPackage>

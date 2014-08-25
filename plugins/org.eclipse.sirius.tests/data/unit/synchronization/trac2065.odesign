@@ -1,0 +1,730 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="trac2065" version="8.0.0">
+  <ownedViewpoints name="trac2065" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diagram (All Create=true)" domainClass="EPackage">
+      <defaultLayer name="Default1">
+        <nodeMappings name="Nodes (create=true)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EClass&quot;)[name.startsWith(&quot;n&quot;) &amp;&amp; name.indexOf(&quot;*&quot;)!=-1]%>" domainClass="EClass">
+          <borderedNodeMappings name="Border nodes (create=true)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;)[containment==true &amp;&amp; name.startsWith(&quot;bn&quot;)].eType%>" domainClass="EClass">
+            <style xsi:type="style:BundledImageDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:BundledImageDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="Nodes -> Nodes" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Nodes -> Containers" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Nodes -> List containers" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Nodes -> Border nodes" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Containers -> Containers" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Containers -> Nodes" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Containers -> List containers" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Containers -> Border nodes" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="List containers -> List containers" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="List containers -> Nodes" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="List containers -> Containers" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="List containers -> Border nodes" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Border nodes -> Border nodes" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Border nodes -> Nodes" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Border nodes -> Containers" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Border nodes -> List containers" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Containers (create=true)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EClass&quot;)[name.startsWith(&quot;c&quot;) &amp;&amp; name.indexOf(&quot;*&quot;)!=-1]%>" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']">
+          <subNodeMappings name="Nodes in containers (create=true)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;)[containment==true &amp;&amp; name.startsWith(&quot;n&quot;)].eType%>" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']">
+            <style xsi:type="style:BundledImageDescription" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="Containers in containers (create=true)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;)[containment==true &amp;&amp; name.startsWith(&quot;c&quot;)].eType%>" domainClass="EClass" importedMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']"/>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="List containers (create=true)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EClass&quot;)[name.startsWith(&quot;lc&quot;) &amp;&amp; name.indexOf(&quot;*&quot;)!=-1]%>" domainClass="EClass" reusedNodeMappings="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(All%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20First%20Level%20Elements']" name="Diagram (First Level Create=false, Sub Create=true, Edges Create=true)" domainClass="EPackage">
+      <defaultLayer name="Default2">
+        <nodeMappings name="Nodes (create=false)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EClass&quot;)[name.startsWith(&quot;n&quot;) &amp;&amp; name.indexOf(&quot;*&quot;)!=-1]%>" createElements="false" domainClass="EClass">
+          <borderedNodeMappings name="Border nodes (create=true)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;)[containment==true &amp;&amp; name.startsWith(&quot;bn&quot;)].eType%>" domainClass="EClass">
+            <style xsi:type="style:BundledImageDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:BundledImageDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="Nodes -> Nodes" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Nodes -> Containers" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Nodes -> List containers" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Nodes -> Border nodes" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Containers -> Containers" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Containers -> Nodes" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Containers -> List containers" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Containers -> Border nodes" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="List containers -> List containers" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="List containers -> Nodes" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="List containers -> Containers" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="List containers -> Border nodes" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Border nodes -> Border nodes" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Border nodes -> Nodes" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Border nodes -> Containers" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Border nodes -> List containers" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Containers (create=false)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EClass&quot;)[name.startsWith(&quot;c&quot;) &amp;&amp; name.indexOf(&quot;*&quot;)!=-1]%>" createElements="false" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']">
+          <subNodeMappings name="Nodes in containers (create=true)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;)[containment==true &amp;&amp; name.startsWith(&quot;n&quot;)].eType%>" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']">
+            <style xsi:type="style:BundledImageDescription" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="Containers in containers (create=true)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;)[containment==true &amp;&amp; name.startsWith(&quot;c&quot;)].eType%>" domainClass="EClass" importedMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']"/>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="List containers (create=false)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EClass&quot;)[name.startsWith(&quot;lc&quot;) &amp;&amp; name.indexOf(&quot;*&quot;)!=-1]%>" createElements="false" domainClass="EClass" reusedNodeMappings="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Tools">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop First Level Elements" precondition="&lt;%name.indexOf(&quot;*&quot;)!=-1%>" forceRefresh="true" mappings="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']" dragSource="BOTH">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:For" expression="var:element">
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)']" containerViewExpression="var:newContainerView"/>
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']" containerViewExpression="var:newContainerView"/>
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=false)']" containerViewExpression="var:newContainerView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Elements%20in%20diagram']" name="Diagram (First Level Create=true, Sub Create=false, Edges Create=true)" domainClass="EPackage">
+      <defaultLayer name="Default3">
+        <nodeMappings name="Nodes (create=true)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EClass&quot;)[name.startsWith(&quot;n&quot;) &amp;&amp; name.indexOf(&quot;*&quot;)!=-1]%>" domainClass="EClass" dropDescriptions="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Elements%20in%20nodes']">
+          <borderedNodeMappings name="Border nodes (create=false)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;)[containment==true &amp;&amp; name.startsWith(&quot;bn&quot;)].eType%>" createElements="false" domainClass="EClass">
+            <style xsi:type="style:BundledImageDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:BundledImageDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="Nodes -> Nodes" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Nodes -> Containers" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Nodes -> List containers" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Nodes -> Border nodes" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Containers -> Containers" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Containers -> Nodes" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Containers -> List containers" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Containers -> Border nodes" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="List containers -> List containers" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="List containers -> Nodes" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="List containers -> Containers" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="List containers -> Border nodes" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Border nodes -> Border nodes" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Border nodes -> Nodes" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Border nodes -> Containers" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Border nodes -> List containers" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Containers (create=true)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EClass&quot;)[name.startsWith(&quot;c&quot;) &amp;&amp; name.indexOf(&quot;*&quot;)!=-1]%>" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)']" dropDescriptions="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Elements%20in%20containers']">
+          <subNodeMappings name="Nodes in containers (create=false)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;)[containment==true &amp;&amp; name.startsWith(&quot;n&quot;)].eType%>" createElements="false" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)']" dropDescriptions="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Elements%20in%20nodes']">
+            <style xsi:type="style:BundledImageDescription" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="Containers in containers (create=false)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;)[containment==true &amp;&amp; name.startsWith(&quot;c&quot;)].eType%>" domainClass="EClass" importedMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']"/>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="List containers (create=true)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EClass&quot;)[name.startsWith(&quot;lc&quot;) &amp;&amp; name.indexOf(&quot;*&quot;)!=-1]%>" domainClass="EClass" dropDescriptions="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Elements%20in%20list%20containers']" reusedNodeMappings="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=false)']" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Tools">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop Elements in containers" forceRefresh="true" mappings="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=false)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subContainerMappings[name='Containers%20in%20containers%20(create=false)']" dragSource="BOTH">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:For" expression="var:element">
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)']" containerViewExpression="var:newContainerView"/>
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=false)']" containerViewExpression="var:newContainerView"/>
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subContainerMappings[name='Containers%20in%20containers%20(create=false)']" containerViewExpression="var:newContainerView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop Elements in nodes" forceRefresh="true" mappings="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)']" dragSource="BOTH">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:For" expression="var:element">
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)']" containerViewExpression="var:newContainerView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop Elements in list containers" forceRefresh="true" mappings="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=false)']" dragSource="BOTH">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:For" expression="var:element">
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=false)']" containerViewExpression="var:newContainerView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop Elements in diagram" forceRefresh="true" mappings="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" dragSource="BOTH">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:For" expression="var:element">
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']" containerViewExpression="var:newContainerView"/>
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']" containerViewExpression="var:newContainerView"/>
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" containerViewExpression="var:newContainerView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20First%20Level%20Elements']" name="Diagram (First Level Create=false, Sub Create=true, Edges Create=false)" domainClass="EPackage">
+      <defaultLayer name="Default4">
+        <nodeMappings name="Nodes (create=false)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EClass&quot;)[name.startsWith(&quot;n&quot;) &amp;&amp; name.indexOf(&quot;*&quot;)!=-1]%>" createElements="false" domainClass="EClass">
+          <borderedNodeMappings name="Border nodes (create=true)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;)[containment==true &amp;&amp; name.startsWith(&quot;bn&quot;)].eType%>" domainClass="EClass">
+            <style xsi:type="style:BundledImageDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:BundledImageDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="Nodes -> Nodes" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Nodes -> Containers" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Nodes -> List containers" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Nodes -> Border nodes" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Containers -> Containers" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Containers -> Nodes" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Containers -> List containers" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Containers -> Border nodes" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="List containers -> List containers" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="List containers -> Nodes" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="List containers -> Containers" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="List containers -> Border nodes" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Border nodes -> Border nodes" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Border nodes -> Nodes" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Border nodes -> Containers" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Border nodes -> List containers" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Containers (create=false)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EClass&quot;)[name.startsWith(&quot;c&quot;) &amp;&amp; name.indexOf(&quot;*&quot;)!=-1]%>" createElements="false" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']">
+          <subNodeMappings name="Nodes in containers (create=true)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;)[containment==true &amp;&amp; name.startsWith(&quot;n&quot;)].eType%>" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)']/@borderedNodeMappings[name='Border%20nodes%20(create=true)']">
+            <style xsi:type="style:BundledImageDescription" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="Containers in containers (create=true)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;)[containment==true &amp;&amp; name.startsWith(&quot;c&quot;)].eType%>" domainClass="EClass" importedMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']"/>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="List containers (create=false)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EClass&quot;)[name.startsWith(&quot;lc&quot;) &amp;&amp; name.indexOf(&quot;*&quot;)!=-1]%>" createElements="false" domainClass="EClass" reusedNodeMappings="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=true)']" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Tools">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop First Level Elements" precondition="&lt;%name.indexOf(&quot;*&quot;)!=-1%>" forceRefresh="true" mappings="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=false)']" dragSource="BOTH">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:For" expression="var:element">
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=false)']" containerViewExpression="var:newContainerView"/>
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=false)']" containerViewExpression="var:newContainerView"/>
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=false%2C%20Sub%20Create=true%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=false)']" containerViewExpression="var:newContainerView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diagram (First Level Create=true, Sub Create=false, Edges Create=false)" domainClass="EPackage">
+      <defaultLayer name="Default5">
+        <nodeMappings name="Nodes (create=true)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EClass&quot;)[name.startsWith(&quot;n&quot;) &amp;&amp; name.indexOf(&quot;*&quot;)!=-1]%>" domainClass="EClass" dropDescriptions="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20BorderNodes']">
+          <borderedNodeMappings name="Border nodes (create=false)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;)[containment==true &amp;&amp; name.startsWith(&quot;bn&quot;)].eType%>" createElements="false" domainClass="EClass">
+            <style xsi:type="style:BundledImageDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:BundledImageDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="Nodes -> Nodes" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Nodes -> Containers" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Nodes -> List containers" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Nodes -> Border nodes" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Containers -> Containers" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Containers -> Nodes" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Containers -> List containers" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Containers -> Border nodes" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="List containers -> List containers" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="List containers -> Nodes" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="List containers -> Containers" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="List containers -> Border nodes" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Border nodes -> Border nodes" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Border nodes -> Nodes" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=false)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Border nodes -> Containers" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Border nodes -> List containers" semanticCandidatesExpression="feature:eAllContents" createElements="false" sourceMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)']" targetMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='List%20containers%20(create=true)']" targetFinderExpression="&lt;%eAllContents(&quot;EReference&quot;)[!containment].eType%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Containers (create=true)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EClass&quot;)[name.startsWith(&quot;c&quot;) &amp;&amp; name.indexOf(&quot;*&quot;)!=-1]%>" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)']" dropDescriptions="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20BorderNodes'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Nodes'] //@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Containers']">
+          <subNodeMappings name="Nodes in containers (create=false)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;)[containment==true &amp;&amp; name.startsWith(&quot;n&quot;)].eType%>" createElements="false" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)']">
+            <style xsi:type="style:BundledImageDescription" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="Containers in containers (create=false)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;)[containment==true &amp;&amp; name.startsWith(&quot;c&quot;)].eType%>" domainClass="EClass" importedMapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']"/>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="List containers (create=true)" semanticCandidatesExpression="&lt;%eAllContents(&quot;EClass&quot;)[name.startsWith(&quot;lc&quot;) &amp;&amp; name.indexOf(&quot;*&quot;)!=-1]%>" domainClass="EClass" dropDescriptions="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20Nodes']" reusedNodeMappings="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=false)']" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Tools">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop BorderNodes" forceRefresh="true" mappings="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)']" dragSource="BOTH">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:For" expression="var:element">
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@nodeMappings[name='Nodes%20(create=true)']/@borderedNodeMappings[name='Border%20nodes%20(create=false)']" containerViewExpression="var:newContainerView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop Nodes" forceRefresh="true" mappings="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=false)']" dragSource="BOTH">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:For" expression="var:element">
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subNodeMappings[name='Nodes%20in%20containers%20(create=false)']" containerViewExpression="var:newContainerView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop Containers" mappings="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=false)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subContainerMappings[name='Containers%20in%20containers%20(create=false)']" dragSource="BOTH">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:For" expression="var:element">
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='trac2065']/@ownedRepresentations[name='Diagram%20(First%20Level%20Create=true%2C%20Sub%20Create=false%2C%20Edges%20Create=true)']/@defaultLayer/@containerMappings[name='Containers%20(create=true)']/@subContainerMappings[name='Containers%20in%20containers%20(create=false)']" containerViewExpression="var:newContainerView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

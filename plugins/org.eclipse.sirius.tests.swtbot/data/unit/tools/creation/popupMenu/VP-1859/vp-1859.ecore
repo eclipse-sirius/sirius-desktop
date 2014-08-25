@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="p">
+  <eClassifiers xsi:type="ecore:EClass" name="Class1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="c" eType="#//Class2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Class2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Class3"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Class4"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Class5" eSuperTypes="#//Class2"/>
+  <eSubpackages name="A">
+    <eClassifiers xsi:type="ecore:EClass" name="Class1"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Class2"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Class3"/>
+    <eSubpackages name="B">
+      <eClassifiers xsi:type="ecore:EClass" name="Class1"/>
+      <eClassifiers xsi:type="ecore:EClass" name="Class2"/>
+      <eSubpackages name="C">
+        <eClassifiers xsi:type="ecore:EClass" name="Class1"/>
+      </eSubpackages>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="Package2">
+    <eClassifiers xsi:type="ecore:EClass" name="Class3"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Class4"/>
+  </eSubpackages>
+  <eSubpackages name="centeredEPackage"/>
+  <eSubpackages name="Package3">
+    <eClassifiers xsi:type="ecore:EClass" name="Class3"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Class4"/>
+  </eSubpackages>
+</ecore:EPackage>

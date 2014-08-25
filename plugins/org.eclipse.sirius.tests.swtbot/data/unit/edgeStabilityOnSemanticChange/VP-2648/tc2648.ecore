@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="root">
+  <eSubpackages name="test1">
+    <eClassifiers xsi:type="ecore:EClass" name="C1" eSuperTypes="#//test1/C2"/>
+    <eClassifiers xsi:type="ecore:EClass" name="C2"/>
+    <eClassifiers xsi:type="ecore:EClass" name="C3" eSuperTypes="#//test1/C4"/>
+    <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+    <eSubpackages name="p1" nsURI="">
+      <eClassifiers xsi:type="ecore:EClass" name="A">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="b" eType="#//test1/p2/B"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="C"/>
+    </eSubpackages>
+    <eSubpackages name="p2" nsURI="">
+      <eClassifiers xsi:type="ecore:EClass" name="B"/>
+      <eClassifiers xsi:type="ecore:EClass" name="D">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="c" eType="#//test1/p1/C"/>
+      </eClassifiers>
+    </eSubpackages>
+    <eSubpackages name="p3">
+      <eSubpackages name="p4"/>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="test2">
+    <eSubpackages name="p1" nsURI="">
+      <eClassifiers xsi:type="ecore:EClass" name="A"/>
+    </eSubpackages>
+  </eSubpackages>
+</ecore:EPackage>

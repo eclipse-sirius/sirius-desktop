@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram" xmi:id="_KKCC8CIgEd-asvFvTQzt7g" selectedViews="_KhAYgCIgEd-asvFvTQzt7g" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="toolSection.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_KhAYgCIgEd-asvFvTQzt7g" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_LUo04SIgEd-asvFvTQzt7g" name="new toolSectionLayers">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_sg4DABHiEeKS07mYEJy8yw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_533HwSYLEd-nV44Ptnh8oA" type="Sirius" element="_LUo04SIgEd-asvFvTQzt7g" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_533HwiYLEd-nV44Ptnh8oA"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description_1:DiagramDescription" href="toolSection.odesign#//@ownedViewpoints[name='toolSection']/@ownedRepresentations[name='toolSectionLayers']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_LUo04iIgEd-asvFvTQzt7g"/>
+      <activatedLayers xmi:type="description_1:Layer" href="toolSection.odesign#//@ownedViewpoints[name='toolSection']/@ownedRepresentations[name='toolSectionLayers']/@defaultLayer"/>
+      <activatedLayers xmi:type="description_1:AdditionalLayer" href="toolSection.odesign#//@ownedViewpoints[name='toolSection']/@ownedRepresentations[name='toolSectionLayers']/@additionalLayers[name='L2%20enabled']"/>
+      <target xmi:type="ecore:EPackage" href="toolSection.ecore#/"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_L0lgQSIgEd-asvFvTQzt7g" name="new toolSectionWithoutLayers">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_sg4qEBHiEeKS07mYEJy8yw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_39NG8SbREd-rtb2NqI4LJQ" type="Sirius" element="_L0lgQSIgEd-asvFvTQzt7g" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_39NG8ibREd-rtb2NqI4LJQ"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description_1:DiagramDescription" href="toolSection.odesign#//@ownedViewpoints[name='toolSection']/@ownedRepresentations[name='toolSectionWithoutLayers']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_L0lgQiIgEd-asvFvTQzt7g"/>
+      <target xmi:type="ecore:EPackage" href="toolSection.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="toolSection.odesign#//@ownedViewpoints[name='toolSection']"/>
+    <diagramSet xmi:type="diagram:DDiagramSet" xmi:id="_LUo04CIgEd-asvFvTQzt7g" diagrams="_LUo04SIgEd-asvFvTQzt7g">
+      <description xmi:type="description_1:DiagramDescription" href="toolSection.odesign#//@ownedViewpoints[name='toolSection']/@ownedRepresentations[name='toolSectionLayers']"/>
+    </diagramSet>
+    <diagramSet xmi:type="diagram:DDiagramSet" xmi:id="_L0lgQCIgEd-asvFvTQzt7g" diagrams="_L0lgQSIgEd-asvFvTQzt7g">
+      <description xmi:type="description_1:DiagramDescription" href="toolSection.odesign#//@ownedViewpoints[name='toolSection']/@ownedRepresentations[name='toolSectionWithoutLayers']"/>
+    </diagramSet>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_5RvkASU8Ed-Zj-dNDXlF8Q" initialized="true">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Archetype']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

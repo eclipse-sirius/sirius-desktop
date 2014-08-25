@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="_pMv8YLmOEd6MSZpmKaOM0A" name="PackageToControl">
+  <packagedElement xmi:type="uml:Class" xmi:id="_rslb4LmOEd6MSZpmKaOM0A" name="ClassInPackageToControl">
+    <ownedAttribute xmi:id="_v3FGYLmOEd6MSZpmKaOM0A" name="referenceToClassInParentModel">
+      <type xmi:type="uml:Class" href="parent.uml#_f9diULmOEd6MSZpmKaOM0A"/>
+    </ownedAttribute>
+  </packagedElement>
+</uml:Package>

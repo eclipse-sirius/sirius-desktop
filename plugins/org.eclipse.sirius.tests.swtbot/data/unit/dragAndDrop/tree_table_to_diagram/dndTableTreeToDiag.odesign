@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="dndTableTreeToDiag" version="8.0.0">
+  <ownedViewpoints name="dnd">
+    <ownedRepresentations xsi:type="description_1:TreeDescription" name="dndTree" domainClass="EPackage">
+      <subItemMappings name="class" domainClass="EClass">
+        <defaultStyle>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+      </subItemMappings>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="dndTable" domainClass="EPackage">
+      <ownedLineMappings name="eclass" domainClass="EClass"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_3:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='dnd']/@ownedRepresentations[name='dndDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='dnd']" name="dndDiagram" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <containerMappings name="eclass" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="dnd" mappings="//@ownedViewpoints[name='dnd']/@ownedRepresentations[name='dndDiagram']/@defaultLayer/@containerMappings[name='eclass']" dragSource="BOTH">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation/>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

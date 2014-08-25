@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interactions:Interaction xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:interactions="http://www.eclipse.org/sirius/sample/interactions" name="Mon interaction">
+  <participants name="p1">
+    <type href="trac2085.ecore#//T1"/>
+  </participants>
+  <participants name="p2">
+    <type href="trac2085.ecore#//T2"/>
+  </participants>
+</interactions:Interaction>

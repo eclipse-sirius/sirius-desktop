@@ -1,0 +1,205 @@
+/*******************************************************************************
+ * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.tests.swtbot.table;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
+import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
+import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.business.UITableRepresentation;
+import org.eclipse.sirius.tests.swtbot.support.api.business.UITreeRepresentation;
+import org.eclipse.sirius.tests.swtbot.support.api.widget.ContextualMenuItemGetter;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
+import org.eclipse.swtbot.swt.finder.results.Result;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
+
+import org.eclipse.sirius.tests.swtbot.Activator;
+
+/**
+ * Ensures that the "Navigate" menu correctly displays the navigation links
+ * provided by
+ * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription}
+ * for Tables and Trees.
+ * 
+ * <p>
+ * Relevant tickets :<br/>
+ * <ul>
+ * <li>VP-2659:NavigationDescription from table and tree are not shown if no
+ * default navigation is available</li>
+ * </ul>
+ * 
+ * @author alagarde
+ */
+public class NavigationDescriptionFromTableAndTreeTest extends AbstractSiriusSwtBotGefTestCase {
+
+    private static final String PATH = "data/unit/navigation/vp2659/";
+
+    private static final String MODELER_MODEL_FILENAME = "vp-2659.odesign";
+
+    private static final String SEMANTIC_MODEL_FILENAME = "semantic.ecore";
+
+    private static final String SESSION_MODEL_FILENAME = "representations.aird";
+
+    private static final String FILE_DIR = "/";
+
+    private static final String TABLE_REPRESENTATION_NAME = "EPackage editionTable";
+
+    private static final String CROSS_TABLE_REPRESENTATION_NAME = "EPackage crossTable";
+
+    private static final String TREE_REPRESENTATION_NAME = "EPackage tree";
+
+    private static final String VIEWPOINT_NAME = "NavigationDescriptions";
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void onSetUpBeforeClosingWelcomePage() throws Exception {
+        EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, PATH + "/" + MODELER_MODEL_FILENAME, "/" + getProjectName() + "/" + MODELER_MODEL_FILENAME);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, PATH + "/" + SEMANTIC_MODEL_FILENAME, "/" + getProjectName() + "/" + SEMANTIC_MODEL_FILENAME);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, PATH + "/" + SESSION_MODEL_FILENAME, "/" + getProjectName() + "/" + SESSION_MODEL_FILENAME);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
+        sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_MODEL_FILENAME);
+        localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
+        SWTBotUtils.waitAllUiEvents();
+
+        if ("".equals(localSession.getOpenedSession().getSelectedViewpoints(false).iterator().next().getName().trim())) {
+            Set<String> set = new HashSet<String>();
+            set.add(VIEWPOINT_NAME);
+            Set<String> setEmpty = new HashSet<String>();
+            localSession.changeViewpointSelection(set, setEmpty);
+        }
+    }
+
+    /**
+     * Ensures that the "Navigate" menu correctly displays the navigation links
+     * provided by
+     * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription}
+     * for Trees.
+     */
+    public void testNavigationDescriptionAvailableFromTrees() {
+        // Step 1 : open Tree
+        UITreeRepresentation tree = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(TREE_REPRESENTATION_NAME)
+                .selectRepresentationInstance("new " + TREE_REPRESENTATION_NAME, UITreeRepresentation.class).open();
+
+        try {
+            // Step 2 : select the C2 tree item
+            // => navigation menu should not be available (only defined on
+            // EAttributes)
+            SWTBotTreeItem c2 = tree.getTree().getTreeItem("C2").select();
+            checkNavigationMenuIsAvailable(tree.getTree(), c2, false);
+
+            // Step 3 : select the at1 child of C1
+            // => navigation menu should be available
+            SWTBotTreeItem a1 = tree.getTree().getTreeItem("C1").expand().getItems()[0].select();
+            checkNavigationMenuIsAvailable(tree.getTree(), a1, true);
+        } finally {
+            tree.close();
+        }
+    }
+
+    /**
+     * Ensures that the "Navigate" menu correctly displays the navigation links
+     * provided by
+     * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription}
+     * for Edition Tables. Also checks that preconditions of
+     * NavigationDescriptions are evaluated.
+     */
+    public void testNavigationDescriptionAvailableFromEdiontTablesWithPrecondition() {
+        // Step 1 : open Table
+        UITableRepresentation table = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(TABLE_REPRESENTATION_NAME)
+                .selectRepresentationInstance("new " + TABLE_REPRESENTATION_NAME, UITableRepresentation.class).open();
+
+        try {
+            // Step 2 : select the C1 line
+            // => navigation menu should be available
+            SWTBotTreeItem c1 = table.getTable().getTreeItem("C1").select();
+            checkNavigationMenuIsAvailable(table.getTable(), c1, true);
+
+            // Step 3 : select the C2 line
+            // => navigation menu should not be available as precondition is
+            // false
+            SWTBotTreeItem c2 = table.getTable().getTreeItem("C2").select();
+            checkNavigationMenuIsAvailable(table.getTable(), c2, false);
+        } finally {
+            table.close();
+        }
+    }
+
+    /**
+     * Ensures that the "Navigate" menu correctly displays the navigation links
+     * provided by
+     * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription}
+     * for CrossTables.
+     */
+    public void testNavigationDescriptionAvailableFromCrossTables() {
+        // Step 1 : open cross Table
+        UITableRepresentation table = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(CROSS_TABLE_REPRESENTATION_NAME)
+                .selectRepresentationInstance("new " + CROSS_TABLE_REPRESENTATION_NAME, UITableRepresentation.class).open();
+
+        try {
+            // Step 2 : select the C1 line
+            // => navigation menu should be available
+            SWTBotTreeItem c2 = table.getTable().getTreeItem("C2").select();
+            checkNavigationMenuIsAvailable(table.getTable(), c2, true);
+        } finally {
+            table.close();
+        }
+    }
+
+    /**
+     * Checks that the "Navigate.." menu is available or not (according to the
+     * given parameter), and contains the custom navigation description.
+     * 
+     * @param swtBotTree
+     *            the bot for the Tree on which we d the check
+     * @param treeItem
+     *            the treeItem from which open the "Navigate" menu
+     * 
+     * @param shouldBeAvailable
+     *            indicates if the navigate menu should be available
+     */
+    protected void checkNavigationMenuIsAvailable(final SWTBotTree swtBotTree, final SWTBotTreeItem treeItem, final boolean shouldBeAvailable) {
+        boolean customNavigationIsAvailable = true;
+        SWTBotUtils.waitAllUiEvents();
+        // We only check if the custom navigation is available
+        Result<MenuItem> menuItemGetter = new ContextualMenuItemGetter(swtBotTree.widget, new String[] { "Navigate", "custom navigation" });
+        final MenuItem navigationMenuItem = UIThreadRunnable.syncExec(menuItemGetter);
+
+        customNavigationIsAvailable = navigationMenuItem != null;
+
+        if (shouldBeAvailable) {
+            assertTrue("The provided navigation description should be available under the 'Navigate' menu", customNavigationIsAvailable);
+        } else {
+            assertFalse("The provided navigation description should not be available", customNavigationIsAvailable);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void tearDown() throws Exception {
+        localSession.closeAndDiscardChanges();
+        super.tearDown();
+    }
+}

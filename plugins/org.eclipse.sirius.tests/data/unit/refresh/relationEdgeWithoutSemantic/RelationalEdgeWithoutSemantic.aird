@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_TF9K0O86EeCs3LQNbuoIjQ" selectedViews="_T8ntEO86EeCs3LQNbuoIjQ" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="RelationalEdgeWithoutSemantic.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_T8ntEO86EeCs3LQNbuoIjQ" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_VReAIO86EeCs3LQNbuoIjQ" name="RelationalEdgeWithoutSemantic">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_VSrhEO86EeCs3LQNbuoIjQ" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_VSrhEe86EeCs3LQNbuoIjQ" type="Sirius" element="_VReAIO86EeCs3LQNbuoIjQ" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_VtXR8O86EeCs3LQNbuoIjQ" type="2001" element="_Vq2wgO86EeCs3LQNbuoIjQ">
+            <children xmi:type="notation:Node" xmi:id="_Vt9H0O86EeCs3LQNbuoIjQ" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_Vt9H0e86EeCs3LQNbuoIjQ" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_VuX-kO86EeCs3LQNbuoIjQ" type="3003" element="_VrgQwO86EeCs3LQNbuoIjQ">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_VuX-ke86EeCs3LQNbuoIjQ" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VuX-ku86EeCs3LQNbuoIjQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_VtXR8e86EeCs3LQNbuoIjQ" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VtXR8u86EeCs3LQNbuoIjQ" x="215" y="175" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_VuQp0O86EeCs3LQNbuoIjQ" type="2001" element="_Vrr28O86EeCs3LQNbuoIjQ">
+            <children xmi:type="notation:Node" xmi:id="_VuRQ4O86EeCs3LQNbuoIjQ" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_VuRQ4e86EeCs3LQNbuoIjQ" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_VuYloO86EeCs3LQNbuoIjQ" type="3003" element="_Vrr28e86EeCs3LQNbuoIjQ">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_VuYloe86EeCs3LQNbuoIjQ" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VuYlou86EeCs3LQNbuoIjQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_VuQp0e86EeCs3LQNbuoIjQ" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VuQp0u86EeCs3LQNbuoIjQ" x="215" y="85" width="30" height="30"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_VSrhEu86EeCs3LQNbuoIjQ"/>
+          <edges xmi:type="notation:Edge" xmi:id="_VuwZEO86EeCs3LQNbuoIjQ" type="4001" element="_VrtFEO86EeCs3LQNbuoIjQ" source="_VtXR8O86EeCs3LQNbuoIjQ" target="_VuQp0O86EeCs3LQNbuoIjQ">
+            <children xmi:type="notation:Node" xmi:id="_Vu-bgO86EeCs3LQNbuoIjQ" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Vu-bge86EeCs3LQNbuoIjQ" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_VvWO8O86EeCs3LQNbuoIjQ" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VvWO8e86EeCs3LQNbuoIjQ" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_VvYEIO86EeCs3LQNbuoIjQ" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VvYEIe86EeCs3LQNbuoIjQ" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_VuwZEe86EeCs3LQNbuoIjQ" routing="Rectilinear" jumpLinkStatus="Above"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_VuwZEu86EeCs3LQNbuoIjQ" fontName="Segoe UI"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_VuwZE-86EeCs3LQNbuoIjQ" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_VvmtoO86EeCs3LQNbuoIjQ" id="(0.5,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Vvmtoe86EeCs3LQNbuoIjQ" id="(0.5,1.0)"/>
+          </edges>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_Vq2wgO86EeCs3LQNbuoIjQ" name="1" outgoingEdges="_VrtFEO86EeCs3LQNbuoIjQ" width="3" height="3">
+        <target xmi:type="ecore:EClass" href="RelationalEdgeWithoutSemantic.ecore#//1"/>
+        <semanticElements xmi:type="ecore:EClass" href="RelationalEdgeWithoutSemantic.ecore#//1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_VrgQwO86EeCs3LQNbuoIjQ">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_VrgQwe86EeCs3LQNbuoIjQ"/>
+          <description xmi:type="style:SquareDescription" href="RelationalEdgeWithoutSemantic.odesign#//@ownedViewpoints[name='RelationalEdgeWithoutSemantic']/@ownedRepresentations[name='RelationalEdgeWithoutSemantic']/@defaultLayer/@nodeMappings[name='class']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_VrgQwu86EeCs3LQNbuoIjQ"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_VrgQw-86EeCs3LQNbuoIjQ" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="RelationalEdgeWithoutSemantic.odesign#//@ownedViewpoints[name='RelationalEdgeWithoutSemantic']/@ownedRepresentations[name='RelationalEdgeWithoutSemantic']/@defaultLayer/@nodeMappings[name='class']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_Vrr28O86EeCs3LQNbuoIjQ" name="2" incomingEdges="_VrtFEO86EeCs3LQNbuoIjQ" width="3" height="3">
+        <target xmi:type="ecore:EClass" href="RelationalEdgeWithoutSemantic.ecore#//2"/>
+        <semanticElements xmi:type="ecore:EClass" href="RelationalEdgeWithoutSemantic.ecore#//2"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_Vrr28e86EeCs3LQNbuoIjQ">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Vrr28u86EeCs3LQNbuoIjQ"/>
+          <description xmi:type="style:SquareDescription" href="RelationalEdgeWithoutSemantic.odesign#//@ownedViewpoints[name='RelationalEdgeWithoutSemantic']/@ownedRepresentations[name='RelationalEdgeWithoutSemantic']/@defaultLayer/@nodeMappings[name='class']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Vrr28-86EeCs3LQNbuoIjQ"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_Vrr29O86EeCs3LQNbuoIjQ" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="RelationalEdgeWithoutSemantic.odesign#//@ownedViewpoints[name='RelationalEdgeWithoutSemantic']/@ownedRepresentations[name='RelationalEdgeWithoutSemantic']/@defaultLayer/@nodeMappings[name='class']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_VrtFEO86EeCs3LQNbuoIjQ" sourceNode="_Vq2wgO86EeCs3LQNbuoIjQ" targetNode="_Vrr28O86EeCs3LQNbuoIjQ">
+        <target xmi:type="ecore:EClass" href="RelationalEdgeWithoutSemantic.ecore#//1"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_VrtFEe86EeCs3LQNbuoIjQ" targetArrow="InputClosedArrow" size="2" routingStyle="manhattan">
+          <description xmi:type="style:EdgeStyleDescription" href="RelationalEdgeWithoutSemantic.odesign#//@ownedViewpoints[name='RelationalEdgeWithoutSemantic']/@ownedRepresentations[name='RelationalEdgeWithoutSemantic']/@defaultLayer/@edgeMappings[name='super']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_VrtFEu86EeCs3LQNbuoIjQ" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_VrtFE-86EeCs3LQNbuoIjQ">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_VrtFFO86EeCs3LQNbuoIjQ"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="RelationalEdgeWithoutSemantic.odesign#//@ownedViewpoints[name='RelationalEdgeWithoutSemantic']/@ownedRepresentations[name='RelationalEdgeWithoutSemantic']/@defaultLayer/@edgeMappings[name='super']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="RelationalEdgeWithoutSemantic.odesign#//@ownedViewpoints[name='RelationalEdgeWithoutSemantic']/@ownedRepresentations[name='RelationalEdgeWithoutSemantic']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_VReAIe86EeCs3LQNbuoIjQ"/>
+      <activatedLayers xmi:type="description_1:Layer" href="RelationalEdgeWithoutSemantic.odesign#//@ownedViewpoints[name='RelationalEdgeWithoutSemantic']/@ownedRepresentations[name='RelationalEdgeWithoutSemantic']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="RelationalEdgeWithoutSemantic.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="RelationalEdgeWithoutSemantic.odesign#//@ownedViewpoints[name='RelationalEdgeWithoutSemantic']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

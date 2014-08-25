@@ -1,0 +1,1058 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/diagram/description/validation/1.1.0" name="Ecore Editing Workbench V4.6" version="8.0.0">
+  <ownedViewpoints endUserDocumentation="Provides graphical and tabular modelers to design an Ecore model." name="Design" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.0/@ownedTools[name='External%20EClass%20from%20treeview'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EClassifier%20into%20EPackage'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20external%20package']" endUserDocumentation="A graphical modeler for Ecore model similar to a UML class diagram." name="Entities" titleExpression="&lt;%name%> package entities" domainClass="EPackage" enablePopupBars="true">
+      <filters xsi:type="filter:CompositeFilterDescription" name="Hide class content">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="Hide generalizations">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="Hide references">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='Bi-directional%20EC_EReference%20']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="Hide derived features">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']" semanticConditionExpression="&lt;%filter(&quot;EStructuralFeature&quot;).derived == false%>"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="Hide operations">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']" semanticConditionExpression=""/>
+      </filters>
+      <validationSet>
+        <ownedRules xsi:type="validation:ViewValidationRule" message="The &lt;%target.name%> class is never used" targets="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+          <audits auditExpression="&lt;%(((target + target.eAllSuperTypes).~.filter(&quot;EClass&quot;) + (target + target.eAllSuperTypes).~.filter(&quot;EReference&quot;) ) - target.eAllStructuralFeatures).nSize != 0%>"/>
+          <fixes name="Remove Element">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%target%>">
+                <subModelOperations xsi:type="tool:RemoveElement"/>
+              </firstModelOperations>
+            </initialOperation>
+          </fixes>
+        </ownedRules>
+        <ownedRules xsi:type="validation:ViewValidationRule" level="ERROR" message="The &lt;%target.name%> class has more than 3 super types" targets="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+          <audits auditExpression="&lt;%target.eAllSuperTypes.nSize &lt; 4%>"/>
+        </ownedRules>
+      </validationSet>
+      <defaultLayer name="Default">
+        <nodeMappings name="attribut" semanticCandidatesExpression="&lt;%eAllContents(&quot;EAttribute&quot;)%>" domainClass="EAttribute">
+          <style xsi:type="style:SquareDescription" labelExpression="&lt;%name%>Node">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="class" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+          <borderedNodeMappings name="attribute" semanticCandidatesExpression="&lt;%eAllContents()%>" domainClass="EAttribute">
+            <style xsi:type="style:EllipseNodeDescription" labelExpression="&lt;%name%>Node2">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:LozengeNodeDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="EC_EReference" preconditionExpression="&lt;%!eOpposite%>" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='EReference%20Name']" semanticElements="var:self" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetFinderExpression="&lt;%eType%>" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.3/@ownedTools[name='ReconnectEReference']">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%render%>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%containment &amp;&amp; derived%>">
+            <style sourceArrow="FillDiamond" targetArrow="NoDecoration" sizeComputationExpression="1">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+              <centerLabelStyleDescription labelFormat="italic" showIcon="false" labelExpression="&lt;%render%>">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%!containment &amp;&amp; derived%>">
+            <style sizeComputationExpression="1">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+              <centerLabelStyleDescription labelFormat="italic" showIcon="false" labelExpression="&lt;%render%>">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%containment%>">
+            <style sourceArrow="FillDiamond" targetArrow="NoDecoration" sizeComputationExpression="1">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%render%>">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappings>
+        <edgeMappings name="EC ESupertypes" deletionDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.2/@ownedTools[name='Delete%20ESuperType']" semanticCandidatesExpression="feature:eAllContents" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetFinderExpression="&lt;%eSuperTypes%>" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.3/@ownedTools[name='ReconnectESupertype']">
+          <style targetArrow="InputClosedArrow" sizeComputationExpression="1" routingStyle="tree">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%$view.targetNode.filter(&quot;EClass&quot;)[interface]%>">
+            <style lineStyle="dash" targetArrow="InputClosedArrow" sizeComputationExpression="1" routingStyle="tree">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <centerLabelStyleDescription showIcon="false">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappings>
+        <edgeMappings name="Bi-directional EC_EReference " semanticCandidatesExpression="&lt;%getEOppositeEReferences(eAllContents(&quot;EReference&quot;))%>" semanticElements="&lt;%self + eOpposite%>" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetFinderExpression="&lt;%eType%>" sourceFinderExpression="feature:eContainer" targetExpression="" domainClass="EReference" useDomainElement="true">
+          <style targetArrow="NoDecoration" sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%if (derived) {%>/&lt;%}%>&lt;%getEOppositeEReferenceName()%>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="EC EClass" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20attribute'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20operation']">
+          <borderedNodeMappings name="borderedAttribute" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
+            <style xsi:type="style:BundledImageDescription" labelExpression="&lt;%name%>BorderedNode">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </borderedNodeMappings>
+          <subNodeMappings name="EC EAttribute" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20EAttribute%20Name']" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
+            <style xsi:type="style:BundledImageDescription" labelExpression="&lt;%name%>1" sizeComputationExpression="1" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="Operation" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Operation%20Name']" semanticCandidatesExpression="feature:eAllContents" semanticElements="&lt;%self + eParameters%>" domainClass="EOperation">
+            <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="&lt;%render%>" tooltipExpression="&lt;%name%>(&lt;%eParameters.name.sep(&quot;, &quot;)%>) : &lt;%eType.name%>" sizeComputationExpression="2">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" tooltipExpression="&lt;%eContainer.name%>.&lt;%name%>" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%abstract%>">
+            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="italic" tooltipExpression="&lt;%eContainer.name%>.&lt;%name%>" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <containerMappings name="EC EEnum" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EEnum&quot;)%>" domainClass="EEnum" childrenPresentation="List">
+          <subNodeMappings name="EC EEnumLiteral" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="ocl:eLiterals" domainClass="EEnumLiteral">
+            <style xsi:type="style:BundledImageDescription" labelAlignment="LEFT" sizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="EC EDataType" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EDataType&quot;)[eClass.name == &quot;EDataType&quot;]%>" domainClass="EDataType" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="EC External EClass" semanticCandidatesExpression="&lt;%allRoots.eAllContents(&quot;EClass&quot;) - eContents.filter(&quot;EClass&quot;)%>" createElements="false" domainClass="EClass" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20attribute'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20operation']" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription" tooltipExpression="&lt;%name%> in &lt;%eResourceName%>" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="package" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EPackage&quot;)%>" domainClass="EPackage">
+          <subContainerMappings name="Class" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass"/>
+        </containerMappings>
+        <toolSections name="Classifier">
+          <ownedTools xsi:type="tool_1:ToolGroup" name="Classifier">
+            <tools xsi:type="tool_1:ContainerCreationDescription" name="Class" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="new EClass &lt;%eContainer().eContents().filter(&quot;EClass&quot;).nSize%>"/>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ContainerCreationDescription" name="Abstract Class" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="new AbstractClass &lt;%eContainer().eContents().filter(&quot;EClass&quot;).nSize%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="abstract" valueExpression="true"/>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ContainerCreationDescription" name="Interface" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="new Interface &lt;%eContainer().eContents().filter(&quot;EClass&quot;).nSize%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="interface" valueExpression="true"/>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Datatype" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EDataType']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EDataType" referenceName="eClassifiers"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Enumeration" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EEnum" referenceName="eClassifiers"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="External EClass from treeview" forceRefresh="true" mappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Feature">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Literal" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']/@subNodeMappings[name='EC%20EEnumLiteral']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EEnumLiteral" referenceName="eLiterals"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Operation" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EOperation" referenceName="eOperations">
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="new Operation"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Attribute" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EAttribute" referenceName="eStructuralFeatures">
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="new Attribute"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop attribute" mappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:newSemanticContainer">
+                <subModelOperations xsi:type="tool:SetValue" featureName="eStructuralFeatures" valueExpression="var:element"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop operation" mappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:newSemanticContainer">
+                <subModelOperations xsi:type="tool:SetValue" featureName="eOperations" valueExpression="var:element"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Relation">
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="New Package Entities" titleExpression="&lt;%name%> package entities" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']">
+            <initialOperation/>
+            <containerViewVariable name="containerView"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="SuperType" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']" iconPath="/org.eclipse.sirius.ui/icons/full/obj16/EdgeMapping.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Reference" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="newEReference&lt;%eContainer(&quot;EClassifier&quot;).eAllContents(&quot;EReference&quot;).nSize%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Bi-directional Reference" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='Bi-directional%20EC_EReference%20']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures" variableName="instanceTarget">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="var:source"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$source.name.toLowerCase()%>"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures" variableName="instanceSource">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="var:target"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$target.name.toLowerCase()%>"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="eOpposite" valueExpression="var:instanceTarget"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instanceTarget">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="eOpposite" valueExpression="var:instanceSource"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Composition" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="new EReference"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="containment" valueExpression="&lt;%true%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Delete ESuperType">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.sourceNode.target%>">
+                <subModelOperations xsi:type="tool:Unset" featureName="eSuperTypes" elementExpression="&lt;%$elementView.targetNode.target%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Reconnect">
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="ReconnectEReference" reconnectionKind="RECONNECT_BOTH">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$source!=$element.eContainer()%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="var:target"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$source==$element.eContainer()%>">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$otherEnd == $sourceView%>">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$otherEnd == $edgeView.targetNode%>">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="eStructuralFeatures" valueExpression="var:element"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$otherEnd != $edgeView.targetNode%>">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="&lt;%$edgeView.targetNode.getTarget()%>"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$otherEnd.getTarget()%>">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="eStructuralFeatures" valueExpression="var:element"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$otherEnd != $sourceView%>">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="eStructuralFeatures" valueExpression="var:element"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="ReconnectESupertype" reconnectionKind="RECONNECT_BOTH">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$source!=$element%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="var:target"/>
+                    <subModelOperations xsi:type="tool:Unset" featureName="eSuperTypes" elementExpression="var:source"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$source==$element%>">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$otherEnd == $sourceView%>">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$otherEnd == $edgeView.targetNode%>">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="&lt;%$edgeView.targetNode.getTarget()%>"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                          <subModelOperations xsi:type="tool:Unset" featureName="eSuperTypes" elementExpression="var:element"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$otherEnd != $edgeView.targetNode%>">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="var:target"/>
+                        <subModelOperations xsi:type="tool:Unset" featureName="eSuperTypes" elementExpression="var:source"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$otherEnd != $sourceView%>">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="&lt;%$edgeView.targetNode.getTarget()%>"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                      <subModelOperations xsi:type="tool:Unset" featureName="eSuperTypes" elementExpression="&lt;%$edgeView.targetNode.getTarget()%>"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Direct Edit">
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="Edit Name">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="Edit EAttribute Name">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%self.performEdit($0)%>"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="EReference Name">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%self.performEdit($0)%>"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel" documentation="- &quot;name&quot; : change the name of the operation" name="Operation Name" forceRefresh="true">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%self.performEdit($0)%>"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Help" label="Help">
+          <ownedTools xsi:type="tool:OperationAction" name="Open Entities User Guide" label="Open User Guide">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Open Entities User Guide Action" id="org.eclipse.sirius.ui.business.api.action.openHelpSection">
+                <parameters name="href" value="/org.eclipse.sirius.sample.ecore.design/doc/user-guide.html#design.entities"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers endUserDocumentation="Add support for sub-packages." name="Package" activeByDefault="true">
+        <containerMappings name="Design Package" detailDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.2/@ownedTools[name='New%20Package%20Entities']" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EPackage&quot;)%>" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EClassifier%20into%20EPackage'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EPackage%20into%20EPackage']" reusedContainerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']/@containerMappings[name='Design%20Package'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EDataType']">
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="Dropped Package" detailDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.2/@ownedTools[name='New%20Package%20Entities']" createElements="false" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EClassifier%20into%20EPackage'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']/@toolSections.0/@ownedTools[name='Drop%20EPackage%20into%20EPackage']" reusedContainerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EDataType'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']/@containerMappings[name='Design%20Package']">
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Package">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Package" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']/@containerMappings[name='Design%20Package']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EPackage" referenceName="eSubpackages" variableName="package">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:package">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="new Package &lt;%eContainer().eContents.filter(&quot;EPackage&quot;).nSize%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop EClassifier into EPackage" mappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EDataType'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EEnum']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:newSemanticContainer">
+                <subModelOperations xsi:type="tool:SetValue" featureName="eClassifiers" valueExpression="var:element"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop external package" mappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']/@containerMappings[name='Dropped%20Package']" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop EPackage into EPackage" mappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']/@containerMappings[name='Design%20Package'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']/@containerMappings[name='Dropped%20Package']" dragSource="BOTH">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:newSemanticContainer">
+                <subModelOperations xsi:type="tool:SetValue" featureName="eSubpackages" valueExpression="var:element"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </additionalLayers>
+      <additionalLayers name="Dynamic">
+        <toolSections name="Dynamic">
+          <ownedTools xsi:type="tool:ToolDescription" name="Dynamic instance" precondition="&lt;%filter(&quot;EClass&quot;)%>" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/DynamicInstance.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Create dynamic instance of a specified EClass" id="org.eclipse.sirius.sample.ecore.design.action.createDynamicInstanceActionID">
+                <parameters name="eClass" value="var:element"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:EditionTableDescription" endUserDocumentation="A tabular editor (spreadsheet-like) of the entities in an Ecore model." name="Classes" titleExpression="Classes in &lt;%name%> package" domainClass="EPackage">
+      <ownedLineMappings name="Classes lines" domainClass="EClass" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>">
+        <foregroundConditionalStyle predicateExpression="&lt;%abstract%>">
+          <style labelSize="10" labelFormat="italic">
+            <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </foregroundConditionalStyle>
+        <ownedSubLines name="Feature" domainClass="EStructuralFeature"/>
+      </ownedLineMappings>
+      <ownedLineMappings name="Package" domainClass="EPackage" headerLabelExpression="&lt;%name%>">
+        <defaultBackground>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+        </defaultBackground>
+        <ownedSubLines name="Classes lines" domainClass="EClass" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>">
+          <ownedSubLines name="Feature" domainClass="EStructuralFeature"/>
+        </ownedSubLines>
+      </ownedLineMappings>
+      <ownedCreateLine name="Create Class" forceRefresh="true" mapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes']/@ownedLineMappings[name='Classes%20lines']">
+        <variables name="root" documentation="The semantic element of the table."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:container">
+          <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="NewEClass"/>
+          </subModelOperations>
+        </firstModelOperation>
+      </ownedCreateLine>
+      <ownedColumnMappings name="Name" headerLabelExpression="Name" featureName="name" labelExpression="&lt;%if (filter(&quot;EStructuralFeature&quot;).derived) {%>/&lt;%}%>&lt;%name%>"/>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.ecore.design.service.EcoreService"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.ecore.design.service.EReferenceServices"/>
+  </ownedViewpoints>
+  <ownedViewpoints endUserDocumentation="Add support for archeypes-based modeling to the Entities modeler." name="Archetype" modelFileExtension="ecore">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Entities With Archetypes" viewpointURI="viewpoint:/org.eclipse.sirius.sample.ecore.design/Design" representationName="Entities">
+      <layers name="Archetypes" activeByDefault="true">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="Archetyped EClass" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass" childrenPresentation="List" importedMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+          <conditionnalStyles predicateExpression="&lt;%isMomentInterval%>">
+            <style xsi:type="style:FlatContainerStyleDescription" tooltipExpression="&lt;%eContainer.name%>.&lt;%name%>" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='MomentIntervalColor']">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%isDescription%>">
+            <style xsi:type="style:FlatContainerStyleDescription" tooltipExpression="&lt;%eContainer.name%>.&lt;%name%>" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='DescriptionColor']">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%isThing%>">
+            <style xsi:type="style:FlatContainerStyleDescription" tooltipExpression="&lt;%eContainer.name%>.&lt;%name%>" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='PartyPlaceThingColor']">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%isRole%>">
+            <style xsi:type="style:FlatContainerStyleDescription" tooltipExpression="&lt;%eContainer.name%>.&lt;%name%>" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='RoleColor']">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%isInterface%>">
+            <style xsi:type="style:FlatContainerStyleDescription" tooltipExpression="&lt;%eContainer.name%>.&lt;%name%>" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <toolSections name="Archetype">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Does the class represent a moment or interval of time that we need to track for business or legal reasons? " name="MomentInterval" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Archetype']/@ownedRepresentationExtensions[name='Entities%20With%20Archetypes']/@layers[name='Archetypes']/@containerMappings[name='Archetyped%20EClass']" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/MomentInterval.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;EPackage&quot;)%>">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="new MomentInterval &lt;%eContainer().eContents().filter(&quot;EClass&quot;).nSize%>">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%addArchetypeAnnotation(&quot;MomentInterval&quot;)%>"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;EClass&quot;)%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%addArchetypeAnnotation(&quot;MomentInterval&quot;)%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Does the class represent a catalog-entry like description? " name="Description" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Archetype']/@ownedRepresentationExtensions[name='Entities%20With%20Archetypes']/@layers[name='Archetypes']/@containerMappings[name='Archetyped%20EClass']" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/Description.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;EPackage&quot;)%>">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="new Description &lt;%eContainer().eContents().filter(&quot;EClass&quot;).nSize%>">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%addArchetypeAnnotation(&quot;Description&quot;)%>"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;EClass&quot;)%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%addArchetypeAnnotation(&quot;Description&quot;)%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Does the class represent a role being played by a party (person or organization), place or thing? " name="Role" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Archetype']/@ownedRepresentationExtensions[name='Entities%20With%20Archetypes']/@layers[name='Archetypes']/@containerMappings[name='Archetyped%20EClass']" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/Role.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;EPackage&quot;)%>">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="new Role &lt;%eContainer().eContents().filter(&quot;EClass&quot;).nSize%>">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%addArchetypeAnnotation(&quot;Role&quot;)%>"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;EClass&quot;)%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%addArchetypeAnnotation(&quot;Role&quot;)%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Place/Thing" forceRefresh="true" containerMappings="//@ownedViewpoints[name='Archetype']/@ownedRepresentationExtensions[name='Entities%20With%20Archetypes']/@layers[name='Archetypes']/@containerMappings[name='Archetyped%20EClass']" iconPath="/org.eclipse.sirius.sample.ecore.design/icons/full/obj16/Thing.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;EPackage&quot;)%>">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="new Thing &lt;%eContainer().eContents().filter(&quot;EClass&quot;).nSize%>">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%addArchetypeAnnotation(&quot;Thing&quot;)%>"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;EClass&quot;)%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%addArchetypeAnnotation(&quot;Thing&quot;)%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </layers>
+    </ownedRepresentationExtensions>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.ecore.design.service.ArchetypeServices"/>
+  </ownedViewpoints>
+  <ownedViewpoints endUserDocumentation="Provides representations to assess the quality of an Ecore model." name="Quality" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Dependencies" titleExpression="Dependencies of package &lt;%name%>" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <edgeMappings name="Package Dependency" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Quality']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Dep%20Package'] //@ownedViewpoints[name='Quality']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']" targetMapping="//@ownedViewpoints[name='Quality']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Dep%20Package'] //@ownedViewpoints[name='Quality']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']" targetFinderExpression="&lt;%((self.eClassifiers.eAllStructuralFeatures.eType) + (self.eClassifiers.eAllSuperTypes)).eContainer(&quot;EPackage&quot;).nMinimize - self%>">
+          <style lineStyle="dash" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Dep Package" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="&lt;%eAllContents(&quot;EPackage&quot;)%>" domainClass="EPackage">
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelExpression="&lt;%name%> : &lt;%nsURI%>" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='External%20Package%20Color']">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="Analyzed Package" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="var:self" domainClass="EPackage">
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelExpression="&lt;%name%> : &lt;%nsURI%>" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Package%20Color']">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Help" label="Help">
+          <ownedTools xsi:type="tool:OperationAction" name="Open Dependencies User Guide" label="Open User Guide">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Open Dependencies User Guide Action" id="org.eclipse.sirius.ui.business.api.action.openHelpSection">
+                <parameters name="href" value="/org.eclipse.sirius.sample.ecore.design/doc/user-guide.html#quality.dependencies"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="Content">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="Package" semanticCandidatesExpression="feature:eAllContents" domainClass="EPackage" importedMapping="//@ownedViewpoints[name='Quality']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Dep%20Package']">
+          <subContainerMappings name="PD EClass" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass" childrenPresentation="List">
+            <subNodeMappings name="EC EAttribute" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
+              <style xsi:type="style:BundledImageDescription" labelExpression="&lt;%if (derived) {%>/&lt;%}%>&lt;%name%>" labelAlignment="LEFT" sizeComputationExpression="1">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+            <conditionnalStyles predicateExpression="&lt;%abstract%>">
+              <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </style>
+            </conditionnalStyles>
+          </subContainerMappings>
+        </containerMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Relations" titleExpression="Relations for class &lt;%name%>" domainClass="EClass">
+      <defaultLayer name="Default">
+        <containerMappings name="R Domain Class" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="var:self" domainClass="EClass" childrenPresentation="List">
+          <subNodeMappings name="R EAttribute" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
+            <style xsi:type="style:BundledImageDescription" labelExpression="&lt;%if (derived) {%>/&lt;%}%>&lt;%name%>" labelAlignment="LEFT" sizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Size%20Based%20Color']" labelSize="10" labelFormat="bold" backgroundStyle="GradientTopToBottom">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%abstract%>">
+            <style xsi:type="style:FlatContainerStyleDescription" borderColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Size%20Based%20Color']" labelFormat="bold" backgroundStyle="GradientTopToBottom">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <toolSections name="Help" label="Help">
+          <ownedTools xsi:type="tool:OperationAction" name="Open Relations User Guide" label="Open User Guide">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Open Relations User Guide Action" id="org.eclipse.sirius.ui.business.api.action.openHelpSection">
+                <parameters name="href" value="/org.eclipse.sirius.sample.ecore.design/doc/user-guide.html#quality.relations"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="Used by">
+        <edgeMappings name="Related Used by EReference" semanticCandidatesExpression="&lt;%~.filter(&quot;EReference&quot;)%>" semanticElements="&lt;%null%>" sourceMapping="//@ownedViewpoints[name='Quality']/@ownedRepresentations[name='Relations']/@additionalLayers[name='Used%20by']/@containerMappings[name='R%20Used%20by%20Classes']" targetMapping="//@ownedViewpoints[name='Quality']/@ownedRepresentations[name='Relations']/@defaultLayer/@containerMappings[name='R%20Domain%20Class']" targetFinderExpression="&lt;%eType%>" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%containment%>">
+            <style sourceArrow="FillDiamond" sizeComputationExpression="1">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <centerLabelStyleDescription>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappings>
+        <edgeMappings name="Related Used by  ESupertypes" semanticCandidatesExpression="feature:eAllContents" semanticElements="&lt;%null%>" sourceMapping="//@ownedViewpoints[name='Quality']/@ownedRepresentations[name='Relations']/@defaultLayer/@containerMappings[name='R%20Domain%20Class']" targetMapping="//@ownedViewpoints[name='Quality']/@ownedRepresentations[name='Relations']/@additionalLayers[name='Used%20by']/@containerMappings[name='R%20Used%20by%20Classes']" targetFinderExpression="&lt;%~.filter(&quot;EClass&quot;)%>">
+          <style lineStyle="dash" targetArrow="InputClosedArrow" sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="R Used by Classes" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="&lt;%(~.filter(&quot;EClass&quot;) + ~.filter(&quot;EReference&quot;).eContainer).nMinimize - self%>" domainClass="EClass" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%abstract%>">
+            <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+      </additionalLayers>
+      <additionalLayers name="Uses">
+        <edgeMappings name="Related Use  EReference" semanticCandidatesExpression="&lt;%eAllStructuralFeatures.filter(&quot;EReference&quot;)%>" semanticElements="&lt;%null%>" sourceMapping="//@ownedViewpoints[name='Quality']/@ownedRepresentations[name='Relations']/@defaultLayer/@containerMappings[name='R%20Domain%20Class']" targetMapping="//@ownedViewpoints[name='Quality']/@ownedRepresentations[name='Relations']/@additionalLayers[name='Uses']/@containerMappings[name='R%20Uses%20Classes']" targetFinderExpression="&lt;%eType%>" sourceFinderExpression="&lt;%eContainer(&quot;EClass&quot;)%>" domainClass="EReference" useDomainElement="true">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%containment%>">
+            <style sourceArrow="FillDiamond" sizeComputationExpression="1">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <centerLabelStyleDescription>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappings>
+        <edgeMappings name="Related Use  ESupertypes" semanticCandidatesExpression="feature:eAllContents" semanticElements="&lt;%null%>" sourceMapping="//@ownedViewpoints[name='Quality']/@ownedRepresentations[name='Relations']/@defaultLayer/@containerMappings[name='R%20Domain%20Class']" targetMapping="//@ownedViewpoints[name='Quality']/@ownedRepresentations[name='Relations']/@additionalLayers[name='Uses']/@containerMappings[name='R%20Uses%20Classes']" targetFinderExpression="&lt;%eSuperTypes%>">
+          <style lineStyle="dash" targetArrow="InputClosedArrow" sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="R Uses Classes" labelDirectEdit="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="&lt;%(self.eAllStructuralFeatures.filter(&quot;EReference&quot;).eType + self.eAllSuperTypes.nFirst).nMinimize - self%>" domainClass="EClass" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%abstract%>">
+            <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Hierarchy" titleExpression="Type hierarchy of &lt;%name%>" domainClass="EClass">
+      <defaultLayer name="Default">
+        <edgeMappings name="Hierarchy direct super type" semanticCandidatesExpression="feature:eAllContents" semanticElements="&lt;%null%>" sourceMapping="//@ownedViewpoints[name='Quality']/@ownedRepresentations[name='Hierarchy']/@defaultLayer/@containerMappings[name='H%20Domain%20Class']" targetMapping="//@ownedViewpoints[name='Quality']/@ownedRepresentations[name='Hierarchy']/@defaultLayer/@containerMappings[name='H%20SuperTypes']" targetFinderExpression="&lt;%eSuperTypes%>">
+          <style lineStyle="dash" targetArrow="InputClosedArrow" sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Hierarchy indirect super type" semanticCandidatesExpression="feature:eAllContents" semanticElements="&lt;%null%>" sourceMapping="//@ownedViewpoints[name='Quality']/@ownedRepresentations[name='Hierarchy']/@defaultLayer/@containerMappings[name='H%20SuperTypes']" targetMapping="//@ownedViewpoints[name='Quality']/@ownedRepresentations[name='Hierarchy']/@defaultLayer/@containerMappings[name='H%20SuperTypes']" targetFinderExpression="&lt;%eSuperTypes%>">
+          <style lineStyle="dash" targetArrow="InputClosedArrow" sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="H Domain Class" semanticCandidatesExpression="var:self" domainClass="EClass" childrenPresentation="List">
+          <subNodeMappings name="H EAttribute" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
+            <style xsi:type="style:BundledImageDescription" labelExpression="&lt;%if (derived) {%>/&lt;%}%>&lt;%name%>" labelAlignment="LEFT" sizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelFormat="bold" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%abstract%>">
+            <style xsi:type="style:FlatContainerStyleDescription" labelFormat="bold" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <containerMappings name="H SuperTypes" semanticCandidatesExpression="&lt;%eAllSuperTypes%>" domainClass="EClass" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%abstract%>">
+            <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <toolSections name="Help" label="Help">
+          <ownedTools xsi:type="tool:OperationAction" name="Open Hierarchy User Guide" label="Open User Guide">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ExternalJavaAction" name="Open Hierarchy User Guide Action" id="org.eclipse.sirius.ui.business.api.action.openHelpSection">
+                <parameters name="href" value="/org.eclipse.sirius.sample.ecore.design/doc/user-guide.html#quality.hierarchy"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Entities" viewpointURI="viewpoint:/org.eclipse.sirius.sample.ecore.design/Design" representationName="Entities">
+      <layers name="Size">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="Doc Class" semanticCandidatesExpression="feature:eAllContents" reusedNodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']" childrenPresentation="List" importedMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelFormat="italic" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Ecore%20Palette']/@entries[name='Size%20Based%20Color']">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+      </layers>
+    </ownedRepresentationExtensions>
+  </ownedViewpoints>
+  <ownedViewpoints endUserDocumentation="Provides representation to document and review Ecore models." name="Review" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_2:CrossTableDescription" endUserDocumentation="Document the concepts in a package." name="Documentation" titleExpression="Documentation for &lt;%name%> package" domainClass="EPackage">
+      <ownedLineMappings name="Doc EClassifiers" semanticElements="var:self" domainClass="EClassifier" semanticCandidatesExpression="feature:eContents" headerLabelExpression="&lt;%eClass.name%> : &lt;%name%>">
+        <defaultBackground>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultBackground>
+        <ownedSubLines name="Doc EStructural Features" domainClass="EStructuralFeature" headerLabelExpression="&lt;%eClass.name%> : &lt;%name%>">
+          <defaultBackground>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </defaultBackground>
+        </ownedSubLines>
+      </ownedLineMappings>
+      <ownedColumnMappings name="Doc Root" headerLabelExpression="Domain Documentation" domainClass="EPackage" semanticCandidatesExpression="&lt;%getRootContainer%>"/>
+      <intersection name="EModelElements to Doc Annotation" semanticElements="var:self" lineMapping="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Documentation']/@ownedLineMappings[name='Doc%20EClassifiers'] //@ownedViewpoints[name='Review']/@ownedRepresentations[name='Documentation']/@ownedLineMappings[name='Doc%20EClassifiers']/@ownedSubLines[name='Doc%20EStructural%20Features']" columnMapping="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Documentation']/@ownedColumnMappings.0" labelExpression="&lt;%value%>" useDomainClass="true" columnFinderExpression="&lt;%getRootContainer()%>" lineFinderExpression="&lt;%eContainer(&quot;EAnnotation&quot;).eContainer()%>" semanticCandidatesExpression="&lt;%eAllContents(&quot;EAnnotation&quot;)[source==&quot;http://www.eclipse.org/emf/2002/GenModel&quot;].details[key==&quot;documentation&quot;]%>" domainClass="EStringToStringMapEntry">
+        <directEdit>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool:SetValue" featureName="value" valueExpression="var:arg0"/>
+          <mask mask="{0}"/>
+        </directEdit>
+        <defaultBackground>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+        </defaultBackground>
+        <create name="New Documentation" forceRefresh="true">
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:lineSemantic">
+            <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%eAnnotations[source==&quot;http://www.eclipse.org/emf/2002/GenModel&quot;].nSize == 0%>">
+              <subModelOperations xsi:type="tool:CreateInstance" typeName="EAnnotation" referenceName="eAnnotations" variableName="newAnnotation">
+                <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="http://www.eclipse.org/emf/2002/GenModel"/>
+              </subModelOperations>
+            </subModelOperations>
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$lineSemantic.eAnnotations[source==&quot;http://www.eclipse.org/emf/2002/GenModel&quot;]%>">
+              <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.details[key==&quot;documentation&quot;].nSize == 0%>">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="EStringToStringMapEntry" referenceName="details" variableName="newDetail">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="key" valueExpression="documentation"/>
+                </subModelOperations>
+              </subModelOperations>
+            </subModelOperations>
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$lineSemantic.eAnnotations[source==&quot;http://www.eclipse.org/emf/2002/GenModel&quot;].details[key==&quot;documentation&quot;]%>">
+              <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="var:arg0"/>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </create>
+      </intersection>
+    </ownedRepresentations>
+  </ownedViewpoints>
+  <ownedViewpoints endUserDocumentation="Adds support for EMF GenModel configuration." name="Generation" modelFileExtension="genmodel">
+    <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="GenPackage Attributes" domainClass="GenPackage">
+      <ownedLineMappings name="GenClass" domainClass="GenClass" headerLabelExpression="&lt;%ecoreClass.name%>">
+        <ownedSubLines name="GenFeature" domainClass="GenFeature" semanticCandidatesExpression="&lt;%eAllContents(&quot;GenFeature&quot;)[ecoreFeature.filter(&quot;EAttribute&quot;) || (ecoreFeature.filter(&quot;EReference&quot;)  &amp;&amp; !ecoreFeature.filter(&quot;EReference&quot;).containment &amp;&amp; !ecoreFeature.filter(&quot;EReference&quot;).derived) ]%>" headerLabelExpression="&lt;%ecoreFeature.name%>">
+          <backgroundConditionalStyle predicateExpression="&lt;%propertyCategory == &quot;&quot;%>">
+            <style>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            </style>
+          </backgroundConditionalStyle>
+        </ownedSubLines>
+      </ownedLineMappings>
+      <ownedColumnMappings name="Category" headerLabelExpression="Category" canEdit="&lt;%self.filter(&quot;GenFeature&quot;)%>" featureName="propertyCategory" labelExpression="&lt;%if (self.filter(&quot;GenFeature&quot;)){%>&lt;%self.propertyCategory%>&lt;%}else{%>&lt;%&quot;&quot;%>&lt;%}%>"/>
+      <ownedColumnMappings name="Decription" headerLabelExpression="Description" canEdit="&lt;%self.filter(&quot;GenFeature&quot;)%>" featureName="propertyDescription" labelExpression="&lt;%if (self.filter(&quot;GenFeature&quot;)){%>&lt;%self.propertyDescription%>&lt;%}else{%>&lt;%&quot;&quot;%>&lt;%}%>"/>
+    </ownedRepresentations>
+  </ownedViewpoints>
+  <userColorsPalettes name="Ecore Palette">
+    <entries xsi:type="description:InterpolatedColor" name="Size Based Color"/>
+    <entries xsi:type="description:UserFixedColor" red="250" green="190" blue="190" name="MomentIntervalColor"/>
+    <entries xsi:type="description:UserFixedColor" red="250" green="240" blue="180" name="RoleColor"/>
+    <entries xsi:type="description:UserFixedColor" red="180" green="230" blue="180" name="PartyPlaceThingColor"/>
+    <entries xsi:type="description:UserFixedColor" red="180" green="200" blue="210" name="DescriptionColor"/>
+    <entries xsi:type="description:UserFixedColor" red="255" green="245" blue="182" name="Package Color"/>
+    <entries xsi:type="description:UserFixedColor" red="253" green="208" blue="142" name="External Package Color"/>
+  </userColorsPalettes>
+</description:Group>

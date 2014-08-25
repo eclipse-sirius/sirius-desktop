@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.obeo.fr/dsl/viewpoint/description/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0" xmlns:viewpoint="http://www.obeo.fr/dsl/viewpoint/1.1.0" xsi:schemaLocation="http://www.obeo.fr/dsl/viewpoint/description/1.1.0 http://www.obeo.fr/dsl/viewpoint/1.1.0#//description http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0 http://www.obeo.fr/dsl/viewpoint/1.1.0#//description/style" xmi:id="_C5s_QT23EeOGgvCQsFPYQg" selectedViews="_EfJ6ID23EeOGgvCQsFPYQg" version="6.8.0.201307151200">
+  <models xmi:type="ecore:EPackage" href="vp-4179_migration.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_EfJ6ID23EeOGgvCQsFPYQg" initialized="true">
+    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_GHctoD23EeOGgvCQsFPYQg" name="new vp-4179">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_GHnswD23EeOGgvCQsFPYQg" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_GHnswT23EeOGgvCQsFPYQg" type="Viewpoint" element="_GHctoD23EeOGgvCQsFPYQg" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_GHtMUD23EeOGgvCQsFPYQg" type="2001" element="_GHctoT23EeOGgvCQsFPYQg">
+            <children xmi:type="notation:Node" xmi:id="_GH0hED23EeOGgvCQsFPYQg" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_GH0hET23EeOGgvCQsFPYQg" x="192"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_GIAuUD23EeOGgvCQsFPYQg" type="3003" element="_GHctoj23EeOGgvCQsFPYQg">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_GIAuUT23EeOGgvCQsFPYQg" fontName="Comic Sans MS" lineColor="16711680"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GIAuUj23EeOGgvCQsFPYQg"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_GHtMUT23EeOGgvCQsFPYQg" fontName="Comic Sans MS" fontHeight="8" lineColor="16711680"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GHtMUj23EeOGgvCQsFPYQg" x="195" y="155" width="191" height="96"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_GHnswj23EeOGgvCQsFPYQg"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_GHctoT23EeOGgvCQsFPYQg" name="Test" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="vp-4179_migration.ecore#//Test"/>
+        <semanticElements xmi:type="ecore:EClass" href="vp-4179_migration.ecore#//Test"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="viewpoint:Square" xmi:id="_GHctoj23EeOGgvCQsFPYQg">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_GHctoz23EeOGgvCQsFPYQg"/>
+          <description xmi:type="style:SquareDescription" href="vp-4179_migration_migrated.odesign#//@ownedViewpoints[name='vp-4179']/@ownedRepresentations[name='vp-4179']/@optionalLayers[name='optional1']/@nodeMappings[name='test']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_GHctpD23EeOGgvCQsFPYQg"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_GHctpT23EeOGgvCQsFPYQg" red="138" green="226" blue="52"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMappingImport" href="vp-4179_migration_migrated.odesign#//@ownedViewpoints[name='vp-4179']/@ownedRepresentations[name='vp-4179']/@optionalLayers[name='optional2']/@nodeMappings[name='test%20import']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description:DiagramDescription" href="vp-4179_migration_migrated.odesign#//@ownedViewpoints[name='vp-4179']/@ownedRepresentations[name='vp-4179']"/>
+      <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_GHctpj23EeOGgvCQsFPYQg"/>
+      <activatedLayers xmi:type="description:Layer" href="vp-4179_migration_migrated.odesign#//@ownedViewpoints[name='vp-4179']/@ownedRepresentations[name='vp-4179']/@defaultLayer"/>
+      <activatedLayers xmi:type="description:OptionalLayer" href="vp-4179_migration_migrated.odesign#//@ownedViewpoints[name='vp-4179']/@ownedRepresentations[name='vp-4179']/@optionalLayers[name='optional1']"/>
+      <activatedLayers xmi:type="description:OptionalLayer" href="vp-4179_migration_migrated.odesign#//@ownedViewpoints[name='vp-4179']/@ownedRepresentations[name='vp-4179']/@optionalLayers[name='optional2']"/>
+      <target xmi:type="ecore:EPackage" href="vp-4179_migration.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="vp-4179_migration_migrated.odesign#//@ownedViewpoints[name='vp-4179']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

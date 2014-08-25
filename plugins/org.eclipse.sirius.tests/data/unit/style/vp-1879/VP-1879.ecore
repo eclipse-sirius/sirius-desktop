@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="VP-1879"
+    nsURI="VP-1879" nsPrefix="VP-1879">
+  <eClassifiers xsi:type="ecore:EClass" name="c1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="-1" eType="#//c2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="0" eType="#//c2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="1" eType="#//c2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="2" eType="#//c2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="5" eType="#//c2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="10" eType="#//c2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" eType="#//c2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="c2"/>
+</ecore:EPackage>

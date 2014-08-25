@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="aaaa">
+  <eClassifiers xsi:type="ecore:EClass" name="c">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="a"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="c">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="a"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="a"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="a"/>
+  </eClassifiers>
+  <eSubpackages name="0">
+    <eClassifiers xsi:type="ecore:EClass" name="c">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="a"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="c">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="a"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="a"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="a"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="1">
+    <eClassifiers xsi:type="ecore:EClass" name="c">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="a"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="c">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="a"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="a"/>
+    </eClassifiers>
+    <eSubpackages name="dddd">
+      <eClassifiers xsi:type="ecore:EClass" name="c">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="a"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="a"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="c">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="a"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="a"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="a"/>
+      </eClassifiers>
+      <eSubpackages name="cccc">
+        <eClassifiers xsi:type="ecore:EClass" name="c">
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="a"/>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="a"/>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="a"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="c"/>
+      </eSubpackages>
+      <eSubpackages name="dddd">
+        <eClassifiers xsi:type="ecore:EClass" name="c"/>
+        <eClassifiers xsi:type="ecore:EClass" name="c"/>
+        <eSubpackages name="cccc">
+          <eClassifiers xsi:type="ecore:EClass" name="c"/>
+          <eClassifiers xsi:type="ecore:EClass" name="c"/>
+        </eSubpackages>
+        <eSubpackages name="dddd"/>
+        <eSubpackages name="dddd"/>
+      </eSubpackages>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="2">
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="dddd"/>
+  </eSubpackages>
+</ecore:EPackage>

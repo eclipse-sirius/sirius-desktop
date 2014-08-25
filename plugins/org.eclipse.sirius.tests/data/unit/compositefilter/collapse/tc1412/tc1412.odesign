@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="tc1412" version="8.0.0">
+  <ownedViewpoints name="tc1412" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="tc1412" domainClass="EPackage">
+      <filters xsi:type="filter:CompositeFilterDescription" name="CollapseAttrRef" label="Collapse attributes and references">
+        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='tc1412']/@ownedRepresentations[name='tc1412']/@containerMappings[name='EClass']/@borderedNodeMappings[name='EAttribute%20as%20border%20node'] //@ownedViewpoints[name='tc1412']/@ownedRepresentations[name='tc1412']/@nodeMappings[name='EClass%20as%20node']/@borderedNodeMappings[name='EAttribute'] //@ownedViewpoints[name='tc1412']/@ownedRepresentations[name='tc1412']/@containerMappings[name='EClass']/@subNodeMappings[name='EReference%20as%20subnode']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="CollapseClass" label="Collapse classes">
+        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='tc1412']/@ownedRepresentations[name='tc1412']/@containerMappings[name='EClass'] //@ownedViewpoints[name='tc1412']/@ownedRepresentations[name='tc1412']/@nodeMappings[name='EClass%20as%20node']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="HideAttrRef" label="Hide attributes and references">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='tc1412']/@ownedRepresentations[name='tc1412']/@nodeMappings[name='EClass%20as%20node']/@borderedNodeMappings[name='EAttribute'] //@ownedViewpoints[name='tc1412']/@ownedRepresentations[name='tc1412']/@containerMappings[name='EClass']/@subNodeMappings[name='EReference%20as%20subnode']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="HideClass" label="Hide classes">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='tc1412']/@ownedRepresentations[name='tc1412']/@containerMappings[name='EClass'] //@ownedViewpoints[name='tc1412']/@ownedRepresentations[name='tc1412']/@nodeMappings[name='EClass%20as%20node']"/>
+      </filters>
+      <nodeMappings name="EClass as node" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+        <borderedNodeMappings name="EAttribute" semanticCandidatesExpression="feature:eContents" domainClass="EAttribute">
+          <style xsi:type="style:SquareDescription" labelPosition="node" width="3" height="3">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+          </style>
+        </borderedNodeMappings>
+        <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW" width="5" height="5">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+        </style>
+      </nodeMappings>
+      <edgeMappings name="container" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='tc1412']/@ownedRepresentations[name='tc1412']/@containerMappings[name='EClass']/@borderedNodeMappings[name='EAttribute%20as%20border%20node']" targetMapping="//@ownedViewpoints[name='tc1412']/@ownedRepresentations[name='tc1412']/@nodeMappings[name='EClass%20as%20node']" targetFinderExpression="feature:eContainer">
+        <style sizeComputationExpression="2">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <containerMappings name="EClass" semanticCandidatesExpression="feature:eContents" semanticElements="var:self" domainClass="EClass">
+        <borderedNodeMappings name="EAttribute as border node" semanticCandidatesExpression="feature:eContents" domainClass="EAttribute">
+          <style xsi:type="style:SquareDescription" labelPosition="node" width="3" height="3">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%name == &quot;1&quot;%>">
+            <style xsi:type="style:LozengeNodeDescription" borderSizeComputationExpression="2">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%name == &quot;2&quot;%>">
+            <style xsi:type="style:EllipseNodeDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%name == &quot;3&quot;%>">
+            <style xsi:type="style:DotDescription" borderSizeComputationExpression="2" strokeSizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%name == &quot;4&quot;%>">
+            <style xsi:type="style:BundledImageDescription" shape="triangle">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%name == &quot;5&quot;%>">
+            <style xsi:type="style:WorkspaceImageDescription" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%name == &quot;6&quot;%>">
+            <style xsi:type="style:GaugeCompositeStyleDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <sections maxValueExpression="&lt;%100%>" valueExpression="&lt;%75%>">
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+              </sections>
+            </style>
+          </conditionnalStyles>
+        </borderedNodeMappings>
+        <subNodeMappings name="EReference as subnode" semanticCandidatesExpression="feature:eContents" domainClass="EReference">
+          <style xsi:type="style:SquareDescription" resizeKind="NSEW" width="5" height="5">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+          </style>
+        </subNodeMappings>
+        <style xsi:type="style:FlatContainerStyleDescription">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+        </style>
+      </containerMappings>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

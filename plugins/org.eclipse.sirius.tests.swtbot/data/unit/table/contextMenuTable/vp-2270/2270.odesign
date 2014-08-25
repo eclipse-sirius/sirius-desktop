@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="VP-2270 Group" version="8.0.0">
+  <ownedViewpoints name="2270" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="Table" domainClass="EPackage">
+      <ownedLineMappings name="Classes lines" domainClass="EClass" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>">
+        <foregroundConditionalStyle predicateExpression="&lt;%abstract%>">
+          <style labelSize="15" labelFormat="italic">
+            <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
+          </style>
+        </foregroundConditionalStyle>
+        <ownedSubLines name="Feature" domainClass="EStructuralFeature"/>
+      </ownedLineMappings>
+      <ownedLineMappings name="Package" domainClass="EPackage" headerLabelExpression="&lt;%name%>">
+        <defaultBackground>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+        </defaultBackground>
+        <ownedSubLines name="Classes lines" domainClass="EClass" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>">
+          <ownedSubLines name="Feature" domainClass="EStructuralFeature"/>
+        </ownedSubLines>
+      </ownedLineMappings>
+      <ownedCreateLine name="Create Class" forceRefresh="true" mapping="//@ownedViewpoints[name='2270']/@ownedRepresentations[name='Table']/@ownedLineMappings[name='Classes%20lines']">
+        <variables name="root" documentation="The semantic element of the table."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:container">
+          <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="NewEClass"/>
+          </subModelOperations>
+        </firstModelOperation>
+      </ownedCreateLine>
+      <ownedCreateLine name="line" forceRefresh="true" mapping="//@ownedViewpoints[name='2270']/@ownedRepresentations[name='Table']/@ownedLineMappings[name='Classes%20lines']">
+        <variables name="root" documentation="The semantic element of the table."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:container">
+          <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="NewEClass"/>
+          </subModelOperations>
+        </firstModelOperation>
+      </ownedCreateLine>
+      <ownedColumnMappings name="Name" headerLabelExpression="Name" featureName="name" labelExpression="&lt;%if (filter(&quot;EStructuralFeature&quot;).derived) {%>/&lt;%}%>&lt;%name%>"/>
+    </ownedRepresentations>
+  </ownedViewpoints>
+  <userColorsPalettes name="Ecore Palette">
+    <entries xsi:type="description:InterpolatedColor" name="Size Based Color"/>
+    <entries xsi:type="description:UserFixedColor" red="250" green="190" blue="190" name="MomentIntervalColor"/>
+    <entries xsi:type="description:UserFixedColor" red="250" green="240" blue="180" name="RoleColor"/>
+    <entries xsi:type="description:UserFixedColor" red="180" green="230" blue="180" name="PartyPlaceThingColor"/>
+    <entries xsi:type="description:UserFixedColor" red="180" green="200" blue="210" name="DescriptionColor"/>
+  </userColorsPalettes>
+</description:Group>

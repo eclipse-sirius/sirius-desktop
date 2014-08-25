@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram" xmi:id="_O_uYEGseEeCXW_cz9nNl6g" selectedViews="_PYNwkGseEeCXW_cz9nNl6g" version="8.0.0">
+  <models xmi:type="uml:Package" href="vp-2023.uml#_Mq7q8GseEeCXW_cz9nNl6g"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_PYNwkGseEeCXW_cz9nNl6g" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_QKs9cGseEeCXW_cz9nNl6g" name="new VP-2023">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_QLSzUGseEeCXW_cz9nNl6g" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_QLTaYGseEeCXW_cz9nNl6g" type="Sirius" element="_QKs9cGseEeCXW_cz9nNl6g" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_QLTaYWseEeCXW_cz9nNl6g"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description_1:DiagramDescription" href="vp-2023.odesign#//@ownedViewpoints[name='VP-2023']/@ownedRepresentations[name='VP-2023']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_QKs9cWseEeCXW_cz9nNl6g"/>
+      <activatedLayers xmi:type="description_1:Layer" href="vp-2023.odesign#//@ownedViewpoints[name='VP-2023']/@ownedRepresentations[name='VP-2023']/@defaultLayer"/>
+      <target xmi:type="uml:Package" href="vp-2023.uml#_Mq7q8GseEeCXW_cz9nNl6g"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="vp-2023.odesign#//@ownedViewpoints[name='VP-2023']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

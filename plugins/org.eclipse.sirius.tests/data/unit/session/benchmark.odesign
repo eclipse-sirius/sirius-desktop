@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" version="8.0.0">
+  <ownedViewpoints name="UML2 Benchmarks Acceleo" modelFileExtension="uml">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Acceleo Class Diagram" initialisation="true" domainClass="Package">
+      <edgeMappings name="CD_Association" semanticCandidatesExpression="feature:eAllContents" semanticElements="" sourceMapping="//@ownedViewpoints[name='UML2%20Benchmarks%20Acceleo']/@ownedRepresentations[name='Acceleo%20Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML2%20Benchmarks%20Acceleo']/@ownedRepresentations[name='Acceleo%20Class%20Diagram']/@containerMappings[name='CD_Class']" targetFinderExpression="&lt;%memberEnd.nLast().type%>" sourceFinderExpression="&lt;%memberEnd.nFirst().type%>" targetExpression="var:self" domainClass="Association" useDomainElement="true">
+        <style sizeComputationExpression="2">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          <centerLabelStyleDescription labelSize="10">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </centerLabelStyleDescription>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="CD_Generalization_Class_To_Class" semanticCandidatesExpression="&lt;%eContents().filter(&quot;Classifier&quot;).generalization%>" semanticElements="" sourceMapping="//@ownedViewpoints[name='UML2%20Benchmarks%20Acceleo']/@ownedRepresentations[name='Acceleo%20Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML2%20Benchmarks%20Acceleo']/@ownedRepresentations[name='Acceleo%20Class%20Diagram']/@containerMappings[name='CD_Class']" targetFinderExpression="&lt;%general%>" sourceFinderExpression="&lt;%specific%>" targetExpression="" domainClass="Generalization" useDomainElement="true" pathExpression="">
+        <style sizeComputationExpression="2">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="CD_InterfaceRealization" semanticCandidatesExpression="&lt;%eContents().filter(&quot;Classifier&quot;).interfaceRealization%>" sourceMapping="//@ownedViewpoints[name='UML2%20Benchmarks%20Acceleo']/@ownedRepresentations[name='Acceleo%20Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML2%20Benchmarks%20Acceleo']/@ownedRepresentations[name='Acceleo%20Class%20Diagram']/@containerMappings[name='CD_Interface']" targetFinderExpression="&lt;%contract%>" sourceFinderExpression="&lt;%implementingClassifier%>" targetExpression="" domainClass="InterfaceRealization" useDomainElement="true">
+        <style lineStyle="dash" sizeComputationExpression="2">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+        </style>
+      </edgeMappings>
+      <containerMappings name="CD_Class" semanticCandidatesExpression="&lt;%packagedElement.filter(&quot;Class&quot;)%>" semanticElements="" domainClass="Class" childrenPresentation="List">
+        <subNodeMappings name="CD_Property" semanticCandidatesExpression="&lt;%attribute%>" domainClass="Property">
+          <style xsi:type="style:BundledImageDescription" labelAlignment="LEFT">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </subNodeMappings>
+        <subNodeMappings name="CD_Operation" semanticCandidatesExpression="&lt;%ownedOperation%>" domainClass="Operation">
+          <style xsi:type="style:BundledImageDescription" labelAlignment="LEFT">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </subNodeMappings>
+        <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" backgroundStyle="GradientTopToBottom">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+        </style>
+      </containerMappings>
+      <containerMappings name="CD_Interface" semanticCandidatesExpression="&lt;%packagedElement.filter(&quot;Interface&quot;)%>" semanticElements="" domainClass="Interface" reusedNodeMappings="//@ownedViewpoints[name='UML2%20Benchmarks%20Acceleo']/@ownedRepresentations[name='Acceleo%20Class%20Diagram']/@containerMappings[name='CD_Class']/@subNodeMappings[name='CD_Operation']" childrenPresentation="List">
+        <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelFormat="italic" backgroundStyle="GradientTopToBottom">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+        </style>
+      </containerMappings>
+      <toolSection name="Tools">
+        <ownedTools xsi:type="tool:DiagramCreationDescription" name="Create Acceleo Diagram" diagramDescription="//@ownedViewpoints[name='UML2%20Benchmarks%20Acceleo']/@ownedRepresentations[name='Acceleo%20Class%20Diagram']">
+          <initialOperation/>
+          <containerViewVariable name="containerView"/>
+          <representationNameVariable name="diagramName"/>
+        </ownedTools>
+        <ownedTools xsi:type="tool:ContainerCreationDescription" name="Class" containerMappings="//@ownedViewpoints[name='UML2%20Benchmarks%20Acceleo']/@ownedRepresentations[name='Acceleo%20Class%20Diagram']/@containerMappings[name='CD_Class']">
+          <variable name="container"/>
+          <viewVariable name="containerView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Class" referenceName="packagedElement">
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New  &lt;%eClass.name%>"/>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:ContainerCreationDescription" name="Interface" containerMappings="//@ownedViewpoints[name='UML2%20Benchmarks%20Acceleo']/@ownedRepresentations[name='Acceleo%20Class%20Diagram']/@containerMappings[name='CD_Interface']">
+          <variable name="container"/>
+          <viewVariable name="containerView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Interface" referenceName="packagedElement">
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New  &lt;%eClass.name%>"/>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:NodeCreationDescription" name="Property" nodeMappings="//@ownedViewpoints[name='UML2%20Benchmarks%20Acceleo']/@ownedRepresentations[name='Acceleo%20Class%20Diagram']/@containerMappings[name='CD_Class']/@subNodeMappings[name='CD_Property']">
+          <variable name="container"/>
+          <viewVariable name="containerView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Property" referenceName="ownedAttribute">
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New  &lt;%eClass.name%>"/>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:NodeCreationDescription" name="Operation" nodeMappings="//@ownedViewpoints[name='UML2%20Benchmarks%20Acceleo']/@ownedRepresentations[name='Acceleo%20Class%20Diagram']/@containerMappings[name='CD_Class']/@subNodeMappings[name='CD_Operation']">
+          <variable name="container"/>
+          <viewVariable name="containerView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Operation" referenceName="ownedOperation">
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New  &lt;%eClass.name%>"/>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:EdgeCreationDescription" name="Association" edgeMappings="//@ownedViewpoints[name='UML2%20Benchmarks%20Acceleo']/@ownedRepresentations[name='Acceleo%20Class%20Diagram']/@edgeMappings[name='CD_Association']">
+          <sourceVariable name="source"/>
+          <targetVariable name="target"/>
+          <sourceViewVariable name="sourceView"/>
+          <targetViewVariable name="targetView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Package&quot;)%>">
+              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Association" referenceName="packagedElement">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Property" referenceName="ownedEnd">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$target.name.toL1Case%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="var:target"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Property" referenceName="ownedEnd">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$source.name.toL1Case%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="var:source"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="navigableOwnedEnd" valueExpression="&lt;%memberEnd.nGet(0)%>"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="New &lt;%eClass.name%>"/>
+              </subModelOperations>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:EdgeCreationDescription" name="Generalization" edgeMappings="//@ownedViewpoints[name='UML2%20Benchmarks%20Acceleo']/@ownedRepresentations[name='Acceleo%20Class%20Diagram']/@edgeMappings[name='CD_Generalization_Class_To_Class']">
+          <sourceVariable name="source"/>
+          <targetVariable name="target"/>
+          <sourceViewVariable name="sourceView"/>
+          <targetViewVariable name="targetView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Generalization" referenceName="generalization">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="general" valueExpression="var:target"/>
+              </subModelOperations>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Create a new Interface Realization" name="Interface Realization" edgeMappings="//@ownedViewpoints[name='UML2%20Benchmarks%20Acceleo']/@ownedRepresentations[name='Acceleo%20Class%20Diagram']/@edgeMappings[name='CD_InterfaceRealization']">
+          <sourceVariable name="source"/>
+          <targetVariable name="target"/>
+          <sourceViewVariable name="sourceView"/>
+          <targetViewVariable name="targetView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="InterfaceRealization" referenceName="interfaceRealization">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="contract" valueExpression="var:target"/>
+              </subModelOperations>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+      </toolSection>
+    </ownedRepresentations>
+  </ownedViewpoints>
+  <ownedViewpoints name="UML2 Benchmarks OCL" modelFileExtension="uml">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="OCL Class Diagram" initialisation="true" domainClass="Package">
+      <edgeMappings name="CD_Association" semanticCandidatesExpression="feature:eAllContents" semanticElements="" sourceMapping="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@containerMappings[name='CD_Class']" targetFinderExpression="ocl:oclAsType(uml::Association).memberEnd->last().type" sourceFinderExpression="ocl:oclAsType(uml::Association).memberEnd->first().type" targetExpression="ocl:self" domainClass="Association" useDomainElement="true">
+        <style sizeComputationExpression="2">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          <centerLabelStyleDescription labelSize="10">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </centerLabelStyleDescription>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="CD_Generalization_Class_To_Class" semanticCandidatesExpression="ocl:self.packagedElement->select( c | c.oclIsTypeOf(uml::Class)).oclAsType(uml::Class).generalization" semanticElements="" sourceMapping="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@containerMappings[name='CD_Class']" targetFinderExpression="ocl:general" sourceFinderExpression="ocl:specific" targetExpression="" domainClass="Generalization" useDomainElement="true" pathExpression="">
+        <style sizeComputationExpression="2">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="CD_InterfaceRealization" semanticCandidatesExpression="ocl:self.packagedElement->select( c | c.oclIsTypeOf(uml::Class)).oclAsType(uml::Class).interfaceRealization" sourceMapping="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@containerMappings[name='CD_Interface']" targetFinderExpression="ocl:contract" sourceFinderExpression="ocl:implementingClassifier" targetExpression="" domainClass="InterfaceRealization" useDomainElement="true">
+        <style lineStyle="dash" sizeComputationExpression="2">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+        </style>
+      </edgeMappings>
+      <containerMappings name="CD_Class" semanticCandidatesExpression="ocl:self.packagedElement->select( c | c.oclIsTypeOf(uml::Class))" semanticElements="" domainClass="Class" childrenPresentation="List">
+        <subNodeMappings name="CD_Property" semanticCandidatesExpression="ocl:attribute" domainClass="Property">
+          <style xsi:type="style:BundledImageDescription" labelExpression="name" labelAlignment="LEFT">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </subNodeMappings>
+        <subNodeMappings name="CD_Operation" semanticCandidatesExpression="ocl:ownedOperation" domainClass="Operation">
+          <style xsi:type="style:BundledImageDescription" labelExpression="name" labelAlignment="LEFT">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </subNodeMappings>
+        <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelExpression="name" backgroundStyle="GradientTopToBottom">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+        </style>
+      </containerMappings>
+      <containerMappings name="CD_Interface" semanticCandidatesExpression="ocl:self.packagedElement->select( c | c.oclIsTypeOf(uml::Interface))" semanticElements="" domainClass="Interface" reusedNodeMappings="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@containerMappings[name='CD_Class']/@subNodeMappings[name='CD_Operation']" childrenPresentation="List">
+        <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelFormat="italic" labelExpression="name" backgroundStyle="GradientTopToBottom">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+        </style>
+      </containerMappings>
+      <toolSection name="Tools">
+        <ownedTools xsi:type="tool:DiagramCreationDescription" name="Create OCL Diagram" diagramDescription="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']">
+          <initialOperation/>
+          <containerViewVariable name="containerView"/>
+          <representationNameVariable name="diagramName"/>
+        </ownedTools>
+        <ownedTools xsi:type="tool:ContainerCreationDescription" name="Class" containerMappings="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@containerMappings[name='CD_Class']">
+          <variable name="container"/>
+          <viewVariable name="containerView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Class" referenceName="packagedElement">
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="ocl:'New '.concat(self.oclAsType(ecore::EObject).eClass())"/>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:ContainerCreationDescription" name="Interface" containerMappings="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@containerMappings[name='CD_Interface']">
+          <variable name="container"/>
+          <viewVariable name="containerView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Interface" referenceName="packagedElement">
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="ocl:'New '.concat(self.oclAsType(ecore::EObject).eClass())"/>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:NodeCreationDescription" name="Property" nodeMappings="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@containerMappings[name='CD_Class']/@subNodeMappings[name='CD_Property']">
+          <variable name="container"/>
+          <viewVariable name="containerView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Property" referenceName="ownedAttribute">
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="ocl:'New '.concat(self.oclAsType(ecore::EObject).eClass())"/>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:NodeCreationDescription" name="Operation" nodeMappings="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@containerMappings[name='CD_Class']/@subNodeMappings[name='CD_Operation']">
+          <variable name="container"/>
+          <viewVariable name="containerView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Operation" referenceName="ownedOperation">
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="ocl:'New '.concat(self.oclAsType(ecore::EObject).eClass())"/>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:EdgeCreationDescription" name="Association" edgeMappings="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@edgeMappings[name='CD_Association']">
+          <sourceVariable name="source"/>
+          <targetVariable name="target"/>
+          <sourceViewVariable name="sourceView"/>
+          <targetViewVariable name="targetView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Package&quot;)%>">
+              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Association" referenceName="packagedElement">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Property" referenceName="ownedEnd">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$target.name.toL1Case%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="var:target"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Property" referenceName="ownedEnd">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$source.name.toL1Case%>"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="var:source"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="navigableOwnedEnd" valueExpression="&lt;%memberEnd.nGet(0)%>"/>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="ocl:'New '.concat(self.oclAsType(ecore::EObject).eClass())"/>
+              </subModelOperations>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:EdgeCreationDescription" name="Generalization" edgeMappings="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@edgeMappings[name='CD_Generalization_Class_To_Class']">
+          <sourceVariable name="source"/>
+          <targetVariable name="target"/>
+          <sourceViewVariable name="sourceView"/>
+          <targetViewVariable name="targetView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Generalization" referenceName="generalization">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="general" valueExpression="var:target"/>
+              </subModelOperations>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Create a new Interface Realization" name="Interface Realization" edgeMappings="//@ownedViewpoints[name='UML2%20Benchmarks%20OCL']/@ownedRepresentations[name='OCL%20Class%20Diagram']/@edgeMappings[name='CD_InterfaceRealization']">
+          <sourceVariable name="source"/>
+          <targetVariable name="target"/>
+          <sourceViewVariable name="sourceView"/>
+          <targetViewVariable name="targetView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="InterfaceRealization" referenceName="interfaceRealization">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="contract" valueExpression="var:target"/>
+              </subModelOperations>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+      </toolSection>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

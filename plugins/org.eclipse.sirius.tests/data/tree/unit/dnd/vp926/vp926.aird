@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:description_1="http://www.eclipse.org/sirius/description/1.1.0" xmlns:employee="http://employee" xmlns:tree="http://www.eclipse.org/sirius/tree/1.0.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/tree/description/1.0.0 http://www.eclipse.org/sirius/tree/1.0.0#//description http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://employee vp926.ecore" xmi:id="_JJTXkA9mEeCuCr65dZgYYg" selectedViews="_JfNWIA9mEeCuCr65dZgYYg" version="8.0.0">
+  <models xmi:type="employee:Company" href="company1.xmi#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_JfNWIA9mEeCuCr65dZgYYg" initialized="true">
+    <ownedRepresentations xmi:type="tree:DTree" xmi:id="_wDkP8A9qEeCuCr65dZgYYg" name="dnd2">
+      <target xmi:type="employee:Company" href="company2.xmi#/"/>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_wDkP-Q9qEeCuCr65dZgYYg" name="Marketing">
+        <target xmi:type="employee:RichDepartment" href="company2.xmi#//@departments.0"/>
+        <semanticElements xmi:type="employee:RichDepartment" href="company2.xmi#//@departments.0"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_wDkP-g9qEeCuCr65dZgYYg">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_wDkP-w9qEeCuCr65dZgYYg" red="77" green="137" blue="20"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_wDkP_A9qEeCuCr65dZgYYg" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:TreeItemMapping" href="vp926.odesign#//@ownedViewpoints[name='V926']/@ownedRepresentations[name='Tree%20With%20DnD']/@subItemMappings[name='RichDepartment']"/>
+      </ownedTreeItems>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_wRKKlQ9rEeCuCr65dZgYYg" name="Factory" expanded="true">
+        <target xmi:type="employee:PoorDepartment" href="company2.xmi#//@departments.1"/>
+        <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_VQLsAA91EeCDcZoA1bWTlw" name="Employe5">
+          <target xmi:type="employee:Employee" href="company2.xmi#//@departments.1/@employees.0"/>
+          <semanticElements xmi:type="employee:Employee" href="company2.xmi#//@departments.1/@employees.0"/>
+          <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_VQLsAQ91EeCDcZoA1bWTlw">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_VQLsBA91EeCDcZoA1bWTlw" red="239" green="41" blue="41"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_VQLsAw91EeCDcZoA1bWTlw" red="255" green="255" blue="255"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description:TreeItemMapping" href="vp926.odesign#//@ownedViewpoints[name='V926']/@ownedRepresentations[name='Tree%20With%20DnD']/@subItemMappings[name='Poor%20Department']/@subItemMappings[name='Poor%20Employee']"/>
+        </ownedTreeItems>
+        <semanticElements xmi:type="employee:PoorDepartment" href="company2.xmi#//@departments.1"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_wRKKlg9rEeCuCr65dZgYYg">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_wRKKmQ9rEeCuCr65dZgYYg" red="224" green="133" blue="3"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_wRKKmA9rEeCuCr65dZgYYg" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:TreeItemMapping" href="vp926.odesign#//@ownedViewpoints[name='V926']/@ownedRepresentations[name='Tree%20With%20DnD']/@subItemMappings[name='Poor%20Department']"/>
+      </ownedTreeItems>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_wRKKkA9rEeCuCr65dZgYYg" name="Juridiction" expanded="true">
+        <target xmi:type="employee:RichDepartment" href="company2.xmi#//@departments.2"/>
+        <semanticElements xmi:type="employee:RichDepartment" href="company2.xmi#//@departments.2"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_wRKKkQ9rEeCuCr65dZgYYg">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_wRKKlA9rEeCuCr65dZgYYg" red="77" green="137" blue="20"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_wRKKkw9rEeCuCr65dZgYYg" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:TreeItemMapping" href="vp926.odesign#//@ownedViewpoints[name='V926']/@ownedRepresentations[name='Tree%20With%20DnD']/@subItemMappings[name='RichDepartment']"/>
+      </ownedTreeItems>
+      <description xmi:type="description:TreeDescription" href="vp926.odesign#//@ownedViewpoints[name='V926']/@ownedRepresentations[name='Tree%20With%20DnD']"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="tree:DTree" xmi:id="_s7nyIA9rEeCuCr65dZgYYg" name="dnd1">
+      <target xmi:type="employee:Company" href="company1.xmi#/"/>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_s7nyIQ9rEeCuCr65dZgYYg" name="R&amp;D" expanded="true">
+        <target xmi:type="employee:PoorDepartment" href="company1.xmi#//@departments.2"/>
+        <semanticElements xmi:type="employee:PoorDepartment" href="company1.xmi#//@departments.2"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_s7nyIg9rEeCuCr65dZgYYg">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_s7nyIw9rEeCuCr65dZgYYg" red="224" green="133" blue="3"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_s7nyJA9rEeCuCr65dZgYYg" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:TreeItemMapping" href="vp926.odesign#//@ownedViewpoints[name='V926']/@ownedRepresentations[name='Tree%20With%20DnD']/@subItemMappings[name='Poor%20Department']"/>
+      </ownedTreeItems>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_s7nyJQ9rEeCuCr65dZgYYg" name="Projects" expanded="true">
+        <target xmi:type="employee:RichDepartment" href="company1.xmi#//@departments.0"/>
+        <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_VTE1UBGhEeCIHfCvydrdHw" name="employe1">
+          <target xmi:type="employee:Employee" href="company1.xmi#//@departments.0/@employees.0"/>
+          <semanticElements xmi:type="employee:Employee" href="company1.xmi#//@departments.0/@employees.0"/>
+          <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_VTE1URGhEeCIHfCvydrdHw">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_VTE1VBGhEeCIHfCvydrdHw" red="138" green="226" blue="52"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_VTE1UxGhEeCIHfCvydrdHw" red="255" green="255" blue="255"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description:TreeItemMapping" href="vp926.odesign#//@ownedViewpoints[name='V926']/@ownedRepresentations[name='Tree%20With%20DnD']/@subItemMappings[name='RichDepartment']/@subItemMappings[name='Rich%20Employee']"/>
+        </ownedTreeItems>
+        <semanticElements xmi:type="employee:RichDepartment" href="company1.xmi#//@departments.0"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_s7nyKg9rEeCuCr65dZgYYg">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_s7nyKw9rEeCuCr65dZgYYg" red="77" green="137" blue="20"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_s7nyLA9rEeCuCr65dZgYYg" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:TreeItemMapping" href="vp926.odesign#//@ownedViewpoints[name='V926']/@ownedRepresentations[name='Tree%20With%20DnD']/@subItemMappings[name='RichDepartment']"/>
+      </ownedTreeItems>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_s7nyLQ9rEeCuCr65dZgYYg" name="Internships" expanded="true">
+        <target xmi:type="employee:PoorDepartment" href="company1.xmi#//@departments.3"/>
+        <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_eX7pYBGTEeC3BK7vHlCtSg" name="employe3">
+          <target xmi:type="employee:Employee" href="company1.xmi#//@departments.3/@employees.0"/>
+          <semanticElements xmi:type="employee:Employee" href="company1.xmi#//@departments.3/@employees.0"/>
+          <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_eX7pYRGTEeC3BK7vHlCtSg">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_eX7pZBGTEeC3BK7vHlCtSg" red="239" green="41" blue="41"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_eX7pYxGTEeC3BK7vHlCtSg" red="255" green="255" blue="255"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description:TreeItemMapping" href="vp926.odesign#//@ownedViewpoints[name='V926']/@ownedRepresentations[name='Tree%20With%20DnD']/@subItemMappings[name='Poor%20Department']/@subItemMappings[name='Poor%20Employee']"/>
+        </ownedTreeItems>
+        <semanticElements xmi:type="employee:PoorDepartment" href="company1.xmi#//@departments.3"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_s7nyLg9rEeCuCr65dZgYYg">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_s7nyLw9rEeCuCr65dZgYYg" red="224" green="133" blue="3"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_s7nyMA9rEeCuCr65dZgYYg" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:TreeItemMapping" href="vp926.odesign#//@ownedViewpoints[name='V926']/@ownedRepresentations[name='Tree%20With%20DnD']/@subItemMappings[name='Poor%20Department']"/>
+      </ownedTreeItems>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_s7nyMQ9rEeCuCr65dZgYYg" name="Marketing" expanded="true">
+        <target xmi:type="employee:RichDepartment" href="company1.xmi#//@departments.1"/>
+        <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_QszKkBGdEeCIHfCvydrdHw" name="employe2">
+          <target xmi:type="employee:Employee" href="company1.xmi#//@departments.1/@employees.0"/>
+          <semanticElements xmi:type="employee:Employee" href="company1.xmi#//@departments.1/@employees.0"/>
+          <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_QszKkRGdEeCIHfCvydrdHw">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_QszKlBGdEeCIHfCvydrdHw" red="138" green="226" blue="52"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_QszKkxGdEeCIHfCvydrdHw" red="255" green="255" blue="255"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description:TreeItemMapping" href="vp926.odesign#//@ownedViewpoints[name='V926']/@ownedRepresentations[name='Tree%20With%20DnD']/@subItemMappings[name='RichDepartment']/@subItemMappings[name='Rich%20Employee']"/>
+        </ownedTreeItems>
+        <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_W_AQABG_EeCIHfCvydrdHw" name="employe4">
+          <target xmi:type="employee:Employee" href="company1.xmi#//@departments.1/@employees.1"/>
+          <semanticElements xmi:type="employee:Employee" href="company1.xmi#//@departments.1/@employees.1"/>
+          <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_W_AQARG_EeCIHfCvydrdHw">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_W_AQBBG_EeCIHfCvydrdHw" red="138" green="226" blue="52"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_W_AQAxG_EeCIHfCvydrdHw" red="255" green="255" blue="255"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description:TreeItemMapping" href="vp926.odesign#//@ownedViewpoints[name='V926']/@ownedRepresentations[name='Tree%20With%20DnD']/@subItemMappings[name='RichDepartment']/@subItemMappings[name='Rich%20Employee']"/>
+        </ownedTreeItems>
+        <semanticElements xmi:type="employee:RichDepartment" href="company1.xmi#//@departments.1"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_s7nyNg9rEeCuCr65dZgYYg">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_s7nyNw9rEeCuCr65dZgYYg" red="77" green="137" blue="20"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_s7nyOA9rEeCuCr65dZgYYg" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:TreeItemMapping" href="vp926.odesign#//@ownedViewpoints[name='V926']/@ownedRepresentations[name='Tree%20With%20DnD']/@subItemMappings[name='RichDepartment']"/>
+      </ownedTreeItems>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_WK_ZIBG_EeCIHfCvydrdHw" name="Maintenance">
+        <target xmi:type="employee:RichDepartment" href="company1.xmi#//@departments.4"/>
+        <semanticElements xmi:type="employee:RichDepartment" href="company1.xmi#//@departments.4"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_WLJKIBG_EeCIHfCvydrdHw">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_WLJKIxG_EeCIHfCvydrdHw" red="77" green="137" blue="20"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_WLJKIhG_EeCIHfCvydrdHw" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:TreeItemMapping" href="vp926.odesign#//@ownedViewpoints[name='V926']/@ownedRepresentations[name='Tree%20With%20DnD']/@subItemMappings[name='RichDepartment']"/>
+      </ownedTreeItems>
+      <description xmi:type="description:TreeDescription" href="vp926.odesign#//@ownedViewpoints[name='V926']/@ownedRepresentations[name='Tree%20With%20DnD']"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description_1:Viewpoint" href="vp926.odesign#//@ownedViewpoints[name='V926']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

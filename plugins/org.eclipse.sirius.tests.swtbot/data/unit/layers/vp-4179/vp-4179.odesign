@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="vp-4179" version="8.0.0">
+  <ownedViewpoints name="vp-4179_AL" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="vp-4179" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <containerMappings name="EClassA" domainClass="EClass">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="A + &lt;%name%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="EClassB" domainClass="EClass">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="B + &lt;%name%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="EClassC" domainClass="EClass">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="C + &lt;%name%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="EClassD" domainClass="EClass">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="D + &lt;%name%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="EClassE" domainClass="EClass">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="E + &lt;%name%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+      <additionalLayers name="optionalAndActiveByDefault" activeByDefault="true">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="A" importedMapping="//@ownedViewpoints[name='vp-4179_AL']/@ownedRepresentations[name='vp-4179']/@defaultLayer/@containerMappings[name='EClassA']">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="A extended &lt;%name%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </additionalLayers>
+      <additionalLayers name="optional">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="B" importedMapping="//@ownedViewpoints[name='vp-4179_AL']/@ownedRepresentations[name='vp-4179']/@defaultLayer/@containerMappings[name='EClassB']">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="B extended &lt;%name%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </additionalLayers>
+      <additionalLayers name="notOptional" optional="false">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="C" importedMapping="//@ownedViewpoints[name='vp-4179_AL']/@ownedRepresentations[name='vp-4179']/@defaultLayer/@containerMappings[name='EClassC']">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="C extended &lt;%name%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </additionalLayers>
+      <additionalLayers name="notOptionalAndActiveByDefault" activeByDefault="true" optional="false">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="D" importedMapping="//@ownedViewpoints[name='vp-4179_AL']/@ownedRepresentations[name='vp-4179']/@defaultLayer/@containerMappings[name='EClassD']">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="D extended &lt;%name%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+  </ownedViewpoints>
+  <ownedViewpoints name="vp-4179_AL_ext" modelFileExtension="ecore">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="vp-4179-ext" viewpointURI="viewpoint:/DesignerTestProject/vp-4179_AL" representationName="vp-4179">
+      <layers name="extNotOptional" optional="false">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="E" importedMapping="//@ownedViewpoints[name='vp-4179_AL']/@ownedRepresentations[name='vp-4179']/@defaultLayer/@containerMappings[name='EClassE']">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="E extended &lt;%name%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_chocolate']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </layers>
+    </ownedRepresentationExtensions>
+  </ownedViewpoints>
+</description:Group>

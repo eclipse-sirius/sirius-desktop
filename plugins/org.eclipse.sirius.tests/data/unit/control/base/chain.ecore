@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="org" nsURI="">
+  <eSubpackages name="eclipse">
+    <eSubpackages name="acceleo">
+      <eSubpackages name="chain" nsURI="http://www.eclipse.org/acceleo/chain" nsPrefix="chain">
+        <eClassifiers xsi:type="ecore:EClass" name="Chain">
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="documentation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="repository" lowerBound="1"
+              eType="#//eclipse/acceleo/chain/Repository" containment="true"/>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
+              eType="#//eclipse/acceleo/chain/ActionSet" containment="true"/>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="parametersPatterns"
+              upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="parametersFiles"
+              upperBound="-1" eType="#//eclipse/acceleo/chain/File"/>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="keepModelInMemory"
+              eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+              defaultValueLiteral="true"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="Repository">
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="documentation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
+              eType="#//eclipse/acceleo/chain/Repository" containment="true"/>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="files" upperBound="-1"
+              eType="#//eclipse/acceleo/chain/File" containment="true"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="ActionSet">
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="documentation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="actions" lowerBound="1"
+              upperBound="-1" eType="#//eclipse/acceleo/chain/Action" containment="true"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="Action" abstract="true">
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="documentation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="log" eType="#//eclipse/acceleo/chain/Log"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="Generate" eSuperTypes="#//eclipse/acceleo/chain/Action">
+          <eStructuralFeatures xsi:type="ecore:EReference" name="model" lowerBound="1"
+              eType="#//eclipse/acceleo/chain/Model"/>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="metamodel" lowerBound="1"
+              eType="#//eclipse/acceleo/chain/Metamodel"/>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="generator" eType="#//eclipse/acceleo/chain/Generator"/>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="folder" lowerBound="1"
+              eType="#//eclipse/acceleo/chain/Folder"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="ConvertXmi" eSuperTypes="#//eclipse/acceleo/chain/Action">
+          <eStructuralFeatures xsi:type="ecore:EReference" name="mof" lowerBound="1"
+              eType="#//eclipse/acceleo/chain/Model"/>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="emf" lowerBound="1"
+              eType="#//eclipse/acceleo/chain/Model"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="Backup" eSuperTypes="#//eclipse/acceleo/chain/Action">
+          <eStructuralFeatures xsi:type="ecore:EReference" name="folder" lowerBound="1"
+              eType="#//eclipse/acceleo/chain/Folder"/>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="backup" lowerBound="1"
+              upperBound="-1" eType="#//eclipse/acceleo/chain/Folder"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="Clear" eSuperTypes="#//eclipse/acceleo/chain/Action">
+          <eStructuralFeatures xsi:type="ecore:EReference" name="resources" lowerBound="1"
+              upperBound="-1" eType="#//eclipse/acceleo/chain/Data"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="Remove" eSuperTypes="#//eclipse/acceleo/chain/Action">
+          <eStructuralFeatures xsi:type="ecore:EReference" name="resources" lowerBound="1"
+              upperBound="-1" eType="#//eclipse/acceleo/chain/Data"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="ChainCall" eSuperTypes="#//eclipse/acceleo/chain/Action">
+          <eStructuralFeatures xsi:type="ecore:EReference" name="chain" eType="#//eclipse/acceleo/chain/Chain"/>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="chainPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="argumentsPatterns"
+              upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="argumentsFiles" upperBound="-1"
+              eType="#//eclipse/acceleo/chain/File"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="CustomAction" eSuperTypes="#//eclipse/acceleo/chain/Action">
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" lowerBound="1"
+              upperBound="-1" eType="#//eclipse/acceleo/chain/CustomActionIDs"/>
+          <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
+              eType="#//eclipse/acceleo/chain/Data"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EEnum" name="CustomActionIDs"/>
+        <eClassifiers xsi:type="ecore:EClass" name="Data" abstract="true"/>
+        <eClassifiers xsi:type="ecore:EClass" name="File" abstract="true">
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" lowerBound="1"
+              eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="Model" eSuperTypes="#//eclipse/acceleo/chain/File #//eclipse/acceleo/chain/Data"/>
+        <eClassifiers xsi:type="ecore:EClass" name="ModelSet" eSuperTypes="#//eclipse/acceleo/chain/Model">
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="extensions" upperBound="-1"
+              eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="Folder" eSuperTypes="#//eclipse/acceleo/chain/File #//eclipse/acceleo/chain/Data"/>
+        <eClassifiers xsi:type="ecore:EClass" name="Log" eSuperTypes="#//eclipse/acceleo/chain/File #//eclipse/acceleo/chain/Data"/>
+        <eClassifiers xsi:type="ecore:EClass" name="Metamodel" abstract="true" eSuperTypes="#//eclipse/acceleo/chain/File"/>
+        <eClassifiers xsi:type="ecore:EClass" name="EmfMetamodel" eSuperTypes="#//eclipse/acceleo/chain/Metamodel"/>
+        <eClassifiers xsi:type="ecore:EClass" name="Generator" eSuperTypes="#//eclipse/acceleo/chain/File"/>
+        <eClassifiers xsi:type="ecore:EClass" name="CustomFile" eSuperTypes="#//eclipse/acceleo/chain/File #//eclipse/acceleo/chain/Data"/>
+      </eSubpackages>
+    </eSubpackages>
+  </eSubpackages>
+</ecore:EPackage>

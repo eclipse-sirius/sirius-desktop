@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="Root">
+  <eSubpackages name="SubPackage1">
+    <eSubpackages name="SubSubP1"/>
+    <eSubpackages name="SubSubP2" nsPrefix=""/>
+    <eSubpackages name="SubSubP3"/>
+  </eSubpackages>
+  <eSubpackages name="SubPackage2">
+    <eSubpackages name="SubSubP1"/>
+  </eSubpackages>
+  <eSubpackages name="SubPackage3"/>
+</ecore:EPackage>

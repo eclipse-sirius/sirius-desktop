@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="root"
+    nsURI="" nsPrefix="root">
+  <eSubpackages name="P1">
+    <eSubpackages name="P1A"/>
+    <eSubpackages name="P1B"/>
+  </eSubpackages>
+  <eSubpackages name="P2">
+    <eSubpackages name="P2A"/>
+    <eSubpackages name="P2B" nsPrefix="">
+      <eSubpackages name="P2B1"/>
+    </eSubpackages>
+    <eSubpackages name="P2C"/>
+  </eSubpackages>
+</ecore:EPackage>

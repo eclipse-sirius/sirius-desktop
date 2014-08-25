@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.obeo.fr/dsl/viewpoint/description/1.1.0" xmlns:style="http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0" name="A" version="6.7.0.201302071200">
+  <ownedViewpoints name="A" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description:DiagramDescription" name="DiagA" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="NodeMappingALightBlue" domainClass="EPackage">
+          <style xsi:type="style:SquareDescription" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="NodeMappingALightGreen" domainClass="EPackage">
+          <style xsi:type="style:SquareDescription" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </nodeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

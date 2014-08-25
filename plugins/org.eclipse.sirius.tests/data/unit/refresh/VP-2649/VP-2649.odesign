@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="VP-2649" version="8.0.0">
+  <ownedViewpoints endUserDocumentation="&lt;html>&#xA;&lt;head>&#xA;&lt;/head>&#xA;&lt;body>&#xA;&lt;p>Provides graphical and tabular representation to design an Ecore model.&lt;/p>&#xA;&lt;br>&#xA;&lt;img src=&quot;/doc/screenshots/entities.png&quot;/>&#xA;&lt;img src=&quot;/doc/screenshots/classes.png&quot;/>&#xA;&lt;/body>&#xA;&lt;/html>&#xA;&#xA;&#xA;" name="VP-2649_Viewpoint" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" endUserDocumentation="A graphical modeler for Ecore model similar to a UML class diagram." name="VP-2649_Diagram" domainClass="EPackage" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <containerMappings name="EClassMapping" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription" tooltipExpression="&lt;%eContainer.name%>.&lt;%name%>" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="EPackageMapping" deletionDescription="//@ownedViewpoints[name='VP-2649_Viewpoint']/@ownedRepresentations[name='VP-2649_Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='DeleteEPackageTool']" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EPackage&quot;)%>" domainClass="EPackage" reusedContainerMappings="//@ownedViewpoints[name='VP-2649_Viewpoint']/@ownedRepresentations[name='VP-2649_Diagram']/@defaultLayer/@containerMappings[name='EPackageMapping'] //@ownedViewpoints[name='VP-2649_Viewpoint']/@ownedRepresentations[name='VP-2649_Diagram']/@defaultLayer/@containerMappings[name='EClassMapping']">
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Classifier">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="DeleteEPackageTool">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:RemoveElement"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:EditionTableDescription" endUserDocumentation="A tabular editor (spreadsheet-like) of the entities in an Ecore model." name="VP-2649_Table" domainClass="EPackage">
+      <ownedLineMappings name="EClassLineMapping" domainClass="EClass" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>">
+        <foregroundConditionalStyle predicateExpression="&lt;%abstract%>">
+          <style labelSize="10" labelFormat="italic">
+            <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </foregroundConditionalStyle>
+        <ownedSubLines name="Feature" domainClass="EStructuralFeature"/>
+      </ownedLineMappings>
+      <ownedLineMappings name="EPackageLineMapping" domainClass="EPackage" headerLabelExpression="&lt;%name%>">
+        <defaultBackground>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+        </defaultBackground>
+        <ownedSubLines name="Classes lines" domainClass="EClass" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>">
+          <ownedSubLines name="Feature" domainClass="EStructuralFeature"/>
+        </ownedSubLines>
+        <delete name="EPackageLineDeleteTool">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+          <firstModelOperation xsi:type="tool_1:RemoveElement"/>
+        </delete>
+      </ownedLineMappings>
+      <ownedColumnMappings name="Name" headerLabelExpression="Name" featureName="name" labelExpression="&lt;%if (filter(&quot;EStructuralFeature&quot;).derived) {%>/&lt;%}%>&lt;%name%>"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_3:TreeDescription" name="VP-2649_Tree" domainClass="EPackage">
+      <subItemMappings name="EClassTreeItemMapping" domainClass="EClass" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>">
+        <defaultStyle>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+      </subItemMappings>
+      <subItemMappings name="EPackageTreeItemMapping" domainClass="EPackage">
+        <defaultStyle>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+        <delete name="EPackageLineDeleteTool">
+          <firstModelOperation xsi:type="tool_1:RemoveElement"/>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current tree."/>
+        </delete>
+      </subItemMappings>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

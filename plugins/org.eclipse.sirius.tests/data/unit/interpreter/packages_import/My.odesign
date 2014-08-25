@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="4521" version="8.0.0">
+  <ownedViewpoints name="Viewpoint-4521">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramReferencingMetamodels" domainClass="EPackage">
+      <metamodel href="http://docbook.org/ns/docbook#/"/>
+      <metamodel href="http://unknown.org/ns/invalidmm"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="NodeReferecingPackage" semanticCandidatesExpression="[self.eClassifiers->filter(docbook::Book)/]" domainClass="EClass">
+          <style xsi:type="style:CustomStyleDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramReferencingMetamodelsWithoutPrefix" domainClass="EPackage">
+      <metamodel href="http://docbook.org/ns/docbook#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="NodeReferecingPackageWithoutPrefix" semanticCandidatesExpression="[self.eClassifiers->filter(Book)/]" domainClass="EClass">
+          <style xsi:type="style:CustomStyleDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="_U7itAbmOEd6MSZpmKaOM0A" name="ControlFixture">
+  <packagedElement xmi:type="uml:Package" xmi:id="_aqw5oLmOEd6MSZpmKaOM0A" name="ParentPackage">
+    <packagedElement xmi:type="uml:Class" xmi:id="_f9diULmOEd6MSZpmKaOM0A" name="ClassInParentPackage"/>
+    <packagedElement xmi:type="uml:Package" href="controlled.uml#_pMv8YLmOEd6MSZpmKaOM0A"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_dFpnsLmOEd6MSZpmKaOM0A" name="ToplevelClass">
+    <ownedAttribute xmi:id="_kgwHULmOEd6MSZpmKaOM0A" name="referenceToControlledElement">
+      <type xmi:type="uml:Class" href="controlled.uml#_rslb4LmOEd6MSZpmKaOM0A"/>
+    </ownedAttribute>
+  </packagedElement>
+</uml:Model>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_4="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" name="VP-2651" version="8.0.0">
+  <ownedViewpoints name="VP-2651_Viewpoint">
+    <ownedRepresentations xsi:type="description_1:TreeDescription" name="VP-2651_TreeDescription"/>
+    <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="VP-2651_EditionTableDescription"/>
+    <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="VP-2651_CrossTableDescription"/>
+    <ownedRepresentations xsi:type="description_3:DiagramDescription" name="VP-2651_DiagramDescription"/>
+    <ownedRepresentations xsi:type="description_4:SequenceDiagramDescription" name="VP-2651_SequenceDiagramDescription"/>
+    <ownedRepresentationExtensions xsi:type="description_3:DiagramExtensionDescription" name="VP-2651_DiagramExtensionDescription"/>
+  </ownedViewpoints>
+</description:Group>

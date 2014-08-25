@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="root">
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1-1" eSuperTypes="#//C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2-1" eSuperTypes="#//C2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1-2" eSuperTypes="#//C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1-3" eSuperTypes="#//C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1-4" eSuperTypes="#//C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2-1-1" eSuperTypes="#//C2-1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2-1-2" eSuperTypes="#//C2-1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1-3-1" eSuperTypes="#//C1-3"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1-3-2" eSuperTypes="#//C1-3"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1-3-3" eSuperTypes="#//C1-3"/>
+  <eSubpackages name="pA"/>
+</ecore:EPackage>

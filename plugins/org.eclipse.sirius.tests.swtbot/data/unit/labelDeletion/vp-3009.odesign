@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="My" version="8.0.0">
+  <ownedViewpoints name="vp-3009">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="vp-3009" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="n" deletionDescription="//@ownedViewpoints[name='vp-3009']/@ownedRepresentations[name='vp-3009']/@defaultLayer/@toolSections.0/@ownedTools[name='del']" domainClass="EClass">
+          <borderedNodeMappings name="attr" deletionDescription="//@ownedViewpoints[name='vp-3009']/@ownedRepresentations[name='vp-3009']/@defaultLayer/@toolSections.0/@ownedTools[name='del']" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
+            <style xsi:type="style:SquareDescription" labelExpression="border_&lt;%name%>" sizeComputationExpression="1" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:SquareDescription" labelExpression="node_&lt;%name%>" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="e" deletionDescription="//@ownedViewpoints[name='vp-3009']/@ownedRepresentations[name='vp-3009']/@defaultLayer/@toolSections.0/@ownedTools[name='del']" sourceMapping="//@ownedViewpoints[name='vp-3009']/@ownedRepresentations[name='vp-3009']/@defaultLayer/@containerMappings[name='c']" targetMapping="//@ownedViewpoints[name='vp-3009']/@ownedRepresentations[name='vp-3009']/@defaultLayer/@containerMappings[name='list']" targetFinderExpression="var:self" sourceFinderExpression="var:self" domainClass="EClass" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <beginLabelStyleDescription labelExpression="begin_&lt;%name%>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </beginLabelStyleDescription>
+            <centerLabelStyleDescription labelExpression="center_&lt;%name%>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+            <endLabelStyleDescription labelExpression="end_&lt;%name%>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </endLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="c" deletionDescription="//@ownedViewpoints[name='vp-3009']/@ownedRepresentations[name='vp-3009']/@defaultLayer/@toolSections.0/@ownedTools[name='del']" domainClass="EClass">
+          <borderedNodeMappings name="attr2" deletionDescription="//@ownedViewpoints[name='vp-3009']/@ownedRepresentations[name='vp-3009']/@defaultLayer/@toolSections.0/@ownedTools[name='del']" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
+            <style xsi:type="style:SquareDescription" labelExpression="container_border_&lt;%name%>" sizeComputationExpression="1" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </style>
+          </borderedNodeMappings>
+          <subNodeMappings name="rfN" deletionDescription="//@ownedViewpoints[name='vp-3009']/@ownedRepresentations[name='vp-3009']/@defaultLayer/@toolSections.0/@ownedTools[name='del']" semanticCandidatesExpression="feature:eContents" domainClass="EReference">
+            <style xsi:type="style:SquareDescription" labelExpression="container_node_&lt;%name%>" sizeComputationExpression="1" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="container_&lt;%name%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="list" deletionDescription="//@ownedViewpoints[name='vp-3009']/@ownedRepresentations[name='vp-3009']/@defaultLayer/@toolSections.0/@ownedTools[name='del']" domainClass="EClass" childrenPresentation="List">
+          <subNodeMappings name="listElt" deletionDescription="//@ownedViewpoints[name='vp-3009']/@ownedRepresentations[name='vp-3009']/@defaultLayer/@toolSections.0/@ownedTools[name='del']" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
+            <style xsi:type="style:SquareDescription" labelExpression="list_element_&lt;%name%>" sizeComputationExpression="1" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="list_&lt;%name%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="s">
+          <ownedTools xsi:type="tool:DeleteElementDescription" documentation="3 behaviors: &#xD;&#xA;  - name.endsWith(&quot;_1&quot;) -> no delete tool : delete is not disabled but does nothing&#xD;&#xA;  - name.endsWith(&quot;_2&quot;) -> delete from model is disabled&#xD;&#xA;  - other cases -> remove eleemnt from model&#xD;&#xA;  " name="del" precondition="&lt;%!name.endsWith(&quot;_2&quot;)%>">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%!name.endsWith(&quot;_1&quot;)%>">
+                  <subModelOperations xsi:type="tool_1:RemoveElement"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

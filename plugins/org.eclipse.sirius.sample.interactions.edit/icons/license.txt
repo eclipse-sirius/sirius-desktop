@@ -1,0 +1,25 @@
+These followings icons are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+icons/full/obj16/CallMessage.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Message_synchCall.gif
+icons/full/obj16/CombinedFragment.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/CombinedFragment.gif
+icons/full/obj16/CombinedFragmentEnd.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/CombinedFragment.gif
+icons/full/obj16/Constraint.gif - org.eclipse.emf.eef.editor.model - org.eclipse.emf.eef.editor.model/icons/full/obj16/OCLQuery.gif
+icons/full/obj16/CreateParticipantMessage.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Message_createMessage.gif
+icons/full/obj16/DestroyParticipantMessage.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Message_deleteMessage.gif
+icons/full/obj16/Execution.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/ActionExecutionSpecification.gif
+icons/full/obj16/ExecutionEnd.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/ActionExecutionSpecification.gif
+icons/full/obj16/FeatureAccessMessage.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Message.gif
+icons/full/obj16/Interaction.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Interaction.gif
+icons/full/obj16/InteractionUse.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/InteractionUse.gif
+icons/full/obj16/InteractionUseEnd.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/InteractionUse.gif
+icons/full/obj16/MessageEnd.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/OccurrenceSpecification.gif
+icons/full/obj16/MixEnd.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/ActionExecutionSpecification.gif
+icons/full/obj16/Model.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Model.gif
+icons/full/obj16/Operand.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/InteractionOperand.gif
+icons/full/obj16/OperandEnd.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/InteractionOperand.gif
+icons/full/obj16/Participant.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Lifeline.gif
+icons/full/obj16/ReturnMessage.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/Message_reply.gif
+icons/full/obj16/State.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/OpaqueAction.gif
+icons/full/obj16/StateEnd.gif - org.eclipse.uml2.uml.edit - org.eclipse.uml2.uml.edit/icons/full/obj16/OpaqueAction.gif

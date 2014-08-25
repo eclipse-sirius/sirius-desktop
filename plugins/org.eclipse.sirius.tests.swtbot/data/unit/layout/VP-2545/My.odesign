@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="My" version="8.0.0">
+  <ownedViewpoints name="pbLostLayout" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diagram" showOnStartup="true" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <containerMappings name="Package" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" reusedContainerMappings="//@ownedViewpoints[name='pbLostLayout']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Package']">
+          <borderedNodeMappings name="Class" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+            <style xsi:type="style:SquareDescription" showIcon="false" sizeComputationExpression="0" labelPosition="node" width="1" height="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="New Port on each container" nodeMappings="//@ownedViewpoints[name='pbLostLayout']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Package']/@borderedNodeMappings[name='Class']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="C&lt;%eContainer.eClassifiers.nSize%>"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%eContainer%>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="C&lt;%eContainer.eClassifiers.nSize%>"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%eContainer%>">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="C&lt;%eContainer.eClassifiers.nSize%>"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="tc1989">
+  <eClassifiers xsi:type="ecore:EClass" name="Ellipse"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Note1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Ellipse1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Lozenge1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Ellipse3"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Square1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Gauge1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Custom1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Dot1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WorkspaceImage1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Ellipse2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Note2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Note3"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Lozenge2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Gauge2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Gauge3"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Custom2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Dot2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WorkspaceImage2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Square2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Square3"/>
+</ecore:EPackage>

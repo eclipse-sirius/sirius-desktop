@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="VP-3790" version="8.0.0">
+  <ownedViewpoints name="VP-3790">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="VP-3790" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="class" deletionDescription="//@ownedViewpoints[name='VP-3790']/@ownedRepresentations[name='VP-3790']/@defaultLayer/@toolSections.0/@ownedTools[name='noDeleteButRename']" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+          <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%name == &quot;force base style&quot;%>">
+            <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+        </nodeMappings>
+        <edgeMappings name="refs" deletionDescription="//@ownedViewpoints[name='VP-3790']/@ownedRepresentations[name='VP-3790']/@defaultLayer/@toolSections.0/@ownedTools[name='noDeleteButRename']" sourceMapping="//@ownedViewpoints[name='VP-3790']/@ownedRepresentations[name='VP-3790']/@defaultLayer/@nodeMappings[name='class']" targetMapping="//@ownedViewpoints[name='VP-3790']/@ownedRepresentations[name='VP-3790']/@defaultLayer/@nodeMappings[name='class']" targetFinderExpression="[thisEObject.eReferenceType/]" sourceFinderExpression="[thisEObject.eContainer()/]" domainClass="EReference" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelExpression="[name/]">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%name == &quot;force base style&quot;%>">
+            <style sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <centerLabelStyleDescription labelExpression="[name/]">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappings>
+        <edgeMappings name="superTypes" sourceMapping="//@ownedViewpoints[name='VP-3790']/@ownedRepresentations[name='VP-3790']/@defaultLayer/@nodeMappings[name='class']" targetMapping="//@ownedViewpoints[name='VP-3790']/@ownedRepresentations[name='VP-3790']/@defaultLayer/@nodeMappings[name='class']" targetFinderExpression="[thisEObject.eSuperTypes/]">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelExpression="superType">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%name == &quot;force base style&quot;%>">
+            <style sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <centerLabelStyleDescription labelExpression="superType">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappings>
+        <containerMappings name="package" semanticCandidatesExpression="var:self" domainClass="EPackage">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%name == &quot;force base style&quot;%>">
+            <style xsi:type="style:FlatContainerStyleDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <toolSections>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="noDeleteButRename" forceRefresh="true">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[element/]">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%name%>_d"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="Level 1 : red">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="class_import1" semanticCandidatesExpression="feature:eContents" domainClass="EClass" importedMapping="//@ownedViewpoints[name='VP-3790']/@ownedRepresentations[name='VP-3790']/@defaultLayer/@nodeMappings[name='class']">
+          <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%name == &quot;force level 1 style&quot;%>">
+            <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            </style>
+          </conditionnalStyles>
+        </nodeMappings>
+        <edgeMappingImports name="ref_import_1" importedMapping="//@ownedViewpoints[name='VP-3790']/@ownedRepresentations[name='VP-3790']/@defaultLayer/@edgeMappings[name='refs']">
+          <conditionnalStyles predicateExpression="&lt;%name == &quot;force level 1 style&quot;%>">
+            <style sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+              <centerLabelStyleDescription labelExpression="[name/]">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%name != &quot;force base style&quot;%>">
+            <style lineStyle="dash" sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+              <beginLabelStyleDescription showIcon="false" labelExpression="dash">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </beginLabelStyleDescription>
+              <centerLabelStyleDescription labelExpression="[name/]">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappingImports>
+        <edgeMappingImports name="st_import_1" importedMapping="//@ownedViewpoints[name='VP-3790']/@ownedRepresentations[name='VP-3790']/@defaultLayer/@edgeMappings[name='superTypes']">
+          <conditionnalStyles predicateExpression="&lt;%name == &quot;force level 1 style&quot;%>">
+            <style sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+              <centerLabelStyleDescription labelExpression="superType">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%name != &quot;force base style&quot;%>">
+            <style lineStyle="dash" sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+              <beginLabelStyleDescription labelExpression="dash">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </beginLabelStyleDescription>
+              <centerLabelStyleDescription labelExpression="superType">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappingImports>
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="p_import_1" semanticCandidatesExpression="var:self" importedMapping="//@ownedViewpoints[name='VP-3790']/@ownedRepresentations[name='VP-3790']/@defaultLayer/@containerMappings[name='package']">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%name == &quot;force level 1 style&quot;%>">
+            <style xsi:type="style:FlatContainerStyleDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+      </additionalLayers>
+      <additionalLayers name="Level 2 : green">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="class_import2" semanticCandidatesExpression="feature:eContents" domainClass="EClass" importedMapping="//@ownedViewpoints[name='VP-3790']/@ownedRepresentations[name='VP-3790']/@additionalLayers[name='Level%201%20%3A%20red']/@nodeMappings[name='class_import1']">
+          <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappingImports name="ref_import_2" importedMapping="//@ownedViewpoints[name='VP-3790']/@ownedRepresentations[name='VP-3790']/@additionalLayers[name='Level%201%20%3A%20red']/@edgeMappingImports[name='ref_import_1']">
+          <conditionnalStyles predicateExpression="&lt;%!(name == &quot;force base style&quot; || name == &quot;force level 1 style&quot;)%>">
+            <style lineStyle="dot" sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+              <beginLabelStyleDescription labelExpression="dot">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </beginLabelStyleDescription>
+              <centerLabelStyleDescription labelExpression="ref">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappingImports>
+        <edgeMappingImports name="st_import_2" importedMapping="//@ownedViewpoints[name='VP-3790']/@ownedRepresentations[name='VP-3790']/@additionalLayers[name='Level%201%20%3A%20red']/@edgeMappingImports[name='st_import_1']">
+          <conditionnalStyles predicateExpression="&lt;%!(name == &quot;force base style&quot; || name == &quot;force level 1 style&quot;)%>">
+            <style lineStyle="dot" sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+              <beginLabelStyleDescription labelExpression="dot">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </beginLabelStyleDescription>
+              <centerLabelStyleDescription labelExpression="superType">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappingImports>
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="p_import_2" semanticCandidatesExpression="var:self" importedMapping="//@ownedViewpoints[name='VP-3790']/@ownedRepresentations[name='VP-3790']/@additionalLayers[name='Level%201%20%3A%20red']/@containerMappings[name='p_import_1']">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+          </style>
+        </containerMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

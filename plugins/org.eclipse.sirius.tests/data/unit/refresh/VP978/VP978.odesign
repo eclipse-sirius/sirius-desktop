@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="EdgeLabelRefreshPb" version="8.0.0">
+  <ownedViewpoints name="EdgeLabelRefreshPb" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="EdgeLabelRefreshPb" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="EClassWithLabelInside" semanticCandidatesExpression="feature:eAllContents" semanticElements="&lt;%self + eReferences%>" domainClass="EClass">
+          <style xsi:type="style:SquareDescription" labelExpression="defaultStyle&lt;%eReferences.nFirst.name%>" labelPosition="node" width="10" height="3">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+          </style>
+          <conditionnalStyles predicateExpression="[container.oclAsType(ENamedElement).name = 'plop'/]">
+            <style xsi:type="style:LozengeNodeDescription" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%eReferences.nFirst.name != &quot;r1&quot;%>">
+            <style xsi:type="style:SquareDescription" labelExpression="condStyle&lt;%eReferences.nFirst.name%>" labelPosition="node">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+            </style>
+          </conditionnalStyles>
+        </nodeMappings>
+        <nodeMappings name="EClassWithLabelOutside" semanticCandidatesExpression="feature:eAllContents" semanticElements="&lt;%self + eReferences%>" domainClass="EClass">
+          <style xsi:type="style:SquareDescription" labelExpression="defaultStyle&lt;%eReferences.nFirst.name%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+          <conditionnalStyles predicateExpression="[container.oclAsType(ENamedElement).name = 'plop'/]">
+            <style xsi:type="style:LozengeNodeDescription" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%eReferences.nFirst.name != &quot;r1&quot;%>">
+            <style xsi:type="style:SquareDescription" labelExpression="condStyle&lt;%eReferences.nFirst.name%>" labelPosition="node">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+            </style>
+          </conditionnalStyles>
+        </nodeMappings>
+        <edgeMappings name="edge" semanticElements="&lt;%self + eReferences%>" sourceMapping="//@ownedViewpoints[name='EdgeLabelRefreshPb']/@ownedRepresentations[name='EdgeLabelRefreshPb']/@defaultLayer/@nodeMappings[name='EClassWithLabelInside']" targetMapping="//@ownedViewpoints[name='EdgeLabelRefreshPb']/@ownedRepresentations[name='EdgeLabelRefreshPb']/@defaultLayer/@nodeMappings[name='EClassWithLabelOutside']" targetFinderExpression="var:self">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelExpression="defaultStyle&lt;%eReferences.nFirst.name%>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+          <conditionnalStyles predicateExpression="[container.oclAsType(ENamedElement).name = 'plop'/]">
+            <style xsi:type="style:BracketEdgeStyleDescription" sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <centerLabelStyleDescription>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%eReferences.nFirst.name != &quot;r1&quot;%>">
+            <style sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <centerLabelStyleDescription labelExpression="condStyle&lt;%eReferences.nFirst.name%>">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

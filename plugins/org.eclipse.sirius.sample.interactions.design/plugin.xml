@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2010, 2014 THALES GLOBAL SERVICES
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Obeo - Initial API and implementation
+-->
+<plugin>
+<extension
+         point="org.eclipse.sirius.componentization">
+      <component
+            class="org.eclipse.sirius.sample.interactions.Activator"
+            id="org.eclipse.sirius.sample.interactions"
+            name="Interaction Model">
+      </component>
+   </extension>
+   <extension
+         point="org.eclipse.help.toc">
+         <toc
+           file="doc/user-guide-toc.xml">
+     	</toc>
+   </extension>
+
+</plugin>

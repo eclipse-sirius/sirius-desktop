@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_uyanQHJpEeCDm9VpSd68AQ" selectedViews="_vZJ3IHJpEeCDm9VpSd68AQ" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="vp-2025.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_vZJ3IHJpEeCDm9VpSd68AQ" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_wjEFgHJpEeCDm9VpSd68AQ" name="new VP-2025">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_wjEFgnJpEeCDm9VpSd68AQ" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_wjEFg3JpEeCDm9VpSd68AQ" type="Sirius" element="_wjEFgHJpEeCDm9VpSd68AQ" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_xDi8YHJpEeCDm9VpSd68AQ" type="2001" element="_33-VQJjDEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_xDi8Y3JpEeCDm9VpSd68AQ" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_xDi8ZHJpEeCDm9VpSd68AQ" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_xD2eYHJpEeCDm9VpSd68AQ" type="3014" element="_33-8UJjDEeCTjf2eRUPO7Q">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_xD2eYXJpEeCDm9VpSd68AQ"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xD2eYnJpEeCDm9VpSd68AQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_xDi8YXJpEeCDm9VpSd68AQ" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xDi8YnJpEeCDm9VpSd68AQ" x="80" y="130" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_xDstYHJpEeCDm9VpSd68AQ" type="2001" element="_33-8UZjDEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_xDstY3JpEeCDm9VpSd68AQ" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_xDstZHJpEeCDm9VpSd68AQ" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_xD_oUHJpEeCDm9VpSd68AQ" type="3014" element="_33_jYJjDEeCTjf2eRUPO7Q">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_xD_oUXJpEeCDm9VpSd68AQ"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xD_oUnJpEeCDm9VpSd68AQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_xDstYXJpEeCDm9VpSd68AQ" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xDstYnJpEeCDm9VpSd68AQ" x="85" y="40" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_xDstZXJpEeCDm9VpSd68AQ" type="2001" element="_33_jYZjDEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_xDstaHJpEeCDm9VpSd68AQ" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_xDstaXJpEeCDm9VpSd68AQ" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_xD_oU3JpEeCDm9VpSd68AQ" type="3014" element="_34AKcJjDEeCTjf2eRUPO7Q">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_xD_oVHJpEeCDm9VpSd68AQ"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xD_oVXJpEeCDm9VpSd68AQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_xDstZnJpEeCDm9VpSd68AQ" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xDstZ3JpEeCDm9VpSd68AQ" x="250" y="170" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_xDstanJpEeCDm9VpSd68AQ" type="2001" element="_34AKcZjDEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_xDstbXJpEeCDm9VpSd68AQ" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_xDstbnJpEeCDm9VpSd68AQ" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_xEJZUHJpEeCDm9VpSd68AQ" type="3014" element="_34AxgJjDEeCTjf2eRUPO7Q">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_xEJZUXJpEeCDm9VpSd68AQ"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xEJZUnJpEeCDm9VpSd68AQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_xDsta3JpEeCDm9VpSd68AQ" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xDstbHJpEeCDm9VpSd68AQ" x="245" y="65" width="30" height="30"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_wjEFhHJpEeCDm9VpSd68AQ"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_33-VQJjDEeCTjf2eRUPO7Q" name="NamedEntity" tooltipText="foo" width="3" height="3">
+        <target xmi:type="ecore:EClass" href="vp-2025.ecore#//NamedEntity"/>
+        <semanticElements xmi:type="ecore:EClass" href="vp-2025.ecore#//NamedEntity"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:CustomStyle" xmi:id="_33-8UJjDEeCTjf2eRUPO7Q">
+          <description xmi:type="style:CustomStyleDescription" href="vp-2025.odesign#//@ownedViewpoints[name='VP-2025']/@ownedRepresentations[name='VP-2025']/@defaultLayer/@nodeMappings[name='Employee']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="vp-2025.odesign#//@ownedViewpoints[name='VP-2025']/@ownedRepresentations[name='VP-2025']/@defaultLayer/@nodeMappings[name='Employee']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_33-8UZjDEeCTjf2eRUPO7Q" name="Company" tooltipText="foo" width="3" height="3">
+        <target xmi:type="ecore:EClass" href="vp-2025.ecore#//Company"/>
+        <semanticElements xmi:type="ecore:EClass" href="vp-2025.ecore#//Company"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:CustomStyle" xmi:id="_33_jYJjDEeCTjf2eRUPO7Q">
+          <description xmi:type="style:CustomStyleDescription" href="vp-2025.odesign#//@ownedViewpoints[name='VP-2025']/@ownedRepresentations[name='VP-2025']/@defaultLayer/@nodeMappings[name='Employee']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="vp-2025.odesign#//@ownedViewpoints[name='VP-2025']/@ownedRepresentations[name='VP-2025']/@defaultLayer/@nodeMappings[name='Employee']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_33_jYZjDEeCTjf2eRUPO7Q" name="Department" tooltipText="foo" width="3" height="3">
+        <target xmi:type="ecore:EClass" href="vp-2025.ecore#//Department"/>
+        <semanticElements xmi:type="ecore:EClass" href="vp-2025.ecore#//Department"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:CustomStyle" xmi:id="_34AKcJjDEeCTjf2eRUPO7Q">
+          <description xmi:type="style:CustomStyleDescription" href="vp-2025.odesign#//@ownedViewpoints[name='VP-2025']/@ownedRepresentations[name='VP-2025']/@defaultLayer/@nodeMappings[name='Employee']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="vp-2025.odesign#//@ownedViewpoints[name='VP-2025']/@ownedRepresentations[name='VP-2025']/@defaultLayer/@nodeMappings[name='Employee']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_34AKcZjDEeCTjf2eRUPO7Q" name="Employee" tooltipText="foo" width="3" height="3">
+        <target xmi:type="ecore:EClass" href="vp-2025.ecore#//Employee"/>
+        <semanticElements xmi:type="ecore:EClass" href="vp-2025.ecore#//Employee"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:CustomStyle" xmi:id="_34AxgJjDEeCTjf2eRUPO7Q">
+          <description xmi:type="style:CustomStyleDescription" href="vp-2025.odesign#//@ownedViewpoints[name='VP-2025']/@ownedRepresentations[name='VP-2025']/@defaultLayer/@nodeMappings[name='Employee']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="vp-2025.odesign#//@ownedViewpoints[name='VP-2025']/@ownedRepresentations[name='VP-2025']/@defaultLayer/@nodeMappings[name='Employee']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="vp-2025.odesign#//@ownedViewpoints[name='VP-2025']/@ownedRepresentations[name='VP-2025']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_wjEFgXJpEeCDm9VpSd68AQ"/>
+      <activatedLayers xmi:type="description_1:Layer" href="vp-2025.odesign#//@ownedViewpoints[name='VP-2025']/@ownedRepresentations[name='VP-2025']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="vp-2025.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="vp-2025.odesign#//@ownedViewpoints[name='VP-2025']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

@@ -1,0 +1,148 @@
+/*******************************************************************************
+ * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.tests.unit.diagram.synchronization;
+
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.business.internal.experimental.sync.DEdgeCandidate;
+import org.eclipse.sirius.diagram.description.DescriptionFactory;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.tests.support.api.EqualsHashCodeTestCase;
+
+/**
+ * Test class for {@link DEdgeCandidate}
+ * 
+ * @author dlecan
+ */
+public class DEdgeCandidateTest extends EqualsHashCodeTestCase {
+
+    private static final DiagramFactory DF = DiagramFactory.eINSTANCE;
+
+    private static final DescriptionFactory DDF = DescriptionFactory.eINSTANCE;
+
+    private EdgeMapping edgeMapping = DDF.createEdgeMapping();
+
+    private DNode sourceEdgeTarget = DF.createDNode();
+
+    private DNodeContainer targetEdgeTarget = DF.createDNodeContainer();
+
+    private DDiagram dDiagram = DF.createDDiagram();
+
+    public DEdgeCandidateTest() {
+        super();
+        edgeMapping.setName("dfgsdf");
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Object createInstance() throws Exception {
+        return createDEgedCandidateInstance();
+    }
+
+    private Object createDEgedCandidateInstance() {
+        DEdge dEdge = DF.createDEdge();
+
+        dEdge.setActualMapping(edgeMapping);
+        dEdge.setSourceNode(sourceEdgeTarget);
+        dEdge.setTargetNode(targetEdgeTarget);
+
+        return new DEdgeCandidate(dEdge);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Object createNotEqualInstance() throws Exception {
+        return new DEdgeCandidate(null, null, null, null);
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testIsInvalid1() throws Exception {
+        DEdge dEdge = DF.createDEdge();
+
+        dEdge.setActualMapping(edgeMapping);
+        dEdge.setSourceNode(sourceEdgeTarget);
+        dEdge.setTargetNode(targetEdgeTarget);
+
+        DEdgeCandidate instance = new DEdgeCandidate(dEdge);
+        assertTrue(instance.isInvalid());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testIsInvalid2() throws Exception {
+        DEdge dEdge = DF.createDEdge();
+
+        dEdge.setActualMapping(edgeMapping);
+        dEdge.setSourceNode(sourceEdgeTarget);
+        dEdge.setTargetNode(targetEdgeTarget);
+
+        DEdgeCandidate instance = new DEdgeCandidate(dEdge);
+
+        dDiagram.getOwnedDiagramElements().add(sourceEdgeTarget);
+        assertTrue(instance.isInvalid());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testIsInvalid3() throws Exception {
+        DEdge dEdge = DF.createDEdge();
+
+        dEdge.setActualMapping(edgeMapping);
+        dEdge.setSourceNode(sourceEdgeTarget);
+        dEdge.setTargetNode(targetEdgeTarget);
+
+        DEdgeCandidate instance = new DEdgeCandidate(dEdge);
+
+        dDiagram.getOwnedDiagramElements().add(targetEdgeTarget);
+        assertTrue(instance.isInvalid());
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testIsNotInvalid() throws Exception {
+        DEdge dEdge = DF.createDEdge();
+
+        dEdge.setActualMapping(edgeMapping);
+        dEdge.setSourceNode(sourceEdgeTarget);
+        dEdge.setTargetNode(targetEdgeTarget);
+
+        DEdgeCandidate instance = new DEdgeCandidate(dEdge);
+
+        dDiagram.getOwnedDiagramElements().add(sourceEdgeTarget);
+        dDiagram.getOwnedDiagramElements().add(targetEdgeTarget);
+        assertFalse(instance.isInvalid());
+    }
+
+}

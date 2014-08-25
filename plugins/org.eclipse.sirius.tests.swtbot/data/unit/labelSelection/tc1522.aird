@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_m5y_sd6YEd663-RgX4cBuw" selectedViews="_s6dhoN6YEd663-RgX4cBuw" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="tc1522.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_s6dhoN6YEd663-RgX4cBuw" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_tBCDsd6YEd663-RgX4cBuw" name="trac1522 package entities">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_3A8gwBHoEeK-xJ8W7doAqA" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_tHnM0N6YEd663-RgX4cBuw" type="Sirius" element="_tBCDsd6YEd663-RgX4cBuw" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_tP-eoN6YEd663-RgX4cBuw" type="2003" element="_Bw890JjKEeCGbO5oLE72PQ">
+            <children xmi:type="notation:Node" xmi:id="_tQA64N6YEd663-RgX4cBuw" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_tQCJAN6YEd663-RgX4cBuw" type="7004">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_tQCJAd6YEd663-RgX4cBuw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_tQCJAt6YEd663-RgX4cBuw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_tP-eod6YEd663-RgX4cBuw" fontName="Segoe UI" fontHeight="8" italic="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tP-eot6YEd663-RgX4cBuw" x="24" y="204"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_tQCJA96YEd663-RgX4cBuw" type="2003" element="_Bw-L8JjKEeCGbO5oLE72PQ">
+            <children xmi:type="notation:Node" xmi:id="_tQCwEN6YEd663-RgX4cBuw" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_tQCwEd6YEd663-RgX4cBuw" type="7004">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_tQCwEt6YEd663-RgX4cBuw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_tQCwE96YEd663-RgX4cBuw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_tQCJBN6YEd663-RgX4cBuw" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tQCJBd6YEd663-RgX4cBuw" x="312" y="48"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_tHnM0d6YEd663-RgX4cBuw"/>
+          <edges xmi:type="notation:Edge" xmi:id="_tQIPoN6YEd663-RgX4cBuw" type="4001" element="_BxGHwJjKEeCGbO5oLE72PQ" source="_tQCJA96YEd663-RgX4cBuw" target="_tQCJA96YEd663-RgX4cBuw">
+            <children xmi:type="notation:Node" xmi:id="_tQJdwN6YEd663-RgX4cBuw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_47pAAIRJEeO2YNPef3miww" x="10" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_BsJ9YJjKEeCGbO5oLE72PQ" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BsJ9YZjKEeCGbO5oLE72PQ" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_BsKkcJjKEeCGbO5oLE72PQ" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BsKkcZjKEeCGbO5oLE72PQ" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_tQIPod6YEd663-RgX4cBuw"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_tQIPot6YEd663-RgX4cBuw" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tQIPo96YEd663-RgX4cBuw" points="[26, 2, 26, 2]$[88, 9, 88, 9]$[88, 81, 88, 81]$[14, 81, 14, 81]$[3, 19, 3, 19]"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_tQLS8N6YEd663-RgX4cBuw" type="4001" element="_BxHV4JjKEeCGbO5oLE72PQ" source="_tQCJA96YEd663-RgX4cBuw" target="_tP-eoN6YEd663-RgX4cBuw">
+            <children xmi:type="notation:Node" xmi:id="_tQLS9N6YEd663-RgX4cBuw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_47pAAYRJEeO2YNPef3miww" x="10" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_BsKkcpjKEeCGbO5oLE72PQ" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BsKkc5jKEeCGbO5oLE72PQ" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_BsKkdJjKEeCGbO5oLE72PQ" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BsKkdZjKEeCGbO5oLE72PQ" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_tQLS8d6YEd663-RgX4cBuw" routing="Rectilinear" jumpLinkStatus="Above"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_tQLS8t6YEd663-RgX4cBuw" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_tQLS896YEd663-RgX4cBuw" points="[0, 20, 0, -80]$[0, 80, 0, -20]"/>
+          </edges>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_Bw890JjKEeCGbO5oLE72PQ" name="Class1" tooltipText="trac1522.Class1" incomingEdges="_BxHV4JjKEeCGbO5oLE72PQ">
+        <target xmi:type="ecore:EClass" href="tc1522.ecore#//Class1"/>
+        <semanticElements xmi:type="ecore:EClass" href="tc1522.ecore#//Class1"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Bw9k4JjKEeCGbO5oLE72PQ" labelFormat="italic" backgroundStyle="GradientTopToBottom">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Bw9k4ZjKEeCGbO5oLE72PQ"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="tc1522.odesign#//@ownedViewpoints[name='Design%20TC1522']/@ownedRepresentations[name='TC%201522']/@defaultLayer/@containerMappings[name='EC%20EClass']/@conditionnalStyles.0/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Bw9k4pjKEeCGbO5oLE72PQ"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Bw9k45jKEeCGbO5oLE72PQ" red="204" green="242" blue="166"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Bw9k5JjKEeCGbO5oLE72PQ" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="tc1522.odesign#//@ownedViewpoints[name='Design%20TC1522']/@ownedRepresentations[name='TC%201522']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_Bw-L8JjKEeCGbO5oLE72PQ" name="Class2" tooltipText="trac1522.Class2" outgoingEdges="_BxGHwJjKEeCGbO5oLE72PQ _BxHV4JjKEeCGbO5oLE72PQ" incomingEdges="_BxGHwJjKEeCGbO5oLE72PQ">
+        <target xmi:type="ecore:EClass" href="tc1522.ecore#//Class2"/>
+        <semanticElements xmi:type="ecore:EClass" href="tc1522.ecore#//Class2"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Bw-L8ZjKEeCGbO5oLE72PQ" backgroundStyle="GradientTopToBottom">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Bw-L8pjKEeCGbO5oLE72PQ"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="tc1522.odesign#//@ownedViewpoints[name='Design%20TC1522']/@ownedRepresentations[name='TC%201522']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Bw-L85jKEeCGbO5oLE72PQ"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Bw-L9JjKEeCGbO5oLE72PQ" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Bw-L9ZjKEeCGbO5oLE72PQ" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="tc1522.odesign#//@ownedViewpoints[name='Design%20TC1522']/@ownedRepresentations[name='TC%201522']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_BxGHwJjKEeCGbO5oLE72PQ" name="Invalid feature as name" sourceNode="_Bw-L8JjKEeCGbO5oLE72PQ" targetNode="_Bw-L8JjKEeCGbO5oLE72PQ">
+        <target xmi:type="ecore:EReference" href="tc1522.ecore#//Class2/ref3"/>
+        <semanticElements xmi:type="ecore:EReference" href="tc1522.ecore#//Class2/ref3"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_tPUXUd6YEd663-RgX4cBuw">
+          <description xmi:type="style:EdgeStyleDescription" href="tc1522.odesign#//@ownedViewpoints[name='Design%20TC1522']/@ownedRepresentations[name='TC%201522']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_tPUXUt6YEd663-RgX4cBuw" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_TwPukEgxEeCm95Tq9dtYWA" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_TwPukUgxEeCm95Tq9dtYWA" red="209" green="209" blue="209"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="tc1522.odesign#//@ownedViewpoints[name='Design%20TC1522']/@ownedRepresentations[name='TC%201522']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_BxHV4JjKEeCGbO5oLE72PQ" sourceNode="_Bw-L8JjKEeCGbO5oLE72PQ" targetNode="_Bw890JjKEeCGbO5oLE72PQ">
+        <target xmi:type="ecore:EClass" href="tc1522.ecore#//Class2"/>
+        <semanticElements xmi:type="ecore:EClass" href="tc1522.ecore#//Class2"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_tPUXVN6YEd663-RgX4cBuw" targetArrow="InputClosedArrow" routingStyle="manhattan">
+          <description xmi:type="style:EdgeStyleDescription" href="tc1522.odesign#//@ownedViewpoints[name='Design%20TC1522']/@ownedRepresentations[name='TC%201522']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_tPUXVd6YEd663-RgX4cBuw" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_TwPukkgxEeCm95Tq9dtYWA" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_TwPuk0gxEeCm95Tq9dtYWA" red="209" green="209" blue="209"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="tc1522.odesign#//@ownedViewpoints[name='Design%20TC1522']/@ownedRepresentations[name='TC%201522']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="tc1522.odesign#//@ownedViewpoints[name='Design%20TC1522']/@ownedRepresentations[name='TC%201522']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_tBCqwN6YEd663-RgX4cBuw"/>
+      <activatedLayers xmi:type="description_1:Layer" href="tc1522.odesign#//@ownedViewpoints[name='Design%20TC1522']/@ownedRepresentations[name='TC%201522']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="tc1522.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="tc1522.odesign#//@ownedViewpoints[name='Design%20TC1522']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

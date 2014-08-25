@@ -1,0 +1,245 @@
+/*******************************************************************************
+ * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.tests.swtbot;
+
+import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
+import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
+import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
+import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
+import org.eclipse.sirius.ui.tools.api.Messages;
+import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
+import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
+import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
+import org.eclipse.ui.IEditorReference;
+
+/**
+ * Test class for tree folding.
+ * 
+ * @author smonnier
+ */
+public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTestCase {
+
+    private static final String REPRESENTATION_INSTANCE_NAME = "TC732 Square representation 1";
+
+    private static final String REPRESENTATION_NAME = "TC732 Square representation 1";
+
+    private static final String VIEWPOINT_NAME = "Test case for ticket #732";
+
+    private static final String MODEL = "tc732.ecore";
+
+    private static final String SESSION_FILE_1_VIEWPOINT = "tc732_1viewpoint.aird";
+
+    private static final String SESSION_FILE_2_VIEWPOINTS = "tc732_2viewpoints.aird";
+
+    private static final String VSM_FILE = "tc732.odesign";
+
+    private static final String DATA_UNIT_DIR = "data/unit/navigation/tc732/";
+
+    private static final String FILE_DIR = "/";
+
+    private static final String EXPECTED_NAVIGATION_REPRESENTATION_NAME = "New detail : Representation 2";
+
+    private static final String EXPECTED_NAVIGATION_REPRESENTATION_INSTANCE_NAME = "new Representation 2";
+
+    private UIResource sessionAirdResource;
+
+    private UILocalSession localSession;
+
+    /**
+     * Current editor.
+     */
+    protected SWTBotSiriusDiagramEditor editor;
+
+    /**
+     * Current diagram.
+     */
+    protected UIDiagramRepresentation diagram;
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void onSetUpBeforeClosingWelcomePage() throws Exception {
+        copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE_1_VIEWPOINT, SESSION_FILE_2_VIEWPOINTS, VSM_FILE);
+
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void tearDown() throws Exception {
+        sessionAirdResource = null;
+        localSession = null;
+        editor = null;
+        diagram = null;
+        super.tearDown();
+    }
+
+    private void initializeDiagram2Siriuss() throws Exception {
+        sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE_2_VIEWPOINTS);
+        localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
+
+        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
+                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
+
+        editor = diagram.getEditor();
+    }
+
+    private void initializeDiagram1Sirius() throws Exception {
+        sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE_1_VIEWPOINT);
+        localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
+
+        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
+                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
+
+        editor = diagram.getEditor();
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testNavigation1SiriusFromContainer() throws Exception {
+        doTestNavigationWithoutContextualMenu(new Point(300, 300));
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testNavigation1SiriusFromNode() throws Exception {
+        doTestNavigationWithoutContextualMenu(new Point(325, 160));
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testNavigation1SiriusFromEdge() throws Exception {
+        doTestNavigationWithoutContextualMenu(new Point(265, 135));
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testNavigation2SiriussFromContainer() throws Exception {
+        doTestNavigationWithContextualMenu(new Point(300, 300), "System1)");
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testNavigation2SiriussFromContainerWithoutRefreshOnOpening() throws Exception {
+        doTestNavigationWithContextualMenu(new Point(300, 300), "System1)", true);
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testNavigation2SiriussFromNode() throws Exception {
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            return;
+        }
+        doTestNavigationWithContextualMenu(new Point(325, 160), "Sous-package 2)");
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testNavigation2SiriussFromEdge() throws Exception {
+        doTestNavigationWithContextualMenu(new Point(265, 135), "System1)");
+    }
+
+    /**
+     * Test method.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testNavigation2SiriussFromEdgeWithoutRefreshOnOpening() throws Exception {
+        doTestNavigationWithContextualMenu(new Point(265, 135), "System1)", true);
+    }
+
+    private void doTestNavigationWithContextualMenu(Point point, String diagramName) throws Exception {
+        doTestNavigationWithContextualMenu(point, diagramName, false);
+    }
+
+    private void doTestNavigationWithContextualMenu(Point point, String diagramName, boolean disableRefreshOnOpening) throws Exception {
+        if (disableRefreshOnOpening) {
+            changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), false);
+        }
+
+        initializeDiagram2Siriuss();
+
+        editor.click(point.x, point.y);
+
+        editor.clickContextMenu(EXPECTED_NAVIGATION_REPRESENTATION_NAME);
+
+        bot.waitUntilWidgetAppears(Conditions.shellIsActive(Messages.createRepresentationInputDialog_Title));
+
+        bot.button("OK").click();
+        assertEditorIsNotError("Right click navigation editor did not opened correctly", bot.activeEditor());
+        assertEquals("The active editor is not the one expected", EXPECTED_NAVIGATION_REPRESENTATION_INSTANCE_NAME, bot.activeEditor().getTitle());
+        // Test VP-3039
+        if (disableRefreshOnOpening) {
+            IEditorReference reference = bot.activeEditor().getReference();
+            SWTBotSiriusDiagramEditor activeEditor = new SWTBotSiriusDiagramEditor(reference, bot);
+            assertNotNull("The diagram must not be blank", activeEditor.getEditPart("Sous-package1"));
+        }
+    }
+
+    private void doTestNavigationWithoutContextualMenu(Point point) throws Exception {
+        final long oldTimeout = SWTBotPreferences.TIMEOUT;
+
+        try {
+            SWTBotPreferences.TIMEOUT = 1000;
+
+            initializeDiagram1Sirius();
+
+            editor.click(point.x, point.y);
+
+            SWTBotUtils.waitAllUiEvents();
+
+            editor.clickContextMenu(EXPECTED_NAVIGATION_REPRESENTATION_NAME);
+
+            fail(WidgetNotFoundException.class + " Navigation menu not expected to be available");
+        } catch (final WidgetNotFoundException e) {
+            assertEquals("The active editor is not the one expected", REPRESENTATION_INSTANCE_NAME, bot.activeEditor().getTitle());
+        } finally {
+            SWTBotPreferences.TIMEOUT = oldTimeout;
+        }
+    }
+
+}

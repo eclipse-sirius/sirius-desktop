@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.obeo.fr/dsl/viewpoint/description/1.1.0" xmlns:filter="http://www.obeo.fr/dsl/viewpoint/description/filter/1.1.0" xmlns:style="http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0" name="VP-3823" version="6.5.0.201210011230">
+  <ownedViewpoints name="VP-3823">
+    <ownedRepresentations xsi:type="description:DiagramDescription" name="VP-3823" domainClass="EPackage">
+      <filters xsi:type="filter:CompositeFilterDescription" name="filter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='VP-3823']/@ownedRepresentations[name='VP-3823']/@defaultLayer/@containerMappings[name='containerClass']/@borderedNodeMappings[name='borderedNode']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="filter2">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='VP-3823']/@ownedRepresentations[name='VP-3823']/@defaultLayer/@containerMappings[name='containerClass']"/>
+      </filters>
+      <concerns>
+        <ownedConcernDescriptions name="test" filters="//@ownedViewpoints[name='VP-3823']/@ownedRepresentations[name='VP-3823']/@filters[name='filter']"/>
+        <ownedConcernDescriptions name="test2" filters="//@ownedViewpoints[name='VP-3823']/@ownedRepresentations[name='VP-3823']/@filters[name='filter2']"/>
+      </concerns>
+      <defaultLayer name="Default">
+        <nodeMappings name="nodeClass" domainClass="EClass">
+          <borderedNodeMappings name="BorderedNode" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
+            <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <containerMappings name="containerClass" domainClass="EClass">
+          <borderedNodeMappings name="borderedNode" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
+            <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </borderedNodeMappings>
+          <subNodeMappings name="subNodeClass" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
+            <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

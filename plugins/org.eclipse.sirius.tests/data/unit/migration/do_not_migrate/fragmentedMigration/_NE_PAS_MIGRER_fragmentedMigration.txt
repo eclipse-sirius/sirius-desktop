@@ -1,0 +1,1 @@
+Il ne faut pas migrer les modèles fragmentedMigration*.aird car ils servent justement à tester la migration.

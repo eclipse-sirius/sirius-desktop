@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_o7WFcejEEd6aHIbLFN-N1g">
+  <packagedElement xmi:type="uml:Component" xmi:id="_Zx3IYOjFEd6aHIbLFN-N1g" name="New Component">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_a6MpcOjFEd6aHIbLFN-N1g" name="PortToClick"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_aamjYOjFEd6aHIbLFN-N1g" name="New Component">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_bQx9cOjFEd6aHIbLFN-N1g" name="New Port" redefinedPort="_a6MpcOjFEd6aHIbLFN-N1g"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_dcdx4OjFEd6aHIbLFN-N1g" name="New Port" redefinedPort="_a6MpcOjFEd6aHIbLFN-N1g"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_fO5_4OjFEd6aHIbLFN-N1g" name="New Port" redefinedPort="_a6MpcOjFEd6aHIbLFN-N1g"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_cPj54OjFEd6aHIbLFN-N1g" name="New Component">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_dFzlYOjFEd6aHIbLFN-N1g" name="New Port" redefinedPort="_a6MpcOjFEd6aHIbLFN-N1g"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_gDUfYOjFEd6aHIbLFN-N1g" name="New Port" redefinedPort="_a6MpcOjFEd6aHIbLFN-N1g"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_cfgaYOjFEd6aHIbLFN-N1g" name="New Component">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_iAq84OjFEd6aHIbLFN-N1g" name="New Port" redefinedPort="_a6MpcOjFEd6aHIbLFN-N1g"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_iXBnYOjFEd6aHIbLFN-N1g" name="New Port" redefinedPort="_a6MpcOjFEd6aHIbLFN-N1g"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_UQWp0OjUEd6uS9H4SAreAg" name="New Port" redefinedPort="_a6MpcOjFEd6aHIbLFN-N1g"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_jyWV4OjFEd6aHIbLFN-N1g" name="New Component">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_klnl4OjFEd6aHIbLFN-N1g" name="New Port" redefinedPort="_a6MpcOjFEd6aHIbLFN-N1g"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_k18g4OjFEd6aHIbLFN-N1g" name="New Port" redefinedPort="_a6MpcOjFEd6aHIbLFN-N1g"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_T8Eb4OjUEd6uS9H4SAreAg" name="New Port" redefinedPort="_a6MpcOjFEd6aHIbLFN-N1g"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_On2wQOjUEd6uS9H4SAreAg" name="New Component">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_PHD0wOjUEd6uS9H4SAreAg" name="New Port" redefinedPort="_a6MpcOjFEd6aHIbLFN-N1g"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_PbTmcOjUEd6uS9H4SAreAg" name="New Port" redefinedPort="_a6MpcOjFEd6aHIbLFN-N1g"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_SfwO4OjUEd6uS9H4SAreAg" name="New Port" redefinedPort="_a6MpcOjFEd6aHIbLFN-N1g"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_WWB84OjUEd6uS9H4SAreAg" name="New Component">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_W7kS4OjUEd6uS9H4SAreAg" name="New Port" redefinedPort="_a6MpcOjFEd6aHIbLFN-N1g"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_XM0a8OjUEd6uS9H4SAreAg" name="New Port" redefinedPort="_a6MpcOjFEd6aHIbLFN-N1g"/>
+  </packagedElement>
+</uml:Model>

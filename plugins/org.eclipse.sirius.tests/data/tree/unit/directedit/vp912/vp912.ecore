@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="P1">
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C3"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="enum2"/>
+  <eSubpackages name="P2">
+    <eClassifiers xsi:type="ecore:EClass" name="C4">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="myAtt" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="C5"/>
+  </eSubpackages>
+  <eSubpackages name="P3">
+    <eClassifiers xsi:type="ecore:EClass" name="C6"/>
+    <eClassifiers xsi:type="ecore:EClass" name="C7"/>
+  </eSubpackages>
+</ecore:EPackage>

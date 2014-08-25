@@ -1,0 +1,27 @@
+h1. Interactions Modeler User Guide
+
+Ecore provides only a static, structural view of a model. If your metamodel also defines behaviors, for example through EOperations, or if you want to specify and document usage scenarios of you metamodel's concepts, Ecore itself does not provides the necessary concepts. The @org.eclipse.sirius.sample.interactions@ plugins provides a simple metamodel extending Ecore which can describe how EObject can interact over time by sending messages (reading or writing features, invoking EOperations), creating and destroying objects, etc. Here is an overview of that metamodel:
+
+!images/mm-overview.png!
+
+The __Interactions__ viewpoint (defined in @org.eclipse.sirius.sample.interactions.design@) provides a sequence diagram modeler on this metamodel, with which you can describe the dynamic behavior of your model elements. To use if, follow these steps:
+
+First, you need to create an __Interactions__ model. Launch the Eclipse creation wizard (__File > New > Other...__), and in the __Example EMF Model Creation Wizards__ section, select __Interaction Model__:
+
+!images/00-new-interaction-model-1.png!
+
+Choose the location and name of the new file to create, and on the next page, choose the __Interaction__ class as the __Model Object__:
+
+!images/01-new-interaction-model-2.png!
+
+Create a new session on the @.interactions@ file, and enable the __Interactions__ viewpoint:
+
+!images/02-open-session-select-interactions-vp.png!
+
+Next, add the Ecore model for which you want to specify the behavior. You should have both the @.ecore@ and the @.interactions@ model in the same session, with the __Interactions__ viewpoint enabled.
+
+!images/03-add-ecore-to-session.png!
+
+You can then create a new sequence diagram on the Interaction element which was created as root of the @.interactions@ resource. In the diagram, you can add participants, create messages and executions between them, group these in combined fragments, etc. Use the __Properties__ view to indicate which elements in the Ecore model correspond to these interactions. Here is an example of a resulting diagram:
+
+!images/04-sequence.png!

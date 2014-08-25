@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_l685QCItEd-ex-WuZDXkUQ" selectedViews="_nkJrsCItEd-ex-WuZDXkUQ" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="testFor.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_nkJrsCItEd-ex-WuZDXkUQ" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_pVQc8SItEd-ex-WuZDXkUQ" name="ecore modeler test package entities">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_ZcnH4BHiEeKS07mYEJy8yw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_pWAD0CItEd-ex-WuZDXkUQ" type="Sirius" element="_pVQc8SItEd-ex-WuZDXkUQ" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_pb9h4CItEd-ex-WuZDXkUQ" type="2003" element="_RihdUJjDEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_pb9h4yItEd-ex-WuZDXkUQ" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_pb9h5CItEd-ex-WuZDXkUQ" type="7004">
+              <children xmi:type="notation:Node" xmi:id="_pb9h5yItEd-ex-WuZDXkUQ" type="3010" element="_Rim84JjDEeCTjf2eRUPO7Q">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_pb9h6CItEd-ex-WuZDXkUQ"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_pb9h6SItEd-ex-WuZDXkUQ" type="3010" element="_Rix8AJjDEeCTjf2eRUPO7Q">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_pb9h6iItEd-ex-WuZDXkUQ"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_pb9h6yItEd-ex-WuZDXkUQ" type="3010" element="_Ri5QwJjDEeCTjf2eRUPO7Q">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_pb9h7CItEd-ex-WuZDXkUQ"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_pb9h7SItEd-ex-WuZDXkUQ" type="3010" element="_RjBMkJjDEeCTjf2eRUPO7Q">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_pb9h7iItEd-ex-WuZDXkUQ"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_pb9h5SItEd-ex-WuZDXkUQ"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_pb9h5iItEd-ex-WuZDXkUQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_pb9h4SItEd-ex-WuZDXkUQ" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pb9h4iItEd-ex-WuZDXkUQ"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_pWAD0SItEd-ex-WuZDXkUQ"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_RihdUJjDEeCTjf2eRUPO7Q" name="Class1" tooltipText="ecore modeler test.Class1">
+        <target xmi:type="ecore:EClass" href="testFor.ecore#//Class1"/>
+        <semanticElements xmi:type="ecore:EClass" href="testFor.ecore#//Class1"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_RikgoJjDEeCTjf2eRUPO7Q" backgroundStyle="GradientTopToBottom">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_RikgoZjDEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_RikgopjDEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Rikgo5jDEeCTjf2eRUPO7Q" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_RikgpJjDEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Rim84JjDEeCTjf2eRUPO7Q" name="Invalid feature as name" tooltipText="opWithoutParametersAndReturn(a, b, n) : ">
+          <target xmi:type="ecore:EOperation" href="testFor.ecore#//Class1/opWithoutParametersAndReturn"/>
+          <semanticElements xmi:type="ecore:EOperation" href="testFor.ecore#//Class1/opWithoutParametersAndReturn"/>
+          <semanticElements xmi:type="ecore:EParameter" href="testFor.ecore#//Class1/opWithoutParametersAndReturn/a"/>
+          <semanticElements xmi:type="ecore:EParameter" href="testFor.ecore#//Class1/opWithoutParametersAndReturn/b"/>
+          <semanticElements xmi:type="ecore:EParameter" href="testFor.ecore#//Class1/opWithoutParametersAndReturn/n"/>
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_RixU8JjDEeCTjf2eRUPO7Q" labelSize="10" labelAlignment="LEFT">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_RixU8ZjDEeCTjf2eRUPO7Q"/>
+            <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_RixU8pjDEeCTjf2eRUPO7Q"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_RixU85jDEeCTjf2eRUPO7Q"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Rix8AJjDEeCTjf2eRUPO7Q" name="Invalid feature as name" tooltipText="opWithReturn() : EBoolean">
+          <target xmi:type="ecore:EOperation" href="testFor.ecore#//Class1/opWithReturn"/>
+          <semanticElements xmi:type="ecore:EOperation" href="testFor.ecore#//Class1/opWithReturn"/>
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Ri4psJjDEeCTjf2eRUPO7Q" labelSize="10" labelAlignment="LEFT">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Ri4psZjDEeCTjf2eRUPO7Q"/>
+            <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Ri4pspjDEeCTjf2eRUPO7Q"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_Ri4ps5jDEeCTjf2eRUPO7Q"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_Ri5QwJjDEeCTjf2eRUPO7Q" name="Invalid feature as name" tooltipText="opWithParameters(p1, p2) : ">
+          <target xmi:type="ecore:EOperation" href="testFor.ecore#//Class1/opWithParameters"/>
+          <semanticElements xmi:type="ecore:EOperation" href="testFor.ecore#//Class1/opWithParameters"/>
+          <semanticElements xmi:type="ecore:EParameter" href="testFor.ecore#//Class1/opWithParameters/p1"/>
+          <semanticElements xmi:type="ecore:EParameter" href="testFor.ecore#//Class1/opWithParameters/p2"/>
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_RjAlgJjDEeCTjf2eRUPO7Q" labelSize="10" labelAlignment="LEFT">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_RjAlgZjDEeCTjf2eRUPO7Q"/>
+            <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_RjAlgpjDEeCTjf2eRUPO7Q"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_RjAlg5jDEeCTjf2eRUPO7Q"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_RjBMkJjDEeCTjf2eRUPO7Q" name="Invalid feature as name" tooltipText="opWithReturnAndParameters(p1, p2) : EInt">
+          <target xmi:type="ecore:EOperation" href="testFor.ecore#//Class1/opWithReturnAndParameters"/>
+          <semanticElements xmi:type="ecore:EOperation" href="testFor.ecore#//Class1/opWithReturnAndParameters"/>
+          <semanticElements xmi:type="ecore:EParameter" href="testFor.ecore#//Class1/opWithReturnAndParameters/p1"/>
+          <semanticElements xmi:type="ecore:EParameter" href="testFor.ecore#//Class1/opWithReturnAndParameters/p2"/>
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_RjH6QJjDEeCTjf2eRUPO7Q" labelSize="10" labelAlignment="LEFT">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_RjH6QZjDEeCTjf2eRUPO7Q"/>
+            <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_RjH6QpjDEeCTjf2eRUPO7Q"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_RjH6Q5jDEeCTjf2eRUPO7Q"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
+        </ownedElements>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_pVQc8iItEd-ex-WuZDXkUQ"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer"/>
+      <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']"/>
+      <target xmi:type="ecore:EPackage" href="testFor.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

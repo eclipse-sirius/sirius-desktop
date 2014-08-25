@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram" xmi:id="_PIjBwX-eEd-TSP3OGJXbyQ" selectedViews="_RVy8cH-eEd-TSP3OGJXbyQ" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="toolSection.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_RVy8cH-eEd-TSP3OGJXbyQ" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_gyo_wH-wEd-SjNwujmKhlg" name="new toolFiltersLayers">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_gypm0H-wEd-SjNwujmKhlg" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_gypm0X-wEd-SjNwujmKhlg" type="Sirius" element="_gyo_wH-wEd-SjNwujmKhlg" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_fdJa8IK6Ed-9ztHQFSyIKQ" type="Note">
+            <children xmi:type="notation:Node" xmi:id="_fe68kIK6Ed-9ztHQFSyIKQ" type="DiagramName">
+              <element xsi:nil="true"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_ffQ60IK6Ed-9ztHQFSyIKQ" type="Description">
+              <element xsi:nil="true"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_fdJa8YK6Ed-9ztHQFSyIKQ" fontName="Sans" fillColor="13369343" lineColor="6737151"/>
+            <element xsi:nil="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fdJa8oK6Ed-9ztHQFSyIKQ" x="176" y="77"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_hr6_oIK6Ed-9ztHQFSyIKQ" type="Note">
+            <children xmi:type="notation:Node" xmi:id="_hsWdcIK6Ed-9ztHQFSyIKQ" type="DiagramName">
+              <element xsi:nil="true"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_hsr0oIK6Ed-9ztHQFSyIKQ" type="Description">
+              <element xsi:nil="true"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_hr6_oYK6Ed-9ztHQFSyIKQ" fontName="Sans" fillColor="13369343" lineColor="6737151"/>
+            <element xsi:nil="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hr6_ooK6Ed-9ztHQFSyIKQ" x="220" y="198"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_MB8KAIK7Ed-9ztHQFSyIKQ" type="Note">
+            <children xmi:type="notation:Node" xmi:id="_MCTWYIK7Ed-9ztHQFSyIKQ" type="DiagramName">
+              <element xsi:nil="true"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_MCs_AIK7Ed-9ztHQFSyIKQ" type="Description">
+              <element xsi:nil="true"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_MB8KAYK7Ed-9ztHQFSyIKQ" fontName="Sans" fillColor="13369343" lineColor="6737151"/>
+            <element xsi:nil="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MB8KAoK7Ed-9ztHQFSyIKQ" x="522" y="71"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_gypm0n-wEd-SjNwujmKhlg"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description_1:DiagramDescription" href="toolFilters.odesign#//@ownedViewpoints[name='toolFilters']/@ownedRepresentations[name='toolFiltersLayers']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_gyo_wX-wEd-SjNwujmKhlg"/>
+      <activatedLayers xmi:type="description_1:Layer" href="toolFilters.odesign#//@ownedViewpoints[name='toolFilters']/@ownedRepresentations[name='toolFiltersLayers']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="toolSection.ecore#/"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_7wBAYYLKEd-KWuwQ5Ap0wA" name="new toolFiltersWithoutLayers">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_7w8NcILKEd-KWuwQ5Ap0wA" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_7w8NcYLKEd-KWuwQ5Ap0wA" type="Sirius" element="_7wBAYYLKEd-KWuwQ5Ap0wA" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_7w8NcoLKEd-KWuwQ5Ap0wA"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description_1:DiagramDescription" href="toolFilters.odesign#//@ownedViewpoints[name='toolFilters']/@ownedRepresentations[name='toolFiltersWithoutLayers']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_7wBAYoLKEd-KWuwQ5Ap0wA"/>
+      <target xmi:type="ecore:EPackage" href="toolSection.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="toolFilters.odesign#//@ownedViewpoints[name='toolFilters']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

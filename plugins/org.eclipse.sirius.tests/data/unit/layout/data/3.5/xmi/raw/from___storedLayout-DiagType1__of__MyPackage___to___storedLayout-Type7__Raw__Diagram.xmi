@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:layoutdata="http://www.eclipse.org/sirius/dsl/layoutdata/1.1.0">
+  <layoutdata:NodeLayoutData id="//p4" width="150" height="70">
+    <location x="1644" y="30"/>
+  </layoutdata:NodeLayoutData>
+  <layoutdata:NodeLayoutData id="//p3" width="150" height="70">
+    <location x="30" y="400"/>
+  </layoutdata:NodeLayoutData>
+  <layoutdata:NodeLayoutData id="//p2" width="401" height="114">
+    <children id="//p2/p2-1" width="178" height="85">
+      <children id="//p2/p2-1/new%20EClass%201" width="30" height="30">
+        <label id="//p2/p2-1/new%20EClass%201">
+          <location x="31" y="15"/>
+        </label>
+        <location x="13" y="-22"/>
+      </children>
+      <location x="11" y="11"/>
+    </children>
+    <children id="//p2/p2-2" width="157" height="80">
+      <location x="11" y="11"/>
+    </children>
+    <location x="30" y="260"/>
+  </layoutdata:NodeLayoutData>
+  <layoutdata:NodeLayoutData id="//p1" width="157" height="80">
+    <children id="//p1/p1-1" width="174" height="85">
+      <children id="//p1/p1-1/C1-1-1" width="30" height="30">
+        <label id="//p1/p1-1/C1-1-1">
+          <location y="5"/>
+        </label>
+        <location x="1" y="-22"/>
+      </children>
+      <children id="//p1/p1-1/C1-1-2" width="30" height="30">
+        <label id="//p1/p1-1/C1-1-2">
+          <location y="5"/>
+        </label>
+        <location x="-22" y="8"/>
+      </children>
+      <location x="-21" y="-17"/>
+    </children>
+    <children id="//p1/p1-2" width="157" height="83">
+      <children id="//p1/p1-2/C1-2-1" width="30" height="30">
+        <label id="//p1/p1-2/C1-2-1">
+          <location y="5"/>
+        </label>
+        <location y="-22"/>
+      </children>
+      <location x="-27" y="-17"/>
+    </children>
+    <children id="//p1/p1-3" width="157" height="73">
+      <location x="-21" y="-17"/>
+    </children>
+    <children id="//p1/C1-1" width="30" height="30">
+      <label id="//p1/C1-1">
+        <location y="5"/>
+      </label>
+      <location x="-22" y="30"/>
+    </children>
+    <children id="//p1/C1-2" width="30" height="30">
+      <label id="//p1/C1-2">
+        <location y="5"/>
+      </label>
+      <location x="-22"/>
+    </children>
+    <children id="//p1/C1-3" width="30" height="30">
+      <label id="//p1/C1-3">
+        <location y="5"/>
+      </label>
+      <location x="9" y="70"/>
+    </children>
+    <location/>
+  </layoutdata:NodeLayoutData>
+</xmi:XMI>

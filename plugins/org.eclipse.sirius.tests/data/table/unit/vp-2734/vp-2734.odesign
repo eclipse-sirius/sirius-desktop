@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" version="8.0.0">
+  <ownedViewpoints name="VP-2734">
+    <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="vp-2734" showOnStartup="true" domainClass="EPackage">
+      <ownedLineMappings name="classLine" semanticElements="&lt;%current + eReferences%>" domainClass="EClass"/>
+      <ownedColumnMappings name="classColumn" domainClass="EClass"/>
+      <ownedColumnMappings name="classColumn2" headerLabelExpression="refs : &lt;%name%>" domainClass="EClass"/>
+      <intersection name="superClass" canEdit="&lt;%true%>" lineMapping="//@ownedViewpoints[name='VP-2734']/@ownedRepresentations[name='vp-2734']/@ownedLineMappings[name='classLine']" columnMapping="//@ownedViewpoints[name='VP-2734']/@ownedRepresentations[name='vp-2734']/@ownedColumnMappings.0" labelExpression="X" columnFinderExpression="&lt;%eSuperTypes%>">
+        <directEdit>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:lineSemantic">
+            <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%&quot;x&quot; == $0 || &quot;X&quot; == $0%>">
+              <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="var:columnSemantic"/>
+            </subModelOperations>
+            <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $0 == &quot;&quot; || $0 == null%>">
+              <subModelOperations xsi:type="tool:Unset" featureName="eSuperTypes" elementExpression="var:columnSemantic"/>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+        <create name="creaSupeRLink">
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:lineSemantic">
+            <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%&quot;x&quot; == $0 || &quot;X&quot; == $0%>">
+              <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="var:columnSemantic"/>
+            </subModelOperations>
+            <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $0 == &quot;&quot; || $0 == null%>">
+              <subModelOperations xsi:type="tool:Unset" featureName="eSuperTypes" elementExpression="var:columnSemantic"/>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </create>
+      </intersection>
+      <intersection name="refOfType" canEdit="&lt;%true%>" lineMapping="//@ownedViewpoints[name='VP-2734']/@ownedRepresentations[name='vp-2734']/@ownedLineMappings[name='classLine']" columnMapping="//@ownedViewpoints[name='VP-2734']/@ownedRepresentations[name='vp-2734']/@ownedColumnMappings.1" labelExpression="X" useDomainClass="true" columnFinderExpression="&lt;%eType%>" lineFinderExpression="feature:eContainer" domainClass="EReference">
+        <directEdit>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="&lt;%$lineSemantic.eReferences.nFirst%>">
+            <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%&quot;x&quot; == $0 || &quot;X&quot; == $0%>">
+              <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="var:columnSemantic"/>
+            </subModelOperations>
+            <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $0 == &quot;&quot; || $0 == null%>">
+              <subModelOperations xsi:type="tool:Unset" featureName="eType" elementExpression="var:columnSemantic"/>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+        <create name="creaRef" forceRefresh="true">
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="&lt;%$lineSemantic.eReferences.nFirst%>">
+            <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%&quot;x&quot; == $0 || &quot;X&quot; == $0%>">
+              <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="var:columnSemantic"/>
+            </subModelOperations>
+            <subModelOperations xsi:type="tool:If" conditionExpression="&lt;% $0 == &quot;&quot; || $0 == null%>">
+              <subModelOperations xsi:type="tool:Unset" featureName="eType" elementExpression="var:columnSemantic"/>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </create>
+      </intersection>
+    </ownedRepresentations>
+  </ownedViewpoints>
+  <ownedViewpoints name="VP-2891">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="VP-2891" label="Should open at startup when vp is not selected" showOnStartup="true" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="1" domainClass="EClass">
+          <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Ticket #1825 (partial layout)" version="8.0.0">
+  <ownedViewpoints name="Tests Cases for ticket #1825 (partial layout)" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Nodes, Containers and Lists (flat)" domainClass="EPackage" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <nodeMappings name="NM_EDataType" semanticCandidatesExpression="feature:eAllContents" domainClass="EDataType">
+          <style xsi:type="style:BundledImageDescription" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </nodeMappings>
+        <containerMappings name="CM_EClass" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="CM_EEnum" semanticCandidatesExpression="feature:eAllContents" domainClass="EEnum" childrenPresentation="List">
+          <subNodeMappings name="EC_EEnumLiteral" semanticCandidatesExpression="feature:eAllContents" domainClass="EEnumLiteral">
+            <style xsi:type="style:SquareDescription" labelAlignment="LEFT">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Tools">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Class" containerMappings="//@ownedViewpoints[name='Tests%20Cases%20for%20ticket%20%231825%20(partial%20layout)']/@ownedRepresentations[name='Nodes%2C%20Containers%20and%20Lists%20(flat)']/@defaultLayer/@containerMappings[name='CM_EClass']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Class&lt;%eContainer.eContents.filter(&quot;EClass&quot;).nSize%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Nodes and Containers (recursive)" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="NM_EClass" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass">
+          <style xsi:type="style:BundledImageDescription" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <containerMappings name="CM_EPackage" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EPackage&quot;)%>" domainClass="EPackage" reusedNodeMappings="//@ownedViewpoints[name='Tests%20Cases%20for%20ticket%20%231825%20(partial%20layout)']/@ownedRepresentations[name='Nodes%20and%20Containers%20(recursive)']/@defaultLayer/@nodeMappings[name='NM_EClass']" reusedContainerMappings="//@ownedViewpoints[name='Tests%20Cases%20for%20ticket%20%231825%20(partial%20layout)']/@ownedRepresentations[name='Nodes%20and%20Containers%20(recursive)']/@defaultLayer/@containerMappings[name='CM_EPackage']">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+  <userColorsPalettes name="GLF">
+    <entries xsi:type="description:UserFixedColor" red="255" green="192" blue="203" name="r&#xf4;se"/>
+  </userColorsPalettes>
+</description:Group>

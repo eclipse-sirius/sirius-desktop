@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="root">
+  <eSubpackages name="Package1">
+    <eClassifiers xsi:type="ecore:EClass" name="Class11">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref2" eType="#//Package2/Class26"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Class12"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Class13"/>
+  </eSubpackages>
+  <eSubpackages name="Package2">
+    <eClassifiers xsi:type="ecore:EClass" name="Class21">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="AAAAout" eType="#//Package1/Class12"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Class22">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref7" eType="#//Package2/Class25"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Class23">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref12" eType="#//Package1/Class13"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Class24">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref1" eType="#//Package1/Class13"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Class25">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref5" eType="#//Package4/Class41"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref8" eType="#//Package2/Class23"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref9" eType="#//Package2/Class24"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Class26">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref3" eType="#//Package1/Class11"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="withoutType2"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Class27">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref1" eType="#//Package2/Class28"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref1" eType="#//Package2/Class26"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Class28">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref6" eType="#//Package3/Class32"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Class29">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref10" eType="#//Package2/Class26"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref11" eType="#//Package2/Class28"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="Package3">
+    <eClassifiers xsi:type="ecore:EClass" name="Class31">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="withoutType"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Class32">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref31" eType="#//Package2/Class22"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref31" eType="#//Package2/Class25"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref31" eType="#//Package2/Class28"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref31" eType="#//Package2/Class26"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="Package4">
+    <eClassifiers xsi:type="ecore:EClass" name="Class41">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref4" eType="#//Package1/Class13"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="Package5"/>
+</ecore:EPackage>

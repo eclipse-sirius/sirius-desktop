@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="root">
+  <eSubpackages name="p1">
+    <eSubpackages name="p1-1">
+      <eClassifiers xsi:type="ecore:EClass" name="EC1">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ec2" eType="#//p2/p2-2/EC2"/>
+      </eClassifiers>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="p2">
+    <eSubpackages name="p2-2">
+      <eClassifiers xsi:type="ecore:EClass" name="EC2"/>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="usecaseBorderedNodes">
+    <eSubpackages name="p1">
+      <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+    </eSubpackages>
+    <eSubpackages name="p2"/>
+  </eSubpackages>
+  <eSubpackages name="usecaseBorderedNodesInContainer">
+    <eSubpackages name="container">
+      <eSubpackages name="p1">
+        <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+      </eSubpackages>
+      <eSubpackages name="p2"/>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="usecaseNodes">
+    <eSubpackages name="p1">
+      <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+      <eClassifiers xsi:type="ecore:EClass" name="C2" eSuperTypes="#//usecaseNodes/p1/C1"/>
+    </eSubpackages>
+  </eSubpackages>
+</ecore:EPackage>

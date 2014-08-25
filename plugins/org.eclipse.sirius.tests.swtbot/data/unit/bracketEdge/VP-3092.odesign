@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="VP-3092" version="8.0.0">
+  <ownedViewpoints name="VP-3092_Viewpoint" label="VP-3092_Viewpoint" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="VP-3092_DiagramDescription" domainClass="ecore.EPackage">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="EAnnotationMapping" semanticCandidatesExpression="&lt;%eAnnotations%>" domainClass="ecore.EAnnotation">
+          <style xsi:type="style:DotDescription" labelExpression="&lt;%source%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="EReferenceMapping" preconditionExpression="&lt;%!eOpposite%>" semanticElements="var:self" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='VP-3092_Viewpoint']/@ownedRepresentations[name='VP-3092_DiagramDescription']/@defaultLayer/@containerMappings[name='EClassMapping']" targetMapping="//@ownedViewpoints[name='VP-3092_Viewpoint']/@ownedRepresentations[name='VP-3092_DiagramDescription']/@defaultLayer/@containerMappings[name='EClassMapping']" targetFinderExpression="&lt;%eType%>" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true" reconnections="//@ownedViewpoints[name='VP-3092_Viewpoint']/@ownedRepresentations[name='VP-3092_DiagramDescription']/@defaultLayer/@toolSections.0/@ownedTools[name='ReconnectEReferenceTool']">
+          <style xsi:type="style:BracketEdgeStyleDescription" sourceArrow="InputArrow" sizeComputationExpression="2" routingStyle="tree">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <beginLabelStyleDescription labelExpression="&lt;%name%>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </beginLabelStyleDescription>
+            <centerLabelStyleDescription labelExpression="&lt;%name%>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+            <endLabelStyleDescription labelExpression="&lt;%name%>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </endLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="EAnnotation2EReferenceMapping" sourceMapping="//@ownedViewpoints[name='VP-3092_Viewpoint']/@ownedRepresentations[name='VP-3092_DiagramDescription']/@defaultLayer/@nodeMappings[name='EAnnotationMapping']" targetMapping="//@ownedViewpoints[name='VP-3092_Viewpoint']/@ownedRepresentations[name='VP-3092_DiagramDescription']/@defaultLayer/@edgeMappings[name='EReferenceMapping'] //@ownedViewpoints[name='VP-3092_Viewpoint']/@ownedRepresentations[name='VP-3092_DiagramDescription']/@defaultLayer/@edgeMappings[name='ESupertypeMapping']" targetFinderExpression="&lt;%references%>" reconnections="//@ownedViewpoints[name='VP-3092_Viewpoint']/@ownedRepresentations[name='VP-3092_DiagramDescription']/@defaultLayer/@toolSections.0/@ownedTools[name='ReconnectEAnnotation2EReferenceTool']">
+          <style xsi:type="style:BracketEdgeStyleDescription" sourceArrow="InputArrow" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelExpression="eAnnotationToBracket">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="EReference2EAnnotationMapping" sourceMapping="//@ownedViewpoints[name='VP-3092_Viewpoint']/@ownedRepresentations[name='VP-3092_DiagramDescription']/@defaultLayer/@edgeMappings[name='EReferenceMapping'] //@ownedViewpoints[name='VP-3092_Viewpoint']/@ownedRepresentations[name='VP-3092_DiagramDescription']/@defaultLayer/@edgeMappings[name='ESupertypeMapping']" targetMapping="//@ownedViewpoints[name='VP-3092_Viewpoint']/@ownedRepresentations[name='VP-3092_DiagramDescription']/@defaultLayer/@nodeMappings[name='EAnnotationMapping']" targetFinderExpression="&lt;%eAnnotations%>" reconnections="//@ownedViewpoints[name='VP-3092_Viewpoint']/@ownedRepresentations[name='VP-3092_DiagramDescription']/@defaultLayer/@toolSections.0/@ownedTools[name='ReconnectEReference2EAnnotationTool']">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+            <centerLabelStyleDescription labelExpression="RefToEAnnot">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ESupertypeMapping" sourceMapping="//@ownedViewpoints[name='VP-3092_Viewpoint']/@ownedRepresentations[name='VP-3092_DiagramDescription']/@defaultLayer/@containerMappings[name='EClassMapping']" targetMapping="//@ownedViewpoints[name='VP-3092_Viewpoint']/@ownedRepresentations[name='VP-3092_DiagramDescription']/@defaultLayer/@containerMappings[name='EClassMapping']" targetFinderExpression="&lt;%eSuperTypes%>" reconnections="//@ownedViewpoints[name='VP-3092_Viewpoint']/@ownedRepresentations[name='VP-3092_DiagramDescription']/@defaultLayer/@toolSections.0/@ownedTools[name='ReconnectESupertypeTool']">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <beginLabelStyleDescription labelExpression="&lt;%name%>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </beginLabelStyleDescription>
+            <centerLabelStyleDescription labelExpression="Extend">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+            <endLabelStyleDescription labelExpression="&lt;%name%>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </endLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="EPackageMapping" semanticCandidatesExpression="&lt;%eSubpackages%>" domainClass="ecore.EPackage" reusedContainerMappings="//@ownedViewpoints[name='VP-3092_Viewpoint']/@ownedRepresentations[name='VP-3092_DiagramDescription']/@defaultLayer/@containerMappings[name='EClassMapping'] //@ownedViewpoints[name='VP-3092_Viewpoint']/@ownedRepresentations[name='VP-3092_DiagramDescription']/@defaultLayer/@containerMappings[name='EPackageMapping']">
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="EClassMapping" semanticCandidatesExpression="&lt;%eClassifiers%>" domainClass="ecore.EClass" childrenPresentation="List">
+          <subNodeMappings name="EAttributeMapping" semanticCandidatesExpression="&lt;%eAllAttributes%>" domainClass="ecore.EAttribute">
+            <style xsi:type="style:BundledImageDescription" labelExpression="&lt;%render%>" labelAlignment="LEFT" sizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="EOperationMapping" semanticCandidatesExpression="&lt;%eOperations%>" semanticElements="&lt;%self + eParameters%>" domainClass="ecore.EOperation">
+            <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="&lt;%render%>" labelAlignment="LEFT" tooltipExpression="&lt;%name%>(&lt;%eParameters.name.sep(&quot;, &quot;)%>) : &lt;%eType.name%>" sizeComputationExpression="2">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" tooltipExpression="&lt;%eContainer.name%>.&lt;%name%>" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="EClassCreationTool" label="EClass" containerMappings="//@ownedViewpoints[name='VP-3092_Viewpoint']/@ownedRepresentations[name='VP-3092_DiagramDescription']/@defaultLayer/@containerMappings[name='EClassMapping']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="new EClass &lt;%eContainer().eContents().filter(&quot;EClass&quot;).nSize%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="EPackageCreationTool" label="EPackage" containerMappings="//@ownedViewpoints[name='VP-3092_Viewpoint']/@ownedRepresentations[name='VP-3092_DiagramDescription']/@defaultLayer/@containerMappings[name='EPackageMapping']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EPackage" referenceName="eSubpackages" variableName="package">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:package">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="new Package &lt;%eContainer().eContents.filter(&quot;EPackage&quot;).nSize%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="EReferenceCreationTool" label="EReference" edgeMappings="//@ownedViewpoints[name='VP-3092_Viewpoint']/@ownedRepresentations[name='VP-3092_DiagramDescription']/@defaultLayer/@edgeMappings[name='EReferenceMapping']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newEReference&lt;%eContainer(&quot;EClassifier&quot;).eAllContents(&quot;EReference&quot;).nSize%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="EAnnotationCreationTool" nodeMappings="//@ownedViewpoints[name='VP-3092_Viewpoint']/@ownedRepresentations[name='VP-3092_DiagramDescription']/@defaultLayer/@nodeMappings[name='EAnnotationMapping']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EAnnotation" referenceName="eAnnotations">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="A&lt;%getRootContainer().eAllContents.filter(&quot;EAnnotation&quot;).nSize%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="EAnnot2ERefCreationTool" edgeMappings="//@ownedViewpoints[name='VP-3092_Viewpoint']/@ownedRepresentations[name='VP-3092_DiagramDescription']/@defaultLayer/@edgeMappings[name='EAnnotation2EReferenceMapping']" iconPath="/org.eclipse.sirius.ui/icons/full/obj16/EdgeMapping.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="references" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="ERef2EAnnotCreationTool" edgeMappings="//@ownedViewpoints[name='VP-3092_Viewpoint']/@ownedRepresentations[name='VP-3092_DiagramDescription']/@defaultLayer/@edgeMappings[name='EReference2EAnnotationMapping']" iconPath="/org.eclipse.sirius.ui/icons/full/obj16/EdgeMapping.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:source" featureName="eAnnotations"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="ESuperTypeCreationTool" edgeMappings="//@ownedViewpoints[name='VP-3092_Viewpoint']/@ownedRepresentations[name='VP-3092_DiagramDescription']/@defaultLayer/@edgeMappings[name='ESupertypeMapping']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eSuperTypes" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectEReferenceTool" reconnectionKind="RECONNECT_BOTH">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$source!=$element.eContainer()%>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="var:target"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$source==$element.eContainer()%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$otherEnd == $sourceView%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$otherEnd == $edgeView.targetNode%>">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="eStructuralFeatures" valueExpression="var:element"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$otherEnd != $edgeView.targetNode%>">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="&lt;%$edgeView.targetNode.getTarget()%>"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$otherEnd.getTarget()%>">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="eStructuralFeatures" valueExpression="var:element"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$otherEnd != $sourceView%>">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="eStructuralFeatures" valueExpression="var:element"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectESupertypeTool" reconnectionKind="RECONNECT_BOTH">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$source!=$element%>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="eSuperTypes" valueExpression="var:target"/>
+                    <subModelOperations xsi:type="tool_1:Unset" featureName="eSuperTypes" elementExpression="var:source"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$source==$element%>">
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$otherEnd == $sourceView%>">
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$otherEnd == $edgeView.targetNode%>">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="eSuperTypes" valueExpression="&lt;%$edgeView.targetNode.getTarget()%>"/>
+                        <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                          <subModelOperations xsi:type="tool_1:Unset" featureName="eSuperTypes" elementExpression="var:element"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$otherEnd != $edgeView.targetNode%>">
+                      <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="eSuperTypes" valueExpression="var:target"/>
+                        <subModelOperations xsi:type="tool_1:Unset" featureName="eSuperTypes" elementExpression="var:source"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$otherEnd != $sourceView%>">
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="eSuperTypes" valueExpression="&lt;%$edgeView.targetNode.getTarget()%>"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                      <subModelOperations xsi:type="tool_1:Unset" featureName="eSuperTypes" elementExpression="&lt;%$edgeView.targetNode.getTarget()%>"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectEAnnotation2EReferenceTool" reconnectionKind="RECONNECT_BOTH">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="references" valueExpression="var:target"/>
+                <subModelOperations xsi:type="tool_1:Unset" featureName="references" elementExpression="var:source"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectEReference2EAnnotationTool" reconnectionKind="RECONNECT_BOTH">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eAnnotations" valueExpression="&lt;%$edgeView.targetNode.getTarget()%>"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

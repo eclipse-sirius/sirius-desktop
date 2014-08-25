@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interactions:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:interactions="http://www.eclipse.org/sirius/sample/interactions" name="Samples for VP-1073 (Combined Fragment)">
+  <ownedInteractions name="Sample #1">
+    <participants name="a">
+      <type href="types.ecore#//A"/>
+    </participants>
+    <participants name="b">
+      <type href="types.ecore#//B"/>
+    </participants>
+    <participants name="c">
+      <type href="types.ecore#//C"/>
+    </participants>
+    <participants name="d">
+      <type href="types.ecore#//D"/>
+    </participants>
+    <participants name="e">
+      <type href="types.ecore#//E"/>
+    </participants>
+    <messages xsi:type="interactions:CallMessage" name="call on e3" sendingEnd="//@ownedInteractions.0/@ends.0" receivingEnd="//@ownedInteractions.0/@ends.1">
+      <operation href="types.ecore#//A/computeSomething"/>
+    </messages>
+    <messages xsi:type="interactions:CreateParticipantMessage" name="create E" sendingEnd="//@ownedInteractions.0/@ends.3" receivingEnd="//@ownedInteractions.0/@ends.4"/>
+    <messages xsi:type="interactions:CallMessage" name="call on e2" sendingEnd="//@ownedInteractions.0/@ends.7" receivingEnd="//@ownedInteractions.0/@ends.8">
+      <operation href="types.ecore#//B/testSomethingElse"/>
+    </messages>
+    <messages xsi:type="interactions:CallMessage" name="call on e4" sendingEnd="//@ownedInteractions.0/@ends.9" receivingEnd="//@ownedInteractions.0/@ends.12">
+      <operation href="types.ecore#//A/computeSomething"/>
+    </messages>
+    <messages xsi:type="interactions:ReturnMessage" name="return on e1" sendingEnd="//@ownedInteractions.0/@ends.10" receivingEnd="//@ownedInteractions.0/@ends.11" invocationMessage="//@ownedInteractions.0/@messages.2"/>
+    <messages xsi:type="interactions:ReturnMessage" name="return on e3" sendingEnd="//@ownedInteractions.0/@ends.14" receivingEnd="//@ownedInteractions.0/@ends.17" invocationMessage="//@ownedInteractions.0/@messages.3"/>
+    <messages xsi:type="interactions:FeatureAccessMessage" name="read on e3" sendingEnd="//@ownedInteractions.0/@ends.20" receivingEnd="//@ownedInteractions.0/@ends.21">
+      <feature xsi:type="ecore:EAttribute" href="types.ecore#//A/name"/>
+    </messages>
+    <executions name="e1" owner="//@ownedInteractions.0/@participants.0" start="//@ownedInteractions.0/@ends.2" end="//@ownedInteractions.0/@ends.25"/>
+    <executions name="e2" owner="//@ownedInteractions.0/@participants.1" start="//@ownedInteractions.0/@ends.8" end="//@ownedInteractions.0/@ends.10"/>
+    <executions name="e3" owner="//@ownedInteractions.0/@participants.1" start="//@ownedInteractions.0/@ends.1" end="//@ownedInteractions.0/@ends.26"/>
+    <executions name="e4" owner="//@ownedInteractions.0/@participants.1" start="//@ownedInteractions.0/@ends.12" end="//@ownedInteractions.0/@ends.14"/>
+    <interactionUses interaction="//@ownedInteractions.0" coveredParticipants="//@ownedInteractions.0/@participants.3 //@ownedInteractions.0/@participants.4" start="//@ownedInteractions.0/@ends.22" finish="//@ownedInteractions.0/@ends.23"/>
+    <combinedFragments operator="opt.1" coveredParticipants="//@ownedInteractions.0/@participants.0 //@ownedInteractions.0/@participants.1" start="//@ownedInteractions.0/@ends.5" finish="//@ownedInteractions.0/@ends.16">
+      <ownedOperands name="1" start="//@ownedInteractions.0/@ends.6"/>
+      <ownedOperands name="2" start="//@ownedInteractions.0/@ends.13"/>
+      <ownedOperands name="3" start="//@ownedInteractions.0/@ends.15"/>
+    </combinedFragments>
+    <combinedFragments operator="opt.2" coveredParticipants="//@ownedInteractions.0/@participants.0 //@ownedInteractions.0/@participants.1 //@ownedInteractions.0/@participants.2 //@ownedInteractions.0/@participants.3 //@ownedInteractions.0/@participants.4" start="//@ownedInteractions.0/@ends.18" finish="//@ownedInteractions.0/@ends.24">
+      <ownedOperands name="4" start="//@ownedInteractions.0/@ends.19"/>
+    </combinedFragments>
+    <ends xsi:type="interactions:MessageEnd" name="send m1" context="//@ownedInteractions.0/@participants.0" message="//@ownedInteractions.0/@messages.0"/>
+    <ends xsi:type="interactions:MixEnd" name="received call on e3" context="//@ownedInteractions.0/@participants.2" execution="//@ownedInteractions.0/@executions.2" message="//@ownedInteractions.0/@messages.0"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="start_e1" context="//@ownedInteractions.0/@participants.0" execution="//@ownedInteractions.0/@executions.0"/>
+    <ends xsi:type="interactions:MessageEnd" name="create E" context="//@ownedInteractions.0/@participants.2" message="//@ownedInteractions.0/@messages.1"/>
+    <ends xsi:type="interactions:MessageEnd" name="E created" context="//@ownedInteractions.0/@participants.4" message="//@ownedInteractions.0/@messages.1"/>
+    <ends xsi:type="interactions:CombinedFragmentEnd" name="start_cfc1" owner="//@ownedInteractions.0/@combinedFragments.0"/>
+    <ends xsi:type="interactions:OperandEnd" name="operandEndOf1" owner="//@ownedInteractions.0/@combinedFragments.0/@ownedOperands.0"/>
+    <ends xsi:type="interactions:MessageEnd" name="call on e2" context="//@ownedInteractions.0/@participants.0" message="//@ownedInteractions.0/@messages.2"/>
+    <ends xsi:type="interactions:MixEnd" name="received call on e2" context="//@ownedInteractions.0/@participants.1" execution="//@ownedInteractions.0/@executions.1" message="//@ownedInteractions.0/@messages.2"/>
+    <ends xsi:type="interactions:MessageEnd" name="reflexive call" context="//@ownedInteractions.0/@participants.2" message="//@ownedInteractions.0/@messages.3"/>
+    <ends xsi:type="interactions:MixEnd" name="return on e1" context="//@ownedInteractions.0/@participants.1" execution="//@ownedInteractions.0/@executions.1" message="//@ownedInteractions.0/@messages.4"/>
+    <ends xsi:type="interactions:MessageEnd" name="received return on e1" context="//@ownedInteractions.0/@participants.0" message="//@ownedInteractions.0/@messages.4"/>
+    <ends xsi:type="interactions:MixEnd" name="received reflexive call" context="//@ownedInteractions.0/@participants.2" execution="//@ownedInteractions.0/@executions.3" message="//@ownedInteractions.0/@messages.3"/>
+    <ends xsi:type="interactions:OperandEnd" name="operandEndOf2" owner="//@ownedInteractions.0/@combinedFragments.0/@ownedOperands.1"/>
+    <ends xsi:type="interactions:MixEnd" name="return reflexive" context="//@ownedInteractions.0/@participants.2" execution="//@ownedInteractions.0/@executions.3" message="//@ownedInteractions.0/@messages.5"/>
+    <ends xsi:type="interactions:OperandEnd" name="operandEndOf3" owner="//@ownedInteractions.0/@combinedFragments.0/@ownedOperands.2"/>
+    <ends xsi:type="interactions:CombinedFragmentEnd" name="finish_cfc1" owner="//@ownedInteractions.0/@combinedFragments.0"/>
+    <ends xsi:type="interactions:MessageEnd" name="received reflexive return" context="//@ownedInteractions.0/@participants.2" message="//@ownedInteractions.0/@messages.5"/>
+    <ends xsi:type="interactions:CombinedFragmentEnd" name="start_cfc2" owner="//@ownedInteractions.0/@combinedFragments.1"/>
+    <ends xsi:type="interactions:OperandEnd" name="operandEndOf4" owner="//@ownedInteractions.0/@combinedFragments.1/@ownedOperands.0"/>
+    <ends xsi:type="interactions:MessageEnd" name="send read message" context="//@ownedInteractions.0/@participants.0" message="//@ownedInteractions.0/@messages.6"/>
+    <ends xsi:type="interactions:MessageEnd" name="received read message" context="//@ownedInteractions.0/@participants.1" message="//@ownedInteractions.0/@messages.6"/>
+    <ends xsi:type="interactions:InteractionUseEnd" name="start_iu1" owner="//@ownedInteractions.0/@interactionUses.0"/>
+    <ends xsi:type="interactions:InteractionUseEnd" name="finish_iu1" owner="//@ownedInteractions.0/@interactionUses.0"/>
+    <ends xsi:type="interactions:CombinedFragmentEnd" name="finish_cfc2" owner="//@ownedInteractions.0/@combinedFragments.1"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="finish_e1" context="//@ownedInteractions.0/@participants.0" execution="//@ownedInteractions.0/@executions.0"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="finish_e3" context="//@ownedInteractions.0/@participants.2" execution="//@ownedInteractions.0/@executions.2"/>
+  </ownedInteractions>
+</interactions:Model>

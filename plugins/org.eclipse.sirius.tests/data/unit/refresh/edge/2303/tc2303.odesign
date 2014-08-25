@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="description" version="8.0.0">
+  <ownedViewpoints endUserDocumentation="2262&#xD;&#xA;" name="tc2303" label="TC2303" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="tc2303" label="tc2303" domainClass="EPackage" enablePopupBars="true">
+      <metamodel href="../../../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#/"/>
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <filters xsi:type="filter:CompositeFilterDescription" name="HideRef">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='tc2303']/@ownedRepresentations[name='tc2303']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subContainerMappings[name='EClassContainerMapping2']/@subNodeMappings[name='EReferenceMapping']"/>
+      </filters>
+      <defaultLayer name="Default" label="default">
+        <edgeMappings name="type" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='tc2303']/@ownedRepresentations[name='tc2303']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subContainerMappings[name='EClassContainerMapping2']/@subNodeMappings[name='EReferenceMapping']/@borderedNodeMappings[name='BorderRef']" targetMapping="//@ownedViewpoints[name='tc2303']/@ownedRepresentations[name='tc2303']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subContainerMappings[name='EClassContainerMapping2']/@subNodeMappings[name='EReferenceMapping']/@borderedNodeMappings[name='BorderRef']" targetFinderExpression="&lt;%eType.eContents%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="type1" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='tc2303']/@ownedRepresentations[name='tc2303']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@borderedNodeMappings[name='BorderRef3']" targetMapping="//@ownedViewpoints[name='tc2303']/@ownedRepresentations[name='tc2303']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@borderedNodeMappings[name='BorderRef3']" targetFinderExpression="&lt;%eType.eContents%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="type2" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='tc2303']/@ownedRepresentations[name='tc2303']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subContainerMappings[name='EClassContainerMapping2']/@borderedNodeMappings[name='BorderRef2']" targetMapping="//@ownedViewpoints[name='tc2303']/@ownedRepresentations[name='tc2303']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subContainerMappings[name='EClassContainerMapping2']/@borderedNodeMappings[name='BorderRef2']" targetFinderExpression="&lt;%eType.eContents%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="promote1" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='tc2303']/@ownedRepresentations[name='tc2303']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subContainerMappings[name='EClassContainerMapping2']/@borderedNodeMappings[name='BorderRef2']" targetMapping="//@ownedViewpoints[name='tc2303']/@ownedRepresentations[name='tc2303']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@borderedNodeMappings[name='BorderRef3']" targetFinderExpression="var:self">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="promote2" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='tc2303']/@ownedRepresentations[name='tc2303']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subContainerMappings[name='EClassContainerMapping2']/@subNodeMappings[name='EReferenceMapping']/@borderedNodeMappings[name='BorderRef']" targetMapping="//@ownedViewpoints[name='tc2303']/@ownedRepresentations[name='tc2303']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subContainerMappings[name='EClassContainerMapping2']/@borderedNodeMappings[name='BorderRef2']" targetFinderExpression="var:self">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="EClassContainerMapping" semanticCandidatesExpression="&lt;%eClassifiers.filter(&quot;EClass&quot;)%>" domainClass="EClass">
+          <borderedNodeMappings name="BorderRef3" semanticCandidatesExpression="feature:eContents" domainClass="EReference">
+            <style xsi:type="style:SquareDescription" showIcon="false" sizeComputationExpression="1" labelPosition="node">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            </style>
+          </borderedNodeMappings>
+          <subContainerMappings name="EClassContainerMapping2" semanticCandidatesExpression="var:self" domainClass="EClass" dropDescriptions="//@ownedViewpoints[name='tc2303']/@ownedRepresentations[name='tc2303']/@defaultLayer/@toolSections.0/@ownedTools[name='dropTool']">
+            <borderedNodeMappings name="BorderRef2" semanticCandidatesExpression="feature:eContents" domainClass="EReference">
+              <style xsi:type="style:SquareDescription" showIcon="false" sizeComputationExpression="1" labelPosition="node">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+              </style>
+            </borderedNodeMappings>
+            <subNodeMappings name="EReferenceMapping" semanticCandidatesExpression="&lt;%eReferences%>" domainClass="EReference">
+              <borderedNodeMappings name="BorderRef" semanticCandidatesExpression="var:self" domainClass="EReference">
+                <style xsi:type="style:SquareDescription" showIcon="false" sizeComputationExpression="1" labelPosition="node">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+                </style>
+              </borderedNodeMappings>
+              <style xsi:type="style:SquareDescription" labelPosition="node">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="dropTool" mappings="//@ownedViewpoints[name='tc2303']/@ownedRepresentations[name='tc2303']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subContainerMappings[name='EClassContainerMapping2']/@subNodeMappings[name='EReferenceMapping']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:newSemanticContainer">
+                <subModelOperations xsi:type="tool:SetValue" featureName="eReferences" valueExpression="var:element"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="tc2303_2" label="tc2303_2" domainClass="EPackage" enablePopupBars="true">
+      <metamodel href="../../../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#/"/>
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <filters xsi:type="filter:CompositeFilterDescription" name="HideRef">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='tc2303']/@ownedRepresentations[name='tc2303_2']/@defaultLayer/@containerMappings[name='EClassContainerMapping2']/@subNodeMappings[name='EReferenceMapping']"/>
+      </filters>
+      <defaultLayer name="Default" label="default">
+        <edgeMappings name="type" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='tc2303']/@ownedRepresentations[name='tc2303_2']/@defaultLayer/@containerMappings[name='EClassContainerMapping2']/@subNodeMappings[name='EReferenceMapping']/@borderedNodeMappings[name='BorderRef']" targetMapping="//@ownedViewpoints[name='tc2303']/@ownedRepresentations[name='tc2303_2']/@defaultLayer/@containerMappings[name='EClassContainerMapping2']/@subNodeMappings[name='EReferenceMapping']/@borderedNodeMappings[name='BorderRef']" targetFinderExpression="&lt;%eType.eContents%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="type1" semanticCandidatesExpression="feature:eAllContents" targetFinderExpression="&lt;%eType.eContents%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="type2" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='tc2303']/@ownedRepresentations[name='tc2303_2']/@defaultLayer/@containerMappings[name='EClassContainerMapping2']/@borderedNodeMappings[name='BorderRef2']" targetMapping="//@ownedViewpoints[name='tc2303']/@ownedRepresentations[name='tc2303_2']/@defaultLayer/@containerMappings[name='EClassContainerMapping2']/@borderedNodeMappings[name='BorderRef2']" targetFinderExpression="&lt;%eType.eContents%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="promote1" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='tc2303']/@ownedRepresentations[name='tc2303_2']/@defaultLayer/@containerMappings[name='EClassContainerMapping2']/@borderedNodeMappings[name='BorderRef2']" targetFinderExpression="var:self">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="promote2" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='tc2303']/@ownedRepresentations[name='tc2303_2']/@defaultLayer/@containerMappings[name='EClassContainerMapping2']/@subNodeMappings[name='EReferenceMapping']/@borderedNodeMappings[name='BorderRef']" targetMapping="//@ownedViewpoints[name='tc2303']/@ownedRepresentations[name='tc2303_2']/@defaultLayer/@containerMappings[name='EClassContainerMapping2']/@borderedNodeMappings[name='BorderRef2']" targetFinderExpression="var:self">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="EClassContainerMapping2" label="EClassMapping" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass">
+          <borderedNodeMappings name="BorderRef2" semanticCandidatesExpression="feature:eContents" domainClass="EReference">
+            <style xsi:type="style:SquareDescription" showIcon="false" sizeComputationExpression="1" labelPosition="node">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            </style>
+          </borderedNodeMappings>
+          <subNodeMappings name="EReferenceMapping" label="EReferenceMapping" semanticCandidatesExpression="&lt;%eReferences%>" domainClass="EReference">
+            <borderedNodeMappings name="BorderRef" semanticCandidatesExpression="var:self" domainClass="EReference">
+              <style xsi:type="style:SquareDescription" showIcon="false" sizeComputationExpression="1" labelPosition="node">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:SquareDescription" labelPosition="node">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

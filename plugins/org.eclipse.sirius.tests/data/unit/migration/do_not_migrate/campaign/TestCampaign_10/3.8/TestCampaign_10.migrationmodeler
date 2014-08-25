@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<migrationmodeler:TestCase xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:migrationmodeler="http://www.eclipse.org/sirius/tests/sample/migrationmodeler">
+  <representations xsi:type="migrationmodeler:Diagram" name="1">
+    <containers id="container">
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@optionalLayers[name='layerOfContainerStyles']/@containerMappings[name='ContainerWithFlatContainerStyle']" displayed="false">
+        <layout x="850" y="25" width="220" height="71"/>
+        <ownedStyle iconPath="/DesignerTestProject/image.bmp">
+          <labelColor/>
+        </ownedStyle>
+      </containerRepresentations>
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@optionalLayers[name='layerOfContainerStyles']/@containerMappings[name='ContainerWithShapeContainerStyle']" displayed="false">
+        <layout x="855" y="270" width="234" height="71"/>
+        <ownedStyle iconPath="/DesignerTestProject/image.bmp">
+          <labelColor red="176" green="176" blue="176"/>
+        </ownedStyle>
+      </containerRepresentations>
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@optionalLayers[name='layerOfContainerStyles']/@containerMappings[name='ContainerWithWorkspaceImageDescription']" displayed="false">
+        <layout x="1185" y="95" width="240" height="71"/>
+        <ownedStyle iconPath="/DesignerTestProject/image.bmp">
+          <labelColor/>
+        </ownedStyle>
+      </containerRepresentations>
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@optionalLayers[name='layerOfContainerStyles']/@containerMappings[name='ContainerListWithFlatContainerStyle']" displayed="false">
+        <layout x="1195" y="310" width="288" height="88"/>
+        <ownedStyle labelSize="72" labelFormat="bold_italic" iconPath="/DesignerTestProject/image.bmp">
+          <labelColor/>
+        </ownedStyle>
+      </containerRepresentations>
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@optionalLayers[name='layerOfContainerStyles']/@containerMappings[name='ContainerListWithShapeContainerStyle']" displayed="false">
+        <layout x="1505" y="90" width="234" height="71"/>
+        <ownedStyle iconPath="/DesignerTestProject/image.bmp">
+          <labelColor red="176" green="176" blue="176"/>
+        </ownedStyle>
+      </containerRepresentations>
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@optionalLayers[name='layerOfContainerStyles']/@containerMappings[name='ContainerListWithWorkspaceImageDescription']" displayed="false">
+        <layout x="1520" y="260" width="240" height="69"/>
+        <ownedStyle labelSize="11" labelFormat="bold_italic" iconPath="/DesignerTestProject/image.bmp">
+          <labelColor red="0" green="0" blue="0"/>
+        </ownedStyle>
+      </containerRepresentations>
+    </containers>
+    <nodes id="node">
+      <nodeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@defaultLayer/@nodeMappings[name='NodeWithSquareStyle']" displayed="false">
+        <layout x="615" y="35" width="70" height="30"/>
+        <ownedStyle iconPath="/DesignerTestProject/image.bmp">
+          <labelColor red="176" green="176" blue="176"/>
+        </ownedStyle>
+      </nodeRepresentations>
+      <nodeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@defaultLayer/@nodeMappings[name='NodeWithLozengeStyle']" displayed="false">
+        <layout x="60" y="260" width="30" height="30"/>
+        <ownedStyle labelSize="20" labelFormat="bold_italic" iconPath="/DesignerTestProject/image.bmp">
+          <labelColor red="176" green="176" blue="176"/>
+        </ownedStyle>
+      </nodeRepresentations>
+      <nodeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@defaultLayer/@nodeMappings[name='NodeWithEllipseStyle']" displayed="false">
+        <layout x="240" y="80" width="30" height="30"/>
+        <ownedStyle iconPath="/DesignerTestProject/image.bmp">
+          <labelColor red="176" green="176" blue="176"/>
+        </ownedStyle>
+      </nodeRepresentations>
+      <nodeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@defaultLayer/@nodeMappings[name='NodeWithBundledImageStyle']" displayed="false">
+        <layout x="250" y="270" width="30" height="30"/>
+        <ownedStyle iconPath="/DesignerTestProject/image.bmp">
+          <labelColor red="176" green="176" blue="176"/>
+        </ownedStyle>
+      </nodeRepresentations>
+      <nodeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@defaultLayer/@nodeMappings[name='NodeWithNoteStyle']" displayed="false">
+        <layout x="420" y="80" width="30" height="30"/>
+        <ownedStyle iconPath="/DesignerTestProject/image.bmp">
+          <labelColor red="176" green="176" blue="176"/>
+        </ownedStyle>
+      </nodeRepresentations>
+      <nodeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@defaultLayer/@nodeMappings[name='NodeWithDotStyle']" displayed="false">
+        <layout x="420" y="280" width="30" height="30"/>
+        <ownedStyle iconPath="/DesignerTestProject/image.bmp">
+          <labelColor red="176" green="176" blue="176"/>
+        </ownedStyle>
+      </nodeRepresentations>
+      <nodeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@defaultLayer/@nodeMappings[name='NodeWithGaugeStyle']" displayed="false">
+        <layout x="50" y="80" width="30" height="18"/>
+        <ownedStyle>
+          <labelColor red="152" green="168" blue="191"/>
+        </ownedStyle>
+      </nodeRepresentations>
+      <nodeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@defaultLayer/@nodeMappings[name='NodeWithWorkspaceImageStyle']" displayed="false">
+        <layout x="575" y="265" width="64" height="64"/>
+        <ownedStyle iconPath="/DesignerTestProject/image.bmp">
+          <labelColor red="176" green="176" blue="176"/>
+        </ownedStyle>
+      </nodeRepresentations>
+    </nodes>
+    <edges id="edge" source="//@representations.0/@containers.0" target="//@representations.0/@nodes.0">
+      <edgeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@optionalLayers[name='layerWithEdgeStyles']/@edgeMappings[name='EdgeWithBracketStyle']" displayed="false">
+        <bendpoints x="960" y="25"/>
+        <bendpoints x="960" y="-51"/>
+        <bendpoints x="960" y="-43"/>
+        <bendpoints x="650" y="-43"/>
+        <bendpoints x="650" y="-51"/>
+        <bendpoints x="650" y="35"/>
+        <ownedStyle>
+          <color red="155" green="199" blue="204"/>
+          <beginLabelStyle labelSize="14" labelFormat="bold_italic" iconPath="/DesignerTestProject/image.bmp">
+            <labelColor/>
+          </beginLabelStyle>
+          <centerLabelStyle labelSize="14" labelFormat="bold_italic" iconPath="/DesignerTestProject/image.bmp">
+            <labelColor/>
+          </centerLabelStyle>
+          <endLabelStyle labelSize="14" labelFormat="bold_italic" iconPath="/DesignerTestProject/image.bmp">
+            <labelColor/>
+          </endLabelStyle>
+        </ownedStyle>
+      </edgeRepresentations>
+      <edgeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@optionalLayers[name='layerWithEdgeStyles']/@edgeMappings[name='EdgeWithEdgeStyle']" displayed="false">
+        <bendpoints x="961" y="94"/>
+        <bendpoints x="961" y="190"/>
+        <bendpoints x="648" y="190"/>
+        <bendpoints x="648" y="65"/>
+        <ownedStyle routingStyle="Manhattan">
+          <color red="136" green="136" blue="19"/>
+          <beginLabelStyle labelSize="9" labelFormat="bold" iconPath="/DesignerTestProject/image.bmp">
+            <labelColor/>
+          </beginLabelStyle>
+          <centerLabelStyle labelSize="9" labelFormat="bold" iconPath="/DesignerTestProject/image.bmp">
+            <labelColor/>
+          </centerLabelStyle>
+          <endLabelStyle labelSize="9" labelFormat="bold" iconPath="/DesignerTestProject/image.bmp">
+            <labelColor/>
+          </endLabelStyle>
+        </ownedStyle>
+      </edgeRepresentations>
+    </edges>
+    <layers id="Default" activated="true"/>
+    <layers id="layerOfContainerStyles" activated="true"/>
+    <layers id="layerWithEdgeStyles" activated="true"/>
+  </representations>
+</migrationmodeler:TestCase>

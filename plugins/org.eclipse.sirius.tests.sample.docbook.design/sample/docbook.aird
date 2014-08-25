@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:docbook="http://docbook.org/ns/docbook" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description" xmi:id="_Sq8gAJRtEd2jV--RxOtwHA" selectedViews="_SrPa8JRtEd2jV--RxOtwHA" version="8.1.0">
+  <models xmi:type="docbook:Book" href="test.docbook#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_SrPa8JRtEd2jV--RxOtwHA" initialized="true" diagramSet="">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_Sr1Q0ZRtEd2jV--RxOtwHA" name="obviousDiagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_3kcwoI8rEeOJAOMmfOUoEg" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_3kcwoY8rEeOJAOMmfOUoEg" type="Sirius" element="_Sr1Q0ZRtEd2jV--RxOtwHA" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_3kcwoo8rEeOJAOMmfOUoEg"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description_1:DiagramDescription" href="../model/docbook.odesign#//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_Sr1Q0pRtEd2jV--RxOtwHA"/>
+      <target xmi:type="docbook:Book" href="test.docbook#/"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_Sr1Q1JRtEd2jV--RxOtwHA" name="evoluate view">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_4WhGwI8rEeOJAOMmfOUoEg" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_4WhGwY8rEeOJAOMmfOUoEg" type="Sirius" element="_Sr1Q1JRtEd2jV--RxOtwHA" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_4WhGwo8rEeOJAOMmfOUoEg"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description_1:DiagramDescription" href="../model/docbook.odesign#//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_Sr1Q1ZRtEd2jV--RxOtwHA"/>
+      <target xmi:type="docbook:Book" href="test.docbook#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="../model/docbook.odesign#//@ownedViewpoints[name='docbook1']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

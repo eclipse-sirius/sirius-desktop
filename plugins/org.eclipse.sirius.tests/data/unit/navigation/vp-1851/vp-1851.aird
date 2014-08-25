@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_N1JLAUiSEeCSdYtEQdsUJA" selectedViews="_OqjwEEiSEeCSdYtEQdsUJA" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="vp-1851.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_OqjwEEiSEeCSdYtEQdsUJA" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_GAo3cEiTEeCf1afkbiTPUA" name="Source">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_GAo3ckiTEeCf1afkbiTPUA" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_GAo3c0iTEeCf1afkbiTPUA" type="Sirius" element="_GAo3cEiTEeCf1afkbiTPUA" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_GBa6kEiTEeCf1afkbiTPUA" type="2001" element="_GAqsoEiTEeCf1afkbiTPUA">
+            <children xmi:type="notation:Node" xmi:id="_GBbhoUiTEeCf1afkbiTPUA" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_GBbhokiTEeCf1afkbiTPUA" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_GBcvwEiTEeCf1afkbiTPUA" type="3003" element="_GBYeUEiTEeCf1afkbiTPUA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_GBcvwUiTEeCf1afkbiTPUA" fontName="Sans"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GBcvwkiTEeCf1afkbiTPUA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_GBa6kUiTEeCf1afkbiTPUA" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GBbhoEiTEeCf1afkbiTPUA" width="30" height="30"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_GAo3dEiTEeCf1afkbiTPUA"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_GAqsoEiTEeCf1afkbiTPUA" name="A" width="3" height="3">
+        <target xmi:type="ecore:EClass" href="vp-1851.ecore#//A"/>
+        <semanticElements xmi:type="ecore:EClass" href="vp-1851.ecore#//A"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_GBYeUEiTEeCf1afkbiTPUA">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_GBZFYEiTEeCf1afkbiTPUA"/>
+          <description xmi:type="style:SquareDescription" href="vp-1851.odesign#//@ownedViewpoints[name='VP-1851']/@ownedRepresentations[name='Source']/@defaultLayer/@nodeMappings[name='Class']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_GBZFYUiTEeCf1afkbiTPUA"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_GBZFYkiTEeCf1afkbiTPUA" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="vp-1851.odesign#//@ownedViewpoints[name='VP-1851']/@ownedRepresentations[name='Source']/@defaultLayer/@nodeMappings[name='Class']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="vp-1851.odesign#//@ownedViewpoints[name='VP-1851']/@ownedRepresentations[name='Source']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_GAo3cUiTEeCf1afkbiTPUA"/>
+      <activatedLayers xmi:type="description_1:Layer" href="vp-1851.odesign#//@ownedViewpoints[name='VP-1851']/@ownedRepresentations[name='Source']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="vp-1851.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="vp-1851.odesign#//@ownedViewpoints[name='VP-1851']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="G" version="8.0.0">
+  <ownedViewpoints name="V">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="D" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="Packages" semanticCandidatesExpression="feature:eContents" domainClass="EPackage">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Class" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <toolSections name="Tools">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Class" nodeMappings="//@ownedViewpoints[name='V']/@ownedRepresentations[name='D']/@defaultLayer/@nodeMappings[name='Class']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="vp973" version="8.0.0">
+  <ownedViewpoints name="vp973" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="vp973" label="vp973" domainClass="EPackage" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <nodeMappings name="ClassMapping Square" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" labelExpression="Square_&lt;%name%>" sizeComputationExpression="20" resizeKind="NSEW" width="20" height="20">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ClassMapping Lozenge" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass">
+          <style xsi:type="style:LozengeNodeDescription" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" labelExpression="Lozenge_&lt;%name%>" sizeComputationExpression="20" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ClassMapping Ellipse" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass">
+          <style xsi:type="style:EllipseNodeDescription" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" labelExpression="Ellipse_&lt;%name%>" sizeComputationExpression="20" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ClassMapping Bundled Image Square" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass">
+          <style xsi:type="style:BundledImageDescription" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" labelExpression="Bundle_Image_Square_&lt;%name%>" sizeComputationExpression="20" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ClassMapping Bundled Image Stroke" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass">
+          <style xsi:type="style:BundledImageDescription" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" labelExpression="Bundle_Image_Stroke_&lt;%name%>" sizeComputationExpression="20" resizeKind="NSEW" shape="stroke">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ClassMapping Bundled Image Triangle" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass">
+          <style xsi:type="style:BundledImageDescription" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" labelExpression="Bundle_Image_Triangle_&lt;%name%>" sizeComputationExpression="20" resizeKind="NSEW" shape="triangle">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ClassMapping Bundled Image Dot" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass">
+          <style xsi:type="style:BundledImageDescription" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" labelExpression="Bundle_Image_Dot_&lt;%name%>" sizeComputationExpression="20" resizeKind="NSEW" shape="dot">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ClassMapping Bundled Image Ring" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass">
+          <style xsi:type="style:BundledImageDescription" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" labelExpression="Bundle_Image_Ring_&lt;%name%>" sizeComputationExpression="20" resizeKind="NSEW" shape="ring">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ClassMapping Note" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass">
+          <style xsi:type="style:NoteDescription" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" labelExpression="Note_&lt;%name%>" sizeComputationExpression="20" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ClassMapping Dot" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass">
+          <style xsi:type="style:DotDescription" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" labelExpression="Dot_&lt;%name%>" sizeComputationExpression="20" resizeKind="NSEW" strokeSizeComputationExpression="1">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ClassMapping Gauge" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass">
+          <style xsi:type="style:GaugeCompositeStyleDescription" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" labelExpression="Gauge_&lt;%name%>" sizeComputationExpression="20" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="ClassMapping Workspace Image" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass">
+          <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" labelExpression="Workspace_Image_&lt;%name%>" sizeComputationExpression="20" resizeKind="NSEW" workspacePath="/org.eclipse.sirius.tests/images/logo_o.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Package" semanticCandidatesExpression="var:self" domainClass="EPackage" reusedBorderedNodeMappings="//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Dot'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Ring'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Square'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Stroke'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Triangle'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Dot'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Ellipse'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Gauge'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Lozenge'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Note'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Square'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Workspace%20Image']">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" labelExpression="Square_&lt;%name%>" sizeComputationExpression="20" resizeKind="NSEW" width="20" height="20">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <containerMappings name="Package" semanticCandidatesExpression="var:self" domainClass="EPackage" reusedNodeMappings="//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Dot'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Ring'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Square'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Stroke'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Triangle'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Dot'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Ellipse'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Gauge'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Lozenge'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Note'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Square'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Workspace%20Image'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='Package']">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" labelExpression="Flat_Container_&lt;%name%>" tooltipExpression="&lt;%eContainer.name%>.&lt;%name%>" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="Package2" semanticCandidatesExpression="var:self" domainClass="EPackage" reusedBorderedNodeMappings="//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Ring'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Square'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Stroke'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Triangle'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Dot'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Ellipse'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Gauge'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Lozenge'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Note'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Square'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Workspace%20Image'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Bundled%20Image%20Dot'] //@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='Package']">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" labelExpression="Flat_Container_&lt;%name%>" tooltipExpression="&lt;%eContainer.name%>.&lt;%name%>" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

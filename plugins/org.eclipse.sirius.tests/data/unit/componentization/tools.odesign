@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" version="8.0.0">
+  <ownedViewpoints name="Tools" modelFileExtension="*.uml">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diagram">
+      <defaultLayer name="layer">
+        <toolSections name="section1">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="nodeTool">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation/>
+          </ownedTools>
+          <subSections name="section1-1">
+            <subSections name="section1-1-1">
+              <ownedTools xsi:type="tool_1:SelectionWizardDescription" candidatesExpression="SWD1-1-1-1">
+                <element name="element"/>
+                <containerView name="containerView"/>
+                <container name="container"/>
+                <initialOperation/>
+              </ownedTools>
+            </subSections>
+          </subSections>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="extension layer">
+        <toolSections name="section1">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="edgeTool">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolGroup" name="toolGroup">
+            <tools xsi:type="tool:ContainerCreationDescription" name="containerTool">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation/>
+            </tools>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="section2" reusedTools="//@ownedViewpoints[name='Tools']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='nodeTool']"/>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Extended Diagram" viewpointURI="platform:/plugin/org.eclipse.sirius.tests/data/unit/componentization/tools.odesign#//@ownedViewpoints[name='Tools']" representationName="Diagram">
+      <layers name="additional layer">
+        <toolSections name="section1">
+          <ownedTools xsi:type="tool:RequestDescription" name="requestTool"/>
+        </toolSections>
+        <toolSections name="other section">
+          <groupExtensions group="//@ownedViewpoints[name='Tools']/@ownedRepresentations[name='Diagram']/@additionalLayers[name='extension%20layer']/@toolSections.0/@ownedTools[name='toolGroup']">
+            <tools xsi:type="tool_1:ContainerDropDescription" name="containerDropTool">
+              <oldContainer name="oldSemanticContainer"/>
+              <newContainer name="newSemanticContainer"/>
+              <element name="element"/>
+              <newViewContainer name="newContainerView"/>
+              <initialOperation/>
+            </tools>
+          </groupExtensions>
+        </toolSections>
+        <toolSections name="section3">
+          <subSections name="section3-1" reusedTools="//@ownedViewpoints[name='Tools']/@ownedRepresentations[name='Diagram']/@additionalLayers[name='extension%20layer']/@toolSections.0/@ownedTools[name='toolGroup']/@tools.0"/>
+        </toolSections>
+      </layers>
+    </ownedRepresentationExtensions>
+  </ownedViewpoints>
+</description:Group>

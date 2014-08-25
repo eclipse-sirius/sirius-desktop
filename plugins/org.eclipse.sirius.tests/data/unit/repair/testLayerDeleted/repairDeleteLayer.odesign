@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="My" version="8.0.0">
+  <ownedViewpoints name="repairDeleteLayerTest">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="testDeleteLayer" domainClass="migrationmodeler.Diagram">
+      <filters xsi:type="filter:CompositeFilterDescription" name="nodeFilter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='repairDeleteLayerTest']/@ownedRepresentations[name='testDeleteLayer']/@defaultLayer/@nodeMappings[name='node1']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="nodeCFiliter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='repairDeleteLayerTest']/@ownedRepresentations[name='testDeleteLayer']/@defaultLayer/@nodeMappings[name='node1']" semanticConditionExpression="[id.contains('c')/]"/>
+      </filters>
+      <defaultLayer name="Default">
+        <nodeMappings name="node1" semanticCandidatesExpression="feature:eContents" domainClass="migrationmodeler.Node">
+          <borderedNodeMappings name="bordered" semanticCandidatesExpression="&lt;%eAllContents()%>" domainClass="migrationmodeler.Bordered">
+            <style xsi:type="style:LozengeNodeDescription" labelExpression="&lt;%id%>" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:SquareDescription" labelExpression="&lt;%id%>" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="edge" sourceMapping="//@ownedViewpoints[name='repairDeleteLayerTest']/@ownedRepresentations[name='testDeleteLayer']/@defaultLayer/@nodeMappings[name='node1'] //@ownedViewpoints[name='repairDeleteLayerTest']/@ownedRepresentations[name='testDeleteLayer']/@defaultLayer/@containerMappings[name='container1'] //@ownedViewpoints[name='repairDeleteLayerTest']/@ownedRepresentations[name='testDeleteLayer']/@defaultLayer/@nodeMappings[name='node1']/@borderedNodeMappings[name='bordered']" targetMapping="//@ownedViewpoints[name='repairDeleteLayerTest']/@ownedRepresentations[name='testDeleteLayer']/@defaultLayer/@containerMappings[name='container1'] //@ownedViewpoints[name='repairDeleteLayerTest']/@ownedRepresentations[name='testDeleteLayer']/@defaultLayer/@nodeMappings[name='node1'] //@ownedViewpoints[name='repairDeleteLayerTest']/@ownedRepresentations[name='testDeleteLayer']/@defaultLayer/@nodeMappings[name='node1']/@borderedNodeMappings[name='bordered']" targetFinderExpression="&lt;%target%>" sourceFinderExpression="&lt;%source%>" domainClass="migrationmodeler.Edge" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="container1" semanticCandidatesExpression="feature:eContents" domainClass="migrationmodeler.Container">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="&lt;%id%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

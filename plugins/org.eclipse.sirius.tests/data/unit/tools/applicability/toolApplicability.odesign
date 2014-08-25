@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Test" version="8.0.0">
+  <ownedViewpoints name="Test for tool applicability with extra mappings" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TestDiagram" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="Package" semanticCandidatesExpression="feature:eContents" domainClass="EPackage">
+          <borderedNodeMappings name="RemoteType" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+            <style xsi:type="style:SquareDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Class" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+          <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="RemoteRef" sourceMapping="//@ownedViewpoints[name='Test%20for%20tool%20applicability%20with%20extra%20mappings']/@ownedRepresentations[name='TestDiagram']/@defaultLayer/@nodeMappings[name='Class']" targetMapping="//@ownedViewpoints[name='Test%20for%20tool%20applicability%20with%20extra%20mappings']/@ownedRepresentations[name='TestDiagram']/@defaultLayer/@nodeMappings[name='Package']/@borderedNodeMappings[name='RemoteType']" targetFinderExpression="&lt;%eStructuralFeatures.filter(&quot;EReference&quot;).eType%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <toolSections name="Tools">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Reference" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Test%20for%20tool%20applicability%20with%20extra%20mappings']/@ownedRepresentations[name='TestDiagram']/@defaultLayer/@edgeMappings[name='RemoteRef']" extraTargetMappings="//@ownedViewpoints[name='Test%20for%20tool%20applicability%20with%20extra%20mappings']/@ownedRepresentations[name='TestDiagram']/@defaultLayer/@nodeMappings[name='Package']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers" variableName="type">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="NewType"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures" variableName="ref">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="var:type"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="ref"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

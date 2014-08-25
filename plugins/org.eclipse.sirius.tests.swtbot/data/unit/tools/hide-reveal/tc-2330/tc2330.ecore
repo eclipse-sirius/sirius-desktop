@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="p">
+  <eClassifiers xsi:type="ecore:EEnum" name="myEnum"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="mySecondEnum"/>
+  <eSubpackages name="p1" nsURI="">
+    <eClassifiers xsi:type="ecore:EClass" name="A">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="toB" eType="#//p2/B"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="G">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="toE" eType="#//p3/E"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="H">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="toF" eType="#//p4/F"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="I">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="toJ" eType="#//p5/J"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="p2" nsURI="">
+    <eClassifiers xsi:type="ecore:EClass" name="B"/>
+  </eSubpackages>
+  <eSubpackages name="p3" nsURI="">
+    <eClassifiers xsi:type="ecore:EClass" name="E"/>
+  </eSubpackages>
+  <eSubpackages name="p4" nsURI="">
+    <eClassifiers xsi:type="ecore:EClass" name="F"/>
+  </eSubpackages>
+  <eSubpackages name="p5">
+    <eClassifiers xsi:type="ecore:EClass" name="J"/>
+  </eSubpackages>
+</ecore:EPackage>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" version="8.0.0">
+  <ownedViewpoints name="toolSection" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="toolSectionLayers" domainClass="EPackage">
+      <defaultLayer name="L1">
+        <toolSections name="L1NotEmptySection1">
+          <ownedTools xsi:type="tool:ToolDescription" name="Tool1-1">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ToolGroup" name="EmptyGroup1-2"/>
+          <ownedTools xsi:type="tool_1:ToolGroup" name="EmptyGroupButExtended1-3"/>
+          <ownedTools xsi:type="tool_1:ToolGroup" name="NotEmptyGroup1-4">
+            <tools xsi:type="tool:ToolDescription" name="Tool1-4-1">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation/>
+            </tools>
+          </ownedTools>
+          <subSections name="L1EmptySubSection1-1"/>
+          <subSections name="L1NotEmptySubSection1-2">
+            <ownedTools xsi:type="tool:ToolDescription" name="Tool1-2-1">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation/>
+            </ownedTools>
+            <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="ECD1-2-2">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation/>
+            </ownedTools>
+            <ownedTools xsi:type="tool_1:ToolGroup" name="Group1-2-3">
+              <tools xsi:type="tool:ContainerDropDescription" name="CDD1-2-3-1">
+                <oldContainer name="oldSemanticContainer"/>
+                <newContainer name="newSemanticContainer"/>
+                <element name="element"/>
+                <newViewContainer name="newContainerView"/>
+                <initialOperation/>
+              </tools>
+              <tools xsi:type="tool:ToolDescription" name="Tool1-2-3-2">
+                <element name="element"/>
+                <elementView name="elementView"/>
+                <initialOperation/>
+              </tools>
+            </ownedTools>
+          </subSections>
+          <subSections name="L1NotEmptySubSection1-3">
+            <ownedTools xsi:type="tool:PopupMenu" name="PUM1-3-1"/>
+          </subSections>
+        </toolSections>
+        <toolSections name="L1NotEmptySectionButEmptySubSection2">
+          <subSections name="L1EmptySubSection1-2"/>
+        </toolSections>
+        <toolSections name="L1EmptySection3"/>
+        <toolSections name="L1NotEmptySection4">
+          <subSections name="L1NotEmptySubSectionWithReuseTool41-2-1" reusedTools="//@ownedViewpoints[name='toolSection']/@ownedRepresentations[name='toolSectionLayers']/@defaultLayer/@toolSections.0/@subSections[name='L1NotEmptySubSection1-2']/@ownedTools[name='Tool1-2-1']"/>
+        </toolSections>
+        <toolSections name="L1NotEmptySection5">
+          <ownedTools xsi:type="tool:PopupMenu" name="PUM5-1">
+            <menuItemDescription xsi:type="tool:ExternalJavaAction" name="EJA5-1-1" id="EJA5-1-1"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="NCD5-1">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation/>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="L1EmptySectionButWithReusePopup6" reusedTools="//@ownedViewpoints[name='toolSection']/@ownedRepresentations[name='toolSectionLayers']/@defaultLayer/@toolSections.4/@ownedTools[name='PUM5-1']"/>
+        <toolSections name="L1EmptySectionButWithReuseTool7" reusedTools="//@ownedViewpoints[name='toolSection']/@ownedRepresentations[name='toolSectionLayers']/@defaultLayer/@toolSections.0/@subSections[name='L1NotEmptySubSection1-2']/@ownedTools[name='Tool1-2-1']"/>
+        <toolSections name="L1NotEmptySection8">
+          <subSections name="SectionSharedWithOtherLayersB"/>
+        </toolSections>
+        <toolSections name="SectionSharedWithOtherLayersA"/>
+      </defaultLayer>
+      <additionalLayers name="L2 enabled" activeByDefault="true">
+        <toolSections name="SectionSharedWithOtherLayersA">
+          <ownedTools xsi:type="tool:ToolDescription" name="ToolL2-A-1">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ToolGroup" name="SharedGroup"/>
+        </toolSections>
+        <toolSections name="L2EmptySection9">
+          <groupExtensions group="//@ownedViewpoints[name='toolSection']/@ownedRepresentations[name='toolSectionLayers']/@defaultLayer/@toolSections.0/@ownedTools[name='EmptyGroupButExtended1-3']">
+            <tools xsi:type="tool:ToolDescription" name="Tool9-1">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation/>
+            </tools>
+          </groupExtensions>
+        </toolSections>
+      </additionalLayers>
+      <additionalLayers name="L3 disabled">
+        <toolSections name="SectionSharedWithOtherLayersA">
+          <ownedTools xsi:type="tool:ToolDescription" name="ToolL3-A-1">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ToolGroup" name="SharedGroup">
+            <tools xsi:type="tool:PaneBasedSelectionWizardDescription" name="PBSWDL3-A-2">
+              <element name="element"/>
+              <containerView name="containerView"/>
+              <container name="container"/>
+              <initialOperation/>
+            </tools>
+          </ownedTools>
+        </toolSections>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="toolSectionWithoutLayers" domainClass="EPackage">
+      <toolSection name="WithoutLayerNotEmptySection50">
+        <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="CCD50-1">
+          <variable name="container"/>
+          <viewVariable name="containerView"/>
+          <initialOperation/>
+        </ownedTools>
+        <subSections name="WithoutLayerEmptySection50-1"/>
+        <subSections name="WithoutLayerNotEmptySection50-2">
+          <ownedTools xsi:type="tool:ToolDescription" name="Tool50-2-1">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation/>
+          </ownedTools>
+        </subSections>
+      </toolSection>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

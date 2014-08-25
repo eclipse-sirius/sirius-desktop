@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="_Wh_KkEjgEd2dA-w4B9F6fQ" name="sprint">
+  <packagedElement xmi:type="uml:Class" xmi:id="_Zfig0EjgEd2dA-w4B9F6fQ" name="100m"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_wLR7QHg7Ed2ISLgtvgSAmQ" name="200m"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_XFrIwHg7Ed2ISLgtvgSAmQ" name="400m"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_vUwcEbGYEd2FK9pHgg2YuA" name="110m H"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_vZnG4LGYEd2FK9pHgg2YuA" name="400m H"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_CLYKgLGeEd2tQaKZ0qu29w" name="Homme"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_I4BosLGeEd2tQaKZ0qu29w" name="Femme"/>
+</uml:Model>

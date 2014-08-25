@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram" xmi:id="__dRdcWPlEeKeI6T-QSjmsw" selectedViews="__5VuYGPlEeKeI6T-QSjmsw" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="VP-3834.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="__5VuYGPlEeKeI6T-QSjmsw" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="__8XNMGPlEeKeI6T-QSjmsw" name="VP-3834_Diagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="__8d64GPlEeKeI6T-QSjmsw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="__8d64WPlEeKeI6T-QSjmsw" type="Sirius" element="__8XNMGPlEeKeI6T-QSjmsw" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="__8d64mPlEeKeI6T-QSjmsw"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description_1:DiagramDescription" href="VP-3834.odesign#//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="__8XNMWPlEeKeI6T-QSjmsw"/>
+      <activatedLayers xmi:type="description_1:Layer" href="VP-3834.odesign#//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer"/>
+      <activatedLayers xmi:type="description_1:AdditionalLayer" href="VP-3834.odesign#//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@optionalLayers[name='bug']"/>
+      <target xmi:type="ecore:EPackage" href="VP-3834.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="VP-3834.odesign#//@ownedViewpoints[name='VP-3834_Viewpoint']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

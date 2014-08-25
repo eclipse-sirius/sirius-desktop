@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" version="8.1.0">
+  <ownedViewpoints name="BorderedNode" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="BorderedNodeDiagram" label="BorderedNodeDiagram" domainClass="EPackage">
+      <filters xsi:type="filter:CompositeFilterDescription" name="collapse">
+        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@nodeMappings[name='Class']/@borderedNodeMappings[name='Attribute'] //@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@containerMappings[name='Package']/@borderedNodeMappings[name='Enum']" semanticConditionExpression="[not name.endsWith('collapse')/]"/>
+        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@nodeMappings[name='Class']/@borderedNodeMappings[name='Attribute'] //@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@containerMappings[name='Package']/@borderedNodeMappings[name='Enum']" semanticConditionExpression="[not name.startsWith('newCollapse')/]"/>
+      </filters>
+      <defaultLayer name="Default">
+        <nodeMappings name="Class" label="Class" preconditionExpression="[not interface/]" semanticCandidatesExpression="feature:eClassifiers" domainClass="EClass">
+          <borderedNodeMappings name="Attribute" semanticCandidatesExpression="feature:eAttributes" domainClass="EAttribute">
+            <style xsi:type="style:SquareDescription" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="EReference" sourceMapping="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@nodeMappings[name='Class']" targetMapping="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@nodeMappings[name='Class']" targetFinderExpression="feature:eReferenceType" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ESuperTypes" sourceMapping="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@containerMappings[name='Package']/@borderedNodeMappings[name='Interface']" targetMapping="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@containerMappings[name='Package']/@borderedNodeMappings[name='Interface']" targetFinderExpression="feature:eSuperTypes">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Package" label="Package" domainClass="EPackage" reusedNodeMappings="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@nodeMappings[name='Class']">
+          <borderedNodeMappings name="Enum" semanticCandidatesExpression="feature:eClassifiers" domainClass="EEnum">
+            <style xsi:type="style:SquareDescription" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="Interface" preconditionExpression="feature:interface" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore.EClass">
+            <style xsi:type="style:SquareDescription" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:ShapeContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Tools" label="Tools">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Package" containerMappings="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@containerMappings[name='Package']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="new Package"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Class" nodeMappings="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@nodeMappings[name='Class']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="new Class"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Attribute" label="Attribute" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@nodeMappings[name='Class']/@borderedNodeMappings[name='Attribute']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EAttribute" referenceName="eStructuralFeatures" variableName="newAttribute">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="new Attribute"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Attribute2" label="Attribute2" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@nodeMappings[name='Class']/@borderedNodeMappings[name='Attribute']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EAttribute" referenceName="eStructuralFeatures" variableName="newAttribute">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="new Attribute2"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Enum" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@containerMappings[name='Package']/@borderedNodeMappings[name='Enum']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EEnum" referenceName="eClassifiers">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="new Enum"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="CollapsedAttribute" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@nodeMappings[name='Class']/@borderedNodeMappings[name='Attribute']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EAttribute" referenceName="eStructuralFeatures" variableName="newAttribute">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newCollapse"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="CollapsedEnum" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@containerMappings[name='Package']/@borderedNodeMappings[name='Enum']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EEnum" referenceName="eClassifiers">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newCollapse"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Create 2 inherited interfaces" edgeMappings="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@edgeMappings[name='ESuperTypes']" extraSourceMappings="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@containerMappings[name='Package']" extraTargetMappings="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@containerMappings[name='Package']" connectionStartPrecondition="[preSource.oclIsKindOf(EPackage)/]">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="I1">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['NewInterface' + eContainer().eContents(ecore::EClass)->size()/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="interface" valueExpression="true"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="abstract" valueExpression="true"/>
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@containerMappings[name='Package']/@borderedNodeMappings[name='Interface']" containerViewExpression="var:sourceView" variableName="newSurceView"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers" variableName="I2">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="['NewInterface' + eContainer().eContents(ecore::EClass)->size()/]"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="interface" valueExpression="true"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="abstract" valueExpression="true"/>
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@containerMappings[name='Package']/@borderedNodeMappings[name='Interface']" containerViewExpression="var:targetView" variableName="newTargetView"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:I1">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="eSuperTypes" valueExpression="var:I2"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@edgeMappings[name='ESuperTypes']" containerViewExpression="[sourceView.eContainer(diagram::DDiagram)/]" sourceExpression="var:I1" targetExpression="var:I2"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

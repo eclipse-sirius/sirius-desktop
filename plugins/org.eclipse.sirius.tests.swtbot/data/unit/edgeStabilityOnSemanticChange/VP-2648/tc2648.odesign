@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="Use Case" version="8.0.0">
+  <ownedViewpoints name="UseCase2648" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TC2648" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="CN_EClass" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="EM_Ref" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='UseCase2648']/@ownedRepresentations[name='TC2648']/@defaultLayer/@containerMappings[name='CM_EPackage']/@borderedNodeMappings[name='BN_EClass']" targetMapping="//@ownedViewpoints[name='UseCase2648']/@ownedRepresentations[name='TC2648']/@defaultLayer/@containerMappings[name='CM_EPackage']/@borderedNodeMappings[name='BN_EClass']" targetFinderExpression="&lt;%eAllStructuralFeatures.filter(&quot;EReference&quot;).eReferenceType%>">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="EC_Link" sourceMapping="//@ownedViewpoints[name='UseCase2648']/@ownedRepresentations[name='TC2648']/@defaultLayer/@nodeMappings[name='CN_EClass']" targetMapping="//@ownedViewpoints[name='UseCase2648']/@ownedRepresentations[name='TC2648']/@defaultLayer/@nodeMappings[name='CN_EClass']" targetFinderExpression="&lt;%eSuperTypes%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="CM_EPackage" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EPackage&quot;)%>" domainClass="EPackage" reusedContainerMappings="//@ownedViewpoints[name='UseCase2648']/@ownedRepresentations[name='TC2648']/@defaultLayer/@containerMappings[name='CM_EPackage']">
+          <borderedNodeMappings name="BN_EClass" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass">
+            <style xsi:type="style:SquareDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="MyTools"/>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TC2675" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <containerMappings name="CM_EPackage" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EPackage&quot;)%>" domainClass="EPackage" reusedContainerMappings="//@ownedViewpoints[name='UseCase2648']/@ownedRepresentations[name='TC2675']/@defaultLayer/@containerMappings[name='CM_EPackage']">
+          <borderedNodeMappings name="BN_EClass" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass">
+            <style xsi:type="style:SquareDescription" labelExpression="&quot;&quot;" hideLabelByDefault="true">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

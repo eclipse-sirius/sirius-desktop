@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="gconf1" version="8.0.0">
+  <ownedViewpoints name="GConf1" modelFileExtension="uml">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramOnModel" domainClass="Model">
+      <defaultLayer name="Default">
+        <nodeMappings name="DOM_Class" semanticCandidatesExpression="feature:eAllContents" domainClass="Class">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramOnPackage" domainClass="Package">
+      <defaultLayer name="Default">
+        <nodeMappings name="DOP_Class" semanticCandidatesExpression="feature:eAllContents" domainClass="Class">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="ArrayOnClass" domainClass="Class">
+      <ownedLineMappings name="AOC_Attribute" domainClass="Property" headerLabelExpression="&lt;%name%>"/>
+      <ownedColumnMappings name="AOC_Type" headerLabelExpression="Type" canEdit="false" featureName="type" labelExpression="&lt;%name%>"/>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

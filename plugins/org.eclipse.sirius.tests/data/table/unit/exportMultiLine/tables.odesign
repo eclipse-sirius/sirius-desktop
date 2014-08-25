@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" name="Table tests" version="8.0.0">
+  <ownedViewpoints documentation="Sample of some UML tables " name="Table for tests" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="Test Table" domainClass="EPackage">
+      <ownedLineMappings name="pkg" domainClass="EPackage" semanticCandidatesExpression="" headerLabelExpression="feature:nsPrefix"/>
+      <ownedColumnMappings name="nameWithoutLabelExpression" headerLabelExpression="name" featureName="name"/>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="My" version="8.0.0">
+  <ownedViewpoints name="EdgeSizeVariable">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="EdgeSizeVariable" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="pkg1" semanticCandidatesExpression="[eContents()/]" domainClass="EPackage">
+          <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="pkg2" semanticCandidatesExpression="[eContents()/]" domainClass="EPackage">
+          <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="classesSizeWithDiagramVar" sourceMapping="//@ownedViewpoints[name='EdgeSizeVariable']/@ownedRepresentations[name='EdgeSizeVariable']/@defaultLayer/@nodeMappings[name='pkg1']" targetMapping="//@ownedViewpoints[name='EdgeSizeVariable']/@ownedRepresentations[name='EdgeSizeVariable']/@defaultLayer/@nodeMappings[name='pkg2']" targetFinderExpression="[eContainer()/]" sourceFinderExpression="[eContainer()/]" domainClass="EClass" useDomainElement="true">
+          <style sizeComputationExpression="[diagram.oclAsType(viewpoint::DSemanticDecorator).target.eAllContents()->size()/]">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="diagram">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="classesSizeWithSourceViewVar" sourceMapping="//@ownedViewpoints[name='EdgeSizeVariable']/@ownedRepresentations[name='EdgeSizeVariable']/@defaultLayer/@nodeMappings[name='pkg1']" targetMapping="//@ownedViewpoints[name='EdgeSizeVariable']/@ownedRepresentations[name='EdgeSizeVariable']/@defaultLayer/@nodeMappings[name='pkg2']" targetFinderExpression="[eContainer()/]" sourceFinderExpression="[eContainer()/]" domainClass="EClass" useDomainElement="true">
+          <style sizeComputationExpression="[sourceView.oclAsType(viewpoint::DSemanticDecorator).target.eContainer().eAllContents()->size()/]">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelExpression="sourceView">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="classesSizeWithTargetViewVar" sourceMapping="//@ownedViewpoints[name='EdgeSizeVariable']/@ownedRepresentations[name='EdgeSizeVariable']/@defaultLayer/@nodeMappings[name='pkg1']" targetMapping="//@ownedViewpoints[name='EdgeSizeVariable']/@ownedRepresentations[name='EdgeSizeVariable']/@defaultLayer/@nodeMappings[name='pkg2']" targetFinderExpression="[eContainer()/]" sourceFinderExpression="[eContainer()/]" domainClass="EClass" useDomainElement="true">
+          <style sizeComputationExpression="[targetView.oclAsType(viewpoint::DSemanticDecorator).target.eContainer().eAllContents()->size()/]">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelExpression="targetView">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="classesSizeWithViewVar" sourceMapping="//@ownedViewpoints[name='EdgeSizeVariable']/@ownedRepresentations[name='EdgeSizeVariable']/@defaultLayer/@nodeMappings[name='pkg1']" targetMapping="//@ownedViewpoints[name='EdgeSizeVariable']/@ownedRepresentations[name='EdgeSizeVariable']/@defaultLayer/@nodeMappings[name='pkg2']" targetFinderExpression="[eContainer()/]" sourceFinderExpression="[eContainer()/]" domainClass="EClass" useDomainElement="true">
+          <style sizeComputationExpression="[view.oclAsType(viewpoint::DSemanticDecorator).target.eContainer().eContainer().eAllContents()->size()/]">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelExpression="view">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

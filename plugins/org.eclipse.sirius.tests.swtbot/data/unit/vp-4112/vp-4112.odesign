@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="vp-4112" version="8.0.0">
+  <ownedViewpoints name="vp-4112">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="vp-4112" domainClass="ecore.EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="EClass" semanticCandidatesExpression="feature:eAllContents" createElements="false" domainClass="ecore.EObject">
+          <style xsi:type="style:SquareDescription" labelSize="7" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <toolSections name="selection tools">
+          <ownedTools xsi:type="tool:SelectionWizardDescription" name="Tree Selection" candidatesExpression="&lt;%$container + $container.eAllContents()%>" multiple="true" tree="true" rootExpression="&lt;%$container.filter(&quot;EPackage&quot;) + $container.eAllContents().filter(&quot;EPackage&quot;)%>" childrenExpression="feature:eContents">
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:For" expression="var:element">
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='vp-4112']/@ownedRepresentations[name='vp-4112']/@defaultLayer/@nodeMappings[name='EClass']" containerViewExpression="var:containerView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="Pane Based Selection" windowTitle="Pane Based" candidatesExpression="&lt;%$container + $container.eAllContents()%>" tree="true" rootExpression="&lt;%$container.filter(&quot;EPackage&quot;) + $container.eAllContents().filter(&quot;EPackage&quot;)%>" childrenExpression="feature:eContents">
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:For" expression="var:element">
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='vp-4112']/@ownedRepresentations[name='vp-4112']/@defaultLayer/@nodeMappings[name='EClass']" containerViewExpression="var:containerView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

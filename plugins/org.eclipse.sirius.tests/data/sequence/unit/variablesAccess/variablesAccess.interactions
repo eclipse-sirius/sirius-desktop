@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ASCII"?>
+<interactions:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:interactions="http://www.eclipse.org/sirius/sample/interactions">
+  <ownedInteractions>
+    <participants name="newParticipant1"/>
+    <participants name="newParticipant2"/>
+    <participants name="newParticipant3"/>
+  </ownedInteractions>
+</interactions:Model>

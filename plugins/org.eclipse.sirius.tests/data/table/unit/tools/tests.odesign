@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" version="8.0.0">
+  <ownedViewpoints name="test create line" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="test create line" domainClass="EPackage">
+      <ownedLineMappings name="classes" domainClass="EClass" semanticCandidatesExpression="feature:eAllContents"/>
+      <ownedCreateLine name="test create line" forceRefresh="true" mapping="//@ownedViewpoints[name='test%20create%20line']/@ownedRepresentations[name='test%20create%20line']/@ownedLineMappings[name='classes']">
+        <variables name="root" documentation="The semantic element of the table."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:self"/>
+      </ownedCreateLine>
+      <ownedColumnMappings name="name" featureName="name"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="test create feature" domainClass="EClass">
+      <ownedLineMappings name="attributes" domainClass="EAttribute" semanticCandidatesExpression="&lt;%eStructuralFeatures%>"/>
+      <ownedCreateLine name="Creation feature" forceRefresh="true" mapping="//@ownedViewpoints[name='test%20create%20line']/@ownedRepresentations[name='test%20create%20feature']/@ownedLineMappings[name='attributes']">
+        <variables name="root" documentation="The semantic element of the table."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:root">
+          <subModelOperations xsi:type="tool:CreateInstance" typeName="EAttribute" referenceName="eStructuralFeatures"/>
+        </firstModelOperation>
+      </ownedCreateLine>
+      <ownedColumnMappings name="nom" featureName="name"/>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

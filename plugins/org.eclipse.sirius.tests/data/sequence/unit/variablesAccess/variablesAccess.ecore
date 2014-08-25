@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="interactions"
+    nsURI="http://www.eclipse.org/sirius/sample/interactions" nsPrefix="interactions">
+  <eClassifiers xsi:type="ecore:EClass" name="Model">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedInteractions" upperBound="-1"
+        eType="#//Interaction" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Interaction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="participants" ordered="false"
+        upperBound="-1" eType="#//Participant" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="messages" upperBound="-1"
+        eType="#//Message" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="executions" upperBound="-1"
+        eType="#//Execution" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
+        eType="#//State" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interactionUses" upperBound="-1"
+        eType="#//InteractionUse" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="combinedFragments" upperBound="-1"
+        eType="#//CombinedFragment" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ends" upperBound="-1" eType="#//AbstractEnd"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Participant">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Message" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sendingEnd" lowerBound="1"
+        eType="#//MessageEnd"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="receivingEnd" lowerBound="1"
+        eType="#//MessageEnd"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CallMessage" eSuperTypes="#//Message">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operation" lowerBound="1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EOperation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureAccessMessage" eSuperTypes="#//Message">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isWrite" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="feature" lowerBound="1"
+        eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EStructuralFeature"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CreateParticipantMessage" eSuperTypes="#//Message"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DestroyParticipantMessage" eSuperTypes="#//Message"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ReturnMessage" eSuperTypes="#//Message">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="invocationMessage" lowerBound="1"
+        eType="#//Message"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Execution">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//Participant"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="start" lowerBound="1" eType="#//ExecutionEnd"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="end" lowerBound="1" eType="#//ExecutionEnd"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="State">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//Participant"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="start" lowerBound="1" eType="#//StateEnd"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="end" lowerBound="1" eType="#//StateEnd"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InteractionUse">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral="&quot;ref&quot;"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interaction" lowerBound="1"
+        eType="#//Interaction"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="coveredParticipants" lowerBound="1"
+        upperBound="-1" eType="#//Participant"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="start" lowerBound="1" eType="#//InteractionUseEnd"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="finish" lowerBound="1"
+        eType="#//InteractionUseEnd"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CombinedFragment">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="&quot;opt&quot;"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="coveredParticipants" lowerBound="1"
+        upperBound="-1" eType="#//Participant"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="start" lowerBound="1" eType="#//CombinedFragmentEnd"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="finish" lowerBound="1"
+        eType="#//CombinedFragmentEnd"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedOperands" lowerBound="1"
+        upperBound="-1" eType="#//Operand" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Operand">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="start" lowerBound="1" eType="#//OperandEnd"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractEnd" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="context" eType="#//Participant"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MessageEnd" eSuperTypes="#//AbstractEnd">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="message" lowerBound="1"
+        eType="#//Message"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExecutionEnd" eSuperTypes="#//AbstractEnd">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="execution" lowerBound="1"
+        eType="#//Execution"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StateEnd" eSuperTypes="#//AbstractEnd">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="state" lowerBound="1" eType="#//State"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InteractionUseEnd" eSuperTypes="#//AbstractEnd">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//InteractionUse"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CombinedFragmentEnd" eSuperTypes="#//AbstractEnd">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//CombinedFragment"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OperandEnd" eSuperTypes="#//AbstractEnd">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="#//Operand"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MixEnd" eSuperTypes="#//ExecutionEnd #//MessageEnd"/>
+</ecore:EPackage>

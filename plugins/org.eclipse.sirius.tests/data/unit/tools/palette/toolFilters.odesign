@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" version="8.0.0">
+  <ownedViewpoints name="toolFilters" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="toolFiltersLayers" domainClass="EPackage">
+      <defaultLayer name="L1">
+        <toolSections name="section1">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="always hidden" name="tool1">
+            <filters precondition="&lt;%true%>" elementsToListen="&lt;%">
+              <listeners domainClass="EObject" featureName=""/>
+            </filters>
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" documentation="always visible" name="tool2">
+            <filters precondition="&lt;%false%>">
+              <listeners domainClass="EObject" featureName="eContainer"/>
+            </filters>
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation/>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="toolFiltersWithoutLayers" domainClass="EPackage">
+      <toolSection name="section0">
+        <ownedTools xsi:type="tool:ToolDescription" documentation="always hidden" name="tool1">
+          <filters precondition="&lt;%true%>" elementsToListen="&lt;%%>">
+            <listeners domainClass="EObject" featureName="eContainer"/>
+          </filters>
+          <element name="element"/>
+          <elementView name="elementView"/>
+          <initialOperation/>
+        </ownedTools>
+        <ownedTools xsi:type="tool:ToolDescription" documentation="always visible" name="tool2">
+          <filters precondition="&lt;%false%>">
+            <listeners domainClass="EObject" featureName="eContainer"/>
+          </filters>
+          <element name="element"/>
+          <elementView name="elementView"/>
+          <initialOperation/>
+        </ownedTools>
+      </toolSection>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

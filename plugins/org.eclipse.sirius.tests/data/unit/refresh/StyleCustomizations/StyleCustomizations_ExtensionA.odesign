@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="StyleCustomizations_ExtensionA" version="8.0.0">
+  <ownedViewpoints name="StyleCustomizations_ExtensionA" modelFileExtension="ecore">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="DiagramDescription_ExtA" viewpointURI="viewpoint:/(.*)/StyleCustomizations" representationName="DiagramDescription">
+      <layers name="ExtA">
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="true">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" referenceName="backgroundColor">
+              <appliedOn href="StyleCustomizations.odesign#//@ownedViewpoints[name='StyleCustomizations']/@ownedRepresentations[name='DiagramDescription']/@defaultLayer/@containerMappings[name='EPackageMapping']/@style"/>
+              <value href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+            </featureCustomizations>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" attributeName="labelFormat" value="italic">
+              <appliedOn href="StyleCustomizations.odesign#//@ownedViewpoints[name='StyleCustomizations']/@ownedRepresentations[name='DiagramDescription']/@defaultLayer/@containerMappings[name='EPackageMapping']/@style"/>
+            </featureCustomizations>
+          </vsmElementCustomizations>
+        </customization>
+      </layers>
+      <layers name="ExtA_PackageMappingWithCondStyle">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="EPackageMappingExtA" semanticCandidatesExpression="&lt;%eSubpackages()%>" documentation="Same mapping as extended diagram but with new conditional style.&#xA;">
+          <reusedNodeMappings href="StyleCustomizations.odesign#//@ownedViewpoints[name='StyleCustomizations']/@ownedRepresentations[name='DiagramDescription']/@defaultLayer/@containerMappings[name='EClassMapping']/@subNodeMappings[name='EAttributeMapping']"/>
+          <reusedContainerMappings href="StyleCustomizations.odesign#//@ownedViewpoints[name='StyleCustomizations']/@ownedRepresentations[name='DiagramDescription']/@defaultLayer/@containerMappings[name='EClassMapping']"/>
+          <reusedContainerMappings href="StyleCustomizations.odesign#//@ownedViewpoints[name='StyleCustomizations']/@ownedRepresentations[name='DiagramDescription']/@defaultLayer/@containerMappings[name='EPackageMapping']"/>
+          <conditionnalStyles predicateExpression="true">
+            <style xsi:type="style:FlatContainerStyleDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </conditionnalStyles>
+          <importedMapping href="StyleCustomizations.odesign#//@ownedViewpoints[name='StyleCustomizations']/@ownedRepresentations[name='DiagramDescription']/@defaultLayer/@containerMappings[name='EPackageMapping']"/>
+        </containerMappings>
+      </layers>
+    </ownedRepresentationExtensions>
+  </ownedViewpoints>
+</description:Group>
