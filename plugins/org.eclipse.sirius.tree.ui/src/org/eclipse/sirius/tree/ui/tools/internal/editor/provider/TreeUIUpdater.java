@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.ui.tools.internal.editor.provider;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -19,16 +21,16 @@ import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.dialect.DRepresentationNotificationFilter;
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
+import org.eclipse.sirius.tree.DTreeItemContainer;
 import org.eclipse.sirius.tree.TreeItemStyle;
 import org.eclipse.sirius.tree.TreePackage;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeViewer;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.ui.PlatformUI;
 
 import com.google.common.collect.Sets;
@@ -43,9 +45,9 @@ public class TreeUIUpdater extends ResourceSetListenerImpl {
     /** The structured viewer to update. */
     private DTreeViewer dTreeViewer;
 
-    private Set<DTreeItem> toExpand;
+    private Set<DTreeItem> toExpands;
 
-    private Set<DTreeItem> toCollapse;
+    private Set<DTreeItem> toCollapses;
 
     private Set<Object> toRefreshInViewer;
 
@@ -75,145 +77,109 @@ public class TreeUIUpdater extends ResourceSetListenerImpl {
         return true;
     }
 
-    private void notifyChanged(final Notification notification) {
-        final Object notifier = notification.getNotifier();
-        if (notifier instanceof DTree) {
-            handleDTreeNotification(notification, (DTree) notifier);
-        } else if (notifier instanceof DTreeItem) {
-            handleDTreeItemNotification(notification, (DTreeItem) notifier);
-        } else if (notifier instanceof TreeItemStyle) {
-            handleDTreeItemNotification(notification, (TreeItemStyle) notifier);
-        } else if (notifier instanceof RGBValues) {
-            handleDTreItemNotification(notification, (RGBValues) notifier);
-        }
-    }
-
-    private void handleDTreeNotification(final Notification n, final DTree tree) {
-        final int featureID = n.getFeatureID(DTree.class);
-
-        switch (featureID) {
-        case TreePackage.DTREE__OWNED_TREE_ITEMS:
-        case TreePackage.DTREE__TARGET:
-            DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.REFRESH_SWT_TABLE_KEY);
-            refreshViewer(tree);
-            DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.REFRESH_SWT_TABLE_KEY);
-            break;
-        default:
-            break;
-        }
-    }
-
-    private void handleDTreeItemNotification(final Notification n, final DTreeItem dTreeItem) {
-        final int featureID = n.getFeatureID(DTreeItem.class);
-
-        switch (featureID) {
-        case TreePackage.DTREE_ITEM__NAME:
-        case TreePackage.DTREE_ITEM__OWNED_STYLE:
-            DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.UPDATE_SWT_LINE_KEY);
-            updateViewer(dTreeItem);
-            DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.UPDATE_SWT_LINE_KEY);
-            break;
-        case TreePackage.DTREE_ITEM__OWNED_TREE_ITEMS:
-            DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.REFRESH_SWT_LINE_KEY);
-            refreshViewer(dTreeItem);
-            // The refresh doesn't update swt TreeItem expansion then we must do
-            // it
-            if (dTreeItem.isExpanded()) {
-                toExpand.add(dTreeItem);
-            }
-            DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.REFRESH_SWT_LINE_KEY);
-            break;
-        case TreePackage.DTREE_ITEM__EXPANDED:
-            if (n.getNewValue() instanceof Boolean) {
-                DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CHANGE_SWT_LINE_COLAPSE_STATE_KEY);
-                final boolean expanded = n.getNewBooleanValue();
-                if (expanded) {
-                    toExpand.add(dTreeItem);
-                } else {
-                    toCollapse.add(dTreeItem);
-                }
-                DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.CHANGE_SWT_LINE_COLAPSE_STATE_KEY);
-            }
-            break;
-        default:
-            break;
-        }
-    }
-
-    /**
-     * @param n
-     * @param notifier
-     */
-    private void handleDTreeItemNotification(final Notification n, final TreeItemStyle notifier) {
-        final int featureID = n.getFeatureID(TreeItemStyle.class);
-
-        switch (featureID) {
-        case TreePackage.TREE_ITEM_STYLE__BACKGROUND_COLOR:
-        case TreePackage.TREE_ITEM_STYLE__LABEL_COLOR:
-        case TreePackage.TREE_ITEM_STYLE__LABEL_FORMAT:
-        case TreePackage.TREE_ITEM_STYLE__LABEL_SIZE:
-        case TreePackage.TREE_ITEM_STYLE__SHOW_ICON:
-            final DTreeItem treeItem = (DTreeItem) notifier.eContainer();
-            if (treeItem != null) {
-                DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.UPDATE_SWT_LINE_KEY);
-                updateViewer(treeItem);
-                DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.UPDATE_SWT_LINE_KEY);
-            }
-            break;
-        default:
-            break;
-        }
-    }
-
-    private void handleDTreItemNotification(Notification notification, RGBValues notifier) {
-        final int featureID = notification.getFeatureID(TreeItemStyle.class);
-
-        switch (featureID) {
-        case ViewpointPackage.RGB_VALUES__BLUE:
-        case ViewpointPackage.RGB_VALUES__GREEN:
-        case ViewpointPackage.RGB_VALUES__RED:
-            EObject notifierContainer = notifier.eContainer();
-            if (notifierContainer instanceof TreeItemStyle) {
-                TreeItemStyle treeItemStyle = (TreeItemStyle) notifierContainer;
-                EObject treeitemStyleContainer = treeItemStyle.eContainer();
-                if (treeitemStyleContainer != null) {
-                    DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.UPDATE_SWT_LINE_KEY);
-                    updateViewer(treeitemStyleContainer);
-                    DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.UPDATE_SWT_LINE_KEY);
-                }
-            }
-            break;
-        default:
-            break;
-        }
-    }
-
-    private void refreshViewer(final Object object) {
-        if (object != null) {
-            toRefreshInViewer.add(object);
-        }
-    }
-
-    private void updateViewer(final Object object) {
-        if (object != null) {
-            toUpdateInViewer.add(object);
-        }
-    }
-
     @Override
     public void resourceSetChanged(ResourceSetChangeEvent event) {
-        super.resourceSetChanged(event);
         this.toRefreshInViewer = Sets.newLinkedHashSet();
         this.toUpdateInViewer = Sets.newLinkedHashSet();
-        this.toCollapse = Sets.newLinkedHashSet();
-        this.toExpand = Sets.newLinkedHashSet();
-        for (Notification notif : event.getNotifications()) {
-            notifyChanged(notif);
-        }
+        this.toCollapses = Sets.newLinkedHashSet();
+        this.toExpands = Sets.newLinkedHashSet();
+        analyseNotifications(event.getNotifications());
+        updateDTreeViewer();
+    }
 
-        if (this.toRefreshInViewer.size() > 0 || this.toUpdateInViewer.size() > 0 || this.toCollapse.size() > 0 || this.toExpand.size() > 0) {
+    private void analyseNotifications(List<Notification> notifications) {
+        for (Notification notification : notifications) {
+            analyseNotification(notification);
+        }
+    }
+
+    private void analyseNotification(Notification notification) {
+        Object notifier = notification.getNotifier();
+        if (isDTreeItemContainerOwnedTreeItems(notification)) {
+            DTreeItemContainer dTreeItemContainer = (DTreeItemContainer) notifier;
+            analyseDTreeItemContainer(dTreeItemContainer);
+        } else if (notification.getFeature() == ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET && notifier instanceof DTree) {
+            toRefreshInViewer.add(notifier);
+        } else if (notification.getFeature() == ViewpointPackage.Literals.DREPRESENTATION_ELEMENT__NAME || notification.getFeature() == TreePackage.Literals.DTREE_ITEM__OWNED_STYLE) {
+            toUpdateInViewer.add(notifier);
+        } else if (isExpansionChange(notification)) {
+            DTreeItem dTreeItem = (DTreeItem) notifier;
+            analyseExpansion(dTreeItem);
+        } else if (isTreeItemStyleAttributeChange(notification)) {
+            TreeItemStyle treeItemStyle = (TreeItemStyle) notifier;
+            DTreeItem dTreeItem = (DTreeItem) treeItemStyle.eContainer();
+            if (dTreeItem != null) {
+                toUpdateInViewer.add(dTreeItem);
+            }
+        } else if (isRGBValuesChange(notification)) {
+            RGBValues rgbValues = (RGBValues) notifier;
+            analyseRGBValues(rgbValues);
+        }
+    }
+
+    private boolean isDTreeItemContainerOwnedTreeItems(Notification notification) {
+        return notification.getFeature() == TreePackage.Literals.DTREE_ITEM_CONTAINER__OWNED_TREE_ITEMS;
+    }
+
+    private void analyseDTreeItemContainer(DTreeItemContainer dTreeItemContainer) {
+        toRefreshInViewer.add(dTreeItemContainer);
+        if (dTreeItemContainer instanceof DTreeItem) {
+            DTreeItem dTreeItem = (DTreeItem) dTreeItemContainer;
+            // By default the refresh only add DTreeItem collapsed by
+            // default,
+            // but we can't do this assumption.
+            if (dTreeItem.isExpanded()) {
+                toExpands.add(dTreeItem);
+                analyseExpansionStateOfCreatedChildren(dTreeItem.getOwnedTreeItems());
+            }
+        }
+    }
+
+    private void analyseExpansionStateOfCreatedChildren(Collection<DTreeItem> ownedTreeItems) {
+        for (DTreeItem dTreeItem : ownedTreeItems) {
+            if (dTreeItem.isExpanded()) {
+                toExpands.add(dTreeItem);
+                analyseExpansionStateOfCreatedChildren(dTreeItem.getOwnedTreeItems());
+            }
+        }
+    }
+
+    private boolean isExpansionChange(Notification notification) {
+        return notification.getFeature() == TreePackage.Literals.DTREE_ITEM__EXPANDED;
+    }
+
+    private void analyseExpansion(DTreeItem dTreeItem) {
+        if (dTreeItem.isExpanded()) {
+            toExpands.add(dTreeItem);
+        } else {
+            toCollapses.add(dTreeItem);
+        }
+    }
+
+    private boolean isTreeItemStyleAttributeChange(Notification notification) {
+        return notification.getFeature() != StylePackage.Literals.STYLE_DESCRIPTION && notification.getFeature() != ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES
+                && notification.getNotifier() instanceof TreeItemStyle;
+    }
+
+    private boolean isRGBValuesChange(Notification notification) {
+        return ViewpointPackage.Literals.RGB_VALUES.getEStructuralFeatures().contains(notification.getFeature());
+    }
+
+    private void analyseRGBValues(RGBValues rgbValues) {
+        EObject notifierContainer = rgbValues.eContainer();
+        if (notifierContainer instanceof TreeItemStyle) {
+            TreeItemStyle treeItemStyle = (TreeItemStyle) notifierContainer;
+            EObject treeitemStyleContainer = treeItemStyle.eContainer();
+            if (treeitemStyleContainer != null) {
+                toUpdateInViewer.add(treeitemStyleContainer);
+            }
+        }
+    }
+
+    private void updateDTreeViewer() {
+        if (!toRefreshInViewer.isEmpty() || !toUpdateInViewer.isEmpty() || !toCollapses.isEmpty() || !toExpands.isEmpty()) {
             final Object[] objectsToUpdateInViewer = Sets.difference(toUpdateInViewer, toRefreshInViewer).toArray(new Object[0]);
-            Runnable runnable = new TreeUIUpdaterRunnable(dTreeViewer, toRefreshInViewer, objectsToUpdateInViewer, toExpand, toCollapse);
+            Runnable runnable = new TreeUIUpdaterRunnable(dTreeViewer, toRefreshInViewer, objectsToUpdateInViewer, toExpands, toCollapses);
             PlatformUI.getWorkbench().getDisplay().asyncExec(runnable);
         }
     }
@@ -226,8 +192,8 @@ public class TreeUIUpdater extends ResourceSetListenerImpl {
             getTarget().removeResourceSetListener(this);
         }
         dTreeViewer = null;
-        toExpand = null;
-        toCollapse = null;
+        toExpands = null;
+        toCollapses = null;
         toRefreshInViewer = null;
         toUpdateInViewer = null;
     }

@@ -343,7 +343,13 @@ public final class SiriusTasksKey {
     /**
      * When collapsing or expanding a line of the table.
      */
+    @Deprecated
     public static final String CHANGE_SWT_LINE_COLAPSE_STATE_KEY = "Change the collapse state of a line of the SWT table";
+    
+    /**
+     * When collapsing or expanding a line of the table.
+     */
+    public static final String CHANGE_SWT_LINE_COLLAPSE_STATE_KEY = "Change the collapse state of a line of the SWT table";
 
     /**
      * When refreshing a line of the table.

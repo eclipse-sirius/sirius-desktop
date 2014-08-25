@@ -49,6 +49,7 @@ h4. Changes in @org.eclipse.sirius@
 * @org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand.RefreshRepresentationsCommand(TransactionalEditingDomain, boolean, IProgressMonitor, DRepresentation...)@ and @RefreshRepresentationsCommand(TransactionalEditingDomain, boolean, IProgressMonitor, Collection<DRepresentation>)@ constructors has been added to specify a partial refresh or a full refresh.
 * @org.eclipse.sirius.business.api.dialect.DRepresentationNotificationFilter@ has been added to have
  a common precommit/postcommit notifications filter to tree/table dialect.
+* @org.eclipse.sirius.tools.api.profiler.SiriusTasksKey.CHANGE_SWT_LINE_COLAPSE_STATE_KEY@ constant has been deprecated in favor of @SiriusTasksKey.CHANGE_SWT_LINE_COLLAPSE_STATE_KEY@ to fix a typo.
  
 h4. Changes in @org.eclipse.sirius.ui@
 

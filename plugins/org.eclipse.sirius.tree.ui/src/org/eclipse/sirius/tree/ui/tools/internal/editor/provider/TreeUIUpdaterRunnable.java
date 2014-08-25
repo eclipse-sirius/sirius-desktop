@@ -12,6 +12,8 @@ package org.eclipse.sirius.tree.ui.tools.internal.editor.provider;
 
 import java.util.Set;
 
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeViewer;
 
@@ -59,18 +61,26 @@ public class TreeUIUpdaterRunnable implements Runnable {
     public void run() {
         if (dTreeViewer != null && dTreeViewer.getControl() != null && !dTreeViewer.getControl().isDisposed()) {
             for (Object itemtoExpand : toExpand) {
+                DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CHANGE_SWT_LINE_COLLAPSE_STATE_KEY);
                 dTreeViewer.setExpandedState(itemtoExpand, true);
+                DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.CHANGE_SWT_LINE_COLLAPSE_STATE_KEY);
             }
             for (Object itemToCollapse : toCollapse) {
+                DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CHANGE_SWT_LINE_COLLAPSE_STATE_KEY);
                 dTreeViewer.setExpandedState(itemToCollapse, false);
+                DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.CHANGE_SWT_LINE_COLLAPSE_STATE_KEY);
             }
             for (Object itemToRefresh : toRefreshInViewer) {
+                DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.REFRESH_SWT_LINE_KEY);
                 dTreeViewer.refresh(itemToRefresh, true);
+                DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.REFRESH_SWT_LINE_KEY);
             }
             /*
              * no need to update objects which got refresh already...
              */
+            DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.UPDATE_SWT_LINE_KEY);
             dTreeViewer.update(objectsToUpdateInViewer, null);
+            DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.UPDATE_SWT_LINE_KEY);
         }
     }
 

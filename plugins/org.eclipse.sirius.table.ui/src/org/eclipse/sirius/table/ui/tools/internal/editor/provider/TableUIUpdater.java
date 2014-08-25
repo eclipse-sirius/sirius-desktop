@@ -324,7 +324,7 @@ public class TableUIUpdater extends ResourceSetListenerImpl {
             break;
         case TablePackage.DLINE__COLLAPSED:
             if (n.getNewValue() instanceof Boolean && dTableTreeViewer != null) {
-                DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CHANGE_SWT_LINE_COLAPSE_STATE_KEY);
+                DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CHANGE_SWT_LINE_COLLAPSE_STATE_KEY);
                 final boolean collapsed = n.getNewBooleanValue();
                 PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
                     public void run() {
@@ -333,7 +333,7 @@ public class TableUIUpdater extends ResourceSetListenerImpl {
                         }
                     }
                 });
-                DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.CHANGE_SWT_LINE_COLAPSE_STATE_KEY);
+                DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.CHANGE_SWT_LINE_COLLAPSE_STATE_KEY);
             }
             break;
         case TablePackage.DLINE__VISIBLE:
