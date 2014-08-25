@@ -84,9 +84,11 @@ public final class SessionFactoryImpl implements SessionFactory {
             transactionalEditingDomain.getResourceSet()
                     .setURIConverter(new ViewpointURIConverter((ViewpointRegistry) org.eclipse.sirius.business.api.componentization.ViewpointRegistry.getInstance()));
         }
-
-        // Create or load the session.
-        boolean alreadyExistingResource = transactionalEditingDomain.getResourceSet().getURIConverter().exists(sessionResourceURI, null);
+        if (set instanceof ResourceSetImpl) {
+            ResourceSetImpl resourceSetImpl = (ResourceSetImpl) set;
+            new ResourceSetImpl.MappedResourceLocator(resourceSetImpl);
+        }
+        boolean alreadyExistingResource = set.getURIConverter().exists(sessionResourceURI, null);
         Session session = null;
         if (alreadyExistingResource) {
             session = loadSessionModelResource(sessionResourceURI, transactionalEditingDomain, monitor);
