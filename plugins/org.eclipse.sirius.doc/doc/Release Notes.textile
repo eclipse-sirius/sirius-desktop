@@ -43,7 +43,9 @@ h4. Changes in @org.eclipse.sirius@
 * @org.eclipse.sirius.business.api.dialect.DialectServices.refresh(DRepresentation, boolean, IProgressMonitor@ has been added to specify if we want partial refresh or not. By default partial refresh is done. full refresh is only implements for tree dialect.
 * @org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices.refresh(DRepresentation, IProgressMonitor)@ has been added to call by default @DialectServices.refresh(DRepresentation, false, IProgressMonitor)@ to do a partial refresh.
 * @org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand.RefreshRepresentationsCommand(TransactionalEditingDomain, boolean, IProgressMonitor, DRepresentation...)@ and @RefreshRepresentationsCommand(TransactionalEditingDomain, boolean, IProgressMonitor, Collection<DRepresentation>)@ constructors has been added to specify a partial refresh or a full refresh.
-
+* @org.eclipse.sirius.business.api.dialect.DRepresentationNotificationFilter@ has been added to have
+ a common precommit/postcommit notifications filter to tree/table dialect.
+ 
 h4. Changes in @org.eclipse.sirius.ui@
 
 * In @org.eclipse.sirius.ui.business.api.session.UserSession@, the methods @selectSirius()@, @selectOnlySirius()@ and @findSiriusByName()@ have been renamed into @selectViewpoint()@, @selectOnlyViewpoint()@ and @findViewpointByName()@ to correct a wrong rebranding.

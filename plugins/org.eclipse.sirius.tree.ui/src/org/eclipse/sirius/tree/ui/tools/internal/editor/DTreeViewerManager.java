@@ -66,6 +66,7 @@ import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTableViewerManager;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeEditor;
 import org.eclipse.sirius.ui.tools.internal.editor.DTableColumnViewerEditorActivationStrategy;
 import org.eclipse.sirius.ui.tools.internal.editor.DTableTreeFocusListener;
+import org.eclipse.sirius.ui.tools.internal.editor.DescriptionFileChangedNotifier;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.adapters.ModelDragTargetAdapter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.ByteArrayTransfer;
@@ -109,6 +110,8 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
     private final ITreeCommandFactory treeCommandFactory;
 
     private TreeUIUpdater treeUIUpdater;
+    
+    private DescriptionFileChangedNotifier descriptionFileChangedNotifier;
 
     private DTreeContentProvider dTreeContentProvider;
 
@@ -166,7 +169,8 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
         // Create and setup the TreeViewer
         final int style = SWT.H_SCROLL | SWT.V_SCROLL | SWT.MULTI;
 
-        treeViewer = new DTreeViewer(composite, style, getSession());
+        DTreeViewer dTreeViewer = new DTreeViewer(composite, style, getSession());
+        treeViewer = dTreeViewer; 
 
         // Add a focus listener to deactivate the EMF actions on the Tree
         treeViewer.getTree().addFocusListener(new DTableTreeFocusListener(tableEditor, treeViewer.getTree()));
@@ -175,7 +179,9 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
         // tableViewer.setSorter(new
         // ExampleTaskSorter(ExampleTaskSorter.DESCRIPTION));
 
-        treeUIUpdater = new TreeUIUpdater(this);
+        treeUIUpdater = new TreeUIUpdater(dTreeViewer, dRepresentation);
+        descriptionFileChangedNotifier = new DescriptionFileChangedNotifier(this);
+       
         dTreeContentProvider = new DTreeContentProvider();
         treeViewer.setContentProvider(dTreeContentProvider);
 
@@ -488,6 +494,8 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
     public void dispose() {
         treeViewer.removeTreeListener(treeViewerListener);
         treeViewerListener = null;
+        descriptionFileChangedNotifier.dispose();
+        descriptionFileChangedNotifier = null;
         treeUIUpdater.dispose();
         treeUIUpdater = null;
         dTreeContentProvider.dispose();
