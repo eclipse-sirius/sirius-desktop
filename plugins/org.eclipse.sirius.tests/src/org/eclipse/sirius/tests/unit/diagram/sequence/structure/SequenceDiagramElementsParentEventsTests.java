@@ -18,11 +18,10 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.ext.base.Option;
-import org.junit.Assert;
-
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.unit.diagram.sequence.AbstractSequenceSiriusDiagramTests;
 import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
+import org.junit.Assert;
 
 /**
  * Test for the various basic identification and structural navigation methods
@@ -40,8 +39,6 @@ public class SequenceDiagramElementsParentEventsTests extends AbstractSequenceSi
 
     private static final String sessionModel = "fixture.aird";
 
-    private static final String semanticModel = "fixture.interactions";
-
     private static final String typesSemanticModel = "types.ecore";
 
     @Override
@@ -51,7 +48,7 @@ public class SequenceDiagramElementsParentEventsTests extends AbstractSequenceSi
 
     @Override
     protected String getSemanticModel() {
-        return semanticModel;
+        return "fixture.interactions";
     }
 
     @Override

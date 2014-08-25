@@ -16,7 +16,6 @@ import java.util.List;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.gmf.runtime.common.ui.services.action.contributionitem.ContributionItemService;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
@@ -28,19 +27,16 @@ import org.eclipse.jface.action.MenuManager;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 public class NavigationMenuTest extends SiriusDiagramTestCase {
 
@@ -61,7 +57,10 @@ public class NavigationMenuTest extends SiriusDiagramTestCase {
     }
 
     public void testAllSiriussEnabled() throws Exception {
-        enableSiriuss("Design", "Documentation", "Quality", "Review");
+        activateViewpoint("Design");
+        activateViewpoint("Documentation");
+        activateViewpoint("Quality");
+        activateViewpoint("Review");
 
         selectPackage("packageWithExistingDiagram");
         List<ActionContributionItem> items = getNavigationContributions();
@@ -81,8 +80,10 @@ public class NavigationMenuTest extends SiriusDiagramTestCase {
     }
 
     public void testReviewSiriusDisabled() throws Exception {
-        enableSiriuss("Design", "Documentation", "Quality");
-        disableSiriuss("Review");
+        activateViewpoint("Design");
+        activateViewpoint("Documentation");
+        activateViewpoint("Quality");
+        deactivateViewpoint("Review");
 
         selectPackage("packageWithExistingDiagram");
         List<ActionContributionItem> items = getNavigationContributions();
@@ -101,8 +102,10 @@ public class NavigationMenuTest extends SiriusDiagramTestCase {
     }
 
     public void testDesignSiriusDisabled() throws Exception {
-        enableSiriuss("Documentation", "Quality", "Review");
-        disableSiriuss("Design");
+        activateViewpoint("Documentation");
+        activateViewpoint("Quality");
+        activateViewpoint("Review");
+        deactivateViewpoint("Design");
 
         selectPackage("packageWithExistingDiagram");
         List<ActionContributionItem> items = getNavigationContributions();
@@ -120,8 +123,10 @@ public class NavigationMenuTest extends SiriusDiagramTestCase {
     }
 
     public void testDesignAndReviewSiriussDisabled() throws Exception {
-        enableSiriuss("Documentation", "Quality");
-        disableSiriuss("Design", "Review");
+        activateViewpoint("Documentation");
+        activateViewpoint("Quality");
+        deactivateViewpoint("Design");
+        deactivateViewpoint("Review");
 
         selectPackage("packageWithExistingDiagram");
         List<ActionContributionItem> items = getNavigationContributions();
@@ -134,36 +139,6 @@ public class NavigationMenuTest extends SiriusDiagramTestCase {
         selectPackage("packageWithNoRepresentation");
         items = getNavigationContributions();
         assertEquals(0, items.size());
-    }
-
-    private void enableSiriuss(final String... names) {
-        for (final Viewpoint vp : viewpoints) {
-            for (final String name : names) {
-                if (vp.getName().equals(name)) {
-                    session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
-                        @Override
-                        protected void doExecute() {
-                            new ViewpointSelectionCallback().selectViewpoint(vp, session, new NullProgressMonitor());
-                        }
-                    });
-                }
-            }
-        }
-    }
-
-    private void disableSiriuss(final String... names) {
-        for (final Viewpoint vp : viewpoints) {
-            for (final String name : names) {
-                if (vp.getName().equals(name)) {
-                    session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
-                        @Override
-                        protected void doExecute() {
-                            new ViewpointSelectionCallback().deselectViewpoint(vp, session, new NullProgressMonitor());
-                        }
-                    });
-                }
-            }
-        }
     }
 
     private DDiagramElement selectPackage(final String name) {

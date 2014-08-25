@@ -14,36 +14,23 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
+import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberOfDescendants;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
+import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 
-import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberOfDescendants;
-import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
-
 public class SequenceExecutionMessageToSelfTest extends AbstractDefaultModelSequenceTests {
-
-    // InstanceRoles
-    private SWTBotGefEditPart instanceRoleABot;
 
     private SWTBotGefEditPart instanceRoleBBot;
 
-    private SWTBotGefEditPart instanceRoleCBot;
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         super.onSetUpAfterOpeningDesignerPerspective();
-
-        // InstanceRoles
-        instanceRoleABot = editor.getEditPart(LIFELINE_A);
         instanceRoleBBot = editor.getEditPart(LIFELINE_B);
-        instanceRoleCBot = editor.getEditPart(LIFELINE_C);
     }
 
     /**
@@ -71,7 +58,7 @@ public class SequenceExecutionMessageToSelfTest extends AbstractDefaultModelSequ
                 // C
                 int lifelineAPosition = getLifelineScreenX(LIFELINE_A);
                 int lifelineBPosition = getLifelineScreenX(LIFELINE_B);
-                int lifelineCPosition = getLifelineScreenX(LIFELINE_C);
+                getLifelineScreenX(LIFELINE_C);
 
                 int verticalPosition = 150;
 
@@ -89,8 +76,8 @@ public class SequenceExecutionMessageToSelfTest extends AbstractDefaultModelSequ
 
                 // Expected bounds after message creation
                 Rectangle boundsE1 = assertExecutionHasValidScreenBounds(LIFELINE_B, 0, new Rectangle(0, verticalPosition, 0, LayoutConstants.INTERACTION_EXECUTION_MIN_HEIGHT_AFTER_LAYOUT), false);
-                Rectangle boundsM1 = assertNamedMessageHasValidScreenBounds(FIRST_MESSAGE_SYNC_CALL, new Rectangle(new Point(0, verticalPosition), new Point(0, verticalPosition)), true, false);
-                Rectangle boundsM2 = assertReturnMessageHasValidScreenBounds(LIFELINE_B, 0, new Rectangle(
+                assertNamedMessageHasValidScreenBounds(FIRST_MESSAGE_SYNC_CALL, new Rectangle(new Point(0, verticalPosition), new Point(0, verticalPosition)), true, false);
+                assertReturnMessageHasValidScreenBounds(LIFELINE_B, 0, new Rectangle(
                         new Point(0, verticalPosition + LayoutConstants.INTERACTION_EXECUTION_MIN_HEIGHT_AFTER_LAYOUT), new Point(0, verticalPosition
                                 + LayoutConstants.INTERACTION_EXECUTION_MIN_HEIGHT_AFTER_LAYOUT)), false, false);
 
@@ -154,9 +141,7 @@ public class SequenceExecutionMessageToSelfTest extends AbstractDefaultModelSequ
 
     @Override
     protected void tearDown() throws Exception {
-        instanceRoleABot = null;
         instanceRoleBBot = null;
-        instanceRoleCBot = null;
         super.tearDown();
     }
 }

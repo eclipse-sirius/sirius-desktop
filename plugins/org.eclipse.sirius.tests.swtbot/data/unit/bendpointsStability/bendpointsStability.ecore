@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="Root">
+  <eClassifiers xsi:type="ecore:EClass" name="NodeWithOneTargetEdgeAnd1Bendpoints"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeWithOneSourceEdgeAnd1Bendpoints"
+      eSuperTypes="#//NodeWithOneTargetEdgeAnd1Bendpoints"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeWithOneSourceEdgeAnd2Bendpoints"
+      eSuperTypes="#//NodeWithOneTargetEdgeAnd2Bendpoints"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeWithOneTargetEdgeAnd2Bendpoints"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeWithOneSourceEdgeAnd3Bendpoints"
+      eSuperTypes="#//NodeWithOneTargetEdgeAnd3Bendpoints"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeWithOneTargetEdgeAnd3Bendpoints"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeWithSeveralTargetEdgeAnd1Bendpoints"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeWithSeveralSourceEdgeAnd1Bendpoints"
+      eSuperTypes="#//NodeWithSeveralTargetEdgeAnd1Bendpoints #//NodeWithSeveralTargetEdgeAnd2Bendpoints"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeWithSeveralSourceEdgeAnd2Bendpoints"
+      eSuperTypes="#//NodeWithSeveralTargetEdgeAnd2Bendpoints #//NodeWithSeveralTargetEdgeAnd3Bendpoints"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeWithSeveralTargetEdgeAnd2Bendpoints"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeWithSeveralSourceEdgeAnd3Bendpoints"
+      eSuperTypes="#//NodeWithSeveralTargetEdgeAnd3Bendpoints #//NodeWithSeveralTargetEdgeAnd1Bendpoints"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeWithSeveralTargetEdgeAnd3Bendpoints"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeWithSeveralTargetsAndSources" eSuperTypes="#//NodeWithSeveralTargetEdgeAnd2Bendpoints #//NodeWithSeveralTargetEdgeAnd3Bendpoints"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeWithSeveralTargetsAndSources2" eSuperTypes="#//NodeWithSeveralTargetsAndSources"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeWithSeveralTargetsAndSources3" eSuperTypes="#//NodeWithSeveralTargetsAndSources"/>
+  <eSubpackages name="Scrollbar"/>
+  <eSubpackages name="DragAndDropTarget">
+    <eSubpackages name="HiddenPackage">
+      <eClassifiers xsi:type="ecore:EClass" name="A"/>
+      <eClassifiers xsi:type="ecore:EClass" name="B" eSuperTypes="#//DragAndDropTarget/HiddenPackage/A"/>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="ContainerWithOneNode">
+    <eClassifiers xsi:type="ecore:EClass" name="NodeWithOneTargetEdgeInContainer"/>
+  </eSubpackages>
+  <eSubpackages name="ContainerWithOneNode2">
+    <eClassifiers xsi:type="ecore:EClass" name="NodeWithOneSourceEdgeInContainer"
+        eSuperTypes="#//ContainerWithOneNode/NodeWithOneTargetEdgeInContainer"/>
+  </eSubpackages>
+  <eSubpackages name="EmptyContainer"/>
+</ecore:EPackage>

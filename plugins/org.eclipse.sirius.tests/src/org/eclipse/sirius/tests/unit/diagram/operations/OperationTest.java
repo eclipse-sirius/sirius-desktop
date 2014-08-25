@@ -133,6 +133,7 @@ public class OperationTest extends DocbookTestCase {
         assertEquals("Wrong count of element before the create instance execution.", 0, instanceCount);
 
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+            @Override
             protected void doExecute() {
                 try {
                     task.execute();
@@ -179,6 +180,7 @@ public class OperationTest extends DocbookTestCase {
         final AbstractOperationTask task = new ChangeContextTask(context, accessor, op, SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(book));
 
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+            @Override
             protected void doExecute() {
                 try {
                     task.execute();
@@ -238,6 +240,7 @@ public class OperationTest extends DocbookTestCase {
         assertEquals("Wrong count of element before the set value execution.", 0, instanceCount);
 
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+            @Override
             protected void doExecute() {
                 try {
                     task.execute();
@@ -294,6 +297,7 @@ public class OperationTest extends DocbookTestCase {
         assertEquals("Wrong count of element before the set value execution.", 1, instanceCount);
 
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+            @Override
             protected void doExecute() {
                 try {
                     task.execute();
@@ -348,6 +352,7 @@ public class OperationTest extends DocbookTestCase {
         assertEquals("Wrong count of element before the set value execution.", 1, instanceCount);
 
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+            @Override
             protected void doExecute() {
                 try {
                     task.execute();
@@ -400,6 +405,7 @@ public class OperationTest extends DocbookTestCase {
         assertEquals("Wrong count of element before the set value execution.", 1, instanceCount);
 
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+            @Override
             protected void doExecute() {
                 try {
                     task.execute();
@@ -442,6 +448,7 @@ public class OperationTest extends DocbookTestCase {
         final AbstractOperationTask sect1task = createSect1InstanceTask(context);
 
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+            @Override
             protected void doExecute() {
                 try {
                     sect1task.execute();
@@ -455,6 +462,7 @@ public class OperationTest extends DocbookTestCase {
 
         final AbstractOperationTask chapterTask = createChapterInstanceTask();
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+            @Override
             protected void doExecute() {
                 try {
                     chapterTask.execute();
@@ -512,6 +520,7 @@ public class OperationTest extends DocbookTestCase {
         final AbstractOperationTask task = new MoveElementTask(sect1context, accessor, op, session.getInterpreter());
 
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+            @Override
             protected void doExecute() {
                 try {
                     task.execute();
@@ -556,6 +565,7 @@ public class OperationTest extends DocbookTestCase {
         final EObject chap = chapter;
 
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+            @Override
             protected void doExecute() {
                 chapterView.setTarget(chap);
             }
@@ -584,6 +594,7 @@ public class OperationTest extends DocbookTestCase {
         assertEquals("Wrong count of DEdge in the obvious diagram.", 1, instanceCount);
 
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+            @Override
             protected void doExecute() {
                 try {
                     task.execute();
@@ -768,10 +779,12 @@ public class OperationTest extends DocbookTestCase {
         final AbstractOperationTask task = new SetValueTask(context, accessor, op, session.getInterpreter());
         final AbstractOperationTask shallNotBeExecutedTask = new AbstractOperationTask(context, accessor, session.getInterpreter()) {
 
+            @Override
             public void execute() {
                 assertTrue(false);
             }
 
+            @Override
             public String getLabel() {
                 return null;
             }

@@ -62,8 +62,8 @@ public class DiagramCustomizationTest extends SiriusDiagramTestCase {
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + VSM, "/" + TEMPORARY_PROJECT_NAME + "/" + VSM);
         genericSetUp(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL, TEMPORARY_PROJECT_NAME + "/" + VSM, TEMPORARY_PROJECT_NAME + "/" + SESSION_MODEL);
 
-        baseSirius = findSirius("Base").get();
-        extSirius = findSirius("Extension").get();
+        baseSirius = findViewpoint("Base").get();
+        extSirius = findViewpoint("Extension").get();
 
         // The test model contains a single diagram with one class "A".
         DDiagram diagram = (DDiagram) getRepresentations("BaseDiagram").iterator().next();

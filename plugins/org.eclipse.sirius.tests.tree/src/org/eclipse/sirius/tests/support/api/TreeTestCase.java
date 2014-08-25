@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
-import org.eclipse.sirius.tests.support.api.SiriusTestCase;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeElement;
@@ -266,7 +265,7 @@ public abstract class TreeTestCase extends SiriusTestCase {
      */
     @Override
     protected void tearDown() throws Exception {
-
+        TestsUtil.synchronizationWithUIThread();
         treeCommandFactory = null;
 
         super.tearDown();

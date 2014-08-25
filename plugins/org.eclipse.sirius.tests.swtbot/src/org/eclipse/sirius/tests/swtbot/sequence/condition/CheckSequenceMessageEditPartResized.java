@@ -22,9 +22,9 @@ import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
  */
 public class CheckSequenceMessageEditPartResized extends DefaultCondition {
 
-    private SequenceMessageEditPart sequenceMessageEditPart;
+    private final SequenceMessageEditPart sequenceMessageEditPart;
 
-    private Dimension initialSize;
+    private final Dimension initialSize;
 
     /**
      * Default Constructor
@@ -47,16 +47,12 @@ public class CheckSequenceMessageEditPartResized extends DefaultCondition {
         this.initialSize = sequenceMessageEditPart.getFigure().getBounds().getSize().getCopy();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean test() throws Exception {
     	return !initialSize.equals(sequenceMessageEditPart.getFigure().getBounds().getSize());
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public String getFailureMessage() {
         return "Failed to find " + sequenceMessageEditPart.resolveSemanticElement() + " resized";
     }

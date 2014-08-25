@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import java.util.Map.Entry;
 
 import junit.framework.TestCase;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -29,14 +30,13 @@ import org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter.Accel
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener;
+import org.eclipse.sirius.sample.interactions.InteractionsFactory;
+import org.eclipse.sirius.sample.interactions.Participant;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.sample.interactions.InteractionsFactory;
-import org.eclipse.sirius.sample.interactions.Participant;
 
 /**
  * Tests for the {@link AcceleoMTLInterpreter} utility class.
@@ -286,7 +286,7 @@ public class AcceleoMTLInterpreterTests extends TestCase {
         assertEquals("Evaluation result do not match", expectedResult, result);
     }
 
-    private void evaluateObject(IInterpreter interpreter, EObject eObj, String expression, EObject expectedResult) {
+    private void evaluateObject(IInterpreter interpreter, EObject eObj, String expression, Object expectedResult) {
         Object result = null;
         try {
             result = interpreter.evaluate(eObj, expression);
@@ -369,7 +369,7 @@ public class AcceleoMTLInterpreterTests extends TestCase {
         // Check evaluation shortcut
         evaluateEObject(interpreter, eClass, "[self/]", eClass);
         evaluateObject(interpreter, eClass, "[self/]", eClass);
-        
+
         interpreter.dispose();
     }
 
@@ -764,4 +764,37 @@ public class AcceleoMTLInterpreterTests extends TestCase {
 
         interpreter.dispose();
     }
+
+    public void testAcceleoMtlCollectionEvaluationOnArrayValues() {
+        IInterpreter interpreter = new AcceleoMTLInterpreter();
+
+        // Setup
+        EAttribute eAttribute = EcoreFactory.eINSTANCE.createEAttribute();
+        eAttribute.setName("a1");
+        String varExampleName = "varWithArray";
+        String[] arrayValue = new String[] { eAttribute.getName() };
+        interpreter.setVariable(varExampleName, arrayValue);
+
+        // Test 1: evaluate returns the String array.
+        String expression = "["+varExampleName+"/]";
+        evaluateObject(interpreter, eAttribute, expression, arrayValue);
+
+        // Test 2: evaluateCollection returns an empty
+        // Collection<EObject>the String array.
+        evaluateCollection(interpreter, eAttribute, expression, Collections.<EObject>emptyList());
+
+        // Change the value
+        EObject[] eobjectArrayValue = new EObject[] { eAttribute };
+        interpreter.setVariable(varExampleName, eobjectArrayValue);
+
+        // Test 3: evaluate returns the EObject array.
+        evaluateObject(interpreter, eAttribute, expression, eobjectArrayValue);
+
+        // Test 4: evaluateCollection returns a Collection<EObject> with the
+        // array content
+        evaluateCollection(interpreter, eAttribute, expression, Lists.newArrayList(eobjectArrayValue));
+
+        interpreter.dispose();
+    }
+
 }

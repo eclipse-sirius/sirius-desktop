@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.util.Collection;
 import junit.framework.TestCase;
 
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -22,6 +23,9 @@ import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
+import org.eclipse.sirius.common.tools.internal.interpreter.AbstractInterpreter;
+import org.eclipse.sirius.common.tools.internal.interpreter.FeatureInterpreter;
+import org.eclipse.sirius.common.tools.internal.interpreter.ServiceInterpreter;
 import org.eclipse.sirius.common.tools.internal.interpreter.VariableInterpreter;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DiagramFactory;
@@ -127,7 +131,8 @@ public class VariableInterpreterTests extends TestCase {
             // Check
             assertEquals("The evaluation result must be the varExampleValue", varExampleValue2, result);
 
-            // Unset the variable, then the next expected evaluation result is the previous value.
+            // Unset the variable, then the next expected evaluation result is
+            // the previous value.
             interpreter.unSetVariable(varExampleName);
             // Test
             result = interpreter.evaluate(eAttribute, VariableInterpreter.PREFIX + varExampleName);
@@ -180,6 +185,52 @@ public class VariableInterpreterTests extends TestCase {
         assertEquals("The validation should return a IInterpreterStatus to show the error in the expression", 1, status.size());
         IInterpreterStatus interpreterStatus = status.iterator().next();
         assertEquals(DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION, interpreterStatus.getField());
+    }
+
+    public void testVariableInterpreterCollectionEvaluationOnArrayValues() {
+        try {
+            // Setup
+            EAttribute eAttribute = EcoreFactory.eINSTANCE.createEAttribute();
+            eAttribute.setName("a1");
+            String varExampleName = "varWithArray";
+            String[] arrayValue = new String[] { eAttribute.getName() };
+            interpreter.setVariable(varExampleName, arrayValue);
+
+            // Test 1: evaluate returns the String array.
+            Object result = interpreter.evaluate(eAttribute, VariableInterpreter.PREFIX + varExampleName);
+            assertEquals("The evaluate method should return the array.", arrayValue, result);
+
+            // Test 2: evaluateCollection returns an empty
+            // Collection<EObject>the String array.
+            result = interpreter.evaluateCollection(eAttribute, VariableInterpreter.PREFIX + varExampleName);
+            assertTrue("The evaluateCollection method should return a collection.", result instanceof Collection);
+            assertTrue("The evaluateCollection method should return a en emtpy collection, the array contains only Strings.", ((Collection<?>) result).isEmpty());
+
+            // Change the value
+            EObject[] eobjectArrayValue = new EObject[] { eAttribute };
+            interpreter.setVariable(varExampleName, eobjectArrayValue);
+
+            // Test 3: evaluate returns the EObject array.
+            result = interpreter.evaluate(eAttribute, VariableInterpreter.PREFIX + varExampleName);
+            assertEquals("The evaluate method should return the array.", eobjectArrayValue, result);
+
+            // Test 4: evaluateCollection returns a Collection<EObject> with the
+            // array content
+            result = interpreter.evaluateCollection(eAttribute, VariableInterpreter.PREFIX + varExampleName);
+            assertTrue("The evaluateCollection method should return a collection.", result instanceof Collection);
+            assertEquals("The evaluateCollection method should return a collection with the content of the array.", eobjectArrayValue[0], ((Collection<?>) result).iterator().next());
+
+        } catch (EvaluationException e) {
+            fail("EvaluationException should not be thrown");
+        }
+
+        try {
+            assertEquals("The current test should be updated.", AbstractInterpreter.class, VariableInterpreter.class.getMethod("evaluateCollection", EObject.class, String.class).getDeclaringClass());
+            assertEquals("FeatureInterpreterTests requires a similirar test.", AbstractInterpreter.class, FeatureInterpreter.class.getMethod("evaluateCollection", EObject.class, String.class).getDeclaringClass());
+            assertEquals("ServiceInterpreterTests requires a similirar test.", AbstractInterpreter.class, ServiceInterpreter.class.getMethod("evaluateCollection", EObject.class, String.class).getDeclaringClass());
+        } catch (NoSuchMethodException e) {
+            fail("NoSuchMethodException should not be thrown");
+        }
     }
 
     @Override

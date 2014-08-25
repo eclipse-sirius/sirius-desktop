@@ -84,7 +84,7 @@ public class SessionManagerListener2Tests extends SiriusDiagramTestCase implemen
         genericSetUp(ZOOM_SEMANTIC_MODEL_PATH, MODELER_PATH, alternativeSessionResourcePath);
         alternateSession = session;
         alternateSemanticModel = alternateSession.getSemanticResources().iterator().next().getContents().get(0);
-        initSirius(DESIGN_VIEWPOINT_NAME, alternateSession, alternateSemanticModel);
+        initViewpoint(DESIGN_VIEWPOINT_NAME, alternateSession, alternateSemanticModel);
         TestsUtil.emptyEventsFromUIThread();
 
         String sessionResourcePath = TEMPORARY_PROJECT_NAME + "/" + "session.aird";

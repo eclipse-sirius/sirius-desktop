@@ -32,8 +32,6 @@ import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.tests.support.api.DiagramComponentizationTestSupport;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
-import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
-import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
@@ -47,15 +45,6 @@ public class GenericTestCase extends SiriusDiagramTestCase {
     public static final String THE_UNIT_TEST_DATA_SEEMS_INCORRECT = "The unit test data seems incorrect";
 
     protected DDiagramSynchronizer sync;
-
-    protected ViewpointSelection.Callback selectionCallback;
-
-    @Override
-    protected void setUp() throws Exception {
-        super.setUp();
-
-        selectionCallback = new ViewpointSelectionCallback();
-    }
 
     protected void initSynchronizer(final DiagramDescription description, final String diagramName) {
         sync = new DDiagramSynchronizer(interpreter, description, accessor);

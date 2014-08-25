@@ -50,9 +50,9 @@ public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTes
 
     private static final String FILE_DIR = "/";
 
-    private static final String EXPECTED_NAVIGATION_REPRESENTATION_NAME = "New detail : Representation 2";
+    private static final String EXPECTED_NEW_REPRESENTATION_NAME = "Representation 2";
 
-    private static final String EXPECTED_NAVIGATION_REPRESENTATION_INSTANCE_NAME = "new Representation 2";
+    private static final String EXPECTED_NEW_REPRESENTATION_INSTANCE_NAME = "new Representation 2";
 
     private UIResource sessionAirdResource;
 
@@ -115,8 +115,8 @@ public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTes
      * @throws Exception
      *             Test error.
      */
-    public void testNavigation1SiriusFromContainer() throws Exception {
-        doTestNavigationWithoutContextualMenu(new Point(300, 300));
+    public void testNewRepresentationSiriusFromContainer() throws Exception {
+        doTestNewRepresentationWithoutContextualMenu(new Point(300, 300));
     }
 
     /**
@@ -125,8 +125,8 @@ public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTes
      * @throws Exception
      *             Test error.
      */
-    public void testNavigation1SiriusFromNode() throws Exception {
-        doTestNavigationWithoutContextualMenu(new Point(325, 160));
+    public void testNewRepresentationSiriusFromNode() throws Exception {
+        doTestNewRepresentationWithoutContextualMenu(new Point(325, 160));
     }
 
     /**
@@ -135,8 +135,8 @@ public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTes
      * @throws Exception
      *             Test error.
      */
-    public void testNavigation1SiriusFromEdge() throws Exception {
-        doTestNavigationWithoutContextualMenu(new Point(265, 135));
+    public void testNewRepresentationSiriusFromEdge() throws Exception {
+        doTestNewRepresentationWithoutContextualMenu(new Point(265, 135));
     }
 
     /**
@@ -145,8 +145,8 @@ public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTes
      * @throws Exception
      *             Test error.
      */
-    public void testNavigation2SiriussFromContainer() throws Exception {
-        doTestNavigationWithContextualMenu(new Point(300, 300), "System1)");
+    public void testNewRepresentationSiriussFromContainer() throws Exception {
+        doTestNewRepresentationWithContextualMenu(new Point(300, 300), "System1)");
     }
 
     /**
@@ -155,8 +155,8 @@ public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTes
      * @throws Exception
      *             Test error.
      */
-    public void testNavigation2SiriussFromContainerWithoutRefreshOnOpening() throws Exception {
-        doTestNavigationWithContextualMenu(new Point(300, 300), "System1)", true);
+    public void testNewRepresentationSiriussFromContainerWithoutRefreshOnOpening() throws Exception {
+        doTestNewRepresentationWithContextualMenu(new Point(300, 300), "System1)", true);
     }
 
     /**
@@ -165,11 +165,11 @@ public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTes
      * @throws Exception
      *             Test error.
      */
-    public void testNavigation2SiriussFromNode() throws Exception {
+    public void testNewRepresentationSiriussFromNode() throws Exception {
         if (TestsUtil.shouldSkipUnreliableTests()) {
             return;
         }
-        doTestNavigationWithContextualMenu(new Point(325, 160), "Sous-package 2)");
+        doTestNewRepresentationWithContextualMenu(new Point(325, 160), "Sous-package 2)");
     }
 
     /**
@@ -178,8 +178,8 @@ public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTes
      * @throws Exception
      *             Test error.
      */
-    public void testNavigation2SiriussFromEdge() throws Exception {
-        doTestNavigationWithContextualMenu(new Point(265, 135), "System1)");
+    public void testNewRepresentationSiriussFromEdge() throws Exception {
+        doTestNewRepresentationWithContextualMenu(new Point(265, 135), "System1)");
     }
 
     /**
@@ -188,15 +188,15 @@ public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTes
      * @throws Exception
      *             Test error.
      */
-    public void testNavigation2SiriussFromEdgeWithoutRefreshOnOpening() throws Exception {
-        doTestNavigationWithContextualMenu(new Point(265, 135), "System1)", true);
+    public void testNewRepresentationSiriussFromEdgeWithoutRefreshOnOpening() throws Exception {
+        doTestNewRepresentationWithContextualMenu(new Point(265, 135), "System1)", true);
     }
 
-    private void doTestNavigationWithContextualMenu(Point point, String diagramName) throws Exception {
-        doTestNavigationWithContextualMenu(point, diagramName, false);
+    private void doTestNewRepresentationWithContextualMenu(Point point, String diagramName) throws Exception {
+        doTestNewRepresentationWithContextualMenu(point, diagramName, false);
     }
 
-    private void doTestNavigationWithContextualMenu(Point point, String diagramName, boolean disableRefreshOnOpening) throws Exception {
+    private void doTestNewRepresentationWithContextualMenu(Point point, String diagramName, boolean disableRefreshOnOpening) throws Exception {
         if (disableRefreshOnOpening) {
             changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), false);
         }
@@ -205,13 +205,13 @@ public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTes
 
         editor.click(point.x, point.y);
 
-        editor.clickContextMenu(EXPECTED_NAVIGATION_REPRESENTATION_NAME);
+        editor.clickContextMenu(EXPECTED_NEW_REPRESENTATION_NAME);
 
         bot.waitUntilWidgetAppears(Conditions.shellIsActive(Messages.createRepresentationInputDialog_Title));
 
         bot.button("OK").click();
-        assertEditorIsNotError("Right click navigation editor did not opened correctly", bot.activeEditor());
-        assertEquals("The active editor is not the one expected", EXPECTED_NAVIGATION_REPRESENTATION_INSTANCE_NAME, bot.activeEditor().getTitle());
+        assertEditorIsNotError("Right click new representation editor did not opened correctly", bot.activeEditor());
+        assertEquals("The active editor is not the one expected", EXPECTED_NEW_REPRESENTATION_INSTANCE_NAME, bot.activeEditor().getTitle());
         // Test VP-3039
         if (disableRefreshOnOpening) {
             IEditorReference reference = bot.activeEditor().getReference();
@@ -220,7 +220,7 @@ public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTes
         }
     }
 
-    private void doTestNavigationWithoutContextualMenu(Point point) throws Exception {
+    private void doTestNewRepresentationWithoutContextualMenu(Point point) throws Exception {
         final long oldTimeout = SWTBotPreferences.TIMEOUT;
 
         try {
@@ -232,9 +232,9 @@ public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTes
 
             SWTBotUtils.waitAllUiEvents();
 
-            editor.clickContextMenu(EXPECTED_NAVIGATION_REPRESENTATION_NAME);
+            editor.clickContextMenu(EXPECTED_NEW_REPRESENTATION_NAME);
 
-            fail(WidgetNotFoundException.class + " Navigation menu not expected to be available");
+            fail(WidgetNotFoundException.class + " New representation menu not expected to be available");
         } catch (final WidgetNotFoundException e) {
             assertEquals("The active editor is not the one expected", REPRESENTATION_INSTANCE_NAME, bot.activeEditor().getTitle());
         } finally {

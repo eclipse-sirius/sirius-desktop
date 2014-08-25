@@ -39,7 +39,7 @@ import org.junit.Assert;
  * located on the border of a Node/Bordered Node works correctly.
  * 
  * Used by {@link HideRevealDiagramElementsLabelsTestWithOldUI} and
- * {@link HideRevealDiagramElementsTest}.
+ * {@link HideRevealDiagramElementsLabelsTest}.
  * 
  * @author alagarde
  */
@@ -94,8 +94,6 @@ public class AbstractHideRevealDiagramElementsLabelTest extends AbstractSiriusSw
 
     private static final String REPRESENTATION_NAME = "2330 Diagram";
 
-    private static final String VIEWPOINT_NAME = "2330";
-
     private static final String MODEL = "tc2330.ecore";
 
     private static final String SESSION_FILE = "tc2330.aird";
@@ -110,8 +108,6 @@ public class AbstractHideRevealDiagramElementsLabelTest extends AbstractSiriusSw
 
     private UILocalSession localSession;
 
-    private UIDiagramRepresentation diagram;
-
     private String previousPollDelay;
 
     /**
@@ -124,9 +120,6 @@ public class AbstractHideRevealDiagramElementsLabelTest extends AbstractSiriusSw
      */
     protected boolean outlineIsCorrectlyDecorated;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         // We change the timeOut of SWTBot, as we often search for widget that
@@ -137,9 +130,6 @@ public class AbstractHideRevealDiagramElementsLabelTest extends AbstractSiriusSw
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void tearDown() throws Exception {
         super.tearDown();
@@ -285,9 +275,7 @@ public class AbstractHideRevealDiagramElementsLabelTest extends AbstractSiriusSw
      */
     protected void setShownImage(final SWTBotTreeItem item) {
         item.display.asyncExec(new Runnable() {
-            /**
-             * {@inheritDoc}
-             */
+            @Override
             public void run() {
                 shownImage = item.widget.getImage();
             }
@@ -321,9 +309,9 @@ public class AbstractHideRevealDiagramElementsLabelTest extends AbstractSiriusSw
      */
     private class CheckLabelIsHidden extends DefaultCondition {
 
-        private String label;
+        private final String label;
 
-        private SWTBotSiriusDiagramEditor editor;
+        private final SWTBotSiriusDiagramEditor editor;
 
         /**
          * Constructor.
@@ -338,9 +326,7 @@ public class AbstractHideRevealDiagramElementsLabelTest extends AbstractSiriusSw
             this.editor = editor;
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public boolean test() throws Exception {
             // If no element can be found from the given name, it means that the
             // element doesn't exist or is hidden
@@ -354,9 +340,7 @@ public class AbstractHideRevealDiagramElementsLabelTest extends AbstractSiriusSw
             return !elementCanBeFound;
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public String getFailureMessage() {
             return "The label is still visible.";
         }
@@ -369,9 +353,9 @@ public class AbstractHideRevealDiagramElementsLabelTest extends AbstractSiriusSw
      */
     private class CheckEdgeLabelIsHidden extends DefaultCondition {
 
-        private String label;
+        private final String label;
 
-        private SWTBotSiriusDiagramEditor editor;
+        private final SWTBotSiriusDiagramEditor editor;
 
         /**
          * Constructor.
@@ -386,16 +370,12 @@ public class AbstractHideRevealDiagramElementsLabelTest extends AbstractSiriusSw
             this.editor = editor;
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public boolean test() throws Exception {
             return !((AbstractGraphicalEditPart) editor.getEditPart(label).part()).getFigure().isVisible();
         }
 
-        /**
-         * {@inheritDoc}
-         */
+        @Override
         public String getFailureMessage() {
             return "The label is still visible.";
         }

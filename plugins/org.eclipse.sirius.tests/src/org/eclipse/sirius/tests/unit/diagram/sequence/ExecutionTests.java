@@ -24,12 +24,11 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.sample.interactions.Execution;
 import org.eclipse.sirius.sample.interactions.Message;
 import org.eclipse.sirius.sample.interactions.Participant;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 
 /**
  * Test Execution.
@@ -45,8 +44,6 @@ public class ExecutionTests extends AbstractSequenceSiriusDiagramTests {
     private static final String PATH = SiriusTestsPlugin.PLUGIN_ID + UNIT_DATA_ROOT + "executions/";
 
     private static final String sessionModel = "executions.aird";
-
-    private static final String semanticModel = "executions.interactions";
 
     private static final String typesSemanticModel = "types.ecore";
 
@@ -103,7 +100,7 @@ public class ExecutionTests extends AbstractSequenceSiriusDiagramTests {
 
     @Override
     protected String getSemanticModel() {
-        return semanticModel;
+        return "executions.interactions";
     }
 
     @Override

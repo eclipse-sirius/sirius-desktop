@@ -37,10 +37,14 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.LayoutEditPar
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.EditPartsHelper;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
+import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckMessageEditPartIsDisplayed;
+import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberExecutionOnLifeline;
+import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckResize;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
+import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
@@ -55,11 +59,6 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
-
-import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckMessageEditPartIsDisplayed;
-import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberExecutionOnLifeline;
-import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckResize;
-import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 
 /**
  * Test class for syncCall
@@ -124,9 +123,9 @@ public class SyncCallTest extends AbstractDefaultModelSequenceTests {
             arrangeAll();
 
             // Calculate the X position of the center of lifelines A and B
-            int lifelineAPosition = getScreenPosition(LIFELINE_A).x + ((getScreenSize(LIFELINE_A).width / 2));
-            int lifelineBPosition = getScreenPosition(LIFELINE_B).x + ((getScreenSize(LIFELINE_B).width / 2));
-            int lifelineCPosition = getScreenPosition(LIFELINE_C).x + ((getScreenSize(LIFELINE_C).width / 2));
+            int lifelineAPosition = getScreenPosition(LIFELINE_A).x + getScreenSize(LIFELINE_A).width / 2;
+            int lifelineBPosition = getScreenPosition(LIFELINE_B).x + getScreenSize(LIFELINE_B).width / 2;
+            int lifelineCPosition = getScreenPosition(LIFELINE_C).x + getScreenSize(LIFELINE_C).width / 2;
 
             // Creation of a Sync Call
             editor.activateTool("Sync Call");
@@ -451,7 +450,7 @@ public class SyncCallTest extends AbstractDefaultModelSequenceTests {
         editor.click(lifelineBPosition, firstMsgsyncCallY);
 
         Point executionScreenPosition = getExecutionScreenPosition(LIFELINE_B, 0);
-        Dimension executionDimension = getExecutionScreenDimension(LIFELINE_B, 0);
+        getExecutionScreenDimension(LIFELINE_B, 0);
 
         // Validates the position of the execution and its messages
         assertNotNull("The execution index 0 on lifeline " + LIFELINE_B + " has not been found", getExecutionScreenPosition(LIFELINE_B, 0));
@@ -631,7 +630,7 @@ public class SyncCallTest extends AbstractDefaultModelSequenceTests {
         editor.click(lifelineBPosition, 200);
 
         Point executionScreenPosition = getExecutionScreenPosition(LIFELINE_B, 0);
-        Dimension executionDimension = getExecutionScreenDimension(LIFELINE_B, 0);
+        getExecutionScreenDimension(LIFELINE_B, 0);
 
         // Validates the position of the execution
         assertNotNull("The execution index 0 on lifeline " + LIFELINE_B + " has not been found", getExecutionScreenPosition(LIFELINE_B, 0));
@@ -1339,8 +1338,8 @@ public class SyncCallTest extends AbstractDefaultModelSequenceTests {
         editor.click(lifelineAPosition, 200);
         editor.click(lifelineBPosition, 200);
 
-        Point executionScreenPosition = getExecutionScreenPosition(LIFELINE_B, 0);
-        Dimension executionDimension = getExecutionScreenDimension(LIFELINE_B, 0);
+        getExecutionScreenPosition(LIFELINE_B, 0);
+        getExecutionScreenDimension(LIFELINE_B, 0);
 
         // Validates the position of the execution
         assertNotNull("The execution index 0 on lifeline " + LIFELINE_B + " has not been found", getExecutionScreenPosition(LIFELINE_B, 0));
@@ -1456,8 +1455,8 @@ public class SyncCallTest extends AbstractDefaultModelSequenceTests {
         editor.click(lifelineAPosition, 150);
         editor.click(lifelineBPosition, 150);
 
-        Point executionScreenPosition = getExecutionScreenPosition(LIFELINE_B, 0);
-        Dimension executionDimension = getExecutionScreenDimension(LIFELINE_B, 0);
+        getExecutionScreenPosition(LIFELINE_B, 0);
+        getExecutionScreenDimension(LIFELINE_B, 0);
 
         // Validates the position of the execution
         assertNotNull("The execution index 0 on lifeline " + LIFELINE_B + " has not been found", getExecutionScreenPosition(LIFELINE_B, 0));
@@ -1701,8 +1700,8 @@ public class SyncCallTest extends AbstractDefaultModelSequenceTests {
         editor.click(lifelineAPosition, 150);
         editor.click(lifelineBPosition, 150);
 
-        Point executionScreenPosition = getExecutionScreenPosition(LIFELINE_B, 0);
-        Dimension executionDimension = getExecutionScreenDimension(LIFELINE_B, 0);
+        getExecutionScreenPosition(LIFELINE_B, 0);
+        getExecutionScreenDimension(LIFELINE_B, 0);
 
         // Validates the position of the execution
         assertNotNull("The execution index 0 on lifeline " + LIFELINE_B + " has not been found", getExecutionScreenPosition(LIFELINE_B, 0));
@@ -2758,7 +2757,7 @@ public class SyncCallTest extends AbstractDefaultModelSequenceTests {
     }
 
     private int getGapBefore(boolean packed, ArrayList<Integer> deltaClics, int i, int delta) {
-        return Math.max(deltaClics.get(i) + delta, (packed ? LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP : LayoutConstants.EXECUTION_CHILDREN_MARGIN));
+        return Math.max(deltaClics.get(i) + delta, packed ? LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP : LayoutConstants.EXECUTION_CHILDREN_MARGIN);
     }
 
     private void assertExecutionVerticalPosition(String lifelineName, int index, int expected, int tolerance) {

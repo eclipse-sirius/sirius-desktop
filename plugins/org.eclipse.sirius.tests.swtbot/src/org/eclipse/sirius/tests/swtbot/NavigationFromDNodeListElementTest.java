@@ -40,9 +40,9 @@ public class NavigationFromDNodeListElementTest extends AbstractSiriusSwtBotGefT
 
     private static final String FILE_DIR = "/";
 
-    private static final String EXPECTED_NAVIGATION_REPRESENTATION_NAME = "New detail : Navigate to Not List";
+    private static final String EXPECTED_NEW_REPRESENTATION_NAME = "Navigate to Not List";
 
-    private static final String EXPECTED_NAVIGATION_REPRESENTATION_INSTANCE_NAME = "new Navigate to Not List";
+    private static final String EXPECTED_NEW_REPRESENTATION_INSTANCE_NAME = "new Navigate to Not List";
 
     private UIResource sessionAirdResource;
 
@@ -87,7 +87,7 @@ public class NavigationFromDNodeListElementTest extends AbstractSiriusSwtBotGefT
      * @throws Exception
      *             Test error.
      */
-    public void testNavigationFromDNodeListElement() throws Exception {
+    public void testNewRepresentationFromDNodeListElement() throws Exception {
         final long oldTimeout = SWTBotPreferences.TIMEOUT;
 
         try {
@@ -95,11 +95,11 @@ public class NavigationFromDNodeListElementTest extends AbstractSiriusSwtBotGefT
 
             editor.click(175, 45);
 
-            editor.clickContextMenu(EXPECTED_NAVIGATION_REPRESENTATION_NAME);
+            editor.clickContextMenu(EXPECTED_NEW_REPRESENTATION_NAME);
 
             bot.button("OK").click();
-            assertEditorIsNotError("Right click navigation editor did not opened correctly", bot.activeEditor());
-            assertEquals("The active editor is not the one expected", EXPECTED_NAVIGATION_REPRESENTATION_INSTANCE_NAME, bot.activeEditor().getTitle());
+            assertEditorIsNotError("Right click New representation editor did not opened correctly", bot.activeEditor());
+            assertEquals("The active editor is not the one expected", EXPECTED_NEW_REPRESENTATION_INSTANCE_NAME, bot.activeEditor().getTitle());
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
         }

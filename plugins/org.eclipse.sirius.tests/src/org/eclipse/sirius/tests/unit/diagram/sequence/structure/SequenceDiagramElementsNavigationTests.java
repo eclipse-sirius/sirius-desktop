@@ -55,8 +55,6 @@ public class SequenceDiagramElementsNavigationTests extends AbstractSequenceSiri
 
     private static final String sessionModel = "fixture.aird";
 
-    private static final String semanticModel = "fixture.interactions";
-
     private static final String typesSemanticModel = "types.ecore";
 
     @Override
@@ -66,7 +64,7 @@ public class SequenceDiagramElementsNavigationTests extends AbstractSequenceSiri
 
     @Override
     protected String getSemanticModel() {
-        return semanticModel;
+        return "fixture.interactions";
     }
 
     @Override

@@ -40,9 +40,9 @@ public class NavigateToNewRepresentationTest extends AbstractSiriusSwtBotGefTest
 
     private static final String FILE_DIR = "/";
 
-    private static final String EXPECTED_NAVIGATION_REPRESENTATION_NAME = "New detail : Creation test";
+    private static final String EXPECTED_NEW_REPRESENTATION_NAME = "Creation test";
 
-    private static final String EXPECTED_NAVIGATION_REPRESENTATION_INSTANCE_NAME = "Test";
+    private static final String EXPECTED_NEW_REPRESENTATION_INSTANCE_NAME = "Test";
 
     private UIResource sessionAirdResource;
 
@@ -90,10 +90,10 @@ public class NavigateToNewRepresentationTest extends AbstractSiriusSwtBotGefTest
         try {
             SWTBotPreferences.TIMEOUT = 1000;
             editor.click(65, 40);
-            editor.clickContextMenu(EXPECTED_NAVIGATION_REPRESENTATION_NAME);
+            editor.clickContextMenu(EXPECTED_NEW_REPRESENTATION_NAME);
             bot.button("OK").click();
-            assertEditorIsNotError("Right click navigation editor did not opened correctly", bot.activeEditor());
-            assertEquals("The active editor is not the one expected", EXPECTED_NAVIGATION_REPRESENTATION_INSTANCE_NAME, bot.activeEditor().getTitle());
+            assertEditorIsNotError("Right click New representation editor did not opened correctly", bot.activeEditor());
+            assertEquals("The active editor is not the one expected", EXPECTED_NEW_REPRESENTATION_INSTANCE_NAME, bot.activeEditor().getTitle());
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
         }

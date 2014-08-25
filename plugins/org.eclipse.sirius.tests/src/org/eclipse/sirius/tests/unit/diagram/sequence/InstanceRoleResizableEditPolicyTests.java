@@ -17,9 +17,8 @@ import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRoleEditPart;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.sample.interactions.Participant;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Test InstanceRoleResizableEditPolicy for move and resize commands.
@@ -32,8 +31,6 @@ public class InstanceRoleResizableEditPolicyTests extends AbstractSequenceSirius
 
     private static final String REPRESENTATION_TYPE = InteractionsConstants.SEQUENCE_DIAGRAM_REPRESENTATION_LABEL;
 
-    private static final String semanticModel = "lifelines.interactions";
-
     private static final String typesSemanticModel = "types.ecore";
 
     private static final String sessionModel = "lifelines.aird";
@@ -45,7 +42,7 @@ public class InstanceRoleResizableEditPolicyTests extends AbstractSequenceSirius
 
     @Override
     protected String getSemanticModel() {
-        return semanticModel;
+        return "lifelines.interactions";
     }
 
     @Override
@@ -105,8 +102,6 @@ public class InstanceRoleResizableEditPolicyTests extends AbstractSequenceSirius
         participantC = interaction.getParticipants().get(2);
         diagramElementC = getFirstDiagramElement(sequenceDDiagram, participantC);
         applyDirectEditTool("Edit Participant", sequenceDDiagram, diagramElementC, LIFELINE_C);
-
-        Bounds diagramElementCBounds = getBounds(diagramElementC, participantC);
 
         // move LIFELINE_B to (20,0) delta
         Point delta = new Point(20, 0);

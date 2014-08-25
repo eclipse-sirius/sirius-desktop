@@ -11,12 +11,14 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.NoteAttachmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.TextEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
+import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
 /**
@@ -68,9 +70,8 @@ public class RemoveNoteTextTest extends AbstractSiriusSwtBotGefTestCase {
     /**
      * Test that the note should be removed from contextual menu 'Delete from
      * Diagram'.
-     * Disabled until bug #435363 is fixed.
      */
-    public void _testRemoveNoteFromContextualMenuAction() {
+    public void testRemoveNoteFromContextualMenuAction() {
         // Select note
         editor.click(NOTE);
         SWTBotGefEditPart noteEditPart = editor.getEditPart(NOTE);
@@ -82,11 +83,27 @@ public class RemoveNoteTextTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
+     * Test that the note attachment should be removed from contextual menu
+     * 'Delete from Diagram'.
+     */
+    public void testRemoveNoteAttachmentFromContextualMenuAction() {
+        // Select note
+        editor.click(NOTE);
+        SWTBotGefEditPart noteEditPart = editor.getEditPart(NOTE).parent();
+        SWTBotGefConnectionEditPart noteAttachment = noteEditPart.sourceConnections().get(0);
+        noteAttachment.select();
+        assertEquals("The note attachment should be present", noteAttachment, noteEditPart.sourceConnections().iterator().next());
+        assertTrue("The note attachment should be present", noteAttachment.part() instanceof NoteAttachmentEditPart);
+        editor.clickContextMenu(DELETE_FROM_DIAGRAM);
+        // Check that the note attachment has been removed
+        assertTrue("The note attachment should be removed", noteEditPart.sourceConnections().isEmpty());
+    }
+
+    /**
      * Test that the text should be removed from contextual menu 'Delete from
      * Diagram'.
-     * Disabled until bug #435363 is fixed.
      */
-    public void _testRemoveTextFromContextualMenuAction() {
+    public void testRemoveTextFromContextualMenuAction() {
         // Select text
         editor.click(TEXT);
         SWTBotGefEditPart textEditPart = editor.getEditPart(TEXT);
@@ -115,6 +132,28 @@ public class RemoveNoteTextTest extends AbstractSiriusSwtBotGefTestCase {
         editor.bot().toolbarButtonWithTooltip(DELETE_FROM_DIAGRAM).click();
         // Check that the note has been removed
         assertTrue("The note " + NOTE + " should be removed", diagram.descendants(IsInstanceOf.instanceOf(NoteEditPart.class)).isEmpty());
+    }
+
+    /**
+     * Test that the note attachment should be removed with 'Delete from
+     * Diagram' action of tabbar.
+     */
+    public void testRemoveNoteAttachmentFromTabbarAction() {
+        // Not available in fixed tabbar
+        if (!TestsUtil.isDynamicTabbar()) {
+            return;
+        }
+
+        // Select note
+        editor.click(NOTE);
+        SWTBotGefEditPart noteEditPart = editor.getEditPart(NOTE).parent();
+        SWTBotGefConnectionEditPart noteAttachment = noteEditPart.sourceConnections().get(0);
+        noteAttachment.select();
+        assertEquals("The note attachment should be present", noteAttachment, noteEditPart.sourceConnections().iterator().next());
+        assertTrue("The note attachment should be present", noteAttachment.part() instanceof NoteAttachmentEditPart);
+        editor.bot().toolbarButtonWithTooltip(DELETE_FROM_DIAGRAM).click();
+        // Check that the note attachment has been removed
+        assertTrue("The note attachment should be removed", noteEditPart.sourceConnections().isEmpty());
     }
 
     /**

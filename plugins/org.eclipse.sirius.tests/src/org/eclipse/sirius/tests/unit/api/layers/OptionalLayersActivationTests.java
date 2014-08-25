@@ -136,7 +136,7 @@ public class OptionalLayersActivationTests extends SiriusDiagramTestCase {
         assertEquals(1, findDiagram(session).getActivatedLayers().size());
         enableSirius(VP_EXTENSION_AND_NOT_ACTIVE);
         assertEquals(1, findDiagram(session).getActivatedLayers().size());
-        deactivateSirius(VP_EXTENSION_AND_NOT_ACTIVE);
+        deactivateViewpoint(VP_EXTENSION_AND_NOT_ACTIVE);
         assertEquals(1, findDiagram(session).getActivatedLayers().size());
     }
 
@@ -160,7 +160,7 @@ public class OptionalLayersActivationTests extends SiriusDiagramTestCase {
         assertEquals(1, findDiagram(session).getActivatedLayers().size());
         enableSirius(VP_EXTENSION_AND_ACTIVE);
         assertEquals(2, findDiagram(session).getActivatedLayers().size());
-        deactivateSirius(VP_EXTENSION_AND_ACTIVE);
+        deactivateViewpoint(VP_EXTENSION_AND_ACTIVE);
         assertEquals(1, findDiagram(session).getActivatedLayers().size());
     }
 

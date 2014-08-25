@@ -41,8 +41,6 @@ public class InterpreterPerformanceTests extends SiriusDiagramTestCase implement
 
     private static final int ITER = 1000 * 1000;
 
-    private IInterpreter interpreter;
-
     private EAttribute testAttr;
 
     @Override

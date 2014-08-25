@@ -35,69 +35,41 @@ public class LifelinesSouthCenteredBorderItemLocatorTest extends AbstractSequenc
 
     private static final String PATH = SiriusTestsPlugin.PLUGIN_ID + UNIT_DATA_ROOT + "doremi-2332/";
 
-    private static final String semanticModel = "doremi-2332.interactions";
-
     private static final String typesSemanticModel = "doremi-2332.ecore";
 
     private static final String sessionModel = "doremi-2332.aird";
 
     private static final String REPRESENTATION_TYPE = InteractionsConstants.SEQUENCE_DIAGRAM_REPRESENTATION_LABEL;
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     protected String getPath() {
         return PATH;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     protected String getSemanticModel() {
-        return semanticModel;
+        return "doremi-2332.interactions";
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     protected String getTypesSemanticModel() {
         return typesSemanticModel;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     protected String getSessionModel() {
         return sessionModel;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     protected String getRepresentationId() {
         return InteractionsConstants.SEQUENCE_DIAGRAM_REPRESENTATION_ID;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.tests.unit.diagram.sequence.AbstractSequenceSiriusDiagramTests#setUp()
-     */
     @Override
     protected void setUp() throws Exception {
         super.setUp();
         createSequenceDiagramOfType(REPRESENTATION_TYPE);
-
         // Arrange All
         arrangeAll(diagramEditPart);
         TestsUtil.emptyEventsFromUIThread();
@@ -128,5 +100,4 @@ public class LifelinesSouthCenteredBorderItemLocatorTest extends AbstractSequenc
         // not work
         assertEquals("Invalid Bounds : GMF and Draw2D bounds differ (Arrange All failure when creating diagram)", gmfBounds, draw2DBounds);
     }
-
 }

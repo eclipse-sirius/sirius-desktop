@@ -38,7 +38,7 @@ public class DiagramComponentizationManagerTest extends AbstractComponentization
      *             if the test fails
      */
     public void testLayers() throws Exception {
-        final Viewpoint vpTemp = findSirius("Componentization test 1").get();
+        final Viewpoint vpTemp = findViewpoint("Componentization test 1").get();
         selectSirius(vpTemp, session);
         TestsUtil.waitUntil(new SelectedViewpointsCondition(session, 1));
 
@@ -63,7 +63,7 @@ public class DiagramComponentizationManagerTest extends AbstractComponentization
      *             if the test fails
      */
     public void testContributedLayers() throws Exception {
-        final Viewpoint vpTemp = findSirius("Componentization test 1").get();
+        final Viewpoint vpTemp = findViewpoint("Componentization test 1").get();
         selectSirius(vpTemp, session);
         TestsUtil.waitUntil(new SelectedViewpointsCondition(session, 1));
 
@@ -71,13 +71,13 @@ public class DiagramComponentizationManagerTest extends AbstractComponentization
         List<Layer> layers = DiagramComponentizationTestSupport.getAllLayers(session, ddTemp);
         assertEquals(3, layers.size());
 
-        selectSirius(findSirius("Componentization test 2").get(), session);
+        selectSirius(findViewpoint("Componentization test 2").get(), session);
         TestsUtil.waitUntil(new SelectedViewpointsCondition(session, 2));
 
-        selectSirius(findSirius("Componentization test 3").get(), session);
+        selectSirius(findViewpoint("Componentization test 3").get(), session);
         TestsUtil.waitUntil(new SelectedViewpointsCondition(session, 3));
 
-        selectSirius(findSirius("Componentization test 4").get(), session);
+        selectSirius(findViewpoint("Componentization test 4").get(), session);
         TestsUtil.waitUntil(new SelectedViewpointsCondition(session, 4));
 
         layers = DiagramComponentizationTestSupport.getAllLayers(session, ddTemp);
@@ -85,7 +85,7 @@ public class DiagramComponentizationManagerTest extends AbstractComponentization
     }
 
     public void testSections() throws Exception {
-        final Viewpoint toolSirius = findSirius("Tools").get();
+        final Viewpoint toolSirius = findViewpoint("Tools").get();
         selectSirius(toolSirius, session);
         TestsUtil.waitUntil(new SelectedViewpointsCondition(session, 1));
 
@@ -119,7 +119,7 @@ public class DiagramComponentizationManagerTest extends AbstractComponentization
     }
 
     public void testToolGroups() throws Exception {
-        final Viewpoint toolSirius = findSirius("Tools").get();
+        final Viewpoint toolSirius = findViewpoint("Tools").get();
         selectSirius(toolSirius, session);
         TestsUtil.waitUntil(new SelectedViewpointsCondition(session, 1));
 

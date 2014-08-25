@@ -26,11 +26,10 @@ import org.eclipse.sirius.diagram.sequence.business.internal.layout.SequenceLayo
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRoleEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionUseEditPart;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.sample.interactions.Execution;
 import org.eclipse.sirius.sample.interactions.InteractionUse;
 import org.eclipse.sirius.sample.interactions.Participant;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Test InteractionUse for move and resize commands.
@@ -42,8 +41,6 @@ public class InteractionUseTests extends AbstractSequenceSiriusDiagramTests {
     private static final String REPRESENTATION_TYPE = InteractionsConstants.SEQUENCE_DIAGRAM_REPRESENTATION_LABEL;
 
     private static final String PATH = SiriusTestsPlugin.PLUGIN_ID +UNIT_DATA_ROOT + "interactionUses/";
-
-    private static final String semanticModel = "interactionUses.interactions";
 
     private static final String typesSemanticModel = "types.ecore";
 
@@ -150,7 +147,7 @@ public class InteractionUseTests extends AbstractSequenceSiriusDiagramTests {
 
     @Override
     protected String getSemanticModel() {
-        return semanticModel;
+        return "interactionUses.interactions";
     }
 
     @Override

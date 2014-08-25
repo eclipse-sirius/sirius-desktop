@@ -24,9 +24,6 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 
-import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckSequenceMessageEditPartMoved;
-import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckSequenceMessageEditPartResized;
-
 /**
  * Execution Move Tests.
  * 
@@ -42,25 +39,21 @@ public class ExecutionMove3Tests extends AbstractDefaultModelSequenceTests {
 
     private static final String SESSION_FILE = "simple-messages-to-self.aird";
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getPath() {
         return PATH;
     }
 
+    @Override
     protected String getSemanticModel() {
         return MODEL;
     }
 
+    @Override
     protected String getSessionModel() {
         return SESSION_FILE;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Option<String> getDRepresentationName() {
         return Options.newSome(REPRESENTATION_NAME);
@@ -103,9 +96,6 @@ public class ExecutionMove3Tests extends AbstractDefaultModelSequenceTests {
 
     private Rectangle readMessage5Bounds;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         super.onSetUpAfterOpeningDesignerPerspective();
@@ -147,7 +137,7 @@ public class ExecutionMove3Tests extends AbstractDefaultModelSequenceTests {
         readMessage5Bounds = editor.getBounds(readMessage5Bot);
     }
 
-    private static final int NB_ENDS_SIMPLE_MESSAGES_TO_SELF = (5 * 2) + (4 * 2);
+    private static final int NB_ENDS_SIMPLE_MESSAGES_TO_SELF = 5 * 2 + 4 * 2;
 
     /**
      * Move e3 just above e1 but close enough to trigger a shift.
@@ -156,19 +146,12 @@ public class ExecutionMove3Tests extends AbstractDefaultModelSequenceTests {
         int newY = readMessage1Bounds.getCenter().y;
         int dy = newY - e3Bounds.y;
         
-        
         ICondition conditionE1 = new CheckEditPartMoved(e1Bot);
         ICondition conditionE2 = new CheckEditPartMoved(e2Bot);
         ICondition conditionE3 = new CheckEditPartMoved(e3Bot);
         ICondition conditionE4 = new CheckEditPartMoved(e4Bot);
         ICondition conditionE5 = new CheckEditPartMoved(e5Bot);
-        
-       
-        ICondition conditionReadMessage1 = new CheckSequenceMessageEditPartResized(readMessage1Bot);
-        ICondition conditionReadMessage2 = new CheckSequenceMessageEditPartMoved(readMessage2Bot);
-        ICondition conditionReadMessage4 = new CheckSequenceMessageEditPartMoved(readMessage4Bot);
-        ICondition conditionReadMessage5 = new CheckSequenceMessageEditPartMoved(readMessage5Bot);
-        
+
         e3Bot.select();
         editor.drag(e3Bot, e3Bounds.x, newY);
         
@@ -177,14 +160,6 @@ public class ExecutionMove3Tests extends AbstractDefaultModelSequenceTests {
         bot.waitUntil(conditionE3);
         bot.waitUntil(conditionE4);
         bot.waitUntil(conditionE5);
-        
-        /*
-         * Waiting conditions about MessageEditPart don't work correctly.
-         */
-//        bot.waitUntil(conditionReadMessage1);
-//        bot.waitUntil(conditionReadMessage2);
-//        bot.waitUntil(conditionReadMessage4);
-//        bot.waitUntil(conditionReadMessage5);
 
         // layout : 5 pix
         dy += 1;
@@ -206,9 +181,6 @@ public class ExecutionMove3Tests extends AbstractDefaultModelSequenceTests {
         validateOrdering(NB_ENDS_SIMPLE_MESSAGES_TO_SELF);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void tearDown() throws Exception {
         e1Bot = null;
@@ -236,5 +208,4 @@ public class ExecutionMove3Tests extends AbstractDefaultModelSequenceTests {
 
         super.tearDown();
     }
-
 }

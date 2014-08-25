@@ -19,7 +19,9 @@ import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConsta
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.CombinedFragmentEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.OperandEditPart;
+import org.eclipse.sirius.sample.interactions.CombinedFragment;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberOfDescendants;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
@@ -27,10 +29,6 @@ import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.junit.Assert;
 
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberOfDescendants;
-import org.eclipse.sirius.sample.interactions.CombinedFragment;
-import org.eclipse.sirius.sample.interactions.Operand;
 
 /**
  * Tests only zoom and creation with single/double click, others features to
@@ -50,10 +48,7 @@ public class CombinedFragmentsSingleClickCreationTests extends AbstractCombinedF
 
         SWTBotGefEditPart parentCombinedFragmentBot = firstCombinedFragmentBot;
         CombinedFragment parentCombinedFragment = firstCombinedFragment;
-        Rectangle parentCombinedFragmentBounds = firstCombinedFragmentBounds;
-
         SWTBotGefEditPart parentOperandBot = secondOperandOfFirstCombinedFragmentBot;
-        Operand parentOperand = secondOperandOfFirstCombinedFragment;
         Rectangle parentOperandBounds = secondOperandOfFirstCombinedFragmentBounds;
 
         SWTBotGefEditPart newCombinedFragmentBot;
@@ -102,10 +97,8 @@ public class CombinedFragmentsSingleClickCreationTests extends AbstractCombinedF
             // Reassign variable for next iteration
             parentCombinedFragmentBot = newCombinedFragmentBot;
             parentCombinedFragment = newCombinedFragment;
-            parentCombinedFragmentBounds = newCombinedFragmentBounds;
-
             parentOperandBot = parentCombinedFragmentBot.descendants(IsInstanceOf.instanceOf(OperandEditPart.class)).get(0);
-            parentOperand = parentCombinedFragment.getOwnedOperands().get(0);
+            parentCombinedFragment.getOwnedOperands().get(0);
             parentOperandBounds = editor.getBounds(parentOperandBot);
         }
         for (int i = NB_CFC_CREATION - 1; i >= 0; i--) {

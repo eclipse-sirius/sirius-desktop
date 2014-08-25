@@ -720,8 +720,8 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
      */
     @Override
     protected void tearDown() throws Exception {
+        TestsUtil.synchronizationWithUIThread();
         DialectUIManager.INSTANCE.closeEditor(editor, false);
-        TestsUtil.emptyEventsFromUIThread();
         super.tearDown();
     }
 }

@@ -337,7 +337,7 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
         assertNotNull("Alternate Session has not been well initialized", alternateSession);
         assertNotNull("Alternate Domain has not been well initialized", alternateSession.getTransactionalEditingDomain());
         assertNotNull("Alternate semantic model has not been well initialized", alternateSemanticModel);
-        initSirius(DESIGN_VIEWPOINT_NAME, alternateSession, alternateSemanticModel);
+        initViewpoint(DESIGN_VIEWPOINT_NAME, alternateSession, alternateSemanticModel);
         TestsUtil.synchronizationWithUIThread();
 
         // Save session 2

@@ -19,7 +19,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-
 import org.eclipse.sirius.tests.swtbot.*;
 import org.eclipse.sirius.tests.swtbot.clipboard.CustomClipboardSupportTest;
 import org.eclipse.sirius.tests.swtbot.clipboard.DisabledSiriusClipboardSupportTest;
@@ -130,6 +129,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(PortsOnNodePositionStabilityTest.class);
         suite.addTestSuite(PortLocationAfterDragAndDropTest.class);
         suite.addTestSuite(PortLocationAfterDragAndDropOnDiagramTest.class);
+        suite.addTestSuite(MoveBorderNodeTest.class);
         suite.addTestSuite(CopyPasteLayoutOfPortsWithConflictWithNotPastedPortsTest.class);
         suite.addTestSuite(CopyPasteLayoutOfPortsWithConflictWithPastedPortsTest.class);
         suite.addTestSuite(CopyPasteLayoutOfLabelOfBorderedNodeTest.class);
@@ -242,6 +242,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ExtraMappingEdgeCreationTest.class);
         suite.addTestSuite(BracketEdgeTests.class);
         suite.addTestSuite(EdgeCopyPasteLayoutTest.class);
+        suite.addTestSuite(BendpointsStabilityOnMovesTest.class);
         suite.addTestSuite(BorderedNodeCopyPastLayoutTest.class);
         suite.addTestSuite(ContainerDefaultSizeLayoutTest.class);
         suite.addTestSuite(ModifyEdgeLayoutAfterRefreshTest.class);

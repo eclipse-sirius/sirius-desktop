@@ -1075,13 +1075,13 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="&lt;%eContainer(&quot;Interaction&quot;)%>"/>
                     <parameters name="referenceName" value="ends"/>
-                    <parameters name="element" value="&lt;%self.start%>"/>
+                    <parameters name="element" value="feature:start"/>
                     <parameters name="predecessor" value="&lt;%if ($startingEndPredecessorAfter){%>&lt;%$startingEndPredecessorAfter.semanticEnd%>&lt;%}%>"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move finish end" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="&lt;%eContainer(&quot;Interaction&quot;)%>"/>
                     <parameters name="referenceName" value="ends"/>
-                    <parameters name="element" value="&lt;%self.end%>"/>
+                    <parameters name="element" value="feature:end"/>
                     <parameters name="predecessor" value="&lt;%if ($finishingEndPredecessorAfter){%>&lt;%$finishingEndPredecessorAfter.semanticEnd%>&lt;%}%>"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust execution position 2" id="org.eclipse.sirius.business.api.action.moveElement">
@@ -1095,13 +1095,13 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="&lt;%eContainer(&quot;Interaction&quot;)%>"/>
                     <parameters name="referenceName" value="ends"/>
-                    <parameters name="element" value="&lt;%self.start%>"/>
+                    <parameters name="element" value="feature:start"/>
                     <parameters name="predecessor" value="&lt;%if ($startingEndPredecessorAfter){%>&lt;%$startingEndPredecessorAfter.semanticEnd%>&lt;%}%>"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move finish end" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="&lt;%eContainer(&quot;Interaction&quot;)%>"/>
                     <parameters name="referenceName" value="ends"/>
-                    <parameters name="element" value="&lt;%self.end%>"/>
+                    <parameters name="element" value="feature:end"/>
                     <parameters name="predecessor" value="&lt;%if ($finishingEndPredecessorAfter){%>&lt;%$finishingEndPredecessorAfter.semanticEnd%>&lt;%}%>"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust state position" id="org.eclipse.sirius.business.api.action.moveElement">
@@ -1139,13 +1139,13 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="&lt;%eContainer(&quot;Interaction&quot;)%>"/>
                     <parameters name="referenceName" value="ends"/>
-                    <parameters name="element" value="&lt;%self.start%>"/>
+                    <parameters name="element" value="feature:start"/>
                     <parameters name="predecessor" value="&lt;%if ($startingEndPredecessorAfter){%>&lt;%$startingEndPredecessorAfter.semanticEnd%>&lt;%}%>"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move finish end" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="&lt;%eContainer(&quot;Interaction&quot;)%>"/>
                     <parameters name="referenceName" value="ends"/>
-                    <parameters name="element" value="&lt;%self.finish%>"/>
+                    <parameters name="element" value="feature:finish"/>
                     <parameters name="predecessor" value="&lt;%if ($finishingEndPredecessorAfter){%>&lt;%$finishingEndPredecessorAfter.semanticEnd%>&lt;%}%>"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust Interaction Use position" id="org.eclipse.sirius.business.api.action.moveElement">
@@ -1159,13 +1159,13 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="&lt;%eContainer(&quot;Interaction&quot;)%>"/>
                     <parameters name="referenceName" value="ends"/>
-                    <parameters name="element" value="&lt;%self.start%>"/>
+                    <parameters name="element" value="feature:start"/>
                     <parameters name="predecessor" value="&lt;%if ($startingEndPredecessorAfter){%>&lt;%$startingEndPredecessorAfter.semanticEnd%>&lt;%}%>"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move finish end" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="&lt;%eContainer(&quot;Interaction&quot;)%>"/>
                     <parameters name="referenceName" value="ends"/>
-                    <parameters name="element" value="&lt;%self.finish%>"/>
+                    <parameters name="element" value="feature:finish"/>
                     <parameters name="predecessor" value="&lt;%if ($finishingEndPredecessorAfter){%>&lt;%$finishingEndPredecessorAfter.semanticEnd%>&lt;%}%>"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust CombinedFragment position" id="org.eclipse.sirius.business.api.action.moveElement">
@@ -1179,7 +1179,7 @@
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Move start end" id="org.eclipse.sirius.business.api.action.moveElement">
                     <parameters name="referenceOwner" value="&lt;%eContainer(&quot;Interaction&quot;)%>"/>
                     <parameters name="referenceName" value="ends"/>
-                    <parameters name="element" value="&lt;%self.start%>"/>
+                    <parameters name="element" value="feature:start"/>
                     <parameters name="predecessor" value="&lt;%if ($startingEndPredecessorAfter){%>&lt;%$startingEndPredecessorAfter.semanticEnd%>&lt;%}%>"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool_1:ExternalJavaAction" name="Adjust Operand position" id="org.eclipse.sirius.business.api.action.moveElement">

@@ -54,8 +54,6 @@ public class SequenceDiagramElementsIdentificationTests extends AbstractSequence
 
     private static final String sessionModel = "fixture.aird";
 
-    private static final String semanticModel = "fixture.interactions";
-
     private static final String typesSemanticModel = "types.ecore";
 
     private static final String BASIC_INTERACTION_USE_DIAGRAM = "Basic Interaction Use Diagram";
@@ -73,7 +71,7 @@ public class SequenceDiagramElementsIdentificationTests extends AbstractSequence
 
     @Override
     protected String getSemanticModel() {
-        return semanticModel;
+        return "fixture.interactions";
     }
 
     @Override

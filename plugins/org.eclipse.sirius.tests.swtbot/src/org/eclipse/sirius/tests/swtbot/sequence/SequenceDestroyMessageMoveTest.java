@@ -13,14 +13,12 @@ package org.eclipse.sirius.tests.swtbot.sequence;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
+import org.eclipse.sirius.sample.interactions.Interaction;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
+import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
-
-import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
-import org.eclipse.sirius.sample.interactions.Interaction;
-import org.eclipse.sirius.sample.interactions.Message;
 
 /**
  * Test class for creation message management
@@ -35,13 +33,6 @@ public class SequenceDestroyMessageMoveTest extends AbstractDefaultModelSequence
 
     private SWTBotGefEditPart instanceRoleABot;
 
-    private SWTBotGefEditPart instanceRoleBBot;
-
-    private SWTBotGefEditPart instanceRoleCBot;
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         super.onSetUpAfterOpeningDesignerPerspective();
@@ -60,8 +51,6 @@ public class SequenceDestroyMessageMoveTest extends AbstractDefaultModelSequence
 
         // InstanceRoles
         instanceRoleABot = editor.getEditPart(LIFELINE_A);
-        instanceRoleBBot = editor.getEditPart(LIFELINE_B);
-
     }
 
     /**
@@ -70,10 +59,10 @@ public class SequenceDestroyMessageMoveTest extends AbstractDefaultModelSequence
     public void test_Move() {
         createMessage(InteractionsConstants.DESTROY_TOOL_ID, LIFELINE_A, 400, LIFELINE_B, 400);
 
-        Message destroyMessage = interaction.getMessages().get(0);
+        interaction.getMessages().get(0);
         SWTBotGefEditPart lifelineABot = instanceRoleABot.parent().descendants(IsInstanceOf.instanceOf(LifelineEditPart.class)).get(0);
         SWTBotGefConnectionEditPart destroyMessageBot = lifelineABot.sourceConnections().get(0);
-        SWTBotGefEditPart endOfLifeBot = destroyMessageBot.target();
+        destroyMessageBot.target();
 
         validateSequenceMessageCenteredOnTarget(FIRST_DESTROY_MESSAGE);
 
@@ -202,13 +191,9 @@ public class SequenceDestroyMessageMoveTest extends AbstractDefaultModelSequence
         validateSequenceMessageCenteredOnTarget(FIRST_DESTROY_MESSAGE);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void tearDown() throws Exception {
         editor.zoom(ZoomLevel.ZOOM_100);
-
         super.tearDown();
     }
 }

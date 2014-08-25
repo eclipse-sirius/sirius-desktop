@@ -40,8 +40,6 @@ public class CreateMessageTests extends AbstractSequenceSiriusDiagramTests {
 
     private static final String sessionModel = "semanticModel.aird";
 
-    private static final String semanticModel = "semanticModel.interactions";
-
     private static final String typesSemanticModel = "semanticModelTypes.ecore";
 
     private Participant participantP1;
@@ -93,7 +91,7 @@ public class CreateMessageTests extends AbstractSequenceSiriusDiagramTests {
 
     @Override
     protected String getSemanticModel() {
-        return semanticModel;
+        return "semanticModel.interactions";
     }
 
     @Override

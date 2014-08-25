@@ -61,7 +61,7 @@ public class StartupRepresentationsRegardingSelectedVpTests extends SiriusDiagra
 
         // Change viewpoint activation VP-2734 > VP-2891
         uiSession.closeEditors(false, uiSession.getEditors());
-        deactivateSirius("VP-2734");
+        deactivateViewpoint("VP-2734");
         activateViewpoint("VP-2891");
 
         // Test O editor open.
