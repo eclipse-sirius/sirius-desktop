@@ -81,11 +81,11 @@ public class TreeItemCreationToolItemProvider extends TreeItemToolItemProvider {
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((TreeItemCreationTool) object).getName();
+        String label = ((TreeItemCreationTool) object).getLabel();
         return label == null || label.length() == 0 ? getString("_UI_TreeItemCreationTool_type") : getString("_UI_TreeItemCreationTool_type") + " " + label;
     }
 
