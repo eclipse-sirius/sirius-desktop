@@ -124,7 +124,10 @@ public class NavigateToMenuContribution implements IContributionItemProvider {
                 // Sirius and avoid to have a gray "Open" item menu in Navigate
                 // menu
                 final IMenuManager navigateManager = (IMenuManager) menu.find("navigateMenu");
-                navigateManager.remove("open");
+                // if the navigate menu is changed or deleted a NPE is avoided
+                if (navigateManager != null) {
+                    navigateManager.remove("open");
+                }
                 // Add menus to open existing representations
                 final MenuManager openMenuManager = new MenuManager("Open", MENU_OPEN_REPRESENTATION_ID);
                 if (!menu.isEmpty()) {
