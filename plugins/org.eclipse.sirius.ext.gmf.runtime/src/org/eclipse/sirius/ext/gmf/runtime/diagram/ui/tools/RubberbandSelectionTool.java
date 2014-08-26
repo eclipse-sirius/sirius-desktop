@@ -29,6 +29,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Viewport;
 import org.eclipse.draw2d.ViewportUtilities;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPart;
@@ -146,20 +147,25 @@ public class RubberbandSelectionTool extends AbstractTool {
                 continue;
             }
             Rectangle r;
+            PointList pl = null;
             if (child instanceof ConnectionEditPart) {
                 // RATLC00569348 For connection, get the bounds of connection
                 // points rather than connection figure since the
                 // figure's bounds contain the bounds of all connection children
                 // and would require selection rectangle
                 // to be larger than expected in some cases
-                r = ((Connection) figure).getPoints().getBounds().getCopy();
+                pl = ((Connection) figure).getPoints().getCopy();
+                r = pl.getBounds().getCopy();
+                figure.translateToAbsolute(pl);
+                getMarqueeFeedbackFigure().translateToRelative(pl);
             } else {
                 r = figure.getBounds().getCopy();
             }
             figure.translateToAbsolute(r);
             getMarqueeFeedbackFigure().translateToRelative(r);
             if ((selectionMode == SELECTION_CONTAINED_MODE && marqueeBounds.contains(r.getTopLeft()) && marqueeBounds.contains(r.getBottomRight()))
-                    || (selectionMode == SELECTION_TOUCHED_MODE && marqueeBounds.intersects(r))) {
+                    || (selectionMode == SELECTION_TOUCHED_MODE && ((child instanceof ConnectionEditPart && pl.intersects(marqueeBounds)) || (!(child instanceof ConnectionEditPart) && marqueeBounds
+                            .intersects(r))))) {
                 newSelections.add(child);
             }
         }
