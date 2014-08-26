@@ -30,7 +30,7 @@ h4. Changes in @org.eclipse.sirius@
 h4. Changes in @org.eclipse.sirius.common@
 
 * The method @org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.getResourceSetSync(TransactionalEditingDomain)@ has been added to look for a @ResourceSetSync@ without creating a new one if no synchronizer currently exists.
-* The class @org.eclipse.sirius.common.tools.api.util.SmartAdapter@ has been removed as this mechanism proves to be inefficient. The only user of its mechanism was the @org.eclipse.sirius.tools.api.command.listener.IChangeListener@ which has also been removed.
+* The class @org.eclipse.sirius.common.tools.api.util.SmartAdapter@ has been removed as this mechanism proves to be inefficient. The only user of this mechanism was the @org.eclipse.sirius.tools.api.command.listener.IChangeListener@ which has also been removed.
 
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
