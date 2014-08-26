@@ -72,13 +72,13 @@ import org.eclipse.ui.IWorkbenchPart;
 import com.google.common.collect.Lists;
 
 /**
- * This menu contribution add a "navigate" menu in the DDiagram diagram editor.
- * This menu provides navigation links to Model elements or Source files.
+ * This menu contribution add a "open" menu in the DDiagram diagram editor. This
+ * menu provides navigation links to Model elements or Source files.
  * 
  * @author cbrun
  * 
  */
-public class NavigateToMenuContribution implements IContributionItemProvider {
+public class OpenMenuContribution implements IContributionItemProvider {
 
     private static final String OPEN_REPRESENTATION_GROUP_SEPARATOR = "openRepresentationGroup";
 
@@ -233,7 +233,7 @@ public class NavigateToMenuContribution implements IContributionItemProvider {
         for (DRepresentation representation : representations) {
             if (representation instanceof DSemanticDecorator && candidates.contains(((DSemanticDecorator) representation).getTarget())) {
                 interpreter.setVariable(navDesc.getRepresentationNameVariable().getName(), representation.getName());
-                String label = new StringBuffer("Open ").append(navDesc.getName()).append(" : ").append(representation.getName()).toString();
+                String label = new StringBuffer(navDesc.getName()).append(" ").append(representation.getName()).toString();
                 if (!StringUtil.isEmpty(navDesc.getNavigationNameExpression())) {
                     try {
                         label = interpreter.evaluateString(element.getTarget(), navDesc.getNavigationNameExpression());
@@ -281,7 +281,7 @@ public class NavigateToMenuContribution implements IContributionItemProvider {
                 representationName += " " + new IdentifiedElementQuery(((DDiagram) representation).getDescription()).getLabel();
             }
         }
-        return buildOpenRepresentationAction(session, representation, editpart, transDomain, "Open " + representationName);
+        return buildOpenRepresentationAction(session, representation, editpart, transDomain, representationName);
     }
 
     private IAction buildOpenRepresentationAction(final Session session, final DRepresentation representation, final EditPart editpart, final TransactionalEditingDomain transDomain, final String label) {

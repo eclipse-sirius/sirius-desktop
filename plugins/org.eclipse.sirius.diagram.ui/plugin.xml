@@ -489,7 +489,7 @@
   </contributionItemProvider>
   <contributionItemProvider
         checkPluginLoaded="false"
-        class="org.eclipse.sirius.diagram.ui.tools.internal.menu.NavigateToMenuContribution">
+        class="org.eclipse.sirius.diagram.ui.tools.internal.menu.OpenMenuContribution">
      <Priority name="High"/>
   </contributionItemProvider>
   <contributionItemProvider
