@@ -20,8 +20,10 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.CenteringStyle;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractEditorDialogPropertySection;
 import org.eclipse.swt.widgets.Composite;
@@ -100,6 +102,29 @@ public class EdgeStyleDescriptionCenteredSourceMappingsPropertySection extends A
     }
 
     // Start of user code user operations
+
+    @Override
+    protected boolean shouldBeReadOnly() {
+        boolean value = super.shouldBeReadOnly();
+        if (!value) {
+            value = !isActivated();
+        }
+        return value;
+    }
+
+    @Override
+    public void refresh() {
+        super.refresh();
+        updateReadOnlyStatus();
+    }
+
+    private boolean isActivated() {
+        if (eObject instanceof EdgeStyleDescription) {
+            CenteringStyle current = ((EdgeStyleDescription) eObject).getEndsCentering();
+            return current != CenteringStyle.BOTH && current != CenteringStyle.SOURCE;
+        }
+        return true;
+    }
 
     @Override
     protected List<?> getChoiceOfValues(List<?> currentValues) {
