@@ -15,7 +15,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
@@ -28,7 +27,6 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
-import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gef.handles.MoveHandle;
@@ -36,16 +34,12 @@ import org.eclipse.gef.requests.AlignmentRequest;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gef.tools.ResizeTracker;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
-import org.eclipse.gmf.runtime.common.core.util.StringStatics;
-import org.eclipse.gmf.runtime.diagram.core.commands.SetConnectionAnchorsCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.CommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.INodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableShapeEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
@@ -56,13 +50,12 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery;
-import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.MoveViewOperation;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.ShiftDirectBorderedNodesOperation;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.validators.ResizeValidator;
+import org.eclipse.sirius.diagram.ui.internal.edit.commands.ChangeBendpointsOfEdgesCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
@@ -70,12 +63,9 @@ import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfig
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
-import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.viewpoint.Style;
 
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
@@ -138,7 +128,10 @@ public class AirResizableEditPolicy extends ResizableShapeEditPolicy {
         Command originalMoveCommand = super.getMoveCommand(request);
 
         if (getHost().getParent() != null) {
-            return changeBendpointsOfEdges(getHost(), originalMoveCommand, request.getMoveDelta(), getHost().getViewer().getSelectedEditParts());
+            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(TransactionUtil.getEditingDomain(getHost().getModel()), originalMoveCommand.getLabel());
+            ctc.add(new CommandProxy(originalMoveCommand));
+            ctc.add(new ChangeBendpointsOfEdgesCommand(getHost(), new PrecisionPoint(request.getMoveDelta())));
+            return new ICommandProxy(ctc);
         } else {
             return null;
         }
@@ -155,171 +148,12 @@ public class AirResizableEditPolicy extends ResizableShapeEditPolicy {
             Rectangle newLocationAndSize = request.getTransformedRectangle(locationAndSize);
             delta = newLocationAndSize.getTopLeft().getTranslated(locationAndSize.getTopLeft().getNegated());
         }
-        // The primary selection is removed from this selected list because it
-        // is not moved.
-        List<?> movedEditParts = removePrimarySelection(getHost().getViewer().getSelectedEditParts());
-
-        return changeBendpointsOfEdges(getHost(), originalAlignCommand, delta, movedEditParts);
-    }
-
-    private List<AbstractGraphicalEditPart> removePrimarySelection(List<?> selectedEditParts) {
-        List<AbstractGraphicalEditPart> result = Lists.newArrayList();
-        Iterable<AbstractGraphicalEditPart> selectedEditPartsWithoutPrimary = Iterables.filter(Iterables.filter(selectedEditParts, AbstractGraphicalEditPart.class),
-                new Predicate<AbstractGraphicalEditPart>() {
-                    @Override
-                    public boolean apply(AbstractGraphicalEditPart input) {
-                        return input.getSelected() != EditPart.SELECTED_PRIMARY;
-                    }
-                });
-        Iterables.addAll(result, selectedEditPartsWithoutPrimary);
-        return result;
-    }
-
-    /**
-     * Add commands to the <code>originalCommand</code> to adapt the bendpoints
-     * to avoid unexpected moves of segment.<BR>
-     * For oblique and rectilinear edges, only the last segment must move.
-     * 
-     * @param host
-     *            the <i>host</i> EditPart on which this policy is installed.
-     * @param originalCommand
-     *            The command to complete with the potential bendpoints impact.
-     * @param moveDelta
-     *            The move delta
-     * @param movedEditParts
-     *            Selected edit parts that will be moved
-     * @return the completed command
-     */
-    public static Command changeBendpointsOfEdges(EditPart host, Command originalCommand, Point moveDelta, List<?> movedEditParts) {
-        CompoundCommand result = new CompoundCommand(originalCommand.getLabel());
-        // It's possible that host is not in the list of movedEditParts in case
-        // of "Arrange Selection" action. Indeed, in this case, the arrange
-        // selection launch a "false" arrange all (see
-        // ArrangeSelectionLayoutProvider.layoutEditParts(List, IAdaptable) for
-        // more details). In this case we do not consider the move given it
-        // will be "revert" later by the "PinnedElementsHandler".
-        if (movedEditParts.contains(host) && host instanceof AbstractGraphicalEditPart) {
-            List<AbstractGraphicalEditPart> allMovedEditParts = getMovedChildren(Iterables.filter(movedEditParts, AbstractGraphicalEditPart.class), true);
-            AbstractGraphicalEditPart currentMovedEditPart = (AbstractGraphicalEditPart) host;
-            List<AbstractGraphicalEditPart> currentMovedEditPartAndItsChildren = getMovedChildren(currentMovedEditPart, true);
-            final TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(host.getModel());
-            for (AbstractGraphicalEditPart movedEditPart : currentMovedEditPartAndItsChildren) {
-                for (ConnectionEditPart connectionEditPart : Iterables.filter(movedEditPart.getSourceConnections(), ConnectionEditPart.class)) {
-                    Option<? extends Command> optionalCommand = getBendpointsChangedCommand(transactionalEditingDomain, moveDelta, connectionEditPart, allMovedEditParts, true);
-                    if (optionalCommand.some()) {
-                        if (result.isEmpty()) {
-                            result.add(originalCommand);
-                        }
-                        result.add(optionalCommand.get());
-                    }
-                }
-                for (ConnectionEditPart connectionEditPart : Iterables.filter(movedEditPart.getTargetConnections(), ConnectionEditPart.class)) {
-                    Option<? extends Command> optionalCommand = getBendpointsChangedCommand(transactionalEditingDomain, moveDelta, connectionEditPart, allMovedEditParts, false);
-                    if (optionalCommand.some()) {
-                        if (result.isEmpty()) {
-                            result.add(originalCommand);
-                        }
-                        result.add(optionalCommand.get());
-                    }
-                }
-            }
-        }
-        if (result.isEmpty()) {
-            return originalCommand;
-        } else {
-            return result;
-        }
-    }
-
-    private static List<AbstractGraphicalEditPart> getMovedChildren(Iterable<AbstractGraphicalEditPart> parentEditParts, boolean addSelf) {
-        List<AbstractGraphicalEditPart> result = Lists.newArrayList();
-        for (AbstractGraphicalEditPart abstractGraphicalEditPart : parentEditParts) {
-            result.addAll(getMovedChildren(abstractGraphicalEditPart, true));
-        }
-        return result;
-    }
-
-    private static List<AbstractGraphicalEditPart> getMovedChildren(AbstractGraphicalEditPart parentEditPart, boolean addSelf) {
-        List<AbstractGraphicalEditPart> result = Lists.newArrayList();
-        if (addSelf) {
-            result.add(parentEditPart);
-        }
-        result.addAll(getMovedChildren(Iterables.filter(parentEditPart.getChildren(), AbstractGraphicalEditPart.class), true));
-        return result;
-    }
-
-    /**
-     * Compute the command needed to adapt the bendpoints of the
-     * <code>connectionEditPart</code> if needed.
-     * 
-     * @param transactionalEditingDomain
-     *            the editing domain through which model changes are made
-     * @param moveDelta
-     *            The move delta
-     * @param connectionEditPart
-     *            the connectionEditPart to deal with
-     * @param allMovedEditParts
-     *            This list is used to check if the other end (source or target)
-     *            is also moved. In this case, there is nothing to do for the
-     *            last segment of oblique and rectilinear edges. If empty all
-     *            parts of diagram are considered as moved (case of arrange all)
-     * @param sourceMove
-     *            true if the source of the <code>connectionEditPart</code> is
-     *            moved, false if this is the target.
-     * @return An optional command that computes the new bendpoints of the
-     *         <code>connectionEditPart</code> if needed.
-     */
-    protected static Option<? extends Command> getBendpointsChangedCommand(TransactionalEditingDomain transactionalEditingDomain, Point moveDelta, ConnectionEditPart connectionEditPart,
-            List<AbstractGraphicalEditPart> allMovedEditParts, boolean sourceMove) {
-        Option<? extends Command> result = Options.newNone();
-        Connection connectionFigure = connectionEditPart.getConnectionFigure();
-        // Check that this connectionEditPart is orthogonal tree branch and is a
-        // layout component
-        ConnectionEditPartQuery connectionEditPartQuery = new ConnectionEditPartQuery(connectionEditPart);
-        if (new ConnectionQuery(connectionFigure).isOrthogonalTreeBranch(connectionFigure.getPoints()) && connectionEditPartQuery.isLayoutComponent()) {
-            CompoundCommand command = new CompoundCommand("Map GMF to Draw2D");
-
-            SetConnectionAnchorsCommand setConnectionAnchorsCommand = new SetConnectionAnchorsCommand(transactionalEditingDomain, "Map GMF anchor to Draw2D anchor");
-            setConnectionAnchorsCommand.setEdgeAdaptor(connectionEditPart);
-            setConnectionAnchorsCommand.setNewSourceTerminal(((INodeEditPart) connectionEditPart.getSource()).mapConnectionAnchorToTerminal(connectionFigure.getSourceAnchor()));
-            setConnectionAnchorsCommand.setNewTargetTerminal(((INodeEditPart) connectionEditPart.getTarget()).mapConnectionAnchorToTerminal(connectionFigure.getTargetAnchor()));
-            command.add(new ICommandProxy(setConnectionAnchorsCommand));
-
-            SetConnectionBendpointsAccordingToDraw2DCommand setConnectionBendpointsCommand = new SetConnectionBendpointsAccordingToDraw2DCommand(transactionalEditingDomain);
-            setConnectionBendpointsCommand.setLabel("Map GMF points to Draw2D points");
-            setConnectionBendpointsCommand.setSourceMove(sourceMove);
-            setConnectionBendpointsCommand.setMoveDelta(new PrecisionPoint(moveDelta));
-            setConnectionBendpointsCommand.setEdgeAdapter(connectionEditPart);
-            command.add(new ICommandProxy(setConnectionBendpointsCommand));
-            result = Options.newSome(command);
-        } else if (connectionEditPartQuery.isEdgeWithObliqueRoutingStyle() || connectionEditPartQuery.isEdgeWithRectilinearRoutingStyle()) {
-            if (!allMovedEditParts.isEmpty()) {
-                if ((sourceMove && !allMovedEditParts.contains(connectionEditPart.getTarget())) || (!sourceMove && !allMovedEditParts.contains(connectionEditPart.getSource()))) {
-                    SetConnectionBendpointsAccordingToExtremityMoveCommmand setConnectionBendpointsCommand = new SetConnectionBendpointsAccordingToExtremityMoveCommmand(transactionalEditingDomain);
-                    setConnectionBendpointsCommand.setSourceMove(sourceMove);
-                    setConnectionBendpointsCommand.setMoveDelta(new PrecisionPoint(moveDelta));
-                    setConnectionBendpointsCommand.setEdgeAdapter(connectionEditPart);
-                    result = Options.newSome(new ICommandProxy(setConnectionBendpointsCommand));
-                }
-            }
-
-            if (result.some()) {
-                CompoundCommand command = new CompoundCommand("Map GMF to Draw2D");
-                // Reset the connection anchor source and target considering it
-                // can be wrongly modified by the arrange selection (see
-                // ArrangeSelectionLayoutProvider.layoutEditParts(List,
-                // IAdaptable) and previous comment in changeBendpointsOfEdges
-                // for more details)
-                SetConnectionAnchorsCommand setConnectionAnchorsCommand = new SetConnectionAnchorsCommand(transactionalEditingDomain, StringStatics.BLANK);
-                setConnectionAnchorsCommand.setEdgeAdaptor(connectionEditPart);
-                setConnectionAnchorsCommand.setNewSourceTerminal(((INodeEditPart) connectionEditPart.getSource()).mapConnectionAnchorToTerminal(connectionFigure.getSourceAnchor()));
-                setConnectionAnchorsCommand.setNewTargetTerminal(((INodeEditPart) connectionEditPart.getTarget()).mapConnectionAnchorToTerminal(connectionFigure.getTargetAnchor()));
-                command.add(new ICommandProxy(setConnectionAnchorsCommand));
-                command.add(result.get());
-                result = Options.newSome(command);
-            }
-        }
-        return result;
+        // The primary selection is ignored because it is not moved (it is the
+        // reference used to align other selected edit parts).
+        CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(TransactionUtil.getEditingDomain(getHost().getModel()), originalAlignCommand.getLabel());
+        ctc.add(new CommandProxy(originalAlignCommand));
+        ctc.add(new ChangeBendpointsOfEdgesCommand(getHost(), new PrecisionPoint(delta), true));
+        return new ICommandProxy(ctc);
     }
 
     /**

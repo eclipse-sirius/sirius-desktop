@@ -28,6 +28,7 @@ import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.EditPartViewer.Conditional;
@@ -38,6 +39,7 @@ import org.eclipse.gef.handles.MoveHandle;
 import org.eclipse.gef.handles.ResizeHandle;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
+import org.eclipse.gmf.runtime.diagram.ui.commands.CommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderItemEditPart;
@@ -50,6 +52,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableEditPolicyEx;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
+import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.Node;
@@ -62,6 +65,7 @@ import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
+import org.eclipse.sirius.diagram.ui.internal.edit.commands.ChangeBendpointsOfEdgesCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
@@ -617,7 +621,11 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
 
             PrecisionPoint delta = new PrecisionPoint(realLocation.getTopLeft().getTranslated(borderItemEP.getFigure().getBounds().getTopLeft().getNegated()));
             GraphicalHelper.applyZoomOnPoint((IGraphicalEditPart) getHost(), delta);
-            return AirResizableEditPolicy.changeBendpointsOfEdges(getHost(), originalMoveCommand, delta, getHost().getViewer().getSelectedEditParts());
+
+            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(TransactionUtil.getEditingDomain(getHost().getModel()), originalMoveCommand.getLabel());
+            ctc.add(new CommandProxy(originalMoveCommand));
+            ctc.add(new ChangeBendpointsOfEdgesCommand(getHost(), delta));
+            return new ICommandProxy(ctc);
         }
         return null;
     }
