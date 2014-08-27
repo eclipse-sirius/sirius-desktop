@@ -193,7 +193,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
                     addRefreshTask(diagramElement, result, tool);
                     cmd = new NoNullResourceCommand(result, diagramElement);
                 } else {
-                    cmd = buildDeleteDiagramElementCommandWithoutTool(result);
+                    cmd = buildDeleteDiagramElementCommandWithoutTool(result, allSemanticElements);
                 }
             }
         }
@@ -268,11 +268,9 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
         return result;
     }
 
-    private Command buildDeleteDiagramElementCommandWithoutTool(final DCommand result) {
+    private Command buildDeleteDiagramElementCommandWithoutTool(final DCommand result, Set<EObject> allSemanticElements) {
         Command cmd;
 
-        final Set<EObject> allSemanticElements = getSemanticElementsToDestroy(diagramElement);
-        // allSemanticElements.add(diagramElement.getTarget());
         if (allSemanticElements.isEmpty()) {
             // Do not return unexcutable command, actions will be deactivated
             // when an element is not deletable, here the result needs to be
