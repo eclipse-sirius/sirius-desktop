@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.styles;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -74,6 +75,9 @@ public final class StyleConfigurationRegistry extends SessionManagerListener.Stu
     /** Map of styles to StyleConfiguration. */
     private final Map<StyleWrapper, StyleConfiguration> styleToConfig = new WeakHashMap<StyleWrapper, StyleConfiguration>();
 
+    /** Cache of the logical arguments and result of the previous invocation. */
+    private WeakReference<Invocation> lastInvocation;
+
     /**
      * Avoid instantiation.
      */
@@ -115,11 +119,25 @@ public final class StyleConfigurationRegistry extends SessionManagerListener.Stu
 
     @Override
     public StyleConfiguration getStyleConfiguration(final DiagramElementMapping vpElementMapping, final Style style) {
-        final StyleConfiguration result;
+        StyleConfiguration result = null;
         DslCommonPlugin.PROFILER.startWork(GET_CONFIG);
         if (style != null) {
-            final StyleWrapper styleWrapper = new StyleWrapper(vpElementMapping, style.getDescription());
-            result = getStyleConfiguration(styleWrapper, style);
+            // Fast path: for repeated calls with the same mapping & style
+            // description (very common case), avoid the whole overhead of
+            // StyleWrapper and its costly hashCode() computation.
+            StyleDescription styleDescription = style.getDescription();
+            if (lastInvocation != null) {
+                Invocation inv = lastInvocation.get();
+                if (inv != null && inv.matches(vpElementMapping, styleDescription)) {
+                    result = inv.configuration;
+                }
+            }
+            if (result == null) {
+                // Slow path
+                StyleWrapper styleWrapper = new StyleWrapper(vpElementMapping, styleDescription);
+                result = getStyleConfiguration(styleWrapper, style);
+                lastInvocation = new WeakReference<StyleConfigurationRegistry.Invocation>(new Invocation(vpElementMapping, styleDescription, result));
+            }
         } else {
             result = StyleConfigurationRegistry.DEFAULT_CONFIGURATION;
         }
@@ -141,7 +159,7 @@ public final class StyleConfigurationRegistry extends SessionManagerListener.Stu
     private StyleConfiguration getStyleConfiguration(final StyleWrapper styleWrapper, final Style style) {
         StyleConfiguration styleConfiguration = this.styleToConfig.get(styleWrapper);
         if (styleConfiguration == null) {
-            styleConfiguration = createStyleConfiguration(styleWrapper.getVpElementMapping(), style);
+            styleConfiguration = createStyleConfiguration(styleWrapper.vpElementMapping, style);
             this.styleToConfig.put(styleWrapper, styleConfiguration);
         }
         return styleConfiguration;
@@ -210,6 +228,31 @@ public final class StyleConfigurationRegistry extends SessionManagerListener.Stu
     }
 
     /**
+     * Encapsulate the (logical) parameters and result of a single invocation to
+     * getStyleConfiguration(). Used to optimize the common case where
+     * getStyleConfiguration() will be called many times in a row with different
+     * Style instances, but all pointing to the same StyleDescription (the
+     * actual value relevant to the computation of the result).
+     */
+    private static final class Invocation {
+        DiagramElementMapping elementMapping;
+
+        StyleDescription styleDescription;
+
+        StyleConfiguration configuration;
+
+        Invocation(DiagramElementMapping mapping, StyleDescription styleDescription, StyleConfiguration configuration) {
+            this.elementMapping = mapping;
+            this.styleDescription = styleDescription;
+            this.configuration = configuration;
+        }
+
+        boolean matches(DiagramElementMapping mapping, StyleDescription styleDesc) {
+            return this.elementMapping == mapping && this.styleDescription == styleDesc;
+        }
+    }
+
+    /**
      * This class wraps a {@link DiagramElementMapping} and {@link Style} to
      * redefine the equals and hashCode methods.
      * 
@@ -217,14 +260,14 @@ public final class StyleConfigurationRegistry extends SessionManagerListener.Stu
      */
     private static class StyleWrapper {
 
+        /** The viewpoint element mapping. */
+        final DiagramElementMapping vpElementMapping;
+
         /** The style description. */
         private final StyleDescription style;
 
-        /** The viewpoint element mapping. */
-        private final DiagramElementMapping vpElementMapping;
-
         /** The cached hashCode. */
-        private Integer hashCode;
+        private final int hashCode;
 
         /**
          * Create a new {@link StyleWrapper}.
@@ -237,72 +280,38 @@ public final class StyleConfigurationRegistry extends SessionManagerListener.Stu
         public StyleWrapper(final DiagramElementMapping vpElementMapping, final StyleDescription styleDescription) {
             this.vpElementMapping = vpElementMapping;
             this.style = styleDescription;
+            this.hashCode = computeHashCode();
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#hashCode()
-         */
         @Override
         public int hashCode() {
-            if (hashCode == null) {
-                final int prime = 31;
-                int result = 1;
-                result = prime * result + ((style == null) ? 0 : EcoreUtil.getURI(style).hashCode());
-                result = prime * result + ((vpElementMapping == null) ? 0 : EcoreUtil.getURI(vpElementMapping).hashCode());
-                hashCode = Integer.valueOf(result);
-            }
-            return hashCode.intValue();
+            return hashCode;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#equals(java.lang.Object)
-         */
+        protected int computeHashCode() {
+            final int prime = 31;
+            int result = 1;
+            result = prime * result + ((style == null) ? 0 : EcoreUtil.getURI(style).hashCode());
+            result = prime * result + ((vpElementMapping == null) ? 0 : EcoreUtil.getURI(vpElementMapping).hashCode());
+            return result;
+        }
+
         @Override
         public boolean equals(final Object obj) {
             if (obj instanceof StyleWrapper) {
-                final StyleWrapper styleWrapper = (StyleWrapper) obj;
-                boolean areEquals;
-                if (styleWrapper.style == null || this.style == null) {
-                    areEquals = styleWrapper.style == this.style;
-                } else {
-                    areEquals = EqualityHelper.areEquals(this.style, styleWrapper.style);
-                }
-                boolean result = false;
-                if (styleWrapper.vpElementMapping == null || this.vpElementMapping == null) {
-                    result = areEquals && styleWrapper.vpElementMapping == this.vpElementMapping;
-                } else {
-                    result = areEquals && EqualityHelper.areEquals(styleWrapper.vpElementMapping, this.vpElementMapping);
-                }
-                return result;
+                StyleWrapper styleWrapper = (StyleWrapper) obj;
+                return EqualityHelper.areEquals(this.style, styleWrapper.style) && EqualityHelper.areEquals(styleWrapper.vpElementMapping, this.vpElementMapping);
+            } else {
+                return false;
             }
-            return false;
         }
-
-        /**
-         * Return the vpElementMapping.
-         * 
-         * @return the vpElementMapping.
-         */
-        public DiagramElementMapping getVpElementMapping() {
-            return this.vpElementMapping;
-        }
-
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.session.SessionManagerListener#viewpointDeselected(org.eclipse.sirius.viewpoint.description.Viewpoint)
-     */
     @Override
-    public void viewpointDeselected(final Viewpoint deselectedSirius) {
-        final Set<StyleWrapper> styleWrappersToDelete = new HashSet<StyleWrapper>();
+    public void viewpointDeselected(Viewpoint deselectedSirius) {
+        Set<StyleWrapper> styleWrappersToDelete = new HashSet<StyleWrapper>();
         for (StyleWrapper wrapper : styleToConfig.keySet()) {
-            if (EcoreUtil.isAncestor(deselectedSirius, wrapper.getVpElementMapping())) {
+            if (EcoreUtil.isAncestor(deselectedSirius, wrapper.vpElementMapping)) {
                 styleWrappersToDelete.add(wrapper);
             }
         }
