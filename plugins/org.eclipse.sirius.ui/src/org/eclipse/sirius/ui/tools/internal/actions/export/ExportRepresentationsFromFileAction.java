@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.util.URI;
@@ -71,58 +72,62 @@ public class ExportRepresentationsFromFileAction implements IObjectActionDelegat
 
         final Shell shell = Display.getCurrent().getActiveShell();
         final IPath targetPath = this.sessionResourceFile.getParent().getLocation();
+        final URI sessionResourceURI = URI.createPlatformResourceURI(sessionResourceFile.getFullPath().toOSString(), true);
+        Session session = SessionManager.INSTANCE.getSession(sessionResourceURI, new SubProgressMonitor(new NullProgressMonitor(), 1));
 
-        final ExportSeveralRepresentationsAsImagesDialog dialog = new ExportSeveralRepresentationsAsImagesDialog(shell, targetPath);
-
-        if (dialog.open() == Window.CANCEL) {
-            dialog.close();
-            return;
-        }
-
-        final IPath outputPath = dialog.getOutputPath();
-        final ImageFileFormat imageFormat = dialog.getImageFormat();
-        final boolean exportToHtml = dialog.isExportToHtml();
-
-        IRunnableWithProgress exportAllRepresentationsRunnable = new WorkspaceModifyOperation() {
-
-            @Override
-            protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException {
-                Session session = null;
-                boolean isOpen = false;
-                try {
-                    monitor.beginTask("Export all representations to images", 10);
-                    URI sessionResourceURI = URI.createPlatformResourceURI(sessionResourceFile.getFullPath().toOSString(), true);
-                    session = SessionManager.INSTANCE.getSession(sessionResourceURI, new SubProgressMonitor(monitor, 1));
-                    isOpen = session.isOpen();
-                    if (!isOpen) {
-                        session.open(new SubProgressMonitor(monitor, 1));
-                    }
-
-                    Collection<DRepresentation> dRepresentationsToExportAsImage = DialectManager.INSTANCE.getAllRepresentations(session);
-                    ExportAction exportAction = new ExportAction(session, dRepresentationsToExportAsImage, outputPath, imageFormat, exportToHtml);
-                    exportAction.run(new SubProgressMonitor(monitor, 7));
-
-                } finally {
-                    if (!isOpen && session != null) {
-                        session.close(new SubProgressMonitor(monitor, 1));
-                    }
-                    monitor.done();
-                }
+        final Collection<DRepresentation> dRepresentationsToExportAsImage = DialectManager.INSTANCE.getAllRepresentations(session);
+        if (!dRepresentationsToExportAsImage.isEmpty()) {
+            final ExportSeveralRepresentationsAsImagesDialog dialog = new ExportSeveralRepresentationsAsImagesDialog(shell, targetPath);
+            if (dialog.open() == Window.CANCEL) {
+                dialog.close();
+                return;
             }
-        };
 
-        final ProgressMonitorDialog pmd = new ProgressMonitorDialog(shell);
-        try {
-            pmd.run(false, false, exportAllRepresentationsRunnable);
-        } catch (final InvocationTargetException e) {
-            SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getLocalizedMessage(), e));
-            MessageDialog.openError(shell, "Error", e.getTargetException().getMessage());
-        } catch (final InterruptedException e) {
-            SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getLocalizedMessage(), e));
-            MessageDialog.openInformation(shell, "Cancelled", e.getMessage());
-        } finally {
-            pmd.close();
+            final IPath outputPath = dialog.getOutputPath();
+            final ImageFileFormat imageFormat = dialog.getImageFormat();
+            final boolean exportToHtml = dialog.isExportToHtml();
 
+            IRunnableWithProgress exportAllRepresentationsRunnable = new WorkspaceModifyOperation() {
+
+                @Override
+                protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException {
+                    Session session = null;
+                    boolean isOpen = false;
+                    try {
+                        monitor.beginTask("Export all representations to images", 10);
+                        session = SessionManager.INSTANCE.getSession(sessionResourceURI, new SubProgressMonitor(monitor, 1));
+                        isOpen = session.isOpen();
+                        if (!isOpen) {
+                            session.open(new SubProgressMonitor(monitor, 1));
+                        }
+
+                        ExportAction exportAction = new ExportAction(session, dRepresentationsToExportAsImage, outputPath, imageFormat, exportToHtml);
+                        exportAction.run(new SubProgressMonitor(monitor, 7));
+
+                    } finally {
+                        if (!isOpen && session != null) {
+                            session.close(new SubProgressMonitor(monitor, 1));
+                        }
+                        monitor.done();
+                    }
+                }
+            };
+
+            final ProgressMonitorDialog pmd = new ProgressMonitorDialog(shell);
+            try {
+                pmd.run(false, false, exportAllRepresentationsRunnable);
+            } catch (final InvocationTargetException e) {
+                SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getLocalizedMessage(), e));
+                MessageDialog.openError(shell, "Error", e.getTargetException().getMessage());
+            } catch (final InterruptedException e) {
+                SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getLocalizedMessage(), e));
+                MessageDialog.openInformation(shell, "Cancelled", e.getMessage());
+            } finally {
+                pmd.close();
+
+            }
+        } else {
+            MessageDialog.openInformation(Display.getCurrent().getActiveShell(), "Export representations", "The selected session do not contain any representation to export.");
         }
 
     }

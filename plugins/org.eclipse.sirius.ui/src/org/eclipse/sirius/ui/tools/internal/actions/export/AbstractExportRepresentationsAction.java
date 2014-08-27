@@ -70,7 +70,7 @@ public abstract class AbstractExportRepresentationsAction extends Action {
      * before exporting export the diagrams.
      */
     @Override
-    public final void run() {
+    public void run() {
         Collection<DRepresentation> collectedRepresentations = getDRepresentationToExport();
         Iterable<DRepresentation> dRepresentationsToExport = Iterables.filter(collectedRepresentations, Predicates.notNull());
         if (!Iterables.isEmpty(dRepresentationsToExport)) {

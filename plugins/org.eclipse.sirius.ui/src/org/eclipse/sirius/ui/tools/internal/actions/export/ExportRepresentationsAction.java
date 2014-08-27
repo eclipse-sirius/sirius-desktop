@@ -11,18 +11,26 @@
 package org.eclipse.sirius.ui.tools.internal.actions.export;
 
 import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFormat;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * Action to export representations as images.
@@ -40,6 +48,8 @@ public class ExportRepresentationsAction extends AbstractExportRepresentationsAc
 
     private final Session session;
 
+    private Collection<EObject> selectedEObjects;
+
     private Collection<DRepresentation> selectedRepresentations;
 
     /**
@@ -47,27 +57,51 @@ public class ExportRepresentationsAction extends AbstractExportRepresentationsAc
      * 
      * @param session
      *            the current {@link Session}.
+     * @param selectedEObjects
+     *            the selected semantic elements.
      * @param selectedRepresentations
      *            the selected {@link DRepresentation}.
      */
-    public ExportRepresentationsAction(final Session session, final Collection<DRepresentation> selectedRepresentations) {
+    public ExportRepresentationsAction(Session session, Collection<EObject> selectedEObjects, Collection<DRepresentation> selectedRepresentations) {
         super(SiriusEditPlugin.INSTANCE.getString("exportRepresentationsAsImagesActionLabel"), AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/image.gif"));
         this.session = session;
+        this.selectedEObjects = selectedEObjects;
         this.selectedRepresentations = selectedRepresentations;
     }
 
     @Override
-    protected Collection<DRepresentation> getDRepresentationToExport() {
-        return Lists.newArrayList(Iterables.filter(selectedRepresentations, exportableRepresentation));
+    public void run() {
+        if (!getDRepresentationToExport().isEmpty()) {
+            super.run();
+        } else {
+            MessageDialog.openInformation(Display.getCurrent().getActiveShell(), "Export representations", "The selected elements do not contain any representation to export.");
+        }
     }
 
     @Override
-    public boolean isEnabled() {
-        return super.isEnabled() && !Iterables.isEmpty(Iterables.filter(selectedRepresentations, exportableRepresentation));
+    protected Collection<DRepresentation> getDRepresentationToExport() {
+        Collection<DRepresentation> dRepresentationsToExport = Sets.newLinkedHashSet(selectedRepresentations);
+        if (dRepresentationsToExport.isEmpty()) {
+            dRepresentationsToExport.addAll(computeAllRepresentationsUnderSemantic());
+        }
+        return Lists.newArrayList(Iterables.filter(dRepresentationsToExport, exportableRepresentation));
     }
 
     @Override
     protected Session getSession(DRepresentation representation) {
         return session;
+    }
+
+    private Collection<DRepresentation> computeAllRepresentationsUnderSemantic() {
+        Set<DRepresentation> result = new LinkedHashSet<DRepresentation>();
+        for (EObject eObject : selectedEObjects) {
+            result.addAll(DialectManager.INSTANCE.getRepresentations(eObject, session));
+            Iterator<EObject> iter = eObject.eAllContents();
+            while (iter.hasNext()) {
+                EObject child = iter.next();
+                result.addAll(DialectManager.INSTANCE.getRepresentations(child, session));
+            }
+        }
+        return result;
     }
 }

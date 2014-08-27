@@ -14,7 +14,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -314,30 +313,13 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
                 addActionToMenu(menu, GROUP_REORGANIZE, buildExtractRepresentationsAction(session, selectedRepresentations));
             }
 
-            Collection<DRepresentation> dRepresentationsToExport = Sets.newLinkedHashSet(selectedRepresentations);
-            if (dRepresentationsToExport.isEmpty()) {
-                dRepresentationsToExport.addAll(getAllRepresentationsUnderSemantic(session, selectedEObjects));
-            }
-            ExportRepresentationsAction actionExportImage = new ExportRepresentationsAction(session, dRepresentationsToExport);
+            ExportRepresentationsAction actionExportImage = new ExportRepresentationsAction(session, selectedEObjects, selectedRepresentations);
             addActionToMenu(menu, GROUP_PORT, actionExportImage);
         }
 
         if (!selectedRepresentations.isEmpty()) {
             addActionToMenu(menu, GROUP_EDIT, buildDeleteRepresentationAction(selectedRepresentations));
         }
-    }
-
-    private Collection<DRepresentation> getAllRepresentationsUnderSemantic(Session session, final Collection<EObject> selectedEObjects) {
-        Set<DRepresentation> result = new LinkedHashSet<DRepresentation>();
-        for (EObject eObject : selectedEObjects) {
-            result.addAll(DialectManager.INSTANCE.getRepresentations(eObject, session));
-            Iterator<EObject> iter = eObject.eAllContents();
-            while (iter.hasNext()) {
-                EObject child = iter.next();
-                result.addAll(DialectManager.INSTANCE.getRepresentations(child, session));
-            }
-        }
-        return result;
     }
 
     private void computeRepresentationsResourcesContextMenu(IMenuManager menu, final Collection<AnalysisResourceItem> diagramResources) {
