@@ -40,6 +40,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.Feature
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.business.internal.helper.task.CreateTableTask;
 import org.eclipse.sirius.table.metamodel.table.DCell;
@@ -72,6 +73,8 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
+
+import com.google.common.collect.Iterables;
 
 /**
  * A command factory that creates commands that can be undone.
@@ -139,7 +142,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
                         addSemanticElementsToDestroy(element, allSemanticElements);
 
                         /*
-                         * Now delete all the table corresponding to the
+                         * Now delete all the table elements corresponding to the
                          * semantic elements to delete
                          */
                         if (parentTable != null) {
@@ -444,13 +447,8 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
         } else if (element instanceof DTargetColumn) {
             semantic = ((DTargetColumn) element).getTarget();
         }
-        if (semantic != null) {
-            elementsToDestroy.add(semantic);
-            final Iterator<EObject> iterContent = semantic.eAllContents();
-            while (iterContent.hasNext()) {
-                final EObject current = iterContent.next();
-                elementsToDestroy.add(current);
-            }
+        if (semantic != null && !elementsToDestroy.contains(semantic)) {
+            Iterables.addAll(elementsToDestroy, AllContents.of(semantic, true));
         }
         return elementsToDestroy;
     }

@@ -40,6 +40,7 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.NoNullResourceCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
@@ -321,22 +322,21 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
      */
     private Set<EObject> getSemanticElementsToDestroy(final DDiagramElement currentDiagramElement) {
         Set<EObject> elementsToDestroy = Sets.newHashSet();
+        appendSemanticElementsToDestroy(currentDiagramElement, elementsToDestroy);
+        return elementsToDestroy;
+    }
+
+    private void appendSemanticElementsToDestroy(final DDiagramElement currentDiagramElement, Set<EObject> elementsToDestroy) {
         for (final EObject semantic : currentDiagramElement.getSemanticElements()) {
-            if (semantic != null) {
-                elementsToDestroy.add(semantic);
-                elementsToDestroy.addAll(getAllChildren(semantic));
+            if (semantic != null && !elementsToDestroy.contains(semantic)) {
+                Iterables.addAll(elementsToDestroy, AllContents.of(semantic, true));
             }
         }
         for (final EObject child : currentDiagramElement.eContents()) {
             if (child instanceof DDiagramElement) {
-                elementsToDestroy.addAll(getSemanticElementsToDestroy((DDiagramElement) child));
+                appendSemanticElementsToDestroy((DDiagramElement) child, elementsToDestroy);
             }
         }
-        return elementsToDestroy;
-    }
-
-    private Set<EObject> getAllChildren(final EObject semanticElement) {
-        return Sets.newHashSet(semanticElement.eAllContents());
     }
 
     /**

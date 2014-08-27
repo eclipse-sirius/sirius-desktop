@@ -39,6 +39,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariabl
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.tools.api.command.AbstractCommandFactory;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.InvalidPermissionCommand;
@@ -68,6 +69,7 @@ import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
 /**
@@ -144,7 +146,7 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
                         addSemanticElementsToDestroy(element, allSemanticElements);
 
                         /*
-                         * Now delete all the treen elements corresponding to
+                         * Now delete all the tree elements corresponding to
                          * the semantic elements to delete
                          */
                         if (parentTree != null) {
@@ -176,13 +178,8 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
         if (element instanceof DTreeItem) {
             semantic = ((DTreeItem) element).getTarget();
         }
-        if (semantic != null) {
-            elementsToDestroy.add(semantic);
-            final Iterator<EObject> iterContent = semantic.eAllContents();
-            while (iterContent.hasNext()) {
-                final EObject current = iterContent.next();
-                elementsToDestroy.add(current);
-            }
+        if (semantic != null && !elementsToDestroy.contains(semantic)) {
+            Iterables.addAll(elementsToDestroy, AllContents.of(semantic, true));
         }
         return elementsToDestroy;
     }
