@@ -18,10 +18,8 @@ import java.util.Set;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.helper.task.DeleteEObjectTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
-import org.eclipse.sirius.business.api.helper.task.TaskExecutor;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
@@ -39,7 +37,7 @@ import com.google.common.collect.Sets;
  * 
  * @author ymortier
  */
-public class DeleteDRepresentationElementsTask extends AbstractCommandTask {
+public class DeleteDRepresentationElementsTask extends AbstractCompoundTask {
 
     /** the previous command. */
     private DCommand cmd;
@@ -78,9 +76,10 @@ public class DeleteDRepresentationElementsTask extends AbstractCommandTask {
      * 
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#execute()
      */
-    public void execute() {
+    protected List<ICommandTask> prepareSubTasks() {
         /*
-         * Now delete all the DSemanticDecorators corresponding to the semantic elements
+         * Now delete all the DSemanticDecorators corresponding to the semantic
+         * elements
          */
         final List<ICommandTask> tasks = new ArrayList<ICommandTask>();
         EObject root = null;
@@ -105,39 +104,7 @@ public class DeleteDRepresentationElementsTask extends AbstractCommandTask {
         for (DSemanticDecorator semDec : vpElements) {
             tasks.add(new DeleteEObjectTask(semDec, modelAccessor));
         }
-
-        if (TaskExecutor.canExecute(tasks)) {
-            TaskExecutor.execute(tasks);
-            if (this.executedTask != null) {
-                this.executedTask.addAll(tasks);
-            } else {
-                this.executedTask = tasks;
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.AbstractCommandTask#undo()
-     */
-    @Override
-    public void undo() {
-        if (this.executedTask != null) {
-            TaskExecutor.undo(this.executedTask);
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.helper.task.AbstractCommandTask#undo()
-     */
-    @Override
-    public void redo() {
-        if (this.executedTask != null) {
-            TaskExecutor.redo(this.executedTask);
-        }
+        return tasks;
     }
 
     /**

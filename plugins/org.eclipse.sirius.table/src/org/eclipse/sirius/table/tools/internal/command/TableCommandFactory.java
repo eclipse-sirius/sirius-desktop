@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,10 +11,7 @@
 package org.eclipse.sirius.table.tools.internal.command;
 
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.AbstractCommand;
@@ -23,7 +20,6 @@ import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
-import org.eclipse.sirius.business.api.helper.task.DeleteEObjectTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
@@ -31,6 +27,7 @@ import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
 import org.eclipse.sirius.business.api.helper.task.label.InitInterpreterFromParsedVariableTask2;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.internal.helper.task.DeleteDRepresentationElementsTask;
+import org.eclipse.sirius.business.internal.helper.task.DeleteWithoutToolTask;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
@@ -40,7 +37,6 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.Feature
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
 import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.business.internal.helper.task.CreateTableTask;
 import org.eclipse.sirius.table.metamodel.table.DCell;
@@ -73,8 +69,6 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-
-import com.google.common.collect.Iterables;
 
 /**
  * A command factory that creates commands that can be undone.
@@ -130,36 +124,13 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
 
                     final SiriusCommand result = new SiriusCommand(domain);
                     DeleteTool deleteTool = getDeleteTool(element);
-                    DTable parentTable = TableHelper.getTable(element);
+                    final DTable parentTable = TableHelper.getTable(element);
                     if (deleteTool != null) {
                         addDeleteTableElementFromTool(result, element, deleteTool);
                         addRefreshTask(parentTable, result, deleteTool);
                         cmd = new NoNullResourceCommand(result, element);
                     } else {
-                        final Set<EObject> allSemanticElements = new HashSet<EObject>();
-                        // Get the corresponding semanticElement (and its
-                        // children)
-                        addSemanticElementsToDestroy(element, allSemanticElements);
-
-                        /*
-                         * Now delete all the table elements corresponding to the
-                         * semantic elements to delete
-                         */
-                        if (parentTable != null) {
-                            final Set<DSemanticDecorator> tableElements = commandTaskHelper.getDElementToClearFromSemanticElements(parentTable, allSemanticElements);
-                            for (final DSemanticDecorator decorator : tableElements) {
-                                result.getTasks().add(new DeleteEObjectTask(decorator, modelAccessor));
-                            }
-                        }
-
-                        /*
-                         * Now delete all the semantic elements
-                         */
-                        final Iterator<EObject> it = allSemanticElements.iterator();
-                        while (it.hasNext()) {
-                            final EObject eObj = it.next();
-                            result.getTasks().add(new DeleteEObjectTask(eObj, modelAccessor));
-                        }
+                        result.getTasks().add(new DeleteWithoutToolTask(element, modelAccessor, commandTaskHelper));
                         addRefreshTask(parentTable, result, deleteTool);
                         cmd = new NoNullResourceCommand(result, element);
                     }
@@ -438,19 +409,6 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
             }
         }
         return result;
-    }
-
-    private Set<EObject> addSemanticElementsToDestroy(final DSemanticDecorator element, final Set<EObject> elementsToDestroy) {
-        EObject semantic = null;
-        if (element instanceof DLine) {
-            semantic = ((DLine) element).getTarget();
-        } else if (element instanceof DTargetColumn) {
-            semantic = ((DTargetColumn) element).getTarget();
-        }
-        if (semantic != null && !elementsToDestroy.contains(semantic)) {
-            Iterables.addAll(elementsToDestroy, AllContents.of(semantic, true));
-        }
-        return elementsToDestroy;
     }
 
     /**

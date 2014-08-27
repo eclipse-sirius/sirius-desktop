@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,8 +12,6 @@ package org.eclipse.sirius.tree.tools.internal.command;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -25,7 +23,6 @@ import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.sirius.business.api.helper.task.DeleteEObjectTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
@@ -33,13 +30,13 @@ import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
 import org.eclipse.sirius.business.api.helper.task.label.InitInterpreterFromParsedVariableTask2;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.internal.helper.task.DeleteDRepresentationElementsTask;
+import org.eclipse.sirius.business.internal.helper.task.DeleteWithoutToolTask;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
-import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.tools.api.command.AbstractCommandFactory;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.InvalidPermissionCommand;
@@ -69,7 +66,6 @@ import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
 /**
@@ -134,36 +130,13 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
                 } else {
                     final SiriusCommand result = new SiriusCommand(domain);
                     TreeItemDeletionTool deleteTool = getDeleteTool(element);
-                    DTree parentTree = TreeHelper.getTree(element);
+                    final DTree parentTree = TreeHelper.getTree(element);
                     if (deleteTool != null) {
                         addDeleteTreeElementFromTool(result, element, deleteTool);
                         addRefreshTask(parentTree, result, deleteTool);
                         cmd = new NoNullResourceCommand(result, element);
                     } else {
-                        final Set<EObject> allSemanticElements = new HashSet<EObject>();
-                        // Get the corresponding semanticElement (and its
-                        // children)
-                        addSemanticElementsToDestroy(element, allSemanticElements);
-
-                        /*
-                         * Now delete all the tree elements corresponding to
-                         * the semantic elements to delete
-                         */
-                        if (parentTree != null) {
-                            final Set<DSemanticDecorator> tableElements = commandTaskHelper.getDElementToClearFromSemanticElements(parentTree, allSemanticElements);
-                            for (final DSemanticDecorator decorator : tableElements) {
-                                result.getTasks().add(new DeleteEObjectTask(decorator, modelAccessor));
-                            }
-                        }
-
-                        /*
-                         * Now delete all the semantic elements
-                         */
-                        final Iterator<EObject> it = allSemanticElements.iterator();
-                        while (it.hasNext()) {
-                            final EObject eObj = it.next();
-                            result.getTasks().add(new DeleteEObjectTask(eObj, modelAccessor));
-                        }
+                        result.getTasks().add(new DeleteWithoutToolTask(element, modelAccessor, commandTaskHelper));
                         addRefreshTask(parentTree, result, deleteTool);
                         cmd = new NoNullResourceCommand(result, element);
                     }
@@ -171,17 +144,6 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
             }
         }
         return cmd;
-    }
-
-    private Set<EObject> addSemanticElementsToDestroy(final DSemanticDecorator element, final Set<EObject> elementsToDestroy) {
-        EObject semantic = null;
-        if (element instanceof DTreeItem) {
-            semantic = ((DTreeItem) element).getTarget();
-        }
-        if (semantic != null && !elementsToDestroy.contains(semantic)) {
-            Iterables.addAll(elementsToDestroy, AllContents.of(semantic, true));
-        }
-        return elementsToDestroy;
     }
 
     private void addDeleteTreeElementFromTool(final SiriusCommand cmd, final DTreeElement element, final TreeItemDeletionTool deleteTool) {

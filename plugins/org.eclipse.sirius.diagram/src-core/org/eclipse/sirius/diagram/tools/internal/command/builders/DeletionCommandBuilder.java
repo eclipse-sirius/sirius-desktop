@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,12 +19,14 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.helper.task.DeleteEObjectTask;
+import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.internal.helper.task.DeleteDRepresentationElementsTask;
 import org.eclipse.sirius.business.internal.helper.task.DeleteDRepresentationTask;
+import org.eclipse.sirius.business.internal.helper.task.DeleteWithoutToolTask;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
@@ -268,7 +270,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
         return result;
     }
 
-    private Command buildDeleteDiagramElementCommandWithoutTool(final DCommand result, Set<EObject> allSemanticElements) {
+    private Command buildDeleteDiagramElementCommandWithoutTool(final DCommand result, final Set<EObject> allSemanticElements) {
         Command cmd;
 
         if (allSemanticElements.isEmpty()) {
@@ -277,37 +279,27 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
             // return to handle multi-selection.
             cmd = result;
         } else {
-            /*
-             * Now delete all the diagram and diagram elements corresponding to
-             * the semantic elements to delete
-             */
-            final DDiagram parentDiagram = diagramElement.getParentDiagram();
-            if (parentDiagram != null) {
-                final Set<DSemanticDecorator> diagramElements = taskHelper.getDElementToClearFromSemanticElements(parentDiagram, allSemanticElements);
-                for (final DSemanticDecorator decorator : diagramElements) {
-                    result.getTasks().add(new DeleteEObjectTask(decorator, modelAccessor));
-                    // If the semantic decorator is related to edges, these
-                    // edges
-                    // should also be deleted
+            // Now delete all the diagram elements corresponding to
+            // the semantic elements to delete
+            ICommandTask deleteWithoutToolTask = new DeleteWithoutToolTask(diagramElement, allSemanticElements, modelAccessor, taskHelper) {
+
+                @Override
+                protected void addDialectSpecificAdditionalDeleteSubTasks(DSemanticDecorator decorator, List<ICommandTask> subTasks) {
+                    // Nothing to add per default.
+                    // If the semantic decorator is related to edges,
+                    // these edges should also be deleted
                     if (decorator instanceof EdgeTarget) {
                         EdgeTarget edgeTarget = (EdgeTarget) decorator;
                         for (final DEdge edge : Iterables.concat(edgeTarget.getIncomingEdges(), edgeTarget.getOutgoingEdges())) {
-                            result.getTasks().add(new DeleteEObjectTask(edge, modelAccessor));
+                            subTasks.add(new DeleteEObjectTask(edge, modelAccessor));
                         }
                     }
                 }
-            }
-
-            /*
-             * Now delete all the semantic elements
-             */
-            for (final EObject semantic : allSemanticElements) {
-                DeleteEObjectTask deleteSemanticElementTask = new DeleteEObjectTask(semantic, modelAccessor);
-                result.getTasks().add(deleteSemanticElementTask);
-            }
+            };
+            result.getTasks().add(deleteWithoutToolTask);
 
             // Add a refresh task if the autoRefresh is on.
-            addRefreshTask(parentDiagram, result, tool);
+            addRefreshTask(diagramElement, result, tool);
             /* Avoid notifications of the outline on each change */
             cmd = new NoNullResourceCommand(result, diagramElement);
         }
@@ -319,7 +311,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
      * element.
      */
     private Set<EObject> getSemanticElementsToDestroy(final DDiagramElement currentDiagramElement) {
-        Set<EObject> elementsToDestroy = Sets.newHashSet();
+        Set<EObject> elementsToDestroy = Sets.newLinkedHashSet();
         appendSemanticElementsToDestroy(currentDiagramElement, elementsToDestroy);
         return elementsToDestroy;
     }
