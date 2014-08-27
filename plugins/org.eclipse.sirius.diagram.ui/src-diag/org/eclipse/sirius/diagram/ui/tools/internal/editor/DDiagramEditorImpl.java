@@ -176,6 +176,7 @@ import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInputFactory;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
+import org.eclipse.sirius.ui.tools.internal.editor.SelectCreatedDRepresentationElementsListener;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -307,6 +308,8 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     private ToolFilter toolFilterWhenRepresentationIsLocked = new ToolFilterForLockedDRepresentation();
 
     private Composite parentComposite;
+
+    private SelectCreatedDRepresentationElementsListener selectNewElementsListener;
 
     /**
      * Create a new instance.
@@ -593,7 +596,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
         final Diagram gmfDiagram = getDiagram();
 
-        /* manage palette. */
+        // Manage palette.
         paletteManager = new PaletteManagerImpl(getEditDomain());
         paletteManager.update(getDiagram());
 
@@ -601,7 +604,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         paletteTransferDropTargetListener = new SiriusPaletteToolDropTargetListener(getGraphicalViewer());
         getDiagramGraphicalViewer().addDropTargetListener(paletteTransferDropTargetListener);
 
-        /* initialize Java Service. */
+        // Initialize Java Service.
         EObject semantic = ViewUtil.resolveSemanticElement(gmfDiagram);
         if (semantic instanceof DSemanticDecorator) {
             semantic = ((DSemanticDecorator) semantic).getTarget();
@@ -618,8 +621,13 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             InterpreterRegistry.prepareImportsFromSession(interpreter, SessionManager.INSTANCE.getSession(semantic));
         }
 
-        /* add a listener to selection */
+        // Add a listener to selection
         getSite().getPage().addSelectionListener(this);
+
+        // Add a post commit listener to select newly created diagram elements.
+        selectNewElementsListener = new SelectCreatedDRepresentationElementsListener(this);
+        session.getTransactionalEditingDomain().addResourceSetListener(selectNewElementsListener);
+
     }
 
     /**
@@ -653,6 +661,10 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         dRepresentationLockStatusListener = null;
         if (getSession() != null) {
             getSession().removeListener(this);
+            if (getSession().getTransactionalEditingDomain() != null) {
+                getSession().getTransactionalEditingDomain().removeResourceSetListener(selectNewElementsListener);
+                selectNewElementsListener = null;
+            }
         }
 
         if (getGraphicalViewer() != null) {
@@ -844,7 +856,8 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         if (isOldUIEnabled()) {
             diagramOutline = new DiagramOutlineWithBookPages(this.getDiagramEditPart().getModel(), getGraphicalViewer(), outlinePopupMenuActions);
         } else {
-            diagramOutline = new DiagramOutlinePage(this.getDiagramEditPart().getModel(), new OutlineLabelProvider(), new OutlineContentProvider(), new OutlineComparator(), getGraphicalViewer(), outlinePopupMenuActions);
+            diagramOutline = new DiagramOutlinePage(this.getDiagramEditPart().getModel(), new OutlineLabelProvider(), new OutlineContentProvider(), new OutlineComparator(), getGraphicalViewer(),
+                    outlinePopupMenuActions);
         }
 
     }

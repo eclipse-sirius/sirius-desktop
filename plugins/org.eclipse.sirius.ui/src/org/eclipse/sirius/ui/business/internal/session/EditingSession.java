@@ -24,7 +24,6 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.transaction.ResourceSetListener;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
@@ -91,8 +90,6 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
 
     private SaveSessionWhenNoDialectEditorsListener saveSessionListener;
 
-    private ResourceSetListener selectNewElementsListener;
-
     /**
      * Create a new {@link EditingSession}.
      * 
@@ -111,8 +108,6 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
         this.restoreToSavePointListener.register();
         this.saveSessionListener = new SaveSessionWhenNoDialectEditorsListener(session);
         this.saveSessionListener.register();
-        this.selectNewElementsListener = new SelectCreatedDRepresentationElementsListener();
-        session.getTransactionalEditingDomain().addResourceSetListener(selectNewElementsListener);
     }
 
     private void removeListeners() {
@@ -125,11 +120,6 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
         if (this.saveSessionListener != null) {
             this.saveSessionListener.unregister();
             this.saveSessionListener = null;
-        }
-
-        if (this.selectNewElementsListener != null && session.getTransactionalEditingDomain() != null) {
-            session.getTransactionalEditingDomain().removeResourceSetListener(selectNewElementsListener);
-            this.selectNewElementsListener = null;
         }
     }
 
