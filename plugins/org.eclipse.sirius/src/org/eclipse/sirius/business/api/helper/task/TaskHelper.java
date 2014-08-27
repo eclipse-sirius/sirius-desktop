@@ -10,11 +10,19 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.helper.task;
 
+import static org.eclipse.sirius.viewpoint.ViewpointPackage.Literals.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS;
+import static org.eclipse.sirius.viewpoint.ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET;
+
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature.Setting;
+import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.helper.task.ExecuteToolOperationTask;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -22,12 +30,15 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariabl
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
+
+import com.google.common.collect.Sets;
 
 /**
  * Helper for get tasks from ModelOperation. Provide some utilities reused in
@@ -85,29 +96,81 @@ public class TaskHelper {
      * @return all the {@link DSemanticDecorator} elements to delete.
      */
     public Set<DSemanticDecorator> getDElementToClearFromSemanticElements(final EObject root, final Set<EObject> semanticElements) {
-        final Set<DSemanticDecorator> decoratorsToDestroy = new HashSet<DSemanticDecorator>();
-        if (!semanticElements.isEmpty()) {
-            final Iterator<EObject> it = root.eAllContents();
-            while (it.hasNext()) {
-                final EObject eObj = it.next();
+        Set<DSemanticDecorator> decoratorsToDestroy = Sets.newHashSet();
+        if (root != null) {
+            final ECrossReferenceAdapter xref = getSemanticCrossReferencer(root);
+            if (xref != null) {
+                decoratorsToDestroy = getDElementToClearWithXref(root, semanticElements, xref);
+            } else {
+                decoratorsToDestroy = getDElementToClearWithoutXref(root, semanticElements);
+            }
+        }
+        return decoratorsToDestroy;
+    }
 
-                if (eObj instanceof DRepresentationElement) {
-                    final DRepresentationElement representationElement = (DRepresentationElement) eObj;
-                    if (representationElement.getSemanticElements().isEmpty()) {
-                        if (semanticElements.contains(representationElement.getTarget())) {
-                            decoratorsToDestroy.add(representationElement);
-                        }
-                    } else if (semanticElements.containsAll(representationElement.getSemanticElements())) {
-                        decoratorsToDestroy.add(representationElement);
-                    }
-                } else if (eObj instanceof DSemanticDecorator) {
-                    final DSemanticDecorator decorator = (DSemanticDecorator) eObj;
-                    if (semanticElements.contains(decorator.getTarget())) {
-                        decoratorsToDestroy.add(decorator);
+    private Set<DSemanticDecorator> getDElementToClearWithXref(final EObject root, final Set<EObject> semanticElements, final ECrossReferenceAdapter xref) {
+        final Set<DSemanticDecorator> decoratorsToDestroy = new HashSet<DSemanticDecorator>();
+        for (EObject semElt : semanticElements) {
+            for (Setting setting : xref.getInverseReferences(semElt)) {
+                EObject eObj = setting.getEObject();
+                if (setting.getEStructuralFeature().equals(DSEMANTIC_DECORATOR__TARGET) && EcoreUtil.isAncestor(root, eObj)) {
+                    decoratorsToDestroy.add((DSemanticDecorator) eObj);
+                } else if (!decoratorsToDestroy.contains(eObj) && setting.getEStructuralFeature().equals(DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS) && EcoreUtil.isAncestor(root, eObj)) {
+                    DRepresentationElement repElt = (DRepresentationElement) eObj;
+                    if (semanticElements.containsAll(repElt.getSemanticElements())) {
+                        decoratorsToDestroy.add(repElt);
                     }
                 }
             }
         }
+        return decoratorsToDestroy;
+    }
+
+    private ECrossReferenceAdapter getSemanticCrossReferencer(EObject root) {
+        Session session = null;
+        if (root instanceof DAnalysis) {
+            for (Session tempSession : SessionManager.INSTANCE.getSessions()) {
+                if (tempSession.getAllSessionResources().contains(root.eResource())) {
+                    session = tempSession;
+                }
+            }
+        } else if (root instanceof DSemanticDecorator) {
+            session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) root).getTarget());
+        } else {
+            session = SessionManager.INSTANCE.getSession(root);
+        }
+
+        ECrossReferenceAdapter xref = null;
+        if (session != null && session.getSemanticCrossReferencer() != null) {
+            xref = session.getSemanticCrossReferencer();
+        }
+        return xref;
+    }
+
+    private Set<DSemanticDecorator> getDElementToClearWithoutXref(final EObject root, final Set<EObject> semanticElements) {
+        final Set<DSemanticDecorator> decoratorsToDestroy = new HashSet<DSemanticDecorator>();
+        final Iterator<EObject> it = root.eAllContents();
+        while (it.hasNext()) {
+            final EObject eObj = it.next();
+
+            boolean toDestroy = false;
+            if (eObj instanceof DSemanticDecorator) {
+                final DSemanticDecorator decorator = (DSemanticDecorator) eObj;
+                if (semanticElements.contains(decorator.getTarget())) {
+                    // if the element is already in the set, to destroy will
+                    // not change.
+                    toDestroy = decoratorsToDestroy.add(decorator);
+                }
+            }
+
+            if (!toDestroy && eObj instanceof DRepresentationElement) {
+                final DRepresentationElement representationElement = (DRepresentationElement) eObj;
+                if (semanticElements.containsAll(representationElement.getSemanticElements())) {
+                    decoratorsToDestroy.add(representationElement);
+                }
+            }
+        }
+
         return decoratorsToDestroy;
     }
 
