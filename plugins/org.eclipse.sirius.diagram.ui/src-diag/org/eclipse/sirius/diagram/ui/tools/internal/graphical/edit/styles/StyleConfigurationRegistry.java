@@ -51,6 +51,8 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  */
 public final class StyleConfigurationRegistry extends SessionManagerListener.Stub implements IStyleConfigurationRegistry {
 
+    private static final SimpleStyleConfiguration DEFAULT_CONFIGURATION = new SimpleStyleConfiguration();
+
     private static final ProfilerTask GET_CONFIG = new ProfilerTask("Sirius", "get style configuration");
 
     /** All providers. */
@@ -111,18 +113,15 @@ public final class StyleConfigurationRegistry extends SessionManagerListener.Stu
         return INSTANCE;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry#getStyleConfiguration(org.eclipse.sirius.viewpoint.description.DiagramElementMapping,
-     *      org.eclipse.sirius.viewpoint.Style)
-     */
+    @Override
     public StyleConfiguration getStyleConfiguration(final DiagramElementMapping vpElementMapping, final Style style) {
-        StyleConfiguration result = new SimpleStyleConfiguration();
+        final StyleConfiguration result;
         DslCommonPlugin.PROFILER.startWork(GET_CONFIG);
         if (style != null) {
             final StyleWrapper styleWrapper = new StyleWrapper(vpElementMapping, style.getDescription());
             result = getStyleConfiguration(styleWrapper, style);
+        } else {
+            result = StyleConfigurationRegistry.DEFAULT_CONFIGURATION;
         }
         DslCommonPlugin.PROFILER.stopWork(GET_CONFIG);
         return result;
@@ -185,7 +184,7 @@ public final class StyleConfigurationRegistry extends SessionManagerListener.Stu
             styleConfiguration = new SimpleSquareStyleConfiguration();
         }
         if (styleConfiguration == null) {
-            styleConfiguration = new SimpleStyleConfiguration();
+            styleConfiguration = StyleConfigurationRegistry.DEFAULT_CONFIGURATION;
         }
         return styleConfiguration;
     }
