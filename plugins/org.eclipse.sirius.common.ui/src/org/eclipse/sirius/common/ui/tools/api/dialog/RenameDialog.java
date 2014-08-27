@@ -17,6 +17,8 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.IInputValidator;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -29,8 +31,6 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.SelectionStatusDialog;
-
-import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 
 /**
  * A generic rename dialog.
@@ -94,6 +94,7 @@ public class RenameDialog extends SelectionStatusDialog {
      */
     public RenameDialog(final Shell shell, final boolean isCaseSensitive, final String[] names, final String oldName) {
         super(shell);
+        setTitle("Enter new name");
         this.isCaseSensitive = isCaseSensitive;
         initialize();
         if (names != null) {
@@ -142,16 +143,16 @@ public class RenameDialog extends SelectionStatusDialog {
     }
 
     /**
-     * Set the text value, without adding at old name.
+     * Set the default new name to display. This allows to directly set a new
+     * name instead of the old one. This method must be called before Dialog
+     * creation ({@link #create()}).
      * 
      * @param value
      *            the value to set
-     * @since 0.9.0
+     * @since 2.0.0
      */
-    public void setText(final String value) {
-        if (text != null) {
-            text.setText(value);
-        }
+    public void setDefaultNewName(final String value) {
+        this.newName = value;
     }
 
     /**
@@ -173,16 +174,28 @@ public class RenameDialog extends SelectionStatusDialog {
         container.setLayoutData(gd);
 
         final Label label = new Label(container, SWT.NULL);
-        String labelText = "New diagram name (";
-        if (isCaseSensitive) {
-            labelText += "case sensitive";
+
+        String labelText;
+        if (!StringUtil.isEmpty(getMessage())) {
+            labelText = getMessage();
         } else {
-            labelText += "case insensitive";
+            labelText = "Enter new name (";
+            if (isCaseSensitive) {
+                labelText += "case sensitive";
+            } else {
+                labelText += "case insensitive";
+            }
+            labelText += "):";
         }
-        labelText += "):";
         label.setText(labelText);
 
         text = new Text(container, SWT.SINGLE | SWT.BORDER);
+        if (newName != null) {
+            // A default new name has been set
+            text.setText(newName);
+        } else {
+            text.setText(oldName);
+        }
         text.addModifyListener(new ModifyListener() {
             public void modifyText(final ModifyEvent e) {
                 textChanged(text.getText());
@@ -202,15 +215,10 @@ public class RenameDialog extends SelectionStatusDialog {
      */
     @Override
     public int open() {
-        setTitle("Rename diagram");
-        text.setText(oldName);
+        // Validate the name to enable or not the OK button.
+        textChanged(text.getText());
+        // Select the entered name
         text.selectAll();
-        final Button okButton = getButton(IDialogConstants.OK_ID);
-
-        status = new Status(IStatus.OK, SiriusTransPlugin.PLUGIN_ID, IStatus.OK, "", //$NON-NLS-1$
-                null);
-        updateStatus(status);
-        okButton.setEnabled(false);
         return super.open();
     }
 
@@ -266,16 +274,6 @@ public class RenameDialog extends SelectionStatusDialog {
      */
     @Override
     protected void computeResult() {
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.dialogs.SelectionDialog#setTitle(java.lang.String)
-     */
-    @Override
-    public void setTitle(final String title) {
-        getShell().setText(title);
     }
 
     /**

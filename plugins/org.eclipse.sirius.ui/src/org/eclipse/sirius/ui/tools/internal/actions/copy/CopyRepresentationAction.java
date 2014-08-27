@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -67,14 +67,15 @@ public class CopyRepresentationAction extends Action {
         if (representations.size() == 1) {
             final String oldName = getOldName();
             dialog = new RenameDialog(Display.getCurrent().getActiveShell(), oldName);
+            dialog.setTitle("Copy representation");
             dialog.create();
-            dialog.setTitle("Enter the name for the copied representation");
         } else {
             final String prefix = getPrefix();
             dialog = new RenameDialog(Display.getCurrent().getActiveShell(), prefix);
+            dialog.setTitle("Copy representations");
+            dialog.setMessage("Prefix for copied representations:");
+            dialog.setDefaultNewName("Copy of");
             dialog.create();
-            dialog.setTitle("Enter the prefix for the copied representations name");
-            dialog.setText("Copy of");
         }
 
         if (dialog.open() == Window.OK) {
