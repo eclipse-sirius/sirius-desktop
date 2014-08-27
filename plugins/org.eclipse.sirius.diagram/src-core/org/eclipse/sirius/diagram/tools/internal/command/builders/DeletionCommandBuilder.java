@@ -340,19 +340,6 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
     }
 
     /**
-     * Returns all the diagram elements to delete.
-     * 
-     * @param root
-     *            the root diagram element.
-     * @param semanticElements
-     *            semantic elements.
-     * @return all the diagram elements to delete.
-     */
-    public Set<DSemanticDecorator> getDElementToClearFromSemanticElements(final EObject root, final Set<EObject> semanticElements) {
-        return taskHelper.getDElementToClearFromSemanticElements(root, semanticElements);
-    }
-
-    /**
      * {@inheritDoc}
      */
     protected String getEnclosingCommandLabel() {
