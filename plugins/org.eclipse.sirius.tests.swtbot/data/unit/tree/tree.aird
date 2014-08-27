@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/description/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:tree="http://www.eclipse.org/sirius/tree/1.0.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/tree/description/1.0.0 http://www.eclipse.org/sirius/tree/1.0.0#//description http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" xmi:id="_yt6-wb8YEd-HtIsSW12dAQ" selectedViews="_zGIqcL8YEd-HtIsSW12dAQ _fLQSYfAvEeC0i_qF8XqfLg" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="tree.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_zGIqcL8YEd-HtIsSW12dAQ" initialized="true">
+    <ownedRepresentations xmi:type="tree:DTree" xmi:id="_TgfLwMSREd-2Ks4P5_s5Gw" name="new Tree">
+      <target xmi:type="ecore:EPackage" href="tree.ecore#/"/>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_Tgfy0MSREd-2Ks4P5_s5Gw" name="new EClass 1" expanded="true">
+        <target xmi:type="ecore:EClass" href="tree.ecore#//new%20EClass%201"/>
+        <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_Tgfy0cSREd-2Ks4P5_s5Gw" name="new Attribute">
+          <target xmi:type="ecore:EAttribute" href="tree.ecore#//new%20EClass%201/new%20Attribute"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="tree.ecore#//new%20EClass%201/new%20Attribute"/>
+          <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_Tgfy0sSREd-2Ks4P5_s5Gw">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Tgfy08SREd-2Ks4P5_s5Gw"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Tgfy1MSREd-2Ks4P5_s5Gw" red="255" green="255" blue="255"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description:TreeItemMapping" href="ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Tree']/@subItemMappings[name='Class']/@subItemMappings[name='Attr']"/>
+        </ownedTreeItems>
+        <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_Tgfy1cSREd-2Ks4P5_s5Gw" name="new Attribute">
+          <target xmi:type="ecore:EAttribute" href="tree.ecore#//new%20EClass%201/new%20Attribute.1"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="tree.ecore#//new%20EClass%201/new%20Attribute.1"/>
+          <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_Tgfy1sSREd-2Ks4P5_s5Gw">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Tgfy18SREd-2Ks4P5_s5Gw"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Tgfy2MSREd-2Ks4P5_s5Gw" red="255" green="255" blue="255"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description:TreeItemMapping" href="ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Tree']/@subItemMappings[name='Class']/@subItemMappings[name='Attr']"/>
+        </ownedTreeItems>
+        <semanticElements xmi:type="ecore:EClass" href="tree.ecore#//new%20EClass%201"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_Tgfy2cSREd-2Ks4P5_s5Gw" labelFormat="bold" showIcon="false">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Tgfy2sSREd-2Ks4P5_s5Gw" red="204" green="242" blue="166"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Tgfy28SREd-2Ks4P5_s5Gw" red="255" green="245" blue="181"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:TreeItemMapping" href="ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Tree']/@subItemMappings[name='Class']"/>
+      </ownedTreeItems>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_Tgfy3MSREd-2Ks4P5_s5Gw" name="TestTailleNomSup13">
+        <target xmi:type="ecore:EClass" href="tree.ecore#//TestTailleNomSup13"/>
+        <semanticElements xmi:type="ecore:EClass" href="tree.ecore#//TestTailleNomSup13"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_Tgfy3cSREd-2Ks4P5_s5Gw" labelFormat="bold" showIcon="false">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_a9odUcSSEd-2Ks4P5_s5Gw" red="204" green="242" blue="166"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_a9odUMSSEd-2Ks4P5_s5Gw" red="255" green="245" blue="181"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:TreeItemMapping" href="ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Tree']/@subItemMappings[name='Class']"/>
+      </ownedTreeItems>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_VoTSQMZREd-aiuzskw9j7w" name="enum">
+        <target xmi:type="ecore:EEnum" href="tree.ecore#//enum"/>
+        <semanticElements xmi:type="ecore:EEnum" href="tree.ecore#//enum"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_VoVHcMZREd-aiuzskw9j7w">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_VoVHc8ZREd-aiuzskw9j7w" red="173" green="127" blue="168"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_VoVHcsZREd-aiuzskw9j7w" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:TreeItemMapping" href="ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Tree']/@subItemMappings[name='EnumId']"/>
+      </ownedTreeItems>
+      <semanticElements xmi:type="ecore:EPackage" href="tree.ecore#/"/>
+      <description xmi:type="description:TreeDescription" href="ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Tree']"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="table:DTable" xmi:id="_tP1ncPAvEeC0i_qF8XqfLg" name="new Classes" headerColumnWidth="159">
+      <target xmi:type="ecore:EPackage" href="tree.ecore#/"/>
+      <lines xmi:type="table:DLine" xmi:id="_tP1ncfAvEeC0i_qF8XqfLg" label="new EClass 1">
+        <target xmi:type="ecore:EClass" href="tree.ecore#//new%20EClass%201"/>
+        <lines xmi:type="table:DLine" xmi:id="_tP1ncvAvEeC0i_qF8XqfLg" label="new Attribute">
+          <target xmi:type="ecore:EAttribute" href="tree.ecore#//new%20EClass%201/new%20Attribute"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="tree.ecore#//new%20EClass%201/new%20Attribute"/>
+          <originMapping xmi:type="description_1:LineMapping" href="ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes']/@ownedLineMappings[name='Classes%20lines']/@ownedSubLines[name='Feature']"/>
+          <cells xmi:type="table:DCell" xmi:id="_tP1nc_AvEeC0i_qF8XqfLg" label="new Attribute" column="_tP1nffAvEeC0i_qF8XqfLg">
+            <target xmi:type="ecore:EAttribute" href="tree.ecore#//new%20EClass%201/new%20Attribute"/>
+            <semanticElements xmi:type="ecore:EAttribute" href="tree.ecore#//new%20EClass%201/new%20Attribute"/>
+            <currentStyle xmi:type="table:DCellStyle" xmi:id="_tP1ndPAvEeC0i_qF8XqfLg"/>
+          </cells>
+        </lines>
+        <lines xmi:type="table:DLine" xmi:id="_tP1ndfAvEeC0i_qF8XqfLg" label="new Attribute">
+          <target xmi:type="ecore:EAttribute" href="tree.ecore#//new%20EClass%201/new%20Attribute.1"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="tree.ecore#//new%20EClass%201/new%20Attribute.1"/>
+          <originMapping xmi:type="description_1:LineMapping" href="ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes']/@ownedLineMappings[name='Classes%20lines']/@ownedSubLines[name='Feature']"/>
+          <cells xmi:type="table:DCell" xmi:id="_tP1ndvAvEeC0i_qF8XqfLg" label="new Attribute" column="_tP1nffAvEeC0i_qF8XqfLg">
+            <target xmi:type="ecore:EAttribute" href="tree.ecore#//new%20EClass%201/new%20Attribute.1"/>
+            <semanticElements xmi:type="ecore:EAttribute" href="tree.ecore#//new%20EClass%201/new%20Attribute.1"/>
+            <currentStyle xmi:type="table:DCellStyle" xmi:id="_tP1nd_AvEeC0i_qF8XqfLg"/>
+          </cells>
+        </lines>
+        <semanticElements xmi:type="ecore:EClass" href="tree.ecore#//new%20EClass%201"/>
+        <originMapping xmi:type="description_1:LineMapping" href="ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes']/@ownedLineMappings[name='Classes%20lines']"/>
+        <cells xmi:type="table:DCell" xmi:id="_tP1nePAvEeC0i_qF8XqfLg" label="new EClass 1" column="_tP1nffAvEeC0i_qF8XqfLg">
+          <target xmi:type="ecore:EClass" href="tree.ecore#//new%20EClass%201"/>
+          <semanticElements xmi:type="ecore:EClass" href="tree.ecore#//new%20EClass%201"/>
+          <currentStyle xmi:type="table:DCellStyle" xmi:id="_tP1nefAvEeC0i_qF8XqfLg"/>
+        </cells>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_tP1nevAvEeC0i_qF8XqfLg" label="TestTailleNomSup13">
+        <target xmi:type="ecore:EClass" href="tree.ecore#//TestTailleNomSup13"/>
+        <semanticElements xmi:type="ecore:EClass" href="tree.ecore#//TestTailleNomSup13"/>
+        <originMapping xmi:type="description_1:LineMapping" href="ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes']/@ownedLineMappings[name='Classes%20lines']"/>
+        <cells xmi:type="table:DCell" xmi:id="_tP1ne_AvEeC0i_qF8XqfLg" label="TestTailleNomSup13" column="_tP1nffAvEeC0i_qF8XqfLg">
+          <target xmi:type="ecore:EClass" href="tree.ecore#//TestTailleNomSup13"/>
+          <semanticElements xmi:type="ecore:EClass" href="tree.ecore#//TestTailleNomSup13"/>
+          <currentStyle xmi:type="table:DCellStyle" xmi:id="_tP1nfPAvEeC0i_qF8XqfLg"/>
+        </cells>
+      </lines>
+      <columns xmi:type="table:DFeatureColumn" xmi:id="_tP1nffAvEeC0i_qF8XqfLg" label="Name" cells="_tP1nePAvEeC0i_qF8XqfLg _tP1nc_AvEeC0i_qF8XqfLg _tP1ndvAvEeC0i_qF8XqfLg _tP1ne_AvEeC0i_qF8XqfLg" width="1491" featureName="name">
+        <originMapping xmi:type="description_1:FeatureColumnMapping" href="ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes']/@ownedColumnMappings[name='Name']"/>
+      </columns>
+      <description xmi:type="description_1:EditionTableDescription" href="ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes']"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description_2:Viewpoint" href="ecore.odesign#//@ownedViewpoints[name='Design']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_fLQSYfAvEeC0i_qF8XqfLg" initialized="true">
+    <ownedRepresentations xmi:type="table:DTable" xmi:id="_rOmvgPAvEeC0i_qF8XqfLg" name="new Tags" headerColumnWidth="1651">
+      <target xmi:type="ecore:EPackage" href="tree.ecore#/"/>
+      <lines xmi:type="table:DLine" xmi:id="_rOmvgfAvEeC0i_qF8XqfLg" label="EClass : new EClass 1">
+        <target xmi:type="ecore:EClass" href="tree.ecore#//new%20EClass%201"/>
+        <lines xmi:type="table:DLine" xmi:id="_rOmvgvAvEeC0i_qF8XqfLg" label="EAttribute : new Attribute">
+          <target xmi:type="ecore:EAttribute" href="tree.ecore#//new%20EClass%201/new%20Attribute"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="tree.ecore#//new%20EClass%201/new%20Attribute"/>
+          <originMapping xmi:type="description_1:LineMapping" href="ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Tags']/@ownedLineMappings[name='Tags%20EClassifiers']/@ownedSubLines[name='Tag%20EStructural%20Features']"/>
+        </lines>
+        <lines xmi:type="table:DLine" xmi:id="_rOmvg_AvEeC0i_qF8XqfLg" label="EAttribute : new Attribute">
+          <target xmi:type="ecore:EAttribute" href="tree.ecore#//new%20EClass%201/new%20Attribute.1"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="tree.ecore#//new%20EClass%201/new%20Attribute.1"/>
+          <originMapping xmi:type="description_1:LineMapping" href="ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Tags']/@ownedLineMappings[name='Tags%20EClassifiers']/@ownedSubLines[name='Tag%20EStructural%20Features']"/>
+        </lines>
+        <semanticElements xmi:type="ecore:EClass" href="tree.ecore#//new%20EClass%201"/>
+        <originMapping xmi:type="description_1:LineMapping" href="ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Tags']/@ownedLineMappings[name='Tags%20EClassifiers']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_rOmvhPAvEeC0i_qF8XqfLg" label="EClass : TestTailleNomSup13">
+        <target xmi:type="ecore:EClass" href="tree.ecore#//TestTailleNomSup13"/>
+        <semanticElements xmi:type="ecore:EClass" href="tree.ecore#//TestTailleNomSup13"/>
+        <originMapping xmi:type="description_1:LineMapping" href="ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Tags']/@ownedLineMappings[name='Tags%20EClassifiers']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_rOmvhfAvEeC0i_qF8XqfLg" label="EDataType : datatype">
+        <target xmi:type="ecore:EDataType" href="tree.ecore#//datatype"/>
+        <semanticElements xmi:type="ecore:EDataType" href="tree.ecore#//datatype"/>
+        <originMapping xmi:type="description_1:LineMapping" href="ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Tags']/@ownedLineMappings[name='Tags%20EClassifiers']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_rOmvhvAvEeC0i_qF8XqfLg" label="EEnum : enum">
+        <target xmi:type="ecore:EEnum" href="tree.ecore#//enum"/>
+        <semanticElements xmi:type="ecore:EEnum" href="tree.ecore#//enum"/>
+        <originMapping xmi:type="description_1:LineMapping" href="ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Tags']/@ownedLineMappings[name='Tags%20EClassifiers']"/>
+      </lines>
+      <description xmi:type="description_1:CrossTableDescription" href="ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Tags']"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description_2:Viewpoint" href="ecore.odesign#//@ownedViewpoints[name='Review']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

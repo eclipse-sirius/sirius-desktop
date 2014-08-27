@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_ekNg8Pl5EeCvXKSINeYoZQ" selectedViews="_fIZzIPl5EeCvXKSINeYoZQ" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="My.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_fIZzIPl5EeCvXKSINeYoZQ" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_gZXrwPl5EeCvXKSINeYoZQ" name="new Diagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_gZYS0Pl5EeCvXKSINeYoZQ" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_gZYS0fl5EeCvXKSINeYoZQ" type="Sirius" element="_gZXrwPl5EeCvXKSINeYoZQ" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_giNesPl5EeCvXKSINeYoZQ" type="2001" element="_gaUG8Pl5EeCvXKSINeYoZQ">
+            <children xmi:type="notation:Node" xmi:id="_giOFwPl5EeCvXKSINeYoZQ" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_giOFwfl5EeCvXKSINeYoZQ" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_giPT4Pl5EeCvXKSINeYoZQ" type="3003" element="_giLpgPl5EeCvXKSINeYoZQ">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_giPT4fl5EeCvXKSINeYoZQ" fontName="Ubuntu"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_giPT4vl5EeCvXKSINeYoZQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_giNesfl5EeCvXKSINeYoZQ" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_giNesvl5EeCvXKSINeYoZQ" x="65" y="40" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_giOFwvl5EeCvXKSINeYoZQ" type="2001" element="_giMQkPl5EeCvXKSINeYoZQ">
+            <children xmi:type="notation:Node" xmi:id="_giOs0Pl5EeCvXKSINeYoZQ" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_giOs0fl5EeCvXKSINeYoZQ" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_giP68Pl5EeCvXKSINeYoZQ" type="3003" element="_giMQkfl5EeCvXKSINeYoZQ">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_giP68fl5EeCvXKSINeYoZQ" fontName="Ubuntu"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_giP68vl5EeCvXKSINeYoZQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_giOFw_l5EeCvXKSINeYoZQ" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_giOFxPl5EeCvXKSINeYoZQ" x="125" y="120" width="30" height="30"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_gZYS0vl5EeCvXKSINeYoZQ"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_gaUG8Pl5EeCvXKSINeYoZQ" name="new EClass 1" width="3" height="3">
+        <target xmi:type="ecore:EClass" href="My.ecore#//new%20EClass%201"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//new%20EClass%201"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_giLpgPl5EeCvXKSINeYoZQ">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_giLpgfl5EeCvXKSINeYoZQ"/>
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@defaultLayer/@nodeMappings[name='NodeEClass']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_giLpgvl5EeCvXKSINeYoZQ"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_giLpg_l5EeCvXKSINeYoZQ" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@defaultLayer/@nodeMappings[name='NodeEClass']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_giMQkPl5EeCvXKSINeYoZQ" name="new EClass 2" width="3" height="3">
+        <target xmi:type="ecore:EClass" href="My.ecore#//new%20EClass%202"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//new%20EClass%202"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_giMQkfl5EeCvXKSINeYoZQ">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_giMQkvl5EeCvXKSINeYoZQ"/>
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@defaultLayer/@nodeMappings[name='NodeEClass']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_giMQk_l5EeCvXKSINeYoZQ"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_giMQlPl5EeCvXKSINeYoZQ" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@defaultLayer/@nodeMappings[name='NodeEClass']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_gZXrwfl5EeCvXKSINeYoZQ"/>
+      <activatedLayers xmi:type="description_1:Layer" href="My.odesign#//@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="My.odesign#//@ownedViewpoints[name='TestMappings']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

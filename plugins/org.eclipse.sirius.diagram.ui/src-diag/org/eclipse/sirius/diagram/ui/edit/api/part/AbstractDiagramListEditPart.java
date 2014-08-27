@@ -38,6 +38,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeListItemSemanti
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc;
+import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
 
 import com.google.common.collect.Iterables;
@@ -132,7 +133,7 @@ public abstract class AbstractDiagramListEditPart extends AbstractDiagramElement
                 result = lcep.getCommand(request);
             }
         } else {
-            final Command cmd = CommonEditPartOperation.appendSelectionCommand(super.getCommand(request), this);
+            Command cmd = super.getCommand(request);
             return CommonEditPartOperation.handleAutoPinOnInteractiveMove(this, request, cmd);
         }
 
@@ -260,6 +261,6 @@ public abstract class AbstractDiagramListEditPart extends AbstractDiagramElement
      * @was-generated
      */
     protected NodeFigure createNodePlate() {
-        return new DefaultSizeNodeFigure(getMapMode().DPtoLP(40), getMapMode().DPtoLP(40));
+        return new DefaultSizeNodeFigure(getMapMode().DPtoLP(LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION.width), getMapMode().DPtoLP(LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION.height));
     }
 }

@@ -17,7 +17,7 @@ import org.eclipse.sirius.viewpoint.description.FeatureExtensionDescription;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DFeature Extension</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -25,7 +25,7 @@ import org.eclipse.sirius.viewpoint.description.FeatureExtensionDescription;
  * Description</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDFeatureExtension()
  * @model abstract="true"
  * @generated

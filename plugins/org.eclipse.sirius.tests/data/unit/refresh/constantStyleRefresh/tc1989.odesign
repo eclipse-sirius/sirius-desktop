@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="tc1989" version="8.0.0">
+  <ownedViewpoints name="tc1989" modelFileExtension="*.ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="tc1989" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="Ellipse" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)[name.indexOf(&quot;Ellipse&quot;) != -1]%>" domainClass="EClass">
+          <style xsi:type="style:EllipseNodeDescription" horizontalDiameterComputationExpression="5" verticalDiameterComputationExpression="6">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Lozenge" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)[name.indexOf(&quot;Lozenge&quot;) != -1]%>" domainClass="EClass">
+          <style xsi:type="style:LozengeNodeDescription" widthComputationExpression="5" heightComputationExpression="6">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Square" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)[name.indexOf(&quot;Square&quot;)  != -1]%>" domainClass="EClass">
+          <style xsi:type="style:SquareDescription" sizeComputationExpression="4" width="5" height="6">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Dot" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)[name.indexOf(&quot;Dot&quot;) != -1]%>" domainClass="EClass">
+          <style xsi:type="style:DotDescription" borderSizeComputationExpression="6" sizeComputationExpression="8" strokeSizeComputationExpression="7">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Gauge" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)[name.indexOf(&quot;Gauge&quot;) != -1]%>" domainClass="EClass">
+          <style xsi:type="style:GaugeCompositeStyleDescription" sizeComputationExpression="4">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Custom" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)[name.indexOf(&quot;Custom&quot;) != -1]%>" domainClass="EClass">
+          <style xsi:type="style:CustomStyleDescription" sizeComputationExpression="5">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="WorkspaceImage" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)[name.indexOf(&quot;WorkspaceImage&quot;) != -1]%>" domainClass="EClass">
+          <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="10" sizeComputationExpression="8" arcWidth="5" arcHeight="9" roundedCorner="true" workspacePath="/org.eclipse.sirius.diagram/icons/incomingLinksNavigatorGroup.gif">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="Note" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)[name.indexOf(&quot;Note&quot;) != -1]%>" domainClass="EClass">
+          <style xsi:type="style:NoteDescription" borderSizeComputationExpression="3" sizeComputationExpression="5">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+          </style>
+        </nodeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

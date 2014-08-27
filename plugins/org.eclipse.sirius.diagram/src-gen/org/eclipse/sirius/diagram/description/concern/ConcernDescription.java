@@ -21,11 +21,11 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> Describe a concern. A concern could be seen as an
  * aspect. It allows to enable some filters, validation rules or behaviors in
  * one click. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -40,7 +40,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
  * <em>Behaviors</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.concern.ConcernPackage#getConcernDescription()
  * @model
  * @generated

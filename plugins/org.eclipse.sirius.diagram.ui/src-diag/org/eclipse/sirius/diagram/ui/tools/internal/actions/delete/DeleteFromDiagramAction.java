@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2009, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.gmf.runtime.diagram.ui.commands.CommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.NoteAttachmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.TextEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
@@ -127,7 +128,7 @@ public class DeleteFromDiagramAction extends RetargetAction implements IObjectAc
                     }
                     /* Send the request to the edit part */
                     Request deleteRequest = null;
-                    if (editPart instanceof NoteEditPart || editPart instanceof TextEditPart) {
+                    if (editPart instanceof NoteEditPart || editPart instanceof TextEditPart || editPart instanceof NoteAttachmentEditPart) {
                         deleteRequest = new GroupRequest(org.eclipse.gef.RequestConstants.REQ_DELETE);
                     } else {
                         deleteRequest = new GroupRequest(RequestConstants.REQ_DELETE_FROM_DIAGRAM);

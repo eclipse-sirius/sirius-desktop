@@ -19,6 +19,7 @@ import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -35,10 +36,11 @@ public class SetConnectionBendpointsAccordingToDraw2DCommand extends SetConnecti
 
     private boolean sourceMove;
 
-    private Point moveDelta;
+    private PrecisionPoint moveDelta;
 
     /**
      * @param editingDomain
+     *            the editing domain through which model changes are made
      */
     public SetConnectionBendpointsAccordingToDraw2DCommand(TransactionalEditingDomain editingDomain) {
         super(editingDomain);
@@ -54,9 +56,9 @@ public class SetConnectionBendpointsAccordingToDraw2DCommand extends SetConnecti
     protected IStatus doExecute(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
         if (getEdgeAdaptor() instanceof ConnectionEditPart) {
             ConnectionEditPart connectionEditPart = (ConnectionEditPart) getEdgeAdaptor();
-            // Applied zoom on moveDelta, because moveDelta is only element in
-            // relative value
-            GraphicalHelper.appliedZoomOnRelativePoint(connectionEditPart, moveDelta);
+            // Apply inverse zoom on moveDelta, because moveDelta is only
+            // element in relative value
+            GraphicalHelper.applyInverseZoomOnPoint(connectionEditPart, moveDelta);
             Connection connection = connectionEditPart.getConnectionFigure();
 
             Point tempSourceRefPoint = connection.getSourceAnchor().getReferencePoint();
@@ -176,7 +178,7 @@ public class SetConnectionBendpointsAccordingToDraw2DCommand extends SetConnecti
     /**
      * @param moveDelta
      */
-    public void setMoveDelta(Point moveDelta) {
+    public void setMoveDelta(PrecisionPoint moveDelta) {
         this.moveDelta = moveDelta;
 
     }

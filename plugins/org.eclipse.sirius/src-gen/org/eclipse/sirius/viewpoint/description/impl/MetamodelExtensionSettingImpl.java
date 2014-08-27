@@ -31,7 +31,7 @@ import org.eclipse.sirius.viewpoint.description.MetamodelExtensionSetting;
  * <em>Extension Group</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class MetamodelExtensionSettingImpl extends EObjectImpl implements MetamodelExtensionSetting {

@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:migrationmodeler="http://www.eclipse.org/sirius/tests/sample/migrationmodeler" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_ycpsIPXOEeGKSc3OAf1kjQ" selectedViews="_zkRbgPXOEeGKSc3OAf1kjQ" version="8.0.0">
+  <models xmi:type="migrationmodeler:TestCase" href="test.migrationmodeler#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_zkRbgPXOEeGKSc3OAf1kjQ" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_IvG5IfahEeGXVPdyAVek3A" name="new edgeToEdge">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_IvsvAPahEeGXVPdyAVek3A" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_IvsvAfahEeGXVPdyAVek3A" type="Sirius" element="_IvG5IfahEeGXVPdyAVek3A" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_IwKpEPahEeGXVPdyAVek3A" type="2001" element="_IvG5IvahEeGXVPdyAVek3A">
+            <children xmi:type="notation:Node" xmi:id="_IwTL8PahEeGXVPdyAVek3A" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_IwTL8fahEeGXVPdyAVek3A" x="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_IxHrUPahEeGXVPdyAVek3A" type="3003" element="_IvG5I_ahEeGXVPdyAVek3A">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_IxHrUfahEeGXVPdyAVek3A" fontName="Ubuntu"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IxHrUvahEeGXVPdyAVek3A"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_IwKpEfahEeGXVPdyAVek3A" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IwKpEvahEeGXVPdyAVek3A" x="576" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_Iw0wYPahEeGXVPdyAVek3A" type="2001" element="_IvG5J_ahEeGXVPdyAVek3A">
+            <children xmi:type="notation:Node" xmi:id="_Iw1-gPahEeGXVPdyAVek3A" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_Iw1-gfahEeGXVPdyAVek3A" x="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_IxJggPahEeGXVPdyAVek3A" type="3001" element="_IvG5KPahEeGXVPdyAVek3A">
+              <children xmi:type="notation:Node" xmi:id="_IxQ1QPahEeGXVPdyAVek3A" type="5001">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_IxRcUPahEeGXVPdyAVek3A" x="31"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_IxUfoPahEeGXVPdyAVek3A" type="3017" element="_IvHgMPahEeGXVPdyAVek3A">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_IxUfofahEeGXVPdyAVek3A" fontName="Ubuntu"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IxUfovahEeGXVPdyAVek3A"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_IxJggfahEeGXVPdyAVek3A" fontName="Ubuntu" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IxJggvahEeGXVPdyAVek3A" y="-22" width="30" height="30"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_IxSqcPahEeGXVPdyAVek3A" type="3003" element="_IvHgNPahEeGXVPdyAVek3A">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_IxSqcfahEeGXVPdyAVek3A" fontName="Ubuntu"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IxSqcvahEeGXVPdyAVek3A"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_Iw0wYfahEeGXVPdyAVek3A" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Iw0wYvahEeGXVPdyAVek3A" x="792" y="72" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_Iw3MoPahEeGXVPdyAVek3A" type="2001" element="_IvHgOPahEeGXVPdyAVek3A">
+            <children xmi:type="notation:Node" xmi:id="_Iw3zsPahEeGXVPdyAVek3A" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_Iw4awPahEeGXVPdyAVek3A" x="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_IxVtwPahEeGXVPdyAVek3A" type="3003" element="_IvHgOfahEeGXVPdyAVek3A">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_IxVtwfahEeGXVPdyAVek3A" fontName="Ubuntu"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IxVtwvahEeGXVPdyAVek3A"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_Iw3MofahEeGXVPdyAVek3A" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Iw3MovahEeGXVPdyAVek3A" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_Iw_vgPahEeGXVPdyAVek3A" type="2002" element="_IvHgPfahEeGXVPdyAVek3A">
+            <children xmi:type="notation:Node" xmi:id="_IxA9oPahEeGXVPdyAVek3A" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_IxEoAPahEeGXVPdyAVek3A" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_IxEoAfahEeGXVPdyAVek3A"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_IxEoAvahEeGXVPdyAVek3A"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_Iw_vgfahEeGXVPdyAVek3A" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Iw_vgvahEeGXVPdyAVek3A" x="540" y="96"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_IxEoA_ahEeGXVPdyAVek3A" type="2002" element="_IvHgQ_ahEeGXVPdyAVek3A">
+            <children xmi:type="notation:Node" xmi:id="_IxFPEPahEeGXVPdyAVek3A" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_IxFPEfahEeGXVPdyAVek3A" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_IxF2IPahEeGXVPdyAVek3A"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_IxF2IfahEeGXVPdyAVek3A"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_IxEoBPahEeGXVPdyAVek3A" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IxEoBfahEeGXVPdyAVek3A" x="744"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_IxF2IvahEeGXVPdyAVek3A" type="2002" element="_IvHgSfahEeGXVPdyAVek3A">
+            <children xmi:type="notation:Node" xmi:id="_IxGdMPahEeGXVPdyAVek3A" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_IxGdMfahEeGXVPdyAVek3A" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_IxGdMvahEeGXVPdyAVek3A"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_IxGdM_ahEeGXVPdyAVek3A"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_IxF2I_ahEeGXVPdyAVek3A" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IxF2JPahEeGXVPdyAVek3A" x="48"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_JapJcPahEeGXVPdyAVek3A" type="2001" element="_JaZ44PahEeGXVPdyAVek3A">
+            <children xmi:type="notation:Node" xmi:id="_JaqXkPahEeGXVPdyAVek3A" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_JaqXkfahEeGXVPdyAVek3A" x="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JauB8PahEeGXVPdyAVek3A" type="3003" element="_Jaaf8PahEeGXVPdyAVek3A">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_JauB8fahEeGXVPdyAVek3A" fontName="Ubuntu"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JauB8vahEeGXVPdyAVek3A"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_JapJcfahEeGXVPdyAVek3A" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JapJcvahEeGXVPdyAVek3A" x="252" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_Jaq-oPahEeGXVPdyAVek3A" type="2001" element="_JabuEPahEeGXVPdyAVek3A">
+            <children xmi:type="notation:Node" xmi:id="_JasMwPahEeGXVPdyAVek3A" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_JasMwfahEeGXVPdyAVek3A" x="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_JaupAPahEeGXVPdyAVek3A" type="3003" element="_JabuEfahEeGXVPdyAVek3A">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_JavQEPahEeGXVPdyAVek3A" fontName="Ubuntu"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JavQEfahEeGXVPdyAVek3A"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_Jaq-ofahEeGXVPdyAVek3A" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Jaq-ovahEeGXVPdyAVek3A" x="336" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_Jasz0PahEeGXVPdyAVek3A" type="2001" element="_JacVIPahEeGXVPdyAVek3A">
+            <children xmi:type="notation:Node" xmi:id="_Jata4PahEeGXVPdyAVek3A" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_Jata4fahEeGXVPdyAVek3A" x="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_Jav3IPahEeGXVPdyAVek3A" type="3003" element="_Jac8MPahEeGXVPdyAVek3A">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_Jav3IfahEeGXVPdyAVek3A" fontName="Ubuntu"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Jav3IvahEeGXVPdyAVek3A"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_Jasz0fahEeGXVPdyAVek3A" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Jasz0vahEeGXVPdyAVek3A" x="432" width="30" height="30"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_IvsvAvahEeGXVPdyAVek3A"/>
+          <edges xmi:type="notation:Edge" xmi:id="_IxdpkPahEeGXVPdyAVek3A" type="4001" element="_IvHgT_ahEeGXVPdyAVek3A" source="_Iw_vgPahEeGXVPdyAVek3A" target="_IwKpEPahEeGXVPdyAVek3A">
+            <children xmi:type="notation:Node" xmi:id="_Ixe3sPahEeGXVPdyAVek3A" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ixe3sfahEeGXVPdyAVek3A" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_IxgF0PahEeGXVPdyAVek3A" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_IxgF0fahEeGXVPdyAVek3A" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_Ixgs4PahEeGXVPdyAVek3A" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ixgs4fahEeGXVPdyAVek3A" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_IxdpkfahEeGXVPdyAVek3A"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_IxdpkvahEeGXVPdyAVek3A" fontName="Ubuntu"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Ixdpk_ahEeGXVPdyAVek3A" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Iyar0PahEeGXVPdyAVek3A" id="(0.5,0.0)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Iyar0fahEeGXVPdyAVek3A" id="(0.5,1.0)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_IybS4PahEeGXVPdyAVek3A" type="4001" element="_IvHgVPahEeGXVPdyAVek3A" source="_IxJggPahEeGXVPdyAVek3A" target="_IxEoA_ahEeGXVPdyAVek3A">
+            <children xmi:type="notation:Node" xmi:id="_Iyb58PahEeGXVPdyAVek3A" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Iyb58fahEeGXVPdyAVek3A" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_Iyb58vahEeGXVPdyAVek3A" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Iyb58_ahEeGXVPdyAVek3A" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_Iyb59PahEeGXVPdyAVek3A" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Iyb59fahEeGXVPdyAVek3A" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_IybS4fahEeGXVPdyAVek3A"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_IybS4vahEeGXVPdyAVek3A" fontName="Ubuntu"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_IybS4_ahEeGXVPdyAVek3A" points="[0, 7, 0, 60]$[0, -53, 0, 0]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_IychAPahEeGXVPdyAVek3A" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_IychAfahEeGXVPdyAVek3A" id="(0.5,1.0)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_KuYCMPahEeGXVPdyAVek3A" type="4001" element="_KuUX0PahEeGXVPdyAVek3A" source="_IxF2IvahEeGXVPdyAVek3A" target="_IxdpkPahEeGXVPdyAVek3A">
+            <children xmi:type="notation:Node" xmi:id="_KuZQUPahEeGXVPdyAVek3A" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KuZQUfahEeGXVPdyAVek3A" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_KuZ3YPahEeGXVPdyAVek3A" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KuZ3YfahEeGXVPdyAVek3A" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_KuZ3YvahEeGXVPdyAVek3A" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KuaecPahEeGXVPdyAVek3A" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_KuYpQPahEeGXVPdyAVek3A"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_KuYpQfahEeGXVPdyAVek3A" fontName="Ubuntu"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_KuYpQvahEeGXVPdyAVek3A" points="[18, 1, -407, -27]$[426, 34, 1, 6]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_KuaecfahEeGXVPdyAVek3A" id="(0.88,0.4857142857142857)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_KuaecvahEeGXVPdyAVek3A" id="(0.532258064516129,0.4742268041237113)"/>
+          </edges>
+          <edges xmi:type="notation:Edge" xmi:id="_MK8t4PahEeGXVPdyAVek3A" type="4001" element="_MKurcPahEeGXVPdyAVek3A" source="_IwKpEPahEeGXVPdyAVek3A" target="_IybS4PahEeGXVPdyAVek3A">
+            <children xmi:type="notation:Node" xmi:id="_MK9U8fahEeGXVPdyAVek3A" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MK9U8vahEeGXVPdyAVek3A" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_MK98APahEeGXVPdyAVek3A" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MK98AfahEeGXVPdyAVek3A" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_MK98AvahEeGXVPdyAVek3A" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MK98A_ahEeGXVPdyAVek3A" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_MK8t4fahEeGXVPdyAVek3A"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_MK8t4vahEeGXVPdyAVek3A" fontName="Ubuntu"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_MK9U8PahEeGXVPdyAVek3A" points="[15, 8, -185, -56]$[131, 76, -69, 12]"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_MK-jEPahEeGXVPdyAVek3A" id="(0.8727272727272727,0.5728155339805825)"/>
+          </edges>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_IvG5IvahEeGXVPdyAVek3A" name="a" outgoingEdges="_MKurcPahEeGXVPdyAVek3A" incomingEdges="_IvHgT_ahEeGXVPdyAVek3A" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="migrationmodeler:Node" href="test.migrationmodeler#//@representations.0/@nodes.0"/>
+        <semanticElements xmi:type="migrationmodeler:Node" href="test.migrationmodeler#//@representations.0/@nodes.0"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_IvG5I_ahEeGXVPdyAVek3A">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_IvG5JPahEeGXVPdyAVek3A"/>
+          <description xmi:type="style:SquareDescription" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@nodeMappings[name='node1']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_IvG5JfahEeGXVPdyAVek3A"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_IvG5JvahEeGXVPdyAVek3A" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@nodeMappings[name='node1']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_IvG5J_ahEeGXVPdyAVek3A" name="b" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="migrationmodeler:Node" href="test.migrationmodeler#//@representations.0/@nodes.1"/>
+        <semanticElements xmi:type="migrationmodeler:Node" href="test.migrationmodeler#//@representations.0/@nodes.1"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_IvG5KPahEeGXVPdyAVek3A" name="bordered1" outgoingEdges="_IvHgVPahEeGXVPdyAVek3A" width="3" height="3" resizeKind="NSEW">
+          <target xmi:type="migrationmodeler:Bordered" href="test.migrationmodeler#//@representations.0/@nodes.1/@bordereds.0"/>
+          <semanticElements xmi:type="migrationmodeler:Bordered" href="test.migrationmodeler#//@representations.0/@nodes.1/@bordereds.0"/>
+          <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_IvHgMPahEeGXVPdyAVek3A">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_IvHgMfahEeGXVPdyAVek3A"/>
+            <description xmi:type="style:LozengeNodeDescription" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@nodeMappings[name='node1']/@borderedNodeMappings[name='bordered']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_IvHgMvahEeGXVPdyAVek3A"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_IvHgM_ahEeGXVPdyAVek3A" red="136" green="136" blue="136"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@nodeMappings[name='node1']/@borderedNodeMappings[name='bordered']"/>
+        </ownedBorderedNodes>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_IvHgNPahEeGXVPdyAVek3A">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_IvHgNfahEeGXVPdyAVek3A"/>
+          <description xmi:type="style:SquareDescription" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@nodeMappings[name='node1']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_IvHgNvahEeGXVPdyAVek3A"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_IvHgN_ahEeGXVPdyAVek3A" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@nodeMappings[name='node1']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_IvHgOPahEeGXVPdyAVek3A" name="c" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="migrationmodeler:Node" href="test.migrationmodeler#//@representations.0/@nodes.2"/>
+        <semanticElements xmi:type="migrationmodeler:Node" href="test.migrationmodeler#//@representations.0/@nodes.2"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_IvHgOfahEeGXVPdyAVek3A">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_IvHgOvahEeGXVPdyAVek3A"/>
+          <description xmi:type="style:SquareDescription" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@nodeMappings[name='node1']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_IvHgO_ahEeGXVPdyAVek3A"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_IvHgPPahEeGXVPdyAVek3A" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@nodeMappings[name='node1']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_IvHgPfahEeGXVPdyAVek3A" name="a" outgoingEdges="_IvHgT_ahEeGXVPdyAVek3A">
+        <target xmi:type="migrationmodeler:Container" href="test.migrationmodeler#//@representations.0/@containers.0"/>
+        <semanticElements xmi:type="migrationmodeler:Container" href="test.migrationmodeler#//@representations.0/@containers.0"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_JahNoPahEeGXVPdyAVek3A">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JahNofahEeGXVPdyAVek3A"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@additionalLayers[name='layerA']/@containerMappings[name='containerLayerA']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JahNovahEeGXVPdyAVek3A"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JahNo_ahEeGXVPdyAVek3A" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JahNpPahEeGXVPdyAVek3A" red="246" green="139" blue="139"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMappingImport" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@additionalLayers[name='layerA']/@containerMappings[name='containerLayerA']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_IvHgQ_ahEeGXVPdyAVek3A" name="b" incomingEdges="_IvHgVPahEeGXVPdyAVek3A">
+        <target xmi:type="migrationmodeler:Container" href="test.migrationmodeler#//@representations.0/@containers.1"/>
+        <semanticElements xmi:type="migrationmodeler:Container" href="test.migrationmodeler#//@representations.0/@containers.1"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Jah0sPahEeGXVPdyAVek3A">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Jah0sfahEeGXVPdyAVek3A"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@additionalLayers[name='layerA']/@containerMappings[name='containerLayerA']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Jah0svahEeGXVPdyAVek3A"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Jah0s_ahEeGXVPdyAVek3A" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Jah0tPahEeGXVPdyAVek3A" red="246" green="139" blue="139"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMappingImport" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@additionalLayers[name='layerA']/@containerMappings[name='containerLayerA']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_IvHgSfahEeGXVPdyAVek3A" name="c" outgoingEdges="_KuUX0PahEeGXVPdyAVek3A">
+        <target xmi:type="migrationmodeler:Container" href="test.migrationmodeler#//@representations.0/@containers.2"/>
+        <semanticElements xmi:type="migrationmodeler:Container" href="test.migrationmodeler#//@representations.0/@containers.2"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_JaibwPahEeGXVPdyAVek3A">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JaibwfahEeGXVPdyAVek3A"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@additionalLayers[name='layerA']/@containerMappings[name='containerLayerA']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JaibwvahEeGXVPdyAVek3A"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Jaibw_ahEeGXVPdyAVek3A" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_JaibxPahEeGXVPdyAVek3A" red="246" green="139" blue="139"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMappingImport" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@additionalLayers[name='layerA']/@containerMappings[name='containerLayerA']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_IvHgT_ahEeGXVPdyAVek3A" incomingEdges="_KuUX0PahEeGXVPdyAVek3A" sourceNode="_IvHgPfahEeGXVPdyAVek3A" targetNode="_IvG5IvahEeGXVPdyAVek3A">
+        <target xmi:type="migrationmodeler:Edge" href="test.migrationmodeler#//@representations.0/@edges.0"/>
+        <semanticElements xmi:type="migrationmodeler:Edge" href="test.migrationmodeler#//@representations.0/@edges.0"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_IvHgUPahEeGXVPdyAVek3A" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@edgeMappings[name='edge']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_IvHgUfahEeGXVPdyAVek3A" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_IvHgUvahEeGXVPdyAVek3A">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_IvHgU_ahEeGXVPdyAVek3A"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@edgeMappings[name='edge']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_IvHgVPahEeGXVPdyAVek3A" incomingEdges="_MKurcPahEeGXVPdyAVek3A" sourceNode="_IvG5KPahEeGXVPdyAVek3A" targetNode="_IvHgQ_ahEeGXVPdyAVek3A">
+        <target xmi:type="migrationmodeler:Edge" href="test.migrationmodeler#//@representations.0/@edges.1"/>
+        <semanticElements xmi:type="migrationmodeler:Edge" href="test.migrationmodeler#//@representations.0/@edges.1"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_IvHgVfahEeGXVPdyAVek3A" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@edgeMappings[name='edge']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_IvHgVvahEeGXVPdyAVek3A" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_IvHgV_ahEeGXVPdyAVek3A">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_IvHgWPahEeGXVPdyAVek3A"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@edgeMappings[name='edge']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_JaZ44PahEeGXVPdyAVek3A" name="a" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="migrationmodeler:Node" href="test.migrationmodeler#//@representations.0/@nodes.0"/>
+        <semanticElements xmi:type="migrationmodeler:Node" href="test.migrationmodeler#//@representations.0/@nodes.0"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_Jaaf8PahEeGXVPdyAVek3A">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JabHAPahEeGXVPdyAVek3A"/>
+          <description xmi:type="style:SquareDescription" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@additionalLayers[name='layerA']/@nodeMappings[name='nodeLayerA']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JabHAfahEeGXVPdyAVek3A"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_JabHAvahEeGXVPdyAVek3A" red="173" green="127" blue="168"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@additionalLayers[name='layerA']/@nodeMappings[name='nodeLayerA']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_JabuEPahEeGXVPdyAVek3A" name="b" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="migrationmodeler:Node" href="test.migrationmodeler#//@representations.0/@nodes.1"/>
+        <semanticElements xmi:type="migrationmodeler:Node" href="test.migrationmodeler#//@representations.0/@nodes.1"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_JabuEfahEeGXVPdyAVek3A">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_JabuEvahEeGXVPdyAVek3A"/>
+          <description xmi:type="style:SquareDescription" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@additionalLayers[name='layerA']/@nodeMappings[name='nodeLayerA']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_JabuE_ahEeGXVPdyAVek3A"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_JabuFPahEeGXVPdyAVek3A" red="173" green="127" blue="168"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@additionalLayers[name='layerA']/@nodeMappings[name='nodeLayerA']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_JacVIPahEeGXVPdyAVek3A" name="c" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="migrationmodeler:Node" href="test.migrationmodeler#//@representations.0/@nodes.2"/>
+        <semanticElements xmi:type="migrationmodeler:Node" href="test.migrationmodeler#//@representations.0/@nodes.2"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_Jac8MPahEeGXVPdyAVek3A">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Jac8MfahEeGXVPdyAVek3A"/>
+          <description xmi:type="style:SquareDescription" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@additionalLayers[name='layerA']/@nodeMappings[name='nodeLayerA']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Jac8MvahEeGXVPdyAVek3A"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_Jac8M_ahEeGXVPdyAVek3A" red="173" green="127" blue="168"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@additionalLayers[name='layerA']/@nodeMappings[name='nodeLayerA']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_KuUX0PahEeGXVPdyAVek3A" sourceNode="_IvHgSfahEeGXVPdyAVek3A" targetNode="_IvHgT_ahEeGXVPdyAVek3A">
+        <target xmi:type="migrationmodeler:Edge" href="test.migrationmodeler#//@representations.0/@edges.2"/>
+        <semanticElements xmi:type="migrationmodeler:Edge" href="test.migrationmodeler#//@representations.0/@edges.2"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_KuU-4PahEeGXVPdyAVek3A" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@edgeMappings[name='edge']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_KuU-4fahEeGXVPdyAVek3A" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_KuU-4vahEeGXVPdyAVek3A">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_KuU-4_ahEeGXVPdyAVek3A"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@edgeMappings[name='edge']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_MKurcPahEeGXVPdyAVek3A" sourceNode="_IvG5IvahEeGXVPdyAVek3A" targetNode="_IvHgVPahEeGXVPdyAVek3A">
+        <target xmi:type="migrationmodeler:Edge" href="test.migrationmodeler#//@representations.0/@edges.3"/>
+        <semanticElements xmi:type="migrationmodeler:Edge" href="test.migrationmodeler#//@representations.0/@edges.3"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_MKurcfahEeGXVPdyAVek3A" size="2">
+          <description xmi:type="style:EdgeStyleDescription" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@edgeMappings[name='edge']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_MKurcvahEeGXVPdyAVek3A" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_MKurc_ahEeGXVPdyAVek3A">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MKurdPahEeGXVPdyAVek3A"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMapping" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@edgeMappings[name='edge']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_IvHgWfahEeGXVPdyAVek3A"/>
+      <activatedLayers xmi:type="description_1:Layer" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer"/>
+      <activatedLayers xmi:type="description_1:AdditionalLayer" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@additionalLayers[name='layerA']"/>
+      <target xmi:type="migrationmodeler:Diagram" href="test.migrationmodeler#//@representations.0"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="edgeToFromEdgeTest.odesign#//@ownedViewpoints[name='edgeToEdgeTest']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

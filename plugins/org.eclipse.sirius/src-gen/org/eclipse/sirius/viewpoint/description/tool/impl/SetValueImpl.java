@@ -31,7 +31,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em>Value Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class SetValueImpl extends ContainerModelOperationImpl implements SetValue {

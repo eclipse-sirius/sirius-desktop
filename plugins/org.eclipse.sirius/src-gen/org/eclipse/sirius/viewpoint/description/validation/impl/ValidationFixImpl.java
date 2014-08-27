@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
  * <em>Initial Operation</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ValidationFixImpl extends EObjectImpl implements ValidationFix {

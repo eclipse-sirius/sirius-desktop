@@ -1,0 +1,66 @@
+h1. Increase size of a node without modifying location of its children
+
+h2. Preamble
+
+_Summary_: Resize a node to the left, upwards, or both, without modifying the location of its children.
+
+|_. Version |_. Status |_. Date        |_. Authors |_. Changes |
+| v0.1        | DRAFT    | 2014-08-05 | lredor    | Initial version. |
+| v1.0        | PROPOSAL | 2014-08-14 | lredor    | Fix typo. |
+| v1.1        | PROPOSAL | 2014-08-14 | lredor    | Consider "comment 6 of bugzilla":https://bugs.eclipse.org/bugs/show_bug.cgi?id=441090#c6. |
+| v1.2        | PROPOSAL | 2014-08-14 | lredor    | Consider "comment 5 of bugzilla":https://bugs.eclipse.org/bugs/show_bug.cgi?id=441090#c6. |
+| v1.3        | PROPOSAL | 2014-08-20 | lredor    | Replace shortcut. |
+
+_Relevant tickets_:
+* "441090, Increase size of a node without modifying location of its children":https://bugs.eclipse.org/bugs/show_bug.cgi?id=441090
+
+h2. Introduction
+
+The goal of this feature is to be able to resize a node to the left, upwards, or both, without modifying the location of its children (elements inside a container and border nodes).
+!images/containerResize.gif!
+Currently, as you can see above, with the old behavior, the location of the children are relative to the container.
+With the new behavior, the children remain at the same location.
+
+h2. Detailed Specification
+
+The old behavior, the current one, will remain available with a specific shortcut. Shift, Ctrl and Alt is already used by other GMF behaviors during resize. So we must use function key as shortcut. The chosen function is *F3* (not used by other functions on diagram as F5 for refresh for example).
+
+For information the other shortcuts used by GMF are:
+* Control key: Centered resize
+* Shift key: Resize that keeps ratio
+* Alt key: Resize that disables the snap
+
+The possible contained elements are:
+* Another container (list or not)
+* A child node
+* A border node. In this case, the border node can move, but only to stay on the same side.
+
+h2. Backward Compatibility and Migration Paths
+
+This evolution does not change any API.
+
+h3. User Interface Changes
+
+No user interface change.
+
+h3. Documentation Changes
+
+This new behavior should be added in the New and Noteworthy documentation. 
+A note should also be added in the user doc to explain the shortcut for the current behavior (and possibly for the existing resize shortcuts).
+
+h2. Tests and Non-regression strategy
+
+Add new tests that resize container with at least one border node and one child node, with the shortcut and without the shortcut.
+Sample of tests that resize elements:
+* org.eclipse.sirius.tests.swtbot.sequence.InteractionUseResizeTests
+* org.eclipse.sirius.tests.swtbot.PortPositionStabilityTest
+
+h2. Implementation choices and tradeoffs
+
+It would actually be a good idea to make the new behavior the default one. Another choice would be to enable the new behavior with the shortcut.
+
+Excluded shortcuts:
+* The shortcut is not only a character key because this can be in conflict with the direct edit mode (if enabled).
+* The combination with ALT key is already used to activate menu.
+* The combination with SHIFT key is already used for uppercase key of direct edit mode.
+* The combination with CTRL key can conflict with action shortcuts. For example, "CTRL+r" conflicts with the reveal all action.

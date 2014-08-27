@@ -69,7 +69,7 @@ import org.eclipse.sirius.viewpoint.Style;
  * <em>Candidates Mapping</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DNodeImpl extends DDiagramElementImpl implements DNode {

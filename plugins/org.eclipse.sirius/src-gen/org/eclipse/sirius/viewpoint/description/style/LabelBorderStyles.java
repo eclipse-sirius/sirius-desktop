@@ -17,10 +17,10 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Label Border Styles</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A group of LabelBorderStyleDescription to store in
  * Environment.xmi. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Label Border Style Descriptions</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getLabelBorderStyles()
  * @model
  * @generated

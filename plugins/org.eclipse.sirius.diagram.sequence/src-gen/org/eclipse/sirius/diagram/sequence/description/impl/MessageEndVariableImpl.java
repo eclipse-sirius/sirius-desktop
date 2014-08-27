@@ -20,7 +20,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractVariableImpl;
  * <em><b>Message End Variable</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class MessageEndVariableImpl extends AbstractVariableImpl implements MessageEndVariable {

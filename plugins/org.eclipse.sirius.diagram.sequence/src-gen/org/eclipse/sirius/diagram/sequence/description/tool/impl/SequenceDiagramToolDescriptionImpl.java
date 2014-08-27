@@ -20,7 +20,7 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
  * <em><b>Sequence Diagram Tool Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class SequenceDiagramToolDescriptionImpl extends EObjectImpl implements SequenceDiagramToolDescription {

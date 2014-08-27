@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" name="read_only_column" version="8.0.0">
+  <ownedViewpoints name="read_only_column" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="read_only_column" domainClass="ecore.EPackage">
+      <ownedLineMappings name="Class" domainClass="ecore.EClass" semanticCandidatesExpression="&lt;%eClassifiers%>" headerLabelExpression="&lt;%name%>">
+        <ownedSubLines name="EReference" domainClass="ecore.EReference" semanticCandidatesExpression="&lt;%eReferences%>"/>
+      </ownedLineMappings>
+      <ownedColumnMappings name="Containment1" label="containment1" headerLabelExpression="Containment1" canEdit="&lt;%false%>" featureName="containment" labelExpression="&lt;%containment%>"/>
+      <ownedColumnMappings name="Containment2" label="containment2" headerLabelExpression="Containment2" featureName="containment" labelExpression="&lt;%containment%>"/>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

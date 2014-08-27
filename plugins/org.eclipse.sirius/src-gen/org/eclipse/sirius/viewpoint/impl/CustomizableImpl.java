@@ -31,7 +31,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em>Custom Features</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class CustomizableImpl extends EObjectImpl implements Customizable {

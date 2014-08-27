@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_pvLxoUIWEeO4gvGfTrDuuw" selectedViews="_qqMoYEIWEeO4gvGfTrDuuw" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="VP-4519.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_qqMoYEIWEeO4gvGfTrDuuw" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_qzu-4EIWEeO4gvGfTrDuuw" name="new rep0">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_q0U0wEIWEeO4gvGfTrDuuw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_q0U0wUIWEeO4gvGfTrDuuw" type="Sirius" element="_qzu-4EIWEeO4gvGfTrDuuw" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_WukVhkIYEeO4gvGfTrDuuw" type="2003" element="_WukVgEIYEeO4gvGfTrDuuw">
+            <children xmi:type="notation:Node" xmi:id="_WukViUIYEeO4gvGfTrDuuw" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_WukVikIYEeO4gvGfTrDuuw" type="7004">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_WukVi0IYEeO4gvGfTrDuuw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_WukVjEIYEeO4gvGfTrDuuw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_WukVh0IYEeO4gvGfTrDuuw" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WukViEIYEeO4gvGfTrDuuw" x="345" y="160" width="158" height="113"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_q0U0wkIWEeO4gvGfTrDuuw"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_WukVgEIYEeO4gvGfTrDuuw" name="p1">
+        <target xmi:type="ecore:EPackage" href="VP-4519.ecore#//p1"/>
+        <semanticElements xmi:type="ecore:EPackage" href="VP-4519.ecore#//p1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_WukVgUIYEeO4gvGfTrDuuw">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_WukVgkIYEeO4gvGfTrDuuw"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="VP-4519.odesign#//@ownedViewpoints[name='bug_root']/@ownedRepresentations[name='rep0']/@defaultLayer/@containerMappings[name='package']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_WukVg0IYEeO4gvGfTrDuuw"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_WukVhEIYEeO4gvGfTrDuuw" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_WukVhUIYEeO4gvGfTrDuuw" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="VP-4519.odesign#//@ownedViewpoints[name='bug_root']/@ownedRepresentations[name='rep0']/@defaultLayer/@containerMappings[name='package']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="VP-4519.odesign#//@ownedViewpoints[name='bug_root']/@ownedRepresentations[name='rep0']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_qzu-4UIWEeO4gvGfTrDuuw"/>
+      <activatedLayers xmi:type="description_1:Layer" href="VP-4519.odesign#//@ownedViewpoints[name='bug_root']/@ownedRepresentations[name='rep0']/@defaultLayer"/>
+      <activatedLayers xmi:type="description_1:AdditionalLayer" href="VP-4519.odesign#//@ownedViewpoints[name='bug_root']/@ownedRepresentations[name='rep0']/@additionalLayers[name='op']"/>
+      <target xmi:type="ecore:EPackage" href="VP-4519.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="VP-4519.odesign#//@ownedViewpoints[name='bug_root']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_a-16AEVcEeOwmJdud0GZZg" initialized="true">
+    <viewpoint xmi:type="description:Viewpoint" href="../description/My_1.odesign#//@ownedViewpoints[name='bug_root_extension']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

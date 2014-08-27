@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -66,16 +66,14 @@ public class ForTask extends AbstractOperationTask implements ICreationTask, IDe
 
     @Override
     public void execute() throws MetaClassNotFoundException, FeatureNotFoundException {
-
         // create at the runtime the children tasks.
         final List<?> contextTargets = CommandContext.getContextTargets(forOp, context);
-        final Iterator<?> iterTarget = contextTargets.iterator();
-        EObject childOperationsContext = context.getCurrentTarget();
-        while (iterTarget.hasNext()) {
-            final Object currentTarget = iterTarget.next();
-            final String iteratorName = forOp.getIteratorName();
-            ICommandTask childTask;
 
+        final String iteratorName = forOp.getIteratorName();
+        EObject childOperationsContext = context.getCurrentTarget();
+
+        for (final Object currentTarget : contextTargets) {
+            ICommandTask childTask;
             if (currentTarget instanceof EObject) {
                 childOperationsContext = (EObject) currentTarget;
             }
@@ -94,9 +92,7 @@ public class ForTask extends AbstractOperationTask implements ICreationTask, IDe
         }
 
         // execute the created children
-        final Iterator<ICommandTask> it = this.getChildrenTasks().iterator();
-        while (it.hasNext()) {
-            final ICommandTask childTask = it.next();
+        for (ICommandTask childTask : this.getChildrenTasks()) {
             childTask.execute();
         }
     }

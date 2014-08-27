@@ -54,7 +54,7 @@ import org.eclipse.sirius.viewpoint.description.DAnnotationEntry;
  * Version</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DAnalysisImpl extends EObjectImpl implements DAnalysis {

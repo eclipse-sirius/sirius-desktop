@@ -36,7 +36,7 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
  * <em>Finishing End Predecessor</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class StateCreationToolImpl extends NodeCreationDescriptionImpl implements StateCreationTool {

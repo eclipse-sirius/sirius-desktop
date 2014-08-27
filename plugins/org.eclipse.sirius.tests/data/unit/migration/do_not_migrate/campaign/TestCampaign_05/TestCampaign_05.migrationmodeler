@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<migrationmodeler:TestCase xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:migrationmodeler="http://www.eclipse.org/sirius/tests/sample/migrationmodeler">
+  <representations xsi:type="migrationmodeler:Diagram" name="1">
+    <nodes id="A"/>
+    <filters id="Test Filter"/>
+    <layers id="Test Layer"/>
+  </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="2">
+    <containers id="A"/>
+    <filters id="Test Filter"/>
+    <layers id="Test Layer"/>
+  </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="3">
+    <containers id="A">
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']" displayed="false">
+        <layout x="215" y="75" width="150" height="70"/>
+        <ownedStyle>
+          <labelColor/>
+        </ownedStyle>
+      </containerRepresentations>
+      <elements xsi:type="migrationmodeler:Bordered" id="B"/>
+    </containers>
+    <filters id="Test Filter"/>
+    <layers id="Test Layer"/>
+  </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="4">
+    <containers id="A">
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']" displayed="false">
+        <layout x="225" y="65" width="213" height="123"/>
+        <ownedStyle>
+          <labelColor/>
+        </ownedStyle>
+      </containerRepresentations>
+      <elements xsi:type="migrationmodeler:Node" id="B"/>
+    </containers>
+    <filters id="Test Filter"/>
+    <layers id="Test Layer"/>
+  </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="5">
+    <containers id="A">
+      <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler']/@ownedRepresentations[name='diagram']/@containerMappings[name='container']" displayed="false">
+        <layout x="140" y="45" width="308" height="153"/>
+        <ownedStyle>
+          <labelColor/>
+        </ownedStyle>
+      </containerRepresentations>
+      <elements xsi:type="migrationmodeler:Container" id="B"/>
+    </containers>
+    <filters id="Test Filter"/>
+    <layers id="Test Layer"/>
+  </representations>
+</migrationmodeler:TestCase>

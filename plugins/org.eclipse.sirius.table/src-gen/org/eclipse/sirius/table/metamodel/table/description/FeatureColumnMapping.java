@@ -13,7 +13,7 @@ package org.eclipse.sirius.table.metamodel.table.description;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Feature Column Mapping</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -28,7 +28,7 @@ package org.eclipse.sirius.table.metamodel.table.description;
  * <em>Feature Parent Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getFeatureColumnMapping()
  * @model
  * @generated

@@ -13,7 +13,7 @@ package org.eclipse.sirius.tree.description;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Tree Item Deletion Tool</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -22,7 +22,7 @@ package org.eclipse.sirius.tree.description;
  * <em>Mapping</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemDeletionTool()
  * @model
  * @generated

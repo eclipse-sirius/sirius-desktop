@@ -31,7 +31,7 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * <em>Outputs</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TTransformerImpl extends EObjectImpl implements TTransformer {

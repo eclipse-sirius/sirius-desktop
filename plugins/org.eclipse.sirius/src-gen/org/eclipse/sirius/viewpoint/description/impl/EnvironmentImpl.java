@@ -45,7 +45,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
  * <em>Label Border Styles</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class EnvironmentImpl extends EObjectImpl implements Environment {

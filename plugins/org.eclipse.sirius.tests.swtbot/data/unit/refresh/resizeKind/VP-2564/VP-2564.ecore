@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="VP-2564"
+    nsURI="VP-2564" nsPrefix="VP-2564">
+  <eClassifiers xsi:type="ecore:EClass" name="Node1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="node2" eType="#//Nodes2"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="att1" eType="#//MyDataType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Nodes2"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="MyDataType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Nodes3"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeWithAttributeAsBorderedNodes1" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="att1" eType="#//MyDataType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="att2" eType="#//MyDataType"/>
+  </eClassifiers>
+  <eSubpackages name="EPackage1">
+    <eClassifiers xsi:type="ecore:EClass" name="EClass1"/>
+    <eSubpackages name="EPackage11"/>
+  </eSubpackages>
+  <eSubpackages name="EPackage2">
+    <eSubpackages name="EPackage21">
+      <eClassifiers xsi:type="ecore:EClass" name="EClass211">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="eClass221" eType="#//EPackage2/EPackage22/EClass221"/>
+      </eClassifiers>
+    </eSubpackages>
+    <eSubpackages name="EPackage22">
+      <eClassifiers xsi:type="ecore:EClass" name="EClass221"/>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="EPackage3">
+    <eClassifiers xsi:type="ecore:EClass" name="EClass31">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="eClass41" eType="#//EPackage4/EClass41"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="EPackage4" nsPrefix="">
+    <eClassifiers xsi:type="ecore:EClass" name="EClass41"/>
+  </eSubpackages>
+</ecore:EPackage>

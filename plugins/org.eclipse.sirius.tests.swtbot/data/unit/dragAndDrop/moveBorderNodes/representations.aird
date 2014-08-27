@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_xpPzkB7gEeSW1smTCfTeKw" selectedViews="_8XiQUB7iEeSIA4_bF7bHTQ" version="8.1.1">
+  <models xmi:type="ecore:EPackage" href="My.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_8XiQUB7iEeSIA4_bF7bHTQ" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_BRoy0B7jEeSIA4_bF7bHTQ" name="new BorderNodeDiagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_BSMzgB7jEeSIA4_bF7bHTQ" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_BSMzgR7jEeSIA4_bF7bHTQ" type="Sirius" element="_BRoy0B7jEeSIA4_bF7bHTQ" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_HKMhoB7jEeSIA4_bF7bHTQ" type="2002" element="_HJxD0B7jEeSIA4_bF7bHTQ">
+            <children xmi:type="notation:Node" xmi:id="_HKRaIB7jEeSIA4_bF7bHTQ" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_HKSoQB7jEeSIA4_bF7bHTQ" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_HKSoQR7jEeSIA4_bF7bHTQ"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_HKSoQh7jEeSIA4_bF7bHTQ"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_HKVEgB7jEeSIA4_bF7bHTQ" type="3012" element="_HJ94IB7jEeSIA4_bF7bHTQ">
+              <children xmi:type="notation:Node" xmi:id="_HKZ9AB7jEeSIA4_bF7bHTQ" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_HKZ9AR7jEeSIA4_bF7bHTQ" x="11" y="-10"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_HKljMB7jEeSIA4_bF7bHTQ" type="3003" element="_HJ-fMB7jEeSIA4_bF7bHTQ">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_HKljMR7jEeSIA4_bF7bHTQ" fontName="Comic Sans MS" fontHeight="12"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HKljMh7jEeSIA4_bF7bHTQ"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_HKVEgR7jEeSIA4_bF7bHTQ" fontName="Comic Sans MS" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HKVEgh7jEeSIA4_bF7bHTQ" x="35" y="-22" width="30" height="30"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_HKif4B7jEeSIA4_bF7bHTQ" type="3012" element="_HJ_GQB7jEeSIA4_bF7bHTQ">
+              <children xmi:type="notation:Node" xmi:id="_HKjG8B7jEeSIA4_bF7bHTQ" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_HKjG8R7jEeSIA4_bF7bHTQ" x="11" y="-10"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_HKmKQB7jEeSIA4_bF7bHTQ" type="3003" element="_HJ_tUB7jEeSIA4_bF7bHTQ">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_HKmKQR7jEeSIA4_bF7bHTQ" fontName="Comic Sans MS" fontHeight="12"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HKmKQh7jEeSIA4_bF7bHTQ"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_HKif4R7jEeSIA4_bF7bHTQ" fontName="Comic Sans MS" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HKif4h7jEeSIA4_bF7bHTQ" x="66" y="-22" width="30" height="30"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_HKjuAB7jEeSIA4_bF7bHTQ" type="3012" element="_HKAUYB7jEeSIA4_bF7bHTQ">
+              <children xmi:type="notation:Node" xmi:id="_HKkVEB7jEeSIA4_bF7bHTQ" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_HKkVER7jEeSIA4_bF7bHTQ" x="11" y="-10"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_HKmxUB7jEeSIA4_bF7bHTQ" type="3003" element="_HKA7cB7jEeSIA4_bF7bHTQ">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_HKmxUR7jEeSIA4_bF7bHTQ" fontName="Comic Sans MS" fontHeight="12"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HKmxUh7jEeSIA4_bF7bHTQ"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_HKjuAR7jEeSIA4_bF7bHTQ" fontName="Comic Sans MS" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HKjuAh7jEeSIA4_bF7bHTQ" x="97" y="-22" width="30" height="30"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_HKMhoR7jEeSIA4_bF7bHTQ" fontName="Comic Sans MS" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HKMhoh7jEeSIA4_bF7bHTQ" x="170" y="80" width="363" height="183"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_BSMzgh7jEeSIA4_bF7bHTQ"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_HJxD0B7jEeSIA4_bF7bHTQ" name="Container">
+        <target xmi:type="ecore:EPackage" href="My.ecore#//Container"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//Container"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_HJ94IB7jEeSIA4_bF7bHTQ" name="A" tooltipText="(35, -22)" width="3" height="3" resizeKind="NSEW">
+          <target xmi:type="ecore:EEnum" href="My.ecore#//Container/A"/>
+          <semanticElements xmi:type="ecore:EEnum" href="My.ecore#//Container/A"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_HJ-fMB7jEeSIA4_bF7bHTQ" showIcon="false" labelPosition="node">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_HJ-fMR7jEeSIA4_bF7bHTQ"/>
+            <description xmi:type="style:SquareDescription" href="borderNode.odesign#//@ownedViewpoints[name='BorderNode']/@ownedRepresentations[name='BorderNodeDiagram']/@defaultLayer/@containerMappings[name='Package']/@borderedNodeMappings[name='Enum']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_HJ-fMh7jEeSIA4_bF7bHTQ"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_Oa0PkB7jEeSIA4_bF7bHTQ" red="39" green="76" blue="114"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="borderNode.odesign#//@ownedViewpoints[name='BorderNode']/@ownedRepresentations[name='BorderNodeDiagram']/@defaultLayer/@containerMappings[name='Package']/@borderedNodeMappings[name='Enum']"/>
+        </ownedBorderedNodes>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_HJ_GQB7jEeSIA4_bF7bHTQ" name="B" tooltipText="(66, -22)" width="3" height="3" resizeKind="NSEW">
+          <target xmi:type="ecore:EEnum" href="My.ecore#//Container/B"/>
+          <semanticElements xmi:type="ecore:EEnum" href="My.ecore#//Container/B"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_HJ_tUB7jEeSIA4_bF7bHTQ" showIcon="false" labelPosition="node">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_HJ_tUR7jEeSIA4_bF7bHTQ"/>
+            <description xmi:type="style:SquareDescription" href="borderNode.odesign#//@ownedViewpoints[name='BorderNode']/@ownedRepresentations[name='BorderNodeDiagram']/@defaultLayer/@containerMappings[name='Package']/@borderedNodeMappings[name='Enum']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_HJ_tUh7jEeSIA4_bF7bHTQ"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_Oa1dsB7jEeSIA4_bF7bHTQ" red="39" green="76" blue="114"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="borderNode.odesign#//@ownedViewpoints[name='BorderNode']/@ownedRepresentations[name='BorderNodeDiagram']/@defaultLayer/@containerMappings[name='Package']/@borderedNodeMappings[name='Enum']"/>
+        </ownedBorderedNodes>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_HKAUYB7jEeSIA4_bF7bHTQ" name="C" tooltipText="(97, -22)" width="3" height="3" resizeKind="NSEW">
+          <target xmi:type="ecore:EEnum" href="My.ecore#//Container/C"/>
+          <semanticElements xmi:type="ecore:EEnum" href="My.ecore#//Container/C"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_HKA7cB7jEeSIA4_bF7bHTQ" showIcon="false" labelPosition="node">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_HKA7cR7jEeSIA4_bF7bHTQ"/>
+            <description xmi:type="style:SquareDescription" href="borderNode.odesign#//@ownedViewpoints[name='BorderNode']/@ownedRepresentations[name='BorderNodeDiagram']/@defaultLayer/@containerMappings[name='Package']/@borderedNodeMappings[name='Enum']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_HKA7ch7jEeSIA4_bF7bHTQ"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_Oa2EwB7jEeSIA4_bF7bHTQ" red="39" green="76" blue="114"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="borderNode.odesign#//@ownedViewpoints[name='BorderNode']/@ownedRepresentations[name='BorderNodeDiagram']/@defaultLayer/@containerMappings[name='Package']/@borderedNodeMappings[name='Enum']"/>
+        </ownedBorderedNodes>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_HJ6NwB7jEeSIA4_bF7bHTQ">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_HJ6NwR7jEeSIA4_bF7bHTQ"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="borderNode.odesign#//@ownedViewpoints[name='BorderNode']/@ownedRepresentations[name='BorderNodeDiagram']/@defaultLayer/@containerMappings[name='Package']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_HJ6Nwh7jEeSIA4_bF7bHTQ"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_OayaYB7jEeSIA4_bF7bHTQ" red="114" green="159" blue="207"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_HJ6NxB7jEeSIA4_bF7bHTQ" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="borderNode.odesign#//@ownedViewpoints[name='BorderNode']/@ownedRepresentations[name='BorderNodeDiagram']/@defaultLayer/@containerMappings[name='Package']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="borderNode.odesign#//@ownedViewpoints[name='BorderNode']/@ownedRepresentations[name='BorderNodeDiagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_BRoy0R7jEeSIA4_bF7bHTQ"/>
+      <activatedLayers xmi:type="description_1:Layer" href="borderNode.odesign#//@ownedViewpoints[name='BorderNode']/@ownedRepresentations[name='BorderNodeDiagram']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="borderNode.odesign#//@ownedViewpoints[name='BorderNode']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

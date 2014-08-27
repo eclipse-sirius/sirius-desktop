@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="Trac1694" version="8.0.0">
+  <ownedViewpoints name="Trac1694" modelFileExtension="uml">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="trac1694" initialisation="true" domainClass="Model">
+      <defaultLayer name="default">
+        <containerMappings name="1694_Package" semanticCandidatesExpression="feature:eAllContents" domainClass="Package">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+      <additionalLayers name="secondLayer">
+        <edgeMappings name="1694_containIn" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Trac1694']/@ownedRepresentations[name='trac1694']/@defaultLayer/@containerMappings[name='1694_Package']" targetMapping="//@ownedViewpoints[name='Trac1694']/@ownedRepresentations[name='trac1694']/@defaultLayer/@containerMappings[name='1694_Package']" targetFinderExpression="feature:eContainer">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </edgeMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

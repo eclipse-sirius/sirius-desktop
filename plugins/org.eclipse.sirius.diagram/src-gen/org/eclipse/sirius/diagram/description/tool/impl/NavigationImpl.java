@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.ContainerModelOperatio
  * <em>Diagram Description</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class NavigationImpl extends ContainerModelOperationImpl implements Navigation {

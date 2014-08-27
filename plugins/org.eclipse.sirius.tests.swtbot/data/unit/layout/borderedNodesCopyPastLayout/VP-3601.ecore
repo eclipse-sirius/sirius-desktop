@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="root">
+  <eSubpackages name="LogicalSystem" nsPrefix="">
+    <eSubpackages name="LC1">
+      <eClassifiers xsi:type="ecore:EClass" name="LogicalFunction1">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="a1"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="a2"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="a3"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="a4"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="a5"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="a6"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="r1" eType="#//LogicalSystem/LC2/LogicalFunction2"/>
+      </eClassifiers>
+    </eSubpackages>
+    <eSubpackages name="LC2">
+      <eClassifiers xsi:type="ecore:EClass" name="LogicalFunction2">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="b1"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="b2"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="b3"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="b4"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="b5"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="b6"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="b7"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="b8"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="r2" eType="#//LogicalSystem/LC1/LogicalFunction1"/>
+      </eClassifiers>
+    </eSubpackages>
+  </eSubpackages>
+</ecore:EPackage>

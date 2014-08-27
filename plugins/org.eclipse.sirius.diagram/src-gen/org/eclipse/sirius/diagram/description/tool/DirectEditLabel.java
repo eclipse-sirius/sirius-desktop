@@ -20,10 +20,10 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Direct Edit Label</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A tool that allows to edit the label of a
  * ViewPointElement. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -38,7 +38,7 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
  * <em>Input Label Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDirectEditLabel()
  * @model
  * @generated

@@ -16,14 +16,14 @@ import org.eclipse.emf.common.util.EList;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Interpolated Color</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> Describes a color which varies between two level
  * color depending on the values of dynamically computed expressions.
  * 
  * @Deprecated : Describes a color which varies between two extremes (red and
  *             green) depending on the values of dynamically computed
  *             expressions. <!-- end-model-doc -->
- * 
+ *
  *             <p>
  *             The following features are supported:
  *             <ul>
@@ -41,7 +41,7 @@ import org.eclipse.emf.common.util.EList;
  *             <em>Color Steps</em>}</li>
  *             </ul>
  *             </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getInterpolatedColor()
  * @model
  * @generated

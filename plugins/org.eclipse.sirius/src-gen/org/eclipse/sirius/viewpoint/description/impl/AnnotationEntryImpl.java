@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * <em>Data</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class AnnotationEntryImpl extends EObjectImpl implements AnnotationEntry {

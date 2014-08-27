@@ -17,7 +17,7 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Diagram Navigation Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -26,7 +26,7 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
  * <em>Diagram Description</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getDiagramNavigationDescription()
  * @model
  * @generated

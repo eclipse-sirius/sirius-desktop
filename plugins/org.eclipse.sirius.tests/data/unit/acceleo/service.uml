@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="_qb8akM37EdqwVrslYOdUDA" name="Empty model">
+  <packagedElement xmi:type="uml:Actor" xmi:id="_KHgFQHsbEdy5YcPAgPrMqQ" name="GoodName"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_P0e2MHsbEdy5YcPAgPrMqQ" name="badName"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_89978HwGEdyjWo9HHQJFAQ" name="FilledActor">
+    <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_J4yzoHwHEdyjWo9HHQJFAQ" name="A state machine"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_QnrGcHwHEdyjWo9HHQJFAQ" name="A"/>
+</uml:Model>

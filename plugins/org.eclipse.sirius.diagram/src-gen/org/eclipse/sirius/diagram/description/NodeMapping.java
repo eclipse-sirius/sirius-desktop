@@ -21,10 +21,10 @@ import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Node Mapping</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> Represents a node mapping. A node mapping allows to
  * create nodes (ViewNode). <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -35,7 +35,7 @@ import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
  * <em>Conditionnal Styles</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getNodeMapping()
  * @model
  * @generated

@@ -15,8 +15,8 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DTree Element Updater</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.tree.TreePackage#getDTreeElementUpdater()
  * @model
  * @generated

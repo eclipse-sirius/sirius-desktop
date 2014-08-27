@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
  * <em>Domain Class</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class SemanticBasedDecorationImpl extends DecorationDescriptionImpl implements SemanticBasedDecoration {

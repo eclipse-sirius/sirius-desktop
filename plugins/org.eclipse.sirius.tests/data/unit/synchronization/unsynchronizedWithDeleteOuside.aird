@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_Tm1tYMJjEeCb79R_6_5Bfg" selectedViews="_UZvxAMJjEeCb79R_6_5Bfg" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="unsynchronizedWithDeleteOuside.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_UZvxAMJjEeCb79R_6_5Bfg" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_VeTlUMJjEeCb79R_6_5Bfg" name="new unsynchroWithDeleteOutsideDiag">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_Ved9YMJjEeCb79R_6_5Bfg" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_Ved9YcJjEeCb79R_6_5Bfg" type="Sirius" element="_VeTlUMJjEeCb79R_6_5Bfg" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_epI9MMJjEeCb79R_6_5Bfg" type="2002" element="_epBocMJjEeCb79R_6_5Bfg">
+            <children xmi:type="notation:Node" xmi:id="_epKLUMJjEeCb79R_6_5Bfg" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_epKyYMJjEeCb79R_6_5Bfg" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_epKyYcJjEeCb79R_6_5Bfg"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_epKyYsJjEeCb79R_6_5Bfg"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_epI9McJjEeCb79R_6_5Bfg" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_epI9MsJjEeCb79R_6_5Bfg" x="195" y="15"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_fRD40MJjEeCb79R_6_5Bfg" type="2001" element="_fQtTgMJjEeCb79R_6_5Bfg">
+            <children xmi:type="notation:Node" xmi:id="_fRFG8MJjEeCb79R_6_5Bfg" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_fRFG8cJjEeCb79R_6_5Bfg" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_fRWMsMJjEeCb79R_6_5Bfg" type="3003" element="_fQt6kMJjEeCb79R_6_5Bfg">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_fRWMscJjEeCb79R_6_5Bfg" fontName="Ubuntu"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fRWMssJjEeCb79R_6_5Bfg"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_fRD40cJjEeCb79R_6_5Bfg" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_fRD40sJjEeCb79R_6_5Bfg" x="25" y="30" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_tNQt8MJjEeCb79R_6_5Bfg" type="2001" element="_tNKnUMJjEeCb79R_6_5Bfg">
+            <children xmi:type="notation:Node" xmi:id="_tNRVAMJjEeCb79R_6_5Bfg" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_tNRVAcJjEeCb79R_6_5Bfg" x="-26" y="-17"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_tNTKMMJjEeCb79R_6_5Bfg" type="3003" element="_tNLOYMJjEeCb79R_6_5Bfg">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_tNTKMcJjEeCb79R_6_5Bfg" fontName="Ubuntu"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tNTKMsJjEeCb79R_6_5Bfg"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_tNQt8cJjEeCb79R_6_5Bfg" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tNQt8sJjEeCb79R_6_5Bfg" x="110" y="30" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_tNR8EMJjEeCb79R_6_5Bfg" type="2002" element="_tNL1cMJjEeCb79R_6_5Bfg">
+            <children xmi:type="notation:Node" xmi:id="_tNSjIMJjEeCb79R_6_5Bfg" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_tNSjIcJjEeCb79R_6_5Bfg" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_tNSjIsJjEeCb79R_6_5Bfg"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_tNSjI8JjEeCb79R_6_5Bfg"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_tNR8EcJjEeCb79R_6_5Bfg" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tNR8EsJjEeCb79R_6_5Bfg" x="365" y="15"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_kCkb0MJqEeCg8ahINYYNSw" type="2002" element="_kCNPcMJqEeCg8ahINYYNSw">
+            <children xmi:type="notation:Node" xmi:id="_kClp8MJqEeCg8ahINYYNSw" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_kClp8cJqEeCg8ahINYYNSw" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_rxodoMKIEeCGRd4bUoktog" type="3008" element="_rxlaUMKIEeCGRd4bUoktog">
+                <children xmi:type="notation:Node" xmi:id="_rxqS0MKIEeCGRd4bUoktog" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_rxq54MKIEeCGRd4bUoktog" type="7002">
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_rxq54cKIEeCGRd4bUoktog"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_rxq54sKIEeCGRd4bUoktog"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_rxodocKIEeCGRd4bUoktog" fontName="Ubuntu" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rxodosKIEeCGRd4bUoktog" x="40" y="39"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_kClp8sJqEeCg8ahINYYNSw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_kClp88JqEeCg8ahINYYNSw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_kClC4MJqEeCg8ahINYYNSw" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kClC4cJqEeCg8ahINYYNSw" x="30" y="105"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_Ved9YsJjEeCb79R_6_5Bfg"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_epBocMJjEeCb79R_6_5Bfg" name="p1">
+        <target xmi:type="ecore:EPackage" href="unsynchronizedWithDeleteOuside.ecore#//p1"/>
+        <semanticElements xmi:type="ecore:EPackage" href="unsynchronizedWithDeleteOuside.ecore#//p1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_epBoccJjEeCb79R_6_5Bfg">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_epCPgMJjEeCb79R_6_5Bfg"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="unsynchronizedWithDeleteOuside.odesign#//@ownedViewpoints[name='unsynchroWithDeleteOutside']/@ownedRepresentations[name='unsynchroWithDeleteOutsideDiag']/@defaultLayer/@containerMappings[name='ContainerPackage']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_epCPgcJjEeCb79R_6_5Bfg"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_epCPgsJjEeCb79R_6_5Bfg" red="114" green="159" blue="207"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_epCPg8JjEeCb79R_6_5Bfg" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="unsynchronizedWithDeleteOuside.odesign#//@ownedViewpoints[name='unsynchroWithDeleteOutside']/@ownedRepresentations[name='unsynchroWithDeleteOutsideDiag']/@defaultLayer/@containerMappings[name='ContainerPackage']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_fQtTgMJjEeCb79R_6_5Bfg" name="C1" width="3" height="3" originalStyle="_fQt6kMJjEeCb79R_6_5Bfg">
+        <target xmi:type="ecore:EClass" href="unsynchronizedWithDeleteOuside.ecore#//C1"/>
+        <semanticElements xmi:type="ecore:EClass" href="unsynchronizedWithDeleteOuside.ecore#//C1"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_fQt6kMJjEeCb79R_6_5Bfg">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fQt6kcJjEeCb79R_6_5Bfg"/>
+          <description xmi:type="style:SquareDescription" href="unsynchronizedWithDeleteOuside.odesign#//@ownedViewpoints[name='unsynchroWithDeleteOutside']/@ownedRepresentations[name='unsynchroWithDeleteOutsideDiag']/@defaultLayer/@nodeMappings[name='NodeClass']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fQt6ksJjEeCb79R_6_5Bfg"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_fQt6k8JjEeCb79R_6_5Bfg" red="138" green="226" blue="52"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="unsynchronizedWithDeleteOuside.odesign#//@ownedViewpoints[name='unsynchroWithDeleteOutside']/@ownedRepresentations[name='unsynchroWithDeleteOutsideDiag']/@defaultLayer/@nodeMappings[name='NodeClass']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_tNKnUMJjEeCb79R_6_5Bfg" name="C1InSubRoot" width="3" height="3" originalStyle="_tNLOYMJjEeCb79R_6_5Bfg">
+        <target xmi:type="ecore:EClass" href="unsynchronizedWithDeleteOuside.ecore#//subRoot/C1InSubRoot"/>
+        <semanticElements xmi:type="ecore:EClass" href="unsynchronizedWithDeleteOuside.ecore#//subRoot/C1InSubRoot"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_tNLOYMJjEeCb79R_6_5Bfg">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_tNLOYcJjEeCb79R_6_5Bfg"/>
+          <description xmi:type="style:SquareDescription" href="unsynchronizedWithDeleteOuside.odesign#//@ownedViewpoints[name='unsynchroWithDeleteOutside']/@ownedRepresentations[name='unsynchroWithDeleteOutsideDiag']/@defaultLayer/@nodeMappings[name='NodeClass']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_tNLOYsJjEeCb79R_6_5Bfg"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_tNLOY8JjEeCb79R_6_5Bfg" red="138" green="226" blue="52"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="unsynchronizedWithDeleteOuside.odesign#//@ownedViewpoints[name='unsynchroWithDeleteOutside']/@ownedRepresentations[name='unsynchroWithDeleteOutsideDiag']/@defaultLayer/@nodeMappings[name='NodeClass']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_tNL1cMJjEeCb79R_6_5Bfg" name="p1InSubRoot">
+        <target xmi:type="ecore:EPackage" href="unsynchronizedWithDeleteOuside.ecore#//subRoot/p1InSubRoot"/>
+        <semanticElements xmi:type="ecore:EPackage" href="unsynchronizedWithDeleteOuside.ecore#//subRoot/p1InSubRoot"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_tNL1ccJjEeCb79R_6_5Bfg">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_tNL1csJjEeCb79R_6_5Bfg"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="unsynchronizedWithDeleteOuside.odesign#//@ownedViewpoints[name='unsynchroWithDeleteOutside']/@ownedRepresentations[name='unsynchroWithDeleteOutsideDiag']/@defaultLayer/@containerMappings[name='ContainerPackage']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_tNL1c8JjEeCb79R_6_5Bfg"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_tNL1dMJjEeCb79R_6_5Bfg" red="114" green="159" blue="207"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_tNL1dcJjEeCb79R_6_5Bfg" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="unsynchronizedWithDeleteOuside.odesign#//@ownedViewpoints[name='unsynchroWithDeleteOutside']/@ownedRepresentations[name='unsynchroWithDeleteOutsideDiag']/@defaultLayer/@containerMappings[name='ContainerPackage']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_kCNPcMJqEeCg8ahINYYNSw" name="subRoot">
+        <target xmi:type="ecore:EPackage" href="unsynchronizedWithDeleteOuside.ecore#//subRoot"/>
+        <semanticElements xmi:type="ecore:EPackage" href="unsynchronizedWithDeleteOuside.ecore#//subRoot"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_kCNPccJqEeCg8ahINYYNSw">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_kCNPcsJqEeCg8ahINYYNSw"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="unsynchronizedWithDeleteOuside.odesign#//@ownedViewpoints[name='unsynchroWithDeleteOutside']/@ownedRepresentations[name='unsynchroWithDeleteOutsideDiag']/@defaultLayer/@containerMappings[name='ContainerPackage']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_kCNPc8JqEeCg8ahINYYNSw"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_kCNPdMJqEeCg8ahINYYNSw" red="114" green="159" blue="207"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_kCNPdcJqEeCg8ahINYYNSw" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="unsynchronizedWithDeleteOuside.odesign#//@ownedViewpoints[name='unsynchroWithDeleteOutside']/@ownedRepresentations[name='unsynchroWithDeleteOutsideDiag']/@defaultLayer/@containerMappings[name='ContainerPackage']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_rxlaUMKIEeCGRd4bUoktog" name="p2">
+          <target xmi:type="ecore:EPackage" href="unsynchronizedWithDeleteOuside.ecore#//p2"/>
+          <semanticElements xmi:type="ecore:EPackage" href="unsynchronizedWithDeleteOuside.ecore#//p2"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_rxmBYMKIEeCGRd4bUoktog">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_rxmBYcKIEeCGRd4bUoktog"/>
+            <description xmi:type="style:FlatContainerStyleDescription" href="unsynchronizedWithDeleteOuside.odesign#//@ownedViewpoints[name='unsynchroWithDeleteOutside']/@ownedRepresentations[name='unsynchroWithDeleteOutsideDiag']/@defaultLayer/@containerMappings[name='ContainerPackage']/@subContainerMappings[name='SubContainerPackage']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_rxmBYsKIEeCGRd4bUoktog"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_rxmBY8KIEeCGRd4bUoktog" red="39" green="76" blue="114"/>
+            <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_rxmBZMKIEeCGRd4bUoktog" red="209" green="209" blue="209"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="unsynchronizedWithDeleteOuside.odesign#//@ownedViewpoints[name='unsynchroWithDeleteOutside']/@ownedRepresentations[name='unsynchroWithDeleteOutsideDiag']/@defaultLayer/@containerMappings[name='ContainerPackage']/@subContainerMappings[name='SubContainerPackage']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="unsynchronizedWithDeleteOuside.odesign#//@ownedViewpoints[name='unsynchroWithDeleteOutside']/@ownedRepresentations[name='unsynchroWithDeleteOutsideDiag']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_VeTlUcJjEeCb79R_6_5Bfg"/>
+      <activatedLayers xmi:type="description_1:Layer" href="unsynchronizedWithDeleteOuside.odesign#//@ownedViewpoints[name='unsynchroWithDeleteOutside']/@ownedRepresentations[name='unsynchroWithDeleteOutsideDiag']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="unsynchronizedWithDeleteOuside.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="unsynchronizedWithDeleteOuside.odesign#//@ownedViewpoints[name='unsynchroWithDeleteOutside']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em>Browse Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ChangeContextImpl extends ContainerModelOperationImpl implements ChangeContext {

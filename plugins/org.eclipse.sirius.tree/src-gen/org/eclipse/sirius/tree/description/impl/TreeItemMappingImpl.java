@@ -88,7 +88,7 @@ import org.eclipse.sirius.tree.description.TreePopupMenu;
  * <em>Popup Menus</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapping {

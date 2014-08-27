@@ -16,10 +16,10 @@ import org.eclipse.sirius.viewpoint.RGBValues;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Ellipse</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> The ellipse style to display a node as an ellipse.
  * <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  * <li>{@link org.eclipse.sirius.diagram.Ellipse#getColor <em>Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getEllipse()
  * @model
  * @generated

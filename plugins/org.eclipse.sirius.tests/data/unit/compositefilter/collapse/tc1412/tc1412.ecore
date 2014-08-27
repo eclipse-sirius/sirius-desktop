@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="aaaa">
+  <eClassifiers xsi:type="ecore:EClass" name="1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="r1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="2"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="3"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="4"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="5"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="6"/>
+  </eClassifiers>
+</ecore:EPackage>

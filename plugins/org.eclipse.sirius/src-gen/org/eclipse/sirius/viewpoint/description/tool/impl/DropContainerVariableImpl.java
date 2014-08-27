@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
  * <em>Sub Variables</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DropContainerVariableImpl extends AbstractVariableImpl implements DropContainerVariable {

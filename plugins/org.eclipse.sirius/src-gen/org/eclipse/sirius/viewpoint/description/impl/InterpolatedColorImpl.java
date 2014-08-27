@@ -49,7 +49,7 @@ import org.eclipse.sirius.viewpoint.description.UserColor;
  * <em>Color Steps</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class InterpolatedColorImpl extends ColorDescriptionImpl implements InterpolatedColor {

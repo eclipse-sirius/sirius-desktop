@@ -1,0 +1,10 @@
+These followings images are made available under the terms of the Eclipse
+Public License v1.0  which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+
+doc/images/00-new-interaction-model-1.png
+doc/images/01-new-interaction-model-2.png
+doc/images/02-open-session-select-interactions-vp.png
+doc/images/03-add-ecore-to-session.png
+doc/images/04-sequence.png
+doc/images/mm-overview.png

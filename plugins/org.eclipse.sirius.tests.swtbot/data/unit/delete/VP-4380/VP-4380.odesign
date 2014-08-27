@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="VP-4380" version="8.0.0">
+  <ownedViewpoints name="deleteFromDiagram">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="deleteFromDiagram" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <edgeMappings name="eRef" sourceMapping="//@ownedViewpoints[name='deleteFromDiagram']/@ownedRepresentations[name='deleteFromDiagram']/@defaultLayer/@containerMappings[name='eClass']" targetMapping="//@ownedViewpoints[name='deleteFromDiagram']/@ownedRepresentations[name='deleteFromDiagram']/@defaultLayer/@containerMappings[name='eClass']" targetFinderExpression="feature:eType" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelExpression="feature:name">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="eClass" semanticCandidatesExpression="&lt;%eClassifiers%>" domainClass="EClass">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.oclIsKindOf(ecore::EStructuralFeature) and self.oclAsType(ecore::EStructuralFeature).required/]">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='deleteFromDiagram']/@ownedRepresentations[name='deleteFromDiagram']/@defaultLayer/@edgeMappings[name='eRef']/@style/@centerLabelStyleDescription" attributeName="labelFormat" value="[viewpoint::FontFormat::bold/]"/>
+          </vsmElementCustomizations>
+        </customization>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

@@ -16,9 +16,9 @@ import org.eclipse.emf.common.util.EList;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DNode Container</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A classic container. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -28,7 +28,7 @@ import org.eclipse.emf.common.util.EList;
  * <em>Children Presentation</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getDNodeContainer()
  * @model
  * @generated

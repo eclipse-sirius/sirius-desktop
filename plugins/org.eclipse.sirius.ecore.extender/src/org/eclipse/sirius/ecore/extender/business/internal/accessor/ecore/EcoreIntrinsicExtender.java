@@ -250,7 +250,7 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
     private boolean eInstanceOf(final EClass eClass, final String superClassName) {
         boolean result = false;
         if (eClass.getName().equals(superClassName)) {
-            result = true;
+            return true;
         }
         Iterator<EClass> it = getEClassesFromName(superClassName);
         while (!result && it.hasNext()) {

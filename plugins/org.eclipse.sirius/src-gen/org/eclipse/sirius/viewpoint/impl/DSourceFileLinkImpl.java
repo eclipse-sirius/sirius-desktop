@@ -36,7 +36,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em>End Position</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DSourceFileLinkImpl extends DNavigationLinkImpl implements DSourceFileLink {

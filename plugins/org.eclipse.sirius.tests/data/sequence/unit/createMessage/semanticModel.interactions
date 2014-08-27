@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interactions:Interaction xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:interactions="http://www.eclipse.org/sirius/sample/interactions" name="MixSample">
+  <participants name="p1">
+    <type href="semanticModelTypes.ecore#//A"/>
+  </participants>
+  <participants name="p2">
+    <type href="semanticModelTypes.ecore#//B"/>
+  </participants>
+  <participants name="p3">
+    <type href="semanticModelTypes.ecore#//C"/>
+  </participants>
+  <participants name="p4">
+    <type href="semanticModelTypes.ecore#//D"/>
+  </participants>
+  <messages xsi:type="interactions:CreateParticipantMessage" name="m_create1" sendingEnd="//@ends.0" receivingEnd="//@ends.1"/>
+  <messages xsi:type="interactions:CreateParticipantMessage" name="m_create2" sendingEnd="//@ends.2" receivingEnd="//@ends.3"/>
+  <messages xsi:type="interactions:CreateParticipantMessage" name="m_create3" sendingEnd="//@ends.4" receivingEnd="//@ends.5"/>
+  <ends xsi:type="interactions:MessageEnd" name="send_m_create1" context="//@participants.0" message="//@messages.0"/>
+  <ends xsi:type="interactions:MessageEnd" name="receive_m_create1" context="//@participants.1" message="//@messages.0"/>
+  <ends xsi:type="interactions:MessageEnd" name="send_m_create2" context="//@participants.1" message="//@messages.1"/>
+  <ends xsi:type="interactions:MessageEnd" name="receive_m_create2" context="//@participants.3" message="//@messages.1"/>
+  <ends xsi:type="interactions:MessageEnd" name="send_m_create3" context="//@participants.3" message="//@messages.2"/>
+  <ends xsi:type="interactions:MessageEnd" name="receive_m_create3" context="//@participants.2" message="//@messages.2"/>
+</interactions:Interaction>

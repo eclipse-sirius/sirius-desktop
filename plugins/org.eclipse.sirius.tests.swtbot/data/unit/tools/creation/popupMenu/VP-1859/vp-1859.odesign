@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="VP-1859" version="8.0.0">
+  <ownedViewpoints name="VP-1859" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="VP-1859" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="EClass" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EClass&quot;)%>" domainClass="EClass">
+          <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW" width="5" height="5">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="Edge" sourceMapping="//@ownedViewpoints[name='VP-1859']/@ownedRepresentations[name='VP-1859']/@defaultLayer/@nodeMappings[name='EClass']" targetMapping="//@ownedViewpoints[name='VP-1859']/@ownedRepresentations[name='VP-1859']/@defaultLayer/@nodeMappings[name='EClass']" targetFinderExpression="&lt;%eSuperTypes%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <centerLabelStyleDescription labelExpression="&lt;%name%>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="EPackage" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EPackage&quot;)%>" domainClass="EPackage" reusedNodeMappings="//@ownedViewpoints[name='VP-1859']/@ownedRepresentations[name='VP-1859']/@defaultLayer/@nodeMappings[name='EClass']" reusedContainerMappings="//@ownedViewpoints[name='VP-1859']/@ownedRepresentations[name='VP-1859']/@defaultLayer/@containerMappings[name='EPackage']">
+          <style xsi:type="style:FlatContainerStyleDescription" labelAlignment="LEFT">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
+          </style>
+        </containerMappings>
+        <toolSections>
+          <ownedTools xsi:type="tool:PopupMenu" name="Create">
+            <menuItemDescription xsi:type="tool:OperationAction" name="1 EClass">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Class&lt;%eContainer().eContents().filter(&quot;EClass&quot;).nSize()%>"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="2 EClass">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Class&lt;%eContainer().eContents().filter(&quot;EClass&quot;).nSize()%>"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Class&lt;%eContainer().eContents().filter(&quot;EClass&quot;).nSize()%>"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="EClass On Edge">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.eContainer(&quot;DSemanticDiagram&quot;).target%>">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Class&lt;%eContainer().eContents().filter(&quot;EClass&quot;).nSize()%>"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="1 EClass" nodeMappings="//@ownedViewpoints[name='VP-1859']/@ownedRepresentations[name='VP-1859']/@defaultLayer/@nodeMappings[name='EClass']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Class&lt;%eContainer().eContents().filter(&quot;EClass&quot;).nSize()%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="2 EClass" nodeMappings="//@ownedViewpoints[name='VP-1859']/@ownedRepresentations[name='VP-1859']/@defaultLayer/@nodeMappings[name='EClass']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Class&lt;%eContainer().eContents().filter(&quot;EClass&quot;).nSize()%>"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Class&lt;%eContainer().eContents().filter(&quot;EClass&quot;).nSize()%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="VP-1859-RealCase" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="EClass" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EClass&quot;)%>" domainClass="EClass">
+          <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW" width="5" height="5">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <containerMappings name="EPackage" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EPackage&quot;)%>" domainClass="EPackage" reusedNodeMappings="//@ownedViewpoints[name='VP-1859']/@ownedRepresentations[name='VP-1859-RealCase']/@defaultLayer/@nodeMappings[name='EClass']">
+          <subContainerMappings name="SubEPackage" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EPackage&quot;)%>" domainClass="EPackage" reusedNodeMappings="//@ownedViewpoints[name='VP-1859']/@ownedRepresentations[name='VP-1859-RealCase']/@defaultLayer/@nodeMappings[name='EClass']" reusedContainerMappings="//@ownedViewpoints[name='VP-1859']/@ownedRepresentations[name='VP-1859-RealCase']/@defaultLayer/@containerMappings[name='EPackage']/@subContainerMappings[name='SubEPackage']">
+            <style xsi:type="style:FlatContainerStyleDescription" labelAlignment="LEFT">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+              <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" labelAlignment="LEFT">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
+          </style>
+        </containerMappings>
+        <toolSections>
+          <ownedTools xsi:type="tool:PopupMenu" name="Group" label="Group">
+            <menuItemDescription xsi:type="tool:OperationAction" name="GroupInPackage" label="Group in new Package">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:eContainer">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="EPackage" referenceName="eSubpackages" variableName="newPackage">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Package&lt;%eContainer().eContents().filter(&quot;EPackage&quot;).nSize()%>"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:For" expression="var:views">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%target%>">
+                      <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="var:newPackage" featureName="eClassifiers"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="Create2PackageOutsideTheSelectedElement" label="Create 2 packages outside the selected element">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:eContainer">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="EPackage" referenceName="eSubpackages" variableName="newPackage">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Package&lt;%eContainer().eContents().filter(&quot;EPackage&quot;).nSize()%>"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="EPackage" referenceName="eSubpackages" variableName="newPackage2">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Package&lt;%eContainer().eContents().filter(&quot;EPackage&quot;).nSize()%>"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

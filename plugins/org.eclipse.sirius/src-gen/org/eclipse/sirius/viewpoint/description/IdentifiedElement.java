@@ -16,10 +16,10 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Identified Element</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> All elements which are identified by its name (id)
  * and which have a label to display it to the end-user. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Label</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getIdentifiedElement()
  * @model
  * @generated

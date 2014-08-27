@@ -31,7 +31,7 @@ import org.eclipse.sirius.description.contribution.DirectEObjectReference;
  * <em>Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DirectEObjectReferenceImpl extends EObjectImpl implements DirectEObjectReference {

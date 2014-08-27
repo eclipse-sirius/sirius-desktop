@@ -15,7 +15,6 @@ import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.tools.internal.util.GMFUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -65,21 +64,8 @@ public class DeleteDRepresentationTask extends AbstractCommandTask {
                     }
                     accessor.eDelete(representation, session != null ? session.getSemanticCrossReferencer() : null);
                 } else {
-                    // tear down incoming references
-                    GMFUtil.tearDownIncomingReferences(representation);
-
-                    // also tear down outgoing references, because we don't want
-                    // reverse-reference lookups to find destroyed objects
-                    GMFUtil.tearDownOutgoingReferences(representation);
-
                     // remove the object from its container
-                    SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(representation).eRemove(representation);
-
-                    // in case it was cross-resource-contained
-                    final Resource res = representation.eResource();
-                    if (res != null) {
-                        res.getContents().remove(representation);
-                    }
+                    accessor.eRemove(representation);
                 }
             }
         }
@@ -95,6 +81,9 @@ public class DeleteDRepresentationTask extends AbstractCommandTask {
      * @see org.eclipse.sirius.business.api.helper.task.ICommandTask#getLabel()
      */
     public String getLabel() {
-        return null;
+        if (representation != null) {
+            return "Delete " + representation.getName();
+        }
+        return "Delete representation";
     }
 }

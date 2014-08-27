@@ -21,7 +21,7 @@ import org.eclipse.sirius.viewpoint.description.style.impl.BasicLabelStyleDescri
  * <em><b>Begin Label Style Description</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class BeginLabelStyleDescriptionImpl extends BasicLabelStyleDescriptionImpl implements BeginLabelStyleDescription {

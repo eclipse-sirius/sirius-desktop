@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="My" version="8.0.0">
+  <ownedViewpoints name="bugReconnectAndDisappear" modelFileExtension="*.ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="package" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <edgeMappings name="ereference edge" semanticCandidatesExpression="feature:eAllContents" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='bugReconnectAndDisappear']/@ownedRepresentations[name='package']/@defaultLayer/@containerMappings[name='eclass']/@borderedNodeMappings[name='ereference']" targetMapping="//@ownedViewpoints[name='bugReconnectAndDisappear']/@ownedRepresentations[name='package']/@defaultLayer/@containerMappings[name='eclass']/@borderedNodeMappings[name='pointing%20ereference'] //@ownedViewpoints[name='bugReconnectAndDisappear']/@ownedRepresentations[name='package']/@defaultLayer/@containerMappings[name='eclass']" targetFinderExpression="var:self" sourceFinderExpression="var:self" domainClass="EReference" useDomainElement="true" reconnections="//@ownedViewpoints[name='bugReconnectAndDisappear']/@ownedRepresentations[name='package']/@defaultLayer/@toolSections.0/@ownedTools[name='REC%20ereference%20edge']">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelExpression="edge &lt;%name%>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="eclass" preconditionExpression="&lt;%eContents().filter(&quot;EReference&quot;).nSize > 0 || eContainer(&quot;EPackage&quot;).eAllContents(&quot;EReference&quot;)[eType == current(1)].nSize > 0%>" semanticCandidatesExpression="feature:eContents" domainClass="EClass" childrenPresentation="List">
+          <borderedNodeMappings name="ereference" semanticCandidatesExpression="feature:eContents" domainClass="EReference">
+            <style xsi:type="style:SquareDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="pointing ereference" semanticCandidatesExpression="&lt;%eContainer(&quot;EPackage&quot;).eAllContents(&quot;EReference&quot;)[eType == current(1)]%>" domainClass="EReference">
+            <style xsi:type="style:SquareDescription" labelExpression="&lt;%name%>target">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="REC ereference edge">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="&lt;%$target%>"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

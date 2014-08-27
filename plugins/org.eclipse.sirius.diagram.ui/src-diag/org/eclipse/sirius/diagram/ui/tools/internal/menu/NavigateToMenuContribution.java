@@ -31,6 +31,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
@@ -79,7 +80,9 @@ import com.google.common.collect.Lists;
  */
 public class NavigateToMenuContribution implements IContributionItemProvider {
 
-    private static final String NAVIGATE_REPRESENTATION_GROUP_SEPARATOR = "navigateRepresentationGroup";
+    private static final String OPEN_REPRESENTATION_GROUP_SEPARATOR = "openRepresentationGroup";
+
+    private static final String MENU_OPEN_REPRESENTATION_ID = "popup.open";
 
     private AdapterFactory adapterFactory;
 
@@ -117,22 +120,50 @@ public class NavigateToMenuContribution implements IContributionItemProvider {
             final Session session = SessionManager.INSTANCE.getSession(semantic);
             if (session != null) {
                 menu.insertBefore("additions", new Separator("generator")); //$NON-NLS-1$ //$NON-NLS-2$
-                final IMenuManager navigate = (IMenuManager) menu.find("navigateMenu"); //$NON-NLS-1$
-
+                // Remove Open action in navigate menu which is not used in
+                // Sirius and avoid to have a gray "Open" item menu in Navigate
+                // menu
+                final IMenuManager navigateManager = (IMenuManager) menu.find("navigateMenu");
+                // if the navigate menu is changed or deleted a NPE is avoided
+                if (navigateManager != null) {
+                    navigateManager.remove("open");
+                }
+                // Add menus to open existing representations
+                final MenuManager openMenuManager = new MenuManager("Open", MENU_OPEN_REPRESENTATION_ID);
+                if (!menu.isEmpty()) {
+                    menu.insertBefore(menu.getItems()[0].getId(), openMenuManager);
+                } else {
+                    menu.add(openMenuManager);
+                }
+                contributeToPopupMenu(openMenuManager, null);
                 final TransactionalEditingDomain transDomain = TransactionUtil.getEditingDomain(designerDiag);
-
                 final Collection<DRepresentation> otherRepresentations = DialectManager.INSTANCE.getRepresentations(semantic, session);
-
                 for (final DRepresentation representation : otherRepresentations) {
-                    if (!EcoreUtil.equals(designerDiag, representation) && isFromActiveSirius(session, representation)) {
-                        navigate.add(buildOpenRepresentationAction(session, representation, editpart, transDomain));
+                    if (!EcoreUtil.equals(designerDiag, representation) && isFromActiveViewpoint(session, representation)) {
+                        openMenuManager.add(buildOpenRepresentationAction(session, representation, editpart, transDomain));
                     }
                 }
                 if (designerObj instanceof DRepresentationElement) {
-                    buildNavigableRepresentationsMenu(navigate, designerObj, session, editpart, transDomain);
+                    buildOpenableRepresentationsMenu(openMenuManager, designerObj, session, editpart, transDomain);
                 }
             }
         }
+    }
+
+    /**
+     * Tests whether a representation description belongs to a viewpoint which
+     * is currently active in the session.
+     * 
+     * @param session
+     *            the current session.
+     * @param representationDescription
+     *            the representation description to check.
+     * @return <code>true</code> if the representation description belongs to a
+     *         viewpoint which is currently active in the session.
+     */
+    private boolean isFromActiveViewpoint(final Session session, final RepresentationDescription representationDescription) {
+        final Viewpoint vp = ViewpointRegistry.getInstance().getViewpoint(representationDescription);
+        return vp != null && session.getSelectedViewpoints(false).contains(vp);
     }
 
     /**
@@ -146,17 +177,21 @@ public class NavigateToMenuContribution implements IContributionItemProvider {
      * @return <code>true</code> if the representation belongs to a viewpoint
      *         which is currently active in the session.
      */
-    private boolean isFromActiveSirius(final Session session, final DRepresentation representation) {
+    private boolean isFromActiveViewpoint(final Session session, final DRepresentation representation) {
         final RepresentationDescription description = DialectManager.INSTANCE.getDescription(representation);
-        final Viewpoint vp = ViewpointRegistry.getInstance().getViewpoint(description);
-        return vp != null && session.getSelectedViewpoints(false).contains(vp);
+        return isFromActiveViewpoint(session, description);
     }
 
-    private void buildNavigableRepresentationsMenu(final IMenuManager navigate, final EObject designerObj, final Session session, final EditPart editpart, final TransactionalEditingDomain transDomain) {
+    private void buildOpenableRepresentationsMenu(final IMenuManager openMenu, final EObject designerObj, final Session session, final EditPart editpart, final TransactionalEditingDomain transDomain) {
         final DRepresentationElement element = (DRepresentationElement) designerObj;
-        final Separator createGroup = new Separator(NAVIGATE_REPRESENTATION_GROUP_SEPARATOR);
-        navigate.add(createGroup);
+        final Separator createGroup = new Separator(OPEN_REPRESENTATION_GROUP_SEPARATOR);
+        openMenu.add(createGroup);
         for (RepresentationNavigationDescription navDesc : element.getMapping().getNavigationDescriptions()) {
+            boolean append = true;
+            if (!isFromActiveViewpoint(session, navDesc.getRepresentationDescription())) {
+                append = false;
+            }
+
             final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(element.getTarget());
             Option<DDiagram> diagram = new EObjectQuery(element).getParentDiagram();
             if (diagram.some()) {
@@ -172,31 +207,30 @@ public class NavigateToMenuContribution implements IContributionItemProvider {
             final InitInterpreterVariablesTask init = new InitInterpreterVariablesTask(variables, interpreter, new EMFCommandFactoryUI());
             init.execute();
 
-            boolean precondition = true;
-            if (!StringUtil.isEmpty(navDesc.getPrecondition())) {
+            final String precondition = navDesc.getPrecondition();
+            if (append && !StringUtil.isEmpty(precondition)) {
+                append = false;
+
                 try {
-                    precondition = interpreter.evaluateBoolean(element.getTarget(), navDesc.getPrecondition());
+                    append = interpreter.evaluateBoolean(element.getTarget(), navDesc.getPrecondition());
                 } catch (final EvaluationException e) {
                     RuntimeLoggerManager.INSTANCE.error(navDesc, ToolPackage.eINSTANCE.getAbstractToolDescription_Precondition(), e);
                 }
             }
 
-            if (precondition) {
-                buildOpenRepresentationActions(navigate, interpreter, navDesc, element, session, editpart, transDomain);
+            if (append) {
+                buildOpenRepresentationActions(openMenu, interpreter, navDesc, element, session, editpart, transDomain);
             }
 
             interpreter.unSetVariable(IInterpreterSiriusVariables.DIAGRAM);
         }
     }
 
-    private void buildOpenRepresentationActions(final IMenuManager navigate, final IInterpreter interpreter, final RepresentationNavigationDescription navDesc, final DRepresentationElement element,
+    private void buildOpenRepresentationActions(final IMenuManager openMenu, final IInterpreter interpreter, final RepresentationNavigationDescription navDesc, final DRepresentationElement element,
             final Session session, final EditPart editpart, final TransactionalEditingDomain transDomain) {
         final Collection<EObject> candidates = findCandidates(element, navDesc, interpreter);
         final Collection<DRepresentation> representations = DialectManager.INSTANCE.getRepresentations(navDesc.getRepresentationDescription(), session);
         for (DRepresentation representation : representations) {
-            if (!isFromActiveSirius(session, representation)) {
-                continue;
-            }
             if (representation instanceof DSemanticDecorator && candidates.contains(((DSemanticDecorator) representation).getTarget())) {
                 interpreter.setVariable(navDesc.getRepresentationNameVariable().getName(), representation.getName());
                 String label = new StringBuffer("Open ").append(navDesc.getName()).append(" : ").append(representation.getName()).toString();
@@ -207,7 +241,7 @@ public class NavigateToMenuContribution implements IContributionItemProvider {
                         RuntimeLoggerManager.INSTANCE.error(navDesc, ToolPackage.eINSTANCE.getRepresentationNavigationDescription_NavigationNameExpression(), e);
                     }
                 }
-                navigate.appendToGroup(NAVIGATE_REPRESENTATION_GROUP_SEPARATOR, buildOpenRepresentationAction(session, representation, editpart, transDomain, label));
+                openMenu.appendToGroup(OPEN_REPRESENTATION_GROUP_SEPARATOR, buildOpenRepresentationAction(session, representation, editpart, transDomain, label));
             }
         }
     }

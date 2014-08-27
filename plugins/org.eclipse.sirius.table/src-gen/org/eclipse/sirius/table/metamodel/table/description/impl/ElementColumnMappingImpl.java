@@ -63,7 +63,7 @@ import org.eclipse.sirius.table.metamodel.table.description.StyleUpdater;
  * <em>Delete</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ElementColumnMappingImpl extends ColumnMappingImpl implements ElementColumnMapping {

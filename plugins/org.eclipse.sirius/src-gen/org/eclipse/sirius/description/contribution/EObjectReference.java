@@ -16,8 +16,8 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>EObject Reference</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.description.contribution.ContributionPackage#getEObjectReference()
  * @model interface="true" abstract="true"
  * @generated

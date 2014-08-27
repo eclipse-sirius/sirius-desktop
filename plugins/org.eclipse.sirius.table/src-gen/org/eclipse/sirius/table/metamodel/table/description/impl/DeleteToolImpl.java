@@ -41,7 +41,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptio
  * <em>First Model Operation</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class DeleteToolImpl extends AbstractToolDescriptionImpl implements DeleteTool {

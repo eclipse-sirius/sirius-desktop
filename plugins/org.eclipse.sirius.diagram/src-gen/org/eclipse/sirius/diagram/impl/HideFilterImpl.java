@@ -21,7 +21,7 @@ import org.eclipse.sirius.diagram.HideFilter;
  * <em><b>Hide Filter</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class HideFilterImpl extends EObjectImpl implements HideFilter {

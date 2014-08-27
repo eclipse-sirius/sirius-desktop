@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="MyEPackage">
+  <eClassifiers xsi:type="ecore:EClass" name="EClass1">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="myAttribute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="myAttribute2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass2">
+    <eOperations name="new Operation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="refEClass1" eType="#//EClass1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Enum">
+    <eLiterals name="1"/>
+    <eLiterals name="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Enum2">
+    <eLiterals name="1"/>
+    <eLiterals name="2"/>
+    <eLiterals name="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EClass 3" eSuperTypes="#//EClass%203"/>
+  <eSubpackages name="Package 1">
+    <eClassifiers xsi:type="ecore:EClass" name="EClass 1 P1">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EClass 2 P2"/>
+    <eSubpackages name="sous package 1">
+      <eClassifiers xsi:type="ecore:EClass" name="EClass 1 P11"/>
+      <eClassifiers xsi:type="ecore:EClass" name="EClass 2 P12"/>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="Package 2">
+    <eClassifiers xsi:type="ecore:EClass" name="EClass 1 P2"/>
+  </eSubpackages>
+  <eSubpackages name="Package 3">
+    <eClassifiers xsi:type="ecore:EClass" name="EClass 1 P3"/>
+  </eSubpackages>
+</ecore:EPackage>

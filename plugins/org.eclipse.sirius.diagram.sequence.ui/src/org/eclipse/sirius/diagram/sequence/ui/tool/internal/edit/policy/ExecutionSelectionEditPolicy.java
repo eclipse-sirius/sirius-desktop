@@ -522,7 +522,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         IFigure feedbackLayer = getFeedbackLayer();
         for (Integer conflict : validator.getInvalidPositions()) {
             Point conflictingPosition = new Point(0, conflict);
-            conflictingPosition.performScale(GraphicalHelper.getZoom((IGraphicalEditPart) getHost()));
+            conflictingPosition.performScale(GraphicalHelper.getZoom(getHost()));
 
             Rectangle bounds = feedbackLayer.getBounds().getCopy();
             bounds.y = conflictingPosition.y;
@@ -537,7 +537,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         Range expansionZone = validator.getExpansionZone();
         if (expansionZone != null && !expansionZone.isEmpty() && expansionZone.width() != 0) {
             Rectangle screenRange = new Rectangle(0, expansionZone.getLowerBound(), 0, expansionZone.width());
-            screenRange.performScale(GraphicalHelper.getZoom((IGraphicalEditPart) getHost()));
+            screenRange.performScale(GraphicalHelper.getZoom(getHost()));
             Range expand = RangeHelper.verticalRange(screenRange);
 
             Rectangle bounds = feedbackLayer.getBounds().getCopy();

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interactions:Interaction xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:interactions="http://www.eclipse.org/sirius/sample/interactions">
+  <participants name="a">
+    <type href="types.ecore#//A"/>
+  </participants>
+  <messages xsi:type="interactions:CallMessage" name="m1" sendingEnd="//@ends.1" receivingEnd="//@ends.2">
+    <operation href="types.ecore#//A/computeSomething"/>
+  </messages>
+  <messages xsi:type="interactions:ReturnMessage" name="m_return2" sendingEnd="//@ends.3" receivingEnd="//@ends.4" invocationMessage="//@messages.0"/>
+  <executions name="e1" owner="//@participants.0" start="//@ends.0" end="//@ends.5"/>
+  <executions name="e2" owner="//@participants.0" start="//@ends.2" end="//@ends.3"/>
+  <ends xsi:type="interactions:ExecutionEnd" name="start_e1" context="//@participants.0" execution="//@executions.0"/>
+  <ends xsi:type="interactions:MessageEnd" name="send_m1" context="//@participants.0" message="//@messages.0"/>
+  <ends xsi:type="interactions:MixEnd" name="start_e2" context="//@participants.0" execution="//@executions.1" message="//@messages.0"/>
+  <ends xsi:type="interactions:MixEnd" name="finish_e2" context="//@participants.0" execution="//@executions.1" message="//@messages.1"/>
+  <ends xsi:type="interactions:MessageEnd" name="receive_m_return2" context="//@participants.0" message="//@messages.1"/>
+  <ends xsi:type="interactions:ExecutionEnd" name="finish_e1" context="//@participants.0" execution="//@executions.0"/>
+</interactions:Interaction>

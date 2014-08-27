@@ -17,7 +17,7 @@ import org.eclipse.sirius.diagram.description.filter.FilterVariable;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Filter Variable Value</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -28,7 +28,7 @@ import org.eclipse.sirius.diagram.description.filter.FilterVariable;
  * <em>Model Element</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getFilterVariableValue()
  * @model
  * @generated

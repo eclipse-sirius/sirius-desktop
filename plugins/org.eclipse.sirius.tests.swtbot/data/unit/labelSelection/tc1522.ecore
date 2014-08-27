@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="trac1522">
+  <eClassifiers xsi:type="ecore:EClass" name="Class1" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref1" eType="#//Class2"
+        eOpposite="#//Class2/ref2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Class2" eSuperTypes="#//Class1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref2" eType="#//Class1"
+        eOpposite="#//Class1/ref1"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref3" eType="#//Class2"/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.IFileQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionStatus;
@@ -40,7 +41,9 @@ import org.eclipse.sirius.ui.tools.api.views.common.item.ItemWrapper;
 import org.eclipse.sirius.ui.tools.internal.views.common.FileSessionFinder;
 import org.eclipse.sirius.ui.tools.internal.views.common.SessionLabelProvider;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IMemento;
@@ -88,6 +91,22 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
                 // Let eclipse look for file and project icons + nature
                 // decoration
                 img = sessionLabelProvider.getImage(element);
+
+                // If the current element is a dangling representation, its icon
+                // is grayed. The grayed image is computed only once for each
+                // type of representation.
+                if (img != null && isDanglingRepresentation(element)) {
+                    DSemanticDecorator dSemanticDecorator = getDSemanticDecorator(element);
+                    String key = dSemanticDecorator.eClass().getName() + "_disabled";
+                    Image disabledImage = SiriusEditPlugin.getPlugin().getImageRegistry().get(key);
+                    if (disabledImage == null) {
+                        ImageDescriptor desc = ImageDescriptor.createFromImage(img);
+                        ImageDescriptor disabledDesc = ImageDescriptor.createWithFlags(desc, SWT.IMAGE_DISABLE);
+                        SiriusEditPlugin.getPlugin().getImageRegistry().put(key, disabledDesc);
+                        disabledImage = SiriusEditPlugin.getPlugin().getImageRegistry().get(key);
+                    }
+                    img = disabledImage;
+                }
             } catch (IllegalStateException e) {
                 // This can happen when trying to get the label of a CDOObject
                 // which
@@ -131,6 +150,24 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
             }
         }
         return img;
+    }
+
+    private boolean isDanglingRepresentation(Object element) {
+        DSemanticDecorator semDec = getDSemanticDecorator(element);
+        return semDec instanceof DRepresentation && new DRepresentationQuery((DRepresentation) semDec).isDanglingRepresentation();
+    }
+
+    private DSemanticDecorator getDSemanticDecorator(Object element) {
+        DSemanticDecorator semDec = null;
+        if (element instanceof ItemWrapper) {
+            Object wrappedObject = ((ItemWrapper) element).getWrappedObject();
+            if (wrappedObject instanceof DSemanticDecorator) {
+                semDec = (DSemanticDecorator) wrappedObject;
+            }
+        } else if (element instanceof DSemanticDecorator) {
+            semDec = (DSemanticDecorator) element;
+        }
+        return semDec;
     }
 
     /**
@@ -273,6 +310,10 @@ public class SiriusCommonLabelProvider implements ICommonLabelProvider, IColorPr
                 }
             } else if (element instanceof DRepresentation) {
                 foreground = VisualBindingManager.getDefault().getColorFromName("dark_blue"); //$NON-NLS-1$
+            }
+
+            if (isDanglingRepresentation(element)) {
+                foreground = VisualBindingManager.getDefault().getColorFromName("light_gray"); //$NON-NLS-1$
             }
         } catch (IllegalStateException e) {
             // This can happen when trying to get the label of a CDOObject which

@@ -31,7 +31,7 @@ import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
  * <em>Mapping</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DeleteLineToolImpl extends DeleteToolImpl implements DeleteLineTool {

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Ecore Document extension 2" version="8.0.0">
+  <ownedViewpoints name="Extension2" label="Extension2">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Extension2Diagram" label="Extension2Diagram" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="Node1" label="Node1" domainClass="EClass" dropDescriptions="//@ownedViewpoints[name='Extension2']/@ownedRepresentations[name='Extension2Diagram']/@toolSection/@ownedTools[name='DragAndDropOnNode1']"/>
+        <containerMappings name="Container1" label="Container1" domainClass="EClass" dropDescriptions="//@ownedViewpoints[name='Extension2']/@ownedRepresentations[name='Extension2Diagram']/@toolSection/@ownedTools[name='DragAndDropOnContainer1']"/>
+      </defaultLayer>
+      <toolSection name="TestDragAndDrop" label="TestDragAndDrop">
+        <ownedTools xsi:type="tool:ContainerDropDescription" name="DragAndDropOnNode1" label="DragAndDropOnNode1" mappings="//@ownedViewpoints[name='Extension2']/@ownedRepresentations[name='Extension2Diagram']/@defaultLayer/@nodeMappings[name='Node1']">
+          <oldContainer name="oldSemanticContainer"/>
+          <newContainer name="newSemanticContainer"/>
+          <element name="element"/>
+          <newViewContainer name="newContainerView"/>
+          <initialOperation/>
+        </ownedTools>
+        <ownedTools xsi:type="tool:ContainerDropDescription" name="DragAndDropOnContainer1" label="DragAndDropOnContainer1">
+          <oldContainer name="oldSemanticContainer"/>
+          <newContainer name="newSemanticContainer"/>
+          <element name="element"/>
+          <newViewContainer name="newContainerView"/>
+          <initialOperation/>
+        </ownedTools>
+      </toolSection>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Extension2DiagramWithImports" label="Extension2DiagramWithImports" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="Node1Import1" label="Node1Import1" importedMapping="//@ownedViewpoints[name='Extension2']/@ownedRepresentations[name='Extension2Diagram']/@defaultLayer/@nodeMappings[name='Node1']"/>
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="Container1Import1" label="Container1Import1" importedMapping="//@ownedViewpoints[name='Extension2']/@ownedRepresentations[name='Extension2Diagram']/@defaultLayer/@containerMappings[name='Container1']"/>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Extension2DiagramWithRecursiveImports" label="Extension2DiagramWithRecursiveImports" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="Node1Import2" label="Node1Import2" importedMapping="//@ownedViewpoints[name='Extension2']/@ownedRepresentations[name='Extension2DiagramWithImports']/@defaultLayer/@nodeMappings[name='Node1Import1']"/>
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="Container1Import2" label="Container1Import2" importedMapping="//@ownedViewpoints[name='Extension2']/@ownedRepresentations[name='Extension2DiagramWithImports']/@defaultLayer/@containerMappings[name='Container1Import1']"/>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Extension2WithDTools" label="Extension2WithDTools" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="ImportedEAttribute" label="ImportedEAttribute" dropDescriptions="//@ownedViewpoints[name='Extension2']/@ownedRepresentations[name='Extension2WithDTools']/@defaultLayer/@toolSections.0/@ownedTools[name='DDToolOnImportedEAttribute']">
+          <importedMapping href="ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Blank%20Entities']/@defaultLayer/@containerMappings[name='Blank%20EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
+        </nodeMappings>
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="ImportedEClass" label="ImportedEClass" dropDescriptions="//@ownedViewpoints[name='Extension2']/@ownedRepresentations[name='Extension2WithDTools']/@defaultLayer/@toolSections.0/@ownedTools[name='DDToolOnImportedEClass']">
+          <deletionDescription href="ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.2/@ownedTools[name='Delete%20ESuperType']"/>
+          <importedMapping href="ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
+        </containerMappings>
+        <toolSections>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DDToolOnImportedEClass">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DDToolOnImportedEAttribute">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation/>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="DiagramExtension" viewpointURI="viewpoint:/org.eclipse.sirius.sample.ecore.design/Design" representationName="Entities">
+      <layers name="ExtensionLayer" label="ExtensionLayer" activeByDefault="true">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="ImportedEAttribute2" label="ImportedEAttribute2" dropDescriptions="//@ownedViewpoints[name='Extension2']/@ownedRepresentationExtensions[name='DiagramExtension']/@layers[name='ExtensionLayer']/@toolSections.0/@ownedTools[name='DDToolOnImportedEAttribute2']">
+          <importedMapping href="ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Blank%20Entities']/@defaultLayer/@containerMappings[name='Blank%20EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
+        </nodeMappings>
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="ImportedExternalEClass" label="ImportedExternalEClass" dropDescriptions="//@ownedViewpoints[name='Extension2']/@ownedRepresentationExtensions[name='DiagramExtension']/@layers[name='ExtensionLayer']/@toolSections.0/@ownedTools[name='DDToolOnImportedExternalEClass']">
+          <importedMapping href="ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']"/>
+        </containerMappings>
+        <toolSections>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DDToolOnImportedExternalEClass">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DDToolOnImportedEAttribute2">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation/>
+          </ownedTools>
+        </toolSections>
+      </layers>
+    </ownedRepresentationExtensions>
+  </ownedViewpoints>
+</description:Group>

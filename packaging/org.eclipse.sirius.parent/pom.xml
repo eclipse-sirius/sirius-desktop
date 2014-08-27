@@ -40,9 +40,9 @@
   </licenses>
 
   <properties>
-    <tycho-version>0.20.0</tycho-version>
-    <tycho-extras-version>0.20.0</tycho-extras-version>
-    <platform-version-name>kepler</platform-version-name>
+    <tycho-version>0.21.0</tycho-version>
+    <tycho-extras-version>0.21.0</tycho-extras-version>
+    <platform-version-name>luna</platform-version-name>
     <tycho.scmUrl>scm:git:http://git.eclipse.org/gitroot/sirius/org.eclipse.sirius.git</tycho.scmUrl>
   </properties>
 

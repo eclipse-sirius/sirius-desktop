@@ -19,11 +19,11 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Tree Item Drag Tool</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> (deprecated) Tool that describes a Drag & Drop
  * operation. The Source of this Drag & Drop will be the Tree item Mapping on
  * which the tool has been defined. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -49,7 +49,7 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
  * <em>Preceding Siblings</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemDragTool()
  * @model
  * @generated

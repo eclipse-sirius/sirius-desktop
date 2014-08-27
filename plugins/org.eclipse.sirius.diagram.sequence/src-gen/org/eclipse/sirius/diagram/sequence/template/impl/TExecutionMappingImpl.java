@@ -51,7 +51,7 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * <em>Conditional Styles</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExecutionMapping {

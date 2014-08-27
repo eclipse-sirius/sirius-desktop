@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,7 +35,6 @@ import org.eclipse.ocl.expressions.Variable;
 import org.eclipse.ocl.helper.Choice;
 import org.eclipse.ocl.helper.ConstraintKind;
 import org.eclipse.ocl.helper.OCLHelper;
-
 import org.eclipse.sirius.common.ocl.DslOclPlugin;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
@@ -202,6 +201,13 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
         } else if (value instanceof Collection) {
             result = new ArrayList<EObject>(((Collection<?>) value).size());
             for (final Object object : (Collection<?>) value) {
+                if (object instanceof EObject) {
+                    result.add((EObject) object);
+                }
+            }
+        } else if (value != null && value.getClass().isArray()) {
+            result = new ArrayList<EObject>(((Object[]) value).length);
+            for (final Object object : (Object[]) value) {
                 if (object instanceof EObject) {
                     result.add((EObject) object);
                 }

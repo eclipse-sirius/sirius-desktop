@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em><b>Tooltip Style Description</b></em>'.
  * 
  * @since 0.9.0<!-- end-user-doc -->
- * 
+ *
  *        <p>
  *        The following features are supported:
  *        <ul>
@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.EObject;
  *        <em>Tooltip Expression</em>}</li>
  *        </ul>
  *        </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.style.StylePackage#getTooltipStyleDescription()
  * @model
  * @generated

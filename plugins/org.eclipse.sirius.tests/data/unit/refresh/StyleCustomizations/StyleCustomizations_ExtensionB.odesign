@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" name="StyleCustomizations_ExtensionB" version="8.0.0">
+  <ownedViewpoints name="StyleCustomizations_ExtensionB" modelFileExtension="ecore">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="DiagramDescription_ExtB" viewpointURI="viewpoint:/(.*)/StyleCustomizations" representationName="DiagramDescription">
+      <layers name="ExtB">
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="true">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" applyOnAll="true" attributeName="labelFormat" value="bold"/>
+          </vsmElementCustomizations>
+        </customization>
+      </layers>
+    </ownedRepresentationExtensions>
+  </ownedViewpoints>
+</description:Group>

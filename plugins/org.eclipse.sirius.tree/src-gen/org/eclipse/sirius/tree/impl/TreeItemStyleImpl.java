@@ -47,7 +47,7 @@ import org.eclipse.sirius.viewpoint.impl.StyleImpl;
  * <em>Background Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {

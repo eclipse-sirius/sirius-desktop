@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="rootpackage">
+  <eSubpackages name="p1">
+    <eSubpackages name="Ed"/>
+  </eSubpackages>
+  <eSubpackages name="p2">
+    <eSubpackages name="Eddy"/>
+    <eSubpackages name="Merks"/>
+  </eSubpackages>
+  <eSubpackages name="p3">
+    <eSubpackages name="Mum"/>
+    <eSubpackages name="Mom"/>
+    <eSubpackages name="M with 'simple' quotes"/>
+  </eSubpackages>
+  <eSubpackages name="4">
+    <eSubpackages name="M with spaces s" nsPrefix=""/>
+    <eSubpackages name="M with &quot;quotes&quot; s"/>
+    <eSubpackages name="Mummy"/>
+    <eSubpackages name="mummY"/>
+  </eSubpackages>
+</ecore:EPackage>

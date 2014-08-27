@@ -14,8 +14,8 @@ package org.eclipse.sirius.viewpoint.description.tool;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Name Variable</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getNameVariable()
  * @model
  * @generated

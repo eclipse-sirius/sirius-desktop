@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2004, 2009 IBM Corporation and others.
+ * Copyright (c) 2004, 2014 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.eclipse.gmf.runtime.diagram.ui.commands.CommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.NoteAttachmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.TextEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.EditCommandRequestWrapper;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
@@ -185,7 +186,7 @@ public class DeleteFromModelWithHookAction extends DeleteFromModelAction {
             EditPart editPart = editParts.next();
             // disable on diagram links
             if (editPart instanceof IGraphicalEditPart) {
-                if (editPart instanceof TextEditPart || editPart instanceof NoteEditPart) {
+                if (editPart instanceof TextEditPart || editPart instanceof NoteEditPart || editPart instanceof NoteAttachmentEditPart) {
                     delete = false;
                 } else {
                     IGraphicalEditPart gEditPart = (IGraphicalEditPart) editPart;

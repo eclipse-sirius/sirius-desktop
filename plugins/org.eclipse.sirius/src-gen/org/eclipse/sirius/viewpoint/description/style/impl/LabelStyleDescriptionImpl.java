@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.style.StylePackage;
  * <em>Label Alignment</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class LabelStyleDescriptionImpl extends BasicLabelStyleDescriptionImpl implements LabelStyleDescription {

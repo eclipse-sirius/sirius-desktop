@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em>Dialog Prompt</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class DialogVariableImpl extends AbstractVariableImpl implements DialogVariable {

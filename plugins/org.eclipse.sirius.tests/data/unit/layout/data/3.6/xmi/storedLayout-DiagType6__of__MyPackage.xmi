@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:layoutdata="http://www.eclipse.org/sirius/dsl/layoutdata/1.1.0">
+  <layoutdata:NodeLayoutData id="//p1/p1-2/C1-2-1" width="30" height="30">
+    <label id="//p1/p1-2/C1-2-1">
+      <location y="5"/>
+    </label>
+    <location x="539" y="219"/>
+  </layoutdata:NodeLayoutData>
+  <layoutdata:NodeLayoutData id="//p1/p1-1/C1-1-2" width="30" height="30">
+    <label id="//p1/p1-1/C1-1-2">
+      <location y="5"/>
+    </label>
+    <location x="109" y="25"/>
+  </layoutdata:NodeLayoutData>
+  <layoutdata:NodeLayoutData id="//p2/p2-1/new%20EClass%201" width="30" height="30">
+    <label id="//p2/p2-1/new%20EClass%201">
+      <location x="-79"/>
+    </label>
+    <location x="119" y="55"/>
+  </layoutdata:NodeLayoutData>
+  <layoutdata:NodeLayoutData id="//p1/C1-1" width="61" height="18">
+    <label id="//p1/C1-1">
+      <location x="120" y="-15"/>
+    </label>
+    <children id="//p1/C1-2" width="30" height="30">
+      <label id="//p1/C1-2">
+        <location x="-44" y="1"/>
+      </label>
+      <location x="8" y="10"/>
+    </children>
+    <children id="//p1/p1-1/C1-1-1" width="30" height="30">
+      <label id="//p1/p1-1/C1-1-1">
+        <location x="1" y="29"/>
+      </label>
+      <location x="53" y="8"/>
+    </children>
+    <outgoingEdges id="//p1/C1-1/aC1-2" sourceTerminal="(0.41666666,0.057142857)" targetTerminal="(0.57894737,0.94285715)">
+      <label id="//p1/C1-1/aC1-2" width="32" height="22">
+        <location x="-53" y="51"/>
+      </label>
+      <pointList x="215" y="107"/>
+      <pointList x="408" y="259"/>
+      <pointList x="588" y="107"/>
+      <pointList x="511" y="107"/>
+      <sourceRefPoint x="194" y="90"/>
+      <targetRefPoint x="498" y="105"/>
+    </outgoingEdges>
+    <outgoingEdges id="//p1/C1-1/aC1-1-1" sourceTerminal="(0.0,0.0)" targetTerminal="(0.0,0.0)">
+      <label id="//p1/C1-1/aC1-1-1" width="43" height="20">
+        <location x="3" y="2"/>
+      </label>
+      <pointList x="230" y="98"/>
+      <pointList x="235" y="98"/>
+      <pointList x="267" y="25"/>
+      <sourceRefPoint x="169" y="89"/>
+      <targetRefPoint x="267" y="25"/>
+    </outgoingEdges>
+    <location x="169" y="89"/>
+  </layoutdata:NodeLayoutData>
+  <layoutdata:NodeLayoutData id="//p1/p1-1/C1-1-1" width="30" height="30">
+    <label id="//p1/p1-1/C1-1-1">
+      <location x="57" y="4"/>
+    </label>
+    <location x="267" y="25"/>
+  </layoutdata:NodeLayoutData>
+  <layoutdata:NodeLayoutData id="//p1/C1-3" width="30" height="30">
+    <label id="//p1/C1-3">
+      <location y="5"/>
+    </label>
+    <location x="66" y="187"/>
+  </layoutdata:NodeLayoutData>
+  <layoutdata:NodeLayoutData id="//p1/C1-2" width="30" height="30">
+    <label id="//p1/C1-2">
+      <location x="-41" y="18"/>
+    </label>
+    <location x="481" y="77"/>
+  </layoutdata:NodeLayoutData>
+</xmi:XMI>

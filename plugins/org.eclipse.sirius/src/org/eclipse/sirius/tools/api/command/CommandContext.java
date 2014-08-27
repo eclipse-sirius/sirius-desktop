@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -169,10 +169,11 @@ public class CommandContext {
             contextTargets = Lists.newArrayList();
         } else if (result instanceof Collection) {
             contextTargets = Lists.newArrayList((Collection<?>) result);
+        } else if (result.getClass().isArray()) {
+            contextTargets = Lists.newArrayList((Object[]) result);
         } else {
             contextTargets = Lists.newArrayList(result);
         }
         return contextTargets;
     }
-
 }

@@ -16,14 +16,14 @@ import org.eclipse.sirius.viewpoint.RGBValues;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Note</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.Note#getColor <em>Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getNote()
  * @model
  * @generated

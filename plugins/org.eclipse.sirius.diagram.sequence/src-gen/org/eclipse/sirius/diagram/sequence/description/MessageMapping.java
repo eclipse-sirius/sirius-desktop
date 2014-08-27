@@ -15,7 +15,7 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Message Mapping</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -27,7 +27,7 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
  * <em>Receiving End Finder Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getMessageMapping()
  * @model abstract="true"
  * @generated

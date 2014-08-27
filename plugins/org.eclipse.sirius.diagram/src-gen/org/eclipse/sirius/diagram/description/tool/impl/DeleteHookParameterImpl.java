@@ -32,7 +32,7 @@ import org.eclipse.sirius.diagram.description.tool.ToolPackage;
  * <em>Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DeleteHookParameterImpl extends EObjectImpl implements DeleteHookParameter {

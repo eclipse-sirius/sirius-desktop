@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="TC2185" version="8.1.0">
+  <ownedViewpoints name="TC2185" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TC2185 Node" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="NM_EClass" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+          <borderedNodeMappings name="Node_BNM_EClass_Out" preconditionExpression="&lt;%eSuperTypes.nSize != 0%>" semanticCandidatesExpression="var:self" createElements="false" domainClass="EClass">
+            <style xsi:type="style:SquareDescription" sizeComputationExpression="1" hideLabelByDefault="true">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="Node_BNM_EClass_In" preconditionExpression="&lt;%~eSuperTypes.nSize != 0%>" semanticCandidatesExpression="var:self" createElements="false" domainClass="EClass">
+            <style xsi:type="style:SquareDescription" sizeComputationExpression="1" hideLabelByDefault="true">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="Node_EM_Supertype" createElements="false" sourceMapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node']/@defaultLayer/@nodeMappings[name='NM_EClass']" targetMapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node']/@defaultLayer/@nodeMappings[name='NM_EClass']" targetFinderExpression="&lt;%eSuperTypes%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Node_EM_SupertypeBn" createElements="false" sourceMapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node']/@defaultLayer/@nodeMappings[name='NM_EClass']/@borderedNodeMappings[name='Node_BNM_EClass_Out']" targetMapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node']/@defaultLayer/@nodeMappings[name='NM_EClass']/@borderedNodeMappings[name='Node_BNM_EClass_In']" targetFinderExpression="&lt;%eSuperTypes%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <toolSections name="Tools">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Super" edgeMappings="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node']/@defaultLayer/@edgeMappings[name='Node_EM_Supertype']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eSuperTypes" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="SuperWithBorderNode" edgeMappings="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node']/@defaultLayer/@edgeMappings[name='Node_EM_SupertypeBn']" extraSourceMappings="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node']/@defaultLayer/@nodeMappings[name='NM_EClass']" extraTargetMappings="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node']/@defaultLayer/@nodeMappings[name='NM_EClass']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eSuperTypes" valueExpression="var:target"/>
+                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node']/@defaultLayer/@nodeMappings[name='NM_EClass']/@borderedNodeMappings[name='Node_BNM_EClass_Out']" containerViewExpression="var:sourceView" variableName="newSourceView"/>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node']/@defaultLayer/@nodeMappings[name='NM_EClass']/@borderedNodeMappings[name='Node_BNM_EClass_In']" containerViewExpression="var:targetView" variableName="newTargetView"/>
+                  <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node']/@defaultLayer/@edgeMappings[name='Node_EM_SupertypeBn']" containerViewExpression="[sourceView.eContainer(diagram::DDiagram)/]" variableName="edgeCreatedView" sourceExpression="var:source" targetExpression="var:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TC2185 Container" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <edgeMappings name="Container_EM_Supertype" createElements="false" sourceMapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Container']/@defaultLayer/@containerMappings[name='CM_EClass']" targetMapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Container']/@defaultLayer/@containerMappings[name='CM_EClass']" targetFinderExpression="&lt;%eSuperTypes%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Container_EM_SupertypeBn" createElements="false" sourceMapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Container']/@defaultLayer/@containerMappings[name='CM_EClass']/@borderedNodeMappings[name='Container_BNM_EClass_Out']" targetMapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Container']/@defaultLayer/@containerMappings[name='CM_EClass']/@borderedNodeMappings[name='Container_BNM_EClass_In']" targetFinderExpression="&lt;%eSuperTypes%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <containerMappings name="CM_EClass" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+          <borderedNodeMappings name="Container_BNM_EClass_Out" preconditionExpression="&lt;%eSuperTypes.nSize != 0%>" semanticCandidatesExpression="var:self" createElements="false" domainClass="EClass">
+            <style xsi:type="style:SquareDescription" sizeComputationExpression="1" hideLabelByDefault="true">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="Container_BNM_EClass_In" preconditionExpression="&lt;%~eSuperTypes.nSize != 0%>" semanticCandidatesExpression="var:self" createElements="false" domainClass="EClass">
+            <style xsi:type="style:SquareDescription" sizeComputationExpression="1" hideLabelByDefault="true">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Tools">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Super" edgeMappings="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Container']/@defaultLayer/@edgeMappings[name='Container_EM_Supertype']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eSuperTypes" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="SuperWithBorderNode" edgeMappings="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Container']/@defaultLayer/@edgeMappings[name='Container_EM_SupertypeBn']" extraSourceMappings="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Container']/@defaultLayer/@containerMappings[name='CM_EClass']" extraTargetMappings="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Container']/@defaultLayer/@containerMappings[name='CM_EClass']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eSuperTypes" valueExpression="var:target"/>
+                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Container']/@defaultLayer/@containerMappings[name='CM_EClass']/@borderedNodeMappings[name='Container_BNM_EClass_Out']" containerViewExpression="var:sourceView" variableName="newSourceView"/>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Container']/@defaultLayer/@containerMappings[name='CM_EClass']/@borderedNodeMappings[name='Container_BNM_EClass_In']" containerViewExpression="var:targetView" variableName="newTargetView"/>
+                  <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Container']/@defaultLayer/@edgeMappings[name='Container_EM_SupertypeBn']" containerViewExpression="[sourceView.eContainer(diagram::DDiagram)/]" variableName="edgeCreatedView" sourceExpression="var:source" targetExpression="var:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TC2185 List" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <edgeMappings name="List_EM_Supertype" createElements="false" sourceMapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20List']/@defaultLayer/@containerMappings[name='List_LM_EClass']" targetMapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20List']/@defaultLayer/@containerMappings[name='List_LM_EClass']" targetFinderExpression="&lt;%eSuperTypes%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="List_EM_SupertypeBn" createElements="false" sourceMapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20List']/@defaultLayer/@containerMappings[name='List_LM_EClass']/@borderedNodeMappings[name='List_BNM_EClass_Out']" targetMapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20List']/@defaultLayer/@containerMappings[name='List_LM_EClass']/@borderedNodeMappings[name='List_BNM_EClass_In']" targetFinderExpression="&lt;%eSuperTypes%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <containerMappings name="List_LM_EClass" semanticCandidatesExpression="feature:eContents" domainClass="EClass" childrenPresentation="List">
+          <borderedNodeMappings name="List_BNM_EClass_Out" preconditionExpression="&lt;%eSuperTypes.nSize != 0%>" semanticCandidatesExpression="var:self" createElements="false" domainClass="EClass">
+            <style xsi:type="style:SquareDescription" sizeComputationExpression="1" hideLabelByDefault="true">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="List_BNM_EClass_In" preconditionExpression="&lt;%~eSuperTypes.nSize != 0%>" semanticCandidatesExpression="var:self" createElements="false" domainClass="EClass">
+            <style xsi:type="style:SquareDescription" sizeComputationExpression="1" hideLabelByDefault="true">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Tools">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Super" edgeMappings="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20List']/@defaultLayer/@edgeMappings[name='List_EM_Supertype']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eSuperTypes" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="SuperWithBorderNode" edgeMappings="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20List']/@defaultLayer/@edgeMappings[name='List_EM_SupertypeBn']" extraSourceMappings="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20List']/@defaultLayer/@containerMappings[name='List_LM_EClass']" extraTargetMappings="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20List']/@defaultLayer/@containerMappings[name='List_LM_EClass']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eSuperTypes" valueExpression="var:target"/>
+                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20List']/@defaultLayer/@containerMappings[name='List_LM_EClass']/@borderedNodeMappings[name='List_BNM_EClass_Out']" containerViewExpression="var:sourceView" variableName="newSourceView"/>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20List']/@defaultLayer/@containerMappings[name='List_LM_EClass']/@borderedNodeMappings[name='List_BNM_EClass_In']" containerViewExpression="var:targetView" variableName="newTargetView"/>
+                  <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node']/@defaultLayer/@edgeMappings[name='Node_EM_SupertypeBn']" containerViewExpression="[sourceView.eContainer(diagram::DDiagram)/]" variableName="edgeCreatedView" sourceExpression="var:source" targetExpression="var:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TC2185 Container in Container" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <edgeMappings name="CIC_EM_Supertype" createElements="false" sourceMapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Container%20in%20Container']/@defaultLayer/@containerMappings[name='CIC_CM_EPackage']/@subContainerMappings[name='CIC_CM_EClass_in_pkg']" targetMapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Container%20in%20Container']/@defaultLayer/@containerMappings[name='CIC_CM_EPackage']/@subContainerMappings[name='CIC_CM_EClass_in_pkg']" targetFinderExpression="&lt;%eSuperTypes%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="CIC_EM_SupertypeBn" createElements="false" sourceMapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Container%20in%20Container']/@defaultLayer/@containerMappings[name='CIC_CM_EPackage']/@subContainerMappings[name='CIC_CM_EClass_in_pkg']/@borderedNodeMappings[name='CIC_BNM_EClass_Out']" targetMapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Container%20in%20Container']/@defaultLayer/@containerMappings[name='CIC_CM_EPackage']/@subContainerMappings[name='CIC_CM_EClass_in_pkg']/@borderedNodeMappings[name='CIC_BNM_EClass_In']" targetFinderExpression="&lt;%eSuperTypes%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <containerMappings name="CIC_CM_EPackage" semanticCandidatesExpression="feature:eContents" domainClass="EPackage">
+          <subContainerMappings name="CIC_CM_EClass_in_pkg" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+            <borderedNodeMappings name="CIC_BNM_EClass_Out" preconditionExpression="&lt;%eSuperTypes.nSize != 0%>" semanticCandidatesExpression="var:self" createElements="false" domainClass="EClass">
+              <style xsi:type="style:SquareDescription" sizeComputationExpression="1" hideLabelByDefault="true">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+              </style>
+            </borderedNodeMappings>
+            <borderedNodeMappings name="CIC_BNM_EClass_In" preconditionExpression="&lt;%~eSuperTypes.nSize != 0%>" semanticCandidatesExpression="var:self" createElements="false" domainClass="EClass">
+              <style xsi:type="style:SquareDescription" sizeComputationExpression="1" hideLabelByDefault="true">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Tools">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Super" edgeMappings="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Container%20in%20Container']/@defaultLayer/@edgeMappings[name='CIC_EM_Supertype']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eSuperTypes" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="SuperWithBorderNode" edgeMappings="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Container%20in%20Container']/@defaultLayer/@edgeMappings[name='CIC_EM_SupertypeBn']" extraSourceMappings="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Container%20in%20Container']/@defaultLayer/@containerMappings[name='CIC_CM_EPackage']/@subContainerMappings[name='CIC_CM_EClass_in_pkg']" extraTargetMappings="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Container%20in%20Container']/@defaultLayer/@containerMappings[name='CIC_CM_EPackage']/@subContainerMappings[name='CIC_CM_EClass_in_pkg']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eSuperTypes" valueExpression="var:target"/>
+                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Container%20in%20Container']/@defaultLayer/@containerMappings[name='CIC_CM_EPackage']/@subContainerMappings[name='CIC_CM_EClass_in_pkg']/@borderedNodeMappings[name='CIC_BNM_EClass_Out']" containerViewExpression="var:sourceView" variableName="newSourceView"/>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Container%20in%20Container']/@defaultLayer/@containerMappings[name='CIC_CM_EPackage']/@subContainerMappings[name='CIC_CM_EClass_in_pkg']/@borderedNodeMappings[name='CIC_BNM_EClass_In']" containerViewExpression="var:targetView" variableName="newTargetView"/>
+                  <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Container%20in%20Container']/@defaultLayer/@edgeMappings[name='CIC_EM_SupertypeBn']" containerViewExpression="[sourceView.eContainer(diagram::DDiagram)/]" variableName="edgeCreatedView" sourceExpression="var:source" targetExpression="var:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TC2185 Node in Container" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <edgeMappings name="NIC_EM_Supertype" createElements="false" sourceMapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node%20in%20Container']/@defaultLayer/@containerMappings[name='NIC_CM_EPackage']/@subNodeMappings[name='NIC_NM_Class']" targetMapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node%20in%20Container']/@defaultLayer/@containerMappings[name='NIC_CM_EPackage']/@subNodeMappings[name='NIC_NM_Class']" targetFinderExpression="&lt;%eSuperTypes%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="NIC_EM_SupertypeBn" createElements="false" sourceMapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node%20in%20Container']/@defaultLayer/@containerMappings[name='NIC_CM_EPackage']/@subNodeMappings[name='NIC_NM_Class']/@borderedNodeMappings[name='NIC_BNM_EClass_Out']" targetMapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node%20in%20Container']/@defaultLayer/@containerMappings[name='NIC_CM_EPackage']/@subNodeMappings[name='NIC_NM_Class']/@borderedNodeMappings[name='NIC_BNM_EClass_In']" targetFinderExpression="&lt;%eSuperTypes%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <containerMappings name="NIC_CM_EPackage" semanticCandidatesExpression="feature:eContents" domainClass="EPackage">
+          <subNodeMappings name="NIC_NM_Class" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+            <borderedNodeMappings name="NIC_BNM_EClass_Out" preconditionExpression="&lt;%eSuperTypes.nSize != 0%>" semanticCandidatesExpression="var:self" createElements="false" domainClass="EClass">
+              <style xsi:type="style:SquareDescription" sizeComputationExpression="1" hideLabelByDefault="true">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+              </style>
+            </borderedNodeMappings>
+            <borderedNodeMappings name="NIC_BNM_EClass_In" preconditionExpression="&lt;%~eSuperTypes.nSize != 0%>" semanticCandidatesExpression="var:self" createElements="false" domainClass="EClass">
+              <style xsi:type="style:SquareDescription" sizeComputationExpression="1" hideLabelByDefault="true">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Tools">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Super" edgeMappings="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node%20in%20Container']/@defaultLayer/@edgeMappings[name='NIC_EM_Supertype']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eSuperTypes" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="SuperWithBorderNode" edgeMappings="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node%20in%20Container']/@defaultLayer/@edgeMappings[name='NIC_EM_SupertypeBn']" extraSourceMappings="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node%20in%20Container']/@defaultLayer/@containerMappings[name='NIC_CM_EPackage']/@subNodeMappings[name='NIC_NM_Class']" extraTargetMappings="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node%20in%20Container']/@defaultLayer/@containerMappings[name='NIC_CM_EPackage']/@subNodeMappings[name='NIC_NM_Class']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eSuperTypes" valueExpression="var:target"/>
+                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node%20in%20Container']/@defaultLayer/@containerMappings[name='NIC_CM_EPackage']/@subNodeMappings[name='NIC_NM_Class']/@borderedNodeMappings[name='NIC_BNM_EClass_Out']" containerViewExpression="var:sourceView" variableName="newSourceView"/>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Node%20in%20Container']/@defaultLayer/@containerMappings[name='NIC_CM_EPackage']/@subNodeMappings[name='NIC_NM_Class']/@borderedNodeMappings[name='NIC_BNM_EClass_In']" containerViewExpression="var:targetView" variableName="newTargetView"/>
+                  <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Container%20in%20Container']/@defaultLayer/@edgeMappings[name='CIC_EM_SupertypeBn']" containerViewExpression="[sourceView.eContainer(diagram::DDiagram)/]" variableName="edgeCreatedView" sourceExpression="var:source" targetExpression="var:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TC2185 Bordered Node on Container" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <edgeMappings name="EM_Supertype" sourceMapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Bordered%20Node%20on%20Container']/@defaultLayer/@containerMappings[name='CM_EPackage']/@borderedNodeMappings[name='NM_Class']" targetMapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Bordered%20Node%20on%20Container']/@defaultLayer/@containerMappings[name='CM_EPackage']/@borderedNodeMappings[name='NM_Class']" targetFinderExpression="&lt;%eSuperTypes%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <containerMappings name="CM_EPackage" semanticCandidatesExpression="feature:eContents" domainClass="EPackage">
+          <borderedNodeMappings name="NM_Class" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+            <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Tools">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Super" edgeMappings="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Bordered%20Node%20on%20Container']/@defaultLayer/@edgeMappings[name='EM_Supertype']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eSuperTypes" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TC2185 Bordered Node on Node" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="NM_EPackage" semanticCandidatesExpression="feature:eContents" domainClass="EPackage">
+          <borderedNodeMappings name="NM_Class" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+            <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="EM_Supertype" sourceMapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Bordered%20Node%20on%20Node']/@defaultLayer/@nodeMappings[name='NM_EPackage']/@borderedNodeMappings[name='NM_Class']" targetMapping="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Bordered%20Node%20on%20Node']/@defaultLayer/@nodeMappings[name='NM_EPackage']/@borderedNodeMappings[name='NM_Class']" targetFinderExpression="&lt;%eSuperTypes%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <toolSections name="Tools">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Super" edgeMappings="//@ownedViewpoints[name='TC2185']/@ownedRepresentations[name='TC2185%20Bordered%20Node%20on%20Node']/@defaultLayer/@edgeMappings[name='EM_Supertype']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eSuperTypes" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

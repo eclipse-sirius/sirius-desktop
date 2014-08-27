@@ -14,10 +14,10 @@ package org.eclipse.sirius.viewpoint.description.tool;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>External Java Action Call</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> An operation which can be used to call an
  * ExternalJavaAction defined elsewhere. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -26,7 +26,7 @@ package org.eclipse.sirius.viewpoint.description.tool;
  * <em>Action</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getExternalJavaActionCall()
  * @model
  * @generated

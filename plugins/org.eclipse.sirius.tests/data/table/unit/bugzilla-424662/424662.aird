@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/description/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" xmi:id="_2mAkAG4REeOJV9ZQlSyAiA" selectedViews="_hirMwG4UEeOJV9ZQlSyAiA" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="424662.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_hirMwG4UEeOJV9ZQlSyAiA" initialized="true">
+    <ownedRepresentations xmi:type="table:DTable" xmi:id="_pPhHMG4VEeOJV9ZQlSyAiA" name="new Table" headerColumnWidth="130">
+      <target xmi:type="ecore:EPackage" href="424662.ecore#/"/>
+      <lines xmi:type="table:DLine" xmi:id="_pPhHMW4VEeOJV9ZQlSyAiA" label="subP1">
+        <target xmi:type="ecore:EPackage" href="424662.ecore#//subP1"/>
+        <semanticElements xmi:type="ecore:EPackage" href="424662.ecore#//subP1"/>
+        <originMapping xmi:type="description:LineMapping" href="424662.odesign#//@ownedViewpoints[name='424662']/@ownedRepresentations[name='Table']/@ownedLineMappings[name='SubPackage']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_pPhHMm4VEeOJV9ZQlSyAiA" label="subP2">
+        <target xmi:type="ecore:EPackage" href="424662.ecore#//subP2"/>
+        <semanticElements xmi:type="ecore:EPackage" href="424662.ecore#//subP2"/>
+        <originMapping xmi:type="description:LineMapping" href="424662.odesign#//@ownedViewpoints[name='424662']/@ownedRepresentations[name='Table']/@ownedLineMappings[name='SubPackage']"/>
+      </lines>
+      <description xmi:type="description:CrossTableDescription" href="424662.odesign#//@ownedViewpoints[name='424662']/@ownedRepresentations[name='Table']"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description_1:Viewpoint" href="424662.odesign#//@ownedViewpoints[name='424662']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

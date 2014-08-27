@@ -34,7 +34,7 @@ import org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescr
  * <em>Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ForegroundConditionalStyleImpl extends EObjectImpl implements ForegroundConditionalStyle {

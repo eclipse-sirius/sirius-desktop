@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.api.query;
 
-import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
+import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.gmf.runtime.notation.Diagram;
@@ -49,8 +49,8 @@ public class ConnectionEditPartQuery {
      */
     public boolean isLayoutComponent() {
         boolean isLayoutComponent = false;
-        if (isEdgeTreeRoutingStyle(connectionEditPart)) {
-            Diagram diagram = getDiagram(connectionEditPart);
+        if (isEdgeWithTreeRoutingStyle()) {
+            Diagram diagram = getDiagram();
             if (diagram != null && diagram.getElement() instanceof DSemanticDiagram) {
                 DSemanticDiagram dSemanticDiagram = (DSemanticDiagram) diagram.getElement();
                 Layout layout = dSemanticDiagram.getDescription().getLayout();
@@ -60,18 +60,52 @@ public class ConnectionEditPartQuery {
         return isLayoutComponent;
     }
 
-    private boolean isEdgeTreeRoutingStyle(ConnectionEditPart editPart) {
+    /**
+     * Check if this ConnectionEditPart has a tree routing style.
+     * 
+     * @return true if ConnectionEditPart has a tree routing style, false
+     *         otherwise.
+     */
+    public boolean isEdgeWithTreeRoutingStyle() {
         boolean isEdgeTreeRoutingStyle = false;
-        if (editPart.getModel() instanceof Edge) {
-            isEdgeTreeRoutingStyle = new EdgeQuery((Edge) editPart.getModel()).isEdgeWithTreeRoutingStyle();
+        if (connectionEditPart.getModel() instanceof Edge) {
+            isEdgeTreeRoutingStyle = new EdgeQuery((Edge) connectionEditPart.getModel()).isEdgeWithTreeRoutingStyle();
         }
         return isEdgeTreeRoutingStyle;
     }
 
-    private Diagram getDiagram(ConnectionEditPart editPart) {
+    /**
+     * Check if this ConnectionEditPart has a rectilinear routing style.
+     * 
+     * @return true if ConnectionEditPart has a rectilinear routing style, false
+     *         otherwise.
+     */
+    public boolean isEdgeWithRectilinearRoutingStyle() {
+        boolean isEdgeWithRectilinearRoutingStyle = false;
+        if (connectionEditPart.getModel() instanceof Edge) {
+            isEdgeWithRectilinearRoutingStyle = new EdgeQuery((Edge) connectionEditPart.getModel()).isEdgeWithRectilinearRoutingStyle();
+        }
+        return isEdgeWithRectilinearRoutingStyle;
+    }
+
+    /**
+     * Check if this ConnectionEditPart has an oblique routing style.
+     * 
+     * @return true if ConnectionEditPart has an oblique routing style, false
+     *         otherwise.
+     */
+    public boolean isEdgeWithObliqueRoutingStyle() {
+        boolean isEdgeWithObliqueRoutingStyle = false;
+        if (connectionEditPart.getModel() instanceof Edge) {
+            isEdgeWithObliqueRoutingStyle = new EdgeQuery((Edge) connectionEditPart.getModel()).isEdgeWithObliqueRoutingStyle();
+        }
+        return isEdgeWithObliqueRoutingStyle;
+    }
+
+    private Diagram getDiagram() {
         Diagram diagram = null;
-        if (editPart.getParent() instanceof DiagramRootEditPart) {
-            DiagramRootEditPart diagramRootEditPart = (DiagramRootEditPart) editPart.getParent();
+        if (connectionEditPart.getParent() instanceof DiagramRootEditPart) {
+            DiagramRootEditPart diagramRootEditPart = (DiagramRootEditPart) connectionEditPart.getParent();
             if (diagramRootEditPart.getChildren().get(0) instanceof DiagramEditPart) {
                 DiagramEditPart diagramEditPart = (DiagramEditPart) diagramRootEditPart.getChildren().get(0);
                 if (diagramEditPart.getModel() instanceof Diagram) {

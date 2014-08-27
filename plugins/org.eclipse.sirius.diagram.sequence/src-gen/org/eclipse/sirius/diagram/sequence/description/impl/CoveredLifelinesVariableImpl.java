@@ -20,7 +20,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractVariableImpl;
  * <em><b>Covered Lifelines Variable</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class CoveredLifelinesVariableImpl extends AbstractVariableImpl implements CoveredLifelinesVariable {

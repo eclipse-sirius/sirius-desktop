@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_ekWBYeDtEd6iJoDb7lhWwA" selectedViews="_g6A4QODtEd6iJoDb7lhWwA" version="8.0.0">
+  <models xmi:type="uml:Model" href="football.uml#_Wh_KkEjgEd2dA-w4B9F6fQ"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_g6A4QODtEd6iJoDb7lhWwA" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_g6muIeDtEd6iJoDb7lhWwA" name="NodeMapping only">
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_E4UwsJjFEeCTjf2eRUPO7Q" name="Zidane" width="3" height="3">
+        <target xmi:type="uml:Class" href="football.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_E4UwsZjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4UwspjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:BundledImageDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMapping%20only']/@defaultLayer/@nodeMappings[name='Class%20Diagram%201']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4Uws5jFEeCTjf2eRUPO7Q"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_E4UwtJjFEeCTjf2eRUPO7Q" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMapping" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMapping%20only']/@defaultLayer/@nodeMappings[name='Class%20Diagram%201']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description:DiagramDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMapping%20only']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_g6muIuDtEd6iJoDb7lhWwA"/>
+      <activatedLayers xmi:type="description:Layer" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMapping%20only']/@defaultLayer"/>
+      <target xmi:type="uml:Model" href="football.uml#_Wh_KkEjgEd2dA-w4B9F6fQ"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_g6pKYeDtEd6iJoDb7lhWwA" name="NodeMappingImport with semantic elements">
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_E4V-0JjFEeCTjf2eRUPO7Q" name="Zidane" width="3" height="3">
+        <target xmi:type="uml:Class" href="football.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_E4Wl4JjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4Wl4ZjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:BundledImageDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements']/@defaultLayer/@nodeMappings[name='Class%20Diagram%202']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4Wl4pjFEeCTjf2eRUPO7Q"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_E4Wl45jFEeCTjf2eRUPO7Q" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMapping" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements']/@defaultLayer/@nodeMappings[name='Class%20Diagram%202']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_E4Wl5JjFEeCTjf2eRUPO7Q" name="Benzema" width="3" height="3">
+        <target xmi:type="uml:Class" href="football.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_E4Wl5ZjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4Wl5pjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:BundledImageDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements']/@defaultLayer/@nodeMappings[name='Class%20Diagram%202']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4Wl55jFEeCTjf2eRUPO7Q"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_E4Wl6JjFEeCTjf2eRUPO7Q" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMapping" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements']/@defaultLayer/@nodeMappings[name='Class%20Diagram%202']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_E4XM8JjFEeCTjf2eRUPO7Q" name="Makelele" width="3" height="3">
+        <target xmi:type="uml:Class" href="football.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_E4XM8ZjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4XM8pjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:BundledImageDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements']/@defaultLayer/@nodeMappings[name='Class%20Diagram%202']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4XM85jFEeCTjf2eRUPO7Q"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_E4XM9JjFEeCTjf2eRUPO7Q" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMapping" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements']/@defaultLayer/@nodeMappings[name='Class%20Diagram%202']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description:DiagramDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_g6pKYuDtEd6iJoDb7lhWwA"/>
+      <activatedLayers xmi:type="description:Layer" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements']/@defaultLayer"/>
+      <target xmi:type="uml:Model" href="football.uml#_Wh_KkEjgEd2dA-w4B9F6fQ"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_g6qYgeDtEd6iJoDb7lhWwA" name="NodeMappingImport with imported mapping in container">
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_E4YbEJjFEeCTjf2eRUPO7Q" name="Zidane">
+        <target xmi:type="uml:Class" href="football.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <ownedStyle xmi:type="diagram:ShapeContainerStyle" xmi:id="_E4YbEZjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4YbEpjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:ShapeContainerStyleDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20imported%20mapping%20in%20container']/@defaultLayer/@containerMappings[name='Class%20CM']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4YbE5jFEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_E4YbFJjFEeCTjf2eRUPO7Q" red="156" green="12" blue="12"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:ContainerMapping" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20imported%20mapping%20in%20container']/@defaultLayer/@containerMappings[name='Class%20CM']"/>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_E4aQQJjFEeCTjf2eRUPO7Q" name="level" width="3" height="3">
+          <target xmi:type="uml:Property" href="football.uml#_LVgeAL-8Ed6Y5bSW1tHziA"/>
+          <semanticElements xmi:type="uml:Property" href="football.uml#_LVgeAL-8Ed6Y5bSW1tHziA"/>
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_E4aQQZjFEeCTjf2eRUPO7Q">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4aQQpjFEeCTjf2eRUPO7Q"/>
+            <description xmi:type="style:BundledImageDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20imported%20mapping%20in%20container']/@defaultLayer/@containerMappings[name='Class%20CM']/@subNodeMappings[name='Property%20NM']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4aQQ5jFEeCTjf2eRUPO7Q"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_E4aQRJjFEeCTjf2eRUPO7Q" red="114" green="159" blue="207"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description:NodeMapping" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20imported%20mapping%20in%20container']/@defaultLayer/@containerMappings[name='Class%20CM']/@subNodeMappings[name='Property%20NM']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_E4ZCIJjFEeCTjf2eRUPO7Q" name="Benzema">
+        <target xmi:type="uml:Class" href="football.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+        <ownedStyle xmi:type="diagram:ShapeContainerStyle" xmi:id="_E4ZCIZjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4ZCIpjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:ShapeContainerStyleDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20imported%20mapping%20in%20container']/@defaultLayer/@containerMappings[name='Class%20CM']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4ZCI5jFEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_E4ZCJJjFEeCTjf2eRUPO7Q" red="156" green="12" blue="12"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:ContainerMapping" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20imported%20mapping%20in%20container']/@defaultLayer/@containerMappings[name='Class%20CM']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_E4ZpMJjFEeCTjf2eRUPO7Q" name="Makelele">
+        <target xmi:type="uml:Class" href="football.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+        <ownedStyle xmi:type="diagram:ShapeContainerStyle" xmi:id="_E4ZpMZjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4ZpMpjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:ShapeContainerStyleDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20imported%20mapping%20in%20container']/@defaultLayer/@containerMappings[name='Class%20CM']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4ZpM5jFEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_E4ZpNJjFEeCTjf2eRUPO7Q" red="156" green="12" blue="12"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:ContainerMapping" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20imported%20mapping%20in%20container']/@defaultLayer/@containerMappings[name='Class%20CM']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description:DiagramDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20imported%20mapping%20in%20container']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_g6qYguDtEd6iJoDb7lhWwA"/>
+      <activatedLayers xmi:type="description:Layer" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20imported%20mapping%20in%20container']/@defaultLayer"/>
+      <target xmi:type="uml:Model" href="football.uml#_Wh_KkEjgEd2dA-w4B9F6fQ"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_g6q_keDtEd6iJoDb7lhWwA" name="NodeMappingImport with semantic elements and hide sub mappings">
+      <ownedAnnotationEntries xmi:type="description_1:AnnotationEntry" xmi:id="_FbLuQBFQEeKQrpwaBKeVCA" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_iYTbMODtEd6iJoDb7lhWwA" type="Sirius" element="_g6q_keDtEd6iJoDb7lhWwA" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_iazVkODtEd6iJoDb7lhWwA" type="2001" element="_E4cFcJjFEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_ia2_8ODtEd6iJoDb7lhWwA" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_ia2_8eDtEd6iJoDb7lhWwA" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_94D78ODtEd6D_qRZ1cYtQA" type="3004" element="_E4cFcZjFEeCTjf2eRUPO7Q">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_94D78eDtEd6D_qRZ1cYtQA" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_94D78uDtEd6D_qRZ1cYtQA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_iazVkeDtEd6iJoDb7lhWwA" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_iazVkuDtEd6iJoDb7lhWwA" x="30" y="30" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_ia3nAODtEd6iJoDb7lhWwA" type="2001" element="_E4cFdZjFEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_ia4OEODtEd6iJoDb7lhWwA" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_ia4OEeDtEd6iJoDb7lhWwA" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_9q0xMODtEd6D_qRZ1cYtQA" type="3004" element="_E4csgJjFEeCTjf2eRUPO7Q">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_9q0xMeDtEd6D_qRZ1cYtQA" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9q0xMuDtEd6D_qRZ1cYtQA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_ia3nAeDtEd6iJoDb7lhWwA" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ia3nAuDtEd6iJoDb7lhWwA" x="120" y="30" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_ia4OEuDtEd6iJoDb7lhWwA" type="2001" element="_E4cshJjFEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_ia41IODtEd6iJoDb7lhWwA" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_ia41IeDtEd6iJoDb7lhWwA" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_ia-UsODtEd6iJoDb7lhWwA" type="3004" element="_E4cshZjFEeCTjf2eRUPO7Q">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_ia-UseDtEd6iJoDb7lhWwA" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ia-UsuDtEd6iJoDb7lhWwA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_ia4OE-DtEd6iJoDb7lhWwA" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ia4OFODtEd6iJoDb7lhWwA" x="210" y="30" width="30" height="30"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_iYTbMeDtEd6iJoDb7lhWwA"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_E4cFcJjFEeCTjf2eRUPO7Q" name="Zidane" width="3" height="3">
+        <target xmi:type="uml:Class" href="football.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_E4cFcZjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4cFcpjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:BundledImageDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements%20and%20hide%20sub%20mappings']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20hide']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4cFc5jFEeCTjf2eRUPO7Q"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_93_qguDtEd6D_qRZ1cYtQA" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMapping" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements%20and%20hide%20sub%20mappings']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20hide']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_E4cFdZjFEeCTjf2eRUPO7Q" name="Benzema" width="3" height="3">
+        <target xmi:type="uml:Class" href="football.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_E4csgJjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4csgZjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:BundledImageDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements%20and%20hide%20sub%20mappings']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20hide']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4csgpjFEeCTjf2eRUPO7Q"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_9qxG0uDtEd6D_qRZ1cYtQA" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMapping" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements%20and%20hide%20sub%20mappings']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20hide']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_E4cshJjFEeCTjf2eRUPO7Q" name="Makelele" width="3" height="3">
+        <target xmi:type="uml:Class" href="football.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_E4cshZjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4cshpjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:BundledImageDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements%20and%20hide%20sub%20mappings']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20hide']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4csh5jFEeCTjf2eRUPO7Q"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_iahBsuDtEd6iJoDb7lhWwA" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMapping" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements%20and%20hide%20sub%20mappings']/@defaultLayer/@nodeMappings[name='Class%20Diagram%20hide']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description:DiagramDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements%20and%20hide%20sub%20mappings']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_g6q_kuDtEd6iJoDb7lhWwA"/>
+      <activatedLayers xmi:type="description:Layer" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements%20and%20hide%20sub%20mappings']/@defaultLayer"/>
+      <target xmi:type="uml:Model" href="football.uml#_Wh_KkEjgEd2dA-w4B9F6fQ"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_g6rmoeDtEd6iJoDb7lhWwA" name="NodeMappingImport with semantic elements from other diagram">
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_E4ehsJjFEeCTjf2eRUPO7Q" name="Benzema" width="3" height="3">
+        <target xmi:type="uml:Class" href="football.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_E4fIwJjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4fIwZjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:BundledImageDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements%20from%20other%20diagram']/@defaultLayer/@nodeMappings[name='class%20diag%20imported']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4fIwpjFEeCTjf2eRUPO7Q"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_E4fIw5jFEeCTjf2eRUPO7Q" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMappingImport" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements%20from%20other%20diagram']/@defaultLayer/@nodeMappings[name='class%20diag%20imported']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description:DiagramDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements%20from%20other%20diagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_g6rmouDtEd6iJoDb7lhWwA"/>
+      <activatedLayers xmi:type="description:Layer" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements%20from%20other%20diagram']/@defaultLayer"/>
+      <target xmi:type="uml:Model" href="football.uml#_Wh_KkEjgEd2dA-w4B9F6fQ"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_g6sNseDtEd6iJoDb7lhWwA" name="NodeMappingImport with semantic elements from other viewpoint">
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_E4gW4JjFEeCTjf2eRUPO7Q" name="Zidane" width="3" height="3">
+        <target xmi:type="uml:Class" href="football.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_E4g98JjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4g98ZjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:BundledImageDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements%20from%20other%20viewpoint']/@defaultLayer/@nodeMappings[name='annexe%20node%20imported']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4g98pjFEeCTjf2eRUPO7Q"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_E4g985jFEeCTjf2eRUPO7Q" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMappingImport" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements%20from%20other%20viewpoint']/@defaultLayer/@nodeMappings[name='annexe%20node%20imported']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description:DiagramDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements%20from%20other%20viewpoint']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_g6sNsuDtEd6iJoDb7lhWwA"/>
+      <activatedLayers xmi:type="description:Layer" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20with%20semantic%20elements%20from%20other%20viewpoint']/@defaultLayer"/>
+      <target xmi:type="uml:Model" href="football.uml#_Wh_KkEjgEd2dA-w4B9F6fQ"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_g6s0weDtEd6iJoDb7lhWwA" name="NodeMappingImport without semantic elements">
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_E4iMEJjFEeCTjf2eRUPO7Q" name="Zidane" width="3" height="3">
+        <target xmi:type="uml:Class" href="football.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_E4iMEZjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4iMEpjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:BundledImageDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20without%20semantic%20elements']/@defaultLayer/@nodeMappings[name='Class%20Diagram%203']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4iME5jFEeCTjf2eRUPO7Q"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_E4iMFJjFEeCTjf2eRUPO7Q" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMapping" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20without%20semantic%20elements']/@defaultLayer/@nodeMappings[name='Class%20Diagram%203']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_E4izIJjFEeCTjf2eRUPO7Q" name="Benzema" width="3" height="3">
+        <target xmi:type="uml:Class" href="football.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_E4izIZjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4izIpjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:BundledImageDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20without%20semantic%20elements']/@defaultLayer/@nodeMappings[name='Class%20Diagram%203']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4izI5jFEeCTjf2eRUPO7Q"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_E4izJJjFEeCTjf2eRUPO7Q" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMapping" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20without%20semantic%20elements']/@defaultLayer/@nodeMappings[name='Class%20Diagram%203']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_E4izJZjFEeCTjf2eRUPO7Q" name="Makelele" width="3" height="3">
+        <target xmi:type="uml:Class" href="football.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_E4jaMJjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4jaMZjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:BundledImageDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20without%20semantic%20elements']/@defaultLayer/@nodeMappings[name='Class%20Diagram%203']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4jaMpjFEeCTjf2eRUPO7Q"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_E4jaM5jFEeCTjf2eRUPO7Q" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMapping" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20without%20semantic%20elements']/@defaultLayer/@nodeMappings[name='Class%20Diagram%203']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description:DiagramDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20without%20semantic%20elements']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_g6s0wuDtEd6iJoDb7lhWwA"/>
+      <activatedLayers xmi:type="description:Layer" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20without%20semantic%20elements']/@defaultLayer"/>
+      <target xmi:type="uml:Model" href="football.uml#_Wh_KkEjgEd2dA-w4B9F6fQ"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_g6tb0eDtEd6iJoDb7lhWwA" name="NodeMappingImport without semantic elements from other diagram">
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_E4koUJjFEeCTjf2eRUPO7Q" name="Zidane" width="3" height="3">
+        <target xmi:type="uml:Class" href="football.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_E4koUZjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4koUpjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:BundledImageDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20without%20semantic%20elements%20from%20other%20diagram']/@defaultLayer/@nodeMappings[name='class%20diag%20imported']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4koU5jFEeCTjf2eRUPO7Q"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_E4koVJjFEeCTjf2eRUPO7Q" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMappingImport" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20without%20semantic%20elements%20from%20other%20diagram']/@defaultLayer/@nodeMappings[name='class%20diag%20imported']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_E4koVZjFEeCTjf2eRUPO7Q" name="Benzema" width="3" height="3">
+        <target xmi:type="uml:Class" href="football.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_E4lPYJjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4lPYZjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:BundledImageDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20without%20semantic%20elements%20from%20other%20diagram']/@defaultLayer/@nodeMappings[name='class%20diag%20imported']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4lPYpjFEeCTjf2eRUPO7Q"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_E4lPY5jFEeCTjf2eRUPO7Q" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMappingImport" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20without%20semantic%20elements%20from%20other%20diagram']/@defaultLayer/@nodeMappings[name='class%20diag%20imported']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_E4lPZJjFEeCTjf2eRUPO7Q" name="Makelele" width="3" height="3">
+        <target xmi:type="uml:Class" href="football.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_E4lPZZjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4lPZpjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:BundledImageDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20without%20semantic%20elements%20from%20other%20diagram']/@defaultLayer/@nodeMappings[name='class%20diag%20imported']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4lPZ5jFEeCTjf2eRUPO7Q"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_E4lPaJjFEeCTjf2eRUPO7Q" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMappingImport" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20without%20semantic%20elements%20from%20other%20diagram']/@defaultLayer/@nodeMappings[name='class%20diag%20imported']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description:DiagramDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20without%20semantic%20elements%20from%20other%20diagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_g6tb0uDtEd6iJoDb7lhWwA"/>
+      <activatedLayers xmi:type="description:Layer" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20without%20semantic%20elements%20from%20other%20diagram']/@defaultLayer"/>
+      <target xmi:type="uml:Model" href="football.uml#_Wh_KkEjgEd2dA-w4B9F6fQ"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_g6uC4eDtEd6iJoDb7lhWwA" name="NodeMappingImport without semantic elements from other viewpoint">
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_E4mdgJjFEeCTjf2eRUPO7Q" name="Zidane" width="3" height="3">
+        <target xmi:type="uml:Class" href="football.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_E4nEkJjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4nEkZjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:BundledImageDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20without%20semantic%20elements%20from%20other%20viewpoint']/@defaultLayer/@nodeMappings[name='annexe%20node%20imported']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4nEkpjFEeCTjf2eRUPO7Q"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_E4nEk5jFEeCTjf2eRUPO7Q" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMappingImport" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20without%20semantic%20elements%20from%20other%20viewpoint']/@defaultLayer/@nodeMappings[name='annexe%20node%20imported']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_E4nElJjFEeCTjf2eRUPO7Q" name="Benzema" width="3" height="3">
+        <target xmi:type="uml:Class" href="football.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_E4nroJjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4nroZjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:BundledImageDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20without%20semantic%20elements%20from%20other%20viewpoint']/@defaultLayer/@nodeMappings[name='annexe%20node%20imported']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4nropjFEeCTjf2eRUPO7Q"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_E4nro5jFEeCTjf2eRUPO7Q" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMappingImport" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20without%20semantic%20elements%20from%20other%20viewpoint']/@defaultLayer/@nodeMappings[name='annexe%20node%20imported']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_E4nrpJjFEeCTjf2eRUPO7Q" name="Makelele" width="3" height="3">
+        <target xmi:type="uml:Class" href="football.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_E4nrpZjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4nrppjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:BundledImageDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20without%20semantic%20elements%20from%20other%20viewpoint']/@defaultLayer/@nodeMappings[name='annexe%20node%20imported']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4nrp5jFEeCTjf2eRUPO7Q"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_E4nrqJjFEeCTjf2eRUPO7Q" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:NodeMappingImport" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20without%20semantic%20elements%20from%20other%20viewpoint']/@defaultLayer/@nodeMappings[name='annexe%20node%20imported']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description:DiagramDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20without%20semantic%20elements%20from%20other%20viewpoint']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_g6uC4uDtEd6iJoDb7lhWwA"/>
+      <activatedLayers xmi:type="description:Layer" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='NodeMappingImport%20without%20semantic%20elements%20from%20other%20viewpoint']/@defaultLayer"/>
+      <target xmi:type="uml:Model" href="football.uml#_Wh_KkEjgEd2dA-w4B9F6fQ"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_g6up8eDtEd6iJoDb7lhWwA" name="ContainerMapping only">
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_E4r9EJjFEeCTjf2eRUPO7Q" name="Zidane">
+        <target xmi:type="uml:Class" href="football.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_E4skIJjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4skIZjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMapping%20only']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%200']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4skIpjFEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_E4skI5jFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_E4skJJjFEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:ContainerMapping" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMapping%20only']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%200']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description:DiagramDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMapping%20only']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_g6up8uDtEd6iJoDb7lhWwA"/>
+      <activatedLayers xmi:type="description:Layer" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMapping%20only']/@defaultLayer"/>
+      <target xmi:type="uml:Model" href="football.uml#_Wh_KkEjgEd2dA-w4B9F6fQ"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_g6vRAeDtEd6iJoDb7lhWwA" name="ContainerMappingImport without semantic elements">
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_E4uZUJjFEeCTjf2eRUPO7Q" name="Zidane">
+        <target xmi:type="uml:Class" href="football.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_E4uZUZjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4uZUpjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20without%20semantic%20elements']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%202']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4uZU5jFEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_E4uZVJjFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_E4uZVZjFEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:ContainerMapping" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20without%20semantic%20elements']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%202']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_E4vAYJjFEeCTjf2eRUPO7Q" name="Benzema">
+        <target xmi:type="uml:Class" href="football.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_E4vAYZjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4vAYpjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20without%20semantic%20elements']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%202']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4vAY5jFEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_E4vAZJjFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_E4vAZZjFEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:ContainerMapping" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20without%20semantic%20elements']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%202']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_E4vncJjFEeCTjf2eRUPO7Q" name="Makelele">
+        <target xmi:type="uml:Class" href="football.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_E4vncZjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4vncpjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20without%20semantic%20elements']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%202']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4vnc5jFEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_E4vndJjFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_E4vndZjFEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:ContainerMapping" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20without%20semantic%20elements']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%202']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description:DiagramDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20without%20semantic%20elements']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_g6vRAuDtEd6iJoDb7lhWwA"/>
+      <activatedLayers xmi:type="description:Layer" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20without%20semantic%20elements']/@defaultLayer"/>
+      <target xmi:type="uml:Model" href="football.uml#_Wh_KkEjgEd2dA-w4B9F6fQ"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_g6v4EeDtEd6iJoDb7lhWwA" name="ContainerMappingImport with semantic elements">
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_E4xcoJjFEeCTjf2eRUPO7Q" name="Zidane">
+        <target xmi:type="uml:Class" href="football.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_E4yDsJjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4yDsZjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20with%20semantic%20elements']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%203']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4yDspjFEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_E4yDs5jFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_E4yDtJjFEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:ContainerMapping" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20with%20semantic%20elements']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%203']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_E4yDtZjFEeCTjf2eRUPO7Q" name="Benzema">
+        <target xmi:type="uml:Class" href="football.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_E4yqwJjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4yqwZjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20with%20semantic%20elements']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%203']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4yqwpjFEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_E4yqw5jFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_E4yqxJjFEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:ContainerMapping" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20with%20semantic%20elements']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%203']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_E4yqxZjFEeCTjf2eRUPO7Q" name="Makelele">
+        <target xmi:type="uml:Class" href="football.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_E4zR0JjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E4zR0ZjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20with%20semantic%20elements']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%203']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E4zR0pjFEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_E4zR05jFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_E4zR1JjFEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:ContainerMapping" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20with%20semantic%20elements']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%203']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description:DiagramDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20with%20semantic%20elements']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_g6v4EuDtEd6iJoDb7lhWwA"/>
+      <activatedLayers xmi:type="description:Layer" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20with%20semantic%20elements']/@defaultLayer"/>
+      <target xmi:type="uml:Model" href="football.uml#_Wh_KkEjgEd2dA-w4B9F6fQ"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_g6xGMeDtEd6iJoDb7lhWwA" name="Reuse ContainerMappingImport without semantic elements">
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_E41HAJjFEeCTjf2eRUPO7Q" name="Zidane">
+        <target xmi:type="uml:Class" href="football.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_Zfig0EjgEd2dA-w4B9F6fQ"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_E41HAZjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E41HApjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20without%20semantic%20elements']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%202']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E41HA5jFEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_E41HBJjFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_E41HBZjFEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:ContainerMapping" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20without%20semantic%20elements']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%202']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_E41uEJjFEeCTjf2eRUPO7Q" name="Benzema">
+        <target xmi:type="uml:Class" href="football.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_wLR7QHg7Ed2ISLgtvgSAmQ"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_E42VIJjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E42VIZjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20without%20semantic%20elements']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%202']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E42VIpjFEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_E42VI5jFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_E42VJJjFEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:ContainerMapping" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20without%20semantic%20elements']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%202']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_E42VJZjFEeCTjf2eRUPO7Q" name="Makelele">
+        <target xmi:type="uml:Class" href="football.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+        <semanticElements xmi:type="uml:Class" href="football.uml#_XFrIwHg7Ed2ISLgtvgSAmQ"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_E428MJjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_E428MZjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20without%20semantic%20elements']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%202']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_E428MpjFEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_E428M5jFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_E428NJjFEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:ContainerMapping" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='ContainerMappingImport%20without%20semantic%20elements']/@defaultLayer/@containerMappings[name='Container%20Mapping%20Class%20Diagram%202']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description:DiagramDescription" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='Reuse%20ContainerMappingImport%20without%20semantic%20elements']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_g6xGMuDtEd6iJoDb7lhWwA"/>
+      <activatedLayers xmi:type="description:Layer" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']/@ownedRepresentations[name='Reuse%20ContainerMappingImport%20without%20semantic%20elements']/@defaultLayer"/>
+      <target xmi:type="uml:Model" href="football.uml#_Wh_KkEjgEd2dA-w4B9F6fQ"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description_1:Viewpoint" href="football.odesign#//@ownedViewpoints[name='Football%20with%20UML2%20(Modeler%20test%20for%20layers)']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

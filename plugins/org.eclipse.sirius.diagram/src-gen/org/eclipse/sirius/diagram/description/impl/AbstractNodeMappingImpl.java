@@ -50,7 +50,7 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  * <em>Reused Bordered Node Mappings</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class AbstractNodeMappingImpl extends DiagramElementMappingImpl implements AbstractNodeMapping {

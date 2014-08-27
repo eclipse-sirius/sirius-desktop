@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="unsynchroWithDeleteOutside" version="8.0.0">
+  <ownedViewpoints name="unsynchroWithDeleteOutside" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='unsynchroWithDeleteOutside']/@ownedRepresentations[name='unsynchroWithDeleteOutsideDiag']/@defaultLayer/@toolSections.0/@ownedTools[name='DndPackageInDiagram']" name="unsynchroWithDeleteOutsideDiag" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="NodeClass" createElements="false" domainClass="EClass">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+          </style>
+        </nodeMappings>
+        <containerMappings name="ContainerPackage" createElements="false" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='unsynchroWithDeleteOutside']/@ownedRepresentations[name='unsynchroWithDeleteOutsideDiag']/@defaultLayer/@toolSections.0/@ownedTools[name='DndPackageInPackage']">
+          <subContainerMappings name="SubContainerPackage" createElements="false" domainClass="EPackage">
+            <style xsi:type="style:FlatContainerStyleDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="DnD">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DndPackageInDiagram" mappings="//@ownedViewpoints[name='unsynchroWithDeleteOutside']/@ownedRepresentations[name='unsynchroWithDeleteOutsideDiag']/@defaultLayer/@containerMappings[name='ContainerPackage'] //@ownedViewpoints[name='unsynchroWithDeleteOutside']/@ownedRepresentations[name='unsynchroWithDeleteOutsideDiag']/@defaultLayer/@nodeMappings[name='NodeClass']" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DndPackageInPackage" mappings="//@ownedViewpoints[name='unsynchroWithDeleteOutside']/@ownedRepresentations[name='unsynchroWithDeleteOutsideDiag']/@defaultLayer/@containerMappings[name='ContainerPackage']/@subContainerMappings[name='SubContainerPackage']" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation/>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

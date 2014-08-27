@@ -17,10 +17,10 @@ import org.eclipse.sirius.viewpoint.Style;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Container Style</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> The style of a container. <!-- end-model-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getContainerStyle()
  * @model abstract="true"
  * @generated

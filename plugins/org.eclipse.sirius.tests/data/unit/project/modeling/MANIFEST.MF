@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-Name: %pluginId
+Bundle-SymbolicName: %pluginId;singleton=true
+Bundle-Version: 1.0.0
+Bundle-Activator: %packageName.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.sirius
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

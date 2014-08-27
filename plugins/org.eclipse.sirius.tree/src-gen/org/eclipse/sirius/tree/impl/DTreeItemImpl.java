@@ -66,7 +66,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {

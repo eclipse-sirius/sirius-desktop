@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="Base1ExtB" version="8.0.0">
+  <ownedViewpoints name="Base1ExtB_withAcceleoTemplate" modelFileExtension="ecore">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Entities" viewpointURI="viewpoint:/ViewpointTestProjectBase1/Base1WithTemplate" representationName="Entities1">
+      <layers name="Extension with acceleo template B">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="Doc Class B" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass" childrenPresentation="List" hideSubMappings="true">
+          <reusedNodeMappings href="../../ViewpointTestProjectBase1/description/base1.odesign#//@ownedViewpoints[name='Base1WithTemplate']/@ownedRepresentations[name='Entities1']/@defaultLayer/@containerMappings[name='TEC%20EClass%20Base1']/@subNodeMappings[name='TEC%20EAttribute']"/>
+          <reusedNodeMappings href="../../ViewpointTestProjectBase1/description/base1.odesign#//@ownedViewpoints[name='Base1WithTemplate']/@ownedRepresentations[name='Entities1']/@defaultLayer/@containerMappings[name='TEC%20EClass%20Base1']/@subNodeMappings[name='TEC%20Operation']"/>
+          <conditionnalStyles predicateExpression="&lt;%!isDocumentedTemplate &amp;&amp; isBTemplate%>">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelFormat="italic" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <importedMapping href="../../ViewpointTestProjectBase1/description/base1.odesign#//@ownedViewpoints[name='Base1WithTemplate']/@ownedRepresentations[name='Entities1']/@defaultLayer/@containerMappings[name='TEC%20EClass%20Base1']"/>
+        </containerMappings>
+      </layers>
+    </ownedRepresentationExtensions>
+    <ownedJavaExtensions qualifiedClassName="template.Base1ExtB"/>
+  </ownedViewpoints>
+</description:Group>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="tc2225" version="8.0.0">
+  <ownedViewpoints name="Design2225" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Entities2225" titleExpression="&lt;%name%> package entities" domainClass="EPackage" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <nodeMappings name="EC Class Node" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" synchronizationLock="true" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20EClass%20']/@subNodeMappings[name='EC%20EAttribute']">
+          <style xsi:type="style:BundledImageDescription" labelExpression="&lt;%name%>Node" sizeComputationExpression="6" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="EC Class Node 2" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" synchronizationLock="true" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20EClass%20']/@subNodeMappings[name='EC%20EAttribute']">
+          <style xsi:type="style:BundledImageDescription" labelExpression="&lt;%name%>Node2" sizeComputationExpression="6" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+          </style>
+        </nodeMappings>
+        <containerMappings name="EC EClass Liste" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass" reusedNodeMappings="//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20EClass%20']/@subNodeMappings[name='EC%20EAttribute']" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="&lt;%name%>List" tooltipExpression="&lt;%eContainer.name%>.&lt;%name%>" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="EC EClass " semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass">
+          <subNodeMappings name="EC EAttribute" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
+            <style xsi:type="style:BundledImageDescription" labelExpression="&lt;%name%>&lt;%$view.eContainer.name%>" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="&lt;%name%>Container" tooltipExpression="&lt;%eContainer.name%>.&lt;%name%>" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

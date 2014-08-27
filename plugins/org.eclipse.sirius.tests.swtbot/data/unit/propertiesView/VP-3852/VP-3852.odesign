@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="VP-3852" version="8.0.0">
+  <ownedViewpoints name="VP-3852_Viewpoint" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:TreeDescription" name="VP-3852_Tree" domainClass="ecore.EPackage">
+      <subItemMappings name="EPackageMapping" domainClass="ecore.EPackage" semanticCandidatesExpression="[eSubpackages/]">
+        <defaultStyle>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+      </subItemMappings>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="VP-3852_Table" domainClass="ecore.EPackage">
+      <ownedLineMappings name="EPackageMapping" domainClass="ecore.EPackage" semanticCandidatesExpression="[eSubpackages/]">
+        <defaultForeground>
+          <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+        </defaultForeground>
+        <defaultBackground>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultBackground>
+      </ownedLineMappings>
+      <ownedColumnMappings name="EPackageNSURIMapping" featureName="nsURI"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_3:DiagramDescription" name="VP-3852_Diagram" domainClass="ecore.EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="EPackageMapping" semanticCandidatesExpression="[eSubpackages/]" domainClass="ecore.EPackage">
+          <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

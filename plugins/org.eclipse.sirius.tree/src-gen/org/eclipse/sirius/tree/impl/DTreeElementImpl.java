@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationElementImpl;
  * <em>Tree Element Mapping</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DTreeElementImpl extends DRepresentationElementImpl implements DTreeElement {

@@ -30,7 +30,7 @@ import org.eclipse.sirius.tree.description.TreeItemMapping;
  * <em>Mapping</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TreeItemCreationToolImpl extends TreeItemToolImpl implements TreeItemCreationTool {

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="My" version="8.0.0">
+  <ownedViewpoints name="TestMappings" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diagram" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="NodeEClass" detailDescriptions="//@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@toolSection/@ownedTools[name='CreateDiagram'] //@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@toolSection/@ownedTools[name='CreateTable'] //@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@toolSection/@ownedTools[name='CreateTree']" navigationDescriptions="//@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@toolSection/@ownedTools[name='NavigateTree'] //@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@toolSection/@ownedTools[name='NavigateDiagram'] //@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@toolSection/@ownedTools[name='NavigateTable']" domainClass="EClass">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+      </defaultLayer>
+      <toolSection name="toolSection">
+        <ownedTools xsi:type="tool:DiagramCreationDescription" name="CreateDiagram" diagramDescription="//@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']">
+          <initialOperation/>
+          <containerViewVariable name="containerView"/>
+          <representationNameVariable name="diagramName"/>
+        </ownedTools>
+        <ownedTools xsi:type="description_2:TableCreationDescription" name="CreateTable" tableDescription="//@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Table']">
+          <containerViewVariable/>
+          <representationNameVariable/>
+        </ownedTools>
+        <ownedTools xsi:type="description_3:TreeCreationDescription" name="CreateTree" treeDescription="//@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Tree']">
+          <containerViewVariable/>
+          <representationNameVariable/>
+        </ownedTools>
+        <ownedTools xsi:type="description_3:TreeNavigationDescription" name="NavigateTree" treeDescription="//@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Tree']">
+          <containerViewVariable/>
+          <containerVariable/>
+          <representationNameVariable/>
+        </ownedTools>
+        <ownedTools xsi:type="tool:DiagramNavigationDescription" name="NavigateDiagram" diagramDescription="//@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']">
+          <containerViewVariable name="containerView"/>
+          <containerVariable name="container"/>
+          <representationNameVariable name="diagramName"/>
+        </ownedTools>
+        <ownedTools xsi:type="description_2:TableNavigationDescription" name="NavigateTable" tableDescription="//@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Table']">
+          <containerViewVariable/>
+          <containerVariable/>
+          <representationNameVariable/>
+        </ownedTools>
+      </toolSection>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="Table" domainClass="EPackage">
+      <ownedLineMappings name="LineEPackage" detailDescriptions="//@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@toolSection/@ownedTools[name='CreateDiagram'] //@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@toolSection/@ownedTools[name='CreateTable'] //@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@toolSection/@ownedTools[name='CreateTree']" navigationDescriptions="//@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@toolSection/@ownedTools[name='NavigateTree'] //@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@toolSection/@ownedTools[name='NavigateDiagram'] //@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@toolSection/@ownedTools[name='NavigateTable']" domainClass="EPackage"/>
+      <ownedColumnMappings name="name" detailDescriptions="//@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@toolSection/@ownedTools[name='CreateDiagram'] //@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@toolSection/@ownedTools[name='CreateTable'] //@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@toolSection/@ownedTools[name='CreateTree']" navigationDescriptions="//@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@toolSection/@ownedTools[name='NavigateTree'] //@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@toolSection/@ownedTools[name='NavigateDiagram'] //@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@toolSection/@ownedTools[name='NavigateTable']" featureName="name"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_3:TreeDescription" name="Tree" domainClass="EPackage">
+      <subItemMappings name="TreeItemEPackage" detailDescriptions="//@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@toolSection/@ownedTools[name='CreateDiagram'] //@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@toolSection/@ownedTools[name='CreateTable'] //@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@toolSection/@ownedTools[name='CreateTree']" navigationDescriptions="//@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@toolSection/@ownedTools[name='NavigateTree'] //@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@toolSection/@ownedTools[name='NavigateDiagram'] //@ownedViewpoints[name='TestMappings']/@ownedRepresentations[name='Diagram']/@toolSection/@ownedTools[name='NavigateTable']" domainClass="EPackage">
+        <defaultStyle>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+      </subItemMappings>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.UserFixedColor;
  * <em>Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class UserFixedColorImpl extends FixedColorImpl implements UserFixedColor {

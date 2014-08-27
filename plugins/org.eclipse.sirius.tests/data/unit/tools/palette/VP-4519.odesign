@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="My" version="8.0.0">
+  <ownedViewpoints name="bug_root" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="rep0" initialisation="true" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <containerMappings name="package" semanticCandidatesExpression="feature:eContents" synchronizationLock="true" domainClass="EPackage" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="class" preconditionExpression="&lt;%true%>" createElements="false" domainClass="EClass" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="s1">
+          <ownedTools xsi:type="tool:ToolGroup" name="myGroup">
+            <tools xsi:type="tool_1:ToolDescription" name="t0">
+              <filters precondition="&lt;%activatedLayers.nSize() > 1%>" elementsToListen="var:self">
+                <listeners domainClass="DDiagram" featureName="activatedLayers"/>
+              </filters>
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='bug_root']/@ownedRepresentations[name='rep0']/@defaultLayer/@containerMappings[name='class']" containerViewExpression="&lt;%$elementView.eContainer(&quot;DDiagram&quot;)%>"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="op">
+        <toolSections name="mySection">
+          <groupExtensions group="//@ownedViewpoints[name='bug_root']/@ownedRepresentations[name='rep0']/@defaultLayer/@toolSections.0/@ownedTools[name='myGroup']">
+            <tools xsi:type="tool_1:ToolDescription" name="t1">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='bug_root']/@ownedRepresentations[name='rep0']/@defaultLayer/@containerMappings[name='class']" containerViewExpression="&lt;%$elementView.eContainer(&quot;DDiagram&quot;)%>"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </groupExtensions>
+        </toolSections>
+      </additionalLayers>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

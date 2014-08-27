@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_QH2e4OgmEd-DboxVmPwQvA" name="test">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_UpBkAOgmEd-DboxVmPwQvA" name="test">
+    <node xmi:type="uml:OpaqueAction" xmi:id="_ev_M8OgmEd-DboxVmPwQvA" name="OpaqueAction1">
+      <body>// TODO body of OpaqueAction_1</body>
+    </node>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_veA3MOgrEd-DboxVmPwQvA" name="OpaqueAction2">
+      <body>// TODO body of OpaqueAction_2</body>
+    </node>
+  </packagedElement>
+</uml:Model>

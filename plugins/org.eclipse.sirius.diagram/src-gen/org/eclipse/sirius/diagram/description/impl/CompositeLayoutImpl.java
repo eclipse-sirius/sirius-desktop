@@ -33,7 +33,7 @@ import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
  * <em>Direction</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CompositeLayoutImpl extends DocumentedElementImpl implements CompositeLayout {

@@ -14,14 +14,14 @@ package org.eclipse.sirius.diagram;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Custom Style</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.CustomStyle#getId <em>Id</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getCustomStyle()
  * @model
  * @generated

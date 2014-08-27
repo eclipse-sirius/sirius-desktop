@@ -16,7 +16,7 @@ import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Create Cell Tool</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
  * <em>Mapping</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCreateCellTool()
  * @model
  * @generated

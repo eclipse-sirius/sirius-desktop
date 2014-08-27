@@ -17,10 +17,10 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Bundled Image Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> The bundled image style allows to use the default
  * images provide by the Viewpoint editor. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <em>Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getBundledImageDescription()
  * @model
  * @generated

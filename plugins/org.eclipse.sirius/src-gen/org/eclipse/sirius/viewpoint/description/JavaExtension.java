@@ -16,11 +16,11 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Java Extension</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> This class allows to import a Java Class that is
  * used as an Acceleo Service. All acceleo expressions can use the services.
  * <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Qualified Class Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getJavaExtension()
  * @model
  * @generated

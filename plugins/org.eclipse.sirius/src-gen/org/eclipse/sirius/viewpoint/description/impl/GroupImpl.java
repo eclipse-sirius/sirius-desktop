@@ -53,7 +53,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * <em>Version</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class GroupImpl extends DModelElementImpl implements Group {

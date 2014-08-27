@@ -13,6 +13,9 @@
 				<a href="#ReleaseNotesforSirius">Release Notes for Sirius</a>
 				<ol style="list-style: disc;">
 					<li>
+						<a href="#sirius2.0.0">Changes in Sirius 2.0.0 (from Sirius 1.0.0)</a>
+					</li>
+					<li>
 						<a href="#sirius1.0.0">Changes in Sirius 1.0.0 (from Sirius 1.0.0M7)</a>
 					</li>
 					<li>
@@ -34,8 +37,185 @@
 			</li>
 		</ol>
 		<p>This document contains the release notes for all major releases of Sirius.</p>
-		<h2 id="sirius1.0.0">Changes in Sirius 1.0.0 (from Sirius 1.0.0M7)</h2>
+		<h2 id="sirius2.0.0">Changes in Sirius 2.0.0 (from Sirius 1.0.0)</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
+		<ul>
+			<li>It is now possible to select element that intersects the selection rectangle and not that is completely contained by the selection rectangle. This new behavior is enabled when user selects elements from right to left. The normal mode (previous mode) remains when the user selects elements from left to right.</li>
+			<li>The edges appearance is now kept, as much as possible, when one of its extremity is moved. A move of an extremity should move only the closest segment of the edge.</li>
+			<li>The edges appearance is kept as much as possible when a node (container or not) is moved. A move of a node now impacts only the closest segment of the linked edges.</li>
+		</ul>
+		<p>
+			<img border="0" src="images/moveNode-edgeImpact-changedBehavior.gif"/>
+		</p>
+		<ul>
+			<li>When a node, container or not, is resized to the left, upwards, or both, the location of its children (elements inside a container and border nodes) is not changed. It is possible to retrieve the previous behavior by pressing the F3 function key during the resize.</li>
+		</ul>
+		<p>
+			<img border="0" src="images/containerResize-changedBehavior.gif"/>
+		</p>
+		<h3 id="APIChanges">API Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+			<code>org.eclipse.sirius</code>
+		</h4>
+		<ul>
+			<li>The 
+				<code>VIEWPOINT_REGISTRY_INITIAL_SIZE</code> preference and 
+				<code>VIEWPOINT_REGISTRY_INITIAL_SIZE_DEFAULT_VALUE</code> default value has been removed from 
+				<code>org.eclipse.sirius.tools.api.preferences.DCorePreferences</code>.
+			</li>
+			<li>The method 
+				<code>org.eclipse.sirius.business.api.query.DRepresentationQuery.isDanglingRepresentation()</code> has been added to introduce the possibility to check if a representation is a dangling representation, ie. if its a DSemanticDecorator, its target is null or does not belong to a session.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException</code> now can take several EObjects in constructor and a method 
+				<code>LockedInstanceException.getLockedElements()</code> has been added to get all EObjects put in constructor.
+			</li>
+		</ul>
+		<p>
+			<code>org.eclipse.sirius.tools.api.command.InvalidPermissionCommand</code> now can take several EObjects in constructor to throw a 
+			<code>LockedInstanceException</code> with several EObjects.
+		</p>
+		<ul>
+			<li>The 
+				<code>org.eclipse.sirius.business.api.helper.task.AbstractDeleteDRepresentationElementTask</code> class has been renamed into 
+				<code>DeleteEObjectTask</code>.
+			</li>
+			<li>The interface 
+				<code>org.eclipse.sirius.tools.api.command.listener.IChangeListener</code> and all classes related to this mechanism (
+				<code>ChangeListenerFactory</code>, 
+				<code>TriggerOperation</code>) have been removed as this mechanism proves to be inefficient. It can be replaced by a pre/post commit listener or a 
+				<code>org.eclipse.sirius.business.api.session.ModelChangeTrigger</code>
+			</li>
+			<li>The 
+				<code>org.eclipse.sirius.tools.api.ui.IExternalAction2</code> interface has been removed. It was created to disable some 
+				<code>IChangeListener</code> when the action indicates it will not delete elements.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
+			<code>org.eclipse.sirius.common</code>
+		</h4>
+		<ul>
+			<li>The method 
+				<code>org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.getResourceSetSync(TransactionalEditingDomain)</code> has been added to look for a 
+				<code>ResourceSetSync</code> without creating a new one if no synchronizer currently exists.
+			</li>
+			<li>The class 
+				<code>org.eclipse.sirius.common.tools.api.util.SmartAdapter</code> has been removed as this mechanism proves to be inefficient. The only user of this mechanism was the 
+				<code>org.eclipse.sirius.tools.api.command.listener.IChangeListener</code> which has also been removed.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
+			<code>org.eclipse.sirius.diagram.ui</code>
+		</h4>
+		<ul>
+			<li>The method 
+				<code>org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery.getDefaultDimension()</code> has been added to compute the default size of a DNodeContainer.
+			</li>
+			<li>The parameter 
+				<code>additionalFiguresForConflictDetection</code> has been added to several methods of 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator</code>. This parameter is used in case of simultaneous border nodes moves. This list corresponds to the already known border nodes feedbacks. They are used to detect conflicts with other moved nodes.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery</code> now provides two new methods 
+				<code>isEdgeWithRectilinearRoutingStyle()</code> and 
+				<code>isEdgeWithObliqueRoutingStyle()</code> that respectively checks if an edge has a rectilinear routing style or an oblique routing style.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.diagram.ui.business.api.query.ConnectionQuery</code> now provides two new methods 
+				<code>getAbsoluteBendpointsConstraint()</code> and 
+				<code>getRelativeBendpointsConstraint()</code> that returns an option of list of 
+				<code>Bendpoint</code> of a connection whether they are respectively 
+				<code>AbsoluteBendpoint</code> or 
+				<code>RelatveBendpoint</code>.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery</code> also provides two new methods 
+				<code>isEdgeWithRectilinearRoutingStyle()</code> and 
+				<code>isEdgeWithObliqueRoutingStyle()</code> that respectively checks if an edge has a rectilinear routing style or an oblique routing style.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ext.gmf.runtime">Changes in 
+			<code>org.eclipse.sirius.ext.gmf.runtime</code>
+		</h4>
+		<ul>
+			<li>Several utilities have been added in 
+				<code>org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper</code>:
+				<ul>
+					<li>
+						<code>applyZoomOnPoint(IGraphicalEditPart, Point)</code>: Apply the current zoom (of 
+						<code>IGraphicalEditPart</code>'s diagram) on the 
+						<code>Point</code> and return the 
+						<code>Point</code> for convenience.
+					</li>
+					<li>
+						<code>applyInverseZoomOnPoint(IGraphicalEditPart, Point)</code>: Apply the inverse of the current zoom (of 
+						<code>IGraphicalEditPart</code>'s diagram) on the 
+						<code>Point</code> and return the 
+						<code>Point</code> for convenience.
+					</li>
+					<li>
+						<code>appliedZoomOnRelativePoint(IGraphicalEditPart, Point)</code> is now deprecated. Use 
+						<code>applyZoomOnPoint(IGraphicalEditPart, Point)</code> instead.
+					</li>
+					<li>
+						<code>getAnchorPoint(IGraphicalEditPart parent, Anchor anchor)</code>: Get the 
+						<code>Point</code> (absolute draw2d coordinates) corresponding to this 
+						<code>Anchor</code>.
+					</li>
+					<li>
+						<code>getAnchorPoint(IGraphicalEditPart parent, IdentityAnchor anchor)</code>: Get the 
+						<code>Point</code> (absolute draw2d coordinates) corresponding to this 
+						<code>IdentityAnchor</code>.
+					</li>
+					<li>
+						<code>getIntersection(Point, Point, IGraphicalEditPart, boolean)</code>: Get intersection between a line between lineOrigin and lineTerminus, and the rectangle bounds of the 
+						<code>IGraphicalEditPart</code>. If there are several intersections, the shortest is returned.
+					</li>
+					<li>
+						<code>getAbsoluteBounds(IGraphicalEditPart)</code>: Get the absolute bounds of this 
+						<code>IGraphicalEditPart</code>.
+					</li>
+					<li>
+						<code>getAbsoluteBoundsIn100Percent(IGraphicalEditPart)</code>: Get the absolute bounds of this 
+						<code>IGraphicalEditPart</code> but adapted according to the current zoom level.
+					</li>
+					<li>
+						<code>isSnapToGridEnabled(EditPart)</code>: Return true if the snapToGrid is enabled for the diagram containing this edit part, false otherwise.
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
+			<code>org.eclipse.sirius.tests.swtbot.support</code>
+		</h4>
+		<ul>
+			<li>The method 
+				<code>SWTBotSiriusDiagramEditor.setSnapToGrid(boolean)</code> has been added. It allows to disable or enable the snapToGrid option for this editor.
+			</li>
+			<li>The method 
+				<code>SWTBotSiriusDiagramEditor.setSnapToGrid(boolean, double, int)</code> has been added. It allows to disable or enable the snapToGrid option for this editor. In case of activation, you can also set the grid spacing and the ruler units. 
+			</li>
+			<li>The method 
+				<code>SWTBotSiriusDiagramEditor.disableSnapToGrid()</code> has been deprecated, use 
+				<code>SWTBotSiriusDiagramEditor.setSnapToGrid(false)</code> instead.
+			</li>
+			<li>The method 
+				<code>SWTBotSiriusDiagramEditor.adaptLocationToSnap(Point)</code> has been added. It allows to adapt location according to SnapToHelper of the current editor.
+			</li>
+			<li>The method 
+				<code>SWTBotSiriusDiagramEditor.getDiagramEditPart()</code> has been added. It allows to retrieve the diagram edit part of the current editor.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.tests.support">Changes in 
+			<code>org.eclipse.sirius.tests.support</code>
+		</h4>
+		<ul>
+			<li>In 
+				<code>org.eclipse.sirius.test.support.SiriusTestCase</code>, the methods deactivateSirius(), initSirius() and findSirius() have been renamed into deactivateViewpoint(), initViewpoint() and findViewppoint() to correct a wrong rebranding.
+			</li>
+		</ul>
+		<h2 id="sirius1.0.0">Changes in Sirius 1.0.0 (from Sirius 1.0.0M7)</h2>
+		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<ul>
 			<li>The ability to print table representations has been disabled for the 1.0.0 release due to an external dependency issue (see 
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=435204">bug #435204</a> for the details).
@@ -55,8 +235,8 @@
 				<em>Layer</em>. The corresponding property sections will be shown only for old VSM with reused elements.
 			</li>
 		</ul>
-		<h3 id="APIChanges">API Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+		<h3 id="APIChanges2">API Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -75,7 +255,7 @@
 				<code>computeResourcesToSave()</code> method.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui2">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -87,7 +267,7 @@
 				<code>org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart.createLayoutEditPolicy</code> implementation has been removed.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui3">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -113,7 +293,7 @@
 				<em>Time (ms)</em> column, harder to read/sort, and showed wrongly formatted results. 
 			</li>
 		</ul>
-		<h3 id="APIChanges2">API Changes</h3>
+		<h3 id="APIChanges3">API Changes</h3>
 		<h4 id="separationOfDiagramSpecificConcept-step3">Move diagram.ecore in its own plugin</h4>
 		<p>This milestone (Sirius 1.0M7) includes the third, and final, step towards a full separation of the diagram-specific stuff out of the core of Sirius (see 
 			<a href="#separationOfDiagramSpecificConcept-step1">Step1</a> and 
@@ -321,7 +501,7 @@
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
@@ -333,7 +513,7 @@
 				<code>Predicate</code> tested on the key.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -620,7 +800,7 @@
 				<code>MappingHiearchy.HiearchyIterator</code> has been removed from API.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.support">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.support2">Changes in 
 			<code>org.eclipse.sirius.tests.support</code>
 		</h4>
 		<ul>
@@ -670,7 +850,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius1.0M6">Changes in Sirius 1.0.0M6 (from Sirius 1.0M5)</h2>
-		<h3 id="APIChanges3">API Changes</h3>
+		<h3 id="APIChanges4">API Changes</h3>
 		<h4 id="tests">High-level API for Automated Tests Using JUnit and SWTBot</h4>
 		<p>Starting from version 1.0.0M6, Sirius includes high-level APIs to help creating automated tests using JUnit and/or SWTBot. These can be used either to test Sirius itself or to test Sirius-based modelers. These APIs are provided by two plug-ins:</p>
 		<ul>
@@ -719,7 +899,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 		<p>if 
 			<code>element</code> is a Diagram concept.
 		</p>
-		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -807,11 +987,11 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 			</li>
 		</ul>
 		<h2 id="sirius1.0M5">Changes in Sirius 1.0.0M5 (from Sirius 1.0M4)</h2>
-		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges3">User-Visible Changes</h3>
 		<ul>
 			<li>The table csv export has been improved to handle cropped label. In some specific cases, the cell label is automatically cropped and &#8249;...&#8250; is concatenated to the resulting value. This cropped displayed label was previously exported, now the complete semantic value is exported.</li>
 		</ul>
-		<h3 id="APIChanges4">API Changes</h3>
+		<h3 id="APIChanges5">API Changes</h3>
 		<h4 id="LibraryExtensions">Library Extensions</h4>
 		<p>This milestone (Sirius 1.0M5) introduces several new plug-ins, collectively called &#171;library extensions&#187;. They are all named 
 			<code>org.eclipse.sirius.ext.LIB</code>, where 
@@ -883,7 +1063,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>viewpoint/diagram/description/concern</code>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius5">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -935,13 +1115,13 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 			</li>
 		</ul>
 		<h2 id="sirius1.0M4">Changes in Sirius 1.0.0M4 (from Sirius 0.9)</h2>
-		<h3 id="UserVisibleChanges3">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges4">User-Visible Changes</h3>
 		<ul>
 			<li>The ability to print table representations, which had been disabled for the 0.9 release, has been re-enabled.</li>
 		</ul>
-		<h3 id="APIChanges5">API Changes</h3>
+		<h3 id="APIChanges6">API Changes</h3>
 		<p>Sirius 1.0.0M4 includes a lots of API-breaking changes, as part of a global effort to improve the quality of the Sirius internals. In this milestone in particular, most of the APIs which were marked as deprecated in previous versions of Sirius (and before that of Viewpoint) have been either removed (if a replacement exists) or marked as non-deprecated (if no replacement exists yet).</p>
-		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common3">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
@@ -967,7 +1147,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables</code> instead.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius5">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius6">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1533,7 +1713,7 @@ void removeSelectedView(DView view);
 				<em>targetView</em>: the target view of the current edge.
 			</li>
 		</ul>
-		<h3 id="UserVisibleChanges4">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges5">User-Visible Changes</h3>
 		<ul>
 			<li>The ability to print table representations has been disabled for the 0.9 release due to an external dependency issue (see 
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=422223">bug #422223</a> for the details). It should be re-introduced in 1.0.

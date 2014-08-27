@@ -70,9 +70,9 @@ public class VariableManager {
     }
 
     /**
-     * Returns current declared variables.
+     * Returns a copy of the current declared variables.
      * 
-     * @return current declared variables.
+     * @return Copy of the current declared variables.
      */
     public Map<String, Object> getVariables() {
         final Map<String, Object> result = new HashMap<String, Object>();

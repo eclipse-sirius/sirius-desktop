@@ -595,6 +595,13 @@
            name="Pattern filter"
            visibleInUI="false">
      </commonFilter>
+     <commonFilter
+           activeByDefault="false"
+           class="org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter.DanglingRepresentationCommonFilter"
+           description="Hides the dangling representations, ie. whitout represented element or whose element has been detached or deleted."
+           id="org.eclipse.sirius.ui.commonFilter.dangling.representation"
+           name="Representations known as dangling">
+     </commonFilter>
   </extension>
   <extension
         point="org.eclipse.ui.navigator.linkHelper">
@@ -772,4 +779,17 @@
      </objectContribution>
   </extension>
    
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <!-- @generated contribution -->
+      <factory
+            uri="http://www.eclipse.org/sirius/description/contribution/1.0.0"
+            class="org.eclipse.sirius.description.contribution.provider.ContributionItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
 </plugin>

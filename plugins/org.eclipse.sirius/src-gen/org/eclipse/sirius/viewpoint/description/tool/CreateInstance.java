@@ -14,10 +14,10 @@ package org.eclipse.sirius.viewpoint.description.tool;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Create Instance</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> This operation allows to create a new instance. The
  * context must be the container of the new instance. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -32,7 +32,7 @@ package org.eclipse.sirius.viewpoint.description.tool;
  * <em>Variable Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getCreateInstance()
  * @model
  * @generated

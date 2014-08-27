@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/diagram/description/validation/1.1.0" name="TraceabilityTest" version="8.0.0">
+  <ownedViewpoints name="Traceability" modelFileExtension="ecore">
+    <validationSet>
+      <ownedRules xsi:type="validation:SemanticValidationRule" level="WARNING" targetClass="EClass">
+        <audits auditExpression="&lt;%self.name != &quot;A&quot; &amp;&amp; self.name != &quot;myEClass&quot;%>"/>
+      </ownedRules>
+    </validationSet>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Trace Diagram" domainClass="EPackage">
+      <filters xsi:type="filter:CompositeFilterDescription" name="port collapse">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Traceability']/@ownedRepresentations[name='Trace%20Diagram']/@defaultLayer/@containerMappings[name='CM_EPackage']/@borderedNodeMappings[name='BN_EClass']"/>
+      </filters>
+      <defaultLayer name="Default">
+        <nodeMappings name="NM_EEnum" label="NM_EEnum" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EEnum&quot;)%>" domainClass="EEnum">
+          <style xsi:type="style:EllipseNodeDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="EM_Ref" sourceMapping="//@ownedViewpoints[name='Traceability']/@ownedRepresentations[name='Trace%20Diagram']/@defaultLayer/@containerMappings[name='CM_EPackage']/@borderedNodeMappings[name='BN_EClass']" targetMapping="//@ownedViewpoints[name='Traceability']/@ownedRepresentations[name='Trace%20Diagram']/@defaultLayer/@containerMappings[name='CM_EPackage']/@borderedNodeMappings[name='BN_EClass']" targetFinderExpression="&lt;%eReferenceType%>" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
+          <style routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="CM_EPackage" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EPackage&quot;)%>" domainClass="EPackage">
+          <borderedNodeMappings name="BN_EClass" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass">
+            <style xsi:type="style:SquareDescription" width="2" height="2">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="Trace Table" domainClass="EPackage">
+      <ownedLineMappings domainClass="EPackage">
+        <ownedSubLines domainClass="EClass">
+          <ownedSubLines domainClass="EReference" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EReference&quot;)%>">
+            <ownedSubLines domainClass="EAnnotation" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EAnnotation&quot;)%>"/>
+          </ownedSubLines>
+        </ownedSubLines>
+      </ownedLineMappings>
+      <ownedColumnMappings name="name" featureName="name"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="Trace CrossTable" domainClass="EPackage">
+      <ownedLineMappings name="EPackage" domainClass="EPackage">
+        <ownedSubLines name="EClass" domainClass="EClass">
+          <ownedSubLines name="EAttribute" domainClass="EAttribute" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EAttribute&quot;)%>"/>
+        </ownedSubLines>
+      </ownedLineMappings>
+      <ownedColumnMappings name="EPackage" domainClass="EPackage"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_3:TreeDescription" name="Trace Tree" domainClass="EPackage">
+      <subItemMappings name="EPackage" domainClass="EPackage" semanticCandidatesExpression="&lt;%eAllContents.filter(&quot;EPackage&quot;)%>">
+        <defaultStyle>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+        <subItemMappings name="EClass" domainClass="EClass" semanticCandidatesExpression="&lt;%self.eClassifiers.filter(&quot;EClass&quot;)%>">
+          <defaultStyle>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </defaultStyle>
+          <subItemMappings name="EAnnotation" domainClass="EAnnotation" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EAnnotation&quot;)%>">
+            <defaultStyle labelExpression="&lt;%source%>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            </defaultStyle>
+          </subItemMappings>
+        </subItemMappings>
+      </subItemMappings>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="EmptyDiagram" domainClass="EPackage"/>
+  </ownedViewpoints>
+</description:Group>

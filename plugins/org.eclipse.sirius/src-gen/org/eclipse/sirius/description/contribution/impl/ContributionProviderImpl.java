@@ -35,7 +35,7 @@ import org.eclipse.sirius.description.contribution.ContributionProvider;
  * <em>Contributions</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class ContributionProviderImpl extends EObjectImpl implements ContributionProvider {

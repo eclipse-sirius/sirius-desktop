@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.JavaExtension;
  * <em>Qualified Class Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class JavaExtensionImpl extends EObjectImpl implements JavaExtension {

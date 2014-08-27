@@ -43,7 +43,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em>Listeners</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ToolFilterDescriptionImpl extends EObjectImpl implements ToolFilterDescription {

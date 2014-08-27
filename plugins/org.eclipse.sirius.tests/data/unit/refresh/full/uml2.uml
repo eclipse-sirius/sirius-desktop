@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_Wh_KkEjgEd2dA-w4B9F6fQ">
+  <packagedElement xmi:type="uml:Class" xmi:id="_Zfig0EjgEd2dA-w4B9F6fQ" name="Class1">
+    <ownedAttribute xmi:id="_tReeYUmdEd2kFfZE5plhWg" name="Prop1to2" type="_bZr5UEjgEd2dA-w4B9F6fQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_bZr5UEjgEd2dA-w4B9F6fQ" name="Class2">
+    <ownedAttribute xmi:id="_rDAP8FNGEd2swLTvVm1NKg" name="Prop2to2" type="_bZr5UEjgEd2dA-w4B9F6fQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_cPW9EEjgEd2dA-w4B9F6fQ" name="Class3">
+    <ownedAttribute xmi:id="_u8vGUEmdEd2kFfZE5plhWg" name="Prop3to2" type="_bZr5UEjgEd2dA-w4B9F6fQ"/>
+    <ownedAttribute xmi:id="_k5sIUFNGEd2swLTvVm1NKg" name="Prop3to2" type="_bZr5UEjgEd2dA-w4B9F6fQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_6o6RMEmrEd2kFfZE5plhWg" name="SubPackage">
+    <packagedElement xmi:type="uml:Class" xmi:id="_8WNggEmrEd2kFfZE5plhWg" name="SubClass1">
+      <ownedAttribute xmi:id="_8WNggUmrEd2kFfZE5plhWg" name="Prop1"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_sQN84FM5Ed2swLTvVm1NKg" name="RootPackage">
+    <packagedElement xmi:type="uml:Package" xmi:id="_sQN84VM5Ed2swLTvVm1NKg" name="SubPackage1">
+      <packagedElement xmi:type="uml:Package" xmi:id="_sQN84lM5Ed2swLTvVm1NKg" name="SubPackage11">
+        <packagedElement xmi:type="uml:StateMachine" xmi:id="_ov49MF_QEd286YgWhSQipA" name="New StateMachine">
+          <region xmi:id="_pqx4IF_QEd286YgWhSQipA" name="Main region">
+            <subvertex xmi:type="uml:FinalState" xmi:id="_qpHIoF_QEd286YgWhSQipA" name="end"/>
+            <subvertex xmi:type="uml:State" xmi:id="_sIQAIF_QEd286YgWhSQipA" name="step 1"/>
+            <subvertex xmi:type="uml:Pseudostate" xmi:id="_tIRSsF_QEd286YgWhSQipA" name="start"/>
+            <transition xmi:id="_uQKu4F_QEd286YgWhSQipA" name="start to step1" source="_tIRSsF_QEd286YgWhSQipA" target="_sIQAIF_QEd286YgWhSQipA"/>
+            <transition xmi:id="_uh1tsF_QEd286YgWhSQipA" name="step1 to end" source="_sIQAIF_QEd286YgWhSQipA" target="_qpHIoF_QEd286YgWhSQipA"/>
+            <transition xmi:id="_xY-S4F_QEd286YgWhSQipA" name="step1 to external" source="_sIQAIF_QEd286YgWhSQipA" target="_vr_MoF_QEd286YgWhSQipA"/>
+          </region>
+          <region xmi:id="_u_mAsF_QEd286YgWhSQipA" name="External region">
+            <subvertex xmi:type="uml:State" xmi:id="_vr_MoF_QEd286YgWhSQipA" name="External state"/>
+          </region>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_sQN841M5Ed2swLTvVm1NKg" name="SubPackage12">
+        <packagedElement xmi:type="uml:Component" xmi:id="_U_6LkF_QEd286YgWhSQipA" name="Component using the interface">
+          <packagedElement xmi:type="uml:Usage" xmi:id="_Wz7t8F_QEd286YgWhSQipA" supplier="_V8vAMF_QEd286YgWhSQipA"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Interface" xmi:id="_V8vAMF_QEd286YgWhSQipA" name="interface"/>
+        <packagedElement xmi:type="uml:Component" xmi:id="_XL6wIF_QEd286YgWhSQipA" name="Component providing" clientDependency="_YdSRYF_QEd286YgWhSQipA">
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_djBcIF_QEd286YgWhSQipA" name="New Port"/>
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_d1o2IF_QEd286YgWhSQipA" name="New Port" redefinedPort="_eh9woF_QEd286YgWhSQipA"/>
+          <interfaceRealization xmi:id="_YdSRYF_QEd286YgWhSQipA" supplier="_V8vAMF_QEd286YgWhSQipA" client="_XL6wIF_QEd286YgWhSQipA"/>
+          <packagedElement xmi:type="uml:Component" xmi:id="_cU5cIF_QEd286YgWhSQipA" name="delegate component">
+            <ownedAttribute xmi:type="uml:Port" xmi:id="_eh9woF_QEd286YgWhSQipA" name="New Port"/>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_sQN85FM5Ed2swLTvVm1NKg" name="SubPackage2">
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_eG4hsF_REd2dXNzNK0975Q" name="InstanceSpecification1"/>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_ezSUsF_REd2dXNzNK0975Q" name="InstanceSpecification2"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_sQN85VM5Ed2swLTvVm1NKg" name="SubPackage3">
+      <packagedElement xmi:type="uml:Class" xmi:id="_ziXBQF_QEd286YgWhSQipA" name="Class1" clientDependency="_1FdywF_QEd286YgWhSQipA">
+        <generalization xmi:id="_8ffUUF_QEd286YgWhSQipA" general="_1jbhIF_QEd286YgWhSQipA"/>
+        <interfaceRealization xmi:id="_1FdywF_QEd286YgWhSQipA" supplier="_z94foF_QEd286YgWhSQipA" client="_ziXBQF_QEd286YgWhSQipA" contract="_z94foF_QEd286YgWhSQipA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Interface" xmi:id="_z94foF_QEd286YgWhSQipA" name="Interface1">
+        <ownedOperation xmi:id="_89gtEF_QEd286YgWhSQipA" name="Operation1"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_1jbhIF_QEd286YgWhSQipA" name="Class2" clientDependency="_6zqrsF_QEd286YgWhSQipA">
+        <ownedOperation xmi:id="__gjRkF_QEd286YgWhSQipA" name="Operation1"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_2QZ74F_QEd286YgWhSQipA" name="New Association" memberEnd="_2QfbcF_QEd286YgWhSQipA _2Qh3sF_QEd286YgWhSQipA" navigableOwnedEnd="_2QfbcF_QEd286YgWhSQipA">
+        <ownedEnd xmi:id="_2QfbcF_QEd286YgWhSQipA" name="class2" type="_1jbhIF_QEd286YgWhSQipA" association="_2QZ74F_QEd286YgWhSQipA"/>
+        <ownedEnd xmi:id="_2Qh3sF_QEd286YgWhSQipA" name="class1" type="_ziXBQF_QEd286YgWhSQipA" association="_2QZ74F_QEd286YgWhSQipA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_26LRoF_QEd286YgWhSQipA" name="Package1">
+        <packagedElement xmi:type="uml:Class" xmi:id="_3hd7IF_QEd286YgWhSQipA" name="Class1" clientDependency="_7KfQQF_QEd286YgWhSQipA">
+          <ownedAttribute xmi:id="__GnHkF_QEd286YgWhSQipA" name="Attribute1"/>
+          <ownedAttribute xmi:id="__TgUEF_QEd286YgWhSQipA" name="Attribute2"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Dependency" xmi:id="_7KfQQF_QEd286YgWhSQipA" supplier="_5dI9oF_QEd286YgWhSQipA" client="_3hd7IF_QEd286YgWhSQipA"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_4LM0oF_QEd286YgWhSQipA" name="Package2">
+        <packagedElement xmi:type="uml:Class" xmi:id="_5dI9oF_QEd286YgWhSQipA" name="Class1"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_6zqrsF_QEd286YgWhSQipA" supplier="_3hd7IF_QEd286YgWhSQipA" client="_1jbhIF_QEd286YgWhSQipA"/>
+      <packagedElement xmi:type="uml:Enumeration" xmi:id="_9fCFwF_QEd286YgWhSQipA" name="Enumeration1">
+        <ownedLiteral xmi:id="_9-XGEF_QEd286YgWhSQipA" name="EnumerationLiteral1"/>
+        <ownedLiteral xmi:id="_-RkV8F_QEd286YgWhSQipA" name="EnumerationLiteral2"/>
+      </packagedElement>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>

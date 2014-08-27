@@ -40,7 +40,7 @@ import org.eclipse.sirius.viewpoint.description.VSMElementCustomization;
  * <em>Feature Customizations</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class VSMElementCustomizationImpl extends EObjectImpl implements VSMElementCustomization {

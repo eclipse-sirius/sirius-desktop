@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="C" version="8.0.0">
+  <ownedViewpoints name="ViewpointC" modelFileExtension="ecore">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Extension C" viewpointURI="viewpoint:/DesignerTestProject/ViewpointA" representationName="FirstDiagram">
+      <layers>
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="TheMegaExtension" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+          <style xsi:type="style:DotDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+          <importedMapping href="viewpoint:/DesignerTestProject/ViewpointB#//@ownedViewpoints[name='ViewpointB']/@ownedRepresentationExtensions[name='ExtendsA']/@layers[name='Extension%20B']/@nodeMappings[name='ImportClass']"/>
+        </nodeMappings>
+      </layers>
+    </ownedRepresentationExtensions>
+  </ownedViewpoints>
+</description:Group>

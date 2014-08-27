@@ -25,7 +25,7 @@ import org.eclipse.sirius.viewpoint.impl.BasicLabelStyleImpl;
  * <em><b>Begin Label Style</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class BeginLabelStyleImpl extends BasicLabelStyleImpl implements BeginLabelStyle {

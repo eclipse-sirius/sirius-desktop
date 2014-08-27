@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.obeo.fr/dsl/viewpoint/description/1.1.0" xmlns:style="http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0" name="B" version="6.7.0.201302071200">
+  <ownedViewpoints name="B" modelFileExtension="ecore">
+    <ownedRepresentationExtensions xsi:type="description:DiagramExtensionDescription" name="DiagB" viewpointURI="platform:/plugin/DesignerTestProject/description/A.odesign#//@ownedViewpoints[name='A']" representationName="DiagA">
+      <layers name="LayerB">
+        <nodeMappings xsi:type="description:NodeMappingImport" name="PackageBDarkBlue" domainClass="EPackage">
+          <style xsi:type="style:SquareDescription" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+          </style>
+          <importedMapping href="A.odesign#//@ownedViewpoints[name='A']/@ownedRepresentations[name='DiagA']/@defaultLayer/@nodeMappings[name='NodeMappingALightBlue']"/>
+        </nodeMappings>
+      </layers>
+    </ownedRepresentationExtensions>
+  </ownedViewpoints>
+</description:Group>

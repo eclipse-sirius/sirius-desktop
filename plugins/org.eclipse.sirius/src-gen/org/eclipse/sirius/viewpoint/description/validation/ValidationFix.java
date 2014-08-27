@@ -17,7 +17,7 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Fix</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.tool.InitialOperation;
  * <em>Initial Operation</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationFix()
  * @model
  * @generated

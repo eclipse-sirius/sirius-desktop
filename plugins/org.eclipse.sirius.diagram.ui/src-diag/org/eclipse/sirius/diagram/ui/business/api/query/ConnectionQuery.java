@@ -27,6 +27,7 @@ import org.eclipse.sirius.ext.base.Options;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
+
 /**
  * A class aggregating all the queries (read-only!) having a {@link Connection}
  * as a starting point.
@@ -165,13 +166,8 @@ public class ConnectionQuery {
 
         Object cons = connection.getRoutingConstraint();
         if (cons instanceof List) {
-            List<Object> constraintsList = (List<Object>) cons;
-            if (constraintsList.size() == 4 && Iterators.all(constraintsList.iterator(), Predicates.instanceOf(RelativeBendpoint.class))) {
-                List<RelativeBendpoint> result = Lists.newLinkedList();
-                for (Object object : constraintsList) {
-                    result.add((RelativeBendpoint) object);
-                }
-                return Options.newSome(result);
+            if (((List<?>) cons).size() == 4) {
+                return getRelativeBendpointsConstraint();
             }
         }
         return Options.newNone();
@@ -181,21 +177,60 @@ public class ConnectionQuery {
      * Return the constraint of the connection as list of RelativeBendpoint only
      * if :
      * <UL>
-     * <LI>the constraint is a list of relative bendpoints</LI>
+     * <LI>the constraint is a list of absolute bendpoints</LI>
      * <LI>this list contains 4 points (corresponding to a branch of a tree).</LI>
      * </UL>
      * 
-     * @return an optional list of {@link RelativeBendpoint}
+     * @return an optional list of {@link AbsoluteBendpoint}
      */
     public Option<List<AbsoluteBendpoint>> getTreeAbsoluteBendpointsConstraint() {
 
         Object cons = connection.getRoutingConstraint();
         if (cons instanceof List) {
-            List<Object> constraintsList = (List<Object>) cons;
-            if (constraintsList.size() == 4 && Iterators.all(constraintsList.iterator(), Predicates.instanceOf(AbsoluteBendpoint.class))) {
+            if (((List<?>) cons).size() == 4) {
+                return getAbsoluteBendpointsConstraint();
+            }
+        }
+        return Options.newNone();
+    }
+
+    /**
+     * Return the constraint of the connection as list of RelativeBendpoint only
+     * if the constraint is a list of absolute bendpoints.
+     * 
+     * @return an optional list of {@link AbsoluteBendpoint}
+     */
+    public Option<List<AbsoluteBendpoint>> getAbsoluteBendpointsConstraint() {
+
+        Object cons = connection.getRoutingConstraint();
+        if (cons instanceof List) {
+            List<?> constraintsList = (List<?>) cons;
+            if (Iterators.all(constraintsList.iterator(), Predicates.instanceOf(AbsoluteBendpoint.class))) {
                 List<AbsoluteBendpoint> result = Lists.newLinkedList();
                 for (Object object : constraintsList) {
                     result.add((AbsoluteBendpoint) object);
+                }
+                return Options.newSome(result);
+            }
+        }
+        return Options.newNone();
+    }
+
+    /**
+     * Return the constraint of the connection as list of RelativeBendpoint only
+     * if the constraint is a list of relative bendpoints.
+     * 
+     * @return an optional list of {@link RelativeBendpoint}
+     */
+    public Option<List<RelativeBendpoint>> getRelativeBendpointsConstraint() {
+
+        Object cons = connection.getRoutingConstraint();
+        if (cons instanceof List) {
+            List<?> constraintsList = (List<?>) cons;
+            if (Iterators.all(constraintsList.iterator(), Predicates.instanceOf(RelativeBendpoint.class))) {
+                List<RelativeBendpoint> result = Lists.newLinkedList();
+                for (Object object : constraintsList) {
+                    result.add((RelativeBendpoint) object);
                 }
                 return Options.newSome(result);
             }

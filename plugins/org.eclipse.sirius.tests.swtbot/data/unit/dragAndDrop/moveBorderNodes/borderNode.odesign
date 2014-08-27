@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="borderNode" version="8.1.0">
+  <ownedViewpoints name="BorderNode" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="BorderNodeDiagram" label="BorderNodeDiagram" domainClass="EPackage">
+      <metamodel href="http://www.eclipse.org/gmf/runtime/1.0.2/notation#/"/>
+      <defaultLayer name="Default">
+        <containerMappings name="Package" label="Package" domainClass="EPackage">
+          <borderedNodeMappings name="Enum" semanticCandidatesExpression="feature:eClassifiers" domainClass="EEnum">
+            <style xsi:type="style:SquareDescription" showIcon="false" tooltipExpression="['(' + eInverse(viewpoint::DSemanticDecorator).eInverse(notation::Node).layoutConstraint.oclAsType(notation::Location).x + ', ' + eInverse(viewpoint::DSemanticDecorator).eInverse(notation::Node).layoutConstraint.oclAsType(notation::Location).y + ')'/]" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

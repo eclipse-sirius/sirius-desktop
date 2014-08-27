@@ -81,7 +81,7 @@ public abstract class AbstractExternalJavaAction implements IExternalJavaAction 
             result = null;
         } else {
             String typeName = (value == null) ? "null" : ("a " + value.getClass().getSimpleName());
-            throw new IllegalArgumentException("Type error: parameter '" + name + "' should be a " + type.getClass().getSimpleName() + " but is " + typeName);
+            throw new IllegalArgumentException("Type error: parameter '" + name + "' should be a " + type.getSimpleName() + " but is " + typeName);
         }
         return result;
     }

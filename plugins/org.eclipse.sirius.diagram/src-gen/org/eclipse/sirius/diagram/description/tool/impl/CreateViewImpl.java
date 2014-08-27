@@ -37,7 +37,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.ContainerModelOperatio
  * <em>Variable Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CreateViewImpl extends ContainerModelOperationImpl implements CreateView {

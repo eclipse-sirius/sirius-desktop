@@ -20,7 +20,7 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * <em><b>TMessage Extremity</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class TMessageExtremityImpl extends EObjectImpl implements TMessageExtremity {

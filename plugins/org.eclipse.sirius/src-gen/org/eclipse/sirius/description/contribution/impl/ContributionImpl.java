@@ -50,7 +50,7 @@ import org.eclipse.sirius.description.contribution.FeatureContribution;
  * <em>Description</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ContributionImpl extends EObjectImpl implements Contribution {

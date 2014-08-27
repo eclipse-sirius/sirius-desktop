@@ -24,10 +24,10 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Edge Mapping</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> An edge mapping allows to create ViewEdge. <!--
  * end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -67,7 +67,7 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  * <em>Path Node Mapping</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getEdgeMapping()
  * @model
  * @generated

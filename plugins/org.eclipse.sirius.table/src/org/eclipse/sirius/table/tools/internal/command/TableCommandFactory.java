@@ -23,12 +23,14 @@ import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
+import org.eclipse.sirius.business.api.helper.task.DeleteEObjectTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
 import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
 import org.eclipse.sirius.business.api.helper.task.label.InitInterpreterFromParsedVariableTask2;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.business.internal.helper.task.DeleteDRepresentationElementsTask;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
@@ -40,8 +42,6 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.exception.Locke
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.business.internal.helper.task.CreateTableTask;
-import org.eclipse.sirius.table.business.internal.helper.task.DeleteTableElementTask;
-import org.eclipse.sirius.table.business.internal.helper.task.DeleteTableElementsTask;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
@@ -145,7 +145,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
                         if (parentTable != null) {
                             final Set<DSemanticDecorator> tableElements = commandTaskHelper.getDElementToClearFromSemanticElements(parentTable, allSemanticElements);
                             for (final DSemanticDecorator decorator : tableElements) {
-                                result.getTasks().add(new DeleteTableElementTask(decorator, modelAccessor));
+                                result.getTasks().add(new DeleteEObjectTask(decorator, modelAccessor));
                             }
                         }
 
@@ -155,7 +155,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
                         final Iterator<EObject> it = allSemanticElements.iterator();
                         while (it.hasNext()) {
                             final EObject eObj = it.next();
-                            result.getTasks().add(new DeleteTableElementTask(eObj, modelAccessor));
+                            result.getTasks().add(new DeleteEObjectTask(eObj, modelAccessor));
                         }
                         addRefreshTask(parentTable, result, deleteTool);
                         cmd = new NoNullResourceCommand(result, element);
@@ -256,7 +256,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
         }
         if (delete) {
             cmd.getTasks().addAll(buildCommandFromModelOfTool(semanticElement, deleteTool, element.eContainer()).getTasks());
-            cmd.getTasks().add(new DeleteTableElementsTask(domain, modelAccessor, cmd, this, element));
+            cmd.getTasks().add(new DeleteDRepresentationElementsTask(modelAccessor, cmd, commandTaskHelper, element));
         } else {
             cmd.getTasks().add(UnexecutableTask.INSTANCE);
         }
@@ -453,27 +453,6 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
             }
         }
         return elementsToDestroy;
-    }
-
-    /**
-     * Appends a command that delete the specified table to the specified
-     * command.
-     * 
-     * @param cmd
-     *            the command.
-     * @param table
-     *            the table to delete.
-     */
-    public void addDeleteTableTasks(final SiriusCommand cmd, final DTable table) {
-        if (!getPermissionAuthority().canEditInstance(table)) {
-            cmd.chain(new InvalidPermissionCommand(domain, table));
-        } else {
-            if (!getPermissionAuthority().canEditInstance(table.eContainer())) {
-                cmd.chain(new InvalidPermissionCommand(domain, table.eContainer()));
-            } else {
-                cmd.getTasks().add(UnexecutableTask.INSTANCE);
-            }
-        }
     }
 
     /**

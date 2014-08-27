@@ -38,7 +38,7 @@ import org.eclipse.sirius.viewpoint.description.style.StylePackage;
  * <em>Corner Width</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class LabelBorderStyleDescriptionImpl extends EObjectImpl implements LabelBorderStyleDescription {

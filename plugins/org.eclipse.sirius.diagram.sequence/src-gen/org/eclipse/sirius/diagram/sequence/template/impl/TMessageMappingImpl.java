@@ -45,7 +45,7 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * <em>Conditional Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class TMessageMappingImpl extends TAbstractMappingImpl implements TMessageMapping {

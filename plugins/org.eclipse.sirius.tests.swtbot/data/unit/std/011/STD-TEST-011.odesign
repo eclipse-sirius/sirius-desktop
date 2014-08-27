@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="TC1852" version="8.0.0">
+  <ownedViewpoints name="Design TC1852" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Package Hierarchy With Nodes Target" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="NT Package" semanticCandidatesExpression="feature:eAllContents" domainClass="EPackage">
+          <style xsi:type="style:SquareDescription" labelPosition="node" width="5" height="3">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="NT subPackage" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Design%20TC1852']/@ownedRepresentations[name='Package%20Hierarchy%20With%20Nodes%20Target']/@defaultLayer/@nodeMappings[name='NT%20Package']" targetMapping="//@ownedViewpoints[name='Design%20TC1852']/@ownedRepresentations[name='Package%20Hierarchy%20With%20Nodes%20Target']/@defaultLayer/@nodeMappings[name='NT%20Package']" targetFinderExpression="feature:eContainer" targetExpression="">
+          <style sourceArrow="OutputArrow" targetArrow="Diamond" sizeComputationExpression="1" routingStyle="tree" foldingStyle="TARGET">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Package Hierarchy With Containers Target" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <edgeMappings name="CT subPackage" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Design%20TC1852']/@ownedRepresentations[name='Package%20Hierarchy%20With%20Containers%20Target']/@defaultLayer/@containerMappings[name='CT%20Package']" targetMapping="//@ownedViewpoints[name='Design%20TC1852']/@ownedRepresentations[name='Package%20Hierarchy%20With%20Containers%20Target']/@defaultLayer/@containerMappings[name='CT%20Package']" targetFinderExpression="feature:eContainer" targetExpression="">
+          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="1" routingStyle="tree" foldingStyle="TARGET">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="CT Package" semanticCandidatesExpression="feature:eAllContents" domainClass="EPackage">
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Package Hierarchy With Nodes Source" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="NS Package" semanticCandidatesExpression="feature:eAllContents" domainClass="EPackage">
+          <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW" width="5" height="3">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="NS subPackage" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Design%20TC1852']/@ownedRepresentations[name='Package%20Hierarchy%20With%20Nodes%20Source']/@defaultLayer/@nodeMappings[name='NS%20Package']" targetMapping="//@ownedViewpoints[name='Design%20TC1852']/@ownedRepresentations[name='Package%20Hierarchy%20With%20Nodes%20Source']/@defaultLayer/@nodeMappings[name='NS%20Package']" targetFinderExpression="&lt;%eContents.filter(&quot;EPackage&quot;)%>" targetExpression="">
+          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="1" routingStyle="tree" foldingStyle="SOURCE">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Package Hierarchy With Containers Source" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <edgeMappings name="CS subPackage" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Design%20TC1852']/@ownedRepresentations[name='Package%20Hierarchy%20With%20Containers%20Source']/@defaultLayer/@containerMappings[name='CS%20Package']" targetMapping="//@ownedViewpoints[name='Design%20TC1852']/@ownedRepresentations[name='Package%20Hierarchy%20With%20Containers%20Source']/@defaultLayer/@containerMappings[name='CS%20Package']" targetFinderExpression="&lt;%eContents.filter(&quot;EPackage&quot;)%>" targetExpression="">
+          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="1" routingStyle="tree" foldingStyle="SOURCE">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="CS Package" semanticCandidatesExpression="feature:eAllContents" domainClass="EPackage">
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

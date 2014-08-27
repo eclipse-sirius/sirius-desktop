@@ -71,7 +71,7 @@ import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
  * <em>Children Presentation</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ContainerMappingImpl extends AbstractNodeMappingImpl implements ContainerMapping {

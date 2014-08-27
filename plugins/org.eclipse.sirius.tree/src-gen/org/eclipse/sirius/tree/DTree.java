@@ -18,7 +18,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DTree</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
  * </li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tree.TreePackage#getDTree()
  * @model
  * @generated

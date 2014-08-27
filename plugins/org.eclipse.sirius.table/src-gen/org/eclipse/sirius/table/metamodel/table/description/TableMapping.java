@@ -15,7 +15,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Table Mapping</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -24,7 +24,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
  * <em>Semantic Elements</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableMapping()
  * @model
  * @generated

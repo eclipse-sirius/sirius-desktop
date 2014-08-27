@@ -17,10 +17,10 @@ import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Paste Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> Tool that describes a paste operation. <!--
  * end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -41,7 +41,7 @@ import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
  * <em>Initial Operation</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getPasteDescription()
  * @model
  * @generated

@@ -33,7 +33,7 @@ import org.eclipse.sirius.diagram.sequence.description.ExecutionMapping;
  * <em>Finishing End Finder Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ExecutionMappingImpl extends NodeMappingImpl implements ExecutionMapping {

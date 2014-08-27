@@ -37,7 +37,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
  * Line Width</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DNodeListImpl extends DDiagramElementContainerImpl implements DNodeList {

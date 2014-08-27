@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interactions:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:interactions="http://www.eclipse.org/sirius/sample/interactions" name="Samples for VP-1073 (Combined Fragment)">
+  <ownedInteractions name="Sample #1">
+    <participants name="a">
+      <type href="types.ecore#//A"/>
+    </participants>
+    <participants name="b">
+      <type href="types.ecore#//B"/>
+    </participants>
+    <participants name="c">
+      <type href="types.ecore#//C"/>
+    </participants>
+    <participants name="d">
+      <type href="types.ecore#//D"/>
+    </participants>
+    <participants name="e">
+      <type href="types.ecore#//E"/>
+    </participants>
+    <executions name="e1" owner="//@ownedInteractions.0/@participants.1" start="//@ownedInteractions.0/@ends.0" end="//@ownedInteractions.0/@ends.1"/>
+    <executions name="e2" owner="//@ownedInteractions.0/@participants.1" start="//@ownedInteractions.0/@ends.2" end="//@ownedInteractions.0/@ends.3"/>
+    <combinedFragments operator="opt.1" coveredParticipants="//@ownedInteractions.0/@participants.0 //@ownedInteractions.0/@participants.1" start="//@ownedInteractions.0/@ends.4" finish="//@ownedInteractions.0/@ends.7">
+      <ownedOperands name="x > 0" start="//@ownedInteractions.0/@ends.5"/>
+      <ownedOperands name="x &lt;= 0" start="//@ownedInteractions.0/@ends.6"/>
+    </combinedFragments>
+    <combinedFragments operator="opt.2" coveredParticipants="//@ownedInteractions.0/@participants.0 //@ownedInteractions.0/@participants.1" start="//@ownedInteractions.0/@ends.8" finish="//@ownedInteractions.0/@ends.11">
+      <ownedOperands name="x > 0" start="//@ownedInteractions.0/@ends.6"/>
+      <ownedOperands name="x &lt;= 0" start="//@ownedInteractions.0/@ends.10"/>
+    </combinedFragments>
+    <ends xsi:type="interactions:ExecutionEnd" name="start_e1" context="//@ownedInteractions.0/@participants.1" execution="//@ownedInteractions.0/@executions.0"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="finish_e1" context="//@ownedInteractions.0/@participants.1" execution="//@ownedInteractions.0/@executions.0"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="start_e2" context="//@ownedInteractions.0/@participants.1" execution="//@ownedInteractions.0/@executions.1"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="finish_e2" context="//@ownedInteractions.0/@participants.1" execution="//@ownedInteractions.0/@executions.1"/>
+    <ends xsi:type="interactions:CombinedFragmentEnd" name="start_opt.1" owner="//@ownedInteractions.0/@combinedFragments.0"/>
+    <ends xsi:type="interactions:OperandEnd" name="start_cond1" owner="//@ownedInteractions.0/@combinedFragments.0/@ownedOperands.0"/>
+    <ends xsi:type="interactions:OperandEnd" name="start_cond2" owner="//@ownedInteractions.0/@combinedFragments.0/@ownedOperands.1"/>
+    <ends xsi:type="interactions:CombinedFragmentEnd" name="finish_opt.1" owner="//@ownedInteractions.0/@combinedFragments.0"/>
+    <ends xsi:type="interactions:CombinedFragmentEnd" name="start_opt.2" owner="//@ownedInteractions.0/@combinedFragments.1"/>
+    <ends xsi:type="interactions:OperandEnd" name="start_cond2" owner="//@ownedInteractions.0/@combinedFragments.1/@ownedOperands.0"/>
+    <ends xsi:type="interactions:OperandEnd" name="start_cond2" owner="//@ownedInteractions.0/@combinedFragments.1/@ownedOperands.1"/>
+    <ends xsi:type="interactions:CombinedFragmentEnd" name="finish_opt.2" owner="//@ownedInteractions.0/@combinedFragments.1"/>
+  </ownedInteractions>
+</interactions:Model>

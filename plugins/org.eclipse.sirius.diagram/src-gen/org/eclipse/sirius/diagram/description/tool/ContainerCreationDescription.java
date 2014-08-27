@@ -21,10 +21,10 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Container Creation Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> Tool to create a Container (ViewNodeContainer or
  * ViewNodeList). <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -48,7 +48,7 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
  * <em>Extra Mappings</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getContainerCreationDescription()
  * @model
  * @generated

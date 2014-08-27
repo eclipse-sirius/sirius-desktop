@@ -17,7 +17,7 @@ import org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DDiagram</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -32,7 +32,7 @@ import org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering;
  * <em>Instance Role Semantic Ordering</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.sequence.SequencePackage#getSequenceDDiagram()
  * @model
  * @generated

@@ -22,7 +22,7 @@ import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
  * <em><b>Drag And Drop Target</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class DragAndDropTargetImpl extends EObjectImpl implements DragAndDropTarget {

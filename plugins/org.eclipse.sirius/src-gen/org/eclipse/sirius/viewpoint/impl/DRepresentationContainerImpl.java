@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em>Models</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DRepresentationContainerImpl extends DViewImpl implements DRepresentationContainer {

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="TreeDiagram" version="8.0.0">
+  <ownedViewpoints name="TreeDiagram" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TreeDiagram" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="NT Package" semanticCandidatesExpression="feature:eAllContents" domainClass="EPackage">
+          <style xsi:type="style:SquareDescription" labelPosition="node" width="5" height="3">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="NT subPackage" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='TreeDiagram']/@ownedRepresentations[name='TreeDiagram']/@defaultLayer/@nodeMappings[name='NT%20Package']" targetMapping="//@ownedViewpoints[name='TreeDiagram']/@ownedRepresentations[name='TreeDiagram']/@defaultLayer/@nodeMappings[name='NT%20Package']" targetFinderExpression="feature:eContainer" targetExpression="">
+          <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="1" routingStyle="tree">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

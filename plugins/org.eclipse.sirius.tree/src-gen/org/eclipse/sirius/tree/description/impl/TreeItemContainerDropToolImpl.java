@@ -64,7 +64,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescri
  * <em>Drag Source</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionImpl implements TreeItemContainerDropTool {

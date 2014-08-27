@@ -14,10 +14,10 @@ package org.eclipse.sirius.diagram;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Absolute Bounds Filter</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> Graphical filter to store absolute bounds. <!--
  * end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -29,7 +29,7 @@ package org.eclipse.sirius.diagram;
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getAbsoluteBoundsFilter()
  * @model
  * @generated

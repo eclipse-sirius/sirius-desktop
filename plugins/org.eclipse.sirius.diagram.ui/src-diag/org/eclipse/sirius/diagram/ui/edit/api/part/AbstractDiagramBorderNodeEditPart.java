@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -521,8 +521,8 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
         Command result = UnexecutableCommand.INSTANCE;
         RequestQuery requestQuery = new RequestQuery(request);
         if (!requestQuery.isNoteCreationRequest() && !requestQuery.isTextCreationRequest() && !requestQuery.isNoteDropRequest() && !requestQuery.isTextDropRequest()) {
-            Command selectionCmd = CommonEditPartOperation.appendSelectionCommand(super.getCommand(request), this);
-            result = CommonEditPartOperation.handleAutoPinOnInteractiveMove(this, request, selectionCmd);
+            Command cmd = super.getCommand(request);
+            result = CommonEditPartOperation.handleAutoPinOnInteractiveMove(this, request, cmd);
         }
         return result;
     }

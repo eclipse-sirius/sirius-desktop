@@ -14,8 +14,8 @@ package org.eclipse.sirius.viewpoint;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DModel</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDModel()
  * @model
  * @generated

@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="VP-3834" version="8.0.0">
+  <ownedViewpoints name="VP-3834_Viewpoint" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="VP-3834_Diagram" initialisation="true" domainClass="EPackage" preconditionExpression="&lt;%eContainer == null%>">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="EClassMapping" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass">
+          <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="EReferenceMapping" sourceMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@nodeMappings[name='EClassMapping']" targetMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@nodeMappings[name='EClassMapping']" targetFinderExpression="[eType/]" sourceFinderExpression="[eContainer()/]" domainClass="ecore.EReference" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="EPackageMapping" preconditionExpression="&lt;%eContainer != null%>" semanticCandidatesExpression="[eSubpackages/]" createElements="false" domainClass="ecore.EPackage" reusedNodeMappings="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@nodeMappings[name='EClassMapping']" reusedContainerMappings="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@containerMappings[name='EPackageMapping']">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="create">
+          <ownedTools xsi:type="tool:ToolDescription" name="Create EPackage With CreateView">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="ePackage"/>
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@containerMappings[name='EPackageMapping']" containerViewExpression="[elementView/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="Create EClass With CreateView">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="eClass"/>
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@nodeMappings[name='EClassMapping']" containerViewExpression="[elementView/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="Create EReference With CreateView">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures">
+                <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="[element/]"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="ref"/>
+                <subModelOperations xsi:type="tool_1:CreateEdgeView" mapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@edgeMappings[name='EReferenceMapping']" containerViewExpression="[elementView.eContainer(DDiagram)/]" sourceExpression="[element/]" targetExpression="[element/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Create EPackage With ContainerCreationTool" containerMappings="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@containerMappings[name='EPackageMapping']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="ePackage"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Create EClass With NodeCreationTool" nodeMappings="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@nodeMappings[name='EClassMapping']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="eClass"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Create EReference With EdgeCreationTool" edgeMappings="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@edgeMappings[name='EReferenceMapping']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[source/]">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="[target/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['newEReference' + eContainer(EClassifier).eAllContents(EReference)->size()/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="L1">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="EClassMappingBis" importedMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@nodeMappings[name='EClassMapping']">
+          <style xsi:type="style:EllipseNodeDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappingImports name="EReferenceMappingBis" importedMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@edgeMappings[name='EReferenceMapping']">
+          <conditionnalStyles predicateExpression="[true/]">
+            <style xsi:type="style:BracketEdgeStyleDescription" sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <centerLabelStyleDescription>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappingImports>
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="EPackageMappingBis" preconditionExpression="&lt;%eContainer != null %>" domainClass="ecore.EPackage" importedMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@containerMappings[name='EPackageMapping']">
+          <style xsi:type="style:ShapeContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="VP-3834_DiagramExtension" viewpointURI="viewpoint:/DesignerTestProject/VP-3834_Viewpoint" representationName="VP-3834_Diagram">
+      <layers name="L2">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="EClassMappingTer" importedMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@additionalLayers[name='L1']/@nodeMappings[name='EClassMappingBis']">
+          <style xsi:type="style:LozengeNodeDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappingImports name="EReferenceMappingTer" importedMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@additionalLayers[name='L1']/@edgeMappingImports[name='EReferenceMappingBis']">
+          <conditionnalStyles predicateExpression="[true/]">
+            <style xsi:type="style:BracketEdgeStyleDescription" sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              <beginLabelStyleDescription labelFormat="bold_italic" labelExpression="[name/]">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+              </beginLabelStyleDescription>
+              <centerLabelStyleDescription labelFormat="bold_italic" labelExpression="[name/]">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+              </centerLabelStyleDescription>
+              <endLabelStyleDescription labelFormat="bold_italic" labelExpression="[name/]">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+              </endLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappingImports>
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="EPackageMappingTer" preconditionExpression="&lt;%eContainer != null %>" semanticCandidatesExpression="[eSubpackages/]" domainClass="ecore.EPackage" importedMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@additionalLayers[name='L1']/@containerMappings[name='EPackageMappingBis']">
+          <style xsi:type="style:WorkspaceImageDescription" workspacePath="/org.eclipse.sirius/modeling32.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </containerMappings>
+      </layers>
+      <layers name="L3">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="EClassMappingImportOfL3" importedMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentationExtensions[name='VP-3834_DiagramExtension']/@layers[name='L2']/@nodeMappings[name='EClassMappingTer']">
+          <borderedNodeMappings name="EAttributeBorderedNodeMappingOfL3" semanticCandidatesExpression="[eAttributes/]" domainClass="ecore.EAttribute">
+            <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="EOperationBorderedNodeMappingOfL3" semanticCandidatesExpression="[eOperations/]" domainClass="ecore.EOperation">
+            <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:LozengeNodeDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="EPackageMappingImportOfL3" preconditionExpression="&lt;%eContainer != null %>" semanticCandidatesExpression="[eSubpackages/]" domainClass="ecore.EPackage" importedMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentationExtensions[name='VP-3834_DiagramExtension']/@layers[name='L2']/@containerMappings[name='EPackageMappingTer']">
+          <borderedNodeMappings name="EClassBorderedNodeMappingOfL3" semanticCandidatesExpression="[eClassifiers/]" domainClass="ecore.EClass">
+            <borderedNodeMappings name="EAttributeSubBorderedNodeMappingOfL3" semanticCandidatesExpression="[eAttributes/]" domainClass="ecore.EAttribute">
+              <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </borderedNodeMappings>
+            <borderedNodeMappings name="EOperationSubBorderedNodeMappingOfL3" semanticCandidatesExpression="[eOperations/]" domainClass="ecore.EOperation">
+              <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:WorkspaceImageDescription" workspacePath="/org.eclipse.sirius/modeling32.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </containerMappings>
+        <toolSections>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Create EPackageEClassEAttributeEOperation With ContainerCreationTool" containerMappings="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentationExtensions[name='VP-3834_DiagramExtension']/@layers[name='L3']/@containerMappings[name='EPackageMappingImportOfL3']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="ePackage">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="eClass"/>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EAttribute" referenceName="eAttributes">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="eAttribute"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EOperation" referenceName="eOperations">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="eOperation"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Create EClassEAttributeEOperation With NodeCreationTool" nodeMappings="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@nodeMappings[name='EClassMapping']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="eClass"/>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EAttribute" referenceName="eAttributes">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="eAttribute"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EOperation" referenceName="eOperations">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="eOperation"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="Create EPackageEClassEAttributeEOperation With CreateView">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="ePackage"/>
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentations[name='VP-3834_Diagram']/@defaultLayer/@containerMappings[name='EPackageMapping']" containerViewExpression="[elementView/]"/>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="eClass"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EAttribute" referenceName="eStructuralFeatures">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="eAttribute"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EOperation" referenceName="eOperations">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="eOperation"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentationExtensions[name='VP-3834_DiagramExtension']/@layers[name='L3']/@containerMappings[name='EPackageMappingImportOfL3']/@borderedNodeMappings[name='EClassBorderedNodeMappingOfL3']" containerViewExpression="[createdView/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="Create EClassEAttributeEOperation With CreateView">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="eClass"/>
+                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentationExtensions[name='VP-3834_DiagramExtension']/@layers[name='L3']/@containerMappings[name='EPackageMappingImportOfL3']/@borderedNodeMappings[name='EClassBorderedNodeMappingOfL3']" containerViewExpression="[elementView/]"/>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EAttribute" referenceName="eStructuralFeatures">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="eAttribute"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EOperation" referenceName="eOperations">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="eOperation"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </layers>
+      <layers name="L4">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="EClassMappingImportOfL4" hideSubMappings="true" importedMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentationExtensions[name='VP-3834_DiagramExtension']/@layers[name='L3']/@nodeMappings[name='EClassMappingImportOfL3']">
+          <style xsi:type="style:LozengeNodeDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="EPackageMappingImportOfL4" preconditionExpression="&lt;%eContainer != null %>" semanticCandidatesExpression="[eSubpackages/]" domainClass="ecore.EPackage" hideSubMappings="true" importedMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentationExtensions[name='VP-3834_DiagramExtension']/@layers[name='L3']/@containerMappings[name='EPackageMappingImportOfL3']">
+          <style xsi:type="style:WorkspaceImageDescription" workspacePath="/org.eclipse.sirius/modeling32.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </containerMappings>
+      </layers>
+      <layers name="L5">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="EClassMappingImportOfL5" importedMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentationExtensions[name='VP-3834_DiagramExtension']/@layers[name='L4']/@nodeMappings[name='EClassMappingImportOfL4']">
+          <style xsi:type="style:LozengeNodeDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="EPackageMappingImportOfL5" preconditionExpression="&lt;%eContainer != null %>" semanticCandidatesExpression="[eSubpackages/]" domainClass="ecore.EPackage" importedMapping="//@ownedViewpoints[name='VP-3834_Viewpoint']/@ownedRepresentationExtensions[name='VP-3834_DiagramExtension']/@layers[name='L4']/@containerMappings[name='EPackageMappingImportOfL4']">
+          <style xsi:type="style:WorkspaceImageDescription" workspacePath="/org.eclipse.sirius/modeling32.png">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </containerMappings>
+      </layers>
+    </ownedRepresentationExtensions>
+  </ownedViewpoints>
+</description:Group>

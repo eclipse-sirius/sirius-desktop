@@ -26,10 +26,10 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Container Drop Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> Tool that describes a Drag & Drop operation. <!--
  * end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -59,7 +59,7 @@ import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription
  * <em>Move Edges</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getContainerDropDescription()
  * @model
  * @generated

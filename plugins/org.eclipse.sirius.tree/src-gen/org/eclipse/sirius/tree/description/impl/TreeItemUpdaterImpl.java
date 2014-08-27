@@ -32,7 +32,7 @@ import org.eclipse.sirius.tree.description.TreeItemUpdater;
  * <em>Direct Edit</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TreeItemUpdaterImpl extends EObjectImpl implements TreeItemUpdater {

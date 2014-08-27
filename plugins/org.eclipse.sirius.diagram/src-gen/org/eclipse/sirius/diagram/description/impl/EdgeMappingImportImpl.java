@@ -53,7 +53,7 @@ import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
  * <em>Inherits Ancestor Filters</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class EdgeMappingImportImpl extends DocumentedElementImpl implements EdgeMappingImport {

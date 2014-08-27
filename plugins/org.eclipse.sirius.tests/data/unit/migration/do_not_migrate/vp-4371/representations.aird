@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.obeo.fr/dsl/viewpoint/description/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:viewpoint="http://www.obeo.fr/dsl/viewpoint/1.1.0" xsi:schemaLocation="http://www.obeo.fr/dsl/viewpoint/description/1.1.0 http://www.obeo.fr/dsl/viewpoint/1.1.0#//description" xmi:id="_EujTITGlEeOjb-5llhT0RQ" selectedViews="_IO3YMDGlEeOjb-5llhT0RQ" version="6.7.0.201302181200">
+  <models xmi:type="ecore:EPackage" href="My.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_IO3YMDGlEeOjb-5llhT0RQ" initialized="true">
+    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_JM2DYDGlEeOjb-5llhT0RQ" name=" package entities">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_JPDC0DGlEeOjb-5llhT0RQ" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_JPDC0TGlEeOjb-5llhT0RQ" type="Viewpoint" element="_JM2DYDGlEeOjb-5llhT0RQ" measurementUnit="Pixel">
+          <children xmi:type="notation:Shape" xmi:id="_Ouwz0DGlEeOjb-5llhT0RQ" type="Note" fontName="Segoe UI" description="MyNote" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_Ou4IkDGlEeOjb-5llhT0RQ" type="DiagramName"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_Ou4voDGlEeOjb-5llhT0RQ" type="Description"/>
+            <styles xmi:type="notation:TextStyle" xmi:id="_Ouwz0TGlEeOjb-5llhT0RQ"/>
+            <styles xmi:type="notation:LineTypeStyle" xmi:id="_Ouwz0jGlEeOjb-5llhT0RQ"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ouwz0zGlEeOjb-5llhT0RQ" x="327" y="76"/>
+          </children>
+          <children xmi:type="notation:Shape" xmi:id="_QaumYDGlEeOjb-5llhT0RQ" type="Text" fontName="Segoe UI" description="Text">
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_Qay30DGlEeOjb-5llhT0RQ" type="DiagramName"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_Qaze4DGlEeOjb-5llhT0RQ" type="Description"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_QaumYTGlEeOjb-5llhT0RQ" x="442" y="214"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_JPDp4DGlEeOjb-5llhT0RQ"/>
+          <edges xmi:type="notation:Connector" xmi:id="_RGNzYDGlEeOjb-5llhT0RQ" type="NoteAttachment" source="_QaumYDGlEeOjb-5llhT0RQ" target="_Ouwz0DGlEeOjb-5llhT0RQ" lineWidth="1">
+            <styles xmi:type="notation:ArrowStyle" xmi:id="_RGNzYTGlEeOjb-5llhT0RQ"/>
+            <styles xmi:type="notation:LineTypeStyle" xmi:id="_RGNzYjGlEeOjb-5llhT0RQ"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_RGNzYzGlEeOjb-5llhT0RQ" points="[-9, -10, 106, 110]$[-66, -114, 49, 6]"/>
+          </edges>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
+      <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_JM2DYTGlEeOjb-5llhT0RQ"/>
+      <activatedLayers xmi:type="description:Layer" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer"/>
+      <activatedLayers xmi:type="description:AdditionalLayer" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

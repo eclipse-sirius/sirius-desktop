@@ -30,7 +30,7 @@ import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
  * <em>Initial Width</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping {

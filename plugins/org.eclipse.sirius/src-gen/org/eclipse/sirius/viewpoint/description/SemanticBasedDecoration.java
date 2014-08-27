@@ -14,10 +14,10 @@ package org.eclipse.sirius.viewpoint.description;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Semantic Based Decoration</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A SemanticBasedDecoration applies decoration on
  * views that targeted an element of the given type. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -26,7 +26,7 @@ package org.eclipse.sirius.viewpoint.description;
  * <em>Domain Class</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getSemanticBasedDecoration()
  * @model
  * @generated

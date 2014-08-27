@@ -52,7 +52,7 @@ import org.eclipse.sirius.viewpoint.description.impl.RepresentationTemplateImpl;
  * <em>Message Mappings</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements TSequenceDiagram {

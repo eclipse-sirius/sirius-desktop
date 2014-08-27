@@ -39,7 +39,7 @@ import org.eclipse.sirius.viewpoint.description.Position;
  * <em>Precondition Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class DecorationDescriptionImpl extends EObjectImpl implements DecorationDescription {

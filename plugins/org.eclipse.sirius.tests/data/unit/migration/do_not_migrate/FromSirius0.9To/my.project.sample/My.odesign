@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:filter="http://www.eclipse.org/sirius/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/description/validation/1.1.0" name="My" version="7.0.0">
+  <ownedViewpoints name="MyViewpoint" modelFileExtension="ecore">
+    <validationSet name="GlobalValidation">
+      <ownedRules xsi:type="validation:SemanticValidationRule" message="['SemanticValidation-The ' + name + ' element has an invalid name.'/]" targetClass="EClass">
+        <audits auditExpression="[not(name.startsWith('Fail'))/]"/>
+      </ownedRules>
+      <ownedRules xsi:type="validation:ViewValidationRule" message="['ViewValidation-The ' + name + ' element has an invalid name.'/]" targets="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='MyDiagDesc']/@defaultLayer/@nodeMappings[name='ClassNode']">
+        <audits auditExpression="[not(name.startsWith('Fail'))/]"/>
+        <fixes name="Add C prefix">
+          <initialOperation>
+            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:target">
+              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['C' + name/]"/>
+            </firstModelOperations>
+          </initialOperation>
+        </fixes>
+      </ownedRules>
+    </validationSet>
+    <ownedRepresentations xsi:type="description_1:TreeDescription" name="MyTreeDesc" domainClass="ecore.EPackage">
+      <subItemMappings name="ClassItem" domainClass="ecore.EClass" semanticCandidatesExpression="feature:eContents">
+        <defaultStyle showIcon="false">
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+      </subItemMappings>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="MyEditionTableDesc" domainClass="ecore.EClass">
+      <ownedLineMappings name="LineClass" domainClass="ecore.EClass" semanticCandidatesExpression="var:self" headerLabelExpression="feature:name"/>
+      <ownedColumnMappings name="NameColumn" headerLabelExpression="Name" featureName="name" labelExpression="feature:name"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="MyCrossTableDesc" domainClass="ecore.EPackage">
+      <ownedLineMappings name="ClassLine" domainClass="ecore.EClass" semanticCandidatesExpression="feature:eContents"/>
+      <ownedColumnMappings name="ClassColumn" domainClass="ecore.EClass" semanticCandidatesExpression="feature:eContents"/>
+      <intersection name="AllTrueIntersection" lineMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='MyCrossTableDesc']/@ownedLineMappings[name='ClassLine']" columnMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='MyCrossTableDesc']/@ownedColumnMappings.0" labelExpression="X" columnFinderExpression="var:self"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='MyDiagDesc']/@defaultLayer/@toolSections.0/@ownedTools[name='DropClasses']" name="MyDiagDesc" domainClass="ecore.EPackage">
+      <filters xsi:type="filter:CompositeFilterDescription" name="FilterA">
+        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='MyDiagDesc']/@defaultLayer/@nodeMappings[name='ClassNode']" semanticConditionExpression="[name.startsWith('AA')/]"/>
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='MyDiagDesc']/@additionalLayers[name='optionalLayer1']/@containerMappings[name='ClassContainer']" semanticConditionExpression="[name.startsWith('AA')/]"/>
+      </filters>
+      <validationSet name="MyDiagSpec validation">
+        <ownedRules xsi:type="validation:ViewValidationRule" message="['DiagViewValidation-The ' + name + ' element has an invalid name.'/]" targets="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='MyDiagDesc']/@defaultLayer/@nodeMappings[name='ClassNode']">
+          <audits auditExpression="[not(name.startsWith('Fail'))/]"/>
+          <fixes name="Add C prefix">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:target">
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['C' + name/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </fixes>
+        </ownedRules>
+      </validationSet>
+      <concerns>
+        <ownedConcernDescriptions name="Default" filters="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='MyDiagDesc']/@filters[name='FilterA']" rules="//@ownedViewpoints[name='MyViewpoint']/@validationSet/@ownedRules.0"/>
+        <ownedConcernDescriptions name="Concern1" rules="//@ownedViewpoints[name='MyViewpoint']/@validationSet/@ownedRules.1"/>
+      </concerns>
+      <defaultLayer name="Default">
+        <nodeMappings name="ClassNode" labelDirectEdit="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='MyDiagDesc']/@defaultLayer/@toolSections.0/@ownedTools[name='RenameClass']" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EClass">
+          <style xsi:type="style:BundledImageDescription" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings sourceMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='MyDiagDesc']/@defaultLayer/@nodeMappings[name='ClassNode']" targetMapping="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='MyDiagDesc']/@defaultLayer/@nodeMappings[name='ClassNode']" targetFinderExpression="[eSuperTypes/]">
+          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="RenameClass">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[arg0/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DropClasses" mappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='MyDiagDesc']/@defaultLayer/@nodeMappings[name='ClassNode']" dragSource="BOTH">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[name + '_dropped'/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="optionalLayer1" reusedTools="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='MyDiagDesc']/@additionalLayers[name='optionalLayer1']/@toolSections.0/@ownedTools[name='Class']">
+        <containerMappings name="ClassContainer" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EClass">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Class" nodeMappings="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='MyDiagDesc']/@defaultLayer/@nodeMappings[name='ClassNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="ecore.EClass" referenceName="eClassifiers">
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['C' + eContainer().oclAsType(EPackage).eClassifiers->size()/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_3:SequenceDiagramDescription" name="MySeqDiagClass" domainClass="ecore.EClass" reusedTools="//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='MyDiagDesc']/@additionalLayers[name='optionalLayer1']/@toolSections.0/@ownedTools[name='Class']">
+      <defaultLayer name="Default"/>
+    </ownedRepresentations>
+  </ownedViewpoints>
+  <userColorsPalettes name="MyColorPalette">
+    <entries xsi:type="description:InterpolatedColor" name="InterpolatedColor1" colorValueComputationExpression="[eContents()->size()/]">
+      <colorSteps associatedValue="1">
+        <associatedColor href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+      </colorSteps>
+      <colorSteps associatedValue="10">
+        <associatedColor href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+      </colorSteps>
+    </entries>
+    <entries xsi:type="description:UserFixedColor" red="87" green="72" blue="160" name="UserFixedColor1"/>
+    <entries xsi:type="description:ComputedColor" name="ComputedColor1" red="[self.eContents()->size()/]" green="[self.eContents()->size()/]" blue="[self.eContents()->size()/]"/>
+  </userColorsPalettes>
+</description:Group>

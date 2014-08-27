@@ -30,7 +30,7 @@ import org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage;
  * <em>Semantic End</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class EventEndImpl extends EObjectImpl implements EventEnd {

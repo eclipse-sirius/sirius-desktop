@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * <em>Predicate Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class ConditionalStyleDescriptionImpl extends EObjectImpl implements ConditionalStyleDescription {

@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="UML2 Tables tests" version="8.0.0">
+  <ownedViewpoints documentation="Sample of some UML tables " name="UML2 tables for tests" modelFileExtension="uml">
+    <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="Colored Classes Table" domainClass="Model">
+      <ownedLineMappings name="Model Classes" detailDescriptions="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Class%20and%20subClass%20with%20some%20attributes']/@ownedRepresentationCreationDescriptions[name='To%20Class%20and%20subClass%20with%20some%20attributes']" domainClass="Class" semanticCandidatesExpression="" headerLabelExpression="Class : &lt;%name%>">
+        <defaultForeground>
+          <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+        </defaultForeground>
+        <foregroundConditionalStyle predicateExpression="&lt;%isAbstract%>">
+          <style labelSize="9">
+            <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+          </style>
+        </foregroundConditionalStyle>
+        <ownedSubLines name="Property" domainClass="Property" headerLabelExpression="Property">
+          <defaultForeground labelSize="8" labelFormat="italic">
+            <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </defaultForeground>
+          <create name="Create Property">
+            <variables name="root" documentation="The semantic element of the table."/>
+            <variables name="element" documentation="The currently edited element."/>
+            <variables name="container" documentation="The semantic element corresponding to the view container."/>
+          </create>
+        </ownedSubLines>
+        <create name="Create Class" mapping="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Colored%20Classes%20Table']/@ownedLineMappings[name='Model%20Classes']">
+          <variables name="root" documentation="The semantic element of the table."/>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        </create>
+      </ownedLineMappings>
+      <ownedColumnMappings name="name" headerLabelExpression="name" featureName="name" labelExpression="&lt;%name%>">
+        <directEdit>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element">
+            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="AA&lt;%$0%>"/>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+        <defaultForeground labelFormat="italic">
+          <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+        </defaultForeground>
+        <foregroundConditionalStyle predicateExpression="&lt;%isAbstract%>">
+          <style labelFormat="bold">
+            <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </foregroundConditionalStyle>
+      </ownedColumnMappings>
+      <ownedColumnMappings name="isAbstract" headerLabelExpression="isAbstract ?" featureName="isAbstract" labelExpression="&lt;%isAbstract%>">
+        <backgroundConditionalStyle predicateExpression="&lt;%isAbstract%>">
+          <style>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+          </style>
+        </backgroundConditionalStyle>
+      </ownedColumnMappings>
+      <ownedColumnMappings name="is Active mapping" headerLabelExpression="Active ?" featureName="isActive" labelExpression="&lt;%isActive%>">
+        <foregroundConditionalStyle predicateExpression="&lt;%isActive%>">
+          <style labelSize="14" labelFormat="italic">
+            <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+          </style>
+        </foregroundConditionalStyle>
+      </ownedColumnMappings>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Model Association Cross Table" domainClass="Model">
+      <ownedLineMappings name="CT Classes" domainClass="Class" headerLabelExpression="&lt;%name%>"/>
+      <ownedColumnMappings name="CT Classes Column" headerLabelExpression="&lt;%name%>" domainClass="Class"/>
+      <intersection name="Associations" lineMapping="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Model%20Association%20Cross%20Table']/@ownedLineMappings[name='CT%20Classes']" columnMapping="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Model%20Association%20Cross%20Table']/@ownedColumnMappings.0" labelExpression="&lt;%name%>" useDomainClass="true" columnFinderExpression="&lt;%memberEnd.nGet(1).type%>" lineFinderExpression="&lt;%memberEnd.nGet(0).type%>" domainClass="Association">
+        <create name="New association">
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:lineSemantic">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%eParent%>">
+              <subModelOperations xsi:type="tool:CreateInstance" typeName="Association" referenceName="packagedElement" variableName="&quot;&quot;">
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="newAssociation"/>
+              </subModelOperations>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </create>
+      </intersection>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="All Types and Instance" domainClass="Model">
+      <ownedLineMappings name="All EClasses" domainClass="EClass" semanticCandidatesExpression="&lt;%eAllContents().eClass.minimize.sort%>" headerLabelExpression="&lt;%name%>">
+        <ownedSubLines name="Instances" domainClass="EObject" semanticCandidatesExpression="&lt;%$root.eAllContents($container.name)%>" headerLabelExpression="&lt;%name%>"/>
+      </ownedLineMappings>
+      <ownedColumnMappings name="Instances count" headerLabelExpression="Count" featureName="Count" labelExpression="&lt;%$container.filter(&quot;EClass&quot;).$root.eAllContents($container.name).nSize%>"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Model Generalization Cross Table" domainClass="Model">
+      <ownedLineMappings name="CT Generalization Classes" domainClass="Class" semanticCandidatesExpression="&lt;%eAllContents().filter(&quot;Class&quot;).sort(&quot;name&quot;)%>" headerLabelExpression="&lt;%name%>">
+        <create name="Create Line Class">
+          <variables name="root" documentation="The semantic element of the table."/>
+          <variables name="element" documentation="The semantic currently edited element."/>
+          <variables name="container" documentation="The semantic element corresponding to the view container."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.eContainer()%>">
+            <subModelOperations xsi:type="tool:CreateInstance" typeName="Class" referenceName="ownedType" variableName="&quot;&quot;">
+              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="ClassLine&lt;%$element.eContainer().ownedType.nSize%>"/>
+            </subModelOperations>
+          </firstModelOperation>
+        </create>
+      </ownedLineMappings>
+      <ownedColumnMappings name="CT Generalization Classes Column" headerLabelExpression="&lt;%name%>" domainClass="Class" semanticCandidatesExpression="&lt;%eAllContents().filter(&quot;Class&quot;).sort(&quot;name&quot;)%>">
+        <create name="Create Column Class">
+          <variables name="root" documentation="The semantic element of the table."/>
+          <variables name="element" documentation="The semantic currently edited element."/>
+          <variables name="container" documentation="The semantic element corresponding to the view container."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.eContainer()%>">
+            <subModelOperations xsi:type="tool:CreateInstance" typeName="Class" referenceName="ownedType" variableName="&quot;&quot;">
+              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="ClassColumn&lt;%$element.eContainer().ownedType.nSize%>"/>
+            </subModelOperations>
+          </firstModelOperation>
+        </create>
+      </ownedColumnMappings>
+      <intersection name="Generalization" lineMapping="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Model%20Generalization%20Cross%20Table']/@ownedLineMappings[name='CT%20Generalization%20Classes']" columnMapping="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Model%20Generalization%20Cross%20Table']/@ownedColumnMappings.0" labelExpression="X" columnFinderExpression="&lt;%eContents().filter(&quot;Generalization&quot;).general%>" lineFinderExpression="" semanticCandidatesExpression="">
+        <directEdit>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:lineSemantic">
+            <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$0 == &quot;X&quot; &amp;&amp; !generalization[general == $columnSemantic]%>">
+              <subModelOperations xsi:type="tool:CreateInstance" typeName="Generalization" referenceName="generalization" variableName="&quot;&quot;">
+                <subModelOperations xsi:type="tool:SetValue" featureName="general" valueExpression="var:columnSemantic"/>
+              </subModelOperations>
+            </subModelOperations>
+            <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$0 != &quot;X&quot; &amp;&amp; generalization[general == $columnSemantic]%>">
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%generalization[general == $columnSemantic]%>">
+                <subModelOperations xsi:type="tool:RemoveElement"/>
+              </subModelOperations>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+        <create>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:lineSemantic">
+            <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$0 == &quot;X&quot; &amp;&amp; !generalization[general == $columnSemantic]%>">
+              <subModelOperations xsi:type="tool:CreateInstance" typeName="Generalization" referenceName="generalization" variableName="&quot;&quot;">
+                <subModelOperations xsi:type="tool:SetValue" featureName="general" valueExpression="var:columnSemantic"/>
+              </subModelOperations>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </create>
+      </intersection>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="Class and subClass with some attributes" initialisation="true" domainClass="Model">
+      <ownedRepresentationCreationDescriptions xsi:type="description_1:TableCreationDescription" name="To Class and subClass with some attributes" browseExpression="&lt;%getRootContainer()%>" tableDescription="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Class%20and%20subClass%20with%20some%20attributes']">
+        <containerViewVariable name="containerView"/>
+        <representationNameVariable name="tableName"/>
+      </ownedRepresentationCreationDescriptions>
+      <ownedLineMappings name="Class lines" detailDescriptions="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Just%20for%20test%20navigation']/@toolSection/@ownedTools[name='Test%20Diagram']" navigationDescriptions="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Just%20for%20test%20navigation']/@toolSection/@ownedTools[name='Test%20Diagram%20Navigation']" domainClass="Class" semanticCandidatesExpression="&lt;%eAllContents(&quot;Class&quot;)[generalization == null]%>" headerLabelExpression="">
+        <ownedSubLines name="SubClass lines" domainClass="Class" semanticCandidatesExpression="&lt;%$root.eAllContents(&quot;Class&quot;)[generalization.general == $container] + $root.eAllContents(&quot;Class&quot;)[generalization.general == $container].classifierBehavior + $root.eAllContents(&quot;Class&quot;)[generalization.general == $container].useCase%>" headerLabelExpression="&lt;%name%>">
+          <create documentation="Create a concrete subclass (only for abstract class)" name="Create concrete subclass" precondition="&lt;%isAbstract%>">
+            <variables name="root" documentation="The semantic element of the table."/>
+            <variables name="element" documentation="The currently edited element."/>
+            <variables name="container" documentation="The semantic element corresponding to the view container."/>
+            <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.eContainer()%>">
+              <subModelOperations xsi:type="tool:CreateInstance" typeName="Class" referenceName="ownedType" variableName="&quot;&quot;">
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="SubclassOf&lt;%$element.name%>&lt;%$element.eContainer().ownedType.nSize%>"/>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="Generalization" referenceName="generalization" variableName="&quot;&quot;">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="general" valueExpression="var:element"/>
+                </subModelOperations>
+              </subModelOperations>
+            </firstModelOperation>
+          </create>
+          <create name="Create a class in the first package of the model">
+            <variables name="root" documentation="The semantic element of the table.">
+              <subVariables xsi:type="tool:AcceleoVariable" name="premierPackage" computationExpression="&lt;%nestedPackage.nFirst%>"/>
+            </variables>
+            <variables name="element" documentation="The semantic currently edited element."/>
+            <variables name="container" documentation="The semantic element corresponding to the view container."/>
+            <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:premierPackage">
+              <subModelOperations xsi:type="tool:CreateInstance" typeName="Class" referenceName="ownedType" variableName="&quot;&quot;">
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Class&lt;%$premierPackage.ownedType.nSize%>"/>
+              </subModelOperations>
+            </firstModelOperation>
+          </create>
+          <create name="Create a class in the selected package of the model">
+            <variables name="root" documentation="The semantic element of the table.">
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="selectedPackage" candidatesExpression="&lt;%eAllContents().filter(&quot;Package&quot;)%>" message="Select the correct package"/>
+            </variables>
+            <variables name="element" documentation="The semantic currently edited element."/>
+            <variables name="container" documentation="The semantic element corresponding to the view container."/>
+            <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:selectedPackage">
+              <subModelOperations xsi:type="tool:CreateInstance" typeName="Class" referenceName="ownedType" variableName="&quot;&quot;">
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Class&lt;%$selectedPackage.ownedType.nSize%>"/>
+              </subModelOperations>
+            </firstModelOperation>
+          </create>
+        </ownedSubLines>
+        <create name="New Class">
+          <variables name="root" documentation="The semantic element of the table."/>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="container" documentation="The semantic element corresponding to the view container."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.eContainer()%>">
+            <subModelOperations xsi:type="tool:CreateInstance" typeName="Class" referenceName="ownedType" variableName="&quot;&quot;">
+              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Class&lt;%$element.eContainer().ownedType.nSize%>"/>
+            </subModelOperations>
+          </firstModelOperation>
+        </create>
+        <create name="New other class">
+          <variables name="root" documentation="The semantic element of the table."/>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="container" documentation="The semantic element corresponding to the view container."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.eContainer()%>">
+            <subModelOperations xsi:type="tool:CreateInstance" typeName="Class" referenceName="ownedType" variableName="&quot;&quot;">
+              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="OtherClass&lt;%$element.eContainer().ownedType.nSize%>"/>
+            </subModelOperations>
+          </firstModelOperation>
+        </create>
+        <create documentation="Create a concrete subclass (only for abstract class)" name="Create concrete subclass" precondition="&lt;%isAbstract%>">
+          <variables name="root" documentation="The semantic element of the table."/>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="container" documentation="The semantic element corresponding to the view container."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:container">
+            <subModelOperations xsi:type="tool:CreateInstance" typeName="Class" referenceName="ownedType" variableName="&quot;&quot;">
+              <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="SubclassOf&lt;%$element.name%>&lt;%$container.ownedType.nSize%>"/>
+              <subModelOperations xsi:type="tool:CreateInstance" typeName="Generalization" referenceName="generalization" variableName="&quot;&quot;">
+                <subModelOperations xsi:type="tool:SetValue" featureName="general" valueExpression="var:element"/>
+              </subModelOperations>
+            </subModelOperations>
+          </firstModelOperation>
+        </create>
+        <delete documentation="Delete all classes of the parent package" name="Delete all brothers classes" forceRefresh="true">
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="root" documentation="The semantic element corresponding to the current table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.eContainer%>">
+            <subModelOperations xsi:type="tool:For" expression="&lt;%ownedType%>">
+              <subModelOperations xsi:type="tool:RemoveElement"/>
+            </subModelOperations>
+          </firstModelOperation>
+        </delete>
+      </ownedLineMappings>
+      <ownedCreateLine name="New Line">
+        <variables name="root" documentation="The semantic element of the table."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element">
+          <subModelOperations xsi:type="tool:CreateInstance" typeName="Class" referenceName="ownedType" variableName="newClass">
+            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Class&lt;%$element.ownedType.nSize%>"/>
+          </subModelOperations>
+        </firstModelOperation>
+      </ownedCreateLine>
+      <ownedCreateLine name="New Abstract Line">
+        <variables name="root" documentation="The semantic element of the table."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element">
+          <subModelOperations xsi:type="tool:CreateInstance" typeName="Class" referenceName="ownedType" variableName="newClass">
+            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="AbstractClass&lt;%$element.ownedType.nSize%>"/>
+            <subModelOperations xsi:type="tool:SetValue" featureName="isAbstract" valueExpression="&lt;%true%>"/>
+          </subModelOperations>
+        </firstModelOperation>
+      </ownedCreateLine>
+      <ownedColumnMappings name="Class name" headerLabelExpression="Name" initialWidth="200" canEdit="&lt;%isAbstract%>" featureName="name" labelExpression="&lt;%name%>"/>
+      <ownedColumnMappings name="Is class abstract" headerLabelExpression="IsAbstract" featureName="isAbstract" labelExpression="&lt;%isAbstract%>"/>
+      <ownedColumnMappings name="Visibility of class" headerLabelExpression="Visibility" featureName="visibility" labelExpression="&lt;%visibility%>"/>
+      <ownedColumnMappings name="CollaborationUse" headerLabelExpression="Representation" featureName="representation" labelExpression=""/>
+      <ownedColumnMappings name="OwnedUseCase" headerLabelExpression="OwnedUseCase" featureName="ownedUseCase" labelExpression=""/>
+      <ownedColumnMappings name="BehaviorDirectEdit" headerLabelExpression="BehaviorDirectEdit" featureName="classifierBehavior" labelExpression="&lt;%classifierBehavior.name%>">
+        <directEdit>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element">
+            <subModelOperations xsi:type="tool:ExternalJavaAction" name="Change behavior" id="org.eclipse.sirius.table.action.changeBehavior">
+              <parameters name="classifierBehaviorName" value="var:arg0"/>
+              <parameters name="currentClass" value="var:element"/>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+      </ownedColumnMappings>
+      <ownedColumnMappings name="UseCaseDirectEdit" headerLabelExpression="UseCaseDirectEdit" featureName="useCase" labelExpression="&lt;%if (useCase){%>(&lt;%useCase.name.sep(&quot;,&quot;)%>)&lt;%}%>">
+        <directEdit>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element">
+            <subModelOperations xsi:type="tool:ExternalJavaAction" name="Change use cases" id="org.eclipse.sirius.table.action.changeUseCases">
+              <parameters name="useCasesName" value="var:arg0"/>
+              <parameters name="currentClass" value="var:element"/>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+      </ownedColumnMappings>
+      <ownedColumnMappings name="Commentaire" headerLabelExpression="Comment" featureName="body" labelExpression="&lt;%body%>" featureParentExpression="&lt;%ownedComment%>">
+        <directEdit>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:lineSemantic">
+            <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%!(ownedComment)%>">
+              <subModelOperations xsi:type="tool:CreateInstance" typeName="Comment" referenceName="ownedComment" variableName="newComment"/>
+            </subModelOperations>
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%ownedComment%>">
+              <subModelOperations xsi:type="tool:SetValue" featureName="body" valueExpression="var:arg0"/>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+      </ownedColumnMappings>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Just for test navigation" domainClass="Model">
+      <nodeMappings name="Package" detailDescriptions="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Class%20and%20subClass%20with%20some%20attributes']/@ownedRepresentationCreationDescriptions[name='To%20Class%20and%20subClass%20with%20some%20attributes']" semanticCandidatesExpression="feature:eAllContents" semanticElements="&lt;%packagedElement%>" domainClass="Package">
+        <style xsi:type="style:EllipseNodeDescription">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </nodeMappings>
+      <toolSection name="navigation">
+        <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="Test Diagram" browseExpression="&lt;%getRootContainer()%>" diagramDescription="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Just%20for%20test%20navigation']">
+          <initialOperation/>
+          <containerViewVariable name="containerView"/>
+          <representationNameVariable name="diagramName"/>
+        </ownedTools>
+        <ownedTools xsi:type="description_1:TableCreationDescription">
+          <containerViewVariable name="containerView"/>
+          <representationNameVariable name="tableName"/>
+        </ownedTools>
+        <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Test Diagram Navigation" browseExpression="&lt;%getRootContainer()%>" navigationNameExpression="" diagramDescription="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Just%20for%20test%20navigation']">
+          <containerViewVariable name="containerView"/>
+          <containerVariable name="container"/>
+          <representationNameVariable name="diagramName"/>
+        </ownedTools>
+      </toolSection>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Model all associations" domainClass="Model">
+      <ownedRepresentationCreationDescriptions xsi:type="description_1:TableCreationDescription" name="To model all associations" browseExpression="&lt;%getRootContainer()%>" tableDescription="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Model%20all%20associations']">
+        <containerViewVariable name="containerView"/>
+        <representationNameVariable name="tableName"/>
+      </ownedRepresentationCreationDescriptions>
+      <ownedLineMappings name="Line Classes" domainClass="Class" semanticCandidatesExpression="&lt;%eAllContents(&quot;Class&quot;).sort(&quot;name&quot;)%>" headerLabelExpression="&lt;%name%>">
+        <ownedSubLines name="Associations" domainClass="Association" semanticCandidatesExpression="&lt;%$root.eAllContents(&quot;Association&quot;)[memberEnd.nGet(0).type == $container]%>" headerLabelExpression="&lt;%name%>"/>
+      </ownedLineMappings>
+      <ownedColumnMappings name="Column Classes" headerLabelExpression="&lt;%name%>" domainClass="Class"/>
+      <intersection name="Associations" lineMapping="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Model%20all%20associations']/@ownedLineMappings[name='Line%20Classes']/@ownedSubLines[name='Associations']" columnMapping="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Model%20all%20associations']/@ownedColumnMappings.0" labelExpression="&lt;%name%>" columnFinderExpression="&lt;%if (memberEnd) {%>&lt;%memberEnd.nGet(1).type%>&lt;%}%>" lineFinderExpression="" semanticCandidatesExpression="" domainClass="" preconditionExpression="">
+        <directEdit>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:lineSemantic">
+            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:arg0"/>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+      </intersection>
+      <intersection name="isAtLeastOneAssociation" lineMapping="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Model%20all%20associations']/@ownedLineMappings[name='Line%20Classes']" columnMapping="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Model%20all%20associations']/@ownedColumnMappings.0" labelExpression="X" useDomainClass="true" columnFinderExpression="&lt;%if (memberEnd) {%>&lt;%memberEnd.nGet(1).type%>&lt;%}%>" lineFinderExpression="&lt;%memberEnd.nGet(0).type%>" domainClass="Association">
+        <create name="CreateAssociation">
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:lineSemantic">
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:eContainer">
+              <subModelOperations xsi:type="tool:CreateInstance" typeName="Association" referenceName="packagedElement" variableName="&quot;&quot;">
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:arg0"/>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="Property" referenceName="ownedEnd" variableName="&quot;&quot;">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="var:lineSemantic"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="Property" referenceName="ownedEnd" variableName="&quot;&quot;">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="var:columnSemantic"/>
+                </subModelOperations>
+              </subModelOperations>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </create>
+      </intersection>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="Property" domainClass="Model">
+      <ownedLineMappings name="Property lines" semanticElements="&lt;%self + lowerValue + upperValue%>" domainClass="Property" semanticCandidatesExpression="" headerLabelExpression="Property &lt;%name%>"/>
+      <ownedColumnMappings name="Property name" headerLabelExpression="Name" canEdit="" featureName="name" labelExpression="&lt;%name%>"/>
+      <ownedColumnMappings name="Property Lower" headerLabelExpression="Lower" canEdit="" featureName="lower" labelExpression="&lt;%lower%>"/>
+      <ownedColumnMappings name="Property Upper" headerLabelExpression="Upper" featureName="upper" labelExpression="&lt;%upper%>"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="Cross Table Colors" domainClass="Model">
+      <ownedLineMappings name="Line Color Classes" detailDescriptions="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Model%20all%20associations']/@ownedRepresentationCreationDescriptions[name='To%20model%20all%20associations']" domainClass="Class" semanticCandidatesExpression="&lt;%eAllContents(&quot;Class&quot;).sort(&quot;name&quot;)%>" headerLabelExpression="&lt;%name%>">
+        <defaultForeground>
+          <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+        </defaultForeground>
+        <ownedSubLines name="Properties Color" domainClass="Property" headerLabelExpression="&lt;%name%>">
+          <defaultForeground>
+            <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+          </defaultForeground>
+        </ownedSubLines>
+        <ownedSubLines name="Generalization colors" domainClass="Generalization" headerLabelExpression="extends">
+          <defaultBackground>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </defaultBackground>
+        </ownedSubLines>
+      </ownedLineMappings>
+      <ownedColumnMappings name="Column Color Classes" headerLabelExpression="&lt;%name%>" domainClass="Class">
+        <defaultForeground>
+          <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+        </defaultForeground>
+        <defaultBackground>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+        </defaultBackground>
+      </ownedColumnMappings>
+      <ownedColumnMappings name="Property  Column Color" headerLabelExpression="&lt;%name%>" domainClass="Property" semanticCandidatesExpression="&lt;%eAllContents(&quot;Property&quot;).nFirst%>">
+        <defaultBackground>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+        </defaultBackground>
+      </ownedColumnMappings>
+      <intersection name="Associations Color" lineMapping="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Cross%20Table%20Colors']/@ownedLineMappings[name='Line%20Color%20Classes']" columnMapping="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Cross%20Table%20Colors']/@ownedColumnMappings.0" labelExpression="&lt;%name%>" useDomainClass="true" columnFinderExpression="&lt;%memberEnd.nFirst.type%>" lineFinderExpression="&lt;%memberEnd.nLast.type%>" semanticCandidatesExpression="" domainClass="Association" preconditionExpression="">
+        <foregroundConditionalStyle predicateExpression="&lt;%isLeaf%>">
+          <style labelFormat="bold">
+            <foreGroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+          </style>
+        </foregroundConditionalStyle>
+      </intersection>
+      <intersection name="Property To Container Color" lineMapping="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Cross%20Table%20Colors']/@ownedLineMappings[name='Line%20Color%20Classes']/@ownedSubLines[name='Properties%20Color']" columnMapping="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Cross%20Table%20Colors']/@ownedColumnMappings.0" labelExpression="" columnFinderExpression="feature:eContainer">
+        <defaultBackground>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+        </defaultBackground>
+      </intersection>
+      <intersection name="Extends colors" lineMapping="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Cross%20Table%20Colors']/@ownedLineMappings[name='Line%20Color%20Classes']/@ownedSubLines[name='Generalization%20colors']" columnMapping="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Cross%20Table%20Colors']/@ownedColumnMappings.0" labelExpression="extend" columnFinderExpression="&lt;%general%>"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="Simple hierarchy" domainClass="Model">
+      <ownedLineMappings name="Class lines" domainClass="Class" semanticCandidatesExpression="&lt;%eAllContents(&quot;Class&quot;)[generalization == null]%>" headerLabelExpression="">
+        <ownedSubLines name="SubClass lines" domainClass="Class" semanticCandidatesExpression="&lt;%$root.eAllContents(&quot;Class&quot;)[generalization.general == $container] + $root.eAllContents(&quot;Class&quot;)[generalization.general == $container].classifierBehavior + $root.eAllContents(&quot;Class&quot;)[generalization.general == $container].useCase%>" headerLabelExpression="&lt;%name%>">
+          <ownedSubLines name="SubClass lines 2" domainClass="Class" semanticCandidatesExpression="&lt;%$root.eAllContents(&quot;Class&quot;)[generalization.general == $container] + $root.eAllContents(&quot;Class&quot;)[generalization.general == $container].classifierBehavior + $root.eAllContents(&quot;Class&quot;)[generalization.general == $container].useCase%>" headerLabelExpression="&lt;%name%>"/>
+        </ownedSubLines>
+      </ownedLineMappings>
+      <ownedColumnMappings name="Class name" headerLabelExpression="Name" initialWidth="200" canEdit="&lt;%isAbstract%>" featureName="name" labelExpression="&lt;%name%>"/>
+      <ownedColumnMappings name="Is class abstract" headerLabelExpression="IsAbstract" featureName="isAbstract" labelExpression="&lt;%isAbstract%>"/>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="Reused hierarchy" domainClass="Model">
+      <ownedLineMappings name="Reused package lines" reusedSubLines="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Reused%20hierarchy']/@ownedLineMappings[name='Reused%20package%20lines']" reusedInMappings="//@ownedViewpoints[name='UML2%20tables%20for%20tests']/@ownedRepresentations[name='Reused%20hierarchy']/@ownedLineMappings[name='Reused%20package%20lines']" domainClass="Package" semanticCandidatesExpression="&lt;%packagedElement%>">
+        <ownedSubLines name="Class lines" domainClass="Class" semanticCandidatesExpression="&lt;%packagedElement%>" headerLabelExpression=""/>
+      </ownedLineMappings>
+      <ownedColumnMappings name="Name" headerLabelExpression="Name" initialWidth="200" canEdit="&lt;%isAbstract%>" featureName="name" labelExpression="&lt;%name%>"/>
+      <ownedColumnMappings name="Is class abstract" headerLabelExpression="IsAbstract" featureName="isAbstract" labelExpression="&lt;%isAbstract%>"/>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

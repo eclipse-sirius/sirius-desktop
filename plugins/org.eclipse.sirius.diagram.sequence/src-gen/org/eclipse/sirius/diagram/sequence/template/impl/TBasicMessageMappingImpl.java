@@ -30,7 +30,7 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * <em>Target</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TBasicMessageMappingImpl extends TSourceTargetMessageMappingImpl implements TBasicMessageMapping {

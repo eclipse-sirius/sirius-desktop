@@ -164,7 +164,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
                 showCompoundEndFeedback(br, thisEvent, ends, moveType.isFromTop());
             } else {
                 Point location = new Point(1, thisEvent.getConnectionFigure().getPoints().getFirstPoint().y);
-                location.performScale(GraphicalHelper.getZoom((IGraphicalEditPart) getHost()));
+                location.performScale(GraphicalHelper.getZoom(getHost()));
 
                 Figure guide = new HorizontalGuide(MESSAGE_FEEDBACK_COLOR, location.y);
                 Rectangle bounds = getFeedbackLayer().getBounds().getCopy();
@@ -176,7 +176,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
 
                 if (new ISequenceEventQuery(getMessage().getISequenceEvent()).isReflectiveMessage()) {
                     Point endLocation = new Point(1, thisEvent.getConnectionFigure().getPoints().getLastPoint().y);
-                    endLocation.performScale(GraphicalHelper.getZoom((IGraphicalEditPart) getHost()));
+                    endLocation.performScale(GraphicalHelper.getZoom(getHost()));
                     Figure messageToSelfBottomGuide = new HorizontalGuide(MESSAGE_FEEDBACK_COLOR, endLocation.y);
                     bounds = getFeedbackLayer().getBounds().getCopy();
                     bounds.height = 1;
@@ -201,7 +201,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
                         bounds = getFeedbackLayer().getBounds().getCopy();
 
                         Point conflictingPosition = new Point(0, conflict);
-                        conflictingPosition.performScale(GraphicalHelper.getZoom((IGraphicalEditPart) getHost()));
+                        conflictingPosition.performScale(GraphicalHelper.getZoom(getHost()));
 
                         HorizontalGuide conflictGuide = new HorizontalGuide(ColorConstants.red, conflictingPosition.y);
                         bounds.y = conflictingPosition.y;

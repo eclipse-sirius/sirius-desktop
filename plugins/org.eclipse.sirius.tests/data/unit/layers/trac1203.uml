@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="_zdsX4MIhEd2M-M160Vq7Ng" name="trac1203">
+  <packagedElement xmi:type="uml:Class" xmi:id="_2igzwMIhEd2M-M160Vq7Ng" name="MyClass">
+    <ownedAttribute xmi:id="_4PR3kMIhEd2M-M160Vq7Ng" name="prop1"/>
+    <ownedAttribute xmi:id="_5P0ukMIhEd2M-M160Vq7Ng" name="prop1"/>
+  </packagedElement>
+</uml:Model>

@@ -19,7 +19,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DAnalysis Session EObject</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -42,7 +42,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * <em>Synchronization Status</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysisSessionEObject()
  * @model
  * @generated

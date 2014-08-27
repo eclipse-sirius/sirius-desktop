@@ -27,7 +27,7 @@ import org.eclipse.sirius.diagram.sequence.description.ReturnMessageMapping;
  * <em>Invocation Message Finder Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ReturnMessageMappingImpl extends MessageMappingImpl implements ReturnMessageMapping {

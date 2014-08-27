@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.description.audit.TemplateInformationSection
  * <em>Template Path</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TemplateInformationSectionImpl extends InformationSectionImpl implements TemplateInformationSection {

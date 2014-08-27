@@ -310,8 +310,10 @@ public class TreeDialectUIServices implements DialectUIServices {
     public void setSelection(DialectEditor dialectEditor, List<DRepresentationElement> selection) {
         if (dialectEditor instanceof DTreeEditor) {
             Viewer viewer = ((DTreeEditor) dialectEditor).getViewer();
-            Iterable<DTreeItem> items = Iterables.filter(selection, DTreeItem.class);
-            viewer.setSelection(new StructuredSelection(Lists.newArrayList(items)));
+            Iterable<DTreeItem> treeElements = Iterables.filter(selection, DTreeItem.class);
+            if (viewer != null) {
+                viewer.setSelection(new StructuredSelection(Lists.newArrayList(treeElements)));
+            }
         }
     }
 
@@ -324,10 +326,11 @@ public class TreeDialectUIServices implements DialectUIServices {
         Collection<DSemanticDecorator> selection = Sets.newLinkedHashSet();
         if (editor instanceof DTreeEditor) {
             DTreeEditor dEditor = (DTreeEditor) editor;
-            ISelection sel = dEditor.getSite().getSelectionProvider().getSelection();
-
-            if (sel instanceof IStructuredSelection) {
-                Iterables.addAll(selection, Iterables.filter(((IStructuredSelection) sel).toList(), DSemanticDecorator.class));
+            if (editor.getSite() != null && editor.getSite().getSelectionProvider() != null) {
+                ISelection sel = dEditor.getSite().getSelectionProvider().getSelection();
+                if (sel instanceof IStructuredSelection) {
+                    Iterables.addAll(selection, Iterables.filter(((IStructuredSelection) sel).toList(), DSemanticDecorator.class));
+                }
             }
         }
         return selection;

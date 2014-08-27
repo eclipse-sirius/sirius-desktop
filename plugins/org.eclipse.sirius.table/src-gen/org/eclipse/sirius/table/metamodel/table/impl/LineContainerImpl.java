@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.impl.DSemanticDecoratorImpl;
  * <em>Lines</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class LineContainerImpl extends DSemanticDecoratorImpl implements LineContainer {

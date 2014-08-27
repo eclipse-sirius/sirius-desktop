@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="RootPackage">
+  <eSubpackages name="NOT_TOERASE_CONTAINER">
+    <eSubpackages name="NOT_TOERASE_CONTAINED" nsURI="" nsPrefix=""/>
+  </eSubpackages>
+  <eSubpackages name="NOT_TOERASE"/>
+  <eSubpackages name="TOERASE_WITHOUTSUBPACKAGE"/>
+  <eSubpackages name="TOERASE_ROOT">
+    <eSubpackages name="SUBPACKAGE_TOERASE_BYROOT"/>
+  </eSubpackages>
+  <eSubpackages name="TOERASE_ONLYSUB">
+    <eSubpackages name="SUBPACKAGE_TOERASE_ONLY"/>
+  </eSubpackages>
+</ecore:EPackage>

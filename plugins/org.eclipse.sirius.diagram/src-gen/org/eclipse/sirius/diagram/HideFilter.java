@@ -14,11 +14,11 @@ package org.eclipse.sirius.diagram;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Hide Filter</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> Graphical filter specifying that the owner element
  * has to be hidden. <!-- end-model-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getHideFilter()
  * @model
  * @generated

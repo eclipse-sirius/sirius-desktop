@@ -38,7 +38,7 @@ import org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage;
  * <em>Event Ends</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class EventEndsOrderingImpl extends EObjectImpl implements EventEndsOrdering {

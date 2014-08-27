@@ -84,7 +84,7 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  * <em>Path Node Mapping</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMapping {

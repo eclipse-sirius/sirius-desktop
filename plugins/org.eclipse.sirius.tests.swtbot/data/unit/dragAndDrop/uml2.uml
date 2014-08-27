@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_Wh_KkEjgEd2dA-w4B9F6fQ" name="root">
+  <packagedElement xmi:type="uml:Actor" xmi:id="_Q6CBUKa0Ed6_bbQViMLzVA" name="boss"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_05Rt4MlFEd6R3_bpV99jfA" name="RootPackage1">
+    <packagedElement xmi:type="uml:Class" xmi:id="__eyUAMlFEd6R3_bpV99jfA" name="InClass1"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_BXnocMlHEd6R3_bpV99jfA" name="InClass3"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_KfsAMMlHEd6R3_bpV99jfA" name="InAndOutClass4">
+      <generalization xmi:id="_MJEY0MlHEd6R3_bpV99jfA" general="_BXnocMlHEd6R3_bpV99jfA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_5eqkoMlFEd6R3_bpV99jfA" name="OutClass1">
+      <generalization xmi:id="_E9k38MlGEd6R3_bpV99jfA" general="__eyUAMlFEd6R3_bpV99jfA"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_BwB94MlGEd6R3_bpV99jfA" name="InClass2"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_0KL4oMlYEd6fBP-DQJTG8g" name="ContainerPackageToDrop"/>
+    <packagedElement xmi:type="uml:Component" xmi:id="_AKc08M-NEd6-PpxDFBfL4A" name="New Component"/>
+    <packagedElement xmi:type="uml:Component" xmi:id="__gLI4M-MEd6-PpxDFBfL4A" name="New Component"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_xEONQMlYEd6fBP-DQJTG8g" name="RootPackage2"/>
+  <packagedElement xmi:type="uml:Package" xmi:id="_5WHK8MlYEd6fBP-DQJTG8g" name="CanvasPackageToDrop1">
+    <packagedElement xmi:type="uml:Interface" xmi:id="_YPnwgMovEd64fq8eywf1Ng" name="Interface1"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_smH00MlZEd6fBP-DQJTG8g" name="CanvasPackageToDrop2"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_766koMlFEd6R3_bpV99jfA" name="InAndOutClass2" clientDependency="_QJZ5EMq4Ed6_nfwWBm8CPg">
+    <generalization xmi:id="_Q-gVEMq4Ed6_nfwWBm8CPg" general="_BwB94MlGEd6R3_bpV99jfA"/>
+    <interfaceRealization xmi:id="_QJZ5EMq4Ed6_nfwWBm8CPg" supplier="_YPnwgMovEd64fq8eywf1Ng" client="_766koMlFEd6R3_bpV99jfA" contract="_YPnwgMovEd64fq8eywf1Ng"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_WohEkNKaEd6qFrkOl_onzg" name="ParentComponent">
+    <packagedElement xmi:type="uml:Component" xmi:id="_ZVPJgNKaEd6qFrkOl_onzg" name="InnerComponent">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_ZzKboNKaEd6qFrkOl_onzg" name="DropPort"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_0tyyQMT3EeCCRJc48YB8Ug" name="ComponentToTestDnDWithHidingEdge">
+    <packagedElement xmi:type="uml:Component" xmi:id="_4W7cIMT3EeCCRJc48YB8Ug" name="InnerComponent1">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_4W7cIcT3EeCCRJc48YB8Ug" name="Port1" clientDependency="_BgK4kMT4EeCCRJc48YB8Ug">
+        <deployment xmi:id="_BgK4kMT4EeCCRJc48YB8Ug" name="toPort2" supplier="_5wkvocT3EeCCRJc48YB8Ug" client="_4W7cIcT3EeCCRJc48YB8Ug"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_5wkvoMT3EeCCRJc48YB8Ug" name="InnerComponent2">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_5wkvocT3EeCCRJc48YB8Ug" name="Port2"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_tvS-YGu9EeKKE-qMx3PRKQ" name="collapsedPortToMove1"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_oIZ1EGvCEeKKE-qMx3PRKQ" name="collapsedPort2"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_fZdv8Gx7EeKmNesCCiZqKw" name="Port3"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_0tyyQcT3EeCCRJc48YB8Ug" name="InnerComponent3">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_w-T4EGu9EeKKE-qMx3PRKQ" name="collapsedPort1"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_soduUHGoEeG8G_zeQrcp1A" name="AnotherParentComponent">
+    <packagedElement xmi:type="uml:Component" xmi:id="_soduUXGoEeG8G_zeQrcp1A" name="ComponentWithnPorts">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_soduUnGoEeG8G_zeQrcp1A" name="Port1"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_soduU3GoEeG8G_zeQrcp1A" name="Port2"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_soduVHGoEeG8G_zeQrcp1A" name="Port3"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_9GO5kHQfEeGzhLaBlPZdWw" name="Port4"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_9GPgoHQfEeGzhLaBlPZdWw" name="Port5"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_9GPgoXQfEeGzhLaBlPZdWw" name="Port6"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_9xW6MHQfEeGzhLaBlPZdWw" name="Port7"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_9xW6MXQfEeGzhLaBlPZdWw" name="Port8"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_2RMvAGuyEeKKE-qMx3PRKQ" name="collapsePort3"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_QxwSAWuyEeKKE-qMx3PRKQ" name="collapsePort1"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_QxwSAmuyEeKKE-qMx3PRKQ" name="collapsePort2"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_6YL-8HQfEeGzhLaBlPZdWw" name="AnotherParentComponent2">
+    <packagedElement xmi:type="uml:Component" xmi:id="_6YL-8XQfEeGzhLaBlPZdWw" name="ComponentWith3Ports">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_6YL-8nQfEeGzhLaBlPZdWw" name="Port1"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_6YL-83QfEeGzhLaBlPZdWw" name="Port2"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_6YL-9HQfEeGzhLaBlPZdWw" name="Port3"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_i1z44GuoEeKKE-qMx3PRKQ" name="collapsePort1"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_i12VIGuoEeKKE-qMx3PRKQ" name="collapsePort2"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_Oc8wYKdTEeKPKojEdycshQ" name="AAPackage">
+    <packagedElement xmi:type="uml:Class" xmi:id="_ImW7AKdUEeKPKojEdycshQ" name="AAClass"/>
+  </packagedElement>
+</uml:Model>

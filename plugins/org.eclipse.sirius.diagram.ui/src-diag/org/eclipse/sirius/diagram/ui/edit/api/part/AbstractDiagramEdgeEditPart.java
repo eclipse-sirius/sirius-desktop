@@ -690,13 +690,11 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
             }
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx#paintFigure(org.eclipse.draw2d.Graphics)
-         */
         @Override
         public void paintFigure(final Graphics graphics) {
+            if (!isActive()) {
+                return;
+            }
             final EObject element = resolveSemanticElement();
             if (element != null && DEdge.class.isInstance(element)) {
                 final DEdge viewEdge = (DEdge) element;
@@ -706,13 +704,11 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
             }
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.draw2d.Figure#paintChildren(org.eclipse.draw2d.Graphics)
-         */
         @Override
         protected void paintChildren(Graphics graphics) {
+            if (!isActive()) {
+                return;
+            }
             final EObject element = resolveSemanticElement();
             if (element != null && DEdge.class.isInstance(element)) {
                 final DEdge viewEdge = (DEdge) element;

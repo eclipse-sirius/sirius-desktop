@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+  PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+         "http://java.sun.com/dtd/web-app_2_3.dtd">
+<!--
+  Copyright (c) 2007, 2013 THALES GLOBAL SERVICES
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Obeo - Initial API and implementation
+-->
+<web-app
+        id="jndi-web-sample"
+>
+        <display-name>jndi-resources-web-sample</display-name>
+
+        <servlet>
+                <servlet-name>HelloServlet</servlet-name>
+                <display-name>Hello Servlet</display-name>
+                <servlet-class>org.sample.HelloJNDIServlet</servlet-class>
+                <load-on-startup>1</load-on-startup>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>HelloServlet</servlet-name>
+                <url-pattern>/</url-pattern>
+        </servlet-mapping>
+
+        <welcome-file-list>
+                <welcome-file>/</welcome-file>
+        </welcome-file-list>
+
+        <resource-ref>
+                <description>The database</description>
+                <res-ref-name>jdbc/DB</res-ref-name>
+                <res-type>javax.sql.DataSource</res-type>
+                <res-auth>Application</res-auth>
+                <res-sharing-scope>Shareable</res-sharing-scope>
+        </resource-ref>
+</web-app>

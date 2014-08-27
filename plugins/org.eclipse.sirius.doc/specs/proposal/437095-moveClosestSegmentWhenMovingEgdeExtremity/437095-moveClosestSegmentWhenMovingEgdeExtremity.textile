@@ -1,0 +1,79 @@
+h1. Move only the edge closest segment when moving one of its extremity
+
+h2. Preamble
+
+_Summary_: This evolution is an ergonomics feature. The main goal is to keep, as much as possible, the edges appearance when one of its extremity is moved. A move of an extremity should move only the closest segment of the  edge.
+
+|_. Version |_. Status |_. Date        |_. Authors |_. Changes |
+| v0.1        | DRAFT    | 2014-05-21 | lredor    | Initial version. |
+| v0.2        | PROPOSAL    | 2014-06-11 | lredor    | Update after team review |
+
+_Relevant tickets_:
+* "Bugzilla #437095", Move only the edge closest segment when moving one of its extremity":https://bugs.eclipse.org/bugs/show_bug.cgi?id=437095
+
+h2. Introduction
+
+Currently, when moving an edge extremity, all its bendpoints are moved. This is annoying for the end-user, because this can potentially break his manual layout done before. These bendpoints are recomputed according to :
+* the source and the target of the edge
+* two vectors from source and from target
+* a ponderation for each bendpoints.
+
+Please refer to "moveEdgeClosestSegmentWhenMovingNode" specification for further explanations about bendpoint recomputing. The move case is not the same, but the computing is.
+
+!images/Sample1-OriginalState.png! !images/Sample1-AfterMove.png!
+Sample of current behavior when moving the end extremity of the "ref" edge: all the bendpoints are moved.
+
+h2. Detailed Specification
+
+During the move of the extremity, a feedback is drawn. This feedback will be changed by adapting the method @SiriusConnectionEndPointEditPolicy.showConnectionMoveFeedback()@.
+The commands used to change the layout of the edge are respectively returned by @SiriusGraphicalNodeEditPolicy.getReconnectSourceCommand()@ and @SiriusGraphicalNodeEditPolicy.getReconnectTargetCommand()@. These methods will be adapted to have the new behavior.
+
+For the feedback, the constraint of the edge (org.eclipse.draw2d.Connection), will be adapted according to the @ReconnectRequest@ to only move the corresponding segment (first or last).
+For the command, the points obtained during the feedback are used to recompute the new GMF bendpoints (with a @org.eclipse.gmf.runtime.diagram.ui.internal.commands.SetConnectionBendpointsCommand@).
+
+h3. List of different cases
+
+List of different cases that can have a different behavior that must be tested and correctly addressed:
+* bendpoints states
+** synchronized: GMF "from source bendpoints" are "synchronized" with the GMF "from target bendpoints"
+** not synchronized: GMF "from source bendpoints" are not "synchronized" with the GMF "from target bendpoints"
+* kind of routing
+** Rectilinear
+** Oblique
+* kind of edges
+** standard diagram
+** sequence edges (Nothing to do for sequence diagram): all node edit parts from @/org.eclipse.sirius.diagram.sequence.ui/src/org/eclipse/sirius/diagram/sequence/ui/tool/internal/edit/part@ should have a specific @SiriusGraphicalNodeEditPolicy@ and all edge edit parts from the same package should have a specific @SiriusConnectionEndPointEditPolicy@ to disable the new behavior.
+** bracket edges (@BracketEdgeEditPart@ has already specific behavior): should be directly ignored in @SiriusConnectionEndPointEditPolicy@ and @SiriusGraphicalNodeEditPolicy@
+* Zoom state: 75%, 100%, 200%
+* Scrollbar: horizontal/vertical, yes/no
+* Snap to Grid or snap to geometry: Enabled or not
+
+h3. Limits
+
+* The reconnection to another node will not be impacted by this feature. Indeed, in case of reconnection, all the bendpoints are erased to have a single-segment line (from start to end).
+* Note attachment: This evolution is not applicable to the "note attachment" links.
+
+h2. Backward Compatibility and Migration Paths
+
+h3. Metamodel Changes
+
+There is no change in metamodel for this evolution. It only modifies the existing policies.
+
+h3. API Changes
+
+This evolution does not change any API. There may be some new policies handling each kind of move listed above.
+
+h3. User Interface Changes
+
+No user interface change.
+
+h3. Documentation Changes
+
+This new behavior should be added in the New and Noteworthy documentation. There is no need to document this elsewhere because it will be the default behavior.
+
+h2. Tests and Non-regression strategy
+
+All combinatorial of "different move cases" need to be tested.
+All existing tests should be verified to see if some of them depends on the old behavior. In this case, they should be adapted to the new behavior.
+
+h2. Implementation choices and tradeoffs

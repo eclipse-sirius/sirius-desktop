@@ -163,8 +163,6 @@ import org.eclipse.sirius.ecore.extender.business.internal.permission.ReadOnlyWr
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.EditingDomainUndoContext;
-import org.eclipse.sirius.tools.api.command.listener.ChangeListenerFactory;
-import org.eclipse.sirius.tools.api.command.listener.IChangeListener;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.tools.api.permission.DRepresentationPermissionStatusListener;
 import org.eclipse.sirius.tools.api.permission.DRepresentationPermissionStatusQuery;
@@ -287,11 +285,6 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     private VisibilityPostCommitListener visibilityPostCommitListener;
 
     private GMFDiagramUpdater gmfDiagramUpdater;
-
-    /**
-     * A changeListener to listen changes (if activated).
-     */
-    private IChangeListener changeListener;
 
     private DialectEditorDialogFactory myDialogFactory = new DiagramDialectEditorDialogFactory(this);
 
@@ -611,10 +604,6 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         /* initialize Java Service. */
         EObject semantic = ViewUtil.resolveSemanticElement(gmfDiagram);
         if (semantic instanceof DSemanticDecorator) {
-            // Add a ChangeListener to the DDiagram
-            changeListener = ChangeListenerFactory.INSTANCE.getNewChangeListener();
-            semantic.eAdapters().add(changeListener);
-
             semantic = ((DSemanticDecorator) semantic).getTarget();
             if (semantic.eResource() == null) {
                 ModelUtils.resolveAll(semantic);
@@ -653,18 +642,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             gmfDiagramUpdater.dispose();
             gmfDiagramUpdater = null;
         }
-        // Remove the change listener ContentAdapter.
         if (getDiagram() != null && getDiagram().eResource() != null) {
-            try {
-                EObject semantic = ViewUtil.resolveSemanticElement(getDiagram());
-                if (semantic instanceof DSemanticDecorator) {
-                    // Remove the ChangeListener to the DDiagram
-                    semantic.eAdapters().remove(changeListener);
-                    // Can cause a NPE with CDO
-                }
-            } catch (NullPointerException e) {
-                // nothing to do, rest of dispose steps will be performed
-            }
             if (dRepresentationLockStatusListener != null) {
                 IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(getDiagram().getElement());
                 permissionAuthority.removeAuthorityListener(dRepresentationLockStatusListener);

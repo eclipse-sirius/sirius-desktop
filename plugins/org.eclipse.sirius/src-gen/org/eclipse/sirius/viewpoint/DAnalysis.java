@@ -18,7 +18,7 @@ import org.eclipse.sirius.viewpoint.description.DAnnotationEntry;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DAnalysis</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -37,7 +37,7 @@ import org.eclipse.sirius.viewpoint.description.DAnnotationEntry;
  * </em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysis()
  * @model
  * @generated

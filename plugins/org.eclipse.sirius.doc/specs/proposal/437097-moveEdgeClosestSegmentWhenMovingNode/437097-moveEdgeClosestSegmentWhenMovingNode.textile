@@ -1,0 +1,129 @@
+h1. Move only the edge closest segment when moving a node
+
+h2. Preamble
+
+_Summary_: This evolution is an ergonomics feature. The main goal is to keep, as much as possible, the edges appearance when a node (container or not) is moved. A move of a node should move only the closest segment of the linked edges.
+
+|_. Version |_. Status |_. Date        |_. Authors |_. Changes |
+| v0.1        | DRAFT       | 2014-05-16 | lredor    | Initial version. |
+| v0.2        | PROPOSAL    | 2014-05-21 | lredor    | Sirius Obeo team review. |
+| v0.3        | PROPOSAL    | 2014-06-11 | lredor    | Another review. |
+| v0.4        | PROPOSAL    | 2014-08-13 | lredor    | Another review. |
+
+_Relevant tickets_ :
+* "Bugzilla #437097, Move only the edge closest segment when moving a node":https://bugs.eclipse.org/bugs/show_bug.cgi?id=437097
+
+h2. Introduction
+
+Currently, when you move a node, the edges that start from this node or that end to this node are moved too. If these edges have bendpoints, these bendpoints are recomputed according to :
+* the source and the target of the edge
+* two vectors from source and from target
+* a ponderation for each bendpoints.
+
+Explanation by example:
+!images/obliqueMove.png!
+The "ClassB" is shift of 200 pixels, all the bendpoints are moved.
+
+!images/obliqueMoveWithVectors.png!
+The edge "ref" has 3 segments.
+The first bendpoint has a ponderation of 1/3 (a move of 66 pixels : 200/3). The new x location is 416 pixels instead of 350 pixels.
+The second bendpoint has a ponderation of 2/3 (a move of 133 pixels : 200/3*2). The new x location is 383 pixels instead of 250 pixels.
+
+This behavior is not user friendly. If the user has layed out this edge to avoid other nodes for example, the move of the source or of the target of this edge moves all the layout, all the bendpoints, of this edge.
+
+It will be better to move only the latest segment.
+!images/Sample1-OriginalState.png! !images/Sample1-AfterMove.png!
+Sample with Ecore Tools 2
+
+!images/Sample2-OriginalState.png! !images/Sample2-AfterMove.png!
+Sample with UML Designer
+
+h2. Detailed Specification
+
+The retained approach is to complete the existing policies used during move of node to also recompute the edge bendpoints. This solution is compliant with GMF philosophy.
+
+In each concerned policy, we recompute the bendpoints of all incoming and outgoing edges of the host edit part and all its children (border or not) if they are not pinned. The edge for which both source and target are moved are ignored. The current selection is used to determine if both source and target are moved. Several cases:
+* Both source and target are directly in selection, and are not pinned
+* Source and target are in selection or in the children of the selected elements, and are not pinned
+* The selection is empty (case of arrange all where all elements are considered as moved, and source and target are not pinned.
+
+Example of "stack" for a classic move:
+* org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx.getCommand()
+** org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx.addSourceCommands(boolean, CompoundCommand)
+*** Creates one command for each moved edit part and so one edit policy is called for each moved edit part. The request references all moved edit parts (for example parts field of ChangeBoundsRequest), that allows to detect the situation where both source and target have been moved.
+*** AirResizableEditPolicy.getCommand(Request) (inherited from org.eclipse.gef.editpolicies.NonResizableEditPolicy) returns the command that really moves each edit part.
+
+Some specific code already exists in AirResizableEditPolicy to deal with edges with tree routing (old issue reference VP-2932).
+
+h3. List of different move cases
+
+This different cases must be tested and correctly addressed:
+* Kind of move
+** Move (moved with mouse)
+*** managed by @AirResizableEditPolicy.getMoveCommand()@
+** Drag'n'drop (Drag from one container and drop in another container)
+*** managed by @SiriusContainerDropPolicy.getDropCommand()@
+** Align (move through alignment actions): The initial request is not of type REQ_MOVE but REQ_ALIGN, so the command called is org.eclipse.gef.editpolicies.ConstrainedLayoutEditPolicy.getAlignChildrenCommand(AlignmentRequest)
+*** managed by @AirResizableEditPolicy.getAlignCommand()@
+** Arrange all : no specific command for this kind of move
+*** managed by @AirResizableEditPolicy.getMoveCommand()@
+** Arrange selection
+*** managed by @AirResizableEditPolicy.getMoveCommand()@
+* Selection
+** one node (border or not) with edges
+** several nodes (border or not) with edges
+** at least 2 nodes (border or not) linked with an edge (source and target of this edge): no specific command for this edge in this condition
+** container with edges
+** container containing node (border or not) with edges
+* bendpoints states
+** synchronized: GMF "from source bendpoints" are "synchronized" with the GMF "from target bendpoints"
+** not synchronized: GMF "from source bendpoints" are not "synchronized" with the GMF "from target bendpoints"
+* kind of routing
+** Rectilinear
+** Oblique
+* kind of edges
+** standard diagram
+** sequence edges (Nothing to do for sequence diagram): all node edit parts from @/org.eclipse.sirius.diagram.sequence.ui/src/org/eclipse/sirius/diagram/sequence/ui/tool/internal/edit/part@ should have a specific @AirResizableEditPolicy@ and @SiriusContainerDropPolicy@ to disable the new behavior.
+** bracket edges (@BracketEdgeEditPart@ has already specific behavior): should directly ignored in @AirResizableEditPolicy@ and @SiriusContainerDropPolicy@
+* Pin state: Pinned or not (especially in case of arrange selection)
+* Zoom state: 75%, 100%, 200%
+* Scrollbar: horizontal/vertical, yes/no
+* Snap to Grid or snap to geometry: Enabled or not
+
+h3. Limits
+
+* This evolution concerns only oblique and rectilinear router. The tree router has already specific behaviors and is not impacted by this evolution.
+* This evolution does not deal the moving of the edge label. The move of an edge causing by the move of one of its node extremity, can cause strange label move but this is out of the scope of this evolution.
+* Closest distance: If this feature is enabled on an edge, the evolution will change the current behavior. Ie the existing bendpoints (not visible with closest distance) will be lost.
+* Note attachment: This evolution is not applicable to the link of kind "note attachment".
+* The case on edge connected on another edge is not handled here, there are specific behaviors for anchor bendpoints for edges. The specific behaviors will be analyzed during this feature to detail the remaining tasks to address this case.
+
+h3. Rejected approach
+
+Another approach will be to use a new ModelChangeTrigger added to the SessionEventBroker. With this approach, we have only one call after the move of the selected nodes. The calculation will be made only with GMF data. This approach was rejected because it does not respect the GMF philosophy.
+
+h2. Backward Compatibility and Migration Paths
+
+h3. Metamodel Changes
+
+There is no change in metamodel for this evolution. It only modifies the existing policies.
+
+h3. API Changes
+
+This evolution does not change any API. There is perhaps some new policies added to handle each kind of move list above.
+
+h3. User Interface Changes
+
+No user interface change.
+
+h3. Documentation Changes
+
+This new behavior should be added in the New and Noteworthy documentation. There is no need to document this elsewhere because it became the default behavior.
+
+h2. Tests and Non-regression strategy
+
+All combinatorial of "different move cases" need to be tested.
+All existing tests should be verify to see if some of them depends on the old behavior. In this case, they should be adapted to the new behavior.
+
+h2. Implementation choices and tradeoffs
+

@@ -39,7 +39,7 @@ import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
  * <em>Workspace Path</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl implements WorkspaceImageDescription {

@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.description.FixedColor;
  * <em>Associated Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ColorStepImpl extends EObjectImpl implements ColorStep {

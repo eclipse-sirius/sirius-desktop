@@ -14,8 +14,8 @@ package org.eclipse.sirius.diagram;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Hide Label Filter</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getHideLabelFilter()
  * @model
  * @generated

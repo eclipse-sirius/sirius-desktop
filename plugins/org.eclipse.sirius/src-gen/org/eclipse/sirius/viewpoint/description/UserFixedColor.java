@@ -14,8 +14,8 @@ package org.eclipse.sirius.viewpoint.description;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>User Fixed Color</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getUserFixedColor()
  * @model
  * @generated

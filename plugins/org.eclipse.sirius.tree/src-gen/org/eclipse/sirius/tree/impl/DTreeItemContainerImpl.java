@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.impl.DSemanticDecoratorImpl;
  * <em>Owned Tree Items</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl implements DTreeItemContainer {

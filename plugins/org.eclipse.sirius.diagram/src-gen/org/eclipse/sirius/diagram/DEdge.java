@@ -18,10 +18,10 @@ import org.eclipse.sirius.viewpoint.Style;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DEdge</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A view edge. It is a connection between two
  * EdgeTarget. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -49,7 +49,7 @@ import org.eclipse.sirius.viewpoint.Style;
  * <li>{@link org.eclipse.sirius.diagram.DEdge#getEndLabel <em>End Label</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getDEdge()
  * @model
  * @generated

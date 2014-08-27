@@ -33,7 +33,7 @@ import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
  * <em>Semantic Candidates Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TAbstractMappingImpl extends TTransformerImpl implements TAbstractMapping {

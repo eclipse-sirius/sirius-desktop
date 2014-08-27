@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em>Label Alignment</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class LabelStyleImpl extends BasicLabelStyleImpl implements LabelStyle {

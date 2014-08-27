@@ -19,7 +19,7 @@ import org.eclipse.sirius.diagram.sequence.description.InteractionUseMapping;
  * <em><b>Interaction Use Mapping</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class InteractionUseMappingImpl extends FrameMappingImpl implements InteractionUseMapping {

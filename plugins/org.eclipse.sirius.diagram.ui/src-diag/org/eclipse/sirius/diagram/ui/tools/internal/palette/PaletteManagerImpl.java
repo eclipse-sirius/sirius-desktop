@@ -742,10 +742,19 @@ public class PaletteManagerImpl implements PaletteManager {
                     } else {
                         if (paletteEntry.some()) {
                             paletteStack.get().remove(paletteEntry.get());
+                            if (paletteStack.get().getChildren().isEmpty()) {
+                                // removed if empty to avoid palette stack to be
+                                // displayed as first when a diagram palette is
+                                // emptied and refilled
+                                container.remove(paletteStack.get());
+                            }
                         }
                     }
                 }
-                if (paletteWasCreated) {
+                if (paletteWasCreated && !paletteStack.get().getChildren().isEmpty()) {
+                    // avoid creating empty palette stack to avoid being
+                    // displayed as first when a diagram palette is emptied and
+                    // refilled
                     paletteStack.get().setId(PaletteManagerImpl.getToolEntryId(toolEntry));
                     container.add(paletteStack.get());
                 }

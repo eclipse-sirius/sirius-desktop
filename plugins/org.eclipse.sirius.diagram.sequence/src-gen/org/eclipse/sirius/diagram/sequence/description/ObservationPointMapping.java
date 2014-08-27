@@ -15,8 +15,8 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Observation Point Mapping</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getObservationPointMapping()
  * @model
  * @generated

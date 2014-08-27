@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
  * <em>Navigation Descriptions</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class RepresentationElementMappingImpl extends IdentifiedElementImpl implements RepresentationElementMapping {

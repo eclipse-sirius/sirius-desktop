@@ -22,7 +22,7 @@ import org.eclipse.sirius.viewpoint.Decoration;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DDiagram Element</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -41,7 +41,7 @@ import org.eclipse.sirius.viewpoint.Decoration;
  * <em>Graphical Filters</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagramElement()
  * @model abstract="true"
  * @generated

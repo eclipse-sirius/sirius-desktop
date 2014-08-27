@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="_OglkAeuDEd2MROiBl09iwA">
+  <packagedElement xmi:type="uml:Package" xmi:id="_Qax_0OuDEd2MROiBl09iwA" name="pkg1">
+    <packagedElement xmi:type="uml:Class" xmi:id="_TctfwOuDEd2MROiBl09iwA" name="Class1">
+      <ownedAttribute xmi:id="_UcBCsL8QEd6SIOqBLSKTKA" name="class2" type="_GPa2kL8PEd6SIOqBLSKTKA" aggregation="composite"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_GPa2kL8PEd6SIOqBLSKTKA" name="Class2"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_XR8jcL8PEd6SIOqBLSKTKA" name="Class3">
+      <ownedAttribute xmi:id="_yg1hML8QEd6SIOqBLSKTKA" name="class4" type="_XR8jcr8PEd6SIOqBLSKTKA" aggregation="shared"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_XR8jcr8PEd6SIOqBLSKTKA" name="Class4"/>
+  </packagedElement>
+</uml:Model>

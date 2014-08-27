@@ -16,8 +16,8 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>IVSM Element Customization</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getIVSMElementCustomization()
  * @model interface="true" abstract="true"
  * @generated

@@ -63,7 +63,7 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationElementImpl;
  * <em>Graphical Filters</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class DDiagramElementImpl extends DRepresentationElementImpl implements DDiagramElement {

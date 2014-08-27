@@ -31,7 +31,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em>Iterator Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ForImpl extends ContainerModelOperationImpl implements For {

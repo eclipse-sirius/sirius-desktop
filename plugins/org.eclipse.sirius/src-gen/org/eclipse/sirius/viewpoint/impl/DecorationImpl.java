@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.DecorationDescription;
  * <em>Description</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DecorationImpl extends EObjectImpl implements Decoration {

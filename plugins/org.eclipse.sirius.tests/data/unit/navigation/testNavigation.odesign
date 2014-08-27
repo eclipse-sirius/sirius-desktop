@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" version="8.0.0">
+  <ownedViewpoints name="NavigationTest" modelFileExtension="uml">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="Package Diagram" initialisation="true" domainClass="Model" rootExpression="">
+      <defaultLayer name="Package">
+        <nodeMappings name="Package" navigationDescriptions="//@ownedViewpoints[name='NavigationTest']/@ownedRepresentations[name='Package%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Class%20Diagram']" semanticCandidatesExpression="feature:eAllContents" semanticElements="" domainClass="Package">
+          <style xsi:type="style:BundledImageDescription" shape="triangle">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <toolSections name="Package">
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Class Diagram" browseExpression="var:self" navigationNameExpression="Navigate to owned packages : &lt;%$diagramName%>" diagramDescription="//@ownedViewpoints[name='NavigationTest']/@ownedRepresentations[name='Class%20Diagram']">
+            <containerViewVariable name="containerView"/>
+            <containerVariable name="container"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Test a simple class diagram with only a box representing a Class" name="Class Diagram" initialisation="true" domainClass="Package" preconditionExpression="&lt;%current.filter(&quot;Model&quot;).nSize==0%>" rootExpression="">
+      <defaultLayer name="Class">
+        <nodeMappings name="Class" navigationDescriptions="//@ownedViewpoints[name='NavigationTest']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Package%20Diagram']" semanticCandidatesExpression="feature:eAllContents" semanticElements="" domainClass="Class">
+          <style xsi:type="style:BundledImageDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+        </nodeMappings>
+        <toolSections name="Package">
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Package Diagram" browseExpression="&lt;%eContainer(&quot;Model&quot;)%>" navigationNameExpression="Navigate to &lt;%$diagramName%>" diagramDescription="//@ownedViewpoints[name='NavigationTest']/@ownedRepresentations[name='Package%20Diagram']">
+            <containerViewVariable name="containerView"/>
+            <containerVariable name="container"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

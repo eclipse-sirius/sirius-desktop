@@ -23,7 +23,7 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Layer</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -55,7 +55,7 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
  * Customization</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayer()
  * @model
  * @generated

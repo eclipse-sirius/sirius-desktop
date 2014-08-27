@@ -66,7 +66,7 @@ import org.eclipse.sirius.table.metamodel.table.description.StyleUpdater;
  * <em>Feature Parent Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class FeatureColumnMappingImpl extends ColumnMappingImpl implements FeatureColumnMapping {

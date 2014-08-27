@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="tc1945">
+  <eSubpackages name="packageCreationTrue">
+    <eClassifiers xsi:type="ecore:EClass" name="B">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="toC" eType="#//packageCreationTrue/C"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="EnumCreationFalse1"/>
+    <eClassifiers xsi:type="ecore:EClass" name="C"/>
+    <eSubpackages name="packageSubCreationTrue2">
+      <eClassifiers xsi:type="ecore:EClass" name="A" eSuperTypes="#//packageCreationTrue/B">
+        <eOperations name="methodCreationTrue1"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="attributeCreationFalse1"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="eClassCreationFalse1"
+            eType="#//packageCreationTrue/B"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="eClassCreationFalse2"
+            eType="#//packageCreationTrue/C"/>
+      </eClassifiers>
+    </eSubpackages>
+  </eSubpackages>
+</ecore:EPackage>

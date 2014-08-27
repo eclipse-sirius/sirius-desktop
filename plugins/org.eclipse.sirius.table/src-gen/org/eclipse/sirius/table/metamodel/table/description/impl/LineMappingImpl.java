@@ -78,7 +78,7 @@ import org.eclipse.sirius.table.metamodel.table.description.StyleUpdater;
  * <em>Header Label Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class LineMappingImpl extends TableMappingImpl implements LineMapping {

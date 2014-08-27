@@ -40,7 +40,7 @@ import org.eclipse.sirius.diagram.description.filter.VariableFilter;
  * <em>Semantic Condition Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class VariableFilterImpl extends FilterImpl implements VariableFilter {

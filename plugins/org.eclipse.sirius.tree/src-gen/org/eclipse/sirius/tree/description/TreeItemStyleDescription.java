@@ -17,7 +17,7 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Tree Item Style Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -26,7 +26,7 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  * <em>Background Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemStyleDescription()
  * @model
  * @generated

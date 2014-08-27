@@ -20,7 +20,7 @@ import org.eclipse.sirius.description.contribution.ResetFeatureContribution;
  * <em><b>Reset Feature Contribution</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class ResetFeatureContributionImpl extends FeatureContributionImpl implements ResetFeatureContribution {

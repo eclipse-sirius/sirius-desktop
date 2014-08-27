@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,10 +16,6 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
-
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
@@ -28,6 +24,9 @@ import org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+
 /**
  * Abstract base class for implementations of {@link IInterpreter}.
  * 
@@ -35,7 +34,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
  */
 public abstract class AbstractInterpreter implements IInterpreter {
 
-    /** The separator between EPackage name and EClass name for domain class.*/
+    /** The separator between EPackage name and EClass name for domain class. */
     protected static final String SEPARATOR = ".";
 
     /**
@@ -55,6 +54,8 @@ public abstract class AbstractInterpreter implements IInterpreter {
             result = Lists.newArrayList(Iterables.filter((Collection<?>) raw, EObject.class));
         } else if (raw instanceof EObject) {
             result = Collections.singleton((EObject) raw);
+        } else if (raw != null && raw.getClass().isArray()) {
+            result = Lists.newArrayList(Iterables.filter(Lists.newArrayList((Object[]) raw), EObject.class));
         } else {
             result = Collections.emptySet();
         }

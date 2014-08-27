@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -324,6 +324,10 @@ public class ModelingProjectManagerImpl implements ModelingProjectManager {
                     if (e.getMessage().contains(ModelingProjectQuery.ZERO_REPRESENTATIONS_FILE_FOUND_IN)) {
                         // 0 files has been found : create a representation
                         ModelingProjectManager.INSTANCE.createLocalRepresentationsFile(project, new SubProgressMonitor(monitor, 1));
+                        // Project has been marked as invalid but now it has a
+                        // main representation file, force the computation of
+                        // its mainRepresentationFileURI.
+                        optionalModelingProject.get().getMainRepresentationsFileURI(new SubProgressMonitor(monitor, 1), true, true);
                     } else if (e.getMessage().contains(ModelingProjectQuery.A_MODELING_PROJECT_MUST_CONTAIN_ONLY_ONE)) {
                         // several files have been found : rollback
                         removeModelingNature(project, new SubProgressMonitor(monitor, 1));

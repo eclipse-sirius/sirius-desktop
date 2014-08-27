@@ -41,7 +41,7 @@ import org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping;
  * <em>Create Column</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CrossTableDescriptionImpl extends TableDescriptionImpl implements CrossTableDescription {

@@ -40,7 +40,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
  * <em>Children Presentation</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DNodeContainerImpl extends DDiagramElementContainerImpl implements DNodeContainer {

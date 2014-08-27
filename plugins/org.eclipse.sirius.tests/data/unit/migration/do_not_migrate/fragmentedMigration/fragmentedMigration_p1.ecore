@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="p1"
+    nsURI="p1" nsPrefix="p1">
+  <eClassifiers xsi:type="ecore:EClass" name="C1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C2">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="newAttribute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eSubpackages href="fragmentedMigration_p1_p1_1.ecore#/"/>
+</ecore:EPackage>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_Wh_KkEjgEd2dA-w4B9F6fQ" name="Players">
+  <packagedElement xmi:type="uml:Class" xmi:id="_Zfig0EjgEd2dA-w4B9F6fQ" name="Zidane">
+    <ownedAttribute xmi:id="_LVgeAL-8Ed6Y5bSW1tHziA" name="level"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_wLR7QHg7Ed2ISLgtvgSAmQ" name="Benzema"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_XFrIwHg7Ed2ISLgtvgSAmQ" name="Makelele"/>
+</uml:Model>

@@ -1,0 +1,1195 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Docbook modelers" version="8.1.0">
+  <ownedViewpoints name="docbook1" modelFileExtension="docbook">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='drag%26drop']/@ownedTools[name='drop%20chapter%20note%20in%20diagram']" documentation="mon premier projet designer" name="obviousDiagram" initialisation="true" domainClass="Book">
+      <metamodel href="platform:/org.eclipse.sirius.tests.sample.docbook/model/docbook.ecore#/"/>
+      <nodeMappings name="tiny section" labelDirectEdit="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@ownedTools[name='direct%20edit%20node%20and%20container']" semanticCandidatesExpression="feature:eAllContents" domainClass="Sect3" dropDescriptions="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='drag%26drop']/@ownedTools[name='drop%20tiny%20note%20in%20tiny%20section']">
+        <borderedNodeMappings name="tiny note" semanticCandidatesExpression="feature:eAllContents" domainClass="Para">
+          <style xsi:type="style:DotDescription" labelExpression="&lt;%data%>" sizeComputationExpression="1">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+          </style>
+        </borderedNodeMappings>
+        <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" labelSize="2" labelExpression="&lt;%id%>" sizeComputationExpression="5">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+        </style>
+      </nodeMappings>
+      <nodeMappings name="note" preconditionExpression="&lt;%eContainer().eClass().name == &quot;Sect2&quot;%>" labelDirectEdit="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@ownedTools[name='direct%20edit%20bordered%20node']" semanticCandidatesExpression="feature:eAllContents" domainClass="Para">
+        <style xsi:type="style:SquareDescription" labelSize="2" labelExpression="&lt;%data%>" sizeComputationExpression="1">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+        </style>
+      </nodeMappings>
+      <edgeMappings name="chapter" detailDescriptions="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='navigation%20links']/@ownedTools[name='navigate%20throw%20link']" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetFinderExpression="&lt;%followingSibling().nFirst()%>">
+        <style>
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="tinyToMed" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='tiny%20section']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@subContainerMappings[name='big%20section']/@subNodeMappings[name='medium%20section']" targetFinderExpression="&lt;%parent()%>" reconnections="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='medium%20section%20target%20reconnection'] //@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20target%20reconnection']">
+        <style>
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="noteToTitle" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='note']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@borderedNodeMappings[name='title']" targetFinderExpression="&lt;%eContainer(&quot;Chapter&quot;).eAllContents(&quot;Title&quot;).nFirst()%>">
+        <style>
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="TitleToChapter" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@borderedNodeMappings[name='title']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetFinderExpression="&lt;%parent()%>">
+        <style>
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="tinyNote" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='tiny%20section']/@borderedNodeMappings[name='tiny%20note']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='tiny%20section']/@borderedNodeMappings[name='tiny%20note']" targetFinderExpression="&lt;%followingSibling()%>">
+        <style>
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="chapterNoteToMed" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@borderedNodeMappings[name='chapNote']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@subContainerMappings[name='big%20section']/@subNodeMappings[name='medium%20section']" targetFinderExpression="&lt;%parent().eAllContents(&quot;Sect2&quot;).nFirst()%>">
+        <style>
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="tinyToChapter" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='tiny%20section']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetFinderExpression="&lt;%parent().parent().parent()%>" reconnections="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20target%20reconnection'] //@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='medium%20section%20target%20reconnection']">
+        <style>
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="chapterNoteToChapter" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@borderedNodeMappings[name='chapNote']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetFinderExpression="&lt;%parent()%>" reconnections="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20big%20section%20source%20reconnection'] //@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20source%20reconnection'] //@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20medium%20section%20source%20reconnection']">
+        <style sizeComputationExpression="1">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="chapterToChapterNote" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@borderedNodeMappings[name='chapNote']" targetFinderExpression="&lt;%eContents().filter(&quot;Para&quot;)%>" reconnections="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20medium%20section%20target%20reconnection'] //@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20target%20reconnection'] //@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20big%20section%20target%20reconnection']">
+        <style sizeComputationExpression="1">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="chapterToBig" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@subContainerMappings[name='big%20section']" targetFinderExpression="&lt;%eAllContents(&quot;Sect1&quot;)%>" reconnections="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20target%20reconnection'] //@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20big%20section%20target%20reconnection']">
+        <style sizeComputationExpression="2">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="bigToChapter" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@subContainerMappings[name='big%20section']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetFinderExpression="&lt;%parent()%>" reconnections="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20big%20section%20source%20reconnection'] //@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20source%20reconnection']">
+        <style sizeComputationExpression="2">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="chapterToMedium" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@subContainerMappings[name='big%20section']/@subNodeMappings[name='medium%20section']" targetFinderExpression="&lt;%eAllContents(&quot;Sect2&quot;)%>" reconnections="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20medium%20section%20target%20reconnection'] //@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20target%20reconnection']">
+        <style sizeComputationExpression="2">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="mediumToChapter" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@subContainerMappings[name='big%20section']/@subNodeMappings[name='medium%20section']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetFinderExpression="&lt;%parent().parent()%>" reconnections="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20source%20reconnection'] //@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20note%20medium%20section%20source%20reconnection']">
+        <style sizeComputationExpression="2">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="chapterToTiny" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='tiny%20section']" targetFinderExpression="&lt;%eAllContents(&quot;Sect3&quot;)%>" reconnections="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20source%20reconnection'] //@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='medium%20section%20source%20reconnection']">
+        <style sizeComputationExpression="2">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="mediumToTiny" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@subContainerMappings[name='big%20section']/@subNodeMappings[name='medium%20section']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='tiny%20section']" targetFinderExpression="feature:eContents" reconnections="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='chapter%20source%20reconnection'] //@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='reconnections']/@ownedTools[name='medium%20section%20source%20reconnection']">
+        <style sizeComputationExpression="2">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <containerMappings name="chapter" detailDescriptions="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='navigation%20links']/@ownedTools[name='navigate%20throw%20container'] //@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='navigation%20links']/@ownedTools[name='navigate%20to%20obvious']" semanticCandidatesExpression="feature:eAllContents" domainClass="Chapter" dropDescriptions="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='drag%26drop']/@ownedTools[name='drop%20chapter%20note%20in%20chapter'] //@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='drag%26drop']/@ownedTools[name='drop%20big%20section%20in%20container']">
+        <borderedNodeMappings name="title" labelDirectEdit="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@ownedTools[name='direct%20edit%20bordered%20node']" semanticCandidatesExpression="feature:eAllContents" semanticElements="" domainClass="Title">
+          <style xsi:type="style:SquareDescription" labelExpression="&lt;%data%>" width="2" height="3">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
+          </style>
+        </borderedNodeMappings>
+        <borderedNodeMappings name="chapNote" preconditionExpression="&lt;%eContainer().eClass.name == &quot;Chapter&quot;%>" labelDirectEdit="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@ownedTools[name='direct%20edit%20bordered%20node']" semanticCandidatesExpression="feature:eAllContents" domainClass="Para">
+          <style xsi:type="style:SquareDescription" labelExpression="&lt;%data%>" width="2" height="3">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </borderedNodeMappings>
+        <subContainerMappings name="big section" labelDirectEdit="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@ownedTools[name='direct%20edit%20node%20and%20container']" semanticCandidatesExpression="feature:eAllContents" domainClass="Sect1" dropDescriptions="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='drag%26drop']/@ownedTools[name='drop%20medium%20section%20in%20big%20section']">
+          <subNodeMappings name="medium section" detailDescriptions="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@subSections[name='navigation%20links']/@ownedTools[name='navigate%20throw%20node']" labelDirectEdit="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@toolSection/@ownedTools[name='direct%20edit%20node%20and%20container']" semanticCandidatesExpression="feature:eAllContents" domainClass="Sect2">
+            <style xsi:type="style:SquareDescription" labelExpression="&lt;%id%>" sizeComputationExpression="4">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="&lt;%id%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </subContainerMappings>
+        <style xsi:type="style:FlatContainerStyleDescription" labelExpression="&lt;%id%>">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+        </style>
+      </containerMappings>
+      <toolSection name="tools">
+        <ownedTools xsi:type="tool:ContainerCreationDescription" name="chapter" forceRefresh="true" containerMappings="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']">
+          <variable name="container"/>
+          <viewVariable name="containerView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Chapter" referenceName="chapter">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="&lt;% &quot;chap&quot; + precedingSibling().nSize()%>"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Title" referenceName="title"/>
+              </subModelOperations>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:ContainerCreationDescription" name="big section" forceRefresh="true" containerMappings="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@subContainerMappings[name='big%20section']">
+          <variable name="container"/>
+          <viewVariable name="containerView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Sect1" referenceName="sect1">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="&lt;% &quot;Sect&quot; + precedingSibling().nSize()%>"/>
+              </subModelOperations>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:NodeCreationDescription" name="medium section" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@subContainerMappings[name='big%20section']/@subNodeMappings[name='medium%20section']">
+          <variable name="container"/>
+          <viewVariable name="containerView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Sect2" referenceName="sect2"/>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:EdgeCreationDescription" name="tiny section link" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@edgeMappings[name='tinyToMed']">
+          <sourceVariable name="source"/>
+          <targetVariable name="target"/>
+          <sourceViewVariable name="sourceView"/>
+          <targetViewVariable name="targetView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+              <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:target" featureName="sect3"/>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:DirectEditLabel" name="direct edit node and container" forceRefresh="true">
+          <mask mask="{0}"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="var:arg0"/>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:DirectEditLabel" name="direct edit bordered node" forceRefresh="true">
+          <mask mask="{0}"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:SetValue" featureName="data" valueExpression="var:arg0"/>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:NodeCreationDescription" name="chapter note" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@borderedNodeMappings[name='chapNote']">
+          <variable name="container"/>
+          <viewVariable name="containerView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Para" referenceName="para"/>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:NodeCreationDescription" name="tiny section" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='tiny%20section']">
+          <variable name="container"/>
+          <viewVariable name="containerView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%getRootContainer().eAllContents(&quot;Sect2&quot;).nLast()%>">
+              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Sect3" referenceName="sect3"/>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:NodeCreationDescription" name="tiny note" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='tiny%20section']/@borderedNodeMappings[name='tiny%20note']">
+          <variable name="container"/>
+          <viewVariable name="containerView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Para" referenceName="para"/>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:NodeCreationDescription" name="note" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='note']">
+          <variable name="container"/>
+          <viewVariable name="containerView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%getRootContainer().eAllContents(&quot;Sect2&quot;).nFirst()%>">
+              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Para" referenceName="para"/>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <subSections name="navigation links">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="navigate throw container" browseExpression="&lt;%getRootContainer()%>" diagramDescription="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']">
+            <initialOperation/>
+            <containerViewVariable name="containerView"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="navigate throw node" browseExpression="&lt;%getRootContainer()%>" diagramDescription="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']">
+            <initialOperation/>
+            <containerViewVariable name="containerView"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="navigate throw link" browseExpression="&lt;%getRootContainer()%>" diagramDescription="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']">
+            <initialOperation/>
+            <containerViewVariable name="containerView"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="navigate to obvious" browseExpression="" diagramDescription="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']">
+            <initialOperation/>
+            <containerViewVariable name="containerView"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+        </subSections>
+        <subSections name="reconnections">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="chapter note source reconnection" precondition="&lt;%$target.eClass.name == &quot;Para&quot;%>" forceRefresh="true" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;%$edgeView.targetNode.target%>" featureName="para"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="chapter note target reconnection" precondition="&lt;%$target.eClass.name == &quot;Para&quot;%>" forceRefresh="true">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;%$edgeView.sourceNode.target%>" featureName="para"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="chapter note big section source reconnection" precondition="&lt;%$target.eClass.name == &quot;Sect1&quot;%>" forceRefresh="true" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;%$edgeView.targetNode.target%>" featureName="sect1"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="chapter note big section target reconnection" precondition="&lt;%$target.eClass.name == &quot;Sect1&quot;%>" forceRefresh="true">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;%$edgeView.sourceNode.target%>" featureName="sect1"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="chapter note medium section source reconnection" precondition="&lt;%$target.eClass.name == &quot;Sect2&quot;%>" forceRefresh="true" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;%$edgeView.targetNode.target.eAllContents(&quot;Sect1&quot;).nFirst()%>" featureName="sect2"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="chapter note medium section target reconnection" precondition="&lt;%$target.eClass.name == &quot;Sect2&quot;%>" forceRefresh="true">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;%$edgeView.sourceNode.target.eAllContents(&quot;Sect1&quot;).nFirst()%>" featureName="sect2"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="medium section target reconnection" precondition="&lt;%$target.eClass.name == &quot;Sect2&quot;%>" forceRefresh="true">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$edgeView.sourceNode.target%>">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:target" featureName="sect3"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="chapter target reconnection" precondition="&lt;%$target.eClass.name == &quot;Chapter&quot;%>" forceRefresh="true">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$edgeView.sourceNode.target%>">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;%$target.eAllContents(&quot;Sect2&quot;).nFirst()%>" featureName="sect3"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="chapter source reconnection" precondition="&lt;%$target.eClass.name == &quot;Chapter&quot;%>" forceRefresh="true" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$edgeView.targetNode.target%>">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;%$target.eAllContents(&quot;Sect2&quot;).nFirst()%>" featureName="sect3"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="medium section source reconnection" precondition="&lt;%$target.eClass.name == &quot;Sect2&quot;%>" forceRefresh="true" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$edgeView.targetNode.target%>">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:target" featureName="sect3"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+        </subSections>
+        <subSections name="drag&amp;drop">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="drop big section in container" forceRefresh="true" mappings="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@subContainerMappings[name='big%20section']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="sect1"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="drop medium section in big section" forceRefresh="true" mappings="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@subContainerMappings[name='big%20section']/@subNodeMappings[name='medium%20section']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="sect2"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="drop chapter note in chapter" forceRefresh="true" mappings="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@containerMappings[name='chapter']/@borderedNodeMappings[name='chapNote']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="para"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="drop tiny note in tiny section" forceRefresh="true" mappings="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='tiny%20section']/@borderedNodeMappings[name='tiny%20note']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="para"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="drop chapter note in diagram" forceRefresh="true" mappings="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']/@nodeMappings[name='note']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;%$newContainerView.target.eAllContents(&quot;Sect2&quot;).nFirst()%>" featureName="para"/>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                  <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="&lt;%$newContainerView.target.eAllContents(&quot;Sect2&quot;).nFirst()%>" featureName="para"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </subSections>
+      </toolSection>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="evoluate view" initialisation="true" domainClass="Book" reusedMappings="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@containerMappings[name='info']/@borderedNodeMappings[name='author']">
+      <metamodel href="platform:/org.eclipse.sirius.tests.sample.docbook/model/docbook.ecore#/"/>
+      <nodeMappings name="chapt" detailDescriptions="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='navigation%20links']/@ownedTools[name='navigate%20throw%20node'] //@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='navigation%20links']/@ownedTools[name='navigate%20to%20evoluate']" labelDirectEdit="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='direct%20edit']/@ownedTools[name='chapter']" semanticCandidatesExpression="feature:eAllContents" domainClass="Chapter">
+        <style xsi:type="style:SquareDescription" labelExpression="&lt;%id%>" sizeComputationExpression="&lt;%eAllContents().nSize()%>">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+        </style>
+      </nodeMappings>
+      <nodeMappings name="big sect" labelDirectEdit="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='direct%20edit']/@ownedTools[name='big%20sect']" semanticCandidatesExpression="&lt;%getRootContainer().eAllContents()%>" domainClass="Sect1">
+        <style xsi:type="style:SquareDescription" labelExpression="&lt;%id%>" sizeComputationExpression="&lt;%eAllContents().nSize()%>">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+        </style>
+      </nodeMappings>
+      <nodeMappings name="med sect" labelDirectEdit="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='direct%20edit']/@ownedTools[name='med%20sect']" semanticCandidatesExpression="feature:eAllContents" domainClass="Sect2">
+        <style xsi:type="style:SquareDescription" labelExpression="&lt;%id%>" sizeComputationExpression="&lt;%eAllContents().nSize()%>">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+        </style>
+      </nodeMappings>
+      <nodeMappings name="tiny sect" deletionDescription="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@ownedTools[name='delete%20tiny%20section']" labelDirectEdit="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='direct%20edit']/@ownedTools[name='tiny%20sect']" semanticCandidatesExpression="feature:eAllContents" domainClass="Sect3">
+        <style xsi:type="style:SquareDescription" labelExpression="&lt;%id%>" sizeComputationExpression="2">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+        </style>
+      </nodeMappings>
+      <nodeMappings name="paragraphe" preconditionExpression="&lt;%parent().eClass.name == &quot;Chapter&quot;%>" labelDirectEdit="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='direct%20edit']/@ownedTools[name='direct%20edit%20note']" semanticCandidatesExpression="feature:eAllContents" domainClass="Para">
+        <style xsi:type="style:DotDescription" labelExpression="&lt;%data%>" sizeComputationExpression="2" resizeKind="NORTH_SOUTH">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+        </style>
+      </nodeMappings>
+      <edgeMappings name="belong To Chapter" semanticCandidatesExpression="feature:eAllContents" semanticElements="&lt;%parent()%>" documentation="This edge has a different style if it represents the first BigSection of the chapter." sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='big%20sect']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='chapt']" targetFinderExpression="&lt;%parent()%>" reconnections="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='reconnection']/@ownedTools[name='reconnection']">
+        <style>
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          <centerLabelStyleDescription>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </centerLabelStyleDescription>
+        </style>
+        <conditionnalStyles predicateExpression="&lt;%self.eContainer().sect1.nFirst == self &amp;&amp; self.eContainer().id != &quot;newChapterId&quot;%>">
+          <style lineStyle="dash" sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="3" routingStyle="tree">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <centerLabelStyleDescription labelFormat="italic" showIcon="false" labelExpression="ConditionalStyle">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </conditionnalStyles>
+        <conditionnalStyles predicateExpression="&lt;%self.eContainer().sect1.nFirst == self &amp;&amp; self.eContainer().id == &quot;newChapterId&quot;%>">
+          <style lineStyle="dash" sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="3" routingStyle="tree">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            <centerLabelStyleDescription labelFormat="italic" showIcon="false" labelExpression="OtherConditionalStyle">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </conditionnalStyles>
+      </edgeMappings>
+      <edgeMappings name="belong to big sect" semanticCandidatesExpression="feature:eAllContents" semanticElements="" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='med%20sect']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='big%20sect']" targetFinderExpression="&lt;%parent()%>" reconnections="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='reconnection']/@ownedTools[name='reconnection2']">
+        <style>
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="belong to med section" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='tiny%20sect']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='med%20sect']" targetFinderExpression="&lt;%parent()%>" reconnections="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@toolSection/@subSections[name='reconnection']/@ownedTools[name='reconnection3']">
+        <style>
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="note mapping" semanticCandidatesExpression="feature:eAllContents" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='chapt']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='tiny%20sect']" targetFinderExpression="&lt;%parent().eAllContents(&quot;Sect3&quot;).nFirst()%>" sourceFinderExpression="&lt;%parent()%>" targetExpression="var:self" domainClass="Para" useDomainElement="true">
+        <style sizeComputationExpression="&lt;%2%>">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          <centerLabelStyleDescription labelExpression="&lt;%data%>">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </centerLabelStyleDescription>
+        </style>
+      </edgeMappings>
+      <containerMappings name="title" semanticCandidatesExpression="&lt;%getRootContainer().eAllContents()%>" domainClass="Title">
+        <style xsi:type="style:FlatContainerStyleDescription" labelExpression="&lt;%data%>">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+          <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+        </style>
+      </containerMappings>
+      <containerMappings name="info" semanticCandidatesExpression="feature:eAllContents" domainClass="Info" reusedNodeMappings="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='big%20sect']" reusedContainerMappings="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@containerMappings[name='title']">
+        <borderedNodeMappings name="author" semanticCandidatesExpression="&lt;%getRootContainer().eAllContents()%>" domainClass="Author">
+          <style xsi:type="style:DotDescription" labelExpression="&lt;%personname%>" sizeComputationExpression="&lt;%3%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+          </style>
+        </borderedNodeMappings>
+        <style xsi:type="style:FlatContainerStyleDescription" labelExpression="">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_chocolate']"/>
+          <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+        </style>
+      </containerMappings>
+      <toolSection name="tools">
+        <ownedTools xsi:type="tool:ContainerCreationDescription" name="info tool" containerMappings="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@containerMappings[name='info']">
+          <variable name="container"/>
+          <viewVariable name="containerView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Info" referenceName="bookinfo"/>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:ContainerCreationDescription" name="title tool" forceRefresh="true" containerMappings="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@containerMappings[name='title']">
+          <variable name="container"/>
+          <viewVariable name="containerView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%getRootContainer().eContents.filter(&quot;Chapter&quot;).nLast()%>">
+              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Title" referenceName="title"/>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:NodeCreationDescription" name="author tool" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@containerMappings[name='info']/@borderedNodeMappings[name='author']">
+          <variable name="container"/>
+          <viewVariable name="containerView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%getRootContainer().eAllContents(&quot;Info&quot;).nFirst()%>">
+              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Author" referenceName="author"/>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:NodeCreationDescription" name="chap tool" nodeMappings="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='chapt']">
+          <variable name="container"/>
+          <viewVariable name="containerView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Chapter" referenceName="chapter"/>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:NodeCreationDescription" name="big sect tool" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='big%20sect']">
+          <variable name="container"/>
+          <viewVariable name="containerView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%getRootContainer().eAllContents(&quot;Chapter&quot;).nFirst()%>">
+              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Sect1" referenceName="sect1"/>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:NodeCreationDescription" name="med sect tool" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='med%20sect']">
+          <variable name="container"/>
+          <viewVariable name="containerView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%getRootContainer().eAllContents(&quot;Sect1&quot;).nFirst()%>">
+              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Sect2" referenceName="sect2"/>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:NodeCreationDescription" name="tiny sect tool" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@nodeMappings[name='tiny%20sect']">
+          <variable name="container"/>
+          <viewVariable name="containerView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%getRootContainer().eAllContents(&quot;Sect2&quot;).nFirst()%>">
+              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Sect3" referenceName="sect3"/>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:EdgeCreationDescription" name="note tool" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']/@edgeMappings[name='note%20mapping']">
+          <sourceVariable name="source"/>
+          <targetVariable name="target"/>
+          <sourceViewVariable name="sourceView"/>
+          <targetViewVariable name="targetView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+              <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Para" referenceName="para"/>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:DeleteElementDescription" name="delete tiny section" forceRefresh="true">
+          <element name="element"/>
+          <elementView name="view"/>
+          <containerView name="elementView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$element.parent().parent().parent()%>">
+              <subModelOperations xsi:type="tool_1:For" expression="&lt;%eContents().filter(&quot;Para&quot;)%>">
+                <subModelOperations xsi:type="tool_1:RemoveElement"/>
+              </subModelOperations>
+              <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:RemoveElement"/>
+              </subModelOperations>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool_1:SelectionWizardDescription" documentation="Ce wizard sert &#xe0; faire un truc ou un machin je ne sais plus ..." name="multiple selection wizard" forceRefresh="true" candidatesExpression="&lt;%$containerView.eAllContents()[target.data == &quot;&quot;]%>" multiple="true">
+          <element name="element"/>
+          <containerView name="containerView"/>
+          <container name="container"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:For" expression="&lt;%$element.target%>">
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="data" valueExpression="data value"/>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="single selection wizard" forceRefresh="true" candidatesExpression="&lt;%$containerView.eAllContents()[target.data == &quot;&quot;]%>">
+          <element name="element"/>
+          <containerView name="containerView"/>
+          <container name="container"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:For" expression="&lt;%$element.target%>">
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="data" valueExpression="data value"/>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <subSections name="navigation links">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="navigate to evoluate" diagramDescription="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='evoluate%20view']">
+            <initialOperation/>
+            <containerViewVariable name="containerView"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="navigate throw node" browseExpression="&lt;%getRootContainer()%>" diagramDescription="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='obviousDiagram']">
+            <initialOperation/>
+            <containerViewVariable name="containerView"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+        </subSections>
+        <subSections name="direct edit">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="chapter" forceRefresh="true">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="big sect" forceRefresh="true">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="med sect" forceRefresh="true">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="tiny sect" forceRefresh="true">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="direct edit note" forceRefresh="true">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="data" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+        </subSections>
+        <subSections name="reconnection">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="reconnection">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$sourceView.sourceNode.target%>">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:target" featureName="sect1"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="reconnection2">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$sourceView.sourceNode.target%>">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:target" featureName="sect2"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="reconnection3">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$sourceView.sourceNode.target%>">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:target" featureName="sect3"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+        </subSections>
+      </toolSection>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="chapterDiagram" initialisation="true" domainClass="Chapter">
+      <metamodel href="platform:/org.eclipse.sirius.tests.sample.docbook/model/docbook.ecore#/"/>
+      <edgeMappings name="section1ToParagraphe" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='chapterDiagram']/@containerMappings[name='section1']" targetMapping="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='chapterDiagram']/@containerMappings[name='paragraphe']" targetFinderExpression="&lt;%eContents().filter(&quot;Para&quot;)%>" reconnections="//@ownedViewpoints[name='docbook1']/@ownedRepresentations[name='chapterDiagram']/@toolSection/@ownedTools[name='listContainerReconnection']">
+        <style sizeComputationExpression="2">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </edgeMappings>
+      <containerMappings name="section1" semanticCandidatesExpression="feature:eAllContents" domainClass="Sect1" childrenPresentation="List">
+        <style xsi:type="style:FlatContainerStyleDescription">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+        </style>
+      </containerMappings>
+      <containerMappings name="paragraphe" semanticCandidatesExpression="feature:eAllContents" domainClass="Para" childrenPresentation="List">
+        <style xsi:type="style:FlatContainerStyleDescription">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+        </style>
+      </containerMappings>
+      <toolSection name="Tools">
+        <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="listContainerReconnection" reconnectionKind="RECONNECT_SOURCE">
+          <source name="source"/>
+          <target name="target"/>
+          <sourceView name="sourceView"/>
+          <targetView name="targetView"/>
+          <element name="element"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$edgeView.targetNode.target%>">
+              <subModelOperations xsi:type="tool_1:RemoveElement">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:target" featureName="para"/>
+              </subModelOperations>
+            </firstModelOperations>
+          </initialOperation>
+          <edgeView name="edgeView"/>
+        </ownedTools>
+      </toolSection>
+    </ownedRepresentations>
+  </ownedViewpoints>
+  <ownedViewpoints documentation="This ViewPoint is oriented writer.&#xA;This viewPoint aimed to be a little more functionally oriented than was docbook1." name="docbookWriter" modelFileExtension="docbook">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="To organize a book with chapter below each other" name="VerticalBookOrganizer" initialisation="true" domainClass="Book">
+      <metamodel href="platform:/org.eclipse.sirius.tests.sample.docbook/model/docbook.ecore#/"/>
+      <containerMappings name="Chapter" detailDescriptions="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='VerticalBookOrganizer']/@toolSection/@subSections[name='navigation']/@ownedTools[name='initVerticalBookOrganizer']" semanticCandidatesExpression="feature:eAllContents" domainClass="Chapter">
+        <borderedNodeMappings name="Medium section" semanticCandidatesExpression="feature:eAllContents" domainClass="Sect1">
+          <style xsi:type="style:SquareDescription" labelExpression="&lt;%title.data%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </borderedNodeMappings>
+        <style xsi:type="style:FlatContainerStyleDescription" labelExpression="&lt;%title.data%>">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+          <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+        </style>
+      </containerMappings>
+      <toolSection name="Tools">
+        <subSections name="navigation">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="initVerticalBookOrganizer" diagramDescription="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='VerticalBookOrganizer']">
+            <initialOperation/>
+            <containerViewVariable/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+        </subSections>
+      </toolSection>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="To organize a book with chapter connected each other with arrows.&#xA;Mappings used in this diagram (non-exhaustive list) :&#xA;- Container Mapping (Flat Container Style)&#xA;- Node Mapping (Note Description)&#xA;- Edge Mapping&#xA;Tools use in this diagram (non-exhaustive list) :&#xA;- Node Creation&#xA;- Container Creation&#xA;- Direct Edit Label (Chapter title)&#xA;- Drag&amp;drop&#xA;- Reconnect" name="BookOrganizer" initialisation="true" domainClass="Book" init="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='BookOrganizer']/@toolSection/@subSections[name='Navigation']/@ownedTools[name='Navigate%20to%20book%20organizer']">
+      <metamodel href="platform:/org.eclipse.sirius.tests.sample.docbook/model/docbook.ecore#/"/>
+      <edgeMappings name="2NextChapter" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='BookOrganizer']/@containerMappings[name='2Chapter']" targetMapping="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='BookOrganizer']/@containerMappings[name='2Chapter']" targetFinderExpression="&lt;%followingSibling().nFirst()%>" reconnections="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='BookOrganizer']/@toolSection/@subSections[name='Reconnection']/@ownedTools[name='ChangeNextChapter']">
+        <style sizeComputationExpression="1" routingStyle="tree" foldingStyle="SOURCE">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          <centerLabelStyleDescription showIcon="false">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </centerLabelStyleDescription>
+        </style>
+        <conditionnalStyles predicateExpression="&lt;%(self.eContainer().chapter - self.eContainer().chapter.nLast).nLast == self%>">
+          <style lineStyle="dash" sizeComputationExpression="3" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            <centerLabelStyleDescription labelSize="16" labelFormat="bold" labelExpression="&lt;%&quot;lastChapter&quot;%>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </conditionnalStyles>
+      </edgeMappings>
+      <edgeMappings name="2NextBigSection" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='BookOrganizer']/@containerMappings[name='2Chapter']/@subContainerMappings[name='2BigSection']" targetMapping="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='BookOrganizer']/@containerMappings[name='2Chapter']/@subContainerMappings[name='2BigSection']" targetFinderExpression="&lt;%followingSibling().nFirst()%>" targetExpression="" reconnections="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='BookOrganizer']/@toolSection/@subSections[name='Reconnection']/@ownedTools[name='ChangeNextBigSection']">
+        <style sizeComputationExpression="1">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          <centerLabelStyleDescription showIcon="false">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </centerLabelStyleDescription>
+        </style>
+      </edgeMappings>
+      <containerMappings name="2Chapter" detailDescriptions="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ChapterOrganizer']/@toolSection/@subSections[name='Navigation']/@ownedTools[name='Navigate%20to%20chapter%20organizer'] //@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ParagraphOrganizer']/@toolSection/@subSections[name='Navigation']/@ownedTools[name='Navigate%20to%20paragraph%20organizer']" labelDirectEdit="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='BookOrganizer']/@toolSection/@subSections[name='DirectEdit']/@ownedTools[name='ChapterTitleDirectEdit']" semanticCandidatesExpression="feature:eAllContents" domainClass="Chapter" dropDescriptions="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='BookOrganizer']/@toolSection/@subSections[name='Drag%27n%27Drop']/@ownedTools[name='BigSection%20In%20Chapter']">
+        <subContainerMappings name="2BigSection" detailDescriptions="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ChapterOrganizer']/@toolSection/@subSections[name='Navigation']/@ownedTools[name='Navigate%20to%20chapter%20organizer'] //@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ParagraphOrganizer']/@toolSection/@subSections[name='Navigation']/@ownedTools[name='Navigate%20to%20paragraph%20organizer']" labelDirectEdit="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='BookOrganizer']/@toolSection/@subSections[name='DirectEdit']/@ownedTools[name='ChapterTitleDirectEdit']" semanticCandidatesExpression="feature:eAllContents" domainClass="Sect1" childrenPresentation="List">
+          <subNodeMappings name="2MediumSection" detailDescriptions="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ParagraphOrganizer']/@toolSection/@subSections[name='Navigation']/@ownedTools[name='Navigate%20to%20paragraph%20organizer']" semanticCandidatesExpression="&lt;%sect2%>" domainClass="Sect2">
+            <style xsi:type="style:NoteDescription" labelExpression="&lt;%title.data%>" labelAlignment="LEFT" sizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="&lt;%title.data%>" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </subContainerMappings>
+        <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="2" labelExpression="&lt;%title.data%>" backgroundStyle="GradientTopToBottom">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+        </style>
+      </containerMappings>
+      <toolSection documentation="All the tools of this diagram" name="Tools">
+        <subSections documentation="The tools to create objects" name="Creation">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Chapter" forceRefresh="true" containerMappings="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='BookOrganizer']/@containerMappings[name='2Chapter']" iconPath="/org.eclipse.sirius.tests.sample.docbook.edit/icons/full/obj16/Chapter.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Chapter" referenceName="chapter">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="Chap&lt;%eContainer.chapter.nSize%>"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Title" referenceName="title">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="data" valueExpression="Title&lt;%eContainer.eContainer.chapter.nSize%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="BigSection" forceRefresh="true" containerMappings="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='BookOrganizer']/@containerMappings[name='2Chapter']/@subContainerMappings[name='2BigSection']" iconPath="/org.eclipse.sirius.tests.sample.docbook.edit/icons/full/obj16/Sect1.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Sect1" referenceName="sect1">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="&lt;%eContainer.eContainer.chapter.nSize%>.&lt;%eContainer.sect1.nSize%>"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Title" referenceName="title">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="data" valueExpression="Title&lt;%eContainer.eContainer.sect1.nSize%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="MediumSection" nodeMappings="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='BookOrganizer']/@containerMappings[name='2Chapter']/@subContainerMappings[name='2BigSection']/@subNodeMappings[name='2MediumSection']" iconPath="/org.eclipse.sirius.tests.sample.docbook.edit/icons/full/obj16/Sect2.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Sect2" referenceName="sect2">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="&lt;%eContainer.id%>.&lt;%eContainer.sect2.nSize%>"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Title" referenceName="title">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="data" valueExpression="title&lt;%eContainer.eContainer.sect2.nSize%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </subSections>
+        <subSections documentation="The tools to navigate between diagram" name="Navigation">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Navigate to book organizer" browseExpression="&lt;%getRootContainer()%>" diagramDescription="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='BookOrganizer']">
+            <initialOperation/>
+            <containerViewVariable name="containerView"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+        </subSections>
+        <subSections name="DirectEdit">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="ChapterTitleDirectEdit" forceRefresh="true">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:self">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%title == null%>">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Title" referenceName="title"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%title%>">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="data" valueExpression="var:arg0"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </subSections>
+        <subSections documentation="Defines all the authorized reconnections of the edge mappings" name="Reconnection">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" documentation="Set chapter reconnected just before the chapter previously connected" name="ChangeNextChapter" forceRefresh="true">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source.eContainer().moveChapterBeforeAnother($target, $source)%>"/>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" documentation="Set big section reconnected just before the big section previously connected" name="ChangeNextBigSection" forceRefresh="true">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source.eContainer().moveBigSectionBeforeAnother($target, $source)%>"/>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+        </subSections>
+        <subSections name="Drag'n'Drop">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="BigSection In Chapter" forceRefresh="true" mappings="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='BookOrganizer']/@containerMappings[name='2Chapter']/@subContainerMappings[name='2BigSection']" dragSource="BOTH">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="sect1"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </subSections>
+      </toolSection>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="To organize the sections of a particular chapter." name="ChapterOrganizer" domainClass="Book">
+      <metamodel href="platform:/org.eclipse.sirius.tests.sample.docbook/model/docbook.ecore#/"/>
+      <edgeMappings name="5NextBigSection" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ChapterOrganizer']/@containerMappings[name='5BigSection']" targetMapping="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ChapterOrganizer']/@containerMappings[name='5BigSection']" targetFinderExpression="&lt;%followingSibling().nFirst()%>" targetExpression="" reconnections="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ChapterOrganizer']/@toolSection/@subSections[name='Reconnection']/@ownedTools[name='ChangeNextBigSection']">
+        <style sizeComputationExpression="1">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          <centerLabelStyleDescription showIcon="false">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </centerLabelStyleDescription>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="5NextMediumSection" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ChapterOrganizer']/@containerMappings[name='5BigSection']/@subContainerMappings[name='5MediumSection']" targetMapping="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ChapterOrganizer']/@containerMappings[name='5BigSection']/@subContainerMappings[name='5MediumSection']" targetFinderExpression="&lt;%followingSibling().nFirst()%>" targetExpression="" reconnections="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ChapterOrganizer']/@toolSection/@subSections[name='Reconnection']/@ownedTools[name='ChangeNextMediumSection']">
+        <style sizeComputationExpression="1">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          <centerLabelStyleDescription showIcon="false">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </centerLabelStyleDescription>
+        </style>
+      </edgeMappings>
+      <containerMappings name="5BigSection" detailDescriptions="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ParagraphOrganizer']/@toolSection/@subSections[name='Navigation']/@ownedTools[name='Navigate%20to%20paragraph%20organizer']" semanticCandidatesExpression="feature:eAllContents" domainClass="Sect1">
+        <subContainerMappings name="5MediumSection" detailDescriptions="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ParagraphOrganizer']/@toolSection/@subSections[name='Navigation']/@ownedTools[name='Navigate%20to%20paragraph%20organizer']" semanticCandidatesExpression="feature:eAllContents" domainClass="Sect2" childrenPresentation="List">
+          <subNodeMappings name="5TinySection" detailDescriptions="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ParagraphOrganizer']/@toolSection/@subSections[name='Navigation']/@ownedTools[name='Navigate%20to%20paragraph%20organizer']" semanticCandidatesExpression="feature:eAllContents" domainClass="Sect3">
+            <style xsi:type="style:NoteDescription" labelExpression="&lt;%title.data%>" labelAlignment="LEFT" sizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="&lt;%title.data%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </subContainerMappings>
+        <style xsi:type="style:FlatContainerStyleDescription" labelExpression="&lt;%title.data%>" backgroundStyle="GradientTopToBottom">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+        </style>
+      </containerMappings>
+      <toolSection documentation="All the tools of this diagram" name="Tools">
+        <subSections documentation="The tools to create objects" name="Creation">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="BigSection" forceRefresh="true" containerMappings="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ChapterOrganizer']/@containerMappings[name='5BigSection']" iconPath="/org.eclipse.sirius.tests.sample.docbook.edit/icons/full/obj16/Sect1.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Sect1" referenceName="sect1">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="&lt;%eContainer.eContainer.chapter.nSize%>.&lt;%eContainer.sect1.nSize%>"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Title" referenceName="title">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="data" valueExpression="Title&lt;%eContainer.eContainer.sect1.nSize%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="MediumSection" forceRefresh="true" containerMappings="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ChapterOrganizer']/@containerMappings[name='5BigSection']/@subContainerMappings[name='5MediumSection']" iconPath="/org.eclipse.sirius.tests.sample.docbook.edit/icons/full/obj16/Sect2.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Sect2" referenceName="sect2">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="&lt;%eContainer.eContainer.eContainer.chapter.nSize%>.&lt;%eContainer.eContainer.sect1.nSize%>.&lt;%eContainer.sect2.nSize%>"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Title" referenceName="title">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="data" valueExpression="Title&lt;%eContainer.eContainer.sect2.nSize%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="TinySection" nodeMappings="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ChapterOrganizer']/@containerMappings[name='5BigSection']/@subContainerMappings[name='5MediumSection']/@subNodeMappings[name='5TinySection']" iconPath="/org.eclipse.sirius.tests.sample.docbook.edit/icons/full/obj16/Sect3.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Sect3" referenceName="sect3">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="&lt;%eContainer.eContainer.eContainer.eContainer.chapter.nSize%>.&lt;%eContainer.eContainer.eContainer.sect3.nSize%>.&lt;%eContainer.eContainer.sect2.nSize%>.&lt;%eContainer.sect3.nSize%>"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Title" referenceName="title">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="data" valueExpression="title&lt;%eContainer.eContainer.sect3.nSize%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </subSections>
+        <subSections documentation="The tools to navigate between diagram" name="Navigation">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Navigate to chapter organizer" diagramDescription="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ChapterOrganizer']">
+            <initialOperation/>
+            <containerViewVariable name="containerView"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+        </subSections>
+        <subSections documentation="Defines all the authorized reconnections of the edge mappings" name="Reconnection">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" documentation="Set big section reconnected just before the big section previously connected" name="ChangeNextBigSection" forceRefresh="true">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source.eContainer().moveBigSectionBeforeAnother($target, $source)%>"/>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" documentation="Set chapter reconnected just before the chapter previously connected" name="ChangeNextMediumSection" forceRefresh="true">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$source.eContainer().moveMediumSectionBeforeAnother($target, $source)%>"/>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+        </subSections>
+      </toolSection>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="ParagraphOrganizer" domainClass="Book">
+      <metamodel href="platform:/org.eclipse.sirius.tests.sample.docbook/model/docbook.ecore#/"/>
+      <nodeMappings name="6Paragraphe" semanticCandidatesExpression="&lt;%self.para%>" domainClass="Para">
+        <style xsi:type="style:NoteDescription" showIcon="false" labelExpression="&lt;%getBeginningOfParagraph(50)%>" sizeComputationExpression="2">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+        </style>
+      </nodeMappings>
+      <toolSection documentation="All the tools of this diagram" name="Tools">
+        <subSections documentation="The tools to navigate between diagram" name="Navigation">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Navigate to paragraph organizer" diagramDescription="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ParagraphOrganizer']">
+            <initialOperation/>
+            <containerViewVariable name="containerView"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+        </subSections>
+        <subSections documentation="The tools to create objects" name="Creation">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Paragraphe" nodeMappings="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ParagraphOrganizer']/@nodeMappings[name='6Paragraphe']" iconPath="/org.eclipse.sirius.tests.sample.docbook.edit/icons/full/obj16/Para.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Para" referenceName="para">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="data" valueExpression="To complete"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </subSections>
+      </toolSection>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.tests.sample.docbook.design.business.internal.DocBookUtils"/>
+  </ownedViewpoints>
+  <ownedViewpoints documentation="This ViewPoint is oriented book publisher.&#xA;This viewPoint aimed to be a little more functionally oriented than was docbook1." name="docbookPublisher" modelFileExtension="docbook">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="To see the POI (the Points Of Interest) ie see chapters depending on their size (number of words).&#xA;- Edge Mapping&#xA;- Node Mapping&#xA;" name="Book POI" initialisation="true" domainClass="Book">
+      <metamodel href="platform:/org.eclipse.sirius.tests.sample.docbook/model/docbook.ecore#/"/>
+      <nodeMappings name="3Chapter" detailDescriptions="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ParagraphOrganizer']/@toolSection/@subSections[name='Navigation']/@ownedTools[name='Navigate%20to%20paragraph%20organizer'] //@ownedViewpoints[name='docbookPublisher']/@ownedRepresentations[name='Chapter%20POI']/@toolSection/@subSections[name='Navigation']/@ownedTools[name='navigate%20to%20chapter%20POI'] //@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='BookOrganizer']/@toolSection/@subSections[name='Navigation']/@ownedTools[name='Navigate%20to%20book%20organizer'] //@ownedViewpoints[name='docbookPublisher']/@ownedRepresentations[name='Book%20POI']/@toolSection/@subSections[name='Navigation']/@ownedTools[name='navigate%20to%20book%20POI']" semanticCandidatesExpression="feature:eAllContents" domainClass="Chapter">
+        <style xsi:type="style:SquareDescription" labelSize="16" showIcon="false" labelExpression="&lt;%id%>-&lt;%title.data%>" sizeComputationExpression="&lt;%(para.data.split(&quot; &quot;).nSize() + sect1.para.data.split(&quot; &quot;).nSize() + sect1.sect2.para.data.split(&quot; &quot;).nSize() + sect1.sect2.sect3.para.data.split(&quot; &quot;).nSize()) / 100%>">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+        </style>
+      </nodeMappings>
+      <nodeMappings name="3Big section" detailDescriptions="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ParagraphOrganizer']/@toolSection/@subSections[name='Navigation']/@ownedTools[name='Navigate%20to%20paragraph%20organizer'] //@ownedViewpoints[name='docbookPublisher']/@ownedRepresentations[name='Book%20POI']/@toolSection/@subSections[name='Navigation']/@ownedTools[name='navigate%20to%20book%20POI'] //@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='BookOrganizer']/@toolSection/@subSections[name='Navigation']/@ownedTools[name='Navigate%20to%20book%20organizer']" semanticCandidatesExpression="feature:eAllContents" domainClass="Sect1">
+        <style xsi:type="style:SquareDescription" labelSize="16" showIcon="false" labelExpression="&lt;%id%>-&lt;%title.data%>" sizeComputationExpression="&lt;%(para.data.split(&quot; &quot;).nSize() + sect2.para.data.split(&quot; &quot;).nSize() + sect2.sect3.para.data.split(&quot; &quot;).nSize()) / 100%>">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+        </style>
+      </nodeMappings>
+      <nodeMappings name="3Medium section" detailDescriptions="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ParagraphOrganizer']/@toolSection/@subSections[name='Navigation']/@ownedTools[name='Navigate%20to%20paragraph%20organizer'] //@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='BookOrganizer']/@toolSection/@subSections[name='Navigation']/@ownedTools[name='Navigate%20to%20book%20organizer'] //@ownedViewpoints[name='docbookPublisher']/@ownedRepresentations[name='Book%20POI']/@toolSection/@subSections[name='Navigation']/@ownedTools[name='navigate%20to%20book%20POI']" semanticCandidatesExpression="feature:eAllContents" domainClass="Sect2">
+        <style xsi:type="style:SquareDescription" labelSize="14" showIcon="false" labelExpression="&lt;%id%>-&lt;%title.data%>" sizeComputationExpression="&lt;%(para.data.split(&quot; &quot;).nSize() + sect3.para.data.split(&quot; &quot;).nSize()) / 100%>">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+        </style>
+      </nodeMappings>
+      <nodeMappings name="3Tiny section" detailDescriptions="//@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='ParagraphOrganizer']/@toolSection/@subSections[name='Navigation']/@ownedTools[name='Navigate%20to%20paragraph%20organizer'] //@ownedViewpoints[name='docbookPublisher']/@ownedRepresentations[name='Book%20POI']/@toolSection/@subSections[name='Navigation']/@ownedTools[name='navigate%20to%20book%20POI'] //@ownedViewpoints[name='docbookWriter']/@ownedRepresentations[name='BookOrganizer']/@toolSection/@subSections[name='Navigation']/@ownedTools[name='Navigate%20to%20book%20organizer']" semanticCandidatesExpression="feature:eAllContents" domainClass="Sect3">
+        <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%id%>-&lt;%title.data%>" sizeComputationExpression="&lt;%(para.data.split(&quot; &quot;).nSize())) / 100%>">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+        </style>
+      </nodeMappings>
+      <edgeMappings name="3ChapterToBigSection" semanticCandidatesExpression="feature:eAllContents" documentation="This edge shows that a chapter contains a big section." sourceMapping="//@ownedViewpoints[name='docbookPublisher']/@ownedRepresentations[name='Book%20POI']/@nodeMappings[name='3Chapter']" targetMapping="//@ownedViewpoints[name='docbookPublisher']/@ownedRepresentations[name='Book%20POI']/@nodeMappings[name='3Big%20section']" targetFinderExpression="&lt;%sect1%>">
+        <style sizeComputationExpression="1">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%&quot;&quot;%>">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </centerLabelStyleDescription>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="3BigSectionToMediumSection" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbookPublisher']/@ownedRepresentations[name='Book%20POI']/@nodeMappings[name='3Big%20section']" targetMapping="//@ownedViewpoints[name='docbookPublisher']/@ownedRepresentations[name='Book%20POI']/@nodeMappings[name='3Medium%20section']" targetFinderExpression="&lt;%sect2%>">
+        <style lineStyle="dash" sizeComputationExpression="1">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%&quot;&quot;%>">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </centerLabelStyleDescription>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="3MediumSectionToTinySection" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbookPublisher']/@ownedRepresentations[name='Book%20POI']/@nodeMappings[name='3Medium%20section']" targetMapping="//@ownedViewpoints[name='docbookPublisher']/@ownedRepresentations[name='Book%20POI']/@nodeMappings[name='3Tiny%20section']" targetFinderExpression="&lt;%sect3%>">
+        <style lineStyle="dash_dot" sizeComputationExpression="1">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          <centerLabelStyleDescription showIcon="false">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </centerLabelStyleDescription>
+        </style>
+      </edgeMappings>
+      <edgeMappings name="3NextChapter" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbookPublisher']/@ownedRepresentations[name='Book%20POI']/@nodeMappings[name='3Chapter']" targetMapping="//@ownedViewpoints[name='docbookPublisher']/@ownedRepresentations[name='Book%20POI']/@nodeMappings[name='3Chapter']" targetFinderExpression="&lt;%followingSibling().nFirst()%>">
+        <style sizeComputationExpression="&lt;%2%>">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          <centerLabelStyleDescription showIcon="false">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </centerLabelStyleDescription>
+        </style>
+      </edgeMappings>
+      <toolSection documentation="All the tools of this diagram" name="Tools">
+        <subSections name="Navigation">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="navigate to book POI" browseExpression="&lt;%getRootContainer()%>" diagramDescription="//@ownedViewpoints[name='docbookPublisher']/@ownedRepresentations[name='Book%20POI']">
+            <initialOperation/>
+            <containerViewVariable name="containerView"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+        </subSections>
+      </toolSection>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="To see the POI (the Points Of Interest) of a chapter ie see big sections of this chapter depending on their size (number of words).&#xA;- Edge Mapping&#xA;- Node Mapping Import" name="Chapter POI" reusedMappings="//@ownedViewpoints[name='docbookPublisher']/@ownedRepresentations[name='Book%20POI']/@nodeMappings[name='3Big%20section'] //@ownedViewpoints[name='docbookPublisher']/@ownedRepresentations[name='Book%20POI']/@nodeMappings[name='3Medium%20section'] //@ownedViewpoints[name='docbookPublisher']/@ownedRepresentations[name='Book%20POI']/@nodeMappings[name='3Tiny%20section'] //@ownedViewpoints[name='docbookPublisher']/@ownedRepresentations[name='Book%20POI']/@edgeMappings[name='3BigSectionToMediumSection'] //@ownedViewpoints[name='docbookPublisher']/@ownedRepresentations[name='Book%20POI']/@edgeMappings[name='3ChapterToBigSection'] //@ownedViewpoints[name='docbookPublisher']/@ownedRepresentations[name='Book%20POI']/@edgeMappings[name='3MediumSectionToTinySection']">
+      <edgeMappings name="4NextBigSection" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='docbookPublisher']/@ownedRepresentations[name='Book%20POI']/@nodeMappings[name='3Big%20section']" targetMapping="//@ownedViewpoints[name='docbookPublisher']/@ownedRepresentations[name='Book%20POI']/@nodeMappings[name='3Big%20section']" targetFinderExpression="&lt;%followingSibling().nFirst()%>">
+        <style sizeComputationExpression="&lt;%2%>">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          <centerLabelStyleDescription showIcon="false">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </centerLabelStyleDescription>
+        </style>
+      </edgeMappings>
+      <toolSection documentation="All the tools of this diagram" name="Tools">
+        <subSections name="Navigation">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="navigate to chapter POI" browseExpression="" diagramDescription="//@ownedViewpoints[name='docbookPublisher']/@ownedRepresentations[name='Chapter%20POI']">
+            <initialOperation/>
+            <containerViewVariable name="containerView"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+        </subSections>
+      </toolSection>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

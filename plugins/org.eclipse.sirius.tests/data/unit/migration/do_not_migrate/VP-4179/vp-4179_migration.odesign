@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.obeo.fr/dsl/viewpoint/description/1.1.0" xmlns:style="http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0" xmlns:tool="http://www.obeo.fr/dsl/viewpoint/description/tool/1.1.0" name="vp-4179_migration" version="6.7.0.201302071200">
+  <ownedViewpoints name="vp-4179" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description:DiagramDescription" name="vp-4179" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="eclass" domainClass="EClass">
+          <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+      </defaultLayer>
+      <optionalLayers name="optional1" activeByDefault="true">
+        <nodeMappings xsi:type="description:NodeMappingImport" name="test" importedMapping="//@ownedViewpoints[name='vp-4179']/@ownedRepresentations[name='vp-4179']/@defaultLayer/@nodeMappings[name='eclass']">
+          <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+          </style>
+        </nodeMappings>
+        <toolSections name="optional1ToolSection">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="CreateClass" label="Create new class" nodeMappings="//@ownedViewpoints[name='vp-4179']/@ownedRepresentations[name='vp-4179']/@defaultLayer/@nodeMappings[name='eclass']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </optionalLayers>
+      <optionalLayers name="optional2">
+        <nodeMappings xsi:type="description:NodeMappingImport" name="test import" importedMapping="//@ownedViewpoints[name='vp-4179']/@ownedRepresentations[name='vp-4179']/@optionalLayers[name='optional1']/@nodeMappings[name='test']"/>
+      </optionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description:DiagramDescription" name="vp-4179-2" domainClass="EPackage" reusedTools="//@ownedViewpoints[name='vp-4179']/@ownedRepresentations[name='vp-4179']/@optionalLayers[name='optional1']/@toolSections.0/@ownedTools[name='CreateClass']">
+      <defaultLayer name="Default" reusedTools="//@ownedViewpoints[name='vp-4179']/@ownedRepresentations[name='vp-4179']/@optionalLayers[name='optional1']/@toolSections.0/@ownedTools[name='CreateClass']">
+        <toolSections name="tools" reusedTools="//@ownedViewpoints[name='vp-4179']/@ownedRepresentations[name='vp-4179']/@optionalLayers[name='optional1']/@toolSections.0/@ownedTools[name='CreateClass']"/>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

@@ -65,7 +65,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescri
  * <em>Move Edges</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImpl implements ContainerDropDescription {

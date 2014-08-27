@@ -45,7 +45,7 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
  * <em>Tools</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ToolGroupImpl extends DocumentedElementImpl implements ToolGroup {

@@ -41,7 +41,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractVariableImpl;
  * <em>Documentation</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TreeVariableImpl extends AbstractVariableImpl implements TreeVariable {

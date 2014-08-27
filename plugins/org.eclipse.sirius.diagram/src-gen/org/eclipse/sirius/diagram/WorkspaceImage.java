@@ -14,10 +14,10 @@ package org.eclipse.sirius.diagram;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Workspace Image</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A custom image that is present in the user
  * workspace. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -25,7 +25,7 @@ package org.eclipse.sirius.diagram;
  * Workspace Path</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getWorkspaceImage()
  * @model
  * @generated

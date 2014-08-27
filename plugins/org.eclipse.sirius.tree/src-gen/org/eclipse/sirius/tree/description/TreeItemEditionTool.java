@@ -17,7 +17,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ElementDropVariable;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Tree Item Edition Tool</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -33,7 +33,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ElementDropVariable;
  * <em>Root</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.tree.description.DescriptionPackage#getTreeItemEditionTool()
  * @model
  * @generated

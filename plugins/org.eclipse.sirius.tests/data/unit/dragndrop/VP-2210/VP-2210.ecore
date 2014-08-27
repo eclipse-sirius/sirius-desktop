@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="VP-2210">
+  <eSubpackages href="VP-2210_new%20Package%201.ecore#/"/>
+  <eSubpackages name="new Package 2">
+    <eSubpackages name="new Package 1"/>
+    <eSubpackages name="new Package 2"/>
+  </eSubpackages>
+</ecore:EPackage>

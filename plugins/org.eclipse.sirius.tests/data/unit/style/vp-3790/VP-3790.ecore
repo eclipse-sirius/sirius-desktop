@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="p">
+  <eClassifiers xsi:type="ecore:EClass" name="c1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="r1" eType="#//c2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="c2" eSuperTypes="#//c1"/>
+  <eSubpackages name="force base style">
+    <eClassifiers xsi:type="ecore:EClass" name="force base style">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="force base style" eType="#//force%20base%20style/force%20base%20style.1"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="force base style" eSuperTypes="#//force%20base%20style/force%20base%20style"/>
+  </eSubpackages>
+  <eSubpackages name="force level 1 style">
+    <eClassifiers xsi:type="ecore:EClass" name="force level 1 style">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="force level 1 style"
+          eType="#//force%20level%201%20style/force%20level%201%20style.1"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="force level 1 style" eSuperTypes="#//force%20level%201%20style/force%20level%201%20style"/>
+  </eSubpackages>
+</ecore:EPackage>

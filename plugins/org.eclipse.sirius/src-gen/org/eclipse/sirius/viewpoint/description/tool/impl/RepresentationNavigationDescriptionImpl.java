@@ -51,7 +51,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em>Representation Name Variable</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class RepresentationNavigationDescriptionImpl extends AbstractToolDescriptionImpl implements RepresentationNavigationDescription {

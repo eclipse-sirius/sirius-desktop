@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram" xmi:id="_IMUUsBH2EeKC7vYkgdLKTQ" selectedViews="_L8UbkBH2EeKC7vYkgdLKTQ" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="VP-3600.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_L8UbkBH2EeKC7vYkgdLKTQ" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_Duj6gBH3EeKC7vYkgdLKTQ" name="new Diagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_DuqoMBH3EeKC7vYkgdLKTQ" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_DuqoMRH3EeKC7vYkgdLKTQ" type="Sirius" element="_Duj6gBH3EeKC7vYkgdLKTQ" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_DuqoMhH3EeKC7vYkgdLKTQ"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description_1:DiagramDescription" href="VP-3600.odesign#//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='Diagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_Duj6xRH3EeKC7vYkgdLKTQ"/>
+      <activatedLayers xmi:type="description_1:Layer" href="VP-3600.odesign#//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='Diagram']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="VP-3600.ecore#/"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_7rK7wBIKEeK7To3t9ruDnA" name="new BlankDiagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_7rz08BIKEeK7To3t9ruDnA" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_7rz08RIKEeK7To3t9ruDnA" type="Sirius" element="_7rK7wBIKEeK7To3t9ruDnA" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_7rz08hIKEeK7To3t9ruDnA"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description_1:DiagramDescription" href="VP-3600.odesign#//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_7rK7wRIKEeK7To3t9ruDnA"/>
+      <activatedLayers xmi:type="description_1:Layer" href="VP-3600.odesign#//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagram']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="VP-3600.ecore#/"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_900eABO5EeKCO-1SFGxvHQ" name="new BlankDiagramWithoutLayer">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_91elUBO5EeKCO-1SFGxvHQ" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_91elURO5EeKCO-1SFGxvHQ" type="Sirius" element="_900eABO5EeKCO-1SFGxvHQ" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_91elUhO5EeKCO-1SFGxvHQ"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description_1:DiagramDescription" href="VP-3600.odesign#//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagramWithoutLayer']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_901FEBO5EeKCO-1SFGxvHQ"/>
+      <target xmi:type="ecore:EPackage" href="VP-3600.ecore#/"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_iPF-gBPBEeKZwryO0IiTjg" name="new BlankDiagramWithToolGroups">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_iPhcUBPBEeKZwryO0IiTjg" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_iPhcURPBEeKZwryO0IiTjg" type="Sirius" element="_iPF-gBPBEeKZwryO0IiTjg" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_iPhcUhPBEeKZwryO0IiTjg"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description_1:DiagramDescription" href="VP-3600.odesign#//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagramWithToolGroups']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_iPF-gRPBEeKZwryO0IiTjg"/>
+      <activatedLayers xmi:type="description_1:Layer" href="VP-3600.odesign#//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagramWithToolGroups']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="VP-3600.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="VP-3600.odesign#//@ownedViewpoints[name='Doremi-2847']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

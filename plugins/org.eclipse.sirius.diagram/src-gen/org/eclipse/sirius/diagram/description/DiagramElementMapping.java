@@ -23,10 +23,10 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Diagram Element Mapping</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> Represent the mapping of a ViewPointElement. <!--
  * end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -56,7 +56,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
  * <em>Synchronization Lock</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramElementMapping()
  * @model abstract="true"
  * @generated

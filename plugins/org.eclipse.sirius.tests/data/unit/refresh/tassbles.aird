@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/description/1.1.0" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" xmi:id="_uiGqwPFMEd2M576FK3PokQ" selectedViews="_ukU4UPFMEd2M576FK3PokQ" version="8.0.0">
+  <models xmi:type="uml:Model" href="tables.uml#_jLo-cXnPEd2hNdpX8IgW8Q"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_ukU4UPFMEd2M576FK3PokQ" initialized="true">
+    <ownedRepresentations xmi:type="table:DTable" xmi:id="_vYaAoPFMEd2M576FK3PokQ" name="Class and subClass with some attributes">
+      <target xmi:type="uml:Model" href="tables.uml#_jLo-cXnPEd2hNdpX8IgW8Q"/>
+      <description xmi:type="description:EditionTableDescription" href="tables.odesign#//@ownedViewpoints[name='UML%20tables']/@ownedRepresentations[name='Class%20and%20subClass%20with%20some%20attributes']"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description_1:Viewpoint" href="tables.odesign#//@ownedViewpoints[name='UML%20tables']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

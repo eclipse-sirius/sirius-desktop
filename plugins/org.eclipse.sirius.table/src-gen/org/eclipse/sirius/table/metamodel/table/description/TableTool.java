@@ -17,7 +17,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Table Tool</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
  * <em>First Model Operation</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableTool()
  * @model
  * @generated

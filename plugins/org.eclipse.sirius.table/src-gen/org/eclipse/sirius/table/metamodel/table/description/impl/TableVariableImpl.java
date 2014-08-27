@@ -41,7 +41,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractVariableImpl;
  * <em>Documentation</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TableVariableImpl extends AbstractVariableImpl implements TableVariable {

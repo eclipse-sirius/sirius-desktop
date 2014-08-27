@@ -104,6 +104,9 @@ import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PlatformUI;
 import org.junit.Assert;
 
 import com.google.common.collect.Iterables;
@@ -135,6 +138,21 @@ public class SiriusDiagramTestCase extends SiriusTestCase {
             commandFactory.setUserInterfaceCallBack(new NoUICallback());
         }
         return commandFactory;
+    }
+    
+    @Override
+    protected void setUp() throws Exception {
+        super.setUp();
+        PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
+            @Override
+            public void run() {
+                IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+                IViewPart outlineView = page.findView("org.eclipse.ui.views.ContentOutline");
+                if (outlineView != null) {
+                    page.hideView(outlineView);
+                }
+            }
+        });
     }
 
     /**

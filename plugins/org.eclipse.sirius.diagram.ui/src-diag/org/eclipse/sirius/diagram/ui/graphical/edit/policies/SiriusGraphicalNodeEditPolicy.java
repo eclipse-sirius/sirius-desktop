@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
@@ -23,6 +24,7 @@ import org.eclipse.draw2d.PolylineDecoration;
 import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -57,7 +59,7 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.properties.Properties;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateConnectionViewRequest;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
-import org.eclipse.gmf.runtime.notation.ConnectorStyle;
+import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
@@ -85,6 +87,7 @@ import org.eclipse.sirius.diagram.description.tool.ReconnectionKind;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.diagram.tools.internal.command.builders.EdgeCreationCommandBuilder;
+import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.command.SiriusSetConnectionAnchorsCommand;
 import org.eclipse.sirius.diagram.ui.business.internal.command.TreeLayoutSetConnectionAnchorsCommand;
@@ -101,6 +104,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -190,8 +194,14 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             } else if (applySpecificTreeLayout(request.getConnectionEditPart())) {
                 cmd = getReconnectSourceForTreeLayoutCommand(request);
             } else {
-                cmd = super.getReconnectSourceCommand(request);
+                ConnectionEditPartQuery cepq = new ConnectionEditPartQuery(request.getConnectionEditPart());
+                if (cepq.isEdgeWithObliqueRoutingStyle() || cepq.isEdgeWithRectilinearRoutingStyle()) {
+                    cmd = getReconnectSourceOrTargetForObliqueOrRectilinearCommand(request, true);
+                } else {
+                    cmd = super.getReconnectSourceCommand(request);
+                }
             }
+
         }
 
         return cmd;
@@ -260,13 +270,69 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
                     result.add(getReconnectTargetCommandAfterTool(request));
                     cmd = result;
                 }
-            } else if (applySpecificTreeLayout(request.getConnectionEditPart())) {
-                cmd = getReconnectTargetForTreeLayoutCommand(request);
             } else {
-                cmd = super.getReconnectTargetCommand(request);
+                ConnectionEditPartQuery cepq = new ConnectionEditPartQuery(request.getConnectionEditPart());
+                if (cepq.isEdgeWithTreeRoutingStyle() && applySpecificTreeLayout(request.getConnectionEditPart())) {
+                    cmd = getReconnectTargetForTreeLayoutCommand(request);
+                } else if (cepq.isEdgeWithObliqueRoutingStyle() || cepq.isEdgeWithRectilinearRoutingStyle()) {
+                    cmd = getReconnectSourceOrTargetForObliqueOrRectilinearCommand(request, false);
+                } else {
+                    cmd = super.getReconnectTargetCommand(request);
+                }
             }
         }
         return cmd;
+    }
+
+    private Command getReconnectSourceOrTargetForObliqueOrRectilinearCommand(ReconnectRequest request, boolean source) {
+        INodeEditPart node = getConnectableEditPart();
+        INodeEditPart targetEP = getConnectionCompleteEditPart(request);
+        if (node == null || targetEP == null)
+            return null;
+
+        TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
+
+        ConnectionAnchor targetAnchor = getConnectionTargetAnchor(request);
+
+        // Creation of the command that set the connection end points (source
+        // and target)
+        SetConnectionEndsCommand sceCommand = new SetConnectionEndsCommand(editingDomain, StringStatics.BLANK);
+        sceCommand.setEdgeAdaptor(new EObjectAdapter((EObject) request.getConnectionEditPart().getModel()));
+        if (source) {
+            sceCommand.setNewSourceAdaptor(targetEP);
+        } else {
+            sceCommand.setNewTargetAdaptor(targetEP);
+        }
+        // Creation of the command that set the connection anchors (also source
+        // and target)
+        SetConnectionAnchorsCommand scaCommand = new SetConnectionAnchorsCommand(editingDomain, StringStatics.BLANK);
+        scaCommand.setEdgeAdaptor(new EObjectAdapter((EObject) request.getConnectionEditPart().getModel()));
+        if (source) {
+            scaCommand.setNewSourceTerminal(targetEP.mapConnectionAnchorToTerminal(targetAnchor));
+        } else {
+            scaCommand.setNewTargetTerminal(targetEP.mapConnectionAnchorToTerminal(targetAnchor));
+        }
+        // Both command are composed in a composite command
+        CompositeCommand cc = new CompositeCommand(DiagramUIMessages.Commands_SetConnectionEndsCommand_Target);
+        cc.compose(sceCommand);
+        cc.compose(scaCommand);
+        // Set points of Edge as they are graphically
+        Connection connection = (Connection) ((GraphicalEditPart) request.getConnectionEditPart()).getFigure();
+        Point tempSourceRefPoint = connection.getSourceAnchor().getReferencePoint();
+        connection.translateToRelative(tempSourceRefPoint);
+
+        Point tempTargetRefPoint = connection.getTargetAnchor().getReferencePoint();
+        connection.translateToRelative(tempTargetRefPoint);
+
+        PointList connectionPointList = connection.getPoints().getCopy();
+
+        // Set the connection bendpoints with a PointList using a command
+        SetConnectionBendpointsCommand sbbCommand = new SetConnectionBendpointsCommand(editingDomain);
+        sbbCommand.setEdgeAdapter(request.getConnectionEditPart());
+        sbbCommand.setNewPointList(connectionPointList, tempSourceRefPoint, tempTargetRefPoint);
+        cc.compose(sbbCommand);
+
+        return new ICommandProxy(cc);
     }
 
     /**
@@ -485,41 +551,19 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
 
             INodeEditPart sourceEditPart = (INodeEditPart) request.getSourceEditPart();
 
+            // Location relative to the source: Position where the user
+            // clicked, but snap to grid if this feature is enabled
             Point sourceLocation = getEdgeLocationSource(request);
+            // Location relative to the target: Position where the user
+            // clicked, but snap to grid if this feature is enabled
             Point targetLocation = getConvertedLocation(request);
 
-            String newSourceTerminal = getEdgeTerminalSource(request);
-            ConnectionAnchor sourceAnchor = sourceEditPart.mapTerminalToConnectionAnchor(newSourceTerminal);
-
-            ConnectionAnchor targetAnchor = targetEP.getTargetConnectionAnchor(request);
-            String newTargetTerminal = targetEP.mapConnectionAnchorToTerminal(targetAnchor);
-
-            PointList pointList = new PointList();
-            if (request.getLocation() == null) {
-                pointList.addPoint(sourceAnchor.getLocation(targetAnchor.getReferencePoint()));
-                pointList.addPoint(targetAnchor.getLocation(sourceAnchor.getReferencePoint()));
+            EdgeLayoutData edgeLayoutData;
+            if (GraphicalHelper.isSnapToGridEnabled(sourceEditPart)) {
+                edgeLayoutData = getEdgeLayoutDataWithSnapToGrid(request, sourceEditPart, targetEP, sourceLocation, targetLocation);
             } else {
-                pointList.addPoint(sourceAnchor.getLocation(request.getLocation()));
-                pointList.addPoint(targetAnchor.getLocation(request.getLocation()));
+                edgeLayoutData = getEdgeLayoutData(request, sourceEditPart, targetEP, sourceLocation, targetLocation);
             }
-
-            Point sourceRefPoint = sourceAnchor.getReferencePoint();
-
-            Point targetRefPoint = targetAnchor.getReferencePoint();
-
-            final LayoutData sourceLayoutData = new RootLayoutData(sourceEditPart, sourceLocation.getCopy(), null);
-            final LayoutData targetLayoutData = new RootLayoutData(targetEP, targetLocation.getCopy(), null);
-            final EdgeLayoutData edgeLayoutData = new EdgeLayoutData(sourceLayoutData, targetLayoutData);
-
-            edgeLayoutData.setSourceTerminal("" + newSourceTerminal);
-            edgeLayoutData.setTargetTerminal("" + newTargetTerminal);
-
-            edgeLayoutData.setPointList(pointList.getCopy());
-            edgeLayoutData.setSourceRefPoint(sourceRefPoint.getCopy());
-            edgeLayoutData.setTargetRefPoint(targetRefPoint.getCopy());
-
-            // Routing routing = getRouting(edge);
-            // egdeLayoutData.setRouting(routing);
 
             DSemanticDecorator decorateSemanticElement = null;
             if (this.getHost().getModel() instanceof View) {
@@ -543,6 +587,197 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             }
         }
         return viewpointConnectionCreationCmd;
+    }
+
+    /**
+     * Create the edge layout data that will be used later after the refresh.
+     * 
+     * @param request
+     *            The original creation request
+     * @param sourceEditPart
+     *            the {@link EditPart} that the source end of the connection
+     *            should be connected to.
+     * @param targetEditPart
+     *            the {@link EditPart} that the target end of the connection
+     *            should be connected to.
+     * @param sourceLocation
+     *            the location of the first click (relative to the source edit
+     *            part)
+     * @param targetLocation
+     *            the location of the second click (relative to the target edit
+     *            part)
+     * @return The edge layout data corresponding to the creation request.
+     */
+    protected EdgeLayoutData getEdgeLayoutData(CreateConnectionRequest request, INodeEditPart sourceEditPart, INodeEditPart targetEditPart, Point sourceLocation, Point targetLocation) {
+        String newSourceTerminal = getEdgeTerminalSource(request);
+        ConnectionAnchor sourceAnchor = sourceEditPart.mapTerminalToConnectionAnchor(newSourceTerminal);
+
+        ConnectionAnchor targetAnchor = targetEditPart.getTargetConnectionAnchor(request);
+        String newTargetTerminal = targetEditPart.mapConnectionAnchorToTerminal(targetAnchor);
+
+        Point sourceRefPoint = sourceAnchor.getReferencePoint();
+        Point targetRefPoint = targetAnchor.getReferencePoint();
+
+        PointList pointList = new PointList();
+        if (request.getLocation() == null) {
+            pointList.addPoint(sourceAnchor.getLocation(targetAnchor.getReferencePoint()));
+            pointList.addPoint(targetAnchor.getLocation(sourceAnchor.getReferencePoint()));
+        } else {
+            pointList.addPoint(sourceAnchor.getLocation(request.getLocation()));
+            pointList.addPoint(targetAnchor.getLocation(request.getLocation()));
+        }
+
+        final LayoutData sourceLayoutData = new RootLayoutData(sourceEditPart, sourceLocation.getCopy(), null);
+        final LayoutData targetLayoutData = new RootLayoutData(targetEditPart, targetLocation.getCopy(), null);
+        EdgeLayoutData edgeLayoutData = new EdgeLayoutData(sourceLayoutData, targetLayoutData);
+
+        edgeLayoutData.setSourceTerminal("" + newSourceTerminal);
+        edgeLayoutData.setTargetTerminal("" + newTargetTerminal);
+
+        edgeLayoutData.setPointList(pointList.getCopy());
+        edgeLayoutData.setSourceRefPoint(sourceRefPoint.getCopy());
+        edgeLayoutData.setTargetRefPoint(targetRefPoint.getCopy());
+        return edgeLayoutData;
+    }
+
+    /**
+     * Create the edge layout data that will be used later after the refresh.
+     * According to
+     * {@link #getEdgeLayoutData(CreateConnectionRequest, INodeEditPart, INodeEditPart, Point, Point)}
+     * this method ensures that the first point and the last point of the edge
+     * will be snap to the grid (at least one of there coordinates. The other is
+     * constrained by the side of the source (or the target).<BR>
+     * This is not possible to do it earlier (in feedback for example) because
+     * we should know source and target data to compute the new source and
+     * target location.
+     * 
+     * @param request
+     *            The original creation request
+     * @param sourceEditPart
+     *            the {@link EditPart} that the source end of the connection
+     *            should be connected to.
+     * @param targetEditPart
+     *            the {@link EditPart} that the target end of the connection
+     *            should be connected to.
+     * @param sourceLocation
+     *            the location of the first click (relative to the source edit
+     *            part)
+     * @param targetLocation
+     *            the location of the second click (relative to the target edit
+     *            part)
+     * @return The edge layout data corresponding to the creation request and to
+     *         the snapToGrid state.
+     */
+    protected EdgeLayoutData getEdgeLayoutDataWithSnapToGrid(CreateConnectionRequest request, INodeEditPart sourceEditPart, INodeEditPart targetEditPart, Point sourceLocation, Point targetLocation) {
+        // Get the absolute source and target location but in 100% to facilitate
+        // the computing
+        Rectangle absoluteSourceBoundsIn100Percent = GraphicalHelper.getAbsoluteBoundsIn100Percent(sourceEditPart);
+        Point absoluteSourceLocationIn100Percent = sourceLocation.getTranslated(absoluteSourceBoundsIn100Percent.getTopLeft());
+        Rectangle absoluteTargetBoundsIn100Percent = GraphicalHelper.getAbsoluteBoundsIn100Percent(targetEditPart);
+        Point absoluteTargetLocationIn100Percent = targetLocation.getTranslated(absoluteTargetBoundsIn100Percent.getTopLeft());
+
+        // Compute intersection between the line (source location<-->target
+        // location) and the source node
+        Option<Point> intersectionSourcePoint = GraphicalHelper.getIntersection(absoluteSourceLocationIn100Percent, absoluteTargetLocationIn100Percent, (IGraphicalEditPart) sourceEditPart, false);
+        // Compute intersection between the line (source location<-->target
+        // location) and the target node
+        Option<Point> intersectionTargetPoint = GraphicalHelper.getIntersection(absoluteSourceLocationIn100Percent, absoluteTargetLocationIn100Percent, (IGraphicalEditPart) targetEditPart, true);
+        // Compute the snap source location and the snap target location
+        Point absoluteSourceLocationSnapIn100Percent;
+        Point absoluteTargetLocationSnapIn100Percent;
+        if (intersectionSourcePoint.some() && intersectionTargetPoint.some()) {
+            absoluteSourceLocationSnapIn100Percent = snapLocationToGridAndToParentBorder(absoluteSourceLocationIn100Percent, absoluteSourceBoundsIn100Percent, intersectionSourcePoint.get());
+            absoluteTargetLocationSnapIn100Percent = snapLocationToGridAndToParentBorder(absoluteTargetLocationIn100Percent, absoluteTargetBoundsIn100Percent, intersectionTargetPoint.get());
+        } else {
+            // There is probably a case not handle, use the default layout data
+            return getEdgeLayoutData(request, sourceEditPart, targetEditPart, sourceLocation, targetLocation);
+        }
+
+        // Make snap source point relative to the source edit part
+        Point sourceLocationSnapIn100Percent = getTranslatedToRelative(absoluteSourceLocationSnapIn100Percent, absoluteSourceBoundsIn100Percent);
+        final LayoutData sourceLayoutData = new RootLayoutData(sourceEditPart, sourceLocationSnapIn100Percent, null);
+        // Make snap target point relative to the source edit part
+        Point targetLocationSnapIn100Percent = getTranslatedToRelative(absoluteTargetLocationSnapIn100Percent, absoluteTargetBoundsIn100Percent);
+        final LayoutData targetLayoutData = new RootLayoutData(targetEditPart, targetLocationSnapIn100Percent, null);
+        EdgeLayoutData edgeLayoutData = new EdgeLayoutData(sourceLayoutData, targetLayoutData);
+        // Compute the new source terminal anchor
+        PrecisionPoint sourceTerminalPosition = new PrecisionPoint((double) sourceLocationSnapIn100Percent.x / absoluteSourceBoundsIn100Percent.width, (double) sourceLocationSnapIn100Percent.y
+                / absoluteSourceBoundsIn100Percent.height);
+        String sourceTerminal = new SlidableAnchor(null, sourceTerminalPosition).getTerminal();
+        edgeLayoutData.setSourceTerminal("" + sourceTerminal);
+        // Compute the new target terminal anchor
+        PrecisionPoint targetTerminalPosition = new PrecisionPoint((double) targetLocationSnapIn100Percent.x / absoluteTargetBoundsIn100Percent.width, (double) targetLocationSnapIn100Percent.y
+                / absoluteTargetBoundsIn100Percent.height);
+        String targetTerminal = new SlidableAnchor(null, targetTerminalPosition).getTerminal();
+        edgeLayoutData.setTargetTerminal("" + targetTerminal);
+        // Applied the zoom of the current diagram to set the pointList, the
+        // source reference point and the target reference point.
+        PrecisionPoint absoluteSourceLocationSnap = new PrecisionPoint(absoluteSourceLocationSnapIn100Percent);
+        GraphicalHelper.applyInverseZoomOnPoint((IGraphicalEditPart) sourceEditPart, absoluteSourceLocationSnap);
+        PrecisionPoint absoluteTargteLoactionSnap = new PrecisionPoint(absoluteTargetLocationSnapIn100Percent);
+        GraphicalHelper.applyInverseZoomOnPoint((IGraphicalEditPart) targetEditPart, absoluteTargteLoactionSnap);
+
+        edgeLayoutData.setSourceRefPoint(absoluteSourceLocationSnap);
+        edgeLayoutData.setTargetRefPoint(absoluteTargteLoactionSnap);
+
+        PointList pointList = new PointList();
+        pointList.addPoint(absoluteSourceLocationSnap.getCopy());
+        pointList.addPoint(absoluteTargteLoactionSnap.getCopy());
+        edgeLayoutData.setPointList(pointList.getCopy());
+
+        return edgeLayoutData;
+    }
+
+    /**
+     * * @param absoluteLocation The location in absolute coordinates (and in
+     * 100%)
+     * 
+     * @param absoluteParentBounds
+     *            The parent bounds in absolute coordinates (and in 100%)
+     * @param intersectionPoint
+     *            The intersection location in absolute coordinates (and in
+     *            100%)
+     * @return
+     */
+    private Point snapLocationToGridAndToParentBorder(Point absoluteLocation, Rectangle absoluteParentBounds, Point intersectionPoint) {
+        Point absoluteSourceLocationSnapIn100Percent;
+        if (intersectionPoint.x == absoluteParentBounds.x || intersectionPoint.x == (absoluteParentBounds.x + absoluteParentBounds.width)) {
+            int yCoordinate = absoluteLocation.y;
+            // If y coordinate of absoluteLocation is outside the parent
+            // (possible if the snapToGrid "has attached" the location outside),
+            // we use the nearer parent side has coordinate.
+            if (absoluteParentBounds.y > yCoordinate) {
+                yCoordinate = absoluteParentBounds.y;
+            } else if (yCoordinate > (absoluteParentBounds.y + absoluteParentBounds.height)) {
+                yCoordinate = absoluteParentBounds.y + absoluteParentBounds.height;
+            }
+            absoluteSourceLocationSnapIn100Percent = new Point(intersectionPoint.x, yCoordinate);
+        } else {
+            int xCoordinate = absoluteLocation.x;
+            // If x coordinate of absoluteLocation is outside the parent
+            // (possible if the snapToGrid "has attached" the location outside),
+            // we use the nearer parent side has coordinate.
+            if (absoluteParentBounds.x > xCoordinate) {
+                xCoordinate = absoluteParentBounds.x;
+            } else if (xCoordinate > (absoluteParentBounds.x + absoluteParentBounds.width)) {
+                xCoordinate = absoluteParentBounds.x + absoluteParentBounds.width;
+            }
+            absoluteSourceLocationSnapIn100Percent = new Point(xCoordinate, intersectionPoint.y);
+        }
+        return absoluteSourceLocationSnapIn100Percent;
+    }
+
+    /**
+     * Get a new location point relative to the parent.
+     * 
+     * @param absoluteLocation
+     *            The location in absolute coordinates (and in 100%)
+     * @param absoluteParentBounds
+     *            The parent bounds in absolute coordinates (and in 100%)
+     * @return The location relative to the parent
+     */
+    private Point getTranslatedToRelative(Point absoluteLocation, Rectangle absoluteParentBounds) {
+        return new Point(absoluteLocation.x - absoluteParentBounds.x, absoluteLocation.y - absoluteParentBounds.y);
     }
 
     private Point getConvertedLocation(final CreateRequest request) {
@@ -816,7 +1051,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
      */
     private boolean applySpecificTreeLayout(ConnectionEditPart connectionEditPart) {
         boolean isLayoutComponent = false;
-        if (isEdgeTreeRoutingStyle(connectionEditPart) && !isSourceOrTargetIsEdge(connectionEditPart)) {
+        if (!isSourceOrTargetIsEdge(connectionEditPart)) {
             Diagram diagram = getDiagram(connectionEditPart);
             if (diagram != null && diagram.getElement() instanceof DSemanticDiagram) {
                 DSemanticDiagram dSemanticDiagram = (DSemanticDiagram) diagram.getElement();
@@ -838,22 +1073,6 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
      */
     private boolean isSourceOrTargetIsEdge(ConnectionEditPart connectionEditPart) {
         return connectionEditPart.getSource() instanceof ConnectionEditPart || connectionEditPart.getTarget() instanceof ConnectionEditPart;
-    }
-
-    private boolean isEdgeTreeRoutingStyle(ConnectionEditPart connectionEditPart) {
-        boolean isEdgeTreeRoutingStyle = false;
-        if (connectionEditPart.getModel() instanceof Edge) {
-            Edge edge = (Edge) connectionEditPart.getModel();
-            if (!edge.getStyles().isEmpty()) {
-                if (edge.getStyles().get(0) instanceof ConnectorStyle) {
-                    ConnectorStyle connectorStyle = (ConnectorStyle) edge.getStyles().get(0);
-                    if (Routing.TREE_LITERAL.getLiteral().equals(connectorStyle.getRouting().getLiteral())) {
-                        isEdgeTreeRoutingStyle = true;
-                    }
-                }
-            }
-        }
-        return isEdgeTreeRoutingStyle;
     }
 
     private Diagram getDiagram(ConnectionEditPart connectionEditPart) {

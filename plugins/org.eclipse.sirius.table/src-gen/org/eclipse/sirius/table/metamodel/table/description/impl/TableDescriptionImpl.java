@@ -110,7 +110,7 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
  * <em>Imported Elements</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class TableDescriptionImpl extends DocumentedElementImpl implements TableDescription {

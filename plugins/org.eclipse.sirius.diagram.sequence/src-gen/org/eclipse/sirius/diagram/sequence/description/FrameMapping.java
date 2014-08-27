@@ -15,7 +15,7 @@ import org.eclipse.sirius.diagram.description.ContainerMapping;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Frame Mapping</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -27,7 +27,7 @@ import org.eclipse.sirius.diagram.description.ContainerMapping;
  * <em>Center Label Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getFrameMapping()
  * @model abstract="true"
  * @generated

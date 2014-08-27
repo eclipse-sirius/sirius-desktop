@@ -48,7 +48,7 @@ import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescriptio
  * <em>Label Border Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class FlatContainerStyleDescriptionImpl extends ContainerStyleDescriptionImpl implements FlatContainerStyleDescription {

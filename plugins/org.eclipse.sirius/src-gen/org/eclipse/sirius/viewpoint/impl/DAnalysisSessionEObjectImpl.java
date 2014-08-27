@@ -56,7 +56,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * <em>Synchronization Status</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DAnalysisSessionEObjectImpl extends EObjectImpl implements DAnalysisSessionEObject {

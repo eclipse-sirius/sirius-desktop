@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ASCII"?>
+<TSequenceDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.eclipse.org/sirius/diagram/sequence/template/2.0.0"  name="MySequence Diagram" domainClass="MyDomainClass">
+  <lifelineMappings name="Participant" domainClass="interaction.Participant" semanticCandidatesExpression="&lt;%participants%>" eolVisibleExpression="">
+    <executionMappings name="Execution" domainClass="interactions.Execution" semanticCandidatesExpression="&lt;%currentParticipant.getDirectEventsOn(self)%>" startingEndFinderExpression="&lt;%start%>" finishingEndFinderExpression="&lt;%end%>" recursive="true"/>
+    <executionMappings name="NonRecursiveExecution" domainClass="interactions.Execution" semanticCandidatesExpression="&lt;%currentParticipant.getDirectEventsOn(self)%>" startingEndFinderExpression="&lt;%start%>" finishingEndFinderExpression="&lt;%end%>"/>
+    <executionMappings name="ExecutionContainer" domainClass="interactions.Execution" semanticCandidatesExpression="&lt;%currentParticipant.getDirectEventsOn(self)%>" startingEndFinderExpression="&lt;%start%>" finishingEndFinderExpression="&lt;%end%>" recursive="true">
+      <executionMappings name="ExecutionChild" domainClass="interactions.Execution" semanticCandidatesExpression="&lt;%currentParticipant.getDirectEventsOn(self)%>" startingEndFinderExpression="&lt;%start%>" finishingEndFinderExpression="&lt;%end%>" recursive="true"/>
+    </executionMappings>
+  </lifelineMappings>
+  <messageMappings xsi:type="TBasicMessageMapping" name="Feature Access Message" domainClass="interactions.FeatureAccessMessage" semanticCandidatesExpression="&lt;%messages%>" sendingEndFinderExpression="&lt;%sendingEnd%>" receivingEndFinderExpression="&lt;%receivingEnd%>" source="//@lifelineMappings.0 //@lifelineMappings.0/@executionMappings.0" target="//@lifelineMappings.0/@executionMappings.0 //@lifelineMappings.0" sourceFinderExpression="&lt;%getSendingContext%>" targetFinderExpression="&lt;%getReceivingContext%>"/>
+  <messageMappings xsi:type="TCreationMessageMapping" name="Create Participant Message" domainClass="interactions.CreateParticipantMessage" semanticCandidatesExpression="&lt;%messages%>" sendingEndFinderExpression="&lt;%sendingEnd%>" receivingEndFinderExpression="&lt;%receivingEnd%>" sourceFinderExpression="&lt;%getSendingContext%>" targetFinderExpression="&lt;%getReceivingContext%>"/>
+  <messageMappings xsi:type="TDestructionMessageMapping" name="Destroy Participant Message" domainClass="interactions.DestroyParticipantMessage"/>
+</TSequenceDiagram>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:style="http://www.eclipse.org/sirius/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="My" version="7.0.0">
+  <ownedViewpoints name="splitVP">
+    <ownedRepresentations xsi:type="description:DiagramDescription" name="splitDiagDesc" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <containerMappings name="splitMapping" detailDescriptions="//@ownedViewpoints[name='splitVP']/@ownedRepresentations[name='splitDiagDesc']/@defaultLayer/@toolSections.0/@ownedTools[name='splitDiagCreaDesc']" domainClass="EClass">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="4" arcHeight="2" roundedCorner="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="splitSection">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="splitDiagCreaDesc" diagramDescription="//@ownedViewpoints[name='splitVP']/@ownedRepresentations[name='splitDiagDesc']">
+            <initialOperation/>
+            <containerViewVariable name="containerView"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:SequenceDiagramDescription" name="splidSeqDiag" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="aa" navigationDescriptions="//@ownedViewpoints[name='splitVP']/@ownedRepresentations[name='splidSeqDiag']/@defaultLayer/@toolSections.0/@ownedTools[name='']" domainClass="EClass"/>
+        <toolSections>
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" diagramDescription="//@ownedViewpoints[name='splitVP']/@ownedRepresentations[name='splitDiagDesc']">
+            <containerViewVariable name="containerView"/>
+            <containerVariable name="container"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

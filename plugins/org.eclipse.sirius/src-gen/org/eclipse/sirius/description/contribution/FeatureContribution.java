@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Feature Contribution</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * <em>Target Feature</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.description.contribution.ContributionPackage#getFeatureContribution()
  * @model abstract="true"
  * @generated

@@ -14,8 +14,8 @@ package org.eclipse.sirius.description.contribution;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Add Feature Contribution</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.description.contribution.ContributionPackage#getAddFeatureContribution()
  * @model
  * @generated

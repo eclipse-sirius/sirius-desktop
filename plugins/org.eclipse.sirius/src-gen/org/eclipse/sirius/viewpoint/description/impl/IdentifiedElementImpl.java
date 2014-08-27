@@ -32,7 +32,7 @@ import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
  * <em>Label</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class IdentifiedElementImpl extends EObjectImpl implements IdentifiedElement {

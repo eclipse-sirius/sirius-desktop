@@ -81,7 +81,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <em>Centered Target Mappings</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class EdgeStyleDescriptionImpl extends EObjectImpl implements EdgeStyleDescription {

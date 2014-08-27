@@ -1,0 +1,234 @@
+/*******************************************************************************
+ * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.tests.unit.api.diagramintegrity;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.tools.api.command.semantic.RemoveDanglingReferences;
+import org.eclipse.sirius.viewpoint.DRefreshable;
+
+public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
+
+    /*
+     * Check that the corresponding container is removed from the representation
+     * if its target is removed from the semantic model.
+     */
+    public void testSemanticElementDeletionRemovesContainer() {
+        int eltCount = -1;
+
+        // create a diagram based on my semantic model (simple.docbook)
+        myRepresentation = createRepresentation("obviousDiagram");
+        addChapter();
+
+        // refresh the current representation.
+        refreshRepresentation();
+
+        // check that there is Two DNodeContainer representing the 2 chapters in
+        // the diagram.
+        try {
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eAllContents(\"DNodeContainer\").nSize()%>").intValue();
+        } catch (final EvaluationException e) {
+            fail("Exception while trying to get the integer value.");
+            e.printStackTrace();
+        }
+        assertEquals("The diagram is not correctly initialized.", 2, eltCount);
+
+        // check that there is one DEdge between chapters in the diagram.
+        try {
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eAllContents(\"DEdge\").nSize()%>").intValue();
+        } catch (final EvaluationException e) {
+            fail("Exception while trying to get the integer value.");
+            e.printStackTrace();
+        }
+        assertEquals("The diagram is not correctly initialized.", 1, eltCount);
+
+        // delete the chapter.
+        deleteChapter();
+
+        // refresh the current representation.
+        refreshRepresentation();
+
+        // check that there is one DNodeContainer left in the diagram.
+        try {
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eAllContents(\"DNodeContainer\").nSize()%>").intValue();
+        } catch (final EvaluationException e) {
+            fail("Exception while trying to get the integer value.");
+            e.printStackTrace();
+        }
+        assertEquals("The element has not been removed.", 1, eltCount);
+
+        // check that there are no more Edges in the diagram.
+        try {
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eAllContents(\"DEdge\").nSize()%>").intValue();
+        } catch (final EvaluationException e) {
+            fail("Exception while trying to get the integer value.");
+            e.printStackTrace();
+        }
+        assertEquals("The element has not been removed.", 0, eltCount);
+    }
+
+    /*
+     * Check that the corresponding node is removed from the representation if
+     * its target is removed from the semantic model.
+     */
+    public void testSemanticElementDeletionRemovesdNode() {
+        int eltCount = -1;
+
+        // create a diagram based on my semantic model (simple.docbook)
+        myRepresentation = createRepresentation("evoluate view");
+
+        // refresh the current representation.
+        refreshRepresentation();
+
+        // check that there is one DNode representing the 2 chapters in the
+        // diagram.
+        try {
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eAllContents(\"DNode\").nSize()%>").intValue();
+        } catch (final EvaluationException e) {
+            fail("Exception while trying to get the integer value.");
+            e.printStackTrace();
+        }
+        assertEquals("The diagram is not correctly initialized.", 1, eltCount);
+
+        // delete the chapter.
+        deleteChapter();
+
+        // refresh the current representation.
+        refreshRepresentation();
+
+        // check that there are no DNode left in the diagram.
+        try {
+            eltCount = INTERPRETER.evaluateInteger(sessionModel, "<%eAllContents(\"DSemanticDiagram\")[name == \"evoluate view\"].eAllContents(\"DNode\").nSize()%>").intValue();
+        } catch (final EvaluationException e) {
+            fail("Exception while trying to get the integer value.");
+            e.printStackTrace();
+        }
+        assertEquals("The element has not been removed.", 0, eltCount);
+    }
+
+    /*
+     * Check that the corresponding edge is removed from the representation if
+     * its target is removed from the semantic model.
+     */
+    public void testSemanticElementDeletionRemovesEdge() {
+        int eltCount = -1;
+
+        // add a chapter in the semantic model.
+        addTinySection();
+        addNote();
+
+        // create a diagram based on my semantic model (simple.docbook)
+        myRepresentation = createRepresentation("evoluate view");
+
+        // refresh the current representation.
+        refreshRepresentation();
+
+        // check that there is 4 Edges in the diagram.
+        try {
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eAllContents(\"DEdge\").nSize()%>").intValue();
+        } catch (final EvaluationException e) {
+            fail("Exception while trying to get the integer value.");
+            e.printStackTrace();
+        }
+        assertEquals("The diagram is not correctly initialized.", 4, eltCount);
+
+        // check that there is 5 nodes in the diagram.
+        try {
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eAllContents(\"DNode\").nSize()%>").intValue();
+        } catch (final EvaluationException e) {
+            fail("Exception while trying to get the integer value.");
+            e.printStackTrace();
+        }
+        assertEquals("The diagram is not correctly initialized.", 5, eltCount);
+
+        // add a note chapter.
+        deleteNote();
+
+        // refresh the current representation.
+        refreshRepresentation();
+
+        // check that there is 3 Edges left in the diagram.
+        try {
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eAllContents(\"DEdge\").nSize()%>").intValue();
+        } catch (final EvaluationException e) {
+            fail("Exception while trying to get the integer value.");
+            e.printStackTrace();
+        }
+        assertEquals("The element has not been removed.", 3, eltCount);
+
+        // check that there is is 4 nodes in the diagram.
+        try {
+            eltCount = INTERPRETER.evaluateInteger(myRepresentation, "<%eAllContents(\"DNode\").nSize()%>").intValue();
+        } catch (final EvaluationException e) {
+            fail("Exception while trying to get the integer value.");
+            e.printStackTrace();
+        }
+        assertEquals("The diagram is not correctly initialized.", 4, eltCount);
+    }
+
+    /*
+     * Check that the corresponding diagram is removed if it's target is removed
+     * from the semantic model.
+     */
+    public void testSemanticElementDeletionRemovesDiagram() {
+        myRepresentation = createRepresentation("chapterDiagram", semanticModel.eContents().get(0));
+        refreshRepresentation();
+
+        int eltCount = -1;
+
+        try {
+            eltCount = INTERPRETER.evaluateInteger(sessionModel, "<%eAllContents(\"DRepresentation\")[name == \"chapterDiagram\"].nSize()%>").intValue();
+        } catch (final EvaluationException e) {
+            fail("Exception while trying to get the integer value.");
+            e.printStackTrace();
+        }
+        assertEquals("The diagram is not correctly initialized.", 1, eltCount);
+
+        // delete the chapter.
+        deleteChapter();
+
+        this.session.getTransactionalEditingDomain().getCommandStack().execute(new RemoveDanglingReferences(this.session.getTransactionalEditingDomain(), this.sessionModel));
+
+        for (final EObject object : this.sessionModel.eContents()) {
+            if (object instanceof DRefreshable) {
+                this.session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(this.session.getTransactionalEditingDomain()) {
+                    @Override
+                    protected void doExecute() {
+                        ((DRefreshable) object).refresh();
+                    }
+                });
+            }
+        }
+
+        // refresh the current representation.
+        // refreshRepresentation();
+
+        try {
+            eltCount = INTERPRETER.evaluateInteger(sessionModel, "<%eAllContents(\"DRepresentation\")[name == \"chapterDiagram\"].nSize()%>").intValue();
+        } catch (final EvaluationException e) {
+            fail("Exception while trying to get the integer value.");
+            e.printStackTrace();
+        }
+        assertEquals("The diagram has not been removed.", 0, eltCount);
+    }
+
+    /*
+     * Refresh the diagram.
+     */
+    private void refreshRepresentation() {
+        if (myRepresentation != null) {
+            session.getTransactionalEditingDomain().getCommandStack().execute(new RefreshRepresentationsCommand(session.getTransactionalEditingDomain(), defaultProgress, myRepresentation));
+        }
+    }
+
+}

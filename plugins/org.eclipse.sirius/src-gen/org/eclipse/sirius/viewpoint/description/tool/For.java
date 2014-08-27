@@ -14,10 +14,10 @@ package org.eclipse.sirius.viewpoint.description.tool;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>For</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> This operation allows to iterate a list of elements.
  * <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -27,7 +27,7 @@ package org.eclipse.sirius.viewpoint.description.tool;
  * <em>Iterator Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getFor()
  * @model
  * @generated

@@ -27,9 +27,9 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Diagram Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> The description of a diagram. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -112,7 +112,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * <em>Enable Popup Bars</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription()
  * @model
  * @generated

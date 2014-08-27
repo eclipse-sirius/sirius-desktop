@@ -35,7 +35,7 @@ import org.eclipse.sirius.diagram.FilterVariableValue;
  * <em>Owned Values</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class FilterVariableHistoryImpl extends EObjectImpl implements FilterVariableHistory {

@@ -49,7 +49,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
  * <em>Fixes</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class ValidationRuleImpl extends EObjectImpl implements ValidationRule {

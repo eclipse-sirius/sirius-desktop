@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.menu;
 
-import java.util.Iterator;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -23,6 +21,7 @@ import org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
 import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.session.Session;
@@ -30,17 +29,10 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.diagram.DDiagramElementContainer;
-import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.DNodeListElement;
-import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
-import org.eclipse.sirius.diagram.description.EdgeMapping;
-import org.eclipse.sirius.diagram.description.tool.DiagramCreationDescription;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.CreateRepresentationFromRepresentationCreationDescription;
-import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -58,6 +50,8 @@ import org.eclipse.ui.IWorkbenchPart;
 public class SubDiagramMenu implements IContributionItemProvider {
 
     private static final String CREATE_REPRESENTATION_GROUP_SEPARATOR = "createRepresentationGroup";
+
+    private static final String MENU_NEW_REPRESENTATION_ID = "popup.new";
 
     /**
      * {@inheritDoc}
@@ -91,17 +85,19 @@ public class SubDiagramMenu implements IContributionItemProvider {
                     }
                 }
                 if (editpart instanceof ISiriusEditPart) {
-                    final IMenuManager navigate = (IMenuManager) menu.find("navigateMenu");
+                    // Create a new sub-menu manager
+                    final MenuManager newMenuManager = new MenuManager("New", SubDiagramMenu.MENU_NEW_REPRESENTATION_ID);
+                    // Create the item to add to the top of main manager, just
+                    // before the open menu
+                    if (!menu.isEmpty()) {
+                        menu.insertBefore(menu.getItems()[0].getId(), newMenuManager);
+                    } else {
+                        menu.add(newMenuManager);
+                    }
                     final Separator createGroup = new Separator(CREATE_REPRESENTATION_GROUP_SEPARATOR);
-                    navigate.add(createGroup);
-                    if (eObj instanceof DNode) {
-                        createDetailsActions((DNode) eObj, navigate, diagrampart.getEditingDomain(), curPart);
-                    } else if (eObj instanceof DNodeListElement) {
-                        createDetailsActions((DNodeListElement) eObj, navigate, diagrampart.getEditingDomain(), curPart);
-                    } else if (eObj instanceof DEdge) {
-                        createDetailsActions((DEdge) eObj, navigate, diagrampart.getEditingDomain(), curPart);
-                    } else if (eObj instanceof DDiagramElementContainer) {
-                        createDetailsActions((DDiagramElementContainer) eObj, navigate, diagrampart.getEditingDomain(), curPart);
+                    newMenuManager.add(createGroup);
+                    if (eObj instanceof DDiagramElement) {
+                        createDetailsActions((DDiagramElement) eObj, newMenuManager, diagrampart.getEditingDomain(), curPart);
                     }
                 } else {
                     // no focused edit part
@@ -111,138 +107,39 @@ public class SubDiagramMenu implements IContributionItemProvider {
 
     }
 
-    private void createDetailsActions(final DDiagramElementContainer container, final IMenuManager navigate, final TransactionalEditingDomain editingDomain, final IGraphicalEditPart curPart) {
-        if (container.getActualMapping() != null) {
-            final Iterator<RepresentationCreationDescription> it = container.getActualMapping().getDetailDescriptions().iterator();
-            while (it.hasNext()) {
-                final RepresentationCreationDescription desc = it.next();
-                final String precondition = desc.getPrecondition();
-                boolean append = true;
-                final EList<EObject> semanticElements = container.getSemanticElements();
-                if (semanticElements != null && !semanticElements.isEmpty()) {
-                    final Session session = SessionManager.INSTANCE.getSession(semanticElements.get(0));
-                    if (!isFromActiveSirius(session, desc.getRepresentationDescription())) {
-                        append = false;
-                    }
-                }
-                if (precondition != null && !StringUtil.isEmpty(precondition.trim())) {
-                    append = false;
-                    final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(container);
-                    try {
-                        append = interpreter.evaluateBoolean(container.getTarget(), precondition);
-                    } catch (final EvaluationException e) {
-                        // do nothing
-                    }
-                }
-                if (append) {
-                    navigate.appendToGroup(CREATE_REPRESENTATION_GROUP_SEPARATOR, new CreateRepresentationFromRepresentationCreationDescription(desc, container, editingDomain, curPart));
-                }
-            }
-        }
-
-    }
-
-    private void createDetailsActions(final DNode viewNode, final IMenuManager navigate, final TransactionalEditingDomain editingDomain, final IGraphicalEditPart curPart) {
-        if (viewNode.getActualMapping() != null) {
-            final Iterator<RepresentationCreationDescription> it = viewNode.getActualMapping().getDetailDescriptions().iterator();
-            while (it.hasNext()) {
-                final RepresentationCreationDescription repCreation = it.next();
-                final RepresentationCreationDescription desc = repCreation;
-                final String precondition = desc.getPrecondition();
-                boolean append = true;
-                final EList<EObject> semanticElements = viewNode.getSemanticElements();
-                if (semanticElements != null && !semanticElements.isEmpty()) {
-                    final Session session = SessionManager.INSTANCE.getSession(semanticElements.get(0));
-                    if (!isFromActiveSirius(session, desc.getRepresentationDescription())) {
-                        append = false;
-                    }
-                }
-                if (precondition != null && !StringUtil.isEmpty(precondition.trim())) {
-                    append = false;
-                    final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(viewNode);
-                    try {
-                        append = interpreter.evaluateBoolean(viewNode.getTarget(), precondition);
-                    } catch (final EvaluationException e) {
-                        // do nothing
-                    }
-                }
-                if (append) {
-                    navigate.appendToGroup(CREATE_REPRESENTATION_GROUP_SEPARATOR, new CreateRepresentationFromRepresentationCreationDescription(desc, viewNode, editingDomain, curPart));
-                }
-            }
-
-        }
-    }
-
-    private void createDetailsActions(final DNodeListElement viewNodeListElement, final IMenuManager navigate, final TransactionalEditingDomain editingDomain, final IGraphicalEditPart curPart) {
-        if (viewNodeListElement.getActualMapping() != null) {
-            final Iterator<RepresentationCreationDescription> it = viewNodeListElement.getActualMapping().getDetailDescriptions().iterator();
-            while (it.hasNext()) {
-                final RepresentationCreationDescription desc = it.next();
-                final String precondition = desc.getPrecondition();
-                boolean append = true;
-                final EList<EObject> semanticElements = viewNodeListElement.getSemanticElements();
-                if (semanticElements != null && !semanticElements.isEmpty()) {
-                    final Session session = SessionManager.INSTANCE.getSession(semanticElements.get(0));
-                    if (!isFromActiveSirius(session, desc.getRepresentationDescription())) {
-                        append = false;
-                    }
-                }
-                if (precondition != null && !StringUtil.isEmpty(precondition.trim())) {
-                    append = false;
-                    final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(viewNodeListElement);
-                    try {
-                        append = interpreter.evaluateBoolean(viewNodeListElement.getTarget(), precondition);
-                    } catch (final EvaluationException e) {
-                        // do nothing
-                    }
-                }
-                if (append) {
-                    navigate.appendToGroup(CREATE_REPRESENTATION_GROUP_SEPARATOR, new CreateRepresentationFromRepresentationCreationDescription(desc, viewNodeListElement, editingDomain, curPart));
-                }
-            }
-
-        }
-    }
-
-    private boolean isFromActiveSirius(final Session session, final RepresentationDescription description) {
+    private boolean isFromActiveViewpoint(final Session session, final RepresentationDescription description) {
         final Viewpoint vp = ViewpointRegistry.getInstance().getViewpoint(description);
         return vp != null && session.getSelectedViewpoints(false).contains(vp);
     }
 
-    private void createDetailsActions(final DEdge viewedge, final IMenuManager navigate, final TransactionalEditingDomain editingDomain, final IGraphicalEditPart curPart) {
-        Option<EdgeMapping> edgeMapping = new IEdgeMappingQuery(viewedge.getActualMapping()).getEdgeMapping();
-        if (edgeMapping.some()) {
-            final Iterator<RepresentationCreationDescription> it = edgeMapping.get().getDetailDescriptions().iterator();
-            while (it.hasNext()) {
-                final RepresentationCreationDescription repCreation = it.next();
-                if (repCreation instanceof DiagramCreationDescription) {
-                    final DiagramCreationDescription desc = (DiagramCreationDescription) repCreation;
-                    final String precondition = desc.getPrecondition();
+    private void createDetailsActions(final DDiagramElement dde, final IMenuManager newMenu, final TransactionalEditingDomain editingDomain, final IGraphicalEditPart curPart) {
+        if (dde.getMapping() != null) {
+            EObject sessionFinder = null;
+            final EList<EObject> semanticElements = dde.getSemanticElements();
+            if (semanticElements != null && !semanticElements.isEmpty()) {
+                sessionFinder = semanticElements.get(0);
+            } else if (dde.getTarget() != null) {
+                sessionFinder = dde.getTarget();
+            }
+            final Session session = sessionFinder != null ? SessionManager.INSTANCE.getSession(sessionFinder) : null;
+            if (session != null) {
+                for (RepresentationCreationDescription desc : dde.getMapping().getDetailDescriptions()) {
                     boolean append = true;
-                    final EList<EObject> semanticElements = viewedge.getSemanticElements();
-                    if (semanticElements != null && !semanticElements.isEmpty()) {
-                        final Session session = SessionManager.INSTANCE.getSession(semanticElements.get(0));
-                        if (!isFromActiveSirius(session, desc.getRepresentationDescription())) {
-                            append = false;
-                        }
-                    } else if (viewedge.getTarget() != null) {
-                        final Session session = SessionManager.INSTANCE.getSession(viewedge.getTarget());
-                        if (!isFromActiveSirius(session, desc.getRepresentationDescription())) {
-                            append = false;
-                        }
-                    }
-                    if (precondition != null && !StringUtil.isEmpty(precondition.trim())) {
+                    if (!isFromActiveViewpoint(session, desc.getRepresentationDescription())) {
                         append = false;
-                        final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(viewedge);
+                    }
+                    final String precondition = desc.getPrecondition();
+                    if (append && !StringUtil.isEmpty(precondition)) {
+                        append = false;
+                        final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(dde);
                         try {
-                            append = interpreter.evaluateBoolean(viewedge.getTarget(), precondition);
+                            append = interpreter.evaluateBoolean(dde.getTarget(), precondition);
                         } catch (final EvaluationException e) {
                             // do nothing
                         }
                     }
                     if (append) {
-                        navigate.appendToGroup(CREATE_REPRESENTATION_GROUP_SEPARATOR, new CreateRepresentationFromRepresentationCreationDescription(desc, viewedge, editingDomain, curPart));
+                        newMenu.appendToGroup(CREATE_REPRESENTATION_GROUP_SEPARATOR, new CreateRepresentationFromRepresentationCreationDescription(desc, dde, editingDomain, curPart));
                     }
                 }
             }

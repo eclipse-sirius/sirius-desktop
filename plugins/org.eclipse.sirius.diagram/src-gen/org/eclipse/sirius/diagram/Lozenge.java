@@ -16,10 +16,10 @@ import org.eclipse.sirius.viewpoint.RGBValues;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Lozenge</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> The lozenge style to display a node as a lozenge.
  * <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  * <li>{@link org.eclipse.sirius.diagram.Lozenge#getColor <em>Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.DiagramPackage#getLozenge()
  * @model
  * @generated

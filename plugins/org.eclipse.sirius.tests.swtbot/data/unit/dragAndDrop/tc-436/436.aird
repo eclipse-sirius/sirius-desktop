@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram" xmi:id="_VmJoEcZPEd-Z7eFl9NYpIA" selectedViews="_dkohkMZPEd-Z7eFl9NYpIA" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="436.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_dkohkMZPEd-Z7eFl9NYpIA" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_gXS2cMZPEd-Z7eFl9NYpIA" name="diagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_gYJLAMZPEd-Z7eFl9NYpIA" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_gYJLAcZPEd-Z7eFl9NYpIA" type="Sirius" element="_gXS2cMZPEd-Z7eFl9NYpIA" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_gYJLAsZPEd-Z7eFl9NYpIA"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description_1:DiagramDescription" href="436.odesign#//@ownedViewpoints[name='DragAndDropTests']/@ownedRepresentations[name='Class%20diagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_gXS2ccZPEd-Z7eFl9NYpIA"/>
+      <activatedLayers xmi:type="description_1:Layer" href="436.odesign#//@ownedViewpoints[name='DragAndDropTests']/@ownedRepresentations[name='Class%20diagram']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="436.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="436.odesign#//@ownedViewpoints[name='DragAndDropTests']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

@@ -149,8 +149,16 @@ public class NodeCreationEditPolicy extends SiriusContainerEditPolicy {
             final Point containerLocation = fig.getBounds().getLocation();
             location = new Point(location.x - containerLocation.x, location.y - containerLocation.y);
             if (fig instanceof ResizableCompartmentFigure) {
-                final Point scrollOffset = ((ResizableCompartmentFigure) fig).getScrollPane().getViewport().getViewLocation();
-                final Point shiftFromMarginOffset = FigureUtilities.getShiftFromMarginOffset((ResizableCompartmentFigure) fig, new RequestQuery(request).isDropOrCreationOfBorderedNode(), getHost());
+                boolean isBorderNodeCreationRequest = new RequestQuery(request).isDropOrCreationOfBorderedNode();
+                Point scrollOffset;
+                if (isBorderNodeCreationRequest) {
+                    // Ignore scroll for border node, the border of the parent
+                    // is always visible...
+                    scrollOffset = new Point(0, 0);
+                } else {
+                    scrollOffset = ((ResizableCompartmentFigure) fig).getScrollPane().getViewport().getViewLocation();
+                }
+                final Point shiftFromMarginOffset = FigureUtilities.getShiftFromMarginOffset((ResizableCompartmentFigure) fig, isBorderNodeCreationRequest, getHost());
                 realLocation = new Point(location.x + scrollOffset.x - shiftFromMarginOffset.x, location.y + scrollOffset.y - shiftFromMarginOffset.y);
 
             } else {

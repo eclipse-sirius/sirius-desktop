@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
  * <em>Tooltip Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TooltipStyleDescriptionImpl extends EObjectImpl implements TooltipStyleDescription {

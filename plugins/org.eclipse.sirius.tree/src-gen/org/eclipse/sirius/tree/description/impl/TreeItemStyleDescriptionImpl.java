@@ -56,7 +56,7 @@ import org.eclipse.sirius.viewpoint.description.style.StylePackage;
  * <em>Background Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TreeItemStyleDescriptionImpl extends EObjectImpl implements TreeItemStyleDescription {

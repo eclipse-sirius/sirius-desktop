@@ -25,7 +25,7 @@ import org.eclipse.sirius.viewpoint.impl.BasicLabelStyleImpl;
  * <em><b>End Label Style</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class EndLabelStyleImpl extends BasicLabelStyleImpl implements EndLabelStyle {

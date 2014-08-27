@@ -40,7 +40,7 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  * <em>Value</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ViewVariable2ContainerVariableImpl extends EObjectImpl implements BasicEMap.Entry<EObject, EMap<EObject, StyleDescription>> {

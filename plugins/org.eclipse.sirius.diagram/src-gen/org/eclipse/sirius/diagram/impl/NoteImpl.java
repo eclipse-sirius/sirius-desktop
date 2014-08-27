@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  * <li>{@link org.eclipse.sirius.diagram.impl.NoteImpl#getColor <em>Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class NoteImpl extends NodeStyleImpl implements Note {

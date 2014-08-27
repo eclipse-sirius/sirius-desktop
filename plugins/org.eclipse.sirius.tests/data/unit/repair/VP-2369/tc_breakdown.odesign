@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="std" version="8.0.0">
+  <ownedViewpoints name="Test Case" label="TC " modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diagram for Breakdown TC" label="Diagram for Breakdown TC" domainClass="EPackage">
+      <layout xsi:type="description_1:OrderedTreeLayout" childrenExpression="&lt;%eSubpackages%>" nodeMapping="//@ownedViewpoints[name='Test%20Case']/@ownedRepresentations[name='Diagram%20for%20Breakdown%20TC']/@defaultLayer/@containerMappings[name='Package%20for%20STD012']"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="Class for STD012" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="Contain for STD012" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;)[!eOpposite]%>" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Test%20Case']/@ownedRepresentations[name='Diagram%20for%20Breakdown%20TC']/@defaultLayer/@containerMappings[name='Package%20for%20STD012']" targetMapping="//@ownedViewpoints[name='Test%20Case']/@ownedRepresentations[name='Diagram%20for%20Breakdown%20TC']/@defaultLayer/@containerMappings[name='Package%20for%20STD012']" targetFinderExpression="&lt;%~eSubpackages%>" sourceFinderExpression="feature:eContainer" domainClass="EReference">
+          <style sizeComputationExpression="2" routingStyle="tree" foldingStyle="TARGET">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="SuperType for STD012" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;)[!eOpposite]%>" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Test%20Case']/@ownedRepresentations[name='Diagram%20for%20Breakdown%20TC']/@defaultLayer/@nodeMappings[name='Class%20for%20STD012']" targetMapping="//@ownedViewpoints[name='Test%20Case']/@ownedRepresentations[name='Diagram%20for%20Breakdown%20TC']/@defaultLayer/@nodeMappings[name='Class%20for%20STD012']" targetFinderExpression="&lt;%eSuperTypes%>" sourceFinderExpression="feature:eContainer" domainClass="EReference">
+          <style sizeComputationExpression="2" routingStyle="tree">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Package for STD012" semanticCandidatesExpression="feature:eAllContents" domainClass="EPackage">
+          <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Tools">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Contained In" label="Contained In" edgeMappings="//@ownedViewpoints[name='Test%20Case']/@ownedRepresentations[name='Diagram%20for%20Breakdown%20TC']/@defaultLayer/@edgeMappings[name='Contain%20for%20STD012']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="&lt;%$source.eSubpackages.nContains($target)%>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="&lt;%$target.eContainer().eContainer()%>">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="eSubpackages" valueExpression="var:target"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eSubpackages" valueExpression="var:source"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Package for STD012" containerMappings="//@ownedViewpoints[name='Test%20Case']/@ownedRepresentations[name='Diagram%20for%20Breakdown%20TC']/@defaultLayer/@containerMappings[name='Package%20for%20STD012']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages" variableName="package">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="P_&lt;%eContainer().eContents.filter(&quot;EPackage&quot;).nSize%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="SuperType" edgeMappings="//@ownedViewpoints[name='Test%20Case']/@ownedRepresentations[name='Diagram%20for%20Breakdown%20TC']/@defaultLayer/@edgeMappings[name='SuperType%20for%20STD012']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eSuperTypes" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Class for STD012" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Test%20Case']/@ownedRepresentations[name='Diagram%20for%20Breakdown%20TC']/@defaultLayer/@nodeMappings[name='Class%20for%20STD012']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="new Class"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="toDelete">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation/>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

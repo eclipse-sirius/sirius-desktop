@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,8 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.palette;
 
+import org.eclipse.draw2d.PositionConstants;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
+import org.eclipse.gef.SnapToHelper;
 import org.eclipse.gef.commands.Command;
+import org.eclipse.gef.requests.CreateConnectionRequest;
 import org.eclipse.gef.requests.CreationFactory;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Cursor;
 
 /**
@@ -59,11 +64,11 @@ public class ConnectionCreationTool extends org.eclipse.gef.tools.ConnectionCrea
 
     /**
      * Overridden so that the current tool will remain active (locked) if the
-     * user is pressing the ctrl key.
+     * user is pressing the ctrl key (or cmd key for mac users).
      */
     @Override
     protected void handleFinished() {
-        if (!getCurrentInput().isControlKeyDown()) {
+        if (!getCurrentInput().isModKeyDown(SWT.MOD1)) {
             super.handleFinished();
         } else {
             reactivate();
@@ -85,4 +90,24 @@ public class ConnectionCreationTool extends org.eclipse.gef.tools.ConnectionCrea
         return super.calculateCursor();
     }
 
+    /**
+     * Overridden so that the snap to grid or snap to geometry is considered for
+     * the creation.
+     */
+    @Override
+    protected void updateTargetRequest() {
+        super.updateTargetRequest();
+        if (!getCurrentInput().isAltKeyDown()) {
+            if (getTargetEditPart() != null) {
+                SnapToHelper helper = (SnapToHelper) getTargetEditPart().getAdapter(SnapToHelper.class);
+                if (helper != null) {
+                    CreateConnectionRequest req = (CreateConnectionRequest) getTargetRequest();
+                    PrecisionPoint preciseLocation = new PrecisionPoint(getLocation());
+                    PrecisionPoint result = new PrecisionPoint(getLocation());
+                    helper.snapPoint(req, PositionConstants.HORIZONTAL | PositionConstants.VERTICAL, preciseLocation, result);
+                    req.setLocation(result.getCopy());
+                }
+            }
+        }
+    }
 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<migrationmodeler:TestCase xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:migrationmodeler="http://www.eclipse.org/sirius/tests/sample/migrationmodeler">
+  <representations xsi:type="migrationmodeler:Diagram" name="testFilterDeleted">
+    <containers id="a"/>
+    <containers id="b"/>
+    <containers id="c"/>
+    <nodes id="a"/>
+    <nodes id="b">
+      <bordereds id="bordered1"/>
+    </nodes>
+    <nodes id="c"/>
+    <edges id="edge1" source="//@representations.0/@containers.0" target="//@representations.0/@nodes.0"/>
+    <edges id="edge2" source="//@representations.0/@nodes.1/@bordereds.0" target="//@representations.0/@containers.1"/>
+  </representations>
+</migrationmodeler:TestCase>

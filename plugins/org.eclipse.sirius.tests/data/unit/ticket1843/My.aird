@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_KXRAEMPNEd6gfpp6EIyQEA" selectedViews="_KgLrgMPNEd6gfpp6EIyQEA" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="My.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_KgLrgMPNEd6gfpp6EIyQEA" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_LuUSkcPNEd6gfpp6EIyQEA" name="new Fixture">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_YshuwBHiEeKS07mYEJy8yw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_LuUSk8PNEd6gfpp6EIyQEA" type="Sirius" element="_LuUSkcPNEd6gfpp6EIyQEA" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_VHlvEMPNEd6gfpp6EIyQEA" type="2002" element="_Ya0x4JjDEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_VHmWIMPNEd6gfpp6EIyQEA" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_VHmWIcPNEd6gfpp6EIyQEA" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_VHmWIsPNEd6gfpp6EIyQEA"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_VHmWI8PNEd6gfpp6EIyQEA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_VHlvEcPNEd6gfpp6EIyQEA" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VHlvEsPNEd6gfpp6EIyQEA" x="95" y="121"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_WG53AMPNEd6gfpp6EIyQEA" type="2002" element="_Ya1Y8JjDEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_WG6eEMPNEd6gfpp6EIyQEA" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_WG6eEcPNEd6gfpp6EIyQEA" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_WG6eEsPNEd6gfpp6EIyQEA"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_WG6eE8PNEd6gfpp6EIyQEA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_WG53AcPNEd6gfpp6EIyQEA" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WG53AsPNEd6gfpp6EIyQEA" x="98" y="252" height="157"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_XPblUMPNEd6gfpp6EIyQEA" type="2002" element="_Ya2AAJjDEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_XPeBkMPNEd6gfpp6EIyQEA" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_XPeBkcPNEd6gfpp6EIyQEA" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_vDKgQMPNEd6gfpp6EIyQEA" type="3008" element="_Ya31MJjDEeCTjf2eRUPO7Q">
+                <children xmi:type="notation:Node" xmi:id="_vDKgQ8PNEd6gfpp6EIyQEA" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_vDKgRMPNEd6gfpp6EIyQEA" type="7002">
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_vDKgRcPNEd6gfpp6EIyQEA"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_vDKgRsPNEd6gfpp6EIyQEA"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_vDKgQcPNEd6gfpp6EIyQEA" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vDKgQsPNEd6gfpp6EIyQEA" x="79" y="78"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_XPeBksPNEd6gfpp6EIyQEA"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_XPeBk8PNEd6gfpp6EIyQEA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_XPblUcPNEd6gfpp6EIyQEA" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_XPblUsPNEd6gfpp6EIyQEA" x="434" y="98" width="255" height="253"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_LuUSlMPNEd6gfpp6EIyQEA"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_Ya0x4JjDEeCTjf2eRUPO7Q" name="Top1">
+        <target xmi:type="ecore:EPackage" href="My.ecore#//Top1"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//Top1"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Ya0x4ZjDEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Ya0x4pjDEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="ticket1843.odesign#//@ownedViewpoints[name='Ticket_1843']/@ownedRepresentations[name='Fixture']/@defaultLayer/@containerMappings[name='CM_EPackage']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Ya0x45jDEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Ya0x5JjDEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Ya0x5ZjDEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="ticket1843.odesign#//@ownedViewpoints[name='Ticket_1843']/@ownedRepresentations[name='Fixture']/@defaultLayer/@containerMappings[name='CM_EPackage']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_Ya1Y8JjDEeCTjf2eRUPO7Q" name="Top2">
+        <target xmi:type="ecore:EPackage" href="My.ecore#//Top2"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//Top2"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Ya1Y8ZjDEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Ya1Y8pjDEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="ticket1843.odesign#//@ownedViewpoints[name='Ticket_1843']/@ownedRepresentations[name='Fixture']/@defaultLayer/@containerMappings[name='CM_EPackage']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Ya1Y85jDEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Ya1Y9JjDEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Ya1Y9ZjDEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="ticket1843.odesign#//@ownedViewpoints[name='Ticket_1843']/@ownedRepresentations[name='Fixture']/@defaultLayer/@containerMappings[name='CM_EPackage']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_Ya2AAJjDEeCTjf2eRUPO7Q" name="Top3">
+        <target xmi:type="ecore:EPackage" href="My.ecore#//Top3"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//Top3"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Ya2nEJjDEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Ya2nEZjDEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="ticket1843.odesign#//@ownedViewpoints[name='Ticket_1843']/@ownedRepresentations[name='Fixture']/@defaultLayer/@containerMappings[name='CM_EPackage']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Ya2nEpjDEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Ya2nE5jDEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Ya2nFJjDEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="ticket1843.odesign#//@ownedViewpoints[name='Ticket_1843']/@ownedRepresentations[name='Fixture']/@defaultLayer/@containerMappings[name='CM_EPackage']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_Ya31MJjDEeCTjf2eRUPO7Q" name="Sub">
+          <target xmi:type="ecore:EPackage" href="My.ecore#//Top3/Sub"/>
+          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//Top3/Sub"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Ya4cQJjDEeCTjf2eRUPO7Q">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Ya4cQZjDEeCTjf2eRUPO7Q"/>
+            <description xmi:type="style:FlatContainerStyleDescription" href="ticket1843.odesign#//@ownedViewpoints[name='Ticket_1843']/@ownedRepresentations[name='Fixture']/@defaultLayer/@containerMappings[name='CM_EPackage']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Ya4cQpjDEeCTjf2eRUPO7Q"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Ya4cQ5jDEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+            <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Ya4cRJjDEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="ticket1843.odesign#//@ownedViewpoints[name='Ticket_1843']/@ownedRepresentations[name='Fixture']/@defaultLayer/@containerMappings[name='CM_EPackage']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="ticket1843.odesign#//@ownedViewpoints[name='Ticket_1843']/@ownedRepresentations[name='Fixture']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_LuUSksPNEd6gfpp6EIyQEA"/>
+      <activatedLayers xmi:type="description_1:Layer" href="ticket1843.odesign#//@ownedViewpoints[name='Ticket_1843']/@ownedRepresentations[name='Fixture']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="ticket1843.odesign#//@ownedViewpoints[name='Ticket_1843']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

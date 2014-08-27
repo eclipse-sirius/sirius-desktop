@@ -86,7 +86,7 @@ import org.eclipse.sirius.viewpoint.Style;
  * <em>Height</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl implements DDiagramElementContainer {

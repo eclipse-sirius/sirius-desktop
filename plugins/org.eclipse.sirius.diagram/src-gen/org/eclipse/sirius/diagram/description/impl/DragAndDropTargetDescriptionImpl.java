@@ -32,7 +32,7 @@ import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
  * <em>Drop Descriptions</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class DragAndDropTargetDescriptionImpl extends EObjectImpl implements DragAndDropTargetDescription {

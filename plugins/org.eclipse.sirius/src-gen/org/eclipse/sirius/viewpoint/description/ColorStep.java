@@ -16,12 +16,12 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Color Step</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A ColorStep is identified by its associatedValue and
  * references an associatedColor (FixedColor).
  * 
  * <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.EObject;
  * <em>Associated Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getColorStep()
  * @model
  * @generated

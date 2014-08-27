@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
@@ -106,7 +107,15 @@ public class OpenRepresentationsAction extends Action {
             monitor.beginTask(taskName, 5 * selection.size());
 
             for (DRepresentation rep : selection) {
-                Session session = new EObjectQuery(rep).getSession();
+                Session session = null;
+                if (rep instanceof DSemanticDecorator) {
+                    // If the semantic target is null or detached, no session
+                    // will be found, allows to prevent NPE during
+                    // representation opening.
+                    session = new EObjectQuery(((DSemanticDecorator) rep).getTarget()).getSession();
+                } else {
+                    session = new EObjectQuery(rep).getSession();
+                }
                 monitor.worked(1);
 
                 if (session != null) {

@@ -31,7 +31,7 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
  * <em>Covered Lifelines</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class CoveringElementCreationToolImpl extends EObjectImpl implements CoveringElementCreationTool {

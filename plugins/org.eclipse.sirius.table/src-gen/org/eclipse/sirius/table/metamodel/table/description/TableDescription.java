@@ -21,7 +21,7 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Table Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -75,7 +75,7 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDes
  * <em>Imported Elements</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getTableDescription()
  * @model abstract="true"
  * @generated

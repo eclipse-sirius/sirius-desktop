@@ -20,7 +20,7 @@ import org.eclipse.sirius.diagram.sequence.description.ObservationPointMapping;
  * <em><b>Observation Point Mapping</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class ObservationPointMappingImpl extends NodeMappingImpl implements ObservationPointMapping {

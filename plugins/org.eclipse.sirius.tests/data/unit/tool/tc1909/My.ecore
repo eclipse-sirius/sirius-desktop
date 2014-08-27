@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="root">
+  <eClassifiers xsi:type="ecore:EClass" name="C1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="A" upperBound="-1" eType="#//new%20EClass%203"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="a"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBigInteger"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//C2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="C2">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="d" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EEnumA">
+    <eLiterals name="Bname" literal="Blit"/>
+    <eLiterals name="Bname2" literal="Blit2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 3"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 4" eSuperTypes="#//new%20EClass%203">
+    <eOperations name="a" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eParameters name="b" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="c" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="abc" eType="#//C1" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference2" eType="#//new%20EClass%206"
+        derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="a"/>
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 6"/>
+</ecore:EPackage>

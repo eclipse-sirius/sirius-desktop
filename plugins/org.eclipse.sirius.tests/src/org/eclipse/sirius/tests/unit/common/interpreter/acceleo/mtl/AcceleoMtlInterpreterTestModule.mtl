@@ -1,0 +1,20 @@
+[comment encoding = UTF-8 /]
+[module AcceleoMtlInterpreterTestModule('http://www.eclipse.org/emf/2002/Ecore')/]
+[import org::eclipse::sirius::tests::unit::common::interpreter::acceleo::mtl::AcceleoMtlInterpreterTestModule2 /]
+
+
+[template public getName(c : EClass)][c.name/][/template]
+
+[query public getNameQuery(c : EClass) : String = c.name /]
+
+[template public getImportedName(c : EClass)][c.getName2()/][/template]
+
+[template public getImportedQueryName(c : EClass)][c.getNameQuery2()/][/template]
+
+[query public isAbstractQuery(c : EClass) : Boolean = c.abstract /]
+
+[query public eContentsQuery(c : EClass) : Collection(EObject) = c.eContents() /]
+
+[query public selfQuery(c : EClass) : EObject = c /]
+
+[query public selfImportedQuery(c : EClass) : EObject = selfQuery2(c) /]

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" version="8.0.0">
+  <ownedViewpoints name="Doremi-2847">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="BlankDiagram" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <edgeMappings name="superType" sourceMapping="//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagram']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']" targetMapping="//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagram']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']" targetFinderExpression="&lt;%self.eSuperTypes%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Package" semanticCandidatesExpression="[eContents(EPackage)/]" createElements="false" domainClass="EPackage" reusedContainerMappings="//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagram']/@defaultLayer/@containerMappings[name='Package']">
+          <subNodeMappings name="Class" label="Class" semanticCandidatesExpression="[eClassifiers->filter(ecore::EClass)/]" createElements="false" domainClass="EClass">
+            <borderedNodeMappings name="attribute" semanticCandidatesExpression="feature:eAllContents" createElements="false" domainClass="EAttribute">
+              <style xsi:type="style:SquareDescription" sizeComputationExpression="0" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="TestSection">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createClass" nodeMappings="//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagram']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']">
+            <filters precondition="&lt;%self.ownedDiagramElements.nSize()==0%>" elementsToListen="var:self">
+              <listeners domainClass="DDiagram" featureName="ownedDiagramElements"/>
+            </filters>
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="toto"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="createPackage" containerMappings="//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagram']/@defaultLayer/@containerMappings[name='Package']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages" variableName="newPackage">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[newPackage/]">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Package"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="createSuperType" edgeMappings="//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagram']/@defaultLayer/@edgeMappings[name='superType']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="eSuperTypes" valueExpression="&lt;%target%>"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="ConflictingLayer">
+        <toolSections name="TestSection">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createClass" nodeMappings="//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagram']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']">
+            <filters precondition="&lt;%self.ownedDiagramElements.nSize()==0%>" elementsToListen="var:self">
+              <listeners domainClass="DDiagram" featureName="ownedDiagramElements"/>
+            </filters>
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubPackages">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="toto"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </additionalLayers>
+      <additionalLayers name="ExclusiveLayer">
+        <toolSections name="TestSection">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createClass" nodeMappings="//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagram']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']">
+            <filters precondition="&lt;%self.ownedDiagramElements.nSize()==1%>" elementsToListen="var:self">
+              <listeners domainClass="DDiagram" featureName="ownedDiagramElements"/>
+            </filters>
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="toto"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="BlankDiagramWithoutLayer" domainClass="EPackage">
+      <edgeMappings name="superType" sourceMapping="//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagram']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']" targetMapping="//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagram']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']" targetFinderExpression="&lt;%self.eSuperTypes%>">
+        <style sizeComputationExpression="2">
+          <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          <centerLabelStyleDescription>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </centerLabelStyleDescription>
+        </style>
+      </edgeMappings>
+      <containerMappings name="Package" semanticCandidatesExpression="[eContents(EPackage)/]" createElements="false" domainClass="EPackage" reusedContainerMappings="//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagramWithoutLayer']/@containerMappings[name='Package']">
+        <subNodeMappings name="Class" label="Class" semanticCandidatesExpression="[eClassifiers->filter(ecore::EClass)/]" createElements="false" domainClass="EClass">
+          <borderedNodeMappings name="attribute" semanticCandidatesExpression="feature:eAllContents" createElements="false" domainClass="EAttribute">
+            <style xsi:type="style:SquareDescription" sizeComputationExpression="0" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+          </style>
+        </subNodeMappings>
+        <style xsi:type="style:FlatContainerStyleDescription">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+        </style>
+      </containerMappings>
+      <toolSection name="TestSection">
+        <ownedTools xsi:type="tool:NodeCreationDescription" name="createClass" nodeMappings="//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagramWithoutLayer']/@containerMappings[name='Package']/@subNodeMappings[name='Class']">
+          <filters precondition="&lt;%self.ownedDiagramElements.nSize()==0%>" elementsToListen="var:self">
+            <listeners domainClass="DDiagram" featureName="ownedDiagramElements"/>
+          </filters>
+          <variable name="container"/>
+          <viewVariable name="containerView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+              <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="toto"/>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:ContainerCreationDescription" name="createPackage" containerMappings="//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagramWithoutLayer']/@containerMappings[name='Package']">
+          <variable name="container"/>
+          <viewVariable name="containerView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages" variableName="newPackage">
+              <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[newPackage/]">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Package"/>
+              </subModelOperations>
+            </firstModelOperations>
+          </initialOperation>
+        </ownedTools>
+        <ownedTools xsi:type="tool:EdgeCreationDescription" name="createSuperType" edgeMappings="//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagram']/@defaultLayer/@edgeMappings[name='superType']">
+          <sourceVariable name="source"/>
+          <targetVariable name="target"/>
+          <sourceViewVariable name="sourceView"/>
+          <targetViewVariable name="targetView"/>
+          <initialOperation>
+            <firstModelOperations xsi:type="tool_1:SetValue" featureName="eSuperTypes" valueExpression="&lt;%target%>"/>
+          </initialOperation>
+        </ownedTools>
+      </toolSection>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="BlankDiagramWithToolGroups" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <edgeMappings name="superType" sourceMapping="//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagram']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']" targetMapping="//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagram']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']" targetFinderExpression="&lt;%self.eSuperTypes%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Package" semanticCandidatesExpression="[eContents(EPackage)/]" createElements="false" domainClass="EPackage" reusedContainerMappings="//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagramWithToolGroups']/@defaultLayer/@containerMappings[name='Package']">
+          <subNodeMappings name="Class" label="Class" semanticCandidatesExpression="[eClassifiers->filter(ecore::EClass)/]" createElements="false" domainClass="EClass">
+            <borderedNodeMappings name="attribute" semanticCandidatesExpression="feature:eAllContents" createElements="false" domainClass="EAttribute">
+              <style xsi:type="style:SquareDescription" sizeComputationExpression="0" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="TestSection">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="createPackage" containerMappings="//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagramWithToolGroups']/@defaultLayer/@containerMappings[name='Package']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages" variableName="newPackage">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[newPackage/]">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="Package"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolGroup" name="ToolGroupTest">
+            <tools xsi:type="tool:NodeCreationDescription" name="createClass" nodeMappings="//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagramWithToolGroups']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']">
+              <filters precondition="&lt;%self.ownedDiagramElements.nSize()==0%>" elementsToListen="var:self">
+                <listeners domainClass="DDiagram" featureName="ownedDiagramElements"/>
+              </filters>
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="toto"/>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="createSuperType" edgeMappings="//@ownedViewpoints[name='Doremi-2847']/@ownedRepresentations[name='BlankDiagram']/@defaultLayer/@edgeMappings[name='superType']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="eSuperTypes" valueExpression="&lt;%target%>"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

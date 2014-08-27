@@ -16,7 +16,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>TSequence Diagram</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
  * <em>Message Mappings</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTSequenceDiagram()
  * @model
  * @generated

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="Ecore documentation extension" version="8.0.0">
+  <ownedViewpoints name="toolSectionExtension" modelFileExtension="ecore">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="toolSectionExtension" viewpointURI="viewpoint:/org.eclipse.sirius.tests/toolSection" representationName="toolSectionLayers">
+      <layers name="L4 enabled" activeByDefault="true">
+        <toolSections name="SectionSharedWithOtherLayersA">
+          <ownedTools xsi:type="tool:ToolDescription" name="ToolL4-A-1">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ToolGroup" name="SharedGroup"/>
+        </toolSections>
+        <toolSections name="L4EmptySection9">
+          <groupExtensions>
+            <group href="toolSection.odesign#//@ownedViewpoints[name='toolSection']/@ownedRepresentations[name='toolSectionLayers']/@defaultLayer/@toolSections.0/@ownedTools[name='EmptyGroupButExtended1-3']"/>
+            <tools xsi:type="tool:ToolDescription" name="Tool9-1">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation/>
+            </tools>
+          </groupExtensions>
+        </toolSections>
+      </layers>
+      <layers name="L5 disabled">
+        <toolSections name="SectionSharedWithOtherLayersA">
+          <ownedTools xsi:type="tool:ToolDescription" name="ToolL5-A-1">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ToolGroup" name="SharedGroup">
+            <tools xsi:type="tool:PaneBasedSelectionWizardDescription" name="PBSWDL5-A-2">
+              <element name="element"/>
+              <containerView name="containerView"/>
+              <container name="container"/>
+              <initialOperation/>
+            </tools>
+          </ownedTools>
+        </toolSections>
+      </layers>
+      <layers name="L6">
+        <toolSections name="L6Section">
+          <ownedTools xsi:type="tool:ToolDescription" name="ToolL6">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation/>
+          </ownedTools>
+        </toolSections>
+      </layers>
+    </ownedRepresentationExtensions>
+  </ownedViewpoints>
+</description:Group>

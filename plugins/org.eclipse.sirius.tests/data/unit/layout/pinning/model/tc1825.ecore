@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="top"
+    nsURI="top" nsPrefix="">
+  <eSubpackages name="flat" nsURI="flat">
+    <eClassifiers xsi:type="ecore:EClass" name="Class1"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Class2"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Class3"/>
+    <eClassifiers xsi:type="ecore:EDataType" name="DataType1"/>
+    <eClassifiers xsi:type="ecore:EDataType" name="DataType2"/>
+    <eClassifiers xsi:type="ecore:EDataType" name="DataType3"/>
+    <eClassifiers xsi:type="ecore:EEnum" name="Enum1">
+      <eLiterals name="literal1"/>
+      <eLiterals name="literal2" value="1"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="Enum2"/>
+  </eSubpackages>
+  <eSubpackages name="recursive" nsURI="recursive">
+    <eClassifiers xsi:type="ecore:EClass" name="C_0_1"/>
+    <eClassifiers xsi:type="ecore:EClass" name="C_0_2"/>
+    <eClassifiers xsi:type="ecore:EClass" name="C_0_3"/>
+    <eSubpackages name="P_1" nsURI="">
+      <eClassifiers xsi:type="ecore:EClass" name="P_1_C_1"/>
+      <eClassifiers xsi:type="ecore:EClass" name="P_1_C_2"/>
+      <eSubpackages name="P_1_1">
+        <eClassifiers xsi:type="ecore:EClass" name="P_1_1_C_1"/>
+        <eSubpackages name="P1_1_1">
+          <eClassifiers xsi:type="ecore:EClass" name="P1_1_1_C1"/>
+          <eClassifiers xsi:type="ecore:EClass" name="P1_1_1_C2"/>
+        </eSubpackages>
+      </eSubpackages>
+      <eSubpackages name="P_1_2"/>
+    </eSubpackages>
+    <eSubpackages name="P_2">
+      <eSubpackages name="P_2_1">
+        <eClassifiers xsi:type="ecore:EClass" name="P_2_1_C_1"/>
+        <eClassifiers xsi:type="ecore:EClass" name="P_2_1_C_2"/>
+      </eSubpackages>
+      <eSubpackages name="P_2_2" nsPrefix=""/>
+      <eSubpackages name="P_2_3" nsPrefix=""/>
+      <eSubpackages name="P_2_4" nsPrefix=""/>
+    </eSubpackages>
+    <eSubpackages name="P_3"/>
+  </eSubpackages>
+  <eSubpackages name="simple_recursive" nsPrefix="simple_recursive">
+    <eClassifiers xsi:type="ecore:EClass" name="A"/>
+    <eClassifiers xsi:type="ecore:EClass" name="B"/>
+    <eSubpackages name="P1">
+      <eClassifiers xsi:type="ecore:EClass" name="C"/>
+      <eClassifiers xsi:type="ecore:EClass" name="D"/>
+      <eSubpackages name="P2" nsURI="">
+        <eClassifiers xsi:type="ecore:EClass" name="E"/>
+        <eClassifiers xsi:type="ecore:EClass" name="F"/>
+      </eSubpackages>
+    </eSubpackages>
+  </eSubpackages>
+</ecore:EPackage>

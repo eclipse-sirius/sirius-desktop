@@ -37,7 +37,7 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  * Description</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class StyleImpl extends EObjectImpl implements Style {

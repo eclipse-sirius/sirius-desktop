@@ -16,7 +16,7 @@ import org.eclipse.sirius.viewpoint.description.SelectionDescription;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Selection Wizard Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -43,7 +43,7 @@ import org.eclipse.sirius.viewpoint.description.SelectionDescription;
  * <em>Window Image Path</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSelectionWizardDescription()
  * @model
  * @generated

@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.AbstractToolDescriptio
  * <em>Menu Item Descriptions</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TreePopupMenuImpl extends AbstractToolDescriptionImpl implements TreePopupMenu {

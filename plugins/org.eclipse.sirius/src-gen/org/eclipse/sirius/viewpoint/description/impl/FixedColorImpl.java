@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.description.FixedColor;
  * <em>Blue</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class FixedColorImpl extends ColorDescriptionImpl implements FixedColor {

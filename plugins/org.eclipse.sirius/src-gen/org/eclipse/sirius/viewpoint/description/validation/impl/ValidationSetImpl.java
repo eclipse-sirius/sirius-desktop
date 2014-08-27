@@ -47,7 +47,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * <em>All Rules</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ValidationSetImpl extends DocumentedElementImpl implements ValidationSet {

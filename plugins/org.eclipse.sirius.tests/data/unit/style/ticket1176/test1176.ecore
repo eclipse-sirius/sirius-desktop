@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="aaaa">
+  <eSubpackages name="0"/>
+  <eSubpackages name="1">
+    <eSubpackages name="dddd"/>
+  </eSubpackages>
+  <eSubpackages name="2">
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="dddd"/>
+  </eSubpackages>
+  <eSubpackages name="3">
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="dddd"/>
+  </eSubpackages>
+  <eSubpackages name="4">
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="dddd"/>
+  </eSubpackages>
+  <eSubpackages name="5">
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="cccc"/>
+  </eSubpackages>
+  <eSubpackages name="6">
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="cccc"/>
+  </eSubpackages>
+  <eSubpackages name="7">
+    <eSubpackages name="ffff"/>
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="dddd"/>
+  </eSubpackages>
+  <eSubpackages name="8">
+    <eSubpackages name="ffff"/>
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="dddd"/>
+  </eSubpackages>
+  <eSubpackages name="9">
+    <eSubpackages name="ffff"/>
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="dddd"/>
+  </eSubpackages>
+  <eSubpackages name="10" nsPrefix="">
+    <eSubpackages name="ffff"/>
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="dddd"/>
+  </eSubpackages>
+  <eSubpackages name="15" nsPrefix="">
+    <eSubpackages name="ffff"/>
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="dddd"/>
+    <eSubpackages name="cccc"/>
+    <eSubpackages name="dddd"/>
+  </eSubpackages>
+</ecore:EPackage>

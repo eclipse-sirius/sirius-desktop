@@ -28,7 +28,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em>Condition Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CaseImpl extends SwitchChildImpl implements Case {

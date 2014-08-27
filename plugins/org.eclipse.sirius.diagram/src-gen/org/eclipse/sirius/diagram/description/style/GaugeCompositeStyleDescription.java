@@ -17,10 +17,10 @@ import org.eclipse.sirius.diagram.AlignmentKind;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Gauge Composite Style Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> This style groups many GaugeSection. <!--
  * end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -32,7 +32,7 @@ import org.eclipse.sirius.diagram.AlignmentKind;
  * <em>Sections</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getGaugeCompositeStyleDescription()
  * @model
  * @generated

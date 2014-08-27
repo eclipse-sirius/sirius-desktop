@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="test" version="8.0.0">
+  <ownedViewpoints name="test">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="test" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="package" semanticCandidatesExpression="[self/]" domainClass="EPackage">
+          <style xsi:type="style:LozengeNodeDescription" borderSizeComputationExpression="3" sizeComputationExpression="8" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="package2" semanticCandidatesExpression="[self/]" domainClass="EPackage">
+          <style xsi:type="style:EllipseNodeDescription" borderSizeComputationExpression="2" sizeComputationExpression="5" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+          </style>
+        </nodeMappings>
+      </defaultLayer>
+      <additionalLayers name="test">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="package_import" semanticCandidatesExpression="[self/]" domainClass="EPackage" importedMapping="//@ownedViewpoints[name='test']/@ownedRepresentations[name='test']/@defaultLayer/@nodeMappings[name='package']">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" sizeComputationExpression="5" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="package_import2" semanticCandidatesExpression="[self/]" domainClass="EPackage" importedMapping="//@ownedViewpoints[name='test']/@ownedRepresentations[name='test']/@defaultLayer/@nodeMappings[name='package2']">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="2" sizeComputationExpression="5" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </nodeMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:TreeDescription" name="tree" domainClass="EPackage">
+      <subItemMappings name="class" domainClass="EClass">
+        <defaultStyle>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+        <directEdit name="rename" forceRefresh="true" mapping="//@ownedViewpoints[name='test']/@ownedRepresentations[name='tree']/@subItemMappings[name='class']">
+          <firstModelOperation xsi:type="tool:SetValue" featureName="name" valueExpression="[arg0/]"/>
+          <mask mask="{0}"/>
+          <element name="element"/>
+          <root name="root"/>
+        </directEdit>
+        <popupMenus name="Test" forceRefresh="true">
+          <menuItemDescriptions xsi:type="tool:OperationAction" name="Create Sibling Class">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[eContainer()/]">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers"/>
+              </firstModelOperations>
+            </initialOperation>
+          </menuItemDescriptions>
+        </popupMenus>
+      </subItemMappings>
+      <createTreeItem name="Create class" forceRefresh="true" mapping="//@ownedViewpoints[name='test']/@ownedRepresentations[name='tree']/@subItemMappings[name='class']">
+        <firstModelOperation xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers"/>
+        <variables name="root" documentation="The semantic element of the tree."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+      </createTreeItem>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

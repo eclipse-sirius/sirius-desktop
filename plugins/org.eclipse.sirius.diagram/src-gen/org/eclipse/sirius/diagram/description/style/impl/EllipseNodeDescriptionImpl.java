@@ -36,7 +36,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <em>Vertical Diameter Computation Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class EllipseNodeDescriptionImpl extends NodeStyleDescriptionImpl implements EllipseNodeDescription {

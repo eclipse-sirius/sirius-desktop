@@ -42,7 +42,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em>Icon Path</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelStyle {

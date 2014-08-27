@@ -14,10 +14,10 @@ package org.eclipse.sirius.viewpoint;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>DSource File Link</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A link that references a Source File. <!--
  * end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -29,7 +29,7 @@ package org.eclipse.sirius.viewpoint;
  * End Position</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDSourceFileLink()
  * @model
  * @generated

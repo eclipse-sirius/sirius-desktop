@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="paneBasedSelectionWizard" nsURI="" nsPrefix="ecore_modeler_test">
+  <eClassifiers xsi:type="ecore:EClass" name="c0"/>
+  <eSubpackages name="testPackage">
+    <eClassifiers xsi:type="ecore:EClass" name="c1"/>
+    <eClassifiers xsi:type="ecore:EClass" name="c2" eSuperTypes="#//testPackage/c1"/>
+  </eSubpackages>
+  <eSubpackages name="p0">
+    <eClassifiers xsi:type="ecore:EClass" name="c1"/>
+    <eSubpackages name="p1">
+      <eSubpackages name="p2"/>
+      <eSubpackages name="p3"/>
+    </eSubpackages>
+  </eSubpackages>
+</ecore:EPackage>

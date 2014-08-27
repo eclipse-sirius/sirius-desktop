@@ -43,7 +43,7 @@ import org.eclipse.sirius.viewpoint.impl.LabelStyleImpl;
  * <em>Border Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class ContainerStyleImpl extends LabelStyleImpl implements ContainerStyle {

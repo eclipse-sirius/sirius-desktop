@@ -618,7 +618,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                 } catch (InterruptedException e) {
                     SiriusPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, "Error while accessing semantic resources"));
                 }
-                ((CopyOnWriteArrayList) semanticResources).addAllAbsent(semanticResourcesGetter.getResult());
+                ((CopyOnWriteArrayList<Resource>) semanticResources).addAllAbsent(semanticResourcesGetter.getResult());
             }
         }
         return Collections.unmodifiableCollection(semanticResources);

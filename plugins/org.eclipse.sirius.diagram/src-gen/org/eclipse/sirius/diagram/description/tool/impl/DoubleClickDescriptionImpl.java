@@ -49,7 +49,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescri
  * <em>Initial Operation</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl implements DoubleClickDescription {

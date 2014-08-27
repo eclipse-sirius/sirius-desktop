@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" version="8.0.0">
+  <ownedViewpoints name="VP3216">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diagram" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="package" domainClass="EPackage">
+          <style xsi:type="style:SquareDescription" showIcon="false" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="class" domainClass="EClass">
+          <style xsi:type="style:SquareDescription" showIcon="false" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="annotation" domainClass="EAnnotation">
+          <style xsi:type="style:SquareDescription" showIcon="false" labelExpression="&lt;%source%>" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="container" sourceMapping="//@ownedViewpoints[name='VP3216']/@ownedRepresentations[name='Diagram']/@defaultLayer/@nodeMappings[name='annotation']" targetMapping="//@ownedViewpoints[name='VP3216']/@ownedRepresentations[name='Diagram']/@defaultLayer/@nodeMappings[name='package'] //@ownedViewpoints[name='VP3216']/@ownedRepresentations[name='Diagram']/@defaultLayer/@nodeMappings[name='class']" targetFinderExpression="feature:eContainer">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelExpression="Contains">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="contain" edgeMappings="//@ownedViewpoints[name='VP3216']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='container']" extraSourceMappings="//@ownedViewpoints[name='VP3216']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='container']" extraTargetMappings="//@ownedViewpoints[name='VP3216']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='container']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:Switch">
+                <cases conditionExpression="&lt;%$target.filter(&quot;EPackage&quot;) %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                    <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:target" featureName="eAnnotations"/>
+                  </subModelOperations>
+                </cases>
+                <cases conditionExpression="&lt;%$target.filter(&quot;EClass&quot;) %>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                    <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:target" featureName="eAnnotations"/>
+                  </subModelOperations>
+                </cases>
+                <cases conditionExpression="&lt;%$sourceView.filter(&quot;DEdge&quot;)%>">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                    <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:target" featureName="eAnnotations"/>
+                  </subModelOperations>
+                </cases>
+                <default/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="New Package" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='VP3216']/@ownedRepresentations[name='Diagram']/@defaultLayer/@nodeMappings[name='package']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EPackage" referenceName="eSubpackages">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%eContainer.name%>&lt;%eContainer.eSubpackages.nSize%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="New Class" nodeMappings="//@ownedViewpoints[name='VP3216']/@ownedRepresentations[name='Diagram']/@defaultLayer/@nodeMappings[name='class']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="E&lt;%eContainer().eAllContents(&quot;EClass&quot;).nSize%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="New Annotation" nodeMappings="//@ownedViewpoints[name='VP3216']/@ownedRepresentations[name='Diagram']/@defaultLayer/@nodeMappings[name='annotation']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EAnnotation" referenceName="eAnnotations">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="a&lt;%eContainer().name + eContainer().eAnnotations.nSize%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

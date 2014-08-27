@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/description/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" xmi:id="_9AbkUQHyEd-606pm3HA2gg" selectedViews="_o_besAHzEd-606pm3HA2gg" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="STD-TEST-049.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_o_besAHzEd-606pm3HA2gg" initialized="true">
+    <ownedRepresentations xmi:type="table:DTable" xmi:id="_qbVcAAHzEd-606pm3HA2gg" name="new Documentation" headerColumnWidth="86">
+      <target xmi:type="ecore:EPackage" href="STD-TEST-049.ecore#/"/>
+      <lines xmi:type="table:DLine" xmi:id="_qbVcAQHzEd-606pm3HA2gg" label="EClass : AClass">
+        <target xmi:type="ecore:EClass" href="STD-TEST-049.ecore#//AClass"/>
+        <semanticElements xmi:type="ecore:EClass" href="STD-TEST-049.ecore#//AClass"/>
+        <originMapping xmi:type="description:LineMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Documentation']/@ownedLineMappings[name='Doc%20EClassifiers']"/>
+        <cells xmi:type="table:DCell" xmi:id="_qeihAQHzEd-606pm3HA2gg" label="this is a test for Cross Table" column="_qbVcCQHzEd-606pm3HA2gg">
+          <target xmi:type="ecore:EStringToStringMapEntry" href="STD-TEST-049.ecore#//AClass/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"/>
+          <semanticElements xmi:type="ecore:EStringToStringMapEntry" href="STD-TEST-049.ecore#//AClass/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"/>
+          <currentStyle xmi:type="table:DCellStyle" xmi:id="_qeihAgHzEd-606pm3HA2gg">
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_wp2PwEg0EeCm95Tq9dtYWA" red="138" green="226" blue="52"/>
+            <backgroundStyleOrigin xmi:type="description:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Documentation']/@intersection.0"/>
+          </currentStyle>
+          <intersectionMapping xmi:type="description:IntersectionMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Documentation']/@intersection.0"/>
+        </cells>
+        <currentStyle xmi:type="table:DTableElementStyle" xmi:id="_MzUn0PNbEeC6JJx9rWXyiA" defaultBackgroundStyle="true">
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_MzUn0fNbEeC6JJx9rWXyiA" red="255" green="255" blue="255"/>
+        </currentStyle>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_qbVcBQHzEd-606pm3HA2gg" label="EClass : AnotherClass">
+        <target xmi:type="ecore:EClass" href="STD-TEST-049.ecore#//AnotherClass"/>
+        <semanticElements xmi:type="ecore:EClass" href="STD-TEST-049.ecore#//AnotherClass"/>
+        <originMapping xmi:type="description:LineMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Documentation']/@ownedLineMappings[name='Doc%20EClassifiers']"/>
+        <currentStyle xmi:type="table:DTableElementStyle" xmi:id="_MzVO4PNbEeC6JJx9rWXyiA" defaultBackgroundStyle="true">
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_MzVO4fNbEeC6JJx9rWXyiA" red="255" green="255" blue="255"/>
+        </currentStyle>
+      </lines>
+      <columns xmi:type="table:DTargetColumn" xmi:id="_qbVcCQHzEd-606pm3HA2gg" label="Domain Documentation" cells="_qeihAQHzEd-606pm3HA2gg" width="661">
+        <target xmi:type="ecore:EPackage" href="STD-TEST-049.ecore#/"/>
+        <semanticElements xmi:type="ecore:EPackage" href="STD-TEST-049.ecore#/"/>
+        <originMapping xmi:type="description:ElementColumnMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Documentation']/@ownedColumnMappings.0"/>
+        <currentStyle xmi:type="table:DTableElementStyle" xmi:id="_MzgOAPNbEeC6JJx9rWXyiA"/>
+      </columns>
+      <description xmi:type="description:CrossTableDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Documentation']"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description_1:Viewpoint" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Review']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

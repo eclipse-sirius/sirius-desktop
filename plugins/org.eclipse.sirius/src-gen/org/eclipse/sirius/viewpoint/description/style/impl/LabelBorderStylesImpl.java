@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.style.StylePackage;
  * <em>Label Border Style Descriptions</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class LabelBorderStylesImpl extends EObjectImpl implements LabelBorderStyles {

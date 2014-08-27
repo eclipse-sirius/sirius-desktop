@@ -20,7 +20,7 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em><b>DModel</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class DModelImpl extends DFileImpl implements DModel {

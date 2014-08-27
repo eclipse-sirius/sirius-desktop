@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_qr-EsNwbEd-D07IUzYQn8w" selectedViews="_rFv2oNwbEd-D07IUzYQn8w" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="pinUnpinNote.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_rFv2oNwbEd-D07IUzYQn8w" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_tXZJINwbEd-D07IUzYQn8w" name="PinUnpinNoteDiag">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_tXZwMNwbEd-D07IUzYQn8w" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_tXZwMdwbEd-D07IUzYQn8w" type="Sirius" element="_tXZJINwbEd-D07IUzYQn8w" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_tbhbMNwbEd-D07IUzYQn8w" type="2002" element="_BuXWIJjFEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_tbhbM9wbEd-D07IUzYQn8w" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_tbiCQNwbEd-D07IUzYQn8w" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_tbiCQdwbEd-D07IUzYQn8w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_tbiCQtwbEd-D07IUzYQn8w"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_tbhbMdwbEd-D07IUzYQn8w" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tbhbMtwbEd-D07IUzYQn8w"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_tbiCQ9wbEd-D07IUzYQn8w" type="2002" element="_BuYkQJjFEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_tbipUNwbEd-D07IUzYQn8w" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_tbipUdwbEd-D07IUzYQn8w" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_tbipUtwbEd-D07IUzYQn8w"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_tbipU9wbEd-D07IUzYQn8w"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_tc4tINwbEd-D07IUzYQn8w" type="3012" element="_BuZyYJjFEeCTjf2eRUPO7Q">
+              <children xmi:type="notation:Node" xmi:id="_tc5UMNwbEd-D07IUzYQn8w" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_tc5UMdwbEd-D07IUzYQn8w" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_tc8XgNwbEd-D07IUzYQn8w" type="3003" element="_BuZyYZjFEeCTjf2eRUPO7Q">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_tc8XgdwbEd-D07IUzYQn8w" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tc8XgtwbEd-D07IUzYQn8w"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_tc4tIdwbEd-D07IUzYQn8w" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tc4tItwbEd-D07IUzYQn8w" x="-2" width="10" height="10"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_tbiCRNwbEd-D07IUzYQn8w" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tbiCRdwbEd-D07IUzYQn8w" x="-12" y="192"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_t5H9MNwbEd-D07IUzYQn8w" type="Note">
+            <children xmi:type="notation:Node" xmi:id="_t5IkQNwbEd-D07IUzYQn8w" type="DiagramName">
+              <element xsi:nil="true"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_t5IkQdwbEd-D07IUzYQn8w" type="Description">
+              <element xsi:nil="true"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_t5H9MdwbEd-D07IUzYQn8w" fontName="Segoe UI" fillColor="13369343" lineColor="6737151"/>
+            <element xsi:nil="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_t5H9MtwbEd-D07IUzYQn8w" x="23" y="99"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_uZPAoNwbEd-D07IUzYQn8w" type="Note">
+            <children xmi:type="notation:Node" xmi:id="_uZQOwNwbEd-D07IUzYQn8w" type="DiagramName">
+              <element xsi:nil="true"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_uZQOwdwbEd-D07IUzYQn8w" type="Description">
+              <element xsi:nil="true"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_uZPAodwbEd-D07IUzYQn8w" fontName="Segoe UI" fillColor="13369343" lineColor="6737151"/>
+            <element xsi:nil="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_uZPAotwbEd-D07IUzYQn8w" x="236" y="102"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_tXZwMtwbEd-D07IUzYQn8w"/>
+          <edges xmi:type="notation:Edge" xmi:id="_vCYrUNwbEd-D07IUzYQn8w" type="NoteAttachment" source="_t5H9MNwbEd-D07IUzYQn8w" target="_tbhbMNwbEd-D07IUzYQn8w">
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_vCYrUdwbEd-D07IUzYQn8w"/>
+            <element xsi:nil="true"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_vCYrUtwbEd-D07IUzYQn8w" points="[0, -28, 0, 95]$[0, -88, 0, 35]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_vCex8NwbEd-D07IUzYQn8w" id="(0.45,0.0)"/>
+          </edges>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_BuXWIJjFEeCTjf2eRUPO7Q" name="p1">
+        <target xmi:type="ecore:EPackage" href="pinUnpinNote.ecore#//p1"/>
+        <semanticElements xmi:type="ecore:EPackage" href="pinUnpinNote.ecore#//p1"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_BuX9MJjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BuX9MZjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="../description/pinUnpinNote.odesign#//@ownedViewpoints[name='pinnedNoteTest']/@ownedRepresentations[name='PinUnpinNoteDiag']/@defaultLayer/@containerMappings[name='Package2']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BuX9MpjFEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_BuX9M5jFEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_BuX9NJjFEeCTjf2eRUPO7Q" red="204" green="242" blue="166"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="../description/pinUnpinNote.odesign#//@ownedViewpoints[name='pinnedNoteTest']/@ownedRepresentations[name='PinUnpinNoteDiag']/@defaultLayer/@containerMappings[name='Package2']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_BuYkQJjFEeCTjf2eRUPO7Q" name="p2">
+        <target xmi:type="ecore:EPackage" href="pinUnpinNote.ecore#//p2"/>
+        <semanticElements xmi:type="ecore:EPackage" href="pinUnpinNote.ecore#//p2"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_BuZyYJjFEeCTjf2eRUPO7Q" width="1" height="1" resizeKind="NORTH_SOUTH">
+          <target xmi:type="ecore:EClass" href="pinUnpinNote.ecore#//p2/C1"/>
+          <semanticElements xmi:type="ecore:EClass" href="pinUnpinNote.ecore#//p2/C1"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_BuZyYZjFEeCTjf2eRUPO7Q" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BuZyYpjFEeCTjf2eRUPO7Q"/>
+            <description xmi:type="style:SquareDescription" href="../description/pinUnpinNote.odesign#//@ownedViewpoints[name='pinnedNoteTest']/@ownedRepresentations[name='PinUnpinNoteDiag']/@defaultLayer/@containerMappings[name='Package2']/@borderedNodeMappings[name='Class2']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BuZyY5jFEeCTjf2eRUPO7Q" red="114" green="159" blue="207"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_BuZyZJjFEeCTjf2eRUPO7Q" red="136" green="136" blue="136"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="../description/pinUnpinNote.odesign#//@ownedViewpoints[name='pinnedNoteTest']/@ownedRepresentations[name='PinUnpinNoteDiag']/@defaultLayer/@containerMappings[name='Package2']/@borderedNodeMappings[name='Class2']"/>
+        </ownedBorderedNodes>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_BuYkQZjFEeCTjf2eRUPO7Q">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BuYkQpjFEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="../description/pinUnpinNote.odesign#//@ownedViewpoints[name='pinnedNoteTest']/@ownedRepresentations[name='PinUnpinNoteDiag']/@defaultLayer/@containerMappings[name='Package2']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BuYkQ5jFEeCTjf2eRUPO7Q"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_BuYkRJjFEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_BuYkRZjFEeCTjf2eRUPO7Q" red="204" green="242" blue="166"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="../description/pinUnpinNote.odesign#//@ownedViewpoints[name='pinnedNoteTest']/@ownedRepresentations[name='PinUnpinNoteDiag']/@defaultLayer/@containerMappings[name='Package2']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="../description/pinUnpinNote.odesign#//@ownedViewpoints[name='pinnedNoteTest']/@ownedRepresentations[name='PinUnpinNoteDiag']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_tXZJIdwbEd-D07IUzYQn8w"/>
+      <activatedLayers xmi:type="description_1:Layer" href="../description/pinUnpinNote.odesign#//@ownedViewpoints[name='pinnedNoteTest']/@ownedRepresentations[name='PinUnpinNoteDiag']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="pinUnpinNote.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="../description/pinUnpinNote.odesign#//@ownedViewpoints[name='pinnedNoteTest']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

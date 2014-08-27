@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/tree/description/1.0.0" documentation="org.eclipse.sirius.tests.data" name="RefreshTreeOdesign">
+  <ownedViewpoints name="Design" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:TreeDescription" name="EPackageContent" domainClass="EPackage">
+      <subItemMappings name="EClasses" domainClass="EClass" semanticCandidatesExpression="&lt;%eContents()%>">
+        <defaultStyle>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+        </defaultStyle>
+      </subItemMappings>
+      <subItemMappings name="AbstractClasses" domainClass="EClass" semanticCandidatesExpression="&lt;%eContents()[isAbstract]%>" specialize="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='EPackageContent']/@subItemMappings[name='EClasses']">
+        <defaultStyle labelExpression="*&lt;%name%>">
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+      </subItemMappings>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:TreeDescription" name="Generic EMF Tree" domainClass="EObject">
+      <subItemMappings name="EObject" domainClass="EObject" semanticCandidatesExpression="&lt;%eContents()%>" reusedTreeItemMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Generic%20EMF%20Tree']/@subItemMappings[name='EObject']">
+        <defaultStyle>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+        </defaultStyle>
+      </subItemMappings>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:TreeDescription" name="Generic EMF Tree With Inheritance" domainClass="EObject">
+      <subItemMappings name="EObject Master" domainClass="EObject " semanticCandidatesExpression="&lt;%eContents()%>">
+        <defaultStyle>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+        </defaultStyle>
+        <subItemMappings name="EObject Child" domainClass="EObject" semanticCandidatesExpression="&lt;%eContents()%>" specialize="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Generic%20EMF%20Tree%20With%20Inheritance']/@subItemMappings[name='EObject%20Master']">
+          <defaultStyle>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </defaultStyle>
+        </subItemMappings>
+      </subItemMappings>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:TreeDescription" name="InfiniteRecursion" domainClass="EObject">
+      <subItemMappings name="Current EObject" domainClass="EObject " semanticCandidatesExpression="&lt;%self%>" reusedTreeItemMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='InfiniteRecursion']/@subItemMappings[name='Current%20EObject']">
+        <defaultStyle>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+      </subItemMappings>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:TreeDescription" name="InfiniteRecursion With Inheritance" domainClass="EObject">
+      <subItemMappings name="Current EObject Infinite" domainClass="EObject " semanticCandidatesExpression="&lt;%self%>">
+        <defaultStyle>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+        <subItemMappings name="Current EObject Infinite Specialized" domainClass="EObject" semanticCandidatesExpression="&lt;%self%>" specialize="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='InfiniteRecursion%20With%20Inheritance']/@subItemMappings[name='Current%20EObject%20Infinite']">
+          <defaultStyle>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </defaultStyle>
+        </subItemMappings>
+      </subItemMappings>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:TreeDescription" name="PreconditionOnMappings" domainClass="EPackage">
+      <subItemMappings name="EClasses" domainClass="Abstract EClass by Precondition" preconditionExpression="&lt;%$view.target[isAbstract]%>" semanticCandidatesExpression="&lt;%eContents()%>">
+        <defaultStyle>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+        </defaultStyle>
+      </subItemMappings>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

@@ -41,7 +41,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em>Action</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ExternalJavaActionCallImpl extends MenuItemDescriptionImpl implements ExternalJavaActionCall {

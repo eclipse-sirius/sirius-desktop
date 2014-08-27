@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_vSE7QCLeEd-Z75UdFXmcAQ" selectedViews="_vscjECLeEd-Z75UdFXmcAQ _t0a-kabBEd-htuxLmrAnTw" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_vscjECLeEd-Z75UdFXmcAQ" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_wZbk4SLeEd-Z75UdFXmcAQ" name="new TC2026_Container">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_mvtjYBHnEeK-xJ8W7doAqA" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_wZdaECLeEd-Z75UdFXmcAQ" type="Sirius" element="_wZbk4SLeEd-Z75UdFXmcAQ" measurementUnit="Pixel">
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_wZdaESLeEd-Z75UdFXmcAQ"/>
+        </data>
+      </ownedAnnotationEntries>
+      <description xmi:type="description_1:DiagramDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%232026']/@ownedRepresentations[name='TC2026_Container']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_wZbk4iLeEd-Z75UdFXmcAQ"/>
+      <activatedLayers xmi:type="description_1:Layer" href="canonical_refresh01.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%232026']/@ownedRepresentations[name='TC2026_Container']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="canonical_refresh01.odesign#//@ownedViewpoints[name='Test%20case%20for%20ticket%20%232026']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_t0a-kabBEd-htuxLmrAnTw" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_w--2EKbBEd-htuxLmrAnTw" name="doremi2253-borderedNodeOnNode">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_xALv8KbBEd-htuxLmrAnTw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_xALv8abBEd-htuxLmrAnTw" type="Sirius" element="_w--2EKbBEd-htuxLmrAnTw" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_zbc4gKbBEd-htuxLmrAnTw" type="2001" element="_za3psKbBEd-htuxLmrAnTw">
+            <children xmi:type="notation:Node" xmi:id="_zbf70KbBEd-htuxLmrAnTw" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_zbf70abBEd-htuxLmrAnTw" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_zbmpgKbBEd-htuxLmrAnTw" type="3001" element="_sHEEQJjJEeCGbO5oLE72PQ">
+              <children xmi:type="notation:Node" xmi:id="_zbn3oKbBEd-htuxLmrAnTw" type="5001">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_zbn3oabBEd-htuxLmrAnTw" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_zbriAKbBEd-htuxLmrAnTw" type="3003" element="_sHFSYJjJEeCGbO5oLE72PQ">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_zbriAabBEd-htuxLmrAnTw" fontName="Sans"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zbriAqbBEd-htuxLmrAnTw"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_zbmpgabBEd-htuxLmrAnTw" fontName="Sans" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zbmpgqbBEd-htuxLmrAnTw" x="42" y="25" width="10" height="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_zboesKbBEd-htuxLmrAnTw" type="3003" element="_za4QxKbBEd-htuxLmrAnTw">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_zboesabBEd-htuxLmrAnTw" fontName="Sans"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zboesqbBEd-htuxLmrAnTw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zbc4gabBEd-htuxLmrAnTw" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zbc4gqbBEd-htuxLmrAnTw" x="62" y="75" width="50" height="50"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_xALv8qbBEd-htuxLmrAnTw"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_za3psKbBEd-htuxLmrAnTw" name="p1" width="5" height="5">
+        <target xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseBorderedNodes/p1"/>
+        <semanticElements xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseBorderedNodes/p1"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_sHEEQJjJEeCGbO5oLE72PQ" name="C1" width="1" height="1">
+          <target xmi:type="ecore:EClass" href="canonical_refresh01.ecore#//usecaseBorderedNodes/p1/C1"/>
+          <semanticElements xmi:type="ecore:EClass" href="canonical_refresh01.ecore#//usecaseBorderedNodes/p1/C1"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_sHFSYJjJEeCGbO5oLE72PQ">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_sHFSYZjJEeCGbO5oLE72PQ"/>
+            <description xmi:type="style:SquareDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnNode']/@defaultLayer/@nodeMappings[name='EPackage']/@borderedNodeMappings[name='EClass']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_sHFSYpjJEeCGbO5oLE72PQ"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_sHFSY5jJEeCGbO5oLE72PQ" red="138" green="226" blue="52"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnNode']/@defaultLayer/@nodeMappings[name='EPackage']/@borderedNodeMappings[name='EClass']"/>
+        </ownedBorderedNodes>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_za4QxKbBEd-htuxLmrAnTw">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_sHDdMJjJEeCGbO5oLE72PQ"/>
+          <description xmi:type="style:SquareDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnNode']/@defaultLayer/@nodeMappings[name='EPackage']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_za4QxabBEd-htuxLmrAnTw"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_za4QxqbBEd-htuxLmrAnTw" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnNode']/@defaultLayer/@nodeMappings[name='EPackage']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnNode']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_w--2EabBEd-htuxLmrAnTw"/>
+      <activatedLayers xmi:type="description_1:Layer" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnNode']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseBorderedNodes"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_3N2MEKbBEd-htuxLmrAnTw" name="doremi2253-borderedNodeOnNodeInContainer">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_3N2MEqbBEd-htuxLmrAnTw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_3N2ME6bBEd-htuxLmrAnTw" type="Sirius" element="_3N2MEKbBEd-htuxLmrAnTw" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_3OAkIKbBEd-htuxLmrAnTw" type="2002" element="_sHI8wJjJEeCGbO5oLE72PQ">
+            <children xmi:type="notation:Node" xmi:id="_3OBLMKbBEd-htuxLmrAnTw" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_3OByQKbBEd-htuxLmrAnTw" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_5OwT4KbBEd-htuxLmrAnTw" type="3007" element="_sHuyoJjJEeCGbO5oLE72PQ">
+                <children xmi:type="notation:Node" xmi:id="_5OxiAKbBEd-htuxLmrAnTw" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_5OxiAabBEd-htuxLmrAnTw" y="5"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_5O0lUKbBEd-htuxLmrAnTw" type="3001" element="_sHuyoZjJEeCGbO5oLE72PQ">
+                  <children xmi:type="notation:Node" xmi:id="_5O1MYKbBEd-htuxLmrAnTw" type="5001">
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_5O1MYabBEd-htuxLmrAnTw" y="5"/>
+                  </children>
+                  <children xmi:type="notation:Node" xmi:id="_5O5d0KbBEd-htuxLmrAnTw" type="3003" element="_sHuyopjJEeCGbO5oLE72PQ">
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_5O5d0abBEd-htuxLmrAnTw" fontName="Sans"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5O5d0qbBEd-htuxLmrAnTw"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_5O0lUabBEd-htuxLmrAnTw" fontName="Sans" fontHeight="8"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5O0lUqbBEd-htuxLmrAnTw" x="42" y="16" width="10" height="10"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_5O1zcKbBEd-htuxLmrAnTw" type="3003" element="_sHuyppjJEeCGbO5oLE72PQ">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_5O1zcabBEd-htuxLmrAnTw" fontName="Sans"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5O1zcqbBEd-htuxLmrAnTw"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_5OwT4abBEd-htuxLmrAnTw" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5OwT4qbBEd-htuxLmrAnTw" x="59" y="44" width="50" height="50"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_3OByQabBEd-htuxLmrAnTw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_3OByQqbBEd-htuxLmrAnTw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_3OAkIabBEd-htuxLmrAnTw" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3OAkIqbBEd-htuxLmrAnTw" width="633" height="353"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_3N2MFKbBEd-htuxLmrAnTw"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_sHI8wJjJEeCGbO5oLE72PQ" name="container">
+        <target xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseBorderedNodesInContainer/container"/>
+        <semanticElements xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseBorderedNodesInContainer/container"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_sHJj0JjJEeCGbO5oLE72PQ">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_sHJj0ZjJEeCGbO5oLE72PQ"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnNodeInContainer']/@defaultLayer/@containerMappings[name='EPackageContainer']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_sHJj0pjJEeCGbO5oLE72PQ"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_sHJj05jJEeCGbO5oLE72PQ" red="114" green="159" blue="207"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_sHJj1JjJEeCGbO5oLE72PQ" red="194" green="239" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnNodeInContainer']/@defaultLayer/@containerMappings[name='EPackageContainer']"/>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_sHuyoJjJEeCGbO5oLE72PQ" name="p1" width="5" height="5" originalStyle="_sHuyppjJEeCGbO5oLE72PQ">
+          <target xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseBorderedNodesInContainer/container/p1"/>
+          <semanticElements xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseBorderedNodesInContainer/container/p1"/>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_sHuyoZjJEeCGbO5oLE72PQ" name="C1" width="1" height="1" originalStyle="_sHuyopjJEeCGbO5oLE72PQ">
+            <target xmi:type="ecore:EClass" href="canonical_refresh01.ecore#//usecaseBorderedNodesInContainer/container/p1/C1"/>
+            <semanticElements xmi:type="ecore:EClass" href="canonical_refresh01.ecore#//usecaseBorderedNodesInContainer/container/p1/C1"/>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_sHuyopjJEeCGbO5oLE72PQ">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_sHuyo5jJEeCGbO5oLE72PQ"/>
+              <description xmi:type="style:SquareDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnNodeInContainer']/@defaultLayer/@containerMappings[name='EPackageContainer']/@subNodeMappings[name='EPackageNode']/@borderedNodeMappings[name='EClass2']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_sHuypJjJEeCGbO5oLE72PQ"/>
+              <color xmi:type="viewpoint:RGBValues" xmi:id="_sHuypZjJEeCGbO5oLE72PQ" red="138" green="226" blue="52"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnNodeInContainer']/@defaultLayer/@containerMappings[name='EPackageContainer']/@subNodeMappings[name='EPackageNode']/@borderedNodeMappings[name='EClass2']"/>
+          </ownedBorderedNodes>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_sHuyppjJEeCGbO5oLE72PQ">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_sHuyp5jJEeCGbO5oLE72PQ"/>
+            <description xmi:type="style:SquareDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnNodeInContainer']/@defaultLayer/@containerMappings[name='EPackageContainer']/@subNodeMappings[name='EPackageNode']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_sHuyqJjJEeCGbO5oLE72PQ"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_sHuyqZjJEeCGbO5oLE72PQ" red="136" green="136" blue="136"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnNodeInContainer']/@defaultLayer/@containerMappings[name='EPackageContainer']/@subNodeMappings[name='EPackageNode']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnNodeInContainer']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_3N2MEabBEd-htuxLmrAnTw"/>
+      <activatedLayers xmi:type="description_1:Layer" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnNodeInContainer']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseBorderedNodesInContainer"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_9to6AKbBEd-htuxLmrAnTw" name="doremi2253-NodeInContainer" synchronized="false">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_9tphEKbBEd-htuxLmrAnTw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_9tphEabBEd-htuxLmrAnTw" type="Sirius" element="_9to6AKbBEd-htuxLmrAnTw" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_9t-RMKbBEd-htuxLmrAnTw" type="2002" element="_9tskYKbBEd-htuxLmrAnTw">
+            <children xmi:type="notation:Node" xmi:id="_9t-4QKbBEd-htuxLmrAnTw" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_9t-4QabBEd-htuxLmrAnTw" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_9uDJsKbBEd-htuxLmrAnTw" type="3007" element="_9tuZkKbBEd-htuxLmrAnTw">
+                <children xmi:type="notation:Node" xmi:id="_9uDwwKbBEd-htuxLmrAnTw" type="5003">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_9uDwwabBEd-htuxLmrAnTw" y="5"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_9uICMKbBEd-htuxLmrAnTw" type="3003" element="_9tuZkabBEd-htuxLmrAnTw">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_9uICMabBEd-htuxLmrAnTw" fontName="Sans"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9uICMqbBEd-htuxLmrAnTw"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_9uDJsabBEd-htuxLmrAnTw" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9uDJsqbBEd-htuxLmrAnTw" x="30" y="30" width="30" height="30"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_9t-4QqbBEd-htuxLmrAnTw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_9t-4Q6bBEd-htuxLmrAnTw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_9t-RMabBEd-htuxLmrAnTw" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9t-RMqbBEd-htuxLmrAnTw" width="813" height="343"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_9tphEqbBEd-htuxLmrAnTw"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_9tskYKbBEd-htuxLmrAnTw" name="p1">
+        <target xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseNodes/p1"/>
+        <semanticElements xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseNodes/p1"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_9ttLcKbBEd-htuxLmrAnTw">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_sHMnIJjJEeCGbO5oLE72PQ"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-NodeInContainer']/@defaultLayer/@containerMappings[name='EPackage4']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_9ttLcabBEd-htuxLmrAnTw"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_9ttLcqbBEd-htuxLmrAnTw" red="114" green="159" blue="207"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_9ttLc6bBEd-htuxLmrAnTw" red="194" green="239" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-NodeInContainer']/@defaultLayer/@containerMappings[name='EPackage4']"/>
+        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_9tuZkKbBEd-htuxLmrAnTw" name="C1" width="3" height="3">
+          <target xmi:type="ecore:EClass" href="canonical_refresh01.ecore#//usecaseNodes/p1/C1"/>
+          <semanticElements xmi:type="ecore:EClass" href="canonical_refresh01.ecore#//usecaseNodes/p1/C1"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_9tuZkabBEd-htuxLmrAnTw">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_sHN1QJjJEeCGbO5oLE72PQ"/>
+            <description xmi:type="style:SquareDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-NodeInContainer']/@defaultLayer/@containerMappings[name='EPackage4']/@subNodeMappings[name='EClass4']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_9tvAoKbBEd-htuxLmrAnTw"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_9tvAoabBEd-htuxLmrAnTw" red="138" green="226" blue="52"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-NodeInContainer']/@defaultLayer/@containerMappings[name='EPackage4']/@subNodeMappings[name='EClass4']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-NodeInContainer']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_9to6AabBEd-htuxLmrAnTw"/>
+      <activatedLayers xmi:type="description_1:Layer" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-NodeInContainer']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseNodes"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="__ojukKbBEd-htuxLmrAnTw" name="doremi2253-ContainerInContainer">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="__ojukqbBEd-htuxLmrAnTw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="__ojuk6bBEd-htuxLmrAnTw" type="Sirius" element="__ojukKbBEd-htuxLmrAnTw" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="__o9-QKbBEd-htuxLmrAnTw" type="2002" element="_sHPqcJjJEeCGbO5oLE72PQ">
+            <children xmi:type="notation:Node" xmi:id="__o-lUKbBEd-htuxLmrAnTw" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="__o-lUabBEd-htuxLmrAnTw" type="7001">
+              <children xmi:type="notation:Node" xmi:id="__pBBkKbBEd-htuxLmrAnTw" type="3008" element="_sN0MgJjJEeCGbO5oLE72PQ">
+                <children xmi:type="notation:Node" xmi:id="__pBooKbBEd-htuxLmrAnTw" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="__pCPsKbBEd-htuxLmrAnTw" type="7002">
+                  <styles xmi:type="notation:SortingStyle" xmi:id="__pCPsabBEd-htuxLmrAnTw"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="__pCPsqbBEd-htuxLmrAnTw"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="__pBBkabBEd-htuxLmrAnTw" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="__pBBkqbBEd-htuxLmrAnTw" x="30" y="30"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="__o-lUqbBEd-htuxLmrAnTw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="__o-lU6bBEd-htuxLmrAnTw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="__o9-QabBEd-htuxLmrAnTw" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="__o9-QqbBEd-htuxLmrAnTw" width="793" height="343"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="__ojulKbBEd-htuxLmrAnTw"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_sHPqcJjJEeCGbO5oLE72PQ" name="p1">
+        <target xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseNodes/p1"/>
+        <semanticElements xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseNodes/p1"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_sHPqcZjJEeCGbO5oLE72PQ">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_sHPqcpjJEeCGbO5oLE72PQ"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-ContainerInContainer']/@defaultLayer/@containerMappings[name='EPackage5']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_sHPqc5jJEeCGbO5oLE72PQ"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_sHPqdJjJEeCGbO5oLE72PQ" red="114" green="159" blue="207"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_sHQRgJjJEeCGbO5oLE72PQ" red="194" green="239" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-ContainerInContainer']/@defaultLayer/@containerMappings[name='EPackage5']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_sN0MgJjJEeCGbO5oLE72PQ" name="C1">
+          <target xmi:type="ecore:EClass" href="canonical_refresh01.ecore#//usecaseNodes/p1/C1"/>
+          <semanticElements xmi:type="ecore:EClass" href="canonical_refresh01.ecore#//usecaseNodes/p1/C1"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_sN0MgZjJEeCGbO5oLE72PQ">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_sN0MgpjJEeCGbO5oLE72PQ"/>
+            <description xmi:type="style:FlatContainerStyleDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-ContainerInContainer']/@defaultLayer/@containerMappings[name='EPackage5']/@subContainerMappings[name='EClass5']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_sN0Mg5jJEeCGbO5oLE72PQ"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_sN0MhJjJEeCGbO5oLE72PQ" red="138" green="226" blue="52"/>
+            <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_sN0MhZjJEeCGbO5oLE72PQ" red="204" green="242" blue="166"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-ContainerInContainer']/@defaultLayer/@containerMappings[name='EPackage5']/@subContainerMappings[name='EClass5']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-ContainerInContainer']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="__ojukabBEd-htuxLmrAnTw"/>
+      <activatedLayers xmi:type="description_1:Layer" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-ContainerInContainer']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseNodes"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_Bd770KbCEd-htuxLmrAnTw" name="doremi2253-ContainerListInContainer" synchronized="false">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_Bd8i4KbCEd-htuxLmrAnTw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_Bd8i4abCEd-htuxLmrAnTw" type="Sirius" element="_Bd770KbCEd-htuxLmrAnTw" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_BeNooKbCEd-htuxLmrAnTw" type="2002" element="_Bd_mMKbCEd-htuxLmrAnTw">
+            <children xmi:type="notation:Node" xmi:id="_BeOPsKbCEd-htuxLmrAnTw" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_BeOPsabCEd-htuxLmrAnTw" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_BeXZoKbCEd-htuxLmrAnTw" type="3009" element="_BeBbYKbCEd-htuxLmrAnTw">
+                <children xmi:type="notation:Node" xmi:id="_BedgQKbCEd-htuxLmrAnTw" type="5004"/>
+                <children xmi:type="notation:Node" xmi:id="_BeeHUKbCEd-htuxLmrAnTw" type="7003">
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_BeeuYKbCEd-htuxLmrAnTw"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_BeeuYabCEd-htuxLmrAnTw"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_BeXZoabCEd-htuxLmrAnTw" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BeXZoqbCEd-htuxLmrAnTw" x="30" y="30"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_BeOPsqbCEd-htuxLmrAnTw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_BeOPs6bCEd-htuxLmrAnTw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_BeNooabCEd-htuxLmrAnTw" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BeNooqbCEd-htuxLmrAnTw" width="808" height="343"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_Bd8i4qbCEd-htuxLmrAnTw"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_Bd_mMKbCEd-htuxLmrAnTw" name="p1">
+        <target xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseNodes/p1"/>
+        <semanticElements xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseNodes/p1"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_BeANQKbCEd-htuxLmrAnTw">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_sHTU0JjJEeCGbO5oLE72PQ"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-ContainerListInContainer']/@defaultLayer/@containerMappings[name='EPackage6']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BeANQabCEd-htuxLmrAnTw"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_BeANQqbCEd-htuxLmrAnTw" red="114" green="159" blue="207"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_BeA0UKbCEd-htuxLmrAnTw" red="194" green="239" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-ContainerListInContainer']/@defaultLayer/@containerMappings[name='EPackage6']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_BeBbYKbCEd-htuxLmrAnTw" name="C1">
+          <target xmi:type="ecore:EClass" href="canonical_refresh01.ecore#//usecaseNodes/p1/C1"/>
+          <semanticElements xmi:type="ecore:EClass" href="canonical_refresh01.ecore#//usecaseNodes/p1/C1"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_BeCCcKbCEd-htuxLmrAnTw">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_sHT74JjJEeCGbO5oLE72PQ"/>
+            <description xmi:type="style:FlatContainerStyleDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-ContainerListInContainer']/@defaultLayer/@containerMappings[name='EPackage6']/@subContainerMappings[name='EClass6List']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BeCCcabCEd-htuxLmrAnTw"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_BeCCcqbCEd-htuxLmrAnTw" red="138" green="226" blue="52"/>
+            <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_BeCCc6bCEd-htuxLmrAnTw" red="204" green="242" blue="166"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-ContainerListInContainer']/@defaultLayer/@containerMappings[name='EPackage6']/@subContainerMappings[name='EClass6List']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-ContainerListInContainer']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_Bd770abCEd-htuxLmrAnTw"/>
+      <activatedLayers xmi:type="description_1:Layer" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-ContainerListInContainer']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseNodes"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_MiM6gKbCEd-htuxLmrAnTw" name="doremi2253-Node">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_MiNhkKbCEd-htuxLmrAnTw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_MiNhkabCEd-htuxLmrAnTw" type="Sirius" element="_MiM6gKbCEd-htuxLmrAnTw" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_TreqUKbCEd-htuxLmrAnTw" type="2001" element="_TrbnAKbCEd-htuxLmrAnTw">
+            <children xmi:type="notation:Node" xmi:id="_TrfRYKbCEd-htuxLmrAnTw" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_TrfRYabCEd-htuxLmrAnTw" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_TrhtoKbCEd-htuxLmrAnTw" type="3003" element="_TrbnAabCEd-htuxLmrAnTw">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_TrhtoabCEd-htuxLmrAnTw" fontName="Sans"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TrhtoqbCEd-htuxLmrAnTw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_TreqUabCEd-htuxLmrAnTw" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_TreqUqbCEd-htuxLmrAnTw" x="77" y="69" width="50" height="50"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_MiNhkqbCEd-htuxLmrAnTw"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_TrbnAKbCEd-htuxLmrAnTw" name="C1" width="5" height="5">
+        <target xmi:type="ecore:EClass" href="canonical_refresh01.ecore#//usecaseNodes/p1/C1"/>
+        <semanticElements xmi:type="ecore:EClass" href="canonical_refresh01.ecore#//usecaseNodes/p1/C1"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_TrbnAabCEd-htuxLmrAnTw">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_sHWYIJjJEeCGbO5oLE72PQ"/>
+          <description xmi:type="style:SquareDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-Node']/@defaultLayer/@nodeMappings[name='EClassNode']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_TrbnAqbCEd-htuxLmrAnTw"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_TrbnA6bCEd-htuxLmrAnTw" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-Node']/@defaultLayer/@nodeMappings[name='EClassNode']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-Node']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_MiM6gabCEd-htuxLmrAnTw"/>
+      <activatedLayers xmi:type="description_1:Layer" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-Node']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseNodes/p1"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_NsvbAKbCEd-htuxLmrAnTw" name="doremi2253-Container" synchronized="false">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_NswCEKbCEd-htuxLmrAnTw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_NswCEabCEd-htuxLmrAnTw" type="Sirius" element="_NsvbAKbCEd-htuxLmrAnTw" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_Ns_SoKbCEd-htuxLmrAnTw" type="2002" element="_NszscKbCEd-htuxLmrAnTw">
+            <children xmi:type="notation:Node" xmi:id="_Ns_5sKbCEd-htuxLmrAnTw" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_NtAgwKbCEd-htuxLmrAnTw" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_NtAgwabCEd-htuxLmrAnTw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_NtAgwqbCEd-htuxLmrAnTw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_Ns_SoabCEd-htuxLmrAnTw" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ns_SoqbCEd-htuxLmrAnTw"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_NswCEqbCEd-htuxLmrAnTw"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_NszscKbCEd-htuxLmrAnTw" name="C1">
+        <target xmi:type="ecore:EClass" href="canonical_refresh01.ecore#//usecaseNodes/p1/C1"/>
+        <semanticElements xmi:type="ecore:EClass" href="canonical_refresh01.ecore#//usecaseNodes/p1/C1"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Ns0TgKbCEd-htuxLmrAnTw">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_sHYNUJjJEeCGbO5oLE72PQ"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-Container']/@defaultLayer/@containerMappings[name='EClassContainer']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Ns0TgabCEd-htuxLmrAnTw"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Ns0TgqbCEd-htuxLmrAnTw" red="238" green="201" blue="142"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Ns0Tg6bCEd-htuxLmrAnTw" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-Container']/@defaultLayer/@containerMappings[name='EClassContainer']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-Container']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_NsvbAabCEd-htuxLmrAnTw"/>
+      <activatedLayers xmi:type="description_1:Layer" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-Container']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseNodes/p1"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_Oxv7QKbCEd-htuxLmrAnTw" name="doremi2253-ContainerList" synchronized="false">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_OxwiUKbCEd-htuxLmrAnTw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_OxwiUabCEd-htuxLmrAnTw" type="Sirius" element="_Oxv7QKbCEd-htuxLmrAnTw" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_OyVxIKbCEd-htuxLmrAnTw" type="2003" element="_Ox0MsKbCEd-htuxLmrAnTw">
+            <children xmi:type="notation:Node" xmi:id="_OyXmUKbCEd-htuxLmrAnTw" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_OyY0cKbCEd-htuxLmrAnTw" type="7004">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_OyY0cabCEd-htuxLmrAnTw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_OyY0cqbCEd-htuxLmrAnTw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_OyVxIabCEd-htuxLmrAnTw" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OyVxIqbCEd-htuxLmrAnTw"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_OxwiUqbCEd-htuxLmrAnTw"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_Ox0MsKbCEd-htuxLmrAnTw" name="C1">
+        <target xmi:type="ecore:EClass" href="canonical_refresh01.ecore#//usecaseNodes/p1/C1"/>
+        <semanticElements xmi:type="ecore:EClass" href="canonical_refresh01.ecore#//usecaseNodes/p1/C1"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Ox0zwKbCEd-htuxLmrAnTw">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_sHaCgJjJEeCGbO5oLE72PQ"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-ContainerList']/@defaultLayer/@containerMappings[name='EClassContainerList']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Ox0zwabCEd-htuxLmrAnTw"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Ox0zwqbCEd-htuxLmrAnTw" red="238" green="201" blue="142"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Ox1a0KbCEd-htuxLmrAnTw" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-ContainerList']/@defaultLayer/@containerMappings[name='EClassContainerList']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-ContainerList']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_Oxv7QabCEd-htuxLmrAnTw"/>
+      <activatedLayers xmi:type="description_1:Layer" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-ContainerList']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseNodes/p1"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_vIB6UKkYEd-CUPaKn0RCUA" name="doremi2253-borderedNodeOnContainer">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_vIvsAKkYEd-CUPaKn0RCUA" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_vIw6IKkYEd-CUPaKn0RCUA" type="Sirius" element="_vIB6UKkYEd-CUPaKn0RCUA" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_vJWI8KkYEd-CUPaKn0RCUA" type="2002" element="_sHb3sJjJEeCGbO5oLE72PQ">
+            <children xmi:type="notation:Node" xmi:id="_vJXXEKkYEd-CUPaKn0RCUA" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_vJX-IKkYEd-CUPaKn0RCUA" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_vJX-IakYEd-CUPaKn0RCUA"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_vJX-IqkYEd-CUPaKn0RCUA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_vKKBQKkYEd-CUPaKn0RCUA" type="3012" element="_sHds4JjJEeCGbO5oLE72PQ">
+              <children xmi:type="notation:Node" xmi:id="_vKKoUKkYEd-CUPaKn0RCUA" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_vKKoUakYEd-CUPaKn0RCUA" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_vKPg0KkYEd-CUPaKn0RCUA" type="3003" element="_sHeT8JjJEeCGbO5oLE72PQ">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_vKPg0akYEd-CUPaKn0RCUA" fontName="Sans"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vKPg0qkYEd-CUPaKn0RCUA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_vKKBQakYEd-CUPaKn0RCUA" fontName="Sans" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vKKBQqkYEd-CUPaKn0RCUA" x="130" y="60" width="10" height="10"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_vJWI8akYEd-CUPaKn0RCUA" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vJWI8qkYEd-CUPaKn0RCUA" x="45" y="25"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_2CWBEKkYEd-CUPaKn0RCUA" type="2002" element="_sHcewJjJEeCGbO5oLE72PQ">
+            <children xmi:type="notation:Node" xmi:id="_2CWoIKkYEd-CUPaKn0RCUA" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_2CXPMKkYEd-CUPaKn0RCUA" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_2CXPMakYEd-CUPaKn0RCUA"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_2CXPMqkYEd-CUPaKn0RCUA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_2CWBEakYEd-CUPaKn0RCUA" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2CWBEqkYEd-CUPaKn0RCUA" x="423" y="180"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_vIw6IakYEd-CUPaKn0RCUA"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_sHb3sJjJEeCGbO5oLE72PQ" name="p1">
+        <target xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseBorderedNodes/p1"/>
+        <semanticElements xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseBorderedNodes/p1"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_sHds4JjJEeCGbO5oLE72PQ" name="C1" width="1" height="1">
+          <target xmi:type="ecore:EClass" href="canonical_refresh01.ecore#//usecaseBorderedNodes/p1/C1"/>
+          <semanticElements xmi:type="ecore:EClass" href="canonical_refresh01.ecore#//usecaseBorderedNodes/p1/C1"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_sHeT8JjJEeCGbO5oLE72PQ">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_sHeT8ZjJEeCGbO5oLE72PQ"/>
+            <description xmi:type="style:SquareDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnContainer']/@defaultLayer/@containerMappings[name='EPackage']/@borderedNodeMappings[name='EClass']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_sHeT8pjJEeCGbO5oLE72PQ"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_sHeT85jJEeCGbO5oLE72PQ" red="138" green="226" blue="52"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnContainer']/@defaultLayer/@containerMappings[name='EPackage']/@borderedNodeMappings[name='EClass']"/>
+        </ownedBorderedNodes>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_sHb3sZjJEeCGbO5oLE72PQ">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_sHb3spjJEeCGbO5oLE72PQ"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnContainer']/@defaultLayer/@containerMappings[name='EPackage']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_sHb3s5jJEeCGbO5oLE72PQ"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_sHb3tJjJEeCGbO5oLE72PQ" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_sHb3tZjJEeCGbO5oLE72PQ" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnContainer']/@defaultLayer/@containerMappings[name='EPackage']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_sHcewJjJEeCGbO5oLE72PQ" name="p2">
+        <target xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseBorderedNodes/p2"/>
+        <semanticElements xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseBorderedNodes/p2"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_sHdF0JjJEeCGbO5oLE72PQ">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_sHdF0ZjJEeCGbO5oLE72PQ"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnContainer']/@defaultLayer/@containerMappings[name='EPackage']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_sHdF0pjJEeCGbO5oLE72PQ"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_sHdF05jJEeCGbO5oLE72PQ" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_sHdF1JjJEeCGbO5oLE72PQ" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnContainer']/@defaultLayer/@containerMappings[name='EPackage']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnContainer']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_vIB6UakYEd-CUPaKn0RCUA"/>
+      <activatedLayers xmi:type="description_1:Layer" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnContainer']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseBorderedNodes"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_ztMuoKkYEd-CUPaKn0RCUA" name="doremi2253-borderedNodeOnContainerInContainer" synchronized="false">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_ztNVsKkYEd-CUPaKn0RCUA" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_ztNVsakYEd-CUPaKn0RCUA" type="Sirius" element="_ztMuoKkYEd-CUPaKn0RCUA" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_ztdNUKkYEd-CUPaKn0RCUA" type="2002" element="_sHhXQJjJEeCGbO5oLE72PQ">
+            <children xmi:type="notation:Node" xmi:id="_ztd0YKkYEd-CUPaKn0RCUA" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_ztd0YakYEd-CUPaKn0RCUA" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_ztfpkKkYEd-CUPaKn0RCUA" type="3008" element="_sN99gJjJEeCGbO5oLE72PQ">
+                <children xmi:type="notation:Node" xmi:id="_ztgQoKkYEd-CUPaKn0RCUA" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_ztg3sKkYEd-CUPaKn0RCUA" type="7002">
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_ztg3sakYEd-CUPaKn0RCUA"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_ztg3sqkYEd-CUPaKn0RCUA"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_zuNbQKkYEd-CUPaKn0RCUA" type="3012" element="_sN_ysJjJEeCGbO5oLE72PQ">
+                  <children xmi:type="notation:Node" xmi:id="_zuOCUKkYEd-CUPaKn0RCUA" type="5010">
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_zuOCUakYEd-CUPaKn0RCUA" y="5"/>
+                  </children>
+                  <children xmi:type="notation:Node" xmi:id="_zuRFoKkYEd-CUPaKn0RCUA" type="3003" element="_sN_ysZjJEeCGbO5oLE72PQ">
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_zuRFoakYEd-CUPaKn0RCUA" fontName="Sans"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zuRFoqkYEd-CUPaKn0RCUA"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_zuNbQakYEd-CUPaKn0RCUA" fontName="Sans" fontHeight="8"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zuNbQqkYEd-CUPaKn0RCUA" x="8" y="60" width="10" height="10"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_ztfpkakYEd-CUPaKn0RCUA" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ztfpkqkYEd-CUPaKn0RCUA" x="30" y="30"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_ztd0YqkYEd-CUPaKn0RCUA"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_ztd0Y6kYEd-CUPaKn0RCUA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_ztdNUakYEd-CUPaKn0RCUA" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ztdNUqkYEd-CUPaKn0RCUA" width="703" height="323"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_ztNVsqkYEd-CUPaKn0RCUA"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_sHhXQJjJEeCGbO5oLE72PQ" name="container">
+        <target xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseBorderedNodesInContainer/container"/>
+        <semanticElements xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseBorderedNodesInContainer/container"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_sHhXQZjJEeCGbO5oLE72PQ">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_sHhXQpjJEeCGbO5oLE72PQ"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnContainerInContainer']/@defaultLayer/@containerMappings[name='EPackageContainer']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_sHhXQ5jJEeCGbO5oLE72PQ"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_sHhXRJjJEeCGbO5oLE72PQ" red="114" green="159" blue="207"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_sHhXRZjJEeCGbO5oLE72PQ" red="194" green="239" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnContainerInContainer']/@defaultLayer/@containerMappings[name='EPackageContainer']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_sN99gJjJEeCGbO5oLE72PQ" name="p1">
+          <target xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseBorderedNodesInContainer/container/p1"/>
+          <semanticElements xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseBorderedNodesInContainer/container/p1"/>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_sN_ysJjJEeCGbO5oLE72PQ" name="C1" width="1" height="1" originalStyle="_sN_ysZjJEeCGbO5oLE72PQ">
+            <target xmi:type="ecore:EClass" href="canonical_refresh01.ecore#//usecaseBorderedNodesInContainer/container/p1/C1"/>
+            <semanticElements xmi:type="ecore:EClass" href="canonical_refresh01.ecore#//usecaseBorderedNodesInContainer/container/p1/C1"/>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_sN_ysZjJEeCGbO5oLE72PQ">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_sN_yspjJEeCGbO5oLE72PQ"/>
+              <description xmi:type="style:SquareDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnContainerInContainer']/@defaultLayer/@containerMappings[name='EPackageContainer']/@subContainerMappings[name='EPackageContainerInContainer']/@borderedNodeMappings[name='EClass2']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_sN_ys5jJEeCGbO5oLE72PQ"/>
+              <color xmi:type="viewpoint:RGBValues" xmi:id="_sN_ytJjJEeCGbO5oLE72PQ" red="138" green="226" blue="52"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnContainerInContainer']/@defaultLayer/@containerMappings[name='EPackageContainer']/@subContainerMappings[name='EPackageContainerInContainer']/@borderedNodeMappings[name='EClass2']"/>
+          </ownedBorderedNodes>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_sN99gZjJEeCGbO5oLE72PQ">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_sN99gpjJEeCGbO5oLE72PQ"/>
+            <description xmi:type="style:FlatContainerStyleDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnContainerInContainer']/@defaultLayer/@containerMappings[name='EPackageContainer']/@subContainerMappings[name='EPackageContainerInContainer']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_sN99g5jJEeCGbO5oLE72PQ"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_sN99hJjJEeCGbO5oLE72PQ" red="255" green="255" blue="255"/>
+            <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_sN99hZjJEeCGbO5oLE72PQ" red="209" green="209" blue="209"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnContainerInContainer']/@defaultLayer/@containerMappings[name='EPackageContainer']/@subContainerMappings[name='EPackageContainerInContainer']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnContainerInContainer']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_ztMuoakYEd-CUPaKn0RCUA"/>
+      <activatedLayers xmi:type="description_1:Layer" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']/@ownedRepresentations[name='doremi2253-borderedNodeOnContainerInContainer']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="canonical_refresh01.ecore#//usecaseBorderedNodesInContainer"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="canonical_refresh01.odesign#//@ownedViewpoints[name='doremi2253']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

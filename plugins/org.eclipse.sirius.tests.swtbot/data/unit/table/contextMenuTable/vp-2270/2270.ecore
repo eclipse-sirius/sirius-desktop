@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="p1">
+  <eClassifiers xsi:type="ecore:EClass" name="new EClass 1" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="new Attribute"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="new Attribute"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TestTailleNomSup13"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="datatype"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="enum"/>
+</ecore:EPackage>

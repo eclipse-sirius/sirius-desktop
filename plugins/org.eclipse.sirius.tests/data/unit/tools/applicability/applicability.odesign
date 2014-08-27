@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" documentation="org.eclipse.sirius.tests.unit.diagram.tools.data" name="ToolsApplicability" version="8.0.0">
+  <ownedViewpoints name="Design">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Entities" domainClass="EPackage">
+      <defaultLayer name="DefaultLayer" icon="">
+        <nodeMappings name="ClassNode" domainClass="EClass"/>
+        <nodeMappings name="OtherNode" domainClass="EClass">
+          <borderedNodeMappings name="borderOtherNode" semanticCandidatesExpression="feature:eAllContents" domainClass="Test"/>
+        </nodeMappings>
+        <nodeMappings name="ExtraNodeMapping" domainClass="EClass"/>
+        <edgeMappings name="Class2Other" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@nodeMappings[name='ClassNode']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@nodeMappings[name='OtherNode']"/>
+        <containerMappings name="ClassContainer" domainClass="EClass" reusedBorderedNodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@nodeMappings[name='OtherNode']/@borderedNodeMappings[name='borderOtherNode']" reusedContainerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='ClassContainer']">
+          <subNodeMappings name="OtherNode" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass"/>
+        </containerMappings>
+        <containerMappings name="ExtraContainerMapping"/>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="CreateClass2Other" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='Class2Other']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="test"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="CreateClass2OtherExtraSrcOnContainer" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='Class2Other']" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='ClassContainer']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="test"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="CreateClass2OtherExtraTgtOnContainer" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='Class2Other']" extraTargetMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='ClassContainer']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="test"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="CreateClassNode" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@nodeMappings[name='ClassNode']" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@nodeMappings[name='ExtraNodeMapping'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='ExtraContainerMapping']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="CreateClassContainerOtherNode" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='ClassContainer']/@subNodeMappings[name='OtherNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="CreateBorderNode" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@nodeMappings[name='OtherNode']/@borderedNodeMappings[name='borderOtherNode']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="CreateClassContainer" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='ClassContainer']" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='ExtraContainerMapping']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation/>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="Documentation">
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="ClassNodeSpecialization" domainClass="EClass" importedMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@nodeMappings[name='ClassNode']"/>
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="OtherRootNodeSpecialization" domainClass="EClass" importedMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@nodeMappings[name='OtherNode']"/>
+        <edgeMappings name="NodeSpecToOtherSpec" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Documentation']/@nodeMappings[name='ClassNodeSpecialization']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Documentation']/@nodeMappings[name='OtherRootNodeSpecialization']" useDomainElement="true"/>
+        <edgeMappings name="NodeSpecToOtherNonSpecialized" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@nodeMappings[name='ClassNode']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@nodeMappings[name='OtherNode']" useDomainElement="true"/>
+        <edgeMappingImports name="Class2OtherSpecialization" importedMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='Class2Other']"/>
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="ClassContainerSpecialization" importedMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='ClassContainer']">
+          <subNodeMappings xsi:type="description_1:NodeMappingImport" name="OtherNodeSpecialization" domainClass="EClass" importedMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='ClassContainer']/@subNodeMappings[name='OtherNode']"/>
+        </containerMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="CreateEdgeFromSpecializedNodes" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Documentation']/@edgeMappings[name='NodeSpecToOtherSpec']" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='ClassContainer']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="test"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="CreateEdgeFromNonSpecializedNodes" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Documentation']/@edgeMappings[name='NodeSpecToOtherNonSpecialized']" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='ClassContainer']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="test"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="CreateOtherRootSpecialization" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Documentation']/@containerMappings[name='ClassContainerSpecialization']/@subNodeMappings[name='OtherNodeSpecialization']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation/>
+          </ownedTools>
+        </toolSections>
+      </additionalLayers>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramImportDescription" name="DiagramSpecialization" domainClass="My" importedDiagram="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
+  </ownedViewpoints>
+</description:Group>

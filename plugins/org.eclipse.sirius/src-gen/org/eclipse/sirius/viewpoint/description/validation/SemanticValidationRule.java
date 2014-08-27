@@ -14,10 +14,10 @@ package org.eclipse.sirius.viewpoint.description.validation;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Semantic Validation Rule</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A validation rule that is applied on a semantic
  * element. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -26,7 +26,7 @@ package org.eclipse.sirius.viewpoint.description.validation;
  * <em>Target Class</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getSemanticValidationRule()
  * @model
  * @generated

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="My" version="8.0.0">
+  <ownedViewpoints name="edgeToEdgeTest">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="edgeToEdge" domainClass="migrationmodeler.Diagram">
+      <filters xsi:type="filter:CompositeFilterDescription" name="nodeFilter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@nodeMappings[name='node1']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="nodeCFiliter">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@nodeMappings[name='node1']" semanticConditionExpression="[id.contains('c')/]"/>
+      </filters>
+      <defaultLayer name="Default">
+        <nodeMappings name="node1" semanticCandidatesExpression="feature:eContents" domainClass="migrationmodeler.Node">
+          <borderedNodeMappings name="bordered" semanticCandidatesExpression="&lt;%eAllContents()%>" domainClass="migrationmodeler.Bordered">
+            <style xsi:type="style:LozengeNodeDescription" labelExpression="&lt;%id%>" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:SquareDescription" labelExpression="&lt;%id%>" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="edge" sourceMapping="//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@nodeMappings[name='node1'] //@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@containerMappings[name='container1'] //@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@nodeMappings[name='node1']/@borderedNodeMappings[name='bordered']" targetMapping="//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@containerMappings[name='container1'] //@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@nodeMappings[name='node1'] //@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@nodeMappings[name='node1']/@borderedNodeMappings[name='bordered'] //@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@edgeMappings[name='edge']" targetFinderExpression="&lt;%target%>" sourceFinderExpression="&lt;%source%>" domainClass="migrationmodeler.Edge" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="container1" semanticCandidatesExpression="feature:eContents" domainClass="migrationmodeler.Container">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="&lt;%id%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="create edge" edgeMappings="//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@edgeMappings[name='edge']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source.eContainer()/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="migrationmodeler.Edge" referenceName="edges">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="var:source"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <additionalLayers name="layerA">
+        <nodeMappings name="nodeLayerA" semanticCandidatesExpression="feature:eContents" domainClass="migrationmodeler.Node">
+          <style xsi:type="style:SquareDescription" labelExpression="&lt;%id%>" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+          </style>
+        </nodeMappings>
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="containerLayerA" domainClass="migrationmodeler.Container" importedMapping="//@ownedViewpoints[name='edgeToEdgeTest']/@ownedRepresentations[name='edgeToEdge']/@defaultLayer/@containerMappings[name='container1']">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="&lt;%id%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+          </style>
+        </containerMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

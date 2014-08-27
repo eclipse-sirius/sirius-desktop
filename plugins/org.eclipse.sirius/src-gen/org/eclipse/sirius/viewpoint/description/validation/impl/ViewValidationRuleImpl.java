@@ -31,7 +31,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule;
  * <em>Targets</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewValidationRule {

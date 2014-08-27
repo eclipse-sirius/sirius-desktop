@@ -40,7 +40,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
  * <em>First Model Operation</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TableToolImpl extends EObjectImpl implements TableTool {

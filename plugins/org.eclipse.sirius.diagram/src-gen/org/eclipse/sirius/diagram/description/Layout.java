@@ -16,11 +16,11 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Layout</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> The layout entry allow you to choose a predefined
  * existing layout for the arrange all feature <!-- end-model-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayout()
  * @model interface="true" abstract="true"
  * @generated

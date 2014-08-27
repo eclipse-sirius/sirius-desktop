@@ -31,7 +31,7 @@ import org.eclipse.sirius.diagram.sequence.description.MessageMapping;
  * <em>Receiving End Finder Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class MessageMappingImpl extends EdgeMappingImpl implements MessageMapping {

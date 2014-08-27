@@ -54,7 +54,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * Viewpoint</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DViewImpl extends EObjectImpl implements DView {

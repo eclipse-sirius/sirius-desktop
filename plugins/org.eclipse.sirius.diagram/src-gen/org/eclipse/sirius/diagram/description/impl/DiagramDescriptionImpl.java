@@ -162,7 +162,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * <em>Enable Popup Bars</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl implements DiagramDescription {

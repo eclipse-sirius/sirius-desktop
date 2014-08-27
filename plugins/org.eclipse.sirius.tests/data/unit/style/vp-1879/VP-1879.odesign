@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="VP-1879" version="8.0.0">
+  <ownedViewpoints name="VP-1879" modelFileExtension="*.ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="vp1879" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="node_class" domainClass="EClass">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="edge_ref" sourceMapping="//@ownedViewpoints[name='VP-1879']/@ownedRepresentations[name='vp1879']/@defaultLayer/@nodeMappings[name='node_class']" targetMapping="//@ownedViewpoints[name='VP-1879']/@ownedRepresentations[name='vp1879']/@defaultLayer/@nodeMappings[name='node_class']" targetFinderExpression="[self.eReferenceType/]" sourceFinderExpression="[self.eContainer()/]" domainClass="EReference" useDomainElement="true">
+          <style sizeComputationExpression="&lt;%name%>">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            <centerLabelStyleDescription labelExpression="[self.name/]">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="edge_ref_without_size_expr" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;).nFirst%>" sourceMapping="//@ownedViewpoints[name='VP-1879']/@ownedRepresentations[name='vp1879']/@defaultLayer/@nodeMappings[name='node_class']" targetMapping="//@ownedViewpoints[name='VP-1879']/@ownedRepresentations[name='vp1879']/@defaultLayer/@nodeMappings[name='node_class']" targetFinderExpression="&lt;%eType%>" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
+          <style sizeComputationExpression="">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelExpression="empty size expr">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:SequenceDiagramDescription">
+      <defaultLayer name="Default">
+        <edgeMappings xsi:type="description_2:BasicMessageMapping">
+          <style sizeComputationExpression="">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

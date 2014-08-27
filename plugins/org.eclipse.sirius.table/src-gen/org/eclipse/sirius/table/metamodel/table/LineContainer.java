@@ -16,7 +16,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Line Container</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -24,7 +24,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
  * <em>Lines</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getLineContainer()
  * @model abstract="true"
  * @generated

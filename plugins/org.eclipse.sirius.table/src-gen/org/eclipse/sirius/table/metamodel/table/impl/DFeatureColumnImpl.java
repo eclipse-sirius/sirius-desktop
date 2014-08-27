@@ -27,7 +27,7 @@ import org.eclipse.sirius.table.metamodel.table.TablePackage;
  * <em>Feature Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DFeatureColumnImpl extends DColumnImpl implements DFeatureColumn {

@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.description.impl.DocumentedElementImpl;
  * <em>Label</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class FilterDescriptionImpl extends DocumentedElementImpl implements FilterDescription {

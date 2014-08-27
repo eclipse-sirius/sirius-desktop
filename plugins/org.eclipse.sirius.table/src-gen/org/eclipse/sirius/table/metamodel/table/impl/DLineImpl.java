@@ -79,7 +79,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
  * <em>Current Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DLineImpl extends LineContainerImpl implements DLine {

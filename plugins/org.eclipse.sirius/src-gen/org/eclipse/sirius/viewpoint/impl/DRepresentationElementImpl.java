@@ -47,7 +47,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
  * <em>Semantic Elements</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class DRepresentationElementImpl extends EObjectImpl implements DRepresentationElement {

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" name="test" version="6.7.0.201302071200">
+  <ownedViewpoints name="VP">
+    <ownedRepresentations xsi:type="description:DiagramDescription" name="Diag"/>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.test.design.BasicService"/>
+    <ownedJavaExtensions qualifiedClassName="org::eclipse::sirius::test::design::AcceleoMtlInterpreterTestModule"/>
+  </ownedViewpoints>
+</description:Group>

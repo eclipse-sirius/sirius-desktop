@@ -20,7 +20,7 @@ import org.eclipse.sirius.diagram.sequence.description.InstanceRoleMapping;
  * <em><b>Instance Role Mapping</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class InstanceRoleMappingImpl extends NodeMappingImpl implements InstanceRoleMapping {

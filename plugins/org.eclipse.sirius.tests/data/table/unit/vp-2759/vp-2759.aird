@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/description/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" xmi:id="_ic_yEUZ1EeGGFKfFCK0tIw" selectedViews="_mli70EZ1EeGGFKfFCK0tIw" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="vp-2759.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_mli70EZ1EeGGFKfFCK0tIw" initialized="true">
+    <ownedRepresentations xmi:type="table:DTable" xmi:id="_oFEN0EZ1EeGGFKfFCK0tIw" name="vp-2759" headerColumnWidth="248">
+      <target xmi:type="ecore:EClass" href="vp-2759.ecore#//C1"/>
+      <lines xmi:type="table:DLine" xmi:id="_oFEN0UZ1EeGGFKfFCK0tIw" label="ATTRIBUTE">
+        <target xmi:type="ecore:EAttribute" href="vp-2759.ecore#//C1/a1"/>
+        <lines xmi:type="table:DLine" xmi:id="_uICq0EafEeGOC4OMhs-mig" label="->">
+          <target xmi:type="ecore:EReference" href="vp-2759.ecore#//C1/ref_1"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="vp-2759.ecore#//C1/a1"/>
+          <originMapping xmi:type="description:LineMapping" href="vp-2759.odesign#//@ownedViewpoints[name='vp-2759']/@ownedRepresentations[name='vp-2759']/@ownedLineMappings[name='Attribute']/@ownedSubLines[name='Reference']"/>
+          <cells xmi:type="table:DCell" xmi:id="_uIFHEEafEeGOC4OMhs-mig" label="ref_1" column="_oFE1DkZ1EeGGFKfFCK0tIw">
+            <target xmi:type="ecore:EReference" href="vp-2759.ecore#//C1/ref_1"/>
+            <semanticElements xmi:type="ecore:EReference" href="vp-2759.ecore#//C1/ref_1"/>
+            <semanticElements xmi:type="ecore:EAttribute" href="vp-2759.ecore#//C1/a1"/>
+            <currentStyle xmi:type="table:DCellStyle" xmi:id="_uIFHEUafEeGOC4OMhs-mig"/>
+          </cells>
+        </lines>
+        <lines xmi:type="table:DLine" xmi:id="_uIBcsEafEeGOC4OMhs-mig" label="->">
+          <target xmi:type="ecore:EReference" href="vp-2759.ecore#//C1/ref_2"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="vp-2759.ecore#//C1/a1"/>
+          <originMapping xmi:type="description:LineMapping" href="vp-2759.odesign#//@ownedViewpoints[name='vp-2759']/@ownedRepresentations[name='vp-2759']/@ownedLineMappings[name='Attribute']/@ownedSubLines[name='Reference']"/>
+          <cells xmi:type="table:DCell" xmi:id="_uIDR4EafEeGOC4OMhs-mig" label="ref_2" column="_oFE1DkZ1EeGGFKfFCK0tIw">
+            <target xmi:type="ecore:EReference" href="vp-2759.ecore#//C1/ref_2"/>
+            <semanticElements xmi:type="ecore:EReference" href="vp-2759.ecore#//C1/ref_2"/>
+            <semanticElements xmi:type="ecore:EAttribute" href="vp-2759.ecore#//C1/a1"/>
+            <currentStyle xmi:type="table:DCellStyle" xmi:id="_uID48EafEeGOC4OMhs-mig"/>
+          </cells>
+        </lines>
+        <semanticElements xmi:type="ecore:EAttribute" href="vp-2759.ecore#//C1/a1"/>
+        <originMapping xmi:type="description:LineMapping" href="vp-2759.odesign#//@ownedViewpoints[name='vp-2759']/@ownedRepresentations[name='vp-2759']/@ownedLineMappings[name='Attribute']"/>
+        <cells xmi:type="table:DCell" xmi:id="_oFE04kZ1EeGGFKfFCK0tIw" label="a1" column="_oFE1DkZ1EeGGFKfFCK0tIw">
+          <target xmi:type="ecore:EAttribute" href="vp-2759.ecore#//C1/a1"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="vp-2759.ecore#//C1/a1"/>
+          <currentStyle xmi:type="table:DCellStyle" xmi:id="_oFE040Z1EeGGFKfFCK0tIw"/>
+        </cells>
+      </lines>
+      <columns xmi:type="table:DFeatureColumn" xmi:id="_oFE1DkZ1EeGGFKfFCK0tIw" cells="_oFE04kZ1EeGGFKfFCK0tIw _uIDR4EafEeGOC4OMhs-mig _uIFHEEafEeGOC4OMhs-mig" width="220" featureName="name">
+        <originMapping xmi:type="description:FeatureColumnMapping" href="vp-2759.odesign#//@ownedViewpoints[name='vp-2759']/@ownedRepresentations[name='vp-2759']/@ownedColumnMappings[name='Name']"/>
+      </columns>
+      <description xmi:type="description:EditionTableDescription" href="vp-2759.odesign#//@ownedViewpoints[name='vp-2759']/@ownedRepresentations[name='vp-2759']"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description_1:Viewpoint" href="vp-2759.odesign#//@ownedViewpoints[name='vp-2759']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

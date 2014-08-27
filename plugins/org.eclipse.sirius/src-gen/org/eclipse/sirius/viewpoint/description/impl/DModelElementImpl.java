@@ -42,7 +42,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
  * <em>EAnnotations</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class DModelElementImpl extends EObjectImpl implements DModelElement {

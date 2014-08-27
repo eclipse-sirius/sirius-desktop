@@ -28,7 +28,7 @@ import org.eclipse.sirius.diagram.WorkspaceImage;
  * <em>Workspace Path</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage {

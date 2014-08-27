@@ -16,12 +16,12 @@ import org.eclipse.emf.common.util.EList;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Switch</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> Swich contains 1 or more Case and 1 Default Case. If
  * no Case condition return true, Default Case is executed. If there are more
  * Case condition who return true it's the first Condition Case true who is
  * executed. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -31,7 +31,7 @@ import org.eclipse.emf.common.util.EList;
  * <em>Default</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getSwitch()
  * @model
  * @generated

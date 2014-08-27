@@ -41,7 +41,7 @@ import org.eclipse.sirius.viewpoint.description.tool.impl.MappingBasedToolDescri
  * <em>Input Label Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DirectEditLabelImpl extends MappingBasedToolDescriptionImpl implements DirectEditLabel {

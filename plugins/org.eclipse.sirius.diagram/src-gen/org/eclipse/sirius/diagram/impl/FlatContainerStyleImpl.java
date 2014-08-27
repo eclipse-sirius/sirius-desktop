@@ -38,7 +38,7 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  * <em>Foreground Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatContainerStyle {

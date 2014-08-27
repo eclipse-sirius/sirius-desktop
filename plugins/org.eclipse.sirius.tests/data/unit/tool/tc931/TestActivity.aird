@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_7H0WcOgsEd-DboxVmPwQvA" selectedViews="_7irGcOgsEd-DboxVmPwQvA" version="8.0.0">
+  <models xmi:type="uml:Model" href="TestActivity.uml#_QH2e4OgmEd-DboxVmPwQvA"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_7irGcOgsEd-DboxVmPwQvA" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_8UascOgsEd-DboxVmPwQvA" name="test Activity Diagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_8UascugsEd-DboxVmPwQvA" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_8Uasc-gsEd-DboxVmPwQvA" type="Sirius" element="_8UascOgsEd-DboxVmPwQvA" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_8VOkwOgsEd-DboxVmPwQvA" type="2002" element="_Si-0wJjDEeCTjf2eRUPO7Q">
+            <children xmi:type="notation:Node" xmi:id="_8VPL0OgsEd-DboxVmPwQvA" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_8VPL0egsEd-DboxVmPwQvA" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_8VPy4OgsEd-DboxVmPwQvA" type="3008" element="_SjDGMJjDEeCTjf2eRUPO7Q">
+                <children xmi:type="notation:Node" xmi:id="_8VQZ8OgsEd-DboxVmPwQvA" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_8VQZ8egsEd-DboxVmPwQvA" type="7002">
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_8VQZ8ugsEd-DboxVmPwQvA"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_8VQZ8-gsEd-DboxVmPwQvA"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_8VPy4egsEd-DboxVmPwQvA" fontName="Sans" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8VPy4ugsEd-DboxVmPwQvA" x="30" y="30"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_8VRoEOgsEd-DboxVmPwQvA" type="3008" element="_SlqVUJjDEeCTjf2eRUPO7Q">
+                <children xmi:type="notation:Node" xmi:id="_8VSPIOgsEd-DboxVmPwQvA" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_8VSPIegsEd-DboxVmPwQvA" type="7002">
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_8VSPIugsEd-DboxVmPwQvA"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_8VSPI-gsEd-DboxVmPwQvA"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_8VRoEegsEd-DboxVmPwQvA" fontName="Sans" fontHeight="10"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8VRoEugsEd-DboxVmPwQvA" x="264" y="30"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_8VPL0ugsEd-DboxVmPwQvA"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_8VPL0-gsEd-DboxVmPwQvA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_8VOkwegsEd-DboxVmPwQvA" fontName="Sans" fontHeight="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8VOkwugsEd-DboxVmPwQvA"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_8UasdOgsEd-DboxVmPwQvA"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_Si-0wJjDEeCTjf2eRUPO7Q" name="test">
+        <target xmi:type="uml:Activity" href="TestActivity.uml#_UpBkAOgmEd-DboxVmPwQvA"/>
+        <semanticElements xmi:type="uml:Activity" href="TestActivity.uml#_UpBkAOgmEd-DboxVmPwQvA"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Si_b0JjDEeCTjf2eRUPO7Q" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Si_b0ZjDEeCTjf2eRUPO7Q"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Si_b0pjDEeCTjf2eRUPO7Q" red="224" green="133" blue="3"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Si_b05jDEeCTjf2eRUPO7Q" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Si_b1JjDEeCTjf2eRUPO7Q" red="255" green="245" blue="181"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_SjDGMJjDEeCTjf2eRUPO7Q" name="// TODO body of OpaqueAction_1">
+          <target xmi:type="uml:OpaqueAction" href="TestActivity.uml#_ev_M8OgmEd-DboxVmPwQvA"/>
+          <semanticElements xmi:type="uml:OpaqueAction" href="TestActivity.uml#_ev_M8OgmEd-DboxVmPwQvA"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_SlnSAJjDEeCTjf2eRUPO7Q" labelSize="10" showIcon="false" borderSize="1" borderSizeComputationExpression="1">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_SlnSAZjDEeCTjf2eRUPO7Q"/>
+            <description xmi:type="style:FlatContainerStyleDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@conditionnalStyles.5/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_SlnSApjDEeCTjf2eRUPO7Q" red="77" green="137" blue="20"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_SlnSA5jDEeCTjf2eRUPO7Q" red="255" green="255" blue="255"/>
+            <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_SlnSBJjDEeCTjf2eRUPO7Q" red="255" green="255" blue="255"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']"/>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_SlqVUJjDEeCTjf2eRUPO7Q" name="// TODO body of OpaqueAction_2">
+          <target xmi:type="uml:OpaqueAction" href="TestActivity.uml#_veA3MOgrEd-DboxVmPwQvA"/>
+          <semanticElements xmi:type="uml:OpaqueAction" href="TestActivity.uml#_veA3MOgrEd-DboxVmPwQvA"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_SlsxkJjDEeCTjf2eRUPO7Q" labelSize="10" showIcon="false" borderSize="1" borderSizeComputationExpression="1">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_SlsxkZjDEeCTjf2eRUPO7Q"/>
+            <description xmi:type="style:FlatContainerStyleDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@conditionnalStyles.5/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_SlsxkpjDEeCTjf2eRUPO7Q" red="77" green="137" blue="20"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Slsxk5jDEeCTjf2eRUPO7Q" red="255" green="255" blue="255"/>
+            <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_SlsxlJjDEeCTjf2eRUPO7Q" red="255" green="255" blue="255"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_8UascegsEd-DboxVmPwQvA"/>
+      <activatedLayers xmi:type="description_1:Layer" href="uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer"/>
+      <target xmi:type="uml:Activity" href="TestActivity.uml#_UpBkAOgmEd-DboxVmPwQvA"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

@@ -45,7 +45,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ElementDropVariable;
  * <em>Root</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeItemEditionTool {

@@ -29,7 +29,7 @@ import org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping
  * <em>Mapping</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CreateCrossColumnToolImpl extends CreateToolImpl implements CreateCrossColumnTool {

@@ -34,7 +34,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <em>Border Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class BorderedStyleDescriptionImpl extends EObjectImpl implements BorderedStyleDescription {

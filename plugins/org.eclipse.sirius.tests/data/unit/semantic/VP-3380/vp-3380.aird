@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_ENyS0Te3EeKUctu2mybuBA" selectedViews="_FG4eADe3EeKUctu2mybuBA" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="vp-3380.ecore#/"/>
+  <models xmi:type="ecore:EPackage" href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_FG4eADe3EeKUctu2mybuBA" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_Pqe_oDe3EeKUctu2mybuBA" name="vp-3380">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_PqfmsDe3EeKUctu2mybuBA" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_PqfmsTe3EeKUctu2mybuBA" type="Sirius" element="_Pqe_oDe3EeKUctu2mybuBA" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_PrxZEDe3EeKUctu2mybuBA" type="2003" element="_PrlL0De3EeKUctu2mybuBA">
+            <children xmi:type="notation:Node" xmi:id="_PrzOQDe3EeKUctu2mybuBA" type="3012" element="_PrnBADe3EeKUctu2mybuBA">
+              <children xmi:type="notation:Node" xmi:id="_Prz1UDe3EeKUctu2mybuBA" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_Prz1UTe3EeKUctu2mybuBA" x="31"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_Pr2RkDe3EeKUctu2mybuBA" type="3003" element="_ProPIDe3EeKUctu2mybuBA">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_Pr2RkTe3EeKUctu2mybuBA" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Pr2Rkje3EeKUctu2mybuBA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_PrzOQTe3EeKUctu2mybuBA" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PrzOQje3EeKUctu2mybuBA" x="-22" width="30" height="30"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_Pr0cYDe3EeKUctu2mybuBA" type="3012" element="_Pro2MDe3EeKUctu2mybuBA">
+              <children xmi:type="notation:Node" xmi:id="_Pr1DcDe3EeKUctu2mybuBA" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_Pr1DcTe3EeKUctu2mybuBA" x="31"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_Pr24oDe3EeKUctu2mybuBA" type="3003" element="_PrpdQDe3EeKUctu2mybuBA">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_Pr24oTe3EeKUctu2mybuBA" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Pr24oje3EeKUctu2mybuBA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_Pr0cYTe3EeKUctu2mybuBA" fontName="Segoe UI" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Pr0cYje3EeKUctu2mybuBA" x="-22" y="31" width="30" height="30"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_PrynMDe3EeKUctu2mybuBA" type="5007"/>
+            <children xmi:type="notation:Node" xmi:id="_PrynMTe3EeKUctu2mybuBA" type="7004">
+              <children xmi:type="notation:Node" xmi:id="_Pr3fsDe3EeKUctu2mybuBA" type="3010" element="_PrtHoDe3EeKUctu2mybuBA">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_Pr3fsTe3EeKUctu2mybuBA"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_Pr4GwDe3EeKUctu2mybuBA" type="3010" element="_PruVwDe3EeKUctu2mybuBA">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_Pr4GwTe3EeKUctu2mybuBA"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_PrynMje3EeKUctu2mybuBA"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_PrynMze3EeKUctu2mybuBA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_PrxZETe3EeKUctu2mybuBA" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PrxZEje3EeKUctu2mybuBA" x="114" y="84" width="291" height="123"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_Pqfmsje3EeKUctu2mybuBA"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_PrlL0De3EeKUctu2mybuBA" name="VP-3380">
+        <target xmi:type="ecore:EClass" href="vp-3380.ecore#//VP-3380"/>
+        <semanticElements xmi:type="ecore:EClass" href="vp-3380.ecore#//VP-3380"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_PrnBADe3EeKUctu2mybuBA" name="op1" width="3" height="3">
+          <target xmi:type="ecore:EOperation" href="vp-3380.ecore#//VP-3380/op1"/>
+          <semanticElements xmi:type="ecore:EOperation" href="vp-3380.ecore#//VP-3380/op1"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_ProPIDe3EeKUctu2mybuBA">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ProPITe3EeKUctu2mybuBA"/>
+            <description xmi:type="style:SquareDescription" href="vp-3380.odesign#//@ownedViewpoints[name='vp-3380']/@ownedRepresentations[name='vp-3380']/@defaultLayer/@containerMappings[name='list']/@borderedNodeMappings[name='operation']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ProPIje3EeKUctu2mybuBA"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_ProPIze3EeKUctu2mybuBA" red="136" green="136" blue="136"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="vp-3380.odesign#//@ownedViewpoints[name='vp-3380']/@ownedRepresentations[name='vp-3380']/@defaultLayer/@containerMappings[name='list']/@borderedNodeMappings[name='operation']"/>
+        </ownedBorderedNodes>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_Pro2MDe3EeKUctu2mybuBA" name="op2" width="3" height="3">
+          <target xmi:type="ecore:EOperation" href="vp-3380.ecore#//VP-3380/op2"/>
+          <semanticElements xmi:type="ecore:EOperation" href="vp-3380.ecore#//VP-3380/op2"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_PrpdQDe3EeKUctu2mybuBA">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_PrpdQTe3EeKUctu2mybuBA"/>
+            <description xmi:type="style:SquareDescription" href="vp-3380.odesign#//@ownedViewpoints[name='vp-3380']/@ownedRepresentations[name='vp-3380']/@defaultLayer/@containerMappings[name='list']/@borderedNodeMappings[name='operation']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_PrpdQje3EeKUctu2mybuBA"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_PrpdQze3EeKUctu2mybuBA" red="136" green="136" blue="136"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="vp-3380.odesign#//@ownedViewpoints[name='vp-3380']/@ownedRepresentations[name='vp-3380']/@defaultLayer/@containerMappings[name='list']/@borderedNodeMappings[name='operation']"/>
+        </ownedBorderedNodes>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_Prly4De3EeKUctu2mybuBA">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Prly4Te3EeKUctu2mybuBA"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="vp-3380.odesign#//@ownedViewpoints[name='vp-3380']/@ownedRepresentations[name='vp-3380']/@defaultLayer/@containerMappings[name='list']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Prly4je3EeKUctu2mybuBA"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Prly4ze3EeKUctu2mybuBA" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_Prly5De3EeKUctu2mybuBA" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="vp-3380.odesign#//@ownedViewpoints[name='vp-3380']/@ownedRepresentations[name='vp-3380']/@defaultLayer/@containerMappings[name='list']"/>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_PrtHoDe3EeKUctu2mybuBA" name="attr1">
+          <target xmi:type="ecore:EAttribute" href="vp-3380.ecore#//VP-3380/attr1"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="vp-3380.ecore#//VP-3380/attr1"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_PrtusDe3EeKUctu2mybuBA">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_PrtusTe3EeKUctu2mybuBA"/>
+            <description xmi:type="style:SquareDescription" href="vp-3380.odesign#//@ownedViewpoints[name='vp-3380']/@ownedRepresentations[name='vp-3380']/@defaultLayer/@containerMappings[name='list']/@subNodeMappings[name='attribute']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Prtusje3EeKUctu2mybuBA"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_Prtusze3EeKUctu2mybuBA" red="136" green="136" blue="136"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="vp-3380.odesign#//@ownedViewpoints[name='vp-3380']/@ownedRepresentations[name='vp-3380']/@defaultLayer/@containerMappings[name='list']/@subNodeMappings[name='attribute']"/>
+        </ownedElements>
+        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_PruVwDe3EeKUctu2mybuBA" name="attr2">
+          <target xmi:type="ecore:EAttribute" href="vp-3380.ecore#//VP-3380/attr2"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="vp-3380.ecore#//VP-3380/attr2"/>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_Pru80De3EeKUctu2mybuBA">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Pru80Te3EeKUctu2mybuBA"/>
+            <description xmi:type="style:SquareDescription" href="vp-3380.odesign#//@ownedViewpoints[name='vp-3380']/@ownedRepresentations[name='vp-3380']/@defaultLayer/@containerMappings[name='list']/@subNodeMappings[name='attribute']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Pru80je3EeKUctu2mybuBA"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_Pru80ze3EeKUctu2mybuBA" red="136" green="136" blue="136"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="vp-3380.odesign#//@ownedViewpoints[name='vp-3380']/@ownedRepresentations[name='vp-3380']/@defaultLayer/@containerMappings[name='list']/@subNodeMappings[name='attribute']"/>
+        </ownedElements>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="vp-3380.odesign#//@ownedViewpoints[name='vp-3380']/@ownedRepresentations[name='vp-3380']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_Pqe_oTe3EeKUctu2mybuBA"/>
+      <activatedLayers xmi:type="description_1:Layer" href="vp-3380.odesign#//@ownedViewpoints[name='vp-3380']/@ownedRepresentations[name='vp-3380']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="vp-3380.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="vp-3380.odesign#//@ownedViewpoints[name='vp-3380']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

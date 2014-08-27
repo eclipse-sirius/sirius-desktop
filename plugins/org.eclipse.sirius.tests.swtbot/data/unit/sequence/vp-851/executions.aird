@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:interactions="http://www.eclipse.org/sirius/sample/interactions" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sequence="http://www.eclipse.org/sirius/diagram/sequence/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0 http://www.eclipse.org/sirius/diagram/sequence/2.0.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_fWEmgJu8Ed-cV_8OA4bFow" selectedViews="_fuOAwJu8Ed-cV_8OA4bFow" version="8.0.0">
+  <models xmi:type="interactions:Interaction" href="executions.interactions#/"/>
+  <models xmi:type="ecore:EPackage" href="types.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_fuOAwJu8Ed-cV_8OA4bFow" initialized="true">
+    <ownedRepresentations xmi:type="sequence:SequenceDDiagram" xmi:id="_GyHTEJu9Ed-cV_8OA4bFow" name="Sequence Diagram on Sample">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_GyH6IJu9Ed-cV_8OA4bFow" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_GyH6IZu9Ed-cV_8OA4bFow" type="Sirius" element="_GyHTEJu9Ed-cV_8OA4bFow" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_GyhiwJu9Ed-cV_8OA4bFow" type="2001" element="_BvFPkE_OEeCF36t5vBAODQ">
+            <children xmi:type="notation:Node" xmi:id="_GyiJ0Ju9Ed-cV_8OA4bFow" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_GyiJ0Zu9Ed-cV_8OA4bFow" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_GzhoUJu9Ed-cV_8OA4bFow" type="3001" element="_BvHEwE_OEeCF36t5vBAODQ">
+              <children xmi:type="notation:Node" xmi:id="_GzrZUJu9Ed-cV_8OA4bFow" type="3003" element="_BvHEwU_OEeCF36t5vBAODQ">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_GzrZUZu9Ed-cV_8OA4bFow" fontName="Sans"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GzrZUpu9Ed-cV_8OA4bFow"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_GzrZU5u9Ed-cV_8OA4bFow" type="3001" element="_BvMkUE_OEeCF36t5vBAODQ">
+                <children xmi:type="notation:Node" xmi:id="_Gzt1kJu9Ed-cV_8OA4bFow" type="3002" element="_BvMkUU_OEeCF36t5vBAODQ">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_Gzt1kZu9Ed-cV_8OA4bFow" fontName="Sans"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Gzt1kpu9Ed-cV_8OA4bFow"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_GzrZVJu9Ed-cV_8OA4bFow" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GzrZVZu9Ed-cV_8OA4bFow" x="2" width="10" height="10"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_Qo7AIJu9Ed-cV_8OA4bFow" type="3001" element="_BvHr0E_OEeCF36t5vBAODQ">
+                <children xmi:type="notation:Node" xmi:id="_Qo8OQJu9Ed-cV_8OA4bFow" type="3003" element="_BvHr0U_OEeCF36t5vBAODQ">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_Qo8OQZu9Ed-cV_8OA4bFow" fontName="Sans"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Qo8OQpu9Ed-cV_8OA4bFow"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_RlLNAJu9Ed-cV_8OA4bFow" type="3001" element="_BvI58E_OEeCF36t5vBAODQ">
+                  <children xmi:type="notation:Node" xmi:id="_RlR6sJu9Ed-cV_8OA4bFow" type="3003" element="_BvI58U_OEeCF36t5vBAODQ">
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_RlR6sZu9Ed-cV_8OA4bFow" fontName="Sans"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RlR6spu9Ed-cV_8OA4bFow"/>
+                  </children>
+                  <children xmi:type="notation:Node" xmi:id="_u-6RsJu-Ed-0hIIigAPLWQ" type="3001" element="_BvKIEU_OEeCF36t5vBAODQ">
+                    <children xmi:type="notation:Node" xmi:id="_u--jIJu-Ed-0hIIigAPLWQ" type="3003" element="_BvKIEk_OEeCF36t5vBAODQ">
+                      <styles xmi:type="notation:ShapeStyle" xmi:id="_u--jIZu-Ed-0hIIigAPLWQ" fontName="Sans"/>
+                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u--jIpu-Ed-0hIIigAPLWQ"/>
+                    </children>
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_u-6RsZu-Ed-0hIIigAPLWQ" fontName="Sans" fontHeight="8"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u-6Rspu-Ed-0hIIigAPLWQ" x="12" y="30" width="20" height="60"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_RlLNAZu9Ed-cV_8OA4bFow" fontName="Sans" fontHeight="8"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RlLNApu9Ed-cV_8OA4bFow" x="12" y="60" width="20" height="120"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_wgNsYJu-Ed-0hIIigAPLWQ" type="3001" element="_BvJhAU_OEeCF36t5vBAODQ">
+                  <children xmi:type="notation:Node" xmi:id="_wgPhkJu-Ed-0hIIigAPLWQ" type="3003" element="_BvJhAk_OEeCF36t5vBAODQ">
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_wgPhkZu-Ed-0hIIigAPLWQ" fontName="Sans"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wgPhkpu-Ed-0hIIigAPLWQ"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_wgNsYZu-Ed-0hIIigAPLWQ" fontName="Sans" fontHeight="8"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wgNsYpu-Ed-0hIIigAPLWQ" x="12" y="210" width="20" height="30"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_Qo7AIZu9Ed-cV_8OA4bFow" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Qo7AIpu9Ed-cV_8OA4bFow" x="2" y="123" width="20" height="300"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_SDA_kJu9Ed-cV_8OA4bFow" type="3001" element="_BvIS4E_OEeCF36t5vBAODQ">
+                <children xmi:type="notation:Node" xmi:id="_SDC0wJu9Ed-cV_8OA4bFow" type="3003" element="_BvIS4U_OEeCF36t5vBAODQ">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_SDC0wZu9Ed-cV_8OA4bFow" fontName="Sans"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_SDC0wpu9Ed-cV_8OA4bFow"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_SDA_kZu9Ed-cV_8OA4bFow" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_SDA_kpu9Ed-cV_8OA4bFow" x="2" y="520" width="20" height="67"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_GzhoUZu9Ed-cV_8OA4bFow" fontName="Sans" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GzhoUpu9Ed-cV_8OA4bFow" y="42" width="10" height="1167"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_GziPYJu9Ed-cV_8OA4bFow" type="3003" element="_BvFPkU_OEeCF36t5vBAODQ">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_GziPYZu9Ed-cV_8OA4bFow" fontName="Sans"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GziPYpu9Ed-cV_8OA4bFow"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_GyhiwZu9Ed-cV_8OA4bFow" fontName="Sans" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Gyhiwpu9Ed-cV_8OA4bFow" x="50" y="50" width="120" height="50"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_Gyiw4Ju9Ed-cV_8OA4bFow" type="2001" element="_BvF2oE_OEeCF36t5vBAODQ">
+            <children xmi:type="notation:Node" xmi:id="_Gyiw45u9Ed-cV_8OA4bFow" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_Gyiw5Ju9Ed-cV_8OA4bFow" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_Gz6p4Ju9Ed-cV_8OA4bFow" type="3001" element="_BvNLYE_OEeCF36t5vBAODQ">
+              <children xmi:type="notation:Node" xmi:id="_Gz9GIJu9Ed-cV_8OA4bFow" type="3003" element="_BvNLYU_OEeCF36t5vBAODQ">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_Gz9GIZu9Ed-cV_8OA4bFow" fontName="Sans"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Gz9GIpu9Ed-cV_8OA4bFow"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_Gz9tMJu9Ed-cV_8OA4bFow" type="3001" element="_BvRc0E_OEeCF36t5vBAODQ">
+                <children xmi:type="notation:Node" xmi:id="_Gz_iYJu9Ed-cV_8OA4bFow" type="3002" element="_BvSD4E_OEeCF36t5vBAODQ">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_Gz_iYZu9Ed-cV_8OA4bFow" fontName="Sans"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Gz_iYpu9Ed-cV_8OA4bFow"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_Gz9tMZu9Ed-cV_8OA4bFow" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Gz9tMpu9Ed-cV_8OA4bFow" x="2" width="10" height="10"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_8HDLAKXiEd-hf7Rz3HbkzA" type="3001" element="_BvNycE_OEeCF36t5vBAODQ">
+                <children xmi:type="notation:Node" xmi:id="_8HFnQKXiEd-hf7Rz3HbkzA" type="3003" element="_BvNycU_OEeCF36t5vBAODQ">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_8HFnQaXiEd-hf7Rz3HbkzA" fontName="Sans"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8HFnQqXiEd-hf7Rz3HbkzA"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_8HDLAaXiEd-hf7Rz3HbkzA" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8HDLAqXiEd-hf7Rz3HbkzA" x="2" y="33" width="18" height="30"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_DDy6sKXjEd-hf7Rz3HbkzA" type="3001" element="_BvOZg0_OEeCF36t5vBAODQ">
+                <children xmi:type="notation:Node" xmi:id="_DD1W8KXjEd-hf7Rz3HbkzA" type="3003" element="_BvOZhE_OEeCF36t5vBAODQ">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_DD1W8aXjEd-hf7Rz3HbkzA" fontName="Sans"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DD1W8qXjEd-hf7Rz3HbkzA"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_DDy6saXjEd-hf7Rz3HbkzA" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DDy6sqXjEd-hf7Rz3HbkzA" x="2" y="93" width="18" height="60"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_F64ckKXjEd-hf7Rz3HbkzA" type="3001" element="_BvPno0_OEeCF36t5vBAODQ">
+                <children xmi:type="notation:Node" xmi:id="_F66RwKXjEd-hf7Rz3HbkzA" type="3003" element="_BvPnpE_OEeCF36t5vBAODQ">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_F66RwaXjEd-hf7Rz3HbkzA" fontName="Sans"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_F66RwqXjEd-hf7Rz3HbkzA"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_F64ckaXjEd-hf7Rz3HbkzA" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_F64ckqXjEd-hf7Rz3HbkzA" x="2" y="476" width="18" height="216"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_HewqIKXjEd-hf7Rz3HbkzA" type="3001" element="_BvPAk0_OEeCF36t5vBAODQ">
+                <children xmi:type="notation:Node" xmi:id="_HeyfUKXjEd-hf7Rz3HbkzA" type="3003" element="_BvPAlE_OEeCF36t5vBAODQ">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_HeyfUaXjEd-hf7Rz3HbkzA" fontName="Sans"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HeyfUqXjEd-hf7Rz3HbkzA"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_HewqIaXjEd-hf7Rz3HbkzA" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HewqIqXjEd-hf7Rz3HbkzA" x="-5" y="243" width="20" height="150"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_Gz6p4Zu9Ed-cV_8OA4bFow" fontName="Sans" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Gz6p4pu9Ed-cV_8OA4bFow" y="42" width="10" height="1167"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_Gz7Q8Ju9Ed-cV_8OA4bFow" type="3003" element="_BvF2oU_OEeCF36t5vBAODQ">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_Gz7Q8Zu9Ed-cV_8OA4bFow" fontName="Sans"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Gz7Q8pu9Ed-cV_8OA4bFow"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_Gyiw4Zu9Ed-cV_8OA4bFow" fontName="Sans" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Gyiw4pu9Ed-cV_8OA4bFow" x="270" y="50" width="120" height="50"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_GyjX8Ju9Ed-cV_8OA4bFow" type="2001" element="_BvF2pU_OEeCF36t5vBAODQ">
+            <children xmi:type="notation:Node" xmi:id="_Gyj_AJu9Ed-cV_8OA4bFow" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_Gyj_AZu9Ed-cV_8OA4bFow" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_G0FB8Ju9Ed-cV_8OA4bFow" type="3001" element="_BvSD5E_OEeCF36t5vBAODQ">
+              <children xmi:type="notation:Node" xmi:id="_G0HeMJu9Ed-cV_8OA4bFow" type="3003" element="_BvSq8E_OEeCF36t5vBAODQ">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_G0HeMZu9Ed-cV_8OA4bFow" fontName="Sans"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_G0HeMpu9Ed-cV_8OA4bFow"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_G0IFQJu9Ed-cV_8OA4bFow" type="3001" element="_BvTSAE_OEeCF36t5vBAODQ">
+                <children xmi:type="notation:Node" xmi:id="_G0JTYJu9Ed-cV_8OA4bFow" type="3002" element="_BvTSAU_OEeCF36t5vBAODQ">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_G0JTYZu9Ed-cV_8OA4bFow" fontName="Sans"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_G0JTYpu9Ed-cV_8OA4bFow"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_G0IFQZu9Ed-cV_8OA4bFow" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_G0IFQpu9Ed-cV_8OA4bFow" x="2" width="10" height="10"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_G0FB8Zu9Ed-cV_8OA4bFow" fontName="Sans" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_G0FB8pu9Ed-cV_8OA4bFow" y="42" width="10" height="1167"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_G0FpAJu9Ed-cV_8OA4bFow" type="3003" element="_BvGdsE_OEeCF36t5vBAODQ">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_G0FpAZu9Ed-cV_8OA4bFow" fontName="Sans"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_G0FpApu9Ed-cV_8OA4bFow"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_GyjX8Zu9Ed-cV_8OA4bFow" fontName="Sans" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GyjX8pu9Ed-cV_8OA4bFow" x="490" y="50" width="120" height="50"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_wXbiMKXiEd-hf7Rz3HbkzA" type="2001" element="_BvGdtE_OEeCF36t5vBAODQ">
+            <children xmi:type="notation:Node" xmi:id="_wXfMkKXiEd-hf7Rz3HbkzA" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_wXfMkaXiEd-hf7Rz3HbkzA" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_wX3AAKXiEd-hf7Rz3HbkzA" type="3001" element="_BvT5EE_OEeCF36t5vBAODQ">
+              <children xmi:type="notation:Node" xmi:id="_wYCmMKXiEd-hf7Rz3HbkzA" type="3003" element="_BvT5EU_OEeCF36t5vBAODQ">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_wYCmMaXiEd-hf7Rz3HbkzA" fontName="Sans"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wYCmMqXiEd-hf7Rz3HbkzA"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_wYDNQKXiEd-hf7Rz3HbkzA" type="3001" element="_BvUgIE_OEeCF36t5vBAODQ">
+                <children xmi:type="notation:Node" xmi:id="_wYIs0KXiEd-hf7Rz3HbkzA" type="3002" element="_BvVHME_OEeCF36t5vBAODQ">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_wYIs0aXiEd-hf7Rz3HbkzA" fontName="Sans"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wYIs0qXiEd-hf7Rz3HbkzA"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_wYDNQaXiEd-hf7Rz3HbkzA" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wYDNQqXiEd-hf7Rz3HbkzA" x="2" width="10" height="10"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_wX3AAaXiEd-hf7Rz3HbkzA" fontName="Sans" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wX3AAqXiEd-hf7Rz3HbkzA" y="42" width="10" height="1167"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_wX6DUKXiEd-hf7Rz3HbkzA" type="3003" element="_BvGdtU_OEeCF36t5vBAODQ">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_wX6DUaXiEd-hf7Rz3HbkzA" fontName="Sans"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wX6DUqXiEd-hf7Rz3HbkzA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_wXbiMaXiEd-hf7Rz3HbkzA" fontName="Sans" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wXbiMqXiEd-hf7Rz3HbkzA" x="757" y="50" width="120" height="50"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_GyH6Ipu9Ed-cV_8OA4bFow"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_BvFPkE_OEeCF36t5vBAODQ" name="a : A" width="12" height="5" resizeKind="NSEW">
+        <target xmi:type="interactions:Participant" href="executions.interactions#//@participants.0"/>
+        <semanticElements xmi:type="interactions:Participant" href="executions.interactions#//@participants.0"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_BvHEwE_OEeCF36t5vBAODQ" width="1" height="40" resizeKind="NSEW">
+          <target xmi:type="interactions:Participant" href="executions.interactions#//@participants.0"/>
+          <semanticElements xmi:type="interactions:Participant" href="executions.interactions#//@participants.0"/>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_BvHr0E_OEeCF36t5vBAODQ" width="2" height="5" resizeKind="NORTH_SOUTH">
+            <target xmi:type="interactions:Execution" href="executions.interactions#//@executions.2"/>
+            <semanticElements xmi:type="interactions:Execution" href="executions.interactions#//@executions.2"/>
+            <semanticElements xmi:type="interactions:ExecutionEnd" href="executions.interactions#//@ends.3"/>
+            <semanticElements xmi:type="interactions:ExecutionEnd" href="executions.interactions#//@ends.13"/>
+            <semanticElements xmi:type="interactions:Participant" href="executions.interactions#//@participants.0"/>
+            <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" xmi:id="_SQz1YBl8EeCKOMpCHXRNLw" x="100" y="223" height="300" width="20"/>
+            <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_BvI58E_OEeCF36t5vBAODQ" width="2" height="5" resizeKind="NORTH_SOUTH">
+              <target xmi:type="interactions:Execution" href="executions.interactions#//@executions.3"/>
+              <semanticElements xmi:type="interactions:Execution" href="executions.interactions#//@executions.3"/>
+              <semanticElements xmi:type="interactions:ExecutionEnd" href="executions.interactions#//@ends.5"/>
+              <semanticElements xmi:type="interactions:ExecutionEnd" href="executions.interactions#//@ends.9"/>
+              <semanticElements xmi:type="interactions:Participant" href="executions.interactions#//@participants.0"/>
+              <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" xmi:id="_SQz1YRl8EeCKOMpCHXRNLw" x="115" y="283" height="120" width="20"/>
+              <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_BvKIEU_OEeCF36t5vBAODQ" width="2" height="5" resizeKind="NORTH_SOUTH">
+                <target xmi:type="interactions:Execution" href="executions.interactions#//@executions.4"/>
+                <semanticElements xmi:type="interactions:Execution" href="executions.interactions#//@executions.4"/>
+                <semanticElements xmi:type="interactions:ExecutionEnd" href="executions.interactions#//@ends.6"/>
+                <semanticElements xmi:type="interactions:ExecutionEnd" href="executions.interactions#//@ends.8"/>
+                <semanticElements xmi:type="interactions:Participant" href="executions.interactions#//@participants.0"/>
+                <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" xmi:id="_SQz1Yhl8EeCKOMpCHXRNLw" x="130" y="313" height="60" width="20"/>
+                <ownedStyle xmi:type="diagram:Square" xmi:id="_BvKIEk_OEeCF36t5vBAODQ" showIcon="false" borderSize="1" borderSizeComputationExpression="1" width="2" height="5">
+                  <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BvKvIE_OEeCF36t5vBAODQ"/>
+                  <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']/@style"/>
+                  <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BvKvIU_OEeCF36t5vBAODQ" red="39" green="76" blue="114"/>
+                  <color xmi:type="viewpoint:RGBValues" xmi:id="_BvKvIk_OEeCF36t5vBAODQ" red="163" green="219" blue="218"/>
+                </ownedStyle>
+                <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']"/>
+              </ownedBorderedNodes>
+              <ownedStyle xmi:type="diagram:Square" xmi:id="_BvI58U_OEeCF36t5vBAODQ" showIcon="false" borderSize="1" borderSizeComputationExpression="1" width="2" height="5">
+                <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BvI58k_OEeCF36t5vBAODQ"/>
+                <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']/@style"/>
+                <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BvI580_OEeCF36t5vBAODQ" red="39" green="76" blue="114"/>
+                <color xmi:type="viewpoint:RGBValues" xmi:id="_BvJhAE_OEeCF36t5vBAODQ" red="181" green="228" blue="225"/>
+              </ownedStyle>
+              <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']"/>
+            </ownedBorderedNodes>
+            <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_BvJhAU_OEeCF36t5vBAODQ" width="2" height="5" resizeKind="NORTH_SOUTH">
+              <target xmi:type="interactions:Execution" href="executions.interactions#//@executions.6"/>
+              <semanticElements xmi:type="interactions:Execution" href="executions.interactions#//@executions.6"/>
+              <semanticElements xmi:type="interactions:ExecutionEnd" href="executions.interactions#//@ends.10"/>
+              <semanticElements xmi:type="interactions:ExecutionEnd" href="executions.interactions#//@ends.11"/>
+              <semanticElements xmi:type="interactions:Participant" href="executions.interactions#//@participants.0"/>
+              <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" xmi:id="_SQz1Yxl8EeCKOMpCHXRNLw" x="115" y="433" height="30" width="20"/>
+              <ownedStyle xmi:type="diagram:Square" xmi:id="_BvJhAk_OEeCF36t5vBAODQ" showIcon="false" borderSize="1" borderSizeComputationExpression="1" width="2" height="5">
+                <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BvJhA0_OEeCF36t5vBAODQ"/>
+                <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']/@style"/>
+                <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BvJhBE_OEeCF36t5vBAODQ" red="39" green="76" blue="114"/>
+                <color xmi:type="viewpoint:RGBValues" xmi:id="_BvKIEE_OEeCF36t5vBAODQ" red="181" green="228" blue="225"/>
+              </ownedStyle>
+              <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']"/>
+            </ownedBorderedNodes>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_BvHr0U_OEeCF36t5vBAODQ" showIcon="false" borderSize="1" borderSizeComputationExpression="1" width="2" height="5">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BvHr0k_OEeCF36t5vBAODQ"/>
+              <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BvHr00_OEeCF36t5vBAODQ" red="39" green="76" blue="114"/>
+              <color xmi:type="viewpoint:RGBValues" xmi:id="_BvHr1E_OEeCF36t5vBAODQ" red="199" green="237" blue="232"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']"/>
+          </ownedBorderedNodes>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_BvIS4E_OEeCF36t5vBAODQ" width="2" height="5" resizeKind="NORTH_SOUTH">
+            <target xmi:type="interactions:Execution" href="executions.interactions#//@executions.8"/>
+            <semanticElements xmi:type="interactions:Execution" href="executions.interactions#//@executions.8"/>
+            <semanticElements xmi:type="interactions:ExecutionEnd" href="executions.interactions#//@ends.15"/>
+            <semanticElements xmi:type="interactions:ExecutionEnd" href="executions.interactions#//@ends.16"/>
+            <semanticElements xmi:type="interactions:Participant" href="executions.interactions#//@participants.0"/>
+            <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" xmi:id="_SQz1ZBl8EeCKOMpCHXRNLw" x="100" y="620" height="67" width="20"/>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_BvIS4U_OEeCF36t5vBAODQ" showIcon="false" borderSize="1" borderSizeComputationExpression="1" width="2" height="5">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BvIS4k_OEeCF36t5vBAODQ"/>
+              <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BvIS40_OEeCF36t5vBAODQ" red="39" green="76" blue="114"/>
+              <color xmi:type="viewpoint:RGBValues" xmi:id="_BvIS5E_OEeCF36t5vBAODQ" red="199" green="237" blue="232"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']"/>
+          </ownedBorderedNodes>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_BvMkUE_OEeCF36t5vBAODQ" width="1" height="1">
+            <target xmi:type="interactions:Participant" href="executions.interactions#//@participants.0"/>
+            <semanticElements xmi:type="interactions:Participant" href="executions.interactions#//@participants.0"/>
+            <ownedStyle xmi:type="diagram:Dot" xmi:id="_BvMkUU_OEeCF36t5vBAODQ" strokeSizeComputationExpression="1">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BvMkUk_OEeCF36t5vBAODQ"/>
+              <description xmi:type="style:DotDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='redimEOL']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BvMkU0_OEeCF36t5vBAODQ"/>
+              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_BvMkVE_OEeCF36t5vBAODQ" red="136" green="136" blue="136"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:EndOfLifeMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='redimEOL']"/>
+          </ownedBorderedNodes>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_BvHEwU_OEeCF36t5vBAODQ" showIcon="false" borderSize="3" borderSizeComputationExpression="3" width="1" height="40">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BvHEwk_OEeCF36t5vBAODQ"/>
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BvHEw0_OEeCF36t5vBAODQ" red="114" green="159" blue="207"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_BvHExE_OEeCF36t5vBAODQ" red="255" green="255" blue="255"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']"/>
+        </ownedBorderedNodes>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_BvFPkU_OEeCF36t5vBAODQ" labelSize="12" labelFormat="bold" showIcon="false" labelPosition="node" width="12" height="5">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BvFPkk_OEeCF36t5vBAODQ"/>
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BvFPk0_OEeCF36t5vBAODQ"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_BvFPlE_OEeCF36t5vBAODQ" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:InstanceRoleMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_BvF2oE_OEeCF36t5vBAODQ" name="b : B" width="12" height="5" resizeKind="NSEW">
+        <target xmi:type="interactions:Participant" href="executions.interactions#//@participants.1"/>
+        <semanticElements xmi:type="interactions:Participant" href="executions.interactions#//@participants.1"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_BvNLYE_OEeCF36t5vBAODQ" width="1" height="40" resizeKind="NSEW">
+          <target xmi:type="interactions:Participant" href="executions.interactions#//@participants.1"/>
+          <semanticElements xmi:type="interactions:Participant" href="executions.interactions#//@participants.1"/>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_BvNycE_OEeCF36t5vBAODQ" width="2" height="5" resizeKind="NORTH_SOUTH">
+            <target xmi:type="interactions:Execution" href="executions.interactions#//@executions.0"/>
+            <semanticElements xmi:type="interactions:Execution" href="executions.interactions#//@executions.0"/>
+            <semanticElements xmi:type="interactions:ExecutionEnd" href="executions.interactions#//@ends.0"/>
+            <semanticElements xmi:type="interactions:ExecutionEnd" href="executions.interactions#//@ends.1"/>
+            <semanticElements xmi:type="interactions:Participant" href="executions.interactions#//@participants.1"/>
+            <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" xmi:id="_SQz1ZRl8EeCKOMpCHXRNLw" x="321" y="133" height="30" width="18"/>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_BvNycU_OEeCF36t5vBAODQ" showIcon="false" borderSize="1" borderSizeComputationExpression="1" width="2" height="5">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BvOZgE_OEeCF36t5vBAODQ"/>
+              <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BvOZgU_OEeCF36t5vBAODQ" red="39" green="76" blue="114"/>
+              <color xmi:type="viewpoint:RGBValues" xmi:id="_BvOZgk_OEeCF36t5vBAODQ" red="199" green="237" blue="232"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']"/>
+          </ownedBorderedNodes>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_BvOZg0_OEeCF36t5vBAODQ" width="2" height="5" resizeKind="NORTH_SOUTH">
+            <target xmi:type="interactions:Execution" href="executions.interactions#//@executions.1"/>
+            <semanticElements xmi:type="interactions:Execution" href="executions.interactions#//@executions.1"/>
+            <semanticElements xmi:type="interactions:ExecutionEnd" href="executions.interactions#//@ends.2"/>
+            <semanticElements xmi:type="interactions:ExecutionEnd" href="executions.interactions#//@ends.4"/>
+            <semanticElements xmi:type="interactions:Participant" href="executions.interactions#//@participants.1"/>
+            <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" xmi:id="_SQ0ccBl8EeCKOMpCHXRNLw" x="321" y="193" height="60" width="18"/>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_BvOZhE_OEeCF36t5vBAODQ" showIcon="false" borderSize="1" borderSizeComputationExpression="1" width="2" height="5">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BvPAkE_OEeCF36t5vBAODQ"/>
+              <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BvPAkU_OEeCF36t5vBAODQ" red="39" green="76" blue="114"/>
+              <color xmi:type="viewpoint:RGBValues" xmi:id="_BvPAkk_OEeCF36t5vBAODQ" red="199" green="237" blue="232"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']"/>
+          </ownedBorderedNodes>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_BvPAk0_OEeCF36t5vBAODQ" width="2" height="5" resizeKind="NORTH_SOUTH">
+            <target xmi:type="interactions:Execution" href="executions.interactions#//@executions.5"/>
+            <semanticElements xmi:type="interactions:Execution" href="executions.interactions#//@executions.5"/>
+            <semanticElements xmi:type="interactions:ExecutionEnd" href="executions.interactions#//@ends.7"/>
+            <semanticElements xmi:type="interactions:ExecutionEnd" href="executions.interactions#//@ends.12"/>
+            <semanticElements xmi:type="interactions:Participant" href="executions.interactions#//@participants.1"/>
+            <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" xmi:id="_SQ0cchl8EeCKOMpCHXRNLw" x="320" y="343" height="150" width="20"/>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_BvPAlE_OEeCF36t5vBAODQ" showIcon="false" borderSize="1" borderSizeComputationExpression="1" width="2" height="5">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BvPnoE_OEeCF36t5vBAODQ"/>
+              <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BvPnoU_OEeCF36t5vBAODQ" red="39" green="76" blue="114"/>
+              <color xmi:type="viewpoint:RGBValues" xmi:id="_BvPnok_OEeCF36t5vBAODQ" red="199" green="237" blue="232"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']"/>
+          </ownedBorderedNodes>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_BvPno0_OEeCF36t5vBAODQ" width="2" height="5" resizeKind="NORTH_SOUTH">
+            <target xmi:type="interactions:Execution" href="executions.interactions#//@executions.7"/>
+            <semanticElements xmi:type="interactions:Execution" href="executions.interactions#//@executions.7"/>
+            <semanticElements xmi:type="interactions:ExecutionEnd" href="executions.interactions#//@ends.14"/>
+            <semanticElements xmi:type="interactions:ExecutionEnd" href="executions.interactions#//@ends.17"/>
+            <semanticElements xmi:type="interactions:Participant" href="executions.interactions#//@participants.1"/>
+            <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" xmi:id="_SQ0ccRl8EeCKOMpCHXRNLw" x="321" y="576" height="216" width="18"/>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_BvPnpE_OEeCF36t5vBAODQ" showIcon="false" borderSize="1" borderSizeComputationExpression="1" width="2" height="5">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BvPnpU_OEeCF36t5vBAODQ"/>
+              <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BvPnpk_OEeCF36t5vBAODQ" red="39" green="76" blue="114"/>
+              <color xmi:type="viewpoint:RGBValues" xmi:id="_BvQOsE_OEeCF36t5vBAODQ" red="199" green="237" blue="232"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']"/>
+          </ownedBorderedNodes>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_BvRc0E_OEeCF36t5vBAODQ" width="1" height="1">
+            <target xmi:type="interactions:Participant" href="executions.interactions#//@participants.1"/>
+            <semanticElements xmi:type="interactions:Participant" href="executions.interactions#//@participants.1"/>
+            <ownedStyle xmi:type="diagram:Dot" xmi:id="_BvSD4E_OEeCF36t5vBAODQ" strokeSizeComputationExpression="1">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BvSD4U_OEeCF36t5vBAODQ"/>
+              <description xmi:type="style:DotDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='redimEOL']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BvSD4k_OEeCF36t5vBAODQ"/>
+              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_BvSD40_OEeCF36t5vBAODQ" red="136" green="136" blue="136"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:EndOfLifeMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='redimEOL']"/>
+          </ownedBorderedNodes>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_BvNLYU_OEeCF36t5vBAODQ" showIcon="false" borderSize="3" borderSizeComputationExpression="3" width="1" height="40">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BvNLYk_OEeCF36t5vBAODQ"/>
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BvNLY0_OEeCF36t5vBAODQ" red="114" green="159" blue="207"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_BvNLZE_OEeCF36t5vBAODQ" red="255" green="255" blue="255"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']"/>
+        </ownedBorderedNodes>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_BvF2oU_OEeCF36t5vBAODQ" labelSize="12" labelFormat="bold" showIcon="false" labelPosition="node" width="12" height="5">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BvF2ok_OEeCF36t5vBAODQ"/>
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BvF2o0_OEeCF36t5vBAODQ"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_BvF2pE_OEeCF36t5vBAODQ" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:InstanceRoleMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_BvF2pU_OEeCF36t5vBAODQ" name="c : C" width="12" height="5" resizeKind="NSEW">
+        <target xmi:type="interactions:Participant" href="executions.interactions#//@participants.2"/>
+        <semanticElements xmi:type="interactions:Participant" href="executions.interactions#//@participants.2"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_BvSD5E_OEeCF36t5vBAODQ" width="1" height="40" resizeKind="NSEW">
+          <target xmi:type="interactions:Participant" href="executions.interactions#//@participants.2"/>
+          <semanticElements xmi:type="interactions:Participant" href="executions.interactions#//@participants.2"/>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_BvTSAE_OEeCF36t5vBAODQ" width="1" height="1">
+            <target xmi:type="interactions:Participant" href="executions.interactions#//@participants.2"/>
+            <semanticElements xmi:type="interactions:Participant" href="executions.interactions#//@participants.2"/>
+            <ownedStyle xmi:type="diagram:Dot" xmi:id="_BvTSAU_OEeCF36t5vBAODQ" strokeSizeComputationExpression="1">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BvTSAk_OEeCF36t5vBAODQ"/>
+              <description xmi:type="style:DotDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='redimEOL']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BvTSA0_OEeCF36t5vBAODQ"/>
+              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_BvTSBE_OEeCF36t5vBAODQ" red="136" green="136" blue="136"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:EndOfLifeMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='redimEOL']"/>
+          </ownedBorderedNodes>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_BvSq8E_OEeCF36t5vBAODQ" showIcon="false" borderSize="3" borderSizeComputationExpression="3" width="1" height="40">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BvSq8U_OEeCF36t5vBAODQ"/>
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BvSq8k_OEeCF36t5vBAODQ" red="114" green="159" blue="207"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_BvSq80_OEeCF36t5vBAODQ" red="255" green="255" blue="255"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']"/>
+        </ownedBorderedNodes>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_BvGdsE_OEeCF36t5vBAODQ" labelSize="12" labelFormat="bold" showIcon="false" labelPosition="node" width="12" height="5">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BvGdsU_OEeCF36t5vBAODQ"/>
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BvGdsk_OEeCF36t5vBAODQ"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_BvGds0_OEeCF36t5vBAODQ" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:InstanceRoleMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_BvGdtE_OEeCF36t5vBAODQ" name="d : C" width="12" height="5" resizeKind="NSEW">
+        <target xmi:type="interactions:Participant" href="executions.interactions#//@participants.3"/>
+        <semanticElements xmi:type="interactions:Participant" href="executions.interactions#//@participants.3"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_BvT5EE_OEeCF36t5vBAODQ" width="1" height="40" resizeKind="NSEW">
+          <target xmi:type="interactions:Participant" href="executions.interactions#//@participants.3"/>
+          <semanticElements xmi:type="interactions:Participant" href="executions.interactions#//@participants.3"/>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_BvUgIE_OEeCF36t5vBAODQ" width="1" height="1">
+            <target xmi:type="interactions:Participant" href="executions.interactions#//@participants.3"/>
+            <semanticElements xmi:type="interactions:Participant" href="executions.interactions#//@participants.3"/>
+            <ownedStyle xmi:type="diagram:Dot" xmi:id="_BvVHME_OEeCF36t5vBAODQ" strokeSizeComputationExpression="1">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BvVHMU_OEeCF36t5vBAODQ"/>
+              <description xmi:type="style:DotDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='redimEOL']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BvVHMk_OEeCF36t5vBAODQ"/>
+              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_BvVHM0_OEeCF36t5vBAODQ" red="136" green="136" blue="136"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:EndOfLifeMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='redimEOL']"/>
+          </ownedBorderedNodes>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_BvT5EU_OEeCF36t5vBAODQ" showIcon="false" borderSize="3" borderSizeComputationExpression="3" width="1" height="40">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BvT5Ek_OEeCF36t5vBAODQ"/>
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BvT5E0_OEeCF36t5vBAODQ" red="114" green="159" blue="207"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_BvT5FE_OEeCF36t5vBAODQ" red="255" green="255" blue="255"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']"/>
+        </ownedBorderedNodes>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_BvGdtU_OEeCF36t5vBAODQ" labelSize="12" labelFormat="bold" showIcon="false" labelPosition="node" width="12" height="5">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_BvGdtk_OEeCF36t5vBAODQ"/>
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_BvGdt0_OEeCF36t5vBAODQ"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_BvGduE_OEeCF36t5vBAODQ" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:InstanceRoleMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_GyHTEZu9Ed-cV_8OA4bFow"/>
+      <activatedLayers xmi:type="description_2:Layer" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer"/>
+      <target xmi:type="interactions:Interaction" href="executions.interactions#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

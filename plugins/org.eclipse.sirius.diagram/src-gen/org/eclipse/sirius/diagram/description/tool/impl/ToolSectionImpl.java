@@ -63,7 +63,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
  * <em>Group Extensions</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ToolSectionImpl extends DocumentedElementImpl implements ToolSection {

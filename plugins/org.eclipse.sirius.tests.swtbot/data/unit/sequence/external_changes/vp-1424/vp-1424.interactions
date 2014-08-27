@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interactions:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:interactions="http://www.eclipse.org/sirius/sample/interactions" name="Samples for VP-1424">
+  <ownedInteractions name="ExecutionsAdd">
+    <participants name="tt"/>
+    <executions name="e5" owner="//@ownedInteractions.0/@participants.0" start="//@ownedInteractions.0/@ends.0" end="//@ownedInteractions.0/@ends.1"/>
+    <executions name="exec1" owner="//@ownedInteractions.0/@participants.0" start="//@ownedInteractions.0/@ends.2" end="//@ownedInteractions.0/@ends.3"/>
+    <executions name="exec2" owner="//@ownedInteractions.0/@participants.0" start="//@ownedInteractions.0/@ends.4" end="//@ownedInteractions.0/@ends.11"/>
+    <executions name="exec21" owner="//@ownedInteractions.0/@participants.0" start="//@ownedInteractions.0/@ends.5" end="//@ownedInteractions.0/@ends.6"/>
+    <executions name="e6" owner="//@ownedInteractions.0/@participants.0" start="//@ownedInteractions.0/@ends.7" end="//@ownedInteractions.0/@ends.8"/>
+    <executions name="exec22" owner="//@ownedInteractions.0/@participants.0" start="//@ownedInteractions.0/@ends.9" end="//@ownedInteractions.0/@ends.10"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="start_e5" context="//@ownedInteractions.0/@participants.0" execution="//@ownedInteractions.0/@executions.0"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="finish_e5" context="//@ownedInteractions.0/@participants.0" execution="//@ownedInteractions.0/@executions.0"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="start_e3" context="//@ownedInteractions.0/@participants.0" execution="//@ownedInteractions.0/@executions.1"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="finish_e3" context="//@ownedInteractions.0/@participants.0" execution="//@ownedInteractions.0/@executions.1"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="start_e2" context="//@ownedInteractions.0/@participants.0" execution="//@ownedInteractions.0/@executions.2"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="start_e3" context="//@ownedInteractions.0/@participants.0" execution="//@ownedInteractions.0/@executions.3"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="finish_e3" context="//@ownedInteractions.0/@participants.0" execution="//@ownedInteractions.0/@executions.3"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="start_e6" context="//@ownedInteractions.0/@participants.0" execution="//@ownedInteractions.0/@executions.4"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="finish_e6" context="//@ownedInteractions.0/@participants.0" execution="//@ownedInteractions.0/@executions.4"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="start_e4" context="//@ownedInteractions.0/@participants.0" execution="//@ownedInteractions.0/@executions.5"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="finish_e4" context="//@ownedInteractions.0/@participants.0" execution="//@ownedInteractions.0/@executions.5"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="finish_e2" context="//@ownedInteractions.0/@participants.0" execution="//@ownedInteractions.0/@executions.2"/>
+  </ownedInteractions>
+  <ownedInteractions name="ExecutionReparent">
+    <participants name="newParticipant2"/>
+    <executions name="e1" owner="//@ownedInteractions.1/@participants.0" start="//@ownedInteractions.1/@ends.0" end="//@ownedInteractions.1/@ends.1"/>
+    <executions name="e2" owner="//@ownedInteractions.1/@participants.0" start="//@ownedInteractions.1/@ends.2" end="//@ownedInteractions.1/@ends.3"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="start_e1" context="//@ownedInteractions.1/@participants.0" execution="//@ownedInteractions.1/@executions.0"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="finish_e1" context="//@ownedInteractions.1/@participants.0" execution="//@ownedInteractions.1/@executions.0"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="start_e2" context="//@ownedInteractions.1/@participants.0" execution="//@ownedInteractions.1/@executions.1"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="finish_e2" context="//@ownedInteractions.1/@participants.0" execution="//@ownedInteractions.1/@executions.1"/>
+  </ownedInteractions>
+  <ownedInteractions name="MessageReconnect">
+    <participants name="newParticipant2"/>
+    <participants name="newParticipant2"/>
+    <messages xsi:type="interactions:FeatureAccessMessage" name="m1" sendingEnd="//@ownedInteractions.2/@ends.1" receivingEnd="//@ownedInteractions.2/@ends.2"/>
+    <messages xsi:type="interactions:FeatureAccessMessage" name="m2" sendingEnd="//@ownedInteractions.2/@ends.4" receivingEnd="//@ownedInteractions.2/@ends.5"/>
+    <executions name="e1" owner="//@ownedInteractions.2/@participants.0" start="//@ownedInteractions.2/@ends.0" end="//@ownedInteractions.2/@ends.3"/>
+    <executions name="e2" owner="//@ownedInteractions.2/@participants.1" start="//@ownedInteractions.2/@ends.6" end="//@ownedInteractions.2/@ends.7"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="start_e1" context="//@ownedInteractions.2/@participants.0" execution="//@ownedInteractions.2/@executions.0"/>
+    <ends xsi:type="interactions:MessageEnd" name="send_m1" context="//@ownedInteractions.2/@participants.0" message="//@ownedInteractions.2/@messages.0"/>
+    <ends xsi:type="interactions:MessageEnd" name="receive_m1" context="//@ownedInteractions.2/@participants.1" message="//@ownedInteractions.2/@messages.0"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="finish_e1" context="//@ownedInteractions.2/@participants.0" execution="//@ownedInteractions.2/@executions.0"/>
+    <ends xsi:type="interactions:MessageEnd" name="send_m2" context="//@ownedInteractions.2/@participants.1" message="//@ownedInteractions.2/@messages.1"/>
+    <ends xsi:type="interactions:MessageEnd" name="receive_m2" context="//@ownedInteractions.2/@participants.0" message="//@ownedInteractions.2/@messages.1"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="start_e2" context="//@ownedInteractions.2/@participants.1" execution="//@ownedInteractions.2/@executions.1"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="finish_e2" context="//@ownedInteractions.2/@participants.1" execution="//@ownedInteractions.2/@executions.1"/>
+  </ownedInteractions>
+  <ownedInteractions name="SyncCallAdd"/>
+  <ownedInteractions name="ReflexiveSyncCallAdd"/>
+  <ownedInteractions name="ExecutionReparent2">
+    <participants name="newParticipant2"/>
+    <executions name="e2" owner="//@ownedInteractions.5/@participants.0" start="//@ownedInteractions.5/@ends.0" end="//@ownedInteractions.5/@ends.3"/>
+    <executions name="e1" owner="//@ownedInteractions.5/@participants.0" start="//@ownedInteractions.5/@ends.1" end="//@ownedInteractions.5/@ends.2"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="start_e2" context="//@ownedInteractions.5/@participants.0" execution="//@ownedInteractions.5/@executions.0"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="start_e1" context="//@ownedInteractions.5/@participants.0" execution="//@ownedInteractions.5/@executions.1"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="finish_e1" context="//@ownedInteractions.5/@participants.0" execution="//@ownedInteractions.5/@executions.1"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="finish_e2" context="//@ownedInteractions.5/@participants.0" execution="//@ownedInteractions.5/@executions.0"/>
+  </ownedInteractions>
+</interactions:Model>

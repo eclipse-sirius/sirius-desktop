@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0" xmlns:description_2="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:interactions="http://www.eclipse.org/sirius/sample/interactions" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sequence="http://www.eclipse.org/sirius/diagram/sequence/2.0.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0 http://www.eclipse.org/sirius/diagram/sequence/2.0.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_ttCqMB4gEeCecNmE3Q0BFQ" selectedViews="_usn34B4gEeCecNmE3Q0BFQ" version="8.0.0">
+  <models xmi:type="interactions:Interaction" href="vp-1546.interactions#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_usn34B4gEeCecNmE3Q0BFQ" initialized="true">
+    <ownedRepresentations xmi:type="sequence:SequenceDDiagram" xmi:id="_wUWDoB4gEeCecNmE3Q0BFQ" name="Diagram1">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_wVTs8B4gEeCecNmE3Q0BFQ" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_wVTs8R4gEeCecNmE3Q0BFQ" type="Sirius" element="_wUWDoB4gEeCecNmE3Q0BFQ" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_00oX8B4gEeCecNmE3Q0BFQ" type="2001" element="_kktMIGwqEeGf4vaMnd1X5A">
+            <children xmi:type="notation:Node" xmi:id="_00o_AB4gEeCecNmE3Q0BFQ" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_00o_AR4gEeCecNmE3Q0BFQ" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_00spYB4gEeCecNmE3Q0BFQ" type="3001" element="_kkuaRGwqEeGf4vaMnd1X5A">
+              <children xmi:type="notation:Node" xmi:id="_00tQcB4gEeCecNmE3Q0BFQ" type="5001">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_00tQcR4gEeCecNmE3Q0BFQ" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_00xh4B4gEeCecNmE3Q0BFQ" type="3003" element="_kkuaRWwqEeGf4vaMnd1X5A">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_00xh4R4gEeCecNmE3Q0BFQ" fontName="Sans"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_00xh4h4gEeCecNmE3Q0BFQ"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_00yI8B4gEeCecNmE3Q0BFQ" type="3001" element="_kkyEoGwqEeGf4vaMnd1X5A">
+                <children xmi:type="notation:Node" xmi:id="_00yI8x4gEeCecNmE3Q0BFQ" type="5001">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_00yI9B4gEeCecNmE3Q0BFQ" y="5"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_001MQB4gEeCecNmE3Q0BFQ" type="3002" element="_kkyEoWwqEeGf4vaMnd1X5A">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_001MQR4gEeCecNmE3Q0BFQ" fontName="Sans"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_001MQh4gEeCecNmE3Q0BFQ"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_00yI8R4gEeCecNmE3Q0BFQ" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_00yI8h4gEeCecNmE3Q0BFQ" x="2" y="395" width="10" height="10"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_00spYR4gEeCecNmE3Q0BFQ" fontName="Sans" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_00spYh4gEeCecNmE3Q0BFQ" y="42" width="10" height="395"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_00uekB4gEeCecNmE3Q0BFQ" type="3003" element="_kktzMGwqEeGf4vaMnd1X5A">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_00uekR4gEeCecNmE3Q0BFQ" fontName="Sans"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_00uekh4gEeCecNmE3Q0BFQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_00oX8R4gEeCecNmE3Q0BFQ" fontName="Sans" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_00oX8h4gEeCecNmE3Q0BFQ" x="50" y="50" width="120" height="50"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_00o_Ah4gEeCecNmE3Q0BFQ" type="2001" element="_kktzNGwqEeGf4vaMnd1X5A">
+            <children xmi:type="notation:Node" xmi:id="_00pmEB4gEeCecNmE3Q0BFQ" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_00pmER4gEeCecNmE3Q0BFQ" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_005dsB4gEeCecNmE3Q0BFQ" type="3001" element="_kkyrsGwqEeGf4vaMnd1X5A">
+              <children xmi:type="notation:Node" xmi:id="_005dsx4gEeCecNmE3Q0BFQ" type="5001">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_005dtB4gEeCecNmE3Q0BFQ" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_009IEB4gEeCecNmE3Q0BFQ" type="3003" element="_kkyrsWwqEeGf4vaMnd1X5A">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_009IER4gEeCecNmE3Q0BFQ" fontName="Sans"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_009IEh4gEeCecNmE3Q0BFQ"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_009IEx4gEeCecNmE3Q0BFQ" type="3001" element="_kkz50GwqEeGf4vaMnd1X5A">
+                <children xmi:type="notation:Node" xmi:id="_009vIB4gEeCecNmE3Q0BFQ" type="5001">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_009vIR4gEeCecNmE3Q0BFQ" y="5"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_01ALYB4gEeCecNmE3Q0BFQ" type="3002" element="_kkz50WwqEeGf4vaMnd1X5A">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_01ALYR4gEeCecNmE3Q0BFQ" fontName="Sans"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_01ALYh4gEeCecNmE3Q0BFQ"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_009IFB4gEeCecNmE3Q0BFQ" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_009IFR4gEeCecNmE3Q0BFQ" x="2" y="395" width="10" height="10"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_005dsR4gEeCecNmE3Q0BFQ" fontName="Sans" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_005dsh4gEeCecNmE3Q0BFQ" y="42" width="10" height="395"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_006EwB4gEeCecNmE3Q0BFQ" type="3003" element="_kkuaQGwqEeGf4vaMnd1X5A">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_006EwR4gEeCecNmE3Q0BFQ" fontName="Sans"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_006Ewh4gEeCecNmE3Q0BFQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_00o_Ax4gEeCecNmE3Q0BFQ" fontName="Sans" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_00o_BB4gEeCecNmE3Q0BFQ" x="220" y="50" width="120" height="50"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_wVTs8h4gEeCecNmE3Q0BFQ"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_kktMIGwqEeGf4vaMnd1X5A" name="A : " width="12" height="5" resizeKind="NSEW">
+        <target xmi:type="interactions:Participant" href="vp-1546.interactions#//@participants.0"/>
+        <semanticElements xmi:type="interactions:Participant" href="vp-1546.interactions#//@participants.0"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_kkuaRGwqEeGf4vaMnd1X5A" width="1" height="40" resizeKind="NSEW">
+          <target xmi:type="interactions:Participant" href="vp-1546.interactions#//@participants.0"/>
+          <semanticElements xmi:type="interactions:Participant" href="vp-1546.interactions#//@participants.0"/>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_kkyEoGwqEeGf4vaMnd1X5A" width="1" height="1">
+            <target xmi:type="interactions:Participant" href="vp-1546.interactions#//@participants.0"/>
+            <semanticElements xmi:type="interactions:Participant" href="vp-1546.interactions#//@participants.0"/>
+            <ownedStyle xmi:type="diagram:Dot" xmi:id="_kkyEoWwqEeGf4vaMnd1X5A" strokeSizeComputationExpression="1">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_kkyEomwqEeGf4vaMnd1X5A"/>
+              <description xmi:type="style:DotDescription" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='redimEOL']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_kkyEo2wqEeGf4vaMnd1X5A"/>
+              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_kkyEpGwqEeGf4vaMnd1X5A" red="136" green="136" blue="136"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:EndOfLifeMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='redimEOL']"/>
+          </ownedBorderedNodes>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_kkuaRWwqEeGf4vaMnd1X5A" showIcon="false" borderSize="3" borderSizeComputationExpression="3" width="1" height="40">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_kkuaRmwqEeGf4vaMnd1X5A"/>
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_kkuaR2wqEeGf4vaMnd1X5A" red="114" green="159" blue="207"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_kkuaSGwqEeGf4vaMnd1X5A" red="255" green="255" blue="255"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']"/>
+        </ownedBorderedNodes>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_kktzMGwqEeGf4vaMnd1X5A" labelSize="12" labelFormat="bold" showIcon="false" labelPosition="node" width="12" height="5">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_kktzMWwqEeGf4vaMnd1X5A"/>
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer/@nodeMappings[name='Participant']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_kktzMmwqEeGf4vaMnd1X5A"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_kktzM2wqEeGf4vaMnd1X5A" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:InstanceRoleMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer/@nodeMappings[name='Participant']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_kktzNGwqEeGf4vaMnd1X5A" name="B : " width="12" height="5" resizeKind="NSEW">
+        <target xmi:type="interactions:Participant" href="vp-1546.interactions#//@participants.1"/>
+        <semanticElements xmi:type="interactions:Participant" href="vp-1546.interactions#//@participants.1"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_kkyrsGwqEeGf4vaMnd1X5A" width="1" height="40" resizeKind="NSEW">
+          <target xmi:type="interactions:Participant" href="vp-1546.interactions#//@participants.1"/>
+          <semanticElements xmi:type="interactions:Participant" href="vp-1546.interactions#//@participants.1"/>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_kkz50GwqEeGf4vaMnd1X5A" width="1" height="1">
+            <target xmi:type="interactions:Participant" href="vp-1546.interactions#//@participants.1"/>
+            <semanticElements xmi:type="interactions:Participant" href="vp-1546.interactions#//@participants.1"/>
+            <ownedStyle xmi:type="diagram:Dot" xmi:id="_kkz50WwqEeGf4vaMnd1X5A" strokeSizeComputationExpression="1">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_kkz50mwqEeGf4vaMnd1X5A"/>
+              <description xmi:type="style:DotDescription" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='redimEOL']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_kkz502wqEeGf4vaMnd1X5A"/>
+              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_kkz51GwqEeGf4vaMnd1X5A" red="136" green="136" blue="136"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:EndOfLifeMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='redimEOL']"/>
+          </ownedBorderedNodes>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_kkyrsWwqEeGf4vaMnd1X5A" showIcon="false" borderSize="3" borderSizeComputationExpression="3" width="1" height="40">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_kkyrsmwqEeGf4vaMnd1X5A"/>
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_kkyrs2wqEeGf4vaMnd1X5A" red="114" green="159" blue="207"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_kkyrtGwqEeGf4vaMnd1X5A" red="255" green="255" blue="255"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']"/>
+        </ownedBorderedNodes>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_kkuaQGwqEeGf4vaMnd1X5A" labelSize="12" labelFormat="bold" showIcon="false" labelPosition="node" width="12" height="5">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_kkuaQWwqEeGf4vaMnd1X5A"/>
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer/@nodeMappings[name='Participant']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_kkuaQmwqEeGf4vaMnd1X5A"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_kkuaQ2wqEeGf4vaMnd1X5A" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:InstanceRoleMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer/@nodeMappings[name='Participant']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_wUcKQB4gEeCecNmE3Q0BFQ"/>
+      <activatedLayers xmi:type="description_2:Layer" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer"/>
+      <target xmi:type="interactions:Interaction" href="vp-1546.interactions#/"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="sequence:SequenceDDiagram" xmi:id="_yXVPEB4gEeCecNmE3Q0BFQ" name="Diagram2">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_yXV2IB4gEeCecNmE3Q0BFQ" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_yXV2IR4gEeCecNmE3Q0BFQ" type="Sirius" element="_yXVPEB4gEeCecNmE3Q0BFQ" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_zwzjcB4gEeCecNmE3Q0BFQ" type="2001" element="_kk4LQGwqEeGf4vaMnd1X5A">
+            <children xmi:type="notation:Node" xmi:id="_zw2mwB4gEeCecNmE3Q0BFQ" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_zw2mwR4gEeCecNmE3Q0BFQ" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_z3y8QB4gEeCecNmE3Q0BFQ" type="3001" element="_kk5ZYGwqEeGf4vaMnd1X5A">
+              <children xmi:type="notation:Node" xmi:id="_z30KYB4gEeCecNmE3Q0BFQ" type="5001">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_z30KYR4gEeCecNmE3Q0BFQ" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_z5PtwB4gEeCecNmE3Q0BFQ" type="3003" element="_kk5ZYWwqEeGf4vaMnd1X5A">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_z5QU0B4gEeCecNmE3Q0BFQ" fontName="Sans"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z5QU0R4gEeCecNmE3Q0BFQ"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_z5QU0h4gEeCecNmE3Q0BFQ" type="3001" element="_kk6AcGwqEeGf4vaMnd1X5A">
+                <children xmi:type="notation:Node" xmi:id="_z5Q74B4gEeCecNmE3Q0BFQ" type="5001">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_z5Q74R4gEeCecNmE3Q0BFQ" y="5"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_z5-GgB4gEeCecNmE3Q0BFQ" type="3002" element="_kk6ngGwqEeGf4vaMnd1X5A">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_z5-GgR4gEeCecNmE3Q0BFQ" fontName="Sans"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z5-Ggh4gEeCecNmE3Q0BFQ"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_z5QU0x4gEeCecNmE3Q0BFQ" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z5QU1B4gEeCecNmE3Q0BFQ" x="2" y="395" width="10" height="10"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_z3y8QR4gEeCecNmE3Q0BFQ" fontName="Sans" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z3y8Qh4gEeCecNmE3Q0BFQ" y="42" width="10" height="395"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_z32moB4gEeCecNmE3Q0BFQ" type="3003" element="_kk4LQWwqEeGf4vaMnd1X5A">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_z32moR4gEeCecNmE3Q0BFQ" fontName="Sans"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z32moh4gEeCecNmE3Q0BFQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zwzjcR4gEeCecNmE3Q0BFQ" fontName="Sans" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zwzjch4gEeCecNmE3Q0BFQ" x="50" y="50" width="120" height="50"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_zw3N0B4gEeCecNmE3Q0BFQ" type="2001" element="_kk4yUGwqEeGf4vaMnd1X5A">
+            <children xmi:type="notation:Node" xmi:id="_zw304B4gEeCecNmE3Q0BFQ" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_zw304R4gEeCecNmE3Q0BFQ" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_z7bfEB4gEeCecNmE3Q0BFQ" type="3001" element="_kk6nhGwqEeGf4vaMnd1X5A">
+              <children xmi:type="notation:Node" xmi:id="_z7cGIB4gEeCecNmE3Q0BFQ" type="5001">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_z7cGIR4gEeCecNmE3Q0BFQ" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_z7fJcB4gEeCecNmE3Q0BFQ" type="3003" element="_kk7OkGwqEeGf4vaMnd1X5A">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_z7fJcR4gEeCecNmE3Q0BFQ" fontName="Sans"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z7fJch4gEeCecNmE3Q0BFQ"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_z7fwgB4gEeCecNmE3Q0BFQ" type="3001" element="_kk71oGwqEeGf4vaMnd1X5A">
+                <children xmi:type="notation:Node" xmi:id="_z7gXkB4gEeCecNmE3Q0BFQ" type="5001">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_z7gXkR4gEeCecNmE3Q0BFQ" y="5"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_z7ja4B4gEeCecNmE3Q0BFQ" type="3002" element="_kk71oWwqEeGf4vaMnd1X5A">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_z7ja4R4gEeCecNmE3Q0BFQ" fontName="Sans"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z7ja4h4gEeCecNmE3Q0BFQ"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_z7fwgR4gEeCecNmE3Q0BFQ" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z7fwgh4gEeCecNmE3Q0BFQ" x="2" y="395" width="10" height="10"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_z7bfER4gEeCecNmE3Q0BFQ" fontName="Sans" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z7bfEh4gEeCecNmE3Q0BFQ" y="42" width="10" height="395"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_z7cGIh4gEeCecNmE3Q0BFQ" type="3003" element="_kk4yUWwqEeGf4vaMnd1X5A">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_z7cGIx4gEeCecNmE3Q0BFQ" fontName="Sans"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_z7cGJB4gEeCecNmE3Q0BFQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zw3N0R4gEeCecNmE3Q0BFQ" fontName="Sans" fontHeight="12" bold="true"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zw3N0h4gEeCecNmE3Q0BFQ" x="220" y="50" width="120" height="50"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_yXV2Ih4gEeCecNmE3Q0BFQ"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_kk4LQGwqEeGf4vaMnd1X5A" name="A : " width="12" height="5" resizeKind="NSEW">
+        <target xmi:type="interactions:Participant" href="vp-1546.interactions#//@participants.0"/>
+        <semanticElements xmi:type="interactions:Participant" href="vp-1546.interactions#//@participants.0"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_kk5ZYGwqEeGf4vaMnd1X5A" width="1" height="40" resizeKind="NSEW">
+          <target xmi:type="interactions:Participant" href="vp-1546.interactions#//@participants.0"/>
+          <semanticElements xmi:type="interactions:Participant" href="vp-1546.interactions#//@participants.0"/>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_kk6AcGwqEeGf4vaMnd1X5A" width="1" height="1">
+            <target xmi:type="interactions:Participant" href="vp-1546.interactions#//@participants.0"/>
+            <semanticElements xmi:type="interactions:Participant" href="vp-1546.interactions#//@participants.0"/>
+            <ownedStyle xmi:type="diagram:Dot" xmi:id="_kk6ngGwqEeGf4vaMnd1X5A" strokeSizeComputationExpression="1">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_kk6ngWwqEeGf4vaMnd1X5A"/>
+              <description xmi:type="style:DotDescription" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='redimEOL']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_kk6ngmwqEeGf4vaMnd1X5A"/>
+              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_kk6ng2wqEeGf4vaMnd1X5A" red="136" green="136" blue="136"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:EndOfLifeMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='redimEOL']"/>
+          </ownedBorderedNodes>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_kk5ZYWwqEeGf4vaMnd1X5A" showIcon="false" borderSize="3" borderSizeComputationExpression="3" width="1" height="40">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_kk5ZYmwqEeGf4vaMnd1X5A"/>
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_kk5ZY2wqEeGf4vaMnd1X5A" red="114" green="159" blue="207"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_kk5ZZGwqEeGf4vaMnd1X5A" red="255" green="255" blue="255"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']"/>
+        </ownedBorderedNodes>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_kk4LQWwqEeGf4vaMnd1X5A" labelSize="12" labelFormat="bold" showIcon="false" labelPosition="node" width="12" height="5">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_kk4LQmwqEeGf4vaMnd1X5A"/>
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer/@nodeMappings[name='Participant']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_kk4LQ2wqEeGf4vaMnd1X5A"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_kk4LRGwqEeGf4vaMnd1X5A" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:InstanceRoleMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer/@nodeMappings[name='Participant']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_kk4yUGwqEeGf4vaMnd1X5A" name="B : " width="12" height="5" resizeKind="NSEW">
+        <target xmi:type="interactions:Participant" href="vp-1546.interactions#//@participants.1"/>
+        <semanticElements xmi:type="interactions:Participant" href="vp-1546.interactions#//@participants.1"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_kk6nhGwqEeGf4vaMnd1X5A" width="1" height="40" resizeKind="NSEW">
+          <target xmi:type="interactions:Participant" href="vp-1546.interactions#//@participants.1"/>
+          <semanticElements xmi:type="interactions:Participant" href="vp-1546.interactions#//@participants.1"/>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_kk71oGwqEeGf4vaMnd1X5A" width="1" height="1">
+            <target xmi:type="interactions:Participant" href="vp-1546.interactions#//@participants.1"/>
+            <semanticElements xmi:type="interactions:Participant" href="vp-1546.interactions#//@participants.1"/>
+            <ownedStyle xmi:type="diagram:Dot" xmi:id="_kk71oWwqEeGf4vaMnd1X5A" strokeSizeComputationExpression="1">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_kk71omwqEeGf4vaMnd1X5A"/>
+              <description xmi:type="style:DotDescription" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='redimEOL']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_kk71o2wqEeGf4vaMnd1X5A"/>
+              <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_kk71pGwqEeGf4vaMnd1X5A" red="136" green="136" blue="136"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:EndOfLifeMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='redimEOL']"/>
+          </ownedBorderedNodes>
+          <ownedStyle xmi:type="diagram:Square" xmi:id="_kk7OkGwqEeGf4vaMnd1X5A" showIcon="false" borderSize="3" borderSizeComputationExpression="3" width="1" height="40">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_kk7OkWwqEeGf4vaMnd1X5A"/>
+            <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_kk7OkmwqEeGf4vaMnd1X5A" red="114" green="159" blue="207"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_kk7Ok2wqEeGf4vaMnd1X5A" red="255" green="255" blue="255"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']"/>
+        </ownedBorderedNodes>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_kk4yUWwqEeGf4vaMnd1X5A" labelSize="12" labelFormat="bold" showIcon="false" labelPosition="node" width="12" height="5">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_kk4yUmwqEeGf4vaMnd1X5A"/>
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer/@nodeMappings[name='Participant']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_kk4yU2wqEeGf4vaMnd1X5A"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_kk4yVGwqEeGf4vaMnd1X5A" red="114" green="159" blue="207"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:InstanceRoleMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer/@nodeMappings[name='Participant']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_yXVPER4gEeCecNmE3Q0BFQ"/>
+      <activatedLayers xmi:type="description_2:Layer" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']/@ownedRepresentations[name='Sequence%20Diagram%20Example%20with%20Combined%20Fragments%20Support']/@defaultLayer"/>
+      <target xmi:type="interactions:Interaction" href="vp-1546.interactions#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/sequence/vp-1546/interactionVP1546.odesign#//@ownedViewpoints[name='Interactions-VP-1546']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

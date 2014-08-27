@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,9 +13,11 @@ package org.eclipse.sirius.business.api.query;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 
@@ -92,5 +94,19 @@ public class DRepresentationQuery {
             return Options.newSome(annotation);
         }
         return Options.newNone();
+    }
+
+    /**
+     * Check if the current representation is a dangling representation, ie if
+     * its target element is null or if it does not belong to any session.
+     * 
+     * @return true if the current representation is orphan.
+     */
+    public boolean isDanglingRepresentation() {
+        if (representation instanceof DSemanticDecorator) {
+            DSemanticDecorator semDecRep = (DSemanticDecorator) representation;
+            return semDecRep.getTarget() == null || SessionManager.INSTANCE.getSession(semDecRep.getTarget()) == null;
+        }
+        return false;
     }
 }

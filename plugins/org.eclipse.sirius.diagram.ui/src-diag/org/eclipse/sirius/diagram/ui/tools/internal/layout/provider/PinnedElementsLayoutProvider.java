@@ -83,31 +83,33 @@ public class PinnedElementsLayoutProvider extends DefaultLayoutProvider {
     @Override
     public Command layoutEditParts(final List selectedObjects, final IAdaptable layoutHint) {
         final Map<IGraphicalEditPart, Rectangle> initialBounds = Maps.newHashMap(baseProvider.getExtender().getUpdatedBounds());
+
+        // Finds if there are unpinned diagram elements to keep fixed stored in
+        // the LayoutHint as a Collection
+        ArrayList<IDiagramElementEditPart> elementsToKeepFixed = Lists.newArrayList();
+        if (layoutHint.getAdapter(Collection.class) instanceof ArrayList<?>
+                && Iterables.all((ArrayList<?>) layoutHint.getAdapter(Collection.class), validateAllElementInArrayListAreIDiagramElementEditPart)) {
+            elementsToKeepFixed = (ArrayList<IDiagramElementEditPart>) layoutHint.getAdapter(Collection.class);
+        }
+
         if (ArrangeAllWithAutoSize.isEnabled()) {
-            adjustAutoSizedContainers(initialBounds);
+            adjustAutoSizedContainers(initialBounds, elementsToKeepFixed);
         }
         final Collection<IGraphicalEditPart> editParts = Lists.newArrayList(Iterables.filter(selectedObjects, IGraphicalEditPart.class));
         // Removes the connectionEditPart
         editParts.removeAll(Lists.newArrayList(Iterables.filter(selectedObjects, ConnectionEditPart.class)));
         final CompoundCommand cc = new CompoundCommand();
 
-        // Finds if there are unpinned diagram elements to keep fixed stored in
-        // the LayoutHint as a Collection
-        ArrayList<IDiagramElementEditPart> elementstToKeepFixed = Lists.newArrayList();
-        if (layoutHint.getAdapter(Collection.class) instanceof ArrayList<?>
-                && Iterables.all((ArrayList<?>) layoutHint.getAdapter(Collection.class), validateAllElementInArrayListAreIDiagramElementEditPart)) {
-            elementstToKeepFixed = (ArrayList<IDiagramElementEditPart>) layoutHint.getAdapter(Collection.class);
-        }
-        handlePinnedElements(editParts, initialBounds, cc, elementstToKeepFixed);
+        handlePinnedElements(editParts, initialBounds, cc, elementsToKeepFixed);
         return cc.unwrap();
     }
 
-    private void adjustAutoSizedContainers(final Map<IGraphicalEditPart, Rectangle> initialBounds) {
+    private void adjustAutoSizedContainers(final Map<IGraphicalEditPart, Rectangle> initialBounds, ArrayList<IDiagramElementEditPart> elementstToKeepFixed) {
         PinHelper pinHelper = new PinHelper();
         for (Entry<IGraphicalEditPart, Rectangle> entry : initialBounds.entrySet()) {
             if (entry.getKey() instanceof AbstractDiagramElementContainerEditPart) {
                 final AbstractDiagramElementContainerEditPart container = (AbstractDiagramElementContainerEditPart) entry.getKey();
-                if (!pinHelper.isPinned(container.resolveDiagramElement())) {
+                if (!pinHelper.isPinned(container.resolveDiagramElement()) && !elementstToKeepFixed.contains(container)) {
                     final Rectangle bounds = entry.getValue().getCopy();
                     final Rectangle autoSizedBounds = container.getAutosizedDimensions();
                     bounds.width = autoSizedBounds.width;

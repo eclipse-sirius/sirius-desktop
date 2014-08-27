@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (c) 2010, 2014 THALES GLOBAL SERVICES
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Obeo - Initial API and implementation
+-->
+<plugin>
+   <extension
+         point="org.eclipse.sirius.componentization">
+      <component
+            class="org.eclipse.sirius.tests.SiriusTestsPlugin"
+            id="org.eclipse.sirius.tests.component1"
+            name="org.eclipse.sirius.tests.component1">
+      </component>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="org.eclipse.sirius.tests.unit.api.tools.StubJavaAction"
+            id="org.eclipse.sirius.tests.unit.api.tools.stubJavaActionID">
+      </javaActions>
+   </extension>
+      <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="org.eclipse.sirius.tests.unit.api.tools.StubDeleteJavaAction"
+            id="org.eclipse.sirius.tests.unit.api.tools.stubDeleteJavaActionID">
+      </javaActions>
+   </extension>
+    <extension
+         point="org.eclipse.sirius.externalJavaAction">
+      <javaActions
+            actionClass="org.eclipse.sirius.tests.unit.api.tools.StubDeleteOtherThanSelectionJavaAction"
+            id="org.eclipse.sirius.tests.unit.api.tools.stubDeleteOtherThanSelectionJavaActionID">
+      </javaActions>
+   </extension>
+   <extension
+            point="org.eclipse.emf.validation.constraintProviders">
+         <category
+               id="categ.tests"
+               name="Test constraints" />
+         <constraintProvider
+               cache="false"            
+               mode="Batch">
+            <package
+               namespaceUri="http://www.eclipse.org/emf/2002/Ecore" />
+            <constraints categories="categ.tests">
+               <constraint
+                     class="org.eclipse.sirius.tests.unit.api.validation.ConstraintStub"
+                     id="org.eclipse.sirius.tests.unit.validation.stubConstraint"
+                     lang="Java"
+                     mode="Batch"
+                     name="Test validation constraint"
+                     severity="WARNING"
+                     statusCode="1">
+                  <message>
+                     This is a message from a constraint designed for tests. You can ignore it. [EClass name: {0}]
+                  </message>
+                  <description>
+                     Test validation constraint
+                  </description>
+                  <target
+                        class="EClass" />
+               </constraint>
+            </constraints>
+         </constraintProvider>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.diagram.ui.layoutDataManager">
+      <layoutDataManagerProvider
+            class="org.eclipse.sirius.tests.unit.diagram.layout.data.manager.extension.SampleDataProvider"
+            id="sampleDataProvider">
+      </layoutDataManagerProvider>
+   </extension>
+</plugin>

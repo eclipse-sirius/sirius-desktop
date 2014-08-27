@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" version="8.0.0">
+  <ownedViewpoints name="Doremi-2842">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diagram" domainClass="EPackage">
+      <filters xsi:type="filter:CompositeFilterDescription" name="test">
+        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Doremi-2842']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']/@borderedNodeMappings[name='reference']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="testHide">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Doremi-2842']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']/@borderedNodeMappings[name='attribute']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="testCollapseAtt">
+        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='Doremi-2842']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']/@borderedNodeMappings[name='attribute']"/>
+      </filters>
+      <defaultLayer name="Default">
+        <edgeMappings name="ref" sourceMapping="//@ownedViewpoints[name='Doremi-2842']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']/@borderedNodeMappings[name='reference']" targetMapping="//@ownedViewpoints[name='Doremi-2842']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Package']/@subNodeMappings[name='Class']/@borderedNodeMappings[name='attribute']" targetFinderExpression="&lt;%eType.eAttributes.nFirst()%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Package" semanticCandidatesExpression="[eContents(EPackage)/]" domainClass="EPackage" reusedContainerMappings="//@ownedViewpoints[name='Doremi-2842']/@ownedRepresentations[name='Diagram']/@defaultLayer/@containerMappings[name='Package']">
+          <subNodeMappings name="Class" label="Class" semanticCandidatesExpression="[eClassifiers->filter(ecore::EClass)/]" domainClass="EClass">
+            <borderedNodeMappings name="attribute" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
+              <style xsi:type="style:SquareDescription" sizeComputationExpression="1" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+              </style>
+            </borderedNodeMappings>
+            <borderedNodeMappings name="reference" semanticCandidatesExpression="feature:eAllContents" domainClass="EReference">
+              <style xsi:type="style:SquareDescription" sizeComputationExpression="1" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+              </style>
+            </borderedNodeMappings>
+            <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

@@ -37,7 +37,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <em>Fore Ground Color</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ForegroundStyleDescriptionImpl extends EObjectImpl implements ForegroundStyleDescription {

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ASCII"?>
+<employee:Company xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:employee="http://employee" xsi:schemaLocation="http://employee vp926.ecore" name="myCompany2">
+  <departments xsi:type="employee:RichDepartment" name="Marketing"/>
+  <departments xsi:type="employee:PoorDepartment" name="Factory">
+    <employees name="Employe1" wage="1250"/>
+  </departments>
+  <departments xsi:type="employee:RichDepartment" name="Juridiction"/>
+</employee:Company>

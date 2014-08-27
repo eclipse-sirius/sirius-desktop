@@ -14,10 +14,10 @@ package org.eclipse.sirius.viewpoint.description;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Fixed Color</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A fixed color description defined by a specific RGB
  * triplet. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -29,7 +29,7 @@ package org.eclipse.sirius.viewpoint.description;
  * Blue</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getFixedColor()
  * @model
  * @generated

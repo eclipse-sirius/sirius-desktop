@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="doremi-2678" version="8.0.0">
+  <ownedViewpoints name="doremi-2678" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="doremi-2678" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <edgeMappings name="EReference" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;)%>" sourceMapping="//@ownedViewpoints[name='doremi-2678']/@ownedRepresentations[name='doremi-2678']/@defaultLayer/@containerMappings[name='EClass'] //@ownedViewpoints[name='doremi-2678']/@ownedRepresentations[name='doremi-2678']/@additionalLayers[name='Abstract%20EClass']/@containerMappings[name='Abstract%20EClass']" targetMapping="//@ownedViewpoints[name='doremi-2678']/@ownedRepresentations[name='doremi-2678']/@defaultLayer/@containerMappings[name='EClass'] //@ownedViewpoints[name='doremi-2678']/@ownedRepresentations[name='doremi-2678']/@additionalLayers[name='Abstract%20EClass']/@containerMappings[name='Abstract%20EClass']" targetFinderExpression="&lt;%eType%>" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <centerLabelStyleDescription labelExpression="&lt;%name%>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="EAnnotationReferences" sourceMapping="//@ownedViewpoints[name='doremi-2678']/@ownedRepresentations[name='doremi-2678']/@defaultLayer/@containerMappings[name='EAnnotation']" targetMapping="//@ownedViewpoints[name='doremi-2678']/@ownedRepresentations[name='doremi-2678']/@defaultLayer/@edgeMappings[name='EReference']" targetFinderExpression="&lt;%references%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="EClass" preconditionExpression="&lt;%!isAbstract%>" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EClass&quot;)%>" domainClass="EClass">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="EAnnotation" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EAnnotation&quot;)%>" domainClass="EAnnotation">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="&lt;%source%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+      <additionalLayers name="Abstract EClass" activeByDefault="true">
+        <containerMappings name="Abstract EClass" preconditionExpression="&lt;%isAbstract%>" semanticCandidatesExpression="&lt;%eContents().filter(&quot;EClass&quot;)%>" domainClass="EClass">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </containerMappings>
+      </additionalLayers>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

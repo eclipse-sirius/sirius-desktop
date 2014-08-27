@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  * <em>Documentation</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class DocumentedElementImpl extends EObjectImpl implements DocumentedElement {

@@ -17,31 +17,26 @@ import org.eclipse.emf.ecore.EObject;
  * suffered a tentative change.
  * 
  * @author cbrun
- * 
  */
 public class LockedInstanceException extends RuntimeException {
 
-    /**
-     * The default permission issue message.
-     */
-    public static final String PERMISSION_ISSUE_MESSAGE = "An instance is locked and should not be modified : ";
+    /** The default permission issue message. */
+    public static final String PERMISSION_ISSUE_MESSAGE = "An instance is locked and should not be modified among : ";
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * The locked element that the user tried to modify.
-     */
-    private final EObject lockedElement;
+    /** The locked element that the user tried to modify. */
+    private final EObject[] lockedElements;
 
     /**
      * Build the exception.
      * 
-     * @param lockedElement
-     *            the element that user tried to modify
+     * @param lockedElements
+     *            the elements that user tried to modify
      */
-    public LockedInstanceException(final EObject lockedElement) {
-        super(PERMISSION_ISSUE_MESSAGE + lockedElement);
-        this.lockedElement = lockedElement;
+    public LockedInstanceException(final EObject... lockedElements) {
+        super(PERMISSION_ISSUE_MESSAGE + lockedElements);
+        this.lockedElements = lockedElements;
     }
 
     /**
@@ -52,15 +47,24 @@ public class LockedInstanceException extends RuntimeException {
      */
     public LockedInstanceException(final String message) {
         super(message);
-        this.lockedElement = null;
+        lockedElements = null;
     }
 
     /**
-     * Returns the locked element that the user tried to modify.
+     * Returns the first locked element that the user tried to modify.
      * 
-     * @return the locked element that the user tried to modify
+     * @return the first locked element that the user tried to modify
      */
     public EObject getLockedElement() {
-        return lockedElement;
+        return lockedElements != null && lockedElements.length > 0 ? lockedElements[0] : null;
+    }
+
+    /**
+     * Returns the locked elements that the user tried to modify.
+     * 
+     * @return the locked elements that the user tried to modify
+     */
+    public EObject[] getLockedElements() {
+        return lockedElements;
     }
 }

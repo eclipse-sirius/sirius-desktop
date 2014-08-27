@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,16 +9,6 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter;
-
-import com.google.common.base.Joiner;
-import com.google.common.base.Strings;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.LinkedHashMultimap;
-import com.google.common.collect.ListMultimap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -85,6 +75,16 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDes
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.osgi.framework.Bundle;
+
+import com.google.common.base.Joiner;
+import com.google.common.base.Strings;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.LinkedHashMultimap;
+import com.google.common.collect.ListMultimap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.Sets;
 
 /**
  * This interpreter will allow for the use of Acceleo 3 expressions.
@@ -641,6 +641,8 @@ public class AcceleoMTLInterpreter implements IInterpreter {
         Collection<EObject> coercedResult = Lists.newArrayList();
         if (result instanceof Collection<?>) {
             Iterables.addAll(coercedResult, Iterables.filter((Collection<?>) result, EObject.class));
+        } else if (result != null && result.getClass().isArray()) {
+            Iterables.addAll(coercedResult, Iterables.filter(Lists.newArrayList((Object[]) result), EObject.class));
         } else {
             EObject coerced = coerceValue(result, EObject.class);
             if (coerced != null) {

@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.sirius.tests.sample.docbook.design;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.sirius.tests.sample.docbook,
+ org.eclipse.sirius,
+ org.eclipse.core.runtime
+Bundle-Vendor: %providerName
+Bundle-Activator: org.eclipse.sirius.tests.sample.docbook.design.tool.SampleDocbookPlugin
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.eclipse.sirius.tests.sample.docbook.design.business.internal;x-internal:=true,
+ org.eclipse.sirius.tests.sample.docbook.design.tool

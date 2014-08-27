@@ -14,7 +14,7 @@ package org.eclipse.sirius.diagram.description;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Additional Layer</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -25,7 +25,7 @@ package org.eclipse.sirius.diagram.description;
  * <em>Optional</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getAdditionalLayer()
  * @model
  * @generated

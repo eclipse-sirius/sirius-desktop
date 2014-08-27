@@ -30,7 +30,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
  * Height</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CollapseFilterImpl extends EObjectImpl implements CollapseFilter {

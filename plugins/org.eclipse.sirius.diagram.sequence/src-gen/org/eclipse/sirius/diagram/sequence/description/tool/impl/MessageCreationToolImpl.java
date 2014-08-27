@@ -105,7 +105,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
  * <em>Finishing End Predecessor</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl implements MessageCreationTool {

@@ -36,7 +36,7 @@ import org.eclipse.sirius.viewpoint.description.VSMElementCustomizationReuse;
  * <em>Applied On</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class VSMElementCustomizationReuseImpl extends EObjectImpl implements VSMElementCustomizationReuse {

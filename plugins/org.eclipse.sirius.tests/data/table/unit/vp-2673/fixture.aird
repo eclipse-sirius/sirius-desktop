@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/description/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" xmi:id="_h7adoSJHEeGDmYbulJji4Q" selectedViews="_iR9VYCJHEeGDmYbulJji4Q" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="fixture.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_iR9VYCJHEeGDmYbulJji4Q" initialized="true">
+    <ownedRepresentations xmi:type="table:DTable" xmi:id="_jbH84CJHEeGDmYbulJji4Q" name="new invalid_parent_expression" headerColumnWidth="202">
+      <target xmi:type="ecore:EPackage" href="fixture.ecore#/"/>
+      <lines xmi:type="table:DLine" xmi:id="_jbIj8CJHEeGDmYbulJji4Q" label="A0">
+        <target xmi:type="ecore:EClass" href="fixture.ecore#//A0"/>
+        <semanticElements xmi:type="ecore:EClass" href="fixture.ecore#//A0"/>
+        <originMapping xmi:type="description:LineMapping" href="invalid_parent_expression.odesign#//@ownedViewpoints[name='invalid_parent_expression']/@ownedRepresentations[name='invalid_parent_expression']/@ownedLineMappings[name='Class']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_jbIj8yJHEeGDmYbulJji4Q" label="B0">
+        <target xmi:type="ecore:EClass" href="fixture.ecore#//B0"/>
+        <semanticElements xmi:type="ecore:EClass" href="fixture.ecore#//B0"/>
+        <originMapping xmi:type="description:LineMapping" href="invalid_parent_expression.odesign#//@ownedViewpoints[name='invalid_parent_expression']/@ownedRepresentations[name='invalid_parent_expression']/@ownedLineMappings[name='Class']"/>
+        <cells xmi:type="table:DCell" xmi:id="_jbIj9CJHEeGDmYbulJji4Q" label="true" column="_jbIj9iJHEeGDmYbulJji4Q">
+          <target xmi:type="ecore:EClass" href="fixture.ecore#//A0"/>
+          <semanticElements xmi:type="ecore:EClass" href="fixture.ecore#//A0"/>
+          <semanticElements xmi:type="ecore:EClass" href="fixture.ecore#//B0"/>
+          <currentStyle xmi:type="table:DCellStyle" xmi:id="_jbIj9SJHEeGDmYbulJji4Q"/>
+        </cells>
+      </lines>
+      <columns xmi:type="table:DFeatureColumn" xmi:id="_jbIj9iJHEeGDmYbulJji4Q" label="InheritsFromAbstract" cells="_jbIj9CJHEeGDmYbulJji4Q" width="721" featureName="abstract">
+        <originMapping xmi:type="description:FeatureColumnMapping" href="invalid_parent_expression.odesign#//@ownedViewpoints[name='invalid_parent_expression']/@ownedRepresentations[name='invalid_parent_expression']/@ownedColumnMappings[name='InheritsFromAbstract']"/>
+      </columns>
+      <description xmi:type="description:EditionTableDescription" href="invalid_parent_expression.odesign#//@ownedViewpoints[name='invalid_parent_expression']/@ownedRepresentations[name='invalid_parent_expression']"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description_1:Viewpoint" href="invalid_parent_expression.odesign#//@ownedViewpoints[name='invalid_parent_expression']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

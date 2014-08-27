@@ -41,7 +41,7 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
  * <em>Covered Lifelines</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class InteractionUseCreationToolImpl extends ContainerCreationDescriptionImpl implements InteractionUseCreationTool {

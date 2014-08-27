@@ -29,7 +29,7 @@ import org.eclipse.sirius.description.contribution.ContributionPackage;
  * <em>Value Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ComputedEObjectReferenceImpl extends EObjectImpl implements ComputedEObjectReference {

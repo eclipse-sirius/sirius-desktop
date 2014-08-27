@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/2.1.0/UML" xmi:id="_B0IpgPm7Ed2D66NDN1-WTQ" name="GConf1Model">
+  <elementImport xmi:id="_XU6DUPm7Ed2D66NDN1-WTQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+  </elementImport>
+  <elementImport xmi:id="_XVcO0Pm7Ed2D66NDN1-WTQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+  </elementImport>
+  <elementImport xmi:id="_XVcO0fm7Ed2D66NDN1-WTQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_XVcO0vm7Ed2D66NDN1-WTQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Package" xmi:id="_Gvl24Pm7Ed2D66NDN1-WTQ" name="GConf1Package1">
+    <packagedElement xmi:type="uml:Class" xmi:id="_Ly5_wPm7Ed2D66NDN1-WTQ" name="GConf1Class11">
+      <ownedAttribute xmi:id="_Q7PykPm7Ed2D66NDN1-WTQ" name="p1" type="_NUYZkPm7Ed2D66NDN1-WTQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_NUYZkPm7Ed2D66NDN1-WTQ" name="GConf1Class12">
+      <ownedAttribute xmi:id="_THUokPm7Ed2D66NDN1-WTQ" name="p2">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_JY1KAPm7Ed2D66NDN1-WTQ" name="GConf1Package2">
+    <packagedElement xmi:type="uml:Class" xmi:id="_PEE1kPm7Ed2D66NDN1-WTQ" name="GConf1Class21"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_PEE1kfm7Ed2D66NDN1-WTQ" name="GConf1Class22"/>
+  </packagedElement>
+</uml:Model>

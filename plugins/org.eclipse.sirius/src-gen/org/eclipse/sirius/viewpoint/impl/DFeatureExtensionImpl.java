@@ -31,7 +31,7 @@ import org.eclipse.sirius.viewpoint.description.FeatureExtensionDescription;
  * <em>Description</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class DFeatureExtensionImpl extends EObjectImpl implements DFeatureExtension {

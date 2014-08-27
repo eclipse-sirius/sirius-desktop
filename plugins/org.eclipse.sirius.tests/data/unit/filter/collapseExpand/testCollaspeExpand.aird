@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_q3pIIHT6EeKPRMSkP5NPGw" selectedViews="_yE2VsHT6EeKPRMSkP5NPGw" version="8.0.0">
+  <models xmi:type="ecore:EPackage" href="testCollaspeExpand.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_yE2VsHT6EeKPRMSkP5NPGw" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_zEIBYHT6EeKPRMSkP5NPGw" name="new testCollapse">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_zETnkHT6EeKPRMSkP5NPGw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_zETnkXT6EeKPRMSkP5NPGw" type="Sirius" element="_zEIBYHT6EeKPRMSkP5NPGw" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_zEVcwHT6EeKPRMSkP5NPGw" type="2002" element="_zEIBYXT6EeKPRMSkP5NPGw">
+            <children xmi:type="notation:Node" xmi:id="_zEWD0HT6EeKPRMSkP5NPGw" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_zEWq4HT6EeKPRMSkP5NPGw" type="7001">
+              <children xmi:type="notation:Node" xmi:id="_zEXR8HT6EeKPRMSkP5NPGw" type="3008" element="_zEIBZ3T6EeKPRMSkP5NPGw">
+                <children xmi:type="notation:Node" xmi:id="_zEYgEHT6EeKPRMSkP5NPGw" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_zEYgEXT6EeKPRMSkP5NPGw" type="7002">
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_zEZHIHT6EeKPRMSkP5NPGw"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_zEZHIXT6EeKPRMSkP5NPGw"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_zEbjYHT6EeKPRMSkP5NPGw" type="3012" element="_zEIocXT6EeKPRMSkP5NPGw">
+                  <children xmi:type="notation:Node" xmi:id="_zEbjY3T6EeKPRMSkP5NPGw" type="5010">
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_zEbjZHT6EeKPRMSkP5NPGw" x="11" y="-9"/>
+                  </children>
+                  <children xmi:type="notation:Node" xmi:id="_zEf00HT6EeKPRMSkP5NPGw" type="3003" element="_zEIocnT6EeKPRMSkP5NPGw">
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_zEf00XT6EeKPRMSkP5NPGw" fontName="Ubuntu"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zEf00nT6EeKPRMSkP5NPGw"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_zEbjYXT6EeKPRMSkP5NPGw" fontName="Ubuntu" fontHeight="8"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zEbjYnT6EeKPRMSkP5NPGw" x="61" y="-2" width="10" height="10"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_zEcKcHT6EeKPRMSkP5NPGw" type="3012" element="_zEIodnT6EeKPRMSkP5NPGw">
+                  <children xmi:type="notation:Node" xmi:id="_zEcxgHT6EeKPRMSkP5NPGw" type="5010">
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_zEcxgXT6EeKPRMSkP5NPGw" x="11" y="-9"/>
+                  </children>
+                  <children xmi:type="notation:Node" xmi:id="_zEgb4HT6EeKPRMSkP5NPGw" type="3003" element="_zEIod3T6EeKPRMSkP5NPGw">
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_zEgb4XT6EeKPRMSkP5NPGw" fontName="Ubuntu"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zEgb4nT6EeKPRMSkP5NPGw"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_zEcKcXT6EeKPRMSkP5NPGw" fontName="Ubuntu" fontHeight="8"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zEcKcnT6EeKPRMSkP5NPGw" x="140" y="28" width="10" height="10"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_zEdYkHT6EeKPRMSkP5NPGw" type="3012" element="_zEIoe3T6EeKPRMSkP5NPGw">
+                  <children xmi:type="notation:Node" xmi:id="_zEdYk3T6EeKPRMSkP5NPGw" type="5010">
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_zEdYlHT6EeKPRMSkP5NPGw" x="11" y="-9"/>
+                  </children>
+                  <children xmi:type="notation:Node" xmi:id="_zEgb43T6EeKPRMSkP5NPGw" type="3003" element="_zEIofHT6EeKPRMSkP5NPGw">
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_zEgb5HT6EeKPRMSkP5NPGw" fontName="Ubuntu"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zEgb5XT6EeKPRMSkP5NPGw"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_zEdYkXT6EeKPRMSkP5NPGw" fontName="Ubuntu" fontHeight="8"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zEdYknT6EeKPRMSkP5NPGw" x="-2" y="41" width="10" height="10"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_zEd_oHT6EeKPRMSkP5NPGw" type="3012" element="_zEIogHT6EeKPRMSkP5NPGw">
+                  <children xmi:type="notation:Node" xmi:id="_zEemsHT6EeKPRMSkP5NPGw" type="5010">
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_zEemsXT6EeKPRMSkP5NPGw" x="11" y="-9"/>
+                  </children>
+                  <children xmi:type="notation:Node" xmi:id="_zEhqAHT6EeKPRMSkP5NPGw" type="3003" element="_zEIogXT6EeKPRMSkP5NPGw">
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_zEhqAXT6EeKPRMSkP5NPGw" fontName="Ubuntu"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zEhqAnT6EeKPRMSkP5NPGw"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_zEd_oXT6EeKPRMSkP5NPGw" fontName="Ubuntu" fontHeight="8"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zEd_onT6EeKPRMSkP5NPGw" x="61" y="60" width="22" height="24"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_zEXR8XT6EeKPRMSkP5NPGw" fontName="Ubuntu" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zEXR8nT6EeKPRMSkP5NPGw" x="30" y="30"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_zEZHInT6EeKPRMSkP5NPGw" type="3008" element="_zEIoinT6EeKPRMSkP5NPGw">
+                <children xmi:type="notation:Node" xmi:id="_zEZuMHT6EeKPRMSkP5NPGw" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_zEZuMXT6EeKPRMSkP5NPGw" type="7002">
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_zEZuMnT6EeKPRMSkP5NPGw"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_zEZuM3T6EeKPRMSkP5NPGw"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_zEiREHT6EeKPRMSkP5NPGw" type="3012" element="_zEIoi3T6EeKPRMSkP5NPGw">
+                  <children xmi:type="notation:Node" xmi:id="_zEiRE3T6EeKPRMSkP5NPGw" type="5010">
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_zEiRFHT6EeKPRMSkP5NPGw" x="11" y="-9"/>
+                  </children>
+                  <children xmi:type="notation:Node" xmi:id="_zEi4IHT6EeKPRMSkP5NPGw" type="3003" element="_zEIojHT6EeKPRMSkP5NPGw">
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_zEi4IXT6EeKPRMSkP5NPGw" fontName="Ubuntu"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zEi4InT6EeKPRMSkP5NPGw"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_zEiREXT6EeKPRMSkP5NPGw" fontName="Ubuntu" fontHeight="8"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zEiREnT6EeKPRMSkP5NPGw" x="73" y="-2" width="10" height="10"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_4IjkkHT6EeKPRMSkP5NPGw" type="3012" element="_zEIBaHT6EeKPRMSkP5NPGw">
+                  <children xmi:type="notation:Node" xmi:id="_4IkLoXT6EeKPRMSkP5NPGw" type="5010">
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_4IkLonT6EeKPRMSkP5NPGw" x="11" y="-9"/>
+                  </children>
+                  <children xmi:type="notation:Node" xmi:id="_4IkysHT6EeKPRMSkP5NPGw" type="3003" element="_zEIBaXT6EeKPRMSkP5NPGw">
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_4IkysXT6EeKPRMSkP5NPGw" fontName="Ubuntu"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_4IkysnT6EeKPRMSkP5NPGw"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_4IjkkXT6EeKPRMSkP5NPGw" fontName="Ubuntu" fontHeight="8"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_4IkLoHT6EeKPRMSkP5NPGw" x="73" y="60" width="48" height="10"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_MmkQIHUXEeKPRMSkP5NPGw" type="3012" element="_MmbGMHUXEeKPRMSkP5NPGw">
+                  <children xmi:type="notation:Node" xmi:id="_MmkQI3UXEeKPRMSkP5NPGw" type="5010">
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_MmkQJHUXEeKPRMSkP5NPGw" x="-1"/>
+                  </children>
+                  <children xmi:type="notation:Node" xmi:id="_Mmk3MHUXEeKPRMSkP5NPGw" type="3003" element="_MmbGMXUXEeKPRMSkP5NPGw">
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_Mmk3MXUXEeKPRMSkP5NPGw" fontName="Ubuntu"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Mmk3MnUXEeKPRMSkP5NPGw"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_MmkQIXUXEeKPRMSkP5NPGw" fontName="Ubuntu" fontHeight="8"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_MmkQInUXEeKPRMSkP5NPGw" y="60" width="10" height="10"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_bUShcHUaEeKPRMSkP5NPGw" type="3012" element="_MtRDIHUZEeKPRMSkP5NPGw">
+                  <children xmi:type="notation:Node" xmi:id="_bUTIgHUaEeKPRMSkP5NPGw" type="5010">
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_bUTIgXUaEeKPRMSkP5NPGw" x="11" y="-9"/>
+                  </children>
+                  <children xmi:type="notation:Node" xmi:id="_bUTvkHUaEeKPRMSkP5NPGw" type="3003" element="_MtRDIXUZEeKPRMSkP5NPGw">
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_bUTvkXUaEeKPRMSkP5NPGw" fontName="Ubuntu"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bUTvknUaEeKPRMSkP5NPGw"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_bUShcXUaEeKPRMSkP5NPGw" fontName="Ubuntu" fontHeight="8"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bUShcnUaEeKPRMSkP5NPGw" x="138" y="60" width="10" height="10"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_zEZHI3T6EeKPRMSkP5NPGw" fontName="Ubuntu" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zEZHJHT6EeKPRMSkP5NPGw" x="210" y="30"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_zEZuNHT6EeKPRMSkP5NPGw" type="3008" element="_zEIolXT6EeKPRMSkP5NPGw">
+                <children xmi:type="notation:Node" xmi:id="_zEaVQHT6EeKPRMSkP5NPGw" type="5005"/>
+                <children xmi:type="notation:Node" xmi:id="_zEaVQXT6EeKPRMSkP5NPGw" type="7002">
+                  <children xmi:type="notation:Node" xmi:id="_zEjfMHT6EeKPRMSkP5NPGw" type="3007" element="_zEIom3T6EeKPRMSkP5NPGw">
+                    <children xmi:type="notation:Node" xmi:id="_zEktUHT6EeKPRMSkP5NPGw" type="5003">
+                      <layoutConstraint xmi:type="notation:Location" xmi:id="_zEktUXT6EeKPRMSkP5NPGw" x="31"/>
+                    </children>
+                    <children xmi:type="notation:Node" xmi:id="_zEktUnT6EeKPRMSkP5NPGw" type="3003" element="_zEIonHT6EeKPRMSkP5NPGw">
+                      <styles xmi:type="notation:ShapeStyle" xmi:id="_zEktU3T6EeKPRMSkP5NPGw" fontName="Ubuntu"/>
+                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zEktVHT6EeKPRMSkP5NPGw"/>
+                    </children>
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_zEjfMXT6EeKPRMSkP5NPGw" fontName="Ubuntu" fontHeight="8"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zEjfMnT6EeKPRMSkP5NPGw" x="30" y="30" width="30" height="30"/>
+                  </children>
+                  <styles xmi:type="notation:SortingStyle" xmi:id="_zEaVQnT6EeKPRMSkP5NPGw"/>
+                  <styles xmi:type="notation:FilteringStyle" xmi:id="_zEaVQ3T6EeKPRMSkP5NPGw"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_zEZuNXT6EeKPRMSkP5NPGw" fontName="Ubuntu" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zEZuNnT6EeKPRMSkP5NPGw" x="420" y="30"/>
+              </children>
+              <styles xmi:type="notation:SortingStyle" xmi:id="_zEWq4XT6EeKPRMSkP5NPGw"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_zEWq4nT6EeKPRMSkP5NPGw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zEVcwXT6EeKPRMSkP5NPGw" fontName="Ubuntu" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zEVcwnT6EeKPRMSkP5NPGw" x="120" y="108"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_zETnknT6EeKPRMSkP5NPGw"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_zEIBYXT6EeKPRMSkP5NPGw">
+        <target xmi:type="ecore:EPackage" href="testCollaspeExpand.ecore#/"/>
+        <semanticElements xmi:type="ecore:EPackage" href="testCollaspeExpand.ecore#/"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_zEIBYnT6EeKPRMSkP5NPGw">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIBY3T6EeKPRMSkP5NPGw"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIBZHT6EeKPRMSkP5NPGw"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIBZXT6EeKPRMSkP5NPGw" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIBZnT6EeKPRMSkP5NPGw" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_zEIBZ3T6EeKPRMSkP5NPGw" name="Test">
+          <target xmi:type="ecore:EClass" href="testCollaspeExpand.ecore#//Test"/>
+          <semanticElements xmi:type="ecore:EClass" href="testCollaspeExpand.ecore#//Test"/>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_zEIocXT6EeKPRMSkP5NPGw" name="att2" width="1" height="1" resizeKind="NSEW">
+            <target xmi:type="ecore:EAttribute" href="testCollaspeExpand.ecore#//Test/att2"/>
+            <semanticElements xmi:type="ecore:EAttribute" href="testCollaspeExpand.ecore#//Test/att2"/>
+            <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+            <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+            <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_zEIocnT6EeKPRMSkP5NPGw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" width="1" height="1">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIoc3T6EeKPRMSkP5NPGw"/>
+              <description xmi:type="style:SquareDescription" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='class']/@borderedNodeMappings[name='att']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIodHT6EeKPRMSkP5NPGw" red="138" green="226" blue="52"/>
+              <color xmi:type="viewpoint:RGBValues" xmi:id="_zEIodXT6EeKPRMSkP5NPGw" red="252" green="175" blue="62"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='class']/@borderedNodeMappings[name='att']"/>
+          </ownedBorderedNodes>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_zEIodnT6EeKPRMSkP5NPGw" name="op1" width="1" height="1" resizeKind="NSEW">
+            <target xmi:type="ecore:EOperation" href="testCollaspeExpand.ecore#//Test/op1"/>
+            <semanticElements xmi:type="ecore:EOperation" href="testCollaspeExpand.ecore#//Test/op1"/>
+            <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+            <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+            <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_zEIod3T6EeKPRMSkP5NPGw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" width="1" height="1">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIoeHT6EeKPRMSkP5NPGw"/>
+              <description xmi:type="style:SquareDescription" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='class']/@borderedNodeMappings[name='att2']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIoeXT6EeKPRMSkP5NPGw"/>
+              <color xmi:type="viewpoint:RGBValues" xmi:id="_zEIoenT6EeKPRMSkP5NPGw" red="136" green="136" blue="136"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='class']/@borderedNodeMappings[name='att2']"/>
+          </ownedBorderedNodes>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_zEIoe3T6EeKPRMSkP5NPGw" name="op2" width="1" height="1" resizeKind="NSEW">
+            <target xmi:type="ecore:EOperation" href="testCollaspeExpand.ecore#//Test/op2"/>
+            <semanticElements xmi:type="ecore:EOperation" href="testCollaspeExpand.ecore#//Test/op2"/>
+            <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+            <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+            <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_zEIofHT6EeKPRMSkP5NPGw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" width="1" height="1">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIofXT6EeKPRMSkP5NPGw"/>
+              <description xmi:type="style:SquareDescription" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='class']/@borderedNodeMappings[name='att2']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIofnT6EeKPRMSkP5NPGw"/>
+              <color xmi:type="viewpoint:RGBValues" xmi:id="_zEIof3T6EeKPRMSkP5NPGw" red="136" green="136" blue="136"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='class']/@borderedNodeMappings[name='att2']"/>
+          </ownedBorderedNodes>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_zEIogHT6EeKPRMSkP5NPGw" name="op3" width="1" height="1" resizeKind="NSEW">
+            <target xmi:type="ecore:EOperation" href="testCollaspeExpand.ecore#//Test/op3"/>
+            <semanticElements xmi:type="ecore:EOperation" href="testCollaspeExpand.ecore#//Test/op3"/>
+            <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+            <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+            <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_zEIogXT6EeKPRMSkP5NPGw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" width="1" height="1">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIognT6EeKPRMSkP5NPGw"/>
+              <description xmi:type="style:SquareDescription" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='class']/@borderedNodeMappings[name='att2']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIog3T6EeKPRMSkP5NPGw"/>
+              <color xmi:type="viewpoint:RGBValues" xmi:id="_zEIohHT6EeKPRMSkP5NPGw" red="136" green="136" blue="136"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='class']/@borderedNodeMappings[name='att2']"/>
+          </ownedBorderedNodes>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_zEIohXT6EeKPRMSkP5NPGw">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIohnT6EeKPRMSkP5NPGw"/>
+            <description xmi:type="style:FlatContainerStyleDescription" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='class']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIoh3T6EeKPRMSkP5NPGw"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIoiHT6EeKPRMSkP5NPGw" red="194" green="239" blue="255"/>
+            <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIoiXT6EeKPRMSkP5NPGw" red="209" green="209" blue="209"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='class']"/>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_zEIoinT6EeKPRMSkP5NPGw" name="Test2">
+          <target xmi:type="ecore:EClass" href="testCollaspeExpand.ecore#//Test2"/>
+          <semanticElements xmi:type="ecore:EClass" href="testCollaspeExpand.ecore#//Test2"/>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_zEIoi3T6EeKPRMSkP5NPGw" name="att3" width="1" height="1" resizeKind="NSEW">
+            <target xmi:type="ecore:EAttribute" href="testCollaspeExpand.ecore#//Test2/att3"/>
+            <semanticElements xmi:type="ecore:EAttribute" href="testCollaspeExpand.ecore#//Test2/att3"/>
+            <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+            <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+            <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_zEIojHT6EeKPRMSkP5NPGw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" width="1" height="1">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIojXT6EeKPRMSkP5NPGw"/>
+              <description xmi:type="style:SquareDescription" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='class']/@borderedNodeMappings[name='att']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIojnT6EeKPRMSkP5NPGw" red="138" green="226" blue="52"/>
+              <color xmi:type="viewpoint:RGBValues" xmi:id="_zEIoj3T6EeKPRMSkP5NPGw" red="252" green="175" blue="62"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='class']/@borderedNodeMappings[name='att']"/>
+          </ownedBorderedNodes>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_zEIBaHT6EeKPRMSkP5NPGw" name="att1" width="1" height="1" resizeKind="NSEW">
+            <target xmi:type="ecore:EAttribute" href="testCollaspeExpand.ecore#//Test2/att1"/>
+            <semanticElements xmi:type="ecore:EAttribute" href="testCollaspeExpand.ecore#//Test2/att1"/>
+            <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+            <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+            <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_zEIBaXT6EeKPRMSkP5NPGw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" width="1" height="1">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIBanT6EeKPRMSkP5NPGw"/>
+              <description xmi:type="style:SquareDescription" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='class']/@borderedNodeMappings[name='att']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIBa3T6EeKPRMSkP5NPGw" red="138" green="226" blue="52"/>
+              <color xmi:type="viewpoint:RGBValues" xmi:id="_zEIocHT6EeKPRMSkP5NPGw" red="252" green="175" blue="62"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='class']/@borderedNodeMappings[name='att']"/>
+          </ownedBorderedNodes>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_MmbGMHUXEeKPRMSkP5NPGw" name="op4" width="1" height="1" resizeKind="NSEW">
+            <target xmi:type="ecore:EOperation" href="testCollaspeExpand.ecore#//Test2/op4"/>
+            <semanticElements xmi:type="ecore:EOperation" href="testCollaspeExpand.ecore#//Test2/op4"/>
+            <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+            <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+            <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_MmbGMXUXEeKPRMSkP5NPGw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" width="1" height="1">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MmbGMnUXEeKPRMSkP5NPGw"/>
+              <description xmi:type="style:SquareDescription" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='class']/@borderedNodeMappings[name='att2']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_MmbGM3UXEeKPRMSkP5NPGw"/>
+              <color xmi:type="viewpoint:RGBValues" xmi:id="_MmbGNHUXEeKPRMSkP5NPGw" red="136" green="136" blue="136"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='class']/@borderedNodeMappings[name='att2']"/>
+          </ownedBorderedNodes>
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_MtRDIHUZEeKPRMSkP5NPGw" name="att4" width="1" height="1" resizeKind="NSEW">
+            <target xmi:type="ecore:EAttribute" href="testCollaspeExpand.ecore#//Test2/att4"/>
+            <semanticElements xmi:type="ecore:EAttribute" href="testCollaspeExpand.ecore#//Test2/att4"/>
+            <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+            <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+            <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_MtRDIXUZEeKPRMSkP5NPGw" showIcon="false" borderSize="1" borderSizeComputationExpression="1" width="1" height="1">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MtRDInUZEeKPRMSkP5NPGw"/>
+              <description xmi:type="style:SquareDescription" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='class']/@borderedNodeMappings[name='att']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_MtRDI3UZEeKPRMSkP5NPGw" red="138" green="226" blue="52"/>
+              <color xmi:type="viewpoint:RGBValues" xmi:id="_MtRDJHUZEeKPRMSkP5NPGw" red="252" green="175" blue="62"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='class']/@borderedNodeMappings[name='att']"/>
+          </ownedBorderedNodes>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_zEIokHT6EeKPRMSkP5NPGw">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIokXT6EeKPRMSkP5NPGw"/>
+            <description xmi:type="style:FlatContainerStyleDescription" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='class']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIoknT6EeKPRMSkP5NPGw"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIok3T6EeKPRMSkP5NPGw" red="194" green="239" blue="255"/>
+            <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIolHT6EeKPRMSkP5NPGw" red="209" green="209" blue="209"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='class']"/>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_zEIolXT6EeKPRMSkP5NPGw" name="testPackage">
+          <target xmi:type="ecore:EPackage" href="testCollaspeExpand.ecore#//testPackage"/>
+          <semanticElements xmi:type="ecore:EPackage" href="testCollaspeExpand.ecore#//testPackage"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_zEIolnT6EeKPRMSkP5NPGw">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIol3T6EeKPRMSkP5NPGw"/>
+            <description xmi:type="style:FlatContainerStyleDescription" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='packages']/@style"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIomHT6EeKPRMSkP5NPGw"/>
+            <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIomXT6EeKPRMSkP5NPGw" red="255" green="255" blue="255"/>
+            <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIomnT6EeKPRMSkP5NPGw" red="255" green="245" blue="181"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='packages']"/>
+          <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_zEIom3T6EeKPRMSkP5NPGw" name="Test" width="3" height="3" resizeKind="NSEW">
+            <target xmi:type="ecore:EClass" href="testCollaspeExpand.ecore#//testPackage/Test"/>
+            <semanticElements xmi:type="ecore:EClass" href="testCollaspeExpand.ecore#//testPackage/Test"/>
+            <ownedStyle xmi:type="diagram:Square" xmi:id="_zEIonHT6EeKPRMSkP5NPGw">
+              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIonXT6EeKPRMSkP5NPGw"/>
+              <description xmi:type="style:SquareDescription" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='packages']/@subNodeMappings[name='class']/@style"/>
+              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_zEIonnT6EeKPRMSkP5NPGw"/>
+              <color xmi:type="viewpoint:RGBValues" xmi:id="_zEIon3T6EeKPRMSkP5NPGw" red="136" green="136" blue="136"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer/@containerMappings[name='package']/@subContainerMappings[name='packages']/@subNodeMappings[name='class']"/>
+          </ownedDiagramElements>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_zEIooHT6EeKPRMSkP5NPGw"/>
+      <activatedLayers xmi:type="description_1:Layer" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']/@ownedRepresentations[name='testCollapse']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="testCollaspeExpand.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="testCollaspeExpand.odesign#//@ownedViewpoints[name='testCollapse']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

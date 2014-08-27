@@ -18,7 +18,7 @@ import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescriptio
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Flat Container Style Description</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -36,7 +36,7 @@ import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescriptio
  * <em>Label Border Style</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.style.StylePackage#getFlatContainerStyleDescription()
  * @model
  * @generated

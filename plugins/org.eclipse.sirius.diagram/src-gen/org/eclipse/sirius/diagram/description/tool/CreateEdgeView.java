@@ -14,7 +14,7 @@ package org.eclipse.sirius.diagram.description.tool;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Create Edge View</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -26,7 +26,7 @@ package org.eclipse.sirius.diagram.description.tool;
  * <em>Target Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getCreateEdgeView()
  * @model
  * @generated

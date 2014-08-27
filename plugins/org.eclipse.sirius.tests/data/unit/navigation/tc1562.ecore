@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="parent"
+    nsURI="http://www.example.com/" nsPrefix="parent">
+  <eSubpackages name="packageWithExistingDiagram" nsURI="http://www.example.com/packageWithExistingDiagram"
+      nsPrefix="packageWithExistingDiagram"/>
+  <eSubpackages name="packageWithExistingTable" nsURI="http://www.example.com/packageWithExistingTable"
+      nsPrefix="packageWithExistingTable"/>
+  <eSubpackages name="packageWithNoRepresentation" nsURI="http://www.example.com/packageWithNoRepresentation"
+      nsPrefix="packageWithNoRepresentation"/>
+</ecore:EPackage>

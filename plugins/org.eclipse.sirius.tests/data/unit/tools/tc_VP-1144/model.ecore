@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="MyPackage">
+  <eClassifiers xsi:type="ecore:EClass" name="Base1">
+    <eAnnotations source="test">
+      <details key="Base1" value="test"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Base1ExtA">
+    <eAnnotations source="test">
+      <details key="Base1ExtA" value="test"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Base1ExtB">
+    <eAnnotations source="test">
+      <details key="Base1ExtB" value="test"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Base2">
+    <eAnnotations source="test">
+      <details key="Base2" value="test"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Base2ExtC">
+    <eAnnotations source="test">
+      <details key="Base2ExtC" value="test"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Base1ExtAOnly">
+    <eAnnotations source="test">
+      <details key="Base1ExtAOnly" value="test"/>
+    </eAnnotations>
+  </eClassifiers>
+</ecore:EPackage>

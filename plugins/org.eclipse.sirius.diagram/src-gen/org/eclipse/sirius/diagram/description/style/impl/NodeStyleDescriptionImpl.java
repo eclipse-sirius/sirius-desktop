@@ -78,7 +78,7 @@ import org.eclipse.sirius.viewpoint.description.style.TooltipStyleDescription;
  * <em>Resize Kind</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class NodeStyleDescriptionImpl extends EObjectImpl implements NodeStyleDescription {

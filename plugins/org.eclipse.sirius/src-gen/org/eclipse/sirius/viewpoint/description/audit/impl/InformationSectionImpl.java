@@ -22,7 +22,7 @@ import org.eclipse.sirius.viewpoint.description.audit.InformationSection;
  * <em><b>Information Section</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class InformationSectionImpl extends EObjectImpl implements InformationSection {

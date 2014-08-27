@@ -18,12 +18,12 @@ import org.eclipse.emf.common.util.EList;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Variable Filter</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> A filter that filters viewpoint elements considering
  * an expression and some variables defined by the user.
  * 
  * <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -35,7 +35,7 @@ import org.eclipse.emf.common.util.EList;
  * <em>Semantic Condition Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.diagram.description.filter.FilterPackage#getVariableFilter()
  * @model
  * @generated

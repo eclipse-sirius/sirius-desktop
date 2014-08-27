@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="package">
+  <eClassifiers xsi:type="ecore:EClass" name="Class1" eSuperTypes="#//SuperClass">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="attribute1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="attribute2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="RefClass1VersClass2" eType="#//Class2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Class2">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="attribute21"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="RefClass2VersAbstract"
+        eType="#//AbstractClass" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SuperClass"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractClass" abstract="true"/>
+</ecore:EPackage>

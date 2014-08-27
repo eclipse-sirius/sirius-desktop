@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="MyPackage">
+  <eClassifiers xsi:type="ecore:EClass" name="Base1">
+    <eAnnotations source="test">
+      <details key="Base1" value="test"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Base1ExtA">
+    <eAnnotations source="test">
+      <details key="Base1ExtA" value="test"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="C3_documentationExtensionB">
+    <eAnnotations source="test">
+      <details key="documentationExtensionB" value="test"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="C4_documentationExtensionAndFont">
+    <eAnnotations source="test">
+      <details key="documentationExtension" value="test"/>
+      <details key="font" value="test"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="C5_documentationBaseAndFont">
+    <eAnnotations source="test">
+      <details key="documentationBase" value="test"/>
+      <details key="font" value="test"/>
+      <details key="isB" value="test"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Enum1_documentationBase">
+    <eAnnotations source="test">
+      <details key="documentationBase" value="test"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Enum2_documentationExtension">
+    <eAnnotations source="test">
+      <details key="documentationExtension" value="test"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AAA"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C6_documentationExtensionB1">
+    <eAnnotations source="test">
+      <details key="documentationExtensionB1" value="test"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="C7_documentationExtensionC">
+    <eAnnotations source="test">
+      <details key="documentationExtensionC" value="test"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="C8_documentationExtensionA">
+    <eAnnotations source="test">
+      <details key="documentationExtensionA" value="test"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="C9_documentationBase2">
+    <eAnnotations source="test">
+      <details key="documentationBase2" value="test"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Enum2_documentationBase2">
+    <eAnnotations source="test">
+      <details key="documentationBase2" value="test"/>
+    </eAnnotations>
+  </eClassifiers>
+</ecore:EPackage>

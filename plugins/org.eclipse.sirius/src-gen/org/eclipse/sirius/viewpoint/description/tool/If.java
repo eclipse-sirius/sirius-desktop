@@ -14,11 +14,11 @@ package org.eclipse.sirius.viewpoint.description.tool;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>If</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <!-- begin-model-doc --> If the evaluation of the condition returns true then
  * all operations contains by this If statement will be executed, otherwise all
  * operations will be ignored. <!-- end-model-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
@@ -27,7 +27,7 @@ package org.eclipse.sirius.viewpoint.description.tool;
  * <em>Condition Expression</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getIf()
  * @model
  * @generated

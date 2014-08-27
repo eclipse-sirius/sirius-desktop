@@ -72,7 +72,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  * <em>Window Image Path</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl implements SelectionWizardDescription {

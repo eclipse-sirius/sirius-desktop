@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="Test fixture for OptionalLayersActivationTests" version="8.0.0">
+  <ownedViewpoints name="not(init) and not(active)" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diagram: not initialized, optional layer inactive by default" domainClass="EPackage">
+      <defaultLayer name="Default layer">
+        <nodeMappings semanticCandidatesExpression="feature:eAllContents" domainClass="EClass">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+      </defaultLayer>
+      <additionalLayers name="Optional layer inactive by default"/>
+    </ownedRepresentations>
+  </ownedViewpoints>
+  <ownedViewpoints name="not(init) and active" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diagram: not initialized, optional layer active by default" domainClass="EPackage">
+      <defaultLayer name="Default layer">
+        <nodeMappings semanticCandidatesExpression="feature:eAllContents" domainClass="EClass">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+      </defaultLayer>
+      <additionalLayers name="Optional layer inactive by default" activeByDefault="true"/>
+    </ownedRepresentations>
+  </ownedViewpoints>
+  <ownedViewpoints name="init and not(active)" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diagram: initialized, optional layer inactive by default" initialisation="true" domainClass="EPackage">
+      <defaultLayer name="Default layer">
+        <nodeMappings semanticCandidatesExpression="feature:eAllContents" domainClass="EClass">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+      </defaultLayer>
+      <additionalLayers name="Optional layer inactive by default"/>
+    </ownedRepresentations>
+  </ownedViewpoints>
+  <ownedViewpoints name="init and active" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diagram: initialized, optional layer inactive by default" initialisation="true" domainClass="EPackage">
+      <defaultLayer name="Default layer">
+        <nodeMappings semanticCandidatesExpression="feature:eAllContents" domainClass="EClass">
+          <style xsi:type="style:SquareDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+      </defaultLayer>
+      <additionalLayers name="Optional layer inactive by default" activeByDefault="true"/>
+    </ownedRepresentations>
+  </ownedViewpoints>
+  <ownedViewpoints name="extension and not(active)" modelFileExtension="ecore">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Diagram extension with optional layer inactive by default" viewpointURI="viewpoint:/org.eclipse.sirius.tests/init and not(active)" representationName="Diagram: initialized, optional layer inactive by default">
+      <layers name="Contributed optional layer inactive by default"/>
+    </ownedRepresentationExtensions>
+  </ownedViewpoints>
+  <ownedViewpoints name="extension and active" modelFileExtension="ecore">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Diagram extension with optional layer active by default" viewpointURI="viewpoint:/org.eclipse.sirius.tests/init and not(active)" representationName="Diagram: initialized, optional layer inactive by default">
+      <layers name="Contributed optional layer active by default" activeByDefault="true"/>
+    </ownedRepresentationExtensions>
+  </ownedViewpoints>
+</description:Group>
