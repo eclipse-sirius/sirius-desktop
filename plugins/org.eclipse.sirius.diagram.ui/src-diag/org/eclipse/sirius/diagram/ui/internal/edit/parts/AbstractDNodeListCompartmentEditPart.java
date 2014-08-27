@@ -12,16 +12,17 @@ package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.DragTracker;
@@ -41,8 +42,10 @@ import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.ISurfaceEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
@@ -55,7 +58,11 @@ import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
+import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
 
 /**
  * <p>
@@ -72,42 +79,74 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
      */
     private boolean isSupportingViewActions = false;
 
-    private Comparator mappingComparator = new Comparator() {
-        public int compare(Object arg0, Object arg1) {
-            if (!(arg0 instanceof View) || !(arg1 instanceof View)) {
-                throw new IllegalArgumentException();
-            }
-            View view0 = (View) arg0;
-            View view1 = (View) arg1;
-            EObject element0 = view0.getElement();
-            EObject element1 = view1.getElement();
-            if (element0 instanceof DMappingBased && element1 instanceof DMappingBased) {
-                EObject eObj = resolveSemanticElement();
-                if (eObj instanceof DNodeList) {
-                    DNodeList container = (DNodeList) eObj;
-                    List allMappings = container.getActualMapping().getAllNodeMappings();
-                    RepresentationElementMapping origin0 = ((DMappingBased) element0).getMapping();
-                    RepresentationElementMapping origin1 = ((DMappingBased) element1).getMapping();
-                    return allMappings.indexOf(origin0) - allMappings.indexOf(origin1);
-                }
-            }
-            return 0;
-        }
-    };
+    private static class ComparisonHelper {
+        private DNodeList self;
 
-    private Comparator<View> indexComparator = new Comparator<View>() {
-        public int compare(View o1, View o2) {
-            final EObject semantic = resolveSemanticElement();
-            if (semantic instanceof DNodeList) {
-                final EObject sem1 = ViewUtil.resolveSemanticElement(o1);
-                final EObject sem2 = ViewUtil.resolveSemanticElement(o2);
-                if (sem1 instanceof DNodeListElement && sem2 instanceof DNodeListElement) {
-                    return ((DNodeList) semantic).getNodes().indexOf(sem1) - ((DNodeList) semantic).getNodes().indexOf(sem2);
-                }
-            }
-            return 0;
+        public ComparisonHelper(DNodeList self) {
+            this.self = self;
         }
-    };
+
+        public void sort(List<View> views) {
+            /*
+             * The main sort criterion is based on the elements' mapping's
+             * position in the VSM, so that all instances of the same mapping
+             * are grouped together, and if a mapping M1 appears before another
+             * M2 in the specification, all instances of M1 appear before those
+             * of M2.
+             */
+            final EList<NodeMapping> allMappings = self.getActualMapping().getAllNodeMappings();
+            Function<View, Integer> mappingIndex = new Function<View, Integer>() {
+                @Override
+                public Integer apply(View view) {
+                    if (view != null) {
+                        EObject element = view.getElement();
+                        if (element instanceof DMappingBased) {
+                            RepresentationElementMapping mapping = ((DMappingBased) element).getMapping();
+                            /*
+                             * Use a plain indexOf search here, assuming that in
+                             * practice there are never more than a handful of
+                             * mappings inside a list container.
+                             */
+                            return allMappings.indexOf(mapping);
+                        }
+                    }
+                    return Integer.MAX_VALUE;
+                }
+            };
+            /*
+             * Inside a group of elements from the same mapping, use the
+             * DNodeListItem order. As opposed to the mappings, the number of
+             * actual items can grow very large, so we pre-compute the elements'
+             * indices with a linear scan to avoid repeated calls to indexOf for
+             * each comparison.
+             */
+            final Map<DNodeListElement, Integer> indices = Maps.newHashMap();
+            EList<DNode> nodes = self.getNodes();
+            int i = 0;
+            for (DNode current : nodes) {
+                if (current instanceof DNodeListElement) {
+                    indices.put((DNodeListElement) current, i);
+                }
+                i++;
+            } 
+            Function<View, Integer> nodeIndex = new Function<View, Integer>() {
+                @Override
+                public Integer apply(View view) {
+                    if (view != null) {
+                        EObject sem = ViewUtil.resolveSemanticElement(view);
+                        if (sem != null && indices.containsKey(sem)) {
+                            return indices.get(sem);
+                        }
+                    }
+                    return Integer.MAX_VALUE;
+                }
+            };
+            /*
+             * Perform the actual sort, combining the two criteria above.
+             */
+            Collections.sort(views, Ordering.natural().onResultOf(mappingIndex).compound(Ordering.natural().onResultOf(nodeIndex)));
+        }
+    }
 
     /**
      * Creates a new AbstractDNodeListCompartmentEditPart.
@@ -126,17 +165,6 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
         super.createDefaultEditPolicies();
         installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new DNodeListViewNodeListCompartmentItemSemanticEditPolicy());
         installEditPolicy(EditPolicyRoles.CREATION_ROLE, new CreationEditPolicy());
-        // -- 01-08-2008 : bug drag & drop, we should use a CompoundEditPolicy.
-        // CompoundEditPolicy dragDropEditPolicy = new CompoundEditPolicy();
-        // dragDropEditPolicy.addEditPolicy(new
-        // SiriusContainerDropPolicy(getEditingDomain()));
-        // while (this.getEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE) != null) {
-        // dragDropEditPolicy.addEditPolicy(this.getEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE));
-        // this.removeEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE);
-        // }
-        // installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE,
-        // dragDropEditPolicy);
-        // -- 01-08-2008
         installEditPolicy(EditPolicyRoles.DRAG_DROP_ROLE, new SiriusContainerDropPolicy());
         installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, new DumnySiriusCanonicalEditPolicy());
         installEditPolicy(EditPolicy.CONTAINER_ROLE, new NodeCreationEditPolicy());
@@ -200,11 +228,10 @@ public abstract class AbstractDNodeListCompartmentEditPart extends ListCompartme
      */
     @Override
     protected List<?> getModelChildren() {
-        // create a new view to avoid to change the super.getModelChildren list.
-        List<?> modelChildren = new ArrayList(super.getModelChildren());
+        @SuppressWarnings("unchecked")
+        List<View> modelChildren = Lists.newArrayList(super.getModelChildren());
         DiagramElementEditPartOperation.removeInvisibleElements(modelChildren);
-        Collections.sort((List<View>) modelChildren, indexComparator);
-        Collections.sort(modelChildren, mappingComparator);
+        new ComparisonHelper((DNodeList) resolveSemanticElement()).sort(modelChildren);
         return modelChildren;
     }
 
