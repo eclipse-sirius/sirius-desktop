@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,9 +24,6 @@ import org.eclipse.ui.PlatformUI;
  * @author cbrun
  */
 public class RefreshDDiagramElementAction extends Action implements IObjectActionDelegate {
-
-    /** The selection. */
-    private ISelection selection;
 
     /**
      * Construct a new refresh element action.
@@ -58,13 +55,23 @@ public class RefreshDDiagramElementAction extends Action implements IObjectActio
     }
 
     /**
+     * Empty. {@inheritDoc}
+     * 
+     * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction,
+     *      org.eclipse.jface.viewers.ISelection)
+     */
+    public void selectionChanged(final IAction action, final ISelection s) {
+        // empty.
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.eclipse.jface.action.Action#run()
      */
     @Override
     public void run() {
-        this.selection = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getSelection();
+        ISelection selection = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getSelection();
         RefreshDiagramAction.refresh(selection);
     }
 
@@ -75,17 +82,6 @@ public class RefreshDDiagramElementAction extends Action implements IObjectActio
      * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
      */
     public void run(final IAction action) {
-        RefreshDiagramAction.refresh(selection);
+        run();
     }
-
-    /**
-     * Set the selection. {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction,
-     *      org.eclipse.jface.viewers.ISelection)
-     */
-    public void selectionChanged(final IAction action, final ISelection s) {
-        this.selection = s;
-    }
-
 }
