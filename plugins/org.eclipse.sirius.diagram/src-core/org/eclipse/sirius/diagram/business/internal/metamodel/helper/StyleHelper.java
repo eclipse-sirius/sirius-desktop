@@ -322,7 +322,7 @@ public final class StyleHelper {
                 edgeStyle.setRoutingStyle(edgeDescription.getRoutingStyle());
             }
             updateLabels(edgeDescription, edgeStyle, previousStyle);
-            updateEdgeCenteringInformations(edgeDescription, edgeStyle);
+            updateEdgeCenteringInformations(edgeDescription, edgeStyle, previousStyle);
         }
     }
 
@@ -377,8 +377,20 @@ public final class StyleHelper {
         updateEdgeLabel(edgeDescription.getEndLabelStyleDescription(), edgeStyle.getEndLabelStyle());
     }
 
-    private void updateEdgeCenteringInformations(EdgeStyleDescription edgeDescription, EdgeStyle edgeStyle) {
+    private void updateEdgeCenteringInformations(EdgeStyleDescription edgeDescription, EdgeStyle edgeStyle, Option<EdgeStyle> previousStyle) {
 
+        if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(DiagramPackage.Literals.EDGE_STYLE__CENTERED.getName())) {
+            edgeStyle.setCentered(previousStyle.get().getCentered());
+            edgeStyle.getCustomFeatures().add(DiagramPackage.Literals.EDGE_STYLE__CENTERED.getName());
+        } else {
+            if (!edgeStyle.getCustomFeatures().contains(DiagramPackage.Literals.EDGE_STYLE__CENTERED.getName())) {
+
+                computeCentered(edgeDescription, edgeStyle);
+            }
+        }
+    }
+
+    private void computeCentered(EdgeStyleDescription edgeDescription, EdgeStyle edgeStyle) {
         switch (edgeDescription.getEndsCentering().getValue()) {
         case CenteringStyle.BOTH_VALUE:
             edgeStyle.setCentered(CenteringStyle.BOTH);
