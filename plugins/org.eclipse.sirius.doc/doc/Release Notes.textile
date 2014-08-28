@@ -29,6 +29,10 @@ h4. Changes in @org.eclipse.sirius@
 * The interface @org.eclipse.sirius.tools.api.command.listener.IChangeListener@ and all classes related to this mechanism (@ChangeListenerFactory@, @TriggerOperation@) have been removed as this mechanism proves to be inefficient. It can be replaced by a pre/post commit listener or a @org.eclipse.sirius.business.api.session.ModelChangeTrigger@
 * The @org.eclipse.sirius.tools.api.ui.IExternalAction2@ interface has been removed. It was created to disable some @IChangeListener@ when the action indicates it will not delete elements.
 
+h4. Changes in @org.eclipse.sirius.ui@
+
+* In @org.eclipse.sirius.ui.business.api.session.UserSession@, the methods @selectSirius()@, @selectOnlySirius()@ and @findSiriusByName()@ have been renamed into @selectViewpoint()@, @selectOnlyViewpoint()@ and @findViewpointByName()@ to correct a wrong rebranding.
+
 h4. Changes in @org.eclipse.sirius.common@
 
 * The method @org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.getResourceSetSync(TransactionalEditingDomain)@ has been added to look for a @ResourceSetSync@ without creating a new one if no synchronizer currently exists.

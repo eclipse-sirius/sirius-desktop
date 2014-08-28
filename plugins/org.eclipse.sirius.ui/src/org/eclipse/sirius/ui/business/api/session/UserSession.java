@@ -187,7 +187,7 @@ public class UserSession {
      *            the name of the viewpoint to select
      * @return the user session
      */
-    public UserSession selectSirius(final String viewpointName) {
+    public UserSession selectViewpoint(final String viewpointName) {
         return selectViewpoints(Arrays.asList(new String[] { viewpointName }));
     }
 
@@ -198,7 +198,7 @@ public class UserSession {
      *            the name of the viewpoint
      * @return the user session
      */
-    public UserSession selectOnlySirius(final String viewpointName) {
+    public UserSession selectOnlyViewpoint(final String viewpointName) {
         return selectViewpoints(Arrays.asList(new String[] { viewpointName }), true);
     }
 
@@ -230,7 +230,7 @@ public class UserSession {
                 public void run(IProgressMonitor monitor) {
                     Set<Viewpoint> viewpoints = Sets.newLinkedHashSet();
                     for (final String viewpointName : viewpointNames) {
-                        Viewpoint viewpoint = findSiriusByName(viewpointName);
+                        Viewpoint viewpoint = findViewpointByName(viewpointName);
                         viewpoints.add(viewpoint);
                     }
                     selectViewpoints(viewpoints, onlyThisViewpoints);
@@ -292,7 +292,7 @@ public class UserSession {
         return null;
     }
 
-    private Viewpoint findSiriusByName(String vpName) {
+    private Viewpoint findViewpointByName(String vpName) {
         for (Viewpoint candidate : ViewpointRegistry.getInstance().getViewpoints()) {
             if (vpName.equals(candidate.getName())) {
                 return candidate;
