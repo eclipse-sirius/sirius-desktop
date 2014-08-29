@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -113,7 +113,7 @@ public class LoadEMFResource implements Runnable {
         // Is there any specific resource factori for the given uri ?
         if (set.getResourceFactoryRegistry().getFactory(uri, null).getClass() == XMIResourceFactoryImpl.class) {
             // The default XMI resource factory will be used, check we have XMI
-            // in the file and all namespace metamodels are known.
+            // in the file.
             XMIModelFileSaxParser modelFileSaxParser = new XMIModelFileSaxParser(file);
             modelFileSaxParser.analyze(new NullProgressMonitor());
             ableToLoad = modelFileSaxParser.isLoadable();

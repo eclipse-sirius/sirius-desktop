@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,25 +11,19 @@
 package org.eclipse.sirius.business.internal.resource.parser;
 
 import java.io.IOException;
-import java.util.Set;
 
-import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMLContentHandlerImpl.XMI;
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import com.google.common.collect.Sets;
-
 /**
  * An event handler to detect xmi model files.
  * 
- * It will inspect the first element to look for XMI namespace and check that
- * other namespace attributes reference knwon meta models.
+ * It will inspect the first element to look for XMI namespace.
  * 
  * @author <a href="mailto:maxime.porhel@obeo.fr">Maxime Porhel</a>
  */
@@ -58,9 +52,8 @@ public class XMIModelFileHandler extends DefaultHandler {
         }
 
         firstElementRead = true;
-        Set<String> nsValues = Sets.newHashSet();
-        boolean isXMI = lookForXMIAndCollectNamespaces(attributes, nsValues);
-        canLoad = isXMI && allNamespacesAreKnownMetaModels(nsValues);
+        boolean isXMI = lookForXMI(attributes);
+        canLoad = isXMI;
     }
 
     /**
@@ -86,8 +79,7 @@ public class XMIModelFileHandler extends DefaultHandler {
         throw new XMIModelFileSaxParserNormalAbortException("We try to access external elements. Stop the parsing.");
     }
 
-    private boolean lookForXMIAndCollectNamespaces(Attributes attributes, Set<String> nsValues) {
-        boolean isXMI = false;
+    private boolean lookForXMI(Attributes attributes) {
         for (int i = 0; i < attributes.getLength(); i++) {
             String attributeName = attributes.getQName(i);
 
@@ -98,25 +90,12 @@ public class XMIModelFileHandler extends DefaultHandler {
                     continue;
                 }
 
-                boolean xmiNamespace = XMI.isXMINamespace(value);
-                isXMI = isXMI || xmiNamespace;
-
-                if (!value.startsWith(XMLResource.XML_SCHEMA_URI) && !xmiNamespace) {
-                    nsValues.add(value);
+                if (XMI.isXMINamespace(value)) {
+                    return true;
                 }
             }
         }
-        return isXMI;
+        return false;
     }
 
-    private boolean allNamespacesAreKnownMetaModels(Set<String> nsValues) {
-        boolean allKnwonMM = true;
-        if (!nsValues.isEmpty()) {
-            Registry workspaceEPackageRegistry = DslCommonPlugin.getDefault().getWorkspaceEPackageRegistry();
-            for (String val : nsValues) {
-                allKnwonMM = allKnwonMM && workspaceEPackageRegistry.get(val) != null;
-            }
-        }
-        return allKnwonMM;
-    }
 }
