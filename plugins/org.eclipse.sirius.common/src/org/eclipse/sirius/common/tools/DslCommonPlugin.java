@@ -16,9 +16,9 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.ecore.EPackage.Registry;
 import org.osgi.framework.BundleContext;
-
 import org.eclipse.sirius.common.tools.api.ecore.WorkspaceEPackageRegistry;
 import org.eclipse.sirius.common.tools.api.editing.EditingDomainFactoryRegistry;
 import org.eclipse.sirius.common.tools.api.profiler.TimeProfiler;
@@ -76,7 +76,7 @@ public class DslCommonPlugin extends Plugin {
         new DynamicPackageRegistryReader().readRegistry();
 
         workspaceEPackageRegistry = new WorkspaceEPackageRegistry(true);
-        workspaceEPackageRegistry.init(ResourcesPlugin.getWorkspace());
+
     }
 
     /**
@@ -103,8 +103,9 @@ public class DslCommonPlugin extends Plugin {
         super.stop(context);
 
         clearExtensionRegistries();
-
-        workspaceEPackageRegistry.dispose(ResourcesPlugin.getWorkspace());
+        if (EMFPlugin.IS_ECLIPSE_RUNNING) {
+            workspaceEPackageRegistry.dispose(ResourcesPlugin.getWorkspace());
+        }
         workspaceEPackageRegistry = null;
     }
 
@@ -176,6 +177,9 @@ public class DslCommonPlugin extends Plugin {
      *         EPackage from workspace
      */
     public Registry getWorkspaceEPackageRegistry() {
+        if (!workspaceEPackageRegistry.isListeningWorkspace() && EMFPlugin.IS_ECLIPSE_RUNNING) {
+            workspaceEPackageRegistry.init(ResourcesPlugin.getWorkspace());
+        }
         return workspaceEPackageRegistry;
     }
 }

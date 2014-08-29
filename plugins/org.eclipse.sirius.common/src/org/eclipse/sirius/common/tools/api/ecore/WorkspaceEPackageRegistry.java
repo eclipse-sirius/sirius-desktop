@@ -50,6 +50,8 @@ public class WorkspaceEPackageRegistry extends HashMap<String, Object> implement
 
     private EPackage.Registry delegated;
 
+    private boolean isListening;
+
     /**
      * Create a new workspace based registry.
      * 
@@ -75,6 +77,7 @@ public class WorkspaceEPackageRegistry extends HashMap<String, Object> implement
             newEcore(file);
         }
         ws.addResourceChangeListener(this);
+        this.isListening = true;
     }
 
     /**
@@ -241,6 +244,17 @@ public class WorkspaceEPackageRegistry extends HashMap<String, Object> implement
             workspace = delegated.getEPackage(arg0);
         }
         return workspace;
+    }
+
+    /**
+     * return true if the registry has been initialized and is listening to the
+     * workspace.
+     * 
+     * @return true if the registry has been initialized and is listening to the
+     *         workspace.
+     */
+    public boolean isListeningWorkspace() {
+        return isListening;
     }
 
 }
