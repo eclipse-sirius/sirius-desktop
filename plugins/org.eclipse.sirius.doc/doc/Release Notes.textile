@@ -61,6 +61,11 @@ h4. Changes in @org.eclipse.sirius.common@
 * The class @org.eclipse.sirius.common.tools.api.util.SmartAdapter@ has been removed as this mechanism proves to be inefficient. The only user of this mechanism was the @org.eclipse.sirius.tools.api.command.listener.IChangeListener@ which has also been removed.
 * The class @org.eclipse.sirius.common.tools.api.ecore.WorkspaceEPackageRegistry@ has been moved to the @org.eclipse.sirius.editor@ plugin. @org.eclipse.sirius.common.tools.DslCommonPlugin.getWorkspaceEPackageRegistry@ has been removed. The same method has been added in @org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin@.
 
+h4. Changes in @org.eclipse.sirius.common.ui@
+
+* The method @org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil.addSelectionListener(IWorkbenchPart, ISelectionListener)@ has been added to register a new selection listener to the site for the workbench part. This method looks for a @ISelectionService@ by calling @IServiceLocator.getService()@ on the site.
+* The method @org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil.removeSelectionListener(IWorkbenchPart, ISelectionListener)@ has been added to unregister an existing selection listener from site for the workbench part. This method looks for a @ISelectionService@ by calling @IServiceLocator.getService()@ on the site.
+
 h4. Changes in @org.eclipse.sirius.diagram@
 
 

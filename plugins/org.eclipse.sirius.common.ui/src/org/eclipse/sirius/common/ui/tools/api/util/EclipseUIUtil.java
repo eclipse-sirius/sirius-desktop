@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2009, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,21 +14,23 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.resources.IResource;
+import org.eclipse.sirius.common.ui.SiriusTransPlugin;
+import org.eclipse.sirius.common.ui.tools.api.view.IExpandSelectionTarget;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IPerspectiveDescriptor;
+import org.eclipse.ui.ISelectionListener;
+import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartReference;
+import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.common.ui.SiriusTransPlugin;
-import org.eclipse.sirius.common.ui.tools.api.view.IExpandSelectionTarget;
 
 /**
  * Static useful eclipse ui methods.
@@ -233,6 +235,47 @@ public final class EclipseUIUtil {
                         finalTarget.expand(resource);
                     }
                 });
+            }
+        }
+    }
+
+    /**
+     * Add a selection listener to the site for the workbench part. Looks for a
+     * {@link ISelectionService} by calling {@link IServiceLocator#getService}
+     * on the site.
+     * 
+     * @param part
+     *            the workbench part
+     * @param listener
+     *            the listener to add
+     */
+    public static void addSelectionListener(IWorkbenchPart part, ISelectionListener listener) {
+        IWorkbenchPartSite site = part.getSite();
+        if (site != null) {
+            ISelectionService selectionService = (ISelectionService) site.getService(ISelectionService.class);
+            if (selectionService != null) {
+                selectionService.addSelectionListener(listener);
+            }
+        }
+    }
+
+    /**
+     * Remove a selection listener from the site for the workbench part. Looks
+     * for a {@link ISelectionService} by calling
+     * {@link IServiceLocator#getService} on the site.
+     * 
+     * @param part
+     *            the workbench part
+     * 
+     * @param listener
+     *            the listener to remove
+     */
+    public static void removeSelectionListener(IWorkbenchPart part, ISelectionListener listener) {
+        IWorkbenchPartSite site = part.getSite();
+        if (site != null) {
+            ISelectionService selectionService = (ISelectionService) site.getService(ISelectionService.class);
+            if (selectionService != null) {
+                selectionService.removeSelectionListener(listener);
             }
         }
     }

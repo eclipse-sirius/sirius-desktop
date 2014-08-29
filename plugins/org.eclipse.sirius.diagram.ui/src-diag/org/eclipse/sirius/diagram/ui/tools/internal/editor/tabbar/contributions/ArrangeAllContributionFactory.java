@@ -24,13 +24,12 @@ import org.eclipse.ui.services.IServiceLocator;
  * @author fbarbin
  */
 public class ArrangeAllContributionFactory extends SiriusTabbarExtensionContributionFactory {
-    private TabbarArrangeMenuManager arrangeMenu;
 
     @Override
     public void createContributionItems(IServiceLocator serviceLocator, IContributionRoot additions) {
 
         super.createContributionItems(serviceLocator, additions);
-        arrangeMenu = new TabbarArrangeMenuManager(getPage(), getPart());
+        TabbarArrangeMenuManager arrangeMenu = new TabbarArrangeMenuManager(getPart());
 
         additions.addContributionItem(arrangeMenu, new DDiagramAndDDiagramElementTabbarExpression());
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2013, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.layout.ArrangeBorderedNodesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.ArrangeAllOnlyLayoutProvider;
@@ -41,32 +42,21 @@ import org.eclipse.ui.IWorkbenchPart;
  * 
  * @author mchauvin
  */
+@SuppressWarnings("restriction")
 public class TabbarArrangeMenuManager extends ArrangeMenuManager implements ISelectionListener {
-
-    private IWorkbenchPage page;
-
     private IWorkbenchPart representationPart;
-
-    private ISelection currentSelection;
-
-    private ArrangeAction toolbarArrangeSelectionAction;
-
-    private ArrangeAction toolbarArrangeAllAction;
-
-    private ArrangeBorderedNodesAction toolBarArrangeBorderedNodesAction;
 
     /**
      * constructor.
      * 
-     * @param page
-     *            the current workbench page.
+     * the current workbench page.
+     * 
      * @param iDiagramWorkbenchPart
      *            the current workbench part.
      */
-    public TabbarArrangeMenuManager(IWorkbenchPage page, IDiagramWorkbenchPart iDiagramWorkbenchPart) {
-        this.page = page;
+    public TabbarArrangeMenuManager(IDiagramWorkbenchPart iDiagramWorkbenchPart) {
         this.representationPart = iDiagramWorkbenchPart;
-        page.addSelectionListener(this);
+        EclipseUIUtil.addSelectionListener(this.representationPart, this);
     }
 
     /**
@@ -102,15 +92,11 @@ public class TabbarArrangeMenuManager extends ArrangeMenuManager implements ISel
      */
     @Override
     public void dispose() {
-        currentSelection = null;
-        if (page != null) {
-            page.removeSelectionListener(this);
-            page = null;
+        if (representationPart != null) {
+            EclipseUIUtil.removeSelectionListener(representationPart, this);
         }
+
         removeAll();
-        toolbarArrangeAllAction = null;
-        toolBarArrangeBorderedNodesAction = null;
-        toolbarArrangeSelectionAction = null;
         representationPart = null;
         super.dispose();
     }
@@ -163,17 +149,21 @@ public class TabbarArrangeMenuManager extends ArrangeMenuManager implements ISel
      * {@inheritDoc}
      */
     public void selectionChanged(IWorkbenchPart part, ISelection selection) {
-        if (representationPart != null && representationPart.equals(part)) {
-            // arrangeMenu.removeAll();
-            if (currentSelection == null || (currentSelection != null && !currentSelection.equals(selection))) {
-                currentSelection = selection;
-                refreshArrangeMenu(currentSelection);
-            }
+        IWorkbenchPage page = EclipseUIUtil.getActivePage();
+        if (page != null && representationPart != null && representationPart.equals(part)) {
+            refreshArrangeMenu(page, selection);
         }
-
     }
 
-    private void refreshArrangeMenu(ISelection selection) {
+    /**
+     * Refresh the "arrange" menu.
+     * 
+     * @param page
+     *            the workbench page (not null)
+     * @param selection
+     *            the current selection
+     */
+    private void refreshArrangeMenu(IWorkbenchPage page, ISelection selection) {
         boolean arrangeSelection = false;
         if (selection instanceof IStructuredSelection) {
             Object firstElement = ((IStructuredSelection) selection).getFirstElement();
@@ -183,57 +173,83 @@ public class TabbarArrangeMenuManager extends ArrangeMenuManager implements ISel
         }
 
         if (arrangeSelection) {
-            cleanArrangeDiagram();
-            if (find(ActionIds.ACTION_TOOLBAR_ARRANGE_SELECTION) == null) {
-                toolbarArrangeSelectionAction = ArrangeAction.createToolbarArrangeSelectionAction(page);
-                add(toolbarArrangeSelectionAction);
-            }
-            disableArrangeSelectionIfNotSupported(toolbarArrangeSelectionAction, (IStructuredSelection) selection);
-            setDefaultAction(toolbarArrangeSelectionAction.getId());
-        } else {
-            addDefaultArrangeActions();
-        }
-    }
+            if (!isArrangeSelection()) {
+                // change to Arrange Selection
+                removeArrangeActions();
 
-    private void addDefaultArrangeActions() {
-        cleanArrangeDDiagramElement();
-        if (find(ActionIds.ACTION_TOOLBAR_ARRANGE_ALL) == null) {
-            toolbarArrangeAllAction = ArrangeAction.createToolbarArrangeAllAction(page);
-            add(toolbarArrangeAllAction);
+                ArrangeAction toolbarArrangeSelectionAction = ArrangeAction.createToolbarArrangeSelectionAction(page);
+                add(toolbarArrangeSelectionAction);
+
+                disableArrangeSelectionIfNotSupported(toolbarArrangeSelectionAction, (IStructuredSelection) selection);
+                setDefaultAction(toolbarArrangeSelectionAction.getId());
+            }
+        } else {
+            if (!isArrangeAllAndBorderedNodes()) {
+                // change to Arrange All / Arrange Bordered Nodes
+                removeArrangeActions();
+
+                ArrangeAction toolbarArrangeAllAction = ArrangeAction.createToolbarArrangeAllAction(page);
+                add(toolbarArrangeAllAction);
+
+                ArrangeBorderedNodesAction toolBarArrangeBorderedNodesAction = ArrangeBorderedNodesAction.createToolBarArrangeBorderedNodesAction(page);
+                add(toolBarArrangeBorderedNodesAction);
+
+                setDefaultAction(toolbarArrangeAllAction.getId());
+            }
         }
-        if (find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDERED_NODES_TOOLBAR) == null) {
-            toolBarArrangeBorderedNodesAction = ArrangeBorderedNodesAction.createToolBarArrangeBorderedNodesAction(page);
-            add(toolBarArrangeBorderedNodesAction);
-        }
-        setDefaultAction(toolbarArrangeAllAction.getId());
     }
 
     @Override
     public void setVisible(boolean visible) {
         super.setVisible(visible);
-        if (isEmpty() && visible && page != null) {
 
-            refreshArrangeMenu(page.getSelection());
+        IWorkbenchPage page = EclipseUIUtil.getActivePage();
+        if (page != null) {
+            // refresh available actions
+            refreshArrangeMenu(page, page.getSelection());
+
+            if (visible && representationPart == null) {
+                // With Eclipse 4.x, if the menu manager is invisible,
+                // it may be disposed
+                // Here, the menu manager has been disposed incorrectly.
+                // Get the representation part and register again the
+                // ISelectionListener.
+                representationPart = page.getActivePart();
+                if (representationPart != null) {
+                    EclipseUIUtil.addSelectionListener(representationPart, this);
+                }
+            }
         }
     }
 
-    private void cleanArrangeDDiagramElement() {
-        if (toolbarArrangeSelectionAction != null) {
-            remove(toolbarArrangeSelectionAction.getId());
-            toolbarArrangeSelectionAction = null;
-        }
+    /**
+     * Remove all "Arrange" actions: - Arrange Selection - Arrange All - Arrange
+     * Linked Bordered Nodes
+     */
+    private void removeArrangeActions() {
+        remove(ActionIds.ACTION_TOOLBAR_ARRANGE_SELECTION);
+        remove(ActionIds.ACTION_TOOLBAR_ARRANGE_ALL);
+        remove(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDERED_NODES_TOOLBAR);
     }
 
-    private void cleanArrangeDiagram() {
-        if (toolbarArrangeAllAction != null) {
-            remove(toolbarArrangeAllAction.getId());
-            toolbarArrangeAllAction = null;
-        }
-        if (toolBarArrangeBorderedNodesAction != null) {
-            remove(toolBarArrangeBorderedNodesAction.getId());
+    /**
+     * Check that the only available arrange action is "Arrange Selection"
+     * 
+     * @return true if the only available action is "Arrange Selection"
+     */
+    private boolean isArrangeSelection() {
+        return find(ActionIds.ACTION_TOOLBAR_ARRANGE_SELECTION) != null;
+    }
 
-            toolBarArrangeBorderedNodesAction = null;
-        }
+    /**
+     * Check that there are only two arrange actions when the diagram is
+     * selected.
+     * 
+     * @return true id there are only two arrange actions when the diagram is
+     *         selected
+     */
+    private boolean isArrangeAllAndBorderedNodes() {
+        return find(ActionIds.ACTION_TOOLBAR_ARRANGE_ALL) != null && find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDERED_NODES_TOOLBAR) != null;
     }
 
     /**
@@ -246,14 +262,17 @@ public class TabbarArrangeMenuManager extends ArrangeMenuManager implements ISel
      * implements ArrangeAllOnlyLayoutProvider does not support ArrangeSelection
      * Action.
      * 
-     * @param createToolbarArrangeSelectionAction
+     * @param toolbarArrangeSelectionAction
+     *            the action
+     * @param selection
+     *            the current selection
      */
     private void disableArrangeSelectionIfNotSupported(ArrangeAction createToolbarArrangeSelectionAction, IStructuredSelection selection) {
         // Step 1 : We get the diagram's edit part associated to the selected
         // elements
         IGraphicalEditPart graphicalElement = null;
 
-        Iterator<Object> iterator = selection.iterator();
+        Iterator<?> iterator = selection.iterator();
         while (iterator.hasNext() && (graphicalElement == null)) {
             Object next = iterator.next();
             if (next instanceof IGraphicalEditPart) {
@@ -276,7 +295,6 @@ public class TabbarArrangeMenuManager extends ArrangeMenuManager implements ISel
                 if (layoutNodeProvider instanceof ArrangeAllOnlyLayoutProvider) {
                     createToolbarArrangeSelectionAction.setEnabled(false);
                 }
-
             }
         }
     }

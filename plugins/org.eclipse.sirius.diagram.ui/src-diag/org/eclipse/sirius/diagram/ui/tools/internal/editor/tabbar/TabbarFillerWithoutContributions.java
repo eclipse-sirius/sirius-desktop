@@ -44,6 +44,7 @@ import org.eclipse.ui.IWorkbenchPage;
  * 
  * @author mporhel
  */
+@SuppressWarnings("restriction")
 public class TabbarFillerWithoutContributions extends AbstractTabbarFiller {
 
     /**
@@ -88,7 +89,7 @@ public class TabbarFillerWithoutContributions extends AbstractTabbarFiller {
     }
 
     private void createSelectArrangeAlignActions() {
-        TabbarArrangeMenuManager arrangeMenu = new TabbarArrangeMenuManager(page, part);
+        TabbarArrangeMenuManager arrangeMenu = new TabbarArrangeMenuManager(part);
         arrangeMenu.setVisible(true);
         manager.add(arrangeMenu);
 
