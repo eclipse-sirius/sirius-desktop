@@ -229,9 +229,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         this.controlledResourcesDetector = new ControlledResourcesDetector(this);
         super.getAnalyses().add(mainDAnalysis);
         super.getResources().add(sessionResource);
-        for (DAnalysis analysis : allAnalyses()) {
-            addAdaptersOnAnalysis(analysis);
-        }
         setAnalysisSelector(DAnalysisSelectorService.getSelector(this));
         setResourceCollector(new LocalResourceCollector(getTransactionalEditingDomain().getResourceSet()));
     }
@@ -460,6 +457,14 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         getEventBroker().addLocalTrigger(SessionEventBrokerImpl.asFilter(danglingRemovalPredicate), danglingRemovalTrigger);
 
         addRefreshEditorsListener();
+        /*
+         * Make sure these adapters are added after the rest, and in particular
+         * after the semantic cross-referencer, so that they can rely on an
+         * up-to-date cross-referencer when invoked.
+         */
+        for (DAnalysis analysis : allAnalyses()) {
+            addAdaptersOnAnalysis(analysis);
+        }
     }
 
     /**
