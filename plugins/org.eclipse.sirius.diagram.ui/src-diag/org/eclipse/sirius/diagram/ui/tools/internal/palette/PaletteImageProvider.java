@@ -71,7 +71,11 @@ public class PaletteImageProvider {
                     SiriusPlugin.getDefault().warning("No icon is available for the tool " + abstractToolDescription.getName() + ". A default icon has been set instead.", null);
                 }
             }
-            path = DiagramImagesPath.PALETTE_FACTORY_DEFAULT_PATH;
+            if (abstractToolDescription instanceof EdgeCreationDescription) {
+                path = DiagramImagesPath.PALETTE_EDGE_PATH;
+            } else {
+                path = DiagramImagesPath.PALETTE_FACTORY_DEFAULT_PATH;
+            }
         }
 
         final Image res = getImageFromPath(path);

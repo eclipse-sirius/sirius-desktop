@@ -142,4 +142,7 @@ public interface DiagramImagesPath {
 
     /** path to image not found. */
     String IMAGE_NOT_FOUND = "/org.eclipse.sirius.common.ui/images/NotFound.png";
+
+    /** path of the palette edge image. */
+    String PALETTE_EDGE_PATH = "/org.eclipse.sirius.diagram.ui/icons/full/obj16/DEdge.gif"; //$NON-NLS-1$
 }
