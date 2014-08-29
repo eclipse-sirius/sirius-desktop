@@ -10,18 +10,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.tools.internal.command;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
 
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.swt.SWT;
-
 import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
+import org.eclipse.swt.SWT;
 
 /**
  * A Command to sort {@link DColumn}s order.
@@ -55,13 +52,6 @@ public class SortDColumnsCommand extends RecordingCommand {
 
     @Override
     protected void doExecute() {
-        List<DColumn> dColumns = new ArrayList<DColumn>(dTable.getColumns());
-        Collections.sort(dColumns, dColumnSorter);
-        dTable.getColumns().clear();
-        // We add each DColumn instead of doing a addAll() because otherwise on
-        // sorting the first swt column take all the editor width
-        for (DColumn dColumn : dColumns) {
-            dTable.getColumns().add(dColumn);
-        }
+        ECollections.sort(dTable.getColumns(), dColumnSorter);
     }
 }

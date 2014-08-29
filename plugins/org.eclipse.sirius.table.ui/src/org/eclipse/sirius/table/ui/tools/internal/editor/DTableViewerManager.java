@@ -72,6 +72,7 @@ import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTableViewerManager;
 import org.eclipse.sirius.ui.tools.internal.editor.DTableColumnViewerEditorActivationStrategy;
 import org.eclipse.sirius.ui.tools.internal.editor.DTableTreeFocusListener;
+import org.eclipse.sirius.ui.tools.internal.editor.DescriptionFileChangedNotifier;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.adapters.ModelDragTargetAdapter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.ByteArrayTransfer;
@@ -181,6 +182,8 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
     private EditorCreateTargetColumnMenuAction createTargetColumnMenu = new EditorCreateTargetColumnMenuAction();
 
     private TableUIUpdater tableUIUpdater;
+
+    private DescriptionFileChangedNotifier descriptionFileChangedNotifier;
 
     private DTableContentProvider dTableContentProvider;
 
@@ -297,8 +300,8 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
             addNewColumn(column, index++);
         }
         treeViewer.setUseHashlookup(true);
-
-        tableUIUpdater = new TableUIUpdater(this);
+        tableUIUpdater = new TableUIUpdater(this, dRepresentation);
+        descriptionFileChangedNotifier = new DescriptionFileChangedNotifier(this);
         dTableContentProvider = new DTableContentProvider();
         treeViewer.setContentProvider(dTableContentProvider);
         // The input for the table viewer is the instance of DTable
@@ -819,6 +822,8 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
     public void dispose() {
         treeViewer.removeTreeListener(tableViewerListener);
         tableViewerListener = null;
+        descriptionFileChangedNotifier.dispose();
+        descriptionFileChangedNotifier = null;
         tableUIUpdater.dispose();
         tableUIUpdater = null;
         dTableContentProvider.dispose();

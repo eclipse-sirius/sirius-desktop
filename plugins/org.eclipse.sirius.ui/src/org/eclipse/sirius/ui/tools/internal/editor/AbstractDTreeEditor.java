@@ -836,11 +836,6 @@ public abstract class AbstractDTreeEditor extends EditorPart implements ISelecti
                 @Override
                 protected IStatus run(IProgressMonitor monitor) {
                     getEditingDomain().getCommandStack().execute(new RefreshRepresentationsCommand(getEditingDomain(), monitor, getRepresentation()));
-                    Display.getDefault().asyncExec(new Runnable() {
-                        public void run() {
-                            getViewer().refresh();
-                        }
-                    });
                     return Status.OK_STATUS;
                 }
 
