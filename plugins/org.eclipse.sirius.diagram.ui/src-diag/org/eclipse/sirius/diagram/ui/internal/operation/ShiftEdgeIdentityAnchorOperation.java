@@ -15,9 +15,11 @@ import java.util.List;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
-import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gef.handles.HandleBounds;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor;
@@ -68,56 +70,68 @@ public class ShiftEdgeIdentityAnchorOperation extends AbstractModelChangeOperati
             Anchor sourceAnchor = edge.getSourceAnchor();
             if (sourceAnchor instanceof IdentityAnchor) {
                 PrecisionPoint anchorPoint = BaseSlidableAnchor.parseTerminalString(((IdentityAnchor) sourceAnchor).getId());
-                PrecisionPoint newPoint = ComputeNewAnchor(anchorPoint, editPart);
+                PrecisionPoint newPoint = computeNewAnchor(anchorPoint, editPart);
                 ((IdentityAnchor) sourceAnchor).setId(new SlidableAnchor(null, newPoint).getTerminal());
             }
         }
     }
 
     private void handleTargetEdges(View view, EditPart editPart) {
+
         List<?> targetEdges = view.getTargetEdges();
         for (Edge edge : Iterables.filter(targetEdges, Edge.class)) {
             Anchor targetAnchor = edge.getTargetAnchor();
             if (targetAnchor instanceof IdentityAnchor) {
                 PrecisionPoint anchorPoint = BaseSlidableAnchor.parseTerminalString(((IdentityAnchor) targetAnchor).getId());
-                PrecisionPoint newPoint = ComputeNewAnchor(anchorPoint, editPart);
+                PrecisionPoint newPoint = computeNewAnchor(anchorPoint, editPart);
                 ((IdentityAnchor) targetAnchor).setId(new SlidableAnchor(null, newPoint).getTerminal());
             }
         }
 
     }
 
-    private PrecisionPoint ComputeNewAnchor(PrecisionPoint currentAnchorPoint, EditPart editPart) {
+    private PrecisionPoint computeNewAnchor(PrecisionPoint currentAnchorPoint, EditPart editPart) {
 
         double scale = GraphicalHelper.getZoom(editPart);
         IFigure figure = ((IGraphicalEditPart) editPart).getFigure();
-        Dimension currentSize = figure.getBounds().getSize();
-        float widthFactor = (float) (currentSize.width + (request.getSizeDelta().width / scale)) / currentSize.width;
-        float heightFactor = (float) (currentSize.height + (request.getSizeDelta().height / scale)) / currentSize.height;
+        Rectangle bounds = figure.getBounds();
+        if (figure instanceof HandleBounds) {
+            bounds = ((HandleBounds) figure).getHandleBounds();
+        }
+
+        Point currentRelativePoint = getAnchorRelativePoint(currentAnchorPoint, bounds);
+
+        double logicalWidthDelta = request.getSizeDelta().width / scale;
+        double logicalHeightDelta = request.getSizeDelta().height / scale;
 
         int direction = request.getResizeDirection();
-        double newAnchorX = computeNewXAnchor(direction, currentAnchorPoint, widthFactor);
-        double newAnchorY = computeNewYAnchor(direction, currentAnchorPoint, heightFactor);
 
-        PrecisionPoint newPoint = new PrecisionPoint(newAnchorX, newAnchorY);
-        return newPoint;
+        double newRelativeX = computeNewXRelativeLocation(direction, currentRelativePoint, logicalWidthDelta);
+        double newRelativeY = computeNewYRelativeLocation(direction, currentRelativePoint, logicalHeightDelta);
+
+        return new PrecisionPoint(newRelativeX / (bounds.width() + logicalWidthDelta), newRelativeY / (bounds.height() + logicalHeightDelta));
     }
 
-    private double computeNewXAnchor(int direction, PrecisionPoint currentAnchorPoint, float widthFactor) {
+    private Point getAnchorRelativePoint(PrecisionPoint currentAnchorPoint, Rectangle bounds) {
+        return new PrecisionPoint(bounds.width() * currentAnchorPoint.preciseX(), bounds.height() * currentAnchorPoint.preciseY());
+    }
+
+    private double computeNewXRelativeLocation(int direction, Point currentRelativePoint, double logicalWidthDelta) {
+
         if (direction == PositionConstants.NORTH_WEST || direction == PositionConstants.WEST || direction == PositionConstants.SOUTH_WEST) {
-            return 1 - ((1 - currentAnchorPoint.preciseX()) / widthFactor);
+            return currentRelativePoint.preciseX() + logicalWidthDelta;
         } else {
 
-            return currentAnchorPoint.preciseX() / widthFactor;
+            return currentRelativePoint.preciseX();
         }
     }
 
-    private double computeNewYAnchor(int direction, PrecisionPoint currentAnchorPoint, float heightFactor) {
+    private double computeNewYRelativeLocation(int direction, Point currentRelativePoint, double logicalHeightDelta) {
 
         if (direction == PositionConstants.NORTH_WEST || direction == PositionConstants.NORTH || direction == PositionConstants.NORTH_EAST) {
-            return 1 - ((1 - currentAnchorPoint.preciseY()) / heightFactor);
+            return currentRelativePoint.preciseY() + logicalHeightDelta;
         } else {
-            return currentAnchorPoint.preciseY() / heightFactor;
+            return currentRelativePoint.preciseY();
         }
     }
 

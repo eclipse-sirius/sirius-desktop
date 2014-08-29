@@ -21,6 +21,14 @@ h3. User-Visible Changes
 ** One named "New", which lists only the available actions to create new representations on the selected element.
 ** One named "Open", which lists only the existing representations on the selected element. 
 
+* When a shape is resized (no matter the direction), the edge(s) connection location (toward or from this one) is kept. Before that, edges connections moved according to the ratio of the resizing.
+Example with this initial state before resizing:
+!images/shapeResize1.png!
+Result after resizing without this feature (the edges have moved):
+!images/shapeResize2.png!
+Result after resizing with this feature (the edges keep the same location):
+!images/shapeResize3.png!
+
 h3. API Changes
 
 h4. Changes in @org.eclipse.sirius@
