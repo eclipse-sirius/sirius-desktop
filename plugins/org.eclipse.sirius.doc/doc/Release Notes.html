@@ -131,6 +131,12 @@
 				<code>org.eclipse.sirius.common.tools.api.util.SmartAdapter</code> has been removed as this mechanism proves to be inefficient. The only user of this mechanism was the 
 				<code>org.eclipse.sirius.tools.api.command.listener.IChangeListener</code> which has also been removed.
 			</li>
+			<li>The class 
+				<code>org.eclipse.sirius.common.tools.api.ecore.WorkspaceEPackageRegistry</code> has been moved to the 
+				<code>org.eclipse.sirius.editor</code> plugin. 
+				<code>org.eclipse.sirius.common.tools.DslCommonPlugin.getWorkspaceEPackageRegistry</code> has been removed. The same method has been added in 
+				<code>org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin</code>.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
 			<code>org.eclipse.sirius.diagram</code>

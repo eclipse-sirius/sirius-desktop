@@ -21,7 +21,7 @@ import org.eclipse.jface.fieldassist.IContentProposal;
 import org.eclipse.jface.fieldassist.IContentProposalListener2;
 import org.eclipse.jface.fieldassist.IContentProposalProvider;
 import org.eclipse.jface.fieldassist.TextContentAdapter;
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
 import org.eclipse.sirius.editor.properties.sections.common.ModelViewBinding;
 import org.eclipse.sirius.editor.tools.internal.assist.TypeAssistant;
 import org.eclipse.sirius.editor.tools.internal.assist.TypeContentProposal;
@@ -83,7 +83,7 @@ public class TypeContentProposalProvider implements IContentProposalProvider {
         if (contentAssistBindings != null && contentAssistBindings.length > 0) {
 
             KeyStroke keyStroke = TypeContentProposalProvider.getKeyStroke(contentAssistBindings[0]);
-            TypeAssistant typeAssistant = new TypeAssistant(DslCommonPlugin.getDefault().getWorkspaceEPackageRegistry(), section);
+            TypeAssistant typeAssistant = new TypeAssistant(SiriusEditorPlugin.getPlugin().getWorkspaceEPackageRegistry(), section);
             final ContentProposalAdapter adapter = new ContentProposalAdapter(text, new TextContentAdapter(), new TypeContentProposalProvider(typeAssistant), keyStroke, null);
 
             adapter.addContentProposalListener(new IContentProposalListener2() {

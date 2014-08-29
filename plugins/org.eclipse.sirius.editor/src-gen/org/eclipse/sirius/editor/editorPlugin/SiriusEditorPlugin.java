@@ -11,17 +11,21 @@ package org.eclipse.sirius.editor.editorPlugin;
 
 // Start of user code imports
 
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.ui.EclipseUIPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.EPackage.Registry;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
+import org.eclipse.sirius.editor.tools.api.ecore.WorkspaceEPackageRegistry;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTError;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.osgi.framework.BundleContext;
 
 // End of user code imports
 
@@ -50,6 +54,12 @@ public final class SiriusEditorPlugin extends EMFPlugin {
      * Keep track of the singleton.
      */
     private static Implementation plugin;
+
+    // Start of user code fields
+
+    private static WorkspaceEPackageRegistry workspaceEPackageRegistry;
+
+    // End of user code fields
 
     /**
      * Create the instance.
@@ -174,6 +184,34 @@ public final class SiriusEditorPlugin extends EMFPlugin {
         }
 
         // Start of user code Implementation specifics
+        @Override
+        public void start(BundleContext context) throws Exception {
+            super.start(context);
+            workspaceEPackageRegistry = new WorkspaceEPackageRegistry(true);
+        }
+
+        @Override
+        public void stop(BundleContext context) throws Exception {
+            super.stop(context);
+            if (EMFPlugin.IS_ECLIPSE_RUNNING) {
+                workspaceEPackageRegistry.dispose(ResourcesPlugin.getWorkspace());
+            }
+            workspaceEPackageRegistry = null;
+        }
+
+        /**
+         * Get a {@link Registry} which aggregate EPackage from EMF registry and
+         * EPackage from workspace.
+         * 
+         * @return a {@link Registry} which aggregate EPackage from EMF registry
+         *         and EPackage from workspace
+         */
+        public Registry getWorkspaceEPackageRegistry() {
+            if (!workspaceEPackageRegistry.isListeningWorkspace() && EMFPlugin.IS_ECLIPSE_RUNNING) {
+                workspaceEPackageRegistry.init(ResourcesPlugin.getWorkspace());
+            }
+            return workspaceEPackageRegistry;
+        }
 
         // End of user code Implementation specifics
     }
