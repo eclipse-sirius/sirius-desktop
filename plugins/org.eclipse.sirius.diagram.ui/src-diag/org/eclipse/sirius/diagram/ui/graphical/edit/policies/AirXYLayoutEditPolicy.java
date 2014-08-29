@@ -322,7 +322,7 @@ public class AirXYLayoutEditPolicy extends XYLayoutEditPolicy {
 
         if (host instanceof IGraphicalEditPart) {
             TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) host).getEditingDomain();
-            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(editingDomain, "Resize Children");
+            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(editingDomain, superCommand.getLabel());
             ctc.add(new CommandProxy(superCommand));
 
             ShiftEdgeIdentityAnchorOperation operation = new ShiftEdgeIdentityAnchorOperation(request);
