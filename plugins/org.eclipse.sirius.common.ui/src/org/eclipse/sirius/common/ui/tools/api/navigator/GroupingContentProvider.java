@@ -16,11 +16,13 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
+import org.eclipse.sirius.common.ui.tools.internal.preference.DynamicConfigurationHelper;
 
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.Lists;
@@ -46,7 +48,31 @@ import com.google.common.collect.Lists;
  */
 public class GroupingContentProvider implements ITreeContentProvider {
 
+    /**
+     * Encapsulates the configurable parameters of the grouping content
+     * provider, and keeps it in sync with possible changes in the preferences.
+     */
+    private static class Configuration extends DynamicConfigurationHelper {
+        int groupSize;
+
+        int groupTrigger;
+
+        boolean groupEnabled;
+
+        boolean groupByContainingFeature;
+
+        Configuration(IPreferenceStore store) {
+            super(store);
+            bindInt(CommonPreferencesConstants.PREF_GROUP_SIZE, "groupSize");
+            bindInt(CommonPreferencesConstants.PREF_GROUP_TRIGGER, "groupTrigger");
+            bindBoolean(CommonPreferencesConstants.PREF_GROUP_ENABLE, "groupEnabled");
+            bindBoolean(CommonPreferencesConstants.PREF_GROUP_BY_CONTAINING_FEATURE, "groupByContainingFeature");
+        }
+    }
+
     private final ITreeContentProvider delegateTreeContentProvider;
+
+    private final Configuration config;
 
     /**
      * The constructor that required another ITreeContentProvider to surround.
@@ -56,6 +82,7 @@ public class GroupingContentProvider implements ITreeContentProvider {
      */
     public GroupingContentProvider(ITreeContentProvider delegateTreeContentProvider) {
         this.delegateTreeContentProvider = delegateTreeContentProvider;
+        this.config = new Configuration(SiriusTransPlugin.getPlugin().getPreferenceStore());
     }
 
     /**
@@ -66,7 +93,7 @@ public class GroupingContentProvider implements ITreeContentProvider {
      * @return the group size
      */
     public int getGroupSize() {
-        return SiriusTransPlugin.getPlugin().getPreferenceStore().getInt(CommonPreferencesConstants.PREF_GROUP_SIZE);
+        return config.groupSize;
     }
 
     /**
@@ -76,7 +103,7 @@ public class GroupingContentProvider implements ITreeContentProvider {
      * @return true if the group is enable
      */
     public boolean isGroupEnabled() {
-        return SiriusTransPlugin.getPlugin().getPreferenceStore().getBoolean(CommonPreferencesConstants.PREF_GROUP_ENABLE);
+        return config.groupEnabled;
     }
 
     /**
@@ -89,7 +116,7 @@ public class GroupingContentProvider implements ITreeContentProvider {
      * @return true if the group is enable
      */
     public boolean isGroupByContainingFeature() {
-        return SiriusTransPlugin.getPlugin().getPreferenceStore().getBoolean(CommonPreferencesConstants.PREF_GROUP_BY_CONTAINING_FEATURE);
+        return config.groupByContainingFeature;
     }
 
     /**
@@ -101,40 +128,26 @@ public class GroupingContentProvider implements ITreeContentProvider {
      *         size.
      */
     public int getTriggerSize() {
-        final int groupSize = SiriusTransPlugin.getPlugin().getPreferenceStore().getInt(CommonPreferencesConstants.PREF_GROUP_SIZE);
-        final int groupTrigger = SiriusTransPlugin.getPlugin().getPreferenceStore().getInt(CommonPreferencesConstants.PREF_GROUP_TRIGGER);
-        if (groupTrigger >= groupSize) {
-            return groupTrigger;
+        if (config.groupTrigger >= config.groupSize) {
+            return config.groupTrigger;
         } else {
-            return groupSize;
+            return config.groupSize;
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.IContentProvider#dispose()
-     */
+    @Override
     public void dispose() {
+        config.dispose();
         delegateTreeContentProvider.dispose();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer,
-     *      java.lang.Object, java.lang.Object)
-     */
+    @Override
     public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
         delegateTreeContentProvider.inputChanged(viewer, oldInput, newInput);
 
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ITreeContentProvider#getElements(java.lang.Object)
-     */
+    @Override
     public Object[] getElements(Object parentElement) {
         if (parentElement instanceof GroupingItem) {
             return getChildren(parentElement);
@@ -144,11 +157,7 @@ public class GroupingContentProvider implements ITreeContentProvider {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
-     */
+    @Override
     public Object[] getChildren(Object parentElement) {
         if (parentElement instanceof GroupingItem) {
             return ((GroupingItem) parentElement).getChildren().toArray();
@@ -158,11 +167,7 @@ public class GroupingContentProvider implements ITreeContentProvider {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
-     */
+    @Override
     public Object getParent(Object element) {
         if (element instanceof GroupingItem) {
             GroupingItem groupItem = (GroupingItem) element;
@@ -172,11 +177,7 @@ public class GroupingContentProvider implements ITreeContentProvider {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
-     */
+    @Override
     public boolean hasChildren(Object element) {
         return element instanceof GroupingItem || delegateTreeContentProvider.hasChildren(element);
     }
@@ -205,13 +206,12 @@ public class GroupingContentProvider implements ITreeContentProvider {
 
     private Object[] groupChildrenByContainingFeature(Object parent, Object[] children) {
         LinkedListMultimap<Object, Object> childrenContainingMapping = buildChildrenContainerMapping(children);
-        final int groupSize = getGroupSize();
         List<Object> result = new ArrayList<Object>();
         for (Object structuralFeature : childrenContainingMapping.keySet()) {
             int currentOffset = 0;
             List<Object> indexedChildren = childrenContainingMapping.get(structuralFeature);
             if (indexedChildren.size() > getTriggerSize()) {
-                List<List<Object>> partition = Lists.partition(indexedChildren, groupSize);
+                List<List<Object>> partition = Lists.partition(indexedChildren, config.groupSize);
                 if (partition.size() > 0) {
                     if (partition.size() > 1) {
                         for (List<Object> partItem : partition) {
@@ -262,13 +262,12 @@ public class GroupingContentProvider implements ITreeContentProvider {
 
     private Object[] defaultGroupChildren(Object parent, Object[] children) {
         if (children.length > getTriggerSize()) {
-            final int groupSize = getGroupSize();
-            List<List<Object>> partition = Lists.partition(Arrays.asList(children), groupSize);
+            List<List<Object>> partition = Lists.partition(Arrays.asList(children), config.groupSize);
             Object[] result = new Object[partition.size()];
 
             int indexOfResult = 0;
             for (List<Object> indexedChildren : partition) {
-                int currentOffset = indexOfResult * groupSize;
+                int currentOffset = indexOfResult * config.groupSize;
                 GroupingItem currentGroup = new GroupingItem(currentOffset, parent, indexedChildren);
                 result[indexOfResult] = currentGroup;
                 indexOfResult++;
