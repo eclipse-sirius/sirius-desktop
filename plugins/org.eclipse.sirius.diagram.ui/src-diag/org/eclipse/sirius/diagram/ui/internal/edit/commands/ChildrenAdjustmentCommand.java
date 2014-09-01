@@ -21,7 +21,6 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
@@ -68,7 +67,7 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
      *            Selected edit parts that will be moved
      */
     public ChildrenAdjustmentCommand(GraphicalEditPart host, ChangeBoundsRequest request) {
-        super(TransactionUtil.getEditingDomain(host.getModel()), "Adapt children location", null);
+        super(host.getEditingDomain(), "Adapt children location", null);
         this.host = host;
         this.request = request;
     }

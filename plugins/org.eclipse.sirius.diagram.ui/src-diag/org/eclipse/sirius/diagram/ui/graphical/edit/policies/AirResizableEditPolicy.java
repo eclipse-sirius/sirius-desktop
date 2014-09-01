@@ -210,7 +210,7 @@ public class AirResizableEditPolicy extends ResizableShapeEditPolicy {
         if (cmd == null) {
             result = null;
         } else {
-            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(TransactionUtil.getEditingDomain(getHost().getModel()), cmd.getLabel());
+            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(((GraphicalEditPart) getHost()).getEditingDomain(), cmd.getLabel());
             ctc.add(new CommandProxy(cmd));
             ctc.add(new ChildrenAdjustmentCommand((GraphicalEditPart) getHost(), request));
             result = ctc;
