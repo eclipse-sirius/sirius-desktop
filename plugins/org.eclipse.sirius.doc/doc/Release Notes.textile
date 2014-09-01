@@ -17,6 +17,10 @@ h3. User-Visible Changes
 * The specifier can now choose to hold the edge ends toward the center of the source, target or both. New fields within the "advance" tab of EdgeStyle description have been added to choose for which source or target mappings an edge should be centered.
 * The "snap to shapes" is now enabled by default (see  _Sirius > Sirius Diagram > Rulers and Grid_ preference page). This is true only for new diagrams. The existing diagrams are not impacted.
 
+* The "Navigate" top-level contextual menu entry with mixed actions for creating new representations and opening existing ones has been changed by two top-level menus:
+** One named "New", which lists only the available actions to create new representations on the selected element.
+** One named "Open", which lists only the existing representations on the selected element. 
+
 h3. API Changes
 
 h4. Changes in @org.eclipse.sirius@
