@@ -24,8 +24,8 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderedShapeEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
@@ -52,7 +52,7 @@ import com.google.common.collect.Lists;
 public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
     CompositeTransactionalCommand wrappedCommand;
 
-    GraphicalEditPart host;
+    IGraphicalEditPart host;
 
     ChangeBoundsRequest request;
 
@@ -66,7 +66,7 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
      * @param movedEditParts
      *            Selected edit parts that will be moved
      */
-    public ChildrenAdjustmentCommand(GraphicalEditPart host, ChangeBoundsRequest request) {
+    public ChildrenAdjustmentCommand(IGraphicalEditPart host, ChangeBoundsRequest request) {
         super(host.getEditingDomain(), "Adapt children location", null);
         this.host = host;
         this.request = request;
@@ -142,7 +142,7 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
      * @param cbr
      *            The original request
      */
-    private void addChildrenAdjustmentCommands(GraphicalEditPart resizedPart, CompositeTransactionalCommand cc, ChangeBoundsRequest cbr) {
+    private void addChildrenAdjustmentCommands(IGraphicalEditPart resizedPart, CompositeTransactionalCommand cc, ChangeBoundsRequest cbr) {
         PrecisionPoint delta = new PrecisionPoint(cbr.getMoveDelta().getNegated());
         GraphicalHelper.applyInverseZoomOnPoint(resizedPart, delta);
         DNodeContainerViewNodeContainerCompartmentEditPart compartment = Iterables
@@ -174,7 +174,7 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
      *            false otherwise. The location can change in one axis of there
      *            border node is on the moved side.
      */
-    private void addBorderChildrenAdjustmentCommands(GraphicalEditPart resizedPart, CompositeTransactionalCommand cc, final ChangeBoundsRequest cbr, boolean keepSameAbsoluteLocation) {
+    private void addBorderChildrenAdjustmentCommands(IGraphicalEditPart resizedPart, CompositeTransactionalCommand cc, final ChangeBoundsRequest cbr, boolean keepSameAbsoluteLocation) {
         RequestQuery rq = new RequestQuery(cbr);
         Rectangle logicalDelta = rq.getLogicalDelta();
         EditPartQuery resizedPartQuery = new EditPartQuery(resizedPart);

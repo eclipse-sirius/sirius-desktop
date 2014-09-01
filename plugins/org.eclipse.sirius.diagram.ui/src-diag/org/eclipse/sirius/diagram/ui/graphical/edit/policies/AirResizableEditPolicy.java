@@ -205,15 +205,15 @@ public class AirResizableEditPolicy extends ResizableShapeEditPolicy {
      * @return <code>null</code> or a Command
      */
     private ICommand buildResizeCommand(ChangeBoundsRequest request) {
-        ICommand result;
+        ICommand result = null;
         Command cmd = super.getResizeCommand(request);
-        if (cmd == null) {
-            result = null;
-        } else {
-            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(((GraphicalEditPart) getHost()).getEditingDomain(), cmd.getLabel());
+        if (getHost() instanceof IGraphicalEditPart) {
+            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(((IGraphicalEditPart) getHost()).getEditingDomain(), cmd.getLabel());
             ctc.add(new CommandProxy(cmd));
-            ctc.add(new ChildrenAdjustmentCommand((GraphicalEditPart) getHost(), request));
+            ctc.add(new ChildrenAdjustmentCommand((IGraphicalEditPart) getHost(), request));
             result = ctc;
+        } else if (cmd != null) {
+            result = new CommandProxy(cmd);
         }
         return result;
     }
