@@ -108,13 +108,17 @@ public class AirResizableEditPolicy extends ResizableShapeEditPolicy {
      */
     @Override
     protected Command getMoveCommand(final ChangeBoundsRequest request) {
-        Command originalMoveCommand = super.getMoveCommand(request);
+        Command result = super.getMoveCommand(request);
 
         if (getHost().getParent() != null) {
-            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(TransactionUtil.getEditingDomain(getHost().getModel()), originalMoveCommand.getLabel());
-            ctc.add(new CommandProxy(originalMoveCommand));
-            ctc.add(new ChangeBendpointsOfEdgesCommand(getHost(), new PrecisionPoint(request.getMoveDelta())));
-            return new ICommandProxy(ctc);
+            if (getHost() instanceof IGraphicalEditPart) {
+                IGraphicalEditPart hostPart = (IGraphicalEditPart) getHost();
+                CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(hostPart.getEditingDomain(), result.getLabel());
+                ctc.add(new CommandProxy(result));
+                ctc.add(new ChangeBendpointsOfEdgesCommand(hostPart, new PrecisionPoint(request.getMoveDelta())));
+                result = new ICommandProxy(ctc);
+            }
+            return result;
         } else {
             return null;
         }
@@ -122,7 +126,7 @@ public class AirResizableEditPolicy extends ResizableShapeEditPolicy {
 
     @Override
     protected Command getAlignCommand(AlignmentRequest request) {
-        Command originalAlignCommand = super.getAlignCommand(request);
+        Command result = super.getAlignCommand(request);
 
         Point delta = request.getMoveDelta();
         if (getHost() instanceof AbstractGraphicalEditPart) {
@@ -131,12 +135,16 @@ public class AirResizableEditPolicy extends ResizableShapeEditPolicy {
             Rectangle newLocationAndSize = request.getTransformedRectangle(locationAndSize);
             delta = newLocationAndSize.getTopLeft().getTranslated(locationAndSize.getTopLeft().getNegated());
         }
-        CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(TransactionUtil.getEditingDomain(getHost().getModel()), originalAlignCommand.getLabel());
-        ctc.add(new CommandProxy(originalAlignCommand));
-        // The primary selection is ignored because it is not moved (it is the
-        // reference used to align other selected edit parts).
-        ctc.add(new ChangeBendpointsOfEdgesCommand(getHost(), new PrecisionPoint(delta), true));
-        return new ICommandProxy(ctc);
+        if (getHost() instanceof IGraphicalEditPart) {
+            IGraphicalEditPart hostPart = (IGraphicalEditPart) getHost();
+            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(hostPart.getEditingDomain(), result.getLabel());
+            ctc.add(new CommandProxy(result));
+            // The primary selection is ignored because it is not moved (it is
+            // the reference used to align other selected edit parts).
+            ctc.add(new ChangeBendpointsOfEdgesCommand(hostPart, new PrecisionPoint(delta), true));
+            result = new ICommandProxy(ctc);
+        }
+        return result;
     }
 
     /**

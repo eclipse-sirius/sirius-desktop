@@ -29,6 +29,7 @@ import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.util.StringStatics;
 import org.eclipse.gmf.runtime.diagram.core.commands.SetConnectionAnchorsCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.INodeEditPart;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
@@ -51,7 +52,7 @@ import com.google.common.collect.Lists;
 public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand {
     CompositeTransactionalCommand wrappedCommand;
 
-    EditPart host;
+    IGraphicalEditPart host;
 
     PrecisionPoint moveDelta;
 
@@ -65,8 +66,8 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
      * @param moveDelta
      *            The move delta
      */
-    public ChangeBendpointsOfEdgesCommand(EditPart host, PrecisionPoint moveDelta) {
-        super(TransactionUtil.getEditingDomain(host.getModel()), "Adapt bendpoints of edges", null);
+    public ChangeBendpointsOfEdgesCommand(IGraphicalEditPart host, PrecisionPoint moveDelta) {
+        super(host.getEditingDomain(), "Adapt bendpoints of edges", null);
         this.host = host;
         this.moveDelta = moveDelta;
     }
@@ -83,7 +84,7 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
      *            If the host is the primary selection of the current editor,
      *            this command will have no effect.
      */
-    public ChangeBendpointsOfEdgesCommand(EditPart host, PrecisionPoint moveDelta, boolean ignorePrimarySelection) {
+    public ChangeBendpointsOfEdgesCommand(IGraphicalEditPart host, PrecisionPoint moveDelta, boolean ignorePrimarySelection) {
         this(host, moveDelta);
         this.ignorePrimarySelection = ignorePrimarySelection;
     }

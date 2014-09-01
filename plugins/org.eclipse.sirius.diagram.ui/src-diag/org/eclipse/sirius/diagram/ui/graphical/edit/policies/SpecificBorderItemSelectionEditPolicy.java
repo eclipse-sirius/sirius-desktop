@@ -28,7 +28,6 @@ import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.EditPartViewer.Conditional;
@@ -617,15 +616,19 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
             final Dimension d = realLocation.getTopLeft().getDifference(parentOrigin);
             final Point location = new Point(d.width, d.height);
             final ICommand moveCommand = new SetBoundsCommand(borderItemEP.getEditingDomain(), DiagramUIMessages.Commands_MoveElement, new EObjectAdapter((View) getHost().getModel()), location);
-            Command originalMoveCommand = new ICommandProxy(moveCommand);
+            Command result = new ICommandProxy(moveCommand);
 
-            PrecisionPoint delta = new PrecisionPoint(realLocation.getTopLeft().getTranslated(borderItemEP.getFigure().getBounds().getTopLeft().getNegated()));
-            GraphicalHelper.applyZoomOnPoint((IGraphicalEditPart) getHost(), delta);
+            if (getHost() instanceof IGraphicalEditPart) {
+                PrecisionPoint delta = new PrecisionPoint(realLocation.getTopLeft().getTranslated(borderItemEP.getFigure().getBounds().getTopLeft().getNegated()));
+                GraphicalHelper.applyZoomOnPoint((IGraphicalEditPart) getHost(), delta);
 
-            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(TransactionUtil.getEditingDomain(getHost().getModel()), originalMoveCommand.getLabel());
-            ctc.add(new CommandProxy(originalMoveCommand));
-            ctc.add(new ChangeBendpointsOfEdgesCommand(getHost(), delta));
-            return new ICommandProxy(ctc);
+                IGraphicalEditPart hostPart = (IGraphicalEditPart) getHost();
+                CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(hostPart.getEditingDomain(), result.getLabel());
+                ctc.add(new CommandProxy(result));
+                ctc.add(new ChangeBendpointsOfEdgesCommand(hostPart, delta));
+                result = new ICommandProxy(ctc);
+            }
+            return result;
         }
         return null;
     }
