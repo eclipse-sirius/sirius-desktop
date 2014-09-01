@@ -94,10 +94,11 @@ public class DeleteDRepresentationElementsTask extends AbstractCommandTask {
 
         final Set<DSemanticDecorator> vpElements = taskHelper.getDElementToClearFromSemanticElements(root, completeCollection(this.cmd.getDeletedObjects()));
 
-        // In case of ExternalJavaActionTask, the command is not aware of its
-        // deleted elements, but we could at least check if the target of the
-        // current representation element has been deleted.
-        if (repElt.getTarget() == null || repElt.getTarget().eContainer() == null) {
+        // In case of ExternalJavaActionTask, UnsetTask, ...(all tasks excepted
+        // the IDeleteTasks: ForTasks and RemoveEleemntTasks), the command is
+        // not aware of its deleted elements, but we could at least check if the
+        // target of the current representation element has been deleted.
+        if (repElt.eContainer() != null && (repElt.getTarget() == null || repElt.getTarget().eContainer() == null)) {
             vpElements.add(repElt);
         }
 
