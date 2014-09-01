@@ -28,6 +28,7 @@ import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.EditPartViewer.Conditional;
@@ -66,8 +67,10 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEdit
 import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
 import org.eclipse.sirius.diagram.ui.internal.edit.commands.ChangeBendpointsOfEdgesCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.operation.ShiftEdgeIdentityAnchorOperation;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
+import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.locator.FeedbackDBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
@@ -561,6 +564,25 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
             }
         }
         return isFeedbackForBorderedNodeDropping;
+    }
+
+    @Override
+    protected Command getResizeCommand(ChangeBoundsRequest request) {
+        Command superCommand = super.getResizeCommand(request);
+
+        EditPart host = getHost();
+
+        if (host instanceof IGraphicalEditPart) {
+            TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) host).getEditingDomain();
+            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(editingDomain, superCommand.getLabel());
+            ctc.add(new CommandProxy(superCommand));
+
+            ShiftEdgeIdentityAnchorOperation operation = new ShiftEdgeIdentityAnchorOperation(request);
+            ICommand command = CommandFactory.createICommand(editingDomain, operation);
+            ctc.add(command);
+            return new ICommandProxy(ctc);
+        }
+        return superCommand;
     }
 
     /**
