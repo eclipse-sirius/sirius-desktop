@@ -13,7 +13,6 @@ package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions
 import java.util.Collection;
 
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.CopyAppearancePropertiesAction;
-import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.ui.graphical.edit.part.specific.BracketEdgeEditPart;
@@ -47,7 +46,7 @@ public class DiagramElementStyleExtensionContributionFactory extends SiriusTabba
         additions.addContributionItem(new TabbarActionContributionItem(resetStylePropertiesToDefaultValuesAction, getPart()), new DDiagramElementTabbarExpression());
 
         CopyAppearancePropertiesAction copyAppearancePropertiesAction = new CopyAppearancePropertiesAction(getPage());
-        additions.addContributionItem(new ActionContributionItem(copyAppearancePropertiesAction), new DDiagramElementTabbarExpression());
+        additions.addContributionItem(new TabbarActionContributionItem(copyAppearancePropertiesAction), new DDiagramElementTabbarExpression());
 
     }
 
