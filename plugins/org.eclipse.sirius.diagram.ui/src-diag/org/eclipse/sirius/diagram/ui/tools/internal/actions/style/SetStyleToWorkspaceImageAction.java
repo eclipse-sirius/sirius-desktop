@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
@@ -26,11 +28,12 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.swt.SWT;
-import org.eclipse.ui.ISelectionListener;
-import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 
 /**
@@ -39,7 +42,7 @@ import org.eclipse.ui.PlatformUI;
  * 
  * @author Maxime Porhel (mporhel)
  */
-public class SetStyleToWorkspaceImageAction extends Action implements ISelectionListener {
+public class SetStyleToWorkspaceImageAction extends Action {
 
     /** Action id for the "Set style to workspace image". */
     public static final String SET_STYLE_TO_WORKSPACE_IMAGE_ACTION_ID = "org.eclipse.sirius.diagram.tools.internal.actions.style";
@@ -97,22 +100,38 @@ public class SetStyleToWorkspaceImageAction extends Action implements ISelection
         return styles;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public void selectionChanged(IWorkbenchPart part, ISelection selection) {
-        setEnabled(shouldBeEnabled(selection));
-    }
-
-    private boolean shouldBeEnabled(final ISelection selection) {
+    public final boolean isEnabled() {
         boolean result = false;
-        if (selection instanceof IStructuredSelection) {
-            result = true;
-            final Iterator<?> it = ((IStructuredSelection) selection).iterator();
-            while (it.hasNext() && result) {
-                if (!(it.next() instanceof IAbstractDiagramNodeEditPart)) {
-                    result = false;
+
+        IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+        if (page != null && page.getSelection() instanceof IStructuredSelection) {
+            IStructuredSelection selection = (IStructuredSelection) page.getSelection();
+            if (!selection.isEmpty()) {
+                result = true;
+
+                final Iterator<?> it = selection.iterator();
+                while (it.hasNext() && result) {
+                    Object o = it.next();
+                    if (o instanceof IAbstractDiagramNodeEditPart) {
+                        // check permission
+                        IAbstractDiagramNodeEditPart diagramEditPart = (IAbstractDiagramNodeEditPart) o;
+                        View view = (View) diagramEditPart.getModel();
+                        EObject element = view.getElement();
+                        IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(element);
+                        if (permissionAuthority != null && !permissionAuthority.canEditInstance(element)) {
+                            result = false;
+                        }
+                    } else {
+                        result = false;
+                    }
                 }
             }
         }
+
         return result;
     }
 }
