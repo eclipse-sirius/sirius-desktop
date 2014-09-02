@@ -47,6 +47,7 @@ import org.eclipse.sirius.tests.swtbot.modelexplorer.ContextualMenuTest;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.ModelExplorerFilterTests;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.ProjectDependenciesTest;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.ProjectsConcurrentCloseTest;
+import org.eclipse.sirius.tests.swtbot.tabbar.LockedTabBarTest;
 import org.eclipse.sirius.tests.swtbot.tabbar.NotInvisibleTabBarTest;
 import org.eclipse.sirius.tests.swtbot.tabbar.TabBarTest;
 import org.eclipse.sirius.tests.swtbot.table.SetPropertyOfTableTreeByPropertiesViewTest;
@@ -203,6 +204,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(TabBarTest.class);
         suite.addTestSuite(NotInvisibleTabBarTest.class);
         suite.addTestSuite(LockedAppearanceTabTest.class);
+        suite.addTestSuite(LockedTabBarTest.class);
         suite.addTestSuite(ArrangeSelectionOnBreakdownDiagramTest.class);
         suite.addTestSuite(EdgeCreationTest.class);
         suite.addTestSuite(RoutingStyleTest.class);

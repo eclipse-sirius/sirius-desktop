@@ -17,14 +17,15 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
+import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gmf.runtime.common.core.util.ObjectAdapter;
-import org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.services.layout.LayoutType;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.AbstractDiagramAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.BorderItemAwareLayoutProvider;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
@@ -35,7 +36,7 @@ import org.eclipse.ui.IWorkbenchPart;
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
-public class ArrangeBorderedNodesAction extends DiagramAction {
+public class ArrangeBorderedNodesAction extends AbstractDiagramAction {
 
     /**
      * Constructs a new diagram action.
@@ -121,7 +122,8 @@ public class ArrangeBorderedNodesAction extends DiagramAction {
         // - DiagramMigrationTestCampaign09
         // - SequenceArrangeLinkedBorderedNodesTest
         // - BendpointsStabilityOnMovesTest
-        return getSelectedObjects().size() > 0;
+        // Call super.canEditInstance() instead to check permission authorities
+        return getSelectedObjects().size() > 0 && super.canEditInstance();
     }
 
     /**
@@ -131,14 +133,18 @@ public class ArrangeBorderedNodesAction extends DiagramAction {
      */
     @Override
     protected Command getCommand() {
-        Command command = null;
-        final IEditorPart activeEditor = getWorkbenchPage().getActiveEditor();
-        if (activeEditor instanceof SiriusDiagramEditor) {
-            final DiagramEditPart diagramEditPart = ((SiriusDiagramEditor) activeEditor).getDiagramEditPart();
-            final List<EditPart> selectedEditPart = new ArrayList<EditPart>(1);
-            selectedEditPart.add(diagramEditPart);
-            final BorderItemAwareLayoutProvider layoutProvider = new BorderItemAwareLayoutProvider(null);
-            command = layoutProvider.layoutEditParts(selectedEditPart, new ObjectAdapter(LayoutType.DEFAULT), false);
+        Command command = UnexecutableCommand.INSTANCE;
+        // Avoid NPE in getDiagramEditPart when diagramGraphialViewer is not
+        // ready.
+        if (getDiagramGraphicalViewer() != null) {
+            final IEditorPart activeEditor = getWorkbenchPage().getActiveEditor();
+            if (activeEditor instanceof SiriusDiagramEditor) {
+                final DiagramEditPart diagramEditPart = ((SiriusDiagramEditor) activeEditor).getDiagramEditPart();
+                final List<EditPart> selectedEditPart = new ArrayList<EditPart>(1);
+                selectedEditPart.add(diagramEditPart);
+                final BorderItemAwareLayoutProvider layoutProvider = new BorderItemAwareLayoutProvider(null);
+                command = layoutProvider.layoutEditParts(selectedEditPart, new ObjectAdapter(LayoutType.DEFAULT), false);
+            }
         }
         return command;
     }
@@ -178,4 +184,5 @@ public class ArrangeBorderedNodesAction extends DiagramAction {
         action.initAction(ActionIds.ARRANGE_BORDERED_NODES_TOOLBAR, "Arrange Linked Bordered Nodes");
         return action;
     }
+
 }
