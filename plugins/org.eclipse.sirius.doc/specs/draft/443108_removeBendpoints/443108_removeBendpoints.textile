@@ -1,0 +1,78 @@
+h1. Add an action that removes the edge bend points
+
+h2. Preamble
+
+_Summary_: Add an action that allows the end user to remove all bend points between the two edge ends.
+
+|_. Version |_. Status |_. Date        |_. Authors |_. Changes |
+| v0.1        | DRAFT    | 2014-09-02 | fbarbin    | Initial version. |
+| v0.2        | PROPOSAL    | 2014-09-11 | fbarbin    | Update after team review. |
+
+_Relevant tickets_:
+* "443108 - Add an action that removes the edge bend points":https://bugs.eclipse.org/bugs/show_bug.cgi?id=443108
+
+h2. Introduction
+
+The end user may have created different "bend points" (or inflection points) on an edge and may want to return this edge to "straight" again. This enhancement aims to add an action that will remove all bend points (of a specific edge) between the source and the target connection points.
+
+
+h2. Detailed Specification
+
+* This action will concern only "Straight" edges. That means it won't be available for edges with a "Rectilinear" or a "Tree" router.
+* An action executable by the end user will be added in the edge right-click context menu. This action will also be available with the "Ctrl" + "Shift" + "-" shortcut.
+
+There are two strategies when deleting bend points: 
+* One that consists in drawing a straight edge between the source anchor and the target anchor. With this solution we retrieve the edge state before creating the bend-points (that the solution we suggest). This is also the default behavior when the user removes bend-points one by one.
+* An other option which is drawing the edge between the two edge ends (the connection points). 
+The result between these two strategies can be different in the case where the end user has moved an edge anchor after it has been created.
+
+First example where there is no differences between these two cases:
+
+The user has drawn this edge:
+!images/picture1.png!
+
+
+He next creates several bend points:
+!images/picture2.png!
+(Remark that edge connection points did not move during the bend points creation. Indeed, at the edge creation time, the source and target anchors are located at the same position than the connection points)
+
+
+Having executed the action, the result for both solutions will be the following one:
+!images/picture3.png!
+
+Second example with modified edge anchors (the cross cursors materialized where the user moved the edge anchors):
+!images/picture4.png!
+
+The user creates three bend-points:
+!images/picture5.png!
+Note that the edge source and target connection points have moved: the last edge segment follows the edge anchor.
+By applying the first solution, the edge retrieves it's original location between the two anchors. The result is this one:
+!images/picture6.png!
+
+With the second solution, the result will be as following:
+!images/picture7.png!
+ 
+h2. Backward Compatibility and Migration Paths
+
+This evolution does not change any API.
+
+h3. User Interface Changes
+
+No user interface change.
+
+h3. Documentation Changes
+
+This new feature should be added in the New and Noteworthy documentation. 
+A note should also be added in the user doc to explain this new feature.
+
+h2. Tests and Non-regression strategy
+
+Add SWTBot tests that check that:
+
+* By selecting an edge with bend-points, the action works correctly with the shortcut and the context menu.
+* Test that the action has no effect on the other routing style.
+
+h2. Implementation choices and tradeoffs
+
+This action will be available for multiple selections since it can be applied on edges separately.
+
