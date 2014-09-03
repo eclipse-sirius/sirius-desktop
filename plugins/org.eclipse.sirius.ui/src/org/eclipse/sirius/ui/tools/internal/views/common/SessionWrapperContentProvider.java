@@ -338,37 +338,24 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
          * {@inheritDoc}
          */
         public boolean apply(DRepresentation input) {
-            return isFromActiveSirius(input);
-        }
-
-        /**
-         * Tests whether a representation belongs to a viewpoint which is
-         * currently active in the session.
-         * 
-         * @param representation
-         *            the representation to check.
-         * @return <code>true</code> if the representation belongs to a
-         *         viewpoint which is currently active in the session.
-         */
-        private boolean isFromActiveSirius(DRepresentation representation) {
-            if (representation.eResource() != null) {
-                RepresentationDescription description = DialectManager.INSTANCE.getDescription(representation);
+            if (input.eResource() != null) {
+                RepresentationDescription description = DialectManager.INSTANCE.getDescription(input);
                 if (description != null) {
-                    Viewpoint reprSirius = ViewpointRegistry.getInstance().getViewpoint(description);
+                    Viewpoint reprViewpoint = ViewpointRegistry.getInstance().getViewpoint(description);
                     // representationDescription.eContainer() can be null in the
                     // case that the viewpoint has been renamed after the aird
                     // creation
-                    if (reprSirius != null && !reprSirius.eIsProxy() && reprSirius.eResource() != null) {
+                    if (reprViewpoint != null && !reprViewpoint.eIsProxy() && reprViewpoint.eResource() != null) {
                         for (final Viewpoint viewpoint : scope) {
-                            if (EqualityHelper.areEquals(viewpoint, reprSirius)) {
+                            if (EqualityHelper.areEquals(viewpoint, reprViewpoint)) {
                                 return true;
                             }
                         }
                     }
-
                 }
             }
             return false;
         }
+
     }
 }
