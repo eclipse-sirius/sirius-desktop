@@ -14,8 +14,8 @@ h3. User-Visible Changes
 !images/moveNode-edgeImpact-changedBehavior.gif!
 * When a node, container or not, is resized to the left, upwards, or both, the location of its children (elements inside a container and border nodes) is not changed. It is possible to retrieve the previous behavior by pressing the F3 function key during the resize.
 !images/containerResize-changedBehavior.gif!
-
 * The specifier can now choose to hold the edge ends toward the center of the source, target or both. New fields within the "advance" tab of EdgeStyle description have been added to choose for which source or target mappings an edge should be centered.
+* The "snap to shapes" is now enabled by default (see  _Sirius > Sirius Diagram > Rulers and Grid_ preference page). This is true only for new diagrams. The existing diagrams are not impacted.
 
 h3. API Changes
 
