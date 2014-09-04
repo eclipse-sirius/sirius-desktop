@@ -1289,7 +1289,7 @@ public class DDiagramSynchronizer {
                     Collection<DEdgeCandidate> newElements = status.getNewElements();
                     monitor.beginTask("Refresh edges", newElements.size());
                     for (final DEdgeCandidate candidate : newElements) {
-                        this.sync.createNewEdge(mappingManager, candidate, mappingsToEdgeTargets, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration);
+                        edgesDones.add(this.sync.createNewEdge(mappingManager, candidate, mappingsToEdgeTargets, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration));
                         monitor.worked(1);
                     }
                 } finally {
