@@ -977,21 +977,14 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
     @Override
     protected void showTargetConnectionFeedback(DropRequest request) {
         removeHighlight();
-        boolean reveal = false;
-        if (request instanceof ReconnectRequest) {
-            reveal = true;
-            addHighlight(reveal);
-        }
+        addHighlight();
     }
 
     /**
      * Add a highlight feedback figure on element reconnect. Change too the edge
      * (highlight blue) if there is a reconnect on edge.
-     * 
-     * @param reveal
-     *            boolean to know if it's a reconnect request or not.
      */
-    private void addHighlight(boolean reveal) {
+    private void addHighlight() {
         Rectangle bounds = getHostFigure().getBounds().getCopy();
         getHostFigure().getParent().translateToAbsolute(bounds);
         getFeedbackLayer().translateToRelative(bounds);
@@ -1007,9 +1000,6 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
                         decoration.setLineWidth(DiagramEdgeEditPartOperation.getLineWidth((IDiagramEdgeEditPart) getHost()) + WIDTH_FEEDBACK);
                     }
                 }
-                if (reveal) {
-                    getHost().getViewer().reveal(getHost());
-                }
             }
         } else {
 
@@ -1022,9 +1012,6 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             highlightFigure.setBounds(bounds);
             highlightFigure.setBackgroundColor(Display.getCurrent().getSystemColor(SWT.COLOR_LIST_SELECTION));
             addFeedback(highlightFigure);
-            if (reveal) {
-                getHost().getViewer().reveal(getHost());
-            }
         }
     }
 
