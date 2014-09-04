@@ -29,6 +29,9 @@
 								<a href="#Resizingelements">Resizing elements</a>
 							</li>
 							<li>
+								<a href="#Manageedges">Manage edges</a>
+							</li>
+							<li>
 								<a href="#Hidingelements">Hiding elements</a>
 							</li>
 							<li>
@@ -182,12 +185,27 @@
 			<li>ALT (or CTRL for Mac users): Resize without snap (temporarily disables the snap during the resize if it is activated). </li>
 			<li>F3: Resize with children location relative to the parent. If the shape is resized to the left, upwards, or both, the children (contained nodes for container and border nodes for all shapes) are moved with the same offset that the resize.</li>
 		</ul>
+		<h3 id="Manageedges">Manage edges</h3>
+		<h4 id="RemoveBendpoints">Remove Bend-points</h4>
+		<p>You can define some bend-points (or inflection points) on an edge. It is possible to remove all these bend-points to retrieve the original Straight edge. This action is available within the edge context menu or by using the shortcut &#8220;Ctrl&#8221; + &#8220;Shift&#8221; + &#8220;-&#8221;. This action is only available on edges with a &#8220;Straight&#8221; routing style.</p>
+		<p>The edge state just after its creation:
+			<br/>
+			<img border="0" src="images/beforeBendpoints.png"/>
+		</p>
+		<p>The user defines some bend-points:
+			<br/>
+			<img border="0" src="images/withBendpoints.png"/>
+		</p>
+		<p>The user executes the &#8220;Remove Bend-points&#8221; action:
+			<br/>
+			<img border="0" src="images/afterRemoveBendpoints.png"/>
+		</p>
 		<h3 id="Hidingelements">Hiding elements</h3>
 		<p>Every graphical element on a diagram can be hidden explicitly. To do that, simply right click on the graphical element (or elements if you want to hide several elements at once) you want to hide. Then, choose 
 			<i>Show/Hide</i> / 
 			<i>Hide Element</i>. The graphical element is now hidden from view.
 		</p>
-		<p>The icon in the tool-bar changes showing a &#171;check box&#187; on it as soon as at least one element has been hidden, to remind you that what you see is not a complete view of the model being represented:</p>
+		<p>The icon in the tool-bar changes showing a &#8220;check box&#8221; on it as soon as at least one element has been hidden, to remind you that what you see is not a complete view of the model being represented:</p>
 		<p>	
 			<img border="0" src="images/diagram_editor11.png"/>
 		</p>
@@ -225,12 +243,12 @@
 		<h4 id="Hidinglabels">Hiding labels</h4>
 		<h5 id="Nodeslabels">Nodes labels</h5>
 		<p>It is also possible to hide the node label if it is on the border of its node.</p>
-		<p>The approach is the same as for other elements, except that there are a specific menus named &#171;Hide/Show Label&#187;. It is possible to call this menu directly on the label or on its node.</p>
+		<p>The approach is the same as for other elements, except that there are a specific menus named &#8220;Hide/Show Label&#8221;. It is possible to call this menu directly on the label or on its node.</p>
 		<p>	
 			<img border="0" src="images/diagram_editor_hide_label_1.png"/>
 		</p>
 		<h5 id="Edgeslabels">Edges labels</h5>
-		<p>It is also possible to hide the edge label. The approach is the same than the nodes labels with the specific menus &#171;Hide/Show Label&#187; called from the edge or its label.</p>
+		<p>It is also possible to hide the edge label. The approach is the same than the nodes labels with the specific menus &#8220;Hide/Show Label&#8221; called from the edge or its label.</p>
 		<p>	
 			<img border="0" src="images/diagram_editor_hide_edge_label_1.png"/>
 		</p>
@@ -239,7 +257,7 @@
 		<p>When working on 
 			<em>big</em> diagrams, you may want to hide the icons of the labels on all shapes or connectors, in order to improve the readability of your representations. To do so, open the Eclipse Preferences (
 			<em>Window</em>/ 
-			<em>Preferences</em>), and select the &#171;Appearance&#187; category (
+			<em>Preferences</em>), and select the &#8220;Appearance&#8221; category (
 			<em>Sirius</em>/ 
 			<em>Sirius Diagram</em>/ 
 			<em>Appearance</em>).
@@ -359,11 +377,11 @@
 		<p>The port is dropped in the container above the mouse location and linked to its closest edge.</p>
 		<h3 id="Copypasteoflayout">Copy/paste of layout</h3>
 		<p>It is possible to duplicate layout of diagram elements, that is to say to replicate mutual organization of diagram elements from one diagram to another. This replication only applies to the same semantic elements between diagrams.</p>
-		<p>The next picture shows a partial view of a diagram. The tool to replicate the layout is called &#171;Copy layout&#187; and can be activated from the tab-bar or the contextual menu (see &#171;edit&#187; section). In this picture, layout of John Doe and Earvin Johnson persons will be replicated to another diagram.</p>
+		<p>The next picture shows a partial view of a diagram. The tool to replicate the layout is called &#8220;Copy layout&#8221; and can be activated from the tab-bar or the contextual menu (see &#8220;edit&#8221; section). In this picture, layout of John Doe and Earvin Johnson persons will be replicated to another diagram.</p>
 		<p>	
 			<img border="0" src="images/diagram_editor_copy_layout1.png"/>
 		</p>
-		<p>The next picture shows the diagram where the layout will be replicated. The tool to paste layout is called &#171;Paste layout&#187; and can be activated from the toolbar or the contextual menu (see &#171;edit&#187; section).</p>
+		<p>The next picture shows the diagram where the layout will be replicated. The tool to paste layout is called &#8220;Paste layout&#8221; and can be activated from the toolbar or the contextual menu (see &#8220;edit&#8221; section).</p>
 		<p>	
 			<img border="0" src="images/diagram_editor_copy_layout2.png"/>
 		</p>
@@ -388,7 +406,7 @@
 			<img border="0" src="images/diagram_editor_pin01.png"/>
 		</p>
 		<p>
-			<i>Arrange All</i> action lays out all diagram elements in order to produce the &#171;best&#187; layout. As we can see on the next picture, all diagram elements are moved.
+			<i>Arrange All</i> action lays out all diagram elements in order to produce the &#8220;best&#8221; layout. As we can see on the next picture, all diagram elements are moved.
 		</p>
 		<p>	
 			<img border="0" src="images/diagram_editor_pin02.png"/>
@@ -422,14 +440,14 @@
 			<li>it is not possible to pin/unpin edges.</li>
 		</ul>
 		<h4 id="Configuration">Configuration</h4>
-		<p>Every diagram elements that you move will be pinned by default and will need an unpin operation to be &#171;moveable&#187; again.</p>
+		<p>Every diagram elements that you move will be pinned by default and will need an unpin operation to be &#8220;moveable&#8221; again.</p>
 		<p>This default behavior can be changed in Eclipse preferences, as can be seen in the next picture.</p>
 		<p>	
 			<img border="0" src="images/diagram_editor_pin_configuration01.png"/>
 		</p>
 		<h4 id="PinUnpinonNotes">Pin/Unpin on Notes</h4>
 		<p>The notes can be pinned if they are attached to a pinned diagram element. If a note is attached to several elements of which at least one is pinned then the note is pinned.</p>
-		<p>Otherwise for notes linked to any elements, it&#8217;s possible to use the preferences &#171;Move unlinked notes during layout&#187;. By default, this preference is disabled, in this case the unlinked notes are pinned.</p>
+		<p>Otherwise for notes linked to any elements, it&#8217;s possible to use the preferences &#8220;Move unlinked notes during layout&#8221;. By default, this preference is disabled, in this case the unlinked notes are pinned.</p>
 		<p>This default behavior can be changed in Eclipse preferences, as can be seen in the next picture.</p>
 		<p>	
 			<img border="0" src="images/diagram_editor_note_pin_configuration01.png"/>
@@ -448,7 +466,7 @@
 		<p>You can also use 
 			<a href="#UsingRegularExpressionstoFindDiagramElements">RegularExpressions</a> to easily retrieve the elements you want to pin/unpin.
 		</p>
-		<p>To see more easily if one or more graphical elements are pinned, the icon in the toolbar change, showing a &#171;checked&#187; if an element is pinned.</p>
+		<p>To see more easily if one or more graphical elements are pinned, the icon in the toolbar change, showing a &#8220;checked&#8221; if an element is pinned.</p>
 		<p>	
 			<img border="0" src="images/diagram_editor_pin_toolbar_activated.png"/>
 		</p>
@@ -461,7 +479,7 @@
 			<li>moving the extremity of an edge to adjust its connection point (to the source or target element) is possible, but will never trigger a reconnection operation.</li>
 		</ul>
 		<p>Note that other operations which can change the semantic model are still possible. Only the operations listed above, which are easy to misuse, are disabled/modified. 
-			<strong>Layout Mode is not a &#171;read-only&#187; mode and does not guarantee that the semantic model is not modified when it is enabled.</strong>
+			<strong>Layout Mode is not a &#8220;read-only&#8221; mode and does not guarantee that the semantic model is not modified when it is enabled.</strong>
 		</p>
 		<p>
 			<strong>Layouting mode</strong> can be activated/disabled on a diagram through the tab bar (when there is no selected element) : 
@@ -557,8 +575,8 @@
 				<em>'a'</em> and 
 				<em>'A'</em> are strictly equivalent);
 			</li>
-			<li>A &#8249;?&#8250; wild-card can be used to replace exactly 1 character in the search ;</li>
-			<li>A &#8249;*&#8250; wild-card can be used to replace exactly 0 or more characters in the search.</li>
+			<li>A &#8216;?&#8217; wild-card can be used to replace exactly 1 character in the search ;</li>
+			<li>A &#8216;*&#8217; wild-card can be used to replace exactly 0 or more characters in the search.</li>
 		</ol>
 		<h4 id="Examples">Examples</h4>
 		<p>Consider that you have a Diagram containing the following Diagram elements :</p>
@@ -592,7 +610,7 @@
 		<ul>
 			<li>isaBot</li>
 		</ul>
-		<p>As &#8249;?&#8250; stands for 
+		<p>As &#8216;?&#8217; stands for 
 			<strong>exactly</strong> one character, 
 			<em>isaBoot</em> and 
 			<em>isaBt</em> aren&#8217;t matching this regular expression.
@@ -615,15 +633,15 @@
 			<em>'*'</em> represents no character.
 		</p>
 		<h3 id="styleCustomizations">Style customizations </h3>
-		<p>Although the style of the diagram elements is defined in the VSM, it can be customized for each diagram elements. This customization can be applied from the tool bar, from the &#171;Style&#187; and &#171;Appearance&#187; tab of the property view, from the &#171;Diagram&#187; menu or from the contextual menu Format.</p>
+		<p>Although the style of the diagram elements is defined in the VSM, it can be customized for each diagram elements. This customization can be applied from the tool bar, from the &#8220;Style&#8221; and &#8220;Appearance&#8221; tab of the property view, from the &#8220;Diagram&#8221; menu or from the contextual menu Format.</p>
 		<p>You have the possibility to customize :</p>
 		<ul>
 			<li>in container style : the background color, the background style, the border size, the foreground color, the label alignment, the label size and the label format.</li>
 			<li>in node style: the border size, the color, the label alignment, format, position and size.</li>
 			<li>in edge style: the folding style, the color,  the label alignment, format, position and size, the line and routing style, the size and the target and source arrow.</li>
 		</ul>
-		<p>Theses customizations can be reset by the &#171;Reset style customization&#187; button available in the &#171;Appearance&#187; tab of the property view and in the diagram editor tool bar.</p>
-		<p>NOTE: in case a user customized a Node with a WorkspaceImage style (through the &#171;Set style to workspace image&#187; action), it is considered in its whole customized then it can&#8217;t be updated by the refresh action, only the &#171;Reset style properties to default values&#187; action can update it by reset it.</p>
+		<p>Theses customizations can be reset by the &#8220;Reset style customization&#8221; button available in the &#8220;Appearance&#8221; tab of the property view and in the diagram editor tool bar.</p>
+		<p>NOTE: in case a user customized a Node with a WorkspaceImage style (through the &#8220;Set style to workspace image&#8221; action), it is considered in its whole customized then it can&#8217;t be updated by the refresh action, only the &#8220;Reset style properties to default values&#8221; action can update it by reset it.</p>
 		<h4 id="routingStylePref">Customize edge routing style from preferences</h4>
 		<p>You have the possibility to customize the routing style of all new edges from the preferences. In the preference page 
 			<em>Sirius/Sirius Diagram/Connections</em>, you can enable 
@@ -705,7 +723,7 @@
 		</p>
 		<p>
 			<em>Notes</em> and 
-			<em>Text</em> elements are created in a similar way: either a single click somewhere on the diagram (which creates an element with a default size), or a click-drag to create the element with a custom initial size. Once created, one can edit the text inside the note or text zone usual the standard &#171;direct edit&#187; behavior (
+			<em>Text</em> elements are created in a similar way: either a single click somewhere on the diagram (which creates an element with a default size), or a click-drag to create the element with a custom initial size. Once created, one can edit the text inside the note or text zone usual the standard &#8220;direct edit&#8221; behavior (
 			<em>F2</em>, a slow double click, or by directly starting to enter alpha-numeric text). The only difference between notes and text zones is the visual presentation; notes have a yellow background (by default) and a border which represents a sticky not with a folded top-right corner. 
 		</p>
 		<p>
@@ -723,13 +741,13 @@
 		</p>
 		<p>
 			<em>Tool Drawers</em>. Tools in the palette may be organized in expandable 
-			<em>drawers</em> to group them by category. To expand a drawer and show its content, simply click once in the drawer&#8217;s header. Click again to fold it back and hide its tools. When you expand a drawer, some others may be folded automatically if there is not enough space to show all of them. To prevent this, you can &#171;pin&#187; a drawer opened by clicking on the &#171;pin&#187; icon in the drawer&#8217;s title area when it is expanded. This will force it to be kept opened, and its tools available, at all times.
+			<em>drawers</em> to group them by category. To expand a drawer and show its content, simply click once in the drawer&#8217;s header. Click again to fold it back and hide its tools. When you expand a drawer, some others may be folded automatically if there is not enough space to show all of them. To prevent this, you can &#8220;pin&#8221; a drawer opened by clicking on the &#8220;pin&#8221; icon in the drawer&#8217;s title area when it is expanded. This will force it to be kept opened, and its tools available, at all times.
 		</p>
 		<p>	
 			<img border="0" src="images/palette_tool_drawer.png"/>
 		</p>
 		<p>
-			<em>Tool Groups</em>. Most entries in the palette correspond to a single tool, but some of them represent tool groups. Tool groups are identified by a small right-facing arrow on the left of the tool&#8217;s icon. They behave like combo-boxes: click on the arrow to expand the group and reveal all the tools available in this group. Click on the tool you want to activate to make it the default and close the group. You can then use the selected tool as any other, but you have to re-open the popup menu if you want to enable a different one. When the group is expanded, you can click on the &#171;pin&#187; icon to the right to of the top-most tool to force the group to stay expanded, so that you can easily have access to all the tools. 
+			<em>Tool Groups</em>. Most entries in the palette correspond to a single tool, but some of them represent tool groups. Tool groups are identified by a small right-facing arrow on the left of the tool&#8217;s icon. They behave like combo-boxes: click on the arrow to expand the group and reveal all the tools available in this group. Click on the tool you want to activate to make it the default and close the group. You can then use the selected tool as any other, but you have to re-open the popup menu if you want to enable a different one. When the group is expanded, you can click on the &#8220;pin&#8221; icon to the right to of the top-most tool to force the group to stay expanded, so that you can easily have access to all the tools. 
 		</p>
 		<p>	
 			<img border="0" src="images/palette_tool_group.png"/>
@@ -737,7 +755,7 @@
 		<h4 id="UsingTheToolsFromThePalette">Using The Tools From The Palette</h4>
 		<p>There are different interaction modes possible for the tools available in the palette. The basic pattern is to select the tool in the palette with a simple left-click on in it the palette, and then apply it once on the diagram.</p>
 		<p>Normally, when you have used a tool once, it does not stay selected; if you want to reuse it a second time, you have to re-select it in the palette. If you want to apply the same tool several times in a row, simply hold the 
-			<em>Ctrl</em> key pressed while using it; it will stay &#171;armed&#187; until you release the 
+			<em>Ctrl</em> key pressed while using it; it will stay &#8220;armed&#8221; until you release the 
 			<em>Ctrl</em> key or select another tool.
 		</p>
 		<p>To deselect a tool without executing it, simply press the 
@@ -781,7 +799,7 @@
 				<strong>not</strong> be moved by the algorithm.
 			</li>
 			<li>
-				<em>Arrange Linked Bordered Nodes</em> This special action will only concerns nodes which are on the border of another element and which are either the source or the target of at least one edge. When invoked, the action will try to move these bordered nodes on the border of their parent on the most &#171;natural&#187; side of their parent element depending on the direction of the edge. For example if a bordered node is on the top side of an element but has an edge which does down to a target element below its parent, this action will move the bordered node to the bottom side so that the edge does not cross the parent element.
+				<em>Arrange Linked Bordered Nodes</em> This special action will only concerns nodes which are on the border of another element and which are either the source or the target of at least one edge. When invoked, the action will try to move these bordered nodes on the border of their parent on the most &#8220;natural&#8221; side of their parent element depending on the direction of the edge. For example if a bordered node is on the top side of an element but has an edge which does down to a target element below its parent, this action will move the bordered node to the bottom side so that the edge does not cross the parent element.
 			</li>
 		</ul>
 		<p>
@@ -851,13 +869,13 @@
 			<img border="0" src="images/tabbar_paste_layout.png"/> 
 			<em>Paste Layout</em>. This button is only enabled if you have previously copied the layout of some elements in the clipboard, using the 
 			<em>Copy layout</em> action (only visible in the tab-bar when elements are select). 
-			<em>Paste layout</em> will apply the same size and positions which were copied in the clipboard to the corresponding elements in the current diagram. For the purpose of this command, the &#171;corresponding elements&#187; are the graphical elements which represent the same semantic objects.
+			<em>Paste layout</em> will apply the same size and positions which were copied in the clipboard to the corresponding elements in the current diagram. For the purpose of this command, the &#8220;corresponding elements&#8221; are the graphical elements which represent the same semantic objects.
 		</p>
 		<p>
 			<img border="0" src="images/tabbar_zoom.png"/> 
 			<em>Zoom Controls</em>. Next in the tab-bar is a set of buttons to control the zoom level. The 
 			<em>Zoom in</em> and 
-			<em>Zoom out</em> buttons behave similarly to their equivalents in the palette. The combo-box shows the current zoom level and allows you to choose among some pre-defined levels. You can also manually enter a specific zoom level (e.g. &#171;42&#187;) and hit 
+			<em>Zoom out</em> buttons behave similarly to their equivalents in the palette. The combo-box shows the current zoom level and allows you to choose among some pre-defined levels. You can also manually enter a specific zoom level (e.g. &#8220;42&#8221;) and hit 
 			<em>Return</em> to apply it.
 		</p>
 		<p>
@@ -869,7 +887,7 @@
 		</p>
 		<p>
 			<img border="0" src="images/tabbar_layouting_mode.png"/> 
-			<em>Layout Mode</em>. This button enables a special &#171;layout mode&#187;, in which some operations are prevented from having an effect on the semantic model. It can be used when you want to tweak the layout of a diagram and want to be sure to only make graphical changes, and not semantic ones by mistake. Click on the button to enable the &#171;layout mode&#187;, and click again when finished to return to the normal model. When this mode is enabled, the following operations are changed:
+			<em>Layout Mode</em>. This button enables a special &#8220;layout mode&#8221;, in which some operations are prevented from having an effect on the semantic model. It can be used when you want to tweak the layout of a diagram and want to be sure to only make graphical changes, and not semantic ones by mistake. Click on the button to enable the &#8220;layout mode&#8221;, and click again when finished to return to the normal model. When this mode is enabled, the following operations are changed:
 		</p>
 		<ul>
 			<li>direct edit is disabled on all elements;</li>
@@ -877,7 +895,7 @@
 			<li>moving the extremity of an edge to adjust its connection point (to the source or target element) is possible, but will never trigger a reconnection operation.</li>
 		</ul>
 		<p>Note that other operations which can change the semantic model are still possible. Only the operations listed above, which are easy to misuse, are disabled/modified. 
-			<strong>Layout Mode is not a &#171;read-only&#187; mode and does not guarantee that the semantic model is not modified when it is enabled.</strong>
+			<strong>Layout Mode is not a &#8220;read-only&#8221; mode and does not guarantee that the semantic model is not modified when it is enabled.</strong>
 		</p>
 		<p>The diagram&#8217;s status line indicates when 
 			<em>Layouting mode</em> is enabled: 
@@ -1045,7 +1063,7 @@
 		<ul>
 			<li>
 				<em>Auto-size containers during arrange-all action:</em> Container elements which have an explicit size are normally not resized during an 
-				<em>Arrange All</em>. This can be problematic if the elements they contain are re-arranged so that the container&#8217;s size is not appropriate anymore. When this preference is enabled, the arrange all action will treat all containers as if they are &#171;auto-sized&#187;, and adjust their size to the computed arrangement for their content. After the arrange all action is finished, the containers which had an explicit size before will still have an explicit size (although potentially different); they are only switched to auto-size mode during the arrange all action. 
+				<em>Arrange All</em>. This can be problematic if the elements they contain are re-arranged so that the container&#8217;s size is not appropriate anymore. When this preference is enabled, the arrange all action will treat all containers as if they are &#8220;auto-sized&#8221;, and adjust their size to the computed arrangement for their content. After the arrange all action is finished, the containers which had an explicit size before will still have an explicit size (although potentially different); they are only switched to auto-size mode during the arrange all action. 
 			</li>
 			<li>
 				<em>Move unlinked notes during layout:</em> If checked, then the 

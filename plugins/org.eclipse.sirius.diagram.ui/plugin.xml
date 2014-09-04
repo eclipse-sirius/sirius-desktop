@@ -927,6 +927,10 @@
      </command>
      <category name="Sirius" id="org.eclipse.sirius.common.ui.category"/>
      <command categoryId="org.eclipse.sirius.common.ui.category" description="Find in model" id="org.eclipse.sirius.diagram.ui.find.binding.FindElementAction" name="Find Element"/>
+     <command
+           id="org.eclipse.sirius.diagram.ui.removeBendpoints"
+           name="Remove Bend-points">
+     </command>
    </extension>
 
    <extension point="org.eclipse.ui.bindings">
@@ -982,6 +986,12 @@
             contextId="org.eclipse.sirius.diagram.ui.diagramContext"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="Esc">
+      </key>
+      <key
+            commandId="org.eclipse.sirius.diagram.ui.removeBendpoints"
+            contextId="org.eclipse.sirius.diagram.ui.diagramContext"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M2+-">
       </key>
    </extension>
 
@@ -1065,6 +1075,13 @@
            properties="canDeleteFromDiagram"
            class="org.eclipse.sirius.diagram.ui.tools.internal.testers.CanDeleteFromDiagramTester">
        </propertyTester>
+        <propertyTester
+              class="org.eclipse.sirius.diagram.ui.tools.internal.testers.CanRemoveBendpoints"
+              id="org.eclipse.sirius.diagram.ui.CanRemoveBendpoints"
+              namespace="org.eclipse.sirius.diagram.ui"
+              properties="canRemoveBendpoints"
+              type="org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart">
+        </propertyTester>
        
    </extension>
    <extension
@@ -1294,6 +1311,15 @@
                </iterate>
             </with>
          </visibleWhen>
+      </command>
+   </menuContribution>
+   <menuContribution
+         allPopups="false"
+         locationURI="popup:org.eclipse.ui.popup.any?after=org.eclipse.sirius.diagram.ui.popup.otherActions">
+      <command
+            commandId="org.eclipse.sirius.diagram.ui.removeBendpoints"
+            label="Remove Bend-points"
+            style="push">
       </command>
    </menuContribution>
    <!--<menuContribution
@@ -1607,6 +1633,21 @@
      <handler
            class="org.eclipse.sirius.diagram.ui.tools.internal.commands.DeselectAllCommand"
            commandId="org.eclipse.sirius.diagram.ui.command.deselectAll">
+     </handler>
+     <handler
+           class="org.eclipse.sirius.diagram.ui.tools.internal.handler.RemoveBendpointsHandler"
+           commandId="org.eclipse.sirius.diagram.ui.removeBendpoints">
+        <activeWhen>
+           <with
+                 variable="selection">
+              <iterate
+                    operator="and">
+                 <test
+                       property="org.eclipse.sirius.diagram.ui.canRemoveBendpoints">
+                 </test>
+              </iterate>
+           </with>
+        </activeWhen>
      </handler>
   </extension>
   <extension

@@ -51,6 +51,21 @@ There are specific shortcuts to change the resize behavior:
 * SHIFT: Resize that keeps the ratio
 * ALT (or CTRL for Mac users): Resize without snap (temporarily disables the snap during the resize if it is activated). 
 * F3: Resize with children location relative to the parent. If the shape is resized to the left, upwards, or both, the children (contained nodes for container and border nodes for all shapes) are moved with the same offset that the resize.
+
+h3. Manage edges
+
+h4. Remove Bend-points
+
+You can define some bend-points (or inflection points) on an edge. It is possible to remove all these bend-points to retrieve the original Straight edge. This action is available within the edge context menu or by using the shortcut "Ctrl" + "Shift" + "-". This action is only available on edges with a "Straight" routing style.
+
+The edge state just after its creation:
+!images/beforeBendpoints.png!
+
+The user defines some bend-points:
+!images/withBendpoints.png!
+
+The user executes the "Remove Bend-points" action:
+!images/afterRemoveBendpoints.png!
  
 h3. Hiding elements
 

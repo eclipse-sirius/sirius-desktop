@@ -176,12 +176,10 @@ public class EdgeQuery {
      */
     public boolean isEdgeWithTreeRoutingStyle() {
         boolean isEdgeTreeRoutingStyle = false;
-        for (Object style : edge.getStyles()) {
-            if (style instanceof ConnectorStyle) {
-                ConnectorStyle connectorStyle = (ConnectorStyle) style;
-                if (Routing.TREE_LITERAL.getLiteral().equals(connectorStyle.getRouting().getLiteral())) {
-                    isEdgeTreeRoutingStyle = true;
-                }
+        ConnectorStyle connectorStyle = getConnectorStyle();
+        if (connectorStyle != null) {
+            if (Routing.TREE_LITERAL.getLiteral().equals(connectorStyle.getRouting().getLiteral())) {
+                isEdgeTreeRoutingStyle = true;
             }
         }
         return isEdgeTreeRoutingStyle;
@@ -194,12 +192,10 @@ public class EdgeQuery {
      */
     public boolean isEdgeWithRectilinearRoutingStyle() {
         boolean isEdgeRectilinearRoutingStyle = false;
-        for (Object style : edge.getStyles()) {
-            if (style instanceof ConnectorStyle) {
-                ConnectorStyle connectorStyle = (ConnectorStyle) style;
-                if (Routing.RECTILINEAR_LITERAL.getLiteral().equals(connectorStyle.getRouting().getLiteral())) {
-                    isEdgeRectilinearRoutingStyle = true;
-                }
+        ConnectorStyle connectorStyle = getConnectorStyle();
+        if (connectorStyle != null) {
+            if (Routing.RECTILINEAR_LITERAL.getLiteral().equals(connectorStyle.getRouting().getLiteral())) {
+                isEdgeRectilinearRoutingStyle = true;
             }
         }
         return isEdgeRectilinearRoutingStyle;
@@ -212,14 +208,27 @@ public class EdgeQuery {
      */
     public boolean isEdgeWithObliqueRoutingStyle() {
         boolean isEdgeObliqueRoutingStyle = false;
-        for (Object style : edge.getStyles()) {
-            if (style instanceof ConnectorStyle) {
-                ConnectorStyle connectorStyle = (ConnectorStyle) style;
-                if (Routing.MANUAL_LITERAL.getLiteral().equals(connectorStyle.getRouting().getLiteral())) {
-                    isEdgeObliqueRoutingStyle = true;
-                }
+        ConnectorStyle connectorStyle = getConnectorStyle();
+        if (connectorStyle != null) {
+            if (Routing.MANUAL_LITERAL.getLiteral().equals(connectorStyle.getRouting().getLiteral())) {
+                isEdgeObliqueRoutingStyle = true;
             }
         }
         return isEdgeObliqueRoutingStyle;
+    }
+
+    private ConnectorStyle getConnectorStyle() {
+        ConnectorStyle connectorStyle = null;
+        if (edge instanceof ConnectorStyle) {
+            connectorStyle = (ConnectorStyle) edge;
+        } else {
+            for (Object style : edge.getStyles()) {
+                if (style instanceof ConnectorStyle) {
+                    connectorStyle = (ConnectorStyle) style;
+                    break;
+                }
+            }
+        }
+        return connectorStyle;
     }
 }
