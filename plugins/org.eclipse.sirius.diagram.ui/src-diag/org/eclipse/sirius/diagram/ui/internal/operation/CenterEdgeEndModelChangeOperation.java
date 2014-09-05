@@ -16,6 +16,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.draw2d.Connection;
+import org.eclipse.draw2d.ConnectionLayer;
 import org.eclipse.draw2d.ConnectionRouter;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -25,9 +26,13 @@ import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.GraphicalEditPart;
+import org.eclipse.gef.LayerConstants;
+import org.eclipse.gef.editparts.LayerManager;
 import org.eclipse.gmf.runtime.common.ui.services.editor.EditorService;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor;
+import org.eclipse.gmf.runtime.draw2d.ui.internal.figures.ConnectionLayerEx;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.routers.OrthogonalRouterUtilities;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.routers.RectilinearRouter;
 import org.eclipse.gmf.runtime.notation.Anchor;
@@ -75,11 +80,14 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
 
     private Point newSourceAnchorAbsoluteLocation;
 
+    private ConnectionEditPart connectionEditPart;
+
     private Connection connection;
 
-    public CenterEdgeEndModelChangeOperation(Connection connection, Edge edge) {
+    public CenterEdgeEndModelChangeOperation(ConnectionEditPart connectionEditPart, Edge edge) {
         this(edge);
-        this.connection = connection;
+        this.connectionEditPart = connectionEditPart;
+        this.connection = (Connection) connectionEditPart.getFigure();
     }
 
     public CenterEdgeEndModelChangeOperation(Edge edge) {
@@ -239,6 +247,14 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
         } else {
             rectilinear = existingPointList.getCopy();
 
+            // GMF bendpoints are not reliable: in some cases they are
+            // completely far away from what draw2D is really displaying. If
+            // there is only two GMF bendpoints, we can compute them with the
+            // information we know.
+            if (rectilinear.size() == 2) {
+                computePointListByIntersections(rectilinear, sourceBounds, targetBounds);
+            }
+
             sourceAnchorRelativeLocation = RectilinearHelper.getAnchorOffRectangleDirection(rectilinear.getFirstPoint(), sourceBounds);
             targetAnchorRelativeLocation = RectilinearHelper.getAnchorOffRectangleDirection(rectilinear.getLastPoint(), targetBounds);
 
@@ -255,6 +271,16 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
 
             existingPointList.removeAllPoints();
             existingPointList.addAll(rectilinear);
+        }
+    }
+
+    private void computePointListByIntersections(PointList rectilinear, Rectangle sourceBounds, Rectangle targetBounds) {
+        Option<Point> sourceConnectionPoint = GraphicalHelper.getIntersection(existingSourceAnchorAbsoluteLocation, existingTargetAnchorAbsoluteLocation, sourceBounds, false);
+        Option<Point> targetConnectionPoint = GraphicalHelper.getIntersection(existingSourceAnchorAbsoluteLocation, existingTargetAnchorAbsoluteLocation, targetBounds, false);
+        if (sourceConnectionPoint.some() && targetConnectionPoint.some()) {
+            rectilinear.removeAllPoints();
+            rectilinear.addPoint(sourceConnectionPoint.get());
+            rectilinear.addPoint(targetConnectionPoint.get());
         }
     }
 
@@ -492,26 +518,51 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
         if (option.some()) {
             GraphicalEditPart editPart = option.get();
             if (editPart instanceof DEdgeEditPart) {
+                connectionEditPart = (DEdgeEditPart) editPart;
                 connection = ((DEdgeEditPart) editPart).getConnectionFigure();
             }
         }
     }
 
     /**
-     * In the case of an existing edge that was oblique and is now transform to
-     * rectilinear, we need to anticipate the future rectilinear bendpoints to
-     * next center the source or target connection ends.
+     * In the case of an existing edge that was oblique and is now transformed
+     * to rectilinear, we need to anticipate the future rectilinear bendpoints
+     * to next center the source or target connection ends.
      * 
      * @return a rectilinear PointList.
      */
     @SuppressWarnings("restriction")
     private PointList getRectilinearPointListFromConnection() {
         ConnectionRouter oldConnectionRouter = connection.getConnectionRouter();
-        connection.setConnectionRouter(new RectilinearRouter());
+        boolean needToRetrieveOldRouter = false;
+
+        // If the router is already a rectilinear one, we don't need to change
+        // it.
+        if (!(oldConnectionRouter instanceof RectilinearRouter)) {
+            ConnectionRouter connectionRouter = null;
+            LayerManager layerManager = LayerManager.Helper.find(connectionEditPart);
+            if (layerManager != null) {
+                ConnectionLayer cLayer = (ConnectionLayer) layerManager.getLayer(LayerConstants.CONNECTION_LAYER);
+                if (cLayer instanceof ConnectionLayerEx) {
+                    connectionRouter = ((ConnectionLayerEx) cLayer).getRectilinearRouter();
+                }
+            }
+            if (connectionRouter == null) {
+                connectionRouter = new RectilinearRouter();
+            }
+
+            connection.setConnectionRouter(connectionRouter);
+            needToRetrieveOldRouter = true;
+        }
         connection.getConnectionRouter().route(connection);
         PointList pointList = connection.getPoints().getCopy();
-        connection.setConnectionRouter(oldConnectionRouter);
-        connection.getConnectionRouter().route(connection);
+
+        // We restore the old router once we got the rectilinear point
+        // list.
+        if (needToRetrieveOldRouter) {
+            connection.setConnectionRouter(oldConnectionRouter);
+            connection.getConnectionRouter().route(connection);
+        }
 
         return pointList;
     }

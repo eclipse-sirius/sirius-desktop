@@ -62,7 +62,7 @@ public class TreeLayoutConnectionLineSegEditPolicy extends ConnectionLineSegEdit
             // to center the edge end(s) if needed.
             CompoundCommand compoundCommand = new CompoundCommand();
             compoundCommand.add(super.getBendpointsChangedCommand(connection, edge));
-            ICommand command = CommandFactory.createICommand(editingDomain, new CenterEdgeEndModelChangeOperation(connection, edge));
+            ICommand command = CommandFactory.createICommand(editingDomain, new CenterEdgeEndModelChangeOperation((ConnectionEditPart) getHost(), edge));
             compoundCommand.add(new ICommandProxy(command));
             return compoundCommand;
         }
