@@ -145,4 +145,7 @@ public interface DiagramImagesPath {
 
     /** path of the palette edge image. */
     String PALETTE_EDGE_PATH = "/org.eclipse.sirius.diagram.ui/icons/full/obj16/DEdge.gif"; //$NON-NLS-1$
+
+    /** deselect all icon. */
+    String DESELECT_ALL_ICON = "icons/deselectAll.gif"; //$NON-NLS-1$
 }

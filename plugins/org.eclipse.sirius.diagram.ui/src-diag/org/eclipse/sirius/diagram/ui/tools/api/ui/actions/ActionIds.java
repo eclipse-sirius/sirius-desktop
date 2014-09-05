@@ -56,4 +56,7 @@ public interface ActionIds {
 
     /** Action for Activating/Deactivating the Layouting mode. **/
     String SWITCH_LAYOUTING_MODE = "switchLayoutingMode";
+
+    /** Action to deselect all elements (select diagram). **/
+    String DESELECT_ALL = "deselectAll";
 }

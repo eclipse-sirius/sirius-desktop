@@ -146,8 +146,9 @@
            <partAction menubarPath="/edit/copyLayoutGroup" id="pasteLayoutAction" />
            <partAction menubarPath="/diagramMenu/arrangeMenu/arrangeGroup" id="arrangeBorderedNodesAction"/>
            <!--partAction menubarPath="/diagramMenu/routerMenu/routerGroup" id="treeRoutingStyleAction"/-->
-           <partAction toolbarPath="/arrangeMenu/arrangeGroup" id="arrangeBorderedNodesActionToolBar">
-           </partAction>
+           <partAction toolbarPath="/arrangeMenu/arrangeGroup" id="arrangeBorderedNodesActionToolBar"/>
+           <!-- Add the DeselectAll action after selectAll action-->
+           <partAction menubarPath="/edit/selectAll" id="deselectAll"/>
          </partContribution>
 
          <popupContribution class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
@@ -920,6 +921,10 @@
            id="org.eclipse.sirius.diagram.ui.command.show.outline"
            name="Quick outline">
      </command>
+     <command
+           id="org.eclipse.sirius.diagram.ui.command.deselectAll"
+           name="Deselect all">
+     </command>
      <category name="Sirius" id="org.eclipse.sirius.common.ui.category"/>
      <command categoryId="org.eclipse.sirius.common.ui.category" description="Find in model" id="org.eclipse.sirius.diagram.ui.find.binding.FindElementAction" name="Find Element"/>
    </extension>
@@ -971,6 +976,12 @@
             commandId="org.eclipse.sirius.diagram.ui.find.binding.FindElementAction"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="M2+M1+M3+F">
+      </key>
+      <key
+            commandId="org.eclipse.sirius.diagram.ui.command.deselectAll"
+            contextId="org.eclipse.sirius.diagram.ui.diagramContext"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="Esc">
       </key>
    </extension>
 
@@ -1592,6 +1603,10 @@
      <handler
            class="org.eclipse.sirius.diagram.ui.tools.internal.commands.FindElementCommand"
            commandId="org.eclipse.sirius.diagram.ui.find.binding.FindElementAction">
+     </handler>
+     <handler
+           class="org.eclipse.sirius.diagram.ui.tools.internal.commands.DeselectAllCommand"
+           commandId="org.eclipse.sirius.diagram.ui.command.deselectAll">
      </handler>
   </extension>
   <extension

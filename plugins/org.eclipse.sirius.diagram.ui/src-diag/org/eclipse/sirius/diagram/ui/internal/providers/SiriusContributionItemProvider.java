@@ -15,6 +15,7 @@ import org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor;
 import org.eclipse.gmf.runtime.diagram.ui.printing.actions.PrintPreviewAction;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.DeselectAllAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SaveAsImageFileAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SelectHiddenElementsAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.TabbarRouterAction;
@@ -61,6 +62,8 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
             result = new SelectHiddenElementsAction(workbenchPage);
         } else if (ActionIds.ROUTING_STYLE.equals(actionId)) {
             result = TabbarRouterAction.createTreeRouterAction(workbenchPage);
+        } else if (ActionIds.DESELECT_ALL.equals(actionId)) {
+            result = new DeselectAllAction();
         } else {
             result = super.createAction(actionId, partDescriptor);
         }
