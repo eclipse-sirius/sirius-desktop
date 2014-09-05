@@ -232,8 +232,8 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
      */
     private void handleRectilinearCase(CenteringStyle center, Rectangle sourceBounds, Rectangle targetBounds, PointList existingPointList) {
 
-        int sourceAnchorRelativeLocation = PositionConstants.NONE;
-        int targetAnchorRelativeLocation = PositionConstants.NONE;
+        int sourceAnchorOrientation = PositionConstants.NONE;
+        int targetAnchorOrientation = PositionConstants.NONE;
         PointList rectilinear = null;
 
         // If the connection is available (the edge already exist) we retrieve
@@ -241,8 +241,8 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
         if (connection != null) {
             rectilinear = getRectilinearPointListFromConnection();
 
-            sourceAnchorRelativeLocation = RectilinearHelper.getAnchorOffRectangleDirection(rectilinear.getFirstPoint(), sourceBounds);
-            targetAnchorRelativeLocation = RectilinearHelper.getAnchorOffRectangleDirection(rectilinear.getLastPoint(), targetBounds);
+            sourceAnchorOrientation = computeSourceOrientation(rectilinear);
+            targetAnchorOrientation = computeTargetOrientation(rectilinear);
 
         } else {
             rectilinear = existingPointList.getCopy();
@@ -255,23 +255,38 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
                 computePointListByIntersections(rectilinear, sourceBounds, targetBounds);
             }
 
-            sourceAnchorRelativeLocation = RectilinearHelper.getAnchorOffRectangleDirection(rectilinear.getFirstPoint(), sourceBounds);
-            targetAnchorRelativeLocation = RectilinearHelper.getAnchorOffRectangleDirection(rectilinear.getLastPoint(), targetBounds);
+            int sourceAnchorSide = RectilinearHelper.getAnchorOffRectangleDirection(rectilinear.getFirstPoint(), sourceBounds);
+            int targetAnchorSide = RectilinearHelper.getAnchorOffRectangleDirection(rectilinear.getLastPoint(), targetBounds);
+            RectilinearHelper.transformToRectilinear(rectilinear, sourceAnchorSide, targetAnchorSide);
 
-            RectilinearHelper.transformToRectilinear(rectilinear, sourceAnchorRelativeLocation, targetAnchorRelativeLocation);
-
+            sourceAnchorOrientation = computeSourceOrientation(rectilinear);
+            targetAnchorOrientation = computeTargetOrientation(rectilinear);
         }
         if (rectilinear.size() >= 2) {
             if (center == CenteringStyle.BOTH || center == CenteringStyle.SOURCE) {
-                handleSourceRectilinearRoutingStyle(sourceBounds, rectilinear, sourceAnchorRelativeLocation);
+                handleSourceRectilinearRoutingStyle(sourceBounds, rectilinear, sourceAnchorOrientation);
             }
             if (center == CenteringStyle.BOTH || center == CenteringStyle.TARGET) {
-                handleTargetRectilinearRoutingStyle(targetBounds, rectilinear, targetAnchorRelativeLocation);
+                handleTargetRectilinearRoutingStyle(targetBounds, rectilinear, targetAnchorOrientation);
             }
 
             existingPointList.removeAllPoints();
             existingPointList.addAll(rectilinear);
         }
+    }
+
+    private int computeSourceOrientation(PointList rectilinear) {
+        if (rectilinear.size() >= 2) {
+            return (rectilinear.getPoint(0).x() == rectilinear.getPoint(1).x()) ? PositionConstants.VERTICAL : PositionConstants.HORIZONTAL;
+        }
+        return PositionConstants.NONE;
+    }
+
+    private int computeTargetOrientation(PointList rectilinear) {
+        if (rectilinear.size() >= 2) {
+            return (rectilinear.getPoint(rectilinear.size() - 1).x() == rectilinear.getPoint(rectilinear.size() - 2).x()) ? PositionConstants.VERTICAL : PositionConstants.HORIZONTAL;
+        }
+        return PositionConstants.NONE;
     }
 
     private void computePointListByIntersections(PointList rectilinear, Rectangle sourceBounds, Rectangle targetBounds) {
@@ -289,14 +304,12 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
         Point newConnectionPoint = rectilinear.getFirstPoint().getCopy();
         Point secondFromSrc = rectilinear.getPoint(1);
         switch (sourceAnchorRelativeLocation) {
-        case PositionConstants.WEST:
-        case PositionConstants.EAST:
+        case PositionConstants.HORIZONTAL:
             newConnectionPoint.setY(newSourceAnchorAbsoluteLocation.y());
             secondFromSrc.setY(newSourceAnchorAbsoluteLocation.y());
             break;
 
-        case PositionConstants.NORTH:
-        case PositionConstants.SOUTH:
+        case PositionConstants.VERTICAL:
             newConnectionPoint.setX(newSourceAnchorAbsoluteLocation.x());
             secondFromSrc.setX(newSourceAnchorAbsoluteLocation.x());
             break;
@@ -317,14 +330,12 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
         Point newConnectionPoint = rectilinear.getLastPoint().getCopy();
         Point secondFromTgt = rectilinear.getPoint(rectilinear.size() - 2);
         switch (targetAnchorRelativeLocation) {
-        case PositionConstants.WEST:
-        case PositionConstants.EAST:
+        case PositionConstants.HORIZONTAL:
             newConnectionPoint.setY(newTargetAnchorAbsoluteLocation.y());
             secondFromTgt.setY(newTargetAnchorAbsoluteLocation.y());
             break;
 
-        case PositionConstants.NORTH:
-        case PositionConstants.SOUTH:
+        case PositionConstants.VERTICAL:
             newConnectionPoint.setX(newTargetAnchorAbsoluteLocation.x());
             secondFromTgt.setX(newTargetAnchorAbsoluteLocation.x());
             break;
