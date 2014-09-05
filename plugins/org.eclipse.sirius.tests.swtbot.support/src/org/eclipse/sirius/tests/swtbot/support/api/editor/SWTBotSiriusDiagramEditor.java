@@ -1420,6 +1420,16 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
+     * Disable or enable the snapToShape option for this editor.
+     * 
+     * @param snap
+     *            true to enable, false to disable snap to shape property
+     */
+    public void setSnapToShape(boolean snap) {
+        ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore().setValue(WorkspaceViewerProperties.SNAPTOGEOMETRY, snap);
+    }
+
+    /**
      * Disable or enable the snapToGrid option for this editor.
      * 
      * @param snap

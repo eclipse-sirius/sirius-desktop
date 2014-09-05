@@ -41,7 +41,6 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DescriptionCompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.TextEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
@@ -878,7 +877,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                     swtBotDesignerEditor.bot().toolbarButtonWithTooltip("Zoom In (Ctrl+=)").click();
                 }
             } else {
-                double currentZoom = GraphicalHelper.getZoom((IGraphicalEditPart) ((DiagramRootEditPart) swtBotDesignerEditor.rootEditPart().part()).getContents());
+                double currentZoom = GraphicalHelper.getZoom(((DiagramRootEditPart) swtBotDesignerEditor.rootEditPart().part()).getContents());
                 swtBotDesignerEditor.zoom(ZoomLevel.createNextZoomInLevel(currentZoom));
             }
         }
@@ -907,7 +906,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             if (TestsUtil.isDynamicTabbar()) {
                 swtBotDesignerEditor.bot().toolbarButtonWithTooltip("Zoom Out (Ctrl+-)").click();
             } else {
-                double currentZoom = GraphicalHelper.getZoom((IGraphicalEditPart) ((DiagramRootEditPart) swtBotDesignerEditor.rootEditPart().part()).getContents());
+                double currentZoom = GraphicalHelper.getZoom(((DiagramRootEditPart) swtBotDesignerEditor.rootEditPart().part()).getContents());
                 swtBotDesignerEditor.zoom(ZoomLevel.createNextZoomOutLevel(currentZoom));
             }
         }
@@ -1060,7 +1059,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * @return the editor of the first corresponding representation
      */
     protected SWTBotEditor openRepresentation(Session session, String representationDescriptionName, final String representationName, Class<? extends DRepresentation> expectedRepresentationClass) {
-        return openRepresentation(session, representationDescriptionName, representationName, expectedRepresentationClass, false);
+        return openRepresentation(session, representationDescriptionName, representationName, expectedRepresentationClass, false, true);
     }
 
     /**
@@ -1083,6 +1082,32 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      */
     protected SWTBotEditor openRepresentation(Session session, String representationDescriptionName, final String representationName, Class<? extends DRepresentation> expectedRepresentationClass,
             boolean disableSnapToGridOnThisEditor) {
+        return openRepresentation(session, representationDescriptionName, representationName, expectedRepresentationClass, disableSnapToGridOnThisEditor, true);
+    }
+
+    /**
+     * Open the first representation with the given representation description
+     * name and representation name.
+     * 
+     * @param session
+     *            The session containing the searched representations.
+     * @param representationDescriptionName
+     *            the name of the representation description. <code>null</code>
+     *            is not excepted.
+     * @param representationName
+     *            the name of the representation
+     * @param expectedRepresentationClass
+     *            the expected type of representation to found
+     * @param disableSnapToGridOnThisEditor
+     *            true if the snapToGrid must be disable for this editor, false
+     *            otherwise
+     * @param disableSnapToShapeOnThisEditor
+     *            true if the snapToShape must be disable for this editor, false
+     *            otherwise
+     * @return the editor of the first corresponding representation
+     */
+    protected SWTBotEditor openRepresentation(Session session, String representationDescriptionName, final String representationName, Class<? extends DRepresentation> expectedRepresentationClass,
+            boolean disableSnapToGridOnThisEditor, boolean disableSnapToShapeOnThisEditor) {
         // Get the diagram with this name
         DRepresentation representation = getRepresentationWithName(session, representationDescriptionName, representationName);
         TestCase.assertTrue("This representation should be a " + expectedRepresentationClass.getSimpleName(), expectedRepresentationClass.isInstance(representation));
@@ -1095,6 +1120,9 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             swtBotEditor = SWTBotSiriusHelper.getSiriusDiagramEditor(editorPart.getTitle());
             if (disableSnapToGridOnThisEditor) {
                 ((SWTBotSiriusDiagramEditor) swtBotEditor).setSnapToGrid(false);
+            }
+            if (disableSnapToShapeOnThisEditor) {
+                ((SWTBotSiriusDiagramEditor) swtBotEditor).setSnapToShape(false);
             }
         } else {
             swtBotEditor = SWTBotSiriusHelper.getSiriusEditor(editorPart.getTitle());
