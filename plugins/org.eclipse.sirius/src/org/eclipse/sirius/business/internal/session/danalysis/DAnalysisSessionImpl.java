@@ -415,9 +415,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                 initInterpreter();
             }
             monitor.worked(1);
-            /* Set File property */
-            // setFilesPropertyToIntepreters();
-            // TODO initialize authority...
             initializeAccessor();
             monitor.worked(1);
             ResourceSetSync.getOrInstallResourceSetSync(transactionalEditingDomain);
