@@ -23,6 +23,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableContext;
 import org.eclipse.jface.operation.IRunnableWithProgress;
@@ -73,55 +74,58 @@ public class DeleteRepresentationAction extends Action {
 
         try {
             Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-            IRunnableContext context = new ProgressMonitorDialog(shell);
-            IRunnableWithProgress editorClosingRunnable = new IRunnableWithProgress() {
-                public void run(final IProgressMonitor monitor) {
-                    try {
-                        monitor.beginTask("Associated editor closing", 1);
-                        for (Entry<Session, Set<DRepresentation>> entry : session2DRepresentations.entrySet()) {
-                            Session session = entry.getKey();
-                            Set<DRepresentation> dRepresentations = entry.getValue();
+            boolean deletionConfirmation = MessageDialog.openConfirm(shell, "Delete representations", "Are you sure you want to delete the selected representations?");
+            if (deletionConfirmation) {
+                IRunnableContext context = new ProgressMonitorDialog(shell);
+                IRunnableWithProgress editorClosingRunnable = new IRunnableWithProgress() {
+                    public void run(final IProgressMonitor monitor) {
+                        try {
+                            monitor.beginTask("Associated editor closing", 1);
+                            for (Entry<Session, Set<DRepresentation>> entry : session2DRepresentations.entrySet()) {
+                                Session session = entry.getKey();
+                                Set<DRepresentation> dRepresentations = entry.getValue();
 
-                            IEditingSession editingSession = SessionUIManager.INSTANCE.getUISession(session);
-                            if (editingSession != null) {
-                                for (DRepresentation dRepresentation : dRepresentations) {
-                                    DialectEditor editor = editingSession.getEditor(dRepresentation);
-                                    if (editor != null) {
-                                        DialectUIManager.INSTANCE.closeEditor(editor, false);
-                                        editingSession.detachEditor(editor);
+                                IEditingSession editingSession = SessionUIManager.INSTANCE.getUISession(session);
+                                if (editingSession != null) {
+                                    for (DRepresentation dRepresentation : dRepresentations) {
+                                        DialectEditor editor = editingSession.getEditor(dRepresentation);
+                                        if (editor != null) {
+                                            DialectUIManager.INSTANCE.closeEditor(editor, false);
+                                            editingSession.detachEditor(editor);
+                                        }
                                     }
                                 }
+
+                                Command deleteDRepresentationsCmd = new DeleteRepresentationCommand(session, dRepresentations);
+                                session.getTransactionalEditingDomain().getCommandStack().execute(deleteDRepresentationsCmd);
                             }
-
-                            Command deleteDRepresentationsCmd = new DeleteRepresentationCommand(session, dRepresentations);
-                            session.getTransactionalEditingDomain().getCommandStack().execute(deleteDRepresentationsCmd);
+                        } finally {
+                            monitor.done();
                         }
-                    } finally {
-                        monitor.done();
                     }
-                }
 
-            };
-            PlatformUI.getWorkbench().getProgressService().runInUI(context, editorClosingRunnable, null);
+                };
+                PlatformUI.getWorkbench().getProgressService().runInUI(context, editorClosingRunnable, null);
 
-            IRunnableWithProgress representationsDeletionRunnable = new IRunnableWithProgress() {
+                IRunnableWithProgress representationsDeletionRunnable = new IRunnableWithProgress() {
 
-                public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-                    try {
-                        monitor.beginTask("Representation" + (session2DRepresentations.size() > 1 ? "s" : "") + " deletion", session2DRepresentations.size());
-                        for (Entry<Session, Set<DRepresentation>> entry : session2DRepresentations.entrySet()) {
-                            Session session = entry.getKey();
-                            Set<DRepresentation> dRepresentations = entry.getValue();
+                    public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+                        try {
+                            monitor.beginTask("Representation" + (session2DRepresentations.size() > 1 ? "s" : "") + " deletion", session2DRepresentations.size());
+                            for (Entry<Session, Set<DRepresentation>> entry : session2DRepresentations.entrySet()) {
+                                Session session = entry.getKey();
+                                Set<DRepresentation> dRepresentations = entry.getValue();
 
-                            Command deleteDRepresentationsCmd = new DeleteRepresentationCommand(session, dRepresentations);
-                            session.getTransactionalEditingDomain().getCommandStack().execute(deleteDRepresentationsCmd);
+                                Command deleteDRepresentationsCmd = new DeleteRepresentationCommand(session, dRepresentations);
+                                session.getTransactionalEditingDomain().getCommandStack().execute(deleteDRepresentationsCmd);
+                            }
+                        } finally {
+                            monitor.done();
                         }
-                    } finally {
-                        monitor.done();
                     }
-                }
-            };
-            PlatformUI.getWorkbench().getProgressService().run(true, false, representationsDeletionRunnable);
+                };
+                PlatformUI.getWorkbench().getProgressService().run(true, false, representationsDeletionRunnable);
+            }
         } catch (final InvocationTargetException e) {
             SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getLocalizedMessage(), e));
         } catch (final InterruptedException e) {
