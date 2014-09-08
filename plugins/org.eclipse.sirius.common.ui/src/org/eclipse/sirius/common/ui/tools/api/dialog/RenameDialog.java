@@ -94,7 +94,7 @@ public class RenameDialog extends SelectionStatusDialog {
      */
     public RenameDialog(final Shell shell, final boolean isCaseSensitive, final String[] names, final String oldName) {
         super(shell);
-        setTitle("Enter new name");
+        setTitle("Rename representation");
         this.isCaseSensitive = isCaseSensitive;
         initialize();
         if (names != null) {
