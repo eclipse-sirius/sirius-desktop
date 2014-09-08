@@ -74,9 +74,7 @@ public class DndUtil {
      *            the source widget to drag
      * @param target
      *            To perform the drop on
-     * @see #dragAndDrop(Point)
      */
-    // TODO add modifier key mask
     public void dragAndDrop(final AbstractSWTBot<? extends Widget> source, final AbstractSWTBot<? extends Widget> target) {
         dragAndDrop(source, DndUtil.on(target));
     }
@@ -93,7 +91,6 @@ public class DndUtil {
      * @param locationOnTarget
      *            The target locations, from target origin, where the DND shall
      *            finish.
-     * @see #dragAndDrop(Point)
      */
     public void dragAndDrop(final AbstractSWTBot<? extends Widget> source, final AbstractSWTBot<? extends Widget> target, final Point locationOnTarget) {
         Rectangle targetRectangle = DndUtil.absoluteLocation(target);
@@ -113,7 +110,6 @@ public class DndUtil {
      * @param locationOnTarget
      *            The target locations, from target origin, where the DND shall
      *            finish.
-     * @see #dragAndDrop(Point)
      */
     public void dragAndDrop(final AbstractSWTBot<? extends Widget> source, final AbstractSWTBot<? extends Widget> target, final org.eclipse.draw2d.geometry.Point locationOnTarget) {
         dragAndDrop(source, target, new Point(locationOnTarget.x, locationOnTarget.y));
@@ -146,16 +142,11 @@ public class DndUtil {
      *            From where to start dragging
      * @param target
      *            Where to drop onto
-     * @see #dragAndDrop(AbstractSWTBot)
-     * @see #dragAndDrop(Point)
      */
     protected void dragAndDrop(final Point source, final AbstractSWTBot<? extends Widget> target) {
         doDragAndDrop(source, DndUtil.on(target));
     }
 
-    /**
-        *
-        */
     private void doDragAndDrop(final Point source, final Point dest) {
         // log.debug(MessageFormat.format("Drag-and-dropping from ({0},{1}) to ({2},{3})",
         // source.x, source.y, dest.x, dest.y));
@@ -220,8 +211,6 @@ public class DndUtil {
      * @param <T>
      *            .
      * @return A point suitable to drop an item before {@code targetItem}
-     * @see #dragAndDrop(Point)
-     * @see DND#FEEDBACK_INSERT_BEFORE
      */
     public static <T extends Widget> Point before(final AbstractSWTBot<T> targetItem) {
         return DndUtil.pointOnUpperBorder(DndUtil.absoluteLocation(targetItem));
@@ -238,8 +227,6 @@ public class DndUtil {
      * @param <T>
      *            .
      * @return The {@code targetItem}'s center
-     * @see #dragAndDrop(Point)
-     * @see DND#FEEDBACK_SELECT
      */
     public static <T extends Widget> Point on(final AbstractSWTBot<T> targetItem) {
         return Geometry.centerPoint(DndUtil.absoluteLocation(targetItem));
@@ -254,8 +241,6 @@ public class DndUtil {
      * @param <T>
      *            .
      * @return A point suitable to drop an item after {@code targetItem}
-     * @see #dragAndDrop(Point)
-     * @see DND#FEEDBACK_INSERT_AFTER
      */
     public static <T extends Widget> Point after(final AbstractSWTBot<T> targetItem) {
         return DndUtil.pointOnLowerBorder(DndUtil.absoluteLocation(targetItem));

@@ -65,6 +65,7 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
     private final Map<String, PolymorphicService> services = Maps.newHashMap();
 
     private Function<String, String> file2bundleName = new Function<String, String>() {
+        @Override
         public String apply(String file) {
             String[] segments = file.split(Pattern.quote("/"));
             if (segments != null && segments.length > 1) {
@@ -90,20 +91,17 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
         return Options.newNone();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+
+    @Override
     public IInterpreter createInterpreter() {
         return new ServiceInterpreter();
     }
 
+    @Override
     public String getPrefix() {
         return PREFIX;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Object evaluate(EObject target, String expression) throws EvaluationException {
         Object evaluation = null;
@@ -270,9 +268,6 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
         return new HashMap<String, IService>(services);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean supportsValidation() {
         return false;
@@ -281,8 +276,6 @@ public class ServiceInterpreter extends VariableInterpreter implements org.eclip
     @Override
     public Collection<IInterpreterStatus> validateExpression(IInterpreterContext context, String expression) {
         Collection<IInterpreterStatus> interpreterStatus = new ArrayList<IInterpreterStatus>();
-        // TODO : when the ServiceInterpreter will support service in workspace,
-        // we could do validation
         return interpreterStatus;
     }
 }

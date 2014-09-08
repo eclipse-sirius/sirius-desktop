@@ -31,7 +31,7 @@ import org.eclipse.sirius.ext.base.Option;
  * ...<br>
  * profiler.stopWork("My Work ID");<br>
  * ...<br>
- * System.out.println(profiler.getStatus());<br>
+ * profiler.getStatus();<br>
  * <br>
  * All the execution times will be cumulated in order to give back a sorted
  * table of where your computation is taking the most time.

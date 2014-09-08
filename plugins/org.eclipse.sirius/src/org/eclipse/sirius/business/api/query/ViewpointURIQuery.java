@@ -84,7 +84,7 @@ public class ViewpointURIQuery {
                 target = resourceSet.getEObject(uri, true);
             } catch (WrappedException e) {
                 if (e.getCause() instanceof IOException && uri.isPlatformPlugin()) {
-                    URI convertedResourceUri = URI.createPlatformResourceURI(uri.toPlatformString(true)).appendFragment(uri.fragment());
+                    URI convertedResourceUri = URI.createPlatformResourceURI(uri.toPlatformString(true), true).appendFragment(uri.fragment());
                     // this resource is potentially in the workspace and should
                     // be a PlatformResource instead of ResourceResource
                     target = resourceSet.getEObject(convertedResourceUri, true);

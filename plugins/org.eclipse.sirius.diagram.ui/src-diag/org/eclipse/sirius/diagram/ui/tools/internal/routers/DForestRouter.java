@@ -13,7 +13,7 @@
 
 package org.eclipse.sirius.diagram.ui.tools.internal.routers;
 
-import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.draw2d.BendpointConnectionRouter;
 import org.eclipse.draw2d.Connection;
@@ -28,6 +28,8 @@ import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.routers.ITreeConnection;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.routers.OrthogonalRouter;
 
+import com.google.common.collect.Maps;
+
 /**
  * A router for Sirius .
  * 
@@ -35,15 +37,10 @@ import org.eclipse.gmf.runtime.draw2d.ui.internal.routers.OrthogonalRouter;
  */
 public class DForestRouter extends BendpointConnectionRouter implements OrthogonalRouter {
 
-    private final HashMap connections = new HashMap();
+    private final Map<AnchorKey, DTreeRouter> connections = Maps.newHashMap();
 
-    private final HashMap trunkVertexes = new HashMap();
+    private final Map<AnchorKey, Boolean> trunkVertexes = Maps.newHashMap();
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.draw2d.BendpointConnectionRouter#remove(org.eclipse.draw2d.Connection)
-     */
     @Override
     public void remove(final Connection conn) {
         if (conn.getSourceAnchor() == null || conn.getTargetAnchor() == null) {
@@ -78,7 +75,7 @@ public class DForestRouter extends BendpointConnectionRouter implements Orthogon
         }
 
         final AnchorKey connectionKey = new AnchorKey(conn.getTargetAnchor(), hint);
-        DTreeRouter connectionRouter = (DTreeRouter) connections.get(connectionKey);
+        DTreeRouter connectionRouter = connections.get(connectionKey);
         if (connectionRouter == null) {
             DTreeRouter oldConnectionRouter = null;
             if (!"base".equals(hint)) {
@@ -126,29 +123,19 @@ public class DForestRouter extends BendpointConnectionRouter implements Orthogon
      *         <code>Connection</code>.
      */
     private DTreeRouter getSubRouterWithHint(String hint) {
-        for (Object obj : connections.keySet()) {
-            if (obj instanceof AnchorKey) {
-                if (hint.equals(((AnchorKey) obj).getQualifier())) {
-                    return (DTreeRouter) connections.get(obj);
-                }
+        for (AnchorKey key : connections.keySet()) {
+            if (hint.equals(key.getQualifier())) {
+                return connections.get(key);
             }
         }
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.draw2d.BendpointConnectionRouter#route(org.eclipse.draw2d.Connection)
-     */
     @Override
     public void route(final Connection conn) {
         internalRoute(conn);
     }
 
-    /**
-     * @param conn
-     */
     private void internalRoute(final Connection conn) {
         if (conn != null) {
             if (conn.getTargetAnchor().getOwner() == null || conn.getSourceAnchor().getOwner() == null) {
@@ -310,22 +297,12 @@ public class DForestRouter extends BendpointConnectionRouter implements Orthogon
             return qualifier;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#hashCode()
-         */
         @Override
         public int hashCode() {
             return anchor.hashCode() ^ qualifier.hashCode();
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.draw2d.AbstractRouter#invalidate(org.eclipse.draw2d.Connection)
-     */
     @Override
     public void invalidate(final Connection conn) {
         if (conn != null && conn.getSourceAnchor() != null && conn.getTargetAnchor() != null) {

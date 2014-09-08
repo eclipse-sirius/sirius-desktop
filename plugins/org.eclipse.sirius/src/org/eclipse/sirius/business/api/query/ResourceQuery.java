@@ -104,7 +104,7 @@ public class ResourceQuery {
         isRepresentationsResource = isRepresentationsResource || resource instanceof AirdResource;
         if (!isRepresentationsResource && !resource.getContents().isEmpty()) {
             for (EObject contentEObject : resource.getContents()) {
-                if (contentEObject != null && contentEObject instanceof DAnalysis) {
+                if (contentEObject instanceof DAnalysis) {
                     isRepresentationsResource = true;
                     break;
                 }

@@ -1721,14 +1721,11 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         interpreter = null;
         crossReferencer = null;
         transactionalEditingDomain.removeResourceSetListener(representationNameListener);
-        // TODO deinitialize model accessor, authority..
         // dispose the SessionEventBroker
         if (broker != null) {
             broker.dispose();
             broker = null;
         }
-        // FIXME : why can't dispose this
-        // SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(resourceSet).dispose();
         flushOperations();
         // Unload all referenced resources
         unloadResource();
