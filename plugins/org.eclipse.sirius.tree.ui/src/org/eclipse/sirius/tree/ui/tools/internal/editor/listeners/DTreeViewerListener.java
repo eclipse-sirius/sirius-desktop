@@ -13,7 +13,6 @@ package org.eclipse.sirius.tree.ui.tools.internal.editor.listeners;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.command.CompoundCommand;
-import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.ITreeViewerListener;
 import org.eclipse.jface.viewers.TreeExpansionEvent;
@@ -21,8 +20,7 @@ import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.tree.DTreeItem;
-import org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction;
-import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
+import org.eclipse.sirius.tree.business.api.command.DTreeItemExpansionChangeCommand;
 import org.eclipse.sirius.tree.business.internal.helper.RefreshTreeElementTask;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
@@ -58,7 +56,7 @@ public class DTreeViewerListener implements ITreeViewerListener {
             if (!dTreeItem.isExpanded()) {
                 CommandStack commandStack = domain.getCommandStack();
                 CompoundCommand expandDTreeItemCmd = new CompoundCommand("Expand " + dTreeItem.getName() + " tree item");
-                expandDTreeItemCmd.append(new TreeFoldingRecordingCommand(session, event, true));
+                expandDTreeItemCmd.append(new DTreeItemExpansionChangeCommand(session, dTreeItem, true));
                 if (!Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null)) {
                     SiriusCommand result = new SiriusCommand(domain);
                     result.getTasks().add(new RefreshTreeElementTask((DTreeItem) event.getElement(), domain));
@@ -78,41 +76,8 @@ public class DTreeViewerListener implements ITreeViewerListener {
             if (dTreeItem.isExpanded()) {
                 CommandStack commandStack = domain.getCommandStack();
                 CompoundCommand expandDTreeItemCmd = new CompoundCommand("Collapse " + dTreeItem.getName() + " tree item");
-                expandDTreeItemCmd.append(new TreeFoldingRecordingCommand(session, event, false));
+                expandDTreeItemCmd.append(new DTreeItemExpansionChangeCommand(session, dTreeItem, false));
                 commandStack.execute(expandDTreeItemCmd);
-            }
-        }
-    }
-
-    /**
-     * EMF Command to synchronize the DTree according to a
-     * {@link TreeExpansionEvent}.
-     * 
-     * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban
-     *         Dugueperoux</a>
-     */
-    class TreeFoldingRecordingCommand extends RecordingCommand {
-
-        private Session session;
-
-        private TreeExpansionEvent event;
-
-        private boolean expand;
-
-        public TreeFoldingRecordingCommand(Session session, TreeExpansionEvent event, boolean expand) {
-            super(session.getTransactionalEditingDomain());
-            this.session = session;
-            this.event = event;
-            this.expand = expand;
-        }
-
-        @Override
-        protected void doExecute() {
-            GlobalContext ctx = new GlobalContext(session.getModelAccessor(), session);
-            if (expand) {
-                new DTreeItemUserInteraction((DTreeItem) event.getElement(), ctx).expand();
-            } else {
-                new DTreeItemUserInteraction((DTreeItem) event.getElement(), ctx).collapse();
             }
         }
     }

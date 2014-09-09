@@ -69,9 +69,15 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 * @org.eclipse.sirius.diagram.ui.business.api.query.ConnectionQuery@ now provides two new methods @getAbsoluteBendpointsConstraint()@ and @getRelativeBendpointsConstraint()@ that returns an option of list of @Bendpoint@ of a connection whether they are respectively @AbsoluteBendpoint@ or @RelatveBendpoint@.
 * @org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery@ also provides two new methods @isEdgeWithRectilinearRoutingStyle()@ and @isEdgeWithObliqueRoutingStyle()@ that respectively checks if an edge has a rectilinear routing style or an oblique routing style.
 
+h4. Changes in @org.eclipse.sirius.tree.ui@
+
+* @org.eclipse.sirius.tree.ui.business.api.helper.TreeUIHelper.toContentHTMl()@ has changed of behavior: refresh of @DTree@ is now partial, i.e. not done for children of collapsed @DTreeItemContainer@. Consequently code calling @TreeUIHelper.toContentHTMl()@ must do a full refresh if children of collapsed @DTreeItemContainer@ must be displayed in returned HTML.
+* @org.eclipse.sirius.tree.ui.business.api.helper.TreeUIHelper.toTreeDescriptor()@ same as for @TreeUIHelper.toContentHTMl()@
+
 h4. Changes in @org.eclipse.sirius.tree@
 
 * @org.eclipse.sirius.tree.business.api.interaction.DTreeUserInteraction.refreshContent(boolean, IProgressMonitor)@ has been added to specify if we want partial refresh or not.
+* @org.eclipse.sirius.tree.business.api.command.DTreeItemExpansionChangeCommand@ has been added to execute an expansion/collapse of @DTreeItem@. On expansion a refresh of children is done.
 
 h4. Changes in @org.eclipse.sirius.synchronizer@
 
@@ -432,7 +438,7 @@ Sirius 1.0.0M4 includes a lots of API-breaking changes, as part of a global effo
 
 h4. Changes in @org.eclipse.sirius.common@
 
-* Two deprecated constructors have been removed in @FeatureEditorDialog@. Use the remaining constructor instead, which provides proper behaviour for both unique and non-unique features.
+* Two deprecated constructors have been removed in @FeatureEditorDialog@. Use the remaining constructor instead, which provides proper behavior for both unique and non-unique features.
 * The deprecated method @IEditingDomainFactory.createEditingDomain()@ has been removed. Use the (inherited) @createEditingDomain(ResourceSet)@ instead, which ensures correct behavior for all kinds of models (Xtext for example).
 * The deprecated field @org.eclipse.sirius.common.tools.api.listener.Notification.FOLD@ has been removed. It was never used by Sirius itself, so if your code tried to listen to this kind of notification it was never actually called and can be safely removed.
 * The deprecated methods @getExtensionPlugins()@ and @getElementsProvidedByPlugin@ from @EcliseUtil@ have been removed. If you need this kind of functionality, use the Eclipse APIs directly instead.

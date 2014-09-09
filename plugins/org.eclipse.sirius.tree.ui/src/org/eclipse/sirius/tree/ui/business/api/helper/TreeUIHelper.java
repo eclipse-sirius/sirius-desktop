@@ -14,10 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
-
-import org.eclipse.sirius.tree.DTreeItem;
 
 /**
  * Utility methods to handle Tree models.
@@ -45,6 +44,18 @@ public final class TreeUIHelper {
     /**
      * Export the given tree to HTML format.
      * 
+     * Note that returned HTML will display also children of collapsed
+     * {@link DTreeItem} then a full refresh could be needed, see
+     * {@link org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand#RefreshRepresentationsCommand(org.eclipse.emf.transaction.TransactionalEditingDomain, boolean, org.eclipse.core.runtime.IProgressMonitor, org.eclipse.sirius.viewpoint.DRepresentation...)}
+     * or yet
+     * {@link org.eclipse.sirius.business.api.dialect.DialectServices#refresh(org.eclipse.sirius.viewpoint.DRepresentation, boolean, org.eclipse.core.runtime.IProgressMonitor)}
+     * with boolean at true to do a full refresh.
+     * 
+     * If you are in manual refresh and don't want to refresh whole
+     * {@link org.eclipse.sirius.tree.DTree}, you can directly call
+     * {@link org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction}
+     * on the specific {@link DTreeItem} to have its direct children refreshed.
+     * 
      * @param tree
      *            tree to export.
      * @return a string with the HTML tree.
@@ -55,6 +66,18 @@ public final class TreeUIHelper {
 
     /**
      * Transform a graphical tree to a tree descriptor.
+     * 
+     * Note that returned strings will display also children of collapsed
+     * {@link DTreeItem} then a full refresh could be needed, see
+     * {@link org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand#RefreshRepresentationsCommand(org.eclipse.emf.transaction.TransactionalEditingDomain, boolean, org.eclipse.core.runtime.IProgressMonitor, org.eclipse.sirius.viewpoint.DRepresentation...)}
+     * or yet
+     * {@link org.eclipse.sirius.business.api.dialect.DialectServices#refresh(org.eclipse.sirius.viewpoint.DRepresentation, boolean, org.eclipse.core.runtime.IProgressMonitor)}
+     * with boolean at true to do a full refresh.
+     * 
+     * If you are in manual refresh and don't want to refresh whole
+     * {@link org.eclipse.sirius.tree.DTree}, you can directly call
+     * {@link org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction}
+     * on the specific {@link DTreeItem} to have its direct children refreshed.
      * 
      * @param tree
      *            tree to transform.

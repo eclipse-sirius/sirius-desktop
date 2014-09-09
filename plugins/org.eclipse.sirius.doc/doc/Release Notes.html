@@ -210,12 +210,32 @@
 				<code>isEdgeWithObliqueRoutingStyle()</code> that respectively checks if an edge has a rectilinear routing style or an oblique routing style.
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.tree.ui">Changes in 
+			<code>org.eclipse.sirius.tree.ui</code>
+		</h4>
+		<ul>
+			<li>
+				<code>org.eclipse.sirius.tree.ui.business.api.helper.TreeUIHelper.toContentHTMl()</code> has changed of behavior: refresh of 
+				<code>DTree</code> is now partial, i.e. not done for children of collapsed 
+				<code>DTreeItemContainer</code>. Consequently code calling 
+				<code>TreeUIHelper.toContentHTMl()</code> must do a full refresh if children of collapsed 
+				<code>DTreeItemContainer</code> must be displayed in returned HTML.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.tree.ui.business.api.helper.TreeUIHelper.toTreeDescriptor()</code> same as for 
+				<code>TreeUIHelper.toContentHTMl()</code>
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tree">Changes in 
 			<code>org.eclipse.sirius.tree</code>
 		</h4>
 		<ul>
 			<li>
 				<code>org.eclipse.sirius.tree.business.api.interaction.DTreeUserInteraction.refreshContent(boolean, IProgressMonitor)</code> has been added to specify if we want partial refresh or not.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.tree.business.api.command.DTreeItemExpansionChangeCommand</code> has been added to execute an expansion/collapse of 
+				<code>DTreeItem</code>. On expansion a refresh of children is done.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.synchronizer">Changes in 
@@ -1229,7 +1249,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 		</h4>
 		<ul>
 			<li>Two deprecated constructors have been removed in 
-				<code>FeatureEditorDialog</code>. Use the remaining constructor instead, which provides proper behaviour for both unique and non-unique features.
+				<code>FeatureEditorDialog</code>. Use the remaining constructor instead, which provides proper behavior for both unique and non-unique features.
 			</li>
 			<li>The deprecated method 
 				<code>IEditingDomainFactory.createEditingDomain()</code> has been removed. Use the (inherited) 

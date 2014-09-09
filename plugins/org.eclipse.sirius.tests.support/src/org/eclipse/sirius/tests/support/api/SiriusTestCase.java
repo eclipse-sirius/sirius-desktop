@@ -1084,16 +1084,29 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Refresh a representation.
+     * Refresh a representation. Do a partial refresh by default.
      * 
      * @param representation
      *            the representation to refresh.
      */
-    protected void refresh(final DRepresentation representation) {
+    protected void refresh(DRepresentation representation) {
+        refresh(representation, false);
+    }
+
+    /**
+     * Refresh a representation.
+     * 
+     * @param representation
+     *            the representation to refresh.
+     * @param fullRefresh
+     *            true to do a full refresh, false to do a partial refresh
+     */
+    protected void refresh(DRepresentation representation, boolean fullRefresh) {
         RefreshActionListenerRegistry.INSTANCE.notifyRepresentationIsAboutToBeRefreshed(representation);
-        RefreshRepresentationsCommand command = new RefreshRepresentationsCommand(session.getTransactionalEditingDomain(), new NullProgressMonitor(), representation);
+        TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
+        RefreshRepresentationsCommand command = new RefreshRepresentationsCommand(domain, fullRefresh, new NullProgressMonitor(), representation);
         command.setLabel("refresh from testcase");
-        session.getTransactionalEditingDomain().getCommandStack().execute(command);
+        domain.getCommandStack().execute(command);
     }
 
     /**
@@ -1689,9 +1702,9 @@ public abstract class SiriusTestCase extends TestCase {
      * 
      * @param name
      *            name of the {@link Viewpoint} to look for.
-     * @return the first {@link Viewpoint} found in the registry with the specified name,
-     *         if any. The instance returned is the one from the {@link Viewpoint}
-     *         registry's editing domain.
+     * @return the first {@link Viewpoint} found in the registry with the
+     *         specified name, if any. The instance returned is the one from the
+     *         {@link Viewpoint} registry's editing domain.
      */
     protected Option<Viewpoint> findViewpoint(String name) {
         for (Viewpoint vp : ViewpointRegistry.getInstance().getViewpoints()) {

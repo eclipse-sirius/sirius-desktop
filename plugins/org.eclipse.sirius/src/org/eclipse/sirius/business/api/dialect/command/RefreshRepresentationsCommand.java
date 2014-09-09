@@ -35,14 +35,14 @@ public class RefreshRepresentationsCommand extends RecordingCommand {
 
     private IProgressMonitor monitor;
 
-    private boolean doFullRefresh;
+    private boolean fullRefresh;
 
     /**
      * Construct a new instance.
      * 
      * @param domain
      *            the editing domain.
-     * @param doFullRefresh
+     * @param fullRefresh
      *            true to do a full refresh, all view model elements are created
      *            and refreshed even ones no directly visible to end user
      *            through UI parts. Note that a full refresh could not finish in
@@ -52,9 +52,9 @@ public class RefreshRepresentationsCommand extends RecordingCommand {
      * @param representationsToRefresh
      *            the representations to refresh.
      */
-    public RefreshRepresentationsCommand(TransactionalEditingDomain domain, boolean doFullRefresh, IProgressMonitor monitor, Collection<DRepresentation> representationsToRefresh) {
+    public RefreshRepresentationsCommand(TransactionalEditingDomain domain, boolean fullRefresh, IProgressMonitor monitor, Collection<DRepresentation> representationsToRefresh) {
         super(domain, "Refresh representation");
-        this.doFullRefresh = doFullRefresh;
+        this.fullRefresh = fullRefresh;
         this.monitor = monitor;
         this.representations = representationsToRefresh;
     }
@@ -92,7 +92,7 @@ public class RefreshRepresentationsCommand extends RecordingCommand {
      * 
      * @param domain
      *            the editing domain.
-     * @param doFullRefresh
+     * @param fullRefresh
      *            true to do a full refresh, all view model elements are created
      *            and refreshed even ones no directly visible to end user
      *            through UI parts. Note that a full refresh could not finish in
@@ -102,8 +102,8 @@ public class RefreshRepresentationsCommand extends RecordingCommand {
      * @param representationsToRefresh
      *            the representations to refresh.
      */
-    public RefreshRepresentationsCommand(TransactionalEditingDomain domain, boolean doFullRefresh, IProgressMonitor monitor, DRepresentation... representationsToRefresh) {
-        this(domain, doFullRefresh, monitor, Lists.newArrayList(representationsToRefresh));
+    public RefreshRepresentationsCommand(TransactionalEditingDomain domain, boolean fullRefresh, IProgressMonitor monitor, DRepresentation... representationsToRefresh) {
+        this(domain, fullRefresh, monitor, Lists.newArrayList(representationsToRefresh));
     }
 
     /**
@@ -121,7 +121,7 @@ public class RefreshRepresentationsCommand extends RecordingCommand {
 
         for (DRepresentation representation : representations) {
             if (safeRefresh(representation)) {
-                DialectManager.INSTANCE.refresh(representation, doFullRefresh, monitor);
+                DialectManager.INSTANCE.refresh(representation, fullRefresh, monitor);
             }
         }
     }
