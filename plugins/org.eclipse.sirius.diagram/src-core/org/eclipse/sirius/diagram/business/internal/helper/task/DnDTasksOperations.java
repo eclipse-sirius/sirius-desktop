@@ -127,7 +127,7 @@ public final class DnDTasksOperations {
                         viewNodeListElement = (DNodeListElement) droppedDiagramElement;
                     } else {
                         IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(droppedElement);
-                        viewNodeListElement = new NodeMappingHelper(interpreter).createListElement(mapping, droppedDiagramElement, parentDiagram);
+                        viewNodeListElement = new NodeMappingHelper(interpreter).createListElement(mapping, droppedElement, parentDiagram);
                     }
                     ((DNodeList) target).getOwnedElements().add(viewNodeListElement);
                     if (!viewNodeListElement.equals(droppedDiagramElement)) {
