@@ -166,7 +166,7 @@ public final class GraphicalHelper {
      *            an edit part on the view
      * @return the scroll size
      */
-    public static Point getScrollSize(IGraphicalEditPart part) {
+    public static Point getScrollSize(GraphicalEditPart part) {
         Preconditions.checkNotNull(part);
         FreeformViewport viewport = FigureUtilities.getFreeformViewport(part.getFigure());
         if (viewport != null) {
@@ -221,7 +221,7 @@ public final class GraphicalHelper {
      * @param part
      *            a part from the diagram.
      */
-    public static void screen2logical(Rectangle rect, IGraphicalEditPart part) {
+    public static void screen2logical(Rectangle rect, GraphicalEditPart part) {
         rect.translate(GraphicalHelper.getScrollSize(part));
         rect.performScale(1.0d / GraphicalHelper.getZoom(part));
     }
@@ -422,9 +422,8 @@ public final class GraphicalHelper {
     }
 
     /**
-     * Get the absolute bounds of this <code>part</code>.<BR>
-     * Detail: If the zoom is set to 200%, the location and the size are
-     * multiplied by two with respect to the real location and size.
+     * Get the absolute bounds of this <code>part</code>. In case of zoom or/and
+     * a scrollbar, the bounds are converted from screen to logical.<BR>
      * 
      * @param part
      *            The part to consider.
@@ -438,7 +437,7 @@ public final class GraphicalHelper {
             bounds = part.getFigure().getBounds().getCopy();
         }
         part.getFigure().translateToAbsolute(bounds);
-        bounds.performScale(1.0d / GraphicalHelper.getZoom(part));
+        screen2logical(bounds, part);
         return bounds;
     }
 
