@@ -20,6 +20,7 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.sequence.description.tool.MessageCreationTool;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -252,11 +253,11 @@ public class MessageCreationToolItemProvider extends SequenceDiagramToolDescript
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((MessageCreationTool) object).getName();
+        String label = new IdentifiedElementQuery((MessageCreationTool) object).getLabel();
         return label == null || label.length() == 0 ? getString("_UI_MessageCreationTool_type") : getString("_UI_MessageCreationTool_type") + " " + label;
     }
 

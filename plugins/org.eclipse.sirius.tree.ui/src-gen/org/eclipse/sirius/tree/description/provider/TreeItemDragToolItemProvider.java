@@ -22,6 +22,8 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.tree.description.DescriptionFactory;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.TreeItemDragTool;
@@ -148,12 +150,12 @@ public class TreeItemDragToolItemProvider extends MappingBasedToolDescriptionIte
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((TreeItemDragTool) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_TreeItemDragTool_type") : getString("_UI_TreeItemDragTool_type") + " " + label;
+        String label = new IdentifiedElementQuery((TreeItemDragTool) object).getLabel();
+        return StringUtil.isEmpty(label) ? getString("_UI_TreeItemDragTool_type") : getString("_UI_TreeItemDragTool_type") + " " + label;
     }
 
     /**

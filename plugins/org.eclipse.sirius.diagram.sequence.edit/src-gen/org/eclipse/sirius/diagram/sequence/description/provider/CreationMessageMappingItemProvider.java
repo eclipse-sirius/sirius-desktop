@@ -16,6 +16,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.diagram.sequence.description.CreationMessageMapping;
 
 /**
@@ -66,11 +67,11 @@ public class CreationMessageMappingItemProvider extends MessageMappingItemProvid
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((CreationMessageMapping) object).getName();
+        String label = new IdentifiedElementQuery((CreationMessageMapping) object).getLabel();
         return label == null || label.length() == 0 ? getString("_UI_CreationMessageMapping_type") : getString("_UI_CreationMessageMapping_type") + " " + label;
     }
 

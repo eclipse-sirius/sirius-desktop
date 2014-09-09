@@ -20,6 +20,7 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.diagram.description.provider.ContainerMappingItemProvider;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
@@ -101,11 +102,11 @@ public class OperandMappingItemProvider extends ContainerMappingItemProvider {
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((OperandMapping) object).getName();
+        String label = new IdentifiedElementQuery((OperandMapping) object).getLabel();
         return label == null || label.length() == 0 ? getString("_UI_OperandMapping_type") : getString("_UI_OperandMapping_type") + " " + label;
     }
 

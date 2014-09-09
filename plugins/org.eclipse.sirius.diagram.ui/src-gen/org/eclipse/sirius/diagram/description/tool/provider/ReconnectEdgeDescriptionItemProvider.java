@@ -22,6 +22,8 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.diagram.description.tool.ToolFactory;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
@@ -129,12 +131,12 @@ public class ReconnectEdgeDescriptionItemProvider extends MappingBasedToolDescri
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((ReconnectEdgeDescription) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_ReconnectEdgeDescription_type") : getString("_UI_ReconnectEdgeDescription_type") + " " + label;
+        String label = new IdentifiedElementQuery((ReconnectEdgeDescription) object).getLabel();
+        return StringUtil.isEmpty(label) ? getString("_UI_ReconnectEdgeDescription_type") : getString("_UI_ReconnectEdgeDescription_type") + " " + label;
     }
 
     /**

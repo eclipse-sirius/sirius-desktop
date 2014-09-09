@@ -23,6 +23,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -176,11 +177,11 @@ public class EdgeMappingImportItemProvider extends DocumentedElementItemProvider
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     public String getTextGen(Object object) {
-        String label = ((EdgeMappingImport) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_EdgeMappingImport_type") : getString("_UI_EdgeMappingImport_type") + " " + label;
+        String label = new IdentifiedElementQuery((EdgeMappingImport) object).getLabel();
+        return StringUtil.isEmpty(label) ? getString("_UI_EdgeMappingImport_type") : getString("_UI_EdgeMappingImport_type") + " " + label;
     }
 
     /**

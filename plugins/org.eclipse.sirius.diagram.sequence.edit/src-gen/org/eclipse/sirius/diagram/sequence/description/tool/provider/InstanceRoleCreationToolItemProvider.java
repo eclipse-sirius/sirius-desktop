@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.diagram.description.tool.provider.NodeCreationDescriptionItemProvider;
 import org.eclipse.sirius.diagram.sequence.description.provider.SequenceEditPlugin;
 import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreationTool;
@@ -106,11 +107,11 @@ public class InstanceRoleCreationToolItemProvider extends NodeCreationDescriptio
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((InstanceRoleCreationTool) object).getName();
+        String label = new IdentifiedElementQuery((InstanceRoleCreationTool) object).getLabel();
         return label == null || label.length() == 0 ? getString("_UI_InstanceRoleCreationTool_type") : getString("_UI_InstanceRoleCreationTool_type") + " " + label;
     }
 

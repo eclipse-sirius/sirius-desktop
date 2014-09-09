@@ -18,6 +18,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.TreeItemCreationTool;
 
@@ -87,7 +88,7 @@ public class TreeItemCreationToolItemProvider extends TreeItemToolItemProvider {
     @Override
     public String getText(Object object) {
         String label = new IdentifiedElementQuery((TreeItemCreationTool) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_TreeItemCreationTool_type") : getString("_UI_TreeItemCreationTool_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_TreeItemCreationTool_type") : getString("_UI_TreeItemCreationTool_type") + " " + label;
     }
 
     /**

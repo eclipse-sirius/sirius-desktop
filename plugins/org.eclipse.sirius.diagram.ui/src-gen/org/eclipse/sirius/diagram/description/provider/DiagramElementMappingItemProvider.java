@@ -21,6 +21,8 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -162,12 +164,12 @@ public class DiagramElementMappingItemProvider extends RepresentationElementMapp
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((DiagramElementMapping) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DiagramElementMapping_type") : getString("_UI_DiagramElementMapping_type") + " " + label;
+        String label = new IdentifiedElementQuery((DiagramElementMapping) object).getLabel();
+        return StringUtil.isEmpty(label) ? getString("_UI_DiagramElementMapping_type") : getString("_UI_DiagramElementMapping_type") + " " + label;
     }
 
     /**

@@ -19,6 +19,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -105,12 +107,12 @@ public class OperationActionItemProvider extends MenuItemDescriptionItemProvider
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((OperationAction) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_OperationAction_type") : getString("_UI_OperationAction_type") + " " + label;
+        String label = new IdentifiedElementQuery((OperationAction) object).getLabel();
+        return StringUtil.isEmpty(label) ? getString("_UI_OperationAction_type") : getString("_UI_OperationAction_type") + " " + label;
     }
 
     /**

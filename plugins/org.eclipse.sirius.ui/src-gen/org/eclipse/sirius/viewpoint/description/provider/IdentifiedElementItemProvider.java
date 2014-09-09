@@ -28,6 +28,8 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
@@ -106,12 +108,12 @@ public class IdentifiedElementItemProvider extends ItemProviderAdapter implement
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((IdentifiedElement) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_IdentifiedElement_type") : getString("_UI_IdentifiedElement_type") + " " + label;
+        String label = new IdentifiedElementQuery((IdentifiedElement) object).getLabel();
+        return StringUtil.isEmpty(label) ? getString("_UI_IdentifiedElement_type") : getString("_UI_IdentifiedElement_type") + " " + label;
     }
 
     /**

@@ -19,6 +19,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.description.tool.DiagramNavigationDescription;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -86,12 +88,12 @@ public class DiagramNavigationDescriptionItemProvider extends RepresentationNavi
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((DiagramNavigationDescription) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DiagramNavigationDescription_type") : getString("_UI_DiagramNavigationDescription_type") + " " + label;
+        String label = new IdentifiedElementQuery((DiagramNavigationDescription) object).getLabel();
+        return StringUtil.isEmpty(label) ? getString("_UI_DiagramNavigationDescription_type") : getString("_UI_DiagramNavigationDescription_type") + " " + label;
     }
 
     /**

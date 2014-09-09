@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.diagram.sequence.description.provider.SequenceEditPlugin;
 import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleReorderTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.ToolPackage;
@@ -123,11 +124,11 @@ public class InstanceRoleReorderToolItemProvider extends AbstractToolDescription
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((InstanceRoleReorderTool) object).getName();
+        String label = new IdentifiedElementQuery((InstanceRoleReorderTool) object).getLabel();
         return label == null || label.length() == 0 ? getString("_UI_InstanceRoleReorderTool_type") : getString("_UI_InstanceRoleReorderTool_type") + " " + label;
     }
 

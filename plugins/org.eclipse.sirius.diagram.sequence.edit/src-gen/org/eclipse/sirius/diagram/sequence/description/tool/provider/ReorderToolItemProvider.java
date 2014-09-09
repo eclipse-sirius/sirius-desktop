@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.sequence.description.provider.SequenceEditPlugin;
 import org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool;
@@ -125,11 +126,11 @@ public class ReorderToolItemProvider extends AbstractToolDescriptionItemProvider
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((ReorderTool) object).getName();
+        String label = new IdentifiedElementQuery((ReorderTool) object).getLabel();
         return label == null || label.length() == 0 ? getString("_UI_ReorderTool_type") : getString("_UI_ReorderTool_type") + " " + label;
     }
 

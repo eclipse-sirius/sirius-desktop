@@ -17,6 +17,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.diagram.description.tool.provider.ContainerCreationDescriptionItemProvider;
 import org.eclipse.sirius.diagram.sequence.description.provider.SequenceEditPlugin;
 import org.eclipse.sirius.diagram.sequence.description.tool.LifelineCreationTool;
@@ -69,11 +70,11 @@ public class LifelineCreationToolItemProvider extends ContainerCreationDescripti
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((LifelineCreationTool) object).getName();
+        String label = new IdentifiedElementQuery((LifelineCreationTool) object).getLabel();
         return label == null || label.length() == 0 ? getString("_UI_LifelineCreationTool_type") : getString("_UI_LifelineCreationTool_type") + " " + label;
     }
 

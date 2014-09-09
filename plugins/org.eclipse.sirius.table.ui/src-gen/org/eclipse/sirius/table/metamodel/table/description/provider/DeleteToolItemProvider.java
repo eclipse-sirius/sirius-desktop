@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.table.metamodel.table.description.DeleteTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
@@ -115,12 +117,12 @@ public class DeleteToolItemProvider extends AbstractToolDescriptionItemProvider 
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((DeleteTool) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DeleteTool_type") : getString("_UI_DeleteTool_type") + " " + label;
+        String label = new IdentifiedElementQuery((DeleteTool) object).getLabel();
+        return StringUtil.isEmpty(label) ? getString("_UI_DeleteTool_type") : getString("_UI_DeleteTool_type") + " " + label;
     }
 
     /**

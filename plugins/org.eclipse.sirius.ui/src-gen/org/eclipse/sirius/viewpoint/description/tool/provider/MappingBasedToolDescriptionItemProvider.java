@@ -17,6 +17,8 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.ecore.extender.tool.internal.StringUtil;
 import org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription;
 
 /**
@@ -56,12 +58,12 @@ public class MappingBasedToolDescriptionItemProvider extends AbstractToolDescrip
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((MappingBasedToolDescription) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_MappingBasedToolDescription_type") : getString("_UI_MappingBasedToolDescription_type") + " " + label;
+        String label = new IdentifiedElementQuery((MappingBasedToolDescription) object).getLabel();
+        return StringUtil.isEmpty(label) ? getString("_UI_MappingBasedToolDescription_type") : getString("_UI_MappingBasedToolDescription_type") + " " + label;
     }
 
     /**

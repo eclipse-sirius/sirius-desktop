@@ -21,6 +21,7 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.TreeVariable;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
@@ -122,12 +123,12 @@ public class TreeVariableItemProvider extends AbstractVariableItemProvider {
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
         String label = ((TreeVariable) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_TreeVariable_type") : getString("_UI_TreeVariable_type") + " " + label;
+        return StringUtil.isEmpty(label) ? getString("_UI_TreeVariable_type") : getString("_UI_TreeVariable_type") + " " + label;
     }
 
     /**

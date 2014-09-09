@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.description.tool.DoubleClickDescription;
 import org.eclipse.sirius.diagram.description.tool.ToolFactory;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
@@ -124,12 +126,12 @@ public class DoubleClickDescriptionItemProvider extends MappingBasedToolDescript
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((DoubleClickDescription) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DoubleClickDescription_type") : getString("_UI_DoubleClickDescription_type") + " " + label;
+        String label = new IdentifiedElementQuery((DoubleClickDescription) object).getLabel();
+        return StringUtil.isEmpty(label) ? getString("_UI_DoubleClickDescription_type") : getString("_UI_DoubleClickDescription_type") + " " + label;
     }
 
     /**

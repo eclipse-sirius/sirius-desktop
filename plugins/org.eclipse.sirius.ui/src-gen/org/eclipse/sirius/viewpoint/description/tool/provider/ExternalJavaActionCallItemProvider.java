@@ -20,6 +20,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.ecore.extender.tool.internal.StringUtil;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -119,12 +121,12 @@ public class ExternalJavaActionCallItemProvider extends MenuItemDescriptionItemP
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((ExternalJavaActionCall) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_ExternalJavaActionCall_type") : getString("_UI_ExternalJavaActionCall_type") + " " + label;
+        String label = new IdentifiedElementQuery((ExternalJavaActionCall) object).getLabel();
+        return StringUtil.isEmpty(label) ? getString("_UI_ExternalJavaActionCall_type") : getString("_UI_ExternalJavaActionCall_type") + " " + label;
     }
 
     /**

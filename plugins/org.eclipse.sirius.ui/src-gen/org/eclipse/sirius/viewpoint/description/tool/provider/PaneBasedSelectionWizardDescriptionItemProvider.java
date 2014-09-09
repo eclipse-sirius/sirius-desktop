@@ -21,6 +21,8 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.ecore.extender.tool.internal.StringUtil;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -272,12 +274,12 @@ public class PaneBasedSelectionWizardDescriptionItemProvider extends AbstractToo
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((PaneBasedSelectionWizardDescription) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_PaneBasedSelectionWizardDescription_type") : getString("_UI_PaneBasedSelectionWizardDescription_type") + " " + label;
+        String label = new IdentifiedElementQuery((PaneBasedSelectionWizardDescription) object).getLabel();
+        return StringUtil.isEmpty(label) ? getString("_UI_PaneBasedSelectionWizardDescription_type") : getString("_UI_PaneBasedSelectionWizardDescription_type") + " " + label;
     }
 
     /**

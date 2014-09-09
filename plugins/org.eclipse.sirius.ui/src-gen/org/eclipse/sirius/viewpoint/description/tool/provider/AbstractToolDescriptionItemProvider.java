@@ -21,6 +21,8 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.ecore.extender.tool.internal.StringUtil;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.provider.DocumentedElementItemProvider;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
@@ -151,12 +153,12 @@ public class AbstractToolDescriptionItemProvider extends DocumentedElementItemPr
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((AbstractToolDescription) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_AbstractToolDescription_type") : getString("_UI_AbstractToolDescription_type") + " " + label;
+        String label = new IdentifiedElementQuery((AbstractToolDescription) object).getLabel();
+        return StringUtil.isEmpty(label) ? getString("_UI_AbstractToolDescription_type") : getString("_UI_AbstractToolDescription_type") + " " + label;
     }
 
     /**

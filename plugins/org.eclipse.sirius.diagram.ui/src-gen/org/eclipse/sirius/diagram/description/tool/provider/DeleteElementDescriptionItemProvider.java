@@ -20,6 +20,8 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.description.tool.DeleteElementDescription;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -111,12 +113,12 @@ public class DeleteElementDescriptionItemProvider extends MappingBasedToolDescri
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((DeleteElementDescription) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_DeleteElementDescription_type") : getString("_UI_DeleteElementDescription_type") + " " + label;
+        String label = new IdentifiedElementQuery((DeleteElementDescription) object).getLabel();
+        return StringUtil.isEmpty(label) ? getString("_UI_DeleteElementDescription_type") : getString("_UI_DeleteElementDescription_type") + " " + label;
     }
 
     /**

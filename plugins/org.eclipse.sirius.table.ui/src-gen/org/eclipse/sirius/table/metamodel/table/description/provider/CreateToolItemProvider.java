@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.table.metamodel.table.description.CreateTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
@@ -115,12 +117,12 @@ public class CreateToolItemProvider extends AbstractToolDescriptionItemProvider 
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((CreateTool) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_CreateTool_type") : getString("_UI_CreateTool_type") + " " + label;
+        String label = new IdentifiedElementQuery((CreateTool) object).getLabel();
+        return StringUtil.isEmpty(label) ? getString("_UI_CreateTool_type") : getString("_UI_CreateTool_type") + " " + label;
     }
 
     /**

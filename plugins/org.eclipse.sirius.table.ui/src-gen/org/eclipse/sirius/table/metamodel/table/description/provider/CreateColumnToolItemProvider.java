@@ -16,6 +16,8 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.table.metamodel.table.description.CreateColumnTool;
 
 /**
@@ -66,12 +68,12 @@ public class CreateColumnToolItemProvider extends CreateToolItemProvider {
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((CreateColumnTool) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_CreateColumnTool_type") : getString("_UI_CreateColumnTool_type") + " " + label;
+        String label = new IdentifiedElementQuery((CreateColumnTool) object).getLabel();
+        return StringUtil.isEmpty(label) ? getString("_UI_CreateColumnTool_type") : getString("_UI_CreateColumnTool_type") + " " + label;
     }
 
     /**

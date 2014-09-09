@@ -21,6 +21,8 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.ecore.extender.tool.internal.StringUtil;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -121,12 +123,12 @@ public class ToolDescriptionItemProvider extends MappingBasedToolDescriptionItem
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((ToolDescription) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_ToolDescription_type") : getString("_UI_ToolDescription_type") + " " + label;
+        String label = new IdentifiedElementQuery((ToolDescription) object).getLabel();
+        return StringUtil.isEmpty(label) ? getString("_UI_ToolDescription_type") : getString("_UI_ToolDescription_type") + " " + label;
     }
 
     /**

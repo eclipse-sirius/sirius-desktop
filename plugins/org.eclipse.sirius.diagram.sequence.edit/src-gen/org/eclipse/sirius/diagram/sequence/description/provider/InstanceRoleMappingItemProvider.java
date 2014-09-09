@@ -18,6 +18,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.provider.NodeMappingItemProvider;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionFactory;
@@ -71,11 +72,11 @@ public class InstanceRoleMappingItemProvider extends NodeMappingItemProvider {
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((InstanceRoleMapping) object).getName();
+        String label = new IdentifiedElementQuery((InstanceRoleMapping) object).getLabel();
         return label == null || label.length() == 0 ? getString("_UI_InstanceRoleMapping_type") : getString("_UI_InstanceRoleMapping_type") + " " + label;
     }
 

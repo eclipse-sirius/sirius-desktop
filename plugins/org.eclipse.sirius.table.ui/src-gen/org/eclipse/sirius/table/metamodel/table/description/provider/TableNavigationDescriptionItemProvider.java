@@ -18,6 +18,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription;
 import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
@@ -85,12 +87,12 @@ public class TableNavigationDescriptionItemProvider extends RepresentationNaviga
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((TableNavigationDescription) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_TableNavigationDescription_type") : getString("_UI_TableNavigationDescription_type") + " " + label;
+        String label = new IdentifiedElementQuery((TableNavigationDescription) object).getLabel();
+        return StringUtil.isEmpty(label) ? getString("_UI_TableNavigationDescription_type") : getString("_UI_TableNavigationDescription_type") + " " + label;
     }
 
     /**

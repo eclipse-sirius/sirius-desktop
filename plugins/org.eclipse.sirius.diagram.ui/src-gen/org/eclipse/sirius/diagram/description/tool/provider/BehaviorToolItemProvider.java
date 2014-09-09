@@ -22,6 +22,8 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.description.tool.BehaviorTool;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -122,12 +124,12 @@ public class BehaviorToolItemProvider extends AbstractToolDescriptionItemProvide
      * This returns the label text for the adapted class. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
-     * @generated
+     * @not-generated
      */
     @Override
     public String getText(Object object) {
-        String label = ((BehaviorTool) object).getName();
-        return label == null || label.length() == 0 ? getString("_UI_BehaviorTool_type") : getString("_UI_BehaviorTool_type") + " " + label;
+        String label = new IdentifiedElementQuery((BehaviorTool) object).getLabel();
+        return StringUtil.isEmpty(label) ? getString("_UI_BehaviorTool_type") : getString("_UI_BehaviorTool_type") + " " + label;
     }
 
     /**

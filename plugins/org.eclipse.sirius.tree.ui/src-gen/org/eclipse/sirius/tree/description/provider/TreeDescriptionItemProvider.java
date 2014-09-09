@@ -22,6 +22,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.tree.business.internal.metamodel.TreeToolVariables;
 import org.eclipse.sirius.tree.description.DescriptionFactory;
 import org.eclipse.sirius.tree.description.TreeDescription;
@@ -248,7 +249,7 @@ public class TreeDescriptionItemProvider extends DocumentedElementItemProvider {
     @Override
     public String getText(Object object) {
         final String label = new IdentifiedElementQuery((TreeDescription) object).getLabel();
-        return label == null || label.length() == 0 ? getString("_UI_TreeDescription_type") : label;
+        return StringUtil.isEmpty(label) ? getString("_UI_TreeDescription_type") : label;
     }
 
     /**
