@@ -104,6 +104,7 @@ h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 * The method @SWTBotSiriusDiagramEditor.disableSnapToGrid()@ has been deprecated, use @SWTBotSiriusDiagramEditor.setSnapToGrid(false)@ instead.
 * The method @SWTBotSiriusDiagramEditor.adaptLocationToSnap(Point)@ has been added. It allows to adapt location according to SnapToHelper of the current editor.
 * The method @SWTBotSiriusDiagramEditor.getDiagramEditPart()@ has been added. It allows to retrieve the diagram edit part of the current editor.
+* In @ViewpointSelectionDialog@, the methods @selectViewpoints(String...)@ and @deselectViewpoints(String...)@ have been added to allow viewpoints selection and deselection from an array of @String@. These methods are shortcuts to the @selectViewpoints(Set<String>, Set<String>)@ method.
 
 h4. Changes in @org.eclipse.sirius.tests.support@
 

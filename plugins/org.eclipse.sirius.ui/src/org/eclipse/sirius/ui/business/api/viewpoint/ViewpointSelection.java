@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2009, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,9 +31,7 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
-import org.eclipse.jface.dialogs.TitleAreaDialog;
 import org.eclipse.jface.operation.IRunnableContext;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -101,8 +99,6 @@ import com.google.common.collect.Sets;
  * @author mchauvin
  */
 public final class ViewpointSelection {
-
-    private static final String VIEWPOINT_SELECTION_SHELL_TITLE = "Viewpoints Selection";
 
     private static final String VIEWPOINT_SELECTION_WIZARD_PAGE_TITLE = "Viewpoints selection";
 
@@ -303,36 +299,10 @@ public final class ViewpointSelection {
         } else {
             session.getSemanticCrossReferencer();
             final SortedMap<Viewpoint, Boolean> viewpointsMap = ViewpointSelection.getViewpointsWithMonitor(session);
-
-            final SortedMap<Viewpoint, Boolean> copyOfViewpointsMap = Maps.newTreeMap(new ViewpointRegistry.ViewpointComparator());
-            copyOfViewpointsMap.putAll(viewpointsMap);
-
-            final TitleAreaDialog dialog = new TitleAreaDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell()) {
-                @Override
-                protected Control createDialogArea(final Composite parent) {
-                    return ViewpointSelection.createViewpointsTableControl(parent, copyOfViewpointsMap);
-                }
-
-                @Override
-                protected void okPressed() {
-                    Map<String, Collection<String>> missingDependencies = getMissingDependencies(Maps.filterValues(copyOfViewpointsMap, Predicates.equalTo(Boolean.TRUE)).keySet());
-                    if (missingDependencies.isEmpty()) {
-                        super.okPressed();
-                    } else {
-                        String message = getMissingDependenciesErrorMessage(missingDependencies);
-                        MessageDialog.openInformation(getShell(), "Invalid selection", message);
-                    }
-                }
-            };
-            dialog.create();
-            dialog.getShell().setText(VIEWPOINT_SELECTION_SHELL_TITLE);
-            dialog.setTitle("Selected viewpoints");
-            dialog.setMessage("Change viewpoints selection status (see tooltip for details about each viewpoint)");
-            dialog.setBlockOnOpen(true);
-            dialog.open();
-
-            if (Window.OK == dialog.getReturnCode()) {
-                ViewpointSelection.applyNewViewpointSelection(viewpointsMap, copyOfViewpointsMap, session, createNewRepresentations);
+            org.eclipse.sirius.ui.business.internal.viewpoint.ViewpointSelectionDialog vsd = new org.eclipse.sirius.ui.business.internal.viewpoint.ViewpointSelectionDialog(PlatformUI.getWorkbench()
+                    .getDisplay().getActiveShell(), viewpointsMap);
+            if (vsd.open() == Window.OK) {
+                ViewpointSelection.applyNewViewpointSelection(viewpointsMap, vsd.getSelection(), session, createNewRepresentations);
             }
         }
     }
@@ -450,8 +420,7 @@ public final class ViewpointSelection {
         return false;
     }
 
-    private static void applyNewViewpointSelection(final SortedMap<Viewpoint, Boolean> originalMap, final SortedMap<Viewpoint, Boolean> newMap, final Session session,
-            final boolean createNewRepresentations) {
+    private static void applyNewViewpointSelection(final Map<Viewpoint, Boolean> originalMap, final Map<Viewpoint, Boolean> newMap, final Session session, final boolean createNewRepresentations) {
 
         // newMap is a copy of originalMap with modifications on values.
         // No elements should have been added.
@@ -561,10 +530,6 @@ public final class ViewpointSelection {
         } catch (final InterruptedException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    private static Control createViewpointsTableControl(final Composite parent, final SortedMap<Viewpoint, Boolean> viewpointsMap) {
-        return ViewpointSelection.createViewpointsTableControl(parent, viewpointsMap.keySet(), new ViewpointsTableLazyCellModifier(viewpointsMap), new ViewpointsTableLabelProvider(viewpointsMap));
     }
 
     private static Control createViewpointsTableControl(final Composite parent, final Set<Viewpoint> viewpoints, final TableViewerAwareCellModifier cellModifier, final IBaseLabelProvider labelProvider) {

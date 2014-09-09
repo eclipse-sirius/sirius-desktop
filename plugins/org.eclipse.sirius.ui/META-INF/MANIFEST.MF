@@ -31,6 +31,7 @@ Export-Package: org.eclipse.sirius.description.contribution.provider;version="2.
  org.eclipse.sirius.ui.business.internal.session.analysis;version="2.0.0";x-internal:=true,
  org.eclipse.sirius.ui.business.internal.session.factory;version="2.0.0";x-internal:=true,
  org.eclipse.sirius.ui.business.internal.template;version="2.0.0";x-internal:=true,
+ org.eclipse.sirius.ui.business.internal.viewpoint;version="2.0.0";x-internal:=true,
  org.eclipse.sirius.ui.tools.api;version="2.0.0",
  org.eclipse.sirius.ui.tools.api.actions;version="2.0.0",
  org.eclipse.sirius.ui.tools.api.actions.analysis;version="2.0.0",
