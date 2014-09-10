@@ -11,7 +11,9 @@
 
 package org.eclipse.sirius.diagram.ui.tools.internal.actions.layout;
 
-import java.util.Iterator;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -26,6 +28,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager;
@@ -35,6 +38,8 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.swt.SWT;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
+
+import com.google.common.collect.Lists;
 
 /**
  * Copy the layout of the selected diagram or of the selected diagram elements.
@@ -128,15 +133,15 @@ public class CopyLayoutAction extends AbstractCopyPasteLayoutAction {
                 }
             }
         });
-        // Create an iterator for the selection
-        final Iterator<?> iter = getSelectedObjects().iterator();
         DiagramEditPart diagramEditPart = getDiagramEditPart();
         if (diagramEditPart instanceof IDDiagramEditPart) {
             final Option<DDiagram> diagram = ((IDDiagramEditPart) diagramEditPart).resolveDDiagram();
-            while (iter.hasNext() && diagram.some()) {
-                final Object next = iter.next();
-                if (next instanceof IGraphicalEditPart) {
-                    final IGraphicalEditPart toStore = (IGraphicalEditPart) next;
+            if (diagram.some()) {
+                // Clean the selection to keep only one data if both node and
+                // its label are selected.
+                List<IGraphicalEditPart> selectedEditParts = cleanSelectedObjects(getSelectedObjects());
+                // For each selected edit part, store its layout.
+                for (final IGraphicalEditPart toStore : selectedEditParts) {
 
                     doStoreLayoutsCmd.add(new ICommandProxy(new AbstractTransactionalCommand(toStore.getEditingDomain(), "Copy layout data", null) {
 
@@ -167,5 +172,26 @@ public class CopyLayoutAction extends AbstractCopyPasteLayoutAction {
         }
 
         return doStoreLayoutsCmd.unwrap();
+    }
+
+    /**
+     * Remove label from selection if its parent's node is also selected.
+     * 
+     * @param selectedObjects
+     *            The current selected objects.
+     * @return The current selected {@link IGraphicalEditPart}
+     */
+    private List<IGraphicalEditPart> cleanSelectedObjects(List<?> selectedObjects) {
+        List<IGraphicalEditPart> result = Lists.newArrayList();
+        // Transform List to Set to optimize the contains() called in the below
+        // loop
+        final Set<Object> selection = new HashSet<Object>(selectedObjects);
+        for (Object selectedObject : selection) {
+            boolean isLabelOfSelectedParent = (selectedObject instanceof IDiagramNameEditPart) && selection.contains(((IDiagramNameEditPart) selectedObject).getParent());
+            if (!isLabelOfSelectedParent) {
+                result.add((IGraphicalEditPart) selectedObject);
+            }
+        }
+        return result;
     }
 }
