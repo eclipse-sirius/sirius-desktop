@@ -19,7 +19,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -30,18 +29,14 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.sessionbrowser.UILoc
 import org.eclipse.sirius.tests.swtbot.support.api.condition.ItemEnabledCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.SessionClosedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.SessionSavedCondition;
-import org.eclipse.sirius.tests.swtbot.support.api.condition.TreeItemExpanded;
 import org.eclipse.sirius.tests.swtbot.support.api.dialog.ViewpointSelectionDialog;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerView;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
-import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotTableItem;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.junit.Assert;
@@ -515,111 +510,5 @@ public class UILocalSession {
     public UILocalSession changeViewpointSelectionInOpenedSelectionDialog(final Set<String> viewpointsToSelect, final Set<String> viewpointsToDeselect) {
         new ViewpointSelectionDialog(bot).selectViewpoint(viewpointsToSelect, viewpointsToDeselect);
         return this;
-    }
-
-    /**
-     * Export this Modeling Project to a repo and create a Shared Modeling
-     * Project.
-     * 
-     * @return the shared modeling project
-     */
-    public UILocalSession export() {
-        return export(false, true, false);
-    }
-
-    /**
-     * Export this Modeling Project to a repo and create a Shared Modeling
-     * Project.
-     * 
-     * @param overrideExistingResources
-     *            specify if the export can override existing resources
-     * @param connectToExportedProject
-     *            specify if a shared modeling project must be created
-     * @param exportReferencedWorkspaceImages
-     *            specify if we must export referenced workspace image
-     * @return the shared modeling project, or null if connectToExportedProject
-     *         was at false
-     */
-    public UILocalSession export(boolean overrideExistingResources, boolean connectToExportedProject, boolean exportReferencedWorkspaceImages) {
-        return export(overrideExistingResources, connectToExportedProject, exportReferencedWorkspaceImages, "localhost", "2037", "collab");
-    }
-
-    /**
-     * Export this Modeling Project to a repo and create a Shared Modeling
-     * Project.
-     * 
-     * @param overrideExistingResources
-     *            specify if the export can override existing resources
-     * @param connectToExportedProject
-     *            specify if a shared modeling project must be created
-     * @param exportReferencedWorkspaceImages
-     *            specify if we must export referenced workspace image
-     * @param serverLocation
-     *            the server location where to export
-     * @param serverPortNumber
-     *            the server port number where to export
-     * @param repositoryName
-     *            the repository name where to export
-     * @return the shared modeling project, or null if connectToExportedProject
-     *         was at false
-     */
-    public UILocalSession export(boolean overrideExistingResources, boolean connectToExportedProject, boolean exportReferencedWorkspaceImages, String serverLocation, String serverPortNumber,
-            String repositoryName) {
-        SWTBotTreeItem projectTreeItem = getSessionResource().getProject().getProjectTreeItem();
-        projectTreeItem.select();
-        SWTBotUtils.clickContextMenu(projectTreeItem, "Export...");
-        bot.waitUntil(org.eclipse.swtbot.swt.finder.waits.Conditions.shellIsActive("Export"));
-        SWTBotShell activeShell = bot.activeShell();
-        SWTBotUtils.waitAllUiEvents();
-        SWTBot exportWizardBot = activeShell.bot();
-        String exportWizardName = "Shared Modeling Project from Local";
-        exportWizardBot.text().setText(exportWizardName);
-        SWTBotTreeItem treeItem = exportWizardBot.tree().getTreeItem("Sirius");
-        bot.waitUntil(new TreeItemExpanded(treeItem, exportWizardName));
-        treeItem.getNode(exportWizardName).select();
-        exportWizardBot.button("Next >").click();
-        if (overrideExistingResources) {
-            exportWizardBot.button("Override existing resources").click();
-        }
-        if (!connectToExportedProject) {
-            exportWizardBot.button("Connect to the exported project").click();
-        }
-        if (!exportReferencedWorkspaceImages) {
-            exportWizardBot.checkBox("Export referenced workspace images").click();
-        }
-        exportWizardBot.button("Next >").click();
-        exportWizardBot.text(0).setText(serverLocation);
-        exportWizardBot.text(1).setText(serverPortNumber);
-        exportWizardBot.text(2).setText(repositoryName);
-        exportWizardBot.button("Test connection").click();
-        SWTBotButton finishButton = exportWizardBot.button("Finish");
-        bot.waitUntil(org.eclipse.swtbot.swt.finder.waits.Conditions.widgetIsEnabled(finishButton));
-        finishButton.click();
-        if (connectToExportedProject) {
-            bot.waitUntil(org.eclipse.swtbot.swt.finder.waits.Conditions.shellIsActive("Connect to the Exported Project"), 5 * SWTBotPreferences.TIMEOUT);
-            SWTBot connectWizardBot = bot.activeShell().bot();
-            finishButton = connectWizardBot.button("Finish");
-            bot.waitUntil(org.eclipse.swtbot.swt.finder.waits.Conditions.widgetIsEnabled(finishButton));
-            finishButton.click();
-            bot.waitUntil(org.eclipse.swtbot.swt.finder.waits.Conditions.shellIsActive(ViewpointSelectionDialog.VIEWPOINT_DIALOG_NAME));
-            SWTBotShell viewpointSelectionShell = bot.activeShell();
-            SWTBot viewpointSelectionBot = viewpointSelectionShell.bot();
-            Collection<Viewpoint> selectedViewpoints = getOpenedSession().getSelectedViewpoints(false);
-            for (Viewpoint locallySelectedViewpoint : selectedViewpoints) {
-                for (int i = 0; i < viewpointSelectionBot.table().rowCount(); i++) {
-                    SWTBotTableItem tableItem = viewpointSelectionBot.table().getTableItem(i);
-                    if (locallySelectedViewpoint.getName().equals(tableItem.getText(2))) {
-                        viewpointSelectionBot.table().click(i, 0);
-                        break;
-                    }
-                }
-            }
-            viewpointSelectionBot.button("OK").click();
-            bot.waitUntil(org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses(viewpointSelectionShell));
-        }
-        bot.waitUntil(org.eclipse.swtbot.swt.finder.waits.Conditions.shellCloses(activeShell));
-        UIProject sharedModelingProject = new UIProject(getSessionResource().getProject().getName() + ".shared");
-        UIResource sharedSessionResource = new UIResource(sharedModelingProject, sharedModelingProject.getName() + "." + SiriusUtil.SESSION_RESOURCE_EXTENSION);
-        return new UILocalSession(sharedSessionResource);
     }
 }
