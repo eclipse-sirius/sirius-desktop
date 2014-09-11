@@ -111,7 +111,7 @@ Query languages may support the notion of _Java services_, which are methods wri
 
 A service is simply a public Java methods which follows some conventions:
 * The class containing the method must be public and have a default constructor which takes no argument.
-* The class can contain many public instance methods, each of which will be visible as a service if they follow the right conventions.
+* The class can contain many public methods (static of not), each of which will be visible as a service if they follow the right conventions.
 * A service method must take at least one parameter, which should be an EMF type (i.e. @EObject@ or a sub-type of @EObject@).
 * A service method may take more parameters, which can be:
 ** strings
