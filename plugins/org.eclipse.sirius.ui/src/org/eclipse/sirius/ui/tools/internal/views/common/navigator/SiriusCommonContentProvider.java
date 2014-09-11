@@ -31,7 +31,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
@@ -832,6 +831,14 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
 
         public void notify(Session updated, int notification) {
             switch (notification) {
+            case SessionListener.REPRESENTATION_CHANGE:
+            case SessionListener.SEMANTIC_CHANGE:
+            case SessionListener.SELECTED_VIEWS_CHANGE_KIND:
+            case SessionListener.VSM_UPDATED:
+            case SessionListener.REPLACED:
+                refreshViewer(updated);
+                break;
+
             case SessionListener.SYNC:
             case SessionListener.DIRTY:
                 updateViewer(updated);
@@ -864,31 +871,9 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
 
     /**
      * Post commit listener to trigger viewer update/refresh after semantic
-     * changes or representation creation, deletion and renaming.
+     * changes or representation renaming.
      */
     private class RefreshViewerTrigger extends ResourceSetListenerImpl {
-
-        /**
-         * A function returning, for a given notification, the viewer element to
-         * refresh.
-         */
-        private final Function<? super Notification, ? extends Object> notificationToElementsToRefresh = new Function<Notification, Object>() {
-            public Object apply(Notification from) {
-                Object elementToRefresh = from.getNotifier();
-                // If a new resource has been added/removed, we must refresh the
-                // whole session
-                if (from.getNewValue() instanceof Resource || from.getOldValue() instanceof Resource) {
-                    elementToRefresh = session;
-                }
-                // If new representation has been added/removed, we must refresh
-                // both semantic element and the associated viewpoint
-                if (from.getNewValue() instanceof DRepresentation || from.getOldValue() instanceof DRepresentation) {
-                    elementToRefresh = session;
-                }
-                return elementToRefresh;
-            }
-        };
-
         private final Session session;
 
         public RefreshViewerTrigger(Session openedSession) {
@@ -901,44 +886,45 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
         }
 
         public void resourceSetChanged(ResourceSetChangeEvent event) {
-            Collection<Notification> releventNotifications = Lists
-                    .newArrayList(Iterables.filter(Iterables.filter(event.getNotifications(), Notification.class), new RefreshViewerTriggerScope(session)));
-            Collection<Object> elementsToRefresh = Lists.newArrayList(Iterables.transform(releventNotifications, notificationToElementsToRefresh));
+            Collection<Notification> notifications = Lists.newArrayList(Iterables.filter(Iterables.filter(event.getNotifications(), Notification.class), new RefreshViewerTriggerScope(session)));
 
-            if (!elementsToRefresh.isEmpty()) {
-                // If the elements to refresh include the session, we refresh it
-                if (Iterables.filter(elementsToRefresh, Session.class).iterator().hasNext()) {
-                    refreshViewer(session);
+            Function<Notification, Object> notifToNotifier = new Function<Notification, Object>() {
+                public Object apply(Notification from) {
+                    return from.getNotifier();
+                }
+            };
+            Collection<EObject> impactedElements = Lists.newArrayList(Iterables.filter(Iterables.transform(notifications, notifToNotifier), EObject.class));
+
+            if (!impactedElements.isEmpty()) {
+                boolean needRefresh = shouldRefresh(notifications, impactedElements);
+
+                if (needRefresh) {
+                    refreshViewer(impactedElements);
                 } else {
-                    // Else if notifications contain at least one containment
-                    // change we refresh it
-                    if (isContainmentChange(releventNotifications, elementsToRefresh)) {
-                        refreshViewer(elementsToRefresh);
-                    } else {
-                        // Otherwise we perform a simple update
-                        updateViewer(elementsToRefresh);
-                    }
+                    updateViewer(impactedElements);
                 }
             }
         }
 
-        /**
-         * Indicates if the given notifications contain a relevant change that
-         * modifies a containment feature (and hence require a refresh of the
-         * viewer).
-         * 
-         * @param notifications
-         *            the notifications to consider
-         * @param impactedElements
-         *            the identified impacted elements
-         * @return true if the given notifications contain a relevant change
-         *         that modifies a containment feature, false otherwise
-         */
-        private boolean isContainmentChange(Iterable<Notification> notifications, Collection<Object> impactedElements) {
+        private boolean shouldRefresh(Iterable<Notification> notifications, Collection<EObject> impactedElements) {
             for (Notification n : notifications) {
                 if (n.getNotifier() != null && impactedElements.contains(n.getNotifier())) {
-                    if (n.getFeature() instanceof EReference && ((EReference) n.getFeature()).isContainment()) {
-                        return true;
+                    switch (n.getEventType()) {
+                    case Notification.ADD:
+                    case Notification.ADD_MANY:
+                    case Notification.REMOVE:
+                    case Notification.REMOVE_MANY:
+                    case Notification.MOVE:
+                    case Notification.RESOLVE:
+                    case Notification.SET:
+                    case Notification.UNSET:
+                        if (n.getFeature() instanceof EReference && ((EReference) n.getFeature()).isContainment()) {
+                            return true;
+                        }
+                        break;
+
+                    default:
+                        break;
                     }
                 }
             }
@@ -972,26 +958,16 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
             Object notifier = notification.getNotifier();
             boolean result = false;
 
-            // Representation Renamming
             if (notifier instanceof DRepresentation && ViewpointPackage.eINSTANCE.getDRepresentation_Name().equals(notification.getFeature())) {
                 result = true;
             }
-            // Representation Creation/Deletion
-            if (!result && (notification.getNewValue() instanceof DRepresentation || notification.getOldValue() instanceof DRepresentation)) {
-                result = true;
-            }
-            // Semantic changes
             if (!result && notifier instanceof Resource && Resource.RESOURCE__CONTENTS == notification.getFeatureID(Resource.class)) {
                 result = isSemanticChange((Resource) notifier);
-            }
-            if (!result && notifier instanceof EObject) {
+            } else if (!result && notifier instanceof EObject) {
                 Resource notifierResource = ((EObject) notifier).eResource();
                 if (notifierResource != null && session != null && session.isOpen()) {
                     result = isSemanticChange(notifierResource);
                 }
-            }
-            if (!result && notifier instanceof ResourceSet && notification.getNewValue() instanceof Resource) {
-                result = true;
             }
 
             // semantic has changed, viewer should be refreshed.
@@ -1001,7 +977,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
         private boolean isSemanticChange(Resource resource) {
             boolean result = false;
             if (resource != null) {
-                result = allSemanticResources.contains(resource);
+                allSemanticResources.contains(resource);
             }
             return result;
         }
