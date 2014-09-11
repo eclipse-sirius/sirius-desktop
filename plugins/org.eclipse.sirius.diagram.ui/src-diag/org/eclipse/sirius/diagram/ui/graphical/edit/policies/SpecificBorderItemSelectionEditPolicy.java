@@ -121,6 +121,18 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
     private EditPart feedbacksActivated;
 
     /**
+     * Status of the feedback figure. True if the feedback figure is displayed
+     * (created by the showChangeBoundsFeedback(ChangeBoundsRequest) method),
+     * false if not already created or deleted (with method
+     * eraseChangeBoundsFeedback(ChangeBoundsRequest)).<BR>
+     * This avoids to create this feedback figure in method
+     * getFiguresToIgnore(ChangeBoundsRequest). <BR>
+     * This was done because, there is no way to know if the feedback figure is
+     * null or not (private field).
+     */
+    private boolean feedbackFigureDisplayed;
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.eclipse.gmf.runtime.diagram.ui.editpolicies.ResizableEditPolicyEx#eraseSourceFeedback(org.eclipse.gef.Request)
@@ -141,6 +153,12 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
             eraseChangeBoundsFeedback((ChangeBoundsRequest) request);
             eraseChangeBoundsProhibitedFeedbackWhenDrop();
         }
+    }
+
+    @Override
+    protected void eraseChangeBoundsFeedback(ChangeBoundsRequest request) {
+        feedbackFigureDisplayed = false;
+        super.eraseChangeBoundsFeedback(request);
     }
 
     /**
@@ -213,6 +231,7 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
             IFigure targetFigure = targetAbstractGraphicalEditPart.getFigure();
 
             final IFigure feedback = getDragSourceFeedbackFigure();
+            feedbackFigureDisplayed = true;
             final PrecisionRectangle rect = new PrecisionRectangle(getInitialFeedbackBounds());
             getHostFigure().translateToAbsolute(rect);
             rect.translate(request.getMoveDelta());
@@ -670,7 +689,11 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
                 figuresToIgnore.add(((org.eclipse.gef.GraphicalEditPart) part).getFigure());
             }
         }
-        figuresToIgnore.add(getDragSourceFeedbackFigure());
+        // Add the feedback figure only if it was created before (by a drag for
+        // example).
+        if (feedbackFigureDisplayed) {
+            figuresToIgnore.add(getDragSourceFeedbackFigure());
+        }
         return figuresToIgnore;
     }
 
