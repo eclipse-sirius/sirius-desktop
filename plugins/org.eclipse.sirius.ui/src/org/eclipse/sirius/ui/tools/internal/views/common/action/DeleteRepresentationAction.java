@@ -49,6 +49,11 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
  */
 public class DeleteRepresentationAction extends Action {
 
+    /**
+     * Representation deletion pop-up title.
+     */
+    private static String deleteRepresenationDialogTitle;
+
     private Collection<DRepresentation> selectedRepresentations;
 
     /**
@@ -71,10 +76,17 @@ public class DeleteRepresentationAction extends Action {
     public void run() {
         Map<DRepresentation, Session> dRepresentation2Session = getRepresentations();
         final Map<Session, Set<DRepresentation>> session2DRepresentations = getSession2DRepresentations(dRepresentation2Session);
-
+        String deletionMessage;
+        if (dRepresentation2Session.size() < 2) {
+            deleteRepresenationDialogTitle = "Delete representation";
+            deletionMessage = "Are you sure you want to delete the selected representation?";
+        } else {
+            deleteRepresenationDialogTitle = "Delete representations";
+            deletionMessage = "Are you sure you want to delete the selected representations?";
+        }
         try {
             Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-            boolean deletionConfirmation = MessageDialog.openConfirm(shell, "Delete representations", "Are you sure you want to delete the selected representations?");
+            boolean deletionConfirmation = MessageDialog.openConfirm(shell, deleteRepresenationDialogTitle, deletionMessage);
             if (deletionConfirmation) {
                 IRunnableContext context = new ProgressMonitorDialog(shell);
                 IRunnableWithProgress editorClosingRunnable = new IRunnableWithProgress() {
@@ -181,5 +193,9 @@ public class DeleteRepresentationAction extends Action {
             }
         }
         return isEnabled;
+    }
+
+    public static String getDeleteRepresentationDialogTitle() {
+        return deleteRepresenationDialogTitle;
     }
 }
