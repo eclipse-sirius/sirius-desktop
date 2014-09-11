@@ -4,7 +4,7 @@ include "modules/shared-license.tpd"
 
 with source, requirements
 
-location Eclipse-Luna-Integration "http://download.eclipse.org/eclipse/updates/4.4-I-builds" {
+location Eclipse-Mars-Integration "http://download.eclipse.org/eclipse/updates/4.5-I-builds" {
 	org.eclipse.platform.ide;version=4.4.0
 	org.eclipse.platform.sdk;version=4.4.0
 	org.eclipse.sdk.ide;version=4.4.0

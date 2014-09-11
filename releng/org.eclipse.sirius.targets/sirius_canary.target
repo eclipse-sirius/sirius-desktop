@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_canary" sequenceNumber="1402568694">
+<target name="sirius_canary" sequenceNumber="1410436630">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
       <repository id="Eclipse-Shared-License" location="http://download.eclipse.org/cbi/updates/license"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.platform.ide" version="4.4.0.I20140606-1215"/>
-      <unit id="org.eclipse.platform.sdk" version="4.4.0.I20140606-1215"/>
-      <unit id="org.eclipse.sdk.ide" version="4.4.0.I20140606-1215"/>
-      <repository id="Eclipse-Luna-Integration" location="http://download.eclipse.org/eclipse/updates/4.4-I-builds"/>
+      <unit id="org.eclipse.platform.ide" version="4.5.0.I20140909-1315"/>
+      <unit id="org.eclipse.platform.sdk" version="4.5.0.I20140909-1315"/>
+      <unit id="org.eclipse.sdk.ide" version="4.5.0.I20140909-1315"/>
+      <repository id="Eclipse-Mars-Integration" location="http://download.eclipse.org/eclipse/updates/4.5-I-builds"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="com.google.guava" version="0.0.0"/>
