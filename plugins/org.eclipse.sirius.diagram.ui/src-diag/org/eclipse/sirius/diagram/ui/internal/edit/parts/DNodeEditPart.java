@@ -233,7 +233,7 @@ public class DNodeEditPart extends AbstractDiagramNodeEditPart {
                 final IBorderItemLocator locator = styleConfiguration.getNameBorderItemLocator(node, getMainFigure());
                 borderItemContainer.add(borderItemEditPart.getFigure(), locator);
             }
-        } else if (borderItemEditPart instanceof DNode2EditPart) {
+        } else if (borderItemEditPart instanceof DNode2EditPart && borderItemEditPart.resolveSemanticElement() instanceof DDiagramElement) {
             IBorderItemLocator locator = null;
             if (!(this.savedConstraint instanceof BorderItemLocator)) {
                 locator = this.createBorderItemLocator(getMainFigure(), (DDiagramElement) borderItemEditPart.resolveSemanticElement());

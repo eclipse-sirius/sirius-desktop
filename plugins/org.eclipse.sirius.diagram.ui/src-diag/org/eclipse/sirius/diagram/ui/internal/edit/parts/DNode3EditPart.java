@@ -252,7 +252,7 @@ public class DNode3EditPart extends AbstractDiagramNodeEditPart {
      * @not-generated
      */
     protected NodeFigure createNodePlate() {
-        DefaultSizeNodeFigure result = null;
+        DefaultSizeNodeFigure result = new AirDefaultSizeNodeFigure(10, 10, null);
         final EObject eObj = resolveSemanticElement();
         if (eObj instanceof DStylizable && eObj instanceof DDiagramElement) {
             final DStylizable viewNode = (DStylizable) eObj;
