@@ -29,6 +29,10 @@ Result after resizing without this feature (the edges have moved):
 Result after resizing with this feature (the edges keep the same location):
 !images/shapeResize3.png!
 
+h3. Specifier-Visible Changes
+
+* When creating a new Viewpoint Specification Project using the supplied wizard: _New > Viewpoint Specification Project_, the VSM name is now given according to the project name. If the project name is suffixed with "design", the VSM name is provided by the last word before this suffix. Otherwise, the VSM name is given by the last word of the project name.
+
 h3. API Changes
 
 h4. Changes in @org.eclipse.sirius@

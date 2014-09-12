@@ -123,7 +123,7 @@ public class ViewpointSpecificationProjectWizard extends Wizard implements INewW
         project = ResourcesPlugin.getWorkspace().getRoot().getProject(newProjectPage.getProjectName());
         addPage(newProjectPage);
 
-        newOdesignPage = new WizardNewODesignFilePage("ODesign Model"); //$NON-NLS-1$
+        newOdesignPage = new WizardNewODesignFilePage("ODesign Model", newProjectPage); //$NON-NLS-1$
         newOdesignPage.setTitle(SiriusEditorPlugin.getPlugin().getString("_UI_SiriusModelWizard_label")); //$NON-NLS-1$
         newOdesignPage.setDescription(SiriusEditorPlugin.getPlugin().getString("_UI_SiriusModelWizard_description")); //$NON-NLS-1$
         addPage(newOdesignPage);
@@ -151,8 +151,11 @@ public class ViewpointSpecificationProjectWizard extends Wizard implements INewW
 
         private Text modelName;
 
-        protected WizardNewODesignFilePage(final String pageName) {
+        private WizardNewProjectCreationPage firstPage;
+
+        protected WizardNewODesignFilePage(final String pageName, WizardNewProjectCreationPage firstPage) {
             super(pageName);
+            this.firstPage = firstPage;
         }
 
         public Text getModelName() {
@@ -188,7 +191,7 @@ public class ViewpointSpecificationProjectWizard extends Wizard implements INewW
             modelNameLabel.setLayoutData(data);
 
             modelName = new Text(composite, SWT.LEFT | SWT.BORDER);
-            modelName.setText(SiriusEditorPlugin.getPlugin().getString("_UI_SiriusModelWizardName_default") + DOT + ViewpointSpecificationProject.VIEWPOINT_MODEL_EXTENSION);
+            modelName.setText(extractModelName(firstPage.getProjectName()) + DOT + ViewpointSpecificationProject.VIEWPOINT_MODEL_EXTENSION);
 
             data = new GridData();
             data.horizontalAlignment = GridData.FILL;
@@ -235,6 +238,28 @@ public class ViewpointSpecificationProjectWizard extends Wizard implements INewW
                 }
             }
             return encodings;
+        }
+
+        public void setVisible(boolean visible) {
+            if (visible) {
+                this.modelName.setText(extractModelName(firstPage.getProjectName()));
+            }
+            super.setVisible(visible);
+        }
+
+        private String extractModelName(String projectName) {
+            String modelPrefixName = "";
+            if (projectName != null && projectName.contains(".")) {
+                String[] projectNames = projectName.split("[.]");
+                if ("design".equals(projectNames[projectNames.length - 1])) {
+                    modelPrefixName = projectNames[projectNames.length - 2];
+                } else {
+                    modelPrefixName = projectNames[projectNames.length - 1];
+                }
+            } else {
+                modelPrefixName = projectName;
+            }
+            return modelPrefixName + DOT + ViewpointSpecificationProject.VIEWPOINT_MODEL_EXTENSION;
         }
     }
 }

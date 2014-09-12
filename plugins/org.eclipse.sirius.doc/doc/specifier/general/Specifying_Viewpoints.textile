@@ -43,6 +43,8 @@ Viewpoints are specified as models (see below) inside _Viewpoint Specification P
 
 By convention, the VSM (or VSMs) defined in your project are stored inside a @description@ folder. If you want to place them in a different location, make sure to add this location into the plug-in's @build.properties@ so that it is included in the deployed version.
 
+The VSM name is given according to the project name defined when using the previous wizard. If the project name is suffixed with "design", the VSM name is provided by the last word before this suffix. Otherwise, the VSM name is given by the last word of the project name.
+
 The _Viewpoint Specification Projects_ created by the default wizard are also Acceleo 3 projects. This is because inside a VSM you will need to write "model query expression":Writing_Queries.html, and the default language to do so is Acceleo 3. Being an Acceleo project means that you can easily add Acceleo files (@*.mtl@) inside the project's source to define complex or commonly used queries (but be sure to read "the Acceleo 3 section":Writing_Queries.html#acceleo about how to properly deploy such plug-ins if you do).
 
 Other than that, the project is a normal Java plug-in project. You can add "service classes":Writing_Queries.html#service_methods into it if the query language you use support it, and any other Java code, including Eclipse views, actions, etc.
