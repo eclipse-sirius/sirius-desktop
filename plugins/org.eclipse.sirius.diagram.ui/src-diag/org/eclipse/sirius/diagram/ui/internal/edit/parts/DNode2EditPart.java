@@ -10,10 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
-import org.eclipse.draw2d.ColorConstants;
-import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
@@ -46,8 +43,8 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.ViewNodeFigure;
 import org.eclipse.sirius.viewpoint.DStylizable;
-import org.eclipse.swt.graphics.Color;
 
 /**
  * @was-generated
@@ -143,15 +140,14 @@ public class DNode2EditPart extends AbstractDiagramBorderNodeEditPart {
      * @was-generated
      */
     protected IFigure createNodeShape() {
-        final ViewNodePortFigureDesc figure = new ViewNodePortFigureDesc();
-        return primaryShape = figure;
+        return primaryShape = new ViewNodeFigure();
     }
 
     /**
      * @not-generated
      */
-    public ViewNodePortFigureDesc getPrimaryShape() {
-        return (ViewNodePortFigureDesc) primaryShape;
+    public ViewNodeFigure getPrimaryShape() {
+        return (ViewNodeFigure) primaryShape;
     }
 
     /**
@@ -284,74 +280,6 @@ public class DNode2EditPart extends AbstractDiagramBorderNodeEditPart {
     public EditPart getPrimaryChildEditPart() {
         return getChildBySemanticHint(SiriusVisualIDRegistry.getType(NotationViewIDs.DNODE_NAME_2_EDIT_PART_VISUAL_ID));
     }
-
-    /**
-     * @was-generated
-     */
-    public class ViewNodePortFigureDesc extends RectangleFigure {
-
-        /**
-         * @not-generated
-         */
-        private final SiriusWrapLabel nodeLabel = new SiriusWrapLabel();
-
-        /**
-         * @not-generated
-         */
-        public ViewNodePortFigureDesc() {
-            final FlowLayout layoutThis = new FlowLayout();
-            layoutThis.setStretchMinorAxis(false);
-            layoutThis.setMinorAlignment(FlowLayout.ALIGN_TOPLEFT);
-
-            layoutThis.setMajorAlignment(FlowLayout.ALIGN_TOPLEFT);
-            layoutThis.setMajorSpacing(5);
-            layoutThis.setMinorSpacing(5);
-            layoutThis.setHorizontal(true);
-
-            this.setLayoutManager(layoutThis);
-
-            this.setFill(false);
-            this.setOutline(false);
-            this.setLineWidth(0);
-
-            nodeLabel.setTextWrap(true);
-            nodeLabel.setForegroundColor(ColorConstants.black);
-        }
-
-        /**
-         * @was-generated
-         */
-        private boolean myUseLocalCoordinates = false;
-
-        /**
-         * @was-generated
-         */
-        protected boolean useLocalCoordinates() {
-            return myUseLocalCoordinates;
-        }
-
-        /**
-         * @was-generated
-         */
-        protected void setUseLocalCoordinates(final boolean useLocalCoordinates) {
-            myUseLocalCoordinates = useLocalCoordinates;
-        }
-
-        /**
-         * Return the label that is in the node.
-         * 
-         * @return the nodeLabel
-         */
-        public SiriusWrapLabel getNodeLabel() {
-            return this.nodeLabel;
-        }
-
-    }
-
-    /**
-     * @was-generated
-     */
-    static final Color THIS_BACK = new Color(null, 25, 22, 123);
 
     /**
      * @not-generated

@@ -10,11 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
-import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.FlowLayout;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.PositionConstants;
-import org.eclipse.draw2d.RectangleFigure;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
@@ -52,6 +49,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.ViewNodeFigure;
 import org.eclipse.sirius.viewpoint.DStylizable;
 
 /**
@@ -316,84 +314,6 @@ public class DNode3EditPart extends AbstractDiagramNodeEditPart {
      */
     public EditPart getPrimaryChildEditPart() {
         return getChildBySemanticHint(SiriusVisualIDRegistry.getType(NotationViewIDs.DNODE_NAME_3_EDIT_PART_VISUAL_ID));
-    }
-
-    /**
-     * @was-generated
-     */
-    public class ViewNodeFigure extends RectangleFigure {
-
-        /**
-         * @not-generated
-         */
-        private SiriusWrapLabel fViewNodeLabelFigure;
-
-        /**
-         * @was-generated
-         */
-        private boolean myUseLocalCoordinates = false;
-
-        /**
-         * @not-generated
-         */
-        private final SiriusWrapLabel nodeLabel = new SiriusWrapLabel();
-
-        /**
-         * @not-generated : set wrap label
-         */
-        public ViewNodeFigure() {
-
-            final FlowLayout layoutThis = new FlowLayout();
-            layoutThis.setStretchMinorAxis(false);
-            layoutThis.setMinorAlignment(FlowLayout.ALIGN_TOPLEFT);
-
-            layoutThis.setMajorAlignment(FlowLayout.ALIGN_TOPLEFT);
-            layoutThis.setMajorSpacing(5);
-            layoutThis.setMinorSpacing(5);
-            layoutThis.setHorizontal(true);
-
-            this.setLayoutManager(layoutThis);
-
-            this.setFill(false);
-            this.setOutline(false);
-            this.setLineWidth(0);
-
-            nodeLabel.setTextWrap(true);
-            nodeLabel.setTextAlignment(PositionConstants.CENTER);
-            nodeLabel.setTextWrapAlignment(PositionConstants.CENTER);
-            nodeLabel.setLabelAlignment(PositionConstants.CENTER);
-            nodeLabel.setForegroundColor(ColorConstants.black);
-        }
-
-        /**
-         * @was-generated
-         */
-        protected boolean useLocalCoordinates() {
-            return myUseLocalCoordinates;
-        }
-
-        /**
-         * @return the nodeLabel
-         * @not-generated
-         */
-        public SiriusWrapLabel getNodeLabel() {
-            return this.nodeLabel;
-        }
-
-        /**
-         * @was-generated
-         */
-        protected void setUseLocalCoordinates(final boolean useLocalCoordinates) {
-            myUseLocalCoordinates = useLocalCoordinates;
-        }
-
-        /**
-         * @not-generated
-         */
-        public SiriusWrapLabel getViewNodeLabelFigure() {
-            return fViewNodeLabelFigure;
-        }
-
     }
 
     /**
