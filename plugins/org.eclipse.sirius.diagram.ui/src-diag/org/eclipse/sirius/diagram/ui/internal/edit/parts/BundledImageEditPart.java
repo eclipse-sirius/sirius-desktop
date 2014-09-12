@@ -20,11 +20,8 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.Request;
-import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.LayoutEditPolicy;
-import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
 import org.eclipse.gef.editpolicies.ResizableEditPolicy;
-import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.BundledImage;
@@ -36,6 +33,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramBorderNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramNodeEditPartOperation;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.FixedLayoutEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirStyleDefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.BundledImageFigure;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
@@ -103,25 +101,7 @@ public class BundledImageEditPart extends AbstractNotSelectableShapeNodeEditPart
      * @not-generated
      */
     protected LayoutEditPolicy createLayoutEditPolicy() {
-        final LayoutEditPolicy lep = new org.eclipse.sirius.diagram.ui.tools.api.policies.LayoutEditPolicy() {
-
-            protected EditPolicy createChildEditPolicy(final EditPart child) {
-                EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
-                if (result == null) {
-                    result = new NonResizableEditPolicy();
-                }
-                return result;
-            }
-
-            protected Command getMoveChildrenCommand(final Request request) {
-                return null;
-            }
-
-            protected Command getCreateCommand(final CreateRequest request) {
-                return null;
-            }
-        };
-        return lep;
+        return new FixedLayoutEditPolicy();
     }
 
     /**

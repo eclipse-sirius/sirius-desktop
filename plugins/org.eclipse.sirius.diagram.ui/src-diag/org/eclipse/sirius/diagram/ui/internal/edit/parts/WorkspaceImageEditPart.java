@@ -35,6 +35,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramBorderNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramNodeEditPartOperation;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.FixedLayoutEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirStyleDefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ITransparentFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.IWorkspaceImageFigure;
@@ -103,25 +104,7 @@ public class WorkspaceImageEditPart extends AbstractNotSelectableShapeNodeEditPa
      * @not-generated
      */
     protected LayoutEditPolicy createLayoutEditPolicy() {
-        LayoutEditPolicy lep = new org.eclipse.sirius.diagram.ui.tools.api.policies.LayoutEditPolicy() {
-
-            protected EditPolicy createChildEditPolicy(EditPart child) {
-                EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
-                if (result == null) {
-                    result = new NonResizableEditPolicy();
-                }
-                return result;
-            }
-
-            protected Command getMoveChildrenCommand(Request request) {
-                return null;
-            }
-
-            protected Command getCreateCommand(CreateRequest request) {
-                return null;
-            }
-        };
-        return lep;
+        return new FixedLayoutEditPolicy();
     }
 
     /**

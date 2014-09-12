@@ -33,6 +33,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractNotSelectableShapeNod
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramBorderNodeEditPartOperation;
+import org.eclipse.sirius.diagram.ui.internal.edit.policies.FixedLayoutEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.AirNoteFigure;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.LabelAlignment;
@@ -89,25 +90,7 @@ public class NoteEditPart extends AbstractNotSelectableShapeNodeEditPart impleme
      * @not-generated
      */
     protected LayoutEditPolicy createLayoutEditPolicy() {
-        LayoutEditPolicy lep = new org.eclipse.sirius.diagram.ui.tools.api.policies.LayoutEditPolicy() {
-
-            protected EditPolicy createChildEditPolicy(EditPart child) {
-                EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
-                if (result == null) {
-                    result = new NonResizableEditPolicy();
-                }
-                return result;
-            }
-
-            protected Command getMoveChildrenCommand(Request request) {
-                return null;
-            }
-
-            protected Command getCreateCommand(CreateRequest request) {
-                return null;
-            }
-        };
-        return lep;
+        return new FixedLayoutEditPolicy();
     }
 
     /**
