@@ -49,11 +49,6 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
  */
 public class DeleteRepresentationAction extends Action {
 
-    /**
-     * Representation deletion pop-up title.
-     */
-    private static String deleteRepresenationDialogTitle;
-
     private Collection<DRepresentation> selectedRepresentations;
 
     /**
@@ -76,11 +71,9 @@ public class DeleteRepresentationAction extends Action {
     public void run() {
         Map<DRepresentation, Session> dRepresentation2Session = getRepresentations();
         final Map<Session, Set<DRepresentation>> session2DRepresentations = getSession2DRepresentations(dRepresentation2Session);
-        String deletionMessage;
-        if (dRepresentation2Session.size() < 2) {
-            deleteRepresenationDialogTitle = "Delete representation";
-            deletionMessage = "Are you sure you want to delete the selected representation?";
-        } else {
+        String deleteRepresenationDialogTitle = "Delete representation";
+        String deletionMessage = "Are you sure you want to delete the selected representation?";
+        if (dRepresentation2Session.size() >= 2) {
             deleteRepresenationDialogTitle = "Delete representations";
             deletionMessage = "Are you sure you want to delete the selected representations?";
         }
@@ -193,9 +186,5 @@ public class DeleteRepresentationAction extends Action {
             }
         }
         return isEnabled;
-    }
-
-    public static String getDeleteRepresentationDialogTitle() {
-        return deleteRepresenationDialogTitle;
     }
 }
