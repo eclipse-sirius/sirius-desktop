@@ -3,5 +3,5 @@ target "paperclips-2.0"
 with source, requirements
 
 location Paperclips-2_0 "http://download.eclipse.org/sirius/targetplatform/0.9.0/all/nebula/N201309241436" {
-        org.eclipse.nebula.widgets.paperclips.feature.feature.group;version=[2.0.0,3.0.0)
+        org.eclipse.nebula.widgets.paperclips.feature.feature.group [2.0.0,3.0.0)
 }

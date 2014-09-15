@@ -3,9 +3,9 @@ target "orbit"
 with source, requirements
 
 location Orbit "http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/" {
-        org.apache.log4j;version=[1.2.0,1.3.0)
+        org.apache.log4j [1.2.0,1.3.0)
         org.easymock
-        org.hamcrest.core;version=[1.3.0,2.0.0)
-        org.hamcrest.library;version=[1.3.0,2.0.0)
-        org.junit;version=[4.11.0,5.0.0)
+        org.hamcrest.core [1.3.0,2.0.0)
+        org.hamcrest.library [1.3.0,2.0.0)
+        org.junit [4.11.0,5.0.0)
 }

@@ -6,31 +6,31 @@ include "modules/shared-license.tpd"
 
 with source, requirements
 
-location Eclipse-Staging "http://download.eclipse.org/releases/staging" {
-        com.google.guava;version=lazy
-        com.ibm.icu;version=lazy
-        org.eclipse.acceleo.feature.group;version=lazy
-        org.eclipse.acceleo.ide.ui;version=lazy
-        org.eclipse.draw2d.sdk.feature.group;version=lazy
-        org.eclipse.emf.common.feature.group;version=lazy
-        org.eclipse.emf.compare.feature.group;version=lazy
-        org.eclipse.emf.ecore.feature.group;version=lazy
-        org.eclipse.emf.edit.feature.group;version=lazy
-        org.eclipse.emf.eef.runtime;version=lazy
-        org.eclipse.emf.feature.group;version=lazy
-        org.eclipse.emf.sdk.feature.group;version=lazy
-        org.eclipse.emf.transaction.feature.group;version=lazy
-        org.eclipse.emf.transaction.sdk.feature.group;version=lazy
-        org.eclipse.emf.validation.sdk.feature.group;version=lazy
-        org.eclipse.emf.workspace.feature.group;version=lazy
-        org.eclipse.equinox.sdk.feature.group;version=lazy
-        org.eclipse.gef.feature.group;version=lazy
-        org.eclipse.gef.sdk.feature.group;version=lazy
-        org.eclipse.gmf.runtime.notation.sdk.feature.group;version=lazy
-        org.eclipse.gmf.runtime.sdk.feature.group;version=lazy
-        org.eclipse.ocl.all.feature.group;version=lazy
-        org.eclipse.ocl.core.sdk.feature.group;version=lazy
-        org.eclipse.platform.feature.group;version=lazy
-        org.eclipse.sdk.feature.group;version=lazy
-        org.eclipse.xtext.sdk.feature.group;version=lazy
+location Eclipse-Staging "http://download.eclipse.orgaux/releases/staging" {
+        com.google.guava lazy
+        com.ibm.icu lazy
+        org.eclipse.acceleo.feature.group lazy
+        org.eclipse.acceleo.ide.ui lazy
+        org.eclipse.draw2d.sdk.feature.group lazy
+        org.eclipse.emf.common.feature.group lazy
+        org.eclipse.emf.compare.feature.group lazy
+        org.eclipse.emf.ecore.feature.group lazy
+        org.eclipse.emf.edit.feature.group lazy
+        org.eclipse.emf.eef.runtime lazy
+        org.eclipse.emf.feature.group lazy
+        org.eclipse.emf.sdk.feature.group lazy
+        org.eclipse.emf.transaction.feature.group lazy
+        org.eclipse.emf.transaction.sdk.feature.group lazy
+        org.eclipse.emf.validation.sdk.feature.group lazy
+        org.eclipse.emf.workspace.feature.group lazy
+        org.eclipse.equinox.sdk.feature.group lazy
+        org.eclipse.gef.feature.group lazy
+        org.eclipse.gef.sdk.feature.group lazy
+        org.eclipse.gmf.runtime.notation.sdk.feature.group lazy
+        org.eclipse.gmf.runtime.sdk.feature.group lazy
+        org.eclipse.ocl.all.feature.group lazy
+        org.eclipse.ocl.core.sdk.feature.group lazy
+        org.eclipse.platform.feature.group lazy
+        org.eclipse.sdk.feature.group lazy
+        org.eclipse.xtext.sdk.feature.group lazy
 }

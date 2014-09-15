@@ -5,86 +5,86 @@ include "modules/shared-license.tpd"
 with source, requirements
 
 location Eclipse-Mars-Integration "http://download.eclipse.org/eclipse/updates/4.5-I-builds" {
-	org.eclipse.platform.ide;version=4.4.0
-	org.eclipse.platform.sdk;version=4.4.0
-	org.eclipse.sdk.ide;version=4.4.0
+	org.eclipse.platform.ide 4.4.0
+	org.eclipse.platform.sdk 4.4.0
+	org.eclipse.sdk.ide 4.4.0
 }
 
 location Orbit-Recommended "http://download.eclipse.org/modeling/emf/cdo/orbit/latest-R" {
-	com.google.guava;version=lazy
-	org.junit;version=lazy
-	org.hamcrest.core;version=lazy
-	org.hamcrest.library;version=lazy
-	org.apache.log4j;version=lazy
-	org.easymock;version=lazy
+	com.google.guava lazy
+	org.junit lazy
+	org.hamcrest.core lazy
+	org.hamcrest.library lazy
+	org.apache.log4j lazy
+	org.easymock lazy
 }
 
 location GEF-LastSuccessful "https://hudson.eclipse.org/hudson/job/gef-master/lastSuccessfulBuild/artifact/update-site/" {
-	org.eclipse.draw2d.sdk.feature.group;version=lazy
-	org.eclipse.gef.feature.group;version=lazy
-	org.eclipse.gef.sdk.feature.group;version=lazy
+	org.eclipse.draw2d.sdk.feature.group lazy
+	org.eclipse.gef.feature.group lazy
+	org.eclipse.gef.sdk.feature.group lazy
 }
 
 location SWTBot-LastSuccessful "https://hudson.eclipse.org/swtbot/job/swtbot-tycho/ws/org.eclipse.swtbot.updatesite/target/repository/" {
-	org.eclipse.swtbot.eclipse.feature.group;version=lazy
-	org.eclipse.swtbot.eclipse.gef.feature.group;version=lazy
-	org.eclipse.swtbot.eclipse.test.junit.feature.group;version=lazy
-	org.eclipse.swtbot.feature.group;version=lazy
-	org.eclipse.swtbot.forms.feature.group;version=lazy
-	org.eclipse.swtbot.ide.feature.group;version=lazy
+	org.eclipse.swtbot.eclipse.feature.group lazy
+	org.eclipse.swtbot.eclipse.gef.feature.group lazy
+	org.eclipse.swtbot.eclipse.test.junit.feature.group lazy
+	org.eclipse.swtbot.feature.group lazy
+	org.eclipse.swtbot.forms.feature.group lazy
+	org.eclipse.swtbot.ide.feature.group lazy
 }
 
 location EMF-LastSuccessful "https://hudson.eclipse.org/xtext/view/EMF/job/emf-core/lastSuccessfulBuild/artifact/build-result/p2.repository/" {
-	org.eclipse.emf.feature.group;version=lazy
-	org.eclipse.emf.sdk.feature.group;version=lazy
-	org.eclipse.emf.edit.feature.group;version=lazy
-	org.eclipse.emf.common.feature.group;version=lazy
-	org.eclipse.emf.ecore.feature.group;version=lazy
+	org.eclipse.emf.feature.group lazy
+	org.eclipse.emf.sdk.feature.group lazy
+	org.eclipse.emf.edit.feature.group lazy
+	org.eclipse.emf.common.feature.group lazy
+	org.eclipse.emf.ecore.feature.group lazy
 }
 
 location UML2-LastSuccessful "https://hudson.eclipse.org/hudson/job/mdt-uml2-master/lastSuccessfulBuild/artifact/UML2.p2.repository/" {
-	org.eclipse.uml2.sdk.feature.group;version=lazy
+	org.eclipse.uml2.sdk.feature.group lazy
 }
 
 location OCL-LastSuccessful "https://hudson.eclipse.org/ocl/job/buckminster-ocl-core-luna-master/lastSuccessfulBuild/artifact/MDT-OCL.p2.repository/" {
-	org.eclipse.ocl.all.feature.group;version=lazy
-	org.eclipse.ocl.core.sdk.feature.group;version=lazy
+	org.eclipse.ocl.all.feature.group lazy
+	org.eclipse.ocl.core.sdk.feature.group lazy
 }
 
 location EMF-Validation-LastSuccessful "https://hudson.eclipse.org/hudson/job/emf-validation-master/lastSuccessfulBuild/artifact/update-site/" {
-	org.eclipse.emf.validation.sdk.feature.group;version=lazy
+	org.eclipse.emf.validation.sdk.feature.group lazy
 }
 
 location EMF-Query-LastSuccessful "https://hudson.eclipse.org/hudson/job/emf-query-master/lastSuccessfulBuild/artifact/update-site/" {
-	org.eclipse.emf.query.sdk.feature.group;version=lazy
+	org.eclipse.emf.query.sdk.feature.group lazy
 }
 
 location EMF-Transaction-LastSuccessful "https://hudson.eclipse.org/hudson/job/emf-transaction-master/lastSuccessfulBuild/artifact/update-site/" {
-	org.eclipse.emf.workspace.feature.group;version=lazy
-	org.eclipse.emf.transaction.sdk.feature.group;version=lazy
+	org.eclipse.emf.workspace.feature.group lazy
+	org.eclipse.emf.transaction.sdk.feature.group lazy
 }
 
 location EEF-LastSuccessful "https://hudson.eclipse.org/hudson/job/emf-eef-master/lastSuccessfulBuild/artifact/releng/org.eclipse.emf.eef.update/target/repository/" {
-	org.eclipse.emf.eef.runtime;version=lazy
+	org.eclipse.emf.eef.runtime lazy
 }
 
 location Acceleo-LastSuccessful "https://hudson.eclipse.org/acceleo/job/acceleo-master/lastSuccessfulBuild/artifact/releng/org.eclipse.acceleo-updatesite/target/repository/" {
-	org.eclipse.acceleo.feature.group;version=lazy
-	org.eclipse.acceleo.ide.ui;version=lazy
+	org.eclipse.acceleo.feature.group lazy
+	org.eclipse.acceleo.ide.ui lazy
 }
 
 location EMF-Compare-Nightly "http://download.eclipse.org/modeling/emf/compare/updates/nightly/latest/" {
-	org.eclipse.emf.compare.feature.group;version=lazy
+	org.eclipse.emf.compare.feature.group lazy
 }
 
 location GMF-Notation-LastSuccessful "https://hudson.eclipse.org/gmf-notation/job/gmf-notation-master/lastSuccessfulBuild/artifact/update-site/" {
-	org.eclipse.gmf.runtime.notation.sdk.feature.group;version=lazy
+	org.eclipse.gmf.runtime.notation.sdk.feature.group lazy
 }
 
 location GMF-Runtime-LastSuccessful "https://hudson.eclipse.org/gmf-runtime/job/gmf-runtime-master/lastSuccessfulBuild/artifact/update-site/" {
-	org.eclipse.gmf.runtime.sdk.feature.group;version=lazy
+	org.eclipse.gmf.runtime.sdk.feature.group lazy
 }
 
 location XText-Latest "http://download.eclipse.org/modeling/tmf/xtext/updates/composite/latest/" {
-   org.eclipse.xtext.sdk.feature.group;version=lazy
+   org.eclipse.xtext.sdk.feature.group lazy
 }
