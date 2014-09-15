@@ -22,8 +22,8 @@ import org.eclipse.emf.edit.provider.IDisposable;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -319,7 +319,7 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
         }
     }
 
-    private class InViewpointPredicate implements Predicate<DRepresentation> {
+    private static class InViewpointPredicate implements Predicate<DRepresentation> {
 
         private final Collection<Viewpoint> scope;
 
@@ -341,7 +341,7 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
             if (input.eResource() != null) {
                 RepresentationDescription description = DialectManager.INSTANCE.getDescription(input);
                 if (description != null) {
-                    Viewpoint reprViewpoint = ViewpointRegistry.getInstance().getViewpoint(description);
+                    Viewpoint reprViewpoint = new RepresentationDescriptionQuery(description).getParentViewpoint();
                     // representationDescription.eContainer() can be null in the
                     // case that the viewpoint has been renamed after the aird
                     // creation
