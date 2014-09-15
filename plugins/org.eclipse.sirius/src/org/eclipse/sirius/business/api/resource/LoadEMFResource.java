@@ -17,13 +17,15 @@ import java.util.Map;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLParserPoolImpl;
 import org.eclipse.sirius.business.internal.resource.parser.XMIModelFileSaxParser;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
+
+import com.google.common.base.Preconditions;
 
 /**
  * Runnable to load an EMF resource.
@@ -48,34 +50,30 @@ public class LoadEMFResource implements Runnable {
      *            the file containing the resource to load.
      */
     public LoadEMFResource(final ResourceSet set, final IFile file) {
-        this.file = file;
-        this.set = set;
+        this.file = Preconditions.checkNotNull(file);
+        this.set = Preconditions.checkNotNull(set);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Runnable#run()
-     */
+    @Override
     public void run() {
-
+        String path = file.getFullPath().toOSString();
         try {
-            final URI uri = URI.createPlatformResourceURI(file.getFullPath().toOSString(), true);
+            final URI uri = URI.createPlatformResourceURI(path, true);
             if (shouldBeAbleToLoad()) {
                 res = set.getResource(uri, true);
                 if (!res.getErrors().isEmpty()) {
-                    error();
+                    // The file was previously loaded with errors. It might have
+                    // changed, unload it before reload.
+                    unload();
                 }
                 res.load(getOptions());
             }
-        } catch (final WrappedException e) {
-            error();
             // CHECKSTYLE:OFF
         } catch (final RuntimeException e) {
-            error();
+            error(path, e);
             // CHECKSTYLE:ON
         } catch (final IOException e) {
-            error();
+            error(path, e);
         }
     }
 
@@ -89,7 +87,12 @@ public class LoadEMFResource implements Runnable {
         return options;
     }
 
-    private void error() {
+    private void error(String path, Exception e) {
+        SiriusPlugin.getDefault().error("Unable to load resource " + path, e);
+        unload();
+    }
+
+    private void unload() {
         if (res != null) {
             res.unload();
             set.getResources().remove(res);
