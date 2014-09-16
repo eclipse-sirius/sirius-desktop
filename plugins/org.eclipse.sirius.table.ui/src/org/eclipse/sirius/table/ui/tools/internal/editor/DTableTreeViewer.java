@@ -16,14 +16,6 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerCell;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.DisposeEvent;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
-import org.eclipse.swt.widgets.Item;
-import org.eclipse.swt.widgets.Tree;
-import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
@@ -37,6 +29,13 @@ import org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableColumnHe
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeViewer;
 import org.eclipse.sirius.ui.tools.internal.editor.DTableColumnViewerEditorActivationStrategy;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.DisposeEvent;
+import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Item;
+import org.eclipse.swt.widgets.Tree;
+import org.eclipse.swt.widgets.TreeColumn;
 
 /**
  * A specific TreeViewer for the specials needs of DTable :
@@ -71,19 +70,7 @@ public class DTableTreeViewer extends AbstractDTreeViewer {
     public DTableTreeViewer(final Composite parent, final int style, final DTableViewerManager manager) {
         super(parent, style);
         this.manager = manager;
-        this.dLineExpansionChecker.setPermissionAuthority(manager.getAccessor().getPermissionAuthority());
-        this.dLineExpansionChecker.setDTableViewerManager(manager);
-    }
-
-    /**
-     * Overridden to add the {@link DLineExpansionChecker}.
-     * 
-     * {@inheritDoc}
-     */
-    @Override
-    protected void hookControl(Control control) {
-        dLineExpansionChecker = new DLineExpansionChecker(control);
-        super.hookControl(control);
+        dLineExpansionChecker = new DLineExpansionChecker(parent, manager, manager.getAccessor().getPermissionAuthority());
     }
 
     /**

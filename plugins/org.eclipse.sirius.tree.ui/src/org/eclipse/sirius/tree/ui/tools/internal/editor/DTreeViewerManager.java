@@ -110,7 +110,7 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
     private final ITreeCommandFactory treeCommandFactory;
 
     private TreeUIUpdater treeUIUpdater;
-    
+
     private DescriptionFileChangedNotifier descriptionFileChangedNotifier;
 
     private DTreeContentProvider dTreeContentProvider;
@@ -169,8 +169,8 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
         // Create and setup the TreeViewer
         final int style = SWT.H_SCROLL | SWT.V_SCROLL | SWT.MULTI;
 
-        DTreeViewer dTreeViewer = new DTreeViewer(composite, style, getSession());
-        treeViewer = dTreeViewer; 
+        DTreeViewer dTreeViewer = new DTreeViewer(composite, style, getAccessor().getPermissionAuthority());
+        treeViewer = dTreeViewer;
 
         // Add a focus listener to deactivate the EMF actions on the Tree
         treeViewer.getTree().addFocusListener(new DTableTreeFocusListener(tableEditor, treeViewer.getTree()));
@@ -181,7 +181,7 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
 
         treeUIUpdater = new TreeUIUpdater(dTreeViewer, dRepresentation);
         descriptionFileChangedNotifier = new DescriptionFileChangedNotifier(this);
-       
+
         dTreeContentProvider = new DTreeContentProvider();
         treeViewer.setContentProvider(dTreeContentProvider);
 

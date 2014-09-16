@@ -16,9 +16,9 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.TreeItem;
-
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.TreePackage;
+import org.eclipse.sirius.ui.tools.internal.editor.ChangeExpandeStateRunnable;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 
 /**
@@ -39,15 +39,15 @@ public class DTreeItemExpansionChecker implements Listener {
      * 
      * @param control
      *            the {@link Control} to listen
+     * @param permissionAuthority
+     *            {@link IPermissionAuthority} to know if user can
+     *            collapse/expand {@link TreeItem}.
      */
-    public DTreeItemExpansionChecker(Control control) {
+    public DTreeItemExpansionChecker(Control control, IPermissionAuthority permissionAuthority) {
         this.control = control;
+        this.permissionAuthority = permissionAuthority;
         control.getDisplay().addFilter(SWT.Expand, this);
         control.getDisplay().addFilter(SWT.Collapse, this);
-    }
-
-    public void setPermissionAuthority(IPermissionAuthority permissionAuthority) {
-        this.permissionAuthority = permissionAuthority;
     }
 
     /**
@@ -77,14 +77,7 @@ public class DTreeItemExpansionChecker implements Listener {
         if (!isEventForDTreeItemExpandable(event)) {
             event.type = SWT.None;
             final TreeItem treeItem = (TreeItem) event.item;
-            Display.getDefault().asyncExec(new Runnable() {
-
-                public void run() {
-                    treeItem.setExpanded(true);
-                }
-
-            });
-
+            Display.getDefault().asyncExec(new ChangeExpandeStateRunnable(treeItem, true));
         }
     }
 
@@ -96,13 +89,7 @@ public class DTreeItemExpansionChecker implements Listener {
         if (!isEventForDTreeItemExpandable(event)) {
             event.type = SWT.None;
             final TreeItem treeItem = (TreeItem) event.item;
-            Display.getDefault().asyncExec(new Runnable() {
-
-                public void run() {
-                    treeItem.setExpanded(false);
-                }
-
-            });
+            Display.getDefault().asyncExec(new ChangeExpandeStateRunnable(treeItem, false));
         }
     }
 
@@ -131,12 +118,14 @@ public class DTreeItemExpansionChecker implements Listener {
     }
 
     /**
-     * remove THis {@link DTreeItemExpansionChecker} as {@link Listener} of the
+     * remove This {@link DTreeItemExpansionChecker} as {@link Listener} of the
      * Tree.
      */
     public void dispose() {
         control.getDisplay().removeFilter(SWT.Expand, this);
         control.getDisplay().removeFilter(SWT.Collapse, this);
+        permissionAuthority = null;
+        control = null;
     }
 
 }

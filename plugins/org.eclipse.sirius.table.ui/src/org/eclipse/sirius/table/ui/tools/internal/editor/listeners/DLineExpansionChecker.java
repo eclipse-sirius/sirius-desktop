@@ -10,6 +10,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.ui.tools.internal.editor.listeners;
 
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.table.metamodel.table.DColumn;
+import org.eclipse.sirius.table.metamodel.table.DLine;
+import org.eclipse.sirius.table.metamodel.table.DTable;
+import org.eclipse.sirius.table.metamodel.table.TablePackage;
+import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
+import org.eclipse.sirius.table.ui.tools.internal.editor.utils.TreeColumnWidthSetter;
+import org.eclipse.sirius.ui.tools.internal.editor.ChangeExpandeStateRunnable;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
@@ -18,18 +26,12 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.swt.widgets.TreeItem;
 
-import org.eclipse.sirius.table.metamodel.table.DColumn;
-import org.eclipse.sirius.table.metamodel.table.DLine;
-import org.eclipse.sirius.table.metamodel.table.DTable;
-import org.eclipse.sirius.table.metamodel.table.TablePackage;
-import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
-import org.eclipse.sirius.table.ui.tools.internal.editor.utils.TreeColumnWidthSetter;
-import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
-
 /**
  * {@link Listener} to prevents expansion/collapse {@link Event} while
  * {@link IPermissionAuthority} disallow {@link TablePackage#DLINE__COLLAPSED}
- * change.
+ * change. Manage also column resize to update
+ * {@link TablePackage#DTABLE__HEADER_COLUMN_WIDTH} or
+ * {@link TablePackage#DCOLUMN__WIDTH}.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -48,26 +50,19 @@ public class DLineExpansionChecker implements Listener {
      * 
      * @param control
      *            the {@link Control} to listen
+     * @param dTableViewerManager
+     *            the {@link DTableViewerManager}
+     * @param permissionAuthority
+     *            {@link IPermissionAuthority} to know if user can
+     *            collapse/expand {@link TreeItem} or resize of column.
      */
-    public DLineExpansionChecker(Control control) {
+    public DLineExpansionChecker(Control control, DTableViewerManager dTableViewerManager, IPermissionAuthority permissionAuthority) {
         this.control = control;
+        this.dTableViewerManager = dTableViewerManager;
+        this.permissionAuthority = permissionAuthority;
         control.getDisplay().addFilter(SWT.Expand, this);
         control.getDisplay().addFilter(SWT.Collapse, this);
         control.getDisplay().addFilter(SWT.Resize, this);
-    }
-
-    /**
-     * Sets the DTableViewerManager.
-     * 
-     * @param manager the table viewer manager.
-     */
-    public void setDTableViewerManager(DTableViewerManager manager) {
-        this.dTableViewerManager = manager;
-        this.dTable = (DTable) this.dTableViewerManager.getEditor().getRepresentation();
-    }
-
-    public void setPermissionAuthority(IPermissionAuthority permissionAuthority) {
-        this.permissionAuthority = permissionAuthority;
     }
 
     /**
@@ -100,14 +95,7 @@ public class DLineExpansionChecker implements Listener {
         if (!isEventForDLineExpandable(event)) {
             event.type = SWT.None;
             final TreeItem treeItem = (TreeItem) event.item;
-            Display.getDefault().asyncExec(new Runnable() {
-
-                public void run() {
-                    treeItem.setExpanded(true);
-                }
-
-            });
-
+            Display.getDefault().asyncExec(new ChangeExpandeStateRunnable(treeItem, true));
         }
     }
 
@@ -119,13 +107,7 @@ public class DLineExpansionChecker implements Listener {
         if (!isEventForDLineExpandable(event)) {
             event.type = SWT.None;
             final TreeItem treeItem = (TreeItem) event.item;
-            Display.getDefault().asyncExec(new Runnable() {
-
-                public void run() {
-                    treeItem.setExpanded(false);
-                }
-
-            });
+            Display.getDefault().asyncExec(new ChangeExpandeStateRunnable(treeItem, false));
         }
     }
 
@@ -202,13 +184,17 @@ public class DLineExpansionChecker implements Listener {
     }
 
     /**
-     * remove THis {@link DLineExpansionChecker} as {@link Listener} of the
+     * remove This {@link DLineExpansionChecker} as {@link Listener} of the
      * Tree.
      */
     public void dispose() {
         control.getDisplay().removeFilter(SWT.Expand, this);
         control.getDisplay().removeFilter(SWT.Collapse, this);
         control.getDisplay().removeFilter(SWT.Resize, this);
+        dTable = null;
+        dTableViewerManager = null;
+        permissionAuthority = null;
+        control = null;
     }
 
 }
