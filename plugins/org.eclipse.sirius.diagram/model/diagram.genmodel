@@ -728,10 +728,13 @@
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/style/EdgeStyleDescription/beginLabelStyleDescription"/>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/style/EdgeStyleDescription/centerLabelStyleDescription"/>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/style/EdgeStyleDescription/endLabelStyleDescription"/>
-          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/style/EdgeStyleDescription/endsCentering"/>
+          <genFeatures createChild="false" propertyDescription="Use this feature to generalize the ends centering behavior to all source mappings, all target mappings or both. If \&quot;None\&quot;, you have to select the source and target mappings manually."
+              ecoreFeature="ecore:EAttribute diagram.ecore#//description/style/EdgeStyleDescription/endsCentering"/>
           <genFeatures notify="false" createChild="false" propertyCategory="Advanced"
+              propertyDescription="The mappings for which the edge source will be centered. Deactivated if ends Centering value is \&quot;Both\&quot; or \&quot;Source\&quot; (that means the source is always centered)"
               propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//description/style/EdgeStyleDescription/centeredSourceMappings"/>
           <genFeatures notify="false" createChild="false" propertyCategory="Advanced"
+              propertyDescription="The mappings for which the edge target will be centered. Deactivated if ends Centering value is \&quot;Both\&quot; or \&quot;Target\&quot; (that means the target is always centered)"
               propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//description/style/EdgeStyleDescription/centeredTargetMappings"/>
         </genClasses>
         <genClasses ecoreClass="diagram.ecore#//description/style/BeginLabelStyleDescription"/>

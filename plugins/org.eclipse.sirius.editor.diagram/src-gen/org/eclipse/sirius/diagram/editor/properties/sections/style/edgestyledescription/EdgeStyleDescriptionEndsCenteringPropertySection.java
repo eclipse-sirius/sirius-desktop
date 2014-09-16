@@ -16,7 +16,12 @@ import java.util.List;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.diagram.description.CenteringStyle;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractRadioButtonPropertySection;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.CLabel;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
@@ -78,6 +83,18 @@ public class EdgeStyleDescriptionEndsCenteringPropertySection extends AbstractRa
      */
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
+
+        nameLabel
+                .setToolTipText("Use this feature to generalize the ends centering behavior to all source mappings, all target mappings or both. If \"None\", you have to select the source and target mappings manually.");
+
+        CLabel help = getWidgetFactory().createCLabel(composite, "");
+        FormData data = new FormData();
+        data.top = new FormAttachment(nameLabel, 0, SWT.TOP);
+        data.left = new FormAttachment(nameLabel);
+        help.setLayoutData(data);
+        help.setFont(SiriusEditor.getFontRegistry().get("description"));
+        help.setImage(getHelpIcon());
+        help.setToolTipText("Use this feature to generalize the ends centering behavior to all source mappings, all target mappings or both. If \"None\", you have to select the source and target mappings manually.");
 
     }
 }

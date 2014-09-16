@@ -178,8 +178,7 @@ public class EdgeStyleDescriptionItemProvider extends ItemProviderAdapter implem
      */
     protected void addEndsCenteringPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyleDescription_endsCentering_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_endsCentering_feature", "_UI_EdgeStyleDescription_type"),
+                getString("_UI_EdgeStyleDescription_endsCentering_feature"), getString("_UI_EdgeStyleDescription_endsCentering_description"),
                 StylePackage.Literals.EDGE_STYLE_DESCRIPTION__ENDS_CENTERING, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
@@ -191,8 +190,7 @@ public class EdgeStyleDescriptionItemProvider extends ItemProviderAdapter implem
      */
     protected void addCenteredSourceMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyleDescription_centeredSourceMappings_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_centeredSourceMappings_feature", "_UI_EdgeStyleDescription_type"),
+                getString("_UI_EdgeStyleDescription_centeredSourceMappings_feature"), getString("_UI_EdgeStyleDescription_centeredSourceMappings_description"),
                 StylePackage.Literals.EDGE_STYLE_DESCRIPTION__CENTERED_SOURCE_MAPPINGS, true, false, true, null, getString("_UI_AdvancedPropertyCategory"), null));
     }
 
@@ -204,8 +202,7 @@ public class EdgeStyleDescriptionItemProvider extends ItemProviderAdapter implem
      */
     protected void addCenteredTargetMappingsPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_EdgeStyleDescription_centeredTargetMappings_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_EdgeStyleDescription_centeredTargetMappings_feature", "_UI_EdgeStyleDescription_type"),
+                getString("_UI_EdgeStyleDescription_centeredTargetMappings_feature"), getString("_UI_EdgeStyleDescription_centeredTargetMappings_description"),
                 StylePackage.Literals.EDGE_STYLE_DESCRIPTION__CENTERED_TARGET_MAPPINGS, true, false, true, null, getString("_UI_AdvancedPropertyCategory"), null));
     }
 
