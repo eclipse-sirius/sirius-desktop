@@ -83,6 +83,11 @@ public class ViewpointSpecificationProjectWizard extends Wizard implements INewW
     @Override
     public boolean performFinish() {
         try {
+            // if user do not reach page 2, the VSM name is defined according to
+            // the project name
+            if (!newOdesignPage.isPage2Visited) {
+                newOdesignPage.modelName.setText(newOdesignPage.extractModelName(newOdesignPage.firstPage.getProjectName()));
+            }
             ViewpointSpecificationProject.createNewViewpointSpecificationProject(workbench, newProjectPage.getProjectName(), newProjectPage.getLocationPath(), newOdesignPage.getModelName().getText(),
                     newOdesignPage.getInitialObjectName(), newOdesignPage.getEncoding(), getContainer());
             return true;
@@ -151,6 +156,9 @@ public class ViewpointSpecificationProjectWizard extends Wizard implements INewW
 
         private Text modelName;
 
+        // Check if odesign page has been visited
+        private Boolean isPage2Visited = false;
+
         private WizardNewProjectCreationPage firstPage;
 
         protected WizardNewODesignFilePage(final String pageName, WizardNewProjectCreationPage firstPage) {
@@ -191,7 +199,7 @@ public class ViewpointSpecificationProjectWizard extends Wizard implements INewW
             modelNameLabel.setLayoutData(data);
 
             modelName = new Text(composite, SWT.LEFT | SWT.BORDER);
-            modelName.setText(extractModelName(firstPage.getProjectName()) + DOT + ViewpointSpecificationProject.VIEWPOINT_MODEL_EXTENSION);
+            modelName.setText(extractModelName(firstPage.getProjectName()));
 
             data = new GridData();
             data.horizontalAlignment = GridData.FILL;
@@ -243,6 +251,7 @@ public class ViewpointSpecificationProjectWizard extends Wizard implements INewW
         public void setVisible(boolean visible) {
             if (visible) {
                 this.modelName.setText(extractModelName(firstPage.getProjectName()));
+                isPage2Visited = visible;
             }
             super.setVisible(visible);
         }
