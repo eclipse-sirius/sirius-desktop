@@ -17,6 +17,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
+import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gmf.runtime.common.core.util.ObjectAdapter;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.services.layout.LayoutType;
@@ -117,7 +118,7 @@ public class ArrangeBorderedNodesAction extends AbstractDiagramAction {
     protected boolean calculateEnabled() {
         return getSelectedObjects().size() > 0 && super.calculateEnabled();
     }
-    
+
     /**
      * {@inheritDoc}
      * 
@@ -125,14 +126,18 @@ public class ArrangeBorderedNodesAction extends AbstractDiagramAction {
      */
     @Override
     protected Command getCommand() {
-        Command command = null;
-        final IEditorPart activeEditor = getWorkbenchPage().getActiveEditor();
-        if (activeEditor instanceof SiriusDiagramEditor) {
-            final DiagramEditPart diagramEditPart = ((SiriusDiagramEditor) activeEditor).getDiagramEditPart();
-            final List<EditPart> selectedEditPart = new ArrayList<EditPart>(1);
-            selectedEditPart.add(diagramEditPart);
-            final BorderItemAwareLayoutProvider layoutProvider = new BorderItemAwareLayoutProvider(null);
-            command = layoutProvider.layoutEditParts(selectedEditPart, new ObjectAdapter(LayoutType.DEFAULT), false);
+        Command command = UnexecutableCommand.INSTANCE;
+        // Avoid NPE in getDiagramEditPart when diagramGraphialViewer is not
+        // ready.
+        if (getDiagramGraphicalViewer() != null) {
+            final IEditorPart activeEditor = getWorkbenchPage().getActiveEditor();
+            if (activeEditor instanceof SiriusDiagramEditor) {
+                final DiagramEditPart diagramEditPart = ((SiriusDiagramEditor) activeEditor).getDiagramEditPart();
+                final List<EditPart> selectedEditPart = new ArrayList<EditPart>(1);
+                selectedEditPart.add(diagramEditPart);
+                final BorderItemAwareLayoutProvider layoutProvider = new BorderItemAwareLayoutProvider(null);
+                command = layoutProvider.layoutEditParts(selectedEditPart, new ObjectAdapter(LayoutType.DEFAULT), false);
+            }
         }
         return command;
     }
