@@ -77,13 +77,25 @@ public class ResourceSaveDiagnose {
 
             final URIConverter uriConverter = resourcetoSave.getResourceSet() == null ? new ResourceSetImpl().getURIConverter() : resourcetoSave.getResourceSet().getURIConverter();
             final OutputStream temporaryFileOutputStream = uriConverter.createOutputStream(temporaryFileURI);
+            
+            long preSaveTimestamp = resourcetoSave.getTimeStamp();
+            boolean preSaveIsModified = resourcetoSave.isModified();
             try {
                 resourcetoSave.save(temporaryFileOutputStream, options);
             } finally {
                 temporaryFileOutputStream.close();
+                /*
+                 * saving the resource instance even in an external buffer will
+                 * change the session state, notably isModified and the timestamp
+                 * (see the implementation of ResourceImpl). We don't want to have
+                 * this side effect, the best we can do is undo it aftersaving.
+                 */
+                resourcetoSave.setModified(preSaveIsModified);
+                resourcetoSave.setTimeStamp(preSaveTimestamp);
             }
 
             InputStream oldContents = null;
+
             try {
                 oldContents = uriConverter.createInputStream(resourcetoSave.getURI());
             } catch (final IOException exception) {

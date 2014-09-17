@@ -13,6 +13,7 @@ package org.eclipse.sirius.business.internal.session;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -22,13 +23,15 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.session.AbstractSavingPolicy;
+import org.eclipse.sirius.business.internal.session.danalysis.DifferentSerialization;
+import org.eclipse.sirius.business.internal.session.danalysis.URIExists;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
-import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Sets;
@@ -76,7 +79,7 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
              * that the Sirius runtime will set the isModified flag itself when
              * a change is done on the resource.
              */
-            return resource.isLoaded() && resource.isModified();
+            return resource.isModified();
         }
     };
 
@@ -125,18 +128,51 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
      */
     @Override
     public Collection<Resource> computeResourcesToSave(Set<Resource> scope, Map<?, ?> options, IProgressMonitor monitor) {
-        // We must save a resource if...
-        Set<Resource> resourcesToSave = Sets.newLinkedHashSet();
-        // it has been explicitly modified (or marked as such)...
-        Iterables.addAll(resourcesToSave, Iterables.filter(scope, isModified));
-        // or it references a resource which has been modified (in which case
-        // the URIs to the referenced elements in these resource *may* have
-        // changed)...
-        Iterables.addAll(resourcesToSave, Iterables.filter(scope, new ResourceHasReferenceTo(Predicates.and(Predicates.in(scope), isModified))));
-        // or the underlying file is out of date and must be recreated/updated
-        // to match the version in memory.
-        Iterables.addAll(resourcesToSave, Iterables.filter(scope, underlyingFileIsDeletedOrConflicting));
-        return ImmutableSet.copyOf(resourcesToSave);
+
+        Map<Object, Object> mergedOptions = new HashMap<Object, Object>(getDefaultSaveOptions());
+        if (options != null) {
+            mergedOptions.putAll(options);
+        }
+
+        Set<Resource> saveable = Sets.newLinkedHashSet(Iterables.filter(scope, new Predicate<Resource>() {
+
+            @Override
+            public boolean apply(Resource resourcetoSave) {
+                return resourcetoSave.getURI().isFile() || resourcetoSave.getURI().isPlatformResource() && !SiriusUtil.isModelerDescriptionFile(resourcetoSave);
+            }
+
+        }));
+
+        /* We must save a resource if is has been logically modified ... */
+
+        Set<Resource> logicallyModified = Sets.newLinkedHashSet(Iterables.filter(saveable, isModified));
+
+        /*
+         * ... or it references a resource which has been modified (in which
+         * case the URIs to the referenced elements in these resource *may*
+         * havechanged)...
+         */
+        Set<Resource> dependOnLogicallyModified = Sets.newLinkedHashSet();
+        if (logicallyModified.size() > 0) {
+            Iterables.addAll(dependOnLogicallyModified, Iterables.filter(Sets.difference(saveable, logicallyModified), new ResourceHasReferenceTo(isModified)));
+        }
+        Predicate<Resource> hasDifferentSerialization = new DifferentSerialization(mergedOptions);
+
+        Predicate<Resource> exists = new URIExists(mergedOptions);
+        Set<Resource> underlyingFileDoesNotExist = Sets.newLinkedHashSet(Iterables.filter(saveable, Predicates.not(exists)));
+        Set<Resource> isConflictingOrDeleted = Sets.newLinkedHashSet(Iterables.filter(saveable, underlyingFileIsDeletedOrConflicting));
+        /*
+         * or the underlying file is out of date and must be recreated/updated
+         * to match the version in memory.
+         */
+        Set<Resource> toSave = Sets.newLinkedHashSet(Iterables.filter(Sets.union(logicallyModified, dependOnLogicallyModified), hasDifferentSerialization));
+
+        Iterables.addAll(toSave, Sets.union(underlyingFileDoesNotExist, isConflictingOrDeleted));
+        /*
+         * if we have something to save which has no different serialization
+         * then something is fishy...
+         */
+        return toSave;
     }
 
     private static class ResourceHasReferenceTo implements Predicate<Resource> {
@@ -162,16 +198,26 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
 
         @Override
         public boolean apply(EObject source) {
-            /*
-             * We could process the references in an order which gives us the
-             * highest chance to hit a success sooner and avoid, for instance,
-             * computing derived references unless strictly necessary.
-             */
-            for (EReference ref : source.eClass().getEAllReferences()) {
-                if (!ref.isTransient()) {
-                    for (EObject target : getReferencedEObjects(source, ref)) {
-                        if (!target.eIsProxy() && modifiedResources.apply(target.eResource())) {
-                            return true;
+            if (!source.eIsProxy()) {
+                /*
+                 * We could process the references in an order which gives us
+                 * the highest chance to hit a success sooner and avoid, for
+                 * instance, computing derived references unless strictly
+                 * necessary.
+                 */
+                for (EReference ref : source.eClass().getEAllReferences()) {
+                    /*
+                     * we should not go on containment references as we are
+                     * already in a getProperContent iteration. We are only
+                     * interested in references which will impact the
+                     * serialization (hence ignoring isTransient).
+                     */
+                    if (!ref.isTransient() && !ref.isContainment()) {
+                        for (EObject target : getReferencedEObjects(source, ref)) {
+                            final Resource targetResource = target.eResource();
+                            if (!target.eIsProxy() && targetResource != null && modifiedResources.apply(targetResource)) {
+                                return true;
+                            }
                         }
                     }
                 }
