@@ -168,7 +168,7 @@ public final class GraphicalHelper {
      */
     public static Point getScrollSize(GraphicalEditPart part) {
         Preconditions.checkNotNull(part);
-        FreeformViewport viewport = FigureUtilities.getFreeformViewport(part.getFigure());
+        FreeformViewport viewport = FigureUtilities.getRootFreeformViewport(part.getFigure());
         if (viewport != null) {
             return viewport.getViewLocation();
         } else {

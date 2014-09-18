@@ -25,6 +25,7 @@ import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.LayerConstants;
 import org.eclipse.gef.editparts.LayerManager;
@@ -125,7 +126,6 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
      *            the {@link CenteringStyle} value.
      */
     private void centerEdgeEnds(CenteringStyle center) {
-
         Bendpoints bendpoints = edge.getBendpoints();
 
         if (bendpoints instanceof RelativeBendpoints) {
@@ -134,10 +134,12 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
 
             if (edgeSourceView instanceof Node && edgeTargetView instanceof Node) {
 
+                setConnectionIfNull();
+
                 // We get the edge source and target nodes absolute bounds to
                 // compute absolute anchors coordinates
-                Option<Rectangle> sourceBounds = GMFHelper.getAbsoluteBounds(edgeSourceView);
-                Option<Rectangle> targetBounds = GMFHelper.getAbsoluteBounds(edgeTargetView);
+                Option<Rectangle> sourceBounds = getAbsoluteSourceBounds(edgeSourceView);
+                Option<Rectangle> targetBounds = getAbsoluteTargetBounds(edgeTargetView);
 
                 if (sourceBounds.some() && targetBounds.some()) {
 
@@ -165,6 +167,41 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
             }
         }
 
+    }
+
+    /**
+     * Because of the difference between the GMF absolute bounds computation and
+     * the draw2D absolute bounds, we will compute these bounds from draw2D if
+     * we have access to the figure, or from GMF if we work in "pure" GMF
+     * context.
+     * 
+     * @param gmfView
+     *            the GMFView to compute the absolute bounds.
+     * @param isSource
+     *            true if it represents the edge source, false otherwise.
+     * @return the absolute bounds.
+     */
+    private Option<Rectangle> getAbsoluteBounds(View gmfView, boolean isSource) {
+        if (connectionEditPart != null) {
+            EditPart editPart = null;
+            if (isSource) {
+                editPart = connectionEditPart.getSource();
+            } else {
+                editPart = connectionEditPart.getTarget();
+            }
+            if (editPart instanceof GraphicalEditPart) {
+                return Options.newSome(GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) editPart));
+            }
+        }
+        return GMFHelper.getAbsoluteBounds(gmfView);
+    }
+
+    private Option<Rectangle> getAbsoluteSourceBounds(View edgeSourceView) {
+        return getAbsoluteBounds(edgeSourceView, true);
+    }
+
+    private Option<Rectangle> getAbsoluteTargetBounds(View edgeTargetView) {
+        return getAbsoluteBounds(edgeTargetView, false);
     }
 
     /**
@@ -487,7 +524,6 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
     }
 
     private Option<PointList> getAbsolutePointListFromConnection() {
-        setConnectionIfNull();
         Option<PointList> pointList = Options.newNone();
         if (connection != null) {
             pointList = Options.newSome(connection.getPoints().getCopy());

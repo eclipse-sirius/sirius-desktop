@@ -148,4 +148,26 @@ public final class FigureUtilities {
         }
         return (FreeformViewport) current;
     }
+
+    /**
+     * Returns the root {@link FreeformViewport} that owns this figure, if any.
+     * We call root {@link FreeformViewport} the last one we found when going to
+     * the top of the figure hierarchy.
+     * 
+     * @param figure
+     *            the figure.
+     * @return the {@link FreeformViewport} that owns this figure, or
+     *         <code>null</code> if there is none.
+     */
+    public static FreeformViewport getRootFreeformViewport(IFigure figure) {
+        IFigure current = figure;
+        FreeformViewport rootFreeformViewport = null;
+        while (current != null) {
+            if (current instanceof FreeformViewport) {
+                rootFreeformViewport = (FreeformViewport) current;
+            }
+            current = current.getParent();
+        }
+        return rootFreeformViewport;
+    }
 }
