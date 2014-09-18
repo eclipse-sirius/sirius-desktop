@@ -115,6 +115,12 @@ public class ArrangeBorderedNodesAction extends DiagramAction {
      */
     @Override
     protected boolean calculateEnabled() {
+        // Do not call super.calculateEnabled(), it would break client that use
+        // "Arrange" actions ("Arrange All" and "Arrange Selection").
+        // The following tests will failed otherwise:
+        // - DiagramMigrationTestCampaign09
+        // - SequenceArrangeLinkedBorderedNodesTest
+        // - BendpointsStabilityOnMovesTest
         return getSelectedObjects().size() > 0;
     }
 
