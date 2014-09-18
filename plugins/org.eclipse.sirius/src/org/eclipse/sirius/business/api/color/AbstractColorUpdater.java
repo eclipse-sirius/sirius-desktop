@@ -27,6 +27,16 @@ import org.eclipse.sirius.viewpoint.description.InterpolatedColor;
  * 
  */
 public class AbstractColorUpdater {
+
+    /** Default red value. */
+    public static final int DEFAULT_RED_VALUE = 209;
+
+    /** Default green value. */
+    public static final int DEFAULT_GREEN_VALUE = 209;
+
+    /** Default blue value. */
+    public static final int DEFAULT_BLUE_VALUE = 209;
+
     /**
      * return the computed rgbvalues from an interpolated color description.
      * 
@@ -85,9 +95,9 @@ public class AbstractColorUpdater {
      */
     protected RGBValues createDefaultRGBValue() {
         final RGBValues newValues = ViewpointFactory.eINSTANCE.createRGBValues();
-        newValues.setRed(209);
-        newValues.setGreen(209);
-        newValues.setBlue(209);
+        newValues.setRed(DEFAULT_RED_VALUE);
+        newValues.setGreen(DEFAULT_GREEN_VALUE);
+        newValues.setBlue(DEFAULT_BLUE_VALUE);
         return newValues;
     }
 

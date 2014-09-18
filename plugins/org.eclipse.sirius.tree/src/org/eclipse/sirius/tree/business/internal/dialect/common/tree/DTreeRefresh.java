@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.api.color.AbstractColorUpdater;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.synchronizer.AutomaticCreator;
@@ -44,11 +45,14 @@ import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.DTreeItemContainer;
 import org.eclipse.sirius.tree.TreeFactory;
+import org.eclipse.sirius.tree.TreeItemStyle;
 import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
 import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.MappingBasedPartition;
 import org.eclipse.sirius.tree.business.internal.refresh.DTreeElementSynchronizerSpec;
 import org.eclipse.sirius.tree.description.TreeDescription;
 import org.eclipse.sirius.tree.description.TreeItemMapping;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
@@ -443,11 +447,24 @@ class TreeItemContainerChildSupport implements ChildCreationSupport {
 
     public CreatedOutput createChild(OutputDescriptor outDesc) {
         OutputTreeItemDescriptor descriptor = (OutputTreeItemDescriptor) outDesc;
-        final DTreeItem line = TreeFactory.eINSTANCE.createDTreeItem();
-        line.setActualMapping(descriptor.getMapping().getDescription());
-        line.setTarget(outDesc.getSourceElement());
-        container.getOwnedTreeItems().add(line);
-        CreatedTreeItem newOne = new CreatedTreeItem(ctx, line, descriptor);
+        DTreeItem dTreeItem = TreeFactory.eINSTANCE.createDTreeItem();
+        dTreeItem.setActualMapping(descriptor.getMapping().getDescription());
+        dTreeItem.setTarget(outDesc.getSourceElement());
+        dTreeItem.getSemanticElements().add(outDesc.getSourceElement());
+        TreeItemStyle treeItemStyle = TreeFactory.eINSTANCE.createTreeItemStyle();
+        RGBValues backgroundColor = ViewpointFactory.eINSTANCE.createRGBValues();
+        backgroundColor.setRed(AbstractColorUpdater.DEFAULT_RED_VALUE);
+        backgroundColor.setGreen(AbstractColorUpdater.DEFAULT_GREEN_VALUE);
+        backgroundColor.setBlue(AbstractColorUpdater.DEFAULT_BLUE_VALUE);
+        RGBValues labelColor = ViewpointFactory.eINSTANCE.createRGBValues();
+        labelColor.setRed(AbstractColorUpdater.DEFAULT_RED_VALUE);
+        labelColor.setGreen(AbstractColorUpdater.DEFAULT_GREEN_VALUE);
+        labelColor.setBlue(AbstractColorUpdater.DEFAULT_BLUE_VALUE);
+        treeItemStyle.setBackgroundColor(backgroundColor);
+        treeItemStyle.setLabelColor(labelColor);
+        dTreeItem.setOwnedStyle(treeItemStyle);
+        container.getOwnedTreeItems().add(dTreeItem);
+        CreatedTreeItem newOne = new CreatedTreeItem(ctx, dTreeItem, descriptor);
         return newOne;
     }
 }
