@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tree.ui.tools.internal.editor.listeners;
 
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -21,6 +22,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.business.api.command.DTreeItemExpansionChangeCommand;
+import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
 import org.eclipse.sirius.tree.business.internal.helper.RefreshTreeElementTask;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
@@ -34,29 +36,26 @@ public class DTreeViewerListener implements ITreeViewerListener {
 
     private Session session;
 
-    private TransactionalEditingDomain domain;
-
     /**
      * Default constructor.
      * 
      * @param session
-     *            {@link Session}
+     *            the {@link Session} owning models.
      */
     public DTreeViewerListener(Session session) {
         this.session = session;
-        this.domain = session.getTransactionalEditingDomain();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void treeExpanded(final TreeExpansionEvent event) {
         if (event.getElement() instanceof DTreeItem) {
             DTreeItem dTreeItem = (DTreeItem) event.getElement();
             if (!dTreeItem.isExpanded()) {
+                TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
                 CommandStack commandStack = domain.getCommandStack();
                 CompoundCommand expandDTreeItemCmd = new CompoundCommand("Expand " + dTreeItem.getName() + " tree item");
-                expandDTreeItemCmd.append(new DTreeItemExpansionChangeCommand(session, dTreeItem, true));
+                GlobalContext globalContext = new GlobalContext(session.getModelAccessor(), session.getInterpreter(), session.getSemanticResources());
+                expandDTreeItemCmd.append(new DTreeItemExpansionChangeCommand(globalContext, domain, dTreeItem, true));
                 if (!Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null)) {
                     SiriusCommand result = new SiriusCommand(domain);
                     result.getTasks().add(new RefreshTreeElementTask((DTreeItem) event.getElement(), domain));
@@ -67,17 +66,16 @@ public class DTreeViewerListener implements ITreeViewerListener {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void treeCollapsed(final TreeExpansionEvent event) {
         if (event.getElement() instanceof DTreeItem) {
             DTreeItem dTreeItem = (DTreeItem) event.getElement();
             if (dTreeItem.isExpanded()) {
+                TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
                 CommandStack commandStack = domain.getCommandStack();
-                CompoundCommand expandDTreeItemCmd = new CompoundCommand("Collapse " + dTreeItem.getName() + " tree item");
-                expandDTreeItemCmd.append(new DTreeItemExpansionChangeCommand(session, dTreeItem, false));
-                commandStack.execute(expandDTreeItemCmd);
+                GlobalContext globalContext = new GlobalContext(session.getModelAccessor(), session.getInterpreter(), session.getSemanticResources());
+                Command collapseDTreeItemCmd = new DTreeItemExpansionChangeCommand(globalContext, domain, dTreeItem, false);
+                commandStack.execute(collapseDTreeItemCmd);
             }
         }
     }

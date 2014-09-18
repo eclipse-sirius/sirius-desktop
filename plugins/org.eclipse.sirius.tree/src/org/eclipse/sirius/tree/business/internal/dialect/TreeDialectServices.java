@@ -211,7 +211,7 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
         InterpreterRegistry.prepareImportsFromSession(interpreter, session);
         ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(tree.getTarget());
 
-        DTreeUserInteraction interaction = new DTreeUserInteraction(tree, new GlobalContext(accessor, session));
+        DTreeUserInteraction interaction = new DTreeUserInteraction(tree, new GlobalContext(accessor, session.getInterpreter(), session.getSemanticResources()));
         interaction.refreshContent(fullRefresh, new SubProgressMonitor(monitor, 1));
 
     }

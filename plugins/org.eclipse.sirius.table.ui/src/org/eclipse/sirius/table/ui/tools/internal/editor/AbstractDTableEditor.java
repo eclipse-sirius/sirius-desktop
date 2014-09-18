@@ -512,13 +512,6 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
     }
 
     /**
-     * For test only.
-     */
-    public void addColumn() {
-        ((DTableViewerManager) treeViewerManager).addNewColumn(null, -1, true);
-    }
-
-    /**
      * {@inheritDoc}
      */
     public void validateRepresentation() {

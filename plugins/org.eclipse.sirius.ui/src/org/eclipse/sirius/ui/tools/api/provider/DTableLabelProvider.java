@@ -185,7 +185,7 @@ public class DTableLabelProvider extends LabelProvider {
         boolean areDistinct = false;
 
         if (selection.size() > 1) {
-            final Iterator iterator = selection.iterator();
+            final Iterator<?> iterator = selection.iterator();
             while (iterator.hasNext()) {
                 final Object element = iterator.next();
                 if (iterator.hasNext()) {

@@ -35,7 +35,7 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
  * 
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
-public class DTreeColumnLabelProvider extends DSemanticTargetBasedLabelProvider {
+public class DTreeItemLabelProvider extends DSemanticTargetBasedLabelProvider {
 
     /**
      * Default constructor.
@@ -43,15 +43,10 @@ public class DTreeColumnLabelProvider extends DSemanticTargetBasedLabelProvider 
      * @param adapterFactoryLabelProvider
      *            Provider which to delegate label and image resolution.
      */
-    public DTreeColumnLabelProvider(final AdapterFactory adapterFactoryLabelProvider) {
+    public DTreeItemLabelProvider(final AdapterFactory adapterFactoryLabelProvider) {
         super(adapterFactoryLabelProvider);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ColumnLabelProvider#getBackground(java.lang.Object)
-     */
     @Override
     public Color getBackground(final Object element) {
         Color result = null;
@@ -67,11 +62,6 @@ public class DTreeColumnLabelProvider extends DSemanticTargetBasedLabelProvider 
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ColumnLabelProvider#getFont(java.lang.Object)
-     */
     @Override
     public Font getFont(final Object element) {
         if (element instanceof DTreeItem) {
@@ -90,11 +80,6 @@ public class DTreeColumnLabelProvider extends DSemanticTargetBasedLabelProvider 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ColumnLabelProvider#getForeground(java.lang.Object)
-     */
     @Override
     public Color getForeground(final Object element) {
         if (element instanceof DTreeItem) {
@@ -109,11 +94,6 @@ public class DTreeColumnLabelProvider extends DSemanticTargetBasedLabelProvider 
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ColumnLabelProvider#getImage(java.lang.Object)
-     */
     @Override
     public Image getImage(final Object element) {
         if (element instanceof DTreeItem) {
@@ -156,11 +136,6 @@ public class DTreeColumnLabelProvider extends DSemanticTargetBasedLabelProvider 
         return customImage;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.jface.viewers.ColumnLabelProvider#getText(java.lang.Object)
-     */
     @Override
     public String getText(final Object element) {
         String result = StringUtil.EMPTY_STRING;

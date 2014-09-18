@@ -177,7 +177,7 @@ public class TableUIUpdaterRunnable implements Runnable {
 
     private void removeColumns() {
         for (DColumn dColumn : dColumnsToRemove) {
-            dTableTreeViewer.removeOldColumn(dColumn);
+            dTableViewerManager.removeOldColumn(dColumn);
         }
     }
 

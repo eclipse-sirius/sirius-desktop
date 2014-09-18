@@ -15,11 +15,11 @@ import org.eclipse.jface.viewers.ILabelDecorator;
 import org.eclipse.swt.graphics.Image;
 
 /**
- * Inherits {@link DTreeColumnLabelProvider} to decorate DTreeItem.
+ * Inherits {@link DTreeItemLabelProvider} to decorate DTreeItem.
  * 
  * @author edugueperoux
  */
-public class DTreeDecoratingLabelProvider extends DTreeColumnLabelProvider {
+public class DTreeDecoratingLabelProvider extends DTreeItemLabelProvider {
 
     private ILabelDecorator decorator;
 

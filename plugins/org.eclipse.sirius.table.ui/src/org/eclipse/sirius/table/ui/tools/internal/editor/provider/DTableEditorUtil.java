@@ -51,7 +51,7 @@ public final class DTableEditorUtil {
      */
     public static void addNewColumn(AbstractDTableViewerManager treeViewerManager, int position, DColumn newColumn) {
         DTableTreeViewer dTableTreeViewer = (DTableTreeViewer) treeViewerManager.getTreeViewer();
-        dTableTreeViewer.addNewColumn(position, newColumn);
+        ((DTableViewerManager) treeViewerManager).addNewColumn(newColumn, position, true);
         TreeColumn[] columns = dTableTreeViewer.getTree().getColumns();
         // Adding a call to pack() so that the created column has the
         // expected size
@@ -103,7 +103,7 @@ public final class DTableEditorUtil {
                 }
             } else {
                 // Step 3: handle deleted columns
-                dTableTreeViewer.removeOldColumn(dColumn);
+                ((DTableViewerManager) treeViewerManager).removeOldColumn(dColumn);
 
             }
         }

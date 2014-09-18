@@ -437,10 +437,7 @@ class TreeItemContainerChildSupport implements ChildCreationSupport {
          * The cross referencer is actually optional for the eDelete method of
          * the model accessor.
          */
-        ECrossReferenceAdapter xRef = null;
-        if (ctx.getSession().some()) {
-            xRef = ctx.getSession().get().getSemanticCrossReferencer();
-        }
+        ECrossReferenceAdapter xRef = ECrossReferenceAdapter.getCrossReferenceAdapter(container);
         ctx.getModelAccessor().eDelete(outDesc.getCreatedElement(), xRef);
     }
 

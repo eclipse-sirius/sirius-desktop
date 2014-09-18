@@ -28,7 +28,8 @@ import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
 /**
- * TODO .
+ * A {@link SemanticPartition} based on a domanClass for a specified
+ * {@link GlobalContext}.
  * 
  * @author cbrun
  */
@@ -95,14 +96,14 @@ public class MappingBasedPartition implements SemanticPartition {
     }
 
     private Collection<EObject> getAllSessionSemanticRoots() {
-        if (ctx.getSession().some()) {
-            Collection<EObject> semanticRoots = Lists.newArrayList();
-            for (Resource resource : ctx.getSession().get().getSemanticResources()) {
-                semanticRoots.addAll(resource.getContents());
-            }
-            return semanticRoots;
-        } else {
-            return Collections.emptyList();
+        Collection<Resource> semanticResources = ctx.getSemanticResources();
+        if (semanticResources == null) {
+            semanticResources = Collections.emptyList();
         }
+        Collection<EObject> semanticRoots = Lists.newArrayList();
+        for (Resource semanticResource : semanticResources) {
+            semanticRoots.addAll(semanticResource.getContents());
+        }
+        return semanticRoots;
     }
 }

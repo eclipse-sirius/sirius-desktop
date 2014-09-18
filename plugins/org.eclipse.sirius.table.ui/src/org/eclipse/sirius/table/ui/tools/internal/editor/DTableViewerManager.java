@@ -13,7 +13,6 @@ package org.eclipse.sirius.table.ui.tools.internal.editor;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -34,8 +33,6 @@ import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.TreeViewerColumn;
 import org.eclipse.jface.viewers.TreeViewerEditor;
 import org.eclipse.jface.viewers.TreeViewerFocusCellManager;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
@@ -59,7 +56,6 @@ import org.eclipse.sirius.table.ui.tools.internal.editor.action.CreateTargetColu
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.DeleteTargetColumnAction;
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.EditorCreateLineMenuAction;
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.EditorCreateTargetColumnMenuAction;
-import org.eclipse.sirius.table.ui.tools.internal.editor.action.SortLinesByColumnAction;
 import org.eclipse.sirius.table.ui.tools.internal.editor.listeners.DTableViewerListener;
 import org.eclipse.sirius.table.ui.tools.internal.editor.provider.DFeatureColumnEditingSupport;
 import org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableColumnHeaderLabelProvider;
@@ -86,8 +82,6 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Event;
-import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.swt.widgets.TreeItem;
@@ -100,23 +94,8 @@ import com.google.common.collect.Maps;
  * This class manages the tree viewer for display the DTable.
  * 
  * @author lredor
- * 
  */
 public class DTableViewerManager extends AbstractDTableViewerManager {
-
-    private final class SortListener implements Listener {
-        public void handleEvent(final Event e) {
-            final TreeColumn currentTreeColumn = (TreeColumn) e.widget;
-            final DColumn currentColumn = (DColumn) currentTreeColumn.getData(DTableViewerManager.TABLE_COLUMN_DATA);
-            if ((sortedBy == null && currentColumn == null) || (sortedBy != null && sortedBy.equals(currentColumn))) {
-                sortDirection = sortDirection == SWT.UP ? SWT.DOWN : SWT.UP;
-            } else {
-                sortDirection = SWT.UP;
-                sortedBy = currentColumn;
-            }
-            sortLines();
-        }
-    }
 
     /** The key for the image which represents an export action. */
     public static final String EXPORT_IMG = "table/export";
@@ -189,10 +168,6 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
 
     private DTableMenuListener actualMenuListener;
 
-    private int sortDirection = SWT.NONE;
-
-    private DColumn sortedBy;
-
     /**
      * The constructor.
      * 
@@ -200,7 +175,7 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
      *            The parent composite
      * @param dTable
      *            The input DTable
-     * @param editingDomain
+     * @param domain
      *            The transactional editing domain of this viewer
      * @param accessor
      *            The accessor for the model
@@ -209,18 +184,14 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
      * @param tableEditor
      *            The associated editor
      */
-    public DTableViewerManager(final Composite parent, final DTable dTable, final TransactionalEditingDomain editingDomain, final ModelAccessor accessor,
-            final ITableCommandFactory tableCommandFactory, final AbstractDTableEditor tableEditor) {
-        super(parent, dTable, editingDomain, accessor, tableCommandFactory, tableEditor);
+    public DTableViewerManager(final Composite parent, final DTable dTable, final TransactionalEditingDomain domain, final ModelAccessor accessor, final ITableCommandFactory tableCommandFactory,
+            final AbstractDTableEditor tableEditor) {
+        super(parent, dTable, domain, accessor, tableCommandFactory, tableEditor);
         this.tableCommandFactory = tableCommandFactory;
         // Initialize the resize/expand/collapse listener
-        tableViewerListener = new DTableViewerListener(this, getSession());
+        tableViewerListener = new DTableViewerListener(this, accessor, domain);
 
         this.createTreeViewer(parent);
-    }
-
-    private Session getSession() {
-        return SessionManager.INSTANCE.getSession(((DTable) dRepresentation).getTarget());
     }
 
     public static ImageRegistry getImageRegistry() {
@@ -249,7 +220,7 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         // Add a focus listener to deactivate the EMF actions on the Tree
         treeViewer.getTree().addFocusListener(new DTableTreeFocusListener(tableEditor, treeViewer.getTree()));
         initializeDragSupport();
-        sortListener = new SortListener();
+        sortListener = new DLinesSorter(getEditingDomain(), getEditor().getTableModel());
         // 1st column with line labels
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.ADD_SWT_COLUMN_KEY);
         final TreeViewerColumn headerTreeColumn = new TreeViewerColumn(treeViewer, SWT.CENTER, 0);
@@ -649,15 +620,6 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         treeViewerColumn.getColumn().addControlListener(tableViewerListener);
         treeViewerColumn.getColumn().addListener(SWT.Selection, sortListener);
         DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.ADD_SWT_COLUMN_KEY);
-        // Add listener to column so instance are sorted by this attributs
-        // when clicked
-        // tableColumn.addSelectionListener(new SelectionAdapter() {
-        //
-        // public void widgetSelected(SelectionEvent e) {
-        // tableViewer.setSorter(new
-        // ExampleTaskSorter(ExampleTaskSorter.DESCRIPTION));
-        // }
-        // });
     }
 
     /**
@@ -674,104 +636,6 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
                 treeColumn.dispose();
                 break;
             }
-        }
-    }
-
-    /**
-     * Remove a column from the table.
-     * 
-     * @param position
-     *            The position of the column to remove
-     */
-
-    public void removeOldColumn(final int position) {
-        try {
-            final TreeColumn treeColumn = treeViewer.getTree().getColumn(position);
-            treeColumn.dispose();
-        } catch (IllegalArgumentException e) {
-            // If index is out of range, the column does not exist and hence has
-            // no need do be deleted
-        }
-    }
-
-    /**
-     * Check the table.
-     * 
-     * @param table
-     *            the table to test
-     * @return true if the table is equals to the dTable of this manager, false
-     *         otherwise
-     */
-    public boolean isSameTable(final DTable table) {
-        return ((DTable) dRepresentation).equals(table);
-    }
-
-    /**
-     * Add in the treeViewer the new columns of the DTable and remove in the
-     * treeViewer the columns that are no longer in the DTable and then sort the
-     * treeViewer.<BR>
-     * Columns can be removed in two conditions :
-     * <UL>
-     * <LI>CrossTable: New semantic element corresponding to a column</LI>
-     * <LI>Changing the file odesign</LI>
-     * </UL>
-     */
-    public void refreshColumns() {
-        // Add new
-        for (final DColumn column : ((DTable) dRepresentation).getColumns()) {
-            boolean columnFound = false;
-            for (TreeColumn treeColumn : treeViewer.getTree().getColumns()) {
-                final DColumn columnData = (DColumn) treeColumn.getData(TABLE_COLUMN_DATA);
-                if (columnData != null && columnData.equals(column)) {
-                    columnFound = true;
-                    // Refresh the header if needed
-                    if (treeColumn.getText() != null && !treeColumn.getText().equals(columnData.getLabel()) && columnData.getLabel() != null) {
-                        treeColumn.setText(columnData.getLabel());
-                    }
-                    break;
-                }
-            }
-            if (!columnFound) {
-                addNewColumn(column, -1, true);
-            }
-        }
-        // Remove old
-        // We don't test the first column (that explains the for i=size-1 to
-        // 1)
-        for (int i = treeViewer.getTree().getColumnCount() - 1; i > 0; i--) {
-            final TreeColumn treeColumn = treeViewer.getTree().getColumn(i);
-            final DColumn columnData = (DColumn) treeColumn.getData(TABLE_COLUMN_DATA);
-            final Iterator<DColumn> iterDTableColumns = ((DTable) dRepresentation).getColumns().iterator();
-            boolean columnFound = false;
-            while (iterDTableColumns.hasNext() && !columnFound) {
-                final DColumn column = iterDTableColumns.next();
-                if (columnData != null && columnData.equals(column)) {
-                    columnFound = true;
-                }
-            }
-            if (!columnFound) {
-                treeColumn.dispose();
-            }
-        }
-        if (((DTable) dRepresentation).getDescription() instanceof CrossTableDescription) {
-            // Sort
-            final int[] order = new int[treeViewer.getTree().getColumnCount()];
-            order[0] = 0; // Header line
-            for (int indexTableColumn = 0; indexTableColumn < ((DTable) dRepresentation).getColumns().size(); indexTableColumn++) {
-                final DColumn column = ((DTable) dRepresentation).getColumns().get(indexTableColumn);
-                if (column instanceof DTargetColumn) {
-                    boolean found = false;
-                    for (int indexSwtTreeColumn = 1; indexSwtTreeColumn < treeViewer.getTree().getColumnCount() && !found; indexSwtTreeColumn++) {
-                        final TreeColumn treeColumn = treeViewer.getTree().getColumn(indexSwtTreeColumn);
-                        final DColumn columnData = (DColumn) treeColumn.getData(TABLE_COLUMN_DATA);
-                        if (columnData != null && columnData.equals(column)) {
-                            order[indexTableColumn + 1] = indexSwtTreeColumn;
-                            found = true;
-                        }
-                    }
-                }
-            }
-            treeViewer.getTree().setColumnOrder(order);
         }
     }
 
@@ -801,18 +665,6 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
      */
     public EditorCreateTargetColumnMenuAction getCreateTargetColumnMenu() {
         return createTargetColumnMenu;
-    }
-
-    /**
-     * Sort the lines of the table in the inverse order for the same column.
-     */
-    private void sortLines() {
-        final SortLinesByColumnAction action = new SortLinesByColumnAction(getEditingDomain());
-        action.setColumn(sortedBy);
-        if (sortedBy == null) {
-            action.setTable((DTable) dRepresentation);
-        }
-        action.run();
     }
 
     /**

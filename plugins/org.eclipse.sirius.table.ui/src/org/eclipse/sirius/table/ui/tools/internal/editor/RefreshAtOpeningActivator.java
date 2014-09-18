@@ -12,10 +12,11 @@ package org.eclipse.sirius.table.ui.tools.internal.editor;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DTable;
-import org.eclipse.sirius.table.ui.tools.internal.command.ChangeColumnWidthCommand;
+import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableEditorUtil;
 import org.eclipse.sirius.table.ui.tools.internal.editor.utils.TreeColumnWidthQuery;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -115,7 +116,7 @@ public class RefreshAtOpeningActivator implements IPartListener {
             Display.getDefault().syncExec(treeColumnWidthQuery);
             int widgetWidth = treeColumnWidthQuery.getResult();
             if (dTable.getHeaderColumnWidth() != widgetWidth && session.getModelAccessor().getPermissionAuthority().canEditInstance(dTable)) {
-                Command changeColumnWidthCommand = new ChangeColumnWidthCommand(session, widgetWidth, dTable);
+                Command changeColumnWidthCommand = SetCommand.create(session.getTransactionalEditingDomain(), dTable, TablePackage.Literals.DTABLE__HEADER_COLUMN_WIDTH, widgetWidth);
                 refreshDTableAtOpeningCmd.append(changeColumnWidthCommand);
             }
 
@@ -132,7 +133,7 @@ public class RefreshAtOpeningActivator implements IPartListener {
                     // we do not update the last dColumn as its width is always
                     // the remaining width of the editor
                     if (!(DTableViewerManager.IS_GTK_OS && DTableEditorUtil.isLastColumn(treeColumn))) {
-                        Command changeColumnWidthCommand = new ChangeColumnWidthCommand(session, widgetWidth, dColumn);
+                        Command changeColumnWidthCommand = SetCommand.create(session.getTransactionalEditingDomain(), dColumn, TablePackage.Literals.DCOLUMN__WIDTH, widgetWidth);
                         refreshDTableAtOpeningCmd.append(changeColumnWidthCommand);
                     }
 

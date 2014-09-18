@@ -23,7 +23,6 @@ import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
-import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
 import org.eclipse.sirius.table.ui.tools.internal.editor.listeners.DLineExpansionChecker;
 import org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableColumnHeaderLabelProvider;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTreeViewer;
@@ -50,8 +49,6 @@ public class DTableTreeViewer extends AbstractDTreeViewer {
 
     private DCell selectedCell;
 
-    private DTableViewerManager manager;
-
     private Character firstEditionCharacter;
 
     private DLineExpansionChecker dLineExpansionChecker;
@@ -69,7 +66,6 @@ public class DTableTreeViewer extends AbstractDTreeViewer {
      */
     public DTableTreeViewer(final Composite parent, final int style, final DTableViewerManager manager) {
         super(parent, style);
-        this.manager = manager;
         dLineExpansionChecker = new DLineExpansionChecker(parent, manager, manager.getAccessor().getPermissionAuthority());
     }
 
@@ -196,86 +192,6 @@ public class DTableTreeViewer extends AbstractDTreeViewer {
         } else {
             super.refreshItem(item, dRepresentationElement);
         }
-    }
-
-    /**
-     * Add a new column in the table.
-     * 
-     * @param newColumn
-     *            The new targetColumn to add
-     */
-    public void addNewColumn(final DTargetColumn newColumn) {
-        manager.addNewColumn(newColumn, -1, true);
-    }
-
-    /**
-     * Add a new column in the table.
-     * 
-     * @param position
-     *            The position of the new column
-     * @param newColumn
-     *            The new targetColumn to add
-     */
-    public void addNewColumn(final int position, final DColumn newColumn) {
-        manager.addNewColumn(newColumn, position, true);
-    }
-
-    /**
-     * Remove a column from the table.
-     * 
-     * @param oldColumn
-     *            The old targetColumn to remove
-     */
-    public void removeOldColumn(final DColumn oldColumn) {
-        manager.removeOldColumn(oldColumn);
-    }
-
-    /**
-     * Remove a column from the table.
-     * 
-     * @param position
-     *            The position of the old column
-     */
-    public void removeOldColumn(final int position) {
-        manager.removeOldColumn(position);
-    }
-
-    /**
-     * Check the table.
-     * 
-     * @param table
-     *            the table to test
-     * @return true if the table is equals to the dTable of this treeViewer,
-     *         false otherwise
-     */
-    public boolean isSameTable(final DTable table) {
-        return manager.isSameTable(table);
-    }
-
-    /**
-     * Add in the treeViewer the new columns of the DTable a,d remove in the
-     * treeViewer the columns that are no longer in the DTable.
-     */
-    public void refreshColumns() {
-        manager.refreshColumns();
-    }
-
-    /**
-     * Add and initialize the contextual menu for the table.
-     */
-    public void fillMenu() {
-        manager.fillMenu();
-    }
-
-    /**
-     * Changed descriptionFileChanged state.
-     * 
-     * @param modified
-     *            Indicates whether the odesign file has changed since the last
-     *            load menus
-     */
-    public void setDescriptionFileChanged(final boolean modified) {
-        manager.setDescriptionFileChanged(modified);
     }
 
     public Character getFirstEditionCharacter() {

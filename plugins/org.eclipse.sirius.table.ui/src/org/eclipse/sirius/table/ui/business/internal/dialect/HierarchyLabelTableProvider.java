@@ -35,12 +35,6 @@ public class HierarchyLabelTableProvider extends LabelProvider {
     private ILabelProvider wrappedProvider;
 
     /**
-     * Create a new instance without existing providers.
-     */
-    public HierarchyLabelTableProvider() {
-    }
-
-    /**
      * Create a new instance with wrapped label provider as base type.
      * 
      * @param wrappedLabelProvider

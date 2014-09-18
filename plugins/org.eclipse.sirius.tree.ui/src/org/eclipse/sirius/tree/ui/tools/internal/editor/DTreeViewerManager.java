@@ -117,8 +117,6 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
 
     private DTreeMenuListener actualMenuListener;
 
-    private AdapterFactory adapterFactory;
-
     private final EditorCreateTreeItemMenuAction createTreeItemMenu = new EditorCreateTreeItemMenuAction();
 
     /**
@@ -141,7 +139,6 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
             final AbstractDTreeEditor treeEditor) {
         super(parent, input, editingDomain, accessor, tableCommandFactory, treeEditor);
         this.treeCommandFactory = (ITreeCommandFactory) tableCommandFactory;
-        adapterFactory = TreeUIPlugin.getPlugin().getItemProvidersAdapterFactory();
         this.createTreeViewer(parent);
     }
 
@@ -187,6 +184,7 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
 
         // Wrap the LabelProvider in a DecoratingLabelProvider
         ILabelDecorator decorator = PlatformUI.getWorkbench().getDecoratorManager().getLabelDecorator();
+        AdapterFactory adapterFactory = TreeUIPlugin.getPlugin().getItemProvidersAdapterFactory();
         treeViewer.setLabelProvider(new DTreeDecoratingLabelProvider(adapterFactory, decorator));
 
         fillMenu();

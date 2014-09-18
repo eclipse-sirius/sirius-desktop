@@ -11,7 +11,7 @@
 package org.eclipse.sirius.tree.business.api.command;
 
 import org.eclipse.emf.transaction.RecordingCommand;
-import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.business.api.interaction.DTreeItemUserInteraction;
 import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
@@ -23,7 +23,7 @@ import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.Global
  */
 public class DTreeItemExpansionChangeCommand extends RecordingCommand {
 
-    private Session session;
+    private GlobalContext globalContext;
 
     private DTreeItem dTreeItem;
 
@@ -32,27 +32,29 @@ public class DTreeItemExpansionChangeCommand extends RecordingCommand {
     /**
      * Default constructor.
      * 
-     * @param session
-     *            The {@link Session} on which execute this command.
+     * @param globalContext
+     *            the {@link GlobalContext} to synchronize the model.
+     * @param domain
+     *            the {@link TransactionalEditingDomain} on which execute this
+     *            command
      * @param dTreeItem
      *            the {@link DTreeItem} to expand/collapse
      * @param expand
      *            true to expand, false to collapse
      */
-    public DTreeItemExpansionChangeCommand(Session session, DTreeItem dTreeItem, boolean expand) {
-        super(session.getTransactionalEditingDomain());
-        this.session = session;
+    public DTreeItemExpansionChangeCommand(GlobalContext globalContext, TransactionalEditingDomain domain, DTreeItem dTreeItem, boolean expand) {
+        super(domain, (expand ? "Expand" : "Collapse") + " \"" + dTreeItem.getName() + "\" tree item");
+        this.globalContext = globalContext;
         this.dTreeItem = dTreeItem;
         this.expand = expand;
     }
 
     @Override
     protected void doExecute() {
-        GlobalContext ctx = new GlobalContext(session.getModelAccessor(), session);
         if (expand) {
-            new DTreeItemUserInteraction(dTreeItem, ctx).expand();
+            new DTreeItemUserInteraction(dTreeItem, globalContext).expand();
         } else {
-            new DTreeItemUserInteraction(dTreeItem, ctx).collapse();
+            new DTreeItemUserInteraction(dTreeItem, globalContext).collapse();
         }
     }
 }

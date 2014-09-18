@@ -10,11 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint;
 
+import java.util.Collection;
+
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.base.Options;
 
 /**
  * Context for DTree/semantic model synchronization.
@@ -27,7 +27,7 @@ public class GlobalContext {
 
     private IInterpreter interpreter;
 
-    private Option<Session> session = Options.newNone();
+    private Collection<Resource> semanticResources;
 
     /**
      * Creates a new GlobalContext.
@@ -36,26 +36,15 @@ public class GlobalContext {
      *            the model accessor to use
      * @param interpreter
      *            the IInterpreter to use
+     * @param semanticResources
+     *            semantic {@link Resource} on which model synchronization must
+     *            occurs
      */
-    public GlobalContext(ModelAccessor accessor, IInterpreter interpreter) {
+    public GlobalContext(ModelAccessor accessor, IInterpreter interpreter, Collection<Resource> semanticResources) {
         super();
         this.accessor = accessor;
         this.interpreter = interpreter;
-    }
-
-    /**
-     * Creates a new GlobalContext.java.
-     * 
-     * @param accessor
-     *            the model accessor to use
-     * @param session
-     *            the session to use
-     */
-    public GlobalContext(ModelAccessor accessor, Session session) {
-        super();
-        this.accessor = accessor;
-        this.session = Options.newSome(session);
-        this.interpreter = session.getInterpreter();
+        this.semanticResources = semanticResources;
     }
 
     public ModelAccessor getModelAccessor() {
@@ -66,8 +55,8 @@ public class GlobalContext {
         return this.interpreter;
     }
 
-    public Option<Session> getSession() {
-        return session;
+    public Collection<Resource> getSemanticResources() {
+        return semanticResources;
     }
 
     public SpecifierMonitor getSpecifierFeedBack() {
