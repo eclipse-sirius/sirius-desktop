@@ -38,11 +38,11 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.ui.internal.refresh.layout.SiriusCanonicalLayoutHandler;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.internal.part.OffscreenEditPartFactory;
-import org.eclipse.sirius.diagram.ui.tools.internal.part.SiriusImageLoader;
 import org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;
+import org.eclipse.swt.graphics.ImageLoader;
 import org.eclipse.swt.graphics.PaletteData;
 import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.Shell;
@@ -255,10 +255,13 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
 
         monitor.worked(1);
 
-        SiriusImageLoader imageLoader = new SiriusImageLoader();
+        ImageLoader imageLoader = new ImageLoader();
         imageLoader.data = new ImageData[] { imageData };
         imageLoader.logicalScreenHeight = image.getBounds().width;
         imageLoader.logicalScreenHeight = image.getBounds().height;
+        if (imageFormat.equals(ImageFileFormat.JPG)) {
+            imageLoader.compression = 100;
+        }
         imageLoader.save(stream, imageFormat.getOrdinal());
 
         monitor.worked(1);
