@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.business.api.interaction;
 
-import java.util.Iterator;
-
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
@@ -22,9 +20,6 @@ import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.business.api.query.TreeDescriptionQuery;
 import org.eclipse.sirius.tree.business.internal.dialect.common.tree.DTreeRefresh;
 import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterators;
 
 /**
  * This class is responsible for providing an entry point to all the user
@@ -108,15 +103,10 @@ public class DTreeUserInteraction {
      * @return this user interaction
      */
     public DTreeUserInteraction expand() {
-        Iterator<DTreeItem> it = Iterators.filter(Iterators.filter(tree.eAllContents(), DTreeItem.class), new Predicate<DTreeItem>() {
-
-            public boolean apply(DTreeItem input) {
-                return !input.isExpanded();
+        for (DTreeItem child : tree.getOwnedTreeItems()) {
+            if (!child.isExpanded()) {
+                new DTreeItemUserInteraction(child, ctx).expand();
             }
-        });
-        while (it.hasNext()) {
-            new DTreeItemUserInteraction(it.next(), ctx).expand();
-
         }
         return this;
     }
