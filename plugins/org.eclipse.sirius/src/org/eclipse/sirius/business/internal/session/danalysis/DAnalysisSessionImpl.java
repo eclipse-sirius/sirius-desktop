@@ -82,7 +82,6 @@ import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.business.api.session.ReloadingPolicy;
 import org.eclipse.sirius.business.api.session.ReloadingPolicy.Action;
 import org.eclipse.sirius.business.api.session.SavingPolicy;
-import org.eclipse.sirius.business.api.session.SavingPolicyImpl;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionEventBroker;
 import org.eclipse.sirius.business.api.session.SessionListener;
@@ -101,6 +100,7 @@ import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistryLis
 import org.eclipse.sirius.business.internal.query.DAnalysisesInternalQuery;
 import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
 import org.eclipse.sirius.business.internal.resource.ResourceModifiedFieldUpdater;
+import org.eclipse.sirius.business.internal.session.IsModifiedSavingPolicy;
 import org.eclipse.sirius.business.internal.session.ReloadingPolicyImpl;
 import org.eclipse.sirius.business.internal.session.RepresentationNameListener;
 import org.eclipse.sirius.business.internal.session.SessionEventBrokerImpl;
@@ -1332,7 +1332,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     /**
      * Create the semantic cross referencer.
-     * 
+     *
      * @return a new cross referencer adapter
      */
     protected ECrossReferenceAdapter createSemanticCrossReferencer() {
@@ -1791,7 +1791,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * @return the custom saving policy the session should use
      */
     public SavingPolicy getSavingPolicy() {
-        return savingPolicy != null ? savingPolicy : new SavingPolicyImpl(transactionalEditingDomain);
+        return savingPolicy != null ? savingPolicy : new IsModifiedSavingPolicy(transactionalEditingDomain);
     }
 
     /**
