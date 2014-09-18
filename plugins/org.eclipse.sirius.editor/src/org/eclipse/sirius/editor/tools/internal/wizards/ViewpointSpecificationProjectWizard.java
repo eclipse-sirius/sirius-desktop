@@ -85,7 +85,7 @@ public class ViewpointSpecificationProjectWizard extends Wizard implements INewW
         try {
             // if user do not reach page 2, the VSM name is defined according to
             // the project name
-            if (!newOdesignPage.isPage2Visited) {
+            if (!newOdesignPage.isVsmNameChanged) {
                 newOdesignPage.modelName.setText(newOdesignPage.extractModelName(newOdesignPage.firstPage.getProjectName()));
             }
             ViewpointSpecificationProject.createNewViewpointSpecificationProject(workbench, newProjectPage.getProjectName(), newProjectPage.getLocationPath(), newOdesignPage.getModelName().getText(),
@@ -151,13 +151,14 @@ public class ViewpointSpecificationProjectWizard extends Wizard implements INewW
         private ModifyListener validator = new ModifyListener() {
             public void modifyText(final ModifyEvent e) {
                 setPageComplete(validatePage());
+                isVsmNameChanged = true;
             }
         };
 
         private Text modelName;
 
-        // Check if odesign page has been visited
-        private Boolean isPage2Visited = false;
+        // Check if VSM name has been modified
+        private Boolean isVsmNameChanged = false;
 
         private WizardNewProjectCreationPage firstPage;
 
@@ -250,8 +251,9 @@ public class ViewpointSpecificationProjectWizard extends Wizard implements INewW
 
         public void setVisible(boolean visible) {
             if (visible) {
-                this.modelName.setText(extractModelName(firstPage.getProjectName()));
-                isPage2Visited = visible;
+                if (!isVsmNameChanged) {
+                    this.modelName.setText(extractModelName(firstPage.getProjectName()));
+                }
             }
             super.setVisible(visible);
         }
