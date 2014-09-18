@@ -31,8 +31,6 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.ResetStylePropertiesToDefaultValuesCommand;
-import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
-import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.swt.SWT;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
@@ -91,31 +89,18 @@ public class ResetStylePropertiesToDefaultValuesAction extends Action implements
                     EObject element = view.getElement();
                     if (element instanceof DDiagramElement) {
                         DDiagramElement dDiagramElement = (DDiagramElement) element;
-                        if (shouldBeEnable(dDiagramElement)) {
+                        DDiagramElementQuery dDiagramElementQuery = new DDiagramElementQuery(dDiagramElement);
+                        if (dDiagramElementQuery.isCustomized()) {
                             result = true;
                             break;
                         }
                     }
-
                     ViewQuery viewQuery = new ViewQuery(view);
                     if (viewQuery.isCustomized()) {
                         result = true;
                         break;
                     }
-                } // for
-            }
-        }
-        return result;
-    }
-
-    private boolean shouldBeEnable(DDiagramElement dDiagramElement) {
-        boolean result = false;
-        DDiagramElementQuery dDiagramElementQuery = new DDiagramElementQuery(dDiagramElement);
-        if (dDiagramElementQuery.isCustomized()) {
-            // check permission
-            IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(dDiagramElement);
-            if (permissionAuthority == null || permissionAuthority.canEditInstance(dDiagramElement)) {
-                result = true;
+                }
             }
         }
         return result;

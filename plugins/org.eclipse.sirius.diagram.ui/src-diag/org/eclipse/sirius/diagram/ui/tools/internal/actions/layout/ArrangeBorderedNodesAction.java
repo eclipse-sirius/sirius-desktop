@@ -18,13 +18,13 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.common.core.util.ObjectAdapter;
+import org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.services.layout.LayoutType;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.AbstractDiagramAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.BorderItemAwareLayoutProvider;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
@@ -35,7 +35,7 @@ import org.eclipse.ui.IWorkbenchPart;
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
-public class ArrangeBorderedNodesAction extends AbstractDiagramAction {
+public class ArrangeBorderedNodesAction extends DiagramAction {
 
     /**
      * Constructs a new diagram action.
@@ -115,9 +115,9 @@ public class ArrangeBorderedNodesAction extends AbstractDiagramAction {
      */
     @Override
     protected boolean calculateEnabled() {
-        return getSelectedObjects().size() > 0 && super.calculateEnabled();
+        return getSelectedObjects().size() > 0;
     }
-    
+
     /**
      * {@inheritDoc}
      * 
@@ -172,5 +172,4 @@ public class ArrangeBorderedNodesAction extends AbstractDiagramAction {
         action.initAction(ActionIds.ARRANGE_BORDERED_NODES_TOOLBAR, "Arrange Linked Bordered Nodes");
         return action;
     }
-
 }

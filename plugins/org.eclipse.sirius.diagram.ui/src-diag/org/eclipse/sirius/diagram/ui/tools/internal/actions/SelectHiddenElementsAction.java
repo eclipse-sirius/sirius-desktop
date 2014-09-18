@@ -14,11 +14,13 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
+import org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
@@ -32,10 +34,13 @@ import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.DiagramElementsSelectionDialog;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchPage;
@@ -50,7 +55,7 @@ import com.google.common.base.Predicates;
  * 
  * @author pcdavid
  */
-public class SelectHiddenElementsAction extends AbstractDiagramAction {
+public class SelectHiddenElementsAction extends DiagramAction {
 
     private final class HiddenElementsSelectionCommand extends AbstractTransactionalCommand {
         private final DDiagram diagram;
@@ -242,5 +247,20 @@ public class SelectHiddenElementsAction extends AbstractDiagramAction {
             }
         }
         return elementsSelectionCommand;
+    }
+
+    @Override
+    protected boolean calculateEnabled() {
+        boolean canEditInstance = true;
+        if (getWorkbenchPart() instanceof DDiagramEditor && ((DDiagramEditor) getWorkbenchPart()).getRepresentation() instanceof DDiagram) {
+            final DDiagramEditor editor = (DDiagramEditor) getWorkbenchPart();
+            final DDiagram editorDiagram = (DDiagram) editor.getRepresentation();
+            Resource sessionResource = editor.getSession().getSessionResource();
+            if (sessionResource != null) {
+                IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(sessionResource.getResourceSet());
+                canEditInstance = permissionAuthority.canEditInstance(editorDiagram);
+            }
+        }
+        return canEditInstance && super.calculateEnabled();
     }
 }
