@@ -77,61 +77,117 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
             connection.translateToRelative(tempTargetRefPoint);
 
             PointList connectionPointList = connection.getPoints().getCopy();
-            if (sourceMove) {
-                // Move reference point
-                tempSourceRefPoint.performTranslate(moveDelta.x, moveDelta.y);
-                // Move second point in case of rectilinear router
-                if (new ConnectionEditPartQuery(connectionEditPart).isEdgeWithRectilinearRoutingStyle()) {
-                    LineSeg firstSegment = new LineSeg(connectionPointList.getPoint(0), connectionPointList.getPoint(1));
-                    if (firstSegment.isHorizontal()) {
-                        connectionPointList.setPoint(connectionPointList.getPoint(1).translate(0, moveDelta.y), 1);
-                    } else {
-                        connectionPointList.setPoint(connectionPointList.getPoint(1).translate(moveDelta.x, 0), 1);
-                    }
-                }
-                // Compute intersection between the line
-                // (tempSourceRefPoint<-->second point) and the source node
-                // 1-Get the bounds of the part and translate it
-                Rectangle bounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((IGraphicalEditPart) connectionEditPart.getSource());
-                // 2-Compute intersection
-                Option<Point> intersectionPoint = GraphicalHelper.getIntersection(tempSourceRefPoint, connectionPointList.getPoint(1), bounds.getTranslated(moveDelta), false);
-                if (intersectionPoint.some()) {
-                    connectionPointList.setPoint(intersectionPoint.get(), 0);
-                } else {
-                    connectionPointList.setPoint(connectionPointList.getPoint(0).translate(moveDelta), 0);
-                }
-
-            } else {
-                // Move reference point
-                tempTargetRefPoint.performTranslate(moveDelta.x, moveDelta.y);
-                // Move second last point in case of rectilinear router
-                if (new ConnectionEditPartQuery(connectionEditPart).isEdgeWithRectilinearRoutingStyle()) {
-                    LineSeg lastSegment = new LineSeg(connectionPointList.getPoint(connectionPointList.size() - 2), connectionPointList.getPoint(connectionPointList.size() - 1));
-                    if (lastSegment.isHorizontal()) {
-                        connectionPointList.setPoint(connectionPointList.getPoint(connectionPointList.size() - 2).translate(0, moveDelta.y), connectionPointList.size() - 2);
-                    } else {
-                        connectionPointList.setPoint(connectionPointList.getPoint(connectionPointList.size() - 2).translate(moveDelta.x, 0), connectionPointList.size() - 2);
-                    }
-                }
-                // Compute intersection between the line
-                // (tempTargetRefPoint<-->second to last point) and the target
-                // node
-                // 1-Get the bounds of the part and translate it
-                Rectangle bounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((IGraphicalEditPart) connectionEditPart.getTarget());
-                // 2-Compute intersection
-                Option<Point> intersectionPoint = GraphicalHelper.getIntersection(tempTargetRefPoint, connectionPointList.getPoint(connectionPointList.size() - 1), bounds.getTranslated(moveDelta),
-                        false);
-                if (intersectionPoint.some()) {
-                    connectionPointList.setPoint(intersectionPoint.get(), connectionPointList.size() - 1);
-                } else {
-                    connectionPointList.setPoint(connectionPointList.getPoint(connectionPointList.size() - 1).translate(moveDelta), connectionPointList.size() - 1);
-                }
-            }
+            adaptPointListAndRefPoints(sourceMove, moveDelta, connectionEditPart, tempSourceRefPoint, tempTargetRefPoint, connectionPointList);
 
             setNewPointList(connectionPointList, tempSourceRefPoint, tempTargetRefPoint);
             return super.doExecute(monitor, info);
         }
         return Status.OK_STATUS;
+    }
+
+    /**
+     * Adapt the point list and the source reference point (or target reference
+     * point) according to a move of the source (or of the target).
+     * 
+     * @param sourceMove
+     *            true if the source node of edge has been moved, false
+     *            otherwise
+     * @param moveDelta
+     *            the delta of the move of the extremity (source or target)
+     * @param connectionEditPart
+     *            The connection editPart corresponding to the edge to adapt
+     * @param sourceRefPoint
+     *            The source reference point to adapt (only adapted for
+     *            sourceMove true)
+     * @param targetRefPoint
+     *            The target reference point to adapt (only adapted for
+     *            sourceMove false)
+     * @param connectionPointList
+     *            The point list to adapt
+     */
+    public static void adaptPointListAndRefPoints(boolean sourceMove, Point moveDelta, org.eclipse.gef.ConnectionEditPart connectionEditPart, Point sourceRefPoint, Point targetRefPoint,
+            PointList connectionPointList) {
+        // Get the bounds of the moved node
+        Rectangle bounds;
+        if (sourceMove) {
+            bounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((IGraphicalEditPart) connectionEditPart.getSource());
+        } else {
+            bounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((IGraphicalEditPart) connectionEditPart.getTarget());
+        }
+        adaptPointListAndRefPoints(sourceMove, moveDelta, new ConnectionEditPartQuery(connectionEditPart).isEdgeWithRectilinearRoutingStyle(), bounds, sourceRefPoint, targetRefPoint,
+                connectionPointList);
+    }
+
+    /**
+     * Adapt the point list and the source reference point (or target reference
+     * point) according to a move of the source (or of the target).
+     * 
+     * @param sourceMove
+     *            true if the source node of edge has been moved, false
+     *            otherwise
+     * @param moveDelta
+     *            the delta of the move of the extremity (source or target)
+     * @param isEdgeWithRectilinearRoutingStyle
+     *            True if the edge is rectilinear (one more point is adapted in
+     *            this case), false otherwise
+     * @param bounds
+     *            The bounds of the moved node
+     * @param sourceRefPoint
+     *            The source reference point to adapt (only adapted for
+     *            sourceMove true)
+     * @param targetRefPoint
+     *            The target reference point to adapt (only adapted for
+     *            sourceMove false)
+     * @param connectionPointList
+     *            The point list to adapt
+     */
+    public static void adaptPointListAndRefPoints(boolean sourceMove, Point moveDelta, boolean isEdgeWithRectilinearRoutingStyle, Rectangle bounds, Point sourceRefPoint, Point targetRefPoint,
+            PointList connectionPointList) {
+        if (sourceMove) {
+            // Move reference point
+            sourceRefPoint.performTranslate(moveDelta.x, moveDelta.y);
+            // Move second point in case of rectilinear router
+            if (isEdgeWithRectilinearRoutingStyle) {
+                LineSeg firstSegment = new LineSeg(connectionPointList.getPoint(0), connectionPointList.getPoint(1));
+                if (firstSegment.isHorizontal()) {
+                    connectionPointList.setPoint(connectionPointList.getPoint(1).translate(0, moveDelta.y), 1);
+                } else {
+                    connectionPointList.setPoint(connectionPointList.getPoint(1).translate(moveDelta.x, 0), 1);
+                }
+            }
+            // Compute intersection between the line
+            // (tempSourceRefPoint<-->second point) and the source node
+            // 2-Compute intersection
+            Option<Point> intersectionPoint = GraphicalHelper.getIntersection(sourceRefPoint, connectionPointList.getPoint(1), bounds.getTranslated(moveDelta), false);
+            if (intersectionPoint.some()) {
+                connectionPointList.setPoint(intersectionPoint.get(), 0);
+            } else {
+                connectionPointList.setPoint(connectionPointList.getPoint(0).translate(moveDelta), 0);
+            }
+
+        } else {
+            // Move reference point
+            targetRefPoint.performTranslate(moveDelta.x, moveDelta.y);
+            // Move second last point in case of rectilinear router
+            if (isEdgeWithRectilinearRoutingStyle) {
+                LineSeg lastSegment = new LineSeg(connectionPointList.getPoint(connectionPointList.size() - 2), connectionPointList.getPoint(connectionPointList.size() - 1));
+                if (lastSegment.isHorizontal()) {
+                    connectionPointList.setPoint(connectionPointList.getPoint(connectionPointList.size() - 2).translate(0, moveDelta.y), connectionPointList.size() - 2);
+                } else {
+                    connectionPointList.setPoint(connectionPointList.getPoint(connectionPointList.size() - 2).translate(moveDelta.x, 0), connectionPointList.size() - 2);
+                }
+            }
+            // Compute intersection between the line
+            // (tempTargetRefPoint<-->second to last point) and the target
+            // node
+            // 2-Compute intersection
+            Option<Point> intersectionPoint = GraphicalHelper.getIntersection(targetRefPoint, connectionPointList.getPoint(connectionPointList.size() - 1), bounds.getTranslated(moveDelta), false);
+            if (intersectionPoint.some()) {
+                connectionPointList.setPoint(intersectionPoint.get(), connectionPointList.size() - 1);
+            } else {
+                connectionPointList.setPoint(connectionPointList.getPoint(connectionPointList.size() - 1).translate(moveDelta), connectionPointList.size() - 1);
+            }
+        }
     }
 
     /**

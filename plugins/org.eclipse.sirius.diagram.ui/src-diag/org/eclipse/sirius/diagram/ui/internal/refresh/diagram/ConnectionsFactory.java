@@ -29,6 +29,7 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.FontStyle;
 import org.eclipse.gmf.runtime.notation.IdentityAnchor;
+import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
@@ -42,9 +43,11 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
+import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.view.EdgeLayoutData;
 import org.eclipse.sirius.diagram.ui.business.internal.view.LayoutData;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SetConnectionBendpointsAccordingToExtremityMoveCommmand;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.internal.refresh.edge.SlidableAnchor;
 import org.eclipse.sirius.diagram.ui.part.SiriusLinkDescriptor;
@@ -225,6 +228,34 @@ public class ConnectionsFactory {
 
                     routing = egdeLayoutData.getRouting();
 
+                    // In case of drag'n'drop of the source or of the target
+                    // (but not both) of this edge, check if the ref point is
+                    // not the same as during the store of the layout. The node
+                    // is created before the edge (so we have the new real GMF
+                    // location). And its location can be different compared to
+                    // the "clicked location" (for bordered node for example
+                    // with DBorderItemLocator). If the location is different,
+                    // the corresponding point is moved according to the new
+                    // delta.
+                    int cause = egdeLayoutData.getCause();
+                    if ((cause == EdgeLayoutData.CAUSED_BY_SOURCE && source instanceof Node && new NodeQuery((Node) source).isBorderedNode())
+                            || (cause == EdgeLayoutData.CAUSED_BY_TARGET && target instanceof Node && new NodeQuery((Node) target).isBorderedNode())) {
+                        Rectangle bounds;
+                        Dimension delta;
+                        if (cause == EdgeLayoutData.CAUSED_BY_SOURCE) {
+                            bounds = GMFHelper.getAbsoluteBounds((Node) source);
+                            PrecisionPoint rel = BaseSlidableAnchor.parseTerminalString(sourceTerminal);
+                            Point realSourceRefPoint = new PrecisionPoint(bounds.getLocation().x + bounds.width * rel.preciseX(), bounds.getLocation().y + bounds.height * rel.preciseY());
+                            delta = realSourceRefPoint.getDifference(sourceRefPoint);
+                        } else {
+                            bounds = GMFHelper.getAbsoluteBounds((Node) target);
+                            PrecisionPoint rel = BaseSlidableAnchor.parseTerminalString(targetTerminal);
+                            Point realTargetRefPoint = new PrecisionPoint(bounds.getLocation().x + bounds.width * rel.preciseX(), bounds.getLocation().y + bounds.height * rel.preciseY());
+                            delta = realTargetRefPoint.getDifference(targetRefPoint);
+                        }
+                        SetConnectionBendpointsAccordingToExtremityMoveCommmand.adaptPointListAndRefPoints(cause == EdgeLayoutData.CAUSED_BY_SOURCE, new Point(delta.width, delta.height),
+                                new EdgeQuery(edge).isEdgeWithRectilinearRoutingStyle(), bounds.getTranslated(-delta.width, -delta.height), sourceRefPoint, targetRefPoint, pointList);
+                    }
                 } else {
                     Option<Rectangle> optionalSourceBounds = GMFHelper.getAbsoluteBounds(source);
                     LayoutData sourceLayoutData = null;
@@ -267,7 +298,6 @@ public class ConnectionsFactory {
                 }
             }
         }
-
     }
 
     private Point getFirstClick(LayoutData sourceLayoutData, Option<Rectangle> optionalSourceBounds) {
