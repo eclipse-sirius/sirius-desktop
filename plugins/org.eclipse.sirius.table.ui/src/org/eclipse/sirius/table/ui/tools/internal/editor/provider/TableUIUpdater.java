@@ -178,6 +178,8 @@ public class TableUIUpdater extends ResourceSetListenerImpl {
                 }
             } else if (notification.getFeature() == TablePackage.Literals.DLINE__VISIBLE) {
                 launchGlobalRefreshWithoutUpdateLabels = true;
+            } else if (notification.getFeature() == TablePackage.Literals.DLINE__COLLAPSED) {
+                analyseExpansion(dLine);
             }
         } else if (notifier instanceof DColumn) {
             DColumn dColumn = (DColumn) notifier;
@@ -187,6 +189,8 @@ public class TableUIUpdater extends ResourceSetListenerImpl {
                 dColumnsToUpdateDirectly.add(dColumn);
             } else if (notification.getFeature() == TablePackage.Literals.DCOLUMN__VISIBLE) {
                 dColumnsToVisibilityChanged.put(dColumn, dColumn.isVisible());
+            } else if (notification.getFeature() == TablePackage.Literals.DCOLUMN__WIDTH) {
+                dColumnsWidthToUpdate.add(dColumn);
             }
         } else if (notification.getFeature() == TablePackage.Literals.DCELL__LABEL || notification.getFeature() == TablePackage.Literals.DCELL__CURRENT_STYLE && notifier instanceof DCell) {
             DCell dCell = (DCell) notifier;
@@ -194,9 +198,6 @@ public class TableUIUpdater extends ResourceSetListenerImpl {
             if (dLine != null) {
                 toUpdateInViewer.add(dLine);
             }
-        } else if (isExpansionChange(notification)) {
-            DLine dLine = (DLine) notifier;
-            analyseExpansion(dLine);
         } else if (isDTableElementStyleAttributeChange(notification)) {
             DTableElementStyle dTableElementStyle = (DTableElementStyle) notifier;
             EObject eContainer = dTableElementStyle.eContainer();
@@ -225,10 +226,6 @@ public class TableUIUpdater extends ResourceSetListenerImpl {
                 analyseExpansionStateOfCreatedChildren(ownedDLine.getLines());
             }
         }
-    }
-
-    private boolean isExpansionChange(Notification notification) {
-        return notification.getFeature() == TablePackage.Literals.DLINE__COLLAPSED && notification.getNotifier() instanceof DLine;
     }
 
     private void analyseExpansion(DLine dLine) {
