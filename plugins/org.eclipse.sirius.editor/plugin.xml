@@ -569,7 +569,7 @@
         <input type="org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription"/>        
       </propertySection>
   	  <propertySection
-               class="org.eclipse.sirius.editor.properties.sections.style.labelstyledescription.LabelStyleDescriptionLabelAlignmentPropertySection"
+               class="org.eclipse.sirius.editor.properties.sections.style.labelalignmentdescription.BasicLabelStyleDescriptionLabelAlignmentPropertySectionSpec"
                filter="org.eclipse.sirius.editor.properties.filters.style.labelstyledescription.LabelStyleDescriptionLabelAlignmentFilter"
                id="style.section.labelStyleDescription.LabelAlignment"
                afterSection="style.section.labelStyleDescription.LabelExpression"

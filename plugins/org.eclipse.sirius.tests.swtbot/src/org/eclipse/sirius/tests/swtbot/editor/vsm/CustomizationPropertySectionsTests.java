@@ -24,8 +24,11 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerView;
 import org.eclipse.sirius.viewpoint.description.Customization;
 import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
@@ -37,11 +40,10 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotRadio;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * A SWTBot test for VSM editor customization property sections.
@@ -112,7 +114,7 @@ public class CustomizationPropertySectionsTests extends AbstractContentAssistTes
         if (TestsUtil.shouldSkipUnreliableTests()) {
             return;
         }
-        
+
         SWTBotTreeItem diagramDescItem = viewpointItemBot.getNode(DIAGRAM_DESCRIPTION_NAME).select().expand();
         SWTBotTreeItem optionalLayerItem = diagramDescItem.getNode(OPTIONAL_LAYER_NAME).select().expand();
         SWTBotTreeItem customizationItem = optionalLayerItem.getNode("Style Customizations").select().expand();
@@ -264,6 +266,27 @@ public class CustomizationPropertySectionsTests extends AbstractContentAssistTes
         assertEquals("The right list of selected elements should be of 1", 1, reuseSelectorShell.bot().table(1).rowCount());
         reuseSelectorShell.close();
 
+    }
+
+    /**
+     * Ensure that the order displayed in properties view of VSM file is (Left -
+     * Center - Right).
+     */
+    public void testLabelAlignmentInVSM() {
+        SWTBotTreeItem diagramDescItem = viewpointItemBot.getNode(DIAGRAM_DESCRIPTION_NAME).select().expand();
+        SWTBotTreeItem layerItem = diagramDescItem.getNode("Default").select().expand();
+        SWTBotTreeItem mappingItem = layerItem.getNode("EClassMapping").select().expand();
+        mappingItem.getNode("Gradient white to light_gray").select();
+
+        propertiesBot = bot.viewByTitle("Properties");
+        SWTBotSiriusHelper.selectPropertyTabItem("Label");
+        SWTBotUtils.waitAllUiEvents();
+        SWTBotRadio left = propertiesBot.bot().radio(0);
+        SWTBotRadio center = propertiesBot.bot().radio(1);
+        SWTBotRadio right = propertiesBot.bot().radio(2);
+        assertEquals("The first label alignment should be the left", "Left", left.getText());
+        assertEquals("The second label alignment should be the center", "Center", center.getText());
+        assertEquals("The third label alignment should be the right", "Right", right.getText());
     }
 
     @Override
