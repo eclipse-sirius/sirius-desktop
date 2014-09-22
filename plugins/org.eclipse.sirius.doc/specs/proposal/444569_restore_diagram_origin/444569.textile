@@ -1,0 +1,58 @@
+h1. Move all diagram elements at the top-left origin
+
+h2. Preamble
+
+_Summary_: Addition of an action that resets the diagram top-left origin.
+
+|_. Version |_. Status |_. Date        |_. Authors |_. Changes |
+| v0.1        | DRAFT    | 2014-09-19 | fbarbin    | Initial version. |
+| v0.2        | DRAFT    | 2014-09-24 | fbarbin    | Update after team review. |
+| v0.3        | DRAFT    | 2014-09-26 | fbarbin    | Update after team review. |
+| v0.4        | PROPOSAL    | 2014-09-26 | fbarbin    | Update after team review. |
+
+_Relevant tickets_:
+* "444569 - Move all diagram elements at the top-left origin":https://bugs.eclipse.org/bugs/show_bug.cgi?id=444569
+
+h2. Introduction
+
+The diagram bounds (the rectangle formed by the highest & leftmost and the lowest & rightest elements) can have a negative origin or can be shifted toward the bottom-right with a blank zone at the top-left.
+This enhancement aims to add an action that will move all diagram elements so that the diagram retrieves its origin while keeping the element layout.
+
+
+h2. Detailed Specification
+
+* All top level shapes will be considered to determine the diagram bounds. That includes edges but also border nodes that get over the container bounds and labels.
+* A *20 pixels margin* between shapes and editor edges will be applied to have a comfortable visibility.
+* We will consider only visible elements to compute the shift delta. Masked elements will be moved as the others but not taken in account to determine the new origin. That means if a masked element with a negative location is revealed, the user will have to perform this action again. We explain this choice by the fact we could have a blank space between the diagram origin and the first visible element if a masked element is located between them.
+* This action will be available only on diagrams in this particular case.
+* A new action named *"Reset Origin"* will be available in the diagram context menu with the shortcut *"M1"+"&"*.
+
+h3. Example:
+
+This is an example of a diagram with a blank zone between the origin location and the figures bounds:
+!images/before.png!
+
+After applying the action, the diagram figures are moved toward the top-left origin location:
+!images/after.png!
+ 
+h2. Backward Compatibility and Migration Paths
+
+This evolution does not change any API.
+
+h3. User Interface Changes
+
+* A new action within the diagram pop-up menu will be added as described within the _Detailed Specification_ section.
+
+h3. Documentation Changes
+
+This new feature should be added in the New and Noteworthy documentation. 
+A note should also be added in the user doc to explain this new feature.
+
+h2. Tests and Non-regression strategy
+
+Add a Junit test that checks that each element is shifted as expected after applying the action.
+* Open a diagram and launch the action. Test all top level visible elements location.
+
+h2. Implementation choices and tradeoffs
+
+
