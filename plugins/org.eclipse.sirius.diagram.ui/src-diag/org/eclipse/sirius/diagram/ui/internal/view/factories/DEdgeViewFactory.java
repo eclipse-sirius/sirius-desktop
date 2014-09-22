@@ -82,7 +82,7 @@ public class DEdgeViewFactory extends AbstractDesignerEdgeFactory {
         // changing default routing style to manhattan
         final RoutingStyle rstyle = (RoutingStyle) view.getStyle(NotationPackage.eINSTANCE.getRoutingStyle());
         rstyle.setJumpLinkType(JumpLinkType.get(JumpLinkType.SEMICIRCLE));
-        rstyle.setJumpLinkStatus(JumpLinkStatus.get(JumpLinkStatus.ABOVE));
+        rstyle.setJumpLinkStatus(JumpLinkStatus.get(JumpLinkStatus.NONE));
         rstyle.setRouting(Routing.RECTILINEAR_LITERAL);
     }
 

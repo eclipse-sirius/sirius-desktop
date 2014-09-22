@@ -111,8 +111,6 @@ public class DiagramConnectionsPreferencePage extends ConnectionsPreferencePage 
                 getPreferenceStore().setValue(IPreferenceConstants.PREF_LINE_STYLE, Routing.get(((Combo) evt.getSource()).getText()).getValue());
             }
         });
-        // Set the initial state of the lineStyle field
-        enableLineStyleField(getPreferenceStore().getBoolean(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE));
     }
 
     /**
@@ -128,6 +126,9 @@ public class DiagramConnectionsPreferencePage extends ConnectionsPreferencePage 
         enableOverrideFieldEditor.load();
         lineStyleFieldEditor.setPreferenceStore(diagramCorePreferenceStore);
         lineStyleFieldEditor.load();
+
+        // Set the initial state of the lineStyle field
+        enableLineStyleField(diagramCorePreferenceStore.getBoolean(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE));
     }
 
     /**
