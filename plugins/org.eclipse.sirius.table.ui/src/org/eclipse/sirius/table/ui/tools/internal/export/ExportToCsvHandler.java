@@ -35,14 +35,8 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
  * @author mchauvin
  */
 public class ExportToCsvHandler extends AbstractHandler {
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.core.commands.AbstractHandler#execute(org.eclipse.core.commands.ExecutionEvent)
-     */
+    @Override
     public Object execute(final ExecutionEvent event) throws ExecutionException {
-
         final IEditorPart editorPart = HandlerUtil.getActiveEditor(event);
 
         if (editorPart instanceof DialectEditor) {
@@ -71,29 +65,6 @@ public class ExportToCsvHandler extends AbstractHandler {
                 }
             }
         }
-
-        // if (editorPart instanceof DTableEditor) {
-        //
-        //
-        // final DTable table = (DTable) ((DTableEditor)
-        // editorPart).getRepresentation();
-        // if (null != table) {
-        //
-        // // Create the file dialog to request the location to save the export.
-        //
-        // final Shell shell =
-        // HandlerUtil.getActiveWorkbenchWindow(event).getShell();
-        //
-        // final FileDialog fileDialog = new FileDialog(shell, SWT.SAVE);
-        //                fileDialog.setFileName(table.getName() + ".csv"); //$NON-NLS-1$
-        //                fileDialog.setFilterExtensions(new String[] { "*.csv" }); //$NON-NLS-1$
-        //                fileDialog.setFilterNames(new String[] { "Comma Separated Values" }); //$NON-NLS-1$
-        // final String fileName = fileDialog.open();
-        // if (null != fileName) {
-        //                  DialectUIManager.INSTANCE.export(table, null, Path.fromOSString(fileName), new ExportFormat(ExportDocumentFormat.CSV, null), new NullProgressMonitor()); //$NON-NLS-1$
-        // }
-        // }
-        // }
         return null;
     }
 }
