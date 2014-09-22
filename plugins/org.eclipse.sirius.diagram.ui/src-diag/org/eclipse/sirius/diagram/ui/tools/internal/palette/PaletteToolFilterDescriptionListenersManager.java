@@ -63,11 +63,20 @@ public class PaletteToolFilterDescriptionListenersManager implements Runnable {
      *            the filters
      */
     public void addListenersForFilters(Collection<ToolFilterDescription> filters) {
-        for (final ToolFilterDescription filter : filters) {
-            ToolFilterDescriptionListener listener = new ToolFilterDescriptionListener(filter, (DDiagram) diagram.getElement());
-            listener.setUpdateRunnable(this);
-            domain.addResourceSetListener(listener);
-            listeners.add(listener);
+        // If a DDiagram editor has a palette tool with a feature change
+        // listener on a containment feature of DDiagram/DDiagramElement/Style
+        // (or one of their super/sub types), and if the user deletes the
+        // current diagram, the palette will be updated in post commit
+        // (detachment/delete notification), and the null domain case has to be
+        // handled as the gmf diagram is detached and the editor and its
+        // PaletteToolFilterListenersManager are asynchronously closed/disposed.
+        if (listeners != null & domain != null) {
+            for (final ToolFilterDescription filter : filters) {
+                ToolFilterDescriptionListener listener = new ToolFilterDescriptionListener(filter, (DDiagram) diagram.getElement());
+                listener.setUpdateRunnable(this);
+                domain.addResourceSetListener(listener);
+                listeners.add(listener);
+            }
         }
     }
 
