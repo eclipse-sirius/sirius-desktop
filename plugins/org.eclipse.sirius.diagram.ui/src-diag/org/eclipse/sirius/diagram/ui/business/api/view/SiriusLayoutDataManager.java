@@ -98,6 +98,29 @@ public interface SiriusLayoutDataManager {
     EdgeLayoutData getData(final DEdge edge, final boolean searchParent);
 
     /**
+     * Search recursively in all the LayoutData if there is one which have the
+     * edge of <code>egdeLayoutData</code> for target and is different from
+     * <code>egdeLayoutData</code>. An edge layout data stored in the
+     * incomingEdgeLayoutDatas ref of its parent data can have an opposite edge
+     * layout data in the outgoingEdgeLayoutDatas of the other ends of the edge.
+     * 
+     * Detail: In case of a move of the source and the target of an edge, the
+     * edge has two layout data, one for the source move and another one for the
+     * target move. The one for the source move has the points impacted by the
+     * source move (the first point and in case of rectilinear routing the
+     * second) and the other for the target move (last point and in case of
+     * rectilinear routing the second to last).
+     * 
+     * @param egdeLayoutData
+     *            The searched element
+     * @param searchParent
+     *            true if the data must be retrieve from the node parent (the
+     *            data must be retrieve from parent for a creation of an object)
+     * @return the corresponding EdgeLayoutData or null if not found.
+     */
+    EdgeLayoutData getOppositeEdgeLayoutData(EdgeLayoutData egdeLayoutData, boolean searchParent);
+
+    /**
      * Get the Adapter marker to mark GMF View as not to arrange.
      * 
      * @return the Adapter marker to mark GMF View as not to arrange

@@ -208,53 +208,15 @@ public class ConnectionsFactory {
             if (element instanceof DEdge) {
                 DEdge dEdge = (DEdge) element;
                 EdgeLayoutData egdeLayoutData = SiriusLayoutDataManager.INSTANCE.getData(dEdge, false);
+
                 if (egdeLayoutData != null) {
-
-                    sourceTerminal = egdeLayoutData.getSourceTerminal();
-                    targetTerminal = egdeLayoutData.getTargetTerminal();
-
-                    // pointList, sourceRefPoint, targetRefPoint of
-                    // the edgeLayoutData can be null if the edge is
-                    // hide when the layout data is stored
-                    if (egdeLayoutData.getPointList() != null) {
-                        pointList = egdeLayoutData.getPointList();
-                    }
-                    if (egdeLayoutData.getSourceRefPoint() != null) {
-                        sourceRefPoint = egdeLayoutData.getSourceRefPoint();
-                    }
-                    if (egdeLayoutData.getTargetRefPoint() != null) {
-                        targetRefPoint = egdeLayoutData.getTargetRefPoint();
-                    }
-
+                    EdgeLayoutData oppositeEgdeLayoutData = SiriusLayoutDataManager.INSTANCE.getOppositeEdgeLayoutData(egdeLayoutData, false);
                     routing = egdeLayoutData.getRouting();
 
-                    // In case of drag'n'drop of the source or of the target
-                    // (but not both) of this edge, check if the ref point is
-                    // not the same as during the store of the layout. The node
-                    // is created before the edge (so we have the new real GMF
-                    // location). And its location can be different compared to
-                    // the "clicked location" (for bordered node for example
-                    // with DBorderItemLocator). If the location is different,
-                    // the corresponding point is moved according to the new
-                    // delta.
-                    int cause = egdeLayoutData.getCause();
-                    if ((cause == EdgeLayoutData.CAUSED_BY_SOURCE && source instanceof Node && new NodeQuery((Node) source).isBorderedNode())
-                            || (cause == EdgeLayoutData.CAUSED_BY_TARGET && target instanceof Node && new NodeQuery((Node) target).isBorderedNode())) {
-                        Rectangle bounds;
-                        Dimension delta;
-                        if (cause == EdgeLayoutData.CAUSED_BY_SOURCE) {
-                            bounds = GMFHelper.getAbsoluteBounds((Node) source);
-                            PrecisionPoint rel = BaseSlidableAnchor.parseTerminalString(sourceTerminal);
-                            Point realSourceRefPoint = new PrecisionPoint(bounds.getLocation().x + bounds.width * rel.preciseX(), bounds.getLocation().y + bounds.height * rel.preciseY());
-                            delta = realSourceRefPoint.getDifference(sourceRefPoint);
-                        } else {
-                            bounds = GMFHelper.getAbsoluteBounds((Node) target);
-                            PrecisionPoint rel = BaseSlidableAnchor.parseTerminalString(targetTerminal);
-                            Point realTargetRefPoint = new PrecisionPoint(bounds.getLocation().x + bounds.width * rel.preciseX(), bounds.getLocation().y + bounds.height * rel.preciseY());
-                            delta = realTargetRefPoint.getDifference(targetRefPoint);
-                        }
-                        SetConnectionBendpointsAccordingToExtremityMoveCommmand.adaptPointListAndRefPoints(cause == EdgeLayoutData.CAUSED_BY_SOURCE, new Point(delta.width, delta.height),
-                                new EdgeQuery(edge).isEdgeWithRectilinearRoutingStyle(), bounds.getTranslated(-delta.width, -delta.height), sourceRefPoint, targetRefPoint, pointList);
+                    if (oppositeEgdeLayoutData != null) {
+                        getAttributesForSourceAndTargetMove(egdeLayoutData, oppositeEgdeLayoutData, edge, source, target);
+                    } else {
+                        getAttributesForSourceOrTargetMove(egdeLayoutData, edge, source, target);
                     }
                 } else {
                     Option<Rectangle> optionalSourceBounds = GMFHelper.getAbsoluteBounds(source);
@@ -297,6 +259,147 @@ public class ConnectionsFactory {
                     pointList.addPoint(targetAnchor.getLocation(targetAnchor.getReferencePoint()));
                 }
             }
+        }
+    }
+
+    /**
+     * Only source or target of edge has been moved (or dragged and dropped).
+     * Use the data as is, except for border node that potentially needs
+     * adaptation.
+     * 
+     * @param egdeLayoutData
+     *            Edge layout data from source (or from target)
+     * @param edge
+     *            The edge to adapt
+     * @param source
+     *            The source view of the edge
+     * @param target
+     *            The target view of the edge
+     */
+    protected void getAttributesForSourceOrTargetMove(EdgeLayoutData egdeLayoutData, Edge edge, View source, View target) {
+        sourceTerminal = egdeLayoutData.getSourceTerminal();
+        targetTerminal = egdeLayoutData.getTargetTerminal();
+        // sourceRefPoint, targetRefPoint and pointList of
+        // the edgeLayoutData can be null if the edge is
+        // hide when the layout data is stored
+        if (egdeLayoutData.getSourceRefPoint() != null) {
+            sourceRefPoint = egdeLayoutData.getSourceRefPoint();
+        }
+        if (egdeLayoutData.getTargetRefPoint() != null) {
+            targetRefPoint = egdeLayoutData.getTargetRefPoint();
+        }
+
+        if (egdeLayoutData.getPointList() != null) {
+            pointList = egdeLayoutData.getPointList();
+
+            int cause = egdeLayoutData.getCause();
+            adaptPointListForBorderNode(edge, source, target, cause == EdgeLayoutData.CAUSED_BY_SOURCE, cause == EdgeLayoutData.CAUSED_BY_TARGET);
+        }
+    }
+
+    /**
+     * If source or target is a border node, the real location can be different
+     * as the dropped location. Check if the ref point is not the same as during
+     * the store of the layout. The node is created before the edge (so we have
+     * the new real GMF location). And its location can be different compared to
+     * the "clicked location" (for bordered node for example with
+     * DBorderItemLocator). If the location is different, the corresponding
+     * points are moved according to the new delta.
+     * 
+     * @param edge
+     *            The edge to adapt
+     * @param source
+     *            The source view of the edge
+     * @param target
+     *            The target view of the edge
+     * @param sourceMove
+     *            true if the source view has been moved, false otherwise
+     * @param targetMove
+     *            true if the target view has been moved, false otherwise
+     */
+    protected void adaptPointListForBorderNode(Edge edge, View source, View target, boolean sourceMove, boolean targetMove) {
+        if (sourceMove && source instanceof Node && new NodeQuery((Node) source).isBorderedNode()) {
+            Rectangle bounds = GMFHelper.getAbsoluteBounds((Node) source);
+            PrecisionPoint rel = BaseSlidableAnchor.parseTerminalString(sourceTerminal != null ? sourceTerminal : GMFNotationUtilities.getTerminalString(0.5d, 0.5d));
+            Point realSourceRefPoint = new PrecisionPoint(bounds.getLocation().x + bounds.width * rel.preciseX(), bounds.getLocation().y + bounds.height * rel.preciseY());
+            Dimension delta = realSourceRefPoint.getDifference(sourceRefPoint);
+            SetConnectionBendpointsAccordingToExtremityMoveCommmand.adaptPointListAndRefPoints(true, new Point(delta.width, delta.height), new EdgeQuery(edge).isEdgeWithRectilinearRoutingStyle(),
+                    bounds.getTranslated(-delta.width, -delta.height), sourceRefPoint, targetRefPoint, pointList);
+        }
+        if (targetMove && target instanceof Node && new NodeQuery((Node) target).isBorderedNode()) {
+            Rectangle bounds = GMFHelper.getAbsoluteBounds((Node) target);
+            PrecisionPoint rel = BaseSlidableAnchor.parseTerminalString(targetTerminal != null ? targetTerminal : GMFNotationUtilities.getTerminalString(0.5d, 0.5d));
+            Point realTargetRefPoint = new PrecisionPoint(bounds.getLocation().x + bounds.width * rel.preciseX(), bounds.getLocation().y + bounds.height * rel.preciseY());
+            Dimension delta = realTargetRefPoint.getDifference(targetRefPoint);
+            SetConnectionBendpointsAccordingToExtremityMoveCommmand.adaptPointListAndRefPoints(false, new Point(delta.width, delta.height), new EdgeQuery(edge).isEdgeWithRectilinearRoutingStyle(),
+                    bounds.getTranslated(-delta.width, -delta.height), sourceRefPoint, targetRefPoint, pointList);
+        }
+    }
+
+    /**
+     * Both source and target of edge have been moved (or dragged and dropped).
+     * We must use a "mix" of the edge layout data from source that contains the
+     * impacted points for the source move and the edge layout data from target
+     * that contains the impacted points for the target move.
+     * 
+     * @param egdeLayoutData
+     *            Edge layout data from source (or from target)
+     * @param oppositeEgdeLayoutData
+     *            Opposite layout data from target (or from source)
+     * @param edge
+     *            The edge to adapt
+     * @param source
+     *            The source view of the edge
+     * @param target
+     *            The target view of the edge
+     */
+    private void getAttributesForSourceAndTargetMove(EdgeLayoutData egdeLayoutData, EdgeLayoutData oppositeEgdeLayoutData, Edge edge, View source, View target) {
+        EdgeLayoutData layoutDataFromSource;
+        EdgeLayoutData layoutDataFromTarget;
+        if (egdeLayoutData.getTarget().getSourceNode().equals(egdeLayoutData.getParent().getTarget())) {
+            layoutDataFromSource = egdeLayoutData;
+            layoutDataFromTarget = oppositeEgdeLayoutData;
+        } else {
+            layoutDataFromSource = oppositeEgdeLayoutData;
+            layoutDataFromTarget = egdeLayoutData;
+        }
+        sourceTerminal = layoutDataFromSource.getSourceTerminal();
+        targetTerminal = layoutDataFromTarget.getTargetTerminal();
+        // sourceRefPoint, targetRefPoint and pointList of
+        // the edgeLayoutData can be null if the edge is
+        // hide when the layout data is stored
+        if (layoutDataFromSource.getSourceRefPoint() != null) {
+            sourceRefPoint = layoutDataFromSource.getSourceRefPoint();
+        }
+        if (layoutDataFromTarget.getTargetRefPoint() != null) {
+            targetRefPoint = layoutDataFromTarget.getTargetRefPoint();
+        }
+
+        if (layoutDataFromSource.getPointList() != null) {
+            pointList = layoutDataFromSource.getPointList();
+
+            if (layoutDataFromTarget.getPointList() != null) {
+                // Get the last point from layout data from target
+                pointList.setPoint(layoutDataFromTarget.getPointList().getLastPoint(), pointList.size() - 1);
+                if (pointList.size() > 2) {
+                    // Also get the second point to retrieve the original value
+                    pointList.setPoint(layoutDataFromTarget.getPointList().getPoint(1), 1);
+                }
+            }
+            if (pointList.size() > 2) {
+                // All the intermediate points are kept fixed, but because both
+                // source and target have been moved, also moved all
+                // intermediate points.
+                if (layoutDataFromSource.getTargetRefPoint() != null) {
+                    Point targetRefPointFromSource = layoutDataFromSource.getTargetRefPoint();
+                    Dimension delta = targetRefPoint.getDifference(targetRefPointFromSource);
+                    for (int i = 1; i < pointList.size() - 1; i++) {
+                        pointList.setPoint(pointList.getPoint(i).translate(delta.width, delta.height), i);
+                    }
+                }
+            }
+
+            adaptPointListForBorderNode(edge, source, target, true, true);
         }
     }
 

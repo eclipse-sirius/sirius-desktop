@@ -19,9 +19,7 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.IdentityAnchor;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Routing;
-import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SetConnectionBendpointsAccordingToExtremityMoveCommmand;
 
 /**
@@ -31,17 +29,19 @@ import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SetConnectionBendpo
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public class EdgeLayoutData extends AbstractEdgeLayoutData {
-    /** This layout data has been created because of a move of its source. */
+    /**
+     * This layout data has been created because of a move, or of a drag'n'drop,
+     * of its source. If both source and target have been moved, or
+     * drap'n'droped, it should be handled by the "consumer" of the data.
+     */
     public static final int CAUSED_BY_SOURCE = 0;
 
-    /** This layout data has been created because of a move of its target. */
-    public static final int CAUSED_BY_TARGET = 1;
-
     /**
-     * This layout data has been created because of a move of its source and its
-     * target.
+     * This layout data has been created because of a move, or of a drag'n'drop,
+     * of its target. If both source and target have been moved, or
+     * drap'n'droped, it should be handled by the "consumer" of the data.
      */
-    public static final int CAUSED_BY_BOTH = 2;
+    public static final int CAUSED_BY_TARGET = 1;
 
     /** This layout data has been created because of another reason. */
     public static final int CAUSED_BY_SOMETING_ELSE = 2;
@@ -307,9 +307,8 @@ public class EdgeLayoutData extends AbstractEdgeLayoutData {
     /**
      * Get the origin of this layout data:
      * <UL>
-     * <LI>Caused only by a move of the source: CAUSED_BY_SOURCE</LI>
-     * <LI>Caused only by a move of the target: CAUSED_BY_TARGET</LI>
-     * <LI>Caused by a move of both the source and the target: CAUSED_BY_BOTH</LI>
+     * <LI>Caused by a move of the source: CAUSED_BY_SOURCE</LI>
+     * <LI>Caused by a move of the target: CAUSED_BY_TARGET</LI>
      * <LI>Caused by something else: CAUSED_BY_SOMETING_ELSE.</LI>
      * </UL>
      * 
@@ -317,47 +316,12 @@ public class EdgeLayoutData extends AbstractEdgeLayoutData {
      */
     public int getCause() {
         int result = CAUSED_BY_SOMETING_ELSE;
-        boolean targetMove = false;
-        boolean sourceMove = false;
-        if (getTarget() != null) {
-            if (getParent().getTarget() != null && getParent().getTarget().equals(getTarget().getSourceNode())) {
-                sourceMove = true;
+        if (getTarget() != null && getParent().getTarget() != null) {
+            if (getParent().getTarget().equals(getTarget().getSourceNode())) {
+                result = CAUSED_BY_SOURCE;
+            } else if (getParent().getTarget().equals(getTarget().getTargetNode())) {
+                result = CAUSED_BY_TARGET;
             }
-            if (getParent().getTarget() != null && getParent().getTarget().equals(getTarget().getTargetNode())) {
-                targetMove = true;
-            }
-            if (sourceMove) {
-                // Has the target also moved?
-                if (getTarget().getTargetNode() instanceof AbstractDNode) {
-                    LayoutData targetData = SiriusLayoutDataManager.INSTANCE.getData((AbstractDNode) getTarget().getTargetNode());
-                    if (targetData != null) {
-                        targetMove = true;
-                        EdgeLayoutData otherEndData = targetData.getData(getTarget(), true);
-                        // TODO: Undo the bendpoints changes for the first
-                        // edgeLayoutData
-                        // otherEndData.
-                    }
-                }
-            } else if (targetMove) {
-                // Has the source also moved?
-                if (getTarget().getSourceNode() instanceof AbstractDNode) {
-                    LayoutData sourceData = SiriusLayoutDataManager.INSTANCE.getData((AbstractDNode) getTarget().getSourceNode());
-                    if (sourceData != null) {
-                        sourceMove = true;
-                        EdgeLayoutData otherEndData = sourceData.getData(getTarget(), true);
-                        // TODO: Undo the bendpoints changes for the first
-                        // edgeLayoutData
-                        // otherEndData.
-                    }
-                }
-            }
-        }
-        if (sourceMove && !targetMove) {
-            result = CAUSED_BY_SOURCE;
-        } else if (!sourceMove && targetMove) {
-            result = CAUSED_BY_TARGET;
-        } else if (sourceMove && targetMove) {
-            result = CAUSED_BY_BOTH;
         }
         return result;
     }

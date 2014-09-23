@@ -300,6 +300,17 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * @return the corresponding EdgeLayoutData or null if not found.
      */
     public EdgeLayoutData getData(final DEdge edge, final boolean searchParent) {
+        Option<EdgeLayoutData> noEdgeLayoutData = Options.newNone();
+        return getData(edge, searchParent, noEdgeLayoutData);
+    }
+
+    @Override
+    public EdgeLayoutData getOppositeEdgeLayoutData(EdgeLayoutData egdeLayoutData, boolean searchParent) {
+        DEdge edge = egdeLayoutData.getTarget();
+        return getData(edge, searchParent, Options.newSome(egdeLayoutData));
+    }
+
+    private EdgeLayoutData getData(DEdge edge, boolean searchParent, Option<EdgeLayoutData> optionalOppositeEgdeLayoutData) {
         EdgeLayoutData result = null;
         if (result == null) {
             // Search the edge in all rootsLayoutData
@@ -307,10 +318,10 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
                 if (abstractLayoutData instanceof LayoutData) {
                     LayoutData layoutData = (LayoutData) abstractLayoutData;
                     result = layoutData.getData(edge, ignoreConsumeState);
-                    if (result != null) {
+                    if (result != null && (!optionalOppositeEgdeLayoutData.some() || !(optionalOppositeEgdeLayoutData.get().equals(result)))) {
                         break;
                     }
-                } else if (abstractLayoutData instanceof EdgeLayoutData) {
+                } else if (abstractLayoutData instanceof EdgeLayoutData && (!optionalOppositeEgdeLayoutData.some() || !(optionalOppositeEgdeLayoutData.get().equals(abstractLayoutData)))) {
                     EdgeLayoutData edgeLayoutData = (EdgeLayoutData) abstractLayoutData;
                     EdgeTarget edgeSource = edge.getSourceNode();
                     EdgeTarget edgeTarget = edge.getTargetNode();
@@ -969,5 +980,4 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
         Set<View> set = createdViewWithCenterLayout.get(gmfDiagram);
         return set.contains(view);
     }
-
 }
