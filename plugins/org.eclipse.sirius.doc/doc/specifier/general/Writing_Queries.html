@@ -124,7 +124,8 @@
 				<strong>
 					<code>feature:</code>
 				</strong> This interpreter can only do direct access to a named feature of the current element. For example, instead of <code>[name/]</code> or <code>[self.name/]</code>, the equivalent using this interpreter would be 
-				<code>feature:name</code>. This interpreter also supports the following pseudo-features:
+				<code>feature:name</code>. Note that if your metamodel generated code was generated with feature delegation set to Reflective, the feature interpreter will return the raw value of the attribute (as seen by 
+				<code>eGet</code>), bypassing any custom getter implementation you provided. This interpreter also supports the following pseudo-features:
 				<ul>
 					<li>
 						<code>feature:eContainer</code> returns the container of the current element (or 
