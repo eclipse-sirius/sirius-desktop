@@ -438,7 +438,7 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
      */
     protected void clearSiriusClipboard() {
         // reinit viewpoint clipboard.
-        SiriusClipboardManager.getInstance().dipose();
+        SiriusClipboardManager.getInstance().dispose();
     }
 
     /**
