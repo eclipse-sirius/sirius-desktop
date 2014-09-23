@@ -21,10 +21,8 @@ import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
+import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -32,10 +30,12 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariabl
 import org.eclipse.sirius.common.tools.api.util.CartesianProduct;
 import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
-import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.ext.base.collect.GSetIntersection;
+import org.eclipse.sirius.ext.base.collect.MultipleCollection;
+import org.eclipse.sirius.ext.base.collect.SetIntersection;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.business.api.query.DTableQuery;
 import org.eclipse.sirius.table.business.api.refresh.DTableSynchronizer;
@@ -62,12 +62,9 @@ import org.eclipse.sirius.table.metamodel.table.description.TableMapping;
 import org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.sirius.ext.base.collect.GSetIntersection;
-import org.eclipse.sirius.ext.base.collect.MultipleCollection;
-import org.eclipse.sirius.ext.base.collect.SetIntersection;
+
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * The synchronizer for tables.
@@ -122,8 +119,7 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
             DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.REFRESH_TABLE_KEY);
 
             final Map<TableMapping, Collection<DTableElement>> mappingToElements = new HashMap<TableMapping, Collection<DTableElement>>();
-            final Session session = SessionManager.INSTANCE.getSession(table.getTarget());
-            final ECrossReferenceAdapter xref = session != null ? session.getSemanticCrossReferencer() : null;
+            ECrossReferenceAdapter xref = ECrossReferenceAdapter.getCrossReferenceAdapter(table.getTarget());
 
             refreshLines(new SubProgressMonitor(monitor, 1), mappingToElements, xref);
 
