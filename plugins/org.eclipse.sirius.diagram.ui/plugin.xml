@@ -1341,6 +1341,27 @@
             commandId="org.eclipse.sirius.diagram.ui.removeBendpoints"
             label="Remove Bend-points"
             style="push">
+         <visibleWhen
+               checkEnabled="false">
+            <and>
+               <with
+                  variable="selection">
+               <iterate
+                     operator="and">
+                  <instanceof
+                        value="org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart">
+                  </instanceof>
+               </iterate>
+            </with>
+               <with
+                     variable="activeEditorId">
+                  <equals
+                        value="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorID">
+                  </equals>
+               </with>
+                </and>
+           
+         </visibleWhen>
       </command>
    </menuContribution>
    <!--<menuContribution
