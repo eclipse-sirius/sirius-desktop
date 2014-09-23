@@ -261,29 +261,31 @@ public class DistributeAction extends DiagramAction {
             selection = ToolUtilities.getSelectionWithoutDependants(selection);
             // Remove the connections
             selection = Lists.newArrayList(Iterables.filter(selection, Predicates.not(Predicates.instanceOf(ConnectionEditPart.class))));
-            EditPart parent = ((EditPart) selection.get(0)).getParent();
-            int sideOfFirstSelection = PositionConstants.NONE;
-            if (selection.get(0) instanceof IBorderItemEditPart) {
-                // If the first selected element is a border node
-                sideOfFirstSelection = ((IBorderItemEditPart) selection.get(0)).getBorderItemLocator().getCurrentSideOfParent();
-                // Check that the side corresponds to the action axis
-                // (horizontal or vertical)
-                if (!isHorizontalAxisAuthorizedForBorderNode(sideOfFirstSelection) && !isVerticalAxisAuthorizedForBorderNode(sideOfFirstSelection)) {
-                    selection = Collections.EMPTY_LIST;
+            if (!selection.isEmpty()) {
+                EditPart parent = ((EditPart) selection.get(0)).getParent();
+                int sideOfFirstSelection = PositionConstants.NONE;
+                if (selection.get(0) instanceof IBorderItemEditPart) {
+                    // If the first selected element is a border node
+                    sideOfFirstSelection = ((IBorderItemEditPart) selection.get(0)).getBorderItemLocator().getCurrentSideOfParent();
+                    // Check that the side corresponds to the action axis
+                    // (horizontal or vertical)
+                    if (!isHorizontalAxisAuthorizedForBorderNode(sideOfFirstSelection) && !isVerticalAxisAuthorizedForBorderNode(sideOfFirstSelection)) {
+                        selection = Collections.EMPTY_LIST;
+                    }
                 }
-            }
 
-            for (int i = 1; i < selection.size(); i++) {
-                EditPart part = (EditPart) selection.get(i);
-                if (part.getParent() != parent) {
-                    // All the selected shapes must have the same parent.
-                    selection = Collections.EMPTY_LIST;
-                    break;
-                } else if (sideOfFirstSelection != PositionConstants.NONE && !isABorderNodeOnSameAxis(part, sideOfFirstSelection)) {
-                    // All the selected border nodes must have the same
-                    // axis.
-                    selection = Collections.EMPTY_LIST;
-                    break;
+                for (int i = 1; i < selection.size(); i++) {
+                    EditPart part = (EditPart) selection.get(i);
+                    if (part.getParent() != parent) {
+                        // All the selected shapes must have the same parent.
+                        selection = Collections.EMPTY_LIST;
+                        break;
+                    } else if (sideOfFirstSelection != PositionConstants.NONE && !isABorderNodeOnSameAxis(part, sideOfFirstSelection)) {
+                        // All the selected border nodes must have the same
+                        // axis.
+                        selection = Collections.EMPTY_LIST;
+                        break;
+                    }
                 }
             }
         }
