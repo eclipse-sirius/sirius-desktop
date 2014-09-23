@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.tree.description.impl.TreeNavigationDescriptionImpl;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -40,10 +41,11 @@ public class TreeNavigationDescriptionSpec extends TreeNavigationDescriptionImpl
      */
     @Override
     public EList<RepresentationElementMapping> getMappings() {
+        Resource resource = this.eResource();
         if (this.eResource() == null) {
             throw new UnsupportedOperationException();
         }
-        ECrossReferenceAdapter crossReferencer = ECrossReferenceAdapter.getCrossReferenceAdapter(this.eResource());
+        ECrossReferenceAdapter crossReferencer = ECrossReferenceAdapter.getCrossReferenceAdapter(resource);
         if (crossReferencer == null) {
             throw new UnsupportedOperationException();
         }

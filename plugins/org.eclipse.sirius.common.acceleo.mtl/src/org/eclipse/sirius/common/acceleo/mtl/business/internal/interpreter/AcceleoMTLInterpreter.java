@@ -973,7 +973,7 @@ public class AcceleoMTLInterpreter implements IInterpreter {
         if (element != null) {
             Resource resource = element.eResource();
             if (resource != null) {
-                final URI uri = element.eResource().getURI();
+                final URI uri = resource.getURI();
                 if (existsInWorkspace(uri.toPlatformString(true))) {
                     viewpointProjects.add(uri.segment(1));
                 } else if (existsInPlugins(uri.toPlatformString(true))) {

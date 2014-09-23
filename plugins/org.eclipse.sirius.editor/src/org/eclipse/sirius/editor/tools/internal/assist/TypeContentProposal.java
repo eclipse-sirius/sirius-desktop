@@ -11,6 +11,7 @@
 package org.eclipse.sirius.editor.tools.internal.assist;
 
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.fieldassist.IContentProposal;
 
@@ -68,8 +69,9 @@ public class TypeContentProposal implements IContentProposal {
         if (mmURI != null) {
             description += "\nin " + mmURI;
         }
-        if (proposal.eResource() != null && proposal.eResource().getURI() != null) {
-            final String resourceURI = proposal.eResource().getURI().toString();
+        Resource proposalResource = proposal.eResource();
+        if (proposalResource != null && proposalResource.getURI() != null) {
+            final String resourceURI = proposalResource.getURI().toString();
             if (mmURI != null && !resourceURI.equals(mmURI)) {
                 description += "\nlocated at " + resourceURI;
             }
