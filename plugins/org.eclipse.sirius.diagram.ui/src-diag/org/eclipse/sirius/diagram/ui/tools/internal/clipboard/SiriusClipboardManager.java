@@ -199,7 +199,7 @@ public final class SiriusClipboardManager {
     /**
      * Dispose the viewpoint clipboard.
      */
-    public void dipose() {
+    public void dispose() {
         if (this.sourceDomain != null) {
             this.sourceDomain.setClipboard(null);
         }
