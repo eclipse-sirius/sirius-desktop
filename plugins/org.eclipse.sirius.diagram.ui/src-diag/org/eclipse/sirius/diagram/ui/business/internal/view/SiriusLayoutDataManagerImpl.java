@@ -307,6 +307,9 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     @Override
     public EdgeLayoutData getOppositeEdgeLayoutData(EdgeLayoutData egdeLayoutData, boolean searchParent) {
         DEdge edge = egdeLayoutData.getTarget();
+        if (edge == null) {
+            return null;
+        }
         return getData(edge, searchParent, Options.newSome(egdeLayoutData));
     }
 
