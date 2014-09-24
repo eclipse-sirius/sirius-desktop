@@ -52,7 +52,7 @@ import com.google.common.collect.Lists;
 public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand {
     CompositeTransactionalCommand wrappedCommand;
 
-    IGraphicalEditPart host;
+    IGraphicalEditPart movedPart;
 
     PrecisionPoint moveDelta;
 
@@ -61,14 +61,14 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
     /**
      * Default constructor.
      * 
-     * @param host
-     *            the <i>host</i> EditPart on which this policy is installed.
+     * @param movedPart
+     *            the editPart that moves
      * @param moveDelta
      *            The move delta
      */
-    public ChangeBendpointsOfEdgesCommand(IGraphicalEditPart host, PrecisionPoint moveDelta) {
-        super(host.getEditingDomain(), "Adapt bendpoints of edges", null);
-        this.host = host;
+    public ChangeBendpointsOfEdgesCommand(IGraphicalEditPart movedPart, PrecisionPoint moveDelta) {
+        super(movedPart.getEditingDomain(), "Adapt bendpoints of edges", null);
+        this.movedPart = movedPart;
         this.moveDelta = moveDelta;
     }
 
@@ -76,60 +76,44 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
      * Constructor that allows to ignore the primary selection (the first
      * selected element).
      * 
-     * @param host
-     *            the <i>host</i> EditPart on which this policy is installed.
+     * @param movedPart
+     *            the editPart that moves
      * @param moveDelta
      *            The move delta
      * @param ignorePrimarySelection
      *            If the host is the primary selection of the current editor,
      *            this command will have no effect.
      */
-    public ChangeBendpointsOfEdgesCommand(IGraphicalEditPart host, PrecisionPoint moveDelta, boolean ignorePrimarySelection) {
-        this(host, moveDelta);
+    public ChangeBendpointsOfEdgesCommand(IGraphicalEditPart movedPart, PrecisionPoint moveDelta, boolean ignorePrimarySelection) {
+        this(movedPart, moveDelta);
         this.ignorePrimarySelection = ignorePrimarySelection;
     }
 
     @Override
     protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) {
         CommandResult result = CommandResult.newOKCommandResult();
-        if (!(ignorePrimarySelection && host.getSelected() == EditPart.SELECTED_PRIMARY)) {
-            // It's possible that host is not in the list of movedEditParts in
-            // case of "Arrange Selection" action. Indeed, in this case, the
-            // arrange selection launch a "false" arrange all (see
-            // ArrangeSelectionLayoutProvider.layoutEditParts(List, IAdaptable)
-            // for more details). In this case we do not consider the move given
-            // it will be "revert" later by the "PinnedElementsHandler".
-            List<?> movedEditParts = host.getViewer().getSelectedEditParts();
-            if (movedEditParts.contains(host) && host instanceof AbstractGraphicalEditPart) {
-                List<AbstractGraphicalEditPart> allMovedEditParts = getMovedChildren(Iterables.filter(movedEditParts, AbstractGraphicalEditPart.class), true);
-                AbstractGraphicalEditPart currentMovedEditPart = (AbstractGraphicalEditPart) host;
-                List<AbstractGraphicalEditPart> currentMovedEditPartAndItsChildren = getMovedChildren(currentMovedEditPart, true);
-                final TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(host.getModel());
-                for (AbstractGraphicalEditPart movedEditPart : currentMovedEditPartAndItsChildren) {
-                    for (ConnectionEditPart connectionEditPart : Iterables.filter(movedEditPart.getSourceConnections(), ConnectionEditPart.class)) {
-                        Option<CompositeTransactionalCommand> optionalCommand = getBendpointsChangedCommand(transactionalEditingDomain, moveDelta, connectionEditPart, allMovedEditParts, true);
-                        if (optionalCommand.some()) {
-                            if (wrappedCommand == null) {
-                                wrappedCommand = optionalCommand.get();
-                            } else {
-                                for (Iterator<IUndoableOperation> iterator = optionalCommand.get().iterator(); iterator.hasNext();) {
-                                    wrappedCommand.add(iterator.next());
-                                }
-                            }
+        if (!(ignorePrimarySelection && movedPart.getSelected() == EditPart.SELECTED_PRIMARY)) {
+            // It's possible that movedPart is not in the list of
+            // selectedEditParts in case of "Arrange Selection" action. Indeed,
+            // in this case, the arrange selection launch a "false" arrange all
+            // (see ArrangeSelectionLayoutProvider.layoutEditParts(List,
+            // IAdaptable) for more details). In this case we do not consider
+            // the move given it will be "revert" later by the
+            // "PinnedElementsHandler".
 
-                        }
-                    }
-                    for (ConnectionEditPart connectionEditPart : Iterables.filter(movedEditPart.getTargetConnections(), ConnectionEditPart.class)) {
-                        Option<CompositeTransactionalCommand> optionalCommand = getBendpointsChangedCommand(transactionalEditingDomain, moveDelta, connectionEditPart, allMovedEditParts, false);
-                        if (optionalCommand.some()) {
-                            if (wrappedCommand == null) {
-                                wrappedCommand = optionalCommand.get();
-                            } else {
-                                for (Iterator<IUndoableOperation> iterator = optionalCommand.get().iterator(); iterator.hasNext();) {
-                                    wrappedCommand.add(iterator.next());
-                                }
-                            }
-                        }
+            // It's also possible that movedPart is not in the list of
+            // selectedEditParts in case of moving a parent. In this case, we
+            // consider the move.
+            List<?> selectedEditParts = movedPart.getViewer().getSelectedEditParts();
+            if (movedPart instanceof AbstractGraphicalEditPart) {
+                List<AbstractGraphicalEditPart> allMovedEditParts = getMovedChildren(Iterables.filter(selectedEditParts, AbstractGraphicalEditPart.class), true);
+                if (selectedEditParts.contains(movedPart) || allMovedEditParts.contains(movedPart)) {
+                    AbstractGraphicalEditPart currentMovedEditPart = (AbstractGraphicalEditPart) movedPart;
+                    List<AbstractGraphicalEditPart> currentMovedEditPartAndItsChildren = getMovedChildren(currentMovedEditPart, true);
+                    final TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(movedPart.getModel());
+                    for (AbstractGraphicalEditPart movedEditPart : currentMovedEditPartAndItsChildren) {
+                        completeCommandWithBendpointsChangedCommand(movedEditPart.getSourceConnections(), moveDelta, true, allMovedEditParts, transactionalEditingDomain);
+                        completeCommandWithBendpointsChangedCommand(movedEditPart.getTargetConnections(), moveDelta, false, allMovedEditParts, transactionalEditingDomain);
                     }
                 }
             }
@@ -147,6 +131,45 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
             }
         }
         return result;
+    }
+
+    /**
+     * Compute the command needed to adapt the bendpoints of these
+     * <code>connectionEditParts</code> if needed and add it to the
+     * <code>wrappedCommand</code>.
+     * 
+     * @param connectionEditParts
+     *            the connectionEditParts to deal with
+     * @param moveDelta
+     *            The move delta
+     * @param sourceMove
+     *            true if the source of the <code>connectionEditPart</code> is
+     *            moved, false if this is the target.
+     * @param allMovedEditParts
+     *            This list is used to check if the other end (source or target)
+     *            is also moved. In this case, there is nothing to do for the
+     *            last segment of oblique and rectilinear edges. If empty all
+     *            parts of diagram are considered as moved (case of arrange all)
+     * @param transactionalEditingDomain
+     *            the editing domain through which model changes are made
+     * @return An optional command that computes the new bendpoints of the
+     *         <code>connectionEditPart</code> if needed.
+     */
+    protected void completeCommandWithBendpointsChangedCommand(List<?> connectionEditParts, Point moveDelta, boolean sourceMove, List<AbstractGraphicalEditPart> allMovedEditParts,
+            final TransactionalEditingDomain transactionalEditingDomain) {
+        for (ConnectionEditPart connectionEditPart : Iterables.filter(connectionEditParts, ConnectionEditPart.class)) {
+            Option<CompositeTransactionalCommand> optionalCommand = getBendpointsChangedCommand(transactionalEditingDomain, moveDelta, connectionEditPart, allMovedEditParts, sourceMove);
+            if (optionalCommand.some()) {
+                if (wrappedCommand == null) {
+                    wrappedCommand = optionalCommand.get();
+                } else {
+                    for (Iterator<IUndoableOperation> iterator = optionalCommand.get().iterator(); iterator.hasNext();) {
+                        wrappedCommand.add(iterator.next());
+                    }
+                }
+
+            }
+        }
     }
 
     @Override
@@ -167,7 +190,7 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
 
     @Override
     public void dispose() {
-        host = null;
+        movedPart = null;
         wrappedCommand = null;
     }
 
@@ -220,12 +243,10 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
                 if ((sourceMove && !allMovedEditParts.contains(connectionEditPart.getTarget())) || (!sourceMove && !allMovedEditParts.contains(connectionEditPart.getSource()))) {
                     CompositeTransactionalCommand command = new CompositeTransactionalCommand(transactionalEditingDomain, "Map GMF to Draw2D");
                     // Reset the connection anchor source and target considering
-                    // it
-                    // can be wrongly modified by the arrange selection (see
+                    // it can be wrongly modified by the arrange selection (see
                     // ArrangeSelectionLayoutProvider.layoutEditParts(List,
                     // IAdaptable) and previous comment in
-                    // changeBendpointsOfEdges
-                    // for more details)
+                    // changeBendpointsOfEdges for more details)
                     SetConnectionAnchorsCommand setConnectionAnchorsCommand = new SetConnectionAnchorsCommand(transactionalEditingDomain, StringStatics.BLANK);
                     setConnectionAnchorsCommand.setEdgeAdaptor(connectionEditPart);
                     setConnectionAnchorsCommand.setNewSourceTerminal(((INodeEditPart) connectionEditPart.getSource()).mapConnectionAnchorToTerminal(connectionFigure.getSourceAnchor()));

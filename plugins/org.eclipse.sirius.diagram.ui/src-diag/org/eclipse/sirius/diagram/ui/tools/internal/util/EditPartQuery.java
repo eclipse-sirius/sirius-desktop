@@ -115,19 +115,33 @@ public class EditPartQuery {
      */
     public List<Node> getBorderedNodes(final int expectedSide) {
         List<Node> result = new ArrayList<Node>();
-        if (part instanceof IBorderedShapeEditPart) {
-            Iterable<IBorderItemEditPart> bordersItemPart = Iterables.filter(part.getChildren(),
-                    Predicates.and(Predicates.instanceOf(IBorderItemEditPart.class), new Predicate<IBorderItemEditPart>() {
-                        public boolean apply(IBorderItemEditPart input) {
-                            int currentSide = input.getBorderItemLocator().getCurrentSideOfParent();
-                            return expectedSide == currentSide;
-                        }
-                    }));
-            for (IBorderItemEditPart borderItemEditPart : bordersItemPart) {
-                result.add((Node) borderItemEditPart.getModel());
-            }
+        for (IBorderItemEditPart borderItemEditPart : getBorderNodeEditParts(expectedSide)) {
+            result.add((Node) borderItemEditPart.getModel());
         }
         return result;
+    }
+
+    /**
+     * Return the list of {@link BorderItemEditPart}s that are on the expected
+     * side.
+     * 
+     * @param expectedSide
+     *            The side ({@link org.eclipse.draw2d.PositionConstants}) where
+     *            the children must be
+     * @return the list of {@link BorderItemEditPart}s that are on the expected
+     *         side.
+     */
+    public List<IBorderItemEditPart> getBorderNodeEditParts(final int expectedSide) {
+        if (part instanceof IBorderedShapeEditPart) {
+            Iterable<IBorderItemEditPart> bordersItemPart = Iterables.filter(part.getChildren(), Predicates.and(Predicates.instanceOf(IBorderItemEditPart.class), new Predicate<IBorderItemEditPart>() {
+                public boolean apply(IBorderItemEditPart input) {
+                    int currentSide = input.getBorderItemLocator().getCurrentSideOfParent();
+                    return expectedSide == currentSide;
+                }
+            }));
+            return Lists.newArrayList(bordersItemPart);
+        }
+        return new ArrayList<IBorderItemEditPart>();
     }
 
     /**

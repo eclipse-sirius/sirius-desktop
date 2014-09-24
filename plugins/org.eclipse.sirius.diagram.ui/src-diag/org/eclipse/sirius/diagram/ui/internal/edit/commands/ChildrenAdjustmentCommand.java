@@ -24,6 +24,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
@@ -85,6 +86,10 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
                     || (childrenMoveModeExtendedData != null && ((Boolean) childrenMoveModeExtendedData).booleanValue());
             if (keepSameAbsoluteLocation) {
                 addChildrenAdjustmentCommands(host, wrappedCommand, request);
+            } else {
+                // Children have been indirectly moved so their edges must
+                // adapted to only move last segment
+                addChildrenEdgesAdjustmentCommands(host, wrappedCommand, request);
             }
         }
 
@@ -158,6 +163,34 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
     }
 
     /**
+     * Add the needed commands, to "move" only the last segment of edges
+     * pointing to the children nodes, to the original command.
+     * 
+     * @param resizedPart
+     *            The part that will be resized
+     * @param cc
+     *            The current command that resizes the parent part, command to
+     *            complete with the moves of children
+     * @param cbr
+     *            The original request
+     */
+    private void addChildrenEdgesAdjustmentCommands(IGraphicalEditPart resizedPart, CompositeTransactionalCommand cc, ChangeBoundsRequest cbr) {
+        PrecisionPoint delta = new PrecisionPoint(cbr.getMoveDelta());
+        GraphicalHelper.applyInverseZoomOnPoint(resizedPart, delta);
+        DNodeContainerViewNodeContainerCompartmentEditPart compartment = Iterables
+                .getFirst(Iterables.filter(resizedPart.getChildren(), DNodeContainerViewNodeContainerCompartmentEditPart.class), null);
+        if (compartment != null) {
+            Iterable<EditPart> childrenExceptBorderItemPart = Iterables.filter(compartment.getChildren(), EditPart.class);
+            for (EditPart editPart : childrenExceptBorderItemPart) {
+                // Adapt edges to move only the last segment
+                if (editPart instanceof IGraphicalEditPart) {
+                    cc.compose(new ChangeBendpointsOfEdgesCommand((IGraphicalEditPart) editPart, delta));
+                }
+            }
+        }
+    }
+
+    /**
      * Add the needed commands, to move the border nodes, to the original
      * command.
      * 
@@ -187,6 +220,7 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
             if (!childrenToMove.isEmpty()) {
                 cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectBorderedNodesOperation(childrenToMove, verticalSizeDelta, PositionConstants.VERTICAL)));
             }
+
             // The border nodes of the east and west side must eventually be
             // shift to stay in the parent bounds.
             Map<Node, Integer> childrenToMoveWithDelta = resizedPartQuery.getBorderedNodesToMoveWithDelta(PositionConstants.EAST, verticalSizeDelta);
@@ -196,29 +230,57 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
                         PositionConstants.VERTICAL)));
             }
 
-            if (keepSameAbsoluteLocation && (rq.isResizeFromTop() || cbr.isCenteredResize())) {
+            if (rq.isResizeFromTop() || cbr.isCenteredResize()) {
+                // The edges linked to border node of the north side must
+                // adapted to only move the last segment.
+                List<IBorderItemEditPart> childrenWithEdgesToMove = resizedPartQuery.getBorderNodeEditParts(PositionConstants.NORTH);
+                PrecisionPoint delta;
                 if (cbr.isCenteredResize()) {
-                    verticalSizeDelta = verticalSizeDelta + logicalDelta.y;
+                    delta = new PrecisionPoint(0, -verticalSizeDelta - logicalDelta.y);
+                } else {
+                    delta = new PrecisionPoint(0, -verticalSizeDelta);
                 }
-                // The border nodes of the west and east sides must be shift to
-                // stay at the same absolute location (except if they have
-                // already moved to stay in the parent bounds).
-                List<Node> borderNodes = resizedPartQuery.getBorderedNodes(PositionConstants.WEST);
-                borderNodes.addAll(resizedPartQuery.getBorderedNodes(PositionConstants.EAST));
-                borderNodes.removeAll(childrenToMoveWithDelta.keySet());
-                cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectBorderedNodesOperation(borderNodes, verticalSizeDelta, PositionConstants.VERTICAL)));
-            }
+                for (IBorderItemEditPart borderNodeEditPart : childrenWithEdgesToMove) {
+                    cc.compose(new ChangeBendpointsOfEdgesCommand(borderNodeEditPart, delta));
+                }
 
+                if (keepSameAbsoluteLocation) {
+                    // The border nodes of the west and east sides must be shift
+                    // to stay at the same absolute location (except if they
+                    // have already moved to stay in the parent bounds).
+                    if (cbr.isCenteredResize()) {
+                        verticalSizeDelta = verticalSizeDelta + logicalDelta.y;
+                    }
+                    List<Node> borderNodes = resizedPartQuery.getBorderedNodes(PositionConstants.WEST);
+                    borderNodes.addAll(resizedPartQuery.getBorderedNodes(PositionConstants.EAST));
+                    borderNodes.removeAll(childrenToMoveWithDelta.keySet());
+                    cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectBorderedNodesOperation(borderNodes, verticalSizeDelta, PositionConstants.VERTICAL)));
+                } else {
+                    // The edges linked to border nodes of the west and east
+                    // sides must be adapted to only move the last segment.
+                    childrenWithEdgesToMove = resizedPartQuery.getBorderNodeEditParts(PositionConstants.WEST);
+                    childrenWithEdgesToMove.addAll(resizedPartQuery.getBorderNodeEditParts(PositionConstants.EAST));
+                    childrenWithEdgesToMove.removeAll(childrenToMoveWithDelta.keySet());
+                    if (cbr.isCenteredResize()) {
+                        delta = new PrecisionPoint(0, -verticalSizeDelta - logicalDelta.y);
+                    } else {
+                        delta = new PrecisionPoint(0, -verticalSizeDelta);
+                    }
+                    for (IBorderItemEditPart borderNodeEditPart : childrenWithEdgesToMove) {
+                        cc.compose(new ChangeBendpointsOfEdgesCommand(borderNodeEditPart, delta));
+                    }
+                }
+            }
         }
         if (rq.isResizeFromRight() || rq.isResizeFromLeft()) {
             int horizontalSizeDelta = logicalDelta.width;
-            // The border node of the east size must be shift to stay on the
+            // The border node of the east side must be shift to stay on the
             // east side.
             List<Node> childrenToMove = resizedPartQuery.getBorderedNodes(PositionConstants.EAST);
             if (!childrenToMove.isEmpty()) {
                 cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectBorderedNodesOperation(childrenToMove, horizontalSizeDelta, PositionConstants.HORIZONTAL)));
             }
-            // The border nodes of the north or south size must eventually be
+            // The border nodes of the north or south side must eventually be
             // shift to stay in the parent bounds.
             Map<Node, Integer> childrenToMoveWithDelta = resizedPartQuery.getBorderedNodesToMoveWithDelta(PositionConstants.NORTH, horizontalSizeDelta);
             childrenToMoveWithDelta.putAll(resizedPartQuery.getBorderedNodesToMoveWithDelta(PositionConstants.SOUTH, horizontalSizeDelta));
@@ -226,18 +288,46 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
                 cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectBorderedNodesOperation(Lists.newArrayList(entry.getKey()), entry.getValue().intValue(),
                         PositionConstants.HORIZONTAL)));
             }
-
-            if (keepSameAbsoluteLocation && (rq.isResizeFromLeft() || cbr.isCenteredResize())) {
+            if (rq.isResizeFromLeft() || cbr.isCenteredResize()) {
+                // The edges linked to border node of the west side must adapted
+                // to only move the last segment.
+                List<IBorderItemEditPart> childrenWithEdgesToMove = resizedPartQuery.getBorderNodeEditParts(PositionConstants.WEST);
+                PrecisionPoint delta;
                 if (cbr.isCenteredResize()) {
-                    horizontalSizeDelta = horizontalSizeDelta + logicalDelta.x;
+                    delta = new PrecisionPoint(-horizontalSizeDelta - logicalDelta.x, 0);
+                } else {
+                    delta = new PrecisionPoint(-horizontalSizeDelta, 0);
                 }
-                // The border nodes of the north and south sides must be shift
-                // to stay at the same absolute location (except if they have
-                // already moved to stay in the parent bounds).
-                List<Node> borderNodes = resizedPartQuery.getBorderedNodes(PositionConstants.NORTH);
-                borderNodes.addAll(resizedPartQuery.getBorderedNodes(PositionConstants.SOUTH));
-                borderNodes.removeAll(childrenToMoveWithDelta.keySet());
-                cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectBorderedNodesOperation(borderNodes, horizontalSizeDelta, PositionConstants.HORIZONTAL)));
+                for (IBorderItemEditPart borderNodeEditPart : childrenWithEdgesToMove) {
+                    cc.compose(new ChangeBendpointsOfEdgesCommand(borderNodeEditPart, delta));
+                }
+
+                if (keepSameAbsoluteLocation) {
+                    // The border nodes of the north and south sides must be
+                    // shift to stay at the same absolute location (except if
+                    // they have already moved to stay in the parent bounds).
+                    if (cbr.isCenteredResize()) {
+                        horizontalSizeDelta = horizontalSizeDelta + logicalDelta.x;
+                    }
+                    List<Node> borderNodes = resizedPartQuery.getBorderedNodes(PositionConstants.NORTH);
+                    borderNodes.addAll(resizedPartQuery.getBorderedNodes(PositionConstants.SOUTH));
+                    borderNodes.removeAll(childrenToMoveWithDelta.keySet());
+                    cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectBorderedNodesOperation(borderNodes, horizontalSizeDelta, PositionConstants.HORIZONTAL)));
+                } else {
+                    // The edges linked border nodes of the north and south
+                    // sides must be adapted to only move the last segment.
+                    childrenWithEdgesToMove = resizedPartQuery.getBorderNodeEditParts(PositionConstants.NORTH);
+                    childrenWithEdgesToMove.addAll(resizedPartQuery.getBorderNodeEditParts(PositionConstants.SOUTH));
+                    childrenWithEdgesToMove.removeAll(childrenToMoveWithDelta.keySet());
+                    if (cbr.isCenteredResize()) {
+                        delta = new PrecisionPoint(-horizontalSizeDelta - logicalDelta.x, 0);
+                    } else {
+                        delta = new PrecisionPoint(-horizontalSizeDelta, 0);
+                    }
+                    for (IBorderItemEditPart borderNodeEditPart : childrenWithEdgesToMove) {
+                        cc.compose(new ChangeBendpointsOfEdgesCommand(borderNodeEditPart, delta));
+                    }
+                }
             }
         }
     }
