@@ -22,6 +22,7 @@ import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ContainerCreationEd
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LaunchBehaviorToolEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LaunchToolEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.RefreshSiriusElementEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ResetOriginEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.RevealElementsEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.RevealSelectedElementsEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusContainerDropPolicy;
@@ -72,6 +73,7 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
         compoundEditPolicy.addEditPolicy(new RevealElementsEditPolicy());
         compoundEditPolicy.addEditPolicy(new RevealSelectedElementsEditPolicy());
         compoundEditPolicy.addEditPolicy(new LaunchBehaviorToolEditPolicy());
+        compoundEditPolicy.addEditPolicy(new ResetOriginEditPolicy());
         if (this.getEditPolicy(EditPolicy.COMPONENT_ROLE) != null) {
             compoundEditPolicy.addEditPolicy(this.getEditPolicy(EditPolicy.COMPONENT_ROLE));
             removeEditPolicy(EditPolicy.COMPONENT_ROLE);

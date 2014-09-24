@@ -947,6 +947,10 @@
            id="org.eclipse.sirius.diagram.ui.removeBendpoints"
            name="Remove Bend-points">
      </command>
+     <command
+           id="org.eclipse.sirius.diagram.ui.resetOrigin"
+           name="Reset Origin">
+     </command>
    </extension>
 
    <extension point="org.eclipse.ui.bindings">
@@ -1008,6 +1012,12 @@
             contextId="org.eclipse.sirius.diagram.ui.diagramContext"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="M1+M2+-">
+      </key>
+       <key
+            commandId="org.eclipse.sirius.diagram.ui.resetOrigin"
+            contextId="org.eclipse.sirius.diagram.ui.diagramContext"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+&amp;">
       </key>
    </extension>
 
@@ -1364,6 +1374,27 @@
          </visibleWhen>
       </command>
    </menuContribution>
+      <menuContribution
+         allPopups="false"
+         locationURI="popup:org.eclipse.ui.popup.any?after=org.eclipse.sirius.diagram.ui.popup.otherActions">
+      <command
+            commandId="org.eclipse.sirius.diagram.ui.resetOrigin"
+            label="Reset Origin"
+            style="push">
+            <visibleWhen
+               checkEnabled="false">
+            <with
+                  variable="activeMenuSelection">
+               <iterate
+                     operator="and">
+                  <instanceof
+                        value="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
+                  </instanceof>
+               </iterate>
+            </with>
+         </visibleWhen>
+      </command>
+   </menuContribution>
    <!--<menuContribution
          allPopups="false"
          locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.refresh">
@@ -1687,6 +1718,21 @@
                  <test
                        property="org.eclipse.sirius.diagram.ui.canRemoveBendpoints">
                  </test>
+              </iterate>
+           </with>
+        </activeWhen>
+     </handler>
+     <handler
+           class="org.eclipse.sirius.diagram.ui.tools.internal.handler.ResetOriginHandler"
+           commandId="org.eclipse.sirius.diagram.ui.resetOrigin">
+        <activeWhen>
+           <with
+                 variable="selection">
+              <iterate
+                    operator="and">
+                 <instanceof
+                       value="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
+                 </instanceof>
               </iterate>
            </with>
         </activeWhen>

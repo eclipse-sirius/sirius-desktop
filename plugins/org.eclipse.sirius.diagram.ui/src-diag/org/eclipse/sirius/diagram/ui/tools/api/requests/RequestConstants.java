@@ -44,4 +44,7 @@ public interface RequestConstants extends org.eclipse.gmf.runtime.diagram.ui.req
     /** request to distribute shapes. */
     String REQ_DISTRIBUTE = "distribute";
 
+    /** request to reset origin. */
+    String REQ_RESET_ORIGIN = "resetOrigin";
+
 }

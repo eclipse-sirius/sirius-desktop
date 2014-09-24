@@ -110,6 +110,27 @@ For vertical distribution with uniform gaps:
 For vertical centered distribution:
 * the first shape is the highest one (with its center at the minimum y coordinate). If several shapes are aligned on middle, the leftmost one is the first.
 * the last shape is the lowest one (with the bottom side with the maximum y coordinate). If several shapes are aligned by middle, the rightmost one is the last.
+
+
+h3. Reset Diagram Origin
+
+This action is available within the diagram context menu ("Reset Origin") or via "M1" + "&" shortcut.
+The diagram bounds (the rectangle formed by the highest, the leftmost, the lowest and the rightest elements) can have a negative origin or can be shifted toward the bottom-right with a blank zone at the top-left.
+This action aims to move all diagram elements so that the diagram retrieves its origin while keeping the element layout.
+
+This is an example of a diagram with a blank zone between the origin location and the figures bounds:
+!images/reset_origin_before.png!
+
+After applying the action, the diagram figures are moved toward the top-left origin location:
+!images/reset_origin_after.png!
+
+h4. Specific cases
+
+* Elements hidden by the user are not considered to compute the shift size but are shifted as the other shapes. That means if an hidden element is located at the top-left corner, the diagram coordinates will turn negative if the user reveals it after having executed the "Reset Origin" action.
+* Edges hidden because of a masked source or target are taken in account to compute the diagram bounds:
+!images/reset_origin_visible_edge.png!
+After having scrolled the container, one of the edge end is masked so the edge is hidden. This one will be considered to compute the diagram bounds:
+!images/reset_origin_masked_edge.png!
  
 h3. Hiding elements
 

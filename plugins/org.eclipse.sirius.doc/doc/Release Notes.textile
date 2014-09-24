@@ -32,6 +32,7 @@ Result after resizing with this feature (the edges keep the same location):
 ** Distribute centers evenly vertically
 * The end user can now remove all bend-points between the two edge ends. This action is available on edge context menu "Remove Bend-points" or by using the shortcut "Ctrl" + "Shift" + "-".
 * Reconnection of an edge will only now move the minimum necessary bendpoints instead of reseting it to default.
+* A new action has been added to reset the diagram origin: the diagram bounds (the rectangle formed by the highest & leftmost and the lowest & rightest elements) can have a negative origin or can be shifted toward the bottom-right with a blank zone at the top-left. This action aims to move all diagram elements so that the diagram retrieves its origin while keeping elements layout.
 
 h3. Specifier-Visible Changes
 
@@ -89,11 +90,8 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 * A constant @REQ_DISTRIBUTE@ has been added in @org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants@ to identify the new type of request, @DistributeRequest@.
 * Constants have been added in @org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds@ for the new drop down menu in tabbar and for the four new distribute actions.
 * Constants have been added in @org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath@ for the icon path of the four new distribute actions.
-* A new method has been added in @org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager@ to retrieve
-the opposite edge layout data of another edge layout data. An edge
-layout data stored in the incomingEdgeLayoutDatas ref of its parent data
-can have an opposite edge layout data in the outgoingEdgeLayoutDatas of
-the other ends.
+* A new method has been added in @org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager@ to retrieve the opposite edge layout data of another edge layout data. An edge layout data stored in the incomingEdgeLayoutDatas ref of its parent data can have an opposite edge layout data in the outgoingEdgeLayoutDatas of the other ends.
+* A Constant @org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants.REQ_RESET_ORIGIN@ has been added to identify requests to get the ResetOrigin command.
 
 h4. Changes in @org.eclipse.sirius.tree.ui@
 
