@@ -10,7 +10,7 @@
        Obeo - Initial API and implementation
 -->
 <feature
-      id="org.eclipse.sirius.tests"
+      id="org.eclipse.sirius.tests.support"
       label="%featureName"
       version="2.0.0.qualifier"
       provider-name="%providerName"
@@ -32,7 +32,7 @@ modelers, using JUnit or SWTbot. Install this if you want to write automated tes
    </license>
 
    <plugin
-         id="org.eclipse.sirius.tests.support"
+         id="org.eclipse.sirius.tests.junit.support"
          download-size="0"
          install-size="0"
          version="0.0.0"

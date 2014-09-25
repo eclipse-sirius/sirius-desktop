@@ -69,10 +69,10 @@
    <feature id="org.eclipse.sirius.samples.source" version="0.0.0">
       <category name="Sirius.SDK"/>
    </feature>
-   <feature id="org.eclipse.sirius.tests" version="0.0.0">
+   <feature id="org.eclipse.sirius.tests.support" version="0.0.0">
       <category name="Sirius.SDK"/>
    </feature>
-   <feature id="org.eclipse.sirius.tests.source" version="0.0.0">
+   <feature id="org.eclipse.sirius.tests.support.source" version="0.0.0">
       <category name="Sirius.SDK"/>
    </feature>
    <category-def name="Sirius" label="Sirius">

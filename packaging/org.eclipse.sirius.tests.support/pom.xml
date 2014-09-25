@@ -21,7 +21,7 @@
     <relativePath>../../packaging/org.eclipse.sirius.parent</relativePath>
   </parent>
 
-  <artifactId>org.eclipse.sirius.tests</artifactId>
+  <artifactId>org.eclipse.sirius.tests.support</artifactId>
   <packaging>eclipse-feature</packaging>
 
   <build>
