@@ -42,6 +42,7 @@ public class DifferentSerialization implements Predicate<Resource> {
         this.options = options;
     }
 
+
     @Override
     public boolean apply(Resource input) {
         boolean hasChangesToSave = false;

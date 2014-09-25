@@ -201,6 +201,10 @@
 				<code>org.eclipse.sirius.common.tools.DslCommonPlugin.getWorkspaceEPackageRegistry</code> has been removed. The same method has been added in 
 				<code>org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin</code>.
 			</li>
+			<li>A new class 
+				<code>org.eclipse.sirius.common.tools.api.resource.ResourceMigrationMarker</code> has been introduced for adopters. This marker can ben attached to a Resource in order to indicate that some automatic migration 
+				<strong>might</strong> have change the structure of the model during the loading (with no isModified flag). Sirius will then use this information to consider saving the file even if there is no logical change. 
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.common.ui">Changes in 
 			<code>org.eclipse.sirius.common.ui</code>

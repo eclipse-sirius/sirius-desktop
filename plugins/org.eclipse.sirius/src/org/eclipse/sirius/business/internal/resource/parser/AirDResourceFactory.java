@@ -27,6 +27,7 @@ import org.eclipse.sirius.business.internal.migration.RepresentationsFileExtende
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileResourceHandler;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileVersionSAXParser;
+import org.eclipse.sirius.common.tools.api.resource.ResourceMigrationMarker;
 import org.osgi.framework.Version;
 
 import com.google.common.collect.Maps;
@@ -114,6 +115,9 @@ public class AirDResourceFactory extends XMIResourceFactoryImpl {
             resource.setEncoding(XMI_ENCODING);
         }
 
+        if (migrationIsNeeded) {
+            ResourceMigrationMarker.addMigrationMarker(resource);
+        }
         return resource;
     }
 

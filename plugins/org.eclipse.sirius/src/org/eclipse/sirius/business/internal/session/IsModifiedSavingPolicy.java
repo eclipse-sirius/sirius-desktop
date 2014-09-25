@@ -27,6 +27,7 @@ import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.session.AbstractSavingPolicy;
 import org.eclipse.sirius.business.internal.session.danalysis.DifferentSerialization;
 import org.eclipse.sirius.business.internal.session.danalysis.URIExists;
+import org.eclipse.sirius.common.tools.api.resource.ResourceMigrationMarker;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 
@@ -79,7 +80,8 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
              * that the Sirius runtime will set the isModified flag itself when
              * a change is done on the resource.
              */
-            return resource.isModified();
+
+            return resource.isModified() || ResourceMigrationMarker.hasMigrationMarker(resource);
         }
     };
 
@@ -165,7 +167,15 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
          * or the underlying file is out of date and must be recreated/updated
          * to match the version in memory.
          */
-        Set<Resource> toSave = Sets.newLinkedHashSet(Iterables.filter(Sets.union(logicallyModified, dependOnLogicallyModified), hasDifferentSerialization));
+        Set<Resource> toSave = Sets.newLinkedHashSet();
+        for (Resource resource : Sets.union(logicallyModified, dependOnLogicallyModified)) {
+            if (hasDifferentSerialization.apply(resource)) {
+                toSave.add(resource);
+            } else {
+                ResourceMigrationMarker.clearMigrationMarker(resource);
+
+            }
+        }
 
         Iterables.addAll(toSave, Sets.union(underlyingFileDoesNotExist, isConflictingOrDeleted));
         /*
