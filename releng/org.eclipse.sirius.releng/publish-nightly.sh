@@ -71,6 +71,9 @@ export TARGET_DIR="$TARGET_ROOT/$FULL_VERSION/$PLATFORM"
 mkdir -p "$TARGET_DIR"
 # The actual publication of the p2 repo produced by the build
 cp -a "$WORKSPACE"/packaging/org.eclipse.sirius.update/target/repository/* "$TARGET_DIR"
+# Also publish the tests repo right under the main one
+mkdir -p "$TARGET_DIR/tests"
+cp -a "$WORKSPACE"/packaging/org.eclipse.sirius.tests.update/target/repository/* "$TARGET_DIR/tests"
 # Publish the target platform definitions used, so that dowstream projects can reference them
 mkdir -p "$TARGET_DIR/targets"
 cp -a "$WORKSPACE"/releng/org.eclipse.sirius.targets/* "$TARGET_DIR/targets"
@@ -96,8 +99,9 @@ create_redirect() {
   <properties size='1'>
     <property name='p2.timestamp' value='$P2_TIMESTAMP'/>
   </properties>
-  <children size='1'>
+  <children size='2'>
     <child location='http://download.eclipse.org/sirius/updates/$TO'/>
+    <child location='http://download.eclipse.org/sirius/updates/$TO/tests'/>
   </children>
 </repository>
 EOF
@@ -109,8 +113,9 @@ EOF
   <properties size='1'>
     <property name='p2.timestamp' value='$P2_TIMESTAMP'/>
   </properties>
-  <children size='1'>
+  <children size='2'>
     <child location='http://download.eclipse.org/sirius/updates/$TO'/>
+    <child location='http://download.eclipse.org/sirius/updates/$TO/tests'/>
   </children>
 </repository>
 EOF

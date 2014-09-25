@@ -281,7 +281,7 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </containerMappings>
-        <containerMappings name="ContainerListWithFlatContainerStyle" semanticCandidatesExpression="&lt;%containers%>" domainClass="migrationmodeler.Container">
+        <containerMappings name="ContainerListWithFlatContainerStyle" semanticCandidatesExpression="&lt;%containers%>" domainClass="migrationmodeler.Container" childrenPresentation="List">
           <style xsi:type="style:FlatContainerStyleDescription" labelExpression="[id+'WithFlatContainerStyle'/]" iconPath="/DesignerTestProject/image.bmp" labelAlignment="LEFT" backgroundStyle="Liquid">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -289,14 +289,14 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="ContainerListWithShapeContainerStyle" semanticCandidatesExpression="&lt;%containers%>" domainClass="migrationmodeler.Container">
+        <containerMappings name="ContainerListWithShapeContainerStyle" semanticCandidatesExpression="&lt;%containers%>" domainClass="migrationmodeler.Container" childrenPresentation="List">
           <style xsi:type="style:ShapeContainerStyleDescription" labelExpression="[id+'WithShapeContainerStyle'/]" iconPath="/DesignerTestProject/image.bmp" labelAlignment="LEFT">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="ContainerListWithWorkspaceImageDescription" semanticCandidatesExpression="&lt;%containers%>" domainClass="migrationmodeler.Container">
+        <containerMappings name="ContainerListWithWorkspaceImageDescription" semanticCandidatesExpression="&lt;%containers%>" domainClass="migrationmodeler.Container" childrenPresentation="List">
           <style xsi:type="style:WorkspaceImageDescription" labelExpression="[id+'WithWorkspaceImageStyle'/]" iconPath="/DesignerTestProject/image.bmp" labelAlignment="LEFT" labelPosition="node" workspacePath="/DesignerTestProject/image.bmp">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

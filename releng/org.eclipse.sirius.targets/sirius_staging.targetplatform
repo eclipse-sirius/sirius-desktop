@@ -6,7 +6,7 @@ include "modules/shared-license.tpd"
 
 with source, requirements
 
-location Eclipse-Staging "http://download.eclipse.orgaux/releases/staging" {
+location Eclipse-Staging "http://download.eclipse.org/releases/staging" {
         com.google.guava lazy
         com.ibm.icu lazy
         org.eclipse.acceleo.feature.group lazy

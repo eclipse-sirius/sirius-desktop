@@ -1,0 +1,21 @@
+target "sirius_tests_kepler"
+
+include "sirius_kepler.targetplatform"
+include "modules/query-legacy.tpd"
+
+with source, requirements
+
+location Sirius4Tests "http://download.eclipse.org/sirius/updates/nightly/latest/kepler" {
+        org.eclipse.sirius.doc.feature.feature.group lazy
+        org.eclipse.sirius.runtime.acceleo.feature.group lazy
+        org.eclipse.sirius.runtime.feature.group lazy
+        org.eclipse.sirius.runtime.ide.eef.feature.group lazy
+        org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group lazy
+        org.eclipse.sirius.runtime.ide.ui.feature.group lazy
+        org.eclipse.sirius.runtime.ide.xtext.feature.group lazy
+        org.eclipse.sirius.runtime.ocl.feature.group lazy
+        org.eclipse.sirius.samples.feature.group lazy
+        org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group lazy
+        org.eclipse.sirius.specifier.ide.ui.feature.group lazy
+        org.eclipse.sirius.tests.support.feature.group lazy
+}
