@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.business.internal.query.DSemanticDecoratorQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
@@ -27,6 +28,7 @@ import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingsLis
 import org.eclipse.sirius.diagram.business.internal.sync.visitor.DiagramElementsHierarchyVisitor;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Collections2;
@@ -76,6 +78,17 @@ public class MappingsUpdater {
      *            the container to browse.
      */
     private void updateMappings(final DragAndDropTarget container) {
+        if (container instanceof DSemanticDecorator) {
+            DSemanticDecorator dSemanticDecorator = (DSemanticDecorator) container;
+            if (!new DSemanticDecoratorQuery(dSemanticDecorator).hasDetachedTarget()) {
+                safeUpdateMappings(container);
+            }
+        } else {
+            safeUpdateMappings(container);
+        }
+    }
+
+    private void safeUpdateMappings(DragAndDropTarget container) {
         mappingsManager.iterate(new MappingUpdateVisitor(container), container);
         for (final DDiagramElement child : DiagramElementsHierarchyVisitor.INSTANCE.getChildren(container)) {
             if (child instanceof DragAndDropTarget) {

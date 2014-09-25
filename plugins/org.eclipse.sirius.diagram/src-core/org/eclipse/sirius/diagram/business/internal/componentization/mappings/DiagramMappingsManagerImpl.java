@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.sirius.business.internal.query.DSemanticDecoratorQuery;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DNode;
@@ -37,6 +38,7 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
@@ -353,19 +355,29 @@ public final class DiagramMappingsManagerImpl implements DiagramMappingsManager,
      */
     public <T extends AbstractNodeMapping> void iterate(final MappingsListVisitor visitor, final DragAndDropTarget container) {
         if (descriptionMappings.isLayerMode()) {
-            if (container instanceof DDiagram) {
-                iterateOnMappings(getContainerMappings(), visitor);
-                iterateOnMappings(getNodeMappings(), visitor);
-
-            } else if (container instanceof DNodeContainer) {
-                iterateOnMappings(getContainerMappings((DNodeContainer) container), visitor);
-                iterateOnMappings(getNodeMappings((DNodeContainer) container), visitor);
-                iterateOnMappings(getBorderedNodeMappings((DNodeContainer) container), visitor);
-            } else if (container instanceof DNodeList) {
-                iterateOnMappings(getNodeMappings((DNodeList) container), visitor);
-            } else if (container instanceof DNode) {
-                iterateOnMappings(getBorderedNodeMappings((DNode) container), visitor);
+            if (container instanceof DSemanticDecorator) {
+                DSemanticDecorator dSemanticDecorator = (DSemanticDecorator) container;
+                if (!new DSemanticDecoratorQuery(dSemanticDecorator).hasDetachedTarget()) {
+                    safeIterate(visitor, container);
+                }
+            } else {
+                safeIterate(visitor, container);
             }
+        }
+    }
+
+    private void safeIterate(MappingsListVisitor visitor, DragAndDropTarget container) {
+        if (container instanceof DDiagram) {
+            iterateOnMappings(getContainerMappings(), visitor);
+            iterateOnMappings(getNodeMappings(), visitor);
+        } else if (container instanceof DNodeContainer) {
+            iterateOnMappings(getContainerMappings((DNodeContainer) container), visitor);
+            iterateOnMappings(getNodeMappings((DNodeContainer) container), visitor);
+            iterateOnMappings(getBorderedNodeMappings((DNodeContainer) container), visitor);
+        } else if (container instanceof DNodeList) {
+            iterateOnMappings(getNodeMappings((DNodeList) container), visitor);
+        } else if (container instanceof DNode) {
+            iterateOnMappings(getBorderedNodeMappings((DNode) container), visitor);
         }
     }
 

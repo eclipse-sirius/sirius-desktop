@@ -15,9 +15,15 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
@@ -231,6 +237,63 @@ public class MappingsIterationTests extends AbstractMappingsTableTest {
         manager.computeMappings(null, true);
         iterate(test);
         assertFalse("no mappings where visted", test.visitedMappings.isEmpty());
+    }
+
+    /**
+     * Ensures that if the {@link DDiagram} contains {@link DDiagramElement}
+     * which are associated to a null or deleted (eResource() is null) target,
+     * the {@link DiagramMappingsManager} does not evaluate the children of this
+     * element (e.g. Semantic Candidate Expression for bordered Nodes). This
+     * could lead to unnecessary interpreter errors that can be avoided.
+     */
+    public void testDiagramElementsWithDeletedTarget() {
+        diagram.getActivatedLayers().add(layer);
+
+        // Step 1: Create a Container mapping in a node mapping
+        final ContainerMapping containerMapping = createContainerMapping(layer);
+        final NodeMapping subNodeMapping = createNodeMapping(layer);
+        containerMapping.getSubNodeMappings().add(subNodeMapping);
+
+        // Step 2: Create the associated DDiagramElements in the diagram (with
+        // valid semantic targets)
+        DNodeContainer containerNode = DiagramFactory.eINSTANCE.createDNodeContainer();
+        containerNode.setActualMapping(containerMapping);
+        EClassifier childSemanticTarget = EcoreFactory.eINSTANCE.createEClass();
+        semanticTarget.getEClassifiers().add(childSemanticTarget);
+        containerNode.setTarget(childSemanticTarget);
+        DNode childNode = DiagramFactory.eINSTANCE.createDNode();
+        childNode.setActualMapping(subNodeMapping);
+        containerNode.getOwnedDiagramElements().add(childNode);
+        diagram.getOwnedDiagramElements().add(containerNode);
+
+        // Step 3: Visit mappings : the child mapping should be visited
+        MappingsListVisitorTest mappingVisitor = new MappingsListVisitorTest() {
+
+            public Set<AbstractDNodeCandidate> visit(DiagramElementMapping mapping, Set<AbstractDNodeCandidate> semanticFilter) {
+                visitedMappings.add(mapping);
+                return EMPTY_SET;
+            }
+        };
+        manager.computeMappings(null, true);
+        iterate(mappingVisitor);
+        assertTrue("All mappings should have been visited at their semantic target is valid", mappingVisitor.visitedMappings.contains(containerMapping));
+        manager.iterate(mappingVisitor, containerNode);
+        assertTrue("All mappings should have been visited at their semantic target is valid", mappingVisitor.visitedMappings.contains(subNodeMapping));
+
+        // Step 4: Delete the container's target
+        mappingVisitor.visitedMappings.clear();
+        EcoreUtil.delete(childSemanticTarget);
+
+        // Visit mappings again : the child mapping should never gets visited as
+        // the target of the DNodeContainer is now null
+        manager.computeMappings(null, true);
+        iterate(mappingVisitor);
+        assertTrue("The diagram and the container mapping should have been visited, but not the child as its container is associated to a null target",
+                mappingVisitor.visitedMappings.contains(containerMapping));
+        manager.iterate(mappingVisitor, containerNode);
+        assertFalse("The diagram and the container mapping should have been visited, but not the child as its container is associated to a null target",
+                mappingVisitor.visitedMappings.contains(subNodeMapping));
+
     }
 
     private <T extends AbstractNodeMapping> void iterate(final MappingsListVisitor visitor) {
