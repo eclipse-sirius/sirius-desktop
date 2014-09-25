@@ -18,6 +18,7 @@ import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.handles.HandleBounds;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
@@ -28,6 +29,9 @@ import org.eclipse.gmf.runtime.notation.Anchor;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.IdentityAnchor;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.EdgeStyle;
+import org.eclipse.sirius.diagram.description.CenteringStyle;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -37,7 +41,8 @@ import com.google.common.collect.Iterables;
 
 /**
  * This operation updates edges anchors to make sure their connection points
- * keep the same location when the shape is resized.
+ * keep the same location when the shape is resized. Except when the edge forces
+ * direction toward the center of the source node or target node.
  * 
  * @author Florian Barbin
  * 
@@ -67,27 +72,32 @@ public class ShiftEdgeIdentityAnchorOperation extends AbstractModelChangeOperati
     private void handleSourceEdges(View view, EditPart editPart) {
         List<?> sourceEdges = view.getSourceEdges();
         for (Edge edge : Iterables.filter(sourceEdges, Edge.class)) {
-            Anchor sourceAnchor = edge.getSourceAnchor();
-            if (sourceAnchor instanceof IdentityAnchor) {
-                PrecisionPoint anchorPoint = BaseSlidableAnchor.parseTerminalString(((IdentityAnchor) sourceAnchor).getId());
-                PrecisionPoint newPoint = computeNewAnchor(anchorPoint, editPart);
-                ((IdentityAnchor) sourceAnchor).setId(new SlidableAnchor(null, newPoint).getTerminal());
+            EObject eObj = edge.getElement();
+            if (eObj instanceof DEdge) {
+                handleEdge((DEdge) eObj, edge.getSourceAnchor(), editPart, CenteringStyle.SOURCE);
             }
         }
     }
 
     private void handleTargetEdges(View view, EditPart editPart) {
-
         List<?> targetEdges = view.getTargetEdges();
         for (Edge edge : Iterables.filter(targetEdges, Edge.class)) {
-            Anchor targetAnchor = edge.getTargetAnchor();
-            if (targetAnchor instanceof IdentityAnchor) {
-                PrecisionPoint anchorPoint = BaseSlidableAnchor.parseTerminalString(((IdentityAnchor) targetAnchor).getId());
-                PrecisionPoint newPoint = computeNewAnchor(anchorPoint, editPart);
-                ((IdentityAnchor) targetAnchor).setId(new SlidableAnchor(null, newPoint).getTerminal());
+            EObject eObj = edge.getElement();
+            if (eObj instanceof DEdge) {
+                handleEdge((DEdge) eObj, edge.getTargetAnchor(), editPart, CenteringStyle.TARGET);
             }
         }
+    }
 
+    private void handleEdge(DEdge dEdge, Anchor anchorToModify, EditPart editPart, CenteringStyle forbiddenCenteringStyle) {
+        EdgeStyle edgeStyle = dEdge.getOwnedStyle();
+        if (!CenteringStyle.BOTH.equals(edgeStyle.getCentered()) && !forbiddenCenteringStyle.equals(edgeStyle.getCentered())) {
+            if (anchorToModify instanceof IdentityAnchor) {
+                PrecisionPoint anchorPoint = BaseSlidableAnchor.parseTerminalString(((IdentityAnchor) anchorToModify).getId());
+                PrecisionPoint newPoint = computeNewAnchor(anchorPoint, editPart);
+                ((IdentityAnchor) anchorToModify).setId(new SlidableAnchor(null, newPoint).getTerminal());
+            }
+        }
     }
 
     private PrecisionPoint computeNewAnchor(PrecisionPoint currentAnchorPoint, EditPart editPart) {
