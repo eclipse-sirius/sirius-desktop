@@ -243,7 +243,7 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
                     GraphicalHelper.screen2logical(absoluteRequestLocation, hostGraphicalEditPart);
 
                     final Point adaptedRequestLocation = computeLocationHint(absoluteRequestLocation, false,
-                            new RequestQuery(request).isDropOrCreationOfBorderedNode() || validator.isConcerningOnlyBorderedNodeFromView());
+                            new RequestQuery(request).isDropOrCreationOfBorderNode() || validator.isConcerningOnlyBorderNodeFromView());
                     // Create an intermediate command. The "real" command is
                     // created during the execution (this to avoid time
                     // consumption during drag).
@@ -336,7 +336,7 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
                 command.append(cmd);
             }
             org.eclipse.emf.common.command.Command saveLayoutCommand = getSaveLayoutCommand(request.getMoveDelta().getCopy(), editPartsFromDiagramToDrop, editingDomain,
-                    new RequestQuery(request).isDropOrCreationOfBorderedNode());
+                    new RequestQuery(request).isDropOrCreationOfBorderNode());
             if (saveLayoutCommand != null && saveLayoutCommand.canExecute()) {
                 command.append(saveLayoutCommand);
             }
@@ -360,7 +360,7 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
     }
 
     private org.eclipse.emf.common.command.Command getSaveLayoutCommand(final Point moveDelta, final Iterable<IGraphicalEditPart> editPartsToDrop, TransactionalEditingDomain editingDomain,
-            boolean isConcernedBorderedNode) {
+            boolean isConcernedBorderNode) {
         org.eclipse.emf.common.command.CompoundCommand saveLayoutCommand = new org.eclipse.emf.common.command.CompoundCommand("Save layout for edit part");
         EditPartViewer viewer = getHost().getViewer();
 
@@ -377,8 +377,8 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
                     Point scaledMoveDelta = moveDelta.getScaled(1.0d / GraphicalHelper.getZoom(getHost()));
                     absoluteLayoutConstraint.translate(scaledMoveDelta);
 
-                    boolean isBorderedTarget = editPart instanceof AbstractDiagramBorderNodeEditPart;
-                    final Point computedLayoutConstraint = computeLocationHint(absoluteLayoutConstraint, isBorderedTarget, isConcernedBorderedNode);
+                    boolean isBorderTarget = editPart instanceof AbstractDiagramBorderNodeEditPart;
+                    final Point computedLayoutConstraint = computeLocationHint(absoluteLayoutConstraint, isBorderTarget, isConcernedBorderNode);
 
                     AbstractDNode abstractDNode = (AbstractDNode) adaptObject;
                     AbstractLayoutData abstractLayoutData = new RootLayoutData(abstractDNode, shapeEditPart, viewer, computedLayoutConstraint, scaledMoveDelta);
@@ -397,11 +397,11 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
      * 
      * @param absolutePointerLocation
      *            The absolute location
-     * @param isBorderedTarget
+     * @param isBorderTarget
      *            indicates if the target is a bordered node
      * @return the relative location
      */
-    private Point computeLocationHint(final Point absolutePointerLocation, boolean isBorderedTarget, boolean isConcernedBorderedNode) {
+    private Point computeLocationHint(final Point absolutePointerLocation, boolean isBorderTarget, boolean isConcernedBorderNode) {
         if (absolutePointerLocation != null && getHost() instanceof IGraphicalEditPart) {
             final IFigure hostFigure = ((IGraphicalEditPart) getHost()).getFigure();
 
@@ -419,9 +419,9 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
             // if the node is place in a CompartmentEditPart and is
             // not a bordered node, we must take the shifts of compartments in
             // account
-            if ((hostFigure instanceof ResizableCompartmentFigure) && (getHost() instanceof AbstractDNodeContainerCompartmentEditPart) && !isBorderedTarget) {
+            if ((hostFigure instanceof ResizableCompartmentFigure) && (getHost() instanceof AbstractDNodeContainerCompartmentEditPart) && !isBorderTarget) {
                 final Point scrollOffset = ((ResizableCompartmentFigure) hostFigure).getScrollPane().getViewport().getViewLocation();
-                final Point shiftFromMarginOffset = FigureUtilities.getShiftFromMarginOffset((ResizableCompartmentFigure) hostFigure, isConcernedBorderedNode, getHost());
+                final Point shiftFromMarginOffset = FigureUtilities.getShiftFromMarginOffset((ResizableCompartmentFigure) hostFigure, isConcernedBorderNode, getHost());
                 locationHint = new Point(locationHint.x + scrollOffset.x - shiftFromMarginOffset.x, locationHint.y + scrollOffset.y - shiftFromMarginOffset.y);
 
             }

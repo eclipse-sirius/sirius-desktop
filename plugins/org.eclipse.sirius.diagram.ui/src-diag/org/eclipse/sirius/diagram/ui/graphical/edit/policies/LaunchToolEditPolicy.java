@@ -121,7 +121,7 @@ public class LaunchToolEditPolicy extends AbstractEditPolicy {
             if (fig instanceof ResizableCompartmentFigure) {
                 final Point scrollOffset = ((ResizableCompartmentFigure) fig).getScrollPane().getViewport().getViewLocation();
                 final IFigure hostFigure = ((IGraphicalEditPart) getHost()).getFigure();
-                final Point shiftFromMarginOffset = FigureUtilities.getShiftFromMarginOffset((ResizableCompartmentFigure) hostFigure, new RequestQuery(request).isDropOrCreationOfBorderedNode(),
+                final Point shiftFromMarginOffset = FigureUtilities.getShiftFromMarginOffset((ResizableCompartmentFigure) hostFigure, new RequestQuery(request).isDropOrCreationOfBorderNode(),
                         getHost());
                 realLocation = new Point(location.x + scrollOffset.x - shiftFromMarginOffset.x, location.y + scrollOffset.y - shiftFromMarginOffset.y);
             } else {

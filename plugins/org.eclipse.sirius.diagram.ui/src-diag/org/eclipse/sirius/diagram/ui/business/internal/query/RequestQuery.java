@@ -325,38 +325,38 @@ public class RequestQuery {
      * Check if:
      * <UL>
      * <LI>all mappings of the creation tool of this request correspond to
-     * BorderedNode mapping,</LI>
-     * <LI>or if all edit parts of the drop request is BorederedNode edit part.
+     * BorderNode mapping,</LI>
+     * <LI>or if all edit parts of the drop request is BorderNode edit part.
      * Warning the result is only available in case of drag'n'drop from diagram,
      * not from other view because in this case, the edit part is not
      * "real edit part" but a @link
      * {@link org.eclipse.sirius.diagram.ui.tools.internal.dnd.DragAndDropWrapper}
      * . The only solution in this case to know if it is a drop a element that
      * became bordered nodes is to call
-     * {@link org.eclipse.sirius.diagram.graphical.edit.internal.policies.validators.DragAndDropValidator#isConcerningOnlyBorderedNode()}
+     * {@link org.eclipse.sirius.diagram.ui.graphical.edit.internal.policies.validators.DragAndDropValidator#isConcerningOnlyBorderNodeFromView()}
      * .</LI>
      * </UL>
      * 
      * @return true in case of request concerning bordered nodes, false
      *         otherwise.
      */
-    public boolean isDropOrCreationOfBorderedNode() {
-        boolean isConcerningBorderedNode = false;
+    public boolean isDropOrCreationOfBorderNode() {
+        boolean isConcerningBorderNode = false;
         if (request instanceof CreateRequest) {
             CreateRequest createRequest = (CreateRequest) request;
             if (createRequest.getNewObject() instanceof NodeCreationDescriptionImpl) {
-                isConcerningBorderedNode = true;
+                isConcerningBorderNode = true;
                 NodeCreationDescriptionImpl nodeCreationDescriptionImpl = (NodeCreationDescriptionImpl) createRequest.getNewObject();
                 for (NodeMapping nodeMapping : nodeCreationDescriptionImpl.getNodeMappings()) {
                     if (!DescriptionPackage.eINSTANCE.getAbstractNodeMapping_BorderedNodeMappings().equals(nodeMapping.eContainingFeature())) {
-                        isConcerningBorderedNode = false;
+                        isConcerningBorderNode = false;
                     }
                 }
             }
         } else if (RequestConstants.REQ_DROP.equals(request.getType())) {
-            isConcerningBorderedNode = !getEditParts().isEmpty() && Iterables.all(getEditParts(), Predicates.instanceOf(IBorderItemEditPart.class));
+            isConcerningBorderNode = !getEditParts().isEmpty() && Iterables.all(getEditParts(), Predicates.instanceOf(IBorderItemEditPart.class));
         }
-        return isConcerningBorderedNode;
+        return isConcerningBorderNode;
     }
 
 }

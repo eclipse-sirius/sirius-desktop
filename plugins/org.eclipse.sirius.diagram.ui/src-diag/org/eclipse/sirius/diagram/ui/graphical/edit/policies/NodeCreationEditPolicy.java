@@ -149,7 +149,7 @@ public class NodeCreationEditPolicy extends SiriusContainerEditPolicy {
             final Point containerLocation = fig.getBounds().getLocation();
             location = new Point(location.x - containerLocation.x, location.y - containerLocation.y);
             if (fig instanceof ResizableCompartmentFigure) {
-                boolean isBorderNodeCreationRequest = new RequestQuery(request).isDropOrCreationOfBorderedNode();
+                boolean isBorderNodeCreationRequest = new RequestQuery(request).isDropOrCreationOfBorderNode();
                 Point scrollOffset;
                 if (isBorderNodeCreationRequest) {
                     // Ignore scroll for border node, the border of the parent

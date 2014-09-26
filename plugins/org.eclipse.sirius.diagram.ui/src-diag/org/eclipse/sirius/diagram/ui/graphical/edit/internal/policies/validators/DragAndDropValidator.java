@@ -58,11 +58,11 @@ public class DragAndDropValidator {
     private DragAndDropTargetDescription dragAndDropDescription;
 
     /**
-     * True if all elements drop from a view will be "transformed" in bordered
+     * True if all elements drop from a view will be "transformed" in border
      * nodes after the drop, false otherwise. This variable is set after a call
      * to method {@link #isValid(ChangeBoundsRequest, GraphicalEditPart)}.
      */
-    private boolean isConcerningOnlyBorderedNodeFromView;
+    private boolean isConcerningOnlyBorderNodeFromView;
 
     /**
      * Valid a drag'n drop request.
@@ -107,11 +107,10 @@ public class DragAndDropValidator {
             } else if (editPart instanceof IGraphicalEditPart) {
                 IGraphicalEditPart graphicalEditPartToDrop = (IGraphicalEditPart) editPart;
                 /*
-                 * Impossible to move a bordered node in a subfunction if there
-                 * is a drag and drop tool associated to the node
-                 * 
-                 * drag'n'drop should not be enabled on the same container to
-                 * avoid to block the move of an element
+                 * Impossible to move a border node in a subfunction if there is
+                 * a drag and drop tool associated to the node drag'n'drop
+                 * should not be enabled on the same container to avoid to block
+                 * the move of an element
                  */
                 if (!(graphicalEditPartToDrop.getParent() == hostGraphicalEditPart || hostGraphicalEditPart instanceof CompartmentEditPart
                         && graphicalEditPartToDrop.getParent() == hostGraphicalEditPart.getParent())
@@ -129,7 +128,7 @@ public class DragAndDropValidator {
         boolean isValidDragAndDropRequestForElementFromEclipseView = true;
         Iterator<DragAndDropWrapper> iterator = elementsFromEclipseViewToDrop.iterator();
         if (iterator.hasNext()) {
-            isConcerningOnlyBorderedNodeFromView = true;
+            isConcerningOnlyBorderNodeFromView = true;
         }
         while (iterator.hasNext() && isValidDragAndDropRequestForElementFromEclipseView) {
             DragAndDropWrapper elementFromEclipseViewToDrop = iterator.next();
@@ -145,11 +144,11 @@ public class DragAndDropValidator {
                         if (isValidDragAndDropRequestForElementFromEclipseView) {
                             for (DiagramElementMapping diagramElementMapping : containerDropDescription.getMappings()) {
                                 if (!DescriptionPackage.eINSTANCE.getAbstractNodeMapping_BorderedNodeMappings().equals(diagramElementMapping.eContainingFeature())) {
-                                    isConcerningOnlyBorderedNodeFromView = false;
+                                    isConcerningOnlyBorderNodeFromView = false;
                                 }
                             }
                         } else {
-                            isConcerningOnlyBorderedNodeFromView = false;
+                            isConcerningOnlyBorderNodeFromView = false;
                         }
                     }
                 }
@@ -159,19 +158,19 @@ public class DragAndDropValidator {
     }
 
     /**
-     * The drop location is different for nodes and for bordered nodes. So it is
-     * useful to know if the current drop concerned only bordered nodes to adapt
+     * The drop location is different for nodes and for border nodes. So it is
+     * useful to know if the current drop concerned only border nodes to adapt
      * the drop location.<BR>
      * WARNING: This method must be called after
      * {@link #isValid(ChangeBoundsRequest, GraphicalEditPart)}, because the
-     * calculating of <code>isConcerningOnlyBorderedNode</code> is made during
+     * calculating of <code>isConcerningOnlyBorderNode</code> is made during
      * this last one.
      * 
      * @return true if all elements drop from a view will be "transformed" in
-     *         bordered nodes after the drop, false otherwise.
+     *         border nodes after the drop, false otherwise.
      */
-    public boolean isConcerningOnlyBorderedNodeFromView() {
-        return isConcerningOnlyBorderedNodeFromView;
+    public boolean isConcerningOnlyBorderNodeFromView() {
+        return isConcerningOnlyBorderNodeFromView;
     }
 
     private boolean isValidDragAndDropRequestForElementFromDiagram() {
