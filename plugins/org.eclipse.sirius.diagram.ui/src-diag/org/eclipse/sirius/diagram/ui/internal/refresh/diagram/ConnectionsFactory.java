@@ -29,7 +29,6 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.FontStyle;
 import org.eclipse.gmf.runtime.notation.IdentityAnchor;
-import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
@@ -43,11 +42,9 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
-import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.view.EdgeLayoutData;
 import org.eclipse.sirius.diagram.ui.business.internal.view.LayoutData;
-import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SetConnectionBendpointsAccordingToExtremityMoveCommmand;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.internal.refresh.edge.SlidableAnchor;
 import org.eclipse.sirius.diagram.ui.part.SiriusLinkDescriptor;
@@ -291,48 +288,6 @@ public class ConnectionsFactory {
 
         if (egdeLayoutData.getPointList() != null) {
             pointList = egdeLayoutData.getPointList();
-
-            int cause = egdeLayoutData.getCause();
-            adaptPointListForBorderNode(edge, source, target, cause == EdgeLayoutData.CAUSED_BY_SOURCE, cause == EdgeLayoutData.CAUSED_BY_TARGET);
-        }
-    }
-
-    /**
-     * If source or target is a border node, the real location can be different
-     * as the dropped location. Check if the ref point is not the same as during
-     * the store of the layout. The node is created before the edge (so we have
-     * the new real GMF location). And its location can be different compared to
-     * the "clicked location" (for bordered node for example with
-     * DBorderItemLocator). If the location is different, the corresponding
-     * points are moved according to the new delta.
-     * 
-     * @param edge
-     *            The edge to adapt
-     * @param source
-     *            The source view of the edge
-     * @param target
-     *            The target view of the edge
-     * @param sourceMove
-     *            true if the source view has been moved, false otherwise
-     * @param targetMove
-     *            true if the target view has been moved, false otherwise
-     */
-    protected void adaptPointListForBorderNode(Edge edge, View source, View target, boolean sourceMove, boolean targetMove) {
-        if (sourceMove && source instanceof Node && new NodeQuery((Node) source).isBorderedNode()) {
-            Rectangle bounds = GMFHelper.getAbsoluteBounds((Node) source);
-            PrecisionPoint rel = BaseSlidableAnchor.parseTerminalString(sourceTerminal != null ? sourceTerminal : GMFNotationUtilities.getTerminalString(0.5d, 0.5d));
-            Point realSourceRefPoint = new PrecisionPoint(bounds.getLocation().x + bounds.width * rel.preciseX(), bounds.getLocation().y + bounds.height * rel.preciseY());
-            Dimension delta = realSourceRefPoint.getDifference(sourceRefPoint);
-            SetConnectionBendpointsAccordingToExtremityMoveCommmand.adaptPointListAndRefPoints(true, new Point(delta.width, delta.height), new EdgeQuery(edge).isEdgeWithRectilinearRoutingStyle(),
-                    bounds.getTranslated(-delta.width, -delta.height), sourceRefPoint, targetRefPoint, pointList);
-        }
-        if (targetMove && target instanceof Node && new NodeQuery((Node) target).isBorderedNode()) {
-            Rectangle bounds = GMFHelper.getAbsoluteBounds((Node) target);
-            PrecisionPoint rel = BaseSlidableAnchor.parseTerminalString(targetTerminal != null ? targetTerminal : GMFNotationUtilities.getTerminalString(0.5d, 0.5d));
-            Point realTargetRefPoint = new PrecisionPoint(bounds.getLocation().x + bounds.width * rel.preciseX(), bounds.getLocation().y + bounds.height * rel.preciseY());
-            Dimension delta = realTargetRefPoint.getDifference(targetRefPoint);
-            SetConnectionBendpointsAccordingToExtremityMoveCommmand.adaptPointListAndRefPoints(false, new Point(delta.width, delta.height), new EdgeQuery(edge).isEdgeWithRectilinearRoutingStyle(),
-                    bounds.getTranslated(-delta.width, -delta.height), sourceRefPoint, targetRefPoint, pointList);
         }
     }
 
@@ -398,8 +353,6 @@ public class ConnectionsFactory {
                     }
                 }
             }
-
-            adaptPointListForBorderNode(edge, source, target, true, true);
         }
     }
 

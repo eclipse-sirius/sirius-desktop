@@ -78,6 +78,7 @@ import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 /**
  * The specific
@@ -88,6 +89,18 @@ import com.google.common.collect.Lists;
  * @author jdupont
  */
 public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx {
+
+    /**
+     * Key for extended data of request. This key corresponds to a map that for
+     * each DDiagramElement (border nodes) stores the absolute screen location
+     * computed for the feedback figures.<BR>
+     * This map is set during drawing of border node feedback. This map is used
+     * later in the {@link SiriusContainerDropPolicy} to have the realLocation,
+     * and so the real delta for each border nodes, instead of the location
+     * corresponding to the move makes with the mouse. This allows to compute
+     * correctly the new linked edges bendpoints to only move the last segment.
+     */
+    public static final String BORDER_NODE_REAL_LOCATION_KEY = "borderNodesRealLocation";
 
     /**
      * Key for extended data of request. This key corresponds to feedback
@@ -177,6 +190,25 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
             return (List<IFigure>) result;
         } else {
             return new ArrayList<IFigure>();
+        }
+    }
+
+    /**
+     * Return a map with for each DDiagramElement the location of its feedback
+     * computed during the showSourceFeedback. If the request does not contains
+     * this map, an empty one is returned.
+     * 
+     * @param request
+     *            The request containing the extended data.
+     * @return map with for each DDiagramElement the location of its feedback
+     */
+    @SuppressWarnings("unchecked")
+    private Map<DDiagramElement, Point> getLocationsForDDiagramElement(Request request) {
+        Object result = request.getExtendedData().get(BORDER_NODE_REAL_LOCATION_KEY);
+        if (result instanceof Map<?, ?>) {
+            return (Map<DDiagramElement, Point>) result;
+        } else {
+            return Maps.newHashMap();
         }
     }
 
@@ -276,6 +308,15 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
                 feedback.translateToRelative(realLocation);
                 feedback.setBounds(realLocation);
                 storeFeedback(feedback, request);
+
+                // Add the real location in request (this location is used in
+                // SiriusContainerDropPolicy)
+                Map<DDiagramElement, Point> locationsForDDiagramElement = getLocationsForDDiagramElement(request);
+                if (isCollapsed(borderItemEP)) {
+                    realLocation = PortLayoutHelper.getCollapseCandidateLocation(borderItemEP.getFigure().getSize(), realLocation, targetFigure.getBounds());
+                }
+                locationsForDDiagramElement.put((DDiagramElement) borderItemEP.resolveSemanticElement(), realLocation.getLocation());
+                request.getExtendedData().put(BORDER_NODE_REAL_LOCATION_KEY, locationsForDDiagramElement);
             } else {
                 activateProhibitedFeedbacks(hostEditPart.getParent(), request);
                 final IBorderItemLocator borderItemLocator = borderItemEP.getBorderItemLocator();
