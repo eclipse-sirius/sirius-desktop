@@ -31,6 +31,7 @@ Result after resizing with this feature (the edges keep the same location):
 ** Distribute vertically with uniform gaps
 ** Distribute centers evenly vertically
 * The end user can now remove all bend-points between the two edge ends. This action is available on edge context menu "Remove Bend-points" or by using the shortcut "Ctrl" + "Shift" + "-".
+* Reconnection of an edge will only now move the minimum necessary bendpoints instead of reseting it to default.
 
 h3. Specifier-Visible Changes
 

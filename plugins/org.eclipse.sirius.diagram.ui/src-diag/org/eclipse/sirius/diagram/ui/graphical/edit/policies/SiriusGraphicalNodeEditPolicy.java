@@ -91,6 +91,7 @@ import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvid
 import org.eclipse.sirius.diagram.tools.internal.command.builders.EdgeCreationCommandBuilder;
 import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
+import org.eclipse.sirius.diagram.ui.business.internal.command.SetReconnectingConnectionBendpointsCommand;
 import org.eclipse.sirius.diagram.ui.business.internal.command.SiriusSetConnectionAnchorsCommand;
 import org.eclipse.sirius.diagram.ui.business.internal.command.TreeLayoutSetConnectionAnchorsCommand;
 import org.eclipse.sirius.diagram.ui.business.internal.query.DEdgeQuery;
@@ -233,7 +234,27 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         scaCommand.setNewSourceTerminal(node.mapConnectionAnchorToTerminal(sourceAnchor));
         CompositeCommand cc = new CompositeCommand(DiagramUIMessages.Commands_SetConnectionEndsCommand_Source);
         cc.compose(scaCommand);
-        return new ICommandProxy(scaCommand);
+
+        // The router is the same, therefore the bendpoint of the new
+        // reconnected edge are set accordingly to the feedback of the
+        // previous edge under reconnection
+
+        // Set points of Edge as they are graphically
+        Connection connection = (Connection) ((GraphicalEditPart) request.getConnectionEditPart()).getFigure();
+        Point tempSourceRefPoint = connection.getSourceAnchor().getReferencePoint();
+        connection.translateToRelative(tempSourceRefPoint);
+
+        Point tempTargetRefPoint = connection.getTargetAnchor().getReferencePoint();
+        connection.translateToRelative(tempTargetRefPoint);
+
+        PointList connectionPointList = connection.getPoints().getCopy();
+
+        // Set the connection bendpoints with a PointList using a command
+        SetConnectionBendpointsCommand sbbCommand = new SetReconnectingConnectionBendpointsCommand(editingDomain, sourceView, sourceView.getTargetEdges(), ReconnectionKind.RECONNECT_SOURCE_LITERAL);
+        sbbCommand.setNewPointList(connectionPointList, tempSourceRefPoint, tempTargetRefPoint);
+        
+        cc.compose(sbbCommand);
+        return new ICommandProxy(cc);
     }
 
     /**
@@ -381,6 +402,8 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         }
         Command cmdRouter = getRoutingAdjustment(request.getConnectionEditPart(), getSemanticHint(request), currentRouter, request.getTarget());
         if (cmdRouter != null) {
+            // The router has changed, therefore bendpoints are "reset" to only
+            // source and target
             cmd = cmd == null ? cmdRouter : cmd.chain(cmdRouter);
             // reset the bendpoints
             ConnectionAnchor sourceAnchor = node.getSourceConnectionAnchor(request);
@@ -395,6 +418,31 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             if (cmdBP != null) {
                 cmd = cmd == null ? cmdBP : cmd.chain(cmdBP);
             }
+        } else {
+            // The router is the same, therefore the bendpoint of the new
+            // reconnected edge are set accordingly to the feedback of the
+            // previous edge under reconnection
+
+            // Set points of Edge as they are graphically
+            Connection connection = (Connection) ((GraphicalEditPart) request.getConnectionEditPart()).getFigure();
+            Point tempSourceRefPoint = connection.getSourceAnchor().getReferencePoint();
+            connection.translateToRelative(tempSourceRefPoint);
+
+            Point tempTargetRefPoint = connection.getTargetAnchor().getReferencePoint();
+            connection.translateToRelative(tempTargetRefPoint);
+
+            PointList connectionPointList = connection.getPoints().getCopy();
+
+            // Set the connection bendpoints with a PointList using a command
+            SetConnectionBendpointsCommand sbbCommand = new SetReconnectingConnectionBendpointsCommand(editingDomain, targetView, targetView.getTargetEdges(),
+                    ReconnectionKind.RECONNECT_TARGET_LITERAL);
+            sbbCommand.setNewPointList(connectionPointList, tempSourceRefPoint, tempTargetRefPoint);
+            
+            Command cmdBP = new ICommandProxy(sbbCommand);
+            if (cmdBP != null) {
+                cmd = cmd == null ? cmdBP : cmd.chain(cmdBP);
+            }
+
         }
         return cmd;
     }

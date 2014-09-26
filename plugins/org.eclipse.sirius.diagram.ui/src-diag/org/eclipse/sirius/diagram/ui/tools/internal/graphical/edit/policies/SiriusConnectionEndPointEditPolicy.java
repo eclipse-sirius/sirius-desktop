@@ -25,8 +25,6 @@ import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.gef.editpolicies.ConnectionEndpointEditPolicy;
 import org.eclipse.gef.requests.ReconnectRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.LineSeg;
 import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionQuery;
@@ -103,55 +101,11 @@ public class SiriusConnectionEndPointEditPolicy extends ConnectionEndpointEditPo
             getConnection().setRoutingConstraint(originalConstraint);
         }
         super.showConnectionMoveFeedback(request);
-        if (!isReconnectingToDifferentEnd(request, (ConnectionEditPart) getHost())) {
-            if (isOrthogonalTreeBranch) {
-                postShowConnectionMoveFeedbackForOrthogonalTreeBranch(request);
-            } else if (isEdgeWithObliqueRoutingStyle || isEdgeWithRectilinearRoutingStyle) {
-                postShowConnectionMoveFeedbackForObliqueOrRectilinearConnection(request);
-            }
-        } else {
-            resetConnectionMoveFeedbackToDefault();
+        if (isOrthogonalTreeBranch) {
+            postShowConnectionMoveFeedbackForOrthogonalTreeBranch(request);
+        } else if (isEdgeWithObliqueRoutingStyle || isEdgeWithRectilinearRoutingStyle) {
+            postShowConnectionMoveFeedbackForObliqueOrRectilinearConnection(request);
         }
-    }
-
-    /**
-     * In case of reconnection to a different diagram element, the source
-     * feedback of the connection to this new element will be the default
-     * routing. The bendpoints created manually on the former connection will
-     * disappear.
-     */
-    private void resetConnectionMoveFeedbackToDefault() {
-        Point newSourceRefPoint = getConnection().getSourceAnchor().getReferencePoint();
-        getConnection().translateToRelative(newSourceRefPoint);
-        Point newTargetRefPoint = getConnection().getTargetAnchor().getReferencePoint();
-        getConnection().translateToRelative(newTargetRefPoint);
-        List<Point> points = Lists.newArrayList();
-        points.add(newSourceRefPoint);
-        points.add(newTargetRefPoint);
-        changeRoutingConstraint(points, newSourceRefPoint, newTargetRefPoint);
-    }
-
-    /**
-     * Checks if the request is reconnecting to a new diagram element.
-     * 
-     * @param request
-     *            the current {@link ReconnectRequest}
-     * @param connectionEditPart
-     *            the {@link ConnectionEditPart} that is under mouse during
-     *            reconnection
-     * @return if the request is reconnecting to a new diagram element
-     */
-    private boolean isReconnectingToDifferentEnd(ReconnectRequest request, ConnectionEditPart connectionEditPart) {
-        // The target is not the diagram itself nor a label (no reconnection on
-        // a diagram or a label)
-        boolean hasAcceptableReconnectionTarget = !(request.getTarget() instanceof DiagramEditPart) && !(request.getTarget() instanceof LabelEditPart);
-        // The connection target anchor is moving and the request target is
-        // different to the connection target
-        boolean isReconnectingTarget = !request.isMovingStartAnchor() && !connectionEditPart.getTarget().equals(request.getTarget());
-        // The connection source anchor is moving and the request target is
-        // different to the connection source
-        boolean isReconnectingSource = request.isMovingStartAnchor() && !connectionEditPart.getSource().equals(request.getTarget());
-        return hasAcceptableReconnectionTarget && (isReconnectingTarget || isReconnectingSource);
     }
 
     /**

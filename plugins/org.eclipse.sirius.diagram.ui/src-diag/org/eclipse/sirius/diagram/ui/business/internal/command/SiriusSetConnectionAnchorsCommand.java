@@ -10,34 +10,24 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.internal.command;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.diagram.core.commands.SetConnectionAnchorsCommand;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.IdentityAnchor;
-import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
-import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.AbstractDNode;
-import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DiagramPlugin;
-import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.description.tool.ReconnectionKind;
 import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
+import org.eclipse.sirius.diagram.ui.business.internal.edit.helpers.EdgeReconnectionHelper;
 import org.eclipse.sirius.diagram.ui.internal.operation.CenterEdgeEndModelChangeOperation;
 import org.eclipse.sirius.ext.base.Option;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
 
 /**
  * A custom SetConnectionAnchorsCommand used when edge reconnection is applied
@@ -50,20 +40,9 @@ import com.google.common.collect.Iterables;
 public class SiriusSetConnectionAnchorsCommand extends SetConnectionAnchorsCommand {
 
     /**
-     * List of incoming/outgoing edges on the targeted edge before reconnection
+     * Helper used to access the edge after reconnection.
      */
-    private List<Edge> reconnectionTargetEdges;
-
-    /**
-     * Reconnection target
-     */
-    private View reconnectionTarget;
-
-    /**
-     * Reuse ReconnectionKind to save if reconnecting the source or the target
-     * of the edge.
-     */
-    private ReconnectionKind reconnectionKind;
+    private EdgeReconnectionHelper reconnectingEdgeHelper;
 
     /**
      * SiriusSetConnectionAnchorsCommand constructor.
@@ -85,10 +64,7 @@ public class SiriusSetConnectionAnchorsCommand extends SetConnectionAnchorsComma
      */
     public SiriusSetConnectionAnchorsCommand(TransactionalEditingDomain editingDomain, String label, View reconnectionTarget, List<Edge> reconnectionTargetEdges, ReconnectionKind reconnectionKind) {
         super(editingDomain, label);
-        this.reconnectionTarget = reconnectionTarget;
-        this.reconnectionTargetEdges = new ArrayList<Edge>(reconnectionTargetEdges);
-        assert reconnectionKind == ReconnectionKind.RECONNECT_SOURCE_LITERAL || reconnectionKind == ReconnectionKind.RECONNECT_TARGET_LITERAL : "reconnectionKind must be ReconnectionKind.RECONNECT_SOURCE or ReconnectionKind.RECONNECT_TARGET";
-        this.reconnectionKind = reconnectionKind;
+        this.reconnectingEdgeHelper = new EdgeReconnectionHelper(reconnectionTarget, reconnectionTargetEdges, reconnectionKind);
     }
 
     /**
@@ -104,7 +80,7 @@ public class SiriusSetConnectionAnchorsCommand extends SetConnectionAnchorsComma
             commandResult = super.doExecuteWithResult(progressMonitor, info);
         } else {
 
-            Edge edge = getEdge();
+            Edge edge = reconnectingEdgeHelper.getReconnectedEdge();
 
             assert null != edge : "Null edge in SetConnectionAnchorsCommand"; //$NON-NLS-1$   
 
@@ -169,62 +145,5 @@ public class SiriusSetConnectionAnchorsCommand extends SetConnectionAnchorsComma
                 edge.setTargetAnchor(a);
             }
         }
-    }
-
-    @SuppressWarnings("unchecked")
-    private Edge getEdge() {
-        Edge edge = null;
-        if (reconnectionKind == ReconnectionKind.RECONNECT_SOURCE_LITERAL) {
-            final List<Edge> sourceEdges = new ArrayList<Edge>(reconnectionTarget.getSourceEdges());
-            Iterables.removeAll(sourceEdges, reconnectionTargetEdges);
-            Predicate<Edge> notToReconnectingEdge = new Predicate<Edge>() {
-
-                public boolean apply(Edge input) {
-                    return !sourceEdges.contains(input.getTarget());
-                }
-            };
-            // For case with reconnect edge source from borderedNode to
-            // borderedNode
-            // when borderedNode is mapping with EReference
-            if (sourceEdges.isEmpty() && reconnectionTarget.getElement() instanceof AbstractDNode) {
-                AbstractDNode abstractDNode = (AbstractDNode) reconnectionTarget.getElement();
-                List<DNode> borderedNodes = abstractDNode.getOwnedBorderedNodes();
-                if (!borderedNodes.isEmpty()) {
-                    DNode borderedNode = borderedNodes.get(borderedNodes.size() - 1);
-                    Collection<EObject> inverseReferences = new EObjectQuery(borderedNode).getInverseReferences(NotationPackage.eINSTANCE.getView_Element());
-                    Node nodeSource = Iterables.getOnlyElement(Iterables.filter(inverseReferences, Node.class));
-                    List<Edge> sourceEdgesOfBorderedNode = new ArrayList<Edge>(nodeSource.getSourceEdges());
-                    edge = Iterables.getOnlyElement(Iterables.filter(sourceEdgesOfBorderedNode, notToReconnectingEdge));
-                }
-            } else {
-                edge = Iterables.getOnlyElement(Iterables.filter(sourceEdges, notToReconnectingEdge));
-            }
-        } else {
-            final List<Edge> targetEdges = new ArrayList<Edge>(reconnectionTarget.getTargetEdges());
-            Iterables.removeAll(targetEdges, reconnectionTargetEdges);
-            Predicate<Edge> notFromReconnectingEdge = new Predicate<Edge>() {
-
-                public boolean apply(Edge input) {
-                    return !targetEdges.contains(input.getSource());
-                }
-            };
-            // For case with reconnect edge target from borderedNode to
-            // borderedNode
-            // when borderedNode is mapping with EReference
-            if (targetEdges.isEmpty() && reconnectionTarget.getElement() instanceof AbstractDNode) {
-                AbstractDNode abstractDNode = (AbstractDNode) reconnectionTarget.getElement();
-                List<DNode> borderedNodes = abstractDNode.getOwnedBorderedNodes();
-                if (!borderedNodes.isEmpty()) {
-                    DNode borderedNode = borderedNodes.get(borderedNodes.size() - 1);
-                    Collection<EObject> inverseReferences = new EObjectQuery(borderedNode).getInverseReferences(NotationPackage.eINSTANCE.getView_Element());
-                    Node nodeTarget = Iterables.getOnlyElement(Iterables.filter(inverseReferences, Node.class));
-                    List<Edge> targetEdgesOfBorderedNode = new ArrayList<Edge>(nodeTarget.getTargetEdges());
-                    edge = Iterables.getOnlyElement(Iterables.filter(targetEdgesOfBorderedNode, notFromReconnectingEdge));
-                }
-            } else {
-                edge = Iterables.getOnlyElement(Iterables.filter(targetEdges, notFromReconnectingEdge));
-            }
-        }
-        return edge;
     }
 }
