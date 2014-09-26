@@ -13,11 +13,8 @@ package org.eclipse.sirius.business.internal.resource.parser;
 import java.io.IOException;
 import java.util.Map;
 
-import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.gmf.runtime.emf.core.resources.GMFResource;
 import org.eclipse.sirius.business.api.query.AirDResouceQuery;
@@ -80,90 +77,21 @@ public class AirDResourceImpl extends GMFResource implements DResource, AirdReso
      */
     protected static boolean hasLoadInProgress() {
         return nbLoadInProgress.get().intValue() != 0;
-    };
+    }
 
     /**
+     * Overridden to not have {@link GMFResource} set to true in this
+     * constructor because now it is
+     * {@link org.eclipse.sirius.business.internal.session.danalysis.TrackingModificationTrigger}
+     * which manage {@link org.eclipse.emf.ecore.resource.Resource#isModified()}
+     * .
+     * 
      * {@inheritDoc}
      */
     @Override
-    protected Adapter createModificationTrackingAdapter() {
-        // we override the modification tracking adapter to ignore any
-        // notification that has no feature.
-        return new ModificationTrackingAdapter() {
-            @Override
-            public void notifyChanged(final Notification notification) {
-                if (!isModified() && AirDResourceImpl.isModifyingChange(notification)) {
-                    super.notifyChanged(notification);
-                }
-            }
-
-        };
+    public void setTrackingModification(boolean isTrackingModification) {
     }
 
-    // CHECKSTYLE:OFF
-    /**
-     * Determines whether or not <code>notification</code> indicates a modifying
-     * change to a GMF resource
-     * 
-     * @param notification
-     *            a notification of some concrete change in the resource set
-     * @return whether this change is an abstract change to some resource, for
-     *         the purpose of tracking undo context
-     */
-    public static boolean isModifyingChange(final Notification notification) {
-        return !notification.isTouch() && !AirDResourceImpl.isTransient(notification.getNotifier(), notification.getFeature());
-    }
-
-    /**
-     * Check if the feature or one of the notifier's containers is transient.
-     * 
-     * @param notifier
-     *            a notifier
-     * @param feature
-     *            the feature that changed
-     * 
-     * @return <code>true</code> if the feature is transient or if the notifier
-     *         or any of its ancestors is contained by a transient reference;
-     *         <code>false</code>, otherwise
-     */
-    private static boolean isTransient(final Object notifier, final Object feature) {
-        if (feature instanceof EStructuralFeature) {
-            if (((EStructuralFeature) feature).isTransient()) {
-                return true;
-            } else {
-                // calling isTransient could be a lengthy operation.
-                // It is safe to cast because the adapter is only
-                // attached to EObjects, not to the resource
-                return AirDResourceImpl.isTransient((EObject) notifier);
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Is object transient?
-     */
-    private static boolean isTransient(EObject eObject) {
-        EStructuralFeature containmentFeature = eObject.eContainmentFeature();
-        while (containmentFeature != null) {
-            if (containmentFeature.isTransient()) {
-                return true;
-            }
-            eObject = eObject.eContainer();
-            if (eObject != null) {
-                containmentFeature = eObject.eContainmentFeature();
-            } else {
-                break;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * @{inheritDoc
-     * 
-     * @see org.eclipse.emf.ecore.resource.impl.ResourceImpl#load(java.util.Map)
-     */
     @Override
     public void load(Map<?, ?> options) throws IOException {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.LOAD_AIRD_KEY);
@@ -197,6 +125,8 @@ public class AirDResourceImpl extends GMFResource implements DResource, AirdReso
     /**
      * Override to migrate fragment if necessary (when a reference has been
      * renamed) before getting the EObject.
+     * 
+     * {@inheritDoc}
      */
     @Override
     public EObject getEObject(String uriFragment) {
