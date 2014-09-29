@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<migrationmodeler:TestCase xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:migrationmodeler="http://www.eclipse.org/sirius/tests/sample/migrationmodeler">
+  <representations xsi:type="migrationmodeler:Diagram" name="diagram1">
+    <containers id="container2">
+      <elements xsi:type="migrationmodeler:Bordered" id="border3"/>
+      <elements xsi:type="migrationmodeler:Bordered" id="border4"/>
+    </containers>
+    <containers id="container1">
+      <elements xsi:type="migrationmodeler:Bordered" id="border1"/>
+      <elements xsi:type="migrationmodeler:Bordered" id="border2"/>
+    </containers>
+    <containers id="container3"/>
+    <containers id="container4"/>
+    <nodes id="node1"/>
+    <nodes id="node2"/>
+    <nodes id="node3"/>
+    <nodes id="node4"/>
+  </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="diagram2">
+    <containers id="container2">
+      <elements xsi:type="migrationmodeler:Bordered" id="border3"/>
+      <elements xsi:type="migrationmodeler:Bordered" id="border4"/>
+    </containers>
+    <containers id="container1">
+      <elements xsi:type="migrationmodeler:Bordered" id="border1"/>
+      <elements xsi:type="migrationmodeler:Bordered" id="border2"/>
+    </containers>
+    <containers id="container3"/>
+    <containers id="container4"/>
+    <nodes id="node1"/>
+    <nodes id="node2"/>
+    <nodes id="node3"/>
+    <nodes id="node4"/>
+    <edges id="edge1" source="//@representations.1/@containers.0/@elements.0" target="//@representations.1/@containers.1/@elements.1"/>
+    <edges id="edge3" source="//@representations.1/@nodes.2" target="//@representations.1/@nodes.3"/>
+    <edges id="edge2" source="//@representations.1/@containers.2" target="//@representations.1/@containers.3"/>
+  </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="diagram3">
+    <containers id="container2">
+      <elements xsi:type="migrationmodeler:Bordered" id="border3"/>
+      <elements xsi:type="migrationmodeler:Bordered" id="border4"/>
+    </containers>
+    <containers id="container1">
+      <elements xsi:type="migrationmodeler:Bordered" id="border1"/>
+      <elements xsi:type="migrationmodeler:Bordered" id="border2"/>
+    </containers>
+    <containers id="container3"/>
+    <containers id="container4"/>
+    <nodes id="node1"/>
+    <nodes id="node2"/>
+    <nodes id="node3"/>
+    <nodes id="node4"/>
+    <edges id="edge1" source="//@representations.2/@nodes.2" target="//@representations.2/@nodes.1"/>
+    <edges id="edge2" source="//@representations.2/@nodes.0" target="//@representations.2/@nodes.3"/>
+  </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="diagram4">
+    <containers id="container2">
+      <elements xsi:type="migrationmodeler:Bordered" id="border3"/>
+      <elements xsi:type="migrationmodeler:Bordered" id="border4"/>
+    </containers>
+    <containers id="container1">
+      <elements xsi:type="migrationmodeler:Bordered" id="border1"/>
+      <elements xsi:type="migrationmodeler:Bordered" id="border2"/>
+    </containers>
+    <containers id="container3"/>
+    <containers id="container4"/>
+    <nodes id="node1"/>
+    <nodes id="node2"/>
+    <nodes id="node3"/>
+    <nodes id="node4"/>
+    <edges id="edge3" source="//@representations.3/@containers.0" target="//@representations.3/@containers.2"/>
+    <edges id="edge4" source="//@representations.3/@containers.3" target="//@representations.3/@containers.1"/>
+    <edges id="edge1" source="//@representations.3/@containers.0/@elements.1" target="//@representations.3/@containers.1/@elements.1"/>
+    <edges id="edge5" source="//@representations.3/@nodes.0" target="//@representations.3/@nodes.3"/>
+    <edges id="edge6" source="//@representations.3/@nodes.2" target="//@representations.3/@nodes.1"/>
+    <edges id="edge2" source="//@representations.3/@containers.0/@elements.0" target="//@representations.3/@containers.1/@elements.0"/>
+  </representations>
+</migrationmodeler:TestCase>

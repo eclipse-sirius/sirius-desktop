@@ -41,6 +41,8 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDes
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ExtenderConstants;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.internal.accessor.ecore.EcoreIntrinsicExtender;
+import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
+import org.eclipse.sirius.tests.unit.diagram.tools.data.GroupCreateViewTask;
 import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
@@ -50,9 +52,6 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.Group;
 
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
-import org.eclipse.sirius.tests.unit.diagram.tools.data.GroupCreateViewTask;
 
 /**
  * Test elementary operations.
@@ -179,7 +178,7 @@ public class CreateViewOperationTest extends TestCase {
         semantic = (EPackage) session.getSemanticResources().iterator().next().getContents().get(0);
         rootContext = new CommandContext(semantic.getEClassifiers().get(0), null);
 
-        UserSession.from(session).selectOnlySirius(EcoreModeler.DESIGN_VIEWPOINT_NAME);
+        UserSession.from(session).selectOnlyViewpoint(EcoreModeler.DESIGN_VIEWPOINT_NAME);
 
         diagram = DiagramFactory.eINSTANCE.createDSemanticDiagram();
         diagram.setDescription(oDesign.group().viewpoint1().diagram1().object());

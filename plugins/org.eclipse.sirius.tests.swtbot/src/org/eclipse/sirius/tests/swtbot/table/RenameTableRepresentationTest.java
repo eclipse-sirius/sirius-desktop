@@ -14,6 +14,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -25,8 +26,6 @@ import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.junit.Test;
-
-import org.eclipse.sirius.tests.swtbot.Activator;
 
 /**
  * 
@@ -53,6 +52,8 @@ public class RenameTableRepresentationTest extends AbstractSiriusSwtBotGefTestCa
     private static final String TABLE_NAME = "myTable";
 
     private static final String TABLE_RENAME = "myTableRename";
+
+    private static final String TITLE_RENAME_DIALOG = "Rename representation";
 
     private UILocalSession localSession;
 
@@ -99,6 +100,8 @@ public class RenameTableRepresentationTest extends AbstractSiriusSwtBotGefTestCa
 
         // Rename table
         SWTBotUtils.clickContextMenu(treeItem, "Rename");
+        // Check the title name of the rename representation dialog
+        assertEquals("Invalid title for the rename representation dialog", TITLE_RENAME_DIALOG, bot.activeShell().getText());
         bot.activeShell().bot().text(0).setText(TABLE_RENAME);
         bot.button("OK").click();
 

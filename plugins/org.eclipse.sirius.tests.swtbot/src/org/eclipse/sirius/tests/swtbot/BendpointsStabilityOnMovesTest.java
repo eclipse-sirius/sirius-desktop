@@ -26,6 +26,7 @@ import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.GraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -39,6 +40,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.UnpinElementsCo
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.BendpointMovedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
@@ -102,7 +104,15 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
 
     private static final Point HORIZONTAL_MOVE = new Point(300, 0);
 
+    private static final Point HORIZONTAL_MOVE_EDGE = new Point(10, 0);
+
+    private static final Point HORIZONTAL_NEGATIV_MOVE_EDGE = new Point(-10, 0);
+
     private static final Point VERTICAL_MOVE = new Point(0, 300);
+
+    private static final Point VERTICAL_MOVE_EDGE = new Point(0, 10);
+
+    private static final Point VERTICAL_NEGATIV_MOVE_EDGE = new Point(0, -10);
 
     private static final Point CONTAINER_MOVE = new Point(-1, -1);
 
@@ -413,9 +423,9 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Ensures that moving one container only updates the last/first bendpoint
-     * of this edge, in various configuration (zoom level, scrollbars, border
-     * nodes or not...).
+     * Ensures that moving one container with edges only updates the last/first
+     * bendpoint of this edge, in various configuration (zoom level,
+     * scrollbars,border nodes or not...).
      */
     public void testMoveContainerWithEdges() {
         doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT), Lists.newArrayList(BIG_MOVE), ZoomLevel.ZOOM_50, false, false, false, "EmptyContainer");
@@ -424,9 +434,9 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Ensures that moving one container container nodes only updates the
-     * last/first bendpoint of this edge, in various configuration (zoom level,
-     * scrollbars, border nodes or not...).
+     * Ensures that moving one container with nodes having edges only updates
+     * the last/first bendpoint of this edge, in various configuration (zoom
+     * level, scrollbars, border nodes or not...).
      */
     public void testMoveContainerWithNodesHavingEdges() {
         doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_MANHATTAN), Lists.newArrayList(VERTICAL_MOVE), ZoomLevel.ZOOM_125, false, true, true,
@@ -434,6 +444,11 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
         doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT), ALL_MOVE_DELTAS, ZoomLevel.ZOOM_50, false, true, true, "NodeWithOneSourceEdgeInContainer");
     }
 
+    /**
+     * Ensures that moving container nodes only updates the last/first bendpoint
+     * of this edge, in various configuration (zoom level, scrollbars, border
+     * nodes or not...).
+     */
     public void testMoveSeveralContainersWithDifferentEdges() {
         doTestMoveNodesOnlyMovesFirstOrLastBendpoint(true, true, Lists.newArrayList(ROUTING_STYLE_STRAIGHT, ROUTING_STYLE_MANHATTAN), ALL_MOVE_DELTAS, ZoomLevel.ZOOM_100, false, true, true,
                 "ContainerWithOneNode", "Scrollbar", "DragAndDropTarget", "ContainerWithOneNode2");
@@ -555,6 +570,25 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
+     * Ensure that only the first or last bendpoint is moved when moving one of
+     * edge extremity in various configuration (zoom level, edge style, ...)
+     */
+    public void testMoveEdgeExtremity() {
+        doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT), Lists.newArrayList(HORIZONTAL_MOVE_EDGE), ZoomLevel.ZOOM_125, false, false, false,
+                "NodeWithOneSourceEdgeAnd3Bendpoints", "NodeWithOneTargetEdgeAnd3Bendpoints");
+        doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT), Lists.newArrayList(HORIZONTAL_NEGATIV_MOVE_EDGE), ZoomLevel.ZOOM_125, false, false,
+                false, "NodeWithOneSourceEdgeAnd3Bendpoints", "NodeWithOneTargetEdgeAnd3Bendpoints");
+        doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(false, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT), Lists.newArrayList(HORIZONTAL_MOVE_EDGE), ZoomLevel.ZOOM_125, false, false, false,
+                "NodeWithOneSourceEdgeAnd3Bendpoints", "NodeWithOneTargetEdgeAnd3Bendpoints");
+        doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(false, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT), Lists.newArrayList(HORIZONTAL_NEGATIV_MOVE_EDGE), ZoomLevel.ZOOM_125, false, false,
+                false, "NodeWithOneSourceEdgeAnd3Bendpoints", "NodeWithOneTargetEdgeAnd3Bendpoints");
+        doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT_BORDERED), Lists.newArrayList(VERTICAL_MOVE_EDGE), ZoomLevel.ZOOM_125, false, false, false,
+                "NodeWithOneSourceEdgeAnd3Bendpoints", "NodeWithOneTargetEdgeAnd3Bendpoints");
+        doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(true, false, Lists.newArrayList(ROUTING_STYLE_STRAIGHT_BORDERED), Lists.newArrayList(VERTICAL_NEGATIV_MOVE_EDGE), ZoomLevel.ZOOM_125, false,
+                false, false, "NodeWithOneSourceEdgeAnd3Bendpoints", "NodeWithOneTargetEdgeAnd3Bendpoints");
+    }
+
+    /**
      * Ensures that by dragging or arranging edit parts with the given names,
      * bendpoints are moved as expected.
      * 
@@ -642,6 +676,139 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
         }
         if (!failures.isEmpty()) {
             throw new AssertionFailedError(failures.size() + " failures. First one is : " + failures.iterator().next().getMessage());
+        }
+    }
+
+    /**
+     * Ensures that by moving one of edge extremities, bendpoints are moved as
+     * expected.
+     * 
+     * @param moveSourceBendpoint
+     *            indicates if the first (if an edge source has been moved) or
+     *            the last (if an edge target has been moved) bendpoint should
+     *            move
+     * @param allOtherBendpointsShouldMove
+     *            indicates if any of the non-last bendpoints should move
+     * @param routingStylesToTest
+     *            used to determine on which diagram(s) we should perform this
+     *            test
+     * @param moveDeltas
+     *            all the move deltas to use for dragging edge extremities
+     * @param zoomLevel
+     *            the {@link ZoomLevel} to use for this test
+     * @param snapToGrid
+     *            indicates whether snap to grid should be active
+     * @param horizontalScrollbar
+     *            indicates whether we should drop elements in order to make
+     *            horizontal scrollbar appear
+     * @param verticalScrollBar
+     *            indicates whether we should drop elements in order to make
+     *            vertical scrollbar appear
+     * @param sourceAndTargetOfEdgeToMove
+     *            name of the source and the target to move
+     */
+    private void doTestMoveEdgesOnlyMovesFirstOrLastBendpoint(boolean moveSourceBendpoint, boolean allOtherBendpointsShouldMove, Collection<String> routingStylesToTest, Collection<Point> moveDeltas,
+            ZoomLevel zoomLevel, boolean snapToGrid, boolean horizontalScrollbar, boolean verticalScrollBar, String... sourceAndTargetOfEdgeToMove) {
+        for (String routingStyle : routingStylesToTest) {
+            for (Point moveDelta : moveDeltas) {
+                // Step 1: Open the corresponding diagram
+                diagramEditor = setUpEditorAccordingToDimensions(routingStyle, zoomLevel, snapToGrid, horizontalScrollbar, verticalScrollBar);
+                if (moveSourceBendpoint) {
+                    diagramEditor.reveal(sourceAndTargetOfEdgeToMove[0]);
+                } else {
+                    diagramEditor.reveal(sourceAndTargetOfEdgeToMove[1]);
+                }
+                try {
+                    // Step 2: storing the previous bendpoints
+                    Map<SWTBotGefConnectionEditPart, PointList> previousBendPoints = Maps.newLinkedHashMap();
+                    Collection<SWTBotGefEditPart> editPartsToMove = Sets.newLinkedHashSet();
+                    for (int i = 0; i < sourceAndTargetOfEdgeToMove.length; i += 2) {
+                        SWTBotGefEditPart sourceNodeEditPart = diagramEditor.getEditPart(sourceAndTargetOfEdgeToMove[i], IAbstractDiagramNodeEditPart.class);
+                        SWTBotGefEditPart targetNodeEditPart = diagramEditor.getEditPart(sourceAndTargetOfEdgeToMove[i + 1], IAbstractDiagramNodeEditPart.class);
+                        List<SWTBotGefConnectionEditPart> connectionEditParts = diagramEditor.getConnectionEditPart(sourceNodeEditPart, targetNodeEditPart);
+                        for (SWTBotGefConnectionEditPart connectionEditPart : connectionEditParts) {
+                            editPartsToMove.add(connectionEditPart);
+                            PointList points = ((PolylineConnectionEx) connectionEditPart.part().getFigure()).getPoints();
+                            previousBendPoints.put(connectionEditPart, points);
+                        }
+                    }
+
+                    try {
+                        // Step 3: Drag edge extremity and check bendpoints
+                        doPerformMoveEndBendpointAndCheckBendpoints(moveSourceBendpoint, allOtherBendpointsShouldMove, diagramEditor, editPartsToMove, moveDelta, zoomLevel, previousBendPoints);
+                    } catch (AssertionFailedError e) {
+                        failures.add(new AssertionFailedError("[ZoomLevel : " + zoomLevel + ", Routing-Style: " + routingStyle + ", MoveDelta: " + moveDelta + ", SnapToGrid:" + snapToGrid
+                                + ", Horizontal-Scroll " + horizontalScrollbar + ", Vertical-Scroll: " + verticalScrollBar + "] " + e.getMessage()));
+                        failures.add(new AssertionFailedError("[ZoomLevel : " + zoomLevel + ", Routing-Style: " + routingStyle + ", MoveDelta: " + moveDelta + ", SnapToGrid:" + snapToGrid
+                                + ", Horizontal-Scroll " + horizontalScrollbar + ", Vertical-Scroll: " + verticalScrollBar + "] " + e.getMessage()));
+                    }
+                } finally {
+                    if (horizontalScrollbar || verticalScrollBar) {
+                        undo(localSession.getOpenedSession());
+                        SWTBotUtils.waitAllUiEvents();
+                    }
+                }
+            }
+            diagramEditor.close();
+            SWTBotUtils.waitAllUiEvents();
+        }
+        if (!failures.isEmpty()) {
+            throw new AssertionFailedError(failures.size() + " failures. First one is : " + failures.iterator().next().getMessage());
+        }
+    }
+
+    /**
+     * @param moveSourceBendpoint
+     *            indicates if the first (if an edge source has been moved) or
+     *            the last (if an edge target has been moved) bendpoint should
+     *            move
+     * @param allOtherBendpointsShouldMove
+     *            indicates if any of the non-last bendpoints should move
+     * @param diagramEditor
+     *            the currently active {@link SWTBotSiriusDiagramEditor}
+     * @param editPartsToMove
+     *            the editParts to drag
+     * @param moveDelta
+     *            the delta of the move
+     * @param zoomLevel
+     *            the zoom level
+     * @param previousBendPoints
+     *            the state of the bendpoints before launching the drag
+     */
+    protected void doPerformMoveEndBendpointAndCheckBendpoints(boolean moveSourceBendpoint, boolean allOtherBendpointsShouldMove, final SWTBotSiriusDiagramEditor diagramEditor,
+            final Collection<SWTBotGefEditPart> editPartsToMove, Point moveDelta, ZoomLevel zoomLevel, final Map<SWTBotGefConnectionEditPart, PointList> previousBendPoints) {
+        diagramEditor.select(editPartsToMove);
+        final ConnectionEditPart cep = (ConnectionEditPart) editPartsToMove.iterator().next().part();
+        Point initialLocation = null;
+        if (moveSourceBendpoint) {
+            initialLocation = previousBendPoints.get(editPartsToMove.iterator().next()).getFirstPoint();
+        } else {
+            initialLocation = previousBendPoints.get(editPartsToMove.iterator().next()).getLastPoint();
+        }
+        final Point targetLocation = new Point(initialLocation.x + moveDelta.x, initialLocation.y + moveDelta.y);
+        initialLocation.performScale(zoomLevel.getAmount());
+        targetLocation.performScale(zoomLevel.getAmount());
+        // Perform drag
+        diagramEditor.drag(initialLocation, targetLocation);
+        SWTBotUtils.waitAllUiEvents();
+
+        if (moveSourceBendpoint) {
+            bot.waitUntil(new BendpointMovedCondition(cep, initialLocation).checkFirstBendpoint());
+        } else {
+            bot.waitUntil(new BendpointMovedCondition(cep, initialLocation).checkLastBendpoint());
+        }
+        try {
+            assertNotSame("Edit parts were not correctly dragged ", initialLocation, diagramEditor.getBounds(editPartsToMove.iterator().next()).getCenter());
+
+            // Get the new bendpoints list and compare it to expected
+            compareActualBendpointsWithExpected(diagramEditor, previousBendPoints, moveSourceBendpoint, allOtherBendpointsShouldMove, false);
+        } finally {
+            // Undo move to restore clean state
+            try {
+                undo("Change Connection Target");
+            } catch (WidgetNotFoundException e) {
+            }
+            SWTBotUtils.waitAllUiEvents();
         }
     }
 
@@ -911,6 +1078,32 @@ public class BendpointsStabilityOnMovesTest extends AbstractSiriusSwtBotGefTestC
                 // If at least one actual bendpoints is ignored, the last
                 // bendpoint can also moved (caused by the removed bendpoint).
                 assertEquals("Last Bendpoint should not have moved", expectedEntry.getValue().getLastPoint(), actualBendPoints.getLastPoint());
+            }
+        }
+    }
+
+    // Get the new bendpoints list and compare it to expected ones when moving
+    // edge extremity
+    private void compareActualBendpointsWithExpected(SWTBotSiriusDiagramEditor diagramEditor, Map<SWTBotGefConnectionEditPart, PointList> expectedBendPoints, boolean firstBendPointShouldMove,
+            boolean allOtherBendpointsShouldMove, boolean acceptNonMovedBendpoints) {
+        // For Manhattan Diagrams not all bendpoints must move
+        acceptNonMovedBendpoints = acceptNonMovedBendpoints || diagramEditor.getReference().getName().contains(ROUTING_STYLE_MANHATTAN);
+        for (Entry<SWTBotGefConnectionEditPart, PointList> expectedEntry : expectedBendPoints.entrySet()) {
+            SWTBotUtils.waitAllUiEvents();
+            PointList actualBendPoints = ((PolylineConnectionEx) expectedEntry.getKey().part().getFigure()).getPoints();
+            // First bendpoint should move only if the source extremity has
+            // moved
+            if (firstBendPointShouldMove && !acceptNonMovedBendpoints) {
+                assertNotEquals("First Bendpoint should have moved", expectedEntry.getValue().getFirstPoint(), actualBendPoints.getFirstPoint());
+            }
+            for (int i = 1; i < expectedEntry.getValue().size() - 1; i++) {
+                if (!allOtherBendpointsShouldMove) {
+                    assertEquals("Bendpoint should not have moved", expectedEntry.getValue().getPoint(i), actualBendPoints.getPoint(i));
+                }
+            }
+            // Last bendpoint should move only if the target extremity has moved
+            if (!firstBendPointShouldMove && !acceptNonMovedBendpoints) {
+                assertNotEquals("Last  Bendpoint should have moved", expectedEntry.getValue().getLastPoint(), actualBendPoints.getLastPoint());
             }
         }
     }

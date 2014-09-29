@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="useCase" version="8.1.0">
+  <ownedViewpoints name="centered">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="useCase" domainClass="migrationmodeler.Diagram">
+      <defaultLayer name="Default">
+        <nodeMappings name="node" preconditionExpression="[id = 'node3' or id = 'node4' /]" semanticCandidatesExpression="feature:eContents" domainClass="migrationmodeler.Node" reusedBorderedNodeMappings="//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered_centered']">
+          <style xsi:type="style:SquareDescription" labelExpression="feature:id" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings xsi:type="description_1:NodeMappingImport" name="nodeImportCentered" preconditionExpression="[id = 'node1' or id = 'node2' /]" semanticCandidatesExpression="feature:eContents" importedMapping="//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@nodeMappings[name='node']">
+          <style xsi:type="style:SquareDescription" labelExpression="feature:id" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="edge" semanticCandidatesExpression="feature:eContents" createElements="false" sourceMapping="//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered_centered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@nodeMappings[name='node'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='containerImportCentered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@nodeMappings[name='nodeImportCentered']" targetMapping="//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered_centered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@nodeMappings[name='node'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='containerImportCentered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@nodeMappings[name='nodeImportCentered']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="migrationmodeler.Edge" useDomainElement="true" reconnections="//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@toolSections.0/@ownedTools[name='reconnectTarget']">
+          <style sizeComputationExpression="1" centeredSourceMappings="//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered_centered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='containerImportCentered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@nodeMappings[name='nodeImportCentered']" centeredTargetMappings="//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered_centered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='containerImportCentered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@nodeMappings[name='nodeImportCentered']">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <centerLabelStyleDescription labelExpression="feature:id">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="container" preconditionExpression="[id = 'container3' or id = 'container4' /]" semanticCandidatesExpression="feature:eContents" domainClass="migrationmodeler.Container">
+          <borderedNodeMappings name="bordered_centered" preconditionExpression="[id = 'border1' or id = 'border4' /]" semanticCandidatesExpression="feature:eContents" domainClass="migrationmodeler.Bordered">
+            <style xsi:type="style:SquareDescription" labelExpression="feature:id" sizeComputationExpression="1" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="bordered" preconditionExpression="[id = 'border2' or id = 'border3' /]" semanticCandidatesExpression="feature:eContents" domainClass="migrationmodeler.Bordered">
+            <style xsi:type="style:SquareDescription" labelExpression="feature:id" sizeComputationExpression="1" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="feature:id">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+          </style>
+        </containerMappings>
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="containerImportCentered" preconditionExpression="[id = 'container1' or id = 'container2' /]" semanticCandidatesExpression="feature:eContents" reusedBorderedNodeMappings="//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered_centered'] //@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered']" importedMapping="//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="feature:id">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Create Container" containerMappings="//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="migrationmodeler.Container" referenceName="containers"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Create Border Node" nodeMappings="//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@containerMappings[name='container']/@borderedNodeMappings[name='bordered_centered']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="migrationmodeler.Bordered" referenceName="elements"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Create Node" nodeMappings="//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@nodeMappings[name='node']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="migrationmodeler.Node" referenceName="nodes"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Create Edge" edgeMappings="//@ownedViewpoints[name='centered']/@ownedRepresentations[name='useCase']/@defaultLayer/@edgeMappings[name='edge']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[source. eContainer(&quot;Diagram&quot;)/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="migrationmodeler.Edge" referenceName="edges">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="var:source"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="id" valueExpression="newEdge"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="reconnectTarget" reconnectionKind="RECONNECT_BOTH">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:If" conditionExpression="[target &lt;> element.target/]">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="[target/]"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

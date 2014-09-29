@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="Root">
+  <eClassifiers xsi:type="ecore:EClass" name="E1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref1" eType="#//E2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="E2"/>
+  <eSubpackages name="PC1">
+    <eClassifiers xsi:type="ecore:EClass" name="PC1Class"/>
+    <eSubpackages name="PC3">
+      <eSubpackages name="F1">
+        <eClassifiers xsi:type="ecore:EClass" name="F1Class">
+          <eStructuralFeatures xsi:type="ecore:EReference" name="MyRef" eType="#//PC2/PC4/F2/F2Class"/>
+        </eClassifiers>
+      </eSubpackages>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="PC2" nsURI="">
+    <eClassifiers xsi:type="ecore:EClass" name="PC2Class"/>
+    <eSubpackages name="PC4">
+      <eSubpackages name="F2">
+        <eClassifiers xsi:type="ecore:EClass" name="F2Class"/>
+      </eSubpackages>
+    </eSubpackages>
+  </eSubpackages>
+</ecore:EPackage>

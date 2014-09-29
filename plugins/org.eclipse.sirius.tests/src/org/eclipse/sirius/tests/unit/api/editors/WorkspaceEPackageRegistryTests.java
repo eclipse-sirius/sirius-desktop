@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.common.tools.api.ecore.WorkspaceEPackageRegistry;
+import org.eclipse.sirius.editor.tools.api.ecore.WorkspaceEPackageRegistry;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 
 /**

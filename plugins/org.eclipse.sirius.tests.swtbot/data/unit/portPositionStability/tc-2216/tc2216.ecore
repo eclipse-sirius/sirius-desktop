@@ -9,6 +9,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="c"/>
   </eClassifiers>
   <eSubpackages name="0">
-    <eClassifiers xsi:type="ecore:EClass" name="loooooooooooong name is very long"/>
+    <eClassifiers xsi:type="ecore:EClass" name="loooooooooooong name is very long">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref0" eType="#//loooooooooooong%20name%20is%20very%20long"/>
+    </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

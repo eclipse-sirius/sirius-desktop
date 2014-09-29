@@ -14,6 +14,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITableRepresentation;
@@ -26,11 +27,9 @@ import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
-import org.eclipse.sirius.tests.swtbot.Activator;
-
 /**
- * Ensures that the "Navigate" menu correctly displays the navigation links
- * provided by
+ * Ensures that the "Open" menu correctly displays the navigation links provided
+ * by
  * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription}
  * for Tables and Trees.
  * 
@@ -91,106 +90,101 @@ public class NavigationDescriptionFromTableAndTreeTest extends AbstractSiriusSwt
     }
 
     /**
-     * Ensures that the "Navigate" menu correctly displays the navigation links
-     * provided by
-     * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription}
-     * for Trees.
+     * Ensures that the "Open" menu correctly displays the open link for Trees.
      */
-    public void testNavigationDescriptionAvailableFromTrees() {
-        // Step 1 : open Tree
+    public void testOpenDescriptionAvailableFromTrees() {
+        // Step 1 : save the previous session and open Tree
+        localSession.save();
         UITreeRepresentation tree = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(TREE_REPRESENTATION_NAME)
                 .selectRepresentationInstance("new " + TREE_REPRESENTATION_NAME, UITreeRepresentation.class).open();
 
         try {
             // Step 2 : select the C2 tree item
-            // => navigation menu should not be available (only defined on
+            // => open menu should not be available (only defined on
             // EAttributes)
             SWTBotTreeItem c2 = tree.getTree().getTreeItem("C2").select();
-            checkNavigationMenuIsAvailable(tree.getTree(), c2, false);
+            checkOpenMenuIsAvailable(tree.getTree(), c2, false);
 
             // Step 3 : select the at1 child of C1
-            // => navigation menu should be available
+            // => open menu should be available
             SWTBotTreeItem a1 = tree.getTree().getTreeItem("C1").expand().getItems()[0].select();
-            checkNavigationMenuIsAvailable(tree.getTree(), a1, true);
+            checkOpenMenuIsAvailable(tree.getTree(), a1, true);
         } finally {
             tree.close();
         }
     }
 
     /**
-     * Ensures that the "Navigate" menu correctly displays the navigation links
-     * provided by
-     * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription}
-     * for Edition Tables. Also checks that preconditions of
-     * NavigationDescriptions are evaluated.
+     * Ensures that the "Open" menu correctly displays the open link for Edition
+     * Tables. Also checks that preconditions of NavigationDescriptions are
+     * evaluated.
      */
-    public void testNavigationDescriptionAvailableFromEdiontTablesWithPrecondition() {
+    public void testOpenDescriptionAvailableFromEditionTablesWithPrecondition() {
         // Step 1 : open Table
         UITableRepresentation table = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(TABLE_REPRESENTATION_NAME)
                 .selectRepresentationInstance("new " + TABLE_REPRESENTATION_NAME, UITableRepresentation.class).open();
 
         try {
             // Step 2 : select the C1 line
-            // => navigation menu should be available
+            // => open representation menu should be available
             SWTBotTreeItem c1 = table.getTable().getTreeItem("C1").select();
-            checkNavigationMenuIsAvailable(table.getTable(), c1, true);
+            checkOpenMenuIsAvailable(table.getTable(), c1, true);
 
             // Step 3 : select the C2 line
-            // => navigation menu should not be available as precondition is
+            // => open representation menu should not be available as
+            // precondition is
             // false
             SWTBotTreeItem c2 = table.getTable().getTreeItem("C2").select();
-            checkNavigationMenuIsAvailable(table.getTable(), c2, false);
+            checkOpenMenuIsAvailable(table.getTable(), c2, false);
+            localSession.save();
         } finally {
             table.close();
         }
     }
 
     /**
-     * Ensures that the "Navigate" menu correctly displays the navigation links
-     * provided by
-     * {@link org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription}
-     * for CrossTables.
+     * Ensures that the "Open" menu correctly displayed for CrossTables.
      */
-    public void testNavigationDescriptionAvailableFromCrossTables() {
+    public void testOpenDescriptionAvailableFromCrossTables() {
         // Step 1 : open cross Table
         UITableRepresentation table = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(CROSS_TABLE_REPRESENTATION_NAME)
                 .selectRepresentationInstance("new " + CROSS_TABLE_REPRESENTATION_NAME, UITableRepresentation.class).open();
 
         try {
             // Step 2 : select the C1 line
-            // => navigation menu should be available
+            // => open menu should be available
             SWTBotTreeItem c2 = table.getTable().getTreeItem("C2").select();
-            checkNavigationMenuIsAvailable(table.getTable(), c2, true);
+            checkOpenMenuIsAvailable(table.getTable(), c2, true);
         } finally {
             table.close();
         }
     }
 
     /**
-     * Checks that the "Navigate.." menu is available or not (according to the
-     * given parameter), and contains the custom navigation description.
+     * Checks that the "Open.." menu is available or not (according to the given
+     * parameter), and contains the custom navigation description.
      * 
      * @param swtBotTree
      *            the bot for the Tree on which we d the check
      * @param treeItem
-     *            the treeItem from which open the "Navigate" menu
+     *            the treeItem from which open the "Open" menu
      * 
      * @param shouldBeAvailable
-     *            indicates if the navigate menu should be available
+     *            indicates if the open menu should be available
      */
-    protected void checkNavigationMenuIsAvailable(final SWTBotTree swtBotTree, final SWTBotTreeItem treeItem, final boolean shouldBeAvailable) {
+    protected void checkOpenMenuIsAvailable(final SWTBotTree swtBotTree, final SWTBotTreeItem treeItem, final boolean shouldBeAvailable) {
         boolean customNavigationIsAvailable = true;
         SWTBotUtils.waitAllUiEvents();
-        // We only check if the custom navigation is available
-        Result<MenuItem> menuItemGetter = new ContextualMenuItemGetter(swtBotTree.widget, new String[] { "Navigate", "custom navigation" });
-        final MenuItem navigationMenuItem = UIThreadRunnable.syncExec(menuItemGetter);
+        // We only check if the custom open is available
+        Result<MenuItem> menuItemGetter = new ContextualMenuItemGetter(swtBotTree.widget, new String[] { "Open", "custom navigation" });
+        final MenuItem openMenuItem = UIThreadRunnable.syncExec(menuItemGetter);
 
-        customNavigationIsAvailable = navigationMenuItem != null;
+        customNavigationIsAvailable = openMenuItem != null;
 
         if (shouldBeAvailable) {
-            assertTrue("The provided navigation description should be available under the 'Navigate' menu", customNavigationIsAvailable);
+            assertTrue("The provided open description should be available under the 'Open' menu", customNavigationIsAvailable);
         } else {
-            assertFalse("The provided navigation description should not be available", customNavigationIsAvailable);
+            assertFalse("The provided open description should not be available", customNavigationIsAvailable);
         }
     }
 

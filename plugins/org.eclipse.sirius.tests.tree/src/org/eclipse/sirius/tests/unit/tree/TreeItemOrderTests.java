@@ -15,6 +15,8 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.sirius.tests.unit.common.TreeCommonTest;
+import org.eclipse.sirius.tests.unit.common.TreeEcoreModeler;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.DTreeItemContainer;
@@ -28,9 +30,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-import org.eclipse.sirius.tests.unit.common.TreeCommonTest;
-import org.eclipse.sirius.tests.unit.common.TreeEcoreModeler;
-
 public class TreeItemOrderTests extends TreeCommonTest implements TreeEcoreModeler {
 
     private GlobalContext ctx;
@@ -39,7 +38,7 @@ public class TreeItemOrderTests extends TreeCommonTest implements TreeEcoreModel
     protected void setUp() throws Exception {
         super.setUp();
 
-        ctx = new GlobalContext(session.getModelAccessor(), session.getInterpreter());
+        ctx = new GlobalContext(session.getModelAccessor(), session.getInterpreter(), null);
     }
 
     public void testItemOrders() {

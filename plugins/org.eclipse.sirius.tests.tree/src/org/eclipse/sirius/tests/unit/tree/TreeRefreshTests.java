@@ -79,7 +79,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
 
         IInterpreter interpreter = CompoundInterpreter.createGenericInterpreter();
 
-        ctx = new GlobalContext(accessor, interpreter);
+        ctx = new GlobalContext(accessor, interpreter, null);
 
     }
 

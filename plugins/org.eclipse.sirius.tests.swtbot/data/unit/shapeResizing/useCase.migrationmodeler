@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<migrationmodeler:TestCase xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:migrationmodeler="http://www.eclipse.org/sirius/tests/sample/migrationmodeler">
+  <representations xsi:type="migrationmodeler:Diagram" name="useCase">
+    <containers id="container1">
+      <elements xsi:type="migrationmodeler:Bordered" id="border1"/>
+    </containers>
+    <containers id="container2">
+      <elements xsi:type="migrationmodeler:Bordered" id="border2"/>
+    </containers>
+    <containers id="container3"/>
+    <containers id="container4">
+      <elements xsi:type="migrationmodeler:Bordered" id="border3"/>
+    </containers>
+    <nodes id="node1"/>
+    <nodes id="node2"/>
+    <nodes id="node3"/>
+    <edges id="edge3" source="//@representations.0/@containers.0/@elements.0" target="//@representations.0/@containers.1"/>
+    <edges id="edge1" source="//@representations.0/@containers.0" target="//@representations.0/@containers.1"/>
+    <edges id="edge7" source="//@representations.0/@containers.3" target="//@representations.0/@containers.1"/>
+    <edges id="edge9" source="//@representations.0/@containers.2" target="//@representations.0/@containers.1/@elements.0"/>
+    <edges id="edge10" source="//@representations.0/@containers.2" target="//@representations.0/@containers.1/@elements.0"/>
+    <edges id="edge13" source="//@representations.0/@nodes.1" target="//@representations.0/@containers.3"/>
+    <edges id="edge5" source="//@representations.0/@nodes.0" target="//@representations.0/@containers.3"/>
+    <edges id="edge4" source="//@representations.0/@containers.0/@elements.0" target="//@representations.0/@nodes.0"/>
+    <edges id="edge11" source="//@representations.0/@containers.3" target="//@representations.0/@containers.2"/>
+    <edges id="edge2" source="//@representations.0/@containers.1" target="//@representations.0/@containers.0"/>
+    <edges id="edge12" source="//@representations.0/@nodes.1" target="//@representations.0/@containers.2"/>
+    <edges id="edge15" source="//@representations.0/@nodes.2" target="//@representations.0/@nodes.1"/>
+    <edges id="edge14" source="//@representations.0/@nodes.1" target="//@representations.0/@nodes.2"/>
+    <edges id="edge8" source="//@representations.0/@containers.3" target="//@representations.0/@containers.1/@elements.0"/>
+    <edges id="edge6" source="//@representations.0/@containers.3/@elements.0" target="//@representations.0/@containers.1/@elements.0"/>
+  </representations>
+</migrationmodeler:TestCase>

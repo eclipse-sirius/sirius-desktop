@@ -16,9 +16,8 @@ import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
-
 import org.eclipse.sirius.tests.suite.diagram.sequence.AllSequenceDiagramsPluginTests;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.api.command.CreateDiagramElementCommandTests;
 import org.eclipse.sirius.tests.unit.api.command.CreationAndDeletionUndoRedoTests;
 import org.eclipse.sirius.tests.unit.api.componentization.DiagramCustomizationTest;
@@ -91,7 +90,6 @@ import org.eclipse.sirius.tests.unit.diagram.action.EdgeOnEdgeHideRevealTest;
 import org.eclipse.sirius.tests.unit.diagram.action.EntitiesDiagramHideRevealTests;
 import org.eclipse.sirius.tests.unit.diagram.action.LabelHideRevealTests;
 import org.eclipse.sirius.tests.unit.diagram.command.DeleteViewCommandTest;
-import org.eclipse.sirius.tests.unit.diagram.command.SemanticChangeListenerTests;
 import org.eclipse.sirius.tests.unit.diagram.compute.variable.ComputeAvailableVariableLabelTest;
 import org.eclipse.sirius.tests.unit.diagram.control.ControlDetectorTest;
 import org.eclipse.sirius.tests.unit.diagram.control.ControlTest;
@@ -166,9 +164,9 @@ import org.eclipse.sirius.tests.unit.diagram.modeler.uml.LayerTests;
 import org.eclipse.sirius.tests.unit.diagram.modeler.uml.PortLocationTest;
 import org.eclipse.sirius.tests.unit.diagram.modelers.dynamicinstance.DynamicInstanceTests;
 import org.eclipse.sirius.tests.unit.diagram.modelers.ecore.EntitiesDiagramStyleCustomizationTests;
-import org.eclipse.sirius.tests.unit.diagram.navigation.NavigationMenuTest;
+import org.eclipse.sirius.tests.unit.diagram.navigation.OpenMenuTest;
 import org.eclipse.sirius.tests.unit.diagram.navigation.NavigationOperationTest;
-import org.eclipse.sirius.tests.unit.diagram.navigation.NavigationTest;
+import org.eclipse.sirius.tests.unit.diagram.navigation.OpenRepresentationTest;
 import org.eclipse.sirius.tests.unit.diagram.node.style.ModifyNodeStyleTest;
 import org.eclipse.sirius.tests.unit.diagram.operations.CreateViewOperationTest;
 import org.eclipse.sirius.tests.unit.diagram.operations.OperationTest;
@@ -317,8 +315,8 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(CreateViewOperationTest.class);
         suite.addTestSuite(ExportAsImageTest.class);
 
-        suite.addTestSuite(NavigationTest.class);
-        suite.addTestSuite(NavigationMenuTest.class);
+        suite.addTestSuite(OpenRepresentationTest.class);
+        suite.addTestSuite(OpenMenuTest.class);
         suite.addTestSuite(RepresentationCopierTest.class);
         // suite.addTestSuite(ExtensionAccessTest.class);
         suite.addTestSuite(DecoratorsTest.class);
@@ -338,7 +336,6 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(DiagramUnsynchronizedRefreshTest.class);
         suite.addTestSuite(UnsynchronizedMappingAndDeleteFromOutsideEditorTests.class);
         suite.addTestSuite(DeleteViewCommandTest.class);
-        suite.addTestSuite(SemanticChangeListenerTests.class);
         suite.addTestSuite(FileModificationValidationTest.class);
         suite.addTestSuite(AirDCrossReferenceAdapterTest.class);
         suite.addTestSuite(EdgeStabilityOnPortCollapsingTest.class);
@@ -386,7 +383,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(LayoutHelperImplEdgeLayoutDataTest.class);
         suite.addTestSuite(LayoutHelperImplNodeLayoutData1Test.class);
         suite.addTestSuite(LayoutHelperImplNodeLayoutData2Test.class);
-        String platformVersion = (String) Platform.getBundle("org.eclipse.core.runtime").getHeaders().get("Bundle-Version");
+        String platformVersion = Platform.getBundle("org.eclipse.core.runtime").getHeaders().get("Bundle-Version");
         if (!platformVersion.startsWith("3.5")) {
             suite.addTestSuite(SiriusLayoutDataManagerForSemanticElementsTest.class);
             if (TestsUtil.shouldRunLongTests()) {

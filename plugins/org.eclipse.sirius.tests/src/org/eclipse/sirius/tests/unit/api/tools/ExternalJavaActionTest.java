@@ -24,10 +24,9 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.ui.IEditorPart;
-
-import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 
 public class ExternalJavaActionTest extends SiriusDiagramTestCase implements ExternalJavaActionModeler {
 
@@ -90,7 +89,10 @@ public class ExternalJavaActionTest extends SiriusDiagramTestCase implements Ext
 
         DialectUIManager.INSTANCE.closeEditor(editor, false);
         TestsUtil.synchronizationWithUIThread();
-        assertTrue(getRepresentations(CLASS_REPRESENTATION_NAME).isEmpty());
+
+        // This work was done by DeleteDiagramElementsTriggerOperation which has
+        // been removed, but a similar behavior could be added in the future.
+        // assertTrue(getRepresentations(CLASS_REPRESENTATION_NAME).isEmpty());
     }
 
     public void testDeleteWithSemanticDeleteFromJavaAction() throws Exception {
@@ -117,7 +119,9 @@ public class ExternalJavaActionTest extends SiriusDiagramTestCase implements Ext
         DialectUIManager.INSTANCE.closeEditor(editor, false);
         TestsUtil.synchronizationWithUIThread();
 
-        assertTrue(getRepresentations(CLASS_REPRESENTATION_NAME).isEmpty());
+        // This work was done by DeleteDiagramElementsTriggerOperation which has
+        // been removed, but a similar behavior could be added in the future.
+        // assertTrue(getRepresentations(CLASS_REPRESENTATION_NAME).isEmpty());
     }
 
     public void testDeleteOtherThanSelectionFromJavaAction() throws Exception {
@@ -141,7 +145,10 @@ public class ExternalJavaActionTest extends SiriusDiagramTestCase implements Ext
 
         /* the semantic and the diagram element have been deleted */
         assertEquals(1, eClass.getEAllAttributes().size());
-        assertEquals(1, list.getOwnedElements().size());
+
+        // This work was done by DeleteDiagramElementsTriggerOperation which has
+        // been removed, but a similar behavior could be added in the future.
+        // assertEquals(1, list.getOwnedElements().size());
 
         /*
          * the selected element should not have been deleted or recreated (by

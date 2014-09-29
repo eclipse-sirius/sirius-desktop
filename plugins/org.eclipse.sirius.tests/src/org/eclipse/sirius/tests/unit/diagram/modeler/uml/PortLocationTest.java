@@ -208,7 +208,7 @@ public class PortLocationTest extends SiriusDiagramTestCase {
 
         IMenuManager popupMenu = new MenuManager();
         popupMenu.add(new MenuManager(IWorkbenchActionConstants.MB_ADDITIONS, IWorkbenchActionConstants.MB_ADDITIONS));//$NON-NLS-1$ //$NON-NLS-2$
-        popupMenu.add(new MenuManager("navigateMenu", "navigateMenu"));//$NON-NLS-1$
+        popupMenu.add(new MenuManager("popup.new", "popup.new"));//$NON-NLS-1$
 
         // Set the focus to package SubPackage
         IGraphicalEditPart elementEditPart = getEditPart(getFirstDiagramElement(diagram, packageSubPackage));
@@ -221,10 +221,10 @@ public class PortLocationTest extends SiriusDiagramTestCase {
         ContributionItemService.getInstance().contributeToPopupMenu(popupMenu, diagramEditor);
 
         // Check the popup menu.
-        IMenuManager navigateMenu = (IMenuManager) popupMenu.find("navigateMenu");
-        IContributionItem[] items = navigateMenu.getItems();
+        IMenuManager newRepresentationMenu = (IMenuManager) popupMenu.find("popup.new");
+        IContributionItem[] items = newRepresentationMenu.getItems();
 
-        boolean inNavigateToGroup = false;
+        boolean inNewRepresentationToGroup = false;
 
         ActionContributionItem actionContribution = null;
 
@@ -232,12 +232,12 @@ public class PortLocationTest extends SiriusDiagramTestCase {
             if (items[i] instanceof Separator) {
                 Separator sep = (Separator) items[i];
                 if ("createRepresentationGroup".equals(sep.getId())) {
-                    inNavigateToGroup = true;
+                    inNewRepresentationToGroup = true;
                 } else {
-                    inNavigateToGroup = false;
+                    inNewRepresentationToGroup = false;
                 }
             }
-            if (inNavigateToGroup && items[i] instanceof ActionContributionItem) {
+            if (inNewRepresentationToGroup && items[i] instanceof ActionContributionItem) {
                 assertNull("There should be only one ActionContributionItem", actionContribution);
                 actionContribution = (ActionContributionItem) items[i];
             }
@@ -246,7 +246,7 @@ public class PortLocationTest extends SiriusDiagramTestCase {
         assertNotNull("There should be one ActionContributionItem", actionContribution);
         final IAction action = actionContribution.getAction();
 
-        assertEquals("Action has not the correct text", "New detail : New diagram", action.getText());
+        assertEquals("Action has not the correct text", "New diagram", action.getText());
 
         // Disabling ui callback of diagram command factory
         final Object adapter = diagramEditor.getAdapter(IDiagramCommandFactoryProvider.class);

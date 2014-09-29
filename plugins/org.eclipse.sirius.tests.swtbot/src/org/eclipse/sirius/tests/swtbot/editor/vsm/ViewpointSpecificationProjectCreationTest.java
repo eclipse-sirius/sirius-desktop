@@ -166,6 +166,10 @@ public class ViewpointSpecificationProjectCreationTest extends AbstractSiriusSwt
         bot.waitUntil(new ItemEnabledCondition(bot.button(WIZARD_NEXT)));
         bot.button(WIZARD_NEXT).click();
 
+        // Check that the initialized name of the odesign corresponds to the
+        // name of the project
+        assertEquals("Initial model name should be the name of the project.", "test.odesign", bot.textWithLabel(WIZARD_VIEWPOINT_SPECIFICATION_MODEL_NAME).getText());
+
         bot.textWithLabel(WIZARD_VIEWPOINT_SPECIFICATION_MODEL_NAME).setText("test.design");
         assertFalse("The wizard should not accept other file extension than odesign.", bot.button("Finish").isEnabled());
 

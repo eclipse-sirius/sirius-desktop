@@ -14,15 +14,21 @@ import java.util.Iterator;
 import java.util.Set;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.support.api.TreeTestCase;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.DTreeItemContainer;
+import org.eclipse.sirius.tree.business.api.command.DTreeItemExpansionChangeCommand;
+import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
 import org.eclipse.sirius.tree.business.internal.helper.TreeHelper;
 import org.eclipse.sirius.tree.description.TreeItemContainerDropTool;
 import org.eclipse.sirius.tree.description.TreeItemDragTool;
@@ -34,9 +40,6 @@ import org.eclipse.ui.views.navigator.LocalSelectionTransfer;
 import org.junit.Assert;
 
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.tests.support.api.TreeTestCase;
 
 /**
  * Test class containing 2 tests that cannot pass with Eclipse 3.3 without
@@ -125,11 +128,15 @@ public class TreeItemDragAndDropToolUsingRecordingCommandCompositionTest extends
         Assert.assertEquals(2500, richEmployee2.eGet(wageFeature));
 
         // Step 4 : testing undo/Redo
+        // One undo for the expansion in applyDnDTool();
+        applyUndo();
         applyUndo();
         Assert.assertEquals(2000, richEmployee1.eGet(wageFeature));
         Assert.assertEquals(2000, richEmployee2.eGet(wageFeature));
         checkDTreeItemContainment(itemSources, itemRichCompany1, false);
 
+        // One redo for the expansion in applyDnDTool();
+        applyRedo();
         applyRedo();
         Assert.assertEquals(2500, richEmployee1.eGet(wageFeature));
         Assert.assertEquals(2500, richEmployee2.eGet(wageFeature));
@@ -176,11 +183,15 @@ public class TreeItemDragAndDropToolUsingRecordingCommandCompositionTest extends
         Assert.assertEquals(2500, richEmployee2.eGet(wageFeature));
 
         // Step 4 : testing undo/Redo
+        // One undo for the expansion in applyDnDTool();
+        applyUndo();
         applyUndo();
         checkDTreeItemContainment(itemSources, itemRichCompany1, false);
         Assert.assertEquals(2000, richEmployee1.eGet(wageFeature));
         Assert.assertEquals(2000, richEmployee2.eGet(wageFeature));
 
+        // One redo for the expansion in applyDnDTool();
+        applyRedo();
         applyRedo();
         checkDTreeItemContainment(itemSources, itemRichCompany1, true);
         Assert.assertEquals(2500, richEmployee1.eGet(wageFeature));
@@ -217,6 +228,15 @@ public class TreeItemDragAndDropToolUsingRecordingCommandCompositionTest extends
         if (isValidDrop) {
             dndListener.performDrop(null);
         }
+
+        if (targetContainer instanceof DTreeItem) {
+            DTreeItem dTreeItem = (DTreeItem) targetContainer;
+            TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
+            GlobalContext globalContext = new GlobalContext(session.getModelAccessor(), session.getInterpreter(), session.getSemanticResources());
+            Command cmd = new DTreeItemExpansionChangeCommand(globalContext, domain, dTreeItem, true);
+            domain.getCommandStack().execute(cmd);
+        }
+        TestsUtil.synchronizationWithUIThread();
     }
 
     /**

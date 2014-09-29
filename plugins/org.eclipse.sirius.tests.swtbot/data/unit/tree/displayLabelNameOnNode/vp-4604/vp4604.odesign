@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/tree/description/1.0.0" name="Group" version="8.1.0">
+  <ownedViewpoints name="testLabelDisplay">
+    <ownedRepresentations xsi:type="description_1:TreeDescription">
+      <subItemMappings name="itemTreeId" label="itemTreeLabel" semanticCandidatesExpression="feature:eAllContents">
+        <defaultStyle>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+      </subItemMappings>
+      <createTreeItem name="createId" label="createLabel">
+        <variables name="root" documentation="The semantic element of the tree."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+      </createTreeItem>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

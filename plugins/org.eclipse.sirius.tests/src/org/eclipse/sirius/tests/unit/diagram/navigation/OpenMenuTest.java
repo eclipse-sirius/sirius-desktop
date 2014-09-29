@@ -38,7 +38,7 @@ import org.eclipse.ui.PlatformUI;
 
 import com.google.common.collect.Lists;
 
-public class NavigationMenuTest extends SiriusDiagramTestCase {
+public class OpenMenuTest extends SiriusDiagramTestCase {
 
     private static final String SEMANTIC_MODEL_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + "/data/unit/navigation/tc1562.ecore";
 
@@ -56,88 +56,88 @@ public class NavigationMenuTest extends SiriusDiagramTestCase {
         editor = openRepresentation("new Dependencies");
     }
 
-    public void testAllSiriussEnabled() throws Exception {
+    public void testAllViewpointsEnabled() throws Exception {
         activateViewpoint("Design");
         activateViewpoint("Documentation");
         activateViewpoint("Quality");
         activateViewpoint("Review");
 
         selectPackage("packageWithExistingDiagram");
-        List<ActionContributionItem> items = getNavigationContributions();
+        List<ActionContributionItem> items = getOpenContributions();
         assertEquals(1, items.size());
         IAction action = items.get(0).getAction();
-        assertEquals("Open packageWithExistingDiagram package entities", action.getText());
+        assertEquals("packageWithExistingDiagram package entities", action.getText());
 
         selectPackage("packageWithExistingTable");
-        items = getNavigationContributions();
+        items = getOpenContributions();
         assertEquals(1, items.size());
         action = items.get(0).getAction();
-        assertEquals("Open new Documentation", action.getText());
+        assertEquals("new Documentation", action.getText());
 
         selectPackage("packageWithNoRepresentation");
-        items = getNavigationContributions();
+        items = getOpenContributions();
         assertEquals(0, items.size());
     }
 
-    public void testReviewSiriusDisabled() throws Exception {
+    public void testReviewViewpointDisabled() throws Exception {
         activateViewpoint("Design");
         activateViewpoint("Documentation");
         activateViewpoint("Quality");
         deactivateViewpoint("Review");
 
         selectPackage("packageWithExistingDiagram");
-        List<ActionContributionItem> items = getNavigationContributions();
-        items = getNavigationContributions();
+        List<ActionContributionItem> items = getOpenContributions();
+        items = getOpenContributions();
         assertEquals(1, items.size());
         final IAction action = items.get(0).getAction();
-        assertEquals("Open packageWithExistingDiagram package entities", action.getText());
+        assertEquals("packageWithExistingDiagram package entities", action.getText());
 
         selectPackage("packageWithExistingTable");
-        items = getNavigationContributions();
+        items = getOpenContributions();
         assertEquals(0, items.size());
 
         selectPackage("packageWithNoRepresentation");
-        items = getNavigationContributions();
+        items = getOpenContributions();
         assertEquals(0, items.size());
     }
 
-    public void testDesignSiriusDisabled() throws Exception {
+    public void testDesignViewpointDisabled() throws Exception {
         activateViewpoint("Documentation");
         activateViewpoint("Quality");
         activateViewpoint("Review");
         deactivateViewpoint("Design");
 
         selectPackage("packageWithExistingDiagram");
-        List<ActionContributionItem> items = getNavigationContributions();
+        List<ActionContributionItem> items = getOpenContributions();
         assertEquals(0, items.size());
 
         selectPackage("packageWithExistingTable");
-        items = getNavigationContributions();
+        items = getOpenContributions();
         assertEquals(1, items.size());
         final IAction action = items.get(0).getAction();
-        assertEquals("Open new Documentation", action.getText());
+        assertEquals("new Documentation", action.getText());
 
         selectPackage("packageWithNoRepresentation");
-        items = getNavigationContributions();
+        items = getOpenContributions();
         assertEquals(0, items.size());
     }
 
-    public void testDesignAndReviewSiriussDisabled() throws Exception {
+    public void testDesignAndReviewViewpointsDisabled() throws Exception {
         activateViewpoint("Documentation");
         activateViewpoint("Quality");
         deactivateViewpoint("Design");
         deactivateViewpoint("Review");
 
         selectPackage("packageWithExistingDiagram");
-        List<ActionContributionItem> items = getNavigationContributions();
+        List<ActionContributionItem> items = getOpenContributions();
         assertEquals(0, items.size());
 
         selectPackage("packageWithExistingTable");
-        items = getNavigationContributions();
+        items = getOpenContributions();
         assertEquals(0, items.size());
 
         selectPackage("packageWithNoRepresentation");
-        items = getNavigationContributions();
+        items = getOpenContributions();
         assertEquals(0, items.size());
     }
 
@@ -162,11 +162,11 @@ public class NavigationMenuTest extends SiriusDiagramTestCase {
         return (DDiagramElement) ((GraphicalEditPart) diagramEditor.getDiagramGraphicalViewer().getFocusEditPart()).resolveSemanticElement();
     }
 
-    private List<ActionContributionItem> getNavigationContributions() {
+    private List<ActionContributionItem> getOpenContributions() {
         // The "popupMenu" created below is just a mock of the real menu
         // structure we would have at runtime. It is created so that we can
         // ContributionItemService.getInstance().contributeToPopupMenu() and
-        // then check the entries added to the navigation menu.
+        // then check the entries added to the open menu.
         MenuManager popupMenu = new MenuManager();
         // We must override isGroupMarker() so that the two following menus
         // support the addition of elements, which may be defined in the VSM and
@@ -177,15 +177,15 @@ public class NavigationMenuTest extends SiriusDiagramTestCase {
                         return true;
                     }
                 });
-        popupMenu.add(new MenuManager("navigateMenu", "navigateMenu") {//$NON-NLS-1$ //$NON-NLS-2$
+        popupMenu.add(new MenuManager("popup.open", "popup.open") {//$NON-NLS-1$ //$NON-NLS-2$
                     @Override
                     public boolean isGroupMarker() {
                         return true;
                     }
                 });
         ContributionItemService.getInstance().contributeToPopupMenu(popupMenu, EclipseUIUtil.getActivePage().getActivePart());
-        final IMenuManager navigateMenu = (IMenuManager) popupMenu.find("navigateMenu");
-        final IContributionItem[] items = navigateMenu.getItems();
+        final IMenuManager openMenu = (IMenuManager) popupMenu.find("popup.open");
+        final IContributionItem[] items = openMenu.getItems();
 
         final List<ActionContributionItem> actionContributions = Lists.newArrayList();
         for (int i = 0; i < items.length; i++) {

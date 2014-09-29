@@ -14,6 +14,11 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.sample.migration.design.Draw2dToSiriusModelTransformer;
+import org.eclipse.sirius.tests.sample.migration.design.MigrationModeler;
+import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Diagram;
+import org.eclipse.sirius.tests.sample.migration.migrationmodeler.TestCase;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
@@ -23,12 +28,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.tests.sample.migration.design.Draw2dToSiriusModelTransformer;
-import org.eclipse.sirius.tests.sample.migration.design.MigrationModeler;
-import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Diagram;
-import org.eclipse.sirius.tests.sample.migration.migrationmodeler.TestCase;
 
 /**
  * <pre>
@@ -48,6 +47,7 @@ public class DiagramMigrationTestCampaign10 extends AbstractMigrationTestCase {
     private static final String SESSION_RESOURCE_FILENAME = "TestCampaign_10.aird";
 
     private static final String SEMANTIC_RESOURCE_FILENAME = "TestCampaign_10.migrationmodeler";
+
     private static final String IMAGE_FILENAME = "image.bmp";
 
     private static final String NEW_IMAGE_FILENAME = "image.jpg";
@@ -81,46 +81,48 @@ public class DiagramMigrationTestCampaign10 extends AbstractMigrationTestCase {
     @Before
     public void setUp() throws Exception {
         super.setUp();
-        
+
+        changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), false);
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), false);
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);
-        
+
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, GENERAL_TEST_CASE_PATH + "/" + SESSION_RESOURCE_FILENAME, "/" + TEMPORARY_PROJECT_NAME + "/"
                 + SESSION_RESOURCE_FILENAME);
-      
+
         String projectRelativePath = GENERAL_TEST_CASE_PATH + "/" + SEMANTIC_RESOURCE_FILENAME;
         if (TestsUtil.isJuno3Platform() && "win32".equals(SWT.getPlatform())) {
             projectRelativePath = GENERAL_TEST_CASE_PATH + "/3.8/" + SEMANTIC_RESOURCE_FILENAME;
         }
-        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, projectRelativePath, "/" + TEMPORARY_PROJECT_NAME + "/"
-                + SEMANTIC_RESOURCE_FILENAME);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, projectRelativePath, "/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_FILENAME);
 
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, GENERAL_TEST_CASE_PATH + "/" + IMAGE_FILENAME, "/" + TEMPORARY_PROJECT_NAME + "/" + IMAGE_FILENAME);
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, GENERAL_TEST_CASE_PATH + "/" + NEW_IMAGE_FILENAME, "/" + TEMPORARY_PROJECT_NAME + "/" + NEW_IMAGE_FILENAME);
         genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH, SESSION_PATH);
     }
-    
+
     /**
      * 
      * @throws Exception
      */
     @Test
     public void testAllCustomisationsKeeped() throws Exception {
-        openEditorOnDiagram("" + diagramID, MigrationModeler.DIAGRAM_BIS_VIEWPOINT_NAME);
-        assertTrue("", semanticModel instanceof TestCase);
-        Diagram expectedDiagram = (Diagram) ((TestCase) semanticModel).getRepresentations().get(diagramID - 1);
+        if (!TestsUtil.isJuno3Platform()) {
+            openEditorOnDiagram("" + diagramID, MigrationModeler.DIAGRAM_BIS_VIEWPOINT_NAME);
+            assertTrue("", semanticModel instanceof TestCase);
+            Diagram expectedDiagram = (Diagram) ((TestCase) semanticModel).getRepresentations().get(diagramID - 1);
 
-        DDiagramEditPart dDiagramEditPart = getDDiagramEditPart();
-        Draw2dToSiriusModelTransformer draw2dToSiriusModelTransformer = new Draw2dToSiriusModelTransformer(dDiagramEditPart);
-        Diagram migrationModel = draw2dToSiriusModelTransformer.getMigrationModel();
+            DDiagramEditPart dDiagramEditPart = getDDiagramEditPart();
+            Draw2dToSiriusModelTransformer draw2dToSiriusModelTransformer = new Draw2dToSiriusModelTransformer(dDiagramEditPart);
+            Diagram migrationModel = draw2dToSiriusModelTransformer.getMigrationModel();
 
-        assertEqualsMigrationDiagrams(expectedDiagram, migrationModel);
+            assertEqualsMigrationDiagrams(expectedDiagram, migrationModel);
 
-        refresh(currentdRepresentation);
+            refresh(currentdRepresentation);
 
-        migrationModel = draw2dToSiriusModelTransformer.getMigrationModel();
+            migrationModel = draw2dToSiriusModelTransformer.getMigrationModel();
 
-        assertEqualsMigrationDiagrams(expectedDiagram, migrationModel);
+            assertEqualsMigrationDiagrams(expectedDiagram, migrationModel);
+        }
     }
 
 }

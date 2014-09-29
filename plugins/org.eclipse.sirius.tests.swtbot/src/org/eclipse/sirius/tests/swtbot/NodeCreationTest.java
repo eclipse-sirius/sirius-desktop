@@ -12,10 +12,10 @@ package org.eclipse.sirius.tests.swtbot;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gef.NodeEditPart;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -41,8 +41,6 @@ public class NodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String REPRESENTATION_INSTANCE_NAME = "vp-1174 test diagram";
 
     private static final String REPRESENTATION_NAME = "vp-1174Diagram";
-
-    private static final String VIEWPOINT_NAME = "vp-1174";
 
     private static final String MODEL = "vp-1174.ecore";
 
@@ -72,11 +70,6 @@ public class NodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
     protected SWTBotSiriusDiagramEditor editor;
 
     /**
-     * Current diagram.
-     */
-    protected UIDiagramRepresentation diagram;
-
-    /**
      * {@inheritDoc}
      */
     @Override
@@ -94,10 +87,7 @@ public class NodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
 
         editor.setSnapToGrid(false);
     }
@@ -109,7 +99,7 @@ public class NodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
     protected void tearDown() throws Exception {
         // Restore the default zoom level
         editor.click(1, 1); // Set the focus on the diagram
-        diagram.zoom(ZoomLevel.ZOOM_100);
+        editor.zoom(ZoomLevel.ZOOM_100);
         // Go to the origin to avoid scroll bar
         editor.scrollTo(0, 0);
         super.tearDown();
@@ -138,7 +128,7 @@ public class NodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
      *            the zoomLevel to set on the editor
      */
     private void testNodeCreationInDiagramWithoutScroll(ZoomLevel zoomLevel) {
-        diagram.zoom(zoomLevel);
+        editor.zoom(zoomLevel);
         // Get the insertion location for the Node to create
         Point location = new Point(2, 2);
         createNode(location.getScaled(zoomLevel.getAmount()).x, location.getScaled(zoomLevel.getAmount()).y);
@@ -170,7 +160,7 @@ public class NodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
      *            the zoomLevel to set on the editor
      */
     private void testNodeCreationInDiagramWithScroll(ZoomLevel zoomLevel) {
-        diagram.zoom(zoomLevel);
+        editor.zoom(zoomLevel);
         // Reveal p2 (to scroll in the diagram)
         editor.select(editor.getSelectableEditPart(PACKAGE_3_NAME));
         editor.reveal(editor.getEditPart(PACKAGE_3_NAME).part());
@@ -284,7 +274,7 @@ public class NodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
      *            the expected name of the newly created Class
      */
     private void testNodeCreationInContainer(ZoomLevel zoomLevel, String packageNameToReveal, String newClassName) {
-        diagram.zoom(zoomLevel);
+        editor.zoom(zoomLevel);
         // Reveal the package (and eventually scroll in the diagram)
         editor.reveal(packageNameToReveal);
         // Get the location of the package (relative the part visible on the

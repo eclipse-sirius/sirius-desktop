@@ -12,11 +12,10 @@ package org.eclipse.sirius.tests.swtbot;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gef.NodeEditPart;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -46,8 +45,6 @@ public class ContainerCreationTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String REPRESENTATION_NAME = "Entities";
 
-    private static final String VIEWPOINT_NAME = "Design";
-
     // We use the semantic model and session defined for NoteCreationTest, as
     // use-cases are really close
     private static final String MODEL = "2083.ecore";
@@ -76,11 +73,6 @@ public class ContainerCreationTest extends AbstractSiriusSwtBotGefTestCase {
     protected SWTBotSiriusDiagramEditor editor;
 
     /**
-     * Current diagram.
-     */
-    protected UIDiagramRepresentation diagram;
-
-    /**
      * {@inheritDoc}
      */
     @Override
@@ -98,10 +90,8 @@ public class ContainerCreationTest extends AbstractSiriusSwtBotGefTestCase {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
 
-        editor = diagram.getEditor();
         // Disable snap to grid
         editor.setSnapToGrid(false);
     }
@@ -113,7 +103,7 @@ public class ContainerCreationTest extends AbstractSiriusSwtBotGefTestCase {
     protected void tearDown() throws Exception {
         // Restore the default zoom level
         editor.click(1, 1); // Set the focus on the diagram
-        diagram.zoom(ZoomLevel.ZOOM_100);
+        editor.zoom(ZoomLevel.ZOOM_100);
         // Go to the origin to avoid scroll bar
         editor.scrollTo(0, 0);
         super.tearDown();
@@ -142,7 +132,7 @@ public class ContainerCreationTest extends AbstractSiriusSwtBotGefTestCase {
      *            the zoomLevel to set on the editor
      */
     private void testContainerCreationInDiagramWithoutScroll(ZoomLevel zoomLevel) {
-        diagram.zoom(zoomLevel);
+        editor.zoom(zoomLevel);
         // Get the insertion location for the Container to create
         Point location = new Point(2, 2);
         createContainer(location.getScaled(zoomLevel.getAmount()).x, location.getScaled(zoomLevel.getAmount()).y);
@@ -174,7 +164,7 @@ public class ContainerCreationTest extends AbstractSiriusSwtBotGefTestCase {
      *            the zoomLevel to set on the editor
      */
     private void testContainerCreationInDiagramWithScroll(ZoomLevel zoomLevel) {
-        diagram.zoom(zoomLevel);
+        editor.zoom(zoomLevel);
         // Reveal p2 (to scroll in the diagram)
         editor.select(editor.getSelectableEditPart(P2_PACKAGE_NAME));
         editor.reveal(editor.getEditPart(P2_PACKAGE_NAME).part());
@@ -242,16 +232,16 @@ public class ContainerCreationTest extends AbstractSiriusSwtBotGefTestCase {
      * having been reduced by user and therefore having a scroll bar) has the
      * expected position (zoom : 50%).
      */
-public void testContainerCreationInContainerWithScrollInContainerAndChangeZoom() {
+    public void testContainerCreationInContainerWithScrollInContainerAndChangeZoom() {
         testContainerCreationInContainer(ZoomLevel.ZOOM_50, P3_PACKAGE_NAME, NEW_CONTAINER_NAME_WITHOUT_BROTHER);
-        }
+    }
 
     /**
      * Ensures that a Container created inside a container (this container
      * having been reduced by user and therefore having a scroll bar), which
      * location implies to scroll on the diagram, has the expected position.
      */
-	public void testContainerCreationInContainerWithScrollInContainerAndDiagram() {
+    public void testContainerCreationInContainerWithScrollInContainerAndDiagram() {
         testContainerCreationInContainer(ZoomLevel.ZOOM_100, P4_PACKAGE_NAME, NEW_CONTAINER_NAME);
     }
 
@@ -261,7 +251,7 @@ public void testContainerCreationInContainerWithScrollInContainerAndChangeZoom()
      * location implies to scroll on the diagram, has the expected position
      * (zoom : 50%).
      */
-	public void testContainerCreationInContainerWithScrollInContainerAndDiagramAndChangeZoom() {
+    public void testContainerCreationInContainerWithScrollInContainerAndDiagramAndChangeZoom() {
         testContainerCreationInContainer(ZoomLevel.ZOOM_50, P4_PACKAGE_NAME, NEW_CONTAINER_NAME_WITHOUT_BROTHER);
     }
 
@@ -278,7 +268,7 @@ public void testContainerCreationInContainerWithScrollInContainerAndChangeZoom()
      *            the expected name of the newly created Container
      */
     private void testContainerCreationInContainer(ZoomLevel zoomLevel, String packageNameToReveal, String newContainerName) {
-        diagram.zoom(zoomLevel);
+        editor.zoom(zoomLevel);
         // Reveal the package (and eventually scroll in the diagram)
         editor.reveal(packageNameToReveal);
         // Get the location of the package (relative the part visible on the

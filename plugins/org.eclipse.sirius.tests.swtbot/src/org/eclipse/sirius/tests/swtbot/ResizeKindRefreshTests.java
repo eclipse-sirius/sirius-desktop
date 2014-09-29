@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.business.api.query.AbstractDNodeQuery;
@@ -35,12 +36,12 @@ import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationRedoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationUndoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.TransactionClosedCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.matcher.WithDRepresentationElementType;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.viewpoint.Style;
@@ -67,10 +68,6 @@ public class ResizeKindRefreshTests extends AbstractSiriusSwtBotGefTestCase {
     private static final String REPRESENTATION_INSTANCE_NAME = "new VP-2564_Diagram";
 
     private static final String REPRESENTATION_NAME = "VP-2564_Diagram";
-
-    private static final String VIEWPOINT_NAME = "VP-2564";
-
-    private UIDiagramRepresentation diagram;
 
     private Resource modelerResource;
 
@@ -119,9 +116,7 @@ public class ResizeKindRefreshTests extends AbstractSiriusSwtBotGefTestCase {
         final UIResource sessionAirdResource = new UIResource(designerProject, "/", SESSION_RESOURCE_FILENAME);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         editor.maximize();
         editor.setSnapToGrid(false);
         editor.setFocus();
@@ -847,7 +842,6 @@ public class ResizeKindRefreshTests extends AbstractSiriusSwtBotGefTestCase {
     @Override
     protected void tearDown() throws Exception {
         editor.restore();
-        diagram = null;
         modelerResource = null;
         dNodeEditPartBots = null;
         initialsBounds = null;

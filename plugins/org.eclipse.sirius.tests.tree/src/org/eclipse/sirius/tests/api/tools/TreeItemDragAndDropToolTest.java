@@ -17,6 +17,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -36,7 +37,9 @@ import org.eclipse.sirius.tests.support.api.TreeTestCase;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.DTreeItemContainer;
+import org.eclipse.sirius.tree.business.api.command.DTreeItemExpansionChangeCommand;
 import org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory;
+import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
 import org.eclipse.sirius.tree.business.internal.helper.TreeHelper;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeEditor;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.provider.DTreeItemDropListener;
@@ -122,10 +125,14 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
         Assert.assertEquals(2500, richEmployee1.eGet(wageFeature));
 
         // Step 4 : testing undo/Redo
+        // One undo for the expansion in applyDnDTool();
+        applyUndo();
         applyUndo();
         Assert.assertEquals(2000, richEmployee1.eGet(wageFeature));
         checkDTreeItemContainment(itemSources, itemRichCompany1, false);
 
+        // One redo for the expansion in applyDnDTool();
+        applyRedo();
         applyRedo();
         Assert.assertEquals(2500, richEmployee1.eGet(wageFeature));
         checkDTreeItemContainment(itemSources, itemRichCompany1, true);
@@ -169,11 +176,15 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
         Assert.assertEquals(2500, richEmployee2.eGet(wageFeature));
 
         // Step 4 : testing undo/Redo
+        // One undo for the expansion in applyDnDTool();
+        applyUndo();
         applyUndo();
         Assert.assertEquals(2000, richEmployee1.eGet(wageFeature));
         Assert.assertEquals(2000, richEmployee2.eGet(wageFeature));
         checkDTreeItemContainment(itemSources, itemRichCompany1, false);
 
+        // One redo for the expansion in applyDnDTool();
+        applyRedo();
         applyRedo();
         Assert.assertEquals(2500, richEmployee1.eGet(wageFeature));
         Assert.assertEquals(2500, richEmployee2.eGet(wageFeature));
@@ -360,10 +371,14 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
         Assert.assertEquals(2500, richEmployee1.eGet(wageFeature));
 
         // Step 4 : testing undo/Redo
+        // One undo for the expansion in applyDnDTool();
+        applyUndo();
         applyUndo();
         Assert.assertEquals(2000, richEmployee1.eGet(wageFeature));
         checkDTreeItemContainment(itemSources, itemRichCompany1, false);
 
+        // One redo for the expansion in applyDnDTool();
+        applyRedo();
         applyRedo();
         Assert.assertEquals(2500, richEmployee1.eGet(wageFeature));
         checkDTreeItemContainment(itemSources, itemRichCompany1, true);
@@ -411,11 +426,15 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
         Assert.assertEquals(2500, richEmployee2.eGet(wageFeature));
 
         // Step 4 : testing undo/Redo
+        // One undo for the expansion in applyDnDTool();
+        applyUndo();
         applyUndo();
         Assert.assertEquals(2000, richEmployee1.eGet(wageFeature));
         Assert.assertEquals(2000, richEmployee2.eGet(wageFeature));
         checkDTreeItemContainment(itemSources, itemRichCompany1, false);
 
+        // One redo for the expansion in applyDnDTool();
+        applyRedo();
         applyRedo();
         Assert.assertEquals(2500, richEmployee1.eGet(wageFeature));
         Assert.assertEquals(2500, richEmployee2.eGet(wageFeature));
@@ -453,10 +472,14 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
         Assert.assertEquals(2500, richEmployee1.eGet(wageFeature));
 
         // Step 5 : testing undo/Redo
+        // One undo for the expansion in applyDnDTool();
+        applyUndo();
         applyUndo();
         Assert.assertEquals(2000, richEmployee1.eGet(wageFeature));
         checkDTreeItemContainment(itemSources, itemRichCompany1, false);
 
+        // One redo for the expansion in applyDnDTool();
+        applyRedo();
         applyRedo();
         Assert.assertEquals(2500, richEmployee1.eGet(wageFeature));
         checkDTreeItemContainment(itemSources, itemRichCompany1, true);
@@ -493,10 +516,14 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
         Assert.assertEquals(2500, richEmployee1.eGet(wageFeature));
 
         // Step 5 : testing undo/Redo
+        // One undo for the expansion in applyDnDTool();
+        applyUndo();
         applyUndo();
         Assert.assertEquals(2000, richEmployee1.eGet(wageFeature));
         checkDTreeItemContainment(itemSources, itemRichCompany1, false);
 
+        // One redo for the expansion in applyDnDTool();
+        applyRedo();
         applyRedo();
         Assert.assertEquals(2500, richEmployee1.eGet(wageFeature));
         checkDTreeItemContainment(itemSources, itemRichCompany1, true);
@@ -563,11 +590,15 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
         Assert.assertEquals(2500, richEmployee2.eGet(wageFeature));
 
         // Step 4 : testing undo/Redo
+        // One undo for the expansion in applyDnDTool();
+        applyUndo();
         applyUndo();
         Assert.assertEquals(2000, richEmployee1.eGet(wageFeature));
         Assert.assertEquals(2000, richEmployee2.eGet(wageFeature));
         checkDTreeItemContainment(itemSources, itemRichCompany1, false);
 
+        // One redo for the expansion in applyDnDTool();
+        applyRedo();
         applyRedo();
         Assert.assertEquals(2500, richEmployee1.eGet(wageFeature));
         Assert.assertEquals(2500, richEmployee2.eGet(wageFeature));
@@ -604,6 +635,15 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
         if (isValidDrop) {
             dndListener.performDrop(null);
         }
+
+        if (targetContainer instanceof DTreeItem) {
+            DTreeItem dTreeItem = (DTreeItem) targetContainer;
+            TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
+            GlobalContext globalContext = new GlobalContext(session.getModelAccessor(), session.getInterpreter(), session.getSemanticResources());
+            Command cmd = new DTreeItemExpansionChangeCommand(globalContext, domain, dTreeItem, true);
+            domain.getCommandStack().execute(cmd);
+        }
+        TestsUtil.synchronizationWithUIThread();
     }
 
     /**

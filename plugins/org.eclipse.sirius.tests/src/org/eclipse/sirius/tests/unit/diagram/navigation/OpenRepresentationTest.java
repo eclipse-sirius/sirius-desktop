@@ -29,6 +29,7 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.diagram.GenericTestCase;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -41,14 +42,12 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.Package;
 
-import org.eclipse.sirius.tests.unit.diagram.GenericTestCase;
-
 /**
  * @author mporhel
  * 
- *         Test Navigation.
+ *         Test Open representation menu.
  */
-public class NavigationTest extends GenericTestCase {
+public class OpenRepresentationTest extends GenericTestCase {
 
     private static final String PLUGIN = "/org.eclipse.sirius.tests";
 
@@ -89,7 +88,7 @@ public class NavigationTest extends GenericTestCase {
         return result;
     }
 
-    public void testCandidatesForNavigation() {
+    public void testCandidatesForOpenRepresentation() {
         final DiagramDescription pkgDiagDesc = findDiagramDescription("Package Diagram");
         assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, pkgDiagDesc);
 
@@ -121,7 +120,7 @@ public class NavigationTest extends GenericTestCase {
 
         IMenuManager popupMenu = new MenuManager();
         popupMenu.add(new MenuManager("additions", "additions"));//$NON-NLS-1$ //$NON-NLS-2$
-        popupMenu.add(new MenuManager("navigateMenu", "navigateMenu"));//$NON-NLS-1$
+        popupMenu.add(new MenuManager("popup.open", "popup.open"));//$NON-NLS-1$
 
         // Set the focus to Package 1
         assertTrue("We should have a DiagramDocumentEditor", editor instanceof DiagramDocumentEditor);
@@ -148,24 +147,24 @@ public class NavigationTest extends GenericTestCase {
 
         ContributionItemService.getInstance().contributeToPopupMenu(popupMenu, workbenchPart);
 
-        // Check the popup menu.
-        IMenuManager navigateMenu = (IMenuManager) popupMenu.find("navigateMenu");
-        IContributionItem[] items = navigateMenu.getItems();
+        // Check the open menu.
+        IMenuManager openMenu = (IMenuManager) popupMenu.find("popup.open");
+        IContributionItem[] items = openMenu.getItems();
 
-        boolean inNavigateToGroup = false;
+        boolean inOpenToGroup = false;
 
         ActionContributionItem actionContribution = null;
 
         for (int i = 0; i < items.length; i++) {
             if (items[i] instanceof Separator) {
                 Separator sep = (Separator) items[i];
-                if ("navigateRepresentationGroup".equals(sep.getId())) {
-                    inNavigateToGroup = true;
+                if ("openRepresentationGroup".equals(sep.getId())) {
+                    inOpenToGroup = true;
                 } else {
-                    inNavigateToGroup = false;
+                    inOpenToGroup = false;
                 }
             }
-            if (inNavigateToGroup && items[i] instanceof ActionContributionItem) {
+            if (inOpenToGroup && items[i] instanceof ActionContributionItem) {
                 assertNull("There should be only one ActionContributionItem", actionContribution);
                 actionContribution = (ActionContributionItem) items[i];
             }
@@ -173,7 +172,9 @@ public class NavigationTest extends GenericTestCase {
 
         assertNotNull("There should be one ActionContributionItem", actionContribution);
         final IAction action = actionContribution.getAction();
-
+        // This action label is provided by GMF in
+        // org.eclipse.gmf.runtime.common.ui.services.action.contributionitem.ContributionItemService.contributeToPopupMenu(IMenuManager,
+        // IWorkbenchPart)
         assertEquals("Action has not the correct text", "Navigate to owned packages : Class Diagram", action.getText());
 
         action.run();

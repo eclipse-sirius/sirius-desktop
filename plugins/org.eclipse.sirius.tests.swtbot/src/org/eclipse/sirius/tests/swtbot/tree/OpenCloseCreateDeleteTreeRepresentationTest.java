@@ -13,16 +13,16 @@ package org.eclipse.sirius.tests.swtbot.tree;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.junit.Test;
-
-import org.eclipse.sirius.tests.swtbot.Activator;
 
 /**
  * 
@@ -202,6 +202,8 @@ public class OpenCloseCreateDeleteTreeRepresentationTest extends AbstractTreeSir
     private void deleteTree(SWTBotTreeItem treeItem) {
         treeItem = localSession.getLocalSessionBrowser().perSemantic().expandNode(P1).expandNode(editor).select();
         SWTBotUtils.clickContextMenu(treeItem, "Delete");
+        bot.waitUntil(Conditions.shellIsActive("Delete representation"));
+        bot.button(OK).click();
         try {
             treeItem = localSession.getLocalSessionBrowser().perSemantic().expandNode(P1).expandNode(editor).select();
             assertFalse("The DTree editor must be delete", true);

@@ -126,9 +126,9 @@ public class PortsOnNodePositionStabilityTest extends AbstractSiriusSwtBotGefTes
         editor.drag(bounds.getTop(), bounds.getTop().getTranslated(TRANSLATION_MINUS_10Y));
 
         // Validate bordered node position and dimension
-        assertThat(editor.getLocation("DN2EP_on_DNEP_a", DNode2EditPart.class), around(locationA.getTranslated(TRANSLATION_MINUS_10Y), ACCEPTABLE_DISTANCE));
+        assertThat(editor.getLocation("DN2EP_on_DNEP_a", DNode2EditPart.class), around(locationA, ACCEPTABLE_DISTANCE));
         assertThat(editor.getLocation("DN2EP_on_DNEP_b", DNode2EditPart.class), around(locationB, ACCEPTABLE_DISTANCE));
-        assertThat(editor.getLocation("DN2EP_on_DNEP_c", DNode2EditPart.class), around(locationC.getTranslated(TRANSLATION_MINUS_10Y), ACCEPTABLE_DISTANCE));
+        assertThat(editor.getLocation("DN2EP_on_DNEP_c", DNode2EditPart.class), around(locationC, ACCEPTABLE_DISTANCE));
         assertThat(editor.getLocation("DN2EP_on_DNEP_d", DNode2EditPart.class), around(locationD.getTranslated(TRANSLATION_MINUS_10Y), ACCEPTABLE_DISTANCE));
         assertThat(editor.getDimension("DN2EP_on_DNEP_a", DNode2EditPart.class), equalTo(dimensionA));
         assertThat(editor.getDimension("DN2EP_on_DNEP_b", DNode2EditPart.class), equalTo(dimensionB));
@@ -161,9 +161,9 @@ public class PortsOnNodePositionStabilityTest extends AbstractSiriusSwtBotGefTes
         editor.drag(bounds.getTop(), bounds.getTop().getTranslated(TRANSLATION_PLUS_10Y));
 
         // Validate bordered node position and dimension
-        assertThat(editor.getLocation("DN2EP_on_DNEP_a", DNode2EditPart.class), around(locationA.getTranslated(TRANSLATION_PLUS_10Y), ACCEPTABLE_DISTANCE));
+        assertThat(editor.getLocation("DN2EP_on_DNEP_a", DNode2EditPart.class), around(locationA, ACCEPTABLE_DISTANCE));
         assertThat(editor.getLocation("DN2EP_on_DNEP_b", DNode2EditPart.class), around(locationB, ACCEPTABLE_DISTANCE));
-        assertThat(editor.getLocation("DN2EP_on_DNEP_c", DNode2EditPart.class), around(locationC.getTranslated(TRANSLATION_PLUS_10Y), ACCEPTABLE_DISTANCE));
+        assertThat(editor.getLocation("DN2EP_on_DNEP_c", DNode2EditPart.class), around(locationC, ACCEPTABLE_DISTANCE));
         assertThat(editor.getLocation("DN2EP_on_DNEP_d", DNode2EditPart.class), around(locationD.getTranslated(TRANSLATION_PLUS_10Y), ACCEPTABLE_DISTANCE));
         assertThat(editor.getDimension("DN2EP_on_DNEP_a", DNode2EditPart.class), equalTo(dimensionA));
         assertThat(editor.getDimension("DN2EP_on_DNEP_b", DNode2EditPart.class), equalTo(dimensionB));
@@ -341,9 +341,9 @@ public class PortsOnNodePositionStabilityTest extends AbstractSiriusSwtBotGefTes
 
         // Validate bordered node position and dimension
         assertThat(editor.getLocation("DN2EP_on_DNEP_a", DNode2EditPart.class), around(locationA, ACCEPTABLE_DISTANCE));
-        assertThat(editor.getLocation("DN2EP_on_DNEP_b", DNode2EditPart.class), around(locationB.getTranslated(TRANSLATION_MINUS_10X), ACCEPTABLE_DISTANCE));
+        assertThat(editor.getLocation("DN2EP_on_DNEP_b", DNode2EditPart.class), around(locationB, ACCEPTABLE_DISTANCE));
         assertThat(editor.getLocation("DN2EP_on_DNEP_c", DNode2EditPart.class), around(locationC.getTranslated(TRANSLATION_MINUS_10X), ACCEPTABLE_DISTANCE));
-        assertThat(editor.getLocation("DN2EP_on_DNEP_d", DNode2EditPart.class), around(locationD.getTranslated(TRANSLATION_MINUS_10X), ACCEPTABLE_DISTANCE));
+        assertThat(editor.getLocation("DN2EP_on_DNEP_d", DNode2EditPart.class), around(locationD, ACCEPTABLE_DISTANCE));
         assertThat(editor.getDimension("DN2EP_on_DNEP_a", DNode2EditPart.class), equalTo(dimensionA));
         assertThat(editor.getDimension("DN2EP_on_DNEP_b", DNode2EditPart.class), equalTo(dimensionB));
         assertThat(editor.getDimension("DN2EP_on_DNEP_c", DNode2EditPart.class), equalTo(dimensionC));
@@ -377,9 +377,9 @@ public class PortsOnNodePositionStabilityTest extends AbstractSiriusSwtBotGefTes
 
         // Validate bordered node position and dimension
         assertThat(editor.getLocation("DN2EP_on_DNEP_a", DNode2EditPart.class), around(locationA, ACCEPTABLE_DISTANCE));
-        assertThat(editor.getLocation("DN2EP_on_DNEP_b", DNode2EditPart.class), around(locationB.getTranslated(TRANSLATION_PLUS_10X), ACCEPTABLE_DISTANCE));
+        assertThat(editor.getLocation("DN2EP_on_DNEP_b", DNode2EditPart.class), around(locationB, ACCEPTABLE_DISTANCE));
         assertThat(editor.getLocation("DN2EP_on_DNEP_c", DNode2EditPart.class), around(locationC.getTranslated(TRANSLATION_PLUS_10X), ACCEPTABLE_DISTANCE));
-        assertThat(editor.getLocation("DN2EP_on_DNEP_d", DNode2EditPart.class), around(locationD.getTranslated(TRANSLATION_PLUS_10X), ACCEPTABLE_DISTANCE));
+        assertThat(editor.getLocation("DN2EP_on_DNEP_d", DNode2EditPart.class), around(locationD, ACCEPTABLE_DISTANCE));
         assertThat(editor.getDimension("DN2EP_on_DNEP_a", DNode2EditPart.class), equalTo(dimensionA));
         assertThat(editor.getDimension("DN2EP_on_DNEP_b", DNode2EditPart.class), equalTo(dimensionB));
         assertThat(editor.getDimension("DN2EP_on_DNEP_c", DNode2EditPart.class), equalTo(dimensionC));
@@ -695,9 +695,9 @@ public class PortsOnNodePositionStabilityTest extends AbstractSiriusSwtBotGefTes
         editor.drag(bounds.getTop(), bounds.getTop().getTranslated(TRANSLATION_MINUS_10Y));
 
         // Validate bordered node position and dimension
-        assertThat(editor.getLocation("DN2EP_on_DN3EP_a", DNode2EditPart.class), around(locationA.getTranslated(TRANSLATION_MINUS_10Y), ACCEPTABLE_DISTANCE));
+        assertThat(editor.getLocation("DN2EP_on_DN3EP_a", DNode2EditPart.class), around(locationA, ACCEPTABLE_DISTANCE));
         assertThat(editor.getLocation("DN2EP_on_DN3EP_b", DNode2EditPart.class), around(locationB, ACCEPTABLE_DISTANCE));
-        assertThat(editor.getLocation("DN2EP_on_DN3EP_c", DNode2EditPart.class), around(locationC.getTranslated(TRANSLATION_MINUS_10Y), ACCEPTABLE_DISTANCE));
+        assertThat(editor.getLocation("DN2EP_on_DN3EP_c", DNode2EditPart.class), around(locationC, ACCEPTABLE_DISTANCE));
         assertThat(editor.getLocation("DN2EP_on_DN3EP_d", DNode2EditPart.class), around(locationD.getTranslated(TRANSLATION_MINUS_10Y), ACCEPTABLE_DISTANCE));
         assertThat(editor.getDimension("DN2EP_on_DN3EP_a", DNode2EditPart.class), equalTo(dimensionA));
         assertThat(editor.getDimension("DN2EP_on_DN3EP_b", DNode2EditPart.class), equalTo(dimensionB));
@@ -733,9 +733,9 @@ public class PortsOnNodePositionStabilityTest extends AbstractSiriusSwtBotGefTes
         editor.drag(bounds.getTop(), bounds.getTop().getTranslated(TRANSLATION_PLUS_10Y));
 
         // Validate bordered node position and dimension
-        assertThat(editor.getLocation("DN2EP_on_DN3EP_a", DNode2EditPart.class), around(locationA.getTranslated(TRANSLATION_PLUS_10Y), ACCEPTABLE_DISTANCE));
+        assertThat(editor.getLocation("DN2EP_on_DN3EP_a", DNode2EditPart.class), around(locationA, ACCEPTABLE_DISTANCE));
         assertThat(editor.getLocation("DN2EP_on_DN3EP_b", DNode2EditPart.class), around(locationB, ACCEPTABLE_DISTANCE));
-        assertThat(editor.getLocation("DN2EP_on_DN3EP_c", DNode2EditPart.class), around(locationC.getTranslated(TRANSLATION_PLUS_10Y), ACCEPTABLE_DISTANCE));
+        assertThat(editor.getLocation("DN2EP_on_DN3EP_c", DNode2EditPart.class), around(locationC, ACCEPTABLE_DISTANCE));
         assertThat(editor.getLocation("DN2EP_on_DN3EP_d", DNode2EditPart.class), around(locationD.getTranslated(TRANSLATION_PLUS_10Y), ACCEPTABLE_DISTANCE));
         assertThat(editor.getDimension("DN2EP_on_DN3EP_a", DNode2EditPart.class), equalTo(dimensionA));
         assertThat(editor.getDimension("DN2EP_on_DN3EP_b", DNode2EditPart.class), equalTo(dimensionB));
@@ -924,9 +924,9 @@ public class PortsOnNodePositionStabilityTest extends AbstractSiriusSwtBotGefTes
 
         // Validate bordered node position and dimension
         assertThat(editor.getLocation("DN2EP_on_DN3EP_a", DNode2EditPart.class), around(locationA, ACCEPTABLE_DISTANCE));
-        assertThat(editor.getLocation("DN2EP_on_DN3EP_b", DNode2EditPart.class), around(locationB.getTranslated(TRANSLATION_MINUS_10X), ACCEPTABLE_DISTANCE));
+        assertThat(editor.getLocation("DN2EP_on_DN3EP_b", DNode2EditPart.class), around(locationB, ACCEPTABLE_DISTANCE));
         assertThat(editor.getLocation("DN2EP_on_DN3EP_c", DNode2EditPart.class), around(locationC.getTranslated(TRANSLATION_MINUS_10X), ACCEPTABLE_DISTANCE));
-        assertThat(editor.getLocation("DN2EP_on_DN3EP_d", DNode2EditPart.class), around(locationD.getTranslated(TRANSLATION_MINUS_10X), ACCEPTABLE_DISTANCE));
+        assertThat(editor.getLocation("DN2EP_on_DN3EP_d", DNode2EditPart.class), around(locationD, ACCEPTABLE_DISTANCE));
         assertThat(editor.getDimension("DN2EP_on_DN3EP_a", DNode2EditPart.class), equalTo(dimensionA));
         assertThat(editor.getDimension("DN2EP_on_DN3EP_b", DNode2EditPart.class), equalTo(dimensionB));
         assertThat(editor.getDimension("DN2EP_on_DN3EP_c", DNode2EditPart.class), equalTo(dimensionC));
@@ -962,9 +962,9 @@ public class PortsOnNodePositionStabilityTest extends AbstractSiriusSwtBotGefTes
 
         // Validate bordered node position and dimension
         assertThat(editor.getLocation("DN2EP_on_DN3EP_a", DNode2EditPart.class), around(locationA, ACCEPTABLE_DISTANCE));
-        assertThat(editor.getLocation("DN2EP_on_DN3EP_b", DNode2EditPart.class), around(locationB.getTranslated(TRANSLATION_PLUS_10X), ACCEPTABLE_DISTANCE));
+        assertThat(editor.getLocation("DN2EP_on_DN3EP_b", DNode2EditPart.class), around(locationB, ACCEPTABLE_DISTANCE));
         assertThat(editor.getLocation("DN2EP_on_DN3EP_c", DNode2EditPart.class), around(locationC.getTranslated(TRANSLATION_PLUS_10X), ACCEPTABLE_DISTANCE));
-        assertThat(editor.getLocation("DN2EP_on_DN3EP_d", DNode2EditPart.class), around(locationD.getTranslated(TRANSLATION_PLUS_10X), ACCEPTABLE_DISTANCE));
+        assertThat(editor.getLocation("DN2EP_on_DN3EP_d", DNode2EditPart.class), around(locationD, ACCEPTABLE_DISTANCE));
         assertThat(editor.getDimension("DN2EP_on_DN3EP_a", DNode2EditPart.class), equalTo(dimensionA));
         assertThat(editor.getDimension("DN2EP_on_DN3EP_b", DNode2EditPart.class), equalTo(dimensionB));
         assertThat(editor.getDimension("DN2EP_on_DN3EP_c", DNode2EditPart.class), equalTo(dimensionC));

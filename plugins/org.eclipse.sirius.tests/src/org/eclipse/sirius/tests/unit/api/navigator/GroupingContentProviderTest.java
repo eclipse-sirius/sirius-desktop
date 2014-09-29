@@ -99,8 +99,8 @@ public class GroupingContentProviderTest extends CommonPreferencesHelper {
     @Test
     public void coherenceBewteenTriggerSizeAndGroupSize2() {
 
-        setPrefGroupSize(100, 100);
-        setPrefGroupTrigger(50, 50);
+        setPrefGroupSize(100);
+        setPrefGroupTrigger(50);
         int currentTriggerSize = this.groupingContentProvider.getTriggerSize();
         int currentGroupSize = this.groupingContentProvider.getGroupSize();
         assertTrue("Trigger size >= Group size", currentTriggerSize >= currentGroupSize);

@@ -10,8 +10,21 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.common;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
+
 import java.util.List;
 
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.session.DefaultLocalSessionCreationOperation;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionCreationOperation;
+import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
 import org.eclipse.sirius.common.tools.api.editing.DefaultEditingDomainFactory;
 import org.eclipse.sirius.common.tools.api.editing.EditingDomainFactoryDescriptor;
 import org.eclipse.sirius.common.tools.api.editing.EditingDomainFactoryRegistry;
@@ -22,6 +35,8 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.google.common.collect.Iterables;
 
 /**
  * Unit tests for {@link EditingDomainFactoryService}
@@ -62,6 +77,9 @@ public class EditingDomainFactoryServiceTests {
         EditingDomainFactoryDescriptor defaultEditingDomainFactoryDescriptor = new StandaloneEditingDomainFactoryDescriptor("org.eclipse.sirius.defaultEditingDomainFactoryExtension", null,
                 defaultEditingDomainFactory);
         EditingDomainFactoryRegistry.addExtension(defaultEditingDomainFactoryDescriptor);
+
+        IEditingDomainFactory firstMostOverriderExtension = EditingDomainFactoryService.INSTANCE.getEditingDomainFactory();
+        Assert.assertEquals(DefaultTestEditingDomainFactory.class, firstMostOverriderExtension.getClass());
     }
 
     /**
@@ -84,6 +102,44 @@ public class EditingDomainFactoryServiceTests {
         Assert.assertEquals(OverriddingTestEditingDomainFactory.class, firstMostOverriderExtension.getClass());
     }
 
+    /**
+     * Test the AirdCrossReferencer installation with
+     * {@link EditingDomainFactoryService} providing a shared editing domain and
+     * resource set.
+     */
+    @Test
+    public void test_SessionWithSharedDomain() {
+        SharedTestEditingDomainFactory sharedEditingDomainFactory = new SharedTestEditingDomainFactory();
+        EditingDomainFactoryDescriptor sharedEditingDomainFactoryDescriptor = new StandaloneEditingDomainFactoryDescriptor("org.eclipse.sirius.sharedEditingDomainFactoryExtension", null,
+                sharedEditingDomainFactory);
+        EditingDomainFactoryRegistry.addExtension(sharedEditingDomainFactoryDescriptor);
+
+        IEditingDomainFactory firstMostOverriderExtension = EditingDomainFactoryService.INSTANCE.getEditingDomainFactory();
+        Assert.assertEquals(SharedTestEditingDomainFactory.class, firstMostOverriderExtension.getClass());
+
+        assertExpectedAirdCrossReferencerAdapterNumber(sharedEditingDomainFactory, 0);
+
+        URI sessionResourceURI = URI.createPlatformPluginURI("org.eclipse.sirius.tests/data/unit/session/VP-3829/test.aird", true);
+        SessionCreationOperation sessionCreationOperation = new DefaultLocalSessionCreationOperation(sessionResourceURI, new NullProgressMonitor());
+        try {
+            sessionCreationOperation.execute();
+        } catch (CoreException e) {
+            fail(e.getMessage());
+        }
+        Session session = sessionCreationOperation.getCreatedSession();
+
+        assertNotNull(session);
+        assertEquals(sharedEditingDomainFactory.sharedDomain, session.getTransactionalEditingDomain());
+        assertExpectedAirdCrossReferencerAdapterNumber(sharedEditingDomainFactory, 1);
+
+        session.close(new NullProgressMonitor());
+        assertExpectedAirdCrossReferencerAdapterNumber(sharedEditingDomainFactory, 0);
+    }
+
+    private void assertExpectedAirdCrossReferencerAdapterNumber(SharedTestEditingDomainFactory sharedEditingDomainFactory, int expected) {
+        assertEquals(expected, Iterables.size(Iterables.filter(sharedEditingDomainFactory.sharedDomain.getResourceSet().eAdapters(), AirDCrossReferenceAdapter.class)));
+    }
+
     @After
     public void tearDown() {
         EditingDomainFactoryRegistry.clearRegistry();
@@ -97,6 +153,22 @@ public class EditingDomainFactoryServiceTests {
     }
 
     class OverriddingTestEditingDomainFactory extends DefaultEditingDomainFactory {
+
+    }
+
+    class SharedTestEditingDomainFactory extends DefaultEditingDomainFactory {
+
+        final TransactionalEditingDomain sharedDomain = super.createEditingDomain();
+
+        @Override
+        public TransactionalEditingDomain createEditingDomain() {
+            return sharedDomain;
+        }
+
+        @Override
+        public synchronized TransactionalEditingDomain createEditingDomain(ResourceSet rset) {
+            return sharedDomain;
+        }
 
     }
 

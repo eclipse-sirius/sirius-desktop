@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
-import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
@@ -272,10 +271,10 @@ public class RepresentationRenamingTest extends AbstractSiriusSwtBotGefTestCase 
 
     private void renameRepresentation(final SWTBotTreeItem swtBotTreeItem, final String newName) {
         SWTBotUtils.clickContextMenu(swtBotTreeItem, "Rename");
-        SWTBotShell shell = bot.shell("Rename diagram");
+        SWTBotShell shell = bot.shell("Rename representation");
         shell.activate();
 
-        bot.textWithLabel("New diagram name (case sensitive):").setText(newName);
+        bot.textWithLabel("Enter new name (case sensitive):").setText(newName);
         bot.button("OK").click();
 
         bot.waitUntil(new TreeItemTextCondition(swtBotTreeItem, newName));

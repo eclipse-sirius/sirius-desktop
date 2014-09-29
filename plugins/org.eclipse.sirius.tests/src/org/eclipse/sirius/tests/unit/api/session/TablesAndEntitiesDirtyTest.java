@@ -23,6 +23,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
@@ -31,8 +32,6 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPreferenceConstants;
 
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 
 /**
  * Test if session and/or table diagrams are dirty
@@ -81,14 +80,19 @@ public class TablesAndEntitiesDirtyTest extends SiriusDiagramTestCase implements
     public void testOpenTableRepresentationInEditor() throws Exception {
         if (TestsUtil.shouldSkipLongTests()) {
             /*
-            junit.framework.AssertionFailedError: expected:<DIRTY> but was:<SYNC>
-            at junit.framework.Assert.fail(Assert.java:57)
-            at junit.framework.Assert.failNotEquals(Assert.java:329)
-            at junit.framework.Assert.assertEquals(Assert.java:78)
-            at junit.framework.Assert.assertEquals(Assert.java:86)
-            at junit.framework.TestCase.assertEquals(TestCase.java:253)
-            at org.eclipse.sirius.tests.unit.api.session.TablesAndEntitiesDirtyTest.openRepresentation(TablesAndEntitiesDirtyTest.java:261)
-            at org.eclipse.sirius.tests.unit.api.session.TablesAndEntitiesDirtyTest.testOpenTableRepresentationInEditor(TablesAndEntitiesDirtyTest.java:86)
+             * junit.framework.AssertionFailedError: expected:<DIRTY> but
+             * was:<SYNC> at junit.framework.Assert.fail(Assert.java:57) at
+             * junit.framework.Assert.failNotEquals(Assert.java:329) at
+             * junit.framework.Assert.assertEquals(Assert.java:78) at
+             * junit.framework.Assert.assertEquals(Assert.java:86) at
+             * junit.framework.TestCase.assertEquals(TestCase.java:253) at
+             * org.eclipse
+             * .sirius.tests.unit.api.session.TablesAndEntitiesDirtyTest
+             * .openRepresentation(TablesAndEntitiesDirtyTest.java:261) at
+             * org.eclipse
+             * .sirius.tests.unit.api.session.TablesAndEntitiesDirtyTest
+             * .testOpenTableRepresentationInEditor
+             * (TablesAndEntitiesDirtyTest.java:86)
              */
             return;
         }
@@ -136,7 +140,7 @@ public class TablesAndEntitiesDirtyTest extends SiriusDiagramTestCase implements
         if (TestsUtil.shouldSkipUnreliableTests()) {
             return;
         }
-        
+
         ((DAnalysisSessionImpl) session).setDisposeEditingDomainOnClose(false);
 
         assertsSessionIsSyncAndReload(session);
@@ -167,9 +171,9 @@ public class TablesAndEntitiesDirtyTest extends SiriusDiagramTestCase implements
      */
     public void testOpenCrossTableRepresentationInEditor() throws Exception {
         initViewpoint(REVIEW_VIEWPOINT_NAME);
-        createRepresentation(CROSS_TABLES_DESC_NAME, childEPackage);
+        assertNotNull("Representation \"" + CROSS_TABLES_DESC_NAME + "\" has not been created.", createRepresentation(CROSS_TABLES_DESC_NAME, childEPackage));
 
-        // Waity for auto-save (see preferecnes in setup).
+        // Waiting for auto-save (see preferences in setup).
         Job.getJobManager().join(SaveSessionJob.FAMILY, new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();
 

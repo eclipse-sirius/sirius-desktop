@@ -24,8 +24,8 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
+import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
@@ -34,8 +34,8 @@ import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckDiagramSelecte
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.swt.SWT;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
-import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditor;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefViewer;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
@@ -137,6 +137,20 @@ public class SelectAllAndDeselectionTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
+     * Ensures that the 'Select All' action selects the expected EditParts and
+     * the escape key deselects all (only DDiagramEditPart remains selected).
+     */
+    public void testSelectAllAndDeselectAll() {
+        // Wait all UI events to ensure that the tabbar is correctly refreshed.
+        SWTBotUtils.waitAllUiEvents();
+
+        editor.bot().toolbarDropDownButtonWithTooltip("Select &All").click();
+        checkSelectedEditParts(getEditPartsFromNames(PACKAGE_1_NAME, PACKAGE_2_NAME, PACKAGE_3_NAME, CLASS_1_NAME, CLASS_2_NAME, CLASS_3_NAME, CLASS_4_NAME));
+        editor.getCanvas().pressShortcut(KeyStroke.getInstance(SWT.ESC));
+        checkSelectedEditParts(Lists.newArrayList(editor.mainEditPart()));
+    }
+
+    /**
      * Ensures that container deselection works.
      */
     public void testSelectAllAndUnselectOneContainer() {
@@ -221,7 +235,8 @@ public class SelectAllAndDeselectionTest extends AbstractSiriusSwtBotGefTestCase
         final DefaultOperationHistory doh = (DefaultOperationHistory) OperationHistoryFactory.getOperationHistory();
         SWTBotGefEditPart c1Part = editor.getEditPart(CLASS_1_NAME);
 
-        // Do it once to get in a steady state, so that any lazy initialisation is done
+        // Do it once to get in a steady state, so that any lazy initialisation
+        // is done
         cycleSelection(c1Part);
         final int countBefore = getListenersCount(doh);
         for (int i = 0; i < 5; i++) {
@@ -244,7 +259,7 @@ public class SelectAllAndDeselectionTest extends AbstractSiriusSwtBotGefTestCase
 
     private void cycleSelection(SWTBotGefEditPart c1Part) {
         // Select an edit part
-        CheckSelectedCondition checkc1Selected = new CheckSelectedCondition(editor, (IGraphicalEditPart) c1Part.part());
+        CheckSelectedCondition checkc1Selected = new CheckSelectedCondition(editor, c1Part.part());
         editor.select(CLASS_1_NAME);
         bot.waitUntil(checkc1Selected);
         // Select the diagram itself

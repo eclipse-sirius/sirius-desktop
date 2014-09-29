@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.tree;
 
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITreeRepresentation;
@@ -18,8 +19,6 @@ import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.junit.Test;
-
-import org.eclipse.sirius.tests.swtbot.Activator;
 
 /**
  * 
@@ -94,7 +93,7 @@ public class NavigateInTreeRepresentationTest extends AbstractTreeSiriusSWTBotGe
         assertEquals("The tree editor was not open.", bot.activeEditor().getTitle(), ("new Tree"));
         // navigate from the context menu
         SWTBotTree select = tree.getEditorBot().tree().select("EClass1");
-        SWTBotUtils.clickContextMenu(select, "Open new Tree Creation on Class");
+        SWTBotUtils.clickContextMenu(select, "new Tree Creation on Class");
         bot.waitUntil(new DefaultCondition() {
 
             public boolean test() throws Exception {

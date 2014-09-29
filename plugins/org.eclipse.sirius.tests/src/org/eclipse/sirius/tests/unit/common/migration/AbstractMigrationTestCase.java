@@ -21,7 +21,10 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.internal.properties.WorkspaceViewerProperties;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
+import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
+import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -33,15 +36,6 @@ import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
-import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
-import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.RGBValues;
-import org.eclipse.swt.graphics.Color;
-import org.eclipse.ui.IEditorPart;
-import org.junit.After;
-
 import org.eclipse.sirius.tests.sample.migration.design.LayoutHelper;
 import org.eclipse.sirius.tests.sample.migration.design.MigrationModeler;
 import org.eclipse.sirius.tests.sample.migration.migrationmodeler.AbstractNodeRepresentation;
@@ -66,6 +60,14 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.NodeRepresenta
 import org.eclipse.sirius.tests.sample.migration.migrationmodeler.NodeStyle;
 import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Point;
 import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Representation;
+import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.ui.IEditorPart;
+import org.junit.After;
 
 /**
  * This class contains services used by the migration tests.
@@ -102,8 +104,12 @@ public abstract class AbstractMigrationTestCase extends SiriusDiagramTestCase {
         for (DRepresentation dRepresentation : getRepresentations(viewpointName)) {
             if (dRepresentation.getName().equals(diagramName) && dRepresentation instanceof DDiagram) {
                 currentdRepresentation = (DDiagram) dRepresentation;
-                DialectUIManager.INSTANCE.openEditor(session, currentdRepresentation, new NullProgressMonitor());
+                IEditorPart editorPart = DialectUIManager.INSTANCE.openEditor(session, currentdRepresentation, new NullProgressMonitor());
                 TestsUtil.synchronizationWithUIThread();
+                if (editorPart instanceof IDiagramWorkbenchPart) {
+                    ((DiagramGraphicalViewer) ((IDiagramWorkbenchPart) editorPart).getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore().setValue(WorkspaceViewerProperties.SNAPTOGRID,
+                            false);
+                }
                 break;
             }
         }

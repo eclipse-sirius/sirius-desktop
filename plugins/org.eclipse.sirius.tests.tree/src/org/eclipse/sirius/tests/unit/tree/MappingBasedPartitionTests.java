@@ -47,7 +47,7 @@ public class MappingBasedPartitionTests {
 
         IInterpreter interpreter = new AcceleoExtendedInterpreter();
 
-        ctx = new GlobalContext(accessor, interpreter);
+        ctx = new GlobalContext(accessor, interpreter, null);
 
     }
 

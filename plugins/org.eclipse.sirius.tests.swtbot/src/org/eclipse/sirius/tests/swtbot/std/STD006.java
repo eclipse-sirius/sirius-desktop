@@ -12,6 +12,7 @@ package org.eclipse.sirius.tests.swtbot.std;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
@@ -21,7 +22,6 @@ import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEdi
 import org.eclipse.sirius.ui.tools.api.Messages;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
-import org.eclipse.sirius.tests.swtbot.Activator;
 
 /**
  * Test class for STD 006.
@@ -44,7 +44,7 @@ public class STD006 extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String MODEL_PACKAGE = "RootSTDTestCase";
 
-    private static final String REPRESENTATION_PACKAGE_INSTANCE_NAME_DIGRAM = "New detail : New Package Entities";
+    private static final String REPRESENTATION_PACKAGE_INSTANCE_NAME_DIGRAM = "New Package Entities";
 
     private static final String NEW_PACKAGE_REPRESENTATION = "APackage package entities";
 
@@ -72,13 +72,24 @@ public class STD006 extends AbstractSiriusSwtBotGefTestCase {
     public void testSTD006() throws Exception {
         if (TestsUtil.shouldSkipUnreliableTests()) {
             /*
-                org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException: Could not find node with text: STD-TEST-006.ecore
-                at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNodes(SWTBotTreeItem.java:334)
-                at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNode(SWTBotTreeItem.java:308)
-                at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNode(SWTBotTreeItem.java:346)
-                at org.eclipse.sirius.tests.swtbot.support.api.business.UIProject.getUIItemFromResource(UIProject.java:152)
-                at org.eclipse.sirius.tests.swtbot.support.api.business.UIProject.selectResource(UIProject.java:122)
-                at org.eclipse.sirius.tests.swtbot.support.api.business.UIPerspective.openSessionCreationWizardFromSemanticResource(UIPerspective.java:188)
+             * org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException:
+             * Could not find node with text: STD-TEST-006.ecore at
+             * org.eclipse.swtbot
+             * .swt.finder.widgets.SWTBotTreeItem.getNodes(SWTBotTreeItem
+             * .java:334) at
+             * org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem
+             * .getNode(SWTBotTreeItem.java:308) at
+             * org.eclipse.swtbot.swt.finder
+             * .widgets.SWTBotTreeItem.getNode(SWTBotTreeItem.java:346) at
+             * org.eclipse.sirius.tests.swtbot.support.api.business.UIProject.
+             * getUIItemFromResource(UIProject.java:152) at
+             * org.eclipse.sirius.tests
+             * .swtbot.support.api.business.UIProject.selectResource
+             * (UIProject.java:122) at
+             * org.eclipse.sirius.tests.swtbot.support.api
+             * .business.UIPerspective
+             * .openSessionCreationWizardFromSemanticResource
+             * (UIPerspective.java:188)
              */
             return;
         }

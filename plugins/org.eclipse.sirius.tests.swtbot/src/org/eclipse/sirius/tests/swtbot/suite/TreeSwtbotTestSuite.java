@@ -14,10 +14,12 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
+
 import org.eclipse.sirius.tests.swtbot.tree.ConditionalTreeItemStyleDescriptionTest;
 import org.eclipse.sirius.tests.swtbot.tree.ContextMenuTreeTest;
 import org.eclipse.sirius.tests.swtbot.tree.CopyTreeRepresentationTest;
 import org.eclipse.sirius.tests.swtbot.tree.DeleteSeveralElementOnTree;
+import org.eclipse.sirius.tests.swtbot.tree.DisplayLabelOnNodeTest;
 import org.eclipse.sirius.tests.swtbot.tree.NavigateInTreeRepresentationTest;
 import org.eclipse.sirius.tests.swtbot.tree.OpenCloseCreateDeleteTreeRepresentationTest;
 import org.eclipse.sirius.tests.swtbot.tree.RefreshWithPropertiesViewTest;
@@ -65,6 +67,7 @@ public class TreeSwtbotTestSuite extends TestCase {
         suite.addTestSuite(ContextMenuTreeTest.class);
         suite.addTestSuite(TreeUIPermissionAuthorityTests.class);
         suite.addTestSuite(TreeUIRefreshTests.class);
+        suite.addTestSuite(DisplayLabelOnNodeTest.class);
         return suite;
     }
 

@@ -31,6 +31,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.Tabbar;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
@@ -41,7 +42,6 @@ import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondit
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotSplitEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefFigureCanvas;
@@ -64,8 +64,6 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.tests.swtbot.Activator;
 
 /**
  * 
@@ -97,7 +95,8 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String[] DIAGRAM_TOOLBARTOGGLEBUTTONS_TOOLTIPS = { "Activate Layouting Mode" };
 
-    private static final String[] NODE_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange Selection", "Align Left", "Font Color", "Fill &Color", "Li&ne Color", "Line Style" };
+    private static final String[] NODE_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange Selection", "Align Left", "Distribute Horizontally With Uniform Gaps", "Font Color", "Fill &Color", "Li&ne Color",
+            "Line Style" };
 
     private static final String[] NODE_TOOLBARBUTTONS_TOOLTIPS = { "Pin selected elements", "Unpin selected elements", "Copy the layout of the selected diagram elements", "Hide element",
             "Delete from Diagram", "Delete from Model", "Font", "Set style to workspace image", ResetStylePropertiesToDefaultValuesAction.ACTION_NAME,
@@ -169,11 +168,12 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
         ActivateTestTabbarExtensionPropertyTester.enableTestTabbarExtensions(true);
         selectDiagramElement0();
         selectDiagram();
-
-        doTestToolbarButtonInitialization(true);
-
-        // Reset the property tester state.
-        ActivateTestTabbarExtensionPropertyTester.enableTestTabbarExtensions(false);
+        try {
+            doTestToolbarButtonInitialization(true);
+        } finally {
+            // Reset the property tester state.
+            ActivateTestTabbarExtensionPropertyTester.enableTestTabbarExtensions(false);
+        }
     }
 
     /**
@@ -217,7 +217,7 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotTreeItem representationTreeItem = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
                 .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).getTreeItem();
         SWTBotUtils.clickContextMenu(representationTreeItem, "Copy");
-        bot.waitUntilWidgetAppears(Conditions.shellIsActive("Rename diagram"));
+        bot.waitUntilWidgetAppears(Conditions.shellIsActive("Copy representation"));
         bot.text(REPRESENTATION_INSTANCE_NAME).setText(REPRESENTATION_INSTANCE_NAME + "_Copy");
         bot.button("OK").click();
 

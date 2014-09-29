@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.perf.common;
 
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.junit.After;
@@ -20,6 +21,7 @@ import org.junit.Before;
  * test case.
  */
 public class CommonPreferencesHelper {
+    protected final IPreferenceStore store = SiriusTransPlugin.getPlugin().getPreferenceStore();
 
     protected boolean defaultIsGroupEnable;
 
@@ -41,61 +43,41 @@ public class CommonPreferencesHelper {
     public void setUp() {
 
         // store pref values
-        this.defaultIsGroupEnable = SiriusTransPlugin.getPlugin().getPreferenceStore().getDefaultBoolean(CommonPreferencesConstants.PREF_GROUP_ENABLE);
-        this.isGroupEnable = SiriusTransPlugin.getPlugin().getPreferenceStore().getBoolean(CommonPreferencesConstants.PREF_GROUP_ENABLE);
+        this.defaultIsGroupEnable = store.getDefaultBoolean(CommonPreferencesConstants.PREF_GROUP_ENABLE);
+        this.isGroupEnable = store.getBoolean(CommonPreferencesConstants.PREF_GROUP_ENABLE);
 
-        this.defaultIsGroupByContainingFeature = SiriusTransPlugin.getPlugin().getPreferenceStore().getDefaultBoolean(CommonPreferencesConstants.PREF_GROUP_BY_CONTAINING_FEATURE);
-        this.isGroupByContainingFeature = SiriusTransPlugin.getPlugin().getPreferenceStore().getBoolean(CommonPreferencesConstants.PREF_GROUP_BY_CONTAINING_FEATURE);
+        this.defaultIsGroupByContainingFeature = store.getDefaultBoolean(CommonPreferencesConstants.PREF_GROUP_BY_CONTAINING_FEATURE);
+        this.isGroupByContainingFeature = store.getBoolean(CommonPreferencesConstants.PREF_GROUP_BY_CONTAINING_FEATURE);
 
-        this.defaultGroupSize = SiriusTransPlugin.getPlugin().getPreferenceStore().getDefaultInt(CommonPreferencesConstants.PREF_GROUP_SIZE);
-        this.groupSize = SiriusTransPlugin.getPlugin().getPreferenceStore().getInt(CommonPreferencesConstants.PREF_GROUP_SIZE);
+        this.defaultGroupSize = store.getDefaultInt(CommonPreferencesConstants.PREF_GROUP_SIZE);
+        this.groupSize = store.getInt(CommonPreferencesConstants.PREF_GROUP_SIZE);
 
-        this.defaultGroupTrigger = SiriusTransPlugin.getPlugin().getPreferenceStore().getDefaultInt(CommonPreferencesConstants.PREF_GROUP_TRIGGER);
-        this.groupTrigger = SiriusTransPlugin.getPlugin().getPreferenceStore().getInt(CommonPreferencesConstants.PREF_GROUP_TRIGGER);
+        this.defaultGroupTrigger = store.getDefaultInt(CommonPreferencesConstants.PREF_GROUP_TRIGGER);
+        this.groupTrigger = store.getInt(CommonPreferencesConstants.PREF_GROUP_TRIGGER);
     }
 
     @After
     public void tearDown() {
         // Restore pref values.
-        setPrefGroupEnable(this.defaultIsGroupEnable, this.isGroupEnable);
-        setPrefGroupByContainingFeature(this.defaultIsGroupByContainingFeature, this.isGroupByContainingFeature);
-        setPrefGroupSize(this.defaultGroupSize, this.groupSize);
-        setPrefGroupTrigger(this.defaultGroupTrigger, this.groupTrigger);
+        setPrefGroupEnable(this.isGroupEnable);
+        setPrefGroupByContainingFeature(this.isGroupByContainingFeature);
+        setPrefGroupSize(this.groupSize);
+        setPrefGroupTrigger(this.groupTrigger);
     }
 
     public void setPrefGroupEnable(boolean value) {
-        setPrefGroupEnable(value, value);
-    }
-
-    public void setPrefGroupEnable(boolean defaultValue, boolean value) {
-        SiriusTransPlugin.getPlugin().getPreferenceStore().setDefault(CommonPreferencesConstants.PREF_GROUP_ENABLE, defaultValue);
-        SiriusTransPlugin.getPlugin().getPreferenceStore().setValue(CommonPreferencesConstants.PREF_GROUP_ENABLE, value);
+        store.setValue(CommonPreferencesConstants.PREF_GROUP_ENABLE, value);
     }
 
     public void setPrefGroupByContainingFeature(boolean value) {
-        setPrefGroupByContainingFeature(value, value);
-    }
-
-    public void setPrefGroupByContainingFeature(boolean defaultValue, boolean value) {
-        SiriusTransPlugin.getPlugin().getPreferenceStore().setDefault(CommonPreferencesConstants.PREF_GROUP_BY_CONTAINING_FEATURE, defaultValue);
-        SiriusTransPlugin.getPlugin().getPreferenceStore().setValue(CommonPreferencesConstants.PREF_GROUP_BY_CONTAINING_FEATURE, value);
+        store.setValue(CommonPreferencesConstants.PREF_GROUP_BY_CONTAINING_FEATURE, value);
     }
 
     public void setPrefGroupSize(int value) {
-        setPrefGroupSize(value, value);
-    }
-
-    public void setPrefGroupSize(int defaultValue, int value) {
-        SiriusTransPlugin.getPlugin().getPreferenceStore().setDefault(CommonPreferencesConstants.PREF_GROUP_SIZE, defaultValue);
-        SiriusTransPlugin.getPlugin().getPreferenceStore().setValue(CommonPreferencesConstants.PREF_GROUP_SIZE, value);
+        store.setValue(CommonPreferencesConstants.PREF_GROUP_SIZE, value);
     }
 
     public void setPrefGroupTrigger(int value) {
-        setPrefGroupTrigger(value, value);
-    }
-
-    public void setPrefGroupTrigger(int defaultValue, int value) {
-        SiriusTransPlugin.getPlugin().getPreferenceStore().setDefault(CommonPreferencesConstants.PREF_GROUP_TRIGGER, defaultValue);
-        SiriusTransPlugin.getPlugin().getPreferenceStore().setValue(CommonPreferencesConstants.PREF_GROUP_TRIGGER, value);
+        store.setValue(CommonPreferencesConstants.PREF_GROUP_TRIGGER, value);
     }
 }

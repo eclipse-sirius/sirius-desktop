@@ -3,39 +3,39 @@
   <representations xsi:type="migrationmodeler:Diagram" name="1">
     <containers id="container">
       <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@optionalLayers[name='layerOfContainerStyles']/@containerMappings[name='ContainerWithFlatContainerStyle']" displayed="false">
-        <layout x="850" y="25" width="254" height="71"/>
+        <layout x="850" y="25" width="237" height="72"/>
         <ownedStyle iconPath="/DesignerTestProject/image.bmp">
           <labelColor/>
         </ownedStyle>
       </containerRepresentations>
       <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@optionalLayers[name='layerOfContainerStyles']/@containerMappings[name='ContainerWithShapeContainerStyle']" displayed="false">
-        <layout x="855" y="270" width="271" height="71"/>
+        <layout x="855" y="270" width="248" height="72"/>
         <ownedStyle iconPath="/DesignerTestProject/image.bmp">
           <labelColor/>
         </ownedStyle>
       </containerRepresentations>
       <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@optionalLayers[name='layerOfContainerStyles']/@containerMappings[name='ContainerWithWorkspaceImageDescription']" displayed="false">
-        <layout x="1185" y="95" width="274" height="71"/>
+        <layout x="1185" y="95" width="254" height="70"/>
         <ownedStyle iconPath="/DesignerTestProject/image.bmp">
           <labelColor/>
         </ownedStyle>
       </containerRepresentations>
       <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@optionalLayers[name='layerOfContainerStyles']/@containerMappings[name='ContainerListWithFlatContainerStyle']" displayed="false">
-        <layout x="1195" y="310" width="288" height="88"/>
+        <layout x="1195" y="310" width="288" height="89"/>
         <ownedStyle labelSize="72" labelFormat="bold_italic" iconPath="/DesignerTestProject/image.bmp">
           <labelColor/>
         </ownedStyle>
       </containerRepresentations>
       <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@optionalLayers[name='layerOfContainerStyles']/@containerMappings[name='ContainerListWithShapeContainerStyle']" displayed="false">
-        <layout x="1505" y="90" width="271" height="71"/>
+        <layout x="1505" y="90" width="248" height="89"/>
         <ownedStyle iconPath="/DesignerTestProject/image.bmp">
-          <labelColor/>
+          <labelColor red="176" green="176" blue="176"/>
         </ownedStyle>
       </containerRepresentations>
       <containerRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@optionalLayers[name='layerOfContainerStyles']/@containerMappings[name='ContainerListWithWorkspaceImageDescription']" displayed="false">
-        <layout x="1520" y="260" width="267" height="69"/>
+        <layout x="1520" y="260" width="254" height="87"/>
         <ownedStyle labelSize="11" labelFormat="bold_italic" iconPath="/DesignerTestProject/image.bmp">
-          <labelColor red="0" green="0" blue="0"/>
+          <labelColor red="184" green="151" blue="192"/>
         </ownedStyle>
       </containerRepresentations>
     </containers>
@@ -91,9 +91,9 @@
     </nodes>
     <edges id="edge" source="//@representations.0/@containers.0" target="//@representations.0/@nodes.0">
       <edgeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@optionalLayers[name='layerWithEdgeStyles']/@edgeMappings[name='EdgeWithBracketStyle']" displayed="false">
-        <bendpoints x="973" y="25"/>
-        <bendpoints x="973" y="-51"/>
-        <bendpoints x="973" y="-43"/>
+        <bendpoints x="968" y="25"/>
+        <bendpoints x="968" y="-51"/>
+        <bendpoints x="968" y="-43"/>
         <bendpoints x="650" y="-43"/>
         <bendpoints x="650" y="-51"/>
         <bendpoints x="650" y="35"/>
@@ -111,10 +111,10 @@
         </ownedStyle>
       </edgeRepresentations>
       <edgeRepresentations mappingId="//@ownedViewpoints[name='migration_modeler_bis']/@ownedRepresentations[name='diagram_bis']/@optionalLayers[name='layerWithEdgeStyles']/@edgeMappings[name='EdgeWithEdgeStyle']" displayed="false">
-        <bendpoints x="969" y="94"/>
-        <bendpoints x="969" y="190"/>
-        <bendpoints x="652" y="190"/>
-        <bendpoints x="652" y="65"/>
+        <bendpoints x="966" y="95"/>
+        <bendpoints x="966" y="190"/>
+        <bendpoints x="651" y="190"/>
+        <bendpoints x="651" y="65"/>
         <ownedStyle routingStyle="Manhattan">
           <color red="136" green="136" blue="19"/>
           <beginLabelStyle labelSize="9" labelFormat="bold" iconPath="/DesignerTestProject/image.bmp">

@@ -132,6 +132,7 @@ public class ExtensionActivationOrderTest extends AbstractSiriusSwtBotGefTestCas
         UILocalSession session = designerPerspective.openSessionCreationWizardFromSemanticResource(semanticResource).fromAlreadySelectedSemanticResource().withDefaultSessionName().finish()
                 .selectNoViewpoint();
         Set<String> viewpointToSelect = Collections.singleton("Extension_A");
+
         /*
          * We can not use session.changeSiriusSelection() directly, so the
          * following code is copied and adapted from there.
@@ -152,32 +153,39 @@ public class ExtensionActivationOrderTest extends AbstractSiriusSwtBotGefTestCas
                 for (int rowPosition = 0; rowPosition < bot.table().rowCount(); rowPosition++) {
 
                     final SWTBotTableItem item = bot.table().getTableItem(rowPosition);
-                    final String text = item.getText(2);
+                    final String text = item.getText(0);
 
                     if (viewpointSelection.containsKey(text)) {
-                        bot.table().click(rowPosition, 0);
+                        item.check();
                         viewpointSelection.remove(text);
                     }
                 }
                 final SWTBotButton okButton = bot.button("OK");
 
+                /*
+                 * There is an invalid selection ("Extension_A" requires
+                 * "Base"). Check that the 'OK' button is invalid.
+                 */
                 bot.waitUntil(new DefaultCondition() {
 
                     public String getFailureMessage() {
-                        return "OK button is not enabled";
+                        return "OK button is enabled";
                     }
 
                     public boolean test() throws Exception {
-                        return okButton.isEnabled();
+                        return !okButton.isEnabled();
                     }
 
                 });
             }
         }
-        bot.button("OK").click();
-        bot.waitUntil(Conditions.shellIsActive("Invalid selection"));
-        assertTrue(bot.shell("Invalid selection").bot().label(1).getText().contains("Extension_A requires: Base"));
-        bot.shell("Invalid selection").bot().button("OK").click();
+
+        /*
+         * Check that the error message exists on the dialog. Throws a
+         * WidgetNotFoundException if the message does not exist.
+         */
+        shellSiriussSelection.bot().text(" Extension_A requires: Base");
+
         /*
          * We got the "error" message, now we complete the selection normally
          * and try to create a diagram.
@@ -186,6 +194,7 @@ public class ExtensionActivationOrderTest extends AbstractSiriusSwtBotGefTestCas
         session.changeViewpointSelection(Sets.newHashSet("Base", "Extension_A"), Collections.<String> emptySet());
         SWTBotTreeItem mainPackage = session.getSemanticResourceNode(semanticResource).getNode("package");
         UIDiagramRepresentation diagram = session.newDiagramRepresentation("new " + DIAGRAM_NAME).on(mainPackage).withDefaultName().ok();
+
         /*
          * The next line fails (with an NPE) if the bug in VP-2529 is present,
          * as the pseudo-editor which was opened shows an error message instead

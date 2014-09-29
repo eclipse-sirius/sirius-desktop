@@ -37,7 +37,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="Package" label="Package" domainClass="EPackage" reusedNodeMappings="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@nodeMappings[name='Class']">
+        <containerMappings name="Package" label="Package" semanticCandidatesExpression="feature:eSubpackages" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='DnDInterface'] //@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@toolSections.0/@ownedTools[name='DnDClass']" reusedNodeMappings="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@nodeMappings[name='Class']">
           <borderedNodeMappings name="Enum" semanticCandidatesExpression="feature:eClassifiers" domainClass="EEnum">
             <style xsi:type="style:SquareDescription" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -161,6 +161,28 @@
                   </subModelOperations>
                 </subModelOperations>
                 <subModelOperations xsi:type="tool:CreateEdgeView" mapping="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@edgeMappings[name='ESuperTypes']" containerViewExpression="[sourceView.eContainer(diagram::DDiagram)/]" sourceExpression="var:I1" targetExpression="var:I2"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DnDInterface" mappings="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@containerMappings[name='Package']/@borderedNodeMappings[name='Interface']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newSemanticContainer">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eClassifiers" valueExpression="var:element"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DnDClass" mappings="//@ownedViewpoints[name='BorderedNode']/@ownedRepresentations[name='BorderedNodeDiagram']/@defaultLayer/@nodeMappings[name='Class']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newSemanticContainer">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eClassifiers" valueExpression="var:element"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

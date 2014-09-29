@@ -220,6 +220,7 @@ public class TreeItemCreationToolsTest extends TreeCommonTest implements TreeEco
 
         try {
             testCreationToolOnRepresentation(treeDescription, newTree, tree);
+
             // Undo creation.
             testUndo(newTree, tree);
             // Redo creation.
@@ -250,6 +251,9 @@ public class TreeItemCreationToolsTest extends TreeCommonTest implements TreeEco
     private void testRedo(DTree newTree, Tree tree) throws EvaluationException {
         String currentHtml;
         int instanceCount;
+
+        // first redo for the full refresh
+        applyRedo();
         applyRedo();
         TestsUtil.synchronizationWithUIThread();
         instanceCount = interpreter.evaluateInteger(semanticModel, REQUEST).intValue();
@@ -273,6 +277,8 @@ public class TreeItemCreationToolsTest extends TreeCommonTest implements TreeEco
     private void testUndo(DTree newTree, Tree tree) throws EvaluationException {
         String currentHtml;
         int instanceCount;
+        // first undo for the full refresh
+        applyUndo();
         applyUndo();
 
         TestsUtil.synchronizationWithUIThread();
@@ -318,6 +324,7 @@ public class TreeItemCreationToolsTest extends TreeCommonTest implements TreeEco
         // Check there is an element more
         Assert.assertEquals("We have 10 elements in ecore model, so we should have 9 elements in tree.", ELEMENTS_NUMBER_IN_TREE + 1, newTree.getOwnedTreeItems().size());
 
+        refresh(newTree, true);
         currentHtml = TreeUIHelper.toContentHTMl(tree);
 
         // Check that the creation is effective visually
@@ -358,11 +365,14 @@ public class TreeItemCreationToolsTest extends TreeCommonTest implements TreeEco
         TreeUIHelper.addLineToTree(expected, String.valueOf("Package 1"));
         TreeUIHelper.addLineToTree(expected, String.valueOf("EClass 1 P1"));
         TreeUIHelper.addLineToTree(expected, String.valueOf("EClass 1 P1 Categorie"));
+        TreeUIHelper.addLineToTree(expected, String.valueOf("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
         TreeUIHelper.addLineToTree(expected, String.valueOf("EClass 2 P2"));
         TreeUIHelper.addLineToTree(expected, String.valueOf("EClass 2 P2 Categorie"));
         TreeUIHelper.addLineToTree(expected, String.valueOf("sous package 1"));
         TreeUIHelper.addLineToTree(expected, String.valueOf("EClass 1 P11"));
+        TreeUIHelper.addLineToTree(expected, String.valueOf("EClass 1 P11 Categorie"));
         TreeUIHelper.addLineToTree(expected, String.valueOf("EClass 2 P12"));
+        TreeUIHelper.addLineToTree(expected, String.valueOf("EClass 2 P12 Categorie"));
         TreeUIHelper.addLineToTree(expected, String.valueOf("Package 2"));
         TreeUIHelper.addLineToTree(expected, String.valueOf("EClass 1 P2"));
         TreeUIHelper.addLineToTree(expected, String.valueOf("EClass 1 P2 Categorie"));

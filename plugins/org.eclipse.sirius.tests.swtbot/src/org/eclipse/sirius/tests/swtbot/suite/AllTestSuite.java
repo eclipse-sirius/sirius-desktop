@@ -24,6 +24,7 @@ import org.eclipse.sirius.tests.swtbot.clipboard.CustomClipboardSupportTest;
 import org.eclipse.sirius.tests.swtbot.clipboard.DisabledSiriusClipboardSupportTest;
 import org.eclipse.sirius.tests.swtbot.clipboard.GenericClipboardSupportTest;
 import org.eclipse.sirius.tests.swtbot.clipboard.MultiSessionCopyPasteTest;
+import org.eclipse.sirius.tests.swtbot.crossTable.CrossTableIntersectionTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.CompletionProposalInVSMTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.ContentAssistTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.CustomizationPropertySectionsTests;
@@ -44,6 +45,7 @@ import org.eclipse.sirius.tests.swtbot.modelexplorer.ContextualMenuTest;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.ModelExplorerFilterTests;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.ProjectDependenciesTest;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.ProjectsConcurrentCloseTest;
+import org.eclipse.sirius.tests.swtbot.tabbar.NotInvisibleTabBarTest;
 import org.eclipse.sirius.tests.swtbot.tabbar.TabBarTest;
 import org.eclipse.sirius.tests.swtbot.table.SetPropertyOfTableTreeByPropertiesViewTest;
 import org.eclipse.sirius.tests.swtbot.uml.CopyPasteLayoutOfLabelOfBorderedNodeTest;
@@ -90,6 +92,8 @@ public class AllTestSuite extends TestCase {
         suite.addTest(UMLSwtbotTestSuite.suite());
         suite.addTest(TableSwtbotTestSuite.suite());
 
+        suite.addTestSuite(CrossTableIntersectionTest.class);
+
         // TODO MCH : Fix this test. This test is deactivate because the
         // build
         // fails on Hudson (Timeout Exception)
@@ -104,6 +108,8 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(EdgeStabilityOnDragAndDropTest.class);
         suite.addTestSuite(EdgeLabelStabilityTest.class);
         suite.addTestSuite(EdgeStabilityOnLayerManagementTest.class);
+        suite.addTestSuite(CenteredEdgesTest.class);
+        suite.addTestSuite(RemoveEdgeBendpointsTest.class);
         suite.addTestSuite(EditorSavingTest.class);
         suite.addTestSuite(EmptyPropertyViewAfterDeletionTest.class);
         suite.addTestSuite(HideRevealDiagramElementsLabelsTest.class);
@@ -125,7 +131,8 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(PinnedElementsTest.class);
         suite.addTestSuite(PinnedNotesTest.class);
         suite.addTestSuite(LayoutingModeTest.class);
-        suite.addTestSuite(PortPositionStabilityTest.class);
+        suite.addTestSuite(ChildrenPositionStabilityAfterParentResizeTest.class);
+        suite.addTestSuite(ShapeResizingEdgePositionStabilityTests.class);
         suite.addTestSuite(PortsOnNodePositionStabilityTest.class);
         suite.addTestSuite(PortLocationAfterDragAndDropTest.class);
         suite.addTestSuite(PortLocationAfterDragAndDropOnDiagramTest.class);
@@ -188,6 +195,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ExportDiagramsAsImagesAndHtmlTest.class);
         suite.addTestSuite(ExportDiagramAsImageWhenManyRepresentationsHaveSameNameTest.class);
         suite.addTestSuite(TabBarTest.class);
+        suite.addTestSuite(NotInvisibleTabBarTest.class);
         suite.addTestSuite(ArrangeSelectionOnBreakdownDiagramTest.class);
         suite.addTestSuite(EdgeCreationTest.class);
         suite.addTestSuite(RoutingStyleTest.class);

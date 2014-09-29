@@ -44,6 +44,7 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.diagram.ui.business.internal.query.CustomizableQuery;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -57,8 +58,6 @@ import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.ui.IEditorPart;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Test the style customization features with conditional style description.
@@ -127,6 +126,7 @@ public class RefreshWithCustomizedStyleTests extends SiriusDiagramTestCase {
         styleFeatureToDescriptionFeatureMap.put(DiagramPackage.Literals.EDGE_STYLE__BEGIN_LABEL_STYLE, StylePackage.Literals.EDGE_STYLE_DESCRIPTION__BEGIN_LABEL_STYLE_DESCRIPTION);
         styleFeatureToDescriptionFeatureMap.put(DiagramPackage.Literals.EDGE_STYLE__CENTER_LABEL_STYLE, StylePackage.Literals.EDGE_STYLE_DESCRIPTION__CENTER_LABEL_STYLE_DESCRIPTION);
         styleFeatureToDescriptionFeatureMap.put(DiagramPackage.Literals.EDGE_STYLE__END_LABEL_STYLE, StylePackage.Literals.EDGE_STYLE_DESCRIPTION__END_LABEL_STYLE_DESCRIPTION);
+        styleFeatureToDescriptionFeatureMap.put(DiagramPackage.Literals.EDGE_STYLE__CENTERED, StylePackage.Literals.EDGE_STYLE_DESCRIPTION__ENDS_CENTERING);
 
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID + PATH + MODELER_RESOURCE_NAME, "/" + TEMPORARY_PROJECT_NAME + "/" + MODELER_RESOURCE_NAME);
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID + PATH + SEMANTIC_RESOURCE_NAME, "/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_NAME);
@@ -558,7 +558,7 @@ public class RefreshWithCustomizedStyleTests extends SiriusDiagramTestCase {
                 EEnum eEnum = (EEnum) feature.getEType();
                 Enumerator enumerator = (Enumerator) currentValue;
                 int newEnumeratorIndex = (eEnum.getELiterals().indexOf(eEnum.getEEnumLiteral(enumerator.getName())) + 1) % eEnum.getELiterals().size();
-                Enumerator newEnumerator = eEnum.getELiterals().get(newEnumeratorIndex);
+                Enumerator newEnumerator = eEnum.getELiterals().get(newEnumeratorIndex).getInstance();
                 Command customizeStyleCmd = SetCommand.create(domain, style, feature, newEnumerator);
                 domain.getCommandStack().execute(customizeStyleCmd);
             } else if (feature.getEType() == EcorePackage.Literals.EBOOLEAN) {

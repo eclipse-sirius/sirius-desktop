@@ -11,15 +11,20 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.editparts.LayerManager;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoration;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
@@ -63,8 +68,6 @@ public class EmptyPropertyViewAfterDeletionTest extends AbstractSiriusSwtBotGefT
 
     private SWTBotGefEditPart edgeBot;
 
-    private int nbStatusInErrorLogBefore;
-
     /**
      * This test must be done in AUTO_REFRESH mode to false.
      * 
@@ -98,8 +101,6 @@ public class EmptyPropertyViewAfterDeletionTest extends AbstractSiriusSwtBotGefT
         node1Bot = editor.getEditPart("Node1").parent();
         node2Bot = editor.getEditPart("Node2").parent();
         edgeBot = editor.getEditPart("node2").parent();
-
-        nbStatusInErrorLogBefore = getNbStatusInErrorLog();
     }
 
     private void initEditor() {
@@ -121,8 +122,10 @@ public class EmptyPropertyViewAfterDeletionTest extends AbstractSiriusSwtBotGefT
         // Eclipse 4.x setFocus
         editor.click(0, 0);
 
+        ICondition checkSelected = new CheckSelectedCondition(editor, node1Bot.part());
         node1Bot.select();
-        deleteSelectedElement();
+        bot.waitUntil(checkSelected);
+        deleteFromOutside((IDiagramElementEditPart) node1Bot.part());
 
         Assert.assertEquals(2, getRedCrossDecoratorNumbers());
 
@@ -148,7 +151,7 @@ public class EmptyPropertyViewAfterDeletionTest extends AbstractSiriusSwtBotGefT
         checkEmptyPropertyTabs();
 
         // Undo
-        undo("Delete");
+        undo();
 
         Assert.assertEquals(0, getRedCrossDecoratorNumbers());
 
@@ -168,7 +171,7 @@ public class EmptyPropertyViewAfterDeletionTest extends AbstractSiriusSwtBotGefT
         // Delete when VP-2014 will be resolved
         setErrorCatchActive(false);
         // Redo
-        redo("Delete");
+        redo();
 
         // Decomment when VP-2014 will be resolved
         // Assert.assertEquals(2, getRedCrossDecoratorNumbers());
@@ -204,7 +207,7 @@ public class EmptyPropertyViewAfterDeletionTest extends AbstractSiriusSwtBotGefT
         ICondition checkSelected = new CheckSelectedCondition(editor, edgeBot.part());
         edgeBot.select();
         bot.waitUntil(checkSelected);
-        deleteSelectedElement();
+        deleteFromOutside((IDiagramElementEditPart) edgeBot.part());
 
         Assert.assertEquals(1, getRedCrossDecoratorNumbers());
 
@@ -273,6 +276,18 @@ public class EmptyPropertyViewAfterDeletionTest extends AbstractSiriusSwtBotGefT
         // Checks that not new Status has appeared in error log
         // Assert.assertEquals(nbStatusInErrorLogBefore,
         // getNbStatusInErrorLog());
+    }
+
+    /**
+     * Specific delete, made outside of the editor to get the semantic
+     * decorators.
+     */
+    private void deleteFromOutside(IDiagramElementEditPart part) {
+        EObject semElt = part.resolveTargetSemanticElement();
+        TransactionalEditingDomain domain = localSession.getOpenedSession().getTransactionalEditingDomain();
+        domain.getCommandStack().execute(RemoveCommand.create(domain, semElt));
+
+        SWTBotUtils.waitAllUiEvents();
     }
 
     /**

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_2OqMQCejEeS9JNoyKPpNjA" selectedViews="_9vgukCejEeS9JNoyKPpNjA" version="8.1.1">
+  <models xmi:type="ecore:EPackage" href="RepairWithMappingImport.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_9vgukCejEeS9JNoyKPpNjA" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_OB9DcCiCEeSCcbOeLbNOyw" name="new Diagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_OB9qgCiCEeSCcbOeLbNOyw" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_OB9qgSiCEeSCcbOeLbNOyw" type="Sirius" element="_OB9DcCiCEeSCcbOeLbNOyw" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_OB9qgyiCEeSCcbOeLbNOyw" type="2001" element="_dbqi8CiDEeSA7sM04Is-fw">
+            <children xmi:type="notation:Node" xmi:id="_OB-RkCiCEeSCcbOeLbNOyw" visible="false" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_OB-RkSiCEeSCcbOeLbNOyw" x="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_OCBU4CiCEeSCcbOeLbNOyw" type="3004" element="_dbxQoCiDEeSA7sM04Is-fw">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_OCBU4SiCEeSCcbOeLbNOyw" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OCBU4iiCEeSCcbOeLbNOyw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_OB9qhCiCEeSCcbOeLbNOyw" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OB9qhSiCEeSCcbOeLbNOyw" x="220" y="140" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_OCAGwCiCEeSCcbOeLbNOyw" type="2001" element="_dbyewSiDEeSA7sM04Is-fw">
+            <children xmi:type="notation:Node" xmi:id="_OCAt0CiCEeSCcbOeLbNOyw" visible="false" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_OCAt0SiCEeSCcbOeLbNOyw" x="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_OCBU4yiCEeSCcbOeLbNOyw" type="3004" element="_dbzF0CiDEeSA7sM04Is-fw">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_OCBU5CiCEeSCcbOeLbNOyw" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OCBU5SiCEeSCcbOeLbNOyw"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_OCAGwSiCEeSCcbOeLbNOyw" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OCAGwiiCEeSCcbOeLbNOyw" x="30" y="140" width="30" height="30"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_OB9qgiiCEeSCcbOeLbNOyw"/>
+          <edges xmi:type="notation:Edge" xmi:id="_dcxWMCiDEeSA7sM04Is-fw" type="4001" element="_dcAhMCiDEeSA7sM04Is-fw" source="_OB9qgyiCEeSCcbOeLbNOyw" target="_OCAGwCiCEeSCcbOeLbNOyw">
+            <children xmi:type="notation:Node" xmi:id="_dc7HMCiDEeSA7sM04Is-fw" type="6001">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dc7HMSiDEeSA7sM04Is-fw" y="-10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_dc9jcCiDEeSA7sM04Is-fw" type="6002">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dc9jcSiDEeSA7sM04Is-fw" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_dc-KgCiDEeSA7sM04Is-fw" type="6003">
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dc-KgSiDEeSA7sM04Is-fw" y="10"/>
+            </children>
+            <styles xmi:type="notation:ConnectorStyle" xmi:id="_dcxWMSiDEeSA7sM04Is-fw"/>
+            <styles xmi:type="notation:FontStyle" xmi:id="_dcxWMiiDEeSA7sM04Is-fw" fontName="Segoe UI" fontHeight="8"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_dcxWMyiDEeSA7sM04Is-fw" points="[-7, 18, 183, 18]$[-7, 58, 183, 58]$[-190, -62, 0, -62]$[-190, -12, 0, -12]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ddcEkCiDEeSA7sM04Is-fw" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_ddcEkSiDEeSA7sM04Is-fw" id="(0.5,0.5)"/>
+          </edges>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_dbqi8CiDEeSA7sM04Is-fw" name="E1" outgoingEdges="_dcAhMCiDEeSA7sM04Is-fw" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="RepairWithMappingImport.ecore#//E1"/>
+        <semanticElements xmi:type="ecore:EClass" href="RepairWithMappingImport.ecore#//E1"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_dbyewCiDEeSA7sM04Is-fw"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_dbxQoCiDEeSA7sM04Is-fw" showIcon="false" hideLabelByDefault="true">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_dbxQoSiDEeSA7sM04Is-fw"/>
+          <description xmi:type="style:BundledImageDescription" href="RepairWithMappingImport.odesign#//@ownedViewpoints[name='RectilinearEdge']/@ownedRepresentations[name='Diagram']/@defaultLayer/@nodeMappings[name='Class']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_dbxQoiiDEeSA7sM04Is-fw"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_OB9DdiiCEeSCcbOeLbNOyw" red="252" green="175" blue="62"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="RepairWithMappingImport.odesign#//@ownedViewpoints[name='RectilinearEdge']/@ownedRepresentations[name='Diagram']/@defaultLayer/@nodeMappings[name='Class']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_dbyewSiDEeSA7sM04Is-fw" name="E2" incomingEdges="_dcAhMCiDEeSA7sM04Is-fw" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="RepairWithMappingImport.ecore#//E2"/>
+        <semanticElements xmi:type="ecore:EClass" href="RepairWithMappingImport.ecore#//E2"/>
+        <graphicalFilters xmi:type="diagram:HideLabelFilter" xmi:id="_dbzs4CiDEeSA7sM04Is-fw"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_dbzF0CiDEeSA7sM04Is-fw" showIcon="false" hideLabelByDefault="true">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_dbzF0SiDEeSA7sM04Is-fw"/>
+          <description xmi:type="style:BundledImageDescription" href="RepairWithMappingImport.odesign#//@ownedViewpoints[name='RectilinearEdge']/@ownedRepresentations[name='Diagram']/@defaultLayer/@nodeMappings[name='Class']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_dbzF0iiDEeSA7sM04Is-fw"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_OB9DfCiCEeSCcbOeLbNOyw" red="252" green="175" blue="62"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="RepairWithMappingImport.odesign#//@ownedViewpoints[name='RectilinearEdge']/@ownedRepresentations[name='Diagram']/@defaultLayer/@nodeMappings[name='Class']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_dcAhMCiDEeSA7sM04Is-fw" name="ref1" sourceNode="_dbqi8CiDEeSA7sM04Is-fw" targetNode="_dbyewSiDEeSA7sM04Is-fw">
+        <target xmi:type="ecore:EReference" href="RepairWithMappingImport.ecore#//E1/ref1"/>
+        <semanticElements xmi:type="ecore:EReference" href="RepairWithMappingImport.ecore#//E1/ref1"/>
+        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_dcAhMSiDEeSA7sM04Is-fw">
+          <description xmi:type="style:EdgeStyleDescription" href="RepairWithMappingImport.odesign#//@ownedViewpoints[name='RectilinearEdge']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappings[name='Reference']/@style"/>
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_dcAhMiiDEeSA7sM04Is-fw" red="136" green="136" blue="136"/>
+          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_dcAhMyiDEeSA7sM04Is-fw">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_dcAhNCiDEeSA7sM04Is-fw"/>
+          </centerLabelStyle>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:EdgeMappingImport" href="RepairWithMappingImport.odesign#//@ownedViewpoints[name='RectilinearEdge']/@ownedRepresentations[name='Diagram']/@defaultLayer/@edgeMappingImports[name='ReferenceImport']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="RepairWithMappingImport.odesign#//@ownedViewpoints[name='RectilinearEdge']/@ownedRepresentations[name='Diagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_OB9DgiiCEeSCcbOeLbNOyw"/>
+      <activatedLayers xmi:type="description_1:Layer" href="RepairWithMappingImport.odesign#//@ownedViewpoints[name='RectilinearEdge']/@ownedRepresentations[name='Diagram']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="RepairWithMappingImport.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="RepairWithMappingImport.odesign#//@ownedViewpoints[name='RectilinearEdge']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

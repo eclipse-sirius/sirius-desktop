@@ -80,8 +80,8 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
 
     static {
         ArrayList<Point> pointsC3_C1 = new ArrayList<Point>();
-        pointsC3_C1.add(new Point(121, 108));
-        pointsC3_C1.add(new Point(635, 108));
+        pointsC3_C1.add(new Point(121, 100));
+        pointsC3_C1.add(new Point(635, 100));
         pointsC3_C1.add(new Point(635, 358));
         // pointsC3_C1.add(new Point(634, 358));
         CONNECTION_EDITPART_POINTS.put("C3_C1", pointsC3_C1);
@@ -92,10 +92,10 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
         pointsC3_C2.add(new Point(524, 334));
         CONNECTION_EDITPART_POINTS.put("C3_C2", pointsC3_C2);
         ArrayList<Point> pointsC2_C1 = new ArrayList<Point>();
-        pointsC2_C1.add(new Point(534, 358));
-        pointsC2_C1.add(new Point(534, 396));
-        pointsC2_C1.add(new Point(628, 396));
-        pointsC2_C1.add(new Point(628, 388));
+        pointsC2_C1.add(new Point(534, 328));
+        pointsC2_C1.add(new Point(534, 238));
+        pointsC2_C1.add(new Point(628, 238));
+        pointsC2_C1.add(new Point(628, 358));
         CONNECTION_EDITPART_POINTS.put("C2_C1", pointsC2_C1);
     }
 
