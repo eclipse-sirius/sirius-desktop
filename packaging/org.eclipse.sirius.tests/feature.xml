@@ -90,7 +90,7 @@ modelers, using JUnit or SWTbot. Install this if you want to write automated tes
            version="0.0.0"
            unpack="false"/>
 
-   <plugin id="org.eclipse.sirius.tests"
+   <plugin id="org.eclipse.sirius.tests.junit"
            download-size="0"
            install-size="0"
            version="0.0.0"

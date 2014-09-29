@@ -70,7 +70,7 @@
     <module>../../plugins/org.eclipse.sirius.tests.sample.docbook.design</module>
     <module>../../plugins/org.eclipse.sirius.tests.sample.migration</module>
     <module>../../plugins/org.eclipse.sirius.tests.sample.migration.design</module>
-    <module>../../plugins/org.eclipse.sirius.tests</module>
+    <module>../../plugins/org.eclipse.sirius.tests.junit</module>
     <module>../../plugins/org.eclipse.sirius.tests.tree</module>
     <module>../../plugins/org.eclipse.sirius.tests.swtbot</module>
     <!-- features -->
