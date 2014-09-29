@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_tests_kepler" sequenceNumber="1411724014">
+<target name="sirius_tests_kepler" sequenceNumber="1412000633">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.acceleo.doc.feature.group" version="3.4.1.201309031307"/>
@@ -47,6 +47,26 @@
       <repository id="Orbit" location="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.sirius.query.legacy.feature.feature.group" version="0.0.0"/>
+      <repository id="Sirius-Legacy" location="http://download.eclipse.org/sirius/updates/legacy/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.sirius.doc.feature.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sirius.runtime.acceleo.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sirius.runtime.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sirius.runtime.ide.eef.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sirius.runtime.ide.ui.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sirius.runtime.ide.xtext.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sirius.runtime.ocl.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sirius.samples.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sirius.specifier.ide.ui.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sirius.tests.support.feature.group" version="0.0.0"/>
+      <repository id="Sirius4Tests" location="http://download.eclipse.org/sirius/updates/nightly/latest/kepler"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.uml2.sdk.feature.group" version="4.1.2.v20140202-2055"/>
       <unit id="com.ibm.icu" version="50.1.1.v201304230130"/>
       <unit id="org.eclipse.draw2d.sdk.feature.group" version="3.9.1.201308190730"/>
       <unit id="org.eclipse.emf.common.feature.group" version="2.9.2.v20131212-0545"/>
@@ -68,25 +88,6 @@
       <unit id="org.eclipse.platform.feature.group" version="4.3.2.v20140221-1852"/>
       <unit id="org.eclipse.sdk.feature.group" version="4.3.2.v20140221-1852"/>
       <repository id="Eclipse-Kepler" location="http://download.eclipse.org/releases/kepler"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.sirius.query.legacy.feature.feature.group" version="0.0.0"/>
-      <repository id="Sirius-Legacy" location="http://download.eclipse.org/sirius/updates/legacy/"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.sirius.doc.feature.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.sirius.runtime.acceleo.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.sirius.runtime.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.sirius.runtime.ide.eef.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.sirius.runtime.ide.ui.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.sirius.runtime.ide.xtext.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.sirius.runtime.ocl.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.sirius.samples.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.sirius.specifier.ide.ui.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.sirius.tests.support.feature.group" version="0.0.0"/>
-      <repository id="Sirius4Tests" location="http://download.eclipse.org/sirius/updates/nightly/latest/kepler"/>
     </location>
   </locations>
 </target>

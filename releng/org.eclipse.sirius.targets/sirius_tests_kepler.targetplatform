@@ -19,3 +19,7 @@ location Sirius4Tests "http://download.eclipse.org/sirius/updates/nightly/latest
         org.eclipse.sirius.specifier.ide.ui.feature.group lazy
         org.eclipse.sirius.tests.support.feature.group lazy
 }
+
+location Eclipse-Kepler "http://download.eclipse.org/releases/kepler" {
+	org.eclipse.uml2.sdk.feature.group [4.1.1,4.2.0)
+}
