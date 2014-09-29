@@ -4,20 +4,19 @@
       Sirius Tests
    </description>
    <feature id="org.eclipse.sirius.tests" version="0.0.0">
-      <category name="Sirius.SDK"/>
+      <category name="Sirius.Tests"/>
    </feature>
    <feature id="org.eclipse.sirius.tests.source" version="0.0.0">
-      <category name="Sirius.SDK"/>
+      <category name="Sirius.Tests.Source"/>
    </feature>
-   <category-def name="Sirius" label="Sirius">
+   <category-def name="Sirius.Tests" label="Sirius Automated Tests">
       <description>
-         The Sirius Modeling Platform
+         Automated Tests for the Sirius Modeling Platform
       </description>
    </category-def>
-   <category-def name="Sirius.SDK" label="Sirius SDK">
+   <category-def name="Sirius.Tests.Source" label="Sirius Automated Tests (Sources)">
       <description>
-         The Sirius Modeling Platform SDK
+         Automated Tests for the Sirius Modeling Platform, with Sources
       </description>
    </category-def>
-   <category-def name="Sirius.Dependencies" label="Sirius Dependencies"/>
 </site>
