@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2007, 2013 THALES GLOBAL SERVICES
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Obeo - Initial API and implementation
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.eclipse.sirius</groupId>
+    <artifactId>sirius-tests-parent</artifactId>
+    <version>2.0.0-SNAPSHOT</version>
+    <relativePath>../../packaging/org.eclipse.sirius.tests.parent</relativePath>
+  </parent>
+
+  <artifactId>org.eclipse.sirius.tests.tree</artifactId>
+  <packaging>eclipse-test-plugin</packaging>
+  <version>2.0.0-SNAPSHOT</version>
+
+  <build>
+    <plugins>
+      <!-- Compile Acceleo3 modules -->
+      <plugin>
+        <groupId>org.eclipse.acceleo</groupId>
+        <artifactId>maven</artifactId>
+        <version>3.2.1</version>
+        <executions>
+          <execution>
+            <phase>compile</phase>
+            <goals>
+              <goal>acceleo-compile</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <skipTests>${tests.junit.skip}</skipTests>
+          <useBinaryResources>false</useBinaryResources>
+          <usePlatformResourcePath>true</usePlatformResourcePath>
+          <acceleoProject>
+            <root>${project.basedir}</root>
+            <entries>
+              <entry>
+                <input>src</input>
+                <output>target/classes</output>
+              </entry>
+            </entries>
+          </acceleoProject>
+          <packagesToRegister>
+            <packageToRegister>org.eclipse.emf.ecore.EcorePackage</packageToRegister>
+          </packagesToRegister>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-surefire-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <configuration>
+          <systemProperties>
+            <org.eclipse.sirius.tests.skipLongTests>${tests.skipLongTests}</org.eclipse.sirius.tests.skipLongTests>
+            <org.eclipse.sirius.tests.skipUnreliableTests>${tests.skipUnreliableTests}</org.eclipse.sirius.tests.skipUnreliableTests>
+          </systemProperties>
+          <skipTests>${tests.junit.skip}</skipTests>
+          <includes>
+            <include>${tests.junit.include}</include>
+          </includes>
+          <useUIHarness>true</useUIHarness>
+          <useUIThread>true</useUIThread>
+          <argLine>${tests.vmargs}</argLine>
+          <testFailureIgnore>true</testFailureIgnore>
+          <forkedProcessTimeoutInSeconds>${tests.timeout}</forkedProcessTimeoutInSeconds>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

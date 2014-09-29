@@ -4,13 +4,14 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.tests;singleton:=true
 Bundle-Version: 1.1.0.qualifier
 Require-Bundle: org.eclipse.sirius.tests.sample.benchmark,
+ org.eclipse.equinox.event,
  org.eclipse.sirius.tests.sample.docbook,
  org.eclipse.sirius.common,
  org.eclipse.sirius.common.ocl,
  org.eclipse.sirius.common.ui,
  org.eclipse.sirius,
  org.eclipse.sirius.diagram,
- org.eclipse.sirius.tests.support,
+ org.eclipse.sirius.tests.junit.support,
  org.eclipse.sirius.ecore.extender,
  org.eclipse.core.resources,
  org.eclipse.core.commands,

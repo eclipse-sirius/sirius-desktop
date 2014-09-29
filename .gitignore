@@ -8,3 +8,7 @@ class
 _database
 collab
 build.acceleo
+debug.log
+plugins/org.eclipse.sirius.tests.swtbot/screenshots
+plugins/org.eclipse.sirius.tests/test.aird
+plugins/org.eclipse.sirius.tests/test.ecore

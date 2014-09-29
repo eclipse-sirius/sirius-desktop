@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright (c) 2007, 2013 THALES GLOBAL SERVICES All rights reserved. This program and the accompanying materials are made available under the terms 
-  of the Eclipse Public License v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html Contributors: Obeo 
+<!-- Copyright (c) 2007, 2013 THALES GLOBAL SERVICES All rights reserved. This program and the accompanying materials are made available under the terms
+  of the Eclipse Public License v1.0 which accompanies this distribution, and is available at http://www.eclipse.org/legal/epl-v10.html Contributors: Obeo
   - Initial API and implementation -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
@@ -23,6 +23,41 @@
 
   <name>Sirius Tests Parent</name>
 
+  <!--Add specific repositories, pluginRepositories and dependencies for Acceleo3 compilation. See http://wiki.eclipse.org/Acceleo/Maven for more details. -->
+  <repositories>
+    <repository>
+      <id>Indigo Release</id>
+      <url>http://www.obeo.fr/download/acceleo/maven/releases/indigo</url>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>Indigo Release</id>
+      <url>http://www.obeo.fr/download/acceleo/maven/releases/indigo</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.eclipse.acceleo</groupId>
+      <artifactId>maven</artifactId>
+      <version>3.2.1</version>
+    </dependency>
+  </dependencies>
+
+  <properties>
+    <tests.skipLongTests>false</tests.skipLongTests>
+    <tests.skipUnreliableTests>false</tests.skipUnreliableTests>
+    <tests.timeout>0</tests.timeout>
+    <tests.vmargs.mac />
+    <tests.junit.skip>true</tests.junit.skip>
+    <tests.swtbot.skip>true</tests.swtbot.skip>
+    <tests.junit.include />
+    <tests.swtbot.include />
+    <tests.swtbot-sequence.include />
+  </properties>
+
   <modules>
     <!-- Test metamodels and modelers -->
     <module>../../plugins/org.eclipse.sirius.sample.ecore.design</module>
@@ -35,8 +70,11 @@
     <module>../../plugins/org.eclipse.sirius.tests.sample.docbook.design</module>
     <module>../../plugins/org.eclipse.sirius.tests.sample.migration</module>
     <module>../../plugins/org.eclipse.sirius.tests.sample.migration.design</module>
+    <module>../../plugins/org.eclipse.sirius.tests</module>
+    <module>../../plugins/org.eclipse.sirius.tests.tree</module>
+    <module>../../plugins/org.eclipse.sirius.tests.swtbot</module>
     <!-- features -->
-     <module>../../packaging/org.eclipse.sirius.tests</module>
+    <module>../../packaging/org.eclipse.sirius.tests</module>
 
     <!-- update sites -->
     <module>../../packaging/org.eclipse.sirius.tests.update</module>
@@ -65,6 +103,64 @@
         </configuration>
       </plugin>
     </plugins>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.eclipse.acceleo</groupId>
+          <artifactId>maven</artifactId>
+          <version>3.2.1</version>
+          <executions>
+            <execution>
+              <id>acceleo-compile</id>
+              <phase>compile</phase>
+              <goals>
+                <goal>acceleo-compile</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
   </build>
-  
+
+  <profiles>
+    <profile>
+      <id>junit</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <tests.junit.skip>false</tests.junit.skip>
+        <tests.timeout>${tests.timeout.junit}</tests.timeout>
+        <tests.junit.include>%regex[org/eclipse/sirius/tests/suite(/tree)?/AllSiriusTestSuite\.class]</tests.junit.include>
+        <tests.vmargs>${tests.vmargs.mac} -Xmx1024m -XX:MaxPermSize=256m</tests.vmargs>
+      </properties>
+    </profile>
+    <profile>
+      <id>swtbot</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <tests.swtbot.skip>false</tests.swtbot.skip>
+        <tests.timeout>${tests.timeout.swtbot}</tests.timeout>
+        <tests.swtbot.include>org/eclipse/sirius/tests/swtbot/suite/AllTestSuite.class</tests.swtbot.include>
+        <tests.vmargs>${tests.vmargs.mac} -Xmx2048m -XX:MaxPermSize=256m</tests.vmargs>
+      </properties>
+    </profile>
+    <profile>
+      <id>swtbot-sequence</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <tests.swtbot.skip>false</tests.swtbot.skip>
+        <tests.timeout>${tests.timeout.swtbot-sequence}</tests.timeout>
+        <tests.swtbot-sequence.include>org/eclipse/sirius/tests/swtbot/suite/SequenceSwtBotTestSuite.class</tests.swtbot-sequence.include>
+        <tests.vmargs>${tests.vmargs.mac} -Xmx2048m -XX:MaxPermSize=256m</tests.vmargs>
+      </properties>
+    </profile>
+  </profiles>
+
 </project>

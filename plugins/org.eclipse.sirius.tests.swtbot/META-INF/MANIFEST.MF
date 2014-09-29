@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.tests.swtbot;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 2.0.0.qualifier
 Bundle-Activator: org.eclipse.sirius.tests.swtbot.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ui.ide,
@@ -17,7 +17,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.sirius,
  org.eclipse.sirius.ui,
  org.eclipse.gef,
- org.eclipse.sirius.tests.support,
+ org.eclipse.sirius.tests.junit.support,
  org.eclipse.sirius.tests,
  org.eclipse.gmf.runtime.draw2d.ui,
  org.eclipse.sirius.diagram,
