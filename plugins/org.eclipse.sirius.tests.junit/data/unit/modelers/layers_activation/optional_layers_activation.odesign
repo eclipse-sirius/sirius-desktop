@@ -57,12 +57,12 @@
     </ownedRepresentations>
   </ownedViewpoints>
   <ownedViewpoints name="extension and not(active)" modelFileExtension="ecore">
-    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Diagram extension with optional layer inactive by default" viewpointURI="viewpoint:/org.eclipse.sirius.tests/init and not(active)" representationName="Diagram: initialized, optional layer inactive by default">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Diagram extension with optional layer inactive by default" viewpointURI="viewpoint:/org.eclipse.sirius.tests.junit/init and not(active)" representationName="Diagram: initialized, optional layer inactive by default">
       <layers name="Contributed optional layer inactive by default"/>
     </ownedRepresentationExtensions>
   </ownedViewpoints>
   <ownedViewpoints name="extension and active" modelFileExtension="ecore">
-    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Diagram extension with optional layer active by default" viewpointURI="viewpoint:/org.eclipse.sirius.tests/init and not(active)" representationName="Diagram: initialized, optional layer inactive by default">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Diagram extension with optional layer active by default" viewpointURI="viewpoint:/org.eclipse.sirius.tests.junit/init and not(active)" representationName="Diagram: initialized, optional layer inactive by default">
       <layers name="Contributed optional layer active by default" activeByDefault="true"/>
     </ownedRepresentationExtensions>
   </ownedViewpoints>

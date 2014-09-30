@@ -28,7 +28,7 @@ public class ForToolTests extends SiriusDiagramTestCase {
 
     private static final String SEMANTIC_MODEL_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + "/data/unit/tool/testFor.ecore";
 
-    private static final String MODELER_PATH = "/org.eclipse.sirius.tests/data/unit/tool/ecore.odesign";
+    private static final String MODELER_PATH = "/org.eclipse.sirius.tests.junit/data/unit/tool/ecore.odesign";
 
     private static final String REPRESENTATIONS_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + "/data/unit/tool/testFor.aird";
 

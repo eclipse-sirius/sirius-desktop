@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" version="8.0.0">
   <ownedViewpoints name="Extension for football with UML2" modelFileExtension="uml">
-    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="ContainerMappingImport without semantic elements extension " viewpointURI="platform:/plugin/org.eclipse.sirius.tests/data/unit/layers/football.odesign#//@ownedViewpoints[name='Football with UML2 (Modeler test for layers)']" representationName="ContainerMappingImport without semantic elements">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="ContainerMappingImport without semantic elements extension " viewpointURI="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layers/football.odesign#//@ownedViewpoints[name='Football with UML2 (Modeler test for layers)']" representationName="ContainerMappingImport without semantic elements">
       <layers name="Olympique Lyonnais ">
         <containerMappings xsi:type="description_1:ContainerMappingImport" name="OL mapping" semanticCandidatesExpression="feature:eAllContents">
           <style xsi:type="style:FlatContainerStyleDescription" labelSize="14">

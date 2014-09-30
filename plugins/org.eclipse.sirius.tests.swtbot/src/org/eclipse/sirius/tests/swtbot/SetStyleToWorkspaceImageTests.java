@@ -341,7 +341,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      */
     public void testSetWkpImageStyleOnContainedNodeFromAppearanceSectionWithPluginImagePath() throws Exception {
         testSetWkpImageStyleApplicationAndCancel(A1C1_CONTAINER, AbstractDiagramNodeEditPart.class, false,
-                "/org.eclipse.sirius.tests/data/unit/migration/do_not_migrate/campaign/TestCampaign_10/image.bmp");
+                "/org.eclipse.sirius.tests.junit/data/unit/migration/do_not_migrate/campaign/TestCampaign_10/image.bmp");
     }
 
     /**

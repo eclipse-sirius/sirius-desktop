@@ -100,7 +100,7 @@ public class ResourceSyncTestCase extends TestCase {
     public void testLoadingIsNotDirtyingWithGetResource() throws Exception {
         installSynchronizer(domain);
 
-        Resource ecoreRes = set.getResource(URI.createPlatformPluginURI("org.eclipse.sirius.tests/data/unit/acceleo/service.uml", true), true);
+        Resource ecoreRes = set.getResource(URI.createPlatformPluginURI("org.eclipse.sirius.tests.junit/data/unit/acceleo/service.uml", true), true);
 
         assertTrue("Now we should not be dirty because of a loading.", ResourceSetSync.isReadOnly(ecoreRes));
     }
@@ -113,7 +113,7 @@ public class ResourceSyncTestCase extends TestCase {
     public void testLoadingIsNotDirtyingWithCreateResource() throws Exception {
         installSynchronizer(domain);
 
-        Resource ecoreRes = set.createResource(URI.createPlatformPluginURI("org.eclipse.sirius.tests/data/unit/acceleo/service.uml", true));
+        Resource ecoreRes = set.createResource(URI.createPlatformPluginURI("org.eclipse.sirius.tests.junit/data/unit/acceleo/service.uml", true));
 
         assertTrue("Nothing is done, we should be read only.", ResourceSetSync.isReadOnly(ecoreRes));
 

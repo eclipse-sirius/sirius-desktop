@@ -42,8 +42,8 @@ public class DialectManagerTest extends TestCase {
 
     @Override
     protected void setUp() throws Exception {
-        dialectGroup = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests/data/table/unit/dialect/dialect.odesign", true), set);
-        umlModel = (Model) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests/data/table/unit/dialect/dialect.uml", true), set);
+        dialectGroup = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/table/unit/dialect/dialect.odesign", true), set);
+        umlModel = (Model) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/table/unit/dialect/dialect.uml", true), set);
     }
 
     public void testPreconditionOnAvailableTableDescription() throws Exception {

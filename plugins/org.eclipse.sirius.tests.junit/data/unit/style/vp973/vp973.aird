@@ -993,7 +993,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_Zqr3QJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/org.eclipse.sirius.tests/images/logo_o.png">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_Zqr3QJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/org.eclipse.sirius.tests.junit/images/logo_o.png">
           <description xmi:type="style:WorkspaceImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Workspace%20Image']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Zqr3QZjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
         </ownedStyle>
@@ -1160,7 +1160,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_ZrKYYZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/org.eclipse.sirius.tests/images/logo_o.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_ZrKYYZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/org.eclipse.sirius.tests.junit/images/logo_o.png">
             <description xmi:type="style:WorkspaceImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Workspace%20Image']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZrKYYpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
           </ownedStyle>
@@ -1349,7 +1349,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_ZsDJMZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/org.eclipse.sirius.tests/images/logo_o.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_ZsDJMZjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/org.eclipse.sirius.tests.junit/images/logo_o.png">
             <description xmi:type="style:WorkspaceImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Workspace%20Image']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZsDJMpjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
           </ownedStyle>
@@ -1516,7 +1516,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_ZtdecJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/org.eclipse.sirius.tests/images/logo_o.png">
+            <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_ZtdecJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/org.eclipse.sirius.tests.junit/images/logo_o.png">
               <description xmi:type="style:WorkspaceImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Workspace%20Image']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZtdecZjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
             </ownedStyle>
@@ -1681,7 +1681,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_ZvHrUJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/org.eclipse.sirius.tests/images/logo_o.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_ZvHrUJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/org.eclipse.sirius.tests.junit/images/logo_o.png">
             <description xmi:type="style:WorkspaceImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Workspace%20Image']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZvHrUZjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
           </ownedStyle>
@@ -1862,7 +1862,7 @@
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_ZwPssJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/org.eclipse.sirius.tests/images/logo_o.png">
+            <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_ZwPssJjDEeCTjf2eRUPO7Q" borderSize="1" borderSizeComputationExpression="&lt;%eContainer().eContents().nSize()%>" workspacePath="/org.eclipse.sirius.tests.junit/images/logo_o.png">
               <description xmi:type="style:WorkspaceImageDescription" href="vp973.odesign#//@ownedViewpoints[name='vp973']/@ownedRepresentations[name='vp973']/@defaultLayer/@nodeMappings[name='ClassMapping%20Workspace%20Image']/@style"/>
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ZwPssZjDEeCTjf2eRUPO7Q" red="138" green="226" blue="52"/>
             </ownedStyle>

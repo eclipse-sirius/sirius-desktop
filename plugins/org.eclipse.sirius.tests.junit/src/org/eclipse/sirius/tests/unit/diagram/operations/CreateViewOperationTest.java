@@ -297,7 +297,7 @@ class CreateViewOperationData {
 
     public void load() {
         ResourceSet set = new ResourceSetImpl();
-        oDesign = (Group) set.getResource(URI.createPlatformPluginURI("/org.eclipse.sirius.tests/data/unit/operations/createView.odesign", true), true).getContents().get(0);
+        oDesign = (Group) set.getResource(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/operations/createView.odesign", true), true).getContents().get(0);
     }
 
     public GroupCreateViewTask group() {

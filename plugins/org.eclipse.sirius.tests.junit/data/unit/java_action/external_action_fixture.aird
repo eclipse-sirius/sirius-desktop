@@ -28,40 +28,40 @@
         <semanticElements xmi:type="ecore:EClass" href="external_action_fixture.ecore#//ActionTarget"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_GWFIIJjFEeCTjf2eRUPO7Q" backgroundStyle="GradientTopToBottom">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_GWFIIZjFEeCTjf2eRUPO7Q"/>
-          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests/data/unit/java_action/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/java_action/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_GWFIIpjFEeCTjf2eRUPO7Q"/>
           <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_GWFII5jFEeCTjf2eRUPO7Q" red="209" green="209" blue="209"/>
           <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_GWFIJJjFEeCTjf2eRUPO7Q" red="255" green="255" blue="255"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.tests/data/unit/java_action/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/java_action/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_GWFvMJjFEeCTjf2eRUPO7Q" name="attributeOne : ">
           <target xmi:type="ecore:EAttribute" href="external_action_fixture.ecore#//ActionTarget/attributeOne"/>
           <semanticElements xmi:type="ecore:EAttribute" href="external_action_fixture.ecore#//ActionTarget/attributeOne"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_GWGWQJjFEeCTjf2eRUPO7Q" labelAlignment="LEFT">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_GWGWQZjFEeCTjf2eRUPO7Q"/>
-            <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.sirius.tests/data/unit/java_action/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
+            <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/java_action/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_GWGWQpjFEeCTjf2eRUPO7Q"/>
             <color xmi:type="viewpoint:RGBValues" xmi:id="_GWGWQ5jFEeCTjf2eRUPO7Q"/>
           </ownedStyle>
-          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.sirius.tests/data/unit/java_action/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/java_action/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_GWGWRJjFEeCTjf2eRUPO7Q" name="attributeTwo : ">
           <target xmi:type="ecore:EAttribute" href="external_action_fixture.ecore#//ActionTarget/attributeTwo"/>
           <semanticElements xmi:type="ecore:EAttribute" href="external_action_fixture.ecore#//ActionTarget/attributeTwo"/>
           <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_GWGWRZjFEeCTjf2eRUPO7Q" labelAlignment="LEFT">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_GWGWRpjFEeCTjf2eRUPO7Q"/>
-            <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.sirius.tests/data/unit/java_action/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
+            <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/java_action/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_GWGWR5jFEeCTjf2eRUPO7Q"/>
             <color xmi:type="viewpoint:RGBValues" xmi:id="_GWGWSJjFEeCTjf2eRUPO7Q"/>
           </ownedStyle>
-          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.sirius.tests/data/unit/java_action/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
+          <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/java_action/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
       </ownedDiagramElements>
-      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests/data/unit/java_action/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
+      <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/java_action/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
       <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_AqPAksJNEd6zFrzjAe9CHw"/>
-      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.sirius.tests/data/unit/java_action/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer"/>
+      <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/java_action/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer"/>
       <target xmi:type="ecore:EPackage" href="external_action_fixture.ecore#/"/>
     </ownedRepresentations>
-    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.tests/data/unit/java_action/ecore.odesign#//@ownedViewpoints[name='Design']"/>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/java_action/ecore.odesign#//@ownedViewpoints[name='Design']"/>
   </ownedViews>
 </viewpoint:DAnalysis>

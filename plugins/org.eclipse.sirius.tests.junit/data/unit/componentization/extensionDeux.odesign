@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="extensionDeux" version="8.0.0">
   <ownedViewpoints name="Extension 2" modelFileExtension="ecore">
-    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Extension 2 Diagram" viewpointURI="viewpoint:/org.eclipse.sirius.tests/Extension 1" representationName="Extension 1 Diagram">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Extension 2 Diagram" viewpointURI="viewpoint:/org.eclipse.sirius.tests.junit/Extension 1" representationName="Extension 1 Diagram">
       <layers name="Extension 2">
         <toolSections name="Extension 2 Section">
           <ownedTools xsi:type="tool:ToolDescription" name="Extension 2 Tool">

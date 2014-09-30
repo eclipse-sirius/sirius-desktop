@@ -66,7 +66,7 @@ public class DTableSynchronizerVSMWithEditorTest extends TableTestCase {
     protected void setUp() throws Exception {
         super.setUp();
         genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH, SESSION_PATH);
-        ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests/data/table/unit/refresh/tables.odesign", true), session.getTransactionalEditingDomain().getResourceSet());
+        ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/table/unit/refresh/tables.odesign", true), session.getTransactionalEditingDomain().getResourceSet());
     }
 
     /**

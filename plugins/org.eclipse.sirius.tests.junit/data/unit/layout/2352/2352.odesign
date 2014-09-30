@@ -27,7 +27,7 @@
           </style>
         </containerMappings>
         <containerMappings name="EC EClass Image" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass">
-          <style xsi:type="style:WorkspaceImageDescription" labelExpression="&lt;%name%>Image" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+          <style xsi:type="style:WorkspaceImageDescription" labelExpression="&lt;%name%>Image" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>

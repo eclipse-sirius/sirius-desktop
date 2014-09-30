@@ -69,7 +69,7 @@
             </style>
           </conditionnalStyles>
           <conditionnalStyles predicateExpression="&lt;%name == &quot;5&quot;%>">
-            <style xsi:type="style:WorkspaceImageDescription" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+            <style xsi:type="style:WorkspaceImageDescription" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>

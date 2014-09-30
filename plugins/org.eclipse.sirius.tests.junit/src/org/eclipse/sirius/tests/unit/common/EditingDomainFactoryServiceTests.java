@@ -119,7 +119,7 @@ public class EditingDomainFactoryServiceTests {
 
         assertExpectedAirdCrossReferencerAdapterNumber(sharedEditingDomainFactory, 0);
 
-        URI sessionResourceURI = URI.createPlatformPluginURI("org.eclipse.sirius.tests/data/unit/session/VP-3829/test.aird", true);
+        URI sessionResourceURI = URI.createPlatformPluginURI("org.eclipse.sirius.tests.junit/data/unit/session/VP-3829/test.aird", true);
         SessionCreationOperation sessionCreationOperation = new DefaultLocalSessionCreationOperation(sessionResourceURI, new NullProgressMonitor());
         try {
             sessionCreationOperation.execute();

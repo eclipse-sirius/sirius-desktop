@@ -32,7 +32,7 @@ public class EdgeRoutingStyleTests extends SiriusDiagramTestCase {
 
     private static final String SEMANTIC_MODEL_PATH = "/org.eclipse.emf.ecore/model/Ecore.ecore";
 
-    private static final String MODELER_PATH = "/org.eclipse.sirius.tests/data/unit/routing/routing.odesign";
+    private static final String MODELER_PATH = "/org.eclipse.sirius.tests.junit/data/unit/routing/routing.odesign";
 
     private static final String REPRESENTATION_DESC_NAME = "Folding";
 

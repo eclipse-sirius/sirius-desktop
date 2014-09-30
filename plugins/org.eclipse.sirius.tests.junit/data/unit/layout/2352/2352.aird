@@ -106,7 +106,7 @@
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_ELECFJjFEeCTjf2eRUPO7Q" name="c1Image">
         <target xmi:type="ecore:EClass" href="2352.ecore#//c1"/>
         <semanticElements xmi:type="ecore:EClass" href="2352.ecore#//c1"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_ELEpIJjFEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_ELEpIJjFEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
           <description xmi:type="style:WorkspaceImageDescription" href="2352.odesign#//@ownedViewpoints[name='2352']/@ownedRepresentations[name='2352']/@defaultLayer/@containerMappings[name='EC%20EClass%20Image']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="2352.odesign#//@ownedViewpoints[name='2352']/@ownedRepresentations[name='2352']/@defaultLayer/@containerMappings[name='EC%20EClass%20Image']"/>

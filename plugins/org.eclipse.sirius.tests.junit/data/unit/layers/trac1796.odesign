@@ -20,7 +20,7 @@
         </edgeMappings>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Extension for compositions" viewpointURI="viewpoint:/org.eclipse.sirius.tests/trac1796" representationName="trac1796">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Extension for compositions" viewpointURI="viewpoint:/org.eclipse.sirius.tests.junit/trac1796" representationName="trac1796">
       <layers name="Extension for compositions">
         <edgeMappingImports name="Extension Reference Mapping" importedMapping="//@ownedViewpoints[name='trac1796']/@ownedRepresentations[name='trac1796']/@defaultLayer/@edgeMappings[name='Reference%20Mapping']">
           <conditionnalStyles predicateExpression="&lt;%isComposite%>">

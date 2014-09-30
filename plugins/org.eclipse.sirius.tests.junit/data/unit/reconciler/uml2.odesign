@@ -166,7 +166,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Use%20Case%20Diagram']/@toolSection/@subSections[name='drag%20%26%20drop']/@ownedTools[name='UC_D%26D_Actor']" documentation="Diagram for Use Cases" name="Use Case Diagram" initialisation="true" domainClass="Package">
       <nodeMappings name="UCD_Actor" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="feature:eAllContents" documentation="Mapping to create actors" domainClass="Actor">
-        <style xsi:type="style:WorkspaceImageDescription" labelSize="10" workspacePath="/org.eclipse.sirius.tests/images/Actor.png">
+        <style xsi:type="style:WorkspaceImageDescription" labelSize="10" workspacePath="/org.eclipse.sirius.tests.junit/images/Actor.png">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
         </style>
@@ -205,7 +205,7 @@
       </edgeMappings>
       <containerMappings name="UCD_Subject" preconditionExpression="&lt;%$container == eContainer()%>" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" documentation="Display subjects of this diagram." domainClass="Component" dropDescriptions="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Use%20Case%20Diagram']/@toolSection/@subSections[name='drag%20%26%20drop']/@ownedTools[name='UC_D%26D_UseCase']">
         <subNodeMappings name="UCD_UseCase" preconditionExpression="&lt;%subject.nContains($container)%>" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="&lt;%nPut(&quot;e&quot;).nGet(&quot;e&quot;).getRootContainer().eAllContents(&quot;UseCase&quot;)[subject.nContains(current(1))]%>" documentation="Mapping to create Use Cases" domainClass="UseCase">
-          <style xsi:type="style:WorkspaceImageDescription" labelSize="10" sizeComputationExpression="14" workspacePath="/org.eclipse.sirius.tests/images/UseCase.png">
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="10" sizeComputationExpression="14" workspacePath="/org.eclipse.sirius.tests.junit/images/UseCase.png">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
@@ -1037,7 +1037,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Sequence Diagram" domainClass="Interaction">
       <nodeMappings name="SD_Lifeline" semanticCandidatesExpression="&lt;%lifeline%>" domainClass="Lifeline">
         <borderedNodeMappings name="SD_ExecutionSpecification" semanticCandidatesExpression="&lt;%coveredBy%>" domainClass="BehaviorExecutionSpecification" reusedBorderedNodeMappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Sequence%20Diagram']/@nodeMappings[name='SD_Lifeline']/@borderedNodeMappings[name='SD_ExecutionSpecification']">
-          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%&quot;&quot;%>" sizeComputationExpression="1" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+          <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="&lt;%&quot;&quot;%>" sizeComputationExpression="1" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>

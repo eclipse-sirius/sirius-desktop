@@ -55,9 +55,9 @@ public class DAnalysisSessionTests extends SiriusDiagramTestCase {
      */
     public static final String THE_UNIT_TEST_DATA_SEEMS_INCORRECT = "The unit test data seems incorrect";
 
-    private static final String MODELER_PATH = "/org.eclipse.sirius.tests/data/unit/session/benchmark.odesign";
+    private static final String MODELER_PATH = "/org.eclipse.sirius.tests.junit/data/unit/session/benchmark.odesign";
 
-    private static final String SEMANTIC_MODEL_PATH = "/org.eclipse.sirius.tests/data/unit/session/uml2.uml";
+    private static final String SEMANTIC_MODEL_PATH = "/org.eclipse.sirius.tests.junit/data/unit/session/uml2.uml";
 
     @Override
     protected void setUp() throws Exception {

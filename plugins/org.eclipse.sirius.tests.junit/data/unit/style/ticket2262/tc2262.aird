@@ -174,7 +174,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_dl6WsJjDEeCTjf2eRUPO7Q" name="att" width="-1" height="-1">
         <target xmi:type="ecore:EAttribute" href="tc2262.ecore#//Class1/att"/>
         <semanticElements xmi:type="ecore:EAttribute" href="tc2262.ecore#//Class1/att"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dl69wJjDEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dl69wJjDEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_394L4HzMEeKdyPf9rHMGEw"/>
           <description xmi:type="style:WorkspaceImageDescription" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@nodeMappings[name='EAttributeMapping']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_394L4XzMEeKdyPf9rHMGEw"/>
@@ -184,7 +184,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_dl7k0JjDEeCTjf2eRUPO7Q" name="op" width="3" height="3">
         <target xmi:type="ecore:EOperation" href="tc2262.ecore#//Class1/op"/>
         <semanticElements xmi:type="ecore:EOperation" href="tc2262.ecore#//Class1/op"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dl7k0ZjDEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dl7k0ZjDEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_394y8HzMEeKdyPf9rHMGEw"/>
           <description xmi:type="style:WorkspaceImageDescription" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@nodeMappings[name='EOperationMapping']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_394y8XzMEeKdyPf9rHMGEw"/>
@@ -194,7 +194,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_dl8L4JjDEeCTjf2eRUPO7Q" name="ref" width="-1" height="-1">
         <target xmi:type="ecore:EReference" href="tc2262.ecore#//Class1/ref"/>
         <semanticElements xmi:type="ecore:EReference" href="tc2262.ecore#//Class1/ref"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dl8y8JjDEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dl8y8JjDEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_395aAHzMEeKdyPf9rHMGEw"/>
           <description xmi:type="style:WorkspaceImageDescription" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@nodeMappings[name='EReferenceMapping']/@style"/>
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_395aAXzMEeKdyPf9rHMGEw"/>
@@ -207,7 +207,7 @@
         <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_dl-oIJjDEeCTjf2eRUPO7Q" name="att" width="-1" height="-1">
           <target xmi:type="ecore:EAttribute" href="tc2262.ecore#//Class1/att"/>
           <semanticElements xmi:type="ecore:EAttribute" href="tc2262.ecore#//Class1/att"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dl-oIZjDEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dl-oIZjDEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_397PMHzMEeKdyPf9rHMGEw"/>
             <description xmi:type="style:WorkspaceImageDescription" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@nodeMappings[name='EAttributeMapping']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_397PMXzMEeKdyPf9rHMGEw"/>
@@ -217,7 +217,7 @@
         <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_dl_PMJjDEeCTjf2eRUPO7Q" name="op" width="3" height="3">
           <target xmi:type="ecore:EOperation" href="tc2262.ecore#//Class1/op"/>
           <semanticElements xmi:type="ecore:EOperation" href="tc2262.ecore#//Class1/op"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dl_2QJjDEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dl_2QJjDEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_3972QHzMEeKdyPf9rHMGEw"/>
             <description xmi:type="style:WorkspaceImageDescription" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@nodeMappings[name='EOperationMapping']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_3972QXzMEeKdyPf9rHMGEw"/>
@@ -227,7 +227,7 @@
         <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_dmAdUJjDEeCTjf2eRUPO7Q" name="ref" width="-1" height="-1">
           <target xmi:type="ecore:EReference" href="tc2262.ecore#//Class1/ref"/>
           <semanticElements xmi:type="ecore:EReference" href="tc2262.ecore#//Class1/ref"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dmAdUZjDEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dmAdUZjDEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_398dUHzMEeKdyPf9rHMGEw"/>
             <description xmi:type="style:WorkspaceImageDescription" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@nodeMappings[name='EReferenceMapping']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_398dUXzMEeKdyPf9rHMGEw"/>
@@ -248,7 +248,7 @@
         <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_dmCSgJjDEeCTjf2eRUPO7Q" name="att" width="-1" height="-1">
           <target xmi:type="ecore:EAttribute" href="tc2262.ecore#//Class1/att"/>
           <semanticElements xmi:type="ecore:EAttribute" href="tc2262.ecore#//Class1/att"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dmC5kJjDEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dmC5kJjDEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_39-SgHzMEeKdyPf9rHMGEw"/>
             <description xmi:type="style:WorkspaceImageDescription" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@borderedNodeMappings[name='EAttributeMapping2']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_39-SgXzMEeKdyPf9rHMGEw"/>
@@ -258,7 +258,7 @@
         <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_dmDgoJjDEeCTjf2eRUPO7Q" name="op" width="3" height="3">
           <target xmi:type="ecore:EOperation" href="tc2262.ecore#//Class1/op"/>
           <semanticElements xmi:type="ecore:EOperation" href="tc2262.ecore#//Class1/op"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dmDgoZjDEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dmDgoZjDEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_39-SgnzMEeKdyPf9rHMGEw"/>
             <description xmi:type="style:WorkspaceImageDescription" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@borderedNodeMappings[name='EOperationMapping2']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_39-5kHzMEeKdyPf9rHMGEw"/>
@@ -268,7 +268,7 @@
         <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_dmEHsJjDEeCTjf2eRUPO7Q" name="ref" width="-1" height="-1">
           <target xmi:type="ecore:EReference" href="tc2262.ecore#//Class1/ref"/>
           <semanticElements xmi:type="ecore:EReference" href="tc2262.ecore#//Class1/ref"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dmEuwJjDEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dmEuwJjDEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_39_goHzMEeKdyPf9rHMGEw"/>
             <description xmi:type="style:WorkspaceImageDescription" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@borderedNodeMappings[name='EReferenceMapping2']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_39_goXzMEeKdyPf9rHMGEw"/>
@@ -286,7 +286,7 @@
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_dmFV0JjDEeCTjf2eRUPO7Q" name="att" width="-1" height="-1">
           <target xmi:type="ecore:EAttribute" href="tc2262.ecore#//Class1/att"/>
           <semanticElements xmi:type="ecore:EAttribute" href="tc2262.ecore#//Class1/att"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dmFV0ZjDEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dmFV0ZjDEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_3-AHsHzMEeKdyPf9rHMGEw"/>
             <description xmi:type="style:WorkspaceImageDescription" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subNodeMappings[name='EAttributeMapping3']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_3-AHsXzMEeKdyPf9rHMGEw"/>
@@ -296,7 +296,7 @@
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_dmF84JjDEeCTjf2eRUPO7Q" name="op" width="3" height="3">
           <target xmi:type="ecore:EOperation" href="tc2262.ecore#//Class1/op"/>
           <semanticElements xmi:type="ecore:EOperation" href="tc2262.ecore#//Class1/op"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dmGj8JjDEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dmGj8JjDEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_3-AHsnzMEeKdyPf9rHMGEw"/>
             <description xmi:type="style:WorkspaceImageDescription" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subNodeMappings[name='EOperationMapping3']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_3-AuwHzMEeKdyPf9rHMGEw"/>
@@ -306,7 +306,7 @@
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_dmSKIJjDEeCTjf2eRUPO7Q" name="ref" width="-1" height="-1">
           <target xmi:type="ecore:EReference" href="tc2262.ecore#//Class1/ref"/>
           <semanticElements xmi:type="ecore:EReference" href="tc2262.ecore#//Class1/ref"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dmSKIZjDEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_dmSKIZjDEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_3-AuwXzMEeKdyPf9rHMGEw"/>
             <description xmi:type="style:WorkspaceImageDescription" href="tc2262.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subNodeMappings[name='EReferenceMapping3']/@style"/>
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_3-AuwnzMEeKdyPf9rHMGEw"/>

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="ASCII"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" version="8.0.0">
   <ownedViewpoints name="Componentization test 3" modelFileExtension="docbook">
-    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="VP2_DED1_ok" viewpointURI="platform:/plugin/org.eclipse.sirius.tests/data/unit/componentization/componentization.odesign#//@ownedViewpoints[name='Componentization test 1']" representationName="vp_DD">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="VP2_DED1_ok" viewpointURI="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/componentization/componentization.odesign#//@ownedViewpoints[name='Componentization test 1']" representationName="vp_DD">
       <layers name="VP2_DED2_L"/>
     </ownedRepresentationExtensions>
-    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="VP2_DED2" viewpointURI="platform:/plugin/org.eclipse.sirius.tests/data/unit/componentization/componentization.odesign#//@ownedViewpoints[name='Componentization test 1']" representationName="VP_other">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="VP2_DED2" viewpointURI="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/componentization/componentization.odesign#//@ownedViewpoints[name='Componentization test 1']" representationName="VP_other">
       <layers/>
     </ownedRepresentationExtensions>
   </ownedViewpoints>
   <ownedViewpoints name="Componentization test 4" modelFileExtension="docbook">
-    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="VP3_DED3_ok" viewpointURI="platform:/plugin/org.eclipse.sirius.tests/data/unit/componentization/componentization2.odesign#//@ownedViewpoints[name='Componentization test 3']" representationName="VP2_DED1_ok">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="VP3_DED3_ok" viewpointURI="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/componentization/componentization2.odesign#//@ownedViewpoints[name='Componentization test 3']" representationName="VP2_DED1_ok">
       <layers name="VP3_DED3_L"/>
     </ownedRepresentationExtensions>
-    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="VP3_DED4_ok" viewpointURI="platform:/plugin/org.eclipse.sirius.tests/data/unit/componentization/componentization2.odesign#//@ownedViewpoints[name='Componentization test 4']" representationName="VP3_DED3_ok">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="VP3_DED4_ok" viewpointURI="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/componentization/componentization2.odesign#//@ownedViewpoints[name='Componentization test 4']" representationName="VP3_DED3_ok">
       <layers name="VP3_DED4_L"/>
     </ownedRepresentationExtensions>
   </ownedViewpoints>

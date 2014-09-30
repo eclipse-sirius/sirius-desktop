@@ -27,7 +27,7 @@ import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 
 public class EqualityHelperTestCase extends TestCase {
 
-    private static final String MODEL_FILE = "/org.eclipse.sirius.tests/data/unit/dialect/dialect.odesign";
+    private static final String MODEL_FILE = "/org.eclipse.sirius.tests.junit/data/unit/dialect/dialect.odesign";
 
     public void testSameObjectReferences() throws IOException {
 

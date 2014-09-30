@@ -166,7 +166,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_PmnQoZjLEeCGbO5oLE72PQ" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_PmnQoZjLEeCGbO5oLE72PQ" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
           <description xmi:type="style:WorkspaceImageDescription" href="tc2262_2.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@nodeMappings[name='EAttributeMapping']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="tc2262_2.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@nodeMappings[name='EAttributeMapping']"/>
@@ -174,7 +174,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_Pmn3sJjLEeCGbO5oLE72PQ" name="op" width="3" height="3">
         <target xmi:type="ecore:EOperation" href="tc2262_2.ecore#//Class1/op"/>
         <semanticElements xmi:type="ecore:EOperation" href="tc2262_2.ecore#//Class1/op"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_PmoewJjLEeCGbO5oLE72PQ" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_PmoewJjLEeCGbO5oLE72PQ" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
           <description xmi:type="style:WorkspaceImageDescription" href="tc2262_2.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@nodeMappings[name='EOperationMapping']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="tc2262_2.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@nodeMappings[name='EOperationMapping']"/>
@@ -182,7 +182,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_PmoewZjLEeCGbO5oLE72PQ" name="ref" width="-1" height="-1">
         <target xmi:type="ecore:EReference" href="tc2262_2.ecore#//Class1/ref"/>
         <semanticElements xmi:type="ecore:EReference" href="tc2262_2.ecore#//Class1/ref"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_PmpF0JjLEeCGbO5oLE72PQ" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_PmpF0JjLEeCGbO5oLE72PQ" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
           <description xmi:type="style:WorkspaceImageDescription" href="tc2262_2.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@nodeMappings[name='EReferenceMapping']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="tc2262_2.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@nodeMappings[name='EReferenceMapping']"/>
@@ -193,7 +193,7 @@
         <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_PmqT8JjLEeCGbO5oLE72PQ" name="att" width="-1" height="-1">
           <target xmi:type="ecore:EAttribute" href="tc2262_2.ecore#//Class1/att"/>
           <semanticElements xmi:type="ecore:EAttribute" href="tc2262_2.ecore#//Class1/att"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_PmqT8ZjLEeCGbO5oLE72PQ" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_PmqT8ZjLEeCGbO5oLE72PQ" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <description xmi:type="style:WorkspaceImageDescription" href="tc2262_2.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@nodeMappings[name='EAttributeMapping']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="tc2262_2.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@nodeMappings[name='EAttributeMapping']"/>
@@ -201,7 +201,7 @@
         <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_Pmq7AJjLEeCGbO5oLE72PQ" name="op" width="3" height="3">
           <target xmi:type="ecore:EOperation" href="tc2262_2.ecore#//Class1/op"/>
           <semanticElements xmi:type="ecore:EOperation" href="tc2262_2.ecore#//Class1/op"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_Pmq7AZjLEeCGbO5oLE72PQ" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_Pmq7AZjLEeCGbO5oLE72PQ" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <description xmi:type="style:WorkspaceImageDescription" href="tc2262_2.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@nodeMappings[name='EOperationMapping']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="tc2262_2.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@nodeMappings[name='EOperationMapping']"/>
@@ -209,7 +209,7 @@
         <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_PmtXQJjLEeCGbO5oLE72PQ" name="ref" width="-1" height="-1">
           <target xmi:type="ecore:EReference" href="tc2262_2.ecore#//Class1/ref"/>
           <semanticElements xmi:type="ecore:EReference" href="tc2262_2.ecore#//Class1/ref"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_Pmt-UJjLEeCGbO5oLE72PQ" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_Pmt-UJjLEeCGbO5oLE72PQ" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <description xmi:type="style:WorkspaceImageDescription" href="tc2262_2.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@nodeMappings[name='EReferenceMapping']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="tc2262_2.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@nodeMappings[name='EReferenceMapping']"/>
@@ -228,7 +228,7 @@
         <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_PmvMcJjLEeCGbO5oLE72PQ" name="att" width="-1" height="-1">
           <target xmi:type="ecore:EAttribute" href="tc2262_2.ecore#//Class1/att"/>
           <semanticElements xmi:type="ecore:EAttribute" href="tc2262_2.ecore#//Class1/att"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_PmvMcZjLEeCGbO5oLE72PQ" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_PmvMcZjLEeCGbO5oLE72PQ" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <description xmi:type="style:WorkspaceImageDescription" href="tc2262_2.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@borderedNodeMappings[name='EAttributeMapping2']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="tc2262_2.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@borderedNodeMappings[name='EAttributeMapping2']"/>
@@ -236,7 +236,7 @@
         <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_PmvzgJjLEeCGbO5oLE72PQ" name="op" width="3" height="3">
           <target xmi:type="ecore:EOperation" href="tc2262_2.ecore#//Class1/op"/>
           <semanticElements xmi:type="ecore:EOperation" href="tc2262_2.ecore#//Class1/op"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_PmvzgZjLEeCGbO5oLE72PQ" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_PmvzgZjLEeCGbO5oLE72PQ" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <description xmi:type="style:WorkspaceImageDescription" href="tc2262_2.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@borderedNodeMappings[name='EOperationMapping2']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="tc2262_2.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@borderedNodeMappings[name='EOperationMapping2']"/>
@@ -244,7 +244,7 @@
         <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_PmwakJjLEeCGbO5oLE72PQ" name="ref" width="-1" height="-1">
           <target xmi:type="ecore:EReference" href="tc2262_2.ecore#//Class1/ref"/>
           <semanticElements xmi:type="ecore:EReference" href="tc2262_2.ecore#//Class1/ref"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_PmwakZjLEeCGbO5oLE72PQ" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_PmwakZjLEeCGbO5oLE72PQ" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <description xmi:type="style:WorkspaceImageDescription" href="tc2262_2.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@borderedNodeMappings[name='EReferenceMapping2']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="tc2262_2.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@borderedNodeMappings[name='EReferenceMapping2']"/>
@@ -260,7 +260,7 @@
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_PmxBoJjLEeCGbO5oLE72PQ" name="att" width="-1" height="-1">
           <target xmi:type="ecore:EAttribute" href="tc2262_2.ecore#//Class1/att"/>
           <semanticElements xmi:type="ecore:EAttribute" href="tc2262_2.ecore#//Class1/att"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_PmxosJjLEeCGbO5oLE72PQ" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_PmxosJjLEeCGbO5oLE72PQ" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <description xmi:type="style:WorkspaceImageDescription" href="tc2262_2.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subNodeMappings[name='EAttributeMapping3']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="tc2262_2.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subNodeMappings[name='EAttributeMapping3']"/>
@@ -268,7 +268,7 @@
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_PmxosZjLEeCGbO5oLE72PQ" name="op" width="3" height="3">
           <target xmi:type="ecore:EOperation" href="tc2262_2.ecore#//Class1/op"/>
           <semanticElements xmi:type="ecore:EOperation" href="tc2262_2.ecore#//Class1/op"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_PmyPwJjLEeCGbO5oLE72PQ" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_PmyPwJjLEeCGbO5oLE72PQ" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <description xmi:type="style:WorkspaceImageDescription" href="tc2262_2.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subNodeMappings[name='EOperationMapping3']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="tc2262_2.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subNodeMappings[name='EOperationMapping3']"/>
@@ -276,7 +276,7 @@
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_PmyPwZjLEeCGbO5oLE72PQ" name="ref" width="-1" height="-1">
           <target xmi:type="ecore:EReference" href="tc2262_2.ecore#//Class1/ref"/>
           <semanticElements xmi:type="ecore:EReference" href="tc2262_2.ecore#//Class1/ref"/>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_PmyPwpjLEeCGbO5oLE72PQ" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_PmyPwpjLEeCGbO5oLE72PQ" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <description xmi:type="style:WorkspaceImageDescription" href="tc2262_2.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subNodeMappings[name='EReferenceMapping3']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="tc2262_2.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='tc2262']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subNodeMappings[name='EReferenceMapping3']"/>

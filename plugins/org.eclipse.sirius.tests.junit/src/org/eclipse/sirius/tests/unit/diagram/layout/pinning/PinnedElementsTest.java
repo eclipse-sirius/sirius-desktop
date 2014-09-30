@@ -55,11 +55,11 @@ import com.google.common.collect.Sets;
  */
 public class PinnedElementsTest extends SiriusDiagramTestCase {
 
-    private static final String SEMANTIC_MODEL_PATH = "/org.eclipse.sirius.tests/data/unit/layout/pinning/model/tc1825.ecore";
+    private static final String SEMANTIC_MODEL_PATH = "/org.eclipse.sirius.tests.junit/data/unit/layout/pinning/model/tc1825.ecore";
 
-    private static final String VSM_PATH = "/org.eclipse.sirius.tests/data/unit/layout/pinning/description/tc1825.odesign";
+    private static final String VSM_PATH = "/org.eclipse.sirius.tests.junit/data/unit/layout/pinning/description/tc1825.odesign";
 
-    private static final String REPRESENTATIONS_MODEL_PATH = "/org.eclipse.sirius.tests/data/unit/layout/pinning/model/tc1825.aird";
+    private static final String REPRESENTATIONS_MODEL_PATH = "/org.eclipse.sirius.tests.junit/data/unit/layout/pinning/model/tc1825.aird";
 
     private static final String REPRESENTATION_DESC_NAME = "Nodes, Containers and Lists (flat)";
 

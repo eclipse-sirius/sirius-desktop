@@ -364,7 +364,7 @@
       </defaultLayer>
       <toolSection/>
     </ownedRepresentations>
-    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="annexe2Diag" viewpointURI="platform:/plugin/org.eclipse.sirius.tests/data/unit/layers/football.odesign#//@ownedViewpoints[name='Football with UML2 (Modeler test for layers)']" representationName="ContainerMappingImport without semantic elements">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="annexe2Diag" viewpointURI="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layers/football.odesign#//@ownedViewpoints[name='Football with UML2 (Modeler test for layers)']" representationName="ContainerMappingImport without semantic elements">
       <layers name="extension">
         <nodeMappings name="AnnexeNode" semanticCandidatesExpression="feature:eAllContents" domainClass="Class">
           <style xsi:type="style:BundledImageDescription" sizeComputationExpression="&lt;%8%>">

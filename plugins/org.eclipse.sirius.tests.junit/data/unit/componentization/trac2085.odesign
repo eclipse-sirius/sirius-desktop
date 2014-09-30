@@ -16,7 +16,7 @@
     </ownedRepresentations>
   </ownedViewpoints>
   <ownedViewpoints name="Ecore" modelFileExtension="ecore">
-    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Types" viewpointURI="viewpoint:/org.eclipse.sirius.tests/Interactions" representationName="Participants">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Types" viewpointURI="viewpoint:/org.eclipse.sirius.tests.junit/Interactions" representationName="Participants">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <layers name="L2">
         <containerMappings xsi:type="description_1:ContainerMappingImport" name="Participants extension" semanticCandidatesExpression="&lt;%participants%>" domainClass="Participant" importedMapping="//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Participants']/@defaultLayer/@containerMappings[name='Participant%20CM']">

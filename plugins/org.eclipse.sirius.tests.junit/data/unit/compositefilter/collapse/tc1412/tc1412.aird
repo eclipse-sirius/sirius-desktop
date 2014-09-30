@@ -482,7 +482,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_S7qIkJjFEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_S7qIkJjFEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <description xmi:type="style:WorkspaceImageDescription" href="tc1412.odesign#//@ownedViewpoints[name='tc1412']/@ownedRepresentations[name='tc1412']/@containerMappings[name='EClass']/@borderedNodeMappings[name='EAttribute%20as%20border%20node']/@conditionnalStyles.4/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="tc1412.odesign#//@ownedViewpoints[name='tc1412']/@ownedRepresentations[name='tc1412']/@containerMappings[name='EClass']/@borderedNodeMappings[name='EAttribute%20as%20border%20node']"/>
@@ -1072,7 +1072,7 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_S7z5kJjFEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests/images/es.png">
+          <ownedStyle xmi:type="diagram:WorkspaceImage" xmi:id="_S7z5kJjFEeCTjf2eRUPO7Q" workspacePath="/org.eclipse.sirius.tests.junit/images/es.png">
             <description xmi:type="style:WorkspaceImageDescription" href="tc1412.odesign#//@ownedViewpoints[name='tc1412']/@ownedRepresentations[name='tc1412']/@containerMappings[name='EClass']/@borderedNodeMappings[name='EAttribute%20as%20border%20node']/@conditionnalStyles.4/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="tc1412.odesign#//@ownedViewpoints[name='tc1412']/@ownedRepresentations[name='tc1412']/@containerMappings[name='EClass']/@borderedNodeMappings[name='EAttribute%20as%20border%20node']"/>

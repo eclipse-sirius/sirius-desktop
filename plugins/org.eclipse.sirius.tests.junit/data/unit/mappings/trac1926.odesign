@@ -58,7 +58,7 @@
         </containerMappings>
       </additionalLayers>
     </ownedRepresentations>
-    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="DE1" viewpointURI="viewpoint:/org.eclipse.sirius.tests/trac1926" representationName="D1">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="DE1" viewpointURI="viewpoint:/org.eclipse.sirius.tests.junit/trac1926" representationName="D1">
       <layers name="OL2">
         <nodeMappings xsi:type="description_1:NodeMappingImport" name="MIE1" semanticCandidatesExpression="&lt;%eAllContents(&quot;EClass&quot;)[name.startsWith(&quot;n&quot;)]%>" importedMapping="//@ownedViewpoints[name='trac1926']/@ownedRepresentations[name='D1']/@defaultLayer/@nodeMappings[name='M1']">
           <style xsi:type="style:SquareDescription">

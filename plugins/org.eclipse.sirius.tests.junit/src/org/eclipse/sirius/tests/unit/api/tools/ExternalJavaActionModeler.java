@@ -12,11 +12,11 @@ package org.eclipse.sirius.tests.unit.api.tools;
 
 public interface ExternalJavaActionModeler {
 
-    String SEMANTIC_MODEL_PATH = "/org.eclipse.sirius.tests/data/unit/java_action/external_action_fixture.ecore";
+    String SEMANTIC_MODEL_PATH = "/org.eclipse.sirius.tests.junit/data/unit/java_action/external_action_fixture.ecore";
     
-    String MODELER_PATH = "/org.eclipse.sirius.tests/data/unit/java_action/ecore.odesign";
+    String MODELER_PATH = "/org.eclipse.sirius.tests.junit/data/unit/java_action/ecore.odesign";
     
-    String REPRESENTATIONS_MODEL_PATH = "/org.eclipse.sirius.tests/data/unit/java_action/external_action_fixture.aird";
+    String REPRESENTATIONS_MODEL_PATH = "/org.eclipse.sirius.tests.junit/data/unit/java_action/external_action_fixture.aird";
     
     String ENTITIES_REPRESENTATION_NAME = "Entities";
     

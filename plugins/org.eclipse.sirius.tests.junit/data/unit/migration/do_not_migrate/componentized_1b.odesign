@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.obeo.fr/dsl/viewpoint/description/1.1.0" xmlns:style="http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0" name="B">
   <ownedViewpoints name="ViewpointB" modelFileExtension="ecore">
-    <ownedRepresentationExtensions xsi:type="description:DiagramExtensionDescription" name="ExtendsA" viewpointURI="viewpoint:/org.eclipse.sirius.tests/ViewpointA" representationName="FirstDiagram">
+    <ownedRepresentationExtensions xsi:type="description:DiagramExtensionDescription" name="ExtendsA" viewpointURI="viewpoint:/org.eclipse.sirius.tests.junit/ViewpointA" representationName="FirstDiagram">
       <layers name="Extension B">
         <nodeMappings xsi:type="description:NodeMappingImport" name="ImportClass" domainClass="EClass">
           <style xsi:type="style:LozengeNodeDescription">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#/0/@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#/0/@systemColors/@entries[name='gray']"/>
           </style>
-          <importedMapping href="viewpoint:/org.eclipse.sirius.tests/ViewpointA#//@ownedViewpoints[name='ViewpointA']/@ownedRepresentations[name='FirstDiagram']/@defaultLayer/@nodeMappings[name='Class']"/>
+          <importedMapping href="viewpoint:/org.eclipse.sirius.tests.junit/ViewpointA#//@ownedViewpoints[name='ViewpointA']/@ownedRepresentations[name='FirstDiagram']/@defaultLayer/@nodeMappings[name='Class']"/>
         </nodeMappings>
       </layers>
     </ownedRepresentationExtensions>

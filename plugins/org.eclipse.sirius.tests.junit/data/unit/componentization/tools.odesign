@@ -41,7 +41,7 @@
         <toolSections name="section2" reusedTools="//@ownedViewpoints[name='Tools']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='nodeTool']"/>
       </additionalLayers>
     </ownedRepresentations>
-    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Extended Diagram" viewpointURI="platform:/plugin/org.eclipse.sirius.tests/data/unit/componentization/tools.odesign#//@ownedViewpoints[name='Tools']" representationName="Diagram">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Extended Diagram" viewpointURI="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/componentization/tools.odesign#//@ownedViewpoints[name='Tools']" representationName="Diagram">
       <layers name="additional layer">
         <toolSections name="section1">
           <ownedTools xsi:type="tool:RequestDescription" name="requestTool"/>

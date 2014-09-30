@@ -34,9 +34,9 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
 
     public void setUp() throws Exception {
         ResourceSet set = new ResourceSetImpl();
-        modeler = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests/data/unit/vsm/valideVSM.odesign", true), set);
-        modelerWithNoStyle = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests/data/unit/vsm/validateVSMWithNoStyle.odesign", true), set);
-        modelerWithDiagramExtension = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests/data/unit/vsm/valideVSMWithDiagramExtension.odesign", true), set);
+        modeler = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/valideVSM.odesign", true), set);
+        modelerWithNoStyle = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/validateVSMWithNoStyle.odesign", true), set);
+        modelerWithDiagramExtension = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/valideVSMWithDiagramExtension.odesign", true), set);
     }
 
     /**

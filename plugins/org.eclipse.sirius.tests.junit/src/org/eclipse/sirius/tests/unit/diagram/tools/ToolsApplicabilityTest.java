@@ -446,7 +446,7 @@ class ToolsApplicabilityData {
 
     public void load() {
         ResourceSet set = new ResourceSetImpl();
-        oDesign = (Group) set.getResource(URI.createPlatformPluginURI("/org.eclipse.sirius.tests/data/unit/tools/applicability/applicability.odesign", true), true).getContents().get(0);
+        oDesign = (Group) set.getResource(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/tools/applicability/applicability.odesign", true), true).getContents().get(0);
     }
 
     public GroupToolsApplicability group() {

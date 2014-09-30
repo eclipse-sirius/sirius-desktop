@@ -36,7 +36,7 @@ import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
  */
 public class AcceleoCrossReferencerTest extends SiriusDiagramTestCase implements EcoreModeler {
 
-    private static final String CROSS_REFERENCER_TEST_ECORE = "/org.eclipse.sirius.tests/data/unit/interpreter/crossReferencer/test.ecore";
+    private static final String CROSS_REFERENCER_TEST_ECORE = "/org.eclipse.sirius.tests.junit/data/unit/interpreter/crossReferencer/test.ecore";
 
     private static final String PROJECT = "project";
 

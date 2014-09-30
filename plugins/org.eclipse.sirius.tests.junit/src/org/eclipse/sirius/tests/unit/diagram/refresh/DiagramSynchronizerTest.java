@@ -61,7 +61,7 @@ public class DiagramSynchronizerTest extends AbstractSynchronizerTest {
 
     private static final String TEST_CLASS_DIAGRAM = "Test class diagram";
 
-    private String MWSDC_AIRD = "/org.eclipse.sirius.tests/data/unit/refresh/mwsdc1243/mwscdaird.aird";
+    private String MWSDC_AIRD = "/org.eclipse.sirius.tests.junit/data/unit/refresh/mwsdc1243/mwscdaird.aird";
 
 
     /**
