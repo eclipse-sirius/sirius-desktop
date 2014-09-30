@@ -18,12 +18,12 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.diagram.description.Layer;
-
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.unit.diagram.GenericTestCase;
 
 public abstract class AbtsractLayerTests extends GenericTestCase  {
 
-    protected static final String PLUGIN = "/org.eclipse.sirius.tests";
+    protected static final String PLUGIN = "/" + SiriusTestsPlugin.PLUGIN_ID;
     
     protected DDiagram diagram;
     

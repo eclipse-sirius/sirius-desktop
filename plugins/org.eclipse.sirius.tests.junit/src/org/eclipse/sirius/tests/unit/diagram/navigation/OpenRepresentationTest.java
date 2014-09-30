@@ -28,6 +28,7 @@ import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.GenericTestCase;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -49,7 +50,7 @@ import org.eclipse.uml2.uml.Package;
  */
 public class OpenRepresentationTest extends GenericTestCase {
 
-    private static final String PLUGIN = "/org.eclipse.sirius.tests";
+    private static final String PLUGIN = "/" + SiriusTestsPlugin.PLUGIN_ID;
 
     private static final String SEMANTIC_MODEL_PATH = PLUGIN + "/data/unit/navigation/testNavigation.uml";
 

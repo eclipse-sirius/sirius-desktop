@@ -34,6 +34,7 @@ import org.eclipse.sirius.diagram.sequence.template.TLifelineMapping;
 import org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.template.TemplateFactory;
 import org.eclipse.sirius.diagram.sequence.template.TemplateToDiagramDescriptionTransformer;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 public class TemplateToDiagramDescriptionTest extends TestCase {
 
@@ -230,7 +231,7 @@ public class TemplateToDiagramDescriptionTest extends TestCase {
     }
 
     private TSequenceDiagram loadTemplate(String path) throws IOException {
-        Resource res = new XMIResourceImpl(URI.createPlatformPluginURI("/org.eclipse.sirius.tests" + path, true));
+        Resource res = new XMIResourceImpl(URI.createPlatformPluginURI("/" + SiriusTestsPlugin.PLUGIN_ID + path, true));
         res.load(Collections.EMPTY_MAP);
         return (TSequenceDiagram) res.getContents().get(0);
     }
