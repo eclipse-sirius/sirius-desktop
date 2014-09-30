@@ -103,12 +103,17 @@ public class DiagramConnectionsPreferencePage extends ConnectionsPreferencePage 
         lineStyleCombo.add(DiagramUIMessages.ConnectionsPreferencePage_ConnectionView_Rectilinear_text);
         // Add the Tree value not managed by default by GMF in this preference
         // page.
-        lineStyleCombo.add("Tree");
+        lineStyleCombo.add(Routing.TREE_LITERAL.getLiteral());
         // Listen changes of combo to change GMF preference value used for
         // creation feedback.
         lineStyleCombo.addSelectionListener(new SelectionAdapter() {
             public void widgetSelected(SelectionEvent evt) {
-                getPreferenceStore().setValue(IPreferenceConstants.PREF_LINE_STYLE, Routing.get(((Combo) evt.getSource()).getText()).getValue());
+                String comboValue = ((Combo) evt.getSource()).getText();
+                if (DiagramUIMessages.ConnectionsPreferencePage_ConnectionView_Manual_text.equals(comboValue)) {
+                    // Adapt Oblique value to Manual value
+                    comboValue = Routing.MANUAL_LITERAL.getLiteral();
+                }
+                getPreferenceStore().setValue(IPreferenceConstants.PREF_LINE_STYLE, Routing.get(comboValue).getValue());
             }
         });
     }
