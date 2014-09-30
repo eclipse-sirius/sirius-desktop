@@ -26,7 +26,7 @@ import org.osgi.framework.BundleContext;
  */
 public class SiriusTestsPlugin extends Plugin {
     /** The plug-in ID. */
-    public static final String PLUGIN_ID = "org.eclipse.sirius.tests"; //$NON-NLS-1$
+    public static final String PLUGIN_ID = "org.eclipse.sirius.tests.junit"; //$NON-NLS-1$
 
     /** This plug-in's shared instance. */
     private static SiriusTestsPlugin plugin;
