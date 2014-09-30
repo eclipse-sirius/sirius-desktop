@@ -82,8 +82,8 @@ public class AllTestSuite extends TestCase {
     public static Test suite() {
         final TestSuite suite = new TestSuite("Sirius SwtBot tests");
 
-        // TheViepointProjectCreationTest shud be done before the others ones :
-        // to verifiy the behavior when a specifier first launches the product.
+        // TheViepointProjectCreationTest should be done before the others ones:
+        // to verify the behavior when a specifier first launches the product.
         suite.addTestSuite(ViewpointSpecificationProjectCreationTest.class);
 
         suite.addTestSuite(ContentAssistTest.class);
