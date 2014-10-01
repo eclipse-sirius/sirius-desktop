@@ -41,6 +41,7 @@ import org.eclipse.sirius.tests.swtbot.layout.EdgeLayoutStabilityWithToolWizardT
 import org.eclipse.sirius.tests.swtbot.layout.LayoutStabilityOnManualRefreshTest;
 import org.eclipse.sirius.tests.swtbot.layout.ModifyEdgeLayoutAfterRefreshTest;
 import org.eclipse.sirius.tests.swtbot.layout.PackageLayoutStabilityOnManyViewsCreationToolTest;
+import org.eclipse.sirius.tests.swtbot.layout.ResetDiagramOriginTest;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.ContextualMenuTest;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.ModelExplorerFilterTests;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.ProjectDependenciesTest;
@@ -238,6 +239,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(BoldItalicFontSynchronizationTest.class);
         suite.addTestSuite(ExtensionActivationOrderTest.class);
         suite.addTestSuite(PackageLayoutStabilityOnManyViewsCreationToolTest.class);
+        suite.addTestSuite(ResetDiagramOriginTest.class);
         suite.addTestSuite(LayoutStabilityOnManualRefreshTest.class);
         suite.addTestSuite(EdgeAndPortStabilityOnSemanticChangeTest.class);
         suite.addTestSuite(SessionSaveableTest.class);

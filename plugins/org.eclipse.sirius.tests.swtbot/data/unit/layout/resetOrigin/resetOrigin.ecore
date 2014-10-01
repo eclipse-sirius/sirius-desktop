@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="">
+  <eSubpackages name="package1">
+    <eClassifiers xsi:type="ecore:EClass" name="eClass6"/>
+    <eClassifiers xsi:type="ecore:EClass" name="eClassdfgdf dfgdfgdf gdfg dfgdfg d f"/>
+  </eSubpackages>
+  <eSubpackages name="Package3">
+    <eClassifiers xsi:type="ecore:EClass" name="eClass5"/>
+    <eClassifiers xsi:type="ecore:EClass" name="eClass1">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//package1/eClass6"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="Package4"/>
+  <eSubpackages name="Package">
+    <eClassifiers xsi:type="ecore:EClass" name="eClass"/>
+    <eSubpackages name="Package"/>
+    <eSubpackages name="Package"/>
+  </eSubpackages>
+</ecore:EPackage>
