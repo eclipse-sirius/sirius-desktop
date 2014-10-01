@@ -29,7 +29,7 @@ import org.eclipse.sirius.ext.emf.EReferencePredicate;
 public interface IMetamodelExtender {
 
     /**
-     * initialize the extender with the model.
+     * Initialize the extender with the model.
      * 
      * @param set
      *            the model.
@@ -68,7 +68,7 @@ public interface IMetamodelExtender {
     void dispose();
 
     /**
-     * return the new instance or null if this name is not known or cannot be
+     * Return the new instance or null if this name is not known or cannot be
      * instantiated.
      * 
      * @param name
@@ -78,7 +78,7 @@ public interface IMetamodelExtender {
     EObject createInstance(String name);
 
     /**
-     * return true if the given name corresponds to a known type.
+     * Return true if the given name corresponds to a known type.
      * 
      * @param name
      *            name of the type to check.
@@ -88,7 +88,7 @@ public interface IMetamodelExtender {
     boolean eIsKnownType(String name);
 
     /**
-     * return true if the given {@link EObject} has an attribute or reference
+     * Return true if the given {@link EObject} has an attribute or reference
      * with the given name.
      * 
      * @param object
@@ -114,7 +114,7 @@ public interface IMetamodelExtender {
     Object eGet(EObject instance, String name);
 
     /**
-     * return the set value if the feature was found, null otherwise.
+     * Return the set value if the feature was found, null otherwise.
      * 
      * @param instance
      *            current {@link EObject}.
@@ -202,7 +202,7 @@ public interface IMetamodelExtender {
     EObject eContainer(EObject instance);
 
     /**
-     * return the set value if the feature was found, null otherwise.
+     * Return the set value if the feature was found, null otherwise.
      * 
      * @param instance
      *            any model element.
@@ -213,7 +213,7 @@ public interface IMetamodelExtender {
     boolean eInstanceOf(EObject instance, String typeName);
 
     /**
-     * return an Iterator browsing the whole model.
+     * Return an Iterator browsing the whole model.
      * 
      * @param root
      *            root model element.
@@ -263,7 +263,29 @@ public interface IMetamodelExtender {
     EObject eDelete(EObject objectToRemove, ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate);
 
     /**
-     * return true if the given instance comes from a metamodel extension
+     * Remove inverse cross references of the specified {@link EObject}. This
+     * method will not remove an element from its container except if the used
+     * {@link ECrossReferenceAdapter} return
+     * {@link org.eclipse.emf.ecore.EStructuralFeature.Setting} for the
+     * containment feature (this is not the case for the default
+     * implementation). This method is called from
+     * {@link IMetamodelExtender#eDelete(EObject, ECrossReferenceAdapter, isReferencesToIgnorePredicate)} during the
+     * deletion of an element.
+     * 
+     * @param eObject
+     *            the {@link EObject} for which remove cross references
+     * @param xref
+     *            the optional cross-referencer to use to locate all the cross
+     *            references
+     * @param isReferencesToIgnorePredicate
+     *            a predicate indicating if a given reference should be ignored
+     *            during removal or not (can be null if all references should be
+     *            considered)
+     */
+    void eRemoveInverseCrossReferences(EObject eObject, ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate);
+
+    /**
+     * Return true if the given instance comes from a metamodel extension
      * mechanism, false otherwise.
      * 
      * @param next
@@ -274,7 +296,7 @@ public interface IMetamodelExtender {
     boolean isExtension(EObject next);
 
     /**
-     * return true if the instance have extended features.
+     * Return true if the instance have extended features.
      * 
      * @param next
      *            an instance.
@@ -283,8 +305,7 @@ public interface IMetamodelExtender {
     boolean hasExtension(EObject next);
 
     /**
-     * 
-     * return a list of String representing all the attribute names the
+     * Return a list of String representing all the attribute names the
      * extension bring.
      * 
      * @param instance
@@ -295,7 +316,7 @@ public interface IMetamodelExtender {
     Iterator<String> getContributedAttributeNames(EObject instance);
 
     /**
-     * return a list of String representing all the references names the
+     * Return a list of String representing all the references names the
      * extension bring.
      * 
      * @param instance
@@ -306,7 +327,7 @@ public interface IMetamodelExtender {
     Iterator<String> getContributedReferenceNames(EObject instance);
 
     /**
-     * return true if the feature named on the given {@link EObject} is an
+     * Return true if the feature named on the given {@link EObject} is an
      * extension feature and not an intrinsic one.
      * 
      * @param next
@@ -319,7 +340,7 @@ public interface IMetamodelExtender {
     boolean isExtension(EObject next, String name);
 
     /**
-     * return a {@link String} representing the qualified name.
+     * Return a {@link String} representing the qualified name.
      * 
      * @param element
      *            an {@link EObject}.
@@ -331,7 +352,7 @@ public interface IMetamodelExtender {
     String getQualifiedName(EObject element, boolean useTypeWhenNoName);
 
     /**
-     * return a list composed of {@link ExtensionFeatureDescription} helpful to
+     * Return a list composed of {@link ExtensionFeatureDescription} helpful to
      * handle the extended feature. It will help in getting the features
      * containment or not, the cardinality or the fact that it is mandatory or
      * not for instance.
@@ -346,7 +367,7 @@ public interface IMetamodelExtender {
     Collection<ExtensionFeatureDescription> getAllExtensionFeatureDescriptions(EObject target);
 
     /**
-     * return true if this {@link EObject} should not be browsed by the other
+     * Return true if this {@link EObject} should not be browsed by the other
      * {@link IMetamodelExtender}.
      * 
      * @param root

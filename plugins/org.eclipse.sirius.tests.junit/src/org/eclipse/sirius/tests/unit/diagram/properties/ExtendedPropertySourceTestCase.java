@@ -559,6 +559,11 @@ public class ExtendedPropertySourceTestCase extends TestCase {
         public EObject eDelete(EObject objectToRemove, ECrossReferenceAdapter xref, EReferencePredicate isReferenceToIgnorePredicate) {
             return null;
         }
+        
+        @Override
+        public void eRemoveInverseCrossReferences(EObject eObject, ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate) {
+            
+        }
 
         public Object eGet(EObject instance, String name) {
             return null;

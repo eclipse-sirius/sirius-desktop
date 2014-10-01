@@ -152,38 +152,43 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
             EcoreUtil.delete(objectToRemove);
         } else {
             // Step 1: remove all references to the element to delete
-            Collection<Setting> inverseReferences = xref.getInverseReferences(objectToRemove, true);
-            Collection<Setting> containmentReferences = getContainmentReferences(inverseReferences);
-            Collection<Setting> otherReferences = getNonContainmentReferences(inverseReferences);
-            for (EStructuralFeature.Setting setting : otherReferences) {
-
-                // If reference is changeable and should not be ignored
-                boolean isChangeableFeature = setting.getEStructuralFeature().isChangeable();
-                boolean isFeatureToIgnore = isReferencesToIgnorePredicate != null && setting.getEStructuralFeature() instanceof EReference
-                        && isReferencesToIgnorePredicate.apply((EReference) setting.getEStructuralFeature());
-
-                if (isChangeableFeature && !isFeatureToIgnore) {
-                    // we delete it
-                    EcoreUtil.remove(setting, objectToRemove);
-                }
-            }
-            for (EStructuralFeature.Setting setting : containmentReferences) {
-
-                // If reference is changeable and should not be ignored
-                boolean isChangeableFeature = setting.getEStructuralFeature().isChangeable();
-                boolean isFeatureToIgnore = isReferencesToIgnorePredicate != null && setting.getEStructuralFeature() instanceof EReference
-                        && isReferencesToIgnorePredicate.apply((EReference) setting.getEStructuralFeature());
-
-                if (isChangeableFeature && !isFeatureToIgnore) {
-                    // we delete it
-                    EcoreUtil.remove(setting, objectToRemove);
-                }
-            }
+            eRemoveInverseCrossReferences(objectToRemove, xref, isReferencesToIgnorePredicate);
 
             // Step 2: remove the element from its container
             EcoreUtil.remove(objectToRemove);
         }
         return objectToRemove;
+    }
+    
+    @Override
+    public void eRemoveInverseCrossReferences(EObject eObject, ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate) {
+        Collection<Setting> inverseReferences = xref.getInverseReferences(eObject, true);
+        Collection<Setting> containmentReferences = getContainmentReferences(inverseReferences);
+        Collection<Setting> otherReferences = getNonContainmentReferences(inverseReferences);
+        for (EStructuralFeature.Setting setting : otherReferences) {
+
+            // If reference is changeable and should not be ignored
+            boolean isChangeableFeature = setting.getEStructuralFeature().isChangeable();
+            boolean isFeatureToIgnore = isReferencesToIgnorePredicate != null && setting.getEStructuralFeature() instanceof EReference
+                    && isReferencesToIgnorePredicate.apply((EReference) setting.getEStructuralFeature());
+
+            if (isChangeableFeature && !isFeatureToIgnore) {
+                // we delete it
+                EcoreUtil.remove(setting, eObject);
+            }
+        }
+        for (EStructuralFeature.Setting setting : containmentReferences) {
+
+            // If reference is changeable and should not be ignored
+            boolean isChangeableFeature = setting.getEStructuralFeature().isChangeable();
+            boolean isFeatureToIgnore = isReferencesToIgnorePredicate != null && setting.getEStructuralFeature() instanceof EReference
+                    && isReferencesToIgnorePredicate.apply((EReference) setting.getEStructuralFeature());
+
+            if (isChangeableFeature && !isFeatureToIgnore) {
+                // we delete it
+                EcoreUtil.remove(setting, eObject);
+            }
+        }
     }
 
     private Collection<Setting> getContainmentReferences(Collection<Setting> inverseReferences) {

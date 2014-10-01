@@ -448,14 +448,13 @@ public class ModelAccessor {
      *            be considered)
      * 
      * @param simpleRemoveShouldBePerformedIfDanglingReferenceIsNotChangeable
-     *            indicates whether a "simple" remove sould be performed if one
+     *            indicates whether a "simple" remove should be performed if one
      *            of the features referencing the element to delete is not
      *            editable. If false, then we will delete all references that
      *            can be deleted and leave the not changeable features
      *            unchanged.
      */
-    private void eDelete(EObject objectToRemove, ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate,
-            boolean simpleRemoveShouldBePerformedIfDanglingReferenceIsNotChangeable) {
+    private void eDelete(EObject objectToRemove, ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate, boolean simpleRemoveShouldBePerformedIfDanglingReferenceIsNotChangeable) {
         // Step 1: getting cross referencer for the adapters of the object to
         // remove (if needed)
         final ECrossReferenceAdapter effectiveXRef;
@@ -507,6 +506,53 @@ public class ModelAccessor {
             // throw a Locked Instance exception
             throw new LockedInstanceException(objectToRemove);
         }
+    }
+
+    /**
+     * Remove inverse cross references of the specified {@link EObject}. This
+     * method will not remove an element from its container except if the used
+     * {@link ECrossReferenceAdapter} return
+     * {@link org.eclipse.emf.ecore.EStructuralFeature.Setting} for the
+     * containment feature (this is not the case for the default implementation)
+     * . See
+     * {@link ModelAccessor#eDelete(EObject, ECrossReferenceAdapter, EReferencePredicate)}
+     * to delete an element, i.e. remove it from its container and then remove
+     * its inverse cross references.
+     * 
+     * This method will throw a {@link LockedInstanceException} if the
+     * permission authority does not allow to edit one of the feature to modify.
+     * 
+     * @param eObject
+     *            the {@link EObject} for which remove cross references
+     * @param xref
+     *            the optional cross-referencer to use to locate all the cross
+     *            references
+     * @param isReferencesToIgnorePredicate
+     *            a predicate indicating if a given reference should be ignored
+     *            during removal or not (can be null if all references should be
+     *            considered)
+     */
+    public void eRemoveInverseCrossReferences(EObject eObject, ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate) {
+        // Step 1: getting cross referencer for the adapters of the object to
+        // remove (if needed)
+        final ECrossReferenceAdapter effectiveXRef;
+        if (xref == null) {
+            effectiveXRef = ECrossReferenceAdapter.getCrossReferenceAdapter(eObject);
+        } else {
+            effectiveXRef = xref;
+        }
+
+        // Step 2: determine if all inverse cross references can be removed by
+        // checking for authority and feature
+        // Determine if all features can be edited.
+        // This can throw a Locked Instance exception if one of the
+        // element holding a changeable features is not editable according to
+        // the authority
+        allReferencesCanBeEdited(eObject, effectiveXRef, isReferencesToIgnorePredicate);
+
+        // Remove all inverse cross references on non-ignored changeable
+        // features
+        extender.eRemoveInverseCrossReferences(eObject, effectiveXRef, isReferencesToIgnorePredicate);
     }
 
     /**

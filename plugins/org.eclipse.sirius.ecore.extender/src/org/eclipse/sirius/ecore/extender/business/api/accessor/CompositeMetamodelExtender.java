@@ -232,6 +232,13 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         }
         return result;
     }
+    
+    @Override
+    public void eRemoveInverseCrossReferences(EObject eObject, ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate) {
+        for (final IMetamodelExtender extender : getActivatedExtenders()) {
+            extender.eRemoveInverseCrossReferences(eObject, xref, isReferencesToIgnorePredicate);
+        }        
+    }
 
     @Override
     public Object eGet(final EObject instance, final String name) {
@@ -474,4 +481,5 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         }
         return activeExtenders;
     }
+
 }

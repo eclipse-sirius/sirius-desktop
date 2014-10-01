@@ -346,6 +346,20 @@
 				<code>org.eclipse.sirius.synchronizer.ModelToModelSynchronizer.update(CreatedOutput, boolean)</code> has been added to specify if we want partial refresh or not.
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ecore.extender">Changes in 
+			<code>org.eclipse.sirius.ecore.extender</code>
+		</h4>
+		<ul>
+			<li>
+				<code>org.eclipse.sirius.ecore.extender.business.api.accessor.IMetamodelExtender.eRemoveInverseCrossReferences(EObject, ECrossReferenceAdapter, EReferencePredicate)</code> has been added as a way to remove the inverse cross references without removing an 
+				<code>EObject</code> from its container. For example it can be used to avoid the dangling references to an indirectly detached object without removing it from its already detached container and avoid additional REMOVE notifications. The method has been extracted from and is now used by 
+				<code>IMetamodelExtender.eDelete()</code>.
+			</li>
+			<li>
+				<code>org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor.eRemoveCrossReferences(EObject, ECrossReferenceAdapter, EReferencePredicate)</code> has been added as a way to remove the inverse cross references without removing an 
+				<code>EObject</code> from its container after a check by the permission authority that all changeable feature to modify can be edited.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ext.gmf.runtime">Changes in 
 			<code>org.eclipse.sirius.ext.gmf.runtime</code>
 		</h4>
@@ -969,7 +983,7 @@
 				<code>org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager.initializeAfterLoad()</code> method has been removed. There is no replacement for this method documented as &#8220;Not intended to be used by client&#8221;.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ecore.extender">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ecore.extender2">Changes in 
 			<code>org.eclipse.sirius.ecore.extender</code>
 		</h4>
 		<ul>
@@ -1572,7 +1586,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>AbstractDiagramEdgeEditPart.refreshPath()</code> have been removed. It is not called in Sirius code anymore
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ecore.extender2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ecore.extender3">Changes in 
 			<code>org.eclipse.sirius.ecore.extender</code>
 		</h4>
 		<ul>

@@ -115,6 +115,11 @@ h4. Changes in @org.eclipse.sirius.synchronizer@
 * @org.eclipse.sirius.synchronizer.CreatedOutput.synchronizeChildren()@ has been added to allow doing a partial refresh of tree, i.e. to not refresh children of collapsed tree item.
 * @org.eclipse.sirius.synchronizer.ModelToModelSynchronizer.update(CreatedOutput, boolean)@ has been added to specify if we want partial refresh or not.
 
+h4. Changes in @org.eclipse.sirius.ecore.extender@
+
+* @org.eclipse.sirius.ecore.extender.business.api.accessor.IMetamodelExtender.eRemoveInverseCrossReferences(EObject, ECrossReferenceAdapter, EReferencePredicate)@ has been added as a way to remove the inverse cross references without removing an @EObject@ from its container. For example it can be used to avoid the dangling references to an indirectly detached object without removing it from its already detached container and avoid additional REMOVE notifications. The method has been extracted from and is now used by @IMetamodelExtender.eDelete()@.
+* @org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor.eRemoveCrossReferences(EObject, ECrossReferenceAdapter, EReferencePredicate)@ has been added as a way to remove the inverse cross references without removing an @EObject@ from its container after a check by the permission authority that all changeable feature to modify can be edited.
+
 h4. Changes in @org.eclipse.sirius.ext.gmf.runtime@
 
 * Several utilities have been added in @org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper@:
