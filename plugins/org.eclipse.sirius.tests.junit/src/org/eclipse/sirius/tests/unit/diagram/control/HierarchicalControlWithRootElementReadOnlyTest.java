@@ -148,7 +148,7 @@ public class HierarchicalControlWithRootElementReadOnlyTest extends AbstractHier
 
         // Step 3 : passed 2067.ecore and 2067.aird on read only
         IFile semanticModelFile = getFile("vp-2067/2067.ecore");
-        setReadOnly(semanticModelFile);
+        readonlyValidator.setReadOnly(semanticModelFile);
         IFile sessionFile = getFile("vp-2067/2067.aird");
         readonlyValidator.setReadOnly(sessionFile);
 
