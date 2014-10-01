@@ -67,11 +67,11 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
             result = TabbarRouterAction.createTreeRouterAction(workbenchPage);
         } else if (ActionIds.DESELECT_ALL.equals(actionId)) {
             result = new DeselectAllAction();
-        } else if (ActionIds.DISTRIBUTE_HORIZONTALLY_WITH_UNIFORM_GAPS.equals(actionId)) {
+        } else if (ActionIds.DISTRIBUTE_GAPS_HORIZONTALLY.equals(actionId)) {
             result = DistributeAction.createDistributeHorizontallyWithUniformGapsAction(workbenchPage, false);
         } else if (ActionIds.DISTRIBUTE_CENTERS_HORIZONTALLY.equals(actionId)) {
             result = DistributeAction.createDistributeCentersHorizontallyAction(workbenchPage, false);
-        } else if (ActionIds.DISTRIBUTE_VERTICALLY_WITH_UNIFORM_GAPS.equals(actionId)) {
+        } else if (ActionIds.DISTRIBUTE_GAPS_VERTICALLY.equals(actionId)) {
             result = DistributeAction.createDistributeVerticallyWithUniformGapsAction(workbenchPage, false);
         } else if (ActionIds.DISTRIBUTE_CENTERS_VERTICALLY.equals(actionId)) {
             result = DistributeAction.createDistributeCentersVerticallyAction(workbenchPage, false);

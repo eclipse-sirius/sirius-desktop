@@ -102,11 +102,11 @@ public class DistributeCommand extends AbstractTransactionalCommand {
                 partToBounds.put(part, bounds);
             }
 
-            if (distributeType == DistributeAction.HORIZONTALLY_WITH_UNIFORM_GAPS) {
+            if (distributeType == DistributeAction.GAPS_HORIZONTALLY) {
                 distributeHorizontallyWithUniformGaps(partToBounds);
             } else if (distributeType == DistributeAction.CENTERS_HORIZONTALLY) {
                 distributeCentersHorizontally(partToBounds);
-            } else if (distributeType == DistributeAction.VERTICALLY_WITH_UNIFORM_GAPS) {
+            } else if (distributeType == DistributeAction.GAPS_VERTICALLY) {
                 distributeVerticallyWithUniformGaps(partToBounds);
             } else if (distributeType == DistributeAction.CENTERS_VERTICALLY) {
                 distributeCentersVertically(partToBounds);

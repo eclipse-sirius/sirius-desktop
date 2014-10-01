@@ -73,17 +73,17 @@ Four new actions allow to distribute shapes:
 
 !images/distribute_initialState.png!
 
-* Distribute centers evenly horizontally: Distributes the selected shapes so that the gap between horizontal centers of each selected shapes will be the same.
+* Distribute centers horizontally: Distributes the selected shapes so that the gap between horizontal centers of each selected shapes will be the same.
 
 !images/distribute_Centers.png!
 
-* Distribute with uniform gaps horizontally: Distributes the selected shapes so that the gap between the left side and the right side of each consecutive shapes will be the same.
+* Distribute gaps horizontally: Distributes the selected shapes so that the gap between the left side and the right side of each consecutive shapes will be the same.
 
 !images/distribute_WithUniformGap.png!
 
-* Distribute centers evenly vertically: Distributes the selected shapes so that the gap between vertical centers of each selected shapes will be the same.
+* Distribute centers vertically: Distributes the selected shapes so that the gap between vertical centers of each selected shapes will be the same.
 
-* Distribute with uniform gaps vertically: the gap between the bottom side and the top side of each consecutive shapes will be the same.
+* Distribute gaps vertically: the gap between the bottom side and the top side of each consecutive shapes will be the same.
 
 These new actions are also available in contextual menu _Format/Distribute_ or in menu bar _ Diagram/Distribute_.
 
@@ -110,7 +110,6 @@ For vertical distribution with uniform gaps:
 For vertical centered distribution:
 * the first shape is the highest one (with its center at the minimum y coordinate). If several shapes are aligned on middle, the leftmost one is the first.
 * the last shape is the lowest one (with the bottom side with the maximum y coordinate). If several shapes are aligned by middle, the rightmost one is the last.
-
 
 h3. Reset Diagram Origin
 

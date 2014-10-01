@@ -109,7 +109,7 @@ public class TabbarDistributeMenuManager extends DistributeMenuManager {
                 add(DistributeAction.createDistributeCentersHorizontallyAction(page, true));
                 add(DistributeAction.createDistributeVerticallyWithUniformGapsAction(page, true));
                 add(DistributeAction.createDistributeCentersVerticallyAction(page, true));
-                setDefaultAction(ActionIds.DISTRIBUTE_HORIZONTALLY_WITH_UNIFORM_GAPS);
+                setDefaultAction(ActionIds.DISTRIBUTE_GAPS_HORIZONTALLY);
             }
         }
     }

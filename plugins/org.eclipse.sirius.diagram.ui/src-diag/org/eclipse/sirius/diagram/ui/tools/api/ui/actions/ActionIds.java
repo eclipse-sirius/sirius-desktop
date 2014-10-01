@@ -69,12 +69,12 @@ public interface ActionIds {
     String DISTRIBUTE_CENTERS_HORIZONTALLY = RequestConstants.REQ_DISTRIBUTE + "CentersHorizontally";
 
     /** Action's id to distribute horizontally with uniform gaps. */
-    String DISTRIBUTE_HORIZONTALLY_WITH_UNIFORM_GAPS = RequestConstants.REQ_DISTRIBUTE + "HorizontallyWithUniformGaps";
+    String DISTRIBUTE_GAPS_HORIZONTALLY = RequestConstants.REQ_DISTRIBUTE + "GapsHorizontally";
 
     /** Action's id to distribute centers vertically. */
     String DISTRIBUTE_CENTERS_VERTICALLY = RequestConstants.REQ_DISTRIBUTE + "CentersVertically";
 
     /** Action's id to distribute vertically with uniform gaps. */
-    String DISTRIBUTE_VERTICALLY_WITH_UNIFORM_GAPS = RequestConstants.REQ_DISTRIBUTE + "VerticallyWithUniformGaps";
+    String DISTRIBUTE_GAPS_VERTICALLY = RequestConstants.REQ_DISTRIBUTE + "GapsVertically";
 
 }

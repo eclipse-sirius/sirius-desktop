@@ -45,13 +45,13 @@ import com.google.common.collect.Lists;
 public class DistributeAction extends DiagramAction {
 
     /** Constant indicating horizontal distribution with uniform gaps. */
-    public static final int HORIZONTALLY_WITH_UNIFORM_GAPS = 0;
+    public static final int GAPS_HORIZONTALLY = 0;
 
     /** Constant indicating distribution of centers horizontally. */
     public static final int CENTERS_HORIZONTALLY = 1;
 
     /** Constant indicating vertical distribution with uniform gaps. */
-    public static final int VERTICALLY_WITH_UNIFORM_GAPS = 2;
+    public static final int GAPS_VERTICALLY = 2;
 
     /** Constant indicating distribution of centers vertically. */
     public static final int CENTERS_VERTICALLY = 3;
@@ -60,16 +60,28 @@ public class DistributeAction extends DiagramAction {
     private static final String DISTRIBUTE_PREFIX = "Distribute ";
 
     /** Label for horizontal distribution with uniform gaps. */
-    private static final String HORIZONTALLY_WITH_UNIFORM_GAPS_LABEL = "Horizontally With Uniform Gaps";
+    private static final String GAPS_HORIZONTALLY_LABEL = "Gaps Horizontally";
 
     /** Label for distribution of centers horizontally. */
-    private static final String CENTERS_HORIZONTALLY_LABEL = "Centers Evenly Horizontally";
+    private static final String CENTERS_HORIZONTALLY_LABEL = "Centers Horizontally";
 
     /** Label for vertical distribution with uniform gaps. */
-    private static final String VERTICALLY_WITH_UNIFORM_GAPS_LABEL = "Vertically With Uniform Gaps";
+    private static final String GAPS_VERTICALLY_LABEL = "Gaps Vertically";
 
     /** Label for distribution of centers vertically. */
-    private static final String CENTERS_VERTICALLY_LABEL = "Centers Evenly Vertically";
+    private static final String CENTERS_VERTICALLY_LABEL = "Centers Vertically";
+
+    /** Label for horizontal distribution with uniform gaps. */
+    private static final String GAPS_HORIZONTALLY_TOOLTIP = DISTRIBUTE_PREFIX + " With Uniform Gaps Horizontally";
+
+    /** Label for distribution of centers horizontally. */
+    private static final String CENTERS_HORIZONTALLY_TOOLTIP = DISTRIBUTE_PREFIX + "Centers Evenly Horizontally";
+
+    /** Label for vertical distribution with uniform gaps. */
+    private static final String GAPS_VERTICALLY_TOOLTIP = DISTRIBUTE_PREFIX + "With Uniform Gaps Vertically";
+
+    /** Label for distribution of centers vertically. */
+    private static final String CENTERS_VERTICALLY_TOOLTIP = DISTRIBUTE_PREFIX + "Centers Evenly Vertically";
 
     /**
      * The distribution type must by one of:
@@ -105,7 +117,7 @@ public class DistributeAction extends DiagramAction {
         super(workbenchPage);
         this.distributeType = distributeType;
         setText(getLabel(distributeType, isToolbarItem));
-        setToolTipText(getText());
+        setToolTipText(getTooltip(distributeType));
     }
 
     /**
@@ -122,14 +134,14 @@ public class DistributeAction extends DiagramAction {
     public static String getLabel(int distributeType, boolean isToolbarItem) {
         String label = StringStatics.BLANK;
         switch (distributeType) {
-        case DistributeAction.HORIZONTALLY_WITH_UNIFORM_GAPS:
-            label = DistributeAction.HORIZONTALLY_WITH_UNIFORM_GAPS_LABEL;
+        case DistributeAction.GAPS_HORIZONTALLY:
+            label = DistributeAction.GAPS_HORIZONTALLY_LABEL;
             break;
         case DistributeAction.CENTERS_HORIZONTALLY:
             label = DistributeAction.CENTERS_HORIZONTALLY_LABEL;
             break;
-        case DistributeAction.VERTICALLY_WITH_UNIFORM_GAPS:
-            label = DistributeAction.VERTICALLY_WITH_UNIFORM_GAPS_LABEL;
+        case DistributeAction.GAPS_VERTICALLY:
+            label = DistributeAction.GAPS_VERTICALLY_LABEL;
             break;
         case DistributeAction.CENTERS_VERTICALLY:
             label = DistributeAction.CENTERS_VERTICALLY_LABEL;
@@ -145,6 +157,34 @@ public class DistributeAction extends DiagramAction {
     }
 
     /**
+     * Get the tooltip of the action according to <code>distributionType</code>.
+     * 
+     * @param distributeType
+     *            the kind of distribution.
+     * @return The tooltip
+     */
+    public static String getTooltip(int distributeType) {
+        String tooltip = StringStatics.BLANK;
+        switch (distributeType) {
+        case DistributeAction.GAPS_HORIZONTALLY:
+            tooltip = DistributeAction.GAPS_HORIZONTALLY_TOOLTIP;
+            break;
+        case DistributeAction.CENTERS_HORIZONTALLY:
+            tooltip = DistributeAction.CENTERS_HORIZONTALLY_TOOLTIP;
+            break;
+        case DistributeAction.GAPS_VERTICALLY:
+            tooltip = DistributeAction.GAPS_VERTICALLY_TOOLTIP;
+            break;
+        case DistributeAction.CENTERS_VERTICALLY:
+            tooltip = DistributeAction.CENTERS_VERTICALLY_TOOLTIP;
+            break;
+        default:
+            break;
+        }
+        return tooltip;
+    }
+
+    /**
      * Creates the Distribute action to distribute shapes horizontally with
      * uniform gaps.
      * 
@@ -156,8 +196,8 @@ public class DistributeAction extends DiagramAction {
      * @return the corresponding action
      */
     public static DistributeAction createDistributeHorizontallyWithUniformGapsAction(IWorkbenchPage workbenchPage, boolean isToolbarItem) {
-        DistributeAction action = new DistributeAction(workbenchPage, DistributeAction.HORIZONTALLY_WITH_UNIFORM_GAPS, isToolbarItem);
-        action.setId(ActionIds.DISTRIBUTE_HORIZONTALLY_WITH_UNIFORM_GAPS);
+        DistributeAction action = new DistributeAction(workbenchPage, DistributeAction.GAPS_HORIZONTALLY, isToolbarItem);
+        action.setId(ActionIds.DISTRIBUTE_GAPS_HORIZONTALLY);
         ImageDescriptor bundledImageDescriptor = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DISTRIBUTE_WITH_UNIFORM_GAPS_HORIZONTALLY);
         action.setImageDescriptor(bundledImageDescriptor);
         action.setHoverImageDescriptor(bundledImageDescriptor);
@@ -196,8 +236,8 @@ public class DistributeAction extends DiagramAction {
      * @return the corresponding action
      */
     public static DistributeAction createDistributeVerticallyWithUniformGapsAction(IWorkbenchPage workbenchPage, boolean isToolbarItem) {
-        DistributeAction action = new DistributeAction(workbenchPage, DistributeAction.VERTICALLY_WITH_UNIFORM_GAPS, isToolbarItem);
-        action.setId(ActionIds.DISTRIBUTE_VERTICALLY_WITH_UNIFORM_GAPS);
+        DistributeAction action = new DistributeAction(workbenchPage, DistributeAction.GAPS_VERTICALLY, isToolbarItem);
+        action.setId(ActionIds.DISTRIBUTE_GAPS_VERTICALLY);
         ImageDescriptor bundledImageDescriptor = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DISTRIBUTE_WITH_UNIFORM_GAPS_VERTICALLY);
         action.setImageDescriptor(bundledImageDescriptor);
         action.setHoverImageDescriptor(bundledImageDescriptor);
@@ -293,11 +333,11 @@ public class DistributeAction extends DiagramAction {
     }
 
     private boolean isHorizontalAxisAuthorizedForBorderNode(int side) {
-        return isOnHorizontalAxis(side) && (distributeType == DistributeAction.HORIZONTALLY_WITH_UNIFORM_GAPS || distributeType == DistributeAction.CENTERS_HORIZONTALLY);
+        return isOnHorizontalAxis(side) && (distributeType == DistributeAction.GAPS_HORIZONTALLY || distributeType == DistributeAction.CENTERS_HORIZONTALLY);
     }
 
     private boolean isVerticalAxisAuthorizedForBorderNode(int side) {
-        return isOnVerticalAxis(side) && (distributeType == DistributeAction.VERTICALLY_WITH_UNIFORM_GAPS || distributeType == DistributeAction.CENTERS_VERTICALLY);
+        return isOnVerticalAxis(side) && (distributeType == DistributeAction.GAPS_VERTICALLY || distributeType == DistributeAction.CENTERS_VERTICALLY);
     }
 
     private boolean isABorderNodeOnSameAxis(EditPart part, int expectedSide) {
