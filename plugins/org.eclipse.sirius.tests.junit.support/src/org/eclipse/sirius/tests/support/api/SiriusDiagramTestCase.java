@@ -1379,7 +1379,9 @@ public class SiriusDiagramTestCase extends SiriusTestCase {
     }
 
     /**
-     * Passed file on read only status.
+     * Passed file on read only status. Please note that some filesystems might
+     * not support setting the file as readonly. This method will make the test
+     * fail if we could mark the file as readonly.
      * 
      * @param file
      *            the file to pass in read only status

@@ -11,10 +11,17 @@
 package org.eclipse.sirius.tests.unit.diagram.control;
 
 import java.util.Collections;
+import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IResourceChangeEvent;
+import org.eclipse.core.resources.IResourceChangeListener;
+import org.eclipse.core.resources.IResourceDelta;
+import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.command.Command;
@@ -30,6 +37,8 @@ import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
+
+import com.google.common.collect.Sets;
 
 /**
  * Tests ensuring that if Control/Uncontrol grandson when the grand father is in
@@ -48,6 +57,48 @@ public class HierarchicalControlWithRootElementReadOnlyTest extends AbstractHier
     private URI controlledModelUrip1p1p1;
 
     private URI controlledAirdUrip1p1p1;
+
+    class ExplicitFileModificationValidator implements IResourceChangeListener {
+
+        Set<IPath> readOnlyfullPaths = Sets.newLinkedHashSet();
+
+        public void setReadOnly(IFile file) {
+            readOnlyfullPaths.add(file.getFullPath());
+        }
+
+        @Override
+        public void resourceChanged(IResourceChangeEvent event) {
+
+            IResourceDelta delta = event.getDelta();
+
+            if (delta != null) {
+                IResourceDeltaVisitor visitor = new IResourceDeltaVisitor() {
+
+                    @Override
+                    public boolean visit(IResourceDelta delta) {
+
+                        boolean continueToVisit = true;
+                        IResource resource = delta.getResource();
+                        if (resource.getFullPath() != null && readOnlyfullPaths.contains(resource.getFullPath())) {
+                            throw new RuntimeException("File :" + resource.getFullPath() + " has been changed whereas it was explicitely marked as not to be changed");
+                        }
+
+                        return true;
+                    }
+
+                };
+                try {
+                    delta.accept(visitor);
+                } catch (CoreException e) {
+                    throw new RuntimeException(e);
+                }
+
+            }
+
+        }
+    }
+
+    private ExplicitFileModificationValidator readonlyValidator = new ExplicitFileModificationValidator();
 
     /**
      * {@inheritDoc}
@@ -72,6 +123,7 @@ public class HierarchicalControlWithRootElementReadOnlyTest extends AbstractHier
             representationP1 = ((DView) session.getOwnedViews().toArray()[0]).getAllRepresentations().get(0);
         }
 
+        ResourcesPlugin.getWorkspace().addResourceChangeListener(readonlyValidator);
     }
 
     /**
@@ -98,7 +150,7 @@ public class HierarchicalControlWithRootElementReadOnlyTest extends AbstractHier
         IFile semanticModelFile = getFile("vp-2067/2067.ecore");
         setReadOnly(semanticModelFile);
         IFile sessionFile = getFile("vp-2067/2067.aird");
-        setReadOnly(sessionFile);
+        readonlyValidator.setReadOnly(sessionFile);
 
         // Step 4 control p1p1p1 (grandSon)
         final SiriusControlCommand vccp1p1p1 = new SiriusControlCommand(rootP1P1P1, controlledModelUrip1p1p1, Collections.singleton(representationP1), controlledAirdUrip1p1p1, true, new NullProgressMonitor());
@@ -133,9 +185,9 @@ public class HierarchicalControlWithRootElementReadOnlyTest extends AbstractHier
 
         // Step 3 : passed 2067.ecore and 2067.aird on read only
         IFile semanticModelFile = getFile("vp-2067/2067.ecore");
-        setReadOnly(semanticModelFile);
+        readonlyValidator.setReadOnly(semanticModelFile);
         IFile sessionFile = getFile("vp-2067/2067.aird");
-        setReadOnly(sessionFile);
+        readonlyValidator.setReadOnly(sessionFile);
 
         // Step 3 : uncontrol p1p1p1
         boolean isControlledP1p1p1 = AdapterFactoryEditingDomain.isControlled(rootP1P1P1);
@@ -171,6 +223,7 @@ public class HierarchicalControlWithRootElementReadOnlyTest extends AbstractHier
      */
     @Override
     protected void tearDown() throws Exception {
+        ResourcesPlugin.getWorkspace().removeResourceChangeListener(readonlyValidator);
         // Setting the preference to its old value
         if (session != null) {
             session.close(new NullProgressMonitor());
