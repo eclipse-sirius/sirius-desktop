@@ -163,6 +163,11 @@
 				<code>RGBValues</code>'s values. This is used during refresh when there isn&#8217;t any 
 				<code>ColorDescription</code>, for example in tree dialect where background color definition is optional.
 			</li>
+			<li>The 
+				<code>org.eclipse.sirius.business.api.tool.ToolFilterDescriptionListener.ToolFilterDescriptionListener()</code> constructor now takes an 
+				<code>IInterpreter</code> as additional parameter to capture the current interpreter and avoid calls to the 
+				<code>IInterpreterRegistry</code> for each evaluation of the tool filter expressions.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
 			<code>org.eclipse.sirius.ui</code>

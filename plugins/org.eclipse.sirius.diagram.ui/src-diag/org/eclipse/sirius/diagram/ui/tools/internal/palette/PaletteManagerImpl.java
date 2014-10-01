@@ -684,7 +684,7 @@ public class PaletteManagerImpl implements PaletteManager {
                             addToolFilter(filter);
                         }
                         /**/
-                        listenersManager.addListenersForFilters(((AbstractToolDescription) toolEntry).getFilters());
+                        listenersManager.addListenersForFilters(interpreter, ((AbstractToolDescription) toolEntry).getFilters());
                     } else if (toolEntry instanceof ToolGroup) {
                         updateFilters(session, new DiagramComponentizationManager().getTools(session.getSelectedViewpoints(false), (ToolGroup) toolEntry));
                     }

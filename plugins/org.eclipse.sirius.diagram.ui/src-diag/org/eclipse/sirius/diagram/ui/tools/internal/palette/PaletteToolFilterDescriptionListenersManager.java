@@ -16,6 +16,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.business.api.tool.ToolFilterDescriptionListener;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
@@ -59,10 +60,13 @@ public class PaletteToolFilterDescriptionListenersManager implements Runnable {
     /**
      * Add listeners for given filters.
      * 
+     * @param interpreter
+     *            the interpreter to use to evaluate the preconditions.
+     * 
      * @param filters
      *            the filters
      */
-    public void addListenersForFilters(Collection<ToolFilterDescription> filters) {
+    public void addListenersForFilters(IInterpreter interpreter, Collection<ToolFilterDescription> filters) {
         // If a DDiagram editor has a palette tool with a feature change
         // listener on a containment feature of DDiagram/DDiagramElement/Style
         // (or one of their super/sub types), and if the user deletes the
@@ -70,9 +74,9 @@ public class PaletteToolFilterDescriptionListenersManager implements Runnable {
         // (detachment/delete notification), and the null domain case has to be
         // handled as the gmf diagram is detached and the editor and its
         // PaletteToolFilterListenersManager are asynchronously closed/disposed.
-        if (listeners != null & domain != null) {
+        if (listeners != null && domain != null) {
             for (final ToolFilterDescription filter : filters) {
-                ToolFilterDescriptionListener listener = new ToolFilterDescriptionListener(filter, (DDiagram) diagram.getElement());
+                ToolFilterDescriptionListener listener = new ToolFilterDescriptionListener(interpreter, filter, (DDiagram) diagram.getElement());
                 listener.setUpdateRunnable(this);
                 domain.addResourceSetListener(listener);
                 listeners.add(listener);

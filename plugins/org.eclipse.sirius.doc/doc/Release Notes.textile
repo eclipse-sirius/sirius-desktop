@@ -58,6 +58,7 @@ h4. Changes in @org.eclipse.sirius@
  a common precommit/postcommit notifications filter to tree/table dialect.
 * @org.eclipse.sirius.tools.api.profiler.SiriusTasksKey.CHANGE_SWT_LINE_COLAPSE_STATE_KEY@ constant has been deprecated in favor of @SiriusTasksKey.CHANGE_SWT_LINE_COLLAPSE_STATE_KEY@ to fix a typo.
 * @org.eclipse.sirius.business.api.color.AbstractColorUpdater.DEFAULT_RED_VALUE/DEFAULT_GREEN_VALUE/DEFAULT_BLUE_VALUE@ constants have been added to have access to default @RGBValues@'s values. This is used during refresh when there isn't any @ColorDescription@, for example in tree dialect where background color definition is optional.
+* The @org.eclipse.sirius.business.api.tool.ToolFilterDescriptionListener.ToolFilterDescriptionListener()@ constructor now takes an @IInterpreter@ as additional parameter to capture the current interpreter and avoid calls to the @IInterpreterRegistry@ for each evaluation of the tool filter expressions.
  
 h4. Changes in @org.eclipse.sirius.ui@
 

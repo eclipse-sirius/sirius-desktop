@@ -24,7 +24,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.FeatureChangeListener;
@@ -49,14 +48,18 @@ public class ToolFilterDescriptionListener extends DemultiplexingListener {
     /**
      * Create a new instance.
      * 
+     * @param interpreter
+     *            the interpreter to use to evaluate the tool filter
+     *            expressions.
+     * 
      * @param filter
      *            the filter from which to create a resource set listener
      * @param representation
      *            the representation to use as context for elements to listen
      *            computation
      */
-    public ToolFilterDescriptionListener(final ToolFilterDescription filter, final DRepresentation representation) {
-        super(ToolFilterDescriptionListener.getFilter(representation, filter));
+    public ToolFilterDescriptionListener(IInterpreter interpreter, final ToolFilterDescription filter, final DRepresentation representation) {
+        super(ToolFilterDescriptionListener.getFilter(interpreter, representation, filter));
         this.filter = filter;
     }
 
@@ -113,8 +116,8 @@ public class ToolFilterDescriptionListener extends DemultiplexingListener {
         return SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(domain.getResourceSet());
     }
 
-    private static NotificationFilter getFilter(final DRepresentation representation, ToolFilterDescription filter) {
-        final Collection<EObject> elementsToListen = ToolFilterDescriptionListener.elementsToListen(representation, filter.getElementsToListen());
+    private static NotificationFilter getFilter(IInterpreter interpreter, final DRepresentation representation, ToolFilterDescription filter) {
+        final Collection<EObject> elementsToListen = ToolFilterDescriptionListener.elementsToListen(interpreter, representation, filter.getElementsToListen());
         NotificationFilter notificationFilter = NotificationFilter.NOT_TOUCH;
         for (final EObject eObject : elementsToListen) {
             notificationFilter = notificationFilter.and(NotificationFilter.createNotifierFilter(eObject));
@@ -122,8 +125,7 @@ public class ToolFilterDescriptionListener extends DemultiplexingListener {
         return notificationFilter;
     }
 
-    private static Collection<EObject> elementsToListen(final DRepresentation representation, final String elementsToListen) {
-        final IInterpreter interpreter = InterpreterUtil.getInterpreter(representation);
+    private static Collection<EObject> elementsToListen(IInterpreter interpreter, final DRepresentation representation, final String elementsToListen) {
         Collection<EObject> semanticCandidates = Collections.emptySet();
         try {
             if (interpreter != null && !StringUtil.isEmpty(elementsToListen)) {
