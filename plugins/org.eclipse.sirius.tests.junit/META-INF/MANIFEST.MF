@@ -61,7 +61,9 @@ Require-Bundle: org.eclipse.sirius.tests.sample.benchmark,
  org.eclipse.sirius.tests.sample.migration,
  org.eclipse.sirius.tests.sample.migration.design,
  org.eclipse.acceleo.common;bundle-version="3.4.1",
- org.eclipse.sirius.diagram.ui;bundle-version="1.0.0"
+ org.eclipse.sirius.diagram.ui;bundle-version="1.0.0",
+ org.eclipse.sdk,
+ org.eclipse.platform
 Bundle-Activator: org.eclipse.sirius.tests.SiriusTestsPlugin
 Eclipse-LazyStart: true
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
