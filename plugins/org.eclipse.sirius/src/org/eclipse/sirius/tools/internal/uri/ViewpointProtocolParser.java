@@ -126,7 +126,7 @@ public class ViewpointProtocolParser extends DescriptionResourceFactoryImpl {
      */
     public static URI buildViewpointUri(final URI resourceSetURi) {
         URI result = null;
-        if (resourceSetURi.isPlatform()) {
+        if (resourceSetURi != null && resourceSetURi.isPlatform()) {
             final String uriPluginID = ViewpointProtocolParser.extractPluginID(resourceSetURi);
             final String viewpointName = ViewpointProtocolParser.extractViewpointName(resourceSetURi);
             final String computedURI = "viewpoint:/" + uriPluginID + "/" + viewpointName;
