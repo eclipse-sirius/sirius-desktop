@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -58,14 +59,20 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.commands.SetConnectionBendpoi
 import org.eclipse.gmf.runtime.diagram.ui.internal.properties.Properties;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateConnectionViewRequest;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
+import org.eclipse.gmf.runtime.notation.Anchor;
+import org.eclipse.gmf.runtime.notation.Bendpoints;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.gmf.runtime.notation.IdentityAnchor;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
+import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.gmf.runtime.notation.RoutingStyle;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
@@ -73,6 +80,7 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.query.EdgeCreationDescriptionQuery;
@@ -115,6 +123,10 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 
 /**
  * This class manages the reconnection of an edge.
@@ -248,6 +260,8 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         connection.translateToRelative(tempTargetRefPoint);
 
         PointList connectionPointList = connection.getPoints().getCopy();
+
+        restoreMissingBendpointOverCandidate(request, connectionPointList);
 
         // Set the connection bendpoints with a PointList using a command
         SetConnectionBendpointsCommand sbbCommand = new SetReconnectingConnectionBendpointsCommand(editingDomain, sourceView, sourceView.getTargetEdges(), ReconnectionKind.RECONNECT_SOURCE_LITERAL);
@@ -433,6 +447,8 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
 
             PointList connectionPointList = connection.getPoints().getCopy();
 
+            restoreMissingBendpointOverCandidate(request, connectionPointList);
+
             // Set the connection bendpoints with a PointList using a command
             SetConnectionBendpointsCommand sbbCommand = new SetReconnectingConnectionBendpointsCommand(editingDomain, targetView, targetView.getTargetEdges(),
                     ReconnectionKind.RECONNECT_TARGET_LITERAL);
@@ -445,6 +461,98 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
 
         }
         return cmd;
+    }
+
+    /**
+     * Because the feedback is handled by SiriusConnectionEndPointEditPolicy and
+     * the reconnection is handled by the current policy, when the reconnection
+     * switch to another target candidate some bendpoints can be missing on
+     * reconnection. The missing bendpoints are the result of the ObliqueRouter
+     * that removes bendpoints over the target candidate.
+     * 
+     * @param request
+     *            current {@link ReconnectRequest}
+     * @param connectionPointList
+     *            Bendpoint location of the edge under reconnection
+     */
+    private void restoreMissingBendpointOverCandidate(ReconnectRequest request, PointList connectionPointList) {
+        Edge edge = (Edge) request.getConnectionEditPart().getModel();
+        Bendpoints bendpoints = edge.getBendpoints();
+        Point sourceEndAnchorLocation = null;
+        Point targetEndAnchorLocation = null;
+        DEdge dedge = (DEdge) edge.getElement();
+
+        if (!EdgeRouting.STRAIGHT_LITERAL.equals(((EdgeStyle) dedge.getStyle()).getRoutingStyle()) || bendpoints instanceof RelativeBendpoints
+                && connectionPointList.size() == ((RelativeBendpoints) bendpoints).getPoints().size()) {
+            // Only the oblique router can remove bendpoints or there is no
+            // missing bendpoint here. Move Along.
+            return;
+        }
+
+        // Computation of the location of the anchor on the end that is not
+        // under reconnection
+        sourceEndAnchorLocation = getAnchorLocation(((GraphicalEditPart) request.getConnectionEditPart().getSource()).getFigure().getBounds(), edge.getSourceAnchor());
+        targetEndAnchorLocation = getAnchorLocation(((GraphicalEditPart) request.getConnectionEditPart().getTarget()).getFigure().getBounds(), edge.getTargetAnchor());
+
+        // Computation of the bendpoints locations before reconnection using
+        // data from the gmf model instead of the figure (unreliable as it
+        // updates during reconnection)
+        ArrayList<Point> previousBendpoints = Lists.<Point> newArrayList();
+        if (bendpoints instanceof RelativeBendpoints && sourceEndAnchorLocation != null && targetEndAnchorLocation != null) {
+            RelativeBendpoints relativeBendpoints = (RelativeBendpoints) bendpoints;
+            List points = relativeBendpoints.getPoints();
+            for (RelativeBendpoint rbp : Iterables.filter(points, RelativeBendpoint.class)) {
+                Point benpointLocationFromSource = sourceEndAnchorLocation.getTranslated(rbp.getSourceX(), rbp.getSourceY());
+                Point benpointLocationFromTarget = targetEndAnchorLocation.getTranslated(rbp.getTargetX(), rbp.getTargetY());
+                if (!benpointLocationFromSource.equals(benpointLocationFromTarget)) {
+                    // if bendpoint location computed from source and target are
+                    // different, the edge is an average of both. We don't have
+                    // reliable coordinates to process here but these
+                    // coordinates will be matching after reconnection.
+                    return;
+                }
+                previousBendpoints.add(benpointLocationFromSource);
+            }
+        }
+
+        // Detection of bendpoints missing in the current connectionPointList
+        // compare to the original bendpoints
+        LinkedHashMap<Integer, Point> pointToAddByIndexMap = Maps.<Integer, Point> newLinkedHashMap();
+        // We ignore the first and last bendpoints as they can't be hidden
+        for (int i = 1; i <= previousBendpoints.size() - 2; i++) {
+            // When a missing bendpoint is found the index must only increase
+            // for the list containing all bendpoints
+            if (connectionPointList.size() > i - pointToAddByIndexMap.keySet().size() && !connectionPointList.getPoint(i - pointToAddByIndexMap.keySet().size()).equals(previousBendpoints.get(i))) {
+                // Note that we could exclude the bendpoint over the target
+                // candidate but it will be handled by the ObliqueRouteur
+                pointToAddByIndexMap.put(i, previousBendpoints.get(i));
+            }
+        }
+
+        // Addition of the missing bendpoint at the expected index
+        for (Integer index : pointToAddByIndexMap.keySet()) {
+            connectionPointList.insertPoint(pointToAddByIndexMap.get(index), index);
+        }
+    }
+
+    /**
+     * Compute anchor location using its end bounds.
+     * 
+     * @param untouchedEndBounds
+     *            bounds of the element on which is the anchor
+     * @param previousAnchor
+     *            the Anchor used to compute location
+     * @return the location of the anchor
+     */
+    private Point getAnchorLocation(Rectangle untouchedEndBounds, Anchor previousAnchor) {
+        Point result = null;
+        PrecisionPoint rel = new PrecisionPoint(0.5, 0.5);
+        // Note that the anchor will be null if it is centered
+        if (previousAnchor instanceof IdentityAnchor) {
+            rel = BaseSlidableAnchor.parseTerminalString(((IdentityAnchor) previousAnchor).getId());
+        }
+        result = new PrecisionPoint(untouchedEndBounds.getLocation().x + untouchedEndBounds.width * rel.preciseX(), untouchedEndBounds.getLocation().y + untouchedEndBounds.height * rel.preciseY());
+        return result;
     }
 
     private ReconnectEdgeDescription getBestTool(final EdgeMapping mapping, final boolean source, final EdgeTarget oldTarget, final EdgeTarget newTarget, final DEdge edge) {

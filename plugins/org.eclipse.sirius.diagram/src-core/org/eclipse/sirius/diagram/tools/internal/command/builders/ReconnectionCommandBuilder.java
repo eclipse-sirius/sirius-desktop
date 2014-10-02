@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
@@ -31,6 +32,7 @@ import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.diagram.description.tool.ReconnectionKind;
 import org.eclipse.sirius.diagram.tools.internal.command.reconnect.ReconnectSourceNodeCommand;
@@ -140,13 +142,31 @@ public class ReconnectionCommandBuilder extends AbstractDiagramCommandBuilder {
             if (newEdgeMapping != null && !newEdgeMapping.equals(edge.getActualMapping())) {
                 cc.append(new SetEdgeActualMappingCommand(editingDomain, edge, newEdgeMapping));
             }
-            if (reconnectionSource.equals(oldSource) && (newEdgeMapping != null && !newEdgeMapping.isUseDomainElement() || !((EdgeMapping) edge.getActualMapping()).isUseDomainElement())) {
+            if (reconnectionSource.equals(oldSource) && (newEdgeMapping != null && !newEdgeMapping.isUseDomainElement() || isEdgeActualMappingUsingDomainElement())) {
                 cc.append(new ReconnectSourceNodeCommand(editingDomain, edge, reconnectionTarget, semanticTarget));
             }
             cc.append(cmd);
             result = cc;
         }
         return result;
+    }
+
+    private boolean isEdgeActualMappingUsingDomainElement() {
+        boolean isEdgeActualMappingUsingDomainElement = false;
+        if (edge.getActualMapping() instanceof EdgeMapping) {
+            isEdgeActualMappingUsingDomainElement = !((EdgeMapping) edge.getActualMapping()).isUseDomainElement();
+        } else if (edge.getActualMapping() instanceof EdgeMappingImport) {
+            isEdgeActualMappingUsingDomainElement = !(getImportedMapping((EdgeMappingImport) edge.getActualMapping())).isUseDomainElement();
+        }
+        return isEdgeActualMappingUsingDomainElement;
+    }
+
+    private EdgeMapping getImportedMapping(EdgeMappingImport edgeMapping) {
+        if (edgeMapping.getImportedMapping() instanceof EdgeMappingImport) {
+            return getImportedMapping((EdgeMappingImport) edgeMapping.getImportedMapping());
+        }
+        Assert.isTrue(edgeMapping.getImportedMapping() instanceof EdgeMapping, "This should not happen as IEdgeMapping is only extended by EdgeMappingImport and EdgeMapping");
+        return (EdgeMapping) edgeMapping.getImportedMapping();
     }
 
     private String getReconnectionKindFeatureName() {
