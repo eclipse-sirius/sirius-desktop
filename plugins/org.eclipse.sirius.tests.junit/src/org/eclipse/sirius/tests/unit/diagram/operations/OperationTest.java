@@ -76,7 +76,7 @@ public class OperationTest extends DocbookTestCase {
         // definition and execution of the create instance operation.
         createOp.setReferenceName("sect1");
         createOp.setTypeName("Sect1");
-        return new CreateInstanceTask(context, accessor, createOp, SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(createOp));
+        return new CreateInstanceTask(context, accessor, createOp, INTERPRETER);
     }
 
     public AbstractOperationTask createChapterInstanceTask() {
@@ -96,7 +96,7 @@ public class OperationTest extends DocbookTestCase {
         // definition and execution of the create instance operation.
         createOp.setReferenceName("chapter");
         createOp.setTypeName("Chapter");
-        return new CreateInstanceTask(context, accessor, createOp, SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(createOp));
+        return new CreateInstanceTask(context, accessor, createOp, INTERPRETER);
     }
 
     /**
@@ -177,7 +177,7 @@ public class OperationTest extends DocbookTestCase {
         // definition and execution of the change context operation.
         String browseChapter = "<%eContents().nFirst()%>";
         op.setBrowseExpression(browseChapter);
-        final AbstractOperationTask task = new ChangeContextTask(context, accessor, op, SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(book));
+        final AbstractOperationTask task = new ChangeContextTask(context, accessor, op, INTERPRETER);
 
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
             @Override
