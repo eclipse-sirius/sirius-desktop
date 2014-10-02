@@ -84,7 +84,7 @@ public class ChangeContextOperationTest extends TestCase {
     private AbstractOperationTask changeContextTask(CommandContext context, String browseExpression) {
         final ChangeContext changeContextOp = ToolFactory.eINSTANCE.createChangeContext();
         changeContextOp.setBrowseExpression(browseExpression);
-        return new ChangeContextTask(context, accessor, changeContextOp, SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(changeContextOp));
+        return new ChangeContextTask(context, accessor, changeContextOp, iRegistry.getInterpreter(changeContextOp));
     }
 
     /**

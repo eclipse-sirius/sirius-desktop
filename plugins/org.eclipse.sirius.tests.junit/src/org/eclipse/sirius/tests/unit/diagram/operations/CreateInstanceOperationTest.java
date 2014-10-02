@@ -72,7 +72,7 @@ public class CreateInstanceOperationTest extends TestCase {
         void check() throws Exception {
             root = task.getContext().getNextPush();
             task.execute();
-            IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(root);
+            IInterpreter interpreter = iRegistry.getInterpreter(root);
             assertNotNull("The $" + variableName + " should be available to reference the created instance", interpreter.evaluateEObject(root, "<%$" + variableName + "%>"));
         }
     }
@@ -192,7 +192,7 @@ public class CreateInstanceOperationTest extends TestCase {
             createOp.setVariableName(variableName);
         }
 
-        return new CreateInstanceTask(context, accessor, createOp, SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(context.getCurrentTarget()));
+        return new CreateInstanceTask(context, accessor, createOp, iRegistry.getInterpreter(context.getCurrentTarget()));
     }
 
     /**
