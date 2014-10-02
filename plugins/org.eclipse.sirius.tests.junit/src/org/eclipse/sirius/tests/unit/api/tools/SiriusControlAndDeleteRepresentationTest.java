@@ -33,9 +33,11 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.api.session.danalysis.SimpleAnalysisSelector;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -44,9 +46,6 @@ import org.eclipse.sirius.viewpoint.DView;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 
 /**
  * Test for ticket 2015 : delete representations in controlled diagram should
@@ -133,10 +132,11 @@ public class SiriusControlAndDeleteRepresentationTest extends SiriusDiagramTestC
 
         Resource diagramControlResource = session.getTransactionalEditingDomain().getResourceSet().getResource(controlledSessionResourceURI, true);
         ByteArrayOutputStream outdiagramControlResource = new ByteArrayOutputStream();
-        diagramControlResource.save(outdiagramControlResource, null);
+        saveInOutputStreamNoSideEffect(diagramControlResource, outdiagramControlResource);
+
         diagramResource = session.getTransactionalEditingDomain().getResourceSet().getResource(mainSessionResourceURI, true);
         ByteArrayOutputStream outdiagramResource = new ByteArrayOutputStream();
-        diagramResource.save(outdiagramResource, null);
+        saveInOutputStreamNoSideEffect(diagramResource, outdiagramResource);
 
         final DRepresentation existingRepresentation = (DRepresentation) Iterables.find(getRepresentations(ENTITIES_DESC_NAME, session), new Predicate<DRepresentation>() {
             public boolean apply(DRepresentation input) {
@@ -171,6 +171,31 @@ public class SiriusControlAndDeleteRepresentationTest extends SiriusDiagramTestC
         SiriusUncontrolCommand vuc = new SiriusUncontrolCommand(package2, true, new NullProgressMonitor());
         session.getTransactionalEditingDomain().getCommandStack().execute(vuc);
         session.save(new NullProgressMonitor());
+    }
+
+    protected void saveInOutputStreamNoSideEffect(Resource resource, ByteArrayOutputStream outputStream) throws IOException {
+        /*
+         * Saving a resource, even to an outputstream, has side effects on the
+         * resource state itself : notification of state changes and update of
+         * isModified state
+         */
+        /*
+         * Here we want to avoid the side effects. We have no guarantee a
+         * specific resource will not have other side effects but at least we
+         * can anihilate the ResourceImpl ones.
+         */
+
+        // no notifications during the save
+        resource.eSetDeliver(false);
+
+        boolean isModified = resource.isModified();
+        long timestamp = resource.getTimeStamp();
+        resource.save(outputStream, null);
+        resource.setModified(isModified);
+        resource.setTimeStamp(timestamp);
+
+        // notifications are back
+        resource.eSetDeliver(true);
     }
 
     public void testControlAndDeleteRepresentationClosingSession() throws Exception {
@@ -210,14 +235,14 @@ public class SiriusControlAndDeleteRepresentationTest extends SiriusDiagramTestC
 
         diagramResource = session.getTransactionalEditingDomain().getResourceSet().getResource(mainSessionResourceURI, true);
         ByteArrayOutputStream outdiagramResource = new ByteArrayOutputStream();
-        diagramResource.save(outdiagramResource, null);
+        saveInOutputStreamNoSideEffect(diagramResource, outdiagramResource);
         session.save(new NullProgressMonitor());
         Session session1 = session;
 
         // Open a second session
         genericSetUp(TEMPORARY_PROJECT_NAME + "/" + MAIN_SEMANTIC_MODEL_FILENAME, TEMPORARY_PROJECT_NAME + "/" + "modeler.odesign", TEMPORARY_PROJECT_NAME + "/" + MAIN_SESSION_MODEL_FILENAME);
         ByteArrayOutputStream outdiagramControlResource = new ByteArrayOutputStream();
-        diagramControlResource.save(outdiagramControlResource, null);
+        saveInOutputStreamNoSideEffect(diagramControlResource, outdiagramControlResource);
         Session session2 = session;
         modelResource = session2.getTransactionalEditingDomain().getResourceSet().getResource(mainSemanticResourceURI, true);
         package2 = findPackageNamed(PACKAGE2, modelResource.getContents().get(0));
@@ -298,8 +323,8 @@ public class SiriusControlAndDeleteRepresentationTest extends SiriusDiagramTestC
         // We control package2 and "package1 package entities" into a separate
         // ecore and (resp.) aird
         DRepresentation representation = allRepresentations.get(0);
-        SiriusControlCommand vcc = new SiriusControlCommand(package2, controlledSemanticResourceURI, Collections.singleton(representation), controlledSessionResourceURI,
-                true, new NullProgressMonitor());
+        SiriusControlCommand vcc = new SiriusControlCommand(package2, controlledSemanticResourceURI, Collections.singleton(representation), controlledSessionResourceURI, true,
+                new NullProgressMonitor());
         session.getTransactionalEditingDomain().getCommandStack().execute(vcc);
         ResourcesPlugin.getWorkspace().getRoot().refreshLocal(IResource.DEPTH_INFINITE, null);
 
@@ -320,9 +345,9 @@ public class SiriusControlAndDeleteRepresentationTest extends SiriusDiagramTestC
         Resource diagramControlResourceAfterCreateRepresentation = domain.getResourceSet().getResource(controlledAirdUri, true);
 
         ByteArrayOutputStream outdiagramResourceAfterCreateRepresentation = new ByteArrayOutputStream();
-        diagramResourceAfterCreateRepresentation.save(outdiagramResourceAfterCreateRepresentation, null);
+        saveInOutputStreamNoSideEffect(diagramResourceAfterCreateRepresentation, outdiagramResourceAfterCreateRepresentation);
         ByteArrayOutputStream outdiagramControlResourceAfterCreateRepresentation = new ByteArrayOutputStream();
-        diagramControlResourceAfterCreateRepresentation.save(outdiagramControlResourceAfterCreateRepresentation, null);
+        saveInOutputStreamNoSideEffect(diagramControlResourceAfterCreateRepresentation, outdiagramControlResourceAfterCreateRepresentation);
         assertEquals(outdiagramControlResourceAfterCreateRepresentation.toString(), outdiagramControlResource.toString());
     }
 
