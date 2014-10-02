@@ -276,13 +276,13 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
      */
     protected boolean checkPrecondition(EObject semantic, String condition) {
         boolean canCreate;
-        IInterpreter interpreter = InterpreterUtil.getInterpreter(semantic);
         if (StringUtil.isEmpty(condition)) {
             // An empty pre-condition means we can always create a
             // representation.
             canCreate = true;
         } else {
             try {
+                IInterpreter interpreter = InterpreterUtil.getInterpreter(semantic);
                 canCreate = interpreter.evaluateBoolean(semantic, condition);
             } catch (EvaluationException e) {
                 canCreate = false;
