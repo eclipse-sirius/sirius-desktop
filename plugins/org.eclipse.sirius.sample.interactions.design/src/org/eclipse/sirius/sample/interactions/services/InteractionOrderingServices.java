@@ -309,14 +309,16 @@ public class InteractionOrderingServices {
         MessageEnd receivingEnd = msg.getReceivingEnd();
         if (receivingEnd != null) {
             Participant p = receivingEnd.getContext();
-            List<EventContext> structure = computeContainmentStructure(p);
-            for (EventContext ec : structure) {
-                if (ec.getElement().equals(msg) && !ec.isStart()) {
-                    EObject parent = ec.getParent();
-                    if (parent != null) {
-                        return parent;
-                    } else {
-                        return p;
+            if (p != null) {
+                List<EventContext> structure = computeContainmentStructure(p);
+                for (EventContext ec : structure) {
+                    if (ec.getElement().equals(msg) && !ec.isStart()) {
+                        EObject parent = ec.getParent();
+                        if (parent != null) {
+                            return parent;
+                        } else {
+                            return p;
+                        }
                     }
                 }
             }
@@ -476,7 +478,7 @@ public class InteractionOrderingServices {
     }
 
     public List<EventContext> computeContainmentStructure(Participant owner) {
-        if (!(owner.eContainer() instanceof Interaction)) {
+        if (owner == null || !(owner.eContainer() instanceof Interaction)) {
             return Collections.emptyList();
         } else {
             Interaction interaction = (Interaction) owner.eContainer();
