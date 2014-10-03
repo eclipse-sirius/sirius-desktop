@@ -26,6 +26,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditP
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.DistributeAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.Tabbar;
@@ -95,8 +96,8 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String[] DIAGRAM_TOOLBARTOGGLEBUTTONS_TOOLTIPS = { "Activate Layouting Mode" };
 
-    private static final String[] NODE_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange Selection", "Align Left", "Distribute Horizontally With Uniform Gaps", "Font Color", "Fill &Color", "Li&ne Color",
-            "Line Style" };
+    private static final String[] NODE_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange Selection", "Align Left", DistributeAction.getLabel(DistributeAction.GAPS_HORIZONTALLY, true), "Font Color",
+            "Fill &Color", "Li&ne Color", "Line Style" };
 
     private static final String[] NODE_TOOLBARBUTTONS_TOOLTIPS = { "Pin selected elements", "Unpin selected elements", "Copy the layout of the selected diagram elements", "Hide element",
             "Delete from Diagram", "Delete from Model", "Font", "Set style to workspace image", ResetStylePropertiesToDefaultValuesAction.ACTION_NAME,
