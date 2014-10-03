@@ -15,12 +15,14 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.matcher.WithSemantic;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
@@ -39,8 +41,6 @@ public class RefreshAfterUndoDeletionFromGenericToolTest extends AbstractSiriusS
     private static final String REPRESENTATION_INSTANCE_NAME = "new VP_1966_Diagram";
 
     private static final String REPRESENTATION_NAME = "VP_1966_Diagram";
-
-    private static final String VIEWPOINT_NAME = "vp_1966";
 
     private static final String SEMANTIC_RESOURCE_FILENAME = "VP-1966.ecore";
 
@@ -122,9 +122,7 @@ public class RefreshAfterUndoDeletionFromGenericToolTest extends AbstractSiriusS
         final UIResource sessionAirdResource = new UIResource(designerProject, "/", SESSION_RESOURCE_FILENAME);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
 
         initEditor();
 

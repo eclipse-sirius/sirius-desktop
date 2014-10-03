@@ -17,11 +17,12 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
@@ -49,13 +50,9 @@ public class InvalidReconnectEdgeToolTest extends AbstractSiriusSwtBotGefTestCas
 
     private static final String REPRESENTATIONS_RESOURCE_NAME = "VP-3744.aird";
 
-    private static final String VIEWPOINT_NAME = "VP-3744_Viewpoint";
-
     private static final String REPRESENTATION_DESCRIPTION_NAME = "VP-3744_Diagram";
 
     private static final String REPRESENTATION_NAME = "new " + REPRESENTATION_DESCRIPTION_NAME;
-
-    private UIDiagramRepresentation diagram;
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
@@ -68,10 +65,7 @@ public class InvalidReconnectEdgeToolTest extends AbstractSiriusSwtBotGefTestCas
         sessionAirdResource = new UIResource(designerProject, "/", REPRESENTATIONS_RESOURCE_NAME);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_DESCRIPTION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_NAME, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
     }
 
     /**
@@ -116,7 +110,6 @@ public class InvalidReconnectEdgeToolTest extends AbstractSiriusSwtBotGefTestCas
     @Override
     protected void tearDown() throws Exception {
         editor.close();
-        diagram = null;
         super.tearDown();
     }
 

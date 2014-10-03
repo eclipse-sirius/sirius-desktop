@@ -17,12 +17,11 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
-import org.eclipse.sirius.tests.swtbot.support.api.business.sessionbrowser.UILSViewpointBrowser;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
@@ -68,8 +67,6 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
 
     private static final Point TRANSLATION_PLUS_80Y = new Point(0, 80);
 
-    private static final String VIEWPOINT_NAME = "Test case for ticket #1479";
-
     private static final String MODEL = "models/tc1479.ecore";
 
     private static final String SESSION_FILE = "models/tc1479.aird";
@@ -85,8 +82,6 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
     private UILocalSession localSession;
 
     private SWTBotSiriusDiagramEditor editor;
-
-    private UIDiagramRepresentation diagram;
 
     private Rectangle aBefore;
 
@@ -597,9 +592,7 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
     }
 
     private void openDiagram(final String representationName, final String diagramName) {
-        final UILSViewpointBrowser viewpointBrowser = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME);
-        diagram = viewpointBrowser.selectRepresentation(representationName).selectRepresentationInstance(diagramName, UIDiagramRepresentation.class).open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), representationName, diagramName, DDiagram.class);
         editor.setSnapToGrid(false);
     }
 

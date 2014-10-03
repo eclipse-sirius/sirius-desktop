@@ -18,19 +18,18 @@ import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
-
-import org.eclipse.sirius.tests.swtbot.Activator;
 
 /**
  * Test class to check the layout of the Edge with path. TODO : Complete this
@@ -45,8 +44,6 @@ public class EdgeWithPathLayoutTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String REPRESENTATION_INSTANCE_NAME = "manualBendpoints";
 
     private static final String REPRESENTATION_NAME = "TestTicket2094";
-
-    private static final String VIEWPOINT_NAME = "Ticket2094";
 
     private static final String MODEL = "manualBendpointsForEdgeWithPath.ecore";
 
@@ -76,11 +73,6 @@ public class EdgeWithPathLayoutTest extends AbstractSiriusSwtBotGefTestCase {
     protected SWTBotSiriusDiagramEditor editor;
 
     /**
-     * Current diagram.
-     */
-    protected UIDiagramRepresentation diagram;
-
-    /**
      * {@inheritDoc}
      */
     @Override
@@ -97,10 +89,7 @@ public class EdgeWithPathLayoutTest extends AbstractSiriusSwtBotGefTestCase {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
     }
 
     /**

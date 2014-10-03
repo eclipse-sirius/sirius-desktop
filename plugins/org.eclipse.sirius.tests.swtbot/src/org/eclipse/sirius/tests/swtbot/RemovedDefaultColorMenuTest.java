@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import org.eclipse.gef.EditPart;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode3EditPart;
@@ -53,8 +54,6 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
 
     private static final String REPRESENTATION_NAME = "Entities";
 
-    private static final String VIEWPOINT_NAME = "Design";
-
     private static final String REF = "[0..1] newEReference1";
 
     private static final String NODE_CONTAINER = "myEClass2";
@@ -78,8 +77,6 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     private static final String LINE_COLOR = "Li&ne Color";
 
     private static final String DEFAULT_COLOR = "Default Color";
-
-    private static final String MORE_COLORS = "More Colors ...";
 
     private UIResource sessionAirdResource;
 
@@ -114,10 +111,7 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
     }
 
     /**

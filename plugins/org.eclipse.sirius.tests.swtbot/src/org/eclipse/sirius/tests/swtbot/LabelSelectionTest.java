@@ -19,10 +19,12 @@ import java.util.List;
 
 import org.eclipse.draw2d.PolylineDecoration;
 import org.eclipse.gef.ConnectionEditPart;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotCommonHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotCommonHelper.EdgeData;
 import org.eclipse.swt.SWT;
@@ -41,8 +43,6 @@ public class LabelSelectionTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String REPRESENTATION_INSTANCE_NAME = "trac1522 package entities";
 
     private static final String REPRESENTATION_NAME = "TC 1522";
-
-    private static final String VIEWPOINT_NAME = "Design TC1522";
 
     private static final String MODEL = "tc1522.ecore";
 
@@ -85,10 +85,7 @@ public class LabelSelectionTest extends AbstractSiriusSwtBotGefTestCase {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
     }
 
     /**

@@ -18,6 +18,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNodeEditPart;
@@ -41,13 +42,11 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FigureQuery;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
-import org.eclipse.sirius.tests.swtbot.support.api.business.sessionbrowser.UILSViewpointBrowser;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckBoundsCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
@@ -91,8 +90,6 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final Point TRANSLATION_MINUS_70_X = new Point(-70, 0);
 
-    private UIDiagramRepresentation diagram;
-
     private SWTBotGefEditPart dDiagramEditPartBot;
 
     /**
@@ -116,9 +113,7 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
      * Open the expected diagram for this use case.
      */
     protected void openAndInitialiseForVP1810() {
-        final UILSViewpointBrowser viewpointBrowser = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME);
-        diagram = viewpointBrowser.selectRepresentation(VP_1810_REPRESENTATION_NAME).selectRepresentationInstance(VP_1810_REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), VP_1810_REPRESENTATION_NAME, VP_1810_REPRESENTATION_INSTANCE_NAME, DDiagram.class);
 
         SWTBotGefEditPart rootEditPartBot = editor.rootEditPart();
         dDiagramEditPartBot = rootEditPartBot.children().get(0);
@@ -356,9 +351,7 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
      * Open the expected diagram for this use case.
      */
     protected void openAndInitialiseForVP3382() {
-        final UILSViewpointBrowser viewpointBrowser = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME);
-        diagram = viewpointBrowser.selectRepresentation(VP_3382_REPRESENTATION_NAME).selectRepresentationInstance(VP_3382_REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), VP_3382_REPRESENTATION_NAME, VP_3382_REPRESENTATION_INSTANCE_NAME, DDiagram.class);
 
         SWTBotGefEditPart rootEditPartBot = editor.rootEditPart();
         dDiagramEditPartBot = rootEditPartBot.children().get(0);
@@ -632,9 +625,7 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
      * Open the diagram on the correct use case and disabled the snap to grid.
      */
     protected void openDiagramForVP2211() {
-        final UILSViewpointBrowser viewpointBrowser = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME);
-        diagram = viewpointBrowser.selectRepresentation(VP_2211_REPRESENTATION_NAME).selectRepresentationInstance(VP_2211_REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), VP_2211_REPRESENTATION_NAME, VP_2211_REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         editor.setSnapToGrid(false);
     }
 
@@ -852,8 +843,6 @@ public class MultiLineLabelDiagramTest extends AbstractSiriusSwtBotGefTestCase {
      */
     @Override
     protected void tearDown() throws Exception {
-
-        diagram = null;
         dDiagramEditPartBot = null;
 
         super.tearDown();

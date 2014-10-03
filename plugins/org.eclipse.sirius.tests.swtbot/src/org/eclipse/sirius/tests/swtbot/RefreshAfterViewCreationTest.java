@@ -15,12 +15,12 @@ import java.util.List;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartIsDisplayed;
@@ -58,10 +58,6 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
     private static final String REPRESENTATION_INSTANCE_NAME_2026 = "new TC2026_Container";
 
     private static final String REPRESENTATION_NAME_2026 = "TC2026_Container";
-
-    private static final String VIEWPOINT_NAME_2026 = "Test case for ticket #2026";
-
-    private static final String VIEWPOINT_NAME_2253 = "doremi2253";
 
     private static final String REPRESENTATION_NAME_BORDERED_NODE_ON_NODE = "doremi2253-borderedNodeOnNode";
 
@@ -211,10 +207,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      *             Test error.
      */
     public void testSelectionPackageInWizardAndCheckIfEdgeIsCreated() throws Exception {
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2026).selectRepresentation(REPRESENTATION_NAME_2026)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME_2026, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_2026, REPRESENTATION_INSTANCE_NAME_2026, DDiagram.class);
 
         applyOneClicTool("Create Packages", SOMEWHERE_IN_DIAGRAM.x, SOMEWHERE_IN_DIAGRAM.y);
 
@@ -260,10 +253,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      */
     public void testEdgeCreationOnBorderedNodeOnNodeCreationWithAutoRefresh() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253)
-                .selectRepresentation(REPRESENTATION_NAME_BORDERED_NODE_ON_NODE).selectRepresentationInstance(REPRESENTATION_NAME_BORDERED_NODE_ON_NODE, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_BORDERED_NODE_ON_NODE, REPRESENTATION_NAME_BORDERED_NODE_ON_NODE, DDiagram.class);
 
         insertPackageP2(editor);
 
@@ -323,10 +313,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      *             Test error.
      */
     public void testEdgeCreationOnBorderedNodeOnNodeCreationWithoutAutoRefresh() throws Exception {
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253)
-                .selectRepresentation(REPRESENTATION_NAME_BORDERED_NODE_ON_NODE).selectRepresentationInstance(REPRESENTATION_NAME_BORDERED_NODE_ON_NODE, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_BORDERED_NODE_ON_NODE, REPRESENTATION_NAME_BORDERED_NODE_ON_NODE, DDiagram.class);
 
         insertPackageP2(editor);
 
@@ -383,11 +370,8 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      */
     public void testEdgeCreationOnBorderedNodeOnNodeInContainerCreationWithAutoRefresh() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253)
-                .selectRepresentation(REPRESENTATION_NAME_BORDERED_NODE_ON_NODE_IN_CONTAINER)
-                .selectRepresentationInstance(REPRESENTATION_NAME_BORDERED_NODE_ON_NODE_IN_CONTAINER, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_BORDERED_NODE_ON_NODE_IN_CONTAINER,
+                REPRESENTATION_NAME_BORDERED_NODE_ON_NODE_IN_CONTAINER, DDiagram.class);
 
         insertPackageP2(editor);
 
@@ -464,11 +448,8 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      *             Test error.
      */
     public void testEdgeCreationOnBorderedNodeOnNodeInContainerCreationWithoutAutoRefresh() throws Exception {
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253)
-                .selectRepresentation(REPRESENTATION_NAME_BORDERED_NODE_ON_NODE_IN_CONTAINER)
-                .selectRepresentationInstance(REPRESENTATION_NAME_BORDERED_NODE_ON_NODE_IN_CONTAINER, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_BORDERED_NODE_ON_NODE_IN_CONTAINER,
+                REPRESENTATION_NAME_BORDERED_NODE_ON_NODE_IN_CONTAINER, DDiagram.class);
 
         insertPackageP2(editor);
 
@@ -547,10 +528,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      */
     public void testEdgeCreationOnNodeCreationWithAutoRefresh() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253).selectRepresentation(REPRESENTATION_NAME_NODE)
-                .selectRepresentationInstance(REPRESENTATION_NAME_NODE, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_NODE, REPRESENTATION_NAME_NODE, DDiagram.class);
 
         insertClassC2(editor);
 
@@ -587,10 +565,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      *             Test error.
      */
     public void testEdgeCreationOnNodeCreationWithoutAutoRefresh() throws Exception {
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253).selectRepresentation(REPRESENTATION_NAME_NODE)
-                .selectRepresentationInstance(REPRESENTATION_NAME_NODE, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_NODE, REPRESENTATION_NAME_NODE, DDiagram.class);
 
         insertClassC2(editor);
 
@@ -630,10 +605,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      */
     public void testEdgeCreationOnContainerCreationWithAutoRefresh() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253).selectRepresentation(REPRESENTATION_NAME_CONTAINER)
-                .selectRepresentationInstance(REPRESENTATION_NAME_CONTAINER, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_CONTAINER, REPRESENTATION_NAME_CONTAINER, DDiagram.class);
 
         insertClassC2(editor);
 
@@ -670,10 +642,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      *             Test error.
      */
     public void testEdgeCreationOnContainerCreationWithoutAutoRefresh() throws Exception {
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253).selectRepresentation(REPRESENTATION_NAME_CONTAINER)
-                .selectRepresentationInstance(REPRESENTATION_NAME_CONTAINER, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_CONTAINER, REPRESENTATION_NAME_CONTAINER, DDiagram.class);
 
         insertClassC2(editor);
 
@@ -701,10 +670,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      */
     public void testEdgeCreationOnListCreationWithAutoRefresh() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253).selectRepresentation(REPRESENTATION_NAME_LIST)
-                .selectRepresentationInstance(REPRESENTATION_NAME_LIST, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_LIST, REPRESENTATION_NAME_LIST, DDiagram.class);
 
         insertClassC2(editor);
 
@@ -741,10 +707,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      *             Test error.
      */
     public void testEdgeCreationOnListCreationWithoutAutoRefresh() throws Exception {
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253).selectRepresentation(REPRESENTATION_NAME_LIST)
-                .selectRepresentationInstance(REPRESENTATION_NAME_LIST, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_LIST, REPRESENTATION_NAME_LIST, DDiagram.class);
 
         insertClassC2(editor);
 
@@ -772,10 +735,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      */
     public void testEdgeCreationOnNodeInContainerCreationWithAutoRefresh() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253).selectRepresentation(REPRESENTATION_NAME_NODE_IN_CONTAINER)
-                .selectRepresentationInstance(REPRESENTATION_NAME_NODE_IN_CONTAINER, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_NODE_IN_CONTAINER, REPRESENTATION_NAME_NODE_IN_CONTAINER, DDiagram.class);
 
         insertClassC2(editor);
 
@@ -812,10 +772,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      *             Test error.
      */
     public void testEdgeCreationOnNodeInContainerCreationWithoutAutoRefresh() throws Exception {
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253).selectRepresentation(REPRESENTATION_NAME_NODE_IN_CONTAINER)
-                .selectRepresentationInstance(REPRESENTATION_NAME_NODE_IN_CONTAINER, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_NODE_IN_CONTAINER, REPRESENTATION_NAME_NODE_IN_CONTAINER, DDiagram.class);
 
         insertClassC2(editor);
 
@@ -840,10 +797,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      *             Test error.
      */
     public void testNodeCreationInContainerPositionStabilityUsingSelectionWizardTool() throws Exception {
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253).selectRepresentation(REPRESENTATION_NAME_NODE_IN_CONTAINER)
-                .selectRepresentationInstance(REPRESENTATION_NAME_NODE_IN_CONTAINER, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_NODE_IN_CONTAINER, REPRESENTATION_NAME_NODE_IN_CONTAINER, DDiagram.class);
         editor.setSnapToGrid(false);
 
         editor.maximize();
@@ -883,10 +837,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      *             Test error.
      */
     public void testNodeCreationInContainerPositionStabilityUsingPaneBasedSelectionWizardTool() throws Exception {
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253).selectRepresentation(REPRESENTATION_NAME_NODE_IN_CONTAINER)
-                .selectRepresentationInstance(REPRESENTATION_NAME_NODE_IN_CONTAINER, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_NODE_IN_CONTAINER, REPRESENTATION_NAME_NODE_IN_CONTAINER, DDiagram.class);
         editor.setSnapToGrid(false);
 
         maximizeEditor(editor);
@@ -925,10 +876,8 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      *             Test error.
      */
     public void testNodeCreationInContainerPositionStabilityUsingDragAndDropFromTreeview() throws Exception {
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253).selectRepresentation(REPRESENTATION_NAME_NODE_IN_CONTAINER)
-                .selectRepresentationInstance(REPRESENTATION_NAME_NODE_IN_CONTAINER, UIDiagramRepresentation.class).open();
-
-        final SWTBotSiriusDiagramEditor editor = diagram.getEditor();
+        final SWTBotSiriusDiagramEditor editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_NODE_IN_CONTAINER,
+                REPRESENTATION_NAME_NODE_IN_CONTAINER, DDiagram.class);
 
         editor.maximize();
 
@@ -981,10 +930,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      */
     public void testEdgeCreationOnContainerInContainerCreationWithAutoRefresh() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253)
-                .selectRepresentation(REPRESENTATION_NAME_CONTAINER_IN_CONTAINER).selectRepresentationInstance(REPRESENTATION_NAME_CONTAINER_IN_CONTAINER, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_CONTAINER_IN_CONTAINER, REPRESENTATION_NAME_CONTAINER_IN_CONTAINER, DDiagram.class);
 
         insertClassC2(editor);
 
@@ -1022,10 +968,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      *             Test error.
      */
     public void testContainerCreationInContainerPositionStabilityUsingSelectionWizardTool() throws Exception {
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253)
-                .selectRepresentation(REPRESENTATION_NAME_CONTAINER_IN_CONTAINER).selectRepresentationInstance(REPRESENTATION_NAME_CONTAINER_IN_CONTAINER, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_CONTAINER_IN_CONTAINER, REPRESENTATION_NAME_CONTAINER_IN_CONTAINER, DDiagram.class);
         editor.setSnapToGrid(false);
 
         editor.maximize();
@@ -1064,10 +1007,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      *             Test error.
      */
     public void testContainerCreationInContainerPositionStabilityUsingPaneBasedSelectionWizardTool() throws Exception {
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253)
-                .selectRepresentation(REPRESENTATION_NAME_CONTAINER_IN_CONTAINER).selectRepresentationInstance(REPRESENTATION_NAME_CONTAINER_IN_CONTAINER, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_CONTAINER_IN_CONTAINER, REPRESENTATION_NAME_CONTAINER_IN_CONTAINER, DDiagram.class);
         editor.setSnapToGrid(false);
 
         editor.maximize();
@@ -1106,10 +1046,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      *             Test error.
      */
     public void testContainerCreationInContainerPositionStabilityUsingDragAndDropTool() throws Exception {
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253)
-                .selectRepresentation(REPRESENTATION_NAME_CONTAINER_IN_CONTAINER).selectRepresentationInstance(REPRESENTATION_NAME_CONTAINER_IN_CONTAINER, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_CONTAINER_IN_CONTAINER, REPRESENTATION_NAME_CONTAINER_IN_CONTAINER, DDiagram.class);
 
         editor.maximize();
 
@@ -1160,10 +1097,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      *             Test error.
      */
     public void testEdgeCreationOnContainerInContainerCreationWithoutAutoRefresh() throws Exception {
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253)
-                .selectRepresentation(REPRESENTATION_NAME_CONTAINER_IN_CONTAINER).selectRepresentationInstance(REPRESENTATION_NAME_CONTAINER_IN_CONTAINER, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_CONTAINER_IN_CONTAINER, REPRESENTATION_NAME_CONTAINER_IN_CONTAINER, DDiagram.class);
 
         insertClassC2(editor);
 
@@ -1191,10 +1125,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      */
     public void testEdgeCreationOnListInContainerCreationWithAutoRefresh() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253).selectRepresentation(REPRESENTATION_NAME_LIST_IN_CONTAINER)
-                .selectRepresentationInstance(REPRESENTATION_NAME_LIST_IN_CONTAINER, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_LIST_IN_CONTAINER, REPRESENTATION_NAME_LIST_IN_CONTAINER, DDiagram.class);
 
         insertClassC2(editor);
 
@@ -1231,10 +1162,7 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      *             Test error.
      */
     public void testEdgeCreationOnListInContainerCreationWithoutAutoRefresh() throws Exception {
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253).selectRepresentation(REPRESENTATION_NAME_LIST_IN_CONTAINER)
-                .selectRepresentationInstance(REPRESENTATION_NAME_LIST_IN_CONTAINER, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_LIST_IN_CONTAINER, REPRESENTATION_NAME_LIST_IN_CONTAINER, DDiagram.class);
         editor.setSnapToGrid(false);
 
         insertClassC2(editor);
@@ -1261,11 +1189,8 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      */
     public void testEdgeCreationOnBorderedNodeOnContainerCreationWithAutoRefresh() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253)
-                .selectRepresentation(REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER).selectRepresentationInstance(REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER, UIDiagramRepresentation.class)
-                .open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER, REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER,
+                DDiagram.class);
 
         insertPackageP2(editor);
 
@@ -1325,11 +1250,8 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      *             Test error.
      */
     public void testEdgeCreationOnBorderedNodeOnContainerCreationWithoutAutoRefresh() throws Exception {
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253)
-                .selectRepresentation(REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER).selectRepresentationInstance(REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER, UIDiagramRepresentation.class)
-                .open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER, REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER,
+                DDiagram.class);
 
         insertPackageP2(editor);
 
@@ -1384,11 +1306,8 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      */
     public void testEdgeCreationOnBorderedNodeOnContainerInContainerCreationWithAutoRefresh() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253)
-                .selectRepresentation(REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER_IN_CONTAINER)
-                .selectRepresentationInstance(REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER_IN_CONTAINER, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER_IN_CONTAINER,
+                REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER_IN_CONTAINER, DDiagram.class);
 
         insertPackageP2(editor);
 
@@ -1465,11 +1384,8 @@ public class RefreshAfterViewCreationTest extends AbstractSiriusSwtBotGefTestCas
      *             Test error.
      */
     public void testEdgeCreationOnBorderedNodeOnContainerInContainerCreationWithoutAutoRefresh() throws Exception {
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253)
-                .selectRepresentation(REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER_IN_CONTAINER)
-                .selectRepresentationInstance(REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER_IN_CONTAINER, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER_IN_CONTAINER,
+                REPRESENTATION_NAME_BORDERED_NODE_ON_CONTAINER_IN_CONTAINER, DDiagram.class);
 
         insertPackageP2(editor);
 

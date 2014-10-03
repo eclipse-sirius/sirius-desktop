@@ -20,7 +20,6 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITableRepresentation;
@@ -52,8 +51,6 @@ public class DragAndDropFromTableAndTreeToDiagramTest extends AbstractSiriusSwtB
     private static final String FILE_DIR = "/";
 
     private UITableRepresentation table;
-
-    private UIDiagramRepresentation diagram;
 
     private UIResource sessionAirdResource;
 
@@ -103,9 +100,7 @@ public class DragAndDropFromTableAndTreeToDiagramTest extends AbstractSiriusSwtB
 
         // open diagram
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint("dnd").selectRepresentation("dndDiagram")
-                .selectRepresentationInstance("new dndDiagram", UIDiagramRepresentation.class).open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "dndDiagram", "new dndDiagram", DDiagram.class);
 
         // Read the initial state.
         Set<SWTBotGefEditPart> allEditPartsBefore = Sets.newHashSet(editor.mainEditPart().children());
@@ -156,9 +151,7 @@ public class DragAndDropFromTableAndTreeToDiagramTest extends AbstractSiriusSwtB
 
         // open diagram
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint("dnd").selectRepresentation("dndDiagram")
-                .selectRepresentationInstance("new dndDiagram", UIDiagramRepresentation.class).open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "dndDiagram", "new dndDiagram", DDiagram.class);
 
         // Read the initial state.
         Set<SWTBotGefEditPart> allEditPartsBefore = Sets.newHashSet(editor.mainEditPart().children());

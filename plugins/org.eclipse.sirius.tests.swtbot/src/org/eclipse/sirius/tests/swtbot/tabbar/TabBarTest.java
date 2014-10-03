@@ -22,6 +22,7 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -115,8 +116,6 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
     private SWTBotSiriusDiagramEditor editor;
 
-    private UIDiagramRepresentation diagram;
-
     /**
      * {@inheritDoc}
      */
@@ -134,10 +133,7 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
     }
 
     /**
@@ -222,9 +218,8 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
         bot.text(REPRESENTATION_INSTANCE_NAME).setText(REPRESENTATION_INSTANCE_NAME + "_Copy");
         bot.button("OK").click();
 
-        UIDiagramRepresentation diagramCopy = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME + "_Copy", UIDiagramRepresentation.class).open();
-        SWTBotSiriusDiagramEditor editorCopy = diagramCopy.getEditor();
+        SWTBotSiriusDiagramEditor editorCopy = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME + "_Copy",
+                DDiagram.class);
 
         // Split editor area to display both editor side by side
         SWTBotSplitEditor.splitEditorArea();
@@ -370,12 +365,7 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
         editor.close();
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-
-        SWTBotUtils.waitAllUiEvents();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
 
         SWTBotUtils.waitAllUiEvents();
 
@@ -495,8 +485,7 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
         editor.close();
 
         // Open the entity diagram
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint("Design").selectRepresentation("Entities").selectDiagramInstance("aaaa package entities").open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "Entities", "aaaa package entities", DDiagram.class);
         SWTBotUtils.waitAllUiEvents();
 
         assertTrue("The diagram should be selected", ((IStructuredSelection) editor.getSelection()).getFirstElement() instanceof IDDiagramEditPart);

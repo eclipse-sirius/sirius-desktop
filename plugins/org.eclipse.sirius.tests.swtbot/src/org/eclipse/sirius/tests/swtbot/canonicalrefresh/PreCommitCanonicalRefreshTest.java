@@ -12,9 +12,10 @@ package org.eclipse.sirius.tests.swtbot.canonicalrefresh;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.ItemEnabledCondition;
@@ -28,16 +29,12 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 
-import org.eclipse.sirius.tests.swtbot.Activator;
-
 /**
  * .
  */
 public class PreCommitCanonicalRefreshTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String WIZARD_TITLE = "Selection Wizard";
-
-    private static final String VIEWPOINT_NAME_2253 = "doremi2253";
 
     private static final String REPRESENTATION_NAME_BORDERED_NODE_ON_NODE = "doremi2253-borderedNodeOnNode";
 
@@ -122,10 +119,8 @@ public class PreCommitCanonicalRefreshTest extends AbstractSiriusSwtBotGefTestCa
     public void _testSimpleDiagramSync() {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
 
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_2253)
-                .selectRepresentation(REPRESENTATION_NAME_BORDERED_NODE_ON_NODE).selectRepresentationInstance(REPRESENTATION_NAME_BORDERED_NODE_ON_NODE, UIDiagramRepresentation.class).open();
-
-        final SWTBotSiriusDiagramEditor editor = diagram.getEditor();
+        final SWTBotSiriusDiagramEditor editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_BORDERED_NODE_ON_NODE,
+                REPRESENTATION_NAME_BORDERED_NODE_ON_NODE, DDiagram.class);
 
         insertPackageP2(editor);
         SWTBotGefEditPart packageP2 = editor.getEditPart("p2", AbstractDiagramNodeEditPart.class);

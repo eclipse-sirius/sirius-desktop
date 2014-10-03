@@ -10,11 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
@@ -50,8 +50,6 @@ public class RoutingStyleTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String REPRESENTATION_NAME = "Entities";
 
-    private static final String VIEWPOINT_NAME = "Design";
-
     private static final String MODEL = "2304.ecore";
 
     private static final String SESSION_FILE = "2304.aird";
@@ -65,8 +63,6 @@ public class RoutingStyleTest extends AbstractSiriusSwtBotGefTestCase {
     private UILocalSession localSession;
 
     private SWTBotSiriusDiagramEditor editor;
-
-    private UIDiagramRepresentation diagram;
 
     /**
      * {@inheritDoc}
@@ -85,10 +81,7 @@ public class RoutingStyleTest extends AbstractSiriusSwtBotGefTestCase {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
     }
 
     /**

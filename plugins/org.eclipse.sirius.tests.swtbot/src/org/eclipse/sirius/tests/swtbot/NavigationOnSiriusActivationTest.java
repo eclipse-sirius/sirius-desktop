@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
@@ -35,8 +36,6 @@ public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTes
     private static final String REPRESENTATION_INSTANCE_NAME = "TC732 Square representation 1";
 
     private static final String REPRESENTATION_NAME = "TC732 Square representation 1";
-
-    private static final String VIEWPOINT_NAME = "Test case for ticket #732";
 
     private static final String MODEL = "tc732.ecore";
 
@@ -93,20 +92,14 @@ public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTes
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE_2_VIEWPOINTS);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
     }
 
     private void initializeDiagram1Sirius() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE_1_VIEWPOINT);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
     }
 
     /**

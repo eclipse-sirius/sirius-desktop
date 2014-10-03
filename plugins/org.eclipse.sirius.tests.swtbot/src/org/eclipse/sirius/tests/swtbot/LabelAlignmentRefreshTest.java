@@ -27,6 +27,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
@@ -41,9 +42,9 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.matcher.WithSemantic;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.viewpoint.LabelAlignment;
@@ -80,10 +81,6 @@ public class LabelAlignmentRefreshTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String REPRESENTATION_INSTANCE_NAME = "new VP-2033_Diagram";
 
     private static final String REPRESENTATION_NAME = "VP-2033_Diagram";
-
-    private static final String VIEWPOINT_NAME = "VP-2033";
-
-    private UIDiagramRepresentation diagram;
 
     private AbstractDiagramNameEditPart ePackage1NameEditPart1;
 
@@ -217,9 +214,7 @@ public class LabelAlignmentRefreshTest extends AbstractSiriusSwtBotGefTestCase {
         final UIResource sessionAirdResource = new UIResource(designerProject, "/", SESSION_RESOURCE_FILENAME);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
 
         initEditor();
 
@@ -379,9 +374,7 @@ public class LabelAlignmentRefreshTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     private void initEditor() {
-        if (diagram != null) {
-            editor = diagram.getEditor();
-
+        if (editor != null) {
             editor.setSnapToGrid(false);
 
             editor.setFocus();
@@ -628,12 +621,4 @@ public class LabelAlignmentRefreshTest extends AbstractSiriusSwtBotGefTestCase {
             editingDomain.getCommandStack().execute(changeLabelAlignment);
         }
     }
-
-    @Override
-    protected void tearDown() throws Exception {
-        diagram = null;
-
-        super.tearDown();
-    }
-
 }

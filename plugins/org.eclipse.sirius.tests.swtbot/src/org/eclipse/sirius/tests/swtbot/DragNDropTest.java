@@ -15,10 +15,11 @@ import java.util.List;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.CompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
+import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberOfDescendants;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.DiagramWithChildrensCondition;
@@ -30,8 +31,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberOfDescendants;
 
 /**
  * Test class which checks drag&drop from Model Content to the diagram.
@@ -48,8 +47,6 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
     private UILocalSession localSession;
 
-    private UIDiagramRepresentation diagram;
-
     private static final String REPRESENTATION_INSTANCE_2BLANK = "new TC1041 representation 2 Blank";
 
     private static final String REPRESENTATION_INSTANCE_5BLANK = "new TC1041 representation 5 Blank";
@@ -57,8 +54,6 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String REPRESENTATION_NAME_2 = "TC1041 representation 2 Blank";
 
     private static final String REPRESENTATION_NAME_5 = "TC1041 representation 5 Blank";
-
-    private static final String VIEWPOINT_LABEL = "Test case for ticket #1041";
 
     private static final String MODEL = "tc1041.ecore";
 
@@ -108,18 +103,14 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
      * Open "TC1041 representation 2 Blank" diagram.
      */
     private void openRepresentation2() {
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_LABEL).selectRepresentation(REPRESENTATION_NAME_2)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_2BLANK, UIDiagramRepresentation.class).open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_2, REPRESENTATION_INSTANCE_2BLANK, DDiagram.class);
     }
 
     /**
      * Open "TC1041 representation 5 Blank" diagram.
      */
     private void openRepresentation5() {
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_LABEL).selectRepresentation(REPRESENTATION_NAME_5)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_5BLANK, UIDiagramRepresentation.class).open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_5, REPRESENTATION_INSTANCE_5BLANK, DDiagram.class);
     }
 
     /**

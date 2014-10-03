@@ -19,8 +19,8 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarToggleButton;
 import org.eclipse.ui.IEditorSite;
@@ -45,15 +45,11 @@ public class LayoutingModeTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String SESSION_FILE_NAME = "vp2120.aird";
 
-    private static final String VIEWPOINT_LABEL = "LayoutingMode";
-
     private static final String REPRESENTATION_DESCRIPTION_NAME = "LayoutingMode Diagram";
 
     private static final String REPRESENTATION_INSTANCE_NAME = "new " + REPRESENTATION_DESCRIPTION_NAME;
 
     private Session session;
-
-    private UIDiagramRepresentation diagram;
 
     /**
      * {@inheritDoc}
@@ -72,9 +68,7 @@ public class LayoutingModeTest extends AbstractSiriusSwtBotGefTestCase {
         sessionAirdResource = new UIResource(designerProject, "/", SESSION_FILE_NAME);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_LABEL).selectRepresentation(REPRESENTATION_DESCRIPTION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
 
         session = localSession.getOpenedSession();
 
@@ -115,9 +109,7 @@ public class LayoutingModeTest extends AbstractSiriusSwtBotGefTestCase {
         switchLayoutingModeUsingTabbar();
         checkLayoutingModeisInExpectedState(true);
         editor.close();
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_LABEL).selectRepresentation(REPRESENTATION_DESCRIPTION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
 
         checkLayoutingModeisInExpectedState(false);
     }

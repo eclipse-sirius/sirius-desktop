@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
@@ -26,8 +27,6 @@ public class EdgeStabilityOnBendpointsAlignmentTest extends AbstractSiriusSwtBot
     private static final String REPRESENTATION_INSTANCE_NAME = "root package entities";
 
     private static final String REPRESENTATION_NAME = "Entities";
-
-    private static final String VIEWPOINT_NAME = "Design";
 
     private static final String MODEL = "tc1981.ecore";
 
@@ -68,10 +67,7 @@ public class EdgeStabilityOnBendpointsAlignmentTest extends AbstractSiriusSwtBot
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
     }
 
     /**

@@ -10,12 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.clipboard;
 
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.SessionCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
-
-import org.eclipse.sirius.tests.swtbot.Activator;
 
 /**
  * Test Copy, cut and paste behavior with Paste tools on diagram representation.
@@ -53,9 +53,7 @@ public class CustomClipboardSupportTest extends AbstractClipboardSupportTest {
      * Test copy and paste for menu on Edit Part without Clipboard.
      */
     public void testCopyPasteFromEditMenuWithNoPasteTool() {
-        diagram2 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(CUSTOM_VIEWPOINT_NAME).selectRepresentation(CUSTOM_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_CUSTOM_PASTE, UIDiagramRepresentation.class).open();
-        editor2 = diagram2.getEditor();
+        editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION, REPRESENTATION_WITH_CUSTOM_PASTE, DDiagram.class);
         checkCopyPaste(editor2, editor2.getEditPart("Class2"), editor2, false, (SWTBotGefEditPart) null, "Class2", 1);
     }
 
@@ -63,9 +61,7 @@ public class CustomClipboardSupportTest extends AbstractClipboardSupportTest {
      * Test copy and paste for menu on Edit Part without Clipboard.
      */
     public void testCopyPasteFromEditMenuWithAlwaysPasteClassTool() {
-        diagram2 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(CUSTOM_VIEWPOINT_NAME).selectRepresentation(CUSTOM_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_CUSTOM_PASTE, UIDiagramRepresentation.class).open();
-        editor2 = diagram2.getEditor();
+        editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION, REPRESENTATION_WITH_CUSTOM_PASTE, DDiagram.class);
         checkCopyPaste(editor2, editor2.getEditPart("pastable_Class"), editor2, true, (SWTBotGefEditPart) null, "pasted_pastable_Class", 1);
     }
 
@@ -73,9 +69,7 @@ public class CustomClipboardSupportTest extends AbstractClipboardSupportTest {
      * Test copy and paste for menu on Edit Part without Clipboard.
      */
     public void testCopyPasteInClassFromEditMenuWithAlwaysPasteClassTool() {
-        diagram2 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(CUSTOM_VIEWPOINT_NAME).selectRepresentation(CUSTOM_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_CUSTOM_PASTE, UIDiagramRepresentation.class).open();
-        editor2 = diagram2.getEditor();
+        editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION, REPRESENTATION_WITH_CUSTOM_PASTE, DDiagram.class);
         checkCopyPaste(editor2, editor2.getEditPart("pastable_Class"), editor2, true, editor2.getEditPart("Class2"), "pasted_pastable_Class", 1);
     }
 
@@ -83,9 +77,7 @@ public class CustomClipboardSupportTest extends AbstractClipboardSupportTest {
      * Test copy and paste for menu on Edit Part without Clipboard.
      */
     public void testCopyPasteInReferenceFromEditMenuWithAlwaysPasteClassTool() {
-        diagram2 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(CUSTOM_VIEWPOINT_NAME).selectRepresentation(CUSTOM_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_CUSTOM_PASTE, UIDiagramRepresentation.class).open();
-        editor2 = diagram2.getEditor();
+        editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION, REPRESENTATION_WITH_CUSTOM_PASTE, DDiagram.class);
         checkCopyPaste(editor2, editor2.getEditPart("pastable_Class"), editor2, true, editor2.getEditPart("ref1"), "pasted_pastable_Class", 1);
     }
 
@@ -93,9 +85,7 @@ public class CustomClipboardSupportTest extends AbstractClipboardSupportTest {
      * Test copy and paste for menu on Edit Part without Clipboard.
      */
     public void testCopyPasteInAttributeFromEditMenuWithAlwaysPasteClassTool() {
-        diagram2 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(CUSTOM_VIEWPOINT_NAME).selectRepresentation(CUSTOM_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_CUSTOM_PASTE, UIDiagramRepresentation.class).open();
-        editor2 = diagram2.getEditor();
+        editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION, REPRESENTATION_WITH_CUSTOM_PASTE, DDiagram.class);
         checkCopyPaste(editor2, editor2.getEditPart("pastable_Class"), editor2, true, editor2.getEditPart("attributee2"), "pasted_pastable_Class", 1);
     }
 
@@ -103,9 +93,7 @@ public class CustomClipboardSupportTest extends AbstractClipboardSupportTest {
      * Test copy and paste for menu on Edit Part without Clipboard.
      */
     public void testCopyPasteInSuperTypeEdgeFromEditMenuWithAlwaysPasteClassTool() {
-        diagram2 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(CUSTOM_VIEWPOINT_NAME).selectRepresentation(CUSTOM_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_CUSTOM_PASTE, UIDiagramRepresentation.class).open();
-        editor2 = diagram2.getEditor();
+        editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION, REPRESENTATION_WITH_CUSTOM_PASTE, DDiagram.class);
 
         checkCopyPaste(editor2, editor2.getEditPart("pastable_Class"), editor2, true, editor2.getEditPart("super type of Class1"), "pasted_pastable_Class", 1);
     }

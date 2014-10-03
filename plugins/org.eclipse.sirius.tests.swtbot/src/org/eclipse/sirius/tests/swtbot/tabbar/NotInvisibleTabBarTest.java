@@ -10,13 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.tabbar;
 
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
@@ -74,8 +74,6 @@ public class NotInvisibleTabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
     private SWTBotSiriusDiagramEditor editor;
 
-    private UIDiagramRepresentation diagram;
-
     /**
      * {@inheritDoc}
      */
@@ -97,8 +95,7 @@ public class NotInvisibleTabBarTest extends AbstractSiriusSwtBotGefTestCase {
         localSession.changeViewpointSelection(Sets.newHashSet("Design"), Sets.<String> newHashSet());
 
         // Open the entity diagram
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint("Design").selectRepresentation("Entities").selectDiagramInstance("aaaa package entities").open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "Entities", "aaaa package entities", DDiagram.class);
     }
 
     /**

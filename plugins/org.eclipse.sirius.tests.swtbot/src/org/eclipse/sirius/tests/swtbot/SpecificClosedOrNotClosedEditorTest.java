@@ -12,13 +12,13 @@ package org.eclipse.sirius.tests.swtbot;
 
 import org.eclipse.gef.EditPart;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
@@ -73,8 +73,6 @@ public class SpecificClosedOrNotClosedEditorTest extends AbstractSiriusSwtBotGef
 
     private SWTBotSiriusDiagramEditor editor;
 
-    private UIDiagramRepresentation diagram;
-
     private UIResource sessionAirdResource;
 
     private UIResource sessionAirdResource1854;
@@ -108,8 +106,8 @@ public class SpecificClosedOrNotClosedEditorTest extends AbstractSiriusSwtBotGef
         // Selected the edge to remove
         SWTBotGefEditPart selectedElement = selectAndCheckEditPart("", AbstractDiagramEdgeEditPart.class);
         DEdgeEditPart edgeSelected = (DEdgeEditPart) selectedElement.part();
-        assertEquals("The selected edge is not correct", (((DNodeEditPart) ((DDiagramEditPart) editor.rootEditPart().part().getChildren().get(0)).getChildren().get(0))
-                .getSourceConnections().get(0)), edgeSelected);
+        assertEquals("The selected edge is not correct", (((DNodeEditPart) ((DDiagramEditPart) editor.rootEditPart().part().getChildren().get(0)).getChildren().get(0)).getSourceConnections().get(0)),
+                edgeSelected);
         editor.select(selectedElement);
         // Remove the edge
         editor.clickContextMenu("Delete from Model");
@@ -183,8 +181,6 @@ public class SpecificClosedOrNotClosedEditorTest extends AbstractSiriusSwtBotGef
     }
 
     private void openDiagram(UILocalSession localSession, String viewpointName, String representationName, String representationInstanceName) {
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(viewpointName).selectRepresentation(representationName)
-                .selectRepresentationInstance(representationInstanceName, UIDiagramRepresentation.class).open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), representationName, representationInstanceName, DDiagram.class);
     }
 }

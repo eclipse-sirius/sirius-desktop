@@ -37,6 +37,7 @@ import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.resource.IFileModificationValidator;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
@@ -65,8 +66,6 @@ public class FileModificationValidationTest extends AbstractSiriusSwtBotGefTestC
     private static final String REPRESENTATION_INSTANCE_NAME = "TC1481";
 
     private static final String REPRESENTATION_NAME = "TC1481";
-
-    private static final String VIEWPOINT_NAME = "Test case for ticket #1481";
 
     private static final String MODEL = "tc1481.ecore";
 
@@ -112,10 +111,7 @@ public class FileModificationValidationTest extends AbstractSiriusSwtBotGefTestC
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
 
         Session openedSession = localSession.getOpenedSession();
 

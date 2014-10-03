@@ -25,11 +25,12 @@ import org.eclipse.core.runtime.ILogListener;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
-import org.eclipse.sirius.tests.swtbot.support.api.business.sessionbrowser.UILSRepresentationBrowser;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.ItemEnabledCondition;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swtbot.eclipse.finder.matchers.WidgetMatcherFactory;
@@ -42,8 +43,6 @@ import org.eclipse.swtbot.swt.finder.waits.WaitForObjectCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.hamcrest.Matcher;
-
-import org.eclipse.sirius.tests.swtbot.Activator;
 
 /**
  * Common behavior for all pseudo clear-case tests.
@@ -90,7 +89,7 @@ public abstract class AbstractPseudoClearCaseTest<E extends SWTBotWorkbenchPart<
         }
     }
 
-    private static final String VIEWPOINT_NAME = "Design";
+    protected static final String VIEWPOINT_NAME = "Design";
 
     private static final String MODEL = "1936.ecore";
 
@@ -177,7 +176,7 @@ public abstract class AbstractPseudoClearCaseTest<E extends SWTBotWorkbenchPart<
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        editor = openAndGetEditor(getRepresentationName(), getRepresentationInstanceName());
+        editor = openAndGetEditor(localSession.getOpenedSession(), getRepresentationName(), getRepresentationInstanceName());
 
         logListener = new InnerLogListener();
 
@@ -198,20 +197,18 @@ public abstract class AbstractPseudoClearCaseTest<E extends SWTBotWorkbenchPart<
      */
     protected abstract String getRepresentationInstanceName();
 
-    private E openAndGetEditor(final String representationName, final String diagramName) {
-        final UILSRepresentationBrowser selectedRepresentation = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(representationName);
-
-        return openAndGetEditor(selectedRepresentation);
-    }
-
     /**
      * Open and get editor.
      * 
-     * @param uiRepresentation
-     *            UI representation to use to open and get editor.
+     * @param session
+     *            The current session
+     * @param representationDescriptionName
+     *            the representation description name.
+     * @param representationName
+     *            the representation name.
      * @return Editor.
      */
-    protected abstract E openAndGetEditor(UILSRepresentationBrowser uiRepresentation);
+    protected abstract E openAndGetEditor(final Session session, final String representationDescriptionName, final String representationName);
 
     /**
      * {@inheritDoc}

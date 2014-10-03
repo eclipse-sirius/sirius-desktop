@@ -17,13 +17,14 @@ import org.eclipse.emf.ecore.util.EcoreUtil.EqualityHelper;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.l10n.DiagramUIActionsMessages;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode3EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.FixedColor;
 import org.eclipse.swt.graphics.Color;
@@ -54,8 +55,6 @@ public class BackgroundColorFigureUpdateTests extends AbstractSiriusSwtBotGefTes
 
     private static final String REPRESENTATION_NAME = "Diagram";
 
-    private static final String VIEWPOINT_NAME = "vp";
-
     private static final String NODE_CONTAINER = "p1";
 
     private static final String NODE_CONTAINER2 = "p2";
@@ -69,8 +68,6 @@ public class BackgroundColorFigureUpdateTests extends AbstractSiriusSwtBotGefTes
     private static final String BORDERED_NODE = "a1";
 
     private Map<String, FixedColor> colorNames = new LinkedHashMap<String, FixedColor>();
-
-    private UIDiagramRepresentation diagram;
 
     /**
      * {@inheritDoc}
@@ -155,10 +152,7 @@ public class BackgroundColorFigureUpdateTests extends AbstractSiriusSwtBotGefTes
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
     }
 
     /**
@@ -246,7 +240,6 @@ public class BackgroundColorFigureUpdateTests extends AbstractSiriusSwtBotGefTes
     @Override
     protected void tearDown() throws Exception {
         colorNames = null;
-        diagram = null;
         super.tearDown();
     }
 

@@ -20,10 +20,10 @@ import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
@@ -31,8 +31,8 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
 /**
- * when creating an edge between two elements
- * with icon, the MapModeUtil doesn't warn of using DefaultMapMode.
+ * when creating an edge between two elements with icon, the MapModeUtil doesn't
+ * warn of using DefaultMapMode.
  * 
  * @author lredor
  */
@@ -58,8 +58,6 @@ public class EdgeCreationTest extends AbstractSiriusSwtBotGefTestCase {
 
     private SWTBotSiriusDiagramEditor editor;
 
-    private UIDiagramRepresentation diagram;
-
     private UIResource sessionAirdResource;
 
     private UILocalSession localSession;
@@ -79,9 +77,7 @@ public class EdgeCreationTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     private void openDiagram(String name) {
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(name).selectRepresentationInstance(name, UIDiagramRepresentation.class)
-                .open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), name, name, DDiagram.class);
     }
 
     private boolean error;

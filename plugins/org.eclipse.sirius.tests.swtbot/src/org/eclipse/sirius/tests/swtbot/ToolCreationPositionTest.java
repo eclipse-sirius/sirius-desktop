@@ -13,13 +13,13 @@ package org.eclipse.sirius.tests.swtbot;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode3EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
@@ -59,8 +59,6 @@ public class ToolCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final Point CONTAINER2_CREATION_POINT = new Point(517, 200);
 
-    private static final String VIEWPOINT_NAME = "2444";
-
     private static final String REPRESENTATION_INSTANCE_NAME = "new 2444";
 
     private static final String REPRESENTATION_NAME = "2444";
@@ -76,8 +74,6 @@ public class ToolCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String FILE_DIR = "/";
 
     private SWTBotSiriusDiagramEditor editor;
-
-    private UIDiagramRepresentation diagram;
 
     private UIResource sessionAirdResource;
 
@@ -96,9 +92,7 @@ public class ToolCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     private void openDiagram() {
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         editor.setSnapToGrid(false);
     }
 

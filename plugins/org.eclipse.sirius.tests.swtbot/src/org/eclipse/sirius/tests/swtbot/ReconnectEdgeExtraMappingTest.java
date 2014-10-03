@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeList;
@@ -49,8 +50,6 @@ public class ReconnectEdgeExtraMappingTest extends AbstractSiriusSwtBotGefTestCa
     private static final String REPRESENTATION_INSTANCE_NAME = "new package";
 
     private static final String REPRESENTATION_NAME = "package";
-
-    private static final String VIEWPOINT_NAME = "bugReconnectAndDisappear";
 
     private static final String MODEL = "My.ecore";
 
@@ -94,10 +93,7 @@ public class ReconnectEdgeExtraMappingTest extends AbstractSiriusSwtBotGefTestCa
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
     }
 
     /**

@@ -12,6 +12,7 @@ package org.eclipse.sirius.tests.swtbot;
 
 import java.util.List;
 
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
@@ -366,17 +367,26 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
         if (!TestsUtil.isDynamicTabbar()) {
             return;
         }
-        
+
         if (TestsUtil.shouldSkipUnreliableTests()) {
             /*
-            org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException: Could not find node with text: vp867.ecore
-            at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNodes(SWTBotTreeItem.java:334)
-            at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNode(SWTBotTreeItem.java:308)
-            at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNode(SWTBotTreeItem.java:346)
-            at org.eclipse.sirius.tests.swtbot.support.api.business.UIProject.getUIItemFromResource(UIProject.java:152)
-            at org.eclipse.sirius.tests.swtbot.support.api.business.UIProject.mouseRigthClickOnResource(UIProject.java:171)
-            at org.eclipse.sirius.tests.swtbot.ExportDiagramsAsImagesTest.testExportDiagramsOfTransientSessionAsPNGFromTabBar(ExportDiagramsAsImagesTest.java:372)
-            */
+             * org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException:
+             * Could not find node with text: vp867.ecore at
+             * org.eclipse.swtbot.swt
+             * .finder.widgets.SWTBotTreeItem.getNodes(SWTBotTreeItem.java:334)
+             * at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNode(
+             * SWTBotTreeItem.java:308) at
+             * org.eclipse.swtbot.swt.finder.widgets.
+             * SWTBotTreeItem.getNode(SWTBotTreeItem.java:346) at
+             * org.eclipse.sirius
+             * .tests.swtbot.support.api.business.UIProject.getUIItemFromResource
+             * (UIProject.java:152) at
+             * org.eclipse.sirius.tests.swtbot.support.api
+             * .business.UIProject.mouseRigthClickOnResource(UIProject.java:171)
+             * at org.eclipse.sirius.tests.swtbot.ExportDiagramsAsImagesTest.
+             * testExportDiagramsOfTransientSessionAsPNGFromTabBar
+             * (ExportDiagramsAsImagesTest.java:372)
+             */
             return;
         }
 
@@ -402,17 +412,27 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
         if (!TestsUtil.isDynamicTabbar()) {
             return;
         }
-        
+
         if (TestsUtil.shouldSkipUnreliableTests()) {
             /*
-            org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException: Could not find node with text: vp867.ecore
-            at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNodes(SWTBotTreeItem.java:334)
-            at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNode(SWTBotTreeItem.java:308)
-            at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNode(SWTBotTreeItem.java:346)
-            at org.eclipse.sirius.tests.swtbot.support.api.business.UIProject.getUIItemFromResource(UIProject.java:152)
-            at org.eclipse.sirius.tests.swtbot.support.api.business.UIProject.mouseRigthClickOnResource(UIProject.java:171)
-            at org.eclipse.sirius.tests.swtbot.ExportDiagramsAsImagesAndHtmlTest.testExportDiagramsOfTransientSessionAsSVGFromTabBar(ExportDiagramsAsImagesAndHtmlTest.java:306)
-            */
+             * org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException:
+             * Could not find node with text: vp867.ecore at
+             * org.eclipse.swtbot.swt
+             * .finder.widgets.SWTBotTreeItem.getNodes(SWTBotTreeItem.java:334)
+             * at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNode(
+             * SWTBotTreeItem.java:308) at
+             * org.eclipse.swtbot.swt.finder.widgets.
+             * SWTBotTreeItem.getNode(SWTBotTreeItem.java:346) at
+             * org.eclipse.sirius
+             * .tests.swtbot.support.api.business.UIProject.getUIItemFromResource
+             * (UIProject.java:152) at
+             * org.eclipse.sirius.tests.swtbot.support.api
+             * .business.UIProject.mouseRigthClickOnResource(UIProject.java:171)
+             * at
+             * org.eclipse.sirius.tests.swtbot.ExportDiagramsAsImagesAndHtmlTest
+             * .testExportDiagramsOfTransientSessionAsSVGFromTabBar(
+             * ExportDiagramsAsImagesAndHtmlTest.java:306)
+             */
             return;
         }
 
@@ -459,15 +479,26 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     public void testExportDiagramsOfTransientSessionAsPNGFromModelContentView() throws Exception {
         if (TestsUtil.shouldSkipUnreliableTests()) {
             /*
-            org.eclipse.swtbot.swt.finder.widgets.TimeoutException: Timeout after: 10000 ms.: tree item with text DesignerTestProject is not expanded
-            at org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(SWTBotFactory.java:407)
-            at org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(SWTBotFactory.java:381)
-            at org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(SWTBotFactory.java:369)
-            at org.eclipse.sirius.tests.swtbot.support.api.business.UIProject.getProjectTreeItem(UIProject.java:108)
-            at org.eclipse.sirius.tests.swtbot.support.api.business.UIProject.getUIItemFromResource(UIProject.java:137)
-            at org.eclipse.sirius.tests.swtbot.support.api.business.UIProject.mouseRigthClickOnResource(UIProject.java:171)
-            at org.eclipse.sirius.tests.swtbot.ExportDiagramsAsImagesTest.testExportDiagramsOfTransientSessionAsPNGFromModelContentView(ExportDiagramsAsImagesTest.java:463)
-            */
+             * org.eclipse.swtbot.swt.finder.widgets.TimeoutException: Timeout
+             * after: 10000 ms.: tree item with text DesignerTestProject is not
+             * expanded at
+             * org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(
+             * SWTBotFactory.java:407) at
+             * org.eclipse.swtbot.swt.finder.SWTBotFactory
+             * .waitUntil(SWTBotFactory.java:381) at
+             * org.eclipse.swtbot.swt.finder
+             * .SWTBotFactory.waitUntil(SWTBotFactory.java:369) at
+             * org.eclipse.sirius
+             * .tests.swtbot.support.api.business.UIProject.getProjectTreeItem
+             * (UIProject.java:108) at
+             * org.eclipse.sirius.tests.swtbot.support.api
+             * .business.UIProject.getUIItemFromResource(UIProject.java:137) at
+             * org.eclipse.sirius.tests.swtbot.support.api.business.UIProject.
+             * mouseRigthClickOnResource(UIProject.java:171) at
+             * org.eclipse.sirius.tests.swtbot.ExportDiagramsAsImagesTest.
+             * testExportDiagramsOfTransientSessionAsPNGFromModelContentView
+             * (ExportDiagramsAsImagesTest.java:463)
+             */
             return;
         }
 
@@ -607,8 +638,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
      */
     private void openDiagramEditor() {
         bot.waitUntil(new CheckTreeItemEnabled(localSession.getLocalSessionBrowser().getTreeItem()));
-        localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
+        openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
     }
 
 }

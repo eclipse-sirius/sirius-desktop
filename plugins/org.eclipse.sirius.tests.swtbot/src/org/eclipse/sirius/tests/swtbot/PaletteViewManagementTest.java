@@ -12,7 +12,6 @@ package org.eclipse.sirius.tests.swtbot;
 
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.dialog.ExportAsImageHelper;
@@ -24,7 +23,8 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
 /**
- * Test the Palette View Mangement. - Test the view Palette with representation opened.
+ * Test the Palette View Mangement. - Test the view Palette with representation
+ * opened.
  * 
  * @author jdupont
  * 
@@ -104,7 +104,8 @@ public class PaletteViewManagementTest extends AbstractSiriusSwtBotGefTestCase {
      * <P>
      * - Close the view
      * <P>
-     * - Check the palette (editor's palette) is reappeared and contains the same tools
+     * - Check the palette (editor's palette) is reappeared and contains the
+     * same tools
      */
     public void testOpenPaletteOpenDiagram() {
         // Open the palette View
@@ -130,7 +131,8 @@ public class PaletteViewManagementTest extends AbstractSiriusSwtBotGefTestCase {
      * <P>
      * - Open two editors
      * <P>
-     * - Check that changing the focus/the active editor, change the content of the palette view
+     * - Check that changing the focus/the active editor, change the content of
+     * the palette view
      */
     public void testOpenPaletteOpenTwoDiagram() {
         // Open the palette view
@@ -138,11 +140,13 @@ public class PaletteViewManagementTest extends AbstractSiriusSwtBotGefTestCase {
         try {
             // Open two editors
             openDiagram(REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME);
-            // Check that changing the focus/the active editor, change the content
+            // Check that changing the focus/the active editor, change the
+            // content
             // of the palette view
             checkPaletteViewContainmentAndAddElement("Class", "NewEClass3", 150, 200, REPRESENTATION_NAME);
             openDiagram(REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME_2);
-            // Check that changing the focus/the active editor, change the content
+            // Check that changing the focus/the active editor, change the
+            // content
             // of the palette view
             checkPaletteViewContainmentAndAddElement("Role", "newRole4", 150, 200, REPRESENTATION_NAME_2);
         } finally {
@@ -181,7 +185,7 @@ public class PaletteViewManagementTest extends AbstractSiriusSwtBotGefTestCase {
      */
     private SWTBotSiriusDiagramEditor openDiagram(String representationDescriptionName, String representationName) {
         SWTBotUtils.waitAllUiEvents();
-        SWTBotSiriusDiagramEditor swtBotEditor = openDiagram(localSession.getOpenedSession(), representationDescriptionName, representationName, DDiagram.class);
+        SWTBotSiriusDiagramEditor swtBotEditor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), representationDescriptionName, representationName, DDiagram.class);
         SWTBotUtils.waitAllUiEvents();
         return swtBotEditor;
     }
@@ -228,9 +232,7 @@ public class PaletteViewManagementTest extends AbstractSiriusSwtBotGefTestCase {
      *            y coordinate
      */
     private void checkPaletteViewContainmentAndAddElement(String toolName, String newElement, int x, int y, String representationName) {
-        final UIDiagramRepresentation representation = localSession.getLocalSessionBrowser().perCategory().selectViewpoint("Design").selectRepresentation(REPRESENTATION_DESCRIPTION_NAME)
-                .selectRepresentationInstance(representationName, UIDiagramRepresentation.class).open();
-        editor = representation.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, representationName, DDiagram.class);
         editor.activateTool(toolName);
         editor.click(x, y);
         bot.waitUntil(new CheckSelectedCondition(editor, newElement));

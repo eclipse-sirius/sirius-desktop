@@ -18,11 +18,12 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.editparts.LayerManager;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoration;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swt.custom.ScrolledComposite;
@@ -52,15 +53,11 @@ public class EmptyPropertyViewAfterDeletionTest extends AbstractSiriusSwtBotGefT
 
     private static final String REPRESENTATION_NAME = "new " + REPRESENTATION_DEFINITION_NAME;
 
-    private static final String VIEWPOINT_NAME = "vp_1950";
-
     private static final String SEMANTIC_RESOURCE_NAME = "VP-1950.ecore";
 
     private static final String SESSION_RESOURCE_NAME = "VP-1950.aird";
 
     private static final String MODELER_RESOURCE_NAME = "VP-1950.odesign";
-
-    private UIDiagramRepresentation diagram;
 
     private SWTBotGefEditPart node1Bot;
 
@@ -93,9 +90,7 @@ public class EmptyPropertyViewAfterDeletionTest extends AbstractSiriusSwtBotGefT
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, "/", SESSION_RESOURCE_NAME);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource, true);
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_DEFINITION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_NAME, UIDiagramRepresentation.class).open();
-
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DEFINITION_NAME, REPRESENTATION_NAME, DDiagram.class);
         initEditor();
 
         node1Bot = editor.getEditPart("Node1").parent();
@@ -104,9 +99,7 @@ public class EmptyPropertyViewAfterDeletionTest extends AbstractSiriusSwtBotGefT
     }
 
     private void initEditor() {
-        if (diagram != null) {
-            editor = diagram.getEditor();
-
+        if (editor != null) {
             editor.setSnapToGrid(false);
 
             editor.setFocus();
@@ -359,8 +352,6 @@ public class EmptyPropertyViewAfterDeletionTest extends AbstractSiriusSwtBotGefT
      */
     @Override
     protected void tearDown() throws Exception {
-
-        diagram = null;
 
         node1Bot = null;
         node2Bot = null;

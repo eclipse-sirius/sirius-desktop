@@ -75,6 +75,7 @@ import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.diagram.AlignmentKind;
 import org.eclipse.sirius.diagram.BracketEdgeStyle;
 import org.eclipse.sirius.diagram.BundledImageShape;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.EdgeArrows;
@@ -115,8 +116,8 @@ import org.eclipse.sirius.diagram.ui.tools.internal.routers.DForestRouter;
 import org.eclipse.sirius.diagram.ui.tools.internal.routers.DTreeRouter;
 import org.eclipse.sirius.tests.support.api.ImageEquality;
 import org.eclipse.sirius.tests.support.api.SiriusAssert;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.widget.BackgroundColorFigureGetter;
 import org.eclipse.sirius.tests.swtbot.support.api.widget.NodeFigureGradientDataGetter;
@@ -160,8 +161,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
  */
 @SuppressWarnings({ "restriction" })
 public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends AbstractRefreshWithCustomizedStyleTest {
-
-    private static final String VIEWPOINT_NAME = "VP-3535_Viewpoint";
 
     private static final String REPRESENTATION_NAME = "VP-3535_Diagram";
 
@@ -226,9 +225,7 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
         copyFileToTestProject(Activator.PLUGIN_ID, PATH, SESSION_RESOURCE_NAME, SEMANTIC_RESOURCE_NAME, MODELER_RESOURCE_NAME, IMAGE_NAME, NEW_IMAGE_NAME);
         UIResource representationsResource = new UIResource(designerProject, "/", SESSION_RESOURCE_NAME);
         localSession = designerPerspective.openSessionFromFile(representationsResource);
-        UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance("new " + REPRESENTATION_NAME, UIDiagramRepresentation.class).open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, "new " + REPRESENTATION_NAME, DDiagram.class);
 
         eClass1WithSquareStyleBot = editor.getEditPart("EClass1WithSquareStyle", AbstractDiagramNodeEditPart.class);
         eClass1WithLozengeStyleBot = editor.getEditPart("EClass1WithLozengeStyle", AbstractDiagramNodeEditPart.class);

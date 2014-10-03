@@ -24,7 +24,7 @@ public class ElementCreationWithPopupMenuWith200PercentOfZoomTests extends Eleme
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         super.onSetUpAfterOpeningDesignerPerspective();
 
-        diagram.zoom(ZoomLevel.ZOOM_200);
+        editor.zoom(ZoomLevel.ZOOM_200);
         editor.scrollTo(0, 0);
     }
 
@@ -33,7 +33,7 @@ public class ElementCreationWithPopupMenuWith200PercentOfZoomTests extends Eleme
         // set focus on diagram to allow zoom change
         diagramEditPartBot.select();
 
-        diagram.zoomDefault();
+        editor.zoomDefault();
 
         super.tearDown();
     }

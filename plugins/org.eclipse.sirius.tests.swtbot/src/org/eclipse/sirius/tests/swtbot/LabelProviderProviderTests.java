@@ -23,15 +23,19 @@ import org.eclipse.sirius.common.ui.business.api.views.properties.tabbed.ILabelP
 import org.eclipse.sirius.common.ui.business.internal.views.properties.tabbed.LabelProviderProviderDescriptor;
 import org.eclipse.sirius.common.ui.business.internal.views.properties.tabbed.LabelProviderProviderRegistry;
 import org.eclipse.sirius.common.ui.business.internal.views.properties.tabbed.StandaloneLabelProviderProviderDescriptor;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.tests.support.api.ImageEquality;
+import org.eclipse.sirius.tests.swtbot.LabelProviderProviderTests.DiagramLabelProviderProviderStub.DiagramLabelProvider;
+import org.eclipse.sirius.tests.swtbot.LabelProviderProviderTests.TableLabelProviderProviderStub.TableLabelProvider;
+import org.eclipse.sirius.tests.swtbot.LabelProviderProviderTests.TreeLabelProviderProviderStub.TreeLabelProvider;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITableRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITreeRepresentation;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tree.DTreeElement;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
@@ -41,10 +45,6 @@ import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCLabel;
-
-import org.eclipse.sirius.tests.swtbot.LabelProviderProviderTests.DiagramLabelProviderProviderStub.DiagramLabelProvider;
-import org.eclipse.sirius.tests.swtbot.LabelProviderProviderTests.TableLabelProviderProviderStub.TableLabelProvider;
-import org.eclipse.sirius.tests.swtbot.LabelProviderProviderTests.TreeLabelProviderProviderStub.TreeLabelProvider;
 
 /**
  * Tests that a contributed {@link ILabelProvider} customize the title
@@ -115,9 +115,7 @@ public class LabelProviderProviderTests extends AbstractSiriusSwtBotGefTestCase 
      * without customization.
      */
     public void testPropertiesViewTitleOnDiagramDialectEditorWithoutContributions() {
-        UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(DIAGRAM_DESC_NAME)
-                .selectRepresentationInstance("new " + DIAGRAM_DESC_NAME, UIDiagramRepresentation.class).open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), DIAGRAM_DESC_NAME, "new " + DIAGRAM_DESC_NAME, DDiagram.class);
         editor.select(DEFAULT_LABEL);
         SWTBotView propertiesView = bot.viewByTitle("Properties");
         SWTBot propertiesViewBot = propertiesView.bot();
@@ -170,9 +168,7 @@ public class LabelProviderProviderTests extends AbstractSiriusSwtBotGefTestCase 
      */
     public void testPropertiesViewTitleOnDiagramDialectEditorWithContributions() {
         addContributions();
-        UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(DIAGRAM_DESC_NAME)
-                .selectRepresentationInstance("new " + DIAGRAM_DESC_NAME, UIDiagramRepresentation.class).open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), DIAGRAM_DESC_NAME, "new " + DIAGRAM_DESC_NAME, DDiagram.class);
         editor.select("test");
         SWTBotView propertiesView = bot.viewByTitle("Properties");
         SWTBot propertiesViewBot = propertiesView.bot();

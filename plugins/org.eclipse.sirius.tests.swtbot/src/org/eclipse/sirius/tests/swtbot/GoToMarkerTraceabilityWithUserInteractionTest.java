@@ -29,12 +29,11 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeSelection;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
-import org.eclipse.sirius.tests.swtbot.support.api.business.AbstractUIRepresentation;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
+import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UITableRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
@@ -95,8 +94,6 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
     private UIResource sessionAirdResource;
 
     private UILocalSession localSession;
-
-    private AbstractUIRepresentation representation;
 
     /**
      * The icon in the outline displayed when labels are shown (not hidden).
@@ -212,13 +209,11 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
     public void testTraceabilityWhenGoToMarkerIsCalledOnAllOpenedEditors() {
         setUpMarker(REPRESENTATION_EMPTY_DIAGRAM, "emptyDiagram", "platform:/resource/DesignerTestProject/vp1038.ecore#//p1/A");
 
-        Object emptyRepresentation2 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_EMPTY_DIAGRAM)
-                .selectRepresentationInstance("emptyDiagram2", UIDiagramRepresentation.class);
-        final SWTBotSiriusDiagramEditor emptyDiagramEditor2 = ((UIDiagramRepresentation) emptyRepresentation2).open().getEditor();
+        final SWTBotSiriusDiagramEditor emptyDiagramEditor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_EMPTY_DIAGRAM, "emptyDiagram2",
+                DDiagram.class);
 
-        Object emptyRepresentation3 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_EMPTY_DIAGRAM)
-                .selectRepresentationInstance("emptyDiagram3", UIDiagramRepresentation.class);
-        final SWTBotSiriusDiagramEditor emptyDiagramEditor3 = ((UIDiagramRepresentation) emptyRepresentation3).open().getEditor();
+        final SWTBotSiriusDiagramEditor emptyDiagramEditor3 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_EMPTY_DIAGRAM, "emptyDiagram3",
+                DDiagram.class);
 
         callGoToMarkerOnAllOpenedEditors(traceMarker);
 
@@ -320,13 +315,9 @@ public class GoToMarkerTraceabilityWithUserInteractionTest extends AbstractScena
     protected void setUpMarker(String representationType, String representationName, String semanticElementURI) {
 
         if (REPRESENTATION_DIAGRAM.equals(representationType) || REPRESENTATION_EMPTY_DIAGRAM.equals(representationType)) {
-            representation = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(representationType)
-                    .selectRepresentationInstance(representationName, UIDiagramRepresentation.class);
-            editor = ((UIDiagramRepresentation) representation).open().getEditor();
+            editor = openRepresentation(localSession.getOpenedSession(), representationType, representationName, DDiagram.class);
         } else {
-            representation = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(representationType)
-                    .selectRepresentationInstance(representationName, UITableRepresentation.class);
-            editor = ((UITableRepresentation) representation).open().getEditor();
+            editor = openRepresentation(localSession.getOpenedSession(), representationType, representationName, DTable.class);
         }
 
         ResourceSet resourceSet = localSession.getOpenedSession().getTransactionalEditingDomain().getResourceSet();

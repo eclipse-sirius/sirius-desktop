@@ -19,13 +19,13 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentat
  */
 public class GroupElementsInOneOtherTestsWith200PercentOfZoomTests extends GroupElementsInOneOtherTests {
 
-	private String oldFont;
-	
+    private String oldFont;
+
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         super.onSetUpAfterOpeningDesignerPerspective();
         oldFont = changeDefaultFontName("Comic Sans MS");
-        diagram.zoom(ZoomLevel.ZOOM_200);
+        editor.zoom(ZoomLevel.ZOOM_200);
         editor.scrollTo(0, 0);
 
     }
@@ -35,7 +35,7 @@ public class GroupElementsInOneOtherTestsWith200PercentOfZoomTests extends Group
         // set focus on diagram to allow zoom change
         diagramEditPartBot.select();
 
-        diagram.zoomDefault();
+        editor.zoomDefault();
 
         if (oldFont != null) {
             changeDefaultFontName(oldFont);

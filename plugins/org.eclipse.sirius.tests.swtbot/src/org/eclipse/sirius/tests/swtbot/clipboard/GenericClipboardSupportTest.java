@@ -17,10 +17,11 @@ import java.util.Map;
 
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionStatus;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.swtbot.Activator;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.SessionCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
 /**
@@ -62,9 +63,7 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
     public void testCopyPasteMenusSync() {
         clearSiriusClipboard();
 
-        diagram1 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(GENERIC_VIEWPOINT_NAME).selectRepresentation(GENERIC_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_GENERIC_PASTE, UIDiagramRepresentation.class).open();
-        editor = diagram1.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
 
         Session session = localSession.getOpenedSession();
         assertEquals(SessionStatus.SYNC, session.getStatus());
@@ -88,9 +87,7 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
     public void testCopyEPackageSiriusClipboardContent() {
         clearSiriusClipboard();
 
-        diagram1 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(GENERIC_VIEWPOINT_NAME).selectRepresentation(GENERIC_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_GENERIC_PASTE, UIDiagramRepresentation.class).open();
-        editor = diagram1.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
 
         Session session = localSession.getOpenedSession();
         assertEquals(SessionStatus.SYNC, session.getStatus());
@@ -145,9 +142,7 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
     public void testCopyEClassSiriusClipboardContent() {
         clearSiriusClipboard();
 
-        diagram1 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(GENERIC_VIEWPOINT_NAME).selectRepresentation(GENERIC_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_GENERIC_PASTE, UIDiagramRepresentation.class).open();
-        editor = diagram1.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
 
         Session session = localSession.getOpenedSession();
         assertEquals(SessionStatus.SYNC, session.getStatus());
@@ -192,9 +187,7 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
      * Test copy and paste from menu Edit on diagram targeting an EPackage.
      */
     public void testGenericCopyEClassPasteInPackage() {
-        diagram1 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(GENERIC_VIEWPOINT_NAME).selectRepresentation(GENERIC_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_GENERIC_PASTE, UIDiagramRepresentation.class).open();
-        editor = diagram1.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
         checkCopyPaste(editor, editor.getEditPart("Class2"), editor, true, (SWTBotGefEditPart) null, "Class2", 2);
     }
 
@@ -202,9 +195,7 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
      * Test copy and paste from menu Edit on node targeting an EClass.
      */
     public void testGenericCopyEClassPasteInEClass() {
-        diagram1 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(GENERIC_VIEWPOINT_NAME).selectRepresentation(GENERIC_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_GENERIC_PASTE, UIDiagramRepresentation.class).open();
-        editor = diagram1.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
         checkCopyPaste(editor, editor.getEditPart("Class2"), editor, false, editor.getEditPart("Class2"), "Class2", 1);
     }
 
@@ -213,12 +204,8 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
      * diagram targeting an EPackage.
      */
     public void testGenericCopyEClassPasteInPackageOtherEditor() {
-        diagram1 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(CUSTOM_VIEWPOINT_NAME).selectRepresentation(CUSTOM_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_CUSTOM_PASTE, UIDiagramRepresentation.class).open();
-        editor = diagram1.getEditor();
-        diagram2 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(GENERIC_VIEWPOINT_NAME).selectRepresentation(GENERIC_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_GENERIC_PASTE, UIDiagramRepresentation.class).open();
-        editor2 = diagram2.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION, REPRESENTATION_WITH_CUSTOM_PASTE, DDiagram.class);
+        editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
         checkCopyPaste(editor, editor.getEditPart("Class2"), editor2, true, (SWTBotGefEditPart) null, "Class2", 2);
     }
 
@@ -227,12 +214,8 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
      * node targeting an EClass.
      */
     public void testGenericCopyEClassPasteInEClassOtherEditor() {
-        diagram1 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(CUSTOM_VIEWPOINT_NAME).selectRepresentation(CUSTOM_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_CUSTOM_PASTE, UIDiagramRepresentation.class).open();
-        editor = diagram1.getEditor();
-        diagram2 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(GENERIC_VIEWPOINT_NAME).selectRepresentation(GENERIC_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_GENERIC_PASTE, UIDiagramRepresentation.class).open();
-        editor2 = diagram2.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION, REPRESENTATION_WITH_CUSTOM_PASTE, DDiagram.class);
+        editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
         checkCopyPaste(editor, editor.getEditPart("Class2"), editor2, false, editor2.getEditPart("Class2"), "Class2", 1);
     }
 
@@ -240,9 +223,7 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
      * Test that cut on menu delete element selected.
      */
     public void testGenericCutOnMenuDeleteElement() {
-        diagram1 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(GENERIC_VIEWPOINT_NAME).selectRepresentation(GENERIC_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_GENERIC_PASTE, UIDiagramRepresentation.class).open();
-        editor = diagram1.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
 
         checkCutPaste(editor, "Class2", true);
     }
@@ -252,9 +233,7 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
      * delete selected element.
      */
     public void testGenericCutOnMenuWithNoDeleteTools() {
-        diagram1 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(CUSTOM_VIEWPOINT_NAME).selectRepresentation(CUSTOM_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_CUSTOM_PASTE, UIDiagramRepresentation.class).open();
-        editor = diagram1.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION, REPRESENTATION_WITH_CUSTOM_PASTE, DDiagram.class);
 
         checkCutPaste(editor, "nodelete_Class", false);
     }
@@ -263,9 +242,7 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
      * Test copy node and no paste super type edge.
      */
     public void testGeneriCopyNoPasteInSuperTypeEdge() {
-        diagram2 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(GENERIC_VIEWPOINT_NAME).selectRepresentation(GENERIC_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_GENERIC_PASTE, UIDiagramRepresentation.class).open();
-        editor2 = diagram2.getEditor();
+        editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
         SWTBotGefEditPart edge = editor2.getEditPart("Class1").parent().sourceConnections().get(1);
         checkCopyPaste(editor2, editor2.getEditPart("pastable_Class"), editor2, false, edge, "pasted_pastable_Class", 1);
     }
@@ -274,9 +251,7 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
      * Test copy super type edge and paste node .
      */
     public void testGenericCopySuperTypeEdgePasteNode() {
-        diagram2 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(GENERIC_VIEWPOINT_NAME).selectRepresentation(GENERIC_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_GENERIC_PASTE, UIDiagramRepresentation.class).open();
-        editor2 = diagram2.getEditor();
+        editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
         SWTBotGefEditPart edge = editor2.getEditPart("Class1").parent().sourceConnections().get(1);
         checkCopyPaste(editor2, edge, editor2, false, editor2.getEditPart("pastable_Class"), "pasted_pastable_Class", 1);
     }
@@ -285,9 +260,7 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
      * Test copy node and no paste reference.
      */
     public void testCopyNoPasteInReference() {
-        diagram2 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(GENERIC_VIEWPOINT_NAME).selectRepresentation(GENERIC_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_GENERIC_PASTE, UIDiagramRepresentation.class).open();
-        editor2 = diagram2.getEditor();
+        editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
         checkCopyPaste(editor2, editor2.getEditPart("pastable_Class"), editor2, false, editor2.getEditPart("[0..1] ref1"), "pasted_pastable_Class", 1);
     }
 
@@ -295,9 +268,7 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
      * Test copy reference edge and paste node.
      */
     public void testGenericCopyReferenceEdgePasteNode() {
-        diagram2 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(GENERIC_VIEWPOINT_NAME).selectRepresentation(GENERIC_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_GENERIC_PASTE, UIDiagramRepresentation.class).open();
-        editor2 = diagram2.getEditor();
+        editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
         checkCopyPaste(editor2, editor2.getEditPart("[0..1] ref1"), editor2, true, editor2.getEditPart("pastable_Class"), "[0..1] ref1", 2);
     }
 
@@ -305,9 +276,7 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
      * Test copy more elements and paste this elements on one node.
      */
     public void testGenericCopyMoreElementsPasteNode() {
-        diagram2 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(GENERIC_VIEWPOINT_NAME).selectRepresentation(GENERIC_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_GENERIC_PASTE, UIDiagramRepresentation.class).open();
-        editor2 = diagram2.getEditor();
+        editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
         List<SWTBotGefEditPart> listElementCopy = new ArrayList<SWTBotGefEditPart>();
         listElementCopy.add(editor2.getEditPart("attributee1"));
         listElementCopy.add(editor2.getEditPart("attributee2"));
@@ -321,9 +290,7 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
      * Test copy one element and paste this elements on more elements.
      */
     public void testGenericCopyElementsPasteOnMoreElements() {
-        diagram2 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(GENERIC_VIEWPOINT_NAME).selectRepresentation(GENERIC_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_GENERIC_PASTE, UIDiagramRepresentation.class).open();
-        editor2 = diagram2.getEditor();
+        editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
         List<SWTBotGefEditPart> listTargetPaste = new ArrayList<SWTBotGefEditPart>();
         listTargetPaste.add(editor2.getEditPart("pastable_Class"));
         listTargetPaste.add(editor2.getEditPart("Class2"));

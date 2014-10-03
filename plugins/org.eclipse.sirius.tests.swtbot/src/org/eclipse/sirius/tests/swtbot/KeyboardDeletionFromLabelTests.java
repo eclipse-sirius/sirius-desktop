@@ -17,14 +17,15 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartIsNotDisplayed;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.swt.SWT;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
@@ -46,8 +47,6 @@ public class KeyboardDeletionFromLabelTests extends AbstractSiriusSwtBotGefTestC
 
     private static final String FILE_DIR = "/";
 
-    private static final String VIEWPOINT_NAME = "vp-3009";
-
     private static final String SESSION_FILE = "vp-3009.aird";
 
     private static final String VSM_FILE = "vp-3009.odesign";
@@ -57,11 +56,6 @@ public class KeyboardDeletionFromLabelTests extends AbstractSiriusSwtBotGefTestC
     private static final String REPRESENTATION_NAME = "vp-3009";
 
     private static final String REPRESENTATION_INSTANCE_NAME = "vp-3009";
-
-    /**
-     * Current diagram.
-     */
-    protected UIDiagramRepresentation diagram;
 
     /**
      * {@inheritDoc}
@@ -83,10 +77,7 @@ public class KeyboardDeletionFromLabelTests extends AbstractSiriusSwtBotGefTestC
         UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
     }
 
     /**

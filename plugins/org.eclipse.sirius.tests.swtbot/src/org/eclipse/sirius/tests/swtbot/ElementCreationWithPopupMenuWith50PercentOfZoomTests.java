@@ -24,7 +24,7 @@ public class ElementCreationWithPopupMenuWith50PercentOfZoomTests extends Elemen
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         super.onSetUpAfterOpeningDesignerPerspective();
 
-        diagram.zoom(ZoomLevel.ZOOM_50);
+        editor.zoom(ZoomLevel.ZOOM_50);
     }
 
     protected void tearDown() throws Exception {
@@ -32,7 +32,7 @@ public class ElementCreationWithPopupMenuWith50PercentOfZoomTests extends Elemen
         // set focus on diagram to allow zoom change
         diagramEditPartBot.select();
 
-        diagram.zoomDefault();
+        editor.zoomDefault();
 
         super.tearDown();
     }

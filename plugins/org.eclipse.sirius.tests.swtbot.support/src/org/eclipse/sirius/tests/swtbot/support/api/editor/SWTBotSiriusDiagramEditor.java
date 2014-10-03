@@ -61,11 +61,14 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.bot.SWTDesignerBot;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
+import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
+import org.eclipse.sirius.tests.swtbot.support.api.view.SiriusOutlineView;
 import org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.ToolItem;
 import org.eclipse.swt.widgets.Widget;
@@ -81,6 +84,8 @@ import org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.utils.SWTUtils;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IWorkbenchPage;
@@ -1688,5 +1693,24 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
         snapToHelper.snapPoint(new CreateRequest(), PositionConstants.HORIZONTAL | PositionConstants.VERTICAL, preciseLocation, result);
         diagramEditPart.getFigure().translateToRelative(result);
         return result;
+    }
+
+    /**
+     * Change the activation status of this layer.
+     * 
+     * @param layerName
+     *            The name of the layer to activate or deactivate.
+     */
+    public void changeLayerActivation(String layerName) {
+        if (useTabbar()) {
+            SWTBotToolbarDropDownButton button = designerBot.toolbarDropDownButtonWithTooltip("Layers");
+            Matcher<MenuItem> withLayerName = WidgetMatcherFactory.withText(layerName);
+            SWTBotMenu layerButton = button.menuItem(withLayerName);
+            layerButton.click();
+        } else {
+            DesignerViews designerViews = new DesignerViews(designerBot);
+            final SiriusOutlineView outlineView = designerViews.getOutlineView().layers();
+            outlineView.activateLayer(layerName);
+        }
     }
 }

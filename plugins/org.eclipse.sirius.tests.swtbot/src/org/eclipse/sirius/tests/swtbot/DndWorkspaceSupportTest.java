@@ -15,8 +15,8 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.RootEditPart;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
@@ -63,10 +63,8 @@ public class DndWorkspaceSupportTest extends AbstractSiriusSwtBotGefTestCase {
     public void testDragAndDropFile() {
         final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         UILocalSession localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-        UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint("DragAndDropTests").selectRepresentation("Class diagram")
-                .selectRepresentationInstance("diagram", UIDiagramRepresentation.class).open();
 
-        final SWTBotSiriusDiagramEditor editor = diagram.getEditor();
+        final SWTBotSiriusDiagramEditor editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "Class diagram", "diagram", DDiagram.class);
 
         SWTBotTree tree = bot.viewByTitle("Model Explorer").bot().tree();
         SWTBotTreeItem sampleFile = tree.expandNode(designerProject.getName()).expandNode(SAMPLE_FILE);
@@ -101,10 +99,7 @@ public class DndWorkspaceSupportTest extends AbstractSiriusSwtBotGefTestCase {
     public void testDragAndDropModelFile() throws Exception {
         final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         UILocalSession localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-        UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint("DragAndDropTests").selectRepresentation("Class diagram")
-                .selectRepresentationInstance("diagram", UIDiagramRepresentation.class).open();
-
-        final SWTBotSiriusDiagramEditor editor = diagram.getEditor();
+        final SWTBotSiriusDiagramEditor editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "Class diagram", "diagram", DDiagram.class);
 
         SWTBotTree tree = bot.viewByTitle("Model Explorer").bot().tree();
         SWTBotTreeItem sampleFile = tree.expandNode(designerProject.getName()).expandNode(SAMPLE_MODEL_FILE);

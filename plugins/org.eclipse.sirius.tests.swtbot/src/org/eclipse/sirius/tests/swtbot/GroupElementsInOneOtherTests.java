@@ -21,13 +21,13 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.support.api.GraphicTestsSupportHelp;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -55,8 +55,6 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
 
     private static final String MODELER_RESOURCE_NAME = "vp-1859.odesign";
 
-    private static final String VIEWPOINT_NAME = "VP-1859";
-
     private static final String FIRST_REPRESENTATION_NAME = "VP-1859-RealCase";
 
     private static final String FIRST_REPRESENTATION_INSTANCE_NAME = "new " + FIRST_REPRESENTATION_NAME;
@@ -71,9 +69,6 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
 
     /** The editor of the diagram */
     protected SWTBotSiriusDiagramEditor editor;
-
-    /** The diagram */
-    protected UIDiagramRepresentation diagram;
 
     /** Bot of the DiagramEditPart */
     protected SWTBotGefEditPart diagramEditPartBot;
@@ -109,10 +104,7 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
         sessionAirdResource = new UIResource(designerProject, "/", SESSION_RESOURCE_NAME);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(FIRST_REPRESENTATION_NAME)
-                .selectRepresentationInstance(FIRST_REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), FIRST_REPRESENTATION_NAME, FIRST_REPRESENTATION_INSTANCE_NAME, DDiagram.class);
 
         editor.scrollTo(0, 0);
 
@@ -159,7 +151,7 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
         // Assert that the created EPackage is in the center of the screen
         // Get the absolute location of p4 package (in logical coordinates, not
         // in screen coordinates)
-        if (GraphicalHelper.getZoom((IGraphicalEditPart) package5Bot.part()) != ZoomLevel.ZOOM_200.getAmount()) {
+        if (GraphicalHelper.getZoom(package5Bot.part()) != ZoomLevel.ZOOM_200.getAmount()) {
             GraphicTestsSupportHelp.assertEquals("The newly created Package5 should be at the center of the visible part of the diagram", absoluteEditorCenter, package5AbsoluteLocation, 1, 1);
         } else {
             // We don't make the same test with zoom at 200% because the middle
@@ -242,7 +234,6 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
         sessionAirdResource = null;
         localSession = null;
         editor = null;
-        diagram = null;
         diagramEditPartBot = null;
         centeredEPackagedBot = null;
         class1ChildOfDiagramBot = null;

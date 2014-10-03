@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
@@ -27,10 +28,10 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.matcher.WithSemantic;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotCommonHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotCommonHelper.EdgeData;
@@ -57,8 +58,6 @@ public class ElementCreationWithPopupMenuTests extends AbstractSiriusSwtBotGefTe
 
     private static final String MODELER_RESOURCE_NAME = "vp-1859.odesign";
 
-    private static final String VIEWPOINT_NAME = "VP-1859";
-
     private static final String REPRESENTATION_NAME = "VP-1859";
 
     private static final String REPRESENTATION_INSTANCE_NAME = "new " + REPRESENTATION_NAME;
@@ -70,9 +69,6 @@ public class ElementCreationWithPopupMenuTests extends AbstractSiriusSwtBotGefTe
     private UIResource sessionAirdResource;
 
     private UILocalSession localSession;
-
-    /** the diagram */
-    protected UIDiagramRepresentation diagram;
 
     /** Bot for the DiagramEditPart */
     protected SWTBotGefEditPart diagramEditPartBot;
@@ -110,10 +106,7 @@ public class ElementCreationWithPopupMenuTests extends AbstractSiriusSwtBotGefTe
         sessionAirdResource = new UIResource(designerProject, "/", SESSION_RESOURCE_NAME);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         editor.setSnapToGrid(false);
         diagramEditPartBot = editor.rootEditPart().children().get(0);
         DDiagramEditPart dDiagramEditPart = (DDiagramEditPart) diagramEditPartBot.part();
@@ -317,7 +310,6 @@ public class ElementCreationWithPopupMenuTests extends AbstractSiriusSwtBotGefTe
         sessionAirdResource = null;
         localSession = null;
         editor = null;
-        diagram = null;
         diagramEditPartBot = null;
         dNodeContainerABot = null;
         dNodeContainerCBot = null;

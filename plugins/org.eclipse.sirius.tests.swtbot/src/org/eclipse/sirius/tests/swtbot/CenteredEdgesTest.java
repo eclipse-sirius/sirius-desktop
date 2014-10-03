@@ -23,6 +23,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
@@ -31,8 +32,8 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
@@ -68,11 +69,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String REPRESENTATION_NAME_MOVING = "moving";
 
-    private static final String VIEWPOINT_NAME = "centered";
-
     private static final String RECTILINEAR_STYLE_ROUTING = "Rectilinear Style Routing";
-
-    private UIDiagramRepresentation diagram;
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
@@ -434,10 +431,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
      * 
      */
     private void openDiagram(String representationName) {
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_DESCRIPTION_NAME)
-                .selectRepresentationInstance(representationName, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, representationName, DDiagram.class);
 
     }
 
@@ -525,8 +519,8 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
 
         bot.waitUntil(new WaitEdgeCreationCondition(sourcePart));
 
-        assertEquals(1, ((NodeEditPart) sourcePart).getSourceConnections().size());
-        ConnectionEditPart edge = (ConnectionEditPart) ((NodeEditPart) sourcePart).getSourceConnections().get(0);
+        assertEquals(1, sourcePart.getSourceConnections().size());
+        ConnectionEditPart edge = (ConnectionEditPart) sourcePart.getSourceConnections().get(0);
         assertTrue(edge instanceof DEdgeEditPart);
         return (DEdgeEditPart) edge;
     }
@@ -558,7 +552,6 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     @Override
     protected void tearDown() throws Exception {
         editor.close();
-        diagram = null;
         super.tearDown();
     }
 

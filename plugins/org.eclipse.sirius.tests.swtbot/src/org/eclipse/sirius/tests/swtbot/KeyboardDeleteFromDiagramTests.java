@@ -13,14 +13,15 @@ package org.eclipse.sirius.tests.swtbot;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swt.SWT;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
@@ -39,9 +40,6 @@ public class KeyboardDeleteFromDiagramTests extends AbstractSiriusSwtBotGefTestC
     private static final String SEMANTIC_RESOURCE_NAME = "vp-4067.ecore";
 
     private static final String SESSION_RESOURCE_NAME = "representations.aird";
-
-    /** the diagram */
-    protected UIDiagramRepresentation diagram;
 
     /** Bot for the DiagramEditPart */
     protected SWTBotGefEditPart diagramEditPartBot;
@@ -66,11 +64,8 @@ public class KeyboardDeleteFromDiagramTests extends AbstractSiriusSwtBotGefTestC
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, "/", SESSION_RESOURCE_NAME);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint("Design").selectRepresentation("Entities")
-                .selectRepresentationInstance(" package entities", UIDiagramRepresentation.class).open();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "Entities", " package entities", DDiagram.class);
         SWTBotUtils.waitAllUiEvents();
-
-        editor = diagram.getEditor();
 
         diagramEditPartBot = editor.rootEditPart().children().get(0);
         eClassBot = diagramEditPartBot.descendants(IsInstanceOf.instanceOf(AbstractDiagramListEditPart.class)).get(0);
@@ -125,7 +120,6 @@ public class KeyboardDeleteFromDiagramTests extends AbstractSiriusSwtBotGefTestC
      */
     @Override
     protected void tearDown() throws Exception {
-        diagram = null;
         diagramEditPartBot = null;
         eClassBot = null;
         eClassBot2 = null;

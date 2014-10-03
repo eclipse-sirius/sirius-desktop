@@ -16,6 +16,7 @@ import java.util.HashMap;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gmf.runtime.common.ui.action.ActionMenuManager;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
@@ -42,8 +43,6 @@ public class ArrangeSelectionOnBreakdownDiagramTest extends AbstractSiriusSwtBot
     private static final String REPRESENTATION_NAME = "Package Hierarchy With Nodes Source";
 
     private static final String REPRESENTATION_NAME_ODT = "Package Hierarchy With Nodes Source And Ordered Tree Layout";
-
-    private static final String VIEWPOINT_NAME = "Design TC1852";
 
     private static final String MODEL = "tc1852.ecore";
 
@@ -99,10 +98,7 @@ public class ArrangeSelectionOnBreakdownDiagramTest extends AbstractSiriusSwtBot
      */
     public void testArrangeSelectionStability() throws Exception {
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
 
         validateArrangeSelection(true);
     }
@@ -119,10 +115,7 @@ public class ArrangeSelectionOnBreakdownDiagramTest extends AbstractSiriusSwtBot
     // VP-1126
     public void testArrangeSelectionStability_OrderedTreeLayout() throws Exception {
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME_ODT)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME_ODT, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_ODT, REPRESENTATION_INSTANCE_NAME_ODT, DDiagram.class);
 
         validateArrangeSelection(false);
     }

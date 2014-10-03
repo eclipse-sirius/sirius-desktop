@@ -13,20 +13,20 @@ package org.eclipse.sirius.tests.swtbot.clipboard;
 import java.util.List;
 
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.matcher.NoteEditPartMatcher;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
-import org.eclipse.sirius.tests.swtbot.Activator;
-
 /**
  * Tests that when the Sirius clipboard support is disabled via
- * {@link SiriusDiagramPreferencesKeys#PREF_CLIPBOOARD_SUPPORT_ONLY_ON_NOTE},
- * we can only copy GMF notes on diagram to paste them on any diagram
+ * {@link SiriusDiagramPreferencesKeys#PREF_CLIPBOOARD_SUPPORT_ONLY_ON_NOTE}, we
+ * can only copy GMF notes on diagram to paste them on any diagram
  * representation.
  * 
  * See VP-2401.
@@ -79,18 +79,14 @@ public class DisabledSiriusClipboardSupportTest extends AbstractClipboardSupport
         localSession.selectView();
         localSession.getRootSessionTreeItem().select();
 
-        diagram1 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(CUSTOM_VIEWPOINT_NAME).selectRepresentation(CUSTOM_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_CUSTOM_PASTE, UIDiagramRepresentation.class).open();
-        editor = diagram1.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION, REPRESENTATION_WITH_CUSTOM_PASTE, DDiagram.class);
 
         sessionAirdResourceBis = new UIResource(designerProject, FILE_DIR, SESSION_FILE_BIS);
         localSessionBis = designerPerspective.openSessionFromFile(sessionAirdResourceBis);
         localSession.selectView();
         localSession.getRootSessionTreeItem().select();
 
-        diagram2 = localSessionBis.getLocalSessionBrowser().perCategory().selectViewpoint(CUSTOM_VIEWPOINT_NAME).selectRepresentation(CUSTOM_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_CUSTOM_PASTE_BIS, UIDiagramRepresentation.class).open();
-        editor2 = diagram2.getEditor();
+        editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION, REPRESENTATION_WITH_CUSTOM_PASTE_BIS, DDiagram.class);
         editor.show();
 
         diagramEditPartBotOfEditor = editor.rootEditPart().children().get(0);

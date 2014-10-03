@@ -23,7 +23,7 @@ public class GroupElementsInOneOtherTestsWith50PercentOfZoomTests extends GroupE
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         super.onSetUpAfterOpeningDesignerPerspective();
 
-        diagram.zoom(ZoomLevel.ZOOM_50);
+        editor.zoom(ZoomLevel.ZOOM_50);
     }
 
     protected void tearDown() throws Exception {
@@ -31,7 +31,7 @@ public class GroupElementsInOneOtherTestsWith50PercentOfZoomTests extends GroupE
         // set focus on diagram to allow zoom change
         diagramEditPartBot.select();
 
-        diagram.zoomDefault();
+        editor.zoomDefault();
 
         super.tearDown();
     }

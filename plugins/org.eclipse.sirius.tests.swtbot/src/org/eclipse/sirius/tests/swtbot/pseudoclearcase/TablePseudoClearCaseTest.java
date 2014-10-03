@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.pseudoclearcase;
 
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITableRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.sessionbrowser.UILSRepresentationBrowser;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
@@ -46,13 +47,10 @@ public class TablePseudoClearCaseTest extends AbstractPseudoClearCaseTest<SWTBot
         return "Classes";
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    protected SWTBotEditor openAndGetEditor(final UILSRepresentationBrowser uiRepresentation) {
-        representationInstance = uiRepresentation.selectRepresentationInstance(getRepresentationInstanceName(), UITableRepresentation.class);
-
+    protected SWTBotEditor openAndGetEditor(Session session, String representationDescriptionName, String representationName) {
+        final UILSRepresentationBrowser selectedRepresentation = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(representationName);
+        representationInstance = selectedRepresentation.selectRepresentationInstance(getRepresentationInstanceName(), UITableRepresentation.class);
         // Should be run synchronously, but modification dialog pops up
         // Remove asynchronous call and waitUntil... when table opening won't
         // make session dirty.

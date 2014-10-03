@@ -12,10 +12,10 @@ package org.eclipse.sirius.tests.swtbot;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
@@ -23,6 +23,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckDiagramSelected;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
@@ -40,8 +41,6 @@ public class NonVisibleLabelSelectionTest extends AbstractSiriusSwtBotGefTestCas
     private static final String REPRESENTATION_INSTANCE_NAME = "LabelTests";
 
     private static final String REPRESENTATION_NAME = "LabelTests";
-
-    private static final String VIEWPOINT_NAME = "vp-3826";
 
     private static final String MODEL = "vp-3826.ecore";
 
@@ -77,10 +76,7 @@ public class NonVisibleLabelSelectionTest extends AbstractSiriusSwtBotGefTestCas
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
     }
 
     /**
@@ -133,13 +129,13 @@ public class NonVisibleLabelSelectionTest extends AbstractSiriusSwtBotGefTestCas
 
     private void changeLayerWithLabelsActivation() {
         ICondition done = new OperationDoneCondition();
-        diagram.changeLayerActivation("Layer with begin and end labels");
+        editor.changeLayerActivation("Layer with begin and end labels");
         bot.waitUntil(done);
         SWTBotUtils.waitAllUiEvents();
     }
 
     private void hideEdgeLabelsAndSelectDiagram(final SWTBotGefEditPart edgeEditPart) {
-        ICondition done = new CheckSelectedCondition(editor, (IGraphicalEditPart) edgeEditPart.part());
+        ICondition done = new CheckSelectedCondition(editor, edgeEditPart.part());
         edgeEditPart.select();
         bot.waitUntil(done);
 
@@ -155,7 +151,7 @@ public class NonVisibleLabelSelectionTest extends AbstractSiriusSwtBotGefTestCas
     private void checkSelection(final SWTBotGefEditPart expectedSelection, final Point... selectionPoints) {
         ICondition done;
         for (Point selectionPoint : selectionPoints) {
-            done = new CheckSelectedCondition(editor, (IGraphicalEditPart) expectedSelection.part());
+            done = new CheckSelectedCondition(editor, expectedSelection.part());
             editor.click(selectionPoint);
             bot.waitUntil(done);
             assertTrue("The part " + expectedSelection + " does not appear in the selection.", editor.selectedEditParts().contains(expectedSelection));

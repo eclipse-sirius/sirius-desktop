@@ -10,9 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.junit.Assert;
 
@@ -35,11 +36,7 @@ public class DeleteFromDiagramTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String DESC_NAME = "deleteFromDiagram";
 
-    private static final String VIEWPOINT_NAME = DESC_NAME;
-
     private static final String REPRESENTATION_NAME = "new " + DESC_NAME;
-
-    private UIDiagramRepresentation diagram;
 
     private SWTBotGefEditPart node1Bot;
 
@@ -54,8 +51,7 @@ public class DeleteFromDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, "/", AIRD_MODEL_PATH);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource, true);
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(DESC_NAME)
-                .selectRepresentationInstance(REPRESENTATION_NAME, UIDiagramRepresentation.class).open();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), DESC_NAME, REPRESENTATION_NAME, DDiagram.class);
 
         initEditor();
 
@@ -65,9 +61,7 @@ public class DeleteFromDiagramTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     private void initEditor() {
-        if (diagram != null) {
-            editor = diagram.getEditor();
-
+        if (editor != null) {
             editor.setSnapToGrid(false);
 
             editor.setFocus();
@@ -89,7 +83,6 @@ public class DeleteFromDiagramTest extends AbstractSiriusSwtBotGefTestCase {
 
     @Override
     protected void tearDown() throws Exception {
-        diagram = null;
         node1Bot = null;
         super.tearDown();
     }

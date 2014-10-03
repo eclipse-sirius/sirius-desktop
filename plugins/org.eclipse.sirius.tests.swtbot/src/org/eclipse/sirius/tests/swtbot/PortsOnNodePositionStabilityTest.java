@@ -20,13 +20,13 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.IBorderItemLocator;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode3EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
@@ -57,8 +57,6 @@ public class PortsOnNodePositionStabilityTest extends AbstractSiriusSwtBotGefTes
 
     private static final String REPRESENTATION_NAME = "tc_viewpoint_1283";
 
-    private static final String VIEWPOINT_NAME = "tc_viewpoint_1283";
-
     private static final String MODEL = "tc_viewpoint_1283.ecore";
 
     private static final String SESSION_FILE = "tc_viewpoint_1283.aird";
@@ -74,8 +72,6 @@ public class PortsOnNodePositionStabilityTest extends AbstractSiriusSwtBotGefTes
     private UILocalSession localSession;
 
     private SWTBotSiriusDiagramEditor editor;
-
-    private UIDiagramRepresentation diagram;
 
     /**
      * {@inheritDoc}
@@ -93,10 +89,7 @@ public class PortsOnNodePositionStabilityTest extends AbstractSiriusSwtBotGefTes
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         editor.setSnapToGrid(false);
         editor.maximize();
     }
@@ -1300,8 +1293,7 @@ public class PortsOnNodePositionStabilityTest extends AbstractSiriusSwtBotGefTes
 
         localSession.save();
         editor.close();
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
 
         // Checks that after reopening the label is on the south side now
         labelBorderEditPart = editor.getEditPart("DN2EP_on_DN2EP_a", AbstractDiagramNameEditPart.class);

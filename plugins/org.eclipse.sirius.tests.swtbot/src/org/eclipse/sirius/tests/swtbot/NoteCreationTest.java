@@ -12,11 +12,11 @@ package org.eclipse.sirius.tests.swtbot;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -32,8 +32,6 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String REPRESENTATION_INSTANCE_NAME = "root package entities";
 
     private static final String REPRESENTATION_NAME = "Entities";
-
-    private static final String VIEWPOINT_NAME = "Design";
 
     private static final String MODEL = "2083.ecore";
 
@@ -55,11 +53,6 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
     protected SWTBotSiriusDiagramEditor editor;
 
     /**
-     * Current diagram.
-     */
-    protected UIDiagramRepresentation diagram;
-
-    /**
      * {@inheritDoc}
      */
     @Override
@@ -78,10 +71,7 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
 
         editor.setSnapToGrid(false);
     }
@@ -93,7 +83,7 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
     protected void tearDown() throws Exception {
         // Restore the default zoom level
         editor.click(1, 1); // Set the focus on the diagram
-        diagram.zoom(ZoomLevel.ZOOM_100);
+        editor.zoom(ZoomLevel.ZOOM_100);
         // Go to the origin to avoid scroll bar
         editor.scrollTo(0, 0);
         super.tearDown();
@@ -226,7 +216,7 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
      *             Test error.
      */
     private void testNoteCreationInDiagramWithoutScroll(ZoomLevel zoomLevel) throws Exception {
-        diagram.zoom(zoomLevel);
+        editor.zoom(zoomLevel);
         // Get the insertion location for the not
         Point location = new Point(2, 2);
         // Select the Note tool and click in the editor (the coordinates use to
@@ -247,7 +237,7 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
      *             Test error.
      */
     private void testNoteCreationInDiagramWithScroll(ZoomLevel zoomLevel) throws Exception {
-        diagram.zoom(zoomLevel);
+        editor.zoom(zoomLevel);
         // Reveal p2 (to scroll in the diagram)
         editor.select(editor.getSelectableEditPart(P2_PACKAGE_NAME));
         editor.reveal(editor.getEditPart(P2_PACKAGE_NAME).part());
@@ -281,7 +271,7 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
      *             Test error.
      */
     private void testNoteCreationInContainer(ZoomLevel zoomLevel, String packageNameToReveal) throws Exception {
-        diagram.zoom(zoomLevel);
+        editor.zoom(zoomLevel);
         // Reveal the package (and eventually scroll in the diagram)
         editor.reveal(packageNameToReveal);
         // Get the location of the package (relative the part visible on the
@@ -314,7 +304,7 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
      *             Test error.
      */
     private void testNoteCreationInContainer(ZoomLevel zoomLevel, String packageNameToReveal, String classNameToReveal) throws Exception {
-        diagram.zoom(zoomLevel);
+        editor.zoom(zoomLevel);
         // Reveal the class (and eventually scroll in the diagram and in the
         // container)
         editor.reveal(classNameToReveal);

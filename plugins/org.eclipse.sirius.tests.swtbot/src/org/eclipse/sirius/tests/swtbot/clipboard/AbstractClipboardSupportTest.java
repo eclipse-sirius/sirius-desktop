@@ -35,7 +35,6 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.clipboard.SiriusClipboardManager;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
@@ -164,16 +163,6 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
      * The Session Resource wrapper bis.
      */
     protected UIResource sessionAirdResourceBis;
-
-    /**
-     * Diagram representation.
-     */
-    protected UIDiagramRepresentation diagram1;
-
-    /**
-     * Diagram representation.
-     */
-    protected UIDiagramRepresentation diagram2;
 
     /**
      * Dialect editor.
@@ -465,8 +454,8 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
      * @param numberElementCopy
      *            number of element corresponding to element paste name.
      */
-    protected void checkCopyPaste(SWTBotSiriusDiagramEditor copyEditor, SWTBotGefEditPart elemenToCopyName, SWTBotSiriusDiagramEditor pasteEditor, boolean expectedCanPaste, SWTBotGefEditPart pasteTarget,
-            String pastedName, int numberElementCopy) {
+    protected void checkCopyPaste(SWTBotSiriusDiagramEditor copyEditor, SWTBotGefEditPart elemenToCopyName, SWTBotSiriusDiagramEditor pasteEditor, boolean expectedCanPaste,
+            SWTBotGefEditPart pasteTarget, String pastedName, int numberElementCopy) {
 
         // Empty viewpoint clipboard
         clearSiriusClipboard();
@@ -995,8 +984,6 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
         }
 
         localSession = null;
-        diagram1 = null;
-        diagram2 = null;
         editor = null;
         editor2 = null;
 

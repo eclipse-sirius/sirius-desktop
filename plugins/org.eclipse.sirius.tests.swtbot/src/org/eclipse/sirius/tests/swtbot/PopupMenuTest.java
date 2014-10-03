@@ -10,9 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
-import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
@@ -30,8 +29,6 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String REPRESENTATION_NAME = "vp939";
 
-    private static final String VIEWPOINT_NAME = "vp939";
-
     private static final String MODEL = "vp939.ecore";
 
     private static final String SESSION_FILE = "vp939.aird";
@@ -47,8 +44,6 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
     private UILocalSession localSession;
 
     private SWTBotSiriusDiagramEditor editor;
-
-    private UIDiagramRepresentation diagram;
 
     /**
      * {@inheritDoc}
@@ -66,10 +61,7 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
     }
 
     /**

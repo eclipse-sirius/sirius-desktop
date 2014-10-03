@@ -13,6 +13,7 @@ package org.eclipse.sirius.tests.swtbot;
 import java.util.List;
 
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
@@ -40,8 +41,6 @@ public class EdgeStabilityOnLayerManagementTest extends AbstractSiriusSwtBotGefT
     private static final String REPRESENTATION_INSTANCE_NAME_WITHOUT_OPTIONAL_LAYER = "new doremi-2678 without optional layer";
 
     private static final String REPRESENTATION_NAME = "doremi-2678";
-
-    private static final String VIEWPOINT_NAME = "doremi-2678";
 
     private static final String VSM_FILE = "doremi-2678.odesign";
 
@@ -108,10 +107,7 @@ public class EdgeStabilityOnLayerManagementTest extends AbstractSiriusSwtBotGefT
      */
     public void testEdgeStabilityOnLayerDeactivation() throws Exception {
         // Open representation with optional layer activated
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME_WITH_OPTIONAL_LAYER, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME_WITH_OPTIONAL_LAYER, DDiagram.class);
 
         // Validate before optional layer deactivation
         validateEditPartsVisibilityWithOptionalLayer();
@@ -139,10 +135,7 @@ public class EdgeStabilityOnLayerManagementTest extends AbstractSiriusSwtBotGefT
      */
     public void testEdgeStabilityOnLayerActivation() throws Exception {
         // Open representation with optional layer deactivated
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME_WITHOUT_OPTIONAL_LAYER, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME_WITHOUT_OPTIONAL_LAYER, DDiagram.class);
 
         // Validate before optional layer activation
         validateEditPartsVisibilityWithoutOptionalLayer();

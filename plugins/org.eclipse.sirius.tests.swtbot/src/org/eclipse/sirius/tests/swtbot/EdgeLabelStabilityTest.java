@@ -12,6 +12,7 @@ package org.eclipse.sirius.tests.swtbot;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
@@ -101,10 +102,7 @@ public class EdgeLabelStabilityTest extends AbstractSiriusSwtBotGefTestCase {
         try {
             SWTBotPreferences.TIMEOUT = 1000;
 
-            diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                    .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME_MULTI_LINES, UIDiagramRepresentation.class).open();
-
-            editor = diagram.getEditor();
+            editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME_MULTI_LINES, DDiagram.class);
 
             Point location = editor.getLocation("P1", AbstractDiagramContainerEditPart.class);
             Dimension dimension = editor.getDimension("P1", AbstractDiagramContainerEditPart.class);
@@ -135,10 +133,7 @@ public class EdgeLabelStabilityTest extends AbstractSiriusSwtBotGefTestCase {
         try {
             SWTBotPreferences.TIMEOUT = 1000;
 
-            diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                    .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME_MULTI_LINES, UIDiagramRepresentation.class).open();
-
-            editor = diagram.getEditor();
+            editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME_MULTI_LINES, DDiagram.class);
 
             Dimension edgeLabelDimension = editor.getDimension("extends " + C2, AbstractDiagramNameEditPart.class);
 
@@ -146,10 +141,7 @@ public class EdgeLabelStabilityTest extends AbstractSiriusSwtBotGefTestCase {
             bot.toolbarButtonWithTooltip(COPY_LAYOUT_TOOLTIP).click();
 
             // Open temp diagram
-            diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                    .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME_TEMP, UIDiagramRepresentation.class).open();
-
-            editor = diagram.getEditor();
+            editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME_TEMP, DDiagram.class);
 
             // Paste layout
             bot.toolbarButtonWithTooltip(PASTE_LAYOUT_TOOLTIP).click();
@@ -158,10 +150,7 @@ public class EdgeLabelStabilityTest extends AbstractSiriusSwtBotGefTestCase {
             assertEquals("The edge label height has changed", edgeLabelDimension.height, editor.getDimension("extends " + C2, AbstractDiagramNameEditPart.class).height);
 
             // open single line diagram
-            diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                    .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME_SINGLE_LINE, UIDiagramRepresentation.class).open();
-
-            editor = diagram.getEditor();
+            editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME_SINGLE_LINE, DDiagram.class);
 
             // Update reference label dimension with the label on a single line
             edgeLabelDimension = editor.getDimension("extends " + C2, AbstractDiagramNameEditPart.class);

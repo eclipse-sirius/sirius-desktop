@@ -20,6 +20,7 @@ import org.eclipse.sirius.business.api.delete.IDeleteHook;
 import org.eclipse.sirius.business.internal.helper.delete.DeleteHookDescriptorRegistry;
 import org.eclipse.sirius.business.internal.helper.delete.IDeleteHookDescriptor;
 import org.eclipse.sirius.business.internal.helper.delete.StandaloneDeleteHookDescriptor;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.tool.DeleteHook;
@@ -31,6 +32,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.swt.SWT;
@@ -104,11 +106,9 @@ public class DeleteHookTests extends AbstractSiriusSwtBotGefTestCase {
         sessionAirdResource = new UIResource(designerProject, "/", SESSION_RESOURCE_NAME);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
         SWTBotUtils.waitAllUiEvents();
 
-        editor = diagram.getEditor();
         diagramEditPartBot = editor.rootEditPart().children().get(0);
         eClassBot = diagramEditPartBot.descendants(IsInstanceOf.instanceOf(DNodeListEditPart.class)).get(0);
         ePackageBot = diagramEditPartBot.descendants(IsInstanceOf.instanceOf(DNodeContainerEditPart.class)).get(0);
@@ -193,16 +193,30 @@ public class DeleteHookTests extends AbstractSiriusSwtBotGefTestCase {
     public void testDeleteHookOnEditDeleteCancel() {
         if (TestsUtil.shouldSkipUnreliableTests()) {
             /*
-            org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException: Could not find node with text: VP-2091_Viewpoint
-            at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNodes(SWTBotTreeItem.java:334)
-            at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNode(SWTBotTreeItem.java:308)
-            at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNode(SWTBotTreeItem.java:346)
-            at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.expandNode(SWTBotTreeItem.java:283)
-            at org.eclipse.sirius.tests.swtbot.support.api.business.sessionbrowser.AbstractUIElementWithNextTreeItem.getNextNode(AbstractUIElementWithNextTreeItem.java:42)
-            at org.eclipse.sirius.tests.swtbot.support.api.business.sessionbrowser.UILSCategoryBrowser.selectViewpoint(UILSCategoryBrowser.java:40)
-            at org.eclipse.sirius.tests.swtbot.DeleteHookTests.onSetUpAfterOpeningDesignerPerspective(DeleteHookTests.java:105)
-            at org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase.setUp(AbstractSiriusSwtBotGefTestCase.java:289)
-            */
+             * org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException:
+             * Could not find node with text: VP-2091_Viewpoint at
+             * org.eclipse.swtbot
+             * .swt.finder.widgets.SWTBotTreeItem.getNodes(SWTBotTreeItem
+             * .java:334) at
+             * org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem
+             * .getNode(SWTBotTreeItem.java:308) at
+             * org.eclipse.swtbot.swt.finder
+             * .widgets.SWTBotTreeItem.getNode(SWTBotTreeItem.java:346) at
+             * org.eclipse
+             * .swtbot.swt.finder.widgets.SWTBotTreeItem.expandNode(SWTBotTreeItem
+             * .java:283) at
+             * org.eclipse.sirius.tests.swtbot.support.api.business
+             * .sessionbrowser.AbstractUIElementWithNextTreeItem.getNextNode(
+             * AbstractUIElementWithNextTreeItem.java:42) at
+             * org.eclipse.sirius.tests
+             * .swtbot.support.api.business.sessionbrowser
+             * .UILSCategoryBrowser.selectViewpoint(UILSCategoryBrowser.java:40)
+             * at org.eclipse.sirius.tests.swtbot.DeleteHookTests.
+             * onSetUpAfterOpeningDesignerPerspective(DeleteHookTests.java:105)
+             * at org.eclipse.sirius.tests.swtbot.support.api.
+             * AbstractSiriusSwtBotGefTestCase
+             * .setUp(AbstractSiriusSwtBotGefTestCase.java:289)
+             */
             return;
         }
         ePackageBot.select();

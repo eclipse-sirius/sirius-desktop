@@ -15,9 +15,9 @@ import java.util.Set;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
@@ -58,8 +58,6 @@ public class DragAndDropFromControlledResourceTest extends AbstractSiriusSwtBotG
 
     private UILocalSession localSession;
 
-    private UIDiagramRepresentation diagram;
-
     private UIResource ecoreEcoreResource;
 
     private SWTBotTreeItem semanticResourceNode;
@@ -98,9 +96,7 @@ public class DragAndDropFromControlledResourceTest extends AbstractSiriusSwtBotG
      *             if an error occurs.
      */
     public void testDragAndDropClassFromControlledResourceOntoDiagram() throws Exception {
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint("dnd_from_model_content").selectRepresentation("dnd_from_model_content")
-                .selectRepresentationInstance("new dnd_from_model_content", UIDiagramRepresentation.class).open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "dnd_from_model_content", "new dnd_from_model_content", DDiagram.class);
 
         // Read the initial state.
         Set<SWTBotGefEditPart> allEditPartsBefore = Sets.newHashSet(editor.mainEditPart().children());

@@ -26,7 +26,6 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AirResizableEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
@@ -78,8 +77,6 @@ public class DuplicationCausedBySelectionTest extends AbstractSiriusSwtBotGefTes
 
     private static final String REPRESENTATION_NAME = "Entities";
 
-    private static final String VIEWPOINT_NAME_FOR_NODES = "Nodes";
-
     private static final String REPRESENTATION_NAME_FOR_NODES = "Nodes";
 
     private static final String ODESIGN_FOR_NODES = "doremi-2440_nodes.odesign";
@@ -87,8 +84,6 @@ public class DuplicationCausedBySelectionTest extends AbstractSiriusSwtBotGefTes
     private static final String SESSION_BORDERED = "doremi-2440_bordered.aird";
 
     private static final String MODEL_BORDERED = "doremi-2440_bordered.ecore";
-
-    private static final String VIEWPOINT_NAME_FOR_BORDERED = "Bordered";
 
     private static final String REPRESENTATION_NAME_FOR_BORDERED = "Bordered";
 
@@ -99,8 +94,6 @@ public class DuplicationCausedBySelectionTest extends AbstractSiriusSwtBotGefTes
     private static final String MODEL_SEQUENCE2 = "doremi-2440_lifelines.ecore";
 
     private static final String SESSION_SEQUENCE = "doremi-2440_lifelines.aird";
-
-    private static final String VIEWPOINT_NAME_FOR_SEQUENCE = "Interactions";
 
     private static final String REPRESENTATION_NAME_FOR_SEQUENCE = "Sequence Diagram on Interaction";
 
@@ -131,9 +124,7 @@ public class DuplicationCausedBySelectionTest extends AbstractSiriusSwtBotGefTes
         // Step 1 : opening the representation that contains nodes
         final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_NODES);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_FOR_NODES).selectRepresentation(REPRESENTATION_NAME_FOR_NODES)
-                .selectRepresentationInstance("nodes", UIDiagramRepresentation.class).open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_FOR_NODES, "nodes", DDiagram.class);
 
         checkElementsAreNotDuplicated(3, IDiagramNodeEditPart.class);
 
@@ -158,9 +149,7 @@ public class DuplicationCausedBySelectionTest extends AbstractSiriusSwtBotGefTes
         // Step 1 : opening the representation that contains nodes
         final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_CONTAINERS);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance("containers", UIDiagramRepresentation.class).open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, "containers", DDiagram.class);
 
         checkElementsAreNotDuplicated(3, IDiagramContainerEditPart.class);
 
@@ -186,10 +175,7 @@ public class DuplicationCausedBySelectionTest extends AbstractSiriusSwtBotGefTes
         // Step 1 : opening the representation that contains node lists
         final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_LISTS);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-        UIDiagramRepresentation selectRepresentationInstance = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance("lists", UIDiagramRepresentation.class);
-        final UIDiagramRepresentation diagram = selectRepresentationInstance.open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, "lists", DDiagram.class);
 
         checkElementsAreNotDuplicated(3, DNodeListEditPart.class);
 
@@ -214,9 +200,7 @@ public class DuplicationCausedBySelectionTest extends AbstractSiriusSwtBotGefTes
         // Step 1 : opening the representation that contains nodes
         final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_EDGES);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance("edges", UIDiagramRepresentation.class).open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, "edges", DDiagram.class);
 
         checkElementsAreNotDuplicated(1, IDiagramEdgeEditPart.class);
 
@@ -242,9 +226,7 @@ public class DuplicationCausedBySelectionTest extends AbstractSiriusSwtBotGefTes
         // Step 1 : opening the representation that contains nodes
         final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_BORDERED);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-        final UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME_FOR_BORDERED).selectRepresentation(REPRESENTATION_NAME_FOR_BORDERED)
-                .selectRepresentationInstance("bordered", UIDiagramRepresentation.class).open();
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_FOR_BORDERED, "bordered", DDiagram.class);
 
         checkElementsAreNotDuplicated(1, IDiagramBorderNodeEditPart.class);
 
@@ -271,7 +253,7 @@ public class DuplicationCausedBySelectionTest extends AbstractSiriusSwtBotGefTes
         // Step 1 : open the sequence diagram that contains lifelines
         final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_SEQUENCE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource, true);
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME_FOR_SEQUENCE, "Sequence Diagram on Lifelines", DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_FOR_SEQUENCE, "Sequence Diagram on Lifelines", DDiagram.class);
 
         checkElementsAreNotDuplicated(3, InstanceRoleEditPart.class);
         checkElementsAreNotDuplicated(3, LifelineEditPart.class);

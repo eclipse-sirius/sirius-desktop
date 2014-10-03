@@ -16,18 +16,18 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.gmf.runtime.notation.RoutingStyle;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.swt.finder.keyboard.Keystrokes;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
-
-import org.eclipse.sirius.tests.swtbot.Activator;
 
 /**
  * Test class to check that edge edit part is still editable after having
@@ -40,8 +40,6 @@ public class ModifyEdgeLayoutAfterRefreshTest extends AbstractSiriusSwtBotGefTes
 
     private static final String REPRESENTATION_NAME = "Entities";
 
-    private static final String VIEWPOINT_NAME = "Design";
-
     private static final String MODEL = "VP-4432.ecore";
 
     private static final String SESSION_FILE = "VP-4432.aird";
@@ -51,8 +49,6 @@ public class ModifyEdgeLayoutAfterRefreshTest extends AbstractSiriusSwtBotGefTes
     private static final String FILE_DIR = "/";
 
     private static final String REPRESENTATION_INSTANCE_NAME = " package entities";
-
-    private UIDiagramRepresentation diagram;
 
     private String REF = "[0..1] ref1";
 
@@ -79,10 +75,7 @@ public class ModifyEdgeLayoutAfterRefreshTest extends AbstractSiriusSwtBotGefTes
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
     }
 
     /**
@@ -123,7 +116,6 @@ public class ModifyEdgeLayoutAfterRefreshTest extends AbstractSiriusSwtBotGefTes
 
     @Override
     protected void tearDown() throws Exception {
-        diagram = null;
         super.tearDown();
     }
 

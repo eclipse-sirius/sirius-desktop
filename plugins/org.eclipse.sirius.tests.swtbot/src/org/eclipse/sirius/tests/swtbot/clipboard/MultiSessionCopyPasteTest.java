@@ -10,12 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.clipboard;
 
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.SessionCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
-
-import org.eclipse.sirius.tests.swtbot.Activator;
 
 /**
  * Test Copy, cut and paste on diagram representation. Test VP-1894. Test
@@ -56,13 +56,9 @@ public class MultiSessionCopyPasteTest extends AbstractClipboardSupportTest {
      * Test VP-2100 : refresh opened editors was not domain safe.
      */
     public void testGenericCopyEClassPasteInEClassOtherSession() {
-        diagram2 = localSessionBis.getLocalSessionBrowser().perCategory().selectViewpoint(GENERIC_VIEWPOINT_NAME).selectRepresentation(GENERIC_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_GENERIC_PASTE_BIS, UIDiagramRepresentation.class).open();
-        editor2 = diagram2.getEditor();
+        editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSessionBis.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE_BIS, DDiagram.class);
 
-        diagram1 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(GENERIC_VIEWPOINT_NAME).selectRepresentation(GENERIC_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_GENERIC_PASTE, UIDiagramRepresentation.class).open();
-        editor = diagram1.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
 
         checkCopyPaste(editor, editor.getEditPart("Class2"), editor2, false, editor2.getEditPart("ClassBis2"), "Class2", 1);
     }
@@ -74,12 +70,8 @@ public class MultiSessionCopyPasteTest extends AbstractClipboardSupportTest {
      * Test VP-2100 : refresh opened editors was not domain safe.
      */
     public void testGenericCopyEClassPasteInEPackageOtherSession() {
-        diagram2 = localSessionBis.getLocalSessionBrowser().perCategory().selectViewpoint(GENERIC_VIEWPOINT_NAME).selectRepresentation(GENERIC_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_GENERIC_PASTE_BIS, UIDiagramRepresentation.class).open();
-        editor2 = diagram2.getEditor();
-        diagram1 = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(GENERIC_VIEWPOINT_NAME).selectRepresentation(GENERIC_DESCRIPTION)
-                .selectRepresentationInstance(REPRESENTATION_WITH_GENERIC_PASTE, UIDiagramRepresentation.class).open();
-        editor = diagram1.getEditor();
+        editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSessionBis.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE_BIS, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
 
         checkCopyPaste(editor, editor.getEditPart("Class2"), editor2, true, (SWTBotGefEditPart) null, "Class2", 1);
     }

@@ -13,8 +13,8 @@ package org.eclipse.sirius.tests.swtbot.pseudoclearcase;
 import java.util.Collections;
 
 import org.eclipse.draw2d.geometry.Point;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
-import org.eclipse.sirius.tests.swtbot.support.api.business.sessionbrowser.UILSRepresentationBrowser;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.ItemEnabledCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
@@ -69,14 +69,9 @@ public class DiagramPseudoClearCaseTest extends AbstractPseudoClearCaseTest<SWTB
         return REPRESENTATION_NAME;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    protected SWTBotSiriusDiagramEditor openAndGetEditor(final UILSRepresentationBrowser uiRepresentation) {
-        final UIDiagramRepresentation diagramRepresentation = uiRepresentation.selectRepresentationInstance(getRepresentationInstanceName(), UIDiagramRepresentation.class);
-        diagramRepresentation.open();
-        return diagramRepresentation.getEditor();
+    protected SWTBotSiriusDiagramEditor openAndGetEditor(Session session, String representationDescriptionName, String representationName) {
+        return (SWTBotSiriusDiagramEditor) openRepresentation(session, representationDescriptionName, representationName, DDiagram.class);
     }
 
     /**

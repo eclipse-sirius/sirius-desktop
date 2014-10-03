@@ -14,9 +14,8 @@ import org.eclipse.jface.bindings.keys.IKeyLookup;
 import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.bindings.keys.ParseException;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.SessionSavedCondition;
@@ -80,8 +79,6 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
 
     private UILocalSession localSession;
 
-    private UIDiagramRepresentation diagram;
-
     private SWTBotSiriusDiagramEditor editor;
 
     private boolean oldValuePrefReloadOnLastEditorClose;
@@ -128,9 +125,8 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
             // Open session
             localSession = openSessionFromExistingAird(SESSION_FILE);
             // Open representation
-            diagram = openDiagram(VIEWPOINT_NAME, REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME);
+            editor = openDiagram(REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME);
             // Modify representation
-            editor = diagram.getEditor();
             createNode(200, 150);
             // Close representation
             bot.activeEditor().bot().menu("Close").click();
@@ -146,10 +142,10 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * When closing a dirty representation, a dialog appears to choice what to do.
-     * This test checks that when the user clicks on the escape key, the dialog
-     * is closed and nothing happens (session still dirty and editor still
-     * opened).
+     * When closing a dirty representation, a dialog appears to choice what to
+     * do. This test checks that when the user clicks on the escape key, the
+     * dialog is closed and nothing happens (session still dirty and editor
+     * still opened).
      */
     public void testEscapeKeyEffectOnSaveDialog() {
         // Restore the default preference values of Sirius (not a customer
@@ -164,9 +160,8 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
             // Open session
             localSession = openSessionFromExistingAird(SESSION_FILE);
             // Open representation
-            diagram = openDiagram(VIEWPOINT_NAME, REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME);
+            editor = openDiagram(REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME);
             // Modify representation
-            editor = diagram.getEditor();
             createNode(200, 150);
             // Close representation
             bot.activeEditor().bot().menu("Close").click();
@@ -186,9 +181,9 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * When closing a dirty representation, a dialog appears to choice what to do.
-     * This test checks that when the user closes this dialog, nothing happens
-     * (session still dirty and editor still opened).
+     * When closing a dirty representation, a dialog appears to choice what to
+     * do. This test checks that when the user closes this dialog, nothing
+     * happens (session still dirty and editor still opened).
      */
     public void testCloseEffectOnSaveDialog() {
         // Restore the default preference values of Sirius (not a customer
@@ -203,9 +198,8 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
             // Open session
             localSession = openSessionFromExistingAird(SESSION_FILE);
             // Open representation
-            diagram = openDiagram(VIEWPOINT_NAME, REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME);
+            editor = openDiagram(REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME);
             // Modify representation
-            editor = diagram.getEditor();
             createNode(200, 150);
             // Close representation
             bot.activeEditor().bot().menu("Close").click();
@@ -299,9 +293,8 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotEditor textEditor = bot.activeEditor();
         textEditor.toTextEditor().setText("Modification Text file");
         // Open the second representations
-        diagram = openDiagram(VIEWPOINT_NAME, REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME);
+        editor = openDiagram(REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME);
         // Modify the representation
-        editor = diagram.getEditor();
         createNode(200, 150);
         // Close all representations
         bot.activeEditor().bot().menu("Close All").click();
@@ -312,9 +305,8 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
         return designerPerspective.openSessionFromFile(sessionAirdResource);
     }
 
-    private UIDiagramRepresentation openDiagram(String viewpointName, String representationName, String representationInstanceName) {
-        return localSession.getLocalSessionBrowser().perCategory().selectViewpoint(viewpointName).selectRepresentation(representationName)
-                .selectRepresentationInstance(representationInstanceName, UIDiagramRepresentation.class).open();
+    private SWTBotSiriusDiagramEditor openDiagram(String representationName, String representationInstanceName) {
+        return (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), representationName, representationInstanceName, DDiagram.class);
     }
 
     private void checkSaveDialog() {

@@ -29,7 +29,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
@@ -60,17 +59,10 @@ public class WorkspaceImageTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String REPRESENTATION_NAME = "tc2262";
 
-    private static final String VIEWPOINT_NAME = "TC2262";
-
     /**
      * Current editor.
      */
     protected SWTBotSiriusDiagramEditor editor;
-
-    /**
-     * Current diagram.
-     */
-    protected UIDiagramRepresentation diagram;
 
     protected DDiagram dDiagram;
 
@@ -104,10 +96,7 @@ public class WorkspaceImageTest extends AbstractSiriusSwtBotGefTestCase {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).open();
-
-        editor = diagram.getEditor();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
 
         IDDiagramEditPart part = (IDDiagramEditPart) editor.mainEditPart().part();
         dDiagram = (DDiagram) ((Diagram) part.getModel()).getElement();
