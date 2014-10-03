@@ -20,6 +20,6 @@ location Sirius4Tests "http://download.eclipse.org/sirius/updates/nightly/latest
         org.eclipse.sirius.tests.support.feature.group lazy
 }
 
-location Eclipse-Luna "http://download.eclipse.org/releases/luna" {
-	org.eclipse.uml2.sdk.feature.group [5.0.0,5.1.0)
+location Eclipse-Staging "http://download.eclipse.org/releases/staging" {
+	org.eclipse.uml2.sdk.feature.group [5.0.1,5.1.0)
 }
