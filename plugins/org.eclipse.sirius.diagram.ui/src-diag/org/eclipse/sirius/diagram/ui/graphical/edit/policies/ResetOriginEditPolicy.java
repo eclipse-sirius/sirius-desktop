@@ -17,6 +17,7 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.AbstractEditPolicy;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.internal.operation.ResetOriginChangeModelOperation;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
@@ -39,8 +40,8 @@ public class ResetOriginEditPolicy extends AbstractEditPolicy {
     public Command getCommand(Request request) {
         if (understandsRequest(request)) {
             EditPart editPart = getHost();
-            if (editPart instanceof IDDiagramEditPart) {
-                ResetOriginChangeModelOperation operation = new ResetOriginChangeModelOperation((IDDiagramEditPart) editPart);
+            if (editPart instanceof DiagramEditPart) {
+                ResetOriginChangeModelOperation operation = new ResetOriginChangeModelOperation((DiagramEditPart) editPart);
                 ICommand command = CommandFactory.createICommand(((IDDiagramEditPart) editPart).getEditingDomain(), operation);
                 return new ICommandProxy(command);
             }

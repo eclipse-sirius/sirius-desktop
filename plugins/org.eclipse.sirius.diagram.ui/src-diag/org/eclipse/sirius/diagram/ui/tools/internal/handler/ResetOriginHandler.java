@@ -17,10 +17,10 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CommandStack;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramCommandStack;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.handlers.HandlerUtil;
@@ -39,14 +39,14 @@ public class ResetOriginHandler extends AbstractHandler {
         IWorkbenchPart workbenchPart = HandlerUtil.getActivePart(event);
         if (selection instanceof StructuredSelection) {
             Object firstElement = ((StructuredSelection) selection).getFirstElement();
-            if (firstElement instanceof IDDiagramEditPart) {
-                getAndExecuteCmd((IDDiagramEditPart) firstElement, workbenchPart);
+            if (firstElement instanceof DiagramEditPart) {
+                getAndExecuteCmd((DiagramEditPart) firstElement, workbenchPart);
             }
         }
         return null;
     }
 
-    private void getAndExecuteCmd(IDDiagramEditPart selection, IWorkbenchPart workbenchPart) {
+    private void getAndExecuteCmd(DiagramEditPart selection, IWorkbenchPart workbenchPart) {
         Command command = selection.getCommand(new Request(RequestConstants.REQ_RESET_ORIGIN));
         DiagramCommandStack commandStack = getDiagramCommandStack(workbenchPart);
         if (commandStack != null) {

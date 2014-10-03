@@ -11,24 +11,28 @@
 
 package org.eclipse.sirius.diagram.ui.internal.operation;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.PolylineConnection;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.editparts.AbstractConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.render.util.DiagramImageUtils;
 import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
-import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -41,9 +45,11 @@ import com.google.common.collect.Lists;
  */
 public class ResetOriginChangeModelOperation extends AbstractModelChangeOperation<Void> {
 
-    private IDDiagramEditPart diagramEditPart;
+    private DiagramEditPart diagramEditPart;
 
     private int MARGIN = 20;
+
+    private List<Connection> maskedConnections = new ArrayList<Connection>();
 
     /**
      * Constructor to perform this operation by using the displayed figures
@@ -52,7 +58,7 @@ public class ResetOriginChangeModelOperation extends AbstractModelChangeOperatio
      * @param diagramEditPart
      *            the root Diagram EditPart.
      */
-    public ResetOriginChangeModelOperation(IDDiagramEditPart diagramEditPart) {
+    public ResetOriginChangeModelOperation(DiagramEditPart diagramEditPart) {
         this.diagramEditPart = diagramEditPart;
     }
 
@@ -63,9 +69,46 @@ public class ResetOriginChangeModelOperation extends AbstractModelChangeOperatio
 
     @Override
     public Void execute() {
+        routeInvalidEdges();
         Point topLeft = getTopLeftCoordinates();
         shiftAllTopDiagramElements(topLeft);
+        if (!topLeft.equals(new Point(0, 0))) {
+            for (Connection currentConnection : maskedConnections) {
+                // we use this workaround because of the masked edges which are
+                // not
+                // routed when we perform the reset origin. If we do not
+                // translate masked edges points, the figure is still located as
+                // before the reset origin and that causes persistent scroll-bar
+                // if the old location is out of the viewer bounds.
+                currentConnection.getPoints().performTranslate(-topLeft.x, -topLeft.y);
+            }
+        }
         return null;
+    }
+
+    /**
+     * Layout masked edges to have the correct bounds.<br />
+     * Some edges can be masked because of a scrollbar on a container. If one of
+     * the edge end is masked by the scroll size, the edge is masked too. The
+     * OrthogonalLayout doesn't relocate the masked edges and that causes wrong
+     * diagram bounds computation and persistent scroll bar if the old edge
+     * location is out of the current bounds.
+     */
+    private void routeInvalidEdges() {
+        List<ConnectionEditPart> connections = diagramEditPart.getConnections();
+        for (ConnectionEditPart connection : connections) {
+            IFigure figure = connection.getFigure();
+            Object model = connection.getModel();
+            if (figure instanceof PolylineConnection && model instanceof Edge) {
+                if (!figure.isVisible() && ((Edge) model).isVisible()) {
+                    figure.setVisible(true);
+                    ((PolylineConnection) figure).layout();
+                    figure.setVisible(false);
+                    maskedConnections.add((Connection) figure);
+                }
+            }
+        }
+
     }
 
     private void shiftAllTopDiagramElements(Point topLeft) {
@@ -86,14 +129,11 @@ public class ResetOriginChangeModelOperation extends AbstractModelChangeOperatio
     }
 
     private Point getTopLeftCoordinates() {
-        if (diagramEditPart instanceof DiagramEditPart) {
-            List<?> primaryEditParts = ((DiagramEditPart) diagramEditPart).getPrimaryEditParts();
-            removeInvalidEdges(primaryEditParts);
-            Iterable<IGraphicalEditPart> iterable = Iterables.filter(primaryEditParts, IGraphicalEditPart.class);
-            Rectangle bounds = DiagramImageUtils.calculateImageRectangle(Lists.newArrayList(iterable), MARGIN, new Dimension(0, 0));
-            return bounds.getLocation();
-        }
-        return new Point(MARGIN, MARGIN);
+        List<?> primaryEditParts = diagramEditPart.getPrimaryEditParts();
+        removeInvalidEdges(primaryEditParts);
+        Iterable<IGraphicalEditPart> iterable = Iterables.filter(primaryEditParts, IGraphicalEditPart.class);
+        Rectangle bounds = DiagramImageUtils.calculateImageRectangle(Lists.newArrayList(iterable), MARGIN, new Dimension(0, 0));
+        return bounds.getLocation();
 
     }
 
