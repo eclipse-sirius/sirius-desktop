@@ -1,0 +1,25 @@
+target "sirius_tests_staging"
+
+include "sirius_staging.targetplatform"
+include "modules/query-legacy.tpd"
+
+with source, requirements
+
+location Sirius4Tests "http://download.eclipse.org/sirius/updates/nightly/latest/luna" {
+        org.eclipse.sirius.doc.feature.feature.group lazy
+        org.eclipse.sirius.runtime.acceleo.feature.group lazy
+        org.eclipse.sirius.runtime.feature.group lazy
+        org.eclipse.sirius.runtime.ide.eef.feature.group lazy
+        org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group lazy
+        org.eclipse.sirius.runtime.ide.ui.feature.group lazy
+        org.eclipse.sirius.runtime.ide.xtext.feature.group lazy
+        org.eclipse.sirius.runtime.ocl.feature.group lazy
+        org.eclipse.sirius.samples.feature.group lazy
+        org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group lazy
+        org.eclipse.sirius.specifier.ide.ui.feature.group lazy
+        org.eclipse.sirius.tests.support.feature.group lazy
+}
+
+location Eclipse-Luna "http://download.eclipse.org/releases/luna" {
+	org.eclipse.uml2.sdk.feature.group [5.0.0,5.1.0)
+}
