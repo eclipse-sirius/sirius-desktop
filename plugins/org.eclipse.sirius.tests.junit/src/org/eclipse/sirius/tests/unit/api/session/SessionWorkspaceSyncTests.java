@@ -401,6 +401,11 @@ public class SessionWorkspaceSyncTests extends SiriusDiagramTestCase implements 
         DDiagram diagram = (DDiagram) getRepresentations(ENTITIES_DESC_NAME).toArray()[0];
         IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
         assertNotNull(editor);
+        /*
+         * As we just opened an editor we expect some UI events waiting in the
+         * processing loop, notably Arrange requests.
+         */
+        TestsUtil.synchronizationWithUIThread();
         /* reload automatically */
         disableUICallBackOnDialectEditor((DialectEditor) editor);
 
