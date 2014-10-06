@@ -1415,8 +1415,13 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      * @param snap
      *            true to enable, false to disable snap to grid property
      */
-    public void setSnapToGrid(boolean snap) {
-        ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore().setValue(WorkspaceViewerProperties.SNAPTOGRID, snap);
+    public void setSnapToGrid(final boolean snap) {
+        UIThreadRunnable.syncExec(SWTUtils.display(), new VoidResult() {
+            @Override
+            public void run() {
+                ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore().setValue(WorkspaceViewerProperties.SNAPTOGRID, snap);
+            }
+        });
     }
 
     /**
@@ -1425,8 +1430,13 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      * @param snap
      *            true to enable, false to disable snap to shape property
      */
-    public void setSnapToShape(boolean snap) {
-        ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore().setValue(WorkspaceViewerProperties.SNAPTOGEOMETRY, snap);
+    public void setSnapToShape(final boolean snap) {
+        UIThreadRunnable.syncExec(SWTUtils.display(), new VoidResult() {
+            @Override
+            public void run() {
+                ((DiagramGraphicalViewer) getDiagramGraphicalViewer()).getWorkspaceViewerPreferenceStore().setValue(WorkspaceViewerProperties.SNAPTOGEOMETRY, snap);
+            }
+        });
     }
 
     /**
