@@ -96,7 +96,7 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String[] DIAGRAM_TOOLBARTOGGLEBUTTONS_TOOLTIPS = { "Activate Layouting Mode" };
 
-    private static final String[] NODE_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange Selection", "Align Left", DistributeAction.getLabel(DistributeAction.GAPS_HORIZONTALLY, true), "Font Color",
+    private static final String[] NODE_TOOLBARDROPDOWNBUTTONS_TOOLTIPS = { "Arrange Selection", "Align Left", DistributeAction.getTooltip(DistributeAction.GAPS_HORIZONTALLY), "Font Color",
             "Fill &Color", "Li&ne Color", "Line Style" };
 
     private static final String[] NODE_TOOLBARBUTTONS_TOOLTIPS = { "Pin selected elements", "Unpin selected elements", "Copy the layout of the selected diagram elements", "Hide element",
