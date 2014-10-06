@@ -6,7 +6,7 @@ h2(#introduction). Introduction
 
 This document describes how to specify sequence diagram modelers with Sirius. It has been written for software architects who want to specify sequence diagrams on their own meta-models.
    
-This tutorial is based on an example, i.e. the specification of a UML sequence diagram editor. The resulting diagram is  available in the _Obeo UML Behavioral_ viewpoint (available for free at "https://github.com/ObeoNetwork/UML-Modeling":https://github.com/ObeoNetwork/UML-Modeling ) which is based on the Eclipse Foundation's "UML2 meta-model":http://wiki.eclipse.org/MDT-UML2.
+This tutorial is based on an example, i.e. the specification of a UML sequence diagram editor. The resulting diagram is  available in the _Obeo UML Behavioral_ viewpoint (available for free at <a href="https://github.com/ObeoNetwork/UML-Modeling" target="_blank">https://github.com/ObeoNetwork/UML-Modeling</a> ) which is based on the Eclipse Foundation's <a href="http://wiki.eclipse.org/MDT-UML2" target="_blank">UML2 meta-model</a>.
 
 h2(#semantics). Sequence Diagrams Semantics
 

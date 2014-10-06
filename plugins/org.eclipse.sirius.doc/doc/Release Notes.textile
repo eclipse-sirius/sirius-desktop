@@ -143,7 +143,7 @@ h2(#sirius1.0.0). Changes in Sirius 1.0.0 (from Sirius 1.0.0M7)
 
 h3. User-Visible Changes
 
-* The ability to print table representations has been disabled for the 1.0.0 release due to an external dependency issue (see "bug #435204":https://bugs.eclipse.org/bugs/show_bug.cgi?id=435204 for the details).
+* The ability to print table representations has been disabled for the 1.0.0 release due to an external dependency issue (see <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=435204" target="_blank">bug #435204</a> for the details).
 
 h3. Specifier-Visible Changes
 
@@ -207,7 +207,7 @@ Unlike, the "Step1":#separationOfDiagramSpecificConcept-step1, a simple "Organiz
 * All methods of @SiriusHelper@ concerning diagrams have been moved to @org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramHelper@.
 * All methods of @SiriusUtil@ concerning diagrams have been moved to @org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil@.
 * All methods of @org.eclipse.sirius.business.api.query.EObjectQuery@ concerning diagrams have been moved to @org.eclipse.sirius.diagram.business.api.query.EObjectQuery@.
-* "Library Extensions":https://wiki.eclipse.org/Sirius/Modularization#Library_Extensions:
+* <a href="https://wiki.eclipse.org/Sirius/Modularization#Library_Extensions" target="_blank">Library Extensions</a>:
 ** All methods depending only on draw2d of @org.eclipse.sirius.diagram.ui.tools.api.draw2d.ui.figures.FigureUtilities@ have been moved in @org.eclipse.sirius.ext.draw2d.figure.FigureUtilities@
 ** @fr.obeo.dsl.viewpoint.diagram.ui.tools.api.layout.GraphicalHelper@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper@.
 ** @org.eclipse.sirius.diagram.part.SiriusDiagramEditorPlugin@ has been renamed into @org.eclipse.sirius.diagram.DiagramPlugin@. This plugin is not a UI plugin any more, @org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin.getPlugin()@ should be used instead for UI related aspects. For example @DiagramUIPlugin.getPlugin().getPreferenceStore()@ should be used instead of @DiagramPlugin.getDefault().getPreferenceStore()@ or @SiriusDiagramEditorPlugin.getInstance().getPreferenceStore()@.
@@ -686,4 +686,4 @@ New variables are available for @sizeComputationExpression@ to compute the size 
 
 h3. User-Visible Changes
 
-* The ability to print table representations has been disabled for the 0.9 release due to an external dependency issue (see "bug #422223":https://bugs.eclipse.org/bugs/show_bug.cgi?id=422223 for the details). It should be re-introduced in 1.0.
+* The ability to print table representations has been disabled for the 0.9 release due to an external dependency issue (see <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=422223" target="_blank">bug #422223</a>: for the details). It should be re-introduced in 1.0.

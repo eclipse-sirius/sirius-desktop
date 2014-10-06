@@ -15,4 +15,4 @@ You will find the following sections:
 
 For more information on Sirius, please refer to the "*Sirius User Manual*":../user/Sirius%20User%20Manual.html, which describes how end-users can use the designers you created.
 
-In addition to this documentation, see also the "main project site":http://www.eclipse.org/sirius and the "top-level wiki page":http://wiki.eclipse.org/Sirius.
+In addition to this documentation, see also the <a href="http://www.eclipse.org/sirius" target="_blank">main project site</a>: and the <a href="http://wiki.eclipse.org/Sirius" target="_blank">top-level wiki page</a>.

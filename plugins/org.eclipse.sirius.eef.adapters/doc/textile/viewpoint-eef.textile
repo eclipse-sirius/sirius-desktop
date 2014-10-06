@@ -4,11 +4,11 @@ h1. Using the Extended Editing Framework with Sirius
 
 {toc:style=disc|maxLevel=3}
 
-The purpose of this *Quickstart* is to present how to integrate "EEF":http://www.eclipse.org/modeling/emft/?project=eef properties views and wizards with a Sirius diagram representation.
+The purpose of this *Quickstart* is to present how to integrate <a href="http://www.eclipse.org/modeling/emft/?project=eef" target="_blank">EEF</a> properties views and wizards with a Sirius diagram representation.
 
 h2. EEF Properties views and wizards generation
 
-The tutorial "EEF : First generation":http://wiki.eclipse.org/EEF/Tutorials/First_Generation describes the process to generate EEF properties views and wizards. Here is the main steps.
+The tutorial <a href="http://wiki.eclipse.org/EEF/Tutorials/First_Generation" target="_blank">EEF : First generation</a> describes the process to generate EEF properties views and wizards. Here is the main steps.
 
 h3. Initializing and setting up EEF models
 

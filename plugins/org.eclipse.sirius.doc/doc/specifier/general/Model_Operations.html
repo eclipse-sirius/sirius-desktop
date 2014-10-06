@@ -295,8 +295,7 @@
 		<h4 id="IExternalJavaActionandIExternalJavaAction2">IExternalJavaAction and IExternalJavaAction2</h4>
 		<p>The previous part presented External Java Action by implementing 
 			<code>org.eclipse.sirius.tools.api.ui.IExternalJavaAction</code>. A second interface 
-			<code>org.eclipse.sirius.tools.api.ui.IExternalJavaAction2</code> (
-			<a href="http://wiki.eclipse.org/Evolving_Java-based_APIs_3#.222.22_Convention">Naming Convention</a> ) is also available. It is an extension of the first interface that add the possibility for the specifier to warn Sirius if the External Java Action will delete elements. As it is executed externally, a 
+			<code>org.eclipse.sirius.tools.api.ui.IExternalJavaAction2</code> (<a href="http://wiki.eclipse.org/Evolving_Java-based_APIs_3#.222.22_Convention" target="_blank">Naming Convention</a> ) is also available. It is an extension of the first interface that add the possibility for the specifier to warn Sirius if the External Java Action will delete elements. As it is executed externally, a 
 			<code>org.eclipse.sirius.tools.internal.command.listener.ChangeListener</code> is used to keep tracks on the deleted elements. Therefore, implementing 
 			<code>org.eclipse.sirius.tools.api.ui.IExternalJavaAction2</code> and warning Sirius that the execution of this tool will not delete any element (method mayDeleteElements returning false), will not create this 
 			<code>org.eclipse.sirius.tools.internal.command.listener.ChangeListener</code>, which can improve refresh performances.
