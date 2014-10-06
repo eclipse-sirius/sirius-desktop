@@ -187,6 +187,7 @@ public class AllTestSuite extends TestCase {
 
         suite.addTestSuite(DeleteHookTests.class);
         suite.addTestSuite(DeleteFromDiagramTest.class);
+        suite.addTestSuite(DeleteDiagramWithListeningPaletteToolTest.class);
 
         // TODO DLE : reenable theses tests as soon as getEditPart method will
         // be based on matcher.

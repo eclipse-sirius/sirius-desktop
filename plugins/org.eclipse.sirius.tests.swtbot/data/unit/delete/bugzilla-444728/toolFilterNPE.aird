@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_e38I0D_eEeSTOLNTOD3NsA" selectedViews="_ff-ZMD_eEeSTOLNTOD3NsA" version="8.1.1">
+  <models xmi:type="ecore:EPackage" href="toolFilterNPE.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_ff-ZMD_eEeSTOLNTOD3NsA" initialized="true">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_ti9s8E0-EeS1gqwPNGhhsg" name="new toolFilterNPE_Diagram">
+      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_ti-7EE0-EeS1gqwPNGhhsg" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_ti-7EU0-EeS1gqwPNGhhsg" type="Sirius" element="_ti9s8E0-EeS1gqwPNGhhsg" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_ti_iIE0-EeS1gqwPNGhhsg" type="2001" element="_ti9s8U0-EeS1gqwPNGhhsg">
+            <children xmi:type="notation:Node" xmi:id="_tjAJME0-EeS1gqwPNGhhsg" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_tjAJMU0-EeS1gqwPNGhhsg" x="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_tjIsEE0-EeS1gqwPNGhhsg" type="3003" element="_ti9s8k0-EeS1gqwPNGhhsg">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_tjIsEU0-EeS1gqwPNGhhsg" fontName="Cantarell"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tjIsEk0-EeS1gqwPNGhhsg"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_ti_iIU0-EeS1gqwPNGhhsg" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ti_iIk0-EeS1gqwPNGhhsg" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_tjBXUE0-EeS1gqwPNGhhsg" type="2001" element="_ti9s9k0-EeS1gqwPNGhhsg">
+            <children xmi:type="notation:Node" xmi:id="_tjClcE0-EeS1gqwPNGhhsg" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_tjClcU0-EeS1gqwPNGhhsg" x="-1"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_tjJTIE0-EeS1gqwPNGhhsg" type="3003" element="_ti9s900-EeS1gqwPNGhhsg">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_tjJTIU0-EeS1gqwPNGhhsg" fontName="Cantarell"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tjJTIk0-EeS1gqwPNGhhsg"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_tjBXUU0-EeS1gqwPNGhhsg" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tjBXUk0-EeS1gqwPNGhhsg" x="96" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_tjDzkE0-EeS1gqwPNGhhsg" type="2001" element="_ti9s-00-EeS1gqwPNGhhsg">
+            <children xmi:type="notation:Node" xmi:id="_tjEaoE0-EeS1gqwPNGhhsg" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_tjEaoU0-EeS1gqwPNGhhsg" x="-1"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_tjJ6ME0-EeS1gqwPNGhhsg" type="3003" element="_ti9s_E0-EeS1gqwPNGhhsg">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_tjJ6MU0-EeS1gqwPNGhhsg" fontName="Cantarell"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tjJ6Mk0-EeS1gqwPNGhhsg"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_tjDzkU0-EeS1gqwPNGhhsg" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tjDzkk0-EeS1gqwPNGhhsg" x="180" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_tjFBsE0-EeS1gqwPNGhhsg" type="2001" element="_ti9tAE0-EeS1gqwPNGhhsg">
+            <children xmi:type="notation:Node" xmi:id="_tjGP0E0-EeS1gqwPNGhhsg" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_tjGP0U0-EeS1gqwPNGhhsg" x="-1"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_tjKhQE0-EeS1gqwPNGhhsg" type="3003" element="_ti9tAU0-EeS1gqwPNGhhsg">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_tjKhQU0-EeS1gqwPNGhhsg" fontName="Cantarell"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tjKhQk0-EeS1gqwPNGhhsg"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_tjFowE0-EeS1gqwPNGhhsg" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tjFowU0-EeS1gqwPNGhhsg" x="264" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_tjG24E0-EeS1gqwPNGhhsg" type="2001" element="_ti9tBU0-EeS1gqwPNGhhsg">
+            <children xmi:type="notation:Node" xmi:id="_tjHd8E0-EeS1gqwPNGhhsg" type="5002">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_tjHd8U0-EeS1gqwPNGhhsg" x="-1"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_tjLvYE0-EeS1gqwPNGhhsg" type="3003" element="_ti9tBk0-EeS1gqwPNGhhsg">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_tjLvYU0-EeS1gqwPNGhhsg" fontName="Cantarell"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tjLvYk0-EeS1gqwPNGhhsg"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_tjG24U0-EeS1gqwPNGhhsg" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tjG24k0-EeS1gqwPNGhhsg" x="360" width="30" height="30"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_ti-7Ek0-EeS1gqwPNGhhsg"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_ti9s8U0-EeS1gqwPNGhhsg" name="Node2" width="3" height="3">
+        <target xmi:type="ecore:EClass" href="toolFilterNPE.ecore#//Node2"/>
+        <semanticElements xmi:type="ecore:EClass" href="toolFilterNPE.ecore#//Node2"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_ti9s8k0-EeS1gqwPNGhhsg">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ti9s800-EeS1gqwPNGhhsg"/>
+          <description xmi:type="style:SquareDescription" href="toolFilterNPE.odesign#//@ownedViewpoints[name='toolFilterNPE']/@ownedRepresentations[name='toolFilterNPE_Diagram']/@defaultLayer/@nodeMappings[name='Nodes']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ti9s9E0-EeS1gqwPNGhhsg"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_ti9s9U0-EeS1gqwPNGhhsg" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="toolFilterNPE.odesign#//@ownedViewpoints[name='toolFilterNPE']/@ownedRepresentations[name='toolFilterNPE_Diagram']/@defaultLayer/@nodeMappings[name='Nodes']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_ti9s9k0-EeS1gqwPNGhhsg" width="3" height="3">
+        <target xmi:type="ecore:EClass" href="toolFilterNPE.ecore#//%"/>
+        <semanticElements xmi:type="ecore:EClass" href="toolFilterNPE.ecore#//%"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_ti9s900-EeS1gqwPNGhhsg">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ti9s-E0-EeS1gqwPNGhhsg"/>
+          <description xmi:type="style:SquareDescription" href="toolFilterNPE.odesign#//@ownedViewpoints[name='toolFilterNPE']/@ownedRepresentations[name='toolFilterNPE_Diagram']/@defaultLayer/@nodeMappings[name='Nodes']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ti9s-U0-EeS1gqwPNGhhsg"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_ti9s-k0-EeS1gqwPNGhhsg" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="toolFilterNPE.odesign#//@ownedViewpoints[name='toolFilterNPE']/@ownedRepresentations[name='toolFilterNPE_Diagram']/@defaultLayer/@nodeMappings[name='Nodes']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_ti9s-00-EeS1gqwPNGhhsg" width="3" height="3">
+        <target xmi:type="ecore:EClass" href="toolFilterNPE.ecore#//%.1"/>
+        <semanticElements xmi:type="ecore:EClass" href="toolFilterNPE.ecore#//%.1"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_ti9s_E0-EeS1gqwPNGhhsg">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ti9s_U0-EeS1gqwPNGhhsg"/>
+          <description xmi:type="style:SquareDescription" href="toolFilterNPE.odesign#//@ownedViewpoints[name='toolFilterNPE']/@ownedRepresentations[name='toolFilterNPE_Diagram']/@defaultLayer/@nodeMappings[name='Nodes']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ti9s_k0-EeS1gqwPNGhhsg"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_ti9s_00-EeS1gqwPNGhhsg" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="toolFilterNPE.odesign#//@ownedViewpoints[name='toolFilterNPE']/@ownedRepresentations[name='toolFilterNPE_Diagram']/@defaultLayer/@nodeMappings[name='Nodes']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_ti9tAE0-EeS1gqwPNGhhsg" width="3" height="3">
+        <target xmi:type="ecore:EClass" href="toolFilterNPE.ecore#//%.2"/>
+        <semanticElements xmi:type="ecore:EClass" href="toolFilterNPE.ecore#//%.2"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_ti9tAU0-EeS1gqwPNGhhsg">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ti9tAk0-EeS1gqwPNGhhsg"/>
+          <description xmi:type="style:SquareDescription" href="toolFilterNPE.odesign#//@ownedViewpoints[name='toolFilterNPE']/@ownedRepresentations[name='toolFilterNPE_Diagram']/@defaultLayer/@nodeMappings[name='Nodes']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ti9tA00-EeS1gqwPNGhhsg"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_ti9tBE0-EeS1gqwPNGhhsg" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="toolFilterNPE.odesign#//@ownedViewpoints[name='toolFilterNPE']/@ownedRepresentations[name='toolFilterNPE_Diagram']/@defaultLayer/@nodeMappings[name='Nodes']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_ti9tBU0-EeS1gqwPNGhhsg" width="3" height="3">
+        <target xmi:type="ecore:EClass" href="toolFilterNPE.ecore#//%.3"/>
+        <semanticElements xmi:type="ecore:EClass" href="toolFilterNPE.ecore#//%.3"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_ti9tBk0-EeS1gqwPNGhhsg">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_ti9tB00-EeS1gqwPNGhhsg"/>
+          <description xmi:type="style:SquareDescription" href="toolFilterNPE.odesign#//@ownedViewpoints[name='toolFilterNPE']/@ownedRepresentations[name='toolFilterNPE_Diagram']/@defaultLayer/@nodeMappings[name='Nodes']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_ti9tCE0-EeS1gqwPNGhhsg"/>
+          <color xmi:type="viewpoint:RGBValues" xmi:id="_ti9tCU0-EeS1gqwPNGhhsg" red="136" green="136" blue="136"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="toolFilterNPE.odesign#//@ownedViewpoints[name='toolFilterNPE']/@ownedRepresentations[name='toolFilterNPE_Diagram']/@defaultLayer/@nodeMappings[name='Nodes']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_1:DiagramDescription" href="toolFilterNPE.odesign#//@ownedViewpoints[name='toolFilterNPE']/@ownedRepresentations[name='toolFilterNPE_Diagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_ti9tCk0-EeS1gqwPNGhhsg"/>
+      <activatedLayers xmi:type="description_1:Layer" href="toolFilterNPE.odesign#//@ownedViewpoints[name='toolFilterNPE']/@ownedRepresentations[name='toolFilterNPE_Diagram']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="toolFilterNPE.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="toolFilterNPE.odesign#//@ownedViewpoints[name='toolFilterNPE']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>
