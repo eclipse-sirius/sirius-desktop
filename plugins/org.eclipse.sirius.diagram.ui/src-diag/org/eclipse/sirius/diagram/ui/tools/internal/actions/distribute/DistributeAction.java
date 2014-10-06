@@ -72,7 +72,7 @@ public class DistributeAction extends DiagramAction {
     private static final String CENTERS_VERTICALLY_LABEL = "Centers Vertically";
 
     /** Label for horizontal distribution with uniform gaps. */
-    private static final String GAPS_HORIZONTALLY_TOOLTIP = DISTRIBUTE_PREFIX + " With Uniform Gaps Horizontally";
+    private static final String GAPS_HORIZONTALLY_TOOLTIP = DISTRIBUTE_PREFIX + "With Uniform Gaps Horizontally";
 
     /** Label for distribution of centers horizontally. */
     private static final String CENTERS_HORIZONTALLY_TOOLTIP = DISTRIBUTE_PREFIX + "Centers Evenly Horizontally";
