@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" documentation="uml2 modeler" name="uml2 modeler" version="8.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" documentation="uml2 modeler" name="uml2 modeler" version="8.1.0">
   <ownedViewpoints documentation="Initialize an UML Analysis" name="UML Analysis workspace" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Fake ViewPointDescription - factorize elements" name="Reused Description" domainClass="Model">
       <toolSection documentation="reused tools" name="reused tools">
@@ -63,7 +63,7 @@
           </ownedTools>
         </subSections>
         <subSections name="drag &amp; drop">
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" documentation="Tool to Drag &amp; Drop a Package" name="PD_D&amp;D_Package" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Package%20Diagram']/@containerMappings[name='PD_Package']">
+          <ownedTools xsi:type="tool:ContainerDropDescription" documentation="Tool to Drag &amp; Drop a Package" name="PD_D&amp;D_Package" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Package%20Diagram']/@containerMappings[name='PD_Package']">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -213,7 +213,7 @@
       </containerMappings>
       <toolSection name="use case tools">
         <subSections name="drag &amp; drop">
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" documentation="A Drag &amp; Drop tool to add actors" name="UC_D&amp;D_Actor" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Use%20Case%20Diagram']/@nodeMappings[name='UCD_Actor']">
+          <ownedTools xsi:type="tool:ContainerDropDescription" documentation="A Drag &amp; Drop tool to add actors" name="UC_D&amp;D_Actor" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Use%20Case%20Diagram']/@nodeMappings[name='UCD_Actor']">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -222,7 +222,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:newSemanticContainer"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" documentation="Tool to drag &amp; drop a use case" name="UC_D&amp;D_UseCase" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Use%20Case%20Diagram']/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase']">
+          <ownedTools xsi:type="tool:ContainerDropDescription" documentation="Tool to drag &amp; drop a use case" name="UC_D&amp;D_UseCase" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Use%20Case%20Diagram']/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase']">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -624,7 +624,7 @@
           </ownedTools>
         </subSections>
         <subSections name="drag &amp; drop">
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="CD_D&amp;D_Class" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="CD_D&amp;D_Class" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Class']">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -635,7 +635,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" documentation="Tool to Drag &amp; Drop a Package" name="CD_D&amp;D_Package" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Package']">
+          <ownedTools xsi:type="tool:ContainerDropDescription" documentation="Tool to Drag &amp; Drop a Package" name="CD_D&amp;D_Package" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Package']">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -646,7 +646,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="CD_D&amp;D_Interface" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="CD_D&amp;D_Interface" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Class%20Diagram']/@containerMappings[name='CD_Interface']">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -766,7 +766,7 @@
             </firstModelOperations>
           </initialOperation>
         </ownedTools>
-        <ownedTools xsi:type="tool_1:ContainerDropDescription" name="Drop Interface on canvas" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@nodeMappings[name='CO_Interface'] //@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@containerMappings[name='CO_ImportedComponent']" dragSource="PROJECT_EXPLORER">
+        <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop Interface on canvas" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@nodeMappings[name='CO_Interface'] //@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@containerMappings[name='CO_ImportedComponent']" dragSource="PROJECT_EXPLORER">
           <oldContainer name="oldSemanticContainer"/>
           <newContainer name="newSemanticContainer"/>
           <element name="element"/>
@@ -812,7 +812,7 @@
             </firstModelOperations>
           </initialOperation>
         </ownedTools>
-        <ownedTools xsi:type="tool_1:ContainerDropDescription" name="CO_D&amp;D_Drop_Port" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port']">
+        <ownedTools xsi:type="tool:ContainerDropDescription" name="CO_D&amp;D_Drop_Port" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram']/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port']">
           <oldContainer name="oldSemanticContainer"/>
           <newContainer name="newSemanticContainer"/>
           <element name="element"/>
@@ -1067,8 +1067,8 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Component Diagram-MovePortOnNode" domainClass="Package">
       <defaultLayer name="Default">
-        <nodeMappings name="CDN_Component" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
-          <borderedNodeMappings name="CDN_Port" semanticCandidatesExpression="feature:eAllContents" domainClass="Port">
+        <nodeMappings name="CDMPoN_Component" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
+          <borderedNodeMappings name="CDMPoN_Port" semanticCandidatesExpression="feature:eAllContents" domainClass="Port">
             <style xsi:type="style:BundledImageDescription" showIcon="false" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1081,12 +1081,22 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
+        <edgeMappings name="Deployment" semanticCandidatesExpression="&lt;%eAllContents().ownedAttribute.deployment%>" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNode']/@defaultLayer/@nodeMappings[name='CDMPoN_Component']/@borderedNodeMappings[name='CDMPoN_Port']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNode']/@defaultLayer/@nodeMappings[name='CDMPoN_Component']/@borderedNodeMappings[name='CDMPoN_Port']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="feature:eContainer" domainClass="Deployment" useDomainElement="true">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Component Diagram-MovePortOnContainer" domainClass="Package">
       <defaultLayer name="Default">
+        <edgeMappings name="Deployment" semanticCandidatesExpression="&lt;%eAllContents().ownedAttribute.deployment%>" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnContainer']/@defaultLayer/@containerMappings[name='CDC_Component']/@borderedNodeMappings[name='CDC_Port']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnContainer']/@defaultLayer/@containerMappings[name='CDC_Component']/@borderedNodeMappings[name='CDC_Port']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="feature:eContainer" domainClass="Deployment" useDomainElement="true">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
         <containerMappings name="CDC_Component" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
-          <borderedNodeMappings name="CDN_Port" semanticCandidatesExpression="feature:eAllContents" domainClass="Port">
+          <borderedNodeMappings name="CDC_Port" semanticCandidatesExpression="feature:eAllContents" domainClass="Port">
             <style xsi:type="style:BundledImageDescription" showIcon="false" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1104,9 +1114,14 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Component Diagram-MovePortOnNodeInContainer" domainClass="Package">
       <defaultLayer name="Default">
+        <edgeMappings name="Deployment" semanticCandidatesExpression="&lt;%eAllContents().ownedAttribute.deployment%>" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDNIC_Port']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDNIC_Port']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="feature:eContainer" domainClass="Deployment" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
         <containerMappings name="CDNIC_Component_Container" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
           <subNodeMappings name="CDNIC_Component_Node" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
-            <borderedNodeMappings name="CDN_Port" semanticCandidatesExpression="feature:eAllContents" domainClass="Port">
+            <borderedNodeMappings name="CDNIC_Port" semanticCandidatesExpression="feature:eAllContents" domainClass="Port">
               <style xsi:type="style:BundledImageDescription" showIcon="false" sizeComputationExpression="1">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1130,6 +1145,11 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Component Diagram-MovePortOnContainerInContainer" domainClass="Package">
       <defaultLayer name="Default">
+        <edgeMappings name="Deployment" semanticCandidatesExpression="&lt;%eAllContents().ownedAttribute.deployment%>" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnContainerInContainer']/@defaultLayer/@containerMappings[name='CDCIC_Component']/@borderedNodeMappings[name='CDCIC_Port']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnContainerInContainer']/@defaultLayer/@containerMappings[name='CDCIC_Component']/@borderedNodeMappings[name='CDCIC_Port']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="feature:eContainer" domainClass="Deployment" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
         <containerMappings name="CDCIC_Component" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component" reusedContainerMappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnContainerInContainer']/@defaultLayer/@containerMappings[name='CDCIC_Component']">
           <borderedNodeMappings name="CDCIC_Port" semanticCandidatesExpression="feature:eContents" domainClass="Port">
             <style xsi:type="style:BundledImageDescription" showIcon="false" sizeComputationExpression="1">
@@ -1149,9 +1169,14 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Component Diagram-MovePortOnPortOnContainer" domainClass="Package">
       <defaultLayer name="Default">
-        <containerMappings name="CDPoPoC_Component_Container" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
-          <borderedNodeMappings name="CDPoPoC_Component_Port" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
-            <borderedNodeMappings name="CDPoPoC_Port" semanticCandidatesExpression="feature:eAllContents" domainClass="Port">
+        <edgeMappings name="Deployment" semanticCandidatesExpression="&lt;%eAllContents().ownedAttribute.deployment%>" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnPortOnContainer']/@defaultLayer/@containerMappings[name='CDMPoPoC_Component_Container']/@borderedNodeMappings[name='CDMPoPoC_Component_Port']/@borderedNodeMappings[name='CDMPoPoC_Port']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnPortOnContainer']/@defaultLayer/@containerMappings[name='CDMPoPoC_Component_Container']/@borderedNodeMappings[name='CDMPoPoC_Component_Port']/@borderedNodeMappings[name='CDMPoPoC_Port']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="feature:eContainer" domainClass="Deployment" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <containerMappings name="CDMPoPoC_Component_Container" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
+          <borderedNodeMappings name="CDMPoPoC_Component_Port" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
+            <borderedNodeMappings name="CDMPoPoC_Port" semanticCandidatesExpression="feature:eAllContents" domainClass="Port">
               <style xsi:type="style:BundledImageDescription" showIcon="false" sizeComputationExpression="1">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1175,9 +1200,9 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Component Diagram-MovePortOnPortOnNode" domainClass="Package">
       <defaultLayer name="Default">
-        <nodeMappings name="CDPoPoN_Component_Node" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
-          <borderedNodeMappings name="CDPoPoN_Component_Port" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
-            <borderedNodeMappings name="CDPoPoN_Port" semanticCandidatesExpression="feature:eAllContents" domainClass="Port">
+        <nodeMappings name="CDMPoPoN_Component_Node" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
+          <borderedNodeMappings name="CDMPoPoN_Component_Port" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
+            <borderedNodeMappings name="CDMPoPoN_Port" semanticCandidatesExpression="feature:eAllContents" domainClass="Port">
               <style xsi:type="style:BundledImageDescription" showIcon="false" sizeComputationExpression="1">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1196,12 +1221,17 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
+        <edgeMappings name="Deployment" semanticCandidatesExpression="&lt;%eAllContents().ownedAttribute.deployment%>" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnPortOnNode']/@defaultLayer/@nodeMappings[name='CDMPoPoN_Component_Node']/@borderedNodeMappings[name='CDMPoPoN_Component_Port']/@borderedNodeMappings[name='CDMPoPoN_Port']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnPortOnNode']/@defaultLayer/@nodeMappings[name='CDMPoPoN_Component_Node']/@borderedNodeMappings[name='CDMPoPoN_Component_Port']/@borderedNodeMappings[name='CDMPoPoN_Port']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="feature:eContainer" domainClass="Deployment" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Component Diagram-ResizePortOnNode" domainClass="Package">
       <defaultLayer name="Default">
-        <nodeMappings name="CDN_Component" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
-          <borderedNodeMappings name="CDN_Port" semanticCandidatesExpression="feature:eAllContents" domainClass="Port">
+        <nodeMappings name="CDRPoN_Component" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
+          <borderedNodeMappings name="CDRPoN_Port" semanticCandidatesExpression="feature:eAllContents" domainClass="Port">
             <style xsi:type="style:BundledImageDescription" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1214,12 +1244,22 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
+        <edgeMappings name="Deployment" semanticCandidatesExpression="&lt;%eAllContents().ownedAttribute.deployment%>" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-ResizePortOnNode']/@defaultLayer/@nodeMappings[name='CDRPoN_Component']/@borderedNodeMappings[name='CDRPoN_Port']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-ResizePortOnNode']/@defaultLayer/@nodeMappings[name='CDRPoN_Component']/@borderedNodeMappings[name='CDRPoN_Port']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="feature:eContainer" domainClass="Deployment" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Component Diagram-ResizePortOnContainer" domainClass="Package">
       <defaultLayer name="Default">
-        <containerMappings name="CDC_Component" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
-          <borderedNodeMappings name="CDN_Port" semanticCandidatesExpression="feature:eAllContents" domainClass="Port">
+        <edgeMappings name="Deployment" semanticCandidatesExpression="&lt;%eAllContents().ownedAttribute.deployment%>" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-ResizePortOnContainer']/@defaultLayer/@containerMappings[name='CDRPoC_Component']/@borderedNodeMappings[name='CDRPoC_Port']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-ResizePortOnContainer']/@defaultLayer/@containerMappings[name='CDRPoC_Component']/@borderedNodeMappings[name='CDRPoC_Port']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="feature:eContainer" domainClass="Deployment" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <containerMappings name="CDRPoC_Component" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
+          <borderedNodeMappings name="CDRPoC_Port" semanticCandidatesExpression="feature:eAllContents" domainClass="Port">
             <style xsi:type="style:BundledImageDescription" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1237,9 +1277,14 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Component Diagram-ResizePortOnNodeInContainer" domainClass="Package">
       <defaultLayer name="Default">
-        <containerMappings name="CDNIC_Component_Container" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
-          <subNodeMappings name="CDNIC_Component_Node" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
-            <borderedNodeMappings name="CDN_Port" semanticCandidatesExpression="feature:eAllContents" domainClass="Port">
+        <edgeMappings name="Deployment" semanticCandidatesExpression="&lt;%eAllContents().ownedAttribute.deployment%>" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-ResizePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDRPoNiC_Component_Container']/@subNodeMappings[name='CDRPoNiC_Component_Node']/@borderedNodeMappings[name='CDRPoNiC_Port']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-ResizePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDRPoNiC_Component_Container']/@subNodeMappings[name='CDRPoNiC_Component_Node']/@borderedNodeMappings[name='CDRPoNiC_Port']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="feature:eContainer" domainClass="Deployment" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <containerMappings name="CDRPoNiC_Component_Container" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
+          <subNodeMappings name="CDRPoNiC_Component_Node" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
+            <borderedNodeMappings name="CDRPoNiC_Port" semanticCandidatesExpression="feature:eAllContents" domainClass="Port">
               <style xsi:type="style:BundledImageDescription" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1263,8 +1308,13 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Component Diagram-ResizePortOnContainerInContainer" domainClass="Package">
       <defaultLayer name="Default">
-        <containerMappings name="CDCIC_Component" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component" reusedContainerMappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-ResizePortOnContainerInContainer']/@defaultLayer/@containerMappings[name='CDCIC_Component']">
-          <borderedNodeMappings name="CDCIC_Port" semanticCandidatesExpression="feature:eContents" domainClass="Port">
+        <edgeMappings name="Deployment" semanticCandidatesExpression="&lt;%eAllContents().ownedAttribute.deployment%>" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-ResizePortOnContainerInContainer']/@defaultLayer/@containerMappings[name='CDRPoCiC_Component']/@borderedNodeMappings[name='CDRPoCiC_Port']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-ResizePortOnContainerInContainer']/@defaultLayer/@containerMappings[name='CDRPoCiC_Component']/@borderedNodeMappings[name='CDRPoCiC_Port']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="feature:eContainer" domainClass="Deployment" useDomainElement="true">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <containerMappings name="CDRPoCiC_Component" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component" reusedContainerMappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-ResizePortOnContainerInContainer']/@defaultLayer/@containerMappings[name='CDRPoCiC_Component']">
+          <borderedNodeMappings name="CDRPoCiC_Port" semanticCandidatesExpression="feature:eContents" domainClass="Port">
             <style xsi:type="style:BundledImageDescription" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1282,9 +1332,14 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Component Diagram-ResizePortOnPortOnContainer" domainClass="Package">
       <defaultLayer name="Default">
-        <containerMappings name="CDPoPoC_Component_Container" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
-          <borderedNodeMappings name="CDPoPoC_Component_Port" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
-            <borderedNodeMappings name="CDPoPoC_Port" semanticCandidatesExpression="feature:eAllContents" domainClass="Port">
+        <edgeMappings name="Deployment" semanticCandidatesExpression="&lt;%eAllContents().ownedAttribute.deployment%>" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-ResizePortOnPortOnContainer']/@defaultLayer/@containerMappings[name='CDRPoPoC_Component_Container']/@borderedNodeMappings[name='CDRPoPoC_Component_Port']/@borderedNodeMappings[name='CDRPoPoC_Port']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-ResizePortOnPortOnContainer']/@defaultLayer/@containerMappings[name='CDRPoPoC_Component_Container']/@borderedNodeMappings[name='CDRPoPoC_Component_Port']/@borderedNodeMappings[name='CDRPoPoC_Port']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="feature:eContainer" domainClass="Deployment" useDomainElement="true">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <containerMappings name="CDRPoPoC_Component_Container" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
+          <borderedNodeMappings name="CDRPoPoC_Component_Port" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
+            <borderedNodeMappings name="CDRPoPoC_Port" semanticCandidatesExpression="feature:eAllContents" domainClass="Port">
               <style xsi:type="style:BundledImageDescription" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1308,9 +1363,9 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Component Diagram-ResizePortOnPortOnNode" domainClass="Package">
       <defaultLayer name="Default">
-        <nodeMappings name="CDPoPoN_Component_Node" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
-          <borderedNodeMappings name="CDPoPoN_Component_Port" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
-            <borderedNodeMappings name="CDPoPoN_Port" semanticCandidatesExpression="feature:eAllContents" domainClass="Port">
+        <nodeMappings name="CDRPoPoN_Component_Node" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
+          <borderedNodeMappings name="CDRPoPoN_Component_Port" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Component&quot;)%>" domainClass="Component">
+            <borderedNodeMappings name="CDRPoPoN_Port" semanticCandidatesExpression="feature:eAllContents" domainClass="Port">
               <style xsi:type="style:BundledImageDescription" showIcon="false" sizeComputationExpression="1" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1329,6 +1384,11 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
+        <edgeMappings name="Deployment" semanticCandidatesExpression="&lt;%eAllContents().ownedAttribute.deployment%>" sourceMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-ResizePortOnPortOnNode']/@defaultLayer/@nodeMappings[name='CDRPoPoN_Component_Node']/@borderedNodeMappings[name='CDRPoPoN_Component_Port']/@borderedNodeMappings[name='CDRPoPoN_Port']" targetMapping="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-ResizePortOnPortOnNode']/@defaultLayer/@nodeMappings[name='CDRPoPoN_Component_Node']/@borderedNodeMappings[name='CDRPoPoN_Component_Port']/@borderedNodeMappings[name='CDRPoPoN_Port']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="feature:eContainer" domainClass="Deployment" useDomainElement="true">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Component Diagram-DnDPortOnNode" domainClass="Component">
@@ -1356,7 +1416,7 @@
           </style>
         </edgeMappings>
         <toolSections>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="DnD" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-DnDPortOnNode']/@defaultLayer/@nodeMappings[name='CDN_Component']/@borderedNodeMappings[name='CDN_Port']">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DnD" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-DnDPortOnNode']/@defaultLayer/@nodeMappings[name='CDN_Component']/@borderedNodeMappings[name='CDN_Port']">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -1390,7 +1450,7 @@
           </style>
         </nodeMappings>
         <toolSections>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="DnD" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-DnDComponentFromModelExplorer']/@defaultLayer/@nodeMappings[name='CD_DnDComponent']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DnD" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-DnDComponentFromModelExplorer']/@defaultLayer/@nodeMappings[name='CD_DnDComponent']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -1478,7 +1538,7 @@
           </style>
         </nodeMappings>
         <toolSections>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="DnD" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-DnDComponentAndPortFromModelExplorer']/@defaultLayer/@nodeMappings[name='CD_DnDComponent']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DnD" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-DnDComponentAndPortFromModelExplorer']/@defaultLayer/@nodeMappings[name='CD_DnDComponent']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -1487,7 +1547,7 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="DnDPort" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-DnDComponentAndPortFromModelExplorer']/@defaultLayer/@nodeMappings[name='CD_DnDComponent']/@borderedNodeMappings[name='CD_DnDPort']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="DnDPort" mappings="//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-DnDComponentAndPortFromModelExplorer']/@defaultLayer/@nodeMappings[name='CD_DnDComponent']/@borderedNodeMappings[name='CD_DnDPort']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>

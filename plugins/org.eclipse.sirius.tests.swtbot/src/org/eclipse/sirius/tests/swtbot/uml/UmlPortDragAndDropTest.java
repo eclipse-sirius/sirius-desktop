@@ -12,6 +12,7 @@ package org.eclipse.sirius.tests.swtbot.uml;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNodeEditPart;
@@ -50,7 +51,7 @@ public class UmlPortDragAndDropTest extends AbstractUmlDragAndDropTest {
 
     private static final String DND_REPRESENTATION_DESCRIPTION_NAME = "Component Diagram-DnDPortOnNode";
 
-    private static final Dimension HORIZONTAL_TRANSLATION = new Dimension(300, 0);
+    private static final int HORIZONTAL_TRANSLATION = 300;
 
     /**
      * {@inheritDoc}
@@ -88,7 +89,7 @@ public class UmlPortDragAndDropTest extends AbstractUmlDragAndDropTest {
         final Rectangle originalPortBounds = getEditPartBounds(portToDropName);
 
         final Point originalCenter = originalPortBounds.getCenter();
-        final Point endpoint = originalCenter.getTranslated(HORIZONTAL_TRANSLATION);
+        final Point endpoint = originalCenter.getTranslated(HORIZONTAL_TRANSLATION, 0);
 
         editor.drag(originalCenter.x, originalCenter.y, endpoint.x, endpoint.y);
 
@@ -98,6 +99,58 @@ public class UmlPortDragAndDropTest extends AbstractUmlDragAndDropTest {
         // The port must have change of container
         assertFalse("The port should have different coordinates.", newCenter.equals(originalCenter));
         assertEquals("The port should be moved at the expected location.", endpoint, newCenter);
+    }
+
+    /**
+     * Drop port (with straight edge) from a component to another component.
+     * Also check the stability of the edge, the last point should be the only
+     * one moving.
+     */
+    public void testDropPortFromComponentToAnotherComponent_WithStraightEdge() {
+        String portToDropName = "Port5";
+        final Rectangle originalPortBounds = getEditPartBounds(portToDropName);
+
+        PointList originalEdgeBendpoints = getBendpoints(portToDropName);
+
+        final Point originalCenter = originalPortBounds.getCenter();
+        final Point endpoint = originalCenter.getTranslated(-HORIZONTAL_TRANSLATION, 0);
+
+        editor.drag(originalCenter.x, originalCenter.y, endpoint.x, endpoint.y);
+
+        final Rectangle newPortBounds = getEditPartBounds(portToDropName);
+        final Point newCenter = newPortBounds.getCenter();
+
+        // The port must have changed of container
+        assertFalse("The port should have different coordinates.", newCenter.equals(originalCenter));
+
+        // Check edge stability
+        checkEdgeStability(portToDropName, originalEdgeBendpoints);
+    }
+
+    /**
+     * Drop port (with rectilinear edge) from a component to another component.
+     * Also check the stability of the edge, the last point should be the only
+     * one moving.
+     */
+    public void testDropPortFromComponentToAnotherComponent_WithRectilinearEdge() {
+        String portToDropName = "Port6";
+        final Rectangle originalPortBounds = getEditPartBounds(portToDropName);
+
+        PointList originalEdgeBendpoints = getBendpoints(portToDropName);
+
+        final Point originalCenter = originalPortBounds.getCenter();
+        final Point endpoint = originalCenter.getTranslated(-HORIZONTAL_TRANSLATION, 0);
+
+        editor.drag(originalCenter.x, originalCenter.y, endpoint.x, endpoint.y);
+
+        final Rectangle newPortBounds = getEditPartBounds(portToDropName);
+        final Point newCenter = newPortBounds.getCenter();
+
+        // The port must have changed of container
+        assertFalse("The port should have different coordinates.", newCenter.equals(originalCenter));
+
+        // Check edge stability
+        checkEdgeStability(portToDropName, originalEdgeBendpoints);
     }
 
     /**
@@ -182,7 +235,7 @@ public class UmlPortDragAndDropTest extends AbstractUmlDragAndDropTest {
         String portToDropName = "collapsedPortToMove1";
 
         final Point originalCenter = getEditPartBounds(portToDropName).getCenter();
-        final Point endpoint = originalCenter.getTranslated(HORIZONTAL_TRANSLATION);
+        final Point endpoint = originalCenter.getTranslated(HORIZONTAL_TRANSLATION, 0);
 
         editor.drag(originalCenter.x, originalCenter.y, endpoint.x, endpoint.y);
 

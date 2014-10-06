@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_Wh_KkEjgEd2dA-w4B9F6fQ" name="root">
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_Wh_KkEjgEd2dA-w4B9F6fQ" name="root">
   <packagedElement xmi:type="uml:Actor" xmi:id="_Q6CBUKa0Ed6_bbQViMLzVA" name="boss"/>
   <packagedElement xmi:type="uml:Package" xmi:id="_05Rt4MlFEd6R3_bpV99jfA" name="RootPackage1">
     <packagedElement xmi:type="uml:Class" xmi:id="__eyUAMlFEd6R3_bpV99jfA" name="InClass1"/>
@@ -20,19 +20,27 @@
     <packagedElement xmi:type="uml:Interface" xmi:id="_YPnwgMovEd64fq8eywf1Ng" name="Interface1"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_smH00MlZEd6fBP-DQJTG8g" name="CanvasPackageToDrop2"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_766koMlFEd6R3_bpV99jfA" name="InAndOutClass2" clientDependency="_QJZ5EMq4Ed6_nfwWBm8CPg">
+  <packagedElement xmi:type="uml:Class" xmi:id="_766koMlFEd6R3_bpV99jfA" name="InAndOutClass2">
     <generalization xmi:id="_Q-gVEMq4Ed6_nfwWBm8CPg" general="_BwB94MlGEd6R3_bpV99jfA"/>
-    <interfaceRealization xmi:id="_QJZ5EMq4Ed6_nfwWBm8CPg" supplier="_YPnwgMovEd64fq8eywf1Ng" client="_766koMlFEd6R3_bpV99jfA" contract="_YPnwgMovEd64fq8eywf1Ng"/>
+    <interfaceRealization xmi:id="_QJZ5EMq4Ed6_nfwWBm8CPg" client="_766koMlFEd6R3_bpV99jfA" supplier="_YPnwgMovEd64fq8eywf1Ng" contract="_YPnwgMovEd64fq8eywf1Ng"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Component" xmi:id="_WohEkNKaEd6qFrkOl_onzg" name="ParentComponent">
     <packagedElement xmi:type="uml:Component" xmi:id="_ZVPJgNKaEd6qFrkOl_onzg" name="InnerComponent">
-      <ownedAttribute xmi:type="uml:Port" xmi:id="_ZzKboNKaEd6qFrkOl_onzg" name="DropPort"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_ZzKboNKaEd6qFrkOl_onzg" name="DropPort">
+        <deployment xmi:id="_M4v_4ErVEeSRw9blU02bnQ" name="toPort7" client="_ZzKboNKaEd6qFrkOl_onzg" supplier="_9xW6MHQfEeGzhLaBlPZdWw"/>
+      </ownedAttribute>
     </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Component" xmi:id="_0tyyQMT3EeCCRJc48YB8Ug" name="ComponentToTestDnDWithHidingEdge">
     <packagedElement xmi:type="uml:Component" xmi:id="_4W7cIMT3EeCCRJc48YB8Ug" name="InnerComponent1">
-      <ownedAttribute xmi:type="uml:Port" xmi:id="_4W7cIcT3EeCCRJc48YB8Ug" name="Port1" clientDependency="_BgK4kMT4EeCCRJc48YB8Ug">
-        <deployment xmi:id="_BgK4kMT4EeCCRJc48YB8Ug" name="toPort2" supplier="_5wkvocT3EeCCRJc48YB8Ug" client="_4W7cIcT3EeCCRJc48YB8Ug"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_4W7cIcT3EeCCRJc48YB8Ug" name="Port1">
+        <deployment xmi:id="_BgK4kMT4EeCCRJc48YB8Ug" name="toPort2" client="_4W7cIcT3EeCCRJc48YB8Ug" supplier="_5wkvocT3EeCCRJc48YB8Ug"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_deL3cEotEeSUzKpYpQxHZQ" name="Port4">
+        <deployment xmi:id="_M_bVQUpJEeSo2unxERPWgg" name="toPort5" client="_deL3cEotEeSUzKpYpQxHZQ" supplier="_VNNfwEotEeSUzKpYpQxHZQ"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_s84zwEpyEeSU7I_GWuX6JQ" name="Port9">
+        <deployment xmi:id="_s84zwkpyEeSU7I_GWuX6JQ" name="toPort6" client="_s84zwEpyEeSU7I_GWuX6JQ" supplier="_E4BzsEpyEeSU7I_GWuX6JQ"/>
       </ownedAttribute>
     </packagedElement>
     <packagedElement xmi:type="uml:Component" xmi:id="_5wkvoMT3EeCCRJc48YB8Ug" name="InnerComponent2">
@@ -43,6 +51,8 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Component" xmi:id="_0tyyQcT3EeCCRJc48YB8Ug" name="InnerComponent3">
       <ownedAttribute xmi:type="uml:Port" xmi:id="_w-T4EGu9EeKKE-qMx3PRKQ" name="collapsedPort1"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_VNNfwEotEeSUzKpYpQxHZQ" name="Port5"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_E4BzsEpyEeSU7I_GWuX6JQ" name="Port6"/>
     </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Component" xmi:id="_soduUHGoEeG8G_zeQrcp1A" name="AnotherParentComponent">

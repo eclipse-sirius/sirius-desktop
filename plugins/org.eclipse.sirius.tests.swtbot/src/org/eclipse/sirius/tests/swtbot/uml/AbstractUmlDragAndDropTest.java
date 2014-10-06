@@ -15,20 +15,30 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
 
 import java.text.MessageFormat;
+import java.util.List;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.GraphicalEditPart;
+import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.EdgeRouting;
+import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
 import org.eclipse.sirius.tests.support.api.GraphicTestsSupportHelp;
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
-
-import org.eclipse.sirius.tests.swtbot.Activator;
+import org.junit.Assert;
 
 /**
  * Common class for all Uml drag and drop tests.
@@ -316,5 +326,119 @@ public abstract class AbstractUmlDragAndDropTest extends AbstractSiriusSwtBotGef
         Point expected = editor1.getAbsoluteLocation(name1, AbstractDiagramBorderNodeEditPart.class);
         Point actual = editor2.getAbsoluteLocation(name2, AbstractDiagramBorderNodeEditPart.class);
         assertEquals(MessageFormat.format(message, name1, name2), expected, actual);
+    }
+
+    /**
+     * Get copy of bendpoints position for the first edge found connected to the
+     * edit part with <code>editPartName</code> as name.
+     * 
+     * @param editPartName
+     *            name of the edit part to search
+     * 
+     * @return copy of bendpoints position or null if there is no edge
+     */
+    protected PointList getBendpoints(String editPartName) {
+        ConnectionEditPart connectionEditPart = getEdge(editPartName);
+        if (connectionEditPart == null)
+            return null; // no edge defined
+        assertTrue(connectionEditPart.getFigure() instanceof ViewEdgeFigure);
+        return ((ViewEdgeFigure) connectionEditPart.getFigure()).getPoints().getCopy();
+    }
+
+    /**
+     * Get the first edge found connected to the edit part with
+     * <code>editPartName</code> as name.
+     * 
+     * @param editPartName
+     *            name of the edit part to search
+     * @return the edge connected to the edit part or null if there is no edge.
+     */
+    protected ConnectionEditPart getEdge(String editPartName) {
+        SWTBotGefEditPart editPart = editor.getEditPart(editPartName, AbstractDiagramBorderNodeEditPart.class);
+        List<SWTBotGefConnectionEditPart> sourceConnections = editPart.sourceConnections();
+
+        ConnectionEditPart connectionEditPart = null;
+        if (!sourceConnections.isEmpty()) {
+            connectionEditPart = sourceConnections.get(0).part();
+        } else {
+            List<SWTBotGefConnectionEditPart> targetConnections = editPart.targetConnections();
+
+            if (!targetConnections.isEmpty()) {
+                connectionEditPart = targetConnections.get(0).part();
+            }
+        }
+
+        return connectionEditPart;
+    }
+
+    /**
+     * Check the stability of the first edge found connected to the edit part
+     * with <code>editPartName</code> as name.
+     * 
+     * @param editPartName
+     *            name of the edit part to search
+     * @param originalPoints
+     *            original points
+     */
+    protected void checkEdgeStability(String editPartName, PointList originalPoints) {
+        ConnectionEditPart connectionEditPart = getEdge(editPartName);
+
+        // get new bendpoints
+        assertTrue(connectionEditPart.getFigure() instanceof ViewEdgeFigure);
+        PointList newPoints = ((ViewEdgeFigure) connectionEditPart.getFigure()).getPoints().getCopy();
+        Assert.assertEquals("The number of bendpoints should be the same", originalPoints.size(), newPoints.size());
+
+        // get routing style
+        assertTrue(connectionEditPart.getModel() instanceof Edge);
+        EObject element = ((Edge) connectionEditPart.getModel()).getElement();
+        assertTrue(element instanceof DEdge);
+        DEdge dedge = (DEdge) element;
+        EdgeRouting edgeRouting = ((EdgeStyle) dedge.getStyle()).getRoutingStyle();
+
+        // if edgeRouting == EdgeRouting.STRAIGHT then the first or the last
+        // point has moved
+
+        // if edgeRouting == EdgeRouting.MANHATTAN then the two first or
+        // the two last points have moved
+
+        Point originalFirstPoint = originalPoints.getFirstPoint();
+        Point newFirstPoint = newPoints.getFirstPoint();
+        if (originalFirstPoint.equals(newFirstPoint)) {
+            // EdgeRouting.STRAIGHT: the last point has moved
+            // EdgeRouting.MANHATTAN: the two last points have moved
+            int end = edgeRouting == EdgeRouting.STRAIGHT_LITERAL ? originalPoints.size() - 1 : originalPoints.size() - 2;
+
+            // unmoved points
+            for (int i = 1; i < end; i++) {
+                Point originalPoint = originalPoints.getPoint(i);
+                Point newPoint = newPoints.getPoint(i);
+                Assert.assertEquals("The two points at index " + i + " should be equal", originalPoint, newPoint);
+            }
+
+            // moved points
+            for (int i = end; i < originalPoints.size(); i++) {
+                Point originalPoint = originalPoints.getPoint(i);
+                Point newPoint = newPoints.getPoint(i);
+                Assert.assertNotEquals("The two points at index " + i + " should be different", originalPoint, newPoint);
+            }
+        } else {
+            // EdgeRouting.STRAIGHT: the first point has moved
+            // EdgeRouting.MANHATTAN: the two first points have moved
+            int begin = edgeRouting == EdgeRouting.STRAIGHT_LITERAL ? 1 : 2;
+
+            // moved points
+            for (int i = 1; i < begin; i++) {
+                Point originalPoint = originalPoints.getPoint(i);
+                Point newPoint = newPoints.getPoint(i);
+                Assert.assertNotEquals("The two points at index " + i + " should be different", originalPoint, newPoint);
+            }
+
+            // unmoved points
+            for (int i = begin; i < originalPoints.size(); i++) {
+                Point originalPoint = originalPoints.getPoint(i);
+                Point newPoint = newPoints.getPoint(i);
+                Assert.assertEquals("The two points at index " + i + " should be equal", originalPoint, newPoint);
+            }
+        }
     }
 }

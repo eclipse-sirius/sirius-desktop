@@ -11,12 +11,11 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
-import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gmf.runtime.notation.Edge;
@@ -28,6 +27,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.view.EdgeLayoutData;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
@@ -41,6 +41,7 @@ import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotRadio;
 
 /**
+ * Test bendpoints position and edge style after doing a drag and drop.
  * 
  * @author smonnier
  */
@@ -62,7 +63,50 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
 
     private static final String FILE_DIR = "/";
 
-    private static final HashMap<String, List<Point>> CONNECTION_EDITPART_POINTS = new HashMap<String, List<Point>>();
+    /**
+     * Final bendpoints position used by testEdgeStabilityOnDragAndDrop()
+     */
+    private static final Point[] TEST_1_C3_C1 = { new Point(121, 100), new Point(619, 100), new Point(619, 276) };
+
+    private static final Point[] TEST_1_C3_C2 = { new Point(121, 110), new Point(322, 110), new Point(322, 334), new Point(524, 334) };
+
+    private static final Point[] TEST_1_C2_C1 = { new Point(534, 328), new Point(534, 238), new Point(613, 238), new Point(613, 276) };
+
+    /**
+     * Final bendpoints position used by
+     * testEdgeStabilityOnDragAndDropAfterStyleChange()
+     */
+    private static final Point[] TEST_2_C3_C1 = { new Point(121, 100), new Point(635, 100), new Point(636, 120) };
+
+    private static final Point[] TEST_2_C3_C2 = { new Point(121, 110), new Point(322, 110), new Point(322, 334), new Point(199, 180) };
+
+    private static final Point[] TEST_2_C2_C1 = { new Point(203, 168), new Point(534, 238), new Point(630, 238), new Point(630, 150) };
+
+    /**
+     * Final bendpoints position used by
+     * testEdgeStabilityOnDragAndDropAfterStyleChange2()
+     */
+    private static final Point[] TEST_3_C3_C1 = { new Point(121, 100), new Point(635, 100), new Point(283, 123) };
+
+    private static final Point[] TEST_3_C3_C2 = { new Point(121, 110), new Point(322, 110), new Point(322, 334), new Point(524, 334) };
+
+    private static final Point[] TEST_3_C2_C1 = { new Point(535, 328), new Point(534, 238), new Point(630, 238), new Point(283, 129) };
+
+    /**
+     * Final bendpoints position used by
+     * testEdgeStabilityOnDragAndDropToContainedNode()
+     */
+    private static final Point[] TEST_4_C3_C1 = { new Point(121, 100), new Point(635, 100), new Point(636, 120) };
+
+    private static final Point[] TEST_4_C3_C2 = { new Point(121, 110), new Point(322, 110), new Point(322, 184), new Point(660, 184) };
+
+    private static final Point[] TEST_4_C2_C1 = { new Point(671, 208), new Point(671, 238), new Point(630, 238), new Point(630, 150) };
+
+    /**
+     * Final bendpoints position used by
+     * testEdgeStabilityOnDragAndDropWithSourceAndTarget()
+     */
+    private static final Point[] TEST_5_C5_C6 = { new Point(694, 66), new Point(694, 34), new Point(754, 34), new Point(754, 66) };
 
     private UIResource sessionAirdResource;
 
@@ -78,34 +122,12 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
      */
     protected UIDiagramRepresentation diagram;
 
-    static {
-        ArrayList<Point> pointsC3_C1 = new ArrayList<Point>();
-        pointsC3_C1.add(new Point(121, 100));
-        pointsC3_C1.add(new Point(635, 100));
-        pointsC3_C1.add(new Point(635, 358));
-        // pointsC3_C1.add(new Point(634, 358));
-        CONNECTION_EDITPART_POINTS.put("C3_C1", pointsC3_C1);
-        ArrayList<Point> pointsC3_C2 = new ArrayList<Point>();
-        pointsC3_C2.add(new Point(121, 110));
-        pointsC3_C2.add(new Point(322, 110));
-        pointsC3_C2.add(new Point(322, 334));
-        pointsC3_C2.add(new Point(524, 334));
-        CONNECTION_EDITPART_POINTS.put("C3_C2", pointsC3_C2);
-        ArrayList<Point> pointsC2_C1 = new ArrayList<Point>();
-        pointsC2_C1.add(new Point(534, 328));
-        pointsC2_C1.add(new Point(534, 238));
-        pointsC2_C1.add(new Point(628, 238));
-        pointsC2_C1.add(new Point(628, 358));
-        CONNECTION_EDITPART_POINTS.put("C2_C1", pointsC2_C1);
-    }
-
     /**
      * {@inheritDoc}
      */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);
-
     }
 
     /**
@@ -130,19 +152,23 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
      *            source of the connection
      * @param targetEditPartName
      *            target of the connection
+     * @param expectedPositions
+     *            expected bendpoints position
+     * @param expectedRoutingStyle
+     *            expected routing style
+     * 
      */
-    private void checkConnectionPoints(String sourceEditPartName, String targetEditPartName) {
+    private void checkBendpoints(String sourceEditPartName, String targetEditPartName, Point[] expectedPositions, EdgeRouting expectedRoutingStyle) {
 
         ConnectionEditPart connectionEditPart = getConnectionEditPart(sourceEditPartName, targetEditPartName);
         assertTrue(connectionEditPart.getFigure() instanceof ViewEdgeFigure);
         PointList pointList = ((ViewEdgeFigure) connectionEditPart.getFigure()).getPoints().getCopy();
 
-        List<Point> referencePoints = CONNECTION_EDITPART_POINTS.get(sourceEditPartName + "_" + targetEditPartName);
-        for (int i = 0; i < referencePoints.size(); i++) {
+        for (int i = 0; i < expectedPositions.length; i++) {
             Point point = pointList.getPoint(i);
-            Point referencePoint = referencePoints.get(i);
-            assertEquals("X position of point number " + i + " of connection between " + sourceEditPartName + " and " + targetEditPartName + " is invalid.", referencePoint.x, point.x, 1);
-            assertEquals("Y position of point number " + i + " of connection between " + sourceEditPartName + " and " + targetEditPartName + " is invalid.", referencePoint.y, point.y, 1);
+            Point expectedPoint = expectedPositions[i];
+            assertEquals("X position of point number " + i + " of connection between " + sourceEditPartName + " and " + targetEditPartName + " is invalid.", expectedPoint.x, point.x, 1);
+            assertEquals("Y position of point number " + i + " of connection between " + sourceEditPartName + " and " + targetEditPartName + " is invalid.", expectedPoint.y, point.y, 1);
         }
 
         assertTrue(connectionEditPart.getModel() instanceof Edge);
@@ -150,7 +176,7 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
         assertTrue(element instanceof DEdge);
         DEdge dedge = (DEdge) element;
 
-        assertEquals("The rooting style is not Manhattan", ((EdgeStyle) dedge.getStyle()).getRoutingStyle(), EdgeRouting.MANHATTAN_LITERAL);
+        assertEquals("The routing style is not " + expectedRoutingStyle.getLiteral(), expectedRoutingStyle, ((EdgeStyle) dedge.getStyle()).getRoutingStyle());
 
         EdgeLayoutData data = SiriusLayoutDataManager.INSTANCE.getData(dedge, false);
         assertNull("SiriusLayoutDataManager should not store data of DEge between " + sourceEditPartName + " and " + targetEditPartName + " anymore", data);
@@ -175,18 +201,14 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
         final long oldTimeout = SWTBotPreferences.TIMEOUT;
         try {
             SWTBotPreferences.TIMEOUT = 1000;
-            Point location = editor.getLocation("P3", AbstractDiagramContainerEditPart.class);
-            Dimension dimension = editor.getDimension("P3", AbstractDiagramContainerEditPart.class);
 
             // Drag and drop C1 to package P3
-            SWTBotGefEditPart editPart = editor.getEditPart("C1", AbstractDiagramBorderNodeEditPart.class);
-            editor.drag(editPart, location.x + dimension.width / 2, location.y + dimension.height / 2);
+            dragNorth("P3", "C1");
 
-            // Check the connections bendpoints stability in order to validate
-            // the router is still rectilinear
-            checkConnectionPoints("C3", "C1");
-            checkConnectionPoints("C3", "C2");
-            checkConnectionPoints("C2", "C1");
+            // Check the connections bendpoints stability
+            checkBendpoints("C3", "C1", TEST_1_C3_C1, EdgeRouting.MANHATTAN_LITERAL); // rectilinear
+            checkBendpoints("C3", "C2", TEST_1_C3_C2, EdgeRouting.MANHATTAN_LITERAL); // rectilinear
+            checkBendpoints("C2", "C1", TEST_1_C2_C1, EdgeRouting.MANHATTAN_LITERAL); // rectilinear
 
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
@@ -207,16 +229,16 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
 
             // Change the style of the edge between C3 and C2 and between C2 and
             // C1
-            changeEdgeStyle("C3", "C2", AbstractDiagramBorderNodeEditPart.class, AbstractDiagramBorderNodeEditPart.class, "Oblique");
-            changeEdgeStyle("C2", "C1", AbstractDiagramBorderNodeEditPart.class, AbstractDiagramBorderNodeEditPart.class, "Oblique");
+            changeEdgeStyle("C3", "C2", "Oblique");
+            changeEdgeStyle("C2", "C1", "Oblique");
 
             // Drag and drop C2 to package P2
-            drag("C2", "P2", AbstractDiagramContainerEditPart.class);
+            dragSouth("P2", "C2");
 
-            // Check the connections bendpoints stability in order to validate
-            // the router is still straight
-            checkRoutingStyle("C3", "C2", EdgeRouting.STRAIGHT_LITERAL);
-            checkRoutingStyle("C2", "C1", EdgeRouting.STRAIGHT_LITERAL);
+            // Check the connections bendpoints stability
+            checkBendpoints("C3", "C2", TEST_2_C3_C2, EdgeRouting.STRAIGHT_LITERAL); // oblique
+            checkBendpoints("C2", "C1", TEST_2_C2_C1, EdgeRouting.STRAIGHT_LITERAL); // oblique
+            checkBendpoints("C3", "C1", TEST_2_C3_C1, EdgeRouting.MANHATTAN_LITERAL); // rectilinear
 
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
@@ -237,25 +259,68 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
 
             // Change the style of the edge between C3 and C1 and between C2 and
             // C1
-            changeEdgeStyle("C3", "C1", AbstractDiagramBorderNodeEditPart.class, AbstractDiagramBorderNodeEditPart.class, "Oblique");
-            changeEdgeStyle("C2", "C1", AbstractDiagramBorderNodeEditPart.class, AbstractDiagramBorderNodeEditPart.class, "Oblique");
+            changeEdgeStyle("C3", "C1", "Oblique");
+            changeEdgeStyle("C2", "C1", "Oblique");
 
             // Drag and drop C1 to package P2
-            drag("C1", "P2", AbstractDiagramContainerEditPart.class);
+            dragEast("P2", "C1");
 
-            // Check the connections bendpoints stability in order to validate
-            // the router is still straight
-            checkRoutingStyle("C3", "C1", EdgeRouting.STRAIGHT_LITERAL);
-            checkRoutingStyle("C2", "C1", EdgeRouting.STRAIGHT_LITERAL);
+            // Check the connections bendpoints stability
+            checkBendpoints("C3", "C1", TEST_3_C3_C1, EdgeRouting.STRAIGHT_LITERAL); // oblique
+            checkBendpoints("C2", "C1", TEST_3_C2_C1, EdgeRouting.STRAIGHT_LITERAL); // oblique
+            checkBendpoints("C3", "C2", TEST_3_C3_C2, EdgeRouting.MANHATTAN_LITERAL); // rectilinear
 
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
         }
     }
 
-    private void changeEdgeStyle(String source, String target, Class sourceType, Class targetStyle, String style) {
-        SWTBotGefEditPart partSource = editor.getEditPart(source, sourceType);
-        SWTBotGefEditPart partTarget = editor.getEditPart(target, targetStyle);
+    /**
+     * Drag and drop a border node to node contained into another with
+     * horizontal scrollbar.
+     */
+    public void testEdgeStabilityOnDragAndDropToContainedNode() {
+
+        final long oldTimeout = SWTBotPreferences.TIMEOUT;
+        try {
+            SWTBotPreferences.TIMEOUT = 1000;
+
+            // Drag and drop C2 to package P4
+            dragWest("P4", "C2");
+
+            // Check the connections bendpoints stability
+            checkBendpoints("C3", "C1", TEST_4_C3_C1, EdgeRouting.MANHATTAN_LITERAL); // rectilinear
+            checkBendpoints("C3", "C2", TEST_4_C3_C2, EdgeRouting.MANHATTAN_LITERAL); // rectilinear
+            checkBendpoints("C2", "C1", TEST_4_C2_C1, EdgeRouting.MANHATTAN_LITERAL); // rectilinear
+
+        } finally {
+            SWTBotPreferences.TIMEOUT = oldTimeout;
+        }
+    }
+
+    /**
+     * Drag and drop a source and target edge border node to another node.
+     */
+    public void testEdgeStabilityOnDragAndDropWithSourceAndTarget() {
+
+        final long oldTimeout = SWTBotPreferences.TIMEOUT;
+        try {
+            SWTBotPreferences.TIMEOUT = 1000;
+
+            // Drag and drop C5 and C6 to package P1
+            dragNorth("P1", "C5", "C6");
+
+            // Check the connections bendpoints stability
+            checkBendpoints("C5", "C6", TEST_5_C5_C6, EdgeRouting.MANHATTAN_LITERAL); // rectilinear
+
+        } finally {
+            SWTBotPreferences.TIMEOUT = oldTimeout;
+        }
+    }
+
+    private void changeEdgeStyle(String source, String target, String style) {
+        SWTBotGefEditPart partSource = editor.getEditPart(source, AbstractDiagramBorderNodeEditPart.class);
+        SWTBotGefEditPart partTarget = editor.getEditPart(target, AbstractDiagramBorderNodeEditPart.class);
         List<SWTBotGefConnectionEditPart> edges = editor.getConnectionEditPart(partSource, partTarget);
         select(edges.get(0));
         bot.viewByTitle("Properties").setFocus();
@@ -265,9 +330,15 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
         radioToSelect.click();
     }
 
-    private void select(String element) {
-        editor.click(element);
-        select(editor.getSelectableEditPart(element));
+    private void select(String... elements) {
+        List<SWTBotGefEditPart> selection = new ArrayList<SWTBotGefEditPart>(elements.length);
+
+        for (String element : elements) {
+            selection.add(editor.getSelectableEditPart(element));
+        }
+
+        editor.click(selection.get(0)); // click on the first element
+        editor.select(selection);
     }
 
     private void select(SWTBotGefEditPart element) {
@@ -275,23 +346,147 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
         editor.select(element);
     }
 
-    private void drag(String element, String toElement, Class toElementType) {
-        Point location = editor.getLocation(toElement, toElementType);
-        Dimension dimension = editor.getDimension(toElement, toElementType);
-        select(element);
-        editor.dragCentered(element, location.x + dimension.width / 2, location.y + dimension.height / 2);
+    /**
+     * Get center point of the selection
+     * 
+     * @param selection
+     *            edit part selection
+     */
+    private Point getCenterPoint(String... elements) {
+        Rectangle selection = null;
+
+        for (String element : elements) {
+            Rectangle bounds = editor.getBounds(editor.getSelectableEditPart(element));
+            selection = bounds.getUnion(selection);
+        }
+
+        return selection.getCenter();
     }
 
-    private void checkRoutingStyle(String sourceEditPartName, String targetEditPartName, EdgeRouting expectedRoutingStyle) {
-        DEdge dedge = getEdge(sourceEditPartName, targetEditPartName);
-        assertEquals("The routing style is not " + expectedRoutingStyle.getLiteral(), expectedRoutingStyle, ((EdgeStyle) dedge.getStyle()).getRoutingStyle());
+    /**
+     * Drag source elements to the north of the target element
+     * 
+     * @param targetElement
+     *            target element
+     * @param sourceElements
+     *            source elements to drag
+     */
+    private void dragNorth(String targetElement, String... sourceElements) {
+        select(sourceElements);
+
+        Rectangle bounds = getPrimaryShapeBounds(targetElement);
+
+        // compute an offset from the first element and the center of the
+        // selection in order to be in the middle of the north
+        Point sourceCenter = getCenterPoint(sourceElements);
+        Point firstSourceCenter = getCenterPoint(sourceElements[0]);
+        int offset = sourceCenter.x - firstSourceCenter.x;
+
+        // put the selection on the middle
+        int x = bounds.x + Math.max(bounds.width / 2 - offset, 1);
+
+        // compute the minimal distance to be on the north
+        int y = bounds.y + 1;
+
+        editor.dragCentered(sourceElements[0], x, y);
     }
 
-    private DEdge getEdge(String sourceEditPartName, String targetEditPartName) {
-        ConnectionEditPart connectionEditPart = getConnectionEditPart(sourceEditPartName, targetEditPartName);
-        assertTrue(connectionEditPart.getFigure() instanceof ViewEdgeFigure);
-        EObject element = ((Edge) connectionEditPart.getModel()).getElement();
-        assertTrue(element instanceof DEdge);
-        return (DEdge) element;
+    /**
+     * Drag source elements to the south of the target element
+     * 
+     * @param targetElement
+     *            target element
+     * @param sourceElements
+     *            source elements to drag
+     */
+    private void dragSouth(String targetElement, String... sourceElements) {
+        select(sourceElements);
+
+        Rectangle bounds = getPrimaryShapeBounds(targetElement);
+
+        // compute an offset from the first element and the center of the
+        // selection in order to be in the middle of the south
+        Point sourceCenter = getCenterPoint(sourceElements);
+        Point firstSourceCenter = getCenterPoint(sourceElements[0]);
+        int offset = sourceCenter.x - firstSourceCenter.x;
+
+        // put the selection on the middle
+        int x = bounds.x + Math.max(bounds.width / 2 - offset, 1);
+
+        // compute the minimal distance to be on the south
+        int y = bounds.y + bounds.height - 1;
+
+        editor.dragCentered(sourceElements[0], x, y);
+    }
+
+    /**
+     * Drag source elements to the west of the target element
+     * 
+     * @param targetElement
+     *            target element
+     * @param sourceElements
+     *            source elements to drag
+     */
+    private void dragWest(String targetElement, String... sourceElements) {
+        select(sourceElements);
+
+        Rectangle bounds = getPrimaryShapeBounds(targetElement);
+
+        // compute an offset from the first element and the center of the
+        // selection in order to be in the middle of the west
+        Point sourceCenter = getCenterPoint(sourceElements);
+        Point firstSourceCenter = getCenterPoint(sourceElements[0]);
+        int offset = sourceCenter.y - firstSourceCenter.y;
+
+        // put the selection on the middle
+        int y = bounds.y + Math.max(bounds.height / 2 - offset, 1);
+
+        // compute the minimal distance to be on the west
+        int x = bounds.x + 1;
+
+        editor.dragCentered(sourceElements[0], x, y);
+    }
+
+    /**
+     * Drag source elements to the east of the target element
+     * 
+     * @param targetElement
+     *            target element
+     * @param sourceElements
+     *            source elements to drag
+     */
+    private void dragEast(String targetElement, String... sourceElements) {
+        select(sourceElements);
+
+        Rectangle bounds = getPrimaryShapeBounds(targetElement);
+
+        // compute an offset from the first element and the center of the
+        // selection in order to be in the middle of the east
+        Point sourceCenter = getCenterPoint(sourceElements);
+        Point firstSourceCenter = getCenterPoint(sourceElements[0]);
+        int offset = sourceCenter.y - firstSourceCenter.y;
+
+        // put the selection on the middle
+        int y = bounds.y + Math.max(bounds.height / 2 - offset, 1);
+
+        // compute the minimal distance to be on the east
+        int x = bounds.x + bounds.width - 1;
+
+        editor.dragCentered(sourceElements[0], x, y);
+    }
+
+    /**
+     * Get the bounds of the primary shape
+     * 
+     * @param element
+     *            edit part name
+     * @return bounds of the primary shape
+     */
+    private Rectangle getPrimaryShapeBounds(String element) {
+        AbstractDiagramContainerEditPart editPart = (AbstractDiagramContainerEditPart) editor.getEditPart(element, AbstractDiagramContainerEditPart.class).part();
+        ViewNodeContainerFigureDesc shape = editPart.getPrimaryShape();
+        Rectangle bounds = shape.getBounds().getCopy();
+        shape.translateToAbsolute(bounds);
+        return bounds;
     }
 }

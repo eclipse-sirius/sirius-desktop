@@ -19,6 +19,7 @@ import static org.hamcrest.Matchers.lessThanOrEqualTo;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
@@ -279,6 +280,9 @@ public class UmlPortMoveTest extends AbstractUmlDragAndDropTest {
     private void testResizeOrMovePort(String representationName, boolean checkMoving) {
         editor = openAndGetEditor(representationName, representationName);
 
+        // Get original bendpoints
+        PointList originalPoints = getBendpoints(DROP_PORT_NAME);
+
         // Get the bottom center coordinates of the port
         final Rectangle originalPortBounds = getEditPartBounds(DROP_PORT_NAME);
 
@@ -300,6 +304,12 @@ public class UmlPortMoveTest extends AbstractUmlDragAndDropTest {
         if (checkMoving) {
             assertThat("Port is not at expected position (probably not moved but resized)", newPortBounds.getTopRight(),
                     PointAround.around(originalPortBounds.getTopRight().getTranslated(VERTICAL_TRANSLATION), 5));
+
+            if (originalPoints != null) {
+                // check the stability of the existing edge when moving the
+                // border node
+                checkEdgeStability(DROP_PORT_NAME, originalPoints);
+            }
         } else {
             assertThat("Port is not at expected position (probably not moved but resized)", newPortBounds.getTopRight(), PointAround.around(originalPortBounds.getTopRight(), 0));
         }
