@@ -74,6 +74,7 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuth
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.ext.gef.editpolicies.SiriusSnapFeedbackPolicy;
 import org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.RubberbandDragTracker;
 
 import com.google.common.collect.Iterables;
@@ -122,6 +123,8 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
         this.installEditPolicy(EditPolicyRoles.POPUPBAR_ROLE, new SiriusPopupBarEditPolicy());
+        // Replace the feedback policy to have a lighter color for guides
+        installEditPolicy(EditPolicyRoles.SNAP_FEEDBACK_ROLE, new SiriusSnapFeedbackPolicy());
     }
 
     /**

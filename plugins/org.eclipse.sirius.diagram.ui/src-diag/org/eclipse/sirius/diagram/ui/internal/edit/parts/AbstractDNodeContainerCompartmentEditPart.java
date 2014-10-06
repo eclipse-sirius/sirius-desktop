@@ -66,6 +66,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.ContainerCompartmentNodeEditPolicy;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.ext.gef.editpolicies.SiriusSnapFeedbackPolicy;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.RGBValues;
 
@@ -231,6 +232,8 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         installEditPolicy(EditPolicy.LAYOUT_ROLE, new AirXYLayoutEditPolicy());
         installEditPolicy(EditPolicy.GRAPHICAL_NODE_ROLE, new ContainerCompartmentNodeEditPolicy());
         installEditPolicy(EditPolicyRoles.POPUPBAR_ROLE, new SiriusPopupBarEditPolicy());
+        // Replace the feedback policy to have a lighter color for guides
+        installEditPolicy(EditPolicyRoles.SNAP_FEEDBACK_ROLE, new SiriusSnapFeedbackPolicy());
     }
 
     /**

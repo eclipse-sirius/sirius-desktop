@@ -58,6 +58,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.SiriusConnectionEndPointEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.internal.routers.SiriusBendpointConnectionRouter;
+import org.eclipse.sirius.ext.gef.editpolicies.SiriusSnapFeedbackPolicy;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
@@ -170,6 +171,8 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         } else {
             installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE, selectionFeedBackEditPolicy);
         }
+        // Replace the feedback policy to have a lighter color for guides
+        installEditPolicy(EditPolicyRoles.SNAP_FEEDBACK_ROLE, new SiriusSnapFeedbackPolicy());
     }
 
     /**
