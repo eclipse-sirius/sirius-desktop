@@ -12,24 +12,33 @@ package org.eclipse.sirius.tests.swtbot;
 
 import java.util.List;
 
+import org.eclipse.core.runtime.preferences.DefaultScope;
+import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.ConnectionEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants;
 import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.EdgeStyle;
+import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
+import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
+import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.junit.Assert;
 
 /**
@@ -50,8 +59,6 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
     private static final String REPRESENTATION_INSTANCE_TREE_EDGE_NAME = "new treeEdgeReconnection";
 
     private static final String REPRESENTATION_TREE_EDGE_NAME = "treeEdgeReconnection";
-
-    private static final String VIEWPOINT_NAME = "edgeReconnection";
 
     private static final String MODEL = "edgeReconnection.ecore";
 
@@ -137,7 +144,47 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
         reconnectAndValidate(REPRESENTATION_TREE_EDGE_NAME, true);
     }
 
-    protected void reconnectAndValidate(String representationName, boolean reconnectSource) {
+    /**
+     * This test validates that using a specific line style will not cause NPE
+     * after several reconnections.
+     */
+    public void testReconnectWithUserSpecificLineStyle() {
+        final IEclipsePreferences diagramCoreDefaultPreferences = DefaultScope.INSTANCE.getNode(DiagramPlugin.ID);
+        boolean enableOverride = diagramCoreDefaultPreferences.getBoolean(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE, false);
+        int specificLineStyleSirius = diagramCoreDefaultPreferences.getInt(SiriusDiagramCorePreferences.PREF_LINE_STYLE, EdgeRouting.STRAIGHT);
+        final int specificLineStyleGMF = DiagramUIPlugin.getPlugin().getPreferenceStore().getInt(IPreferenceConstants.PREF_LINE_STYLE);
+        try {
+            // Initialize preference to enable the user specific line style to
+            // manhattan
+            diagramCoreDefaultPreferences.putBoolean(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE, true);
+            diagramCoreDefaultPreferences.putInt(SiriusDiagramCorePreferences.PREF_LINE_STYLE, EdgeRouting.MANHATTAN);
+            DiagramUIPlugin.getPlugin().getPreferenceStore().setValue(IPreferenceConstants.PREF_LINE_STYLE, Routing.RECTILINEAR);
+
+            // Open a diagram with straight edge
+            editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_STRAIGHT_EDGE_NAME, REPRESENTATION_INSTANCE_STRAIGHT_EDGE_NAME, DDiagram.class);
+            // 1 - D&d of the target
+            reconnectEdge(false);
+            // 2 - D&d of the source
+            reconnectEdge(true, "eClass3", "eClass2", "eClass1");
+            // 3 - D&d of the target again (it was causing a NPE)
+            reconnectEdge(false, "eClass1", "eClass2", "eClass3");
+        } finally {
+            diagramCoreDefaultPreferences.putBoolean(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE, enableOverride);
+            diagramCoreDefaultPreferences.putInt(SiriusDiagramCorePreferences.PREF_LINE_STYLE, specificLineStyleSirius);
+            UIThreadRunnable.syncExec(new VoidResult() {
+
+                @Override
+                public void run() {
+                    // Unlike the previous call, this time we need to run it in
+                    // a UIThreadRunnable or there is no active workbench
+                    // (causing an NPE)
+                    DiagramUIPlugin.getPlugin().getPreferenceStore().setValue(IPreferenceConstants.PREF_LINE_STYLE, specificLineStyleGMF);
+                }
+            });
+        }
+    }
+
+    private void reconnectAndValidate(String representationName, boolean reconnectSource) {
         if (REPRESENTATION_STRAIGHT_EDGE_NAME.equals(representationName)) {
             editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_STRAIGHT_EDGE_NAME, REPRESENTATION_INSTANCE_STRAIGHT_EDGE_NAME, DDiagram.class);
         } else if (REPRESENTATION_MANHATTAN_EDGE_NAME.equals(representationName)) {
@@ -146,12 +193,28 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
             editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_TREE_EDGE_NAME, REPRESENTATION_INSTANCE_TREE_EDGE_NAME, DDiagram.class);
         }
 
+        PointList pointList = reconnectEdge(reconnectSource);
+
+        // Verify that the bendpoints after reconnection are at the expected
+        // locations
+        if (reconnectSource) {
+            checkConnectionPoints("eClass2", "eClass1", pointList, reconnectSource);
+        } else {
+            checkConnectionPoints("eClass3", "eClass2", pointList, false);
+        }
+    }
+
+    private PointList reconnectEdge(boolean reconnectSource) {
+        return reconnectEdge(reconnectSource, "eClass3", "eClass1", "eClass2");
+    }
+
+    private PointList reconnectEdge(boolean reconnectSource, String source, String target, String reconnectionTarget) {
         // Retrieve location for container list named EClass 3
-        Point location = editor.getLocation("eClass2", AbstractDiagramBorderNodeEditPart.class);
-        Dimension dimension = editor.getDimension("eClass2", AbstractDiagramBorderNodeEditPart.class);
+        Point location = editor.getLocation(reconnectionTarget, AbstractDiagramBorderNodeEditPart.class);
+        Dimension dimension = editor.getDimension(reconnectionTarget, AbstractDiagramBorderNodeEditPart.class);
 
         // Retrieve edge "ref" target point location
-        PointList pointList = getEdgePointList("eClass3", "eClass1");
+        PointList pointList = getEdgePointList(source, target);
         Point endToReconnect;
         if (reconnectSource) {
             endToReconnect = pointList.getPoint(0);
@@ -164,14 +227,7 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
 
         // Drag the source benpoint to the new source node
         editor.drag(endToReconnect, location.x + dimension.width / 2, location.y + dimension.height / 2);
-
-        // Verify that the bendpoints after reconnection are at the expected
-        // locations
-        if (reconnectSource) {
-            checkConnectionPoints("eClass2", "eClass1", pointList, reconnectSource);
-        } else {
-            checkConnectionPoints("eClass3", "eClass2", pointList, false);
-        }
+        return pointList;
     }
 
     /**

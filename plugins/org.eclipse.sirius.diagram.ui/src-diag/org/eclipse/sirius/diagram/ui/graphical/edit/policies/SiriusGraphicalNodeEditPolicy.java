@@ -425,8 +425,8 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             pointList.addPoint(sourceAnchor.getLocation(targetAnchor.getReferencePoint()));
             pointList.addPoint(targetAnchor.getLocation(sourceAnchor.getReferencePoint()));
 
-            SetConnectionBendpointsCommand sbbCommand = new SetConnectionBendpointsCommand(editingDomain);
-            sbbCommand.setEdgeAdapter(request.getConnectionEditPart());
+            SetConnectionBendpointsCommand sbbCommand = new SetReconnectingConnectionBendpointsCommand(editingDomain, targetView, targetView.getTargetEdges(),
+                    ReconnectionKind.RECONNECT_TARGET_LITERAL);
             sbbCommand.setNewPointList(pointList, sourceAnchor.getReferencePoint(), targetAnchor.getReferencePoint());
             Command cmdBP = new ICommandProxy(sbbCommand);
             if (cmdBP != null) {
