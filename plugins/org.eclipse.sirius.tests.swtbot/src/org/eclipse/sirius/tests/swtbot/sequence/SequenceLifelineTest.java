@@ -19,15 +19,14 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
-import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
-import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
-import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
-import org.eclipse.swtbot.swt.finder.waits.ICondition;
-
 import org.eclipse.sirius.sample.interactions.Interaction;
 import org.eclipse.sirius.sample.interactions.InteractionsFactory;
 import org.eclipse.sirius.sample.interactions.InteractionsPackage;
 import org.eclipse.sirius.sample.interactions.Participant;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
+import org.eclipse.swtbot.swt.finder.waits.ICondition;
 
 /**
  * Test class for lifeline management.
@@ -116,6 +115,7 @@ public class SequenceLifelineTest extends AbstractDefaultModelSequenceTests {
     public void test_SimpleSlide() throws Exception {
         maximizeEditor(editor);
         editor.reveal(LIFELINE_A);
+        editor.scrollTo(0, 0);
 
         Point lifelineAPosition = getScreenPosition(LIFELINE_A);
         Point lifelineBPosition = getScreenPosition(LIFELINE_B);
@@ -153,6 +153,7 @@ public class SequenceLifelineTest extends AbstractDefaultModelSequenceTests {
         editor.maximize();
         try {
             editor.reveal(LIFELINE_A);
+            editor.scrollTo(0, 0);
 
             Point lifelineAPosition = getScreenPosition(LIFELINE_A);
             Point lifelineBPosition = getScreenPosition(LIFELINE_B);
@@ -195,6 +196,7 @@ public class SequenceLifelineTest extends AbstractDefaultModelSequenceTests {
      */
     public void test_InsertNewLifeline() throws Exception {
         editor.reveal(LIFELINE_A);
+        editor.scrollTo(0, 0);
 
         Point lifelineAPosition = getScreenPosition(LIFELINE_A);
         Point lifelineBPosition = getScreenPosition(LIFELINE_B);
@@ -312,6 +314,7 @@ public class SequenceLifelineTest extends AbstractDefaultModelSequenceTests {
         createParticipant(lifelineCPosition.x - 200, 300);
         bot.waitUntil(done);
         editor.reveal(LIFELINE_A);
+        editor.scrollTo(0, 0);
 
         Point lifelineAPosition = getLogicalPosition(LIFELINE_A);
         Point lifelineBPosition = getLogicalPosition(LIFELINE_B);
@@ -351,6 +354,7 @@ public class SequenceLifelineTest extends AbstractDefaultModelSequenceTests {
         bot.waitUntil(done);
 
         editor.reveal(LIFELINE_A);
+        editor.scrollTo(0, 0);
 
         Point lifelineBPosition = getScreenPosition(LIFELINE_B);
         Dimension lifelineBSize = getScreenSize(LIFELINE_B);
@@ -392,6 +396,7 @@ public class SequenceLifelineTest extends AbstractDefaultModelSequenceTests {
         bot.waitUntil(done);
 
         editor.reveal(LIFELINE_A);
+        editor.scrollTo(0, 0);
 
         Point lifelineBPosition = getScreenPosition(LIFELINE_B);
         Dimension lifelineBSize = getScreenSize(LIFELINE_B);
@@ -438,6 +443,7 @@ public class SequenceLifelineTest extends AbstractDefaultModelSequenceTests {
         bot.waitUntil(done);
 
         editor.reveal(LIFELINE_A);
+        editor.scrollTo(0, 0);
 
         Point lifelineBPosition = getScreenPosition(LIFELINE_B);
         Point lifelineCPosition = getScreenPosition(LIFELINE_C);
@@ -484,6 +490,7 @@ public class SequenceLifelineTest extends AbstractDefaultModelSequenceTests {
         bot.waitUntil(done);
 
         editor.reveal(LIFELINE_A);
+        editor.scrollTo(0, 0);
 
         Point lifelineAPosition = getScreenPosition(LIFELINE_A);
         Point lifelineBPosition = getScreenPosition(LIFELINE_B);
