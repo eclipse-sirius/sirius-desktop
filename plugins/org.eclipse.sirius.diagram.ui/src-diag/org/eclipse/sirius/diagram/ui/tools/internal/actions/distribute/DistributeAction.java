@@ -294,14 +294,16 @@ public class DistributeAction extends DiagramAction {
     @Override
     protected List<?> createOperationSet() {
         List<?> selection = getSelectedObjects();
-        if (selection.isEmpty() || !(selection.get(0) instanceof IGraphicalEditPart) || selection.size() < 3) {
+        if (selection.isEmpty() || !(selection.get(0) instanceof IGraphicalEditPart)) {
             selection = Collections.EMPTY_LIST;
         } else {
             // Get the the top level selected edit parts
             selection = ToolUtilities.getSelectionWithoutDependants(selection);
             // Remove the connections
             selection = Lists.newArrayList(Iterables.filter(selection, Predicates.not(Predicates.instanceOf(ConnectionEditPart.class))));
-            if (!selection.isEmpty()) {
+            if (selection.size() < 3) {
+                selection = Collections.EMPTY_LIST;
+            } else {
                 EditPart parent = ((EditPart) selection.get(0)).getParent();
                 int sideOfFirstSelection = PositionConstants.NONE;
                 if (selection.get(0) instanceof IBorderItemEditPart) {
