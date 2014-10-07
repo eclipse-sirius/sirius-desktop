@@ -177,16 +177,16 @@ public class LayoutHelperImpl implements LayoutHelper {
      *            The expected location
      * @param realLocation
      *            The real location
-     * @param distance
+     * @param maxDistance
      *            the error margin in x and y coordinates.
      * @return true is the real location is near the expected location, false
      *         otherwise
      */
-    private boolean isAroundPoint(Point expectedLocation, Point realLocation, double distance) {
-        org.eclipse.draw2d.geometry.Point draw2dExpectedPoint = new org.eclipse.draw2d.geometry.Point(expectedLocation.getX(), expectedLocation.getY());
-        org.eclipse.draw2d.geometry.Point draw2dRealPoint = new org.eclipse.draw2d.geometry.Point(realLocation.getX(), realLocation.getY());
-
-        return draw2dExpectedPoint.getDistance2(draw2dRealPoint) <= distance * distance;
+    private boolean isAroundPoint(Point expectedLocation, Point realLocation, double maxDistance) {
+        long dx = realLocation.getX() - expectedLocation.getX();
+        long dy = realLocation.getY() - expectedLocation.getY();
+        long distance2 = dx * dx + dy * dy;
+        return distance2 < (maxDistance * maxDistance);
     }
 
     /**
