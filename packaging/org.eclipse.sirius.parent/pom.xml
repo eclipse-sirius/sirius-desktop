@@ -47,69 +47,7 @@
   </properties>
 
   <modules>
-    <!-- plugins -->
-    <module>../../plugins/org.eclipse.sirius.ext.base</module>
-    <module>../../plugins/org.eclipse.sirius.ext.draw2d</module>
-    <module>../../plugins/org.eclipse.sirius.ext.e3.ui</module>
-    <module>../../plugins/org.eclipse.sirius.ext.e3</module>
-    <module>../../plugins/org.eclipse.sirius.ext.emf.edit</module>
-    <module>../../plugins/org.eclipse.sirius.ext.emf.tx</module>
-    <module>../../plugins/org.eclipse.sirius.ext.emf.ui</module>
-    <module>../../plugins/org.eclipse.sirius.ext.emf</module>
-    <module>../../plugins/org.eclipse.sirius.ext.gef</module>
-    <module>../../plugins/org.eclipse.sirius.ext.gmf.notation</module>
-    <module>../../plugins/org.eclipse.sirius.ext.gmf.runtime</module>
-    <module>../../plugins/org.eclipse.sirius.ext.jface</module>
-    <module>../../plugins/org.eclipse.sirius.ext.swt</module>
-
-    <module>../../plugins/org.eclipse.sirius.common.acceleo.mtl.ide</module>
-    <module>../../plugins/org.eclipse.sirius.common.acceleo.mtl</module>
-    <module>../../plugins/org.eclipse.sirius.common.ocl</module>
-    <module>../../plugins/org.eclipse.sirius.common.ui</module>
-    <module>../../plugins/org.eclipse.sirius.common.xtext</module>
-    <module>../../plugins/org.eclipse.sirius.common</module>
-    <module>../../plugins/org.eclipse.sirius.diagram.layoutdata</module>
-    <module>../../plugins/org.eclipse.sirius.diagram.sequence.edit</module>
-    <module>../../plugins/org.eclipse.sirius.diagram.sequence.ui</module>
-    <module>../../plugins/org.eclipse.sirius.diagram.sequence</module>
-    <module>../../plugins/org.eclipse.sirius.diagram</module>
-    <module>../../plugins/org.eclipse.sirius.diagram.ui</module>
-    <module>../../plugins/org.eclipse.sirius.doc</module>
-    <module>../../plugins/org.eclipse.sirius.ecore.extender</module>
-    <module>../../plugins/org.eclipse.sirius.editor.diagram</module>
-    <module>../../plugins/org.eclipse.sirius.editor.sequence</module>
-    <module>../../plugins/org.eclipse.sirius.editor.table</module>
-    <module>../../plugins/org.eclipse.sirius.editor.tree</module>
-    <module>../../plugins/org.eclipse.sirius.editor</module>
-    <module>../../plugins/org.eclipse.sirius.eef.adapters</module>
-    <module>../../plugins/org.eclipse.sirius.interpreter</module>
-    <module>../../plugins/org.eclipse.sirius.synchronizer</module>
-    <module>../../plugins/org.eclipse.sirius.table.ui</module>
-    <module>../../plugins/org.eclipse.sirius.table</module>
-    <module>../../plugins/org.eclipse.sirius.tree.ui</module>
-    <module>../../plugins/org.eclipse.sirius.tree</module>
-    <module>../../plugins/org.eclipse.sirius.ui</module>
-    <module>../../plugins/org.eclipse.sirius</module>
-    <module>../../plugins/org.eclipse.sirius.tests.junit.support</module>
-    <module>../../plugins/org.eclipse.sirius.tests.swtbot.support</module>
-
-    <!-- features -->
-    <module>../../packaging/org.eclipse.sirius.doc.feature</module>
-    <module>../../packaging/org.eclipse.sirius.runtime.acceleo</module>
-    <module>../../packaging/org.eclipse.sirius.runtime.ide.eef</module>
-    <module>../../packaging/org.eclipse.sirius.runtime.ide.ui.acceleo</module>
-    <module>../../packaging/org.eclipse.sirius.runtime.ide.ui</module>
-    <module>../../packaging/org.eclipse.sirius.runtime.ide.xtext</module>
-    <module>../../packaging/org.eclipse.sirius.runtime.ocl</module>
-    <module>../../packaging/org.eclipse.sirius.runtime</module>
-    <module>../../packaging/org.eclipse.sirius.samples</module>
-    <module>../../packaging/org.eclipse.sirius.specifier.ide.ui.acceleo</module>
-    <module>../../packaging/org.eclipse.sirius.specifier.ide.ui</module>
-    <module>../../packaging/org.eclipse.sirius.tests.support</module>
-
-    <!-- update sites -->
-    <module>../../packaging/org.eclipse.sirius.headless.update</module>
-    <module>../../packaging/org.eclipse.sirius.update</module>
+    <!-- All modules are contributed by specific profiles, see below. -->
   </modules>
 
   <build>
@@ -240,14 +178,10 @@
           <version>${tycho-version}</version>
           <configuration>
             <encoding>UTF-8</encoding>
-<!--
-     Disabled for build performance reasons: the current code and rules produce thousands of warnings which take a
-     significant amount of time to output during the build. We already have the information in our Eclipse worbenches.
-             <compilerArguments>
-              <properties>${project.basedir}/.settings/org.eclipse.jdt.core.prefs</properties>
-            </compilerArguments>
- -->
-           </configuration>
+            <!-- Disabled for build performance reasons: the current code and rules produce thousands of warnings which take a significant amount of time
+              to output during the build. We already have the information in our Eclipse worbenches. <compilerArguments> <properties>${project.basedir}/.settings/org.eclipse.jdt.core.prefs</properties>
+              </compilerArguments> -->
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -295,6 +229,89 @@
   </build>
 
   <profiles>
+    <profile>
+      <id>headless</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <modules>
+        <!-- plugins -->
+        <module>../../plugins/org.eclipse.sirius.ext.base</module>
+        <module>../../plugins/org.eclipse.sirius.ext.e3</module>
+        <module>../../plugins/org.eclipse.sirius.ext.emf</module>
+        <module>../../plugins/org.eclipse.sirius.ext.emf.edit</module>
+        <module>../../plugins/org.eclipse.sirius.ext.emf.tx</module>
+        <module>../../plugins/org.eclipse.sirius.ext.gmf.notation</module>
+        <module>../../plugins/org.eclipse.sirius</module>
+        <module>../../plugins/org.eclipse.sirius.common</module>
+        <module>../../plugins/org.eclipse.sirius.common.acceleo.mtl</module>
+        <module>../../plugins/org.eclipse.sirius.common.ocl</module>
+        <module>../../plugins/org.eclipse.sirius.diagram</module>
+        <module>../../plugins/org.eclipse.sirius.diagram.layoutdata</module>
+        <module>../../plugins/org.eclipse.sirius.ecore.extender</module>
+        <module>../../plugins/org.eclipse.sirius.synchronizer</module>
+        <module>../../plugins/org.eclipse.sirius.table</module>
+        <module>../../plugins/org.eclipse.sirius.tree</module>
+
+        <!-- features -->
+        <module>../../packaging/org.eclipse.sirius.runtime</module>
+        <module>../../packaging/org.eclipse.sirius.runtime.acceleo</module>
+        <module>../../packaging/org.eclipse.sirius.runtime.ocl</module>
+
+        <!-- update sites -->
+        <module>../../packaging/org.eclipse.sirius.headless.update</module>
+      </modules>
+    </profile>
+    <profile>
+      <id>full</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <modules>
+        <!-- plugins -->
+        <module>../../plugins/org.eclipse.sirius.ext.draw2d</module>
+        <module>../../plugins/org.eclipse.sirius.ext.e3.ui</module>
+        <module>../../plugins/org.eclipse.sirius.ext.emf.ui</module>
+        <module>../../plugins/org.eclipse.sirius.ext.gef</module>
+        <module>../../plugins/org.eclipse.sirius.ext.gmf.runtime</module>
+        <module>../../plugins/org.eclipse.sirius.ext.jface</module>
+        <module>../../plugins/org.eclipse.sirius.ext.swt</module>
+        <module>../../plugins/org.eclipse.sirius.common.acceleo.mtl.ide</module>
+        <module>../../plugins/org.eclipse.sirius.common.ui</module>
+        <module>../../plugins/org.eclipse.sirius.common.xtext</module>
+        <module>../../plugins/org.eclipse.sirius.diagram.sequence.edit</module>
+        <module>../../plugins/org.eclipse.sirius.diagram.sequence.ui</module>
+        <module>../../plugins/org.eclipse.sirius.diagram.sequence</module>
+        <module>../../plugins/org.eclipse.sirius.diagram.ui</module>
+        <module>../../plugins/org.eclipse.sirius.doc</module>
+        <module>../../plugins/org.eclipse.sirius.editor.diagram</module>
+        <module>../../plugins/org.eclipse.sirius.editor.sequence</module>
+        <module>../../plugins/org.eclipse.sirius.editor.table</module>
+        <module>../../plugins/org.eclipse.sirius.editor.tree</module>
+        <module>../../plugins/org.eclipse.sirius.editor</module>
+        <module>../../plugins/org.eclipse.sirius.eef.adapters</module>
+        <module>../../plugins/org.eclipse.sirius.interpreter</module>
+        <module>../../plugins/org.eclipse.sirius.table.ui</module>
+        <module>../../plugins/org.eclipse.sirius.tree.ui</module>
+        <module>../../plugins/org.eclipse.sirius.ui</module>
+        <module>../../plugins/org.eclipse.sirius.tests.junit.support</module>
+        <module>../../plugins/org.eclipse.sirius.tests.swtbot.support</module>
+
+        <!-- features -->
+        <module>../../packaging/org.eclipse.sirius.doc.feature</module>
+        <module>../../packaging/org.eclipse.sirius.runtime.ide.eef</module>
+        <module>../../packaging/org.eclipse.sirius.runtime.ide.ui.acceleo</module>
+        <module>../../packaging/org.eclipse.sirius.runtime.ide.ui</module>
+        <module>../../packaging/org.eclipse.sirius.runtime.ide.xtext</module>
+        <module>../../packaging/org.eclipse.sirius.samples</module>
+        <module>../../packaging/org.eclipse.sirius.specifier.ide.ui.acceleo</module>
+        <module>../../packaging/org.eclipse.sirius.specifier.ide.ui</module>
+        <module>../../packaging/org.eclipse.sirius.tests.support</module>
+
+        <!-- update sites -->
+        <module>../../packaging/org.eclipse.sirius.update</module>
+      </modules>
+    </profile>
     <profile>
       <id>sign</id>
       <activation>
@@ -363,5 +380,5 @@
         </pluginRepository>
       </pluginRepositories>
     </profile>
-    </profiles>
+  </profiles>
 </project>
