@@ -59,6 +59,20 @@
          unpack="false"/>
 
    <plugin
+         id="org.eclipse.sirius.diagram"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.diagram.layoutdata"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
          id="org.eclipse.sirius.table"
          download-size="0"
          install-size="0"
@@ -102,6 +116,13 @@
 
    <plugin
          id="org.eclipse.sirius.ext.emf.tx"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.sirius.ext.gmf.notation"
          download-size="0"
          install-size="0"
          version="0.0.0"
