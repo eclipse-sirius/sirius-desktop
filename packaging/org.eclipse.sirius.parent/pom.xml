@@ -108,6 +108,7 @@
     <module>../../packaging/org.eclipse.sirius.tests.support</module>
 
     <!-- update sites -->
+    <module>../../packaging/org.eclipse.sirius.headless.update</module>
     <module>../../packaging/org.eclipse.sirius.update</module>
   </modules>
 
