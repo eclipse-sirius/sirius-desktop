@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,8 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
+ *    IBM Corporation and others - for getAnchorRelativeLocation copied from
+ *                 org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.refresh;
 
@@ -21,7 +23,6 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.IdentityAnchor;
 import org.eclipse.gmf.runtime.notation.Node;
@@ -174,7 +175,7 @@ public class FixBendpointsOnCreationCommand extends RecordingCommand {
             }
         }
 
-        PrecisionPoint sourceRelativeLocation = BaseSlidableAnchor.getAnchorRelativeLocation(firstClick, sourceBounds);
+        PrecisionPoint sourceRelativeLocation = getAnchorRelativeLocation(firstClick, sourceBounds);
         sourceTerminal = "(" + sourceRelativeLocation.preciseX() + "," + sourceRelativeLocation.preciseY() + ")";
 
         Point secondClick = new Point(0, 0);
@@ -205,7 +206,7 @@ public class FixBendpointsOnCreationCommand extends RecordingCommand {
             }
         }
 
-        PrecisionPoint targetRelativeLocation = BaseSlidableAnchor.getAnchorRelativeLocation(secondClick, targetBounds);
+        PrecisionPoint targetRelativeLocation = getAnchorRelativeLocation(secondClick, targetBounds);
         targetTerminal = "(" + targetRelativeLocation.preciseX() + "," + targetRelativeLocation.preciseY() + ")";
 
         // Computes pointList
@@ -216,6 +217,37 @@ public class FixBendpointsOnCreationCommand extends RecordingCommand {
         PrecisionPoint targetRelativeReference = SequenceSlidableAnchor.parseTerminalString(targetTerminal);
         SlidableAnchor targetAnchor = new SequenceSlidableAnchor((Node) target, targetRelativeReference);
         pointList.addPoint(targetAnchor.getLocation(targetAnchor.getReferencePoint()));
+    }
+
+    /*
+     * Copied from org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor.
+     * getAnchorRelativeLocation() to avoid a dependency towards just for this.
+     */
+    private PrecisionPoint getAnchorRelativeLocation(Point p, Rectangle bounds) {
+        if (bounds.width == 0 || bounds.height == 0) {
+            /*
+             * If figure hasn't been laid out yet, we don't want to fail the
+             * slidable anchor creation. Hence, we'll just return the (0.5, 0.5)
+             * meaning that the anchor reference point is the center of the
+             * figure.
+             */
+            return new PrecisionPoint(0.5, 0.5);
+        }
+        PrecisionPoint relLocation;
+        PrecisionPoint temp = new PrecisionPoint(p);
+        if (p.x < bounds.x || p.x > bounds.x + bounds.width || p.y < bounds.y || p.y > bounds.y + bounds.height) {
+            if (p.x < bounds.x || p.x > bounds.x + bounds.width) {
+                temp.preciseX = p.x < bounds.x ? bounds.x : bounds.x + bounds.width;
+            }
+            if (p.y < bounds.y || p.y > bounds.y + bounds.height) {
+                temp.preciseY = p.y < bounds.y ? bounds.y : bounds.y + bounds.height;
+            }
+            relLocation = new PrecisionPoint((temp.preciseX - bounds.x) / bounds.width, (temp.preciseY - bounds.y) / bounds.height);
+        } else {
+
+            relLocation = new PrecisionPoint((temp.preciseX - bounds.x) / bounds.width, (temp.preciseY - bounds.y) / bounds.height);
+        }
+        return relLocation;
     }
 
     private void updateConnectionAnchors() {
