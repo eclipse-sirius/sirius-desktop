@@ -98,6 +98,7 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 * Constants have been added in @org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath@ for the icon path of the four new distribute actions.
 * A new method has been added in @org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager@ to retrieve the opposite edge layout data of another edge layout data. An edge layout data stored in the incomingEdgeLayoutDatas ref of its parent data can have an opposite edge layout data in the outgoingEdgeLayoutDatas of the other ends.
 * A Constant @org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants.REQ_RESET_ORIGIN@ has been added to identify requests to get the ResetOrigin command.
+* A new method @org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery.isContainer()@ has been added to test whether the GMF node visualID corresponds to a ContainerEditPart.
 
 h4. Changes in @org.eclipse.sirius.tree.ui@
 

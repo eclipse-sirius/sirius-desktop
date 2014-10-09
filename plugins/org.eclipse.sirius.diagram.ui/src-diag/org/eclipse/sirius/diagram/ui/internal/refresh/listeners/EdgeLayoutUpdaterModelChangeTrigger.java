@@ -20,6 +20,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.gmf.runtime.notation.RoutingStyle;
 import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionEventBroker;
@@ -78,21 +79,39 @@ public class EdgeLayoutUpdaterModelChangeTrigger implements ModelChangeTrigger {
         List<Edge> edgesWithCreatedCommand = new ArrayList<Edge>();
 
         for (Notification notification : notifications) {
-            Object notifier = notification.getNotifier();
-            Edge gmfEdge = null;
-            if (notifier instanceof DEdge) {
-                gmfEdge = SiriusGMFHelper.getGmfEdge((DEdge) notifier);
-            } else if (notifier instanceof EdgeStyle) {
-                EObject container = ((EdgeStyle) notifier).eContainer();
-                if (container instanceof DEdge) {
-                    gmfEdge = SiriusGMFHelper.getGmfEdge((DEdge) container);
+            if (RefreshEdgeLayoutNotificationFilter.isNotificationForRefreshEdgeLayout(notification)) {
+                Object notifier = notification.getNotifier();
+                Edge gmfEdge = null;
+                if (notifier instanceof DEdge) {
+                    gmfEdge = SiriusGMFHelper.getGmfEdge((DEdge) notifier);
+                } else if (notifier instanceof EdgeStyle) {
+                    EObject container = ((EdgeStyle) notifier).eContainer();
+                    if (container instanceof DEdge) {
+                        gmfEdge = SiriusGMFHelper.getGmfEdge((DEdge) container);
+                    }
+                } else if (notifier instanceof RoutingStyle) {
+                    EObject container = ((RoutingStyle) notifier).eContainer();
+                    if (container instanceof Edge) {
+                        gmfEdge = ((Edge) container);
+                    }
+                }
+                if (gmfEdge != null && !edgesWithCreatedCommand.contains(gmfEdge)) {
+                    CenterEdgeEndModelChangeOperation operation;
+                    if (RefreshEdgeLayoutNotificationFilter.otherNotificationsAreIndirectlyConcerned(notification, notifications)) {
+                        operation = new CenterEdgeEndModelChangeOperation(gmfEdge);
+                    }
+                    // if there are several notifications, we do not try to
+                    // retrieve draw2D informations since they could be out of
+                    // date.
+                    else {
+                        operation = new CenterEdgeEndModelChangeOperation(gmfEdge, false);
+                    }
+                    ((CompoundCommand) command).append(CommandFactory.createRecordingCommand(transactionalEditingDomain, operation));
+                    edgesWithCreatedCommand.add(gmfEdge);
                 }
             }
-            if (gmfEdge != null && !edgesWithCreatedCommand.contains(gmfEdge)) {
-                ((CompoundCommand) command).append(CommandFactory.createRecordingCommand(transactionalEditingDomain, new CenterEdgeEndModelChangeOperation(gmfEdge)));
-                edgesWithCreatedCommand.add(gmfEdge);
-            }
         }
+
         return Options.newSome(command);
     }
 

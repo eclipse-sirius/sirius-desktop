@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.ui.tools.api.layout;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
@@ -25,6 +26,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.GraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.Bendpoints;
 import org.eclipse.gmf.runtime.notation.Bounds;
@@ -64,6 +66,7 @@ import org.eclipse.sirius.diagram.layoutdata.Point;
 import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.operation.CenterEdgeEndModelChangeOperation;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
@@ -121,11 +124,27 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
             // TODOLRE : Manage the edge as root ?
         } else if (toStoreView instanceof Diagram && semanticElement instanceof DDiagram) {
             applyLayout((DDiagram) semanticElement, (Diagram) toStoreView, rootEditPart.getRoot().getViewer());
+            centerEdgesEnds(toStoreView);
         } else if (toStoreView instanceof Node) {
             if (semanticElement instanceof DDiagramElement && semanticElement instanceof DSemanticDecorator) {
                 applyLayout((DSemanticDecorator) semanticElement, (Node) toStoreView, rootEditPart.getRoot().getViewer(), null);
             }
+            centerEdgesEnds(toStoreView);
         }
+    }
+
+    private void centerEdgesEnds(View view) {
+        Set<Edge> edges = new HashSet<Edge>();
+        if (view instanceof Diagram) {
+            edges.addAll(((Diagram) view).getEdges());
+        } else {
+            ViewUtil.getAllRelatedEdgesForView(view, edges);
+        }
+        for (Edge edge : edges) {
+            CenterEdgeEndModelChangeOperation centerEdgeEndModelChangeOperation = new CenterEdgeEndModelChangeOperation(edge, false);
+            centerEdgeEndModelChangeOperation.execute();
+        }
+
     }
 
     /**

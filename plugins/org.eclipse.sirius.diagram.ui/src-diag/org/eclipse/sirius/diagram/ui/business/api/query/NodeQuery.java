@@ -27,6 +27,10 @@ import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
@@ -168,6 +172,18 @@ public class NodeQuery {
     public boolean isBorderedNode() {
         int type = SiriusVisualIDRegistry.getVisualID(this.node.getType());
         boolean result = type == DNode2EditPart.VISUAL_ID || type == DNode4EditPart.VISUAL_ID;
+        return result;
+    }
+
+    /**
+     * Tests whether the queried Node corresponds to a container (list or not).
+     * 
+     * @return <code>true</code> if the queried View corresponds to a container
+     *         node.
+     */
+    public boolean isContainer() {
+        int type = SiriusVisualIDRegistry.getVisualID(this.node.getType());
+        boolean result = type == DNodeContainer2EditPart.VISUAL_ID || type == DNodeContainerEditPart.VISUAL_ID || type == DNodeList2EditPart.VISUAL_ID || type == DNodeListEditPart.VISUAL_ID;
         return result;
     }
 

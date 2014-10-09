@@ -50,8 +50,8 @@ import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.description.CenteringStyle;
+import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
-import org.eclipse.sirius.diagram.ui.business.internal.query.DEdgeQuery;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.GMFNotationUtilities;
@@ -85,37 +85,80 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
 
     private Connection connection;
 
+    private boolean useFigure = true;
+
+    /**
+     * Constructor to use the connectionEditPart to compute the new edge
+     * bendpoints.
+     * 
+     * @param connectionEditPart
+     *            the edge connectionEditPart.
+     * @param edge
+     *            the GMF edge.
+     */
     public CenterEdgeEndModelChangeOperation(ConnectionEditPart connectionEditPart, Edge edge) {
         this(edge);
         this.connectionEditPart = connectionEditPart;
         this.connection = (Connection) connectionEditPart.getFigure();
     }
 
+    /**
+     * Default constructor to center the given gmf edge ends (if needed). This
+     * operation will try to retrieve the corresponding figure (if possible) to
+     * compute the new bendpoints.
+     * 
+     * @param edge
+     *            the GMF edge to center ends.
+     */
     public CenterEdgeEndModelChangeOperation(Edge edge) {
         this.edge = edge;
     }
 
+    /**
+     * Constructor to explicitly specify whether this operation should try to
+     * retrieve the edge figure to compute the new bendpoints.
+     * 
+     * @param edge
+     *            the GMF edge.
+     * @param useFigure
+     *            true if this operation should use the corresponding draw2D
+     *            figure, false otherwise.
+     */
+    public CenterEdgeEndModelChangeOperation(Edge edge, boolean useFigure) {
+        this(edge);
+        this.useFigure = useFigure;
+    }
+
     @Override
     public Void execute() {
-        EObject element = edge.getElement();
-        if (element instanceof DEdge) {
-            DEdgeQuery query = new DEdgeQuery((DEdge) element);
+        Routing routingValue = getRoutingValue();
 
-            // we do not handle Tree routing style
-            if (!(query.getRouting().getLiteral() == Routing.TREE_LITERAL.getLiteral())) {
-                if (isEdgeSourceCentered() && isEdgeTargetCentered()) {
+        // we do not handle Tree routing style
+        if (!(Routing.TREE_LITERAL.equals(routingValue.getLiteral()))) {
+            if (isEdgeSourceCentered() && isEdgeTargetCentered()) {
 
-                    centerEdgeEnds(CenteringStyle.BOTH);
-                } else if (isEdgeSourceCentered()) {
-                    centerEdgeEnds(CenteringStyle.SOURCE);
-                }
+                centerEdgeEnds(CenteringStyle.BOTH, routingValue);
+            } else if (isEdgeSourceCentered()) {
+                centerEdgeEnds(CenteringStyle.SOURCE, routingValue);
+            }
 
-                else if (isEdgeTargetCentered()) {
-                    centerEdgeEnds(CenteringStyle.TARGET);
-                }
+            else if (isEdgeTargetCentered()) {
+                centerEdgeEnds(CenteringStyle.TARGET, routingValue);
             }
         }
+
         return null;
+    }
+
+    private Routing getRoutingValue() {
+        Routing routingValue = Routing.MANUAL_LITERAL;
+        EdgeQuery edgeQuery = new EdgeQuery(edge);
+        if (edgeQuery.isEdgeWithTreeRoutingStyle()) {
+            routingValue = Routing.TREE_LITERAL;
+        } else if (edgeQuery.isEdgeWithRectilinearRoutingStyle()) {
+            routingValue = Routing.RECTILINEAR_LITERAL;
+        }
+        return routingValue;
     }
 
     /**
@@ -125,7 +168,7 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
      * @param center
      *            the {@link CenteringStyle} value.
      */
-    private void centerEdgeEnds(CenteringStyle center) {
+    private void centerEdgeEnds(CenteringStyle center, Routing routingValue) {
         Bendpoints bendpoints = edge.getBendpoints();
 
         if (bendpoints instanceof RelativeBendpoints) {
@@ -150,11 +193,10 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
                     // the center value.
                     computeAndSetNewAnchorsAbsoluteCoordinates(sourceBounds.get(), targetBounds.get(), center);
 
-                    DEdgeQuery query = new DEdgeQuery((DEdge) edge.getElement());
                     PointList newPointList = new PointList();
                     // Compute the existing bendpoints absolute location
                     newPointList = getAbsolutePointList((RelativeBendpoints) bendpoints);
-                    if (!(query.getRouting().getLiteral() == Routing.RECTILINEAR_LITERAL.getLiteral())) {
+                    if (!(Routing.RECTILINEAR_LITERAL.getLiteral().equals(routingValue.getLiteral()))) {
                         // The default case of straight edge:
                         handleStraightCase(center, sourceBounds.get(), targetBounds.get(), newPointList);
                     } else {
@@ -193,7 +235,7 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
                 return Options.newSome(GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) editPart));
             }
         }
-        return GMFHelper.getAbsoluteBounds(gmfView);
+        return GMFHelper.getAbsoluteBounds(gmfView, true);
     }
 
     private Option<Rectangle> getAbsoluteSourceBounds(View edgeSourceView) {
@@ -536,7 +578,7 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
      * We try to retrieve the edge connection figure.
      */
     private void setConnectionIfNull() {
-        if (connection != null) {
+        if (connection != null || !useFigure) {
             return;
         }
         Option<GraphicalEditPart> option = Options.newNone();
@@ -576,6 +618,8 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
      * to rectilinear, we need to anticipate the future rectilinear bendpoints
      * to next center the source or target connection ends.
      * 
+     * <strong>We suppose the connection attribute is not null</strong>
+     * 
      * @return a rectilinear PointList.
      */
     @SuppressWarnings("restriction")
@@ -601,6 +645,7 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
             connection.setConnectionRouter(connectionRouter);
             needToRetrieveOldRouter = true;
         }
+
         connection.getConnectionRouter().route(connection);
         PointList pointList = connection.getPoints().getCopy();
 

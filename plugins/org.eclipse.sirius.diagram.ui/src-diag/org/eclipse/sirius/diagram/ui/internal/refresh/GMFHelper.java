@@ -30,6 +30,8 @@ import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.ContainerStyle;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
@@ -53,6 +55,14 @@ import com.google.common.collect.Iterators;
  */
 public final class GMFHelper {
 
+    /**
+     * see org.eclipse.sirius.diagram.ui.internal.edit.parts.
+     * AbstractDNodeContainerCompartmentEditPart.DEFAULT_MARGIN the Y value is
+     * the DEFAULT_MARGIN + the InvisibleResizableCompartmentFigure top Inset
+     * (1px)
+     */
+    private static Point CONTAINER_INSETS = new Point(4, 5);
+
     private GMFHelper() {
         // Helper to not instantiate
     }
@@ -67,14 +77,83 @@ public final class GMFHelper {
      *         (Diagram)
      */
     public static Point getAbsoluteLocation(Node node) {
+        return getAbsoluteLocation(node, false);
+    }
+
+    /**
+     * Get the absolute location relative to the origin (Diagram).
+     * 
+     * @param node
+     *            the GMF Node
+     * @param insetsAware
+     *            true to consider the draw2D figures insets.
+     *            <strong>Warning:</strong> Those insets are based on the
+     *            current Sirius editParts and could become wrong if a developer
+     *            customizes them.
+     * 
+     * @return the absolute location of the node relative to the origin
+     *         (Diagram)
+     */
+    public static Point getAbsoluteLocation(Node node, boolean insetsAware) {
         Node currentNode = node;
         Point absoluteNodeLocation = getLocation(currentNode);
         if (currentNode.eContainer() instanceof Node) {
             currentNode = (Node) currentNode.eContainer();
-            Point parentNodeLocation = getAbsoluteLocation(currentNode);
+            Point parentNodeLocation = getAbsoluteLocation(currentNode, insetsAware);
             absoluteNodeLocation.translate(parentNodeLocation);
+            if (insetsAware) {
+                translateWithInsets(absoluteNodeLocation, node);
+
+            }
         }
         return absoluteNodeLocation;
+    }
+
+    /**
+     * Shift the current node absolute location by the container insets.
+     * 
+     * @param locationToTranslate
+     *            the current computed location that will be translated by the
+     *            container insets.
+     * @param currentNode
+     *            the current node for which we translate location. We do not
+     *            change the currentNode bounds.
+     */
+    private static void translateWithInsets(Point locationToTranslate, Node currentNode) {
+        NodeQuery nodeQuery = new NodeQuery(currentNode);
+        Node parentNode = (Node) currentNode.eContainer();
+        NodeQuery parentNodeQuery = new NodeQuery(parentNode);
+
+        // bordered node are not concerned by those insets. We also check if the
+        // parent node corresponds to a container.
+        if (!nodeQuery.isBorderedNode() && parentNodeQuery.isContainer()) {
+            EObject element = parentNode.getElement();
+            if (element instanceof DDiagramElementContainer) {
+                ContainerStyle containerStyle = ((DDiagramElementContainer) element).getOwnedStyle();
+                int borderSize = containerStyle.getBorderSize().intValue();
+                if (borderSize == 0) {
+                    borderSize = 1;
+                }
+                locationToTranslate.translate(CONTAINER_INSETS).translate(borderSize, borderSize);
+            }
+        }
+
+    }
+
+    /**
+     * Shift the current node absolute bounds location by the container insets.
+     * 
+     * @param boundsToTranslate
+     *            the current computed bounds that will be translated by the
+     *            container insets.
+     * @param currentNode
+     *            the current node for which we translate bounds. We do not
+     *            change the currentNode bounds.
+     */
+    private static void translateWithInsets(Rectangle boundsToTranslate, Node currentNode) {
+        Point location = boundsToTranslate.getLocation();
+        translateWithInsets(location, currentNode);
+        boundsToTranslate.setLocation(location);
     }
 
     /**
@@ -138,12 +217,32 @@ public final class GMFHelper {
      * @return the absolute bounds of the node relative to the origin (Diagram)
      */
     public static Rectangle getAbsoluteBounds(Node node) {
+        return getAbsoluteBounds(node, false);
+    }
+
+    /**
+     * Get the absolute bounds relative to the origin (Diagram).
+     * 
+     * @param node
+     *            the GMF Node
+     * @param insetsAware
+     *            true to consider the draw2D figures insets.
+     *            <strong>Warning:</strong> Those insets are based on the
+     *            current Sirius editParts and could become wrong if a developer
+     *            customizes them.
+     * 
+     * @return the absolute bounds of the node relative to the origin (Diagram)
+     */
+    public static Rectangle getAbsoluteBounds(Node node, boolean insetsAware) {
         Node currentNode = node;
         Rectangle absoluteNodeBounds = getBounds(currentNode);
         if (currentNode.eContainer() instanceof Node) {
             currentNode = (Node) currentNode.eContainer();
-            Point parentNodeLocation = getAbsoluteLocation(currentNode);
+            Point parentNodeLocation = getAbsoluteLocation(currentNode, insetsAware);
             absoluteNodeBounds = absoluteNodeBounds.getTranslated(parentNodeLocation);
+            if (insetsAware) {
+                translateWithInsets(absoluteNodeBounds, node);
+            }
         }
         return absoluteNodeBounds;
     }
@@ -157,9 +256,26 @@ public final class GMFHelper {
      * @return the absolute bounds of the edge relative to the origin (Diagram)
      */
     public static Option<Rectangle> getAbsoluteBounds(Edge edge) {
+        return getAbsoluteBounds(edge, false);
+    }
+
+    /**
+     * Get the absolute bounds relative to the origin (Diagram).
+     * 
+     * @param edge
+     *            the GMF Node
+     * @param insetsAware
+     *            true to consider the draw2D figures insets.
+     *            <strong>Warning:</strong> Those insets are based on the
+     *            current Sirius editParts and could become wrong if a developer
+     *            customizes them.
+     * 
+     * @return the absolute bounds of the edge relative to the origin (Diagram)
+     */
+    public static Option<Rectangle> getAbsoluteBounds(Edge edge, boolean insetsAware) {
         // Workaround for canonical refresh about edge on edge
-        Option<Rectangle> optionalSourceBounds = getAbsoluteBounds(edge.getSource());
-        Option<Rectangle> optionalTargetBounds = getAbsoluteBounds(edge.getTarget());
+        Option<Rectangle> optionalSourceBounds = getAbsoluteBounds(edge.getSource(), insetsAware);
+        Option<Rectangle> optionalTargetBounds = getAbsoluteBounds(edge.getTarget(), insetsAware);
         if (optionalSourceBounds.some() && optionalTargetBounds.some()) {
             return Options.newSome(optionalSourceBounds.get().union(optionalTargetBounds.get()));
         }
@@ -176,11 +292,29 @@ public final class GMFHelper {
      *         origin (Diagram)
      */
     public static Option<Rectangle> getAbsoluteBounds(View view) {
+        return getAbsoluteBounds(view, false);
+    }
+
+    /**
+     * Get the absolute bounds relative to the origin (Diagram).
+     * 
+     * @param view
+     *            the GMF Node or Edge
+     * @param insetsAware
+     *            true to consider the draw2D figures insets.
+     *            <strong>Warning:</strong> Those insets are based on the
+     *            current Sirius editParts and could become wrong if a developer
+     *            customizes them.
+     * 
+     * @return an optional absolute bounds of the node or edge relative to the
+     *         origin (Diagram)
+     */
+    public static Option<Rectangle> getAbsoluteBounds(View view, boolean insetsAware) {
         Option<Rectangle> result = Options.newNone();
         if (view instanceof Node) {
-            result = Options.newSome(getAbsoluteBounds((Node) view));
+            result = Options.newSome(getAbsoluteBounds((Node) view, insetsAware));
         } else if (view instanceof Edge) {
-            result = getAbsoluteBounds((Edge) view);
+            result = getAbsoluteBounds((Edge) view, insetsAware);
         }
         return result;
     }
