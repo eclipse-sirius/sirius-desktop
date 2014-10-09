@@ -186,7 +186,7 @@ public class LayoutHelperImpl implements LayoutHelper {
         long dx = realLocation.getX() - expectedLocation.getX();
         long dy = realLocation.getY() - expectedLocation.getY();
         long distance2 = dx * dx + dy * dy;
-        return distance2 < (maxDistance * maxDistance);
+        return distance2 <= (maxDistance * maxDistance);
     }
 
     /**
