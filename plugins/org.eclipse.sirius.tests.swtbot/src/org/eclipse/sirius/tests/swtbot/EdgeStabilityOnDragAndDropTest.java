@@ -39,6 +39,7 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotRadio;
+import org.junit.Assert;
 
 /**
  * Test bendpoints position and edge style after doing a drag and drop.
@@ -61,50 +62,14 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
 
     private static final String FILE_DIR = "/";
 
-    /**
-     * Final bendpoints position used by testEdgeStabilityOnDragAndDrop()
-     */
-    private static final Point[] TEST_1_C3_C1 = { new Point(121, 100), new Point(619, 100), new Point(619, 276) };
-
-    private static final Point[] TEST_1_C3_C2 = { new Point(121, 110), new Point(322, 110), new Point(322, 334), new Point(524, 334) };
-
-    private static final Point[] TEST_1_C2_C1 = { new Point(534, 328), new Point(534, 238), new Point(613, 238), new Point(613, 276) };
+    private static final String[][] EDGES = { { "C2", "C1" }, { "C3", "C1" }, { "C3", "C2" }, { "C5", "C6" } };
 
     /**
-     * Final bendpoints position used by
-     * testEdgeStabilityOnDragAndDropAfterStyleChange()
+     * Drop direction on the target element
      */
-    private static final Point[] TEST_2_C3_C1 = { new Point(121, 100), new Point(635, 100), new Point(636, 120) };
-
-    private static final Point[] TEST_2_C3_C2 = { new Point(121, 110), new Point(322, 110), new Point(322, 334), new Point(199, 180) };
-
-    private static final Point[] TEST_2_C2_C1 = { new Point(203, 168), new Point(534, 238), new Point(630, 238), new Point(630, 150) };
-
-    /**
-     * Final bendpoints position used by
-     * testEdgeStabilityOnDragAndDropAfterStyleChange2()
-     */
-    private static final Point[] TEST_3_C3_C1 = { new Point(121, 100), new Point(635, 100), new Point(283, 123) };
-
-    private static final Point[] TEST_3_C3_C2 = { new Point(121, 110), new Point(322, 110), new Point(322, 334), new Point(524, 334) };
-
-    private static final Point[] TEST_3_C2_C1 = { new Point(535, 328), new Point(534, 238), new Point(630, 238), new Point(283, 129) };
-
-    /**
-     * Final bendpoints position used by
-     * testEdgeStabilityOnDragAndDropToContainedNode()
-     */
-    private static final Point[] TEST_4_C3_C1 = { new Point(121, 100), new Point(635, 100), new Point(636, 120) };
-
-    private static final Point[] TEST_4_C3_C2 = { new Point(121, 110), new Point(322, 110), new Point(322, 184), new Point(660, 184) };
-
-    private static final Point[] TEST_4_C2_C1 = { new Point(671, 208), new Point(671, 238), new Point(630, 238), new Point(630, 150) };
-
-    /**
-     * Final bendpoints position used by
-     * testEdgeStabilityOnDragAndDropWithSourceAndTarget()
-     */
-    private static final Point[] TEST_5_C5_C6 = { new Point(694, 66), new Point(694, 34), new Point(754, 34), new Point(754, 66) };
+    private enum Direction {
+        NORTH, SOUTH, WEST, EAST
+    }
 
     private UIResource sessionAirdResource;
 
@@ -136,42 +101,195 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Validates the connection bendpoints are in the expected locations
+     * Get bendpoints of the first connection found between
+     * <code>sourceEditPartName</code> and <code>targetEditPartName</code>.
      * 
      * @param sourceEditPartName
      *            source of the connection
      * @param targetEditPartName
      *            target of the connection
-     * @param expectedPositions
-     *            expected bendpoints position
-     * @param expectedRoutingStyle
-     *            expected routing style
      * 
+     * @return copy of bendpoints position
      */
-    private void checkBendpoints(String sourceEditPartName, String targetEditPartName, Point[] expectedPositions, EdgeRouting expectedRoutingStyle) {
-
+    private PointList getBendpoints(String sourceEditPartName, String targetEditPartName) {
         ConnectionEditPart connectionEditPart = getConnectionEditPart(sourceEditPartName, targetEditPartName);
         assertTrue(connectionEditPart.getFigure() instanceof ViewEdgeFigure);
-        PointList pointList = ((ViewEdgeFigure) connectionEditPart.getFigure()).getPoints().getCopy();
+        return ((ViewEdgeFigure) connectionEditPart.getFigure()).getPoints().getCopy();
+    }
 
-        for (int i = 0; i < expectedPositions.length; i++) {
-            Point point = pointList.getPoint(i);
-            Point expectedPoint = expectedPositions[i];
-            assertEquals("X position of point number " + i + " of connection between " + sourceEditPartName + " and " + targetEditPartName + " is invalid.", expectedPoint.x, point.x, 1);
-            assertEquals("Y position of point number " + i + " of connection between " + sourceEditPartName + " and " + targetEditPartName + " is invalid.", expectedPoint.y, point.y, 1);
-        }
+    /**
+     * Check the stability of the first connection found between
+     * <code>sourceEditPartName</code> and <code>targetEditPartName</code>. The
+     * edge is only moved from one side.
+     * 
+     * @param sourceEditPartName
+     *            source of the connection
+     * @param targetEditPartName
+     *            target of the connection
+     * @param originalPoints
+     *            original points
+     * @param expectedRoutingStyle
+     *            expected routing style
+     */
+    private void checkEdgeMovedFromOneSide(String sourceEditPartName, String targetEditPartName, PointList originalPoints, EdgeRouting expectedRoutingStyle) {
+        ConnectionEditPart connectionEditPart = getConnectionEditPart(sourceEditPartName, targetEditPartName);
+        assertTrue(connectionEditPart.getFigure() instanceof ViewEdgeFigure);
+        PointList newPoints = ((ViewEdgeFigure) connectionEditPart.getFigure()).getPoints().getCopy();
+        Assert.assertEquals("The number of bendpoints should be the same", originalPoints.size(), newPoints.size());
 
+        // get routing style
         assertTrue(connectionEditPart.getModel() instanceof Edge);
         EObject element = ((Edge) connectionEditPart.getModel()).getElement();
         assertTrue(element instanceof DEdge);
         DEdge dedge = (DEdge) element;
+        EdgeRouting edgeRouting = ((EdgeStyle) dedge.getStyle()).getRoutingStyle();
+        assertEquals("The routing style is not " + expectedRoutingStyle.getLiteral(), expectedRoutingStyle, edgeRouting);
 
-        assertEquals("The routing style is not " + expectedRoutingStyle.getLiteral(), expectedRoutingStyle, ((EdgeStyle) dedge.getStyle()).getRoutingStyle());
+        // if edgeRouting == EdgeRouting.STRAIGHT then the first or the last
+        // point has moved
+
+        // if edgeRouting == EdgeRouting.MANHATTAN then the two first or
+        // the two last points have moved
+
+        Point originalFirstPoint = originalPoints.getFirstPoint();
+        Point newFirstPoint = newPoints.getFirstPoint();
+        if (originalFirstPoint.equals(newFirstPoint)) {
+            // EdgeRouting.STRAIGHT: the last point has moved
+            // EdgeRouting.MANHATTAN: the two last points have moved
+            int end = edgeRouting == EdgeRouting.STRAIGHT_LITERAL ? originalPoints.size() - 1 : originalPoints.size() - 2;
+
+            // unmoved points
+            for (int i = 1; i < end; i++) {
+                Point originalPoint = originalPoints.getPoint(i);
+                Point newPoint = newPoints.getPoint(i);
+                Assert.assertEquals("The two points at index " + i + " should be equal", originalPoint, newPoint);
+            }
+
+            // moved points
+            for (int i = end; i < originalPoints.size(); i++) {
+                Point originalPoint = originalPoints.getPoint(i);
+                Point newPoint = newPoints.getPoint(i);
+                Assert.assertNotEquals("The two points at index " + i + " should be different", originalPoint, newPoint);
+            }
+        } else {
+            // EdgeRouting.STRAIGHT: the first point has moved
+            // EdgeRouting.MANHATTAN: the two first points have moved
+            int begin = edgeRouting == EdgeRouting.STRAIGHT_LITERAL ? 1 : 2;
+
+            // moved points
+            for (int i = 1; i < begin; i++) {
+                Point originalPoint = originalPoints.getPoint(i);
+                Point newPoint = newPoints.getPoint(i);
+                Assert.assertNotEquals("The two points at index " + i + " should be different", originalPoint, newPoint);
+            }
+
+            // unmoved points
+            for (int i = begin; i < originalPoints.size(); i++) {
+                Point originalPoint = originalPoints.getPoint(i);
+                Point newPoint = newPoints.getPoint(i);
+                Assert.assertEquals("The two points at index " + i + " should be equal", originalPoint, newPoint);
+            }
+        }
 
         EdgeLayoutData data = SiriusLayoutDataManager.INSTANCE.getData(dedge, false);
-        assertNull("SiriusLayoutDataManager should not store data of DEge between " + sourceEditPartName + " and " + targetEditPartName + " anymore", data);
+        assertNull("SiriusLayoutDataManager should not store data of DEdge between " + sourceEditPartName + " and " + targetEditPartName + " anymore", data);
     }
 
+    /**
+     * Check the stability of the first connection found between
+     * <code>sourceEditPartName</code> and <code>targetEditPartName</code>. The
+     * edge is shifted by a constant vector.
+     * 
+     * @param sourceEditPartName
+     *            source of the connection
+     * @param targetEditPartName
+     *            target of the connection
+     * @param originalPoints
+     *            original points
+     * @param expectedRoutingStyle
+     *            expected routing style
+     */
+    private void checkEdgeShiftedByVector(String sourceEditPartName, String targetEditPartName, PointList originalPoints, EdgeRouting expectedRoutingStyle) {
+        ConnectionEditPart connectionEditPart = getConnectionEditPart(sourceEditPartName, targetEditPartName);
+        assertTrue(connectionEditPart.getFigure() instanceof ViewEdgeFigure);
+        PointList newPoints = ((ViewEdgeFigure) connectionEditPart.getFigure()).getPoints().getCopy();
+        Assert.assertEquals("The number of bendpoints should be the same", originalPoints.size(), newPoints.size());
+
+        // get routing style
+        assertTrue(connectionEditPart.getModel() instanceof Edge);
+        EObject element = ((Edge) connectionEditPart.getModel()).getElement();
+        assertTrue(element instanceof DEdge);
+        DEdge dedge = (DEdge) element;
+        EdgeRouting edgeRouting = ((EdgeStyle) dedge.getStyle()).getRoutingStyle();
+        assertEquals("The routing style is not " + expectedRoutingStyle.getLiteral(), expectedRoutingStyle, edgeRouting);
+
+        Point originalFirstPoint = originalPoints.getFirstPoint();
+        Point newFirstPoint = newPoints.getFirstPoint();
+
+        int vectorX = newFirstPoint.x - originalFirstPoint.x;
+        int vectorY = newFirstPoint.y - originalFirstPoint.y;
+
+        for (int i = 1; i < originalPoints.size(); i++) {
+            Point newPoint = newPoints.getPoint(i);
+            Point originalPoint = originalPoints.getPoint(i);;
+            assertEquals("X position of point number " + i + " of connection between " + sourceEditPartName + " and " + targetEditPartName + " is invalid.", newPoint.x, originalPoint.x + vectorX, 1);
+            assertEquals("Y position of point number " + i + " of connection between " + sourceEditPartName + " and " + targetEditPartName + " is invalid.", newPoint.y, originalPoint.y + vectorY, 1);
+        }
+
+        EdgeLayoutData data = SiriusLayoutDataManager.INSTANCE.getData(dedge, false);
+        assertNull("SiriusLayoutDataManager should not store data of DEdge between " + sourceEditPartName + " and " + targetEditPartName + " anymore", data);
+    }
+
+    /**
+     * Check that the first connection found between
+     * <code>sourceEditPartName</code> and <code>targetEditPartName</code> has
+     * not moved.
+     * 
+     * @param sourceEditPartName
+     *            source of the connection
+     * @param targetEditPartName
+     *            target of the connection
+     * @param originalPoints
+     *            original points
+     * @param expectedRoutingStyle
+     *            expected routing style
+     */
+    private void checkUnmovedEdge(String sourceEditPartName, String targetEditPartName, PointList originalPoints, EdgeRouting expectedRoutingStyle) {
+        ConnectionEditPart connectionEditPart = getConnectionEditPart(sourceEditPartName, targetEditPartName);
+        assertTrue(connectionEditPart.getFigure() instanceof ViewEdgeFigure);
+        PointList newPoints = ((ViewEdgeFigure) connectionEditPart.getFigure()).getPoints().getCopy();
+        assertEquals("The number of bendpoints should be the same", originalPoints.size(), newPoints.size());
+
+        for (int i = 0; i < originalPoints.size(); i++) {
+            Point point = newPoints.getPoint(i);
+            Point expectedPoint = originalPoints.getPoint(i);;
+            assertEquals("X position of point number " + i + " of connection between " + sourceEditPartName + " and " + targetEditPartName + " is invalid.", expectedPoint.x, point.x, 1);
+            assertEquals("Y position of point number " + i + " of connection between " + sourceEditPartName + " and " + targetEditPartName + " is invalid.", expectedPoint.y, point.y, 1);
+        }
+
+        // get routing style
+        assertTrue(connectionEditPart.getModel() instanceof Edge);
+        EObject element = ((Edge) connectionEditPart.getModel()).getElement();
+        assertTrue(element instanceof DEdge);
+        DEdge dedge = (DEdge) element;
+        EdgeRouting edgeRouting = ((EdgeStyle) dedge.getStyle()).getRoutingStyle();
+        assertEquals("The routing style is not " + expectedRoutingStyle.getLiteral(), expectedRoutingStyle, edgeRouting);
+
+        EdgeLayoutData data = SiriusLayoutDataManager.INSTANCE.getData(dedge, false);
+        assertNull("SiriusLayoutDataManager should not store data of DEdge between " + sourceEditPartName + " and " + targetEditPartName + " anymore", data);
+    }
+
+    /**
+     * Get the first connection found between <code>sourceEditPartName</code>
+     * and <code>targetEditPartName</code>.
+     * 
+     * @param sourceEditPartName
+     *            source of the connection
+     * @param targetEditPartName
+     *            target of the connection
+     * 
+     * @return the connection found
+     */
     private ConnectionEditPart getConnectionEditPart(String sourceEditPartName, String targetEditPartName) {
         List<SWTBotGefConnectionEditPart> connectionEditPartList = editor.getConnectionEditPart(editor.getEditPart(sourceEditPartName, AbstractDiagramBorderNodeEditPart.class),
                 editor.getEditPart(targetEditPartName, AbstractDiagramBorderNodeEditPart.class));
@@ -181,88 +299,63 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Test method.
-     * 
-     * @throws Exception
-     *             Test error.
+     * Drag and drop a border node to the north of another bordered node.
      */
-    public void testEdgeStabilityOnDragAndDrop() throws Exception {
-
-        final long oldTimeout = SWTBotPreferences.TIMEOUT;
-        try {
-            SWTBotPreferences.TIMEOUT = 1000;
-
-            // Drag and drop C1 to package P3
-            dragNorth("P3", "C1");
-
-            // Check the connections bendpoints stability
-            checkBendpoints("C3", "C1", TEST_1_C3_C1, EdgeRouting.MANHATTAN_LITERAL); // rectilinear
-            checkBendpoints("C3", "C2", TEST_1_C3_C2, EdgeRouting.MANHATTAN_LITERAL); // rectilinear
-            checkBendpoints("C2", "C1", TEST_1_C2_C1, EdgeRouting.MANHATTAN_LITERAL); // rectilinear
-
-        } finally {
-            SWTBotPreferences.TIMEOUT = oldTimeout;
-        }
+    public void testEdgeStabilityOnDragAndDropOnNorth() {
+        doTestEdgeStabilityOnDragAndDrop("P3", "C1", Direction.NORTH, false);
     }
 
     /**
-     * Test method.
-     * 
-     * @throws Exception
-     *             Test error.
+     * Drag and drop a border node to the south of another bordered node.
      */
-    public void testEdgeStabilityOnDragAndDropAfterStyleChange() throws Exception {
-
-        final long oldTimeout = SWTBotPreferences.TIMEOUT;
-        try {
-            SWTBotPreferences.TIMEOUT = 1000;
-
-            // Change the style of the edge between C3 and C2 and between C2 and
-            // C1
-            changeEdgeStyle("C3", "C2", "Oblique");
-            changeEdgeStyle("C2", "C1", "Oblique");
-
-            // Drag and drop C2 to package P2
-            dragSouth("P2", "C2");
-
-            // Check the connections bendpoints stability
-            checkBendpoints("C3", "C2", TEST_2_C3_C2, EdgeRouting.STRAIGHT_LITERAL); // oblique
-            checkBendpoints("C2", "C1", TEST_2_C2_C1, EdgeRouting.STRAIGHT_LITERAL); // oblique
-            checkBendpoints("C3", "C1", TEST_2_C3_C1, EdgeRouting.MANHATTAN_LITERAL); // rectilinear
-
-        } finally {
-            SWTBotPreferences.TIMEOUT = oldTimeout;
-        }
+    public void testEdgeStabilityOnDragAndDropOnSouth() {
+        doTestEdgeStabilityOnDragAndDrop("P3", "C1", Direction.SOUTH, false);
     }
 
     /**
-     * Test method.
-     * 
-     * @throws Exception
-     *             Test error.
+     * Drag and drop a border node to the west of another bordered node.
      */
-    public void testEdgeStabilityOnDragAndDropAfterStyleChange2() throws Exception {
+    public void testEdgeStabilityOnDragAndDropOnWest() {
+        doTestEdgeStabilityOnDragAndDrop("P3", "C1", Direction.WEST, false);
+    }
 
-        final long oldTimeout = SWTBotPreferences.TIMEOUT;
-        try {
-            SWTBotPreferences.TIMEOUT = 1000;
+    /**
+     * Drag and drop a border node to the east of another bordered node.
+     */
+    public void testEdgeStabilityOnDragAndDropOnEast() {
+        doTestEdgeStabilityOnDragAndDrop("P3", "C1", Direction.EAST, false);
+    }
 
-            // Change the style of the edge between C3 and C1 and between C2 and
-            // C1
-            changeEdgeStyle("C3", "C1", "Oblique");
-            changeEdgeStyle("C2", "C1", "Oblique");
+    /**
+     * Change style of edges and drag and and drop a border node to the north of
+     * another bordered node.
+     */
+    public void testEdgeStabilityOnDragAndDropOnNorthAfterStyleChange() {
+        doTestEdgeStabilityOnDragAndDrop("P2", "C2", Direction.NORTH, true);
+    }
 
-            // Drag and drop C1 to package P2
-            dragEast("P2", "C1");
+    /**
+     * Change style of edges and drag and and drop a border node to the south of
+     * another bordered node.
+     */
+    public void testEdgeStabilityOnDragAndDropOnSouthAfterStyleChange() {
+        doTestEdgeStabilityOnDragAndDrop("P2", "C2", Direction.SOUTH, true);
+    }
 
-            // Check the connections bendpoints stability
-            checkBendpoints("C3", "C1", TEST_3_C3_C1, EdgeRouting.STRAIGHT_LITERAL); // oblique
-            checkBendpoints("C2", "C1", TEST_3_C2_C1, EdgeRouting.STRAIGHT_LITERAL); // oblique
-            checkBendpoints("C3", "C2", TEST_3_C3_C2, EdgeRouting.MANHATTAN_LITERAL); // rectilinear
+    /**
+     * Change style of edges and drag and and drop a border node to the west of
+     * another bordered node.
+     */
+    public void testEdgeStabilityOnDragAndDropOnWestAfterStyleChange() {
+        doTestEdgeStabilityOnDragAndDrop("P2", "C2", Direction.WEST, true);
+    }
 
-        } finally {
-            SWTBotPreferences.TIMEOUT = oldTimeout;
-        }
+    /**
+     * Change style of edges and drag and and drop a border node to the east of
+     * another bordered node.
+     */
+    public void testEdgeStabilityOnDragAndDropOnEastAfterStyleChange() {
+        doTestEdgeStabilityOnDragAndDrop("P2", "C2", Direction.EAST, true);
     }
 
     /**
@@ -270,22 +363,7 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
      * horizontal scrollbar.
      */
     public void testEdgeStabilityOnDragAndDropToContainedNode() {
-
-        final long oldTimeout = SWTBotPreferences.TIMEOUT;
-        try {
-            SWTBotPreferences.TIMEOUT = 1000;
-
-            // Drag and drop C2 to package P4
-            dragWest("P4", "C2");
-
-            // Check the connections bendpoints stability
-            checkBendpoints("C3", "C1", TEST_4_C3_C1, EdgeRouting.MANHATTAN_LITERAL); // rectilinear
-            checkBendpoints("C3", "C2", TEST_4_C3_C2, EdgeRouting.MANHATTAN_LITERAL); // rectilinear
-            checkBendpoints("C2", "C1", TEST_4_C2_C1, EdgeRouting.MANHATTAN_LITERAL); // rectilinear
-
-        } finally {
-            SWTBotPreferences.TIMEOUT = oldTimeout;
-        }
+        doTestEdgeStabilityOnDragAndDrop("P4", "C2", Direction.WEST, false);
     }
 
     /**
@@ -297,17 +375,84 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
         try {
             SWTBotPreferences.TIMEOUT = 1000;
 
+            // Get bendpoints before drag and drop
+            PointList originalPointsC5C6 = getBendpoints("C5", "C6");
+
             // Drag and drop C5 and C6 to package P1
             dragNorth("P1", "C5", "C6");
 
             // Check the connections bendpoints stability
-            checkBendpoints("C5", "C6", TEST_5_C5_C6, EdgeRouting.MANHATTAN_LITERAL); // rectilinear
+            checkEdgeShiftedByVector("C5", "C6", originalPointsC5C6, EdgeRouting.MANHATTAN_LITERAL); // rectilinear
 
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
         }
     }
 
+    /**
+     * Drag and drop a border node to another bordered node.
+     *
+     * @param targetElement
+     *            target element to drop on it
+     * @param elementToDrag
+     *            element to drag on the target element
+     * @param direction
+     *            direction on the target element
+     * @param changeStyle
+     *            true to change edge routing style to 'Oblique'
+     */
+    private void doTestEdgeStabilityOnDragAndDrop(String targetElement, String elementToDrag, Direction direction, boolean changeStyle) {
+
+        final long oldTimeout = SWTBotPreferences.TIMEOUT;
+        try {
+            SWTBotPreferences.TIMEOUT = 1000;
+
+            // Get bendpoints before drag and drop
+            List<PointList> originalPointsList = new ArrayList<PointList>();
+            for (String[] edge : EDGES) {
+                originalPointsList.add(getBendpoints(edge[0], edge[1]));
+            }
+
+            // Change style before drag and drop
+            if (changeStyle) {
+                for (String[] edge : EDGES) {
+                    changeEdgeStyle(edge[0], edge[1], "Oblique");
+                }
+            }
+
+            // Drag and drop
+            drag(direction, targetElement, elementToDrag);
+
+            // Check the connections bendpoints stability
+            for (int i = 0; i < EDGES.length; i++) {
+                String[] edge = EDGES[i];
+                String source = edge[0];
+                String target = edge[1];
+                PointList originalPoints = originalPointsList.get(i);
+
+                if (source.equals(elementToDrag) || target.equals(elementToDrag)) {
+                    // move from one side
+                    checkEdgeMovedFromOneSide(source, target, originalPoints, changeStyle ? EdgeRouting.STRAIGHT_LITERAL : EdgeRouting.MANHATTAN_LITERAL);
+                } else {
+                    // not moved
+                    checkUnmovedEdge(source, target, originalPoints, changeStyle ? EdgeRouting.STRAIGHT_LITERAL : EdgeRouting.MANHATTAN_LITERAL);
+                }
+            }
+        } finally {
+            SWTBotPreferences.TIMEOUT = oldTimeout;
+        }
+    }
+
+    /**
+     * Change the edge routing style.
+     * 
+     * @param source
+     *            source of the edge
+     * @param target
+     *            target of the edge
+     * @param style
+     *            routing style to set
+     */
     private void changeEdgeStyle(String source, String target, String style) {
         SWTBotGefEditPart partSource = editor.getEditPart(source, AbstractDiagramBorderNodeEditPart.class);
         SWTBotGefEditPart partTarget = editor.getEditPart(target, AbstractDiagramBorderNodeEditPart.class);
@@ -320,6 +465,12 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
         radioToSelect.click();
     }
 
+    /**
+     * Select several elements
+     * 
+     * @param elements
+     *            element to select
+     */
     private void select(String... elements) {
         List<SWTBotGefEditPart> selection = new ArrayList<SWTBotGefEditPart>(elements.length);
 
@@ -331,6 +482,12 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
         editor.select(selection);
     }
 
+    /**
+     * Select an edit part
+     * 
+     * @param element
+     *            edit part to select
+     */
     private void select(SWTBotGefEditPart element) {
         editor.click(element);
         editor.select(element);
@@ -351,6 +508,33 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
         }
 
         return selection.getCenter();
+    }
+
+    /**
+     * Drag source elements to the target element
+     * 
+     * @param direction
+     *            target direction
+     * @param targetElement
+     *            target element
+     * @param sourceElements
+     *            source elements to drag
+     */
+    private void drag(Direction direction, String targetElement, String... sourceElements) {
+        switch (direction) {
+        case EAST:
+            dragEast(targetElement, sourceElements);
+            break;
+        case NORTH:
+            dragNorth(targetElement, sourceElements);
+            break;
+        case SOUTH:
+            dragSouth(targetElement, sourceElements);
+            break;
+        case WEST:
+            dragWest(targetElement, sourceElements);
+            break;
+        }
     }
 
     /**
