@@ -530,6 +530,13 @@ public class DistributeCommand extends AbstractTransactionalCommand {
                 lastPartSecondAxis = getLastPartSecondAxisFunction.apply(part);
             }
         }
+        if (firstPart.equals(lastPart)) {
+            // The first part and the last part is the same (a large
+            // figure that covers all the bounds of the current selection),
+            // nothing to to!
+            return;
+        }
+
         // Get the gap between each parts
         int gap = getGapFunction.apply(firstPart, lastPart);
         // Sort other parts according to their centers
