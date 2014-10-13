@@ -123,6 +123,7 @@ import org.hamcrest.Matcher;
 import org.junit.Assert;
 
 import com.google.common.base.Function;
+import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedHashMultimap;
@@ -1116,8 +1117,15 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         SWTBotUtils.waitAllUiEvents();
         // Get the corresponding SWtBotEditor
         SWTBotEditor swtBotEditor = null;
+        // Since Luna, e4 removes the leading and trailing spaces from the
+        // editors' name, so we must adjust the title of the editor we are
+        // looking for.
+        String expectedTitle = editorPart.getTitle();
+        if (TestsUtil.isLunaPlatform()) {
+            expectedTitle = Objects.firstNonNull(expectedTitle, "").trim();
+        }
         if (DDiagram.class.isAssignableFrom(expectedRepresentationClass)) {
-            swtBotEditor = SWTBotSiriusHelper.getSiriusDiagramEditor(editorPart.getTitle());
+            swtBotEditor = SWTBotSiriusHelper.getSiriusDiagramEditor(expectedTitle);
             if (disableSnapToGridOnThisEditor) {
                 ((SWTBotSiriusDiagramEditor) swtBotEditor).setSnapToGrid(false);
             }
@@ -1125,7 +1133,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                 ((SWTBotSiriusDiagramEditor) swtBotEditor).setSnapToShape(false);
             }
         } else {
-            swtBotEditor = SWTBotSiriusHelper.getSiriusEditor(editorPart.getTitle());
+            swtBotEditor = SWTBotSiriusHelper.getSiriusEditor(expectedTitle);
         }
 
         return swtBotEditor;
