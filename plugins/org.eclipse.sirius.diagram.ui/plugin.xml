@@ -1346,7 +1346,7 @@
    </menuContribution>
    <menuContribution
          allPopups="false"
-         locationURI="popup:org.eclipse.ui.popup.any?after=org.eclipse.sirius.diagram.ui.popup.otherActions">
+         locationURI="popup:org.eclipse.ui.popup.any?after=formatMenu">
       <command
             commandId="org.eclipse.sirius.diagram.ui.removeBendpoints"
             label="Remove Bend-points"
