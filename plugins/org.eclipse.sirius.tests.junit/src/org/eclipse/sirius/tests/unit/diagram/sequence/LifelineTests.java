@@ -25,11 +25,12 @@ import org.eclipse.gmf.runtime.notation.Shape;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.junit.Assert;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.FrameworkUtil;
 
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Tests that GMF Text/Note are not creatable/droppable in a lifeline.
@@ -145,23 +146,29 @@ public class LifelineTests extends AbstractSequenceSiriusDiagramTests {
 
     /**
      * Unsetting the element reference of a Note when it is null, should not set
-     * it to a semantic element.
+     * it to a semantic element. This test depends on a change which is not
+     * currently in official released versions of GMF Notation (see the patch
+     * attached to #412078); it is not executed if we detect we run with such an
+     * official version.
      * 
      * See https://bugs.eclipse.org/bugs/show_bug.cgi?id=412078
      */
     public void testGMFNoteUnset() {
         final Shape shape = (Shape) noteEditPart.getModel();
         Assert.assertNull("Element should be null for a note", shape.getElement());
-        
-        session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+        Bundle bundle = FrameworkUtil.getBundle(shape.getClass());
+        boolean isForkedGMFNotation = bundle.getSignerCertificates(Bundle.SIGNERS_ALL).isEmpty();
+        if (isForkedGMFNotation) {
+            session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
 
-            @Override
-            protected void doExecute() {
-                shape.unsetElement();
+                @Override
+                protected void doExecute() {
+                    shape.unsetElement();
 
-            }
-        });
-        Assert.assertNull("Element should be null for a note", shape.getElement());
+                }
+            });
+            Assert.assertNull("Element should be null for a note", shape.getElement());
+        }
     }
 
 	/**
