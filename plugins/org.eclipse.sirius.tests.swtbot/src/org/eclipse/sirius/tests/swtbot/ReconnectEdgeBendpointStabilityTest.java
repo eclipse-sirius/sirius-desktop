@@ -260,6 +260,10 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
             // It is a default value because there can be more moved bendpoint
             // with the tree router
             expectedMovedBendpoint = 2;
+            if(!reconnectedSource) {
+            	// There is an issue on linux where the reconnection, with SWTBot (not manually), has not the same result on bendpoint coordinates
+                expectedMovedBendpoint = 3;
+            }
         }
         checkConnectionPoints(sourceEditPartName, targetEditPartName, originalPointList, reconnectedSource, expectedMovedBendpoint);
     }
