@@ -422,7 +422,10 @@ public class DistributeCommand extends AbstractTransactionalCommand {
                                 availableSpace -= getSizeFunction.apply(part);
                             }
                         }
-                        return availableSpace / (partsToDistribute.size() - 1);
+                        // Gap is rounded up to the lower Integer if the
+                        // remainder is less than or equal to 0.5 and higher
+                        // integer if the remainder is greater than 0.5.
+                        return Math.round(((float) availableSpace) / (partsToDistribute.size() - 1));
                     }
                 });
     }
@@ -470,7 +473,10 @@ public class DistributeCommand extends AbstractTransactionalCommand {
                 new GetGapFunction(partsToDistribute, getMainAxisFunction, getMainAxisFunction, getSizeFunction) {
                     @Override
                     public int apply(IGraphicalEditPart firstPart, IGraphicalEditPart lastPart) {
-                        return (getFirstPartMainAxisFunction.apply(lastPart) - getLastPartMainAxisFunction.apply(firstPart)) / (partsToDistribute.size() - 1);
+                        // Gap is rounded up to the lower Integer if the
+                        // remainder is less than or equal to 0.5 and higher
+                        // integer if the remainder is greater than 0.5.
+                        return Math.round(((float) (getFirstPartMainAxisFunction.apply(lastPart) - getLastPartMainAxisFunction.apply(firstPart))) / (partsToDistribute.size() - 1));
                     }
                 });
     }
