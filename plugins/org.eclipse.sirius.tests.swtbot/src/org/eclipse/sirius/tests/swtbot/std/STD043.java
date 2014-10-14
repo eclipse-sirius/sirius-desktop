@@ -124,7 +124,6 @@ public class STD043 extends AbstractSTDTestCase {
         // -check the position of model element are not changed
         assertTrue(checkNewLocation(editordiagram, diagram.getEditor().getEditPart(NEW_ECLASS_CREATED), 140, 130));
         assertTrue(checkNewLocation(editordiagram, diagram.getEditor().getEditPart(NEW_EPACKAGE_CREATED), 252, 250));
-        System.out.println("");
         // -add modelElement in order they overlay
         editordiagram.activateTool("Package");
         editordiagram.click(350, 150);

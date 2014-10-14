@@ -232,9 +232,6 @@ public class BorderMarginTest extends SiriusDiagramTestCase {
                 Dimension expected = getExpectedAutoSize(dde);
                 sb.append(" ." + dde.eClass().getName() + " " + dde.getName());
                 Dimension figureSize = part.getFigure().getBounds().getSize();
-                // Temporary sysout to see if "Comic Sans MS" is really used on
-                // Jenkins.
-                System.out.println(part.getFigure().getFont().getFontData()[0] + ", handle=" + part.getFigure().getFont());
                 if (!expected.equals(figureSize)) {
                     wrongSizes = true;
                     sb.append(", expected: " + expected);
