@@ -103,8 +103,23 @@ public class DeleteDRepresentationElementsTask extends AbstractCompoundTask {
 
         for (DSemanticDecorator semDec : vpElements) {
             tasks.add(new DeleteEObjectTask(semDec, modelAccessor));
+            addDialectSpecificAdditionalDeleteSubTasks(semDec, tasks);
         }
         return tasks;
+    }
+    
+    /**
+     * This method can be overridden to add Dialect specific additional delete
+     * tasks. A DeleteEObjectTask for the given decorator has already been added
+     * to subtasks.
+     * 
+     * @param decorator
+     *            the current decorator to delete
+     * @param subTasks
+     *            a List<ICommand> to complete
+     */
+    protected void addDialectSpecificAdditionalDeleteSubTasks(DSemanticDecorator decorator, List<ICommandTask> subTasks) {
+        // Nothing to add per default.
     }
 
     /**

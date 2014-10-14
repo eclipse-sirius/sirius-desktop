@@ -235,7 +235,21 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
         if (delete) {
 
             cmd.getTasks().addAll(buildDeleteFromToolTask(semanticContainer, viewContainer).getTasks());
-            cmd.getTasks().add(new DeleteDRepresentationElementsTask(modelAccessor, cmd, taskHelper, diagramElement));
+            cmd.getTasks().add(new DeleteDRepresentationElementsTask(modelAccessor, cmd, taskHelper, diagramElement) {
+
+                @Override
+                protected void addDialectSpecificAdditionalDeleteSubTasks(DSemanticDecorator decorator, List<ICommandTask> subTasks) {
+                    // Nothing to add per default.
+                    // If the semantic decorator is related to edges,
+                    // these edges should also be deleted
+                    if (decorator instanceof EdgeTarget) {
+                        EdgeTarget edgeTarget = (EdgeTarget) decorator;
+                        for (final DEdge edge : Iterables.concat(edgeTarget.getIncomingEdges(), edgeTarget.getOutgoingEdges())) {
+                            subTasks.add(new DeleteEObjectTask(edge, modelAccessor));
+                        }
+                    }
+                }
+            });
             if (diagramElement instanceof DEdge) {
                 Option<EdgeMapping> edgeMapping = new IEdgeMappingQuery(((DEdge) diagramElement).getActualMapping()).getEdgeMapping();
                 if (edgeMapping.some() && !edgeMapping.get().isUseDomainElement()) {
