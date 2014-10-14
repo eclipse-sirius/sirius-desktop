@@ -212,7 +212,7 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
     public void testTabbarButtonStabilityOnEditorSwitch() throws Exception {
         // Clone the diagram
         SWTBotTreeItem representationTreeItem = localSession.getLocalSessionBrowser().perCategory().selectViewpoint(VIEWPOINT_NAME).selectRepresentation(REPRESENTATION_NAME)
-                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).getTreeItem();
+                .selectRepresentationInstance(REPRESENTATION_INSTANCE_NAME, UIDiagramRepresentation.class).getTreeItem().select();
         SWTBotUtils.clickContextMenu(representationTreeItem, "Copy");
         bot.waitUntilWidgetAppears(Conditions.shellIsActive("Copy representation"));
         bot.text(REPRESENTATION_INSTANCE_NAME).setText(REPRESENTATION_INSTANCE_NAME + "_Copy");
