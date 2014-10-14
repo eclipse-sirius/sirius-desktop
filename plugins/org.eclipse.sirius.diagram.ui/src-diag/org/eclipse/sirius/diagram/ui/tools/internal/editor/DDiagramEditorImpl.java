@@ -531,7 +531,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             keyHandler.put(KeyStroke.getPressed(SWT.DEL, 127, 0), getActionRegistry().getAction(ActionFactory.DELETE.getId()));
 
             keyHandler.put(/* CTRL + D */
-                    KeyStroke.getPressed((char) 0x4, 100, SWT.CTRL), getActionRegistry().getAction(ActionIds.ACTION_DELETE_FROM_MODEL));
+            KeyStroke.getPressed((char) 0x4, 100, SWT.CTRL), getActionRegistry().getAction(ActionIds.ACTION_DELETE_FROM_MODEL));
         }
         return keyHandler;
     }
@@ -608,7 +608,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         EObject semantic = ViewUtil.resolveSemanticElement(gmfDiagram);
         if (semantic instanceof DSemanticDecorator) {
             semantic = ((DSemanticDecorator) semantic).getTarget();
-            if (semantic.eResource() == null) {
+            if (semantic != null && semantic.eResource() == null) {
                 ModelUtils.resolveAll(semantic);
             }
         }
@@ -1065,9 +1065,9 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     @Override
     protected void setDocumentProvider(final IEditorInput input) {
         if (getSession() != null/*
-         * && (input instanceof IFileEditorInput ||
-         * input instanceof URIEditorInput)
-         */) {
+                                 * && (input instanceof IFileEditorInput ||
+                                 * input instanceof URIEditorInput)
+                                 */) {
             setDocumentProvider(DiagramUIPlugin.getPlugin().getDocumentProvider(getSession().getTransactionalEditingDomain()));
         } else {
             // super.setDocumentProvider(input);
