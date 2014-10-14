@@ -31,10 +31,12 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IDiagramPreferenceSupport;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
-import org.eclipse.gmf.runtime.diagram.ui.printing.actions.DefaultPrintActionHelper;
 import org.eclipse.gmf.runtime.diagram.ui.printing.render.actions.EnhancedPrintActionHelper;
 import org.eclipse.gmf.runtime.diagram.ui.printing.render.internal.DiagramUIPrintingRenderDebugOptions;
 import org.eclipse.gmf.runtime.diagram.ui.printing.render.internal.DiagramUIPrintingRenderPlugin;
+import org.eclipse.gmf.runtime.diagram.ui.printing.render.internal.JPSDiagramPrinter;
+import org.eclipse.gmf.runtime.diagram.ui.printing.render.internal.JPSDiagramPrinterHelper;
+import org.eclipse.gmf.runtime.diagram.ui.printing.render.util.RenderedDiagramPrinter;
 import org.eclipse.gmf.runtime.diagram.ui.printing.util.DiagramPrinterUtil;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.IMapMode;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
@@ -46,7 +48,7 @@ import org.eclipse.ui.IWorkbenchPart;
  * Enhanced printing. The doPrint() method will invoke a dialog prompting the
  * user to choose options for printing. The user will be able to choose from
  * printing diagrams of the current type. If possible, the IFile path of the
- * appicable diagrams will be displayed to the user, when prompting the user to
+ * applicable diagrams will be displayed to the user, when prompting the user to
  * select a diagram for printing. If the diagram does not correspond to an
  * IFile, its part name will be used as the next choice.
  * 
@@ -55,6 +57,7 @@ import org.eclipse.ui.IWorkbenchPart;
  * 
  * @author Wayne Diu, wdiu
  */
+@SuppressWarnings("restriction")
 public class SiriusEnhancedPrintActionHelper implements IPrintActionHelper {
 
     /**
@@ -86,11 +89,9 @@ public class SiriusEnhancedPrintActionHelper implements IPrintActionHelper {
         final IMapMode mapMode = (rootEP instanceof DiagramRootEditPart) ? ((DiagramRootEditPart) rootEP).getMapMode() : MapModeUtil.getMapMode();
 
         if (Platform.getOS().startsWith(Platform.OS_WIN32) && Platform.getOSArch().equals(Platform.ARCH_X86)) {
-            DiagramPrinterUtil.printWithSettings(diagramEditor, createDiagramMap(), new SiriusRenderedDiagramPrinter(preferencesHint, mapMode));
+            DiagramPrinterUtil.printWithSettings(diagramEditor, createDiagramMap(), new RenderedDiagramPrinter(preferencesHint, mapMode));
         } else {
-            // do default action when OS is not a Windows 32 bits or a Windows
-            // 64 bits with a 32 bits JVM.
-            DefaultPrintActionHelper.doRun(diagramEditor, new SiriusRenderedDiagramPrinter(preferencesHint, mapMode));
+            JPSDiagramPrinterHelper.getDiagramPrinterHelper().printWithSettings(diagramEditor, createDiagramMap(), new JPSDiagramPrinter(preferencesHint, mapMode));
         }
     }
 
@@ -105,8 +106,8 @@ public class SiriusEnhancedPrintActionHelper implements IPrintActionHelper {
     private Map<String, Diagram> createDiagramMap() {
         final Map<String, Diagram> diagramMap = new HashMap<String, Diagram>();
         // get all diagram editors with the matching id
-        final List diagramEditors = EditorService.getInstance().getRegisteredEditorParts();
-        final Iterator it = diagramEditors.iterator();
+        final List<?> diagramEditors = EditorService.getInstance().getRegisteredEditorParts();
+        final Iterator<?> it = diagramEditors.iterator();
         while (it.hasNext()) {
             final Object obj = it.next();
             if (obj instanceof DiagramEditor) { // DiagramDocumentEditor
@@ -177,4 +178,5 @@ public class SiriusEnhancedPrintActionHelper implements IPrintActionHelper {
         }
         return result;
     }
+
 }
