@@ -103,7 +103,7 @@ public class ToolFilterDescriptionListenerTests extends TestCase {
     }
 
     public void testSingleNotification() throws Exception {
-        final ToolFilterDescriptionListener listener = new ToolFilterDescriptionListener(createToolFilterDescriptionOnDiagram("name"), diagram);
+        final ToolFilterDescriptionListener listener = new ToolFilterDescriptionListener(session.getInterpreter(), createToolFilterDescriptionOnDiagram("name"), diagram);
 
         final Runnable mock = createMock(Runnable.class);
         listener.setUpdateRunnable(mock);
@@ -130,7 +130,7 @@ public class ToolFilterDescriptionListenerTests extends TestCase {
     }
 
     public void testMultipleNotifications() throws Exception {
-        final ToolFilterDescriptionListener listener = new ToolFilterDescriptionListener(createToolFilterDescriptionOnDiagram("name", "info"), diagram);
+        final ToolFilterDescriptionListener listener = new ToolFilterDescriptionListener(session.getInterpreter(), createToolFilterDescriptionOnDiagram("name", "info"), diagram);
 
         final Runnable mock = createMock(Runnable.class);
         listener.setUpdateRunnable(mock);
@@ -155,7 +155,7 @@ public class ToolFilterDescriptionListenerTests extends TestCase {
     }
 
     public void testAddRemoveListener() throws Exception {
-        final ToolFilterDescriptionListener listener = new ToolFilterDescriptionListener(createToolFilterDescriptionOnDiagram("name"), diagram);
+        final ToolFilterDescriptionListener listener = new ToolFilterDescriptionListener(session.getInterpreter(), createToolFilterDescriptionOnDiagram("name"), diagram);
 
         final Runnable mock = createMock(Runnable.class);
         listener.setUpdateRunnable(mock);
