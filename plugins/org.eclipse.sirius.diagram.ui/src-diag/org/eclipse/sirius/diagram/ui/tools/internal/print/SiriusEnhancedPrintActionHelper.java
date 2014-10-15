@@ -18,9 +18,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.gef.RootEditPart;
 import org.eclipse.gmf.runtime.common.core.util.Log;
 import org.eclipse.gmf.runtime.common.core.util.Trace;
@@ -34,14 +35,11 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.printing.render.actions.EnhancedPrintActionHelper;
 import org.eclipse.gmf.runtime.diagram.ui.printing.render.internal.DiagramUIPrintingRenderDebugOptions;
 import org.eclipse.gmf.runtime.diagram.ui.printing.render.internal.DiagramUIPrintingRenderPlugin;
-import org.eclipse.gmf.runtime.diagram.ui.printing.render.internal.JPSDiagramPrinter;
 import org.eclipse.gmf.runtime.diagram.ui.printing.render.internal.JPSDiagramPrinterHelper;
-import org.eclipse.gmf.runtime.diagram.ui.printing.render.util.RenderedDiagramPrinter;
 import org.eclipse.gmf.runtime.diagram.ui.printing.util.DiagramPrinterUtil;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.IMapMode;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
-import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IWorkbenchPart;
 
 /**
@@ -89,9 +87,9 @@ public class SiriusEnhancedPrintActionHelper implements IPrintActionHelper {
         final IMapMode mapMode = (rootEP instanceof DiagramRootEditPart) ? ((DiagramRootEditPart) rootEP).getMapMode() : MapModeUtil.getMapMode();
 
         if (Platform.getOS().startsWith(Platform.OS_WIN32) && Platform.getOSArch().equals(Platform.ARCH_X86)) {
-            DiagramPrinterUtil.printWithSettings(diagramEditor, createDiagramMap(), new RenderedDiagramPrinter(preferencesHint, mapMode));
+            DiagramPrinterUtil.printWithSettings(diagramEditor, createDiagramMap(), new SiriusSWTRenderedDiagramPrinter(preferencesHint, mapMode));
         } else {
-            JPSDiagramPrinterHelper.getDiagramPrinterHelper().printWithSettings(diagramEditor, createDiagramMap(), new JPSDiagramPrinter(preferencesHint, mapMode));
+            JPSDiagramPrinterHelper.getDiagramPrinterHelper().printWithSettings(diagramEditor, createDiagramMap(), new SiriusJPSRenderedDiagramPrinter(preferencesHint, mapMode));
         }
     }
 
@@ -112,28 +110,22 @@ public class SiriusEnhancedPrintActionHelper implements IPrintActionHelper {
             final Object obj = it.next();
             if (obj instanceof DiagramEditor) { // DiagramDocumentEditor
                 final DiagramEditor dEditor = (DiagramEditor) obj;
-                String diagramName = null;
-                final IEditorInput editorInput = dEditor.getEditorInput();
-
-                // Get the editor title or part name
-                diagramName = dEditor.getPartName();
+                Diagram diagram = dEditor.getDiagram();
+                String diagramName = dEditor.getPartName();
                 if (diagramName == null) {
                     diagramName = dEditor.getTitle();
                 }
-                // try to be more descriptive and get the IFile path which
-                // includes the project
-                final IFile file = (IFile) (editorInput.getAdapter(IFile.class));
-                if (file != null) {
-                    diagramName = file.getFullPath().toOSString() + "#" + diagramName;
+                if (diagramName == null) {
+                    diagramName = diagram.getName();
                 }
 
-                if (diagramName == null) {
-                    // the last choice is to use the actual name of the diagram
-                    // this has to exist!
-                    diagramName = dEditor.getDiagram().getName();
+                Resource resource = diagram.eResource();
+                if (resource != null) {
+                    URI resourceURI = resource.getURI();
+                    diagramName = resourceURI.toString() + "#" + diagramName;
                 }
                 diagramName = makeNameUnique(diagramName, diagramMap.keySet());
-                diagramMap.put(diagramName, dEditor.getDiagram());
+                diagramMap.put(diagramName, diagram);
             }
         }
         return diagramMap;
