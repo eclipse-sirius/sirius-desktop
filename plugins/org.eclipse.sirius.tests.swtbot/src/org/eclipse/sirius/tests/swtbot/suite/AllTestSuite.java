@@ -38,6 +38,7 @@ import org.eclipse.sirius.tests.swtbot.layout.ContainerDefaultSizeLayoutTest;
 import org.eclipse.sirius.tests.swtbot.layout.EdgeAndPortStabilityOnSemanticChangeTest;
 import org.eclipse.sirius.tests.swtbot.layout.EdgeCopyPasteLayoutTest;
 import org.eclipse.sirius.tests.swtbot.layout.EdgeLayoutStabilityWithToolWizardTest;
+import org.eclipse.sirius.tests.swtbot.layout.EdgeStabilityOnCopyPasteLayoutTest;
 import org.eclipse.sirius.tests.swtbot.layout.LayoutStabilityOnManualRefreshTest;
 import org.eclipse.sirius.tests.swtbot.layout.ModifyEdgeLayoutAfterRefreshTest;
 import org.eclipse.sirius.tests.swtbot.layout.PackageLayoutStabilityOnManyViewsCreationToolTest;
@@ -143,6 +144,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(CopyPasteLayoutOfLabelOfBorderedNodeTest.class);
         suite.addTestSuite(NodeBorderLabelPositionStabilityTest.class);
         suite.addTestSuite(EdgeLayoutStabilityWithToolWizardTest.class);
+        suite.addTestSuite(EdgeStabilityOnCopyPasteLayoutTest.class);
         suite.addTestSuite(PortSelectionTest.class);
         suite.addTestSuite(PortNotVisibleSelectionTest.class);
         suite.addTestSuite(RefreshAfterUndoDeletionFromGenericToolTest.class);
