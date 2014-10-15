@@ -17,6 +17,7 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.transaction.RecordingCommand;
@@ -34,6 +35,7 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
@@ -321,11 +323,32 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
         protected void doExecute() {
             DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CLEANING_REMOVEDANGLING_KEY);
             for (EObject eObject : toRemoveXRefFrom) {
+
+                // ModelAccessor will access to the inverse references.
+                // RemoveDanglingReferencesCommand should remove only inverse
+                // cross references from non detached EObjects. This allows to
+                // trigger a second refresh by the
+                // RefreshEditorsPrecommitListener only when the command removed
+                // some dangling reference.
+                ECrossReferenceAdapter filteredCrossReferencer = new ECrossReferenceAdapter() {
+                    @Override
+                    public Collection<Setting> getInverseReferences(EObject eObject, boolean resolve) {
+                        Collection<Setting> settings = xReferencer.getInverseReferences(eObject, resolve);
+                        Collection<Setting> settingsToTryToUnset = Lists.newArrayList();
+                        for (Setting s : settings) {
+                            if (!toRemoveXRefFrom.contains(s.getEObject())) {
+                                settingsToTryToUnset.add(s);
+                            }
+                        }
+                        return settingsToTryToUnset;
+                    }
+                };
+
                 // No need to call eDelete here: only remove dangling references
                 // to the detached EObject and avoid to trigger the creation of
                 // new REMOVE notifications by removing the indirectly detached
                 // object from their container.
-                modelAccessor.eRemoveInverseCrossReferences(eObject, xReferencer, isReferenceToIgnorePredicate);
+                modelAccessor.eRemoveInverseCrossReferences(eObject, filteredCrossReferencer, isReferenceToIgnorePredicate);
             }
             DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.CLEANING_REMOVEDANGLING_KEY);
 
