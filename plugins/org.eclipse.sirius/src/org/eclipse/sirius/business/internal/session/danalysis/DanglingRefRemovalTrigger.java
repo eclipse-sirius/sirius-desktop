@@ -199,10 +199,11 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
                 EReferencePredicate refToIgnore = new EReferencePredicate() {
                     @Override
                     public boolean apply(EReference ref) {
-                        return DSEMANTICDECORATOR_REFERENCE_TO_IGNORE_PREDICATE.apply(ref) || NOTATION_VIEW_ELEMENT_REFERENCE_TO_IGNORE_PREDICATE.apply(ref) || EPACKAGE_EFACTORYINSTANCE_REFERENCE_TO_IGNORE_PREDICATE.apply(ref);
+                        return DSEMANTICDECORATOR_REFERENCE_TO_IGNORE_PREDICATE.apply(ref) || NOTATION_VIEW_ELEMENT_REFERENCE_TO_IGNORE_PREDICATE.apply(ref)
+                                || EPACKAGE_EFACTORYINSTANCE_REFERENCE_TO_IGNORE_PREDICATE.apply(ref);
                     }
                 };
-                        
+
                 Command removeDangling = new RemoveDanglingReferencesCommand(domain, accessor, xRef, toRemoveXRefFrom, refToIgnore);
                 DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.CLEANING_REMOVEDANGLING_KEY);
                 return Options.newSome(removeDangling);
@@ -214,7 +215,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
 
     /**
      * Return the EObjects which have been changed by the given notifications
-     * and their childrens.
+     * and their children.
      * 
      * @param notifications
      *            notifications to process.
@@ -223,15 +224,19 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
      *            ignored regarding its EObject notifier or not (can be null if
      *            all notifications should be considered)
      * @return the EObjects which have been changed by the given notifications
-     *         and their childrens.
+     *         and their children.
      */
     protected Set<EObject> getChangedEObjectsAndChildren(Iterable<Notification> notifications, Predicate<EObject> notifierToIgnore) {
         final Set<EObject> changedEObjects = Sets.newLinkedHashSet();
         for (Notification notification : notifications) {
             if (notifierToIgnore == null || notification.getNotifier() instanceof EObject && !notifierToIgnore.apply((EObject) notification.getNotifier())) {
                 for (EObject root : getNotificationValues(notification)) {
-                    changedEObjects.add(root);
-                    Iterators.addAll(changedEObjects, root.eAllContents());
+                    // Add the element and all its contents to the
+                    // changedEObjects set only once.
+                    if (!changedEObjects.contains(root)) {
+                        changedEObjects.add(root);
+                        Iterators.addAll(changedEObjects, root.eAllContents());
+                    }
                 }
             }
         }
@@ -316,7 +321,11 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
         protected void doExecute() {
             DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CLEANING_REMOVEDANGLING_KEY);
             for (EObject eObject : toRemoveXRefFrom) {
-                modelAccessor.eDelete(eObject, xReferencer, isReferenceToIgnorePredicate);
+                // No need to call eDelete here: only remove dangling references
+                // to the detached EObject and avoid to trigger the creation of
+                // new REMOVE notifications by removing the indirectly detached
+                // object from their container.
+                modelAccessor.eRemoveInverseCrossReferences(eObject, xReferencer, isReferenceToIgnorePredicate);
             }
             DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.CLEANING_REMOVEDANGLING_KEY);
 
