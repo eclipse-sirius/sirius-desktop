@@ -10,18 +10,26 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.io.IOException;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.emf.common.command.AbstractCommand;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcoreFactory;
-import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.impl.TransactionalEditingDomainImpl;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.View;
@@ -34,18 +42,15 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
+import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.tests.support.api.GraphicTestsSupportHelp;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swt.widgets.TreeItem;
-import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
-import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
-import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.Result;
@@ -59,6 +64,35 @@ import com.google.common.collect.Lists;
  * @author nlepine
  */
 public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
+
+    /**
+     * Specific {@link RecordingCommand} that allows to initialize the semantic
+     * {@link #root}. The method {@link #setRootPackage(EPackage)} must be
+     * called before executing this command.
+     * 
+     * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
+     */
+    abstract class RecordingCommandWithModelInitializer extends RecordingCommand {
+        EPackage root;
+
+        /**
+         * Initializes me with the editing domain in which I am to be executed.
+         * 
+         * @param domain
+         *            my domain
+         */
+        public RecordingCommandWithModelInitializer(TransactionalEditingDomain domain) {
+            super(domain);
+        }
+
+        public void setRootPackage(EPackage root) {
+            this.root = root;
+        }
+
+        public EPackage getRootPackage() {
+            return root;
+        }
+    }
 
     private static final String REFRESH_DIAGRAM_ON_OPENING = "Refresh diagram on opening";
 
@@ -74,8 +108,6 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String P2 = "p2";
 
     private static final String P3 = "p3";
-
-    private static final String PLATFORM_RESOURCE_DESIGNER_TEST_PROJECT_1633_ECORE = "platform:/resource/DesignerTestProject/1633.ecore";
 
     private static final Point ORIGIN_POSITION = new Point(0, 0);
 
@@ -140,9 +172,9 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
 
     private UILocalSession localSession;
 
-    private UIResource semanticModel;
+    private EObject semanticModel;
 
-    private SWTBotEditor treeEditor;
+    private TransactionalEditingDomain otherTED;
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
@@ -153,9 +185,17 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource, true);
-        semanticModel = new UIResource(designerProject, MODEL);
-        final SWTBotTreeItem semanticResourceNode = localSession.getSemanticResourceNode(semanticModel);
+        // Get the semantic model root
+        Iterator<Resource> resourcesIterator = localSession.getOpenedSession().getSemanticResources().iterator();
+        if (resourcesIterator.hasNext()) {
+            Resource semanticResource = resourcesIterator.next();
+            if (!semanticResource.getContents().isEmpty()) {
+                semanticModel = semanticResource.getContents().get(0);
+            }
+        }
+        final SWTBotTreeItem semanticResourceNode = localSession.getSemanticResourceNode(new UIResource(designerProject, MODEL));
         semanticResourceNode.expandNode(P1).click();
+        otherTED = new TransactionalEditingDomainImpl(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE));
     }
 
     private void openDiagram() {
@@ -165,9 +205,26 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
 
     private SWTBotSiriusDiagramEditor openDiagram(String representationDescriptionName, String representationName) {
         SWTBotUtils.waitAllUiEvents();
-        SWTBotSiriusDiagramEditor swtBotEditor = openDiagram(localSession.getOpenedSession(), representationDescriptionName, representationName, DDiagram.class);
+        SWTBotSiriusDiagramEditor swtBotEditor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), representationDescriptionName, representationName, DDiagram.class);
         SWTBotUtils.waitAllUiEvents();
         return swtBotEditor;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void tearDown() throws Exception {
+        otherTED.dispose();
+        otherTED = null;
+        if (editor != null) {
+            editor.close();
+        }
+        editor = null;
+        sessionAirdResource = null;
+        localSession = null;
+        semanticModel = null;
+        super.tearDown();
     }
 
     /**
@@ -435,9 +492,8 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
      * Test the node list creation
      */
     public void testNodeListCreationOnDiagram() {
-        openModels();
+        openDiagram();
         updateSemanticModel();
-        saveAndClose();
 
         editor.click(0, 0);
         manualRefresh();
@@ -461,11 +517,7 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
      * Test the node list creation
      */
     public void testNodeListCreationOnOpeningDiagram() {
-        openSemanticModel();
         updateSemanticModel();
-        bot.menu("File").menu("Save").click();
-        treeEditor.close();
-        SWTBotUtils.waitAllUiEvents();
         openDiagram();
         // check that the new classes are in the right positions
         checkListCreationPosition();
@@ -495,9 +547,8 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
      * Test the node list creation
      */
     public void testOneNodeListCreationOnDiagram() {
-        openModels();
+        openDiagram();
         updateOneSemanticModel();
-        saveAndClose();
 
         editor.click(0, 0);
         manualRefresh();
@@ -520,10 +571,7 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
      * Test the node list creation
      */
     public void testOneNodeListCreationOnOpeningDiagram() {
-        openSemanticModel();
         updateOneSemanticModel();
-        bot.menu("File").menu("Save").click();
-        treeEditor.close();
         openDiagram();
         // check that the new classes are in the right positions
         checkOneListCreationPosition(false);
@@ -586,20 +634,11 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Open the models
-     */
-    private void openModels() {
-        openDiagram();
-        openSemanticModel();
-    }
-
-    /**
      * Test the node creation
      */
     public void testNodeCreationOnDiagram() {
-        openModels();
+        openDiagram();
         updateNodeSemanticModel();
-        saveAndClose();
 
         editor.click(0, 0);
         manualRefresh();
@@ -622,10 +661,7 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
      * Test the node creation
      */
     public void testNodeCreationOnOpeningDiagram() {
-        openSemanticModel();
         updateNodeSemanticModel();
-        bot.menu("File").menu("Save").click();
-        treeEditor.close();
         openDiagram();
         // check that the new classes are in the right positions
         checkNodeCreationPosition();
@@ -649,9 +685,8 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
      * Test the node creation
      */
     public void testOneNodeCreationOnDiagram() {
-        openModels();
+        openDiagram();
         updateOneNodeSemanticModel();
-        saveAndClose();
 
         editor.click(0, 0);
         manualRefresh();
@@ -674,10 +709,7 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
      * Test the node creation
      */
     public void testOneNodeCreationOnOpeningDiagram() {
-        openSemanticModel();
         updateOneNodeSemanticModel();
-        bot.menu("File").menu("Save").click();
-        treeEditor.close();
         openDiagram();
         // check that the new classes are in the right positions
         checkOneNodeCreationPosition(false);
@@ -703,9 +735,8 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
      * Test the container creation
      */
     public void testContainerCreationOnDiagram() {
-        openModels();
+        openDiagram();
         updateContainerSemanticModel();
-        saveAndClose();
 
         editor.click(0, 0);
         manualRefresh();
@@ -728,10 +759,7 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
      * Test the container creation
      */
     public void testContainerCreationOnOpeningDiagram() {
-        openSemanticModel();
         updateContainerSemanticModel();
-        bot.menu("File").menu("Save").click();
-        treeEditor.close();
         openDiagram();
         // check that the new classes are in the right positions
         checkContainerCreationPosition();
@@ -755,9 +783,8 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
      * Test one container creation
      */
     public void testOneContainerCreationOnDiagram() {
-        openModels();
+        openDiagram();
         updateOneContainerSemanticModel();
-        saveAndClose();
 
         editor.click(0, 0);
         manualRefresh();
@@ -780,10 +807,7 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
      * Test the container creation
      */
     public void testOneContainerCreationOnOpeningDiagram() {
-        openSemanticModel();
         updateOneContainerSemanticModel();
-        bot.menu("File").menu("Save").click();
-        treeEditor.close();
         openDiagram();
         // check that the new classes are in the right positions
         checkOneContainerCreationPosition(true);
@@ -817,9 +841,7 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
 
         editor.close();
 
-        openSemanticModel();
         updateOneSemanticModel();
-        treeEditor.save();
 
         editor = openDiagram(REPRESENTATION_NAME_TER, REPRESENTATION_INSTANCE_NAME_TER);
 
@@ -834,9 +856,7 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
         editor.save();
         editor.close();
 
-        treeEditor.setFocus();
         updateOneSemanticModel();
-        treeEditor.save();
 
         editor = openDiagram(REPRESENTATION_NAME_TER, REPRESENTATION_INSTANCE_NAME_TER);
 
@@ -850,35 +870,74 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
 
         editor.save();
         editor.close();
-        treeEditor.close();
     }
 
-    /**
-     * Add classes in packages
-     */
+    private void updateSemanticModelInAnotherResourceSet(RecordingCommandWithModelInitializer commandToExecute) {
+        // Load the semantic resource in another resource set, add a new class
+        // in package p1 and save the resource.
+        ResourceSet set = otherTED.getResourceSet();
+        try {
+            EPackage ePackage = (EPackage) semanticModel;
+            final EPackage ePackageInAnotherResourceSet = (EPackage) ModelUtils.load(ePackage.eResource().getURI(), set);
+            assertFalse("The editing domain of each root semantic must be different.", otherTED.equals(TransactionUtil.getEditingDomain(ePackage)));
+
+            commandToExecute.setRootPackage(ePackageInAnotherResourceSet);
+            otherTED.getCommandStack().execute(commandToExecute);
+            ePackageInAnotherResourceSet.eResource().save(Collections.EMPTY_MAP);
+        } catch (IOException e) {
+            fail("Pb when saving the resource in another resourceSet : " + e.getMessage());
+        }
+        SWTBotUtils.waitAllUiEvents();
+    }
+
     private void updateSemanticModel() {
-        SWTBotTreeItem treeItem = treeEditor.bot().tree().expandNode(PLATFORM_RESOURCE_DESIGNER_TEST_PROJECT_1633_ECORE).expandNode(P1).select();
-        final EPackage package1 = (EPackage) getData(treeItem.widget);
-        final EditingDomain editingDomain = ((IEditingDomainProvider) treeEditor.getReference().getEditor(true)).getEditingDomain();
-        addClasses(package1, editingDomain);
+        updateSemanticModelInAnotherResourceSet(new RecordingCommandWithModelInitializer(otherTED) {
+            @Override
+            protected void doExecute() {
+                EClass class1 = EcoreFactory.eINSTANCE.createEClass();
+                class1.setName(C1);
+                getRootPackage().getEClassifiers().add(class1);
+                class1 = EcoreFactory.eINSTANCE.createEClass();
+                class1.setName(C2);
+                getRootPackage().getEClassifiers().add(class1);
+                EPackage package2 = getRootPackage().getESubpackages().get(0);
+                class1 = EcoreFactory.eINSTANCE.createEClass();
+                class1.setName(C3);
+                package2.getEClassifiers().add(class1);
+                class1 = EcoreFactory.eINSTANCE.createEClass();
+                class1.setName(C4);
+                package2.getEClassifiers().add(class1);
+                EPackage package3 = package2.getESubpackages().get(0);
+                class1 = EcoreFactory.eINSTANCE.createEClass();
+                class1.setName(C5);
+                package3.getEClassifiers().add(class1);
+                class1 = EcoreFactory.eINSTANCE.createEClass();
+                class1.setName(C6);
+                package3.getEClassifiers().add(class1);
+            }
+        });
     }
 
     /**
-     * Add classe in packages
+     * Add new class in package p1
      */
     private void updateOneSemanticModel() {
-        SWTBotTreeItem treeItem = treeEditor.bot().tree().expandNode(PLATFORM_RESOURCE_DESIGNER_TEST_PROJECT_1633_ECORE).expandNode(P1).select();
-        final EPackage package1 = (EPackage) getData(treeItem.widget);
-        final EditingDomain editingDomain = ((IEditingDomainProvider) treeEditor.getReference().getEditor(true)).getEditingDomain();
-        addClasse(package1, editingDomain);
-    }
-
-    /**
-     * 
-     */
-    private void saveAndClose() {
-        bot.menu("File").menu("Save").click();
-        treeEditor.close();
+        updateSemanticModelInAnotherResourceSet(new RecordingCommandWithModelInitializer(otherTED) {
+            @Override
+            protected void doExecute() {
+                EClass class1 = EcoreFactory.eINSTANCE.createEClass();
+                class1.setName(C1);
+                getRootPackage().getEClassifiers().add(class1);
+                EPackage package2 = getRootPackage().getESubpackages().get(0);
+                class1 = EcoreFactory.eINSTANCE.createEClass();
+                class1.setName(C3);
+                package2.getEClassifiers().add(class1);
+                EPackage package3 = package2.getESubpackages().get(0);
+                class1 = EcoreFactory.eINSTANCE.createEClass();
+                class1.setName(C5);
+                package3.getEClassifiers().add(class1);
+            }
+        });
     }
 
     private void saveCloseReopenDiagram() {
@@ -892,262 +951,99 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
      * Add classes in packages
      */
     private void updateContainerSemanticModel() {
-        SWTBotTreeItem treeItem = treeEditor.bot().tree().expandNode(PLATFORM_RESOURCE_DESIGNER_TEST_PROJECT_1633_ECORE).expandNode(P1).select();
-        final EPackage package1 = (EPackage) getData(treeItem.widget);
-        final EditingDomain editingDomain = ((IEditingDomainProvider) treeEditor.getReference().getEditor(true)).getEditingDomain();
-        addPackages(package1, editingDomain);
+        updateSemanticModelInAnotherResourceSet(new RecordingCommandWithModelInitializer(otherTED) {
+            @Override
+            protected void doExecute() {
+                EPackage package2 = getRootPackage().getESubpackages().get(0);
+                EPackage package3 = package2.getESubpackages().get(0);
+
+                EPackage class1 = EcoreFactory.eINSTANCE.createEPackage();
+                class1.setName(C1);
+                getRootPackage().getESubpackages().add(class1);
+                class1 = EcoreFactory.eINSTANCE.createEPackage();
+                class1.setName(C2);
+                getRootPackage().getESubpackages().add(class1);
+                class1 = EcoreFactory.eINSTANCE.createEPackage();
+                class1.setName(C3);
+                package2.getESubpackages().add(class1);
+                class1 = EcoreFactory.eINSTANCE.createEPackage();
+                class1.setName(C4);
+                package2.getESubpackages().add(class1);
+                class1 = EcoreFactory.eINSTANCE.createEPackage();
+                class1.setName(C5);
+                package3.getESubpackages().add(class1);
+                class1 = EcoreFactory.eINSTANCE.createEPackage();
+                class1.setName(C6);
+                package3.getESubpackages().add(class1);
+            }
+        });
     }
 
-    /**
-     * Add classe in packages
-     */
     private void updateOneContainerSemanticModel() {
-        SWTBotTreeItem treeItem = treeEditor.bot().tree().expandNode(PLATFORM_RESOURCE_DESIGNER_TEST_PROJECT_1633_ECORE).expandNode(P1).select();
-        final EPackage package1 = (EPackage) getData(treeItem.widget);
-        final EditingDomain editingDomain = ((IEditingDomainProvider) treeEditor.getReference().getEditor(true)).getEditingDomain();
-        addPackage(package1, editingDomain);
+        updateSemanticModelInAnotherResourceSet(new RecordingCommandWithModelInitializer(otherTED) {
+            @Override
+            protected void doExecute() {
+                EPackage package2 = getRootPackage().getESubpackages().get(0);
+                EPackage package3 = package2.getESubpackages().get(0);
+
+                EPackage class1 = EcoreFactory.eINSTANCE.createEPackage();
+                class1.setName(C1);
+                getRootPackage().getESubpackages().add(class1);
+                class1 = EcoreFactory.eINSTANCE.createEPackage();
+                class1.setName(C3);
+                package2.getESubpackages().add(class1);
+                class1 = EcoreFactory.eINSTANCE.createEPackage();
+                class1.setName(C5);
+                package3.getESubpackages().add(class1);
+            }
+        });
     }
 
-    /**
-     * Add classes in packages
-     */
     private void updateNodeSemanticModel() {
-        SWTBotTreeItem treeItem = treeEditor.bot().tree().expandNode(PLATFORM_RESOURCE_DESIGNER_TEST_PROJECT_1633_ECORE).expandNode(P1).select();
-        final EPackage package1 = (EPackage) getData(treeItem.widget);
-        final EditingDomain editingDomain = ((IEditingDomainProvider) treeEditor.getReference().getEditor(true)).getEditingDomain();
-        addEnums(package1, editingDomain);
+        updateSemanticModelInAnotherResourceSet(new RecordingCommandWithModelInitializer(otherTED) {
+            @Override
+            protected void doExecute() {
+                EPackage package2 = getRootPackage().getESubpackages().get(0);
+                EPackage package3 = package2.getESubpackages().get(0);
+
+                EEnum class1 = EcoreFactory.eINSTANCE.createEEnum();
+                class1.setName(C1);
+                getRootPackage().getEClassifiers().add(class1);
+                class1 = EcoreFactory.eINSTANCE.createEEnum();
+                class1.setName(C2);
+                getRootPackage().getEClassifiers().add(class1);
+                class1 = EcoreFactory.eINSTANCE.createEEnum();
+                class1.setName(C3);
+                package2.getEClassifiers().add(class1);
+                class1 = EcoreFactory.eINSTANCE.createEEnum();
+                class1.setName(C4);
+                package2.getEClassifiers().add(class1);
+                class1 = EcoreFactory.eINSTANCE.createEEnum();
+                class1.setName(C5);
+                package3.getEClassifiers().add(class1);
+                class1 = EcoreFactory.eINSTANCE.createEEnum();
+                class1.setName(C6);
+                package3.getEClassifiers().add(class1);
+            }
+        });
     }
 
-    /**
-     * Add classe in packages
-     */
     private void updateOneNodeSemanticModel() {
-        SWTBotTreeItem treeItem = treeEditor.bot().tree().expandNode(PLATFORM_RESOURCE_DESIGNER_TEST_PROJECT_1633_ECORE).expandNode(P1).select();
-        final EPackage package1 = (EPackage) getData(treeItem.widget);
-        final EditingDomain editingDomain = ((IEditingDomainProvider) treeEditor.getReference().getEditor(true)).getEditingDomain();
-        addEnum(package1, editingDomain);
-    }
-
-    /**
-     * @param data
-     * @param editingDomain
-     */
-    private void addClasses(final EPackage data, final EditingDomain editingDomain) {
-        editingDomain.getCommandStack().execute(new AbstractCommand() {
-            /** {@inheritDoc} */
-            public void execute() {
-                EClass class1 = EcoreFactory.eINSTANCE.createEClass();
-                class1.setName(C1);
-                data.getEClassifiers().add(class1);
-                class1 = EcoreFactory.eINSTANCE.createEClass();
-                class1.setName(C2);
-                data.getEClassifiers().add(class1);
-                EPackage package2 = data.getESubpackages().get(0);
-                class1 = EcoreFactory.eINSTANCE.createEClass();
-                class1.setName(C3);
-                package2.getEClassifiers().add(class1);
-                class1 = EcoreFactory.eINSTANCE.createEClass();
-                class1.setName(C4);
-                package2.getEClassifiers().add(class1);
-                EPackage package3 = package2.getESubpackages().get(0);
-                class1 = EcoreFactory.eINSTANCE.createEClass();
-                class1.setName(C5);
-                package3.getEClassifiers().add(class1);
-                class1 = EcoreFactory.eINSTANCE.createEClass();
-                class1.setName(C6);
-                package3.getEClassifiers().add(class1);
-
-            }
-
+        updateSemanticModelInAnotherResourceSet(new RecordingCommandWithModelInitializer(otherTED) {
             @Override
-            public boolean canExecute() {
-                return true;
-            }
-
-            public void redo() {
-            }
-        });
-    }
-
-    /**
-     * @param data
-     * @param editingDomain
-     */
-    private void addClasse(final EPackage data, final EditingDomain editingDomain) {
-        editingDomain.getCommandStack().execute(new AbstractCommand() {
-            /** {@inheritDoc} */
-            public void execute() {
-                EClass class1 = EcoreFactory.eINSTANCE.createEClass();
-                class1.setName(C1);
-                data.getEClassifiers().add(class1);
-                EPackage package2 = data.getESubpackages().get(0);
-                class1 = EcoreFactory.eINSTANCE.createEClass();
-                class1.setName(C3);
-                package2.getEClassifiers().add(class1);
-                EPackage package3 = package2.getESubpackages().get(0);
-                class1 = EcoreFactory.eINSTANCE.createEClass();
-                class1.setName(C5);
-                package3.getEClassifiers().add(class1);
-            }
-
-            @Override
-            public boolean canExecute() {
-                return true;
-            }
-
-            public void redo() {
-            }
-        });
-    }
-
-    /**
-     * @param package1
-     * @param editingDomain
-     */
-    private void addPackages(final EPackage package1, final EditingDomain editingDomain) {
-        editingDomain.getCommandStack().execute(new AbstractCommand() {
-            /** {@inheritDoc} */
-            public void execute() {
-                EPackage package2 = package1.getESubpackages().get(0);
-                EPackage package3 = package2.getESubpackages().get(0);
-
-                EPackage class1 = EcoreFactory.eINSTANCE.createEPackage();
-                class1.setName(C1);
-                package1.getESubpackages().add(class1);
-                class1 = EcoreFactory.eINSTANCE.createEPackage();
-                class1.setName(C2);
-                package1.getESubpackages().add(class1);
-                class1 = EcoreFactory.eINSTANCE.createEPackage();
-                class1.setName(C3);
-                package2.getESubpackages().add(class1);
-                class1 = EcoreFactory.eINSTANCE.createEPackage();
-                class1.setName(C4);
-                package2.getESubpackages().add(class1);
-                class1 = EcoreFactory.eINSTANCE.createEPackage();
-                class1.setName(C5);
-                package3.getESubpackages().add(class1);
-                class1 = EcoreFactory.eINSTANCE.createEPackage();
-                class1.setName(C6);
-                package3.getESubpackages().add(class1);
-
-            }
-
-            @Override
-            public boolean canExecute() {
-                return true;
-            }
-
-            public void redo() {
-            }
-        });
-    }
-
-    /**
-     * @param package1
-     * @param editingDomain
-     */
-    private void addPackage(final EPackage package1, final EditingDomain editingDomain) {
-        editingDomain.getCommandStack().execute(new AbstractCommand() {
-            /** {@inheritDoc} */
-            public void execute() {
-                EPackage package2 = package1.getESubpackages().get(0);
-                EPackage package3 = package2.getESubpackages().get(0);
-
-                EPackage class1 = EcoreFactory.eINSTANCE.createEPackage();
-                class1.setName(C1);
-                package1.getESubpackages().add(class1);
-                class1 = EcoreFactory.eINSTANCE.createEPackage();
-                class1.setName(C3);
-                package2.getESubpackages().add(class1);
-                class1 = EcoreFactory.eINSTANCE.createEPackage();
-                class1.setName(C5);
-                package3.getESubpackages().add(class1);
-            }
-
-            @Override
-            public boolean canExecute() {
-                return true;
-            }
-
-            public void redo() {
-            }
-        });
-    }
-
-    /**
-     * Add enums in packages
-     * 
-     * @param package1
-     * @param editingDomain
-     */
-    private void addEnums(final EPackage package1, final EditingDomain editingDomain) {
-        editingDomain.getCommandStack().execute(new AbstractCommand() {
-            /** {@inheritDoc} */
-            public void execute() {
-                EPackage package2 = package1.getESubpackages().get(0);
+            protected void doExecute() {
+                EPackage package2 = getRootPackage().getESubpackages().get(0);
                 EPackage package3 = package2.getESubpackages().get(0);
 
                 EEnum class1 = EcoreFactory.eINSTANCE.createEEnum();
                 class1.setName(C1);
-                package1.getEClassifiers().add(class1);
-                class1 = EcoreFactory.eINSTANCE.createEEnum();
-                class1.setName(C2);
-                package1.getEClassifiers().add(class1);
-                class1 = EcoreFactory.eINSTANCE.createEEnum();
-                class1.setName(C3);
-                package2.getEClassifiers().add(class1);
-                class1 = EcoreFactory.eINSTANCE.createEEnum();
-                class1.setName(C4);
-                package2.getEClassifiers().add(class1);
-                class1 = EcoreFactory.eINSTANCE.createEEnum();
-                class1.setName(C5);
-                package3.getEClassifiers().add(class1);
-                class1 = EcoreFactory.eINSTANCE.createEEnum();
-                class1.setName(C6);
-                package3.getEClassifiers().add(class1);
-
-            }
-
-            @Override
-            public boolean canExecute() {
-                return true;
-            }
-
-            public void redo() {
-            }
-        });
-    }
-
-    /**
-     * Add enum in packages
-     * 
-     * @param package1
-     * @param editingDomain
-     */
-    private void addEnum(final EPackage package1, final EditingDomain editingDomain) {
-        editingDomain.getCommandStack().execute(new AbstractCommand() {
-            /** {@inheritDoc} */
-            public void execute() {
-                EPackage package2 = package1.getESubpackages().get(0);
-                EPackage package3 = package2.getESubpackages().get(0);
-
-                EEnum class1 = EcoreFactory.eINSTANCE.createEEnum();
-                class1.setName(C1);
-                package1.getEClassifiers().add(class1);
+                getRootPackage().getEClassifiers().add(class1);
                 class1 = EcoreFactory.eINSTANCE.createEEnum();
                 class1.setName(C3);
                 package2.getEClassifiers().add(class1);
                 class1 = EcoreFactory.eINSTANCE.createEEnum();
                 class1.setName(C5);
                 package3.getEClassifiers().add(class1);
-            }
-
-            @Override
-            public boolean canExecute() {
-                return true;
-            }
-
-            public void redo() {
             }
         });
     }
@@ -1165,17 +1061,6 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
                 return widget.getData();
             }
         });
-    }
-
-    /**
-     * Open the semantic model
-     */
-    private void openSemanticModel() {
-        SWTBotView projectExplorer = bot.viewByTitle("Model Explorer");
-        projectExplorer.setFocus();
-        SWTBot projectExplorerBot = projectExplorer.bot();
-        projectExplorerBot.tree().expandNode(getProjectName()).expandNode(MODEL).doubleClick();
-        treeEditor = bot.activeEditor();
     }
 
     /**
@@ -1344,26 +1229,7 @@ public class NodeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
         } catch (WidgetNotFoundException e) {
             found = false;
         } finally {
-            assertFalse("Edi part should not exist", found);
+            assertFalse("Edit part should not exist", found);
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void tearDown() throws Exception {
-        if (editor != null) {
-            editor.close();
-        }
-        editor = null;
-        sessionAirdResource = null;
-        localSession = null;
-        semanticModel = null;
-        if (treeEditor != null) {
-            treeEditor.close();
-        }
-        treeEditor = null;
-        super.tearDown();
     }
 }
