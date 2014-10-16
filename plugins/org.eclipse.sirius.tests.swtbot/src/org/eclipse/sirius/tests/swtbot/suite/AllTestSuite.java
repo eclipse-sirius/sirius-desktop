@@ -167,6 +167,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(BackgroundColorFigureUpdateTests.class);
         suite.addTestSuite(EdgeMappingTestCase.class);
         suite.addTestSuite(DiagramDocumentationTest.class);
+        suite.addTestSuite(DiagramPrintTest.class);
         suite.addTestSuite(DirectEditLabelTest.class);
         suite.addTestSuite(SelectAllAndDeselectionTest.class);
         suite.addTestSuite(NoteCreationTest.class);
