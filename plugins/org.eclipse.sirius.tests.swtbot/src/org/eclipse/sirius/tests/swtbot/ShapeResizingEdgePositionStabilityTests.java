@@ -18,7 +18,6 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
@@ -49,8 +48,6 @@ public class ShapeResizingEdgePositionStabilityTests extends AbstractSiriusSwtBo
 
     private static final Dimension SOUTH = new Dimension(0, 20);
 
-    private static final Dimension WEST = new Dimension(-20, 0);
-
     private static final Dimension SOUTH_EAST = new Dimension(20, 20);
 
     private static final Dimension EAST = new Dimension(20, 0);
@@ -60,10 +57,6 @@ public class ShapeResizingEdgePositionStabilityTests extends AbstractSiriusSwtBo
     private static final Dimension NORTH_EAST = new Dimension(20, -20);
 
     private static final Dimension NORTH_WEST = new Dimension(-20, -20);
-
-    private UIDiagramRepresentation diagram;
-
-    private String VIEWPOINT_NAME = "resizing";
 
     /*
      * (non-Javadoc)
@@ -140,7 +133,7 @@ public class ShapeResizingEdgePositionStabilityTests extends AbstractSiriusSwtBo
      * Resize Container2 toward South-West.
      */
     public void testResizingC2ToSW() {
-        testResizingC2ToSW(ZoomLevel.ZOOM_100);
+        testResizingC2ToSW(ZoomLevel.ZOOM_100, 0);
     }
 
     /**
@@ -148,8 +141,12 @@ public class ShapeResizingEdgePositionStabilityTests extends AbstractSiriusSwtBo
      * 
      * @param zoomLevel
      *            the zoom level.
+     * @param delta
+     *            In some conditions, zoom for example, the points list can be
+     *            slightly different. This parameter allows to use a delta when
+     *            comparing point.
      */
-    protected void testResizingC2ToSW(ZoomLevel zoomLevel) {
+    protected void testResizingC2ToSW(ZoomLevel zoomLevel, int delta) {
         editor.zoom(zoomLevel);
         try {
             PointList edge1PointListBefore = getEdgePointList("edge1");
@@ -157,7 +154,7 @@ public class ShapeResizingEdgePositionStabilityTests extends AbstractSiriusSwtBo
             Rectangle bounds = editor.clickCentered("container2");
             bot.waitUntil(cS);
             resizeToSouthWest(bounds);
-            checkPointsListAfterResizing("edge1", edge1PointListBefore);
+            checkPointsListAfterResizing("edge1", edge1PointListBefore, delta);
         } finally {
             if (!zoomLevel.equals(ZoomLevel.ZOOM_100)) {
                 editor.zoom(ZoomLevel.ZOOM_100);
@@ -169,14 +166,14 @@ public class ShapeResizingEdgePositionStabilityTests extends AbstractSiriusSwtBo
      * Resize Container2 toward South-West with 50% Zoom.
      */
     public void testResizingC2ToSWWith50() {
-        testResizingC2ToSW(ZoomLevel.ZOOM_50);
+        testResizingC2ToSW(ZoomLevel.ZOOM_50, 1);
     }
 
     /**
      * Resize Container2 toward South-West with 125% Zoom.
      */
     public void testResizingC2ToSWWith125() {
-        testResizingC2ToSW(ZoomLevel.ZOOM_125);
+        testResizingC2ToSW(ZoomLevel.ZOOM_125, 0);
     }
 
     /**
@@ -498,12 +495,29 @@ public class ShapeResizingEdgePositionStabilityTests extends AbstractSiriusSwtBo
      *            the edge point list before resizing.
      */
     private void checkPointsListAfterResizing(String edgeId, PointList edgePointListBefore) {
+        checkPointsListAfterResizing(edgeId, edgePointListBefore, 0);
+    }
+
+    /**
+     * Check that the given edge didn't move during the shape resizing.
+     * 
+     * @param string
+     *            the edge label id.
+     * @param edge1PointListBefore
+     *            the edge point list before resizing.
+     * @param delta
+     *            In some conditions, zoom for example, the points list can be
+     *            slightly different. This parameter allows to use a delta when
+     *            comparing point.
+     */
+    private void checkPointsListAfterResizing(String edgeId, PointList edgePointListBefore, int delta) {
         PointList afterPointList = getEdgePointList(edgeId);
         assertEquals("The edge point list size is different", edgePointListBefore.size(), afterPointList.size());
         for (int i = 0; i < edgePointListBefore.size(); i++) {
             Point pointBefore = edgePointListBefore.getPoint(i);
             Point pointAfter = afterPointList.getPoint(i);
-            assertEquals("The point #" + i + " is different after resizing: ", pointBefore, pointAfter);
+            assertEquals("The x coordinate of point #" + i + " is different after resizing: ", pointBefore.x, pointAfter.x, delta);
+            assertEquals("The y coordinate of point #" + i + " is different after resizing: ", pointBefore.y, pointAfter.y, delta);
         }
 
     }
@@ -516,7 +530,6 @@ public class ShapeResizingEdgePositionStabilityTests extends AbstractSiriusSwtBo
      */
     @Override
     protected void tearDown() throws Exception {
-        diagram = null;
         editor.restore();
         editor.close();
         SWTBotUtils.waitAllUiEvents();
@@ -540,10 +553,6 @@ public class ShapeResizingEdgePositionStabilityTests extends AbstractSiriusSwtBo
 
     private void resizeToEast(Rectangle bounds) {
         editor.drag(bounds.getRight(), bounds.getRight().getTranslated(EAST));
-    }
-
-    private void resizeToWest(Rectangle bounds) {
-        editor.drag(bounds.getLeft(), bounds.getLeft().getTranslated(WEST));
     }
 
     private void resizeToNorth(Rectangle bounds) {
