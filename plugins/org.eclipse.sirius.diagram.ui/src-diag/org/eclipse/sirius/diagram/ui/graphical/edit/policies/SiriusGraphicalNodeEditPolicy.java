@@ -264,7 +264,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         restoreMissingBendpointOverCandidate(request, connectionPointList);
 
         // Set the connection bendpoints with a PointList using a command
-        SetConnectionBendpointsCommand sbbCommand = new SetReconnectingConnectionBendpointsCommand(editingDomain, sourceView, sourceView.getTargetEdges(), ReconnectionKind.RECONNECT_SOURCE_LITERAL);
+        SetConnectionBendpointsCommand sbbCommand = new SetReconnectingConnectionBendpointsCommand(editingDomain, sourceView, sourceView.getSourceEdges(), ReconnectionKind.RECONNECT_SOURCE_LITERAL);
         sbbCommand.setNewPointList(connectionPointList, tempSourceRefPoint, tempTargetRefPoint);
         
         cc.compose(sbbCommand);
