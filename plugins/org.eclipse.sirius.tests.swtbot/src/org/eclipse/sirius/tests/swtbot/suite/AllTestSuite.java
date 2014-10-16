@@ -104,6 +104,7 @@ public class AllTestSuite extends TestCase {
 
         suite.addTestSuite(ArrangeAllLinkedBorderedNodesLayoutStabilityAppTemoinTest.class);
         suite.addTestSuite(ArrangeAllLinkedBorderedNodesLayoutStabilityTest.class);
+        suite.addTestSuite(DistributeActionTests.class);
         // TODO CBR : fix these tests
         // suite.addTestSuite(ArrangeAllTest.class);
         suite.addTestSuite(EdgeStabilityOnBendpointsAlignmentTest.class);
