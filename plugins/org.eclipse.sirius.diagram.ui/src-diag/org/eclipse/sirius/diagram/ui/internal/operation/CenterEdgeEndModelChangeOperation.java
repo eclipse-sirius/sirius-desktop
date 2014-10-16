@@ -271,6 +271,12 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
             sourceLineOrigin = existingPointList.getPoint(1);
             targetLineOrigin = existingPointList.getPoint(existingPointList.size() - 2);
         }
+        // In some particular cases, we could have a bendpoint list with less
+        // than 2 elements. In this case we create a new point list that will
+        // contain the two bendpoints computed from the intersection points.
+        else if (existingPointList.size() < 2) {
+            existingPointList = new PointList(new int[] { 0, 0, 0, 0 });
+        }
         Option<Point> sourceConnectionPoint = Options.newNone();
         Option<Point> targetConnectionPoint = Options.newNone();
 
@@ -329,14 +335,20 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
             // GMF bendpoints are not reliable: in some cases they are
             // completely far away from what draw2D is really displaying. If
             // there is only two GMF bendpoints, we can compute them with the
-            // information we know.
-            if (rectilinear.size() == 2) {
+            // information we know. We also could have a point list with less
+            // than two elements.
+            if (rectilinear.size() <= 2) {
                 computePointListByIntersections(rectilinear, sourceBounds, targetBounds);
             }
 
             int sourceAnchorSide = RectilinearHelper.getAnchorOffRectangleDirection(rectilinear.getFirstPoint(), sourceBounds);
             int targetAnchorSide = RectilinearHelper.getAnchorOffRectangleDirection(rectilinear.getLastPoint(), targetBounds);
-            RectilinearHelper.transformToRectilinear(rectilinear, sourceAnchorSide, targetAnchorSide);
+
+            // if the given point list is already rectilinear we do not need to
+            // transform to rectilinear.
+            if (!OrthogonalRouterUtilities.isRectilinear(rectilinear)) {
+                RectilinearHelper.transformToRectilinear(rectilinear, sourceAnchorSide, targetAnchorSide);
+            }
 
             sourceAnchorOrientation = computeSourceOrientation(rectilinear);
             targetAnchorOrientation = computeTargetOrientation(rectilinear);
@@ -676,14 +688,16 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
          */
         @SuppressWarnings("restriction")
         private static void transformToRectilinear(PointList existingPointList, int sourceAnchorRelativeLocation, int targetAnchorRelativeLocation) {
-            Point offStart = existingPointList.getFirstPoint();
-            Point offEnd = existingPointList.getLastPoint();
-            Dimension offsetDim = offStart.getDifference(offEnd).scale(0.5);
-            offStart.translate(getTranslationValue(sourceAnchorRelativeLocation, Math.abs(offsetDim.width), Math.abs(offsetDim.height)));
-            offEnd.translate(getTranslationValue(targetAnchorRelativeLocation, Math.abs(offsetDim.width), Math.abs(offsetDim.height)));
-            existingPointList.insertPoint(offStart, 1);
-            existingPointList.insertPoint(offEnd, 2);
 
+            if (existingPointList.size() == 2) {
+                Point offStart = existingPointList.getFirstPoint();
+                Point offEnd = existingPointList.getLastPoint();
+                Dimension offsetDim = offStart.getDifference(offEnd).scale(0.5);
+                offStart.translate(getTranslationValue(sourceAnchorRelativeLocation, Math.abs(offsetDim.width), Math.abs(offsetDim.height)));
+                offEnd.translate(getTranslationValue(targetAnchorRelativeLocation, Math.abs(offsetDim.width), Math.abs(offsetDim.height)));
+                existingPointList.insertPoint(offStart, 1);
+                existingPointList.insertPoint(offEnd, 2);
+            }
             int offSourceDirection = getOffShapeDirection(sourceAnchorRelativeLocation);
             int offTargetDirection = getOffShapeDirection(targetAnchorRelativeLocation);
 
