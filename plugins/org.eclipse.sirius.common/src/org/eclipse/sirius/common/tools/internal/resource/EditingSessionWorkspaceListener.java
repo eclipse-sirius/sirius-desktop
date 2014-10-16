@@ -17,8 +17,8 @@ import org.eclipse.core.resources.IResourceChangeEvent;
 import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.resource.Resource;
-
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
@@ -57,7 +57,7 @@ public class EditingSessionWorkspaceListener implements IResourceChangeListener 
                 // notify the client
                 if (!changes.isEmpty()) {
                     ResourceSyncClientNotifier resourceSyncClientNotifier = new ResourceSyncClientNotifier(workspaceBackend.getClient(), changes);
-                    resourceSyncClientNotifier.schedule();
+                    resourceSyncClientNotifier.run(new NullProgressMonitor());
                 }
             }
         } catch (final CoreException exception) {
