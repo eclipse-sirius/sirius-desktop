@@ -30,9 +30,9 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
  * Test the Reset Origin action.
  * 
  * @author Florian Barbin
- *
+ * 
  */
-public class ResetDiagramOriginTest extends AbstractSiriusSwtBotGefTestCase {
+public class ResetOriginTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String MODEL = "resetOrigin.ecore";
 
     private static final String SESSION_FILE = "resetOrigin.aird";
@@ -42,6 +42,10 @@ public class ResetDiagramOriginTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String DATA_UNIT_DIR = "data/unit/layout/resetOrigin/";
 
     private static final String REPRESENTATION_DESCRIPTION_NAME = "resetOrigin";
+
+    private static final String REPRESENTATION_FOR_DIAGRAM_NAME = "resetDiagramOrigin";
+
+    private static final String REPRESENTATION_FOR_CONTAINER_NAME = "resetContainerOrigin";
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
@@ -54,16 +58,16 @@ public class ResetDiagramOriginTest extends AbstractSiriusSwtBotGefTestCase {
         super.onSetUpAfterOpeningDesignerPerspective();
         sessionAirdResource = new UIResource(designerProject, "/", SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-        openDiagram("new " + REPRESENTATION_DESCRIPTION_NAME);
-
     }
 
     /**
-     * This test opens the representation, launches the action and checks that
-     * one of the container has been moved at the right location. All primary
-     * shapes are moved equally so we don't need to check each one of them.
+     * This test opens the representation, launches the action on the diagram
+     * and checks that one of the container has been moved at the right
+     * location. All primary shapes are moved equally so we don't need to check
+     * each one of them.
      */
-    public void testResetOriginAction() {
+    public void testResetDiagramOriginAction() {
+        openDiagram(REPRESENTATION_FOR_DIAGRAM_NAME);
         SWTBotGefEditPart mostLeftEditPart = editor.getEditPart("eClassdfgdf dfgdfgdf gdfg dfgdfg d f", DNodeNameEditPart.class);
         SWTBotGefEditPart mostTopEditPart = editor.getEditPart("eClass", DNodeNameEditPart.class);
         SWTBotGefEditPart package4EditPart = editor.getEditPart("Package4", IDiagramContainerEditPart.class);
@@ -83,6 +87,34 @@ public class ResetDiagramOriginTest extends AbstractSiriusSwtBotGefTestCase {
 
         hasTheExpectedBounds(bounds, locationBefore.getTranslated(expectedDelta.x(), expectedDelta.y()));
 
+    }
+
+    /**
+     * This test opens the representation, launches the action on a container
+     * and checks that one of the container has been moved at the right
+     * location. All primary shapes are moved equally so we don't need to check
+     * each one of them.
+     */
+    public void testResetContainerOriginAction() {
+        openDiagram(REPRESENTATION_FOR_CONTAINER_NAME);
+        SWTBotGefEditPart mostLeftEditPart = editor.getEditPart("PackageA", IDiagramContainerEditPart.class);
+        SWTBotGefEditPart mostTopEditPart = editor.getEditPart("PackageB", IDiagramContainerEditPart.class);
+        SWTBotGefEditPart package2EditPart = editor.getEditPart("Package2", IDiagramContainerEditPart.class);
+        editor.select(package2EditPart);
+        Node checkedContainer = (Node) mostLeftEditPart.part().getModel();
+        Bounds checkedBounds = (Bounds) checkedContainer.getLayoutConstraint();
+        Point locationBefore = new Point(checkedBounds.getX(), checkedBounds.getY());
+
+        // we compute the reset origin delta from the most left and the top
+        // figures. (the -20 corresponds to the 20px margin)
+        int xDelta = ((GraphicalEditPart) mostLeftEditPart.part()).getFigure().getBounds().x() - 20;
+        int yDelta = ((GraphicalEditPart) mostTopEditPart.part()).getFigure().getBounds().y() - 20;
+        Point expectedDelta = new Point(-xDelta, -yDelta);
+
+        resetOrigin();
+        Bounds newBounds = (Bounds) checkedContainer.getLayoutConstraint();
+
+        hasTheExpectedBounds(newBounds, locationBefore.getTranslated(expectedDelta.x(), expectedDelta.y()));
     }
 
     private void hasTheExpectedBounds(Bounds bounds, Point expectedLocation) {

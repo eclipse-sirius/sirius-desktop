@@ -35,7 +35,7 @@
 								<a href="#distribute">Distribute elements</a>
 							</li>
 							<li>
-								<a href="#ResetDiagramOrigin">Reset Diagram Origin</a>
+								<a href="#ResetDiagramorContainerOrigin">Reset Diagram or Container Origin</a>
 							</li>
 							<li>
 								<a href="#Hidingelements">Hiding elements</a>
@@ -258,11 +258,12 @@
 			<li>the first shape is the highest one (with its center at the minimum y coordinate). If several shapes are aligned on middle, the leftmost one is the first.</li>
 			<li>the last shape is the lowest one (with the bottom side with the maximum y coordinate). If several shapes are aligned by middle, the rightmost one is the last.</li>
 		</ul>
-		<h3 id="ResetDiagramOrigin">Reset Diagram Origin</h3>
-		<p>This action is available within the diagram context menu (&#171;Reset Origin&#187;) or via &#171;M1&#187; + &#171;&amp;&#187; shortcut.
-			<br/>The diagram bounds (the rectangle formed by the highest, the leftmost, the lowest and the rightest elements) can have a negative origin or can be shifted toward the bottom-right with a blank zone at the top-left.
-			<br/>This action aims to move all diagram elements so that the diagram retrieves its origin while keeping the element layout.
+		<h3 id="ResetDiagramorContainerOrigin">Reset Diagram or Container Origin</h3>
+		<p>This action is available within the diagram or containers contextual menu (&#171;Reset Origin&#187;) or via &#171;M1&#187; + &#171;&amp;&#187; shortcut.
+			<br/>The diagram (or container) bounds (the rectangle formed by the highest, the leftmost, the lowest and the rightmost elements) can have a negative origin or can be shifted toward the bottom-right with a blank zone at the top-left.
+			<br/>This action aims to move all diagram (or container) elements so that the diagram (or container) retrieves its origin while keeping the element layout.
 		</p>
+		<p>This action can be launched on several containers at same time.</p>
 		<p>This is an example of a diagram with a blank zone between the origin location and the figures bounds:
 			<br/>
 			<img border="0" src="images/reset_origin_before.png"/>

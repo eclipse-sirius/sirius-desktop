@@ -1387,9 +1387,14 @@
                   variable="activeMenuSelection">
                <iterate
                      operator="and">
-                  <instanceof
-                        value="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
-                  </instanceof>
+                  <or>
+                     <instanceof
+                           value="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
+                     </instanceof>
+                     <instanceof
+                           value="org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart">
+                     </instanceof>
+                  </or>
                </iterate>
             </with>
          </visibleWhen>
@@ -1725,9 +1730,14 @@
                  variable="selection">
               <iterate
                     operator="and">
-                 <instanceof
-                       value="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
-                 </instanceof>
+                 <or>
+                     <instanceof
+                           value="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart">
+                     </instanceof>
+                     <instanceof
+                           value="org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart">
+                     </instanceof>
+                  </or>
               </iterate>
            </with>
         </activeWhen>

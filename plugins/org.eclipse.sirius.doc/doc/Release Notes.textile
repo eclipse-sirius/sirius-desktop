@@ -32,7 +32,7 @@ Result after resizing with this feature (the edges keep the same location):
 ** Distribute centers vertically
 * The end user can now remove all bend-points between the two edge ends. This action is available on edge context menu "Remove Bend-points" or by using the shortcut "Ctrl" + "Shift" + "-".
 * Reconnection of an edge will only now move the minimum necessary bendpoints instead of reseting it to default.
-* A new action has been added to reset the diagram origin: the diagram bounds (the rectangle formed by the highest & leftmost and the lowest & rightest elements) can have a negative origin or can be shifted toward the bottom-right with a blank zone at the top-left. This action aims to move all diagram elements so that the diagram retrieves its origin while keeping elements layout.
+* A new action has been added to reset the diagram (or container) origin: the diagram (or container) bounds (the rectangle formed by the highest, the leftmost, the lowest and the rightmost children elements) can have a negative origin or can be shifted toward the bottom-right with a blank zone at the top-left. This action aims to move all diagram (or container) elements so that the it retrieves its origin while keeping elements layout.
 
 h3. Specifier-Visible Changes
 

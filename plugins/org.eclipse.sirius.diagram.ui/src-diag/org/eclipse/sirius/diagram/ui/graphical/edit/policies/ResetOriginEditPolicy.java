@@ -18,7 +18,8 @@ import org.eclipse.gef.editpolicies.AbstractEditPolicy;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
-import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.operation.ResetOriginChangeModelOperation;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
@@ -27,7 +28,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
  * An EditPolicy that returns a ResetOrigin Command.
  * 
  * @author Florian Barbin
- *
+ * 
  */
 public class ResetOriginEditPolicy extends AbstractEditPolicy {
 
@@ -40,9 +41,14 @@ public class ResetOriginEditPolicy extends AbstractEditPolicy {
     public Command getCommand(Request request) {
         if (understandsRequest(request)) {
             EditPart editPart = getHost();
+            ResetOriginChangeModelOperation operation = null;
             if (editPart instanceof DiagramEditPart) {
-                ResetOriginChangeModelOperation operation = new ResetOriginChangeModelOperation((DiagramEditPart) editPart);
-                ICommand command = CommandFactory.createICommand(((IDDiagramEditPart) editPart).getEditingDomain(), operation);
+                operation = new ResetOriginChangeModelOperation((DiagramEditPart) editPart);
+            } else if (editPart instanceof AbstractDiagramContainerEditPart) {
+                operation = new ResetOriginChangeModelOperation((AbstractDiagramContainerEditPart) editPart);
+            }
+            if (operation != null) {
+                ICommand command = CommandFactory.createICommand(((IGraphicalEditPart) editPart).getEditingDomain(), operation);
                 return new ICommandProxy(command);
             }
         }

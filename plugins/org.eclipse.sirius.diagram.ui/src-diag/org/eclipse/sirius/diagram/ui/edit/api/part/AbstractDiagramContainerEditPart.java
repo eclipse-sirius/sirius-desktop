@@ -20,6 +20,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.DragTracker;
+import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.requests.DirectEditRequest;
@@ -54,6 +55,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery
 import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramContainerEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ResetOriginEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeContainerItemSemanticEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.InvisibleResizableCompartmentFigure;
@@ -62,6 +64,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDes
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerParallelogram;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangleFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
+import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.ContainerWithTitleBlockFigure;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
 import org.eclipse.sirius.ext.base.Option;
@@ -309,6 +312,17 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
          * remove the connection items display
          */
         removeEditPolicy(EditPolicyRoles.CONNECTION_HANDLES_ROLE);
+        EditPolicy currentComponentEditPolicy = getEditPolicy(EditPolicy.COMPONENT_ROLE);
+        if (currentComponentEditPolicy instanceof CompoundEditPolicy) {
+            ResetOriginEditPolicy resetOriginEditPolicy = new ResetOriginEditPolicy();
+            resetOriginEditPolicy.setHost(this);
+            ((CompoundEditPolicy) currentComponentEditPolicy).addEditPolicy(resetOriginEditPolicy);
+        } else {
+            CompoundEditPolicy compoundEditPolicy = new CompoundEditPolicy();
+            compoundEditPolicy.addEditPolicy(currentComponentEditPolicy);
+            compoundEditPolicy.addEditPolicy(new ResetOriginEditPolicy());
+            installEditPolicy(EditPolicy.COMPONENT_ROLE, compoundEditPolicy);
+        }
     }
 
     /**

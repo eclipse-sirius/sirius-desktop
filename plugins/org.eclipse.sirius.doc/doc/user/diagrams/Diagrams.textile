@@ -111,11 +111,13 @@ For vertical centered distribution:
 * the first shape is the highest one (with its center at the minimum y coordinate). If several shapes are aligned on middle, the leftmost one is the first.
 * the last shape is the lowest one (with the bottom side with the maximum y coordinate). If several shapes are aligned by middle, the rightmost one is the last.
 
-h3. Reset Diagram Origin
+h3. Reset Diagram or Container Origin
 
-This action is available within the diagram context menu ("Reset Origin") or via "M1" + "&" shortcut.
-The diagram bounds (the rectangle formed by the highest, the leftmost, the lowest and the rightest elements) can have a negative origin or can be shifted toward the bottom-right with a blank zone at the top-left.
-This action aims to move all diagram elements so that the diagram retrieves its origin while keeping the element layout.
+This action is available within the diagram or containers contextual menu ("Reset Origin") or via "M1" + "&" shortcut.
+The diagram (or container) bounds (the rectangle formed by the highest, the leftmost, the lowest and the rightmost elements) can have a negative origin or can be shifted toward the bottom-right with a blank zone at the top-left.
+This action aims to move all diagram (or container) elements so that the diagram (or container) retrieves its origin while keeping the element layout.
+
+This action can be launched on several containers at same time.
 
 This is an example of a diagram with a blank zone between the origin location and the figures bounds:
 !images/reset_origin_before.png!

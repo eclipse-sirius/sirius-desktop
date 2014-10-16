@@ -12,9 +12,9 @@
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="Package4"/>
-  <eSubpackages name="Package">
+  <eSubpackages name="Package2">
     <eClassifiers xsi:type="ecore:EClass" name="eClass"/>
-    <eSubpackages name="Package"/>
-    <eSubpackages name="Package"/>
+    <eSubpackages name="PackageA"/>
+    <eSubpackages name="PackageB"/>
   </eSubpackages>
 </ecore:EPackage>
