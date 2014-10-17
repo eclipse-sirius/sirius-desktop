@@ -12,6 +12,8 @@ package org.eclipse.sirius.tests.swtbot;
 
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckTreeItemFontFormat;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.TreeItemExpanded;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.TreeItemSelected;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
@@ -20,13 +22,12 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
+import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.junit.Assert;
 
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckTreeItemFontFormat;
 
 /**
  * Tests ensuring that hide/reveal Labels located on the border of a
@@ -313,8 +314,14 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         // Step 1.2 : open the context menu the element to hide and select the
         // hide element action
         SWTBotTreeItem labelItem = view.bot().tree().getTreeItem("p").getNode(NODE_WITH_LABEL_NAME).getNode(NODE_WITH_LABEL_NAME + " " + LABEL_SUFFIX_IN_OUTLINE).click();
+        view.bot().tree().getTreeItem("p").getNode(NODE_WITH_LABEL_NAME).getNode(NODE_WITH_LABEL_NAME + " " + LABEL_SUFFIX_IN_OUTLINE).select();
+        SWTBotUtils.waitAllUiEvents();
+        bot.waitUntil(new TreeItemSelected(labelItem));
         setShownImage(labelItem);
         SWTBotTreeItem nodeItem = view.bot().tree().getTreeItem("p").getNode(NODE_WITH_LABEL_NAME).click();
+        view.bot().tree().getTreeItem("p").getNode(NODE_WITH_LABEL_NAME).select();
+        SWTBotUtils.waitAllUiEvents();
+        bot.waitUntil(new TreeItemSelected(nodeItem));
         checkOutlineIsCorrectlyDecorated(labelItem, false);
         nodeItem.contextMenu(HIDE_LABEL_TOOLTIP).click();
 
@@ -375,8 +382,14 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         // Step 1.2 : open the context menu the element to hide and select the
         // hide element action
         SWTBotTreeItem labelItem = view.bot().tree().getTreeItem("p").getNode(EDGE_WITH_LABEL_NAME + " : B").getNode(LABEL_SUFFIX_IN_OUTLINE).click();
+        view.bot().tree().getTreeItem("p").getNode(EDGE_WITH_LABEL_NAME + " : B").getNode(LABEL_SUFFIX_IN_OUTLINE).select();
+        SWTBotUtils.waitAllUiEvents();
+        bot.waitUntil(new TreeItemSelected(labelItem));
         setShownImage(labelItem);
         SWTBotTreeItem nodeItem = view.bot().tree().getTreeItem("p").getNode(EDGE_WITH_LABEL_NAME + " : B").click();
+        view.bot().tree().getTreeItem("p").getNode(EDGE_WITH_LABEL_NAME + " : B").select();
+        SWTBotUtils.waitAllUiEvents();
+        bot.waitUntil(new TreeItemSelected(nodeItem));
         checkOutlineIsCorrectlyDecorated(labelItem, false);
         nodeItem.contextMenu(HIDE_LABEL_TOOLTIP).click();
 
@@ -437,6 +450,9 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         // Step 1.2 : open the context menu the element to hide and select the
         // hide element action
         SWTBotTreeItem item = view.bot().tree().getTreeItem("p").getNode(NODE_WITH_LABEL_NAME).getNode(NODE_WITH_LABEL_NAME + " " + LABEL_SUFFIX_IN_OUTLINE).click();
+        view.bot().tree().getTreeItem("p").getNode(NODE_WITH_LABEL_NAME).getNode(NODE_WITH_LABEL_NAME + " " + LABEL_SUFFIX_IN_OUTLINE).select();
+        SWTBotUtils.waitAllUiEvents();
+        bot.waitUntil(new TreeItemSelected(item));
         setShownImage(item);
         checkOutlineIsCorrectlyDecorated(item, false);
         item.contextMenu(HIDE_LABEL_TOOLTIP).click();
@@ -454,6 +470,9 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         SWTBotUtils.waitAllUiEvents();
         try {
             item = view.bot().tree().getTreeItem("p").getNode(NODE_WITH_LABEL_NAME + LABEL_SUFFIX_IN_OUTLINE).click();
+            view.bot().tree().getTreeItem("p").getNode(NODE_WITH_LABEL_NAME + LABEL_SUFFIX_IN_OUTLINE).select();
+            SWTBotUtils.waitAllUiEvents();
+            bot.waitUntil(new TreeItemSelected(item));
             item.contextMenu(HIDE_LABEL_TOOLTIP).click();
         } catch (WidgetNotFoundException e) {
             outlineAllowToHideLabel = false;
@@ -502,13 +521,17 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         editor.select(nodeEditPart);
         // Wait all UI events to ensure that the tabbar is correctly refreshed.
         SWTBotUtils.waitAllUiEvents();
+        ICondition done = new OperationDoneCondition();
         editor.bot().toolbarButtonWithTooltip(HIDE_LABEL_TOOLTIP).click();
+        bot.waitUntil(done);
 
         checkEdgeLabelIsHidden(EDGE_WITH_LABEL_NAME);
 
         // Step 2 : now we hide the node (using the context menu)
         editor.select(nodeEditPart);
+        done = new OperationDoneCondition();
         editor.clickContextMenu(HIDE_ELEMENT_TOOLTIP);
+        bot.waitUntil(done);
         checkEdgeIsHidden(nodeEditPart);
 
         // Step 3 : reveal the node (using outline)
@@ -518,13 +541,21 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
 
         // Step 3.2 : open the context menu the element to reveal and select the
         // reveal element action
-        SWTBotTreeItem item = view.bot().tree().getTreeItem("p").getNode(EDGE_WITH_LABEL_NAME + " : B").select();
+        SWTBotTreeItem item = view.bot().tree().getTreeItem("p").getNode(EDGE_WITH_LABEL_NAME + " : B").click();
+        view.bot().tree().getTreeItem("p").getNode(EDGE_WITH_LABEL_NAME + " : B").select();
+        SWTBotUtils.waitAllUiEvents();
+        bot.waitUntil(new TreeItemSelected(item));
         SWTBotUtils.clickContextMenu(item, REVEAL_ELEMENT_TOOLTIP);
         checkEdgeLabelIsHidden(EDGE_WITH_LABEL_NAME);
 
         // Step 4 : reveal the label (using outline)
-        item = view.bot().tree().getTreeItem("p").getNode(EDGE_WITH_LABEL_NAME + " : B").select();
+        item = view.bot().tree().getTreeItem("p").getNode(EDGE_WITH_LABEL_NAME + " : B").click();
+        view.bot().tree().getTreeItem("p").getNode(EDGE_WITH_LABEL_NAME + " : B").select();
+        SWTBotUtils.waitAllUiEvents();
+        bot.waitUntil(new TreeItemSelected(item));
+        done = new OperationDoneCondition();
         SWTBotUtils.clickContextMenu(item, REVEAL_LABEL_TOOLTIP);
+        bot.waitUntil(done);
         checkEdgeLabelIsVisible(EDGE_WITH_LABEL_NAME);
     }
 
@@ -545,11 +576,19 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
     public void testRevealNodeAfterHideLabelWithOutline() throws Exception {
         if (TestsUtil.shouldSkipUnreliableTests()) {
             /*
-                org.eclipse.swtbot.swt.finder.widgets.TimeoutException: Timeout after: 10000 ms.: tree item with text myEnum is not selected
-                at org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(SWTBotFactory.java:407)
-                at org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(SWTBotFactory.java:381)
-                at org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(SWTBotFactory.java:369)
-                at org.eclipse.sirius.tests.swtbot.HideRevealDiagramElementsLabelsTest.testRevealNodeAfterHideLabelWithOutline(HideRevealDiagramElementsLabelsTest.java:569)
+             * org.eclipse.swtbot.swt.finder.widgets.TimeoutException: Timeout
+             * after: 10000 ms.: tree item with text myEnum is not selected at
+             * org
+             * .eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(SWTBotFactory
+             * .java:407) at
+             * org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil
+             * (SWTBotFactory.java:381) at
+             * org.eclipse.swtbot.swt.finder.SWTBotFactory
+             * .waitUntil(SWTBotFactory.java:369) at
+             * org.eclipse.sirius.tests.swtbot
+             * .HideRevealDiagramElementsLabelsTest
+             * .testRevealNodeAfterHideLabelWithOutline
+             * (HideRevealDiagramElementsLabelsTest.java:569)
              */
             return;
         }
@@ -579,8 +618,7 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         // Step 3.2 : open the context menu the element to reveal and select the
         // reveal element action
         SWTBotTreeItem item = view.bot().tree().getTreeItem("p").getNode(NODE_WITH_LABEL_NAME).click();
-        SWTBotUtils.waitAllUiEvents();
-        item.select();
+        view.bot().tree().getTreeItem("p").getNode(NODE_WITH_LABEL_NAME).select();
         SWTBotUtils.waitAllUiEvents();
         bot.waitUntil(new TreeItemSelected(item));
         item.contextMenu(REVEAL_ELEMENT_TOOLTIP).click();
@@ -590,6 +628,8 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
 
         // Step 4 : reveal the label (using outline)
         item = view.bot().tree().getTreeItem("p").getNode(NODE_WITH_LABEL_NAME).click();
+        view.bot().tree().getTreeItem("p").getNode(NODE_WITH_LABEL_NAME).select();
+        SWTBotUtils.waitAllUiEvents();
         TreeItemExpanded treeItemExpanded = new TreeItemExpanded(item, NODE_WITH_LABEL_NAME);
         item.expand();
         bot.waitUntil(treeItemExpanded);
@@ -639,13 +679,12 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         // Step 3 : reveal the label (using outline)
         // Node must still be hidden
         // Step 3.1 : open the outline view and get its SWTBotView
-        final SWTBotView view = getAndExpandOutlineView(false);
+        final SWTBotView view = getAndExpandOutlineView(true);
 
         // Step 3.2 : open the context menu the label to reveal and select the
         // reveal label action
         SWTBotTreeItem item = view.bot().tree().getTreeItem("p").getNode(NODE_WITH_LABEL_NAME).click();
-        SWTBotUtils.waitAllUiEvents();
-        item.select();
+        view.bot().tree().getTreeItem("p").getNode(NODE_WITH_LABEL_NAME).select();
         SWTBotUtils.waitAllUiEvents();
         bot.waitUntil(new TreeItemSelected(item));
         item.contextMenu(REVEAL_LABEL_TOOLTIP).click();
@@ -654,7 +693,10 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         // Step 4 : reveal the node (using outline)
         // The label must now be visible
         item = view.bot().tree().getTreeItem("p").getNode(NODE_WITH_LABEL_NAME).click();
-        item.click().contextMenu(REVEAL_ELEMENT_TOOLTIP).click();
+        view.bot().tree().getTreeItem("p").getNode(NODE_WITH_LABEL_NAME).select();
+        SWTBotUtils.waitAllUiEvents();
+        bot.waitUntil(new TreeItemSelected(item));
+        item.contextMenu(REVEAL_ELEMENT_TOOLTIP).click();
         checkLabelIsVisible(NODE_WITH_LABEL_NAME);
 
     }
@@ -694,13 +736,12 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         // Step 3 : reveal the label (using outline)
         // Edge must still be hidden
         // Step 3.1 : open the outline view and get its SWTBotView
-        final SWTBotView view = getAndExpandOutlineView(false);
+        final SWTBotView view = getAndExpandOutlineView(true);
 
         // Step 3.2 : open the context menu the label to reveal and select the
         // reveal label action
         SWTBotTreeItem item = view.bot().tree().getTreeItem("p").getNode(EDGE_WITH_LABEL_NAME + " : B").click();
-        SWTBotUtils.waitAllUiEvents();
-        item.select();
+        view.bot().tree().getTreeItem("p").getNode(EDGE_WITH_LABEL_NAME + " : B").select();
         SWTBotUtils.waitAllUiEvents();
         bot.waitUntil(new TreeItemSelected(item));
         item.contextMenu(REVEAL_LABEL_TOOLTIP).click();
@@ -709,8 +750,10 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         // Step 4 : reveal the node (using outline)
         // The label must now be visible
         item = view.bot().tree().getTreeItem("p").getNode(EDGE_WITH_LABEL_NAME + " : B").click();
+        view.bot().tree().getTreeItem("p").getNode(EDGE_WITH_LABEL_NAME + " : B").select();
+        SWTBotUtils.waitAllUiEvents();
+        bot.waitUntil(new TreeItemSelected(item));
         item.contextMenu(REVEAL_ELEMENT_TOOLTIP).click();
         checkEdgeLabelIsVisible(EDGE_WITH_LABEL_NAME);
     }
-
 }

@@ -51,7 +51,11 @@ public class TreeItemSelected extends DefaultCondition {
             }
         };
         item.display.syncExec(runnable);
-        return ((Boolean) runnable.getResult()).booleanValue();
+        boolean result = runnable.getResult().booleanValue();
+        if (!result) {
+            item.select();
+        }
+        return result;
     }
 
 }
