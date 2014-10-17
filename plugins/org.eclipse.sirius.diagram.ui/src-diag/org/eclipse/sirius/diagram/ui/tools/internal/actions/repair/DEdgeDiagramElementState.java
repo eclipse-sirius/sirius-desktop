@@ -13,9 +13,11 @@ package org.eclipse.sirius.diagram.ui.tools.internal.actions.repair;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.sirius.diagram.ArrangeConstraint;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.ui.internal.operation.CenterEdgeEndModelChangeOperation;
 import org.eclipse.sirius.diagram.ui.tools.api.migration.DiagramCrossReferencer;
 
 import com.google.common.collect.Iterables;
@@ -68,6 +70,15 @@ public class DEdgeDiagramElementState extends AbstractDiagramElementState<DEdge>
 
         if (!arrangeConstraints.isEmpty()) {
             element.getArrangeConstraints().addAll(arrangeConstraints);
+        }
+
+        // Center the edge ends if needed. In the case where the centering
+        // property has been updated within the VSM, we now make sure the GMF
+        // edge bendpoints are refreshed in addition of the edgeStyle "centered"
+        // property.
+        for (Edge edge : edges) {
+            CenterEdgeEndModelChangeOperation operation = new CenterEdgeEndModelChangeOperation(edge, false);
+            operation.execute();
         }
     }
 
