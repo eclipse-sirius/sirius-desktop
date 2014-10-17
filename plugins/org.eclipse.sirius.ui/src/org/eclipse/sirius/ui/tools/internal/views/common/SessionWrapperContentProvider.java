@@ -193,7 +193,7 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
 
     private Collection<DRepresentation> getRepresentationsAssociatedToEObject(final EObject eObject) {
         final Session session = SessionManager.INSTANCE.getSession(eObject);
-        if (session != null) {
+        if (session != null && session.isOpen()) {
             Collection<DRepresentation> allRepresentations = DialectManager.INSTANCE.getRepresentations(eObject, session);
             List<DRepresentation> filteredReps = Lists.newArrayList(Iterables.filter(allRepresentations, new InViewpointPredicate(session.getSelectedViewpoints(false))));
             // Sort the available representations alphabetically by name
