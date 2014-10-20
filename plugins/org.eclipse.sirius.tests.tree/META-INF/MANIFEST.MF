@@ -3,6 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.tests.tree;singleton:=true
 Bundle-Version: 2.0.0.qualifier
+Bundle-Localization: plugin
 Require-Bundle: org.eclipse.sirius,
  org.eclipse.sirius.common,
  org.eclipse.sirius.common.ocl,

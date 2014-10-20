@@ -15,6 +15,7 @@ Require-Bundle: org.eclipse.gmf.runtime.diagram.ui,
  org.eclipse.emf.common.ui;bundle-version="2.7.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Localization: plugin
 Export-Package: org.eclipse.sirius.tests.sample.migration.design
 Bundle-Vendor: %providerName
 Import-Package: org.eclipse.sirius.ext.base;version="1.0.0"

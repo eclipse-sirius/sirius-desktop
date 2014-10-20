@@ -10,5 +10,6 @@ Bundle-Vendor: %providerName
 Bundle-Activator: org.eclipse.sirius.tests.sample.docbook.design.tool.SampleDocbookPlugin
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Localization: plugin
 Export-Package: org.eclipse.sirius.tests.sample.docbook.design.business.internal;x-internal:=true,
  org.eclipse.sirius.tests.sample.docbook.design.tool
