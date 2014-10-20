@@ -23,6 +23,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
@@ -32,12 +33,9 @@ import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.tests.swtbot.Activator;
 
 /**
  * Tests completion in MTL interpreted expression and domain class property
@@ -60,6 +58,8 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
     private static final String VSM = "test.odesign";
 
     private boolean previousAutoBuildValue = true;
+
+    private SWTBotView propertiesBot;
 
     /**
      * {@inheritDoc}
@@ -131,6 +131,13 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
         ResourcesPlugin.getWorkspace().build(IncrementalProjectBuilder.FULL_BUILD, new NullProgressMonitor());
         // Wait the end of the current build and/or refresh.
         waitJobsBuildOrRefresh();
+        
+        bot.activeEditor().setFocus();
+        bot.activeEditor().bot().tree().expandNode("platform:/resource/" + VSM_PROJECT_NAME + "/description/" + VSM, "test", "VP", "Diag").select();
+
+        propertiesBot = bot.viewByTitle("Properties");
+        propertiesBot.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("General");
     }
 
     /**
@@ -162,14 +169,6 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
         }
 
         initContext();
-
-        bot.activeEditor().setFocus();
-        SWTBotTreeItem viewpointItemBot = bot.activeEditor().bot().tree().expandNode("platform:/resource/" + VSM_PROJECT_NAME + "/description/" + VSM).expandNode("test").expandNode("VP");
-        viewpointItemBot.getNode("Diag").select();
-
-        SWTBotView propertiesBot = bot.viewByTitle("Properties");
-        propertiesBot.setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("General");
 
         // Set the domain class
         SWTBotText domainClass = propertiesBot.bot().text(2);
@@ -205,14 +204,6 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
         }
 
         initContext();
-
-        bot.activeEditor().setFocus();
-        SWTBotTreeItem viewpointItemBot = bot.activeEditor().bot().tree().expandNode("platform:/resource/" + VSM_PROJECT_NAME + "/description/" + VSM).expandNode("test").expandNode("VP");
-        viewpointItemBot.getNode("Diag").select();
-
-        SWTBotView propertiesBot = bot.viewByTitle("Properties");
-        propertiesBot.setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("General");
 
         // Set the domain class
         SWTBotText domainClass = propertiesBot.bot().text(2);
@@ -259,14 +250,6 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
 
         initContext();
 
-        bot.activeEditor().setFocus();
-        SWTBotTreeItem viewpointItemBot = bot.activeEditor().bot().tree().expandNode("platform:/resource/" + VSM_PROJECT_NAME + "/description/" + VSM).expandNode("test").expandNode("VP");
-        viewpointItemBot.getNode("Diag").select();
-
-        SWTBotView propertiesBot = bot.viewByTitle("Properties");
-        propertiesBot.setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("General");
-
         // Get proposals for domain class.
         SWTBotText domainClass = propertiesBot.bot().text(2);
         domainClass.setFocus();
@@ -296,20 +279,13 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
     public void test_Domain_Class_Completion_With_Selected_MetaModels() throws InterruptedException, OperationCanceledException, CoreException {
         initContext();
 
-        bot.activeEditor().setFocus();
-        SWTBotTreeItem viewpointItemBot = bot.activeEditor().bot().tree().expandNode("platform:/resource/" + VSM_PROJECT_NAME + "/description/" + VSM).expandNode("test").expandNode("VP");
-
-        // Select diagram
-        viewpointItemBot.getNode("Diag").select();
-
         // select Sirius metamodels
         Collection<String> expectedMetamodels = Lists.newArrayList(DescriptionPackage.eNS_URI, DiagramPackage.eNS_URI, ViewpointPackage.eNS_URI);
         selectSiriusMetaModels(expectedMetamodels);
 
-        SWTBotView propertiesBot = bot.viewByTitle("Properties");
+        propertiesBot = bot.viewByTitle("Properties");
         propertiesBot.setFocus();
         SWTBotSiriusHelper.selectPropertyTabItem("General");
-
         SWTBotText domainClass = propertiesBot.bot().text(2);
         domainClass.setFocus();
 
@@ -378,6 +354,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
             closeAllEditors();
 
             super.tearDown();
+            this.propertiesBot = null;
         } finally {
             final IWorkspaceDescription description = ResourcesPlugin.getWorkspace().getDescription();
             description.setAutoBuilding(previousAutoBuildValue);
