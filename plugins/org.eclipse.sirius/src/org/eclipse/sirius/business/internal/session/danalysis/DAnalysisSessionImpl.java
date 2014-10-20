@@ -965,7 +965,18 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         saver.save(options, monitor);
     }
 
-    private void doSave(final Map<?, ?> options, final IProgressMonitor monitor, boolean runExclusive) {
+    /**
+     * Performs the save immediately.
+     * 
+     * @param options
+     *            the options to use to save the resources.
+     * @param monitor
+     *            the monitor to use to report progress.
+     * @param runExclusive
+     *            whether or not to execute the saving in an exclusive
+     *            transaction.
+     */
+    protected void doSave(final Map<?, ?> options, final IProgressMonitor monitor, boolean runExclusive) {
         try {
             monitor.beginTask("Session saving", 3);
             final Collection<Resource> allResources = Lists.newArrayList();
