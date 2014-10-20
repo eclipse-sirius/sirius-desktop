@@ -12,6 +12,7 @@ package org.eclipse.sirius.common.xtext.internal;
 
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManagerListener.Stub;
+import org.eclipse.sirius.business.internal.session.IsModifiedSavingPolicy;
 
 /**
  * A session manager listener which will switch the saving policy of every
@@ -36,6 +37,6 @@ public class XtextSessionManagerListener extends Stub {
          * error is thrown the underlying file is emptied which makes this quite
          * critical.
          */
-        newSession.setSavingPolicy(new XtextSavingPolicy(newSession.getSavingPolicy()));
+        newSession.setSavingPolicy(new XtextSavingPolicy(new IsModifiedSavingPolicy(newSession.getTransactionalEditingDomain())));
     }
 }
