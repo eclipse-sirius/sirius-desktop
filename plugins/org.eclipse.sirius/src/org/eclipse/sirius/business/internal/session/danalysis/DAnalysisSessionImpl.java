@@ -2090,7 +2090,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         this.saver.deferSaveToPostCommit = deferSaveOnPostCommit;
     }
 
-    public void setSsaveInExclusiveTransaction(boolean saveInExclusiveTransaction) {
+    public void setSaveInExclusiveTransaction(boolean saveInExclusiveTransaction) {
         this.saver.saveInExclusiveTransaction = saveInExclusiveTransaction;
     }
 }
