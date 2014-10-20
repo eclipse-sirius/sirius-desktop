@@ -311,7 +311,7 @@ public class DAnalysisModelsUpdateTests extends SiriusDiagramTestCase implements
      */
     public void testCaseWithVSMReferencingOtherVSMNotDirectlyUsedByAird() throws Exception {
         // Used a specific use case for this test
-        copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, PATH_2, SEMANTIC_RESOURCE_NAME_2, SESSION_RESOURCE_NAME_2, VSM_RESOURCE_NAME_2, REFERENCED_VSM_RESOURCE_NAME_2);
+        copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, PATH_2, SEMANTIC_RESOURCE_NAME_2, SESSION_RESOURCE_NAME_2, REFERENCED_VSM_RESOURCE_NAME_2, VSM_RESOURCE_NAME_2);
         genericSetUp(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_NAME_2, TEMPORARY_PROJECT_NAME + "/" + VSM_RESOURCE_NAME_2, TEMPORARY_PROJECT_NAME + "/" + SESSION_RESOURCE_NAME_2);
         // initSirius(DESIGN_VIEWPOINT_NAME);
         assertEquals("The session should contain only one semantic resource after opening.", 1, session.getSemanticResources().size());
