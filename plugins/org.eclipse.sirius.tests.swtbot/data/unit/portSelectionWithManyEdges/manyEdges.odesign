@@ -2,7 +2,7 @@
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" documentation="uml2 modeler" name="uml2 modeler" version="8.0.0">
   <ownedViewpoints documentation="Initialize an UML Analysis" name="UML Analysis" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Fake ViewPointDescription - factorize elements" name="Reused Description" domainClass="Model">
-      <metamodel href="../../plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
+      <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <toolSection documentation="reused tools" name="reused tools">
         <ownedTools xsi:type="tool:DirectEditLabel" documentation="A basic Direct Edit tool for NamedElement" name="NamedElementDirectEdit">
           <mask mask="{0}"/>
@@ -41,7 +41,7 @@
       </toolSection>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='UML%20Analysis']/@ownedRepresentations[name='Package%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='drag%20%26%20drop']/@ownedTools[name='PD_D%26D_Package']" documentation="Diagram for Packages" name="Package Diagram" domainClass="Model" preconditionExpression="">
-      <metamodel href="../../plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
+      <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <defaultLayer name="Package Diagram">
         <containerMappings name="PD_Package" detailDescriptions="//@ownedViewpoints[name='UML%20Analysis']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Class%20Diagram'] //@ownedViewpoints[name='UML%20Analysis']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Component%20Diagram'] //@ownedViewpoints[name='UML%20Analysis']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Use%20Case%20Diagram'] //@ownedViewpoints[name='UML%20Analysis']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Object%20Diagram']" preconditionExpression="&lt;%$container == eContainer()%>" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="&lt;%eContents.filter(&quot;Package&quot;)%>" documentation="Mapping to create packages." domainClass="Package" dropDescriptions="//@ownedViewpoints[name='UML%20Analysis']/@ownedRepresentations[name='Package%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='drag%20%26%20drop']/@ownedTools[name='PD_D%26D_Package']" reusedContainerMappings="//@ownedViewpoints[name='UML%20Analysis']/@ownedRepresentations[name='Package%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package']">
           <style xsi:type="style:FlatContainerStyleDescription" labelSize="10">
@@ -166,7 +166,7 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='UML%20Analysis']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='drag%20%26%20drop']/@ownedTools[name='UC_D%26D_Actor']" documentation="Diagram for Use Cases" name="Use Case Diagram" domainClass="Package">
-      <metamodel href="../../plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
+      <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <defaultLayer name="Use Case">
         <nodeMappings name="UCD_Actor" labelDirectEdit="//@ownedViewpoints[name='UML%20Analysis']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementDirectEdit']" semanticCandidatesExpression="feature:eAllContents" createElements="false" documentation="Mapping to create actors" domainClass="Actor">
           <style xsi:type="style:WorkspaceImageDescription" labelSize="10" showIcon="false" resizeKind="NSEW" workspacePath="/org.eclipse.sirius.tests.swtbot/images/Actor.png">
@@ -343,7 +343,7 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Description to edit class diagrams" name="Class Diagram" initialisation="true" domainClass="Package" preconditionExpression="&lt;%filter(&quot;Model&quot;).nSize() > 0%>">
-      <metamodel href="../../plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
+      <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <defaultLayer name="Class Diagram">
         <edgeMappings name="CD_Association" semanticCandidatesExpression="feature:eAllContents" semanticElements="&lt;%current + memberEnd%>" documentation="This mapping describes an association.&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;" sourceMapping="//@ownedViewpoints[name='UML%20Analysis']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML%20Analysis']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" targetFinderExpression="&lt;%memberEnd.nGet(1).type%>" sourceFinderExpression="&lt;%memberEnd.nGet(0).type%>" domainClass="Association" useDomainElement="true">
           <style strokeColor="//@userColorsPalettes[name='Migration%20Palette']/@entries[name='color1']" targetArrow="NoDecoration" sizeComputationExpression="1">
@@ -990,7 +990,7 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Sequence Diagram" domainClass="Interaction">
-      <metamodel href="../../plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
+      <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <defaultLayer name="Sequence Diagram">
         <nodeMappings name="SD_Lifeline" semanticCandidatesExpression="&lt;%lifeline%>" domainClass="Lifeline">
           <borderedNodeMappings name="SD_ExecutionSpecification" semanticCandidatesExpression="&lt;%coveredBy%>" domainClass="BehaviorExecutionSpecification" reusedBorderedNodeMappings="//@ownedViewpoints[name='UML%20Analysis']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline']/@borderedNodeMappings[name='SD_ExecutionSpecification']">
@@ -1068,7 +1068,7 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" documentation="Diagrams to show instances and relation between them." name="Object Diagram" domainClass="Package">
-      <metamodel href="../../plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
+      <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <defaultLayer name="Object Diagram">
         <edgeMappings name="OD_Slot" semanticCandidatesExpression="&lt;%packagedElement.filter(&quot;InstanceSpecification&quot;).slot[value.filter(&quot;InstanceValue&quot;)]%>" semanticElements="&lt;%current + definingFeature%>" sourceMapping="//@ownedViewpoints[name='UML%20Analysis']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification']" targetMapping="//@ownedViewpoints[name='UML%20Analysis']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification']" targetFinderExpression="&lt;%value.filter(&quot;InstanceValue&quot;).instance%>" sourceFinderExpression="&lt;%owningInstance%>" domainClass="Slot" useDomainElement="true">
           <style sizeComputationExpression="&lt;%1%>">

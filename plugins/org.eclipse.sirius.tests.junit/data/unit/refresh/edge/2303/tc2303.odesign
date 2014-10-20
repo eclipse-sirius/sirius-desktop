@@ -2,7 +2,6 @@
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="description" version="8.0.0">
   <ownedViewpoints endUserDocumentation="2262&#xD;&#xA;" name="tc2303" label="TC2303" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="tc2303" label="tc2303" domainClass="EPackage" enablePopupBars="true">
-      <metamodel href="../../../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#/"/>
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="HideRef">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='tc2303']/@ownedRepresentations[name='tc2303']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subContainerMappings[name='EClassContainerMapping2']/@subNodeMappings[name='EReferenceMapping']"/>
@@ -108,7 +107,6 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="tc2303_2" label="tc2303_2" domainClass="EPackage" enablePopupBars="true">
-      <metamodel href="../../../../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#/"/>
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="HideRef">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='tc2303']/@ownedRepresentations[name='tc2303_2']/@defaultLayer/@containerMappings[name='EClassContainerMapping2']/@subNodeMappings[name='EReferenceMapping']"/>
