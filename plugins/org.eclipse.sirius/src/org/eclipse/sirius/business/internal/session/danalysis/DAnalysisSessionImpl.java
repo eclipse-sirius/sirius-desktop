@@ -355,6 +355,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         super.getResources().add(sessionResource);
         setAnalysisSelector(DAnalysisSelectorService.getSelector(this));
         setResourceCollector(new LocalResourceCollector(getTransactionalEditingDomain().getResourceSet()));
+        setDeferSaveToPostCommit(true);
+        setSaveInExclusiveTransaction(true);
     }
 
     /**
