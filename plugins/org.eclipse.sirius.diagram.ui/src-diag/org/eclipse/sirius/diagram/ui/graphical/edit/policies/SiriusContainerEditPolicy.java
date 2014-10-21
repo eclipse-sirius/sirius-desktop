@@ -179,12 +179,13 @@ public class SiriusContainerEditPolicy extends ContainerEditPolicy {
 
         // We add a Command to center edges that need to be at the end of the
         // layout.
-        EditPart host = getHost();
-        if (host instanceof GraphicalEditPart) {
-            CenterEdgeLayoutCommand centerEdgeLayoutCommand = new CenterEdgeLayoutCommand((GraphicalEditPart) host);
-            commandToReturn = commandToReturn.chain(new ICommandProxy(centerEdgeLayoutCommand));
+        if (commandToReturn != null) {
+            EditPart host = getHost();
+            if (host instanceof GraphicalEditPart) {
+                CenterEdgeLayoutCommand centerEdgeLayoutCommand = new CenterEdgeLayoutCommand((GraphicalEditPart) host);
+                commandToReturn = commandToReturn.chain(new ICommandProxy(centerEdgeLayoutCommand));
+            }
         }
-
         return commandToReturn;
     }
 
