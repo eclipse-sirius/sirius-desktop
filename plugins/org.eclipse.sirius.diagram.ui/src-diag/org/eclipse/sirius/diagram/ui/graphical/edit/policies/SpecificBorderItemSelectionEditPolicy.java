@@ -65,6 +65,7 @@ import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
+import org.eclipse.sirius.diagram.ui.internal.edit.commands.CenterEditPartEdgesCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.commands.ChangeBendpointsOfEdgesCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.operation.ShiftEdgeIdentityAnchorOperation;
@@ -640,6 +641,10 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
             ShiftEdgeIdentityAnchorOperation operation = new ShiftEdgeIdentityAnchorOperation(request);
             ICommand command = CommandFactory.createICommand(editingDomain, operation);
             ctc.add(command);
+
+            // we add a command to keep the edges centered (if they should be)
+            CenterEditPartEdgesCommand centerEditPartEdgesCommand = new CenterEditPartEdgesCommand((IGraphicalEditPart) host);
+            ctc.add(centerEditPartEdgesCommand);
             return new ICommandProxy(ctc);
         }
         return superCommand;

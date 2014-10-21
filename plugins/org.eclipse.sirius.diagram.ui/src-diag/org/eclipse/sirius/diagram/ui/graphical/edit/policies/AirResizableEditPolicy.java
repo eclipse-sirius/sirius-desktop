@@ -44,6 +44,7 @@ import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.validators.ResizeValidator;
+import org.eclipse.sirius.diagram.ui.internal.edit.commands.CenterEditPartEdgesCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.commands.ChangeBendpointsOfEdgesCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.commands.ChildrenAdjustmentCommand;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
@@ -185,6 +186,12 @@ public class AirResizableEditPolicy extends ResizableShapeEditPolicy {
             if (solution != null) {
                 result = new ICommandProxy(solution);
             }
+        }
+
+        // we add a command to keep the edges centered (if they should be)
+        if (result != null && getHost() instanceof IGraphicalEditPart) {
+            CenterEditPartEdgesCommand centerEditPartEdgesCommand = new CenterEditPartEdgesCommand((IGraphicalEditPart) getHost());
+            result = result.chain(new ICommandProxy(centerEditPartEdgesCommand));
         }
         return result;
     }
