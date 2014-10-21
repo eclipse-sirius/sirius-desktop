@@ -133,6 +133,12 @@ public final class SessionUIManagerImpl extends SessionManagerListener.Stub impl
         case SessionListener.OPENED:
             createAndOpenUiSession(updated);
             break;
+        case SessionListener.CLOSING:
+            IEditingSession uiSession = getUISession(updated);
+            if (uiSession != null) {
+                uiSession.close(false);
+            }
+            break;
         default:
             // do nothing as we will be notified in other way
             break;
