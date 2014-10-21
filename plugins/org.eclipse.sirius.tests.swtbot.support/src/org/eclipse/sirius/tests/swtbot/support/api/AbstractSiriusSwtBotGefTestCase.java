@@ -439,9 +439,9 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * @see #runTest()
      */
     public void takeScreenshot(CharSequence suffix) {
-        String fileName = "screenshots/screenshot-" + ClassUtils.simpleClassName(getClass()) + AbstractSiriusSwtBotGefTestCase.POINT + getName() + suffix + AbstractSiriusSwtBotGefTestCase.POINT
-                + SWTBotPreferences.SCREENSHOT_FORMAT.toLowerCase();
-        new File("screenshots").mkdirs(); //$NON-NLS-1$
+        String fileName = SWTBotPreferences.SCREENSHOTS_DIR + "/" + "screenshot-" + ClassUtils.simpleClassName(getClass()) + AbstractSiriusSwtBotGefTestCase.POINT + getName() + suffix
+                + AbstractSiriusSwtBotGefTestCase.POINT + SWTBotPreferences.SCREENSHOT_FORMAT.toLowerCase();
+        new File(SWTBotPreferences.SCREENSHOTS_DIR).mkdirs(); //$NON-NLS-1$
         SWTUtils.captureScreenshot(fileName);
     }
 
