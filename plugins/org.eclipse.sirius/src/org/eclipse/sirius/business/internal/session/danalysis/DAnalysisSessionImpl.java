@@ -166,6 +166,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         private boolean deferSaveToPostCommit;
 
         private boolean saveInExclusiveTransaction;
+        
+        private AtomicBoolean domainDisposed = new AtomicBoolean(false);
 
         private AtomicBoolean saveOnPostCommit = new AtomicBoolean(false);
 
@@ -182,6 +184,11 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             @Override
             public void transactionClosed(TransactionalEditingDomainEvent event) {
                 disarm();
+            }
+            
+            @Override
+            public void editingDomainDisposing(TransactionalEditingDomainEvent event) {
+                domainDisposed.set(true);
             }
         };
 
@@ -219,7 +226,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             if (tip && deferSaveToPostCommit) {
                 saveOnPostCommit(options, monitor);
             } else {
-                saveNow(options, monitor, saveInExclusiveTransaction && !tip);
+                saveNow(options, monitor, saveInExclusiveTransaction && !tip && !domainDisposed.get());
             }
         }
 
@@ -992,7 +999,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                     }
                 }
             };
-            if (runExclusive) {
+            if (runExclusive && !saver.domainDisposed.get()) {
                 /*
                  * launching the save itself in a read-only transaction will
                  * block any other operation on the model which could come in
@@ -2089,8 +2096,16 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     public void setDeferSaveToPostCommit(boolean deferSaveOnPostCommit) {
         this.saver.deferSaveToPostCommit = deferSaveOnPostCommit;
     }
+    
+    public boolean isDeferSaveToPostCommit() {
+        return this.saver.deferSaveToPostCommit;
+    }
 
     public void setSaveInExclusiveTransaction(boolean saveInExclusiveTransaction) {
         this.saver.saveInExclusiveTransaction = saveInExclusiveTransaction;
+    }
+    
+    public boolean isSaveInExclusiveTransaction() {
+        return this.saver.saveInExclusiveTransaction;
     }
 }

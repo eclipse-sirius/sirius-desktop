@@ -45,17 +45,32 @@ public class SaveSessionJob extends Job {
         this.session = session;
     }
 
-    /**
-     * Overridden to save the {@link Session}.
-     * 
-     * {@inheritDoc}
-     */
     @Override
     public IStatus run(IProgressMonitor monitor) {
         try {
             monitor.beginTask(ACTION_NAME, IProgressMonitor.UNKNOWN);
             if (session.isOpen() && SessionStatus.DIRTY == session.getStatus()) {
-                session.save(monitor);
+                if (session instanceof DAnalysisSessionImpl) {
+                    /*
+                     * We can never know when the job will be scheduled, and it
+                     * might happen after the editing domain is disposed. Even
+                     * testing the state of the editing domain at the beginning
+                     * of the save is not enough, as it can be disposed by
+                     * another thread during the save, in which case the
+                     * commit() will throw an NPE and part of the DASI.doSave()
+                     * will not be executed, even if the files are actually
+                     * saved.
+                     */
+                    boolean exclusiveSetting = ((DAnalysisSessionImpl) session).isSaveInExclusiveTransaction();
+                    ((DAnalysisSessionImpl) session).setSaveInExclusiveTransaction(false);
+                    try {
+                        session.save(monitor);
+                    } finally {
+                        ((DAnalysisSessionImpl) session).setSaveInExclusiveTransaction(exclusiveSetting);
+                    }
+                } else {
+                    session.save(monitor);
+                }
                 monitor.worked(1);
             }
         } finally {
@@ -64,14 +79,8 @@ public class SaveSessionJob extends Job {
         return Status.OK_STATUS;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.core.runtime.jobs.Job#belongsTo(java.lang.Object)
-     */
     @Override
     public boolean belongsTo(Object family) {
         return FAMILY.equals(family);
     }
-
 }
