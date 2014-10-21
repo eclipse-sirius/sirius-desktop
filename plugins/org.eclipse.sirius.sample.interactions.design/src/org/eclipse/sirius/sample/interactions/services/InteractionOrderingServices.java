@@ -114,7 +114,7 @@ public class InteractionOrderingServices {
        // <%eContainer("Interaction").messages.filter("DestroyParticipantMessage").receivingEnd[context == current("Participant")]%>
         Interaction i = (Interaction) new EObjectQuery(p).getFirstAncestorOfType(InteractionsPackage.Literals.INTERACTION).get();
         for (Message msg : Iterables.filter(i.getMessages(), Predicates.instanceOf(DestroyParticipantMessage.class))) {
-            if (msg.getReceivingEnd().getContext() == p) {
+            if (msg.getReceivingEnd() != null && msg.getReceivingEnd().getContext() == p) {
                 return true;
             }
         }
