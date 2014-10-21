@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="ASCII"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="description" version="8.0.0">
-  <ownedViewpoints endUserDocumentation="2174&#xD;&#xA;" name="tc2174" label="TC2174" modelFileExtension="ecore">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="tc2174" label="tc2174" titleExpression="tc2174" domainClass="EPackage" enablePopupBars="true">
+  <ownedViewpoints endUserDocumentation="2174&#xD;&#xA;" name="tc2552" label="tc2552" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="tc2552" label="tc2552" titleExpression="tc2552" domainClass="EPackage" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="HideContents" label="Hide contents">
-        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='tc2174']/@ownedRepresentations[name='tc2174']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@borderedNodeMappings[name='EAttributeMapping2'] //@ownedViewpoints[name='tc2174']/@ownedRepresentations[name='tc2174']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subNodeMappings[name='EReferenceMapping3']"/>
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='tc2552']/@ownedRepresentations[name='tc2552']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@borderedNodeMappings[name='EAttributeMapping2'] //@ownedViewpoints[name='tc2552']/@ownedRepresentations[name='tc2552']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subNodeMappings[name='EReferenceMapping3']"/>
         <filters xsi:type="filter:VariableFilter" semanticConditionExpression="&lt;%!filter(&quot;EOperation&quot;)%>"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="HideAttributes" label="Hide attributes">
-        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='tc2174']/@ownedRepresentations[name='tc2174']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@borderedNodeMappings[name='EAttributeMapping2']"/>
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='tc2552']/@ownedRepresentations[name='tc2552']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@borderedNodeMappings[name='EAttributeMapping2']"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="HideClasses" label="Hide classes">
-        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='tc2174']/@ownedRepresentations[name='tc2174']/@defaultLayer/@containerMappings[name='EClassContainerMapping']"/>
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='tc2552']/@ownedRepresentations[name='tc2552']/@defaultLayer/@containerMappings[name='EClassContainerMapping']"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="CollapseContents" label="Collapse contents">
-        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='tc2174']/@ownedRepresentations[name='tc2174']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@borderedNodeMappings[name='EAttributeMapping2'] //@ownedViewpoints[name='tc2174']/@ownedRepresentations[name='tc2174']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subNodeMappings[name='EOperationMapping3'] //@ownedViewpoints[name='tc2174']/@ownedRepresentations[name='tc2174']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subNodeMappings[name='EReferenceMapping3']"/>
+        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='tc2552']/@ownedRepresentations[name='tc2552']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@borderedNodeMappings[name='EAttributeMapping2'] //@ownedViewpoints[name='tc2552']/@ownedRepresentations[name='tc2552']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subNodeMappings[name='EOperationMapping3'] //@ownedViewpoints[name='tc2552']/@ownedRepresentations[name='tc2552']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subNodeMappings[name='EReferenceMapping3']"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="CollapseAttributes" label="Collapse attributes">
-        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='tc2174']/@ownedRepresentations[name='tc2174']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@borderedNodeMappings[name='EAttributeMapping2']"/>
+        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='tc2552']/@ownedRepresentations[name='tc2552']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@borderedNodeMappings[name='EAttributeMapping2']"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="CollapseClasses" label="Collapse classes">
-        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='tc2174']/@ownedRepresentations[name='tc2174']/@defaultLayer/@containerMappings[name='EClassContainerMapping']"/>
+        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='tc2552']/@ownedRepresentations[name='tc2552']/@defaultLayer/@containerMappings[name='EClassContainerMapping']"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="CollapseHideContents" label="Collapse attributes and hide references">
-        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='tc2174']/@ownedRepresentations[name='tc2174']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subNodeMappings[name='EReferenceMapping3']"/>
-        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='tc2174']/@ownedRepresentations[name='tc2174']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@borderedNodeMappings[name='EAttributeMapping2']"/>
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='tc2552']/@ownedRepresentations[name='tc2552']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subNodeMappings[name='EReferenceMapping3']"/>
+        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='tc2552']/@ownedRepresentations[name='tc2552']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@borderedNodeMappings[name='EAttributeMapping2']"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="CollapseHideContentsCondition" label="Collapse attributes and hide references with condition">
-        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='tc2174']/@ownedRepresentations[name='tc2174']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subNodeMappings[name='EReferenceMapping3']" semanticConditionExpression="&lt;%name != &quot;activateHideRef&quot;%>"/>
-        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='tc2174']/@ownedRepresentations[name='tc2174']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@borderedNodeMappings[name='EAttributeMapping2']" semanticConditionExpression="&lt;%name != &quot;activateCollapseAtt&quot;%>"/>
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='tc2552']/@ownedRepresentations[name='tc2552']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subNodeMappings[name='EReferenceMapping3']" semanticConditionExpression="&lt;%name != &quot;activateHideRef&quot;%>"/>
+        <filters xsi:type="filter:MappingFilter" filterKind="COLLAPSE" mappings="//@ownedViewpoints[name='tc2552']/@ownedRepresentations[name='tc2552']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@borderedNodeMappings[name='EAttributeMapping2']" semanticConditionExpression="&lt;%name != &quot;activateCollapseAtt&quot;%>"/>
       </filters>
       <defaultLayer name="Default" label="default">
         <containerMappings name="EClassContainerMapping" label="EClassMapping" semanticCandidatesExpression="&lt;%eClassifiers.filter(&quot;EClass&quot;)%>" domainClass="EClass">
@@ -61,7 +61,7 @@
           </style>
         </containerMappings>
         <toolSections name="tools" label="Tools">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="createClass" label="create Class" containerMappings="//@ownedViewpoints[name='tc2174']/@ownedRepresentations[name='tc2174']/@defaultLayer/@containerMappings[name='EClassContainerMapping']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="createClass" label="create Class" containerMappings="//@ownedViewpoints[name='tc2552']/@ownedRepresentations[name='tc2552']/@defaultLayer/@containerMappings[name='EClassContainerMapping']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -72,7 +72,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="createClassForceRefresh" label="create Class with Force Refresh" forceRefresh="true" containerMappings="//@ownedViewpoints[name='tc2174']/@ownedRepresentations[name='tc2174']/@defaultLayer/@containerMappings[name='EClassContainerMapping']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="createClassForceRefresh" label="create Class with Force Refresh" forceRefresh="true" containerMappings="//@ownedViewpoints[name='tc2552']/@ownedRepresentations[name='tc2552']/@defaultLayer/@containerMappings[name='EClassContainerMapping']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -83,7 +83,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="createOperation" label="Create Operation" nodeMappings="//@ownedViewpoints[name='tc2174']/@ownedRepresentations[name='tc2174']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subNodeMappings[name='EOperationMapping3']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="createOperation" label="Create Operation" nodeMappings="//@ownedViewpoints[name='tc2552']/@ownedRepresentations[name='tc2552']/@defaultLayer/@containerMappings[name='EClassContainerMapping']/@subNodeMappings[name='EOperationMapping3']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -99,7 +99,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diag2399" domainClass="EPackage">
       <filters xsi:type="filter:CompositeFilterDescription" name="HideReference">
-        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='tc2174']/@ownedRepresentations[name='Diag2399']/@defaultLayer/@edgeMappings[name='Reference']"/>
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='tc2552']/@ownedRepresentations[name='Diag2399']/@defaultLayer/@edgeMappings[name='Reference']"/>
       </filters>
       <defaultLayer name="Default">
         <nodeMappings name="EClassNode" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
@@ -109,7 +109,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="Reference" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='tc2174']/@ownedRepresentations[name='Diag2399']/@defaultLayer/@nodeMappings[name='EClassNode']" targetMapping="//@ownedViewpoints[name='tc2174']/@ownedRepresentations[name='Diag2399']/@defaultLayer/@nodeMappings[name='EClassNode']" targetFinderExpression="&lt;%eType%>" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
+        <edgeMappings name="Reference" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='tc2552']/@ownedRepresentations[name='Diag2399']/@defaultLayer/@nodeMappings[name='EClassNode']" targetMapping="//@ownedViewpoints[name='tc2552']/@ownedRepresentations[name='Diag2399']/@defaultLayer/@nodeMappings[name='EClassNode']" targetFinderExpression="&lt;%eType%>" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -118,7 +118,7 @@
           </style>
         </edgeMappings>
         <toolSections>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Reference" edgeMappings="//@ownedViewpoints[name='tc2174']/@ownedRepresentations[name='Diag2399']/@defaultLayer/@edgeMappings[name='Reference']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Reference" edgeMappings="//@ownedViewpoints[name='tc2552']/@ownedRepresentations[name='Diag2399']/@defaultLayer/@edgeMappings[name='Reference']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>

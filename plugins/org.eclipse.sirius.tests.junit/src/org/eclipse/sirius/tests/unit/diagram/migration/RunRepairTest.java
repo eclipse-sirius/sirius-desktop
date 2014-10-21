@@ -38,6 +38,7 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.ICondition;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -49,8 +50,6 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Basic repair tests.
@@ -121,11 +120,11 @@ public class RunRepairTest extends AbstractRepairMigrateTest {
 
     private static final String TC_2369_VSM = "VP-2369/tc_breakdown.odesign";
 
-    private static final String TC_2552_AIRD = "VP-2552/tc2174.aird";
+    private static final String TC_2552_AIRD = "VP-2552/tc2552.aird";
 
-    private static final String TC_2552_MODEL = "VP-2552/tc2174.ecore";
+    private static final String TC_2552_MODEL = "VP-2552/tc2552.ecore";
 
-    private static final String TC_2552_VSM = "VP-2552/tc2174.odesign";
+    private static final String TC_2552_VSM = "VP-2552/tc2552.odesign";
 
     private static final String TC_VP_2738_ROOT_AIRD = "/data/unit/control/VP-2070/part2/root.aird";
 
@@ -136,9 +135,9 @@ public class RunRepairTest extends AbstractRepairMigrateTest {
     private static final String TC_VP_2738_P1_MODEL = "/data/unit/control/VP-2070/part2/root_p1.ecore";
 
     private static final String[] FILES = { TC_2103_AIRD, TC_2103_MODEL, TC_2077_AIRD, TC_2077_MODEL, TC_2077_VSM, TC_2316_AIRD_PB1_MAIN, TC_2316_MODEL_PB1_MAIN, TC_2316_AIRD_PB1_FRAGMENT,
-        TC_2316_MODEL_PB1_FRAGMENT, TC_2316_AIRD_PB2_MAIN, TC_2316_MODEL_PB2_MAIN, TC_2316_AIRD_PB2_FRAGMENT, TC_2316_MODEL_PB2_FRAGMENT, TC_2316_MODEL_PB4, TC_2316_AIRD_PB4, TC_VP_2035_AIRD,
-        TC_VP_2035_MODEL, TC_VP_2035_P1_AIRD, TC_VP_2035_P1_MODEL, TC_VP_2035_P2_AIRD, TC_VP_2035_P2_MODEL, TC_VP_2035_P3_AIRD, TC_VP_2035_P3_MODEL, TC_VP_2069_ROOT_AIRD, TC_VP_2069_ROOT_MODEL,
-        TC_VP_2069_P1_AIRD, TC_VP_2069_P1_MODEL, TC_2369_AIRD, TC_2369_MODEL, TC_2369_VSM, TC_2552_AIRD, TC_2552_MODEL, TC_2552_VSM };
+            TC_2316_MODEL_PB1_FRAGMENT, TC_2316_AIRD_PB2_MAIN, TC_2316_MODEL_PB2_MAIN, TC_2316_AIRD_PB2_FRAGMENT, TC_2316_MODEL_PB2_FRAGMENT, TC_2316_MODEL_PB4, TC_2316_AIRD_PB4, TC_VP_2035_AIRD,
+            TC_VP_2035_MODEL, TC_VP_2035_P1_AIRD, TC_VP_2035_P1_MODEL, TC_VP_2035_P2_AIRD, TC_VP_2035_P2_MODEL, TC_VP_2035_P3_AIRD, TC_VP_2035_P3_MODEL, TC_VP_2069_ROOT_AIRD, TC_VP_2069_ROOT_MODEL,
+            TC_VP_2069_P1_AIRD, TC_VP_2069_P1_MODEL, TC_2369_AIRD, TC_2369_MODEL, TC_2369_VSM, TC_2552_AIRD, TC_2552_MODEL, TC_2552_VSM };
 
     private static final String[] REUSED_FILES = { TC_VP_2738_ROOT_AIRD, TC_VP_2738_ROOT_MODEL, TC_VP_2738_P1_AIRD, TC_VP_2738_P1_MODEL };
 
@@ -385,7 +384,7 @@ public class RunRepairTest extends AbstractRepairMigrateTest {
                 .getIncomingEdges().get(0)).isExplicitlyFolded());
         assertTrue("The package P_3 should be indirectly folded after the repair-migrate (as it was before).",
                 !new DDiagramElementQuery(((DNodeContainer) diagram.getOwnedDiagramElements().get(1)).getIncomingEdges().get(0)).isExplicitlyFolded()
-                && new DDiagramElementQuery(((DNodeContainer) diagram.getOwnedDiagramElements().get(1)).getIncomingEdges().get(0)).isIndirectlyFolded());
+                        && new DDiagramElementQuery(((DNodeContainer) diagram.getOwnedDiagramElements().get(1)).getIncomingEdges().get(0)).isIndirectlyFolded());
         assertTrue("The package P_4 should be explicitly folded after the repair-migrate (as it was before).", new DDiagramElementQuery(((DNodeContainer) diagram.getOwnedDiagramElements().get(0))
                 .getIncomingEdges().get(0)).isExplicitlyFolded());
         assertTrue("The package P_8 should be explicitly folded after the repair-migrate (as it was before).", new DDiagramElementQuery(((DNodeContainer) diagram.getOwnedDiagramElements().get(7))
@@ -413,7 +412,7 @@ public class RunRepairTest extends AbstractRepairMigrateTest {
             String pathModel = "/" + TEMPORARY_PROJECT_NAME + "/" + TC_2552_MODEL;
             String pathAird = "/" + TEMPORARY_PROJECT_NAME + "/" + TC_2552_AIRD;
             String pathVSM = "/" + TEMPORARY_PROJECT_NAME + "/" + TC_2552_VSM;
-            String representationDescName = "tc2174";
+            String representationDescName = "tc2552";
             String hideEAttributsFilterName = "HideAttributes";
 
             genericSetUp(pathModel, pathVSM, pathAird);
