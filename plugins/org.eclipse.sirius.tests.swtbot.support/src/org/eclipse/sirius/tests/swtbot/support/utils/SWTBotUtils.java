@@ -45,8 +45,8 @@ import org.hamcrest.Matchers;
  */
 public final class SWTBotUtils {
 
-    // seconds
-    private static final long CLOSE_PROGRESS_MONITOR_TIMEOUT = TimeUnit.SECONDS.toSeconds(60);
+    /** 60 seconds of timeout (long timeout but big session can be long to open). */
+    public static final long CLOSE_PROGRESS_MONITOR_TIMEOUT = TimeUnit.SECONDS.toSeconds(60);
 
     /**
      * SWTWorkbenchBot
@@ -274,6 +274,29 @@ public final class SWTBotUtils {
      *             If dialog didn't close before timeout
      */
     public static void waitProgressMonitorClose(final String dialogTitle, final String dialogTaskLabel, final long timeout, final TimeUnit unit) throws TimeoutException {
+        SWTBotUtils.waitProgressMonitorClose(dialogTitle, dialogTaskLabel, timeout, unit, true);
+    }
+
+    /**
+     * This method is designed to wait close of progress monitor dialog if it
+     * opens. The dialog may not be opening if underlying process is shorter
+     * than 800ms. This method is able to mange this case.
+     * 
+     * @param dialogTitle
+     *            The real name of progress monitor dialog to look for
+     * @param dialogTaskLabel
+     *            A convenient name for the dialog to display errors
+     * @param timeout
+     *            Time to wait for dialog close
+     * @param unit
+     *            Unit of timeout.
+     * @param wholeTitle
+     *            false if the <code>dialogTitle</code> corresponds only to a
+     *            part of the title, true otherwise
+     * @throws TimeoutException
+     *             If dialog didn't close before timeout
+     */
+    public static void waitProgressMonitorClose(final String dialogTitle, final String dialogTaskLabel, final long timeout, final TimeUnit unit, final boolean wholeTitle) throws TimeoutException {
         // Need to wait progress monitor opening, that is to say at least
         // ProgressManager#getLongOperationTime()
         // As of 2010-03-31, it's 800ms
@@ -289,9 +312,11 @@ public final class SWTBotUtils {
             @Override
             public Shell run() {
                 for (Shell shell : shells) {
-                    if (!shell.isDisposed() && shell.getText().equalsIgnoreCase(dialogTitle)) {
-                        // Shell has been found
-                        return shell;
+                    if (!shell.isDisposed()) {
+                        if ((wholeTitle && shell.getText().equalsIgnoreCase(dialogTitle)) || (!wholeTitle && shell.getText().contains(dialogTitle))) {
+                            // Shell has been found
+                            return shell;
+                        }
                     }
                 }
                 return null;

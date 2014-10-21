@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.swtbot.support.api.business;
 
 import java.util.Collection;
+import java.util.concurrent.TimeUnit;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
@@ -259,7 +260,7 @@ public class UIPerspective {
         // Open session
         ICondition addedToSessionManager = new OpenedSessionCondition(SessionManager.INSTANCE.getSessions().size() + 1);
         uiLocalSessionResource.openSession();
-        SWTBotUtils.waitProgressMonitorClose(OpenRepresentationsFileJob.JOB_LABEL);
+        SWTBotUtils.waitProgressMonitorClose(OpenRepresentationsFileJob.JOB_LABEL, OpenRepresentationsFileJob.JOB_LABEL, SWTBotUtils.CLOSE_PROGRESS_MONITOR_TIMEOUT, TimeUnit.SECONDS, false);
         bot.waitUntil(addedToSessionManager);
         bot.waitUntil(openedSessionListener);
         SessionManager.INSTANCE.removeSessionsListener(openedSessionListener);
