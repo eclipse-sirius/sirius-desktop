@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+  Copyright (c) 2014 Obeo
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+
+  Contributors:
+       Obeo - Initial API and implementation
+-->
+<plugin>
+  <extension
+      point="org.eclipse.ui.newWizards">
+    <category
+        id="org.eclipse.sirius.samples.category"
+        name="Sirius Examples"
+        parentCategory="org.eclipse.ui.Examples">
+    </category>
+
+    <wizard category="org.eclipse.ui.Examples/org.eclipse.sirius.samples.category"
+            class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
+            icon="icons/Family.gif"
+            id="org.eclipse.sirius.samples.family.NewBasicFamilyDomainModelWizard"
+            name="Basic Family Metamodel Definition"
+            project="true">
+      <description>A simplified DSL to model families.</description>
+    </wizard>
+
+    <wizard category="org.eclipse.ui.Examples/org.eclipse.sirius.samples.category"
+            class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
+            icon="icons/Family.gif"
+            id="org.eclipse.sirius.samples.family.NewBasicFamilyExampleModel"
+            name="Basic Family Sample Model"
+            project="true">
+      <description>A sample model representing a family (requires the Basic Family Metamodel Definition to be installed).</description>
+
+    </wizard>
+
+    <wizard category="org.eclipse.ui.Examples/org.eclipse.sirius.samples.category"
+            class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
+            icon="icons/Family.gif"
+            id="org.eclipse.sirius.samples.family.NewBasicFamilyVSM"
+            name="Basic Family Sample Modeler Definition"
+            project="true">
+      <description>A sample graphical modeler to view an edit family models (requires the Basic Family Metamodel Definition to be installed).</description>
+    </wizard>
+  </extension>
+
+  <extension point="org.eclipse.emf.common.ui.examples">
+
+	<!-- Brings down the 3 plug-ins implementing the Basic Family Metamodel -->
+  	<example wizardID="org.eclipse.sirius.samples.family.NewBasicFamilyDomainModelWizard">
+
+      <projectDescriptor name="org.eclipse.sirius.sample.basicfamily"
+                         contentURI="samples/org.eclipse.sirius.sample.basicfamily/"
+                         description="The BasicFamily domain model."/>
+      <projectDescriptor name="org.eclipse.sirius.sample.basicfamily.edit"
+                         contentURI="samples/org.eclipse.sirius.sample.basicfamily.edit/"
+                         description="The editing support for the BasicFamily domain model."/>
+      <projectDescriptor name="org.eclipse.sirius.sample.basicfamily.editor"
+                         contentURI="samples/org.eclipse.sirius.sample.basicfamily.editor/"
+                         description="The default EMF hierarchical editor for the BasicFamily domain model."/> 
+
+  	</example>
+  	
+	<!-- Brings down a Modeling project with a sample family model -->
+  	<example wizardID="org.eclipse.sirius.samples.family.NewBasicFamilyExampleModel">
+      <projectDescriptor name="basicfamily.sample"
+                         contentURI="samples/basicfamily.sample/"
+                         description="A sample model representing a family."/>
+  	</example>
+
+	<!-- Brings down VSP with the basic family modeler definition described in the tutorial -->
+  	<example wizardID="org.eclipse.sirius.samples.family.NewBasicFamilyVSM">
+      <projectDescriptor name="org.eclipse.sirius.sample.basicfamily.design"
+                         contentURI="samples/org.eclipse.sirius.sample.basicfamily.design/"
+                         description="A sample graphical modeler to view an edit family models."/>
+  	</example>
+  </extension>
+
+</plugin>
