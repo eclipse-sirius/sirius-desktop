@@ -24,6 +24,7 @@ import java.util.NoSuchElementException;
 
 import junit.framework.TestCase;
 
+import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.ILogListener;
@@ -100,6 +101,7 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.eclipse.gef.finder.SWTBotGefTestCase;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
+import org.eclipse.swtbot.swt.finder.SWTBotTestCase;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
@@ -164,6 +166,12 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     private static final String EDIT_MENU_NAME = "Edit";
 
     private static boolean fFullScreen = true;
+
+    /** Counts the screenshots to determine if maximum number is reached. */
+    private static int screenshotCounter;
+
+    /** The logger. */
+    private static Logger log = Logger.getLogger(SWTBotTestCase.class);
 
     /**
      * Designer perspective.
@@ -1746,4 +1754,47 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         setErrorCatchActive(false);
     }
 
+    // CHECKSTYLE:OFF
+    /**
+     * Method override to use a specific captureScreenshot() that uses the
+     * constant SWTBotPreferences.SCREENSHOTS_DIR instead of a hard coded folder
+     * name.
+     */
+    @Override
+    public void runBare() throws Throwable {
+        Throwable exception = null;
+        try {
+            super.runBare();
+        } catch (Throwable running) {
+            exception = running;
+            captureScreenshot();
+        }
+        if (exception != null)
+            throw exception;
+    }
+
+    /**
+     * Helper used by {@link #runBare()}. Duplicate from
+     * {@link SWTBotTestCase#captureScreenshot()} to use the constant
+     * SWTBotPreferences.SCREENSHOTS_DIR instead of a hard coded folder.
+     * 
+     * @see #runBare()
+     */
+    private void captureScreenshot() {
+        try {
+            int maximumScreenshots = SWTBotPreferences.MAX_ERROR_SCREENSHOT_COUNT;
+            String fileName = SWTBotPreferences.SCREENSHOTS_DIR + "/screenshot-" + ClassUtils.simpleClassName(getClass()) + POINT + getName() + POINT //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                    + SWTBotPreferences.SCREENSHOT_FORMAT.toLowerCase();
+            if (++screenshotCounter <= maximumScreenshots) {
+                new File(SWTBotPreferences.SCREENSHOTS_DIR).mkdirs(); //$NON-NLS-1$
+                SWTUtils.captureScreenshot(fileName);
+            } else {
+                log.info("No screenshot captured for '" + ClassUtils.simpleClassName(getClass()) + POINT + getName() //$NON-NLS-1$ //$NON-NLS-2$
+                        + "' because maximum number of screenshots reached: " + maximumScreenshots); //$NON-NLS-1$
+            }
+        } catch (Exception e) {
+            log.warn("Could not capture screenshot", e); //$NON-NLS-1$
+        }
+    }
+    // CHECKSTYLE:ON
 }
