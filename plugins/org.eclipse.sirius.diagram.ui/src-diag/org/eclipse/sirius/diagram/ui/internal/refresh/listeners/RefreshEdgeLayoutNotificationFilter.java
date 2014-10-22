@@ -91,7 +91,7 @@ public class RefreshEdgeLayoutNotificationFilter extends NotificationFilter.Cust
      *         induced by the first one.
      */
     public static boolean otherNotificationsAreIndirectlyConcerned(Notification notification, Collection<Notification> notifications) {
-        if (NotationPackage.eINSTANCE.getRoutingStyle_Routing().equals(notification.getFeature())) {
+        if (NotationPackage.eINSTANCE.getRoutingStyle_Routing().equals(notification.getFeature()) || DiagramPackage.eINSTANCE.getEdgeStyle_Centered().equals(notification.getFeature())) {
             Set<EStructuralFeature> concernedFeature = Sets.newLinkedHashSet();
             concernedFeature.add(ViewpointPackage.eINSTANCE.getCustomizable_CustomFeatures());
             concernedFeature.add(DiagramPackage.eINSTANCE.getEdgeStyle_RoutingStyle());
