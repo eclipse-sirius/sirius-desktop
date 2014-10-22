@@ -52,6 +52,14 @@ public class XTextResourceSetFactory extends org.eclipse.sirius.common.tools.api
         if (prj != null) {
             configure(set, prj);
         }
+
+        /*
+         * We enable the "LIVE_SCOPE" in Xtext so that the scoping will look for
+         * a IResourceDescription first in the ResourecSet, then in dirty
+         * editors and then in the index. Without this cross-references might
+         * get broken when saving, see Bug 448304.
+         */
+        set.getLoadOptions().put(org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider.LIVE_SCOPE, Boolean.TRUE);
         return set;
     }
 
