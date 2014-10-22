@@ -199,8 +199,8 @@ public interface PaneBasedSelectionWizardDescription extends AbstractToolDescrip
     /**
      * Returns the value of the '<em><b>Icon Path</b></em>' attribute. The
      * default value is
-     * <code>"/org.eclipse.sirius.ui/icons/full/obj16/NodeMapping.gif"</code>.
-     * <!-- begin-user-doc -->
+     * <code>"/org.eclipse.sirius.ui/icons/full/obj16/PaneBasedSelectionWizardDescription.gif"</code>
+     * . <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Icon Path</em>' attribute isn't clear, there
      * really should be more of a description here...
@@ -210,7 +210,8 @@ public interface PaneBasedSelectionWizardDescription extends AbstractToolDescrip
      * @return the value of the '<em>Icon Path</em>' attribute.
      * @see #setIconPath(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getPaneBasedSelectionWizardDescription_IconPath()
-     * @model default="/org.eclipse.sirius.ui/icons/full/obj16/NodeMapping.gif"
+     * @model default=
+     *        "/org.eclipse.sirius.ui/icons/full/obj16/PaneBasedSelectionWizardDescription.gif"
      *        required="true"
      * @generated
      */
