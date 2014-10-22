@@ -224,6 +224,10 @@ public class TableUIUpdaterRunnable implements Runnable {
                     TreeColumn treeColumn = (TreeColumn) result;
                     if (treeColumn.getWidth() != dColumn.getWidth()) {
                         treeColumn.setWidth(dColumn.getWidth());
+                        // The setting of the column data is also needed here
+                        // since Luna because the above width will be reset by
+                        // AbstractColumnLayout.layoutTableTree otherwise.
+                        ((TreeColumnLayout) treeColumn.getParent().getParent().getLayout()).setColumnData(treeColumn, new ColumnPixelData(dColumn.getWidth()));
                     }
                 }
             }
