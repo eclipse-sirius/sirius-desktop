@@ -311,11 +311,25 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     private SelectCreatedDRepresentationElementsListener selectNewElementsListener;
 
+    private Job refreshJob;
+
     /**
      * Create a new instance.
      */
     public DDiagramEditorImpl() {
         super();
+    }
+
+    @Override
+    public void close(boolean save) {
+        if (refreshJob != null) {
+            try {
+                refreshJob.join();
+            } catch (InterruptedException e) {
+                DiagramPlugin.getDefault().getLog().log(new Status(IStatus.INFO, DiagramPlugin.ID, "Refresh job got interrupted", e));
+            }
+        }
+        super.close(save);
     }
 
     /**
@@ -547,7 +561,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             // Run refresh in a job to avoid taking lock on the Workspace on
             // representation change, while the lock is already taken on odesign
             // change
-            Job refreshJob = new Job("Refresh ") {
+            refreshJob = new Job("Refresh ") {
 
                 @Override
                 protected IStatus run(IProgressMonitor monitor) {
