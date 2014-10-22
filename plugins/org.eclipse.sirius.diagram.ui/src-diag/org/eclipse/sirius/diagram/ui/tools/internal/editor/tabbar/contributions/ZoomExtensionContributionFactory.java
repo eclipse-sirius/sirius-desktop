@@ -50,7 +50,8 @@ public class ZoomExtensionContributionFactory extends SiriusTabbarExtensionContr
             @Override
             public void fill(ToolBar parent, int index) {
                 super.fill(parent, index);
-                ToolItem addedItem = parent.getItem(parent.getItemCount() - 1);
+                // Use the index where the item has just been added.
+                ToolItem addedItem = parent.getItem(index);
                 addedItem.setToolTipText(DiagramUIMessages.ZoomActionMenu_ZoomLabel);
             }
 
