@@ -79,22 +79,49 @@ public class SVGFigure extends Figure {
         if (uri == null) {
             return;
         }
-        String parser = XMLResourceDescriptor.getXMLParserClassName();
-        SAXSVGDocumentFactory factory = new SAXSVGDocumentFactory(parser);
-        try {
-            String documentKey = getDocumentKey();
-            Document document;
-            if (documentsMap.containsKey(documentKey))
-                document = documentsMap.get(documentKey);
-            else {
-                document = factory.createDocument(uri);
-                documentsMap.put(documentKey, document);
-            }
+
+        String documentKey = getDocumentKey();
+        Document document;
+        if (documentsMap.containsKey(documentKey)) {
+            document = documentsMap.get(documentKey);
+        } else {
+            document = createDocument();
+            documentsMap.put(documentKey, document);
+        }
+
+        if (document != null) {
             transcoder = new SimpleImageTranscoder(document);
             failedToLoadDocument = false;
-        } catch (IOException e) {
-            DiagramPlugin.getDefault().logError("Error loading SVG file", e);
         }
+
+    }
+
+    private Document createDocument() {
+        String parser = XMLResourceDescriptor.getXMLParserClassName();
+        SAXSVGDocumentFactory factory = new SAXSVGDocumentFactory(parser);
+
+        return createDocument(factory, false);
+    }
+
+    private Document createDocument(SAXSVGDocumentFactory factory, boolean forceClassLoader) {
+        if (forceClassLoader) {
+            Thread.currentThread().setContextClassLoader(this.getClass().getClassLoader());
+        }
+        try {
+            return factory.createDocument(uri);
+        } catch (IOException e) {
+            boolean saxParserNotFound = e.getMessage() != null && e.getMessage().contains("SAX2 driver class org.apache.xerces.parsers.SAXParser not found");
+            if (!forceClassLoader && saxParserNotFound && Thread.currentThread().getContextClassLoader() == null) {
+                return createDocument(factory, true);
+            } else {
+                DiagramPlugin.getDefault().logError("Error loading SVG file", e);
+            }
+        } finally {
+            if (forceClassLoader) {
+                Thread.currentThread().setContextClassLoader(null);
+            }
+        }
+        return null;
     }
 
     protected final Document getDocument() {
@@ -205,7 +232,7 @@ public class SVGFigure extends Figure {
             } else {
                 aaHint = RenderingHints.VALUE_ANTIALIAS_DEFAULT;
             }
-            if (transcoder.getRenderingHints().get(RenderingHints.KEY_ANTIALIASING) != aaHint) {
+            if (transcoder != null && transcoder.getRenderingHints().get(RenderingHints.KEY_ANTIALIASING) != aaHint) {
                 transcoder.getRenderingHints().put(RenderingHints.KEY_ANTIALIASING, aaHint);
                 transcoder.contentChanged();
             }
@@ -225,7 +252,7 @@ public class SVGFigure extends Figure {
             } else {
                 aaHint = RenderingHints.VALUE_TEXT_ANTIALIAS_DEFAULT;
             }
-            if (transcoder.getRenderingHints().get(RenderingHints.KEY_TEXT_ANTIALIASING) != aaHint) {
+            if (transcoder != null && transcoder.getRenderingHints().get(RenderingHints.KEY_TEXT_ANTIALIASING) != aaHint) {
                 transcoder.getRenderingHints().put(RenderingHints.KEY_TEXT_ANTIALIASING, aaHint);
                 transcoder.contentChanged();
             }

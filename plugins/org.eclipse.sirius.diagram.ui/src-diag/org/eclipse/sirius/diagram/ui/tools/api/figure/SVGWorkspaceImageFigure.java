@@ -21,6 +21,7 @@ import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SimpleImageTranscoder;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.swt.graphics.Image;
@@ -165,15 +166,18 @@ public class SVGWorkspaceImageFigure extends AbstractCachedSVGFigure implements 
             boolean updated = this.updateImageURI(workspaceImage.getWorkspacePath());
             if (updated) {
                 this.contentChanged();
-                int canvasHeight = getTranscoder().getCanvasHeight();
-                int canvasWidth = getTranscoder().getCanvasWidth();
+                SimpleImageTranscoder transcoder = getTranscoder();
+                if (transcoder != null) {
+                    int canvasHeight = transcoder.getCanvasHeight();
+                    int canvasWidth = transcoder.getCanvasWidth();
 
-                if (canvasHeight == -1 || canvasWidth == -1) {
-                    int width = getTranscoder().getBufferedImage().getWidth();
-                    int height = getTranscoder().getBufferedImage().getHeight();
-                    imageAspectRatio = (double) width / (double) height;
-                } else {
-                    imageAspectRatio = (double) canvasWidth / (double) canvasHeight;
+                    if (canvasHeight == -1 || canvasWidth == -1) {
+                        int width = transcoder.getBufferedImage().getWidth();
+                        int height = transcoder.getBufferedImage().getHeight();
+                        imageAspectRatio = (double) width / (double) height;
+                    } else {
+                        imageAspectRatio = (double) canvasWidth / (double) canvasHeight;
+                    }
                 }
             }
         } else {
