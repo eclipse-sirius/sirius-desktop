@@ -21,17 +21,13 @@ import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import com.google.common.collect.Iterables;
 
 /**
- * A lazy cross referencer which does nothing until one of its method is called. <BR>
- * <BR>
+ * A lazy cross referencer which does nothing until one of its method is called. <BR><BR>
  * This cross referencer also reacts to {@link EObject} removal from their
  * containing reference : it removes itself automatically from their adapters
- * and recursively from those of their contents. If the new container is already
- * set and also has the cross referencer then we add it again.<BR>
- * <BR>
+ * and recursively from those of their contents. <BR><BR>
  * This cross referencer also provide a way to disable the resolution of proxy.
  * This can be useful to avoid reloading of a resource during the unloading of
- * it (caused by resolution of some proxy with crossReferencer).<BR>
- * <BR>
+ * it (caused by resolution of some proxy with crossReferencer).<BR><BR>
  * 
  * @see {@link org.eclipse.emf.transaction.impl.ResourceSetManager#observe(org.eclipse.emf.ecore.resource.Resource, Notification)}
  *      and message
@@ -40,7 +36,6 @@ import com.google.common.collect.Iterables;
  * 
  * @author mchauvin
  */
-@SuppressWarnings("restriction")
 public class LazyCrossReferencer extends ECrossReferenceAdapter {
     private boolean resolveEnabled = true;
 
@@ -227,7 +222,7 @@ public class LazyCrossReferencer extends ECrossReferenceAdapter {
 
         /**
          * This method removes the current cross referencer adapter from
-         * adapters of removed elements. The removeAdapter method propagates the
+         * adapters of removed elements. The removeAdapter method propagate the
          * removal to all contents of its parameter.
          * 
          * @param notification
@@ -242,16 +237,12 @@ public class LazyCrossReferencer extends ECrossReferenceAdapter {
                 Object oldValue = notification.getOldValue();
                 if (oldValue instanceof Notifier) {
                     removeAdapter((Notifier) oldValue);
-                    // restore the adapter if necessary
-                    restoreAdapter(notification, (Notifier) oldValue);
                 }
                 break;
 
             case Notification.REMOVE_MANY:
                 for (Notifier oldVal : Iterables.filter((Collection<?>) notification.getOldValue(), Notifier.class)) {
                     removeAdapter(oldVal);
-                    // restore the adapter if necessary
-                    restoreAdapter(notification, oldVal);
                 }
                 break;
 
@@ -259,36 +250,5 @@ public class LazyCrossReferencer extends ECrossReferenceAdapter {
                 break;
             }
         }
-
-        /**
-         * This method restores the current cross referencer adapter from
-         * adapters of the removed element if necessary.
-         * 
-         * @param notification
-         *            a containment notification
-         * @param removedElement
-         *            removed element on which the adapter has been removed
-         */
-        private void restoreAdapter(Notification notification, Notifier removedElement) {
-            // Specific code for case where the REMOVE/ADD notifications are
-            // handled in reverse order: if the new container is already set and
-            // also has the adapter then we add again the adapter.
-            EObject currentContainer = ((EObject) removedElement).eContainer();
-            if (currentContainer != null && currentContainer != notification.getNotifier() && currentContainer.eAdapters().contains(this)) {
-                addAdapter(removedElement);
-            }
-        }
-
-        @Override
-        protected void unsetTarget(EObject target) {
-            super.unsetTarget(target);
-
-            // Sometimes target contents and cross references are modified
-            // before the notification, in this case the inverse cross
-            // referencer map is not properly cleaned. So we also remove target
-            // key from the map in order to force future computation.
-            this.inverseCrossReferencer.remove(target);
-        }
-
     };
 }
