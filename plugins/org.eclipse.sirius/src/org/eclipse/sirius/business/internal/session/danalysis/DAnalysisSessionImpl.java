@@ -442,6 +442,10 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             }
             addAdaptersOnAnalysis(newAnalysis);
             registerResourceInCrossReferencer(newAnalysis.eResource());
+            for (DAnalysis dAnalysis : new DAnalysisQuery(newAnalysis).getAllReferencedAnalyses()) {
+                addAdaptersOnAnalysis(dAnalysis);
+                registerResourceInCrossReferencer(dAnalysis.eResource());                
+            }
             notifyListeners(SessionListener.REPRESENTATION_CHANGE);
         } else {
             throw new IllegalStateException("Cant add a referenced analysis if no parent analysis exists");
