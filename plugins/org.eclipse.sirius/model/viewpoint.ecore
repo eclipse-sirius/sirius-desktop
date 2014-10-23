@@ -637,7 +637,8 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A SemanticBasedDecoration applies decoration on views that targeted an element of the given type."/>
       </eAnnotations>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClass" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClass" lowerBound="1"
+          eType="#//description/TypeName">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The path of the icon of the decoration."/>
         </eAnnotations>
