@@ -161,11 +161,11 @@ public class Uml2ViewOrderingProvider implements ViewOrderingProvider {
 }
 
 
-Once this has been implemented, we need to add the extension to the plugin.xml :
-
-!images/arrange-all/arrange-all-provider-extension.png!
-
 </pre>
+		<p>Once this has been implemented, we need to add the extension to the plugin.xml :</p>
+		<p>
+			<img border="0" src="images/arrange-all/arrange-all-provider-extension.png"/>
+		</p>
 		<pre><code>&lt;extension point="org.eclipse.sirius.diagram.viewOrderingProvider"&gt;
    &lt;viewOrderingProvider providerClass="com.example.uml2.specific.provider.Uml2ViewOrderingProvider" /&gt;
 &lt;/extension&gt;
@@ -321,11 +321,11 @@ Once this has been implemented, we need to add the extension to the plugin.xml :
 
 }
 
-Finally, we add the extension in the plug-in file :
-
-!images/arrange-all/arrange-all-layoutprovider-extension.png!
-
 </pre>
+		<p>Finally, we add the extension in the plug-in file :</p>
+		<p>
+			<img border="0" src="images/arrange-all/arrange-all-layoutprovider-extension.png"/>
+		</p>
 		<pre><code>&lt;extension point="org.eclipse.sirius.diagram.layoutProvider"&gt;
    &lt;layoutProvider priority="high" providerClass="com.example.uml2.specific.provider.Uml2LayoutProvider"&gt;
    &lt;/layoutProvider&gt;

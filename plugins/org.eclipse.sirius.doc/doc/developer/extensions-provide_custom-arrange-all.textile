@@ -137,7 +137,7 @@ public class Uml2ViewOrderingProvider implements ViewOrderingProvider {
 }
 
 
-Once this has been implemented, we need to add the extension to the plugin.xml :
+p. Once this has been implemented, we need to add the extension to the plugin.xml :
 
 !images/arrange-all/arrange-all-provider-extension.png!
 
@@ -301,7 +301,7 @@ public class Uml2LayoutProvider implements LayoutProvider {
 
 }
 
-Finally, we add the extension in the plug-in file :
+p. Finally, we add the extension in the plug-in file :
 
 !images/arrange-all/arrange-all-layoutprovider-extension.png!
 
