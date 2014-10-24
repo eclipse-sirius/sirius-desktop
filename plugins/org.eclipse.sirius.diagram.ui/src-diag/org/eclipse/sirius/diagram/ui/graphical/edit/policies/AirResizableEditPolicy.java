@@ -190,7 +190,7 @@ public class AirResizableEditPolicy extends ResizableShapeEditPolicy {
 
         // we add a command to keep the edges centered (if they should be)
         if (result != null && getHost() instanceof IGraphicalEditPart) {
-            CenterEditPartEdgesCommand centerEditPartEdgesCommand = new CenterEditPartEdgesCommand((IGraphicalEditPart) getHost());
+            CenterEditPartEdgesCommand centerEditPartEdgesCommand = new CenterEditPartEdgesCommand((IGraphicalEditPart) getHost(), request);
             result = result.chain(new ICommandProxy(centerEditPartEdgesCommand));
         }
         return result;

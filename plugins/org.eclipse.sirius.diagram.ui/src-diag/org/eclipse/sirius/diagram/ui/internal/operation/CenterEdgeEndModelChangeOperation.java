@@ -87,6 +87,10 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
 
     private boolean useFigure = true;
 
+    private Dimension sourceFigureSize;
+
+    private Dimension targetFigureSize;
+
     /**
      * Constructor to use the connectionEditPart to compute the new edge
      * bendpoints.
@@ -127,6 +131,22 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
     public CenterEdgeEndModelChangeOperation(Edge edge, boolean useFigure) {
         this(edge);
         this.useFigure = useFigure;
+    }
+
+    /**
+     * Set the source and target figure size. Those size will be used instead of
+     * compute them.
+     * 
+     * @param sourceFigureSize
+     *            the edge source figure size. If null, the size will be
+     *            computed.
+     * @param targetFigureSize
+     *            the edge target figure size. If null, the size will be
+     *            computed.
+     */
+    public void setSourceAndTargetSize(Dimension sourceFigureSize, Dimension targetFigureSize) {
+        this.sourceFigureSize = sourceFigureSize;
+        this.targetFigureSize = targetFigureSize;
     }
 
     @Override
@@ -239,11 +259,21 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
     }
 
     private Option<Rectangle> getAbsoluteSourceBounds(View edgeSourceView) {
-        return getAbsoluteBounds(edgeSourceView, true);
+        Option<Rectangle> option = getAbsoluteBounds(edgeSourceView, true);
+        if (sourceFigureSize != null && option.some()) {
+            Rectangle rectangle = option.get();
+            rectangle.setSize(sourceFigureSize);
+        }
+        return option;
     }
 
     private Option<Rectangle> getAbsoluteTargetBounds(View edgeTargetView) {
-        return getAbsoluteBounds(edgeTargetView, false);
+        Option<Rectangle> option = getAbsoluteBounds(edgeTargetView, false);
+        if (targetFigureSize != null && option.some()) {
+            Rectangle rectangle = option.get();
+            rectangle.setSize(targetFigureSize);
+        }
+        return option;
     }
 
     /**

@@ -75,4 +75,9 @@
     <edges id="edge6" source="//@representations.3/@nodes.2" target="//@representations.3/@nodes.1"/>
     <edges id="edge2" source="//@representations.3/@containers.0/@elements.0" target="//@representations.3/@containers.1/@elements.0"/>
   </representations>
+  <representations xsi:type="migrationmodeler:Diagram" name="resize">
+    <containers id="container1container1container1container1container1container1"/>
+    <containers id="container2"/>
+    <edges id="edge1" source="//@representations.4/@containers.1" target="//@representations.4/@containers.0"/>
+  </representations>
 </migrationmodeler:TestCase>

@@ -13,11 +13,13 @@ package org.eclipse.sirius.tests.swtbot;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.NodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -68,6 +70,8 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String REPRESENTATION_NAME_ROUTING = "routingStyle";
 
     private static final String REPRESENTATION_NAME_MOVING = "moving";
+
+    private static final String REPRESENTATION_NAME_RESIZE = "resizeTest";
 
     private static final String RECTILINEAR_STYLE_ROUTING = "Rectilinear Style Routing";
 
@@ -399,6 +403,28 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
+     * Test that when resizing the edge source with a source and a target
+     * 'auto-size', the edge is still centered. See <a
+     * href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c5">Bug
+     * 448739#c5</a>.
+     */
+    public void testResizingAutoSizeContainer() {
+        openDiagram(REPRESENTATION_NAME_RESIZE);
+        SWTBotGefEditPart containerBotGefEditPart = editor.getEditPart("container2", DNodeContainerEditPart.class);
+        containerBotGefEditPart.select();
+
+        IFigure figure = ((GraphicalEditPart) containerBotGefEditPart.part()).getFigure();
+        Rectangle boundsBefore = figure.getBounds().getCopy();
+        containerBotGefEditPart.resize(PositionConstants.SOUTH_EAST, 300, 80);
+
+        // we make sure the figure has been resized
+        bot.waitUntil(new WaitFigureResizedCondition(boundsBefore, figure));
+
+        SWTBotGefConnectionEditPart edgeSwtBotGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge1", DEdgeEditPart.class);
+        assertEdgeHasExpectedTgtAnchor(edgeSwtBotGefEditPart, new PrecisionPoint(0.5, 0.5));
+    }
+
+    /**
      * 
      * @param gefConnectionEditPart
      * @param routingStyle
@@ -523,26 +549,6 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         assertTrue(msg, actual.y() <= (expected.y() + 1) && actual.y() >= expected.y() - 1);
     }
 
-    /**
-     * Get expected relative coordinates between the anchor and the first
-     * bendpoint (the connection).
-     * 
-     * @param expectedAnchor
-     *            the expected anchor.
-     * @param expectedBendpoint
-     *            the expected bendpoint.
-     * @param nodeEditPart
-     *            the node edit part.
-     * @return the relative location.
-     */
-    private Dimension getExpectedBendpointRelativeCoordinates(PrecisionPoint expectedAnchor, PrecisionPoint expectedBendpoint, NodeEditPart nodeEditPart) {
-        Dimension size = nodeEditPart.getFigure().getBounds().getSize().getCopy();
-        Dimension anchor = nodeEditPart.getFigure().getBounds().getSize().getCopy();
-        anchor.scale(expectedAnchor.preciseX(), expectedAnchor.preciseY());
-        size.scale(expectedBendpoint.preciseX(), expectedBendpoint.preciseY());
-        return size.getShrinked(anchor);
-    }
-
     private DEdgeEditPart getSingleDEdgeFrom(NodeEditPart sourcePart) {
 
         bot.waitUntil(new WaitEdgeCreationCondition(sourcePart));
@@ -599,6 +605,53 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         public String getFailureMessage() {
             return "";
         }
+    }
+
+    /**
+     * Condition to wait until a figure bounds are changed.
+     * 
+     * @author fbarbin
+     *
+     */
+    private class WaitFigureResizedCondition extends DefaultCondition {
+
+        private Rectangle before;
+
+        private IFigure figure;
+
+        /**
+         * Constructor.
+         * 
+         * @param before
+         *            the bounds before the resize. We will wait until the new
+         *            given figure bounds are different.
+         * @param figure
+         *            the figure.
+         */
+        public WaitFigureResizedCondition(Rectangle before, IFigure figure) {
+            this.before = before;
+            this.figure = figure;
+        }
+
+        /*
+         * (non-Javadoc)
+         * @see org.eclipse.swtbot.swt.finder.waits.ICondition#test()
+         */
+        @Override
+        public boolean test() throws Exception {
+            return !figure.getBounds().equals(before);
+        }
+
+        /*
+         * (non-Javadoc)
+         * @see
+         * org.eclipse.swtbot.swt.finder.waits.ICondition#getFailureMessage()
+         */
+        @Override
+        public String getFailureMessage() {
+            return "the figure should be resized";
+        }
+
     }
 
 }
