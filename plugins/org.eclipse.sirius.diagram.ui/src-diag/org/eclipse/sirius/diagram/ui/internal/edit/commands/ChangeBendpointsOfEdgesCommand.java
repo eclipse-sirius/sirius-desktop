@@ -218,47 +218,56 @@ public class ChangeBendpointsOfEdgesCommand extends AbstractTransactionalCommand
     protected Option<CompositeTransactionalCommand> getBendpointsChangedCommand(TransactionalEditingDomain transactionalEditingDomain, Point moveDelta, ConnectionEditPart connectionEditPart,
             List<AbstractGraphicalEditPart> allMovedEditParts, boolean sourceMove) {
         Option<CompositeTransactionalCommand> result = Options.newNone();
-        Connection connectionFigure = connectionEditPart.getConnectionFigure();
-        // Check that this connectionEditPart is orthogonal tree branch and is a
-        // layout component
-        ConnectionEditPartQuery connectionEditPartQuery = new ConnectionEditPartQuery(connectionEditPart);
-        if (new ConnectionQuery(connectionFigure).isOrthogonalTreeBranch(connectionFigure.getPoints()) && connectionEditPartQuery.isLayoutComponent()) {
-            CompositeTransactionalCommand command = new CompositeTransactionalCommand(transactionalEditingDomain, "Map GMF to Draw2D");
+        // Source (or target) of connections can be null if it is hidden. In
+        // this case, the bendpoints are not adapted. If the source (or target)
+        // is revealed after, the edge has not the same result as if it is
+        // visible during the move of the target (or source).
+        if (connectionEditPart.getSource() != null && connectionEditPart.getTarget() != null) {
+            Connection connectionFigure = connectionEditPart.getConnectionFigure();
+            // Check that this connectionEditPart is orthogonal tree branch and
+            // is a
+            // layout component
+            ConnectionEditPartQuery connectionEditPartQuery = new ConnectionEditPartQuery(connectionEditPart);
+            if (new ConnectionQuery(connectionFigure).isOrthogonalTreeBranch(connectionFigure.getPoints()) && connectionEditPartQuery.isLayoutComponent()) {
+                CompositeTransactionalCommand command = new CompositeTransactionalCommand(transactionalEditingDomain, "Map GMF to Draw2D");
 
-            SetConnectionAnchorsCommand setConnectionAnchorsCommand = new SetConnectionAnchorsCommand(transactionalEditingDomain, "Map GMF anchor to Draw2D anchor");
-            setConnectionAnchorsCommand.setEdgeAdaptor(connectionEditPart);
-            setConnectionAnchorsCommand.setNewSourceTerminal(((INodeEditPart) connectionEditPart.getSource()).mapConnectionAnchorToTerminal(connectionFigure.getSourceAnchor()));
-            setConnectionAnchorsCommand.setNewTargetTerminal(((INodeEditPart) connectionEditPart.getTarget()).mapConnectionAnchorToTerminal(connectionFigure.getTargetAnchor()));
-            command.add(setConnectionAnchorsCommand);
+                SetConnectionAnchorsCommand setConnectionAnchorsCommand = new SetConnectionAnchorsCommand(transactionalEditingDomain, "Map GMF anchor to Draw2D anchor");
+                setConnectionAnchorsCommand.setEdgeAdaptor(connectionEditPart);
+                setConnectionAnchorsCommand.setNewSourceTerminal(((INodeEditPart) connectionEditPart.getSource()).mapConnectionAnchorToTerminal(connectionFigure.getSourceAnchor()));
+                setConnectionAnchorsCommand.setNewTargetTerminal(((INodeEditPart) connectionEditPart.getTarget()).mapConnectionAnchorToTerminal(connectionFigure.getTargetAnchor()));
+                command.add(setConnectionAnchorsCommand);
 
-            SetConnectionBendpointsAccordingToDraw2DCommand setConnectionBendpointsCommand = new SetConnectionBendpointsAccordingToDraw2DCommand(transactionalEditingDomain);
-            setConnectionBendpointsCommand.setLabel("Map GMF points to Draw2D points");
-            setConnectionBendpointsCommand.setSourceMove(sourceMove);
-            setConnectionBendpointsCommand.setMoveDelta(new PrecisionPoint(moveDelta));
-            setConnectionBendpointsCommand.setEdgeAdapter(connectionEditPart);
-            command.add(setConnectionBendpointsCommand);
-            result = Options.newSome(command);
-        } else if (connectionEditPartQuery.isEdgeWithObliqueRoutingStyle() || connectionEditPartQuery.isEdgeWithRectilinearRoutingStyle()) {
-            if (!allMovedEditParts.isEmpty()) {
-                if ((sourceMove && !allMovedEditParts.contains(connectionEditPart.getTarget())) || (!sourceMove && !allMovedEditParts.contains(connectionEditPart.getSource()))) {
-                    CompositeTransactionalCommand command = new CompositeTransactionalCommand(transactionalEditingDomain, "Map GMF to Draw2D");
-                    // Reset the connection anchor source and target considering
-                    // it can be wrongly modified by the arrange selection (see
-                    // ArrangeSelectionLayoutProvider.layoutEditParts(List,
-                    // IAdaptable) and previous comment in
-                    // changeBendpointsOfEdges for more details)
-                    SetConnectionAnchorsCommand setConnectionAnchorsCommand = new SetConnectionAnchorsCommand(transactionalEditingDomain, StringStatics.BLANK);
-                    setConnectionAnchorsCommand.setEdgeAdaptor(connectionEditPart);
-                    setConnectionAnchorsCommand.setNewSourceTerminal(((INodeEditPart) connectionEditPart.getSource()).mapConnectionAnchorToTerminal(connectionFigure.getSourceAnchor()));
-                    setConnectionAnchorsCommand.setNewTargetTerminal(((INodeEditPart) connectionEditPart.getTarget()).mapConnectionAnchorToTerminal(connectionFigure.getTargetAnchor()));
-                    command.add(setConnectionAnchorsCommand);
+                SetConnectionBendpointsAccordingToDraw2DCommand setConnectionBendpointsCommand = new SetConnectionBendpointsAccordingToDraw2DCommand(transactionalEditingDomain);
+                setConnectionBendpointsCommand.setLabel("Map GMF points to Draw2D points");
+                setConnectionBendpointsCommand.setSourceMove(sourceMove);
+                setConnectionBendpointsCommand.setMoveDelta(new PrecisionPoint(moveDelta));
+                setConnectionBendpointsCommand.setEdgeAdapter(connectionEditPart);
+                command.add(setConnectionBendpointsCommand);
+                result = Options.newSome(command);
+            } else if (connectionEditPartQuery.isEdgeWithObliqueRoutingStyle() || connectionEditPartQuery.isEdgeWithRectilinearRoutingStyle()) {
+                if (!allMovedEditParts.isEmpty()) {
+                    if ((sourceMove && !allMovedEditParts.contains(connectionEditPart.getTarget())) || (!sourceMove && !allMovedEditParts.contains(connectionEditPart.getSource()))) {
+                        CompositeTransactionalCommand command = new CompositeTransactionalCommand(transactionalEditingDomain, "Map GMF to Draw2D");
+                        // Reset the connection anchor source and target
+                        // considering
+                        // it can be wrongly modified by the arrange selection
+                        // (see
+                        // ArrangeSelectionLayoutProvider.layoutEditParts(List,
+                        // IAdaptable) and previous comment in
+                        // changeBendpointsOfEdges for more details)
+                        SetConnectionAnchorsCommand setConnectionAnchorsCommand = new SetConnectionAnchorsCommand(transactionalEditingDomain, StringStatics.BLANK);
+                        setConnectionAnchorsCommand.setEdgeAdaptor(connectionEditPart);
+                        setConnectionAnchorsCommand.setNewSourceTerminal(((INodeEditPart) connectionEditPart.getSource()).mapConnectionAnchorToTerminal(connectionFigure.getSourceAnchor()));
+                        setConnectionAnchorsCommand.setNewTargetTerminal(((INodeEditPart) connectionEditPart.getTarget()).mapConnectionAnchorToTerminal(connectionFigure.getTargetAnchor()));
+                        command.add(setConnectionAnchorsCommand);
 
-                    SetConnectionBendpointsAccordingToExtremityMoveCommmand setConnectionBendpointsCommand = new SetConnectionBendpointsAccordingToExtremityMoveCommmand(transactionalEditingDomain);
-                    setConnectionBendpointsCommand.setSourceMove(sourceMove);
-                    setConnectionBendpointsCommand.setMoveDelta(new PrecisionPoint(moveDelta));
-                    setConnectionBendpointsCommand.setEdgeAdapter(connectionEditPart);
-                    command.add(setConnectionBendpointsCommand);
-                    result = Options.newSome(command);
+                        SetConnectionBendpointsAccordingToExtremityMoveCommmand setConnectionBendpointsCommand = new SetConnectionBendpointsAccordingToExtremityMoveCommmand(transactionalEditingDomain);
+                        setConnectionBendpointsCommand.setSourceMove(sourceMove);
+                        setConnectionBendpointsCommand.setMoveDelta(new PrecisionPoint(moveDelta));
+                        setConnectionBendpointsCommand.setEdgeAdapter(connectionEditPart);
+                        command.add(setConnectionBendpointsCommand);
+                        result = Options.newSome(command);
+                    }
                 }
             }
         }
