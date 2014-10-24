@@ -17,6 +17,12 @@ import java.util.List;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gef.EditPart;
+import org.eclipse.gef.GraphicalEditPart;
+import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -35,7 +41,9 @@ import com.google.common.collect.Iterables;
  */
 public class CenterEditPartEdgesCommand extends AbstractTransactionalCommand {
 
-    IGraphicalEditPart editPart;
+    private IGraphicalEditPart editPart;
+
+    private ChangeBoundsRequest request;
 
     /**
      * Constructor.
@@ -43,10 +51,15 @@ public class CenterEditPartEdgesCommand extends AbstractTransactionalCommand {
      * @param graphicalEditPart
      *            the edit part for which we need to keep center edges (if they
      *            should be)
+     * @param request
+     *            the {@link ChangeBoundsRequest} if this command is executed
+     *            because of this kind of request. Can be null.
      */
-    public CenterEditPartEdgesCommand(IGraphicalEditPart graphicalEditPart) {
+    public CenterEditPartEdgesCommand(IGraphicalEditPart graphicalEditPart, ChangeBoundsRequest request) {
         super(graphicalEditPart.getEditingDomain(), "Center Edges", null);
         editPart = graphicalEditPart;
+        this.request = request;
+
     }
 
     @Override
@@ -58,7 +71,17 @@ public class CenterEditPartEdgesCommand extends AbstractTransactionalCommand {
         for (ConnectionEditPart connection : Iterables.filter(edges, ConnectionEditPart.class)) {
             Object model = connection.getModel();
             if (model instanceof Edge) {
+
                 CenterEdgeEndModelChangeOperation centerEdgeEndModelChangeOperation = new CenterEdgeEndModelChangeOperation((Edge) model, false);
+
+                // if the changeBoundsRequest is available, it is used to
+                // retrieve the real figure size by taking in account the new
+                // bounds (more reliable than computing the size from GMF)
+                if (request != null) {
+                    Dimension newSourceSize = getNewSize(connection.getSource());
+                    Dimension newTargetSize = getNewSize(connection.getTarget());
+                    centerEdgeEndModelChangeOperation.setSourceAndTargetSize(newSourceSize, newTargetSize);
+                }
                 centerEdgeEndModelChangeOperation.execute();
             }
 
@@ -67,9 +90,24 @@ public class CenterEditPartEdgesCommand extends AbstractTransactionalCommand {
         return CommandResult.newOKCommandResult();
     }
 
+    private Dimension getNewSize(EditPart edgeEnd) {
+        if (edgeEnd instanceof GraphicalEditPart) {
+            IFigure figure = ((GraphicalEditPart) edgeEnd).getFigure();
+            Dimension newSize = figure.getSize().getCopy();
+            List editPartRequesting = request.getEditParts();
+            if (editPartRequesting.contains(edgeEnd)) {
+                Rectangle newBounds = request.getTransformedRectangle(figure.getBounds());
+                newSize = newBounds.getSize();
+            }
+            return newSize;
+        }
+        return null;
+    }
+
     @Override
     public void dispose() {
         editPart = null;
+        request = null;
         super.dispose();
     }
 

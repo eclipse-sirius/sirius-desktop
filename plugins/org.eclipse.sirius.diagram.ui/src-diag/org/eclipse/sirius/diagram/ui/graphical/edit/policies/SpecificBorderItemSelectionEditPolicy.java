@@ -643,7 +643,7 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
             ctc.add(command);
 
             // we add a command to keep the edges centered (if they should be)
-            CenterEditPartEdgesCommand centerEditPartEdgesCommand = new CenterEditPartEdgesCommand((IGraphicalEditPart) host);
+            CenterEditPartEdgesCommand centerEditPartEdgesCommand = new CenterEditPartEdgesCommand((IGraphicalEditPart) host, request);
             ctc.add(centerEditPartEdgesCommand);
             return new ICommandProxy(ctc);
         }
