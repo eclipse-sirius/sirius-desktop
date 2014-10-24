@@ -24,7 +24,7 @@
                 . viewpoint: (deprecated) the current DDiagram.
 
           - endsOrdering: a Collection&lt;EObject> or an EObject.
-                . eventEnds: a List<EObject> containing the semantic event ends.
+                . eventEnds: a List&lt;EObject> containing the semantic event ends.
 
           - instanceRolesOrdering: a Collection&lt;EObject> or an EObject.
 
@@ -1068,7 +1068,7 @@
        
        Interpreted expressions, requested return type and available variables:
           - endsOrdering: a Collection&lt;EObject> or an EObject.
-                . eventEnds: a List<EObject> containing the semantic event ends.
+                . eventEnds: a List&lt;EObject> containing the semantic event ends.
 
 
          
