@@ -76,7 +76,7 @@
   	<example wizardID="org.eclipse.sirius.samples.family.NewBasicFamilyVSM">
       <projectDescriptor name="org.eclipse.sirius.sample.basicfamily.design"
                          contentURI="samples/org.eclipse.sirius.sample.basicfamily.design/"
-                         description="A sample graphical modeler to view an edit family models."/>
+                         description="A sample graphical modeler to view and edit family models."/>
   	</example>
   </extension>
 
