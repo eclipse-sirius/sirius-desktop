@@ -28,7 +28,6 @@ import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.resource.LoadEMFResource;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.modelingproject.manager.AttachSemanticResourcesJob;
-import org.eclipse.sirius.business.internal.modelingproject.manager.DetachSemanticResourcesJob;
 import org.eclipse.sirius.business.internal.modelingproject.manager.InitializeModelingProjectJob;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
 import org.eclipse.sirius.ext.base.Option;
@@ -42,10 +41,10 @@ import com.google.common.collect.Lists;
  * A workspace resource listener to automatically add files loadable as emf
  * resource to modeling project session semantic resource.
  * <p>
- * <b>Note:</b> the org.eclipse.sirius.ui.modelprojectresourcelistener
- * extension point allows to define new {@link IModelingProjectResourceListener}
- * s . This extension point is not meant to be used by clients, but reserved to
- * internal use.</b>
+ * <b>Note:</b> the org.eclipse.sirius.ui.modelprojectresourcelistener extension
+ * point allows to define new {@link IModelingProjectResourceListener} s . This
+ * extension point is not meant to be used by clients, but reserved to internal
+ * use.</b>
  * </p>
  * 
  * @author mchauvin
@@ -107,11 +106,8 @@ public class DefaultModelingProjectResourceListener implements IModelingProjectR
                     attachSemanticResourcesJob.schedule();
                     visitor.semanticResourcesURIsToAttachPerSession.clear();
                 }
-                if (!visitor.semanticResourcesURIsToDetachPerSession.isEmpty()) {
-                    Job detachSemanticResourcesJob = new DetachSemanticResourcesJob(new LinkedHashMap<Session, Set<URI>>(visitor.semanticResourcesURIsToDetachPerSession));
-                    detachSemanticResourcesJob.schedule();
-                    visitor.semanticResourcesURIsToDetachPerSession.clear();
-                }
+                // No need to do anything special for removed semantic
+                // resources, the Session already reacts correctly to them.
                 // CHECKSTYLE:OFF
             } catch (Exception e) {
                 // CHECKSTYLE:ON
