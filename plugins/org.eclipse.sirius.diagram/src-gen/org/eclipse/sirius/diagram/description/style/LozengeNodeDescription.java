@@ -17,7 +17,7 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Lozenge Node Description</b></em>'. <!-- end-user-doc -->
  *
- * <!-- begin-model-doc --> The lozenge style to display a node as a lozenge.
+ * <!-- begin-model-doc --> The diamond style to display a node as a diamond.
  * <!-- end-model-doc -->
  *
  * <p>

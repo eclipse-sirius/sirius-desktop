@@ -84,6 +84,7 @@ h3. Specifier-Visible Changes
 
 * The specifier can now choose to hold the edge ends toward the center of the source, target or both. New fields within the "advance" tab of EdgeStyle description have been added to choose for which source or target mappings an edge should be centered. See "Edges Styles > Edge Centering":specifier/diagrams/Diagrams.html#edges_styles in the specifier manual for more details.
 * When creating a new Viewpoint Specification Project using the supplied wizard: _New > Viewpoint Specification Project_, the VSM name is now given according to the project name. If the project name is suffixed with "design", the VSM name is provided by the last word before this suffix. Otherwise, the VSM name is given by the last word of the project name.
+* "Lozenge" is replaced by "Diamond" in diagram style.
 
 h3. API Changes
 

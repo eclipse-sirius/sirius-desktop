@@ -660,7 +660,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Lozenge" eSuperTypes="#//NodeStyle">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="The lozenge style to display a node as a lozenge."/>
+      <details key="documentation" value="The diamond style to display a node as a diamond."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject"
         defaultValueLiteral="0">
@@ -1867,7 +1867,7 @@
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="LozengeNodeDescription" eSuperTypes="#//description/style/NodeStyleDescription">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="The lozenge style to display a node as a lozenge."/>
+          <details key="documentation" value="The diamond style to display a node as a diamond."/>
         </eAnnotations>
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="widthComputationExpression"
             eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">

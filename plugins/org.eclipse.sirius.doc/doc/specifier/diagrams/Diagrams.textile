@@ -126,7 +126,7 @@ h4(#node_styles). Node Styles
 See the "styles":#styling section for a general presentation of how styles are defined, including conditional styles. This section only presents the aspects which are specific to nodes.
 
 For nodes you can use the following styles:
-* _Square_, _Lozenge_, _Ellipse_ to display basic shapes.
+* _Square_, _Diamond_, _Ellipse_ to display basic shapes.
 * _Basic Shape_ to represent nodes with predefined shapes provided with the runtime.
 * _Note_ to represent nodes as a square with one folded corner.
 * _Gauge_ to display gauges, for instance progress indicators.
@@ -137,8 +137,8 @@ table(table table-striped table-condensed).
 |!images/styles/Node_Style_Basic_Square.png!|!images/styles/Node_Style_Basic_Stroke.png!|!images/styles/Node_Style_Basic_Triangle.png!|!images/styles/Node_Style_Basic_Dot.png!|!images/styles/Node_Style_Basic_Ring.png!|
 |_. Basic Shape Square|_. Basic Shape Stroke|_. Basic Shape Triangle|_. Basic Shape Dot|_. Basic Shape Ring|
 table(table table-striped table-condensed).
-|!images/styles/Node_Style_Square.png!|!images/styles/Node_Style_Lozenge.png!|!images/styles/Node_Style_Ellipse.png!|!images/styles/Node_Style_Note.png!|!images/styles/Node_Style_Gauge.png!|!images/styles/Node_Style_Image.png!|!images/styles/Node_Style_Custom.png!|
-|_. Square|_. Lozenge|_. Ellipse|_. Note|_. Gauge|_. Image|_. Custom|
+|!images/styles/Node_Style_Square.png!|!images/styles/Node_Style_Diamond.png!|!images/styles/Node_Style_Ellipse.png!|!images/styles/Node_Style_Note.png!|!images/styles/Node_Style_Gauge.png!|!images/styles/Node_Style_Image.png!|!images/styles/Node_Style_Custom.png!|
+|_. Square|_. Diamond|_. Ellipse|_. Note|_. Gauge|_. Image|_. Custom|
 
 Most of the properties used to configure the various styles are self-explanatory. See the "styles":#styling section below for a general discussion. You can also refer to the tool-tips available directly in the editor on the "question mark" icon of each property.
 
