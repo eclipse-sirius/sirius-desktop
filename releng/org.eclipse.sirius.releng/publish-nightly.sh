@@ -31,7 +31,7 @@ provided by the Hudson build.
 set -e
 
 # The full version (should be taken as an argument)
-export VERSION="2.0.0"
+export VERSION="2.0.1"
 
 # The type of build being published
 export BUILD_TYPE="nightly"
@@ -117,7 +117,7 @@ EOF
   </children>
 </repository>
 EOF
-    
+
 }
 
 # First, a link for the $VERSION (e.g. "1.2.0/luna" => "1.2.0-NYYYYMMDD-HHMM/luna")
