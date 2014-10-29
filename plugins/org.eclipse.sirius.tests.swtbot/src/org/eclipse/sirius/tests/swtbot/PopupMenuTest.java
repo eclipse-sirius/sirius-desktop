@@ -314,4 +314,28 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
         }
     }
 
+    /**
+     * Test undo/redo of the PopupMenu action.
+     * 
+     */
+    public void testUndoRedoMenuAction() {
+        SWTBotGefEditPart editPart = editor.getEditPart("Class");
+        SWTBotGefEditPart editPart2 = editor.getEditPart("att");
+        editor.select(editPart, editPart2);
+        try {
+            editor.clickContextMenu("actionMenu4");
+        } catch (WidgetNotFoundException e) {
+            assertTrue("The action actionMenu4 of the menu myMenu4 should exist", true);
+        }
+        try {
+            undo("actionMenu4");
+        } catch (WidgetNotFoundException e) {
+            assertTrue("The action actionMenu4 of the menu myMenu4 should be canceled", true);
+        }
+        try {
+            redo("actionMenu4");
+        } catch (WidgetNotFoundException e) {
+            assertTrue("The action actionMenu4 of the menu myMenu4 should be restored", true);
+        }
+    }
 }
