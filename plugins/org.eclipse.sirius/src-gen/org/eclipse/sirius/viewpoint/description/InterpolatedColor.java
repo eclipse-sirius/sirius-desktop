@@ -50,16 +50,16 @@ public interface InterpolatedColor extends ColorDescription, UserColor {
     /**
      * Returns the value of the '
      * <em><b>Color Value Computation Expression</b></em>' attribute. The
-     * default value is <code>"[eContents()->size()/]"</code>. <!--
-     * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> An
-     * expression computing the value of the color. The value of the color must
-     * be include in the scale bounds <!-- end-model-doc -->
+     * default value is <code>"1"</code>. <!-- begin-user-doc --> <!--
+     * end-user-doc --> <!-- begin-model-doc --> An expression computing the
+     * value of the color. The value of the color must be include in the scale
+     * bounds <!-- end-model-doc -->
      * 
      * @return the value of the '<em>Color Value Computation Expression</em>'
      *         attribute.
      * @see #setColorValueComputationExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getInterpolatedColor_ColorValueComputationExpression()
-     * @model default="[eContents()->size()/]" dataType=
+     * @model default="1" dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        required="true" annotation=
      *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"

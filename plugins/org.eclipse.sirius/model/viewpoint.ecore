@@ -758,7 +758,7 @@
         <details key="documentation" value="Describes a color which varies between two level color depending on the values of dynamically computed expressions.&#xD;&#xA;&#xD;&#xA;@Deprecated : Describes a color which varies between two extremes (red and green)&#xD;&#xA;depending on the values of dynamically computed expressions."/>
       </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="colorValueComputationExpression"
-          lowerBound="1" eType="#//description/InterpretedExpression" defaultValueLiteral="[eContents()->size()/]">
+          lowerBound="1" eType="#//description/InterpretedExpression" defaultValueLiteral="1">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="An expression computing the value of the color. The value of the color must be include in the scale bounds"/>
         </eAnnotations>
