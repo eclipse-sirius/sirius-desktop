@@ -203,11 +203,7 @@ class TreeDescriptionBuilderFromEClass {
         map.setSemanticElements("var:self");
         TreeItemStyleDescription style = DescriptionFactory.eINSTANCE.createTreeItemStyleDescription();
         map.setDefaultStyle(style);
-        if (lookForEditableName(eClassToStartFrom).some()) {
-            style.setLabelExpression("feature:name");
-        } else {
-            style.setLabelExpression("[eClass().name/]");
-        }
+        style.setLabelExpression("feature:name");
         style.setLabelSize(10);
 
         Option<EAttribute> editableName = lookForEditableName(eClassToStartFrom);
