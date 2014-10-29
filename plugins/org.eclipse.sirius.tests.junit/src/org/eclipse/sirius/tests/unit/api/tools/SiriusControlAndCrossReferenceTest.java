@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.tools;
 
-import java.lang.reflect.Field;
 import java.util.Collections;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -20,21 +19,20 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.business.api.control.SiriusControlCommand;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.api.session.danalysis.SimpleAnalysisSelector;
-import org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 public class SiriusControlAndCrossReferenceTest extends SiriusDiagramTestCase {
 
@@ -88,10 +86,17 @@ public class SiriusControlAndCrossReferenceTest extends SiriusDiagramTestCase {
         assertEquals(2, session.getAllSessionResources().size());
 
         // Check cross referencer installation on the new aird.
-        LazyCrossReferencer semanticCrossReferencer = (LazyCrossReferencer) session.getSemanticCrossReferencer();
-        Option<Field> adapterField = ReflectionHelper.setFieldVisibleWithoutException(LazyCrossReferencer.class, "adapter");
-        Object internalXReferencer = adapterField.get().get(semanticCrossReferencer);
-        assertTrue("The semantic cross referencer should stay installed on the controlled package", packageToControl.eAdapters().contains(internalXReferencer));
+        ECrossReferenceAdapter semanticCrossReferencer = session.getSemanticCrossReferencer();
+        Option<Object> internalXReferencer = ReflectionHelper.getFieldValueWithoutException(semanticCrossReferencer, "adapter");
+        if (internalXReferencer.some()) {
+            // The lazy cross referencer has an internal cross referencer
+            assertTrue("The semantic internal cross referencer should stay installed on the controlled package", packageToControl.eAdapters().contains(internalXReferencer.get()));
+        } else {
+            // The lazy cross referencer does not have an internal cross
+            // referencer
+            assertTrue("The semantic cross referencer should stay installed on the controlled package", packageToControl.eAdapters().contains(semanticCrossReferencer));
+        }
+
         for (Resource res : session.getAllSessionResources()) {
             assertTrue("The semantic cross referencer should be installed on all aird", res.eAdapters().contains(semanticCrossReferencer));
         }

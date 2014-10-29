@@ -166,7 +166,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         private boolean deferSaveToPostCommit;
 
         private boolean saveInExclusiveTransaction;
-        
+
         private AtomicBoolean domainDisposed = new AtomicBoolean(false);
 
         private AtomicBoolean saveOnPostCommit = new AtomicBoolean(false);
@@ -185,7 +185,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             public void transactionClosed(TransactionalEditingDomainEvent event) {
                 disarm();
             }
-            
+
             @Override
             public void editingDomainDisposing(TransactionalEditingDomainEvent event) {
                 domainDisposed.set(true);
@@ -444,7 +444,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             registerResourceInCrossReferencer(newAnalysis.eResource());
             for (DAnalysis dAnalysis : new DAnalysisQuery(newAnalysis).getAllReferencedAnalyses()) {
                 addAdaptersOnAnalysis(dAnalysis);
-                registerResourceInCrossReferencer(dAnalysis.eResource());                
+                registerResourceInCrossReferencer(dAnalysis.eResource());
             }
             notifyListeners(SessionListener.REPRESENTATION_CHANGE);
         } else {
@@ -477,7 +477,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      *
      * @return all valid(i.e. not null) owned and referenced analyses.
      */
-    Collection<DAnalysis> allAnalyses() {
+    public Collection<DAnalysis> allAnalyses() {
         return new DAnalysisesInternalQuery(super.getAnalyses()).getAllAnalyses();
     }
 
@@ -1293,28 +1293,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (crossReferencer == null) {
             // use a lazy cross referencer to avoid big memory consumption on
             // session load
-            crossReferencer = new LazyCrossReferencer() {
-                @Override
-                protected void initialize() {
-                    super.initialize();
-                    for (Resource res : getSemanticResources()) {
-                        List<Adapter> adapters = res.eAdapters();
-                        // add only if it was not added between creation and
-                        // initialization
-                        if (!adapters.contains(crossReferencer)) {
-                            adapters.add(crossReferencer);
-                        }
-                    }
-                    for (DAnalysis analysis : allAnalyses()) {
-                        List<Adapter> adapters = analysis.eResource().eAdapters();
-                        // add only if it was not added between creation and
-                        // initialization
-                        if (!adapters.contains(crossReferencer)) {
-                            adapters.add(crossReferencer);
-                        }
-                    }
-                }
-            };
+            crossReferencer = createSemanticCrossReferencer();
+
             // Precondition expression prevents a diagram to be
             // created when creating the session
             // Update the interpreter
@@ -1323,6 +1303,15 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             }
         }
         return crossReferencer;
+    }
+
+    /**
+     * Create the semantic cross referencer.
+     * 
+     * @return a new cross referencer adapter
+     */
+    protected ECrossReferenceAdapter createSemanticCrossReferencer() {
+        return new SessionLazyCrossReferencer(this);
     }
 
     /**
@@ -1935,7 +1924,10 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         mainDAnalysis = null;
     }
 
-    private void disableAndRemoveECrossReferenceAdapters() {
+    /**
+     * Disable & Remove all ECrossReferencerAdapter adapters.
+     */
+    protected void disableAndRemoveECrossReferenceAdapters() {
         ResourceSet resourceSet = getTransactionalEditingDomain().getResourceSet();
         // Disable resolution of proxy for AirDCrossReferenceAdapter of
         // session and for semanticCrossReferencer during the closing
@@ -1966,7 +1958,10 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
     }
 
-    private void reenableECrossReferenceAdaptersBeforeEndOfClosing() {
+    /**
+     * Enable all ECrossReferencerAdapter adapters before the end of closing.
+     */
+    protected void reenableECrossReferenceAdaptersBeforeEndOfClosing() {
         ResourceSet resourceSet = getTransactionalEditingDomain().getResourceSet();
         // Enable resolution for AirdCrossReferenceAdapter of session at the end
         // of closing
@@ -2102,7 +2097,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     public void setDeferSaveToPostCommit(boolean deferSaveOnPostCommit) {
         this.saver.deferSaveToPostCommit = deferSaveOnPostCommit;
     }
-    
+
     public boolean isDeferSaveToPostCommit() {
         return this.saver.deferSaveToPostCommit;
     }
@@ -2110,7 +2105,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     public void setSaveInExclusiveTransaction(boolean saveInExclusiveTransaction) {
         this.saver.saveInExclusiveTransaction = saveInExclusiveTransaction;
     }
-    
+
     public boolean isSaveInExclusiveTransaction() {
         return this.saver.saveInExclusiveTransaction;
     }
