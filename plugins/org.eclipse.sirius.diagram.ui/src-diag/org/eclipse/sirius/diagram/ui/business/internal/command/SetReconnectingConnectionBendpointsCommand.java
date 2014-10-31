@@ -29,6 +29,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.sirius.diagram.description.tool.ReconnectionKind;
 import org.eclipse.sirius.diagram.ui.business.internal.edit.helpers.EdgeReconnectionHelper;
+import org.eclipse.sirius.diagram.ui.internal.operation.CenterEdgeEndModelChangeOperation;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 
 /**
@@ -121,7 +122,8 @@ public class SetReconnectingConnectionBendpointsCommand extends SetConnectionBen
         List newBendpoints = new ArrayList();
         int numOfPoints = getNewPointList().size();
         for (short i = 0; i < numOfPoints; i++) {
-            // The sourceRefPoint and targetRefPoint will be recovered from the reconnected edge
+            // The sourceRefPoint and targetRefPoint will be recovered from the
+            // reconnected edge
             Dimension s = getNewPointList().getPoint(i).getDifference(getSourceRefPoint());
             Dimension t = getNewPointList().getPoint(i).getDifference(getTargetRefPoint());
             newBendpoints.add(new RelativeBendpoint(s.width, s.height, t.width, t.height));
@@ -129,6 +131,10 @@ public class SetReconnectingConnectionBendpointsCommand extends SetConnectionBen
 
         RelativeBendpoints points = (RelativeBendpoints) edge.getBendpoints();
         points.setPoints(newBendpoints);
+
+        CenterEdgeEndModelChangeOperation centerEdgeEndModelChangeOperation = new CenterEdgeEndModelChangeOperation(edge, false);
+        centerEdgeEndModelChangeOperation.execute();
+
         return CommandResult.newOKCommandResult();
     }
 }
