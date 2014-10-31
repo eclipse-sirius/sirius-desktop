@@ -983,8 +983,11 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * @param runExclusive
      *            whether or not to execute the saving in an exclusive
      *            transaction.
+     * @return the result of the save operation.
      */
-    protected void doSave(final Map<?, ?> options, final IProgressMonitor monitor, boolean runExclusive) {
+    protected IStatus doSave(final Map<?, ?> options, final IProgressMonitor monitor, boolean runExclusive) {
+        IStatus status = null;
+
         try {
             monitor.beginTask("Session saving", 3);
             final Collection<Resource> allResources = Lists.newArrayList();
@@ -1015,8 +1018,12 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             } else {
                 save.run();
             }
-            if (!save.getStatus().isOK()) {
-                SiriusPlugin.getDefault().error("save failed", new CoreException(save.getStatus()));
+
+            // Get status to return
+            status = save.getStatus();
+
+            if (!status.isOK()) {
+                SiriusPlugin.getDefault().error("save failed", new CoreException(status));
             } else {
                 Collection<Resource> savedResources = save.getResult();
                 boolean semanticSave = false;
@@ -1045,6 +1052,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         } finally {
             monitor.done();
         }
+
+        return status;
     }
 
     @Override
