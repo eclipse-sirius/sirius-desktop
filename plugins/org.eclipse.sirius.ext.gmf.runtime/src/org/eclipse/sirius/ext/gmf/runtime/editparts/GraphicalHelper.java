@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.gef.handles.HandleBounds;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor;
+import org.eclipse.gmf.runtime.draw2d.ui.geometry.LineSeg;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.PointListUtilities;
 import org.eclipse.gmf.runtime.notation.Anchor;
 import org.eclipse.gmf.runtime.notation.IdentityAnchor;
@@ -399,6 +400,32 @@ public final class GraphicalHelper {
         } else {
             return Options.newNone();
         }
+    }
+
+    /**
+     * Get the intersection point list between the segment formed by the start
+     * and end points and the given figure bounds.
+     * 
+     * @param start
+     *            start point
+     * @param end
+     *            end point
+     * @param figureBounds
+     *            the figure bounds.
+     * @return the intersection point list.
+     */
+    public static PointList getIntersectionPoints(Point start, Point end, Rectangle figureBounds) {
+        PointList intersection = new PointList();
+        final PointList polygon = PointListUtilities.createPointsFromRect(figureBounds);
+        LineSeg lineSeg = new LineSeg(start, end);
+        PointList intersectionTemp = lineSeg.getLineIntersectionsWithLineSegs(polygon);
+        for (int i = 0; i < intersectionTemp.size(); i++) {
+            Point currentPoint = intersectionTemp.getPoint(i);
+            if (lineSeg.containsPoint(currentPoint, 1)) {
+                intersection.addPoint(currentPoint);
+            }
+        }
+        return intersection;
     }
 
     /**

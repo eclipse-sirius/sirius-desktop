@@ -34,7 +34,6 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.figures.ConnectionLayerEx;
-import org.eclipse.gmf.runtime.draw2d.ui.internal.routers.OrthogonalRouterUtilities;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.routers.RectilinearRouter;
 import org.eclipse.gmf.runtime.notation.Anchor;
 import org.eclipse.gmf.runtime.notation.Bendpoints;
@@ -52,6 +51,7 @@ import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.description.CenteringStyle;
 import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
+import org.eclipse.sirius.diagram.ui.graphical.figures.CanonicalRectilinearRouter;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.GMFNotationUtilities;
@@ -371,14 +371,8 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
                 computePointListByIntersections(rectilinear, sourceBounds, targetBounds);
             }
 
-            int sourceAnchorSide = RectilinearHelper.getAnchorOffRectangleDirection(rectilinear.getFirstPoint(), sourceBounds);
-            int targetAnchorSide = RectilinearHelper.getAnchorOffRectangleDirection(rectilinear.getLastPoint(), targetBounds);
-
-            // if the given point list is already rectilinear we do not need to
-            // transform to rectilinear.
-            if (!OrthogonalRouterUtilities.isRectilinear(rectilinear)) {
-                RectilinearHelper.transformToRectilinear(rectilinear, sourceAnchorSide, targetAnchorSide);
-            }
+            CanonicalRectilinearRouter rectilinearRouter = new CanonicalRectilinearRouter();
+            rectilinearRouter.routeLine(edge, 0, rectilinear, sourceBounds, targetBounds);
 
             sourceAnchorOrientation = computeSourceOrientation(rectilinear);
             targetAnchorOrientation = computeTargetOrientation(rectilinear);
@@ -519,23 +513,18 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
     }
 
     private void retrieveAndSetExistingAnchorsAbsoluteLocation(Rectangle sourceBounds, Rectangle targetBounds) {
-        PrecisionPoint sourcePrecisionPoint = new PrecisionPoint(0.5, 0.5);
-        PrecisionPoint targetPrecisionPoint = new PrecisionPoint(0.5, 0.5);
 
-        Anchor sourceAnchor = edge.getSourceAnchor();
-        Anchor targetAnchor = edge.getTargetAnchor();
+        existingSourceAnchorAbsoluteLocation = getAbsoluteAnchorCoordinates(sourceBounds, getAnchorId(edge.getSourceAnchor()));
 
-        if (sourceAnchor instanceof IdentityAnchor) {
-            sourcePrecisionPoint = BaseSlidableAnchor.parseTerminalString(((IdentityAnchor) sourceAnchor).getId());
+        existingTargetAnchorAbsoluteLocation = getAbsoluteAnchorCoordinates(targetBounds, getAnchorId(edge.getTargetAnchor()));
+    }
+
+    private PrecisionPoint getAnchorId(Anchor anchor) {
+        PrecisionPoint anchorId = new PrecisionPoint(0.5, 0.5);
+        if (anchor instanceof IdentityAnchor) {
+            anchorId = BaseSlidableAnchor.parseTerminalString(((IdentityAnchor) anchor).getId());
         }
-
-        if (targetAnchor instanceof IdentityAnchor) {
-            targetPrecisionPoint = BaseSlidableAnchor.parseTerminalString(((IdentityAnchor) targetAnchor).getId());
-        }
-
-        existingSourceAnchorAbsoluteLocation = getAbsoluteAnchorCoordinates(sourceBounds, sourcePrecisionPoint);
-
-        existingTargetAnchorAbsoluteLocation = getAbsoluteAnchorCoordinates(targetBounds, targetPrecisionPoint);
+        return anchorId;
     }
 
     /**
@@ -699,170 +688,5 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
         }
 
         return pointList;
-    }
-
-    /**
-     * This class contains code from
-     * <code>org.eclipse.gmf.runtime.draw2d.ui.internal.routers.
-     * RectilinearRouter</code>.
-     * 
-     * @author Florian Barbin
-     * 
-     */
-    private static class RectilinearHelper {
-        /**
-         * Inspire from org.eclipse.gmf.runtime.draw2d.ui.internal.routers.
-         * RectilinearRouter.
-         * 
-         * @param existingPointList
-         */
-        @SuppressWarnings("restriction")
-        private static void transformToRectilinear(PointList existingPointList, int sourceAnchorRelativeLocation, int targetAnchorRelativeLocation) {
-
-            if (existingPointList.size() == 2) {
-                Point offStart = existingPointList.getFirstPoint();
-                Point offEnd = existingPointList.getLastPoint();
-                Dimension offsetDim = offStart.getDifference(offEnd).scale(0.5);
-                offStart.translate(getTranslationValue(sourceAnchorRelativeLocation, Math.abs(offsetDim.width), Math.abs(offsetDim.height)));
-                offEnd.translate(getTranslationValue(targetAnchorRelativeLocation, Math.abs(offsetDim.width), Math.abs(offsetDim.height)));
-                existingPointList.insertPoint(offStart, 1);
-                existingPointList.insertPoint(offEnd, 2);
-            }
-            int offSourceDirection = getOffShapeDirection(sourceAnchorRelativeLocation);
-            int offTargetDirection = getOffShapeDirection(targetAnchorRelativeLocation);
-
-            /*
-             * Convert the polyline to rectilinear. If the connection is
-             * rectilinear already then the connection will remain as it is.
-             */
-            OrthogonalRouterUtilities.transformToOrthogonalPointList(existingPointList, offSourceDirection, offTargetDirection);
-            removeRedundantPoints(existingPointList);
-
-        }
-
-        /**
-         * From org.eclipse.gmf.runtime.draw2d.ui.internal.routers.
-         * RectilinearRouter. Returns a translation dimension for the anchor
-         * point. Translation dimension translates the anchor point off the
-         * shape. The off shape direction is specified by the relative to the
-         * shape geographic position of the anchor
-         * 
-         * @param position
-         *            relative to the shape geographic position of the anchor
-         * @param xFactorValue
-         *            translation value along x-axis
-         * @param yFactorValue
-         *            translation value along y-axis
-         * @return
-         */
-        private static Dimension getTranslationValue(int position, int xFactorValue, int yFactorValue) {
-            Dimension translationDimension = new Dimension();
-            if (position == PositionConstants.EAST) {
-                translationDimension.width = xFactorValue;
-            } else if (position == PositionConstants.SOUTH) {
-                translationDimension.height = yFactorValue;
-            } else if (position == PositionConstants.WEST) {
-                translationDimension.width = -xFactorValue;
-            } else if (position == PositionConstants.NORTH) {
-                translationDimension.height = -yFactorValue;
-            }
-            return translationDimension;
-        }
-
-        /**
-         * From org.eclipse.gmf.runtime.draw2d.ui.internal.routers.
-         * RectilinearRouter. Determines the relative to rectangle geographic
-         * location of a point. Example: If shape is closer to the the top edge
-         * of the rectangle location would be north. Method used to determine
-         * which side of shape's bounding rectangle is closer to connection's
-         * anchor point. All geometric quantities must be in the same coordinate
-         * system.
-         * 
-         * @param anchorPoint
-         *            location of the anchor point
-         * @param rect
-         *            bounding rectangle of the shape
-         * @return
-         */
-        private static int getAnchorOffRectangleDirection(Point anchorPoint, Rectangle rect) {
-            int position = PositionConstants.NORTH;
-            int criteriaValue = Math.abs(anchorPoint.y - rect.y);
-            int tempCriteria = Math.abs(anchorPoint.y - rect.y - rect.height);
-            if (tempCriteria < criteriaValue) {
-                criteriaValue = tempCriteria;
-                position = PositionConstants.SOUTH;
-            }
-
-            tempCriteria = Math.abs(anchorPoint.x - rect.x);
-            if (tempCriteria < criteriaValue) {
-                criteriaValue = tempCriteria;
-                position = PositionConstants.WEST;
-            }
-
-            tempCriteria = Math.abs(anchorPoint.x - rect.x - rect.width);
-            if (tempCriteria < criteriaValue) {
-                criteriaValue = tempCriteria;
-                position = PositionConstants.EAST;
-            }
-
-            return position;
-        }
-
-        /**
-         * From org.eclipse.gmf.runtime.draw2d.ui.internal.routers.
-         * RectilinearRouter. Determines whether the rectilinear line segment
-         * coming out of the shape should be horizontal or vertical based on the
-         * anchor geographic position relative to the shape
-         * 
-         * @param anchorRelativeLocation
-         * @return
-         */
-        private static int getOffShapeDirection(int anchorRelativeLocation) {
-            if (anchorRelativeLocation == PositionConstants.EAST || anchorRelativeLocation == PositionConstants.WEST) {
-                return PositionConstants.HORIZONTAL;
-            } else if (anchorRelativeLocation == PositionConstants.NORTH || anchorRelativeLocation == PositionConstants.SOUTH) {
-                return PositionConstants.VERTICAL;
-            }
-            return PositionConstants.NONE;
-        }
-
-        /**
-         * From org.eclipse.gmf.runtime.draw2d.ui.internal.routers.
-         * RectilinearRouter. Iterates through points of a polyline and does the
-         * following: if 3 points lie on the same line the middle point is
-         * removed
-         * 
-         * @param line
-         *            polyline's points
-         */
-        private static boolean removeRedundantPoints(PointList line) {
-            int initialNumberOfPoints = line.size();
-            if (line.size() > 2) {
-                PointList newLine = new PointList(line.size());
-                newLine.addPoint(line.removePoint(0));
-                while (line.size() >= 2) {
-                    Point p0 = newLine.getLastPoint();
-                    Point p1 = line.getPoint(0);
-                    Point p2 = line.getPoint(1);
-                    if (p0.x == p1.x && p0.x == p2.x) {
-                        // Have two vertical segments in a row
-                        // get rid of the point between
-                        line.removePoint(0);
-                    } else if (p0.y == p1.y && p0.y == p2.y) {
-                        // Have two horizontal segments in a row
-                        // get rid of the point between
-                        line.removePoint(0);
-                    } else {
-                        newLine.addPoint(line.removePoint(0));
-                    }
-                }
-                while (line.size() > 0) {
-                    newLine.addPoint(line.removePoint(0));
-                }
-                line.removeAllPoints();
-                line.addAll(newLine);
-            }
-            return line.size() != initialNumberOfPoints;
-        }
     }
 }
