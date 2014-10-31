@@ -204,6 +204,34 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
+     * Test that the Rectilinear edge is correctly centered on the target border
+     * node when using the reconnect tool.
+     */
+    public void testRectilinearEdgeReconnectionOnCenteredBorderNode() {
+        openDiagram(REPRESENTATION_NAME_RECONNECT);
+        SWTBotGefEditPart toBotGefEditPart = editor.getEditPart("border1", DNode4EditPart.class);
+        SWTBotGefEditPart botGefEditPart = editor.getEditPart("edge1", DEdgeEditPart.class);
+        changeRoutingStyle((SWTBotGefConnectionEditPart) botGefEditPart, RECTILINEAR_STYLE_ROUTING);
+        reconnectEdge("edge1", toBotGefEditPart, false);
+        SWTBotGefConnectionEditPart swtBotGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge1", DEdgeEditPart.class);
+        assertEdgeHasExpectedTgtAnchor(swtBotGefEditPart, new PrecisionPoint(0.5, 0.5));
+    }
+
+    /**
+     * Test that the Rectilinear edge is correctly centered on the target
+     * container when using the reconnect tool.
+     */
+    public void testRectilinearEdgeReconnectionOnCenteredContainer() {
+        openDiagram(REPRESENTATION_NAME_RECONNECT);
+        SWTBotGefEditPart toBotGefEditPart = editor.getEditPart("container1", DNodeContainerEditPart.class);
+        SWTBotGefEditPart botGefEditPart = editor.getEditPart("edge2", DEdgeEditPart.class);
+        changeRoutingStyle((SWTBotGefConnectionEditPart) botGefEditPart, RECTILINEAR_STYLE_ROUTING);
+        reconnectEdge("edge2", toBotGefEditPart, false);
+        SWTBotGefConnectionEditPart swtBotGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge2", DEdgeEditPart.class);
+        assertEdgeHasExpectedTgtAnchor(swtBotGefEditPart, new PrecisionPoint(0.5, 0.5));
+    }
+
+    /**
      * Test that when changing the edge routing style to rectilinear, the edge
      * is still centered toward its source.
      */
