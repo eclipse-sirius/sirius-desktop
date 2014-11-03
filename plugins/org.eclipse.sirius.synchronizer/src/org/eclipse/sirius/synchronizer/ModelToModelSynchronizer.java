@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 Obeo.
+ * Copyright (c) 2011, 2015 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -59,7 +59,7 @@ public class ModelToModelSynchronizer {
             Collection<CreatedOutput> descriptorsToRefresh = plan.getDescriptorsToRefresh();
             // Refresh children only if needed
             Option<? extends ChildCreationSupport> childSupport = container.getChildSupport();
-            if (container.synchronizeChildren() || fullRefresh) {
+            if (container.synchronizeChildren(plan) || fullRefresh) {
                 int nbSteps = 1 + plan.getDescriptorToUpdateMapping().size() + descriptorsToRefresh.size();
                 if (childSupport.some()) {
                     nbSteps += descriptorsToCreate.size() * 2 + descriptorsToDelete.size() + descriptorsToRefresh.size();

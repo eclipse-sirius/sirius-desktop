@@ -60,6 +60,11 @@ public class TreeUIUpdaterRunnable implements Runnable {
     @Override
     public void run() {
         if (dTreeViewer != null && dTreeViewer.getControl() != null && !dTreeViewer.getControl().isDisposed()) {
+            for (Object itemToRefresh : toRefreshInViewer) {
+                DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.REFRESH_SWT_LINE_KEY);
+                dTreeViewer.refresh(itemToRefresh, true);
+                DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.REFRESH_SWT_LINE_KEY);
+            }
             for (Object itemtoExpand : toExpand) {
                 DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CHANGE_SWT_LINE_COLLAPSE_STATE_KEY);
                 dTreeViewer.setExpandedState(itemtoExpand, true);
@@ -69,11 +74,6 @@ public class TreeUIUpdaterRunnable implements Runnable {
                 DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CHANGE_SWT_LINE_COLLAPSE_STATE_KEY);
                 dTreeViewer.setExpandedState(itemToCollapse, false);
                 DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.CHANGE_SWT_LINE_COLLAPSE_STATE_KEY);
-            }
-            for (Object itemToRefresh : toRefreshInViewer) {
-                DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.REFRESH_SWT_LINE_KEY);
-                dTreeViewer.refresh(itemToRefresh, true);
-                DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.REFRESH_SWT_LINE_KEY);
             }
             /*
              * no need to update objects which got refresh already...

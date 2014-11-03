@@ -176,8 +176,10 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
         // tableViewer.setSorter(new
         // ExampleTaskSorter(ExampleTaskSorter.DESCRIPTION));
 
+        // TreeUIUpdater must be called before {@link
+        // SelectDRepresentationElementsListener} to have TreeItem created
         treeUIUpdater = new TreeUIUpdater(dTreeViewer, dRepresentation);
-        selectTableElementsListener = new SelectDRepresentationElementsListener(treeEditor, false);
+        selectTableElementsListener = new SelectDRepresentationElementsListener(treeEditor, true);
         descriptionFileChangedNotifier = new DescriptionFileChangedNotifier(this);
 
         dTreeContentProvider = new DTreeContentProvider();

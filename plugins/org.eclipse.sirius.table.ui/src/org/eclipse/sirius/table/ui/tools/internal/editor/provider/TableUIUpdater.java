@@ -161,10 +161,20 @@ public class TableUIUpdater extends ResourceSetListenerImpl {
                 }
             } else if (notification.getFeature() == ViewpointPackage.Literals.DSEMANTIC_DECORATOR__TARGET || notification.getFeature() == TablePackage.Literals.LINE_CONTAINER__LINES) {
                 toRefreshInViewerWithUpdateLabels.add(notifier);
+                if (notification.getFeature() == TablePackage.Literals.LINE_CONTAINER__LINES && notification.getNewValue() instanceof DLine) {
+                    // By default created DLine is expand if default value of
+                    // DLine.collapsed is false
+                    DLine dLine = (DLine) notification.getNewValue();
+                    if (!dLine.isCollapsed()) {
+                        toExpands.add(dLine);
+                        analyseExpansionStateOfCreatedChildren(dLine.getLines());
+                    }
+                }
             }
         } else if (notifier instanceof DLine) {
             DLine dLine = (DLine) notifier;
-            if (notification.getFeature() == TablePackage.Literals.DLINE__LABEL || notification.getFeature() == TablePackage.Literals.DLINE__CELLS || notification.getFeature() == TablePackage.Literals.DLINE__CURRENT_STYLE) {
+            if (notification.getFeature() == TablePackage.Literals.DLINE__LABEL || notification.getFeature() == TablePackage.Literals.DLINE__CELLS
+                    || notification.getFeature() == TablePackage.Literals.DLINE__CURRENT_STYLE) {
                 toUpdateInViewer.add(notifier);
             } else if (notification.getFeature() == TablePackage.Literals.DLINE__ORDERED_CELLS) {
                 toRefreshInViewerWithUpdateLabels.add(notifier);

@@ -125,9 +125,9 @@ public class TableUIUpdaterRunnable implements Runnable {
     @Override
     public void run() {
         if (dTableTreeViewer != null && dTableTreeViewer.getControl() != null && !dTableTreeViewer.getControl().isDisposed()) {
+            refresh();
             expand();
             collapse();
-            refresh();
             /* No need to update objects which got refresh already... */
             DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.UPDATE_SWT_LINE_KEY);
             dTableTreeViewer.update(objectsToUpdateInViewer, null);

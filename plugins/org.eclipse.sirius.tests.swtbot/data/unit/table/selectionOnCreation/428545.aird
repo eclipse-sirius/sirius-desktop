@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/description/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:tree="http://www.eclipse.org/sirius/tree/1.0.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/tree/description/1.0.0 http://www.eclipse.org/sirius/tree/1.0.0#//description http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" xmi:id="_JLTb8LteEeSWYpBGfJrKEQ" selectedViews="_TDK48LteEeSWYpBGfJrKEQ" version="10.1.0.201507101000">
+  <semanticResources>428545.ecore</semanticResources>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_TDK48LteEeSWYpBGfJrKEQ">
+    <ownedRepresentations xmi:type="tree:DTree" xmi:id="_UrmPULteEeSWYpBGfJrKEQ" name="new Tree">
+      <target xmi:type="ecore:EPackage" href="428545.ecore#/"/>
+      <description xmi:type="description:TreeDescription" href="428545.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Tree']"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="table:DTable" xmi:id="_S_I9cLtyEeS44sUv_Wyzkw" name="new Classes" headerColumnWidth="163">
+      <target xmi:type="ecore:EPackage" href="428545.ecore#/"/>
+      <lines xmi:type="table:DLine" xmi:id="_S_I9cbtyEeS44sUv_Wyzkw" label="new EClass 1">
+        <target xmi:type="ecore:EClass" href="428545.ecore#//new%20EClass%201"/>
+        <lines xmi:type="table:DLine" xmi:id="_S_I9crtyEeS44sUv_Wyzkw" label="new Attribute">
+          <target xmi:type="ecore:EAttribute" href="428545.ecore#//new%20EClass%201/new%20Attribute"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="428545.ecore#//new%20EClass%201/new%20Attribute"/>
+          <originMapping xmi:type="description_1:LineMapping" href="428545.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes']/@ownedLineMappings[name='Classes%20lines']/@ownedSubLines[name='Feature']"/>
+          <cells xmi:type="table:DCell" xmi:id="_S_I9c7tyEeS44sUv_Wyzkw" label="new Attribute" column="_S_I9d7tyEeS44sUv_Wyzkw">
+            <target xmi:type="ecore:EAttribute" href="428545.ecore#//new%20EClass%201/new%20Attribute"/>
+            <semanticElements xmi:type="ecore:EAttribute" href="428545.ecore#//new%20EClass%201/new%20Attribute"/>
+          </cells>
+        </lines>
+        <lines xmi:type="table:DLine" xmi:id="_S_I9dLtyEeS44sUv_Wyzkw" label="new Attribute">
+          <target xmi:type="ecore:EAttribute" href="428545.ecore#//new%20EClass%201/new%20Attribute.1"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="428545.ecore#//new%20EClass%201/new%20Attribute.1"/>
+          <originMapping xmi:type="description_1:LineMapping" href="428545.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes']/@ownedLineMappings[name='Classes%20lines']/@ownedSubLines[name='Feature']"/>
+          <cells xmi:type="table:DCell" xmi:id="_S_I9dbtyEeS44sUv_Wyzkw" label="new Attribute" column="_S_I9d7tyEeS44sUv_Wyzkw">
+            <target xmi:type="ecore:EAttribute" href="428545.ecore#//new%20EClass%201/new%20Attribute.1"/>
+            <semanticElements xmi:type="ecore:EAttribute" href="428545.ecore#//new%20EClass%201/new%20Attribute.1"/>
+          </cells>
+        </lines>
+        <semanticElements xmi:type="ecore:EClass" href="428545.ecore#//new%20EClass%201"/>
+        <originMapping xmi:type="description_1:LineMapping" href="428545.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes']/@ownedLineMappings[name='Classes%20lines']"/>
+        <cells xmi:type="table:DCell" xmi:id="_S_I9drtyEeS44sUv_Wyzkw" label="new EClass 1" column="_S_I9d7tyEeS44sUv_Wyzkw">
+          <target xmi:type="ecore:EClass" href="428545.ecore#//new%20EClass%201"/>
+          <semanticElements xmi:type="ecore:EClass" href="428545.ecore#//new%20EClass%201"/>
+        </cells>
+      </lines>
+      <columns xmi:type="table:DFeatureColumn" xmi:id="_S_I9d7tyEeS44sUv_Wyzkw" label="Name" cells="_S_I9drtyEeS44sUv_Wyzkw _S_I9c7tyEeS44sUv_Wyzkw _S_I9dbtyEeS44sUv_Wyzkw" featureName="name">
+        <originMapping xmi:type="description_1:FeatureColumnMapping" href="428545.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes']/@ownedColumnMappings[name='Name']"/>
+      </columns>
+      <description xmi:type="description_1:EditionTableDescription" href="428545.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes']"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description_2:Viewpoint" href="428545.odesign#//@ownedViewpoints[name='Design']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_4umB0LtxEeS44sUv_Wyzkw">
+    <viewpoint xmi:type="description_2:Viewpoint" href="ecore.odesign#//@ownedViewpoints[name='Design']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Ecore Editing Workbench V4.6" version="10.1.0.201507271600">
+  <ownedViewpoints name="Design" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="Classes" domainClass="EPackage">
+      <ownedLineMappings name="Classes lines" domainClass="EClass" semanticCandidatesExpression="feature:eClassifiers">
+        <ownedSubLines name="Feature" domainClass="EStructuralFeature" semanticCandidatesExpression="feature:eStructuralFeatures"/>
+      </ownedLineMappings>
+      <ownedLineMappings name="Package" domainClass="EPackage" semanticCandidatesExpression="feature:eSubpackages" headerLabelExpression="&lt;%name%>">
+        <defaultBackground>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+        </defaultBackground>
+        <ownedSubLines name="Classes lines" domainClass="EClass" semanticCandidatesExpression="feature:eClassifiers">
+          <ownedSubLines name="Feature" domainClass="EStructuralFeature" semanticCandidatesExpression="feature:eStructuralFeatures"/>
+        </ownedSubLines>
+        <ownedSubLines name="Package" domainClass="EPackage" semanticCandidatesExpression="feature:eSubpackages" headerLabelExpression="&lt;%name%>">
+          <defaultBackground>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+          </defaultBackground>
+          <ownedSubLines name="Classes lines" domainClass="EClass" semanticCandidatesExpression="feature:eClassifiers">
+            <ownedSubLines name="Feature" domainClass="EStructuralFeature" semanticCandidatesExpression="feature:eStructuralFeatures"/>
+          </ownedSubLines>
+        </ownedSubLines>
+      </ownedLineMappings>
+      <ownedCreateLine name="Create Class" forceRefresh="true" mapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes']/@ownedLineMappings[name='Classes%20lines']">
+        <variables name="root" documentation="The semantic element of the table."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:container">
+          <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="NewEClass"/>
+          </subModelOperations>
+        </firstModelOperation>
+      </ownedCreateLine>
+      <ownedCreateLine name="line" forceRefresh="true" mapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes']/@ownedLineMappings[name='Classes%20lines']">
+        <variables name="root" documentation="The semantic element of the table."/>
+        <variables name="element" documentation="The semantic currently edited element."/>
+        <variables name="container" documentation="The semantic element corresponding to the view container."/>
+        <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:container">
+          <subModelOperations xsi:type="tool:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="NewEClass"/>
+          </subModelOperations>
+        </firstModelOperation>
+      </ownedCreateLine>
+      <ownedColumnMappings name="Name" headerLabelExpression="Name" featureName="name" labelExpression="&lt;%if (filter(&quot;EStructuralFeature&quot;).derived) {%>/&lt;%}%>&lt;%name%>"/>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

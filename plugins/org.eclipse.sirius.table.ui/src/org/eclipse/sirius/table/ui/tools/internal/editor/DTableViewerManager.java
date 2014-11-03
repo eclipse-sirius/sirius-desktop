@@ -241,8 +241,10 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
             addNewColumn(column, index++);
         }
         treeViewer.setUseHashlookup(true);
+        // TableUIUpdater must be called before {@link
+        // SelectDRepresentationElementsListener} to have TreeItem created
         tableUIUpdater = new TableUIUpdater(this, dRepresentation);
-        selectTableElementsListener = new SelectDRepresentationElementsListener(treeEditor, false);
+        selectTableElementsListener = new SelectDRepresentationElementsListener(treeEditor, true);
         descriptionFileChangedNotifier = new DescriptionFileChangedNotifier(this);
         dTableContentProvider = new DTableContentProvider();
         treeViewer.setContentProvider(dTableContentProvider);

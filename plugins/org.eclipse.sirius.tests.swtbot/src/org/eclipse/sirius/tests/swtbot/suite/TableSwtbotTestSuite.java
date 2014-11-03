@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,13 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.suite;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
-
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.sirius.tests.swtbot.table.CellEditionTest;
 import org.eclipse.sirius.tests.swtbot.table.ContextMenuTableTest;
+import org.eclipse.sirius.tests.swtbot.table.CreatedDLinesSelectionTests;
 import org.eclipse.sirius.tests.swtbot.table.DeleteHideSeveralLineOnTable;
 import org.eclipse.sirius.tests.swtbot.table.DeleteLineWithDELShortcutTest;
 import org.eclipse.sirius.tests.swtbot.table.HideRevealTableColumnsTest;
@@ -27,6 +24,12 @@ import org.eclipse.sirius.tests.swtbot.table.RenameTableRepresentationTest;
 import org.eclipse.sirius.tests.swtbot.table.TableRefreshWithF5ShortcutTests;
 import org.eclipse.sirius.tests.swtbot.table.TableUIPermissionAuthorityTests;
 import org.eclipse.sirius.tests.swtbot.table.TableUIRefreshTests;
+import org.osgi.framework.Version;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 
 /**
  * Test suite.
@@ -55,6 +58,11 @@ public class TableSwtbotTestSuite extends TestCase {
         suite.addTestSuite(HideRevealTableLinesTest.class);
         suite.addTestSuite(RenameTableRepresentationTest.class);
         suite.addTestSuite(DeleteHideSeveralLineOnTable.class);
+        // Test to be executed only from Eclipse Mars because dependent of fix
+        // from Bug 460206
+        if (Platform.getBundle("org.eclipse.emf.transaction").getVersion().compareTo(Version.parseVersion("1.9.0")) >= 0) {
+            suite.addTestSuite(CreatedDLinesSelectionTests.class);
+        }
         suite.addTestSuite(ContextMenuTableTest.class);
         suite.addTestSuite(TableUIPermissionAuthorityTests.class);
         suite.addTestSuite(TableUIRefreshTests.class);

@@ -14,14 +14,9 @@ import java.util.Collections;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
-import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.command.SetCommand;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
-import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.AbstractToolDescriptionTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -29,7 +24,6 @@ import org.eclipse.sirius.tools.api.command.ICommandFactory;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.DTreeItemContainer;
-import org.eclipse.sirius.tree.TreePackage;
 import org.eclipse.sirius.tree.business.api.command.ITreeCommandFactory;
 import org.eclipse.sirius.tree.business.api.command.TreeCommandFactoryService;
 import org.eclipse.sirius.tree.description.TreeItemCreationTool;
@@ -63,8 +57,8 @@ public class SelectionInTreeAfterToolExecutionTest extends AbstractToolDescripti
     protected void setUp() throws Exception {
         super.setUp();
         copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, PATH, SEMANTIC_RESOURCE_NAME, REPRESENTATIONS_RESOURCE_NAME, MODELER_RESOURCE_NAME);
-        genericSetUp(Collections.singleton(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_NAME), Lists.newArrayList(TEMPORARY_PROJECT_NAME + "/" + MODELER_RESOURCE_NAME), TEMPORARY_PROJECT_NAME
-                + "/" + REPRESENTATIONS_RESOURCE_NAME);
+        genericSetUp(Collections.singleton(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_NAME), Lists.newArrayList(TEMPORARY_PROJECT_NAME + "/" + MODELER_RESOURCE_NAME),
+                TEMPORARY_PROJECT_NAME + "/" + REPRESENTATIONS_RESOURCE_NAME);
 
         // Activate auto refresh
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
@@ -93,21 +87,10 @@ public class SelectionInTreeAfterToolExecutionTest extends AbstractToolDescripti
         applyTreeItemCreationTool(tool_Name, dTreeItem, dTreeItem.getTarget());
         TestsUtil.synchronizationWithUIThread();
         // check the selection
-        // As the father node is collapsed, no sub node is created
-        checkExpectedElementsInSelection(editor, null, 0, false);
-
-        // Expand the father node
-        TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(dTreeItem);
-        CommandStack commandStack = transactionalEditingDomain.getCommandStack();
-        Command expandCarDTreeItemCmd = SetCommand.create(transactionalEditingDomain, dTreeItem, TreePackage.Literals.DTREE_ITEM__EXPANDED, true);
-        commandStack.execute(expandCarDTreeItemCmd);
-        refresh(new EObjectQuery(dTreeItem).getRepresentation().get(), true);
-        TestsUtil.synchronizationWithUIThread();
-        // check the selection
-        // As the father node is now expanded, sub nodes are created but outside
-        // the tool transaction
-        // The selection should then be empty
-        checkExpectedElementsInSelection(editor, null, 0, false);
+        // Even if the father node is collapsed, a sub node is created and the
+        // parent expanded
+        checkExpectedElementsInSelection(editor, null, 1, false);
+        assertTrue("As we create a children DTreeItem of a collapsed parent, this last should be expanded to see the created children", dTreeItem.isExpanded());
 
         changeSelectionExpression(tool, "[instance/]", false);
         TestsUtil.synchronizationWithUIThread();
@@ -137,7 +120,6 @@ public class SelectionInTreeAfterToolExecutionTest extends AbstractToolDescripti
         TestsUtil.synchronizationWithUIThread();
         // check the selection is empty by default
         checkExpectedElementsInSelection(editor, null, 0);
-
     }
 
     void applyTreeItemCreationTool(String toolName, final DTreeItemContainer lineContainer, final EObject semanticCurrentElement) {

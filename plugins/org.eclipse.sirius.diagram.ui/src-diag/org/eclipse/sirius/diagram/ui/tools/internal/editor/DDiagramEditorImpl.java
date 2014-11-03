@@ -669,7 +669,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         getSite().getPage().addSelectionListener(this);
 
         // Add a post commit listener to select newly created diagram elements.
-        selectElementsListener = new SelectDRepresentationElementsListener(this, true);
+        selectElementsListener = new SelectDRepresentationElementsListener(this, false);
     }
 
     @Override

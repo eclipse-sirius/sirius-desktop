@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/tree/description/1.0.0" name="428545" version="10.0.0.201411061000">
+  <ownedViewpoints name="Design" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:TreeDescription" name="Tree" label="Tree" domainClass="EPackage">
+      <subItemMappings name="Class" label="Class" domainClass="EClass" semanticCandidatesExpression="feature:eClassifiers">
+        <defaultStyle labelFormat="bold" showIcon="false">
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+        </defaultStyle>
+        <subItemMappings name="Attr" label="Attr" domainClass="EAttribute" semanticCandidatesExpression="feature:eStructuralFeatures">
+          <defaultStyle>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </defaultStyle>
+        </subItemMappings>
+      </subItemMappings>
+      <subItemMappings name="EnumId" label="Enum" semanticElements="" domainClass="EEnum" semanticCandidatesExpression="[eContents()->select(not oclIsKindOf(EObject) or oclIsKindOf(EEnum))/]">
+        <defaultStyle>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultStyle>
+      </subItemMappings>
+      <subItemMappings name="Package" label="Package" domainClass="EPackage" semanticCandidatesExpression="feature:eSubpackages" reusedTreeItemMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Tree']/@subItemMappings[name='Class'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Tree']/@subItemMappings[name='Package']">
+        <defaultStyle labelFormat="bold" showIcon="false">
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+        </defaultStyle>
+      </subItemMappings>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

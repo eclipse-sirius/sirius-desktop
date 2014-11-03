@@ -25,6 +25,11 @@ import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.transaction.TransactionChangeDescription;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.impl.InternalTransaction;
+import org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain;
+import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.synchronizer.AutomaticCreator;
@@ -37,6 +42,7 @@ import org.eclipse.sirius.synchronizer.MappingHiearchyTable;
 import org.eclipse.sirius.synchronizer.ModelToModelSynchronizer;
 import org.eclipse.sirius.synchronizer.OutputDescriptor;
 import org.eclipse.sirius.synchronizer.PreRefreshStatus;
+import org.eclipse.sirius.synchronizer.RefreshPlan;
 import org.eclipse.sirius.synchronizer.SemanticPartition;
 import org.eclipse.sirius.synchronizer.SemanticPartitionInvalidator;
 import org.eclipse.sirius.synchronizer.SemanticPartitions;
@@ -388,8 +394,39 @@ class CreatedTreeItem extends AbstractCreatedDTreeItemContainer {
      * expanded.
      */
     @Override
-    public boolean synchronizeChildren() {
-        return tItem.isExpanded();
+    public boolean synchronizeChildren(RefreshPlan refreshPlan) {
+        boolean synchronizeChildren = tItem.isExpanded();
+        if (!synchronizeChildren && !refreshPlan.getDescriptorsToCreate().isEmpty() && willBeExpandedOnSelection(refreshPlan)) {
+            tItem.setExpanded(true);
+            synchronizeChildren = true;
+        }
+        return synchronizeChildren;
+    }
+
+    /**
+     * Tells if the current {@link DTreeItem} must be expanded to show children.
+     * 
+     * . And as being based on
+     * {@link org.eclipse.emf.ecore.change.ChangeDescription#getObjectsToDetach()}
+     * work only from Eclipse Mars. See Bug 460206.
+     */
+    private boolean willBeExpandedOnSelection(RefreshPlan refreshPlan) {
+        boolean willBeExpandedOnSelection = false;
+        TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(tItem);
+        if (domain instanceof InternalTransactionalEditingDomain) {
+            InternalTransaction transaction = ((InternalTransactionalEditingDomain) domain).getActiveTransaction().getRoot();
+            TransactionChangeDescription changeDescription = transaction.getChangeDescription();
+            if (changeDescription != null) {
+                Collection<EObject> createdObjects = changeDescription.getObjectsToDetach();
+                for (OutputDescriptor descriptorToCreate : refreshPlan.getDescriptorsToCreate()) {
+                    if (EcoreUtil.isAncestor(createdObjects, descriptorToCreate.getSourceElement())) {
+                        willBeExpandedOnSelection = true;
+                        break;
+                    }
+                }
+            }
+        }
+        return willBeExpandedOnSelection;
     }
 
     @Override
@@ -566,7 +603,7 @@ class CreatedDTree extends AbstractCreatedDTreeItemContainer {
      * capability of collapse as {@link fr.obeo.dsl.viewpoint.tree.DTreeItem}.
      */
     @Override
-    public boolean synchronizeChildren() {
+    public boolean synchronizeChildren(RefreshPlan refreshPlan) {
         return true;
     }
 

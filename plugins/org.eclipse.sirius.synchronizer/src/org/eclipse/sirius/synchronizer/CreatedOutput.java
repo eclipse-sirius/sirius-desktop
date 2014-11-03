@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 Obeo.
+ * Copyright (c) 2011, 2015 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,13 +33,15 @@ public interface CreatedOutput {
     /**
      * Tells if we must create and refresh view model elements related to this
      * created element. Returning false allows doing lazy synchronization, for
-     * example to not create and refresh children view elements not yet
-     * visible.
+     * example to not create and refresh children view elements not yet visible.
+     * 
+     * @param refreshPlan
+     *            the {@link RefreshPlan}
      * 
      * @return true if we must synchronize the direct children of this created
      *         element, false otherwise
      */
-    boolean synchronizeChildren();
+    boolean synchronizeChildren(RefreshPlan refreshPlan);
 
     void updateMapping();
 

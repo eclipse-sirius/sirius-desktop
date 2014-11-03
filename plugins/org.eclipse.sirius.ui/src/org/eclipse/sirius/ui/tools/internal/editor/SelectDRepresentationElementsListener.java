@@ -17,9 +17,12 @@ import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
+import org.eclipse.emf.transaction.Transaction;
+import org.eclipse.emf.transaction.TransactionChangeDescription;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
@@ -43,7 +46,8 @@ import com.google.common.collect.Sets;
 /**
  * A post commit listener which select the representation elements specified
  * through the "Elements To Select" expression and "Inverse Selection Order" tag
- * of the tool. </br> Elements will be selected only on the active editor.
+ * of the tool. </br>
+ * Elements will be selected only on the active editor.
  * 
  * Each dialect is responsible to add this post commit listener or one
  * specializing this one.
@@ -57,35 +61,16 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
      * {@link DRepresentationElement} creation or specified "Elements To Select"
      * list.
      */
-    private static final NotificationFilter DEFAULT_NOTIFICATION_FILTER = NotificationFilter.createFeatureFilter(ViewpointPackage.Literals.UI_STATE__ELEMENTS_TO_SELECT).or(
-            NotificationFilter.NOT_TOUCH.and(SessionEventBrokerImpl.asFilter(DanglingRefRemovalTrigger.IS_ATTACHMENT)).and(
-                    NotificationFilter.createNotifierTypeFilter(ViewpointPackage.Literals.DREPRESENTATION).or(
-                            NotificationFilter.createNotifierTypeFilter(ViewpointPackage.Literals.DREPRESENTATION_ELEMENT))));
+    private static final NotificationFilter DEFAULT_NOTIFICATION_FILTER = NotificationFilter.createFeatureFilter(ViewpointPackage.Literals.UI_STATE__ELEMENTS_TO_SELECT)
+            .or(NotificationFilter.NOT_TOUCH.and(SessionEventBrokerImpl.asFilter(DanglingRefRemovalTrigger.IS_ATTACHMENT)).and(NotificationFilter
+                    .createNotifierTypeFilter(ViewpointPackage.Literals.DREPRESENTATION).or(NotificationFilter.createNotifierTypeFilter(ViewpointPackage.Literals.DREPRESENTATION_ELEMENT))));
 
     /**
      * The dialect editor.
      */
     protected DialectEditor dialectEditor;
 
-    private boolean activateDefaultSelection;
-
-    /**
-     * Constructor.
-     * 
-     * @param editor
-     *            the editor on which the representation elements should be
-     *            selected, if the editor is active.
-     * @param filter
-     *            the notification filter used to take on more specific notified
-     *            elements
-     * @param activateDefaultSelection
-     *            If UIState.elementsToSelect has not be notified, the notified
-     *            elements are selected only if defaultSelection is true.
-     */
-    public SelectDRepresentationElementsListener(DialectEditor editor, NotificationFilter filter, boolean activateDefaultSelection) {
-        super(DEFAULT_NOTIFICATION_FILTER.or(Preconditions.checkNotNull(filter)));
-        init(editor, activateDefaultSelection);
-    }
+    private boolean selectOnlyViewWithNewSemanticTarget;
 
     /**
      * Constructor.
@@ -93,18 +78,15 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
      * @param editor
      *            the editor on which the representation elements should be
      *            selected, if the editor is active.
-     * @param activateDefaultSelection
-     *            If UIState.elementsToSelect has not be notified, the notified
-     *            elements are selected only if defaultSelection is true.
+     * @param selectOnlyViewWithNewSemanticTarget
+     *            true to select only created view whose semantic target has
+     *            also been created otherwise select also created view whose
+     *            semantic target was already existing
      */
-    public SelectDRepresentationElementsListener(DialectEditor editor, boolean activateDefaultSelection) {
+    public SelectDRepresentationElementsListener(DialectEditor editor, boolean selectOnlyViewWithNewSemanticTarget) {
         super(DEFAULT_NOTIFICATION_FILTER);
-        init(editor, activateDefaultSelection);
-    }
-
-    private void init(DialectEditor editor, boolean defaultSelection) {
         dialectEditor = Preconditions.checkNotNull(editor);
-        this.activateDefaultSelection = defaultSelection;
+        this.selectOnlyViewWithNewSemanticTarget = selectOnlyViewWithNewSemanticTarget;
         DRepresentation representation = editor.getRepresentation();
         if (representation != null) {
             TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(representation);
@@ -122,7 +104,7 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
     @Override
     public void resourceSetChanged(ResourceSetChangeEvent event) {
         IEditorPart activeEditor = EclipseUIUtil.getActiveEditor();
-        if (dialectEditor.equals(activeEditor)) {
+        if (!Boolean.TRUE.equals(event.getTransaction().getOptions().get(Transaction.OPTION_IS_UNDO_REDO_TRANSACTION)) && dialectEditor.equals(activeEditor)) {
             DRepresentation currentRep = dialectEditor.getRepresentation();
 
             List<DRepresentationElement> elementsToSelect = extractElementsToSelect(event, currentRep);
@@ -164,7 +146,7 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
             }
         } else {
             // Keep default behavior if change has been done out of a tool
-            if (notifiedElements.isEmpty() || !activateDefaultSelection) {
+            if (notifiedElements.isEmpty()) {
                 elementsToSelect = null;
             } else {
                 elementsToSelect = notifiedElements;
@@ -265,27 +247,42 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
         }
     }
 
+    /**
+     * Tells if the specified <code>view</code> has its target created in the
+     * same transaction as itself.
+     * 
+     * Note: this method is useful only for tree and table dialect, as we want
+     * to select only {@link DRepresentationElement} created by semantic change
+     * and not on treeItem expansion. And as being based on
+     * {@link org.eclipse.emf.ecore.change.ChangeDescription#getObjectsToDetach()}
+     * work only from Eclipse Mars. See Bug 460206.
+     */
+    private boolean isViewWithNewSemanticTarget(ResourceSetChangeEvent event, DRepresentationElement view) {
+        boolean isViewWithNewSemanticTarget = false;
+        TransactionChangeDescription changeDescription = event.getTransaction().getChangeDescription();
+        if (changeDescription != null) {
+            Collection<EObject> attachedEObjects = changeDescription.getObjectsToDetach();
+            isViewWithNewSemanticTarget = EcoreUtil.isAncestor(attachedEObjects, view.getTarget());
+        }
+        return isViewWithNewSemanticTarget;
+    }
+
     private boolean analyseNotifications(ResourceSetChangeEvent event, DRepresentation currentRep, List<DRepresentationElement> keptNotifiedElements) {
-        final Collection<DRepresentationElement> notifiedElements = Sets.newLinkedHashSet();
         boolean elementsToSelectUpdated = false;
         for (Notification n : event.getNotifications()) {
             if (!n.getFeature().equals(ViewpointPackage.Literals.UI_STATE__ELEMENTS_TO_SELECT) && !n.getFeature().equals(ViewpointPackage.Literals.DREPRESENTATION__UI_STATE)) {
                 Set<DRepresentationElement> notificationValues = getNotificationValues(n);
                 for (DRepresentationElement elt : notificationValues) {
                     if (currentRep == new DRepresentationElementQuery(elt).getParentRepresentation()) {
-                        notifiedElements.add(elt);
+                        // EcoreUtil.isAncestor() used to only select top level
+                        // created views.
+                        if ((!selectOnlyViewWithNewSemanticTarget || isViewWithNewSemanticTarget(event, elt)) && !EcoreUtil.isAncestor(keptNotifiedElements, elt)) {
+                            keptNotifiedElements.add(elt);
+                        }
                     }
                 }
             } else {
                 elementsToSelectUpdated = true;
-            }
-        }
-
-        // Minimize the elements to select: do not select the elements whose
-        // parent is itself newly created and will be selected.
-        for (DRepresentationElement elt : notifiedElements) {
-            if (!notifiedElements.contains(elt.eContainer())) {
-                keptNotifiedElements.add(elt);
             }
         }
         return elementsToSelectUpdated;
