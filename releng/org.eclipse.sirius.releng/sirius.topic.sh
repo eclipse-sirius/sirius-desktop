@@ -11,12 +11,11 @@
 # ====================================================================
 
 # This script tries to apply (cherry-pick) all the latest Gerrit
-# patch-sets targetting a specific branch and topic, and then to build
-# and execute the automated tests on the result. This must be run from
-# the root of a Git clone, preferably on the same branch as the one
-# targeted by the changes. It does not try to be smart in the order in
-# which it picks the changes, and will fail as soon as a single change
-# can not be applied cleanly, or if the resulting tree does not build.
+# patch-sets targetting a specific branch and topic. This must be run
+# from the root of a Git clone, preferably on the same branch as the
+# one targeted by the changes. It does not try to be smart in the
+# order in which it picks the changes, and will fail as soon as a
+# single change can not be applied cleanly.
 #
 # The script requires jq from http://stedolan.github.io/jq/ (MIT
 # License) to be installed in order to interpret the JSON returned by
@@ -25,20 +24,16 @@
 # Arguments (all optional):
 # - the branch of the Gerrit changes to pick (defaults to "master")
 # - the topic of the Gerrit  changes to pick (defaults to "next")
-# - the target platform version on which to build (defaults to "luna")
-# - the test suites to run (defaults to the 3 top-level Sirius test suites)
 #
 # Examples:
 #
-# % sirius.topic.sh v2.0.x proposed juno
-# % sirius.topic.sh master m4 mars junit
+# % sirius.topic.sh v2.0.x proposed
+# % sirius.topic.sh master m4
 
 set -e
 
 BRANCH=${1:-master}
 TOPIC=${2:-next}
-PLATFORM=${3:-luna}
-SUITES=${4:-junit,swtbot-sequence,swtbot}
 PROJECT=sirius/org.eclipse.sirius
 
 which jq > /dev/null || {
@@ -65,4 +60,3 @@ echo Starting from $(git describe HEAD)
 for change in $(changes_for "$BRANCH" "$TOPIC"); do
     git fetch git://git.eclipse.org/gitroot/$PROJECT $change && git cherry-pick FETCH_HEAD
 done
-./build-all.sh $PLATFORM integration-test $SUITES
