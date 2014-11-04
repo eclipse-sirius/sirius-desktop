@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.ext.draw2d
-Bundle-Version: 2.0.0.qualifier
+Bundle-Version: 2.0.1.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Localization: plugin
@@ -15,4 +15,4 @@ Import-Package: org.eclipse.draw2d,
  org.eclipse.draw2d.text,
  org.eclipse.draw2d.widgets,
  org.eclipse.swt.graphics
-Export-Package: org.eclipse.sirius.ext.draw2d.figure;version="2.0.0"
+Export-Package: org.eclipse.sirius.ext.draw2d.figure;version="2.0.1"

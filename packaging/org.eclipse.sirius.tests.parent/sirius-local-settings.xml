@@ -7,7 +7,7 @@
     <mirror>
       <id>Sirius Local Build</id>
       <mirrorOf>Sirius4Tests</mirrorOf>
-      <url>file://@BASEDIR@/packaging/org.eclipse.sirius.update/target/repository</url>
+      <url>file:///home/pcdavid/src/sirius/org.eclipse.sirius/packaging/org.eclipse.sirius.update/target/repository</url>
       <layout>p2</layout>
       <mirrorOfLayouts>p2</mirrorOfLayouts>
     </mirror>
