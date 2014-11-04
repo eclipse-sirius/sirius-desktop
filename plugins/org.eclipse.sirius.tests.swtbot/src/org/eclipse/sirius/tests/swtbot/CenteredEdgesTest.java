@@ -73,6 +73,8 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String REPRESENTATION_NAME_RESIZE = "resizeTest";
 
+    private static final String REPRESENTATION_NAME_RESIZE_2 = "resizeTest2";
+
     private static final String RECTILINEAR_STYLE_ROUTING = "Rectilinear Style Routing";
 
     @Override
@@ -422,6 +424,35 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
 
         SWTBotGefConnectionEditPart edgeSwtBotGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge1", DEdgeEditPart.class);
         assertEdgeHasExpectedTgtAnchor(edgeSwtBotGefEditPart, new PrecisionPoint(0.5, 0.5));
+    }
+
+    /**
+     * Test that when resizing a shape over edge bendpoints, the edge is still
+     * centered. See <a
+     * href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c8">Bug
+     * 448739#c8</a> and <a
+     * href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c10">Bug
+     * 448739#c10</a>.
+     */
+    public void testResizingContainerWithInViewBendpoints() {
+        openDiagram(REPRESENTATION_NAME_RESIZE_2);
+        SWTBotGefEditPart containerBotGefEditPart = editor.getEditPart("container1container1container1container1container1container1", DNodeContainerEditPart.class);
+        containerBotGefEditPart.select();
+
+        IFigure figure = ((GraphicalEditPart) containerBotGefEditPart.part()).getFigure();
+        Rectangle boundsBefore = figure.getBounds().getCopy();
+        containerBotGefEditPart.resize(PositionConstants.NORTH_EAST, 677, 255);
+
+        // we make sure the figure has been resized
+        bot.waitUntil(new WaitFigureResizedCondition(boundsBefore, figure));
+
+        SWTBotGefConnectionEditPart edgeSwtBotGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge1", DEdgeEditPart.class);
+        assertEdgeHasExpectedTgtAnchor(edgeSwtBotGefEditPart, new PrecisionPoint(0.5, 0.5));
+        assertEdgeHasExpectedSrcAnchor(edgeSwtBotGefEditPart, new PrecisionPoint(0.5, 0.5));
+
+        // we also check that we have only 3 bendpoints left.
+
+        assertEquals("The edge should have 3 bendpoints", 3, ((Connection) edgeSwtBotGefEditPart.part().getFigure()).getPoints().size());
     }
 
     /**

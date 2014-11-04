@@ -30,7 +30,6 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.IdentityAnchor;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.description.CenteringStyle;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.ext.base.Option;
@@ -41,8 +40,7 @@ import com.google.common.collect.Iterables;
 
 /**
  * This operation updates edges anchors to make sure their connection points
- * keep the same location when the shape is resized. Except when the edge forces
- * direction toward the center of the source node or target node.
+ * keep the same location when the shape is resized.
  * 
  * @author Florian Barbin
  * 
@@ -90,13 +88,10 @@ public class ShiftEdgeIdentityAnchorOperation extends AbstractModelChangeOperati
     }
 
     private void handleEdge(DEdge dEdge, Anchor anchorToModify, EditPart editPart, CenteringStyle forbiddenCenteringStyle) {
-        EdgeStyle edgeStyle = dEdge.getOwnedStyle();
-        if (!CenteringStyle.BOTH.equals(edgeStyle.getCentered()) && !forbiddenCenteringStyle.equals(edgeStyle.getCentered())) {
-            if (anchorToModify instanceof IdentityAnchor) {
-                PrecisionPoint anchorPoint = BaseSlidableAnchor.parseTerminalString(((IdentityAnchor) anchorToModify).getId());
-                PrecisionPoint newPoint = computeNewAnchor(anchorPoint, editPart);
-                ((IdentityAnchor) anchorToModify).setId(new SlidableAnchor(null, newPoint).getTerminal());
-            }
+        if (anchorToModify instanceof IdentityAnchor) {
+            PrecisionPoint anchorPoint = BaseSlidableAnchor.parseTerminalString(((IdentityAnchor) anchorToModify).getId());
+            PrecisionPoint newPoint = computeNewAnchor(anchorPoint, editPart);
+            ((IdentityAnchor) anchorToModify).setId(new SlidableAnchor(null, newPoint).getTerminal());
         }
     }
 
