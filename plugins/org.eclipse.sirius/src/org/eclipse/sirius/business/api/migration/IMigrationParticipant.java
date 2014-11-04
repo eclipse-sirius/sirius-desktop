@@ -148,4 +148,17 @@ public interface IMigrationParticipant {
      * @return an EPackage if some mapping exists, null otherwise.
      */
     EPackage getPackage(String namespace, String loadedVersion);
+
+    /**
+     * Allows to update the created object just after its creation (the
+     * attribute values are not yet loaded from XML file).
+     * 
+     * @param newObject
+     *            the new created object
+     * @param loadedVersion
+     *            the version of current loading model
+     * @return An EObject with updated values or the EObject itself if this
+     *         migration has nothing to do.
+     */
+    EObject updateCreatedObject(EObject newObject, String loadedVersion);
 }

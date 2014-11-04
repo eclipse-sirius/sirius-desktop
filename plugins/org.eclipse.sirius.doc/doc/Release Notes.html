@@ -13,6 +13,9 @@
 				<a href="#ReleaseNotesforSirius">Release Notes for Sirius</a>
 				<ol style="list-style: disc;">
 					<li>
+						<a href="#sirius3.0.0">Changes in Sirius 3.0.0 (from Sirius 2.0.0)</a>
+					</li>
+					<li>
 						<a href="#sirius2.0.0">Changes in Sirius 2.0.0 (from Sirius 1.0.0)</a>
 					</li>
 					<li>
@@ -37,6 +40,20 @@
 			</li>
 		</ol>
 		<p>This document contains the release notes for all major releases of Sirius.</p>
+		<h2 id="sirius3.0.0">Changes in Sirius 3.0.0 (from Sirius 2.0.0)</h2>
+		<h3 id="ChangesAPI">Changes API</h3>
+		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+			<code>org.eclipse.sirius</code>
+		</h4>
+		<ul>
+			<li>The method 
+				<code>org.eclipse.sirius.business.api.migration.IMigrationParticipant.updateCreatedObject(EObject newObject, String loadedVersion)</code> have been added to update explicitly the default value of sizeComputationExpression in VSM (&#171;1&#187;) by the expression (&#171;[eContents()-&gt;size()/]&#187;). This method can be used to update also default values in VSM.
+			</li>
+		</ul>
+		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
+		<ul>
+			<li>All Acceleo 3 references have been removed in Sirius Metamodels to avoid a dependence to Acceleo 3 but a migration have been added explicitly in VSM to avoid a change of behavior. Customers who want to completly remove this dependency must remove the A3 expressions from there VSM after the migration.</li>
+		</ul>
 		<h2 id="sirius2.0.0">Changes in Sirius 2.0.0 (from Sirius 1.0.0)</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
@@ -89,7 +106,7 @@
 			<li>Reconnection of an edge will only now move the minimum necessary bendpoints instead of reseting it to default.</li>
 			<li>A new action has been added to reset the diagram (or container) origin: the diagram (or container) bounds (the rectangle formed by the highest, the leftmost, the lowest and the rightmost children elements) can have a negative origin or can be shifted toward the bottom-right with a blank zone at the top-left. This action aims to move all diagram (or container) elements so that the it retrieves its origin while keeping elements layout.</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
 		<ul>
 			<li>The specifier can now choose to hold the edge ends toward the center of the source, target or both. New fields within the &#171;advance&#187; tab of EdgeStyle description have been added to choose for which source or target mappings an edge should be centered. See 
 				<a href="specifier/diagrams/Diagrams.html#edges_styles">Edges Styles &gt; Edge Centering</a> in the specifier manual for more details.
@@ -99,7 +116,7 @@
 			</li>
 		</ul>
 		<h3 id="APIChanges">API Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -461,7 +478,7 @@
 		<ul>
 			<li>The ability to print table representations has been disabled for the 1.0.0 release due to an external dependency issue (see <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=435204" target="_blank">bug #435204</a> for the details).</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges3">Specifier-Visible Changes</h3>
 		<ul>
 			<li>
 				<em>Node</em>, 
@@ -476,7 +493,7 @@
 			</li>
 		</ul>
 		<h3 id="APIChanges2">API Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -521,7 +538,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius1.0M7">Changes in Sirius 1.0.0M7 (from Sirius 1.0M6)</h2>
-		<h3 id="SpecifierVisibleChanges3">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges4">Specifier-Visible Changes</h3>
 		<ul>
 			<li>The default value of the 
 				<em>Semantic Candidates Expression</em> for Tree Items has changed from an empty string (meaning &#171;any compatible element in the session&#187;) to 
@@ -752,7 +769,7 @@
 				<code>Predicate</code> tested on the key.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1138,7 +1155,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 		<p>if 
 			<code>element</code> is a Diagram concept.
 		</p>
-		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius5">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1302,7 +1319,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>viewpoint/diagram/description/concern</code>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius5">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius6">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1394,7 +1411,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables</code> instead.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius6">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius7">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1938,7 +1955,7 @@ void addSelectedView(DView view) throws IllegalArgumentException;
 void removeSelectedView(DView view);
 
 </pre>
-		<h3 id="SpecifierVisibleChanges4">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges5">Specifier-Visible Changes</h3>
 		<p>New variables are available for 
 			<code>sizeComputationExpression</code> to compute the size of edges on 
 			<code>EdgeStyleDescription</code> and 

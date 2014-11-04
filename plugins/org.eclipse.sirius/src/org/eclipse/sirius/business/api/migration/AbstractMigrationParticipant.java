@@ -149,4 +149,10 @@ public abstract class AbstractMigrationParticipant implements IMigrationParticip
             handleFeature(owner, entry.getEStructuralFeature(), entry.getValue());
         }
     }
+
+    @Override
+    public EObject updateCreatedObject(EObject newObject, String loadedVersion) {
+        return newObject;
+    }
+
 }

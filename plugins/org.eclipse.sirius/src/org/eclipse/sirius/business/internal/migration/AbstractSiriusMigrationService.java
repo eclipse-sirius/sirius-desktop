@@ -276,4 +276,23 @@ public abstract class AbstractSiriusMigrationService {
         }
         return returnedValue;
     }
+
+    /**
+     * Allows to update the created object just after its creation (the
+     * attribute values are not yet loaded from XML file).
+     * 
+     * @param newObject
+     *            the new created object
+     * @param loadedVersion
+     *            the version of current loading model
+     * @return An EObject with updated values or the EObject itself if this
+     *         migration has nothing to do.
+     */
+    public EObject updateCreatedObject(EObject newObject, String loadedVersion) {
+        EObject returnedValue = newObject;
+        for (IMigrationParticipant contribution : delegatesParticipants) {
+            returnedValue = contribution.updateCreatedObject(returnedValue, loadedVersion);
+        }
+        return returnedValue;
+    }
 }

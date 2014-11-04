@@ -26,7 +26,7 @@ import org.osgi.framework.Version;
  * 
  */
 public class VSMXMIHelper extends XMIHelperImpl {
-    
+
     private String version;
 
     private boolean migrationNeeded;
@@ -39,7 +39,7 @@ public class VSMXMIHelper extends XMIHelperImpl {
      */
     public VSMXMIHelper(XMLResource resource) {
         super(resource);
-        
+
         VSMVersionSAXParser parser = new VSMVersionSAXParser(resource.getURI());
         this.version = parser.getVersion(new NullProgressMonitor());
         this.migrationNeeded = VSMMigrationService.getInstance().isMigrationNeeded(Version.parseVersion(version));
@@ -77,6 +77,10 @@ public class VSMXMIHelper extends XMIHelperImpl {
                 factory = type.getEPackage().getEFactoryInstance();
             }
         }
-        return super.createObject(factory, type);
+        EObject newObject = super.createObject(factory, type);
+        if (migrationNeeded) {
+            newObject = VSMMigrationService.getInstance().updateCreatedObject(newObject, version);
+        }
+        return newObject;
     }
 }
