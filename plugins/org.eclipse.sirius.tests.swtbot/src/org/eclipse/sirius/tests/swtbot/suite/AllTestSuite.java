@@ -112,6 +112,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(EdgeLabelStabilityTest.class);
         suite.addTestSuite(EdgeStabilityOnLayerManagementTest.class);
         suite.addTestSuite(CenteredEdgesTest.class);
+        suite.addTestSuite(CenteredEdgesRepairTest.class);
         suite.addTestSuite(RemoveEdgeBendpointsTest.class);
         suite.addTestSuite(EditorSavingTest.class);
         suite.addTestSuite(EmptyPropertyViewAfterDeletionTest.class);
