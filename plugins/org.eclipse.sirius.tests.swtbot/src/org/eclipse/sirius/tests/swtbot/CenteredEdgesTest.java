@@ -405,6 +405,40 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
+     * Test that the end user cannot move a rectilinear edge end with two
+     * bendpoints and only one centered. See #448739 Comment1. Container case.
+     */
+    public void testUserCannotMoveRectilinearFreeTgtOnContainer() {
+        openDiagram(REPRESENTATION_NAME_MOVING);
+        SWTBotGefEditPart botGefEditPart = editor.getEditPart("container3", DNodeContainerEditPart.class);
+
+        SWTBotGefEditPart edgeBotGefEditPart = editor.getEditPart("edge3", DEdgeEditPart.class);
+        changeRoutingStyle((SWTBotGefConnectionEditPart) edgeBotGefEditPart, RECTILINEAR_STYLE_ROUTING);
+
+        moveEdgeConnection("edge3", botGefEditPart, false, TOP_LEFT_CORNER);
+
+        SWTBotGefConnectionEditPart swtBotGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge3", DEdgeEditPart.class);
+        assertEdgeHasExpectedTgtAnchor(swtBotGefEditPart, new PrecisionPoint(0.5, 0.5));
+    }
+
+    /**
+     * Test that the end user cannot move a rectilinear edge end with two
+     * bendpoints and only one centered. See #448739 Comment1. Node case.
+     */
+    public void testUserCannotMoveRectilinearFreeTgtOnNode() {
+        openDiagram(REPRESENTATION_NAME_MOVING);
+        SWTBotGefEditPart botGefEditPart = editor.getEditPart("node4", DNodeEditPart.class);
+
+        SWTBotGefEditPart edgeBotGefEditPart = editor.getEditPart("edge5", DEdgeEditPart.class);
+        changeRoutingStyle((SWTBotGefConnectionEditPart) edgeBotGefEditPart, RECTILINEAR_STYLE_ROUTING);
+
+        moveEdgeConnection("edge5", botGefEditPart, false, TOP_LEFT_CORNER);
+
+        SWTBotGefConnectionEditPart swtBotGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge5", DEdgeEditPart.class);
+        assertEdgeHasExpectedTgtAnchor(swtBotGefEditPart, new PrecisionPoint(0.5, 0.5));
+    }
+
+    /**
      * Test that when resizing the edge source with a source and a target
      * 'auto-size', the edge is still centered. See <a
      * href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c5">Bug
