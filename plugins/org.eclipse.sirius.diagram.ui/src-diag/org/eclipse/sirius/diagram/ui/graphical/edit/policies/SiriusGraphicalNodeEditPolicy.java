@@ -206,7 +206,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
                     result.add(getReconnectSourceCommandAfterTool(request));
                     cmd = result;
                 }
-            } else if (isCenteredEnd(edge, CenteringStyle.SOURCE)) {
+            } else if (isCenteredEnd(connectionEditPart, edge, CenteringStyle.SOURCE)) {
                 cmd = UnexecutableCommand.INSTANCE;
             } else if (applySpecificTreeLayout(request.getConnectionEditPart())) {
                 cmd = getReconnectSourceForTreeLayoutCommand(request);
@@ -266,7 +266,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         // Set the connection bendpoints with a PointList using a command
         SetConnectionBendpointsCommand sbbCommand = new SetReconnectingConnectionBendpointsCommand(editingDomain, sourceView, sourceView.getSourceEdges(), ReconnectionKind.RECONNECT_SOURCE_LITERAL);
         sbbCommand.setNewPointList(connectionPointList, tempSourceRefPoint, tempTargetRefPoint);
-        
+
         cc.compose(sbbCommand);
         return new ICommandProxy(cc);
     }
@@ -309,7 +309,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
                     result.add(getReconnectTargetCommandAfterTool(request));
                     cmd = result;
                 }
-            } else if (isCenteredEnd(edge, CenteringStyle.TARGET)) {
+            } else if (isCenteredEnd(connectionEditPart, edge, CenteringStyle.TARGET)) {
                 cmd = UnexecutableCommand.INSTANCE;
             } else {
                 ConnectionEditPartQuery cepq = new ConnectionEditPartQuery(request.getConnectionEditPart());
@@ -376,12 +376,23 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         return new ICommandProxy(cc);
     }
 
-    private boolean isCenteredEnd(DEdge edge, CenteringStyle centeringStyle) {
+    private boolean isCenteredEnd(ConnectionEditPart connectionEditPart, DEdge edge, CenteringStyle centeringStyle) {
+        boolean returnValue = false;
         EdgeStyle edgeStyle = edge.getOwnedStyle();
         if (edgeStyle != null) {
-            return edgeStyle.getCentered() == CenteringStyle.BOTH || edgeStyle.getCentered() == centeringStyle;
+            returnValue = edgeStyle.getCentered() == CenteringStyle.BOTH || edgeStyle.getCentered() == centeringStyle;
+            // if the edge is rectilinear and has only two bendpoints, we
+            // also forbid to move the opposite end, otherwise all the segment
+            // move.
+            if (!returnValue && EdgeRouting.MANHATTAN_LITERAL.getLiteral().equals(edgeStyle.getRoutingStyle().getLiteral())) {
+                IFigure figure = connectionEditPart.getFigure();
+                if (figure instanceof Connection) {
+                    returnValue = ((Connection) figure).getPoints().size() <= 2;
+                }
+            }
         }
-        return false;
+
+        return returnValue;
     }
 
     /**
@@ -453,7 +464,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             SetConnectionBendpointsCommand sbbCommand = new SetReconnectingConnectionBendpointsCommand(editingDomain, targetView, targetView.getTargetEdges(),
                     ReconnectionKind.RECONNECT_TARGET_LITERAL);
             sbbCommand.setNewPointList(connectionPointList, tempSourceRefPoint, tempTargetRefPoint);
-            
+
             Command cmdBP = new ICommandProxy(sbbCommand);
             if (cmdBP != null) {
                 cmd = cmd == null ? cmdBP : cmd.chain(cmdBP);
