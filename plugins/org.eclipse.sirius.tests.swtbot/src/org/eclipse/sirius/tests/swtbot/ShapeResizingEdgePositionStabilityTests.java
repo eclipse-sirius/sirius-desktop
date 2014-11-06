@@ -16,7 +16,11 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.ConnectionEditPart;
+import org.eclipse.gef.GraphicalEditPart;
+import org.eclipse.gmf.runtime.notation.Bounds;
+import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -24,10 +28,13 @@ import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondit
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
+import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
 /**
  * Test class that make sure edges do not move during a shape resize. See
- * bugzilla #441424 for more details.
+ * bugzilla #441424 for more details. Also tests that border nodes have correct
+ * GMF location after resizing toward the container center. (see bugzilla
+ * #450067).
  * 
  * @author Florian Barbin
  * 
@@ -57,6 +64,8 @@ public class ShapeResizingEdgePositionStabilityTests extends AbstractSiriusSwtBo
     private static final Dimension NORTH_EAST = new Dimension(20, -20);
 
     private static final Dimension NORTH_WEST = new Dimension(-20, -20);
+
+    private static final Dimension WEST = new Dimension(-20, 0);
 
     /*
      * (non-Javadoc)
@@ -487,6 +496,58 @@ public class ShapeResizingEdgePositionStabilityTests extends AbstractSiriusSwtBo
     }
 
     /**
+     * Resize BorderNode1 toward North.
+     */
+    public void testResizingB1ToN() {
+        CheckSelectedCondition cS = new CheckSelectedCondition(editor, "border1");
+        Rectangle bounds = editor.clickCentered("border1");
+        bot.waitUntil(cS);
+        resizeToNorth(bounds);
+        checkGMFDraw2DConsistency("border1");
+    }
+
+    /**
+     * Resize BorderNode3 toward South.
+     */
+    public void testResizingB3ToS() {
+        CheckSelectedCondition cS = new CheckSelectedCondition(editor, "border3");
+        Rectangle bounds = editor.clickCentered("border3");
+        bot.waitUntil(cS);
+        resizeToSouth(bounds);
+        checkGMFDraw2DConsistency("border3");
+    }
+
+    /**
+     * Resize BorderNode3 toward West.
+     */
+    public void testResizingB2ToW() {
+        CheckSelectedCondition cS = new CheckSelectedCondition(editor, "border2");
+        Rectangle bounds = editor.clickCentered("border2");
+        bot.waitUntil(cS);
+        resizeToWest(bounds);
+        checkGMFDraw2DConsistency("border2");
+    }
+
+    /**
+     * Check whether the GMF and draw2D coordinates are consistent.
+     * 
+     * @param nodeName
+     *            the node label.
+     */
+    private void checkGMFDraw2DConsistency(String nodeName) {
+        SWTBotGefEditPart botGefEditPart = editor.getEditPart(nodeName, AbstractDiagramBorderNodeEditPart.class);
+        GraphicalEditPart graphicalEditPart = (GraphicalEditPart) botGefEditPart.part();
+        Rectangle figureBounds = graphicalEditPart.getFigure().getBounds().getCopy();
+        Rectangle parentBounds = graphicalEditPart.getFigure().getParent().getBounds();
+        Bounds bounds = (Bounds) ((Node) graphicalEditPart.getModel()).getLayoutConstraint();
+        figureBounds.translate(-parentBounds.getTopLeft().x, -parentBounds.getTopLeft().y);
+
+        assertEquals("The GMF location is different from the Figure one", figureBounds.getTopLeft(), new Point(bounds.getX(), bounds.getY()));
+        assertEquals("The GMF dimension is different from the Figure one", figureBounds.getSize(), new Dimension(bounds.getWidth(), bounds.getHeight()));
+
+    }
+
+    /**
      * Check that the given edge didn't move during the shape resizing.
      * 
      * @param string
@@ -553,6 +614,10 @@ public class ShapeResizingEdgePositionStabilityTests extends AbstractSiriusSwtBo
 
     private void resizeToEast(Rectangle bounds) {
         editor.drag(bounds.getRight(), bounds.getRight().getTranslated(EAST));
+    }
+
+    private void resizeToWest(Rectangle bounds) {
+        editor.drag(bounds.getLeft(), bounds.getLeft().getTranslated(WEST));
     }
 
     private void resizeToNorth(Rectangle bounds) {

@@ -6,11 +6,19 @@ This document contains the release notes for all major releases of Sirius.
 
 h2(#sirius3.0.0). Changes in Sirius 3.0.0 (from Sirius 2.0.0)
 
-h3. Changes API
+h3. API Changes
 
 h4. Changes in @org.eclipse.sirius@
 
 * The method @org.eclipse.sirius.business.api.migration.IMigrationParticipant.updateCreatedObject(EObject newObject, String loadedVersion)@ have been added to update object values in VSM before loading this objects from XML file.
+
+h4. Changes in @org.eclipse.sirius.diagram.ui@
+
+The @org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator@ did not take into account the rectangle size passed to @getValidLocation@. To resolve that limitation, several protected methods that took a Point as location now take a Rectangle:
+* @locateOnBorder(Point, int, int, IFigure, Collection<IFigure>, List<IFigure>)@ Take a Rectangle instead a point: @locateOnBorder(Rectangle, int, int, IFigure, Collection<IFigure>, List<IFigure>)@
+* @locateOnSouthBorder@, @locateOnNorthBorder@, @locateOnWestBorder@ and @locateOnEastBorder@ signature is now @(Rectangle, int, IFigure, Collection<IFigure>, List<IFigure>)@
+* @locateOnParent@ signature is now @locateOnParent(Rectangle, int, IFigure)@
+* @conflicts@ signature is now @conflicts(Rectangle, IFigure, Collection<IFigure>, List<IFigure>)@
 
 h3. Specifier-Visible Changes
 

@@ -629,38 +629,75 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
 
     @Override
     protected Command getResizeCommand(ChangeBoundsRequest request) {
-        Command superCommand = super.getResizeCommand(request);
-
         EditPart host = getHost();
 
-        if (host instanceof IGraphicalEditPart) {
-            TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) host).getEditingDomain();
-            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(editingDomain, superCommand.getLabel());
-            ctc.add(new CommandProxy(superCommand));
+        if (host instanceof IBorderItemEditPart) {
+            final IBorderItemEditPart borderItemEP = (IBorderItemEditPart) host;
+            Rectangle newBounds = getNewBounds(request);
+
+            SetBoundsCommand setBoundsCommand = new SetBoundsCommand(borderItemEP.getEditingDomain(), DiagramUIMessages.SetLocationCommand_Label_Resize,
+                    new EObjectAdapter((View) getHost().getModel()), newBounds);
+
+            TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) borderItemEP).getEditingDomain();
+            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(editingDomain, setBoundsCommand.getLabel());
+            ctc.add(setBoundsCommand);
 
             ShiftEdgeIdentityAnchorOperation operation = new ShiftEdgeIdentityAnchorOperation(request);
             ICommand command = CommandFactory.createICommand(editingDomain, operation);
             ctc.add(command);
 
             // we add a command to keep the edges centered (if they should be)
-            CenterEditPartEdgesCommand centerEditPartEdgesCommand = new CenterEditPartEdgesCommand((IGraphicalEditPart) host, request);
+            CenterEditPartEdgesCommand centerEditPartEdgesCommand = new CenterEditPartEdgesCommand(borderItemEP, request);
             ctc.add(centerEditPartEdgesCommand);
             return new ICommandProxy(ctc);
         }
-        return superCommand;
+        return super.getResizeCommand(request);
     }
 
     /**
      * Returns the command contribution to a change bounds request.
      * 
      * @param request
-     *            the change bounds requesgt
+     *            the change bounds request
      * @return the command contribution to the request
      */
     @Override
     protected Command getMoveCommand(final ChangeBoundsRequest request) {
+
         final IBorderItemEditPart borderItemEP = (IBorderItemEditPart) getHost();
-        final IBorderItemLocator borderItemLocator = borderItemEP.getBorderItemLocator();
+        Rectangle newBounds = getNewBounds(request);
+        if (newBounds != null) {
+            final ICommand moveCommand = new SetBoundsCommand(borderItemEP.getEditingDomain(), DiagramUIMessages.Commands_MoveElement, new EObjectAdapter((View) getHost().getModel()), newBounds);
+            Command result = new ICommandProxy(moveCommand);
+
+            if (getHost() instanceof IGraphicalEditPart) {
+                final Point parentOrigin = borderItemEP.getFigure().getParent().getBounds().getTopLeft();
+                Point oldRelativeBounds = borderItemEP.getFigure().getBounds().getTopLeft().translate(parentOrigin.getNegated());
+                PrecisionPoint delta = new PrecisionPoint(newBounds.getLocation().translate(oldRelativeBounds.getNegated()));
+                GraphicalHelper.applyZoomOnPoint((IGraphicalEditPart) getHost(), delta);
+
+                IGraphicalEditPart hostPart = (IGraphicalEditPart) getHost();
+                CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(hostPart.getEditingDomain(), result.getLabel());
+                ctc.add(new CommandProxy(result));
+                ctc.add(new ChangeBendpointsOfEdgesCommand(hostPart, delta));
+                result = new ICommandProxy(ctc);
+            }
+            return result;
+        }
+        return null;
+    }
+
+    /**
+     * Computes the new bounds of the border item.
+     * 
+     * @param request
+     *            the change bounds request.
+     * @return the new bounds according to the request and the border item
+     *         locator.
+     */
+    private Rectangle getNewBounds(final ChangeBoundsRequest request) {
+        IBorderItemEditPart borderItemEP = (IBorderItemEditPart) getHost();
+        IBorderItemLocator borderItemLocator = borderItemEP.getBorderItemLocator();
 
         if (borderItemLocator != null) {
             final PrecisionRectangle rect = new PrecisionRectangle(getInitialFeedbackBounds());
@@ -702,20 +739,8 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
             final Point parentOrigin = borderItemEP.getFigure().getParent().getBounds().getTopLeft();
             final Dimension d = realLocation.getTopLeft().getDifference(parentOrigin);
             final Point location = new Point(d.width, d.height);
-            final ICommand moveCommand = new SetBoundsCommand(borderItemEP.getEditingDomain(), DiagramUIMessages.Commands_MoveElement, new EObjectAdapter((View) getHost().getModel()), location);
-            Command result = new ICommandProxy(moveCommand);
+            return new Rectangle(location, rect.getSize());
 
-            if (getHost() instanceof IGraphicalEditPart) {
-                PrecisionPoint delta = new PrecisionPoint(realLocation.getTopLeft().getTranslated(borderItemEP.getFigure().getBounds().getTopLeft().getNegated()));
-                GraphicalHelper.applyZoomOnPoint((IGraphicalEditPart) getHost(), delta);
-
-                IGraphicalEditPart hostPart = (IGraphicalEditPart) getHost();
-                CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(hostPart.getEditingDomain(), result.getLabel());
-                ctc.add(new CommandProxy(result));
-                ctc.add(new ChangeBendpointsOfEdgesCommand(hostPart, delta));
-                result = new ICommandProxy(ctc);
-            }
-            return result;
         }
         return null;
     }

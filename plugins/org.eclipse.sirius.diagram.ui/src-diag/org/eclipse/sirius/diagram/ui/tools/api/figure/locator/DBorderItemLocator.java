@@ -199,7 +199,7 @@ public class DBorderItemLocator extends BorderItemLocator {
                 // if bordered node is moved.
                 figuresToIgnoreDuringNextRelocate.clear();
             }
-            final Point ptNewLocation = locateOnBorder(rectSuggested.getLocation(), getCurrentSideOfParent(), 0, borderItem, figuresToIgnoreDuringNextRelocate, new ArrayList<IFigure>());
+            final Point ptNewLocation = locateOnBorder(rectSuggested, getCurrentSideOfParent(), 0, borderItem, figuresToIgnoreDuringNextRelocate, new ArrayList<IFigure>());
             borderItem.setLocation(ptNewLocation);
             figuresToIgnoreDuringNextRelocate.clear();
             borderItem.setSize(size);
@@ -211,7 +211,7 @@ public class DBorderItemLocator extends BorderItemLocator {
     protected Point locateOnBorder(Point suggestedLocation, int suggestedSide, int circuitCount, IFigure borderItem) {
         List<IFigure> figuresToIgnore = Lists.newArrayList();
         figuresToIgnore.add(borderItem);
-        return locateOnBorder(suggestedLocation, suggestedSide, circuitCount, borderItem, figuresToIgnore, new ArrayList<IFigure>());
+        return locateOnBorder(new Rectangle(suggestedLocation, getSize(borderItem)), suggestedSide, circuitCount, borderItem, figuresToIgnore, new ArrayList<IFigure>());
     }
 
     /**
@@ -236,19 +236,20 @@ public class DBorderItemLocator extends BorderItemLocator {
      *            must be used for conflict detection
      * @return point
      */
-    protected Point locateOnBorder(final Point suggestedLocation, final int suggestedSide, final int circuitCount, final IFigure borderItem, final Collection<IFigure> portsFiguresToIgnore,
+    protected Point locateOnBorder(final Rectangle suggestedLocation, final int suggestedSide, final int circuitCount, final IFigure borderItem, final Collection<IFigure> portsFiguresToIgnore,
             List<IFigure> additionalFiguresForConflictDetection) {
         Point recommendedLocation = locateOnParent(suggestedLocation, suggestedSide, borderItem);
 
-        if (circuitCount < NB_SIDES && conflicts(recommendedLocation, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection).some()) {
+        Rectangle newRecommendedLocationBounds = new Rectangle(recommendedLocation, suggestedLocation.getSize());
+        if (circuitCount < NB_SIDES && conflicts(newRecommendedLocationBounds, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection).some()) {
             if (suggestedSide == PositionConstants.WEST) {
-                recommendedLocation = locateOnWestBorder(recommendedLocation, circuitCount, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
+                recommendedLocation = locateOnWestBorder(newRecommendedLocationBounds, circuitCount, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
             } else if (suggestedSide == PositionConstants.SOUTH) {
-                recommendedLocation = locateOnSouthBorder(recommendedLocation, circuitCount, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
+                recommendedLocation = locateOnSouthBorder(newRecommendedLocationBounds, circuitCount, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
             } else if (suggestedSide == PositionConstants.EAST) {
-                recommendedLocation = locateOnEastBorder(recommendedLocation, circuitCount, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
+                recommendedLocation = locateOnEastBorder(newRecommendedLocationBounds, circuitCount, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
             } else { // NORTH
-                recommendedLocation = locateOnNorthBorder(recommendedLocation, circuitCount, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
+                recommendedLocation = locateOnNorthBorder(newRecommendedLocationBounds, circuitCount, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
             }
         }
         return recommendedLocation;
@@ -276,24 +277,24 @@ public class DBorderItemLocator extends BorderItemLocator {
      *            must be used for conflict detection
      * @return the location where the border item can be put
      */
-    protected Point locateOnSouthBorder(final Point recommendedLocation, final int circuitCount, final IFigure borderItem, final Collection<IFigure> portsFiguresToIgnore,
+    protected Point locateOnSouthBorder(final Rectangle recommendedLocation, final int circuitCount, final IFigure borderItem, final Collection<IFigure> portsFiguresToIgnore,
             List<IFigure> additionalFiguresForConflictDetection) {
-        final Dimension borderItemSize = getSize(borderItem);
+        final Dimension borderItemSize = recommendedLocation.getSize();
         Point resultLocation = null;
-        final Point rightTestPoint = new Point(recommendedLocation);
-        final Point leftTestPoint = new Point(recommendedLocation);
+        final Point rightTestPoint = recommendedLocation.getLocation();
+        final Point leftTestPoint = recommendedLocation.getLocation();
         boolean isStillFreeSpaceToTheRight = true;
         boolean isStillFreeSpaceToTheLeft = true;
         int rightVerticalGap = 0;
         int leftVerticalGap = 0;
         // The recommendedLocationForEast is set when we detected that there is
         // not free space on right of south side.
-        Point recommendedLocationForEast = recommendedLocation;
+        Point recommendedLocationForEast = recommendedLocation.getLocation();
         while (resultLocation == null && (isStillFreeSpaceToTheRight || isStillFreeSpaceToTheLeft)) {
             if (isStillFreeSpaceToTheRight) {
                 // Move to the right on the south side
                 rightTestPoint.x += rightVerticalGap;
-                Option<Rectangle> optionalConflictingRectangle = conflicts(rightTestPoint, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
+                Option<Rectangle> optionalConflictingRectangle = conflicts(new Rectangle(rightTestPoint, borderItemSize), borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
                 if (optionalConflictingRectangle.some()) {
                     rightVerticalGap = (optionalConflictingRectangle.get().x + optionalConflictingRectangle.get().width + 1) - rightTestPoint.x;
                     if (rightTestPoint.x + rightVerticalGap + borderItemSize.width > getParentBorder().getBottomRight().x) {
@@ -313,7 +314,7 @@ public class DBorderItemLocator extends BorderItemLocator {
             if (isStillFreeSpaceToTheLeft && resultLocation == null) {
                 // Move to the left on the south side
                 leftTestPoint.x -= leftVerticalGap;
-                Option<Rectangle> optionalConflictingRectangle = conflicts(leftTestPoint, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
+                Option<Rectangle> optionalConflictingRectangle = conflicts(new Rectangle(leftTestPoint, borderItemSize), borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
                 if (optionalConflictingRectangle.some()) {
                     leftVerticalGap = leftTestPoint.x - (optionalConflictingRectangle.get().x - borderItemSize.width - 1);
                     if (leftTestPoint.x - leftVerticalGap < getParentBorder().getTopLeft().x) {
@@ -326,7 +327,8 @@ public class DBorderItemLocator extends BorderItemLocator {
         }
         if (resultLocation == null) {
             // south is full, try east.
-            resultLocation = locateOnBorder(recommendedLocationForEast, PositionConstants.EAST, circuitCount + 1, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
+            resultLocation = locateOnBorder(new Rectangle(recommendedLocationForEast, borderItemSize), PositionConstants.EAST, circuitCount + 1, borderItem, portsFiguresToIgnore,
+                    additionalFiguresForConflictDetection);
         }
         return resultLocation;
     }
@@ -353,24 +355,24 @@ public class DBorderItemLocator extends BorderItemLocator {
      *            must be used for conflict detection
      * @return the location where the border item can be put
      */
-    protected Point locateOnNorthBorder(final Point recommendedLocation, final int circuitCount, final IFigure borderItem, final Collection<IFigure> portsFiguresToIgnore,
+    protected Point locateOnNorthBorder(final Rectangle recommendedLocation, final int circuitCount, final IFigure borderItem, final Collection<IFigure> portsFiguresToIgnore,
             List<IFigure> additionalFiguresForConflictDetection) {
-        final Dimension borderItemSize = getSize(borderItem);
+        final Dimension borderItemSize = recommendedLocation.getSize();
         Point resultLocation = null;
-        final Point rightTestPoint = new Point(recommendedLocation);
-        final Point leftTestPoint = new Point(recommendedLocation);
+        final Point rightTestPoint = recommendedLocation.getLocation();
+        final Point leftTestPoint = recommendedLocation.getLocation();
         boolean isStillFreeSpaceToTheRight = true;
         boolean isStillFreeSpaceToTheLeft = true;
         int rightVerticalGap = 0;
         int leftVerticalGap = 0;
         // The recommendedLocationForWest is set when we detected that there is
         // not free space on left of north side.
-        Point recommendedLocationForWest = recommendedLocation;
+        Point recommendedLocationForWest = recommendedLocation.getLocation();
         while (resultLocation == null && (isStillFreeSpaceToTheRight || isStillFreeSpaceToTheLeft)) {
             if (isStillFreeSpaceToTheRight) {
                 // Move to the right on the north side
                 rightTestPoint.x += rightVerticalGap;
-                Option<Rectangle> optionalConflictingRectangle = conflicts(rightTestPoint, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
+                Option<Rectangle> optionalConflictingRectangle = conflicts(new Rectangle(rightTestPoint, borderItemSize), borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
                 if (optionalConflictingRectangle.some()) {
                     rightVerticalGap = (optionalConflictingRectangle.get().x + optionalConflictingRectangle.get().width + 1) - rightTestPoint.x;
                     if (rightTestPoint.x + rightVerticalGap + borderItemSize.width > getParentBorder().getBottomRight().x) {
@@ -383,7 +385,7 @@ public class DBorderItemLocator extends BorderItemLocator {
             if (isStillFreeSpaceToTheLeft && resultLocation == null) {
                 // Move to the left on the north side
                 leftTestPoint.x -= leftVerticalGap;
-                Option<Rectangle> optionalConflictingRectangle = conflicts(leftTestPoint, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
+                Option<Rectangle> optionalConflictingRectangle = conflicts(new Rectangle(leftTestPoint, borderItemSize), borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
                 if (optionalConflictingRectangle.some()) {
                     leftVerticalGap = leftTestPoint.x - (optionalConflictingRectangle.get().x - borderItemSize.width - 1);
                     if (leftTestPoint.x - leftVerticalGap < getParentBorder().getTopLeft().x) {
@@ -403,7 +405,8 @@ public class DBorderItemLocator extends BorderItemLocator {
         }
         if (resultLocation == null) {
             // North is full, try west.
-            resultLocation = locateOnBorder(recommendedLocationForWest, PositionConstants.WEST, circuitCount + 1, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
+            resultLocation = locateOnBorder(new Rectangle(recommendedLocationForWest, borderItemSize), PositionConstants.WEST, circuitCount + 1, borderItem, portsFiguresToIgnore,
+                    additionalFiguresForConflictDetection);
         }
         return resultLocation;
     }
@@ -429,24 +432,24 @@ public class DBorderItemLocator extends BorderItemLocator {
      *            must be used for conflict detection
      * @return the location where the border item can be put
      */
-    protected Point locateOnWestBorder(final Point recommendedLocation, final int circuitCount, final IFigure borderItem, final Collection<IFigure> portsFiguresToIgnore,
+    protected Point locateOnWestBorder(final Rectangle recommendedLocation, final int circuitCount, final IFigure borderItem, final Collection<IFigure> portsFiguresToIgnore,
             List<IFigure> additionalFiguresForConflictDetection) {
-        final Dimension borderItemSize = getSize(borderItem);
+        final Dimension borderItemSize = recommendedLocation.getSize();
         Point resultLocation = null;
-        final Point belowTestPoint = new Point(recommendedLocation);
-        final Point aboveTestPoint = new Point(recommendedLocation);
+        final Point belowTestPoint = recommendedLocation.getLocation();
+        final Point aboveTestPoint = recommendedLocation.getLocation();
         boolean isStillFreeSpaceAbove = true;
         boolean isStillFreeSpaceBelow = true;
         int belowVerticalGap = 0;
         int aboveVerticalGap = 0;
         // The recommendedLocationForSouth is set when we detected that there is
         // not free space on bottom of west side.
-        Point recommendedLocationForSouth = recommendedLocation;
+        Point recommendedLocationForSouth = recommendedLocation.getLocation();
         while (resultLocation == null && (isStillFreeSpaceAbove || isStillFreeSpaceBelow)) {
             if (isStillFreeSpaceBelow) {
                 // Move down on the west side
                 belowTestPoint.y += belowVerticalGap;
-                Option<Rectangle> optionalConflictingRectangle = conflicts(belowTestPoint, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
+                Option<Rectangle> optionalConflictingRectangle = conflicts(new Rectangle(belowTestPoint, borderItemSize), borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
                 if (optionalConflictingRectangle.some()) {
                     belowVerticalGap = optionalConflictingRectangle.get().y + optionalConflictingRectangle.get().height - belowTestPoint.y + 1;
                     if (belowTestPoint.y + belowVerticalGap + borderItemSize.height > getParentBorder().getBottomLeft().y) {
@@ -466,7 +469,7 @@ public class DBorderItemLocator extends BorderItemLocator {
             if (isStillFreeSpaceAbove && resultLocation == null) {
                 // Move up on the west side
                 aboveTestPoint.y -= aboveVerticalGap;
-                Option<Rectangle> optionalConflictingRectangle = conflicts(aboveTestPoint, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
+                Option<Rectangle> optionalConflictingRectangle = conflicts(new Rectangle(aboveTestPoint, borderItemSize), borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
                 if (optionalConflictingRectangle.some()) {
                     aboveVerticalGap = aboveTestPoint.y - (optionalConflictingRectangle.get().y - borderItemSize.height - 1);
                     if (aboveTestPoint.y - aboveVerticalGap < getParentBorder().getTopRight().y) {
@@ -479,7 +482,8 @@ public class DBorderItemLocator extends BorderItemLocator {
         }
         if (resultLocation == null) {
             // west is full, try south.
-            resultLocation = locateOnBorder(recommendedLocationForSouth, PositionConstants.SOUTH, circuitCount + 1, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
+            resultLocation = locateOnBorder(new Rectangle(recommendedLocationForSouth, borderItemSize), PositionConstants.SOUTH, circuitCount + 1, borderItem, portsFiguresToIgnore,
+                    additionalFiguresForConflictDetection);
         }
         return resultLocation;
     }
@@ -505,24 +509,24 @@ public class DBorderItemLocator extends BorderItemLocator {
      *            must be used for conflict detection
      * @return the location where the border item can be put
      */
-    protected Point locateOnEastBorder(final Point recommendedLocation, final int circuitCount, final IFigure borderItem, final Collection<IFigure> portsFiguresToIgnore,
+    protected Point locateOnEastBorder(final Rectangle recommendedLocation, final int circuitCount, final IFigure borderItem, final Collection<IFigure> portsFiguresToIgnore,
             List<IFigure> additionalFiguresForConflictDetection) {
-        final Dimension borderItemSize = getSize(borderItem);
+        final Dimension borderItemSize = recommendedLocation.getSize();
         Point resultLocation = null;
-        final Point belowTestPoint = new Point(recommendedLocation);
-        final Point aboveTestPoint = new Point(recommendedLocation);
+        final Point belowTestPoint = recommendedLocation.getLocation();
+        final Point aboveTestPoint = recommendedLocation.getLocation();
         boolean isStillFreeSpaceAbove = true;
         boolean isStillFreeSpaceBelow = true;
         int belowVerticalGap = 0;
         int aboveVerticalGap = 0;
         // The recommendedLocationForNorth is set when we detected that there is
         // not free space on top of east side.
-        Point recommendedLocationForNorth = recommendedLocation;
+        Point recommendedLocationForNorth = recommendedLocation.getLocation();
         while (resultLocation == null && (isStillFreeSpaceAbove || isStillFreeSpaceBelow)) {
             if (isStillFreeSpaceBelow) {
                 // Move down on the east side
                 belowTestPoint.y += belowVerticalGap;
-                Option<Rectangle> optionalConflictingRectangle = conflicts(belowTestPoint, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
+                Option<Rectangle> optionalConflictingRectangle = conflicts(new Rectangle(belowTestPoint, borderItemSize), borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
                 if (optionalConflictingRectangle.some()) {
                     belowVerticalGap = optionalConflictingRectangle.get().y + optionalConflictingRectangle.get().height - belowTestPoint.y + 1;
                     if (belowTestPoint.y + belowVerticalGap + borderItemSize.height > getParentBorder().getBottomLeft().y) {
@@ -535,7 +539,7 @@ public class DBorderItemLocator extends BorderItemLocator {
             if (isStillFreeSpaceAbove && resultLocation == null) {
                 // Move up on the east side
                 aboveTestPoint.y -= aboveVerticalGap;
-                Option<Rectangle> optionalConflictingRectangle = conflicts(aboveTestPoint, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
+                Option<Rectangle> optionalConflictingRectangle = conflicts(new Rectangle(aboveTestPoint, borderItemSize), borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
                 if (optionalConflictingRectangle.some()) {
                     aboveVerticalGap = aboveTestPoint.y - (optionalConflictingRectangle.get().y - borderItemSize.height - 1);
                     if (aboveTestPoint.y - aboveVerticalGap < getParentBorder().getTopRight().y) {
@@ -555,7 +559,8 @@ public class DBorderItemLocator extends BorderItemLocator {
         }
         if (resultLocation == null) {
             // East is full, try north.
-            resultLocation = locateOnBorder(recommendedLocationForNorth, PositionConstants.NORTH, circuitCount + 1, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
+            resultLocation = locateOnBorder(new Rectangle(recommendedLocationForNorth, borderItemSize), PositionConstants.NORTH, circuitCount + 1, borderItem, portsFiguresToIgnore,
+                    additionalFiguresForConflictDetection);
         }
         return resultLocation;
     }
@@ -572,13 +577,13 @@ public class DBorderItemLocator extends BorderItemLocator {
      *            the border item.
      * @return point the location point
      */
-    protected Point locateOnParent(final Point suggestedLocation, final int suggestedSide, final IFigure borderItem) {
+    protected Point locateOnParent(final Rectangle suggestedLocation, final int suggestedSide, final IFigure borderItem) {
         final Rectangle bounds = getParentBorder();
         final int parentFigureWidth = bounds.width;
         final int parentFigureHeight = bounds.height;
         final int parentFigureX = bounds.x;
         final int parentFigureY = bounds.y;
-        final Dimension borderItemSize = getSize(borderItem);
+        final Dimension borderItemSize = suggestedLocation.getSize();
         int newX = suggestedLocation.x;
         int newY = suggestedLocation.y;
         final int westX = parentFigureX - borderItemSize.width + getBorderItemOffset().width;
@@ -639,7 +644,7 @@ public class DBorderItemLocator extends BorderItemLocator {
      * Determine if the the given point conflicts with the position of an
      * existing borderItemFigure.
      * 
-     * @param recommendedLocation
+     * @param recommendedRect
      *            The desired location
      * @param targetBorderItem
      *            the border node for which we detect conflicts.
@@ -651,9 +656,8 @@ public class DBorderItemLocator extends BorderItemLocator {
      * @return the optional Rectangle of the border item that is in conflict
      *         with the given bordered node (a none option)
      */
-    protected Option<Rectangle> conflicts(final Point recommendedLocation, final IFigure targetBorderItem, final Collection<IFigure> portsFiguresToIgnore,
+    protected Option<Rectangle> conflicts(final Rectangle recommendedRect, final IFigure targetBorderItem, final Collection<IFigure> portsFiguresToIgnore,
             List<IFigure> additionalFiguresForConflictDetection) {
-        final Rectangle recommendedRect = new Rectangle(recommendedLocation, getSize(targetBorderItem));
 
         // 1- Detect conflicts with brother figures
         Option<Rectangle> conflictedRectangle = conflicts(recommendedRect, getBrotherFigures(targetBorderItem), portsFiguresToIgnore);
@@ -840,9 +844,11 @@ public class DBorderItemLocator extends BorderItemLocator {
      */
     @Override
     public Rectangle getValidLocation(final Rectangle proposedLocation, final IFigure borderItem) {
-        final Rectangle realLocation = new Rectangle(proposedLocation);
         final int side = DBorderItemLocator.findClosestSideOfParent(proposedLocation, getParentBorder());
-        final Point newTopLeft = locateOnBorder(realLocation.getTopLeft(), side, 0, borderItem);
+        List<IFigure> figuresToIgnore = Lists.newArrayList();
+        figuresToIgnore.add(borderItem);
+        final Point newTopLeft = locateOnBorder(proposedLocation, side, 0, borderItem, figuresToIgnore, new ArrayList<IFigure>());
+        Rectangle realLocation = proposedLocation.getCopy();
         realLocation.setLocation(newTopLeft);
         return realLocation;
     }
@@ -872,7 +878,7 @@ public class DBorderItemLocator extends BorderItemLocator {
     public Rectangle getValidLocation(Rectangle proposedLocation, IFigure borderItem, Collection<IFigure> figuresToIgnore, List<IFigure> additionalFiguresForConflictDetection) {
         final Rectangle realLocation = new Rectangle(proposedLocation);
         final int side = DBorderItemLocator.findClosestSideOfParent(proposedLocation, getParentBorder());
-        final Point newTopLeft = locateOnBorder(realLocation.getTopLeft(), side, 0, borderItem, figuresToIgnore, additionalFiguresForConflictDetection);
+        final Point newTopLeft = locateOnBorder(proposedLocation, side, 0, borderItem, figuresToIgnore, additionalFiguresForConflictDetection);
         realLocation.setLocation(newTopLeft);
         return realLocation;
     }
