@@ -30,6 +30,7 @@ import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
@@ -68,6 +69,14 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
 
     private static final String DATA_UNIT_DIR = "data/unit/reconnect/bendpointStability/";
 
+    private static final String MODEL2 = "bendpointsStability.ecore";
+
+    private static final String SESSION_FILE2 = "bendpointsStability.aird";
+
+    private static final String VSM_FILE2 = "bendpointsStability.odesign";
+
+    private static final String DATA_UNIT_DIR2 = "data/unit/reconnect/bendpointStability2/";
+
     private static final String FILE_DIR = "/";
 
     private UIResource sessionAirdResource;
@@ -79,23 +88,20 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
      */
     protected SWTBotSiriusDiagramEditor editor;
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void onSetUpBeforeClosingWelcomePage() throws Exception {
+    private void initializeModelingProjectSample() {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);
-
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
+
+    }
+
+    private void initializeModelingProjectSample2() {
+        copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR2, MODEL2, SESSION_FILE2, VSM_FILE2);
+        changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
+        sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE2);
+        localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
+
     }
 
     /**
@@ -103,6 +109,7 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
      * positions.
      */
     public void testReconnectStraightEdgeTarget() {
+        initializeModelingProjectSample();
         reconnectAndValidate(REPRESENTATION_STRAIGHT_EDGE_NAME, false);
     }
 
@@ -111,6 +118,7 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
      * positions.
      */
     public void testReconnectStraightEdgeSource() {
+        initializeModelingProjectSample();
         reconnectAndValidate(REPRESENTATION_STRAIGHT_EDGE_NAME, true);
     }
 
@@ -119,6 +127,7 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
      * positions.
      */
     public void testReconnectManhattanEdgeTarget() {
+        initializeModelingProjectSample();
         reconnectAndValidate(REPRESENTATION_MANHATTAN_EDGE_NAME, false);
     }
 
@@ -127,6 +136,7 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
      * positions.
      */
     public void testReconnectManhattanEdgeSource() {
+        initializeModelingProjectSample();
         reconnectAndValidate(REPRESENTATION_MANHATTAN_EDGE_NAME, true);
     }
 
@@ -134,6 +144,7 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
      * Test that reconnects tree edge target and validates bendpoints positions.
      */
     public void testReconnectTreeEdgeTarget() {
+        initializeModelingProjectSample();
         reconnectAndValidate(REPRESENTATION_TREE_EDGE_NAME, false);
     }
 
@@ -141,6 +152,7 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
      * Test that reconnects tree edge source and validates bendpoints positions.
      */
     public void testReconnectTreeEdgeSource() {
+        initializeModelingProjectSample();
         reconnectAndValidate(REPRESENTATION_TREE_EDGE_NAME, true);
     }
 
@@ -149,6 +161,7 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
      * after several reconnections.
      */
     public void testReconnectWithUserSpecificLineStyle() {
+        initializeModelingProjectSample();
         final IEclipsePreferences diagramCoreDefaultPreferences = DefaultScope.INSTANCE.getNode(DiagramPlugin.ID);
         boolean enableOverride = diagramCoreDefaultPreferences.getBoolean(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE, false);
         int specificLineStyleSirius = diagramCoreDefaultPreferences.getInt(SiriusDiagramCorePreferences.PREF_LINE_STYLE, EdgeRouting.STRAIGHT);
@@ -182,6 +195,38 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
                 }
             });
         }
+    }
+
+    /**
+     * Test that "try" reconnects an edge with broken Bendpoints gmf vectors to
+     * a non candidate target and validates that the edge post-reconnection has
+     * the same bendpoints as the edge pre-reconnection.
+     */
+    public void testReconnectEdgeWithBadGMFBendpointAndNoReconnectionCandidate() {
+        initializeModelingProjectSample2();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "bendpointsStabilityBorderedDiag", "new bendpointsStability_Manhattan", DDiagram.class);
+        // PointList pointList = reconnectEdge(reconnectSource);
+        // Retrieve location for container list named EClass 3
+        Point location = editor.getLocation("Root", AbstractDiagramContainerEditPart.class);
+        Dimension dimension = editor.getDimension("Root", AbstractDiagramContainerEditPart.class);
+
+        // Retrieve edge target point location
+        SWTBotGefConnectionEditPart swtBotGefConnectionEditPart = editor.getConnectionsEditPart().get(0);
+        ConnectionEditPart connectionEditPart = swtBotGefConnectionEditPart.part();
+        assertTrue(connectionEditPart.getFigure() instanceof ViewEdgeFigure);
+        PointList pointList = ((ViewEdgeFigure) connectionEditPart.getFigure()).getPoints().getCopy();
+        Point endToReconnect = pointList.getPoint(pointList.size() - 1);
+
+        // Select the edge
+        editor.select(swtBotGefConnectionEditPart);
+
+        // Drag the source bendpoint to the new source node
+        editor.drag(endToReconnect, location.x + dimension.width / 2, location.y + dimension.height / 2);
+
+        // Update connectionEditPart after the "reconnection" (bendpoint drag
+        // and drop)
+        connectionEditPart = editor.getConnectionsEditPart().get(0).part();
+        checkConnectionPoints(connectionEditPart, pointList, false, 0);
     }
 
     private void reconnectAndValidate(String representationName, boolean reconnectSource) {
@@ -260,8 +305,10 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
             // It is a default value because there can be more moved bendpoint
             // with the tree router
             expectedMovedBendpoint = 2;
-            if(!reconnectedSource) {
-            	// There is an issue on linux where the reconnection, with SWTBot (not manually), has not the same result on bendpoint coordinates
+            if (!reconnectedSource) {
+                // There is an issue on linux where the reconnection, with
+                // SWTBot (not manually), has not the same result on bendpoint
+                // coordinates
                 expectedMovedBendpoint = 3;
             }
         }
@@ -283,6 +330,21 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
      */
     private void checkConnectionPoints(String sourceEditPartName, String targetEditPartName, PointList originalPointList, boolean reconnectedSource, int expectedMovedBendpoint) {
         ConnectionEditPart connectionEditPart = getConnectionEditPart(sourceEditPartName, targetEditPartName);
+        checkConnectionPoints(connectionEditPart, originalPointList, reconnectedSource, expectedMovedBendpoint);
+    }
+
+    /**
+     * Validates the connection bendpoints are in the expected locations
+     * 
+     * @param connectionEditPart
+     *            the connection to validate
+     * @param originalPointList
+     *            locations of bendpoints before reconnection
+     * @param reconnectedSource
+     *            true if reconnection of the source, false if reconnection of
+     *            the target
+     */
+    private void checkConnectionPoints(ConnectionEditPart connectionEditPart, PointList originalPointList, boolean reconnectedSource, int expectedMovedBendpoint) {
         assertTrue(connectionEditPart.getFigure() instanceof ViewEdgeFigure);
         PointList pointList = ((ViewEdgeFigure) connectionEditPart.getFigure()).getPoints().getCopy();
 

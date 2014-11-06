@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="Root">
+  <eClassifiers xsi:type="ecore:EClass" name="NodeWithSeveralTargetEdgeAnd2Bendpoints"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeWithSeveralTargetsAndSources" eSuperTypes="#//NodeWithSeveralTargetEdgeAnd2Bendpoints"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeWithSeveralTargetsAndSources3" eSuperTypes="#//NodeWithSeveralTargetsAndSources"/>
+  <eSubpackages name="Scrollbar"/>
+  <eSubpackages name="DragAndDropTarget"/>
+  <eSubpackages name="ContainerWithOneNode">
+    <eClassifiers xsi:type="ecore:EClass" name="NodeWithOneTargetEdgeInContainer"
+        eSuperTypes="#//ContainerWithOneNode2/NodeWithOneSourceEdgeInContainer2"/>
+    <eClassifiers xsi:type="ecore:EClass" name="NewEClass2" eSuperTypes="#//ContainerWithOneNode/NodeWithOneTargetEdgeInContainer"/>
+  </eSubpackages>
+  <eSubpackages name="ContainerWithOneNode2">
+    <eClassifiers xsi:type="ecore:EClass" name="NodeWithOneSourceEdgeInContainer"
+        eSuperTypes="#//ContainerWithOneNode/NodeWithOneTargetEdgeInContainer"/>
+    <eClassifiers xsi:type="ecore:EClass" name="NodeWithOneSourceEdgeInContainer2"/>
+  </eSubpackages>
+  <eSubpackages name="EmptyContainer"/>
+</ecore:EPackage>
