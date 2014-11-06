@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" version="8.1.0">
+  <ownedViewpoints name="bendpointsStabilityViewpoint" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="bendpointsStabilityDiag" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="ClassBorderedNode" semanticCandidatesExpression="feature:eContents" domainClass="EClass">
+          <style xsi:type="style:SquareDescription" showIcon="false" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="bendpointsStabilityBorderedDiag" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="NodeRoot" semanticCandidatesExpression="[self/]" domainClass="EPackage" reusedBorderedNodeMappings="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityDiag']/@defaultLayer/@nodeMappings[name='ClassBorderedNode']">
+          <style xsi:type="style:BundledImageDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="Package to Packages Container" sourceMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@containerMappings[name='SuperContainer']/@subContainerMappings[name='PackageContainer_2']" targetMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@containerMappings[name='SuperContainer']/@subContainerMappings[name='PackageContainer_2']" targetFinderExpression="[eSuperPackage.eSubpackages->excluding(self)/]">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Container to Container" sourceMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@containerMappings[name='SuperContainer']" targetMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@containerMappings[name='SuperContainer2']" targetFinderExpression="[self/]">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Container to Container 2" sourceMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@containerMappings[name='SuperContainer2']" targetMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@containerMappings[name='SuperContainer']" targetFinderExpression="[self/]">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Package to Packages List" sourceMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@containerMappings[name='SuperContainer2']/@subContainerMappings[name='Package_List']" targetMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@containerMappings[name='SuperContainer2']/@subContainerMappings[name='Package_List']" targetFinderExpression="[eSuperPackage.eSubpackages->excluding(self)/]">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Bordered edge" sourceMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityDiag']/@defaultLayer/@nodeMappings[name='ClassBorderedNode']" targetMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityDiag']/@defaultLayer/@nodeMappings[name='ClassBorderedNode']" targetFinderExpression="feature:eSuperTypes">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="LinkClass" targetFinderExpression="&lt;%eSuperTypes%>">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Container3 to Node" sourceMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@containerMappings[name='SuperContainer3']" targetMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@nodeMappings[name='NodeRoot']" targetFinderExpression="[self/]">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Node to Container3" sourceMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@nodeMappings[name='NodeRoot']" targetMapping="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityBorderedDiag']/@defaultLayer/@containerMappings[name='SuperContainer3']" targetFinderExpression="[self/]">
+          <style sizeComputationExpression="2" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="SuperContainer" semanticCandidatesExpression="[eSubpackages.eSuperPackage/]" domainClass="EPackage" reusedBorderedNodeMappings="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityDiag']/@defaultLayer/@nodeMappings[name='ClassBorderedNode']">
+          <subContainerMappings name="PackageContainer_2" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EPackage&quot;)%>" domainClass="EPackage" reusedNodeMappings="//@ownedViewpoints[name='bendpointsStabilityViewpoint']/@ownedRepresentations[name='bendpointsStabilityDiag']/@defaultLayer/@nodeMappings[name='ClassBorderedNode']">
+            <style xsi:type="style:FlatContainerStyleDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="SuperContainer2" semanticCandidatesExpression="[self/]" domainClass="EPackage">
+          <subContainerMappings name="Package_List" semanticCandidatesExpression="feature:eAllContents" domainClass="EPackage" childrenPresentation="List">
+            <style xsi:type="style:FlatContainerStyleDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="SuperContainer3" semanticCandidatesExpression="[eSubpackages.eSuperPackage/]" domainClass="EPackage" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

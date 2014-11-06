@@ -10,9 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.draw2d.AbsoluteBendpoint;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.ConnectionAnchor;
@@ -29,6 +32,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.geometry.LineSeg;
 import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.handles.SiriusConnectionEndPointHandle;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.draw2d.ui.geometry.LineSegQuery;
@@ -123,7 +127,8 @@ public class SiriusConnectionEndPointEditPolicy extends ConnectionEndpointEditPo
                 originalAnchor = getConnection().getTargetAnchor();
             }
             originalPoints = Lists.newLinkedList();
-            originalConstraint = getConnection().getRoutingConstraint();
+            saveOriginalConstraint();
+
             ConnectionQuery connectionQuery = new ConnectionQuery(getConnection());
             Option<List<RelativeBendpoint>> optionalRelativeBendpointsContraint = connectionQuery.getTreeRelativeBendpointsConstraint();
             if (optionalRelativeBendpointsContraint.some()) {
@@ -146,6 +151,61 @@ public class SiriusConnectionEndPointEditPolicy extends ConnectionEndpointEditPo
                     originalPoints.add(getConnection().getPoints().getPoint(i).getCopy());
                 }
             }
+        }
+    }
+
+    /**
+     * This method copies each {@link RelativeBendpoint} to be able to restore
+     * it later as they will be updated for the feedback
+     */
+    @SuppressWarnings("unchecked")
+    private void saveOriginalConstraint() {
+        if (getConnection().getRoutingConstraint() instanceof List) {
+            List<RelativeBendpoint> listBendpoint = Lists.newArrayList();
+            ArrayList<Object> originListBendpoint = new ArrayList<Object>((List<Object>) getConnection().getRoutingConstraint());
+            try {
+                // Unfortunately, the vectors (stored as dimensions) and weight
+                // of Draw2D RelativeBendpoint is not accessible
+                Field dimension1Field = RelativeBendpoint.class.getDeclaredField("d1");
+                boolean dim1Accessibility = dimension1Field.isAccessible();
+                dimension1Field.setAccessible(true);
+                Field dimension2Field = RelativeBendpoint.class.getDeclaredField("d2");
+                boolean dim2Accessibility = dimension1Field.isAccessible();
+                dimension2Field.setAccessible(true);
+                Field weightField = RelativeBendpoint.class.getDeclaredField("weight");
+                boolean weightAccessibility = dimension1Field.isAccessible();
+                weightField.setAccessible(true);
+                for (int i = 0; i < originListBendpoint.size(); i++) {
+                    if (originListBendpoint.get(i) instanceof RelativeBendpoint) {
+                        // Copy of each RelativeBendpoint dimensions and weight
+                        // in a new RelativeBendpoint
+                        RelativeBendpoint originBendpoint = (RelativeBendpoint) originListBendpoint.get(i);
+                        Dimension dimension1 = (Dimension) dimension1Field.get(originBendpoint);
+                        Dimension dimension2 = (Dimension) dimension2Field.get(originBendpoint);
+                        Float weight = (Float) weightField.get(originBendpoint);
+                        RelativeBendpoint copyBendpoint = new RelativeBendpoint(getConnection());
+                        copyBendpoint.setRelativeDimensions(dimension1, dimension2);
+                        copyBendpoint.setWeight(weight);
+                        listBendpoint.add(copyBendpoint);
+                    }
+                }
+                // Restore accessibility status of the dimensions and weight
+                // fields
+                dimension1Field.setAccessible(dim1Accessibility);
+                dimension2Field.setAccessible(dim2Accessibility);
+                weightField.setAccessible(weightAccessibility);
+            } catch (SecurityException e) {
+                DiagramUIPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, DiagramUIPlugin.ID, e.getMessage()));
+            } catch (NoSuchFieldException e) {
+                DiagramUIPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, DiagramUIPlugin.ID, e.getMessage()));
+            } catch (IllegalArgumentException e) {
+                DiagramUIPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, DiagramUIPlugin.ID, e.getMessage()));
+            } catch (IllegalAccessException e) {
+                DiagramUIPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, DiagramUIPlugin.ID, e.getMessage()));
+            }
+            originalConstraint = listBendpoint;
+        } else {
+            originalConstraint = getConnection().getRoutingConstraint();
         }
     }
 
