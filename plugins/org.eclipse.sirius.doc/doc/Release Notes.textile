@@ -8,6 +8,7 @@ h2(#sirius3.0.0). Changes in Sirius 3.0.0 (from Sirius 2.0.0)
 
 h3. Specifier-Visible Changes
 
+* In Open menu, the menu is computed from the navigation tool label instead of its name/id.
 * All Acceleo 3 references have been removed in Sirius Metamodels to avoid a dependency to Acceleo 3 but an automatic migration have been added during the loading of the VSM to avoid a change of behavior. This migration adds explicitly the old default value (@[eContents()->size()/]@) in the VSM, that was implicit before. Customers who want to completely remove this dependency must remove the A3 expressions from there VSM after the migration.
 * The default icons paths of Selection Wizard and Pane Based Selection Wizard used to reference invalid icons, so the corresponding tools had no icon per default in the palette. The default icons paths have been corrected to reference the icons displayed for those elements in the VSM editor.
 
