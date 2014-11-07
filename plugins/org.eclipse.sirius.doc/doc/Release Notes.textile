@@ -4,7 +4,11 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for all major releases of Sirius.
 
-h2(#sirius2.0.0). Changes in Sirius 2.0.3 (from Sirius 2.0.0)
+h2(#sirius2.0.3). Changes in Sirius 2.0.3 (from Sirius 2.0.0)
+
+h3. Specifier-Visible Changes
+
+* In Open menu, the menu is computed from the navigation tool label instead of its name/id.
 
 h3. API Changes
 

@@ -86,7 +86,7 @@ public final class MenuHelper {
             for (DRepresentation representation : representations) {
                 if (navDesc.getRepresentationDescription() != null && navDesc.getRepresentationDescription().equals(DialectManager.INSTANCE.getDescription(representation))) {
                     interpreter.setVariable(navDesc.getRepresentationNameVariable().getName(), representation.getName());
-                    String label = new StringBuffer().append(navDesc.getName()).append(representation.getName()).toString();
+                    String label = new StringBuffer().append(new IdentifiedElementQuery(navDesc).getLabel()).append(representation.getName()).toString();
                     if (!StringUtil.isEmpty(navDesc.getNavigationNameExpression())) {
                         try {
                             label = interpreter.evaluateString(element.getTarget(), navDesc.getNavigationNameExpression());
