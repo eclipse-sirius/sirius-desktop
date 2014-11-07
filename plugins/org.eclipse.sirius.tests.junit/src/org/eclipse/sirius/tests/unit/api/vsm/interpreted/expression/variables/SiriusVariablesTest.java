@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.vsm.interpreted.expression.variables;
 
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.tests.support.api.AbstractInterpretedExpressionTestCase;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
@@ -20,9 +22,16 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  */
 public class SiriusVariablesTest extends AbstractInterpretedExpressionTestCase {
 
-    @Override
-    protected void setUp() throws Exception {
-        setBasePackage(ViewpointPackage.eINSTANCE);
-        super.setUp();
-    }
+	@Override
+	protected void setUp() throws Exception {
+		setBasePackage(ViewpointPackage.eINSTANCE);
+		super.setUp();
+	}
+
+	@Override
+	protected EPackage getDialectPackage() {
+		// Required until Bug 450473 correction: viewpoint.ecore contains
+		// variables typed with diagram.Diagram
+		return DiagramPackage.eINSTANCE;
+	}
 }

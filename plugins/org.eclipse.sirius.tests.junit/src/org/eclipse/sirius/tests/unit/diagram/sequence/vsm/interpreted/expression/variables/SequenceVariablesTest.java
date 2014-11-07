@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.sequence.vsm.interpreted.expression.variables;
 
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.sequence.SequencePackage;
 import org.eclipse.sirius.tests.support.api.AbstractInterpretedExpressionTestCase;
 
@@ -18,11 +20,17 @@ import org.eclipse.sirius.tests.support.api.AbstractInterpretedExpressionTestCas
  * 
  * @author mporhel
  */
-public class SequenceVariablesTest extends AbstractInterpretedExpressionTestCase {
+public class SequenceVariablesTest extends
+		AbstractInterpretedExpressionTestCase {
 
-    @Override
-    protected void setUp() throws Exception {
-        setBasePackage(SequencePackage.eINSTANCE);
-        super.setUp();
-    }
+	@Override
+	protected void setUp() throws Exception {
+		setBasePackage(SequencePackage.eINSTANCE);
+		super.setUp();
+	}
+
+	@Override
+	protected EPackage getDialectPackage() {
+		return DiagramPackage.eINSTANCE;
+	}
 }
