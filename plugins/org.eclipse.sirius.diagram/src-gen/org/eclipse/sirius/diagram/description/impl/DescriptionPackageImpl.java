@@ -2029,7 +2029,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         addAnnotation(getDiagramDescription_RootExpression(), source, new String[] { "diagram", "diagram.DDiagram | the current DDiagram.", "viewpoint",
                 "diagram.DDiagram | (deprecated) the current DDiagram." });
         addAnnotation(getDiagramElementMapping_PreconditionExpression(), source, new String[] { "containerView",
-                "viewpoint.DragAndDropTarget | the view that sould contain the potential views of the checked elements.", "container", "ecore.EObject | the semantic element of containerView.",
+                "diagram.DragAndDropTarget | the view that should contain the potential views of the checked elements.", "container", "ecore.EObject | the semantic element of containerView.",
                 "viewpoint", "diagram.DSemanticDiagram | (deprecated) the current DSemanticDiagram.", "diagram", "diagram.DSemanticDiagram | the current DSemanticDiagram.", "sourceView",
                 "viewpoint.DSemanticDecorator | (edge only) the source view of the current potential edge.", "source", "ecore.EObject | (edge only) the semantic element of sourceView.", "targetView",
                 "viewpoint.DSemanticDecorator | (edge only) the target view of the current potential edge.", "target", "ecore.EObject | (edge only) the semantic element of targetView." });
