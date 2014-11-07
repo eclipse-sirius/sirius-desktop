@@ -1226,7 +1226,7 @@
           <details key="returnType" value="a boolean."/>
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables">
-          <details key="containerView" value="viewpoint.DragAndDropTarget | the view that sould contain the potential views of the checked elements."/>
+          <details key="containerView" value="diagram.DragAndDropTarget | the view that should contain the potential views of the checked elements."/>
           <details key="container" value="ecore.EObject | the semantic element of containerView."/>
           <details key="viewpoint" value="diagram.DSemanticDiagram | (deprecated) the current DSemanticDiagram."/>
           <details key="diagram" value="diagram.DSemanticDiagram | the current DSemanticDiagram."/>

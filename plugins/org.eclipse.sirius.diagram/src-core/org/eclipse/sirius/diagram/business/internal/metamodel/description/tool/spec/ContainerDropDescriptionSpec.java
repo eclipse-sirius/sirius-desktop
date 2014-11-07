@@ -58,7 +58,7 @@ public class ContainerDropDescriptionSpec extends ContainerDropDescriptionImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.description.tool.impl.ContainerDropDescriptionImpl#getBestMapping(org.eclipse.sirius.viewpoint.DragAndDropTarget,
+     * @see org.eclipse.sirius.viewpoint.description.tool.impl.ContainerDropDescriptionImpl#getBestMapping(org.eclipse.sirius.diagram.DragAndDropTarget,
      *      org.eclipse.emf.ecore.EObject)
      */
     @Override

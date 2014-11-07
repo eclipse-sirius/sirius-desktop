@@ -351,7 +351,7 @@ public final class DiagramMappingsManagerImpl implements DiagramMappingsManager,
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager#iterate(org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingsListVisitor,
-     *      org.eclipse.sirius.viewpoint.DragAndDropTarget)
+     *      org.eclipse.sirius.diagram.DragAndDropTarget)
      */
     public <T extends AbstractNodeMapping> void iterate(final MappingsListVisitor visitor, final DragAndDropTarget container) {
         if (descriptionMappings.isLayerMode()) {
