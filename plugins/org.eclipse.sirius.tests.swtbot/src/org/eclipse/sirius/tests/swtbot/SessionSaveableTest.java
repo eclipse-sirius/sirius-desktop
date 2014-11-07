@@ -59,6 +59,8 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String REPRESENTATION_INSTANCE_NAME = "p1 package entities";
 
+    private static final String SECOND_REPRESENTATION_INSTANCE_NAME = "p1 package entities 2";
+
     private static final String REPRESENTATION_NAME = "Entities";
 
     private static final String NODE_CREATION_TOOL_NAME = "Class";
@@ -216,6 +218,37 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
             PlatformUI.getPreferenceStore().setValue(IWorkbenchPreferenceConstants.PROMPT_WHEN_SAVEABLE_STILL_OPEN, oldValuePrefPromptWhenSaveableStillOpen);
         }
 
+    }
+
+    /**
+     * When closing many editors, a dialog appears to choice what to do. This
+     * test checks that when the user closes this dialog by pressing "No"
+     * button, nothing happens (sessions must not be saved and editor are
+     * closed).
+     */
+    public void testCloseAllEditorsWithoutSaving() {
+        // Open session
+        localSession = openSessionFromExistingAird(SESSION_FILE);
+        // Open representation
+        editor = openDiagram(REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME);
+        // Modify representation
+        createNode(200, 150);
+        // Open second representation
+        editor = openDiagram(REPRESENTATION_NAME, SECOND_REPRESENTATION_INSTANCE_NAME);
+        // Modify representation
+        createNode(200, 150);
+        // Close all representations
+        bot.activeEditor().bot().menu("Close All").click();
+        // Close the first save dialog.
+        bot.button("No").click();
+        // Close the second save dialog.
+        bot.button("No").click();
+        // Check that the sessions are not saved and editors are closed
+        assertEquals("The editors must be closed.", 0, editor.getReference().getPage().getEditorReferences().length);
+        editor = openDiagram(REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME);
+        assertEquals("The session must not be saved", 1, editor.getDiagramEditPart().getChildren().size());
+        editor = openDiagram(REPRESENTATION_NAME, SECOND_REPRESENTATION_INSTANCE_NAME);
+        assertEquals("The session must not be saved", 1, editor.getDiagramEditPart().getChildren().size());
     }
 
     /**
