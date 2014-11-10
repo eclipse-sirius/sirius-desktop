@@ -13,6 +13,7 @@ package org.eclipse.sirius.tests.swtbot.editor.vsm;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMEditor;
@@ -24,9 +25,8 @@ import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCCombo;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
-
-import org.eclipse.sirius.tests.swtbot.Activator;
 
 /**
  * Tests VSM field.
@@ -55,6 +55,8 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String PROPERTIES = "Properties";
 
+    private static final String LABEL = "Label";
+
     private static final String CREATE_VIEW = "_UI_CreateView_type";
 
     private static final String CREATE_EDGE_VIEW = "_UI_CreateEdgeView_type";
@@ -74,6 +76,8 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String DROP_TOOL = "_UI_TreeItemContainerDropTool_type";
 
     private static final String CREATE = "_UI_TreeItemCreationTool_type";
+
+    private SWTBotText labelText;
 
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
@@ -106,7 +110,7 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
             at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.expandNode(SWTBotTreeItem.java:283)
             at org.eclipse.sirius.tests.swtbot.support.utils.SWTBotCommonHelper.openEditor(SWTBotCommonHelper.java:138)
             at org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase.openViewpointSpecificationModel(AbstractSiriusSwtBotGefTestCase.java:1553)
-            */
+             */
             return;
         }
         String operationName = DiagramUIPlugin.getPlugin().getString(CREATE_VIEW);
@@ -213,6 +217,51 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
 
         checkMenuIsNotAvailable(TREE, dropTool, operationName);
         checkMenuIsNotAvailable(TREE, create, operationName);
+    }
+
+    /**
+     * Check that is possible to specify element with empty label expression.
+     * 
+     */
+    public void testEmptyNodeLabels() {
+        // Open VSM
+        SWTBotVSMEditor odesignEditor = openViewpointSpecificationModel(VSM);
+        String gradient = DiagramUIPlugin.getPlugin().getString(FLAT_CONTAINER_STYLE);
+        // expands the tree : Container style description
+        SWTBotTree tree = odesignEditor.bot().tree();
+        tree.expandNode(ODESIGN).expandNode(GROUP).expandNode("vsm").expandNode("Diagram").expandNode("Package").expandNode(gradient + " white to light_gray").select();
+        // set the focus on the Properties view
+        bot.viewByTitle(PROPERTIES).setFocus();
+        // set the focus on the General tab
+        SWTBotSiriusHelper.selectPropertyTabItem(LABEL);
+        // get the label expression
+        labelText = bot.viewByTitle(PROPERTIES).bot().text(0);
+        // focus on label field
+        labelText.setFocus();
+        String oldLabelExpression = labelText.getText();
+        // Set label to empty
+        labelText.setText("");
+        // set the focus on the General tab
+        SWTBotSiriusHelper.selectPropertyTabItem(GENERAL);
+        bot.saveAllEditors();
+        // set the focus on the Label tab
+        SWTBotSiriusHelper.selectPropertyTabItem(LABEL);
+        assertEquals("The label expression should be empty", "", labelText.getText());
+        closeAllEditors();
+        // Open VSM
+        odesignEditor = openViewpointSpecificationModel(VSM);
+        // expands the tree : Container style description
+        odesignEditor.bot().tree().expandNode(ODESIGN).expandNode(GROUP).expandNode("vsm").expandNode("Diagram").expandNode("Package").expandNode(gradient + " white to light_gray").select();
+        // set the focus on the Properties view
+        bot.viewByTitle(PROPERTIES).setFocus();
+        // set the focus on the Label tab
+        SWTBotSiriusHelper.selectPropertyTabItem(LABEL);
+        // get the label expression
+        labelText = bot.viewByTitle(PROPERTIES).bot().text(0);
+        assertEquals("The label expression should be empty", "", labelText.getText());
+        // set the old label expression
+        labelText.setText(oldLabelExpression);
+        bot.saveAllEditors();
     }
 
     /**
