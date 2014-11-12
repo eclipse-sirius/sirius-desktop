@@ -95,7 +95,7 @@ public class DEdgeEditPart extends AbstractDiagramEdgeEditPart {
      * @was-generated
      */
     protected Connection createConnectionFigure() {
-        return new AbstractDiagramEdgeEditPart.ViewEdgeFigure();
+        return super.createConnectionFigure();
     }
 
     /**
@@ -119,7 +119,8 @@ public class DEdgeEditPart extends AbstractDiagramEdgeEditPart {
 
     @Override
     protected void deactivateFigure() {
-        // Can happen when semantic element associated to the edge has been deleted
+        // Can happen when semantic element associated to the edge has been
+        // deleted
         if (getRoot() == null || figure.getParent() != getLayer(CONNECTION_LAYER)) {
             return;
         }

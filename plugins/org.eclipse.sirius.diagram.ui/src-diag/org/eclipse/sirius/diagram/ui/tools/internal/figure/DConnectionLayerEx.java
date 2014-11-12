@@ -13,11 +13,13 @@ package org.eclipse.sirius.diagram.ui.tools.internal.figure;
 import org.eclipse.draw2d.ConnectionRouter;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.figures.ConnectionLayerEx;
 import org.eclipse.sirius.diagram.ui.tools.internal.routers.DForestRouter;
+import org.eclipse.sirius.diagram.ui.tools.internal.routers.SiriusRectilinearRouter;
 
 /**
- * The connection layer for Designer. This layer uses the
- * {@link org.eclipse.sirius.diagram.ui.tools.internal.routers.DTreeRouter}
- * for tree connections.
+ * The connection layer for Sirius. This layer uses the
+ * {@link org.eclipse.sirius.diagram.ui.tools.internal.routers.DTreeRouter} for
+ * tree connections and the {@link SiriusRectilinearRouter} for rectilinear
+ * connections.
  * 
  * @author ymortier
  */
@@ -25,6 +27,8 @@ public class DConnectionLayerEx extends ConnectionLayerEx {
 
     /** The tree router to use. */
     private DForestRouter treeRouter;
+
+    private ConnectionRouter rectilinearRouter;
 
     /**
      * {@inheritDoc}
@@ -38,6 +42,7 @@ public class DConnectionLayerEx extends ConnectionLayerEx {
         }
         return treeRouter;
     }
+
     // This code has been disabled as the layouting results were not nice enough
     // for the customer
     // /**
@@ -47,13 +52,13 @@ public class DConnectionLayerEx extends ConnectionLayerEx {
     // public ConnectionRouter getObliqueRouter() {
     // return new BorderItemObliqueRouterSpec();
     // }
-    //
-    // /**
-    // * {@inheritDoc}
-    // */
-    // @Override
-    // public ConnectionRouter getRectilinearRouter() {
-    // return new BorderItemRectilinearRouterSpec();
-    // }
+
+    @Override
+    public ConnectionRouter getRectilinearRouter() {
+        if (rectilinearRouter == null)
+            rectilinearRouter = new SiriusRectilinearRouter();
+
+        return rectilinearRouter;
+    }
 
 }
