@@ -42,7 +42,10 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.diagram.description.CenteringStyle;
 import org.eclipse.sirius.diagram.description.tool.RequestDescription;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramEdgeEditPartOperation;
@@ -212,8 +215,21 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         if (element != null && element.eResource() != null && getParent() != null) {
             refresh();
         }
-        if (resolveSemanticElement() instanceof DEdge) {
+        if (element instanceof DEdge) {
+            updateCenteringProperty((DEdge) element, notification);
             super.handleNotificationEvent(notification);
+        }
+    }
+
+    private void updateCenteringProperty(DEdge element, Notification notification) {
+        if (DiagramPackage.eINSTANCE.getEdgeStyle_Centered() == notification.getFeature()) {
+            EdgeStyle edgeStyle = element.getOwnedStyle();
+            if (edgeStyle != null) {
+                IFigure figure = getFigure();
+                if (figure instanceof ViewEdgeFigure) {
+                    ((ViewEdgeFigure) figure).setCentering(edgeStyle.getCentered());
+                }
+            }
         }
     }
 
@@ -567,6 +583,8 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
 
         private SiriusWrapLabel fFigureViewEdgeEndNameFigure;
 
+        private CenteringStyle centeringStyle;
+
         /**
          * Constructor.
          */
@@ -586,6 +604,50 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
             createCenterLabelFigure(element);
             createBeginLabelFigure(element);
             createEndLabelFigure(element);
+            initCentering(element);
+        }
+
+        private void initCentering(EObject element) {
+            if (element instanceof DEdge) {
+                EdgeStyle edgeStyle = ((DEdge) element).getOwnedStyle();
+                if (edgeStyle != null) {
+                    setCentering(edgeStyle.getCentered());
+                }
+            }
+
+        }
+
+        private void setCentering(CenteringStyle centering) {
+            this.centeringStyle = centering;
+        }
+
+        /**
+         * Get the centeringStyle value.
+         * 
+         * @return the {@link CenteringStyle}.
+         */
+        public CenteringStyle getCenteringStyle() {
+            return this.centeringStyle;
+        }
+
+        /**
+         * Returns whether the connection is centered on its source or not.
+         * 
+         * @return true if the connection is centered on its source or both.
+         *         False otherwise.
+         */
+        public boolean isSourceCentered() {
+            return CenteringStyle.BOTH == getCenteringStyle() || CenteringStyle.SOURCE == getCenteringStyle();
+        }
+
+        /**
+         * Returns whether the connection is centered on its target or not.
+         * 
+         * @return true if the connection is centered on its target or both.
+         *         False otherwise.
+         */
+        public boolean isTargetCentered() {
+            return CenteringStyle.BOTH == getCenteringStyle() || CenteringStyle.TARGET == getCenteringStyle();
         }
 
         /**

@@ -74,13 +74,13 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
 
     private Edge edge;
 
-    private Point existingSourceAnchorAbsoluteLocation;
+    private PrecisionPoint existingSourceAnchorAbsoluteLocation;
 
-    private Point existingTargetAnchorAbsoluteLocation;
+    private PrecisionPoint existingTargetAnchorAbsoluteLocation;
 
-    private Point newTargetAnchorAbsoluteLocation;
+    private PrecisionPoint newTargetAnchorAbsoluteLocation;
 
-    private Point newSourceAnchorAbsoluteLocation;
+    private PrecisionPoint newSourceAnchorAbsoluteLocation;
 
     private ConnectionEditPart connectionEditPart;
 
@@ -506,9 +506,8 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
      *            the anchor location.
      * @return the anchor absolute location.
      */
-    private Point getAbsoluteAnchorCoordinates(Rectangle absoluteBounds, PrecisionPoint precisionPoint) {
-        return new Point((int) (absoluteBounds.x() + Math.round(absoluteBounds.width() * precisionPoint.preciseX())), (int) (absoluteBounds.y() + Math.round(absoluteBounds.height()
-                * precisionPoint.preciseY())));
+    private PrecisionPoint getAbsoluteAnchorCoordinates(Rectangle absoluteBounds, PrecisionPoint precisionPoint) {
+        return new PrecisionPoint(absoluteBounds.x() + (absoluteBounds.width() * precisionPoint.preciseX()), absoluteBounds.y() + (absoluteBounds.height() * precisionPoint.preciseY()));
 
     }
 

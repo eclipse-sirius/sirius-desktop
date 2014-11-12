@@ -19,13 +19,19 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.NodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
+import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.EdgeStyle;
+import org.eclipse.sirius.diagram.description.CenteringStyle;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
@@ -74,6 +80,10 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String REPRESENTATION_NAME_RESIZE = "resizeTest";
 
     private static final String REPRESENTATION_NAME_RESIZE_2 = "resizeTest2";
+
+    private static final String REPRESENTATION_NAME_AUTO_SIZE = "auto-size";
+
+    private static final String REPRESENTATION_NAME_RECTILINEAR_CASES = "rectilinearCases";
 
     private static final String RECTILINEAR_STYLE_ROUTING = "Rectilinear Style Routing";
 
@@ -155,8 +165,6 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         DEdgeEditPart editPart = getSingleDEdgeFrom((NodeEditPart) srcEditPart.part());
 
         assertEdgeHasExpectedSrcAnchor(editPart, (NodeEditPart) srcEditPart.part(), new PrecisionPoint(0.5, 0.5));
-        // assertEdgeHasExpectedSrcAnchor(editPart, srcEditPart, new
-        // PrecisionPoint(0.5, 0.5), new PrecisionPoint(0.5, 1));
     }
 
     /**
@@ -490,6 +498,104 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
+     * Test that the arrange all keep the edge centered.
+     */
+    public void testArrangeAllOnStraightEdges() {
+        openDiagram(REPRESENTATION_NAME_MOVING);
+        editor.clickContextMenu("Arrange All");
+        SWTBotUtils.waitAllUiEvents();
+
+        SWTBotGefConnectionEditPart edge3BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge3", DEdgeEditPart.class);
+        assertEdgeHasExpectedSrcAnchor(edge3BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
+
+        SWTBotGefConnectionEditPart edge1BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge1", DEdgeEditPart.class);
+        assertEdgeHasExpectedSrcAnchor(edge1BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
+
+        SWTBotGefConnectionEditPart edge2BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge2", DEdgeEditPart.class);
+        assertEdgeHasExpectedTgtAnchor(edge2BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
+
+        SWTBotGefConnectionEditPart edge4BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge4", DEdgeEditPart.class);
+        assertEdgeHasExpectedTgtAnchor(edge4BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
+
+        SWTBotGefConnectionEditPart edge5BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge5", DEdgeEditPart.class);
+        assertEdgeHasExpectedSrcAnchor(edge5BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
+
+        SWTBotGefConnectionEditPart edge6BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge6", DEdgeEditPart.class);
+        assertEdgeHasExpectedTgtAnchor(edge6BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
+
+    }
+
+    /**
+     * Test that rectilinear edges with two or tree bend-points are centered for
+     * both ends when changing the style from NONE to BOTH.
+     */
+    public void testRectilinearSpecificCases() {
+        openDiagram(REPRESENTATION_NAME_RECTILINEAR_CASES);
+        SWTBotUtils.waitAllUiEvents();
+
+        SWTBotGefConnectionEditPart edge3BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge3", DEdgeEditPart.class);
+        centerEdgeEnds(edge3BotGefConnectionEditPart);
+        assertEdgeHasExpectedSrcAnchor(edge3BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
+        assertEdgeHasExpectedTgtAnchor(edge3BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
+
+        SWTBotGefConnectionEditPart edge1BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge1", DEdgeEditPart.class);
+        centerEdgeEnds(edge1BotGefConnectionEditPart);
+        assertEdgeHasExpectedSrcAnchor(edge1BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
+        assertEdgeHasExpectedTgtAnchor(edge1BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
+
+        SWTBotGefConnectionEditPart edge2BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge2", DEdgeEditPart.class);
+        centerEdgeEnds(edge2BotGefConnectionEditPart);
+        assertEdgeHasExpectedTgtAnchor(edge2BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
+        assertEdgeHasExpectedSrcAnchor(edge2BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
+
+        SWTBotGefConnectionEditPart edge4BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge4", DEdgeEditPart.class);
+        centerEdgeEnds(edge4BotGefConnectionEditPart);
+        assertEdgeHasExpectedTgtAnchor(edge4BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
+        assertEdgeHasExpectedSrcAnchor(edge4BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
+
+    }
+
+    private void centerEdgeEnds(SWTBotGefConnectionEditPart connectionEditPart) {
+
+        final DEdgeEditPart editPart = (DEdgeEditPart) connectionEditPart.part();
+        TransactionalEditingDomain transactionalEditingDomain = editPart.getEditingDomain();
+        transactionalEditingDomain.getCommandStack().execute(new RecordingCommand(transactionalEditingDomain) {
+            @Override
+            protected void doExecute() {
+                EdgeStyle edgeStyle = ((DEdge) ((Edge) editPart.getModel()).getElement()).getOwnedStyle();
+                edgeStyle.setCentered(CenteringStyle.BOTH);
+            }
+        });
+
+        bot.waitUntil(new WaitEdgeCenteringCondition((ViewEdgeFigure) connectionEditPart.part().getFigure()));
+    }
+
+    /**
+     * Test that the arrange all keep the edge centered.
+     */
+    public void testArrangeAllOnRectilinearEdges() {
+        openDiagram(REPRESENTATION_NAME_AUTO_SIZE);
+
+        editor.clickContextMenu("Arrange All");
+        SWTBotUtils.waitAllUiEvents();
+
+        SWTBotGefConnectionEditPart edge3BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge3", DEdgeEditPart.class);
+        SWTBotGefConnectionEditPart edge1BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge1", DEdgeEditPart.class);
+        SWTBotGefConnectionEditPart edge2BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge2", DEdgeEditPart.class);
+        SWTBotGefConnectionEditPart edge4BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge4", DEdgeEditPart.class);
+        SWTBotGefConnectionEditPart edge5BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge5", DEdgeEditPart.class);
+        SWTBotGefConnectionEditPart edge6BotGefConnectionEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge6", DEdgeEditPart.class);
+
+        assertEdgeHasExpectedSrcAnchor(edge3BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
+        assertEdgeHasExpectedSrcAnchor(edge1BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
+        assertEdgeHasExpectedTgtAnchor(edge2BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
+        assertEdgeHasExpectedTgtAnchor(edge4BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
+        assertEdgeHasExpectedSrcAnchor(edge5BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
+        assertEdgeHasExpectedTgtAnchor(edge6BotGefConnectionEditPart, new PrecisionPoint(0.5, 0.5));
+
+    }
+
+    /**
      * 
      * @param gefConnectionEditPart
      * @param routingStyle
@@ -715,6 +821,47 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         @Override
         public String getFailureMessage() {
             return "the figure should be resized";
+        }
+
+    }
+
+    /**
+     * Condition to wait until an edge is centered on both ends.
+     * 
+     * @author fbarbin
+     *
+     */
+    private class WaitEdgeCenteringCondition extends DefaultCondition {
+
+        private ViewEdgeFigure figure;
+
+        /**
+         * Constructor.
+         * 
+         * @param figure
+         *            the edge figure.
+         */
+        public WaitEdgeCenteringCondition(ViewEdgeFigure figure) {
+            this.figure = figure;
+        }
+
+        /*
+         * (non-Javadoc)
+         * @see org.eclipse.swtbot.swt.finder.waits.ICondition#test()
+         */
+        @Override
+        public boolean test() throws Exception {
+            return figure.isSourceCentered() && figure.isTargetCentered();
+        }
+
+        /*
+         * (non-Javadoc)
+         * @see
+         * org.eclipse.swtbot.swt.finder.waits.ICondition#getFailureMessage()
+         */
+        @Override
+        public String getFailureMessage() {
+            return "the edge should be centered for both source and target";
         }
 
     }
