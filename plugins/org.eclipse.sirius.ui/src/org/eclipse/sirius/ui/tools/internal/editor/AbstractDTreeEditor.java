@@ -27,7 +27,6 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.action.EditingDomainActionBarContributor;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
@@ -70,9 +69,7 @@ import org.eclipse.ui.IPageListener;
 import org.eclipse.ui.IReusableEditor;
 import org.eclipse.ui.ISaveablePart2;
 import org.eclipse.ui.ISaveablesSource;
-import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
@@ -86,10 +83,9 @@ import org.eclipse.ui.views.properties.tabbed.ITabbedPropertySheetPageContributo
  * Clients may extend this class.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
- * 
  */
-public abstract class AbstractDTreeEditor extends EditorPart implements ISelectionListener, DialectEditor, IViewerProvider, ITabbedPropertySheetPageContributor, IEditingDomainProvider,
-        IReusableEditor, SessionListener, ISaveablesSource, IPageListener {
+public abstract class AbstractDTreeEditor extends EditorPart implements DialectEditor, IViewerProvider, ITabbedPropertySheetPageContributor, IEditingDomainProvider, IReusableEditor, SessionListener,
+        ISaveablesSource, IPageListener {
 
     /** The PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY icon descriptor. */
     private static final ImageDescriptor LOCK_BY_ME_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation
@@ -412,24 +408,6 @@ public abstract class AbstractDTreeEditor extends EditorPart implements ISelecti
     }
 
     /**
-     * {@inheritDoc}
-     */
-    public void selectionChanged(final IWorkbenchPart part, final ISelection selection) {
-        // If not the active editor, ignore selection changed.
-        if (this.equals(getSite().getPage().getActiveEditor())) {
-            // Do something for the new selections?
-            if (!part.equals(this)) {
-                // Try to reveal the selection if this selection is made from
-                // another part
-                // Warning, we get the semanticElements in selection and not the
-                // DLine ...
-                // search the DLine with the semanticElements ...
-                // viewer.setSelection(selection, true);
-            }
-        }
-    }
-
-    /**
      * Retrieves the descriptor for this editor.
      * 
      * @return the editor descriptor
@@ -531,9 +509,6 @@ public abstract class AbstractDTreeEditor extends EditorPart implements ISelecti
 
         isClosing = true;
         SessionManager.INSTANCE.removeSessionsListener(sessionManagerListener);
-
-        // Remove a listener to selection
-        getSite().getPage().removeSelectionListener(this);
 
         // Disposing the UndoredoActionHandler
         if (this.undoRedoActionHandler != null) {

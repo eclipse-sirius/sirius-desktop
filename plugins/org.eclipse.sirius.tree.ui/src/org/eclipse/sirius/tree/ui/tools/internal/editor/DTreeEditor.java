@@ -259,8 +259,6 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
             final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(anyEObject);
             InterpreterRegistry.prepareImportsFromSession(interpreter, SessionManager.INSTANCE.getSession(anyEObject));
         }
-        // add a listener to selection
-        getSite().getPage().addSelectionListener(this);
         // Add the CreateTreeItem menu of the toolbar
         ((DTreeActionBarContributor) getEditorSite().getActionBarContributor()).addCreateTreeItemMenu(((DTreeViewerManager) this.getTableViewer()).getCreateTreeItemMenu());
 

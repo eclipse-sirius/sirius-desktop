@@ -383,8 +383,6 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
             final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(anyEObject);
             InterpreterRegistry.prepareImportsFromSession(interpreter, SessionManager.INSTANCE.getSession(anyEObject));
         }
-        // add a listener to selection
-        getSite().getPage().addSelectionListener(this);
 
         refreshAtOpeningActivator = new RefreshAtOpeningActivator(session, this);
         getSite().getPage().addPartListener(refreshAtOpeningActivator);
