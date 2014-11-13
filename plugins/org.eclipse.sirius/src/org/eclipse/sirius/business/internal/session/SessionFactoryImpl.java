@@ -11,7 +11,6 @@
 package org.eclipse.sirius.business.internal.session;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Collections;
 
 import org.eclipse.core.runtime.CoreException;
@@ -87,7 +86,7 @@ public final class SessionFactoryImpl implements SessionFactory {
         }
 
         // Create or load the session.
-        boolean alreadyExistingResource = exists(sessionResourceURI, transactionalEditingDomain.getResourceSet());
+        boolean alreadyExistingResource = transactionalEditingDomain.getResourceSet().getURIConverter().exists(sessionResourceURI, null);
         Session session = null;
         if (alreadyExistingResource) {
             session = loadSessionModelResource(sessionResourceURI, transactionalEditingDomain, monitor);
@@ -95,37 +94,6 @@ public final class SessionFactoryImpl implements SessionFactory {
             session = createSessionResource(sessionResourceURI, transactionalEditingDomain, monitor);
         }
         return session;
-    }
-
-    /**
-     * Used to check if a Resource exists at this URI with EMF 2.3 since from
-     * EMF 2.4 URIConverter.exists(URI) can be used.
-     * 
-     * @param sessionResourceURI
-     *            the URI of the Resource to which checks existence
-     * @param resourceSet
-     * @return true if a Resource exists at this URI
-     */
-    private boolean exists(URI sessionResourceURI, ResourceSet resourceSet) {
-        boolean exists = false;
-        InputStream inputStream = null;
-        try {
-            inputStream = resourceSet.getURIConverter().createInputStream(sessionResourceURI);
-            if (inputStream != null) {
-                exists = true;
-            }
-        } catch (IOException e) {
-            // Do nothing, we consider that the resource does not exist
-        } finally {
-            if (inputStream != null) {
-                try {
-                    inputStream.close();
-                } catch (IOException e) {
-                    // Do nothing, we consider that the resource does not exist
-                }
-            }
-        }
-        return exists;
     }
 
     private Session loadSessionModelResource(URI sessionResourceURI, TransactionalEditingDomain transactionalEditingDomain, IProgressMonitor monitor) throws CoreException {
