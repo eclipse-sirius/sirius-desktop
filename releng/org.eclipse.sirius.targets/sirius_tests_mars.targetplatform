@@ -5,7 +5,7 @@ include "modules/query-legacy.tpd"
 
 with source, requirements
 
-location Sirius4Tests "http://download.eclipse.org/sirius/updates/nightly/latest/luna" {
+location Sirius4Tests "http://download.eclipse.org/sirius/updates/nightly/latest/mars" {
         org.eclipse.sirius.doc.feature.feature.group lazy
         org.eclipse.sirius.runtime.acceleo.feature.group lazy
         org.eclipse.sirius.runtime.feature.group lazy
@@ -20,6 +20,6 @@ location Sirius4Tests "http://download.eclipse.org/sirius/updates/nightly/latest
         org.eclipse.sirius.tests.support.feature.group lazy
 }
 
-location Eclipse-Luna "http://download.eclipse.org/releases/luna" {
-	org.eclipse.uml2.sdk.feature.group [5.0.0,5.1.0)
+location Eclipse-Mars "http://download.eclipse.org/releases/mars" {
+	org.eclipse.uml2.sdk.feature.group lazy
 }
