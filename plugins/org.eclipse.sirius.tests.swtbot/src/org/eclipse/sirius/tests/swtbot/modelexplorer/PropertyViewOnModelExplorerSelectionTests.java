@@ -13,18 +13,19 @@ package org.eclipse.sirius.tests.swtbot.modelexplorer;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.NumberOfOpenedEditorsCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.TreeItemTextCondition;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerView;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
-
-import org.eclipse.sirius.tests.swtbot.Activator;
-import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 
 /**
  * Test the use of property view on ModelExplorerView {@link EObject} selection.
@@ -56,7 +57,7 @@ public class PropertyViewOnModelExplorerSelectionTests extends AbstractSiriusSwt
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, REPRESENTATIONS_RESOURCE_NAME);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource, true);
-        
+
         SWTBotView modelExplorerView = bot.viewById(IModelExplorerView.ID);
         modelExplorerView.setFocus();
         modelExplorerViewBot = modelExplorerView.bot();
@@ -110,6 +111,21 @@ public class PropertyViewOnModelExplorerSelectionTests extends AbstractSiriusSwt
         newEClass1TreeItemBot.select();
         bot.waitUntil(new TreeItemTextCondition(newEClass1TreeItemBot, newName));
         assertEquals("The semantic element rename through properties view should impact the label displayed in the Model Explorer view", newName, newEClass1TreeItemBot.getText());
+    }
+
+    /**
+     * Ensure that double click on a file handled by a transient session does
+     * not opens a second session.
+     */
+    public void testOpenTransientSession() {
+        SWTBotTreeItem projectTreeItemBot = modelExplorerViewBot.tree().expandNode(getProjectName(), true);
+        SWTBotTreeItem modelResourceTreeItemBot = projectTreeItemBot.getNode(SEMANTIC_RESOURCE_NAME);
+        modelResourceTreeItemBot.select();
+        SWTBotUtils.clickContextMenu(modelResourceTreeItemBot, "Sirius Ecore Editor");
+        bot.waitUntil(new NumberOfOpenedEditorsCondition(bot, 1));
+        modelResourceTreeItemBot.select().doubleClick();
+        assertEquals("Double click on the opened model should not open a second editor", 1, bot.editors().size());
+        assertEquals("The double click action should not open a second session", 1, localSession.getOpenedSession().getAllSessionResources().size());
     }
 
     private void assertEmptyPropertiesView(boolean emptyPropertiesView) {
