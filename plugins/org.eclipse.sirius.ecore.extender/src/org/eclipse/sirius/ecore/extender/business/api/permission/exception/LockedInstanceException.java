@@ -11,6 +11,8 @@
 package org.eclipse.sirius.ecore.extender.business.api.permission.exception;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 
 /**
  * {@link Exception} thrown when an instance nobody should be able to change
@@ -35,7 +37,7 @@ public class LockedInstanceException extends RuntimeException {
      *            the elements that user tried to modify
      */
     public LockedInstanceException(final EObject... lockedElements) {
-        super(PERMISSION_ISSUE_MESSAGE + lockedElements);
+        super(PERMISSION_ISSUE_MESSAGE + getText(lockedElements));
         this.lockedElements = lockedElements;
     }
 
@@ -48,6 +50,26 @@ public class LockedInstanceException extends RuntimeException {
     public LockedInstanceException(final String message) {
         super(message);
         lockedElements = null;
+    }
+
+    private static String getText(EObject[] eObjects) {
+        String text = "";
+        if (eObjects != null) {
+            ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+            for (int i = 0; i < eObjects.length; i++) {
+                EObject eObject = eObjects[i];
+                if (eObject != null) {
+                    IItemLabelProvider itemLabelProvider = (IItemLabelProvider) adapterFactory.adapt(eObject, IItemLabelProvider.class);
+                    if (itemLabelProvider != null) {
+                        text += itemLabelProvider.getText(eObject) + " (" + eObject + ")";
+                        if (i != eObjects.length - 1) {
+                            text += ", ";
+                        }
+                    }
+                }
+            }
+        }
+        return text;
     }
 
     /**
