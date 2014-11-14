@@ -52,7 +52,7 @@ public class RefreshSiriusElementEditPolicy extends AbstractEditPolicy {
     @Override
     public Command getCommand(final Request request) {
         if (request.getType() != null && request.getType().equals(RequestConstants.REQ_REFRESH_VIEWPOINT)) {
-            if (this.getHost() instanceof IGraphicalEditPart) {
+            if (this.getHost() instanceof IGraphicalEditPart && getHost().isActive()) {
                 final IGraphicalEditPart gmfEditPart = (IGraphicalEditPart) this.getHost();
                 final EObject element = gmfEditPart.resolveSemanticElement();
                 if (element instanceof DRefreshable) {

@@ -96,9 +96,11 @@ public final class AbstractNodeMappingSpecOperations {
         final Collection<EObject> targetCandidates = Lists.newArrayList();
         final ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(eObj);
         final Session session = SessionManager.INSTANCE.getSession(eObj);
-        for (final Resource resource : session.getSemanticResources()) {
-            for (final EObject root : resource.getContents()) {
-                targetCandidates.addAll(accessor.eAllContents(root, mapping.getDomainClass()));
+        if (session != null) {
+            for (final Resource resource : session.getSemanticResources()) {
+                for (final EObject root : resource.getContents()) {
+                    targetCandidates.addAll(accessor.eAllContents(root, mapping.getDomainClass()));
+                }
             }
         }
         return targetCandidates.iterator();
@@ -151,7 +153,7 @@ public final class AbstractNodeMappingSpecOperations {
 
     private static Iterator<EObject> getSemanticIterator(final AbstractNodeMapping mapping, final EObject context, final EObject diagram, final EObject containerView) {
         final String expression = mapping.getSemanticCandidatesExpression();
-        if (expression != null && !StringUtil.isEmpty(expression.trim())) {
+        if (context != null && context.eResource() != null && expression != null && !StringUtil.isEmpty(expression.trim())) {
             final IInterpreter acceleoInterpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(context);
             final RuntimeLoggerInterpreter safeInterpreter = RuntimeLoggerManager.INSTANCE.decorate(acceleoInterpreter);
 
