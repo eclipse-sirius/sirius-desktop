@@ -25,7 +25,6 @@ import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.internal.movida.ViewpointSelection;
-import org.eclipse.sirius.business.internal.query.DAnalysisesInternalQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -36,7 +35,6 @@ import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Function;
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
@@ -215,9 +213,6 @@ public final class DAnalysisSessionHelper {
             }
         }
 
-        // we also add the DAnalyses located on a CDO Repository that are
-        // children of the candidates
-        candidates.addAll(getRemoteDAnalyses(candidates));
         final DAnalysis analysis = DAnalysisSessionHelper.selectAnalysis(viewpoint, candidates, analysisSelector, representation);
 
         DRepresentationContainer freeContainer = null;
@@ -243,32 +238,6 @@ public final class DAnalysisSessionHelper {
 
         return freeContainer;
 
-    }
-
-    /**
-     * As a DAnalysis located on a CDO Repository can be a candidate even if the
-     * searched viewpoint is not activated, this method returns all the remote
-     * DAnalysis that are children of the already validated candidates.
-     * 
-     * @param candidates
-     *            the local DAnalysises that have the searched viewpoint
-     *            selected
-     * @return all DAnalysises located on a CDO Repository that are children of
-     *         the given candidates, and hense are also legitimate candidates
-     */
-    private static Collection<? extends DAnalysis> getRemoteDAnalyses(Collection<DAnalysis> candidates) {
-        if (!candidates.isEmpty()) {
-            return Sets.newLinkedHashSet(Iterables.filter(new DAnalysisesInternalQuery(candidates).getAllAnalyses(), new Predicate<DAnalysis>() {
-
-                public boolean apply(DAnalysis input) {
-                    if (URIQuery.CDO_URI_SCHEME.equals(input.eResource().getURI().scheme())) {
-                        return true;
-                    }
-                    return false;
-                }
-            }));
-        }
-        return Sets.newLinkedHashSet();
     }
 
     /**
