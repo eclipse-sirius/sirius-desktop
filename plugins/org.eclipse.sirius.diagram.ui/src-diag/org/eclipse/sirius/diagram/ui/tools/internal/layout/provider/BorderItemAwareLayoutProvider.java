@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +27,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.draw2d.geometry.Vector;
@@ -80,6 +82,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.operation.RegionContainerUpdateLayoutOperation;
+import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
@@ -88,6 +91,9 @@ import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.ChangeBoundRequestRecorder;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.ArrangeAllWithAutoSize;
 import org.eclipse.sirius.diagram.ui.tools.internal.part.SiriusDiagramGraphicalViewer;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 import com.google.common.base.Predicate;
@@ -696,8 +702,107 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
             // compute locations (record in
             cc = (CompoundCommand) layoutBorderItems(selectedObjects, nbIterations + 1, elementsToKeepFixed);
         }
+        // Keep only first and last points of edges linked to at least one of
+        // moved border nodes.
+        for (Entry<View, List<Request>> requestByView : getViewsToChangeBoundsRequest().entrySet()) {
+            View view = requestByView.getKey();
+            // Get corresponding edit part
+            Option<IBorderItemEditPart> optionalPart = getCorrespondingEditPart(view);
+            if (optionalPart.some()) {
+                // In theory we are always in this case...
+                IBorderItemEditPart borderItemEditPart = optionalPart.get();
+                List<Request> requests = requestByView.getValue();
+                if (!(view.getSourceEdges().isEmpty() && view.getTargetEdges().isEmpty())) {
+                    // For each edge starting from this view
+                    for (Iterator<Edge> iterator = Iterables.filter(view.getSourceEdges(), Edge.class).iterator(); iterator.hasNext(); /* */) {
+                        resetBendpoints(iterator.next(), cc, borderItemEditPart, requests, true);
+                    }
+                    // For each edge ending to this view
+                    for (Iterator<Edge> iterator = Iterables.filter(view.getTargetEdges(), Edge.class).iterator(); iterator.hasNext(); /* */) {
+                        resetBendpoints(iterator.next(), cc, borderItemEditPart, requests, false);
+                    }
+                }
+            }
+        }
         clearBorderItemLocations();
         return cc;
+    }
+
+    /**
+     * Add command to the <code>cc</code> to reset the bendpoints of the current
+     * <code>edge</code> if needed.
+     * 
+     * @param edge
+     *            The edge to deal with
+     * @param cc
+     *            CompoundCommand to complete to reset bendpoints of
+     *            <code>edge</code> if needed.
+     * @param borderItemEditPart
+     *            The moved border node edit part (source of edge if
+     *            <code>sourceEdge</code> equals true, target of edge
+     *            otherwise).
+     * @param requests
+     *            Request concerning the moved edit part
+     * @param sourceEdge
+     *            true if the <code>borderItemEditPart</code> is the source of
+     *            the edge, false otherwise.
+     */
+    public void resetBendpoints(Edge edge, CompoundCommand cc, IBorderItemEditPart borderItemEditPart, List<Request> requests, boolean sourceEdge) {
+        Point firstAnchorLocation;
+        if (sourceEdge) {
+            firstAnchorLocation = GraphicalHelper.getAnchorPoint(borderItemEditPart, edge.getSourceAnchor());
+        } else {
+            firstAnchorLocation = GraphicalHelper.getAnchorPoint(borderItemEditPart, edge.getTargetAnchor());
+        }
+        // The first extremity of the edge has been moved, so we must
+        // apply the same move delta on the corresponding anchor.
+        for (Request request : requests) {
+            if (request instanceof ChangeBoundsRequest) {
+                firstAnchorLocation.translate(((ChangeBoundsRequest) request).getMoveDelta());
+            }
+        }
+        View edgeOtherExtremityView;
+        if (sourceEdge) {
+            edgeOtherExtremityView = edge.getTarget();
+        } else {
+            edgeOtherExtremityView = edge.getSource();
+        }
+        Option<? extends GraphicalEditPart> optionalOtherExtremityPart = getCorrespondingEditPart(edgeOtherExtremityView);
+        if (!(optionalOtherExtremityPart.some())) {
+            optionalOtherExtremityPart = GMFHelper.getGraphicalEditPart(edgeOtherExtremityView);
+        }
+        if (optionalOtherExtremityPart.some()) {
+            Point secondAnchorLocation;
+            if (sourceEdge) {
+                secondAnchorLocation = GraphicalHelper.getAnchorPoint(optionalOtherExtremityPart.get(), edge.getTargetAnchor());
+            } else {
+                secondAnchorLocation = GraphicalHelper.getAnchorPoint(optionalOtherExtremityPart.get(), edge.getSourceAnchor());
+            }
+            boolean otherExtremityMove = getViewsToChangeBoundsRequest().keySet().contains(edgeOtherExtremityView);
+            if (otherExtremityMove) {
+                // The other extremity of the edge has also moved, so the
+                // future second location must be computed.
+                for (Request request : getViewsToChangeBoundsRequest().get(edgeOtherExtremityView)) {
+                    if (request instanceof ChangeBoundsRequest) {
+                        secondAnchorLocation.translate(((ChangeBoundsRequest) request).getMoveDelta());
+                    }
+                }
+            }
+            if (sourceEdge || (!sourceEdge && !otherExtremityMove)) {
+                // in case of targetEdge, if source of the edge has also moved
+                // we ignore
+                // this edge because it has also handled with sourceEdges of
+                // opposite node.
+                TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(edge.getElement());
+                SetConnectionBendpointsCommand resetBendpoinsCmd = new SetConnectionBendpointsCommand(editingDomain);
+                resetBendpoinsCmd.setEdgeAdapter(new EObjectAdapter(edge));
+                PointList newPointList = new PointList(2);
+                newPointList.addPoint(firstAnchorLocation);
+                newPointList.addPoint(secondAnchorLocation);
+                resetBendpoinsCmd.setNewPointList(newPointList, firstAnchorLocation, secondAnchorLocation);
+                cc.add(new ICommandProxy(resetBendpoinsCmd));
+            }
+        }
     }
 
     /**
@@ -742,6 +847,15 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      */
     private void clearBorderItemLocations() {
         previousIterationDatasbyEditPart.clear();
+    }
+
+    private Option<IBorderItemEditPart> getCorrespondingEditPart(View view) {
+        for (IBorderItemEditPart borderItemEditPart : previousIterationDatasbyEditPart.keySet()) {
+            if (view.equals(borderItemEditPart.getModel())) {
+                return Options.newSome(borderItemEditPart);
+            }
+        }
+        return Options.newNone();
     }
 
     /**

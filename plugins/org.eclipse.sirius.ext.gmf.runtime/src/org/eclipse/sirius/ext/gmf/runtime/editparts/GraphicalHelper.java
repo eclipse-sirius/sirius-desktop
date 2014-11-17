@@ -297,7 +297,7 @@ public final class GraphicalHelper {
      *            The anchor
      * @return The corresponding point to this anchor
      */
-    public static Point getAnchorPoint(IGraphicalEditPart parent, Anchor anchor) {
+    public static Point getAnchorPoint(GraphicalEditPart parent, Anchor anchor) {
         if (anchor instanceof IdentityAnchor) {
             return getAnchorPoint(parent, (IdentityAnchor) anchor);
         } else {
@@ -315,7 +315,7 @@ public final class GraphicalHelper {
      *            The anchor
      * @return The corresponding point to this anchor
      */
-    public static Point getAnchorPoint(IGraphicalEditPart parent, IdentityAnchor anchor) {
+    public static Point getAnchorPoint(GraphicalEditPart parent, IdentityAnchor anchor) {
         PrecisionRectangle bounds;
         if (parent.getFigure() instanceof HandleBounds) {
             bounds = new PrecisionRectangle(((HandleBounds) parent.getFigure()).getHandleBounds());
