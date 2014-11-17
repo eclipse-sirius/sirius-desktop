@@ -58,6 +58,15 @@ public class CanonicalDBorderItemLocator {
     private int currentSide = PositionConstants.WEST;
 
     /**
+     * The parent bounds can be set with
+     * {@link #setParentBorderBounds(Rectangle)} if it is known or if the
+     * CanonicalDBorderItemLocator must consider a different bounds. If this
+     * bounds is not set, it will be computed at the first
+     * {@link #getParentBorder()} call.
+     */
+    private Rectangle parentBorder;
+
+    /**
      * Default constructor.
      * 
      * @param containerNode
@@ -711,8 +720,23 @@ public class CanonicalDBorderItemLocator {
     }
 
     private Rectangle getParentBorder() {
-        NodeQuery nodeQuery = new NodeQuery(container);
-        return nodeQuery.getHandleBounds();
+        if (parentBorder == null) {
+            NodeQuery nodeQuery = new NodeQuery(container);
+            parentBorder = nodeQuery.getHandleBounds();
+        }
+        return parentBorder;
+    }
+
+    /**
+     * Set the parent border bounds if it is known. If this bounds is not set,
+     * it will be computed at the first {@link #getParentBorder()} call.
+     * 
+     * @param parentBounds
+     *            The bounds to consider for this
+     *            {@link CanonicalDBorderItemLocator}.
+     */
+    public void setParentBorderBounds(Rectangle parentBounds) {
+        parentBorder = parentBounds;
     }
 
     private Dimension getSize(Node borderItem) {

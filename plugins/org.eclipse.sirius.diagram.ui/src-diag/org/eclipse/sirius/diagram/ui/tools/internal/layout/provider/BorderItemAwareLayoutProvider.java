@@ -79,7 +79,9 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.operation.RegionContainerUpdateLayoutOperation;
+import org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.ChangeBoundRequestRecorder;
@@ -245,6 +247,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
          * 
          * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
          */
+        @Override
         public int compare(final IBorderItemEditPart o1, final IBorderItemEditPart o2) {
             int result = 0;
             final BorderItemOppositeElementData p1 = oppositeElementsDataByEditPart.get(o1);
@@ -283,6 +286,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
          * 
          * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
          */
+        @Override
         public int compare(final IBorderItemEditPart o1, final IBorderItemEditPart o2) {
             int result = 0;
             final BorderItemOppositeElementData p1 = oppositeElementsDataByEditPart.get(o1);
@@ -321,6 +325,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
          * 
          * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
          */
+        @Override
         public int compare(final IBorderItemEditPart o1, final IBorderItemEditPart o2) {
             int result = 0;
             final BorderItemOppositeElementData p1 = oppositeElementsDataByEditPart.get(o1);
@@ -359,6 +364,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
          * 
          * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
          */
+        @Override
         public int compare(final IBorderItemEditPart o1, final IBorderItemEditPart o2) {
             int result = 0;
             final BorderItemOppositeElementData p1 = oppositeElementsDataByEditPart.get(o1);
@@ -408,6 +414,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
 
     private Predicate<Object> validateAllElementInArrayListAreIDiagramElementEditPart = new Predicate<Object>() {
 
+        @Override
         public boolean apply(Object input) {
             return input instanceof IDiagramElementEditPart;
         }
@@ -601,8 +608,8 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
                                 resetBounds(compoundCommand, commandName, region, editingDomain);
                             }
                         }
-                        compoundCommand.add(new ICommandProxy(CommandFactory.createICommand(graphicalEditPart.getEditingDomain(),
-                                new RegionContainerUpdateLayoutOperation((Node) graphicalEditPart.getModel()))));
+                        compoundCommand.add(
+                                new ICommandProxy(CommandFactory.createICommand(graphicalEditPart.getEditingDomain(), new RegionContainerUpdateLayoutOperation((Node) graphicalEditPart.getModel()))));
                     }
                 }
             }
@@ -817,10 +824,10 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
                 final Point topLeft = containerBoundsAfterArrangeAll.getTopLeft();
                 // Make some trigonometry calculations to know which ports must
                 // be on top, bottom, right, left border of their container.
-                final double absoluteCos = Math.abs(BorderItemAwareLayoutProvider.cos(new Vector(Math.abs(containerCenterAfterArrangeAll.x - topLeft.x), Math.abs(containerCenterAfterArrangeAll.y
-                        - topLeft.y))));
-                final double absoluteSin = Math.abs(BorderItemAwareLayoutProvider.sin(new Vector(Math.abs(containerCenterAfterArrangeAll.x - topLeft.x), Math.abs(containerCenterAfterArrangeAll.y
-                        - topLeft.y))));
+                final double absoluteCos = Math
+                        .abs(BorderItemAwareLayoutProvider.cos(new Vector(Math.abs(containerCenterAfterArrangeAll.x - topLeft.x), Math.abs(containerCenterAfterArrangeAll.y - topLeft.y))));
+                final double absoluteSin = Math
+                        .abs(BorderItemAwareLayoutProvider.sin(new Vector(Math.abs(containerCenterAfterArrangeAll.x - topLeft.x), Math.abs(containerCenterAfterArrangeAll.y - topLeft.y))));
 
                 final List<IBorderItemEditPart> tops = getBorderItems(PositionConstants.NORTH, headings, absoluteCos, scale, containerCenterAfterArrangeAll);
                 final List<IBorderItemEditPart> bottoms = getBorderItems(PositionConstants.SOUTH, headings, absoluteCos, scale, containerCenterAfterArrangeAll);
@@ -923,6 +930,18 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
             }
 
             newLocation = newLocation.getTranslated(containerBounds.getTopLeft());
+
+            // Make the location more precise with the
+            // CanonicalDBorderItemLocator
+            if (borderItemEditPart.getModel() instanceof Node && ((Node) borderItemEditPart.getModel()).eContainer() instanceof Node) {
+                Node borderNode = (Node) borderItemEditPart.getModel();
+                Node parentNode = (Node) borderNode.eContainer();
+                CanonicalDBorderItemLocator borderItemLocator = new CanonicalDBorderItemLocator(parentNode, position);
+                borderItemLocator.setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);
+                borderItemLocator.setParentBorderBounds(containerBounds);
+                newLocation = borderItemLocator.getValidLocation(new Rectangle(newLocation, borderItemEditPart.getFigure().getSize()), (Node) borderItemEditPart.getModel(), parentNode.getChildren());
+            }
+
             // Store the location compute for this border item during this
             // iteration
             addBorderItemData(borderItemEditPart, newLocation);
@@ -1187,8 +1206,8 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
                 targetPoint = getBounds((IGraphicalEditPart) target, scale).getCenter();
             }
             if (target instanceof IBorderItemEditPart) {
-                oppositeElementData = new BorderItemOppositeElementData(targetPoint, DBorderItemLocator.findClosestSideOfParent(new Rectangle(targetPoint, new Dimension(1, 1)),
-                        getBounds((IGraphicalEditPart) target.getParent(), scale)));
+                oppositeElementData = new BorderItemOppositeElementData(targetPoint,
+                        DBorderItemLocator.findClosestSideOfParent(new Rectangle(targetPoint, new Dimension(1, 1)), getBounds((IGraphicalEditPart) target.getParent(), scale)));
             } else {
                 oppositeElementData = new BorderItemOppositeElementData(targetPoint);
             }
@@ -1431,17 +1450,13 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      */
     private int getRightSizeXCoordinateOfRightMostChild(final IGraphicalEditPart part, final double scale, final Dimension moveDelta) {
         int result = 0;
-        final Collection<IGraphicalEditPart> children = Collections2.filter(
-                part.getChildren(),
-                Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class), Predicates.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)),
-                        Predicates.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class))));
+        final Collection<IGraphicalEditPart> children = Collections2.filter(part.getChildren(), Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class),
+                Predicates.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)), Predicates.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class))));
         for (IGraphicalEditPart child : children) {
             if (child instanceof ShapeCompartmentEditPart) {
                 // Only delegates to the grandchildren
-                final Collection<IGraphicalEditPart> grandchildren = Collections2.filter(
-                        child.getChildren(),
-                        Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class), Predicates.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)),
-                                Predicates.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class))));
+                final Collection<IGraphicalEditPart> grandchildren = Collections2.filter(child.getChildren(), Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class),
+                        Predicates.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)), Predicates.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class))));
                 for (IGraphicalEditPart grandchild : grandchildren) {
                     final Rectangle bounds = getBounds(grandchild, scale, moveDelta, true, false);
                     final int rightSizeXCoordinate = bounds.x + bounds.width;
@@ -1474,17 +1489,13 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      */
     private int getBottomSizeYCoordinateOfLowestChild(final IGraphicalEditPart part, final double scale, final Dimension moveDelta) {
         int result = 0;
-        final Collection<IGraphicalEditPart> children = Collections2.filter(
-                part.getChildren(),
-                Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class), Predicates.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)),
-                        Predicates.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class))));
+        final Collection<IGraphicalEditPart> children = Collections2.filter(part.getChildren(), Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class),
+                Predicates.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)), Predicates.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class))));
         for (IGraphicalEditPart child : children) {
             if (child instanceof ShapeCompartmentEditPart) {
                 // Only delegates to the grandchildren
-                final Collection<IGraphicalEditPart> grandchildren = Collections2.filter(
-                        child.getChildren(),
-                        Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class), Predicates.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)),
-                                Predicates.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class))));
+                final Collection<IGraphicalEditPart> grandchildren = Collections2.filter(child.getChildren(), Predicates.and(Predicates.instanceOf(IGraphicalEditPart.class),
+                        Predicates.not(Predicates.instanceOf(AbstractDiagramBorderNodeEditPart.class)), Predicates.not(Predicates.instanceOf(AbstractDiagramNameEditPart.class))));
                 for (IGraphicalEditPart grandchild : grandchildren) {
                     final Rectangle bounds = getBounds(grandchild, scale, moveDelta, false, true);
                     final int bottomSizeYCoordinate = bounds.y + bounds.height;
