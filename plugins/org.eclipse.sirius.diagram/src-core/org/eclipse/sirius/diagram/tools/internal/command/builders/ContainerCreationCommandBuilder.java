@@ -30,6 +30,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 
 /**
@@ -121,7 +122,7 @@ public class ContainerCreationCommandBuilder extends AbstractDiagramCommandBuild
     }
 
     private Command buildInDNodeContainerCommand() {
-        if (permissionAuthority.canEditInstance(nodeContainer)) {
+        if (canCreateContainerInTarget()) {
             final EObject model = nodeContainer.getTarget();
             if (model != null && checkPrecondition(nodeContainer, tool)) {
                 final DCommand result = buildCreateNodeCommandFromTool(model, nodeContainer);
@@ -147,7 +148,7 @@ public class ContainerCreationCommandBuilder extends AbstractDiagramCommandBuild
      */
     protected DCommand buildCreateNodeCommandFromTool(final EObject semanticContainer, final EObject container) {
         final DCommand result = createEnclosingCommand();
-        if (permissionAuthority.canEditInstance(container)) {
+        if (canCreateContainerInTarget()) {
             final IInterpreter interpreter = InterpreterUtil.getInterpreter(semanticContainer);
             final Map<AbstractVariable, Object> variables = new HashMap<AbstractVariable, Object>();
             result.getTasks().add(new InitInterpreterVariablesTask(variables, interpreter, uiCallback));
@@ -161,6 +162,31 @@ public class ContainerCreationCommandBuilder extends AbstractDiagramCommandBuild
             result.getTasks().add(UnexecutableTask.INSTANCE);
         }
         return result;
+    }
+
+    /**
+     * Indicates if the target of the Container to create (DDiagramElement or
+     * directly the DDiagram) can be editable (by calling the
+     * PermissionAuthority).
+     * 
+     * @return true if the container can be created, false otherwise
+     */
+    private boolean canCreateContainerInTarget() {
+        boolean containerCanBeCreatedInTarget = false;
+        if (nodeContainer != null) {
+            containerCanBeCreatedInTarget = permissionAuthority.canEditInstance(nodeContainer);
+            if (containerCanBeCreatedInTarget) {
+                EObject target = nodeContainer.getTarget();
+                containerCanBeCreatedInTarget = target != null && !target.eIsProxy();
+            }
+        } else if (diagram != null) {
+            containerCanBeCreatedInTarget = permissionAuthority.canEditInstance(diagram);
+            if (containerCanBeCreatedInTarget && diagram instanceof DSemanticDecorator) {
+                EObject target = ((DSemanticDecorator) diagram).getTarget();
+                containerCanBeCreatedInTarget = target != null && !target.eIsProxy();
+            }
+        }
+        return containerCanBeCreatedInTarget;
     }
 
     /**
