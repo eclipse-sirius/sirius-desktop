@@ -134,7 +134,7 @@
         <tests.junit.skip>false</tests.junit.skip>
         <tests.timeout>${tests.timeout.junit}</tests.timeout>
         <tests.junit.include>%regex[org/eclipse/sirius/tests/suite(/tree)?/AllSiriusTestSuite\.class]</tests.junit.include>
-        <tests.vmargs>${tests.vmargs.mac} -Xmx1024m -XX:MaxPermSize=256m</tests.vmargs>
+        <tests.vmargs>${tests.vmargs.mac} -Xmx1024m -XX:MaxPermSize=256m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
       </properties>
     </profile>
     <profile>
@@ -146,7 +146,7 @@
         <tests.swtbot.skip>false</tests.swtbot.skip>
         <tests.timeout>${tests.timeout.swtbot}</tests.timeout>
         <tests.swtbot.include>org/eclipse/sirius/tests/swtbot/suite/AllTestSuite.class</tests.swtbot.include>
-        <tests.vmargs>${tests.vmargs.mac} -Xmx2048m -XX:MaxPermSize=256m</tests.vmargs>
+        <tests.vmargs>${tests.vmargs.mac} -Xmx2048m -XX:MaxPermSize=256m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
       </properties>
     </profile>
     <profile>
@@ -158,7 +158,7 @@
         <tests.swtbot.skip>false</tests.swtbot.skip>
         <tests.timeout>${tests.timeout.swtbot-sequence}</tests.timeout>
         <tests.swtbot-sequence.include>org/eclipse/sirius/tests/swtbot/suite/SequenceSwtBotTestSuite.class</tests.swtbot-sequence.include>
-        <tests.vmargs>${tests.vmargs.mac} -Xmx2048m -XX:MaxPermSize=256m</tests.vmargs>
+        <tests.vmargs>${tests.vmargs.mac} -Xmx2048m -XX:MaxPermSize=256m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
       </properties>
     </profile>
   </profiles>
