@@ -173,18 +173,21 @@ public class NodeCreationCommandBuilder extends AbstractDiagramCommandBuilder {
      * @return true if the node can be created, false otherwise
      */
     private boolean canCreateNodeInTarget() {
-        boolean nodeCanBeCreateInTarget = false;
+        boolean nodeCanBeCreatedInTarget = false;
         if (diagramElement != null) {
-            nodeCanBeCreateInTarget = permissionAuthority.canEditInstance(diagramElement) && diagramElement.getTarget() != null && !diagramElement.getTarget().eIsProxy();
-        } else {
-            if (diagram != null) {
-                nodeCanBeCreateInTarget = permissionAuthority.canEditInstance(diagram);
-                if (nodeCanBeCreateInTarget && diagram instanceof DSemanticDecorator) {
-                    nodeCanBeCreateInTarget = ((DSemanticDecorator) diagram).getTarget() != null && !((DSemanticDecorator) diagram).getTarget().eIsProxy();
-                }
+            nodeCanBeCreatedInTarget = permissionAuthority.canEditInstance(diagramElement);
+            if (nodeCanBeCreatedInTarget) {
+                EObject target = diagramElement.getTarget();
+                nodeCanBeCreatedInTarget = target != null && !target.eIsProxy();
+            }
+        } else if (diagram != null) {
+            nodeCanBeCreatedInTarget = permissionAuthority.canEditInstance(diagram);
+            if (nodeCanBeCreatedInTarget && diagram instanceof DSemanticDecorator) {
+                EObject target = ((DSemanticDecorator) diagram).getTarget();
+                nodeCanBeCreatedInTarget = target != null && !target.eIsProxy();
             }
         }
-        return nodeCanBeCreateInTarget;
+        return nodeCanBeCreatedInTarget;
     }
 
     private ICommandTask buildCreateNodeTask(final DCommand createdObjects) {
