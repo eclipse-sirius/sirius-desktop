@@ -59,6 +59,7 @@ import org.eclipse.gmf.runtime.diagram.ui.services.layout.ILayoutNodeOperation;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
+import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
@@ -1318,6 +1319,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
 
         Rectangle bounds = null;
         boolean isPinned = false;
+        Dimension parentBorderSize = getBorder(graphicalEditPart).getSize();
         if (graphicalEditPart.resolveSemanticElement() instanceof DDiagramElement) {
             DDiagramElement dDiagramElement = (DDiagramElement) graphicalEditPart.resolveSemanticElement();
             isPinned = new PinHelper().isPinned(dDiagramElement);
@@ -1354,12 +1356,34 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
             }
         }
         graphicalEditPart.getFigure().translateToAbsolute(bounds);
+        // The interesting size is the parent border one here.
+        bounds.setSize(parentBorderSize);
 
         if (!isPinned && launchNormalArrange) {
             // Compute size after arrange (with auto-size)
             final Dimension moveDelta = getScaledMoveDelta(graphicalEditPart, bounds, scale);
             final Dimension sizeWithAutoSize = getSizeAfterAutoSize(graphicalEditPart, bounds, scale, moveDelta, processX, processY);
             bounds.setSize(sizeWithAutoSize);
+        }
+        return bounds;
+    }
+
+    /**
+     * Utility to calculate the bounds with consideration for the handle bounds
+     * inset. Copied from
+     * org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator
+     * .getParentBorder().
+     * 
+     * @param graphicalEditPart
+     *            The concerned edit part
+     * 
+     * @return <code>Rectangle</code> that is the bounds of the edit part.
+     */
+    protected Rectangle getBorder(IGraphicalEditPart graphicalEditPart) {
+        IFigure figure = graphicalEditPart.getFigure();
+        Rectangle bounds = figure.getBounds().getCopy();
+        if (figure instanceof NodeFigure) {
+            bounds = ((NodeFigure) figure).getHandleBounds().getCopy();
         }
         return bounds;
     }
