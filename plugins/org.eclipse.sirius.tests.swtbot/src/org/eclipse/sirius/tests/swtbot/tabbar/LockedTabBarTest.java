@@ -69,6 +69,8 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String ARRANGE_ALL = "Arrange All";
 
+    private static final String ARRANGE_SELECTION = "Arrange Selection";
+
     private static final String ARRANGE_LINKED_BORDERED_NODES = "Arrange Linked Bordered Nodes";
 
     private static final String PIN_SELECTION = "Pin selected elements";
@@ -208,7 +210,7 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
         assertEnabled(bot.toolbarButtonWithTooltip(SET_STYLE_TO_WORKSPACE_IMAGE), enabled);
 
         // "Arrange Selection" drop down button
-        SWTBotToolbarDropDownButton arrangeSelectionMenu = bot.toolbarDropDownButton();
+        SWTBotToolbarDropDownButton arrangeSelectionMenu = bot.toolbarDropDownButtonWithTooltip(ARRANGE_SELECTION);
         for (SWTBotMenu item : arrangeSelectionMenu.menuItems(new AllItemsExcept())) {
             assertEnabled(item, enabled);
         }
@@ -255,6 +257,7 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
             this.itemsNotToConsider = Lists.newArrayList(itemsNotToConsider);
         }
 
+        @Override
         public boolean matches(Object item) {
             if (item instanceof MenuItem) {
                 for (String itemNotToConsider : itemsNotToConsider) {
@@ -266,6 +269,7 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
             return true;
         }
 
+        @Override
         public void describeTo(Description description) {
 
         }
