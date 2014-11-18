@@ -18,7 +18,6 @@ import java.util.List;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.ConnectionLayer;
 import org.eclipse.draw2d.ConnectionRouter;
-import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
@@ -54,6 +53,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelCh
 import org.eclipse.sirius.diagram.ui.graphical.figures.CanonicalRectilinearRouter;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
+import org.eclipse.sirius.diagram.ui.tools.internal.routers.RectilinearEdgeUtil;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.GMFNotationUtilities;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -69,6 +69,7 @@ import org.eclipse.ui.IEditorPart;
  * @author Florian Barbin
  * 
  */
+@SuppressWarnings("restriction")
 public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperation<Void> {
 
     private Edge edge;
@@ -90,6 +91,8 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
     private Dimension sourceFigureSize;
 
     private Dimension targetFigureSize;
+
+    private static final String CENTERED_ANCHOR = GMFNotationUtilities.getTerminalString(0.5d, 0.5d);
 
     /**
      * Constructor to use the connectionEditPart to compute the new edge
@@ -347,17 +350,12 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
      */
     private void handleRectilinearCase(CenteringStyle center, Rectangle sourceBounds, Rectangle targetBounds, PointList existingPointList) {
 
-        int sourceAnchorOrientation = PositionConstants.NONE;
-        int targetAnchorOrientation = PositionConstants.NONE;
         PointList rectilinear = null;
 
         // If the connection is available (the edge already exist) we retrieve
         // the rectilinear bendpoints.
         if (connection != null) {
             rectilinear = getRectilinearPointListFromConnection();
-
-            sourceAnchorOrientation = computeSourceOrientation(rectilinear);
-            targetAnchorOrientation = computeTargetOrientation(rectilinear);
 
         } else {
             rectilinear = existingPointList.getCopy();
@@ -373,35 +371,20 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
 
             CanonicalRectilinearRouter rectilinearRouter = new CanonicalRectilinearRouter();
             rectilinearRouter.routeLine(edge, 0, rectilinear, sourceBounds, targetBounds);
-
-            sourceAnchorOrientation = computeSourceOrientation(rectilinear);
-            targetAnchorOrientation = computeTargetOrientation(rectilinear);
         }
         if (rectilinear.size() >= 2) {
+            RectilinearEdgeUtil.centerEdgeEnds(rectilinear, newSourceAnchorAbsoluteLocation, newTargetAnchorAbsoluteLocation, center);
+
             if (center == CenteringStyle.BOTH || center == CenteringStyle.SOURCE) {
-                handleSourceRectilinearRoutingStyle(sourceBounds, rectilinear, sourceAnchorOrientation);
+                centerSourceAnchor();
             }
             if (center == CenteringStyle.BOTH || center == CenteringStyle.TARGET) {
-                handleTargetRectilinearRoutingStyle(targetBounds, rectilinear, targetAnchorOrientation);
+                centerTargetAnchor();
             }
 
             existingPointList.removeAllPoints();
             existingPointList.addAll(rectilinear);
         }
-    }
-
-    private int computeSourceOrientation(PointList rectilinear) {
-        if (rectilinear.size() >= 2) {
-            return (rectilinear.getPoint(0).x() == rectilinear.getPoint(1).x()) ? PositionConstants.VERTICAL : PositionConstants.HORIZONTAL;
-        }
-        return PositionConstants.NONE;
-    }
-
-    private int computeTargetOrientation(PointList rectilinear) {
-        if (rectilinear.size() >= 2) {
-            return (rectilinear.getPoint(rectilinear.size() - 1).x() == rectilinear.getPoint(rectilinear.size() - 2).x()) ? PositionConstants.VERTICAL : PositionConstants.HORIZONTAL;
-        }
-        return PositionConstants.NONE;
     }
 
     private void computePointListByIntersections(PointList rectilinear, Rectangle sourceBounds, Rectangle targetBounds) {
@@ -412,57 +395,6 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
             rectilinear.addPoint(sourceConnectionPoint.get());
             rectilinear.addPoint(targetConnectionPoint.get());
         }
-    }
-
-    private void handleSourceRectilinearRoutingStyle(Rectangle figureBounds, PointList rectilinear, int sourceAnchorRelativeLocation) {
-
-        Point newConnectionPoint = rectilinear.getFirstPoint().getCopy();
-        Point secondFromSrc = rectilinear.getPoint(1);
-        switch (sourceAnchorRelativeLocation) {
-        case PositionConstants.HORIZONTAL:
-            newConnectionPoint.setY(newSourceAnchorAbsoluteLocation.y());
-            secondFromSrc.setY(newSourceAnchorAbsoluteLocation.y());
-            break;
-
-        case PositionConstants.VERTICAL:
-            newConnectionPoint.setX(newSourceAnchorAbsoluteLocation.x());
-            secondFromSrc.setX(newSourceAnchorAbsoluteLocation.x());
-            break;
-
-        default:
-            // this case should not happen.
-            break;
-        }
-
-        rectilinear.setPoint(newConnectionPoint, 0);
-        rectilinear.setPoint(secondFromSrc, 1);
-        centerSourceAnchor();
-
-    }
-
-    private void handleTargetRectilinearRoutingStyle(Rectangle figureBounds, PointList rectilinear, int targetAnchorRelativeLocation) {
-
-        Point newConnectionPoint = rectilinear.getLastPoint().getCopy();
-        Point secondFromTgt = rectilinear.getPoint(rectilinear.size() - 2);
-        switch (targetAnchorRelativeLocation) {
-        case PositionConstants.HORIZONTAL:
-            newConnectionPoint.setY(newTargetAnchorAbsoluteLocation.y());
-            secondFromTgt.setY(newTargetAnchorAbsoluteLocation.y());
-            break;
-
-        case PositionConstants.VERTICAL:
-            newConnectionPoint.setX(newTargetAnchorAbsoluteLocation.x());
-            secondFromTgt.setX(newTargetAnchorAbsoluteLocation.x());
-            break;
-
-        default:
-            // this case should not happen.
-            break;
-        }
-
-        rectilinear.setPoint(newConnectionPoint, rectilinear.size() - 1);
-        rectilinear.setPoint(secondFromTgt, rectilinear.size() - 2);
-        centerTargetAnchor();
     }
 
     private void computeAndSetNewAnchorsAbsoluteCoordinates(Rectangle sourceBounds, Rectangle targetBounds, CenteringStyle center) {
@@ -501,6 +433,7 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
         if (option.some()) {
             pointList = option.get();
         } else {
+            @SuppressWarnings("unchecked")
             List<RelativeBendpoint> relativeBendpoints = bendpoints.getPoints();
             for (int i = 0; i < relativeBendpoints.size(); i++) {
                 float weight = i / ((float) relativeBendpoints.size() - 1);
@@ -531,18 +464,36 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
      * Set the source anchor at (0.5, 0.5).
      */
     private void centerSourceAnchor() {
-        IdentityAnchor a = NotationFactory.eINSTANCE.createIdentityAnchor();
-        a.setId(GMFNotationUtilities.getTerminalString(0.5d, 0.5d));
-        edge.setSourceAnchor(a);
+        Anchor currentAnchor = edge.getSourceAnchor();
+        IdentityAnchor newAnchor = setOrCreateNewAnchorIfNeeded(currentAnchor);
+        if (newAnchor != currentAnchor) {
+            edge.setSourceAnchor(newAnchor);
+        }
+
     }
 
     /**
      * Set the target anchor at (0.5, 0.5).
      */
     private void centerTargetAnchor() {
-        IdentityAnchor a = NotationFactory.eINSTANCE.createIdentityAnchor();
-        a.setId(GMFNotationUtilities.getTerminalString(0.5d, 0.5d));
-        edge.setTargetAnchor(a);
+        Anchor currentAnchor = edge.getTargetAnchor();
+        IdentityAnchor newAnchor = setOrCreateNewAnchorIfNeeded(currentAnchor);
+        if (newAnchor != currentAnchor) {
+            edge.setTargetAnchor(newAnchor);
+        }
+    }
+
+    private IdentityAnchor setOrCreateNewAnchorIfNeeded(Anchor anchor) {
+        if (anchor instanceof IdentityAnchor) {
+            if (!((IdentityAnchor) anchor).getId().equals(CENTERED_ANCHOR)) {
+                ((IdentityAnchor) anchor).setId(CENTERED_ANCHOR);
+            }
+            return (IdentityAnchor) anchor;
+        } else {
+            IdentityAnchor a = NotationFactory.eINSTANCE.createIdentityAnchor();
+            a.setId(CENTERED_ANCHOR);
+            return a;
+        }
     }
 
     /**
@@ -608,6 +559,7 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
     /**
      * We try to retrieve the edge connection figure.
      */
+    @SuppressWarnings("rawtypes")
     private void setConnectionIfNull() {
         if (connection != null || !useFigure) {
             return;
@@ -653,7 +605,6 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
      * 
      * @return a rectilinear PointList.
      */
-    @SuppressWarnings("restriction")
     private PointList getRectilinearPointListFromConnection() {
         ConnectionRouter oldConnectionRouter = connection.getConnectionRouter();
         boolean needToRetrieveOldRouter = false;
