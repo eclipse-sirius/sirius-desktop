@@ -82,7 +82,7 @@ public class ExistingDomainClassConstraint extends AbstractConstraint {
                 // See ticket #658
             } else if (!StringUtil.isEmpty(className)) {
                 final ModelAccessor extPackage = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(eObj);
-                if (!extPackage.eIsKnownType(className)) {
+                if (!extPackage.eIsKnownType(className.trim())) {
                     // The domain class doesn't exist.
                     result = new Object[] { value };
                 }
