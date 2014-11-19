@@ -24,6 +24,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.internal.validation.AbstractConstraint;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
 /**
  * Validate that a DomainClass exist.
@@ -44,11 +45,9 @@ public class ExistingDomainClassConstraint extends AbstractConstraint {
     public IStatus validate(final IValidationContext ctx) {
         final EObject eObj = ctx.getTarget();
         final EMFEventType eventType = ctx.getEventType();
-
         // In the case of batch mode.
         if (eventType == EMFEventType.NULL) {
-            if ((eObj.eClass().getEPackage().getNsURI().startsWith(ViewpointPackage.eINSTANCE.getNsURI()) || eObj.eClass().getEPackage().getNsURI().startsWith(DiagramPackage.eINSTANCE.getNsURI()))
-                    && isElementContainedInAKnownMetamodel(eObj)) {
+            if (isValidNsURI(eObj) && isElementContainedInAKnownMetamodel(eObj)) {
                 final EStructuralFeature domainClassFeature = eObj.eClass().getEStructuralFeature(DOMAIN_CLASS_FEATURE);
                 if (domainClassFeature != null) {
                     final Object[] result = checkError(domainClassFeature, eObj);
@@ -94,7 +93,7 @@ public class ExistingDomainClassConstraint extends AbstractConstraint {
 
     @Override
     protected EObject getParentDescription(final EObject instance) {
-        if (instance.eClass().getEPackage().getNsURI().startsWith(ViewpointPackage.eINSTANCE.getNsURI()) || instance.eClass().getEPackage().getNsURI().startsWith(DiagramPackage.eINSTANCE.getNsURI())) {
+        if (isValidNsURI(instance)) {
             EObject container = instance.eContainer();
             while (container != null) {
                 if (container instanceof DiagramDescription || container instanceof DiagramExtensionDescription) {
@@ -104,5 +103,11 @@ public class ExistingDomainClassConstraint extends AbstractConstraint {
             }
         }
         return null;
+    }
+
+    private boolean isValidNsURI(EObject eObj) {
+        return eObj.eClass().getEPackage().getNsURI().startsWith(ViewpointPackage.eINSTANCE.getNsURI()) || eObj.eClass().getEPackage().getNsURI().startsWith(DescriptionPackage.eINSTANCE.getNsURI())
+                || eObj.eClass().getEPackage().getNsURI().startsWith(org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getNsURI())
+                || eObj.eClass().getEPackage().getNsURI().startsWith(DiagramPackage.eINSTANCE.getNsURI());
     }
 }
