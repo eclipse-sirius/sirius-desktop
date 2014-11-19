@@ -117,7 +117,7 @@ public class CreateRepresentationFromSessionTest extends AbstractSiriusSwtBotGef
      */
     public void testImportDiagramCreation() {
         // create the representation
-        SWTBotEditor editor = createRepresentation("Diagram Import Description Import", "p1");
+        SWTBotEditor editor = createRepresentation("Diagram Import Import", "p1");
         assertNotNull(THE_REPRESENTATION_IS_NOT_CREATED, editor);
 
         Session session = localSession.getOpenedSession();
@@ -183,7 +183,7 @@ public class CreateRepresentationFromSessionTest extends AbstractSiriusSwtBotGef
         createOnContextMenu();
 
         // select representation to create
-        SWTBotShell shell = bot.shell("Create representation Wizard");
+        SWTBotShell shell = bot.shell("Create Representation Wizard");
         shell.activate();
 
         boolean found = true;
@@ -199,12 +199,12 @@ public class CreateRepresentationFromSessionTest extends AbstractSiriusSwtBotGef
      * Use context menu and open create representation wizard.
      */
     private void createOnContextMenu() {
-        SWTBotTreeItem sessionTreeItem = localSession.getLocalSessionBrowser().getTreeItem();
+        SWTBotTreeItem sessionTreeItem = localSession.getRootSessionTreeItem();
 
         try {
-            sessionTreeItem.contextMenu("Create representation").click();
+            sessionTreeItem.contextMenu("Create Representation").click();
         } catch (WidgetNotFoundException e) {
-            SWTBotUtils.clickContextMenu(sessionTreeItem, "Create representation");
+            SWTBotUtils.clickContextMenu(sessionTreeItem, "Create Representation");
         }
     }
 
@@ -223,10 +223,11 @@ public class CreateRepresentationFromSessionTest extends AbstractSiriusSwtBotGef
         bot.button(FINISH).click();
 
         // choose the representation name
-        SWTBotShell shell = bot.shell("New representation");
+        SWTBotShell shell = bot.shell("New Representation");
         shell.activate();
         bot.button(OK).click();
         SWTBotUtils.waitAllUiEvents();
+        SWTBotUtils.waitProgressMonitorClose("Representation creation");
 
         return bot.activeEditor();
     }
@@ -254,7 +255,7 @@ public class CreateRepresentationFromSessionTest extends AbstractSiriusSwtBotGef
         createOnContextMenu();
 
         // select representation to create
-        SWTBotShell shell = bot.shell("Create representation Wizard");
+        SWTBotShell shell = bot.shell("Create Representation Wizard");
         shell.activate();
         checkButtonBeforeSelectionFirstWizard();
 
@@ -263,7 +264,7 @@ public class CreateRepresentationFromSessionTest extends AbstractSiriusSwtBotGef
         bot.button(NEXT).click();
 
         // select semantic element of the new representation
-        shell = bot.shell("Create representation Wizard");
+        shell = bot.shell("Create Representation");
         shell.activate();
         checkButtonBeforeSelectionSecondWizard();
     }
@@ -275,7 +276,7 @@ public class CreateRepresentationFromSessionTest extends AbstractSiriusSwtBotGef
         createOnContextMenu();
 
         // select representation to create
-        SWTBotShell shell = bot.shell("Create representation Wizard");
+        SWTBotShell shell = bot.shell("Create Representation Wizard");
         shell.activate();
         bot.button(CANCEL);
     }

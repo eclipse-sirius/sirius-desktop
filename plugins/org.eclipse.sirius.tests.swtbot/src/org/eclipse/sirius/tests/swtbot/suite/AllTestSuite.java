@@ -275,6 +275,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(GroupingContentProviderTest.class);
         suite.addTestSuite(GroupingContentProviderByContainingTest.class);
         suite.addTestSuite(PaletteViewManagementTest.class);
+        suite.addTestSuite(CreateRepresentationFromSessionTest.class);
 
         // Scenario test cases
         suite.addTestSuite(ESEDemoTest.class);
@@ -318,7 +319,6 @@ public class AllTestSuite extends TestCase {
 
         // The following tests was not referenced then I added them to the
         // disabled test suite
-        suite.addTestSuite(CreateRepresentationFromSessionTest.class);
         suite.addTestSuite(ControlUncontrolTest.class);
         suite.addTestSuite(ControlUncontrolWithNoRepresentationTest.class);
         suite.addTestSuite(ControlUncontrolWithSessionNotSavedTest.class);
