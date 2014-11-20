@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.TransparentFigureGraphicsModifier;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SimpleImageTranscoder;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
@@ -34,7 +35,7 @@ import com.google.common.collect.MapMaker;
  * 
  * @author mporhel
  */
-public abstract class AbstractCachedSVGFigure extends SVGFigure implements StyledFigure, ITransparentFigure {
+public abstract class AbstractCachedSVGFigure extends SVGFigure implements StyledFigure, ITransparentFigure, ImageFigureWithAlpha {
 
     /**
      * Key separator.
@@ -213,5 +214,49 @@ public abstract class AbstractCachedSVGFigure extends SVGFigure implements Style
             return remove || removedFromDocumentsMap;
         }
         return false;
+    }
+
+    @Override
+    public int getImageHeight() {
+        SimpleImageTranscoder transcoder = getTranscoder();
+        int height = 0;
+        if (transcoder != null) {
+            int canvasHeight = transcoder.getCanvasHeight();
+            if (canvasHeight == -1) {
+                height = transcoder.getBufferedImage().getHeight();
+            } else {
+                height = canvasHeight;
+            }
+        }
+        return height;
+    }
+
+    @Override
+    public int getImageWidth() {
+        SimpleImageTranscoder transcoder = getTranscoder();
+        int width = 0;
+        if (transcoder != null) {
+            int canvasWidth = transcoder.getCanvasWidth();
+            if (canvasWidth == -1) {
+                width = transcoder.getBufferedImage().getWidth();
+            } else {
+                width = canvasWidth;
+            }
+        }
+        return width;
+    }
+
+    @Override
+    public int getImageAlphaValue(int x, int y) {
+        SimpleImageTranscoder transcoder = getTranscoder();
+        if (transcoder != null) {
+            BufferedImage bufferedImage = transcoder.getBufferedImage();
+            if (bufferedImage != null && bufferedImage.getWidth() >= x && bufferedImage.getHeight() >= y) {
+                int[] result = bufferedImage.getAlphaRaster().getPixel(x, y, new int[1]);
+                return result[0];
+            }
+        }
+
+        return 255;
     }
 }

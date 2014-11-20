@@ -96,16 +96,18 @@ h4. Changes in @org.eclipse.sirius.diagram@
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
-The @org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator@ did not take into account the rectangle size passed to @getValidLocation@. To resolve that limitation, several protected methods that took a Point as location now take a Rectangle:
-* @locateOnBorder(Point, int, int, IFigure, Collection<IFigure>, List<IFigure>)@ Take a Rectangle instead a point: @locateOnBorder(Rectangle, int, int, IFigure, Collection<IFigure>, List<IFigure>)@
-* @locateOnSouthBorder@, @locateOnNorthBorder@, @locateOnWestBorder@ and @locateOnEastBorder@ signature is now @(Rectangle, int, IFigure, Collection<IFigure>, List<IFigure>)@
-* @locateOnParent@ signature is now @locateOnParent(Rectangle, int, IFigure)@
-* @conflicts@ signature is now @conflicts(Rectangle, IFigure, Collection<IFigure>, List<IFigure>)@
+* The @org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator@ did not take into account the rectangle size passed to @getValidLocation@. To resolve that limitation, several protected methods that took a Point as location now take a Rectangle:
+** @locateOnBorder(Point, int, int, IFigure, Collection<IFigure>, List<IFigure>)@ Take a Rectangle instead a point: @locateOnBorder(Rectangle, int, int, IFigure, Collection<IFigure>, List<IFigure>)@
+** @locateOnSouthBorder@, @locateOnNorthBorder@, @locateOnWestBorder@ and @locateOnEastBorder@ signature is now @(Rectangle, int, IFigure, Collection<IFigure>, List<IFigure>)@
+** @locateOnParent@ signature is now @locateOnParent(Rectangle, int, IFigure)@
+** @conflicts@ signature is now @conflicts(Rectangle, IFigure, Collection<IFigure>, List<IFigure>)@
 * The constant @DiagramImagesPath.LINK_TO_VIEWPOINT_IMG@ has been moved to @org.eclipse.sirius.ui.tools.api.image.ImagesPath.LINK_TO_VIEWPOINT_IMG@. This is more coherent because the corresponding image is in core @org.eclipse.sirius.common.ui@ plugin.
 * @org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper.findGMFDiagram()@ became deprecated in favor of @DiagramCreationUtil.findAssociatedGMFDiagram()/getAssociatedGMFDiagram()@
 * @org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper@ moved from @org.eclipse.sirius.diagram.ui@ plugin to @org.eclipse.sirius.diagram@ plugin, i.e. @org.eclipse.sirius.diagram.tools.api.layout.PinHelper@ with @PinHelper.IsPinned(IDiagramElementEditPart)@ removed in favor of @PinHelper.IsPinned(DDiagramElement)@.
 * External java actions declared as @org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.pinElementsActionId@ and @org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.unpinElementsActionId@ are now declared as @org.eclipse.sirius.diagram.tools.internal.actions.pinning.pinElementsActionId@ and @org.eclipse.sirius.diagram.tools.internal.actions.pinning.unpinElementsActionId@ in @org.eclipse.sirius.diagram@ plugin.
 * The @org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart.getEAdapterStrokeColor@ method has been removed as the corresponding adapter was uneffective and is no more used and installed on the edge edit parts.
+* The @org.eclipse.sirius.diagram.ui.tools.api.figure.ImageFigureWithAlpha@ interface has been added to identify Figures having the capability to return an alpha value from a coordinate.
+** @org.eclipse.sirius.diagram.ui.tools.api.figure.AbstractCachedSVGFigure@ and @org.eclipse.sirius.diagram.ui.tools.api.figure.AbstractTransparentImage@  now implement this new interface.
 
 h4. Changes in @org.eclipse.sirius.tests.junit.support@
 

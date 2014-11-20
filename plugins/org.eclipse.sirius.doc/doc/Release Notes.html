@@ -326,29 +326,31 @@
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
-		<p>The 
-			<code>org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator</code> did not take into account the rectangle size passed to 
-			<code>getValidLocation</code>. To resolve that limitation, several protected methods that took a Point as location now take a Rectangle:
-		</p>
 		<ul>
-			<li>
-				<code>locateOnBorder(Point, int, int, IFigure, Collection&lt;IFigure&gt;, List&lt;IFigure&gt;)</code> Take a Rectangle instead a point: 
-				<code>locateOnBorder(Rectangle, int, int, IFigure, Collection&lt;IFigure&gt;, List&lt;IFigure&gt;)</code>
-			</li>
-			<li>
-				<code>locateOnSouthBorder</code>, 
-				<code>locateOnNorthBorder</code>, 
-				<code>locateOnWestBorder</code> and 
-				<code>locateOnEastBorder</code> signature is now 
-				<code>(Rectangle, int, IFigure, Collection&lt;IFigure&gt;, List&lt;IFigure&gt;)</code>
-			</li>
-			<li>
-				<code>locateOnParent</code> signature is now 
-				<code>locateOnParent(Rectangle, int, IFigure)</code>
-			</li>
-			<li>
-				<code>conflicts</code> signature is now 
-				<code>conflicts(Rectangle, IFigure, Collection&lt;IFigure&gt;, List&lt;IFigure&gt;)</code>
+			<li>The 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator</code> did not take into account the rectangle size passed to 
+				<code>getValidLocation</code>. To resolve that limitation, several protected methods that took a Point as location now take a Rectangle:
+				<ul>
+					<li>
+						<code>locateOnBorder(Point, int, int, IFigure, Collection&lt;IFigure&gt;, List&lt;IFigure&gt;)</code> Take a Rectangle instead a point: 
+						<code>locateOnBorder(Rectangle, int, int, IFigure, Collection&lt;IFigure&gt;, List&lt;IFigure&gt;)</code>
+					</li>
+					<li>
+						<code>locateOnSouthBorder</code>, 
+						<code>locateOnNorthBorder</code>, 
+						<code>locateOnWestBorder</code> and 
+						<code>locateOnEastBorder</code> signature is now 
+						<code>(Rectangle, int, IFigure, Collection&lt;IFigure&gt;, List&lt;IFigure&gt;)</code>
+					</li>
+					<li>
+						<code>locateOnParent</code> signature is now 
+						<code>locateOnParent(Rectangle, int, IFigure)</code>
+					</li>
+					<li>
+						<code>conflicts</code> signature is now 
+						<code>conflicts(Rectangle, IFigure, Collection&lt;IFigure&gt;, List&lt;IFigure&gt;)</code>
+					</li>
+				</ul>
 			</li>
 			<li>The constant 
 				<code>DiagramImagesPath.LINK_TO_VIEWPOINT_IMG</code> has been moved to 
@@ -376,6 +378,15 @@
 			</li>
 			<li>The 
 				<code>org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart.getEAdapterStrokeColor</code> method has been removed as the corresponding adapter was uneffective and is no more used and installed on the edge edit parts.
+			</li>
+			<li>The 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.figure.ImageFigureWithAlpha</code> interface has been added to identify Figures having the capability to return an alpha value from a coordinate.
+				<ul>
+					<li>
+						<code>org.eclipse.sirius.diagram.ui.tools.api.figure.AbstractCachedSVGFigure</code> and 
+						<code>org.eclipse.sirius.diagram.ui.tools.api.figure.AbstractTransparentImage</code>  now implement this new interface.
+					</li>
+				</ul>
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support">Changes in 
