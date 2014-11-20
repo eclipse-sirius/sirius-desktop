@@ -15,23 +15,21 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.sirius.common.ocl.business.internal.interpreter.OclInterpreter;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
-import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.PluginVersionCompatibility;
+import org.eclipse.sirius.tests.unit.common.interpreter.AbstractCompletionTestCase;
 import org.osgi.framework.Version;
 
 import com.google.common.base.Function;
@@ -40,8 +38,6 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-
 /**
  * Ensures that the OCL interpreter provides correct completion (e.g. in the
  * Interpreter View).
@@ -49,20 +45,18 @@ import org.eclipse.sirius.tests.SiriusTestsPlugin;
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  * 
  */
-public class OCLCompletionTest extends TestCase {
-
-    private OclInterpreter interpreter;
-
-    private IProposalProvider proposalProvider;
+public class OCLCompletionTest extends AbstractCompletionTestCase {
 
     /**
-     * A function that, once applied, returns all the proposals according to a
-     * given {@link ContentInstanceContext}.
+     * 
+     * {@inheritDoc}
+     * 
+     * @see junit.framework.TestCase#setUp()
      */
-    private Function<ContentInstanceContext, List<ContentProposal>> proposalInstanceFunction = new Function<ContentInstanceContext, List<ContentProposal>>() {
-        public List<ContentProposal> apply(ContentInstanceContext input) {
-            return proposalProvider.getProposals(interpreter, input);
-        }
+    protected void setUp() throws Exception {
+        super.setUp();
+        OclInterpreter oclInterpreter = new OclInterpreter();
+        setInterpreterAndProposalProvider(oclInterpreter, oclInterpreter);
     };
 
     /**
@@ -76,33 +70,28 @@ public class OCLCompletionTest extends TestCase {
     };
 
     /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#setUp()
+     * Tests proposal based on "ocl:" prefix.
      */
-    protected void setUp() throws Exception {
-        super.setUp();
+    public void testOCLCompletionOnInterpreterPrefix() {
+        ContentContext cc = createContentContext("o", 1, "EClass");
+        assertCompletionMatchesEmptyExpression(cc, compoundProposalFunction);
 
-        // The OCL Interpreter is its own proposal provider (as it implements
-        // IProposalProvider)
-        interpreter = new OclInterpreter();
-        proposalProvider = interpreter;
-    };
+        cc = createContentContext("ocl", 3, "EClass");
+        assertCompletionMatchesEmptyExpression(cc, compoundProposalFunction);
+    }
 
     /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#tearDown()
+     * Tests proposal based on "ocl:" prefix.
      */
-    @Override
-    protected void tearDown() throws Exception {
-        interpreter.dispose();
-        interpreter = null;
-        proposalProvider = null;
+    public void testOCLInstanceOnCompletionInterpreterPrefix() {
+        EClass c = EcoreFactory.eINSTANCE.createEClass();
+        c.setName("c1");
 
-        super.tearDown();
+        ContentInstanceContext cic = new ContentInstanceContext(c, "o", 1);
+        assertCompletionMatchesEmptyExpression(cic, compoundProposalInstanceFunction);
+
+        cic = new ContentInstanceContext(c, "ocl", 3);
+        assertCompletionMatchesEmptyExpression(cic, compoundProposalInstanceFunction);
     }
 
     /**
@@ -111,13 +100,13 @@ public class OCLCompletionTest extends TestCase {
      */
     public void testOCLProposalsOnNullContext() {
         ContentContext cc = null;
-        assertTrue(proposalProvider.getProposals(interpreter, cc).isEmpty());
+        assertTrue(getProposals(cc).isEmpty());
 
         ContentInstanceContext cic = null;
-        assertTrue(proposalProvider.getProposals(interpreter, cic).isEmpty());
+        assertTrue(getProposals(cic).isEmpty());
 
         cic = new ContentInstanceContext(null, OclInterpreter.OCL_DISCRIMINANT, OclInterpreter.OCL_DISCRIMINANT.length());
-        assertTrue(proposalProvider.getProposals(interpreter, cic).isEmpty());
+        assertTrue(getProposals(cic).isEmpty());
     }
 
     /**
@@ -158,21 +147,21 @@ public class OCLCompletionTest extends TestCase {
         ContentInstanceContext cic = new ContentInstanceContext(c, OclInterpreter.OCL_DISCRIMINANT, 0);
 
         // No completion before ocl:
-        List<ContentProposal> contentProposals = proposalProvider.getProposals(interpreter, cic);
+        List<ContentProposal> contentProposals = getProposals(cic);
         assertTrue(contentProposals.isEmpty());
 
         // Check completion on 'ocl:'
         cic = new ContentInstanceContext(c, OclInterpreter.OCL_DISCRIMINANT, OclInterpreter.OCL_DISCRIMINANT.length());
-        contentProposals = proposalProvider.getProposals(interpreter, cic);
+        contentProposals = getProposals(cic);
         Set<String> vars = Sets.newHashSet();
-        vars.addAll(interpreter.getVariables().keySet());
+        vars.addAll(concreteInterpreter.getVariables().keySet());
         vars.add("self");
         checkCompletionProposal(c.eClass(), contentProposals, vars);
 
         // Check completion on 'ocl:self.' (should be the same except for 'self'
         cic = new ContentInstanceContext(c, OclInterpreter.OCL_DISCRIMINANT + "self.", 9);
         vars.remove("self");
-        contentProposals = proposalProvider.getProposals(interpreter, cic);
+        contentProposals = getProposals(cic);
         checkCompletionProposal(c.eClass(), contentProposals, vars);
     }
 
@@ -185,21 +174,21 @@ public class OCLCompletionTest extends TestCase {
         ContentInstanceContext cic = new ContentInstanceContext(dNode, OclInterpreter.OCL_DISCRIMINANT, 0);
 
         // No completion before ocl:
-        List<ContentProposal> contentProposals = proposalProvider.getProposals(interpreter, cic);
+        List<ContentProposal> contentProposals = getProposals(cic);
         assertTrue(contentProposals.isEmpty());
 
         // Check completion on 'ocl:'
         cic = new ContentInstanceContext(dNode, OclInterpreter.OCL_DISCRIMINANT, OclInterpreter.OCL_DISCRIMINANT.length());
-        contentProposals = proposalProvider.getProposals(interpreter, cic);
+        contentProposals = getProposals(cic);
         Set<String> vars = Sets.newHashSet();
         vars.add("self");
         checkCompletionProposal(dNode.eClass(), contentProposals, vars);
 
         // Check completion on 'ocl:self.' (should be the same except for 'self'
         cic = new ContentInstanceContext(dNode, OclInterpreter.OCL_DISCRIMINANT + "self./", 9);
-        contentProposals = proposalProvider.getProposals(interpreter, cic);
+        contentProposals = getProposals(cic);
 
-        checkCompletionProposal(dNode.eClass(), contentProposals, interpreter.getVariables().keySet());
+        checkCompletionProposal(dNode.eClass(), contentProposals, concreteInterpreter.getVariables().keySet());
     }
 
     /**
@@ -217,9 +206,9 @@ public class OCLCompletionTest extends TestCase {
         };
         List<String> mockVsms = new ArrayList<String>();
         mockVsms.add(SiriusTestsPlugin.PLUGIN_ID);
-        interpreter.setProperty(IInterpreter.FILES, mockVsms);
+        concreteInterpreter.setProperty(IInterpreter.FILES, mockVsms);
         Set<String> vars = Sets.newHashSet();
-        vars.addAll(interpreter.getVariables().keySet());
+        vars.addAll(concreteInterpreter.getVariables().keySet());
         vars.add("self");
 
         // Step 2: call completion on 'ocl:ab' (should return 'abstract')
@@ -310,7 +299,7 @@ public class OCLCompletionTest extends TestCase {
         StringBuilder errorMsg = new StringBuilder();
         checkVariables(variables, proposals, concerned, errorMsg);
         checkEStruturalFeatures(eClass, proposals, concerned, errorMsg);
-        checkEOperations(eClass, proposals, concerned, errorMsg);
+        checkEOperations(eClass, true, proposals, concerned, getSignature, errorMsg);
         checkStandardOCLOperations(proposals, concerned, errorMsg);
         assertTrue(errorMsg.toString(), 0 == errorMsg.length());
 
@@ -318,106 +307,6 @@ public class OCLCompletionTest extends TestCase {
         // ones
         proposals.remove("getEStructuralFeature");
         assertEquals("Too many proposals are displayed: " + proposals.toString(), 0, proposals.size());
-    }
-
-    /**
-     * Ensures that the given proposal lists contain all the eOperations of the
-     * given {@link EClass} starting with the expected prefix.
-     * 
-     * @param eClass
-     *            the EClass on which completion is called
-     * @param proposals
-     *            the proposals computed by the OCL interpreter
-     * @param concerned
-     *            a predicated allowing to select only the elements starting
-     *            with the expected prefix
-     * @param errorMsg
-     *            the errorMsg to use for listing missing proposals
-     */
-    private void checkEOperations(EClass eClass, Collection<String> proposals, Predicate<String> concerned, StringBuilder errorMsg) {
-        // Step 1: get the EOperations contained in the given eClass
-        Collection<EOperation> opToCheck = Lists.newArrayList();
-        Collection<String> opNames = Sets.newHashSet();
-        for (EOperation op : eClass.getEAllOperations()) {
-            if (!(opNames.contains(op.getName()))) {
-                opNames.add(op.getName());
-                opToCheck.add(op);
-            }
-        }
-        Iterable<String> expectedEOperationProposals = Iterables.transform(opToCheck, getSignature);
-
-        // Step 2: filtering the EOperations according to proposal start
-        expectedEOperationProposals = Iterables.filter(expectedEOperationProposals, concerned);
-
-        // Step 3: ensure that proposals contain all the expected elements
-        StringBuilder tmpMsg = lookForExpectedProposals(expectedEOperationProposals, proposals);
-
-        if (tmpMsg.length() != 0) {
-            tmpMsg.insert(0, "\nSome expected operations are not present in completion proposals:");
-            errorMsg.append(tmpMsg.toString());
-        }
-    }
-
-    /**
-     * Ensures that the given proposal lists contain all the eStructuralFeatures
-     * of the given {@link EClass} starting with the expected prefix.
-     * 
-     * @param eClass
-     *            the EClass on which completion is called
-     * @param proposals
-     *            the proposals computed by the OCL interpreter
-     * @param concerned
-     *            a predicated allowing to select only the elements starting
-     *            with the expected prefix
-     * @param errorMsg
-     *            the errorMsg to use for listing missing proposals
-     */
-    private void checkEStruturalFeatures(EClass eClass, Collection<String> proposals, Predicate<String> concerned, StringBuilder errorMsg) {
-        // Step 1: get all EClasses structural features
-        Function<EStructuralFeature, String> getExpectedProposal = new Function<EStructuralFeature, String>() {
-            public String apply(EStructuralFeature from) {
-                return from.getName();
-            }
-        };
-        Iterable<String> expectedStructuralFeatures = Iterables.transform(eClass.getEAllStructuralFeatures(), getExpectedProposal);
-
-        // Step 2: filtering features according to proposal start
-        expectedStructuralFeatures = Sets.newLinkedHashSet(Iterables.filter(expectedStructuralFeatures, concerned));
-
-        // Step 3: ensure that proposals contain all the expected elements
-        StringBuilder tmpMsg = lookForExpectedProposals(expectedStructuralFeatures, proposals);
-
-        if (tmpMsg.length() != 0) {
-            tmpMsg.insert(0, "\nSome expected features are not present in completion proposals:");
-            errorMsg.append(tmpMsg.toString());
-        }
-    }
-
-    /**
-     * Ensures that the given proposal lists contain all the given expected
-     * variables.
-     * 
-     * @param variables
-     *            the expected variables
-     * @param proposals
-     *            the proposals computed by the OCL interpreter
-     * @param concerned
-     *            a predicated allowing to select only the elements starting
-     *            with the expected prefix
-     * @param errorMsg
-     *            the errorMsg to use for listing missing proposals
-     */
-    private void checkVariables(Set<String> variables, Collection<String> proposals, Predicate<String> concerned, StringBuilder errorMsg) {
-        // Step 1: filtering variable according to proposal start
-        Set<String> filteredVariables = Sets.newLinkedHashSet(Iterables.filter(variables, concerned));
-
-        // Step 2: ensure that proposals list all the expected variables
-        StringBuilder tmpMsg = lookForExpectedProposals(filteredVariables, proposals);
-
-        if (tmpMsg.length() != 0) {
-            tmpMsg.insert(0, "\nSome expected variables are not present in completion proposals:");
-            errorMsg.append(tmpMsg.toString());
-        }
     }
 
     /**
@@ -442,40 +331,13 @@ public class OCLCompletionTest extends TestCase {
             oclOperations.add("toString");
         }
 
-        // Step 2: filter expected operations according to proposal start
-        oclOperations = Sets.newLinkedHashSet(Iterables.filter(oclOperations, concerned));
-
         // Step 3: ensure that proposals list all those operations
-        StringBuilder tmpMsg = lookForExpectedProposals(oclOperations, proposals);
+        StringBuilder tmpMsg = lookForExpectedProposals(oclOperations, proposals, concerned);
 
         if (tmpMsg.length() != 0) {
             tmpMsg.insert(0, "\nSome expected variables are not present in completion proposals:");
             errorMsg.append(tmpMsg.toString());
         }
-    }
-
-    /**
-     * Ensures that the given expected proposals are all contained in the given
-     * actual proposals.
-     * 
-     * @param expectedProposals
-     *            the expected proposals
-     * @param proposals
-     *            the proposals computed by the OCL interpreter
-     * @return the error message
-     */
-    private StringBuilder lookForExpectedProposals(Iterable<String> expectedProposals, Collection<String> proposals) {
-        StringBuilder tmpMsg = new StringBuilder();
-
-        for (String prop : expectedProposals) {
-            if (proposals.contains(prop)) {
-                proposals.remove(prop);
-            } else {
-                tmpMsg.append("\n * " + prop);
-            }
-        }
-
-        return tmpMsg;
     }
 
     /**
