@@ -14,15 +14,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-
-import junit.framework.TestCase;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter.AcceleoMTLInterpreter;
@@ -31,21 +26,18 @@ import org.eclipse.sirius.common.acceleo.mtl.ide.AcceleoProposalProvider;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
-import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
-import org.eclipse.sirius.common.tools.api.interpreter.DefaultInterpreterContextFactory;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.unit.common.interpreter.AbstractCompletionTestCase;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Tests for the {@link AcceleoMTLInterpreter} utility class.
@@ -53,25 +45,7 @@ import org.eclipse.sirius.tests.SiriusTestsPlugin;
  * @author mporhel
  * 
  */
-public class AcceleoMTLCompletionTests extends TestCase {
-
-    private IInterpreter interpreter;
-
-    private IProposalProvider proposalProvider;
-
-    private Function<ContentContext, List<ContentProposal>> proposalFunction = new Function<ContentContext, List<ContentProposal>>() {
-        public List<ContentProposal> apply(ContentContext input) {
-            IProposalProvider proposalProvider = new AcceleoProposalProvider();
-            return proposalProvider.getProposals(interpreter, input);
-        }
-    };
-
-    private Function<ContentInstanceContext, List<ContentProposal>> proposalInstanceFunction = new Function<ContentInstanceContext, List<ContentProposal>>() {
-        public List<ContentProposal> apply(ContentInstanceContext input) {
-            IProposalProvider proposalProvider = new AcceleoProposalProvider();
-            return proposalProvider.getProposals(interpreter, input);
-        }
-    };
+public class AcceleoMTLCompletionTests extends AbstractCompletionTestCase {
 
     private static final String IMPORT = "org::eclipse::sirius::tests::unit::common::interpreter::acceleo::mtl::AcceleoMtlInterpreterTestModule";
 
@@ -83,21 +57,36 @@ public class AcceleoMTLCompletionTests extends TestCase {
         }
     };
 
+    @Override
     protected void setUp() throws Exception {
         super.setUp();
-
-        interpreter = new AcceleoMTLInterpreter();
-        proposalProvider = new AcceleoProposalProvider();
+        setInterpreterAndProposalProvider(new AcceleoMTLInterpreter(), new AcceleoProposalProvider());
     };
 
-    @Override
-    protected void tearDown() throws Exception {
-        interpreter.dispose();
-        interpreter = null;
+    /**
+     * Tests proposal based on acceleo prefix.
+     */
+    public void testAcceleoMTLCompletionInterpreterPrefix() {
 
-        proposalProvider = null;
+        ContentContext cc = createContentContext("[", 1, "EClass");
+        assertCompletionMatchesEmptyExpression(cc, compoundProposalFunction);
 
-        super.tearDown();
+        cc = createContentContext("[/", 2, "EClass");
+        assertCompletionMatchesEmptyExpression(cc, compoundProposalFunction);
+    }
+
+    /**
+     * Tests proposal based on acceleo prefix.
+     */
+    public void testAcceleoMTLInstanceCompletionInterpreterPrefix() {
+        EClass c = EcoreFactory.eINSTANCE.createEClass();
+        c.setName("c1");
+
+        ContentInstanceContext cic = new ContentInstanceContext(c, "[", 1);
+        assertCompletionMatchesEmptyExpression(cic, compoundProposalInstanceFunction);
+
+        cic = new ContentInstanceContext(c, "[/", 2);
+        assertCompletionMatchesEmptyExpression(cic, compoundProposalInstanceFunction);
     }
 
     /**
@@ -108,12 +97,10 @@ public class AcceleoMTLCompletionTests extends TestCase {
         eClass.setName("c");
 
         ContentContext cc = null;
-        assertTrue(proposalProvider.getProposals(interpreter, cc).isEmpty());
+        assertTrue(getProposals(cc).isEmpty());
 
         ContentInstanceContext cic = null;
-        assertTrue(proposalProvider.getProposals(interpreter, cic).isEmpty());
-
-        interpreter.dispose();
+        assertTrue(getProposals(cic).isEmpty());
     }
 
     /**
@@ -121,8 +108,7 @@ public class AcceleoMTLCompletionTests extends TestCase {
      */
     public void testAcceleoMTLCompletionEmtpyField() {
         ContentContext cc = createContentContext("", 0, "EClass");
-
-        doTestAcceleoMTLCompletionEmtpyField(cc, proposalFunction);
+        assertCompletionMatchesEmptyExpression(cc, proposalFunction);
     }
 
     /**
@@ -133,22 +119,7 @@ public class AcceleoMTLCompletionTests extends TestCase {
         c.setName("c1");
 
         ContentInstanceContext cic = new ContentInstanceContext(c, "", 0);
-
-        doTestAcceleoMTLCompletionEmtpyField(cic, proposalInstanceFunction);
-    }
-
-    private <T> void doTestAcceleoMTLCompletionEmtpyField(T context, Function<T, List<ContentProposal>> getProposalFunction) {
-        List<ContentProposal> proposals = getProposalFunction.apply(context);
-
-        assertEquals(1, proposals.size());
-        assertEquals("[/]", proposals.get(0).getProposal());
-        assertEquals("[/]", proposals.get(0).getDisplay());
-        assertEquals(1, proposals.get(0).getCursorPosition());
-
-        ContentProposal newEmtpyExpression = proposalProvider.getNewEmtpyExpression();
-        assertEquals("[/]", newEmtpyExpression.getProposal());
-        assertEquals("[/]", newEmtpyExpression.getDisplay());
-        assertEquals(1, newEmtpyExpression.getCursorPosition());
+        assertCompletionMatchesEmptyExpression(cic, proposalInstanceFunction);
     }
 
     /**
@@ -238,15 +209,15 @@ public class AcceleoMTLCompletionTests extends TestCase {
         ContentContext cc = createContentContext("[/]", 0, "EClass");
 
         // No completion before [
-        List<ContentProposal> contentProposals = proposalProvider.getProposals(interpreter, cc);
+        List<ContentProposal> contentProposals = getProposals(cc);
         // assertTrue(contentProposals.isEmpty());
 
         // implicit context
         cc = createContentContext("[/]", 1, "EClass");
-        contentProposals = proposalProvider.getProposals(interpreter, cc);
+        contentProposals = getProposals(cc);
 
         Set<String> vars = Sets.newHashSet();
-        vars.addAll(interpreter.getVariables().keySet());
+        vars.addAll(concreteInterpreter.getVariables().keySet());
         vars.add("thisEObject");
         vars.add("self");
 
@@ -254,15 +225,15 @@ public class AcceleoMTLCompletionTests extends TestCase {
 
         //
         cc = createContentContext("[self./]", 6, "EClass");
-        contentProposals = proposalProvider.getProposals(interpreter, cc);
+        contentProposals = getProposals(cc);
 
-        checkCompletionProposal(c.eClass(), contentProposals, interpreter.getVariables().keySet(), false);
+        checkCompletionProposal(c.eClass(), contentProposals, concreteInterpreter.getVariables().keySet(), false);
 
         // qualified name
         cc = createContentContext("[self./]", 6, "ecore.EClass");
-        contentProposals = proposalProvider.getProposals(interpreter, cc);
+        contentProposals = getProposals(cc);
 
-        checkCompletionProposal(c.eClass(), contentProposals, interpreter.getVariables().keySet(), false);
+        checkCompletionProposal(c.eClass(), contentProposals, concreteInterpreter.getVariables().keySet(), false);
     }
 
     /**
@@ -276,14 +247,14 @@ public class AcceleoMTLCompletionTests extends TestCase {
         ContentInstanceContext cic = new ContentInstanceContext(c, "[/]", 0);
 
         // No completion before [
-        List<ContentProposal> contentProposals = proposalProvider.getProposals(interpreter, cic);
+        List<ContentProposal> contentProposals = getProposals(cic);
         // assertTrue(contentProposals.isEmpty());
 
         cic = new ContentInstanceContext(c, "[/]", 1);
-        contentProposals = proposalProvider.getProposals(interpreter, cic);
+        contentProposals = getProposals(cic);
 
         Set<String> vars = Sets.newHashSet();
-        vars.addAll(interpreter.getVariables().keySet());
+        vars.addAll(concreteInterpreter.getVariables().keySet());
         vars.add("thisEObject");
         vars.add("self");
 
@@ -291,8 +262,8 @@ public class AcceleoMTLCompletionTests extends TestCase {
 
         //
         cic = new ContentInstanceContext(c, "[self./]", 6);
-        contentProposals = proposalProvider.getProposals(interpreter, cic);
-        checkCompletionProposal(c.eClass(), contentProposals, interpreter.getVariables().keySet(), false);
+        contentProposals = getProposals(cic);
+        checkCompletionProposal(c.eClass(), contentProposals, concreteInterpreter.getVariables().keySet(), false);
     }
 
     /**
@@ -307,11 +278,11 @@ public class AcceleoMTLCompletionTests extends TestCase {
         ContentContext cc = createContentContext("[/]", 0, "DNode", DiagramPackage.eINSTANCE, Collections.<String, String> emptyMap(), Collections.<String> emptyList());
 
         // No completion before [
-        List<ContentProposal> contentProposals = proposalProvider.getProposals(interpreter, cc);
+        List<ContentProposal> contentProposals = getProposals(cc);
         // assertTrue(contentProposals.isEmpty());
 
         cc = createContentContext("[/]", 1, "DNode", DiagramPackage.eINSTANCE, Collections.<String, String> emptyMap(), Collections.<String> emptyList());
-        contentProposals = proposalProvider.getProposals(interpreter, cc);
+        contentProposals = getProposals(cc);
 
         Set<String> vars = Sets.newHashSet();
         vars.add("thisEObject");
@@ -320,14 +291,14 @@ public class AcceleoMTLCompletionTests extends TestCase {
         checkCompletionProposal(dNode.eClass(), contentProposals, vars, true);
 
         cc = createContentContext("[self./]", 6, "DNode", DiagramPackage.eINSTANCE, Collections.<String, String> emptyMap(), Collections.<String> emptyList());
-        contentProposals = proposalProvider.getProposals(interpreter, cc);
+        contentProposals = getProposals(cc);
 
-        checkCompletionProposal(dNode.eClass(), contentProposals, interpreter.getVariables().keySet(), false);
+        checkCompletionProposal(dNode.eClass(), contentProposals, concreteInterpreter.getVariables().keySet(), false);
 
         cc = createContentContext("[self./]", 6, "diagram.DNode", DiagramPackage.eINSTANCE, Collections.<String, String> emptyMap(), Collections.<String> emptyList());
-        contentProposals = proposalProvider.getProposals(interpreter, cc);
+        contentProposals = getProposals(cc);
 
-        checkCompletionProposal(dNode.eClass(), contentProposals, interpreter.getVariables().keySet(), false);
+        checkCompletionProposal(dNode.eClass(), contentProposals, concreteInterpreter.getVariables().keySet(), false);
     }
 
     /**
@@ -341,14 +312,14 @@ public class AcceleoMTLCompletionTests extends TestCase {
         ContentInstanceContext cic = new ContentInstanceContext(dNode, "[/]", 0);
 
         // No completion before [
-        List<ContentProposal> contentProposals = proposalProvider.getProposals(interpreter, cic);
+        List<ContentProposal> contentProposals = getProposals(cic);
         // assertTrue(contentProposals.isEmpty());
 
         cic = new ContentInstanceContext(dNode, "[/]", 1);
-        contentProposals = proposalProvider.getProposals(interpreter, cic);
+        contentProposals = getProposals(cic);
 
         Set<String> vars = Sets.newHashSet();
-        vars.addAll(interpreter.getVariables().keySet());
+        vars.addAll(concreteInterpreter.getVariables().keySet());
         vars.add("thisEObject");
         vars.add("self");
 
@@ -356,9 +327,9 @@ public class AcceleoMTLCompletionTests extends TestCase {
 
         //
         cic = new ContentInstanceContext(dNode, "[self./]", 6);
-        contentProposals = proposalProvider.getProposals(interpreter, cic);
+        contentProposals = getProposals(cic);
 
-        checkCompletionProposal(dNode.eClass(), contentProposals, interpreter.getVariables().keySet(), false);
+        checkCompletionProposal(dNode.eClass(), contentProposals, concreteInterpreter.getVariables().keySet(), false);
     }
 
     /**
@@ -400,11 +371,11 @@ public class AcceleoMTLCompletionTests extends TestCase {
      *            "[self.name.concat()/]", cursor : 18
      */
     private <T> void doTestAcceleoMTLCompletionWithVariables(EClass c, String varName, T context1, T context2, Function<T, List<ContentProposal>> getProposalFunction) {
-        interpreter.setVariable(varName, c);
-        assertEquals("Variables was not declared", 1, interpreter.getVariables().size());
+        concreteInterpreter.setVariable(varName, c);
+        assertEquals("Variables was not declared", 1, concreteInterpreter.getVariables().size());
 
         Set<String> vars = Sets.newHashSet();
-        vars.addAll(interpreter.getVariables().keySet());
+        vars.addAll(concreteInterpreter.getVariables().keySet());
         vars.add("thisEObject");
         vars.add("self");
 
@@ -461,13 +432,13 @@ public class AcceleoMTLCompletionTests extends TestCase {
     private <T> void doTestAcceleoMTLCompletionWithDependencies(EClass c, T context1, T context2, T context3, Function<T, List<ContentProposal>> getProposalFunction, Collection<String> dependencies) {
         List<String> mockVsms = new ArrayList<String>();
         mockVsms.add(SiriusTestsPlugin.PLUGIN_ID);
-        interpreter.setProperty(IInterpreter.FILES, mockVsms);
+        concreteInterpreter.setProperty(IInterpreter.FILES, mockVsms);
         for (String dep : dependencies) {
-            interpreter.addImport(dep);
+            concreteInterpreter.addImport(dep);
         }
 
         Set<String> vars = Sets.newHashSet();
-        vars.addAll(interpreter.getVariables().keySet());
+        vars.addAll(concreteInterpreter.getVariables().keySet());
         vars.add("thisEObject");
         vars.add("self");
 
@@ -525,11 +496,11 @@ public class AcceleoMTLCompletionTests extends TestCase {
     private <T> void doTestAcceleoMTLCompletionWithProposalStart(EClass c, CreateContextWithCursorPosition<T> createContextFunction, Function<T, List<ContentProposal>> getProposalFunction) {
         List<String> mockVsms = new ArrayList<String>();
         mockVsms.add(SiriusTestsPlugin.PLUGIN_ID);
-        interpreter.setProperty(IInterpreter.FILES, mockVsms);
-        interpreter.addImport(IMPORT);
+        concreteInterpreter.setProperty(IInterpreter.FILES, mockVsms);
+        concreteInterpreter.addImport(IMPORT);
 
         Set<String> vars = Sets.newHashSet();
-        vars.addAll(interpreter.getVariables().keySet());
+        vars.addAll(concreteInterpreter.getVariables().keySet());
         vars.add("thisEObject");
         vars.add("self");
 
@@ -549,20 +520,6 @@ public class AcceleoMTLCompletionTests extends TestCase {
         ctx = createContextFunction.apply("[self.name.concat(thisEObject.nam)/]");
         contentProposals = getProposalFunction.apply(ctx);
         checkCompletionProposal(c.eClass(), contentProposals, vars, false, Collections.singleton(IMPORT), "nam");
-    }
-
-    private ContentContext createContentContext(String expression, int cursorPostion, String eClass) {
-        return createContentContext(expression, cursorPostion, eClass, Collections.<String, String> emptyMap());
-    }
-
-    private ContentContext createContentContext(String expression, int cursorPostion, String eClass, Map<String, String> variables) {
-        return createContentContext(expression, cursorPostion, eClass, null, variables, Collections.<String> emptyList());
-    }
-
-    private ContentContext createContentContext(String expression, int cursorPostion, String eClass, EPackage ePackage, Map<String, String> variables, Collection<String> dependencies) {
-        Collection<EPackage> pList = ePackage == null ? Collections.<EPackage> emptyList() : Collections.singletonList(ePackage);
-        return new ContentContext(expression, cursorPostion, DefaultInterpreterContextFactory.createInterpreterContext(null, true, null, Collections.singletonList(eClass), pList, variables,
-                dependencies));
     }
 
     private void checkCompletionProposal(EClass eClass, List<ContentProposal> contentProposals, Set<String> variables, boolean ignoreOperationNotFound) {
@@ -590,7 +547,7 @@ public class AcceleoMTLCompletionTests extends TestCase {
 
         checkEStruturalFeatures(eClass, proposals, concerned, errorMsg);
 
-        checkEOperations(eClass, implicitContext, proposals, concerned, errorMsg);
+        checkEOperations(eClass, implicitContext, proposals, concerned, getSignature, errorMsg);
 
         checkDependencies(implicitContext, dependencies, proposals, concerned, errorMsg);
 
@@ -621,65 +578,6 @@ public class AcceleoMTLCompletionTests extends TestCase {
 
         if (tmpMsg.length() != 0) {
             tmpMsg.insert(0, "\nSome expected dependencies are not present in completion proposals:");
-            errorMsg.append(tmpMsg.toString());
-        }
-    }
-
-    private StringBuilder lookForExpectedProposals(Iterable<String> expectedProposals, Collection<String> proposals, Predicate<String> concerned) {
-        StringBuilder tmpMsg = new StringBuilder();
-
-        for (String prop : Iterables.filter(expectedProposals, concerned)) {
-            if (proposals.contains(prop)) {
-                proposals.remove(prop);
-            } else {
-                tmpMsg.append("\n * " + prop);
-            }
-        }
-
-        return tmpMsg;
-    }
-
-    private void checkEOperations(EClass eClass, boolean implicitContext, Collection<String> proposals, Predicate<String> concerned, StringBuilder errorMsg) {
-        // EOperations
-        Collection<EOperation> opToCheck = Lists.newArrayList();
-        Collection<String> opNames = Sets.newHashSet();
-        for (EOperation op : eClass.getEAllOperations()) {
-            if (!(implicitContext && opNames.contains(op.getName()))) {
-                opNames.add(op.getName());
-                opToCheck.add(op);
-            }
-        }
-
-        StringBuilder tmpMsg = lookForExpectedProposals(Iterables.transform(opToCheck, getSignature), proposals, concerned);
-
-        if (tmpMsg.length() != 0) {
-            tmpMsg.insert(0, "\nSome expected operations are not present in completion proposals:");
-            errorMsg.append(tmpMsg.toString());
-        }
-    }
-
-    private void checkEStruturalFeatures(EClass eClass, Collection<String> proposals, Predicate<String> concerned, StringBuilder errorMsg) {
-        Function<EStructuralFeature, String> getExpectedProposal = new Function<EStructuralFeature, String>() {
-            public String apply(EStructuralFeature from) {
-                return from.getName();
-            }
-        };
-
-        // EStructuralfeatures
-        StringBuilder tmpMsg = lookForExpectedProposals(Iterables.transform(eClass.getEAllStructuralFeatures(), getExpectedProposal), proposals, concerned);
-
-        if (tmpMsg.length() != 0) {
-            tmpMsg.insert(0, "\nSome expected features are not present in completion proposals:");
-            errorMsg.append(tmpMsg.toString());
-        }
-    }
-
-    private void checkVariables(Set<String> variables, Collection<String> proposals, Predicate<String> concerned, StringBuilder errorMsg) {
-        // Variables
-        StringBuilder tmpMsg = lookForExpectedProposals(variables, proposals, concerned);
-
-        if (tmpMsg.length() != 0) {
-            tmpMsg.insert(0, "\nSome expected variables are not present in completion proposals:");
             errorMsg.append(tmpMsg.toString());
         }
     }
@@ -720,14 +618,6 @@ public class AcceleoMTLCompletionTests extends TestCase {
 
         return services;
 
-    }
-
-    private Collection<String> extractProposal(List<ContentProposal> proposals) {
-        return Lists.newArrayList(Iterables.transform(proposals, new Function<ContentProposal, String>() {
-            public String apply(ContentProposal from) {
-                return from.getProposal();
-            }
-        }));
     }
 
     private abstract class CreateContextWithCursorPosition<T> implements Function<String, T> {

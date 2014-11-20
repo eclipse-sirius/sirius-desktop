@@ -13,7 +13,6 @@ package org.eclipse.sirius.common.ui.tools.internal.contentassist;
 import java.util.List;
 
 import org.eclipse.jface.fieldassist.IContentProposal;
-
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 
@@ -58,18 +57,22 @@ public class ContentProposalConverter {
     }
 
     /**
-     * Make an IContentProposal for the specified String.
+     * Convert a {@link ContentProposal} to a JFace {@link IContentProposal}.
      * 
      * @param arg
-     * @param proposalStart
+     *            proposal to convert.
+     * @return converted proposal.
      * 
      */
-    private IContentProposal convertToJFaceContentProposal(final ContentProposal arg) {
+    public IContentProposal convertToJFaceContentProposal(final ContentProposal arg) {
         String proposal = arg.getProposal();
         int cursorPosition = arg.getCursorPosition();
         if (!StringUtil.isEmpty(proposalStart) && proposal.startsWith(proposalStart)) {
             proposal = proposal.substring(proposalStart.length());
-            cursorPosition = proposal.length();
+
+            // cursorPosition is not always at the end of the proposal, so
+            // just move the position.
+            cursorPosition -= proposalStart.length();
         }
 
         return new DefaultContentProposal(proposal, arg.getInformation(), arg.getDisplay(), cursorPosition);

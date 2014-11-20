@@ -27,19 +27,20 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.common.tools.internal.assist.ContentContextHelper;
 import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 
 /**
  * Compound interpreter.
@@ -77,7 +78,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
      * the interpreter, they'll be registered here.
      */
     private Collection<MetamodelDescriptor> additionalMetamodels = Sets.newLinkedHashSet();
-    
+
     /** The dependencies. */
     private final List<String> dependencies;
 
@@ -250,8 +251,9 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
             while (interpreterProvider == null && entryIterator.hasNext()) {
                 final Map.Entry<IInterpreterProvider, IInterpreter> entry = entryIterator.next();
                 // instance equality do not suffice as long as the interpreter
-                // is not a singleton (see CompoundInterpreter.createGenericInterpreter, each session,
-                // ...) 
+                // is not a singleton (see
+                // CompoundInterpreter.createGenericInterpreter, each session,
+                // ...)
                 if (entry.getValue() == interpreter) {
                     interpreterProvider = entry.getKey();
                 } else if (entry.getValue() != null && entry.getValue().getClass() == interpreter.getClass()) {
@@ -784,6 +786,15 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
             for (IProposalProvider provider : proposalProviders) {
                 proposals.addAll(provider.getProposals(interpreter, context));
             }
+
+            if (interpreter == DefaultInterpreterProvider.INSTANCE) {
+                // The default interpreter is used when there is no other
+                // interpreter available for the context. Try to find if the
+                // context matches empty expression from one or several
+                // interpreters prefixes.
+                // see https://bugs.eclipse.org/bugs/show_bug.cgi?id=428770
+                proposals.addAll(getEmptyExpressionProposals(context.getContents()));
+            }
         }
         return proposals;
     }
@@ -833,7 +844,7 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
     }
 
     /**
-     * Return allways null. use {@link CompoundInterpreter#getVariable(String)}
+     * Return always null. use {@link CompoundInterpreter#getVariable(String)}
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.common.tools.api.interpreter.IInterpreter#getVariablePrefix()
@@ -910,6 +921,15 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
             for (IProposalProvider provider : proposalProviders) {
                 proposals.addAll(provider.getProposals(interpreterForExpression, context));
             }
+
+            if (interpreterForExpression == DefaultInterpreterProvider.INSTANCE) {
+                // The default interpreter is used when there is no other
+                // interpreter available for the context. Try to find if the
+                // context matches empty expression from one or several
+                // interpreters prefixes.
+                // see https://bugs.eclipse.org/bugs/show_bug.cgi?id=428770
+                proposals.addAll(getEmptyExpressionProposals(context.getTextSoFar()));
+            }
         }
         return proposals;
     }
@@ -957,5 +977,28 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
      */
     public boolean supportsValidation() {
         return true;
+    }
+
+    /**
+     * Get proposals that match context for available empty expressions.
+     * 
+     * @param context
+     *            context to match
+     * @return list of proposal for empty expressions
+     */
+    private List<ContentProposal> getEmptyExpressionProposals(String context) {
+        List<ContentProposal> proposals = Lists.newArrayList();
+
+        // Provides all interpreters compatible with the context
+        final List<IProposalProvider> proposalProviders = ProposalProviderRegistry.getAllProviders();
+        for (IProposalProvider provider : proposalProviders) {
+            ContentProposal emptyExpression = provider.getNewEmtpyExpression();
+
+            if (StringUtil.isEmpty(context) || ContentContextHelper.matchEmptyExpression(context, emptyExpression)) {
+                proposals.add(emptyExpression);
+            }
+        }
+
+        return proposals;
     }
 }
