@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.ZoomDependantAnchor;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.AlphaBasedSlidableImageAnchor;
 
 /**
  * The air default size node figure to add custom anchor.
@@ -88,12 +89,20 @@ public class AirDefaultSizeNodeFigure extends DefaultSizeNodeFigure {
      */
     @Override
     protected ConnectionAnchor createAnchor(final PrecisionPoint p) {
+        ConnectionAnchor result;
         if (this.anchorProvider != null) {
             final ConnectionAnchor anchor = this.anchorProvider.createAnchor(this, p);
             setZoomManagerToAnchor(anchor);
-            return anchor;
+            result = anchor;
+        } else if (p == null) {
+            // If the old terminal for the connection anchor cannot be resolved
+            // (by SlidableAnchor) a null PrecisionPoint will passed in - this
+            // is handled here
+            result = createDefaultAnchor();
+        } else {
+            result = new AlphaBasedSlidableImageAnchor(this, p);
         }
-        return super.createAnchor(p);
+        return result;
     }
 
     /**
@@ -118,7 +127,7 @@ public class AirDefaultSizeNodeFigure extends DefaultSizeNodeFigure {
             setZoomManagerToAnchor(anchor);
             return anchor;
         }
-        return super.createDefaultAnchor();
+        return new AlphaBasedSlidableImageAnchor(this);
     }
 
     private void setZoomManagerToAnchor(final ConnectionAnchor anchor) {
