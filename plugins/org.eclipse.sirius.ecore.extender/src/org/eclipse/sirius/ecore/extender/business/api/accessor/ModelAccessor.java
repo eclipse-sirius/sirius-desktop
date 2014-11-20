@@ -531,8 +531,10 @@ public class ModelAccessor {
      *            a predicate indicating if a given reference should be ignored
      *            during removal or not (can be null if all references should be
      *            considered)
+     * @return a Collection of impacted {@link EObject objects} of this inverse
+     *         cross references removal
      */
-    public void eRemoveInverseCrossReferences(EObject eObject, ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate) {
+    public Collection<EObject> eRemoveInverseCrossReferences(EObject eObject, ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate) {
         // Step 1: getting cross referencer for the adapters of the object to
         // remove (if needed)
         final ECrossReferenceAdapter effectiveXRef;
@@ -552,7 +554,7 @@ public class ModelAccessor {
 
         // Remove all inverse cross references on non-ignored changeable
         // features
-        extender.eRemoveInverseCrossReferences(eObject, effectiveXRef, isReferencesToIgnorePredicate);
+        return extender.eRemoveInverseCrossReferences(eObject, effectiveXRef, isReferencesToIgnorePredicate);
     }
 
     /**

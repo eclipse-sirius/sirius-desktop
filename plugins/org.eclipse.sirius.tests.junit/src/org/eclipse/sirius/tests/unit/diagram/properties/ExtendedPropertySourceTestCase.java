@@ -561,8 +561,8 @@ public class ExtendedPropertySourceTestCase extends TestCase {
         }
         
         @Override
-        public void eRemoveInverseCrossReferences(EObject eObject, ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate) {
-            
+        public Collection<EObject> eRemoveInverseCrossReferences(EObject eObject, ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate) {
+            return Collections.emptyList();
         }
 
         public Object eGet(EObject instance, String name) {

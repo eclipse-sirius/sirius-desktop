@@ -55,6 +55,23 @@
 			<li>The method 
 				<code>org.eclipse.sirius.business.api.migration.IMigrationParticipant.updateCreatedObject(EObject newObject, String loadedVersion)</code> has been added to update object values in VSM before loading this objects from XML file.
 			</li>
+			<li>The method 
+				<code>org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener.disable()</code> has been added to disable the next refresh attempt in the current precommit loop iteration.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ecore.extender">Changes in 
+			<code>org.eclipse.sirius.ecore.extender</code>
+		</h4>
+		<ul>
+			<li>The method 
+				<code>org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor.eRemoveInverseCrossReferences()</code> has been changed to return the list of changed objects by the inverse cross references removal.
+			</li>
+			<li>The method 
+				<code>org.eclipse.sirius.ecore.extender.business.api.accessor.IMetamodelExtender.eRemoveInverseCrossReferences()</code> has been changed to return the list of changed objects by the inverse cross references removal.
+			</li>
+			<li>The method 
+				<code>org.eclipse.sirius.ecore.extender.business.api.accessor.CompositeMetamodelExtender.eRemoveInverseCrossReferences()</code> has been changed to return the list of changed objects by the inverse cross references removal.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
@@ -421,7 +438,7 @@
 				<code>org.eclipse.sirius.synchronizer.ModelToModelSynchronizer.update(CreatedOutput, boolean)</code> has been added to specify if we want partial refresh or not.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ecore.extender">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ecore.extender2">Changes in 
 			<code>org.eclipse.sirius.ecore.extender</code>
 		</h4>
 		<ul>
@@ -1058,7 +1075,7 @@
 				<code>org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager.initializeAfterLoad()</code> method has been removed. There is no replacement for this method documented as &#171;Not intended to be used by client&#187;.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ecore.extender2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ecore.extender3">Changes in 
 			<code>org.eclipse.sirius.ecore.extender</code>
 		</h4>
 		<ul>
@@ -1661,7 +1678,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 				<code>AbstractDiagramEdgeEditPart.refreshPath()</code> have been removed. It is not called in Sirius code anymore
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ecore.extender3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ecore.extender4">Changes in 
 			<code>org.eclipse.sirius.ecore.extender</code>
 		</h4>
 		<ul>

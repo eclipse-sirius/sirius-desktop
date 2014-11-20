@@ -195,7 +195,7 @@ public class SessionEventBrokerImpl extends ResourceSetListenerImpl implements S
     @Override
     public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
         final Multimap<ModelChangeTrigger, Notification> listenersToNotify = collectListenersToNotify(event.getNotifications());
-        if (listenersToNotify != null && listenersToNotify.size() > 0) {
+        if (listenersToNotify != null && !listenersToNotify.isEmpty()) {
             return new PreCommitPriorityNotifyListenersCommand(domain, listenersToNotify);
         }
         return null;

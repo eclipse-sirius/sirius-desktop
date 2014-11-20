@@ -13,6 +13,7 @@ package org.eclipse.sirius.ecore.extender.business.api.accessor;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import org.eclipse.emf.common.util.AbstractTreeIterator;
@@ -232,12 +233,14 @@ public class CompositeMetamodelExtender extends AbstractMetamodelExtender {
         }
         return result;
     }
-    
+
     @Override
-    public void eRemoveInverseCrossReferences(EObject eObject, ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate) {
+    public Collection<EObject> eRemoveInverseCrossReferences(EObject eObject, ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate) {
+        Collection<EObject> impactedEObjects = new LinkedHashSet<EObject>();
         for (final IMetamodelExtender extender : getActivatedExtenders()) {
-            extender.eRemoveInverseCrossReferences(eObject, xref, isReferencesToIgnorePredicate);
-        }        
+            impactedEObjects.addAll(extender.eRemoveInverseCrossReferences(eObject, xref, isReferencesToIgnorePredicate));
+        }
+        return impactedEObjects;
     }
 
     @Override

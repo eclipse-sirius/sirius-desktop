@@ -583,7 +583,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      */
     protected void initLocalTriggers() {
         Predicate<Notification> danglingRemovalPredicate = Predicates.or(DanglingRefRemovalTrigger.IS_DETACHMENT, DanglingRefRemovalTrigger.IS_ATTACHMENT);
-        DanglingRefRemovalTrigger danglingRemovalTrigger = new DanglingRefRemovalTrigger(this.getTransactionalEditingDomain(), this.getModelAccessor(), this.getSemanticCrossReferencer());
+        DanglingRefRemovalTrigger danglingRemovalTrigger = new DanglingRefRemovalTrigger(this);
         getEventBroker().addLocalTrigger(SessionEventBrokerImpl.asFilter(danglingRemovalPredicate), danglingRemovalTrigger);
 
         addRefreshEditorsListener();

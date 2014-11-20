@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
@@ -161,7 +162,8 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
     }
     
     @Override
-    public void eRemoveInverseCrossReferences(EObject eObject, ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate) {
+    public Collection<EObject> eRemoveInverseCrossReferences(EObject eObject, ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate) {
+        Collection<EObject> impactedEObjects = new LinkedHashSet<EObject>();
         Collection<Setting> inverseReferences = xref.getInverseReferences(eObject, true);
         Collection<Setting> containmentReferences = getContainmentReferences(inverseReferences);
         Collection<Setting> otherReferences = getNonContainmentReferences(inverseReferences);
@@ -175,6 +177,7 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
             if (isChangeableFeature && !isFeatureToIgnore) {
                 // we delete it
                 EcoreUtil.remove(setting, eObject);
+                impactedEObjects.add(setting.getEObject());
             }
         }
         for (EStructuralFeature.Setting setting : containmentReferences) {
@@ -187,8 +190,10 @@ public class EcoreIntrinsicExtender extends AbstractMetamodelExtender {
             if (isChangeableFeature && !isFeatureToIgnore) {
                 // we delete it
                 EcoreUtil.remove(setting, eObject);
+                impactedEObjects.add(setting.getEObject());
             }
         }
+        return impactedEObjects;
     }
 
     private Collection<Setting> getContainmentReferences(Collection<Setting> inverseReferences) {

@@ -281,8 +281,10 @@ public interface IMetamodelExtender {
      *            a predicate indicating if a given reference should be ignored
      *            during removal or not (can be null if all references should be
      *            considered)
+     * @return a Collection of impacted {@link EObject objects} of this inverse
+     *         cross references removal
      */
-    void eRemoveInverseCrossReferences(EObject eObject, ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate);
+    Collection<EObject> eRemoveInverseCrossReferences(EObject eObject, ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate);
 
     /**
      * Return true if the given instance comes from a metamodel extension

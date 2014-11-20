@@ -26,13 +26,13 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.internal.session.danalysis.DanglingRefRemovalTrigger;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.command.ui.RefreshFilterManager;
-import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -95,6 +95,8 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
      */
     private final Collection<PostRefreshCommandFactory> postRefreshCommandFactories = new ArrayList<PostRefreshCommandFactory>();
 
+    private boolean disabled;
+
     /**
      * Default constructor.
      * 
@@ -120,7 +122,7 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
      */
     public Option<Command> localChangesAboutToCommit(Collection<Notification> notifications) {
         Command result = null;
-        if (needsRefresh()) {
+        if (!disabled && needsRefresh()) {
 
             boolean impactingNotification = isImpactingNotification(notifications);
             // Do nothing if the notification concern only elements of aird
@@ -131,9 +133,10 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
                     result = optionCommand.get();
                 }
             }
+            setForceRefresh(false);
+            representationsToForceRefresh.clear();
         }
-        setForceRefresh(false);
-        representationsToForceRefresh.clear();
+        disabled = false;
         return Options.newSome(result);
     }
 
@@ -144,11 +147,9 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
             if (notifier instanceof EObject) {
                 EObject eObjectNotifier = (EObject) notifier;
                 Resource notifierResource = eObjectNotifier.eResource();
-                if (notifierResource != null) {
-                    if (!(notifierResource.getContents().get(0) instanceof DAnalysis)) {
-                        isImpactingNotification = true;
-                        break;
-                    }
+                if (notifierResource != null && !new ResourceQuery(notifierResource).isRepresentationsResource()) {
+                    isImpactingNotification = true;
+                    break;
                 }
             }
         }
@@ -278,5 +279,12 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
      */
     public void addPostRefreshCommandFactory(final PostRefreshCommandFactory factory) {
         postRefreshCommandFactories.add(factory);
+    }
+
+    /**
+     * Disable the next refresh attempt in the current precommit loop iteration.
+     */
+    public void disable() {
+        disabled = true;
     }
 }
