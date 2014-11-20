@@ -17,11 +17,14 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.channels.FileChannel;
 
+import junit.framework.TestCase;
+
 import org.eclipse.core.filebuffers.manipulation.ContainerCreator;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourceAttributes;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -91,6 +94,12 @@ public final class EclipseTestsSupportHelperImpl implements EclipseTestsSupportH
             @Override
             protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException {
                 if (project.exists()) {
+                    // On Mac OS X, read only files might be marked as immutable
+                    // too, setting the read only state to false will allow to
+                    // delete the project.
+                    for (IResource res : project.members(IResource.DEPTH_INFINITE)) {
+                        changeFileReadOnlyAttribute(res, false);
+                    }
                     project.delete(true, new NullProgressMonitor());
                 }
             }
@@ -113,6 +122,11 @@ public final class EclipseTestsSupportHelperImpl implements EclipseTestsSupportH
             @Override
             protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException {
                 if (file.exists()) {
+                    // On Mac OS X, read only files might be marked as immutable
+                    // too, setting the read only state to false will allow to
+                    // delete the project.
+                    changeFileReadOnlyAttribute(file, false);
+
                     file.delete(true, new NullProgressMonitor());
                 }
             }
@@ -241,7 +255,38 @@ public final class EclipseTestsSupportHelperImpl implements EclipseTestsSupportH
         }
 
         final IFile destinationFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(destinationWorkspaceRelativePath));
-        destinationFile.getLocation().toFile().setReadOnly();
+        if (destinationFile.exists()) {
+            try {
+                changeFileReadOnlyAttribute(destinationFile, readOnly);
+            } catch (CoreException e) {
+                // Propagate as runtime exception
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    @Override
+    public void setReadOnlyStatus(boolean readOnly, IResource... resources) {
+        try {
+            for (IResource res : resources) {
+                ResourceAttributes attr = res.getResourceAttributes();
+                if (attr != null && attr.isReadOnly() != readOnly) {
+                    attr.setReadOnly(readOnly);
+                    res.setResourceAttributes(attr);
+                }
+                TestCase.assertEquals("The resource must be read only", readOnly, res.getResourceAttributes().isReadOnly());
+            }
+        } catch (CoreException e) {
+            TestCase.fail("Some resource can not be passed to " + (readOnly ? "read only. " : "writtable. " + e.getMessage()));
+        }
+    }
+
+    private void changeFileReadOnlyAttribute(IResource res, boolean readOnly) throws CoreException {
+        ResourceAttributes attr = res.getResourceAttributes();
+        if (attr != null && attr.isReadOnly() != readOnly) {
+            attr.setReadOnly(readOnly);
+            res.setResourceAttributes(attr);
+        }
     }
 
 }

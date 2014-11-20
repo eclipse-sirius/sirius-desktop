@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.tests.support.internal.helper.EclipseTestsSupportHelperImpl;
@@ -122,15 +123,29 @@ public interface EclipseTestsSupportHelper {
     void copyFile(final File sourceFile, final File destFile) throws IOException;
 
     /**
-     * Copy a file from a plug-in in the workspace.
+     * Change the read only status of the file with the given path.
      * 
-     * @param destinationWorkspaceRelativePath
-     *            the destination path, relative to workspace
+     * @param fileWorkspaceRelativePath
+     *            the path of the file to modify, relative to workspace
      * @param readOnly
      *            <code>true</code> if specified file must be read-only,
      *            <code>false</code> otherwise.
      */
-    void changeFileReadOnlyAttribute(final String destinationWorkspaceRelativePath, boolean readOnly);
+    void changeFileReadOnlyAttribute(final String fileWorkspaceRelativePath, boolean readOnly);
+
+    /**
+     * Change the read only status of the given resources. This method will make
+     * the test fail if we could not mark the resource as read only.
+     * 
+     * Please note that some file systems might not support setting the file as
+     * read only or might lock the files.
+     * 
+     * @param readOnly
+     *            the read only status to set
+     * @param resources
+     *            the files to update
+     */
+    void setReadOnlyStatus(boolean readOnly, IResource... resources);
 
     /**
      * Delete this file (launch in a WorkspaceModifyOperation).

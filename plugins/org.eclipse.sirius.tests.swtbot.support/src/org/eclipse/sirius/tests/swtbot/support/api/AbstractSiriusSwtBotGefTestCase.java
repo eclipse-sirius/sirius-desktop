@@ -1519,7 +1519,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             SWTBotUtils.waitAllUiEvents();
             // Delete projects created by the tests
             for (final IProject project : ResourcesPlugin.getWorkspace().getRoot().getProjects()) {
-                designerPerspective.deleteProject(project.getName());
+                EclipseTestsSupportHelper.INSTANCE.deleteProject(project.getName());
             }
 
             disposeErrorLoggers();

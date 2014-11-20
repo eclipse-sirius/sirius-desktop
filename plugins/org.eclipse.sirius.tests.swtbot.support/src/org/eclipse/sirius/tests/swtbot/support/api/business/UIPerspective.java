@@ -23,6 +23,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
+import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UISessionCreationWizardFlow.SessionChoice;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OpenedSessionCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.TreeItemAvailableCondition;
@@ -142,7 +143,9 @@ public class UIPerspective {
      * 
      * @param project
      *            name of the project to delete.
+     * @deprecated use {@link EclipseTestsSupportHelper#deleteProject(String)}           
      */
+    @Deprecated
     public void deleteProject(final UIProject project) {
         deleteProject(project.getName());
     }
@@ -152,17 +155,11 @@ public class UIPerspective {
      * 
      * @param projectName
      *            name of the project to delete.
+     * @deprecated use {@link EclipseTestsSupportHelper#deleteProject(String)}           
      */
+    @Deprecated
     public void deleteProject(final String projectName) {
-        final IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
-        try {
-            if (project.exists()) {
-                project.delete(true, true, new NullProgressMonitor());
-            }
-        } catch (final CoreException e) {
-            // Propagate as runtime exception
-            throw new RuntimeException(e);
-        }
+        EclipseTestsSupportHelper.INSTANCE.deleteProject(projectName);
     }
 
     /**

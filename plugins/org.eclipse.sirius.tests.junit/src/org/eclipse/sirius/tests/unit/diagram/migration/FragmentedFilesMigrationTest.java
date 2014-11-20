@@ -15,7 +15,6 @@ import java.util.Iterator;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourceAttributes;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -26,13 +25,13 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.sirius.business.api.repair.SiriusRepairProcess;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.editing.EditingDomainFactoryService;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.HideFilter;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
@@ -42,8 +41,6 @@ import org.eclipse.sirius.viewpoint.DView;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Tests for repair/migrate action for fragmented files.
@@ -75,16 +72,8 @@ public class FragmentedFilesMigrationTest extends AbstractRepairMigrateTest {
     protected void setUp() throws Exception {
         super.setUp();
 
-        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + SEMANTIC_MODEL_FILENAME_1, "/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_FILENAME_1);
-        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + SEMANTIC_MODEL_FILENAME_2, "/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_FILENAME_2);
-        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + SEMANTIC_MODEL_FILENAME_3, "/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_FILENAME_3);
-        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + SEMANTIC_MODEL_FILENAME_4, "/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_FILENAME_4);
-        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + SESSION_MODEL_FILENAME_1, "/" + TEMPORARY_PROJECT_NAME + "/" + SESSION_MODEL_FILENAME_1);
-        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + SESSION_MODEL_FILENAME_2, "/" + TEMPORARY_PROJECT_NAME + "/" + SESSION_MODEL_FILENAME_2);
-        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + SESSION_MODEL_FILENAME_3, "/" + TEMPORARY_PROJECT_NAME + "/" + SESSION_MODEL_FILENAME_3);
-        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + SESSION_MODEL_FILENAME_4, "/" + TEMPORARY_PROJECT_NAME + "/" + SESSION_MODEL_FILENAME_4);
-        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, PATH + "/" + SESSION_MODEL_FILENAME_5, "/" + TEMPORARY_PROJECT_NAME + "/" + SESSION_MODEL_FILENAME_5);
-
+        copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, PATH, SEMANTIC_MODEL_FILENAME_1, SEMANTIC_MODEL_FILENAME_2, SEMANTIC_MODEL_FILENAME_3, SEMANTIC_MODEL_FILENAME_4, SESSION_MODEL_FILENAME_1,
+                SESSION_MODEL_FILENAME_2, SESSION_MODEL_FILENAME_3, SESSION_MODEL_FILENAME_4, SESSION_MODEL_FILENAME_5);
     }
 
     /**
@@ -260,39 +249,31 @@ public class FragmentedFilesMigrationTest extends AbstractRepairMigrateTest {
         assertFileExists(TEMPORARY_PROJECT_NAME + "/fragmentedMigration_p2.aird");
         assertFileExists(TEMPORARY_PROJECT_NAME + "/fragmentedMigration_p1_p1_1.ecore");
         assertFileExists(TEMPORARY_PROJECT_NAME + "/fragmentedMigration_p1_p1_1.aird");
+
         IFile p1Fragment = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(TEMPORARY_PROJECT_NAME + "/fragmentedMigration_p1.aird"));
         IFile p2Fragment = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(TEMPORARY_PROJECT_NAME + "/fragmentedMigration_p2.aird"));
         IFile p1P1Fragment = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(TEMPORARY_PROJECT_NAME + "/fragmentedMigration_p1_p1_1.aird"));
-        // Change fragment file status to read only
+
+        EclipseTestsSupportHelper.INSTANCE.setReadOnlyStatus(true, p1Fragment, p2Fragment, p1P1Fragment);
         try {
-            ResourceAttributes attributP1Fragement = p1Fragment.getResourceAttributes();
-            attributP1Fragement.setReadOnly(true);
-            p1Fragment.setResourceAttributes(attributP1Fragement);
-            ResourceAttributes attributP2Fragement = p2Fragment.getResourceAttributes();
-            attributP2Fragement.setReadOnly(true);
-            p2Fragment.setResourceAttributes(attributP2Fragement);
-            ResourceAttributes attributP3Fragement = p1P1Fragment.getResourceAttributes();
-            attributP3Fragement.setReadOnly(true);
-            p1P1Fragment.setResourceAttributes(attributP3Fragement);
-        } catch (CoreException coe) {
-            fail("The file can not be passed to writtable");
+            IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(TEMPORARY_PROJECT_NAME);
+            assertEquals("It should be no backup file before migration.", 0, getNumberOfBackupFiles(project));
+
+            TransactionalEditingDomain editingDomain = EditingDomainFactoryService.INSTANCE.getEditingDomainFactory().createEditingDomain(new ResourceSetImpl());
+            ResourceSet rs = editingDomain.getResourceSet();
+
+            // Check the parent semantic model
+            URI parentUri = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/fragmentedMigration.ecore", true);
+            checkParentSemanticModel(parentUri, rs, "root");
+
+            // runRepairProcess("fragmentedMigration.aird");
+
+            // Check that 4 backup of aird files has been done.
+            // assertEquals("There should have 4 backup files after migration (one for selected aird file and three for the fragmented aird).",
+            // 4, getNumberOfBackupFiles(project));
+        } finally {
+            EclipseTestsSupportHelper.INSTANCE.setReadOnlyStatus(false, p1Fragment, p2Fragment, p1P1Fragment);
         }
-
-        IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(TEMPORARY_PROJECT_NAME);
-        assertEquals("It should be no backup file before migration.", 0, getNumberOfBackupFiles(project));
-
-        TransactionalEditingDomain editingDomain = EditingDomainFactoryService.INSTANCE.getEditingDomainFactory().createEditingDomain(new ResourceSetImpl());
-        ResourceSet rs = editingDomain.getResourceSet();
-
-        // Check the parent semantic model
-        URI parentUri = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/fragmentedMigration.ecore", true);
-        checkParentSemanticModel(parentUri, rs, "root");
-
-        // runMigrationProcessWithReadOnlyFile("fragmentedMigration.aird");
-        //
-        // // Check that 4 backup of aird files has been done.
-        // assertEquals("There should have 4 backup files after migration (one for selected aird file and three for the fragmented aird).",
-        // 4, getNumberOfBackupFiles(project));
     }
 
     /**
@@ -308,72 +289,38 @@ public class FragmentedFilesMigrationTest extends AbstractRepairMigrateTest {
         assertFileExists(TEMPORARY_PROJECT_NAME + "/fragmentedMigration_p2.aird");
         assertFileExists(TEMPORARY_PROJECT_NAME + "/fragmentedMigration_p1_p1_1.ecore");
         assertFileExists(TEMPORARY_PROJECT_NAME + "/fragmentedMigration_p1_p1_1.aird");
+
         IFile p1Fragment = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(TEMPORARY_PROJECT_NAME + "/fragmentedMigration_p1.ecore"));
         IFile p2Fragment = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(TEMPORARY_PROJECT_NAME + "/fragmentedMigration_p2.ecore"));
         IFile p1P1Fragment = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(TEMPORARY_PROJECT_NAME + "/fragmentedMigration_p1_p1_1.ecore"));
-        // Change fragment file status to read only
+
+        EclipseTestsSupportHelper.INSTANCE.setReadOnlyStatus(true, p1Fragment, p2Fragment, p1P1Fragment);
+
         try {
-            ResourceAttributes attributP1Fragement = p1Fragment.getResourceAttributes();
-            attributP1Fragement.setReadOnly(true);
-            p1Fragment.setResourceAttributes(attributP1Fragement);
-            ResourceAttributes attributP2Fragement = p2Fragment.getResourceAttributes();
-            attributP2Fragement.setReadOnly(true);
-            p2Fragment.setResourceAttributes(attributP2Fragement);
-            ResourceAttributes attributP3Fragement = p1P1Fragment.getResourceAttributes();
-            attributP3Fragement.setReadOnly(true);
-            p1P1Fragment.setResourceAttributes(attributP3Fragement);
-        } catch (CoreException coe) {
-            fail("The file can not be passed to writtable");
+            IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(TEMPORARY_PROJECT_NAME);
+            assertEquals("It should be no backup file before migration.", 0, getNumberOfBackupFiles(project));
+
+            TransactionalEditingDomain editingDomain = EditingDomainFactoryService.INSTANCE.getEditingDomainFactory().createEditingDomain(new ResourceSetImpl());
+            ResourceSet rs = editingDomain.getResourceSet();
+
+            // Check the parent semantic model
+            URI parentUri = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/fragmentedMigration.ecore", true);
+            checkParentSemanticModel(parentUri, rs, "root");
+
+            // try {
+            // runRepairProcess("fragmentedMigration.aird");
+            // fail("The migration should be cancelled because of read-only files");
+            // } catch (Exception e) {
+            //
+            // } finally {
+            // // The backup files are created
+            // //
+            // assertEquals("There should have 4 backup files after migration (one for selected aird file and three for the fragmented aird).",
+            // 0, getNumberOfBackupFiles(project));
+            // }
+        } finally {
+            EclipseTestsSupportHelper.INSTANCE.setReadOnlyStatus(false, p1Fragment, p2Fragment, p1P1Fragment);
         }
-
-        IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(TEMPORARY_PROJECT_NAME);
-        assertEquals("It should be no backup file before migration.", 0, getNumberOfBackupFiles(project));
-
-        TransactionalEditingDomain editingDomain = EditingDomainFactoryService.INSTANCE.getEditingDomainFactory().createEditingDomain(new ResourceSetImpl());
-        ResourceSet rs = editingDomain.getResourceSet();
-
-        // Check the parent semantic model
-        URI parentUri = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/fragmentedMigration.ecore", true);
-        checkParentSemanticModel(parentUri, rs, "root");
-
-        // try {
-        // runMigrationProcessWithReadOnlyFileError("fragmentedMigration.aird");
-        // fail("The migration should be cancelled because of read-only files");
-        // } catch (Exception e) {
-        //
-        // } finally {
-        // // Check that 0 backup of aird files has been done.
-        // // no error with new repair process
-        // //
-        // assertEquals("There should have 0 backup files after migration (one for selected aird file and three for the fragmented aird).",
-        // // 0, getNumberOfBackupFiles(project));
-        // }
-    }
-
-    /**
-     * Method to run migration process.
-     * 
-     * @param fileName
-     *            File name on which to run migration process.
-     * @throws Exception
-     */
-    protected void runMigrationProcessWithReadOnlyFile(String fileName) throws Exception {
-        final SiriusRepairProcess process = new SiriusRepairProcess(getFile(fileName), true);
-        process.run(new NullProgressMonitor());
-        process.dispose();
-    }
-
-    /**
-     * Method to run migration process.
-     * 
-     * @param fileName
-     *            File name on which to run migration process.
-     * @throws Exception
-     */
-    protected void runMigrationProcessWithReadOnlyFileError(String fileName) throws Exception {
-        final SiriusRepairProcess process = new SiriusRepairProcess(getFile(fileName), true);
-        process.run(new NullProgressMonitor());
-        process.dispose();
     }
 
     /**

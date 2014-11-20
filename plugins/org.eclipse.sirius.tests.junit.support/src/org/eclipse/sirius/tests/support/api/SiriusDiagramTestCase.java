@@ -22,7 +22,6 @@ import java.util.Set;
 import junit.framework.TestCase;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.ResourceAttributes;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
@@ -139,7 +138,7 @@ public class SiriusDiagramTestCase extends SiriusTestCase {
         }
         return commandFactory;
     }
-    
+
     @Override
     protected void setUp() throws Exception {
         super.setUp();
@@ -1379,23 +1378,21 @@ public class SiriusDiagramTestCase extends SiriusTestCase {
     }
 
     /**
-     * Passed file on read only status. Please note that some filesystems might
-     * not support setting the file as readonly. This method will make the test
-     * fail if we could mark the file as readonly.
+     * Passed file on read only status. Please note that some file systems might
+     * not support setting the file as read only. This method will make the test
+     * fail if we could mark the file as read only.
      * 
      * @param file
      *            the file to pass in read only status
      * @throws Exception
      *             the exception
+     * @deprecated use {@link
+     *             EclipseTestsSupportHelper.INSTANCE.setReadOnlyStatus(boolean,
+     *             IFile...)} instead.
      */
+    @Deprecated
     protected void setReadOnly(IFile file) throws Exception {
-        ResourceAttributes resource = file.getResourceAttributes();
-
-        resource.setReadOnly(true);
-
-        file.setResourceAttributes(resource);
-
-        TestCase.assertTrue("The file must be read only", file.isReadOnly());
+        EclipseTestsSupportHelper.INSTANCE.setReadOnlyStatus(true, file);
     }
 
     /**
