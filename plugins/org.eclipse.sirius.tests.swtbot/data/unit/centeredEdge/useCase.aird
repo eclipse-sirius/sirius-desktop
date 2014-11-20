@@ -1580,7 +1580,7 @@
               <styles xmi:type="notation:FilteringStyle" xmi:id="_exLdUmQsEeSA1qgxuizTfA"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_exEvoWQsEeSA1qgxuizTfA" fontName="Cantarell" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_exEvomQsEeSA1qgxuizTfA" x="792" y="300"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_exEvomQsEeSA1qgxuizTfA" x="792" y="300" width="329" height="70"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_exMEYGQsEeSA1qgxuizTfA" type="2002" element="_ew6Xl2QsEeSA1qgxuizTfA">
             <children xmi:type="notation:Node" xmi:id="_exMrcGQsEeSA1qgxuizTfA" type="5006"/>
@@ -1604,9 +1604,9 @@
             </children>
             <styles xmi:type="notation:ConnectorStyle" xmi:id="_geYmAWQsEeSA1qgxuizTfA" routing="Rectilinear"/>
             <styles xmi:type="notation:FontStyle" xmi:id="_geYmAmQsEeSA1qgxuizTfA" fontName="Cantarell" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_geYmA2QsEeSA1qgxuizTfA" points="[0, 34, -834, -218]$[0, 74, -834, -178]$[354, 74, -480, -178]$[354, 110, -480, -142]$[616, 110, -218, -142]$[616, 182, -218, -70]$[834, 182, 0, -70]$[834, 218, 0, -34]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nOzw8GQsEeSA1qgxuizTfA" id="(0.5,0.5)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_nOzw8WQsEeSA1qgxuizTfA" id="(0.5,0.5)"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_geYmA2QsEeSA1qgxuizTfA" points="[0, 35, -834, -217]$[0, 74, -834, -178]$[353, 74, -481, -178]$[353, 110, -481, -142]$[615, 110, -219, -142]$[615, 182, -219, -70]$[834, 182, 0, -70]$[834, 217, 0, -35]"/>
+            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_xBY7UHDPEeSBMLasWEyglw" id="(0.5,0.5)"/>
+            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_xBZiYHDPEeSBMLasWEyglw" id="(0.5,0.5)"/>
           </edges>
         </data>
       </ownedAnnotationEntries>
