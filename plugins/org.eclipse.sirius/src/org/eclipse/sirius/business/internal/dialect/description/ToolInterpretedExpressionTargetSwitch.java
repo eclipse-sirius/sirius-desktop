@@ -12,6 +12,7 @@ package org.eclipse.sirius.business.internal.dialect.description;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -101,12 +102,6 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         this.globalSwitch = defaultInterpretedExpressionTargetSwitch;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
-     */
     @Override
     public Option<Collection<String>> doSwitch(EObject theEObject) {
         Option<Collection<String>> doSwitch = super.doSwitch(theEObject);
@@ -115,6 +110,32 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         }
         Collection<String> targets = Collections.emptySet();
         return Options.newSome(targets);
+    }
+
+    @Override
+    protected Option<Collection<String>> doSwitch(EClass theEClass, EObject theEObject) {
+        Option<Collection<String>> result = null;
+
+        if (theEClass.eContainer() == modelPackage) {
+            result = doSwitch(theEClass.getClassifierID(), theEObject);
+        } else {
+            // CreateCellTool expends TableTool and AbstractToolDescription.
+            // Here the expected super type is the second, so we go through
+            // all super types to find the first non null result.
+            List<EClass> eSuperTypes = theEClass.getESuperTypes();
+            if (eSuperTypes.isEmpty()) {
+                result = defaultCase(theEObject);
+            } else {
+                for (EClass eSuperType : eSuperTypes) {
+                    result = doSwitch(eSuperType, theEObject);
+                    if (result != null) {
+                        break; // found: quit the for
+                    }
+                } // for
+            }
+        }
+
+        return result;
     }
 
     /**
@@ -162,12 +183,6 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         return descCanChange || operationCanChange || toolCanChange;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#caseMappingBasedToolDescription(org.eclipse.sirius.viewpoint.description.tool.MappingBasedToolDescription)
-     */
     @Override
     public Option<Collection<String>> caseMappingBasedToolDescription(MappingBasedToolDescription tool) {
         Option<Collection<String>> result = null;
@@ -184,9 +199,22 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
+    public Option<Collection<String>> caseAbstractToolDescription(AbstractToolDescription tool) {
+        Option<Collection<String>> result = null;
+        switch (getFeatureId(ToolPackage.eINSTANCE.getAbstractToolDescription())) {
+        case ToolPackage.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION:
+        case DO_NOT_CONSIDER_FEATURE:
+            // Default case for AbstractToolDescription, if subclasses or
+            // dialects did not return a specific result.
+            result = Options.newNone();
+            break;
+        default:
+            break;
+        }
+        return result;
+    }
+
     @Override
     public Option<Collection<String>> caseToolDescription(ToolDescription object) {
         Option<Collection<String>> result = null;
@@ -201,9 +229,6 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Option<Collection<String>> caseOperationAction(OperationAction object) {
         Option<Collection<String>> result = null;
@@ -218,9 +243,6 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Option<Collection<String>> casePasteDescription(PasteDescription object) {
         Option<Collection<String>> result = null;
@@ -242,9 +264,6 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Option<Collection<String>> caseAcceleoVariable(AcceleoVariable object) {
         Option<Collection<String>> result = null;
@@ -259,9 +278,6 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Option<Collection<String>> caseSelectModelElementVariable(SelectModelElementVariable object) {
         Option<Collection<String>> result = null;
@@ -278,12 +294,6 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         return result;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#casePaneBasedSelectionWizardDescription(org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription)
-     */
     @Override
     public Option<Collection<String>> casePaneBasedSelectionWizardDescription(PaneBasedSelectionWizardDescription toolDescription) {
         Option<Collection<String>> result = null;
@@ -302,9 +312,6 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Option<Collection<String>> caseSelectionWizardDescription(SelectionWizardDescription toolDescription) {
         Option<Collection<String>> result = null;
@@ -378,12 +385,6 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         return result;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#caseRepresentationCreationDescription(org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription)
-     */
     @Override
     public Option<Collection<String>> caseRepresentationCreationDescription(RepresentationCreationDescription toolDescription) {
         Collection<String> targets = Sets.newLinkedHashSet();
@@ -408,12 +409,6 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         return result;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#caseRepresentationNavigationDescription(org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription)
-     */
     @Override
     public Option<Collection<String>> caseRepresentationNavigationDescription(RepresentationNavigationDescription toolDescription) {
         Collection<String> targets = Sets.newLinkedHashSet();
@@ -438,9 +433,6 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Option<Collection<String>> caseModelOperation(ModelOperation object) {
         // Default behavior for model operations : returning the first context
@@ -448,9 +440,6 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         return globalSwitch.doSwitch(getFirstContextChangingContainer(object), false);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Option<Collection<String>> caseCase(Case object) {
         // Default behavior for cases : returning the first context
@@ -458,9 +447,6 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         return globalSwitch.doSwitch(getFirstContextChangingContainer(object), false);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Option<Collection<String>> caseToolFilterDescription(ToolFilterDescription object) {
         // Default behavior for tool filters : returning the first context
@@ -468,12 +454,6 @@ public class ToolInterpretedExpressionTargetSwitch extends ToolSwitch<Option<Col
         return globalSwitch.doSwitch(getFirstContextChangingContainer(object), false);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.viewpoint.description.tool.util.ToolSwitch#caseChangeContext(org.eclipse.sirius.viewpoint.description.tool.ChangeContext)
-     */
     @Override
     public Option<Collection<String>> caseChangeContext(ChangeContext object) {
         Option<Collection<String>> result = null;
