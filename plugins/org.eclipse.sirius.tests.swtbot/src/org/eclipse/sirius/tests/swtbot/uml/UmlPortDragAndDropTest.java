@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.uml;
 
+import java.util.List;
+
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
@@ -110,7 +112,8 @@ public class UmlPortDragAndDropTest extends AbstractUmlDragAndDropTest {
         String portToDropName = "Port5";
         final Rectangle originalPortBounds = getEditPartBounds(portToDropName);
 
-        PointList originalEdgeBendpoints = getBendpoints(portToDropName);
+        PointList originalEdgeBendpoints = getBendpoints(portToDropName, AbstractDiagramBorderNodeEditPart.class);
+        List<Point> originalGmfPointsFromSource = getGMFBendpointsFromSource(portToDropName, AbstractDiagramBorderNodeEditPart.class);
 
         final Point originalCenter = originalPortBounds.getCenter();
         final Point endpoint = originalCenter.getTranslated(-HORIZONTAL_TRANSLATION, 0);
@@ -124,7 +127,7 @@ public class UmlPortDragAndDropTest extends AbstractUmlDragAndDropTest {
         assertFalse("The port should have different coordinates.", newCenter.equals(originalCenter));
 
         // Check edge stability
-        checkEdgeStability(portToDropName, originalEdgeBendpoints);
+        checkEdgeStability(portToDropName, AbstractDiagramBorderNodeEditPart.class, originalEdgeBendpoints, originalGmfPointsFromSource);
     }
 
     /**
@@ -136,7 +139,8 @@ public class UmlPortDragAndDropTest extends AbstractUmlDragAndDropTest {
         String portToDropName = "Port6";
         final Rectangle originalPortBounds = getEditPartBounds(portToDropName);
 
-        PointList originalEdgeBendpoints = getBendpoints(portToDropName);
+        PointList originalEdgeBendpoints = getBendpoints(portToDropName, AbstractDiagramBorderNodeEditPart.class);
+        List<Point> originalGmfPointsFromSource = getGMFBendpointsFromSource(portToDropName, AbstractDiagramBorderNodeEditPart.class);
 
         final Point originalCenter = originalPortBounds.getCenter();
         final Point endpoint = originalCenter.getTranslated(-HORIZONTAL_TRANSLATION, 0);
@@ -150,7 +154,7 @@ public class UmlPortDragAndDropTest extends AbstractUmlDragAndDropTest {
         assertFalse("The port should have different coordinates.", newCenter.equals(originalCenter));
 
         // Check edge stability
-        checkEdgeStability(portToDropName, originalEdgeBendpoints);
+        checkEdgeStability(portToDropName, AbstractDiagramBorderNodeEditPart.class, originalEdgeBendpoints, originalGmfPointsFromSource);
     }
 
     /**

@@ -11,13 +11,16 @@
 package org.eclipse.sirius.diagram.ui.internal.refresh;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
+import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
@@ -26,8 +29,10 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.ContainerStyle;
@@ -47,6 +52,7 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.ui.IEditorPart;
 
 import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 
 /**
  * GMF Helper.
@@ -552,5 +558,65 @@ public final class GMFHelper {
             result = Options.newSome((GraphicalEditPart) targetEditPart);
         }
         return result;
+    }
+
+    /**
+     * Get the points list computed from GMF bendpoints according to source side
+     * for the <code>edgeEditPart</code>.
+     * 
+     * @param edgeEditPart
+     *            The concerned edge edit part.
+     * @return Points list
+     * @throws IllegalArgumentException
+     *             when the edgeEditPart is not as expected
+     */
+    public static List<Point> getPointsFromSource(ConnectionEditPart edgeEditPart) throws IllegalArgumentException {
+        if (edgeEditPart.getModel() instanceof Edge && edgeEditPart.getFigure() instanceof Connection) {
+            List<Point> result = Lists.newArrayList();
+            Edge gmfEdge = (Edge) edgeEditPart.getModel();
+            Connection connectionFigure = (Connection) edgeEditPart.getFigure();
+            Point srcAnchorLoc = connectionFigure.getSourceAnchor().getReferencePoint();
+            connectionFigure.translateToRelative(srcAnchorLoc);
+
+            RelativeBendpoints bp = (RelativeBendpoints) gmfEdge.getBendpoints();
+            for (int i = 0; i < bp.getPoints().size(); i++) {
+                RelativeBendpoint rbp = (RelativeBendpoint) bp.getPoints().get(i);
+                Point fromSrc = srcAnchorLoc.getTranslated(rbp.getSourceX(), rbp.getSourceY());
+                result.add(fromSrc);
+            }
+            return result;
+        }
+        throw new IllegalArgumentException(
+                "The model of the edgeEditPart should be a org.eclipse.gmf.runtime.notation.Edge and the figure of this edgeEditPart should be a org.eclipse.draw2d.Connection.");
+    }
+
+    /**
+     * Get the points list computed from GMF bendpoints according to target side
+     * for the <code>edgeEditPart</code>.
+     * 
+     * @param edgeEditPart
+     *            The concerned edge edit part.
+     * @return Points list
+     * @throws IllegalArgumentException
+     *             when the edgeEditPart is not as expected
+     */
+    public static List<Point> getPointsFromTarget(ConnectionEditPart edgeEditPart) throws IllegalArgumentException {
+        if (edgeEditPart.getModel() instanceof Edge && edgeEditPart.getFigure() instanceof Connection) {
+            List<Point> result = Lists.newArrayList();
+            Edge gmfEdge = (Edge) edgeEditPart.getModel();
+            Connection connectionFigure = (Connection) edgeEditPart.getFigure();
+            Point tgtAnchorLoc = connectionFigure.getTargetAnchor().getReferencePoint();
+            connectionFigure.translateToRelative(tgtAnchorLoc);
+
+            RelativeBendpoints bp = (RelativeBendpoints) gmfEdge.getBendpoints();
+            for (int i = 0; i < bp.getPoints().size(); i++) {
+                RelativeBendpoint rbp = (RelativeBendpoint) bp.getPoints().get(i);
+                Point fromTgt = tgtAnchorLoc.getTranslated(rbp.getTargetX(), rbp.getTargetY());
+                result.add(fromTgt);
+            }
+            return result;
+        }
+        throw new IllegalArgumentException(
+                "The model of the edgeEditPart should be a org.eclipse.gmf.runtime.notation.Edge and the figure of this edgeEditPart should be a org.eclipse.draw2d.Connection.");
     }
 }

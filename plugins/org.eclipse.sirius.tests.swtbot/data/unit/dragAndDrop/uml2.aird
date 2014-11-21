@@ -176,7 +176,7 @@
             </children>
             <styles xmi:type="notation:ConnectorStyle" xmi:id="_FLHF0c31Ed6I_ZSkQ7u_fA"/>
             <styles xmi:type="notation:FontStyle" xmi:id="_FLHF0s31Ed6I_ZSkQ7u_fA" fontName="Comic Sans MS" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_FLHF0831Ed6I_ZSkQ7u_fA" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_FLHF0831Ed6I_ZSkQ7u_fA" points="[-52, -9, 187, -9]$[-134, -22, 105, -22]$[-206, -7, 33, -7]"/>
           </edges>
           <edges xmi:type="notation:Edge" xmi:id="_FLIT8M31Ed6I_ZSkQ7u_fA" type="4001" element="_4hMCoJjJEeCGbO5oLE72PQ" source="_FKzj0M31Ed6I_ZSkQ7u_fA" target="_FLBmQM31Ed6I_ZSkQ7u_fA">
             <children xmi:type="notation:Node" xmi:id="_FLIT9M31Ed6I_ZSkQ7u_fA" type="6001">

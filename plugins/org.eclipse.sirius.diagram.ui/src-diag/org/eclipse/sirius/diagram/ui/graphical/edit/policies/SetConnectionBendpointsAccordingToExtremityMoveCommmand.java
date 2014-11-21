@@ -181,7 +181,7 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
             // (tempTargetRefPoint<-->second to last point) and the target
             // node
             // 2-Compute intersection
-            Option<Point> intersectionPoint = GraphicalHelper.getIntersection(targetRefPoint, connectionPointList.getPoint(connectionPointList.size() - 1), bounds.getTranslated(moveDelta), false);
+            Option<Point> intersectionPoint = GraphicalHelper.getIntersection(targetRefPoint, connectionPointList.getPoint(connectionPointList.size() - 2), bounds.getTranslated(moveDelta), false);
             if (intersectionPoint.some()) {
                 connectionPointList.setPoint(intersectionPoint.get(), connectionPointList.size() - 1);
             } else {
