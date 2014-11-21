@@ -62,6 +62,7 @@ import org.eclipse.sirius.tests.unit.common.RestoreSessionFromEditorInputTests;
 import org.eclipse.sirius.tests.unit.common.TransientSessionTests;
 import org.eclipse.sirius.tests.unit.common.WorkspaceResourceSyncTestCase;
 import org.eclipse.sirius.tests.unit.common.interpreter.CompoundInterpreterTestCase;
+import org.eclipse.sirius.tests.unit.common.interpreter.CreateCellToolInterpreterTest;
 import org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl.AcceleoMTInterpreterOnPackageImportTests;
 import org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl.AcceleoMTLCompletionTests;
 import org.eclipse.sirius.tests.unit.common.interpreter.acceleo.mtl.AcceleoMTLInterpreterTests;
@@ -235,6 +236,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(SaveWhenNoEditorsTests.class);
         suite.addTestSuite(ModifyHeaderLabelExpressionTest.class);
 
+        suite.addTestSuite(CreateCellToolInterpreterTest.class);
         suite.addTestSuite(AcceleoMTLInterpreterTests.class);
         suite.addTestSuite(AcceleoMTInterpreterOnPackageImportTests.class);
         suite.addTestSuite(AcceleoMTLCompletionTests.class);

@@ -21,6 +21,7 @@ import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressio
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.LabelEditTool;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
@@ -51,26 +52,24 @@ public class TableInterpretedExpressionQuery extends AbstractInterpretedExpressi
         super(target, feature);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.dialect.description.AbstractInterpretedExpressionQuery#initializeTargetSwitch()
-     */
     @Override
     protected void initializeTargetSwitch() {
         targetSwitch = new TableGlobalInterpretedTargetSwitch();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void appendAllLocalVariableDefinitions(Map<String, Collection<String>> definitions, EObject context) {
         super.appendAllLocalVariableDefinitions(definitions, context);
-        // Direct edit defines numbered variables based on their mask.
-        if (context instanceof LabelEditTool && ((LabelEditTool) context).getMask() != null) {
-            EditMaskVariables emv = ((LabelEditTool) context).getMask();
+
+        // The "Direct edit" and the "Create Cell" tools define numbered
+        // variables based on their mask.
+        EditMaskVariables emv = null;
+        if (context instanceof LabelEditTool) {
+            emv = ((LabelEditTool) context).getMask();
+        } else if (context instanceof CreateCellTool) {
+            emv = ((CreateCellTool) context).getMask();
+        }
+        if (emv != null) {
             appendEditMaskVariables(emv, definitions);
         }
     }
@@ -98,12 +97,7 @@ public class TableInterpretedExpressionQuery extends AbstractInterpretedExpressi
 
         private final TableInterpretedTargetSwitch specificTableSwitch = new TableInterpretedTargetSwitch(feature, this);
 
-        /**
-         * 
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
-         */
+        @Override
         public Option<Collection<String>> doSwitch(EObject target, boolean considerFeature) {
             Collection<String> targetTypes = Sets.newLinkedHashSet();
             Option<Collection<String>> expressionTarget = Options.newSome(targetTypes);
