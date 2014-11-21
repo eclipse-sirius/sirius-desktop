@@ -82,7 +82,7 @@ public class AirDResourceImpl extends GMFResource implements DResource, AirdReso
     /**
      * Overridden to not have {@link GMFResource} set to true in this
      * constructor because now it is
-     * {@link org.eclipse.sirius.business.internal.session.danalysis.TrackingModificationTrigger}
+     * {@link org.eclipse.sirius.business.internal.resource.ResourceModifiedFieldUpdater}
      * which manage {@link org.eclipse.emf.ecore.resource.Resource#isModified()}
      * .
      * 

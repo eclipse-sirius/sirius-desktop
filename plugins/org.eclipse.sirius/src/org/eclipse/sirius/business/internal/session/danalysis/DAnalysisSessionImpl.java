@@ -55,6 +55,7 @@ import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListener;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RunnableWithResult;
+import org.eclipse.emf.transaction.Transaction;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.TransactionalEditingDomainEvent;
 import org.eclipse.emf.transaction.TransactionalEditingDomainListener;
@@ -62,6 +63,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomainListenerImpl;
 import org.eclipse.emf.transaction.impl.InternalTransaction;
 import org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
+import org.eclipse.emf.transaction.util.ValidateEditSupport;
 import org.eclipse.emf.workspace.IWorkspaceCommandStack;
 import org.eclipse.emf.workspace.ResourceUndoContext;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
@@ -98,6 +100,7 @@ import org.eclipse.sirius.business.internal.movida.Movida;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistryListener;
 import org.eclipse.sirius.business.internal.query.DAnalysisesInternalQuery;
 import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
+import org.eclipse.sirius.business.internal.resource.ResourceModifiedFieldUpdater;
 import org.eclipse.sirius.business.internal.session.ReloadingPolicyImpl;
 import org.eclipse.sirius.business.internal.session.RepresentationNameListener;
 import org.eclipse.sirius.business.internal.session.SessionEventBrokerImpl;
@@ -559,7 +562,20 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             } else {
                 ViewpointRegistry.getInstance().addListener(this);
             }
-            getEventBroker().addLocalTrigger(TrackingModificationTrigger.IS_CHANGE, new TrackingModificationTrigger(this.getTransactionalEditingDomain()));
+            // Setup ResourceModifiedFieldUpdater
+            TransactionalEditingDomain.DefaultOptions options = TransactionUtil.getAdapter(getTransactionalEditingDomain(), TransactionalEditingDomain.DefaultOptions.class);
+            if (options != null) {
+                Object value = options.getDefaultTransactionOptions().get(Transaction.OPTION_VALIDATE_EDIT);
+                ValidateEditSupport delegate = null;
+                if (value instanceof ValidateEditSupport) {
+                    delegate = (ValidateEditSupport) value;
+                }
+                if (!(delegate instanceof ResourceModifiedFieldUpdater) && getTransactionalEditingDomain() instanceof InternalTransactionalEditingDomain) {
+                    InternalTransactionalEditingDomain internalDomain = (InternalTransactionalEditingDomain) getTransactionalEditingDomain();
+                    new ResourceModifiedFieldUpdater(internalDomain, delegate);
+                }
+            }
+
             super.setOpen(true);
             notifyListeners(SessionListener.OPENED);
             monitor.worked(1);

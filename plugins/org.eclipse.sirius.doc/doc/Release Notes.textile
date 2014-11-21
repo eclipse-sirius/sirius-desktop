@@ -12,6 +12,10 @@ h3. Specifier-Visible Changes
 
 h3. API Changes
 
+h4. Changes in @org.eclipse.sirius.ext.emf.tx@
+
+* The class @org.eclipse.sirius.ext.emf.tx.DelegatingValidateEditSupport@ has been added to be able to have a @ValidateEditSupport@ which delegate to an existing @ValidateEditSupport@.
+
 h4. Changes in @org.eclipse.sirius@
 
 * The method @org.eclipse.sirius.business.api.migration.IMigrationParticipant.updateCreatedObject(EObject newObject, String loadedVersion)@ has been added to update object values in VSM before loading this objects from XML file.
