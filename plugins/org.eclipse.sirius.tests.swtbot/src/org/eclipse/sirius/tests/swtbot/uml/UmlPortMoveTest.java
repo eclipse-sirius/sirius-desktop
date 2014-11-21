@@ -17,6 +17,8 @@ import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
 
+import java.util.List;
+
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
@@ -281,7 +283,8 @@ public class UmlPortMoveTest extends AbstractUmlDragAndDropTest {
         editor = openAndGetEditor(representationName, representationName);
 
         // Get original bendpoints
-        PointList originalPoints = getBendpoints(DROP_PORT_NAME);
+        PointList originalDraw2DPoints = getBendpoints(DROP_PORT_NAME, AbstractDiagramBorderNodeEditPart.class);
+        List<Point> originalGmfPointsFromSource = getGMFBendpointsFromSource(DROP_PORT_NAME, AbstractDiagramBorderNodeEditPart.class);
 
         // Get the bottom center coordinates of the port
         final Rectangle originalPortBounds = getEditPartBounds(DROP_PORT_NAME);
@@ -305,10 +308,10 @@ public class UmlPortMoveTest extends AbstractUmlDragAndDropTest {
             assertThat("Port is not at expected position (probably not moved but resized)", newPortBounds.getTopRight(),
                     PointAround.around(originalPortBounds.getTopRight().getTranslated(VERTICAL_TRANSLATION), 5));
 
-            if (originalPoints != null) {
+            if (originalDraw2DPoints != null && originalGmfPointsFromSource != null) {
                 // check the stability of the existing edge when moving the
                 // border node
-                checkEdgeStability(DROP_PORT_NAME, originalPoints);
+                checkEdgeStability(DROP_PORT_NAME, AbstractDiagramBorderNodeEditPart.class, originalDraw2DPoints, originalGmfPointsFromSource);
             }
         } else {
             assertThat("Port is not at expected position (probably not moved but resized)", newPortBounds.getTopRight(), PointAround.around(originalPortBounds.getTopRight(), 0));

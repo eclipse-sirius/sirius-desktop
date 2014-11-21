@@ -17,8 +17,11 @@ import java.util.List;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
 import org.eclipse.sirius.tests.support.api.GraphicTestsSupportHelp;
+import org.eclipse.sirius.tests.swtbot.support.api.matcher.geometry.PointAround;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotCommonHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotCommonHelper.EdgeData;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
@@ -41,6 +44,8 @@ public class UmlClassDragAndDropTest extends AbstractUmlDragAndDropTest {
     private static final String DIAGRAM_NAME = "DnD Class Diagram";
 
     private static final String REPRESENTATION_NAME = "Class Diagram";
+
+    private static final String IN_CLASS2 = "InClass2";
 
     private static final String IN_CLASS3 = "InClass3";
 
@@ -238,6 +243,38 @@ public class UmlClassDragAndDropTest extends AbstractUmlDragAndDropTest {
         // Check if there is error in errorLog
         if (doesAnErrorOccurs()) {
             fail("This drag'n'drop should be done without error in errorlog.");
+        }
+    }
+
+    /**
+     * Move a class to check the stability of the edge.
+     * 
+     */
+    public void testMoveClass() {
+        // Get original bendpoints
+        PointList originalDraw2DPoints = getBendpoints(IN_CLASS2, AbstractDiagramListEditPart.class);
+        List<Point> originalGmfPointsFromSource = getGMFBendpointsFromSource(IN_CLASS2, AbstractDiagramListEditPart.class);
+
+        // Get the bottom center coordinates of the port
+        final Rectangle originalClassBounds = getEditPartBounds(IN_CLASS2);
+
+        // clicked point, drag start
+        final Point pointToDrag = originalClassBounds.getTop().getTranslated(0, 3);
+
+        // Select the Class
+        editor.select(editor.getEditPart(IN_CLASS2, AbstractDiagramListEditPart.class));
+        // Compute the drop destination
+        final Point endpoint = pointToDrag.getTranslated(0, 20);
+        // Drag'and'drop with the mouse
+        editor.drag(pointToDrag.x, pointToDrag.y, endpoint.x, endpoint.y);
+        // Get the new bounds and compare with the expected
+        final Rectangle newClassBounds = getEditPartBounds(IN_CLASS2);
+        assertThat("Class is not at expected position (probably not moved but resized)", newClassBounds.getTopRight(), PointAround.around(originalClassBounds.getTopRight().getTranslated(0, 20), 5));
+
+        if (originalDraw2DPoints != null && originalGmfPointsFromSource != null) {
+            // check the stability of the existing edge when moving the
+            // border node
+            checkEdgeStability(IN_CLASS2, AbstractDiagramListEditPart.class, originalDraw2DPoints, originalGmfPointsFromSource);
         }
     }
 

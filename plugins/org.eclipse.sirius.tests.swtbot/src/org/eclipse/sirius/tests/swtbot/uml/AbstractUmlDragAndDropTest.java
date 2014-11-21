@@ -23,6 +23,7 @@ import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.ConnectionEditPart;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -31,6 +32,7 @@ import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
+import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.tests.support.api.GraphicTestsSupportHelp;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
@@ -334,15 +336,36 @@ public abstract class AbstractUmlDragAndDropTest extends AbstractSiriusSwtBotGef
      * 
      * @param editPartName
      *            name of the edit part to search
+     * @param expectedEditPartType
+     *            The type of the expected edit part
      * 
      * @return copy of bendpoints position or null if there is no edge
      */
-    protected PointList getBendpoints(String editPartName) {
-        ConnectionEditPart connectionEditPart = getEdge(editPartName);
+    protected PointList getBendpoints(String editPartName, final Class<? extends EditPart> expectedEditPartType) {
+        ConnectionEditPart connectionEditPart = getEdge(editPartName, expectedEditPartType);
         if (connectionEditPart == null)
             return null; // no edge defined
         assertTrue(connectionEditPart.getFigure() instanceof ViewEdgeFigure);
         return ((ViewEdgeFigure) connectionEditPart.getFigure()).getPoints().getCopy();
+    }
+
+    /**
+     * Get the points list computed from GMF bendpoints according to source side
+     * for the first edge found connected to the edit part with
+     * <code>editPartName</code> as name.
+     * 
+     * @param editPartName
+     *            name of the edit part to search
+     * @param expectedEditPartType
+     *            The type of the expected edit part
+     * 
+     * @return List of points or null if there is no edge
+     */
+    protected List<Point> getGMFBendpointsFromSource(String editPartName, final Class<? extends EditPart> expectedEditPartType) {
+        ConnectionEditPart connectionEditPart = getEdge(editPartName, expectedEditPartType);
+        if (connectionEditPart == null)
+            return null; // no edge defined
+        return GMFHelper.getPointsFromSource(connectionEditPart);
     }
 
     /**
@@ -351,10 +374,12 @@ public abstract class AbstractUmlDragAndDropTest extends AbstractSiriusSwtBotGef
      * 
      * @param editPartName
      *            name of the edit part to search
+     * @param expectedEditPartType
+     *            The type of the expected edit part
      * @return the edge connected to the edit part or null if there is no edge.
      */
-    protected ConnectionEditPart getEdge(String editPartName) {
-        SWTBotGefEditPart editPart = editor.getEditPart(editPartName, AbstractDiagramBorderNodeEditPart.class);
+    protected ConnectionEditPart getEdge(String editPartName, final Class<? extends EditPart> expectedEditPartType) {
+        SWTBotGefEditPart editPart = editor.getEditPart(editPartName, expectedEditPartType);
         List<SWTBotGefConnectionEditPart> sourceConnections = editPart.sourceConnections();
 
         ConnectionEditPart connectionEditPart = null;
@@ -378,15 +403,19 @@ public abstract class AbstractUmlDragAndDropTest extends AbstractSiriusSwtBotGef
      * @param editPartName
      *            name of the edit part to search
      * @param originalPoints
-     *            original points
+     *            original draw2d points
+     * @param originalGmfPointsFromSource
+     *            original GMF points computed from source
      */
-    protected void checkEdgeStability(String editPartName, PointList originalPoints) {
-        ConnectionEditPart connectionEditPart = getEdge(editPartName);
+    protected void checkEdgeStability(String editPartName, final Class<? extends EditPart> expectedEditPartType, PointList originalPoints, List<Point> originalGmfPointsFromSource) {
+        ConnectionEditPart connectionEditPart = getEdge(editPartName, expectedEditPartType);
 
         // get new bendpoints
         assertTrue(connectionEditPart.getFigure() instanceof ViewEdgeFigure);
         PointList newPoints = ((ViewEdgeFigure) connectionEditPart.getFigure()).getPoints().getCopy();
         Assert.assertEquals("The number of bendpoints should be the same", originalPoints.size(), newPoints.size());
+
+        List<Point> newGMFBendpointsFromSource = GMFHelper.getPointsFromSource(connectionEditPart);
 
         // get routing style
         assertTrue(connectionEditPart.getModel() instanceof Edge);
@@ -413,6 +442,7 @@ public abstract class AbstractUmlDragAndDropTest extends AbstractSiriusSwtBotGef
                 Point originalPoint = originalPoints.getPoint(i);
                 Point newPoint = newPoints.getPoint(i);
                 Assert.assertEquals("The two points at index " + i + " should be equal", originalPoint, newPoint);
+                Assert.assertEquals("The two GMF points at index " + i + " should be equal", originalGmfPointsFromSource.get(i), newGMFBendpointsFromSource.get(i));
             }
 
             // moved points
@@ -420,6 +450,7 @@ public abstract class AbstractUmlDragAndDropTest extends AbstractSiriusSwtBotGef
                 Point originalPoint = originalPoints.getPoint(i);
                 Point newPoint = newPoints.getPoint(i);
                 Assert.assertNotEquals("The two points at index " + i + " should be different", originalPoint, newPoint);
+                Assert.assertNotEquals("The two GMF points at index " + i + " should be different", originalGmfPointsFromSource.get(i), newGMFBendpointsFromSource.get(i));
             }
         } else {
             // EdgeRouting.STRAIGHT: the first point has moved
@@ -431,6 +462,7 @@ public abstract class AbstractUmlDragAndDropTest extends AbstractSiriusSwtBotGef
                 Point originalPoint = originalPoints.getPoint(i);
                 Point newPoint = newPoints.getPoint(i);
                 Assert.assertNotEquals("The two points at index " + i + " should be different", originalPoint, newPoint);
+                Assert.assertNotEquals("The two GMF points at index " + i + " should be different", originalGmfPointsFromSource.get(i), newGMFBendpointsFromSource.get(i));
             }
 
             // unmoved points
@@ -438,7 +470,69 @@ public abstract class AbstractUmlDragAndDropTest extends AbstractSiriusSwtBotGef
                 Point originalPoint = originalPoints.getPoint(i);
                 Point newPoint = newPoints.getPoint(i);
                 Assert.assertEquals("The two points at index " + i + " should be equal", originalPoint, newPoint);
+                Assert.assertEquals("The two GMF points at index " + i + " should be equal", originalGmfPointsFromSource.get(i), newGMFBendpointsFromSource.get(i));
             }
         }
+        if (isEquals(originalPoints, originalGmfPointsFromSource) && !isEquals(newPoints, newGMFBendpointsFromSource)) {
+            fail("The draw2d and GMF lists of points should be the same: \n" + toString(newPoints) + "\n" + toString(newGMFBendpointsFromSource));
+        }
+    }
+
+    /**
+     * @param newGMFBendpointsFromSource
+     * @return
+     */
+    private String toString(List<Point> newGMFBendpointsFromSource) {
+        StringBuffer result = new StringBuffer("[");
+        for (int i = 0; i < newGMFBendpointsFromSource.size(); i++) {
+            Point point = newGMFBendpointsFromSource.get(i);
+            result.append("(").append(point.x).append(", ").append(point.y).append(")");
+            if (i < newGMFBendpointsFromSource.size() - 1) {
+                result.append(", ");
+            }
+        }
+        result.append("]");
+        return result.toString();
+    }
+
+    /**
+     * @param newPoints
+     * @return
+     */
+    private String toString(PointList newPoints) {
+        StringBuffer result = new StringBuffer("[");
+        for (int i = 0; i < newPoints.size(); i++) {
+            Point point = newPoints.getPoint(i);
+            result.append("(").append(point.x).append(", ").append(point.y).append(")");
+            if (i < newPoints.size() - 1) {
+                result.append(", ");
+            }
+        }
+        result.append("]");
+        return result.toString();
+    }
+
+    /**
+     * Compare a list of draw2d point and a list of GMF points.
+     * 
+     * @param draw2dPoints
+     *            List of draw2d points
+     * @param gmfPoints
+     *            List of GMF points
+     * @return true if the lists are the same.
+     */
+    private boolean isEquals(PointList draw2dPoints, List<Point> gmfPoints) {
+        boolean isEquals = true;
+        if (draw2dPoints.size() != gmfPoints.size()) {
+            isEquals = false;
+        }
+        for (int i = 0; i < draw2dPoints.size() && isEquals; i++) {
+            Point d2dPoint = draw2dPoints.getPoint(i);
+            Point gmfPoint = gmfPoints.get(i);
+            if (!((d2dPoint.x == gmfPoint.x || d2dPoint.x == gmfPoint.x + 1) || (d2dPoint.y == gmfPoint.y || d2dPoint.y == gmfPoint.y + 1))) {
+                isEquals = false;
+            }
+        }
+        return isEquals;
     }
 }
