@@ -304,7 +304,7 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
             }
         } else if (notifier instanceof Resource) {
             final Resource res = (Resource) notifier;
-            if (notification.getFeatureID(null) == Resource.RESOURCE__IS_MODIFIED && !res.isModified()) {
+            if (!notification.isTouch() && notification.getFeatureID(null) == Resource.RESOURCE__IS_MODIFIED && !res.isModified()) {
                 resourceNewStatus(res, ResourceStatus.SYNC, changes);
             } else if (notification.getFeatureID(null) == Resource.RESOURCE__CONTENTS) {
                 handleResourceChange(res, changes);
