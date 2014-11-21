@@ -150,21 +150,23 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
             if (isEdgeWithRectilinearRoutingStyle) {
                 LineSeg firstSegment = new LineSeg(connectionPointList.getPoint(0), connectionPointList.getPoint(1));
                 if (firstSegment.isHorizontal()) {
+                    connectionPointList.setPoint(connectionPointList.getPoint(0).translate(0, moveDelta.y), 0);
                     connectionPointList.setPoint(connectionPointList.getPoint(1).translate(0, moveDelta.y), 1);
                 } else {
+                    connectionPointList.setPoint(connectionPointList.getPoint(0).translate(moveDelta.x, 0), 0);
                     connectionPointList.setPoint(connectionPointList.getPoint(1).translate(moveDelta.x, 0), 1);
                 }
-            }
-            // Compute intersection between the line
-            // (tempSourceRefPoint<-->second point) and the source node
-            // 2-Compute intersection
-            Option<Point> intersectionPoint = GraphicalHelper.getIntersection(sourceRefPoint, connectionPointList.getPoint(1), bounds.getTranslated(moveDelta), false);
-            if (intersectionPoint.some()) {
-                connectionPointList.setPoint(intersectionPoint.get(), 0);
             } else {
-                connectionPointList.setPoint(connectionPointList.getPoint(0).translate(moveDelta), 0);
+                // Compute intersection between the line
+                // (tempSourceRefPoint<-->second point) and the source node
+                // 2-Compute intersection
+                Option<Point> intersectionPoint = GraphicalHelper.getIntersection(sourceRefPoint, connectionPointList.getPoint(1), bounds.getTranslated(moveDelta), false);
+                if (intersectionPoint.some()) {
+                    connectionPointList.setPoint(intersectionPoint.get(), 0);
+                } else {
+                    connectionPointList.setPoint(connectionPointList.getPoint(0).translate(moveDelta), 0);
+                }
             }
-
         } else {
             // Move reference point
             targetRefPoint.performTranslate(moveDelta.x, moveDelta.y);
@@ -173,19 +175,22 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
                 LineSeg lastSegment = new LineSeg(connectionPointList.getPoint(connectionPointList.size() - 2), connectionPointList.getPoint(connectionPointList.size() - 1));
                 if (lastSegment.isHorizontal()) {
                     connectionPointList.setPoint(connectionPointList.getPoint(connectionPointList.size() - 2).translate(0, moveDelta.y), connectionPointList.size() - 2);
+                    connectionPointList.setPoint(connectionPointList.getPoint(connectionPointList.size() - 1).translate(0, moveDelta.y), connectionPointList.size() - 1);
                 } else {
                     connectionPointList.setPoint(connectionPointList.getPoint(connectionPointList.size() - 2).translate(moveDelta.x, 0), connectionPointList.size() - 2);
+                    connectionPointList.setPoint(connectionPointList.getPoint(connectionPointList.size() - 1).translate(moveDelta.x, 0), connectionPointList.size() - 1);
                 }
-            }
-            // Compute intersection between the line
-            // (tempTargetRefPoint<-->second to last point) and the target
-            // node
-            // 2-Compute intersection
-            Option<Point> intersectionPoint = GraphicalHelper.getIntersection(targetRefPoint, connectionPointList.getPoint(connectionPointList.size() - 2), bounds.getTranslated(moveDelta), false);
-            if (intersectionPoint.some()) {
-                connectionPointList.setPoint(intersectionPoint.get(), connectionPointList.size() - 1);
             } else {
-                connectionPointList.setPoint(connectionPointList.getPoint(connectionPointList.size() - 1).translate(moveDelta), connectionPointList.size() - 1);
+                // Compute intersection between the line
+                // (tempTargetRefPoint<-->second to last point) and the target
+                // node
+                // 2-Compute intersection
+                Option<Point> intersectionPoint = GraphicalHelper.getIntersection(targetRefPoint, connectionPointList.getPoint(connectionPointList.size() - 2), bounds.getTranslated(moveDelta), false);
+                if (intersectionPoint.some()) {
+                    connectionPointList.setPoint(intersectionPoint.get(), connectionPointList.size() - 1);
+                } else {
+                    connectionPointList.setPoint(connectionPointList.getPoint(connectionPointList.size() - 1).translate(moveDelta), connectionPointList.size() - 1);
+                }
             }
         }
     }

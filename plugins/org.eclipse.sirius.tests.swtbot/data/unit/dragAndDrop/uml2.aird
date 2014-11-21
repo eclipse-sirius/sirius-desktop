@@ -3394,31 +3394,9 @@
                 <children xmi:type="notation:Node" xmi:id="_iP25A3VaEd-cw95GEMJD8Q" type="5003">
                   <layoutConstraint xmi:type="notation:Location" xmi:id="_iP3gEHVaEd-cw95GEMJD8Q" y="5"/>
                 </children>
-                <children xmi:type="notation:Node" xmi:id="_iQMQMHVaEd-cw95GEMJD8Q" visible="false" type="3001" element="_4kYgkJjJEeCGbO5oLE72PQ">
-                  <children xmi:type="notation:Node" xmi:id="_iQM3QHVaEd-cw95GEMJD8Q" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_iQM3QXVaEd-cw95GEMJD8Q" y="5"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_iQOscHVaEd-cw95GEMJD8Q" type="3004" element="_4kZHoJjJEeCGbO5oLE72PQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_iQOscXVaEd-cw95GEMJD8Q" fontName="Sans"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_iQOscnVaEd-cw95GEMJD8Q"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_iQMQMXVaEd-cw95GEMJD8Q" fontName="Sans" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_iQMQMnVaEd-cw95GEMJD8Q" x="92" y="4" width="10" height="10"/>
-                </children>
                 <children xmi:type="notation:Node" xmi:id="_iQM3QnVaEd-cw95GEMJD8Q" type="3003" element="_4kQkwJjJEeCGbO5oLE72PQ">
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_iQM3Q3VaEd-cw95GEMJD8Q" fontName="Sans"/>
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_iQM3RHVaEd-cw95GEMJD8Q"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_7ZSbMErbEeSRw9blU02bnQ" visible="false" type="3001" element="_7ZDKoErbEeSRw9blU02bnQ">
-                  <children xmi:type="notation:Node" xmi:id="_7ZTCQErbEeSRw9blU02bnQ" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7ZTCQUrbEeSRw9blU02bnQ" x="-31" y="11"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_7ZTCQkrbEeSRw9blU02bnQ" type="3004" element="_7ZDxsErbEeSRw9blU02bnQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZTCQ0rbEeSRw9blU02bnQ" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZTCRErbEeSRw9blU02bnQ"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZSbMUrbEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZSbMkrbEeSRw9blU02bnQ" x="-2" y="12" width="10" height="10"/>
                 </children>
                 <children xmi:type="notation:Node" xmi:id="_FnoegErcEeSRw9blU02bnQ" type="3001" element="_Fm4QkErcEeSRw9blU02bnQ">
                   <children xmi:type="notation:Node" xmi:id="_FnpFkErcEeSRw9blU02bnQ" type="5001">
@@ -3447,42 +3425,9 @@
                 <children xmi:type="notation:Node" xmi:id="_hSNXwMUBEeCCRJc48YB8Ug" type="5003">
                   <layoutConstraint xmi:type="notation:Location" xmi:id="_hSNXwcUBEeCCRJc48YB8Ug" y="5"/>
                 </children>
-                <children xmi:type="notation:Node" xmi:id="_hSP0AMUBEeCCRJc48YB8Ug" visible="false" type="3001" element="_hSHRIMUBEeCCRJc48YB8Ug">
-                  <children xmi:type="notation:Node" xmi:id="_hSP0A8UBEeCCRJc48YB8Ug" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_hSP0BMUBEeCCRJc48YB8Ug" y="5"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_hSRCIMUBEeCCRJc48YB8Ug" type="3004" element="_hSHRIcUBEeCCRJc48YB8Ug">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_hSRCIcUBEeCCRJc48YB8Ug" fontName="Comic Sans MS" fontHeight="8"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hSRCIsUBEeCCRJc48YB8Ug"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_hSP0AcUBEeCCRJc48YB8Ug" fontName="Comic Sans MS" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hSP0AsUBEeCCRJc48YB8Ug" x="-2" width="10" height="10"/>
-                </children>
                 <children xmi:type="notation:Node" xmi:id="_hSQbEMUBEeCCRJc48YB8Ug" type="3003" element="_hSFb8cUBEeCCRJc48YB8Ug">
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_hSQbEcUBEeCCRJc48YB8Ug" fontName="Comic Sans MS" fontHeight="8"/>
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hSQbEsUBEeCCRJc48YB8Ug"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_7ZTpUErbEeSRw9blU02bnQ" visible="false" type="3001" element="_7ZFm4ErbEeSRw9blU02bnQ">
-                  <children xmi:type="notation:Node" xmi:id="_7ZTpU0rbEeSRw9blU02bnQ" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7ZTpVErbEeSRw9blU02bnQ" x="11" y="-10"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_7ZU3cErbEeSRw9blU02bnQ" type="3004" element="_7ZFm4UrbEeSRw9blU02bnQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZU3cUrbEeSRw9blU02bnQ" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZU3ckrbEeSRw9blU02bnQ"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZTpUUrbEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZTpUkrbEeSRw9blU02bnQ" x="-2" y="11" width="10" height="10"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_7ZUQYErbEeSRw9blU02bnQ" visible="false" type="3001" element="_7ZGN8ErbEeSRw9blU02bnQ">
-                  <children xmi:type="notation:Node" xmi:id="_7ZUQY0rbEeSRw9blU02bnQ" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7ZUQZErbEeSRw9blU02bnQ" x="11" y="-10"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_7ZVegErbEeSRw9blU02bnQ" type="3004" element="_7ZGN8UrbEeSRw9blU02bnQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZVegUrbEeSRw9blU02bnQ" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZVegkrbEeSRw9blU02bnQ"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZUQYUrbEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZUQYkrbEeSRw9blU02bnQ" x="-2" y="22" width="10" height="10"/>
                 </children>
                 <children xmi:type="notation:Node" xmi:id="_FnsI4ErcEeSRw9blU02bnQ" type="3001" element="_Fm768ErcEeSRw9blU02bnQ">
                   <children xmi:type="notation:Node" xmi:id="_FnsI40rcEeSRw9blU02bnQ" type="5001">
@@ -3524,53 +3469,9 @@
                 <children xmi:type="notation:Node" xmi:id="_hSOl4MUBEeCCRJc48YB8Ug" type="5003">
                   <layoutConstraint xmi:type="notation:Location" xmi:id="_hSOl4cUBEeCCRJc48YB8Ug" y="5"/>
                 </children>
-                <children xmi:type="notation:Node" xmi:id="_hSRCI8UBEeCCRJc48YB8Ug" visible="false" type="3001" element="_hSH4MMUBEeCCRJc48YB8Ug">
-                  <children xmi:type="notation:Node" xmi:id="_hSRpMMUBEeCCRJc48YB8Ug" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_hSRpMcUBEeCCRJc48YB8Ug" y="5"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_hSSQQ8UBEeCCRJc48YB8Ug" type="3004" element="_hSIfQMUBEeCCRJc48YB8Ug">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_hSSQRMUBEeCCRJc48YB8Ug" fontName="Comic Sans MS" fontHeight="8"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hSSQRcUBEeCCRJc48YB8Ug"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_hSRCJMUBEeCCRJc48YB8Ug" fontName="Comic Sans MS" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hSRCJcUBEeCCRJc48YB8Ug" x="-2" width="10" height="10"/>
-                </children>
                 <children xmi:type="notation:Node" xmi:id="_hSSQQMUBEeCCRJc48YB8Ug" type="3003" element="_hSGDAcUBEeCCRJc48YB8Ug">
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_hSSQQcUBEeCCRJc48YB8Ug" fontName="Comic Sans MS" fontHeight="8"/>
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hSSQQsUBEeCCRJc48YB8Ug"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_7ZVeg0rbEeSRw9blU02bnQ" visible="false" type="3001" element="_7ZG1AErbEeSRw9blU02bnQ">
-                  <children xmi:type="notation:Node" xmi:id="_7ZVehkrbEeSRw9blU02bnQ" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7ZVeh0rbEeSRw9blU02bnQ" x="11" y="-10"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_7ZXTsErbEeSRw9blU02bnQ" type="3004" element="_7ZG1AUrbEeSRw9blU02bnQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZXTsUrbEeSRw9blU02bnQ" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZXTskrbEeSRw9blU02bnQ"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZVehErbEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZVehUrbEeSRw9blU02bnQ" x="-2" y="11" width="10" height="10"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_7ZWFkErbEeSRw9blU02bnQ" visible="false" type="3001" element="_7ZHcEErbEeSRw9blU02bnQ">
-                  <children xmi:type="notation:Node" xmi:id="_7ZWFk0rbEeSRw9blU02bnQ" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7ZWFlErbEeSRw9blU02bnQ" x="11" y="-10"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_7ZX6wErbEeSRw9blU02bnQ" type="3004" element="_7ZHcEUrbEeSRw9blU02bnQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZX6wUrbEeSRw9blU02bnQ" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZX6wkrbEeSRw9blU02bnQ"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZWFkUrbEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZWFkkrbEeSRw9blU02bnQ" x="-2" y="22" width="10" height="10"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_7ZWsoErbEeSRw9blU02bnQ" visible="false" type="3001" element="_7ZIDIErbEeSRw9blU02bnQ">
-                  <children xmi:type="notation:Node" xmi:id="_7ZWso0rbEeSRw9blU02bnQ" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7ZWspErbEeSRw9blU02bnQ" x="11" y="-10"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_7ZX6w0rbEeSRw9blU02bnQ" type="3004" element="_7ZIDIUrbEeSRw9blU02bnQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZX6xErbEeSRw9blU02bnQ" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZX6xUrbEeSRw9blU02bnQ"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZWsoUrbEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZWsokrbEeSRw9blU02bnQ" x="-2" y="33" width="10" height="10"/>
                 </children>
                 <children xmi:type="notation:Node" xmi:id="_FnvMM0rcEeSRw9blU02bnQ" type="3001" element="_Fm_lUErcEeSRw9blU02bnQ">
                   <children xmi:type="notation:Node" xmi:id="_FnvzQErcEeSRw9blU02bnQ" type="5001">
@@ -3627,39 +3528,6 @@
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_hSS3UcUBEeCCRJc48YB8Ug" fontName="Comic Sans MS" fontHeight="8"/>
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hSS3UsUBEeCCRJc48YB8Ug"/>
                 </children>
-                <children xmi:type="notation:Node" xmi:id="_7ZYh0ErbEeSRw9blU02bnQ" visible="false" type="3001" element="_7ZJRQErbEeSRw9blU02bnQ">
-                  <children xmi:type="notation:Node" xmi:id="_7ZYh00rbEeSRw9blU02bnQ" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7ZYh1ErbEeSRw9blU02bnQ" x="11" y="-10"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_7ZaXAkrbEeSRw9blU02bnQ" type="3004" element="_7ZKfYErbEeSRw9blU02bnQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZaXA0rbEeSRw9blU02bnQ" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZaXBErbEeSRw9blU02bnQ"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZYh0UrbEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZYh0krbEeSRw9blU02bnQ" x="-2" width="10" height="10"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_7ZYh1UrbEeSRw9blU02bnQ" visible="false" type="3001" element="_7ZLGcErbEeSRw9blU02bnQ">
-                  <children xmi:type="notation:Node" xmi:id="_7ZZI4ErbEeSRw9blU02bnQ" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7ZZI4UrbEeSRw9blU02bnQ" x="11" y="-10"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_7Za-EErbEeSRw9blU02bnQ" type="3004" element="_7ZLGcUrbEeSRw9blU02bnQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7Za-EUrbEeSRw9blU02bnQ" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7Za-EkrbEeSRw9blU02bnQ"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZYh1krbEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZYh10rbEeSRw9blU02bnQ" x="-2" y="11" width="10" height="10"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_7ZZv8ErbEeSRw9blU02bnQ" visible="false" type="3001" element="_7ZLtgErbEeSRw9blU02bnQ">
-                  <children xmi:type="notation:Node" xmi:id="_7ZaXAErbEeSRw9blU02bnQ" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7ZaXAUrbEeSRw9blU02bnQ" x="11" y="-10"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_7Za-E0rbEeSRw9blU02bnQ" type="3004" element="_7ZLtgUrbEeSRw9blU02bnQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7Za-FErbEeSRw9blU02bnQ" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7Za-FUrbEeSRw9blU02bnQ"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZZv8UrbEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZZv8krbEeSRw9blU02bnQ" x="-2" y="22" width="10" height="10"/>
-                </children>
                 <children xmi:type="notation:Node" xmi:id="_Fn0EsErcEeSRw9blU02bnQ" type="3001" element="_FnCBkErcEeSRw9blU02bnQ">
                   <children xmi:type="notation:Node" xmi:id="_Fn0Es0rcEeSRw9blU02bnQ" type="5001">
                     <layoutConstraint xmi:type="notation:Location" xmi:id="_Fn0EtErcEeSRw9blU02bnQ" x="11" y="-10"/>
@@ -3708,127 +3576,6 @@
               <children xmi:type="notation:Node" xmi:id="_7ZblIErbEeSRw9blU02bnQ" type="3007" element="_7Y6AsErbEeSRw9blU02bnQ">
                 <children xmi:type="notation:Node" xmi:id="_7ZcMMErbEeSRw9blU02bnQ" type="5003">
                   <layoutConstraint xmi:type="notation:Location" xmi:id="_7ZcMMUrbEeSRw9blU02bnQ" y="5"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_7ZcMMkrbEeSRw9blU02bnQ" visible="false" type="3001" element="_7Y7O0ErbEeSRw9blU02bnQ">
-                  <children xmi:type="notation:Node" xmi:id="_7ZcMNUrbEeSRw9blU02bnQ" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7ZcMNkrbEeSRw9blU02bnQ" x="-20" y="-34"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_7ZnLU0rbEeSRw9blU02bnQ" type="3004" element="_7Y7O0UrbEeSRw9blU02bnQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZnLVErbEeSRw9blU02bnQ" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZnLVUrbEeSRw9blU02bnQ"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZcMM0rbEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZcMNErbEeSRw9blU02bnQ" x="-2" width="10" height="10"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_7ZczQErbEeSRw9blU02bnQ" visible="false" type="3001" element="_7Y7O1UrbEeSRw9blU02bnQ">
-                  <children xmi:type="notation:Node" xmi:id="_7ZdaUErbEeSRw9blU02bnQ" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7ZdaUUrbEeSRw9blU02bnQ" x="11" y="-10"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_7ZnyYErbEeSRw9blU02bnQ" type="3004" element="_7Y714ErbEeSRw9blU02bnQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZnyYUrbEeSRw9blU02bnQ" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZnyYkrbEeSRw9blU02bnQ"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZczQUrbEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZczQkrbEeSRw9blU02bnQ" x="-2" y="11" width="10" height="10"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_7ZdaUkrbEeSRw9blU02bnQ" visible="false" type="3001" element="_7Y715ErbEeSRw9blU02bnQ">
-                  <children xmi:type="notation:Node" xmi:id="_7ZeBYErbEeSRw9blU02bnQ" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7ZeBYUrbEeSRw9blU02bnQ" x="11" y="-10"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_7ZnyY0rbEeSRw9blU02bnQ" type="3004" element="_7Y715UrbEeSRw9blU02bnQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZnyZErbEeSRw9blU02bnQ" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZnyZUrbEeSRw9blU02bnQ"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZdaU0rbEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZdaVErbEeSRw9blU02bnQ" x="-2" y="22" width="10" height="10"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_7ZeBYkrbEeSRw9blU02bnQ" visible="false" type="3001" element="_7Y8c8ErbEeSRw9blU02bnQ">
-                  <children xmi:type="notation:Node" xmi:id="_7ZeocErbEeSRw9blU02bnQ" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7ZeocUrbEeSRw9blU02bnQ" x="11" y="-10"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_7ZoZcErbEeSRw9blU02bnQ" type="3004" element="_7Y8c8UrbEeSRw9blU02bnQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZoZcUrbEeSRw9blU02bnQ" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZoZckrbEeSRw9blU02bnQ"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZeBY0rbEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZeBZErbEeSRw9blU02bnQ" x="-2" y="33" width="10" height="10"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_7ZfPgErbEeSRw9blU02bnQ" visible="false" type="3001" element="_7Y8c9UrbEeSRw9blU02bnQ">
-                  <children xmi:type="notation:Node" xmi:id="_7ZfPg0rbEeSRw9blU02bnQ" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7ZfPhErbEeSRw9blU02bnQ" x="11" y="-10"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_7ZoZc0rbEeSRw9blU02bnQ" type="3004" element="_7Y9EAErbEeSRw9blU02bnQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZoZdErbEeSRw9blU02bnQ" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZoZdUrbEeSRw9blU02bnQ"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZfPgUrbEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZfPgkrbEeSRw9blU02bnQ" x="-2" y="44" width="10" height="10"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_7ZgdoErbEeSRw9blU02bnQ" visible="false" type="3001" element="_7Y9EBErbEeSRw9blU02bnQ">
-                  <children xmi:type="notation:Node" xmi:id="_7ZhEsErbEeSRw9blU02bnQ" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7ZhEsUrbEeSRw9blU02bnQ" x="11" y="-10"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_7ZpAgErbEeSRw9blU02bnQ" type="3004" element="_7Y9rEErbEeSRw9blU02bnQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZpAgUrbEeSRw9blU02bnQ" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZpAgkrbEeSRw9blU02bnQ"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZgdoUrbEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZgdokrbEeSRw9blU02bnQ" x="-2" y="55" width="10" height="10"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_7ZhrwErbEeSRw9blU02bnQ" visible="false" type="3001" element="_7Y9rFErbEeSRw9blU02bnQ">
-                  <children xmi:type="notation:Node" xmi:id="_7ZiS0ErbEeSRw9blU02bnQ" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7ZiS0UrbEeSRw9blU02bnQ" x="11" y="-10"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_7ZpnkErbEeSRw9blU02bnQ" type="3004" element="_7Y9rFUrbEeSRw9blU02bnQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZpnkUrbEeSRw9blU02bnQ" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZpnkkrbEeSRw9blU02bnQ"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZhrwUrbEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZhrwkrbEeSRw9blU02bnQ" x="-2" y="66" width="10" height="10"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_7Zi54ErbEeSRw9blU02bnQ" visible="false" type="3001" element="_7Y-SIErbEeSRw9blU02bnQ">
-                  <children xmi:type="notation:Node" xmi:id="_7Zi540rbEeSRw9blU02bnQ" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7Zi55ErbEeSRw9blU02bnQ" x="11" y="-10"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_7Zpnk0rbEeSRw9blU02bnQ" type="3004" element="_7Y-SIUrbEeSRw9blU02bnQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZpnlErbEeSRw9blU02bnQ" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZpnlUrbEeSRw9blU02bnQ"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7Zi54UrbEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7Zi54krbEeSRw9blU02bnQ" x="-2" y="77" width="10" height="10"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_7Zjg8ErbEeSRw9blU02bnQ" visible="false" type="3001" element="_7Y-5MErbEeSRw9blU02bnQ">
-                  <children xmi:type="notation:Node" xmi:id="_7ZkIAErbEeSRw9blU02bnQ" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7ZkIAUrbEeSRw9blU02bnQ" x="11" y="-10"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_7ZpnlkrbEeSRw9blU02bnQ" type="3004" element="_7Y-5MUrbEeSRw9blU02bnQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7Zpnl0rbEeSRw9blU02bnQ" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZpnmErbEeSRw9blU02bnQ"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7Zjg8UrbEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7Zjg8krbEeSRw9blU02bnQ" x="-2" y="88" width="10" height="10"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_7ZkvEErbEeSRw9blU02bnQ" visible="false" type="3001" element="_7Y-5NUrbEeSRw9blU02bnQ">
-                  <children xmi:type="notation:Node" xmi:id="_7ZkvE0rbEeSRw9blU02bnQ" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7ZkvFErbEeSRw9blU02bnQ" x="11" y="-10"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_7ZqOoErbEeSRw9blU02bnQ" type="3004" element="_7Y_gQErbEeSRw9blU02bnQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZqOoUrbEeSRw9blU02bnQ" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZqOokrbEeSRw9blU02bnQ"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZkvEUrbEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZkvEkrbEeSRw9blU02bnQ" x="9" y="92" width="10" height="10"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_7ZlWIErbEeSRw9blU02bnQ" visible="false" type="3001" element="_7Y_gRErbEeSRw9blU02bnQ">
-                  <children xmi:type="notation:Node" xmi:id="_7Zl9MErbEeSRw9blU02bnQ" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7Zl9MUrbEeSRw9blU02bnQ" x="11" y="-10"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_7ZqOo0rbEeSRw9blU02bnQ" type="3004" element="_7Y_gRUrbEeSRw9blU02bnQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZqOpErbEeSRw9blU02bnQ" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZqOpUrbEeSRw9blU02bnQ"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZlWIUrbEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZlWIkrbEeSRw9blU02bnQ" x="20" y="92" width="10" height="10"/>
                 </children>
                 <children xmi:type="notation:Node" xmi:id="_7ZnLUErbEeSRw9blU02bnQ" type="3003" element="_7Y6nwErbEeSRw9blU02bnQ">
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZnLUUrbEeSRw9blU02bnQ" fontName="Cantarell"/>
@@ -3971,61 +3718,6 @@
                 <children xmi:type="notation:Node" xmi:id="_7Zq1s0rbEeSRw9blU02bnQ" type="5003">
                   <layoutConstraint xmi:type="notation:Location" xmi:id="_7Zq1tErbEeSRw9blU02bnQ" y="5"/>
                 </children>
-                <children xmi:type="notation:Node" xmi:id="_7ZrcwErbEeSRw9blU02bnQ" visible="false" type="3001" element="_7ZAuYErbEeSRw9blU02bnQ">
-                  <children xmi:type="notation:Node" xmi:id="_7Zrcw0rbEeSRw9blU02bnQ" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7ZrcxErbEeSRw9blU02bnQ" x="-20" y="-34"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_7ZvHI0rbEeSRw9blU02bnQ" type="3004" element="_7ZAuYUrbEeSRw9blU02bnQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZvHJErbEeSRw9blU02bnQ" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZvHJUrbEeSRw9blU02bnQ"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZrcwUrbEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZrcwkrbEeSRw9blU02bnQ" x="-2" width="10" height="10"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_7ZsD0ErbEeSRw9blU02bnQ" visible="false" type="3001" element="_7ZBVcErbEeSRw9blU02bnQ">
-                  <children xmi:type="notation:Node" xmi:id="_7ZsD00rbEeSRw9blU02bnQ" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7ZsD1ErbEeSRw9blU02bnQ" x="11" y="-10"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_7ZvuMErbEeSRw9blU02bnQ" type="3004" element="_7ZBVcUrbEeSRw9blU02bnQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZvuMUrbEeSRw9blU02bnQ" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZvuMkrbEeSRw9blU02bnQ"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZsD0UrbEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZsD0krbEeSRw9blU02bnQ" x="-2" y="11" width="10" height="10"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_7Zsq4ErbEeSRw9blU02bnQ" visible="false" type="3001" element="_7ZBVdUrbEeSRw9blU02bnQ">
-                  <children xmi:type="notation:Node" xmi:id="_7Zsq40rbEeSRw9blU02bnQ" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7Zsq5ErbEeSRw9blU02bnQ" x="11" y="-10"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_7ZvuM0rbEeSRw9blU02bnQ" type="3004" element="_7ZB8gErbEeSRw9blU02bnQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZvuNErbEeSRw9blU02bnQ" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZvuNUrbEeSRw9blU02bnQ"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7Zsq4UrbEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7Zsq4krbEeSRw9blU02bnQ" x="-2" y="22" width="10" height="10"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_7ZtR8ErbEeSRw9blU02bnQ" visible="false" type="3001" element="_7ZB8hErbEeSRw9blU02bnQ">
-                  <children xmi:type="notation:Node" xmi:id="_7Zt5AErbEeSRw9blU02bnQ" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7Zt5AUrbEeSRw9blU02bnQ" x="11" y="-10"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_7ZwVQErbEeSRw9blU02bnQ" type="3004" element="_7ZB8hUrbEeSRw9blU02bnQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZwVQUrbEeSRw9blU02bnQ" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZwVQkrbEeSRw9blU02bnQ"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZtR8UrbEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZtR8krbEeSRw9blU02bnQ" x="-2" y="33" width="10" height="10"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_7ZugEErbEeSRw9blU02bnQ" visible="false" type="3001" element="_7ZCjkErbEeSRw9blU02bnQ">
-                  <children xmi:type="notation:Node" xmi:id="_7ZugE0rbEeSRw9blU02bnQ" type="5001">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_7ZugFErbEeSRw9blU02bnQ" x="11" y="-10"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_7ZwVQ0rbEeSRw9blU02bnQ" type="3004" element="_7ZCjkUrbEeSRw9blU02bnQ">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZwVRErbEeSRw9blU02bnQ" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZwVRUrbEeSRw9blU02bnQ"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZugEUrbEeSRw9blU02bnQ" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZugEkrbEeSRw9blU02bnQ" x="-2" y="44" width="10" height="10"/>
-                </children>
                 <children xmi:type="notation:Node" xmi:id="_7ZvHIErbEeSRw9blU02bnQ" type="3003" element="_7ZAHUUrbEeSRw9blU02bnQ">
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_7ZvHIUrbEeSRw9blU02bnQ" fontName="Cantarell"/>
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_7ZvHIkrbEeSRw9blU02bnQ"/>
@@ -4155,7 +3847,7 @@
             </children>
             <styles xmi:type="notation:ConnectorStyle" xmi:id="_j-jHsUreEeSRw9blU02bnQ"/>
             <styles xmi:type="notation:FontStyle" xmi:id="_j-jHskreEeSRw9blU02bnQ" fontName="Cantarell"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_j-jHs0reEeSRw9blU02bnQ" points="[6, 0, 276, 91]$[52, 0, 322, 91]$[52, -75, 322, 16]$[-128, -75, 142, 16]$[-164, -15, 106, 76]$[-318, -15, -48, 76]$[-318, -91, -48, 0]$[-274, -91, -4, 0]"/>
+            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_j-jHs0reEeSRw9blU02bnQ" points="[6, 0, 272, 91]$[53, 0, 319, 91]$[53, -75, 319, 16]$[-141, -75, 125, 16]$[-162, -15, 104, 76]$[-315, -15, -49, 76]$[-315, -91, -49, 0]$[-270, -91, -4, 0]"/>
             <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_j-kV0EreEeSRw9blU02bnQ" id="(0.5,0.5)"/>
             <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_j-kV0UreEeSRw9blU02bnQ" id="(0.5,0.5)"/>
           </edges>
@@ -4175,31 +3867,6 @@
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_4kKeIJjJEeCGbO5oLE72PQ" width="10" height="10" resizeKind="EAST_WEST">
           <target xmi:type="uml:Component" href="uml2.uml#_ZVPJgNKaEd6qFrkOl_onzg"/>
           <semanticElements xmi:type="uml:Component" href="uml2.uml#_ZVPJgNKaEd6qFrkOl_onzg"/>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_4kYgkJjJEeCGbO5oLE72PQ" name="DropPort" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_ZzKboNKaEd6qFrkOl_onzg"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_ZzKboNKaEd6qFrkOl_onzg"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_4kZHoJjJEeCGbO5oLE72PQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_4kZHoZjJEeCGbO5oLE72PQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_4kZHopjJEeCGbO5oLE72PQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_iPyAg3VaEd-cw95GEMJD8Q" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7ZDKoErbEeSRw9blU02bnQ" name="LinkedDropPort" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_4NY3cEpNEeSo2unxERPWgg"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_4NY3cEpNEeSo2unxERPWgg"/>
-            <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-            <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-            <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7ZDxsErbEeSRw9blU02bnQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZDxsUrbEeSRw9blU02bnQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZDxskrbEeSRw9blU02bnQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_7ZDxs0rbEeSRw9blU02bnQ" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
           <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_Fm4QkErcEeSRw9blU02bnQ" name="DropPort" outgoingEdges="_j9JZgEreEeSRw9blU02bnQ" width="1" height="1">
             <target xmi:type="uml:Port" href="uml2.uml#_ZzKboNKaEd6qFrkOl_onzg"/>
             <semanticElements xmi:type="uml:Port" href="uml2.uml#_ZzKboNKaEd6qFrkOl_onzg"/>
@@ -4237,39 +3904,6 @@
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_hSFb8MUBEeCCRJc48YB8Ug" width="10" height="10" resizeKind="EAST_WEST">
           <target xmi:type="uml:Component" href="uml2.uml#_4W7cIMT3EeCCRJc48YB8Ug"/>
           <semanticElements xmi:type="uml:Component" href="uml2.uml#_4W7cIMT3EeCCRJc48YB8Ug"/>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_hSHRIMUBEeCCRJc48YB8Ug" name="Port1" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_4W7cIcT3EeCCRJc48YB8Ug"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_4W7cIcT3EeCCRJc48YB8Ug"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_hSHRIcUBEeCCRJc48YB8Ug" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_hSHRIsUBEeCCRJc48YB8Ug"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_hSHRI8UBEeCCRJc48YB8Ug"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_hSHRJMUBEeCCRJc48YB8Ug" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7ZFm4ErbEeSRw9blU02bnQ" name="Port4" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_deL3cEotEeSUzKpYpQxHZQ"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_deL3cEotEeSUzKpYpQxHZQ"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7ZFm4UrbEeSRw9blU02bnQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZFm4krbEeSRw9blU02bnQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZFm40rbEeSRw9blU02bnQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_7ZFm5ErbEeSRw9blU02bnQ" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7ZGN8ErbEeSRw9blU02bnQ" name="Port7" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_s84zwEpyEeSU7I_GWuX6JQ"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_s84zwEpyEeSU7I_GWuX6JQ"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7ZGN8UrbEeSRw9blU02bnQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZGN8krbEeSRw9blU02bnQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZGN80rbEeSRw9blU02bnQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_7ZGN9ErbEeSRw9blU02bnQ" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
           <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_Fm768ErcEeSRw9blU02bnQ" name="Port1" outgoingEdges="_Kdc98ErcEeSRw9blU02bnQ" width="1" height="1">
             <target xmi:type="uml:Port" href="uml2.uml#_4W7cIcT3EeCCRJc48YB8Ug"/>
             <semanticElements xmi:type="uml:Port" href="uml2.uml#_4W7cIcT3EeCCRJc48YB8Ug"/>
@@ -4292,7 +3926,7 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDNIC_Port']"/>
           </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_Fm--QErcEeSRw9blU02bnQ" name="Port7" outgoingEdges="_KdeMEErcEeSRw9blU02bnQ" width="1" height="1">
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_Fm--QErcEeSRw9blU02bnQ" name="Port9" outgoingEdges="_KdeMEErcEeSRw9blU02bnQ" width="1" height="1">
             <target xmi:type="uml:Port" href="uml2.uml#_s84zwEpyEeSU7I_GWuX6JQ"/>
             <semanticElements xmi:type="uml:Port" href="uml2.uml#_s84zwEpyEeSU7I_GWuX6JQ"/>
             <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Fm--QUrcEeSRw9blU02bnQ" showIcon="false">
@@ -4314,50 +3948,6 @@
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_hSGDAMUBEeCCRJc48YB8Ug" width="10" height="10" resizeKind="EAST_WEST">
           <target xmi:type="uml:Component" href="uml2.uml#_5wkvoMT3EeCCRJc48YB8Ug"/>
           <semanticElements xmi:type="uml:Component" href="uml2.uml#_5wkvoMT3EeCCRJc48YB8Ug"/>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_hSH4MMUBEeCCRJc48YB8Ug" name="Port2" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_5wkvocT3EeCCRJc48YB8Ug"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_5wkvocT3EeCCRJc48YB8Ug"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_hSIfQMUBEeCCRJc48YB8Ug" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_hSIfQcUBEeCCRJc48YB8Ug"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_hSIfQsUBEeCCRJc48YB8Ug"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_hSIfQ8UBEeCCRJc48YB8Ug" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7ZG1AErbEeSRw9blU02bnQ" name="collapsedPortToMove1" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_tvS-YGu9EeKKE-qMx3PRKQ"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_tvS-YGu9EeKKE-qMx3PRKQ"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7ZG1AUrbEeSRw9blU02bnQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZG1AkrbEeSRw9blU02bnQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZG1A0rbEeSRw9blU02bnQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_7ZG1BErbEeSRw9blU02bnQ" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7ZHcEErbEeSRw9blU02bnQ" name="collapsedPort2" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_oIZ1EGvCEeKKE-qMx3PRKQ"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_oIZ1EGvCEeKKE-qMx3PRKQ"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7ZHcEUrbEeSRw9blU02bnQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZHcEkrbEeSRw9blU02bnQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZHcE0rbEeSRw9blU02bnQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_7ZHcFErbEeSRw9blU02bnQ" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7ZIDIErbEeSRw9blU02bnQ" name="Port3" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_fZdv8Gx7EeKmNesCCiZqKw"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_fZdv8Gx7EeKmNesCCiZqKw"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7ZIDIUrbEeSRw9blU02bnQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZIDIkrbEeSRw9blU02bnQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZIDI0rbEeSRw9blU02bnQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_7ZIDJErbEeSRw9blU02bnQ" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
           <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_Fm_lUErcEeSRw9blU02bnQ" name="Port2" incomingEdges="_Kdc98ErcEeSRw9blU02bnQ" width="1" height="1">
             <target xmi:type="uml:Port" href="uml2.uml#_5wkvocT3EeCCRJc48YB8Ug"/>
             <semanticElements xmi:type="uml:Port" href="uml2.uml#_5wkvocT3EeCCRJc48YB8Ug"/>
@@ -4413,39 +4003,6 @@
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_hSGDBcUBEeCCRJc48YB8Ug" width="10" height="10" resizeKind="EAST_WEST">
           <target xmi:type="uml:Component" href="uml2.uml#_0tyyQcT3EeCCRJc48YB8Ug"/>
           <semanticElements xmi:type="uml:Component" href="uml2.uml#_0tyyQcT3EeCCRJc48YB8Ug"/>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7ZJRQErbEeSRw9blU02bnQ" name="collapsedPort1" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_w-T4EGu9EeKKE-qMx3PRKQ"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_w-T4EGu9EeKKE-qMx3PRKQ"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7ZKfYErbEeSRw9blU02bnQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZKfYUrbEeSRw9blU02bnQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZKfYkrbEeSRw9blU02bnQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_7ZKfY0rbEeSRw9blU02bnQ" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7ZLGcErbEeSRw9blU02bnQ" name="Port5" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_VNNfwEotEeSUzKpYpQxHZQ"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_VNNfwEotEeSUzKpYpQxHZQ"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7ZLGcUrbEeSRw9blU02bnQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZLGckrbEeSRw9blU02bnQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZLGc0rbEeSRw9blU02bnQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_7ZLGdErbEeSRw9blU02bnQ" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7ZLtgErbEeSRw9blU02bnQ" name="Port6" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_E4BzsEpyEeSU7I_GWuX6JQ"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_E4BzsEpyEeSU7I_GWuX6JQ"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7ZLtgUrbEeSRw9blU02bnQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZLtgkrbEeSRw9blU02bnQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZLtg0rbEeSRw9blU02bnQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_7ZLthErbEeSRw9blU02bnQ" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
           <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_FnCBkErcEeSRw9blU02bnQ" name="collapsedPort1" width="1" height="1">
             <target xmi:type="uml:Port" href="uml2.uml#_w-T4EGu9EeKKE-qMx3PRKQ"/>
             <semanticElements xmi:type="uml:Port" href="uml2.uml#_w-T4EGu9EeKKE-qMx3PRKQ"/>
@@ -4502,127 +4059,6 @@
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_7Y6AsErbEeSRw9blU02bnQ" width="10" height="10" resizeKind="EAST_WEST">
           <target xmi:type="uml:Component" href="uml2.uml#_soduUXGoEeG8G_zeQrcp1A"/>
           <semanticElements xmi:type="uml:Component" href="uml2.uml#_soduUXGoEeG8G_zeQrcp1A"/>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7Y7O0ErbEeSRw9blU02bnQ" name="Port1" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_soduUnGoEeG8G_zeQrcp1A"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_soduUnGoEeG8G_zeQrcp1A"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7Y7O0UrbEeSRw9blU02bnQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7Y7O0krbEeSRw9blU02bnQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7Y7O00rbEeSRw9blU02bnQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_7Y7O1ErbEeSRw9blU02bnQ" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7Y7O1UrbEeSRw9blU02bnQ" name="Port2" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_soduU3GoEeG8G_zeQrcp1A"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_soduU3GoEeG8G_zeQrcp1A"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7Y714ErbEeSRw9blU02bnQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7Y714UrbEeSRw9blU02bnQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7Y714krbEeSRw9blU02bnQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_7Y7140rbEeSRw9blU02bnQ" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7Y715ErbEeSRw9blU02bnQ" name="Port3" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_soduVHGoEeG8G_zeQrcp1A"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_soduVHGoEeG8G_zeQrcp1A"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7Y715UrbEeSRw9blU02bnQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7Y715krbEeSRw9blU02bnQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7Y7150rbEeSRw9blU02bnQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_7Y716ErbEeSRw9blU02bnQ" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7Y8c8ErbEeSRw9blU02bnQ" name="Port4" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_9GO5kHQfEeGzhLaBlPZdWw"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_9GO5kHQfEeGzhLaBlPZdWw"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7Y8c8UrbEeSRw9blU02bnQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7Y8c8krbEeSRw9blU02bnQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7Y8c80rbEeSRw9blU02bnQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_7Y8c9ErbEeSRw9blU02bnQ" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7Y8c9UrbEeSRw9blU02bnQ" name="Port5" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_9GPgoHQfEeGzhLaBlPZdWw"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_9GPgoHQfEeGzhLaBlPZdWw"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7Y9EAErbEeSRw9blU02bnQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7Y9EAUrbEeSRw9blU02bnQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7Y9EAkrbEeSRw9blU02bnQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_7Y9EA0rbEeSRw9blU02bnQ" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7Y9EBErbEeSRw9blU02bnQ" name="Port6" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_9GPgoXQfEeGzhLaBlPZdWw"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_9GPgoXQfEeGzhLaBlPZdWw"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7Y9rEErbEeSRw9blU02bnQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7Y9rEUrbEeSRw9blU02bnQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7Y9rEkrbEeSRw9blU02bnQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_7Y9rE0rbEeSRw9blU02bnQ" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7Y9rFErbEeSRw9blU02bnQ" name="Port8" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_9xW6MXQfEeGzhLaBlPZdWw"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_9xW6MXQfEeGzhLaBlPZdWw"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7Y9rFUrbEeSRw9blU02bnQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7Y9rFkrbEeSRw9blU02bnQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7Y9rF0rbEeSRw9blU02bnQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_7Y9rGErbEeSRw9blU02bnQ" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7Y-SIErbEeSRw9blU02bnQ" name="Port9" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_9xW6MHQfEeGzhLaBlPZdWw"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_9xW6MHQfEeGzhLaBlPZdWw"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7Y-SIUrbEeSRw9blU02bnQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7Y-SIkrbEeSRw9blU02bnQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7Y-SI0rbEeSRw9blU02bnQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_7Y-SJErbEeSRw9blU02bnQ" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7Y-5MErbEeSRw9blU02bnQ" name="collapsePort3" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_2RMvAGuyEeKKE-qMx3PRKQ"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_2RMvAGuyEeKKE-qMx3PRKQ"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7Y-5MUrbEeSRw9blU02bnQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7Y-5MkrbEeSRw9blU02bnQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7Y-5M0rbEeSRw9blU02bnQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_7Y-5NErbEeSRw9blU02bnQ" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7Y-5NUrbEeSRw9blU02bnQ" name="collapsePort1" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_QxwSAWuyEeKKE-qMx3PRKQ"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_QxwSAWuyEeKKE-qMx3PRKQ"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7Y_gQErbEeSRw9blU02bnQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7Y_gQUrbEeSRw9blU02bnQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7Y_gQkrbEeSRw9blU02bnQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_7Y_gQ0rbEeSRw9blU02bnQ" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7Y_gRErbEeSRw9blU02bnQ" name="collapsePort2" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_QxwSAmuyEeKKE-qMx3PRKQ"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_QxwSAmuyEeKKE-qMx3PRKQ"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7Y_gRUrbEeSRw9blU02bnQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7Y_gRkrbEeSRw9blU02bnQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7Y_gR0rbEeSRw9blU02bnQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_7Y_gSErbEeSRw9blU02bnQ" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
           <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_FnG6EErcEeSRw9blU02bnQ" name="Port1" width="1" height="1">
             <target xmi:type="uml:Port" href="uml2.uml#_soduUnGoEeG8G_zeQrcp1A"/>
             <semanticElements xmi:type="uml:Port" href="uml2.uml#_soduUnGoEeG8G_zeQrcp1A"/>
@@ -4700,7 +4136,7 @@
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDNIC_Port']"/>
           </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_FnOO0ErcEeSRw9blU02bnQ" name="Port9" incomingEdges="_j9JZgEreEeSRw9blU02bnQ" width="1" height="1">
+          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_FnOO0ErcEeSRw9blU02bnQ" name="Port7" incomingEdges="_j9JZgEreEeSRw9blU02bnQ" width="1" height="1">
             <target xmi:type="uml:Port" href="uml2.uml#_9xW6MHQfEeGzhLaBlPZdWw"/>
             <semanticElements xmi:type="uml:Port" href="uml2.uml#_9xW6MHQfEeGzhLaBlPZdWw"/>
             <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_FnO14ErcEeSRw9blU02bnQ" showIcon="false">
@@ -4767,61 +4203,6 @@
         <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_7ZAHUErbEeSRw9blU02bnQ" width="10" height="10" resizeKind="EAST_WEST">
           <target xmi:type="uml:Component" href="uml2.uml#_6YL-8XQfEeGzhLaBlPZdWw"/>
           <semanticElements xmi:type="uml:Component" href="uml2.uml#_6YL-8XQfEeGzhLaBlPZdWw"/>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7ZAuYErbEeSRw9blU02bnQ" name="Port1" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_6YL-8nQfEeGzhLaBlPZdWw"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_6YL-8nQfEeGzhLaBlPZdWw"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7ZAuYUrbEeSRw9blU02bnQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZAuYkrbEeSRw9blU02bnQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZAuY0rbEeSRw9blU02bnQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_7ZAuZErbEeSRw9blU02bnQ" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7ZBVcErbEeSRw9blU02bnQ" name="Port2" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_6YL-83QfEeGzhLaBlPZdWw"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_6YL-83QfEeGzhLaBlPZdWw"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7ZBVcUrbEeSRw9blU02bnQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZBVckrbEeSRw9blU02bnQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZBVc0rbEeSRw9blU02bnQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_7ZBVdErbEeSRw9blU02bnQ" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7ZBVdUrbEeSRw9blU02bnQ" name="Port3" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_6YL-9HQfEeGzhLaBlPZdWw"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_6YL-9HQfEeGzhLaBlPZdWw"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7ZB8gErbEeSRw9blU02bnQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZB8gUrbEeSRw9blU02bnQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZB8gkrbEeSRw9blU02bnQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_7ZB8g0rbEeSRw9blU02bnQ" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7ZB8hErbEeSRw9blU02bnQ" name="collapsePort1" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_i1z44GuoEeKKE-qMx3PRKQ"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_i1z44GuoEeKKE-qMx3PRKQ"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7ZB8hUrbEeSRw9blU02bnQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZB8hkrbEeSRw9blU02bnQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZB8h0rbEeSRw9blU02bnQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_7ZB8iErbEeSRw9blU02bnQ" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_7ZCjkErbEeSRw9blU02bnQ" name="collapsePort2" visible="false" width="1" height="1">
-            <target xmi:type="uml:Port" href="uml2.uml#_i12VIGuoEeKKE-qMx3PRKQ"/>
-            <semanticElements xmi:type="uml:Port" href="uml2.uml#_i12VIGuoEeKKE-qMx3PRKQ"/>
-            <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_7ZCjkUrbEeSRw9blU02bnQ" showIcon="false">
-              <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZCjkkrbEeSRw9blU02bnQ"/>
-              <description xmi:type="style:BundledImageDescription" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']/@style"/>
-              <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_7ZCjk0rbEeSRw9blU02bnQ"/>
-              <color xmi:type="viewpoint:RGBValues" xmi:id="_7ZCjlErbEeSRw9blU02bnQ" red="114" green="159" blue="207"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="uml2.odesign#//@ownedViewpoints[name='UML%20Analysis%20workspace']/@ownedRepresentations[name='Component%20Diagram-MovePortOnNodeInContainer']/@defaultLayer/@containerMappings[name='CDNIC_Component_Container']/@subNodeMappings[name='CDNIC_Component_Node']/@borderedNodeMappings[name='CDN_Port']"/>
-          </ownedBorderedNodes>
           <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_FnR5MErcEeSRw9blU02bnQ" name="Port1" width="1" height="1">
             <target xmi:type="uml:Port" href="uml2.uml#_6YL-8nQfEeGzhLaBlPZdWw"/>
             <semanticElements xmi:type="uml:Port" href="uml2.uml#_6YL-8nQfEeGzhLaBlPZdWw"/>
