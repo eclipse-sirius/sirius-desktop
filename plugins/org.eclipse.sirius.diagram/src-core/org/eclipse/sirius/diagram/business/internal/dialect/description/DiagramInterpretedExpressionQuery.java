@@ -24,11 +24,13 @@ import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescripto
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
+import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 import com.google.common.collect.Sets;
 
@@ -80,6 +82,29 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
         }
     }
 
+    @Override
+    public Map<String, String> getAvailableVariables() {
+        /*
+         * [428757] tool variables and not displayed in autocompletion This
+         * patch adds hard coded variables and hence is a temporary solution.
+         * The good way would be to put those metadata on the
+         * EdgeCreationDescription EClass in the diagram.ecore metamodel and to
+         * complete the AbstractInterpretedExpressionQuery to make it able to
+         * find specific variables for concrete types.
+         */
+        Map<String, String> availableVariables = super.getAvailableVariables();
+
+        if (target instanceof EdgeCreationDescription && ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION.equals(feature)) {
+            availableVariables.put("diagram", "diagram.DDiagram");
+            availableVariables.put("preSource", "ecore.EObject");
+            availableVariables.put("preSourceView", "diagram.EdgeTarget");
+            availableVariables.put("preTarget", "ecore.EObject");
+            availableVariables.put("preTargetView", "diagram.EdgeTarget");
+        }
+
+        return availableVariables;
+    }
+
     /**
      * An {@link IInterpretedExpressionTargetSwitch} that delegates to the
      * defaultSwitch or the diagram specific switch, according to the package of
@@ -91,6 +116,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
     private class DiagramGlobalInterpretedTargetSwitch implements IInterpretedExpressionTargetSwitch {
 
         private DefaultInterpretedExpressionTargetSwitch defaultSwitch = new DefaultInterpretedExpressionTargetSwitch(feature, this) {
+            @Override
             public EObject getFirstRelevantContainer(EObject obj) {
                 return DiagramGlobalInterpretedTargetSwitch.this.getFirstRelevantContainer(obj);
             }
@@ -110,6 +136,7 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
          * 
          * @see org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
          */
+        @Override
         public Option<Collection<String>> doSwitch(EObject target, boolean considerFeature) {
             Collection<String> targetTypes = Sets.newLinkedHashSet();
             Option<Collection<String>> expressionTarget = Options.newSome(targetTypes);
