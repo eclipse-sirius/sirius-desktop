@@ -48,7 +48,10 @@ public class LozengeEditPart extends AbstractNotSelectableShapeNodeEditPart impl
         super.refreshVisuals();
         if (this.resolveSemanticElement() instanceof Lozenge) {
             Lozenge lozenge = (Lozenge) this.resolveSemanticElement();
-            int borderSize = lozenge.getBorderSize().intValue();
+            int borderSize = 0;
+            if (lozenge.getBorderSize() != null) {
+                borderSize = lozenge.getBorderSize().intValue();
+            }
             this.getPrimaryShape().setLineWidth(borderSize);
             DiagramNodeEditPartOperation.refreshNodeLabelAlignment(this.getPrimaryShape(), lozenge);
         }

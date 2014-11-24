@@ -57,7 +57,10 @@ public class SquareEditPart extends AbstractNotSelectableShapeNodeEditPart imple
         EObject dde = this.resolveSemanticElement();
         if (dde instanceof Square) {
             Square square = (Square) dde;
-            int borderSize = square.getBorderSize().intValue();
+            int borderSize = 0;
+            if (square.getBorderSize() != null) {
+                borderSize = square.getBorderSize().intValue();
+            }
             this.getPrimaryShape().setLineWidth(borderSize);
             DiagramNodeEditPartOperation.refreshNodeLabelAlignment(this.getPrimaryShape(), square);
         }

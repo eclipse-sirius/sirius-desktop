@@ -276,12 +276,16 @@ public final class DiagramBorderNodeEditPartOperation {
             if (styledFigure instanceof Shape) {
                 ((Shape) styledFigure).setLineWidth(0);
             }
-            lineBorder.setWidth(borderedStyle.getBorderSize().intValue());
+            int borderSize = 0;
+            if (borderedStyle.getBorderSize() != null) {
+                borderSize = borderedStyle.getBorderSize().intValue();
+            }
+            lineBorder.setWidth(borderSize);
             if (borderedStyle.getBorderColor() != null) {
                 lineBorder.setColor(VisualBindingManager.getDefault().getColorFromRGBValues(borderedStyle.getBorderColor()));
             }
 
-            if (borderedStyle.getBorderSize().intValue() == 0) {
+            if (borderSize == 0) {
                 styledFigure.setBorder(null);
             }
         }

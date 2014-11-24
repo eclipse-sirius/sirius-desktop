@@ -160,14 +160,17 @@ public final class DiagramNodeEditPartOperation {
                 styledFigure.setBorder(lineBorder);
             }
         }
-
-        lineBorder.setWidth(borderedStyle.getBorderSize().intValue());
+        int borderSize = 0;
+        if (borderedStyle.getBorderSize() != null) {
+            borderSize = borderedStyle.getBorderSize().intValue();
+        }
+        lineBorder.setWidth(borderSize);
         final RGBValues borderColor = borderedStyle.getBorderColor();
         if (borderColor != null) {
             lineBorder.setColor(VisualBindingManager.getDefault().getColorFromRGBValues(borderColor));
         }
 
-        if (borderedStyle.getBorderSize().intValue() == 0) {
+        if (borderSize == 0) {
             /* NoteFigure in GMF does not expect a null figure since GMF 2.2 */
             if (!(styledFigure instanceof NoteFigure)) {
                 styledFigure.setBorder(null);

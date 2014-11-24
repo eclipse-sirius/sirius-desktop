@@ -48,7 +48,10 @@ public class EllipseEditPart extends AbstractNotSelectableShapeNodeEditPart impl
         super.refreshVisuals();
         if (this.resolveSemanticElement() instanceof org.eclipse.sirius.diagram.Ellipse) {
             org.eclipse.sirius.diagram.Ellipse ellipse = (org.eclipse.sirius.diagram.Ellipse) this.resolveSemanticElement();
-            int borderSize = ellipse.getBorderSize().intValue();
+            int borderSize = 0;
+            if (ellipse.getBorderSize() != null) {
+                borderSize = ellipse.getBorderSize().intValue();
+            }
             this.getPrimaryShape().setLineWidth(borderSize);
             DiagramNodeEditPartOperation.refreshNodeLabelAlignment(this.getPrimaryShape(), ellipse);
         }

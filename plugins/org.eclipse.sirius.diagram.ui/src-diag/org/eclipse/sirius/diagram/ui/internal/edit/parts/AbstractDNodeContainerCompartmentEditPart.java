@@ -161,8 +161,10 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
                 if (borderColor != null) {
                     getFigure().setForegroundColor(VisualBindingManager.getDefault().getColorFromRGBValues(borderColor));
                 }
-
-                int borderSize = ownedStyle.getBorderSize().intValue();
+                int borderSize = 0;
+                if (ownedStyle.getBorderSize() != null) {
+                    borderSize = ownedStyle.getBorderSize().intValue();
+                }
                 if (borderSize == 0) {
                     borderSize = 1;
                 }

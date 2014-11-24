@@ -146,8 +146,10 @@ public final class DiagramContainerEditPartOperation {
             if (self instanceof AbstractDiagramContainerEditPart && DiagramContainerEditPartOperation.isPrimaryShapeChanging(self, style)) {
                 ((AbstractDiagramContainerEditPart) self).reInitFigure();
             }
-
-            int borderSize = style == null ? 0 : style.getBorderSize().intValue();
+            int borderSize = 0;
+            if (style != null && style.getBorderSize() != null) {
+                borderSize = style.getBorderSize().intValue();
+            }
             if (borderSize == 0) {
                 borderSize = 1;
             }

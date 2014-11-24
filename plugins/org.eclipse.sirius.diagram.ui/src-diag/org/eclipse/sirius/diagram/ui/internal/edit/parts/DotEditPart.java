@@ -98,7 +98,10 @@ public class DotEditPart extends AbstractNotSelectableShapeNodeEditPart implemen
         if (element instanceof LabelStyle) {
             if (element instanceof Dot) {
                 Dot dot = (Dot) element;
-                int borderSize = dot.getBorderSize().intValue();
+                int borderSize = 0;
+                if (dot.getBorderSize() != null) {
+                    borderSize = dot.getBorderSize().intValue();
+                }
                 this.getPrimaryShape().setLineWidth(borderSize);
             }
             DiagramNodeEditPartOperation.refreshNodeLabelAlignment(getPrimaryShape(), (LabelStyle) element);
