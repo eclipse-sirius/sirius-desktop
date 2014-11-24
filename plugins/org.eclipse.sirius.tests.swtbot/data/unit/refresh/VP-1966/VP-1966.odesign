@@ -39,7 +39,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="PackageCompartmentContainerMapping" semanticCandidatesExpression="&lt;%self.eSubpackages%>" domainClass="EPackage" reusedNodeMappings="//@ownedViewpoints[name='vp_1966']/@ownedRepresentations[name='VP_1966_Diagram']/@defaultLayer/@nodeMappings[name='Nodes'] //@ownedViewpoints[name='vp_1966']/@ownedRepresentations[name='VP_1966_Diagram']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@subNodeMappings[name='AttributeNodeMapping']" reusedContainerMappings="//@ownedViewpoints[name='vp_1966']/@ownedRepresentations[name='VP_1966_Diagram']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']">
+        <containerMappings name="PackageCompartmentContainerMapping" semanticCandidatesExpression="&lt;%self.eSubpackages%>" domainClass="EPackage" reusedNodeMappings="//@ownedViewpoints[name='vp_1966']/@ownedRepresentations[name='VP_1966_Diagram']/@defaultLayer/@nodeMappings[name='Nodes']" reusedContainerMappings="//@ownedViewpoints[name='vp_1966']/@ownedRepresentations[name='VP_1966_Diagram']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']">
           <subContainerMappings name="SubPackageCompartmentContainerMapping" semanticCandidatesExpression="&lt;%eAllContents(&quot;EPackage&quot;)%>" domainClass="EPackage">
             <borderedNodeMappings name="EClassAsBorderedNodeMapping" semanticCandidatesExpression="&lt;%self.eClassifiers%>" domainClass="EClass">
               <borderedNodeMappings name="EAttributeAsBorderedNodeMapping" semanticCandidatesExpression="&lt;%self.eStructuralFeatures%>" domainClass="EAttribute">

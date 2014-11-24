@@ -156,7 +156,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.0/@ownedTools[name='External%20EClass%20from%20treeview']" name="Entities" titleExpression="&lt;%name%> package entities" domainClass="EPackage" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Entities" titleExpression="&lt;%name%> package entities" domainClass="EPackage" enablePopupBars="true">
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide class content">
         <filters xsi:type="filter:MappingFilter"/>
       </filters>
@@ -212,7 +212,7 @@
             </style>
           </conditionnalStyles>
         </edgeMappings>
-        <edgeMappings name="EC ESupertypes" deletionDescription="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.2/@ownedTools[name='Delete%20ESuperType']" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetFinderExpression="&lt;%eSuperTypes%>">
+        <edgeMappings name="EC ESupertypes" deletionDescription="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.2/@ownedTools[name='Delete%20ESuperType']" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" targetMapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" targetFinderExpression="&lt;%eSuperTypes%>">
           <style targetArrow="InputClosedArrow" sizeComputationExpression="1" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false">
@@ -281,14 +281,6 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="EC External EClass" semanticCandidatesExpression="&lt;%allRoots.eAllContents(&quot;EClass&quot;) - eContents.filter(&quot;EClass&quot;)%>" createElements="false" domainClass="EClass" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" tooltipExpression="&lt;%name%> in &lt;%eResourceName%>" backgroundStyle="GradientTopToBottom">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-          </style>
-        </containerMappings>
         <toolSections name="Classifier">
           <ownedTools xsi:type="tool:ToolGroup" name="Classifier">
             <tools xsi:type="tool:ContainerCreationDescription" name="Class" containerMappings="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']">
@@ -339,17 +331,6 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EEnum" referenceName="eClassifiers"/>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="External EClass from treeview" forceRefresh="true" mappings="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" dragSource="PROJECT_EXPLORER">
-            <oldContainer name="oldSemanticContainer"/>
-            <newContainer name="newSemanticContainer"/>
-            <element name="element"/>
-            <newViewContainer name="newContainerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:For" expression="$element">
-                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='Test%20case%20for%20ticket%20%231957']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" containerViewExpression="var:newContainerView"/>
-              </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:DirectEditLabel" name="EReference Name">

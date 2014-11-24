@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:validation="http://www.eclipse.org/sirius/diagram/description/validation/1.1.0" name="Ecore Editing Workbench V4.6" version="8.0.0">
   <ownedViewpoints name="Design multi-columns" modelFileExtension="ecore">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.0/@ownedTools[name='External%20EClass%20from%20treeview']" name="Entities" titleExpression="&lt;%name%> package entities" domainClass="EPackage" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Entities" titleExpression="&lt;%name%> package entities" domainClass="EPackage" enablePopupBars="true">
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide class content">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute'] //@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='Operation']"/>
       </filters>
@@ -33,7 +33,7 @@
         </ownedRules>
       </validationSet>
       <defaultLayer name="Default">
-        <edgeMappings name="EC_EReference" labelDirectEdit="//@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.0/@ownedTools[name='EReference%20Name']" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;)[!eOpposite]%>" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetMapping="//@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetFinderExpression="&lt;%eType%>" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
+        <edgeMappings name="EC_EReference" labelDirectEdit="//@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.0/@ownedTools[name='EReference%20Name']" semanticCandidatesExpression="&lt;%eAllContents(&quot;EReference&quot;)[!eOpposite]%>" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" targetMapping="//@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" targetFinderExpression="&lt;%eType%>" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
           <style sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%if (derived) {%>/&lt;%}%>&lt;%getEReferenceName()%>">
@@ -57,7 +57,7 @@
             </style>
           </conditionnalStyles>
         </edgeMappings>
-        <edgeMappings name="EC ESupertypes" deletionDescription="//@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.2/@ownedTools[name='Delete%20ESuperType']" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetMapping="//@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetFinderExpression="&lt;%eSuperTypes%>">
+        <edgeMappings name="EC ESupertypes" deletionDescription="//@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.2/@ownedTools[name='Delete%20ESuperType']" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" targetMapping="//@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" targetFinderExpression="&lt;%eSuperTypes%>">
           <style targetArrow="InputClosedArrow" sizeComputationExpression="1" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false">
@@ -73,7 +73,7 @@
             </style>
           </conditionnalStyles>
         </edgeMappings>
-        <edgeMappings name="Bi-directional EC_EReference " semanticCandidatesExpression="&lt;%getEOppositeEReferences(eAllContents(&quot;EReference&quot;))%>" semanticElements="&lt;%self + eOpposite%>" sourceMapping="//@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetMapping="//@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetFinderExpression="&lt;%eType%>" sourceFinderExpression="feature:eContainer" targetExpression="" domainClass="EReference" useDomainElement="true">
+        <edgeMappings name="Bi-directional EC_EReference " semanticCandidatesExpression="&lt;%getEOppositeEReferences(eAllContents(&quot;EReference&quot;))%>" semanticElements="&lt;%self + eOpposite%>" sourceMapping="//@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" targetMapping="//@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']" targetFinderExpression="&lt;%eType%>" sourceFinderExpression="feature:eContainer" targetExpression="" domainClass="EReference" useDomainElement="true">
           <style targetArrow="NoDecoration" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%if (derived) {%>/&lt;%}%>&lt;%getEOppositeEReferenceName()%>">
@@ -131,14 +131,6 @@
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-          </style>
-        </containerMappings>
-        <containerMappings name="EC External EClass" semanticCandidatesExpression="&lt;%allRoots.eAllContents(&quot;EClass&quot;) - eContents.filter(&quot;EClass&quot;)%>" createElements="false" domainClass="EClass" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" tooltipExpression="&lt;%name%> in &lt;%eResourceName%>" backgroundStyle="GradientTopToBottom">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
@@ -202,17 +194,6 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%getTypeIfWritten($0)%>">
                   <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="&lt;%getTypeIfWritten($0)%>"/>
                 </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="External EClass from treeview" forceRefresh="true" mappings="//@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" dragSource="PROJECT_EXPLORER">
-            <oldContainer name="oldSemanticContainer"/>
-            <newContainer name="newSemanticContainer"/>
-            <element name="element"/>
-            <newViewContainer name="newContainerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:For" expression="$element">
-                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Design%20multi-columns']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" containerViewExpression="var:newContainerView"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
