@@ -19,7 +19,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
+import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
+import org.eclipse.gef.editpolicies.ResizableEditPolicy;
 import org.eclipse.gef.requests.SelectionRequest;
 import org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
@@ -28,6 +30,7 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.BorderedStyle;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.description.EndOfLifeMapping;
@@ -38,6 +41,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.ExecutionItem
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.LifelineNodeFigure;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.SouthCenteredBorderItemLocator;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.LayoutEditPartConstants;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramBorderNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
@@ -77,6 +81,20 @@ public class LifelineEditPart extends AbstractSequenceBorderedEditPart {
 
         super.refreshVisuals();
         SequenceEditPartsOperations.setBorderItemLocation(this, PositionConstants.SOUTH, LayoutEditPartConstants.ROOT_EXECUTION_BORDER_ITEM_OFFSET);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public EditPolicy getPrimaryDragEditPolicy() {
+        final ResizableEditPolicy result = new ResizableEditPolicy();
+        DDiagramElement dde = this.resolveDiagramElement();
+        if (dde instanceof DNode) {
+            DNode node = (DNode) dde;
+            DiagramBorderNodeEditPartOperation.updateResizeKind(result, node);
+        }
+        return result;
     }
 
     private void updateLifelineWidthAndColor() {
@@ -187,7 +205,7 @@ public class LifelineEditPart extends AbstractSequenceBorderedEditPart {
      * @author smonnier
      */
     private final class LifeLineSelectionDragEditPartsTrackerEx extends DragEditPartsTrackerEx {
-    
+
         /**
          * Constructor.
          * 
@@ -197,7 +215,7 @@ public class LifelineEditPart extends AbstractSequenceBorderedEditPart {
         public LifeLineSelectionDragEditPartsTrackerEx(EditPart sourceEditPart) {
             super(sourceEditPart);
         }
-    
+
         /**
          * This method has been overridden to be able to manipulate the parent
          * InstanceRoleEditPart as well as this LifelineEditPart. For instance,
@@ -217,7 +235,7 @@ public class LifelineEditPart extends AbstractSequenceBorderedEditPart {
             }
             return createOperationSet;
         }
-    
+
         /**
          * This method has been overridden to be able to select the parent
          * InstanceRoleEditPart when selecting this LifelineEditPart.
@@ -232,7 +250,7 @@ public class LifelineEditPart extends AbstractSequenceBorderedEditPart {
             setFlag(FLAG_SELECTION_PERFORMED, true);
             EditPartViewer viewer = getCurrentViewer();
             List<?> selectedObjects = viewer.getSelectedEditParts();
-    
+
             if (getCurrentInput().isModKeyDown(SWT.MOD1)) {
                 if (selectedObjects.contains(getSourceEditPart().getParent())) {
                     viewer.deselect(getSourceEditPart());
@@ -245,7 +263,7 @@ public class LifelineEditPart extends AbstractSequenceBorderedEditPart {
                 viewer.select(getSourceEditPart().getParent());
             }
         }
-    
+
         /**
          * Always disable the clone with Ctrl key in Sirius because it only
          * clone the graphical element and not the semantic element.
@@ -259,6 +277,6 @@ public class LifelineEditPart extends AbstractSequenceBorderedEditPart {
         protected void setCloneActive(boolean cloneActive) {
             super.setCloneActive(false);
         }
-    
+
     }
 }
