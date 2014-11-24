@@ -11,15 +11,11 @@
 package org.eclipse.sirius.business.internal.session;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 import com.google.common.collect.Iterables;
@@ -31,44 +27,43 @@ import com.google.common.collect.Iterables;
  * @author pcdavid
  */
 public class RepresentationNameListener extends ResourceSetListenerImpl {
+
+    private Session session;
+
     /**
-     * {@inheritDoc}
+     * Default constructor.
+     * 
+     * @param session
+     *            the {@link Session}
      */
+    public RepresentationNameListener(Session session) {
+        this.session = session;
+        session.getTransactionalEditingDomain().addResourceSetListener(this);
+    }
+
     @Override
     public boolean isPostcommitOnly() {
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public void resourceSetChanged(ResourceSetChangeEvent event) {
         for (Notification notif : Iterables.filter(event.getNotifications(), Notification.class)) {
             if (isRepresentationNameChange(notif)) {
-                Option<Session> session = getSessionFromRepresentation((DRepresentation) notif.getNotifier());
-                if (session.some()) {
-                    SessionManager.INSTANCE.notifyRepresentationRenamed(session.get());
-                }
+                SessionManager.INSTANCE.notifyRepresentationRenamed(session);
             }
         }
-    }
-
-    private Option<Session> getSessionFromRepresentation(DRepresentation representation) {
-        EObject semanticElement = null;
-        if (representation instanceof DSemanticDecorator) {
-            semanticElement = ((DSemanticDecorator) representation).getTarget();
-        }
-        if (semanticElement != null) {
-            Session session = SessionManager.INSTANCE.getSession(semanticElement);
-            if (session != null) {
-                return Options.newSome(session);
-            }
-        }
-        return Options.newNone();
     }
 
     private boolean isRepresentationNameChange(Notification notif) {
         return notif.getNotifier() instanceof DRepresentation && notif.getFeatureID(DRepresentation.class) == ViewpointPackage.DREPRESENTATION__NAME;
+    }
+
+    /**
+     * Dispose this resource.
+     */
+    public void dispose() {
+        getTarget().removeResourceSetListener(this);
+        session = null;
     }
 }

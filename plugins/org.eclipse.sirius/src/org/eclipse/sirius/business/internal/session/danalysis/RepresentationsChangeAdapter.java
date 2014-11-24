@@ -12,15 +12,12 @@ package org.eclipse.sirius.business.internal.session.danalysis;
 
 import java.util.Collection;
 
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 import com.google.common.collect.Iterables;
@@ -116,12 +113,7 @@ public class RepresentationsChangeAdapter extends AdapterImpl {
      */
     public void unregisterAnalysis(final DAnalysis analysis) {
         if (analysis.eAdapters().contains(this)) {
-            // TODO remove this try/catch once the offline mode will be supported
-            try {
-                analysis.eAdapters().remove(this);
-            } catch (NullPointerException e) {
-                SiriusPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, "Error while closing the representation, the remote server may be unreachable."));
-            }
+            analysis.eAdapters().remove(this);
         }
         for (final DView view : analysis.getOwnedViews()) {
             unregisterView(view);
@@ -146,15 +138,7 @@ public class RepresentationsChangeAdapter extends AdapterImpl {
      */
     private void unregisterView(final DView view) {
         if (view.eAdapters().contains(this)) {
-            // TODO remove this try/catch once the offline mode will be supported
-            try {
-                view.eAdapters().remove(this);
-            } catch (NullPointerException e) {
-                if (SiriusPlugin.getDefault().isDebugging()) {
-                    SiriusPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, "Error while closing the representation, the remote server may be unreachable."));
-                }
-            }
-
+            view.eAdapters().remove(this);
         }
     }
 }

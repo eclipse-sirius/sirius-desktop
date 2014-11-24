@@ -52,11 +52,11 @@ import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
-import org.eclipse.emf.transaction.ResourceSetListener;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.emf.transaction.Transaction;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.emf.transaction.TransactionalEditingDomain.Lifecycle;
 import org.eclipse.emf.transaction.TransactionalEditingDomainEvent;
 import org.eclipse.emf.transaction.TransactionalEditingDomainListener;
 import org.eclipse.emf.transaction.TransactionalEditingDomainListenerImpl;
@@ -195,20 +195,26 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             }
         };
 
-        public void initialize() {
-            TransactionalEditingDomain ted = getTransactionalEditingDomain();
-            if (ted instanceof TransactionalEditingDomain.Lifecycle) {
-                TransactionalEditingDomain.Lifecycle lc = (TransactionalEditingDomain.Lifecycle) ted;
-                lc.addTransactionalEditingDomainListener(domainListener);
+        /**
+         * Default constructor.
+         * 
+         * @param domain
+         *            the {@link TransactionalEditingDomain}
+         */
+        public Saver(TransactionalEditingDomain domain) {
+            domain.addResourceSetListener(this);
+            Lifecycle lifecycle = TransactionUtil.getAdapter(getTarget(), Lifecycle.class);
+            if (lifecycle != null) {
+                lifecycle.addTransactionalEditingDomainListener(domainListener);
             }
         }
 
         public void dispose() {
-            TransactionalEditingDomain ted = getTransactionalEditingDomain();
-            if (ted instanceof TransactionalEditingDomain.Lifecycle) {
-                TransactionalEditingDomain.Lifecycle lc = (TransactionalEditingDomain.Lifecycle) ted;
-                lc.removeTransactionalEditingDomainListener(domainListener);
+            Lifecycle lifecycle = TransactionUtil.getAdapter(getTarget(), Lifecycle.class);
+            if (lifecycle != null) {
+                lifecycle.removeTransactionalEditingDomainListener(domainListener);
             }
+            getTarget().removeResourceSetListener(this);
             disarm();
         }
 
@@ -271,7 +277,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     /** The {@link TransactionalEditingDomain} associated to this Session. */
-    protected final TransactionalEditingDomain transactionalEditingDomain;
+    private TransactionalEditingDomain transactionalEditingDomain;
 
     // Session's state and helpers for its maintenance.
     // See also the following fields inherited from DAnalysisSessionEObject:
@@ -292,7 +298,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /** The semantic resources collection updater. */
     protected SemanticResourcesUpdater semanticResourcesUpdater;
 
-    private final ControlledResourcesDetector controlledResourcesDetector;
+    private ControlledResourcesDetector controlledResourcesDetector;
 
     private DAnalysisRefresher dAnalysisRefresher;
 
@@ -301,7 +307,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /** The custom saving policy the session should use. */
     protected SavingPolicy savingPolicy;
 
-    private final Saver saver = new Saver();
+    private Saver saver;
 
     private ReloadingPolicy reloadingPolicy;
 
@@ -333,9 +339,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /** The listener suitable for refresh the opened viewpoint editors. */
     protected RefreshEditorsPrecommitListener refreshEditorsListeners;
 
-    private final RepresentationsChangeAdapter representationsChangeAdapter;
+    private RepresentationsChangeAdapter representationsChangeAdapter;
 
-    private final ResourceSetListener representationNameListener;
+    private RepresentationNameListener representationNameListener;
 
     /**
      * Create a new session.
@@ -349,11 +355,10 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         Preconditions.checkNotNull(this.sessionResource, "A session must be inside a resource.");
         this.transactionalEditingDomain = Preconditions.checkNotNull(TransactionUtil.getEditingDomain(mainDAnalysis), "A session must be associated to an EditingDomain");
         this.mainDAnalysis = mainDAnalysis;
-
         this.interpreter = new ODesignGenericInterpreter();
         this.representationsChangeAdapter = new RepresentationsChangeAdapter(this);
-        this.representationNameListener = new RepresentationNameListener();
         this.controlledResourcesDetector = new ControlledResourcesDetector(this);
+        saver = new Saver(getTransactionalEditingDomain());
         super.getAnalyses().add(mainDAnalysis);
         super.getResources().add(sessionResource);
         setAnalysisSelector(DAnalysisSelectorService.getSelector(this));
@@ -507,9 +512,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
             ResourceSetSync.getOrInstallResourceSetSync(transactionalEditingDomain).registerClient(this);
             monitor.worked(1);
-            transactionalEditingDomain.addResourceSetListener(representationNameListener);
+            this.representationNameListener = new RepresentationNameListener(this);
             monitor.worked(1);
-            saver.initialize();
 
             final Collection<DAnalysis> allAnalyses = allAnalyses();
             if (allAnalyses.isEmpty()) {
@@ -1438,6 +1442,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (this.representationsChangeAdapter != null) {
             this.representationsChangeAdapter.unregisterAnalysis(analysis);
         }
+        if (semanticResourcesUpdater != null && analysis.eAdapters().contains(semanticResourcesUpdater)) {
+            analysis.eAdapters().remove(semanticResourcesUpdater);
+        }
     }
 
     @Override
@@ -1875,9 +1882,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (!isOpen()) {
             return;
         }
-        if (saver != null && getTransactionalEditingDomain() != null) {
-            getTransactionalEditingDomain().removeResourceSetListener(saver);
-        }
         if (Movida.isEnabled()) {
             org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry registry = (org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry) ViewpointRegistry.getInstance();
             registry.removeListener((ViewpointRegistryListener) this);
@@ -1889,12 +1893,16 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
         if (controlledResourcesDetector != null) {
             controlledResourcesDetector.dispose();
+            controlledResourcesDetector = null;
         }
         if (dAnalysisRefresher != null) {
             dAnalysisRefresher.dispose();
             dAnalysisRefresher = null;
         }
-
+        removeListener(getRefreshEditorsListener());
+        refreshEditorsListeners = null;
+        reloadingPolicy = null;
+        savingPolicy = null;
         if (interpreter != null) {
             interpreter.dispose();
         }
@@ -1912,8 +1920,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             currentResourceCollector = null;
         }
         interpreter = null;
-        crossReferencer = null;
-        transactionalEditingDomain.removeResourceSetListener(representationNameListener);
+        representationNameListener.dispose();
+        representationNameListener = null;
+        representationsChangeAdapter = null;
         // dispose the SessionEventBroker
         if (broker != null) {
             broker.dispose();
@@ -1940,12 +1949,18 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             semanticResources.clear();
         }
         reenableECrossReferenceAdaptersBeforeEndOfClosing();
+        crossReferencer = null;
         saver.dispose();
-
+        saver = null;
         if (disposeEditingDomainOnClose) {
             transactionalEditingDomain.dispose();
             doDisposePermissionAuthority(resourceSet);
+            transactionalEditingDomain = null;
         }
+        getActivatedViewpoints().clear();
+        movidaSupport = null;
+        services = null;
+        sessionResource = null;
         mainDAnalysis = null;
     }
 
