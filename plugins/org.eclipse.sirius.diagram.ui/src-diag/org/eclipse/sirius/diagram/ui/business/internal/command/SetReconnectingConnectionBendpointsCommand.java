@@ -117,24 +117,26 @@ public class SetReconnectingConnectionBendpointsCommand extends SetConnectionBen
 
         // The edge recovery is the difference with the parent command
         Edge edge = reconnectingEdgeHelper.getReconnectedEdge();
-        Assert.isNotNull(edge);
 
-        List newBendpoints = new ArrayList();
-        int numOfPoints = getNewPointList().size();
-        for (short i = 0; i < numOfPoints; i++) {
-            // The sourceRefPoint and targetRefPoint will be recovered from the
-            // reconnected edge
-            Dimension s = getNewPointList().getPoint(i).getDifference(getSourceRefPoint());
-            Dimension t = getNewPointList().getPoint(i).getDifference(getTargetRefPoint());
-            newBendpoints.add(new RelativeBendpoint(s.width, s.height, t.width, t.height));
+        // if the reconnected edge do not exist, there is nothing to do here.
+        if (edge != null) {
+            List newBendpoints = new ArrayList();
+            int numOfPoints = getNewPointList().size();
+            for (short i = 0; i < numOfPoints; i++) {
+                // The sourceRefPoint and targetRefPoint will be recovered from
+                // the
+                // reconnected edge
+                Dimension s = getNewPointList().getPoint(i).getDifference(getSourceRefPoint());
+                Dimension t = getNewPointList().getPoint(i).getDifference(getTargetRefPoint());
+                newBendpoints.add(new RelativeBendpoint(s.width, s.height, t.width, t.height));
+            }
+
+            RelativeBendpoints points = (RelativeBendpoints) edge.getBendpoints();
+            points.setPoints(newBendpoints);
+
+            CenterEdgeEndModelChangeOperation centerEdgeEndModelChangeOperation = new CenterEdgeEndModelChangeOperation(edge, false);
+            centerEdgeEndModelChangeOperation.execute();
         }
-
-        RelativeBendpoints points = (RelativeBendpoints) edge.getBendpoints();
-        points.setPoints(newBendpoints);
-
-        CenterEdgeEndModelChangeOperation centerEdgeEndModelChangeOperation = new CenterEdgeEndModelChangeOperation(edge, false);
-        centerEdgeEndModelChangeOperation.execute();
-
         return CommandResult.newOKCommandResult();
     }
 }

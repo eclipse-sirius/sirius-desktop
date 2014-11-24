@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="edgeReconnection" version="8.1.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="edgeReconnection" version="10.0.0.201411061000">
   <ownedViewpoints name="edgeReconnection" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="straightEdgeReconnection" domainClass="EPackage">
       <defaultLayer name="Default">
@@ -11,7 +11,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="ePackage" semanticCandidatesExpression="feature:eSubpackages" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='edgeReconnection']/@ownedRepresentations[name='straightEdgeReconnection']/@defaultLayer/@toolSections.0/@ownedTools[name='dragClass']" reusedContainerMappings="//@ownedViewpoints[name='edgeReconnection']/@ownedRepresentations[name='straightEdgeReconnection']/@defaultLayer/@containerMappings[name='ePackage']">
+        <containerMappings name="ePackage" semanticCandidatesExpression="feature:eSubpackages" domainClass="EPackage" dropDescriptions="//@ownedViewpoints[name='edgeReconnection']/@ownedRepresentations[name='straightEdgeReconnection']/@defaultLayer/@toolSections.0/@ownedTools[name='dragClass']">
           <borderedNodeMappings name="eClass" semanticCandidatesExpression="feature:eClassifiers" domainClass="EClass">
             <style xsi:type="style:SquareDescription" showIcon="false" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -109,7 +109,7 @@
             </style>
           </conditionnalStyles>
         </edgeMappingImports>
-        <containerMappings xsi:type="description_1:ContainerMappingImport" name="ePackageImport" reusedBorderedNodeMappings="//@ownedViewpoints[name='edgeReconnection']/@ownedRepresentations[name='straightEdgeReconnection']/@defaultLayer/@containerMappings[name='ePackage']/@borderedNodeMappings[name='eClass']" importedMapping="//@ownedViewpoints[name='edgeReconnection']/@ownedRepresentations[name='straightEdgeReconnection']/@defaultLayer/@containerMappings[name='ePackage']"/>
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="ePackageImport" semanticCandidatesExpression="feature:eSubpackages" reusedBorderedNodeMappings="//@ownedViewpoints[name='edgeReconnection']/@ownedRepresentations[name='straightEdgeReconnection']/@defaultLayer/@containerMappings[name='ePackage']/@borderedNodeMappings[name='eClass']" importedMapping="//@ownedViewpoints[name='edgeReconnection']/@ownedRepresentations[name='straightEdgeReconnection']/@defaultLayer/@containerMappings[name='ePackage']"/>
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="treeEdgeReconnection" domainClass="EPackage">
@@ -124,7 +124,45 @@
             </style>
           </conditionnalStyles>
         </edgeMappingImports>
-        <containerMappings xsi:type="description_1:ContainerMappingImport" name="ePackageImport" reusedBorderedNodeMappings="//@ownedViewpoints[name='edgeReconnection']/@ownedRepresentations[name='straightEdgeReconnection']/@defaultLayer/@containerMappings[name='ePackage']/@borderedNodeMappings[name='eClass']" importedMapping="//@ownedViewpoints[name='edgeReconnection']/@ownedRepresentations[name='straightEdgeReconnection']/@defaultLayer/@containerMappings[name='ePackage']"/>
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="ePackageImport" semanticCandidatesExpression="feature:eSubpackages" reusedBorderedNodeMappings="//@ownedViewpoints[name='edgeReconnection']/@ownedRepresentations[name='straightEdgeReconnection']/@defaultLayer/@containerMappings[name='ePackage']/@borderedNodeMappings[name='eClass']" importedMapping="//@ownedViewpoints[name='edgeReconnection']/@ownedRepresentations[name='straightEdgeReconnection']/@defaultLayer/@containerMappings[name='ePackage']"/>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="newEdgeAfterReconnect" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <edgeMappings name="ref" sourceMapping="//@ownedViewpoints[name='edgeReconnection']/@ownedRepresentations[name='newEdgeAfterReconnect']/@defaultLayer/@containerMappings[name='eClass']" targetMapping="//@ownedViewpoints[name='edgeReconnection']/@ownedRepresentations[name='newEdgeAfterReconnect']/@defaultLayer/@containerMappings[name='eClass']" targetFinderExpression="feature:eType" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true" reconnections="//@ownedViewpoints[name='edgeReconnection']/@ownedRepresentations[name='newEdgeAfterReconnect']/@defaultLayer/@toolSections.0/@ownedTools[name='reconnect']">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelExpression="feature:name">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="eClass" semanticCandidatesExpression="feature:eClassifiers" domainClass="EClass">
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="reconnect" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="eStructuralFeatures" elementExpression="var:element"/>
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="var:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+        </toolSections>
       </defaultLayer>
     </ownedRepresentations>
   </ownedViewpoints>

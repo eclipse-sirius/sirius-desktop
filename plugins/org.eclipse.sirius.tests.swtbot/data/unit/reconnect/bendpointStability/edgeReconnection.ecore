@@ -12,4 +12,14 @@
   <eSubpackages name="Package">
     <eClassifiers xsi:type="ecore:EClass" name="eClass2"/>
   </eSubpackages>
+  <eSubpackages name="Package4">
+    <eSubpackages name="newPackage1">
+      <eClassifiers xsi:type="ecore:EClass" name="eClass1"/>
+      <eClassifiers xsi:type="ecore:EClass" name="eClass2"/>
+      <eClassifiers xsi:type="ecore:EClass" name="eClass3">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//Package4/newPackage1/eClass1"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="eClass4"/>
+    </eSubpackages>
+  </eSubpackages>
 </ecore:EPackage>

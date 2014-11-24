@@ -22,7 +22,6 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.IdentityAnchor;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.description.tool.ReconnectionKind;
 import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.edit.helpers.EdgeReconnectionHelper;
@@ -82,16 +81,11 @@ public class SiriusSetConnectionAnchorsCommand extends SetConnectionAnchorsComma
 
             Edge edge = reconnectingEdgeHelper.getReconnectedEdge();
 
-            assert null != edge : "Null edge in SetConnectionAnchorsCommand"; //$NON-NLS-1$   
-
-            // In case the reconnectTool has not updated correctly the semantic
-            // to
-            // do the reconnect, the Edge can be null
-            if (edge == null) {
-                String message = "The semantic model was not correctly updated by the reconnect tool, the diagram part of the reconnect cannot be done";
-                commandResult = CommandResult.newErrorCommandResult(message);
-                DiagramPlugin.getDefault().logWarning(message);
-            } else {
+            // The reconnect tool did not necessary reconnect the edge with the
+            // expected new source or target. In the case where we did not find
+            // out the
+            // reconnected edge, there is nothing to do here.
+            if (edge != null) {
 
                 // If there is tree brothers on the new source, we must use the
                 // existing

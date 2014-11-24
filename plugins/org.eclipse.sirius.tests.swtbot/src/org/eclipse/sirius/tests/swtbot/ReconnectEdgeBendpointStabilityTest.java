@@ -19,6 +19,7 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.ConnectionEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Routing;
@@ -29,7 +30,6 @@ import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
-import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -49,17 +49,13 @@ import org.junit.Assert;
  */
 public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGefTestCase {
 
-    private static final String REPRESENTATION_INSTANCE_STRAIGHT_EDGE_NAME = "new straightEdgeReconnection";
-
     private static final String REPRESENTATION_STRAIGHT_EDGE_NAME = "straightEdgeReconnection";
-
-    private static final String REPRESENTATION_INSTANCE_MANHATTAN_EDGE_NAME = "new manhattanEdgeReconnection";
 
     private static final String REPRESENTATION_MANHATTAN_EDGE_NAME = "manhattanEdgeReconnection";
 
-    private static final String REPRESENTATION_INSTANCE_TREE_EDGE_NAME = "new treeEdgeReconnection";
-
     private static final String REPRESENTATION_TREE_EDGE_NAME = "treeEdgeReconnection";
+
+    private static final String REPRESENTATION_NEW_EDGE_AFTER_RECONNECT = "newEdgeAfterReconnect";
 
     private static final String MODEL = "edgeReconnection.ecore";
 
@@ -157,6 +153,21 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
     }
 
     /**
+     * Test that using a reconnect tool that create a different edge doesn't
+     * fail.
+     */
+    public void testNewEdgeAfterReconnectSource() {
+        initializeModelingProjectSample();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NEW_EDGE_AFTER_RECONNECT, "new " + REPRESENTATION_NEW_EDGE_AFTER_RECONNECT,
+                DDiagram.class);
+        reconnectEdge(true, "eClass3", "eClass1", "eClass2");
+
+        // the new expected edge has for target the old source and for source
+        // the old target.
+        getConnectionEditPart("eClass3", "eClass2");
+    }
+
+    /**
      * This test validates that using a specific line style will not cause NPE
      * after several reconnections.
      */
@@ -174,7 +185,7 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
             DiagramUIPlugin.getPlugin().getPreferenceStore().setValue(IPreferenceConstants.PREF_LINE_STYLE, Routing.RECTILINEAR);
 
             // Open a diagram with straight edge
-            editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_STRAIGHT_EDGE_NAME, REPRESENTATION_INSTANCE_STRAIGHT_EDGE_NAME, DDiagram.class);
+            editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_STRAIGHT_EDGE_NAME, "new " + REPRESENTATION_STRAIGHT_EDGE_NAME, DDiagram.class);
             // 1 - D&d of the target
             reconnectEdge(false);
             // 2 - D&d of the source
@@ -230,13 +241,7 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
     }
 
     private void reconnectAndValidate(String representationName, boolean reconnectSource) {
-        if (REPRESENTATION_STRAIGHT_EDGE_NAME.equals(representationName)) {
-            editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_STRAIGHT_EDGE_NAME, REPRESENTATION_INSTANCE_STRAIGHT_EDGE_NAME, DDiagram.class);
-        } else if (REPRESENTATION_MANHATTAN_EDGE_NAME.equals(representationName)) {
-            editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_MANHATTAN_EDGE_NAME, REPRESENTATION_INSTANCE_MANHATTAN_EDGE_NAME, DDiagram.class);
-        } else {
-            editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_TREE_EDGE_NAME, REPRESENTATION_INSTANCE_TREE_EDGE_NAME, DDiagram.class);
-        }
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), representationName, "new " + representationName, DDiagram.class);
 
         PointList pointList = reconnectEdge(reconnectSource);
 
@@ -255,8 +260,8 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
 
     private PointList reconnectEdge(boolean reconnectSource, String source, String target, String reconnectionTarget) {
         // Retrieve location for container list named EClass 3
-        Point location = editor.getLocation(reconnectionTarget, AbstractDiagramBorderNodeEditPart.class);
-        Dimension dimension = editor.getDimension(reconnectionTarget, AbstractDiagramBorderNodeEditPart.class);
+        Point location = editor.getLocation(reconnectionTarget, ShapeNodeEditPart.class);
+        Dimension dimension = editor.getDimension(reconnectionTarget, ShapeNodeEditPart.class);
 
         // Retrieve edge "ref" target point location
         PointList pointList = getEdgePointList(source, target);
@@ -362,8 +367,8 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
     }
 
     private ConnectionEditPart getConnectionEditPart(String sourceEditPartName, String targetEditPartName) {
-        List<SWTBotGefConnectionEditPart> connectionEditPartList = editor.getConnectionEditPart(editor.getEditPart(sourceEditPartName, AbstractDiagramBorderNodeEditPart.class),
-                editor.getEditPart(targetEditPartName, AbstractDiagramBorderNodeEditPart.class));
+        List<SWTBotGefConnectionEditPart> connectionEditPartList = editor.getConnectionEditPart(editor.getEditPart(sourceEditPartName, ShapeNodeEditPart.class),
+                editor.getEditPart(targetEditPartName, ShapeNodeEditPart.class));
         assertNotNull("There is no connection between " + sourceEditPartName + " and " + targetEditPartName, connectionEditPartList);
         assertEquals("There are more or less than 1 connection between " + sourceEditPartName + " and " + targetEditPartName, 1, connectionEditPartList.size());
         return connectionEditPartList.get(0).part();
