@@ -72,11 +72,19 @@ public class LinkWithEditorFeatureWithModelExplorerViewTest extends AbstractSiri
         SWTBotTreeItem representationDescriptionTreeItemBot = viewpointTreeItemBot.getNode(0);
         SWTBotTreeItem representationTreeItemBot = representationDescriptionTreeItemBot.getNode(0);
         SWTBotView modelExplorerView = bot.viewById(IModelExplorerView.ID);
-        if (!modelExplorerView.toolbarToggleButton("Link with Editor").isChecked()) {
-            modelExplorerView.toolbarToggleButton("Link with Editor").click();
+        boolean linkWithEditorChecked = modelExplorerView.toolbarToggleButton("Link with Editor").isChecked();
+        try {
+            if (!linkWithEditorChecked) {
+                modelExplorerView.toolbarToggleButton("Link with Editor").click();
+            }
+            openDiagram(REPRESENTATION_NAME);
+            assertEquals("The opened representation should be selected in model explorer view", representationTreeItemBot.isSelected(), true);
+        } finally {
+            // Reset to previous environment
+            if (!linkWithEditorChecked) {
+                modelExplorerView.toolbarToggleButton("Link with Editor").click();
+            }
         }
-        openDiagram(REPRESENTATION_NAME);
-        assertEquals("The opened representation should be selected in model explorer view", representationTreeItemBot.isSelected(), true);
     }
 
     private void openDiagram(String representationName) {
