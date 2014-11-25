@@ -27,6 +27,7 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
 import org.eclipse.sirius.ui.tools.api.project.ViewpointSpecificationProject;
+import org.eclipse.sirius.ui.tools.internal.wizards.pages.NewModelingProjectCreationWizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -121,7 +122,7 @@ public class ViewpointSpecificationProjectWizard extends Wizard implements INewW
      */
     @Override
     public void addPages() {
-        newProjectPage = new WizardNewProjectCreationPage(SiriusEditorPlugin.getPlugin().getString("_UI_ViewpointSpecificationProjectWizard_label")); //$NON-NLS-1$
+        newProjectPage = new NewModelingProjectCreationWizardPage(SiriusEditorPlugin.getPlugin().getString("_UI_ViewpointSpecificationProjectWizard_label")); //$NON-NLS-1$
         newProjectPage.setInitialProjectName(MODULE_NAME_PREFIX);
         newProjectPage.setTitle(SiriusEditorPlugin.getPlugin().getString("_UI_ViewpointSpecificationProjectWizard_label")); //$NON-NLS-1$
         newProjectPage.setDescription(SiriusEditorPlugin.getPlugin().getString("_UI_ViewpointSpecificationProjectWizard_description")); //$NON-NLS-1$        

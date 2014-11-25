@@ -23,6 +23,7 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.ItemEnabledCondition;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerView;
 import org.eclipse.swtbot.eclipse.gef.finder.SWTGefBot;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
@@ -48,6 +49,8 @@ public class ViewpointSpecificationProjectCreationTest extends AbstractSiriusSwt
     private static final String WIZARD_NEXT = "Next >";
 
     private static final String WIZARD_NEW = "New";
+
+    private static final String WIZARD_CANCEL = "Cancel";
 
     private static final String WIZARD_PROJECT_NAME = "Project name:";
 
@@ -122,6 +125,45 @@ public class ViewpointSpecificationProjectCreationTest extends AbstractSiriusSwt
 
     }
 
+    /**
+     * Ensure that it is not possible to create a modeling project when another
+     * existing project has the same name in different case on Windows and Mac.
+     */
+    public void testCreatingProjectWithExistingName() {
+        if (isMacOrWindowsOS()) {
+            // Create a VSP
+            IProject project = createViewpointSpecificationProject(bot, VSM_PROJECT_NAME, VSM);
+            assertTrue("The created VSM project should exist.", ResourcesPlugin.getWorkspace().getRoot().getProject(VSM_PROJECT_NAME).exists());
+            assertTrue("The created VSM project should be open.", ResourcesPlugin.getWorkspace().getRoot().getProject(VSM_PROJECT_NAME).isOpen());
+
+            // Try to create an other project with the same existing name in
+            // different case into the workspace and check the error message
+            tryToCreateProjectWithExistingProjectName("A project with " + VSM_PROJECT_NAME + " name should exist in workspace and the Next button should not be enabled");
+
+            // Delete the project only from workspace
+            closeAllEditors();
+            try {
+                project.delete(false, true, new NullProgressMonitor());
+            } catch (CoreException e) {
+                fail("Cannot delete the VSM Project");
+            }
+            SWTBotUtils.waitAllUiEvents();
+
+            // Try to create an other project with the same existing name in
+            // different case on disk and check the error message
+            tryToCreateProjectWithExistingProjectName("A project with " + VSM_PROJECT_NAME + " name should exist on the disk and the Next button should not be enabled");
+        }
+    }
+
+    private void tryToCreateProjectWithExistingProjectName(String msgIfCreationIsPossible) {
+        bot.viewById(IModelExplorerView.ID).setFocus();
+        bot.menu(WIZARD_FILE).menu(WIZARD_NEW).menu(WIZARD_VIEWPOINT_SPECIFICATION_PROJECT).click();
+        bot.waitUntilWidgetAppears(Conditions.shellIsActive(WIZARD_NEW + " " + WIZARD_VIEWPOINT_SPECIFICATION_PROJECT));
+        bot.textWithLabel(WIZARD_PROJECT_NAME).setText(VSM_PROJECT_NAME.toUpperCase());
+        assertEquals(msgIfCreationIsPossible, false, bot.button(WIZARD_NEXT).isEnabled());
+        bot.button(WIZARD_CANCEL).click();
+    }
+
     private void checkNatures(IProject project) {
         // Check the natures
         IProjectNature nature = null;
@@ -153,7 +195,13 @@ public class ViewpointSpecificationProjectCreationTest extends AbstractSiriusSwt
      * Create a Sirius Specification Project and wait until the creation is
      * done.
      * 
+     * @param bot
+     *            the editor
+     * 
      * @param vsmProjectName
+     *            VSP name
+     * @param vsmFileName
+     *            VSM file name
      * 
      * @return the created project.
      */
@@ -192,6 +240,10 @@ public class ViewpointSpecificationProjectCreationTest extends AbstractSiriusSwt
         });
 
         return ResourcesPlugin.getWorkspace().getRoot().getProject(vsmProjectName);
+    }
+
+    private static boolean isMacOrWindowsOS() {
+        return System.getProperty("os.name").contains("Windows") || System.getProperty("os.name").contains("Mac");
     }
 
 }

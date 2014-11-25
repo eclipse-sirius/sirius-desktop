@@ -21,6 +21,7 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
+import org.eclipse.sirius.ui.tools.internal.wizards.pages.NewModelingProjectCreationWizardPage;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.INewWizard;
@@ -117,7 +118,7 @@ public class ModelingProjectWizard extends Wizard implements INewWizard {
      */
     @Override
     public void addPages() {
-        newProjectPage = new WizardNewProjectCreationPage(SiriusEditPlugin.getPlugin().getString("_UI_ModelingProjectWizard_label")); //$NON-NLS-1$
+        newProjectPage = new NewModelingProjectCreationWizardPage(SiriusEditPlugin.getPlugin().getString("_UI_ModelingProjectWizard_label")); //$NON-NLS-1$
         newProjectPage.setInitialProjectName("");
         newProjectPage.setTitle(SiriusEditPlugin.getPlugin().getString("_UI_ModelingProjectWizard_label")); //$NON-NLS-1$
         newProjectPage.setDescription(SiriusEditPlugin.getPlugin().getString("_UI_ModelingProjectWizard_description")); //$NON-NLS-1$        
