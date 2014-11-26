@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.ui.internal.refresh.listeners;
 
 import java.io.File;
 import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
@@ -136,11 +135,11 @@ public class WorkspaceFileResourceChangeListener implements IResourceChangeListe
     }
 
     /**
-     * Finds a {@link File} from an URI using a cache. If it is not found, the
-     * {@link File} is loaded and added to the cache.
+     * Finds a {@link File} from a file URI using a cache. If it is not found,
+     * the {@link File} is loaded and added to the cache.
      * 
      * @param uri
-     *            the uri of the file
+     *            the path of the file
      * @return the cached {@link File}.
      */
     public File getFileFromURI(String uri) {
@@ -222,7 +221,7 @@ public class WorkspaceFileResourceChangeListener implements IResourceChangeListe
      *            the image file.
      * @return the image descriptor.
      */
-    public ImageDescriptor findImageDescriptor(File file) throws MalformedURLException, URISyntaxException {
+    public ImageDescriptor findImageDescriptor(File file) throws MalformedURLException {
         if (fileURLMap.containsKey(file)) {
             return DiagramUIPlugin.getPlugin().getURLImageDescriptor(fileURLMap.get(file));
         }

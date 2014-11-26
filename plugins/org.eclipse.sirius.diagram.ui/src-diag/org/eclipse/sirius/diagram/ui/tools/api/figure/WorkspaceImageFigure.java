@@ -12,10 +12,7 @@ package org.eclipse.sirius.diagram.ui.tools.api.figure;
 
 import java.io.File;
 import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.diagram.ContainerStyle;
@@ -113,8 +110,6 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
                     desc = WorkspaceFileResourceChangeListener.getInstance().findImageDescriptor(imageFile);
                 } catch (MalformedURLException e) {
                     // do nothing
-                } catch (URISyntaxException e) {
-                    DiagramUIPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, DiagramUIPlugin.ID, e.getMessage()));
                 }
             }
             return WorkspaceImageFigure.flyWeightImage(desc);

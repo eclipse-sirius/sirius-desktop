@@ -623,7 +623,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
                 Session session = SessionManager.INSTANCE.getSession(ddeSelection.iterator().next().getTarget());
                 for (DDiagramElement dRepresentationElement : ddeSelection) {
                     EditPart selectedEditPart = getEditPart(dRepresentationElement, graphicalViewer, session);
-                    if (selectedEditPart != null) {
+                    if (selectedEditPart != null && selectedEditPart.isSelectable()) {
                         selectedParts.add(selectedEditPart);
                     }
                 }
