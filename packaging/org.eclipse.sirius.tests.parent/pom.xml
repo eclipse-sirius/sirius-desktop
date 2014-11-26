@@ -150,6 +150,30 @@
       </properties>
     </profile>
     <profile>
+      <id>swtbot-part1</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <tests.swtbot.skip>false</tests.swtbot.skip>
+        <tests.timeout>${tests.timeout.swtbot}</tests.timeout>
+        <tests.swtbot.include>org/eclipse/sirius/tests/swtbot/suite/SWTBotPart1Suite.class</tests.swtbot.include>
+        <tests.vmargs>${tests.vmargs.mac} -Xmx2048m -XX:MaxPermSize=256m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+      </properties>
+    </profile>
+    <profile>
+      <id>swtbot-part2</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <tests.swtbot.skip>false</tests.swtbot.skip>
+        <tests.timeout>${tests.timeout.swtbot}</tests.timeout>
+        <tests.swtbot.include>org/eclipse/sirius/tests/swtbot/suite/SWTBotPart2Suite.class</tests.swtbot.include>
+        <tests.vmargs>${tests.vmargs.mac} -Xmx2048m -XX:MaxPermSize=256m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+      </properties>
+    </profile>
+    <profile>
       <id>swtbot-sequence</id>
       <activation>
         <activeByDefault>false</activeByDefault>
