@@ -667,7 +667,8 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
         final IBorderItemEditPart borderItemEP = (IBorderItemEditPart) getHost();
         Rectangle newBounds = getNewBounds(request);
         if (newBounds != null) {
-            final ICommand moveCommand = new SetBoundsCommand(borderItemEP.getEditingDomain(), DiagramUIMessages.Commands_MoveElement, new EObjectAdapter((View) getHost().getModel()), newBounds);
+            final ICommand moveCommand = new SetBoundsCommand(borderItemEP.getEditingDomain(), DiagramUIMessages.Commands_MoveElement, new EObjectAdapter((View) getHost().getModel()),
+                    newBounds.getLocation());
             Command result = new ICommandProxy(moveCommand);
 
             if (getHost() instanceof IGraphicalEditPart) {
