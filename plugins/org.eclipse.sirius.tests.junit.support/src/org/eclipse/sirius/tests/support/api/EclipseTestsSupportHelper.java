@@ -134,8 +134,7 @@ public interface EclipseTestsSupportHelper {
     void changeFileReadOnlyAttribute(final String fileWorkspaceRelativePath, boolean readOnly);
 
     /**
-     * Change the read only status of the given resources. This method will make
-     * the test fail if we could not mark the resource as read only.
+     * Change the read only status of the given resources.
      * 
      * Please note that some file systems might not support setting the file as
      * read only or might lock the files.

@@ -1388,11 +1388,13 @@ public class SiriusDiagramTestCase extends SiriusTestCase {
      *             the exception
      * @deprecated use {@link
      *             EclipseTestsSupportHelper.INSTANCE.setReadOnlyStatus(boolean,
-     *             IFile...)} instead.
+     *             IFile...)} instead and explicitly check its effect.
      */
     @Deprecated
     protected void setReadOnly(IFile file) throws Exception {
         EclipseTestsSupportHelper.INSTANCE.setReadOnlyStatus(true, file);
+        
+        TestCase.assertTrue("The file must be read only", file.isReadOnly());
     }
 
     /**

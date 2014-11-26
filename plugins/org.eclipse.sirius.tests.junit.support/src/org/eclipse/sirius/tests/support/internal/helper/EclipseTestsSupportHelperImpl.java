@@ -272,12 +272,7 @@ public final class EclipseTestsSupportHelperImpl implements EclipseTestsSupportH
     public void setReadOnlyStatus(boolean readOnly, IResource... resources) {
         try {
             for (IResource res : resources) {
-                ResourceAttributes attr = res.getResourceAttributes();
-                if (attr != null && attr.isReadOnly() != readOnly) {
-                    attr.setReadOnly(readOnly);
-                    res.setResourceAttributes(attr);
-                }
-                TestCase.assertEquals("The resource must be read only", readOnly, res.getResourceAttributes().isReadOnly());
+                changeFileReadOnlyAttribute(res, readOnly);
             }
         } catch (CoreException e) {
             TestCase.fail("Some resource can not be passed to " + (readOnly ? "read only. " : "writtable. " + e.getMessage()));
