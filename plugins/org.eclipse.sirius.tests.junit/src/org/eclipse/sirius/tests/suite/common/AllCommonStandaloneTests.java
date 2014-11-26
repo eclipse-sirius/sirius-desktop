@@ -15,12 +15,14 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
+
 import org.eclipse.sirius.tests.unit.api.interpreter.ContentHelperTests;
 import org.eclipse.sirius.tests.unit.api.refresh.GSetIntersectionTest;
 import org.eclipse.sirius.tests.unit.api.refresh.SetIntersectionTest;
 import org.eclipse.sirius.tests.unit.api.tools.tasks.InitInterpreterFromParsedVariableTaskTest;
 import org.eclipse.sirius.tests.unit.api.vsm.color.SiriusColorTest;
 import org.eclipse.sirius.tests.unit.api.vsm.editor.DragAndDropNodeTest;
+import org.eclipse.sirius.tests.unit.api.vsm.editor.TextContentProposalProviderTests;
 import org.eclipse.sirius.tests.unit.api.vsm.editor.TypeAssistantTests;
 import org.eclipse.sirius.tests.unit.api.vsm.editor.TypeContentProposalProviderTests;
 import org.eclipse.sirius.tests.unit.api.vsm.interpreted.expression.variables.DiagramVariablesTest;
@@ -69,6 +71,7 @@ public class AllCommonStandaloneTests extends TestCase {
         suite.addTestSuite(DragAndDropNodeTest.class);
         suite.addTestSuite(TypeAssistantTests.class);
         suite.addTestSuite(TypeContentProposalProviderTests.class);
+        suite.addTestSuite(TextContentProposalProviderTests.class);
         suite.addTestSuite(SessionLabelTest.class);
         suite.addTestSuite(InitInterpreterFromParsedVariableTaskTest.class);
         suite.addTest(new JUnit4TestAdapter(EcoreIntrinsicExtenderTest.class));

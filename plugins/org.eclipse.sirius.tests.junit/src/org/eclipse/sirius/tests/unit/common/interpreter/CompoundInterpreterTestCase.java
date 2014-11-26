@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.common.interpreter;
 
+import java.util.Collections;
 import java.util.List;
 
 import junit.framework.TestCase;
@@ -80,14 +81,14 @@ public class CompoundInterpreterTestCase extends TestCase {
     }
 
     /**
-     * Ensures that we get interpreters empty expressions that match a non empty
-     * context. see https://bugs.eclipse.org/bugs/show_bug.cgi?id=428770
+     * Ensures that we get interpreters 's empty expressions that match a non
+     * empty context. see https://bugs.eclipse.org/bugs/show_bug.cgi?id=428770
      */
     public void testCompletionPerPrefixFirstChar() {
         for (ContentProposal emptyExpression : availableEmptyExpressions) {
             String firstChar = emptyExpression.getProposal().substring(0, 1);
             List<ContentProposal> proposals = getProposals(firstChar);
-            ContentProposalConverter converter = new ContentProposalConverter(firstChar);
+            ContentProposalConverter converter = new ContentProposalConverter(firstChar, 1);
 
             // The following assert is valid for: "[/]" "<%%>" "ocl:" "var:"
             // "service:" and "feature"
@@ -97,13 +98,13 @@ public class CompoundInterpreterTestCase extends TestCase {
             assertTrue("Proposals should be contained by available empty expressions", availableEmptyExpressions.containsAll(proposals));
 
             ContentProposal proposal = proposals.get(0);
-            IContentProposal jfaceProposal = converter.convertToJFaceContentProposal(proposal);
+            IContentProposal jfaceProposal = converter.convertToJFaceContentProposals(Collections.singletonList(proposal))[0];
 
             // Check JFace proposal
-            assertEquals("", proposal.getProposal(), firstChar + jfaceProposal.getContent());
+            assertEquals("", proposal.getProposal(), jfaceProposal.getContent());
 
             // Check JFace cursor position
-            assertEquals("JFace proposal cursor position is not well computed", proposal.getCursorPosition() - (proposal.getProposal().length() - jfaceProposal.getContent().length()),
+            assertEquals("JFace proposal cursor position is not well computed", proposal.getCursorPosition(),
                     jfaceProposal.getCursorPosition());
         }
     }
