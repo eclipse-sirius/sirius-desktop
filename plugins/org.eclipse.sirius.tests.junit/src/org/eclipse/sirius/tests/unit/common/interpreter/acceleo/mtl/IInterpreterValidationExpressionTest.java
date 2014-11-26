@@ -47,6 +47,7 @@ import org.eclipse.sirius.table.metamodel.table.description.EditionTableDescript
 import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle;
 import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -67,8 +68,6 @@ import org.eclipse.ui.part.ISetSelectionTarget;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * 
@@ -179,9 +178,10 @@ public class IInterpreterValidationExpressionTest extends SiriusDiagramTestCase 
         ContainerMapping nodeMapping = getContainerMapping(acceleo3Layer, "EC EClass");
         // invalidFeature ECLass : a validation error should be raised, but not
         // InterpreterException
-        ensureExpressionValidationRaisedExpectedErrors(nodeMapping, "domainClass", "Nothing");
+        ensureExpressionValidationRaisedExpectedErrors(nodeMapping, "domainClass", "Nothing", "The Class Nothing doesn't exist.");
         // invalidFeature ECLass : a validation error should be raised
-        ensureExpressionValidationRaisedExpectedErrors(nodeMapping, "semanticElements", "[self.invalidFeature/]", "Invalid Type: Nothing", "Unrecognized variable: (invalidFeature)");
+        ensureExpressionValidationRaisedExpectedErrors(nodeMapping, "semanticElements", "[self.invalidFeature/]", "Invalid Type: Nothing", "Unrecognized variable: (invalidFeature)",
+                "The Class Nothing doesn't exist.");
         // valid EClass : interpreter exceptions should now be raised
         ensureExpressionValidationRaisedExpectedErrors(nodeMapping, "domainClass", "EClass", "Unrecognized variable: (invalidFeature)");
     }
