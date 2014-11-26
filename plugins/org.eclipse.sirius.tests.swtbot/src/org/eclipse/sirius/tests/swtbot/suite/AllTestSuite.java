@@ -81,8 +81,21 @@ public class AllTestSuite extends TestCase {
      * @return The testsuite containing all the tests
      */
     public static Test suite() {
-        final TestSuite suite = new TestSuite("Sirius SwtBot tests");
+        TestSuite suite = new TestSuite("Sirius SwtBot tests");
+        addPart1(suite);
+        addPart2(suite);
+        return suite;
+    }
 
+    /**
+     * Add the first part of the SWTbot tests to the specified suite. This
+     * corresponds roughly to the first half of the execution time of the
+     * complete suite.
+     * 
+     * @param suite
+     *            the suite into which to add the tests.
+     */
+    public static void addPart1(TestSuite suite) {
         // TheViepointProjectCreationTest should be done before the others ones:
         // to verify the behavior when a specifier first launches the product.
         suite.addTestSuite(ViewpointSpecificationProjectCreationTest.class);
@@ -174,6 +187,17 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(DiagramPrintTest.class);
         suite.addTestSuite(DirectEditLabelTest.class);
         suite.addTestSuite(SelectAllAndDeselectionTest.class);
+    }
+
+    /**
+     * Add the second part of the SWTbot tests to the specified suite. This
+     * corresponds roughly to the second half of the execution time of the
+     * complete suite.
+     * 
+     * @param suite
+     *            the suite into which to add the tests.
+     */
+    public static void addPart2(TestSuite suite) {
         suite.addTestSuite(NoteCreationTest.class);
         suite.addTestSuite(NoteCreationWithSnapToGridTest.class);
         suite.addTestSuite(NodeCreationTest.class);
@@ -287,8 +311,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(InitializeSessionTest.class);
         suite.addTestSuite(DeleteSemanticElementToCheckDecorator.class);
         suite.addTestSuite(RepairTest.class);
-
-        return suite;
     }
 
     /**
