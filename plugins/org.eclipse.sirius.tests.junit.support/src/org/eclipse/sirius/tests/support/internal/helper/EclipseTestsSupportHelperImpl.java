@@ -94,6 +94,9 @@ public final class EclipseTestsSupportHelperImpl implements EclipseTestsSupportH
             @Override
             protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException {
                 if (project.exists()) {
+                    if (!project.isOpen()) {
+                        project.open(new NullProgressMonitor());
+                    }
                     // On Mac OS X, read only files might be marked as immutable
                     // too, setting the read only state to false will allow to
                     // delete the project.
