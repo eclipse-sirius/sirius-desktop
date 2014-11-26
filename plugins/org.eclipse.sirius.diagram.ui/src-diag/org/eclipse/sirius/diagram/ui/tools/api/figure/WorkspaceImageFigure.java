@@ -12,13 +12,15 @@ package org.eclipse.sirius.diagram.ui.tools.api.figure;
 
 import java.io.File;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 
-import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.WorkspaceImage;
+import org.eclipse.sirius.diagram.ui.internal.refresh.listeners.WorkspaceFileResourceChangeListener;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.swt.graphics.Image;
@@ -104,13 +106,15 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
      */
     public static Image flyWeightImage(final String path) {
         if (path != null) {
-            final File imageFile = FileProvider.getDefault().getFile(new Path(path));
+            final File imageFile = WorkspaceFileResourceChangeListener.getInstance().getFileFromURI(path);
             ImageDescriptor desc = null;
-            if (imageFile != null && imageFile.exists() && imageFile.canRead()) {
+            if (WorkspaceFileResourceChangeListener.getInstance().getReadStatusOfFile(imageFile)) {
                 try {
-                    desc = DiagramUIPlugin.getPlugin().findImageDescriptor(imageFile.toURI().toURL());
+                    desc = WorkspaceFileResourceChangeListener.getInstance().findImageDescriptor(imageFile);
                 } catch (MalformedURLException e) {
                     // do nothing
+                } catch (URISyntaxException e) {
+                    DiagramUIPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, DiagramUIPlugin.ID, e.getMessage()));
                 }
             }
             return WorkspaceImageFigure.flyWeightImage(desc);
