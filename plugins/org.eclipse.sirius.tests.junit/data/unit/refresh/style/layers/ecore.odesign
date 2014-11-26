@@ -9,7 +9,7 @@
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide references">
-        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference'] //@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='Bi-directional%20EC_EReference%20']"/>
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide derived features">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference'] //@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']" semanticConditionExpression="&lt;%filter(&quot;EStructuralFeature&quot;).derived == false%>"/>
@@ -72,14 +72,6 @@
               </centerLabelStyleDescription>
             </style>
           </conditionnalStyles>
-        </edgeMappings>
-        <edgeMappings name="Bi-directional EC_EReference " semanticCandidatesExpression="&lt;%getEOppositeEReferences(eAllContents(&quot;EReference&quot;))%>" semanticElements="&lt;%self + eOpposite%>" sourceMapping="//@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetMapping="//@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetFinderExpression="&lt;%eType%>" sourceFinderExpression="feature:eContainer" targetExpression="" domainClass="EReference" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.3/@ownedTools[name='ReconnectEReference']">
-          <style targetArrow="NoDecoration" sizeComputationExpression="1">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%if (derived) {%>/&lt;%}%>&lt;%getEOppositeEReferenceName()%>">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
         </edgeMappings>
         <containerMappings name="EC EClass" labelDirectEdit="//@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass" childrenPresentation="List">
           <subNodeMappings name="EC EAttribute" labelDirectEdit="//@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Entities']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20EAttribute%20Name']" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
@@ -245,30 +237,6 @@
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures">
                   <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="var:target"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="newEReference&lt;%eContainer(&quot;EClassifier&quot;).eAllContents(&quot;EReference&quot;).nSize%>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Bi-directional Reference" edgeMappings="//@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='Bi-directional%20EC_EReference%20']">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures" variableName="instanceTarget">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="var:source"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$source.name.toLowerCase()%>"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures" variableName="instanceSource">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="var:target"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$target.name.toLowerCase()%>"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="eOpposite" valueExpression="var:instanceTarget"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instanceTarget">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="eOpposite" valueExpression="var:instanceSource"/>
-                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -477,7 +445,7 @@
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Blank%20Entities']/@defaultLayer/@edgeMappings[name='Blank%20EC%20ESupertypes']"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide references">
-        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Blank%20Entities']/@defaultLayer/@edgeMappings[name='Blank%20EC_EReference%20'] //@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Blank%20Entities']/@defaultLayer/@edgeMappings[name='Blank%20Bi-directional%20EC_EReference%20']"/>
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Blank%20Entities']/@defaultLayer/@edgeMappings[name='Blank%20EC_EReference%20']"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide derived features">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Blank%20Entities']/@defaultLayer/@edgeMappings[name='Blank%20EC_EReference%20'] //@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Blank%20Entities']/@defaultLayer/@containerMappings[name='Blank%20EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']" semanticConditionExpression="&lt;%filter(&quot;EStructuralFeature&quot;).derived == false%>"/>
@@ -509,14 +477,6 @@
               </centerLabelStyleDescription>
             </style>
           </conditionnalStyles>
-        </edgeMappings>
-        <edgeMappings name="Blank Bi-directional EC_EReference " semanticCandidatesExpression="&lt;%getEOppositeEReferences(eClassifiers.filter(&quot;EClass&quot;).eStructuralFeatures.filter(&quot;EReference&quot;))%>" semanticElements="&lt;%self + eOpposite%>" sourceMapping="//@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Blank%20Entities']/@defaultLayer/@containerMappings[name='Blank%20EC%20EClass']" targetMapping="//@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Blank%20Entities']/@defaultLayer/@containerMappings[name='Blank%20EC%20EClass']" targetFinderExpression="&lt;%eType%>" sourceFinderExpression="feature:eContainer" targetExpression="" domainClass="EReference" useDomainElement="true">
-          <style targetArrow="NoDecoration" sizeComputationExpression="1">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%if (derived) {%>/&lt;%}%>&lt;%getEOppositeEReferenceName()%>">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
         </edgeMappings>
         <edgeMappings name="Blank EC ESupertypes" deletionDescription="//@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Blank%20Entities']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20ESuperType']" semanticCandidatesExpression="feature:eAllContents" sourceMapping="//@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Blank%20Entities']/@defaultLayer/@containerMappings[name='Blank%20EC%20EClass']" targetMapping="//@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Blank%20Entities']/@defaultLayer/@containerMappings[name='Blank%20EC%20EClass']" targetFinderExpression="&lt;%eSuperTypes%>">
           <style lineStyle="dash" targetArrow="InputClosedArrow" sizeComputationExpression="2" routingStyle="manhattan">
@@ -615,30 +575,6 @@
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures">
                   <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="var:target"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="newEReference&lt;%eContainer(&quot;EClassifier&quot;).eAllContents(&quot;EReference&quot;).nSize%>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Bi-directional Reference" edgeMappings="//@ownedViewpoints[name='Design861']/@ownedRepresentations[name='Blank%20Entities']/@defaultLayer/@edgeMappings[name='Blank%20Bi-directional%20EC_EReference%20']">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures" variableName="instanceTarget">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="var:source"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$source.name.toLowerCase()%>"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures" variableName="instanceSource">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="eType" valueExpression="var:target"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$target.name.toLowerCase()%>"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="eOpposite" valueExpression="var:instanceTarget"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instanceTarget">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="eOpposite" valueExpression="var:instanceSource"/>
-                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

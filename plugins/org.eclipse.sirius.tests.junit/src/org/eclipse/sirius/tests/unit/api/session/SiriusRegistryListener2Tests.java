@@ -14,14 +14,39 @@ import java.util.Collections;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistryListener2;
+import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
-
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
+import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
+import org.eclipse.sirius.viewpoint.description.Group;
 
 public class SiriusRegistryListener2Tests extends SiriusDiagramTestCase implements EcoreModeler {
+
+    /**
+     * Add a blank {@link Group} to the VSM resource.
+     * 
+     * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
+     */
+    private final class AddBlankGroupResourceCommand extends RecordingCommand {
+        private Resource vsmResource;
+
+        public AddBlankGroupResourceCommand(TransactionalEditingDomain domain, Resource vsmResource) {
+            super(domain);
+            setLabel("Add a blank group in VSM resource");
+            this.vsmResource = vsmResource;
+        }
+
+        @Override
+        protected void doExecute() {
+            vsmResource.getContents().add(DescriptionFactory.eINSTANCE.createGroup());
+        }
+
+    }
 
     private ViewpointRegistryListener2 listener;
 
@@ -52,7 +77,7 @@ public class SiriusRegistryListener2Tests extends SiriusDiagramTestCase implemen
         listener = new SiriusRegistryListener2WithCounter();
         ViewpointRegistry.getInstance().addListener(listener);
 
-        final Resource odesignRes = session.getTransactionalEditingDomain().getResourceSet().createResource(URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/file.odesign", true));
+        final Resource odesignRes = createVsmResourceWithBlankGroup("file");
         odesignRes.save(Collections.<Object, Object> emptyMap());
         TestsUtil.synchronizationWithUIThread();
 
@@ -64,19 +89,19 @@ public class SiriusRegistryListener2Tests extends SiriusDiagramTestCase implemen
         listener = new SiriusRegistryListener2WithCounter();
         ViewpointRegistry.getInstance().addListener(listener);
 
-        final Resource odesignRes1 = session.getTransactionalEditingDomain().getResourceSet().createResource(URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/file1.odesign", true));
+        final Resource odesignRes1 = createVsmResourceWithBlankGroup("file1");
         odesignRes1.save(Collections.<Object, Object> emptyMap());
         TestsUtil.synchronizationWithUIThread();
 
         assertEquals(1, getNumberOfListenerCall());
 
-        final Resource odesignRes2 = session.getTransactionalEditingDomain().getResourceSet().createResource(URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/file2.odesign", true));
+        final Resource odesignRes2 = createVsmResourceWithBlankGroup("file2");
         odesignRes2.save(Collections.<Object, Object> emptyMap());
         TestsUtil.synchronizationWithUIThread();
 
         assertEquals(2, getNumberOfListenerCall());
 
-        final Resource odesignRes3 = session.getTransactionalEditingDomain().getResourceSet().createResource(URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/file3.odesign", true));
+        final Resource odesignRes3 = createVsmResourceWithBlankGroup("file3");
         odesignRes3.save(Collections.<Object, Object> emptyMap());
         TestsUtil.synchronizationWithUIThread();
 
@@ -88,7 +113,7 @@ public class SiriusRegistryListener2Tests extends SiriusDiagramTestCase implemen
         listener = new SiriusRegistryListener2WithCounter();
         ViewpointRegistry.getInstance().addListener(listener);
 
-        final Resource odesignRes = session.getTransactionalEditingDomain().getResourceSet().createResource(URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/file.odesign", true));
+        final Resource odesignRes = createVsmResourceWithBlankGroup("file");
         odesignRes.save(Collections.<Object, Object> emptyMap());
         TestsUtil.synchronizationWithUIThread();
 
@@ -116,6 +141,20 @@ public class SiriusRegistryListener2Tests extends SiriusDiagramTestCase implemen
         public void modelerDesciptionFilesLoaded() {
             i++;
         }
+    }
+
+    /**
+     * Create a VSM resource with a blank {@link Group}.
+     * 
+     * @param fileName
+     *            The name of the file (without extension).
+     * @return A new resource
+     */
+    protected Resource createVsmResourceWithBlankGroup(String fileName) {
+        final Resource odesignRes = session.getTransactionalEditingDomain().getResourceSet()
+                .createResource(URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/" + fileName + "." + SiriusUtil.DESCRIPTION_MODEL_EXTENSION, true));
+        session.getTransactionalEditingDomain().getCommandStack().execute(new AddBlankGroupResourceCommand(session.getTransactionalEditingDomain(), odesignRes));
+        return odesignRes;
     }
 
     @Override

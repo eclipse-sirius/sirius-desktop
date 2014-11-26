@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ASCII"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="Ecore Editing Workbench V4.6Modif" version="8.0.0">
   <ownedViewpoints endUserDocumentation="Provides graphical and tabular modelers to design an Ecore model." name="DesignModifItemList" modelFileExtension="ecore">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@toolSections.0/@ownedTools[name='External%20EClass%20from%20treeview']" endUserDocumentation="A graphical modeler for Ecore model similar to a UML class diagram." name="EntitiesModif" titleExpression="&lt;%name%> package entities modif" domainClass="EPackage" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" endUserDocumentation="A graphical modeler for Ecore model similar to a UML class diagram." name="EntitiesModif" titleExpression="&lt;%name%> package entities modif" domainClass="EPackage" enablePopupBars="true">
       <defaultLayer name="Default">
-        <edgeMappings name="EC_EReference" preconditionExpression="&lt;%!eOpposite%>" labelDirectEdit="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@toolSections.4/@ownedTools[name='EReference%20Name']" semanticElements="var:self" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetMapping="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetFinderExpression="&lt;%eType%>" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true" reconnections="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@toolSections.3/@ownedTools[name='ReconnectEReference']">
+        <edgeMappings name="EC_EReference" preconditionExpression="&lt;%!eOpposite%>" labelDirectEdit="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@toolSections.4/@ownedTools[name='EReference%20Name']" semanticElements="var:self" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@containerMappings[name='EC%20EClass']" targetMapping="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@containerMappings[name='EC%20EClass']" targetFinderExpression="&lt;%eType%>" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true" reconnections="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@toolSections.3/@ownedTools[name='ReconnectEReference']">
           <style sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%render%>">
@@ -35,7 +35,7 @@
             </style>
           </conditionnalStyles>
         </edgeMappings>
-        <edgeMappings name="EC ESupertypes" deletionDescription="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@toolSections.2/@ownedTools[name='Delete%20ESuperType']" semanticCandidatesExpression="feature:eAllContents" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetMapping="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetFinderExpression="&lt;%eSuperTypes%>" reconnections="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@toolSections.3/@ownedTools[name='ReconnectESupertype']">
+        <edgeMappings name="EC ESupertypes" deletionDescription="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@toolSections.2/@ownedTools[name='Delete%20ESuperType']" semanticCandidatesExpression="feature:eAllContents" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@containerMappings[name='EC%20EClass']" targetMapping="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@containerMappings[name='EC%20EClass']" targetFinderExpression="&lt;%eSuperTypes%>" reconnections="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@toolSections.3/@ownedTools[name='ReconnectESupertype']">
           <style targetArrow="InputClosedArrow" sizeComputationExpression="1" routingStyle="tree">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false">
@@ -50,14 +50,6 @@
               </centerLabelStyleDescription>
             </style>
           </conditionnalStyles>
-        </edgeMappings>
-        <edgeMappings name="Bi-directional EC_EReference " semanticCandidatesExpression="&lt;%getEOppositeEReferences(eAllContents(&quot;EReference&quot;))%>" semanticElements="&lt;%self + eOpposite%>" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetMapping="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@containerMappings[name='EC%20EClass'] //@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" targetFinderExpression="&lt;%eType%>" sourceFinderExpression="feature:eContainer" targetExpression="" domainClass="EReference" useDomainElement="true">
-          <style targetArrow="NoDecoration" sizeComputationExpression="1">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%if (derived) {%>/&lt;%}%>&lt;%getEOppositeEReferenceName()%>">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
         </edgeMappings>
         <containerMappings name="EC EClass" labelDirectEdit="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20Name']" semanticCandidatesExpression="&lt;%eContents.filter(&quot;EClass&quot;)%>" domainClass="EClass" dropDescriptions="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20attribute'] //@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20operation']" childrenPresentation="List">
           <subNodeMappings name="EC EAttribute" labelDirectEdit="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@toolSections.4/@ownedTools[name='Edit%20EAttribute%20Name']" semanticCandidatesExpression="&lt;%current.eAllContents.sort(&quot;name&quot;)%>" domainClass="EAttribute">
@@ -112,14 +104,6 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <containerMappings name="EC External EClass" semanticCandidatesExpression="&lt;%allRoots.eAllContents(&quot;EClass&quot;) - eContents.filter(&quot;EClass&quot;)%>" createElements="false" domainClass="EClass" dropDescriptions="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20attribute'] //@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@toolSections.1/@ownedTools[name='Drop%20operation']" childrenPresentation="List">
-          <style xsi:type="style:FlatContainerStyleDescription" tooltipExpression="&lt;%name%> in &lt;%eResourceName%>" backgroundStyle="GradientTopToBottom">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-          </style>
-        </containerMappings>
         <toolSections name="Classifier">
           <ownedTools xsi:type="tool:ToolGroup" name="Classifier">
             <tools xsi:type="tool:ContainerCreationDescription" name="Class" containerMappings="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@containerMappings[name='EC%20EClass']">
@@ -164,15 +148,6 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EEnum" referenceName="eClassifiers"/>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="External EClass from treeview" forceRefresh="true" mappings="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@containerMappings[name='EC%20External%20EClass']" dragSource="PROJECT_EXPLORER">
-            <oldContainer name="oldSemanticContainer"/>
-            <newContainer name="newSemanticContainer"/>
-            <element name="element"/>
-            <newViewContainer name="newContainerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
@@ -252,30 +227,6 @@
                 <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures">
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="var:target"/>
                   <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newEReference&lt;%eContainer(&quot;EClassifier&quot;).eAllContents(&quot;EReference&quot;).nSize%>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Bi-directional Reference" edgeMappings="//@ownedViewpoints[name='DesignModifItemList']/@ownedRepresentations[name='EntitiesModif']/@defaultLayer/@edgeMappings[name='Bi-directional%20EC_EReference%20']">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable name="sourceView"/>
-            <targetViewVariable name="targetView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
-                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures" variableName="instanceTarget">
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="var:source"/>
-                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$source.name.toLowerCase()%>"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
-                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures" variableName="instanceSource">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="var:target"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="&lt;%$target.name.toLowerCase()%>"/>
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="eOpposite" valueExpression="var:instanceTarget"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:instanceTarget">
-                    <subModelOperations xsi:type="tool_1:SetValue" featureName="eOpposite" valueExpression="var:instanceSource"/>
-                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

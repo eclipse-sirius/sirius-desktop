@@ -32,11 +32,12 @@ import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.tool.CreateEdgeView;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
+import org.eclipse.sirius.tests.sample.docbook.DocbookFactory;
+import org.eclipse.sirius.tests.unit.common.DocbookTestCase;
 import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.Case;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
@@ -50,8 +51,6 @@ import org.eclipse.sirius.viewpoint.description.tool.SetValue;
 import org.eclipse.sirius.viewpoint.description.tool.Switch;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 import org.eclipse.sirius.viewpoint.description.tool.Unset;
-import org.eclipse.sirius.tests.sample.docbook.DocbookFactory;
-import org.eclipse.sirius.tests.unit.common.DocbookTestCase;
 
 /**
  * Test elementary operations.
@@ -630,7 +629,7 @@ public class OperationTest extends DocbookTestCase {
      */
     public void testIFOperationConditionError() {
         setErrorCatchActive(true);
-        testIf("<%Toto%>", 0, 0);
+        testIf("<%ifConditionWithError%>", 0, 0);
         assertTrue(doesAnErrorOccurs());
     }
 
@@ -648,7 +647,7 @@ public class OperationTest extends DocbookTestCase {
      * is executed.
      */
     public void testSwitchOperationDefault() {
-        testSwitch("<%current.eClass.name == \"Toto\"%>", 0, 0, 0, 1);
+        testSwitch("<%current.eClass.name == \"UnexistingClassName\"%>", 0, 0, 0, 1);
     }
 
     /**
@@ -657,7 +656,7 @@ public class OperationTest extends DocbookTestCase {
      */
     public void testSwitchOperationConditionError() {
         setErrorCatchActive(true);
-        testSwitch("<%Toto%>", 0, 0, 0, 1);
+        testSwitch("<%switchConditionWithError%>", 0, 0, 0, 1);
         assertTrue(doesAnErrorOccurs());
     }
 

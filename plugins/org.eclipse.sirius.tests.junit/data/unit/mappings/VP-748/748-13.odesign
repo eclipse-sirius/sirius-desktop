@@ -76,7 +76,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Element" containerMappings="//@ownedViewpoints[name='VP-748']/@ownedRepresentations[name='VP-748']/@defaultLayer/@containerMappings[name='elements']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Element" containerMappings="//@ownedViewpoints[name='VP-748']/@ownedRepresentations[name='VP-748']/@defaultLayer/@containerMappings[name='elements']" iconPath="/org.eclipse.sirius.ui/icons/full/obj16/ToolDescription.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
