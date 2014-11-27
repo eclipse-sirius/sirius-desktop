@@ -24,7 +24,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.GaugeCompositeStyle;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * This is the item provider adapter for a
@@ -163,26 +162,6 @@ public class GaugeCompositeStyleItemProvider extends NodeStyleItemProvider {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.GAUGE_COMPOSITE_STYLE__SECTIONS, DiagramFactory.eINSTANCE.createGaugeSection()));
-    }
-
-    /**
-     * This returns the label text for
-     * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-        Object childFeature = feature;
-        Object childObject = child;
-
-        boolean qualify = childFeature == ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR || childFeature == DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR;
-
-        if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-        }
-        return super.getCreateChildText(owner, feature, child, selection);
     }
 
 }

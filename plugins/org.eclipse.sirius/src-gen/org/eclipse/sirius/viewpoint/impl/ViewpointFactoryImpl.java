@@ -11,6 +11,8 @@
  */
 package org.eclipse.sirius.viewpoint.impl;
 
+import java.util.Iterator;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -19,6 +21,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.business.internal.metamodel.spec.DRepresentationContainerSpec;
 import org.eclipse.sirius.business.internal.metamodel.spec.DSourceFileLinkSpec;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -42,6 +45,8 @@ import org.eclipse.sirius.viewpoint.SessionManagerEObject;
 import org.eclipse.sirius.viewpoint.SyncStatus;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+
+import com.google.common.base.Splitter;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
@@ -102,8 +107,6 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
             return createDAnalysisCustomData();
         case ViewpointPackage.LABEL_STYLE:
             return createLabelStyle();
-        case ViewpointPackage.RGB_VALUES:
-            return createRGBValues();
         case ViewpointPackage.DANALYSIS_SESSION_EOBJECT:
             return createDAnalysisSessionEObject();
         case ViewpointPackage.SESSION_MANAGER_EOBJECT:
@@ -141,6 +144,8 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
             return createSyncStatusFromString(eDataType, initialValue);
         case ViewpointPackage.EXTENDED_PACKAGE:
             return createExtendedPackageFromString(eDataType, initialValue);
+        case ViewpointPackage.RGB_VALUES:
+            return createRGBValuesFromString(eDataType, initialValue);
         default:
             throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -162,6 +167,8 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
             return convertSyncStatusToString(eDataType, instanceValue);
         case ViewpointPackage.EXTENDED_PACKAGE:
             return convertExtendedPackageToString(eDataType, instanceValue);
+        case ViewpointPackage.RGB_VALUES:
+            return convertRGBValuesToString(eDataType, instanceValue);
         default:
             throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
         }
@@ -245,16 +252,6 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
     public LabelStyle createLabelStyle() {
         LabelStyleImpl labelStyle = new LabelStyleImpl();
         return labelStyle;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public RGBValues createRGBValues() {
-        RGBValuesImpl rgbValues = new RGBValuesImpl();
-        return rgbValues;
     }
 
     /**
@@ -423,6 +420,53 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
+     * @not-generated
+     */
+    public RGBValues createRGBValuesFromString(EDataType eDataType, String initialValue) {
+        RGBValues result = new RGBValues();
+        if (!StringUtil.isEmpty(initialValue)) {
+            Iterator<String> it = Splitter.on(',').split(initialValue).iterator();
+
+            if (it.hasNext()) {
+                result.setRed(toInt(it.next()));
+            }
+            if (it.hasNext()) {
+                result.setGreen(toInt(it.next()));
+            }
+            if (it.hasNext()) {
+                result.setBlue(toInt(it.next()));
+            }
+        }
+        return result;
+
+    }
+
+    private int toInt(String next) {
+        if (next.length() > 0) {
+            try {
+                return Integer.valueOf(next);
+            } catch (NumberFormatException e) {
+                return 0;
+            }
+        }
+        return 0;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @not-generated
+     */
+    public String convertRGBValuesToString(EDataType eDataType, Object instanceValue) {
+        if (instanceValue instanceof RGBValues) {
+            return instanceValue.toString();
+        }
+        return super.convertToString(eDataType, instanceValue);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public ViewpointPackage getViewpointPackage() {
@@ -438,6 +482,11 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
     @Deprecated
     public static ViewpointPackage getPackage() {
         return ViewpointPackage.eINSTANCE;
+    }
+
+    @Override
+    public RGBValues createRGBValues() {
+        return new RGBValues(0, 0, 0);
     }
 
 } // ViewpointFactoryImpl

@@ -11,15 +11,15 @@
 package org.eclipse.sirius.table.metamodel.table.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.sirius.table.metamodel.table.DTableElementStyle;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -34,17 +34,17 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#getLabelFormat
  * <em>Label Format</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#getForegroundColor
- * <em>Foreground Color</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#getBackgroundColor
- * <em>Background Color</em>}</li>
- * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#isDefaultForegroundStyle
  * <em>Default Foreground Style</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#isDefaultBackgroundStyle
  * <em>Default Background Style</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#getForegroundColor
+ * <em>Foreground Color</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.table.metamodel.table.impl.DTableElementStyleImpl#getBackgroundColor
+ * <em>Background Color</em>}</li>
  * </ul>
  * </p>
  *
@@ -92,28 +92,6 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
     protected FontFormat labelFormat = LABEL_FORMAT_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getForegroundColor()
-     * <em>Foreground Color</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @see #getForegroundColor()
-     * @generated
-     * @ordered
-     */
-    protected RGBValues foregroundColor;
-
-    /**
-     * The cached value of the '{@link #getBackgroundColor()
-     * <em>Background Color</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @see #getBackgroundColor()
-     * @generated
-     * @ordered
-     */
-    protected RGBValues backgroundColor;
-
-    /**
      * The default value of the '{@link #isDefaultForegroundStyle()
      * <em>Default Foreground Style</em>}' attribute. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -156,6 +134,50 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
      * @ordered
      */
     protected boolean defaultBackgroundStyle = DEFAULT_BACKGROUND_STYLE_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getForegroundColor()
+     * <em>Foreground Color</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getForegroundColor()
+     * @generated
+     * @ordered
+     */
+    protected static final RGBValues FOREGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "0,0,0");
+
+    /**
+     * The cached value of the '{@link #getForegroundColor()
+     * <em>Foreground Color</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getForegroundColor()
+     * @generated
+     * @ordered
+     */
+    protected RGBValues foregroundColor = FOREGROUND_COLOR_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getBackgroundColor()
+     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getBackgroundColor()
+     * @generated
+     * @ordered
+     */
+    protected static final RGBValues BACKGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "255,255,255");
+
+    /**
+     * The cached value of the '{@link #getBackgroundColor()
+     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getBackgroundColor()
+     * @generated
+     * @ordered
+     */
+    protected RGBValues backgroundColor = BACKGROUND_COLOR_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -232,36 +254,11 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
-    public NotificationChain basicSetForegroundColor(RGBValues newForegroundColor, NotificationChain msgs) {
+    public void setForegroundColor(RGBValues newForegroundColor) {
         RGBValues oldForegroundColor = foregroundColor;
         foregroundColor = newForegroundColor;
-        if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TablePackage.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR, oldForegroundColor, newForegroundColor);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
-        }
-        return msgs;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void setForegroundColor(RGBValues newForegroundColor) {
-        if (newForegroundColor != foregroundColor) {
-            NotificationChain msgs = null;
-            if (foregroundColor != null)
-                msgs = ((InternalEObject) foregroundColor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TablePackage.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR, null, msgs);
-            if (newForegroundColor != null)
-                msgs = ((InternalEObject) newForegroundColor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TablePackage.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR, null, msgs);
-            msgs = basicSetForegroundColor(newForegroundColor, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR, newForegroundColor, newForegroundColor));
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR, oldForegroundColor, foregroundColor));
     }
 
     /**
@@ -278,36 +275,11 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
      * 
      * @generated
      */
-    public NotificationChain basicSetBackgroundColor(RGBValues newBackgroundColor, NotificationChain msgs) {
+    public void setBackgroundColor(RGBValues newBackgroundColor) {
         RGBValues oldBackgroundColor = backgroundColor;
         backgroundColor = newBackgroundColor;
-        if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TablePackage.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR, oldBackgroundColor, newBackgroundColor);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
-        }
-        return msgs;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void setBackgroundColor(RGBValues newBackgroundColor) {
-        if (newBackgroundColor != backgroundColor) {
-            NotificationChain msgs = null;
-            if (backgroundColor != null)
-                msgs = ((InternalEObject) backgroundColor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TablePackage.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR, null, msgs);
-            if (newBackgroundColor != null)
-                msgs = ((InternalEObject) newBackgroundColor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TablePackage.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR, null, msgs);
-            msgs = basicSetBackgroundColor(newBackgroundColor, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR, newBackgroundColor, newBackgroundColor));
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, TablePackage.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
     }
 
     /**
@@ -358,36 +330,20 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
      * @generated
      */
     @Override
-    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-        switch (featureID) {
-        case TablePackage.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR:
-            return basicSetForegroundColor(null, msgs);
-        case TablePackage.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR:
-            return basicSetBackgroundColor(null, msgs);
-        }
-        return super.eInverseRemove(otherEnd, featureID, msgs);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case TablePackage.DTABLE_ELEMENT_STYLE__LABEL_SIZE:
             return getLabelSize();
         case TablePackage.DTABLE_ELEMENT_STYLE__LABEL_FORMAT:
             return getLabelFormat();
-        case TablePackage.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR:
-            return getForegroundColor();
-        case TablePackage.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR:
-            return getBackgroundColor();
         case TablePackage.DTABLE_ELEMENT_STYLE__DEFAULT_FOREGROUND_STYLE:
             return isDefaultForegroundStyle();
         case TablePackage.DTABLE_ELEMENT_STYLE__DEFAULT_BACKGROUND_STYLE:
             return isDefaultBackgroundStyle();
+        case TablePackage.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR:
+            return getForegroundColor();
+        case TablePackage.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR:
+            return getBackgroundColor();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -406,17 +362,17 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
         case TablePackage.DTABLE_ELEMENT_STYLE__LABEL_FORMAT:
             setLabelFormat((FontFormat) newValue);
             return;
-        case TablePackage.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR:
-            setForegroundColor((RGBValues) newValue);
-            return;
-        case TablePackage.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR:
-            setBackgroundColor((RGBValues) newValue);
-            return;
         case TablePackage.DTABLE_ELEMENT_STYLE__DEFAULT_FOREGROUND_STYLE:
             setDefaultForegroundStyle((Boolean) newValue);
             return;
         case TablePackage.DTABLE_ELEMENT_STYLE__DEFAULT_BACKGROUND_STYLE:
             setDefaultBackgroundStyle((Boolean) newValue);
+            return;
+        case TablePackage.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR:
+            setForegroundColor((RGBValues) newValue);
+            return;
+        case TablePackage.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR:
+            setBackgroundColor((RGBValues) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -436,17 +392,17 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
         case TablePackage.DTABLE_ELEMENT_STYLE__LABEL_FORMAT:
             setLabelFormat(LABEL_FORMAT_EDEFAULT);
             return;
-        case TablePackage.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR:
-            setForegroundColor((RGBValues) null);
-            return;
-        case TablePackage.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR:
-            setBackgroundColor((RGBValues) null);
-            return;
         case TablePackage.DTABLE_ELEMENT_STYLE__DEFAULT_FOREGROUND_STYLE:
             setDefaultForegroundStyle(DEFAULT_FOREGROUND_STYLE_EDEFAULT);
             return;
         case TablePackage.DTABLE_ELEMENT_STYLE__DEFAULT_BACKGROUND_STYLE:
             setDefaultBackgroundStyle(DEFAULT_BACKGROUND_STYLE_EDEFAULT);
+            return;
+        case TablePackage.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR:
+            setForegroundColor(FOREGROUND_COLOR_EDEFAULT);
+            return;
+        case TablePackage.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR:
+            setBackgroundColor(BACKGROUND_COLOR_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -464,14 +420,14 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
             return labelSize != LABEL_SIZE_EDEFAULT;
         case TablePackage.DTABLE_ELEMENT_STYLE__LABEL_FORMAT:
             return labelFormat != LABEL_FORMAT_EDEFAULT;
-        case TablePackage.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR:
-            return foregroundColor != null;
-        case TablePackage.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR:
-            return backgroundColor != null;
         case TablePackage.DTABLE_ELEMENT_STYLE__DEFAULT_FOREGROUND_STYLE:
             return defaultForegroundStyle != DEFAULT_FOREGROUND_STYLE_EDEFAULT;
         case TablePackage.DTABLE_ELEMENT_STYLE__DEFAULT_BACKGROUND_STYLE:
             return defaultBackgroundStyle != DEFAULT_BACKGROUND_STYLE_EDEFAULT;
+        case TablePackage.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR:
+            return FOREGROUND_COLOR_EDEFAULT == null ? foregroundColor != null : !FOREGROUND_COLOR_EDEFAULT.equals(foregroundColor);
+        case TablePackage.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR:
+            return BACKGROUND_COLOR_EDEFAULT == null ? backgroundColor != null : !BACKGROUND_COLOR_EDEFAULT.equals(backgroundColor);
         }
         return super.eIsSet(featureID);
     }
@@ -495,6 +451,10 @@ public class DTableElementStyleImpl extends MinimalEObjectImpl.Container impleme
         result.append(defaultForegroundStyle);
         result.append(", defaultBackgroundStyle: ");
         result.append(defaultBackgroundStyle);
+        result.append(", foregroundColor: ");
+        result.append(foregroundColor);
+        result.append(", backgroundColor: ");
+        result.append(backgroundColor);
         result.append(')');
         return result.toString();
     }

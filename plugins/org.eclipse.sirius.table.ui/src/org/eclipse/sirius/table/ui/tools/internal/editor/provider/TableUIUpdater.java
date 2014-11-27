@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
@@ -36,7 +37,6 @@ import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableTreeViewer;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableViewerManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.ui.PlatformUI;
 
@@ -211,9 +211,16 @@ public class TableUIUpdater extends ResourceSetListenerImpl {
                 DColumn dColumn = (DColumn) eContainer;
                 toRefreshInViewerWithUpdateLabels.add(dColumn.getTable());
             }
-        } else if (isRGBValuesChange(notification)) {
-            RGBValues rgbValues = (RGBValues) notifier;
-            analyseRGBValues(rgbValues);
+        } else if (notification.getNotifier() instanceof DCellStyle && isRGBValuesChange(notification)) {
+            DCellStyle dCellStyle = (DCellStyle) notification.getNotifier();
+            EObject dCellStyleContainer = dCellStyle.eContainer();
+            if (dCellStyleContainer instanceof DCell) {
+                DCell dCell = (DCell) dCellStyleContainer;
+                DLine dLine = dCell.getLine();
+                if (dLine != null) {
+                    toUpdateInViewer.add(dLine);
+                }
+            }
         }
     }
 
@@ -244,22 +251,7 @@ public class TableUIUpdater extends ResourceSetListenerImpl {
     }
 
     private boolean isRGBValuesChange(Notification notification) {
-        return ViewpointPackage.Literals.RGB_VALUES.getEStructuralFeatures().contains(notification.getFeature()) && notification.getNotifier() instanceof RGBValues;
-    }
-
-    private void analyseRGBValues(RGBValues rgbValues) {
-        EObject notifierContainer = rgbValues.eContainer();
-        if (notifierContainer instanceof DCellStyle) {
-            DCellStyle dCellStyle = (DCellStyle) notifierContainer;
-            EObject dCellStyleContainer = dCellStyle.eContainer();
-            if (dCellStyleContainer instanceof DCell) {
-                DCell dCell = (DCell) dCellStyleContainer;
-                DLine dLine = dCell.getLine();
-                if (dLine != null) {
-                    toUpdateInViewer.add(dLine);
-                }
-            }
-        }
+        return notification.getFeature() instanceof EAttribute && ((EAttribute) notification.getFeature()).getEType() == ViewpointPackage.Literals.RGB_VALUES;
     }
 
     // CHECKSTYLE:OFF

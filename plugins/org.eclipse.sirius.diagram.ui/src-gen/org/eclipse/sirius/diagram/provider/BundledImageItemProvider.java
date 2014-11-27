@@ -22,7 +22,6 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.BundledImage;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * This is the item provider adapter for a
@@ -80,7 +79,7 @@ public class BundledImageItemProvider extends NodeStyleItemProvider {
     protected void addColorPropertyDescriptor(Object object) {
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_BundledImage_color_feature"), getString("_UI_PropertyDescriptor_description", "_UI_BundledImage_color_feature", "_UI_BundledImage_type"),
-                DiagramPackage.Literals.BUNDLED_IMAGE__COLOR, true, false, false, null, getString("_UI_GeneralPropertyCategory"), null));
+                DiagramPackage.Literals.BUNDLED_IMAGE__COLOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_GeneralPropertyCategory"), null));
     }
 
     /**
@@ -137,26 +136,6 @@ public class BundledImageItemProvider extends NodeStyleItemProvider {
     @Override
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
-    }
-
-    /**
-     * This returns the label text for
-     * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-        Object childFeature = feature;
-        Object childObject = child;
-
-        boolean qualify = childFeature == ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR || childFeature == DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR;
-
-        if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-        }
-        return super.getCreateChildText(owner, feature, child, selection);
     }
 
 }

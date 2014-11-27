@@ -1877,7 +1877,7 @@ public class StyleHelperTest extends TestCase {
         @Override
         public Object caseBorderedStyle(BorderedStyle object) {
             Object result = super.caseBorderedStyle(object);
-            object.setBorderColor((RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR));
+            object.setBorderColor((StyleHelperTest.CUSTOM_COLOR));
             return result;
         }
 
@@ -1889,9 +1889,9 @@ public class StyleHelperTest extends TestCase {
         @Override
         public Object caseBundledImage(BundledImage object) {
             Object result = super.caseBundledImage(object);
-            object.setColor((RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR));
-            object.setBorderColor((RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR));
-            object.setLabelColor((RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR));
+            object.setColor(StyleHelperTest.CUSTOM_COLOR);
+            object.setBorderColor(StyleHelperTest.CUSTOM_COLOR);
+            object.setLabelColor(StyleHelperTest.CUSTOM_COLOR);
             return result;
         }
 
@@ -1903,8 +1903,8 @@ public class StyleHelperTest extends TestCase {
         @Override
         public Object caseDot(Dot object) {
             Object result = super.caseDot(object);
-            object.setBackgroundColor((RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR));
-            object.setLabelColor((RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR));
+            object.setBackgroundColor(StyleHelperTest.CUSTOM_COLOR);
+            object.setLabelColor(StyleHelperTest.CUSTOM_COLOR);
             return result;
         }
 
@@ -1916,8 +1916,8 @@ public class StyleHelperTest extends TestCase {
         @Override
         public Object caseEllipse(Ellipse object) {
             Object result = super.caseEllipse(object);
-            object.setColor((RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR));
-            object.setLabelColor((RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR));
+            object.setColor((StyleHelperTest.CUSTOM_COLOR));
+            object.setLabelColor((StyleHelperTest.CUSTOM_COLOR));
             return result;
         }
 
@@ -1931,9 +1931,9 @@ public class StyleHelperTest extends TestCase {
             Object result = super.caseGaugeCompositeStyle(object);
             for (int i = 0; i < object.getSections().size(); i++) {
                 GaugeSection section = object.getSections().get(i);
-                section.setBackgroundColor((RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR));
-                object.setLabelColor((RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR));
-                section.setForegroundColor((RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR));
+                section.setBackgroundColor((StyleHelperTest.CUSTOM_COLOR));
+                object.setLabelColor((StyleHelperTest.CUSTOM_COLOR));
+                section.setForegroundColor((StyleHelperTest.CUSTOM_COLOR));
             }
             return result;
         }
@@ -1946,8 +1946,8 @@ public class StyleHelperTest extends TestCase {
         @Override
         public Object caseLozenge(Lozenge object) {
             Object result = super.caseLozenge(object);
-            object.setColor((RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR));
-            object.setLabelColor((RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR));
+            object.setColor((StyleHelperTest.CUSTOM_COLOR));
+            object.setLabelColor((StyleHelperTest.CUSTOM_COLOR));
             return result;
         }
 
@@ -1959,8 +1959,8 @@ public class StyleHelperTest extends TestCase {
         @Override
         public Object caseNote(Note object) {
             Object result = super.caseNote(object);
-            object.setLabelColor((RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR));
-            object.setColor((RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR));
+            object.setLabelColor((StyleHelperTest.CUSTOM_COLOR));
+            object.setColor((StyleHelperTest.CUSTOM_COLOR));
             return result;
         }
 
@@ -1972,8 +1972,8 @@ public class StyleHelperTest extends TestCase {
         @Override
         public Object caseSquare(Square object) {
             Object result = super.caseSquare(object);
-            object.setColor((RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR));
-            object.setLabelColor((RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR));
+            object.setColor((StyleHelperTest.CUSTOM_COLOR));
+            object.setLabelColor((StyleHelperTest.CUSTOM_COLOR));
             return result;
         }
 
@@ -1993,9 +1993,9 @@ public class StyleHelperTest extends TestCase {
         @Override
         public Object caseFlatContainerStyle(FlatContainerStyle object) {
             Object result = super.caseFlatContainerStyle(object);
-            object.setBackgroundColor((RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR));
-            object.setForegroundColor((RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR));
-            object.setLabelColor((RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR));
+            object.setBackgroundColor((StyleHelperTest.CUSTOM_COLOR));
+            object.setForegroundColor((StyleHelperTest.CUSTOM_COLOR));
+            object.setLabelColor((StyleHelperTest.CUSTOM_COLOR));
             return result;
         }
 
@@ -2007,8 +2007,8 @@ public class StyleHelperTest extends TestCase {
         @Override
         public Object caseShapeContainerStyle(ShapeContainerStyle object) {
             Object result = super.caseShapeContainerStyle(object);
-            object.setBackgroundColor((RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR));
-            object.setLabelColor((RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR));
+            object.setBackgroundColor((StyleHelperTest.CUSTOM_COLOR));
+            object.setLabelColor((StyleHelperTest.CUSTOM_COLOR));
             return result;
         }
 
@@ -2020,8 +2020,8 @@ public class StyleHelperTest extends TestCase {
         @Override
         public Object caseEdgeStyle(EdgeStyle object) {
             Object result = super.caseEdgeStyle(object);
-            object.setStrokeColor((RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR));
-            object.getCenterLabelStyle().setLabelColor((RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR));
+            object.setStrokeColor((StyleHelperTest.CUSTOM_COLOR));
+            object.getCenterLabelStyle().setLabelColor((StyleHelperTest.CUSTOM_COLOR));
             object.getCenterLabelStyle().setShowIcon(!object.getCenterLabelStyle().isShowIcon());
             object.getCenterLabelStyle().setIconPath(IMG_WORKSPACE_PATH + IMG_WORKSPACE_PATH);
             return result;
@@ -2312,17 +2312,17 @@ public class StyleHelperTest extends TestCase {
         public Object caseBundledImage(BundledImage object) {
             Object result = super.caseBundledImage(object);
             if (object.getCustomFeatures().contains(DiagramPackage.Literals.BUNDLED_IMAGE__COLOR.getName())) {
-                SiriusAssert.assertSameRGB("Bad color", (RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR), object.getColor());
+                SiriusAssert.assertSameRGB("Bad color", (StyleHelperTest.CUSTOM_COLOR), object.getColor());
             } else {
                 StyleHelperTest.assertSameRGB("Bad color", ((BundledImageDescription) getStyleDesc()).getColor(), object.getColor());
             }
             if (object.getCustomFeatures().contains(DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR.getName())) {
-                SiriusAssert.assertSameRGB("Bad color", (RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR), object.getBorderColor());
+                SiriusAssert.assertSameRGB("Bad color", (StyleHelperTest.CUSTOM_COLOR), object.getBorderColor());
             } else {
                 StyleHelperTest.assertSameRGB("Bad color", ((BundledImageDescription) getStyleDesc()).getBorderColor(), object.getBorderColor());
             }
             if (object.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR.getName())) {
-                SiriusAssert.assertSameRGB("Bad label color", (RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR), object.getLabelColor());
+                SiriusAssert.assertSameRGB("Bad label color", (StyleHelperTest.CUSTOM_COLOR), object.getLabelColor());
             } else {
                 StyleHelperTest.assertSameRGB("Bad label color", ((BundledImageDescription) getStyleDesc()).getLabelColor(), object.getLabelColor());
             }
@@ -2338,12 +2338,12 @@ public class StyleHelperTest extends TestCase {
         public Object caseDot(Dot object) {
             Object result = super.caseDot(object);
             if (object.getCustomFeatures().contains(DiagramPackage.Literals.DOT__BACKGROUND_COLOR.getName())) {
-                SiriusAssert.assertSameRGB("Bad background color", (RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR), object.getBackgroundColor());
+                SiriusAssert.assertSameRGB("Bad background color", (StyleHelperTest.CUSTOM_COLOR), object.getBackgroundColor());
             } else {
                 StyleHelperTest.assertSameRGB("Bad background color", ((DotDescription) getStyleDesc()).getBackgroundColor(), object.getBackgroundColor());
             }
             if (object.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR.getName())) {
-                SiriusAssert.assertSameRGB("Bad label color", (RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR), object.getLabelColor());
+                SiriusAssert.assertSameRGB("Bad label color", (StyleHelperTest.CUSTOM_COLOR), object.getLabelColor());
             } else {
                 StyleHelperTest.assertSameRGB("Bad label color", ((DotDescription) getStyleDesc()).getLabelColor(), object.getLabelColor());
             }
@@ -2359,12 +2359,12 @@ public class StyleHelperTest extends TestCase {
         public Object caseEllipse(Ellipse object) {
             Object result = super.caseEllipse(object);
             if (object.getCustomFeatures().contains(DiagramPackage.Literals.ELLIPSE__COLOR.getName())) {
-                SiriusAssert.assertSameRGB("Bad color", (RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR), object.getColor());
+                SiriusAssert.assertSameRGB("Bad color", (StyleHelperTest.CUSTOM_COLOR), object.getColor());
             } else {
                 StyleHelperTest.assertSameRGB("Bad color", ((EllipseNodeDescription) getStyleDesc()).getColor(), object.getColor());
             }
             if (object.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR.getName())) {
-                SiriusAssert.assertSameRGB("Bad label color", (RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR), object.getLabelColor());
+                SiriusAssert.assertSameRGB("Bad label color", (StyleHelperTest.CUSTOM_COLOR), object.getLabelColor());
             } else {
                 StyleHelperTest.assertSameRGB("Bad label color", ((EllipseNodeDescription) getStyleDesc()).getLabelColor(), object.getLabelColor());
             }
@@ -2388,19 +2388,19 @@ public class StyleHelperTest extends TestCase {
                 GaugeSectionDescription gaugeSectionDescription = ((GaugeCompositeStyleDescription) getStyleDesc()).getSections().get(i);
                 if (hasContext(object)) {
                     if (section.getCustomFeatures().contains(DiagramPackage.Literals.GAUGE_SECTION__BACKGROUND_COLOR.getName())) {
-                        SiriusAssert.assertSameRGB("Bad background color", (RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR), section.getBackgroundColor());
+                        SiriusAssert.assertSameRGB("Bad background color", (StyleHelperTest.CUSTOM_COLOR), section.getBackgroundColor());
                     } else {
                         StyleHelperTest.assertSameRGB("Bad background color", gaugeSectionDescription.getBackgroundColor(), section.getBackgroundColor());
                     }
                     if (section.getCustomFeatures().contains(DiagramPackage.Literals.GAUGE_SECTION__FOREGROUND_COLOR.getName())) {
-                        SiriusAssert.assertSameRGB("Bad foreground color", (RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR), section.getForegroundColor());
+                        SiriusAssert.assertSameRGB("Bad foreground color", (StyleHelperTest.CUSTOM_COLOR), section.getForegroundColor());
                     } else {
                         StyleHelperTest.assertSameRGB("Bad foreground color", gaugeSectionDescription.getForegroundColor(), section.getForegroundColor());
                     }
                 }
             }
             if (object.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR.getName())) {
-                SiriusAssert.assertSameRGB("Bad label color", (RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR), object.getLabelColor());
+                SiriusAssert.assertSameRGB("Bad label color", (StyleHelperTest.CUSTOM_COLOR), object.getLabelColor());
             } else {
                 StyleHelperTest.assertSameRGB("Bad label color", ((GaugeCompositeStyleDescription) getStyleDesc()).getLabelColor(), object.getLabelColor());
             }
@@ -2416,12 +2416,12 @@ public class StyleHelperTest extends TestCase {
         public Object caseLozenge(Lozenge object) {
             Object result = super.caseLozenge(object);
             if (object.getCustomFeatures().contains(DiagramPackage.Literals.LOZENGE__COLOR.getName())) {
-                SiriusAssert.assertSameRGB("Bad color", (RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR), object.getColor());
+                SiriusAssert.assertSameRGB("Bad color", (StyleHelperTest.CUSTOM_COLOR), object.getColor());
             } else {
                 StyleHelperTest.assertSameRGB("Bad color", ((LozengeNodeDescription) getStyleDesc()).getColor(), object.getColor());
             }
             if (object.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR.getName())) {
-                SiriusAssert.assertSameRGB("Bad label color", (RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR), object.getLabelColor());
+                SiriusAssert.assertSameRGB("Bad label color", (StyleHelperTest.CUSTOM_COLOR), object.getLabelColor());
             } else {
                 StyleHelperTest.assertSameRGB("Bad label color", ((LozengeNodeDescription) getStyleDesc()).getLabelColor(), object.getLabelColor());
             }
@@ -2441,12 +2441,12 @@ public class StyleHelperTest extends TestCase {
         public Object caseNote(Note object) {
             Object result = super.caseNote(object);
             if (object.getCustomFeatures().contains(DiagramPackage.Literals.NOTE__COLOR.getName())) {
-                SiriusAssert.assertSameRGB("Bad color", (RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR), object.getColor());
+                SiriusAssert.assertSameRGB("Bad color", (StyleHelperTest.CUSTOM_COLOR), object.getColor());
             } else {
                 StyleHelperTest.assertSameRGB("Bad color", ((NoteDescription) getStyleDesc()).getColor(), object.getColor());
             }
             if (object.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR.getName())) {
-                SiriusAssert.assertSameRGB("Bad label color", (RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR), object.getLabelColor());
+                SiriusAssert.assertSameRGB("Bad label color", (StyleHelperTest.CUSTOM_COLOR), object.getLabelColor());
             } else {
                 StyleHelperTest.assertSameRGB("Bad label color", ((NoteDescription) getStyleDesc()).getLabelColor(), object.getLabelColor());
             }
@@ -2462,12 +2462,12 @@ public class StyleHelperTest extends TestCase {
         public Object caseSquare(Square object) {
             Object result = super.caseSquare(object);
             if (object.getCustomFeatures().contains(DiagramPackage.Literals.SQUARE__COLOR.getName())) {
-                SiriusAssert.assertSameRGB("Bad color", (RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR), object.getColor());
+                SiriusAssert.assertSameRGB("Bad color", (StyleHelperTest.CUSTOM_COLOR), object.getColor());
             } else {
                 StyleHelperTest.assertSameRGB("Bad color", ((SquareDescription) getStyleDesc()).getColor(), object.getColor());
             }
             if (object.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR.getName())) {
-                SiriusAssert.assertSameRGB("Bad label color", (RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR), object.getLabelColor());
+                SiriusAssert.assertSameRGB("Bad label color", (StyleHelperTest.CUSTOM_COLOR), object.getLabelColor());
             } else {
                 StyleHelperTest.assertSameRGB("Bad label color", ((SquareDescription) getStyleDesc()).getLabelColor(), object.getLabelColor());
             }
@@ -2483,17 +2483,17 @@ public class StyleHelperTest extends TestCase {
         public Object caseFlatContainerStyle(FlatContainerStyle object) {
             Object result = super.caseFlatContainerStyle(object);
             if (object.getCustomFeatures().contains(DiagramPackage.Literals.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR.getName())) {
-                SiriusAssert.assertSameRGB("Bad background color", (RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR), object.getBackgroundColor());
+                SiriusAssert.assertSameRGB("Bad background color", (StyleHelperTest.CUSTOM_COLOR), object.getBackgroundColor());
             } else {
                 StyleHelperTest.assertSameRGB("Bad background color", ((FlatContainerStyleDescription) getStyleDesc()).getBackgroundColor(), object.getBackgroundColor());
             }
             if (object.getCustomFeatures().contains(DiagramPackage.Literals.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR.getName())) {
-                SiriusAssert.assertSameRGB("Bad foreground color", (RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR), object.getForegroundColor());
+                SiriusAssert.assertSameRGB("Bad foreground color", (StyleHelperTest.CUSTOM_COLOR), object.getForegroundColor());
             } else {
                 StyleHelperTest.assertSameRGB("Bad foreground color", ((FlatContainerStyleDescription) getStyleDesc()).getForegroundColor(), object.getForegroundColor());
             }
             if (object.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR.getName())) {
-                SiriusAssert.assertSameRGB("Bad label color", (RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR), object.getLabelColor());
+                SiriusAssert.assertSameRGB("Bad label color", (StyleHelperTest.CUSTOM_COLOR), object.getLabelColor());
             } else {
                 StyleHelperTest.assertSameRGB("Bad label color", ((FlatContainerStyleDescription) getStyleDesc()).getLabelColor(), object.getLabelColor());
             }
@@ -2509,12 +2509,12 @@ public class StyleHelperTest extends TestCase {
         public Object caseShapeContainerStyle(ShapeContainerStyle object) {
             Object result = super.caseShapeContainerStyle(object);
             if (object.getCustomFeatures().contains(DiagramPackage.Literals.SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR.getName())) {
-                SiriusAssert.assertSameRGB("Bad background color", (RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR), object.getBackgroundColor());
+                SiriusAssert.assertSameRGB("Bad background color", (StyleHelperTest.CUSTOM_COLOR), object.getBackgroundColor());
             } else {
                 StyleHelperTest.assertSameRGB("Bad background color", ((ShapeContainerStyleDescription) getStyleDesc()).getBackgroundColor(), object.getBackgroundColor());
             }
             if (object.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR.getName())) {
-                SiriusAssert.assertSameRGB("Bad label color", (RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR), object.getLabelColor());
+                SiriusAssert.assertSameRGB("Bad label color", (StyleHelperTest.CUSTOM_COLOR), object.getLabelColor());
             } else {
                 StyleHelperTest.assertSameRGB("Bad label color", ((ShapeContainerStyleDescription) getStyleDesc()).getLabelColor(), object.getLabelColor());
             }
@@ -2530,12 +2530,12 @@ public class StyleHelperTest extends TestCase {
         public Object caseEdgeStyle(EdgeStyle object) {
             Object result = super.caseEdgeStyle(object);
             if (object.getCustomFeatures().contains(DiagramPackage.Literals.EDGE_STYLE__STROKE_COLOR.getName())) {
-                SiriusAssert.assertSameRGB("Bad stroke color", (RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR), object.getStrokeColor());
+                SiriusAssert.assertSameRGB("Bad stroke color", (StyleHelperTest.CUSTOM_COLOR), object.getStrokeColor());
             } else {
                 StyleHelperTest.assertSameRGB("Bad stroke color", ((EdgeStyleDescription) getStyleDesc()).getStrokeColor(), object.getStrokeColor());
             }
             if (object.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR.getName())) {
-                SiriusAssert.assertSameRGB("Bad label color", (RGBValues) EcoreUtil.copy(StyleHelperTest.CUSTOM_COLOR), object.getCenterLabelStyle().getLabelColor());
+                SiriusAssert.assertSameRGB("Bad label color", (StyleHelperTest.CUSTOM_COLOR), object.getCenterLabelStyle().getLabelColor());
             } else {
                 StyleHelperTest
                         .assertSameRGB("Bad label color", ((EdgeStyleDescription) getStyleDesc()).getCenterLabelStyleDescription().getLabelColor(), object.getCenterLabelStyle().getLabelColor());

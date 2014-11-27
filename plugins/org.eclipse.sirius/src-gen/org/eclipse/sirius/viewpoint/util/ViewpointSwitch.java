@@ -44,7 +44,6 @@ import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Decoration;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.MetaModelExtension;
-import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.SessionManagerEObject;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -299,13 +298,6 @@ public class ViewpointSwitch<T> {
                 result = caseDRefreshable(style);
             if (result == null)
                 result = caseCustomizable(style);
-            if (result == null)
-                result = defaultCase(theEObject);
-            return result;
-        }
-        case ViewpointPackage.RGB_VALUES: {
-            RGBValues rgbValues = (RGBValues) theEObject;
-            T result = caseRGBValues(rgbValues);
             if (result == null)
                 result = defaultCase(theEObject);
             return result;
@@ -757,23 +749,6 @@ public class ViewpointSwitch<T> {
      * @generated
      */
     public T caseStyle(Style object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '
-     * <em>RGB Values</em>'. <!-- begin-user-doc --> This implementation returns
-     * null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     * 
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '
-     *         <em>RGB Values</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseRGBValues(RGBValues object) {
         return null;
     }
 

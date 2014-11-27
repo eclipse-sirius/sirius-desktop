@@ -11,9 +11,7 @@
 package org.eclipse.sirius.tree.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.sirius.tree.TreeItemStyle;
 import org.eclipse.sirius.tree.TreePackage;
@@ -22,6 +20,7 @@ import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.LabelAlignment;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.impl.StyleImpl;
 
@@ -37,10 +36,10 @@ import org.eclipse.sirius.viewpoint.impl.StyleImpl;
  * Label Format</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#isShowIcon <em>Show
  * Icon</em>}</li>
- * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getLabelColor <em>
- * Label Color</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getIconPath <em>
  * Icon Path</em>}</li>
+ * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getLabelColor <em>
+ * Label Color</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getLabelAlignment
  * <em>Label Alignment</em>}</li>
  * <li>{@link org.eclipse.sirius.tree.impl.TreeItemStyleImpl#getBackgroundColor
@@ -112,16 +111,6 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
     protected boolean showIcon = SHOW_ICON_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getLabelColor() <em>Label Color</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see #getLabelColor()
-     * @generated
-     * @ordered
-     */
-    protected RGBValues labelColor;
-
-    /**
      * The default value of the '{@link #getIconPath() <em>Icon Path</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -140,6 +129,26 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * @ordered
      */
     protected String iconPath = ICON_PATH_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getLabelColor() <em>Label Color</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #getLabelColor()
+     * @generated
+     * @ordered
+     */
+    protected static final RGBValues LABEL_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "0,0,0");
+
+    /**
+     * The cached value of the '{@link #getLabelColor() <em>Label Color</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #getLabelColor()
+     * @generated
+     * @ordered
+     */
+    protected RGBValues labelColor = LABEL_COLOR_EDEFAULT;
 
     /**
      * The default value of the '{@link #getLabelAlignment()
@@ -164,15 +173,26 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
     protected LabelAlignment labelAlignment = LABEL_ALIGNMENT_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getBackgroundColor()
-     * <em>Background Color</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The default value of the '{@link #getBackgroundColor()
+     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @see #getBackgroundColor()
      * @generated
      * @ordered
      */
-    protected RGBValues backgroundColor;
+    protected static final RGBValues BACKGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "255,255,255");
+
+    /**
+     * The cached value of the '{@link #getBackgroundColor()
+     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getBackgroundColor()
+     * @generated
+     * @ordered
+     */
+    protected RGBValues backgroundColor = BACKGROUND_COLOR_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -283,49 +303,7 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * @generated
      */
     public RGBValues getLabelColor() {
-        if (labelColor != null && labelColor.eIsProxy()) {
-            InternalEObject oldLabelColor = (InternalEObject) labelColor;
-            labelColor = (RGBValues) eResolveProxy(oldLabelColor);
-            if (labelColor != oldLabelColor) {
-                InternalEObject newLabelColor = (InternalEObject) labelColor;
-                NotificationChain msgs = oldLabelColor.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TreePackage.TREE_ITEM_STYLE__LABEL_COLOR, null, null);
-                if (newLabelColor.eInternalContainer() == null) {
-                    msgs = newLabelColor.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TreePackage.TREE_ITEM_STYLE__LABEL_COLOR, null, msgs);
-                }
-                if (msgs != null)
-                    msgs.dispatch();
-                if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, TreePackage.TREE_ITEM_STYLE__LABEL_COLOR, oldLabelColor, labelColor));
-            }
-        }
         return labelColor;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public RGBValues basicGetLabelColor() {
-        return labelColor;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public NotificationChain basicSetLabelColor(RGBValues newLabelColor, NotificationChain msgs) {
-        RGBValues oldLabelColor = labelColor;
-        labelColor = newLabelColor;
-        if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TreePackage.TREE_ITEM_STYLE__LABEL_COLOR, oldLabelColor, newLabelColor);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
-        }
-        return msgs;
     }
 
     /**
@@ -334,17 +312,10 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * @generated
      */
     public void setLabelColor(RGBValues newLabelColor) {
-        if (newLabelColor != labelColor) {
-            NotificationChain msgs = null;
-            if (labelColor != null)
-                msgs = ((InternalEObject) labelColor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TreePackage.TREE_ITEM_STYLE__LABEL_COLOR, null, msgs);
-            if (newLabelColor != null)
-                msgs = ((InternalEObject) newLabelColor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TreePackage.TREE_ITEM_STYLE__LABEL_COLOR, null, msgs);
-            msgs = basicSetLabelColor(newLabelColor, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, TreePackage.TREE_ITEM_STYLE__LABEL_COLOR, newLabelColor, newLabelColor));
+        RGBValues oldLabelColor = labelColor;
+        labelColor = newLabelColor;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, TreePackage.TREE_ITEM_STYLE__LABEL_COLOR, oldLabelColor, labelColor));
     }
 
     /**
@@ -382,52 +353,11 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
      * 
      * @generated
      */
-    public NotificationChain basicSetBackgroundColor(RGBValues newBackgroundColor, NotificationChain msgs) {
+    public void setBackgroundColor(RGBValues newBackgroundColor) {
         RGBValues oldBackgroundColor = backgroundColor;
         backgroundColor = newBackgroundColor;
-        if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, TreePackage.TREE_ITEM_STYLE__BACKGROUND_COLOR, oldBackgroundColor, newBackgroundColor);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
-        }
-        return msgs;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void setBackgroundColor(RGBValues newBackgroundColor) {
-        if (newBackgroundColor != backgroundColor) {
-            NotificationChain msgs = null;
-            if (backgroundColor != null)
-                msgs = ((InternalEObject) backgroundColor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - TreePackage.TREE_ITEM_STYLE__BACKGROUND_COLOR, null, msgs);
-            if (newBackgroundColor != null)
-                msgs = ((InternalEObject) newBackgroundColor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - TreePackage.TREE_ITEM_STYLE__BACKGROUND_COLOR, null, msgs);
-            msgs = basicSetBackgroundColor(newBackgroundColor, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, TreePackage.TREE_ITEM_STYLE__BACKGROUND_COLOR, newBackgroundColor, newBackgroundColor));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-        switch (featureID) {
-        case TreePackage.TREE_ITEM_STYLE__LABEL_COLOR:
-            return basicSetLabelColor(null, msgs);
-        case TreePackage.TREE_ITEM_STYLE__BACKGROUND_COLOR:
-            return basicSetBackgroundColor(null, msgs);
-        }
-        return super.eInverseRemove(otherEnd, featureID, msgs);
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, TreePackage.TREE_ITEM_STYLE__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
     }
 
     /**
@@ -444,12 +374,10 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
             return getLabelFormat();
         case TreePackage.TREE_ITEM_STYLE__SHOW_ICON:
             return isShowIcon();
-        case TreePackage.TREE_ITEM_STYLE__LABEL_COLOR:
-            if (resolve)
-                return getLabelColor();
-            return basicGetLabelColor();
         case TreePackage.TREE_ITEM_STYLE__ICON_PATH:
             return getIconPath();
+        case TreePackage.TREE_ITEM_STYLE__LABEL_COLOR:
+            return getLabelColor();
         case TreePackage.TREE_ITEM_STYLE__LABEL_ALIGNMENT:
             return getLabelAlignment();
         case TreePackage.TREE_ITEM_STYLE__BACKGROUND_COLOR:
@@ -475,11 +403,11 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
         case TreePackage.TREE_ITEM_STYLE__SHOW_ICON:
             setShowIcon((Boolean) newValue);
             return;
-        case TreePackage.TREE_ITEM_STYLE__LABEL_COLOR:
-            setLabelColor((RGBValues) newValue);
-            return;
         case TreePackage.TREE_ITEM_STYLE__ICON_PATH:
             setIconPath((String) newValue);
+            return;
+        case TreePackage.TREE_ITEM_STYLE__LABEL_COLOR:
+            setLabelColor((RGBValues) newValue);
             return;
         case TreePackage.TREE_ITEM_STYLE__LABEL_ALIGNMENT:
             setLabelAlignment((LabelAlignment) newValue);
@@ -508,17 +436,17 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
         case TreePackage.TREE_ITEM_STYLE__SHOW_ICON:
             setShowIcon(SHOW_ICON_EDEFAULT);
             return;
-        case TreePackage.TREE_ITEM_STYLE__LABEL_COLOR:
-            setLabelColor((RGBValues) null);
-            return;
         case TreePackage.TREE_ITEM_STYLE__ICON_PATH:
             setIconPath(ICON_PATH_EDEFAULT);
+            return;
+        case TreePackage.TREE_ITEM_STYLE__LABEL_COLOR:
+            setLabelColor(LABEL_COLOR_EDEFAULT);
             return;
         case TreePackage.TREE_ITEM_STYLE__LABEL_ALIGNMENT:
             setLabelAlignment(LABEL_ALIGNMENT_EDEFAULT);
             return;
         case TreePackage.TREE_ITEM_STYLE__BACKGROUND_COLOR:
-            setBackgroundColor((RGBValues) null);
+            setBackgroundColor(BACKGROUND_COLOR_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -538,14 +466,14 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
             return labelFormat != LABEL_FORMAT_EDEFAULT;
         case TreePackage.TREE_ITEM_STYLE__SHOW_ICON:
             return showIcon != SHOW_ICON_EDEFAULT;
-        case TreePackage.TREE_ITEM_STYLE__LABEL_COLOR:
-            return labelColor != null;
         case TreePackage.TREE_ITEM_STYLE__ICON_PATH:
             return ICON_PATH_EDEFAULT == null ? iconPath != null : !ICON_PATH_EDEFAULT.equals(iconPath);
+        case TreePackage.TREE_ITEM_STYLE__LABEL_COLOR:
+            return LABEL_COLOR_EDEFAULT == null ? labelColor != null : !LABEL_COLOR_EDEFAULT.equals(labelColor);
         case TreePackage.TREE_ITEM_STYLE__LABEL_ALIGNMENT:
             return labelAlignment != LABEL_ALIGNMENT_EDEFAULT;
         case TreePackage.TREE_ITEM_STYLE__BACKGROUND_COLOR:
-            return backgroundColor != null;
+            return BACKGROUND_COLOR_EDEFAULT == null ? backgroundColor != null : !BACKGROUND_COLOR_EDEFAULT.equals(backgroundColor);
         }
         return super.eIsSet(featureID);
     }
@@ -565,10 +493,10 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
                 return ViewpointPackage.BASIC_LABEL_STYLE__LABEL_FORMAT;
             case TreePackage.TREE_ITEM_STYLE__SHOW_ICON:
                 return ViewpointPackage.BASIC_LABEL_STYLE__SHOW_ICON;
-            case TreePackage.TREE_ITEM_STYLE__LABEL_COLOR:
-                return ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR;
             case TreePackage.TREE_ITEM_STYLE__ICON_PATH:
                 return ViewpointPackage.BASIC_LABEL_STYLE__ICON_PATH;
+            case TreePackage.TREE_ITEM_STYLE__LABEL_COLOR:
+                return ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR;
             default:
                 return -1;
             }
@@ -599,10 +527,10 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
                 return TreePackage.TREE_ITEM_STYLE__LABEL_FORMAT;
             case ViewpointPackage.BASIC_LABEL_STYLE__SHOW_ICON:
                 return TreePackage.TREE_ITEM_STYLE__SHOW_ICON;
-            case ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR:
-                return TreePackage.TREE_ITEM_STYLE__LABEL_COLOR;
             case ViewpointPackage.BASIC_LABEL_STYLE__ICON_PATH:
                 return TreePackage.TREE_ITEM_STYLE__ICON_PATH;
+            case ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR:
+                return TreePackage.TREE_ITEM_STYLE__LABEL_COLOR;
             default:
                 return -1;
             }
@@ -637,8 +565,12 @@ public class TreeItemStyleImpl extends StyleImpl implements TreeItemStyle {
         result.append(showIcon);
         result.append(", iconPath: ");
         result.append(iconPath);
+        result.append(", labelColor: ");
+        result.append(labelColor);
         result.append(", labelAlignment: ");
         result.append(labelAlignment);
+        result.append(", backgroundColor: ");
+        result.append(backgroundColor);
         result.append(')');
         return result.toString();
     }

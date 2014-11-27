@@ -12,13 +12,13 @@
 package org.eclipse.sirius.diagram.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.Dot;
 import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -26,28 +26,17 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.impl.DotImpl#getBackgroundColor <em>
- * Background Color</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.diagram.impl.DotImpl#getStrokeSizeComputationExpression
  * <em>Stroke Size Computation Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DotImpl#getBackgroundColor <em>
+ * Background Color</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class DotImpl extends NodeStyleImpl implements Dot {
-    /**
-     * The cached value of the '{@link #getBackgroundColor()
-     * <em>Background Color</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @see #getBackgroundColor()
-     * @generated
-     * @ordered
-     */
-    protected RGBValues backgroundColor;
-
     /**
      * The default value of the '{@link #getStrokeSizeComputationExpression()
      * <em>Stroke Size Computation Expression</em>}' attribute. <!--
@@ -69,6 +58,28 @@ public class DotImpl extends NodeStyleImpl implements Dot {
      * @ordered
      */
     protected String strokeSizeComputationExpression = STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getBackgroundColor()
+     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getBackgroundColor()
+     * @generated
+     * @ordered
+     */
+    protected static final RGBValues BACKGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "136,136,136");
+
+    /**
+     * The cached value of the '{@link #getBackgroundColor()
+     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getBackgroundColor()
+     * @generated
+     * @ordered
+     */
+    protected RGBValues backgroundColor = BACKGROUND_COLOR_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -95,49 +106,7 @@ public class DotImpl extends NodeStyleImpl implements Dot {
      * @generated
      */
     public RGBValues getBackgroundColor() {
-        if (backgroundColor != null && backgroundColor.eIsProxy()) {
-            InternalEObject oldBackgroundColor = (InternalEObject) backgroundColor;
-            backgroundColor = (RGBValues) eResolveProxy(oldBackgroundColor);
-            if (backgroundColor != oldBackgroundColor) {
-                InternalEObject newBackgroundColor = (InternalEObject) backgroundColor;
-                NotificationChain msgs = oldBackgroundColor.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.DOT__BACKGROUND_COLOR, null, null);
-                if (newBackgroundColor.eInternalContainer() == null) {
-                    msgs = newBackgroundColor.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.DOT__BACKGROUND_COLOR, null, msgs);
-                }
-                if (msgs != null)
-                    msgs.dispatch();
-                if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.DOT__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
-            }
-        }
         return backgroundColor;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public RGBValues basicGetBackgroundColor() {
-        return backgroundColor;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public NotificationChain basicSetBackgroundColor(RGBValues newBackgroundColor, NotificationChain msgs) {
-        RGBValues oldBackgroundColor = backgroundColor;
-        backgroundColor = newBackgroundColor;
-        if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DiagramPackage.DOT__BACKGROUND_COLOR, oldBackgroundColor, newBackgroundColor);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
-        }
-        return msgs;
     }
 
     /**
@@ -146,17 +115,10 @@ public class DotImpl extends NodeStyleImpl implements Dot {
      * @generated
      */
     public void setBackgroundColor(RGBValues newBackgroundColor) {
-        if (newBackgroundColor != backgroundColor) {
-            NotificationChain msgs = null;
-            if (backgroundColor != null)
-                msgs = ((InternalEObject) backgroundColor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.DOT__BACKGROUND_COLOR, null, msgs);
-            if (newBackgroundColor != null)
-                msgs = ((InternalEObject) newBackgroundColor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.DOT__BACKGROUND_COLOR, null, msgs);
-            msgs = basicSetBackgroundColor(newBackgroundColor, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DOT__BACKGROUND_COLOR, newBackgroundColor, newBackgroundColor));
+        RGBValues oldBackgroundColor = backgroundColor;
+        backgroundColor = newBackgroundColor;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DOT__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
     }
 
     /**
@@ -186,28 +148,12 @@ public class DotImpl extends NodeStyleImpl implements Dot {
      * @generated
      */
     @Override
-    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-        switch (featureID) {
-        case DiagramPackage.DOT__BACKGROUND_COLOR:
-            return basicSetBackgroundColor(null, msgs);
-        }
-        return super.eInverseRemove(otherEnd, featureID, msgs);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case DiagramPackage.DOT__BACKGROUND_COLOR:
-            if (resolve)
-                return getBackgroundColor();
-            return basicGetBackgroundColor();
         case DiagramPackage.DOT__STROKE_SIZE_COMPUTATION_EXPRESSION:
             return getStrokeSizeComputationExpression();
+        case DiagramPackage.DOT__BACKGROUND_COLOR:
+            return getBackgroundColor();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -220,11 +166,11 @@ public class DotImpl extends NodeStyleImpl implements Dot {
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case DiagramPackage.DOT__BACKGROUND_COLOR:
-            setBackgroundColor((RGBValues) newValue);
-            return;
         case DiagramPackage.DOT__STROKE_SIZE_COMPUTATION_EXPRESSION:
             setStrokeSizeComputationExpression((String) newValue);
+            return;
+        case DiagramPackage.DOT__BACKGROUND_COLOR:
+            setBackgroundColor((RGBValues) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -238,11 +184,11 @@ public class DotImpl extends NodeStyleImpl implements Dot {
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case DiagramPackage.DOT__BACKGROUND_COLOR:
-            setBackgroundColor((RGBValues) null);
-            return;
         case DiagramPackage.DOT__STROKE_SIZE_COMPUTATION_EXPRESSION:
             setStrokeSizeComputationExpression(STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
+            return;
+        case DiagramPackage.DOT__BACKGROUND_COLOR:
+            setBackgroundColor(BACKGROUND_COLOR_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -256,10 +202,10 @@ public class DotImpl extends NodeStyleImpl implements Dot {
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case DiagramPackage.DOT__BACKGROUND_COLOR:
-            return backgroundColor != null;
         case DiagramPackage.DOT__STROKE_SIZE_COMPUTATION_EXPRESSION:
             return STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? strokeSizeComputationExpression != null : !STROKE_SIZE_COMPUTATION_EXPRESSION_EDEFAULT.equals(strokeSizeComputationExpression);
+        case DiagramPackage.DOT__BACKGROUND_COLOR:
+            return BACKGROUND_COLOR_EDEFAULT == null ? backgroundColor != null : !BACKGROUND_COLOR_EDEFAULT.equals(backgroundColor);
         }
         return super.eIsSet(featureID);
     }
@@ -277,6 +223,8 @@ public class DotImpl extends NodeStyleImpl implements Dot {
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (strokeSizeComputationExpression: ");
         result.append(strokeSizeComputationExpression);
+        result.append(", backgroundColor: ");
+        result.append(backgroundColor);
         result.append(')');
         return result.toString();
     }

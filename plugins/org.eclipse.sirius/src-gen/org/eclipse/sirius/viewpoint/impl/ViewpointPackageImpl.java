@@ -227,13 +227,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * 
      * @generated
      */
-    private EClass rgbValuesEClass = null;
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     private EClass dAnalysisSessionEObjectEClass = null;
 
     /**
@@ -326,6 +319,13 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     private EDataType extendedPackageEDataType = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    private EDataType rgbValuesEDataType = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with
@@ -926,35 +926,8 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * 
      * @generated
      */
-    public EClass getRGBValues() {
-        return rgbValuesEClass;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EAttribute getRGBValues_Red() {
-        return (EAttribute) rgbValuesEClass.getEStructuralFeatures().get(0);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EAttribute getRGBValues_Green() {
-        return (EAttribute) rgbValuesEClass.getEStructuralFeatures().get(1);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EAttribute getRGBValues_Blue() {
-        return (EAttribute) rgbValuesEClass.getEStructuralFeatures().get(2);
+    public EDataType getRGBValues() {
+        return rgbValuesEDataType;
     }
 
     /**
@@ -1160,8 +1133,8 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * 
      * @generated
      */
-    public EReference getBasicLabelStyle_LabelColor() {
-        return (EReference) basicLabelStyleEClass.getEStructuralFeatures().get(3);
+    public EAttribute getBasicLabelStyle_LabelColor() {
+        return (EAttribute) basicLabelStyleEClass.getEStructuralFeatures().get(4);
     }
 
     /**
@@ -1170,7 +1143,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     public EAttribute getBasicLabelStyle_IconPath() {
-        return (EAttribute) basicLabelStyleEClass.getEStructuralFeatures().get(4);
+        return (EAttribute) basicLabelStyleEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -1333,11 +1306,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         styleEClass = createEClass(STYLE);
         createEReference(styleEClass, STYLE__DESCRIPTION);
 
-        rgbValuesEClass = createEClass(RGB_VALUES);
-        createEAttribute(rgbValuesEClass, RGB_VALUES__RED);
-        createEAttribute(rgbValuesEClass, RGB_VALUES__GREEN);
-        createEAttribute(rgbValuesEClass, RGB_VALUES__BLUE);
-
         dAnalysisSessionEObjectEClass = createEClass(DANALYSIS_SESSION_EOBJECT);
         createEAttribute(dAnalysisSessionEObjectEClass, DANALYSIS_SESSION_EOBJECT__OPEN);
         createEAttribute(dAnalysisSessionEObjectEClass, DANALYSIS_SESSION_EOBJECT__RESOURCES);
@@ -1368,8 +1336,8 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         createEAttribute(basicLabelStyleEClass, BASIC_LABEL_STYLE__LABEL_SIZE);
         createEAttribute(basicLabelStyleEClass, BASIC_LABEL_STYLE__LABEL_FORMAT);
         createEAttribute(basicLabelStyleEClass, BASIC_LABEL_STYLE__SHOW_ICON);
-        createEReference(basicLabelStyleEClass, BASIC_LABEL_STYLE__LABEL_COLOR);
         createEAttribute(basicLabelStyleEClass, BASIC_LABEL_STYLE__ICON_PATH);
+        createEAttribute(basicLabelStyleEClass, BASIC_LABEL_STYLE__LABEL_COLOR);
 
         customizableEClass = createEClass(CUSTOMIZABLE);
         createEAttribute(customizableEClass, CUSTOMIZABLE__CUSTOM_FEATURES);
@@ -1381,6 +1349,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
         // Create data types
         extendedPackageEDataType = createEDataType(EXTENDED_PACKAGE);
+        rgbValuesEDataType = createEDataType(RGB_VALUES);
     }
 
     /**
@@ -1564,14 +1533,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         initEReference(getStyle_Description(), theStylePackage.getStyleDescription(), null, "description", null, 0, 1, Style.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-        initEClass(rgbValuesEClass, RGBValues.class, "RGBValues", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getRGBValues_Red(), theEcorePackage.getEInt(), "red", null, 1, 1, RGBValues.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-                IS_ORDERED);
-        initEAttribute(getRGBValues_Green(), theEcorePackage.getEInt(), "green", null, 1, 1, RGBValues.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-                !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getRGBValues_Blue(), theEcorePackage.getEInt(), "blue", null, 1, 1, RGBValues.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-                IS_ORDERED);
-
         initEClass(dAnalysisSessionEObjectEClass, DAnalysisSessionEObject.class, "DAnalysisSessionEObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getDAnalysisSessionEObject_Open(), theEcorePackage.getEBoolean(), "open", null, 1, 1, DAnalysisSessionEObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
                 !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1615,9 +1576,9 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
                 !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getBasicLabelStyle_ShowIcon(), ecorePackage.getEBoolean(), "showIcon", "true", 0, 1, BasicLabelStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
                 IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getBasicLabelStyle_LabelColor(), this.getRGBValues(), null, "labelColor", null, 0, 1, BasicLabelStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getBasicLabelStyle_IconPath(), theEcorePackage.getEString(), "iconPath", "", 0, 1, BasicLabelStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getBasicLabelStyle_LabelColor(), this.getRGBValues(), "labelColor", "0,0,0", 0, 1, BasicLabelStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
                 IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(customizableEClass, Customizable.class, "Customizable", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1642,6 +1603,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
         // Initialize data types
         initEDataType(extendedPackageEDataType, ModelAccessor.class, "ExtendedPackage", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+        initEDataType(rgbValuesEDataType, RGBValues.class, "RGBValues", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
         // Create resource
         createResource(eNS_URI);

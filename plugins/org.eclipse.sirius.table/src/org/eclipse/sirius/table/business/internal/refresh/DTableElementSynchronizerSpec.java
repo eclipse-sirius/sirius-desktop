@@ -624,8 +624,8 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
         if (bestBackgroundColor != null) {
             colorUpdater.updateBackgroundColor(style, bestBackgroundColor, new StyleUpdaterQuery(line.getOriginMapping()).isDefaultBackgroundColor(bestBackgroundColor), line.getTarget());
         } else {
-            if (style.getBackgroundColor() != null) {
-                style.setBackgroundColor(null);
+            if (style.eIsSet(TablePackage.eINSTANCE.getDTableElementStyle_BackgroundColor())) {
+                style.eUnset(TablePackage.eINSTANCE.getDTableElementStyle_BackgroundColor());
             }
             if (style.eIsSet(TablePackage.eINSTANCE.getDTableElementStyle_DefaultBackgroundStyle())) {
                 style.eUnset(TablePackage.eINSTANCE.getDTableElementStyle_DefaultBackgroundStyle());
@@ -643,8 +643,8 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
             }
             style.setDefaultForegroundStyle(defaultStyleDescription);
         } else {
-            if (style.getForegroundColor() != null) {
-                style.setForegroundColor(null);
+            if (style.eIsSet(TablePackage.eINSTANCE.getDTableElementStyle_ForegroundColor())) {
+                style.eUnset(TablePackage.eINSTANCE.getDTableElementStyle_ForegroundColor());
             }
             if (style.getLabelFormat() != null) {
                 style.setLabelFormat(null);
@@ -699,8 +699,8 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
         if (bestBackgroundColor != null) {
             colorUpdater.updateBackgroundColor(style, bestBackgroundColor, new StyleUpdaterQuery(styleUpdater).isDefaultBackgroundColor(bestBackgroundColor), column.getTarget());
         } else {
-            if (style.getBackgroundColor() != null) {
-                style.setBackgroundColor(null);
+            if (style.eIsSet(TablePackage.eINSTANCE.getDTableElementStyle_BackgroundColor())) {
+                style.eUnset(TablePackage.eINSTANCE.getDTableElementStyle_BackgroundColor());
             }
             if (style.eIsSet(TablePackage.eINSTANCE.getDTableElementStyle_DefaultBackgroundStyle())) {
                 style.eUnset(TablePackage.eINSTANCE.getDTableElementStyle_DefaultBackgroundStyle());
@@ -718,8 +718,8 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
             }
             style.setDefaultForegroundStyle(defaultStyleDescription);
         } else {
-            if (style.getForegroundColor() != null) {
-                style.setForegroundColor(null);
+            if (style.eIsSet(TablePackage.eINSTANCE.getDTableElementStyle_ForegroundColor())) {
+                style.eUnset(TablePackage.eINSTANCE.getDTableElementStyle_ForegroundColor());
             }
             if (style.getLabelFormat() != null) {
                 style.setLabelFormat(null);

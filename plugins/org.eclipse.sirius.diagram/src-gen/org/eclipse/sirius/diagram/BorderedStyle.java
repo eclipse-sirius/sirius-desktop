@@ -104,18 +104,18 @@ public interface BorderedStyle extends Style {
     void setBorderSizeComputationExpression(String value);
 
     /**
-     * Returns the value of the '<em><b>Border Color</b></em>' containment
-     * reference. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Border Color</b></em>' attribute. <!--
+     * begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Border Color</em>' containment reference isn't
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      * 
-     * @return the value of the '<em>Border Color</em>' containment reference.
+     * @return the value of the '<em>Border Color</em>' attribute.
      * @see #setBorderColor(RGBValues)
      * @see org.eclipse.sirius.diagram.DiagramPackage#getBorderedStyle_BorderColor()
-     * @model containment="true" resolveProxies="true"
+     * @model dataType="org.eclipse.sirius.viewpoint.RGBValues"
      * @generated
      */
     RGBValues getBorderColor();
@@ -123,12 +123,11 @@ public interface BorderedStyle extends Style {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.BorderedStyle#getBorderColor
-     * <em>Border Color</em>}' containment reference. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <em>Border Color</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @param value
-     *            the new value of the '<em>Border Color</em>' containment
-     *            reference.
+     *            the new value of the '<em>Border Color</em>' attribute.
      * @see #getBorderColor()
      * @generated
      */

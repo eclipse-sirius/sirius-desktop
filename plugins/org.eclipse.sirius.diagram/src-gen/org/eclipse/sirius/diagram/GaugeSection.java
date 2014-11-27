@@ -157,12 +157,11 @@ public interface GaugeSection extends Customizable {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.GaugeSection#getBackgroundColor
-     * <em>Background Color</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @param value
-     *            the new value of the '<em>Background Color</em>' containment
-     *            reference.
+     *            the new value of the '<em>Background Color</em>' attribute.
      * @see #getBackgroundColor()
      * @generated
      */
@@ -185,12 +184,11 @@ public interface GaugeSection extends Customizable {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.GaugeSection#getForegroundColor
-     * <em>Foreground Color</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * <em>Foreground Color</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @param value
-     *            the new value of the '<em>Foreground Color</em>' containment
-     *            reference.
+     *            the new value of the '<em>Foreground Color</em>' attribute.
      * @see #getForegroundColor()
      * @generated
      */

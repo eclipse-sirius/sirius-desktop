@@ -1407,8 +1407,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getDot_BackgroundColor() {
-        return (EReference) dotEClass.getEStructuralFeatures().get(0);
+    public EAttribute getDot_BackgroundColor() {
+        return (EAttribute) dotEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -1417,7 +1417,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     public EAttribute getDot_StrokeSizeComputationExpression() {
-        return (EAttribute) dotEClass.getEStructuralFeatures().get(1);
+        return (EAttribute) dotEClass.getEStructuralFeatures().get(0);
     }
 
     /**
@@ -1470,8 +1470,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getGaugeSection_BackgroundColor() {
-        return (EReference) gaugeSectionEClass.getEStructuralFeatures().get(4);
+    public EAttribute getGaugeSection_BackgroundColor() {
+        return (EAttribute) gaugeSectionEClass.getEStructuralFeatures().get(4);
     }
 
     /**
@@ -1479,8 +1479,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getGaugeSection_ForegroundColor() {
-        return (EReference) gaugeSectionEClass.getEStructuralFeatures().get(5);
+    public EAttribute getGaugeSection_ForegroundColor() {
+        return (EAttribute) gaugeSectionEClass.getEStructuralFeatures().get(5);
     }
 
     /**
@@ -1515,8 +1515,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getFlatContainerStyle_BackgroundColor() {
-        return (EReference) flatContainerStyleEClass.getEStructuralFeatures().get(1);
+    public EAttribute getFlatContainerStyle_BackgroundColor() {
+        return (EAttribute) flatContainerStyleEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -1524,8 +1524,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getFlatContainerStyle_ForegroundColor() {
-        return (EReference) flatContainerStyleEClass.getEStructuralFeatures().get(2);
+    public EAttribute getFlatContainerStyle_ForegroundColor() {
+        return (EAttribute) flatContainerStyleEClass.getEStructuralFeatures().get(2);
     }
 
     /**
@@ -1551,8 +1551,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getShapeContainerStyle_BackgroundColor() {
-        return (EReference) shapeContainerStyleEClass.getEStructuralFeatures().get(1);
+    public EAttribute getShapeContainerStyle_BackgroundColor() {
+        return (EAttribute) shapeContainerStyleEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -1587,8 +1587,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getSquare_Color() {
-        return (EReference) squareEClass.getEStructuralFeatures().get(2);
+    public EAttribute getSquare_Color() {
+        return (EAttribute) squareEClass.getEStructuralFeatures().get(2);
     }
 
     /**
@@ -1623,8 +1623,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getEllipse_Color() {
-        return (EReference) ellipseEClass.getEStructuralFeatures().get(2);
+    public EAttribute getEllipse_Color() {
+        return (EAttribute) ellipseEClass.getEStructuralFeatures().get(2);
     }
 
     /**
@@ -1659,8 +1659,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getLozenge_Color() {
-        return (EReference) lozengeEClass.getEStructuralFeatures().get(2);
+    public EAttribute getLozenge_Color() {
+        return (EAttribute) lozengeEClass.getEStructuralFeatures().get(2);
     }
 
     /**
@@ -1686,8 +1686,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getBundledImage_Color() {
-        return (EReference) bundledImageEClass.getEStructuralFeatures().get(1);
+    public EAttribute getBundledImage_Color() {
+        return (EAttribute) bundledImageEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -1767,8 +1767,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getEdgeStyle_StrokeColor() {
-        return (EReference) edgeStyleEClass.getEStructuralFeatures().get(0);
+    public EAttribute getEdgeStyle_StrokeColor() {
+        return (EAttribute) edgeStyleEClass.getEStructuralFeatures().get(10);
     }
 
     /**
@@ -1777,7 +1777,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     public EAttribute getEdgeStyle_LineStyle() {
-        return (EAttribute) edgeStyleEClass.getEStructuralFeatures().get(1);
+        return (EAttribute) edgeStyleEClass.getEStructuralFeatures().get(0);
     }
 
     /**
@@ -1786,7 +1786,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     public EAttribute getEdgeStyle_SourceArrow() {
-        return (EAttribute) edgeStyleEClass.getEStructuralFeatures().get(2);
+        return (EAttribute) edgeStyleEClass.getEStructuralFeatures().get(1);
     }
 
     /**
@@ -1795,7 +1795,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     public EAttribute getEdgeStyle_TargetArrow() {
-        return (EAttribute) edgeStyleEClass.getEStructuralFeatures().get(3);
+        return (EAttribute) edgeStyleEClass.getEStructuralFeatures().get(2);
     }
 
     /**
@@ -1804,7 +1804,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     public EAttribute getEdgeStyle_FoldingStyle() {
-        return (EAttribute) edgeStyleEClass.getEStructuralFeatures().get(4);
+        return (EAttribute) edgeStyleEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -1813,7 +1813,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     public EAttribute getEdgeStyle_Size() {
-        return (EAttribute) edgeStyleEClass.getEStructuralFeatures().get(5);
+        return (EAttribute) edgeStyleEClass.getEStructuralFeatures().get(4);
     }
 
     /**
@@ -1822,7 +1822,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     public EAttribute getEdgeStyle_RoutingStyle() {
-        return (EAttribute) edgeStyleEClass.getEStructuralFeatures().get(6);
+        return (EAttribute) edgeStyleEClass.getEStructuralFeatures().get(5);
     }
 
     /**
@@ -1831,7 +1831,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     public EReference getEdgeStyle_BeginLabelStyle() {
-        return (EReference) edgeStyleEClass.getEStructuralFeatures().get(7);
+        return (EReference) edgeStyleEClass.getEStructuralFeatures().get(6);
     }
 
     /**
@@ -1840,7 +1840,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     public EReference getEdgeStyle_CenterLabelStyle() {
-        return (EReference) edgeStyleEClass.getEStructuralFeatures().get(8);
+        return (EReference) edgeStyleEClass.getEStructuralFeatures().get(7);
     }
 
     /**
@@ -1849,7 +1849,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     public EReference getEdgeStyle_EndLabelStyle() {
-        return (EReference) edgeStyleEClass.getEStructuralFeatures().get(9);
+        return (EReference) edgeStyleEClass.getEStructuralFeatures().get(8);
     }
 
     /**
@@ -1858,7 +1858,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     public EAttribute getEdgeStyle_Centered() {
-        return (EAttribute) edgeStyleEClass.getEStructuralFeatures().get(10);
+        return (EAttribute) edgeStyleEClass.getEStructuralFeatures().get(9);
     }
 
     /**
@@ -1920,8 +1920,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getBorderedStyle_BorderColor() {
-        return (EReference) borderedStyleEClass.getEStructuralFeatures().get(2);
+    public EAttribute getBorderedStyle_BorderColor() {
+        return (EAttribute) borderedStyleEClass.getEStructuralFeatures().get(2);
     }
 
     /**
@@ -1938,8 +1938,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * 
      * @generated
      */
-    public EReference getNote_Color() {
-        return (EReference) noteEClass.getEStructuralFeatures().get(0);
+    public EAttribute getNote_Color() {
+        return (EAttribute) noteEClass.getEStructuralFeatures().get(0);
     }
 
     /**
@@ -2438,46 +2438,46 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         createEAttribute(nodeStyleEClass, NODE_STYLE__HIDE_LABEL_BY_DEFAULT);
 
         dotEClass = createEClass(DOT);
-        createEReference(dotEClass, DOT__BACKGROUND_COLOR);
         createEAttribute(dotEClass, DOT__STROKE_SIZE_COMPUTATION_EXPRESSION);
+        createEAttribute(dotEClass, DOT__BACKGROUND_COLOR);
 
         gaugeSectionEClass = createEClass(GAUGE_SECTION);
         createEAttribute(gaugeSectionEClass, GAUGE_SECTION__MIN);
         createEAttribute(gaugeSectionEClass, GAUGE_SECTION__MAX);
         createEAttribute(gaugeSectionEClass, GAUGE_SECTION__VALUE);
         createEAttribute(gaugeSectionEClass, GAUGE_SECTION__LABEL);
-        createEReference(gaugeSectionEClass, GAUGE_SECTION__BACKGROUND_COLOR);
-        createEReference(gaugeSectionEClass, GAUGE_SECTION__FOREGROUND_COLOR);
+        createEAttribute(gaugeSectionEClass, GAUGE_SECTION__BACKGROUND_COLOR);
+        createEAttribute(gaugeSectionEClass, GAUGE_SECTION__FOREGROUND_COLOR);
 
         containerStyleEClass = createEClass(CONTAINER_STYLE);
 
         flatContainerStyleEClass = createEClass(FLAT_CONTAINER_STYLE);
         createEAttribute(flatContainerStyleEClass, FLAT_CONTAINER_STYLE__BACKGROUND_STYLE);
-        createEReference(flatContainerStyleEClass, FLAT_CONTAINER_STYLE__BACKGROUND_COLOR);
-        createEReference(flatContainerStyleEClass, FLAT_CONTAINER_STYLE__FOREGROUND_COLOR);
+        createEAttribute(flatContainerStyleEClass, FLAT_CONTAINER_STYLE__BACKGROUND_COLOR);
+        createEAttribute(flatContainerStyleEClass, FLAT_CONTAINER_STYLE__FOREGROUND_COLOR);
 
         shapeContainerStyleEClass = createEClass(SHAPE_CONTAINER_STYLE);
         createEAttribute(shapeContainerStyleEClass, SHAPE_CONTAINER_STYLE__SHAPE);
-        createEReference(shapeContainerStyleEClass, SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR);
+        createEAttribute(shapeContainerStyleEClass, SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR);
 
         squareEClass = createEClass(SQUARE);
         createEAttribute(squareEClass, SQUARE__WIDTH);
         createEAttribute(squareEClass, SQUARE__HEIGHT);
-        createEReference(squareEClass, SQUARE__COLOR);
+        createEAttribute(squareEClass, SQUARE__COLOR);
 
         ellipseEClass = createEClass(ELLIPSE);
         createEAttribute(ellipseEClass, ELLIPSE__HORIZONTAL_DIAMETER);
         createEAttribute(ellipseEClass, ELLIPSE__VERTICAL_DIAMETER);
-        createEReference(ellipseEClass, ELLIPSE__COLOR);
+        createEAttribute(ellipseEClass, ELLIPSE__COLOR);
 
         lozengeEClass = createEClass(LOZENGE);
         createEAttribute(lozengeEClass, LOZENGE__WIDTH);
         createEAttribute(lozengeEClass, LOZENGE__HEIGHT);
-        createEReference(lozengeEClass, LOZENGE__COLOR);
+        createEAttribute(lozengeEClass, LOZENGE__COLOR);
 
         bundledImageEClass = createEClass(BUNDLED_IMAGE);
         createEAttribute(bundledImageEClass, BUNDLED_IMAGE__SHAPE);
-        createEReference(bundledImageEClass, BUNDLED_IMAGE__COLOR);
+        createEAttribute(bundledImageEClass, BUNDLED_IMAGE__COLOR);
 
         workspaceImageEClass = createEClass(WORKSPACE_IMAGE);
         createEAttribute(workspaceImageEClass, WORKSPACE_IMAGE__WORKSPACE_PATH);
@@ -2490,7 +2490,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         createEReference(edgeTargetEClass, EDGE_TARGET__INCOMING_EDGES);
 
         edgeStyleEClass = createEClass(EDGE_STYLE);
-        createEReference(edgeStyleEClass, EDGE_STYLE__STROKE_COLOR);
         createEAttribute(edgeStyleEClass, EDGE_STYLE__LINE_STYLE);
         createEAttribute(edgeStyleEClass, EDGE_STYLE__SOURCE_ARROW);
         createEAttribute(edgeStyleEClass, EDGE_STYLE__TARGET_ARROW);
@@ -2501,6 +2500,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         createEReference(edgeStyleEClass, EDGE_STYLE__CENTER_LABEL_STYLE);
         createEReference(edgeStyleEClass, EDGE_STYLE__END_LABEL_STYLE);
         createEAttribute(edgeStyleEClass, EDGE_STYLE__CENTERED);
+        createEAttribute(edgeStyleEClass, EDGE_STYLE__STROKE_COLOR);
 
         gaugeCompositeStyleEClass = createEClass(GAUGE_COMPOSITE_STYLE);
         createEAttribute(gaugeCompositeStyleEClass, GAUGE_COMPOSITE_STYLE__ALIGNMENT);
@@ -2509,10 +2509,10 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         borderedStyleEClass = createEClass(BORDERED_STYLE);
         createEAttribute(borderedStyleEClass, BORDERED_STYLE__BORDER_SIZE);
         createEAttribute(borderedStyleEClass, BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION);
-        createEReference(borderedStyleEClass, BORDERED_STYLE__BORDER_COLOR);
+        createEAttribute(borderedStyleEClass, BORDERED_STYLE__BORDER_COLOR);
 
         noteEClass = createEClass(NOTE);
-        createEReference(noteEClass, NOTE__COLOR);
+        createEAttribute(noteEClass, NOTE__COLOR);
 
         filterVariableHistoryEClass = createEClass(FILTER_VARIABLE_HISTORY);
         createEReference(filterVariableHistoryEClass, FILTER_VARIABLE_HISTORY__OWNED_VALUES);
@@ -2870,10 +2870,10 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
                 !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(dotEClass, Dot.class, "Dot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getDot_BackgroundColor(), theViewpointPackage.getRGBValues(), null, "backgroundColor", null, 0, 1, Dot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getDot_StrokeSizeComputationExpression(), theDescriptionPackage_1.getInterpretedExpression(), "strokeSizeComputationExpression", "2", 0, 1, Dot.class, !IS_TRANSIENT,
                 !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getDot_BackgroundColor(), theViewpointPackage.getRGBValues(), "backgroundColor", "136,136,136", 0, 1, Dot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+                !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(gaugeSectionEClass, GaugeSection.class, "GaugeSection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getGaugeSection_Min(), theEcorePackage.getEIntegerObject(), "min", null, 0, 1, GaugeSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
@@ -2884,56 +2884,56 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
                 IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getGaugeSection_Label(), theEcorePackage.getEString(), "label", null, 0, 1, GaugeSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
                 !IS_DERIVED, IS_ORDERED);
-        initEReference(getGaugeSection_BackgroundColor(), theViewpointPackage.getRGBValues(), null, "backgroundColor", null, 0, 1, GaugeSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getGaugeSection_ForegroundColor(), theViewpointPackage.getRGBValues(), null, "foregroundColor", null, 0, 1, GaugeSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getGaugeSection_BackgroundColor(), theViewpointPackage.getRGBValues(), "backgroundColor", "0,0,0", 0, 1, GaugeSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+                !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getGaugeSection_ForegroundColor(), theViewpointPackage.getRGBValues(), "foregroundColor", "138,226,52", 0, 1, GaugeSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+                !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(containerStyleEClass, ContainerStyle.class, "ContainerStyle", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
         initEClass(flatContainerStyleEClass, FlatContainerStyle.class, "FlatContainerStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getFlatContainerStyle_BackgroundStyle(), this.getBackgroundStyle(), "backgroundStyle", null, 1, 1, FlatContainerStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getFlatContainerStyle_BackgroundColor(), theViewpointPackage.getRGBValues(), null, "backgroundColor", null, 0, 1, FlatContainerStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getFlatContainerStyle_ForegroundColor(), theViewpointPackage.getRGBValues(), null, "foregroundColor", null, 0, 1, FlatContainerStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getFlatContainerStyle_BackgroundColor(), theViewpointPackage.getRGBValues(), "backgroundColor", "255,255,255", 0, 1, FlatContainerStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
+                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getFlatContainerStyle_ForegroundColor(), theViewpointPackage.getRGBValues(), "foregroundColor", "209,209,209", 0, 1, FlatContainerStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
+                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(shapeContainerStyleEClass, ShapeContainerStyle.class, "ShapeContainerStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getShapeContainerStyle_Shape(), this.getContainerShape(), "shape", null, 1, 1, ShapeContainerStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
                 IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getShapeContainerStyle_BackgroundColor(), theViewpointPackage.getRGBValues(), null, "backgroundColor", null, 1, 1, ShapeContainerStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getShapeContainerStyle_BackgroundColor(), theViewpointPackage.getRGBValues(), "backgroundColor", "209,209,209", 0, 1, ShapeContainerStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
+                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(squareEClass, Square.class, "Square", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getSquare_Width(), ecorePackage.getEIntegerObject(), "width", "0", 0, 1, Square.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
                 !IS_DERIVED, IS_ORDERED);
         initEAttribute(getSquare_Height(), ecorePackage.getEIntegerObject(), "height", "0", 0, 1, Square.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
                 !IS_DERIVED, IS_ORDERED);
-        initEReference(getSquare_Color(), theViewpointPackage.getRGBValues(), null, "color", null, 0, 1, Square.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
-                !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getSquare_Color(), theViewpointPackage.getRGBValues(), "color", "136,136,136", 0, 1, Square.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(ellipseEClass, Ellipse.class, "Ellipse", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getEllipse_HorizontalDiameter(), ecorePackage.getEIntegerObject(), "horizontalDiameter", "0", 0, 1, Ellipse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
                 !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getEllipse_VerticalDiameter(), ecorePackage.getEIntegerObject(), "verticalDiameter", "0", 0, 1, Ellipse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
                 !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getEllipse_Color(), theViewpointPackage.getRGBValues(), null, "color", null, 0, 1, Ellipse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
-                !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getEllipse_Color(), theViewpointPackage.getRGBValues(), "color", "136,136,136", 0, 1, Ellipse.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(lozengeEClass, Lozenge.class, "Lozenge", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getLozenge_Width(), ecorePackage.getEIntegerObject(), "width", "0", 0, 1, Lozenge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
                 !IS_DERIVED, IS_ORDERED);
         initEAttribute(getLozenge_Height(), ecorePackage.getEIntegerObject(), "height", "0", 0, 1, Lozenge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
                 !IS_DERIVED, IS_ORDERED);
-        initEReference(getLozenge_Color(), theViewpointPackage.getRGBValues(), null, "color", null, 0, 1, Lozenge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
-                !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getLozenge_Color(), theViewpointPackage.getRGBValues(), "color", "136,136,136", 0, 1, Lozenge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(bundledImageEClass, BundledImage.class, "BundledImage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getBundledImage_Shape(), this.getBundledImageShape(), "shape", null, 1, 1, BundledImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
                 !IS_DERIVED, IS_ORDERED);
-        initEReference(getBundledImage_Color(), theViewpointPackage.getRGBValues(), null, "color", null, 1, 1, BundledImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getBundledImage_Color(), theViewpointPackage.getRGBValues(), "color", "0,0,0", 0, 1, BundledImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+                IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(workspaceImageEClass, WorkspaceImage.class, "WorkspaceImage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getWorkspaceImage_WorkspacePath(), theEcorePackage.getEString(), "workspacePath", null, 1, 1, WorkspaceImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
@@ -2950,8 +2950,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
                 !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(edgeStyleEClass, EdgeStyle.class, "EdgeStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getEdgeStyle_StrokeColor(), theViewpointPackage.getRGBValues(), null, "strokeColor", null, 0, 1, EdgeStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-                IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getEdgeStyle_LineStyle(), this.getLineStyle(), "lineStyle", null, 0, 1, EdgeStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
                 !IS_DERIVED, IS_ORDERED);
         initEAttribute(getEdgeStyle_SourceArrow(), this.getEdgeArrows(), "sourceArrow", "NoDecoration", 1, 1, EdgeStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
@@ -2972,6 +2970,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getEdgeStyle_Centered(), theDescriptionPackage.getCenteringStyle(), "centered", "None", 1, 1, EdgeStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
                 !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getEdgeStyle_StrokeColor(), theViewpointPackage.getRGBValues(), "strokeColor", "136,136,136", 0, 1, EdgeStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+                !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(gaugeCompositeStyleEClass, GaugeCompositeStyle.class, "GaugeCompositeStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getGaugeCompositeStyle_Alignment(), this.getAlignmentKind(), "alignment", "SQUARE", 0, 1, GaugeCompositeStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
@@ -2984,12 +2984,12 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
                 !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getBorderedStyle_BorderSizeComputationExpression(), theDescriptionPackage_1.getInterpretedExpression(), "borderSizeComputationExpression", "0", 0, 1, BorderedStyle.class,
                 !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getBorderedStyle_BorderColor(), theViewpointPackage.getRGBValues(), null, "borderColor", null, 0, 1, BorderedStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getBorderedStyle_BorderColor(), theViewpointPackage.getRGBValues(), "borderColor", "0,0,0", 0, 1, BorderedStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+                !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(noteEClass, Note.class, "Note", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getNote_Color(), theViewpointPackage.getRGBValues(), null, "color", null, 0, 1, Note.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
-                !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getNote_Color(), theViewpointPackage.getRGBValues(), "color", "252,233,79", 0, 1, Note.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+                !IS_DERIVED, IS_ORDERED);
 
         initEClass(filterVariableHistoryEClass, FilterVariableHistory.class, "FilterVariableHistory", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getFilterVariableHistory_OwnedValues(), this.getFilterVariableValue(), null, "ownedValues", null, 0, -1, FilterVariableHistory.class, !IS_TRANSIENT, !IS_VOLATILE,

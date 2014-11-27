@@ -44,7 +44,6 @@ import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Decoration;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.MetaModelExtension;
-import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.SessionManagerEObject;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -209,11 +208,6 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseStyle(Style object) {
             return createStyleAdapter();
-        }
-
-        @Override
-        public Adapter caseRGBValues(RGBValues object) {
-            return createRGBValuesAdapter();
         }
 
         @Override
@@ -618,21 +612,6 @@ public class ViewpointAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createStyleAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '
-     * {@link org.eclipse.sirius.viewpoint.RGBValues <em>RGB Values</em>}'. <!--
-     * begin-user-doc --> This default implementation returns null so that we
-     * can easily ignore cases; it's useful to ignore a case when inheritance
-     * will catch all the cases anyway. <!-- end-user-doc -->
-     * 
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.RGBValues
-     * @generated
-     */
-    public Adapter createRGBValuesAdapter() {
         return null;
     }
 

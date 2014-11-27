@@ -26,6 +26,7 @@ import org.eclipse.sirius.diagram.BorderedStyle;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.provider.StyleItemProvider;
 
 /**
@@ -168,7 +169,7 @@ public class BorderedStyleItemProvider extends StyleItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR, ViewpointFactory.eINSTANCE.createRGBValues()));
+        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.BORDERED_STYLE__BORDER_COLOR, ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.Literals.RGB_VALUES, "0,0,0")));
     }
 
     /**

@@ -22,10 +22,10 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.Dot#getBackgroundColor <em>Background
- * Color</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.Dot#getStrokeSizeComputationExpression
  * <em>Stroke Size Computation Expression</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.Dot#getBackgroundColor <em>Background
+ * Color</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,12 +51,11 @@ public interface Dot extends NodeStyle {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.Dot#getBackgroundColor
-     * <em>Background Color</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @param value
-     *            the new value of the '<em>Background Color</em>' containment
-     *            reference.
+     *            the new value of the '<em>Background Color</em>' attribute.
      * @see #getBackgroundColor()
      * @generated
      */

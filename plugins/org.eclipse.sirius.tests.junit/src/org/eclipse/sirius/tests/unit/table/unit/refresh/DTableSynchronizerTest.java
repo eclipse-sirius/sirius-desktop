@@ -38,6 +38,7 @@ import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.table.ui.business.api.helper.TableUIHelper;
 import org.eclipse.sirius.tests.unit.table.unit.common.TableTestCase;
 import org.eclipse.sirius.viewpoint.FontFormat;
+import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Model;
 
@@ -500,9 +501,7 @@ public class DTableSynchronizerTest extends TableTestCase {
      *             When test failed
      */
     public void testStyleRefreshCrossTable() {
-
         checkStyle("Model Association Cross Table", "CT Classes");
-
     }
 
     private void checkStyle(String tableDescriptionName, String lineMappingName) {
@@ -569,7 +568,7 @@ public class DTableSynchronizerTest extends TableTestCase {
 
     private void checkStyle(DTableElementStyle style, boolean isStyle, int labelSize, FontFormat fontFormat) {
         if (!isStyle)
-            assertNull(style.getForegroundColor());
+            assertEquals(RGBValues.create(0,0,0), style.getForegroundColor());
         assertEquals(labelSize, style.getLabelSize());
         assertEquals(fontFormat, style.getLabelFormat());
     }

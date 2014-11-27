@@ -203,7 +203,8 @@ public class BasicLabelStyleItemProvider extends CustomizableItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR, ViewpointFactory.eINSTANCE.createRGBValues()));
+        newChildDescriptors.add(createChildParameter(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR,
+                ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.Literals.RGB_VALUES, "0,0,0")));
     }
 
 }

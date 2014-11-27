@@ -24,10 +24,11 @@ import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EndLabelStyle;
 import org.eclipse.sirius.diagram.LineStyle;
-import org.eclipse.sirius.diagram.business.internal.color.DiagramStyleColorUpdater;
 import org.eclipse.sirius.diagram.description.CenteringStyle;
 import org.eclipse.sirius.diagram.description.FoldingStyle;
 import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.impl.StyleImpl;
 
 /**
@@ -36,8 +37,6 @@ import org.eclipse.sirius.viewpoint.impl.StyleImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getStrokeColor <em>
- * Stroke Color</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getLineStyle <em>
  * Line Style</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getSourceArrow <em>
@@ -58,22 +57,14 @@ import org.eclipse.sirius.viewpoint.impl.StyleImpl;
  * <em>End Label Style</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getCentered <em>
  * Centered</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.impl.EdgeStyleImpl#getStrokeColor <em>
+ * Stroke Color</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
 public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
-    /**
-     * The cached value of the '{@link #getStrokeColor() <em>Stroke Color</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see #getStrokeColor()
-     * @generated
-     * @ordered
-     */
-    protected RGBValues strokeColor;
-
     /**
      * The default value of the '{@link #getLineStyle() <em>Line Style</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -252,13 +243,32 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     protected CenteringStyle centered = CENTERED_EDEFAULT;
 
     /**
+     * The default value of the '{@link #getStrokeColor() <em>Stroke Color</em>}
+     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #getStrokeColor()
+     * @generated
+     * @ordered
+     */
+    protected static final RGBValues STROKE_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "136,136,136");
+
+    /**
+     * The cached value of the '{@link #getStrokeColor() <em>Stroke Color</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #getStrokeColor()
+     * @generated
+     * @ordered
+     */
+    protected RGBValues strokeColor = STROKE_COLOR_EDEFAULT;
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @not-generated
+     * @generated
      */
     protected EdgeStyleImpl() {
         super();
-        new DiagramStyleColorUpdater().setDefaultValues(this);
     }
 
     /**
@@ -277,49 +287,7 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * @generated
      */
     public RGBValues getStrokeColor() {
-        if (strokeColor != null && strokeColor.eIsProxy()) {
-            InternalEObject oldStrokeColor = (InternalEObject) strokeColor;
-            strokeColor = (RGBValues) eResolveProxy(oldStrokeColor);
-            if (strokeColor != oldStrokeColor) {
-                InternalEObject newStrokeColor = (InternalEObject) strokeColor;
-                NotificationChain msgs = oldStrokeColor.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__STROKE_COLOR, null, null);
-                if (newStrokeColor.eInternalContainer() == null) {
-                    msgs = newStrokeColor.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__STROKE_COLOR, null, msgs);
-                }
-                if (msgs != null)
-                    msgs.dispatch();
-                if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.EDGE_STYLE__STROKE_COLOR, oldStrokeColor, strokeColor));
-            }
-        }
         return strokeColor;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public RGBValues basicGetStrokeColor() {
-        return strokeColor;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public NotificationChain basicSetStrokeColor(RGBValues newStrokeColor, NotificationChain msgs) {
-        RGBValues oldStrokeColor = strokeColor;
-        strokeColor = newStrokeColor;
-        if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DiagramPackage.EDGE_STYLE__STROKE_COLOR, oldStrokeColor, newStrokeColor);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
-        }
-        return msgs;
     }
 
     /**
@@ -328,17 +296,10 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
      * @generated
      */
     public void setStrokeColor(RGBValues newStrokeColor) {
-        if (newStrokeColor != strokeColor) {
-            NotificationChain msgs = null;
-            if (strokeColor != null)
-                msgs = ((InternalEObject) strokeColor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__STROKE_COLOR, null, msgs);
-            if (newStrokeColor != null)
-                msgs = ((InternalEObject) newStrokeColor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.EDGE_STYLE__STROKE_COLOR, null, msgs);
-            msgs = basicSetStrokeColor(newStrokeColor, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.EDGE_STYLE__STROKE_COLOR, newStrokeColor, newStrokeColor));
+        RGBValues oldStrokeColor = strokeColor;
+        strokeColor = newStrokeColor;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.EDGE_STYLE__STROKE_COLOR, oldStrokeColor, strokeColor));
     }
 
     /**
@@ -706,8 +667,6 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     @Override
     public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
         switch (featureID) {
-        case DiagramPackage.EDGE_STYLE__STROKE_COLOR:
-            return basicSetStrokeColor(null, msgs);
         case DiagramPackage.EDGE_STYLE__BEGIN_LABEL_STYLE:
             return basicSetBeginLabelStyle(null, msgs);
         case DiagramPackage.EDGE_STYLE__CENTER_LABEL_STYLE:
@@ -726,10 +685,6 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
-        case DiagramPackage.EDGE_STYLE__STROKE_COLOR:
-            if (resolve)
-                return getStrokeColor();
-            return basicGetStrokeColor();
         case DiagramPackage.EDGE_STYLE__LINE_STYLE:
             return getLineStyle();
         case DiagramPackage.EDGE_STYLE__SOURCE_ARROW:
@@ -756,6 +711,8 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
             return basicGetEndLabelStyle();
         case DiagramPackage.EDGE_STYLE__CENTERED:
             return getCentered();
+        case DiagramPackage.EDGE_STYLE__STROKE_COLOR:
+            return getStrokeColor();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -768,9 +725,6 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
-        case DiagramPackage.EDGE_STYLE__STROKE_COLOR:
-            setStrokeColor((RGBValues) newValue);
-            return;
         case DiagramPackage.EDGE_STYLE__LINE_STYLE:
             setLineStyle((LineStyle) newValue);
             return;
@@ -801,6 +755,9 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
         case DiagramPackage.EDGE_STYLE__CENTERED:
             setCentered((CenteringStyle) newValue);
             return;
+        case DiagramPackage.EDGE_STYLE__STROKE_COLOR:
+            setStrokeColor((RGBValues) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -813,9 +770,6 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
-        case DiagramPackage.EDGE_STYLE__STROKE_COLOR:
-            setStrokeColor((RGBValues) null);
-            return;
         case DiagramPackage.EDGE_STYLE__LINE_STYLE:
             setLineStyle(LINE_STYLE_EDEFAULT);
             return;
@@ -846,6 +800,9 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
         case DiagramPackage.EDGE_STYLE__CENTERED:
             setCentered(CENTERED_EDEFAULT);
             return;
+        case DiagramPackage.EDGE_STYLE__STROKE_COLOR:
+            setStrokeColor(STROKE_COLOR_EDEFAULT);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -858,8 +815,6 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
-        case DiagramPackage.EDGE_STYLE__STROKE_COLOR:
-            return strokeColor != null;
         case DiagramPackage.EDGE_STYLE__LINE_STYLE:
             return lineStyle != LINE_STYLE_EDEFAULT;
         case DiagramPackage.EDGE_STYLE__SOURCE_ARROW:
@@ -880,6 +835,8 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
             return endLabelStyle != null;
         case DiagramPackage.EDGE_STYLE__CENTERED:
             return centered != CENTERED_EDEFAULT;
+        case DiagramPackage.EDGE_STYLE__STROKE_COLOR:
+            return STROKE_COLOR_EDEFAULT == null ? strokeColor != null : !STROKE_COLOR_EDEFAULT.equals(strokeColor);
         }
         return super.eIsSet(featureID);
     }
@@ -909,6 +866,8 @@ public class EdgeStyleImpl extends StyleImpl implements EdgeStyle {
         result.append(routingStyle);
         result.append(", centered: ");
         result.append(centered);
+        result.append(", strokeColor: ");
+        result.append(strokeColor);
         result.append(')');
         return result.toString();
     }

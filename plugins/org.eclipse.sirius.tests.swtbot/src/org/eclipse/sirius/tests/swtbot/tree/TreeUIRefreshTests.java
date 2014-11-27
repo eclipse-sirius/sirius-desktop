@@ -129,30 +129,32 @@ public class TreeUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
 
         TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(firstDTreeItem);
         CommandStack commandStack = transactionalEditingDomain.getCommandStack();
-        Command changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, backgroundColor, ViewpointPackage.Literals.RGB_VALUES__BLUE, 0);
+        Command changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, firstDTreeItem.getOwnedStyle(), TreePackage.Literals.TREE_ITEM_STYLE__BACKGROUND_COLOR,
+                new RGBValues(backgroundColor.getRed(), backgroundColor.getGreen(), 0));
         commandStack.execute(changeDTreeItemBackgroundColorCmd);
 
         TreeUtils.checkTreeItemBackgroundColor(treeEditorBot, firstDTreeItem);
 
-        undo("Set Blue");
+        undo(changeDTreeItemBackgroundColorCmd.getLabel());
 
         TreeUtils.checkTreeItemBackgroundColor(treeEditorBot, firstDTreeItem);
 
-        redo("Set Blue");
+        redo(changeDTreeItemBackgroundColorCmd.getLabel());
 
         TreeUtils.checkTreeItemBackgroundColor(treeEditorBot, firstDTreeItem);
 
         // Test a second color change
-        changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, backgroundColor, ViewpointPackage.Literals.RGB_VALUES__GREEN, 100);
+        changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, firstDTreeItem.getOwnedStyle(), TreePackage.Literals.TREE_ITEM_STYLE__BACKGROUND_COLOR, new RGBValues(
+                backgroundColor.getRed(), 100, 0));
         commandStack.execute(changeDTreeItemBackgroundColorCmd);
 
         TreeUtils.checkTreeItemBackgroundColor(treeEditorBot, firstDTreeItem);
 
-        undo("Set Green");
+        undo(changeDTreeItemBackgroundColorCmd.getLabel());
 
         TreeUtils.checkTreeItemBackgroundColor(treeEditorBot, firstDTreeItem);
 
-        redo("Set Green");
+        redo(changeDTreeItemBackgroundColorCmd.getLabel());
 
         TreeUtils.checkTreeItemBackgroundColor(treeEditorBot, firstDTreeItem);
     }
@@ -301,30 +303,31 @@ public class TreeUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
 
         TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(firstDTreeItem);
         CommandStack commandStack = transactionalEditingDomain.getCommandStack();
-        Command changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, labelColor, ViewpointPackage.Literals.RGB_VALUES__BLUE, 0);
+        Command changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, firstDTreeItem.getOwnedStyle(), ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR, new RGBValues(labelColor.getRed(),
+                labelColor.getGreen(), 0));
         commandStack.execute(changeDTreeItemBackgroundColorCmd);
 
         TreeUtils.checkTreeItemLabelColor(treeEditorBot, firstDTreeItem);
 
-        undo("Set Blue");
+        undo(changeDTreeItemBackgroundColorCmd.getLabel());
 
         TreeUtils.checkTreeItemLabelColor(treeEditorBot, firstDTreeItem);
 
-        redo("Set Blue");
+        redo(changeDTreeItemBackgroundColorCmd.getLabel());
 
         TreeUtils.checkTreeItemLabelColor(treeEditorBot, firstDTreeItem);
 
         // Test a second color change
-        changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, labelColor, ViewpointPackage.Literals.RGB_VALUES__GREEN, 100);
+        changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, firstDTreeItem.getOwnedStyle(), ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR, new RGBValues(labelColor.getRed(), 100, 0));
         commandStack.execute(changeDTreeItemBackgroundColorCmd);
 
         TreeUtils.checkTreeItemLabelColor(treeEditorBot, firstDTreeItem);
 
-        undo("Set Green");
+        undo(changeDTreeItemBackgroundColorCmd.getLabel());
 
         TreeUtils.checkTreeItemLabelColor(treeEditorBot, firstDTreeItem);
 
-        redo("Set Green");
+        redo(changeDTreeItemBackgroundColorCmd.getLabel());
 
         TreeUtils.checkTreeItemLabelColor(treeEditorBot, firstDTreeItem);
     }

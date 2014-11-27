@@ -25,8 +25,6 @@ import org.eclipse.sirius.viewpoint.Style;
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.sirius.diagram.EdgeStyle#getStrokeColor <em>Stroke
- * Color</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.EdgeStyle#getLineStyle <em>Line Style
  * </em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.EdgeStyle#getSourceArrow <em>Source
@@ -46,6 +44,8 @@ import org.eclipse.sirius.viewpoint.Style;
  * Label Style</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.EdgeStyle#getCentered <em>Centered
  * </em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.EdgeStyle#getStrokeColor <em>Stroke
+ * Color</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,12 +70,11 @@ public interface EdgeStyle extends Style {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.diagram.EdgeStyle#getStrokeColor
-     * <em>Stroke Color</em>}' containment reference. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <em>Stroke Color</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @param value
-     *            the new value of the '<em>Stroke Color</em>' containment
-     *            reference.
+     *            the new value of the '<em>Stroke Color</em>' attribute.
      * @see #getStrokeColor()
      * @generated
      */

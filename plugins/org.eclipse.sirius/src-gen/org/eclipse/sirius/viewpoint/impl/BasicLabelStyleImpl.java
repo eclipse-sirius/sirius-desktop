@@ -12,13 +12,12 @@
 package org.eclipse.sirius.viewpoint.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
@@ -35,11 +34,11 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <em>Label Format</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.BasicLabelStyleImpl#isShowIcon
  * <em>Show Icon</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.BasicLabelStyleImpl#getIconPath
+ * <em>Icon Path</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.viewpoint.impl.BasicLabelStyleImpl#getLabelColor
  * <em>Label Color</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.impl.BasicLabelStyleImpl#getIconPath
- * <em>Icon Path</em>}</li>
  * </ul>
  * </p>
  *
@@ -107,16 +106,6 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
     protected boolean showIcon = SHOW_ICON_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getLabelColor() <em>Label Color</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see #getLabelColor()
-     * @generated
-     * @ordered
-     */
-    protected RGBValues labelColor;
-
-    /**
      * The default value of the '{@link #getIconPath() <em>Icon Path</em>}'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -135,6 +124,26 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
      * @ordered
      */
     protected String iconPath = ICON_PATH_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getLabelColor() <em>Label Color</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #getLabelColor()
+     * @generated
+     * @ordered
+     */
+    protected static final RGBValues LABEL_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "0,0,0");
+
+    /**
+     * The cached value of the '{@link #getLabelColor() <em>Label Color</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #getLabelColor()
+     * @generated
+     * @ordered
+     */
+    protected RGBValues labelColor = LABEL_COLOR_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -224,49 +233,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
      * @generated
      */
     public RGBValues getLabelColor() {
-        if (labelColor != null && labelColor.eIsProxy()) {
-            InternalEObject oldLabelColor = (InternalEObject) labelColor;
-            labelColor = (RGBValues) eResolveProxy(oldLabelColor);
-            if (labelColor != oldLabelColor) {
-                InternalEObject newLabelColor = (InternalEObject) labelColor;
-                NotificationChain msgs = oldLabelColor.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR, null, null);
-                if (newLabelColor.eInternalContainer() == null) {
-                    msgs = newLabelColor.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR, null, msgs);
-                }
-                if (msgs != null)
-                    msgs.dispatch();
-                if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR, oldLabelColor, labelColor));
-            }
-        }
         return labelColor;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public RGBValues basicGetLabelColor() {
-        return labelColor;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public NotificationChain basicSetLabelColor(RGBValues newLabelColor, NotificationChain msgs) {
-        RGBValues oldLabelColor = labelColor;
-        labelColor = newLabelColor;
-        if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR, oldLabelColor, newLabelColor);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
-        }
-        return msgs;
     }
 
     /**
@@ -275,17 +242,10 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
      * @generated
      */
     public void setLabelColor(RGBValues newLabelColor) {
-        if (newLabelColor != labelColor) {
-            NotificationChain msgs = null;
-            if (labelColor != null)
-                msgs = ((InternalEObject) labelColor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR, null, msgs);
-            if (newLabelColor != null)
-                msgs = ((InternalEObject) newLabelColor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR, null, msgs);
-            msgs = basicSetLabelColor(newLabelColor, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR, newLabelColor, newLabelColor));
+        RGBValues oldLabelColor = labelColor;
+        labelColor = newLabelColor;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR, oldLabelColor, labelColor));
     }
 
     /**
@@ -315,20 +275,6 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
      * @generated
      */
     @Override
-    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-        switch (featureID) {
-        case ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR:
-            return basicSetLabelColor(null, msgs);
-        }
-        return super.eInverseRemove(otherEnd, featureID, msgs);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case ViewpointPackage.BASIC_LABEL_STYLE__LABEL_SIZE:
@@ -337,12 +283,10 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
             return getLabelFormat();
         case ViewpointPackage.BASIC_LABEL_STYLE__SHOW_ICON:
             return isShowIcon();
-        case ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR:
-            if (resolve)
-                return getLabelColor();
-            return basicGetLabelColor();
         case ViewpointPackage.BASIC_LABEL_STYLE__ICON_PATH:
             return getIconPath();
+        case ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR:
+            return getLabelColor();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -364,11 +308,11 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
         case ViewpointPackage.BASIC_LABEL_STYLE__SHOW_ICON:
             setShowIcon((Boolean) newValue);
             return;
-        case ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR:
-            setLabelColor((RGBValues) newValue);
-            return;
         case ViewpointPackage.BASIC_LABEL_STYLE__ICON_PATH:
             setIconPath((String) newValue);
+            return;
+        case ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR:
+            setLabelColor((RGBValues) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -391,11 +335,11 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
         case ViewpointPackage.BASIC_LABEL_STYLE__SHOW_ICON:
             setShowIcon(SHOW_ICON_EDEFAULT);
             return;
-        case ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR:
-            setLabelColor((RGBValues) null);
-            return;
         case ViewpointPackage.BASIC_LABEL_STYLE__ICON_PATH:
             setIconPath(ICON_PATH_EDEFAULT);
+            return;
+        case ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR:
+            setLabelColor(LABEL_COLOR_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -415,10 +359,10 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
             return labelFormat != LABEL_FORMAT_EDEFAULT;
         case ViewpointPackage.BASIC_LABEL_STYLE__SHOW_ICON:
             return showIcon != SHOW_ICON_EDEFAULT;
-        case ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR:
-            return labelColor != null;
         case ViewpointPackage.BASIC_LABEL_STYLE__ICON_PATH:
             return ICON_PATH_EDEFAULT == null ? iconPath != null : !ICON_PATH_EDEFAULT.equals(iconPath);
+        case ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR:
+            return LABEL_COLOR_EDEFAULT == null ? labelColor != null : !LABEL_COLOR_EDEFAULT.equals(labelColor);
         }
         return super.eIsSet(featureID);
     }
@@ -442,6 +386,8 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
         result.append(showIcon);
         result.append(", iconPath: ");
         result.append(iconPath);
+        result.append(", labelColor: ");
+        result.append(labelColor);
         result.append(')');
         return result.toString();
     }

@@ -28,6 +28,7 @@ h4. Changes in @org.eclipse.sirius@
 * Constant @org.eclipse.sirius.viewpoint.description.util.DescriptionResourceImpl.OPTION_SIRIUS_USE_URI_FRAGMENT_AS_ID@ added to define a option to enable the use of a id map for odesign resource, id being uri's fragment. 
 * The @isBbocked()@ and @setBlocked()@ methods on the @org.eclipse.sirius.viewpoint.DAnalysisSessionEObject@ EClass have been removed, as they were not actually used in the internal code.
 * The @org.eclipse.sirius.business.api.session.Session.createSemanticResource()@ method has been removed. Use @Session.addSemanticResource()@ instead.
+* @org.eclipse.sirius.viewpoint.RGBValues@ has been changed from an @EClass@ to an @EDataType@, it is not an @EObject@ anymore.
 
 h4. Changes in @org.eclipse.sirius.ui@
 
@@ -54,11 +55,12 @@ h4. Changes in @org.eclipse.sirius.ecore.extender@
 
 h4. Changes in @org.eclipse.sirius.table@
 
-* The methods @org.eclipse.sirius.table.business.api.helper.TableHelper.getColumn()@ has been removed because they are not useful, @TableHelper.getColumn(line, columnIndex)@ can be replaced by @DTable.getColumns().get(columnIndex)@ and @TableHelper.getColumn(table, featureName)@ should not be used as we can have several columns with a same featureName.
-* The method @org.eclipse.sirius.table.business.api.helper.TableHelper.getEClassifier(line, columnIndex)@ has been removed because it is not useful, use @TableHelper.getEClassifier(line, column)@ instead.
-* The method @org.eclipse.sirius.table.business.api.helper.TableHelper.getTableElement(tableElementStyle)@ has been removed because it is not useful, @DTableElementStyle.eContainer()@ can be used instead.
-* The methods @org.eclipse.sirius.table.business.api.helper.TableHelper.getCell()@ has been removed because they are not useful, use @DCellStyle.eContainer@ instead.
-* The method @org.eclipse.sirius.table.business.api.helper.TableHelper.getCreateCellTool()@ has been removed because it is not useful, use @TableHelper.getCreateCellTool(line, column)@ instead.
+* The methods @org.eclipse.sirius.table.business.api.helper.TableHelper.getColumn()@ have been removed because they are not useful, @TableHelper.getColumn(DLine, int)@ can be replaced by @DTable.getColumns().get(int)@ and @TableHelper.getColumn(DTable, String)@ should not be used as we can have several columns with a same featureName.
+* The method @org.eclipse.sirius.table.business.api.helper.TableHelper.getEClassifier(DLine, int)@ has been removed because it is not useful, use @TableHelper.getEClassifier(line, column)@ instead.
+* The method @org.eclipse.sirius.table.business.api.helper.TableHelper.getTableElement(DTableElementStyle)@ has been removed because it is not useful, @DTableElementStyle.eContainer()@ can be used instead.
+* The methods @org.eclipse.sirius.table.business.api.helper.TableHelper.getCell(DCellStyle)@ has been removedhas been removed because they are not useful, use @DCellStyle.eContainer@ instead.
+* The methods @org.eclipse.sirius.table.business.api.helper.TableHelper.getCell(RGBValues)@ has been removed, @RGBValues@ is not an @EObject@ anymore. The method was looking in the eContainer hierarchy of a an instance of @RGBValues@ to find the parent @DCell@.
+* The method @org.eclipse.sirius.table.business.api.helper.TableHelper.getCreateCellTool(DCell)@ has been removed because it is not useful, use @TableHelper.getCreateCellTool(line, column)@ instead.
 * The method @org.eclipse.sirius.table.business.api.helper.TableHelper.getCellDefaultForegroundColor()@ has been removed because it is not useful, use @EnvironmentSystemColorFactory.getDefault().getSystemColorDescription("gray")@ instead.
 
 h4. Changes in @org.eclipse.sirius.tree@

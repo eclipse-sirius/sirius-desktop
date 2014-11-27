@@ -28,6 +28,7 @@ import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.LineStyle;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.provider.StyleItemProvider;
 
 /**
@@ -168,10 +169,10 @@ public class EdgeStyleItemProvider extends StyleItemProvider {
     public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
-            childrenFeatures.add(DiagramPackage.Literals.EDGE_STYLE__STROKE_COLOR);
             childrenFeatures.add(DiagramPackage.Literals.EDGE_STYLE__BEGIN_LABEL_STYLE);
             childrenFeatures.add(DiagramPackage.Literals.EDGE_STYLE__CENTER_LABEL_STYLE);
             childrenFeatures.add(DiagramPackage.Literals.EDGE_STYLE__END_LABEL_STYLE);
+            childrenFeatures.add(DiagramPackage.Literals.EDGE_STYLE__STROKE_COLOR);
         }
         return childrenFeatures;
     }
@@ -235,10 +236,10 @@ public class EdgeStyleItemProvider extends StyleItemProvider {
         case DiagramPackage.EDGE_STYLE__CENTERED:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
-        case DiagramPackage.EDGE_STYLE__STROKE_COLOR:
         case DiagramPackage.EDGE_STYLE__BEGIN_LABEL_STYLE:
         case DiagramPackage.EDGE_STYLE__CENTER_LABEL_STYLE:
         case DiagramPackage.EDGE_STYLE__END_LABEL_STYLE:
+        case DiagramPackage.EDGE_STYLE__STROKE_COLOR:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -256,13 +257,14 @@ public class EdgeStyleItemProvider extends StyleItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.EDGE_STYLE__STROKE_COLOR, ViewpointFactory.eINSTANCE.createRGBValues()));
-
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.EDGE_STYLE__BEGIN_LABEL_STYLE, DiagramFactory.eINSTANCE.createBeginLabelStyle()));
 
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.EDGE_STYLE__CENTER_LABEL_STYLE, DiagramFactory.eINSTANCE.createCenterLabelStyle()));
 
         newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.EDGE_STYLE__END_LABEL_STYLE, DiagramFactory.eINSTANCE.createEndLabelStyle()));
+
+        newChildDescriptors
+                .add(createChildParameter(DiagramPackage.Literals.EDGE_STYLE__STROKE_COLOR, ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.Literals.RGB_VALUES, "136,136,136")));
     }
 
     /**

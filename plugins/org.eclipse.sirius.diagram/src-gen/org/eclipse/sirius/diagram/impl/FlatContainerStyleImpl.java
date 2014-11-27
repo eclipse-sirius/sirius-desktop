@@ -12,14 +12,14 @@
 package org.eclipse.sirius.diagram.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.sirius.diagram.BackgroundStyle;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -65,26 +65,48 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
     protected BackgroundStyle backgroundStyle = BACKGROUND_STYLE_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getBackgroundColor()
-     * <em>Background Color</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The default value of the '{@link #getBackgroundColor()
+     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @see #getBackgroundColor()
      * @generated
      * @ordered
      */
-    protected RGBValues backgroundColor;
+    protected static final RGBValues BACKGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "255,255,255");
 
     /**
-     * The cached value of the '{@link #getForegroundColor()
-     * <em>Foreground Color</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * The cached value of the '{@link #getBackgroundColor()
+     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getBackgroundColor()
+     * @generated
+     * @ordered
+     */
+    protected RGBValues backgroundColor = BACKGROUND_COLOR_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getForegroundColor()
+     * <em>Foreground Color</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @see #getForegroundColor()
      * @generated
      * @ordered
      */
-    protected RGBValues foregroundColor;
+    protected static final RGBValues FOREGROUND_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "209,209,209");
+
+    /**
+     * The cached value of the '{@link #getForegroundColor()
+     * <em>Foreground Color</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     * 
+     * @see #getForegroundColor()
+     * @generated
+     * @ordered
+     */
+    protected RGBValues foregroundColor = FOREGROUND_COLOR_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -132,49 +154,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
      * @generated
      */
     public RGBValues getBackgroundColor() {
-        if (backgroundColor != null && backgroundColor.eIsProxy()) {
-            InternalEObject oldBackgroundColor = (InternalEObject) backgroundColor;
-            backgroundColor = (RGBValues) eResolveProxy(oldBackgroundColor);
-            if (backgroundColor != oldBackgroundColor) {
-                InternalEObject newBackgroundColor = (InternalEObject) backgroundColor;
-                NotificationChain msgs = oldBackgroundColor.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR, null, null);
-                if (newBackgroundColor.eInternalContainer() == null) {
-                    msgs = newBackgroundColor.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR, null, msgs);
-                }
-                if (msgs != null)
-                    msgs.dispatch();
-                if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
-            }
-        }
         return backgroundColor;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public RGBValues basicGetBackgroundColor() {
-        return backgroundColor;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public NotificationChain basicSetBackgroundColor(RGBValues newBackgroundColor, NotificationChain msgs) {
-        RGBValues oldBackgroundColor = backgroundColor;
-        backgroundColor = newBackgroundColor;
-        if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DiagramPackage.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR, oldBackgroundColor, newBackgroundColor);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
-        }
-        return msgs;
     }
 
     /**
@@ -183,17 +163,10 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
      * @generated
      */
     public void setBackgroundColor(RGBValues newBackgroundColor) {
-        if (newBackgroundColor != backgroundColor) {
-            NotificationChain msgs = null;
-            if (backgroundColor != null)
-                msgs = ((InternalEObject) backgroundColor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR, null, msgs);
-            if (newBackgroundColor != null)
-                msgs = ((InternalEObject) newBackgroundColor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR, null, msgs);
-            msgs = basicSetBackgroundColor(newBackgroundColor, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR, newBackgroundColor, newBackgroundColor));
+        RGBValues oldBackgroundColor = backgroundColor;
+        backgroundColor = newBackgroundColor;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
     }
 
     /**
@@ -202,49 +175,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
      * @generated
      */
     public RGBValues getForegroundColor() {
-        if (foregroundColor != null && foregroundColor.eIsProxy()) {
-            InternalEObject oldForegroundColor = (InternalEObject) foregroundColor;
-            foregroundColor = (RGBValues) eResolveProxy(oldForegroundColor);
-            if (foregroundColor != oldForegroundColor) {
-                InternalEObject newForegroundColor = (InternalEObject) foregroundColor;
-                NotificationChain msgs = oldForegroundColor.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR, null, null);
-                if (newForegroundColor.eInternalContainer() == null) {
-                    msgs = newForegroundColor.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR, null, msgs);
-                }
-                if (msgs != null)
-                    msgs.dispatch();
-                if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR, oldForegroundColor, foregroundColor));
-            }
-        }
         return foregroundColor;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public RGBValues basicGetForegroundColor() {
-        return foregroundColor;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public NotificationChain basicSetForegroundColor(RGBValues newForegroundColor, NotificationChain msgs) {
-        RGBValues oldForegroundColor = foregroundColor;
-        foregroundColor = newForegroundColor;
-        if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DiagramPackage.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR, oldForegroundColor, newForegroundColor);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
-        }
-        return msgs;
     }
 
     /**
@@ -253,33 +184,10 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
      * @generated
      */
     public void setForegroundColor(RGBValues newForegroundColor) {
-        if (newForegroundColor != foregroundColor) {
-            NotificationChain msgs = null;
-            if (foregroundColor != null)
-                msgs = ((InternalEObject) foregroundColor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR, null, msgs);
-            if (newForegroundColor != null)
-                msgs = ((InternalEObject) newForegroundColor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR, null, msgs);
-            msgs = basicSetForegroundColor(newForegroundColor, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR, newForegroundColor, newForegroundColor));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-        switch (featureID) {
-        case DiagramPackage.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR:
-            return basicSetBackgroundColor(null, msgs);
-        case DiagramPackage.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR:
-            return basicSetForegroundColor(null, msgs);
-        }
-        return super.eInverseRemove(otherEnd, featureID, msgs);
+        RGBValues oldForegroundColor = foregroundColor;
+        foregroundColor = newForegroundColor;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR, oldForegroundColor, foregroundColor));
     }
 
     /**
@@ -293,13 +201,9 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
         case DiagramPackage.FLAT_CONTAINER_STYLE__BACKGROUND_STYLE:
             return getBackgroundStyle();
         case DiagramPackage.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR:
-            if (resolve)
-                return getBackgroundColor();
-            return basicGetBackgroundColor();
+            return getBackgroundColor();
         case DiagramPackage.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR:
-            if (resolve)
-                return getForegroundColor();
-            return basicGetForegroundColor();
+            return getForegroundColor();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -337,10 +241,10 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
             setBackgroundStyle(BACKGROUND_STYLE_EDEFAULT);
             return;
         case DiagramPackage.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR:
-            setBackgroundColor((RGBValues) null);
+            setBackgroundColor(BACKGROUND_COLOR_EDEFAULT);
             return;
         case DiagramPackage.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR:
-            setForegroundColor((RGBValues) null);
+            setForegroundColor(FOREGROUND_COLOR_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -357,9 +261,9 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
         case DiagramPackage.FLAT_CONTAINER_STYLE__BACKGROUND_STYLE:
             return backgroundStyle != BACKGROUND_STYLE_EDEFAULT;
         case DiagramPackage.FLAT_CONTAINER_STYLE__BACKGROUND_COLOR:
-            return backgroundColor != null;
+            return BACKGROUND_COLOR_EDEFAULT == null ? backgroundColor != null : !BACKGROUND_COLOR_EDEFAULT.equals(backgroundColor);
         case DiagramPackage.FLAT_CONTAINER_STYLE__FOREGROUND_COLOR:
-            return foregroundColor != null;
+            return FOREGROUND_COLOR_EDEFAULT == null ? foregroundColor != null : !FOREGROUND_COLOR_EDEFAULT.equals(foregroundColor);
         }
         return super.eIsSet(featureID);
     }
@@ -377,6 +281,10 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (backgroundStyle: ");
         result.append(backgroundStyle);
+        result.append(", backgroundColor: ");
+        result.append(backgroundColor);
+        result.append(", foregroundColor: ");
+        result.append(foregroundColor);
         result.append(')');
         return result.toString();
     }

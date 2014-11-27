@@ -219,7 +219,7 @@ public class ReconnectEdgeWithChangedRoutingStyleTest extends AbstractSiriusSwtB
         SWTBotSiriusHelper.selectPropertyTabItem(STYLE);
         SWTBotTree tree = propertiesBot.bot().tree();
         // select routing syle Straight in combo
-        tree.expandNode("Edge Style solid").select().getNode("Routing Style").doubleClick();
+        tree.expandNode("Misc").select().getNode("Routing Style").doubleClick();
         SWTBotCCombo comboBox = propertiesBot.bot().ccomboBox();
         String routingStyleLitteral = routingStyle.getLiteral().substring(0, 1).toUpperCase().concat(routingStyle.getLiteral().substring(1, routingStyle.getLiteral().length()));
         comboBox.setSelection(routingStyleLitteral);

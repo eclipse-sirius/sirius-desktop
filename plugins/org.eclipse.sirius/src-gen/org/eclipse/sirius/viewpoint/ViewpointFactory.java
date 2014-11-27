@@ -102,15 +102,6 @@ public interface ViewpointFactory extends EFactory {
     LabelStyle createLabelStyle();
 
     /**
-     * Returns a new object of class '<em>RGB Values</em>'. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
-     * 
-     * @return a new object of class '<em>RGB Values</em>'.
-     * @generated
-     */
-    RGBValues createRGBValues();
-
-    /**
      * Returns a new object of class '<em>DAnalysis Session EObject</em>'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -190,5 +181,7 @@ public interface ViewpointFactory extends EFactory {
      * @generated
      */
     ViewpointPackage getViewpointPackage();
+
+    RGBValues createRGBValues();
 
 } // ViewpointFactory

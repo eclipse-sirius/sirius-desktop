@@ -2364,15 +2364,6 @@ public interface DiagramPackage extends EPackage {
     int NODE_STYLE__SHOW_ICON = ViewpointPackage.LABEL_STYLE__SHOW_ICON;
 
     /**
-     * The feature id for the '<em><b>Label Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int NODE_STYLE__LABEL_COLOR = ViewpointPackage.LABEL_STYLE__LABEL_COLOR;
-
-    /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -2380,6 +2371,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int NODE_STYLE__ICON_PATH = ViewpointPackage.LABEL_STYLE__ICON_PATH;
+
+    /**
+     * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int NODE_STYLE__LABEL_COLOR = ViewpointPackage.LABEL_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
@@ -2419,8 +2419,8 @@ public interface DiagramPackage extends EPackage {
     int NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION = ViewpointPackage.LABEL_STYLE_FEATURE_COUNT + 2;
 
     /**
-     * The feature id for the '<em><b>Border Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
@@ -2502,15 +2502,6 @@ public interface DiagramPackage extends EPackage {
     int DOT__SHOW_ICON = NODE_STYLE__SHOW_ICON;
 
     /**
-     * The feature id for the '<em><b>Label Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DOT__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
-
-    /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -2518,6 +2509,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int DOT__ICON_PATH = NODE_STYLE__ICON_PATH;
+
+    /**
+     * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DOT__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
@@ -2557,8 +2557,8 @@ public interface DiagramPackage extends EPackage {
     int DOT__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Border Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
@@ -2584,15 +2584,6 @@ public interface DiagramPackage extends EPackage {
     int DOT__HIDE_LABEL_BY_DEFAULT = NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
 
     /**
-     * The feature id for the '<em><b>Background Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DOT__BACKGROUND_COLOR = NODE_STYLE_FEATURE_COUNT + 0;
-
-    /**
      * The feature id for the '
      * <em><b>Stroke Size Computation Expression</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -2600,7 +2591,16 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DOT__STROKE_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE_FEATURE_COUNT + 1;
+    int DOT__STROKE_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE_FEATURE_COUNT + 0;
+
+    /**
+     * The feature id for the '<em><b>Background Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DOT__BACKGROUND_COLOR = NODE_STYLE_FEATURE_COUNT + 1;
 
     /**
      * The number of structural features of the '<em>Dot</em>' class. <!--
@@ -2669,8 +2669,8 @@ public interface DiagramPackage extends EPackage {
     int GAUGE_SECTION__LABEL = ViewpointPackage.CUSTOMIZABLE_FEATURE_COUNT + 3;
 
     /**
-     * The feature id for the '<em><b>Background Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Background Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
@@ -2678,8 +2678,8 @@ public interface DiagramPackage extends EPackage {
     int GAUGE_SECTION__BACKGROUND_COLOR = ViewpointPackage.CUSTOMIZABLE_FEATURE_COUNT + 4;
 
     /**
-     * The feature id for the '<em><b>Foreground Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Foreground Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
@@ -2744,15 +2744,6 @@ public interface DiagramPackage extends EPackage {
     int CONTAINER_STYLE__SHOW_ICON = ViewpointPackage.LABEL_STYLE__SHOW_ICON;
 
     /**
-     * The feature id for the '<em><b>Label Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int CONTAINER_STYLE__LABEL_COLOR = ViewpointPackage.LABEL_STYLE__LABEL_COLOR;
-
-    /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -2760,6 +2751,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int CONTAINER_STYLE__ICON_PATH = ViewpointPackage.LABEL_STYLE__ICON_PATH;
+
+    /**
+     * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CONTAINER_STYLE__LABEL_COLOR = ViewpointPackage.LABEL_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
@@ -2799,8 +2799,8 @@ public interface DiagramPackage extends EPackage {
     int CONTAINER_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION = ViewpointPackage.LABEL_STYLE_FEATURE_COUNT + 2;
 
     /**
-     * The feature id for the '<em><b>Border Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
@@ -2865,15 +2865,6 @@ public interface DiagramPackage extends EPackage {
     int FLAT_CONTAINER_STYLE__SHOW_ICON = CONTAINER_STYLE__SHOW_ICON;
 
     /**
-     * The feature id for the '<em><b>Label Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int FLAT_CONTAINER_STYLE__LABEL_COLOR = CONTAINER_STYLE__LABEL_COLOR;
-
-    /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -2881,6 +2872,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int FLAT_CONTAINER_STYLE__ICON_PATH = CONTAINER_STYLE__ICON_PATH;
+
+    /**
+     * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int FLAT_CONTAINER_STYLE__LABEL_COLOR = CONTAINER_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
@@ -2920,8 +2920,8 @@ public interface DiagramPackage extends EPackage {
     int FLAT_CONTAINER_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION = CONTAINER_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Border Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
@@ -2938,8 +2938,8 @@ public interface DiagramPackage extends EPackage {
     int FLAT_CONTAINER_STYLE__BACKGROUND_STYLE = CONTAINER_STYLE_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Background Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Background Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
@@ -2947,8 +2947,8 @@ public interface DiagramPackage extends EPackage {
     int FLAT_CONTAINER_STYLE__BACKGROUND_COLOR = CONTAINER_STYLE_FEATURE_COUNT + 1;
 
     /**
-     * The feature id for the '<em><b>Foreground Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Foreground Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
@@ -3013,15 +3013,6 @@ public interface DiagramPackage extends EPackage {
     int SHAPE_CONTAINER_STYLE__SHOW_ICON = CONTAINER_STYLE__SHOW_ICON;
 
     /**
-     * The feature id for the '<em><b>Label Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int SHAPE_CONTAINER_STYLE__LABEL_COLOR = CONTAINER_STYLE__LABEL_COLOR;
-
-    /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -3029,6 +3020,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int SHAPE_CONTAINER_STYLE__ICON_PATH = CONTAINER_STYLE__ICON_PATH;
+
+    /**
+     * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int SHAPE_CONTAINER_STYLE__LABEL_COLOR = CONTAINER_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
@@ -3068,8 +3068,8 @@ public interface DiagramPackage extends EPackage {
     int SHAPE_CONTAINER_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION = CONTAINER_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Border Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
@@ -3086,8 +3086,8 @@ public interface DiagramPackage extends EPackage {
     int SHAPE_CONTAINER_STYLE__SHAPE = CONTAINER_STYLE_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Background Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Background Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
@@ -3151,15 +3151,6 @@ public interface DiagramPackage extends EPackage {
     int SQUARE__SHOW_ICON = NODE_STYLE__SHOW_ICON;
 
     /**
-     * The feature id for the '<em><b>Label Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int SQUARE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
-
-    /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -3167,6 +3158,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int SQUARE__ICON_PATH = NODE_STYLE__ICON_PATH;
+
+    /**
+     * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int SQUARE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
@@ -3206,8 +3206,8 @@ public interface DiagramPackage extends EPackage {
     int SQUARE__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Border Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
@@ -3251,8 +3251,8 @@ public interface DiagramPackage extends EPackage {
     int SQUARE__HEIGHT = NODE_STYLE_FEATURE_COUNT + 1;
 
     /**
-     * The feature id for the '<em><b>Color</b></em>' containment reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
@@ -3316,15 +3316,6 @@ public interface DiagramPackage extends EPackage {
     int ELLIPSE__SHOW_ICON = NODE_STYLE__SHOW_ICON;
 
     /**
-     * The feature id for the '<em><b>Label Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int ELLIPSE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
-
-    /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -3332,6 +3323,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int ELLIPSE__ICON_PATH = NODE_STYLE__ICON_PATH;
+
+    /**
+     * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int ELLIPSE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
@@ -3371,8 +3371,8 @@ public interface DiagramPackage extends EPackage {
     int ELLIPSE__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Border Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
@@ -3416,8 +3416,8 @@ public interface DiagramPackage extends EPackage {
     int ELLIPSE__VERTICAL_DIAMETER = NODE_STYLE_FEATURE_COUNT + 1;
 
     /**
-     * The feature id for the '<em><b>Color</b></em>' containment reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
@@ -3481,15 +3481,6 @@ public interface DiagramPackage extends EPackage {
     int LOZENGE__SHOW_ICON = NODE_STYLE__SHOW_ICON;
 
     /**
-     * The feature id for the '<em><b>Label Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int LOZENGE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
-
-    /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -3497,6 +3488,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int LOZENGE__ICON_PATH = NODE_STYLE__ICON_PATH;
+
+    /**
+     * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int LOZENGE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
@@ -3536,8 +3536,8 @@ public interface DiagramPackage extends EPackage {
     int LOZENGE__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Border Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
@@ -3581,8 +3581,8 @@ public interface DiagramPackage extends EPackage {
     int LOZENGE__HEIGHT = NODE_STYLE_FEATURE_COUNT + 1;
 
     /**
-     * The feature id for the '<em><b>Color</b></em>' containment reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
@@ -3647,15 +3647,6 @@ public interface DiagramPackage extends EPackage {
     int BUNDLED_IMAGE__SHOW_ICON = NODE_STYLE__SHOW_ICON;
 
     /**
-     * The feature id for the '<em><b>Label Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int BUNDLED_IMAGE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
-
-    /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -3663,6 +3654,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int BUNDLED_IMAGE__ICON_PATH = NODE_STYLE__ICON_PATH;
+
+    /**
+     * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int BUNDLED_IMAGE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
@@ -3702,8 +3702,8 @@ public interface DiagramPackage extends EPackage {
     int BUNDLED_IMAGE__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Border Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
@@ -3738,8 +3738,8 @@ public interface DiagramPackage extends EPackage {
     int BUNDLED_IMAGE__SHAPE = NODE_STYLE_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Color</b></em>' containment reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
@@ -3804,15 +3804,6 @@ public interface DiagramPackage extends EPackage {
     int WORKSPACE_IMAGE__SHOW_ICON = NODE_STYLE__SHOW_ICON;
 
     /**
-     * The feature id for the '<em><b>Label Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int WORKSPACE_IMAGE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
-
-    /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -3820,6 +3811,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int WORKSPACE_IMAGE__ICON_PATH = NODE_STYLE__ICON_PATH;
+
+    /**
+     * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int WORKSPACE_IMAGE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
@@ -3859,8 +3859,8 @@ public interface DiagramPackage extends EPackage {
     int WORKSPACE_IMAGE__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Border Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
@@ -3952,15 +3952,6 @@ public interface DiagramPackage extends EPackage {
     int CUSTOM_STYLE__SHOW_ICON = NODE_STYLE__SHOW_ICON;
 
     /**
-     * The feature id for the '<em><b>Label Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int CUSTOM_STYLE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
-
-    /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -3968,6 +3959,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int CUSTOM_STYLE__ICON_PATH = NODE_STYLE__ICON_PATH;
+
+    /**
+     * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CUSTOM_STYLE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
@@ -4007,8 +4007,8 @@ public interface DiagramPackage extends EPackage {
     int CUSTOM_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Border Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
@@ -4120,22 +4120,13 @@ public interface DiagramPackage extends EPackage {
     int EDGE_STYLE__DESCRIPTION = ViewpointPackage.STYLE__DESCRIPTION;
 
     /**
-     * The feature id for the '<em><b>Stroke Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int EDGE_STYLE__STROKE_COLOR = ViewpointPackage.STYLE_FEATURE_COUNT + 0;
-
-    /**
      * The feature id for the '<em><b>Line Style</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int EDGE_STYLE__LINE_STYLE = ViewpointPackage.STYLE_FEATURE_COUNT + 1;
+    int EDGE_STYLE__LINE_STYLE = ViewpointPackage.STYLE_FEATURE_COUNT + 0;
 
     /**
      * The feature id for the '<em><b>Source Arrow</b></em>' attribute. <!--
@@ -4144,7 +4135,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_STYLE__SOURCE_ARROW = ViewpointPackage.STYLE_FEATURE_COUNT + 2;
+    int EDGE_STYLE__SOURCE_ARROW = ViewpointPackage.STYLE_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Target Arrow</b></em>' attribute. <!--
@@ -4153,7 +4144,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_STYLE__TARGET_ARROW = ViewpointPackage.STYLE_FEATURE_COUNT + 3;
+    int EDGE_STYLE__TARGET_ARROW = ViewpointPackage.STYLE_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Folding Style</b></em>' attribute. <!--
@@ -4162,7 +4153,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_STYLE__FOLDING_STYLE = ViewpointPackage.STYLE_FEATURE_COUNT + 4;
+    int EDGE_STYLE__FOLDING_STYLE = ViewpointPackage.STYLE_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Size</b></em>' attribute. <!--
@@ -4171,7 +4162,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_STYLE__SIZE = ViewpointPackage.STYLE_FEATURE_COUNT + 5;
+    int EDGE_STYLE__SIZE = ViewpointPackage.STYLE_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Routing Style</b></em>' attribute. <!--
@@ -4180,7 +4171,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_STYLE__ROUTING_STYLE = ViewpointPackage.STYLE_FEATURE_COUNT + 6;
+    int EDGE_STYLE__ROUTING_STYLE = ViewpointPackage.STYLE_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Begin Label Style</b></em>' containment
@@ -4189,7 +4180,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_STYLE__BEGIN_LABEL_STYLE = ViewpointPackage.STYLE_FEATURE_COUNT + 7;
+    int EDGE_STYLE__BEGIN_LABEL_STYLE = ViewpointPackage.STYLE_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Center Label Style</b></em>' containment
@@ -4198,7 +4189,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_STYLE__CENTER_LABEL_STYLE = ViewpointPackage.STYLE_FEATURE_COUNT + 8;
+    int EDGE_STYLE__CENTER_LABEL_STYLE = ViewpointPackage.STYLE_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>End Label Style</b></em>' containment
@@ -4207,7 +4198,7 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_STYLE__END_LABEL_STYLE = ViewpointPackage.STYLE_FEATURE_COUNT + 9;
+    int EDGE_STYLE__END_LABEL_STYLE = ViewpointPackage.STYLE_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Centered</b></em>' attribute. <!--
@@ -4216,7 +4207,16 @@ public interface DiagramPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int EDGE_STYLE__CENTERED = ViewpointPackage.STYLE_FEATURE_COUNT + 10;
+    int EDGE_STYLE__CENTERED = ViewpointPackage.STYLE_FEATURE_COUNT + 9;
+
+    /**
+     * The feature id for the '<em><b>Stroke Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int EDGE_STYLE__STROKE_COLOR = ViewpointPackage.STYLE_FEATURE_COUNT + 10;
 
     /**
      * The number of structural features of the '<em>Edge Style</em>' class.
@@ -4276,15 +4276,6 @@ public interface DiagramPackage extends EPackage {
     int GAUGE_COMPOSITE_STYLE__SHOW_ICON = NODE_STYLE__SHOW_ICON;
 
     /**
-     * The feature id for the '<em><b>Label Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int GAUGE_COMPOSITE_STYLE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
-
-    /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -4292,6 +4283,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int GAUGE_COMPOSITE_STYLE__ICON_PATH = NODE_STYLE__ICON_PATH;
+
+    /**
+     * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int GAUGE_COMPOSITE_STYLE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
@@ -4331,8 +4331,8 @@ public interface DiagramPackage extends EPackage {
     int GAUGE_COMPOSITE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Border Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
@@ -4434,8 +4434,8 @@ public interface DiagramPackage extends EPackage {
     int BORDERED_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION = ViewpointPackage.STYLE_FEATURE_COUNT + 1;
 
     /**
-     * The feature id for the '<em><b>Border Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
@@ -4499,15 +4499,6 @@ public interface DiagramPackage extends EPackage {
     int NOTE__SHOW_ICON = NODE_STYLE__SHOW_ICON;
 
     /**
-     * The feature id for the '<em><b>Label Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int NOTE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
-
-    /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -4515,6 +4506,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int NOTE__ICON_PATH = NODE_STYLE__ICON_PATH;
+
+    /**
+     * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int NOTE__LABEL_COLOR = NODE_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
@@ -4554,8 +4554,8 @@ public interface DiagramPackage extends EPackage {
     int NOTE__BORDER_SIZE_COMPUTATION_EXPRESSION = NODE_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION;
 
     /**
-     * The feature id for the '<em><b>Border Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Border Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
@@ -4581,8 +4581,8 @@ public interface DiagramPackage extends EPackage {
     int NOTE__HIDE_LABEL_BY_DEFAULT = NODE_STYLE__HIDE_LABEL_BY_DEFAULT;
 
     /**
-     * The feature id for the '<em><b>Color</b></em>' containment reference.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
@@ -4796,15 +4796,6 @@ public interface DiagramPackage extends EPackage {
     int BEGIN_LABEL_STYLE__SHOW_ICON = ViewpointPackage.BASIC_LABEL_STYLE__SHOW_ICON;
 
     /**
-     * The feature id for the '<em><b>Label Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int BEGIN_LABEL_STYLE__LABEL_COLOR = ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR;
-
-    /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -4812,6 +4803,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int BEGIN_LABEL_STYLE__ICON_PATH = ViewpointPackage.BASIC_LABEL_STYLE__ICON_PATH;
+
+    /**
+     * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int BEGIN_LABEL_STYLE__LABEL_COLOR = ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR;
 
     /**
      * The number of structural features of the '<em>Begin Label Style</em>'
@@ -4871,15 +4871,6 @@ public interface DiagramPackage extends EPackage {
     int CENTER_LABEL_STYLE__SHOW_ICON = ViewpointPackage.BASIC_LABEL_STYLE__SHOW_ICON;
 
     /**
-     * The feature id for the '<em><b>Label Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int CENTER_LABEL_STYLE__LABEL_COLOR = ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR;
-
-    /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -4887,6 +4878,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int CENTER_LABEL_STYLE__ICON_PATH = ViewpointPackage.BASIC_LABEL_STYLE__ICON_PATH;
+
+    /**
+     * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int CENTER_LABEL_STYLE__LABEL_COLOR = ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR;
 
     /**
      * The number of structural features of the '<em>Center Label Style</em>'
@@ -4946,15 +4946,6 @@ public interface DiagramPackage extends EPackage {
     int END_LABEL_STYLE__SHOW_ICON = ViewpointPackage.BASIC_LABEL_STYLE__SHOW_ICON;
 
     /**
-     * The feature id for the '<em><b>Label Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int END_LABEL_STYLE__LABEL_COLOR = ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR;
-
-    /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -4962,6 +4953,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int END_LABEL_STYLE__ICON_PATH = ViewpointPackage.BASIC_LABEL_STYLE__ICON_PATH;
+
+    /**
+     * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int END_LABEL_STYLE__LABEL_COLOR = ViewpointPackage.BASIC_LABEL_STYLE__LABEL_COLOR;
 
     /**
      * The number of structural features of the '<em>End Label Style</em>'
@@ -5001,15 +5001,6 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int BRACKET_EDGE_STYLE__DESCRIPTION = EDGE_STYLE__DESCRIPTION;
-
-    /**
-     * The feature id for the '<em><b>Stroke Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int BRACKET_EDGE_STYLE__STROKE_COLOR = EDGE_STYLE__STROKE_COLOR;
 
     /**
      * The feature id for the '<em><b>Line Style</b></em>' attribute. <!--
@@ -5100,6 +5091,15 @@ public interface DiagramPackage extends EPackage {
      * @ordered
      */
     int BRACKET_EDGE_STYLE__CENTERED = EDGE_STYLE__CENTERED;
+
+    /**
+     * The feature id for the '<em><b>Stroke Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int BRACKET_EDGE_STYLE__STROKE_COLOR = EDGE_STYLE__STROKE_COLOR;
 
     /**
      * The number of structural features of the '<em>Bracket Edge Style</em>'
@@ -6573,7 +6573,7 @@ public interface DiagramPackage extends EPackage {
      * @see #getDot()
      * @generated
      */
-    EReference getDot_BackgroundColor();
+    EAttribute getDot_BackgroundColor();
 
     /**
      * Returns the meta object for the attribute '
@@ -6660,7 +6660,7 @@ public interface DiagramPackage extends EPackage {
      * @see #getGaugeSection()
      * @generated
      */
-    EReference getGaugeSection_BackgroundColor();
+    EAttribute getGaugeSection_BackgroundColor();
 
     /**
      * Returns the meta object for the containment reference '
@@ -6674,7 +6674,7 @@ public interface DiagramPackage extends EPackage {
      * @see #getGaugeSection()
      * @generated
      */
-    EReference getGaugeSection_ForegroundColor();
+    EAttribute getGaugeSection_ForegroundColor();
 
     /**
      * Returns the meta object for class '
@@ -6724,7 +6724,7 @@ public interface DiagramPackage extends EPackage {
      * @see #getFlatContainerStyle()
      * @generated
      */
-    EReference getFlatContainerStyle_BackgroundColor();
+    EAttribute getFlatContainerStyle_BackgroundColor();
 
     /**
      * Returns the meta object for the containment reference '
@@ -6738,7 +6738,7 @@ public interface DiagramPackage extends EPackage {
      * @see #getFlatContainerStyle()
      * @generated
      */
-    EReference getFlatContainerStyle_ForegroundColor();
+    EAttribute getFlatContainerStyle_ForegroundColor();
 
     /**
      * Returns the meta object for class '
@@ -6776,7 +6776,7 @@ public interface DiagramPackage extends EPackage {
      * @see #getShapeContainerStyle()
      * @generated
      */
-    EReference getShapeContainerStyle_BackgroundColor();
+    EAttribute getShapeContainerStyle_BackgroundColor();
 
     /**
      * Returns the meta object for class '
@@ -6823,7 +6823,7 @@ public interface DiagramPackage extends EPackage {
      * @see #getSquare()
      * @generated
      */
-    EReference getSquare_Color();
+    EAttribute getSquare_Color();
 
     /**
      * Returns the meta object for class '
@@ -6872,7 +6872,7 @@ public interface DiagramPackage extends EPackage {
      * @see #getEllipse()
      * @generated
      */
-    EReference getEllipse_Color();
+    EAttribute getEllipse_Color();
 
     /**
      * Returns the meta object for class '
@@ -6919,7 +6919,7 @@ public interface DiagramPackage extends EPackage {
      * @see #getLozenge()
      * @generated
      */
-    EReference getLozenge_Color();
+    EAttribute getLozenge_Color();
 
     /**
      * Returns the meta object for class '
@@ -6945,16 +6945,16 @@ public interface DiagramPackage extends EPackage {
     EAttribute getBundledImage_Shape();
 
     /**
-     * Returns the meta object for the containment reference '
+     * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.BundledImage#getColor <em>Color</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @return the meta object for the containment reference '<em>Color</em>'.
+     * @return the meta object for the attribute '<em>Color</em>'.
      * @see org.eclipse.sirius.diagram.BundledImage#getColor()
      * @see #getBundledImage()
      * @generated
      */
-    EReference getBundledImage_Color();
+    EAttribute getBundledImage_Color();
 
     /**
      * Returns the meta object for class '
@@ -7049,17 +7049,16 @@ public interface DiagramPackage extends EPackage {
     EClass getEdgeStyle();
 
     /**
-     * Returns the meta object for the containment reference '
+     * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.EdgeStyle#getStrokeColor
      * <em>Stroke Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @return the meta object for the containment reference '
-     *         <em>Stroke Color</em>'.
+     * @return the meta object for the attribute '<em>Stroke Color</em>'.
      * @see org.eclipse.sirius.diagram.EdgeStyle#getStrokeColor()
      * @see #getEdgeStyle()
      * @generated
      */
-    EReference getEdgeStyle_StrokeColor();
+    EAttribute getEdgeStyle_StrokeColor();
 
     /**
      * Returns the meta object for the attribute '
@@ -7261,17 +7260,16 @@ public interface DiagramPackage extends EPackage {
     EAttribute getBorderedStyle_BorderSizeComputationExpression();
 
     /**
-     * Returns the meta object for the containment reference '
+     * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.diagram.BorderedStyle#getBorderColor
      * <em>Border Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @return the meta object for the containment reference '
-     *         <em>Border Color</em>'.
+     * @return the meta object for the attribute '<em>Border Color</em>'.
      * @see org.eclipse.sirius.diagram.BorderedStyle#getBorderColor()
      * @see #getBorderedStyle()
      * @generated
      */
-    EReference getBorderedStyle_BorderColor();
+    EAttribute getBorderedStyle_BorderColor();
 
     /**
      * Returns the meta object for class '
@@ -7294,7 +7292,7 @@ public interface DiagramPackage extends EPackage {
      * @see #getNote()
      * @generated
      */
-    EReference getNote_Color();
+    EAttribute getNote_Color();
 
     /**
      * Returns the meta object for class '
@@ -8602,12 +8600,11 @@ public interface DiagramPackage extends EPackage {
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @generated
          */
-        EReference DOT__BACKGROUND_COLOR = eINSTANCE.getDot_BackgroundColor();
+        EAttribute DOT__BACKGROUND_COLOR = eINSTANCE.getDot_BackgroundColor();
 
         /**
          * The meta object literal for the '
@@ -8664,21 +8661,19 @@ public interface DiagramPackage extends EPackage {
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @generated
          */
-        EReference GAUGE_SECTION__BACKGROUND_COLOR = eINSTANCE.getGaugeSection_BackgroundColor();
+        EAttribute GAUGE_SECTION__BACKGROUND_COLOR = eINSTANCE.getGaugeSection_BackgroundColor();
 
         /**
          * The meta object literal for the '<em><b>Foreground Color</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @generated
          */
-        EReference GAUGE_SECTION__FOREGROUND_COLOR = eINSTANCE.getGaugeSection_ForegroundColor();
+        EAttribute GAUGE_SECTION__FOREGROUND_COLOR = eINSTANCE.getGaugeSection_ForegroundColor();
 
         /**
          * The meta object literal for the '
@@ -8714,21 +8709,19 @@ public interface DiagramPackage extends EPackage {
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @generated
          */
-        EReference FLAT_CONTAINER_STYLE__BACKGROUND_COLOR = eINSTANCE.getFlatContainerStyle_BackgroundColor();
+        EAttribute FLAT_CONTAINER_STYLE__BACKGROUND_COLOR = eINSTANCE.getFlatContainerStyle_BackgroundColor();
 
         /**
          * The meta object literal for the '<em><b>Foreground Color</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @generated
          */
-        EReference FLAT_CONTAINER_STYLE__FOREGROUND_COLOR = eINSTANCE.getFlatContainerStyle_ForegroundColor();
+        EAttribute FLAT_CONTAINER_STYLE__FOREGROUND_COLOR = eINSTANCE.getFlatContainerStyle_ForegroundColor();
 
         /**
          * The meta object literal for the '
@@ -8752,12 +8745,11 @@ public interface DiagramPackage extends EPackage {
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @generated
          */
-        EReference SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR = eINSTANCE.getShapeContainerStyle_BackgroundColor();
+        EAttribute SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR = eINSTANCE.getShapeContainerStyle_BackgroundColor();
 
         /**
          * The meta object literal for the '
@@ -8787,12 +8779,12 @@ public interface DiagramPackage extends EPackage {
         EAttribute SQUARE__HEIGHT = eINSTANCE.getSquare_Height();
 
         /**
-         * The meta object literal for the '<em><b>Color</b></em>' containment
-         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Color</b></em>' attribute
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @generated
          */
-        EReference SQUARE__COLOR = eINSTANCE.getSquare_Color();
+        EAttribute SQUARE__COLOR = eINSTANCE.getSquare_Color();
 
         /**
          * The meta object literal for the '
@@ -8822,12 +8814,12 @@ public interface DiagramPackage extends EPackage {
         EAttribute ELLIPSE__VERTICAL_DIAMETER = eINSTANCE.getEllipse_VerticalDiameter();
 
         /**
-         * The meta object literal for the '<em><b>Color</b></em>' containment
-         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Color</b></em>' attribute
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @generated
          */
-        EReference ELLIPSE__COLOR = eINSTANCE.getEllipse_Color();
+        EAttribute ELLIPSE__COLOR = eINSTANCE.getEllipse_Color();
 
         /**
          * The meta object literal for the '
@@ -8857,12 +8849,12 @@ public interface DiagramPackage extends EPackage {
         EAttribute LOZENGE__HEIGHT = eINSTANCE.getLozenge_Height();
 
         /**
-         * The meta object literal for the '<em><b>Color</b></em>' containment
-         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Color</b></em>' attribute
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @generated
          */
-        EReference LOZENGE__COLOR = eINSTANCE.getLozenge_Color();
+        EAttribute LOZENGE__COLOR = eINSTANCE.getLozenge_Color();
 
         /**
          * The meta object literal for the '
@@ -8885,12 +8877,12 @@ public interface DiagramPackage extends EPackage {
         EAttribute BUNDLED_IMAGE__SHAPE = eINSTANCE.getBundledImage_Shape();
 
         /**
-         * The meta object literal for the '<em><b>Color</b></em>' containment
-         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Color</b></em>' attribute
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @generated
          */
-        EReference BUNDLED_IMAGE__COLOR = eINSTANCE.getBundledImage_Color();
+        EAttribute BUNDLED_IMAGE__COLOR = eINSTANCE.getBundledImage_Color();
 
         /**
          * The meta object literal for the '
@@ -8974,12 +8966,11 @@ public interface DiagramPackage extends EPackage {
 
         /**
          * The meta object literal for the '<em><b>Stroke Color</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @generated
          */
-        EReference EDGE_STYLE__STROKE_COLOR = eINSTANCE.getEdgeStyle_StrokeColor();
+        EAttribute EDGE_STYLE__STROKE_COLOR = eINSTANCE.getEdgeStyle_StrokeColor();
 
         /**
          * The meta object literal for the '<em><b>Line Style</b></em>'
@@ -9124,12 +9115,11 @@ public interface DiagramPackage extends EPackage {
 
         /**
          * The meta object literal for the '<em><b>Border Color</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @generated
          */
-        EReference BORDERED_STYLE__BORDER_COLOR = eINSTANCE.getBorderedStyle_BorderColor();
+        EAttribute BORDERED_STYLE__BORDER_COLOR = eINSTANCE.getBorderedStyle_BorderColor();
 
         /**
          * The meta object literal for the '
@@ -9143,12 +9133,12 @@ public interface DiagramPackage extends EPackage {
         EClass NOTE = eINSTANCE.getNote();
 
         /**
-         * The meta object literal for the '<em><b>Color</b></em>' containment
-         * reference feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+         * The meta object literal for the '<em><b>Color</b></em>' attribute
+         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @generated
          */
-        EReference NOTE__COLOR = eINSTANCE.getNote_Color();
+        EAttribute NOTE__COLOR = eINSTANCE.getNote_Color();
 
         /**
          * The meta object literal for the '

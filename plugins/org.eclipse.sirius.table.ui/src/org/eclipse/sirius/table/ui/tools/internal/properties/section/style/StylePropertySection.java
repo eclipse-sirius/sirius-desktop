@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,15 +14,14 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.ui.provider.PropertySource;
-import org.eclipse.ui.views.properties.IPropertySource;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.table.business.api.query.DCellQuery;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DTableElementStyle;
 import org.eclipse.sirius.table.ui.tools.internal.properties.propertysource.StyleCompositeEObjectpropertySource;
 import org.eclipse.sirius.table.ui.tools.internal.properties.section.common.AbstractDTablePropertySection;
-import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.ui.views.properties.IPropertySource;
 
 /**
  * Properties for the semantic model.
@@ -73,7 +72,7 @@ public class StylePropertySection extends AbstractDTablePropertySection {
         DTableElementStyle foregroundStyleToApply = cellQuery.getForegroundStyleToApply().get();
         DTableElementStyle backgroundStyleToApply = cellQuery.getBackgroundStyleToApply().get();
         final ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(foregroundStyleToApply);
-        if (!(accessor.isExtension(foregroundStyleToApply))) {
+        if (foregroundStyleToApply != null && !(accessor.isExtension(foregroundStyleToApply))) {
             final AdapterFactory af = getAdapterFactory(foregroundStyleToApply);
             if (af != null) {
                 final IItemPropertySource ips = (IItemPropertySource) af.adapt(foregroundStyleToApply, IItemPropertySource.class);
@@ -82,26 +81,14 @@ public class StylePropertySection extends AbstractDTablePropertySection {
                     propertySource.addPropertySource(foregroundStyleToApply, targetPropertySource);
                 }
             }
-            final RGBValues backgroundColor = backgroundStyleToApply.getBackgroundColor();
-            if (backgroundColor != null) {
-                final AdapterFactory afBg = getAdapterFactory(backgroundColor);
-                if (afBg != null) {
-                    final IItemPropertySource ips = (IItemPropertySource) afBg.adapt(backgroundColor, IItemPropertySource.class);
-                    if (ips != null) {
-                        final IPropertySource targetPropertySource = new PropertySource(backgroundColor, ips);
-                        propertySource.addPropertySource(backgroundColor, targetPropertySource);
-                    }
-                }
-            }
-            final RGBValues foregroundColor = foregroundStyleToApply.getForegroundColor();
-            if (foregroundColor != null) {
-                final AdapterFactory afFg = getAdapterFactory(foregroundColor);
-                if (afFg != null) {
-                    final IItemPropertySource ips = (IItemPropertySource) afFg.adapt(foregroundColor, IItemPropertySource.class);
-                    if (ips != null) {
-                        final IPropertySource targetPropertySource = new PropertySource(foregroundColor, ips);
-                        propertySource.addPropertySource(foregroundColor, targetPropertySource);
-                    }
+        }
+        if (backgroundStyleToApply != null && backgroundStyleToApply != foregroundStyleToApply && !(accessor.isExtension(backgroundStyleToApply))) {
+            final AdapterFactory afBg = getAdapterFactory(backgroundStyleToApply);
+            if (afBg != null) {
+                final IItemPropertySource ips = (IItemPropertySource) afBg.adapt(backgroundStyleToApply, IItemPropertySource.class);
+                if (ips != null) {
+                    final IPropertySource targetPropertySource = new PropertySource(backgroundStyleToApply, ips);
+                    propertySource.addPropertySource(backgroundStyleToApply, targetPropertySource);
                 }
             }
         }

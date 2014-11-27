@@ -505,12 +505,6 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="The dot style."/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
-        containment="true">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The background color."/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeSizeComputationExpression"
         eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"
         defaultValueLiteral="2">
@@ -521,6 +515,12 @@
         <details key="returnType" value="an integer."/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="backgroundColor" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
+        defaultValueLiteral="136,136,136">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The background color."/>
+      </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GaugeSection" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//Customizable">
@@ -547,14 +547,14 @@
         <details key="documentation" value="The label of the gauge."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
-        containment="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="backgroundColor" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
+        defaultValueLiteral="0,0,0">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The background color."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="foregroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
-        containment="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="foregroundColor" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
+        defaultValueLiteral="138,226,52">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The foreground color."/>
       </eAnnotations>
@@ -572,14 +572,14 @@
         <details key="documentation" value="The background style."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
-        containment="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="backgroundColor" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
+        defaultValueLiteral="255,255,255">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The background color."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="foregroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
-        containment="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="foregroundColor" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
+        defaultValueLiteral="209,209,209">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The foreground color."/>
       </eAnnotations>
@@ -587,9 +587,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ShapeContainerStyle" eSuperTypes="#//ContainerStyle">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="shape" lowerBound="1" eType="#//ContainerShape"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" lowerBound="1"
-        eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="backgroundColor" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
+        defaultValueLiteral="209,209,209">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The background color."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ContainerShape">
     <eLiterals name="parallelogram"/>
@@ -630,8 +633,8 @@
         <details key="documentation" value="The height of the square."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="color" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
+        defaultValueLiteral="136,136,136"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Ellipse" eSuperTypes="#//NodeStyle">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -649,8 +652,8 @@
         <details key="documentation" value="The vertical diameter of the ellipse. (Semiminor axis)"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="color" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
+        defaultValueLiteral="136,136,136"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Lozenge" eSuperTypes="#//NodeStyle">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -668,8 +671,8 @@
         <details key="documentation" value="The height of the lozenge."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="color" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
+        defaultValueLiteral="136,136,136"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BundledImage" eSuperTypes="#//NodeStyle">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -680,8 +683,8 @@
         <details key="documentation" value="The shape to use."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="color" lowerBound="1" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
+        defaultValueLiteral="0,0,0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WorkspaceImage" eSuperTypes="#//NodeStyle #//ContainerStyle">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -728,12 +731,6 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="The style of an edge."/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="strokeColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
-        containment="true">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="The color of the edge."/>
-      </eAnnotations>
-    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lineStyle" eType="#//LineStyle">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The style of the line."/>
@@ -773,6 +770,12 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="centered" lowerBound="1"
         eType="#//description/CenteringStyle" defaultValueLiteral="None"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="strokeColor" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
+        defaultValueLiteral="136,136,136">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The color of the edge."/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="LineStyle">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -888,12 +891,12 @@
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="borderColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="borderColor" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
+        defaultValueLiteral="0,0,0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Note" eSuperTypes="#//NodeStyle">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="color" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="color" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
+        defaultValueLiteral="252,233,79"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FilterVariableHistory">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedValues" upperBound="-1"

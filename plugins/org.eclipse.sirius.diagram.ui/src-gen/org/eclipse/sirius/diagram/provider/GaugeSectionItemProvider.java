@@ -26,6 +26,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.GaugeSection;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.provider.CustomizableItemProvider;
 
 /**
@@ -170,29 +171,11 @@ public class GaugeSectionItemProvider extends CustomizableItemProvider {
     protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
-        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.GAUGE_SECTION__BACKGROUND_COLOR, ViewpointFactory.eINSTANCE.createRGBValues()));
+        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.GAUGE_SECTION__BACKGROUND_COLOR,
+                ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.Literals.RGB_VALUES, "0,0,0")));
 
-        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.GAUGE_SECTION__FOREGROUND_COLOR, ViewpointFactory.eINSTANCE.createRGBValues()));
-    }
-
-    /**
-     * This returns the label text for
-     * {@link org.eclipse.emf.edit.command.CreateChildCommand}. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-        Object childFeature = feature;
-        Object childObject = child;
-
-        boolean qualify = childFeature == DiagramPackage.Literals.GAUGE_SECTION__BACKGROUND_COLOR || childFeature == DiagramPackage.Literals.GAUGE_SECTION__FOREGROUND_COLOR;
-
-        if (qualify) {
-            return getString("_UI_CreateChild_text2", new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-        }
-        return super.getCreateChildText(owner, feature, child, selection);
+        newChildDescriptors.add(createChildParameter(DiagramPackage.Literals.GAUGE_SECTION__FOREGROUND_COLOR,
+                ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.Literals.RGB_VALUES, "138,226,52")));
     }
 
     /**

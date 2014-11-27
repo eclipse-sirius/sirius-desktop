@@ -575,31 +575,13 @@ public interface TablePackage extends EPackage {
     int DTABLE_ELEMENT_STYLE__LABEL_FORMAT = 1;
 
     /**
-     * The feature id for the '<em><b>Foreground Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR = 2;
-
-    /**
-     * The feature id for the '<em><b>Background Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR = 3;
-
-    /**
      * The feature id for the '<em><b>Default Foreground Style</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int DTABLE_ELEMENT_STYLE__DEFAULT_FOREGROUND_STYLE = 4;
+    int DTABLE_ELEMENT_STYLE__DEFAULT_FOREGROUND_STYLE = 2;
 
     /**
      * The feature id for the '<em><b>Default Background Style</b></em>'
@@ -608,7 +590,25 @@ public interface TablePackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DTABLE_ELEMENT_STYLE__DEFAULT_BACKGROUND_STYLE = 5;
+    int DTABLE_ELEMENT_STYLE__DEFAULT_BACKGROUND_STYLE = 3;
+
+    /**
+     * The feature id for the '<em><b>Foreground Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR = 4;
+
+    /**
+     * The feature id for the '<em><b>Background Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR = 5;
 
     /**
      * The number of structural features of the '<em>DTable Element Style</em>'
@@ -650,24 +650,6 @@ public interface TablePackage extends EPackage {
     int DCELL_STYLE__LABEL_FORMAT = DTABLE_ELEMENT_STYLE__LABEL_FORMAT;
 
     /**
-     * The feature id for the '<em><b>Foreground Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DCELL_STYLE__FOREGROUND_COLOR = DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR;
-
-    /**
-     * The feature id for the '<em><b>Background Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DCELL_STYLE__BACKGROUND_COLOR = DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR;
-
-    /**
      * The feature id for the '<em><b>Default Foreground Style</b></em>'
      * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -684,6 +666,24 @@ public interface TablePackage extends EPackage {
      * @ordered
      */
     int DCELL_STYLE__DEFAULT_BACKGROUND_STYLE = DTABLE_ELEMENT_STYLE__DEFAULT_BACKGROUND_STYLE;
+
+    /**
+     * The feature id for the '<em><b>Foreground Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DCELL_STYLE__FOREGROUND_COLOR = DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR;
+
+    /**
+     * The feature id for the '<em><b>Background Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int DCELL_STYLE__BACKGROUND_COLOR = DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR;
 
     /**
      * The feature id for the '<em><b>Foreground Style Origin</b></em>'
@@ -1675,7 +1675,7 @@ public interface TablePackage extends EPackage {
      * @see #getDTableElementStyle()
      * @generated
      */
-    EReference getDTableElementStyle_ForegroundColor();
+    EAttribute getDTableElementStyle_ForegroundColor();
 
     /**
      * Returns the meta object for the containment reference '
@@ -1689,7 +1689,7 @@ public interface TablePackage extends EPackage {
      * @see #getDTableElementStyle()
      * @generated
      */
-    EReference getDTableElementStyle_BackgroundColor();
+    EAttribute getDTableElementStyle_BackgroundColor();
 
     /**
      * Returns the meta object for the attribute '
@@ -2148,21 +2148,19 @@ public interface TablePackage extends EPackage {
 
         /**
          * The meta object literal for the '<em><b>Foreground Color</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @generated
          */
-        EReference DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR = eINSTANCE.getDTableElementStyle_ForegroundColor();
+        EAttribute DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR = eINSTANCE.getDTableElementStyle_ForegroundColor();
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @generated
          */
-        EReference DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR = eINSTANCE.getDTableElementStyle_BackgroundColor();
+        EAttribute DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR = eINSTANCE.getDTableElementStyle_BackgroundColor();
 
         /**
          * The meta object literal for the '

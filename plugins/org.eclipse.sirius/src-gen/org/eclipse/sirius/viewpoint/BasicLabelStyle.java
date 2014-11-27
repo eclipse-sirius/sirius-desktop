@@ -26,10 +26,10 @@ package org.eclipse.sirius.viewpoint;
  * Label Format</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.BasicLabelStyle#isShowIcon <em>Show
  * Icon</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getLabelColor <em>
- * Label Color</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getIconPath <em>Icon
  * Path</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getLabelColor <em>
+ * Label Color</em>}</li>
  * </ul>
  * </p>
  *
@@ -123,18 +123,18 @@ public interface BasicLabelStyle extends Customizable {
     void setShowIcon(boolean value);
 
     /**
-     * Returns the value of the '<em><b>Label Color</b></em>' containment
-     * reference. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Label Color</b></em>' attribute. <!--
+     * begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Label Color</em>' containment reference isn't
      * clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      * 
-     * @return the value of the '<em>Label Color</em>' containment reference.
+     * @return the value of the '<em>Label Color</em>' attribute.
      * @see #setLabelColor(RGBValues)
      * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getBasicLabelStyle_LabelColor()
-     * @model containment="true" resolveProxies="true"
+     * @model dataType="org.eclipse.sirius.viewpoint.RGBValues"
      * @generated
      */
     RGBValues getLabelColor();
@@ -142,12 +142,11 @@ public interface BasicLabelStyle extends Customizable {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getLabelColor
-     * <em>Label Color</em>}' containment reference. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <em>Label Color</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @param value
-     *            the new value of the '<em>Label Color</em>' containment
-     *            reference.
+     *            the new value of the '<em>Label Color</em>' attribute.
      * @see #getLabelColor()
      * @generated
      */

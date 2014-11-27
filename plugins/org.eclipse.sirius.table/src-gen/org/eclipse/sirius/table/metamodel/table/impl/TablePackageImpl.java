@@ -600,25 +600,7 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
-    public EReference getDTableElementStyle_ForegroundColor() {
-        return (EReference) dTableElementStyleEClass.getEStructuralFeatures().get(2);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EReference getDTableElementStyle_BackgroundColor() {
-        return (EReference) dTableElementStyleEClass.getEStructuralFeatures().get(3);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public EAttribute getDTableElementStyle_DefaultForegroundStyle() {
+    public EAttribute getDTableElementStyle_ForegroundColor() {
         return (EAttribute) dTableElementStyleEClass.getEStructuralFeatures().get(4);
     }
 
@@ -627,8 +609,26 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
      * 
      * @generated
      */
-    public EAttribute getDTableElementStyle_DefaultBackgroundStyle() {
+    public EAttribute getDTableElementStyle_BackgroundColor() {
         return (EAttribute) dTableElementStyleEClass.getEStructuralFeatures().get(5);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EAttribute getDTableElementStyle_DefaultForegroundStyle() {
+        return (EAttribute) dTableElementStyleEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     */
+    public EAttribute getDTableElementStyle_DefaultBackgroundStyle() {
+        return (EAttribute) dTableElementStyleEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -715,10 +715,10 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
         dTableElementStyleEClass = createEClass(DTABLE_ELEMENT_STYLE);
         createEAttribute(dTableElementStyleEClass, DTABLE_ELEMENT_STYLE__LABEL_SIZE);
         createEAttribute(dTableElementStyleEClass, DTABLE_ELEMENT_STYLE__LABEL_FORMAT);
-        createEReference(dTableElementStyleEClass, DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR);
-        createEReference(dTableElementStyleEClass, DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR);
         createEAttribute(dTableElementStyleEClass, DTABLE_ELEMENT_STYLE__DEFAULT_FOREGROUND_STYLE);
         createEAttribute(dTableElementStyleEClass, DTABLE_ELEMENT_STYLE__DEFAULT_BACKGROUND_STYLE);
+        createEAttribute(dTableElementStyleEClass, DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR);
+        createEAttribute(dTableElementStyleEClass, DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR);
     }
 
     /**
@@ -878,13 +878,13 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
                 !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getDTableElementStyle_LabelFormat(), theViewpointPackage.getFontFormat(), "labelFormat", "normal", 0, 1, DTableElementStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDTableElementStyle_ForegroundColor(), theViewpointPackage.getRGBValues(), null, "foregroundColor", null, 0, 1, DTableElementStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEReference(getDTableElementStyle_BackgroundColor(), theViewpointPackage.getRGBValues(), null, "backgroundColor", null, 0, 1, DTableElementStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
-                IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getDTableElementStyle_DefaultForegroundStyle(), theEcorePackage.getEBoolean(), "defaultForegroundStyle", "false", 0, 1, DTableElementStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getDTableElementStyle_DefaultBackgroundStyle(), theEcorePackage.getEBoolean(), "defaultBackgroundStyle", "false", 0, 1, DTableElementStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
+                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getDTableElementStyle_ForegroundColor(), theViewpointPackage.getRGBValues(), "foregroundColor", "0,0,0", 0, 1, DTableElementStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
+                IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getDTableElementStyle_BackgroundColor(), theViewpointPackage.getRGBValues(), "backgroundColor", "255,255,255", 0, 1, DTableElementStyle.class, !IS_TRANSIENT, !IS_VOLATILE,
                 IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         // Create resource

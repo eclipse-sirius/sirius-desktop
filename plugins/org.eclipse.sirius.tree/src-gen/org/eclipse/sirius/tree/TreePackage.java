@@ -465,22 +465,22 @@ public interface TreePackage extends EPackage {
     int TREE_ITEM_STYLE__SHOW_ICON = ViewpointPackage.STYLE_FEATURE_COUNT + 2;
 
     /**
-     * The feature id for the '<em><b>Label Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int TREE_ITEM_STYLE__LABEL_COLOR = ViewpointPackage.STYLE_FEATURE_COUNT + 3;
-
-    /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int TREE_ITEM_STYLE__ICON_PATH = ViewpointPackage.STYLE_FEATURE_COUNT + 4;
+    int TREE_ITEM_STYLE__ICON_PATH = ViewpointPackage.STYLE_FEATURE_COUNT + 3;
+
+    /**
+     * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int TREE_ITEM_STYLE__LABEL_COLOR = ViewpointPackage.STYLE_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
@@ -492,8 +492,8 @@ public interface TreePackage extends EPackage {
     int TREE_ITEM_STYLE__LABEL_ALIGNMENT = ViewpointPackage.STYLE_FEATURE_COUNT + 5;
 
     /**
-     * The feature id for the '<em><b>Background Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The feature id for the '<em><b>Background Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
@@ -737,7 +737,7 @@ public interface TreePackage extends EPackage {
      * @see #getTreeItemStyle()
      * @generated
      */
-    EReference getTreeItemStyle_BackgroundColor();
+    EAttribute getTreeItemStyle_BackgroundColor();
 
     /**
      * Returns the meta object for class '
@@ -929,12 +929,11 @@ public interface TreePackage extends EPackage {
 
         /**
          * The meta object literal for the '<em><b>Background Color</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @generated
          */
-        EReference TREE_ITEM_STYLE__BACKGROUND_COLOR = eINSTANCE.getTreeItemStyle_BackgroundColor();
+        EAttribute TREE_ITEM_STYLE__BACKGROUND_COLOR = eINSTANCE.getTreeItemStyle_BackgroundColor();
 
         /**
          * The meta object literal for the '

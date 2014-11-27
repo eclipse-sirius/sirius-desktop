@@ -308,8 +308,8 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
      * 
      * @generated
      */
-    public EReference getTreeItemStyle_BackgroundColor() {
-        return (EReference) treeItemStyleEClass.getEStructuralFeatures().get(0);
+    public EAttribute getTreeItemStyle_BackgroundColor() {
+        return (EAttribute) treeItemStyleEClass.getEStructuralFeatures().get(0);
     }
 
     /**
@@ -371,7 +371,7 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
         createEReference(dTreeItemEClass, DTREE_ITEM__UPDATER);
 
         treeItemStyleEClass = createEClass(TREE_ITEM_STYLE);
-        createEReference(treeItemStyleEClass, TREE_ITEM_STYLE__BACKGROUND_COLOR);
+        createEAttribute(treeItemStyleEClass, TREE_ITEM_STYLE__BACKGROUND_COLOR);
 
         dTreeElementSynchronizerEClass = createEClass(DTREE_ELEMENT_SYNCHRONIZER);
     }
@@ -461,8 +461,8 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
                 IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
         initEClass(treeItemStyleEClass, TreeItemStyle.class, "TreeItemStyle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEReference(getTreeItemStyle_BackgroundColor(), theViewpointPackage.getRGBValues(), null, "backgroundColor", null, 0, 1, TreeItemStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getTreeItemStyle_BackgroundColor(), theViewpointPackage.getRGBValues(), "backgroundColor", "255,255,255", 0, 1, TreeItemStyle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+                !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(dTreeElementSynchronizerEClass, DTreeElementSynchronizer.class, "DTreeElementSynchronizer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

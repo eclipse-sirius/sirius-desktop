@@ -37,8 +37,8 @@
         volatile="true" transient="true" derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TreeItemStyle" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//Style ../../org.eclipse.sirius/model/viewpoint.ecore#//LabelStyle">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="backgroundColor" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
+        defaultValueLiteral="255,255,255"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DTreeElementSynchronizer">
     <eOperations name="refresh">

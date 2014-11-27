@@ -12,14 +12,14 @@
 package org.eclipse.sirius.diagram.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.sirius.diagram.BundledImage;
 import org.eclipse.sirius.diagram.BundledImageShape;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '
@@ -58,14 +58,24 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
     protected BundledImageShape shape = SHAPE_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getColor() <em>Color</em>}' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getColor() <em>Color</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see #getColor()
      * @generated
      * @ordered
      */
-    protected RGBValues color;
+    protected static final RGBValues COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "0,0,0");
+
+    /**
+     * The cached value of the '{@link #getColor() <em>Color</em>}' attribute.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #getColor()
+     * @generated
+     * @ordered
+     */
+    protected RGBValues color = COLOR_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -113,49 +123,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
      * @generated
      */
     public RGBValues getColor() {
-        if (color != null && color.eIsProxy()) {
-            InternalEObject oldColor = (InternalEObject) color;
-            color = (RGBValues) eResolveProxy(oldColor);
-            if (color != oldColor) {
-                InternalEObject newColor = (InternalEObject) color;
-                NotificationChain msgs = oldColor.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.BUNDLED_IMAGE__COLOR, null, null);
-                if (newColor.eInternalContainer() == null) {
-                    msgs = newColor.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.BUNDLED_IMAGE__COLOR, null, msgs);
-                }
-                if (msgs != null)
-                    msgs.dispatch();
-                if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.BUNDLED_IMAGE__COLOR, oldColor, color));
-            }
-        }
         return color;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public RGBValues basicGetColor() {
-        return color;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public NotificationChain basicSetColor(RGBValues newColor, NotificationChain msgs) {
-        RGBValues oldColor = color;
-        color = newColor;
-        if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DiagramPackage.BUNDLED_IMAGE__COLOR, oldColor, newColor);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
-        }
-        return msgs;
     }
 
     /**
@@ -164,31 +132,10 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
      * @generated
      */
     public void setColor(RGBValues newColor) {
-        if (newColor != color) {
-            NotificationChain msgs = null;
-            if (color != null)
-                msgs = ((InternalEObject) color).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.BUNDLED_IMAGE__COLOR, null, msgs);
-            if (newColor != null)
-                msgs = ((InternalEObject) newColor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.BUNDLED_IMAGE__COLOR, null, msgs);
-            msgs = basicSetColor(newColor, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.BUNDLED_IMAGE__COLOR, newColor, newColor));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
-    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-        switch (featureID) {
-        case DiagramPackage.BUNDLED_IMAGE__COLOR:
-            return basicSetColor(null, msgs);
-        }
-        return super.eInverseRemove(otherEnd, featureID, msgs);
+        RGBValues oldColor = color;
+        color = newColor;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.BUNDLED_IMAGE__COLOR, oldColor, color));
     }
 
     /**
@@ -202,9 +149,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
         case DiagramPackage.BUNDLED_IMAGE__SHAPE:
             return getShape();
         case DiagramPackage.BUNDLED_IMAGE__COLOR:
-            if (resolve)
-                return getColor();
-            return basicGetColor();
+            return getColor();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -239,7 +184,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
             setShape(SHAPE_EDEFAULT);
             return;
         case DiagramPackage.BUNDLED_IMAGE__COLOR:
-            setColor((RGBValues) null);
+            setColor(COLOR_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -256,7 +201,7 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
         case DiagramPackage.BUNDLED_IMAGE__SHAPE:
             return shape != SHAPE_EDEFAULT;
         case DiagramPackage.BUNDLED_IMAGE__COLOR:
-            return color != null;
+            return COLOR_EDEFAULT == null ? color != null : !COLOR_EDEFAULT.equals(color);
         }
         return super.eIsSet(featureID);
     }
@@ -274,6 +219,8 @@ public class BundledImageImpl extends NodeStyleImpl implements BundledImage {
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (shape: ");
         result.append(shape);
+        result.append(", color: ");
+        result.append(color);
         result.append(')');
         return result.toString();
     }

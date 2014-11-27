@@ -12,7 +12,6 @@
 package org.eclipse.sirius.diagram.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -22,6 +21,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.Style;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.sirius.viewpoint.impl.LabelStyleImpl;
@@ -100,14 +100,24 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
     protected String borderSizeComputationExpression = BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT;
 
     /**
-     * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}'
-     * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The default value of the '{@link #getBorderColor() <em>Border Color</em>}
+     * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @see #getBorderColor()
      * @generated
      * @ordered
      */
-    protected RGBValues borderColor;
+    protected static final RGBValues BORDER_COLOR_EDEFAULT = (RGBValues) ViewpointFactory.eINSTANCE.createFromString(ViewpointPackage.eINSTANCE.getRGBValues(), "0,0,0");
+
+    /**
+     * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}'
+     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @see #getBorderColor()
+     * @generated
+     * @ordered
+     */
+    protected RGBValues borderColor = BORDER_COLOR_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -215,49 +225,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
      * @generated
      */
     public RGBValues getBorderColor() {
-        if (borderColor != null && borderColor.eIsProxy()) {
-            InternalEObject oldBorderColor = (InternalEObject) borderColor;
-            borderColor = (RGBValues) eResolveProxy(oldBorderColor);
-            if (borderColor != oldBorderColor) {
-                InternalEObject newBorderColor = (InternalEObject) borderColor;
-                NotificationChain msgs = oldBorderColor.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.CONTAINER_STYLE__BORDER_COLOR, null, null);
-                if (newBorderColor.eInternalContainer() == null) {
-                    msgs = newBorderColor.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.CONTAINER_STYLE__BORDER_COLOR, null, msgs);
-                }
-                if (msgs != null)
-                    msgs.dispatch();
-                if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, DiagramPackage.CONTAINER_STYLE__BORDER_COLOR, oldBorderColor, borderColor));
-            }
-        }
         return borderColor;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public RGBValues basicGetBorderColor() {
-        return borderColor;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public NotificationChain basicSetBorderColor(RGBValues newBorderColor, NotificationChain msgs) {
-        RGBValues oldBorderColor = borderColor;
-        borderColor = newBorderColor;
-        if (eNotificationRequired()) {
-            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DiagramPackage.CONTAINER_STYLE__BORDER_COLOR, oldBorderColor, newBorderColor);
-            if (msgs == null)
-                msgs = notification;
-            else
-                msgs.add(notification);
-        }
-        return msgs;
     }
 
     /**
@@ -266,17 +234,10 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
      * @generated
      */
     public void setBorderColor(RGBValues newBorderColor) {
-        if (newBorderColor != borderColor) {
-            NotificationChain msgs = null;
-            if (borderColor != null)
-                msgs = ((InternalEObject) borderColor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.CONTAINER_STYLE__BORDER_COLOR, null, msgs);
-            if (newBorderColor != null)
-                msgs = ((InternalEObject) newBorderColor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DiagramPackage.CONTAINER_STYLE__BORDER_COLOR, null, msgs);
-            msgs = basicSetBorderColor(newBorderColor, msgs);
-            if (msgs != null)
-                msgs.dispatch();
-        } else if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.CONTAINER_STYLE__BORDER_COLOR, newBorderColor, newBorderColor));
+        RGBValues oldBorderColor = borderColor;
+        borderColor = newBorderColor;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.CONTAINER_STYLE__BORDER_COLOR, oldBorderColor, borderColor));
     }
 
     /**
@@ -296,20 +257,6 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
      * @generated
      */
     @Override
-    public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-        switch (featureID) {
-        case DiagramPackage.CONTAINER_STYLE__BORDER_COLOR:
-            return basicSetBorderColor(null, msgs);
-        }
-        return super.eInverseRemove(otherEnd, featureID, msgs);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case DiagramPackage.CONTAINER_STYLE__DESCRIPTION:
@@ -321,9 +268,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
         case DiagramPackage.CONTAINER_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION:
             return getBorderSizeComputationExpression();
         case DiagramPackage.CONTAINER_STYLE__BORDER_COLOR:
-            if (resolve)
-                return getBorderColor();
-            return basicGetBorderColor();
+            return getBorderColor();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -370,7 +315,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
             setBorderSizeComputationExpression(BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT);
             return;
         case DiagramPackage.CONTAINER_STYLE__BORDER_COLOR:
-            setBorderColor((RGBValues) null);
+            setBorderColor(BORDER_COLOR_EDEFAULT);
             return;
         }
         super.eUnset(featureID);
@@ -391,7 +336,7 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
         case DiagramPackage.CONTAINER_STYLE__BORDER_SIZE_COMPUTATION_EXPRESSION:
             return BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT == null ? borderSizeComputationExpression != null : !BORDER_SIZE_COMPUTATION_EXPRESSION_EDEFAULT.equals(borderSizeComputationExpression);
         case DiagramPackage.CONTAINER_STYLE__BORDER_COLOR:
-            return borderColor != null;
+            return BORDER_COLOR_EDEFAULT == null ? borderColor != null : !BORDER_COLOR_EDEFAULT.equals(borderColor);
         }
         return super.eIsSet(featureID);
     }
@@ -483,6 +428,8 @@ public abstract class ContainerStyleImpl extends LabelStyleImpl implements Conta
         result.append(borderSize);
         result.append(", borderSizeComputationExpression: ");
         result.append(borderSizeComputationExpression);
+        result.append(", borderColor: ");
+        result.append(borderColor);
         result.append(')');
         return result.toString();
     }

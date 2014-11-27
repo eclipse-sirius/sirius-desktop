@@ -39,7 +39,6 @@ import org.eclipse.sirius.tree.ui.tools.api.editor.DTreeEditor;
 import org.eclipse.sirius.ui.tools.internal.util.ItemSearcher;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.RGBValues;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Item;
@@ -244,11 +243,8 @@ public final class TreeUtils {
     public static void changeDTreeItemBackgroundColor(DTreeItem dTreeItem, RGBValues newBackgroundColor) {
         TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(dTreeItem);
         CommandStack commandStack = transactionalEditingDomain.getCommandStack();
-        Command changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, dTreeItem.getOwnedStyle(), ViewpointPackage.Literals.RGB_VALUES__BLUE, newBackgroundColor.getRed());
-        changeDTreeItemBackgroundColorCmd = changeDTreeItemBackgroundColorCmd.chain(SetCommand.create(transactionalEditingDomain, dTreeItem.getOwnedStyle(),
-                ViewpointPackage.Literals.RGB_VALUES__BLUE, newBackgroundColor.getGreen()));
-        changeDTreeItemBackgroundColorCmd = changeDTreeItemBackgroundColorCmd.chain(SetCommand.create(transactionalEditingDomain, dTreeItem.getOwnedStyle(),
-                ViewpointPackage.Literals.RGB_VALUES__BLUE, newBackgroundColor.getBlue()));
+        Command changeDTreeItemBackgroundColorCmd = SetCommand
+                .create(transactionalEditingDomain, dTreeItem.getOwnedStyle(), TreePackage.Literals.TREE_ITEM_STYLE__BACKGROUND_COLOR, newBackgroundColor);
         commandStack.execute(changeDTreeItemBackgroundColorCmd);
     }
 

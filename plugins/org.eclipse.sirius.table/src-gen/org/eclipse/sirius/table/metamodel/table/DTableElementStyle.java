@@ -28,17 +28,17 @@ import org.eclipse.sirius.viewpoint.RGBValues;
  * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getLabelFormat
  * <em>Label Format</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getForegroundColor
- * <em>Foreground Color</em>}</li>
- * <li>
- * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getBackgroundColor
- * <em>Background Color</em>}</li>
- * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#isDefaultForegroundStyle
  * <em>Default Foreground Style</em>}</li>
  * <li>
  * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#isDefaultBackgroundStyle
  * <em>Default Background Style</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getForegroundColor
+ * <em>Foreground Color</em>}</li>
+ * <li>
+ * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getBackgroundColor
+ * <em>Background Color</em>}</li>
  * </ul>
  * </p>
  *
@@ -105,19 +105,18 @@ public interface DTableElementStyle extends EObject {
     void setLabelFormat(FontFormat value);
 
     /**
-     * Returns the value of the '<em><b>Foreground Color</b></em>' containment
-     * reference. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Foreground Color</b></em>' attribute.
+     * The default value is <code>"0,0,0"</code>. <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Foreground Color</em>' containment reference
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      * 
-     * @return the value of the '<em>Foreground Color</em>' containment
-     *         reference.
+     * @return the value of the '<em>Foreground Color</em>' attribute.
      * @see #setForegroundColor(RGBValues)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTableElementStyle_ForegroundColor()
-     * @model containment="true"
+     * @model default="0,0,0" dataType="org.eclipse.sirius.viewpoint.RGBValues"
      * @generated
      */
     RGBValues getForegroundColor();
@@ -125,31 +124,30 @@ public interface DTableElementStyle extends EObject {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getForegroundColor
-     * <em>Foreground Color</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * <em>Foreground Color</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @param value
-     *            the new value of the '<em>Foreground Color</em>' containment
-     *            reference.
+     *            the new value of the '<em>Foreground Color</em>' attribute.
      * @see #getForegroundColor()
      * @generated
      */
     void setForegroundColor(RGBValues value);
 
     /**
-     * Returns the value of the '<em><b>Background Color</b></em>' containment
-     * reference. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Background Color</b></em>' attribute.
+     * The default value is <code>"255,255,255"</code>. <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Background Color</em>' containment reference
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      * 
-     * @return the value of the '<em>Background Color</em>' containment
-     *         reference.
+     * @return the value of the '<em>Background Color</em>' attribute.
      * @see #setBackgroundColor(RGBValues)
      * @see org.eclipse.sirius.table.metamodel.table.TablePackage#getDTableElementStyle_BackgroundColor()
-     * @model containment="true"
+     * @model default="255,255,255"
+     *        dataType="org.eclipse.sirius.viewpoint.RGBValues"
      * @generated
      */
     RGBValues getBackgroundColor();
@@ -157,12 +155,11 @@ public interface DTableElementStyle extends EObject {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.table.metamodel.table.DTableElementStyle#getBackgroundColor
-     * <em>Background Color</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @param value
-     *            the new value of the '<em>Background Color</em>' containment
-     *            reference.
+     *            the new value of the '<em>Background Color</em>' attribute.
      * @see #getBackgroundColor()
      * @generated
      */

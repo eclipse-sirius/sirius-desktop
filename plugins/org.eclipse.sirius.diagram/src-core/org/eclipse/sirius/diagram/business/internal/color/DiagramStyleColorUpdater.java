@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.business.internal.color;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -46,7 +47,7 @@ public class DiagramStyleColorUpdater extends AbstractColorUpdater {
      * A mapping between style description color features and style color
      * features.
      */
-    private BiMap<EReference, EReference> descToStyleForColorFeatures;
+    private BiMap<EReference, EAttribute> descToStyleForColorFeatures;
 
     /**
      * Create a new {@link DiagramStyleColorUpdater} .
@@ -55,7 +56,8 @@ public class DiagramStyleColorUpdater extends AbstractColorUpdater {
     public DiagramStyleColorUpdater() {
         descToStyleForColorFeatures = HashBiMap.create();
         descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getBorderedStyleDescription_BorderColor(), DiagramPackage.eINSTANCE.getBorderedStyle_BorderColor());
-        descToStyleForColorFeatures.put(org.eclipse.sirius.viewpoint.description.style.StylePackage.eINSTANCE.getBasicLabelStyleDescription_LabelColor(), ViewpointPackage.eINSTANCE.getBasicLabelStyle_LabelColor());
+        descToStyleForColorFeatures.put(org.eclipse.sirius.viewpoint.description.style.StylePackage.eINSTANCE.getBasicLabelStyleDescription_LabelColor(),
+                ViewpointPackage.eINSTANCE.getBasicLabelStyle_LabelColor());
         descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getBundledImageDescription_Color(), DiagramPackage.eINSTANCE.getBundledImage_Color());
         descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getDotDescription_BackgroundColor(), DiagramPackage.eINSTANCE.getDot_BackgroundColor());
         descToStyleForColorFeatures.put(StylePackage.eINSTANCE.getEdgeStyleDescription_StrokeColor(), DiagramPackage.eINSTANCE.getEdgeStyle_StrokeColor());
@@ -90,9 +92,9 @@ public class DiagramStyleColorUpdater extends AbstractColorUpdater {
     }
 
     private void updateColorReflectively(final EObject context, final Customizable style, final EObject description, Option<? extends Customizable> previousStyle) {
-        List<EReference> eAllReferences = getAllStyleReferences(style);
+        List<EAttribute> eAllReferences = getAllStyleReferences(style);
 
-        for (final EReference feature : eAllReferences) {
+        for (final EAttribute feature : eAllReferences) {
             if (descToStyleForColorFeatures.containsValue(feature) && description != null) {
                 if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(feature.getName())) {
                     EStructuralFeature eStructuralFeature = previousStyle.get().eClass().getEStructuralFeature(feature.getName());
@@ -112,17 +114,12 @@ public class DiagramStyleColorUpdater extends AbstractColorUpdater {
         }
     }
 
-    private void updateNotCustomFeatureReflectively(final EObject context, final Customizable style, final EObject description, final EReference feature) {
+    private void updateNotCustomFeatureReflectively(final EObject context, final Customizable style, final EObject description, final EAttribute feature) {
         // The feature is a color.
-        final Object originalValue = style.eGet(feature);
-        if (originalValue instanceof RGBValues || originalValue == null) {
-            final Object descValue = description.eGet(descToStyleForColorFeatures.inverse().get(feature));
-            if (descValue instanceof ColorDescription) {
-                final RGBValues newValues = getRGBValuesFromColorDescription(context, (ColorDescription) descValue);
-                if (!AbstractColorUpdater.areEquals((RGBValues) originalValue, newValues)) {
-                    style.eSet(feature, newValues);
-                }
-            }
+        final Object descValue = description.eGet(descToStyleForColorFeatures.inverse().get(feature));
+        if (descValue instanceof ColorDescription) {
+            final RGBValues newValues = getRGBValuesFromColorDescription(context, (ColorDescription) descValue);
+            style.eSet(feature, newValues);
         }
     }
 
@@ -130,32 +127,13 @@ public class DiagramStyleColorUpdater extends AbstractColorUpdater {
      * @param style
      * @param eAllReferences
      */
-    private List<EReference> getAllStyleReferences(final EObject style) {
-        List<EReference> eAllReferences = Lists.newArrayList();
-        EList<EReference> styleReferences = style.eClass().getEAllReferences();
+    private List<EAttribute> getAllStyleReferences(final EObject style) {
+        List<EAttribute> eAllReferences = Lists.newArrayList();
+        EList<EAttribute> styleReferences = style.eClass().getEAllAttributes();
         eAllReferences.addAll(styleReferences);
         return eAllReferences;
     }
 
-    /**
-     * Set all the default color values to a given style instance.
-     * 
-     * @param style
-     *            the style to set.
-     */
-    public void setDefaultValues(final Style style) {
-        List<EReference> eAllReferences = getAllStyleReferences(style);
-        for (final EReference feature : eAllReferences) {
-            if (descToStyleForColorFeatures.containsValue(feature)) {
-                //
-                // The feature is a color.
-                final Object originalValue = style.eGet(feature);
-                if (originalValue == null) {
-                    style.eSet(feature, createDefaultRGBValue());
-                }
-            }
-        }
-    }
 
     /**
      * Update the colors of a style instance using the specified description.

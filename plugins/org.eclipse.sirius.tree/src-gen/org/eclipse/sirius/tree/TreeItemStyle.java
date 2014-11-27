@@ -32,19 +32,19 @@ import org.eclipse.sirius.viewpoint.Style;
  */
 public interface TreeItemStyle extends Style, LabelStyle {
     /**
-     * Returns the value of the '<em><b>Background Color</b></em>' containment
-     * reference. <!-- begin-user-doc -->
+     * Returns the value of the '<em><b>Background Color</b></em>' attribute.
+     * The default value is <code>"255,255,255"</code>. <!-- begin-user-doc -->
      * <p>
      * If the meaning of the '<em>Background Color</em>' containment reference
      * isn't clear, there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
      * 
-     * @return the value of the '<em>Background Color</em>' containment
-     *         reference.
+     * @return the value of the '<em>Background Color</em>' attribute.
      * @see #setBackgroundColor(RGBValues)
      * @see org.eclipse.sirius.tree.TreePackage#getTreeItemStyle_BackgroundColor()
-     * @model containment="true"
+     * @model default="255,255,255"
+     *        dataType="org.eclipse.sirius.viewpoint.RGBValues"
      * @generated
      */
     RGBValues getBackgroundColor();
@@ -52,12 +52,11 @@ public interface TreeItemStyle extends Style, LabelStyle {
     /**
      * Sets the value of the '
      * {@link org.eclipse.sirius.tree.TreeItemStyle#getBackgroundColor
-     * <em>Background Color</em>}' containment reference. <!-- begin-user-doc
-     * --> <!-- end-user-doc -->
+     * <em>Background Color</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @param value
-     *            the new value of the '<em>Background Color</em>' containment
-     *            reference.
+     *            the new value of the '<em>Background Color</em>' attribute.
      * @see #getBackgroundColor()
      * @generated
      */

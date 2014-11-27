@@ -125,7 +125,7 @@ public class DTableCellStylesTest extends TableTestCase {
         optionalBackgroundStyleToApply = new DCellQuery(cell).getBackgroundStyleToApply();
         assertTrue("We should have a currentStyle for the cell.", optionalBackgroundStyleToApply.some());
         color = optionalBackgroundStyleToApply.get().getBackgroundColor();
-        assertNull("We should not have background color as it's the default value", color);
+        assertEquals("We should have white as default background color", RGBValues.create(255, 255, 255), color);
     }
 
     public void testFeatureColumnForegroundColorStyle() throws Exception {

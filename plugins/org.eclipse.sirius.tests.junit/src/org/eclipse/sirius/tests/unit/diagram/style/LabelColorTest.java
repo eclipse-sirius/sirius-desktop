@@ -32,6 +32,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.LabelStyle;
+import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.swt.graphics.Color;
 
 /**
@@ -44,8 +45,6 @@ public class LabelColorTest extends SiriusDiagramTestCase {
     private static final String THE_LABEL_MUST_BE_BLACK = "The label must be black";
 
     private static final String NO_I_GRAPHICAL_EDIT_PART_FOUND_WITH_THE_LABEL = "No IGraphicalEditPart found with the label : ";
-
-    private static final String THE_LABEL_MUST_BE_NULL = "The label must be null";
 
     private static final String THE_DIAGRAM_ELEMENT_HAS_NO_LABEL_STYLE = "The diagram element has no label style";
 
@@ -179,14 +178,15 @@ public class LabelColorTest extends SiriusDiagramTestCase {
 
     private void checkLabelColorDoesNotExistAndBlack(DDiagramElement diagramElementClass1, DDiagramElement diagramElementClass2) {
         assertTrue(THE_DIAGRAM_ELEMENT_HAS_NO_LABEL_STYLE, diagramElementClass1.getStyle() instanceof LabelStyle);
-        assertNull(THE_LABEL_MUST_BE_NULL, ((LabelStyle) diagramElementClass1.getStyle()).getLabelColor());
-
+        // Default label color of the style.
+        assertEquals(THE_LABEL_MUST_BE_BLACK, RGBValues.create(0, 0, 0), ((LabelStyle) diagramElementClass1.getStyle()).getLabelColor());
         IGraphicalEditPart class1EP = getEditPart(diagramElementClass1);
         assertNotNull(NO_I_GRAPHICAL_EDIT_PART_FOUND_WITH_THE_LABEL + NEW_E_CLASS_1, class1EP);
         checkColor(class1EP, colorFactory.black());
 
         assertTrue(THE_DIAGRAM_ELEMENT_HAS_NO_LABEL_STYLE, diagramElementClass2.getStyle() instanceof LabelStyle);
-        assertNull(THE_LABEL_MUST_BE_NULL, ((LabelStyle) diagramElementClass2.getStyle()).getLabelColor());
+        // Default label color of the style.
+        assertEquals(THE_LABEL_MUST_BE_BLACK, RGBValues.create(0, 0, 0), ((LabelStyle) diagramElementClass2.getStyle()).getLabelColor());
         IGraphicalEditPart class2EP = getEditPart(diagramElementClass2);
         assertNotNull(NO_I_GRAPHICAL_EDIT_PART_FOUND_WITH_THE_LABEL + NEW_E_CLASS_2, class2EP);
         checkColor(class2EP, colorFactory.black());
@@ -195,14 +195,14 @@ public class LabelColorTest extends SiriusDiagramTestCase {
     private void checkLabelColorCreatedAndBlack(DDiagramElement diagramElementClass1, DDiagramElement diagramElementClass2) {
         IGraphicalEditPart class1EP;
         assertTrue(THE_DIAGRAM_ELEMENT_HAS_NO_LABEL_STYLE, diagramElementClass1.getStyle() instanceof LabelStyle);
-        assertNotNull(THE_LABEL_MUST_BE_NULL, ((LabelStyle) diagramElementClass1.getStyle()).getLabelColor());
+        assertEquals(THE_LABEL_MUST_BE_BLACK, RGBValues.create(0, 0, 0), ((LabelStyle) diagramElementClass2.getStyle()).getLabelColor());
         assertEquals(THE_LABEL_MUST_BE_BLACK, colorFactory.black(), VisualBindingManager.getDefault().getLabelColorFromRGBValues(((LabelStyle) diagramElementClass1.getStyle()).getLabelColor()));
         class1EP = getEditPart(diagramElementClass1);
         assertNotNull(NO_I_GRAPHICAL_EDIT_PART_FOUND_WITH_THE_LABEL + NEW_E_CLASS_1, class1EP);
         checkColor(class1EP, colorFactory.black());
 
         assertTrue(THE_DIAGRAM_ELEMENT_HAS_NO_LABEL_STYLE, diagramElementClass2.getStyle() instanceof LabelStyle);
-        assertNotNull(THE_LABEL_MUST_BE_NULL, ((LabelStyle) diagramElementClass2.getStyle()).getLabelColor());
+        assertEquals(THE_LABEL_MUST_BE_BLACK, RGBValues.create(0, 0, 0), ((LabelStyle) diagramElementClass2.getStyle()).getLabelColor());
         assertEquals(THE_LABEL_MUST_BE_BLACK, colorFactory.black(), VisualBindingManager.getDefault().getLabelColorFromRGBValues(((LabelStyle) diagramElementClass2.getStyle()).getLabelColor()));
         class1EP = getEditPart(diagramElementClass2);
         assertNotNull(NO_I_GRAPHICAL_EDIT_PART_FOUND_WITH_THE_LABEL + NEW_E_CLASS_2, class1EP);

@@ -874,7 +874,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getCustomizable()
      * @generated
      */
-    int CUSTOMIZABLE = 31;
+    int CUSTOMIZABLE = 30;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -904,7 +904,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getBasicLabelStyle()
      * @generated
      */
-    int BASIC_LABEL_STYLE = 30;
+    int BASIC_LABEL_STYLE = 29;
 
     /**
      * The feature id for the '<em><b>Custom Features</b></em>' attribute list.
@@ -943,22 +943,22 @@ public interface ViewpointPackage extends EPackage {
     int BASIC_LABEL_STYLE__SHOW_ICON = CUSTOMIZABLE_FEATURE_COUNT + 2;
 
     /**
-     * The feature id for the '<em><b>Label Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int BASIC_LABEL_STYLE__LABEL_COLOR = CUSTOMIZABLE_FEATURE_COUNT + 3;
-
-    /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int BASIC_LABEL_STYLE__ICON_PATH = CUSTOMIZABLE_FEATURE_COUNT + 4;
+    int BASIC_LABEL_STYLE__ICON_PATH = CUSTOMIZABLE_FEATURE_COUNT + 3;
+
+    /**
+     * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int BASIC_LABEL_STYLE__LABEL_COLOR = CUSTOMIZABLE_FEATURE_COUNT + 4;
 
     /**
      * The number of structural features of the '<em>Basic Label Style</em>'
@@ -1018,15 +1018,6 @@ public interface ViewpointPackage extends EPackage {
     int LABEL_STYLE__SHOW_ICON = BASIC_LABEL_STYLE__SHOW_ICON;
 
     /**
-     * The feature id for the '<em><b>Label Color</b></em>' containment
-     * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int LABEL_STYLE__LABEL_COLOR = BASIC_LABEL_STYLE__LABEL_COLOR;
-
-    /**
      * The feature id for the '<em><b>Icon Path</b></em>' attribute. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -1034,6 +1025,15 @@ public interface ViewpointPackage extends EPackage {
      * @ordered
      */
     int LABEL_STYLE__ICON_PATH = BASIC_LABEL_STYLE__ICON_PATH;
+
+    /**
+     * The feature id for the '<em><b>Label Color</b></em>' attribute. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @generated
+     * @ordered
+     */
+    int LABEL_STYLE__LABEL_COLOR = BASIC_LABEL_STYLE__LABEL_COLOR;
 
     /**
      * The feature id for the '<em><b>Label Alignment</b></em>' attribute. <!--
@@ -1101,43 +1101,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getRGBValues()
      * @generated
      */
-    int RGB_VALUES = 21;
-
-    /**
-     * The feature id for the '<em><b>Red</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int RGB_VALUES__RED = 0;
-
-    /**
-     * The feature id for the '<em><b>Green</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int RGB_VALUES__GREEN = 1;
-
-    /**
-     * The feature id for the '<em><b>Blue</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int RGB_VALUES__BLUE = 2;
-
-    /**
-     * The number of structural features of the '<em>RGB Values</em>' class.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int RGB_VALUES_FEATURE_COUNT = 3;
+    int RGB_VALUES = 35;
 
     /**
      * The meta object id for the '
@@ -1149,7 +1113,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDAnalysisSessionEObject()
      * @generated
      */
-    int DANALYSIS_SESSION_EOBJECT = 22;
+    int DANALYSIS_SESSION_EOBJECT = 21;
 
     /**
      * The feature id for the '<em><b>Open</b></em>' attribute. <!--
@@ -1225,7 +1189,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getSessionManagerEObject()
      * @generated
      */
-    int SESSION_MANAGER_EOBJECT = 23;
+    int SESSION_MANAGER_EOBJECT = 22;
 
     /**
      * The feature id for the '<em><b>Owned Sessions</b></em>' containment
@@ -1255,7 +1219,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDResource()
      * @generated
      */
-    int DRESOURCE = 24;
+    int DRESOURCE = 23;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1293,7 +1257,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDFile()
      * @generated
      */
-    int DFILE = 25;
+    int DFILE = 24;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1332,7 +1296,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDResourceContainer()
      * @generated
      */
-    int DRESOURCE_CONTAINER = 26;
+    int DRESOURCE_CONTAINER = 25;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1379,7 +1343,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDProject()
      * @generated
      */
-    int DPROJECT = 27;
+    int DPROJECT = 26;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1426,7 +1390,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDFolder()
      * @generated
      */
-    int DFOLDER = 28;
+    int DFOLDER = 27;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1473,7 +1437,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getDModel()
      * @generated
      */
-    int DMODEL = 29;
+    int DMODEL = 28;
 
     /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!--
@@ -1511,7 +1475,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getFontFormat()
      * @generated
      */
-    int FONT_FORMAT = 32;
+    int FONT_FORMAT = 31;
 
     /**
      * The meta object id for the '
@@ -1523,7 +1487,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getLabelAlignment()
      * @generated
      */
-    int LABEL_ALIGNMENT = 33;
+    int LABEL_ALIGNMENT = 32;
 
     /**
      * The meta object id for the '
@@ -1534,7 +1498,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getSyncStatus()
      * @generated
      */
-    int SYNC_STATUS = 34;
+    int SYNC_STATUS = 33;
 
     /**
      * The meta object id for the '<em>Extended Package</em>' data type. <!--
@@ -1544,7 +1508,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getExtendedPackage()
      * @generated
      */
-    int EXTENDED_PACKAGE = 35;
+    int EXTENDED_PACKAGE = 34;
 
     /**
      * Returns the meta object for class '
@@ -2240,43 +2204,7 @@ public interface ViewpointPackage extends EPackage {
      * @see org.eclipse.sirius.viewpoint.RGBValues
      * @generated
      */
-    EClass getRGBValues();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.viewpoint.RGBValues#getRed <em>Red</em>}'. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the attribute '<em>Red</em>'.
-     * @see org.eclipse.sirius.viewpoint.RGBValues#getRed()
-     * @see #getRGBValues()
-     * @generated
-     */
-    EAttribute getRGBValues_Red();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.viewpoint.RGBValues#getGreen <em>Green</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the attribute '<em>Green</em>'.
-     * @see org.eclipse.sirius.viewpoint.RGBValues#getGreen()
-     * @see #getRGBValues()
-     * @generated
-     */
-    EAttribute getRGBValues_Green();
-
-    /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.viewpoint.RGBValues#getBlue <em>Blue</em>}'.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the attribute '<em>Blue</em>'.
-     * @see org.eclipse.sirius.viewpoint.RGBValues#getBlue()
-     * @see #getRGBValues()
-     * @generated
-     */
-    EAttribute getRGBValues_Blue();
+    EDataType getRGBValues();
 
     /**
      * Returns the meta object for class '
@@ -2546,17 +2474,16 @@ public interface ViewpointPackage extends EPackage {
     EAttribute getBasicLabelStyle_ShowIcon();
 
     /**
-     * Returns the meta object for the containment reference '
+     * Returns the meta object for the attribute '
      * {@link org.eclipse.sirius.viewpoint.BasicLabelStyle#getLabelColor
      * <em>Label Color</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
-     * @return the meta object for the containment reference '
-     *         <em>Label Color</em>'.
+     * @return the meta object for the attribute '<em>Label Color</em>'.
      * @see org.eclipse.sirius.viewpoint.BasicLabelStyle#getLabelColor()
      * @see #getBasicLabelStyle()
      * @generated
      */
-    EReference getBasicLabelStyle_LabelColor();
+    EAttribute getBasicLabelStyle_LabelColor();
 
     /**
      * Returns the meta object for the attribute '
@@ -3202,40 +3129,14 @@ public interface ViewpointPackage extends EPackage {
         EReference STYLE__DESCRIPTION = eINSTANCE.getStyle_Description();
 
         /**
-         * The meta object literal for the '
-         * {@link org.eclipse.sirius.viewpoint.impl.RGBValuesImpl
-         * <em>RGB Values</em>}' class. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * The meta object literal for the '<em>RGB Values</em>' data type. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
          * 
-         * @see org.eclipse.sirius.viewpoint.impl.RGBValuesImpl
+         * @see org.eclipse.sirius.viewpoint.RGBValues
          * @see org.eclipse.sirius.viewpoint.impl.ViewpointPackageImpl#getRGBValues()
          * @generated
          */
-        EClass RGB_VALUES = eINSTANCE.getRGBValues();
-
-        /**
-         * The meta object literal for the '<em><b>Red</b></em>' attribute
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute RGB_VALUES__RED = eINSTANCE.getRGBValues_Red();
-
-        /**
-         * The meta object literal for the '<em><b>Green</b></em>' attribute
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute RGB_VALUES__GREEN = eINSTANCE.getRGBValues_Green();
-
-        /**
-         * The meta object literal for the '<em><b>Blue</b></em>' attribute
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute RGB_VALUES__BLUE = eINSTANCE.getRGBValues_Blue();
+        EDataType RGB_VALUES = eINSTANCE.getRGBValues();
 
         /**
          * The meta object literal for the '
@@ -3452,12 +3353,11 @@ public interface ViewpointPackage extends EPackage {
 
         /**
          * The meta object literal for the '<em><b>Label Color</b></em>'
-         * containment reference feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
+         * attribute feature. <!-- begin-user-doc --> <!-- end-user-doc -->
          * 
          * @generated
          */
-        EReference BASIC_LABEL_STYLE__LABEL_COLOR = eINSTANCE.getBasicLabelStyle_LabelColor();
+        EAttribute BASIC_LABEL_STYLE__LABEL_COLOR = eINSTANCE.getBasicLabelStyle_LabelColor();
 
         /**
          * The meta object literal for the '<em><b>Icon Path</b></em>' attribute

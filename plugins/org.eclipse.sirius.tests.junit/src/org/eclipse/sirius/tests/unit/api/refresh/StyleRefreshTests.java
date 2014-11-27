@@ -240,8 +240,7 @@ public class StyleRefreshTests extends SiriusDiagramTestCase implements EcoreMod
         TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
         CompoundCommand compoundCommand = new CompoundCommand();
 
-        EObject copy = EcoreUtil.copy(StyleRefreshTests.CUSTOM_COLOR);
-        RGBValues rgbValues = (RGBValues) copy;
+        RGBValues rgbValues = StyleRefreshTests.CUSTOM_COLOR;
         Command setBackgroundColorCmd = SetCommand.create(domain, style, DiagramPackage.Literals.SHAPE_CONTAINER_STYLE__BACKGROUND_COLOR, rgbValues);
         compoundCommand.append(setBackgroundColorCmd);
         Command setCustomStyleCmd = AddCommand.create(domain, style, ViewpointPackage.Literals.CUSTOMIZABLE__CUSTOM_FEATURES,

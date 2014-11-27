@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -28,7 +28,6 @@ import org.eclipse.sirius.tree.TreeItemStyle;
 import org.eclipse.sirius.tree.TreePackage;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeViewer;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 import org.eclipse.ui.PlatformUI;
@@ -111,9 +110,8 @@ public class TreeUIUpdater extends ResourceSetListenerImpl {
             if (dTreeItem != null) {
                 toUpdateInViewer.add(dTreeItem);
             }
-        } else if (isRGBValuesChange(notification)) {
-            RGBValues rgbValues = (RGBValues) notifier;
-            analyseRGBValues(rgbValues);
+        } else if (notification.getNotifier() instanceof TreeItemStyle && isRGBValuesChange(notification)) {
+            toUpdateInViewer.add(notification.getNotifier());
         }
     }
 
@@ -162,18 +160,7 @@ public class TreeUIUpdater extends ResourceSetListenerImpl {
     }
 
     private boolean isRGBValuesChange(Notification notification) {
-        return ViewpointPackage.Literals.RGB_VALUES.getEStructuralFeatures().contains(notification.getFeature());
-    }
-
-    private void analyseRGBValues(RGBValues rgbValues) {
-        EObject notifierContainer = rgbValues.eContainer();
-        if (notifierContainer instanceof TreeItemStyle) {
-            TreeItemStyle treeItemStyle = (TreeItemStyle) notifierContainer;
-            EObject treeitemStyleContainer = treeItemStyle.eContainer();
-            if (treeitemStyleContainer != null) {
-                toUpdateInViewer.add(treeitemStyleContainer);
-            }
-        }
+        return notification.getFeature() instanceof EAttribute && ((EAttribute) notification.getFeature()).getEType() == ViewpointPackage.Literals.RGB_VALUES;
     }
 
     private void updateDTreeViewer() {

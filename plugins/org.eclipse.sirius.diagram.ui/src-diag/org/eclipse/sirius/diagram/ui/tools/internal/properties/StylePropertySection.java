@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -66,43 +66,15 @@ public class StylePropertySection extends SemanticPropertySection {
         // if the stroke color is not null.
         else if (object instanceof EObject && !getPermissionAuthority((EObject) object).canEditInstance((EObject) object)) {
             // do nothing -> return null
-        } else if (object instanceof DStylizable && ((DStylizable) object).getStyle() instanceof EdgeStyle && ((EdgeStyle) ((DStylizable) object).getStyle()).getStrokeColor() != null) {
-            final DStylizable stylizable = (DStylizable) object;
-            final View view = map.get(stylizable);
-
-            final EdgeStyle edgeStyle = (EdgeStyle) stylizable.getStyle();
-            final RGBValues rgb = edgeStyle.getStrokeColor();
-            final CompositeEObjectPropertySource propertySource = new CompositeEObjectPropertySource();
-            AdapterFactory af = getAdapterFactory(edgeStyle);
-            if (af != null) {
-                final IItemPropertySource ips = (IItemPropertySource) af.adapt(edgeStyle, IItemPropertySource.class);
-                if (ips != null) {
-                    final IPropertySource targetPropertySource = new StylePropertySource(edgeStyle, view, ips);
-                    propertySource.addPropertySource(edgeStyle, targetPropertySource);
-                }
-            }
-            af = getAdapterFactory(rgb);
-            if (af != null) {
-                final IItemPropertySource ips = (IItemPropertySource) af.adapt(rgb, IItemPropertySource.class);
-                if (ips != null) {
-                    final IPropertySource targetPropertySource = new StylePropertySource(rgb, view, ips);
-                    propertySource.addPropertySource(rgb, targetPropertySource);
-                }
-            }
-            propSrc = propertySource;
         } else {
-            //
-            // Other styles.
-            propSrc = getPropertySourceForOtherStyles(object);
+            propSrc = getStylePropertySource(object);
         }
         return propSrc;
 
     }
 
-    private IPropertySource getPropertySourceForOtherStyles(final Object object) {
-
+    private IPropertySource getStylePropertySource(final Object object) {
         IPropertySource propSrc = null;
-
         if (object instanceof DStylizable) {
             final DStylizable stylizable = (DStylizable) object;
             final View view = map.get(stylizable);
@@ -118,6 +90,7 @@ public class StylePropertySection extends SemanticPropertySection {
                 }
             }
         }
+
         if (propSrc == null) {
             final AdapterFactory af = getAdapterFactory(object);
             if (af != null) {
@@ -130,7 +103,6 @@ public class StylePropertySection extends SemanticPropertySection {
                 propSrc = (IPropertySource) ((IAdaptable) object).getAdapter(IPropertySource.class);
             }
         }
-
         return propSrc;
     }
 

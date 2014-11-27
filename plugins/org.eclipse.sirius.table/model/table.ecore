@@ -145,10 +145,6 @@
         <details key="documentation" value="The font format."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="foregroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultForegroundStyle"
         eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
         defaultValueLiteral="false">
@@ -163,6 +159,10 @@
         <details key="documentation" value="Determine if the background part of the style is computed from a conditional style or not (default style)."/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="foregroundColor" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
+        defaultValueLiteral="0,0,0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="backgroundColor" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
+        defaultValueLiteral="255,255,255"/>
   </eClassifiers>
   <eSubpackages name="description" nsURI="http://www.eclipse.org/sirius/table/description/1.1.0"
       nsPrefix="description">
