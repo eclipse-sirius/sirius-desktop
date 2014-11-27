@@ -303,7 +303,12 @@ public class RubberbandSelectionTool extends AbstractTool {
         if (feedBackStartLocation == null) {
             rect = getMarqueeSelectionRectangle();
             getMarqueeFeedbackFigure().translateToRelative(rect);
-            feedBackStartLocation = rect.getLocation();
+            // Keep the start location (and not the top left point of
+            // getMarqueeSelectionRectangle() that could be wrong in case of
+            // selection from right to left).
+            Point startLocation = getStartLocation().getCopy();
+            getMarqueeFeedbackFigure().translateToRelative(startLocation);
+            feedBackStartLocation = startLocation;
         } else {
             Point location = getLocation().getCopy();
             getMarqueeFeedbackFigure().translateToRelative(location);
