@@ -106,6 +106,7 @@ import org.eclipse.sirius.tests.unit.diagram.migration.MigrationOfHideLabelFilte
 import org.eclipse.sirius.tests.unit.diagram.migration.MigrationRoutingStyleEndUserOverrideTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.OptionalLayerToAdditionalLayerMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.ReferencedModelResourceMigrationTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.RemoveAcceleoReferencesMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.RepairMigrateLostDiagramElementsTC1Test;
 import org.eclipse.sirius.tests.unit.diagram.migration.RepairMigrateLostDiagramElementsTC2Test;
 import org.eclipse.sirius.tests.unit.diagram.migration.RepairMigratePinStatusTest;
@@ -172,6 +173,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(DDiagramSetRemovalMigrationTest.class);
         // suite.addTestSuite(AutomaticMigrationOnAirdResourceTest.class);
         suite.addTestSuite(ReferencedModelResourceMigrationTest.class);
+        suite.addTestSuite(RemoveAcceleoReferencesMigrationTest.class);
         // suite.addTestSuite(SequenceInstanceRoleSizeRepairMigrationTestCase.class);
         suite.addTestSuite(OptionalLayerToAdditionalLayerMigrationTest.class);
         suite.addTestSuite(MigrationRoutingStyleEndUserOverrideTest.class);

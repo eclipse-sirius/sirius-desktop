@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="RemoveAcceleoReferences" version="8.1.0">
+  <ownedViewpoints name="RemoveAcceleoReferences">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Representation" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <containerMappings name="Package" semanticCandidatesExpression="[self/]" domainClass="EPackage">
+          <subContainerMappings name="Class" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass">
+            <style xsi:type="style:FlatContainerStyleDescription" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='white_blue']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='blue_white']">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" backgroundColor="//@userColorsPalettes[name='Colors']/@entries[name='blue_white']" foregroundColor="//@userColorsPalettes[name='Colors']/@entries[name='white_blue']">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+  <userColorsPalettes name="Colors">
+    <entries xsi:type="description:InterpolatedColor" name="blue_white" colorValueComputationExpression="1">
+      <colorSteps associatedValue="0">
+        <associatedColor href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+      </colorSteps>
+      <colorSteps associatedValue="3">
+        <associatedColor href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+      </colorSteps>
+    </entries>
+    <entries xsi:type="description:InterpolatedColor" name="white_blue">
+      <colorSteps associatedValue="0">
+        <associatedColor href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+      </colorSteps>
+      <colorSteps associatedValue="3">
+        <associatedColor href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+      </colorSteps>
+    </entries>
+  </userColorsPalettes>
+</description:Group>
