@@ -94,7 +94,7 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
      * @return true if all the elements have a label that can be hide, false
      *         otherwise
      */
-    public static boolean isEnabled(Collection<Object> elementsToCheck) {
+    public static boolean isEnabled(Collection<?> elementsToCheck) {
         boolean canHideLabel = true;
         for (Object selectedElement : elementsToCheck) {
             if (selectedElement instanceof IGraphicalEditPart) {

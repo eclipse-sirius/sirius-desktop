@@ -325,8 +325,10 @@ public class DiagramOutlinePage extends AbstractExtendedContentOutlinePage {
      */
     @Override
     public void dispose() {
-        if (disposeListener != null && getEditor() != null && !getEditor().isDisposed()) {
-            getEditor().removeDisposeListener(disposeListener);
+        if (disposeListener != null) {
+            if (getEditor() != null && !getEditor().isDisposed()) {
+                getEditor().removeDisposeListener(disposeListener);
+            }
             disposeListener = null;
         }
 
@@ -351,18 +353,23 @@ public class DiagramOutlinePage extends AbstractExtendedContentOutlinePage {
         overviewInitialized = false;
 
         pageBook.dispose();
+        pageBook = null;
         contentProvider.dispose();
+        contentProvider = null;
         labelProvider.dispose();
-
+        labelProvider = null;
+        viewerComparator = null;
         outlineViewer.getTree().dispose();
+        outlineViewer = null;
         outline.dispose();
+        outline = null;
 
         listeners.clear();
         menuContributions.clear();
 
         diagramWorkbenchPart = null;
         graphicalViewer = null;
-
+        input = null;
         super.dispose();
     }
 
@@ -678,7 +685,7 @@ public class DiagramOutlinePage extends AbstractExtendedContentOutlinePage {
          * 
          * @see org.eclipse.jface.viewers.IStructuredSelection#iterator()
          */
-        public Iterator iterator() {
+        public Iterator<?> iterator() {
             return selection.iterator();
         }
 
@@ -705,7 +712,7 @@ public class DiagramOutlinePage extends AbstractExtendedContentOutlinePage {
          * 
          * @see org.eclipse.jface.viewers.IStructuredSelection#toList()
          */
-        public List toList() {
+        public List<?> toList() {
             return selection.toList();
         }
     }
