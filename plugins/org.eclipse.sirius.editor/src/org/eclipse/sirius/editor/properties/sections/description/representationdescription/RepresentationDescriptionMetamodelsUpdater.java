@@ -324,20 +324,6 @@ public class RepresentationDescriptionMetamodelsUpdater {
 
         }
         return realURI;
-        // Map<String, URI> ePackageNsURItoGenModelLocationMap =
-        // EcorePlugin.getEPackageNsURIToGenModelLocationMap();
-        // for (int i = 0, length = result.length; i < length; i++) {
-        // URI location = ePackageNsURItoGenModelLocationMap.get(result[i]);
-        // try {
-        // Resource resource = resourceSet.getResource(location, true);
-        // EcoreUtil.resolveAll(resource);
-        // } catch (Exception e) {
-        // IStatus status = new Status(Status.ERROR,
-        // SiriusEditorPlugin.PLUGIN_ID, "Metamodel " + result[i] +
-        // " can't be loaded", e);
-        // SiriusEditorPlugin.getPlugin().getLog().log(status);
-        // }
-        // }
     }
 
     private EPackage getEPackageFromCache(EPackage ePackage, URI genModelResourceURI) {
