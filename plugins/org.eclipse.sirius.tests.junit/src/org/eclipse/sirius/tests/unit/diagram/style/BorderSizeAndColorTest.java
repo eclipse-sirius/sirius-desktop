@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,6 @@ import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.RGBValues;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.swt.graphics.Color;
 
 import com.google.common.collect.Iterables;
@@ -54,7 +53,7 @@ public class BorderSizeAndColorTest extends SiriusDiagramTestCase {
 
     private static final int EXPECTED_BORDER_SIZE = 4;
 
-    private static final RGBValues EXPECTED_BORDER_COLOR = ViewpointFactory.eINSTANCE.createRGBValues();
+    private static final RGBValues EXPECTED_BORDER_COLOR = RGBValues.create(138, 226, 52);;
 
     private DDiagram diagram;
 
@@ -76,9 +75,6 @@ public class BorderSizeAndColorTest extends SiriusDiagramTestCase {
         editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();
 
-        EXPECTED_BORDER_COLOR.setRed(138);
-        EXPECTED_BORDER_COLOR.setGreen(226);
-        EXPECTED_BORDER_COLOR.setBlue(52);
     }
 
     @Override

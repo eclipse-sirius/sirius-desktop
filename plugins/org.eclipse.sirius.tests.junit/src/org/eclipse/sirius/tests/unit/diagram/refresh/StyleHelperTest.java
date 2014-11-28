@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,6 @@ package org.eclipse.sirius.tests.unit.diagram.refresh;
 import junit.framework.TestCase;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.diagram.AlignmentKind;
 import org.eclipse.sirius.diagram.BackgroundStyle;
@@ -71,7 +70,6 @@ import org.eclipse.sirius.viewpoint.LabelAlignment;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.Style;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
@@ -189,10 +187,7 @@ public class StyleHelperTest extends TestCase {
         STROKE_COLOR_SECOND.setGreen(100);
         STROKE_COLOR_SECOND.setRed(110);
 
-        CUSTOM_COLOR = ViewpointFactory.eINSTANCE.createRGBValues();
-        CUSTOM_COLOR.setBlue(33);
-        CUSTOM_COLOR.setGreen(33);
-        CUSTOM_COLOR.setRed(33);
+        CUSTOM_COLOR = RGBValues.create(33, 33, 33);
     }
 
     private StyleHelper styleHelper;
@@ -201,7 +196,7 @@ public class StyleHelperTest extends TestCase {
     protected void setUp() {
         this.styleHelper = new StyleHelper(CompoundInterpreter.INSTANCE);
     }
-    
+
     @Override
     protected void tearDown() throws Exception {
         styleHelper = null;

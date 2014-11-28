@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -36,9 +36,7 @@ public class TreeStyleColorUpdater extends AbstractColorUpdater {
      */
     public void updateBackgroundColor(final TreeItemStyle style, final ColorDescription colorDescription, final EObject target) {
         final RGBValues values = getRGBValuesFromColorDescription(target, colorDescription);
-        if (!AbstractColorUpdater.areEquals(style.getBackgroundColor(), values)) {
-            style.setBackgroundColor(values);
-        }
+        style.setBackgroundColor(values);
 
     }
 
@@ -54,9 +52,7 @@ public class TreeStyleColorUpdater extends AbstractColorUpdater {
      */
     public void updateLabelColor(final TreeItemStyle style, final ColorDescription colorDescription, final EObject target) {
         final RGBValues values = getRGBValuesFromColorDescription(target, colorDescription);
-        if (!AbstractColorUpdater.areEquals(style.getLabelColor(), values)) {
-            style.setLabelColor(values);
-        }
+        style.setLabelColor(values);
 
     }
 }

@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.viewpoint;
 
+import java.util.Map;
+
+import com.google.common.collect.Maps;
+
 /**
  * RGBValues are descriptions of colors in terms of the primary additive color
  * model (red, green and blue).
@@ -18,8 +22,27 @@ package org.eclipse.sirius.viewpoint;
  * primary colors. The brightness of each color is specified by a value in the
  * range 0 to 255, where 0 indicates no color (blackness) and 255 indicates
  * maximum intensity.
+ * 
+ * RGBValues instances are interned.
+ * 
+ * @author cbrun
+ *
  */
-public class RGBValues {
+public final class RGBValues {
+
+    private static final Map<String, RGBValues> INTERN = Maps.newHashMap();
+
+    // CHECKSTYLE:OFF
+    // Disable checkstyle to be able to intern the DEFAULT public constant with
+    // a declaration after the private INTERN map.
+    /**
+     * A default color.
+     */
+    public static final RGBValues DEFAULT_GRAY = new RGBValues(209, 209, 209);
+
+    // CHECKSTYLE:ON
+
+    private static final String SEPARATOR = ",";
 
     private int red;
 
@@ -28,7 +51,7 @@ public class RGBValues {
     private int blue;
 
     /**
-     * create a new {@link RGBValues}.
+     * Create a new {@link RGBValues}.
      * 
      * @param red
      *            red channel.
@@ -37,41 +60,23 @@ public class RGBValues {
      * @param blue
      *            blue channel.
      */
-    public RGBValues(int red, int green, int blue) {
+    private RGBValues(int red, int green, int blue) {
         super();
         this.red = red;
         this.green = green;
         this.blue = blue;
     }
 
-    /**
-     * Default constructor.
-     */
-    public RGBValues() {
-    }
-
     public int getRed() {
         return red;
-    }
-
-    public void setRed(int red) {
-        this.red = red;
     }
 
     public int getGreen() {
         return green;
     }
 
-    public void setGreen(int green) {
-        this.green = green;
-    }
-
     public int getBlue() {
         return blue;
-    }
-
-    public void setBlue(int blue) {
-        this.blue = blue;
     }
 
     // CHECKSTYLE:OFF
@@ -110,11 +115,50 @@ public class RGBValues {
     public String toString() {
         StringBuffer result = new StringBuffer();
         result.append(red);
-        result.append(",");
+        result.append(SEPARATOR);
         result.append(green);
-        result.append(",");
+        result.append(SEPARATOR);
         result.append(blue);
         return result.toString();
+    }
+
+    /**
+     * Return a RGBValues corresponding to the given red, green and blue
+     * attributes. The RGBValues elements are interned, successive calls with
+     * the same color attributes will return the same object.
+     * 
+     * @param r
+     *            the red attribute.
+     * @param g
+     *            the green attribute.
+     * @param b
+     *            the blue attribute.
+     * @return the corresponding RGBValues object.
+     */
+    public static RGBValues create(int r, int g, int b) {
+        String key = computeKey(r, g, b);
+        RGBValues found = INTERN.get(key);
+        if (found == null) {
+            found = new RGBValues(r, g, b);
+            INTERN.put(key, found);
+        }
+        return found;
+    }
+
+    private static String computeKey(int r, int g, int b) {
+        return r + SEPARATOR + g + SEPARATOR + b;
+    }
+
+    /**
+     * Converts from an Integer to an {@link RGBValues} representation. The
+     * Integer encoding is the one used by gmf notation.
+     * 
+     * @param color
+     *            an integer value encoding
+     * @return An {@link RGBValues} instance matching the integer values.
+     */
+    public static RGBValues integerToRGBValues(int color) {
+        return RGBValues.create(color & 0x000000FF, (color & 0x0000FF00) >> 8, (color & 0x00FF0000) >> 16);
     }
 
 }

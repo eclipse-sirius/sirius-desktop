@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,6 @@ import org.eclipse.sirius.tools.api.ui.color.EnvironmentSystemColorFactory;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.RGBValues;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.FixedColor;
@@ -280,10 +279,7 @@ public class VisualBindingManager {
      * @return the equivalent RGBValues model element.
      */
     public RGBValues createRGBvalues(RGB rgb) {
-        final RGBValues result = ViewpointFactory.eINSTANCE.createRGBValues();
-        result.setRed(rgb.red);
-        result.setGreen(rgb.green);
-        result.setBlue(rgb.blue);
+        final RGBValues result = RGBValues.create(rgb.red, rgb.green, rgb.blue);
         return result;
     }
 

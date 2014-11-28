@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,6 @@ import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.RGBValues;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
@@ -46,14 +45,7 @@ public class ChangeIdAndLabelTests extends SiriusDiagramTestCase implements Ecor
 
     private DDiagram diagram;
 
-    private static final RGBValues CUSTOM_COLOR;
-
-    static {
-        CUSTOM_COLOR = ViewpointFactory.eINSTANCE.createRGBValues();
-        CUSTOM_COLOR.setBlue(33);
-        CUSTOM_COLOR.setGreen(33);
-        CUSTOM_COLOR.setRed(33);
-    }
+    private static final RGBValues CUSTOM_COLOR = RGBValues.create(33, 33, 33);
 
     @Override
     protected void setUp() throws Exception {

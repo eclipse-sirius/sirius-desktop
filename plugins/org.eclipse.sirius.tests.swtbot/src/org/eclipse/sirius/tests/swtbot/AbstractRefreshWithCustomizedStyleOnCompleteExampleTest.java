@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -126,7 +126,6 @@ import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.LabelAlignment;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.Style;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
@@ -799,13 +798,10 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
     }
 
     RGBValues getFigureDotBackgroundColor(SWTBotGefEditPart swtBotGefEditPart) {
-        RGBValues figureDotBackgroundColor = ViewpointFactory.eINSTANCE.createRGBValues();
         DotEditPart dotEditPart = (DotEditPart) swtBotGefEditPart.descendants(IsInstanceOf.instanceOf(DotEditPart.class)).get(0).part();
         DotFigure primaryShape = dotEditPart.getPrimaryShape();
         Color backgroundColor = primaryShape.getBackgroundColor();
-        figureDotBackgroundColor.setRed(backgroundColor.getRed());
-        figureDotBackgroundColor.setGreen(backgroundColor.getGreen());
-        figureDotBackgroundColor.setBlue(backgroundColor.getBlue());
+        RGBValues figureDotBackgroundColor = RGBValues.create(backgroundColor.getRed(), backgroundColor.getGreen(), backgroundColor.getBlue());
         return figureDotBackgroundColor;
     }
 
@@ -1012,22 +1008,16 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
             String redHexa = mainGradientColor.substring(0, 2);
             String greenHexa = mainGradientColor.substring(2, 4);
             String blueHexa = mainGradientColor.substring(4, 6);
-            figureBundledImageColor = ViewpointFactory.eINSTANCE.createRGBValues();
-            figureBundledImageColor.setRed(Integer.parseInt(redHexa, 16));
-            figureBundledImageColor.setGreen(Integer.parseInt(greenHexa, 16));
-            figureBundledImageColor.setBlue(Integer.parseInt(blueHexa, 16));
+            figureBundledImageColor = RGBValues.create(Integer.parseInt(redHexa, 16), Integer.parseInt(greenHexa, 16), Integer.parseInt(blueHexa, 16));
         }
         return figureBundledImageColor;
     }
 
     RGBValues getFigureNoteColor(SWTBotGefEditPart swtBotGefEditPart) {
-        RGBValues figureNoteColor = ViewpointFactory.eINSTANCE.createRGBValues();
         NoteEditPart noteEditPart = (NoteEditPart) swtBotGefEditPart.descendants(IsInstanceOf.instanceOf(NoteEditPart.class)).get(0).part();
         NoteFigure primaryShape = noteEditPart.getPrimaryShape();
         Color backgroundColor = primaryShape.getBackgroundColor();
-        figureNoteColor.setRed(backgroundColor.getRed());
-        figureNoteColor.setGreen(backgroundColor.getGreen());
-        figureNoteColor.setBlue(backgroundColor.getBlue());
+        RGBValues figureNoteColor = RGBValues.create(backgroundColor.getRed(), backgroundColor.getGreen(), backgroundColor.getBlue());
         return figureNoteColor;
     }
 

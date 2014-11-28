@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,7 +27,6 @@ import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.DTableElementStyle;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.RGBValues;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.SystemColors;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Tree;
@@ -300,10 +299,7 @@ public final class TableUIHelper {
                     result = text;
                 } else if (!isCellExist(treeItem, index - 1)) {
                     final Color foregroundColor = treeItem.getForeground(index);
-                    final RGBValues newRGB = ViewpointFactory.eINSTANCE.createRGBValues();
-                    newRGB.setRed(foregroundColor.getRed());
-                    newRGB.setGreen(foregroundColor.getGreen());
-                    newRGB.setBlue(foregroundColor.getBlue());
+                    final RGBValues newRGB = RGBValues.create(foregroundColor.getRed(), foregroundColor.getGreen(), foregroundColor.getBlue());
                     result = TableUIHelper.getColorName(newRGB);
                 }
                 return result;
@@ -422,10 +418,7 @@ public final class TableUIHelper {
                 String result = treeItem.getText(index);
                 if (index != 0) {
                     final Color backgroundColor = treeItem.getBackground(index);
-                    final RGBValues newRGB = ViewpointFactory.eINSTANCE.createRGBValues();
-                    newRGB.setRed(backgroundColor.getRed());
-                    newRGB.setGreen(backgroundColor.getGreen());
-                    newRGB.setBlue(backgroundColor.getBlue());
+                    final RGBValues newRGB = RGBValues.create(backgroundColor.getRed(), backgroundColor.getGreen(), backgroundColor.getBlue());
                     result = TableUIHelper.getColorName(newRGB);
                 }
                 return result;

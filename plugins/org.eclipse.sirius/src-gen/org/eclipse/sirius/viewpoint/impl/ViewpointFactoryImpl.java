@@ -423,22 +423,22 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
      * @not-generated
      */
     public RGBValues createRGBValuesFromString(EDataType eDataType, String initialValue) {
-        RGBValues result = new RGBValues();
+        int r = 0;
+        int g = 0;
+        int b = 0;
         if (!StringUtil.isEmpty(initialValue)) {
             Iterator<String> it = Splitter.on(',').split(initialValue).iterator();
-
             if (it.hasNext()) {
-                result.setRed(toInt(it.next()));
+                r = toInt(it.next());
             }
             if (it.hasNext()) {
-                result.setGreen(toInt(it.next()));
+                g = toInt(it.next());
             }
             if (it.hasNext()) {
-                result.setBlue(toInt(it.next()));
+                b = toInt(it.next());
             }
         }
-        return result;
-
+        return RGBValues.create(r, g, b);
     }
 
     private int toInt(String next) {
@@ -484,9 +484,12 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
         return ViewpointPackage.eINSTANCE;
     }
 
-    @Override
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
+     * @not-generated
+     */
     public RGBValues createRGBValues() {
-        return new RGBValues(0, 0, 0);
+        return RGBValues.create(0, 0, 0);
     }
-
 } // ViewpointFactoryImpl

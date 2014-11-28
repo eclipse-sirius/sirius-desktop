@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -130,7 +130,7 @@ public class TreeUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
         TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(firstDTreeItem);
         CommandStack commandStack = transactionalEditingDomain.getCommandStack();
         Command changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, firstDTreeItem.getOwnedStyle(), TreePackage.Literals.TREE_ITEM_STYLE__BACKGROUND_COLOR,
-                new RGBValues(backgroundColor.getRed(), backgroundColor.getGreen(), 0));
+                RGBValues.create(backgroundColor.getRed(), backgroundColor.getGreen(), 0));
         commandStack.execute(changeDTreeItemBackgroundColorCmd);
 
         TreeUtils.checkTreeItemBackgroundColor(treeEditorBot, firstDTreeItem);
@@ -144,8 +144,8 @@ public class TreeUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
         TreeUtils.checkTreeItemBackgroundColor(treeEditorBot, firstDTreeItem);
 
         // Test a second color change
-        changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, firstDTreeItem.getOwnedStyle(), TreePackage.Literals.TREE_ITEM_STYLE__BACKGROUND_COLOR, new RGBValues(
-                backgroundColor.getRed(), 100, 0));
+        changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, firstDTreeItem.getOwnedStyle(), TreePackage.Literals.TREE_ITEM_STYLE__BACKGROUND_COLOR,
+                RGBValues.create(backgroundColor.getRed(), 100, 0));
         commandStack.execute(changeDTreeItemBackgroundColorCmd);
 
         TreeUtils.checkTreeItemBackgroundColor(treeEditorBot, firstDTreeItem);
@@ -303,8 +303,8 @@ public class TreeUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
 
         TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(firstDTreeItem);
         CommandStack commandStack = transactionalEditingDomain.getCommandStack();
-        Command changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, firstDTreeItem.getOwnedStyle(), ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR, new RGBValues(labelColor.getRed(),
-                labelColor.getGreen(), 0));
+        Command changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, firstDTreeItem.getOwnedStyle(), ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR,
+                RGBValues.create(labelColor.getRed(), labelColor.getGreen(), 0));
         commandStack.execute(changeDTreeItemBackgroundColorCmd);
 
         TreeUtils.checkTreeItemLabelColor(treeEditorBot, firstDTreeItem);
@@ -318,7 +318,8 @@ public class TreeUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
         TreeUtils.checkTreeItemLabelColor(treeEditorBot, firstDTreeItem);
 
         // Test a second color change
-        changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, firstDTreeItem.getOwnedStyle(), ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR, new RGBValues(labelColor.getRed(), 100, 0));
+        changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, firstDTreeItem.getOwnedStyle(), ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR,
+                RGBValues.create(labelColor.getRed(), 100, 0));
         commandStack.execute(changeDTreeItemBackgroundColorCmd);
 
         TreeUtils.checkTreeItemLabelColor(treeEditorBot, firstDTreeItem);

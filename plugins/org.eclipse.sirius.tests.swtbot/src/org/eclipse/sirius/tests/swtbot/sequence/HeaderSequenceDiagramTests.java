@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,6 @@ import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.viewpoint.RGBValues;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
@@ -303,18 +302,11 @@ public class HeaderSequenceDiagramTests extends AbstractDefaultModelSequenceTest
     }
 
     private HeaderData createHeaderData(Composite labelContainer) {
-        final RGBValues backgroundColor = ViewpointFactory.eINSTANCE.createRGBValues();
-        final RGBValues foregroundColor = ViewpointFactory.eINSTANCE.createRGBValues();
 
         Label label = (Label) labelContainer.getChildren()[0];
 
-        foregroundColor.setRed(label.getForeground().getRed());
-        foregroundColor.setGreen(label.getForeground().getGreen());
-        foregroundColor.setBlue(label.getForeground().getBlue());
-
-        backgroundColor.setRed(labelContainer.getBackground().getRed());
-        backgroundColor.setGreen(labelContainer.getBackground().getGreen());
-        backgroundColor.setBlue(labelContainer.getBackground().getBlue());
+        final RGBValues foregroundColor = RGBValues.create(label.getForeground().getRed(), label.getForeground().getGreen(), label.getForeground().getBlue());
+        final RGBValues backgroundColor = RGBValues.create(labelContainer.getBackground().getRed(), labelContainer.getBackground().getGreen(), labelContainer.getBackground().getBlue());
 
         return new HeaderData(label.getText(), labelContainer.getBounds().x, labelContainer.getBounds().width, backgroundColor, foregroundColor);
     }
@@ -328,11 +320,7 @@ public class HeaderSequenceDiagramTests extends AbstractDefaultModelSequenceTest
     }
 
     private RGBValues createColor(int r, int g, int b) {
-        RGBValues color = ViewpointFactory.eINSTANCE.createRGBValues();
-        color.setRed(r);
-        color.setGreen(g);
-        color.setBlue(b);
-        return color;
+        return RGBValues.create(r, g, b);
     }
 
     /**

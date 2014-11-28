@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,7 +34,6 @@ import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 
@@ -157,8 +156,8 @@ public class TableUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
 
         TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(firstDCellOfFirstDLine);
         CommandStack commandStack = transactionalEditingDomain.getCommandStack();
-        Command changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, dTableElementStyle, TablePackage.Literals.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR, new RGBValues(
-                backgroundColor.getRed(), backgroundColor.getGreen(), 200));
+        Command changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, dTableElementStyle, TablePackage.Literals.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR,
+                RGBValues.create(backgroundColor.getRed(), backgroundColor.getGreen(), 200));
         commandStack.execute(changeDTreeItemBackgroundColorCmd);
 
         TreeUtils.checkTreeItemBackgroundColor(tableEditorBot, firstDCellOfFirstDLine);
@@ -173,7 +172,7 @@ public class TableUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
 
         // Test a second color change
         changeDTreeItemBackgroundColorCmd = changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, dTableElementStyle,
-                TablePackage.Literals.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR, new RGBValues(backgroundColor.getRed(), 255, 200));
+                TablePackage.Literals.DTABLE_ELEMENT_STYLE__BACKGROUND_COLOR, RGBValues.create(backgroundColor.getRed(), 255, 200));
         commandStack.execute(changeDTreeItemBackgroundColorCmd);
 
         TreeUtils.checkTreeItemBackgroundColor(tableEditorBot, firstDCellOfFirstDLine);
@@ -292,8 +291,8 @@ public class TableUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
 
         TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(firstDCellOfFirstDLine);
         CommandStack commandStack = transactionalEditingDomain.getCommandStack();
-        Command changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, dTableElementStyle, TablePackage.Literals.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR, new RGBValues(
-                labelColor.getRed(), labelColor.getGreen(), 100));
+        Command changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, dTableElementStyle, TablePackage.Literals.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR,
+                RGBValues.create(labelColor.getRed(), labelColor.getGreen(), 100));
         commandStack.execute(changeDTreeItemBackgroundColorCmd);
 
         TreeUtils.checkTreeItemLabelColor(tableEditorBot, firstDCellOfFirstDLine);
@@ -308,7 +307,7 @@ public class TableUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
 
         // Test a second color change
         changeDTreeItemBackgroundColorCmd = SetCommand.create(transactionalEditingDomain, dTableElementStyle, TablePackage.Literals.DTABLE_ELEMENT_STYLE__FOREGROUND_COLOR,
-                new RGBValues(labelColor.getRed(), 100, 100));
+                RGBValues.create(labelColor.getRed(), 100, 100));
         commandStack.execute(changeDTreeItemBackgroundColorCmd);
 
         undo(changeDTreeItemBackgroundColorCmd.getLabel());

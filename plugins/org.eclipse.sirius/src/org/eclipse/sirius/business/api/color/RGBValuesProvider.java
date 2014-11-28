@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -56,13 +56,10 @@ public class RGBValuesProvider {
      * @return the rgb values from the color definition.
      */
     public RGBValues getRGBValues(final FixedColor object) {
-        final RGBValues rgb = ViewpointFactory.eINSTANCE.createRGBValues();
         if (object != null) {
-            rgb.setBlue(object.getBlue());
-            rgb.setGreen(object.getGreen());
-            rgb.setRed(object.getRed());
+            return RGBValues.create(object.getRed(), object.getGreen(), object.getBlue());
         }
-        return rgb;
+        return ViewpointFactory.eINSTANCE.createRGBValues();
     }
 
     /**
@@ -230,11 +227,7 @@ public class RGBValuesProvider {
     }
 
     private static RGBValues makeColor(int red, int green, int blue) {
-        RGBValues color = ViewpointFactory.eINSTANCE.createRGBValues();
-        color.setRed(EnvironmentSystemColorFactory.clamp(red, 0, 255));
-        color.setGreen(EnvironmentSystemColorFactory.clamp(green, 0, 255));
-        color.setBlue(EnvironmentSystemColorFactory.clamp(blue, 0, 255));
-        return color;
+        return RGBValues.create(EnvironmentSystemColorFactory.clamp(red, 0, 255), EnvironmentSystemColorFactory.clamp(green, 0, 255), EnvironmentSystemColorFactory.clamp(blue, 0, 255));
     }
 
     private static Integer getIntFromAcceleoExpression(final IInterpreter interpreter, final EObject context, final EObject descriptionObject, final EStructuralFeature eFeature) {

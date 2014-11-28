@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -52,10 +52,12 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.FixedColor;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.ui.IEditorPart;
 
@@ -415,7 +417,7 @@ public class RefreshWithCustomizedStyleTests extends SiriusDiagramTestCase {
                 newStyleDescriptionFeatureValue = interpreter.evaluateInteger(((DSemanticDecorator) newStyle.eContainer()).getTarget(), (String) newStyleDescriptionFeatureValue);
             }
             Object newStyleFeatureValue = newStyle.eGet(newStyleFeature);
-            if (newStyleFeature instanceof EReference && newStyleDescriptionFeature instanceof EReference) {
+            if (newStyleFeature instanceof EStructuralFeature && newStyleDescriptionFeature instanceof EReference) {
                 if (newStyleDescriptionFeatureValue instanceof EObject && newStyleFeatureValue instanceof EObject) {
                     EObject newStyleDescriptionFeatureEObjectValue = (EObject) newStyleDescriptionFeatureValue;
                     EObject newStyleFeatureEObjectValue = (EObject) newStyleFeatureValue;
@@ -492,12 +494,22 @@ public class RefreshWithCustomizedStyleTests extends SiriusDiagramTestCase {
                             assertEquals(MessageFormat.format(assertMessage, featureName), descValue, value);
                         }
                     }
+                } else if (newStyleDescriptionFeatureValue instanceof FixedColor && newStyleFeatureValue instanceof RGBValues) {
+                    FixedColor colorFromDescription = (FixedColor) newStyleDescriptionFeatureValue;
+                    assertEquals(RGBValues.create(colorFromDescription.getRed(), colorFromDescription.getGreen(), colorFromDescription.getBlue()), (RGBValues) newStyleFeatureValue);
                 }
-
             } else {
-                assertEquals(MessageFormat.format(assertMessage, featureName), newStyleDescriptionFeatureValue, newStyleFeatureValue);
+                assertEquals(MessageFormat.format(assertMessage, featureName), convertToDiagramValues(newStyleDescriptionFeatureValue), newStyleFeatureValue);
             }
         }
+    }
+
+    private Object convertToDiagramValues(Object newStyleDescriptionFeatureValue) {
+        if (newStyleDescriptionFeatureValue instanceof FixedColor) {
+            FixedColor colorDef = (FixedColor) newStyleDescriptionFeatureValue;
+            return RGBValues.create(colorDef.getRed(), colorDef.getGreen(), colorDef.getBlue());
+        }
+        return newStyleDescriptionFeatureValue;
     }
 
     private EStructuralFeature getCorrespondingFeature(EStructuralFeature feature, Style originalStyle, Style newStyle) {
@@ -554,7 +566,11 @@ public class RefreshWithCustomizedStyleTests extends SiriusDiagramTestCase {
         Object currentValue = style.eGet(feature);
         TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
         if (feature instanceof EAttribute) {
-            if (feature.getEType() instanceof EEnum && currentValue instanceof Enumerator) {
+            if (feature.getEType() == ViewpointPackage.Literals.RGB_VALUES) {
+                RGBValues red = RGBValues.create(255, 0, 0);
+                Command customizeStyleCmd = SetCommand.create(domain, style, feature, red);
+                domain.getCommandStack().execute(customizeStyleCmd);
+            } else if (feature.getEType() instanceof EEnum && currentValue instanceof Enumerator) {
                 EEnum eEnum = (EEnum) feature.getEType();
                 Enumerator enumerator = (Enumerator) currentValue;
                 int newEnumeratorIndex = (eEnum.getELiterals().indexOf(eEnum.getEEnumLiteral(enumerator.getName())) + 1) % eEnum.getELiterals().size();

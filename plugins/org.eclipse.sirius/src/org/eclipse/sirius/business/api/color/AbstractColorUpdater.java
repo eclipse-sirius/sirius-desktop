@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,16 +29,16 @@ import org.eclipse.sirius.viewpoint.description.InterpolatedColor;
 public class AbstractColorUpdater {
 
     /** Default red value. */
-    public static final int DEFAULT_RED_VALUE = 209;
+    public static final int DEFAULT_RED_VALUE = RGBValues.DEFAULT_GRAY.getRed();
 
     /** Default green value. */
-    public static final int DEFAULT_GREEN_VALUE = 209;
+    public static final int DEFAULT_GREEN_VALUE = RGBValues.DEFAULT_GRAY.getGreen();
 
     /** Default blue value. */
-    public static final int DEFAULT_BLUE_VALUE = 209;
+    public static final int DEFAULT_BLUE_VALUE = RGBValues.DEFAULT_GRAY.getBlue();
 
     /**
-     * return the computed rgbvalues from an interpolated color description.
+     * Return the computed rgbvalues from an interpolated color description.
      * 
      * @param context
      *            current EObject usde to evaluate expressions.
@@ -57,7 +57,7 @@ public class AbstractColorUpdater {
     }
 
     /**
-     * return the computed rgbvalues from an computed color description.
+     * Return the computed rgbvalues from an computed color description.
      * 
      * @param context
      *            current EObject usde to evaluate expressions.
@@ -76,7 +76,7 @@ public class AbstractColorUpdater {
     }
 
     /**
-     * return the {@link RGBValues} associated with a fixed color description.
+     * Return the {@link RGBValues} associated with a fixed color description.
      * 
      * @param descValue
      *            the color defintion.
@@ -89,20 +89,16 @@ public class AbstractColorUpdater {
     }
 
     /**
-     * return a default rgbvalue.
+     * Return a default rgbvalue.
      * 
      * @return a default rgbvalue.
      */
     protected RGBValues createDefaultRGBValue() {
-        final RGBValues newValues = ViewpointFactory.eINSTANCE.createRGBValues();
-        newValues.setRed(DEFAULT_RED_VALUE);
-        newValues.setGreen(DEFAULT_GREEN_VALUE);
-        newValues.setBlue(DEFAULT_BLUE_VALUE);
-        return newValues;
+        return RGBValues.DEFAULT_GRAY;
     }
 
     /**
-     * return the rgbvalues corresponding to the current color description.
+     * Return the rgbvalues corresponding to the current color description.
      * 
      * @param context
      *            current EObject.
@@ -125,7 +121,7 @@ public class AbstractColorUpdater {
     }
 
     /**
-     * return true if both values are equals.
+     * Return true if both values are equals.
      * 
      * @param originalValue
      *            the first value.

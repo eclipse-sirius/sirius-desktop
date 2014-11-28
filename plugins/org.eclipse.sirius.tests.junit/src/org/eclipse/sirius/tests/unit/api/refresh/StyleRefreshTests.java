@@ -40,7 +40,6 @@ import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.tools.api.ui.color.EnvironmentSystemColorFactory;
 import org.eclipse.sirius.viewpoint.RGBValues;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.SystemColor;
 import org.junit.Assert;
@@ -70,13 +69,8 @@ public class StyleRefreshTests extends SiriusDiagramTestCase implements EcoreMod
 
     private DDiagram diagram;
 
-    private static final RGBValues CUSTOM_COLOR = ViewpointFactory.eINSTANCE.createRGBValues();
+    private static final RGBValues CUSTOM_COLOR = RGBValues.create(33, 33, 33);
 
-    static {
-        CUSTOM_COLOR.setBlue(33);
-        CUSTOM_COLOR.setGreen(33);
-        CUSTOM_COLOR.setRed(33);
-    }
 
     @Override
     protected void setUp() throws Exception {

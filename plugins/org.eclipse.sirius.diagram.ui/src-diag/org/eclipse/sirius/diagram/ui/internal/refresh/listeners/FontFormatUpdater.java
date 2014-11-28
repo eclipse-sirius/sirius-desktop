@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,6 +37,7 @@ import org.eclipse.sirius.diagram.ui.internal.refresh.SynchronizeDDiagramElement
 import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSynchronizer;
 import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.FontFormat;
+import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
@@ -186,6 +187,10 @@ public class FontFormatUpdater extends ResourceSetListenerImpl {
             } else {
                 gmfStylePropertyValue = FontFormat.NORMAL_LITERAL;
             }
+        } else if (gmfStyleAttribute == NotationPackage.Literals.FONT_STYLE__FONT_COLOR) {
+            FontStyle gmfFontStyle = (FontStyle) gmfStyle;
+            gmfStylePropertyValue = RGBValues.integerToRGBValues(gmfFontStyle.getFontColor());
+
         }
         return gmfStylePropertyValue;
     }

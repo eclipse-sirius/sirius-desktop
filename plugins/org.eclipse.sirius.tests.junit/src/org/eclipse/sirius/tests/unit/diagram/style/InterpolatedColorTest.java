@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -26,7 +26,6 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.RGBValues;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.swt.graphics.Color;
 
 import com.google.common.collect.Iterables;
@@ -51,15 +50,15 @@ public class InterpolatedColorTest extends SiriusDiagramTestCase {
 
     private static final String REPRESENTATION_DESC_NAME_D = "test_1176_D";
 
-    private static final RGBValues JAUNE = ViewpointFactory.eINSTANCE.createRGBValues();
+    private static final RGBValues JAUNE = RGBValues.create(255, 255, 0);
 
-    private static final RGBValues ROSE = ViewpointFactory.eINSTANCE.createRGBValues();
+    private static final RGBValues ROSE = RGBValues.create(255, 128, 255);
 
-    private static final RGBValues BLEU = ViewpointFactory.eINSTANCE.createRGBValues();
+    private static final RGBValues BLEU = RGBValues.create(0, 128, 255);
 
-    private static final RGBValues DEFAULT_GREEN = ViewpointFactory.eINSTANCE.createRGBValues();
+    private static final RGBValues DEFAULT_GREEN = RGBValues.create(0, 255, 0);
 
-    private static final RGBValues DEFAULT_RED = ViewpointFactory.eINSTANCE.createRGBValues();
+    private static final RGBValues DEFAULT_RED = RGBValues.create(255, 0, 0);
 
     private static final HashMap<RGBValues, Integer> colorStepValue = new HashMap<RGBValues, Integer>();
 
@@ -68,29 +67,14 @@ public class InterpolatedColorTest extends SiriusDiagramTestCase {
     private DiagramEditor editor;
 
     private void initColors() {
-        BLEU.setRed(0);
-        BLEU.setGreen(128);
-        BLEU.setBlue(255);
         colorStepValue.put(BLEU, 1);
 
-        JAUNE.setRed(255);
-        JAUNE.setGreen(255);
-        JAUNE.setBlue(0);
         colorStepValue.put(JAUNE, 5);
 
-        ROSE.setRed(255);
-        ROSE.setGreen(128);
-        ROSE.setBlue(255);
         colorStepValue.put(ROSE, 10);
 
-        DEFAULT_GREEN.setRed(0);
-        DEFAULT_GREEN.setGreen(255);
-        DEFAULT_GREEN.setBlue(0);
         colorStepValue.put(DEFAULT_GREEN, 0);
 
-        DEFAULT_RED.setRed(255);
-        DEFAULT_RED.setGreen(0);
-        DEFAULT_RED.setBlue(0);
         colorStepValue.put(DEFAULT_RED, 10);
     }
 
@@ -238,7 +222,7 @@ public class InterpolatedColorTest extends SiriusDiagramTestCase {
     private SquareFigure getSquareFigureChild(IFigure figure) {
         return getSquareFigureChild(figure, 0, 50);
     }
-    
+
     private SquareFigure getSquareFigureChild(IFigure figure, int depth, int maxDepth) {
         if (depth >= maxDepth) {
             throw new IllegalStateException("Probable loop in figure hierachy: depth >= " + maxDepth + " at " + figure);
@@ -274,19 +258,14 @@ public class InterpolatedColorTest extends SiriusDiagramTestCase {
         int closestLowerBound = colorStepValue.get(closestLowerFixedColor);
         int closestUpperBound = colorStepValue.get(closestUpperFixedColor);
 
-        final RGBValues rgb = ViewpointFactory.eINSTANCE.createRGBValues();
-        rgb.setBlue(0);
-        rgb.setGreen(0);
-        rgb.setRed(0);
-
         final float scale = ((float) value - closestLowerBound) / (closestUpperBound - closestLowerBound);
         final int valRed = (int) (closestLowerFixedColor.getRed() + ((closestUpperFixedColor.getRed() - closestLowerFixedColor.getRed()) * scale));
         final int valGreen = (int) (closestLowerFixedColor.getGreen() + ((closestUpperFixedColor.getGreen() - closestLowerFixedColor.getGreen()) * scale));
         final int valBlue = (int) (closestLowerFixedColor.getBlue() + ((closestUpperFixedColor.getBlue() - closestLowerFixedColor.getBlue()) * scale));
-        rgb.setRed(VisualBindingManager.clamp(valRed, 0, 255));
-        rgb.setGreen(VisualBindingManager.clamp(valGreen, 0, 255));
-        rgb.setBlue(VisualBindingManager.clamp(valBlue, 0, 255));
-        return rgb;
+        int r = VisualBindingManager.clamp(valRed, 0, 255);
+        int g = VisualBindingManager.clamp(valGreen, 0, 255);
+        int b = VisualBindingManager.clamp(valBlue, 0, 255);
+        return RGBValues.create(r, g, b);
     }
 
     @Override
