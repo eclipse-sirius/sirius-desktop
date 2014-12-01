@@ -15,13 +15,12 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 
-import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
@@ -87,12 +86,6 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
     private final IInterpreter interpreter;
 
     /**
-     * All factories registered by plug-ins mecanism (@see
-     * ComposedAdapterFactory.Descriptor.Registry.INSTANCE)
-     */
-    private final AdapterFactory pluginRegisteredAdapterFactory;
-
-    /**
      * Synchronizer for table elements.
      * 
      * @param accessor
@@ -103,7 +96,6 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
     public DTableElementSynchronizerSpec(final ModelAccessor accessor, final IInterpreter interpreter) {
         this.interpreter = interpreter;
         this.accessor = accessor;
-        this.pluginRegisteredAdapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
     }
 
     /**
@@ -129,7 +121,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
                 // If there is no headerLabelExpression, we use the label
                 // provider
                 // to get label to diplay
-                final String label = getItemProviderLabel(line.getTarget());
+                final String label = getText(line.getTarget());
                 // We change the value only if it's different
                 if (isDifferent(line.getLabel(), label)) {
                     line.setLabel(label);
@@ -202,7 +194,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
                 // If there is no headerLabelExpression, we use the label
                 // provider
                 // to get label to display
-                final String label = getItemProviderLabel(column.getTarget());
+                final String label = getText(column.getTarget());
                 // We change the value only if it's different
                 if (isDifferent(column.getLabel(), label)) {
                     column.setLabel(label);
@@ -1125,18 +1117,16 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
         }
     }
 
-    /**
-     * @param element
-     *            The object for which it wishes to obtain the labelProvider
-     * @return A label provider
-     */
-    private String getItemProviderLabel(final EObject element) {
-        final IItemLabelProvider itemLabelProvider = (IItemLabelProvider) pluginRegisteredAdapterFactory.adapt(element, IItemLabelProvider.class);
-        if (itemLabelProvider != null) {
-            return itemLabelProvider.getText(element);
-        } else {
-            return element.toString();
+    private String getText(final EObject element) {
+        String text = null;
+        ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+        AdapterFactoryItemDelegator adapterFactoryItemDelegator = new AdapterFactoryItemDelegator(adapterFactory);
+        try {
+            text = adapterFactoryItemDelegator.getText(element);
+        } finally {
+            adapterFactory.dispose();
         }
+        return text;
     }
 
     /**
@@ -1149,18 +1139,23 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
      *         column for the instance
      */
     private IItemPropertyDescriptor getPropertyDescriptor(final EObject instance, final String featureName) {
-        final EStructuralFeature structuralFeature = instance.eClass().getEStructuralFeature(featureName);
-        final IItemPropertySource propertySource = (IItemPropertySource) pluginRegisteredAdapterFactory.adapt(instance, IItemPropertySource.class);
         IItemPropertyDescriptor propertyDescriptor = null;
-        if (propertySource != null) {
-            final Iterator<?> iterDescriptors = propertySource.getPropertyDescriptors(instance).iterator();
-            while (iterDescriptors.hasNext() && propertyDescriptor == null) {
-                final IItemPropertyDescriptor currentPropertyDescriptor = (IItemPropertyDescriptor) iterDescriptors.next();
-                final Object currentFeature = currentPropertyDescriptor.getFeature(instance);
-                if (currentFeature != null && currentFeature.equals(structuralFeature)) {
-                    propertyDescriptor = currentPropertyDescriptor;
+        final EStructuralFeature structuralFeature = instance.eClass().getEStructuralFeature(featureName);
+        ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+        try {
+            final IItemPropertySource propertySource = (IItemPropertySource) adapterFactory.adapt(instance, IItemPropertySource.class);
+            if (propertySource != null) {
+                final Iterator<?> iterDescriptors = propertySource.getPropertyDescriptors(instance).iterator();
+                while (iterDescriptors.hasNext() && propertyDescriptor == null) {
+                    final IItemPropertyDescriptor currentPropertyDescriptor = (IItemPropertyDescriptor) iterDescriptors.next();
+                    final Object currentFeature = currentPropertyDescriptor.getFeature(instance);
+                    if (currentFeature != null && currentFeature.equals(structuralFeature)) {
+                        propertyDescriptor = currentPropertyDescriptor;
+                    }
                 }
             }
+        } finally {
+            adapterFactory.dispose();
         }
         return propertyDescriptor;
     }
