@@ -91,7 +91,7 @@ public interface ValidationRule extends EObject {
      * @model default="The element has..." dataType=
      *        "org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation=
-     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
+     *        "http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a string.'"
      * @generated
      */
     String getMessage();

@@ -527,7 +527,7 @@ public class ValidationPackageImpl extends EPackageImpl implements ValidationPac
      */
     protected void createReturnTypeAnnotations() {
         String source = "http://www.eclipse.org/sirius/interpreted/expression/returnType";
-        addAnnotation(getValidationRule_Message(), source, new String[] { "returnType", "a boolean." });
+        addAnnotation(getValidationRule_Message(), source, new String[] { "returnType", "a string." });
         addAnnotation(getRuleAudit_AuditExpression(), source, new String[] { "returnType", "a boolean." });
     }
 
