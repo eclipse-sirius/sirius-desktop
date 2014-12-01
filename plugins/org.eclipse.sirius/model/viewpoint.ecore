@@ -1749,7 +1749,7 @@
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="#//description/InterpretedExpression"
             defaultValueLiteral="The element has...">
           <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
-            <details key="returnType" value="a boolean."/>
+            <details key="returnType" value="a string."/>
           </eAnnotations>
           <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
         </eStructuralFeatures>
