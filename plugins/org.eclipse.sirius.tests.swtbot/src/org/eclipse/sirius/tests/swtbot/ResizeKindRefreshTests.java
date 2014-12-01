@@ -311,9 +311,6 @@ public class ResizeKindRefreshTests extends AbstractSiriusSwtBotGefTestCase {
         boolean resized = !newBounds.equals(initialBounds);
         if (resized) {
             String label = "Set Location or Size";
-            if (isBorderedNode) {
-                label = "Resize";
-            }
             ICondition condition = new OperationUndoneCondition();
             undo(label);
             bot.waitUntil(condition);
