@@ -31,6 +31,10 @@ h4. Changes in @org.eclipse.sirius.diagram@
 
 The @org.eclipse.sirius.diagram.tools.api.command.ChangeLayerActivationCommand@ has been added. This command was previously internal.
 
+h4. Changes in @org.eclipse.sirius.ui@
+
+* The method @org.eclipse.sirius.ui.tools.api.assist.TextContentProposalProvider.bindCompletionProcessor(final AbstractPropertySection section, final Text text)@ has been added to create the binding between a property section and the auto-completion list.
+
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
 The @org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator@ did not take into account the rectangle size passed to @getValidLocation@. To resolve that limitation, several protected methods that took a Point as location now take a Rectangle:
