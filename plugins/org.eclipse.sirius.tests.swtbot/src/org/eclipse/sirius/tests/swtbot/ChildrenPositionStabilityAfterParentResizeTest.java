@@ -45,9 +45,13 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
 
     private static final Point EXPECTED_INITIAL_POSITION_NODE_A = new Point(28, 31);
 
+    private static final Point EXPECTED_INITIAL_POSITION_NODE_DA = new Point(19, 66);
+
     private static final Point EXPECTED_INITIAL_POSITION_B = new Point(444, 182);
 
     private static final Point EXPECTED_INITIAL_POSITION_NODE_B = new Point(29, 30);
+
+    private static final Point EXPECTED_INITIAL_POSITION_NODE_DB = new Point(103, 66);
 
     private static final Point EXPECTED_INITIAL_POSITION_C = new Point(96, 155);
 
@@ -99,6 +103,10 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
 
     private Rectangle nodeDBefore;
 
+    private Rectangle nodeDABefore;
+
+    private Rectangle nodeDBBefore;
+
     /**
      * {@inheritDoc}
      */
@@ -131,6 +139,10 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
         assertThat("Unexpected initial position for node 'CC'.", nodeCBefore.getLocation(), equalTo(EXPECTED_INITIAL_POSITION_NODE_C));
         nodeDBefore = getBounds("CD");
         assertThat("Unexpected initial position for node 'CD'.", nodeDBefore.getLocation(), equalTo(EXPECTED_INITIAL_POSITION_NODE_D));
+        nodeDABefore = getBounds("DA");
+        assertThat("Unexpected initial position for node 'DA'.", nodeDABefore.getLocation(), equalTo(EXPECTED_INITIAL_POSITION_NODE_DA));
+        nodeDBBefore = getBounds("DB");
+        assertThat("Unexpected initial position for node 'DB'.", nodeDBBefore.getLocation(), equalTo(EXPECTED_INITIAL_POSITION_NODE_DB));
     }
 
     /**
@@ -267,6 +279,167 @@ public class ChildrenPositionStabilityAfterParentResizeTest extends AbstractSiri
             if (!zoomLevel.equals(ZoomLevel.ZOOM_100)) {
                 editor.zoom(ZoomLevel.ZOOM_100);
             }
+        }
+    }
+
+    /**
+     * @throws Exception
+     *             if an error occurs
+     */
+    public void test_D_after_expand_P31_to_the_right() throws Exception {
+        test_D_after_expand_P31_to_the_right(ZoomLevel.ZOOM_100);
+    }
+
+    /**
+     * @throws Exception
+     *             if an error occurs
+     */
+    public void test_D_after_expand_P31_to_the_right_zoom125() throws Exception {
+        test_D_after_expand_P31_to_the_right(ZoomLevel.ZOOM_125);
+    }
+
+    /**
+     * @param zoomLevel
+     *            The zoomLevel to apply to editor.
+     * @throws Exception
+     *             if an error occurs
+     */
+    protected void test_D_after_expand_P31_to_the_right(ZoomLevel zoomLevel) throws Exception {
+        editor.maximize();
+        editor.zoom(zoomLevel);
+        try {
+            CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p31");
+            Rectangle bounds = editor.clickCentered("p31");
+            bot.waitUntil(cS);
+            editor.drag(bounds.getRight(), bounds.getRight().getTranslated(TRANSLATION_PLUS_180X));
+
+            checkBoundsAfterDrag("DA", equalTo(nodeDABefore));
+            checkBoundsAfterDrag("DB", equalTo(nodeDBBefore));
+        } finally {
+            if (!zoomLevel.equals(ZoomLevel.ZOOM_100)) {
+                editor.zoom(ZoomLevel.ZOOM_100);
+            }
+            editor.restore();
+        }
+    }
+
+    /**
+     * @throws Exception
+     *             if an error occurs
+     */
+    public void test_D_after_expand_P31_to_the_left() throws Exception {
+        test_D_after_expand_P31_to_the_left(ZoomLevel.ZOOM_100);
+    }
+
+    /**
+     * @throws Exception
+     *             if an error occurs
+     */
+    public void test_D_after_expand_P31_to_the_left_zoom125() throws Exception {
+        test_D_after_expand_P31_to_the_left(ZoomLevel.ZOOM_125);
+    }
+
+    /**
+     * @param zoomLevel
+     *            The zoomLevel to apply to editor.
+     * @throws Exception
+     *             if an error occurs
+     */
+    protected void test_D_after_expand_P31_to_the_left(ZoomLevel zoomLevel) throws Exception {
+        editor.maximize();
+        editor.zoom(zoomLevel);
+        try {
+            CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p31");
+            Rectangle bounds = editor.clickCentered("p31");
+            bot.waitUntil(cS);
+            editor.drag(bounds.getLeft(), bounds.getLeft().getTranslated(TRANSLATION_MINUS_100X));
+            checkBoundsAfterDrag("DA", equalTo(nodeDABefore.getTranslated(TRANSLATION_MINUS_100X.getScaled(1 / zoomLevel.getAmount()).getNegated())));
+            checkBoundsAfterDrag("DB", equalTo(nodeDBBefore.getTranslated(TRANSLATION_MINUS_100X.getScaled(1 / zoomLevel.getAmount()).getNegated())));
+        } finally {
+            if (!zoomLevel.equals(ZoomLevel.ZOOM_100)) {
+                editor.zoom(ZoomLevel.ZOOM_100);
+            }
+            editor.restore();
+        }
+    }
+
+    /**
+     * @throws Exception
+     *             if an error occurs
+     */
+    public void test_D_after_expand_P31_to_the_top() throws Exception {
+        test_D_after_expand_P31_to_the_top(ZoomLevel.ZOOM_100);
+    }
+
+    /**
+     * @throws Exception
+     *             if an error occurs
+     */
+    public void test_D_after_expand_P31_to_the_top_zoom125() throws Exception {
+        test_D_after_expand_P31_to_the_top(ZoomLevel.ZOOM_125);
+    }
+
+    /**
+     * @param zoomLevel
+     *            The zoomLevel to apply to editor.
+     * @throws Exception
+     *             if an error occurs
+     */
+    protected void test_D_after_expand_P31_to_the_top(ZoomLevel zoomLevel) throws Exception {
+        editor.maximize();
+        editor.zoom(zoomLevel);
+        try {
+            CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p31");
+            Rectangle bounds = editor.clickCentered("p31");
+            bot.waitUntil(cS);
+            editor.drag(bounds.getTop(), bounds.getTop().getTranslated(TRANSLATION_MINUS_80Y));
+            checkBoundsAfterDrag("DA", equalTo(nodeDABefore.getTranslated(TRANSLATION_MINUS_80Y.getScaled(1 / zoomLevel.getAmount()).getNegated())));
+            checkBoundsAfterDrag("DB", equalTo(nodeDBBefore.getTranslated(TRANSLATION_MINUS_80Y.getScaled(1 / zoomLevel.getAmount()).getNegated())));
+        } finally {
+            if (!zoomLevel.equals(ZoomLevel.ZOOM_100)) {
+                editor.zoom(ZoomLevel.ZOOM_100);
+            }
+            editor.restore();
+        }
+    }
+
+    /**
+     * @throws Exception
+     *             if an error occurs
+     */
+    public void test_D_after_expand_P31_to_the_bottom() throws Exception {
+        test_D_after_expand_P31_to_the_bottom(ZoomLevel.ZOOM_100);
+    }
+
+    /**
+     * @throws Exception
+     *             if an error occurs
+     */
+    public void test_D_after_expand_P31_to_the_bottom_zoom125() throws Exception {
+        test_D_after_expand_P31_to_the_bottom(ZoomLevel.ZOOM_125);
+    }
+
+    /**
+     * @param zoomLevel
+     *            The zoomLevel to apply to editor.
+     * @throws Exception
+     *             if an error occurs
+     */
+    protected void test_D_after_expand_P31_to_the_bottom(ZoomLevel zoomLevel) throws Exception {
+        editor.maximize();
+        editor.zoom(zoomLevel);
+        try {
+            CheckSelectedCondition cS = new CheckSelectedCondition(editor, "p31");
+            Rectangle bounds = editor.clickCentered("p31");
+            bot.waitUntil(cS);
+            editor.drag(bounds.getBottom(), bounds.getBottom().getTranslated(TRANSLATION_PLUS_80Y));
+            checkBoundsAfterDrag("DA", equalTo(nodeDABefore));
+            checkBoundsAfterDrag("DB", equalTo(nodeDBBefore));
+        } finally {
+            if (!zoomLevel.equals(ZoomLevel.ZOOM_100)) {
+                editor.zoom(ZoomLevel.ZOOM_100);
+            }
+            editor.restore();
         }
     }
 

@@ -36,6 +36,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.operation.MoveViewOperati
 import org.eclipse.sirius.diagram.ui.business.internal.operation.ShiftDirectBorderedNodesOperation;
 import org.eclipse.sirius.diagram.ui.business.internal.query.RequestQuery;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusResizeTracker;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
@@ -150,8 +151,7 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
     private void addChildrenAdjustmentCommands(IGraphicalEditPart resizedPart, CompositeTransactionalCommand cc, ChangeBoundsRequest cbr) {
         PrecisionPoint delta = new PrecisionPoint(cbr.getMoveDelta().getNegated());
         GraphicalHelper.applyInverseZoomOnPoint(resizedPart, delta);
-        DNodeContainerViewNodeContainerCompartmentEditPart compartment = Iterables
-                .getFirst(Iterables.filter(resizedPart.getChildren(), DNodeContainerViewNodeContainerCompartmentEditPart.class), null);
+        AbstractDNodeContainerCompartmentEditPart compartment = Iterables.getFirst(Iterables.filter(resizedPart.getChildren(), AbstractDNodeContainerCompartmentEditPart.class), null);
         if (compartment != null) {
             Iterable<EditPart> childrenExceptBorderItemPart = Iterables.filter(compartment.getChildren(), EditPart.class);
             for (EditPart editPart : childrenExceptBorderItemPart) {
