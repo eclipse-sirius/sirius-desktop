@@ -23,14 +23,13 @@ import org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor;
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.AbstractEditorCreateMenuAction;
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.CreateLineAction;
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.EditorCreateLineMenuAction;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.table.unit.common.TableTestCase;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.EditorActionBarContributor;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.tests.unit.table.unit.common.TableTestCase;
 
 /**
  * Test Refresh action tool bar on table.
@@ -44,11 +43,11 @@ public class RefreshToolActionBarTest extends TableTestCase {
 
     String MODELER_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + "/data/table/unit/tools/tests.odesign";
 
-    String VIEWPOINT_NAME = "test create line";
+    String VIEWPOINT_NAME = "TestTableTools";
 
-    String REPRESENTATION_DESC_NAME1 = "test create line";
+    String REPRESENTATION_DESC_NAME1 = "TestTableTools_Classes";
 
-    String REPRESENTATION_DESC_NAME2 = "test create feature";
+    String REPRESENTATION_DESC_NAME2 = "TestTableTools_Attributes";
 
     String EDITOR_CREATE_LINE_MENU_ID = "CreateLineMenu";
 
@@ -95,7 +94,7 @@ public class RefreshToolActionBarTest extends TableTestCase {
         try {
             List<CreateLineAction> creationsLineAction = (List<CreateLineAction>) getCreateLineActionsForTable.invoke(editorCreateLineMenuAction);
 
-            assertEquals("test create line", creationsLineAction.get(0).getText());
+            assertEquals("TestTableTools_Classes_CreateLine", creationsLineAction.get(0).getText());
 
             editor2 = (AbstractDTableEditor) DialectUIManager.INSTANCE.openEditor(session, dTable2, new NullProgressMonitor());
 
@@ -111,7 +110,7 @@ public class RefreshToolActionBarTest extends TableTestCase {
 
             creationsLineAction = (List<CreateLineAction>) getCreateLineActionsForTable.invoke(editorCreateLineMenuAction);
 
-            assertEquals("Creation feature", creationsLineAction.get(0).getText());
+            assertEquals("TestTableTools_Attributes_CreateLine", creationsLineAction.get(0).getText());
 
             IWorkbenchPage workbenchPage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 
@@ -125,7 +124,7 @@ public class RefreshToolActionBarTest extends TableTestCase {
 
             creationsLineAction = (List<CreateLineAction>) getCreateLineActionsForTable.invoke(editorCreateLineMenuAction);
 
-            assertEquals("test create line", creationsLineAction.get(0).getText());
+            assertEquals("TestTableTools_Classes_CreateLine", creationsLineAction.get(0).getText());
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

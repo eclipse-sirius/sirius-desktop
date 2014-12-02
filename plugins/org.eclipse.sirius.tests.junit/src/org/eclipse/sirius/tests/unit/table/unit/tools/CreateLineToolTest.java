@@ -12,13 +12,12 @@ package org.eclipse.sirius.tests.unit.table.unit.tools;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.sirius.table.metamodel.table.DTable;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.ui.IEditorPart;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Test the good opening of table editor
@@ -33,9 +32,9 @@ public class CreateLineToolTest extends SiriusDiagramTestCase {
 
     String MODELER_PATH = "/" + SiriusTestsPlugin.PLUGIN_ID + "/data/table/unit/tools/tests.odesign";
 
-    String VIEWPOINT_NAME = "test create line";
+    String VIEWPOINT_NAME = "TestTableTools";
 
-    String REPRESENTATION_DESC__NAME = "test create line";
+    String REPRESENTATION_DESC__NAME = "TestTableTools_Classes";
 
     @Override
     protected void setUp() throws Exception {

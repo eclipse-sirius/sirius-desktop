@@ -14,6 +14,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
+
 import org.eclipse.sirius.tests.unit.table.tests.provider.TreeLabelProviderTest;
 import org.eclipse.sirius.tests.unit.table.tests.srs.ExploitArrays_Test;
 import org.eclipse.sirius.tests.unit.table.tests.srs.SpecifyArrays_Test;
@@ -39,6 +40,7 @@ import org.eclipse.sirius.tests.unit.table.unit.sort.DTableSortByLineWithEditorT
 import org.eclipse.sirius.tests.unit.table.unit.tools.CreateLineToolTest;
 import org.eclipse.sirius.tests.unit.table.unit.tools.NoVariableDuplicationTest;
 import org.eclipse.sirius.tests.unit.table.unit.tools.RefreshToolActionBarTest;
+import org.eclipse.sirius.tests.unit.table.unit.tools.TableToolPreconditionCompletionTest;
 import org.eclipse.sirius.tests.unit.table.unit.vsm.edit.TableAdapterFactoryRegistryTest;
 import org.eclipse.sirius.tests.unit.table.unit.vsm.editor.DefaultVariablesOnToolsTest;
 import org.eclipse.sirius.tests.unit.table.unit.vsm.editor.PopupMenuTest;
@@ -86,6 +88,7 @@ public class AllTablePluginTests extends TestCase {
         suite.addTestSuite(SpecifyArrays_Test.class);
         suite.addTestSuite(CreateLineToolTest.class);
         suite.addTestSuite(RefreshToolActionBarTest.class);
+        suite.addTestSuite(TableToolPreconditionCompletionTest.class);
         suite.addTestSuite(DTableSynchronizerVSMWithEditorTest.class);
         suite.addTestSuite(DCrossTableSynchronizerVSMWithEditorTest.class);
         suite.addTestSuite(DCrossTableNoDomainSynchronizerVSMWithEditorTest.class);

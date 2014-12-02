@@ -96,12 +96,6 @@ public class TableInterpretedTargetSwitch extends DescriptionSwitch<Option<Colle
         this.globalSwitch = globalSwitch;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.description.util.DescriptionSwitch#doSwitch(org.eclipse.emf.ecore.EObject)
-     */
     @Override
     public Option<Collection<String>> doSwitch(EObject theEObject) {
         Option<Collection<String>> doSwitch = super.doSwitch(theEObject);
@@ -136,12 +130,6 @@ public class TableInterpretedTargetSwitch extends DescriptionSwitch<Option<Colle
         return getFirstRelevantContainer(featureColumnMapping);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.metamodel.table.description.util.DescriptionSwitch#caseTableDescription(org.eclipse.sirius.table.metamodel.table.description.TableDescription)
-     */
     @Override
     public Option<Collection<String>> caseTableDescription(TableDescription object) {
         Option<Collection<String>> result = null;
@@ -159,12 +147,6 @@ public class TableInterpretedTargetSwitch extends DescriptionSwitch<Option<Colle
         return result;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.metamodel.table.description.util.DescriptionSwitch#caseLineMapping(org.eclipse.sirius.table.metamodel.table.description.LineMapping)
-     */
     @Override
     public Option<Collection<String>> caseLineMapping(LineMapping object) {
         Option<Collection<String>> result = null;
@@ -185,12 +167,6 @@ public class TableInterpretedTargetSwitch extends DescriptionSwitch<Option<Colle
         return result;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.metamodel.table.description.util.DescriptionSwitch#caseElementColumnMapping(org.eclipse.sirius.table.metamodel.table.description.ElementColumnMapping)
-     */
     @Override
     public Option<Collection<String>> caseElementColumnMapping(ElementColumnMapping object) {
         Option<Collection<String>> result = null;
@@ -211,12 +187,6 @@ public class TableInterpretedTargetSwitch extends DescriptionSwitch<Option<Colle
         return result;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.metamodel.table.description.util.DescriptionSwitch#caseFeatureColumnMapping(org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping)
-     */
     @Override
     public Option<Collection<String>> caseFeatureColumnMapping(FeatureColumnMapping object) {
         Option<Collection<String>> result = null;
@@ -235,9 +205,7 @@ public class TableInterpretedTargetSwitch extends DescriptionSwitch<Option<Colle
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Option<Collection<String>> caseCellUpdater(CellUpdater object) {
         Option<Collection<String>> result = null;
         switch (featureID) {
@@ -251,12 +219,6 @@ public class TableInterpretedTargetSwitch extends DescriptionSwitch<Option<Colle
         return result;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.metamodel.table.description.util.DescriptionSwitch#caseIntersectionMapping(org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping)
-     */
     @Override
     public Option<Collection<String>> caseIntersectionMapping(IntersectionMapping object) {
         Option<Collection<String>> result = null;
@@ -308,133 +270,67 @@ public class TableInterpretedTargetSwitch extends DescriptionSwitch<Option<Colle
         return result;
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.metamodel.table.description.util.DescriptionSwitch#caseCreateColumnTool(org.eclipse.sirius.table.metamodel.table.description.CreateColumnTool)
-     */
     @Override
     public Option<Collection<String>> caseCreateColumnTool(CreateColumnTool object) {
+        // getMapping() == eContainer()
         return globalSwitch.doSwitch(object.getMapping(), false);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.metamodel.table.description.util.DescriptionSwitch#caseCreateCellTool(org.eclipse.sirius.table.metamodel.table.description.CreateCellTool)
-     */
     @Override
     public Option<Collection<String>> caseCreateCellTool(CreateCellTool object) {
+        // getMapping() == eContainer()
         return globalSwitch.doSwitch(object.getMapping(), false);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.metamodel.table.description.util.DescriptionSwitch#caseCreateCrossColumnTool(org.eclipse.sirius.table.metamodel.table.description.CreateCrossColumnTool)
-     */
     @Override
     public Option<Collection<String>> caseCreateCrossColumnTool(CreateCrossColumnTool object) {
-        return globalSwitch.doSwitch(object.getMapping(), false);
+        // getMapping() != eContainer()
+        return globalSwitch.doSwitch(getFirstRelevantContainer(object), false);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.metamodel.table.description.util.DescriptionSwitch#caseCreateLineTool(org.eclipse.sirius.table.metamodel.table.description.CreateLineTool)
-     */
     @Override
     public Option<Collection<String>> caseCreateLineTool(CreateLineTool object) {
-        return globalSwitch.doSwitch(object.getMapping(), false);
+        // getMapping() != eContainer()
+        return globalSwitch.doSwitch(getFirstRelevantContainer(object), false);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.metamodel.table.description.util.DescriptionSwitch#caseDeleteColumnTool(org.eclipse.sirius.table.metamodel.table.description.DeleteColumnTool)
-     */
     @Override
     public Option<Collection<String>> caseDeleteColumnTool(DeleteColumnTool object) {
+        // getMapping() == eContainer()
         return globalSwitch.doSwitch(object.getMapping(), false);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.metamodel.table.description.util.DescriptionSwitch#caseDeleteLineTool(org.eclipse.sirius.table.metamodel.table.description.DeleteLineTool)
-     */
     @Override
     public Option<Collection<String>> caseDeleteLineTool(DeleteLineTool object) {
+        // getMapping() == eContainer()
         return globalSwitch.doSwitch(object.getMapping(), false);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.metamodel.table.description.util.DescriptionSwitch#caseForegroundConditionalStyle(org.eclipse.sirius.table.metamodel.table.description.ForegroundConditionalStyle)
-     */
     @Override
     public Option<Collection<String>> caseForegroundConditionalStyle(ForegroundConditionalStyle object) {
         return globalSwitch.doSwitch(getFirstRelevantContainer(object), false);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.metamodel.table.description.util.DescriptionSwitch#caseForegroundStyleDescription(org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription)
-     */
     @Override
     public Option<Collection<String>> caseForegroundStyleDescription(ForegroundStyleDescription object) {
         return globalSwitch.doSwitch(getFirstRelevantContainer(object), false);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.metamodel.table.description.util.DescriptionSwitch#caseBackgroundConditionalStyle(org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle)
-     */
     @Override
     public Option<Collection<String>> caseBackgroundConditionalStyle(BackgroundConditionalStyle object) {
         return globalSwitch.doSwitch(getFirstRelevantContainer(object), false);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.metamodel.table.description.util.DescriptionSwitch#caseBackgroundStyleDescription(org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription)
-     */
     @Override
     public Option<Collection<String>> caseBackgroundStyleDescription(BackgroundStyleDescription object) {
         return globalSwitch.doSwitch(getFirstRelevantContainer(object), false);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.metamodel.table.description.util.DescriptionSwitch#caseTableCreationDescription(org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription)
-     */
     @Override
     public Option<Collection<String>> caseTableCreationDescription(TableCreationDescription object) {
         return globalSwitch.doSwitch(object.getTableDescription(), false);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.table.metamodel.table.description.util.DescriptionSwitch#caseTableNavigationDescription(org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription)
-     */
     @Override
     public Option<Collection<String>> caseTableNavigationDescription(TableNavigationDescription object) {
         return globalSwitch.doSwitch(object.getTableDescription(), false);
