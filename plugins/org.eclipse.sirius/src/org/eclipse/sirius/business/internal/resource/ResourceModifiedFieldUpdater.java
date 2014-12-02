@@ -16,7 +16,9 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.Resource.Internal;
 import org.eclipse.emf.transaction.Transaction;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain;
@@ -58,10 +60,18 @@ public class ResourceModifiedFieldUpdater extends DelegatingValidateEditSupport 
     @Override
     public void handleResourceChange(Resource resource, Notification notification) {
         super.handleResourceChange(resource, notification);
-        if (!resource.isModified() && !changedResources.contains(resource) && !new NotificationQuery(notification).isTransientNotification()) {
+        if (!resource.isModified() && !isInLoad(resource) && !changedResources.contains(resource) && isResourceModelChange(notification)) {
             changedResources.add(resource);
         }
+    }
 
+    private boolean isResourceModelChange(Notification notification) {
+        return (notification.getNotifier() instanceof EObject || notification.getFeatureID(null) == Resource.RESOURCE__CONTENTS) && !new NotificationQuery(notification).isTransientNotification();
+    }
+
+    private boolean isInLoad(Resource resource) {
+        boolean isInLoad = resource instanceof Internal && ((Internal) resource).isLoading();
+        return isInLoad;
     }
 
     @Override

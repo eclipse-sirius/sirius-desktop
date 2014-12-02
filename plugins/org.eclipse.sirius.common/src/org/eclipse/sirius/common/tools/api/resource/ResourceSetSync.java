@@ -33,7 +33,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
-import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
@@ -122,11 +121,10 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
             if (!isCustom(notif)) {
                 notifyChanged(notif, changes);
             }
-            if (notif.getNotifier() instanceof ResourceSet && notif.getNewValue() instanceof Resource) {
-
-                if (notif.getEventType() == Notification.ADD) {
+            if (notif.getNotifier() instanceof ResourceSet) {
+                if (notif.getEventType() == Notification.ADD && notif.getNewValue() instanceof Resource) {
                     newResourceOnTheResourceSet((Resource) notif.getNewValue(), changes);
-                } else if (notif.getEventType() == Notification.REMOVE) {
+                } else if (notif.getEventType() == Notification.REMOVE && notif.getOldValue() instanceof Resource) {
                     removeResource((Resource) notif.getNewValue());
                 }
             }
@@ -197,9 +195,6 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
      */
     public static ResourceStatus getStatus(final Resource res) {
         ResourceStatus result = ResourceStatus.UNKNOWN;
-        if (res.isModified()) {
-            result = ResourceStatus.CHANGED;
-        }
         ResourceSet rs = res.getResourceSet();
         if (rs != null) {
             ResourceSetSync rss = ResourceSetSync.getResourceSetSync(rs);
@@ -264,13 +259,6 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
         }
     }
 
-    private boolean isLoading(final Resource resource) {
-        if (resource instanceof ResourceImpl) {
-            return ((ResourceImpl) resource).isLoading();
-        }
-        return false;
-    }
-
     private void newResourceOnTheResourceSet(final Resource res, Collection<ResourceStatusChange> changes) {
         /*
          * tracking modification means listening to any change to the resource
@@ -304,20 +292,16 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
             }
         } else if (notifier instanceof Resource) {
             final Resource res = (Resource) notifier;
-            if (!notification.isTouch() && notification.getFeatureID(null) == Resource.RESOURCE__IS_MODIFIED && !res.isModified()) {
+            if (notification.getFeatureID(null) == Resource.RESOURCE__IS_MODIFIED && !res.isModified()) {
                 resourceNewStatus(res, ResourceStatus.SYNC, changes);
-            } else if (notification.getFeatureID(null) == Resource.RESOURCE__CONTENTS) {
+            } else if (res.isModified() && notification.getFeatureID(null) == Resource.RESOURCE__CONTENTS) {
                 handleResourceChange(res, changes);
             }
         }
     }
 
     private void handleResourceChange(final Resource resource, Collection<ResourceStatusChange> changes) {
-        if (resource.isLoaded() && !isLoading(resource)) {
-            resourceNewStatus(resource, ResourceStatus.CHANGED, changes);
-        } else {
-            resourceNewStatus(resource, ResourceStatus.SYNC, changes);
-        }
+        resourceNewStatus(resource, ResourceStatus.CHANGED, changes);
     }
 
     @Override
