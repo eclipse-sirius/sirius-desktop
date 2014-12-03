@@ -27,8 +27,6 @@ import org.eclipse.swtbot.swt.finder.keyboard.Keystrokes;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
 
-import com.google.common.collect.Sets;
-
 /**
  * Test that check that tools does not become invisible in toolbar after the
  * first use.
@@ -74,25 +72,16 @@ public class NotInvisibleTabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
     private SWTBotSiriusDiagramEditor editor;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         changeDiagramUIPreference(SiriusDiagramUiPreferencesKeys.PREF_OLD_UI.name(), false);
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-
-        // Activate Design viewpoint
-        localSession.changeViewpointSelection(Sets.newHashSet("Design"), Sets.<String> newHashSet());
 
         // Open the entity diagram
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "Entities", "aaaa package entities", DDiagram.class);

@@ -65,7 +65,6 @@ import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * 
@@ -246,6 +245,7 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
         // The Zoom Combo should not take the focus, the Figure canvas should.
         final SWTBotGefFigureCanvas canvas = editorToCheck.getCanvas();
         Result<Boolean> hasFocus = new Result<Boolean>() {
+            @Override
             public Boolean run() {
                 return canvas.widget.isFocusControl();
             }
@@ -477,9 +477,6 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
         if (!TestsUtil.isDynamicTabbar()) {
             return;
         }
-
-        // Activate Design viewpoint
-        localSession.changeViewpointSelection(Sets.newHashSet("Design"), Sets.<String> newHashSet());
 
         // close the current editor
         editor.close();

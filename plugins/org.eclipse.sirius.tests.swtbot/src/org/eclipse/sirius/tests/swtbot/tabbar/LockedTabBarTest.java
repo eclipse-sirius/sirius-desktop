@@ -12,19 +12,19 @@ package org.eclipse.sirius.tests.swtbot.tabbar;
 
 import java.util.Collection;
 
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
-import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ecore.extender.business.internal.permission.ReadOnlyPermissionAuthority;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.Widget;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
@@ -36,11 +36,10 @@ import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
- * When a DDiagram is locked by using a permission authority some actions are
- * still available.
+ * Ensure that when DDiagram is locked by using a permission authority all
+ * actions are disabled in the tabbar.
  * 
  * https://bugs.eclipse.org/bugs/show_bug.cgi?id=442761
  * 
@@ -89,31 +88,18 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
 
     private SWTBotSiriusDiagramEditor editor;
 
-    private UIDiagramRepresentation diagram;
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
-        changeDiagramUIPreference(SiriusDiagramUiPreferencesKeys.PREF_OLD_UI.name(), false);
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        // Activate Design viewpoint
-        localSession.changeViewpointSelection(Sets.newHashSet("Design"), Sets.<String> newHashSet());
-
-        // Open the entity diagram
-        diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint("Design").selectRepresentation("Entities").selectDiagramInstance("aaaa package entities").open();
-        editor = diagram.getEditor();
+        // Open the editor
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "Entities", "aaaa package entities", DDiagram.class);
     }
 
     /**
@@ -130,7 +116,8 @@ public class LockedTabBarTest extends AbstractSiriusSwtBotGefTestCase {
         checkEnabledWithSelectedElement(true);
 
         // activate the ReadOnlyPermission Authority on the representation
-        ((ReadOnlyPermissionAuthority) PermissionAuthorityRegistry.getDefault().getPermissionAuthority(diagram.getDRepresentation())).activate();
+        DialectEditor dialectEditor = (DialectEditor) editor.getReference().getEditor(false);
+        ((ReadOnlyPermissionAuthority) PermissionAuthorityRegistry.getDefault().getPermissionAuthority(dialectEditor.getRepresentation())).activate();
 
         looseAndRetrieveTheFocus();
 
