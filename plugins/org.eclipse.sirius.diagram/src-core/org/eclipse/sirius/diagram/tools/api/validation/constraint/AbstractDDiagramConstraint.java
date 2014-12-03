@@ -51,17 +51,20 @@ import org.eclipse.sirius.viewpoint.description.validation.ViewValidationRule;
 public abstract class AbstractDDiagramConstraint extends AbstractModelConstraint {
     @Override
     public IStatus validate(final IValidationContext ctx) {
-        final EObject objetTeste = ctx.getTarget();
+        final EObject objectToValidate = ctx.getTarget();
         final EMFEventType typeEvenement = ctx.getEventType();
-        if (typeEvenement == EMFEventType.NULL && (objetTeste instanceof DDiagramElement)) {
-            final Collection<ValidationRule> failures = getFailingRules((DDiagramElement) objetTeste);
+        if (typeEvenement == EMFEventType.NULL) {
+            final Collection<ValidationRule> failures = getFailingRules(objectToValidate);
             if (failures.size() > 0) {
                 final MultiStatus parentStatus = new MultiStatus(SiriusPlugin.ID, getHighestStatusCode(failures), "Validation issues", null);
                 for (ValidationRule failedRule : failures) {
-                    EObject target = objetTeste;
-                    if (failedRule instanceof SemanticValidationRule) {
-                        target = ((DDiagramElement) objetTeste).getTarget();
+                    EObject target = objectToValidate;
+
+                    // Change the target for SemanticValidationRule
+                    if (failedRule instanceof SemanticValidationRule && objectToValidate instanceof DSemanticDecorator) {
+                        target = ((DSemanticDecorator) objectToValidate).getTarget();
                     }
+
                     final ConstraintStatus emfStatus = (ConstraintStatus) ctx.createFailureStatus(new Object[] { failedRule.getMessage(target) });
                     parentStatus.add(new RuleWrappingStatus(emfStatus, failedRule));
                 }
@@ -97,50 +100,61 @@ public abstract class AbstractDDiagramConstraint extends AbstractModelConstraint
 
     /**
      * 
-     * @param objetTeste
+     * @param objectToValidate
      *            object we are testing.
      * @return the first {@link ValidationRule} conform to isValid() which
      *         fails.
      */
-    private Collection<ValidationRule> getFailingRules(final DDiagramElement objetTeste) {
+    private Collection<ValidationRule> getFailingRules(final EObject objectToValidate) {
         final Collection<ValidationRule> failingRules = new ArrayList<ValidationRule>();
-        final DDiagram diagram = objetTeste.getParentDiagram();
+
+        // Get the DDiagram
+        DDiagram diagram = null;
+        if (objectToValidate instanceof DDiagram) {
+            diagram = (DDiagram) objectToValidate;
+        } else if (objectToValidate instanceof DDiagramElement) {
+            diagram = ((DDiagramElement) objectToValidate).getParentDiagram();
+        }
+
         if (diagram != null) {
             /*
              * If some rules are manually activated, then we'll pick in these
              * ones, otherwhise we'll use all the rules.
              */
             if (diagram.getActivatedRules().size() > 0) {
-                failingRules.addAll(getFaillingRulesFromCollection(objetTeste, diagram.getActivatedRules().iterator()));
+                failingRules.addAll(getFaillingRulesFromCollection(objectToValidate, diagram.getActivatedRules().iterator()));
             } else if (diagram.getDescription() != null) {
                 final DiagramDescription desc = diagram.getDescription();
                 final ValidationSet validationSet = desc.getValidationSet();
                 if (validationSet != null) {
-                    failingRules.addAll(getFaillingRulesFromCollection(objetTeste, validationSet.getAllRules().iterator()));
+                    failingRules.addAll(getFaillingRulesFromCollection(objectToValidate, validationSet.getAllRules().iterator()));
                 }
             }
-            failingRules.addAll(checkRulesFromActivatedViewpoints(objetTeste, diagram));
+            failingRules.addAll(checkRulesFromActivatedViewpoints(objectToValidate, diagram));
         }
+
         return failingRules;
     }
 
-    private Collection<ValidationRule> checkRulesFromActivatedViewpoints(final DDiagramElement objetTeste, final DDiagram diagram) {
-        final EObject semantic = objetTeste.getTarget();
-        final ValidationRule firstFailingRule = null;
-        final Session session = SessionManager.INSTANCE.getSession(semantic);
-        if (session != null) {
-            final Iterator<Viewpoint> it = session.getSelectedViewpoints(false).iterator();
-            while (it.hasNext() && firstFailingRule == null) {
-                final Viewpoint vp = it.next();
-                if (vp.getValidationSet() != null) {
-                    return getFaillingRulesFromCollection(objetTeste, vp.getValidationSet().getAllRules().iterator());
+    private Collection<ValidationRule> checkRulesFromActivatedViewpoints(final EObject objectToValidate, final DDiagram diagram) {
+        if (objectToValidate instanceof DSemanticDecorator) {
+            final EObject semantic = ((DSemanticDecorator) objectToValidate).getTarget();
+            final Session session = SessionManager.INSTANCE.getSession(semantic);
+            if (session != null) {
+                final Iterator<Viewpoint> it = session.getSelectedViewpoints(false).iterator();
+                while (it.hasNext()) {
+                    final Viewpoint vp = it.next();
+                    if (vp.getValidationSet() != null) {
+                        return getFaillingRulesFromCollection(objectToValidate, vp.getValidationSet().getAllRules().iterator());
+                    }
                 }
             }
         }
+
         return Collections.emptyList();
     }
 
-    private Collection<ValidationRule> getFaillingRulesFromCollection(final DDiagramElement objetTeste, final Iterator<ValidationRule> it) {
+    private Collection<ValidationRule> getFaillingRulesFromCollection(final EObject objectToValidate, final Iterator<ValidationRule> it) {
         final Collection<ValidationRule> failingRules = new ArrayList<ValidationRule>();
         /*
          * Iterate and return the first failling rule. null if no rule is
@@ -149,17 +163,18 @@ public abstract class AbstractDDiagramConstraint extends AbstractModelConstraint
         while (it.hasNext()) {
             final ValidationRule rule = it.next();
             if (isValid(rule)) {
-                EObject semanticTargetElement = ((DSemanticDecorator) objetTeste).getTarget();
-                if (rule instanceof SemanticValidationRule && ((SemanticValidationRule) rule).getTargetClass() != null && !StringUtil.isEmpty(((SemanticValidationRule) rule).getTargetClass().trim())) {
-                    if (isSemanticElementToValidate(objetTeste, semanticTargetElement, ((SemanticValidationRule) rule).getTargetClass())) {
+                if (objectToValidate instanceof DSemanticDecorator && rule instanceof SemanticValidationRule && ((SemanticValidationRule) rule).getTargetClass() != null
+                        && !StringUtil.isEmpty(((SemanticValidationRule) rule).getTargetClass().trim())) {
+                    EObject semanticTargetElement = ((DSemanticDecorator) objectToValidate).getTarget();
+                    if (isSemanticElementToValidate(objectToValidate, semanticTargetElement, ((SemanticValidationRule) rule).getTargetClass())) {
                         if (!rule.checkRule(semanticTargetElement)) {
                             failingRules.add(rule);
                         }
                     }
-                } else if (rule instanceof ViewValidationRule) {
-                    final DiagramElementMapping objMapping = objetTeste.getDiagramElementMapping();
+                } else if (objectToValidate instanceof DDiagramElement && rule instanceof ViewValidationRule) {
+                    final DiagramElementMapping objMapping = ((DDiagramElement) objectToValidate).getDiagramElementMapping();
                     if (objMapping != null && ((ViewValidationRule) rule).getTargets().contains(objMapping)) {
-                        if (!rule.checkRule(objetTeste)) {
+                        if (!rule.checkRule(objectToValidate)) {
                             failingRules.add(rule);
                         }
                     }
@@ -173,7 +188,7 @@ public abstract class AbstractDDiagramConstraint extends AbstractModelConstraint
      * Check if this element must be validated.
      * 
      * @param objectToValidate
-     *            The diagram element to validate
+     *            The object to validate
      * @param semanticElement
      *            The semantic element associated with the
      *            <code>objectToValidate</code>.
@@ -181,7 +196,7 @@ public abstract class AbstractDDiagramConstraint extends AbstractModelConstraint
      *            The expected class for the semantic element.
      * @return true if the semantic element must be validate, false otherwise.
      */
-    private boolean isSemanticElementToValidate(DDiagramElement objectToValidate, EObject semanticElement, String expectedClass) {
+    private boolean isSemanticElementToValidate(EObject objectToValidate, EObject semanticElement, String expectedClass) {
         boolean result = false;
         if (SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(semanticElement).eInstanceOf(semanticElement, expectedClass)) {
             if (objectToValidate instanceof DEdge) {

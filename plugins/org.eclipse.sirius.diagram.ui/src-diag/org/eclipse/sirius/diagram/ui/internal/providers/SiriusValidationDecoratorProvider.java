@@ -37,6 +37,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditDomain;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.AbstractDecorator;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.CreateDecoratorsOperation;
+import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoration;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecorator;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorProvider;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget;
@@ -82,6 +83,7 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
     /**
      * @was-generated
      */
+    @Override
     public void createDecorators(IDecoratorTarget decoratorTarget) {
         EditPart editPart = (EditPart) decoratorTarget.getAdapter(EditPart.class);
         if (editPart instanceof GraphicalEditPart || editPart instanceof AbstractConnectionEditPart) {
@@ -105,6 +107,7 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
     /**
      * @was-generated
      */
+    @Override
     public boolean provides(IOperation operation) {
         if (!(operation instanceof CreateDecoratorsOperation)) {
             return false;
@@ -132,10 +135,12 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
         final Diagram fdiagram = diagram;
         PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
 
+            @Override
             public void run() {
                 try {
                     TransactionUtil.getEditingDomain(fdiagram).runExclusive(new Runnable() {
 
+                        @Override
                         public void run() {
                             for (Iterator it = decorators.iterator(); it.hasNext();) {
                                 IDecorator decorator = (IDecorator) it.next();
@@ -169,6 +174,7 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
                 final View view = (View) getDecoratorTarget().getAdapter(View.class);
                 TransactionUtil.getEditingDomain(view).runExclusive(new Runnable() {
 
+                    @Override
                     public void run() {
                         StatusDecorator.this.viewId = view != null ? SiriusGMFHelper.getViewId(view) : null;
                     }
@@ -181,6 +187,7 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
         /**
          * @not-generated
          */
+        @Override
         public void refresh() {
             removeDecoration();
             View view = (View) getDecoratorTarget().getAdapter(View.class);
@@ -248,14 +255,25 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
 
             // add decoration
             if (editPart instanceof org.eclipse.gef.GraphicalEditPart) {
-                if (view instanceof Edge) {
-                    setDecoration(getDecoratorTarget().addConnectionDecoration(getImage(severity), 50, true));
+                IDecoration decoration = null;
+
+                if (view instanceof Diagram) {
+                    // There is not yet defined decorator for a diagram
+                } else if (view instanceof Edge) {
+                    decoration = getDecoratorTarget().addConnectionDecoration(getImage(severity), 50, true);
                 } else {
                     int margin = -1;
                     margin = MapModeUtil.getMapMode(((org.eclipse.gef.GraphicalEditPart) editPart).getFigure()).DPtoLP(margin);
-                    setDecoration(getDecoratorTarget().addShapeDecoration(getImage(severity), IDecoratorTarget.Direction.NORTH_EAST, margin, true));
+                    decoration = getDecoratorTarget().addShapeDecoration(getImage(severity), IDecoratorTarget.Direction.NORTH_EAST, margin, true);
                 }
-                getDecoration().setToolTip(toolTip);
+
+                if (decoration != null) {
+                    setDecoration(decoration);
+
+                    // getDecaration() returns a {@link Decoration} instead of a
+                    // {@link IDecoration}
+                    getDecoration().setToolTip(toolTip);
+                }
             }
         }
 
@@ -280,6 +298,7 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
         /**
          * @was-generated
          */
+        @Override
         public void activate() {
             if (viewId == null) {
                 return;
@@ -312,6 +331,7 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
         /**
          * @was-generated
          */
+        @Override
         public void deactivate() {
             if (viewId == null) {
                 return;
@@ -356,36 +376,42 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
         /**
          * @was-generated
          */
+        @Override
         public void handleFileRenamed(IFile oldFile, IFile file) {
         }
 
         /**
          * @was-generated
          */
+        @Override
         public void handleFileMoved(IFile oldFile, IFile file) {
         }
 
         /**
          * @was-generated
          */
+        @Override
         public void handleFileDeleted(IFile file) {
         }
 
         /**
          * @was-generated
          */
+        @Override
         public void handleFileChanged(IFile file) {
         }
 
         /**
          * @was-generated
          */
+        @Override
         public void handleMarkerAdded(IMarker marker) {
             if (marker.getAttribute(org.eclipse.gmf.runtime.common.ui.resources.IMarker.ELEMENT_ID, null) != null) {
                 handleMarkerChanged(marker);
             }
         }
 
+        @Override
         public void handleMarkerDeleted(IMarker marker, Map attributes) {
             if (attributes != null) {
                 String viewId = (String) attributes.get(org.eclipse.gmf.runtime.common.ui.resources.IMarker.ELEMENT_ID);
@@ -396,6 +422,7 @@ public class SiriusValidationDecoratorProvider extends AbstractProvider implemen
         /**
          * @was-generated
          */
+        @Override
         public void handleMarkerChanged(IMarker marker) {
             if (!MARKER_TYPE.equals(getType(marker))) {
                 return;

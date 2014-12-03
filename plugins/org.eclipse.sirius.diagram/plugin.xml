@@ -318,7 +318,8 @@
                <message>
                   <![CDATA[{0}]]>
                </message>               
-               <target class="DDiagramElement"/>                                   
+               <target class="DDiagramElement"/>
+               <target class="DDiagram"/>
             </constraint>
             <constraint
                   lang="Java"
@@ -333,7 +334,8 @@
                <message>
                   <![CDATA[{0}]]>
                </message>               
-               <target class="DDiagramElement"/>                                   
+               <target class="DDiagramElement"/>
+               <target class="DDiagram"/>
             </constraint>
             <constraint
                   lang="Java"
@@ -348,7 +350,8 @@
                <message>
                   <![CDATA[{0}]]>
                </message>               
-               <target class="DDiagramElement"/>                                   
+               <target class="DDiagramElement"/>
+               <target class="DDiagram"/>
             </constraint>
          </constraints>
       </constraintProvider>      

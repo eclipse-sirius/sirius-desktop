@@ -20,21 +20,26 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.ILogListener;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.gmf.runtime.common.ui.util.WorkbenchPartDescriptor;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusMarkerNavigationProvider;
 import org.eclipse.sirius.diagram.ui.part.ValidateAction;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.ui.IEditorPart;
 
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
 
 /**
  * Validation tests.
@@ -125,13 +130,16 @@ public class DiagramValidationTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Test there is only one error by elements not validate and not many errors
-     * message duplicate for same element. Test VP-2940
+     * Test there is only one error by elements not validated and not many
+     * errors message duplicate for same element. See VP-2940
      * 
-     * @throws Exception
+     * Also check that there is only one semantic error for the root element.
+     * See https://bugs.eclipse.org/bugs/show_bug.cgi?id=441642
+     * 
+     * @throws CoreException
      *             Test errors.
      */
-    public void testValidationOnlyOneErrorMessage() throws Exception {
+    public void testValidationOnlyOneErrorMessage() throws CoreException {
         diagram = (DDiagram) createRepresentation(REPRESENTATION_DESC_NAME_BREAKDOWN, rootEPackage);
 
         editorPart = DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
@@ -154,38 +162,101 @@ public class DiagramValidationTest extends SiriusDiagramTestCase {
 
         // Check markers
         EPackage root = (EPackage) ((DSemanticDecorator) diagram).getTarget();
-        checkMarkers(root, foundUIMarkers, 0, 1, "element_edge_");
+        checkSemanticMarkers(root, foundUIMarkers, 1);
 
         EPackage ap1 = root.getESubpackages().get(0);
-        checkMarkers(ap1, foundUIMarkers, 1, 1, "container_");
+        checkMarkers(ap1, foundUIMarkers, 1, 1);
 
         EPackage ap2 = ap1.getESubpackages().get(0);
-        checkMarkers(ap2, foundUIMarkers, 1, 1, "container_");
+        checkMarkers(ap2, foundUIMarkers, 1, 1);
 
         verify(logListener);
     }
 
-    private void checkMarkers(EPackage tgt, IMarker[] foundMarkers, int nbViewMarker, int nbSemanticMarker, String locationPrefix) {
+    /**
+     * Get the first {@link DNode} with target equals to the parameter.
+     * 
+     * @param target
+     *            target to find
+     * @return first valid {@link DNode} found
+     */
+    private DDiagramElement getGraphicNodeElement(final EObject target) {
+        return Iterables.find(diagram.getDiagramElements(), new Predicate<DDiagramElement>() {
+            @Override
+            public boolean apply(DDiagramElement element) {
+                return element instanceof DNode && element.getTarget() == target;
+            }
+        });
+    }
+
+    /**
+     * Check markers for {@code semanticElement}.
+     * 
+     * @param semanticElement
+     *            semantic element to check
+     * @param foundMarkers
+     *            markers found
+     * @param expectedNbViewMarker
+     *            expected number of view marker for the first {@link DNode}
+     *            with target equals to {@code semanticElement}
+     * @param expectedNbSemanticMarker
+     *            expected number of semantic marker for {@code semanticElement}
+     */
+    private void checkMarkers(EPackage semanticElement, IMarker[] foundMarkers, int expectedNbViewMarker, int expectedNbSemanticMarker) {
+        DDiagramElement graphicElement = getGraphicNodeElement(semanticElement);
+        String semanticName = semanticElement.getName();
+        String graphicName = graphicElement.getName();
+
+        // Two cases to find:
+        String graphicCase = "Graphic - The " + graphicName + " element is KO -> View rule OK";
+        String semanticCase = "The " + semanticName + " element is KO -> Semantic rule OK";
+
         int graphicMarkers = 0;
         int semanticMarkers = 0;
         for (IMarker marker : foundMarkers) {
             try {
-                String location = (String) marker.getAttribute(IMarker.LOCATION);
                 String message = (String) marker.getAttribute(IMarker.MESSAGE);
-
-                if (location.endsWith(locationPrefix + tgt.getName())) {
-                    if (message.startsWith("Graphic - ") && message.endsWith("-> View rule OK")) {
-                        graphicMarkers++;
-                    } else if (message.endsWith("-> Semantic rule OK")) {
-                        semanticMarkers++;
-                    }
+                if (message.equals(graphicCase)) {
+                    graphicMarkers++;
+                } else if (message.equals(semanticCase)) {
+                    semanticMarkers++;
                 }
             } catch (CoreException e) {
                 fail(e.getMessage());
             }
         }
-        assertEquals("The element " + tgt.getName() + " does not have the expected ViewValidationRule markers", nbViewMarker, graphicMarkers);
-        assertEquals("The element " + tgt.getName() + " does not have the expected SemanticValidationRule markers", nbSemanticMarker, semanticMarkers);
+
+        assertEquals("The graphic element '" + graphicName + "' does not have the expected ViewValidationRule markers", expectedNbViewMarker, graphicMarkers);
+        assertEquals("The semantic element '" + semanticName + "' does not have the expected SemanticValidationRule markers", expectedNbSemanticMarker, semanticMarkers);
+    }
+
+    /**
+     * Check semantic markers for {@code semanticElement}.
+     * 
+     * @param semanticElement
+     *            semantic element to check
+     * @param foundMarkers
+     *            markers found
+     * @param expectedNbSemanticMarker
+     *            expected number of semantic marker for {@code semanticElement}
+     */
+    private void checkSemanticMarkers(EPackage semanticElement, IMarker[] foundMarkers, int expectedNbSemanticMarker) {
+        String semanticName = semanticElement.getName();
+        String expectedMessage = "The " + semanticName + " element is KO -> Semantic rule OK";
+
+        int semanticMarkers = 0;
+        for (IMarker marker : foundMarkers) {
+            try {
+                String message = (String) marker.getAttribute(IMarker.MESSAGE);
+                if (message.equals(expectedMessage)) {
+                    semanticMarkers++;
+                }
+            } catch (CoreException e) {
+                fail(e.getMessage());
+            }
+        }
+
+        assertEquals("The semantic element '" + semanticName + "' does not have the expected SemanticValidationRule markers", expectedNbSemanticMarker, semanticMarkers);
     }
 
     @Override
