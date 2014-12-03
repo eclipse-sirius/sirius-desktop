@@ -150,6 +150,7 @@ public class DiagramShapeColorAndFontPropertySection extends ShapeColorsAndFonts
                     final RGB finalColor = color; // need a final variable
                     commands.add(createCommand(commandName, ((View) ep.getModel()).eResource(), new Runnable() {
 
+                        @Override
                         public void run() {
                             final ENamedElement element = PackageUtil.getElement(propertyId);
                             if (element instanceof EStructuralFeature) {
@@ -209,8 +210,11 @@ public class DiagramShapeColorAndFontPropertySection extends ShapeColorsAndFonts
         final Image imageUnderline = DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.UNDERLINE_ICON);
         final Image imageStrikeThrough = DiagramUIPlugin.getPlugin().getBundledImage(DiagramImagesPath.STRIKE_THROUGH_ICON);
 
+        boolean isReadOnly = isReadOnly();
+
         fontUnderlineButton = new Button(toolBar, SWT.TOGGLE);
         fontUnderlineButton.setImage(imageUnderline);
+        fontUnderlineButton.setEnabled(!isReadOnly);
         fontUnderlineButton.getAccessible().addAccessibleListener(new AccessibleAdapter() {
             @Override
             public void getName(final AccessibleEvent e) {
@@ -220,6 +224,7 @@ public class DiagramShapeColorAndFontPropertySection extends ShapeColorsAndFonts
 
         fontStrikeThroughButton = new Button(toolBar, SWT.TOGGLE);
         fontStrikeThroughButton.setImage(imageStrikeThrough);
+        fontStrikeThroughButton.setEnabled(!isReadOnly);
         fontStrikeThroughButton.getAccessible().addAccessibleListener(new AccessibleAdapter() {
             @Override
             public void getName(final AccessibleEvent e) {
@@ -241,13 +246,13 @@ public class DiagramShapeColorAndFontPropertySection extends ShapeColorsAndFonts
                 setBackgroundImage(event);
             }
         });
-        setStyleToWorkspaceImageButton.setEnabled(!isReadOnly());
+        setStyleToWorkspaceImageButton.setEnabled(!isReadOnly);
 
         resetStylePropertiesToDefaultValuesButton = new Button(toolBar, SWT.PUSH);
         resetStylePropertiesToDefaultValuesButton.setToolTipText(ResetStylePropertiesToDefaultValuesAction.ACTION_NAME);
         resetStylePropertiesToDefaultValuesButton.setImage(imageUndo);
         resetStylePropertiesToDefaultValuesButton.addSelectionListener(new ResetStylePropertiesToDefaultValuesSelectionAdapter(this));
-        resetStylePropertiesToDefaultValuesButton.setEnabled(!isReadOnly());
+        resetStylePropertiesToDefaultValuesButton.setEnabled(!isReadOnly);
 
         fontUnderlineButton.addSelectionListener(new SelectionAdapter() {
 
@@ -379,6 +384,7 @@ public class DiagramShapeColorAndFontPropertySection extends ShapeColorsAndFonts
             super.refresh();
             executeAsReadAction(new Runnable() {
 
+                @Override
                 public void run() {
                     final IGraphicalEditPart ep = getSingleInput();
                     if (ep != null) {
@@ -395,10 +401,16 @@ public class DiagramShapeColorAndFontPropertySection extends ShapeColorsAndFonts
                         if (setStyleToWorkspaceImageButton != null) {
                             setStyleToWorkspaceImageButton.setEnabled(!isReadOnly && enableWorkspaceImageButton);
                         }
-                        boolean underlined = (Boolean) ep.getStructuralFeatureValue(NotationPackage.eINSTANCE.getFontStyle_Underline());
-                        boolean striked = (Boolean) ep.getStructuralFeatureValue(NotationPackage.eINSTANCE.getFontStyle_StrikeThrough());
-                        fontUnderlineButton.setSelection(underlined);
-                        fontStrikeThroughButton.setSelection(striked);
+                        if (fontUnderlineButton != null) {
+                            boolean underlined = (Boolean) ep.getStructuralFeatureValue(NotationPackage.eINSTANCE.getFontStyle_Underline());
+                            fontUnderlineButton.setSelection(underlined);
+                            fontUnderlineButton.setEnabled(!isReadOnly);
+                        }
+                        if (fontStrikeThroughButton != null) {
+                            boolean striked = (Boolean) ep.getStructuralFeatureValue(NotationPackage.eINSTANCE.getFontStyle_StrikeThrough());
+                            fontStrikeThroughButton.setSelection(striked);
+                            fontStrikeThroughButton.setEnabled(!isReadOnly);
+                        }
                     }
                 }
             });
@@ -414,6 +426,7 @@ public class DiagramShapeColorAndFontPropertySection extends ShapeColorsAndFonts
             final IGraphicalEditPart ep = (IGraphicalEditPart) it.next();
             commands.add(createCommand(FONT_COMMAND_NAME, ((View) ep.getModel()).eResource(), new Runnable() {
 
+                @Override
                 public void run() {
                     ep.setStructuralFeatureValue(NotationPackage.eINSTANCE.getFontStyle_Underline(), Boolean.valueOf(fontUnderlineButton.getSelection()));
                 }
@@ -433,6 +446,7 @@ public class DiagramShapeColorAndFontPropertySection extends ShapeColorsAndFonts
             final IGraphicalEditPart ep = (IGraphicalEditPart) it.next();
             commands.add(createCommand(FONT_COMMAND_NAME, ((View) ep.getModel()).eResource(), new Runnable() {
 
+                @Override
                 public void run() {
                     ep.setStructuralFeatureValue(NotationPackage.eINSTANCE.getFontStyle_StrikeThrough(), Boolean.valueOf(fontStrikeThroughButton.getSelection()));
                 }

@@ -231,6 +231,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(TabBarTest.class);
         suite.addTestSuite(NotInvisibleTabBarTest.class);
         suite.addTestSuite(LockedTabBarTest.class);
+        suite.addTestSuite(LockedAppearanceTabTest.class);
         suite.addTestSuite(ArrangeSelectionOnBreakdownDiagramTest.class);
         suite.addTestSuite(EdgeCreationTest.class);
         suite.addTestSuite(RoutingStyleTest.class);
