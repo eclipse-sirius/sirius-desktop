@@ -10,7 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import org.eclipse.gmf.runtime.common.ui.action.IDisposableAction;
+import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
+import org.eclipse.gmf.runtime.diagram.ui.actions.internal.RouterAction;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.RouterMenuManager;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
@@ -52,15 +57,72 @@ public class TabbarRouterMenuManager extends RouterMenuManager {
         super.dispose();
     }
 
+    /**
+     * Set the default action id for this menu manager.
+     * 
+     * @param actionId
+     *            the action id to set
+     */
+    public void setDefaultAction(String actionId) {
+        for (final IContributionItem item : getItems()) {
+            if (item instanceof ActionContributionItem) {
+                if (actionId.equals(((ActionContributionItem) item).getAction().getId())) {
+                    final IAction defaultAction = ((ActionContributionItem) item).getAction();
+                    setHandler(defaultAction);
+                    super.setDefaultAction(defaultAction);
+                    return;
+                }
+            }
+        }
+    }
+
+    /**
+     * We should use reflection to access the default handler method
+     * 
+     * @param defaultAction
+     *            the default action to set
+     */
+    private void setHandler(final IAction defaultAction) {
+        Method method;
+        try {
+            method = MenuCreatorAction.class.getDeclaredMethod("setActionHandler", IAction.class);
+            method.setAccessible(true);
+            method.invoke(super.action, defaultAction);
+        } catch (SecurityException e) {
+            /* do nothing should not happen */
+        } catch (NoSuchMethodException e) {
+            /* do nothing should not happen */
+        } catch (IllegalArgumentException e) {
+            /* do nothing should not happen */
+        } catch (IllegalAccessException e) {
+            /* do nothing should not happen */
+        } catch (InvocationTargetException e) {
+            /* do nothing should not happen */
+        }
+    }
+
     @Override
     public void setVisible(boolean visible) {
         super.setVisible(visible);
         if (isEmpty() && visible) {
             IWorkbenchPage page = EclipseUIUtil.getActivePage();
             if (page != null) {
-                add(TabbarRouterAction.createRectilinearRouterAction(page));
-                add(TabbarRouterAction.createObliqueRouterAction(page));
-                add(TabbarRouterAction.createTreeRouterAction(page));
+                RouterAction rectilinearAction = TabbarRouterAction.createRectilinearRouterAction(page);
+                add(rectilinearAction);
+                RouterAction obliqueAction = TabbarRouterAction.createObliqueRouterAction(page);
+                add(obliqueAction);
+                RouterAction treeAction = TabbarRouterAction.createTreeRouterAction(page);
+                add(treeAction);
+                // Use the last used action as default action (until no action
+                // has been explicitly launched by expanding the combo, the
+                // button has no effect).
+                if (rectilinearAction.getText().equals(super.action.getText())) {
+                    setDefaultAction(ActionIds.ACTION_ROUTER_RECTILINEAR);
+                } else if (obliqueAction.getText().equals(super.action.getText())) {
+                    setDefaultAction(ActionIds.ACTION_ROUTER_OBLIQUE);
+                } else if (treeAction.getText().equals(super.action.getText())) {
+                    setDefaultAction(ActionIds.ACTION_ROUTER_TREE);
+                }
             }
         }
     }
