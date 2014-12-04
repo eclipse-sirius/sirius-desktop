@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/tree/description/1.0.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_3="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:tree="http://www.eclipse.org/sirius/tree/1.0.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/tree/description/1.0.0 http://www.eclipse.org/sirius/tree/1.0.0#//description http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/emf/2002/Ecore platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_lZQ4MEnqEeKHZ6tnn691Pw" selectedViews="_5QmuEHvIEeSOtdxBclBTTQ" version="8.1.1">
+  <models xmi:type="ecore:EPackage" href="test.ecore#/"/>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_5QmuEHvIEeSOtdxBclBTTQ" initialized="true">
+    <ownedRepresentations xmi:type="tree:DTree" xmi:id="_5Q8FQHvIEeSOtdxBclBTTQ" name="tree">
+      <target xmi:type="ecore:EPackage" href="test.ecore#/"/>
+      <ownedTreeItems xmi:type="tree:DTreeItem" xmi:id="_5Q8FQXvIEeSOtdxBclBTTQ" name="EClass1">
+        <target xmi:type="ecore:EClass" href="test.ecore#//@eClassifiers.0"/>
+        <semanticElements xmi:type="ecore:EPackage" href="test.ecore#//@eSubpackages.0"/>
+        <semanticElements xmi:type="ecore:EPackage" href="test.ecore#//@eSubpackages.1"/>
+        <ownedStyle xmi:type="tree:TreeItemStyle" xmi:id="_5Q8FQnvIEeSOtdxBclBTTQ">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_5Q8FQ3vIEeSOtdxBclBTTQ"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_5Q8FRHvIEeSOtdxBclBTTQ" red="255" green="255" blue="255"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description:TreeItemMapping" href="test.odesign#//@ownedViewpoints[name='test']/@ownedRepresentations[name='tree']/@subItemMappings[name='class']"/>
+      </ownedTreeItems>
+      <description xmi:type="description:TreeDescription" href="test.odesign#//@ownedViewpoints[name='test']/@ownedRepresentations[name='tree']"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="table:DTable" xmi:id="_5RW8AHvIEeSOtdxBclBTTQ" name="edit_table" headerColumnWidth="916">
+      <target xmi:type="ecore:EPackage" href="test.ecore#/"/>
+      <lines xmi:type="table:DLine" xmi:id="_5RW8AXvIEeSOtdxBclBTTQ" label="EClass EClass1">
+        <target xmi:type="ecore:EClass" href="test.ecore#//@eClassifiers.0"/>
+        <semanticElements xmi:type="ecore:EPackage" href="test.ecore#//@eSubpackages.0"/>
+        <semanticElements xmi:type="ecore:EPackage" href="test.ecore#//@eSubpackages.1"/>
+        <originMapping xmi:type="description_1:LineMapping" href="test.odesign#//@ownedViewpoints[name='test']/@ownedRepresentations[name='edit_table']/@ownedLineMappings[name='']"/>
+      </lines>
+      <description xmi:type="description_1:EditionTableDescription" href="test.odesign#//@ownedViewpoints[name='test']/@ownedRepresentations[name='edit_table']"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="table:DTable" xmi:id="_5RZYQHvIEeSOtdxBclBTTQ" name="cross_table">
+      <target xmi:type="ecore:EPackage" href="test.ecore#/"/>
+      <lines xmi:type="table:DLine" xmi:id="_5RZYQXvIEeSOtdxBclBTTQ" label="EClass EClass1">
+        <target xmi:type="ecore:EClass" href="test.ecore#//@eClassifiers.0"/>
+        <semanticElements xmi:type="ecore:EPackage" href="test.ecore#//@eSubpackages.0"/>
+        <semanticElements xmi:type="ecore:EPackage" href="test.ecore#//@eSubpackages.1"/>
+        <originMapping xmi:type="description_1:LineMapping" href="test.odesign#//@ownedViewpoints[name='test']/@ownedRepresentations[name='cross_table']/@ownedLineMappings[name='']"/>
+      </lines>
+      <description xmi:type="description_1:CrossTableDescription" href="test.odesign#//@ownedViewpoints[name='test']/@ownedRepresentations[name='cross_table']"/>
+    </ownedRepresentations>
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_6EHR0HvMEeSOtdxBclBTTQ" name="diagram">
+      <ownedAnnotationEntries xmi:type="description_2:AnnotationEntry" xmi:id="_6EH44HvMEeSOtdxBclBTTQ" source="GMF_DIAGRAMS">
+        <data xmi:type="notation:Diagram" xmi:id="_6EH44XvMEeSOtdxBclBTTQ" type="Sirius" element="_6EHR0HvMEeSOtdxBclBTTQ" measurementUnit="Pixel">
+          <children xmi:type="notation:Node" xmi:id="_6EH443vMEeSOtdxBclBTTQ" type="2002" element="_6EHR0XvMEeSOtdxBclBTTQ">
+            <children xmi:type="notation:Node" xmi:id="_6EJHAHvMEeSOtdxBclBTTQ" type="5006"/>
+            <children xmi:type="notation:Node" xmi:id="_6EJHAXvMEeSOtdxBclBTTQ" type="7001">
+              <styles xmi:type="notation:SortingStyle" xmi:id="_6EJuEHvMEeSOtdxBclBTTQ"/>
+              <styles xmi:type="notation:FilteringStyle" xmi:id="_6EJuEXvMEeSOtdxBclBTTQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_6EH45HvMEeSOtdxBclBTTQ" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6EH45XvMEeSOtdxBclBTTQ"/>
+          </children>
+          <styles xmi:type="notation:DiagramStyle" xmi:id="_6EH44nvMEeSOtdxBclBTTQ"/>
+        </data>
+      </ownedAnnotationEntries>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_6EHR0XvMEeSOtdxBclBTTQ" name="EClass1">
+        <target xmi:type="ecore:EClass" href="test.ecore#//@eClassifiers.0"/>
+        <semanticElements xmi:type="ecore:EPackage" href="test.ecore#//@eSubpackages.0"/>
+        <semanticElements xmi:type="ecore:EPackage" href="test.ecore#//@eSubpackages.1"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_6EHR0nvMEeSOtdxBclBTTQ">
+          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_6EHR03vMEeSOtdxBclBTTQ"/>
+          <description xmi:type="style:FlatContainerStyleDescription" href="test.odesign#//@ownedViewpoints[name='test']/@ownedRepresentations[name='diagram']/@defaultLayer/@containerMappings[name='eClass']/@style"/>
+          <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_6EHR1HvMEeSOtdxBclBTTQ"/>
+          <backgroundColor xmi:type="viewpoint:RGBValues" xmi:id="_6EHR1XvMEeSOtdxBclBTTQ" red="255" green="255" blue="255"/>
+          <foregroundColor xmi:type="viewpoint:RGBValues" xmi:id="_6EHR1nvMEeSOtdxBclBTTQ" red="209" green="209" blue="209"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_3:ContainerMapping" href="test.odesign#//@ownedViewpoints[name='test']/@ownedRepresentations[name='diagram']/@defaultLayer/@containerMappings[name='eClass']"/>
+      </ownedDiagramElements>
+      <description xmi:type="description_3:DiagramDescription" href="test.odesign#//@ownedViewpoints[name='test']/@ownedRepresentations[name='diagram']"/>
+      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_6EHR13vMEeSOtdxBclBTTQ"/>
+      <activatedLayers xmi:type="description_3:Layer" href="test.odesign#//@ownedViewpoints[name='test']/@ownedRepresentations[name='diagram']/@defaultLayer"/>
+      <target xmi:type="ecore:EPackage" href="test.ecore#/"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description_2:Viewpoint" href="test.odesign#//@ownedViewpoints[name='test']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>

@@ -18,7 +18,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.ui.provider.PropertySource;
-import org.eclipse.ui.views.properties.IPropertySource;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.ui.properties.propertysource.TreeCompositeEObjectPropertySource;
 import org.eclipse.sirius.tree.ui.properties.section.common.AbstractDTreePropertySection;
@@ -26,7 +26,7 @@ import org.eclipse.sirius.ui.tools.api.properties.AbstractCompositeEObjectProper
 import org.eclipse.sirius.ui.tools.api.properties.AbstractEObjectPropertySource;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.ui.views.properties.IPropertySource;
 
 /**
  * Properties for the semantic model.
@@ -35,16 +35,15 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
  */
 public class SemanticPropertySection extends AbstractDTreePropertySection {
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.views.properties.IPropertySourceProvider#getPropertySource(java.lang.Object)
-     */
+    @Override
     public IPropertySource getPropertySource(final Object object) {
         IPropertySource propSrc = null;
 
         if (object instanceof IPropertySource) {
             propSrc = (IPropertySource) object;
+        } else if (object instanceof DTreeItem) {
+            final DTreeItem item = (DTreeItem) object;
+            propSrc = getPropertySource(item);
         } else if (object instanceof DSemanticDecorator) {
             final DSemanticDecorator semanticDecorator = (DSemanticDecorator) object;
             propSrc = getPropertySource(semanticDecorator);

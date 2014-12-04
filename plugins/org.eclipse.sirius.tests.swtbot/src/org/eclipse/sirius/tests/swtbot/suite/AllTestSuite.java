@@ -208,6 +208,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(DiagramPrintTest.class);
         suite.addTestSuite(DirectEditLabelTest.class);
         suite.addTestSuite(SelectAllAndDeselectionTest.class);
+        suite.addTestSuite(AssociatedElementsOnPropertyViewTest.class);
     }
 
     /**
