@@ -172,6 +172,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(SelectAllAndDeselectionTest.class);
         suite.addTestSuite(NoteCreationTest.class);
         suite.addTestSuite(NoteCreationWithSnapToGridTest.class);
+        suite.addTestSuite(AssociatedElementsOnPropertyViewTest.class);
         suite.addTestSuite(NodeCreationTest.class);
         suite.addTestSuite(NodeCreationWithSnapToGridTest.class);
         suite.addTestSuite(ContainerCreationTest.class);
