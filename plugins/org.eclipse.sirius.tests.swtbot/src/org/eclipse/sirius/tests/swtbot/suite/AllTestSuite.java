@@ -127,6 +127,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(KeyboardDeleteFromDiagramTests.class);
         suite.addTestSuite(CustomClipboardSupportTest.class);
         suite.addTestSuite(KeyboardDeletionFromLabelTests.class);
+        suite.addTestSuite(DragAndDropDifferentElementsTest.class);
     }
 
     /**

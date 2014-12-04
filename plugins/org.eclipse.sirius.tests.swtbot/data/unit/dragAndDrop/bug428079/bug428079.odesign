@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="My" version="10.0.0.201411061000">
+  <ownedViewpoints name="bug428079" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="bug428079" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <nodeMappings name="NewEClass3" semanticCandidatesExpression="[eClassifiers->select(name='NewEClass3')/]" domainClass="EClass" dropDescriptions="//@ownedViewpoints[name='bug428079']/@ownedRepresentations[name='bug428079']/@defaultLayer/@toolSections.0/@ownedTools[name='dnd']">
+          <borderedNodeMappings xsi:type="description_1:NodeMappingImport" name="AttBN" semanticCandidatesExpression="feature:eAllAttributes" importedMapping="//@ownedViewpoints[name='bug428079']/@ownedRepresentations[name='bug428079']/@defaultLayer/@containerMappings[name='NewEClass2']/@subNodeMappings[name='attr']"/>
+          <borderedNodeMappings name="borderNodeRefEClass3" semanticCandidatesExpression="feature:eStructuralFeatures" domainClass="EReference">
+            <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+          </style>
+        </nodeMappings>
+        <containerMappings name="NewEClass1" semanticCandidatesExpression="[eClassifiers->select(name='NewEClass1')/]" domainClass="EClass" dropDescriptions="//@ownedViewpoints[name='bug428079']/@ownedRepresentations[name='bug428079']/@defaultLayer/@toolSections.0/@ownedTools[name='dnd']" childrenPresentation="List">
+          <borderedNodeMappings name="borderNodeRef" semanticCandidatesExpression="feature:eStructuralFeatures" domainClass="EReference">
+            <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </borderedNodeMappings>
+          <subNodeMappings name="listElementAtt" semanticCandidatesExpression="feature:eAllAttributes" domainClass="EAttribute">
+            <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="NewEClass2" semanticCandidatesExpression="[eClassifiers->select(name='NewEClass2')/]" domainClass="EClass" dropDescriptions="//@ownedViewpoints[name='bug428079']/@ownedRepresentations[name='bug428079']/@defaultLayer/@toolSections.0/@ownedTools[name='dnd']">
+          <borderedNodeMappings name="borderNodeRefEClass2" semanticCandidatesExpression="feature:eStructuralFeatures" domainClass="EReference">
+            <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </borderedNodeMappings>
+          <subNodeMappings name="attr" semanticCandidatesExpression="feature:eAllAttributes" domainClass="EAttribute">
+            <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="def">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="dnd" mappings="//@ownedViewpoints[name='bug428079']/@ownedRepresentations[name='bug428079']/@defaultLayer/@containerMappings[name='NewEClass2']/@borderedNodeMappings[name='borderNodeRefEClass2'] //@ownedViewpoints[name='bug428079']/@ownedRepresentations[name='bug428079']/@defaultLayer/@nodeMappings[name='NewEClass3']/@borderedNodeMappings[name='borderNodeRefEClass3'] //@ownedViewpoints[name='bug428079']/@ownedRepresentations[name='bug428079']/@defaultLayer/@containerMappings[name='NewEClass1']/@borderedNodeMappings[name='borderNodeRef'] //@ownedViewpoints[name='bug428079']/@ownedRepresentations[name='bug428079']/@defaultLayer/@containerMappings[name='NewEClass2']/@subNodeMappings[name='attr'] //@ownedViewpoints[name='bug428079']/@ownedRepresentations[name='bug428079']/@defaultLayer/@nodeMappings[name='NewEClass3']/@borderedNodeMappings[name='AttBN'] //@ownedViewpoints[name='bug428079']/@ownedRepresentations[name='bug428079']/@defaultLayer/@containerMappings[name='NewEClass1']/@subNodeMappings[name='listElementAtt']">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eStructuralFeatures"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>
