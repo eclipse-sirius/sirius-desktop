@@ -38,8 +38,10 @@ import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.matcher.geometry.PointAround;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.hamcrest.core.IsNot;
 import org.junit.Assert;
 
 /**
@@ -443,6 +445,7 @@ public abstract class AbstractUmlDragAndDropTest extends AbstractSiriusSwtBotGef
                 Point newPoint = newPoints.getPoint(i);
                 Assert.assertEquals("The two points at index " + i + " should be equal", originalPoint, newPoint);
                 Assert.assertEquals("The two GMF points at index " + i + " should be equal", originalGmfPointsFromSource.get(i), newGMFBendpointsFromSource.get(i));
+                assertThat("The two GMF points at index " + i + " should be equal", newGMFBendpointsFromSource.get(i), PointAround.around(originalGmfPointsFromSource.get(i), 1));
             }
 
             // moved points
@@ -450,7 +453,7 @@ public abstract class AbstractUmlDragAndDropTest extends AbstractSiriusSwtBotGef
                 Point originalPoint = originalPoints.getPoint(i);
                 Point newPoint = newPoints.getPoint(i);
                 Assert.assertNotEquals("The two points at index " + i + " should be different", originalPoint, newPoint);
-                Assert.assertNotEquals("The two GMF points at index " + i + " should be different", originalGmfPointsFromSource.get(i), newGMFBendpointsFromSource.get(i));
+                assertThat("The two GMF points at index " + i + " should be different", newGMFBendpointsFromSource.get(i), IsNot.not(PointAround.around(originalGmfPointsFromSource.get(i), 1)));
             }
         } else {
             // EdgeRouting.STRAIGHT: the first point has moved
@@ -462,7 +465,7 @@ public abstract class AbstractUmlDragAndDropTest extends AbstractSiriusSwtBotGef
                 Point originalPoint = originalPoints.getPoint(i);
                 Point newPoint = newPoints.getPoint(i);
                 Assert.assertNotEquals("The two points at index " + i + " should be different", originalPoint, newPoint);
-                Assert.assertNotEquals("The two GMF points at index " + i + " should be different", originalGmfPointsFromSource.get(i), newGMFBendpointsFromSource.get(i));
+                assertThat("The two GMF points at index " + i + " should be different", newGMFBendpointsFromSource.get(i), IsNot.not(PointAround.around(originalGmfPointsFromSource.get(i), 1)));
             }
 
             // unmoved points
@@ -470,7 +473,7 @@ public abstract class AbstractUmlDragAndDropTest extends AbstractSiriusSwtBotGef
                 Point originalPoint = originalPoints.getPoint(i);
                 Point newPoint = newPoints.getPoint(i);
                 Assert.assertEquals("The two points at index " + i + " should be equal", originalPoint, newPoint);
-                Assert.assertEquals("The two GMF points at index " + i + " should be equal", originalGmfPointsFromSource.get(i), newGMFBendpointsFromSource.get(i));
+                assertThat("The two GMF points at index " + i + " should be equal", newGMFBendpointsFromSource.get(i), PointAround.around(originalGmfPointsFromSource.get(i), 1));
             }
         }
         if (isEquals(originalPoints, originalGmfPointsFromSource) && !isEquals(newPoints, newGMFBendpointsFromSource)) {
