@@ -133,6 +133,7 @@ import com.google.common.collect.Maps;
  * 
  * @author ymortier
  */
+@SuppressWarnings("restriction")
 public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
 
     /**
@@ -167,11 +168,6 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
      */
     private RectangleFigure highlightFigure;
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editpolicies.GraphicalNodeEditPolicy#getReconnectSourceCommand(org.eclipse.gef.requests.ReconnectRequest)
-     */
     @Override
     protected Command getReconnectSourceCommand(final ReconnectRequest request) {
         if (request.getConnectionEditPart().getModel() instanceof Edge) {
@@ -264,6 +260,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         restoreMissingBendpointOverCandidate(request, connectionPointList);
 
         // Set the connection bendpoints with a PointList using a command
+        @SuppressWarnings("unchecked")
         SetConnectionBendpointsCommand sbbCommand = new SetReconnectingConnectionBendpointsCommand(editingDomain, sourceView, sourceView.getSourceEdges(), ReconnectionKind.RECONNECT_SOURCE_LITERAL);
         sbbCommand.setNewPointList(connectionPointList, tempSourceRefPoint, tempTargetRefPoint);
 
@@ -271,11 +268,6 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         return new ICommandProxy(cc);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editpolicies.GraphicalNodeEditPolicy#getReconnectTargetCommand(org.eclipse.gef.requests.ReconnectRequest)
-     */
     @Override
     protected Command getReconnectTargetCommand(final ReconnectRequest request) {
         if (request.getConnectionEditPart().getModel() instanceof Edge) {
@@ -402,7 +394,6 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
      * 
      * @see org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy#getReconnectTargetCommand(org.eclipse.gef.requests.ReconnectRequest)
      */
-    @SuppressWarnings("restriction")
     private Command getReconnectTargetCommandAfterTool(ReconnectRequest request) {
         INodeEditPart node = getConnectableEditPart();
         if (node == null || getConnectionCompleteEditPart(request) == null)
@@ -436,6 +427,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             pointList.addPoint(sourceAnchor.getLocation(targetAnchor.getReferencePoint()));
             pointList.addPoint(targetAnchor.getLocation(sourceAnchor.getReferencePoint()));
 
+            @SuppressWarnings("unchecked")
             SetConnectionBendpointsCommand sbbCommand = new SetReconnectingConnectionBendpointsCommand(editingDomain, targetView, targetView.getTargetEdges(),
                     ReconnectionKind.RECONNECT_TARGET_LITERAL);
             sbbCommand.setNewPointList(pointList, sourceAnchor.getReferencePoint(), targetAnchor.getReferencePoint());
@@ -461,6 +453,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             restoreMissingBendpointOverCandidate(request, connectionPointList);
 
             // Set the connection bendpoints with a PointList using a command
+            @SuppressWarnings("unchecked")
             SetConnectionBendpointsCommand sbbCommand = new SetReconnectingConnectionBendpointsCommand(editingDomain, targetView, targetView.getTargetEdges(),
                     ReconnectionKind.RECONNECT_TARGET_LITERAL);
             sbbCommand.setNewPointList(connectionPointList, tempSourceRefPoint, tempTargetRefPoint);
@@ -511,7 +504,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         ArrayList<Point> previousBendpoints = Lists.<Point> newArrayList();
         if (bendpoints instanceof RelativeBendpoints && sourceEndAnchorLocation != null && targetEndAnchorLocation != null) {
             RelativeBendpoints relativeBendpoints = (RelativeBendpoints) bendpoints;
-            List points = relativeBendpoints.getPoints();
+            List<?> points = relativeBendpoints.getPoints();
             for (RelativeBendpoint rbp : Iterables.filter(points, RelativeBendpoint.class)) {
                 Point benpointLocationFromSource = sourceEndAnchorLocation.getTranslated(rbp.getSourceX(), rbp.getSourceY());
                 Point benpointLocationFromTarget = targetEndAnchorLocation.getTranslated(rbp.getTargetX(), rbp.getTargetY());
@@ -658,9 +651,6 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         return UnexecutableCommand.INSTANCE;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Command getConnectionCreateCommand(CreateConnectionRequest request) {
         Command connectionCreateCommand = null;
@@ -708,11 +698,6 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         return connectionCreateCommand;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editpolicies.TreeGraphicalNodeEditPolicy#getConnectionCompleteCommand(org.eclipse.gef.requests.CreateConnectionRequest)
-     */
     @Override
     protected Command getConnectionCompleteCommand(final CreateConnectionRequest request) {
         Command connectionCompleteCommand = null;
@@ -1062,9 +1047,6 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         });
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Command getRoutingAdjustment(IAdaptable connection, String connectionHint, Routing currentRouterType, EditPart target) {
         Command cmd = null;
@@ -1135,12 +1117,6 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         return super.getConnectionCompleteEditPart(request);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy#showTargetConnectionFeedback(org.eclipse.gef.requests.DropRequest)
-     */
     @Override
     protected void showTargetConnectionFeedback(DropRequest request) {
         removeHighlight();
@@ -1171,6 +1147,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         } else {
 
             highlightFigure = new RectangleFigure() {
+                @Override
                 public void paint(Graphics graphics) {
                     graphics.setAlpha(128);
                     super.paint(graphics);
@@ -1182,15 +1159,16 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
         }
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy#eraseTargetConnectionFeedback(org.eclipse.gef.requests.DropRequest)
-     */
     @Override
     protected void eraseTargetConnectionFeedback(DropRequest request) {
         removeHighlight();
+    }
+
+    @Override
+    public void deactivate() {
+        // Last chance to remove the existing high light
+        removeHighlight();
+        super.deactivate();
     }
 
     /**
