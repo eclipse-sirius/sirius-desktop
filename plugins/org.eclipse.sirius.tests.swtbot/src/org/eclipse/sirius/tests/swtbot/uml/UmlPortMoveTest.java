@@ -25,7 +25,6 @@ import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
-import org.eclipse.sirius.tests.swtbot.support.api.matcher.geometry.PointAround;
 
 /**
  * This class test moving and drag'and'drop ports.
@@ -39,15 +38,9 @@ public class UmlPortMoveTest extends AbstractUmlDragAndDropTest {
 
     private static final String DND_REPRESENTATION_NAME = "Component Diagram";
 
-    private static final String MOVE_DIAGRAM_NAME_PREFIX = "Move ";
-
-    private static final String RESIZE_DIAGRAM_NAME_PREFIX = "Resize ";
-
     private static final String MOVE_REPRESENTATION_PORT_ON_CONTAINER_NAME = "Component Diagram-MovePortOnContainer";
 
     private static final String MOVE_REPRESENTATION_PORT_ON_CONTAINER_IN_CONTAINER_NAME = "Component Diagram-MovePortOnContainerInContainer";
-
-    private static final String MOVE_REPRESENTATION_PORT_ON_NODE_NAME = "Component Diagram-MovePortOnNode";
 
     private static final String MOVE_REPRESENTATION_PORT_ON_NODE_IN_CONTAINER_NAME = "Component Diagram-MovePortOnNodeInContainer";
 
@@ -170,7 +163,7 @@ public class UmlPortMoveTest extends AbstractUmlDragAndDropTest {
 
         final Rectangle newPortBounds = getEditPartBounds(DROP_PORT_NAME);
 
-        assertThat("Port is not at expected position (it may have changed of container)", newPortBounds.getTopRight(), PointAround.around(originalTopRight.getTranslated(translation), 5));
+        assertEquals("Port is not at expected position (it may have changed of container)", newPortBounds.getTopRight(), originalTopRight.getTranslated(translation));
     }
 
     /**
@@ -305,8 +298,7 @@ public class UmlPortMoveTest extends AbstractUmlDragAndDropTest {
         // Get the new bounds and compare with the expected
         final Rectangle newPortBounds = getEditPartBounds(DROP_PORT_NAME);
         if (checkMoving) {
-            assertThat("Port is not at expected position (probably not moved but resized)", newPortBounds.getTopRight(),
-                    PointAround.around(originalPortBounds.getTopRight().getTranslated(VERTICAL_TRANSLATION), 5));
+            assertEquals("Port is not at expected position (probably not moved but resized)", newPortBounds.getTopRight(), originalPortBounds.getTopRight().getTranslated(VERTICAL_TRANSLATION));
 
             if (originalDraw2DPoints != null && originalGmfPointsFromSource != null) {
                 // check the stability of the existing edge when moving the
@@ -314,7 +306,7 @@ public class UmlPortMoveTest extends AbstractUmlDragAndDropTest {
                 checkEdgeStability(DROP_PORT_NAME, AbstractDiagramBorderNodeEditPart.class, originalDraw2DPoints, originalGmfPointsFromSource);
             }
         } else {
-            assertThat("Port is not at expected position (probably not moved but resized)", newPortBounds.getTopRight(), PointAround.around(originalPortBounds.getTopRight(), 0));
+            assertEquals("Port is not at expected position (probably not moved but resized)", newPortBounds.getTopRight(), originalPortBounds.getTopRight());
         }
     }
 }
