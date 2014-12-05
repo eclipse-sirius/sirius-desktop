@@ -51,11 +51,6 @@ public class ArrangeSelectionLayoutProvider extends AbstractLayoutProvider {
     private AbstractLayoutProvider initialLayoutProvider;
 
     /**
-     * List of ShapeNodeEditPart not selected on the current diagram.
-     */
-    private ArrayList<ShapeNodeEditPart> notSelectedShapeNodeEditPart;
-
-    /**
      * List of IDiagramElementEditPart not selected and unpinned on the current
      * diagram.
      */
@@ -121,7 +116,7 @@ public class ArrangeSelectionLayoutProvider extends AbstractLayoutProvider {
                 if (arrangeIsArrangeSelection) {
                     // Find out unselected diagram element on container (same
                     // parent) that are unpinned
-                    notSelectedShapeNodeEditPart = Lists.newArrayList(Iterables.filter(topLevelEditParts, editPartIsNotSelected));
+                    List<ShapeNodeEditPart> notSelectedShapeNodeEditPart = Lists.newArrayList(Iterables.filter(topLevelEditParts, editPartIsNotSelected));
                     notSelectedShapeNodeEditPart.removeAll(selectedObjectsLinkedList);
                     notSelectedShapeNodeEditPartAndUnpinned = Lists.newArrayList(Iterables.filter(Iterables.filter(notSelectedShapeNodeEditPart, IDiagramElementEditPart.class),
                             diagramElementEditPartIsUnpinned));
@@ -143,8 +138,7 @@ public class ArrangeSelectionLayoutProvider extends AbstractLayoutProvider {
                     // to keep fixed in PinnedElementsHandler
                     final IAdaptable originalHint = layoutHint;
                     updatedLayoutHint = new IAdaptable() {
-                        public Object getAdapter(@SuppressWarnings("rawtypes")
-                        Class adapter) {
+                        public Object getAdapter(@SuppressWarnings("rawtypes") Class adapter) {
                             if (Collection.class.equals(adapter)) {
                                 return notSelectedShapeNodeEditPartAndUnpinned;
                             } else {
@@ -163,6 +157,9 @@ public class ArrangeSelectionLayoutProvider extends AbstractLayoutProvider {
 
         result.add(lauchPrimaryArrangeAll(selectedObjects, updatedLayoutHint));
 
+        if (notSelectedShapeNodeEditPartAndUnpinned != null) {
+            notSelectedShapeNodeEditPartAndUnpinned.clear();
+        }
         return result;
     }
 
@@ -173,7 +170,7 @@ public class ArrangeSelectionLayoutProvider extends AbstractLayoutProvider {
      *            list of parents which are not selected for which you want to
      *            browse the children to possibly add to the unpinned list
      */
-    private void addChildrenToNotSelectedUnpinnedList(ArrayList<? extends EditPart> notSelectedParent) {
+    private void addChildrenToNotSelectedUnpinnedList(Collection<? extends EditPart> notSelectedParent) {
         for (EditPart editPart : notSelectedParent) {
             ArrayList<EditPart> notSelectedChildrenShapeNodeEditPart = Lists.newArrayList(Iterables.filter(editPart.getChildren(), editPartIsNotSelected));
             if (!notSelectedChildrenShapeNodeEditPart.isEmpty()) {

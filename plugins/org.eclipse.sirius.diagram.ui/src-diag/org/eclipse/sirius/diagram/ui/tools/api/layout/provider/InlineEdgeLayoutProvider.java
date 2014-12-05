@@ -277,6 +277,7 @@ public class InlineEdgeLayoutProvider extends DefaultLayoutProvider {
                 cc.add(command);
             }
         }
+        connectionsToMoveEdgeDescriptor.clear();
         return cc;
     }
 
