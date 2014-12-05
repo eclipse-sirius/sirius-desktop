@@ -24,6 +24,7 @@ import org.eclipse.sirius.tests.swtbot.clipboard.CustomClipboardSupportTest;
 import org.eclipse.sirius.tests.swtbot.clipboard.DisabledSiriusClipboardSupportTest;
 import org.eclipse.sirius.tests.swtbot.clipboard.GenericClipboardSupportTest;
 import org.eclipse.sirius.tests.swtbot.clipboard.MultiSessionCopyPasteTest;
+import org.eclipse.sirius.tests.swtbot.crossTable.CrossTableIntersectionExpressionTest;
 import org.eclipse.sirius.tests.swtbot.crossTable.CrossTableIntersectionTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.CompletionProposalInVSMTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.ContentAssistTest;
@@ -186,6 +187,7 @@ public class AllTestSuite extends TestCase {
         suite.addTest(TableSwtbotTestSuite.suite());
 
         suite.addTestSuite(CrossTableIntersectionTest.class);
+        suite.addTestSuite(CrossTableIntersectionExpressionTest.class);
 
         // TODO MCH : Fix this test. This test is deactivate because the
         // build

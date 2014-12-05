@@ -871,7 +871,6 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
                     for (final DTableElement columnElem : targetColumns) {
                         if (lineElem instanceof DLine && columnElem instanceof DTargetColumn) {
                             final DLine line = (DLine) lineElem;
-
                             final DTargetColumn column = (DTargetColumn) columnElem;
                             Collection<EObject> columnSemantics = linesToColumnSemantics.get(line);
                             if (columnSemantics == null) {
@@ -879,6 +878,8 @@ public class DTableSynchronizerImpl implements DTableSynchronizer {
                                     columnSemantics = interpreter.evaluateCollection(line.getTarget(), iMapping.getColumnFinderExpression());
                                 } catch (final EvaluationException e) {
                                     columnSemantics = new ArrayList<EObject>(0);
+                                    // Save an error in the "Problems" view.
+                                    RuntimeLoggerManager.INSTANCE.error(line, DescriptionPackage.eINSTANCE.getIntersectionMapping_ColumnFinderExpression(), e);
                                 }
                                 linesToColumnSemantics.put(line, columnSemantics);
                             }

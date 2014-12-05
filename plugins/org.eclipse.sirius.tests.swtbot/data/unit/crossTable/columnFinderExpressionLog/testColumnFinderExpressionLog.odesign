@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" name="Group" version="10.0.0.201411061000">
+  <ownedViewpoints name="testColumnFinderExpressionLog">
+    <ownedRepresentations xsi:type="description_1:CrossTableDescription" name="CrossTableDesc" domainClass="EPackage">
+      <ownedLineMappings name="Packages" domainClass="EPackage"/>
+      <ownedColumnMappings name="Classes" domainClass="EClass"/>
+      <intersection name="Interaction" lineMapping="//@ownedViewpoints[name='testColumnFinderExpressionLog']/@ownedRepresentations[name='CrossTableDesc']/@ownedLineMappings[name='Packages']" columnMapping="//@ownedViewpoints[name='testColumnFinderExpressionLog']/@ownedRepresentations[name='CrossTableDesc']/@ownedColumnMappings.0" labelExpression="X" columnFinderExpression="service:myImaginaryService"/>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>
