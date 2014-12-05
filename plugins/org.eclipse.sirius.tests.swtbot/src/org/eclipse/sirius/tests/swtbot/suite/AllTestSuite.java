@@ -135,7 +135,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(HideRevealDiagramElementsLabelsTest.class);
         suite.addTestSuite(HideRevealDiagramElementsLabelsTestWithOldUI.class);
         suite.addTestSuite(HideLabelIconsWithPreferencesTest.class);
-        suite.addTestSuite(InvalidReconnectEdgeToolTest.class);
         suite.addTestSuite(KeyboardDeleteFromDiagramTests.class);
         suite.addTestSuite(KeyboardDeletionFromLabelTests.class);
         suite.addTestSuite(LabelFontModificationsTest.class);
