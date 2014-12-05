@@ -105,7 +105,6 @@ public abstract class AbstractUmlDragAndDropTest extends AbstractSiriusSwtBotGef
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
         editor = openAndGetEditor(getRepresentationDescriptionName(), getRepresentationNameToOpen());
-        editor.setSnapToGrid(false);
     }
 
     /**
@@ -147,6 +146,7 @@ public abstract class AbstractUmlDragAndDropTest extends AbstractSiriusSwtBotGef
     protected SWTBotSiriusDiagramEditor openAndGetEditor(final String representationDescriptionName, final String representationName) {
         final SWTBotSiriusDiagramEditor editor = openDiagram(localSession.getOpenedSession(), representationDescriptionName, representationName, DDiagram.class);
         editor.zoomDefault();
+        editor.setSnapToGrid(false);
         return editor;
     }
 
