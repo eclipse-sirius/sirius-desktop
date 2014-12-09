@@ -36,7 +36,7 @@
 			<em>additions</em> group, this group and all contribution will be placed at the end of the tab-bar.
 		</p>
 		<p>You can choose when to make your contribution visible (see the example) with the 
-			<em>visibleWhen</em> element and some property testers: show a menu for diagram selection or only on some diagram with a specific description, ... Sirius defines several property tester like 
+			<em>visibleWhen</em> element and some property testers: show a menu for diagram selection or only on some diagram with a specific description, ... Sirius defines several property testers like 
 			<em>org.eclipse.sirius.diagram.ui.isDDiagram</em> and 
 			<em>org.eclipse.sirius.diagram.ui.isDDiagramElement</em>, but you can define your own domain specific testers.
 		</p>
@@ -50,7 +50,7 @@
 		<p>Please refer to this extension point documentation for more details.</p>
 		<h2 id="Example">Example</h2>
 		<p>The following example defines a new push button for the tab-bar. The contribution will only be visible when an element is selected on diagram which correspond to a specific description.</p>
-		<p>You have to add you menu contribution in the plugin.xml file.</p>
+		<p>You have to add your menu contribution in the plugin.xml file.</p>
 		<p>	
 			<img border="0" src="images/tabbar_extension_plugin_xml.png"/>
 		</p>
@@ -92,7 +92,7 @@
          &lt;with variable="selection"&gt;
             &lt;iterate ifEmpty="false" operator="or"&gt;
                &lt;and&gt;
-                  &lt;test property="org.eclipse.sirius.diagram.isDDiagramElement"/&gt;
+                  &lt;test property="org.eclipse.sirius.diagram.ui.isDDiagramElement"/&gt;
                   &lt;test property="org.eclipse.sirius.sample.tabbar.shouldActivateTabbarExtension"/&gt;
                &lt;/and&gt;
             &lt;/iterate&gt;
@@ -108,7 +108,7 @@
 				<em>activeEditorId</em> and the Sirius Diagram Editor id.
 			</li>
 			<li>it asks a property tester if the active editor should trigger the contribution visibility (see next section for the sample property tester explanation)</li>
-			<li>it iterates over the selection with a &#171;OR&#187; operator between elements and a false result for empty selection:
+			<li>it iterates over the selection with a &#8220;OR&#8221; operator between elements and a false result for empty selection:
 				<ul>
 					<li>it uses the Sirius predefined property tester to check that a selected element is a diagram element.</li>
 					<li>it asks a property tester if the current element should trigger the contribution visibility (see next section for the sample property tester explanation)</li>
