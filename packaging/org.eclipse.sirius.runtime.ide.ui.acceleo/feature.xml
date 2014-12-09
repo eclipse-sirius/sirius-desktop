@@ -12,7 +12,7 @@
 <feature
       id="org.eclipse.sirius.runtime.ide.ui.acceleo"
       label="%featureName"
-      version="2.0.1.qualifier"
+      version="2.0.2.qualifier"
       provider-name="%providerName"
       plugin="org.eclipse.sirius.interpreter"
       license-feature="org.eclipse.license"
