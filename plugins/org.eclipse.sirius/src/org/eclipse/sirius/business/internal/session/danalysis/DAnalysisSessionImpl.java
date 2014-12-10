@@ -52,7 +52,6 @@ import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
-import org.eclipse.emf.transaction.ResourceSetListener;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.emf.transaction.Transaction;
@@ -335,7 +334,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     private RepresentationsChangeAdapter representationsChangeAdapter;
 
-    private final ResourceSetListener representationNameListener;
+    private RepresentationNameListener representationNameListener;
 
     /**
      * Create a new session.
@@ -352,7 +351,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
         this.interpreter = new ODesignGenericInterpreter();
         this.representationsChangeAdapter = new RepresentationsChangeAdapter(this);
-        this.representationNameListener = new RepresentationNameListener();
         this.controlledResourcesDetector = new ControlledResourcesDetector(this);
         super.getAnalyses().add(mainDAnalysis);
         super.getResources().add(sessionResource);
@@ -507,7 +505,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
             ResourceSetSync.getOrInstallResourceSetSync(transactionalEditingDomain).registerClient(this);
             monitor.worked(1);
-            transactionalEditingDomain.addResourceSetListener(representationNameListener);
+            this.representationNameListener = new RepresentationNameListener(this);
             monitor.worked(1);
             saver.initialize();
 
@@ -1919,7 +1917,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             currentResourceCollector = null;
         }
         interpreter = null;
-        transactionalEditingDomain.removeResourceSetListener(representationNameListener);
+        representationNameListener.dispose();
+        representationNameListener = null;
         representationsChangeAdapter = null;
         // dispose the SessionEventBroker
         if (broker != null) {
