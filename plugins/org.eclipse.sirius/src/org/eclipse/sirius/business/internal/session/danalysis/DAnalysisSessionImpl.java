@@ -1916,7 +1916,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             currentResourceCollector = null;
         }
         interpreter = null;
-        crossReferencer = null;
         transactionalEditingDomain.removeResourceSetListener(representationNameListener);
         representationsChangeAdapter = null;
         // dispose the SessionEventBroker
@@ -1945,6 +1944,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             semanticResources.clear();
         }
         reenableECrossReferenceAdaptersBeforeEndOfClosing();
+        crossReferencer = null;
         saver.dispose();
 
         if (disposeEditingDomainOnClose) {
