@@ -50,10 +50,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.jdt.launching.IVMInstall;
-import org.eclipse.jdt.launching.JavaRuntime;
-import org.eclipse.jdt.launching.environments.IExecutionEnvironment;
-import org.eclipse.jdt.launching.environments.IExecutionEnvironmentsManager;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableContext;
@@ -209,31 +205,6 @@ public final class ViewpointSpecificationProject {
     }
 
     /**
-     * Get default execution environment based on strict match to default VM.
-     * This code is based on {@link
-     * org.eclipse.pde.internal.ui.wizards.plugin.PluginContentPage.
-     * createExecutionEnvironmentControls(Composite)}.
-     * 
-     * @return The default execution environment.
-     */
-    public static String getDefaultJseId() {
-        String result = null;
-        IVMInstall defaultVM = JavaRuntime.getDefaultVMInstall();
-        IExecutionEnvironmentsManager manager = JavaRuntime.getExecutionEnvironmentsManager();
-        for (IExecutionEnvironment executionEnvironment : manager.getExecutionEnvironments()) {
-            if (executionEnvironment.isStrictlyCompatible(defaultVM)) {
-                result = executionEnvironment.getId();
-                break;
-            }
-        }
-        if (result == null) {
-            // Use java.version property to set the execution environment.
-            result = "JavaSE-" + System.getProperty("java.version").substring(0, 3);
-        }
-        return result;
-    }
-
-    /**
      * Create a new folder in a project.
      * 
      * @param prj
@@ -374,7 +345,6 @@ public final class ViewpointSpecificationProject {
         replacements.put("projectName", projectName); //$NON-NLS-1$
         replacements.put("modelName", modelNameWithoutExtension); //$NON-NLS-1$
         replacements.put("packageName", packageName);
-        replacements.put("jseId", getDefaultJseId());
 
         ViewpointSpecificationProject.createFileFromTemplate(prj, "build.properties", "resources/build.properties", replacements, monitor); //$NON-NLS-1$ $NON-NLS-2$
         ViewpointSpecificationProject.createFileFromTemplate(prj, "src/" + packageName.replaceAll("\\.", "/") + "/Activator.java", "resources/Activator.java_", replacements, monitor);

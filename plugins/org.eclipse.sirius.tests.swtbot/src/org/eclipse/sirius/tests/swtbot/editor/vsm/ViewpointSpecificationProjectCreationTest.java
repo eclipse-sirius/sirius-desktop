@@ -10,11 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.editor.vsm;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.jar.Attributes;
-import java.util.jar.Manifest;
-
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectNature;
@@ -28,7 +23,6 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.ItemEnabledCondition;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
-import org.eclipse.sirius.ui.tools.api.project.ViewpointSpecificationProject;
 import org.eclipse.swtbot.eclipse.gef.finder.SWTGefBot;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
@@ -111,14 +105,6 @@ public class ViewpointSpecificationProjectCreationTest extends AbstractSiriusSwt
         assertNotNull(VSP_SHOULD_CONTAIN + ".project file.", project.getFile(".project"));
         assertNotNull(VSP_SHOULD_CONTAIN + "MANIFEST.MF file.", project.getFile("META-INF/MANIFEST.MF"));
 
-        // Check that the created Manifest contains the default environment
-        // execution of the user
-        try {
-            checkManifestContent(project);
-        } catch (IOException e1) {
-            fail("Cannot read the Manifest");
-        }
-
         // Check that the created odesign does not need migration (version tag
         // must be initialized)
         VSMVersionSAXParser parser = new VSMVersionSAXParser(URI.createPlatformResourceURI(vsm.getFullPath().toOSString()));
@@ -134,26 +120,6 @@ public class ViewpointSpecificationProjectCreationTest extends AbstractSiriusSwt
             fail("Cannot delete the VSM Project");
         }
 
-    }
-
-    private void checkManifestContent(IProject project) throws IOException {
-        // Check the Manifest contents about environment execution
-        InputStream is = null;
-        try {
-            is = project.getFile("META-INF/MANIFEST.MF").getContents();
-            try {
-                Manifest manifest = new Manifest(is);
-                Attributes attributes = manifest.getMainAttributes();
-                String currentJseId = attributes.getValue("Bundle-RequiredExecutionEnvironment");
-                assertEquals("The JSE name should be the name of the default environment execution.", ViewpointSpecificationProject.getDefaultJseId(), currentJseId);
-            } catch (IOException ex) {
-                fail("Error while reading Bundle-RequiredExecutionEnvironment: " + ex.getMessage());
-            }
-        } catch (CoreException e) {
-            fail("Cannot read the Manifest content");
-        } finally {
-            is.close();
-        }
     }
 
     private void checkNatures(IProject project) {
