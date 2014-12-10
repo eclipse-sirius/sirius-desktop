@@ -16,6 +16,8 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -41,6 +43,7 @@ import org.eclipse.sirius.tree.description.TreeDescription;
 import org.eclipse.sirius.tree.description.TreeNavigationDescription;
 import org.eclipse.sirius.tree.description.provider.DescriptionItemProviderAdapterFactory;
 import org.eclipse.sirius.tree.provider.TreeItemProviderAdapterFactory;
+import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIServices;
@@ -126,7 +129,7 @@ public class TreeDialectUIServices implements DialectUIServices {
                         try {
                             setResult(page.openEditor(editorInput, DTreeEditor.ID));
                         } catch (final PartInitException e) {
-                            // silent catch
+                            TreeUIPlugin.getPlugin().log(new Status(IStatus.ERROR, TreeUIPlugin.ID, "tree editor opening error", e));
                         }
                     }
                 };

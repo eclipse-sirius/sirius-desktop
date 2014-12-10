@@ -16,6 +16,8 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.URI;
@@ -43,6 +45,7 @@ import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.TableNavigationDescription;
 import org.eclipse.sirius.table.metamodel.table.description.provider.DescriptionItemProviderAdapterFactory;
 import org.eclipse.sirius.table.metamodel.table.provider.TableItemProviderAdapterFactory;
+import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
 import org.eclipse.sirius.table.tools.api.export.TableExportHelper;
 import org.eclipse.sirius.table.ui.tools.api.editor.DTableEditor;
 import org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor;
@@ -110,7 +113,7 @@ public class TableDialectUIServices implements DialectUIServices {
                             try {
                                 setResult(page.openEditor(editorInput, editorId));
                             } catch (final PartInitException e) {
-                                // silent catch
+                                TableUIPlugin.getPlugin().log(new Status(IStatus.ERROR, TableUIPlugin.ID, "table editor opening error", e));
                             }
                         }
                     };
