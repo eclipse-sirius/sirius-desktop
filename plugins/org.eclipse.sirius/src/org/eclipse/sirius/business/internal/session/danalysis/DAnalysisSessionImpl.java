@@ -1438,6 +1438,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (this.representationsChangeAdapter != null) {
             this.representationsChangeAdapter.unregisterAnalysis(analysis);
         }
+        if (semanticResourcesUpdater != null && analysis.eAdapters().contains(semanticResourcesUpdater)) {
+            analysis.eAdapters().remove(semanticResourcesUpdater);
+        }
     }
 
     @Override
