@@ -1952,6 +1952,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             doDisposePermissionAuthority(resourceSet);
             transactionalEditingDomain = null;
         }
+        getActivatedViewpoints().clear();
         movidaSupport = null;
         services = null;
         sessionResource = null;
