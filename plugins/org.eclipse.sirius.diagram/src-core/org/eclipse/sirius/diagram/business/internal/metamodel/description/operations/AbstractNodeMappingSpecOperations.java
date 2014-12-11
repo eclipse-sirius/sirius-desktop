@@ -63,11 +63,6 @@ public final class AbstractNodeMappingSpecOperations {
         // empty.
     }
 
-    public static EList getViewNodesDone() {
-        // subclasses should override this.
-        return new BasicEList();
-    }
-
     /**
      * Implementation of
      * {@link AbstractNodeMapping#findViewNodeFromEObject(EObject)}.

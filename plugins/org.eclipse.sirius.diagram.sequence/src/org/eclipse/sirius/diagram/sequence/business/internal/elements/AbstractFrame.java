@@ -67,6 +67,11 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
         return Predicates.or(InteractionUse.notationPredicate(), CombinedFragment.notationPredicate());
     }
 
+    /**
+     * Get proper logical bounds.
+     * 
+     * @return proper logical bounds
+     */
     public Rectangle getProperLogicalBounds() {
         /*
          * Combined Fragments are directly on the diagram itself, so we can use
