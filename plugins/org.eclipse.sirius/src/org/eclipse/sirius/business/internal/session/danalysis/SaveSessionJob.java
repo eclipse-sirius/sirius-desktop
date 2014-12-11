@@ -49,7 +49,7 @@ public class SaveSessionJob extends Job {
     public IStatus run(IProgressMonitor monitor) {
         try {
             monitor.beginTask(ACTION_NAME, IProgressMonitor.UNKNOWN);
-            if (session.isOpen() && SessionStatus.DIRTY == session.getStatus()) {
+            if (session != null && session.isOpen() && SessionStatus.DIRTY == session.getStatus()) {
                 if (session instanceof DAnalysisSessionImpl) {
                     /*
                      * We can never know when the job will be scheduled, and it
@@ -75,6 +75,9 @@ public class SaveSessionJob extends Job {
             }
         } finally {
             monitor.done();
+            // Set the session to null to avoid a leak. The job is potentially
+            // kept by the ProgressManager.
+            session = null;
         }
         return Status.OK_STATUS;
     }
