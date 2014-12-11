@@ -50,6 +50,7 @@ import org.eclipse.sirius.tools.api.permission.DRepresentationPermissionStatusQu
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditorDialogFactory;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.ui.business.internal.dialect.TreeEditorDialogFactory;
 import org.eclipse.sirius.ui.tools.api.properties.DTablePropertySheetpage;
@@ -550,6 +551,11 @@ public abstract class AbstractDTreeEditor extends EditorPart implements ISelecti
         super.dispose();
         if (getTableViewer() != null) {
             getTableViewer().dispose();
+        }
+        // Dispose the session editor input to keep the minimum information to
+        // be restore from the INavigationHistory and EditorHistory.
+        if (getEditorInput() instanceof SessionEditorInput) {
+            ((SessionEditorInput) getEditorInput()).dispose();
         }
     }
 
