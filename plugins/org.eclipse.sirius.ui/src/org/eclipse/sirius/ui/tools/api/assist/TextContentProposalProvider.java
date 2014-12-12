@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2010 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.common.tools.internal.assist.ContentContextHelper;
 import org.eclipse.sirius.common.ui.tools.internal.contentassist.ContentProposalConverter;
 import org.eclipse.sirius.ext.swt.TextChangeListener;
 import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
@@ -34,7 +35,7 @@ import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
  * This class is used to attach content proposal behavior to a control.
  * 
  * @author ggebhart
- * @author lfasani impact of ContentProposalConverter signature change
+ * 
  */
 public class TextContentProposalProvider implements IAssistContentProvider {
     /**
@@ -53,28 +54,43 @@ public class TextContentProposalProvider implements IAssistContentProvider {
         super();
     }
 
-    @Override
+    /**
+     * Returns content proposal.
+     * 
+     * @param contents
+     *            The content of the label
+     * @param position
+     *            the position of the cursor
+     * 
+     * @return list of proposals
+     */
     public IContentProposal[] getProposals(final String contents, final int position) {
         if (StringUtil.isEmpty(contents)) {
             /*
              * Get interpreter prefixes
              */
             List<ContentProposal> prefixes = CompoundInterpreter.INSTANCE.getAllNewEmtpyExpressions();
-            return new ContentProposalConverter(contents, position).convertToJFaceContentProposals(prefixes);
+            return new ContentProposalConverter("").convertToJFaceContentProposals(prefixes);
         } else {
             /*
              * get interpreter proposal and viewpoint variables
              */
+            final String prefix = CompoundInterpreter.INSTANCE.getVariablePrefix(contents);
 
             final ContentContext context = getContentContext(contents, position);
+            String proposalStart = new ContentContextHelper(contents, position, prefix).getProposalStart();
             List<ContentProposal> proposals = new ArrayList<ContentProposal>();
+
+            if (StringUtil.isEmpty(proposalStart) || !StringUtil.isEmpty(prefix) && proposalStart.contains(prefix)) {
+                // proposals.addAll(getVariableProposals(context, prefix,
+                // proposalStart));
+            }
             proposals.addAll(CompoundInterpreter.INSTANCE.getProposals(CompoundInterpreter.INSTANCE, context));
 
             /* remove duplicated proposals */
             proposals = TextContentProposalProvider.removeDuplicatedProposals(proposals);
 
-            ContentProposalConverter contentProposalConverter = new ContentProposalConverter(contents, position);
-
+            ContentProposalConverter contentProposalConverter = new ContentProposalConverter(proposalStart);
             return contentProposalConverter.convertToJFaceContentProposals(proposals);
         }
 
@@ -129,19 +145,24 @@ public class TextContentProposalProvider implements IAssistContentProvider {
         return f;
     }
 
-    @Override
     public void setView(final AbstractPropertySection view) {
         this.view = view;
     }
 
-
-    @Override
+    /**
+     * {@inheritDoc}
+     */
     public void initContext(EObject selectedElement, EStructuralFeature selectedFeature) {
         this.element = selectedElement;
         this.feature = selectedFeature;
     }
 
-    @Override
+    /**
+     * Action when the popup is closing.
+     * 
+     * @param adapter
+     *            the ContentProposalAdater
+     */
     public void proposalPopupClosed(final ContentProposalAdapter adapter) {
 
         final Text text = (Text) adapter.getControl();
@@ -154,8 +175,11 @@ public class TextContentProposalProvider implements IAssistContentProvider {
         }
     }
 
-
-    @Override
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.jface.fieldassist.IContentProposalListener2#proposalPopupOpened(org.eclipse.jface.fieldassist.ContentProposalAdapter)
+     */
     public void proposalPopupOpened(final ContentProposalAdapter adapter) {
 
         final Text text = (Text) adapter.getControl();

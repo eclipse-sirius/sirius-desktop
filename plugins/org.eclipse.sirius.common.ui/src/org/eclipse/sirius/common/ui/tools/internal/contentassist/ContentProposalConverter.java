@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,33 +14,28 @@ import java.util.List;
 
 import org.eclipse.jface.fieldassist.IContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
-import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
-import org.eclipse.sirius.common.tools.internal.assist.ContentContextHelper;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 
 /**
  * This class create a content proposal object.
  * 
  * @author mporhel
- * @author lfasani
+ * 
  */
+
 public class ContentProposalConverter {
 
-    private String contents;
-
-    private int currentPosition;
+    private String proposalStart;
 
     /**
      * Constructor.
      * 
-     * @param contents
-     *            the full content.
-     * @param position
-     *            the current position of the cursor.
+     * @param proposalStart
+     *            the current proposal start.
+     * 
      */
-    public ContentProposalConverter(String contents, int position) {
-        this.contents = contents;
-        this.currentPosition = position;
-
+    public ContentProposalConverter(String proposalStart) {
+        this.proposalStart = proposalStart;
     }
 
     /**
@@ -69,22 +64,18 @@ public class ContentProposalConverter {
      * @return converted proposal.
      * 
      */
-    private IContentProposal convertToJFaceContentProposal(final ContentProposal arg) {
-        String prefix = CompoundInterpreter.INSTANCE.getVariablePrefix(contents);
-        String proposalStart = new ContentContextHelper(contents, currentPosition, prefix).getProposalStart();
-
-        // As the content proposal mode is set to
-        // ContentProposalAdapter.PROPOSAL_REPLACE
-        // the full expression content is proposed including proposal
+    public IContentProposal convertToJFaceContentProposal(final ContentProposal arg) {
         String proposal = arg.getProposal();
-        StringBuilder targetProposalBuilder = new StringBuilder(contents);
-        targetProposalBuilder.delete(currentPosition - proposalStart.length(), currentPosition);
-        targetProposalBuilder.insert(currentPosition - proposalStart.length(), proposal);
+        int cursorPosition = arg.getCursorPosition();
+        if (!StringUtil.isEmpty(proposalStart) && proposal.startsWith(proposalStart)) {
+            proposal = proposal.substring(proposalStart.length());
 
-        // put the cursor after the proposal
-        int targetPosition = currentPosition - proposalStart.length() + arg.getCursorPosition();
+            // cursorPosition is not always at the end of the proposal, so
+            // just move the position.
+            cursorPosition -= proposalStart.length();
+        }
 
-        return new DefaultContentProposal(targetProposalBuilder.toString(), arg.getInformation(), arg.getDisplay(), targetPosition);
+        return new DefaultContentProposal(proposal, arg.getInformation(), arg.getDisplay(), cursorPosition);
     }
 
     /**
@@ -112,7 +103,6 @@ public class ContentProposalConverter {
          * 
          * @see org.eclipse.jface.fieldassist.IContentProposal#getContent()
          */
-        @Override
         public String getContent() {
             return proposal;
         }
@@ -122,7 +112,6 @@ public class ContentProposalConverter {
          * 
          * @see org.eclipse.jface.fieldassist.IContentProposal#getCursorPosition()
          */
-        @Override
         public int getCursorPosition() {
             return cursorPosition;
         }
@@ -132,7 +121,6 @@ public class ContentProposalConverter {
          * 
          * @see org.eclipse.jface.fieldassist.IContentProposal#getDescription()
          */
-        @Override
         public String getDescription() {
             return description;
         }
@@ -142,7 +130,6 @@ public class ContentProposalConverter {
          * 
          * @see org.eclipse.jface.fieldassist.IContentProposal#getLabel()
          */
-        @Override
         public String getLabel() {
             return label;
         }

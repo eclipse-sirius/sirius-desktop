@@ -54,7 +54,6 @@ public class TypeContentProposalProvider implements IContentProposalProvider {
     /**
      * {@inheritDoc}
      */
-    @Override
     public IContentProposal[] getProposals(final String contents, final int position) {
         final String incompleteText = contents.substring(0, position);
         final List<EClassifier> proposals = assistant.proposal(incompleteText);
@@ -87,17 +86,14 @@ public class TypeContentProposalProvider implements IContentProposalProvider {
             TypeAssistant typeAssistant = new TypeAssistant(SiriusEditorPlugin.getPlugin().getWorkspaceEPackageRegistry(), section);
             final ContentProposalAdapter adapter = new ContentProposalAdapter(text, new TextContentAdapter(), new TypeContentProposalProvider(typeAssistant), keyStroke, null);
 
-            adapter.setProposalAcceptanceStyle(ContentProposalAdapter.PROPOSAL_REPLACE);
             adapter.addContentProposalListener(new IContentProposalListener2() {
 
-                @Override
                 public void proposalPopupClosed(final ContentProposalAdapter arg0) {
                     if (section instanceof ModelViewBinding) {
                         ((ModelViewBinding) section).enableModelUpdating();
                     }
                 }
 
-                @Override
                 public void proposalPopupOpened(final ContentProposalAdapter arg0) {
                     if (section instanceof ModelViewBinding) {
                         ((ModelViewBinding) section).disableModelUpdating();
