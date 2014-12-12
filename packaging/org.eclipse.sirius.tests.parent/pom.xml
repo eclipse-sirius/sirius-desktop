@@ -56,6 +56,7 @@
     <tests.junit.include />
     <tests.swtbot.include />
     <tests.swtbot-sequence.include />
+    <tests.ignoreFailures>true</tests.ignoreFailures>
   </properties>
 
   <modules>
@@ -147,6 +148,7 @@
         <tests.timeout>${tests.timeout.junit}</tests.timeout>
         <tests.junit.include>%regex[org/eclipse/sirius/tests/suite/(tree/AllSiriusTestSuite|GerritJUnitSuite)\.class]</tests.junit.include>
         <tests.vmargs>${tests.vmargs.mac} -Xmx1024m -XX:MaxPermSize=256m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+        <tests.ignoreFailures>false</tests.ignoreFailures>
       </properties>
     </profile>
     <profile>
@@ -195,6 +197,7 @@
         <tests.timeout>${tests.timeout.swtbot}</tests.timeout>
         <tests.swtbot.include>org/eclipse/sirius/tests/swtbot/suite/GerritSWTBotSuite.class</tests.swtbot.include>
         <tests.vmargs>${tests.vmargs.mac} -Xmx2048m -XX:MaxPermSize=256m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+        <tests.ignoreFailures>false</tests.ignoreFailures>
       </properties>
     </profile>
     <profile>
@@ -219,6 +222,7 @@
         <tests.timeout>${tests.timeout.swtbot-sequence}</tests.timeout>
         <tests.swtbot-sequence.include>org/eclipse/sirius/tests/swtbot/suite/GerritSequenceSWTBotSuite.class</tests.swtbot-sequence.include>
         <tests.vmargs>${tests.vmargs.mac} -Xmx2048m -XX:MaxPermSize=256m -XX:+HeapDumpOnOutOfMemoryError</tests.vmargs>
+        <tests.ignoreFailures>false</tests.ignoreFailures>
       </properties>
     </profile>
   </profiles>

@@ -82,7 +82,7 @@
           <useUIHarness>true</useUIHarness>
           <useUIThread>true</useUIThread>
           <argLine>${tests.vmargs}</argLine>
-          <testFailureIgnore>true</testFailureIgnore>
+          <testFailureIgnore>${tests.ignoreFailures}</testFailureIgnore>
           <forkedProcessTimeoutInSeconds>${tests.timeout}</forkedProcessTimeoutInSeconds>
         </configuration>
       </plugin>
