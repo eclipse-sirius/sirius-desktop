@@ -13,18 +13,25 @@ package org.eclipse.sirius.editor.properties.sections.description.representation
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
+import org.eclipse.jface.fieldassist.FieldDecoration;
+import org.eclipse.jface.fieldassist.FieldDecorationRegistry;
+import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
 import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractViewpointPropertySection;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Button;
@@ -185,32 +192,47 @@ public class RepresentationDescriptionMetamodelPropertySectionSpec extends Abstr
             for (EPackage ePackage : ePackages) {
                 TableItem item = new TableItem(metamodelsTable, 0);
                 item.setData(ePackage);
-                String ePackageName = ePackage.getName();
-                if (ePackageName == null) {
-                    ePackageName = "null";
-                }
-                item.setText(0, ePackageName);
-                String ePackageNSURI = ePackage.getNsURI();
-                if (ePackageNSURI == null) {
-                    ePackageNSURI = "null";
-                }
-                item.setText(1, ePackageNSURI);
-                String ePackageURI = null;
-                URI completeURIToEPackage = representationDescriptionMetamodelsUpdater.getCompleteURIToEPackage(ePackage);
-                if (completeURIToEPackage != null) {
-                    ePackageURI = URI.decode(completeURIToEPackage.toString());
-                } else {
-                    URI genModelResourceURI = EcorePlugin.getEPackageNsURIToGenModelLocationMap().get(ePackage.getNsURI());
-                    if (genModelResourceURI != null) {
-                        ePackageURI = genModelResourceURI.trimFileExtension().appendFileExtension("ecore").toString();
+                if (ePackage.eResource() != null) {
+                    String ePackageName = ePackage.getName();
+                    if (ePackageName == null) {
+                        ePackageName = "null";
                     }
-                }
-                if (ePackageURI == null) {
-                    ePackageURI = "unknow metamodel resource URI";
-                }
-                item.setText(2, ePackageURI);
-                if (!previousEPackages.contains(ePackage)) {
-                    newItems.add(item);
+                    item.setText(0, ePackageName);
+                    String ePackageNSURI = ePackage.getNsURI();
+                    if (ePackageNSURI == null) {
+                        ePackageNSURI = "null";
+                    }
+                    item.setText(1, ePackageNSURI);
+                    String ePackageURI = null;
+                    URI completeURIToEPackage = representationDescriptionMetamodelsUpdater.getCompleteURIToEPackage(ePackage);
+                    if (completeURIToEPackage != null) {
+                        ePackageURI = URI.decode(completeURIToEPackage.toString());
+                    } else {
+                        URI genModelResourceURI = EcorePlugin.getEPackageNsURIToGenModelLocationMap().get(ePackage.getNsURI());
+                        if (genModelResourceURI != null) {
+                            ePackageURI = genModelResourceURI.trimFileExtension().appendFileExtension("ecore").toString();
+                        }
+                    }
+                    if (ePackageURI == null) {
+                        ePackageURI = "unknow metamodel resource URI";
+                    }
+                    item.setText(2, ePackageURI);
+                    if (!previousEPackages.contains(ePackage)) {
+                        newItems.add(item);
+                    }
+                } else {
+                    URI proxyURI = ((InternalEObject) ePackage).eProxyURI();
+                    String ePackageName = proxyURI.lastSegment().substring(0, proxyURI.lastSegment().indexOf('.'));
+                    item.setText(0, ePackageName);
+                    item.setText(1, "null");
+                    String ePackageURI = proxyURI.trimFragment().toString();
+                    item.setText(2, ePackageURI);
+                    // Adding decorator 
+                    FieldDecoration fieldDecoration = FieldDecorationRegistry.getDefault().getFieldDecoration(FieldDecorationRegistry.DEC_ERROR);
+                    Image img = fieldDecoration.getImage();
+                    item.setImage(img);
+                    // Log an error in the "Error log" view.
+                    SiriusEditorPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditorPlugin.PLUGIN_ID, "Invalid ressource access for the metamodel " + ePackageURI));
                 }
             }
             if (!newItems.isEmpty()) {

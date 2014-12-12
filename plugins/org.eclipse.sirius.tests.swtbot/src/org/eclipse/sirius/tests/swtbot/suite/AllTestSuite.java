@@ -242,6 +242,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(DoubleClickToolNavigationOperationTest.class);
         suite.addTestSuite(BackgroundColorFigureUpdateTests.class);
         suite.addTestSuite(EdgeMappingTestCase.class);
+        suite.addTestSuite(InvalidMetamodelRessourceTest.class);
     }
 
     /**
