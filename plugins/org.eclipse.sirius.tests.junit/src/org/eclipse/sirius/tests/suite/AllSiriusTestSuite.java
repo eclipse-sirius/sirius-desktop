@@ -34,13 +34,23 @@ public class AllSiriusTestSuite extends TestCase {
     }
 
     /**
+     * Add the gerrit part of the Junit tests to the specified suite.
+     * 
+     * @param suite
+     *            the suite into which to add the tests.
+     */
+    public static void addGerritPart(TestSuite suite) {
+        suite.addTest(AllCommonStandaloneTests.suite());
+    }
+
+    /**
      * Creates the {@link junit.framework.TestSuite TestSuite} for all the test.
      * 
      * @return The testsuite containing all the tests
      */
     public static Test suite() {
         final TestSuite suite = new TestSuite("Sirius tests");
-        suite.addTest(AllCommonStandaloneTests.suite());
+        addGerritPart(suite);
         suite.addTest(AllTableStandaloneTests.suite());
         suite.addTest(AllDiagramStandaloneTests.suite());
 

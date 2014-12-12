@@ -88,6 +88,29 @@ public class AllTestSuite extends TestCase {
     }
 
     /**
+     * Add the first part of the SWTbot Gerrit tests to the specified suite.
+     * 
+     * @param suite
+     *            the suite into which to add the tests.
+     */
+    public static void addGerritPart1(TestSuite suite) {
+        // TheViepointProjectCreationTest should be done before the others ones:
+        // to verify the behavior when a specifier first launches the product.
+        suite.addTestSuite(ViewpointSpecificationProjectCreationTest.class);
+    }
+
+    /**
+     * Add the second part of the SWTbot Gerrit tests to the specified suite.
+     * 
+     * @param suite
+     *            the suite into which to add the tests.
+     */
+    public static void addGerritPart2(TestSuite suite) {
+
+        suite.addTestSuite(NoteCreationTest.class);
+    }
+
+    /**
      * Add the first part of the SWTbot tests to the specified suite. This
      * corresponds roughly to the first half of the execution time of the
      * complete suite.
@@ -96,9 +119,8 @@ public class AllTestSuite extends TestCase {
      *            the suite into which to add the tests.
      */
     public static void addPart1(TestSuite suite) {
-        // TheViepointProjectCreationTest should be done before the others ones:
-        // to verify the behavior when a specifier first launches the product.
-        suite.addTestSuite(ViewpointSpecificationProjectCreationTest.class);
+
+        addGerritPart1(suite);
 
         suite.addTestSuite(ContentAssistTest.class);
         suite.addTestSuite(MetamodelPropertyTabTests.class);
@@ -197,7 +219,8 @@ public class AllTestSuite extends TestCase {
      *            the suite into which to add the tests.
      */
     public static void addPart2(TestSuite suite) {
-        suite.addTestSuite(NoteCreationTest.class);
+
+        addGerritPart2(suite);
         suite.addTestSuite(NoteCreationWithSnapToGridTest.class);
         suite.addTestSuite(NodeCreationTest.class);
         suite.addTestSuite(NodeCreationWithSnapToGridTest.class);

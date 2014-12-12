@@ -98,13 +98,24 @@ public class SequenceSwtBotTestSuite extends TestCase {
     }
 
     /**
+     * Add the gerrit part of the Sequence tests to the specified suite.
+     * 
+     * @param suite
+     *            the suite into which to add the tests.
+     */
+    public static void addGerritPart(TestSuite suite) {
+        suite.addTestSuite(InstanceRoleResizableEditPolicyTests.class);
+    }
+
+    /**
      * Creates the {@link junit.framework.TestSuite TestSuite} for all the test.
      * 
      * @return The test suite containing all the tests
      */
     public static Test suite() {
         final TestSuite suite = new TestSuite("SwtBot tests on sequence diagram");
-        suite.addTestSuite(InstanceRoleResizableEditPolicyTests.class);
+
+        addGerritPart(suite);
         suite.addTestSuite(SequenceReorderTest.class);
         suite.addTestSuite(SequenceDiagramDirtyTests.class);
         suite.addTestSuite(SequenceOpeningFilteredEventEndsTests.class);
