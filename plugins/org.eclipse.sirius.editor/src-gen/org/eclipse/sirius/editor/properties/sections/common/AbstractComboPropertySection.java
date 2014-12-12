@@ -172,7 +172,7 @@ public abstract class AbstractComboPropertySection extends AbstractViewpointProp
 
     /**
      * Get the possible values for the feature as Strings.
-     *
+     * 
      * return The possible values for the feature as Strings.
      */
     protected String[] getComboValues() {

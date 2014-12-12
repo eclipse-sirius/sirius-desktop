@@ -136,7 +136,6 @@ public class LineMappingHeaderLabelExpressionPropertySection extends AbstractTex
 
                 TextContentAdapter textContentAdapter = new TextContentAdapter();
                 ContentProposalAdapter adapter = new ContentProposalAdapter(text, textContentAdapter, contentProposalAdapter, keyStroke, IAssistContentProvider.AUTO_ACTIVATION_CHARACTERS);
-                adapter.setProposalAcceptanceStyle(ContentProposalAdapter.PROPOSAL_REPLACE);
                 adapter.setPopupSize(new Point(300, 100)); // set content
                                                            // proposal popup
                                                            // size
