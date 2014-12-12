@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:description_2="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" version="10.0.0.201411061000">
+  <ownedViewpoints name="valideVariableNameVSM">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="diagram" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <edgeMappings name="Edge" sourceMapping="//@ownedViewpoints[name='valideVariableNameVSM']/@ownedRepresentations[name='diagram']/@defaultLayer/@containerMappings[name='class']" targetMapping="//@ownedViewpoints[name='valideVariableNameVSM']/@ownedRepresentations[name='diagram']/@defaultLayer/@containerMappings[name='class']" targetFinderExpression="feature:eReferences">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="class" domainClass="EClass" childrenPresentation="List">
+          <subNodeMappings name="attribute" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
+            <style xsi:type="style:SquareDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Tool">
+          <ownedTools xsi:type="tool:OperationAction" name="MyAction">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='valideVariableNameVSM']/@ownedRepresentations[name='diagram']/@defaultLayer/@containerMappings[name='class']" containerViewExpression="var:self" variableName="newView">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:newView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:OperationAction" name="MyAction2">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateEdgeView" mapping="//@ownedViewpoints[name='valideVariableNameVSM']/@ownedRepresentations[name='diagram']/@defaultLayer/@edgeMappings[name='Edge']" containerViewExpression="var:self" sourceExpression="var:self" targetExpression="var:self">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:createdView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="table" domainClass="EClass">
+      <ownedLineMappings name="Line" domainClass="EClass"/>
+      <ownedColumnMappings name="Column" featureName="feature:eAllContents">
+        <directEdit>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element"/>
+          <mask mask="{0}"/>
+        </directEdit>
+      </ownedColumnMappings>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

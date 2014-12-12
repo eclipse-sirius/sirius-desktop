@@ -37,12 +37,15 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
 
     private Group modelerForDomainClassValidation;
 
+    private Group modelerForVariableNameValidation;
+
     public void setUp() throws Exception {
         ResourceSet set = new ResourceSetImpl();
         modeler = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/valideVSM.odesign", true), set);
         modelerWithNoStyle = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/validateVSMWithNoStyle.odesign", true), set);
         modelerWithDiagramExtension = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/valideVSMWithDiagramExtension.odesign", true), set);
         modelerForDomainClassValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/valideDomainClassVSM.odesign", true), set);
+        modelerForVariableNameValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/valideVariableNameVSM.odesign", true), set);
     }
 
     /**
@@ -148,6 +151,18 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
         Diagnostician diagnostician = new Diagnostician();
         Diagnostic diagnostic = diagnostician.validate(modelerForDomainClassValidation);
         assertEquals("The VSM is not valid, it should have popup error message", Diagnostic.ERROR, diagnostic.getSeverity());
+    }
+
+    /**
+     * Ensure that VSM validation do not detects errors on the use of newly
+     * defined variables with valid expression.
+     */
+    public void testVariableNameValidation() {
+        // Test that the modeler is valid. In this case the modeler is valid, so
+        // test if diagnostic is ok.
+        Diagnostician diagnostician = new Diagnostician();
+        Diagnostic diagnostic = diagnostician.validate(modelerForVariableNameValidation);
+        assertEquals("The VSM is valid, it should not have popup error message", Diagnostic.OK, diagnostic.getSeverity());
     }
 
     private void addSpaceInDomainClassValue(EObject current, EAttribute attribute, int iterate) {

@@ -24,6 +24,7 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.LabelEditTool;
+import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
 
 import com.google.common.collect.Sets;
@@ -66,6 +67,9 @@ public class TableInterpretedExpressionQuery extends AbstractInterpretedExpressi
         EditMaskVariables emv = null;
         if (context instanceof LabelEditTool) {
             emv = ((LabelEditTool) context).getMask();
+            for (AbstractVariable subVar : ((LabelEditTool) context).getVariables()) {
+                availableVariables.put(subVar.getName(), getVariableTypeName(subVar));
+            }
         } else if (context instanceof CreateCellTool) {
             emv = ((CreateCellTool) context).getMask();
         }

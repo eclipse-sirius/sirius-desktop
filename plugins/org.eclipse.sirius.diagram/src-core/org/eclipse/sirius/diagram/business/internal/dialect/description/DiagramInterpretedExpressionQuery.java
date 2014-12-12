@@ -23,6 +23,7 @@ import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptor
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
+import org.eclipse.sirius.diagram.description.tool.CreateView;
 import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.ext.base.Option;
@@ -79,6 +80,11 @@ public class DiagramInterpretedExpressionQuery extends AbstractInterpretedExpres
         if (context instanceof DirectEditLabel && ((DirectEditLabel) context).getMask() != null) {
             EditMaskVariables emv = ((DirectEditLabel) context).getMask();
             appendEditMaskVariables(emv, definitions);
+        }
+        // Add CreateViewn and CreateEdgeView Variable Name to available
+        // variables
+        if (context instanceof CreateView) {
+            availableVariables.put(((CreateView) context).getVariableName(), AbstractInterpretedExpressionQuery.DEFAULT_VARIABLE_TYPE);
         }
     }
 
