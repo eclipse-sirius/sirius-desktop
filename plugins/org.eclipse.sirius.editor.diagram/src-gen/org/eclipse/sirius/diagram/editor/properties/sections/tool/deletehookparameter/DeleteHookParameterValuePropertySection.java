@@ -11,17 +11,29 @@ package org.eclipse.sirius.diagram.editor.properties.sections.tool.deletehookpar
 
 // Start of user code imports
 
+import java.util.List;
+
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.jface.bindings.Trigger;
+import org.eclipse.jface.bindings.TriggerSequence;
+import org.eclipse.jface.bindings.keys.KeyStroke;
+import org.eclipse.jface.fieldassist.ContentProposalAdapter;
+import org.eclipse.jface.fieldassist.TextContentAdapter;
+import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
 import org.eclipse.sirius.ui.tools.api.assist.ContentProposalClient;
-import org.eclipse.sirius.ui.tools.api.assist.TextContentProposalProvider;
+import org.eclipse.sirius.ui.tools.api.assist.IAssistContentProvider;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
+import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.FormAttachment;
 import org.eclipse.swt.layout.FormData;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.keys.IBindingService;
+import org.eclipse.ui.texteditor.ITextEditorActionDefinitionIds;
 import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
 
 // End of user code imports
@@ -107,12 +119,45 @@ public class DeleteHookParameterValuePropertySection extends AbstractTextPropert
         help.setImage(getHelpIcon());
         help.setToolTipText(getToolTipText());
 
-        TextContentProposalProvider.bindCompletionProcessor(this, text);
+        List<IAssistContentProvider> extension = EclipseUtil.getExtensionPlugins(IAssistContentProvider.class, IAssistContentProvider.ID, IAssistContentProvider.CLASS_ATTRIBUTE);
+        if (!(extension.size() == 0)) {
+            IAssistContentProvider contentProposalAdapter = extension.get(0);
+            contentProposalAdapter.setView(this);
+            IBindingService bindingService = (IBindingService) PlatformUI.getWorkbench().getService(IBindingService.class); // gives
+                                                                                                                            // the
+                                                                                                                            // user
+                                                                                                                            // content
+                                                                                                                            // assist
+                                                                                                                            // binding
+            TriggerSequence[] activeBindinds = bindingService.getActiveBindingsFor(ITextEditorActionDefinitionIds.CONTENT_ASSIST_PROPOSALS);
+            if (activeBindinds != null && activeBindinds.length > 0) {
+                TriggerSequence sequence = activeBindinds[0];
+                KeyStroke keyStroke = getKeyStroke(sequence);
+
+                TextContentAdapter textContentAdapter = new TextContentAdapter();
+                ContentProposalAdapter adapter = new ContentProposalAdapter(text, textContentAdapter, contentProposalAdapter, keyStroke, IAssistContentProvider.AUTO_ACTIVATION_CHARACTERS);
+                adapter.setProposalAcceptanceStyle(ContentProposalAdapter.PROPOSAL_REPLACE);
+                adapter.setPopupSize(new Point(300, 100)); // set content
+                                                           // proposal popup
+                                                           // size
+                adapter.addContentProposalListener(contentProposalAdapter); // close
+                                                                            // popup
+            }
+        }
 
         // Start of user code create controls
 
         // End of user code create controls
 
+    }
+
+    private KeyStroke getKeyStroke(TriggerSequence sequence) {
+        for (Trigger trigger : sequence.getTriggers()) {
+            if (trigger instanceof KeyStroke) {
+                return (KeyStroke) trigger;
+            }
+        }
+        return null;
     }
 
     /**

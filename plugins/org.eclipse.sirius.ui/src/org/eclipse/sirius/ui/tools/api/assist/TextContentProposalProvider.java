@@ -16,27 +16,18 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.jface.bindings.Trigger;
-import org.eclipse.jface.bindings.TriggerSequence;
-import org.eclipse.jface.bindings.keys.KeyStroke;
 import org.eclipse.jface.fieldassist.ContentProposalAdapter;
 import org.eclipse.jface.fieldassist.IContentProposal;
-import org.eclipse.jface.fieldassist.TextContentAdapter;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
-import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.internal.contentassist.ContentProposalConverter;
 import org.eclipse.sirius.ext.swt.TextChangeListener;
 import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
-import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.keys.IBindingService;
-import org.eclipse.ui.texteditor.ITextEditorActionDefinitionIds;
 import org.eclipse.ui.views.properties.tabbed.AbstractPropertySection;
 
 /**
@@ -176,44 +167,5 @@ public class TextContentProposalProvider implements IAssistContentProvider {
         }
 
     }
-    
-    /**
-     * Bind a completion processor to a given text element.
-     * 
-     * @param section
-     *            section to give, if it implements {@link ModelViewBinding}
-     *            then the section update will be disabled during proposal
-     *            settings.
-     * @param text
-     *            text to bind a completion processor to.
-     */
-    public static void bindCompletionProcessor(final AbstractPropertySection section, final Text text) {
 
-        List<IAssistContentProvider> extension = EclipseUtil.getExtensionPlugins(IAssistContentProvider.class, IAssistContentProvider.ID, IAssistContentProvider.CLASS_ATTRIBUTE);
-        if (!(extension.size() == 0)) {
-            IAssistContentProvider contentProposalAdapter = extension.get(0);
-            contentProposalAdapter.setView(section);
-            // gives the user content assist binding
-            IBindingService bindingService = (IBindingService) PlatformUI.getWorkbench().getService(IBindingService.class);
-            TriggerSequence[] activeBindinds = bindingService.getActiveBindingsFor(ITextEditorActionDefinitionIds.CONTENT_ASSIST_PROPOSALS);
-            if (activeBindinds != null && activeBindinds.length > 0) {
-                TriggerSequence sequence = activeBindinds[0];
-                KeyStroke keyStroke = null;
-                for (Trigger trigger : sequence.getTriggers()) {
-                    if (trigger instanceof KeyStroke) {
-                        keyStroke = (KeyStroke) trigger;
-                    }
-                }
-
-                TextContentAdapter textContentAdapter = new TextContentAdapter();
-                ContentProposalAdapter adapter = new ContentProposalAdapter(text, textContentAdapter, contentProposalAdapter, keyStroke, IAssistContentProvider.AUTO_ACTIVATION_CHARACTERS);
-                adapter.setProposalAcceptanceStyle(ContentProposalAdapter.PROPOSAL_REPLACE);
-                adapter.setPopupSize(new Point(300, 100)); // set content
-                                                           // proposal popup
-                                                           // size
-                adapter.addContentProposalListener(contentProposalAdapter); // close
-                                                                            // popup
-            }
-        }
-    }
 }
