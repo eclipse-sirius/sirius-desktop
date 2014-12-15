@@ -2206,7 +2206,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(semanticBasedDecorationEClass, SemanticBasedDecoration.class, "SemanticBasedDecoration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-        initEAttribute(getSemanticBasedDecoration_DomainClass(), this.getTypeName(), "domainClass", null, 1, 1, SemanticBasedDecoration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+        initEAttribute(getSemanticBasedDecoration_DomainClass(), theEcorePackage.getEString(), "domainClass", null, 0, 1, SemanticBasedDecoration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(customizationEClass, Customization.class, "Customization", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

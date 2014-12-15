@@ -12,7 +12,6 @@ package org.eclipse.sirius.editor.properties.sections.description.semanticbasedd
 // Start of user code imports
 
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
 import org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -38,7 +37,7 @@ public class SemanticBasedDecorationDomainClassPropertySection extends AbstractT
      */
     protected String getLabelText() {
         String labelText;
-        labelText = super.getLabelText() + "*:"; //$NON-NLS-1$
+        labelText = super.getLabelText() + ":"; //$NON-NLS-1$
         // Start of user code get label text
 
         // End of user code get label text
@@ -71,14 +70,6 @@ public class SemanticBasedDecorationDomainClassPropertySection extends AbstractT
      */
     public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
         super.createControls(parent, tabbedPropertySheetPage);
-        /*
-         * We set the color as it's a TypeName
-         */
-        text.setBackground(SiriusEditor.getColorRegistry().get("green"));
-
-        nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));
-
-        TypeContentProposalProvider.bindCompletionProcessor(this, text);
 
         // Start of user code create controls
         TypeContentProposalProvider.bindCompletionProcessor(this, text);
