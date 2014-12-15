@@ -34,7 +34,11 @@ public class SiriusRectilinearRouter extends RectilinearRouter {
     public void routeLine(Connection conn, int nestedRoutingDepth, PointList newLine) {
         super.routeLine(conn, nestedRoutingDepth, newLine);
 
-        handleEdgeCentering(conn, newLine);
+        // if the edge is currently reconnected for instance, we do not perform
+        // the centering.
+        if (!isReorienting(conn)) {
+            handleEdgeCentering(conn, newLine);
+        }
     }
 
     /**
