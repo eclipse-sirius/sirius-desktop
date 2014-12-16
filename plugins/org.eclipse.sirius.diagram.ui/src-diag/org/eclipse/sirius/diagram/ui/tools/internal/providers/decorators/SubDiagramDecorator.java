@@ -42,7 +42,6 @@ import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.ui.tools.api.profiler.SiriusTasks;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -140,7 +139,7 @@ public class SubDiagramDecorator extends AbstractDecorator {
         boolean shouldHaveSubDiagramDecorator = false;
         if (target != null && target.eResource() != null) {
 
-            if (session != null) {
+            if (session != null && !parentHasSameSemanticElement(node)) {
                 // Does the target element has any representation on it? Exclude
                 // the current representation itself to avoid redundant markers.
                 DRepresentation representation = new DRepresentationElementQuery(node).getParentRepresentation();
@@ -151,7 +150,7 @@ public class SubDiagramDecorator extends AbstractDecorator {
                 }
             }
         }
-        return shouldHaveSubDiagramDecorator && !parentHasSameSemanticElement(node);
+        return shouldHaveSubDiagramDecorator;
     }
 
     /**
@@ -165,7 +164,7 @@ public class SubDiagramDecorator extends AbstractDecorator {
     private boolean checkRepresentationNavigationDescriptions(DRepresentationElement element) {
 
         EObject target = element.getTarget();
-        if (target != null && target.eResource() != null && session.isOpen()) {
+        if (session.isOpen()) {
 
             IInterpreter interpreter = session.getInterpreter();
 
@@ -215,10 +214,12 @@ public class SubDiagramDecorator extends AbstractDecorator {
             }
         }
 
-        Collection<DRepresentation> representations = DialectManager.INSTANCE.getRepresentations(navDesc.getRepresentationDescription(), session);
-        for (DRepresentation representation : representations) {
-            if (representation instanceof DSemanticDecorator && candidates.contains(((DSemanticDecorator) representation).getTarget())) {
-                return true;
+        for (EObject candidate : candidates) {
+            Collection<DRepresentation> representations = DialectManager.INSTANCE.getRepresentations(candidate, session);
+            for (DRepresentation representation : representations) {
+                if (navDesc.getRepresentationDescription() != null && navDesc.getRepresentationDescription().equals(DialectManager.INSTANCE.getDescription(representation))) {
+                    return true;
+                }
             }
         }
 
