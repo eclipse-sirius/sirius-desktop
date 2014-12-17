@@ -13,6 +13,8 @@ package org.eclipse.sirius.diagram.sequence.business.internal.refresh;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.api.profiler.ProfilerTask;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
@@ -20,6 +22,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.operation.RefreshGr
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.RefreshSemanticOrderingsOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.SynchronizeGraphicalOrderingOperation;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
+import org.eclipse.sirius.ui.tools.api.profiler.SiriusTasks;
 
 /**
  * Command to refresh the graphical layout of the whole diagram.
@@ -27,6 +30,8 @@ import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelCh
  * @author edugueperoux
  */
 public class RefreshLayoutCommand extends RecordingCommand {
+
+    private static final ProfilerTask REFRESH_LAYOUT = new ProfilerTask("Sequence", "Refresh layout", SiriusTasks.IMAGES_VIEWPOINT);
 
     private Diagram diagram;
 
@@ -57,6 +62,7 @@ public class RefreshLayoutCommand extends RecordingCommand {
      */
     @Override
     protected void doExecute() {
+        DslCommonPlugin.PROFILER.startWork(REFRESH_LAYOUT);
         SequenceDiagram sequenceDiagram = ISequenceElementAccessor.getSequenceDiagram(diagram).get();
         SequenceDDiagram sequenceDDiagram = sequenceDiagram.getSequenceDDiagram();
 
@@ -81,6 +87,6 @@ public class RefreshLayoutCommand extends RecordingCommand {
              */
             refreshGraphicalOrderingOperation.execute();
         }
-
+        DslCommonPlugin.PROFILER.stopWork(REFRESH_LAYOUT);
     }
 }
