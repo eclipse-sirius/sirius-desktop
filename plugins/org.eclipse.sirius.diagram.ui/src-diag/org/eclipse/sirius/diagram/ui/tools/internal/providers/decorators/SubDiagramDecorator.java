@@ -28,14 +28,18 @@ import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.profiler.ProfilerTask;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
+import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
+import org.eclipse.sirius.ui.tools.api.profiler.SiriusTasks;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -56,6 +60,8 @@ import com.google.common.collect.Iterables;
  * @author cbrun
  */
 public class SubDiagramDecorator extends AbstractDecorator {
+
+    private static final ProfilerTask DECORATOR_REFRESH = new ProfilerTask(SiriusTasksKey.DIAGRAM_CAT, "SubDiagramDecorator refresh", SiriusTasks.IMAGES_VIEWPOINT);
 
     private Session session;
 
@@ -91,6 +97,7 @@ public class SubDiagramDecorator extends AbstractDecorator {
      * @see org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecorator#refresh()
      */
     public void refresh() {
+        DslCommonPlugin.PROFILER.startWork(DECORATOR_REFRESH);
         removeDecoration();
         View view = (View) getDecoratorTarget().getAdapter(View.class);
         if (view != null && view.eResource() != null) {
@@ -121,6 +128,7 @@ public class SubDiagramDecorator extends AbstractDecorator {
                 }
             }
         }
+        DslCommonPlugin.PROFILER.stopWork(DECORATOR_REFRESH);
     }
 
     private Image getSubDiagramImage() {
