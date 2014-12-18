@@ -12,6 +12,7 @@ package org.eclipse.sirius.ecore.design.service;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EcoreFactory;
 
 /**
  * Services on EAttributes usable from a VSM.
@@ -116,11 +117,18 @@ public class EAttributeServices {
 
     private void renderDefaultValue(EAttribute attr, StringBuilder sb) {
         if (attr.getDefaultValueLiteral() != null) {
-        	if (attr.getDefaultValueLiteral().length() > 0) {
-        		sb.append(" ").append(DEFAULT_VALUE_SEPARATOR).append(" ").append(attr.getDefaultValueLiteral());
-			}
+            if (attr.getDefaultValueLiteral().length() > 0) {
+                sb.append(" ").append(DEFAULT_VALUE_SEPARATOR).append(" ").append(attr.getDefaultValueLiteral());
+            }
         } else if (attr.getDefaultValue() != null) {
-            sb.append(" ").append(DEFAULT_VALUE_SEPARATOR).append(" ").append(attr.getDefaultValue());
+            sb.append(" ").append(DEFAULT_VALUE_SEPARATOR).append(" ");
+            String serializable = EcoreFactory.eINSTANCE.convertToString(attr.getEAttributeType(), attr.getDefaultValue());
+            if (!"0".equals(serializable)) {
+                // Ignore this default value and consider it as blank default
+                // value. This is the result of the '\u0000' (default value for
+                // EChar data type) to string.
+                sb.append(serializable);
+            }
         }
     }
 }
