@@ -229,19 +229,21 @@ public class OpenMenuContribution implements IContributionItemProvider {
     private void buildOpenRepresentationActions(final IMenuManager openMenu, final IInterpreter interpreter, final RepresentationNavigationDescription navDesc, final DRepresentationElement element,
             final Session session, final EditPart editpart, final TransactionalEditingDomain transDomain) {
         final Collection<EObject> candidates = findCandidates(element, navDesc, interpreter);
-        final Collection<DRepresentation> representations = DialectManager.INSTANCE.getRepresentations(navDesc.getRepresentationDescription(), session);
-        for (DRepresentation representation : representations) {
-            if (representation instanceof DSemanticDecorator && candidates.contains(((DSemanticDecorator) representation).getTarget())) {
-                interpreter.setVariable(navDesc.getRepresentationNameVariable().getName(), representation.getName());
-                String label = new StringBuffer(navDesc.getName()).append(" ").append(representation.getName()).toString();
-                if (!StringUtil.isEmpty(navDesc.getNavigationNameExpression())) {
-                    try {
-                        label = interpreter.evaluateString(element.getTarget(), navDesc.getNavigationNameExpression());
-                    } catch (final EvaluationException e) {
-                        RuntimeLoggerManager.INSTANCE.error(navDesc, ToolPackage.eINSTANCE.getRepresentationNavigationDescription_NavigationNameExpression(), e);
+        for (EObject candidate : candidates) {
+            Collection<DRepresentation> representations = DialectManager.INSTANCE.getRepresentations(candidate, session);
+            for (DRepresentation representation : representations) {
+                if (navDesc.getRepresentationDescription() != null && navDesc.getRepresentationDescription().equals(DialectManager.INSTANCE.getDescription(representation))) {
+                    interpreter.setVariable(navDesc.getRepresentationNameVariable().getName(), representation.getName());
+                    String label = new StringBuffer(navDesc.getName()).append(" ").append(representation.getName()).toString();
+                    if (!StringUtil.isEmpty(navDesc.getNavigationNameExpression())) {
+                        try {
+                            label = interpreter.evaluateString(element.getTarget(), navDesc.getNavigationNameExpression());
+                        } catch (final EvaluationException e) {
+                            RuntimeLoggerManager.INSTANCE.error(navDesc, ToolPackage.eINSTANCE.getRepresentationNavigationDescription_NavigationNameExpression(), e);
+                        }
                     }
+                    openMenu.appendToGroup(OPEN_REPRESENTATION_GROUP_SEPARATOR, buildOpenRepresentationAction(session, representation, editpart, transDomain, label));
                 }
-                openMenu.appendToGroup(OPEN_REPRESENTATION_GROUP_SEPARATOR, buildOpenRepresentationAction(session, representation, editpart, transDomain, label));
             }
         }
     }

@@ -326,20 +326,22 @@ public class DTreeMenuListener implements IMenuListener {
                 candidates.add(it.next());
             }
         }
-        final Collection<DRepresentation> representations = DialectManager.INSTANCE.getRepresentations(navDesc.getRepresentationDescription(), session);
-        for (final DRepresentation representation : representations) {
-            if (representation instanceof DSemanticDecorator && candidates.contains(((DSemanticDecorator) representation).getTarget())) {
-                interpreter.setVariable(navDesc.getRepresentationNameVariable().getName(), representation.getName());
-                String label = new StringBuffer().append(navDesc.getName()).append(representation.getName()).toString();
-                if (!StringUtil.isEmpty(navDesc.getNavigationNameExpression())) {
-                    try {
-                        label = interpreter.evaluateString(element.getTarget(), navDesc.getNavigationNameExpression());
-                    } catch (final EvaluationException e) {
-                        RuntimeLoggerManager.INSTANCE.error(navDesc, ToolPackage.eINSTANCE.getRepresentationNavigationDescription_NavigationNameExpression(), e);
+        for (EObject candidate : candidates) {
+            Collection<DRepresentation> representations = DialectManager.INSTANCE.getRepresentations(candidate, session);
+            for (DRepresentation representation : representations) {
+                if (navDesc.getRepresentationDescription() != null && navDesc.getRepresentationDescription().equals(DialectManager.INSTANCE.getDescription(representation))) {
+                    interpreter.setVariable(navDesc.getRepresentationNameVariable().getName(), representation.getName());
+                    String label = new StringBuffer().append(navDesc.getName()).append(representation.getName()).toString();
+                    if (!StringUtil.isEmpty(navDesc.getNavigationNameExpression())) {
+                        try {
+                            label = interpreter.evaluateString(element.getTarget(), navDesc.getNavigationNameExpression());
+                        } catch (final EvaluationException e) {
+                            RuntimeLoggerManager.INSTANCE.error(navDesc, ToolPackage.eINSTANCE.getRepresentationNavigationDescription_NavigationNameExpression(), e);
+                        }
                     }
+                    openMenu.appendToGroup(OPEN_REPRESENTATION_GROUP_SEPARATOR, buildOpenRepresentationAction(session, representation, label));
+                    atLeastOneRepresentationActionsWasCreated = true;
                 }
-                openMenu.appendToGroup(OPEN_REPRESENTATION_GROUP_SEPARATOR, buildOpenRepresentationAction(session, representation, label));
-                atLeastOneRepresentationActionsWasCreated = true;
             }
         }
         return atLeastOneRepresentationActionsWasCreated;
