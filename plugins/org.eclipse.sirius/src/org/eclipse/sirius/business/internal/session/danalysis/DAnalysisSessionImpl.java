@@ -1000,7 +1000,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * @return the result of the save operation.
      */
     protected IStatus doSave(final Map<?, ?> options, final IProgressMonitor monitor, boolean runExclusive) {
-        IStatus status = null;
+        IStatus status = Status.OK_STATUS;
 
         try {
             monitor.beginTask("Session saving", 3);
@@ -1018,7 +1018,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                         setResult(savedResources);
                         setStatus(Status.OK_STATUS);
                     } catch (Throwable e) {
-                        setStatus(new Status(IStatus.ERROR, SiriusPlugin.ID, "error while saving", e));
+                        SiriusPlugin.getDefault().error("Save failed", new CoreException(new Status(IStatus.ERROR, SiriusPlugin.ID, "Error while saving the session", e)));
                     }
                 }
             };
@@ -1033,13 +1033,12 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                 save.run();
             }
 
-            // Get status to return
-            status = save.getStatus();
-
-            if (!status.isOK()) {
-                SiriusPlugin.getDefault().error("save failed", new CoreException(status));
+            Collection<Resource> savedResources = save.getResult();
+            if (savedResources == null) {
+                // If the savedResources list is null, something went wrong and
+                // has already been logged.
+                status = new Status(IStatus.ERROR, SiriusPlugin.ID, "An error occurred while saving the session. Please check the error log for more details.");
             } else {
-                Collection<Resource> savedResources = save.getResult();
                 boolean semanticSave = false;
                 for (final Resource resource : savedResources) {
                     if (semanticResourcesCollection.contains(resource) || getControlledResources().contains(resource)) {

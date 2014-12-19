@@ -11,9 +11,14 @@
 package org.eclipse.sirius.tests.unit.api.session;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -24,6 +29,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
+import org.eclipse.sirius.business.api.session.SavingPolicy;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
@@ -134,6 +140,41 @@ public class DAnalysisSessionTests extends SiriusDiagramTestCase {
 
     public void testAcceleoRefreshRepresentations() throws Exception {
         doRefreshRepresentations();
+    }
+
+    /**
+     * Check the saving fails correctly (without NPE and with a message in error
+     * log) when the saving policy fails.
+     */
+    public void testSaveSessionWithErrorDuringSave() {
+        // Open session
+        doOpenSession();
+        session.setSavingPolicy(new SavingPolicy() {
+            @Override
+            public Collection<Resource> save(Iterable<Resource> resourcesToSave, Map<?, ?> options, IProgressMonitor monitor) {
+                throw new RuntimeException("This is a SavingPolicy that always fails.");
+            }
+        });
+        // Enable viewpoint
+        doCreateViews();
+        // Create the Acceleo diagrams to make the session dirty
+        DiagramDescription description = findDiagramDescription("Acceleo Class Diagram");
+        Assert.assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, description);
+        doCreateRepresentations(description, 9);
+        // Open all representations
+        doOpenAllRepresentations();
+        assertTrue("The session should be dirty.", editors.get(0).isDirty());
+        // Try to save the session
+        session.save(new NullProgressMonitor());
+        assertTrue("An error is expected during this save", doesAnErrorOccurs());
+        Set<IStatus> statuses = errors.get("org.eclipse.core.runtime");
+        assertTrue("It should be only one error.", statuses != null && statuses.size() == 1);
+        IStatus status = statuses.iterator().next();
+        assertTrue("The exception should be a RuntimeException", status.getException() instanceof RuntimeException);
+        assertEquals("The message should be the one logged in DAnalysisSessionImpl.doSave(Map<?, ?>, IProgressMonitor, boolean)", "Error while saving the session", status.getMessage());
+        // Clear the errors to avoid a fail during tear down
+        errors.clear();
+        doCleanup();
     }
 
     /**
