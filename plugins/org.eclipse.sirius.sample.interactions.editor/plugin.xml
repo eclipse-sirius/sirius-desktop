@@ -20,6 +20,7 @@
             id="org.eclipse.sirius.sample.interactions.presentation.InteractionsModelWizardID"
             name="%_UI_InteractionsModelWizard_label"
             class="org.eclipse.sirius.sample.interactions.presentation.InteractionsModelWizard"
+            icon="icons/full/obj16/Interaction.gif"
             category="org.eclipse.emf.ecore.Wizard.category.ID">
          <description>%_UI_InteractionsModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
