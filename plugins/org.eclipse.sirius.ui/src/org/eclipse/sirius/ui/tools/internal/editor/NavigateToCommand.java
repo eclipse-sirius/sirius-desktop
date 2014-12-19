@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.ui.tools.internal.commands;
+package org.eclipse.sirius.ui.tools.internal.editor;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.transaction.RecordingCommand;
@@ -53,7 +53,6 @@ public class NavigateToCommand extends RecordingCommand {
         if (session == null || representation == null) {
             return;
         }
-
         final IEditingSession ui = SessionUIManager.INSTANCE.getUISession(session);
         final IEditorPart part = DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
         if (part != null && ui != null) {

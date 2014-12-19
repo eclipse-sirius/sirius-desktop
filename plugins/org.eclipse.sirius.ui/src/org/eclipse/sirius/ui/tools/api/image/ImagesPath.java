@@ -19,4 +19,7 @@ public interface ImagesPath {
 
     /** path of the create view icon image. */
     String CREATE_VIEW_ICON = "/icons/CreateView.gif"; //$NON-NLS-1$
+
+    /** path of the link to viewpoint image. */
+    String LINK_TO_VIEWPOINT_IMG = "/icons/LinkToSirius.gif"; //$NON-NLS-1$
 }

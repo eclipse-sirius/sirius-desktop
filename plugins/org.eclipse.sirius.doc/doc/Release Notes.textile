@@ -4,6 +4,14 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for all major releases of Sirius.
 
+h2(#sirius2.0.0). Changes in Sirius 2.0.3 (from Sirius 2.0.0)
+
+h3. API Changes
+
+h4. Changes in @org.eclipse.sirius.ui@
+
+* The new constant @LINK_TO_VIEWPOINT_IMG@ has been added in @org.eclipse.sirius.ui.tools.api.image.ImagesPath@. It was previously in @org.eclipse.sirius.diagram.ui.DiagramImagesPath.LINK_TO_VIEWPOINT_IMG@. This is more coherent because the corresponding image is in core @org.eclipse.sirius.common.ui@ plugin. The old constant @DiagramImagesPath.LINK_TO_VIEWPOINT_IMG@ has been deprecated and will be removed in the next major version.
+
 h2(#sirius2.0.0). Changes in Sirius 2.0.0 (from Sirius 1.0.0)
 
 h3. User-Visible Changes

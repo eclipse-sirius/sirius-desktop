@@ -8,21 +8,14 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tree.ui.tools.internal.editor.actions;
+package org.eclipse.sirius.ui.tools.internal.actions.session;
 
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
-import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.ui.business.api.session.IEditingSession;
-import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
+import org.eclipse.sirius.ui.tools.internal.editor.NavigateToCommand;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.ui.IEditorPart;
 
 public final class OpenRepresentationAction extends Action {
 
@@ -40,7 +33,10 @@ public final class OpenRepresentationAction extends Action {
      * @param image
      *            the action's image, or <code>null</code> if there is no image
      * @param representation
-     *            the representation to open. Caller has to check this is not a dangling representation, see {@link org.eclipse.sirius.business.api.query.DRepresentationQuery.isDanglingRepresentation()}.
+     *            the representation to open. Caller has to check this is not a
+     *            dangling representation, see {@link
+     *            org.eclipse.sirius.business.api.query.DRepresentationQuery.
+     *            isDanglingRepresentation()}.
      * @param session
      *            the session in which to open it.
      */
@@ -72,24 +68,6 @@ public final class OpenRepresentationAction extends Action {
     @Override
     public void run() {
         super.run();
-        editingDomain.getCommandStack().execute(new AttachEditorRecordingCommand(editingDomain));
-    }
-
-    private class AttachEditorRecordingCommand extends RecordingCommand {
-
-        public AttachEditorRecordingCommand(TransactionalEditingDomain domain) {
-            super(domain);
-        }
-
-        @Override
-        protected void doExecute() {
-            final IEditingSession ui = SessionUIManager.INSTANCE.getUISession(session);
-            DialectManager.INSTANCE.refresh(representation, new NullProgressMonitor());
-            final IEditorPart part = DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
-            if (part != null && ui != null) {
-                ui.attachEditor((DialectEditor) part);
-            }
-        }
-
+        editingDomain.getCommandStack().execute(new NavigateToCommand(session, representation));
     }
 }

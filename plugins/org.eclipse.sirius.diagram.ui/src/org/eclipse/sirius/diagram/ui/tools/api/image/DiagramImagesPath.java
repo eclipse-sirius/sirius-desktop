@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.image;
 
+import org.eclipse.sirius.ui.tools.api.image.ImagesPath;
+
 /**
  * This interface stores images path.
  * 
@@ -29,8 +31,13 @@ public interface DiagramImagesPath {
     /** path of the refresh image. */
     String REFRESH_IMG = "images/refresh.gif"; //$NON-NLS-1$
 
-    /** path of the link to viewpoint image. */
-    String LINK_TO_VIEWPOINT_IMG = "/icons/LinkToSirius.gif"; //$NON-NLS-1$
+    /**
+     * path of the link to viewpoint image.
+     * 
+     * @deprecated Use {@link ImagesPath.LINK_TO_VIEWPOINT_IMG} instead
+     */
+    @Deprecated
+    String LINK_TO_VIEWPOINT_IMG = ImagesPath.LINK_TO_VIEWPOINT_IMG; //$NON-NLS-1$
 
     /** path of the link to file image. */
     String LINK_TO_FILE_IMG = "/icons/LinkTofile.gif"; //$NON-NLS-1$
