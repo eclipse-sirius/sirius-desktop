@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,18 +16,20 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
-import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.FontFormat;
-import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.swt.SWT;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
@@ -58,25 +60,18 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
 
     private UILocalSession localSession;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         super.onSetUpBeforeClosingWelcomePage();
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         super.onSetUpAfterOpeningDesignerPerspective();
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-
-        editor = openDiagram(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
     }
 
     /**
@@ -181,8 +176,20 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
     protected static void checkFontStyle(SWTBotGefEditPart editPart, int d2dStyle, int gmfStyle, int viewpointStyle, boolean underlined, boolean strikedThrough, String fontName, int fontSize,
             int fontColor) {
         // Check the state of draw2d label, GMF view and Sirius style.
-        if (editPart.part() instanceof AbstractDiagramListEditPart) {
-            AbstractDiagramListEditPart part = (AbstractDiagramListEditPart) editPart.part();
+        if (editPart.part() instanceof AbstractDiagramNameEditPart) {
+            AbstractDiagramNameEditPart part = (AbstractDiagramNameEditPart) editPart.part();
+
+            assertTrue("The figure of this part should be a SiriusWrapLabel.", part.getFigure() instanceof SiriusWrapLabel);
+            SiriusWrapLabel label = (SiriusWrapLabel) part.getFigure();
+            checkFont(label, d2dStyle, underlined, strikedThrough);
+
+            Node gmfNode = (Node) part.getNotationView();
+            checkFont(gmfNode, gmfStyle, underlined, strikedThrough, fontName, fontSize, fontColor);
+
+            DDiagramElement viewpointNode = part.resolveDiagramElement();
+            checkFont(viewpointNode, viewpointStyle);
+        } else if (editPart.part() instanceof AbstractDiagramElementContainerEditPart) {
+            AbstractDiagramElementContainerEditPart part = (AbstractDiagramElementContainerEditPart) editPart.part();
             AbstractDiagramNameEditPart labelPart = (AbstractDiagramNameEditPart) part.getChildren().get(0);
 
             assertTrue("The figure of this part should be a SiriusWrapLabel.", labelPart.getFigure() instanceof SiriusWrapLabel);
@@ -192,7 +199,7 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
             Node gmfNode = (Node) part.getNotationView();
             checkFont(gmfNode, gmfStyle, underlined, strikedThrough, fontName, fontSize, fontColor);
 
-            DDiagramElementContainer viewpointNode = (DDiagramElementContainer) part.resolveDiagramElement();
+            DDiagramElement viewpointNode = part.resolveDiagramElement();
             checkFont(viewpointNode, viewpointStyle);
         } else if (editPart.part() instanceof AbstractDiagramEdgeEditPart) {
             AbstractDiagramEdgeEditPart part = (AbstractDiagramEdgeEditPart) editPart.part();
@@ -206,8 +213,8 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
             // Node gmfNode = (Node) part.getNotationView();
             checkFont(gmfEdge, gmfStyle, underlined, strikedThrough, fontName, fontSize, fontColor);
 
-            DEdge viewpointEdge = (DEdge) part.resolveDiagramElement();
-            checkFont(viewpointEdge, viewpointStyle);
+            DDiagramElement viewpointNode = part.resolveDiagramElement();
+            checkFont(viewpointNode, viewpointStyle);
         } else {
             fail("The case of \"" + editPart.part().getClass().getName() + "\" is not managed by this method.");
         }
@@ -282,20 +289,45 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
         }
     }
 
-    protected static void checkFont(DDiagramElementContainer viewpointNode, int style) {
-        LabelStyle label = viewpointNode.getOwnedStyle();
+    /**
+     * Check font style.
+     * 
+     * @param element
+     *            diagram element check
+     * @param style
+     *            style to find.
+     */
+    protected static void checkFont(DDiagramElement element, int style) {
+        BasicLabelStyle label = null;
+
+        if (element instanceof DDiagramElementContainer) {
+            label = ((DDiagramElementContainer) element).getOwnedStyle();
+        } else if (element instanceof DNodeListElement) {
+            label = ((DNodeListElement) element).getOwnedStyle();
+        } else if (element instanceof DEdge) {
+            label = ((DEdge) element).getOwnedStyle().getCenterLabelStyle();
+        }
+
+        assertNotNull(label);
         assertEquals("Wrong viewpoint font format (" + FontFormat.get(style) + ")", style, label.getLabelFormat().getValue());
     }
 
-    protected static void checkFont(DEdge viewpointEdge, int style) {
-        BasicLabelStyle label = viewpointEdge.getOwnedStyle().getCenterLabelStyle();
-        assertEquals("Wrong viewpoint font format (" + FontFormat.get(style) + ")", style, label.getLabelFormat().getValue());
-    }
-
+    /**
+     * Check font style.
+     * 
+     * @param label
+     *            label check
+     * @param swtStyle
+     *            SWT style to find.
+     * @param underlined
+     *            true if the font must be underlined
+     * @param strikedThrough
+     *            true if the font must be striked through
+     */
     protected static void checkFont(SiriusWrapLabel label, int swtStyle, boolean underlined, boolean strikedThrough) {
-        assertEquals("Wrong figure font style", swtStyle, label.getFont().getFontData()[0].getStyle());
-        assertEquals("Wrong figure font style", strikedThrough, label.isTextStrikedThrough());
-        assertEquals("Wrong figure font style", underlined, label.isTextUnderlined());
+        assertEquals("Wrong figure font style for SWT style", swtStyle, label.getFont().getFontData()[0].getStyle());
+        assertEquals("Wrong figure font style for striked through", strikedThrough, label.isTextStrikedThrough());
+        assertEquals("Wrong figure font style for underlined", underlined, label.isTextUnderlined());
     }
 
     /**
@@ -339,9 +371,6 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
         SWTBotUtils.waitAllUiEvents();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void tearDown() throws Exception {
         localSession = null;

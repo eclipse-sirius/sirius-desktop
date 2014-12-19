@@ -62,6 +62,7 @@ import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferences
 import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramInternalPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.business.internal.dialect.DiagramDialectUIServices;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
@@ -1261,7 +1262,9 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         ISelection selection = editor.getSelection();
         if (!selection.isEmpty() && selection instanceof IStructuredSelection) {
             IStructuredSelection structuredSelection = (IStructuredSelection) selection;
-            if (structuredSelection.getFirstElement() instanceof AbstractDiagramEdgeEditPart) {
+            Object firstElement = structuredSelection.getFirstElement();
+
+            if (firstElement instanceof AbstractDiagramEdgeEditPart || firstElement instanceof AbstractDiagramNameEditPart) {
                 buttonIndex = 3;
             }
         }

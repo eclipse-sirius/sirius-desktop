@@ -681,6 +681,11 @@
             class="org.eclipse.sirius.diagram.ui.tools.internal.properties.DiagramColorAndFontPropertySection"
             tab="property.tab.AppearancePropertySection">
          </propertySection>
+         <propertySection id="property.section.DNodeListElementColorsAndFontsPropertySection"
+            filter="org.eclipse.sirius.diagram.ui.tools.internal.properties.filter.DNodeListElementEditPartPropertySectionFilter"
+            class="org.eclipse.sirius.diagram.ui.tools.internal.properties.LabelColorAndFontPropertySection"
+            tab="property.tab.AppearancePropertySection">
+         </propertySection>
          <propertySection id="property.section.RulerGridPropertySection"
             filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.DiagramEditPartPropertySectionFilter"
             class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.grid.RulerGridPropertySection"

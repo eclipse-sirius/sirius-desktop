@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,6 +35,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.Dot;
 import org.eclipse.sirius.diagram.EdgeStyle;
@@ -247,6 +248,12 @@ public class ViewPropertiesSynchronizer {
             } else if (Properties.ID_LINECOLOR.equals(propertyId)) {
                 setBorderColor(nodeStyle, newColor);
             } else if (Properties.ID_FONTCOLOR.equals(propertyId)) {
+                setFontColor(nodeStyle, newColor);
+            }
+        } else if (element instanceof DNodeListElement) {
+            DNodeListElement dNodeListElement = (DNodeListElement) element;
+            NodeStyle nodeStyle = dNodeListElement.getOwnedStyle();
+            if (Properties.ID_FONTCOLOR.equals(propertyId)) {
                 setFontColor(nodeStyle, newColor);
             }
         } else if (element instanceof DDiagramElementContainer) {

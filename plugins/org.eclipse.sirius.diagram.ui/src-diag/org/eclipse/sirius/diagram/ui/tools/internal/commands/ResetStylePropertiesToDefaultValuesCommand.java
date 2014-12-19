@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010-1015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
@@ -139,6 +140,21 @@ public class ResetStylePropertiesToDefaultValuesCommand extends RecordingCommand
                     // refresh for these expressions
                     // (borderSizeComputationExpression, ...).
                     styleHelper.refreshStyle(containerStyle);
+                }
+            }
+        } else if (dDiagramElement instanceof DNodeListElement) {
+            DNodeListElement dNodeElementElement = (DNodeListElement) dDiagramElement;
+            if (dNodeElementElement.getOwnedStyle() != null) {
+                dNodeElementElement.getOwnedStyle().getCustomFeatures().clear();
+                Style bestStyle = mappingHelper.getBestStyle(diagramElementMapping, dNodeElementElement.getTarget(), dNodeElementElement, parentDDiagramElt.getTarget(), dDiagram);
+                if (bestStyle instanceof NodeStyle) {
+                    NodeStyle nodeStyle = (NodeStyle) bestStyle;
+                    dNodeElementElement.setOwnedStyle(nodeStyle);
+                    // Now the style has a container. This container is needed
+                    // to compute the interpreted expression. So launch a
+                    // refresh for these expressions
+                    // (borderSizeComputationExpression, ...).
+                    styleHelper.refreshStyle(nodeStyle);
                 }
             }
         }

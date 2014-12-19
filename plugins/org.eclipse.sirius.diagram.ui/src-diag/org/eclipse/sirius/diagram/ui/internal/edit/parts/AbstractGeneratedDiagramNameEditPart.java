@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -104,6 +104,7 @@ public abstract class AbstractGeneratedDiagramNameEditPart extends AbstractDiagr
     /**
      * @was-generated
      */
+    @Override
     public void setLabelText(final String text) {
         setLabelTextHelper(getFigure(), text);
         final Object pdEditPolicy = getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
@@ -159,6 +160,7 @@ public abstract class AbstractGeneratedDiagramNameEditPart extends AbstractDiagr
     /**
      * @was-generated
      */
+    @Override
     protected List getModelChildren() {
         return Collections.EMPTY_LIST;
     }
@@ -166,6 +168,7 @@ public abstract class AbstractGeneratedDiagramNameEditPart extends AbstractDiagr
     /**
      * @was-generated
      */
+    @Override
     public IGraphicalEditPart getChildBySemanticHint(final String semanticHint) {
         return null;
     }
@@ -188,6 +191,7 @@ public abstract class AbstractGeneratedDiagramNameEditPart extends AbstractDiagr
     /**
      * @was-generated
      */
+    @Override
     public String getEditText() {
         if (getParserElement() == null || getParser() == null) {
             return ""; //$NON-NLS-1$
@@ -198,9 +202,11 @@ public abstract class AbstractGeneratedDiagramNameEditPart extends AbstractDiagr
     /**
      * @was-generated
      */
+    @Override
     public ICellEditorValidator getEditTextValidator() {
         return new ICellEditorValidator() {
 
+            @Override
             public String isValid(final Object value) {
                 if (value instanceof String) {
                     final EObject element = getParserElement();
@@ -208,6 +214,7 @@ public abstract class AbstractGeneratedDiagramNameEditPart extends AbstractDiagr
                     try {
                         final IParserEditStatus valid = (IParserEditStatus) getEditingDomain().runExclusive(new RunnableWithResult.Impl() {
 
+                            @Override
                             public void run() {
                                 setResult(validationParser.isValidEditString(new EObjectAdapter(element), (String) value));
                             }
@@ -227,6 +234,7 @@ public abstract class AbstractGeneratedDiagramNameEditPart extends AbstractDiagr
     /**
      * @was-generated
      */
+    @Override
     public IContentAssistProcessor getCompletionProcessor() {
         if (getParserElement() == null || getParser() == null) {
             return null;
@@ -237,6 +245,7 @@ public abstract class AbstractGeneratedDiagramNameEditPart extends AbstractDiagr
     /**
      * @was-generated
      */
+    @Override
     public ParserOptions getParserOptions() {
         return ParserOptions.NONE;
     }
@@ -295,11 +304,13 @@ public abstract class AbstractGeneratedDiagramNameEditPart extends AbstractDiagr
     /**
      * @was-generated
      */
+    @Override
     protected void performDirectEditRequest(final Request request) {
         final Request theRequest = request;
         try {
             getEditingDomain().runExclusive(new Runnable() {
 
+                @Override
                 public void run() {
                     if (isActive() && isEditable()) {
                         if (theRequest.getExtendedData().get(RequestConstants.REQ_DIRECTEDIT_EXTENDEDDATA_INITIAL_CHAR) instanceof Character) {
@@ -322,6 +333,7 @@ public abstract class AbstractGeneratedDiagramNameEditPart extends AbstractDiagr
     /**
      * @was-generated
      */
+    @Override
     protected void refreshVisuals() {
         super.refreshVisuals();
         refreshLabel();
@@ -366,6 +378,7 @@ public abstract class AbstractGeneratedDiagramNameEditPart extends AbstractDiagr
     /**
      * @was-generated
      */
+    @Override
     protected void setFontColor(final Color color) {
         getFigure().setForegroundColor(color);
     }
@@ -373,6 +386,7 @@ public abstract class AbstractGeneratedDiagramNameEditPart extends AbstractDiagr
     /**
      * @was-generated
      */
+    @Override
     protected void addSemanticListeners() {
         if (getParser() instanceof ISemanticParser) {
             final EObject element = resolveSemanticElement();
@@ -388,6 +402,7 @@ public abstract class AbstractGeneratedDiagramNameEditPart extends AbstractDiagr
     /**
      * @was-generated
      */
+    @Override
     protected void removeSemanticListeners() {
         if (parserElements != null) {
             for (int i = 0; i < parserElements.size(); i++) {
@@ -401,10 +416,12 @@ public abstract class AbstractGeneratedDiagramNameEditPart extends AbstractDiagr
     /**
      * @was-generated
      */
+    @Override
     protected AccessibleEditPart getAccessibleEditPart() {
         if (accessibleEP == null) {
             accessibleEP = new AccessibleGraphicalEditPart() {
 
+                @Override
                 public void getName(final AccessibleEvent e) {
                     e.result = getLabelTextHelper(getFigure());
                 }
@@ -416,13 +433,14 @@ public abstract class AbstractGeneratedDiagramNameEditPart extends AbstractDiagr
     /**
      * @was-generated
      */
-    private View getFontStyleOwnerView() {
+    protected View getFontStyleOwnerView() {
         return getPrimaryView();
     }
 
     /**
      * @was-generated
      */
+    @Override
     protected void handleNotificationEvent(final Notification event) {
         final Object feature = event.getFeature();
         if (NotationPackage.eINSTANCE.getFontStyle_FontColor().equals(feature)) {

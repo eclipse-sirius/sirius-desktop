@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2009-2015 THALES GLOBAL SERVICES
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory;
+import org.eclipse.swtbot.swt.finder.results.BoolResult;
 import org.eclipse.swtbot.swt.finder.results.StringResult;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.utils.SWTUtils;
@@ -92,24 +93,34 @@ public final class SWTBotSiriusHelper {
      * 
      * @param label
      *            Label to find.
+     * @return true if the property tab is found, false otherwise
      */
     @SuppressWarnings({ "unchecked" })
-    public static void selectPropertyTabItem(final String label) {
+    public static boolean selectPropertyTabItem(final String label) {
         final Matcher<TabbedPropertyList> matcher = Matchers.allOf(WidgetMatcherFactory.widgetOfType(TabbedPropertyList.class));
         final List<TabbedPropertyList> widgets = SWTBotSiriusHelper.widget(matcher);
 
-        UIThreadRunnable.syncExec(SWTUtils.display(), new VoidResult() {
+        Boolean result = UIThreadRunnable.syncExec(SWTUtils.display(), new BoolResult() {
             @Override
-            public void run() {
+            public Boolean run() {
+                boolean result = false;
+
                 for (final TabbedPropertyList tabbedProperty : widgets) {
                     final ListElement tabItem = SWTBotSiriusHelper.getTabItem(label, tabbedProperty);
                     if (tabItem != null) {
                         final Event mouseEvent = SWTBotSiriusHelper.createEvent(tabItem, tabItem.getBounds().x, tabItem.getBounds().y, 1, SWT.BUTTON1, 1);
                         tabItem.notifyListeners(SWT.MouseUp, mouseEvent);
+
+                        result = true;
+                        break; // quit the for
                     }
-                }
+                } // for
+
+                return result;
             }
         });
+
+        return result != null ? result.booleanValue() : false;
     }
 
     /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.WidgetIsDisabledCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.WidgetIsEnabledCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.widget.WrappedSWTBotRadio;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
@@ -98,7 +99,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         SWTBotView propertiesView = bot.viewByTitle("Properties");
         propertiesView.setFocus();
         SWTBot propertiesBot = propertiesView.bot();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        assertTrue("The appearance tab should be visible", SWTBotSiriusHelper.selectPropertyTabItem("Appearance"));
         return propertiesBot;
     }
 
@@ -155,7 +156,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
         // Step 3: Reopen diagram
         editor.close();
-        editor = openDiagram(SessionManager.INSTANCE.getSessions().iterator().next(), representationDescriptionName, representationName, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(SessionManager.INSTANCE.getSessions().iterator().next(), representationDescriptionName, representationName, DDiagram.class);
         selectedEditPart = editor.getEditPart(editPartName, selectedEditPart.part().getClass());
 
         selectedEditPart.select();
@@ -251,7 +252,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
         // Step 4: Reopen diagram
         editor.close();
-        editor = openDiagram(SessionManager.INSTANCE.getSessions().iterator().next(), representationDescriptionName, representationName, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(SessionManager.INSTANCE.getSessions().iterator().next(), representationDescriptionName, representationName, DDiagram.class);
         selectedEditPart = editor.getEditPart(editPartName, selectedEditPart.part().getClass());
 
         selectedEditPart.select();
@@ -347,12 +348,12 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
         // Step 5: Reopen diagram
         editor.close();
-        editor = openDiagram(SessionManager.INSTANCE.getSessions().iterator().next(), representationDescriptionName, representationName, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(SessionManager.INSTANCE.getSessions().iterator().next(), representationDescriptionName, representationName, DDiagram.class);
         selectedEditPart = editor.getEditPart(editor.getBounds(selectedEditPart).getCenter(), selectedEditPart.part().getClass());
         selectedEditPart.select();
         propertiesBot = selectAppearanceTab();
         comboBoxToTest = propertiesBot.ccomboBoxInGroup("Fonts and Colors:", comboBoxIdIngroup);
-        resetStyleCustomizationButton = propertiesBot.buttonInGroup("Fonts and Colors:", 4);
+        resetStyleCustomizationButton = getResetStylePropertiesToDefaultValuesButtonFromAppearanceTab();
 
         // Check result: should be identical to the before-refresh state
         assertEquals(modifiedComboValue, comboBoxToTest.getText());
@@ -439,7 +440,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
         // Step 5: Reopen diagram
         editor.close();
-        editor = openDiagram(SessionManager.INSTANCE.getSessions().iterator().next(), representationDescriptionName, representationName, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(SessionManager.INSTANCE.getSessions().iterator().next(), representationDescriptionName, representationName, DDiagram.class);
         selectedEditPart = editor.getEditPart(editor.getBounds(selectedEditPart).getCenter(), selectedEditPart.part().getClass());
         selectedEditPart.select();
         propertiesBot = selectAppearanceTab();
@@ -452,8 +453,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(true), true);
 
         // Step 6: "Reset style properties to default values" and check result
-        // (should be back to
-        // initial state)
+        // (should be back to initial state)
         resetStyleCustomizationButton.click();
         SWTBotUtils.waitAllUiEvents();
         // TODO: re-enable this check once VP-3626 will be fixed
@@ -516,7 +516,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
         // Step 3: Reopen diagram
         editor.close();
-        editor = openDiagram(SessionManager.INSTANCE.getSessions().iterator().next(), representationDescriptionName, representationName, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(SessionManager.INSTANCE.getSessions().iterator().next(), representationDescriptionName, representationName, DDiagram.class);
         selectedEditPart = editor.getEditPart(editor.getBounds(selectedEditPart).getCenter(), selectedEditPart.part().getClass());
         selectedEditPart.select();
         propertiesBot = selectAppearanceTab();
@@ -590,15 +590,15 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         bot.waitUntil(new WidgetIsEnabledCondition(resetStyleCustomizationButton));
         assertTrue("The button " + buttonFromAppearanceSectionToTest.getToolTipText() + " has been applied, so the initial state should not be checked anymore",
                 stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
-        
+
         checkButtonAppearanceChecked(Lists.newArrayList(buttonFromAppearanceSectionToTest), resetStyleCustomizationButton, Lists.newArrayList(true), true);
 
         // Step 3: Disable button and check result
         buttonFromAppearanceSectionToTest.click();
-        if(customizationRevertable) {
-        	bot.waitUntil(new WidgetIsDisabledCondition(resetStyleCustomizationButton));
+        if (customizationRevertable) {
+            bot.waitUntil(new WidgetIsDisabledCondition(resetStyleCustomizationButton));
         } else {
-        	bot.waitUntil(new WidgetIsEnabledCondition(resetStyleCustomizationButton));
+            bot.waitUntil(new WidgetIsEnabledCondition(resetStyleCustomizationButton));
         }
         assertTrue("The button " + buttonFromAppearanceSectionToTest.getToolTipText() + " has been disabled, so the initial state should be checked again",
                 initialStatePredicate.apply(selectedEditPart));
@@ -613,7 +613,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
         // Step 5: Reopen diagram
         editor.close();
-        editor = openDiagram(SessionManager.INSTANCE.getSessions().iterator().next(), representationDescriptionName, representationName, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(SessionManager.INSTANCE.getSessions().iterator().next(), representationDescriptionName, representationName, DDiagram.class);
         selectedEditPart = editor.getEditPart(editor.getBounds(selectedEditPart).getCenter(), selectedEditPart.part().getClass());
         selectedEditPart.select();
         propertiesBot = selectAppearanceTab();
@@ -755,7 +755,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
         // Step 6: Reopen diagram
         editor.close();
-        editor = openDiagram(SessionManager.INSTANCE.getSessions().iterator().next(), representationDescriptionName, representationName, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(SessionManager.INSTANCE.getSessions().iterator().next(), representationDescriptionName, representationName, DDiagram.class);
         selectedEditPart = editor.getEditPart(editor.getBounds(selectedEditPart).getCenter(), selectedEditPart.part().getClass());
         selectedEditPart.select();
         buttonFromTabbarToTest = bot.toolbarToggleButtonWithTooltip(tabbarButtonTooltip);
@@ -822,7 +822,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         // Step 3: Reopen diagram
         editor.close();
         SWTBotUtils.waitAllUiEvents();
-        editor = openDiagram(SessionManager.INSTANCE.getSessions().iterator().next(), representationDescriptionName, representationName, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(SessionManager.INSTANCE.getSessions().iterator().next(), representationDescriptionName, representationName, DDiagram.class);
         selectedEditPart = editor.getEditPart(editor.getBounds(selectedEditPart).getCenter(), selectedEditPart.part().getClass());
         selectedEditPart.select();
 
@@ -892,7 +892,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         // Step 3: Reopen diagram
         editor.close();
         SWTBotUtils.waitAllUiEvents();
-        editor = openDiagram(SessionManager.INSTANCE.getSessions().iterator().next(), representationDescriptionName, representationName, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(SessionManager.INSTANCE.getSessions().iterator().next(), representationDescriptionName, representationName, DDiagram.class);
         selectedEditPart = editor.getEditPart(edgeEditPartName, selectedEditPart.part().getClass());
         selectedEditPart.select();
 
@@ -959,7 +959,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
         // Step 3: Reopen diagram
         editor.close();
-        editor = openDiagram(SessionManager.INSTANCE.getSessions().iterator().next(), representationDescriptionName, representationName, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(SessionManager.INSTANCE.getSessions().iterator().next(), representationDescriptionName, representationName, DDiagram.class);
         selectedEditPart = editor.getEditPart(editor.getBounds(selectedEditPart).getCenter(), selectedEditPart.part().getClass());
         selectedEditPart.select();
 

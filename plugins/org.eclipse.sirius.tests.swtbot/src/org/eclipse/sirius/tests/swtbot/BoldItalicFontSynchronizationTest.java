@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,12 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import org.eclipse.draw2d.geometry.Point;
-import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
+import org.eclipse.gef.EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
@@ -41,59 +46,71 @@ public class BoldItalicFontSynchronizationTest extends AbstractFontModificationT
      * selected for property appearance.
      */
     public void testBoldItalicSynchronizationFromTabbar() {
+        doTestBoldItalicSynchronizationFromTabbar("myEClass", DNodeList2EditPart.class);
+        doTestBoldItalicSynchronizationFromTabbar("myEClass3", DNodeListEditPart.class);
+        doTestBoldItalicSynchronizationFromTabbar("myAttribute", DNodeListElementEditPart.class);
+        doTestBoldItalicSynchronizationFromTabbar("myPackage", DNodeContainerEditPart.class);
+        doTestBoldItalicSynchronizationFromTabbar("myPackage2", DNodeContainer2EditPart.class);
+    }
+
+    /**
+     * Test BoldItalic element from Tabbar and check that BoldItalic button is
+     * selected for property appearance.
+     * 
+     * @param name
+     *            the edit part name
+     * @param type
+     *            the expected editpart type.
+     */
+    public void doTestBoldItalicSynchronizationFromTabbar(String name, Class<? extends EditPart> type) {
         // Not available in fixed tabbar
         if (!TestsUtil.isDynamicTabbar()) {
             return;
         }
-        SWTBotGefEditPart myEClassEP = selectAndCheckEditPart("myEClass", AbstractDiagramListEditPart.class);
-
-        SWTBotToolbarToggleButton tabbarBoldButton = getTabbarBoldButton();
-        SWTBotToolbarToggleButton tabbarItalicButton = getTabbarItalicButton();
+        editor.click(new Point(0, 0));
+        SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
 
         // Verify that the font by default is normal.
-        checkNormalFontStyle(myEClassEP);
+        checkNormalFontStyle(selectedEditPart);
 
         // Click on bold and Italic button on tabbar.
-        tabbarBoldButton.click();
-        tabbarItalicButton = getTabbarItalicButton();
-        tabbarItalicButton.click();
-        checkBoldItalicFontStyle(myEClassEP);
+        getTabbarBoldButton().click();
+        getTabbarItalicButton().click();
+        checkBoldItalicFontStyle(selectedEditPart);
 
         // Verify that buttons italic and bold is also selected on property
         // Appearance tab and that cancel custom style is enabled.
         SWTBot propertiesBot = selectAppearanceTab();
         SWTBotToggleButton boldButton = propertiesBot.toggleButtonInGroup("Fonts and Colors:", 0);
         SWTBotToggleButton italicButton = propertiesBot.toggleButtonInGroup("Fonts and Colors:", 1);
-        SWTBotButton cancelCustomStyle = propertiesBot.buttonInGroup("Fonts and Colors:", 4);
+        SWTBotButton cancelCustomStyle = getResetStylePropertiesToDefaultValuesButtonFromAppearanceTab();
         checkButtonAppearanceChecked(Lists.newArrayList(boldButton, italicButton), cancelCustomStyle, Lists.newArrayList(true, true), true);
 
         editor.click(new Point(0, 0));
-        selectAndCheckEditPart("myEClass", AbstractDiagramListEditPart.class);
+        selectAndCheckEditPart(name, type);
 
         // Unchecked the bold button and verify that the button bold is also
         // unchecked on property Appearance tab.
-        tabbarBoldButton = getTabbarBoldButton();
-        tabbarBoldButton.click();
-        checkItalicFontStyle(myEClassEP);
+        getTabbarBoldButton().click();
+        checkItalicFontStyle(selectedEditPart);
         propertiesBot = selectAppearanceTab();
         boldButton = propertiesBot.toggleButtonInGroup("Fonts and Colors:", 0);
         italicButton = propertiesBot.toggleButtonInGroup("Fonts and Colors:", 1);
-        cancelCustomStyle = propertiesBot.buttonInGroup("Fonts and Colors:", 4);
+        cancelCustomStyle = getResetStylePropertiesToDefaultValuesButtonFromAppearanceTab();
         checkButtonAppearanceChecked(Lists.newArrayList(boldButton, italicButton), cancelCustomStyle, Lists.newArrayList(false, true), true);
 
         editor.click(new Point(0, 0));
-        selectAndCheckEditPart("myEClass", AbstractDiagramListEditPart.class);
+        selectAndCheckEditPart(name, type);
 
         // Unchecked the italic button and verify that the button italic is also
         // unchecked on property Appearance tab and that the button cancel
         // custom style is also disabled.
-        tabbarItalicButton = getTabbarItalicButton();
-        tabbarItalicButton.click();
-        checkNormalFontStyle(myEClassEP);
+        getTabbarItalicButton().click();
+        checkNormalFontStyle(selectedEditPart);
         propertiesBot = selectAppearanceTab();
         boldButton = propertiesBot.toggleButtonInGroup("Fonts and Colors:", 0);
         italicButton = propertiesBot.toggleButtonInGroup("Fonts and Colors:", 1);
-        cancelCustomStyle = propertiesBot.buttonInGroup("Fonts and Colors:", 4);
+        cancelCustomStyle = getResetStylePropertiesToDefaultValuesButtonFromAppearanceTab();
         checkButtonAppearanceChecked(Lists.newArrayList(boldButton, italicButton), cancelCustomStyle, Lists.newArrayList(false, false), true);
 
     }
@@ -103,25 +120,43 @@ public class BoldItalicFontSynchronizationTest extends AbstractFontModificationT
      * button is selected on tabbar.
      */
     public void testBoldItalicSynchronizationFromAppearanceSection() {
-        SWTBotGefEditPart myEClassEP = selectAndCheckEditPart("myEClass", AbstractDiagramListEditPart.class);
+        doTestBoldItalicSynchronizationFromAppearanceSection("myEClass", DNodeList2EditPart.class);
+        doTestBoldItalicSynchronizationFromAppearanceSection("myEClass3", DNodeListEditPart.class);
+        doTestBoldItalicSynchronizationFromAppearanceSection("myAttribute", DNodeListElementEditPart.class);
+        doTestBoldItalicSynchronizationFromAppearanceSection("myPackage", DNodeContainerEditPart.class);
+        doTestBoldItalicSynchronizationFromAppearanceSection("myPackage2", DNodeContainer2EditPart.class);
+    }
+
+    /**
+     * Test BoldItalic element from appearance section and check that BoldItalic
+     * button is selected on tabbar.
+     * 
+     * @param name
+     *            the edit part name
+     * @param type
+     *            the expected editpart type.
+     */
+    public void doTestBoldItalicSynchronizationFromAppearanceSection(String name, Class<? extends EditPart> type) {
+        editor.click(new Point(0, 0));
+        SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
 
         SWTBot propertiesBot = selectAppearanceTab();
         SWTBotToggleButton boldButton = propertiesBot.toggleButtonInGroup("Fonts and Colors:", 0);
         SWTBotToggleButton italicButton = propertiesBot.toggleButtonInGroup("Fonts and Colors:", 1);
-        SWTBotButton cancelCustomStyleButton = propertiesBot.buttonInGroup("Fonts and Colors:", 4);
+        SWTBotButton cancelCustomStyleButton = getResetStylePropertiesToDefaultValuesButtonFromAppearanceTab();
 
         // Verify that the font by default is normal.
-        checkNormalFontStyle(myEClassEP);
+        checkNormalFontStyle(selectedEditPart);
 
         // Click on bold and Italic button on appearance section and check
         // buttons in appearance tab.
         boldButton.click();
         italicButton.click();
-        checkBoldItalicFontStyle(myEClassEP);
+        checkBoldItalicFontStyle(selectedEditPart);
         checkButtonAppearanceChecked(Lists.newArrayList(boldButton, italicButton), cancelCustomStyleButton, Lists.newArrayList(true, true), true);
 
         editor.click(new Point(0, 0));
-        selectAndCheckEditPart("myEClass", AbstractDiagramListEditPart.class);
+        selectAndCheckEditPart(name, type);
 
         // Not available in fixed tabbar
         if (!TestsUtil.isDynamicTabbar()) {
@@ -139,10 +174,10 @@ public class BoldItalicFontSynchronizationTest extends AbstractFontModificationT
         propertiesBot = selectAppearanceTab();
         boldButton = propertiesBot.toggleButtonInGroup("Fonts and Colors:", 0);
         boldButton.click();
-        checkItalicFontStyle(myEClassEP);
+        checkItalicFontStyle(selectedEditPart);
 
         editor.click(new Point(0, 0));
-        selectAndCheckEditPart("myEClass", AbstractDiagramListEditPart.class);
+        selectAndCheckEditPart(name, type);
 
         // Verify that buttons italic is also selected on tabbar
         boldButtonTabbar = getTabbarBoldButton();
@@ -156,10 +191,10 @@ public class BoldItalicFontSynchronizationTest extends AbstractFontModificationT
         propertiesBot = selectAppearanceTab();
         italicButton = propertiesBot.toggleButtonInGroup("Fonts and Colors:", 1);
         italicButton.click();
-        checkNormalFontStyle(myEClassEP);
+        checkNormalFontStyle(selectedEditPart);
 
         editor.click(new Point(0, 0));
-        selectAndCheckEditPart("myEClass", AbstractDiagramListEditPart.class);
+        selectAndCheckEditPart(name, type);
 
         // Verify that buttons italic is also unselected on tabbar
         boldButtonTabbar = getTabbarBoldButton();

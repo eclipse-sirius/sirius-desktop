@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -113,6 +113,11 @@ public class DDiagramElementQuery {
             DDiagramElementContainer dDiagramElementContainer = (DDiagramElementContainer) element;
             if (dDiagramElementContainer.getOwnedStyle() != null) {
                 isCustomized = !dDiagramElementContainer.getOwnedStyle().getCustomFeatures().isEmpty();
+            }
+        } else if (element instanceof DNodeListElement) {
+            DNodeListElement dNodeElementElement = (DNodeListElement) element;
+            if (dNodeElementElement.getOwnedStyle() != null) {
+                isCustomized = !dNodeElementElement.getOwnedStyle().getCustomFeatures().isEmpty();
             }
         }
         return isCustomized;
@@ -289,6 +294,8 @@ public class DDiagramElementQuery {
             labelStyle = ((DNode) element).getOwnedStyle();
         } else if (element instanceof DDiagramElementContainer) {
             labelStyle = ((DDiagramElementContainer) element).getOwnedStyle();
+        } else if (element instanceof DNodeListElement) {
+            labelStyle = ((DNodeListElement) element).getOwnedStyle();
         }
         return Options.newSome(labelStyle);
     }

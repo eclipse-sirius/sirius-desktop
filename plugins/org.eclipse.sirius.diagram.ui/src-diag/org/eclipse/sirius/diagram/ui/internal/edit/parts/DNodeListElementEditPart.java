@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,6 +38,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LaunchToolEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ListItemDeletionEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusPropertyHandlerEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeListElementItemSemanticEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.SiriusTextNonResizableEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusElementTypes;
@@ -74,6 +75,7 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
     /**
      * @was-generated
      */
+    @Override
     public DragTracker getDragTracker(Request request) {
         if (request instanceof SelectionRequest && ((SelectionRequest) request).getLastButtonPressed() == 3) {
             return null;
@@ -87,6 +89,7 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
      * @not-generated
      * 
      */
+    @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
 
@@ -98,11 +101,16 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
 
         removeEditPolicy(EditPolicy.COMPONENT_ROLE);
         installEditPolicy(EditPolicy.COMPONENT_ROLE, new ListItemDeletionEditPolicy(getEditingDomain()));
+
+        // Enables Font and Style action
+        removeEditPolicy(EditPolicyRoles.PROPERTY_HANDLER_ROLE);
+        installEditPolicy(EditPolicyRoles.PROPERTY_HANDLER_ROLE, new SiriusPropertyHandlerEditPolicy());
     }
 
     /**
      * @was-generated
      */
+    @Override
     public void setLabel(IFigure figure) {
         unregisterVisuals();
         setFigure(figure);
@@ -114,6 +122,7 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
     /**
      * @was-generated
      */
+    @Override
     protected boolean isEditable() {
         return getParser() != null;
     }
@@ -121,6 +130,7 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
     /**
      * @was-generated
      */
+    @Override
     public IParser getParser() {
         if (parser == null) {
             String parserHint = ((View) getModel()).getType();
@@ -133,6 +143,7 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
     /**
      * @not-generated add support for label alignement
      */
+    @Override
     protected void refreshVisuals() {
         super.refreshVisuals();
         refreshLabelAlignment();
@@ -153,6 +164,7 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
     /**
      * @not-generated
      */
+    @Override
     protected void refreshFont() {
         // ViewNodeEditPartOperations.refreshFont(resolveSemanticElement(),
         // getFigure());
@@ -169,12 +181,14 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
     /**
      * @not-generated
      */
+    @Override
     protected void refreshFontColor() {
     }
 
     /**
      * @not-generated
      */
+    @Override
     protected void refreshForegroundColor() {
         DiagramNameEditPartOperation.refreshFont(this);
     }
@@ -182,6 +196,7 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
     /**
      * @not-generated
      */
+    @Override
     protected void handleNotificationEvent(Notification notification) {
         final EditPart styleEditPart = getStyleEditPart();
         // Refreshes edit part.
@@ -209,6 +224,7 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
     /**
      * @was-generated
      */
+    @Override
     protected IFigure createFigure() {
         IFigure label = createFigurePrim();
         defaultText = getLabelTextHelper(label);
@@ -224,6 +240,7 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
         return safeWrapLabel;
     }
 
+    @Override
     public void activate() {
         if (!isActive()) {
             final IPermissionAuthority auth = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(getEditingDomain().getResourceSet());
@@ -250,6 +267,7 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
         }
     }
 
+    @Override
     public void deactivate() {
         DiagramElementEditPartOperation.deactivate(this);
         final IPermissionAuthority auth = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(getEditingDomain().getResourceSet());
@@ -293,10 +311,16 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
      * 
      * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramElementEditPart#getEAdapterSemanticElements()
      */
+    @Override
     public NotificationPreCommitListener getEAdapterSemanticElements() {
         if (this.adapterSemanticElements == null) {
             this.adapterSemanticElements = DiagramElementEditPartOperation.createEAdpaterSemanticElements(this);
         }
         return this.adapterSemanticElements;
+    }
+
+    @Override
+    protected View getFontStyleOwnerView() {
+        return (View) getModel();
     }
 }

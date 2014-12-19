@@ -56,6 +56,8 @@ h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
 * The @warnings@ member variable has been added to @org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase@ to allow the recording of warning logs. Methods @doesAWarningOccurs()@, @setWarningCatchActive(boolean)@, @isWarningCatchActive()@ and @getWarningLoggersMessage()@ have also been added to manage the @warnings@ member variable in the same way as the existing @errors@ member variable.
 
+* The methods @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper.selectPropertyTabItem(String)@ now returns a @boolean@ that is true when the property tab item is found, false otherwise.
+
 h2(#sirius2.0.0). Changes in Sirius 2.0.0 (from Sirius 1.0.0)
 
 h3. User-Visible Changes

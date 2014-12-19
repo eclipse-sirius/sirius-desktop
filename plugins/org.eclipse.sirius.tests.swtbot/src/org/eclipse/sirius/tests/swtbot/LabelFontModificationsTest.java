@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,8 +13,14 @@ package org.eclipse.sirius.tests.swtbot;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.gef.EditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.viewpoint.FontFormat;
@@ -36,11 +42,17 @@ import com.google.common.collect.Lists;
  * @author mporhel
  */
 public class LabelFontModificationsTest extends AbstractFontModificationTest {
+    private static final String BOLD_FONT_STYLE = "Bold Font Style";
+
+    private static final String ITALIC_FONT_STYLE = "Italic Font Style";
+
+    private static final String FONTS_COLORS_GROUP = "Fonts and Colors:";
 
     private static final Predicate<SWTBotGefEditPart> NORMAL_FONT_STATE_PREDICATE = new Predicate<SWTBotGefEditPart>() {
         /**
          * {@inheritDoc}
          */
+        @Override
         public boolean apply(SWTBotGefEditPart input) {
             try {
                 checkNormalFontStyle(input);
@@ -55,6 +67,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         /**
          * {@inheritDoc}
          */
+        @Override
         public boolean apply(SWTBotGefEditPart input) {
             try {
                 checkBoldFontStyle(input);
@@ -69,6 +82,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         /**
          * {@inheritDoc}
          */
+        @Override
         public boolean apply(SWTBotGefEditPart input) {
             try {
                 checkItalicFontStyle(input);
@@ -83,6 +97,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         /**
          * {@inheritDoc}
          */
+        @Override
         public boolean apply(SWTBotGefEditPart input) {
             try {
                 checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, FontFormat.NORMAL, true, false);
@@ -97,6 +112,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         /**
          * {@inheritDoc}
          */
+        @Override
         public boolean apply(SWTBotGefEditPart input) {
             try {
                 checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, FontFormat.NORMAL, false, true);
@@ -109,6 +125,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
 
     private static final Predicate<SWTBotGefEditPart> STATE_WHEN_LABEL_COLOR_IS_CHANGED_PREDICATE = new Predicate<SWTBotGefEditPart>() {
 
+        @Override
         public boolean apply(SWTBotGefEditPart input) {
             try {
                 checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, FontFormat.NORMAL, false, false, null, -1, 10011046);
@@ -121,6 +138,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
 
     private final Predicate<SWTBotGefEditPart> STATE_WHEN_LABEL_COLOR_IS_UNCHANGED_PREDICATE = new Predicate<SWTBotGefEditPart>() {
 
+        @Override
         public boolean apply(SWTBotGefEditPart input) {
             return NORMAL_FONT_STATE_PREDICATE.apply(input) && !STATE_WHEN_LABEL_COLOR_IS_CHANGED_PREDICATE.apply(input);
         }
@@ -129,61 +147,118 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     /**
      * Ensures that changing the color of a label from the appearance page works
      * as expected (and also tests that the style is considered as custom).
-     * 
-     * @throws Exception
-     *             Test error.
      */
-    public void testChangeLabelColorFromAppearanceSection() throws Exception {
-        SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart("myEClass", AbstractDiagramListEditPart.class);
-        doTestStyleCustomizationThroughColorSelectionFromAppearanceSection(selectedEditPart, "Fonts and Colors:", 0, STATE_WHEN_LABEL_COLOR_IS_UNCHANGED_PREDICATE,
+    public void testChangeLabelColorFromAppearanceSection() {
+        doTestChangeLabelColorFromAppearanceSection("myEClass", DNodeList2EditPart.class);
+        doTestChangeLabelColorFromAppearanceSection("myEClass3", DNodeListEditPart.class);
+        doTestChangeLabelColorFromAppearanceSection("myAttribute", DNodeListElementEditPart.class);
+        doTestChangeLabelColorFromAppearanceSection("myPackage", DNodeContainerEditPart.class);
+        doTestChangeLabelColorFromAppearanceSection("myPackage2", DNodeContainer2EditPart.class);
+    }
+
+    /**
+     * Ensures that changing the color of a label from the appearance page works
+     * as expected (and also tests that the style is considered as custom).
+     * 
+     * @param name
+     *            the edit part name
+     * @param type
+     *            the expected editpart type.
+     */
+    private void doTestChangeLabelColorFromAppearanceSection(String name, Class<? extends EditPart> type) {
+        SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
+        doTestStyleCustomizationThroughColorSelectionFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 0, STATE_WHEN_LABEL_COLOR_IS_UNCHANGED_PREDICATE,
                 STATE_WHEN_LABEL_COLOR_IS_CHANGED_PREDICATE);
     }
 
     /**
      * Ensures that changing a label as bold from tabbar works as expected (and
      * also tests that the style is considered as custom).
-     * 
-     * @throws Exception
-     *             Test error.
      */
-    public void testBoldFromToolbar() throws Exception {
+    public void testBoldFromToolbar() {
         // Not available in fixed tabbar
         if (!TestsUtil.isDynamicTabbar()) {
             return;
         }
 
-        SWTBotGefEditPart myEClassEP = selectAndCheckEditPart("myEClass", AbstractDiagramListEditPart.class);
-        doTestStyleCustomizationThroughTabbar(myEClassEP, "Bold Font Style", NORMAL_FONT_STATE_PREDICATE, BOLD_FONT_STATE_PREDICATE);
+        doTestBoldFromToolbar("myEClass", DNodeList2EditPart.class);
+        doTestBoldFromToolbar("myEClass3", DNodeListEditPart.class);
+        doTestBoldFromToolbar("myAttribute", DNodeListElementEditPart.class);
+        doTestBoldFromToolbar("myPackage", DNodeContainerEditPart.class);
+        doTestBoldFromToolbar("myPackage2", DNodeContainer2EditPart.class);
+    }
+
+    /**
+     * Ensures that changing a label as bold from tabbar works as expected (and
+     * also tests that the style is considered as custom).
+     * 
+     * @param name
+     *            the edit part name
+     * @param type
+     *            the expected editpart type.
+     */
+    public void doTestBoldFromToolbar(String name, Class<? extends EditPart> type) {
+        SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
+        doTestStyleCustomizationThroughTabbar(selectedEditPart, BOLD_FONT_STYLE, NORMAL_FONT_STATE_PREDICATE, BOLD_FONT_STATE_PREDICATE);
+    }
+
+    /**
+     * Ensures that changing a label as stroke from tabbar works as expected
+     * (and also tests that the style is considered as custom).
+     */
+    public void testItalicFromToolbar() {
+        // Not available in fixed tabbar
+        if (!TestsUtil.isDynamicTabbar()) {
+            return;
+        }
+
+        doTestItalicFromToolbar("myEClass", DNodeList2EditPart.class);
+        doTestItalicFromToolbar("myEClass3", DNodeListEditPart.class);
+        doTestItalicFromToolbar("myAttribute", DNodeListElementEditPart.class);
+        doTestItalicFromToolbar("myPackage", DNodeContainerEditPart.class);
+        doTestItalicFromToolbar("myPackage2", DNodeContainer2EditPart.class);
     }
 
     /**
      * Ensures that changing a label as stroke from tabbar works as expected
      * (and also tests that the style is considered as custom).
      * 
-     * @throws Exception
-     *             Test error.
+     * @param name
+     *            the edit part name
+     * @param type
+     *            the expected editpart type.
      */
-    public void testItalicFromToolbar() throws Exception {
-        // Not available in fixed tabbar
-        if (!TestsUtil.isDynamicTabbar()) {
-            return;
-        }
+    public void doTestItalicFromToolbar(String name, Class<? extends EditPart> type) {
+        SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
+        doTestStyleCustomizationThroughTabbar(selectedEditPart, ITALIC_FONT_STYLE, NORMAL_FONT_STATE_PREDICATE, ITALIC_FONT_STATE_PREDICATE);
+    }
 
-        SWTBotGefEditPart myEClassEP = selectAndCheckEditPart("myEClass", AbstractDiagramListEditPart.class);
-        doTestStyleCustomizationThroughTabbar(myEClassEP, "Italic Font Style", NORMAL_FONT_STATE_PREDICATE, ITALIC_FONT_STATE_PREDICATE);
+    /**
+     * Ensures that changing the font color of a label from the tabbar works as
+     * expected (and also tests that the style is considered as custom).
+     */
+    public void testChangeLabelColorFromTabbar() {
+        doTestChangeLabelColorFromTabbar("myEClass", DNodeList2EditPart.class);
+        doTestChangeLabelColorFromTabbar("myEClass3", DNodeListEditPart.class);
+        doTestChangeLabelColorFromTabbar("myAttribute", DNodeListElementEditPart.class);
+        doTestChangeLabelColorFromTabbar("myPackage", DNodeContainerEditPart.class);
+        doTestChangeLabelColorFromTabbar("myPackage2", DNodeContainer2EditPart.class);
     }
 
     /**
      * Ensures that changing the font color of a label from the tabbar works as
      * expected (and also tests that the style is considered as custom).
      * 
-     * @throws Exception
-     *             Test error.
+     * @param name
+     *            the edit part name
+     * @param type
+     *            the expected editpart type.
      */
-    public void testChangeLabelColorFromTabbar() throws Exception {
-        SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart("myEClass", AbstractDiagramListEditPart.class);
+    public void doTestChangeLabelColorFromTabbar(String name, Class<? extends EditPart> type) {
+        SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
         final Predicate<SWTBotGefEditPart> stateWhenButtonIsCheckedPredicate = new Predicate<SWTBotGefEditPart>() {
 
+            @Override
             public boolean apply(SWTBotGefEditPart input) {
                 try {
                     checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, FontFormat.NORMAL, false, false, null, -1, 8905185);
@@ -201,184 +276,257 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
 
     /**
      * Test method.
-     * 
-     * @throws Exception
-     *             Test error.
      */
-    public void testItalicAndBoldFromToolbar() throws Exception {
+    public void testItalicAndBoldFromToolbar() {
         // Not available in 4.x specific Tabbar
         if (TestsUtil.isEclipse4xPlatform()) {
             return;
         }
 
-        SWTBotGefEditPart myEClassEP = selectAndCheckEditPart("myEClass", AbstractDiagramListEditPart.class);
+        doTestItalicAndBoldFromToolbar("myEClass", DNodeList2EditPart.class);
+        doTestItalicAndBoldFromToolbar("myEClass3", DNodeListEditPart.class);
+        doTestItalicAndBoldFromToolbar("myAttribute", DNodeListElementEditPart.class);
+        doTestItalicAndBoldFromToolbar("myPackage", DNodeContainerEditPart.class);
+        doTestItalicAndBoldFromToolbar("myPackage2", DNodeContainer2EditPart.class);
+    }
 
+    /**
+     * Ensures that changing a label as stroke and bold from tabbar works as
+     * expected.
+     * 
+     * @param name
+     *            the edit part name
+     * @param type
+     *            the expected editpart type.
+     */
+    public void doTestItalicAndBoldFromToolbar(String name, Class<? extends EditPart> type) {
+        SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
         SWTBotToolbarToggleButton boldButton = getTabbarBoldButton();
         SWTBotToolbarToggleButton italicButton = getTabbarItalicButton();
         SWTBotToolbarButton resetStylePropertiesToDefaultValuesButton = getResetStylePropertiesToDefaultValuesButtonFromTabbar();
 
         // Check initial state
-        checkNormalFontStyle(myEClassEP);
+        checkNormalFontStyle(selectedEditPart);
         checkButtonTabbarChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Lists.newArrayList(false, false), false);
 
         // Enable bold and check result
         boldButton = getTabbarBoldButton();
         boldButton.click();
-        checkBoldFontStyle(myEClassEP);
+        checkBoldFontStyle(selectedEditPart);
         checkButtonTabbarChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Lists.newArrayList(true, false), true);
 
         // Enable italic and check result
         italicButton = getTabbarItalicButton();
         italicButton.click();
-        checkBoldItalicFontStyle(myEClassEP);
+        checkBoldItalicFontStyle(selectedEditPart);
         checkButtonTabbarChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Lists.newArrayList(true, true), true);
 
         // Disable bold and check result
         boldButton = getTabbarBoldButton();
         boldButton.click();
-        checkItalicFontStyle(myEClassEP);
+        checkItalicFontStyle(selectedEditPart);
         checkButtonTabbarChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Lists.newArrayList(false, true), true);
 
         // Disable italic and check result
         italicButton = getTabbarItalicButton();
         italicButton.click();
-        checkNormalFontStyle(myEClassEP);
+        checkNormalFontStyle(selectedEditPart);
         checkButtonTabbarChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Lists.newArrayList(false, false), true);
 
         // Enable bold and check result
         boldButton = getTabbarBoldButton();
         boldButton.click();
-        checkBoldFontStyle(myEClassEP);
+        checkBoldFontStyle(selectedEditPart);
         checkButtonTabbarChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Lists.newArrayList(true, false), true);
 
         // Enable italic and check result
         italicButton = getTabbarItalicButton();
         italicButton.click();
-        checkBoldItalicFontStyle(myEClassEP);
+        checkBoldItalicFontStyle(selectedEditPart);
         checkButtonTabbarChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Lists.newArrayList(true, true), true);
 
         // Cancel custom style and check result
         resetStylePropertiesToDefaultValuesButton.click();
-        // TODO: re-enable this check once VP-3626 will be fixed
-        // checkNormalFontStyle(myEClassEP);
-        // checkButtonTabbarChecked(Lists.newArrayList(boldButton,
-        // italicButton), resetStylePropertiesToDefaultValuesButton,
-        // Lists.newArrayList(false, false), false);
+        checkNormalFontStyle(selectedEditPart);
+        checkButtonTabbarChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Lists.newArrayList(false, false), false);
+    }
+
+    /**
+     * Ensures that changing a label as bold from the appearance page works as
+     * expected (and also tests that the style is considered as custom).
+     */
+    public void testBoldFromAppearanceSection() {
+        doTestBoldFromAppearanceSection("myEClass", DNodeList2EditPart.class);
+        doTestBoldFromAppearanceSection("myEClass3", DNodeListEditPart.class);
+        doTestBoldFromAppearanceSection("myAttribute", DNodeListElementEditPart.class);
+        doTestBoldFromAppearanceSection("myPackage", DNodeContainerEditPart.class);
+        doTestBoldFromAppearanceSection("myPackage2", DNodeContainer2EditPart.class);
     }
 
     /**
      * Ensures that changing a label as bold from the appearance page works as
      * expected (and also tests that the style is considered as custom).
      * 
-     * @throws Exception
-     *             Test error.
+     * @param name
+     *            the edit part name
+     * @param type
+     *            the expected editpart type.
      */
-    public void testBoldFromAppearanceSection() throws Exception {
-        SWTBotGefEditPart myEClassEP = selectAndCheckEditPart("myEClass", AbstractDiagramListEditPart.class);
-        doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(myEClassEP, "Fonts and Colors:", 0, NORMAL_FONT_STATE_PREDICATE, BOLD_FONT_STATE_PREDICATE, false);
+    public void doTestBoldFromAppearanceSection(String name, Class<? extends EditPart> type) {
+        SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
+        doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 0, NORMAL_FONT_STATE_PREDICATE, BOLD_FONT_STATE_PREDICATE, false);
+    }
+
+    /**
+     * Ensures that changing a label as italic from the appearance page works as
+     * expected (and also tests that the style is considered as custom).
+     */
+    public void testItalicFromAppearanceSection() {
+        doTestItalicFromAppearanceSection("myEClass", DNodeList2EditPart.class);
+        doTestItalicFromAppearanceSection("myEClass3", DNodeListEditPart.class);
+        doTestItalicFromAppearanceSection("myAttribute", DNodeListElementEditPart.class);
+        doTestItalicFromAppearanceSection("myPackage", DNodeContainerEditPart.class);
+        doTestItalicFromAppearanceSection("myPackage2", DNodeContainer2EditPart.class);
     }
 
     /**
      * Ensures that changing a label as italic from the appearance page works as
      * expected (and also tests that the style is considered as custom).
      * 
-     * @throws Exception
-     *             Test error.
+     * @param name
+     *            the edit part name
+     * @param type
+     *            the expected editpart type.
      */
-    public void testItalicFromAppearanceSection() throws Exception {
-        SWTBotGefEditPart myEClassEP = selectAndCheckEditPart("myEClass", AbstractDiagramListEditPart.class);
-        doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(myEClassEP, "Fonts and Colors:", 1, NORMAL_FONT_STATE_PREDICATE, ITALIC_FONT_STATE_PREDICATE, false);
+    public void doTestItalicFromAppearanceSection(String name, Class<? extends EditPart> type) {
+        SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
+        doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 1, NORMAL_FONT_STATE_PREDICATE, ITALIC_FONT_STATE_PREDICATE, false);
+    }
+
+    /**
+     * Ensures that striking a label from the appearance page works as expected
+     * (and also tests that the style is considered as customized).
+     */
+    public void testStrikeFromAppearanceSection() {
+        doTestStrikeFromAppearanceSection("myEClass", DNodeList2EditPart.class);
+        doTestStrikeFromAppearanceSection("myEClass3", DNodeListEditPart.class);
+        doTestStrikeFromAppearanceSection("myAttribute", DNodeListElementEditPart.class);
+        doTestStrikeFromAppearanceSection("myPackage", DNodeContainerEditPart.class);
+        doTestStrikeFromAppearanceSection("myPackage2", DNodeContainer2EditPart.class);
     }
 
     /**
      * Ensures that striking a label from the appearance page works as expected
      * (and also tests that the style is considered as customized).
      * 
-     * @throws Exception
-     *             Test error.
+     * @param name
+     *            the edit part name
+     * @param type
+     *            the expected editpart type.
      */
-    public void testStrikeFromAppearanceSection() throws Exception {
-        SWTBotGefEditPart myEClassEP = selectAndCheckEditPart("myEClass", AbstractDiagramListEditPart.class);
-        doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(myEClassEP, "Fonts and Colors:", 3, NORMAL_FONT_STATE_PREDICATE, STRIKE_FONT_STATE_PREDICATE, true);
+    public void doTestStrikeFromAppearanceSection(String name, Class<? extends EditPart> type) {
+        SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
+        doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 3, NORMAL_FONT_STATE_PREDICATE, STRIKE_FONT_STATE_PREDICATE, true);
+    }
+
+    /**
+     * Ensures that underlining a label from the appearance page works as
+     * expected (and also tests that the style is considered as customized).
+     */
+    public void testUnderlineFromAppearanceSection() {
+        doTestUnderlineFromAppearanceSection("myEClass", DNodeList2EditPart.class);
+        doTestUnderlineFromAppearanceSection("myEClass3", DNodeListEditPart.class);
+        doTestUnderlineFromAppearanceSection("myAttribute", DNodeListElementEditPart.class);
+        doTestUnderlineFromAppearanceSection("myPackage", DNodeContainerEditPart.class);
+        doTestUnderlineFromAppearanceSection("myPackage2", DNodeContainer2EditPart.class);
     }
 
     /**
      * Ensures that underlining a label from the appearance page works as
      * expected (and also tests that the style is considered as customized).
      * 
-     * @throws Exception
-     *             Test error.
+     * @param name
+     *            the edit part name
+     * @param type
+     *            the expected editpart type.
      */
-    public void testUnderlineFromAppearanceSection() throws Exception {
-        SWTBotGefEditPart myEClassEP = selectAndCheckEditPart("myEClass", AbstractDiagramListEditPart.class);
-        doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(myEClassEP, "Fonts and Colors:", 2, NORMAL_FONT_STATE_PREDICATE, UNDERLINE_FONT_STATE_PREDICATE, true);
+    public void doTestUnderlineFromAppearanceSection(String name, Class<? extends EditPart> type) {
+        SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
+        doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(selectedEditPart, FONTS_COLORS_GROUP, 2, NORMAL_FONT_STATE_PREDICATE, UNDERLINE_FONT_STATE_PREDICATE, true);
     }
 
     /**
-     * Test method.
-     * 
-     * @throws Exception
-     *             Test error.
+     * Ensures that changing a label as italic and bold from the appearance page
+     * works as expected.
      */
-    public void testItalicAndBoldFromAppearanceSection() throws Exception {
-        SWTBotGefEditPart myEClassEP = selectAndCheckEditPart("myEClass", AbstractDiagramListEditPart.class);
+    public void testItalicAndBoldFromAppearanceSection() {
+        doTestItalicAndBoldFromAppearanceSection("myEClass", DNodeList2EditPart.class);
+        doTestItalicAndBoldFromAppearanceSection("myEClass3", DNodeListEditPart.class);
+        doTestItalicAndBoldFromAppearanceSection("myAttribute", DNodeListElementEditPart.class);
+        doTestItalicAndBoldFromAppearanceSection("myPackage", DNodeContainerEditPart.class);
+        doTestItalicAndBoldFromAppearanceSection("myPackage2", DNodeContainer2EditPart.class);
+    }
 
+    /**
+     * Ensures that changing a label as italic and bold from the appearance page
+     * works as expected.
+     *
+     * @param name
+     *            the edit part name
+     * @param type
+     *            the expected editpart type.
+     */
+    public void doTestItalicAndBoldFromAppearanceSection(String name, Class<? extends EditPart> type) {
+        SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
         SWTBot propertiesBot = selectAppearanceTab();
-        SWTBotToggleButton boldButton = propertiesBot.toggleButtonInGroup("Fonts and Colors:", 0);
-        SWTBotToggleButton italicButton = propertiesBot.toggleButtonInGroup("Fonts and Colors:", 1);
         SWTBotButton resetStylePropertiesToDefaultValuesButtonFromAppearanceTab = getResetStylePropertiesToDefaultValuesButtonFromAppearanceTab();
+        SWTBotToggleButton boldButton = propertiesBot.toggleButtonInGroup(FONTS_COLORS_GROUP, 0);
+        SWTBotToggleButton italicButton = propertiesBot.toggleButtonInGroup(FONTS_COLORS_GROUP, 1);
 
         // Check initial state
-        checkNormalFontStyle(myEClassEP);
+        checkNormalFontStyle(selectedEditPart);
         checkButtonAppearanceChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Lists.newArrayList(false, false), false);
 
         // Enable bold and check result
         boldButton.click();
-        checkBoldFontStyle(myEClassEP);
+        checkBoldFontStyle(selectedEditPart);
         checkButtonAppearanceChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Lists.newArrayList(true, false), true);
 
         // Enable italic and check result
         italicButton.click();
-        checkBoldItalicFontStyle(myEClassEP);
+        checkBoldItalicFontStyle(selectedEditPart);
         checkButtonAppearanceChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Lists.newArrayList(true, true), true);
 
         // Disable bold and check result
         boldButton.click();
-        checkItalicFontStyle(myEClassEP);
+        checkItalicFontStyle(selectedEditPart);
         checkButtonAppearanceChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Lists.newArrayList(false, true), true);
 
         // Disable italic and check result
         italicButton.click();
-        checkNormalFontStyle(myEClassEP);
+        checkNormalFontStyle(selectedEditPart);
         checkButtonAppearanceChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Lists.newArrayList(false, false), true);
 
         // Enable bold and check result
         boldButton.click();
-        checkBoldFontStyle(myEClassEP);
+        checkBoldFontStyle(selectedEditPart);
         checkButtonAppearanceChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Lists.newArrayList(true, false), true);
 
         // Enable italic and check result
         italicButton.click();
-        checkBoldItalicFontStyle(myEClassEP);
+        checkBoldItalicFontStyle(selectedEditPart);
         checkButtonAppearanceChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Lists.newArrayList(true, true), true);
 
         // Cancel custom style and check result
         resetStylePropertiesToDefaultValuesButtonFromAppearanceTab.click();
-        // TODO: re-enable this check once VP-3626 will be fixed
-        // checkNormalFontStyle(myEClassEP);
-        // checkButtonAppearanceChecked(Lists.newArrayList(boldButton,
-        // italicButton),
-        // resetStylePropertiesToDefaultValuesButtonFromAppearanceTab,
-        // Lists.newArrayList(false, false), false);
+        checkNormalFontStyle(selectedEditPart);
+        checkButtonAppearanceChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Lists.newArrayList(false, false), false);
     }
 
     /**
      * Test change to bold for all selected elements, with undo/redo.
-     * 
-     * @throws Exception
-     *             Test error.
      */
-    public void testBoldAllSelectedElementsFromToolBarWithUndoRedo() throws Exception {
+    public void testBoldAllSelectedElementsFromToolBarWithUndoRedo() {
         // Not available in fixed tabbar
         if (!TestsUtil.isDynamicTabbar()) {
             return;
@@ -447,11 +595,8 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         ((SWTBotToolbarButton) getResetStylePropertiesToDefaultValuesButton(true, true)).click();
         SWTBotUtils.waitAllUiEvents();
         for (SWTBotGefEditPart swtBotGefEditPart : listSwtBotGefEditPart) {
-            // TODO: re-enable this check once VP-3626 will be fixed
-            // checkNormalFontStyle(swtBotGefEditPart);
-            // checkButtonTabbarChecked(Lists.newArrayList(boldButton,
-            // italicButton), resetStylePropertiesToDefaultValuesButton,
-            // Lists.newArrayList(false, false), false);
+            checkNormalFontStyle(swtBotGefEditPart);
+            checkButtonTabbarChecked(Lists.newArrayList(boldButton, italicButton), resetStylePropertiesToDefaultValuesButton, Lists.newArrayList(false, false), false);
         }
     }
 
@@ -459,26 +604,30 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
      * Ensures that changing the font size of a label from the appearance page
      * works as expected (and also tests that the style is considered as
      * custom).
-     * 
-     * @throws Exception
-     *             Test error.
      */
-    public void testChangeFontSizeFromAppearanceSection() throws Exception {
-        if (TestsUtil.shouldSkipUnreliableTests()) {
-            /*
-            junit.framework.AssertionFailedError: Reset style properties to default values button should be enabled.
-            at junit.framework.Assert.fail(Assert.java:57)
-            at junit.framework.Assert.assertTrue(Assert.java:22)
-            at junit.framework.TestCase.assertTrue(TestCase.java:192)
-            at org.eclipse.sirius.tests.swtbot.AbstractRefreshWithCustomizedStyleTest.checkButtonAppearanceChecked(AbstractRefreshWithCustomizedStyleTest.java:665)
-            at org.eclipse.sirius.tests.swtbot.AbstractRefreshWithCustomizedStyleTest.doTestStyleCustomizationThroughComboBoxInAppearanceSection(AbstractRefreshWithCustomizedStyleTest.java:331)
-            at org.eclipse.sirius.tests.swtbot.LabelFontModificationsTest.testChangeFontSizeFromAppearanceSection(LabelFontModificationsTest.java:479)
-             */
-            return;
-        }
-        SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart("myEClass", AbstractDiagramListEditPart.class);
+    public void testChangeFontSizeFromAppearanceSection() {
+        doTestChangeFontSizeFromAppearanceSection("myEClass", DNodeList2EditPart.class);
+        doTestChangeFontSizeFromAppearanceSection("myEClass3", DNodeListEditPart.class);
+        doTestChangeFontSizeFromAppearanceSection("myAttribute", DNodeListElementEditPart.class);
+        doTestChangeFontSizeFromAppearanceSection("myPackage", DNodeContainerEditPart.class);
+        doTestChangeFontSizeFromAppearanceSection("myPackage2", DNodeContainer2EditPart.class);
+    }
+
+    /**
+     * Ensures that changing the font size of a label from the appearance page
+     * works as expected (and also tests that the style is considered as
+     * custom).
+     * 
+     * @param name
+     *            the edit part name
+     * @param type
+     *            the expected editpart type.
+     */
+    public void doTestChangeFontSizeFromAppearanceSection(String name, Class<? extends EditPart> type) {
+        SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
         Predicate<SWTBotGefEditPart> stateWhenButtonIsCheckedPredicate = new Predicate<SWTBotGefEditPart>() {
 
+            @Override
             public boolean apply(SWTBotGefEditPart input) {
                 try {
                     checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, FontFormat.NORMAL, false, false, null, 12, -1);
@@ -496,12 +645,26 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
     /**
      * Ensures that changing the font of a label from the appearance page works
      * as expected (and also tests that the style is considered as custom).
-     * 
-     * @throws Exception
-     *             Test error.
      */
-    public void testChangeFontFromAppearanceSection() throws Exception {
-        SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart("myEClass", AbstractDiagramListEditPart.class);
+    public void testChangeFontFromAppearanceSection() {
+        doTestChangeFontFromAppearanceSection("myEClass", DNodeList2EditPart.class);
+        doTestChangeFontFromAppearanceSection("myEClass3", DNodeListEditPart.class);
+        doTestChangeFontFromAppearanceSection("myAttribute", DNodeListElementEditPart.class);
+        doTestChangeFontFromAppearanceSection("myPackage", DNodeContainerEditPart.class);
+        doTestChangeFontFromAppearanceSection("myPackage2", DNodeContainer2EditPart.class);
+    }
+
+    /**
+     * Ensures that changing the font of a label from the appearance page works
+     * as expected (and also tests that the style is considered as custom).
+     * 
+     * @param name
+     *            the edit part name
+     * @param type
+     *            the expected editpart type.
+     */
+    public void doTestChangeFontFromAppearanceSection(String name, Class<? extends EditPart> type) {
+        SWTBotGefEditPart selectedEditPart = selectAndCheckEditPart(name, type);
         /*
          * Last found common fonts : Arial, Arial Black, Comic Sans MS, Courier
          * New, DejaVu Sans, DejaVu Sans Mono, DejaVu Serif, Georgia, Impact,
@@ -510,6 +673,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         final String modifiedFont = "Courier New";
         Predicate<SWTBotGefEditPart> stateWhenButtonIsCheckedPredicate = new Predicate<SWTBotGefEditPart>() {
 
+            @Override
             public boolean apply(SWTBotGefEditPart input) {
                 try {
                     checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, FontFormat.NORMAL, false, false, modifiedFont, -1, -1);
@@ -523,5 +687,4 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
 
         doTestStyleCustomizationThroughComboBoxInAppearanceSection(selectedEditPart, NORMAL_FONT_STATE_PREDICATE, stateWhenButtonIsCheckedPredicate, 0, modifiedFont, true);
     }
-
 }
