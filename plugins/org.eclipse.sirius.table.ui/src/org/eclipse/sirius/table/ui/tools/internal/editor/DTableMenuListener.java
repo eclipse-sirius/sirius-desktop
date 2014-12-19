@@ -12,20 +12,13 @@ package org.eclipse.sirius.table.ui.tools.internal.editor;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.core.commands.common.CommandException;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
-import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
-import org.eclipse.emf.transaction.RecordingCommand;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuListener;
@@ -33,13 +26,10 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.action.SubContributionItem;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
-import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
-import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
@@ -73,10 +63,8 @@ import org.eclipse.sirius.table.ui.tools.internal.editor.action.ShowAllLinesActi
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.ShowPropertiesViewAction;
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.SortColumnsByLineAction;
 import org.eclipse.sirius.table.ui.tools.internal.editor.action.SortLinesByColumnAction;
-import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.ui.business.api.session.IEditingSession;
-import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
+import org.eclipse.sirius.ui.tools.internal.editor.MenuHelper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -87,14 +75,12 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.handlers.IHandlerService;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * A menu listener which show or hide the menu according to :
@@ -118,8 +104,6 @@ public class DTableMenuListener implements IMenuListener {
     private static final String NEW_REPRESENTATION_GROUP_SEPARATOR = "newRepresentation";
 
     private static final String EXISTING_REPRESENTATION_GROUP_SEPARATOR = "existingRepresentation";
-
-    private static final String OPEN_REPRESENTATION_GROUP_SEPARATOR = "navigateRepresentationGroup";
 
     private static final String VIEWPOINT_GROUP_SEPARATOR = "viewpoint";
 
@@ -289,7 +273,7 @@ public class DTableMenuListener implements IMenuListener {
         openMenuManager.add(existingGroup);
         // Add menus to open existing representations (corresponding
         // to the RepresentationNavigationDescription)
-        final Separator openRepresentationGroup = new Separator(OPEN_REPRESENTATION_GROUP_SEPARATOR);
+        final Separator openRepresentationGroup = new Separator(MenuHelper.OPEN_REPRESENTATION_GROUP_SEPARATOR);
         openMenuManager.add(openRepresentationGroup);
         final DTableElement currentTableElement = getCurrentTableElement();
         if (currentTableElement != null) {
@@ -338,7 +322,8 @@ public class DTableMenuListener implements IMenuListener {
             for (final DRepresentation representation : otherRepresentations) {
                 if (!EcoreUtil.equals(dTable, representation) && isFromActiveViewpoint(session, representation)) {
                     openRepresentation.setVisible(true);
-                    ((IMenuManager) openRepresentation.getInnerItem()).appendToGroup(EXISTING_REPRESENTATION_GROUP_SEPARATOR, buildOpenRepresentationAction(session, representation));
+                    ((IMenuManager) openRepresentation.getInnerItem()).appendToGroup(EXISTING_REPRESENTATION_GROUP_SEPARATOR,
+                            MenuHelper.buildOpenRepresentationAction(session, representation, adapterFactory));
                 }
             }
             if (decorator instanceof DRepresentationElement) {
@@ -385,75 +370,11 @@ public class DTableMenuListener implements IMenuListener {
                 if (append) {
                     // We return true if at least one action has been
                     // added in the menu to make it visible
-                    return buildOpenRepresentationActions(open, interpreter, navDesc, element, session);
+                    return MenuHelper.buildOpenRepresentationActions(open, interpreter, navDesc, element, session, adapterFactory);
                 }
             }
         }
         return false;
-    }
-
-    private boolean buildOpenRepresentationActions(final IMenuManager open, final IInterpreter interpreter, final RepresentationNavigationDescription navDesc, final DRepresentationElement element,
-            final Session session) {
-        boolean atLeastOneRepresentationActionsWasCreated = false;
-        Set<EObject> candidates;
-        if (!StringUtil.isEmpty(navDesc.getBrowseExpression())) {
-            final RuntimeLoggerInterpreter safeInterpreter = RuntimeLoggerManager.INSTANCE.decorate(interpreter);
-            candidates = Sets.newLinkedHashSet(safeInterpreter.evaluateCollection(element.getTarget(), navDesc, ToolPackage.eINSTANCE.getRepresentationNavigationDescription_BrowseExpression()));
-        } else {
-            candidates = Sets.newLinkedHashSet();
-            final Iterator<EObject> it = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(element.getTarget()).eAllContents(element.getTarget());
-            while (it.hasNext()) {
-                candidates.add(it.next());
-            }
-        }
-        for (EObject candidate : candidates) {
-            Collection<DRepresentation> representations = DialectManager.INSTANCE.getRepresentations(candidate, session);
-            for (DRepresentation representation : representations) {
-                if (navDesc.getRepresentationDescription() != null && navDesc.getRepresentationDescription().equals(DialectManager.INSTANCE.getDescription(representation))) {
-                    interpreter.setVariable(navDesc.getRepresentationNameVariable().getName(), representation.getName());
-                    String label = new StringBuffer().append(navDesc.getName()).append(representation.getName()).toString();
-                    if (!StringUtil.isEmpty(navDesc.getNavigationNameExpression())) {
-                        try {
-                            label = interpreter.evaluateString(element.getTarget(), navDesc.getNavigationNameExpression());
-                        } catch (final EvaluationException e) {
-                            RuntimeLoggerManager.INSTANCE.error(navDesc, ToolPackage.eINSTANCE.getRepresentationNavigationDescription_NavigationNameExpression(), e);
-                        }
-                    }
-                    open.appendToGroup(OPEN_REPRESENTATION_GROUP_SEPARATOR, buildOpenRepresentationAction(session, representation, label));
-                    atLeastOneRepresentationActionsWasCreated = true;
-                }
-            }
-        }
-        return atLeastOneRepresentationActionsWasCreated;
-    }
-
-    private IAction buildOpenRepresentationAction(final Session session, final DRepresentation representation) {
-        String representationName = representation.getName();
-        if (StringUtil.isEmpty(representationName)) {
-            representationName = "(unnamed)";
-            if (representation instanceof DTable) {
-                representationName += " " + new IdentifiedElementQuery(((DTable) representation).getDescription()).getLabel();
-            }
-        }
-        return buildOpenRepresentationAction(session, representation, representationName);
-    }
-
-    private IAction buildOpenRepresentationAction(final Session session, final DRepresentation representation, final String label) {
-
-        ImageDescriptor imageDescriptor = null;
-        final IItemLabelProvider labelProvider = (IItemLabelProvider) adapterFactory.adapt(representation, IItemLabelProvider.class);
-        if (labelProvider != null) {
-            imageDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(labelProvider.getImage(representation));
-        }
-        return new Action(label, imageDescriptor) {
-
-            @Override
-            public void run() {
-                super.run();
-                treeViewManager.getEditingDomain().getCommandStack().execute(new AttachEditorRecordingCommand(treeViewManager.getEditingDomain(), session, representation));
-            }
-        };
-
     }
 
     /**
@@ -743,29 +664,5 @@ public class DTableMenuListener implements IMenuListener {
 
     public void setCreateActionsForTable(final List<AbstractToolAction> createActionsForTable) {
         this.createActionsForTable = createActionsForTable;
-    }
-
-    private static class AttachEditorRecordingCommand extends RecordingCommand {
-
-        private Session session;
-
-        private DRepresentation representation;
-
-        public AttachEditorRecordingCommand(TransactionalEditingDomain domain, Session session, DRepresentation representation) {
-            super(domain);
-            this.session = session;
-            this.representation = representation;
-        }
-
-        @Override
-        protected void doExecute() {
-            final IEditingSession ui = SessionUIManager.INSTANCE.getUISession(session);
-            DialectManager.INSTANCE.refresh(representation, new NullProgressMonitor());
-            final IEditorPart part = DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
-            if (part != null && ui != null) {
-                ui.attachEditor((DialectEditor) part);
-            }
-        }
-
     }
 }

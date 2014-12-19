@@ -34,7 +34,7 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.ui.business.internal.navigation.MappingDefinitionFinder;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
-import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
+import org.eclipse.sirius.ui.tools.api.image.ImagesPath;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbench;
@@ -111,7 +111,7 @@ public class SpecificationMenuContribution implements IContributionItemProvider 
             if (resource != null) {
                 final IFile modelFile = WorkspaceSynchronizer.getFile(resource);
 
-                ImageDescriptor imageDescriptor = SiriusTransPlugin.getBundledImageDescriptor(DiagramImagesPath.LINK_TO_VIEWPOINT_IMG);
+                ImageDescriptor imageDescriptor = SiriusTransPlugin.getBundledImageDescriptor(ImagesPath.LINK_TO_VIEWPOINT_IMG);
                 final IItemLabelProvider labelProvider = (IItemLabelProvider) getAdapterFactory().adapt(description, IItemLabelProvider.class);
                 if (labelProvider != null) {
                     imageDescriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(labelProvider.getImage(description));

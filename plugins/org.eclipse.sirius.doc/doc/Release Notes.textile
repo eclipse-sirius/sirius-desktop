@@ -38,6 +38,7 @@ The @org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator@ 
 * @locateOnSouthBorder@, @locateOnNorthBorder@, @locateOnWestBorder@ and @locateOnEastBorder@ signature is now @(Rectangle, int, IFigure, Collection<IFigure>, List<IFigure>)@
 * @locateOnParent@ signature is now @locateOnParent(Rectangle, int, IFigure)@
 * @conflicts@ signature is now @conflicts(Rectangle, IFigure, Collection<IFigure>, List<IFigure>)@
+* The constant @DiagramImagesPath.LINK_TO_VIEWPOINT_IMG@ has been moved to @org.eclipse.sirius.ui.tools.api.image.ImagesPath.LINK_TO_VIEWPOINT_IMG@. This is more coherent because the corresponding image is in core @org.eclipse.sirius.common.ui@ plugin.
 
 
 h4. Changes in @org.eclipse.sirius.tests.junit.support@
