@@ -45,6 +45,7 @@ public class RefreshWithCustomizedStyleFromTabbarTests extends AbstractRefreshWi
 
         final Predicate<SWTBotGefEditPart> modifiedStatePredicate = new Predicate<SWTBotGefEditPart>() {
 
+            @Override
             public boolean apply(SWTBotGefEditPart input) {
                 Routing routing = ((org.eclipse.gmf.runtime.notation.ConnectorStyle) ((View) input.part().getModel()).getStyles().iterator().next()).getRouting();
                 return routing.getValue() == Routing.TREE;
@@ -72,6 +73,7 @@ public class RefreshWithCustomizedStyleFromTabbarTests extends AbstractRefreshWi
 
         final Predicate<SWTBotGefEditPart> stateWhenBackgroundImageIsChangedPredicate = new Predicate<SWTBotGefEditPart>() {
 
+            @Override
             public boolean apply(SWTBotGefEditPart input) {
                 return getWorkspaceImage(input) != null;
             }
@@ -91,16 +93,7 @@ public class RefreshWithCustomizedStyleFromTabbarTests extends AbstractRefreshWi
         editor.reveal(eClass1WithSquareStyleBot.part());
         eClass1WithSquareStyleBot.select();
         SWTBotUtils.waitAllUiEvents();
-        final Predicate<SWTBotGefEditPart> stateWhenBackgroundColorIsChangedPredicate = new Predicate<SWTBotGefEditPart>() {
-
-            public boolean apply(SWTBotGefEditPart input) {
-                int lineColor = ((org.eclipse.gmf.runtime.notation.ShapeStyle) ((View) input.part().getModel()).getStyles().iterator().next()).getLineColor();
-                return lineColor == 8905185;
-            }
-        };
-        final Predicate<SWTBotGefEditPart> stateWithInitialBackgroundColorPredicate = Predicates.not(stateWhenBackgroundColorIsChangedPredicate);
-        doTestStyleCustomizationThroughColorSelectionFromTabbar(eClass1WithSquareStyleBot, "Li&ne Color", stateWithInitialBackgroundColorPredicate, stateWhenBackgroundColorIsChangedPredicate,
-                "Yellow");
+        doTestStyleCustomizationThroughColorSelectionFromTabbar(eClass1WithSquareStyleBot, "Li&ne Color", NOT_CUSTOMIZED_PREDICATE, CUSTOMIZED_PREDICATE, "Yellow");
     }
 
     /**
@@ -115,16 +108,7 @@ public class RefreshWithCustomizedStyleFromTabbarTests extends AbstractRefreshWi
         editor.reveal(eClass1WithSquareStyleBot.part());
         eClass1WithSquareStyleBot.select();
         SWTBotUtils.waitAllUiEvents();
-        final Predicate<SWTBotGefEditPart> stateWhenBackgroundColorIsChangedPredicate = new Predicate<SWTBotGefEditPart>() {
-
-            public boolean apply(SWTBotGefEditPart input) {
-                int bgColor = ((org.eclipse.gmf.runtime.notation.ShapeStyle) ((View) input.part().getModel()).getStyles().iterator().next()).getFillColor();
-                return bgColor == 8905185;
-            }
-        };
-        final Predicate<SWTBotGefEditPart> stateWithInitialBackgroundColorPredicate = Predicates.not(stateWhenBackgroundColorIsChangedPredicate);
-        doTestStyleCustomizationThroughColorSelectionFromTabbar(eClass1WithSquareStyleBot, "Fill &Color", stateWithInitialBackgroundColorPredicate, stateWhenBackgroundColorIsChangedPredicate,
-                "Yellow");
+        doTestStyleCustomizationThroughColorSelectionFromTabbar(eClass1WithSquareStyleBot, "Fill &Color", NOT_CUSTOMIZED_PREDICATE, CUSTOMIZED_PREDICATE, "Yellow");
     }
 
 }

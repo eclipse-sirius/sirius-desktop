@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import static org.eclipse.sirius.tests.swtbot.AbstractRefreshWithCustomizedStyleTest.CUSTOMIZED_PREDICATE;
+import static org.eclipse.sirius.tests.swtbot.AbstractRefreshWithCustomizedStyleTest.NOT_CUSTOMIZED_PREDICATE;
+
 import org.eclipse.gmf.runtime.notation.JumpLinkStatus;
 import org.eclipse.gmf.runtime.notation.JumpLinkType;
 import org.eclipse.gmf.runtime.notation.Routing;
@@ -42,6 +45,7 @@ public class RefreshWithCustomizedStyleFromAppearanceTabTests extends AbstractRe
 
         final Predicate<SWTBotGefEditPart> modifiedStatePredicate = new Predicate<SWTBotGefEditPart>() {
 
+            @Override
             public boolean apply(SWTBotGefEditPart input) {
                 Routing routing = ((org.eclipse.gmf.runtime.notation.ConnectorStyle) ((View) input.part().getModel()).getStyles().iterator().next()).getRouting();
                 return routing.getValue() == Routing.TREE;
@@ -65,6 +69,7 @@ public class RefreshWithCustomizedStyleFromAppearanceTabTests extends AbstractRe
 
         final Predicate<SWTBotGefEditPart> modifiedStatePredicate = new Predicate<SWTBotGefEditPart>() {
 
+            @Override
             public boolean apply(SWTBotGefEditPart input) {
                 Boolean avoidObstructions = ((org.eclipse.gmf.runtime.notation.ConnectorStyle) ((View) input.part().getModel()).getStyles().iterator().next()).isAvoidObstructions();
                 return avoidObstructions;
@@ -88,6 +93,7 @@ public class RefreshWithCustomizedStyleFromAppearanceTabTests extends AbstractRe
 
         final Predicate<SWTBotGefEditPart> modifiedStatePredicate = new Predicate<SWTBotGefEditPart>() {
 
+            @Override
             public boolean apply(SWTBotGefEditPart input) {
                 Boolean closesDistance = ((org.eclipse.gmf.runtime.notation.ConnectorStyle) ((View) input.part().getModel()).getStyles().iterator().next()).isClosestDistance();
                 return closesDistance;
@@ -111,6 +117,7 @@ public class RefreshWithCustomizedStyleFromAppearanceTabTests extends AbstractRe
 
         final Predicate<SWTBotGefEditPart> modifiedStatePredicate = new Predicate<SWTBotGefEditPart>() {
 
+            @Override
             public boolean apply(SWTBotGefEditPart input) {
                 return ((org.eclipse.gmf.runtime.notation.ConnectorStyle) ((View) input.part().getModel()).getStyles().iterator().next()).isJumpLinksReverse();
             }
@@ -133,6 +140,7 @@ public class RefreshWithCustomizedStyleFromAppearanceTabTests extends AbstractRe
 
         final Predicate<SWTBotGefEditPart> modifiedStatePredicate = new Predicate<SWTBotGefEditPart>() {
 
+            @Override
             public boolean apply(SWTBotGefEditPart input) {
                 JumpLinkStatus jumpLinkStatus = ((org.eclipse.gmf.runtime.notation.ConnectorStyle) ((View) input.part().getModel()).getStyles().iterator().next()).getJumpLinkStatus();
                 return jumpLinkStatus.getValue() == JumpLinkStatus.ABOVE;
@@ -156,6 +164,7 @@ public class RefreshWithCustomizedStyleFromAppearanceTabTests extends AbstractRe
 
         final Predicate<SWTBotGefEditPart> modifiedStatePredicate = new Predicate<SWTBotGefEditPart>() {
 
+            @Override
             public boolean apply(SWTBotGefEditPart input) {
                 JumpLinkType jumpLinkType = ((org.eclipse.gmf.runtime.notation.ConnectorStyle) ((View) input.part().getModel()).getStyles().iterator().next()).getJumpLinkType();
                 return jumpLinkType.getValue() == JumpLinkType.CHAMFERED;
@@ -179,6 +188,7 @@ public class RefreshWithCustomizedStyleFromAppearanceTabTests extends AbstractRe
 
         final Predicate<SWTBotGefEditPart> modifiedStatePredicate = new Predicate<SWTBotGefEditPart>() {
 
+            @Override
             public boolean apply(SWTBotGefEditPart input) {
                 Smoothness smoothness = ((org.eclipse.gmf.runtime.notation.ConnectorStyle) ((View) input.part().getModel()).getStyles().iterator().next()).getSmoothness();
                 return smoothness.getValue() == Smoothness.MORE;
@@ -202,6 +212,7 @@ public class RefreshWithCustomizedStyleFromAppearanceTabTests extends AbstractRe
 
         final Predicate<SWTBotGefEditPart> stateWhenBackgroundImageIsChangedPredicate = new Predicate<SWTBotGefEditPart>() {
 
+            @Override
             public boolean apply(SWTBotGefEditPart input) {
                 return getWorkspaceImage(input) != null;
             }
@@ -221,17 +232,7 @@ public class RefreshWithCustomizedStyleFromAppearanceTabTests extends AbstractRe
      */
     public void testChangeBackgroundColorFromAppearanceSection() throws Exception {
         eClass1WithSquareStyleBot.select();
-
-        final Predicate<SWTBotGefEditPart> stateWhenBackgroundColorIsChangedPredicate = new Predicate<SWTBotGefEditPart>() {
-
-            public boolean apply(SWTBotGefEditPart input) {
-                int bgColor = ((org.eclipse.gmf.runtime.notation.ShapeStyle) ((View) input.part().getModel()).getStyles().iterator().next()).getFillColor();
-                return bgColor == 10011046;
-            }
-        };
-        final Predicate<SWTBotGefEditPart> stateWithInitialBackgroundColorPredicate = Predicates.not(stateWhenBackgroundColorIsChangedPredicate);
-        doTestStyleCustomizationThroughColorSelectionFromAppearanceSection(eClass1WithSquareStyleBot, "Fonts and Colors:", 2, stateWithInitialBackgroundColorPredicate,
-                stateWhenBackgroundColorIsChangedPredicate);
+        doTestStyleCustomizationThroughColorSelectionFromAppearanceSection(eClass1WithSquareStyleBot, "Fonts and Colors:", 2, NOT_CUSTOMIZED_PREDICATE, CUSTOMIZED_PREDICATE);
     }
 
 }

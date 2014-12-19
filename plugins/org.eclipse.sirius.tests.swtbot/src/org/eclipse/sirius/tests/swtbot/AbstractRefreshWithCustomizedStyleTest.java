@@ -18,6 +18,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.ui.tools.internal.properties.ResetStylePropertiesToDefaultValuesSelectionAdapter;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.WidgetIsDisabledCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.WidgetIsEnabledCondition;
@@ -40,6 +41,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarToggleButton;
 
 import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 import com.google.common.collect.Lists;
 
 /**
@@ -56,6 +58,20 @@ import com.google.common.collect.Lists;
  * @author alagarde
  */
 public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSiriusSwtBotGefTestCase {
+    /**
+     * Style Customized predicate
+     */
+    protected static final Predicate<SWTBotGefEditPart> CUSTOMIZED_PREDICATE = new Predicate<SWTBotGefEditPart>() {
+        @Override
+        public boolean apply(SWTBotGefEditPart input) {
+            return ResetStylePropertiesToDefaultValuesSelectionAdapter.isCustomizedView((View) input.part().getModel());
+        }
+    };
+
+    /**
+     * Style not customized predicate
+     */
+    protected static final Predicate<SWTBotGefEditPart> NOT_CUSTOMIZED_PREDICATE = Predicates.not(CUSTOMIZED_PREDICATE);
 
     private String oldDefaultFontName;
 
@@ -172,15 +188,9 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         // Step 4: Cancel the custom style and check result (should be back to
         // initial state)
         resetStyleCustomizationButton.click();
-        // TODO: re-enable this check once VP-3626 will be fixed
-        // assertTrue("After having cancelled the custom style, we should be back to the initial state",
-        // initialStatePredicate.apply(selectedEditPart));
-        // checkButtonAppearanceChecked(Lists.<SWTBotToggleButton>
-        // newArrayList(), resetStyleCustomizationButton,
-        // Lists.newArrayList(false),
-        // false);
-        // assertFalse("Radio should not be selected",
-        // radioToTest.isSelected());
+        assertTrue("After having cancelled the custom style, we should be back to the initial state", initialStatePredicate.apply(selectedEditPart));
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(false), false);
+        assertFalse("Radio should not be selected", radioToTest.isSelected());
 
     }
 
@@ -268,16 +278,9 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         // Step 5: Cancel the custom style and check result (should be back to
         // initial state)
         resetStyleCustomizationButton.click();
-        // TODO: re-enable this check once VP-3626 will be fixed
-        // assertTrue("After having cancelled the custom style, we should be back to the initial state",
-        // initialStatePredicate.apply(selectedEditPart));
-        // checkButtonAppearanceChecked(Lists.<SWTBotToggleButton>
-        // newArrayList(), resetStyleCustomizationButton,
-        // Lists.newArrayList(false),
-        // false);
-        // assertFalse("Checkbox should not be checked",
-        // checkboxToTest.isChecked());
-
+        assertTrue("After having cancelled the custom style, we should be back to the initial state", initialStatePredicate.apply(selectedEditPart));
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(false), false);
+        assertFalse("Checkbox should not be checked", checkboxToTest.isChecked());
     }
 
     /**
@@ -364,14 +367,8 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         // initial state)
         resetStyleCustomizationButton.click();
         assertNotSame(modifiedComboValue, comboBoxToTest.getText());
-        // TODO: re-enable this check once VP-3626 will be fixed
-        // assertTrue("After having cancelled the custom style, we should be back to the initial state",
-        // initialStatePredicate.apply(selectedEditPart));
-        // checkButtonAppearanceChecked(Lists.<SWTBotToggleButton>
-        // newArrayList(), resetStyleCustomizationButton,
-        // Lists.newArrayList(false),
-        // false);
-
+        assertTrue("After having cancelled the custom style, we should be back to the initial state", initialStatePredicate.apply(selectedEditPart));
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(false), false);
     }
 
     /**
@@ -424,12 +421,11 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
                 stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
         checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(true), true);
 
-        // Step 3:Undo and check result
-        buttonFromAppearanceSectionToTest.click();
-        bot.button(0).click();
+        // Step 3: "Reset style properties to default values" and check result
+        resetStyleCustomizationButton.click();
         assertTrue("The button " + buttonFromAppearanceSectionToTest.getToolTipText() + " has been disabled, so the initial state should be checked again",
                 initialStatePredicate.apply(selectedEditPart));
-        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(false), true);
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(false), false);
 
         // Step 4: re-enable button and check result
         buttonFromAppearanceSectionToTest.click();
@@ -456,13 +452,9 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         // (should be back to initial state)
         resetStyleCustomizationButton.click();
         SWTBotUtils.waitAllUiEvents();
-        // TODO: re-enable this check once VP-3626 will be fixed
-        // assertTrue("After having cancelled the custom style, we should be back to the initial state",
-        // initialStatePredicate.apply(selectedEditPart));
-        // checkButtonAppearanceChecked(Lists.<SWTBotToggleButton>
-        // newArrayList(), resetStyleCustomizationButton,
-        // Lists.newArrayList(false),
-        // false);
+
+        assertTrue("After having cancelled the custom style, we should be back to the initial state", initialStatePredicate.apply(selectedEditPart));
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(false), false);
     }
 
     /**
@@ -530,13 +522,8 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         // initial state)
         resetStylePropertiesToDefaultValuesButtonFromAppearanceTab.click();
         SWTBotUtils.waitAllUiEvents();
-        // TODO: re-enable this check once VP-3626 will be fixed
-        // assertTrue("After having cancelled the custom style, we should be back to the initial state",
-        // initialStatePredicate.apply(selectedEditPart));
-        // checkButtonAppearanceChecked(Lists.<SWTBotToggleButton>
-        // newArrayList(), resetStyleCustomizationButton,
-        // Lists.newArrayList(false),
-        // false);
+        assertTrue("After having cancelled the custom style, we should be back to the initial state", initialStatePredicate.apply(selectedEditPart));
+        checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStylePropertiesToDefaultValuesButtonFromAppearanceTab, Lists.newArrayList(false), false);
     }
 
     /**
@@ -628,11 +615,8 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         // initial state)
         resetStyleCustomizationButton.click();
         SWTBotUtils.waitAllUiEvents();
-        // TODO: re-enable this check once VP-3626 will be fixed
-        // assertTrue("After having cancelled the custom style, we should be back to the initial state",
-        // initialStatePredicate.apply(selectedEditPart));
-        // checkButtonAppearanceChecked(Lists.newArrayList(buttonFromAppearanceSectionToTest),
-        // resetStyleCustomizationButton, Lists.newArrayList(false), false);
+        assertTrue("After having cancelled the custom style, we should be back to the initial state", initialStatePredicate.apply(selectedEditPart));
+        checkButtonAppearanceChecked(Lists.newArrayList(buttonFromAppearanceSectionToTest), resetStyleCustomizationButton, Lists.newArrayList(false), false);
     }
 
     /**
@@ -768,11 +752,8 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         // Step 7: Cancel the custom style and check result (should be back to
         // initial state)
         resetStyleCustomizationButton.click();
-        // TODO: re-enable this check once VP-3626 will be fixed
-        // assertTrue("After having cancelled the custom style, we should be back to the initial state",
-        // initialStatePredicate.apply(selectedEditPart));
-        // checkButtonTabbarChecked(Lists.newArrayList(buttonFromTabbarToTest),
-        // resetStyleCustomizationButton, Lists.newArrayList(false), false);
+        assertTrue("After having cancelled the custom style, we should be back to the initial state", initialStatePredicate.apply(selectedEditPart));
+        checkButtonTabbarChecked(Lists.newArrayList(buttonFromTabbarToTest), resetStyleCustomizationButton, Lists.newArrayList(false), false);
     }
 
     /**
@@ -834,15 +815,10 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
         // Step 4: Cancel the custom style and check result (should be back to
         // initial state)
-        // TODO: re-enable this check once VP-3626 will be fixed
-        // resetStyleCustomizationButton.click();
-        // SWTBotUtils.waitAllUiEvents();
-        // assertTrue("After having cancelled the custom style, we should be back to the initial state",
-        // initialStatePredicate.apply(selectedEditPart));
-        // checkButtonTabbarChecked(Lists.<SWTBotToolbarToggleButton>
-        // newArrayList(), resetStyleCustomizationButton,
-        // Lists.newArrayList(false),
-        // false);
+        resetStyleCustomizationButton.click();
+        SWTBotUtils.waitAllUiEvents();
+        assertTrue("After having cancelled the custom style, we should be back to the initial state", initialStatePredicate.apply(selectedEditPart));
+        checkButtonTabbarChecked(Lists.<SWTBotToolbarToggleButton> newArrayList(), resetStyleCustomizationButton, Lists.newArrayList(false), false);
     }
 
     /**
