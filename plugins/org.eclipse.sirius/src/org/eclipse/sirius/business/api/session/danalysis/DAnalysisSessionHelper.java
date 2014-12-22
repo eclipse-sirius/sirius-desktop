@@ -129,20 +129,7 @@ public final class DAnalysisSessionHelper {
      */
     public static DRepresentationContainer findContainer(final EObject semanticRoot, final Viewpoint viewpoint, final Collection<DAnalysis> all, final DAnalysisSelector analysisSelector) {
 
-        final List<DRepresentationContainer> containers = new ArrayList<DRepresentationContainer>();
-
-        for (DAnalysis analysis : all) {
-            for (final DView view : analysis.getOwnedViews()) {
-                if (view instanceof DRepresentationContainer) {
-                    if (viewpoint == ((DRepresentationContainer) view).getViewpoint()) {
-                        containers.add((DRepresentationContainer) view);
-                        /* break to go to the next analysis */
-                        break;
-                    }
-                }
-            }
-        }
-
+        final Collection<DRepresentationContainer> containers = getContainers(all, viewpoint);
         if (containers.isEmpty()) {
             return null;
         }
@@ -188,19 +175,7 @@ public final class DAnalysisSessionHelper {
     public static DRepresentationContainer findContainerForAddedRepresentation(final EObject semanticRoot, final Viewpoint viewpoint, final Collection<DAnalysis> all,
             final DAnalysisSelector analysisSelector, final DRepresentation representation) {
 
-        final List<DRepresentationContainer> containers = new ArrayList<DRepresentationContainer>();
-
-        for (DAnalysis analysis : all) {
-            for (final DView view : analysis.getOwnedViews()) {
-                if (view instanceof DRepresentationContainer) {
-                    if (viewpoint == ((DRepresentationContainer) view).getViewpoint()) {
-                        containers.add((DRepresentationContainer) view);
-                        /* break to go to the next analysis */
-                        break;
-                    }
-                }
-            }
-        }
+        final Collection<DRepresentationContainer> containers = getContainers(all, viewpoint);
 
         if (containers.isEmpty()) {
             return null;
@@ -213,7 +188,7 @@ public final class DAnalysisSessionHelper {
             }
         }
 
-        final DAnalysis analysis = DAnalysisSessionHelper.selectAnalysis(viewpoint, candidates, analysisSelector, representation);
+        final DAnalysis analysis = selectAnalysis(viewpoint, candidates, analysisSelector, representation);
 
         DRepresentationContainer freeContainer = null;
 
@@ -228,16 +203,10 @@ public final class DAnalysisSessionHelper {
         // exist yet, and if it is located on a CDORepository
         if (freeContainer == null && URIQuery.CDO_URI_SCHEME.equals(analysis.eResource().getURI().scheme())) {
             // We create this representation container
-            DRepresentationContainer newContainer = ViewpointFactory.eINSTANCE.createDRepresentationContainer();
-            newContainer.setViewpoint(viewpoint);
-            newContainer.setInitialized(true);
-            analysis.getOwnedViews().add(newContainer);
-            analysis.getSelectedViews().add(newContainer);
-            freeContainer = newContainer;
+            freeContainer = createContainer(analysis, viewpoint);
         }
 
         return freeContainer;
-
     }
 
     /**
@@ -254,18 +223,7 @@ public final class DAnalysisSessionHelper {
      */
     public static DRepresentationContainer findFreeContainer(final Viewpoint viewpoint, final Collection<DAnalysis> analyses, final DAnalysisSelector analysisSelector) {
 
-        final List<DRepresentationContainer> views = new ArrayList<DRepresentationContainer>();
-
-        for (final DAnalysis analysis : analyses) {
-            for (final DView representationContainer : analysis.getOwnedViews()) {
-                if (representationContainer instanceof DRepresentationContainer) {
-                    if (representationContainer.getViewpoint() == null) {
-                        views.add((DRepresentationContainer) representationContainer);
-                    }
-                }
-            }
-        }
-
+        final Collection<DRepresentationContainer> views = getContainers(analyses, null);
         if (views.isEmpty()) {
             return null;
         }
@@ -310,18 +268,7 @@ public final class DAnalysisSessionHelper {
     public static DRepresentationContainer findFreeContainerForAddedRepresentation(final Viewpoint viewpoint, final EObject semantic, final Collection<DAnalysis> analyses,
             final DAnalysisSelector analysisSelector, final DRepresentation representation) {
 
-        final List<DRepresentationContainer> views = new ArrayList<DRepresentationContainer>();
-
-        for (final DAnalysis analysis : analyses) {
-            for (final Object representationContainer : analysis.getOwnedViews()) {
-                if (representationContainer instanceof DRepresentationContainer) {
-                    if (((DRepresentationContainer) representationContainer).getViewpoint() == null) {
-                        views.add((DRepresentationContainer) representationContainer);
-                    }
-                }
-            }
-        }
-
+        final Collection<DRepresentationContainer> views = getContainers(analyses, null);
         if (views.isEmpty()) {
             return null;
         }
@@ -384,6 +331,7 @@ public final class DAnalysisSessionHelper {
     public static ViewpointSelection getViewpointSelection(org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry registry, DAnalysisSession session) {
         ViewpointSelection selection = new ViewpointSelection(registry);
         Set<URI> selectedBefore = Sets.newHashSet(Iterables.transform(session.getSelectedViewpoints(false), new Function<Viewpoint, URI>() {
+            @Override
             public URI apply(Viewpoint from) {
                 return new ViewpointQuery(from).getViewpointURI().get();
             }
@@ -426,5 +374,66 @@ public final class DAnalysisSessionHelper {
                 }
             }
         }
+    }
+
+    /**
+     * Get all representation containers for a viewpoint.
+     * 
+     * @param allAnalysis
+     *            all analysis to iterate on
+     * @param viewpoint
+     *            selected viewpoint
+     * @return all representation container found
+     */
+    private static Collection<DRepresentationContainer> getContainers(Iterable<DAnalysis> allAnalysis, Viewpoint viewpoint) {
+        final List<DRepresentationContainer> containers = new ArrayList<DRepresentationContainer>();
+
+        for (DAnalysis analysis : allAnalysis) {
+            DRepresentationContainer container = getContainer(analysis, viewpoint);
+            if (container != null) {
+                containers.add(container);
+            }
+        }
+
+        return containers;
+    }
+
+    /**
+     * Get a representation container for a viewpoint.
+     * 
+     * @param analysis
+     *            the analysis to iterate on
+     * @param viewpoint
+     *            selected viewpoint
+     * @return the first representation container found
+     */
+    private static DRepresentationContainer getContainer(DAnalysis analysis, Viewpoint viewpoint) {
+        DRepresentationContainer result = null;
+        for (final DView view : analysis.getOwnedViews()) {
+            if (view instanceof DRepresentationContainer && viewpoint == view.getViewpoint()) {
+                result = (DRepresentationContainer) view;
+                break;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Create a representation container for a viewpoint.
+     * 
+     * @param analysis
+     *            the analysis that will contain the new representation
+     *            container
+     * @param viewpoint
+     *            selected viewpoint
+     * @return the new representation container
+     */
+    private static DRepresentationContainer createContainer(DAnalysis analysis, Viewpoint viewpoint) {
+        DRepresentationContainer newContainer = ViewpointFactory.eINSTANCE.createDRepresentationContainer();
+        newContainer.setViewpoint(viewpoint);
+        newContainer.setInitialized(true);
+        analysis.getOwnedViews().add(newContainer);
+        analysis.getSelectedViews().add(newContainer);
+        return newContainer;
     }
 }
