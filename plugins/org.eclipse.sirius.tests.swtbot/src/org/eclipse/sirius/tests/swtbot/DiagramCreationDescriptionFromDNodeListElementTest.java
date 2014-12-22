@@ -19,11 +19,11 @@ import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEdi
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 
 /**
- * Test class for tree folding.
+ * Test class for diagram creation description.
  * 
  * @author smonnier
  */
-public class NavigationFromDNodeListElementTest extends AbstractSiriusSwtBotGefTestCase {
+public class DiagramCreationDescriptionFromDNodeListElementTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String REPRESENTATION_INSTANCE_NAME = "new TC814 Square List Package";
 

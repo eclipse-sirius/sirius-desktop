@@ -163,8 +163,8 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(LabelProviderProviderTests.class);
         suite.addTestSuite(LabelSelectionTest.class);
         suite.addTestSuite(MultiLineLabelDiagramTest.class);
-        suite.addTestSuite(NavigationFromDNodeListElementTest.class);
-        suite.addTestSuite(NavigationOnSiriusActivationTest.class);
+        suite.addTestSuite(DiagramCreationDescriptionFromDNodeListElementTest.class);
+        suite.addTestSuite(DiagramCreationDescriptionTest.class);
         suite.addTestSuite(RemoveNoteTextTest.class);
         suite.addTestSuite(NodeCreationPositionTest.class);
         suite.addTestSuite(OpenMultipleRepresentationsTest.class);

@@ -27,11 +27,11 @@ import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.ui.IEditorReference;
 
 /**
- * Test class for tree folding.
+ * Test class for diagram creation description.
  * 
  * @author smonnier
  */
-public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTestCase {
+public class DiagramCreationDescriptionTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String REPRESENTATION_INSTANCE_NAME = "TC732 Square representation 1";
 
@@ -88,14 +88,14 @@ public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTes
         super.tearDown();
     }
 
-    private void initializeDiagram2Siriuss() throws Exception {
+    private void initializeSecondSession() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE_2_VIEWPOINTS);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
     }
 
-    private void initializeDiagram1Sirius() throws Exception {
+    private void initializeFirstSession() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE_1_VIEWPOINT);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
@@ -108,7 +108,7 @@ public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTes
      * @throws Exception
      *             Test error.
      */
-    public void testNewRepresentationSiriusFromContainer() throws Exception {
+    public void testNewRepresentationFromContainer() throws Exception {
         doTestNewRepresentationWithoutContextualMenu(new Point(300, 300));
     }
 
@@ -118,7 +118,7 @@ public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTes
      * @throws Exception
      *             Test error.
      */
-    public void testNewRepresentationSiriusFromNode() throws Exception {
+    public void testNewRepresentationFromNode() throws Exception {
         doTestNewRepresentationWithoutContextualMenu(new Point(325, 160));
     }
 
@@ -128,7 +128,7 @@ public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTes
      * @throws Exception
      *             Test error.
      */
-    public void testNewRepresentationSiriusFromEdge() throws Exception {
+    public void testNewRepresentationFromEdge() throws Exception {
         doTestNewRepresentationWithoutContextualMenu(new Point(265, 135));
     }
 
@@ -138,7 +138,7 @@ public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTes
      * @throws Exception
      *             Test error.
      */
-    public void testNewRepresentationSiriussFromContainer() throws Exception {
+    public void testNewRepresentation2FromContainer() throws Exception {
         doTestNewRepresentationWithContextualMenu(new Point(300, 300), "System1)");
     }
 
@@ -148,7 +148,7 @@ public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTes
      * @throws Exception
      *             Test error.
      */
-    public void testNewRepresentationSiriussFromContainerWithoutRefreshOnOpening() throws Exception {
+    public void testNewRepresentation2FromContainerWithoutRefreshOnOpening() throws Exception {
         doTestNewRepresentationWithContextualMenu(new Point(300, 300), "System1)", true);
     }
 
@@ -158,7 +158,7 @@ public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTes
      * @throws Exception
      *             Test error.
      */
-    public void testNewRepresentationSiriussFromNode() throws Exception {
+    public void testNewRepresentation2FromNode() throws Exception {
         if (TestsUtil.shouldSkipUnreliableTests()) {
             return;
         }
@@ -171,7 +171,7 @@ public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTes
      * @throws Exception
      *             Test error.
      */
-    public void testNewRepresentationSiriussFromEdge() throws Exception {
+    public void testNewRepresentation2FromEdge() throws Exception {
         doTestNewRepresentationWithContextualMenu(new Point(265, 135), "System1)");
     }
 
@@ -181,7 +181,7 @@ public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTes
      * @throws Exception
      *             Test error.
      */
-    public void testNewRepresentationSiriussFromEdgeWithoutRefreshOnOpening() throws Exception {
+    public void testNewRepresentation2FromEdgeWithoutRefreshOnOpening() throws Exception {
         doTestNewRepresentationWithContextualMenu(new Point(265, 135), "System1)", true);
     }
 
@@ -194,7 +194,7 @@ public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTes
             changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), false);
         }
 
-        initializeDiagram2Siriuss();
+        initializeSecondSession();
 
         editor.click(point.x, point.y);
 
@@ -219,7 +219,7 @@ public class NavigationOnSiriusActivationTest extends AbstractSiriusSwtBotGefTes
         try {
             SWTBotPreferences.TIMEOUT = 1000;
 
-            initializeDiagram1Sirius();
+            initializeFirstSession();
 
             editor.click(point.x, point.y);
 
