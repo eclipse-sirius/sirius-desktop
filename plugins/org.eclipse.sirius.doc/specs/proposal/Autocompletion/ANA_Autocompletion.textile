@@ -1,0 +1,51 @@
+h1. Auto-completion analysis
+
+h2. Référence
+
+Affected ticket
+bug: 428752 Problem with completion when case is not respected
+
+h2. D'un point de vue fonctionnel
+
+h3. Etat des lieux au 23/12/2014:
+
+*AF1:*  impossible de remplacer un partie de l'expression lors de l'auto-complétion. Par ex quand on écris en minuscule "eall" on ne peut remplacer par la proposition complète avec la bonne casse, ici "eAllContents"
+*AF2:*  pour obtenir les proposition Acceleo3 il fut d'abord que l'expression contienne [/]
+
+h3. Cible:
+
+*CF1:* l’auto-complétion peut remplacer tout ou partie de l'expression courante. Cela résout le point AF1.
+*CF2:*  l’auto-complétion permet d'accéder aux propositions du proposal Provider dès lors que la préfixe est écris et que le curseur est correctement positionné.
+Ex: quand l'utilisateur écris"[" l'auto-complétion devrait afficher toutes les propositions de A3
+*CF3:*  l’auto-complétion permet de refermer automatiquement l'expression par le suffixe si nécessaire.
+Ex: l'utilisateur écris"[" pour valide une sélection dans l’auto-complétion ->la sélection s'ajoute à "[" et le suffixe "/]" s'ajoute
+
+h2. D'un point de vue technique
+
+h3. Etat des lieux au 23/12/2014:
+
+*AT1:*  l'auto-complétion JFace pour sirius est en mode ContentProposalAdapter.PROPOSAL_INSERT. Il doit être en mode PROPOSAL_REPLACE pour remplacer l'expression courante après validation d'un choix de l'auto-complétion.
+Bloquant pour CF1.
+*AT2:*  on passe par la méthode IInterpreter#provides pour savoir si l'expression est éligible à être auto-compléter.
+Ceci est limitant car, par ex pour A3, d'un point de vue de l'interpreter il faut que l'expression commence par "[" et finisse par "/]" mais du point de vue du provider, une expression commençant "[" doit suffire
+Bloquant pour CF2.
+*AT3:* le code qui gère la transformation des "contentProposal" correspondant grosso modo à ce qui est affiché dans l’auto-complétion EN full "contentProposal" qui est l'expression complète autocomplété (en supposant que l'on switch en mode ContentProposalAdapter.PROPOSAL_REPLACE) EST un code commun à l'ensemble des proposalProvider. Ce code gère mal les spécificités de chaque proposalProvider
+*AT4:*  éléments pour comprendre l'interaction build-time et run-time entre proposalProvider et interpreter:
+* le point d'extension proposalProvider associe un proposalProvider et un interpreter mais rien n'empêche aujourd'hui de contribuer n fois et donc l'association interpreter-proposalProvider multivalué ds les deux sens est théoriquement possible
+* les IProposalProvider et IInterpreter implémentés à ce jour : feature, variable, service, A3, A2, OCL et ODesignGeneric
+* IProposalProvider#getProposal requiert le paramètre IInterpreter. Dans le getProposal, chaque proposalProvider fait un cast sur le seul interpreter qu'il connait.Donc dans les faits à un proposalProvider correspond 1 interpreter.
+* le compoundInterpreter réalise IInterpreter et IProposalProvider. C'est en fait une grosse classe utilitaire, qui instancie indirectement les  "vrais" IInterpreters déclarés et maintient des MAP pour retrouver un interpreter à partir d'une expression.Le code du compoundInterpreter associe des données aux interpreters qu'il gère. addImport, setProperty setVariable addVariableStatusListener setModelAccessor setCrossReferencer activateMetamodels. Cependant, au runtime, en utilisant la complétion dans le VSM ou dans siriusInterpreter, ces données ne pas renseignées.
+
+h3. Questions:
+
+*Q1:* considère-t-on qu'à un proposal provider ne correspond qu'un interpreter?
+*Q2:*  L'interpreter est il vraiment nécessaire dans le getProposal du proposalProvider ?
+*Q3:*  en supposant Q2 vrai, le proposalProvider ne pourrait-il pas lui-même géré son instance d'interpreter? ou alors le code de l'interpreter utilisé par le getProposal ne pourrait-il pas être déplacé dans un utilitaire commun à l’interprétation et l’auto-complétion?
+
+h3. Propositions:
+
+*P0:*  opter pour CF1, CF2 et CF3 et pour ce faire:
+*P1:*  switcher l'auto-complétion JFace pour sirius est en mode ContentProposalAdapter.PROPOSAL_REPLACE (cf AT1)
+*P2:*  ne plus dépendre de IInterpreter#provides pour proposer la complétion. Le proposalProvider a sa propre logique (cf AT2)
+*P3:*  déléguer complétement à IProposalProvider#getProposals les propositions à afficher dans l'auto-complétion. (cf AT3) Le code commun des proposalProvider est mutualisé. La logique est inversé par rapport à AT3
+*P4:*  selon Q1,Q2,Q3 on pourrait laisser l'implémentation du IProposalProvider gérer lui même le cycle de vie de l'interpreter si nécessaire et supprimer le paramètre IInterpreter de IProposalProvider#getProposal 
