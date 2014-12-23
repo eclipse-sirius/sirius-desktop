@@ -105,17 +105,6 @@ public class SequenceSwtBotTestSuite extends TestCase {
      */
     public static void addGerritPart(TestSuite suite) {
         suite.addTestSuite(InstanceRoleResizableEditPolicyTests.class);
-    }
-
-    /**
-     * Creates the {@link junit.framework.TestSuite TestSuite} for all the test.
-     * 
-     * @return The test suite containing all the tests
-     */
-    public static Test suite() {
-        final TestSuite suite = new TestSuite("SwtBot tests on sequence diagram");
-
-        addGerritPart(suite);
         suite.addTestSuite(SequenceReorderTest.class);
         suite.addTestSuite(SequenceDiagramDirtyTests.class);
         suite.addTestSuite(SequenceOpeningFilteredEventEndsTests.class);
@@ -140,6 +129,18 @@ public class SequenceSwtBotTestSuite extends TestCase {
         suite.addTestSuite(ExecutionMessageReconnectionTests.class);
         suite.addTestSuite(ExecutionLinkedMessageReconnectionTests.class);
         suite.addTestSuite(ExternalModificationsTests.class);
+    }
+
+    /**
+     * Creates the {@link junit.framework.TestSuite TestSuite} for all the test.
+     * 
+     * @return The test suite containing all the tests
+     */
+    public static Test suite() {
+        final TestSuite suite = new TestSuite("SwtBot tests on sequence diagram");
+
+        addGerritPart(suite);
+
         suite.addTestSuite(SyncCallTest.class);
         suite.addTestSuite(SyncCallMoveTest.class);
         suite.addTestSuite(SyncCall2Test.class);

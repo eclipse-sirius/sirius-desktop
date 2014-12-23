@@ -41,6 +41,8 @@ public class AllSiriusTestSuite extends TestCase {
      */
     public static void addGerritPart(TestSuite suite) {
         suite.addTest(AllCommonStandaloneTests.suite());
+        suite.addTest(AllTableStandaloneTests.suite());
+        suite.addTest(AllDiagramStandaloneTests.suite());
     }
 
     /**
@@ -51,8 +53,6 @@ public class AllSiriusTestSuite extends TestCase {
     public static Test suite() {
         final TestSuite suite = new TestSuite("Sirius tests");
         addGerritPart(suite);
-        suite.addTest(AllTableStandaloneTests.suite());
-        suite.addTest(AllDiagramStandaloneTests.suite());
 
         suite.addTest(AllCommonPluginTests.suite());
         suite.addTest(AllTablePluginTests.suite());
