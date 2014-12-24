@@ -1815,6 +1815,10 @@
             kind="RepresentationsFile">
       </participant>
       <participant
+            class="org.eclipse.sirius.diagram.ui.business.internal.migration.FontStyleForDNodeListElementMigrationParticipant"
+            kind="RepresentationsFile">
+      </participant>
+      <participant
             class="org.eclipse.sirius.diagram.ui.business.internal.migration.description.ListContainerAttributeMigrationParticipant"
             kind="VSM">
       </participant>

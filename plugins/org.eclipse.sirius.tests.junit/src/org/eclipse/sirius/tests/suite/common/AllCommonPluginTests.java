@@ -95,6 +95,7 @@ import org.eclipse.sirius.tests.unit.diagram.filter.EObjectSelectionFilterTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.CorruptedViewsMigrationTests;
 import org.eclipse.sirius.tests.unit.diagram.migration.DDiagramSetRemovalMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.DiagramSplitMigrationTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.FontStyleForDNodeListElementMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.FragmentedFilesMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.ListContainerAttributeMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.MigrationCompartmentWithLayoutConstraintsTest;
@@ -173,6 +174,7 @@ public class AllCommonPluginTests extends TestCase {
         // suite.addTestSuite(AutomaticMigrationOnAirdResourceTest.class);
         suite.addTestSuite(ReferencedModelResourceMigrationTest.class);
         suite.addTestSuite(RemoveAcceleoReferencesMigrationTest.class);
+        suite.addTestSuite(FontStyleForDNodeListElementMigrationTest.class);
         // suite.addTestSuite(SequenceInstanceRoleSizeRepairMigrationTestCase.class);
         suite.addTestSuite(OptionalLayerToAdditionalLayerMigrationTest.class);
         suite.addTestSuite(MigrationRoutingStyleEndUserOverrideTest.class);
@@ -288,5 +290,4 @@ public class AllCommonPluginTests extends TestCase {
         addNonGerritPart(suite);
         return suite;
     }
-
 }

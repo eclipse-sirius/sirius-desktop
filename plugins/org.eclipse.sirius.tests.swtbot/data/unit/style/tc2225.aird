@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description http://www.eclipse.org/sirius/diagram/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/1.1.0#//diagram/description/style" xmi:id="_SZJdYJpZEd-PK6vZSn4rhA" selectedViews="_S1roYJpZEd-PK6vZSn4rhA" version="8.0.0">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_SZJdYJpZEd-PK6vZSn4rhA" selectedViews="_S1roYJpZEd-PK6vZSn4rhA" version="10.0.0.201412231738">
   <models xmi:type="ecore:EPackage" href="tc2225.ecore#/"/>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_S1roYJpZEd-PK6vZSn4rhA" initialized="true">
     <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_Tuh78JpZEd-PK6vZSn4rhA" name="2225 package entities">
@@ -53,6 +53,7 @@
             <children xmi:type="notation:Node" xmi:id="_Ty6FoJpZEd-PK6vZSn4rhA" type="5007"/>
             <children xmi:type="notation:Node" xmi:id="_Ty9I8JpZEd-PK6vZSn4rhA" type="7004">
               <children xmi:type="notation:Node" xmi:id="_Tz1SsJpZEd-PK6vZSn4rhA" type="3010" element="_O0srhZjLEeCGbO5oLE72PQ">
+                <styles xmi:type="notation:FontStyle" xmi:id="_7d2i8JvsEeSruqaqjt7oEg" fontName="Times New Roman" fontHeight="8"/>
                 <layoutConstraint xmi:type="notation:Location" xmi:id="_Tz1SsZpZEd-PK6vZSn4rhA"/>
               </children>
               <styles xmi:type="notation:SortingStyle" xmi:id="_Ty9I8ZpZEd-PK6vZSn4rhA"/>
@@ -151,11 +152,11 @@
         <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_O0srhZjLEeCGbO5oLE72PQ" name="a1c1List">
           <target xmi:type="ecore:EAttribute" href="tc2225.ecore#//c1/a1"/>
           <semanticElements xmi:type="ecore:EAttribute" href="tc2225.ecore#//c1/a1"/>
-          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_O0tSkJjLEeCGbO5oLE72PQ">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_O0tSkZjLEeCGbO5oLE72PQ"/>
+          <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_Fdv6kJvtEeSruqaqjt7oEg">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_Fdv6kZvtEeSruqaqjt7oEg"/>
             <description xmi:type="style:BundledImageDescription" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20EClass%20']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
-            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_O0tSkpjLEeCGbO5oLE72PQ"/>
-            <color xmi:type="viewpoint:RGBValues" xmi:id="_O0tSk5jLEeCGbO5oLE72PQ"/>
+            <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_Fdv6kpvtEeSruqaqjt7oEg"/>
+            <color xmi:type="viewpoint:RGBValues" xmi:id="_Fdv6k5vtEeSruqaqjt7oEg"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="tc2225.odesign#//@ownedViewpoints[name='Design2225']/@ownedRepresentations[name='Entities2225']/@defaultLayer/@containerMappings[name='EC%20EClass%20']/@subNodeMappings[name='EC%20EAttribute']"/>
         </ownedElements>
