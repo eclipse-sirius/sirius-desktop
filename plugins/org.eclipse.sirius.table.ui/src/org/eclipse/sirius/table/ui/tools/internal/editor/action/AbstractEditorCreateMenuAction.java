@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,9 @@ import org.eclipse.jface.action.IMenuCreator;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.MenuAdapter;
+import org.eclipse.swt.events.MenuEvent;
+import org.eclipse.swt.events.MenuListener;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
@@ -43,14 +46,34 @@ public abstract class AbstractEditorCreateMenuAction<T extends AbstractToolActio
     /** The last action launch from this menu. */
     private T lastCreateAction;
 
+    /**
+     * The default name of the action menu.
+     */
+    private final String defaultName;
+
     private final List<T> createActionsForTable = Lists.newArrayList();
 
     // menu item selection listener: listens to selection events
     private final Listener menuItemListener = new Listener() {
+        @Override
         public void handleEvent(final Event event) {
             if (SWT.Selection == event.type && !event.widget.isDisposed()) {
                 final ActionContributionItem item = (ActionContributionItem) event.widget.getData();
                 setLastAction((T) item.getAction());
+            }
+        }
+    };
+    
+    private final MenuListener menuListener = new MenuAdapter() {
+        @Override
+        public void menuShown(MenuEvent e) {
+            final MenuItem[] menuItems = menuManager.getMenu().getItems();
+            for (MenuItem menuItem : menuItems) {
+                if (menuItem.getStyle() == SWT.SEPARATOR) {
+                    continue;
+                }
+                menuItem.removeListener(SWT.Selection, menuItemListener);
+                menuItem.addListener(SWT.Selection, menuItemListener);
             }
         }
     };
@@ -72,6 +95,7 @@ public abstract class AbstractEditorCreateMenuAction<T extends AbstractToolActio
      */
     protected AbstractEditorCreateMenuAction(String text, ImageDescriptor image) {
         super(text, image);
+        defaultName = text;
         setMenuCreator(this);
         setEnabled(false);
     }
@@ -104,6 +128,7 @@ public abstract class AbstractEditorCreateMenuAction<T extends AbstractToolActio
      * 
      * @see org.eclipse.jface.action.IMenuCreator#dispose()
      */
+    @Override
     public void dispose() {
         if (menuManager.getMenu() != null) {
             final MenuItem[] menuItems = menuManager.getMenu().getItems();
@@ -113,6 +138,7 @@ public abstract class AbstractEditorCreateMenuAction<T extends AbstractToolActio
                 }
                 menuItem.removeListener(SWT.Selection, menuItemListener);
             }
+            menuManager.getMenu().removeMenuListener(menuListener);
             menuManager.getMenu().dispose();
         }
         menuManager.dispose();
@@ -123,20 +149,19 @@ public abstract class AbstractEditorCreateMenuAction<T extends AbstractToolActio
      * 
      * @see org.eclipse.jface.action.IMenuCreator#getMenu(org.eclipse.swt.widgets.Control)
      */
+    @Override
     public Menu getMenu(final Control parent) {
         // Creates the menu if needed, or removes all elements except for the
         // save action
         if (menuManager.getMenu() == null) {
             menuManager.createContextMenu(parent);
-            update();
-        }
 
-        final MenuItem[] menuItems = menuManager.getMenu().getItems();
-        for (MenuItem menuItem : menuItems) {
-            if (menuItem.getStyle() == SWT.SEPARATOR) {
-                continue;
-            }
-            menuItem.addListener(SWT.Selection, menuItemListener);
+            // at that time menuManager.getMenu().getItems() is empty. So we
+            // have to wait when the menu is about to show to set the listener
+            // on the menu items
+            menuManager.getMenu().addMenuListener(menuListener);
+
+            update();
         }
 
         return menuManager.getMenu();
@@ -147,6 +172,7 @@ public abstract class AbstractEditorCreateMenuAction<T extends AbstractToolActio
      * 
      * @see org.eclipse.jface.action.IMenuCreator#getMenu(org.eclipse.swt.widgets.Menu)
      */
+    @Override
     public Menu getMenu(final Menu parent) {
         return null;
     }
@@ -159,10 +185,14 @@ public abstract class AbstractEditorCreateMenuAction<T extends AbstractToolActio
      */
     public void update(final List<AbstractToolAction> actions) {
         getCreateActionsForTable().clear();
-        menuManager.removeAll();
         // Add all create line tool
         for (final T toolAction : filter(actions)) {
             getCreateActionsForTable().add(toolAction);
+        }
+
+        // init last action
+        if (!createActionsForTable.isEmpty()) {
+            setLastAction(createActionsForTable.get(0));
         }
         update();
     }
@@ -180,19 +210,30 @@ public abstract class AbstractEditorCreateMenuAction<T extends AbstractToolActio
      * The change is applied on the next getMenu.
      */
     protected void update() {
-        setEnabled(!getCreateActionsForTable().isEmpty());
-
         menuManager.removeAll();
-        // Add all create line tool on the table
-        for (final T createAction : getCreateActionsForTable()) {
-            if (createAction.canExecute()) {
-                menuManager.add(createAction);
+        setEnabled(!createActionsForTable.isEmpty());
+
+        if (createActionsForTable.isEmpty()) {
+            this.setText(defaultName);
+        } else {
+            // Add all create line tool on the table
+            for (final T createAction : createActionsForTable) {
+                if (createAction.canExecute()) {
+                    menuManager.add(createAction);
+                }
             }
         }
     }
 
+    /**
+     * Set the last action and update the menu text.
+     * 
+     * @param createAction
+     *            the action
+     */
     public void setLastAction(final T createAction) {
         lastCreateAction = createAction;
+        this.setText(lastCreateAction.getText());
     }
 
     /**

@@ -21,6 +21,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.table.metamodel.table.description.CreateLineTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionFactory;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITableRepresentation;
@@ -33,11 +34,10 @@ import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
-
-import org.eclipse.sirius.tests.swtbot.Activator;
 
 /**
  * Test that context menu on table is refreshed when VSM changes. Test VP-2270.
@@ -76,22 +76,47 @@ public class ContextMenuTableTest extends AbstractSiriusSwtBotGefTestCase {
      * Test that the contextual menu representation table is refreshed after
      * modify VSM.
      */
-    public void testRefreshContextMenuAfterModifyVsm() {
-        // open table representation
-        openTableRepresentation();
-        // Check the contextual menu table representation
-        checkContextualMenuTableRepresentation();
-        // Open VSM
-        openVSM();
-        // Modify VSM, add a new creation tool
-        addNewCreationToolToVSM();
-        // Check the contextual menu table representation refreshed
-        checkContextualMenuMenuTableRepresentationRefreshed();
-    }
+  public void testRefreshContextMenuAfterModifyVsm() {
+    // open table representation
+    openTableRepresentation();
+    // Check the contextual menu table representation
+    checkContextualMenuTableRepresentation();
+    // Check the create line and column toolbar
+    checkCreateLineColumnToolBar();
+    // Open VSM
+    openVSM();
+    // Modify VSM, add a new creation tool
+    addNewCreationToolToVSM();
+    // Check the contextual menu table representation refreshed
+    checkContextualMenuMenuTableRepresentationRefreshed();
+  }
 
-    /**
-     * {@inheritDoc}
-     */
+  private void checkCreateLineColumnToolBar() {
+    // Check the default item of the dropDown Toolbar
+    SWTBotToolbarDropDownButton myDropdown = bot.toolbarDropDownButtonWithTooltip("Create Class");
+
+    // code below doesn't work because menuItem are never built
+
+    // try {
+    // // this builds the menu adding Action on it but at that time, menuItem
+    // // are not built
+    // myDropdown.menuItems(null);
+    // } catch (Exception e) {
+    // // allow UIThread to initialize what is necessary to built menuItem
+    // SWTBotUtils.waitAllUiEvents();
+    // }
+    //
+    // // click on second menu item
+    // SWTBotMenu showMenuItem = myDropdown.menuItem("line");
+    // showMenuItem.click();
+    // // Check that the default item of the dropDown Toolbar is the last used
+    // myDropdown = bot.toolbarDropDownButtonWithTooltip("line");
+
+  }
+
+  /**
+   * {@inheritDoc}
+   */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, getFilesUsedForTest());
@@ -131,7 +156,7 @@ public class ContextMenuTableTest extends AbstractSiriusSwtBotGefTestCase {
     private void checkContextualMenuTableRepresentation() {
         // Reduce timeout
         final long oldTimeout = SWTBotPreferences.TIMEOUT;
-        table.getTable().getTreeItem(CLASS1).select().contextMenu("Create Class");
+    table.getTable().getTreeItem(CLASS1).select().contextMenu("Create Class");
         table.getTable().getTreeItem(CLASS1).select().contextMenu("line");
         try {
             SWTBotPreferences.TIMEOUT = 500;
@@ -151,6 +176,7 @@ public class ContextMenuTableTest extends AbstractSiriusSwtBotGefTestCase {
         activeEditor.setFocus();
 
         Group group = syncExec(new Result<Group>() {
+            @Override
             public Group run() {
                 SWTBotTree tree = activeEditor.bot().tree();
                 SWTBotTreeItem[] allItems = tree.getAllItems();
@@ -175,14 +201,17 @@ public class ContextMenuTableTest extends AbstractSiriusSwtBotGefTestCase {
         EditingDomain ed = AdapterFactoryEditingDomain.getEditingDomainFor(tableDesc);
         ed.getCommandStack().execute(new AbstractCommand() {
 
+            @Override
             public void execute() {
                 tableDesc.getOwnedCreateLine().add(tool);
             }
 
+            @Override
             public boolean canExecute() {
                 return true;
             }
 
+            @Override
             public void redo() {
             }
         });
@@ -218,15 +247,18 @@ public class ContextMenuTableTest extends AbstractSiriusSwtBotGefTestCase {
             this.selectionType = selectionType;
         }
 
+        @Override
         public boolean test() throws Exception {
             IStructuredSelection selection = (IStructuredSelection) selectionProvider.getSelection();
             return selection.getFirstElement() != null && selectionType.isInstance(selection.getFirstElement());
 
         }
 
+        @Override
         public void init(SWTBot bot) {
         }
 
+        @Override
         public String getFailureMessage() {
             return "Exprected element was not selected.";
         }

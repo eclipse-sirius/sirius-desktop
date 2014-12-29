@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.tree;
 
+import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITreeRepresentation;
@@ -27,10 +28,9 @@ import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
-
-import org.eclipse.sirius.tests.swtbot.Activator;
 
 /**
  * Test that context menu on tree is refreshed when VSM changes. Test VP-2270.
@@ -78,6 +78,8 @@ public class ContextMenuTreeTest extends AbstractSiriusSwtBotGefTestCase {
         openTreeRepresentation();
         // Check the contextual menu tree representation
         checkContextualMenuTreeRepresentation();
+    // Check the create toolbar
+    checkCreateToolBar();
         // Open VSM
         openVSM();
         // Modify VSM, add a new creation tool
@@ -155,6 +157,29 @@ public class ContextMenuTreeTest extends AbstractSiriusSwtBotGefTestCase {
 
     }
 
+  private void checkCreateToolBar() {
+    // Check the default item of the dropDown Toolbar
+    SWTBotToolbarDropDownButton myDropdown = bot.toolbarDropDownButtonWithTooltip("createTool1");
+
+    // code below doesn't work because menuItem are never built
+
+    // try {
+    // // this builds the menu adding Action on it but at that time, menuItem
+    // // are not built
+    // myDropdown.menuItems(null);
+    // } catch (Exception e) {
+    // // allow UIThread to initialize what is necessary to built menuItem
+    // SWTBotUtils.waitAllUiEvents();
+    // }
+    //
+    // // click on second menu item
+    // SWTBotMenu showMenuItem = myDropdown.menuItem("line");
+    // showMenuItem.click();
+    // // Check that the default item of the dropDown Toolbar is the last used
+    // myDropdown = bot.toolbarDropDownButtonWithTooltip("line");
+
+  }
+
     private void addNewCreationToolToVSM() {
         SWTBotEditor activeEditor = bot.activeEditor();
         activeEditor.setFocus();
@@ -209,6 +234,7 @@ public class ContextMenuTreeTest extends AbstractSiriusSwtBotGefTestCase {
 
     private Object getData(final TreeItem widget) {
         return syncExec(new Result<Object>() {
+            @Override
             public Object run() {
                 return widget.getData();
             }
