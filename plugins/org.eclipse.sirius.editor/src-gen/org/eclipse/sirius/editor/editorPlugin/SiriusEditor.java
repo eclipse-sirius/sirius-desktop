@@ -80,6 +80,7 @@ import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.resource.ColorRegistry;
+import org.eclipse.jface.resource.FontDescriptor;
 import org.eclipse.jface.resource.FontRegistry;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
@@ -1367,8 +1368,23 @@ public class SiriusEditor extends MultiPageEditorPart implements IAdapterFactory
     public static FontRegistry getFontRegistry() {
         if (fontRegistry == null) {
             fontRegistry = new FontRegistry();
-            fontRegistry.put("required", new FontData[] { new FontData("Arial", 8, SWT.BOLD) });
-            fontRegistry.put("description", new FontData[] { new FontData("Verdana", 8, SWT.ITALIC) });
+
+            FontDescriptor defaultFontDescriptor = fontRegistry.defaultFontDescriptor();
+            if (defaultFontDescriptor != null && defaultFontDescriptor.getFontData().length > 0) {
+                FontData defaultFontData = defaultFontDescriptor.getFontData()[0];
+                
+                FontData required = new FontData(defaultFontData.toString());
+                required.setStyle(SWT.BOLD);
+                fontRegistry.put("required", new FontData[] { required });
+
+                FontData description = new FontData(defaultFontData.toString());
+                description.setStyle(SWT.ITALIC);
+                fontRegistry.put("description", new FontData[] { description });
+            } else {
+                fontRegistry.put("required", new FontData[] { new FontData("Arial", 8, SWT.BOLD) });
+                fontRegistry.put("description", new FontData[] { new FontData("Verdana", 8, SWT.ITALIC) });
+            }
+            
             // Start of user code put your own fonts here
 
             // End of user code put your own fonts here
