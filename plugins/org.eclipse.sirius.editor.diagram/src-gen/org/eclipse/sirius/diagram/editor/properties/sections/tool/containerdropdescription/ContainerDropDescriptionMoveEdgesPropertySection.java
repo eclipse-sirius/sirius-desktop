@@ -107,7 +107,6 @@ public class ContainerDropDescriptionMoveEdgesPropertySection extends AbstractCh
         data.top = new FormAttachment(checkbox, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("If set to true, drop to the container will not invalidate the linked edges.");
         nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));

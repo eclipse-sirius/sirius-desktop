@@ -22,7 +22,6 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractCheckBoxGroupPropertySection;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription;
@@ -224,7 +223,6 @@ public class ForegroundStyleDescriptionLabelFormatPropertySection extends Abstra
         data.top = new FormAttachment(nameLabel, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText(TOOL_TIP);
 

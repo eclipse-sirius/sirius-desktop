@@ -128,7 +128,6 @@ public class TReturnMessageMappingInvocationMappingPropertySection extends Abstr
         data.top = new FormAttachment(combo, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("The Basic Message mapping of the messages to which this return message kind replies.");
         nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));

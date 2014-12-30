@@ -19,7 +19,6 @@ import java.util.List;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractComboPropertySection;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.swt.SWT;
@@ -127,7 +126,6 @@ public class SetObjectObjectPropertySection extends AbstractComboPropertySection
         data.top = new FormAttachment(combo, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("Instance to set. To retrieve the instance list you may use the 'load resource' action of the editor.");
         // Start of user code create controls

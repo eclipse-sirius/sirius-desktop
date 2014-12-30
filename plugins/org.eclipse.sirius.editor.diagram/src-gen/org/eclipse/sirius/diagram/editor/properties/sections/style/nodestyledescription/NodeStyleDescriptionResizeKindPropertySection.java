@@ -91,7 +91,6 @@ public class NodeStyleDescriptionResizeKindPropertySection extends AbstractRadio
         data.top = new FormAttachment(nameLabel, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("Authorized resize directions for the node.");
         nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));

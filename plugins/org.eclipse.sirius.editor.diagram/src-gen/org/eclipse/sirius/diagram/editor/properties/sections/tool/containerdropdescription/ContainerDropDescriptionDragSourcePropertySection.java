@@ -91,7 +91,6 @@ public class ContainerDropDescriptionDragSourcePropertySection extends AbstractR
         data.top = new FormAttachment(nameLabel, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("Tell whether the source of this Drag and Drop is an item of a Diagram, of the Model Explorer View or both.");
         nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));

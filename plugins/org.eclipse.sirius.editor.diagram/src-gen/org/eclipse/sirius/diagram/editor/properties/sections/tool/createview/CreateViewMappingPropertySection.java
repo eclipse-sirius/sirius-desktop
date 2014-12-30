@@ -144,7 +144,6 @@ public class CreateViewMappingPropertySection extends AbstractComboPropertySecti
         data.top = new FormAttachment(combo, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("Mapping of the view to create.");
         nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));

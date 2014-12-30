@@ -12,7 +12,6 @@ package org.eclipse.sirius.editor.properties.sections.tool.abstractvariable;
 // Start of user code imports
 
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.swt.SWT;
@@ -97,7 +96,6 @@ public class AbstractVariableNamePropertySection extends AbstractTextPropertySec
         data.top = new FormAttachment(text, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText(getToolTipText());
 

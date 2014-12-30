@@ -13,7 +13,6 @@ package org.eclipse.sirius.diagram.editor.properties.sections.description.diagra
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractCheckBoxPropertySection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
@@ -108,7 +107,6 @@ public class DiagramDescriptionEnablePopupBarsPropertySection extends AbstractCh
         data.top = new FormAttachment(checkbox, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("If true, creation tools which are visible in the palette will also be available as pop-up toolbars in the diagram itself.");
     }

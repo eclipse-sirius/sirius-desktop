@@ -129,7 +129,7 @@ public abstract class AbstractEditorDialogPropertySection extends AbstractViewpo
 
     /**
      * Creates the selection listener for the "..." button.
-     * 
+     *
      * @return the listener.
      */
     protected SelectionListener createButtonListener() {

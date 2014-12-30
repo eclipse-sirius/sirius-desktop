@@ -96,7 +96,6 @@ public class EdgeMappingSourceMappingPropertySection extends AbstractEditorDialo
         data.top = new FormAttachment(text, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("Mapping from which the edge should start.");
 

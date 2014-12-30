@@ -13,7 +13,6 @@ package org.eclipse.sirius.diagram.editor.properties.sections.tool.edgecreationd
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractTextPropertySection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
@@ -97,7 +96,6 @@ public class EdgeCreationDescriptionIconPathPropertySection extends AbstractText
         data.top = new FormAttachment(text, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText(getToolTipText());
 

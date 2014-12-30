@@ -108,7 +108,6 @@ public class RepresentationDescriptionInitialisationPropertySection extends Abst
         data.top = new FormAttachment(checkbox, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("If set to true, the representation will be automatically created when creating a new session.");
         nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));

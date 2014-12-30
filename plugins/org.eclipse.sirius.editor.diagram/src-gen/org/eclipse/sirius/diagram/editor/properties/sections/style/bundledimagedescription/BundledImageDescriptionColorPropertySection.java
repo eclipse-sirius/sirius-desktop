@@ -130,7 +130,6 @@ public class BundledImageDescriptionColorPropertySection extends AbstractComboPr
         data.top = new FormAttachment(combo, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("Color for the shape.");
         nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));

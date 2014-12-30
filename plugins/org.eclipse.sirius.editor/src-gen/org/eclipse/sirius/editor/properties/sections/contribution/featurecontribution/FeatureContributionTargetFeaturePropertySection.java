@@ -143,7 +143,6 @@ public class FeatureContributionTargetFeaturePropertySection extends AbstractCom
         data.top = new FormAttachment(combo, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("The feature in the target object to which the contribution values are applied.");
         nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));

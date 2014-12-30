@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.sequence.editor.properties.sections.template.
 // Start of user code imports
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractCheckBoxPropertySection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
@@ -108,7 +107,6 @@ public class TSourceTargetMessageMappingUseDomainElementPropertySection extends 
         data.top = new FormAttachment(checkbox, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("If set to true the creation of the elements will depend on the existence of a domain element and not on the graphical one. You should then define the souce finder expression.");
     }

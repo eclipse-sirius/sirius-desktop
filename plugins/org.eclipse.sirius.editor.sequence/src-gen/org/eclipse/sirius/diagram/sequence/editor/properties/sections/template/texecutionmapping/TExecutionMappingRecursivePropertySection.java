@@ -107,7 +107,6 @@ public class TExecutionMappingRecursivePropertySection extends AbstractCheckBoxP
         data.top = new FormAttachment(checkbox, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("A boolean indicating whether executions of this kind can contain other sub-executions of the same kind.");
         nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));

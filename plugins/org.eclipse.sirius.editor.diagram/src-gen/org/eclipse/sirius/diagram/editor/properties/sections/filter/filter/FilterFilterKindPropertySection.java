@@ -16,7 +16,6 @@ import java.util.List;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.diagram.description.filter.FilterKind;
 import org.eclipse.sirius.diagram.description.filter.FilterPackage;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractRadioButtonPropertySection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
@@ -91,7 +90,6 @@ public class FilterFilterKindPropertySection extends AbstractRadioButtonProperty
         data.top = new FormAttachment(nameLabel, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("A filter may hide an element or just collapse it. If an element is collapsed, any edge going from or to this element will still be visible.");
 

@@ -43,7 +43,8 @@ public class DiagramDescriptionReusedMappingsFilter extends ViewpointPropertyFil
     public boolean select(Object arg0) {
         boolean select = super.select(arg0);
 
-        // Display reused mappings property section only if there are some reused
+        // Display reused mappings property section only if there are some
+        // reused
         // mappings, this is done for compatibility reasons with old VSMs.
         // The possibility to add mappings as direct children of a
         // DiagramDescription has been disabled

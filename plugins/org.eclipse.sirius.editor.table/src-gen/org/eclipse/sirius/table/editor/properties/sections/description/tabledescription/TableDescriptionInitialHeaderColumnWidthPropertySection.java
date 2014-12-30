@@ -10,7 +10,6 @@
 package org.eclipse.sirius.table.editor.properties.sections.description.tabledescription;
 
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractSpinnerPropertySection;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.swt.SWT;
@@ -109,7 +108,6 @@ public class TableDescriptionInitialHeaderColumnWidthPropertySection extends Abs
         data.top = new FormAttachment(nameLabel, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("The initial width of the column header (calculated if not available).");
         // Start of user code create controls

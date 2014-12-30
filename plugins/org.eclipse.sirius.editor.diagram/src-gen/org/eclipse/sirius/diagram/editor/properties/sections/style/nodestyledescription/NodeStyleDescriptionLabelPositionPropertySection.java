@@ -16,7 +16,6 @@ import java.util.List;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractComboPropertySection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
@@ -91,7 +90,6 @@ public class NodeStyleDescriptionLabelPositionPropertySection extends AbstractCo
         data.top = new FormAttachment(nameLabel, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("Pick either 'node' position which mean 'inside the node' or 'border' to put the label around the node.");
 

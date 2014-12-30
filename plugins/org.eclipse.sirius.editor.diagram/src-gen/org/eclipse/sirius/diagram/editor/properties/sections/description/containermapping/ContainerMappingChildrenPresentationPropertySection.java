@@ -91,7 +91,6 @@ public class ContainerMappingChildrenPresentationPropertySection extends Abstrac
         data.top = new FormAttachment(nameLabel, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("Tell whether the container will display it's children as list elements, as shapes or as regions.");
         nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));

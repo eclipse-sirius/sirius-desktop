@@ -79,7 +79,6 @@ public class ReconnectEdgeDescriptionMappingsPropertySection extends AbstractEdi
         data.top = new FormAttachment(text, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("Edge mappings on which this reconnect edge tool apply.");
 

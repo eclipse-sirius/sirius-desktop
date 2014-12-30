@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.editor.properties.sections.style.nodestyledes
 // Start of user code imports
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractCheckBoxPropertySection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
@@ -108,7 +107,6 @@ public class NodeStyleDescriptionHideLabelByDefaultPropertySection extends Abstr
         data.top = new FormAttachment(checkbox, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("Define the default visibility status of this label (available only if label position is \"border\"). A change of this option does not affect already existing elements.");
     }

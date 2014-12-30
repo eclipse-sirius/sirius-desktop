@@ -11,7 +11,6 @@ package org.eclipse.sirius.editor.properties.sections.description.abstractmappin
 
 // Start of user code imports
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractCheckBoxPropertySection;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.swt.SWT;
@@ -108,7 +107,6 @@ public class AbstractMappingImportInheritsAncestorFiltersPropertySection extends
         data.top = new FormAttachment(checkbox, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("Set to true if you want the filters applying on the imported mappings apply on this one.");
     }

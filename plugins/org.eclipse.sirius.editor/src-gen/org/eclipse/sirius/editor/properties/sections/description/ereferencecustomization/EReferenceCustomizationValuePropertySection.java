@@ -25,7 +25,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.sirius.business.api.query.EClassesQuery;
 import org.eclipse.sirius.business.api.query.EStructuralFeaturesQuery;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractComboPropertySection;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.emf.EClassQuery;
@@ -183,7 +182,6 @@ public class EReferenceCustomizationValuePropertySection extends AbstractComboPr
         data.top = new FormAttachment(combo, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("The new value to set for the property.");
         // Start of user code create controls

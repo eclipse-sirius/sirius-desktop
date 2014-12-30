@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.editor.properties.sections.description.edgema
 // Start of user code imports
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractCheckBoxPropertySection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
@@ -107,7 +106,6 @@ public class EdgeMappingUseDomainElementPropertySection extends AbstractCheckBox
         data.top = new FormAttachment(checkbox, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("Trigger usage of a domain class representing an Edge or just a reference. If you set it to true, the Edge research will start from the domain instances of the given type and look for target/source nodes accordingly, if you set to false, the research will start from the source nodes and look for corresponding target nodes.");
     }

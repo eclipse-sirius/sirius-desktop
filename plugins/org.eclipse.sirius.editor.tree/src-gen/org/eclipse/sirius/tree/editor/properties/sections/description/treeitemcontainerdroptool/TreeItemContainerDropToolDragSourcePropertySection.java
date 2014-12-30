@@ -91,7 +91,6 @@ public class TreeItemContainerDropToolDragSourcePropertySection extends Abstract
         data.top = new FormAttachment(nameLabel, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("Tell whether the source of this Drag and Drop is a Representation, an item of the Model Explorer View or both.");
         nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));

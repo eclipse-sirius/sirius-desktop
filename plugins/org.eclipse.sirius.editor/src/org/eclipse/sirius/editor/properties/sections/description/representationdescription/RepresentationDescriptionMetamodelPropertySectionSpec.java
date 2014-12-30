@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
-import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractViewpointPropertySection;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
@@ -96,7 +95,6 @@ public class RepresentationDescriptionMetamodelPropertySectionSpec extends Abstr
         composite = getWidgetFactory().createFlatFormComposite(parent);
 
         help = getWidgetFactory().createCLabel(composite, "");
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("Select the Metamodels (EPackage) which must be used in the current representation description");
 

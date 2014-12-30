@@ -96,7 +96,6 @@ public class EdgeCreationDescriptionEdgeMappingsPropertySection extends Abstract
         data.top = new FormAttachment(text, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("Edge mappings you may need to automatically create once the tool has been executed.");
 

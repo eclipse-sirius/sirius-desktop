@@ -130,7 +130,6 @@ public class TMessageStyleStrokeColorPropertySection extends AbstractComboProper
         data.top = new FormAttachment(combo, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("Color of the message line.");
         nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));

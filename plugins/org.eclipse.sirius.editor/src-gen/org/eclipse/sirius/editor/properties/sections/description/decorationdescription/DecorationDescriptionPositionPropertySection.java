@@ -91,7 +91,6 @@ public class DecorationDescriptionPositionPropertySection extends AbstractComboP
         data.top = new FormAttachment(nameLabel, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("Position of the decoration relatively to the figure.");
         nameLabel.setFont(SiriusEditor.getFontRegistry().get("required"));

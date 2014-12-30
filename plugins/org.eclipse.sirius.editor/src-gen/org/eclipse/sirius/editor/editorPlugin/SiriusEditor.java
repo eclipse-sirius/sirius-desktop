@@ -1372,19 +1372,14 @@ public class SiriusEditor extends MultiPageEditorPart implements IAdapterFactory
             FontDescriptor defaultFontDescriptor = fontRegistry.defaultFontDescriptor();
             if (defaultFontDescriptor != null && defaultFontDescriptor.getFontData().length > 0) {
                 FontData defaultFontData = defaultFontDescriptor.getFontData()[0];
-                
+
                 FontData required = new FontData(defaultFontData.toString());
                 required.setStyle(SWT.BOLD);
                 fontRegistry.put("required", new FontData[] { required });
-
-                FontData description = new FontData(defaultFontData.toString());
-                description.setStyle(SWT.ITALIC);
-                fontRegistry.put("description", new FontData[] { description });
             } else {
                 fontRegistry.put("required", new FontData[] { new FontData("Arial", 8, SWT.BOLD) });
-                fontRegistry.put("description", new FontData[] { new FontData("Verdana", 8, SWT.ITALIC) });
             }
-            
+
             // Start of user code put your own fonts here
 
             // End of user code put your own fonts here

@@ -96,7 +96,6 @@ public class OrderedTreeLayoutNodeMappingPropertySection extends AbstractEditorD
         data.top = new FormAttachment(text, 0, SWT.TOP);
         data.left = new FormAttachment(nameLabel);
         help.setLayoutData(data);
-        help.setFont(SiriusEditor.getFontRegistry().get("description"));
         help.setImage(getHelpIcon());
         help.setToolTipText("An existing mapping on which the tree order algorithm will operate");
 
