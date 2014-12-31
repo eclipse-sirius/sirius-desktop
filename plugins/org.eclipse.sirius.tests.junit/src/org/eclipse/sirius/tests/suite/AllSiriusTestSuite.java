@@ -14,6 +14,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
+
 import org.eclipse.sirius.tests.suite.common.AllCommonPluginTests;
 import org.eclipse.sirius.tests.suite.common.AllCommonStandaloneTests;
 import org.eclipse.sirius.tests.suite.diagram.AllDiagramPluginsTests;
@@ -43,6 +44,9 @@ public class AllSiriusTestSuite extends TestCase {
         suite.addTest(AllCommonStandaloneTests.suite());
         suite.addTest(AllTableStandaloneTests.suite());
         suite.addTest(AllDiagramStandaloneTests.suite());
+        AllCommonPluginTests.addGerritPart(suite);
+        suite.addTest(AllTablePluginTests.suite());
+        AllDiagramPluginsTests.addGerritPart(suite);
     }
 
     /**
@@ -53,10 +57,8 @@ public class AllSiriusTestSuite extends TestCase {
     public static Test suite() {
         final TestSuite suite = new TestSuite("Sirius tests");
         addGerritPart(suite);
-
-        suite.addTest(AllCommonPluginTests.suite());
-        suite.addTest(AllTablePluginTests.suite());
-        suite.addTest(AllDiagramPluginsTests.suite());
+        AllCommonPluginTests.addNonGerritPart(suite);
+        AllDiagramPluginsTests.addNonGerritPart(suite);
         return suite;
     }
 

@@ -131,13 +131,12 @@ public class AllCommonPluginTests extends TestCase {
     }
 
     /**
-     * Creates the {@link junit.framework.TestSuite TestSuite} for all the test.
+     * Add the gerrit part of the Junit tests to the specified suite.
      * 
-     * @return The testsuite containing all the tests
+     * @param suite
+     *            the suite into which to add the tests.
      */
-    public static Test suite() {
-        final TestSuite suite = new TestSuite("Common Plugin Tests");
-
+    public static void addGerritPart(TestSuite suite) {
         suite.addTestSuite(RefreshEditorsPrecommitListenerTests.class);
         suite.addTestSuite(EqualityHelperTestCase.class);
         suite.addTestSuite(WorkspaceResourceSyncTestCase.class);
@@ -195,7 +194,6 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTest(new JUnit4TestAdapter(DiagramMigrationTestCampaign07.class));
         suite.addTest(new JUnit4TestAdapter(DiagramMigrationTestCampaign08.class));
         suite.addTest(new JUnit4TestAdapter(DiagramMigrationTestCampaign09.class));
-        suite.addTest(new JUnit4TestAdapter(DiagramMigrationTestCampaign10.class));
 
         suite.addTestSuite(InitializationTest.class);
         suite.addTestSuite(CompletionTests.class);
@@ -240,7 +238,6 @@ public class AllCommonPluginTests extends TestCase {
 
         suite.addTestSuite(CreateCellToolInterpreterTest.class);
         suite.addTestSuite(AcceleoMTLInterpreterTests.class);
-        suite.addTestSuite(AcceleoMTInterpreterOnPackageImportTests.class);
         suite.addTestSuite(AcceleoMTLCompletionTests.class);
         suite.addTestSuite(AcceleoCrossReferencerTest.class);
         suite.addTestSuite(AcceleoPackageRegistryTest.class);
@@ -261,6 +258,32 @@ public class AllCommonPluginTests extends TestCase {
 
         suite.addTestSuite(TransientSessionTests.class);
         suite.addTestSuite(RestoreSessionFromEditorInputTests.class);
+    }
+
+    /**
+     * Add the tests which for one reason or another are not part of the suite
+     * launched on each Gerrit verification.
+     * 
+     * @param suite
+     *            the suite to add the tests into.
+     */
+    public static void addNonGerritPart(TestSuite suite) {
+        // This one fails systematially on the Eclipse Sirius HIPP and thus is
+        // not part of the Gerrit suite.
+        suite.addTest(new JUnit4TestAdapter(DiagramMigrationTestCampaign10.class));
+        // This one takes too long (12 minutes) to be part of the Gerrit suite.
+        suite.addTestSuite(AcceleoMTInterpreterOnPackageImportTests.class);
+    }
+
+    /**
+     * Creates the {@link junit.framework.TestSuite TestSuite} for all the test.
+     * 
+     * @return The testsuite containing all the tests
+     */
+    public static Test suite() {
+        final TestSuite suite = new TestSuite("Common Plugin Tests");
+        addGerritPart(suite);
+        addNonGerritPart(suite);
         return suite;
     }
 
