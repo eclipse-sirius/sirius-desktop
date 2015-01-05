@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import java.util.List;
 
 import org.eclipse.draw2d.PolylineDecoration;
 import org.eclipse.gef.ConnectionEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
@@ -61,15 +62,13 @@ public class LabelSelectionTest extends AbstractSiriusSwtBotGefTestCase {
      */
     protected UIDiagramRepresentation diagram;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);
 
         PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
 
+            @Override
             public void run() {
                 selectionColor = PlatformUI.getWorkbench().getDisplay().getSystemColor(SWT.COLOR_LIST_SELECTION);
             }
@@ -77,9 +76,6 @@ public class LabelSelectionTest extends AbstractSiriusSwtBotGefTestCase {
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
@@ -123,7 +119,7 @@ public class LabelSelectionTest extends AbstractSiriusSwtBotGefTestCase {
         assertThat("Edge line size did not increase on selection", newLineWidth, greaterThan(previousLineSize));
 
         // Unselect edge
-        editor.select(editor.getEditPart("Class1"));
+        editor.select(editor.getEditPart("Class1", AbstractBorderedShapeEditPart.class));
 
         assertThat("Edge color is not back to previous one", viewEdgeFigure.getForegroundColor(), equalTo(previousColor));
 

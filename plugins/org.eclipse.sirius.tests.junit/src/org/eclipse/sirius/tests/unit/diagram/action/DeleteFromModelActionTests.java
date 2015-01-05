@@ -29,13 +29,12 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-
-import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 
 /**
  * Tests on delete from model action on entities diagram of ecore modeler.
@@ -78,6 +77,7 @@ public class DeleteFromModelActionTests extends SiriusDiagramTestCase implements
     public void testDeleteRelationEdgeEditPartWithDeleteTool() throws Exception {
         Predicate<DEdge> relation = new Predicate<DEdge>() {
 
+            @Override
             public boolean apply(DEdge input) {
                 IEdgeMapping actualMapping = input.getActualMapping();
                 return !new IEdgeMappingQuery(actualMapping).getEdgeMapping().get().isUseDomainElement();
@@ -101,6 +101,7 @@ public class DeleteFromModelActionTests extends SiriusDiagramTestCase implements
     public void testDeleteElementEdgeEditPart() throws Exception {
         Predicate<DEdge> relation = new Predicate<DEdge>() {
 
+            @Override
             public boolean apply(DEdge input) {
                 IEdgeMapping actualMapping = input.getActualMapping();
                 return new IEdgeMappingQuery(actualMapping).getEdgeMapping().get().isUseDomainElement();
@@ -142,9 +143,9 @@ public class DeleteFromModelActionTests extends SiriusDiagramTestCase implements
         final IGraphicalEditPart listNamePart = getListNameEditPart(parent);
         assertNotNull("No NodeListNameEditPart instance found", listNamePart);
 
-        delete(listNamePart);
-
-        assertNull("a delete request on the name editPart should delete the parent editPart also", getEditPart(getFirstDiagramElement(diagram, eClass)));
+        // listnamePart is not selectable anymore. See
+        // https://bugs.eclipse.org/bugs/show_bug.cgi?id=424417
+        assertFalse("The NodeListNameEditPart should be selectable", listNamePart.isSelectable());
     }
 
     /**
@@ -245,10 +246,9 @@ public class DeleteFromModelActionTests extends SiriusDiagramTestCase implements
         final IGraphicalEditPart listNamePart = getListNameEditPart(parent);
         assertNotNull("No NodeListNameEditPart instance found", listNamePart);
 
-        deleteViaKeyboard(listNamePart);
-        TestsUtil.synchronizationWithUIThread();
-
-        assertNotNull("NodeListNameEditPart instance was deleted", getListNameEditPart(parent));
+        // listnamePart is not selectable anymore. See
+        // https://bugs.eclipse.org/bugs/show_bug.cgi?id=424417
+        assertFalse("The NodeListNameEditPart should be selectable", listNamePart.isSelectable());
     }
 
     private IGraphicalEditPart getListNameEditPart(final IGraphicalEditPart parent) {

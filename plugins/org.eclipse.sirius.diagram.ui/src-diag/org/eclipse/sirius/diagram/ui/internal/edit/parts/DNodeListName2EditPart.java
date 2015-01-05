@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -59,20 +59,24 @@ public class DNodeListName2EditPart extends AbstractGeneratedDiagramNameEditPart
      * 
      * @not-generated
      */
+    @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
         installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE, new NonResizableEditPolicy() {
 
+            @Override
             protected List createSelectionHandles() {
                 final List handles = new ArrayList();
                 NonResizableHandleKit.addMoveHandle((GraphicalEditPart) getHost(), handles);
                 return handles;
             }
 
+            @Override
             public Command getCommand(final Request request) {
                 return null;
             }
 
+            @Override
             public boolean understandsRequest(final Request request) {
                 return false;
             }
@@ -107,6 +111,7 @@ public class DNodeListName2EditPart extends AbstractGeneratedDiagramNameEditPart
     /**
      * @was-generated
      */
+    @Override
     public IParser getParser() {
         if (parser == null) {
             final String parserHint = ((View) getModel()).getType();
@@ -119,6 +124,7 @@ public class DNodeListName2EditPart extends AbstractGeneratedDiagramNameEditPart
     /**
      * @was-generated
      */
+    @Override
     protected void addNotationalListeners() {
         super.addNotationalListeners();
         addListenerFilter("PrimaryView", this, getPrimaryView()); //$NON-NLS-1$
@@ -127,6 +133,7 @@ public class DNodeListName2EditPart extends AbstractGeneratedDiagramNameEditPart
     /**
      * @was-generated
      */
+    @Override
     protected void removeNotationalListeners() {
         super.removeNotationalListeners();
         removeListenerFilter("PrimaryView"); //$NON-NLS-1$
@@ -135,6 +142,7 @@ public class DNodeListName2EditPart extends AbstractGeneratedDiagramNameEditPart
     /**
      * @was-generated
      */
+    @Override
     protected void handleNotificationEvent(final Notification event) {
         final Object feature = event.getFeature();
         if (DiagramPackage.eINSTANCE.getDDiagramElementContainer_OwnedStyle() == feature) {
@@ -146,6 +154,7 @@ public class DNodeListName2EditPart extends AbstractGeneratedDiagramNameEditPart
     /**
      * @was-generated
      */
+    @Override
     protected IFigure createFigure() {
         // Parent should assign one using setLabel() method
         return null;
@@ -154,18 +163,21 @@ public class DNodeListName2EditPart extends AbstractGeneratedDiagramNameEditPart
     /**
      * @not-generated
      */
+    @Override
     public void setLabel(final IFigure figure) {
         if (figure instanceof SiriusWrapLabel) {
             this.setLabel((SiriusWrapLabel) figure);
         }
     }
 
+    @Override
     public void activate() {
         if (!isActive()) {
             super.activate();
         }
     }
 
+    @Override
     public void deactivate() {
         if (isActive()) {
             super.deactivate();
@@ -191,12 +203,10 @@ public class DNodeListName2EditPart extends AbstractGeneratedDiagramNameEditPart
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#isSelectable()
+     * @not-generated : select the parent
      */
     @Override
     public boolean isSelectable() {
-        return super.isSelectable() && getParent().isSelectable();
+        return super.isSelectable() && getParent().getSelected() == EditPart.SELECTED;
     }
 }

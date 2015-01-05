@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007-2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.UnexecutableCommand;
+import org.eclipse.gef.requests.DirectEditRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ListCompartmentEditPart;
@@ -60,68 +61,41 @@ public abstract class AbstractDiagramListEditPart extends AbstractDiagramElement
         super(view);
     }
 
+    @Override
     public Class<?> getMetamodelType() {
         return DNodeList.class;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see AbstractDiagramElementContainerEditPart#handleNotificationEvent(org.eclipse.sirius.diagram.edit.api.part.Notification)
-     */
     @Override
     protected void handleNotificationEvent(final Notification notification) {
         super.handleNotificationEvent(notification);
         DiagramListEditPartOperation.handleNotificationEvent(this, notification);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#refreshForegroundColor()
-     */
     @Override
     protected void refreshForegroundColor() {
         super.refreshForegroundColor();
         DiagramListEditPartOperation.refreshForegroundColor(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#refreshForegroundColor()
-     */
     @Override
     protected void refreshBackgroundColor() {
         super.refreshBackgroundColor();
         DiagramListEditPartOperation.refreshBackgroundColor(this);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void refreshFont() {
         super.refreshFont();
         DiagramListEditPartOperation.refreshFont(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeEditPart#refreshVisuals()
-     */
     @Override
     protected void refreshVisuals() {
         super.refreshVisuals();
         DiagramListEditPartOperation.refreshVisuals(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#getCommand(org.eclipse.gef.Request)
-     */
     @Override
     public Command getCommand(final Request request) {
         Command result = null;
@@ -189,21 +163,11 @@ public abstract class AbstractDiagramListEditPart extends AbstractDiagramElement
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#getDragTracker(org.eclipse.gef.Request)
-     */
     @Override
     public DragTracker getDragTracker(Request request) {
         return new NoCopyDragEditPartsTrackerEx(this);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramListEditPart#getPrimaryFigure()
-     */
     public ViewNodeContainerFigureDesc getPrimaryFigure() {
         return getPrimaryShape();
     }
@@ -215,6 +179,7 @@ public abstract class AbstractDiagramListEditPart extends AbstractDiagramElement
      *            the edit part to use to get the contents pane
      * @return <code>IFigure</code>
      */
+    @Override
     protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
         if (editPart instanceof IBorderItemEditPart) {
             return getBorderedFigure().getBorderItemContainer();
@@ -228,6 +193,7 @@ public abstract class AbstractDiagramListEditPart extends AbstractDiagramElement
      * 
      * @was-generated
      */
+    @Override
     protected void createDefaultEditPolicies() {
         super.createDefaultEditPolicies();
         installEditPolicy(EditPolicyRoles.SEMANTIC_ROLE, new DNodeListItemSemanticEditPolicy());
@@ -242,6 +208,7 @@ public abstract class AbstractDiagramListEditPart extends AbstractDiagramElement
      * 
      * @was-generated
      */
+    @Override
     public ViewNodeContainerFigureDesc getPrimaryShape() {
         return (ViewNodeContainerFigureDesc) primaryShape;
     }
@@ -251,6 +218,7 @@ public abstract class AbstractDiagramListEditPart extends AbstractDiagramElement
      * 
      * @was-generated : handle shape container style.
      */
+    @Override
     protected IFigure createNodeShape() {
         return new GradientRoundedRectangle(DiagramContainerEditPartOperation.getCornerDimension(this), DiagramContainerEditPartOperation.getBackgroundStyle(this));
     }
@@ -260,7 +228,27 @@ public abstract class AbstractDiagramListEditPart extends AbstractDiagramElement
      * 
      * @was-generated
      */
+    @Override
     protected NodeFigure createNodePlate() {
         return new DefaultSizeNodeFigure(getMapMode().DPtoLP(LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION.width), getMapMode().DPtoLP(LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION.height));
+    }
+
+    /**
+     * Performs a direct edit request (usually by showing some type of editor).
+     * Is required to have the same behavior as AbstractDiagramNodeEditPart
+     * 
+     * @param request
+     *            the direct edit request
+     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.TopGraphicEditPart#performDirectEditRequest(org.eclipse.gef.requests.DirectEditRequest)
+     */
+    @Override
+    protected void performDirectEditRequest(Request request) {
+        if (request instanceof DirectEditRequest) {
+            Request req = new Request();
+            req.setType(org.eclipse.gef.RequestConstants.REQ_DIRECT_EDIT);
+            super.performDirectEditRequest(req);
+        } else if (org.eclipse.gef.RequestConstants.REQ_DIRECT_EDIT.equals(request.getType())) {
+            super.performDirectEditRequest(request);
+        }
     }
 }

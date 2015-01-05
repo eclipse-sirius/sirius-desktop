@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalViewer;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.jface.bindings.keys.KeyStroke;
@@ -101,17 +102,11 @@ public class SelectAllAndDeselectionTest extends AbstractSiriusSwtBotGefTestCase
 
     private Map<Point, SWTBotGefEditPart> locationToEditParts = Maps.newHashMap();
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         final UIResource sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
@@ -229,7 +224,7 @@ public class SelectAllAndDeselectionTest extends AbstractSiriusSwtBotGefTestCase
      */
     public void test_element_selection_change_does_not_leak_listeners() {
         final DefaultOperationHistory doh = (DefaultOperationHistory) OperationHistoryFactory.getOperationHistory();
-        SWTBotGefEditPart c1Part = editor.getEditPart(CLASS_1_NAME);
+        SWTBotGefEditPart c1Part = editor.getEditPart(CLASS_1_NAME, AbstractBorderedShapeEditPart.class);
 
         // Do it once to get in a steady state, so that any lazy initialisation
         // is done
@@ -242,11 +237,13 @@ public class SelectAllAndDeselectionTest extends AbstractSiriusSwtBotGefTestCase
         // An unidentified timing issue prevents the use of a simple assert
         // here, so we wait for the listeners list to be updated.
         bot.waitUntil(new DefaultCondition() {
+            @Override
             public boolean test() throws Exception {
                 int countAfter = getListenersCount(doh);
                 return countAfter == countBefore;
             }
 
+            @Override
             public String getFailureMessage() {
                 return "Listeners count " + getListenersCount(doh) + " was not reverted to its initial value of " + countBefore;
             }
@@ -256,7 +253,7 @@ public class SelectAllAndDeselectionTest extends AbstractSiriusSwtBotGefTestCase
     private void cycleSelection(SWTBotGefEditPart c1Part) {
         // Select an edit part
         CheckSelectedCondition checkc1Selected = new CheckSelectedCondition(editor, c1Part.part());
-        editor.select(CLASS_1_NAME);
+        editor.getEditPart(CLASS_1_NAME, AbstractBorderedShapeEditPart.class).select();
         bot.waitUntil(checkc1Selected);
         // Select the diagram itself
         editor.select(editor.mainEditPart());
@@ -306,6 +303,7 @@ public class SelectAllAndDeselectionTest extends AbstractSiriusSwtBotGefTestCase
                 // instead of calling the deselection on the viewer
                 final SWTBotGefEditPart swtBotEditPart = getEditPartAtLocation(locations[i]);
                 UIThreadRunnable.asyncExec(new VoidResult() {
+                    @Override
                     public void run() {
                         viewer.deselect(swtBotEditPart.part());
                     }
@@ -416,6 +414,5 @@ public class SelectAllAndDeselectionTest extends AbstractSiriusSwtBotGefTestCase
         // Step 4 : we finally check that no other elements shoud have been
         // selected
         assertTrue("Edit Part(s) " + editPartsThatShouldBeSelected + " should be selected but aren't", editPartsThatShouldBeSelected.isEmpty());
-
     }
 }
