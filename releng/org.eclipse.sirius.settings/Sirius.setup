@@ -5,14 +5,14 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:git="http://www.eclipse.org/oomph/setup/git/1.0"
     xmlns:jdt="http://www.eclipse.org/oomph/setup/jdt/1.0"
+    xmlns:pde="http://www.eclipse.org/oomph/setup/pde/1.0"
     xmlns:predicates="http://www.eclipse.org/oomph/predicates/1.0"
     xmlns:projects="http://www.eclipse.org/oomph/setup/projects/1.0"
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
     xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
-    xmlns:setup.targlets="http://www.eclipse.org/oomph/setup/targlets/1.0"
     xmlns:setup.workingsets="http://www.eclipse.org/oomph/setup/workingsets/1.0"
     xmlns:workingsets="http://www.eclipse.org/oomph/workingsets/1.0"
-    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/projects/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Projects.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore http://www.eclipse.org/oomph/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/WorkingSets.ecore"
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/setup/pde/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/PDE.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/projects/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Projects.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore http://www.eclipse.org/oomph/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/WorkingSets.ecore"
     name="sirius"
     label="Sirius">
   <setupTask
@@ -55,8 +55,40 @@
   <setupTask
       xsi:type="setup:VariableTask"
       name="eclipse.target.platform"
-      defaultValue="Luna"
-      storageURI="scope://Workspace"/>
+      value="None"
+      defaultValue="None"/>
+  <setupTask
+      xsi:type="setup:VariableTask"
+      id=""
+      name="sirius.target.platform"
+      defaultValue="sirius_tests_luna"
+      label="Target Platform">
+    <choice
+        value="sirius_juno"
+        label="Eclipse Juno - 4.2"/>
+    <choice
+        value="sirius_tests_juno"
+        label="Eclipse Juno - 4.2 (with tests dependencies)"/>
+    <choice
+        value="sirius_kepler"
+        label="Eclipse Kepler - 4.3"/>
+    <choice
+        value="sirius_tests_kepler"
+        label="Eclipse Kepler - 4.3 (with tests dependencies)"/>
+    <choice
+        value="sirius_luna"
+        label="Eclipse Luna - 4.4"/>
+    <choice
+        value="sirius_tests_luna"
+        label="Eclipse Luna - 4.4 (with tests dependencies)"/>
+    <choice
+        value="sirius_mars"
+        label="Eclipse Mars - 4.5"/>
+    <choice
+        value="sirius_tests_mars"
+        label="Eclipse Mars - 4.5 (with tests dependencies)"/>
+    <description>Target Platform used for new install. You can then use another sirius_* predefined target platform existing in org.eclipse.sirius.targets project.</description>
+  </setupTask>
   <setupTask
       xsi:type="setup.p2:P2Task">
     <requirement
@@ -101,93 +133,6 @@
     <description>${scope.project.label}</description>
   </setupTask>
   <setupTask
-      xsi:type="setup.targlets:TargletTask">
-    <targlet
-        name="${scope.project.label}"
-        activeRepositoryList="${eclipse.target.platform}">
-      <requirement
-          name="org.eclipse.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.sirius.doc.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.sirius.runtime.feature.group"/>
-      <requirement
-          name="org.eclipse.sirius.runtime.acceleo.feature.group"/>
-      <requirement
-          name="org.eclipse.sirius.runtime.ide.eef.feature.group"/>
-      <requirement
-          name="org.eclipse.sirius.runtime.ide.ui.feature.group"/>
-      <requirement
-          name="org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group"/>
-      <requirement
-          name="org.eclipse.sirius.runtime.ide.xtext.feature.group"/>
-      <requirement
-          name="org.eclipse.sirius.runtime.ocl.feature.group"/>
-      <requirement
-          name="org.eclipse.sirius.samples.feature.group"/>
-      <requirement
-          name="org.eclipse.sirius.sample.interactions.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.sirius.specifier.ide.ui.feature.group"/>
-      <requirement
-          name="org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group"/>
-      <requirement
-          name="org.eclipse.sirius.tests.feature.group"/>
-      <requirement
-          name="org.eclipse.sirius.tests.support.feature.group"/>
-      <requirement
-          name="org.eclipse.swtbot.junit4_x"/>
-      <requirement
-          name="org.eclipse.sirius.query.legacy.feature.feature.group"/>
-      <sourceLocator
-          rootFolder="${git.clone.sirius.location}"/>
-      <repositoryList
-          name="Mars">
-        <repository
-            url="http://download.eclipse.org/releases/mars"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
-        <repository
-            url="http://download.eclipse.org/technology/swtbot/releases/2.1.1"/>
-        <repository
-            url="http://download.eclipse.org/sirius/updates/legacy/"/>
-      </repositoryList>
-      <repositoryList
-          name="Luna">
-        <repository
-            url="http://download.eclipse.org/releases/luna"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
-        <repository
-            url="http://download.eclipse.org/technology/swtbot/releases/2.1.1"/>
-        <repository
-            url="http://download.eclipse.org/sirius/updates/legacy/"/>
-      </repositoryList>
-      <repositoryList
-          name="Kepler">
-        <repository
-            url="http://download.eclipse.org/releases/kepler"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
-        <repository
-            url="http://download.eclipse.org/technology/swtbot/releases/2.1.1"/>
-        <repository
-            url="http://download.eclipse.org/sirius/updates/legacy/"/>
-      </repositoryList>
-      <repositoryList
-          name="Juno">
-        <repository
-            url="http://download.eclipse.org/releases/juno"/>
-        <repository
-            url="http://download.eclipse.org/cbi/updates/license"/>
-        <repository
-            url="http://download.eclipse.org/technology/swtbot/releases/2.1.1"/>
-        <repository
-            url="http://download.eclipse.org/sirius/updates/legacy/"/>
-      </repositoryList>
-    </targlet>
-  </setupTask>
-  <setupTask
       xsi:type="setup.workingsets:WorkingSetTask">
     <workingSet
         name="Sirius">
@@ -198,14 +143,47 @@
     <workingSet
         name="Sirius Tests">
       <predicate
-          xsi:type="predicates:NamePredicate"
-          pattern=".*tests.*"/>
+          xsi:type="predicates:AndPredicate">
+        <operand
+            xsi:type="predicates:NamePredicate"
+            pattern=".*tests.*"/>
+        <operand
+            xsi:type="predicates:NotPredicate">
+          <operand
+              xsi:type="predicates:OrPredicate">
+            <operand
+                xsi:type="predicates:NamePredicate"
+                pattern="org.eclipse.sirius.tests.update"/>
+            <operand
+                xsi:type="predicates:NamePredicate"
+                pattern="org.eclipse.sirius.tests.parent"/>
+          </operand>
+        </operand>
+      </predicate>
     </workingSet>
     <workingSet
         name="Sirius Samples">
       <predicate
-          xsi:type="predicates:NamePredicate"
-          pattern=".*sample*.*"/>
+          xsi:type="predicates:AndPredicate">
+        <operand
+            xsi:type="predicates:NamePredicate"
+            pattern=".*sample*.*"/>
+        <operand
+            xsi:type="predicates:NotPredicate">
+          <operand
+              xsi:type="predicates:OrPredicate">
+            <operand
+                xsi:type="predicates:NamePredicate"
+                pattern="org.eclipse.sirius.samples"/>
+            <operand
+                xsi:type="predicates:NamePredicate"
+                pattern="org.eclipse.sirius.tests.sample.*"/>
+            <operand
+                xsi:type="predicates:NamePredicate"
+                pattern="org.eclipse.sirius.sample.interactions.feature"/>
+          </operand>
+        </operand>
+      </predicate>
     </workingSet>
     <workingSet
         name="Sirius Releng">
@@ -237,11 +215,17 @@
   <setupTask
       xsi:type="projects:ProjectsImportTask">
     <sourceLocator
-        rootFolder="${git.clone.sirius.location/releng/org.eclipse.sirius.settings}"/>
+        rootFolder="${git.clone.sirius.location/packaging}"/>
     <sourceLocator
-        rootFolder="${git.clone.sirius.location/releng/org.eclipse.sirius.targets}"/>
+        rootFolder="${git.clone.sirius.location/plugins}"/>
     <sourceLocator
-        rootFolder="${git.clone.sirius.location/releng/org.eclipse.sirius.releng}"/>
+        rootFolder="${git.clone.sirius.location/releng}"/>
+  </setupTask>
+  <setupTask
+      xsi:type="pde:TargetPlatformTask"
+      id="Target Platform"
+      name="${sirius.target.platform}">
+    <description>Target Platform used for the new install. It should be one of the available predefined TP in project org.eclipse.sirius.targets.</description>
   </setupTask>
   <stream name="master"/>
   <stream name="v2.0.x"/>
