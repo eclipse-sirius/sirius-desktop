@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,22 +10,23 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.business.internal.session;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.window.IShellProvider;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
-import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.Saveable;
+import org.eclipse.ui.progress.IJobRunnable;
 
 /**
  * A {@link Saveable} implementation for the Editor that wrappers a session.
@@ -46,27 +47,14 @@ public class SessionSaveable extends Saveable {
         this.session = session;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.ui.Saveable#doSave(org.eclipse.core.runtime.IProgressMonitor)
-     */
     @Override
-    public void doSave(final IProgressMonitor monitor) {
-        if (session != null) {
-            IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
-            if (uiSession.getEditors().isEmpty()) {
-                session.save(monitor);
-            } else {
-                if (PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null
-                        && uiSession.getEditors().contains(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor())) {
-                    IEditorPart activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
-                    activeEditor.doSave(monitor);
-                } else {
-                    uiSession.getEditors().iterator().next().doSave(monitor);
-                }
-            }
-        }
+    public void doSave(IProgressMonitor monitor) {
+        new SaveSessionRunnable(session).run(monitor);
+    }
+    
+    @Override
+    public IJobRunnable doSave(IProgressMonitor monitor, IShellProvider shellProvider) throws CoreException {
+        return new SaveSessionRunnable(session);
     }
 
     /**
