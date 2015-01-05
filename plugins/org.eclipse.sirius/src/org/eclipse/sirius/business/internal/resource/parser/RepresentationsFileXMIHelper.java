@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012-2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -85,7 +85,11 @@ public class RepresentationsFileXMIHelper extends XMIHelperImpl {
                 factory = type.getEPackage().getEFactoryInstance();
             }
         }
-        return super.createObject(factory, type);
+        EObject newObject = super.createObject(factory, type);
+        if (migrationNeeded) {
+            newObject = RepresentationsFileMigrationService.getInstance().updateCreatedObject(newObject, version);
+        }
+        return newObject;
     }
 
     /**
@@ -97,6 +101,7 @@ public class RepresentationsFileXMIHelper extends XMIHelperImpl {
      * @see org.eclipse.gmf.runtime.emf.core.resources.GMFHelper.deresolve(URI)
      * @see org.eclipse.emf.ecore.xmi.XMLHelper#deresolve(org.eclipse.emf.common.util.URI)
      */
+    @Override
     public URI deresolve(URI uri) {
 
         // if this both target and container are within a platform resource and
