@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs contributorId="org.eclipse.sirius.diagram.ui">
+          <propertyTab
+                category="misc"
+                id="property.tab.misc"
+                label="Debug">
+          </propertyTab>
+      </propertyTabs>
+         
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertySections">
+            <propertySections contributorId="org.eclipse.sirius.diagram.ui">
+           <propertySection
+               class="org.eclipse.sirius.diagram.ui.tools.api.properties.MiscPropertySection"
+               filter="org.eclipse.sirius.diagram.ui.tools.api.properties.filter.MiscPropertyFilter"
+               id="property.section.misc"
+               tab="property.tab.misc">
+            <input
+                  type="org.eclipse.gef.EditPart">
+            </input>
+         </propertySection>
+           <propertySection
+                 class="org.eclipse.sirius.ui.debug.properties.GMFDebugPropertySection"
+                 filter="org.eclipse.sirius.diagram.ui.tools.api.properties.filter.MiscPropertyFilter"
+                 id="property.section.gmfdebug"
+                 tab="property.tab.misc">
+              <input
+                    type="org.eclipse.gef.GraphicalEditPart">
+              </input>
+           </propertySection>
+       </propertySections>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+         <menuContribution
+            locationURI="toolbar:org.eclipse.ui.trim.status">
+         <toolbar
+               id="fr.obeo.dsl.viewpoint.diagram.debug.statusline.mouseLocationContribution">
+            <control
+                  class="org.eclipse.sirius.ui.debug.statusline.MouseLocationContribution"
+                  id="contributions.mouseLocationContrib">
+            </control>
+         </toolbar>
+      </menuContribution>
+   </extension>
+   <extension point="org.eclipse.ui.views">
+      <view
+            name="Sirius Debugging View"
+            icon="icons/sample.gif"
+            category="org.eclipse.sirius.category"
+            class="org.eclipse.sirius.ui.debug.SiriusDebugView"
+            id="org.eclipse.sirius.ui.debug.SiriusDebugView">
+      </view>
+   </extension>
+</plugin>
