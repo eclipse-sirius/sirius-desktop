@@ -1,4 +1,4 @@
-target "sirius_tests_staging"
+target "sirius_tests_mars"
 
 include "sirius_mars.targetplatform"
 include "modules/query-legacy.tpd"
