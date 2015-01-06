@@ -213,6 +213,25 @@
                   {0}
                </message>
             </constraint>
+            <constraint
+                  class="org.eclipse.sirius.tools.internal.validation.description.constraints.VSMElementNameValidConstraint"
+                  id="org.eclipse.sirius.tools.internal.validation.description.constraints.VSMElementNameValidConstraint"
+                  isEnabledByDefault="true"
+                  lang="Java"
+                  mode="Batch"
+                  name="Empty or null element name validation"
+                  severity="ERROR"
+                  statusCode="1">
+               <message>
+                  {0}
+               </message>
+               <description>
+                  Check the constraint that the name of vsm element is not empty or null.
+               </description>    
+               <target
+                     class="IdentifiedElement">
+               </target>
+            </constraint>
          </constraints>
       </constraintProvider>
    </extension>

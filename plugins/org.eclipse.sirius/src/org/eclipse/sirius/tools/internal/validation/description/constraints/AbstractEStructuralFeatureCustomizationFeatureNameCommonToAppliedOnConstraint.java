@@ -11,10 +11,6 @@
 package org.eclipse.sirius.tools.internal.validation.description.constraints;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.validation.AbstractModelConstraint;
-import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
-import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
-import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
 /**
@@ -23,7 +19,7 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
-public abstract class AbstractEStructuralFeatureCustomizationFeatureNameCommonToAppliedOnConstraint extends AbstractModelConstraint {
+public abstract class AbstractEStructuralFeatureCustomizationFeatureNameCommonToAppliedOnConstraint extends AbstractCommonToolToAppliedOnConstraint {
 
     /**
      * Tells if the specified {@link EObject} is a style description or a
@@ -37,34 +33,5 @@ public abstract class AbstractEStructuralFeatureCustomizationFeatureNameCommonTo
     protected boolean isStyleDescriptionElt(EObject eObject) {
         boolean isStyleDescriptionElt = eObject instanceof StyleDescription || eObject.eContainer() instanceof StyleDescription;
         return isStyleDescriptionElt;
-    }
-
-    /**
-     * Get a readable text representation of a vsm element.
-     * 
-     * @param element
-     *            the vsm element
-     * @return a readable text representation of a vsm element
-     */
-    protected String getPath(EObject element) {
-        String text = getLabel(element);
-        EObject container = element.eContainer();
-        while (container != null) {
-            text = getLabel(container) + " > " + text;
-            container = container.eContainer();
-        }
-        return "\"" + text + "\"";
-    }
-
-    private String getLabel(final EObject eObject) {
-        String label = "Element whithout name";
-        if (eObject instanceof IdentifiedElement) {
-            label = new IdentifiedElementQuery((IdentifiedElement) eObject).getLabel();
-        } else if (eObject instanceof RepresentationExtensionDescription) {
-            label = ((RepresentationExtensionDescription) eObject).getName();
-        } else {
-            label = eObject.eClass().getName();
-        }
-        return label;
     }
 }

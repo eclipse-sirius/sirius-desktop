@@ -33,6 +33,7 @@ import org.eclipse.sirius.tests.swtbot.editor.vsm.MetamodelPropertyTabTests;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.MigrationOnVsmEditorReloadTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.ResizeKindEditorTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.VSMFieldTest;
+import org.eclipse.sirius.tests.swtbot.editor.vsm.ValidationEmptyNameTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.ViewpointSpecificationProjectCreationTest;
 import org.eclipse.sirius.tests.swtbot.layout.BorderedNodeCopyPastLayoutTest;
 import org.eclipse.sirius.tests.swtbot.layout.ContainerDefaultSizeLayoutTest;
@@ -341,6 +342,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(InitializeEmptySessionTest.class);
         suite.addTestSuite(InitializeSessionTest.class);
         suite.addTestSuite(RepairTest.class);
+        suite.addTestSuite(ValidationEmptyNameTest.class);
     }
 
     /**
