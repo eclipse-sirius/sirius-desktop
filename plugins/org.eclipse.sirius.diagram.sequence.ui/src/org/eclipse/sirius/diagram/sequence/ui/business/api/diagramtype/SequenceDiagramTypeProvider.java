@@ -424,7 +424,16 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
     /**
      * {@inheritDoc}
      */
+    @Override
     public String completeToolTipText(String toolTipText, EObject eObject) {
+        return completeToolTipText(toolTipText, eObject, null);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String completeToolTipText(String toolTipText, EObject eObject, EStructuralFeature feature) {
         StringBuilder sb = new StringBuilder();
         if (!StringUtil.isEmpty(toolTipText)) {
             sb.append(toolTipText + "\n");

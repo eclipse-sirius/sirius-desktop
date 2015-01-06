@@ -133,6 +133,10 @@
 			<li>Constant 
 				<code>org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil.DIAGRAM_ENVIRONMENT_RESOURCE_URI</code> declares &#171;environment:/diagram&#187; resource uri.
 			</li>
+			<li>The method 
+				<code>org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider.completeToolTipText(String, EObject, EStructuralFeature)</code> has been added to customize the tooltip displayed in the VSM editor by using the feature of the current object. The old method 
+				<code>org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider.completeToolTipText(String, EObject)</code> has been deprecated.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
@@ -244,6 +248,15 @@
 			<li>The methods 
 				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper.selectPropertyTabItem(String)</code> now returns a 
 				<code>boolean</code> that is true when the property tab item is found, false otherwise.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ui.business.api">Changes in 
+			<code>org.eclipse.sirius.ui.business.api</code>
+		</h4>
+		<ul>
+			<li>The method 
+				<code>org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.completeToolTipText(String, EObject, EStructuralFeature)</code> has been added to customize the tooltip displayed in the VSM editor by using the feature of the current object. The old method 
+				<code>org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.completeToolTipText(String, EObject)</code> has been deprecated.
 			</li>
 		</ul>
 		<h2 id="sirius2.0.0">Changes in Sirius 2.0.0 (from Sirius 1.0.0)</h2>

@@ -21,6 +21,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -343,7 +344,22 @@ public class TreeDialectUIServices implements DialectUIServices {
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#completeToolTipText(String,
+     *      EObject, EStructuralFeature)
+     */
+    public String completeToolTipText(String toolTipText, EObject eObject, EStructuralFeature feature) {
+        return toolTipText;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#completeToolTipText(String,
      *      EObject)
+     * @deprecated this method has not access to the feature of eObject. This is
+     *             supported in
+     *             org.eclipse.sirius.tree.ui.business.internal.dialect
+     *             .TreeDialectUIServices.completeToolTipText(String, EObject,
+     *             EStructuralFeature)
      */
     public String completeToolTipText(String toolTipText, EObject eObject) {
         return toolTipText;

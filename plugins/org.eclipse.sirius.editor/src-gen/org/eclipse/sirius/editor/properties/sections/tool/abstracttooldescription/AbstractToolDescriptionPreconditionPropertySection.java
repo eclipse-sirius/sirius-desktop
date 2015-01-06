@@ -184,7 +184,7 @@ public class AbstractToolDescriptionPreconditionPropertySection extends Abstract
             toolTipText = sb.toString();
         }
 
-        toolTipText = DialectUIManager.INSTANCE.completeToolTipText(toolTipText, eObject);
+        toolTipText = DialectUIManager.INSTANCE.completeToolTipText(toolTipText, eObject, getFeature());
 
         return toolTipText;
     }

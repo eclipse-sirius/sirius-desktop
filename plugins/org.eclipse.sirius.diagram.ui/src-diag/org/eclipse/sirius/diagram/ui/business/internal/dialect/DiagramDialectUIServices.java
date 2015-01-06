@@ -33,6 +33,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.command.CommandParameter;
@@ -107,6 +108,7 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IEditorInput;
@@ -743,12 +745,12 @@ public class DiagramDialectUIServices implements DialectUIServices {
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#completeToolTipText(String,
-     *      EObject)
+     *      EObject, EStructuralFeature)
      */
-    public String completeToolTipText(String toolTipText, EObject eObject) {
+    public String completeToolTipText(String toolTipText, EObject eObject, EStructuralFeature feature) {
         String toolTip = toolTipText;
         if (eObject instanceof EdgeCreationDescription) {
-            if (toolTipText.startsWith("Expected return type: a boolean") && !toolTipText.contains("preSource")) {
+            if (feature != null && feature.equals(ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION)) {
                 StringBuilder sb = new StringBuilder();
                 sb.append(toolTipText);
                 String cr = "\n . ";
@@ -760,7 +762,6 @@ public class DiagramDialectUIServices implements DialectUIServices {
                 toolTip = sb.toString();
             }
         }
-
         EPackage parentPackage = null;
         Option<EObject> parentDiagramDescription = new EObjectQuery(eObject).getFirstAncestorOfType(org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getDiagramDescription());
         if (parentDiagramDescription.some()) {
@@ -776,10 +777,26 @@ public class DiagramDialectUIServices implements DialectUIServices {
         if (parentPackage != null) {
             for (final IDiagramTypeDescriptor diagramTypeDescriptor : DiagramTypeDescriptorRegistry.getInstance().getAllDiagramTypeDescriptors()) {
                 if (diagramTypeDescriptor.getDiagramDescriptionProvider().handles(parentPackage)) {
-                    toolTip = diagramTypeDescriptor.getDiagramDescriptionProvider().completeToolTipText(toolTip, eObject);
+                    toolTip = diagramTypeDescriptor.getDiagramDescriptionProvider().completeToolTipText(toolTip, eObject, feature);
                 }
             }
         }
         return toolTip;
     }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.sirius.ui.business.api.dialect.DialectUIServices#completeToolTipText(String,
+     *      EObject)
+     * @deprecated this method has not access to the feature of eObject. This is
+     *             supported in
+     *             org.eclipse.sirius.diagram.ui.business.internal.dialect
+     *             .DiagramDialectUIServices.completeToolTipText(String,
+     *             EObject, EStructuralFeature)
+     */
+    public String completeToolTipText(String toolTipText, EObject eObject) {
+        return completeToolTipText(toolTipText, eObject, null);
+    }
+
 }

@@ -197,9 +197,30 @@ public interface IDiagramDescriptionProvider {
      *            the initial tool tip
      * @param eObject
      *            the current eObject
+     * @param feature
+     *            the current feature
+     * 
+     * @return a customized tooltip if needed, the initial tooltip otherwise.
+     * @since 3.0.0 M5
+     */
+    String completeToolTipText(String toolTipText, EObject eObject, EStructuralFeature feature);
+
+    /**
+     * Allows the {@link IDiagramDescriptionProvider} to customize the tooltip
+     * displayed in VSM editor.
+     * 
+     * @param toolTipText
+     *            the initial tool tip
+     * @param eObject
+     *            the current eObject
      * 
      * @return a customized tooltip if needed, the initial tooltip otherwise.
      * @since 1.0.0 M6
+     * @deprecated this method has not access to the feature of eObject. This is
+     *             supported in
+     *             org.eclipse.sirius.diagram.business.api.diagramtype
+     *             .IDiagramDescriptionProvider.completeToolTipText(String,
+     *             EObject, EStructuralFeature)
      */
     String completeToolTipText(String toolTipText, EObject eObject);
 }

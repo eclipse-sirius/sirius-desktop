@@ -22,6 +22,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -388,12 +389,20 @@ public class DialectUIManagerImpl implements DialectUIManager {
      */
     @Override
     public String completeToolTipText(String toolTipText, EObject eObject) {
+        return completeToolTipText(toolTipText, eObject, null);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String completeToolTipText(String toolTipText, EObject eObject, EStructuralFeature feature) {
         String toolTip = toolTipText;
         Option<EObject> parentRepresentationDescription = new EObjectQuery(eObject).getFirstAncestorOfType(DescriptionPackage.eINSTANCE.getRepresentationDescription());
         if (parentRepresentationDescription.some()) {
             for (final DialectUI dialect : dialects.values()) {
                 if (dialect.getServices().canHandle((RepresentationDescription) parentRepresentationDescription.get())) {
-                    toolTip = dialect.getServices().completeToolTipText(toolTipText, eObject);
+                    toolTip = dialect.getServices().completeToolTipText(toolTipText, eObject, feature);
                 }
             }
         } else {
@@ -401,7 +410,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
             if (parentRepresentationDescription.some()) {
                 for (final DialectUI dialect : dialects.values()) {
                     if (dialect.getServices().canHandle((RepresentationExtensionDescription) parentRepresentationExtensionDescription.get())) {
-                        toolTip = dialect.getServices().completeToolTipText(toolTipText, eObject);
+                        toolTip = dialect.getServices().completeToolTipText(toolTipText, eObject, feature);
                     }
                 }
             }
@@ -417,4 +426,5 @@ public class DialectUIManagerImpl implements DialectUIManager {
     public boolean isRefreshActivatedOnRepresentationOpening() {
         return SiriusEditPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name());
     }
+
 }

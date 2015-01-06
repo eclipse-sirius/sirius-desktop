@@ -45,6 +45,7 @@ h4. Changes in @org.eclipse.sirius.diagram@
 
 * The @org.eclipse.sirius.diagram.tools.api.command.ChangeLayerActivationCommand@ has been added. This command was previously internal.
 * Constant @org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil.DIAGRAM_ENVIRONMENT_RESOURCE_URI@ declares "environment:/diagram" resource uri.
+* The method @org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider.completeToolTipText(String, EObject, EStructuralFeature)@ has been added to customize the tooltip displayed in the VSM editor by using the feature of the current object. The old method @org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider.completeToolTipText(String, EObject)@ has been deprecated.
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
@@ -75,6 +76,10 @@ h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 * The @warnings@ member variable has been added to @org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase@ to allow the recording of warning logs. Methods @doesAWarningOccurs()@, @setWarningCatchActive(boolean)@, @isWarningCatchActive()@ and @getWarningLoggersMessage()@ have also been added to manage the @warnings@ member variable in the same way as the existing @errors@ member variable.
 
 * The methods @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper.selectPropertyTabItem(String)@ now returns a @boolean@ that is true when the property tab item is found, false otherwise.
+
+h4. Changes in @org.eclipse.sirius.ui.business.api@
+
+* The method @org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.completeToolTipText(String, EObject, EStructuralFeature)@ has been added to customize the tooltip displayed in the VSM editor by using the feature of the current object. The old method @org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.completeToolTipText(String, EObject)@ has been deprecated.
 
 h2(#sirius2.0.0). Changes in Sirius 2.0.0 (from Sirius 1.0.0)
 

@@ -17,6 +17,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.sirius.business.api.session.Session;
@@ -241,8 +242,8 @@ public interface DialectUIServices {
      * 
      * @param description
      *            the representation extension description to test.
-     * @return true if the dialect can handle the representation extension description,
-     *         false otherwise.
+     * @return true if the dialect can handle the representation extension
+     *         description, false otherwise.
      * @since 1.0.0 M6
      */
     boolean canHandle(RepresentationExtensionDescription description);
@@ -265,9 +266,29 @@ public interface DialectUIServices {
      *            the initial tool tip
      * @param eObject
      *            the current eObject
+     * @param feature
+     *            the current feature
+     * 
+     * @return a customized tooltip if needed, the initial tooltip otherwise.
+     * @since 3.0.0 M5
+     */
+    String completeToolTipText(String toolTipText, EObject eObject, EStructuralFeature feature);
+
+    /**
+     * Allows the {@link DialectUIServices} to customize the tooltip displayed
+     * in the VSM editor.
+     * 
+     * @param toolTipText
+     *            the initial tool tip
+     * @param eObject
+     *            the current eObject
      * 
      * @return a customized tooltip if needed, the initial tooltip otherwise.
      * @since 1.0.0 M6
+     * @deprecated this method has not access to the feature of eObject. This is
+     *             supported in org.eclipse.sirius.ui.business.api.dialect.
+     *             DialectUIServices.completeToolTipText(String, EObject,
+     *             EStructuralFeature)
      */
     String completeToolTipText(String toolTipText, EObject eObject);
 }
