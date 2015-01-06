@@ -62,6 +62,7 @@ import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -78,6 +79,7 @@ import org.eclipse.sirius.diagram.description.concern.provider.ConcernItemProvid
 import org.eclipse.sirius.diagram.description.filter.provider.FilterItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.description.provider.DescriptionItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.description.style.provider.StyleItemProviderAdapterFactory;
+import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.ToolFactory;
 import org.eclipse.sirius.diagram.description.tool.provider.ToolItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
@@ -292,8 +294,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
             } catch (final NullPointerException e) {
                 // we might have an exception closing an editor which is
                 // already in trouble
-                DiagramPlugin.getDefault().getLog()
-                .log(new Status(IStatus.WARNING, DiagramPlugin.ID, "Error while deactivating the representation, the remote server may be unreachable."));
+                DiagramPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, DiagramPlugin.ID, "Error while deactivating the representation, the remote server may be unreachable."));
             }
 
             try {
@@ -302,8 +303,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
                 // we might have an exception closing an editor which is
                 // already in trouble
                 if (DiagramUIPlugin.getPlugin().isDebugging()) {
-                    DiagramUIPlugin.getPlugin().getLog()
-                    .log(new Status(IStatus.WARNING, DiagramUIPlugin.ID, "Error while closing the representation, the remote server may be unreachable."));
+                    DiagramUIPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, DiagramUIPlugin.ID, "Error while closing the representation, the remote server may be unreachable."));
                 }
             }
 
@@ -747,6 +747,19 @@ public class DiagramDialectUIServices implements DialectUIServices {
      */
     public String completeToolTipText(String toolTipText, EObject eObject) {
         String toolTip = toolTipText;
+        if (eObject instanceof EdgeCreationDescription) {
+            if (toolTipText.startsWith("Expected return type: a boolean") && !toolTipText.contains("preSource")) {
+                StringBuilder sb = new StringBuilder();
+                sb.append(toolTipText);
+                String cr = "\n . ";
+                sb.append(cr + IInterpreterSiriusVariables.SOURCE_VIEW_PRE + ": diagram.EdgeTarget | (edge only) the source view of the current potential edge.");
+                sb.append(cr + IInterpreterSiriusVariables.SOURCE_PRE + ": ecore.EObject | (edge only) the semantic element of $preSourceView.");
+                sb.append(cr + IInterpreterSiriusVariables.TARGET_VIEW_PRE + ": diagram.EdgeTarget | (edge only) the target view of the current potential edge.");
+                sb.append(cr + IInterpreterSiriusVariables.TARGET_PRE + ": ecore.EObject | (edge only) the semantic element of $preTargetView.");
+                sb.append(cr + IInterpreterSiriusVariables.DIAGRAM + ": diagram.DDiagram | the diagram of the current potential edge");
+                toolTip = sb.toString();
+            }
+        }
 
         EPackage parentPackage = null;
         Option<EObject> parentDiagramDescription = new EObjectQuery(eObject).getFirstAncestorOfType(org.eclipse.sirius.diagram.description.DescriptionPackage.eINSTANCE.getDiagramDescription());
