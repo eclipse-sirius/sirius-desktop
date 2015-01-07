@@ -10,13 +10,18 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.refresh;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.BendpointsHelper;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.NotificationQuery;
@@ -38,26 +43,24 @@ public class RefreshLayoutScope implements Predicate<Notification> {
                 NotationPackage.eINSTANCE.getSize_Width(), NotationPackage.eINSTANCE.getSize_Height(), };
 
         public boolean apply(Notification input) {
-            NotificationQuery nq = new NotificationQuery(input);
-            return nq.isNotationChange() && isLayout(input.getFeature()) && !input.isTouch();
-        }
-
-        private boolean isLayout(Object feature) {
+            boolean isLayout = false;
+            Object feature = input.getFeature();
             for (Object feature2 : features) {
                 if (feature == feature2) {
-                    return true;
+                    isLayout = true;
+                    break;
                 }
             }
-            return false;
+            return isLayout;
         }
+
     };
 
     private final Predicate<Notification> isSructuralNotationChange = new Predicate<Notification>() {
         int[] types = new int[] { Notification.ADD, Notification.ADD_MANY, Notification.MOVE, Notification.REMOVE, Notification.REMOVE_MANY };
 
         public boolean apply(Notification input) {
-            NotificationQuery nq = new NotificationQuery(input);
-            return nq.isNotationChange() && isStructural(input.getEventType());
+            return isStructural(input.getEventType());
         }
 
         private boolean isStructural(int eventType) {
@@ -70,15 +73,85 @@ public class RefreshLayoutScope implements Predicate<Notification> {
         }
     };
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean apply(Notification input) {
-        return needsLayout(input);
+        return !input.isTouch() && needLayout(input);
     }
 
-    private boolean needsLayout(Notification notification) {
-        return !isLayoutTouch(notification) && (containsStructuralNotationChanges(notification) || containsLayoutConstraintNotationChanges(notification) || containsSetWkpImgApplication(notification));
+    /**
+     * Sequence layout must be triggered only if it is a change about sequence
+     * related GMF notation model or a workspace image set on viewpoint model
+     * about a sequence element.
+     * 
+     * @param notification
+     *            the change to analyze
+     * @return true if it is a change which need sequence layout, false
+     *         otherwise
+     */
+    private boolean needLayout(Notification notification) {
+        if (isSequenceChange(notification)) {
+            return !isLayoutTouch(notification) && (containsStructuralNotationChanges(notification) || containsLayoutConstraintNotationChanges(notification));
+        } else {
+            return containsSetWkpImgApplication(notification);
+        }
+    }
+
+    private boolean isSequenceChange(Notification input) {
+        return new NotificationQuery(input).isNotationChange() && isSequenceElementChange(input);
+    }
+
+    private boolean isSequenceElementChange(Notification notification) {
+        boolean isSequenceElement = isSequenceElement(notification.getNotifier());
+        if (isSequenceElement) {
+            Object value = getValue(notification);
+            if (value != null) {
+                boolean valueIsSequenceElt = false;
+                if (value instanceof EObject) {
+                    valueIsSequenceElt = isSequenceElement(value);
+                } else if (value instanceof Collection<?>) {
+                    Collection<?> values = (Collection<?>) value;
+                    for (Object val : values) {
+                        if (isSequenceElement(val)) {
+                            valueIsSequenceElt = true;
+                            break;
+                        }
+                    }
+                }
+                isSequenceElement = valueIsSequenceElt;
+            }
+        }
+        return isSequenceElement;
+    }
+
+    private Object getValue(Notification notification) {
+        Object value = null;
+        Object newValue = notification.getNewValue();
+        if (newValue instanceof EObject || newValue instanceof Collection<?>) {
+            value = newValue;
+        } else {
+            Object oldValue = notification.getOldValue();
+            if (oldValue instanceof EObject || oldValue instanceof Collection<?>) {
+                value = oldValue;
+            }
+        }
+        return value;
+    }
+
+    private boolean isSequenceElement(Object notifier) {
+        boolean isSequenceElement = false;
+        if (notifier instanceof EObject) {
+            View view = null;
+            if (notifier instanceof View) {
+                view = (View) notifier;
+            } else if (((EObject) notifier).eContainer() instanceof View) {
+                // Needed for GMF Style and LayoutConstraint
+                view = (View) ((EObject) notifier).eContainer();
+            }
+            if (view != null) {
+                isSequenceElement = ISequenceElementAccessor.isPartOfSequenceElement(view);
+            }
+        }
+        return isSequenceElement;
     }
 
     private boolean containsLayoutConstraintNotationChanges(Notification notification) {
@@ -86,25 +159,15 @@ public class RefreshLayoutScope implements Predicate<Notification> {
     }
 
     private boolean containsStructuralNotationChanges(Notification notification) {
-
         return isSructuralNotationChange.apply(notification);
     }
 
     private boolean isLayoutTouch(Notification notification) {
-        boolean result = true;
-
-        boolean isTouch = notification.isTouch();
-        if (!isTouch) {
-            if (NotationPackage.eINSTANCE.getRelativeBendpoints_Points().equals(notification.getFeature())) {
-                isTouch = BendpointsHelper.areSameBendpoints(notification.getOldValue(), notification.getNewValue());
-            }
+        boolean isLayoutTouch = false;
+        if (NotationPackage.eINSTANCE.getRelativeBendpoints_Points().equals(notification.getFeature())) {
+            isLayoutTouch = BendpointsHelper.areSameBendpoints(notification.getOldValue(), notification.getNewValue());
         }
-
-        if (!isTouch) {
-            result = false;
-        }
-
-        return result;
+        return isLayoutTouch;
     }
 
     private boolean containsSetWkpImgApplication(Notification notification) {

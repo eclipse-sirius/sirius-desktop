@@ -14,6 +14,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
+
 import org.eclipse.sirius.tests.swtbot.sequence.ActionDisabledOnExtendedMessagesTest;
 import org.eclipse.sirius.tests.swtbot.sequence.ActionDisabledOnSequenceDiagramTest;
 import org.eclipse.sirius.tests.swtbot.sequence.CombinedFragments2Tests;
@@ -58,6 +59,7 @@ import org.eclipse.sirius.tests.swtbot.sequence.NonAutoRefreshSequenceExecutionB
 import org.eclipse.sirius.tests.swtbot.sequence.NoteAttachmentTest;
 import org.eclipse.sirius.tests.swtbot.sequence.ObservationPointTests;
 import org.eclipse.sirius.tests.swtbot.sequence.PunctualStateTests;
+import org.eclipse.sirius.tests.swtbot.sequence.RefreshLayoutNotExecutedOnNoSequenceChangesTests;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceArrangeLinkedBorderedNodesTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceBasicMessageTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceDestroyMessageMoveTest;
@@ -166,6 +168,7 @@ public class SequenceSwtBotTestSuite extends TestCase {
         suite.addTestSuite(CombinedFragmentsOperandOverlapTests.class);
         suite.addTestSuite(StateBasicTests.class);
         suite.addTestSuite(PunctualStateTests.class);
+        suite.addTestSuite(RefreshLayoutNotExecutedOnNoSequenceChangesTests.class);
         suite.addTestSuite(StateNoMessageTests.class);
         suite.addTestSuite(ComplexInOutCombinedFragmentTest.class);
         suite.addTestSuite(ObservationPointTests.class);

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:interactions="http://www.eclipse.org/sirius/sample/interactions">
+  <interactions:Interaction name="455443">
+    <participants name="aaaaa" type="/1/C1"/>
+    <participants name="bbbbb" type="/1/C1"/>
+    <participants name="ccccc" type="/1/C1"/>
+    <participants name="ddddd" type="/1/C1"/>
+    <participants name="eeeee" type="/1/C1"/>
+    <messages xsi:type="interactions:CallMessage" name="m3" sendingEnd="/0/@ends.0" receivingEnd="/0/@ends.1" operation="/1/C1/operate"/>
+    <messages xsi:type="interactions:CallMessage" name="m3" sendingEnd="/0/@ends.2" receivingEnd="/0/@ends.3" operation="/1/C1/operate"/>
+    <messages xsi:type="interactions:CallMessage" name="m7" sendingEnd="/0/@ends.4" receivingEnd="/0/@ends.5" operation="/1/C1/operate"/>
+    <messages xsi:type="interactions:CallMessage" name="m9" sendingEnd="/0/@ends.6" receivingEnd="/0/@ends.7" operation="/1/C1/operate"/>
+    <messages xsi:type="interactions:ReturnMessage" name="m_return10" sendingEnd="/0/@ends.8" receivingEnd="/0/@ends.9" invocationMessage="/0/@messages.3"/>
+    <messages xsi:type="interactions:ReturnMessage" name="m_return8" sendingEnd="/0/@ends.10" receivingEnd="/0/@ends.11" invocationMessage="/0/@messages.2"/>
+    <messages xsi:type="interactions:CallMessage" name="m5" sendingEnd="/0/@ends.14" receivingEnd="/0/@ends.15" operation="/1/C1/operate"/>
+    <messages xsi:type="interactions:ReturnMessage" name="m_return6" sendingEnd="/0/@ends.16" receivingEnd="/0/@ends.17" invocationMessage="/0/@messages.6"/>
+    <messages xsi:type="interactions:CallMessage" name="m11" sendingEnd="/0/@ends.21" receivingEnd="/0/@ends.22" operation="/1/C1/operate"/>
+    <messages xsi:type="interactions:ReturnMessage" name="m_return12" sendingEnd="/0/@ends.23" receivingEnd="/0/@ends.24" invocationMessage="/0/@messages.8"/>
+    <messages xsi:type="interactions:ReturnMessage" name="m_return4" sendingEnd="/0/@ends.26" receivingEnd="/0/@ends.27" invocationMessage="/0/@messages.1"/>
+    <messages xsi:type="interactions:ReturnMessage" name="m_return4" sendingEnd="/0/@ends.28" receivingEnd="/0/@ends.29" invocationMessage="/0/@messages.0"/>
+    <messages xsi:type="interactions:CallMessage" name="m13" sendingEnd="/0/@ends.30" receivingEnd="/0/@ends.31" operation="/1/C1/operate"/>
+    <messages xsi:type="interactions:ReturnMessage" name="m_return14" sendingEnd="/0/@ends.32" receivingEnd="/0/@ends.33" invocationMessage="/0/@messages.12"/>
+    <messages xsi:type="interactions:CallMessage" name="m15" sendingEnd="/0/@ends.34" receivingEnd="/0/@ends.35" operation="/1/C1/operate"/>
+    <messages xsi:type="interactions:ReturnMessage" name="m_return16" sendingEnd="/0/@ends.36" receivingEnd="/0/@ends.37" invocationMessage="/0/@messages.14"/>
+    <messages xsi:type="interactions:FeatureAccessMessage" name="m23" sendingEnd="/0/@ends.39" receivingEnd="/0/@ends.40"/>
+    <messages xsi:type="interactions:CallMessage" name="m17" sendingEnd="/0/@ends.41" receivingEnd="/0/@ends.42" operation="/1/C1/operate"/>
+    <messages xsi:type="interactions:ReturnMessage" name="m_return18" sendingEnd="/0/@ends.43" receivingEnd="/0/@ends.44" invocationMessage="/0/@messages.17"/>
+    <messages xsi:type="interactions:CallMessage" name="m19" sendingEnd="/0/@ends.45" receivingEnd="/0/@ends.46" operation="/1/C1/operate"/>
+    <messages xsi:type="interactions:CallMessage" name="m21" sendingEnd="/0/@ends.47" receivingEnd="/0/@ends.48" operation="/1/C1/operate"/>
+    <messages xsi:type="interactions:ReturnMessage" name="m_return22" sendingEnd="/0/@ends.49" receivingEnd="/0/@ends.50" invocationMessage="/0/@messages.20"/>
+    <messages xsi:type="interactions:ReturnMessage" name="m_return20" sendingEnd="/0/@ends.51" receivingEnd="/0/@ends.52" invocationMessage="/0/@messages.19"/>
+    <messages xsi:type="interactions:ReturnMessage" name="m_return24" sendingEnd="/0/@ends.53" receivingEnd="/0/@ends.54"/>
+    <executions name="e3" owner="/0/@participants.1" start="/0/@ends.1" end="/0/@ends.28"/>
+    <executions name="e2" owner="/0/@participants.2" start="/0/@ends.3" end="/0/@ends.26"/>
+    <executions name="e5" owner="/0/@participants.1" start="/0/@ends.5" end="/0/@ends.10"/>
+    <executions name="e5" owner="/0/@participants.1" start="/0/@ends.7" end="/0/@ends.8"/>
+    <executions name="e3" owner="/0/@participants.3" start="/0/@ends.15" end="/0/@ends.16"/>
+    <executions name="e6" owner="/0/@participants.2" start="/0/@ends.22" end="/0/@ends.23"/>
+    <executions name="e7" owner="/0/@participants.4" start="/0/@ends.31" end="/0/@ends.32"/>
+    <executions name="e8" owner="/0/@participants.4" start="/0/@ends.35" end="/0/@ends.36"/>
+    <executions name="e10" owner="/0/@participants.1" start="/0/@ends.38" end="/0/@ends.55"/>
+    <executions name="e9" owner="/0/@participants.4" start="/0/@ends.42" end="/0/@ends.43"/>
+    <executions name="e11" owner="/0/@participants.1" start="/0/@ends.46" end="/0/@ends.51"/>
+    <executions name="e12" owner="/0/@participants.4" start="/0/@ends.48" end="/0/@ends.49"/>
+    <combinedFragments operator="LOOP" coveredParticipants="/0/@participants.1 /0/@participants.2 /0/@participants.3" start="/0/@ends.12" finish="/0/@ends.25">
+      <ownedOperands name="condition1" start="/0/@ends.13"/>
+    </combinedFragments>
+    <combinedFragments operator="ASSERT" coveredParticipants="/0/@participants.1" start="/0/@ends.18" finish="/0/@ends.20">
+      <ownedOperands name="condition1" start="/0/@ends.19"/>
+    </combinedFragments>
+    <ends xsi:type="interactions:MessageEnd" name="send_m3" context="/0/@participants.0" message="/0/@messages.0"/>
+    <ends xsi:type="interactions:MixEnd" name="start_e3" context="/0/@participants.1" execution="/0/@executions.0" message="/0/@messages.0"/>
+    <ends xsi:type="interactions:MessageEnd" name="send_m3" context="/0/@participants.1" message="/0/@messages.1"/>
+    <ends xsi:type="interactions:MixEnd" name="start_e2" context="/0/@participants.2" execution="/0/@executions.1" message="/0/@messages.1"/>
+    <ends xsi:type="interactions:MessageEnd" name="send_m7" context="/0/@participants.1" message="/0/@messages.2"/>
+    <ends xsi:type="interactions:MixEnd" name="start_e5" context="/0/@participants.1" execution="/0/@executions.2" message="/0/@messages.2"/>
+    <ends xsi:type="interactions:MessageEnd" name="send_m9" context="/0/@participants.1" message="/0/@messages.3"/>
+    <ends xsi:type="interactions:MixEnd" name="start_e5" context="/0/@participants.1" execution="/0/@executions.3" message="/0/@messages.3"/>
+    <ends xsi:type="interactions:MixEnd" name="finish_e5" context="/0/@participants.1" execution="/0/@executions.3" message="/0/@messages.4"/>
+    <ends xsi:type="interactions:MessageEnd" name="receive_m_return10" context="/0/@participants.1" message="/0/@messages.4"/>
+    <ends xsi:type="interactions:MixEnd" name="finish_e5" context="/0/@participants.1" execution="/0/@executions.2" message="/0/@messages.5"/>
+    <ends xsi:type="interactions:MessageEnd" name="receive_m_return8" context="/0/@participants.1" message="/0/@messages.5"/>
+    <ends xsi:type="interactions:CombinedFragmentEnd" name="start_alt.1" owner="/0/@combinedFragments.0"/>
+    <ends xsi:type="interactions:OperandEnd" name="start_condition1" owner="/0/@combinedFragments.0/@ownedOperands.0"/>
+    <ends xsi:type="interactions:MessageEnd" name="send_m5" context="/0/@participants.2" message="/0/@messages.6"/>
+    <ends xsi:type="interactions:MixEnd" name="start_e3" context="/0/@participants.3" execution="/0/@executions.4" message="/0/@messages.6"/>
+    <ends xsi:type="interactions:MixEnd" name="finish_e3" context="/0/@participants.3" execution="/0/@executions.4" message="/0/@messages.7"/>
+    <ends xsi:type="interactions:MessageEnd" name="receive_m_return6" context="/0/@participants.2" message="/0/@messages.7"/>
+    <ends xsi:type="interactions:CombinedFragmentEnd" name="start_alt.2" owner="/0/@combinedFragments.1"/>
+    <ends xsi:type="interactions:OperandEnd" name="start_condition1" owner="/0/@combinedFragments.1/@ownedOperands.0"/>
+    <ends xsi:type="interactions:CombinedFragmentEnd" name="finish_alt.2" owner="/0/@combinedFragments.1"/>
+    <ends xsi:type="interactions:MessageEnd" name="send_m11" context="/0/@participants.1" message="/0/@messages.8"/>
+    <ends xsi:type="interactions:MixEnd" name="start_e6" context="/0/@participants.2" execution="/0/@executions.5" message="/0/@messages.8"/>
+    <ends xsi:type="interactions:MixEnd" name="finish_e6" context="/0/@participants.2" execution="/0/@executions.5" message="/0/@messages.9"/>
+    <ends xsi:type="interactions:MessageEnd" name="receive_m_return12" context="/0/@participants.1" message="/0/@messages.9"/>
+    <ends xsi:type="interactions:CombinedFragmentEnd" name="finish_alt.1" owner="/0/@combinedFragments.0"/>
+    <ends xsi:type="interactions:MixEnd" name="finish_e2" context="/0/@participants.2" execution="/0/@executions.1" message="/0/@messages.10"/>
+    <ends xsi:type="interactions:MessageEnd" name="receive_m_return4" context="/0/@participants.1" message="/0/@messages.10"/>
+    <ends xsi:type="interactions:MixEnd" name="finish_e3" context="/0/@participants.1" execution="/0/@executions.0" message="/0/@messages.11"/>
+    <ends xsi:type="interactions:MessageEnd" name="receive_m_return4" context="/0/@participants.0" message="/0/@messages.11"/>
+    <ends xsi:type="interactions:MessageEnd" name="send_m13" context="/0/@participants.1" message="/0/@messages.12"/>
+    <ends xsi:type="interactions:MixEnd" name="start_e7" context="/0/@participants.4" execution="/0/@executions.6" message="/0/@messages.12"/>
+    <ends xsi:type="interactions:MixEnd" name="finish_e7" context="/0/@participants.4" execution="/0/@executions.6" message="/0/@messages.13"/>
+    <ends xsi:type="interactions:MessageEnd" name="receive_m_return14" context="/0/@participants.1" message="/0/@messages.13"/>
+    <ends xsi:type="interactions:MessageEnd" name="send_m15" context="/0/@participants.1" message="/0/@messages.14"/>
+    <ends xsi:type="interactions:MixEnd" name="start_e8" context="/0/@participants.4" execution="/0/@executions.7" message="/0/@messages.14"/>
+    <ends xsi:type="interactions:MixEnd" name="finish_e8" context="/0/@participants.4" execution="/0/@executions.7" message="/0/@messages.15"/>
+    <ends xsi:type="interactions:MessageEnd" name="receive_m_return16" context="/0/@participants.1" message="/0/@messages.15"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="start_e10" context="/0/@participants.1" execution="/0/@executions.8"/>
+    <ends xsi:type="interactions:MessageEnd" name="send_m23" context="/0/@participants.0" message="/0/@messages.16"/>
+    <ends xsi:type="interactions:MessageEnd" name="receive_m23" context="/0/@participants.1" message="/0/@messages.16"/>
+    <ends xsi:type="interactions:MessageEnd" name="send_m17" context="/0/@participants.1" message="/0/@messages.17"/>
+    <ends xsi:type="interactions:MixEnd" name="start_e9" context="/0/@participants.4" execution="/0/@executions.9" message="/0/@messages.17"/>
+    <ends xsi:type="interactions:MixEnd" name="finish_e9" context="/0/@participants.4" execution="/0/@executions.9" message="/0/@messages.18"/>
+    <ends xsi:type="interactions:MessageEnd" name="receive_m_return18" context="/0/@participants.1" message="/0/@messages.18"/>
+    <ends xsi:type="interactions:MessageEnd" name="send_m19" context="/0/@participants.1" message="/0/@messages.19"/>
+    <ends xsi:type="interactions:MixEnd" name="start_e11" context="/0/@participants.1" execution="/0/@executions.10" message="/0/@messages.19"/>
+    <ends xsi:type="interactions:MessageEnd" name="send_m21" context="/0/@participants.1" message="/0/@messages.20"/>
+    <ends xsi:type="interactions:MixEnd" name="start_e12" context="/0/@participants.4" execution="/0/@executions.11" message="/0/@messages.20"/>
+    <ends xsi:type="interactions:MixEnd" name="finish_e12" context="/0/@participants.4" execution="/0/@executions.11" message="/0/@messages.21"/>
+    <ends xsi:type="interactions:MessageEnd" name="receive_m_return22" context="/0/@participants.1" message="/0/@messages.21"/>
+    <ends xsi:type="interactions:MixEnd" name="finish_e11" context="/0/@participants.1" execution="/0/@executions.10" message="/0/@messages.22"/>
+    <ends xsi:type="interactions:MessageEnd" name="receive_m_return20" context="/0/@participants.1" message="/0/@messages.22"/>
+    <ends xsi:type="interactions:MessageEnd" name="send_m_return24" context="/0/@participants.1" message="/0/@messages.23"/>
+    <ends xsi:type="interactions:MessageEnd" name="receive_m_return24" context="/0/@participants.0" message="/0/@messages.23"/>
+    <ends xsi:type="interactions:ExecutionEnd" name="finish_e10" context="/0/@participants.1" execution="/0/@executions.8"/>
+  </interactions:Interaction>
+  <ecore:EPackage name="root">
+    <eClassifiers xsi:type="ecore:EClass" name="C1">
+      <eOperations name="operate"/>
+    </eClassifiers>
+  </ecore:EPackage>
+</xmi:XMI>
