@@ -63,6 +63,26 @@ public final class ISequenceElementAccessor {
     }
 
     /**
+     * Tell if the specified GMF {@link View} represents a sequence element or a
+     * part of it.
+     * 
+     * @param notationView
+     *            the specified GMF view
+     * @return true if the specified GMF view is a sequence element or a part of
+     *         it, false otherwise
+     */
+    public static boolean isPartOfSequenceElement(View notationView) {
+        boolean isPartOfSequenceElement = false;
+        View view = notationView;
+        if (view.eContainer() instanceof View && (CombinedFragment.compartmentNotationPredicate().apply(view) || Operand.compartmentNotationPredicate().apply(view))) {
+            view = (View) view.eContainer();
+        }
+        Option<ISequenceElement> sequenceElementOption = ISequenceElementAccessor.getISequenceElement(view);
+        isPartOfSequenceElement = sequenceElementOption.some();
+        return isPartOfSequenceElement;
+    }
+
+    /**
      * TODO Comment.
      * 
      * @param diagramView
@@ -215,7 +235,6 @@ public final class ISequenceElementAccessor {
     public static Option<LostMessageEnd> getLostMessageEnd(View view) {
         return ISequenceElementAccessor.getOrCreate(view, LostMessageEnd.class);
     }
-    
 
     /**
      * .

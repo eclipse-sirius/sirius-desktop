@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="interaction_ext" version="10.0.0.201411061000">
+  <ownedViewpoints endUserDocumentation="Interactions extension with one non sequence mapping" name="InteractionsExt" modelFileExtension="interactions">
+    <ownedRepresentationExtensions xsi:type="description_1:DiagramExtensionDescription" name="Sequence Diagram Extension" viewpointURI="viewpoint:/org.eclipse.sirius.sample.interactions.design/Interactions" representationName="Sequence Diagram on Interaction">
+      <layers name="NonSequenceMapping" activeByDefault="true">
+        <nodeMappings name="Classes" domainClass="EClass">
+          <style xsi:type="style:SquareDescription" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <toolSections>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="EClass" nodeMappings="//@ownedViewpoints[name='InteractionsExt']/@ownedRepresentationExtensions[name='Sequence%20Diagram%20Extension']/@layers[name='NonSequenceMapping']/@nodeMappings[name='Classes']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[EPackage.allInstances()->asSequence()->first()/]">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="EClass"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </layers>
+    </ownedRepresentationExtensions>
+  </ownedViewpoints>
+</description:Group>
