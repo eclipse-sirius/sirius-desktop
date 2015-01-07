@@ -45,6 +45,8 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.diagram.ui.business.internal.dialect.DiagramDialectUIServices;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
@@ -61,10 +63,13 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.bot.SWTDesignerBot;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.SessionSavedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
 import org.eclipse.sirius.tests.swtbot.support.api.view.SiriusOutlineView;
 import org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Event;
@@ -140,6 +145,21 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
         });
 
         ReflectionHelper.setFieldValueWithoutException(this, "viewer", new SWTBotSiriusGefViewer(graphicalViewer), this.getClass().getSuperclass());
+    }
+
+    @Override
+    public void save() {
+        super.save();
+        IEditorPart editor = partReference.getEditor(false);
+        if (editor instanceof DialectEditor) {
+            DRepresentation dRepresentation = ((DialectEditor) editor).getRepresentation();
+            if (dRepresentation != null) {
+                Session session = new EObjectQuery(dRepresentation).getSession();
+                if (session != null) {
+                    designerBot.waitUntil(new SessionSavedCondition(session));
+                }
+            }
+        }
     }
 
     /**

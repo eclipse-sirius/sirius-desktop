@@ -22,6 +22,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.SessionSavedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
@@ -218,6 +219,7 @@ public class ToolCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
 
     private void saveCloseReopenDiagram() {
         bot.menu("File").menu("Save").click();
+        bot.waitUntil(new SessionSavedCondition(localSession.getOpenedSession()));
         editor.close();
         openDiagram();
     }
