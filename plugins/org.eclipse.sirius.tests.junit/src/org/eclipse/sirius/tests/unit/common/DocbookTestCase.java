@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -67,7 +67,7 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 
-import com.google.common.collect.LinkedHashMultimap;
+import com.google.common.collect.Multimap;
 
 /**
  * Provides basic setUp and tearDown as well as utility methods for commands
@@ -149,13 +149,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
 
     private boolean errorCatchActive;
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @throws Exception
-     * 
-     * @see junit.framework.TestCase#setUp()
-     */
+    @Override
     protected void setUp() throws Exception {
         super.setUp();
 
@@ -1282,9 +1276,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
      */
     public void deleteChapter() {
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
-            /**
-             * {@inheritDoc}
-             */
+            @Override
             protected void doExecute() {
                 EcoreUtil.remove(semanticModel.eContents().get(0));
             }
@@ -1296,9 +1288,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
      */
     public void renameChapter(final String name) {
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
-            /**
-             * {@inheritDoc}
-             */
+            @Override
             protected void doExecute() {
                 ((Book) semanticModel).getChapter().get(0).setId(name);
             }
@@ -1310,9 +1300,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
      */
     public void deleteNote() {
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
-            /**
-             * {@inheritDoc}
-             */
+            @Override
             protected void doExecute() {
                 EcoreUtil.remove(((Book) semanticModel).getChapter().get(0).getPara().get(0));
             }
@@ -1324,9 +1312,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
      */
     public void addChapter() {
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
-            /**
-             * {@inheritDoc}
-             */
+            @Override
             protected void doExecute() {
                 Chapter chap = DocbookFactory.eINSTANCE.createChapter();
                 ((Book) semanticModel).getChapter().add(chap);
@@ -1339,9 +1325,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
      */
     public void addChapterAndBigSection() {
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
-            /**
-             * {@inheritDoc}
-             */
+            @Override
             protected void doExecute() {
                 Sect1 sect1 = DocbookFactory.eINSTANCE.createSect1();
                 Chapter chap = DocbookFactory.eINSTANCE.createChapter();
@@ -1357,9 +1341,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
      */
     public void addTinySection() {
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
-            /**
-             * {@inheritDoc}
-             */
+            @Override
             protected void doExecute() {
                 Sect1 bigSect = DocbookFactory.eINSTANCE.createSect1();
                 Sect2 medSect = DocbookFactory.eINSTANCE.createSect2();
@@ -1376,9 +1358,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
      */
     public void addNote() {
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
-            /**
-             * {@inheritDoc}
-             */
+            @Override
             protected void doExecute() {
                 Para note = DocbookFactory.eINSTANCE.createPara();
                 ((Book) semanticModel).getChapter().get(0).getPara().add(note);
@@ -1391,9 +1371,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
      */
     public void moveNoteUnderBigSection() {
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
-            /**
-             * {@inheritDoc}
-             */
+            @Override
             protected void doExecute() {
                 Para note = ((Book) semanticModel).getChapter().get(0).getPara().get(0);
                 ((Book) semanticModel).getChapter().get(0).getSect1().get(0).getPara().add(note);
@@ -1406,9 +1384,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
      */
     public void moveBigSectionUnderChapter() {
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
-            /**
-             * {@inheritDoc}
-             */
+            @Override
             protected void doExecute() {
                 Sect1 sect1 = ((Book) semanticModel).getChapter().get(0).getSect1().get(0);
                 ((Book) semanticModel).getChapter().get(1).getSect1().add(sect1);
@@ -1421,9 +1397,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
      */
     public void moveMediumSectionUnderBigSection() {
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
-            /**
-             * {@inheritDoc}
-             */
+            @Override
             protected void doExecute() {
                 Sect2 sect2 = ((Book) semanticModel).getChapter().get(0).getSect1().get(0).getSect2().get(0);
                 ((Book) semanticModel).getChapter().get(1).getSect1().get(0).getSect2().add(sect2);
@@ -1436,6 +1410,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
      * 
      * @return true if an error occurs.
      */
+    @Override
     protected synchronized boolean doesAnErrorOccurs() {
         return errors.values().size() != 0;
     }
@@ -1446,6 +1421,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
         }
     }
 
+    @Override
     protected synchronized void setErrorCatchActive(boolean errorCatchActive) {
         this.errorCatchActive = errorCatchActive;
     }
@@ -1454,6 +1430,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
 
         logListener = new ILogListener() {
 
+            @Override
             public void logging(IStatus status, String plugin) {
                 if (status.getSeverity() == IStatus.ERROR) {
                     errorOccurs(status, plugin);
@@ -1466,6 +1443,7 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
         exceptionHandler = new UncaughtExceptionHandler() {
             private String sourcePlugin = "Uncaught exception";
 
+            @Override
             public void uncaughtException(Thread t, Throwable e) {
 
                 IStatus status = new Status(IStatus.ERROR, sourcePlugin, sourcePlugin, e);
@@ -1474,28 +1452,17 @@ public class DocbookTestCase extends SiriusDiagramTestCase implements DocBookMod
         };
 
         Thread.setDefaultUncaughtExceptionHandler(exceptionHandler);
-
-        // setErrorCatchActive(true);
     }
 
-    protected synchronized LinkedHashMultimap<String, IStatus> getErrors() {
+    protected synchronized Multimap<String, IStatus> getErrors() {
         return errors;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @throws Exception
-     * 
-     * @see junit.framework.TestCase#tearDown()
-     */
+    @Override
     protected void tearDown() throws Exception {
         DiagramEventBroker.stopListening(session.getTransactionalEditingDomain());
-
         obviousDiagram = null;
-
         errors.clear();
-
         super.tearDown();
     }
 

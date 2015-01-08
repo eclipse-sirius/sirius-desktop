@@ -48,9 +48,13 @@ h4. Changes in @org.eclipse.sirius.tests.junit.support@
 
 * The method @org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase.setReadOnly(IFile)@ has been deprecated, @org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper.setReadOnlyStatus(boolean, IResource...)@ can be used instead.
 
+* The @warnings@ member variable has been added to @org.eclipse.sirius.tests.support.api.SiriusTestCase@ to allow the recording of warning logs. Methods @doesAWarningOccurs()@, @clearWarnings()@, @setWarningCatchActive(boolean)@, @isWarningCatchActive()@ and @getWarningLoggersMessage()@ have also been added to manage the @warnings@ member variable in the same way as the existing @errors@ member variable.
+
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
 * The methods @org.eclipse.sirius.tests.swtbot.support.api.business.UIPerspective.deleteProject(UIProject)@ and @org.eclipse.sirius.tests.swtbot.support.api.business.UIPerspective.deleteProject(String)@ have been deprecated, @org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper.setReadOnlyStatus(boolean, IResource...)@ can be used instead.
+
+* The @warnings@ member variable has been added to @org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase@ to allow the recording of warning logs. Methods @doesAWarningOccurs()@, @setWarningCatchActive(boolean)@, @isWarningCatchActive()@ and @getWarningLoggersMessage()@ have also been added to manage the @warnings@ member variable in the same way as the existing @errors@ member variable.
 
 h2(#sirius2.0.0). Changes in Sirius 2.0.0 (from Sirius 1.0.0)
 
@@ -118,7 +122,7 @@ h4. Changes in @org.eclipse.sirius.common@
 * The method @org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.getResourceSetSync(TransactionalEditingDomain)@ has been added to look for a @ResourceSetSync@ without creating a new one if no synchronizer currently exists.
 * The class @org.eclipse.sirius.common.tools.api.util.SmartAdapter@ has been removed as this mechanism proves to be inefficient. The only user of this mechanism was the @org.eclipse.sirius.tools.api.command.listener.IChangeListener@ which has also been removed.
 * The class @org.eclipse.sirius.common.tools.api.ecore.WorkspaceEPackageRegistry@ has been moved to the @org.eclipse.sirius.editor@ plugin. @org.eclipse.sirius.common.tools.DslCommonPlugin.getWorkspaceEPackageRegistry@ has been removed. The same method has been added in @org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin@.
-* A new class @org.eclipse.sirius.common.tools.api.resource.ResourceMigrationMarker@ has been introduced for adopters. This marker can ben attached to a Resource in order to indicate that some automatic migration *might* have change the structure of the model during the loading (with no isModified flag). Sirius will then use this information to consider saving the file even if there is no logical change. 
+* A new class @org.eclipse.sirius.common.tools.api.resource.ResourceMigrationMarker@ has been introduced for adopters. This marker can be attached to a Resource in order to indicate that some automatic migration *might* have change the structure of the model during the loading (with no isModified flag). Sirius will then use this information to consider saving the file even if there is no logical change. 
 
 h4. Changes in @org.eclipse.sirius.common.ui@
 

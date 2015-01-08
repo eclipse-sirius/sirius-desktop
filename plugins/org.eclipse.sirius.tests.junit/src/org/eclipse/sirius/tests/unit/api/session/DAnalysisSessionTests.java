@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -167,7 +166,7 @@ public class DAnalysisSessionTests extends SiriusDiagramTestCase {
         // Try to save the session
         session.save(new NullProgressMonitor());
         assertTrue("An error is expected during this save", doesAnErrorOccurs());
-        Set<IStatus> statuses = errors.get("org.eclipse.core.runtime");
+        Collection<IStatus> statuses = errors.get("org.eclipse.core.runtime");
         assertTrue("It should be only one error.", statuses != null && statuses.size() == 1);
         IStatus status = statuses.iterator().next();
         assertTrue("The exception should be a RuntimeException", status.getException() instanceof RuntimeException);

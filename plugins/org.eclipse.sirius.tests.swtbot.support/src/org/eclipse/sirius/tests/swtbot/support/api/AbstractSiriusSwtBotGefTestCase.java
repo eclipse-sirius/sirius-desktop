@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009-2015 THALES GLOBAL SERVICES and others.
  * All rights reserved.   This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -130,6 +130,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 
 /**
@@ -209,7 +210,12 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     /**
      * The reported errors.
      */
-    protected LinkedHashMultimap<String, IStatus> errors;
+    protected Multimap<String, IStatus> errors;
+
+    /**
+     * The reported warnings.
+     */
+    protected Multimap<String, IStatus> warnings;
 
     private boolean defaultEnableAnimatedZoom;
 
@@ -234,17 +240,20 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     private UncaughtExceptionHandler exceptionHandler;
 
     /**
-     * The platform error listener.
+     * The platform log listener.
      */
     private ILogListener logListener;
 
+    /**
+     * Boolean to activate error catch.
+     */
     private boolean errorCatchActive;
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#setUp()
+     * Boolean to activate warning catch.
      */
+    private boolean warningCatchActive;
+
     @Override
     protected void setUp() throws Exception {
         PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
@@ -254,9 +263,10 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             }
         });
 
-        /* Init error log and uncauht exception handlers */
+        // Init logger and uncauht exception handlers
         errors = LinkedHashMultimap.create();
-        initErrorLoggers();
+        warnings = LinkedHashMultimap.create();
+        initLoggers();
 
         System.out.println("Setup of " + this.getClass().getName() + AbstractSiriusSwtBotGefTestCase.POINT + getName() + "()");
         try {
@@ -1294,14 +1304,16 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         return button;
     }
 
-    private void initErrorLoggers() {
-
+    /**
+     * Initialize the log listener
+     */
+    private void initLoggers() {
         logListener = new ILogListener() {
 
             @Override
             public void logging(IStatus status, String plugin) {
-                if (status.getSeverity() == IStatus.ERROR) {
-
+                switch (status.getSeverity()) {
+                case IStatus.ERROR:
                     if (!"org.eclipse.ui.views.properties.tabbed".equals(status.getPlugin())
                             && status.getMessage() != null
                             && !status
@@ -1310,9 +1322,14 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                                             "Contributor org.eclipse.ui.navigator.ProjectExplorer cannot be created., exception: org.eclipse.core.runtime.CoreException: Plug-in \"org.eclipse.ui.navigator.resources\" was unable to instantiate class \"org.eclipse.ui.internal.navigator.resources.workbench.TabbedPropertySheetTitleProvider\".")) {
                         errorOccurs(status, plugin);
                     }
+                    break;
+                case IStatus.WARNING:
+                    warningOccurs(status, plugin);
+                    break;
+                default:
+                    // nothing to do
                 }
             }
-
         };
         Platform.addLogListener(logListener);
 
@@ -1330,9 +1347,13 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         Thread.setDefaultUncaughtExceptionHandler(exceptionHandler);
 
         setErrorCatchActive(true);
+        setWarningCatchActive(false);
     }
 
-    private void disposeErrorLoggers() {
+    /**
+     * Dispose the log listener.
+     */
+    private void disposeLoggers() {
         if (logListener != null) {
             Platform.removeLogListener(logListener);
         }
@@ -1351,6 +1372,18 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
+     * check if a warning occurs.
+     * 
+     * @return true if a warning occurs.
+     */
+    protected synchronized boolean doesAWarningOccurs() {
+        if (warnings != null) {
+            return warnings.values().size() != 0;
+        }
+        return false;
+    }
+
+    /**
      * check if an error catch is active.
      * 
      * @return true if an error catch is active.
@@ -1359,9 +1392,40 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         return errorCatchActive;
     }
 
+    /**
+     * check if a warning catch is active.
+     * 
+     * @return true if a warning catch is active.
+     */
+    protected synchronized boolean isWarningCatchActive() {
+        return warningCatchActive;
+    }
+
+    /**
+     * Records the error.
+     * 
+     * @param status
+     *            error status to record
+     * @param sourcePlugin
+     *            source plugin in which the error occurred
+     */
     private synchronized void errorOccurs(IStatus status, String sourcePlugin) {
         if (errorCatchActive) {
             errors.put(sourcePlugin, status);
+        }
+    }
+
+    /**
+     * Records the warning.
+     * 
+     * @param status
+     *            warning status to record
+     * @param sourcePlugin
+     *            source plugin in which the warning occurred
+     */
+    private synchronized void warningOccurs(IStatus status, String sourcePlugin) {
+        if (warningCatchActive) {
+            warnings.put(sourcePlugin, status);
         }
     }
 
@@ -1377,7 +1441,22 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         this.errorCatchActive = errorCatchActive;
     }
 
-    private void checkErrors() {
+    /**
+     * Activate or deactivate the external warning detection: the test will fail
+     * in a warning is logged or uncaught.
+     * 
+     * @param warningCatchActive
+     *            boolean to indicate if we activate or deactivate the external
+     *            warning detection
+     */
+    protected synchronized void setWarningCatchActive(boolean warningCatchActive) {
+        this.warningCatchActive = warningCatchActive;
+    }
+
+    /**
+     * Check that there is no existing error or warning.
+     */
+    private void checkLogs() {
         /* an exception occurs in another thread */
 
         /*
@@ -1385,8 +1464,14 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
          * mode. We have some unwanted resource notifications during the
          * teardown on jenkins.
          */
-        if (!TestsUtil.shouldSkipUnreliableTests() && doesAnErrorOccurs()) {
-            Assert.fail(getErrorLoggersMessage());
+        if (!TestsUtil.shouldSkipUnreliableTests()) {
+            if (doesAnErrorOccurs()) {
+                Assert.fail(getErrorLoggersMessage());
+            }
+
+            if (doesAWarningOccurs()) {
+                Assert.fail(getWarningLoggersMessage());
+            }
         }
     }
 
@@ -1404,6 +1489,32 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
         log1.append("Error(s) raised during test : " + testName).append(br);
         for (Entry<String, Collection<IStatus>> entry : errors.asMap().entrySet()) {
+            String reporter = entry.getKey();
+            log1.append(". Log Plugin : " + reporter).append(br);
+
+            for (IStatus status : entry.getValue()) {
+                log1.append("  . " + getSeverity(status) + " from plugin:" + status.getPlugin() + ", message: " + status.getMessage() + ", exception: " + status.getException()).append(br);
+                appendStackTrace(log1, br, status);
+            }
+            log1.append(br);
+        }
+        return log1.toString();
+    }
+
+    /**
+     * Compute an error message from the detected warnings.
+     * 
+     * @return the error message.
+     */
+    protected synchronized String getWarningLoggersMessage() {
+
+        StringBuilder log1 = new StringBuilder();
+        String br = "\n";
+
+        String testName = getClass().getName();
+
+        log1.append("Warning(s) raised during test : " + testName).append(br);
+        for (Entry<String, Collection<IStatus>> entry : warnings.asMap().entrySet()) {
             String reporter = entry.getKey();
             log1.append(". Log Plugin : " + reporter).append(br);
 
@@ -1522,7 +1633,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                 EclipseTestsSupportHelper.INSTANCE.deleteProject(project.getName());
             }
 
-            disposeErrorLoggers();
+            disposeLoggers();
         } finally {
             // Reset the preferences changed during the test with the method
             // changePreference. This is done in the finally block in case of
@@ -1546,7 +1657,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                 }
             });
             setErrorCatchActive(false);
-            checkErrors();
+            setWarningCatchActive(false);
+            checkLogs();
         }
 
     }
@@ -1739,11 +1851,6 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         return backgroundColor;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see junit.framework.TestCase#setUp()
-     */
     @Override
     protected void tearDown() throws Exception {
         failureTearDown();
@@ -1752,6 +1859,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
         super.tearDown();
         setErrorCatchActive(false);
+        setWarningCatchActive(false);
     }
 
     // CHECKSTYLE:OFF

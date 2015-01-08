@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,26 +12,22 @@ package org.eclipse.sirius.tests.unit.common.migration;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Collection;
-import java.util.Map.Entry;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.ILogListener;
 import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.modelingproject.AbstractRepresentationsFileJob;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.resource.FileProvider;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusTestCase;
 import org.eclipse.sirius.tools.api.command.ICommandFactory;
@@ -42,10 +38,6 @@ import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.junit.Assert;
 import org.osgi.framework.Version;
-
-import com.google.common.collect.LinkedHashMultimap;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * This abstract class is for migration test from an x.x version of Sirius to
@@ -73,17 +65,6 @@ public abstract class AbstractMigrationFromTest extends SiriusTestCase {
     private static final String REPRESENTATIONS_FILE_NAME = "representations.aird";
 
     private static final String VSM_FILE_NAME = "My.odesign";
-
-    /**
-     * The warning log listener (there is already an error log listener in the
-     * super class).
-     */
-    private ILogListener warningLogListener;
-
-    /**
-     * The reported warnings.
-     */
-    protected final LinkedHashMultimap<String, IStatus> warnings = LinkedHashMultimap.create();
 
     private UICallBack defaultUiCallBack;
 
@@ -156,7 +137,8 @@ public abstract class AbstractMigrationFromTest extends SiriusTestCase {
      */
     public void testMigration() {
         // Initialize the warning logger just before importing the project
-        initWarningLogger();
+        setWarningCatchActive(true);
+
         initializeProject();
 
         // check modeling project is loaded
@@ -174,10 +156,9 @@ public abstract class AbstractMigrationFromTest extends SiriusTestCase {
         assertTrue("The root of the VSM file should be a Group", mainDAnalysis.getOwnedViews().get(0).getViewpoint().eResource().getContents().get(0) instanceof Group);
         Group group = (Group) mainDAnalysis.getOwnedViews().get(0).getViewpoint().eResource().getContents().get(0);
         checkVSM(group);
-        // Dispose the warning logger after loading the session
-        disposeWarningLogger();
+
         // Check warnings
-        if (warnings != null && warnings.values().size() > 0) {
+        if (doesAWarningOccurs()) {
             Assert.fail(getWarningLoggersMessage());
         }
     }
@@ -243,54 +224,6 @@ public abstract class AbstractMigrationFromTest extends SiriusTestCase {
             fail("The loading session has been aborted: " + e.getMessage());
         }
         return targetProjectPath;
-    }
-
-    /**
-     * Compute an error message from the detected errors.
-     * 
-     * @return the error message.
-     */
-    private synchronized String getWarningLoggersMessage() {
-        StringBuilder log1 = new StringBuilder();
-        String br = "\n";
-
-        String testName = getClass().getName();
-
-        log1.append("Warning(s) raised during test : " + testName).append(br);
-        for (Entry<String, Collection<IStatus>> entry : warnings.asMap().entrySet()) {
-            String reporter = entry.getKey();
-            log1.append(". Log Plugin : " + reporter).append(br);
-
-            for (IStatus status : entry.getValue()) {
-                log1.append("  . " + getSeverity(status) + " from plugin:" + status.getPlugin() + ", message: " + status.getMessage() + ", exception: " + status.getException()).append(br);
-                appendStackTrace(log1, br, status);
-            }
-            log1.append(br);
-        }
-        return log1.toString();
-    }
-
-    private void initWarningLogger() {
-        warningLogListener = new ILogListener() {
-
-            public void logging(IStatus status, String plugin) {
-                if (status.getSeverity() == IStatus.WARNING) {
-                    warningOccurs(status, plugin);
-                }
-            }
-
-        };
-        Platform.addLogListener(warningLogListener);
-    }
-
-    private void disposeWarningLogger() {
-        if (warningLogListener != null) {
-            Platform.removeLogListener(warningLogListener);
-        }
-    }
-
-    private synchronized void warningOccurs(IStatus status, String sourcePlugin) {
-        warnings.put(sourcePlugin, status);
     }
 
     @Override
