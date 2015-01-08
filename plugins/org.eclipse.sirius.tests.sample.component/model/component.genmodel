@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2015 Obeo&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA;Contributors:&#xA;   Obeo - initial API and implementation"
+    modelDirectory="/org.eclipse.sirius.tests.sample.component/src" modelPluginID="org.eclipse.sirius.tests.sample.component"
+    modelName="Component" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    rootImplementsInterface="" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false" runtimeVersion="2.8" language="" classNamePattern="" operationReflection="true"
+    importOrganizing="true">
+  <foreignModel>component.ecore</foreignModel>
+  <genPackages prefix="Component" basePackage="org.eclipse.sirius.tests.sample" disposableProviderFactory="true"
+      ecorePackage="component.ecore#/">
+    <genClasses ecoreClass="component.ecore#//Component">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//Component/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute component.ecore#//Component/payload"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference component.ecore#//Component/children"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference component.ecore#//Component/references"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
