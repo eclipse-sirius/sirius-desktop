@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,12 +42,6 @@ public class DDiagramCommandStack extends DiagramCommandStack {
         super(diagramEditDomain);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.parts.DiagramCommandStack#execute(org.eclipse.gef.commands.Command,
-     *      org.eclipse.core.runtime.IProgressMonitor)
-     */
     @Override
     public void execute(final org.eclipse.gef.commands.Command command, final IProgressMonitor monitor) {
         if (command == null || !command.canExecute()) {
@@ -66,6 +60,7 @@ public class DDiagramCommandStack extends DiagramCommandStack {
      *            the progress monitor
      * @param progressMonitor
      */
+    @Override
     protected void execute(ICommand command, IProgressMonitor progressMonitor) {
 
         final IProgressMonitor monitor = progressMonitor != null ? progressMonitor : new NullProgressMonitor();
@@ -77,7 +72,7 @@ public class DDiagramCommandStack extends DiagramCommandStack {
         } catch (ExecutionException e) {
             final Throwable cause = e.getCause();
             if (cause instanceof LockedInstanceException) {
-                SiriusPlugin.getDefault().error(cause.getMessage(), cause);
+                SiriusPlugin.getDefault().warning(cause.getMessage(), (LockedInstanceException) cause);
             } else {
                 defaultLog(e);
             }
@@ -88,7 +83,7 @@ public class DDiagramCommandStack extends DiagramCommandStack {
         Trace.catching(DiagramUIPlugin.getInstance(), DiagramUIDebugOptions.EXCEPTIONS_CATCHING, getClass(), "execute", e); //$NON-NLS-1$
         Log.error(DiagramUIPlugin.getInstance(), DiagramUIStatusCodes.COMMAND_FAILURE, "execute", e); //$NON-NLS-1$
     }
-    
+
     private ICommand getWrappingCommandIgnoringAffectedFiles(final ICommand original) {
         return new WrappingCommandIgnoringAffectedFiles(original);
     }
