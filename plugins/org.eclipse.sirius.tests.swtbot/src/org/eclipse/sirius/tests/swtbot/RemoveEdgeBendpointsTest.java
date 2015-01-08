@@ -23,6 +23,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
@@ -68,6 +69,8 @@ public class RemoveEdgeBendpointsTest extends AbstractSiriusSwtBotGefTestCase {
         super.onSetUpAfterOpeningDesignerPerspective();
         sessionAirdResource = new UIResource(designerProject, "/", SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
+        bot.viewById("org.eclipse.ui.views.ContentOutline").close();
+        SWTBotUtils.waitAllUiEvents();
         openDiagram("new useCase");
 
     }
@@ -222,6 +225,8 @@ public class RemoveEdgeBendpointsTest extends AbstractSiriusSwtBotGefTestCase {
         editor.close();
         SWTBotUtils.waitAllUiEvents();
         editor = null;
+        // Reopen outline
+        new DesignerViews(bot).openOutlineView();
         super.tearDown();
     }
 

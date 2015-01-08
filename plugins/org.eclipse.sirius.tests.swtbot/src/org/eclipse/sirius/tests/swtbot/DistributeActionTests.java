@@ -25,6 +25,8 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.DistributeAction;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.tests.swtbot.uml.AbstractUmlDragAndDropTest;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
@@ -69,6 +71,30 @@ public class DistributeActionTests extends AbstractUmlDragAndDropTest {
 
     private static final Collection<Integer> ALL_DISTRIBUTE_KIND = Lists.newArrayList(DistributeAction.GAPS_HORIZONTALLY, DistributeAction.CENTERS_HORIZONTALLY, DistributeAction.GAPS_VERTICALLY,
             DistributeAction.CENTERS_VERTICALLY);
+
+    /*
+     * (non-Javadoc)
+     * @see org.eclipse.sirius.tests.swtbot.uml.AbstractUmlDragAndDropTest#
+     * onSetUpAfterOpeningDesignerPerspective()
+     */
+    @Override
+    protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
+        bot.viewById("org.eclipse.ui.views.ContentOutline").close();
+        SWTBotUtils.waitAllUiEvents();
+        super.onSetUpAfterOpeningDesignerPerspective();
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see
+     * org.eclipse.sirius.tests.swtbot.uml.AbstractUmlDragAndDropTest#tearDown()
+     */
+    @Override
+    protected void tearDown() throws Exception {
+        // Reopen outline
+        new DesignerViews(bot).openOutlineView();
+        super.tearDown();
+    }
 
     /**
      * {@inheritDoc}

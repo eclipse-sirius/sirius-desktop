@@ -32,6 +32,8 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentat
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
@@ -103,7 +105,8 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, "/", SESSION_RESOURCE_NAME);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-
+        bot.viewById("org.eclipse.ui.views.ContentOutline").close();
+        SWTBotUtils.waitAllUiEvents();
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), FIRST_REPRESENTATION_NAME, FIRST_REPRESENTATION_INSTANCE_NAME, DDiagram.class);
 
         editor.scrollTo(0, 0);
@@ -240,6 +243,8 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
         class3ChildOfDiagramBot = null;
         class4ChildOfDiagramBot = null;
         centeredEPackagedBotBounds = null;
+        // Reopen outline
+        new DesignerViews(bot).openOutlineView();
 
         super.tearDown();
     }

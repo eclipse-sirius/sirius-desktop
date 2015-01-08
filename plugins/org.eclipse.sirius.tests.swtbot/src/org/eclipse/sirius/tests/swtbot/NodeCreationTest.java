@@ -20,6 +20,8 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentat
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 
 /**
  * Tests defined to ensure that Node are created at expected locations.
@@ -86,7 +88,8 @@ public class NodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
 
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-
+        bot.viewById("org.eclipse.ui.views.ContentOutline").close();
+        SWTBotUtils.waitAllUiEvents();
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
 
         editor.setSnapToGrid(false);
@@ -102,6 +105,10 @@ public class NodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
         editor.zoom(ZoomLevel.ZOOM_100);
         // Go to the origin to avoid scroll bar
         editor.scrollTo(0, 0);
+        SWTBotUtils.waitAllUiEvents();
+        // Reopen outline
+        new DesignerViews(bot).openOutlineView();
+        SWTBotUtils.waitAllUiEvents();
         super.tearDown();
     }
 
@@ -129,8 +136,10 @@ public class NodeCreationTest extends AbstractSiriusSwtBotGefTestCase {
      */
     private void testNodeCreationInDiagramWithoutScroll(ZoomLevel zoomLevel) {
         editor.zoom(zoomLevel);
+        SWTBotUtils.waitAllUiEvents();
         // Get the insertion location for the Node to create
         Point location = new Point(2, 2);
+
         createNode(location.getScaled(zoomLevel.getAmount()).x, location.getScaled(zoomLevel.getAmount()).y);
         // Check the location of the created Node
         assertNodeAtLocation(NEW_NODE_NAME, location);

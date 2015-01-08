@@ -19,6 +19,8 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentat
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 
 /**
  * Tests defined to ensure that DNodeList are created at expected locations.
@@ -93,6 +95,8 @@ public class DNodeListCreationTest extends AbstractSiriusSwtBotGefTestCase {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
+        bot.viewById("org.eclipse.ui.views.ContentOutline").close();
+        SWTBotUtils.waitAllUiEvents();
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
 
         // Disable snap to grid
@@ -109,6 +113,8 @@ public class DNodeListCreationTest extends AbstractSiriusSwtBotGefTestCase {
         editor.zoom(ZoomLevel.ZOOM_100);
         // Go to the origin to avoid scroll bar
         editor.scrollTo(0, 0);
+        // Reopen outline
+        new DesignerViews(bot).openOutlineView();
         super.tearDown();
     }
 
