@@ -119,7 +119,6 @@ public class SequenceSwtBotTestSuite extends TestCase {
         suite.addTestSuite(SequenceExecutionBasicAndReturnMessageTest.class);
         suite.addTestSuite(SequenceMessageToSelfTest.class);
         suite.addTestSuite(CreateMessageTests.class);
-        suite.addTestSuite(SequenceDestroyMessageTest.class);
         suite.addTestSuite(ExecutionTests.class);
         suite.addTestSuite(ExecutionMoveTests.class);
         suite.addTestSuite(ExecutionMove2Tests.class);
@@ -150,6 +149,7 @@ public class SequenceSwtBotTestSuite extends TestCase {
         suite.addTestSuite(SyncCallInOperandReorderTest.class);
         suite.addTestSuite(CreateMessageOnCollapsedExecutionTest.class);
         suite.addTestSuite(SequenceExecutionMessageToSelfTest.class);
+        suite.addTestSuite(SequenceDestroyMessageTest.class);
         suite.addTestSuite(NoteAttachmentTest.class);
         suite.addTestSuite(SequenceArrangeLinkedBorderedNodesTest.class);
         suite.addTestSuite(InteractionUseSingleClickCreationTests.class);

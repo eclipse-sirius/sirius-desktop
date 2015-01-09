@@ -212,7 +212,6 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(SampleSessionTest.class);
         suite.addTestSuite(SiriusRegistryTests.class);
         suite.addTestSuite(SiriusRegistryListener2Tests.class);
-        suite.addTestSuite(SessionManagerListener2Tests.class);
         suite.addTestSuite(SessionSemanticResourceTests.class);
         suite.addTestSuite(SessionServiceTest.class);
 
@@ -273,6 +272,9 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTest(new JUnit4TestAdapter(DiagramMigrationTestCampaign10.class));
         // This one takes too long (12 minutes) to be part of the Gerrit suite.
         suite.addTestSuite(AcceleoMTInterpreterOnPackageImportTests.class);
+        // The ones below are "blacklisted" for now because they caused at least one false-negative Gerrit Verification job
+        suite.addTestSuite(SessionManagerListener2Tests.class);
+
     }
 
     /**

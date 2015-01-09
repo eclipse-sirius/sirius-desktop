@@ -146,13 +146,11 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(NodeLabelPositionTest.class);
         suite.addTestSuite(NavigateToNewRepresentationTest.class);
         suite.addTestSuite(LockedAppearanceTabTest.class);
-        suite.addTestSuite(LocalSessionViewTest.class);
         suite.addTestSuite(GroupElementsInOneOtherTests.class);
         suite.addTestSuite(GroupElementsInOneOtherTestsWith200PercentOfZoomTests.class);
         suite.addTestSuite(GroupElementsInOneOtherTestsWith50PercentOfZoomTests.class);
         suite.addTestSuite(GoToMarkerTraceabilityWithUserInteractionTest.class);
         suite.addTestSuite(ExtraMappingEdgeCreationTest.class);
-        suite.addTestSuite(ExtensionActivationOrderTest.class);
         suite.addTestSuite(ExportDiagramAsImageWhenManyRepresentationsHaveSameNameTest.class);
         suite.addTestSuite(EdgeCreationTest.class);
         suite.addTestSuite(DragAndDropFromTableAndTreeToDiagramTest.class);
@@ -160,7 +158,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(DeleteFromDiagramTest.class);
         suite.addTestSuite(DeleteDiagramWithListeningPaletteToolTest.class);
         suite.addTestSuite(BoldItalicFontSynchronizationTest.class);
-        suite.addTestSuite(ToolCreationPositionTest.class);
         suite.addTestSuite(RepresentationRenamingTest.class);
         suite.addTestSuite(PopupMenuTest.class);
         suite.addTestSuite(NodeCreationTest.class);
@@ -243,6 +240,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(BackgroundColorFigureUpdateTests.class);
         suite.addTestSuite(EdgeMappingTestCase.class);
         suite.addTestSuite(InvalidMetamodelRessourceTest.class);
+        suite.addTestSuite(ExtensionActivationOrderTest.class);
     }
 
     /**
@@ -330,6 +328,8 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(GroupingContentProviderByContainingTest.class);
         suite.addTestSuite(PaletteViewManagementTest.class);
         suite.addTestSuite(CreateRepresentationFromSessionTest.class);
+        suite.addTestSuite(ToolCreationPositionTest.class);
+        suite.addTestSuite(LocalSessionViewTest.class);
 
         // Scenario test cases
         suite.addTestSuite(ESEDemoTest.class);
