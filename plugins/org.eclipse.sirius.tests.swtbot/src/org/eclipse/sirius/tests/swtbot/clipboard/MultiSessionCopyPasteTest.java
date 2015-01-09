@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.clipboard;
 
+import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -24,19 +25,11 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
  * @author jdupont
  */
 public class MultiSessionCopyPasteTest extends AbstractClipboardSupportTest {
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, MODEL_BIS, SESSION_FILE, SESSION_FILE_BIS, VSM_FILE);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
@@ -60,7 +53,7 @@ public class MultiSessionCopyPasteTest extends AbstractClipboardSupportTest {
 
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
 
-        checkCopyPaste(editor, editor.getEditPart("Class2"), editor2, false, editor2.getEditPart("ClassBis2"), "Class2", 1);
+        checkCopyPaste(editor, editor.getEditPart("Class2", AbstractBorderedShapeEditPart.class), editor2, false, editor2.getEditPart("ClassBis2", AbstractBorderedShapeEditPart.class), "Class2", 1);
     }
 
     /**
@@ -73,7 +66,7 @@ public class MultiSessionCopyPasteTest extends AbstractClipboardSupportTest {
         editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSessionBis.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE_BIS, DDiagram.class);
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
 
-        checkCopyPaste(editor, editor.getEditPart("Class2"), editor2, true, (SWTBotGefEditPart) null, "Class2", 1);
+        checkCopyPaste(editor, editor.getEditPart("Class2", AbstractBorderedShapeEditPart.class), editor2, true, (SWTBotGefEditPart) null, "Class2", 1);
     }
 
 }

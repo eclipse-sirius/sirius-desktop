@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -57,18 +57,12 @@ public class KeyboardDeletionFromLabelTests extends AbstractSiriusSwtBotGefTestC
 
     private static final String REPRESENTATION_INSTANCE_NAME = "vp-3009";
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), true);
@@ -138,17 +132,17 @@ public class KeyboardDeletionFromLabelTests extends AbstractSiriusSwtBotGefTestC
         assertFalse("The session should not be dirty before deletion.", localSession.isDirty());
         editor.setFocus();
         SWTBotGefEditPart part = editor.getEditPart(label, IDiagramNameEditPart.class);
-        ICondition done = new CheckSelectedCondition(editor, part.part());
+
+        if (!(part.part() instanceof DNodeListElementEditPart)) {
+            part = part.parent();
+        }
+
+        EditPart editPart = part.part();
+        ICondition done = new CheckSelectedCondition(editor, editPart);
         editor.select(part);
         bot.waitUntil(done);
 
-        EditPart editPart = part.part();
-        View notationView;
-        if (editPart instanceof DNodeListElementEditPart) {
-            notationView = (View) editPart.getModel();
-        } else {
-            notationView = (View) editPart.getParent().getModel();
-        }
+        View notationView = (View) editPart.getModel();
 
         DDiagramElement dde = (DDiagramElement) notationView.getElement();
         EObject viewContainer = notationView.eContainer();
@@ -185,6 +179,7 @@ public class KeyboardDeletionFromLabelTests extends AbstractSiriusSwtBotGefTestC
      * Delete from model with shortcut CTRL+D.
      */
     private SelectAndDeleteFunction deleteFromKeyboard_CtrlD = new SelectAndDeleteFunction() {
+        @Override
         protected void pressDeleteShortCut() {
             String savedKeyboardLayout = SWTBotPreferences.KEYBOARD_LAYOUT;
             SWTBotPreferences.KEYBOARD_LAYOUT = "EN_US";
@@ -197,6 +192,7 @@ public class KeyboardDeletionFromLabelTests extends AbstractSiriusSwtBotGefTestC
      * Delete from model with shortcut Suppr.
      */
     private SelectAndDeleteFunction deleteFromKeyboard_Suppr = new SelectAndDeleteFunction() {
+        @Override
         protected void pressDeleteShortCut() {
             String savedKeyboardLayout = SWTBotPreferences.KEYBOARD_LAYOUT;
             SWTBotPreferences.KEYBOARD_LAYOUT = "EN_US";
@@ -207,6 +203,7 @@ public class KeyboardDeletionFromLabelTests extends AbstractSiriusSwtBotGefTestC
 
     private abstract class SelectAndDeleteFunction implements Function<SWTBotGefEditPart, SWTBotGefEditPart> {
 
+        @Override
         public SWTBotGefEditPart apply(SWTBotGefEditPart toDelete) {
             assertTrue(editor != null);
 

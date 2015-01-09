@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -32,19 +33,11 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
  * @author jdupont
  */
 public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
@@ -188,7 +181,7 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
      */
     public void testGenericCopyEClassPasteInPackage() {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
-        checkCopyPaste(editor, editor.getEditPart("Class2"), editor, true, (SWTBotGefEditPart) null, "Class2", 2);
+        checkCopyPaste(editor, editor.getEditPart("Class2", AbstractBorderedShapeEditPart.class), editor, true, (SWTBotGefEditPart) null, "Class2", 2);
     }
 
     /**
@@ -196,7 +189,7 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
      */
     public void testGenericCopyEClassPasteInEClass() {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
-        checkCopyPaste(editor, editor.getEditPart("Class2"), editor, false, editor.getEditPart("Class2"), "Class2", 1);
+        checkCopyPaste(editor, editor.getEditPart("Class2", AbstractBorderedShapeEditPart.class), editor, false, editor.getEditPart("Class2", AbstractBorderedShapeEditPart.class), "Class2", 1);
     }
 
     /**
@@ -206,7 +199,7 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
     public void testGenericCopyEClassPasteInPackageOtherEditor() {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION, REPRESENTATION_WITH_CUSTOM_PASTE, DDiagram.class);
         editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
-        checkCopyPaste(editor, editor.getEditPart("Class2"), editor2, true, (SWTBotGefEditPart) null, "Class2", 2);
+        checkCopyPaste(editor, editor.getEditPart("Class2", AbstractBorderedShapeEditPart.class), editor2, true, (SWTBotGefEditPart) null, "Class2", 2);
     }
 
     /**
@@ -216,7 +209,7 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
     public void testGenericCopyEClassPasteInEClassOtherEditor() {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION, REPRESENTATION_WITH_CUSTOM_PASTE, DDiagram.class);
         editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
-        checkCopyPaste(editor, editor.getEditPart("Class2"), editor2, false, editor2.getEditPart("Class2"), "Class2", 1);
+        checkCopyPaste(editor, editor.getEditPart("Class2", AbstractBorderedShapeEditPart.class), editor2, false, editor2.getEditPart("Class2", AbstractBorderedShapeEditPart.class), "Class2", 1);
     }
 
     /**
@@ -244,7 +237,7 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
     public void testGeneriCopyNoPasteInSuperTypeEdge() {
         editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
         SWTBotGefEditPart edge = editor2.getEditPart("Class1").parent().sourceConnections().get(1);
-        checkCopyPaste(editor2, editor2.getEditPart("pastable_Class"), editor2, false, edge, "pasted_pastable_Class", 1);
+        checkCopyPaste(editor2, editor2.getEditPart("pastable_Class", AbstractBorderedShapeEditPart.class), editor2, false, edge, "pasted_pastable_Class", 1);
     }
 
     /**
@@ -253,7 +246,7 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
     public void testGenericCopySuperTypeEdgePasteNode() {
         editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
         SWTBotGefEditPart edge = editor2.getEditPart("Class1").parent().sourceConnections().get(1);
-        checkCopyPaste(editor2, edge, editor2, false, editor2.getEditPart("pastable_Class"), "pasted_pastable_Class", 1);
+        checkCopyPaste(editor2, edge, editor2, false, editor2.getEditPart("pastable_Class", AbstractBorderedShapeEditPart.class), "pasted_pastable_Class", 1);
     }
 
     /**
@@ -261,7 +254,7 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
      */
     public void testCopyNoPasteInReference() {
         editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
-        checkCopyPaste(editor2, editor2.getEditPart("pastable_Class"), editor2, false, editor2.getEditPart("[0..1] ref1"), "pasted_pastable_Class", 1);
+        checkCopyPaste(editor2, editor2.getEditPart("pastable_Class", AbstractBorderedShapeEditPart.class), editor2, false, editor2.getEditPart("[0..1] ref1"), "pasted_pastable_Class", 1);
     }
 
     /**
@@ -269,7 +262,7 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
      */
     public void testGenericCopyReferenceEdgePasteNode() {
         editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
-        checkCopyPaste(editor2, editor2.getEditPart("[0..1] ref1"), editor2, true, editor2.getEditPart("pastable_Class"), "[0..1] ref1", 2);
+        checkCopyPaste(editor2, editor2.getEditPart("[0..1] ref1"), editor2, true, editor2.getEditPart("pastable_Class", AbstractBorderedShapeEditPart.class), "[0..1] ref1", 2);
     }
 
     /**
@@ -283,7 +276,7 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
         Map<String, Integer> pasteElements = new Hashtable<String, Integer>();
         pasteElements.put("attributee1", 2);
         pasteElements.put("attributee2", 4);
-        checkCopyPaste(editor2, listElementCopy, editor2, true, editor2.getEditPart("pastable_Class"), pasteElements);
+        checkCopyPaste(editor2, listElementCopy, editor2, true, editor2.getEditPart("pastable_Class", AbstractBorderedShapeEditPart.class), pasteElements);
     }
 
     /**
@@ -292,9 +285,9 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
     public void testGenericCopyElementsPasteOnMoreElements() {
         editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), GENERIC_DESCRIPTION, REPRESENTATION_WITH_GENERIC_PASTE, DDiagram.class);
         List<SWTBotGefEditPart> listTargetPaste = new ArrayList<SWTBotGefEditPart>();
-        listTargetPaste.add(editor2.getEditPart("pastable_Class"));
-        listTargetPaste.add(editor2.getEditPart("Class2"));
-        listTargetPaste.add(editor2.getEditPart("nodelete_Class"));
+        listTargetPaste.add(editor2.getEditPart("pastable_Class", AbstractBorderedShapeEditPart.class));
+        listTargetPaste.add(editor2.getEditPart("Class2", AbstractBorderedShapeEditPart.class));
+        listTargetPaste.add(editor2.getEditPart("nodelete_Class", AbstractBorderedShapeEditPart.class));
         checkCopyPaste(editor2, editor2.getEditPart("attributee1"), editor2, true, listTargetPaste, "attributee1", 4);
     }
 }
