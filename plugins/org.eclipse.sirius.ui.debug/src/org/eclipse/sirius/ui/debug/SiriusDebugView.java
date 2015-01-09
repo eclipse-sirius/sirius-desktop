@@ -15,6 +15,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -102,6 +103,9 @@ import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.editor.tools.internal.presentation.ViewpoitnDependenciesSelectionDialog;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.emf.AllContents;
+import org.eclipse.sirius.tests.sample.component.Component;
+import org.eclipse.sirius.tests.sample.component.util.PayloadMarkerAdapter;
+import org.eclipse.sirius.tests.sample.component.util.PayloadMarkerAdapter.FeatureAccess;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionDialog;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -114,6 +118,7 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Multiset;
 import com.google.common.collect.Ordering;
 
 /**
@@ -348,19 +353,59 @@ public class SiriusDebugView extends AbstractDebugView {
         // addShowOrderingsAction();
         // addStorePositionsAction();
         // addShowPositionChangesAction();
-        addShowFiguresHierarchyAction();
-        addRefreshBenpointsAction();
-        addResetBendpointsAction();
+        // addShowFiguresHierarchyAction();
+        // addRefreshBenpointsAction();
+        // addResetBendpointsAction();
         // addExpandAction();
         // addRefreshCoverageAction();
-        addRefreshDiagramAction();
+        // addRefreshDiagramAction();
         // addStartMovidaRegistryAction();
         // addShowMovidaRegistryStatusAction();
         // addSelectReusedSiriussAction();
-        addShowCommandStackAction();
+        // addShowCommandStackAction();
         // addSiriusSelectionAction();
         // addExtractExpressionsAction();
         // addLoadResourceWithProgressAction();
+        addShowPayloadAccessLogAction();
+        addClearPayloadAccessLogAction();
+    }
+    
+    private void addShowPayloadAccessLogAction() {
+        addAction("Show Payload Access Log", new Runnable() {
+            public void run() {
+                int max = 50;
+                List<FeatureAccess> log = PayloadMarkerAdapter.INSTANCE.getAccessLog();
+                int totalSize = log.size();
+                int shown = Math.min(totalSize, max);
+                TabularReport tr = new TabularReport(/*"Timestamp", */"EObject", "Feature");
+                for (int i = log.size() > max ? log.size() - max : 0; i < log.size(); i++) {
+                    FeatureAccess featureAccess = log.get(i);
+                    tr.addLine(Arrays.asList(/*String.format("%tT", featureAccess.timestamp), */((Component) featureAccess.setting.getEObject()).getName(), featureAccess.setting.getEStructuralFeature().getName()));
+                }
+                StringBuilder sb = new StringBuilder();
+                sb.append("Showing " + shown + " of " + totalSize + " accesses.\n");
+                Multiset<String> contexts = PayloadMarkerAdapter.INSTANCE.getUniqueContexts();
+                sb.append("Unique contexts: " + contexts.elementSet().size()).append("\n\n");
+                
+                int i = 0;
+                for (String stack : contexts.elementSet()) {
+                    int count = contexts.count(stack);
+                    sb.append("Context #" + i++ + " (" + count + " occurrences)").append("\n");
+                    sb.append(stack).append("\n");
+                }
+
+                sb.append("\n").append(tr.print()).append("\n");
+                setText(sb.toString());
+            }
+        });
+    }
+    
+    private void addClearPayloadAccessLogAction() {
+        addAction("Clear Payload Access Log", new Runnable() {
+            public void run() {
+                PayloadMarkerAdapter.INSTANCE.clearAccessLog();
+            }
+        });
     }
 
     private void addLoadResourceWithProgressAction() {
