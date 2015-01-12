@@ -49,7 +49,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
-import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListener;
@@ -109,6 +108,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
+import org.eclipse.sirius.common.tools.api.util.ECrossReferenceAdapterWithUnproxyCapability;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
@@ -152,7 +152,7 @@ import com.google.common.collect.Sets.SetView;
 
 /**
  * A session which store data in {@link DAnalysis} references.
- *
+ * 
  * @author cbrun
  */
 public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements Session, DAnalysisSession, ResourceSyncClient, ViewpointRegistryListener, ViewpointRegistryListener2 {
@@ -320,7 +320,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     private SessionService services;
 
-    private ECrossReferenceAdapter crossReferencer;
+    private ECrossReferenceAdapterWithUnproxyCapability crossReferencer;
 
     private IInterpreter interpreter;
 
@@ -339,7 +339,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     /**
      * Create a new session.
-     *
+     * 
      * @param mainDAnalysis
      *            the analysis keeping the session data.
      */
@@ -369,7 +369,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * historical behavior was to share the same editing domain for all session.
      * Applications which have not been updated and still used shared editing
      * domains should set this flag to <code>false</code> to avoid problems.
-     *
+     * 
      * @param disposeOnClose
      *            whether or not the editing domain used by this session should
      *            be disposed when the session is closed.
@@ -381,7 +381,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /**
      * Tests whether this session will dispose its editing domain when it is
      * closed.
-     *
+     * 
      * @return <code>true</code> if this session will dispose its editing domain
      *         when closed.
      */
@@ -477,7 +477,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     /**
      * Return all valid(i.e. not null) owned and referenced analyses.
-     *
+     * 
      * @return all valid(i.e. not null) owned and referenced analyses.
      */
     public Collection<DAnalysis> allAnalyses() {
@@ -624,10 +624,10 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /**
      * Sets the Synchronization status of considered resources of this Session's
      * resourceSet to SYNC or changed regarding their modified status.
-     *
+     * 
      * Should only be called from setSynchronizeStatusofEveryResource method
      * (and overriding ones).
-     *
+     * 
      * @param resourcesToConsider
      *            the resources to consider.
      */
@@ -722,7 +722,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     /**
      * Get the selected viewpoints sorted form more specifis to generics.
-     *
+     * 
      * @return a collection of selected viewpoints for this session.
      */
     public Collection<Viewpoint> getSelectedViewpointsSpecificToGeneric() {
@@ -822,7 +822,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /**
      * Find all the resources referenced by any object from the specified
      * resource. Ignore "http" resources.
-     *
+     * 
      * @param res
      *            the resource to start from.
      * @return all the resources referenced by elements from res, except "http"
@@ -839,7 +839,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /**
      * Find all the resources referencing by any object from the specified
      * resource. Ignore "http" resources.
-     *
+     * 
      * @param res
      *            the resource to start from.
      * @return all the resources referencing by elements from res, except "http"
@@ -922,7 +922,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /**
      * Add the cross referencer (if exists and is not present) to the eAdapters
      * list of the given resource.
-     *
+     * 
      * @param newResource
      *            the resource on which the semantic cross reference should be
      *            added.
@@ -938,7 +938,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /**
      * Remove the cross referencer (if exists and is present) from the eAdapters
      * list of the given resource.
-     *
+     * 
      * @param resource
      *            the resource from which the semantic cross reference should be
      *            removed.
@@ -991,7 +991,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     /**
      * Performs the save immediately.
-     *
+     * 
      * @param options
      *            the options to use to save the resources.
      * @param monitor
@@ -1134,7 +1134,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     /**
      * Unselect this specified {@link Viewpoint} on this {@link Session}.
-     *
+     * 
      * @param viewpoint
      *            the {@link Viewpoint} to unselect on this {@link Session}
      */
@@ -1305,7 +1305,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     @Override
-    public ECrossReferenceAdapter getSemanticCrossReferencer() {
+    public ECrossReferenceAdapterWithUnproxyCapability getSemanticCrossReferencer() {
         if (crossReferencer == null) {
             // use a lazy cross referencer to avoid big memory consumption on
             // session load
@@ -1326,13 +1326,13 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * 
      * @return a new cross referencer adapter
      */
-    protected ECrossReferenceAdapter createSemanticCrossReferencer() {
+    protected ECrossReferenceAdapterWithUnproxyCapability createSemanticCrossReferencer() {
         return new SessionLazyCrossReferencer(this);
     }
 
     /**
      * Uncached EObjects IDs of the given resources.
-     *
+     * 
      * @param resources
      *            the resources.
      */
@@ -1368,7 +1368,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /**
      * Transfers the custom data of the origin session for the given associated
      * instance into this session and for the same instance.
-     *
+     * 
      * @param origin
      *            the original session.
      * @param associatedInstance
@@ -1385,7 +1385,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /**
      * Returns a view that can receive the given representation or
      * <code>null</code> if no view is found.
-     *
+     * 
      * @param representation
      *            the representation.
      * @param analysis
@@ -1405,7 +1405,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     /**
      * Returns the viewpoint of the given representation.
-     *
+     * 
      * @param representation
      *            the representation.
      * @return the viewpoint of the given representation.
@@ -1612,7 +1612,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * {@link Session#getSemanticResources()},
      * {@link Session#getAllSessionResources()} or
      * DAnalysisSessionEObject#getControlledResources().
-     *
+     * 
      * @param resource
      *            the specified {@link Resource}
      * @param resources
@@ -1640,7 +1640,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     /**
      * Check if this resource is in an non-existent project or a closed project.
-     *
+     * 
      * @param resource
      *            the resource to check
      * @return true if this resource is in an non-existent project or a closed
@@ -1684,7 +1684,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /**
      * Remove a resource from the current session and close the current session
      * if it contains no more analysis resource.
-     *
+     * 
      * @param resource
      *            The resource to remove
      */
@@ -1724,6 +1724,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                 try {
                     resource.load(Collections.EMPTY_MAP);
                     EcoreUtil.resolveAll(resource);
+                    getSemanticCrossReferencer().resolveProxyCrossReferences(resource);
                 } catch (IOException e) {
                     setResult(e);
                 }
@@ -1778,7 +1779,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * SavingPolicy has been defined, creates a default one.<br/>
      * Subclasses can override this method to define a new default Saving
      * Policy.
-     *
+     * 
      * @return the custom saving policy the session should use
      */
     public SavingPolicy getSavingPolicy() {
@@ -1789,7 +1790,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * Indicates whether all resources (semantic and Danalysises) of this
      * Session are whether {@link ResourceStatus#SYNC} or
      * {@link ResourceStatus#READONLY}.
-     *
+     * 
      * @return true if all resources (semantic and Danalysises) of this Session
      *         are whether {@link ResourceStatus#SYNC} or
      *         {@link ResourceStatus#READONLY}, false otherwise
@@ -1802,7 +1803,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /**
      * Indicates whether considered resources are whether
      * {@link ResourceStatus#SYNC} or {@link ResourceStatus#READONLY}.
-     *
+     * 
      * @param resourcesToConsider
      *            the resources to inspect.
      * @return true if all considered are whether {@link ResourceStatus#SYNC} or
@@ -2013,7 +2014,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /**
      * Disposes the permission authority corresponding to this session (if any
      * found).
-     *
+     * 
      * @param resourceSet
      *            the resourceSet associated to the current session (given in
      *            parameter as the EditingDomain may already have been disposed)

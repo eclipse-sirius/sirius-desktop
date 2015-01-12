@@ -12,6 +12,11 @@ h3. Specifier-Visible Changes
 
 h3. API Changes
 
+h4. Changes in @org.eclipse.sirius.common@
+
+* @org.eclipse.sirius.common.tools.api.util.ECrossReferenceAdapterWithUnproxyCapability@ is a specific kind of ECrossReferenceAdapter. It provides the capability to resolve all proxy cross references to a given resource. It is now used by the Session as semantic cross referencer. This type is exposed as API but it is not intended to be used/referenced/extended by user code (as the below @LazyCrossReferencer@ type).
+* @org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer@ now extends @ECrossReferenceAdapterWithUnproxyCapability@ and implements @resolveProxyCrossReferences(Resource)@.
+
 h4. Changes in @org.eclipse.sirius.ui@
 
 * The new constant @LINK_TO_VIEWPOINT_IMG@ has been added in @org.eclipse.sirius.ui.tools.api.image.ImagesPath@. It was previously in @org.eclipse.sirius.diagram.ui.DiagramImagesPath.LINK_TO_VIEWPOINT_IMG@. This is more coherent because the corresponding image is in core @org.eclipse.sirius.common.ui@ plugin. The old constant @DiagramImagesPath.LINK_TO_VIEWPOINT_IMG@ has been deprecated and will be removed in the next major version.

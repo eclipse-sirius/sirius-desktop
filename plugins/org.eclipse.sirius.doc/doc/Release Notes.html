@@ -46,6 +46,20 @@
 			<li>In Open menu, the menu is computed from the navigation tool label instead of its name/id.</li>
 		</ul>
 		<h3 id="APIChanges">API Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
+			<code>org.eclipse.sirius.common</code>
+		</h4>
+		<ul>
+			<li>
+				<code>org.eclipse.sirius.common.tools.api.util.ECrossReferenceAdapterWithUnproxyCapability</code> is a specific kind of ECrossReferenceAdapter. It provides the capability to resolve all proxy cross references to a given resource. It is now used by the Session as semantic cross referencer. This type is exposed as API but it is not intended to be used/referenced/extended by user code (as the below 
+				<code>LazyCrossReferencer</code> type).
+			</li>
+			<li>
+				<code>org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer</code> now extends 
+				<code>ECrossReferenceAdapterWithUnproxyCapability</code> and implements 
+				<code>resolveProxyCrossReferences(Resource)</code>.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
@@ -204,7 +218,7 @@
 				<code>findViewpointByName()</code> to correct a wrong rebranding.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
@@ -761,7 +775,7 @@
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common3">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
@@ -1389,7 +1403,7 @@ if (rootPackage != null &amp;&amp; rootPackage.getNsURI().equals(DiagramPackage.
 		</ul>
 		<h3 id="APIChanges7">API Changes</h3>
 		<p>Sirius 1.0.0M4 includes a lots of API-breaking changes, as part of a global effort to improve the quality of the Sirius internals. In this milestone in particular, most of the APIs which were marked as deprecated in previous versions of Sirius (and before that of Viewpoint) have been either removed (if a replacement exists) or marked as non-deprecated (if no replacement exists yet).</p>
-		<h4 id="Changesinorg.eclipse.sirius.common3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common4">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>

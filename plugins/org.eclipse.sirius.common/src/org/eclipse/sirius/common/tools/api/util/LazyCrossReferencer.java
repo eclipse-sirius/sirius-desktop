@@ -16,18 +16,21 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
-import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+import org.eclipse.emf.ecore.resource.Resource;
 
 import com.google.common.collect.Iterables;
 
 /**
- * A lazy cross referencer which does nothing until one of its method is called. <BR><BR>
+ * A lazy cross referencer which does nothing until one of its method is called. <BR>
+ * <BR>
  * This cross referencer also reacts to {@link EObject} removal from their
  * containing reference : it removes itself automatically from their adapters
- * and recursively from those of their contents. <BR><BR>
+ * and recursively from those of their contents. <BR>
+ * <BR>
  * This cross referencer also provide a way to disable the resolution of proxy.
  * This can be useful to avoid reloading of a resource during the unloading of
- * it (caused by resolution of some proxy with crossReferencer).<BR><BR>
+ * it (caused by resolution of some proxy with crossReferencer).<BR>
+ * <BR>
  * 
  * @see {@link org.eclipse.emf.transaction.impl.ResourceSetManager#observe(org.eclipse.emf.ecore.resource.Resource, Notification)}
  *      and message
@@ -36,12 +39,12 @@ import com.google.common.collect.Iterables;
  * 
  * @author mchauvin
  */
-public class LazyCrossReferencer extends ECrossReferenceAdapter {
+public class LazyCrossReferencer extends ECrossReferenceAdapterWithUnproxyCapability {
     private boolean resolveEnabled = true;
 
     private boolean initialized;
 
-    private ECrossReferenceAdapter adapter = new InternalCrossReferencer();
+    private ECrossReferenceAdapterWithUnproxyCapability adapter = new InternalCrossReferencer();
 
     /**
      * Subclasses should override, and call super.initialize().
@@ -197,9 +200,25 @@ public class LazyCrossReferencer extends ECrossReferenceAdapter {
     }
 
     /**
+     * Look at all EObjects of this resource and resolve proxy cross reference
+     * that reference these EObjects.
+     * 
+     * @param resource
+     *            Each cross reference pointing to a proxy of this
+     *            <code>resource</code> will be resolved.
+     */
+    public void resolveProxyCrossReferences(Resource resource) {
+        if (initialized) {
+            // The resolution of proxy is called only is the cross-referencer
+            // has already been initialized.
+            adapter.resolveProxyCrossReferences(resource);
+        }
+    }
+
+    /**
      * @see LazyCrossReferencer. This class is the delegated adapter.
      */
-    private class InternalCrossReferencer extends ECrossReferenceAdapter {
+    private class InternalCrossReferencer extends ECrossReferenceAdapterWithUnproxyCapability {
 
         /**
          * {@inheritDoc}
