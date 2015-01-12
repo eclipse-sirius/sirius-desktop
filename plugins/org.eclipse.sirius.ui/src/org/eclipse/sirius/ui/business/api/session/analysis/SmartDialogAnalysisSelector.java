@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,8 +22,10 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelector;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IDecoratorManager;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 
@@ -34,35 +36,27 @@ import org.eclipse.ui.dialogs.ElementListSelectionDialog;
  */
 public class SmartDialogAnalysisSelector implements DAnalysisSelector {
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelector#selectSmartlyAnalysisForAddedResource(org.eclipse.emf.ecore.resource.Resource,
-     *      java.util.Collection)
-     */
+    @Override
     public DAnalysis selectSmartlyAnalysisForAddedResource(final Resource resource, final Collection<DAnalysis> allAnalysis) {
         return selectSmartlyAnalysis(allAnalysis);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelector#selectSmartlyAnalysisForAddedRepresentation(org.eclipse.sirius.viewpoint.DRepresentation,
-     *      java.util.Collection)
-     */
+    @Override
     public DAnalysis selectSmartlyAnalysisForAddedRepresentation(final DRepresentation representation, final Collection<DAnalysis> allAnalysis) {
         return selectSmartlyAnalysis(allAnalysis);
     }
 
     /**
-     * {@inheritDoc}
+     * Asks the user to select the analysis.
      * 
-     * @see org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelector#selectSmartlyAnalysis(org.eclipse.sirius.description.Sirius,
-     *      java.util.Collection)
+     * @param allAnalysis
+     *            all available analysis
+     * @return selected analysis
      */
     private DAnalysis selectSmartlyAnalysis(final Collection<DAnalysis> allAnalysis) {
 
         final ILabelProvider provider = new AdapterFactoryLabelProvider(SiriusEditPlugin.getPlugin().getItemProvidersAdapterFactory()) {
+            private IDecoratorManager decoratorManager = PlatformUI.getWorkbench().getDecoratorManager();
 
             @Override
             public String getText(final Object object) {
@@ -72,9 +66,14 @@ public class SmartDialogAnalysisSelector implements DAnalysisSelector {
                 return super.getText(object);
             }
 
+            @Override
+            public Image getImage(Object object) {
+                return decoratorManager.decorateImage(super.getImage(object), object);
+            }
         };
         RunnableWithResult<Object> runnable = new RunnableWithResult.Impl<Object>() {
 
+            @Override
             public void run() {
                 final ElementListSelectionDialog dialog = new ElementListSelectionDialog(Display.getDefault().getActiveShell(), provider) {
 
@@ -107,5 +106,4 @@ public class SmartDialogAnalysisSelector implements DAnalysisSelector {
         }
         return (DAnalysis) allAnalysis.toArray()[0];
     }
-
 }
