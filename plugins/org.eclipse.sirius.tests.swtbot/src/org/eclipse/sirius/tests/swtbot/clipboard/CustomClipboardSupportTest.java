@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,18 +29,11 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
  */
 public class CustomClipboardSupportTest extends AbstractClipboardSupportTest {
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);
     }
 
-    /**
-     * 
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
@@ -54,7 +47,7 @@ public class CustomClipboardSupportTest extends AbstractClipboardSupportTest {
      */
     public void testCopyPasteFromEditMenuWithNoPasteTool() {
         editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION, REPRESENTATION_WITH_CUSTOM_PASTE, DDiagram.class);
-        checkCopyPaste(editor2, editor2.getEditPart("Class2"), editor2, false, (SWTBotGefEditPart) null, "Class2", 1);
+        checkCopyPaste(editor2, editor2.getSelectableEditPart("Class2"), editor2, false, (SWTBotGefEditPart) null, "Class2", 1);
     }
 
     /**
@@ -62,7 +55,7 @@ public class CustomClipboardSupportTest extends AbstractClipboardSupportTest {
      */
     public void testCopyPasteFromEditMenuWithAlwaysPasteClassTool() {
         editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION, REPRESENTATION_WITH_CUSTOM_PASTE, DDiagram.class);
-        checkCopyPaste(editor2, editor2.getEditPart("pastable_Class"), editor2, true, (SWTBotGefEditPart) null, "pasted_pastable_Class", 1);
+        checkCopyPaste(editor2, editor2.getSelectableEditPart("pastable_Class"), editor2, true, (SWTBotGefEditPart) null, "pasted_pastable_Class", 1);
     }
 
     /**
@@ -70,7 +63,7 @@ public class CustomClipboardSupportTest extends AbstractClipboardSupportTest {
      */
     public void testCopyPasteInClassFromEditMenuWithAlwaysPasteClassTool() {
         editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION, REPRESENTATION_WITH_CUSTOM_PASTE, DDiagram.class);
-        checkCopyPaste(editor2, editor2.getEditPart("pastable_Class"), editor2, true, editor2.getEditPart("Class2"), "pasted_pastable_Class", 1);
+        checkCopyPaste(editor2, editor2.getSelectableEditPart("pastable_Class"), editor2, true, editor2.getSelectableEditPart("Class2"), "pasted_pastable_Class", 1);
     }
 
     /**
@@ -78,7 +71,7 @@ public class CustomClipboardSupportTest extends AbstractClipboardSupportTest {
      */
     public void testCopyPasteInReferenceFromEditMenuWithAlwaysPasteClassTool() {
         editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION, REPRESENTATION_WITH_CUSTOM_PASTE, DDiagram.class);
-        checkCopyPaste(editor2, editor2.getEditPart("pastable_Class"), editor2, true, editor2.getEditPart("ref1"), "pasted_pastable_Class", 1);
+        checkCopyPaste(editor2, editor2.getSelectableEditPart("pastable_Class"), editor2, true, editor2.getEditPart("ref1"), "pasted_pastable_Class", 1);
     }
 
     /**
@@ -86,7 +79,7 @@ public class CustomClipboardSupportTest extends AbstractClipboardSupportTest {
      */
     public void testCopyPasteInAttributeFromEditMenuWithAlwaysPasteClassTool() {
         editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION, REPRESENTATION_WITH_CUSTOM_PASTE, DDiagram.class);
-        checkCopyPaste(editor2, editor2.getEditPart("pastable_Class"), editor2, true, editor2.getEditPart("attributee2"), "pasted_pastable_Class", 1);
+        checkCopyPaste(editor2, editor2.getSelectableEditPart("pastable_Class"), editor2, true, editor2.getSelectableEditPart("attributee2"), "pasted_pastable_Class", 1);
     }
 
     /**
@@ -95,7 +88,7 @@ public class CustomClipboardSupportTest extends AbstractClipboardSupportTest {
     public void testCopyPasteInSuperTypeEdgeFromEditMenuWithAlwaysPasteClassTool() {
         editor2 = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), CUSTOM_DESCRIPTION, REPRESENTATION_WITH_CUSTOM_PASTE, DDiagram.class);
 
-        checkCopyPaste(editor2, editor2.getEditPart("pastable_Class"), editor2, true, editor2.getEditPart("super type of Class1"), "pasted_pastable_Class", 1);
+        checkCopyPaste(editor2, editor2.getSelectableEditPart("pastable_Class"), editor2, true, editor2.getEditPart("super type of Class1"), "pasted_pastable_Class", 1);
     }
 
     // TODO with multi tools (one enabled, many enabled)
