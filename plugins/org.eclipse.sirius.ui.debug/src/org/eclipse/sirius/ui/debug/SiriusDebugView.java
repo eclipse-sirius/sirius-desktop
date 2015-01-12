@@ -35,10 +35,16 @@ import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.ContentHandler;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -70,9 +76,11 @@ import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.movida.ViewpointSelection;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry;
 import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistryListener;
+import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.diagram.AbsoluteBoundsFilter;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.EdgeTarget;
@@ -107,6 +115,9 @@ import org.eclipse.sirius.tests.sample.component.Component;
 import org.eclipse.sirius.tests.sample.component.util.PayloadMarkerAdapter;
 import org.eclipse.sirius.tests.sample.component.util.PayloadMarkerAdapter.FeatureAccess;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionDialog;
+import org.eclipse.sirius.ui.debug.ResourceSetTopologyAnalyzer.Reference;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.SWT;
@@ -118,6 +129,7 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Multimap;
 import com.google.common.collect.Multiset;
 import com.google.common.collect.Ordering;
 
@@ -368,8 +380,64 @@ public class SiriusDebugView extends AbstractDebugView {
         // addLoadResourceWithProgressAction();
         addShowPayloadAccessLogAction();
         addClearPayloadAccessLogAction();
+        addShowResourceSetTopologyAction();
+        addShowAdaptersAction();
+        addShowSessionStructureAction();
     }
-    
+
+    private void addShowSessionStructureAction() {
+        addAction("Show session structure", new Runnable() {
+            @Override
+            public void run() {
+                EObject current = getCurrentEObject();
+                if (current != null) {
+                    Session s = SessionManager.INSTANCE.getSession(current);
+                    if (s instanceof DAnalysisSessionImpl) {
+                        setText(getStructure(((DAnalysisSessionImpl) s)));
+                    } else if (s == null && current instanceof DSemanticDecorator) {
+                        s = SessionManager.INSTANCE.getSession(((DSemanticDecorator) current).getTarget());
+                        if (s instanceof DAnalysisSessionImpl) {
+                            setText(getStructure(((DAnalysisSessionImpl) s)));
+                        }
+                    }
+                }
+            }
+
+            private String getStructure(DAnalysisSessionImpl session) {
+                StringBuilder sb = new StringBuilder();
+                sb.append("DAnalysisSessionEObject references:\n");
+                for (EStructuralFeature esf: session.eClass().getEAllStructuralFeatures()) {
+                    sb.append("* ").append(esf.getName()).append(":\n");
+                    appendValue(session, esf, sb);
+                }
+                return sb.toString();
+            }
+
+            private void appendValue(EObject obj, EStructuralFeature esf, StringBuilder sb) {
+                Object value = obj.eGet(esf);
+                if (esf.isMany()) {
+                    EList<?> values = (EList<?>) value;
+                    for (int i = 0; i < values.size(); i++) {
+                        Object v = values.get(i);
+                        sb.append("  ").append(i + 1).append(". ").append(v instanceof EObject ? toString((EObject) v) : String.valueOf(v)).append("\n");
+                    }
+                } else {
+                    sb.append("  - ").append(value instanceof EObject ? toString((EObject) value) : String.valueOf(value)).append("\n");
+                }
+            }
+            
+            private String toString(EObject obj) {
+                if (obj == null) {
+                    return null;
+                } else if (obj.eIsProxy()) {
+                    return ((InternalEObject) obj).eProxyURI().toString();
+                } else {
+                    return obj.getClass().getName() + "@" + Integer.toHexString(obj.hashCode());
+                }
+            }
+        });
+    }
+
     private void addShowPayloadAccessLogAction() {
         addAction("Show Payload Access Log", new Runnable() {
             public void run() {
@@ -377,16 +445,19 @@ public class SiriusDebugView extends AbstractDebugView {
                 List<FeatureAccess> log = PayloadMarkerAdapter.INSTANCE.getAccessLog();
                 int totalSize = log.size();
                 int shown = Math.min(totalSize, max);
-                TabularReport tr = new TabularReport(/*"Timestamp", */"EObject", "Feature");
+                TabularReport tr = new TabularReport(/* "Timestamp", */"EObject", "Feature");
                 for (int i = log.size() > max ? log.size() - max : 0; i < log.size(); i++) {
                     FeatureAccess featureAccess = log.get(i);
-                    tr.addLine(Arrays.asList(/*String.format("%tT", featureAccess.timestamp), */((Component) featureAccess.setting.getEObject()).getName(), featureAccess.setting.getEStructuralFeature().getName()));
+                    tr.addLine(Arrays.asList(/*
+                                              * String.format("%tT",
+                                              * featureAccess.timestamp),
+                                              */((Component) featureAccess.setting.getEObject()).getName(), featureAccess.setting.getEStructuralFeature().getName()));
                 }
                 StringBuilder sb = new StringBuilder();
                 sb.append("Showing " + shown + " of " + totalSize + " accesses.\n");
                 Multiset<String> contexts = PayloadMarkerAdapter.INSTANCE.getUniqueContexts();
                 sb.append("Unique contexts: " + contexts.elementSet().size()).append("\n\n");
-                
+
                 int i = 0;
                 for (String stack : contexts.elementSet()) {
                     int count = contexts.count(stack);
@@ -399,11 +470,107 @@ public class SiriusDebugView extends AbstractDebugView {
             }
         });
     }
-    
+
     private void addClearPayloadAccessLogAction() {
         addAction("Clear Payload Access Log", new Runnable() {
             public void run() {
                 PayloadMarkerAdapter.INSTANCE.clearAccessLog();
+            }
+        });
+    }
+
+    private void addShowAdaptersAction() {
+        addAction("Show adapters", new Runnable() {
+            @Override
+            public void run() {
+                StringBuilder sb = new StringBuilder();
+                EObject current = getCurrentEObject();
+                if (current != null) {
+                    sb.append("Selected element:\n");
+                    appendAdapters(sb, current);
+                    if (current instanceof DSemanticDecorator) {
+                        sb.append("\nDSemanticDecorator.target:\n");
+                        appendAdapters(sb, ((DSemanticDecorator) current).getTarget());
+                    }
+                    if (current instanceof DRepresentationElement) {
+                        sb.append("\nDRepresentationElement.semanticElements:\n");
+                        for (EObject o : ((DRepresentationElement) current).getSemanticElements()) {
+                            if (o != null) {
+                                appendAdapters(sb, o);
+                            }
+                        }
+                    }
+                    if (current.eResource() != null) {
+                        Resource r = current.eResource();
+                        sb.append("\nAdapters on Resource " + r.getURI().toString()).append(":\n");
+                        appendAdapters2(sb, r);
+                        if (r.getResourceSet() != null) {
+                            ResourceSet rs = r.getResourceSet();
+                            sb.append("\nAdapters on ResourceSet:\n");
+                            appendAdapters2(sb, rs);
+                        }
+                    }
+                }
+                setText(sb.toString());
+            }
+
+            private void appendAdapters(StringBuilder sb, EObject current) {
+                sb.append("Adapters on ").append(current.eClass().getName()).append("\n");
+                appendAdapters2(sb, current);
+            }
+
+            private void appendAdapters2(StringBuilder sb, Notifier current) {
+                EList<Adapter> adapters = current.eAdapters();
+                for (int i = 0; i < adapters.size(); i++) {
+                    Adapter adapter = adapters.get(i);
+                    sb.append(i + 1).append(". ").append(adapter.getClass().getName()).append("@").append(Integer.toHexString(adapter.hashCode())).append("\n");
+                }
+            }
+        });
+    }
+
+    private EObject getCurrentEObject() {
+        if (selection instanceof IGraphicalEditPart) {
+            return ((IGraphicalEditPart) selection).resolveSemanticElement();
+        } else if (selection instanceof EObject) {
+            return (EObject) selection;
+        } else {
+            return null;
+        }
+    }
+
+    private void addShowResourceSetTopologyAction() {
+        addAction("Show ResourceSet Topology", new Runnable() {
+            public void run() {
+                for (Session s : SessionManager.INSTANCE.getSessions()) {
+                    ResourceSetTopologyAnalyzer rsta = new ResourceSetTopologyAnalyzer(s.getTransactionalEditingDomain().getResourceSet());
+                    Multimap<EStructuralFeature, Reference> result = rsta.analyze();
+                    StringBuilder sb = new StringBuilder();
+                    sb.append("Found " + result.keys().size() + " distinct kinds of cross-resource references:\n");
+                    for (EStructuralFeature esf : result.keys()) {
+                        sb.append("- ");
+                        appendFeatureName(sb, esf);
+                        sb.append("\n");
+                        for (Reference ref : result.get(esf)) {
+                            sb.append("  - ").append(renderResource(ref.sourceResource)).append(" => ").append(renderResource(ref.targetResource)).append(" [" + ref.count + "]").append("\n");
+                        }
+                    }
+                    setText(sb.toString());
+                }
+            }
+
+            private final void appendFeatureName(StringBuilder out, EStructuralFeature esf) {
+                out.append(esf.getEContainingClass().getEPackage().getName()).append("::").append(esf.getEContainingClass().getName()).append(".").append(esf.getName());
+            }
+
+            private final String renderResource(Resource res) {
+                if (res == null) {
+                    return "(no resource)";
+                } else if (res.getURI() == null) {
+                    return "(resource with no URI)";
+                } else {
+                    return res.getURI().toString();
+                }
             }
         });
     }
