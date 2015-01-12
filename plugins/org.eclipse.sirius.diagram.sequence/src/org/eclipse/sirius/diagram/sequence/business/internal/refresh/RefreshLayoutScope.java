@@ -101,17 +101,22 @@ public class RefreshLayoutScope implements Predicate<Notification> {
     }
 
     private boolean isSequenceElementChange(Notification notification) {
-        boolean isSequenceElement = isSequenceElement(notification.getNotifier());
+        boolean isSequenceElement = false;
+        Object notifier = notification.getNotifier();
+        View view = getView(notifier);
+        isSequenceElement = view != null && ISequenceElementAccessor.isPartOfSequenceElement(view);
         if (isSequenceElement) {
             Object value = getValue(notification);
             if (value != null) {
                 boolean valueIsSequenceElt = false;
                 if (value instanceof EObject) {
-                    valueIsSequenceElt = isSequenceElement(value);
+                    view = getView(value);
+                    valueIsSequenceElt = view == null || ISequenceElementAccessor.isPartOfSequenceElement(view);
                 } else if (value instanceof Collection<?>) {
                     Collection<?> values = (Collection<?>) value;
                     for (Object val : values) {
-                        if (isSequenceElement(val)) {
+                        view = getView(val);
+                        if (view == null || ISequenceElementAccessor.isPartOfSequenceElement(view)) {
                             valueIsSequenceElt = true;
                             break;
                         }
@@ -137,21 +142,17 @@ public class RefreshLayoutScope implements Predicate<Notification> {
         return value;
     }
 
-    private boolean isSequenceElement(Object notifier) {
-        boolean isSequenceElement = false;
+    private View getView(Object notifier) {
+        View view = null;
         if (notifier instanceof EObject) {
-            View view = null;
             if (notifier instanceof View) {
                 view = (View) notifier;
             } else if (((EObject) notifier).eContainer() instanceof View) {
                 // Needed for GMF Style and LayoutConstraint
                 view = (View) ((EObject) notifier).eContainer();
             }
-            if (view != null) {
-                isSequenceElement = ISequenceElementAccessor.isPartOfSequenceElement(view);
-            }
         }
-        return isSequenceElement;
+        return view;
     }
 
     private boolean containsLayoutConstraintNotationChanges(Notification notification) {
