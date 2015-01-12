@@ -47,7 +47,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
@@ -106,6 +105,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
+import org.eclipse.sirius.common.tools.api.util.ECrossReferenceAdapterWithUnproxyCapability;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
@@ -317,7 +317,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     private SessionService services;
 
-    private ECrossReferenceAdapter crossReferencer;
+    private ECrossReferenceAdapterWithUnproxyCapability crossReferencer;
 
     private IInterpreter interpreter;
 
@@ -1309,7 +1309,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     @Override
-    public ECrossReferenceAdapter getSemanticCrossReferencer() {
+    public ECrossReferenceAdapterWithUnproxyCapability getSemanticCrossReferencer() {
         if (crossReferencer == null) {
             // use a lazy cross referencer to avoid big memory consumption on
             // session load
@@ -1330,7 +1330,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * 
      * @return a new cross referencer adapter
      */
-    protected ECrossReferenceAdapter createSemanticCrossReferencer() {
+    protected ECrossReferenceAdapterWithUnproxyCapability createSemanticCrossReferencer() {
         return new SessionLazyCrossReferencer(this);
     }
 
@@ -1715,6 +1715,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                 try {
                     resource.load(Collections.EMPTY_MAP);
                     EcoreUtil.resolveAll(resource);
+                    getSemanticCrossReferencer().resolveProxyCrossReferences(resource);
                 } catch (IOException e) {
                     setResult(e);
                 }
