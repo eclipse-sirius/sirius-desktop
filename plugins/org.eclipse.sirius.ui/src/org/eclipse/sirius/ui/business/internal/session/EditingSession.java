@@ -28,12 +28,16 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.internal.session.ReloadingPolicyImpl;
+import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
+import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
+import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient.ResourceStatusChange;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.tools.api.command.ui.RefreshFilter;
 import org.eclipse.sirius.tools.api.command.ui.RefreshFilterManager;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.ui.business.api.session.EditingSessionEvent;
 import org.eclipse.sirius.ui.business.api.session.EditorNameAdapter;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
@@ -86,8 +90,6 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
      */
     private EditorNameAdapter editorNameAdapter;
 
-    private RestoreToLastSavePointListener restoreToSavePointListener;
-
     private SaveSessionWhenNoDialectEditorsListener saveSessionListener;
 
     /**
@@ -104,18 +106,11 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
     }
 
     private void initListeners() {
-        this.restoreToSavePointListener = new RestoreToLastSavePointListener(session);
-        this.restoreToSavePointListener.register();
         this.saveSessionListener = new SaveSessionWhenNoDialectEditorsListener(session);
         this.saveSessionListener.register();
     }
 
     private void removeListeners() {
-        if (restoreToSavePointListener != null) {
-            restoreToSavePointListener.unregister();
-            restoreToSavePointListener.dispose();
-            restoreToSavePointListener = null;
-        }
 
         if (this.saveSessionListener != null) {
             this.saveSessionListener.unregister();
@@ -239,19 +234,51 @@ public class EditingSession implements IEditingSession, ISaveablesSource, Refres
         int choice = ISaveablePart2.DEFAULT;
         if (saveable != null) {
             boolean stillOpenElsewhere = getEditors().size() > 1 && !closeAllDetected();
-            boolean promptStandardDialog = !RestoreToLastSavePointListener.isAllowedToReturnToSyncState();
+            boolean promptStandardDialog = !isAllowedToReturnToSyncState();
 
             choice = SWTUtil.showSaveDialog(session, saveable.getName(), true, stillOpenElsewhere, promptStandardDialog);
 
             if (choice == ISaveablePart2.CANCEL) {
                 needSaveOnCloseDetec.reInit();
             } else if (choice == ISaveablePart2.NO && (getEditors().size() == 1 || closeAllDetected())) {
-                if (restoreToSavePointListener != null) {
-                    restoreToSavePointListener.returnToSyncState();
-                }
+                returnToSyncState();
             }
         }
         return choice;
+    }
+
+    /**
+     * Notifies the session that the changes have been canceled by user. That
+     * will cause the reloading of "changed" resources.
+     */
+    private void returnToSyncState() {
+        if (isAllowedToReturnToSyncState()) {
+            List<ResourceStatusChange> changes = new ArrayList<ResourceStatusChange>();
+            for (Resource currentResource : session.getAllSessionResources()) {
+                if (currentResource.isModified()) {
+                    changes.add(new ResourceStatusChange(currentResource, ResourceStatus.CHANGES_CANCELED, ResourceStatus.CHANGED));
+                }
+            }
+            for (Resource currentResource : session.getSemanticResources()) {
+                if (currentResource.isModified()) {
+                    changes.add(new ResourceStatusChange(currentResource, ResourceStatus.CHANGES_CANCELED, ResourceStatus.CHANGED));
+                }
+            }
+            if (session instanceof ResourceSyncClient) {
+                ((ResourceSyncClient) session).statusesChanged(changes);
+            }
+        }
+    }
+
+    /**
+     * Check the DesignerUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE
+     * preference state.
+     * 
+     * @return the preference value.
+     */
+    private boolean isAllowedToReturnToSyncState() {
+        IPreferenceStore preferenceStore = SiriusEditPlugin.getPlugin().getPreferenceStore();
+        return preferenceStore != null && preferenceStore.getBoolean(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name());
     }
 
     private boolean closeAllDetected() {

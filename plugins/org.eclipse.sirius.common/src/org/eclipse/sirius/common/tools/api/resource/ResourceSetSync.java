@@ -97,7 +97,7 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
         /**
          * The resource in-memory status in regard of the physical data.
          */
-        CHANGED, EXTERNAL_CHANGED, CONFLICTING_CHANGED, CONFLICTING_DELETED, DELETED, SYNC, UNKNOWN
+        CHANGED, EXTERNAL_CHANGED, CONFLICTING_CHANGED, CONFLICTING_DELETED, DELETED, SYNC, CHANGES_CANCELED, UNKNOWN
     }
 
     /**

@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.session;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.eclipse.emf.ecore.resource.Resource;
@@ -71,11 +72,18 @@ public class ReloadingPolicyImpl implements ReloadingPolicy {
         case CONFLICTING_DELETED:
             actions = handleExternalDeleteConflict(session, resource, newStatus);
             break;
+        case CHANGES_CANCELED:
+            actions = handleChangesCanceled(session, resource, newStatus);
+            break;
         default:
             break;
         }
 
         return actions;
+    }
+
+    private List<Action> handleChangesCanceled(Session session, Resource resource, ResourceStatus newStatus) {
+        return Arrays.asList(Action.RELOAD);
     }
 
     private List<Action> handleExternalChangeConflict(final Session session, final Resource resource, final ResourceStatus newStatus) {

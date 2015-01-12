@@ -91,6 +91,7 @@ public class SessionResourcesSynchronizer implements ResourceSyncClient {
                 case CONFLICTING_CHANGED:
                 case CONFLICTING_DELETED:
                 case DELETED:
+                case CHANGES_CANCELED:
                     IProgressMonitor pm = new NullProgressMonitor();
                     for (Resource resource : newStatuses.get(newStatus)) {
                         try {
@@ -175,7 +176,7 @@ public class SessionResourcesSynchronizer implements ResourceSyncClient {
             break;
         }
     }
-    
+
     private void reloadResource(final Resource resource) throws IOException {
         session.notifyListeners(SessionListener.ABOUT_TO_BE_REPLACED);
         TransactionalEditingDomain ted = session.getTransactionalEditingDomain();

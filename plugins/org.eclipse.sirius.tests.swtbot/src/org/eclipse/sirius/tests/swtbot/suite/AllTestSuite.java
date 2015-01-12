@@ -170,6 +170,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(NodeCreationWithSnapToGridTest.class);
         suite.addTestSuite(GenericClipboardSupportTest.class);
         suite.addTestSuite(MultiSessionCopyPasteTest.class);
+        suite.addTestSuite(CloseWithoutSavingTest.class);
     }
 
     /**
