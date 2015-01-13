@@ -635,6 +635,8 @@ The tab-bar contains a different set of actions when at least one element is sel
 
 !images/tabbar_alignment_control.png! _Alignment Control_. This menu contains several operations which can be used to align several graphical elements in variouse ways. The actions in this menu are only enabled when several elements are selected.
 
+!images/tabbar_distribute_actions.png! _Distribute Elements_. This menu contains several actions which can be used to distribute the selected diagram elements horizontally/vertically with a same space between their centers or their bounds. The actions in this menu are enabled only for selected nodes with same direct parent. At least 3 shapes should be selected to enable distribute actions.
+
 !images/tabbar_pin_unpin_02.png! _Pin/Unpin_. These two buttons can be used to mark all the selected elements as pinned or not.
 
 !images/tabbar_copy_layout.png! _Copy Layout_. This tool can be used to duplicate the layout of some diagram elements from this diagram into another. This replication only applies to the same semantic elements between diagrams. First, select the set of elements of interset, and use this _Copy layout_ action. Then go to the target diagram, and choose the _Paste layout_ action from the tab-bar there.
