@@ -12,6 +12,7 @@ package org.eclipse.sirius.business.internal.session.danalysis;
 
 import org.eclipse.emf.ecore.resource.Resource;
 
+import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 
 /**
@@ -23,7 +24,7 @@ import com.google.common.base.Predicate;
  */
 public class ResourceSyncClientNotificationFilter implements Predicate<Resource> {
 
-    private Resource changedResource;
+    private final Resource changedResource;
 
     /**
      * Default constructor.
@@ -32,12 +33,10 @@ public class ResourceSyncClientNotificationFilter implements Predicate<Resource>
      *            the changed {@link Resource} notified by the ResourceSetSync
      */
     public ResourceSyncClientNotificationFilter(Resource changedResource) {
-        this.changedResource = changedResource;
+        this.changedResource = Preconditions.checkNotNull(changedResource);
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public boolean apply(final Resource input) {
         boolean same = false;
         if (changedResource == input) {
@@ -46,6 +45,5 @@ public class ResourceSyncClientNotificationFilter implements Predicate<Resource>
             same = changedResource.getURI().equals(input.getURI());
         }
         return same;
-
     }
 }
