@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.ui.tools.api.layout;
+package org.eclipse.sirius.diagram.tools.api.layout;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -25,7 +25,6 @@ import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptor
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
@@ -50,29 +49,6 @@ public final class PinHelper {
         PINNED_CONSTRAINTS.add(ArrangeConstraint.KEEP_LOCATION);
         PINNED_CONSTRAINTS.add(ArrangeConstraint.KEEP_SIZE);
         PINNED_CONSTRAINTS.add(ArrangeConstraint.KEEP_RATIO);
-    }
-
-    /**
-     * Get the pinned status of the {@link DDiagramElement} associated to this
-     * {@link IDiagramElementEditPart} <code>self</code>.
-     * 
-     * @param self
-     *            the edit part from which to test the pinned status of the
-     *            associated {@link DDiagramElement}.
-     * 
-     * @return <code>true</code> if the associated {@link DDiagramElement} is
-     *         pinned, false else.
-     * 
-     * @see {@link PinHelper#isPinned(DDiagramElement)}
-     */
-    public boolean isPinned(final IDiagramElementEditPart self) {
-        boolean isPinned = false;
-        EObject diagramElement = self.resolveDiagramElement();
-        if (diagramElement instanceof DDiagramElement) {
-            DDiagramElement dDiagramElement = (DDiagramElement) diagramElement;
-            isPinned = isPinned(dDiagramElement);
-        }
-        return isPinned;
     }
 
     /**

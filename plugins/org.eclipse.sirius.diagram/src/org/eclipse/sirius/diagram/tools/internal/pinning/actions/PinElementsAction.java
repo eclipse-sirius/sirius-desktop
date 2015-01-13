@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009-2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,39 +8,35 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning;
+package org.eclipse.sirius.diagram.tools.internal.pinning.actions;
 
 import java.util.Collection;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
+import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 
 /**
- * An external action which marks diagram elements as "un-pinned" so they can be
+ * An external action which marks diagram elements as "pinned" so they are not
  * moved during automatic layout.
  * 
  * @author pcdavid
  */
-public class UnpinElementsAction implements IExternalJavaAction {
-    /**
-     * {@inheritDoc}
-     */
+public class PinElementsAction implements IExternalJavaAction {
+
+    @Override
     public boolean canExecute(final Collection<? extends EObject> selections) {
         return selections.size() == 1;
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void execute(final Collection<? extends EObject> selections, final Map<String, Object> parameters) {
-        Object viewObj = parameters.get("view");
-        PinHelper pinHelper = new PinHelper();
+        final Object viewObj = parameters.get("view");
         if (viewObj instanceof DDiagramElement) {
             DDiagramElement dDiagramElement = (DDiagramElement) viewObj;
-            pinHelper.markAsUnpinned(dDiagramElement);
+            new PinHelper().markAsPinned(dDiagramElement);
         }
     }
 }

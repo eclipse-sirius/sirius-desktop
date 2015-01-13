@@ -21,15 +21,14 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.sirius.diagram.DNodeList;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
+import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DView;
 
 import com.google.common.collect.Iterators;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 /**
  * Test class to test removal of DDiagramSet during repair/migrate action of

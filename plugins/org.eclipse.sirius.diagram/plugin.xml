@@ -538,4 +538,17 @@
      <dialect
            class="org.eclipse.sirius.diagram.business.internal.dialect.DiagramDialect"></dialect>
   </extension>
+  
+  <extension
+        point="org.eclipse.sirius.externalJavaAction">
+     <javaActions
+           actionClass="org.eclipse.sirius.diagram.tools.internal.actions.pinning.PinElementsAction"
+           id="org.eclipse.sirius.diagram.tools.internal.actions.pinning.pinElementsActionId">
+     </javaActions>
+     <javaActions
+           actionClass="org.eclipse.sirius.diagram.tools.internal.actions.pinning.UnpinElementsAction"
+           id="org.eclipse.sirius.diagram.tools.internal.actions.pinning.unpinElementsActionId">
+     </javaActions>
+  </extension>
+  
 </plugin>

@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.SystemColor;
 
@@ -53,7 +54,7 @@ public final class EnvironmentSystemColorFactory {
      * @return return the color description corresponding to the color name.
      */
     public SystemColor getSystemColorDescription(final String name) {
-        final String uri = "environment:/viewpoint#/0/@systemColors/@entries[name='" + name + "']";
+        final String uri = SiriusUtil.VIEWPOINT_ENVIRONMENT_RESOURCE_URI + "#/0/@systemColors/@entries[name='" + name + "']";
         final EObject color = EcoreUtil.create(DescriptionPackage.eINSTANCE.getSystemColor());
         final URI colorURI = URI.createURI(uri);
         ((InternalEObject) color).eSetProxyURI(colorURI);

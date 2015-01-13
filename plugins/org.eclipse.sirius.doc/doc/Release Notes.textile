@@ -22,6 +22,8 @@ h4. Changes in @org.eclipse.sirius@
 
 * The method @org.eclipse.sirius.business.api.migration.IMigrationParticipant.updateCreatedObject(EObject newObject, String loadedVersion)@ has been added to update object values in VSM before loading this objects from XML file.
 * The method @org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener.disable()@ has been added to disable the next refresh attempt in the current precommit loop iteration.
+* Constant @org.eclipse.sirius.business.api.helper.SiriusUtil.ENVIRONMENT_URI_SCHEME@ declares environment URI scheme.
+* Constant @org.eclipse.sirius.business.api.helper.SiriusUtil.VIEWPOINT_ENVIRONMENT_RESOURCE_URI@ declares "environment:/viewpoint" resource uri.
 
 h4. Changes in @org.eclipse.sirius.common@
 
@@ -36,7 +38,8 @@ h4. Changes in @org.eclipse.sirius.ecore.extender@
 
 h4. Changes in @org.eclipse.sirius.diagram@
 
-The @org.eclipse.sirius.diagram.tools.api.command.ChangeLayerActivationCommand@ has been added. This command was previously internal.
+* The @org.eclipse.sirius.diagram.tools.api.command.ChangeLayerActivationCommand@ has been added. This command was previously internal.
+* Constant @org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil.DIAGRAM_ENVIRONMENT_RESOURCE_URI@ declares "environment:/diagram" resource uri.
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
@@ -47,7 +50,8 @@ The @org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator@ 
 * @conflicts@ signature is now @conflicts(Rectangle, IFigure, Collection<IFigure>, List<IFigure>)@
 * The constant @DiagramImagesPath.LINK_TO_VIEWPOINT_IMG@ has been moved to @org.eclipse.sirius.ui.tools.api.image.ImagesPath.LINK_TO_VIEWPOINT_IMG@. This is more coherent because the corresponding image is in core @org.eclipse.sirius.common.ui@ plugin.
 * @org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper.findGMFDiagram()@ became deprecated in favor of @DiagramCreationUtil.findAssociatedGMFDiagram()/getAssociatedGMFDiagram()@
-
+* @org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper@ moved from @org.eclipse.sirius.diagram.ui@ plugin to @org.eclipse.sirius.diagram@ plugin, i.e. @org.eclipse.sirius.diagram.tools.api.layout.PinHelper@ with @PinHelper.IsPinned(IDiagramElementEditPart)@ removed in favor of @PinHelper.IsPinned(DDiagramElement)@.
+* external java actions declared as @org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.pinElementsActionId@ and @org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.unpinElementsActionId@ are now declared as @org.eclipse.sirius.diagram.tools.internal.actions.pinning.pinElementsActionId@ and @org.eclipse.sirius.diagram.tools.internal.actions.pinning.unpinElementsActionId@ in @org.eclipse.sirius.diagram@ plugin.
 
 h4. Changes in @org.eclipse.sirius.tests.junit.support@
 

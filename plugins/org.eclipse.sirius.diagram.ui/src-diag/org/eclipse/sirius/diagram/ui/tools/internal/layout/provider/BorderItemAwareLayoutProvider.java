@@ -70,6 +70,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
@@ -79,7 +80,6 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerC
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.operation.RegionContainerUpdateLayoutOperation;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.ChangeBoundRequestRecorder;

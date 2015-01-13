@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.business.api.helper;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramComponentizationHelper;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -25,6 +26,9 @@ import org.eclipse.sirius.viewpoint.DRepresentationContainer;
  * @author ymortier
  */
 public final class SiriusDiagramUtil {
+
+    /** The "environment:/diagram" resource uri. */
+    public static final String DIAGRAM_ENVIRONMENT_RESOURCE_URI = SiriusUtil.ENVIRONMENT_URI_SCHEME + ":/diagram"; //$NON-NLS-1$
 
     /**
      * Avoid instantiation.

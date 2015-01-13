@@ -16,6 +16,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
@@ -23,9 +24,10 @@ import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutProvider;
 
 import com.google.common.base.Predicate;
@@ -72,7 +74,11 @@ public class ArrangeSelectionLayoutProvider extends AbstractLayoutProvider {
     private Predicate<IDiagramElementEditPart> diagramElementEditPartIsUnpinned = new Predicate<IDiagramElementEditPart>() {
 
         public boolean apply(IDiagramElementEditPart input) {
-            return !new PinHelper().isPinned(input);
+            EObject diagramElement = input.resolveDiagramElement();
+            if (diagramElement instanceof DDiagramElement) {
+                return !new PinHelper().isPinned((DDiagramElement) diagramElement);
+            }
+            return false;
         }
     };
 

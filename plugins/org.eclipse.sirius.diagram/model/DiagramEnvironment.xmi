@@ -22,7 +22,7 @@
         <firstModelOperations
             xsi:type="tool_1:ExternalJavaAction"
             name="Pin"
-            id="org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.pinElementsActionId">
+            id="org.eclipse.sirius.diagram.tools.internal.actions.pinning.pinElementsActionId">
           <parameters
               name="view"
               value="var:elementView"/>
@@ -41,7 +41,7 @@
         <firstModelOperations
             xsi:type="tool_1:ExternalJavaAction"
             name="Unpin"
-            id="org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.unpinElementsActionId">
+            id="org.eclipse.sirius.diagram.tools.internal.actions.pinning.unpinElementsActionId">
           <parameters
               name="view"
               value="var:elementView"/>

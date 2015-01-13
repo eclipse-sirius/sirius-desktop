@@ -1749,17 +1749,6 @@
      </handler>
   </extension>
   <extension
-        point="org.eclipse.sirius.externalJavaAction">
-     <javaActions
-           actionClass="org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.PinElementsAction"
-           id="org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.pinElementsActionId">
-     </javaActions>
-     <javaActions
-           actionClass="org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.UnpinElementsAction"
-           id="org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.unpinElementsActionId">
-     </javaActions>
-  </extension>
-  <extension
         point="org.eclipse.core.expressions.definitions">
      <definition id="isInstanceOfIDiagramElementEditPart">
            <instanceof value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart" />

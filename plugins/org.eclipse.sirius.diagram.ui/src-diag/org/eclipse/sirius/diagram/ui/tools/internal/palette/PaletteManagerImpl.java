@@ -41,6 +41,7 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.services.palette.PaletteToolE
 import org.eclipse.gmf.runtime.diagram.ui.services.palette.PaletteFactory;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -52,6 +53,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
+import org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil;
 import org.eclipse.sirius.diagram.business.api.helper.layers.LayerService;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.Layer;
@@ -627,10 +629,10 @@ public class PaletteManagerImpl implements PaletteManager {
     }
 
     private static List<ToolEntry> getDefaultTools(final ResourceSet context) {
-        final Resource coreEnvResource = context.getResource(URI.createPlatformPluginURI("/org.eclipse.sirius/model/Environment.xmi", true), true);
+        final Resource coreEnvResource = context.getResource(URI.createURI(SiriusUtil.VIEWPOINT_ENVIRONMENT_RESOURCE_URI, true), true);
         final Environment coreEnv = (Environment) coreEnvResource.getContents().get(0);
 
-        final Resource diagramEnvResource = context.getResource(URI.createPlatformPluginURI("/org.eclipse.sirius.diagram.ui/model/DiagramEnvironment.xmi", true), true);
+        final Resource diagramEnvResource = context.getResource(URI.createURI(SiriusDiagramUtil.DIAGRAM_ENVIRONMENT_RESOURCE_URI, true), true);
         final Environment diagramEnv = (Environment) diagramEnvResource.getContents().get(0);
 
         List<ToolEntry> defaultTools = Lists.newArrayList();

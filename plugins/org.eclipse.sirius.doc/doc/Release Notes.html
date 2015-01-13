@@ -70,6 +70,12 @@
 			<li>The method 
 				<code>org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener.disable()</code> has been added to disable the next refresh attempt in the current precommit loop iteration.
 			</li>
+			<li>Constant 
+				<code>org.eclipse.sirius.business.api.helper.SiriusUtil.ENVIRONMENT_URI_SCHEME</code> declares environment URI scheme.
+			</li>
+			<li>Constant 
+				<code>org.eclipse.sirius.business.api.helper.SiriusUtil.VIEWPOINT_ENVIRONMENT_RESOURCE_URI</code> declares &#171;environment:/viewpoint&#187; resource uri.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
 			<code>org.eclipse.sirius.common</code>
@@ -102,9 +108,14 @@
 		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
-		<p>The 
-			<code>org.eclipse.sirius.diagram.tools.api.command.ChangeLayerActivationCommand</code> has been added. This command was previously internal.
-		</p>
+		<ul>
+			<li>The 
+				<code>org.eclipse.sirius.diagram.tools.api.command.ChangeLayerActivationCommand</code> has been added. This command was previously internal.
+			</li>
+			<li>Constant 
+				<code>org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil.DIAGRAM_ENVIRONMENT_RESOURCE_URI</code> declares &#171;environment:/diagram&#187; resource uri.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
@@ -140,6 +151,21 @@
 			<li>
 				<code>org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper.findGMFDiagram()</code> became deprecated in favor of 
 				<code>DiagramCreationUtil.findAssociatedGMFDiagram()/getAssociatedGMFDiagram()</code>
+			</li>
+			<li>
+				<code>org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper</code> moved from 
+				<code>org.eclipse.sirius.diagram.ui</code> plugin to 
+				<code>org.eclipse.sirius.diagram</code> plugin, i.e. 
+				<code>org.eclipse.sirius.diagram.tools.api.layout.PinHelper</code> with 
+				<code>PinHelper.IsPinned(IDiagramElementEditPart)</code> removed in favor of 
+				<code>PinHelper.IsPinned(DDiagramElement)</code>.
+			</li>
+			<li>external java actions declared as 
+				<code>org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.pinElementsActionId</code> and 
+				<code>org.eclipse.sirius.diagram.ui.tools.internal.actions.pinning.unpinElementsActionId</code> are now declared as 
+				<code>org.eclipse.sirius.diagram.tools.internal.actions.pinning.pinElementsActionId</code> and 
+				<code>org.eclipse.sirius.diagram.tools.internal.actions.pinning.unpinElementsActionId</code> in 
+				<code>org.eclipse.sirius.diagram</code> plugin.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support">Changes in 

@@ -18,9 +18,9 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.PinHelper;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;

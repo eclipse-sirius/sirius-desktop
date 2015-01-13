@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.internal.metamodel.description.spec.DAnnotationSpec;
 import org.eclipse.sirius.business.internal.metamodel.description.spec.MetamodelExtensionSettingSpec;
 import org.eclipse.sirius.business.internal.metamodel.description.spec.ViewpointSpec;
@@ -219,7 +220,7 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
 
     private SytemColorsPalette forgeSystemPaletteProxy() {
         final EObject environment = EcoreUtil.create(DescriptionPackage.eINSTANCE.getSytemColorsPalette());
-        URI paletteURI = URI.createURI("environment:/viewpoint#/0/@systemColors");
+        URI paletteURI = URI.createURI(SiriusUtil.VIEWPOINT_ENVIRONMENT_RESOURCE_URI + "#/0/@systemColors");
         ((InternalEObject) environment).eSetProxyURI(paletteURI);
         return ((SytemColorsPalette) environment);
     }
