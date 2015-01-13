@@ -526,7 +526,7 @@
          point="org.eclipse.emf.ecore.uri_mapping">
       <mapping
           source="environment:/diagram"
-          target="platform:/plugin/org.eclipse.sirius.diagram/model/DiagramEnvironment.xmi">
+          target="platform:/plugin/org.eclipse.sirius.diagram/model/DiagramEnvironment.odesign">
     </mapping>
  </extension>
  

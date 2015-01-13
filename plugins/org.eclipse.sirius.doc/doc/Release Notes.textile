@@ -24,6 +24,7 @@ h4. Changes in @org.eclipse.sirius@
 * The method @org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener.disable()@ has been added to disable the next refresh attempt in the current precommit loop iteration.
 * Constant @org.eclipse.sirius.business.api.helper.SiriusUtil.ENVIRONMENT_URI_SCHEME@ declares environment URI scheme.
 * Constant @org.eclipse.sirius.business.api.helper.SiriusUtil.VIEWPOINT_ENVIRONMENT_RESOURCE_URI@ declares "environment:/viewpoint" resource uri.
+* Constant @org.eclipse.sirius.viewpoint.description.util.DescriptionResourceImpl.OPTION_SIRIUS_USE_URI_FRAGMENT_AS_ID@ added to define a option to enable the use of a id map for odesign resource, id being uri's fragment. 
 
 h4. Changes in @org.eclipse.sirius.common@
 

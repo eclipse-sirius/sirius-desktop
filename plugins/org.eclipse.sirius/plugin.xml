@@ -83,6 +83,14 @@
   </extension>
   
   <extension
+        point="org.eclipse.emf.ecore.protocol_parser">
+     <parser
+           class="org.eclipse.sirius.viewpoint.description.util.DescriptionResourceFactoryImpl"
+           protocolName="environment">
+     </parser>
+  </extension>
+  
+  <extension
         point="org.eclipse.core.contenttype.contentTypes">
      <file-association
            content-type="org.eclipse.emf.compare.content.type"
@@ -255,7 +263,7 @@
        point="org.eclipse.emf.ecore.uri_mapping">
     <mapping
           source="environment:/viewpoint"
-          target="platform:/plugin/org.eclipse.sirius/model/Environment.xmi">
+          target="platform:/plugin/org.eclipse.sirius/model/Environment.odesign">
     </mapping>
  </extension>
 

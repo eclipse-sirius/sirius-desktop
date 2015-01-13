@@ -11,10 +11,14 @@
  */
 package org.eclipse.sirius.viewpoint.description.util;
 
+import java.io.IOException;
+import java.util.Map;
+
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.eclipse.sirius.business.internal.migration.description.VSMMigrationService;
 import org.eclipse.sirius.business.internal.migration.description.VSMXMIHelper;
 import org.eclipse.sirius.ext.base.Option;
@@ -27,6 +31,16 @@ import org.eclipse.sirius.ext.base.Option;
  * @not-generated
  */
 public class DescriptionResourceImpl extends XMIResourceImpl {
+
+    /**
+     * Option to specify if we use uri fragment as id in
+     * {@link XMLResourceImpl#getIDToEObjectMap()} map to enhance inter
+     * resources proxy resolution. Default is false. This option is considered
+     * only for odesign in plugin.
+     */
+    public static final String OPTION_USE_URI_FRAGMENT_AS_ID = "SIRIUS_USE_URI_FRAGMENT_AS_ID";
+
+    private boolean useURIFragmentAsId;
 
     /**
      * Creates an instance of the resource. <!-- begin-user-doc --> <!--
@@ -45,6 +59,20 @@ public class DescriptionResourceImpl extends XMIResourceImpl {
         return new VSMXMIHelper(this);
     }
 
+    @Override
+    public void setModified(boolean isModified) {
+        super.setModified(isModified);
+        if (isModified) {
+            getIDToEObjectMap().clear();
+        }
+    }
+
+    @Override
+    public void load(Map<?, ?> options) throws IOException {
+        useURIFragmentAsId = Boolean.TRUE.equals(options.get(OPTION_USE_URI_FRAGMENT_AS_ID)) && getURI().isPlatformPlugin();
+        super.load(options);
+    }
+
     /**
      * Override to migrate fragment if necessary (when a reference has been
      * renamed) before getting the EObject.
@@ -54,9 +82,32 @@ public class DescriptionResourceImpl extends XMIResourceImpl {
         Option<String> optionalRewrittenFragment = VSMMigrationService.getInstance().getNewFragment(uriFragment);
         if (optionalRewrittenFragment.some()) {
             return getEObject(optionalRewrittenFragment.get());
+        } else if (useURIFragmentAsId) {
+            return getEObjectUsingURIFragmentAsId(uriFragment);
         } else {
             return super.getEObject(uriFragment);
         }
+    }
+
+    private EObject getEObjectUsingURIFragmentAsId(String uriFragment) {
+        EObject eObject = null;
+        if (isLoading) {
+            eObject = getEObjectAndUpdateIDMap(uriFragment);
+        } else {
+            eObject = getEObjectByID(uriFragment);
+            if (eObject == null) {
+                eObject = getEObjectAndUpdateIDMap(uriFragment);
+            }
+        }
+        return eObject;
+    }
+
+    private EObject getEObjectAndUpdateIDMap(String uriFragment) {
+        EObject eObject = super.getEObject(uriFragment);
+        if (eObject != null) {
+            setID(eObject, uriFragment);
+        }
+        return eObject;
     }
 
 } // DescriptionResourceImpl
