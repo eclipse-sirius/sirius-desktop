@@ -1573,7 +1573,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             broker.dispose();
             broker = null;
         }
-        flushOperations();
+        flushOperations(transactionalEditingDomain);
         // Unload all referenced resources
         unloadResource();
         if (disposeEditingDomainOnClose) {
@@ -1660,9 +1660,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
     }
 
-    private void flushOperations() {
-        CommandStack commandStack = transactionalEditingDomain.getCommandStack();
-        ResourceSet resourceSet = transactionalEditingDomain.getResourceSet();
+    private static void flushOperations(TransactionalEditingDomain ted) {
+        CommandStack commandStack = ted.getCommandStack();
+        ResourceSet resourceSet = ted.getResourceSet();
         if (commandStack != null) {
             // Remove also ResourceUndoContext to have operations really
             // removed from IOperationHistory
@@ -1671,7 +1671,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             if (commandStack instanceof IWorkspaceCommandStack) {
                 IWorkspaceCommandStack workspaceCommandStack = (IWorkspaceCommandStack) commandStack;
                 for (Resource resource : new ArrayList<Resource>(resourceSet.getResources())) {
-                    workspaceCommandStack.getOperationHistory().dispose(new ResourceUndoContext(transactionalEditingDomain, resource), true, true, true);
+                    workspaceCommandStack.getOperationHistory().dispose(new ResourceUndoContext(ted, resource), true, true, true);
                 }
             }
             commandStack.flush();
