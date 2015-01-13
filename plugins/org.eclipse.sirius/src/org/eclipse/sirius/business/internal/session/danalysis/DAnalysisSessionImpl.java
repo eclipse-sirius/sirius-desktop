@@ -405,7 +405,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             dAnalysisRefresher.init();
             monitor.worked(1);
             if (!getSemanticResources().isEmpty()) {
-                this.interpreter = new ODesignGenericInterpreter();
                 initInterpreter();
             }
             monitor.worked(1);
