@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES, Obeo
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,6 @@
 package org.eclipse.sirius.business.internal.session.danalysis;
 
 import java.io.IOException;
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -56,7 +55,6 @@ import org.eclipse.emf.workspace.IWorkspaceCommandStack;
 import org.eclipse.emf.workspace.ResourceUndoContext;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
-import org.eclipse.sirius.business.api.componentization.ViewpointRegistryListener2;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.extender.MetamodelDescriptorManager;
 import org.eclipse.sirius.business.api.helper.SiriusResourceHelper;
@@ -140,7 +138,7 @@ import com.google.common.collect.Sets.SetView;
  * 
  * @author cbrun
  */
-public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements Session, DAnalysisSession, ResourceSyncClient, ViewpointRegistryListener2 {
+public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements Session, DAnalysisSession, ResourceSyncClient {
     /** The custom saving policy the session should use. */
     protected SavingPolicy savingPolicy;
 
@@ -179,6 +177,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     private boolean disposeEditingDomainOnClose = true;
 
     private IResourceCollector currentResourceCollector;
+    
+    private SessionVSMUpdater vsmUpdater = new SessionVSMUpdater(this);
 
     // Generic services offered by the session
 
@@ -423,7 +423,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             monitor.worked(1);
             DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.OPEN_SESSION_KEY);
 
-            ViewpointRegistry.getInstance().addListener(this);
+            ViewpointRegistry.getInstance().addListener(this.vsmUpdater);
             // Setup ResourceModifiedFieldUpdater
             TransactionalEditingDomain.DefaultOptions options = TransactionUtil.getAdapter(getTransactionalEditingDomain(), TransactionalEditingDomain.DefaultOptions.class);
             if (options != null) {
@@ -1723,7 +1723,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (saver != null && getTransactionalEditingDomain() != null) {
             getTransactionalEditingDomain().removeResourceSetListener(saver);
         }
-        ViewpointRegistry.getInstance().removeListener(this);
+        ViewpointRegistry.getInstance().removeListener(this.vsmUpdater);
+        this.vsmUpdater = null;
         notifyListeners(SessionListener.CLOSING);
         disableAndRemoveECrossReferenceAdapters();
 
@@ -1924,38 +1925,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         super.getAnalyses().clear();
         super.getResources().clear();
         super.getControlledResources().clear();
-    }
-
-    /**
-     * Temporary method to clean deprecated NodesDone in INodeMappingExt.
-     * {@inheritDoc}
-     */
-    @Override
-    public void modelerDesciptionFilesLoaded() {
-        Collection<Resource> allResources = Lists.newArrayList(transactionalEditingDomain.getResourceSet().getResources());
-        for (Resource res : Iterables.filter(allResources, new ResourceFileExtensionPredicate(SiriusUtil.DESCRIPTION_MODEL_EXTENSION, true))) {
-            // Unload emtpy odesign.
-            if (!res.isModified() && res.isLoaded() && res.getContents().isEmpty()) {
-                unregisterResourceInCrossReferencer(res);
-                res.unload();
-            }
-            // Reload unloaded odesign (SiriusRegistry can unload them).
-            IFile correspondingFile = WorkspaceSynchronizer.getFile(res);
-            if (!res.isLoaded() && correspondingFile != null && correspondingFile.exists()) {
-                try {
-                    res.load(Collections.emptyMap());
-                    if (res.isLoaded() && !res.getContents().isEmpty()) {
-                        registerResourceInCrossReferencer(res);
-                        // Refresh the imports of interpreter in case of new
-                        // Java Extension
-                        InterpreterRegistry.prepareImportsFromSession(this.interpreter, this);
-                    }
-                } catch (IOException e) {
-                    SiriusPlugin.getDefault().warning(MessageFormat.format("Unable to load the VSM at {0}", res.getURI()), e);
-                }
-            }
-        }
-        notifyListeners(SessionListener.VSM_UPDATED);
     }
 
     public void setResourceCollector(IResourceCollector collector) {
