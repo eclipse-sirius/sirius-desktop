@@ -38,6 +38,7 @@ import org.eclipse.sirius.tools.internal.resource.ResourceSetUtil;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.description.util.DescriptionResourceImpl;
 
 /**
  * Default implementation of a session factory.
@@ -88,6 +89,9 @@ public final class SessionFactoryImpl implements SessionFactory {
             ResourceSetImpl resourceSetImpl = (ResourceSetImpl) set;
             new ResourceSetImpl.MappedResourceLocator(resourceSetImpl);
         }
+        
+        set.getLoadOptions().put(DescriptionResourceImpl.OPTION_USE_URI_FRAGMENT_AS_ID, true);
+        
         boolean alreadyExistingResource = set.getURIConverter().exists(sessionResourceURI, null);
         Session session = null;
         if (alreadyExistingResource) {

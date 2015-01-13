@@ -83,6 +83,14 @@
   </extension>
   
   <extension
+        point="org.eclipse.emf.ecore.protocol_parser">
+     <parser
+           class="org.eclipse.sirius.viewpoint.description.util.DescriptionResourceFactoryImpl"
+           protocolName="environment">
+     </parser>
+  </extension>
+  
+  <extension
         point="org.eclipse.core.contenttype.contentTypes">
      <file-association
            content-type="org.eclipse.emf.compare.content.type"

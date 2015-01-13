@@ -519,14 +519,6 @@
       </constraintProvider>
    </extension>
    
-   <extension 
-         point="org.eclipse.emf.ecore.uri_mapping">
-      <mapping
-          source="environment:/diagram"
-          target="platform:/plugin/org.eclipse.sirius.diagram/model/DiagramEnvironment.xmi">
-    </mapping>
- </extension>
- 
     <extension point="org.eclipse.core.runtime.preferences">
       <?gmfgen generated="true"?>
       <initializer class="org.eclipse.sirius.diagram.internal.preferences.DiagramPreferenceInitializer"/>

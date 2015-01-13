@@ -1932,7 +1932,7 @@
          point="org.eclipse.emf.ecore.uri_mapping">
       <mapping
           source="environment:/diagram"
-          target="platform:/plugin/org.eclipse.sirius.diagram.ui/model/DiagramEnvironment.odesign">
+          target="platform:/plugin/org.eclipse.sirius.diagram.ui/model/DiagramEnvironment.xmi">
       </mapping>
    </extension>
  
