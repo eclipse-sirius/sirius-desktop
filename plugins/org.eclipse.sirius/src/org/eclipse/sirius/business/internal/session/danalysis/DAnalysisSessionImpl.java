@@ -1,4 +1,3 @@
-//CHECKSTYLE:OFF
 /*******************************************************************************
  * Copyright (c) 2013, 2014 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
@@ -67,7 +66,6 @@ import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
-import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.business.api.session.ReloadingPolicy;
 import org.eclipse.sirius.business.api.session.ReloadingPolicy.Action;
 import org.eclipse.sirius.business.api.session.SavingPolicy;
@@ -122,7 +120,6 @@ import org.eclipse.sirius.viewpoint.MetaModelExtension;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.SyncStatus;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.MetamodelExtensionSetting;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.impl.DAnalysisSessionEObjectImpl;
@@ -144,6 +141,8 @@ import com.google.common.collect.Sets.SetView;
  * @author cbrun
  */
 public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements Session, DAnalysisSession, ResourceSyncClient, ViewpointRegistryListener2 {
+    /** The custom saving policy the session should use. */
+    protected SavingPolicy savingPolicy;
 
     /** The {@link TransactionalEditingDomain} associated to this Session. */
     private TransactionalEditingDomain transactionalEditingDomain;
@@ -156,25 +155,22 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     // contained/controled, directly or indirectly, by a semanticResource
 
     /** The main Session Resource. */
-    protected Resource sessionResource;
+    private Resource sessionResource;
 
     /** The {@link DAnalysis} of the main session resource (*.aird). */
     private DAnalysis mainDAnalysis;
 
     /** The semantic resources collection. */
-    protected Collection<Resource> semanticResources;
+    private Collection<Resource> semanticResources;
 
     /** The semantic resources collection updater. */
-    protected SemanticResourcesUpdater semanticResourcesUpdater;
+    private SemanticResourcesUpdater semanticResourcesUpdater;
 
     private ControlledResourcesDetector controlledResourcesDetector;
 
     private DAnalysisRefresher dAnalysisRefresher;
 
     // Session's configuration
-
-    /** The custom saving policy the session should use. */
-    protected SavingPolicy savingPolicy;
 
     private final Saver saver = new Saver(this);
 
@@ -189,7 +185,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /**
      * The event broker suitable for identifying local or remote atomic changes.
      */
-    protected SessionEventBroker broker;
+    private SessionEventBroker broker;
 
     private SessionService services;
 
@@ -204,7 +200,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     // Default listeners
 
     /** The listener suitable for refresh the opened viewpoint editors. */
-    protected RefreshEditorsPrecommitListener refreshEditorsListeners;
+    private RefreshEditorsPrecommitListener refreshEditorsListeners;
 
     private RepresentationsChangeAdapter representationsChangeAdapter;
 
@@ -458,7 +454,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     /**
-     * This method allows adding {@link ModelChangeTrigger} to the current
+     * This method allows adding {@code ModelChangeTrigger} to the current
      * session {@link SessionEventBroker}. This method is called during the
      * opening of the Session, before setting the open attribute to true and
      * before launching the SessionListener.OPENED notifications.
@@ -768,6 +764,14 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         addSemanticResource(resource, true, null);
     }
 
+    /**
+     * Registers the specified resource as a semantic resource.
+     * 
+     * @param newResource
+     *            the semantic resource.
+     * @param set
+     *            the ResourceSet in which it should be added if needed.
+     */
     protected void doAddSemanticResource(final Resource newResource, final ResourceSet set) {
         if (new ResourceQuery(newResource).isRepresentationsResource()) {
             throw new IllegalArgumentException("A representation file cannot be added as semantic resource.");
@@ -885,7 +889,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                         Collection<Resource> savedResources = getSavingPolicy().save(allResources, options, new SubProgressMonitor(monitor, 7));
                         setResult(savedResources);
                         setStatus(Status.OK_STATUS);
+                        // CHECKSTYLE:OFF
                     } catch (Throwable e) {
+                        // CHECKSTYLE:ON
                         SiriusPlugin.getDefault().error("Save failed", new CoreException(new Status(IStatus.ERROR, SiriusPlugin.ID, "Error while saving the session", e)));
                     }
                 }
@@ -1343,21 +1349,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public void removeReferencedRepresentation(final DAnalysis analysis, final DRepresentation representation) {
-        final DView view = this.findViewForRepresentation(representation, analysis);
-        if (view != null && view.getReferencedRepresentations().contains(representation)) {
-            final IPermissionAuthority authority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(view);
-            if (authority.canEditFeature(view, ViewpointPackage.eINSTANCE.getDView_ReferencedRepresentations().getName())) {
-                view.getReferencedRepresentations().remove(representation);
-            } else {
-                throw new LockedInstanceException(view);
-            }
-        }
-    }
-
     @Override
     public void notifyControlledModel(final Resource newControlled) {
         // Set the already controlled resource to modified because they can
@@ -1386,6 +1377,14 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         doRemoveSemanticResource(semanticResource, resourceSet);
     }
 
+    /**
+     * Unregisters the resource from the list of semantic resources.
+     * 
+     * @param res
+     *            the semantic resource to unregister.
+     * @param set
+     *            the resourceset from which to remove it.
+     */
     protected void doRemoveSemanticResource(final Resource res, final ResourceSet set) {
         if (res.getContents().size() > 0) {
             final EObject root = res.getContents().get(0);
