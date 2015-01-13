@@ -1328,9 +1328,12 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     /**
-     * Notify the listeners.
+     * Notify all the registered listeners of the specified event.
+     * 
+     * @param notification
+     *            the event to notify the listeners of.
      */
-    private void notifyListeners(final int notification) {
+    public void notifyListeners(final int notification) {
         if (notification == SessionListener.REPRESENTATION_CHANGE || notification == SessionListener.SELECTED_VIEWS_CHANGE_KIND || notification == SessionListener.VSM_UPDATED
                 || notification != lastNotification) {
             for (final SessionListener listener : Iterables.filter(Lists.newArrayList(listeners.getListeners()), SessionListener.class)) {
@@ -1687,13 +1690,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         } else {
             return SessionStatus.DIRTY;
         }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public void transfertNotification(int notification) {
-        notifyListeners(notification);
     }
 
     @Override

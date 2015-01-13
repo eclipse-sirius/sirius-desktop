@@ -68,7 +68,7 @@ public class SemanticResourcesUpdater extends AdapterImpl implements Adapter {
             semanticResources.clear();
             semanticResources.addAll(semanticResourcesGetter.getResult());
             if (hasNbOfSemanticResourcesChanged) {
-                dAnalysisSessionImpl.transfertNotification(SessionListener.SEMANTIC_CHANGE);
+                dAnalysisSessionImpl.notifyListeners(SessionListener.SEMANTIC_CHANGE);
             }
         }
     }

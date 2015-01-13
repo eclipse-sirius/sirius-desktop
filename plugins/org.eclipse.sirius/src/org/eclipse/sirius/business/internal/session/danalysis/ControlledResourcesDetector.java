@@ -95,7 +95,7 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
 
         if (!newControlledResources.isEmpty()) {
             session.getControlledResources().addAll(newControlledResources);
-            session.transfertNotification(SessionListener.SEMANTIC_CHANGE);
+            session.notifyListeners(SessionListener.SEMANTIC_CHANGE);
         }
 
     }
