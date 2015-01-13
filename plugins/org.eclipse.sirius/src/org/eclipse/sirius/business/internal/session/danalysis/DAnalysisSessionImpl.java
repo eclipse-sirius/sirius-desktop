@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -48,7 +47,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceImpl;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
@@ -1334,22 +1332,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      */
     protected ECrossReferenceAdapter createSemanticCrossReferencer() {
         return new SessionLazyCrossReferencer(this);
-    }
-
-    /**
-     * Uncached EObjects IDs of the given resources.
-     * 
-     * @param resources
-     *            the resources.
-     */
-    public static void uncachedEObejctIDs(final List<Resource> resources) {
-        final Iterator<Resource> iterResources = resources.iterator();
-        while (iterResources.hasNext()) {
-            final Resource currentResource = iterResources.next();
-            if (currentResource instanceof ResourceImpl) {
-                ((ResourceImpl) currentResource).setIntrinsicIDToEObjectMap(null);
-            }
-        }
     }
 
     @Override
