@@ -84,8 +84,6 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionService;
 import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
 import org.eclipse.sirius.business.internal.migration.resource.ResourceFileExtensionPredicate;
-import org.eclipse.sirius.business.internal.movida.Movida;
-import org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistryListener;
 import org.eclipse.sirius.business.internal.query.DAnalysisesInternalQuery;
 import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
 import org.eclipse.sirius.business.internal.resource.ResourceModifiedFieldUpdater;
@@ -145,7 +143,7 @@ import com.google.common.collect.Sets.SetView;
  * 
  * @author cbrun
  */
-public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements Session, DAnalysisSession, ResourceSyncClient, ViewpointRegistryListener, ViewpointRegistryListener2 {
+public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements Session, DAnalysisSession, ResourceSyncClient, ViewpointRegistryListener2 {
 
     /** The {@link TransactionalEditingDomain} associated to this Session. */
     private TransactionalEditingDomain transactionalEditingDomain;
@@ -183,8 +181,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     private ReloadingPolicy reloadingPolicy;
 
     private boolean disposeEditingDomainOnClose = true;
-
-    private MovidaSupport movidaSupport = new MovidaSupport(this);
 
     private IResourceCollector currentResourceCollector;
 
@@ -431,13 +427,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             monitor.worked(1);
             DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.OPEN_SESSION_KEY);
 
-            if (Movida.isEnabled()) {
-                org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry registry = (org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry) ViewpointRegistry
-                        .getInstance();
-                registry.addListener((ViewpointRegistryListener) this);
-            } else {
-                ViewpointRegistry.getInstance().addListener(this);
-            }
+            ViewpointRegistry.getInstance().addListener(this);
             // Setup ResourceModifiedFieldUpdater
             TransactionalEditingDomain.DefaultOptions options = TransactionUtil.getAdapter(getTransactionalEditingDomain(), TransactionalEditingDomain.DefaultOptions.class);
             if (options != null) {
@@ -1160,9 +1150,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             }
             super.getActivatedViewpoints().addAll(selectedViewpoints);
             super.getActivatedViewpoints().retainAll(selectedViewpoints);
-            if (Movida.isEnabled()) {
-                movidaSupport.updatePhysicalVSMResourceURIs(selectedViewpoints);
-            }
             // tell the accessor and the interpreter which metamodels we know
             // of.
             final ModelAccessor accessor = getModelAccessor();
@@ -1741,12 +1728,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (saver != null && getTransactionalEditingDomain() != null) {
             getTransactionalEditingDomain().removeResourceSetListener(saver);
         }
-        if (Movida.isEnabled()) {
-            org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry registry = (org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry) ViewpointRegistry.getInstance();
-            registry.removeListener((ViewpointRegistryListener) this);
-        } else {
-            ViewpointRegistry.getInstance().removeListener(this);
-        }
+        ViewpointRegistry.getInstance().removeListener(this);
         notifyListeners(SessionListener.CLOSING);
         disableAndRemoveECrossReferenceAdapters();
 
@@ -1817,7 +1799,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             transactionalEditingDomain = null;
         }
         getActivatedViewpoints().clear();
-        movidaSupport = null;
         services = null;
         sessionResource = null;
         mainDAnalysis = null;
@@ -1956,37 +1937,30 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      */
     @Override
     public void modelerDesciptionFilesLoaded() {
-        if (!Movida.isEnabled()) {
-            Collection<Resource> allResources = Lists.newArrayList(transactionalEditingDomain.getResourceSet().getResources());
-            for (Resource res : Iterables.filter(allResources, new ResourceFileExtensionPredicate(SiriusUtil.DESCRIPTION_MODEL_EXTENSION, true))) {
-                // Unload emtpy odesign.
-                if (!res.isModified() && res.isLoaded() && res.getContents().isEmpty()) {
-                    unregisterResourceInCrossReferencer(res);
-                    res.unload();
-                }
-                // Reload unloaded odesign (SiriusRegistry can unload them).
-                IFile correspondingFile = WorkspaceSynchronizer.getFile(res);
-                if (!res.isLoaded() && correspondingFile != null && correspondingFile.exists()) {
-                    try {
-                        res.load(Collections.emptyMap());
-                        if (res.isLoaded() && !res.getContents().isEmpty()) {
-                            registerResourceInCrossReferencer(res);
-                            // Refresh the imports of interpreter in case of new
-                            // Java Extension
-                            InterpreterRegistry.prepareImportsFromSession(this.interpreter, this);
-                        }
-                    } catch (IOException e) {
-                        SiriusPlugin.getDefault().warning(MessageFormat.format("Unable to load the VSM at {0}", res.getURI()), e);
+        Collection<Resource> allResources = Lists.newArrayList(transactionalEditingDomain.getResourceSet().getResources());
+        for (Resource res : Iterables.filter(allResources, new ResourceFileExtensionPredicate(SiriusUtil.DESCRIPTION_MODEL_EXTENSION, true))) {
+            // Unload emtpy odesign.
+            if (!res.isModified() && res.isLoaded() && res.getContents().isEmpty()) {
+                unregisterResourceInCrossReferencer(res);
+                res.unload();
+            }
+            // Reload unloaded odesign (SiriusRegistry can unload them).
+            IFile correspondingFile = WorkspaceSynchronizer.getFile(res);
+            if (!res.isLoaded() && correspondingFile != null && correspondingFile.exists()) {
+                try {
+                    res.load(Collections.emptyMap());
+                    if (res.isLoaded() && !res.getContents().isEmpty()) {
+                        registerResourceInCrossReferencer(res);
+                        // Refresh the imports of interpreter in case of new
+                        // Java Extension
+                        InterpreterRegistry.prepareImportsFromSession(this.interpreter, this);
                     }
+                } catch (IOException e) {
+                    SiriusPlugin.getDefault().warning(MessageFormat.format("Unable to load the VSM at {0}", res.getURI()), e);
                 }
             }
         }
         notifyListeners(SessionListener.VSM_UPDATED);
-    }
-
-    @Override
-    public void registryChanged(final org.eclipse.sirius.business.internal.movida.registry.ViewpointRegistry registry, Set<URI> removed, Set<URI> added, Set<URI> changed) {
-        movidaSupport.registryChanged(registry, removed, added, changed);
     }
 
     public void setResourceCollector(IResourceCollector collector) {
