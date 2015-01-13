@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.session.danalysis;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -23,8 +22,6 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -34,7 +31,6 @@ import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.command.BasicCommandStack;
-import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
@@ -53,7 +49,6 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.emf.transaction.util.ValidateEditSupport;
 import org.eclipse.emf.workspace.IWorkspaceCommandStack;
 import org.eclipse.emf.workspace.ResourceUndoContext;
-import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.extender.MetamodelDescriptorManager;
@@ -65,7 +60,6 @@ import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.ReloadingPolicy;
-import org.eclipse.sirius.business.api.session.ReloadingPolicy.Action;
 import org.eclipse.sirius.business.api.session.SavingPolicy;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionEventBroker;
@@ -102,7 +96,6 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.Illegal
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
-import org.eclipse.sirius.tools.api.command.semantic.RemoveSemanticResourceCommand;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
@@ -116,7 +109,6 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.MetaModelExtension;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.SyncStatus;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.MetamodelExtensionSetting;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -127,9 +119,7 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
-import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
 
@@ -179,6 +169,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     private IResourceCollector currentResourceCollector;
     
     private SessionVSMUpdater vsmUpdater = new SessionVSMUpdater(this);
+    
+    private final SessionResourcesSynchronizer resourcesSynchronizer = new SessionResourcesSynchronizer(this);
 
     // Generic services offered by the session
 
@@ -373,7 +365,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.OPEN_SESSION_KEY);
             dAnalysisRefresher = new DAnalysisRefresher(this);
 
-            ResourceSetSync.getOrInstallResourceSetSync(transactionalEditingDomain).registerClient(this);
+            ResourceSetSync.getOrInstallResourceSetSync(transactionalEditingDomain).registerClient(resourcesSynchronizer);
             monitor.worked(1);
             this.representationNameListener = new RepresentationNameListener(this);
             monitor.worked(1);
@@ -495,11 +487,11 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      */
     protected final void setSynchronizeStatusofEveryResource(Iterable<Resource> resourcesToConsider) {
         ResourceSetSync rsSetSync = ResourceSetSync.getOrInstallResourceSetSync(transactionalEditingDomain);
-        Collection<ResourceStatusChange> changes = Lists.newArrayList();
+        Collection<ResourceSyncClient.ResourceStatusChange> changes = Lists.newArrayList();
         for (Resource resource : Sets.newHashSet(resourcesToConsider)) {
             ResourceStatus oldStatus = ResourceSetSync.getStatus(resource);
             ResourceStatus newStatus = resource.isModified() ? ResourceStatus.CHANGED : ResourceStatus.SYNC;
-            changes.add(new ResourceStatusChange(resource, newStatus, oldStatus));
+            changes.add(new ResourceSyncClient.ResourceStatusChange(resource, newStatus, oldStatus));
         }
         rsSetSync.statusesChanged(changes);
     }
@@ -1400,71 +1392,13 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     @Override
-    public void statusChanged(final Resource resource, final ResourceStatus oldStatus, final ResourceStatus newStatus) {
-        // Do nothing while processing.
-        // See statusesChanged(Collection<ResourceStatusChange>
+    public void statusChanged(Resource resource, ResourceStatus oldStatus, ResourceStatus newStatus) {
+        resourcesSynchronizer.statusChanged(resource, oldStatus, newStatus);
     }
 
     @Override
     public void statusesChanged(Collection<ResourceStatusChange> changes) {
-        if (isOpen()) {
-            Multimap<ResourceStatus, Resource> newStatuses = getImpactingNewStatuses(changes);
-            boolean allResourcesSync = allResourcesAreInSync();
-            for (ResourceStatus newStatus : newStatuses.keySet()) {
-                switch (newStatus) {
-                case SYNC:
-                    if (allResourcesSync) {
-                        notifyListeners(SessionListener.SYNC);
-                    }
-                    break;
-                case CHANGED:
-                    notifyListeners(SessionListener.DIRTY);
-                    break;
-                case EXTERNAL_CHANGED:
-                case CONFLICTING_CHANGED:
-                case CONFLICTING_DELETED:
-                case DELETED:
-                    IProgressMonitor pm = new NullProgressMonitor();
-                    Collection<Resource> collection = newStatuses.get(newStatus);
-                    for (Resource resource : collection) {
-                        try {
-                            /*
-                             * if the project was renamed, deleted or closed we
-                             * should not try to reload any thing, this does not
-                             * make sense
-                             */
-                            if (isInProjectDeletedRenamedOrClosed(resource)) {
-                                processAction(Action.CLOSE_SESSION, resource, pm);
-                                return;
-                            }
-                            processActions(getReloadingPolicy().getActions(this, resource, newStatus), resource, pm);
-
-                            // CHECKSTYLE:OFF
-                        } catch (final Exception e) {
-                            // CHECKSTYLE:ON
-                            SiriusPlugin.getDefault().error("Can't handle resource change : " + resource.getURI(), e);
-
-                        }
-                    }
-                    // Reload were launched, get global status.
-                    allResourcesSync = allResourcesAreInSync();
-                    if (allResourcesSync) {
-                        notifyListeners(SessionListener.SYNC);
-                    } else {
-                        notifyListeners(SessionListener.DIRTY);
-                    }
-                    break;
-                default:
-                    break;
-                }
-            }
-
-            if (allResourcesSync) {
-                super.setSynchronizationStatus(SyncStatus.SYNC);
-            } else {
-                super.setSynchronizationStatus(SyncStatus.DIRTY);
-            }
-        }
+        resourcesSynchronizer.statusesChanged(changes);
     }
 
     /**
@@ -1487,136 +1421,20 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         return isResourceOfSession;
     }
 
-    private Multimap<ResourceStatus, Resource> getImpactingNewStatuses(Collection<ResourceStatusChange> changes) {
-        Multimap<ResourceStatus, Resource> impactingNewStatuses = LinkedHashMultimap.create();
-        Iterable<Resource> resources = Iterables.concat(getSemanticResources(), getAllSessionResources(), getControlledResources());
-        for (ResourceStatusChange change : changes) {
-            if (isResourceOfSession(change.getResource(), resources)) {
-                impactingNewStatuses.put(change.getNewStatus(), change.getResource());
-            }
-        }
-        return impactingNewStatuses;
-    }
-
-    /**
-     * Check if this resource is in an non-existent project or a closed project.
-     * 
-     * @param resource
-     *            the resource to check
-     * @return true if this resource is in an non-existent project or a closed
-     *         project, false otherwise
-     */
-    private boolean isInProjectDeletedRenamedOrClosed(Resource resource) {
-        IFile file = WorkspaceSynchronizer.getFile(resource);
-        if (file != null) {
-            IProject project = file.getProject();
-            if (project != null) {
-                return !project.exists() || !project.isOpen();
-            }
-        }
-        return false;
-    }
-
-    private void processActions(final List<Action> actions, final Resource resource, IProgressMonitor pm) throws Exception {
-        for (final Action action : actions) {
-            processAction(action, resource, pm);
+    void discoverAutomaticallyLoadedSemanticResources(List<Resource> allResources) {
+        // Add the unknown resources to the semantic resources of this
+        // session.
+        if (dAnalysisRefresher != null) {
+            dAnalysisRefresher.addAutomaticallyLoadedResourcesToSemanticResources(allResources);
         }
     }
 
-    private void processAction(final Action action, final Resource resource, IProgressMonitor pm) throws Exception {
-        switch (action) {
-        case CLOSE_SESSION:
-            close(pm);
-            break;
-        case RELOAD:
-            if (isOpen()) {
-                reloadResource(resource);
-            }
-            break;
-        case REMOVE:
-            removeResourceFromSession(resource, pm);
-            break;
-        default:
-            break;
-        }
-    }
-
-    /**
-     * Remove a resource from the current session and close the current session
-     * if it contains no more analysis resource.
-     * 
-     * @param resource
-     *            The resource to remove
-     */
-    private void removeResourceFromSession(Resource resource, IProgressMonitor pm) {
-        if (this.getSemanticResources().contains(resource)) {
-            getTransactionalEditingDomain().getCommandStack().execute(new RemoveSemanticResourceCommand(this, resource, false, new NullProgressMonitor()));
-        } else if (this.getAllSessionResources().contains(resource)) {
-            this.removeAnalysis(resource);
-        }
-        if (this.getResources().contains(resource)) {
-            for (final EObject root : Lists.newArrayList(resource.getContents())) {
-                EcoreUtil.remove(root);
-            }
-            this.getResources().remove(resource);
-        }
-        // delete session only if no more aird file is open
-        if (this.getAllSessionResources().isEmpty()) {
-            this.close(pm);
-        }
-    }
-
-    private void reloadResource(final Resource resource) throws IOException {
-        notifyListeners(SessionListener.ABOUT_TO_BE_REPLACED);
-
-        Command reloadingAnalysisCmd = null;
-        ResourceQuery resourceQuery = new ResourceQuery(resource);
-        boolean representationsResource = resourceQuery.isRepresentationsResource();
-        if (representationsResource) {
-            reloadingAnalysisCmd = new ReloadRepresentationsFileCmd(this, transactionalEditingDomain, "Reload " + resource.getURI() + "file", resource);
-        }
-        List<Resource> resourcesBeforeReload = Lists.newArrayList(getTransactionalEditingDomain().getResourceSet().getResources());
-        /* execute the reload operation as a read-only transaction */
-        RunnableWithResult<?> reload = new RunnableWithResult.Impl<Object>() {
-            @Override
-            public void run() {
-                resource.unload();
-                try {
-                    resource.load(Collections.EMPTY_MAP);
-                    EcoreUtil.resolveAll(resource);
-                    getSemanticCrossReferencer().resolveProxyCrossReferences(resource);
-                } catch (IOException e) {
-                    setResult(e);
-                }
-            }
-        };
-        try {
-            transactionalEditingDomain.runExclusive(reload);
-            if (reload.getResult() != null) {
-                throw (IOException) reload.getResult();
-            } else if (!reload.getStatus().isOK()) {
-                SiriusPlugin.getDefault().error("a reload operation failed for unknown reason", null);
-            } else {
-                if (representationsResource) {
-                    transactionalEditingDomain.getCommandStack().execute(reloadingAnalysisCmd);
-                    if (resource.getURI().equals(sessionResource.getURI())) {
-                        // sessionResource's contents before reload can be proxy
-                        // then need to be reassigned with reloaded
-                        // sessionResource reference.
-                        sessionResource = resource;
-                        mainDAnalysis = (DAnalysis) sessionResource.getContents().get(0);
-                    }
-                }
-                // Add the unknown resources to the semantic resources of this
-                // session.
-                if (dAnalysisRefresher != null) {
-                    dAnalysisRefresher.addAutomaticallyLoadedResourcesToSemanticResources(resourcesBeforeReload);
-                }
-                notifyListeners(SessionListener.REPLACED);
-            }
-        } catch (InterruptedException e) {
-            // do nothing
-        }
+    void sessionResourceReloaded(final Resource newSessionResource) {
+        // sessionResource's contents before reload can be proxy
+        // then need to be reassigned with reloaded
+        // sessionResource reference.
+        sessionResource = newSessionResource;
+        mainDAnalysis = (DAnalysis) sessionResource.getContents().get(0);
     }
 
     @Override
@@ -1656,8 +1474,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      *         {@link ResourceStatus#READONLY}, false otherwise
      */
     protected boolean allResourcesAreInSync() {
-        final Iterable<? extends Resource> it = Iterables.concat(getSemanticResources(), getAllSessionResources(), super.getControlledResources());
-        return checkResourcesAreInSync(it);
+        return resourcesSynchronizer.allResourcesAreInSync();
     }
 
     /**
@@ -1670,16 +1487,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      *         {@link ResourceStatus#READONLY}, false otherwise
      */
     protected final boolean checkResourcesAreInSync(Iterable<? extends Resource> resourcesToConsider) {
-        boolean allResourceAreInSync = true;
-        for (Resource resource : resourcesToConsider) {
-            ResourceStatus status = ResourceSetSync.getStatus(resource);
-            URI uri = resource.getURI();
-            allResourceAreInSync = status == ResourceStatus.SYNC || (!uri.isPlatformResource() && !new URIQuery(uri).isInMemoryURI() && !new URIQuery(uri).isCDOURI());
-            if (!allResourceAreInSync) {
-                break;
-            }
-        }
-        return allResourceAreInSync;
+        return resourcesSynchronizer.checkResourcesAreInSync(resourcesToConsider);
     }
 
     @Override
@@ -1743,7 +1551,11 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (interpreter != null) {
             interpreter.dispose();
         }
-        ResourceSetSync.getOrInstallResourceSetSync(transactionalEditingDomain).unregisterClient(this);
+        ResourceSetSync.getOrInstallResourceSetSync(transactionalEditingDomain).unregisterClient(resourcesSynchronizer);
+        // We do not reset resourcesSynchronizer to null as some of the session
+        // methods which are delegated to it must still be availble when the
+        // session is closed. It does not hold to any state or resource so
+        // that's OK.
         ResourceSetSync.uninstallResourceSetSync(transactionalEditingDomain);
         super.setOpen(false);
         /*
