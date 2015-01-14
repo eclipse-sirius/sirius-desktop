@@ -607,14 +607,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
     }
 
-    @Override
-    public synchronized void createSemanticResource(URI semanticModelURI) {
-        ResourceSet rs = transactionalEditingDomain.getResourceSet();
-        Resource resource = rs.createResource(semanticModelURI);
-        rs.getResources().remove(resource);
-        addSemanticResource(semanticModelURI, null);
-    }
-
     /**
      * Registers the specified resource as a semantic resource.
      * 

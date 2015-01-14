@@ -118,20 +118,6 @@ public interface Session {
      * {@link org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand}
      * to do it.
      * 
-     * @param semanticModelURI
-     *            {@link URI} of a existing {@link Resource} representing a
-     *            semantic model to attach to this {@link Session}
-     * 
-     * @since 0.9.0
-     */
-    void createSemanticResource(final URI semanticModelURI);
-
-    /**
-     * Add a new semantic resource in the session. Must be called in a
-     * {@link org.eclipse.emf.transaction.Transaction}, use
-     * {@link org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand}
-     * to do it.
-     * 
      * @param semanticResourceURI
      *            {@link URI} of a existing {@link Resource} representing a
      *            semantic model to attach to this {@link Session}
