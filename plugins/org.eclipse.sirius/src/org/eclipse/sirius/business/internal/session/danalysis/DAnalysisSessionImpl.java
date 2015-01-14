@@ -1240,21 +1240,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         return ownedViews;
     }
 
-    /**
-     * Unselect this specified {@link Viewpoint} on this {@link Session}.
-     * 
-     * @param viewpoint
-     *            the {@link Viewpoint} to unselect on this {@link Session}
-     */
-    void unselectSirius(Viewpoint viewpoint, IProgressMonitor pm) {
-        for (DView selectedDView : mainDAnalysis.getSelectedViews()) {
-            if (EqualityHelper.areEquals(selectedDView.getViewpoint(), viewpoint)) {
-                removeSelectedView(selectedDView, pm);
-                break;
-            }
-        }
-    }
-
     @Override
     public void removeSelectedView(final DView view, IProgressMonitor monitor) {
         try {
