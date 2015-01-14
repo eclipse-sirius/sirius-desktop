@@ -727,7 +727,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     public Set<Resource> getAllSessionResources() {
         return getSessionResources(true);
     }
-    
+
     private Set<Resource> getSessionResources(boolean includeMainResource) {
         List<Resource> result = Lists.newArrayList();
         for (DAnalysis analysis : allAnalyses()) {
@@ -1137,21 +1137,12 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     // *******************
     @Override
     public Collection<Viewpoint> getSelectedViewpoints(boolean includeReferencedAnalysis) {
-        final SortedSet<Viewpoint> result = new TreeSet<Viewpoint>(new ViewpointRegistry.ViewpointComparator());
-        if (includeReferencedAnalysis) {
-            final Collection<DView> selectedViews = getSelectedViews();
-            for (final DView view : selectedViews) {
-                final Viewpoint viewpoint = view.getViewpoint();
-                if (viewpoint != null) {
-                    result.add(viewpoint);
-                }
-            }
-        } else {
-            for (final DView dView : mainDAnalysis.getSelectedViews()) {
-                Viewpoint viewpoint = dView.getViewpoint();
-                if (viewpoint != null && !viewpoint.eIsProxy()) {
-                    result.add(viewpoint);
-                }
+        SortedSet<Viewpoint> result = new TreeSet<Viewpoint>(new ViewpointRegistry.ViewpointComparator());
+        Collection<DAnalysis> scope = includeReferencedAnalysis ? allAnalyses() : Collections.singleton(mainDAnalysis);
+        for (DView view : getSelectedViews(scope)) {
+            Viewpoint viewpoint = view.getViewpoint();
+            if (viewpoint != null && !viewpoint.eIsProxy()) {
+                result.add(viewpoint);
             }
         }
         return Collections.unmodifiableSet(result);
@@ -1163,9 +1154,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * @return a collection of selected viewpoints for this session.
      */
     public Collection<Viewpoint> getSelectedViewpointsSpecificToGeneric() {
-        // Sort the selected viewpoints by alphabetic order
-        final SortedSet<Viewpoint> viewpoints = new TreeSet<Viewpoint>(new ViewpointRegistry.ViewpointComparator());
-        viewpoints.addAll(getSelectedViewpoints(false));
+        Collection<Viewpoint> viewpoints = getSelectedViewpoints(false);
         // Then orders specific to generic
         final List<Viewpoint> orderedViewpoints = new ArrayList<Viewpoint>(viewpoints.size());
         for (final Viewpoint viewpoint : viewpoints) {
@@ -1210,24 +1199,22 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     @Override
     public Collection<DView> getSelectedViews() {
-        final Collection<DView> selectedViews = new HashSet<DView>();
-        for (final DAnalysis analysis : this.allAnalyses()) {
-            for (final Object object : analysis.getSelectedViews()) {
-                if (object instanceof DView) {
-                    selectedViews.add((DView) object);
-                }
-            }
+        return getSelectedViews(allAnalyses());
+    }
+
+    private Collection<DView> getSelectedViews(Iterable<DAnalysis> analyses) {
+        Collection<DView> selectedViews = new HashSet<DView>();
+        for (DAnalysis analysis : analyses) {
+            selectedViews.addAll(analysis.getSelectedViews());
         }
         return selectedViews;
     }
 
     @Override
     public Collection<DView> getOwnedViews() {
-        final Collection<DView> ownedViews = new HashSet<DView>();
-        for (final DAnalysis analysis : allAnalyses()) {
-            for (final DView dView : analysis.getOwnedViews()) {
-                ownedViews.add(dView);
-            }
+        Collection<DView> ownedViews = new HashSet<DView>();
+        for (DAnalysis analysis : allAnalyses()) {
+            ownedViews.addAll(analysis.getOwnedViews());
         }
         return ownedViews;
     }
