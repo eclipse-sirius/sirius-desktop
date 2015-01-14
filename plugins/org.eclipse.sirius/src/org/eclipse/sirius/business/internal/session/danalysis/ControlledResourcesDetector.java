@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -76,7 +76,9 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
      * domain.
      */
     public void dispose() {
-        session.getTransactionalEditingDomain().removeResourceSetListener(this);
+        if (session != null) {
+            session.getTransactionalEditingDomain().removeResourceSetListener(this);
+        }
         session = null;
     }
 
@@ -133,7 +135,7 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
         // No check on notifier and feature : already done by filter.
         for (Notification notif : Iterables.filter(event.getNotifications(), Notification.class)) {
             int change = notif.getEventType();
-            boolean resourcesWereAdded = change == Notification.ADD || change == Notification.SET || change ==  Notification.ADD_MANY;
+            boolean resourcesWereAdded = change == Notification.ADD || change == Notification.SET || change == Notification.ADD_MANY;
             if (resourcesWereAdded) {
                 return new ControlledResourcesDetectionCommand(session.getTransactionalEditingDomain());
             }
@@ -150,7 +152,8 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
     }
 
     /**
-     * Simply wraps a call to {@link #detectControlledResources()} into a {@link RecordingCommand}.
+     * Simply wraps a call to {@link #detectControlledResources()} into a
+     * {@link RecordingCommand}.
      */
     private class ControlledResourcesDetectionCommand extends RecordingCommand {
         public ControlledResourcesDetectionCommand(TransactionalEditingDomain domain) {
