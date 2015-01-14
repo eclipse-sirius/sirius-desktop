@@ -234,29 +234,25 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         return this.interpreter;
     }
 
-    private void initInterpreter() {
-        // Reset all the odesign files of the interpreter by setting NULL
-        this.interpreter.setProperty(IInterpreter.FILES, null);
-        setFilesPropertyToIntepreters();
-        final EObject eObject = getSemanticResources().iterator().next().getContents().get(0);
-        Session session = SessionManager.INSTANCE.getSession(eObject);
-        InterpreterRegistry.prepareImportsFromSession(this.interpreter, session);
-        this.interpreter.setCrossReferencer(getSemanticCrossReferencer());
-    }
-
     /**
-     * Add all the representation description files to the interpreter
+     * Configure the interpreter attached to this session.
      */
-    private void setFilesPropertyToIntepreters() {
-        // Calculate paths of the activated representation description files
-        final List<String> filePaths = new ArrayList<String>();
-        for (final Viewpoint vp : getSelectedViewpointsSpecificToGeneric()) {
+    private void configureInterpreter() {
+        // Calculate paths of the activated representation description files. 
+        List<String> filePaths = new ArrayList<String>();
+        for (Viewpoint vp : getSelectedViewpointsSpecificToGeneric()) {
             Resource vpResource = vp.eResource();
             if (vpResource != null) {
                 filePaths.add(vpResource.getURI().toPlatformString(true));
             }
         }
+        // Setting the FILES property is actually interpreted as adding new
+        // files for historical reasons, so reset it to null first before
+        // setting the new value.
+        this.interpreter.setProperty(IInterpreter.FILES, null);
         this.interpreter.setProperty(IInterpreter.FILES, filePaths);
+        InterpreterRegistry.prepareImportsFromSession(this.interpreter, this);
+        this.interpreter.setCrossReferencer(getSemanticCrossReferencer());
     }
 
     // *******************
@@ -266,13 +262,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     @Override
     public ECrossReferenceAdapterWithUnproxyCapability getSemanticCrossReferencer() {
         if (crossReferencer == null) {
-            // use a lazy cross referencer to avoid big memory consumption on
-            // session load
             crossReferencer = createSemanticCrossReferencer();
-
-            // Precondition expression prevents a diagram to be
-            // created when creating the session
-            // Update the interpreter
             if (interpreter != null) {
                 interpreter.setCrossReferencer(crossReferencer);
             }
@@ -387,7 +377,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         addAdaptersOnAnalysis(analysis);
         notifyListeners(SessionListener.REPRESENTATION_CHANGE);
         updateSelectedViewpointsData(new NullProgressMonitor());
-        initInterpreter();
+        configureInterpreter();
     }
 
     @Override
@@ -1244,7 +1234,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             monitor.worked(1);
             notifyListeners(SessionListener.SELECTED_VIEWS_CHANGE_KIND);
             monitor.worked(1);
-            initInterpreter();
+            configureInterpreter();
         } finally {
             monitor.done();
         }
@@ -1296,7 +1286,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             mainDAnalysis.getSelectedViews().remove(view);
             updateSelectedViewpointsData(new SubProgressMonitor(monitor, 1));
             notifyListeners(SessionListener.SELECTED_VIEWS_CHANGE_KIND);
-            initInterpreter();
+            configureInterpreter();
         } finally {
             monitor.done();
         }
@@ -1334,8 +1324,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             monitor.worked(1);
 
             /* need to prepare for the init */
-            initInterpreter();
-            InterpreterRegistry.prepareImportsFromSession(this.interpreter, this);
+            configureInterpreter();
             if (createNewRepresentations) {
                 monitor.subTask("Initialize representations");
                 for (final EObject semantic : semantics) {
@@ -1514,7 +1503,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             dAnalysisRefresher.init();
             monitor.worked(1);
             if (!getSemanticResources().isEmpty()) {
-                initInterpreter();
+                configureInterpreter();
             }
             monitor.worked(1);
             initializeAccessor();
