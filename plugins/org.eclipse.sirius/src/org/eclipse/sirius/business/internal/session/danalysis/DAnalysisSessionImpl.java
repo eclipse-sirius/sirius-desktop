@@ -106,10 +106,8 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.MetaModelExtension;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
-import org.eclipse.sirius.viewpoint.description.MetamodelExtensionSetting;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.impl.DAnalysisSessionEObjectImpl;
 
@@ -1272,22 +1270,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                 }
             }
             updateSelectedViewpointsData(new SubProgressMonitor(monitor, 1));
-
-            /* Initializes extension. */
-            for (DView dView : intializedDViews) {
-                if (dView instanceof DRepresentationContainer) {
-                    DRepresentationContainer dRepresentationContainer = (DRepresentationContainer) dView;
-                    for (final MetamodelExtensionSetting extensionSetting : viewpoint.getOwnedMMExtensions()) {
-                        final ModelAccessor accessor = getModelAccessor();
-                        if (extensionSetting.getExtensionGroup() != null && accessor.eInstanceOf(extensionSetting.getExtensionGroup(), "ExtensionGroup")) {
-                            final EObject group = extensionSetting.getExtensionGroup();
-                            final MetaModelExtension extension = ViewpointFactory.eINSTANCE.createMetaModelExtension();
-                            extension.setExtensionGroup(group);
-                            dRepresentationContainer.setOwnedExtensions(extension);
-                        }
-                    }
-                }
-            }
             monitor.worked(1);
             /* DVIew created are automatically selected */
             if (!intializedDViews.isEmpty()) {
