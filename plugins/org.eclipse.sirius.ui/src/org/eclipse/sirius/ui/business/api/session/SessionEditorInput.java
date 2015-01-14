@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.ui.business.api.session;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.ui.URIEditorInput;
 import org.eclipse.emf.common.util.URI;
@@ -82,10 +83,6 @@ public class SessionEditorInput extends URIEditorInput {
      */
     public SessionEditorInput(final IMemento memento) {
         super(memento);
-        String sessionResourceURIString = memento.getString(SESSION_RESOURCE_URI);
-        if (sessionResourceURIString != null) {
-            sessionResourceURI = URI.createURI(sessionResourceURIString);
-        }
     }
 
     /**
@@ -172,6 +169,10 @@ public class SessionEditorInput extends URIEditorInput {
                 uiSession.open();
             }
         } catch (IllegalStateException e) {
+            sessionFromURI = null;
+            // Silent catch: can happen if failing to retrieve the session from
+            // its URI
+        }  catch (OperationCanceledException e) {
             sessionFromURI = null;
             // Silent catch: can happen if failing to retrieve the session from
             // its URI
