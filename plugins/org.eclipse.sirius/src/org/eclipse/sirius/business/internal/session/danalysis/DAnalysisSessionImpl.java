@@ -167,9 +167,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     private boolean disposeEditingDomainOnClose = true;
 
     private IResourceCollector currentResourceCollector;
-    
+
     private SessionVSMUpdater vsmUpdater = new SessionVSMUpdater(this);
-    
+
     private final SessionResourcesSynchronizer resourcesSynchronizer = new SessionResourcesSynchronizer(this);
 
     // Generic services offered by the session
@@ -222,37 +222,160 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         setSaveInExclusiveTransaction(true);
     }
 
-    /**
-     * Configure this session so that when it is closed, it disposes the
-     * associated editing domain or not. Normally, each session has its own
-     * editing domain, which is disposed when the session is closed, but the
-     * historical behavior was to share the same editing domain for all session.
-     * Applications which have not been updated and still used shared editing
-     * domains should set this flag to <code>false</code> to avoid problems.
-     * 
-     * @param disposeOnClose
-     *            whether or not the editing domain used by this session should
-     *            be disposed when the session is closed.
-     */
-    public void setDisposeEditingDomainOnClose(boolean disposeOnClose) {
-        this.disposeEditingDomainOnClose = disposeOnClose;
-    }
-
-    /**
-     * Tests whether this session will dispose its editing domain when it is
-     * closed.
-     * 
-     * @return <code>true</code> if this session will dispose its editing domain
-     *         when closed.
-     */
-    public boolean getDisposeEditingDomainOnClose() {
-        return disposeEditingDomainOnClose;
-    }
+    // *******************
+    // Session interpreter
+    // *******************
 
     @Override
-    public TransactionalEditingDomain getTransactionalEditingDomain() {
-        return transactionalEditingDomain;
+    public IInterpreter getInterpreter() {
+        if (this.crossReferencer == null) {
+            this.interpreter.setCrossReferencer(getSemanticCrossReferencer());
+        }
+        return this.interpreter;
     }
+
+    private void initInterpreter() {
+        // Reset all the odesign files of the interpreter by setting NULL
+        this.interpreter.setProperty(IInterpreter.FILES, null);
+        setFilesPropertyToIntepreters();
+        final EObject eObject = getSemanticResources().iterator().next().getContents().get(0);
+        Session session = SessionManager.INSTANCE.getSession(eObject);
+        InterpreterRegistry.prepareImportsFromSession(this.interpreter, session);
+        this.interpreter.setCrossReferencer(getSemanticCrossReferencer());
+    }
+
+    /**
+     * Add all the representation description files to the interpreter
+     */
+    private void setFilesPropertyToIntepreters() {
+        // Calculate paths of the activated representation description files
+        final List<String> filePaths = new ArrayList<String>();
+        for (final Viewpoint vp : getSelectedViewpointsSpecificToGeneric()) {
+            Resource vpResource = vp.eResource();
+            if (vpResource != null) {
+                filePaths.add(vpResource.getURI().toPlatformString(true));
+            }
+        }
+        this.interpreter.setProperty(IInterpreter.FILES, filePaths);
+    }
+
+    // *******************
+    // Cross-referencer
+    // *******************
+
+    @Override
+    public ECrossReferenceAdapterWithUnproxyCapability getSemanticCrossReferencer() {
+        if (crossReferencer == null) {
+            // use a lazy cross referencer to avoid big memory consumption on
+            // session load
+            crossReferencer = createSemanticCrossReferencer();
+
+            // Precondition expression prevents a diagram to be
+            // created when creating the session
+            // Update the interpreter
+            if (interpreter != null) {
+                interpreter.setCrossReferencer(crossReferencer);
+            }
+        }
+        return crossReferencer;
+    }
+
+    /**
+     * Create the semantic cross referencer.
+     * 
+     * @return a new cross referencer adapter
+     */
+    protected ECrossReferenceAdapterWithUnproxyCapability createSemanticCrossReferencer() {
+        return new SessionLazyCrossReferencer(this);
+    }
+
+    /**
+     * Add the cross referencer (if exists and is not present) to the eAdapters
+     * list of the given resource.
+     * 
+     * @param newResource
+     *            the resource on which the semantic cross reference should be
+     *            added.
+     */
+    protected void registerResourceInCrossReferencer(final Resource newResource) {
+        if (crossReferencer != null) {
+            if (!newResource.eAdapters().contains(crossReferencer)) {
+                newResource.eAdapters().add(crossReferencer);
+            }
+        }
+    }
+
+    /**
+     * Remove the cross referencer (if exists and is present) from the eAdapters
+     * list of the given resource.
+     * 
+     * @param resource
+     *            the resource from which the semantic cross reference should be
+     *            removed.
+     */
+    protected void unregisterResourceInCrossReferencer(final Resource resource) {
+        if (crossReferencer != null) {
+            if (resource.eAdapters().contains(crossReferencer)) {
+                resource.eAdapters().remove(crossReferencer);
+            }
+        }
+    }
+
+    /**
+     * Disable & Remove all ECrossReferencerAdapter adapters.
+     */
+    protected void disableAndRemoveECrossReferenceAdapters() {
+        ResourceSet resourceSet = getTransactionalEditingDomain().getResourceSet();
+        // Disable resolution of proxy for AirDCrossReferenceAdapter of
+        // session and for semanticCrossReferencer during the closing
+        Adapter existingAirDCrossReferenceAdapter = EcoreUtil.getExistingAdapter(resourceSet, AirDCrossReferenceAdapter.class);
+        AirDCrossReferenceAdapter airDCrossReferenceAdapter = null;
+        if (existingAirDCrossReferenceAdapter instanceof AirDCrossReferenceAdapter) {
+            airDCrossReferenceAdapter = (AirDCrossReferenceAdapter) existingAirDCrossReferenceAdapter;
+            airDCrossReferenceAdapter.disableResolve();
+            resourceSet.eAdapters().remove(airDCrossReferenceAdapter);
+        }
+        if (getSemanticCrossReferencer() instanceof LazyCrossReferencer) {
+            ((LazyCrossReferencer) getSemanticCrossReferencer()).disableResolve();
+        }
+        // Let's clear the cross referencer if it's still there.
+        for (final Resource res : getSemanticResources()) {
+            unregisterResourceInCrossReferencer(res);
+        }
+        for (final DAnalysis analysis : Iterables.filter(allAnalyses(), Predicates.notNull())) {
+            removeAdaptersOnAnalysis(analysis);
+            Resource analysisResource = analysis.eResource();
+            if (analysisResource != null) {
+                unregisterResourceInCrossReferencer(analysisResource);
+            }
+        }
+        Iterable<Resource> resources = Lists.newArrayList(resourceSet.getResources());
+        for (Resource resource : Iterables.filter(resources, new ResourceFileExtensionPredicate(SiriusUtil.DESCRIPTION_MODEL_EXTENSION, false))) {
+            unregisterResourceInCrossReferencer(resource);
+        }
+    }
+
+    /**
+     * Enable all ECrossReferencerAdapter adapters before the end of closing.
+     */
+    protected void reenableECrossReferenceAdaptersBeforeEndOfClosing() {
+        ResourceSet resourceSet = getTransactionalEditingDomain().getResourceSet();
+        // Enable resolution for AirdCrossReferenceAdapter of session at the end
+        // of closing
+        Adapter existingAirDCrossReferenceAdapter = EcoreUtil.getExistingAdapter(resourceSet, AirDCrossReferenceAdapter.class);
+        AirDCrossReferenceAdapter airDCrossReferenceAdapter = null;
+        if (existingAirDCrossReferenceAdapter instanceof AirDCrossReferenceAdapter) {
+            airDCrossReferenceAdapter = (AirDCrossReferenceAdapter) existingAirDCrossReferenceAdapter;
+            airDCrossReferenceAdapter.enableResolve();
+        }
+        if (getSemanticCrossReferencer() instanceof LazyCrossReferencer) {
+            ((LazyCrossReferencer) getSemanticCrossReferencer()).enableResolve();
+        }
+    }
+
+    // *******************
+    // Analyses
+    // *******************
 
     @Override
     public void addAnalysis(Resource analysisResource) {
@@ -344,323 +467,84 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         return new DAnalysisesInternalQuery(super.getAnalyses()).getAllAnalyses();
     }
 
-    /*
-     * unload only if resource has not an http scheme => this prevent special
-     * resources such as http://www.eclipse.org/EMF/2002 to be unloaded
-     */
-    private boolean couldBeUnload(ResourceSet rset, Resource resource) {
-        return resource.getURI() != null && rset.getPackageRegistry().getEPackage(resource.getURI().toString()) == null;
+    @Override
+    public void addAdaptersOnAnalysis(final DAnalysis analysis) {
+        if (this.representationsChangeAdapter != null) {
+            this.representationsChangeAdapter.registerAnalysis(analysis);
+        }
+        if (semanticResourcesUpdater != null && !analysis.eAdapters().contains(semanticResourcesUpdater)) {
+            analysis.eAdapters().add(semanticResourcesUpdater);
+        }
     }
 
     @Override
-    public void open(IProgressMonitor monitor) {
-        try {
-            monitor.beginTask("Open session", 33);
-            if (!SessionManager.INSTANCE.getSessions().contains(this)) {
-                SessionManager.INSTANCE.add(this);
-            }
-            monitor.worked(1);
-            notifyListeners(SessionListener.OPENING);
-            monitor.worked(1);
-            DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.OPEN_SESSION_KEY);
-            dAnalysisRefresher = new DAnalysisRefresher(this);
-
-            ResourceSetSync.getOrInstallResourceSetSync(transactionalEditingDomain).registerClient(resourcesSynchronizer);
-            monitor.worked(1);
-            this.representationNameListener = new RepresentationNameListener(this);
-            monitor.worked(1);
-            saver.initialize();
-
-            final Collection<DAnalysis> allAnalyses = allAnalyses();
-            if (allAnalyses.isEmpty()) {
-                throw new RuntimeException("A analysis session could not be opened without at least a valid analyis");
-            }
-            /*
-             * Resolves all models needed by the session because GMF installs a
-             * CrossReferencerAdapter that resolves the resource set.
-             */
-            DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.RESOLVE_ALL_KEY);
-            // First resolve all VSM resources used for Sirius to ignore VSM
-            // resources and VSM linked resources (as viewpoint:/environment
-            // resource) as new semantic element
-            dAnalysisRefresher.resolveAllVSMResources(allAnalyses);
-            // Then resolve all resources (to automatically add new semantic
-            // resources)
-            List<Resource> resourcesBeforeLoadOfSession = Lists.newArrayList(getTransactionalEditingDomain().getResourceSet().getResources());
-            dAnalysisRefresher.forceLoadingOfEveryLinkedResource();
-            monitor.worked(10);
-
-            // Add the unknown resources to the semantic resources of this
-            // session.
-            dAnalysisRefresher.addAutomaticallyLoadedResourcesToSemanticResources(resourcesBeforeLoadOfSession);
-            monitor.worked(1);
-            setSynchronizeStatusofEveryResource();
-            monitor.worked(1);
-
-            DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.RESOLVE_ALL_KEY);
-            // Look for controlled resources after load of every linked
-            // resources.
-            handlePossibleControlledResources();
-            monitor.worked(1);
-            dAnalysisRefresher.init();
-            monitor.worked(1);
-            if (!getSemanticResources().isEmpty()) {
-                initInterpreter();
-            }
-            monitor.worked(1);
-            initializeAccessor();
-            monitor.worked(1);
-            ResourceSetSync.getOrInstallResourceSetSync(transactionalEditingDomain);
-            monitor.worked(1);
-            DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.OPEN_SESSION_KEY);
-
-            ViewpointRegistry.getInstance().addListener(this.vsmUpdater);
-            // Setup ResourceModifiedFieldUpdater
-            TransactionalEditingDomain.DefaultOptions options = TransactionUtil.getAdapter(getTransactionalEditingDomain(), TransactionalEditingDomain.DefaultOptions.class);
-            if (options != null) {
-                Object value = options.getDefaultTransactionOptions().get(Transaction.OPTION_VALIDATE_EDIT);
-                ValidateEditSupport delegate = null;
-                if (value instanceof ValidateEditSupport) {
-                    delegate = (ValidateEditSupport) value;
-                }
-                if (!(delegate instanceof ResourceModifiedFieldUpdater) && getTransactionalEditingDomain() instanceof InternalTransactionalEditingDomain) {
-                    InternalTransactionalEditingDomain internalDomain = (InternalTransactionalEditingDomain) getTransactionalEditingDomain();
-                    new ResourceModifiedFieldUpdater(internalDomain, delegate);
-                }
-            }
-
-            super.setOpen(true);
-            notifyListeners(SessionListener.OPENED);
-            monitor.worked(1);
-            updateSelectedViewpointsData(new SubProgressMonitor(monitor, 10));
-            initLocalTriggers();
-
-            getTransactionalEditingDomain().addResourceSetListener(saver);
-        } catch (OperationCanceledException e) {
-            close(new SubProgressMonitor(monitor, 10));
-            throw e;
-        } finally {
-            monitor.done();
+    public void removeAdaptersOnAnalysis(final DAnalysis analysis) {
+        if (this.representationsChangeAdapter != null) {
+            this.representationsChangeAdapter.unregisterAnalysis(analysis);
         }
-    }
-
-    /**
-     * This method allows adding {@code ModelChangeTrigger} to the current
-     * session {@link SessionEventBroker}. This method is called during the
-     * opening of the Session, before setting the open attribute to true and
-     * before launching the SessionListener.OPENED notifications.
-     */
-    protected void initLocalTriggers() {
-        Predicate<Notification> danglingRemovalPredicate = Predicates.or(DanglingRefRemovalTrigger.IS_DETACHMENT, DanglingRefRemovalTrigger.IS_ATTACHMENT);
-        DanglingRefRemovalTrigger danglingRemovalTrigger = new DanglingRefRemovalTrigger(this);
-        getEventBroker().addLocalTrigger(SessionEventBrokerImpl.asFilter(danglingRemovalPredicate), danglingRemovalTrigger);
-
-        addRefreshEditorsListener();
-        /*
-         * Make sure these adapters are added after the rest, and in particular
-         * after the semantic cross-referencer, so that they can rely on an
-         * up-to-date cross-referencer when invoked.
-         */
-        for (DAnalysis analysis : allAnalyses()) {
-            addAdaptersOnAnalysis(analysis);
+        if (semanticResourcesUpdater != null && analysis.eAdapters().contains(semanticResourcesUpdater)) {
+            analysis.eAdapters().remove(semanticResourcesUpdater);
         }
-    }
-
-    /**
-     * Sets the Synchronization status of every resources of this Session's
-     * resourceSet to SYNC or changed regarding their modified status.
-     */
-    protected void setSynchronizeStatusofEveryResource() {
-        setSynchronizeStatusofEveryResource(transactionalEditingDomain.getResourceSet().getResources());
-    }
-
-    /**
-     * Sets the Synchronization status of considered resources of this Session's
-     * resourceSet to SYNC or changed regarding their modified status.
-     * 
-     * Should only be called from setSynchronizeStatusofEveryResource method
-     * (and overriding ones).
-     * 
-     * @param resourcesToConsider
-     *            the resources to consider.
-     */
-    protected final void setSynchronizeStatusofEveryResource(Iterable<Resource> resourcesToConsider) {
-        ResourceSetSync rsSetSync = ResourceSetSync.getOrInstallResourceSetSync(transactionalEditingDomain);
-        Collection<ResourceSyncClient.ResourceStatusChange> changes = Lists.newArrayList();
-        for (Resource resource : Sets.newHashSet(resourcesToConsider)) {
-            ResourceStatus oldStatus = ResourceSetSync.getStatus(resource);
-            ResourceStatus newStatus = resource.isModified() ? ResourceStatus.CHANGED : ResourceStatus.SYNC;
-            changes.add(new ResourceSyncClient.ResourceStatusChange(resource, newStatus, oldStatus));
-        }
-        rsSetSync.statusesChanged(changes);
-    }
-
-    private void initializeAccessor() {
-        try {
-            final ModelAccessor accessor = getModelAccessor();
-            if (accessor != null) {
-                accessor.init(transactionalEditingDomain.getResourceSet());
-            }
-        } catch (final IllegalURIException e) {
-            // The blocked state is on when the user needs more permissions for
-            // a given ecore URI.
-            super.setBlocked(true);
-        }
-    }
-
-    /**
-     * Add all the representation description files to the interpreter
-     */
-    private void setFilesPropertyToIntepreters() {
-        // Calculate paths of the activated representation description files
-        final List<String> filePaths = new ArrayList<String>();
-        for (final Viewpoint vp : getSelectedViewpointsSpecificToGeneric()) {
-            Resource vpResource = vp.eResource();
-            if (vpResource != null) {
-                filePaths.add(vpResource.getURI().toPlatformString(true));
-            }
-        }
-        this.interpreter.setProperty(IInterpreter.FILES, filePaths);
-    }
-
-    private void handlePossibleControlledResources() {
-        // Detect actual controlled resources.
-        if (controlledResourcesDetector != null) {
-            controlledResourcesDetector.init();
-        }
-        // Reset semanticResources to have getSemanticResources() ignores
-        // controlledResources which are computed only at this step
-        if (semanticResourcesUpdater != null) {
-            semanticResourcesUpdater.dispose();
-            semanticResourcesUpdater = null;
-        }
-        semanticResources = null;
-    }
-
-    private void initInterpreter() {
-        // Reset all the odesign files of the interpreter by setting NULL
-        this.interpreter.setProperty(IInterpreter.FILES, null);
-        setFilesPropertyToIntepreters();
-        final EObject eObject = getSemanticResources().iterator().next().getContents().get(0);
-        Session session = SessionManager.INSTANCE.getSession(eObject);
-        InterpreterRegistry.prepareImportsFromSession(this.interpreter, session);
-        this.interpreter.setCrossReferencer(getSemanticCrossReferencer());
     }
 
     @Override
-    public Collection<Viewpoint> getSelectedViewpoints(boolean includeReferencedAnalysis) {
-        final SortedSet<Viewpoint> result = new TreeSet<Viewpoint>(new ViewpointRegistry.ViewpointComparator());
-        if (includeReferencedAnalysis) {
-            if (!super.isBlocked()) {
-                final Collection<DView> selectedViews = getSelectedViews();
-                for (final DView view : selectedViews) {
-                    final Viewpoint viewpoint = view.getViewpoint();
-                    if (viewpoint != null) {
-                        result.add(viewpoint);
-                    }
-                }
+    public void moveRepresentation(final DAnalysis newContainer, final DRepresentation representation) {
+        final IPermissionAuthority authority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(representation.eContainer());
+        IProgressMonitor pm = new NullProgressMonitor();
+        if (!authority.canDeleteInstance(representation)) {
+            throw new LockedInstanceException(representation);
+        }
+        final EObject semantic;
+        if (representation.eContainer() instanceof DRepresentationContainer && !((DRepresentationContainer) representation.eContainer()).getModels().isEmpty()) {
+            semantic = ((DRepresentationContainer) representation.eContainer()).getModels().iterator().next();
+        } else {
+            semantic = null;
+        }
+        DView receiver = findViewForRepresentation(representation, newContainer);
+        if (receiver == null) {
+            final IPermissionAuthority analysisAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(newContainer);
+            if (analysisAuthority.canCreateIn(newContainer)) {
+                createView(getViewpoint(representation), Lists.newArrayList(semantic), false, pm);
+                receiver = findViewForRepresentation(representation, newContainer);
+            } else {
+                throw new LockedInstanceException(newContainer);
+            }
+        }
+        final IPermissionAuthority receiverAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(receiver);
+        if (receiverAuthority.canCreateIn(receiver)) {
+            receiver.getOwnedRepresentations().add(representation);
+            // Add all semantic root elements pointed by the target of all
+            // DSemanticDecorator of this representation (except of this root is
+            // a root of a referencedAnalysis)
+            if (receiver.eContainer() instanceof DAnalysis) {
+                DAnalysisSessionHelper.updateModelsReferences((DAnalysis) receiver.eContainer(), Iterators.filter(representation.eAllContents(), DSemanticDecorator.class));
             }
         } else {
-            if (!super.isBlocked()) {
-                for (final DView dView : mainDAnalysis.getSelectedViews()) {
-                    Viewpoint viewpoint = dView.getViewpoint();
-                    if (viewpoint != null && !viewpoint.eIsProxy()) {
-                        result.add(viewpoint);
-                    }
-                }
-            }
+            throw new LockedInstanceException(receiver);
         }
-        return Collections.unmodifiableSet(result);
+        transferCustomData(this, representation);
     }
 
     /**
-     * Get the selected viewpoints sorted form more specifis to generics.
+     * Transfers the custom data of the origin session for the given associated
+     * instance into this session and for the same instance.
      * 
-     * @return a collection of selected viewpoints for this session.
+     * @param origin
+     *            the original session.
+     * @param associatedInstance
+     *            the associated instance.
      */
-    public Collection<Viewpoint> getSelectedViewpointsSpecificToGeneric() {
-        // Sort the selected viewpoints by alphabetic order
-        final SortedSet<Viewpoint> viewpoints = new TreeSet<Viewpoint>(new ViewpointRegistry.ViewpointComparator());
-        viewpoints.addAll(getSelectedViewpoints(false));
-        // Then orders specific to generic
-        final List<Viewpoint> orderedViewpoints = new ArrayList<Viewpoint>(viewpoints.size());
-        for (final Viewpoint viewpoint : viewpoints) {
-            int insertPosition = orderedViewpoints.size();
-            for (final Viewpoint viewpoint2 : orderedViewpoints) {
-                if (ComponentizationHelper.isExtendedBy(viewpoint, viewpoint2)) {
-                    insertPosition = orderedViewpoints.indexOf(viewpoint2);
-                } else if (ComponentizationHelper.isExtendedBy(viewpoint2, viewpoint)) {
-                    insertPosition = orderedViewpoints.indexOf(viewpoint2) + 1;
-                }
-            }
-            orderedViewpoints.add(insertPosition, viewpoint);
+    private void transferCustomData(final Session origin, final EObject associatedInstance) {
+        // Diagram should be move.
+        final Collection<EObject> diagrams = origin.getServices().getCustomData(CustomDataConstants.GMF_DIAGRAMS, associatedInstance);
+        for (final EObject object : diagrams) {
+            this.getServices().putCustomData(CustomDataConstants.GMF_DIAGRAMS, associatedInstance, object);
         }
-        return Collections.unmodifiableCollection(orderedViewpoints);
     }
 
-    @Override
-    public Resource getSessionResource() {
-        return sessionResource;
-    }
-
-    @Override
-    public Set<Resource> getReferencedSessionResources() {
-        List<Resource> allSessionResources = Lists.newArrayList(getAllSessionResources());
-        allSessionResources.remove(getSessionResource());
-        return new HashSet<Resource>(allSessionResources);
-    }
-
-    @Override
-    public Collection<Resource> getSemanticResources() {
-        if (semanticResources == null) {
-            semanticResources = new CopyOnWriteArrayList<Resource>();
-            semanticResourcesUpdater = new SemanticResourcesUpdater(this, semanticResources);
-            if (!super.isBlocked()) {
-                RunnableWithResult<Collection<Resource>> semanticResourcesGetter = new SemanticResourceGetter(this);
-                try {
-                    TransactionUtil.runExclusive(getTransactionalEditingDomain(), semanticResourcesGetter);
-                } catch (InterruptedException e) {
-                    SiriusPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, "Error while accessing semantic resources"));
-                }
-                ((CopyOnWriteArrayList<Resource>) semanticResources).addAllAbsent(semanticResourcesGetter.getResult());
-            }
-        }
-        return Collections.unmodifiableCollection(semanticResources);
-    }
-
-    @Override
-    public SessionService getServices() {
-        if (services == null) {
-            services = new DAnalysisSessionServicesImpl(super.getAnalyses());
-        }
-        return services;
-    }
-
-    @Override
-    public String toString() {
-        String prefix = "Local Session: ";
-        final StringBuilder builder = new StringBuilder();
-        for (final DAnalysis analysis : allAnalyses()) {
-            final Resource resource = analysis.eResource();
-            if (resource != null && resource.getURI() != null) {
-                URI uri = resource.getURI();
-                if (new URIQuery(uri).isInMemoryURI()) {
-                    prefix = "Transient Session: ";
-                }
-                if (uri.segments().length > 0) {
-                    builder.append(URI.decode(uri.lastSegment())).append("  ");
-                } else {
-                    builder.append(uri.opaquePart()).append(" ");
-                }
-            }
-        }
-        // Remove the last two spaces if needed
-        builder.insert(0, prefix);
-        if (builder.length() > 2 && "  ".equals(builder.substring(builder.length() - 2, builder.length()))) {
-            builder.delete(builder.length() - 2, builder.length());
-        }
-        return builder.toString();
-    }
+    // *******************
+    // Semantic Resources
+    // *******************
 
     private void addSemanticResource(final Resource newResource, final boolean addCrossReferencedResources, final IProgressMonitor monitor) {
         final ResourceSet set = transactionalEditingDomain.getResourceSet();
@@ -780,38 +664,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         registerResourceInCrossReferencer(newResource);
     }
 
-    /**
-     * Add the cross referencer (if exists and is not present) to the eAdapters
-     * list of the given resource.
-     * 
-     * @param newResource
-     *            the resource on which the semantic cross reference should be
-     *            added.
-     */
-    protected void registerResourceInCrossReferencer(final Resource newResource) {
-        if (crossReferencer != null) {
-            if (!newResource.eAdapters().contains(crossReferencer)) {
-                newResource.eAdapters().add(crossReferencer);
-            }
-        }
-    }
-
-    /**
-     * Remove the cross referencer (if exists and is present) from the eAdapters
-     * list of the given resource.
-     * 
-     * @param resource
-     *            the resource from which the semantic cross reference should be
-     *            removed.
-     */
-    protected void unregisterResourceInCrossReferencer(final Resource resource) {
-        if (crossReferencer != null) {
-            if (resource.eAdapters().contains(crossReferencer)) {
-                resource.eAdapters().remove(crossReferencer);
-            }
-        }
-    }
-
     private void notifyNewMetamodels(final Resource newResource) {
         if (Boolean.valueOf(System.getProperty("org.eclipse.sirius.enableUnsafeOptimisations", "false"))) {
             return;
@@ -836,8 +688,119 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     @Override
-    public ModelAccessor getModelAccessor() {
-        return SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(transactionalEditingDomain.getResourceSet());
+    public Collection<Resource> getSemanticResources() {
+        if (semanticResources == null) {
+            semanticResources = new CopyOnWriteArrayList<Resource>();
+            semanticResourcesUpdater = new SemanticResourcesUpdater(this, semanticResources);
+            if (!super.isBlocked()) {
+                RunnableWithResult<Collection<Resource>> semanticResourcesGetter = new SemanticResourceGetter(this);
+                try {
+                    TransactionUtil.runExclusive(getTransactionalEditingDomain(), semanticResourcesGetter);
+                } catch (InterruptedException e) {
+                    SiriusPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, "Error while accessing semantic resources"));
+                }
+                ((CopyOnWriteArrayList<Resource>) semanticResources).addAllAbsent(semanticResourcesGetter.getResult());
+            }
+        }
+        return Collections.unmodifiableCollection(semanticResources);
+    }
+
+    @Override
+    public void removeSemanticResource(Resource semanticResource, IProgressMonitor monitor) {
+        ResourceSet resourceSet = transactionalEditingDomain.getResourceSet();
+        for (final Resource res : collectAllReferencingResources(semanticResource)) {
+            doRemoveSemanticResource(res, resourceSet);
+        }
+        doRemoveSemanticResource(semanticResource, resourceSet);
+    }
+
+    /**
+     * Unregisters the resource from the list of semantic resources.
+     * 
+     * @param res
+     *            the semantic resource to unregister.
+     * @param set
+     *            the resourceset from which to remove it.
+     */
+    protected void doRemoveSemanticResource(final Resource res, final ResourceSet set) {
+        if (res.getContents().size() > 0) {
+            final EObject root = res.getContents().get(0);
+            for (final DAnalysis analysis : this.allAnalyses()) {
+                analysis.getModels().remove(root);
+            }
+        }
+        unregisterResourceInCrossReferencer(res);
+        if (couldBeUnload(set, res)) {
+            res.unload();
+        }
+        set.getResources().remove(res);
+    }
+
+    void discoverAutomaticallyLoadedSemanticResources(List<Resource> allResources) {
+        // Add the unknown resources to the semantic resources of this
+        // session.
+        if (dAnalysisRefresher != null) {
+            dAnalysisRefresher.addAutomaticallyLoadedResourcesToSemanticResources(allResources);
+        }
+    }
+
+    // *******************
+    // Session Resources
+    // *******************
+    @Override
+    public Resource getSessionResource() {
+        return sessionResource;
+    }
+
+    @Override
+    public Set<Resource> getReferencedSessionResources() {
+        List<Resource> allSessionResources = Lists.newArrayList(getAllSessionResources());
+        allSessionResources.remove(getSessionResource());
+        return new HashSet<Resource>(allSessionResources);
+    }
+
+    @Override
+    public Set<Resource> getAllSessionResources() {
+        final Set<Resource> analysisResources = new LinkedHashSet<Resource>();
+        for (final DAnalysis analysis : allAnalyses()) {
+            Resource analysisResource = analysis.eResource();
+            if (analysisResource != null) {
+                analysisResources.add(analysisResource);
+            }
+        }
+        return Collections.unmodifiableSet(analysisResources);
+    }
+
+    // *******************
+    // Saving and Synchronization
+    // *******************
+    /**
+     * Sets the Synchronization status of every resources of this Session's
+     * resourceSet to SYNC or changed regarding their modified status.
+     */
+    protected void setSynchronizeStatusofEveryResource() {
+        setSynchronizeStatusofEveryResource(transactionalEditingDomain.getResourceSet().getResources());
+    }
+
+    /**
+     * Sets the Synchronization status of considered resources of this Session's
+     * resourceSet to SYNC or changed regarding their modified status.
+     * 
+     * Should only be called from setSynchronizeStatusofEveryResource method
+     * (and overriding ones).
+     * 
+     * @param resourcesToConsider
+     *            the resources to consider.
+     */
+    protected final void setSynchronizeStatusofEveryResource(Iterable<Resource> resourcesToConsider) {
+        ResourceSetSync rsSetSync = ResourceSetSync.getOrInstallResourceSetSync(transactionalEditingDomain);
+        Collection<ResourceSyncClient.ResourceStatusChange> changes = Lists.newArrayList();
+        for (Resource resource : Sets.newHashSet(resourcesToConsider)) {
+            ResourceStatus oldStatus = ResourceSetSync.getStatus(resource);
+            ResourceStatus newStatus = resource.isModified() ? ResourceStatus.CHANGED : ResourceStatus.SYNC;
+            changes.add(new ResourceSyncClient.ResourceStatusChange(resource, newStatus, oldStatus));
+        }
+        rsSetSync.statusesChanged(changes);
     }
 
     @Override
@@ -935,22 +898,328 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     @Override
-    public String getID() {
-        String id = Session.INVALID_SESSION;
-        final StringBuilder builder = new StringBuilder();
-        final Collection<DAnalysis> allAnalyses = allAnalyses();
-        if (!allAnalyses.isEmpty()) {
-            for (final DAnalysis analysis : allAnalyses) {
-                Resource analysisResource = analysis.eResource();
-                if (analysisResource != null && analysisResource.getURI() != null) {
-                    builder.append(analysisResource.getURI().toString()).append(' ');
-                } else {
-                    return Session.INVALID_SESSION;
+    public void statusChanged(Resource resource, ResourceStatus oldStatus, ResourceStatus newStatus) {
+        resourcesSynchronizer.statusChanged(resource, oldStatus, newStatus);
+    }
+
+    @Override
+    public void statusesChanged(Collection<ResourceStatusChange> changes) {
+        resourcesSynchronizer.statusesChanged(changes);
+    }
+
+    /**
+     * Tells if the specified resource is one of
+     * {@link Session#getSemanticResources()},
+     * {@link Session#getAllSessionResources()} or
+     * DAnalysisSessionEObject#getControlledResources().
+     * 
+     * @param resource
+     *            the specified {@link Resource}
+     * @param resources
+     *            the session resources
+     * @return true if the specified {@link Resource} is one of the
+     *         {@link Session}, false otherwise
+     */
+    protected boolean isResourceOfSession(Resource resource, Iterable<Resource> resources) {
+        return Iterables.any(resources, new ResourceSyncClientNotificationFilter(resource));
+    }
+
+    void sessionResourceReloaded(final Resource newSessionResource) {
+        // sessionResource's contents before reload can be proxy
+        // then need to be reassigned with reloaded
+        // sessionResource reference.
+        sessionResource = newSessionResource;
+        mainDAnalysis = (DAnalysis) sessionResource.getContents().get(0);
+    }
+
+    @Override
+    public void setReloadingPolicy(ReloadingPolicy reloadingPolicy) {
+        this.reloadingPolicy = reloadingPolicy;
+    }
+
+    @Override
+    public ReloadingPolicy getReloadingPolicy() {
+        return reloadingPolicy != null ? reloadingPolicy : new ReloadingPolicyImpl(new NoUICallback());
+    }
+
+    @Override
+    public void setSavingPolicy(SavingPolicy savingPolicy) {
+        this.savingPolicy = savingPolicy;
+    }
+
+    /**
+     * Returns the custom saving policy the session should use ; if no
+     * SavingPolicy has been defined, creates a default one.<br/>
+     * Subclasses can override this method to define a new default Saving
+     * Policy.
+     * 
+     * @return the custom saving policy the session should use
+     */
+    public SavingPolicy getSavingPolicy() {
+        return savingPolicy != null ? savingPolicy : new IsModifiedSavingPolicy(transactionalEditingDomain);
+    }
+
+    /**
+     * Indicates whether all resources (semantic and Danalysises) of this
+     * Session are whether {@link ResourceStatus#SYNC} or
+     * {@link ResourceStatus#READONLY}.
+     * 
+     * @return true if all resources (semantic and Danalysises) of this Session
+     *         are whether {@link ResourceStatus#SYNC} or
+     *         {@link ResourceStatus#READONLY}, false otherwise
+     */
+    protected boolean allResourcesAreInSync() {
+        return resourcesSynchronizer.allResourcesAreInSync();
+    }
+
+    /**
+     * Indicates whether considered resources are whether
+     * {@link ResourceStatus#SYNC} or {@link ResourceStatus#READONLY}.
+     * 
+     * @param resourcesToConsider
+     *            the resources to inspect.
+     * @return true if all considered are whether {@link ResourceStatus#SYNC} or
+     *         {@link ResourceStatus#READONLY}, false otherwise
+     */
+    protected final boolean checkResourcesAreInSync(Iterable<? extends Resource> resourcesToConsider) {
+        return resourcesSynchronizer.checkResourcesAreInSync(resourcesToConsider);
+    }
+
+    @Override
+    public SessionStatus getStatus() {
+        if (allResourcesAreInSync()) {
+            return SessionStatus.SYNC;
+        } else {
+            return SessionStatus.DIRTY;
+        }
+    }
+
+    public void setDeferSaveToPostCommit(boolean deferSaveOnPostCommit) {
+        this.saver.deferSaveToPostCommit = deferSaveOnPostCommit;
+    }
+
+    public boolean isDeferSaveToPostCommit() {
+        return this.saver.deferSaveToPostCommit;
+    }
+
+    public void setSaveInExclusiveTransaction(boolean saveInExclusiveTransaction) {
+        this.saver.saveInExclusiveTransaction = saveInExclusiveTransaction;
+    }
+
+    public boolean isSaveInExclusiveTransaction() {
+        return this.saver.saveInExclusiveTransaction;
+    }
+
+    // *******************
+    // Model Accessor
+    // *******************
+
+    private void initializeAccessor() {
+        try {
+            final ModelAccessor accessor = getModelAccessor();
+            if (accessor != null) {
+                accessor.init(transactionalEditingDomain.getResourceSet());
+            }
+        } catch (final IllegalURIException e) {
+            // The blocked state is on when the user needs more permissions for
+            // a given ecore URI.
+            super.setBlocked(true);
+        }
+    }
+
+    @Override
+    public ModelAccessor getModelAccessor() {
+        return SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(transactionalEditingDomain.getResourceSet());
+    }
+
+    // *******************
+    // Events, Triggers and Listeners
+    // *******************
+    /**
+     * This method allows adding {@code ModelChangeTrigger} to the current
+     * session {@link SessionEventBroker}. This method is called during the
+     * opening of the Session, before setting the open attribute to true and
+     * before launching the SessionListener.OPENED notifications.
+     */
+    protected void initLocalTriggers() {
+        Predicate<Notification> danglingRemovalPredicate = Predicates.or(DanglingRefRemovalTrigger.IS_DETACHMENT, DanglingRefRemovalTrigger.IS_ATTACHMENT);
+        DanglingRefRemovalTrigger danglingRemovalTrigger = new DanglingRefRemovalTrigger(this);
+        getEventBroker().addLocalTrigger(SessionEventBrokerImpl.asFilter(danglingRemovalPredicate), danglingRemovalTrigger);
+
+        addRefreshEditorsListener();
+        /*
+         * Make sure these adapters are added after the rest, and in particular
+         * after the semantic cross-referencer, so that they can rely on an
+         * up-to-date cross-referencer when invoked.
+         */
+        for (DAnalysis analysis : allAnalyses()) {
+            addAdaptersOnAnalysis(analysis);
+        }
+    }
+
+    @Override
+    public void addListener(final SessionListener listener) {
+        listeners.add(listener);
+    }
+
+    @Override
+    public void removeListener(final SessionListener listener) {
+        listeners.remove(listener);
+    }
+
+    /**
+     * Notify all the registered listeners of the specified event.
+     * 
+     * @param notification
+     *            the event to notify the listeners of.
+     */
+    public void notifyListeners(final int notification) {
+        if (notification == SessionListener.REPRESENTATION_CHANGE || notification == SessionListener.SELECTED_VIEWS_CHANGE_KIND || notification == SessionListener.VSM_UPDATED
+                || notification != lastNotification) {
+            for (final SessionListener listener : Iterables.filter(Lists.newArrayList(listeners.getListeners()), SessionListener.class)) {
+                listener.notify(notification);
+            }
+            lastNotification = notification;
+        }
+    }
+
+    @Override
+    public void notifyControlledModel(final Resource newControlled) {
+        // Set the already controlled resource to modified because they can
+        // reference the new resource.
+        for (final Resource controlledResource : super.getControlledResources()) {
+            controlledResource.setModified(true);
+        }
+        super.getControlledResources().add(newControlled);
+        notifyListeners(SessionListener.SEMANTIC_CHANGE);
+    }
+
+    @Override
+    public void notifyUnControlledModel(final EObject uncontrolled, final Resource resource) {
+        if (resource.getContents().size() == 0) {
+            super.getControlledResources().remove(resource);
+        }
+        notifyListeners(SessionListener.SEMANTIC_CHANGE);
+    }
+
+    @Override
+    public SessionEventBroker getEventBroker() {
+        if (broker == null) {
+            broker = new SessionEventBrokerImpl(transactionalEditingDomain);
+        }
+        return broker;
+    }
+
+    /**
+     * Add the refresh editors preCommit listener to the editingDomain.
+     */
+    protected void addRefreshEditorsListener() {
+        if (refreshEditorsListeners == null) {
+            refreshEditorsListeners = new RefreshEditorsPrecommitListener(transactionalEditingDomain);
+            getEventBroker().addLocalTrigger(RefreshEditorsPrecommitListener.IS_IMPACTING, refreshEditorsListeners);
+            this.addListener(refreshEditorsListeners);
+        }
+    }
+
+    @Override
+    public RefreshEditorsPrecommitListener getRefreshEditorsListener() {
+        return refreshEditorsListeners;
+    }
+
+    // *******************
+    // Session Configuration
+    // *******************
+
+    /**
+     * Configure this session so that when it is closed, it disposes the
+     * associated editing domain or not. Normally, each session has its own
+     * editing domain, which is disposed when the session is closed, but the
+     * historical behavior was to share the same editing domain for all session.
+     * Applications which have not been updated and still used shared editing
+     * domains should set this flag to <code>false</code> to avoid problems.
+     * 
+     * @param disposeOnClose
+     *            whether or not the editing domain used by this session should
+     *            be disposed when the session is closed.
+     */
+    public void setDisposeEditingDomainOnClose(boolean disposeOnClose) {
+        this.disposeEditingDomainOnClose = disposeOnClose;
+    }
+
+    /**
+     * Tests whether this session will dispose its editing domain when it is
+     * closed.
+     * 
+     * @return <code>true</code> if this session will dispose its editing domain
+     *         when closed.
+     */
+    public boolean getDisposeEditingDomainOnClose() {
+        return disposeEditingDomainOnClose;
+    }
+
+    @Override
+    public void setAnalysisSelector(final DAnalysisSelector selector) {
+        if (this.getServices() instanceof DAnalysisSessionService) {
+            ((DAnalysisSessionService) this.getServices()).setAnalysisSelector(selector);
+        }
+    }
+
+    public void setResourceCollector(IResourceCollector collector) {
+        this.currentResourceCollector = collector;
+    }
+
+    // *******************
+    // Viewpoint Selection and DView Management
+    // *******************
+    @Override
+    public Collection<Viewpoint> getSelectedViewpoints(boolean includeReferencedAnalysis) {
+        final SortedSet<Viewpoint> result = new TreeSet<Viewpoint>(new ViewpointRegistry.ViewpointComparator());
+        if (includeReferencedAnalysis) {
+            if (!super.isBlocked()) {
+                final Collection<DView> selectedViews = getSelectedViews();
+                for (final DView view : selectedViews) {
+                    final Viewpoint viewpoint = view.getViewpoint();
+                    if (viewpoint != null) {
+                        result.add(viewpoint);
+                    }
                 }
             }
-            id = builder.toString();
+        } else {
+            if (!super.isBlocked()) {
+                for (final DView dView : mainDAnalysis.getSelectedViews()) {
+                    Viewpoint viewpoint = dView.getViewpoint();
+                    if (viewpoint != null && !viewpoint.eIsProxy()) {
+                        result.add(viewpoint);
+                    }
+                }
+            }
         }
-        return id;
+        return Collections.unmodifiableSet(result);
+    }
+
+    /**
+     * Get the selected viewpoints sorted form more specifis to generics.
+     * 
+     * @return a collection of selected viewpoints for this session.
+     */
+    public Collection<Viewpoint> getSelectedViewpointsSpecificToGeneric() {
+        // Sort the selected viewpoints by alphabetic order
+        final SortedSet<Viewpoint> viewpoints = new TreeSet<Viewpoint>(new ViewpointRegistry.ViewpointComparator());
+        viewpoints.addAll(getSelectedViewpoints(false));
+        // Then orders specific to generic
+        final List<Viewpoint> orderedViewpoints = new ArrayList<Viewpoint>(viewpoints.size());
+        for (final Viewpoint viewpoint : viewpoints) {
+            int insertPosition = orderedViewpoints.size();
+            for (final Viewpoint viewpoint2 : orderedViewpoints) {
+                if (ComponentizationHelper.isExtendedBy(viewpoint, viewpoint2)) {
+                    insertPosition = orderedViewpoints.indexOf(viewpoint2);
+                } else if (ComponentizationHelper.isExtendedBy(viewpoint2, viewpoint)) {
+                    insertPosition = orderedViewpoints.indexOf(viewpoint2) + 1;
+                }
+            }
+            orderedViewpoints.add(insertPosition, viewpoint);
+        }
+        return Collections.unmodifiableCollection(orderedViewpoints);
     }
 
     @Override
@@ -1029,14 +1298,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         } finally {
             monitor.done();
         }
-    }
-
-    @Override
-    public IInterpreter getInterpreter() {
-        if (this.crossReferencer == null) {
-            this.interpreter.setCrossReferencer(getSemanticCrossReferencer());
-        }
-        return this.interpreter;
     }
 
     @Override
@@ -1162,78 +1423,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
     }
 
-    @Override
-    public void addListener(final SessionListener listener) {
-        listeners.add(listener);
-    }
-
-    @Override
-    public void removeListener(final SessionListener listener) {
-        listeners.remove(listener);
-    }
-
-    @Override
-    public ECrossReferenceAdapterWithUnproxyCapability getSemanticCrossReferencer() {
-        if (crossReferencer == null) {
-            // use a lazy cross referencer to avoid big memory consumption on
-            // session load
-            crossReferencer = createSemanticCrossReferencer();
-
-            // Precondition expression prevents a diagram to be
-            // created when creating the session
-            // Update the interpreter
-            if (interpreter != null) {
-                interpreter.setCrossReferencer(crossReferencer);
-            }
-        }
-        return crossReferencer;
-    }
-
-    /**
-     * Create the semantic cross referencer.
-     * 
-     * @return a new cross referencer adapter
-     */
-    protected ECrossReferenceAdapterWithUnproxyCapability createSemanticCrossReferencer() {
-        return new SessionLazyCrossReferencer(this);
-    }
-
-    @Override
-    public void setAnalysisSelector(final DAnalysisSelector selector) {
-        if (this.getServices() instanceof DAnalysisSessionService) {
-            ((DAnalysisSessionService) this.getServices()).setAnalysisSelector(selector);
-        }
-    }
-
-    @Override
-    public Set<Resource> getAllSessionResources() {
-        final Set<Resource> analysisResources = new LinkedHashSet<Resource>();
-        for (final DAnalysis analysis : allAnalyses()) {
-            Resource analysisResource = analysis.eResource();
-            if (analysisResource != null) {
-                analysisResources.add(analysisResource);
-            }
-        }
-        return Collections.unmodifiableSet(analysisResources);
-    }
-
-    /**
-     * Transfers the custom data of the origin session for the given associated
-     * instance into this session and for the same instance.
-     * 
-     * @param origin
-     *            the original session.
-     * @param associatedInstance
-     *            the associated instance.
-     */
-    private void transferCustomData(final Session origin, final EObject associatedInstance) {
-        // Diagram should be move.
-        final Collection<EObject> diagrams = origin.getServices().getCustomData(CustomDataConstants.GMF_DIAGRAMS, associatedInstance);
-        for (final EObject object : diagrams) {
-            this.getServices().putCustomData(CustomDataConstants.GMF_DIAGRAMS, associatedInstance, object);
-        }
-    }
-
     /**
      * Returns a view that can receive the given representation or
      * <code>null</code> if no view is found.
@@ -1266,257 +1455,114 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         return ((DView) representation.eContainer()).getViewpoint();
     }
 
-    @Override
-    public void addAdaptersOnAnalysis(final DAnalysis analysis) {
-        if (this.representationsChangeAdapter != null) {
-            this.representationsChangeAdapter.registerAnalysis(analysis);
-        }
-        if (semanticResourcesUpdater != null && !analysis.eAdapters().contains(semanticResourcesUpdater)) {
-            analysis.eAdapters().add(semanticResourcesUpdater);
-        }
-    }
+    // *******************
+    // Session opening and closing
+    // *******************
 
     @Override
-    public void removeAdaptersOnAnalysis(final DAnalysis analysis) {
-        if (this.representationsChangeAdapter != null) {
-            this.representationsChangeAdapter.unregisterAnalysis(analysis);
-        }
-        if (semanticResourcesUpdater != null && analysis.eAdapters().contains(semanticResourcesUpdater)) {
-            analysis.eAdapters().remove(semanticResourcesUpdater);
-        }
-    }
-
-    @Override
-    public void moveRepresentation(final DAnalysis newContainer, final DRepresentation representation) {
-        final IPermissionAuthority authority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(representation.eContainer());
-        IProgressMonitor pm = new NullProgressMonitor();
-        if (!authority.canDeleteInstance(representation)) {
-            throw new LockedInstanceException(representation);
-        }
-        final EObject semantic;
-        if (representation.eContainer() instanceof DRepresentationContainer && !((DRepresentationContainer) representation.eContainer()).getModels().isEmpty()) {
-            semantic = ((DRepresentationContainer) representation.eContainer()).getModels().iterator().next();
-        } else {
-            semantic = null;
-        }
-        DView receiver = findViewForRepresentation(representation, newContainer);
-        if (receiver == null) {
-            final IPermissionAuthority analysisAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(newContainer);
-            if (analysisAuthority.canCreateIn(newContainer)) {
-                createView(getViewpoint(representation), Lists.newArrayList(semantic), false, pm);
-                receiver = findViewForRepresentation(representation, newContainer);
-            } else {
-                throw new LockedInstanceException(newContainer);
+    public void open(IProgressMonitor monitor) {
+        try {
+            monitor.beginTask("Open session", 33);
+            if (!SessionManager.INSTANCE.getSessions().contains(this)) {
+                SessionManager.INSTANCE.add(this);
             }
-        }
-        final IPermissionAuthority receiverAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(receiver);
-        if (receiverAuthority.canCreateIn(receiver)) {
-            receiver.getOwnedRepresentations().add(representation);
-            // Add all semantic root elements pointed by the target of all
-            // DSemanticDecorator of this representation (except of this root is
-            // a root of a referencedAnalysis)
-            if (receiver.eContainer() instanceof DAnalysis) {
-                DAnalysisSessionHelper.updateModelsReferences((DAnalysis) receiver.eContainer(), Iterators.filter(representation.eAllContents(), DSemanticDecorator.class));
+            monitor.worked(1);
+            notifyListeners(SessionListener.OPENING);
+            monitor.worked(1);
+            DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.OPEN_SESSION_KEY);
+            dAnalysisRefresher = new DAnalysisRefresher(this);
+
+            ResourceSetSync.getOrInstallResourceSetSync(transactionalEditingDomain).registerClient(resourcesSynchronizer);
+            monitor.worked(1);
+            this.representationNameListener = new RepresentationNameListener(this);
+            monitor.worked(1);
+            saver.initialize();
+
+            final Collection<DAnalysis> allAnalyses = allAnalyses();
+            if (allAnalyses.isEmpty()) {
+                throw new RuntimeException("A analysis session could not be opened without at least a valid analyis");
             }
-        } else {
-            throw new LockedInstanceException(receiver);
-        }
-        transferCustomData(this, representation);
-    }
+            /*
+             * Resolves all models needed by the session because GMF installs a
+             * CrossReferencerAdapter that resolves the resource set.
+             */
+            DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.RESOLVE_ALL_KEY);
+            // First resolve all VSM resources used for Sirius to ignore VSM
+            // resources and VSM linked resources (as viewpoint:/environment
+            // resource) as new semantic element
+            dAnalysisRefresher.resolveAllVSMResources(allAnalyses);
+            // Then resolve all resources (to automatically add new semantic
+            // resources)
+            List<Resource> resourcesBeforeLoadOfSession = Lists.newArrayList(getTransactionalEditingDomain().getResourceSet().getResources());
+            dAnalysisRefresher.forceLoadingOfEveryLinkedResource();
+            monitor.worked(10);
 
-    /**
-     * Notify all the registered listeners of the specified event.
-     * 
-     * @param notification
-     *            the event to notify the listeners of.
-     */
-    public void notifyListeners(final int notification) {
-        if (notification == SessionListener.REPRESENTATION_CHANGE || notification == SessionListener.SELECTED_VIEWS_CHANGE_KIND || notification == SessionListener.VSM_UPDATED
-                || notification != lastNotification) {
-            for (final SessionListener listener : Iterables.filter(Lists.newArrayList(listeners.getListeners()), SessionListener.class)) {
-                listener.notify(notification);
+            // Add the unknown resources to the semantic resources of this
+            // session.
+            dAnalysisRefresher.addAutomaticallyLoadedResourcesToSemanticResources(resourcesBeforeLoadOfSession);
+            monitor.worked(1);
+            setSynchronizeStatusofEveryResource();
+            monitor.worked(1);
+
+            DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.RESOLVE_ALL_KEY);
+            // Look for controlled resources after load of every linked
+            // resources.
+            handlePossibleControlledResources();
+            monitor.worked(1);
+            dAnalysisRefresher.init();
+            monitor.worked(1);
+            if (!getSemanticResources().isEmpty()) {
+                initInterpreter();
             }
-            lastNotification = notification;
-        }
-    }
+            monitor.worked(1);
+            initializeAccessor();
+            monitor.worked(1);
+            ResourceSetSync.getOrInstallResourceSetSync(transactionalEditingDomain);
+            monitor.worked(1);
+            DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.OPEN_SESSION_KEY);
 
-    @Override
-    public void notifyControlledModel(final Resource newControlled) {
-        // Set the already controlled resource to modified because they can
-        // reference the new resource.
-        for (final Resource controlledResource : super.getControlledResources()) {
-            controlledResource.setModified(true);
-        }
-        super.getControlledResources().add(newControlled);
-        notifyListeners(SessionListener.SEMANTIC_CHANGE);
-    }
-
-    @Override
-    public void notifyUnControlledModel(final EObject uncontrolled, final Resource resource) {
-        if (resource.getContents().size() == 0) {
-            super.getControlledResources().remove(resource);
-        }
-        notifyListeners(SessionListener.SEMANTIC_CHANGE);
-    }
-
-    @Override
-    public void removeSemanticResource(Resource semanticResource, IProgressMonitor monitor) {
-        ResourceSet resourceSet = transactionalEditingDomain.getResourceSet();
-        for (final Resource res : collectAllReferencingResources(semanticResource)) {
-            doRemoveSemanticResource(res, resourceSet);
-        }
-        doRemoveSemanticResource(semanticResource, resourceSet);
-    }
-
-    /**
-     * Unregisters the resource from the list of semantic resources.
-     * 
-     * @param res
-     *            the semantic resource to unregister.
-     * @param set
-     *            the resourceset from which to remove it.
-     */
-    protected void doRemoveSemanticResource(final Resource res, final ResourceSet set) {
-        if (res.getContents().size() > 0) {
-            final EObject root = res.getContents().get(0);
-            for (final DAnalysis analysis : this.allAnalyses()) {
-                analysis.getModels().remove(root);
+            ViewpointRegistry.getInstance().addListener(this.vsmUpdater);
+            // Setup ResourceModifiedFieldUpdater
+            TransactionalEditingDomain.DefaultOptions options = TransactionUtil.getAdapter(getTransactionalEditingDomain(), TransactionalEditingDomain.DefaultOptions.class);
+            if (options != null) {
+                Object value = options.getDefaultTransactionOptions().get(Transaction.OPTION_VALIDATE_EDIT);
+                ValidateEditSupport delegate = null;
+                if (value instanceof ValidateEditSupport) {
+                    delegate = (ValidateEditSupport) value;
+                }
+                if (!(delegate instanceof ResourceModifiedFieldUpdater) && getTransactionalEditingDomain() instanceof InternalTransactionalEditingDomain) {
+                    InternalTransactionalEditingDomain internalDomain = (InternalTransactionalEditingDomain) getTransactionalEditingDomain();
+                    new ResourceModifiedFieldUpdater(internalDomain, delegate);
+                }
             }
-        }
-        unregisterResourceInCrossReferencer(res);
-        if (couldBeUnload(set, res)) {
-            res.unload();
-        }
-        set.getResources().remove(res);
-    }
 
-    @Override
-    public void statusChanged(Resource resource, ResourceStatus oldStatus, ResourceStatus newStatus) {
-        resourcesSynchronizer.statusChanged(resource, oldStatus, newStatus);
-    }
+            super.setOpen(true);
+            notifyListeners(SessionListener.OPENED);
+            monitor.worked(1);
+            updateSelectedViewpointsData(new SubProgressMonitor(monitor, 10));
+            initLocalTriggers();
 
-    @Override
-    public void statusesChanged(Collection<ResourceStatusChange> changes) {
-        resourcesSynchronizer.statusesChanged(changes);
-    }
-
-    /**
-     * Tells if the specified resource is one of
-     * {@link Session#getSemanticResources()},
-     * {@link Session#getAllSessionResources()} or
-     * DAnalysisSessionEObject#getControlledResources().
-     * 
-     * @param resource
-     *            the specified {@link Resource}
-     * @param resources
-     *            the session resources
-     * @return true if the specified {@link Resource} is one of the
-     *         {@link Session}, false otherwise
-     */
-    protected boolean isResourceOfSession(Resource resource, Iterable<Resource> resources) {
-        return Iterables.any(resources, new ResourceSyncClientNotificationFilter(resource));
-    }
-
-    void discoverAutomaticallyLoadedSemanticResources(List<Resource> allResources) {
-        // Add the unknown resources to the semantic resources of this
-        // session.
-        if (dAnalysisRefresher != null) {
-            dAnalysisRefresher.addAutomaticallyLoadedResourcesToSemanticResources(allResources);
+            getTransactionalEditingDomain().addResourceSetListener(saver);
+        } catch (OperationCanceledException e) {
+            close(new SubProgressMonitor(monitor, 10));
+            throw e;
+        } finally {
+            monitor.done();
         }
     }
 
-    void sessionResourceReloaded(final Resource newSessionResource) {
-        // sessionResource's contents before reload can be proxy
-        // then need to be reassigned with reloaded
-        // sessionResource reference.
-        sessionResource = newSessionResource;
-        mainDAnalysis = (DAnalysis) sessionResource.getContents().get(0);
-    }
-
-    @Override
-    public void setReloadingPolicy(ReloadingPolicy reloadingPolicy) {
-        this.reloadingPolicy = reloadingPolicy;
-    }
-
-    @Override
-    public ReloadingPolicy getReloadingPolicy() {
-        return reloadingPolicy != null ? reloadingPolicy : new ReloadingPolicyImpl(new NoUICallback());
-    }
-
-    @Override
-    public void setSavingPolicy(SavingPolicy savingPolicy) {
-        this.savingPolicy = savingPolicy;
-    }
-
-    /**
-     * Returns the custom saving policy the session should use ; if no
-     * SavingPolicy has been defined, creates a default one.<br/>
-     * Subclasses can override this method to define a new default Saving
-     * Policy.
-     * 
-     * @return the custom saving policy the session should use
-     */
-    public SavingPolicy getSavingPolicy() {
-        return savingPolicy != null ? savingPolicy : new IsModifiedSavingPolicy(transactionalEditingDomain);
-    }
-
-    /**
-     * Indicates whether all resources (semantic and Danalysises) of this
-     * Session are whether {@link ResourceStatus#SYNC} or
-     * {@link ResourceStatus#READONLY}.
-     * 
-     * @return true if all resources (semantic and Danalysises) of this Session
-     *         are whether {@link ResourceStatus#SYNC} or
-     *         {@link ResourceStatus#READONLY}, false otherwise
-     */
-    protected boolean allResourcesAreInSync() {
-        return resourcesSynchronizer.allResourcesAreInSync();
-    }
-
-    /**
-     * Indicates whether considered resources are whether
-     * {@link ResourceStatus#SYNC} or {@link ResourceStatus#READONLY}.
-     * 
-     * @param resourcesToConsider
-     *            the resources to inspect.
-     * @return true if all considered are whether {@link ResourceStatus#SYNC} or
-     *         {@link ResourceStatus#READONLY}, false otherwise
-     */
-    protected final boolean checkResourcesAreInSync(Iterable<? extends Resource> resourcesToConsider) {
-        return resourcesSynchronizer.checkResourcesAreInSync(resourcesToConsider);
-    }
-
-    @Override
-    public SessionStatus getStatus() {
-        if (allResourcesAreInSync()) {
-            return SessionStatus.SYNC;
-        } else {
-            return SessionStatus.DIRTY;
+    private void handlePossibleControlledResources() {
+        // Detect actual controlled resources.
+        if (controlledResourcesDetector != null) {
+            controlledResourcesDetector.init();
         }
-    }
-
-    @Override
-    public SessionEventBroker getEventBroker() {
-        if (broker == null) {
-            broker = new SessionEventBrokerImpl(transactionalEditingDomain);
+        // Reset semanticResources to have getSemanticResources() ignores
+        // controlledResources which are computed only at this step
+        if (semanticResourcesUpdater != null) {
+            semanticResourcesUpdater.dispose();
+            semanticResourcesUpdater = null;
         }
-        return broker;
-    }
-
-    /**
-     * Add the refresh editors preCommit listener to the editingDomain.
-     */
-    protected void addRefreshEditorsListener() {
-        if (refreshEditorsListeners == null) {
-            refreshEditorsListeners = new RefreshEditorsPrecommitListener(transactionalEditingDomain);
-            getEventBroker().addLocalTrigger(RefreshEditorsPrecommitListener.IS_IMPACTING, refreshEditorsListeners);
-            this.addListener(refreshEditorsListeners);
-        }
-    }
-
-    @Override
-    public RefreshEditorsPrecommitListener getRefreshEditorsListener() {
-        return refreshEditorsListeners;
+        semanticResources = null;
     }
 
     @Override
@@ -1608,58 +1654,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         mainDAnalysis = null;
     }
 
-    /**
-     * Disable & Remove all ECrossReferencerAdapter adapters.
-     */
-    protected void disableAndRemoveECrossReferenceAdapters() {
-        ResourceSet resourceSet = getTransactionalEditingDomain().getResourceSet();
-        // Disable resolution of proxy for AirDCrossReferenceAdapter of
-        // session and for semanticCrossReferencer during the closing
-        Adapter existingAirDCrossReferenceAdapter = EcoreUtil.getExistingAdapter(resourceSet, AirDCrossReferenceAdapter.class);
-        AirDCrossReferenceAdapter airDCrossReferenceAdapter = null;
-        if (existingAirDCrossReferenceAdapter instanceof AirDCrossReferenceAdapter) {
-            airDCrossReferenceAdapter = (AirDCrossReferenceAdapter) existingAirDCrossReferenceAdapter;
-            airDCrossReferenceAdapter.disableResolve();
-            resourceSet.eAdapters().remove(airDCrossReferenceAdapter);
-        }
-        if (getSemanticCrossReferencer() instanceof LazyCrossReferencer) {
-            ((LazyCrossReferencer) getSemanticCrossReferencer()).disableResolve();
-        }
-        // Let's clear the cross referencer if it's still there.
-        for (final Resource res : getSemanticResources()) {
-            unregisterResourceInCrossReferencer(res);
-        }
-        for (final DAnalysis analysis : Iterables.filter(allAnalyses(), Predicates.notNull())) {
-            removeAdaptersOnAnalysis(analysis);
-            Resource analysisResource = analysis.eResource();
-            if (analysisResource != null) {
-                unregisterResourceInCrossReferencer(analysisResource);
-            }
-        }
-        Iterable<Resource> resources = Lists.newArrayList(resourceSet.getResources());
-        for (Resource resource : Iterables.filter(resources, new ResourceFileExtensionPredicate(SiriusUtil.DESCRIPTION_MODEL_EXTENSION, false))) {
-            unregisterResourceInCrossReferencer(resource);
-        }
-    }
-
-    /**
-     * Enable all ECrossReferencerAdapter adapters before the end of closing.
-     */
-    protected void reenableECrossReferenceAdaptersBeforeEndOfClosing() {
-        ResourceSet resourceSet = getTransactionalEditingDomain().getResourceSet();
-        // Enable resolution for AirdCrossReferenceAdapter of session at the end
-        // of closing
-        Adapter existingAirDCrossReferenceAdapter = EcoreUtil.getExistingAdapter(resourceSet, AirDCrossReferenceAdapter.class);
-        AirDCrossReferenceAdapter airDCrossReferenceAdapter = null;
-        if (existingAirDCrossReferenceAdapter instanceof AirDCrossReferenceAdapter) {
-            airDCrossReferenceAdapter = (AirDCrossReferenceAdapter) existingAirDCrossReferenceAdapter;
-            airDCrossReferenceAdapter.enableResolve();
-        }
-        if (getSemanticCrossReferencer() instanceof LazyCrossReferencer) {
-            ((LazyCrossReferencer) getSemanticCrossReferencer()).enableResolve();
-        }
-    }
-
     private static void flushOperations(TransactionalEditingDomain ted) {
         CommandStack commandStack = ted.getCommandStack();
         ResourceSet resourceSet = ted.getResourceSet();
@@ -1735,23 +1729,73 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         super.getControlledResources().clear();
     }
 
-    public void setResourceCollector(IResourceCollector collector) {
-        this.currentResourceCollector = collector;
+    // *******************
+    // Basic Session services
+    // *******************
+
+    @Override
+    public TransactionalEditingDomain getTransactionalEditingDomain() {
+        return transactionalEditingDomain;
     }
 
-    public void setDeferSaveToPostCommit(boolean deferSaveOnPostCommit) {
-        this.saver.deferSaveToPostCommit = deferSaveOnPostCommit;
+    @Override
+    public SessionService getServices() {
+        if (services == null) {
+            services = new DAnalysisSessionServicesImpl(super.getAnalyses());
+        }
+        return services;
     }
 
-    public boolean isDeferSaveToPostCommit() {
-        return this.saver.deferSaveToPostCommit;
+    @Override
+    public String getID() {
+        String id = Session.INVALID_SESSION;
+        final StringBuilder builder = new StringBuilder();
+        final Collection<DAnalysis> allAnalyses = allAnalyses();
+        if (!allAnalyses.isEmpty()) {
+            for (final DAnalysis analysis : allAnalyses) {
+                Resource analysisResource = analysis.eResource();
+                if (analysisResource != null && analysisResource.getURI() != null) {
+                    builder.append(analysisResource.getURI().toString()).append(' ');
+                } else {
+                    return Session.INVALID_SESSION;
+                }
+            }
+            id = builder.toString();
+        }
+        return id;
     }
 
-    public void setSaveInExclusiveTransaction(boolean saveInExclusiveTransaction) {
-        this.saver.saveInExclusiveTransaction = saveInExclusiveTransaction;
+    @Override
+    public String toString() {
+        String prefix = "Local Session: ";
+        final StringBuilder builder = new StringBuilder();
+        for (final DAnalysis analysis : allAnalyses()) {
+            final Resource resource = analysis.eResource();
+            if (resource != null && resource.getURI() != null) {
+                URI uri = resource.getURI();
+                if (new URIQuery(uri).isInMemoryURI()) {
+                    prefix = "Transient Session: ";
+                }
+                if (uri.segments().length > 0) {
+                    builder.append(URI.decode(uri.lastSegment())).append("  ");
+                } else {
+                    builder.append(uri.opaquePart()).append(" ");
+                }
+            }
+        }
+        // Remove the last two spaces if needed
+        builder.insert(0, prefix);
+        if (builder.length() > 2 && "  ".equals(builder.substring(builder.length() - 2, builder.length()))) {
+            builder.delete(builder.length() - 2, builder.length());
+        }
+        return builder.toString();
     }
 
-    public boolean isSaveInExclusiveTransaction() {
-        return this.saver.saveInExclusiveTransaction;
+    /*
+     * unload only if resource has not an http scheme => this prevent special
+     * resources such as http://www.eclipse.org/EMF/2002 to be unloaded
+     */
+    private boolean couldBeUnload(ResourceSet rset, Resource resource) {
+        return resource.getURI() != null && rset.getPackageRegistry().getEPackage(resource.getURI().toString()) == null;
     }
 }
