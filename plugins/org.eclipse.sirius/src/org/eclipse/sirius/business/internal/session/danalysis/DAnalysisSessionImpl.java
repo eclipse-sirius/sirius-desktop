@@ -117,6 +117,7 @@ import org.eclipse.sirius.viewpoint.impl.DAnalysisSessionEObjectImpl;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
@@ -730,21 +731,23 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     @Override
     public Set<Resource> getReferencedSessionResources() {
-        List<Resource> allSessionResources = Lists.newArrayList(getAllSessionResources());
-        allSessionResources.remove(getSessionResource());
-        return new HashSet<Resource>(allSessionResources);
+        return getSessionResources(false);
     }
 
     @Override
     public Set<Resource> getAllSessionResources() {
-        final Set<Resource> analysisResources = new LinkedHashSet<Resource>();
-        for (final DAnalysis analysis : allAnalyses()) {
-            Resource analysisResource = analysis.eResource();
-            if (analysisResource != null) {
-                analysisResources.add(analysisResource);
+        return getSessionResources(true);
+    }
+    
+    private Set<Resource> getSessionResources(boolean includeMainResource) {
+        List<Resource> result = Lists.newArrayList();
+        for (DAnalysis analysis : allAnalyses()) {
+            Resource res = analysis.eResource();
+            if (res != null && (includeMainResource || res != sessionResource)) {
+                result.add(res);
             }
         }
-        return Collections.unmodifiableSet(analysisResources);
+        return ImmutableSet.copyOf(result);
     }
 
     // *******************
