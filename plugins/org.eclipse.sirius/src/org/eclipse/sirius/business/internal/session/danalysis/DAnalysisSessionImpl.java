@@ -1264,7 +1264,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             monitor.beginTask("View creation for Sirius : " + viewpoint.getName(), 3 + 10 * semantics.size());
             Set<DView> intializedDViews = new LinkedHashSet<DView>();
             for (DAnalysis dAnalysis : allAnalyses()) {
-                if (!hasAlreadyDViewForSirius(dAnalysis, viewpoint)) {
+                if (!hasAlreadyDViewForViewpoint(dAnalysis, viewpoint)) {
                     // Try to get a orphan DView to reuse it
                     DView firstOrphanDView = new DAnalysisQuery(dAnalysis).getFirstOrphanDView();
                     DView dView = null;
@@ -1320,7 +1320,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
     }
 
-    private boolean hasAlreadyDViewForSirius(DAnalysis dAnalysis, Viewpoint viewpoint) {
+    private boolean hasAlreadyDViewForViewpoint(DAnalysis dAnalysis, Viewpoint viewpoint) {
         boolean hasAlreadyDViewForSirius = false;
         for (DView ownedDView : dAnalysis.getOwnedViews()) {
             if (ownedDView.getViewpoint() != null && EqualityHelper.areEquals(ownedDView.getViewpoint(), viewpoint)) {
