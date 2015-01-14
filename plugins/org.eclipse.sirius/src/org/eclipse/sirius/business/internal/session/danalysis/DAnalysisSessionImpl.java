@@ -92,7 +92,6 @@ import org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.IllegalURIException;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
@@ -669,15 +668,13 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (semanticResources == null) {
             semanticResources = new CopyOnWriteArrayList<Resource>();
             semanticResourcesUpdater = new SemanticResourcesUpdater(this, semanticResources);
-            if (!super.isBlocked()) {
-                RunnableWithResult<Collection<Resource>> semanticResourcesGetter = new SemanticResourceGetter(this);
-                try {
-                    TransactionUtil.runExclusive(getTransactionalEditingDomain(), semanticResourcesGetter);
-                } catch (InterruptedException e) {
-                    SiriusPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, "Error while accessing semantic resources"));
-                }
-                ((CopyOnWriteArrayList<Resource>) semanticResources).addAllAbsent(semanticResourcesGetter.getResult());
+            RunnableWithResult<Collection<Resource>> semanticResourcesGetter = new SemanticResourceGetter(this);
+            try {
+                TransactionUtil.runExclusive(getTransactionalEditingDomain(), semanticResourcesGetter);
+            } catch (InterruptedException e) {
+                SiriusPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, "Error while accessing semantic resources"));
             }
+            ((CopyOnWriteArrayList<Resource>) semanticResources).addAllAbsent(semanticResourcesGetter.getResult());
         }
         return Collections.unmodifiableCollection(semanticResources);
     }
@@ -996,15 +993,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     // *******************
 
     private void initializeAccessor() {
-        try {
-            final ModelAccessor accessor = getModelAccessor();
-            if (accessor != null) {
-                accessor.init(transactionalEditingDomain.getResourceSet());
-            }
-        } catch (final IllegalURIException e) {
-            // The blocked state is on when the user needs more permissions for
-            // a given ecore URI.
-            super.setBlocked(true);
+        ModelAccessor accessor = getModelAccessor();
+        if (accessor != null) {
+            accessor.init(transactionalEditingDomain.getResourceSet());
         }
     }
 
@@ -1156,22 +1147,18 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     public Collection<Viewpoint> getSelectedViewpoints(boolean includeReferencedAnalysis) {
         final SortedSet<Viewpoint> result = new TreeSet<Viewpoint>(new ViewpointRegistry.ViewpointComparator());
         if (includeReferencedAnalysis) {
-            if (!super.isBlocked()) {
-                final Collection<DView> selectedViews = getSelectedViews();
-                for (final DView view : selectedViews) {
-                    final Viewpoint viewpoint = view.getViewpoint();
-                    if (viewpoint != null) {
-                        result.add(viewpoint);
-                    }
+            final Collection<DView> selectedViews = getSelectedViews();
+            for (final DView view : selectedViews) {
+                final Viewpoint viewpoint = view.getViewpoint();
+                if (viewpoint != null) {
+                    result.add(viewpoint);
                 }
             }
         } else {
-            if (!super.isBlocked()) {
-                for (final DView dView : mainDAnalysis.getSelectedViews()) {
-                    Viewpoint viewpoint = dView.getViewpoint();
-                    if (viewpoint != null && !viewpoint.eIsProxy()) {
-                        result.add(viewpoint);
-                    }
+            for (final DView dView : mainDAnalysis.getSelectedViews()) {
+                Viewpoint viewpoint = dView.getViewpoint();
+                if (viewpoint != null && !viewpoint.eIsProxy()) {
+                    result.add(viewpoint);
                 }
             }
         }

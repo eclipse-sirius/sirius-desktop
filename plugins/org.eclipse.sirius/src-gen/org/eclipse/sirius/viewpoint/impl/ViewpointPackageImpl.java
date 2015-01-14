@@ -980,7 +980,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * 
      * @generated
      */
-    public EAttribute getDAnalysisSessionEObject_Blocked() {
+    public EAttribute getDAnalysisSessionEObject_Resources() {
         return (EAttribute) dAnalysisSessionEObjectEClass.getEStructuralFeatures().get(1);
     }
 
@@ -989,7 +989,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * 
      * @generated
      */
-    public EAttribute getDAnalysisSessionEObject_Resources() {
+    public EAttribute getDAnalysisSessionEObject_ControlledResources() {
         return (EAttribute) dAnalysisSessionEObjectEClass.getEStructuralFeatures().get(2);
     }
 
@@ -998,17 +998,8 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * 
      * @generated
      */
-    public EAttribute getDAnalysisSessionEObject_ControlledResources() {
-        return (EAttribute) dAnalysisSessionEObjectEClass.getEStructuralFeatures().get(3);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public EReference getDAnalysisSessionEObject_ActivatedViewpoints() {
-        return (EReference) dAnalysisSessionEObjectEClass.getEStructuralFeatures().get(4);
+        return (EReference) dAnalysisSessionEObjectEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -1017,7 +1008,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     public EReference getDAnalysisSessionEObject_Analyses() {
-        return (EReference) dAnalysisSessionEObjectEClass.getEStructuralFeatures().get(5);
+        return (EReference) dAnalysisSessionEObjectEClass.getEStructuralFeatures().get(4);
     }
 
     /**
@@ -1026,7 +1017,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     public EAttribute getDAnalysisSessionEObject_SynchronizationStatus() {
-        return (EAttribute) dAnalysisSessionEObjectEClass.getEStructuralFeatures().get(6);
+        return (EAttribute) dAnalysisSessionEObjectEClass.getEStructuralFeatures().get(5);
     }
 
     /**
@@ -1349,7 +1340,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
         dAnalysisSessionEObjectEClass = createEClass(DANALYSIS_SESSION_EOBJECT);
         createEAttribute(dAnalysisSessionEObjectEClass, DANALYSIS_SESSION_EOBJECT__OPEN);
-        createEAttribute(dAnalysisSessionEObjectEClass, DANALYSIS_SESSION_EOBJECT__BLOCKED);
         createEAttribute(dAnalysisSessionEObjectEClass, DANALYSIS_SESSION_EOBJECT__RESOURCES);
         createEAttribute(dAnalysisSessionEObjectEClass, DANALYSIS_SESSION_EOBJECT__CONTROLLED_RESOURCES);
         createEReference(dAnalysisSessionEObjectEClass, DANALYSIS_SESSION_EOBJECT__ACTIVATED_VIEWPOINTS);
@@ -1585,8 +1575,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         initEClass(dAnalysisSessionEObjectEClass, DAnalysisSessionEObject.class, "DAnalysisSessionEObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getDAnalysisSessionEObject_Open(), theEcorePackage.getEBoolean(), "open", null, 1, 1, DAnalysisSessionEObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
                 !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-        initEAttribute(getDAnalysisSessionEObject_Blocked(), theEcorePackage.getEBoolean(), "blocked", null, 1, 1, DAnalysisSessionEObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-                !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getDAnalysisSessionEObject_Resources(), theEcorePackage.getEResource(), "resources", null, 0, -1, DAnalysisSessionEObject.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
                 !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getDAnalysisSessionEObject_ControlledResources(), theEcorePackage.getEResource(), "controlledResources", null, 0, -1, DAnalysisSessionEObject.class, IS_TRANSIENT, !IS_VOLATILE,

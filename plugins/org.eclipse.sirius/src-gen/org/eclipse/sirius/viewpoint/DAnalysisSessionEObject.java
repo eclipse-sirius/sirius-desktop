@@ -25,8 +25,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * <ul>
  * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#isOpen <em>
  * Open</em>}</li>
- * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#isBlocked
- * <em>Blocked</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getResources
  * <em>Resources</em>}</li>
  * <li>
@@ -76,36 +74,6 @@ public interface DAnalysisSessionEObject extends EObject {
      * @generated
      */
     void setOpen(boolean value);
-
-    /**
-     * Returns the value of the '<em><b>Blocked</b></em>' attribute. <!--
-     * begin-user-doc -->
-     * <p>
-     * If the meaning of the '<em>Blocked</em>' attribute isn't clear, there
-     * really should be more of a description here...
-     * </p>
-     * <!-- end-user-doc -->
-     * 
-     * @return the value of the '<em>Blocked</em>' attribute.
-     * @see #setBlocked(boolean)
-     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDAnalysisSessionEObject_Blocked()
-     * @model required="true"
-     * @generated
-     */
-    boolean isBlocked();
-
-    /**
-     * Sets the value of the '
-     * {@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#isBlocked
-     * <em>Blocked</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     * 
-     * @param value
-     *            the new value of the '<em>Blocked</em>' attribute.
-     * @see #isBlocked()
-     * @generated
-     */
-    void setBlocked(boolean value);
 
     /**
      * Returns the value of the '<em><b>Resources</b></em>' attribute list. The

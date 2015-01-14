@@ -62,7 +62,6 @@ public class DAnalysisSessionEObjectItemProvider extends ItemProviderAdapter imp
             super.getPropertyDescriptors(object);
 
             addOpenPropertyDescriptor(object);
-            addBlockedPropertyDescriptor(object);
             addResourcesPropertyDescriptor(object);
             addControlledResourcesPropertyDescriptor(object);
             addActivatedViewpointsPropertyDescriptor(object);
@@ -82,19 +81,6 @@ public class DAnalysisSessionEObjectItemProvider extends ItemProviderAdapter imp
         itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
                 getString("_UI_DAnalysisSessionEObject_open_feature"), getString("_UI_PropertyDescriptor_description", "_UI_DAnalysisSessionEObject_open_feature", "_UI_DAnalysisSessionEObject_type"),
                 ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__OPEN, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
-    }
-
-    /**
-     * This adds a property descriptor for the Blocked feature. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    protected void addBlockedPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
-                getString("_UI_DAnalysisSessionEObject_blocked_feature"),
-                getString("_UI_PropertyDescriptor_description", "_UI_DAnalysisSessionEObject_blocked_feature", "_UI_DAnalysisSessionEObject_type"),
-                ViewpointPackage.Literals.DANALYSIS_SESSION_EOBJECT__BLOCKED, true, false, false, ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -203,7 +189,6 @@ public class DAnalysisSessionEObjectItemProvider extends ItemProviderAdapter imp
 
         switch (notification.getFeatureID(DAnalysisSessionEObject.class)) {
         case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__OPEN:
-        case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__BLOCKED:
         case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__RESOURCES:
         case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__CONTROLLED_RESOURCES:
         case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__SYNCHRONIZATION_STATUS:

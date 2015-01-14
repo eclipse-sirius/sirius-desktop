@@ -37,9 +37,6 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
  * {@link org.eclipse.sirius.viewpoint.impl.DAnalysisSessionEObjectImpl#isOpen
  * <em>Open</em>}</li>
  * <li>
- * {@link org.eclipse.sirius.viewpoint.impl.DAnalysisSessionEObjectImpl#isBlocked
- * <em>Blocked</em>}</li>
- * <li>
  * {@link org.eclipse.sirius.viewpoint.impl.DAnalysisSessionEObjectImpl#getResources
  * <em>Resources</em>}</li>
  * <li>
@@ -79,26 +76,6 @@ public class DAnalysisSessionEObjectImpl extends EObjectImpl implements DAnalysi
      * @ordered
      */
     protected boolean open = OPEN_EDEFAULT;
-
-    /**
-     * The default value of the '{@link #isBlocked() <em>Blocked</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see #isBlocked()
-     * @generated
-     * @ordered
-     */
-    protected static final boolean BLOCKED_EDEFAULT = false;
-
-    /**
-     * The cached value of the '{@link #isBlocked() <em>Blocked</em>}'
-     * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @see #isBlocked()
-     * @generated
-     * @ordered
-     */
-    protected boolean blocked = BLOCKED_EDEFAULT;
 
     /**
      * The cached value of the '{@link #getResources() <em>Resources</em>}'
@@ -209,27 +186,6 @@ public class DAnalysisSessionEObjectImpl extends EObjectImpl implements DAnalysi
      * 
      * @generated
      */
-    public boolean isBlocked() {
-        return blocked;
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
-    public void setBlocked(boolean newBlocked) {
-        boolean oldBlocked = blocked;
-        blocked = newBlocked;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DANALYSIS_SESSION_EOBJECT__BLOCKED, oldBlocked, blocked));
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     */
     public EList<Resource> getResources() {
         if (resources == null) {
             resources = new EDataTypeUniqueEList<Resource>(Resource.class, this, ViewpointPackage.DANALYSIS_SESSION_EOBJECT__RESOURCES);
@@ -304,8 +260,6 @@ public class DAnalysisSessionEObjectImpl extends EObjectImpl implements DAnalysi
         switch (featureID) {
         case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__OPEN:
             return isOpen();
-        case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__BLOCKED:
-            return isBlocked();
         case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__RESOURCES:
             return getResources();
         case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__CONTROLLED_RESOURCES:
@@ -331,9 +285,6 @@ public class DAnalysisSessionEObjectImpl extends EObjectImpl implements DAnalysi
         switch (featureID) {
         case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__OPEN:
             setOpen((Boolean) newValue);
-            return;
-        case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__BLOCKED:
-            setBlocked((Boolean) newValue);
             return;
         case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__RESOURCES:
             getResources().clear();
@@ -369,9 +320,6 @@ public class DAnalysisSessionEObjectImpl extends EObjectImpl implements DAnalysi
         case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__OPEN:
             setOpen(OPEN_EDEFAULT);
             return;
-        case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__BLOCKED:
-            setBlocked(BLOCKED_EDEFAULT);
-            return;
         case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__RESOURCES:
             getResources().clear();
             return;
@@ -401,8 +349,6 @@ public class DAnalysisSessionEObjectImpl extends EObjectImpl implements DAnalysi
         switch (featureID) {
         case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__OPEN:
             return open != OPEN_EDEFAULT;
-        case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__BLOCKED:
-            return blocked != BLOCKED_EDEFAULT;
         case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__RESOURCES:
             return resources != null && !resources.isEmpty();
         case ViewpointPackage.DANALYSIS_SESSION_EOBJECT__CONTROLLED_RESOURCES:
@@ -430,8 +376,6 @@ public class DAnalysisSessionEObjectImpl extends EObjectImpl implements DAnalysi
         StringBuffer result = new StringBuffer(super.toString());
         result.append(" (open: ");
         result.append(open);
-        result.append(", blocked: ");
-        result.append(blocked);
         result.append(", resources: ");
         result.append(resources);
         result.append(", controlledResources: ");

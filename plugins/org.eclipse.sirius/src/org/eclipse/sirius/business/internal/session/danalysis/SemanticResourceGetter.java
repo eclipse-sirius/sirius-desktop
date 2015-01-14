@@ -49,29 +49,27 @@ public class SemanticResourceGetter extends RunnableWithResult.Impl<Collection<R
      */
     public void run() {
         Collection<Resource> semanticResources = new LinkedHashSet<Resource>();
-        if (!dAnalysisSessionImpl.isBlocked()) {
-            Collection<DAnalysis> allAnalyses = new DAnalysisesInternalQuery(dAnalysisSessionImpl.getAnalyses()).getAllAnalyses();
-            for (DAnalysis analysis : allAnalyses) {
-                if (analysis != null) {
-                    for (EObject model : new ArrayList<EObject>(analysis.getModels())) {
-                        if (model != null) {
-                            // TODO remove this try/catch once the offline mode will be supported
-                            try {
-                                final Resource resource = model.eResource();
-                                if (resource != null) {
-                                    // CHECKSTYLE:OFF
-                                    if (!dAnalysisSessionImpl.getControlledResources().contains(resource)) {
-                                        semanticResources.add(resource);
-                                    }
-                                    // CHECKSTYLE:ON
+        Collection<DAnalysis> allAnalyses = new DAnalysisesInternalQuery(dAnalysisSessionImpl.getAnalyses()).getAllAnalyses();
+        for (DAnalysis analysis : allAnalyses) {
+            if (analysis != null) {
+                for (EObject model : new ArrayList<EObject>(analysis.getModels())) {
+                    if (model != null) {
+                        // TODO remove this try/catch once the offline mode will be supported
+                        try {
+                            final Resource resource = model.eResource();
+                            if (resource != null) {
+                                // CHECKSTYLE:OFF
+                                if (!dAnalysisSessionImpl.getControlledResources().contains(resource)) {
+                                    semanticResources.add(resource);
                                 }
-                            } catch (IllegalStateException e) {
-                                // An issue has been encountered while
-                                // connecting to
-                                // remote CDO server
-                                if (SiriusPlugin.getDefault().isDebugging()) {
-                                    SiriusPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, "Error while connecting to remote CDO server"));
-                                }
+                                // CHECKSTYLE:ON
+                            }
+                        } catch (IllegalStateException e) {
+                            // An issue has been encountered while
+                            // connecting to
+                            // remote CDO server
+                            if (SiriusPlugin.getDefault().isDebugging()) {
+                                SiriusPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, SiriusPlugin.ID, "Error while connecting to remote CDO server"));
                             }
                         }
                     }

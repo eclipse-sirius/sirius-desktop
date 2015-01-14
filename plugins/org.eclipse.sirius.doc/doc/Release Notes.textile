@@ -25,6 +25,7 @@ h4. Changes in @org.eclipse.sirius@
 * Constant @org.eclipse.sirius.business.api.helper.SiriusUtil.ENVIRONMENT_URI_SCHEME@ declares environment URI scheme.
 * Constant @org.eclipse.sirius.business.api.helper.SiriusUtil.VIEWPOINT_ENVIRONMENT_RESOURCE_URI@ declares "environment:/viewpoint" resource uri.
 * Constant @org.eclipse.sirius.viewpoint.description.util.DescriptionResourceImpl.OPTION_SIRIUS_USE_URI_FRAGMENT_AS_ID@ added to define a option to enable the use of a id map for odesign resource, id being uri's fragment. 
+* The @isBbocked()@ and @setBlocked()@ methods on the @org.eclipse.sirius.viewpoint.DAnalysisSessionEObject@ EClass have been removed, as they were not actually used in the internal code.
 
 h4. Changes in @org.eclipse.sirius.common@
 
@@ -37,6 +38,7 @@ h4. Changes in @org.eclipse.sirius.ecore.extender@
 * The method @org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor.eRemoveInverseCrossReferences()@ has been changed to return the list of changed objects by the inverse cross references removal.
 * The method @org.eclipse.sirius.ecore.extender.business.api.accessor.IMetamodelExtender.eRemoveInverseCrossReferences()@ has been changed to return the list of changed objects by the inverse cross references removal.
 * The method @org.eclipse.sirius.ecore.extender.business.api.accessor.CompositeMetamodelExtender.eRemoveInverseCrossReferences()@ has been changed to return the list of changed objects by the inverse cross references removal.
+* The exception @org.eclipse.sirius.ecore.extender.IllegalURIException@ has beed removed. It was not actually thrown anywhere in the code.
 
 h4. Changes in @org.eclipse.sirius.diagram@
 

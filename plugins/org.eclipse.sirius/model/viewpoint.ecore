@@ -289,8 +289,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DAnalysisSessionEObject">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="open" lowerBound="1" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="blocked" lowerBound="1"
-        eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="resources" upperBound="-1"
         eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EResource"
         transient="true"/>

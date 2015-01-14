@@ -1161,22 +1161,13 @@ public interface ViewpointPackage extends EPackage {
     int DANALYSIS_SESSION_EOBJECT__OPEN = 0;
 
     /**
-     * The feature id for the '<em><b>Blocked</b></em>' attribute. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @generated
-     * @ordered
-     */
-    int DANALYSIS_SESSION_EOBJECT__BLOCKED = 1;
-
-    /**
      * The feature id for the '<em><b>Resources</b></em>' attribute list. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
      * @generated
      * @ordered
      */
-    int DANALYSIS_SESSION_EOBJECT__RESOURCES = 2;
+    int DANALYSIS_SESSION_EOBJECT__RESOURCES = 1;
 
     /**
      * The feature id for the '<em><b>Controlled Resources</b></em>' attribute
@@ -1185,7 +1176,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DANALYSIS_SESSION_EOBJECT__CONTROLLED_RESOURCES = 3;
+    int DANALYSIS_SESSION_EOBJECT__CONTROLLED_RESOURCES = 2;
 
     /**
      * The feature id for the '<em><b>Activated Viewpoints</b></em>' reference
@@ -1194,7 +1185,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DANALYSIS_SESSION_EOBJECT__ACTIVATED_VIEWPOINTS = 4;
+    int DANALYSIS_SESSION_EOBJECT__ACTIVATED_VIEWPOINTS = 3;
 
     /**
      * The feature id for the '<em><b>Analyses</b></em>' reference list. <!--
@@ -1203,7 +1194,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DANALYSIS_SESSION_EOBJECT__ANALYSES = 5;
+    int DANALYSIS_SESSION_EOBJECT__ANALYSES = 4;
 
     /**
      * The feature id for the '<em><b>Synchronization Status</b></em>'
@@ -1212,7 +1203,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DANALYSIS_SESSION_EOBJECT__SYNCHRONIZATION_STATUS = 6;
+    int DANALYSIS_SESSION_EOBJECT__SYNCHRONIZATION_STATUS = 5;
 
     /**
      * The number of structural features of the '
@@ -1222,7 +1213,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DANALYSIS_SESSION_EOBJECT_FEATURE_COUNT = 7;
+    int DANALYSIS_SESSION_EOBJECT_FEATURE_COUNT = 6;
 
     /**
      * The meta object id for the '
@@ -2312,18 +2303,6 @@ public interface ViewpointPackage extends EPackage {
     EAttribute getDAnalysisSessionEObject_Open();
 
     /**
-     * Returns the meta object for the attribute '
-     * {@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#isBlocked
-     * <em>Blocked</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
-     * @return the meta object for the attribute '<em>Blocked</em>'.
-     * @see org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#isBlocked()
-     * @see #getDAnalysisSessionEObject()
-     * @generated
-     */
-    EAttribute getDAnalysisSessionEObject_Blocked();
-
-    /**
      * Returns the meta object for the attribute list '
      * {@link org.eclipse.sirius.viewpoint.DAnalysisSessionEObject#getResources
      * <em>Resources</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -3277,14 +3256,6 @@ public interface ViewpointPackage extends EPackage {
          * @generated
          */
         EAttribute DANALYSIS_SESSION_EOBJECT__OPEN = eINSTANCE.getDAnalysisSessionEObject_Open();
-
-        /**
-         * The meta object literal for the '<em><b>Blocked</b></em>' attribute
-         * feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-         * 
-         * @generated
-         */
-        EAttribute DANALYSIS_SESSION_EOBJECT__BLOCKED = eINSTANCE.getDAnalysisSessionEObject_Blocked();
 
         /**
          * The meta object literal for the '<em><b>Resources</b></em>' attribute
