@@ -1300,14 +1300,13 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     private boolean hasAlreadyDViewForViewpoint(DAnalysis dAnalysis, Viewpoint viewpoint) {
-        boolean hasAlreadyDViewForSirius = false;
         for (DView ownedDView : dAnalysis.getOwnedViews()) {
-            if (ownedDView.getViewpoint() != null && EqualityHelper.areEquals(ownedDView.getViewpoint(), viewpoint)) {
-                hasAlreadyDViewForSirius = true;
-                break;
+            Viewpoint vp = ownedDView.getViewpoint();
+            if (vp != null && EqualityHelper.areEquals(vp, viewpoint)) {
+                return true;
             }
         }
-        return hasAlreadyDViewForSirius;
+        return false;
     }
 
     private void updateSelectedViewpointsData(IProgressMonitor monitor) {
