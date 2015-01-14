@@ -350,13 +350,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      */
     protected void reenableECrossReferenceAdaptersBeforeEndOfClosing() {
         ResourceSet resourceSet = getTransactionalEditingDomain().getResourceSet();
-        // Enable resolution for AirdCrossReferenceAdapter of session at the end
-        // of closing
         Adapter existingAirDCrossReferenceAdapter = EcoreUtil.getExistingAdapter(resourceSet, AirDCrossReferenceAdapter.class);
-        AirDCrossReferenceAdapter airDCrossReferenceAdapter = null;
         if (existingAirDCrossReferenceAdapter instanceof AirDCrossReferenceAdapter) {
-            airDCrossReferenceAdapter = (AirDCrossReferenceAdapter) existingAirDCrossReferenceAdapter;
-            airDCrossReferenceAdapter.enableResolve();
+            ((AirDCrossReferenceAdapter) existingAirDCrossReferenceAdapter).enableResolve();
         }
         if (getSemanticCrossReferencer() instanceof LazyCrossReferencer) {
             ((LazyCrossReferencer) getSemanticCrossReferencer()).enableResolve();
