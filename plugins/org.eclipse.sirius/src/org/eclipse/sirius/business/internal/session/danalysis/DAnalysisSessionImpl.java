@@ -1172,6 +1172,19 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     @Override
+    public Collection<DView> getSelectedViews() {
+        return getSelectedViews(allAnalyses());
+    }
+
+    private Collection<DView> getSelectedViews(Iterable<DAnalysis> analyses) {
+        Collection<DView> selectedViews = new HashSet<DView>();
+        for (DAnalysis analysis : analyses) {
+            selectedViews.addAll(analysis.getSelectedViews());
+        }
+        return selectedViews;
+    }
+
+    @Override
     public void addSelectedView(DView view, IProgressMonitor monitor) throws IllegalArgumentException {
         try {
             monitor.beginTask("View selection", 3);
@@ -1198,28 +1211,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     @Override
-    public Collection<DView> getSelectedViews() {
-        return getSelectedViews(allAnalyses());
-    }
-
-    private Collection<DView> getSelectedViews(Iterable<DAnalysis> analyses) {
-        Collection<DView> selectedViews = new HashSet<DView>();
-        for (DAnalysis analysis : analyses) {
-            selectedViews.addAll(analysis.getSelectedViews());
-        }
-        return selectedViews;
-    }
-
-    @Override
-    public Collection<DView> getOwnedViews() {
-        Collection<DView> ownedViews = new HashSet<DView>();
-        for (DAnalysis analysis : allAnalyses()) {
-            ownedViews.addAll(analysis.getOwnedViews());
-        }
-        return ownedViews;
-    }
-
-    @Override
     public void removeSelectedView(final DView view, IProgressMonitor monitor) {
         try {
             monitor.beginTask("View unselection", 1);
@@ -1230,6 +1221,15 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         } finally {
             monitor.done();
         }
+    }
+
+    @Override
+    public Collection<DView> getOwnedViews() {
+        Collection<DView> ownedViews = new HashSet<DView>();
+        for (DAnalysis analysis : allAnalyses()) {
+            ownedViews.addAll(analysis.getOwnedViews());
+        }
+        return ownedViews;
     }
 
     @Override
