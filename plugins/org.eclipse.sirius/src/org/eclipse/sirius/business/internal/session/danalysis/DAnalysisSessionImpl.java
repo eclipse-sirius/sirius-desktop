@@ -238,7 +238,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * Configure the interpreter attached to this session.
      */
     private void configureInterpreter() {
-        // Calculate paths of the activated representation description files. 
+        // Calculate paths of the activated representation description files.
         List<String> filePaths = new ArrayList<String>();
         for (Viewpoint vp : getSelectedViewpointsSpecificToGeneric()) {
             Resource vpResource = vp.eResource();
@@ -536,16 +536,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     // Semantic Resources
     // *******************
 
-    private void addSemanticResource(final Resource newResource, final boolean addCrossReferencedResources, final IProgressMonitor monitor) {
-        final ResourceSet set = transactionalEditingDomain.getResourceSet();
-        doAddSemanticResource(newResource, set);
-        if (addCrossReferencedResources) {
-            for (Resource res : collectAllReferencedResources(newResource)) {
-                doAddSemanticResource(res, set);
-            }
-        }
-    }
-
     /**
      * Find all the resources referenced by any object from the specified
      * resource. Ignore "http" resources.
@@ -580,8 +570,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         return result;
     }
 
-    private synchronized void addSemanticResource(final URI semanticModelURI, final boolean addCrossReferencedResources, IProgressMonitor monitor) {
-
+    @Override
+    public synchronized void addSemanticResource(URI semanticModelURI, IProgressMonitor monitor) {
         if (semanticModelURI != null) {
             if (new FileQuery(semanticModelURI.fileExtension()).isSessionResourceFile()) {
                 throw new IllegalArgumentException("A representation file cannot be added as semantic resource.");
@@ -606,8 +596,13 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                 }
                 monitor.worked(1);
                 newSemanticResource = resourceSet.getResource(semanticModelURI, true);
+                // If it is a new resource, register it with all its referenced
+                // resources as semantic models.
                 if (!getSemanticResources().contains(newSemanticResource)) {
-                    addSemanticResource(newSemanticResource, addCrossReferencedResources, monitor);
+                    doAddSemanticResource(newSemanticResource, resourceSet);
+                    for (Resource res : collectAllReferencedResources(newSemanticResource)) {
+                        doAddSemanticResource(res, resourceSet);
+                    }
                 }
             } finally {
                 monitor.done();
@@ -617,16 +612,11 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     @Override
-    public void addSemanticResource(URI semanticResourceURI, IProgressMonitor monitor) {
-        addSemanticResource(semanticResourceURI, true, monitor);
-    }
-
-    @Override
     public synchronized void createSemanticResource(URI semanticModelURI) {
         ResourceSet rs = transactionalEditingDomain.getResourceSet();
         Resource resource = rs.createResource(semanticModelURI);
         rs.getResources().remove(resource);
-        addSemanticResource(resource, true, null);
+        addSemanticResource(semanticModelURI, null);
     }
 
     /**
