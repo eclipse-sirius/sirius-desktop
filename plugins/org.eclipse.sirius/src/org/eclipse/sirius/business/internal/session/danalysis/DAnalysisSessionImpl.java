@@ -501,7 +501,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         } else {
             throw new LockedInstanceException(receiver);
         }
-        transferCustomData(this, representation);
+        for (EObject object : getServices().getCustomData(CustomDataConstants.GMF_DIAGRAMS, representation)) {
+            getServices().putCustomData(CustomDataConstants.GMF_DIAGRAMS, representation, object);
+        }
     }
 
     private static DView findViewForRepresentation(Viewpoint vp, DAnalysis analysis) {
@@ -511,23 +513,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             }
         }
         return null;
-    }
-
-    /**
-     * Transfers the custom data of the origin session for the given associated
-     * instance into this session and for the same instance.
-     * 
-     * @param origin
-     *            the original session.
-     * @param associatedInstance
-     *            the associated instance.
-     */
-    private void transferCustomData(final Session origin, final EObject associatedInstance) {
-        // Diagram should be move.
-        final Collection<EObject> diagrams = origin.getServices().getCustomData(CustomDataConstants.GMF_DIAGRAMS, associatedInstance);
-        for (final EObject object : diagrams) {
-            this.getServices().putCustomData(CustomDataConstants.GMF_DIAGRAMS, associatedInstance, object);
-        }
     }
 
     // *******************
