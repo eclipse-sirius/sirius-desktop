@@ -26,6 +26,8 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartResized;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
+import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.swt.widgets.Composite;
@@ -66,6 +68,9 @@ public class HeaderSequenceDiagramTests extends AbstractDefaultModelSequenceTest
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         if (getSessionModel() == null) {
         } else {
+            bot.viewById("org.eclipse.ui.views.ContentOutline").close();
+            SWTBotUtils.waitAllUiEvents();
+
             sessionAirdResource = new UIResource(designerProject, FILE_DIR, getSessionModel());
             localSession = designerPerspective.openSessionFromFile(sessionAirdResource, true);
             Option<String> dRepresentationName = getDRepresentationName();
@@ -336,6 +341,9 @@ public class HeaderSequenceDiagramTests extends AbstractDefaultModelSequenceTest
     @Override
     protected void tearDown() throws Exception {
         headerDatas = null;
+        // Reopen outline
+        new DesignerViews(bot).openOutlineView();
+        SWTBotUtils.waitAllUiEvents();
         super.tearDown();
     }
 
