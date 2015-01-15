@@ -19,9 +19,10 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiInternalPreferencesKeys;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
-
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNoOpenedSessionInModelContentView;
+import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 
 /**
  * Tests for the "pin elements" feature.
@@ -51,8 +52,20 @@ public class PinnedElementsTest extends AbstractPinnedElementsTest {
      */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
+        bot.viewById("org.eclipse.ui.views.ContentOutline").close();
+        SWTBotUtils.waitAllUiEvents();
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, "tc1825.aird");
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        editor.close();
+        SWTBotUtils.waitAllUiEvents();
+        // Reopen outline
+        new DesignerViews(bot).openOutlineView();
+        SWTBotUtils.waitAllUiEvents();
+        super.tearDown();
     }
 
     /**
