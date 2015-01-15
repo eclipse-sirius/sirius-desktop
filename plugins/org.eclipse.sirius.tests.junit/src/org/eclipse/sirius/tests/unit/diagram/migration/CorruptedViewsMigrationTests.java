@@ -21,9 +21,11 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
 import org.eclipse.sirius.diagram.ui.business.internal.migration.SetGMFViewsToNillMigrationParticipant;
-import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
+import org.eclipse.sirius.tests.unit.common.migration.AbstractMigrationTestCase;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DView;
 import org.junit.Before;
@@ -31,9 +33,6 @@ import org.junit.Test;
 import org.osgi.framework.Version;
 
 import com.google.common.collect.Iterables;
-
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
-import org.eclipse.sirius.tests.unit.common.migration.AbstractMigrationTestCase;
 
 /**
  * A test ensuring that if we have an aird containing corrupted {@link View}s
@@ -128,7 +127,9 @@ public class CorruptedViewsMigrationTests extends AbstractMigrationTestCase {
         for (Resource sessionResource : session.getAllSessionResources()) {
             for (DView view : ((DAnalysis) sessionResource.getContents().iterator().next()).getOwnedViews()) {
                 for (DDiagram dDiagram : Iterables.filter(view.getAllRepresentations(), DDiagram.class)) {
-                    Diagram gmfDiagram = GMFNotationHelper.findGMFDiagram(dDiagram);
+                    DiagramCreationUtil diagramCreationUtil = new DiagramCreationUtil(dDiagram);
+                    assertTrue(diagramCreationUtil.findAssociatedGMFDiagram());
+                    Diagram gmfDiagram = diagramCreationUtil.getAssociatedGMFDiagram();
                     assertNotNull(gmfDiagram);
                     TreeIterator<EObject> allDiagramContent = gmfDiagram.eAllContents();
                     while (allDiagramContent.hasNext()) {

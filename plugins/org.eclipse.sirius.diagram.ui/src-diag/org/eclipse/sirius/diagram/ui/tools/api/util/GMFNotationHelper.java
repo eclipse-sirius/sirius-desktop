@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.util;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -32,11 +30,11 @@ import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
+import org.eclipse.gmf.runtime.notation.Shape;
 import org.eclipse.gmf.runtime.notation.ShapeStyle;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceConverter;
-import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.swt.graphics.RGB;
 
 /**
@@ -121,7 +119,7 @@ public final class GMFNotationHelper {
      * @return the text of the note.
      */
     public static String getNoteDescription(final Node note) {
-        final Iterator it = note.getStyles().iterator();
+        final Iterator<?> it = note.getStyles().iterator();
         while (it.hasNext()) {
             final Object obj = it.next();
             if (obj instanceof ShapeStyle) {
@@ -198,6 +196,13 @@ public final class GMFNotationHelper {
      * @param eObject
      *            any eObject of the Resource containing the diagrams.
      * @return the first GMF Diagram targeting the eObject, null if not found.
+     * 
+     * @deprecated as it is inefficient use
+     *             {@link org.eclipse.sirius.diagram.business.api.query.EObjectQuery#getParentDiagram()}
+     *             to get the viewpoint
+     *             {@link org.eclipse.sirius.diagram.DDiagram} and from it use
+     *             {@link org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil#findAssociatedGMFDiagram()}
+     *             instead.
      */
     public static Diagram findGMFDiagram(final EObject eObject) {
         final Iterator<EObject> it = eObject.eResource().getAllContents();
@@ -241,9 +246,8 @@ public final class GMFNotationHelper {
      * @return the newly created note.
      */
     public static Node createNote(final Diagram container, final String noteText) {
-
         final Node note = ViewService.createNode(container, ViewType.NOTE, PreferencesHint.USE_DEFAULTS);
-        final Iterator it = note.getStyles().iterator();
+        final Iterator<?> it = note.getStyles().iterator();
         while (it.hasNext()) {
             final Object cur = it.next();
             if (cur instanceof ShapeStyle) {
@@ -267,35 +271,15 @@ public final class GMFNotationHelper {
      */
     public static Node createNote(final Diagram container, final String noteText, final IPreferenceStore preferencesStore) {
         final Node note = GMFNotationHelper.createNote(container, noteText);
-
-        try {
-            // In Eclipse 3.5 createNote returns a Shape that does not have the
-            // generic color.
-            Class<?> shapeClass = Class.forName("org.eclipse.gmf.runtime.notation.Shape");
-
-            Method methodSetDescription = shapeClass.getMethod("setDescription", String.class);
-            methodSetDescription.invoke(note, noteText);
-
-            Method methodSetFillColor = shapeClass.getMethod("setFillColor", int.class);
+        if (note instanceof Shape) {
+            Shape shape = (Shape) note;
+            shape.setDescription(noteText);
             RGB fillRGB = PreferenceConverter.getColor(preferencesStore, IPreferenceConstants.PREF_NOTE_FILL_COLOR);
-            methodSetFillColor.invoke(note, FigureUtilities.RGBToInteger(fillRGB).intValue());
-
-            Method methodSetLineColor = shapeClass.getMethod("setLineColor", int.class);
+            int fillColor = FigureUtilities.RGBToInteger(fillRGB);
+            shape.setFillColor(fillColor);
             RGB lineRGB = PreferenceConverter.getColor(preferencesStore, IPreferenceConstants.PREF_NOTE_LINE_COLOR);
-            methodSetLineColor.invoke(note, FigureUtilities.RGBToInteger(lineRGB).intValue());
-
-        } catch (final ClassNotFoundException cnfe) {
-            // We are not in Eclipse 3.3 : Do nothing else
-        } catch (SecurityException e) {
-            SiriusTransPlugin.getPlugin().error("SecurityException while accessing Shape class", e);
-        } catch (NoSuchMethodException e) {
-            SiriusTransPlugin.getPlugin().error("NoSuchMethodException while accessing Shape class", e);
-        } catch (IllegalArgumentException e) {
-            SiriusTransPlugin.getPlugin().error("IllegalArgumentException while accessing Shape class", e);
-        } catch (IllegalAccessException e) {
-            SiriusTransPlugin.getPlugin().error("IllegalAccessException while accessing Shape class", e);
-        } catch (InvocationTargetException e) {
-            SiriusTransPlugin.getPlugin().error("InvocationTargetException while accessing Shape class", e);
+            int lineColor = FigureUtilities.RGBToInteger(lineRGB);
+            shape.setLineColor(lineColor);
         }
         return note;
 

@@ -23,7 +23,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DNodeListElement;
-import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
+import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DView;
 import org.osgi.framework.Version;
@@ -58,9 +58,9 @@ public class FontStyleForDNodeListElementMigrationParticipant extends AbstractRe
             final Collection<View> allViewsToUpdate = Sets.newLinkedHashSet();
             for (DView dView : dAnalysis.getOwnedViews()) {
                 for (DDiagram dDiagram : Iterables.filter(dView.getOwnedRepresentations(), DDiagram.class)) {
-                    final Diagram gmfDiagram = GMFNotationHelper.findGMFDiagram(dDiagram);
-                    if (gmfDiagram != null) {
-
+                    DiagramCreationUtil diagramCreationUtil = new DiagramCreationUtil(dDiagram);
+                    if (diagramCreationUtil.findAssociatedGMFDiagram()) {
+                        Diagram gmfDiagram = diagramCreationUtil.getAssociatedGMFDiagram();
                         TreeIterator<EObject> childIterator = gmfDiagram.eAllContents();
                         while (childIterator.hasNext()) {
                             EObject child = childIterator.next();
