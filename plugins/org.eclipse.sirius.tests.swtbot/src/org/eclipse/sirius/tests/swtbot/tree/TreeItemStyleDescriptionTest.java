@@ -13,7 +13,12 @@ package org.eclipse.sirius.tests.swtbot.tree;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.anyOf;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.nullValue;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
@@ -23,6 +28,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
@@ -353,7 +359,7 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
         String labelExpression = null;
         // String labelAlignment = null;
         String iconPath = null;
-        String labelFormat = null;
+        List<String> labelFormat = null;
         Color colorBackground = null;
         Color labelColor = null;
 
@@ -377,16 +383,28 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
         assertThat(labelSize, equalTo(8));
         assertThat(labelExpression, equalTo(NEWECLASS1));
         // assertThat(labelAlignment, equalTo("CENTER"));
-        assertThat(labelFormat, equalTo("bold"));
+        List<String> actual = labelFormat;
+        List<String> expected = Arrays.asList("bold");
+        assertThat(actual, is(expected));
         assertThat(iconPath, anyOf(equalTo(""), nullValue()));
         assertThat(colorBackground, equalTo(lightYellow));
         assertThat(labelColor, equalTo(lightGreen));
 
-        assertThat(SWTBotUtils.getWidgetFormat(widgetNewEclass1).getName(), equalTo("bold"));
+        SWTBotUtils.getWidgetFormat(widgetNewEclass1);
+        actual = getFontFormatLiterals(SWTBotUtils.getWidgetFormat(widgetNewEclass1));
+        assertThat(actual, is(expected));
         assertThat(getWidgetBackgroundColor(widgetNewEclass1), equalTo(lightYellow));
         assertThat(getWidgetLabelColor(widgetNewEclass1), equalTo(lightGreen));
         assertNull(getWidgetImage(widgetNewEclass1));
         assertThat(getWidgetSize(widgetNewEclass1), equalTo(8));
+    }
+
+    private static List<String> getFontFormatLiterals(List<FontFormat> fontFormat) {
+        List<String> expected = new ArrayList<String>();
+        for (FontFormat style : fontFormat) {
+            expected.add(style.getName());
+        }
+        return expected;
     }
 
     /**
@@ -448,7 +466,7 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
         String labelExpression = null;
         // String labelAlignment = null;
         String iconPath = null;
-        String labelFormat = null;
+        List<String> labelFormat = null;
         Color colorBackground = null;
         Color labelColor = null;
 
@@ -473,10 +491,13 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
         assertThat(labelSize, equalTo(12));
         assertThat(labelExpression, equalTo("Testnew EClass 1"));
         // assertThat(labelAlignment, equalTo("RIGHT"));
-        assertThat(labelFormat, equalTo("bold_italic"));
+        List<String> actual = labelFormat;
+        List<String> expected = Arrays.asList("bold", "italic");
+        assertThat(actual, is(expected));
         assertThat(colorBackground, equalTo(black));
         assertThat(labelColor, equalTo(blue));
-        assertThat(SWTBotUtils.getWidgetFormat(widgetNewEclass1).getName(), equalTo("bold_italic"));
+        actual = getFontFormatLiterals(SWTBotUtils.getWidgetFormat(widgetNewEclass1));
+        assertThat(actual, is(expected));
         assertThat(getWidgetSize(widgetNewEclass1), equalTo(12));
         assertThat(getWidgetBackgroundColor(widgetNewEclass1), equalTo(black));
         assertThat(getWidgetLabelColor(widgetNewEclass1), equalTo(blue));

@@ -101,14 +101,15 @@ public final class DiagramNameEditPartOperation {
      * @param style
      */
     private static void refreshFont(final IDiagramNameEditPart self, final IFigure figure, BasicLabelStyle style) {
+        // Set basic label style
         final BasicLabelStyle lStyle = style;
         figure.setFont(VisualBindingManager.getDefault().getFontFromLabelStyle(lStyle, DiagramNameEditPartOperation.getFontName(self)));
 
         final FontStyle fontStyle = DiagramNameEditPartOperation.getFontStyle(self);
         if (fontStyle != null && figure instanceof SiriusWrapLabel) {
             final SiriusWrapLabel wrap = (SiriusWrapLabel) figure;
-            wrap.setTextUnderline(fontStyle.isUnderline());
-            wrap.setTextStrikeThrough(fontStyle.isStrikeThrough());
+            wrap.setTextUnderline(VisualBindingManager.getDefault().isUnderlineFromLabelStyle(lStyle));
+            wrap.setTextStrikeThrough(VisualBindingManager.getDefault().isStrikeThroughFromLabelStyle(lStyle));
         }
 
         RGBValues labelRGBColor = lStyle.getLabelColor();

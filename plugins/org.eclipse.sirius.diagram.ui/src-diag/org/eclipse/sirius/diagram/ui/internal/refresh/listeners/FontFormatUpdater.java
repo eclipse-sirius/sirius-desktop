@@ -10,9 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.refresh.listeners;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -31,6 +33,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.notation.FontStyle;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.ui.internal.refresh.SynchronizeDDiagramElementStylePropertiesCommand;
@@ -52,8 +55,12 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 public class FontFormatUpdater extends ResourceSetListenerImpl {
 
     private static final NotificationFilter FEATURES_TO_REFACTOR_FILTER = NotificationFilter.NOT_TOUCH
-            .and(NotificationFilter.createFeatureFilter(NotationPackage.eINSTANCE.getFontStyle_Bold()).or(NotificationFilter.createFeatureFilter(NotationPackage.eINSTANCE.getFontStyle_Italic())))
-            .or((NotificationFilter.createFeatureFilter(NotationPackage.eINSTANCE.getFontStyle_Bold())).and(NotificationFilter.createFeatureFilter(NotationPackage.eINSTANCE.getFontStyle_Italic())))
+            .and(NotificationFilter.createFeatureFilter(NotationPackage.eINSTANCE.getFontStyle_Bold()).or(NotificationFilter.createFeatureFilter(NotationPackage.eINSTANCE.getFontStyle_Italic()))
+                    .or(NotificationFilter.createFeatureFilter(NotationPackage.eINSTANCE.getFontStyle_Underline()))
+                    .or(NotificationFilter.createFeatureFilter(NotationPackage.eINSTANCE.getFontStyle_StrikeThrough())))
+            .or((NotificationFilter.createFeatureFilter(NotationPackage.eINSTANCE.getFontStyle_Bold())).and(NotificationFilter.createFeatureFilter(NotationPackage.eINSTANCE.getFontStyle_Italic()))
+                    .and(NotificationFilter.createFeatureFilter(NotationPackage.eINSTANCE.getFontStyle_Underline()))
+                    .and(NotificationFilter.createFeatureFilter(NotationPackage.eINSTANCE.getFontStyle_StrikeThrough())))
             .or(NotificationFilter.createFeatureFilter(NotationPackage.eINSTANCE.getFontStyle_FontHeight()))
             .or(NotificationFilter.createFeatureFilter(NotationPackage.eINSTANCE.getFontStyle_FontColor()));
 
@@ -174,18 +181,27 @@ public class FontFormatUpdater extends ResourceSetListenerImpl {
         return isViewFontStylePropertiesDifferentOfGMFOne;
     }
 
+    @SuppressWarnings("unchecked")
     private Object convertToSiriusPropertyValue(org.eclipse.gmf.runtime.notation.Style gmfStyle, EStructuralFeature gmfStyleAttribute) {
         Object gmfStylePropertyValue = gmfStyle.eGet(gmfStyleAttribute);
-        if (gmfStyleAttribute == NotationPackage.Literals.FONT_STYLE__BOLD || gmfStyleAttribute == NotationPackage.Literals.FONT_STYLE__ITALIC) {
+        if (gmfStyleAttribute == NotationPackage.Literals.FONT_STYLE__BOLD || gmfStyleAttribute == NotationPackage.Literals.FONT_STYLE__ITALIC
+                || gmfStyleAttribute == NotationPackage.Literals.FONT_STYLE__UNDERLINE || gmfStyleAttribute == NotationPackage.Literals.FONT_STYLE__STRIKE_THROUGH) {
             FontStyle gmfFontStyle = (FontStyle) gmfStyle;
-            if (gmfFontStyle.isBold() && gmfFontStyle.isItalic()) {
-                gmfStylePropertyValue = FontFormat.BOLD_ITALIC_LITERAL;
-            } else if (gmfFontStyle.isBold()) {
-                gmfStylePropertyValue = FontFormat.BOLD_LITERAL;
-            } else if (gmfFontStyle.isItalic()) {
-                gmfStylePropertyValue = FontFormat.ITALIC_LITERAL;
-            } else {
-                gmfStylePropertyValue = FontFormat.NORMAL_LITERAL;
+            gmfStylePropertyValue = new ArrayList<FontFormat>();
+            if (gmfFontStyle.isBold()) {
+                FontFormatHelper.setFontFormat(((List<FontFormat>) gmfStylePropertyValue), FontFormat.BOLD_LITERAL);
+            }
+            if (gmfFontStyle.isItalic()) {
+                FontFormatHelper.setFontFormat(((List<FontFormat>) gmfStylePropertyValue), FontFormat.ITALIC_LITERAL);
+            }
+            if (gmfFontStyle.isUnderline()) {
+                FontFormatHelper.setFontFormat(((List<FontFormat>) gmfStylePropertyValue), FontFormat.UNDERLINE_LITERAL);
+            }
+            if (gmfFontStyle.isStrikeThrough()) {
+                FontFormatHelper.setFontFormat(((List<FontFormat>) gmfStylePropertyValue), FontFormat.STRIKE_THROUGH_LITERAL);
+            }
+            if (!gmfFontStyle.isBold() && !gmfFontStyle.isItalic() && !gmfFontStyle.isUnderline() && !gmfFontStyle.isStrikeThrough()) {
+                ((List<FontFormat>) gmfStylePropertyValue).clear();
             }
         } else if (gmfStyleAttribute == NotationPackage.Literals.FONT_STYLE__FONT_COLOR) {
             FontStyle gmfFontStyle = (FontStyle) gmfStyle;

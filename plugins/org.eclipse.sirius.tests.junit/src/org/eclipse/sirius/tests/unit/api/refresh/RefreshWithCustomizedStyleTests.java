@@ -22,6 +22,7 @@ import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -60,6 +61,8 @@ import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.FixedColor;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.eclipse.ui.IEditorPart;
+
+import com.google.common.collect.Lists;
 
 /**
  * Test the style customization features with conditional style description.
@@ -561,6 +564,7 @@ public class RefreshWithCustomizedStyleTests extends SiriusDiagramTestCase {
         return conditionalStyleDescriptions;
     }
 
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     private void customizeFeature(DDiagramElement dDiagramElement, EStructuralFeature feature) {
         Style style = dDiagramElement.getStyle();
         Object currentValue = style.eGet(feature);
@@ -569,6 +573,15 @@ public class RefreshWithCustomizedStyleTests extends SiriusDiagramTestCase {
             if (feature.getEType() == ViewpointPackage.Literals.RGB_VALUES) {
                 RGBValues red = RGBValues.create(255, 0, 0);
                 Command customizeStyleCmd = SetCommand.create(domain, style, feature, red);
+                domain.getCommandStack().execute(customizeStyleCmd);
+            } else if (feature.getEType() instanceof EEnum && currentValue instanceof List && ((List) currentValue).isEmpty()) {
+                List newList = Lists.newArrayList();
+                EEnum eEnum = (EEnum) feature.getEType();
+                for (EEnumLiteral literal : eEnum.getELiterals()) {
+                    Enumerator newEnumerator = literal.getInstance();
+                    newList.add(newEnumerator);
+                }
+                Command customizeStyleCmd = SetCommand.create(domain, style, feature, newList);
                 domain.getCommandStack().execute(customizeStyleCmd);
             } else if (feature.getEType() instanceof EEnum && currentValue instanceof Enumerator) {
                 EEnum eEnum = (EEnum) feature.getEType();

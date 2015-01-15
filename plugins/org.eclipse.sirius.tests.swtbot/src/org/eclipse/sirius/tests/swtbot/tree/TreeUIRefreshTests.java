@@ -248,7 +248,7 @@ public class TreeUIRefreshTests extends AbstractTreeSiriusSWTBotGefTestCase {
         TreeUtils.checkTreeItemLabelFormat(treeEditorBot, thirdDTreeItem);
 
         // Test a the normal font format
-        changeDTreeItemLabelStyleCmd = SetCommand.create(transactionalEditingDomain, treeItemStyle, ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT, FontFormat.NORMAL_LITERAL);
+        changeDTreeItemLabelStyleCmd = SetCommand.create(transactionalEditingDomain, treeItemStyle, ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT, null);
         commandStack.execute(changeDTreeItemLabelStyleCmd);
 
         TreeUtils.checkTreeItemLabelFormat(treeEditorBot, secondDTreeItem);

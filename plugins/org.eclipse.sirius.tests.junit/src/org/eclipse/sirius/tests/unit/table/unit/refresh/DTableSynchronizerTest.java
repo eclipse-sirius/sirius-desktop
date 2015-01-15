@@ -11,6 +11,7 @@
 package org.eclipse.sirius.tests.unit.table.unit.refresh;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.table.business.api.query.DCellQuery;
 import org.eclipse.sirius.table.business.api.query.DTableQuery;
@@ -520,7 +522,7 @@ public class DTableSynchronizerTest extends TableTestCase {
         if (optionalCell.some()) {
             Option<DTableElementStyle> optionalForegroundStyleToApply = new DCellQuery(optionalCell.get()).getForegroundStyleToApply();
             assertTrue("We should have a currentStyle for the cell.", optionalForegroundStyleToApply.some());
-            checkStyle(optionalForegroundStyleToApply.get(), false, 8, FontFormat.NORMAL_LITERAL);
+            checkStyle(optionalForegroundStyleToApply.get(), false, 8, Collections.emptyList());
         }
 
         final LineMapping mapping = findLineMapping(desc, lineMappingName);
@@ -531,7 +533,7 @@ public class DTableSynchronizerTest extends TableTestCase {
             @Override
             protected void doExecute() {
                 ForegroundStyleDescription foregroundStyle = DescriptionFactory.eINSTANCE.createForegroundStyleDescription();
-                foregroundStyle.setLabelFormat(FontFormat.BOLD_LITERAL);
+                FontFormatHelper.setFontFormat(foregroundStyle.getLabelFormat(), FontFormat.BOLD_LITERAL);
                 foregroundStyle.setLabelSize(14);
                 mapping.setDefaultForeground(foregroundStyle);
             }
@@ -544,7 +546,9 @@ public class DTableSynchronizerTest extends TableTestCase {
         if (optionalCell.some()) {
             Option<DTableElementStyle> optionalForegroundStyleToApply = new DCellQuery(optionalCell.get()).getForegroundStyleToApply();
             assertTrue("We should have a currentStyle for the cell.", optionalForegroundStyleToApply.some());
-            checkStyle(optionalForegroundStyleToApply.get(), true, 14, FontFormat.BOLD_LITERAL);
+            List<FontFormat> fontFormat = new ArrayList<FontFormat>();
+            fontFormat.add(FontFormat.BOLD_LITERAL);
+            checkStyle(optionalForegroundStyleToApply.get(), true, 14, fontFormat);
         }
 
         domain.getCommandStack().execute(new RecordingCommand(domain) {
@@ -562,11 +566,12 @@ public class DTableSynchronizerTest extends TableTestCase {
         if (optionalCell.some()) {
             Option<DTableElementStyle> optionalForegroundStyleToApply = new DCellQuery(optionalCell.get()).getForegroundStyleToApply();
             assertTrue("We should have a currentStyle for the cell.", optionalForegroundStyleToApply.some());
-            checkStyle(optionalForegroundStyleToApply.get(), false, 8, FontFormat.NORMAL_LITERAL);
+            checkStyle(optionalForegroundStyleToApply.get(), false, 8, Collections.emptyList());
         }
     }
 
-    private void checkStyle(DTableElementStyle style, boolean isStyle, int labelSize, FontFormat fontFormat) {
+    @SuppressWarnings("rawtypes")
+    private void checkStyle(DTableElementStyle style, boolean isStyle, int labelSize, List fontFormat) {
         if (!isStyle)
             assertEquals(RGBValues.create(0,0,0), style.getForegroundColor());
         assertEquals(labelSize, style.getLabelSize());

@@ -28,6 +28,7 @@ import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.util.LocalSelectionTransfer;
 import org.eclipse.jface.viewers.ColumnViewer;
 import org.eclipse.jface.viewers.ColumnViewerEditor;
+import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
 import org.eclipse.jface.viewers.FocusCellOwnerDrawHighlighter;
 import org.eclipse.jface.viewers.ILabelDecorator;
 import org.eclipse.jface.viewers.ISelectionProvider;
@@ -183,7 +184,8 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
         // Wrap the LabelProvider in a DecoratingLabelProvider
         ILabelDecorator decorator = PlatformUI.getWorkbench().getDecoratorManager().getLabelDecorator();
         AdapterFactory adapterFactory = TreeUIPlugin.getPlugin().getItemProvidersAdapterFactory();
-        treeViewer.setLabelProvider(new DTreeDecoratingLabelProvider(adapterFactory, decorator));
+        DTreeDecoratingLabelProvider labelProvider = new DTreeDecoratingLabelProvider(adapterFactory, decorator);
+        treeViewer.setLabelProvider(new DelegatingStyledCellLabelProvider(labelProvider));
 
         fillMenu();
         triggerColumnSelectedColumn();
@@ -197,8 +199,8 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
         // Create a new CellFocusManager
         final TreeViewerFocusCellManager focusCellManager = new TreeViewerFocusCellManager(treeViewer, new FocusCellOwnerDrawHighlighter(treeViewer));
         // Create a TreeViewerEditor with focusable cell
-        TreeViewerEditor.create(treeViewer, focusCellManager, new DTableColumnViewerEditorActivationStrategy(treeViewer), ColumnViewerEditor.TABBING_HORIZONTAL
-                | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR | ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
+        TreeViewerEditor.create(treeViewer, focusCellManager, new DTableColumnViewerEditorActivationStrategy(treeViewer),
+                ColumnViewerEditor.TABBING_HORIZONTAL | ColumnViewerEditor.TABBING_MOVE_TO_ROW_NEIGHBOR | ColumnViewerEditor.TABBING_VERTICAL | ColumnViewerEditor.KEYBOARD_ACTIVATION);
 
         // The input for the table viewer is the instance of DTable
         treeViewer.setInput(dRepresentation);
@@ -257,8 +259,8 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
 
         ISelectionProvider selectionProvider = this.treeViewer;
         this.treeViewer.addDragSupport(supportedOperations, new ByteArrayTransfer[] { LocalSelectionTransfer.getTransfer() }, new ModelDragTargetAdapter(selectionProvider));
-        this.treeViewer.addDropSupport(supportedOperations, new ByteArrayTransfer[] { LocalSelectionTransfer.getTransfer() }, new DTreeItemDropListener(this.treeViewer, this.editingDomain,
-                this.treeCommandFactory, this.accessor));
+        this.treeViewer.addDropSupport(supportedOperations, new ByteArrayTransfer[] { LocalSelectionTransfer.getTransfer() },
+                new DTreeItemDropListener(this.treeViewer, this.editingDomain, this.treeCommandFactory, this.accessor));
     }
 
     /**
@@ -297,7 +299,8 @@ public class DTreeViewerManager extends AbstractDTableViewerManager {
     }
 
     /**
-     * Initialize a cache and add, if needed, the contextual menu for the table. <BR>
+     * Initialize a cache and add, if needed, the contextual menu for the table.
+     * <BR>
      * Cached the actions of creation and deletion in order to increase
      * performance and not calculate it on each contextual menu.<BR>
      */

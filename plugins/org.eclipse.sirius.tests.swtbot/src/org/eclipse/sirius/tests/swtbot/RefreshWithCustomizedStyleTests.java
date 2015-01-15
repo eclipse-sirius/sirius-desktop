@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -436,17 +437,18 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
     }
 
     private Object convertToSiriusPropertyValue(org.eclipse.gmf.runtime.notation.Style gmfStyle, EAttribute gmfStyleAttribute) {
-        Object gmfStylePropertyValue = gmfStyle.eGet(gmfStyleAttribute);
+        List<FontFormat> gmfStylePropertyValue = new ArrayList<FontFormat>();
         if (gmfStyleAttribute == NotationPackage.Literals.FONT_STYLE__BOLD || gmfStyleAttribute == NotationPackage.Literals.FONT_STYLE__ITALIC) {
             FontStyle gmfFontStyle = (FontStyle) gmfStyle;
             if (gmfFontStyle.isBold() && gmfFontStyle.isItalic()) {
-                gmfStylePropertyValue = FontFormat.BOLD_ITALIC_LITERAL;
+                gmfStylePropertyValue.add(FontFormat.BOLD_LITERAL);
+                gmfStylePropertyValue.add(FontFormat.ITALIC_LITERAL);
             } else if (gmfFontStyle.isBold()) {
-                gmfStylePropertyValue = FontFormat.BOLD_LITERAL;
+                gmfStylePropertyValue.add(FontFormat.BOLD_LITERAL);
             } else if (gmfFontStyle.isItalic()) {
-                gmfStylePropertyValue = FontFormat.ITALIC_LITERAL;
+                gmfStylePropertyValue.add(FontFormat.ITALIC_LITERAL);
             } else {
-                gmfStylePropertyValue = FontFormat.NORMAL_LITERAL;
+                gmfStylePropertyValue = null;
             }
         }
         return gmfStylePropertyValue;

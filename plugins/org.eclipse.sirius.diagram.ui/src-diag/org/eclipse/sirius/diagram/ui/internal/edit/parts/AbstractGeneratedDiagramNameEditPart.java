@@ -358,8 +358,6 @@ public abstract class AbstractGeneratedDiagramNameEditPart extends AbstractDiagr
         refreshLabel();
         refreshFont();
         refreshFontColor();
-        refreshUnderline();
-        refreshStrikeThrough();
     }
 
     /**
@@ -371,26 +369,6 @@ public abstract class AbstractGeneratedDiagramNameEditPart extends AbstractDiagr
         final Object pdEditPolicy = getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
         if (pdEditPolicy instanceof SiriusTextSelectionEditPolicy) {
             ((SiriusTextSelectionEditPolicy) pdEditPolicy).refreshFeedback();
-        }
-    }
-
-    /**
-     * @not-generated
-     */
-    protected void refreshUnderline() {
-        final FontStyle style = (FontStyle) getFontStyleOwnerView().getStyle(NotationPackage.eINSTANCE.getFontStyle());
-        if (style != null && getFigure() instanceof SiriusWrapLabel) {
-            ((SiriusWrapLabel) getFigure()).setTextUnderline(style.isUnderline());
-        }
-    }
-
-    /**
-     * @not-generated
-     */
-    protected void refreshStrikeThrough() {
-        final FontStyle style = (FontStyle) getFontStyleOwnerView().getStyle(NotationPackage.eINSTANCE.getFontStyle());
-        if (style != null && getFigure() instanceof SiriusWrapLabel) {
-            ((SiriusWrapLabel) getFigure()).setTextStrikeThrough(style.isStrikeThrough());
         }
     }
 
@@ -465,12 +443,9 @@ public abstract class AbstractGeneratedDiagramNameEditPart extends AbstractDiagr
         if (NotationPackage.eINSTANCE.getFontStyle_FontColor().equals(feature)) {
             final Integer c = (Integer) event.getNewValue();
             setFontColor(DiagramColorRegistry.getInstance().getColor(c));
-        } else if (NotationPackage.eINSTANCE.getFontStyle_Underline().equals(feature)) {
-            refreshUnderline();
-        } else if (NotationPackage.eINSTANCE.getFontStyle_StrikeThrough().equals(feature)) {
-            refreshStrikeThrough();
         } else if (NotationPackage.eINSTANCE.getFontStyle_FontHeight().equals(feature) || NotationPackage.eINSTANCE.getFontStyle_FontName().equals(feature)
-                || NotationPackage.eINSTANCE.getFontStyle_Bold().equals(feature) || NotationPackage.eINSTANCE.getFontStyle_Italic().equals(feature)) {
+                || NotationPackage.eINSTANCE.getFontStyle_Bold().equals(feature) || NotationPackage.eINSTANCE.getFontStyle_Italic().equals(feature)
+                || NotationPackage.eINSTANCE.getFontStyle_Underline().equals(feature) || NotationPackage.eINSTANCE.getFontStyle_StrikeThrough().equals(feature)) {
             refreshFont();
         } else {
             if (getParser() != null && getParser().isAffectingEvent(event, getParserOptions().intValue())) {

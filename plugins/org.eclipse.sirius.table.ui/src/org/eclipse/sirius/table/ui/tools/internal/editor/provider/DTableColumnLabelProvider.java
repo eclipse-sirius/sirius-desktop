@@ -11,15 +11,16 @@
 package org.eclipse.sirius.table.ui.tools.internal.editor.provider;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
-import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Font;
-import org.eclipse.swt.graphics.Image;
+import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
+import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -31,15 +32,19 @@ import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTableElementStyle;
 import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.sirius.ui.tools.internal.editor.DefaultFontStyler;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.RGBValues;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.Image;
 
 /**
  * Label provider for all the DTable column (except the line header column).
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
-public class DTableColumnLabelProvider extends ColumnLabelProvider {
+public class DTableColumnLabelProvider extends ColumnLabelProvider implements IStyledLabelProvider {
     /** The key for the image which represents a checkbox checked. */
     public static final String CHECKED_IMAGE = "table/checked";
 
@@ -116,11 +121,11 @@ public class DTableColumnLabelProvider extends ColumnLabelProvider {
             }
             if (styleToApply != null && styleToApply.some()) {
                 final int size = styleToApply.get().getLabelSize();
-                FontFormat labelFormat = null;
+                List<FontFormat> labelFormat = new ArrayList<FontFormat>();
                 if (styleToApply.get().getLabelFormat() != null) {
                     labelFormat = styleToApply.get().getLabelFormat();
                 } else {
-                    labelFormat = FontFormat.NORMAL_LITERAL;
+                    labelFormat.clear();
                 }
                 return VisualBindingManager.getDefault().getFontFromLabelFormatAndSize(labelFormat, size);
             }
@@ -231,5 +236,55 @@ public class DTableColumnLabelProvider extends ColumnLabelProvider {
      */
     public boolean isProvideColumn(final DColumn currentColumn) {
         return this.column.equals(currentColumn);
+    }
+
+    @Override
+    public StyledString getStyledText(Object element) {
+        String text = getText(element);
+        DefaultFontStyler styler = new DefaultFontStyler(getFont(element), getForeground(element), getBackground(element), getUnderline(element), getStrikeout(element));
+        if (text == null) {
+            text = "";
+        }
+        StyledString styledString = new StyledString(text, styler);
+
+        return styledString;
+    }
+
+    private boolean getStrikeout(Object element) {
+        if (column != null) {
+            Option<DCell> optionalCell = getDCell(element);
+            Option<DTableElementStyle> styleToApply = null;
+            if (optionalCell.some()) {
+                styleToApply = new DCellQuery(optionalCell.get()).getForegroundStyleToApply();
+            } else if (element instanceof DLine) {
+                styleToApply = TableHelper.getForegroundStyleToApply((DLine) element, column);
+            }
+            if (styleToApply != null && styleToApply.some()) {
+                List<FontFormat> labelFormat = styleToApply.get().getLabelFormat();
+                if (labelFormat != null) {
+                    return labelFormat.contains(FontFormat.STRIKE_THROUGH_LITERAL);
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean getUnderline(Object element) {
+        if (column != null) {
+            Option<DCell> optionalCell = getDCell(element);
+            Option<DTableElementStyle> styleToApply = null;
+            if (optionalCell.some()) {
+                styleToApply = new DCellQuery(optionalCell.get()).getForegroundStyleToApply();
+            } else if (element instanceof DLine) {
+                styleToApply = TableHelper.getForegroundStyleToApply((DLine) element, column);
+            }
+            if (styleToApply != null && styleToApply.some()) {
+                List<FontFormat> labelFormat = styleToApply.get().getLabelFormat();
+                if (labelFormat != null) {
+                    return labelFormat.contains(FontFormat.UNDERLINE_LITERAL);
+                }
+            }
+        }
+        return false;
     }
 }

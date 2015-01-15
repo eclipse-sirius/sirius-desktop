@@ -97,6 +97,7 @@ public class ViewQuery {
     private static boolean isStylePropertyExistingInSiriusStyleModel(EAttribute eAttribute) {
         // CHECKSTYLE:OFF
         boolean isStylePropertyExistingInSiriusStyleModel = eAttribute == NotationPackage.Literals.FONT_STYLE__BOLD || eAttribute == NotationPackage.Literals.FONT_STYLE__ITALIC
+                || eAttribute == NotationPackage.Literals.FONT_STYLE__UNDERLINE || eAttribute == NotationPackage.Literals.FONT_STYLE__STRIKE_THROUGH
                 || eAttribute == NotationPackage.Literals.FONT_STYLE__FONT_COLOR || eAttribute == NotationPackage.Literals.FONT_STYLE__FONT_HEIGHT
                 || eAttribute == NotationPackage.Literals.FILL_STYLE__FILL_COLOR || eAttribute == NotationPackage.Literals.ROUTING_STYLE__ROUTING
                 || eAttribute == NotationPackage.Literals.LINE_STYLE__LINE_COLOR;

@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.refresh;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -210,7 +213,9 @@ public class EdgeWithConditionalStyleTest extends DocbookTestCase {
         assertFalse("Wrong showIcon for first Edge description.", edgeStyleDescription.getCenterLabelStyleDescription().isShowIcon());
         assertEquals("Wrong EdgeSourceArrow for first Edge.", EdgeArrows.INPUT_ARROW_LITERAL, edgeStyle.getSourceArrow());
         assertEquals("Wrong EdgeTargetArrow for first Edge.", EdgeArrows.NO_DECORATION_LITERAL, edgeStyle.getTargetArrow());
-        assertEquals("Wrong LabelFormat for first Edge.", FontFormat.ITALIC_LITERAL, edgeStyle.getCenterLabelStyle().getLabelFormat());
+        List<FontFormat> fontFormat = new ArrayList<FontFormat>();
+        fontFormat.add(FontFormat.ITALIC_LITERAL);
+        assertEquals("Wrong LabelFormat for first Edge.", fontFormat, edgeStyle.getCenterLabelStyle().getLabelFormat());
         assertEquals("Wrong LabelSize for first Edge.", 8, edgeStyle.getCenterLabelStyle().getLabelSize());
         if (custom) {
             assertFalse("The edge style should be custom.", edgeStyle.getCustomFeatures().isEmpty());
@@ -242,7 +247,7 @@ public class EdgeWithConditionalStyleTest extends DocbookTestCase {
         assertTrue("Wrong showIcon for first Edge description.", edgeStyleDescription.getCenterLabelStyleDescription().isShowIcon());
         assertEquals("Wrong EdgeSourceArrow for second Edge.", EdgeArrows.NO_DECORATION_LITERAL, edgeStyle.getSourceArrow());
         assertEquals("Wrong EdgeTargetArrow for second Edge.", EdgeArrows.INPUT_ARROW_LITERAL, edgeStyle.getTargetArrow());
-        assertEquals("Wrong LabelFormat for second Edge.", FontFormat.NORMAL_LITERAL, edgeStyle.getCenterLabelStyle().getLabelFormat());
+        assertEquals("Wrong LabelFormat for second Edge.", new ArrayList<FontFormat>(), edgeStyle.getCenterLabelStyle().getLabelFormat());
         assertEquals("Wrong LabelSize for second Edge.", 8, edgeStyle.getCenterLabelStyle().getLabelSize());
         assertEquals("Wrong LineStyle for second Edge.", LineStyle.SOLID_LITERAL, edgeStyle.getLineStyle());
         assertEquals("Wrong RoutingStyle for second Edge.", EdgeRouting.STRAIGHT_LITERAL, edgeStyleDescription.getRoutingStyle());

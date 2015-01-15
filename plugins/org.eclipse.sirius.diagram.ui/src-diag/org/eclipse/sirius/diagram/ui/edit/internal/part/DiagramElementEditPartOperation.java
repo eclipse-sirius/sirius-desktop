@@ -506,8 +506,8 @@ public final class DiagramElementEditPartOperation {
                 final FontStyle fontStyle = (FontStyle) self.getNotationView().getStyle(NotationPackage.eINSTANCE.getFontStyle());
                 if (fontStyle != null && figure instanceof SiriusWrapLabel) {
                     final SiriusWrapLabel wrap = (SiriusWrapLabel) figure;
-                    wrap.setTextUnderline(fontStyle.isUnderline());
-                    wrap.setTextStrikeThrough(fontStyle.isStrikeThrough());
+                    wrap.setTextUnderline(VisualBindingManager.getDefault().isUnderlineFromLabelStyle(lStyle));
+                    wrap.setTextStrikeThrough(VisualBindingManager.getDefault().isStrikeThroughFromLabelStyle(lStyle));
                 }
 
                 RGBValues labelRGBColor = lStyle.getLabelColor();

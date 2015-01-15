@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.properties;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IAdaptable;
@@ -214,38 +215,48 @@ public class StylePropertySection extends SemanticPropertySection {
             }
         }
 
+        @SuppressWarnings({ "rawtypes" })
         private void updateNotationView(final Object propertyId, final Object value) {
-            if (view != null && view.getStyles() != null) {
-                for (Object notationStyle : view.getStyles()) {
-                    if (notationStyle instanceof FontStyle) {
-                        final FontStyle fontStyle = (FontStyle) notationStyle;
-                        if (value instanceof FontFormat && propertyId.equals(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT.getName())) {
-                            if (FontFormat.BOLD_LITERAL == value) {
-                                fontStyle.setBold(true);
-                                fontStyle.setItalic(false);
-                            } else if (FontFormat.ITALIC_LITERAL == value) {
-                                fontStyle.setBold(false);
-                                fontStyle.setItalic(true);
-                            } else if (FontFormat.BOLD_ITALIC_LITERAL == value) {
-                                fontStyle.setBold(true);
-                                fontStyle.setItalic(true);
-                            } else if (FontFormat.NORMAL_LITERAL == value) {
-                                fontStyle.setBold(false);
-                                fontStyle.setItalic(false);
+            if (view == null || view.getStyles() == null) {
+                return;
+            }
+            for (Object notationStyle : view.getStyles()) {
+                if (notationStyle instanceof FontStyle) {
+                    final FontStyle fontStyle = (FontStyle) notationStyle;
+                    if (propertyId.equals(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT.getName())) {
+                        // Case bold, italic, underline, strike through
+                        if (value instanceof List) {
+                            if (fontStyle.isBold() != ((List) value).contains(FontFormat.BOLD_LITERAL)) {
+                                fontStyle.setBold(((List) value).contains(FontFormat.BOLD_LITERAL));
                             }
-                        } else if (value instanceof Integer && propertyId.equals(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE.getName())) {
-                            fontStyle.setFontHeight((Integer) value);
+                            if (fontStyle.isItalic() != ((List) value).contains(FontFormat.ITALIC_LITERAL)) {
+                                fontStyle.setItalic(((List) value).contains(FontFormat.ITALIC_LITERAL));
+                            }
+                            if (fontStyle.isUnderline() != ((List) value).contains(FontFormat.UNDERLINE_LITERAL)) {
+                                fontStyle.setUnderline(((List) value).contains(FontFormat.UNDERLINE_LITERAL));
+                            }
+                            if (fontStyle.isStrikeThrough() != ((List) value).contains(FontFormat.STRIKE_THROUGH_LITERAL)) {
+                                fontStyle.setStrikeThrough(((List) value).contains(FontFormat.STRIKE_THROUGH_LITERAL));
+                            }
+                        } else {
+                            // Case normal font style
+                            fontStyle.setBold(false);
+                            fontStyle.setItalic(false);
+                            fontStyle.setUnderline(false);
+                            fontStyle.setStrikeThrough(false);
                         }
-                    } else if (notationStyle instanceof ConnectorStyle) {
-                        ConnectorStyle connectorStyle = (ConnectorStyle) notationStyle;
-                        if (value instanceof EdgeRouting && propertyId.equals(DiagramPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName())) {
-                            if (EdgeRouting.MANHATTAN_LITERAL == value) {
-                                connectorStyle.setRouting(Routing.RECTILINEAR_LITERAL);
-                            } else if (EdgeRouting.STRAIGHT_LITERAL == value) {
-                                connectorStyle.setRouting(Routing.MANUAL_LITERAL);
-                            } else if (EdgeRouting.TREE_LITERAL == value) {
-                                connectorStyle.setRouting(Routing.TREE_LITERAL);
-                            }
+                    } else if (value instanceof Integer && propertyId.equals(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE.getName())) {
+                        fontStyle.setFontHeight((Integer) value);
+                    }
+                } else if (notationStyle instanceof ConnectorStyle) {
+                    ConnectorStyle connectorStyle = (ConnectorStyle) notationStyle;
+                    if (value instanceof EdgeRouting && propertyId.equals(DiagramPackage.Literals.EDGE_STYLE__ROUTING_STYLE.getName())) {
+                        if (EdgeRouting.MANHATTAN_LITERAL == value) {
+                            connectorStyle.setRouting(Routing.RECTILINEAR_LITERAL);
+                        } else if (EdgeRouting.STRAIGHT_LITERAL == value) {
+                            connectorStyle.setRouting(Routing.MANUAL_LITERAL);
+                        } else if (EdgeRouting.TREE_LITERAL == value) {
+                            connectorStyle.setRouting(Routing.TREE_LITERAL);
                         }
                     }
                 }

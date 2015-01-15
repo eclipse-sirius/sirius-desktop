@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
@@ -517,7 +518,7 @@ public final class StyleHelper {
     }
 
     private void updateBasicLabelStyleFeatures(final BasicLabelStyleDescription description, final BasicLabelStyle style, Option<? extends BasicLabelStyle> previousStyle) {
-        final FontFormat format = description.getLabelFormat();
+        final List<FontFormat> format = description.getLabelFormat();
         final int size = description.getLabelSize();
 
         if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__SHOW_ICON.getName())) {
@@ -540,11 +541,11 @@ public final class StyleHelper {
         }
 
         if (previousStyle.some() && previousStyle.get().getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT.getName())) {
-            style.setLabelFormat(previousStyle.get().getLabelFormat());
+            FontFormatHelper.setFontFormat(style.getLabelFormat(), previousStyle.get().getLabelFormat());
             style.getCustomFeatures().add(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT.getName());
         } else {
-            if (style.getLabelFormat() != format && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT.getName())) {
-                style.setLabelFormat(format);
+            if (!style.getLabelFormat().equals(format) && !style.getCustomFeatures().contains(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT.getName())) {
+                FontFormatHelper.setFontFormat(style.getLabelFormat(), format);
             }
         }
 

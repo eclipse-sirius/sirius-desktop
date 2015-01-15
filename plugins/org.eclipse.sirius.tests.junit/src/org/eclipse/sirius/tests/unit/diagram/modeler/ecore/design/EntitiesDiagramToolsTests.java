@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.modeler.ecore.design;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
@@ -114,7 +118,7 @@ public class EntitiesDiagramToolsTests extends SiriusDiagramTestCase implements 
         DDiagramElement elt = getFirstDiagramElement(diagram, eReference);
         assertTrue(elt.getStyle() instanceof EdgeStyle);
         assertFalse("The label of the reference should not start with /", elt.getName().startsWith("/"));
-        assertEquals("The label of the reference should have a normal font format.", FontFormat.get("normal"), ((EdgeStyle) elt.getStyle()).getCenterLabelStyle().getLabelFormat());
+        assertEquals("The label of the reference should have a normal font format.", Collections.emptyList(), ((EdgeStyle) elt.getStyle()).getCenterLabelStyle().getLabelFormat());
 
         Command cmd2 = new RecordingCommand(session.getTransactionalEditingDomain()) {
 
@@ -130,7 +134,9 @@ public class EntitiesDiagramToolsTests extends SiriusDiagramTestCase implements 
         refresh(diagram);
 
         assertTrue("The label of the reference should contain /", elt.getName().contains("/"));
-        assertEquals("The label of the reference should be italicised.", FontFormat.get("italic"), ((EdgeStyle) elt.getStyle()).getCenterLabelStyle().getLabelFormat());
+        List<FontFormat> fontFormat = new ArrayList<FontFormat>();
+        fontFormat.add(FontFormat.ITALIC_LITERAL);
+        assertEquals("The label of the reference should be italicised.", fontFormat, ((EdgeStyle) elt.getStyle()).getCenterLabelStyle().getLabelFormat());
 
         Command cmd3 = new RecordingCommand(session.getTransactionalEditingDomain()) {
 

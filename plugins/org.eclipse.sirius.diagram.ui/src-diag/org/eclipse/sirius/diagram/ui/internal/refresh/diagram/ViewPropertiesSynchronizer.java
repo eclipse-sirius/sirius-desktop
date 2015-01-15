@@ -25,6 +25,7 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.color.RGBValuesProvider;
+import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.BeginLabelStyle;
 import org.eclipse.sirius.diagram.BorderedStyle;
@@ -59,6 +60,8 @@ import org.eclipse.sirius.viewpoint.description.FixedColor;
 import org.eclipse.sirius.viewpoint.description.SystemColors;
 import org.eclipse.swt.graphics.RGB;
 
+import com.google.common.collect.Lists;
+
 /**
  * Update the GMF {@link View} properties according to Sirius properties and
  * vice versa.
@@ -77,6 +80,8 @@ public class ViewPropertiesSynchronizer {
         GMF_TO_DDIAGRAMELEMENT_STYLE_FEATURES_MAPPING.put(NotationPackage.Literals.FONT_STYLE__FONT_HEIGHT, ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE);
         GMF_TO_DDIAGRAMELEMENT_STYLE_FEATURES_MAPPING.put(NotationPackage.Literals.FONT_STYLE__ITALIC, ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT);
         GMF_TO_DDIAGRAMELEMENT_STYLE_FEATURES_MAPPING.put(NotationPackage.Literals.FONT_STYLE__BOLD, ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT);
+        GMF_TO_DDIAGRAMELEMENT_STYLE_FEATURES_MAPPING.put(NotationPackage.Literals.FONT_STYLE__UNDERLINE, ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT);
+        GMF_TO_DDIAGRAMELEMENT_STYLE_FEATURES_MAPPING.put(NotationPackage.Literals.FONT_STYLE__STRIKE_THROUGH, ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT);
         GMF_TO_DDIAGRAMELEMENT_STYLE_FEATURES_MAPPING.put(NotationPackage.Literals.FONT_STYLE__FONT_COLOR, ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_COLOR);
         GMF_TO_DDIAGRAMELEMENT_STYLE_FEATURES_MAPPING.put(NotationPackage.Literals.FONT_STYLE__FONT_HEIGHT, ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE);
     }
@@ -125,23 +130,18 @@ public class ViewPropertiesSynchronizer {
 
     private void updateGMFFontStyle(View view, BasicLabelStyle basicLabelStyle) {
         FontStyle fontStyle = (FontStyle) createOrFindStyle(view, NotationPackage.eINSTANCE.getFontStyle());
-        switch (basicLabelStyle.getLabelFormat().getValue()) {
-        case FontFormat.BOLD:
-            fontStyle.setBold(true);
-            break;
-        case FontFormat.ITALIC:
-            fontStyle.setItalic(true);
-            break;
-        case FontFormat.BOLD_ITALIC:
-            fontStyle.setBold(true);
-            fontStyle.setItalic(true);
-            break;
-        case FontFormat.NORMAL:
-            fontStyle.setBold(false);
-            fontStyle.setItalic(false);
-            break;
-        default:
-            break;
+        List<FontFormat> labelFormat = basicLabelStyle.getLabelFormat();
+        if (fontStyle.isBold() != labelFormat.contains(FontFormat.BOLD_LITERAL)) {
+            fontStyle.setBold(labelFormat.contains(FontFormat.BOLD_LITERAL));
+        }
+        if (fontStyle.isItalic() != labelFormat.contains(FontFormat.ITALIC_LITERAL)) {
+            fontStyle.setItalic(labelFormat.contains(FontFormat.ITALIC_LITERAL));
+        }
+        if (fontStyle.isUnderline() != labelFormat.contains(FontFormat.UNDERLINE_LITERAL)) {
+            fontStyle.setUnderline(labelFormat.contains(FontFormat.UNDERLINE_LITERAL));
+        }
+        if (fontStyle.isStrikeThrough() != labelFormat.contains(FontFormat.STRIKE_THROUGH_LITERAL)) {
+            fontStyle.setStrikeThrough(labelFormat.contains(FontFormat.STRIKE_THROUGH_LITERAL));
         }
 
         fontStyle.setFontHeight(basicLabelStyle.getLabelSize());
@@ -319,17 +319,25 @@ public class ViewPropertiesSynchronizer {
     }
 
     private void updateLabelStyle(View notationView, BasicLabelStyle labelStyle) {
+
         if (labelStyle != null) {
+            List<FontFormat> newFontFormats = Lists.newArrayList();
             final FontStyle fontStyle = (FontStyle) createOrFindStyle(notationView, NotationPackage.eINSTANCE.getFontStyle());
-            if (fontStyle.isBold() && fontStyle.isItalic()) {
-                labelStyle.setLabelFormat(FontFormat.BOLD_ITALIC_LITERAL);
-            } else if (fontStyle.isBold()) {
-                labelStyle.setLabelFormat(FontFormat.BOLD_LITERAL);
-            } else if (fontStyle.isItalic()) {
-                labelStyle.setLabelFormat(FontFormat.ITALIC_LITERAL);
-            } else {
-                labelStyle.setLabelFormat(FontFormat.NORMAL_LITERAL);
+
+            if (fontStyle.isBold()) {
+                newFontFormats.add(FontFormat.BOLD_LITERAL);
             }
+            if (fontStyle.isItalic()) {
+                newFontFormats.add(FontFormat.ITALIC_LITERAL);
+            }
+            if (fontStyle.isUnderline()) {
+                newFontFormats.add(FontFormat.UNDERLINE_LITERAL);
+            }
+            if (fontStyle.isStrikeThrough()) {
+                newFontFormats.add(FontFormat.STRIKE_THROUGH_LITERAL);
+            }
+
+            FontFormatHelper.setFontFormat(labelStyle.getLabelFormat(), newFontFormats);
             labelStyle.setLabelSize(fontStyle.getFontHeight());
         }
     }

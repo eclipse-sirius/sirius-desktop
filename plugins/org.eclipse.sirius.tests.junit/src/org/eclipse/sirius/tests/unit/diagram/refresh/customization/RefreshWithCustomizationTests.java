@@ -176,13 +176,15 @@ public class RefreshWithCustomizationTests extends SiriusDiagramTestCase {
         String assertMessage = "The new label size must be that of the EAttributeCustomization.value";
         Integer customizedLabelSize = Integer.valueOf(eAttributeCustomizationLabelSize.getValue());
         FontFormat customizedLabelFormat = FontFormat.get(eAttributeCustomizationLabelFormat.getValue());
+        List<FontFormat> fontFormat = new ArrayList<FontFormat>();
+        fontFormat.add(customizedLabelFormat);
         assertEquals(assertMessage, customizedLabelSize, p1.getStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE));
         assertEquals(assertMessage, customizedLabelSize, eClass1.getStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE));
         assertEquals(assertMessage, customizedLabelSize, eClass11.getStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE));
         assertEquals(assertMessage, customizedLabelSize, eClass1Attribute.getStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE));
         assertEquals(assertMessage, customizedLabelSize, eClass11Attribute.getStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE));
         assertMessage = "The new label Font Format must be that of the EAttributeCustomization.value";
-        assertEquals(assertMessage, customizedLabelFormat, eClass11Attribute.getStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT));
+        assertEquals(assertMessage, fontFormat, eClass11Attribute.getStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT));
         assertMessage = "As the edge labels are not customized, their size must be unchanged";
         assertEquals(assertMessage, edgeBeginStyleOriginalLabelSize, dEdge.getOwnedStyle().getBeginLabelStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE));
         assertEquals(assertMessage, edgeCenterStyleOriginalLabelSize, dEdge.getOwnedStyle().getCenterLabelStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE));
@@ -271,7 +273,8 @@ public class RefreshWithCustomizationTests extends SiriusDiagramTestCase {
 
         String assertMessage = "The new label size must be that of the EAttributeCustomization.value";
         Integer customizedLabelSize = Integer.valueOf(eAttributeCustomizationLabelSize.getValue());
-        FontFormat customizedLabelFormat = FontFormat.get(eAttributeCustomizationLabelFormat.getValue());
+        List<FontFormat> customizedLabelFormat = new ArrayList<FontFormat>();
+        customizedLabelFormat.add(FontFormat.get(eAttributeCustomizationLabelFormat.getValue()));
         assertEquals(assertMessage, customizedLabelSize, p1.getStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE));
         assertEquals(assertMessage, customizedLabelSize, eClass1.getStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE));
         assertEquals(assertMessage, customizedLabelSize, eClass11.getStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_SIZE));
@@ -372,6 +375,7 @@ public class RefreshWithCustomizationTests extends SiriusDiagramTestCase {
      * Test a style description element with "apply on all" setted. In this
      * case, all labels font style should be bold.
      */
+    @SuppressWarnings("unchecked")
     public void testAppliedOnAllPropertyCustomization() {
 
         activateViewpoint("StyleCustomizations_ExtensionB");
@@ -389,26 +393,28 @@ public class RefreshWithCustomizationTests extends SiriusDiagramTestCase {
         DNodeListElement eClass11AttributeBis = (DNodeListElement) eClass11Bis.getOwnedElements().get(0);
         DEdge dEdgeBis = dDiagram.getEdges().get(0);
 
-        FontFormat p1BisLabelFormat = (FontFormat) p1Bis.getStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT);
-        FontFormat eClass1BisLabelFormat = (FontFormat) eClass1Bis.getStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT);
-        FontFormat eClass11BisLabelFormat = (FontFormat) eClass11Bis.getStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT);
-        FontFormat eClass1AttributeBisLabelFormat = (FontFormat) eClass1AttributeBis.getStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT);
-        FontFormat eClass11AttributeBisLabelFormat = (FontFormat) eClass11AttributeBis.getStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT);
-        FontFormat edgeBeginBisLabelFormat = dEdgeBis.getOwnedStyle().getBeginLabelStyle().getLabelFormat();
-        FontFormat edgeCenterBisLabelFormat = dEdgeBis.getOwnedStyle().getCenterLabelStyle().getLabelFormat();
-        FontFormat edgeEndBisLabelFormat = dEdgeBis.getOwnedStyle().getEndLabelStyle().getLabelFormat();
+        List<FontFormat> p1BisLabelFormat = (List<FontFormat>) p1Bis.getStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT);
+        List<FontFormat> eClass1BisLabelFormat = (List<FontFormat>) eClass1Bis.getStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT);
+        List<FontFormat> eClass11BisLabelFormat = (List<FontFormat>) eClass11Bis.getStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT);
+        List<FontFormat> eClass1AttributeBisLabelFormat = (List<FontFormat>) eClass1AttributeBis.getStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT);
+        List<FontFormat> eClass11AttributeBisLabelFormat = (List<FontFormat>) eClass11AttributeBis.getStyle().eGet(ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT);
+        List<FontFormat> edgeBeginBisLabelFormat = dEdgeBis.getOwnedStyle().getBeginLabelStyle().getLabelFormat();
+        List<FontFormat> edgeCenterBisLabelFormat = dEdgeBis.getOwnedStyle().getCenterLabelStyle().getLabelFormat();
+        List<FontFormat> edgeEndBisLabelFormat = dEdgeBis.getOwnedStyle().getEndLabelStyle().getLabelFormat();
 
         // Asserts
         String assertMessage = "All label font format should be in Bold";
 
-        assertEquals(assertMessage, FontFormat.BOLD_LITERAL, p1BisLabelFormat);
-        assertEquals(assertMessage, FontFormat.BOLD_LITERAL, eClass1BisLabelFormat);
-        assertEquals(assertMessage, FontFormat.BOLD_LITERAL, eClass11BisLabelFormat);
-        assertEquals(assertMessage, FontFormat.BOLD_LITERAL, eClass1AttributeBisLabelFormat);
-        assertEquals(assertMessage, FontFormat.BOLD_LITERAL, eClass11AttributeBisLabelFormat);
-        assertEquals(assertMessage, FontFormat.BOLD_LITERAL, edgeBeginBisLabelFormat);
-        assertEquals(assertMessage, FontFormat.BOLD_LITERAL, edgeCenterBisLabelFormat);
-        assertEquals(assertMessage, FontFormat.BOLD_LITERAL, edgeEndBisLabelFormat);
+        List<FontFormat> fontFormat = new ArrayList<FontFormat>();
+        fontFormat.add(FontFormat.BOLD_LITERAL);
+        assertEquals(assertMessage, fontFormat, p1BisLabelFormat);
+        assertEquals(assertMessage, fontFormat, eClass1BisLabelFormat);
+        assertEquals(assertMessage, fontFormat, eClass11BisLabelFormat);
+        assertEquals(assertMessage, fontFormat, eClass1AttributeBisLabelFormat);
+        assertEquals(assertMessage, fontFormat, eClass11AttributeBisLabelFormat);
+        assertEquals(assertMessage, fontFormat, edgeBeginBisLabelFormat);
+        assertEquals(assertMessage, fontFormat, edgeCenterBisLabelFormat);
+        assertEquals(assertMessage, fontFormat, edgeEndBisLabelFormat);
 
         session.save(new NullProgressMonitor());
         refresh(dDiagram);

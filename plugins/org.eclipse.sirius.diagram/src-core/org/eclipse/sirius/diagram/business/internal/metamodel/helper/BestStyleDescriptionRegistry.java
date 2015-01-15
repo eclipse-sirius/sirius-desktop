@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -186,7 +187,11 @@ public class BestStyleDescriptionRegistry extends HashMap<BestStyleDescriptionKe
                         instanceClass = Primitives.wrap(instanceClass);
                     }
                     Object convertedObject = EcoreUtil.createFromString(eAttributeType, newAttributeValue);
-                    if (convertedObject != null && instanceClass.isAssignableFrom(convertedObject.getClass())) {
+                    if (eAttribute.isMany() && convertedObject != null && instanceClass.isAssignableFrom(convertedObject.getClass())) {
+                        List<Object> manyConvertedObject = new ArrayList<Object>();
+                        manyConvertedObject.add(convertedObject);
+                        realEltToCustomize.eSet(eAttribute, manyConvertedObject);
+                    } else if (convertedObject != null && instanceClass.isAssignableFrom(convertedObject.getClass())) {
                         realEltToCustomize.eSet(eAttribute, convertedObject);
                     }
                 }

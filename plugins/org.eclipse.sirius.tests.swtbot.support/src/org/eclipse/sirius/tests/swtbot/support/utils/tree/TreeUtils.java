@@ -10,6 +10,9 @@
  */
 package org.eclipse.sirius.tests.swtbot.support.utils.tree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.edit.command.SetCommand;
@@ -367,9 +370,9 @@ public final class TreeUtils {
      *            the {@link DTreeItem}
      */
     public static void checkTreeItemLabelFormat(SWTBotEditor swtBotTreeEditor, DTreeItem dTreeItem) {
-        FontFormat fontFormat = dTreeItem.getOwnedStyle().getLabelFormat();
+        List<FontFormat> fontFormat = dTreeItem.getOwnedStyle().getLabelFormat();
         TreeItem treeItem = TreeUtils.getTreeItem(swtBotTreeEditor, dTreeItem);
-        FontFormat widgetFontFormat = TreeUtils.getWidgetLabelFormat(treeItem);
+        List<FontFormat> widgetFontFormat = TreeUtils.getWidgetLabelFormat(treeItem);
         Assert.assertEquals("The TreeItem label font format should corresponds to its DTreeItem.ownedStyle.fontFormat", fontFormat, widgetFontFormat);
     }
 
@@ -386,10 +389,10 @@ public final class TreeUtils {
     public static void checkTreeItemLabelFormat(SWTBotEditor swtBotTableEditor, DCell dCell) {
         Option<DTableElementStyle> optionalForegroundStyleToApply = new DCellQuery(dCell).getForegroundStyleToApply();
         Assert.assertTrue("We should have a currentStyle for the cell.", optionalForegroundStyleToApply.some());
-        FontFormat fontFormat = optionalForegroundStyleToApply.get().getLabelFormat();
+        List<FontFormat> fontFormat = optionalForegroundStyleToApply.get().getLabelFormat();
         TreeItem treeItem = TreeUtils.getTreeItem(swtBotTableEditor, dCell.getLine());
         int dCellIndex = new DCellQuery(dCell).getColumnIndex();
-        FontFormat widgetFontFormat = TreeUtils.getWidgetLabelFormat(treeItem, dCellIndex + 1);
+        List<FontFormat> widgetFontFormat = TreeUtils.getWidgetLabelFormat(treeItem, dCellIndex + 1);
         Assert.assertEquals("The TreeItem label font format should corresponds to its DCell.currentStyle.fontFormat", fontFormat, widgetFontFormat);
     }
 
@@ -710,8 +713,8 @@ public final class TreeUtils {
      * @return the swt {@link TreeItem} label font format a specified
      *         {@link TreeItem}
      */
-    private static FontFormat getWidgetLabelFormat(TreeItem treeItem) {
-        FontFormat widgetLabelFormat = TreeUtils.getWidgetLabelFormat(treeItem, 0);
+    private static List<FontFormat> getWidgetLabelFormat(TreeItem treeItem) {
+        List<FontFormat> widgetLabelFormat = TreeUtils.getWidgetLabelFormat(treeItem, 0);
         return widgetLabelFormat;
     }
 
@@ -727,11 +730,11 @@ public final class TreeUtils {
      * @return the swt {@link TreeItem} label font format a specified
      *         {@link TreeItem}
      */
-    private static FontFormat getWidgetLabelFormat(TreeItem treeItem, int index) {
-        FontFormat widgetLabelFormat = null;
+    private static List<FontFormat> getWidgetLabelFormat(TreeItem treeItem, int index) {
+        List<FontFormat> widgetLabelFormat = new ArrayList<FontFormat>();
         TreeItemLabelFontFormatQuery treeItemBackgroundColorQuery = new TreeItemLabelFontFormatQuery(treeItem, index);
         Display.getDefault().syncExec(treeItemBackgroundColorQuery);
-        widgetLabelFormat = treeItemBackgroundColorQuery.getResult();
+        widgetLabelFormat.add(treeItemBackgroundColorQuery.getResult());
         return widgetLabelFormat;
     }
 

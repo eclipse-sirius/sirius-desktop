@@ -10,7 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.tree;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
@@ -25,6 +27,7 @@ import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.description.TreeItemMapping;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
 import org.eclipse.swt.graphics.Color;
@@ -469,12 +472,20 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      *         widget is not an instance of {@link Control}.
      * @since 1.0
      */
-    public String getLabelFormat(final TreeItem widget) {
-        return syncExec(new Result<String>() {
-            public String run() {
-                return ((DTreeItem) widget.getData()).getOwnedStyle().getLabelFormat().getName();
+    public List<String> getLabelFormat(final TreeItem widget) {
+        return syncExec(new Result<List<String>>() {
+            public List<String> run() {
+                return getFontFormatLiterals(((DTreeItem) widget.getData()).getOwnedStyle().getLabelFormat());
             }
         });
+    }
+
+    private List<String> getFontFormatLiterals(List<FontFormat> fontFormat) {
+        List<String> expected = new ArrayList<String>();
+        for (FontFormat style : fontFormat) {
+            expected.add(style.getName());
+        }
+        return expected;
     }
 
     /**

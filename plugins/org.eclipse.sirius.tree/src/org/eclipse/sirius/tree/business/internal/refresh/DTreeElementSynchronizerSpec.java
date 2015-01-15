@@ -13,6 +13,7 @@ package org.eclipse.sirius.tree.business.internal.refresh;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -250,9 +251,9 @@ public class DTreeElementSynchronizerSpec extends DTreeElementSynchronizerImpl {
         }
     }
 
-    private boolean isEqual(FontFormat labelFormat, FontFormat labelFormat2) {
+    private boolean isEqual(List<FontFormat> labelFormat, List<FontFormat> labelFormat2) {
         if (labelFormat != null && labelFormat2 != null) {
-            return labelFormat.getLiteral().equals(labelFormat2.getLiteral());
+            return labelFormat.equals(labelFormat2);
         }
         return false;
 

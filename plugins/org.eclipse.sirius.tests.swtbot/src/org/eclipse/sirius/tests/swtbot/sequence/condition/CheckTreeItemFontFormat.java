@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.sequence.condition;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.viewpoint.FontFormat;
@@ -29,7 +32,7 @@ public class CheckTreeItemFontFormat extends DefaultCondition {
      */
     private String text;
 
-    private int expectedFontFormat;
+    private List<FontFormat> expectedFontFormat;
 
     /**
      * Default Constructor
@@ -40,7 +43,7 @@ public class CheckTreeItemFontFormat extends DefaultCondition {
      *            the expected {@link FontFormat} for the treeItem
      * 
      */
-    public CheckTreeItemFontFormat(SWTBotTreeItem treeItem, int expectedFontFormat) {
+    public CheckTreeItemFontFormat(SWTBotTreeItem treeItem, List<FontFormat> expectedFontFormat) {
         this.treeItem = treeItem;
         this.expectedFontFormat = expectedFontFormat;
     }
@@ -54,7 +57,7 @@ public class CheckTreeItemFontFormat extends DefaultCondition {
                 treeItem.widget.getDisplay().syncExec(new Runnable() {
                     public void run() {
                         text = treeItem.widget.getText();
-                        setResult(SWTBotUtils.getWidgetFormat(treeItem.widget).getValue() == expectedFontFormat);
+                        setResult(SWTBotUtils.getWidgetFormat(treeItem.widget).equals(expectedFontFormat));
                     }
                 });
             }
@@ -67,7 +70,15 @@ public class CheckTreeItemFontFormat extends DefaultCondition {
      * {@inheritDoc}
      */
     public String getFailureMessage() {
-        return "The FontFormat of widget" + text + "is not " + FontFormat.get(expectedFontFormat);
+        return "The FontFormat of widget" + text + "is not " + getFontFormatLiterals(expectedFontFormat);
+    }
+
+    private List<String> getFontFormatLiterals(List<FontFormat> fontFormat) {
+        List<String> expected = new ArrayList<String>();
+        for (FontFormat style : fontFormat) {
+            expected.add(style.getName());
+        }
+        return expected;
     }
 
 }

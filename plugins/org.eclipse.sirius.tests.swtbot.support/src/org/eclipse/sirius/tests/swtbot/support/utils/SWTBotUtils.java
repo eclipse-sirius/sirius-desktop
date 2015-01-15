@@ -10,6 +10,8 @@
  */
 package org.eclipse.sirius.tests.swtbot.support.utils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.eclipse.sirius.tests.swtbot.support.utils.menu.SWTBotContextMenu;
@@ -377,25 +379,22 @@ public final class SWTBotUtils {
      *            the {@link TreeItem} under investigation
      * @return the {@link FontFormat} of the {@link TreeItem}
      */
-    public static FontFormat getWidgetFormat(final TreeItem widget) {
-        return UIThreadRunnable.syncExec(new Result<FontFormat>() {
+    public static List<FontFormat> getWidgetFormat(final TreeItem widget) {
+        return UIThreadRunnable.syncExec(new Result<List<FontFormat>>() {
             @Override
-            public FontFormat run() {
-                FontFormat result = FontFormat.NORMAL_LITERAL;
+            public List<FontFormat> run() {
+                List<FontFormat> result = new ArrayList<FontFormat>();
                 Font font = widget.getFont(0);
                 if (font.getFontData().length > 0) {
                     switch (font.getFontData()[0].getStyle()) {
                     case SWT.BOLD:
-                        result = FontFormat.BOLD_LITERAL;
+                        result.add(FontFormat.BOLD_LITERAL);
                         break;
                     case SWT.ITALIC:
-                        result = FontFormat.ITALIC_LITERAL;
-                        break;
-                    case SWT.BOLD | SWT.ITALIC:
-                        result = FontFormat.BOLD_ITALIC_LITERAL;
+                        result.add(FontFormat.ITALIC_LITERAL);
                         break;
                     default:
-                        result = FontFormat.NORMAL_LITERAL;
+                        result = null;
                         break;
                     }
                 }

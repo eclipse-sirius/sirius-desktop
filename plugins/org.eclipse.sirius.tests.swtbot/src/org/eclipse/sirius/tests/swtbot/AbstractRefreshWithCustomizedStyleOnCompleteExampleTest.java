@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -580,8 +581,8 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
                 if (viewpointStyle instanceof GaugeCompositeStyle) {
                     return;
                 }
-                FontFormat fontFormat = (FontFormat) viewpointStyle.eGet(feature);
-                FontFormat swtFontFormat = getFigureFontFormat(font);
+                List<FontFormat> fontFormat = (List<FontFormat>) viewpointStyle.eGet(feature);
+                List<FontFormat> swtFontFormat = getFigureFontFormat(font);
                 assertEquals("The label format of the figure should corresponds to the labelFormat feature value of the customized style", fontFormat, swtFontFormat);
             } else if (feature == ViewpointPackage.Literals.BASIC_LABEL_STYLE__SHOW_ICON) {
                 boolean showIcon = (Boolean) viewpointStyle.eGet(feature);
@@ -1310,20 +1311,21 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
         return figureLabelAlignment;
     }
 
-    FontFormat getFigureFontFormat(Font font) {
-        FontFormat fontFormat = null;
+    List<FontFormat> getFigureFontFormat(Font font) {
+        List<FontFormat> fontFormat = new ArrayList<FontFormat>();
         FontData[] fontData = font.getFontData();
         int swtFontStyle = fontData[0].getStyle();
         if ((SWT.NORMAL & swtFontStyle) != 0) {
-            fontFormat = FontFormat.NORMAL_LITERAL;
+            fontFormat = null;
         } else if ((SWT.BOLD & swtFontStyle) != 0 && (SWT.ITALIC & swtFontStyle) != 0) {
-            fontFormat = FontFormat.BOLD_ITALIC_LITERAL;
+            fontFormat.add(FontFormat.BOLD_LITERAL);
+            fontFormat.add(FontFormat.ITALIC_LITERAL);
         } else if ((SWT.ITALIC & swtFontStyle) != 0) {
-            fontFormat = FontFormat.ITALIC_LITERAL;
+            fontFormat.add(FontFormat.ITALIC_LITERAL);
         } else if ((SWT.BOLD & swtFontStyle) != 0) {
-            fontFormat = FontFormat.BOLD_LITERAL;
+            fontFormat.add(FontFormat.BOLD_LITERAL);
         } else {
-            fontFormat = FontFormat.NORMAL_LITERAL;
+            fontFormat = null;
         }
         return fontFormat;
     }

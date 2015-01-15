@@ -729,7 +729,7 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
                 style.eUnset(TablePackage.eINSTANCE.getDTableElementStyle_ForegroundColor());
             }
             if (style.getLabelFormat() != null) {
-                style.setLabelFormat(null);
+                style.getLabelFormat().clear();
             }
             if (style.eIsSet(TablePackage.eINSTANCE.getDTableElementStyle_LabelSize())) {
                 style.eUnset(TablePackage.eINSTANCE.getDTableElementStyle_LabelSize());
@@ -740,9 +740,9 @@ public class DTableElementSynchronizerSpec extends DTableElementSynchronizerImpl
         }
     }
 
-    private boolean isEqual(FontFormat labelFormat, FontFormat labelFormat2) {
+    private boolean isEqual(List<FontFormat> labelFormat, List<FontFormat> labelFormat2) {
         if (labelFormat != null && labelFormat2 != null) {
-            return labelFormat.getLiteral().equals(labelFormat2.getLiteral());
+            return labelFormat.equals(labelFormat2);
         }
         return false;
 

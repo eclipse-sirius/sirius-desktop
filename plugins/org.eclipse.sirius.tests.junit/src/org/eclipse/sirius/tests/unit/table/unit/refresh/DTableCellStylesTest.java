@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.table.unit.refresh;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -382,8 +386,7 @@ public class DTableCellStylesTest extends TableTestCase {
         Option<DTableElementStyle> optionalForegroundStyleToApply = class1CellQuery.getForegroundStyleToApply();
         assertTrue("We should have a currentStyle for the cell.", optionalForegroundStyleToApply.some());
         assertNotNull("We should have a label format for the cell.", optionalForegroundStyleToApply.get().getLabelFormat());
-        assertEquals("The label format should be normal (the conditional foreground label format of the line mapping).", FontFormat.NORMAL_LITERAL, optionalForegroundStyleToApply.get()
-                .getLabelFormat());
+        assertEquals("The label format should be normal (the conditional foreground label format of the line mapping).", Collections.emptyList(), optionalForegroundStyleToApply.get().getLabelFormat());
 
         // Get the line corresponding to the Class Class2
         DLine class2Line = null;
@@ -410,7 +413,7 @@ public class DTableCellStylesTest extends TableTestCase {
         optionalForegroundStyleToApply = class2CellQuery.getForegroundStyleToApply();
         assertTrue("We should have a currentStyle for the cell.", optionalForegroundStyleToApply.some());
         assertNotNull("We should have a label format for the cell.", optionalForegroundStyleToApply.get().getLabelFormat());
-        assertEquals("The label format should be normal (the default foreground label format of the line mapping).", FontFormat.NORMAL_LITERAL, optionalForegroundStyleToApply.get().getLabelFormat());
+        assertEquals("The label format should be normal (the default foreground label format of the line mapping).", Collections.emptyList(), optionalForegroundStyleToApply.get().getLabelFormat());
 
         /*
          * Let's change the isActive value of the Class1 (use for conditional
@@ -433,13 +436,13 @@ public class DTableCellStylesTest extends TableTestCase {
         optionalForegroundStyleToApply = class1CellQuery.getForegroundStyleToApply();
         assertTrue("We should have a currentStyle for the cell.", optionalForegroundStyleToApply.some());
         assertNotNull("We should have a label format for the cell.", optionalForegroundStyleToApply.get().getLabelFormat());
-        assertEquals("The label format should be normal (the conditional foreground label format of the line mapping).", FontFormat.NORMAL_LITERAL, optionalForegroundStyleToApply.get()
-                .getLabelFormat());
+        assertEquals("The label format should be normal (the conditional foreground label format of the line mapping).", Collections.emptyList(), optionalForegroundStyleToApply.get().getLabelFormat());
 
         optionalForegroundStyleToApply = class2CellQuery.getForegroundStyleToApply();
         assertTrue("We should have a currentStyle for the cell.", optionalForegroundStyleToApply.some());
         assertNotNull("We should have a label format for the cell.", optionalForegroundStyleToApply.get().getLabelFormat());
-        assertEquals("The label format should be italic (the conditional foreground label format of the column mapping).", FontFormat.ITALIC_LITERAL, optionalForegroundStyleToApply.get()
-                .getLabelFormat());
+        List<FontFormat> fontFormat = new ArrayList<FontFormat>();
+        fontFormat.add(FontFormat.ITALIC_LITERAL);
+        assertEquals("The label format should be italic (the conditional foreground label format of the column mapping).", fontFormat, optionalForegroundStyleToApply.get().getLabelFormat());
     }
 }

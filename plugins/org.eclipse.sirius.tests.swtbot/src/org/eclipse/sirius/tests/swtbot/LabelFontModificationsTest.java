@@ -23,7 +23,6 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
-import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.swt.SWT;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
@@ -100,7 +99,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         @Override
         public boolean apply(SWTBotGefEditPart input) {
             try {
-                checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, FontFormat.NORMAL, true, false);
+                checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, null, true, false);
                 return true;
             } catch (AssertionError e) {
                 return false;
@@ -115,7 +114,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         @Override
         public boolean apply(SWTBotGefEditPart input) {
             try {
-                checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, FontFormat.NORMAL, false, true);
+                checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, null, false, true);
                 return true;
             } catch (AssertionError e) {
                 return false;
@@ -128,7 +127,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
         @Override
         public boolean apply(SWTBotGefEditPart input) {
             try {
-                checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, FontFormat.NORMAL, false, false, null, -1, 10011046);
+                checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, null, false, false, null, -1, 10011046);
                 return true;
             } catch (AssertionError e) {
                 return false;
@@ -261,7 +260,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
             @Override
             public boolean apply(SWTBotGefEditPart input) {
                 try {
-                    checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, FontFormat.NORMAL, false, false, null, -1, 8905185);
+                    checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, null, false, false, null, -1, 8905185);
                     return true;
                 } catch (AssertionError e) {
                     return false;
@@ -630,7 +629,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
             @Override
             public boolean apply(SWTBotGefEditPart input) {
                 try {
-                    checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, FontFormat.NORMAL, false, false, null, 12, -1);
+                    checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, null, false, false, null, 12, -1);
                     return true;
                 } catch (AssertionError e) {
                     return false;
@@ -676,7 +675,7 @@ public class LabelFontModificationsTest extends AbstractFontModificationTest {
             @Override
             public boolean apply(SWTBotGefEditPart input) {
                 try {
-                    checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, FontFormat.NORMAL, false, false, modifiedFont, -1, -1);
+                    checkFontStyle(input, SWT.NORMAL, SWT.NORMAL, null, false, false, modifiedFont, -1, -1);
                     return true;
                 } catch (AssertionError e) {
                     return false;

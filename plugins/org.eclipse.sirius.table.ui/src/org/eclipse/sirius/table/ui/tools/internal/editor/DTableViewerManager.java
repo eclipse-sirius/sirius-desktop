@@ -26,6 +26,7 @@ import org.eclipse.jface.viewers.CellLabelProvider;
 import org.eclipse.jface.viewers.ColumnPixelData;
 import org.eclipse.jface.viewers.ColumnViewerEditor;
 import org.eclipse.jface.viewers.ColumnWeightData;
+import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
 import org.eclipse.jface.viewers.FocusCellOwnerDrawHighlighter;
 import org.eclipse.jface.viewers.ILabelDecorator;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -625,7 +626,8 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
 
         // Add the LabelProvider with decorating feature
         ILabelDecorator decorator = PlatformUI.getWorkbench().getDecoratorManager().getLabelDecorator();
-        treeViewerColumn.setLabelProvider(new DTableDecoratingLabelProvider(newColumn, decorator));
+        DTableDecoratingLabelProvider labelProvider = new DTableDecoratingLabelProvider(newColumn, decorator);
+        treeViewerColumn.setLabelProvider(new DelegatingStyledCellLabelProvider(labelProvider));
 
         if (newColumn instanceof DFeatureColumn) {
             treeViewerColumn.setEditingSupport(new DFeatureColumnEditingSupport(treeViewer, (DFeatureColumn) newColumn, getEditingDomain(), getAccessor(), getTableCommandFactory(),

@@ -13,6 +13,8 @@ package org.eclipse.sirius.tests.unit.diagram.refresh;
 import junit.framework.TestCase;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.diagram.AlignmentKind;
 import org.eclipse.sirius.diagram.BackgroundStyle;
@@ -1431,7 +1433,7 @@ public class StyleHelperTest extends TestCase {
         public Object caseLabelStyleDescription(LabelStyleDescription object) {
             object.setLabelAlignment(LabelAlignment.CENTER);
             object.setLabelExpression("LabelExpression");
-            object.setLabelFormat(FontFormat.BOLD_LITERAL);
+            FontFormatHelper.setFontFormat(object.getLabelFormat(), FontFormat.BOLD_LITERAL);
             object.setLabelSize(6);
             object.setLabelColor(LABEL_COLOR_FIRST);
             object.setShowIcon(true);
@@ -1531,19 +1533,19 @@ public class StyleHelperTest extends TestCase {
             if (object.getBeginLabelStyleDescription() != null) {
                 object.getBeginLabelStyleDescription().setLabelColor(LABEL_COLOR_FIRST);
                 object.getBeginLabelStyleDescription().setLabelExpression("begin first LabelExpression");
-                object.getBeginLabelStyleDescription().setLabelFormat(FontFormat.BOLD_LITERAL);
+                FontFormatHelper.setFontFormat(object.getBeginLabelStyleDescription().getLabelFormat(), FontFormat.BOLD_LITERAL);
                 object.getBeginLabelStyleDescription().setLabelSize(5);
             }
             if (object.getCenterLabelStyleDescription() != null) {
                 object.getCenterLabelStyleDescription().setLabelColor(LABEL_COLOR_FIRST);
                 object.getCenterLabelStyleDescription().setLabelExpression("center first LabelExpression");
-                object.getCenterLabelStyleDescription().setLabelFormat(FontFormat.BOLD_LITERAL);
+                FontFormatHelper.setFontFormat(object.getCenterLabelStyleDescription().getLabelFormat(), FontFormat.BOLD_LITERAL);
                 object.getCenterLabelStyleDescription().setLabelSize(5);
             }
             if (object.getEndLabelStyleDescription() != null) {
                 object.getEndLabelStyleDescription().setLabelColor(LABEL_COLOR_FIRST);
                 object.getEndLabelStyleDescription().setLabelExpression("end first LabelExpression");
-                object.getEndLabelStyleDescription().setLabelFormat(FontFormat.BOLD_LITERAL);
+                FontFormatHelper.setFontFormat(object.getEndLabelStyleDescription().getLabelFormat(), FontFormat.BOLD_LITERAL);
                 object.getEndLabelStyleDescription().setLabelSize(5);
             }
             object.setTargetArrow(EdgeArrows.DIAMOND_LITERAL);
@@ -1726,7 +1728,7 @@ public class StyleHelperTest extends TestCase {
         public Object caseLabelStyleDescription(LabelStyleDescription object) {
             object.setLabelAlignment(LabelAlignment.LEFT);
             object.setLabelExpression("LabelExpression");
-            object.setLabelFormat(FontFormat.ITALIC_LITERAL);
+            FontFormatHelper.setFontFormat(object.getLabelFormat(), FontFormat.ITALIC_LITERAL);
             object.setLabelColor(LABEL_COLOR_SECOND);
             object.setLabelSize(6);
             object.setShowIcon(false);
@@ -1827,19 +1829,19 @@ public class StyleHelperTest extends TestCase {
             if (object.getBeginLabelStyleDescription() != null) {
                 object.getBeginLabelStyleDescription().setLabelColor(LABEL_COLOR_SECOND);
                 object.getBeginLabelStyleDescription().setLabelExpression("begin second LabelExpression");
-                object.getBeginLabelStyleDescription().setLabelFormat(FontFormat.ITALIC_LITERAL);
+                FontFormatHelper.setFontFormat(object.getBeginLabelStyleDescription().getLabelFormat(), FontFormat.ITALIC_LITERAL);
                 object.getBeginLabelStyleDescription().setLabelSize(6);
             }
             if (object.getCenterLabelStyleDescription() != null) {
                 object.getCenterLabelStyleDescription().setLabelColor(LABEL_COLOR_SECOND);
                 object.getCenterLabelStyleDescription().setLabelExpression("center second LabelExpression");
-                object.getCenterLabelStyleDescription().setLabelFormat(FontFormat.ITALIC_LITERAL);
+                FontFormatHelper.setFontFormat(object.getCenterLabelStyleDescription().getLabelFormat(), FontFormat.ITALIC_LITERAL);
                 object.getCenterLabelStyleDescription().setLabelSize(6);
             }
             if (object.getEndLabelStyleDescription() != null) {
                 object.getEndLabelStyleDescription().setLabelColor(LABEL_COLOR_SECOND);
                 object.getEndLabelStyleDescription().setLabelExpression("end second LabelExpression");
-                object.getEndLabelStyleDescription().setLabelFormat(FontFormat.ITALIC_LITERAL);
+                FontFormatHelper.setFontFormat(object.getEndLabelStyleDescription().getLabelFormat(), FontFormat.ITALIC_LITERAL);
                 object.getEndLabelStyleDescription().setLabelSize(6);
             }
             object.setTargetArrow(EdgeArrows.FILL_DIAMOND_LITERAL);

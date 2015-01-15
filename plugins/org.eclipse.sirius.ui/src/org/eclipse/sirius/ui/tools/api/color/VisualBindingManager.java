@@ -13,6 +13,7 @@ package org.eclipse.sirius.ui.tools.api.color;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
@@ -620,6 +621,40 @@ public class VisualBindingManager {
     }
 
     /**
+     * Retrieves if a label is underlined from a label style.
+     * 
+     * @param style
+     *            current {@link BasicLabelStyle}.
+     * @return true if label is underlined otherwise false.
+     */
+    public boolean isUnderlineFromLabelStyle(final BasicLabelStyle style) {
+        List<FontFormat> labelFormat = style.getLabelFormat();
+        for (FontFormat fontFormat : labelFormat) {
+            if (FontFormat.UNDERLINE_LITERAL == fontFormat) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Retrieves if a label is strike through from a label style.
+     * 
+     * @param style
+     *            current {@link BasicLabelStyle}.
+     * @return true if label is strike through otherwise false.
+     */
+    public boolean isStrikeThroughFromLabelStyle(final BasicLabelStyle style) {
+        List<FontFormat> labelFormat = style.getLabelFormat();
+        for (FontFormat fontFormat : labelFormat) {
+            if (FontFormat.STRIKE_THROUGH_LITERAL == fontFormat) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Return a font from a label format and a label size.
      * 
      * @param labelFormat
@@ -628,7 +663,7 @@ public class VisualBindingManager {
      *            current size
      * @return a Font from a {@link FontFormat} and a size.
      */
-    public Font getFontFromLabelFormatAndSize(final FontFormat labelFormat, final int labelSize) {
+    public Font getFontFromLabelFormatAndSize(final List<FontFormat> labelFormat, final int labelSize) {
         return getFontFromLabelFormatAndSize(labelFormat, labelSize, DEFAULT_FONT_NAME);
     }
 
@@ -643,20 +678,21 @@ public class VisualBindingManager {
      *            the name of the font.
      * @return a Font from a {@link FontFormat} and a size.
      */
-    public Font getFontFromLabelFormatAndSize(final FontFormat labelFormat, final int labelSize, final String fontName) {
+    public Font getFontFromLabelFormatAndSize(final List<FontFormat> labelFormat, final int labelSize, final String fontName) {
         final int rangedSize = Math.max(labelSize, 1);
         final FontStyleDescriptor desc = new FontStyleDescriptor(labelFormat, rangedSize, fontName);
         if (!fontCache.containsKey(desc)) {
             int format = SWT.NORMAL;
-            if (FontFormat.BOLD_LITERAL.equals(labelFormat)) {
-                format = SWT.BOLD;
+
+            for (FontFormat fontFormat : labelFormat) {
+                if (FontFormat.BOLD_LITERAL.equals(fontFormat)) {
+                    format = format | SWT.BOLD;
+                }
+                if (FontFormat.ITALIC_LITERAL.equals(fontFormat)) {
+                    format = format | SWT.ITALIC;
+                }
             }
-            if (FontFormat.ITALIC_LITERAL.equals(labelFormat)) {
-                format = SWT.ITALIC;
-            }
-            if (FontFormat.BOLD_ITALIC_LITERAL.equals(labelFormat)) {
-                format = SWT.BOLD | SWT.ITALIC;
-            }
+
             fontCache.put(desc, new Font(Display.getDefault(), fontName, rangedSize, format));
         }
         return fontCache.get(desc);
@@ -671,11 +707,11 @@ public class VisualBindingManager {
     private static final class FontStyleDescriptor {
         final String name;
 
-        final FontFormat format;
+        final List<FontFormat> format;
 
         final int size;
 
-        public FontStyleDescriptor(final FontFormat format, final int size, final String name) {
+        public FontStyleDescriptor(final List<FontFormat> format, final int size, final String name) {
             this.format = format;
             this.size = size;
             this.name = name;

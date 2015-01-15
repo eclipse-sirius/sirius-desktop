@@ -69,7 +69,7 @@ public class TreeItemLabelFontFormatQuery extends RunnableWithResult.Impl<FontFo
             int style = fontData[0].getStyle();
             switch (style) {
             case SWT.NORMAL:
-                setResult(FontFormat.NORMAL_LITERAL);
+                setResult(null);
                 break;
             case SWT.BOLD:
                 setResult(FontFormat.BOLD_LITERAL);

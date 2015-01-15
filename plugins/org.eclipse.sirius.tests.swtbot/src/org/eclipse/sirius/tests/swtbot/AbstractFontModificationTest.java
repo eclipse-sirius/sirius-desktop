@@ -10,11 +10,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.FontStyle;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
@@ -82,7 +86,7 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
      *            the {@link SWTBotGefEditPart} to test
      */
     protected static void checkNormalFontStyle(SWTBotGefEditPart myEClassEP) {
-        checkFontStyle(myEClassEP, SWT.NORMAL, SWT.NORMAL, FontFormat.NORMAL, false, false);
+        checkFontStyle(myEClassEP, SWT.NORMAL, SWT.NORMAL, new ArrayList<FontFormat>(), false, false);
     }
 
     /**
@@ -93,7 +97,9 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
      *            the {@link SWTBotGefEditPart} to test
      */
     protected static void checkBoldFontStyle(SWTBotGefEditPart myEClassEP) {
-        checkFontStyle(myEClassEP, SWT.BOLD, SWT.BOLD, FontFormat.BOLD, false, false);
+        List<FontFormat> viewpointStyle = new ArrayList<FontFormat>();
+        viewpointStyle.add(FontFormat.BOLD_LITERAL);
+        checkFontStyle(myEClassEP, SWT.BOLD, SWT.BOLD, viewpointStyle, false, false);
     }
 
     /**
@@ -104,7 +110,9 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
      *            the {@link SWTBotGefEditPart} to test
      */
     protected static void checkItalicFontStyle(SWTBotGefEditPart myEClassEP) {
-        checkFontStyle(myEClassEP, SWT.ITALIC, SWT.ITALIC, FontFormat.ITALIC, false, false);
+        List<FontFormat> viewpointStyle = new ArrayList<FontFormat>();
+        viewpointStyle.add(FontFormat.ITALIC_LITERAL);
+        checkFontStyle(myEClassEP, SWT.ITALIC, SWT.ITALIC, viewpointStyle, false, false);
     }
 
     /**
@@ -115,7 +123,10 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
      *            the {@link SWTBotGefEditPart} to test
      */
     protected void checkBoldItalicFontStyle(SWTBotGefEditPart myEClassEP) {
-        checkFontStyle(myEClassEP, SWT.BOLD | SWT.ITALIC, SWT.BOLD | SWT.ITALIC, FontFormat.BOLD_ITALIC, false, false);
+        List<FontFormat> viewpointStyle = new ArrayList<FontFormat>();
+        FontFormatHelper.setFontFormat(viewpointStyle, FontFormat.BOLD_LITERAL);
+        FontFormatHelper.setFontFormat(viewpointStyle, FontFormat.ITALIC_LITERAL);
+        checkFontStyle(myEClassEP, SWT.BOLD + SWT.ITALIC, SWT.BOLD + SWT.ITALIC, viewpointStyle, false, false);
     }
 
     /**
@@ -138,7 +149,7 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
      *            stroke through
      * 
      */
-    protected static void checkFontStyle(SWTBotGefEditPart editPart, int d2dStyle, int gmfStyle, int viewpointStyle, boolean underlined, boolean strikedThrough) {
+    protected static void checkFontStyle(SWTBotGefEditPart editPart, int d2dStyle, int gmfStyle, List<FontFormat> viewpointStyle, boolean underlined, boolean strikedThrough) {
         checkFontStyle(editPart, d2dStyle, gmfStyle, viewpointStyle, underlined, strikedThrough, null, -1, -1);
     }
 
@@ -173,8 +184,8 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
      *            label
      * 
      */
-    protected static void checkFontStyle(SWTBotGefEditPart editPart, int d2dStyle, int gmfStyle, int viewpointStyle, boolean underlined, boolean strikedThrough, String fontName, int fontSize,
-            int fontColor) {
+    protected static void checkFontStyle(SWTBotGefEditPart editPart, int d2dStyle, int gmfStyle, List<FontFormat> viewpointStyle, boolean underlined, boolean strikedThrough, String fontName,
+            int fontSize, int fontColor) {
         // Check the state of draw2d label, GMF view and Sirius style.
         if (editPart.part() instanceof AbstractDiagramNameEditPart) {
             AbstractDiagramNameEditPart part = (AbstractDiagramNameEditPart) editPart.part();
@@ -297,7 +308,7 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
      * @param style
      *            style to find.
      */
-    protected static void checkFont(DDiagramElement element, int style) {
+    protected static void checkFont(DDiagramElement element, List<FontFormat> style) {
         BasicLabelStyle label = null;
 
         if (element instanceof DDiagramElementContainer) {
@@ -309,7 +320,7 @@ public class AbstractFontModificationTest extends AbstractRefreshWithCustomizedS
         }
 
         assertNotNull(label);
-        assertEquals("Wrong viewpoint font format (" + FontFormat.get(style) + ")", style, label.getLabelFormat().getValue());
+        assertEquals("Wrong viewpoint font format (" + style + ")", style, label.getLabelFormat());
     }
 
     /**

@@ -12,30 +12,36 @@ package org.eclipse.sirius.tree.ui.tools.internal.editor.provider;
 
 import java.io.File;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.swt.graphics.Color;
-import org.eclipse.swt.graphics.Font;
-import org.eclipse.swt.graphics.Image;
+import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
+import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.tree.DTreeItem;
+import org.eclipse.sirius.tree.TreeItemStyle;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.ui.tools.api.provider.DSemanticTargetBasedLabelProvider;
+import org.eclipse.sirius.ui.tools.internal.editor.DefaultFontStyler;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.swt.graphics.Color;
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.Image;
 
 /**
  * Label provider for all the tree item.
  * 
  * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
  */
-public class DTreeItemLabelProvider extends DSemanticTargetBasedLabelProvider {
+public class DTreeItemLabelProvider extends DSemanticTargetBasedLabelProvider implements IStyledLabelProvider {
 
     /**
      * Default constructor.
@@ -68,11 +74,11 @@ public class DTreeItemLabelProvider extends DSemanticTargetBasedLabelProvider {
             final DTreeItem item = (DTreeItem) element;
             if (item.getOwnedStyle() != null) {
                 final int size = item.getOwnedStyle().getLabelSize();
-                FontFormat labelFormat = null;
+                List<FontFormat> labelFormat = new ArrayList<FontFormat>();
                 if (item.getOwnedStyle().getLabelFormat() != null) {
                     labelFormat = item.getOwnedStyle().getLabelFormat();
                 } else {
-                    labelFormat = FontFormat.NORMAL_LITERAL;
+                    labelFormat.clear();
                 }
                 return VisualBindingManager.getDefault().getFontFromLabelFormatAndSize(labelFormat, size);
             }
@@ -146,5 +152,45 @@ public class DTreeItemLabelProvider extends DSemanticTargetBasedLabelProvider {
             }
         }
         return result;
+    }
+
+    @Override
+    public StyledString getStyledText(Object element) {
+        String text = getText(element);
+        DefaultFontStyler styler = new DefaultFontStyler(getFont(element), getForeground(element), getBackground(element), getUnderline(element), getStrikeout(element));
+        if (text == null) {
+            text = "";
+        }
+        StyledString styledString = new StyledString(text, styler);
+
+        return styledString;
+    }
+
+    private boolean getStrikeout(Object element) {
+        if (element instanceof DTreeItem) {
+            final DTreeItem item = (DTreeItem) element;
+            TreeItemStyle ownedStyle = item.getOwnedStyle();
+            if (ownedStyle != null) {
+                List<FontFormat> labelFormat = ownedStyle.getLabelFormat();
+                if (labelFormat != null) {
+                    return labelFormat.contains(FontFormat.STRIKE_THROUGH_LITERAL);
+                }
+            }
+        }
+        return false;
+    }
+
+    private boolean getUnderline(Object element) {
+        if (element instanceof DTreeItem) {
+            final DTreeItem item = (DTreeItem) element;
+            TreeItemStyle ownedStyle = item.getOwnedStyle();
+            if (ownedStyle != null) {
+                List<FontFormat> labelFormat = ownedStyle.getLabelFormat();
+                if (labelFormat != null) {
+                    return labelFormat.contains(FontFormat.UNDERLINE_LITERAL);
+                }
+            }
+        }
+        return false;
     }
 }

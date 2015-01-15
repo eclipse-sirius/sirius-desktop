@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.util.List;
+
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckTreeItemFontFormat;
@@ -624,7 +626,7 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
         item.contextMenu(REVEAL_ELEMENT_TOOLTIP).click();
         checkLabelIsHidden(NODE_WITH_LABEL_NAME);
         checkNodeIsVisible(nodeEditPart);
-        bot.waitUntil(new CheckTreeItemFontFormat(item, FontFormat.NORMAL));
+        bot.waitUntil(new CheckTreeItemFontFormat(item, null));
 
         // Step 4 : reveal the label (using outline)
         item = view.bot().tree().getTreeItem("p").getNode(NODE_WITH_LABEL_NAME).click();
@@ -636,10 +638,11 @@ public class HideRevealDiagramElementsLabelsTest extends AbstractHideRevealDiagr
 
         // Validates that the FontFormat of the TreeItem changes when the
         // visibility changes
-        FontFormat widgetFormat = SWTBotUtils.getWidgetFormat(item.getNode(NODE_WITH_LABEL_NAME + " label").widget);
-        assertEquals(FontFormat.ITALIC, widgetFormat.getValue());
+        List<FontFormat> widgetFormat = SWTBotUtils.getWidgetFormat(item.getNode(NODE_WITH_LABEL_NAME + " label").widget);
+        assertEquals(FontFormat.ITALIC, widgetFormat.get(0).getValue());
         SWTBotUtils.clickContextMenu(item, REVEAL_LABEL_TOOLTIP);
-        bot.waitUntil(new CheckTreeItemFontFormat(item, FontFormat.NORMAL));
+
+        bot.waitUntil(new CheckTreeItemFontFormat(item, null));
 
         checkLabelIsVisible(NODE_WITH_LABEL_NAME);
     }

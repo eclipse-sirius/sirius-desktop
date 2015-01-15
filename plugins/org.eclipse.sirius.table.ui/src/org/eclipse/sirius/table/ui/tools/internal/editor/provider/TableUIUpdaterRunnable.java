@@ -17,6 +17,8 @@ import java.util.Set;
 import org.eclipse.jface.layout.TreeColumnLayout;
 import org.eclipse.jface.viewers.CellLabelProvider;
 import org.eclipse.jface.viewers.ColumnPixelData;
+import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider;
+import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
@@ -195,7 +197,14 @@ public class TableUIUpdaterRunnable implements Runnable {
     private void updateColumns() {
         for (DColumn dColumnToUpdateDirectly : dColumnsToUpdateDirectly) {
             for (int i = 0; i < dTableTreeViewer.getTree().getColumns().length; i++) {
-                final CellLabelProvider labelProvider = dTableTreeViewer.getLabelProvider(i);
+                CellLabelProvider labelProvider = dTableTreeViewer.getLabelProvider(i);
+                if (labelProvider instanceof DelegatingStyledCellLabelProvider) {
+                    // Use the original label provider if possible
+                    IStyledLabelProvider styledLabelProvider = ((DelegatingStyledCellLabelProvider) labelProvider).getStyledStringProvider();
+                    if (styledLabelProvider instanceof CellLabelProvider) {
+                        labelProvider = (CellLabelProvider) styledLabelProvider;
+                    }
+                }
                 if (labelProvider instanceof DTableColumnLabelProvider && ((DTableColumnLabelProvider) labelProvider).isProvideColumn(dColumnToUpdateDirectly)) {
                     DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.SET_COLUMN_NAME_KEY);
 
@@ -239,7 +248,14 @@ public class TableUIUpdaterRunnable implements Runnable {
             DColumn dColumn = entry.getKey();
             Boolean visible = entry.getValue();
             for (int i = 0; i < dTableTreeViewer.getTree().getColumns().length; i++) {
-                final CellLabelProvider labelProvider = dTableTreeViewer.getLabelProvider(i);
+                CellLabelProvider labelProvider = dTableTreeViewer.getLabelProvider(i);
+                if (labelProvider instanceof DelegatingStyledCellLabelProvider) {
+                    // Use the original label provider if possible
+                    IStyledLabelProvider styledLabelProvider = ((DelegatingStyledCellLabelProvider) labelProvider).getStyledStringProvider();
+                    if (styledLabelProvider instanceof CellLabelProvider) {
+                        labelProvider = (CellLabelProvider) styledLabelProvider;
+                    }
+                }
                 if (labelProvider instanceof DTableColumnLabelProvider && ((DTableColumnLabelProvider) labelProvider).isProvideColumn(dColumn)) {
                     DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CHANGE_SWT_COLUMN_VISIBLE_STATE_KEY);
                     final TreeColumn treeColumn = dTableTreeViewer.getTree().getColumn(i);

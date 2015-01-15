@@ -12,6 +12,7 @@ h3. User-Visible Changes
 * The ability to print table representations has been re-introduced.
 * The quick outline feature has been added for tree and table editors, see documentation for details.
 * The label of a list or container can now be hidden by the user from the outline, the tabbar or the contextual menu.
+* In the Appearance tab, in addition to Bold and Italic, it is now possible to set the font formatting style to Underline and Strike through.
 
 h3. Specifier-Visible Changes
 
@@ -24,6 +25,7 @@ h3. Specifier-Visible Changes
 * The hide label per default capability has been added to the container styles.
 * Property sections for image paths now have a button next to the text field to open a dialog browsing for images.
 * The children presentation property of a ContainerMapping has two new values @Vertical Stack@ and @Horizontal Stack@. They indicates that a container will present its children containers as a vertical/horizontal stack of compartments. These two stack values are experimental.
+* In addition to Bold and Italic, Underline and Strike through styles have been added on the label font format.
 
 h3. API Changes
 

@@ -12,6 +12,7 @@ package org.eclipse.sirius.tests.unit.diagram.migration;
 
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
@@ -79,6 +80,7 @@ public class RepairOnStyleCustomizationsTest extends AbstractRepairMigrateTest {
      * 
      * @throws Exception
      */
+    @SuppressWarnings({ "unchecked" })
     public void testRepairOnStyleCustomizations() throws Exception {
         // Launch a repair
         runRepairProcess(REPRESENTATIONS_RESOURCE_NAME);
@@ -133,11 +135,14 @@ public class RepairOnStyleCustomizationsTest extends AbstractRepairMigrateTest {
         EAttribute labelFormatFeature = ViewpointPackage.Literals.BASIC_LABEL_STYLE__LABEL_FORMAT;
         assertEquals(assertMessage, Collections.emptyList(), dEdgeOfEReference.getOwnedStyle().getCustomFeatures());
         assertEquals(assertMessage, Collections.singletonList(labelFormatFeature.getName()), dEdgeOfEReference.getOwnedStyle().getCenterLabelStyle().getCustomFeatures());
-        assertEquals(assertMessage, FontFormat.BOLD_ITALIC_LITERAL, dEdgeOfEReference.getOwnedStyle().getCenterLabelStyle().eGet(labelFormatFeature));
+        assertEquals(assertMessage, FontFormat.BOLD_LITERAL, ((List<FontFormat>) dEdgeOfEReference.getOwnedStyle().getCenterLabelStyle().eGet(labelFormatFeature)).get(1));
+        assertEquals(assertMessage, FontFormat.ITALIC_LITERAL, ((List<FontFormat>) dEdgeOfEReference.getOwnedStyle().getCenterLabelStyle().eGet(labelFormatFeature)).get(0));
         assertEquals(assertMessage, Collections.singletonList(labelFormatFeature.getName()), dNodeListOfEClass.getStyle().getCustomFeatures());
-        assertEquals(assertMessage, FontFormat.BOLD_ITALIC_LITERAL, dNodeListOfEClass.getStyle().eGet(labelFormatFeature));
+        assertEquals(assertMessage, FontFormat.BOLD_LITERAL, ((List<FontFormat>) dNodeListOfEClass.getStyle().eGet(labelFormatFeature)).get(1));
+        assertEquals(assertMessage, FontFormat.ITALIC_LITERAL, ((List<FontFormat>) dNodeListOfEClass.getStyle().eGet(labelFormatFeature)).get(0));
         assertEquals(assertMessage, Collections.singletonList(labelFormatFeature.getName()), dNodeContainerOfEPackage.getStyle().getCustomFeatures());
-        assertEquals(assertMessage, FontFormat.BOLD_ITALIC_LITERAL, dNodeContainerOfEPackage.getStyle().eGet(labelFormatFeature));
+        assertEquals(assertMessage, FontFormat.BOLD_LITERAL, ((List<FontFormat>) dNodeContainerOfEPackage.getStyle().eGet(labelFormatFeature)).get(1));
+        assertEquals(assertMessage, FontFormat.ITALIC_LITERAL, ((List<FontFormat>) dNodeContainerOfEPackage.getStyle().eGet(labelFormatFeature)).get(0));
 
         assertMessage = "The repair process shouldn't reset the WorkspaceImage seted to display a background image";
         assertTrue(assertMessage, dNodeContainerOfEPackageWithWorkspaceImage.getStyle() instanceof WorkspaceImage);
@@ -145,7 +150,9 @@ public class RepairOnStyleCustomizationsTest extends AbstractRepairMigrateTest {
         assertEquals(assertMessage, 2, dNodeContainerOfEPackageWithWorkspaceImage.getStyle().getCustomFeatures().size());
         assertTrue(assertMessage, dNodeContainerOfEPackageWithWorkspaceImage.getStyle().getCustomFeatures().contains(labelFormatFeature.getName()));
         assertTrue(assertMessage, dNodeContainerOfEPackageWithWorkspaceImage.getStyle().getCustomFeatures().contains(DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH.getName()));
-        assertEquals(assertMessage, FontFormat.BOLD_ITALIC_LITERAL, workspaceImage.getLabelFormat());
+        assertEquals(assertMessage, FontFormat.BOLD_LITERAL, ((List<FontFormat>) workspaceImage.getLabelFormat()).get(1));
+        assertEquals(assertMessage, FontFormat.ITALIC_LITERAL, ((List<FontFormat>) workspaceImage.getLabelFormat()).get(0));
+
         assertEquals(assertMessage, TEMPORARY_PROJECT_NAME + "/" + IMAGE, workspaceImage.getWorkspacePath());
 
         // Open a session and a diagram editor

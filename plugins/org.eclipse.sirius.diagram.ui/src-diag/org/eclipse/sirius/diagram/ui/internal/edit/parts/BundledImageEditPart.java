@@ -115,7 +115,7 @@ public class BundledImageEditPart extends AbstractNotSelectableShapeNodeEditPart
             DiagramPlugin.getDefault().logWarning("The element is not a BundledImage");
             final BundledImage bundle = DiagramFactory.eINSTANCE.createBundledImage();
             bundle.setShape(BundledImageShape.SQUARE_LITERAL);
-            bundle.setLabelFormat(FontFormat.NORMAL_LITERAL);
+            bundle.getLabelFormat().clear();
             bundle.setLabelSize(10);
             bundle.setColor(VisualBindingManager.getDefault().getRGBValuesFor(SystemColors.BLUE_LITERAL));
             bundle.setBorderColor(VisualBindingManager.getDefault().getRGBValuesFor(SystemColors.DARK_BLUE_LITERAL));
