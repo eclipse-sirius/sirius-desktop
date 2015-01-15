@@ -478,12 +478,13 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         } else {
             semantic = null;
         }
-        DView receiver = findViewForRepresentation(representation, newContainer);
+        Viewpoint viewpoint = ((DView) representation.eContainer()).getViewpoint();
+        DView receiver = findViewForRepresentation(viewpoint, newContainer);
         if (receiver == null) {
             final IPermissionAuthority analysisAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(newContainer);
             if (analysisAuthority.canCreateIn(newContainer)) {
-                createView(getViewpoint(representation), Lists.newArrayList(semantic), false, pm);
-                receiver = findViewForRepresentation(representation, newContainer);
+                createView(viewpoint, Lists.newArrayList(semantic), false, pm);
+                receiver = findViewForRepresentation(viewpoint, newContainer);
             } else {
                 throw new LockedInstanceException(newContainer);
             }
@@ -501,6 +502,15 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             throw new LockedInstanceException(receiver);
         }
         transferCustomData(this, representation);
+    }
+
+    private static DView findViewForRepresentation(Viewpoint vp, DAnalysis analysis) {
+        for (final DView view : analysis.getOwnedViews()) {
+            if (view.getViewpoint() != null && EqualityHelper.areEquals(view.getViewpoint(), vp)) {
+                return view;
+            }
+        }
+        return null;
     }
 
     /**
@@ -1170,38 +1180,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     public void createView(final Viewpoint viewpoint, final Collection<EObject> semantics, final boolean createNewRepresentations, IProgressMonitor monitor) {
         DViewOperations.on(this).createView(viewpoint, semantics, createNewRepresentations, monitor);
             final ModelAccessor accessor = getModelAccessor();
-    }
-
-    /**
-     * Returns a view that can receive the given representation or
-     * <code>null</code> if no view is found.
-     * 
-     * @param representation
-     *            the representation.
-     * @param analysis
-     *            the owner.
-     * @return a view that can receive the given representation or
-     *         <code>null</code> if no view is found.
-     */
-    private static DView findViewForRepresentation(final DRepresentation representation, final DAnalysis analysis) {
-        final Viewpoint vp = getViewpoint(representation);
-        for (final DView view : analysis.getOwnedViews()) {
-            if (view.getViewpoint() != null && EqualityHelper.areEquals(view.getViewpoint(), vp)) {
-                return view;
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Returns the viewpoint of the given representation.
-     * 
-     * @param representation
-     *            the representation.
-     * @return the viewpoint of the given representation.
-     */
-    private static Viewpoint getViewpoint(final DRepresentation representation) {
-        return ((DView) representation.eContainer()).getViewpoint();
     }
 
     // *******************
