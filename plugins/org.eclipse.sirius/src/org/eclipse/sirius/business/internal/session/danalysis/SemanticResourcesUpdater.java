@@ -18,7 +18,6 @@ import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.sirius.business.api.session.SessionListener;
-import org.eclipse.sirius.business.internal.query.DAnalysisesInternalQuery;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
@@ -46,8 +45,7 @@ public class SemanticResourcesUpdater extends AdapterImpl implements Adapter {
      */
     public SemanticResourcesUpdater(DAnalysisSessionImpl dAnalysisSessionImpl, Collection<Resource> semanticResources) {
         this.dAnalysisSessionImpl = dAnalysisSessionImpl;
-        Collection<DAnalysis> allAnalyses = new DAnalysisesInternalQuery(dAnalysisSessionImpl.getAnalyses()).getAllAnalyses();
-        for (DAnalysis dAnalysis : allAnalyses) {
+        for (DAnalysis dAnalysis : this.dAnalysisSessionImpl.allAnalyses()) {
             if (!dAnalysis.eAdapters().contains(this)) {
                 dAnalysis.eAdapters().add(this);
             }
@@ -77,8 +75,7 @@ public class SemanticResourcesUpdater extends AdapterImpl implements Adapter {
      * Dispose this updater.
      */
     public void dispose() {
-        Collection<DAnalysis> allAnalyses = new DAnalysisesInternalQuery(dAnalysisSessionImpl.getAnalyses()).getAllAnalyses();
-        for (DAnalysis dAnalysis : allAnalyses) {
+        for (DAnalysis dAnalysis : this.dAnalysisSessionImpl.allAnalyses()) {
             if (dAnalysis.eAdapters().contains(this)) {
                 dAnalysis.eAdapters().remove(this);
             }
