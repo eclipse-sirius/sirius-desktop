@@ -236,7 +236,7 @@ public class VisualBindingManager {
             // Ideally get the default color from the preferences page
             // (IPreferenceConstants.PREF_LINE_COLOR), but no editor (so
             // preferences) from this plugin
-            return getColorFromName("gray");
+            return getColorFromName(SystemColors.GRAY_LITERAL.getName());
         }
     }
 

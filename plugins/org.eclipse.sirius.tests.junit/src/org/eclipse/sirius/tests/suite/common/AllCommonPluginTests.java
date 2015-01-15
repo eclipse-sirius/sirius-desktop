@@ -117,6 +117,7 @@ import org.eclipse.sirius.tests.unit.diagram.migration.RepairOnLabelHiddenTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.RepairOnStyleCustomizationsTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.RepairTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.RepairWithActivatedFiltersTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.RgbValuesEDataTypeMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.RunRepairTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.SetVersionTest;
 import org.eclipse.sirius.tests.unit.perf.common.CommonPreferencesTest;
@@ -185,6 +186,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(MigrationFromSirius0_9Test.class);
         suite.addTestSuite(MigrationFromSirius1_0_0_M5Test.class);
         suite.addTestSuite(ComputedStyleDescriptionCachePackingFileMigrationParticipantTests.class);
+        suite.addTestSuite(RgbValuesEDataTypeMigrationTest.class);
         suite.addTestSuite(ConvertViewpointModelingProjectToSiriusModelingProjectTest.class);
 
         suite.addTest(new JUnit4TestAdapter(CommonPreferencesTest.class));
