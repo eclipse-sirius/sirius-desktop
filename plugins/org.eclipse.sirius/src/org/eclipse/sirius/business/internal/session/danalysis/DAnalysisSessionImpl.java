@@ -13,13 +13,10 @@ package org.eclipse.sirius.business.internal.session.danalysis;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.eclipse.core.runtime.CoreException;
@@ -50,9 +47,6 @@ import org.eclipse.emf.transaction.util.ValidateEditSupport;
 import org.eclipse.emf.workspace.IWorkspaceCommandStack;
 import org.eclipse.emf.workspace.ResourceUndoContext;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.api.extender.MetamodelDescriptorManager;
-import org.eclipse.sirius.business.api.helper.SiriusResourceHelper;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.query.DAnalysisQuery;
 import org.eclipse.sirius.business.api.query.FileQuery;
@@ -72,7 +66,6 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelectorServic
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionService;
-import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
 import org.eclipse.sirius.business.internal.migration.resource.ResourceFileExtensionPredicate;
 import org.eclipse.sirius.business.internal.query.DAnalysisesInternalQuery;
 import org.eclipse.sirius.business.internal.resource.AirDCrossReferenceAdapter;
@@ -90,7 +83,6 @@ import org.eclipse.sirius.common.tools.api.util.ECrossReferenceAdapterWithUnprox
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
-import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
@@ -107,7 +99,6 @@ import org.eclipse.sirius.viewpoint.DRepresentationContainer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.impl.DAnalysisSessionEObjectImpl;
 
@@ -119,7 +110,6 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import com.google.common.collect.Sets.SetView;
 
 /**
  * A session which store data in {@link DAnalysis} references.
@@ -235,7 +225,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     /**
      * Configure the interpreter attached to this session.
      */
-    private void configureInterpreter() {
+    void configureInterpreter() {
         // Calculate paths of the activated representation description files.
         List<String> filePaths = new ArrayList<String>();
         for (Viewpoint vp : getSelectedViewpointsSpecificToGeneric()) {
@@ -370,7 +360,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         registerResourceInCrossReferencer(analysisResource);
         addAdaptersOnAnalysis(analysis);
         notifyListeners(SessionListener.REPRESENTATION_CHANGE);
-        updateSelectedViewpointsData(new NullProgressMonitor());
+        DViewOperations.on(this).updateSelectedViewpointsData(new NullProgressMonitor());
         configureInterpreter();
     }
 
@@ -449,6 +439,10 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      */
     public Collection<DAnalysis> allAnalyses() {
         return new DAnalysisesInternalQuery(super.getAnalyses()).getAllAnalyses();
+    }
+    
+    DAnalysis getMainAnalysis() {
+        return this.mainDAnalysis;
     }
 
     @Override
@@ -1135,15 +1129,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     // *******************
     @Override
     public Collection<Viewpoint> getSelectedViewpoints(boolean includeReferencedAnalysis) {
-        SortedSet<Viewpoint> result = new TreeSet<Viewpoint>(new ViewpointRegistry.ViewpointComparator());
-        Collection<DAnalysis> scope = includeReferencedAnalysis ? allAnalyses() : Collections.singleton(mainDAnalysis);
-        for (DView view : getSelectedViews(scope)) {
-            Viewpoint viewpoint = view.getViewpoint();
-            if (viewpoint != null && !viewpoint.eIsProxy()) {
-                result.add(viewpoint);
-            }
-        }
-        return Collections.unmodifiableSet(result);
+        return DViewOperations.on(this).getSelectedViewpoints(includeReferencedAnalysis);
     }
 
     /**
@@ -1152,82 +1138,27 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * @return a collection of selected viewpoints for this session.
      */
     public Collection<Viewpoint> getSelectedViewpointsSpecificToGeneric() {
-        Collection<Viewpoint> viewpoints = getSelectedViewpoints(false);
-        // Then orders specific to generic
-        final List<Viewpoint> orderedViewpoints = new ArrayList<Viewpoint>(viewpoints.size());
-        for (final Viewpoint viewpoint : viewpoints) {
-            int insertPosition = orderedViewpoints.size();
-            for (final Viewpoint viewpoint2 : orderedViewpoints) {
-                if (ComponentizationHelper.isExtendedBy(viewpoint, viewpoint2)) {
-                    insertPosition = orderedViewpoints.indexOf(viewpoint2);
-                } else if (ComponentizationHelper.isExtendedBy(viewpoint2, viewpoint)) {
-                    insertPosition = orderedViewpoints.indexOf(viewpoint2) + 1;
-                }
-            }
-            orderedViewpoints.add(insertPosition, viewpoint);
-        }
-        return Collections.unmodifiableCollection(orderedViewpoints);
+        return DViewOperations.on(this).getSelectedViewpointsSpecificToGeneric();
     }
 
     @Override
     public Collection<DView> getSelectedViews() {
-        return getSelectedViews(allAnalyses());
-    }
-
-    private Collection<DView> getSelectedViews(Iterable<DAnalysis> analyses) {
-        Collection<DView> selectedViews = new HashSet<DView>();
-        for (DAnalysis analysis : analyses) {
-            selectedViews.addAll(analysis.getSelectedViews());
-        }
-        return selectedViews;
+        return DViewOperations.on(this).getSelectedViews(allAnalyses());
     }
 
     @Override
     public void addSelectedView(DView view, IProgressMonitor monitor) throws IllegalArgumentException {
-        try {
-            monitor.beginTask("View selection", 3);
-            DAnalysis foundAnalysis = null;
-            for (final DAnalysis dAnalysis : allAnalyses()) {
-                if (dAnalysis.getOwnedViews().contains(view)) {
-                    foundAnalysis = dAnalysis;
-                    break;
-                }
-            }
-            if (foundAnalysis == null) {
-                throw new IllegalArgumentException("The view is not contained in the analysis");
-            }
-            foundAnalysis.getSelectedViews().add(view);
-            monitor.worked(1);
-            updateSelectedViewpointsData(new NullProgressMonitor());
-            monitor.worked(1);
-            notifyListeners(SessionListener.SELECTED_VIEWS_CHANGE_KIND);
-            monitor.worked(1);
-            configureInterpreter();
-        } finally {
-            monitor.done();
-        }
+        DViewOperations.on(this).addSelectedView(view, monitor);
     }
 
     @Override
     public void removeSelectedView(final DView view, IProgressMonitor monitor) {
-        try {
-            monitor.beginTask("View unselection", 1);
-            mainDAnalysis.getSelectedViews().remove(view);
-            updateSelectedViewpointsData(new SubProgressMonitor(monitor, 1));
-            notifyListeners(SessionListener.SELECTED_VIEWS_CHANGE_KIND);
-            configureInterpreter();
-        } finally {
-            monitor.done();
-        }
+        DViewOperations.on(this).removeSelectedView(view, monitor);
     }
 
     @Override
     public Collection<DView> getOwnedViews() {
-        Collection<DView> ownedViews = new HashSet<DView>();
-        for (DAnalysis analysis : allAnalyses()) {
-            ownedViews.addAll(analysis.getOwnedViews());
-        }
-        return ownedViews;
+        return DViewOperations.on(this).getOwnedViews();
     }
 
     @Override
@@ -1237,102 +1168,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     @Override
     public void createView(final Viewpoint viewpoint, final Collection<EObject> semantics, final boolean createNewRepresentations, IProgressMonitor monitor) {
-        try {
-            monitor.beginTask("View creation for Sirius : " + viewpoint.getName(), 3 + 10 * semantics.size());
-            Set<DView> intializedDViews = new LinkedHashSet<DView>();
-            for (DAnalysis analysis : allAnalyses()) {
-                if (!hasAlreadyDViewForViewpoint(analysis, viewpoint)) {
-                    DView view = getOrCreateFreshDView(analysis);
-                    view.setViewpoint(viewpoint);
-                    view.setInitialized(true);
-                    analysis.getOwnedViews().add(view);
-                    analysis.getSelectedViews().add(view);
-                    intializedDViews.add(view);
-                }
-            }
-            monitor.worked(1);
-
-            /* need to prepare for the init */
-            configureInterpreter();
-            if (createNewRepresentations) {
-                monitor.subTask("Initialize representations");
-                for (final EObject semantic : semantics) {
-                    DialectManager.INSTANCE.initRepresentations(viewpoint, semantic, new SubProgressMonitor(monitor, 10));
-                }
-            }
-            updateSelectedViewpointsData(new SubProgressMonitor(monitor, 1));
-            monitor.worked(1);
-            /* DVIew created are automatically selected */
-            if (!intializedDViews.isEmpty()) {
-                notifyListeners(SessionListener.SELECTED_VIEWS_CHANGE_KIND);
-            }
-            monitor.worked(1);
-        } finally {
-            monitor.done();
-        }
-    }
-
-    private static DView getOrCreateFreshDView(DAnalysis analysis) {
-        DView orphan = new DAnalysisQuery(analysis).getFirstOrphanDView();
-        if (orphan != null) {
-            return orphan;
-        } else {
-            return ViewpointFactory.eINSTANCE.createDRepresentationContainer();
-        }
-    }
-
-    private boolean hasAlreadyDViewForViewpoint(DAnalysis dAnalysis, Viewpoint viewpoint) {
-        for (DView ownedDView : dAnalysis.getOwnedViews()) {
-            Viewpoint vp = ownedDView.getViewpoint();
-            if (vp != null && EqualityHelper.areEquals(vp, viewpoint)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private void updateSelectedViewpointsData(IProgressMonitor monitor) {
-        try {
-            Set<Viewpoint> selectedViewpoints = Sets.newLinkedHashSet();
-            for (Viewpoint viewpoint : getSelectedViewpoints(false)) {
-                if (viewpoint.eResource() != null) {
-                    selectedViewpoints.add(SiriusResourceHelper.getCorrespondingViewpoint(this, viewpoint));
-                } else {
-                    selectedViewpoints.add(viewpoint);
-                }
-            }
-            SetView<Viewpoint> difference = Sets.difference(Sets.newHashSet(getActivatedViewpoints()), Sets.newHashSet(selectedViewpoints));
-            monitor.beginTask("Update selected Viewpoints data", selectedViewpoints.size() + difference.size() + 1);
-            // FIXME : it is useful?
-            for (Viewpoint viewpoint : selectedViewpoints) {
-                Resource viewpointResource = viewpoint.eResource();
-                if (viewpointResource != null) {
-                    registerResourceInCrossReferencer(viewpointResource);
-                }
-                monitor.worked(1);
-            }
-            for (Viewpoint viewpoint : difference) {
-                Resource viewpointResource = viewpoint.eResource();
-                if (viewpointResource != null) {
-                    unregisterResourceInCrossReferencer(viewpointResource);
-                }
-                monitor.worked(1);
-            }
-            super.getActivatedViewpoints().addAll(selectedViewpoints);
-            super.getActivatedViewpoints().retainAll(selectedViewpoints);
-            // tell the accessor and the interpreter which metamodels we know
-            // of.
+        DViewOperations.on(this).createView(viewpoint, semantics, createNewRepresentations, monitor);
             final ModelAccessor accessor = getModelAccessor();
-            Collection<MetamodelDescriptor> metamodels = MetamodelDescriptorManager.INSTANCE.provides(this.getSelectedViewpoints(false));
-            if (accessor != null) {
-                accessor.activateMetamodels(metamodels);
-            }
-            if (getInterpreter() != null) {
-                getInterpreter().activateMetamodels(metamodels);
-            }
-        } finally {
-            monitor.done();
-        }
     }
 
     /**
@@ -1346,7 +1183,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * @return a view that can receive the given representation or
      *         <code>null</code> if no view is found.
      */
-    private DView findViewForRepresentation(final DRepresentation representation, final DAnalysis analysis) {
+    private static DView findViewForRepresentation(final DRepresentation representation, final DAnalysis analysis) {
         final Viewpoint vp = getViewpoint(representation);
         for (final DView view : analysis.getOwnedViews()) {
             if (view.getViewpoint() != null && EqualityHelper.areEquals(view.getViewpoint(), vp)) {
@@ -1363,7 +1200,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      *            the representation.
      * @return the viewpoint of the given representation.
      */
-    private Viewpoint getViewpoint(final DRepresentation representation) {
+    private static Viewpoint getViewpoint(final DRepresentation representation) {
         return ((DView) representation.eContainer()).getViewpoint();
     }
 
@@ -1451,7 +1288,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             super.setOpen(true);
             notifyListeners(SessionListener.OPENED);
             monitor.worked(1);
-            updateSelectedViewpointsData(new SubProgressMonitor(monitor, 10));
+            DViewOperations.on(this).updateSelectedViewpointsData(new SubProgressMonitor(monitor, 10));
             initLocalTriggers();
 
             getTransactionalEditingDomain().addResourceSetListener(saver);
