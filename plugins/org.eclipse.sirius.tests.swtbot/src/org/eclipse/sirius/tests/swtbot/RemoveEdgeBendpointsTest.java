@@ -227,6 +227,7 @@ public class RemoveEdgeBendpointsTest extends AbstractSiriusSwtBotGefTestCase {
         editor = null;
         // Reopen outline
         new DesignerViews(bot).openOutlineView();
+        SWTBotUtils.waitAllUiEvents();
         super.tearDown();
     }
 

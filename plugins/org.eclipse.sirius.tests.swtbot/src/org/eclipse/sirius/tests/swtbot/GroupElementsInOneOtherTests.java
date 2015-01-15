@@ -245,7 +245,7 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
         centeredEPackagedBotBounds = null;
         // Reopen outline
         new DesignerViews(bot).openOutlineView();
-
+        SWTBotUtils.waitAllUiEvents();
         super.tearDown();
     }
 

@@ -111,6 +111,7 @@ public class ContainerCreationTest extends AbstractSiriusSwtBotGefTestCase {
         editor.scrollTo(0, 0);
         // Reopen outline
         new DesignerViews(bot).openOutlineView();
+        SWTBotUtils.waitAllUiEvents();
         super.tearDown();
     }
 

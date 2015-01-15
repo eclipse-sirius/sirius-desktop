@@ -93,6 +93,7 @@ public class DistributeActionTests extends AbstractUmlDragAndDropTest {
     protected void tearDown() throws Exception {
         // Reopen outline
         new DesignerViews(bot).openOutlineView();
+        SWTBotUtils.waitAllUiEvents();
         super.tearDown();
     }
 
