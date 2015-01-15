@@ -58,8 +58,8 @@ import org.eclipse.swt.graphics.Image;
  * Since GMF 2.1, there is a lot of refactoring and regresion (See
  * https://bugs.eclipse.org/bugs/show_bug.cgi?id=274859). So to keep
  * compatibility we duplicate the class
- * org.eclipse.gmf.runtime.draw2d.ui.figures.WrapLabel into SiriusWrapLabel
- * to keep the same behavior as GMF 2.0.1 There is only a little change in
+ * org.eclipse.gmf.runtime.draw2d.ui.figures.WrapLabel into SiriusWrapLabel to
+ * keep the same behavior as GMF 2.0.1 There is only a little change in
  * paintText figure (see javadoc for more details).
  * 
  * @author melaasar
@@ -773,7 +773,6 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
 
     /*
      * (non-Javadoc)
-     * 
      * @see org.eclipse.draw2d.IFigure#getPreferredSize(int, int)
      */
     public Dimension getPreferredSize(int wHint, int hHint) {
@@ -794,7 +793,6 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
 
     /*
      * (non-Javadoc)
-     * 
      * @see org.eclipse.draw2d.IFigure#getMaximumSize()
      */
     public Dimension getMaximumSize() {
@@ -1177,10 +1175,14 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
 
             y += fontHeight;
 
-            if (isUnderlined)
+            if (isUnderlined) {
+                graphics.setLineWidth(1);
                 graphics.drawLine(x, y - 1, x + tokenWidth, y - 1);
-            if (isStrikedThrough)
-                graphics.drawLine(x, y - fontHeightHalf + 1, x + tokenWidth, y - fontHeightHalf + 1);
+            }
+            if (isStrikedThrough) {
+                graphics.setLineWidth(1);
+                graphics.drawLine(x, y - fontHeightHalf - 1, x + tokenWidth, y - fontHeightHalf - 1);
+            }
         }
     }
 
@@ -1759,9 +1761,8 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
     /**
      * {@inheritDoc}
      * 
-     * Return false when this label part is not visible. (some edge
-     * labels intercepts the selection when they are hidden or empty and non
-     * visible)
+     * Return false when this label part is not visible. (some edge labels
+     * intercepts the selection when they are hidden or empty and non visible)
      */
     @Override
     public boolean containsPoint(int x, int y) {
