@@ -51,6 +51,8 @@ h4. Changes in @org.eclipse.sirius.tests.junit.support@
 
 * The @warnings@ member variable has been added to @org.eclipse.sirius.tests.support.api.SiriusTestCase@ to allow the recording of warning logs. Methods @doesAWarningOccurs()@, @clearWarnings()@, @setWarningCatchActive(boolean)@, @isWarningCatchActive()@ and @getWarningLoggersMessage()@ have also been added to manage the @warnings@ member variable in the same way as the existing @errors@ member variable.
 
+* @org.eclipse.sirius.tests.support.api.ImageComposer@ has been added to the test API to do assertions on image decorators. 
+
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
 * The methods @org.eclipse.sirius.tests.swtbot.support.api.business.UIPerspective.deleteProject(UIProject)@ and @org.eclipse.sirius.tests.swtbot.support.api.business.UIPerspective.deleteProject(String)@ have been deprecated, @org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper.setReadOnlyStatus(boolean, IResource...)@ can be used instead.
