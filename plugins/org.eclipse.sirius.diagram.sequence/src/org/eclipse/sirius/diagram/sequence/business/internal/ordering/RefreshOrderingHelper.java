@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -52,7 +52,8 @@ import com.google.common.collect.Sets;
  */
 public final class RefreshOrderingHelper {
     @SuppressWarnings("unchecked")
-    private static final Predicate<DDiagramElement> DELIMITED_EVENT_PREDICATE = Predicates.or(AbstractNodeEvent.viewpointElementPredicate(), State.viewpointElementPredicate(), InteractionUse.viewpointElementPredicate(), CombinedFragment.viewpointElementPredicate(), Operand.viewpointElementPredicate());
+    private static final Predicate<DDiagramElement> DELIMITED_EVENT_PREDICATE = Predicates.or(AbstractNodeEvent.viewpointElementPredicate(), State.viewpointElementPredicate(),
+            InteractionUse.viewpointElementPredicate(), CombinedFragment.viewpointElementPredicate(), Operand.viewpointElementPredicate());
 
     private RefreshOrderingHelper() {
         // Prevent instantiation.
@@ -68,12 +69,15 @@ public final class RefreshOrderingHelper {
      *            the old list of values. Modified in place if necessary.
      * @param newValue
      *            the new list of values. Not modified.
+     * @return true if the content is updated, false otherwise.
      */
-    public static <T> void updateIfNeeded(List<T> oldValue, List<T> newValue) {
+    public static <T> boolean updateIfNeeded(List<T> oldValue, List<T> newValue) {
         if (RefreshOrderingHelper.differentContents(oldValue, newValue)) {
             oldValue.clear();
             oldValue.addAll(newValue);
+            return true;
         }
+        return false;
     }
 
     /**

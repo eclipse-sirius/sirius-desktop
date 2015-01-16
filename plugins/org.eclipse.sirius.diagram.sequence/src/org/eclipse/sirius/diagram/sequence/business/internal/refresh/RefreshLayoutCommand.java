@@ -64,28 +64,40 @@ public class RefreshLayoutCommand extends RecordingCommand {
     protected void doExecute() {
         DslCommonPlugin.PROFILER.startWork(REFRESH_LAYOUT);
         SequenceDiagram sequenceDiagram = ISequenceElementAccessor.getSequenceDiagram(diagram).get();
-        SequenceDDiagram sequenceDDiagram = sequenceDiagram.getSequenceDDiagram();
+        sequenceDiagram.useCache(true);
+        try {
+            SequenceDDiagram sequenceDDiagram = sequenceDiagram.getSequenceDDiagram();
 
-        /*
-         * Everything has been committed, so we should be in a stable state
-         * where it is safe to refresh both orderings.
-         */
-        AbstractModelChangeOperation<Void> refreshSemanticOrderingOperation = new RefreshSemanticOrderingsOperation(sequenceDDiagram);
-        refreshSemanticOrderingOperation.execute();
-        AbstractModelChangeOperation<Void> refreshGraphicalOrderingOperation = new RefreshGraphicalOrderingOperation(sequenceDiagram);
-        refreshGraphicalOrderingOperation.execute();
+            /*
+             * Everything has been committed, so we should be in a stable state
+             * where it is safe to refresh both orderings.
+             */
+            AbstractModelChangeOperation<Boolean> refreshSemanticOrderingOperation = new RefreshSemanticOrderingsOperation(sequenceDDiagram);
+            if (refreshSemanticOrderingOperation.execute()) {
+                sequenceDiagram.clearOrderedCaches();
+            }
+            AbstractModelChangeOperation<Boolean> refreshGraphicalOrderingOperation = new RefreshGraphicalOrderingOperation(sequenceDiagram);
+            if (refreshGraphicalOrderingOperation.execute()) {
+                sequenceDiagram.clearOrderedCaches();
+            }
 
-        if (refreshDiagram) {
-            /*
-             * Launch a non-packing layout
-             */
-            AbstractModelChangeOperation<Void> synchronizeGraphicalOrderingOperation = new SynchronizeGraphicalOrderingOperation(diagram, false);
-            synchronizeGraphicalOrderingOperation.execute();
-            /*
-             * The layout has probably changed graphical positions: re-compute
-             * the ordering to make sure it is up-to-date.
-             */
-            refreshGraphicalOrderingOperation.execute();
+            if (refreshDiagram) {
+                /*
+                 * Launch a non-packing layout
+                 */
+                AbstractModelChangeOperation<Boolean> synchronizeGraphicalOrderingOperation = new SynchronizeGraphicalOrderingOperation(diagram, false);
+                synchronizeGraphicalOrderingOperation.execute();
+                /*
+                 * The layout has probably changed graphical positions:
+                 * re-compute the ordering to make sure it is up-to-date.
+                 */
+                if (refreshGraphicalOrderingOperation.execute()) {
+                    sequenceDiagram.clearOrderedCaches();
+                }
+            }
+        } finally {
+            sequenceDiagram.useCache(false);
+            sequenceDiagram.clearAllCaches();
         }
         DslCommonPlugin.PROFILER.stopWork(REFRESH_LAYOUT);
     }
