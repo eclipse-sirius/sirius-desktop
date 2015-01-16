@@ -12,4 +12,6 @@ readonly TESTS_SETTINGS="packaging/org.eclipse.sirius.tests.parent/sirius-local-
 
 mvn -Dplatform-version-name="$PLATFORM" -f "$BUILD_POM" clean package
 sed -i -e "s!@BASEDIR@!$BASEDIR!" "$TESTS_SETTINGS"
+
+    export SWT_GTK3=0
 mvn -Dplatform-version-name="$PLATFORM" -s "$TESTS_SETTINGS" -f "$TESTS_POM" -P"$TESTS_SUITES" clean "$TESTS_GOAL"
