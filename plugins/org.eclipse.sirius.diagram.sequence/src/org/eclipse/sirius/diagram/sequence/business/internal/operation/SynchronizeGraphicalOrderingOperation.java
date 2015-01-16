@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,14 +23,14 @@ import com.google.common.base.Preconditions;
  * Refreshes the graphical locations of the elements in a sequence diagram to
  * reflect the current semantic ordering. This command assumes that the
  * {@link org.eclipse.sirius.diagram.sequence.ordering.GraphicalOrdering} and
- * the {@link org.eclipse.sirius.diagram.sequence.ordering.SemanticOrdering}
- * are up to date according to the current visual (resp. semantic) order but
- * that when they do not match, the semantic ordering is the authoritative one
- * and the graphical ordering should be changed to match it.
+ * the {@link org.eclipse.sirius.diagram.sequence.ordering.SemanticOrdering} are
+ * up to date according to the current visual (resp. semantic) order but that
+ * when they do not match, the semantic ordering is the authoritative one and
+ * the graphical ordering should be changed to match it.
  * 
  * @author pcdavid, smonnier
  */
-public class SynchronizeGraphicalOrderingOperation extends AbstractModelChangeOperation<Void> {
+public class SynchronizeGraphicalOrderingOperation extends AbstractModelChangeOperation<Boolean> {
 
     private final Diagram sequenceDiagram;
 
@@ -54,7 +54,8 @@ public class SynchronizeGraphicalOrderingOperation extends AbstractModelChangeOp
      * {@inheritDoc}
      */
     @Override
-    public Void execute() {
+    public Boolean execute() {
+        boolean result = false;
         Preconditions.checkNotNull(sequenceDiagram);
         SequenceLayout sequenceLayout = new SequenceLayout(sequenceDiagram);
         Option<SequenceDiagram> sd = sequenceLayout.getSequenceDiagram();
@@ -64,15 +65,25 @@ public class SynchronizeGraphicalOrderingOperation extends AbstractModelChangeOp
 
             if (diagram != null && (diagram.getGraphicalOrdering().getEventEnds().size() == diagram.getSemanticOrdering().getEventEnds().size())) {
                 boolean verticalLayout = sequenceLayout.verticalLayout(pack);
+                if (verticalLayout) {
+                    sd.get().clearOrderedCaches();
+                }
                 boolean horizontalLayout = sequenceLayout.horizontalLayout(pack);
+                if (horizontalLayout) {
+                    sd.get().clearOrderedCaches();
+                }
                 boolean observationLayout = sequenceLayout.observationLayout(pack);
+                if (observationLayout) {
+                    sd.get().clearOrderedCaches();
+                }
 
                 // Refresh flags when a layout made modifications.
                 if (verticalLayout || horizontalLayout || observationLayout) {
                     sequenceLayout.flagSequenceEvents();
+                    result = true;
                 }
             }
         }
-        return null;
+        return result;
     }
 }

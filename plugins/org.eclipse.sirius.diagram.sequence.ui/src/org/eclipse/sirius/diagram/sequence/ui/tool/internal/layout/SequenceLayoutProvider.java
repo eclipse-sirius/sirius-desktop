@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -64,7 +64,7 @@ public class SequenceLayoutProvider extends AbstractLayoutProvider {
         TransactionalEditingDomain transactionalEditingDomain = sdep.getEditingDomain();
         SequenceDiagram sequenceDiagram = sdep.getSequenceDiagram();
         SequenceDDiagram sequenceDDiagram = (SequenceDDiagram) sdep.resolveSemanticElement();
-        Collection<AbstractModelChangeOperation<Void>> operations = new ArrayList<AbstractModelChangeOperation<Void>>();
+        Collection<AbstractModelChangeOperation<Boolean>> operations = new ArrayList<AbstractModelChangeOperation<Boolean>>();
 
         operations.add(new RefreshGraphicalOrderingOperation(sequenceDiagram));
         operations.add(new RefreshSemanticOrderingsOperation(sequenceDDiagram));

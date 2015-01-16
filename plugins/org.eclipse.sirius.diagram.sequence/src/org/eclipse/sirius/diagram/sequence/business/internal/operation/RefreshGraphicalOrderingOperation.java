@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,7 +42,7 @@ import com.google.common.collect.Ordering;
  * 
  * @author pcdavid, smonnier
  */
-public class RefreshGraphicalOrderingOperation extends AbstractModelChangeOperation<Void> {
+public class RefreshGraphicalOrderingOperation extends AbstractModelChangeOperation<Boolean> {
     private final SequenceDDiagram sequenceDiagram;
 
     /**
@@ -61,18 +61,19 @@ public class RefreshGraphicalOrderingOperation extends AbstractModelChangeOperat
      * {@inheritDoc}
      */
     @Override
-    public Void execute() {
+    public Boolean execute() {
         EventEndsOrdering graphicalOrdering = sequenceDiagram.getGraphicalOrdering();
         if (graphicalOrdering != null) {
-            refreshGlobalOrdering(graphicalOrdering);
+            return refreshGlobalOrdering(graphicalOrdering);
         }
-        return null;
+        return false;
     }
 
-    private void refreshGlobalOrdering(EventEndsOrdering graphicalOrdering) {
+    private boolean refreshGlobalOrdering(EventEndsOrdering graphicalOrdering) {
         if (graphicalOrdering.eContainer() instanceof SequenceDDiagram) {
-            refreshGlobalOrdering(graphicalOrdering, new CustomVerticalPositionFunction(sequenceDiagram));
+            return refreshGlobalOrdering(graphicalOrdering, new CustomVerticalPositionFunction(sequenceDiagram));
         }
+        return false;
     }
 
     /**
@@ -85,7 +86,7 @@ public class RefreshGraphicalOrderingOperation extends AbstractModelChangeOperat
      *            the function to use to obtain the vertical position of the
      *            event ends.
      */
-    private void refreshGlobalOrdering(EventEndsOrdering graphicalOrdering, VerticalPositionFunction verticalPosition) {
+    private boolean refreshGlobalOrdering(EventEndsOrdering graphicalOrdering, VerticalPositionFunction verticalPosition) {
         final LoadingCache<EventEnd, Integer> positions = CacheBuilder.newBuilder().build(CacheLoader.from(verticalPosition));
         Predicate<EventEnd> isValidEnd = new Predicate<EventEnd>() {
             public boolean apply(EventEnd input) {
@@ -108,7 +109,7 @@ public class RefreshGraphicalOrderingOperation extends AbstractModelChangeOperat
                 }
             }
         }));
-        RefreshOrderingHelper.updateIfNeeded(graphicalOrdering.getEventEnds(), allEnds);
+        return RefreshOrderingHelper.updateIfNeeded(graphicalOrdering.getEventEnds(), allEnds);
     }
 
     /**

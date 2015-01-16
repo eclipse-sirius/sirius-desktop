@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -83,6 +84,59 @@ public class SequenceDiagram extends AbstractSequenceElement {
             }
         }
     }
+
+    /**
+     * Indicate if this class should use cache or not. Use
+     * {@link #useCache(boolean))} to enable/disable this mode and {
+     * {@link #clearAllCaches()} to clear caches.
+     */
+    private boolean useCache;
+
+    private List<AbstractNodeEvent> allAbstractNodeEventsCache;
+
+    private List<CombinedFragment> allCombinedFragmentsCache;
+
+    private Set<EndOfLife> allEndOfLifesCache;
+
+    private List<Execution> allExecutionsCache;
+
+    private List<AbstractFrame> allFramesCache;
+
+    private Collection<InstanceRole> allInstanceRolesCache;
+
+    private List<InteractionUse> allInteractionUsesCache;
+
+    private List<Lifeline> allLifelinesCache;
+
+    private Collection<LostMessageEnd> allLostMessageEndCache;
+
+    private List<Message> allMessagesCache;
+
+    private Collection<ObservationPoint> allObservationPointsCache;
+
+    private List<Operand> allOperandsCache;
+
+    private List<State> allStatesCache;
+
+    private LinkedHashSet<AbstractNodeEvent> allOrderedAbstractNodeEventsCache;
+
+    private LinkedHashSet<CombinedFragment> allOrderedCombinedFragmentsCache;
+
+    private Set<ISequenceEvent> allOrderedDelimitedSequenceEventsCache;
+
+    private LinkedHashSet<Execution> allOrderedExecutionsCache;
+
+    private LinkedHashSet<AbstractFrame> allOrderedFramesCache;
+
+    private LinkedHashSet<InteractionUse> allOrderedInteractionUsesCache;
+
+    private List<Lifeline> allOrderedLifelinesCache;
+
+    private LinkedHashSet<Message> allOrderedMessagesCache;
+
+    private LinkedHashSet<Operand> allOrderedOperandsCache;
+
+    private LinkedHashSet<State> allOrderedStatesCache;
 
     /**
      * Constructor.
@@ -170,16 +224,27 @@ public class SequenceDiagram extends AbstractSequenceElement {
      * @return .
      */
     public Collection<InstanceRole> getAllInstanceRoles() {
-        Collection<InstanceRole> result = Lists.newArrayList();
-        for (View child : Iterables.filter(getNotationView().getChildren(), View.class)) {
-            if (InstanceRole.notationPredicate().apply(child)) {
-                Option<InstanceRole> instanceRole = ISequenceElementAccessor.getInstanceRole(child);
-                if (instanceRole.some()) {
-                    result.add(instanceRole.get());
+        Collection<InstanceRole> allInstanceRoles = null;
+        if (useCache) {
+            // Initialize from cache
+            allInstanceRoles = allInstanceRolesCache;
+        }
+        if (allInstanceRoles == null) {
+            allInstanceRoles = Lists.newArrayList();
+            for (View child : Iterables.filter(getNotationView().getChildren(), View.class)) {
+                if (InstanceRole.notationPredicate().apply(child)) {
+                    Option<InstanceRole> instanceRole = ISequenceElementAccessor.getInstanceRole(child);
+                    if (instanceRole.some()) {
+                        allInstanceRoles.add(instanceRole.get());
+                    }
                 }
             }
+            if (useCache) {
+                // Store the result
+                allInstanceRolesCache = allInstanceRoles;
+            }
         }
-        return result;
+        return allInstanceRoles;
     }
 
     /**
@@ -188,15 +253,32 @@ public class SequenceDiagram extends AbstractSequenceElement {
      * @return .
      */
     public List<Lifeline> getAllLifelines() {
-        Collection<InstanceRole> allInstanceRoles = getAllInstanceRoles();
-        Function<ISequenceNode, Lifeline> lifelineFunction = new Function<ISequenceNode, Lifeline>() {
-            public Lifeline apply(ISequenceNode from) {
-                return from.getLifeline().get();
+        List<Lifeline> allLifelines = null;
+        if (useCache) {
+            // Initialize from cache
+            if (allLifelinesCache != null) {
+                allLifelines = Lists.newArrayList(allLifelinesCache);
             }
-        };
-        List<Lifeline> result = Lists.newArrayList(Iterables.transform(allInstanceRoles, lifelineFunction));
-        Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-        return result;
+        }
+        if (allOrderedLifelinesCache == null) {
+            if (allLifelines == null) {
+                allLifelines = Lists.newArrayList();
+                Collection<InstanceRole> allInstanceRoles = getAllInstanceRoles();
+                Function<ISequenceNode, Lifeline> lifelineFunction = new Function<ISequenceNode, Lifeline>() {
+                    public Lifeline apply(ISequenceNode from) {
+                        return from.getLifeline().get();
+                    }
+                };
+                allLifelines = Lists.newArrayList(Iterables.transform(allInstanceRoles, lifelineFunction));
+                if (useCache) {
+                    // Store the result
+                    allLifelinesCache = allLifelines;
+                }
+            }
+            Collections.sort(allLifelines, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+            allOrderedLifelinesCache = Lists.newArrayList(allLifelines);
+        }
+        return allOrderedLifelinesCache;
     }
 
     /**
@@ -208,16 +290,27 @@ public class SequenceDiagram extends AbstractSequenceElement {
      *         not a sequence diagram.
      */
     public Collection<ObservationPoint> getAllObservationPoints() {
-        Collection<ObservationPoint> result = Lists.newArrayList();
-        for (View child : Iterables.filter(getNotationView().getChildren(), View.class)) {
-            if (ObservationPoint.notationPredicate().apply(child)) {
-                Option<ObservationPoint> obsPoint = ISequenceElementAccessor.getObservationPoint(child);
-                if (obsPoint.some()) {
-                    result.add(obsPoint.get());
+        Collection<ObservationPoint> allObservationPoints = null;
+        if (useCache) {
+            // Initialize from cache
+            allObservationPoints = allObservationPointsCache;
+        }
+        if (allObservationPoints == null) {
+            allObservationPoints = Lists.newArrayList();
+            for (View child : Iterables.filter(getNotationView().getChildren(), View.class)) {
+                if (ObservationPoint.notationPredicate().apply(child)) {
+                    Option<ObservationPoint> obsPoint = ISequenceElementAccessor.getObservationPoint(child);
+                    if (obsPoint.some()) {
+                        allObservationPoints.add(obsPoint.get());
+                    }
                 }
             }
+            if (useCache) {
+                // Store the result
+                allObservationPointsCache = allObservationPoints;
+            }
         }
-        return result;
+        return allObservationPoints;
     }
 
     /**
@@ -229,16 +322,27 @@ public class SequenceDiagram extends AbstractSequenceElement {
      *         a sequence diagram.
      */
     public Collection<LostMessageEnd> getAllLostMessageEnds() {
-        Collection<LostMessageEnd> result = Lists.newArrayList();
-        for (View child : Iterables.filter(getNotationView().getChildren(), View.class)) {
-            if (LostMessageEnd.notationPredicate().apply(child)) {
-                Option<LostMessageEnd> lostMessageEnd = ISequenceElementAccessor.getLostMessageEnd(child);
-                if (lostMessageEnd.some()) {
-                    result.add(lostMessageEnd.get());
+        Collection<LostMessageEnd> allLostMessageEnd = null;
+        if (useCache) {
+            // Initialize from cache
+            allLostMessageEnd = allLostMessageEndCache;
+        }
+        if (allLostMessageEnd == null) {
+            allLostMessageEnd = Lists.newArrayList();
+            for (View child : Iterables.filter(getNotationView().getChildren(), View.class)) {
+                if (LostMessageEnd.notationPredicate().apply(child)) {
+                    Option<LostMessageEnd> lostMessageEnd = ISequenceElementAccessor.getLostMessageEnd(child);
+                    if (lostMessageEnd.some()) {
+                        allLostMessageEnd.add(lostMessageEnd.get());
+                    }
                 }
             }
+            if (useCache) {
+                // Store the result
+                allLostMessageEndCache = allLostMessageEnd;
+            }
         }
-        return result;
+        return allLostMessageEnd;
     }
 
     /**
@@ -250,14 +354,36 @@ public class SequenceDiagram extends AbstractSequenceElement {
      *         diagram.
      */
     public Set<Message> getAllMessages() {
-        List<Message> result = Lists.newArrayList();
-        for (Edge edge : Iterables.filter(Iterables.filter(getNotationDiagram().getEdges(), Edge.class), Message.notationPredicate())) {
-            Option<Message> message = ISequenceElementAccessor.getMessage(edge);
-            assert message.some() : INTERNAL_ERROR;
-            result.add(message.get());
+        List<Message> allMessages = null;
+        LinkedHashSet<Message> allOrderedMessages = null;
+        if (useCache) {
+            // Initialize from cache
+            if (allMessagesCache != null) {
+                allMessages = Lists.newArrayList(allMessagesCache);
+            }
+            allOrderedMessages = allOrderedMessagesCache;
         }
-        Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-        return Sets.newLinkedHashSet(result);
+        if (allOrderedMessages == null) {
+            if (allMessages == null) {
+                allMessages = Lists.newArrayList();
+                for (Edge edge : Iterables.filter(Iterables.filter(getNotationDiagram().getEdges(), Edge.class), Message.notationPredicate())) {
+                    Option<Message> message = ISequenceElementAccessor.getMessage(edge);
+                    assert message.some() : INTERNAL_ERROR;
+                    allMessages.add(message.get());
+                }
+                if (useCache) {
+                    // Store the result
+                    allMessagesCache = allMessages;
+                }
+            }
+            Collections.sort(allMessages, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+            allOrderedMessages = Sets.newLinkedHashSet(allMessages);
+            if (useCache) {
+                // Store the result
+                allOrderedMessagesCache = allOrderedMessages;
+            }
+        }
+        return allOrderedMessages;
     }
 
     /**
@@ -266,14 +392,36 @@ public class SequenceDiagram extends AbstractSequenceElement {
      * @return all AbstractNodeEvent on the given diagram.
      */
     public Set<AbstractNodeEvent> getAllAbstractNodeEvents() {
-        List<AbstractNodeEvent> result = Lists.newArrayList();
-        for (Node node : Iterables.filter(Iterables.filter(AllContents.of(getNotationDiagram()), Node.class), AbstractNodeEvent.notationPredicate())) {
-            Option<AbstractNodeEvent> exec = ISequenceElementAccessor.getAbstractNodeEvent(node);
-            assert exec.some() : INTERNAL_ERROR;
-            result.add(exec.get());
+        List<AbstractNodeEvent> allAbstractNodeEvents = null;
+        LinkedHashSet<AbstractNodeEvent> allOrderedAbstractNodeEvents = null;
+        if (useCache) {
+            // Initialize from cache
+            if (allAbstractNodeEventsCache != null) {
+                allAbstractNodeEvents = Lists.newArrayList(allAbstractNodeEventsCache);
+            }
+            allOrderedAbstractNodeEvents = allOrderedAbstractNodeEventsCache;
         }
-        Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-        return Sets.newLinkedHashSet(result);
+        if (allOrderedAbstractNodeEvents == null) {
+            if (allAbstractNodeEvents == null) {
+                allAbstractNodeEvents = Lists.newArrayList();
+                for (Node node : Iterables.filter(Iterables.filter(AllContents.of(getNotationDiagram()), Node.class), AbstractNodeEvent.notationPredicate())) {
+                    Option<AbstractNodeEvent> exec = ISequenceElementAccessor.getAbstractNodeEvent(node);
+                    assert exec.some() : INTERNAL_ERROR;
+                    allAbstractNodeEvents.add(exec.get());
+                }
+                if (useCache) {
+                    // Store the result
+                    allAbstractNodeEventsCache = allAbstractNodeEvents;
+                }
+            }
+            Collections.sort(allAbstractNodeEvents, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+            allOrderedAbstractNodeEvents = Sets.newLinkedHashSet(allAbstractNodeEvents);
+            if (useCache) {
+                // Store the result
+                allOrderedAbstractNodeEventsCache = allOrderedAbstractNodeEvents;
+            }
+        }
+        return allOrderedAbstractNodeEvents;
     }
 
     /**
@@ -282,14 +430,36 @@ public class SequenceDiagram extends AbstractSequenceElement {
      * @return all executions on the given diagram.
      */
     public Set<Execution> getAllExecutions() {
-        List<Execution> result = Lists.newArrayList();
-        for (Node node : Iterables.filter(Iterables.filter(AllContents.of(getNotationDiagram()), Node.class), Execution.notationPredicate())) {
-            Option<Execution> exec = ISequenceElementAccessor.getExecution(node);
-            assert exec.some() : INTERNAL_ERROR;
-            result.add(exec.get());
+        List<Execution> allExecutions = null;
+        LinkedHashSet<Execution> allOrderedExecutions = null;
+        if (useCache) {
+            // Initialize from cache
+            if (allExecutionsCache != null) {
+                allExecutions = Lists.newArrayList(allExecutionsCache);
+            }
+            allOrderedExecutions = allOrderedExecutionsCache;
         }
-        Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-        return Sets.newLinkedHashSet(result);
+        if (allOrderedExecutions == null) {
+            if (allExecutions == null) {
+                allExecutions = Lists.newArrayList();
+                for (Node node : Iterables.filter(Iterables.filter(AllContents.of(getNotationDiagram()), Node.class), Execution.notationPredicate())) {
+                    Option<Execution> exec = ISequenceElementAccessor.getExecution(node);
+                    assert exec.some() : INTERNAL_ERROR;
+                    allExecutions.add(exec.get());
+                }
+                if (useCache) {
+                    // Store the result
+                    allExecutionsCache = allExecutions;
+                }
+            }
+            Collections.sort(allExecutions, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+            allOrderedExecutions = Sets.newLinkedHashSet(allExecutions);
+            if (useCache) {
+                // Store the result
+                allOrderedExecutionsCache = allOrderedExecutions;
+            }
+        }
+        return allOrderedExecutions;
     }
 
     /**
@@ -298,14 +468,36 @@ public class SequenceDiagram extends AbstractSequenceElement {
      * @return all executions on the given diagram.
      */
     public Set<State> getAllStates() {
-        List<State> result = Lists.newArrayList();
-        for (Node node : Iterables.filter(Iterables.filter(AllContents.of(getNotationDiagram()), Node.class), State.notationPredicate())) {
-            Option<State> exec = ISequenceElementAccessor.getState(node);
-            assert exec.some() : INTERNAL_ERROR;
-            result.add(exec.get());
+        List<State> allStates = null;
+        LinkedHashSet<State> allOrderedStates = null;
+        if (useCache) {
+            // Initialize from cache
+            if (allOperandsCache != null) {
+                allStates = Lists.newArrayList(allStatesCache);
+            }
+            allOrderedStates = allOrderedStatesCache;
         }
-        Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-        return Sets.newLinkedHashSet(result);
+        if (allOrderedStates == null) {
+            if (allStates == null) {
+                allStates = Lists.newArrayList();
+                for (Node node : Iterables.filter(Iterables.filter(AllContents.of(getNotationDiagram()), Node.class), State.notationPredicate())) {
+                    Option<State> exec = ISequenceElementAccessor.getState(node);
+                    assert exec.some() : INTERNAL_ERROR;
+                    allStates.add(exec.get());
+                }
+                if (useCache) {
+                    // Store the result
+                    allStatesCache = allStates;
+                }
+            }
+            Collections.sort(allStates, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+            allOrderedStates = Sets.newLinkedHashSet(allStates);
+            if (useCache) {
+                // Store the result
+                allOrderedStatesCache = allOrderedStates;
+            }
+        }
+        return allOrderedStates;
     }
 
     /**
@@ -314,16 +506,38 @@ public class SequenceDiagram extends AbstractSequenceElement {
      * @return all frames on the given diagram.
      */
     public Collection<AbstractFrame> getAllFrames() {
-        List<AbstractFrame> result = Lists.newArrayList();
-        for (Node node : Iterables.filter(Iterables.filter(getNotationDiagram().getChildren(), Node.class), AbstractFrame.notationPredicate())) {
-            Option<ISequenceEvent> exec = ISequenceElementAccessor.getISequenceEvent(node);
-            assert exec.some() : INTERNAL_ERROR;
-            if (exec.get() instanceof AbstractFrame) {
-                result.add((AbstractFrame) exec.get());
+        List<AbstractFrame> allFrames = null;
+        LinkedHashSet<AbstractFrame> allOrderedFrames = null;
+        if (useCache) {
+            // Initialize from cache
+            if (allExecutionsCache != null) {
+                allFrames = Lists.newArrayList(allFramesCache);
+            }
+            allOrderedFrames = allOrderedFramesCache;
+        }
+        if (allOrderedFrames == null) {
+            if (allFrames == null) {
+                allFrames = Lists.newArrayList();
+                for (Node node : Iterables.filter(Iterables.filter(getNotationDiagram().getChildren(), Node.class), AbstractFrame.notationPredicate())) {
+                    Option<ISequenceEvent> exec = ISequenceElementAccessor.getISequenceEvent(node);
+                    assert exec.some() : INTERNAL_ERROR;
+                    if (exec.get() instanceof AbstractFrame) {
+                        allFrames.add((AbstractFrame) exec.get());
+                    }
+                }
+                if (useCache) {
+                    // Store the result
+                    allFramesCache = allFrames;
+                }
+            }
+            Collections.sort(allFrames, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+            allOrderedFrames = Sets.newLinkedHashSet(allFrames);
+            if (useCache) {
+                // Store the result
+                allOrderedFramesCache = allOrderedFrames;
             }
         }
-        Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-        return Sets.newLinkedHashSet(result);
+        return allOrderedFrames;
     }
 
     /**
@@ -332,14 +546,36 @@ public class SequenceDiagram extends AbstractSequenceElement {
      * @return all interaction uses on the given diagram.
      */
     public Set<InteractionUse> getAllInteractionUses() {
-        List<InteractionUse> result = Lists.newArrayList();
-        for (Node node : Iterables.filter(Iterables.filter(getNotationDiagram().getChildren(), Node.class), InteractionUse.notationPredicate())) {
-            Option<InteractionUse> exec = ISequenceElementAccessor.getInteractionUse(node);
-            assert exec.some() : INTERNAL_ERROR;
-            result.add(exec.get());
+        List<InteractionUse> allInteractionUses = null;
+        LinkedHashSet<InteractionUse> allOrderedInteractionUses = null;
+        if (useCache) {
+            // Initialize from cache
+            if (allInteractionUsesCache != null) {
+                allInteractionUses = Lists.newArrayList(allInteractionUsesCache);
+            }
+            allOrderedInteractionUses = allOrderedInteractionUsesCache;
         }
-        Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-        return Sets.newLinkedHashSet(result);
+        if (allOrderedInteractionUses == null) {
+            if (allInteractionUses == null) {
+                allInteractionUses = Lists.newArrayList();
+                for (Node node : Iterables.filter(Iterables.filter(getNotationDiagram().getChildren(), Node.class), InteractionUse.notationPredicate())) {
+                    Option<InteractionUse> exec = ISequenceElementAccessor.getInteractionUse(node);
+                    assert exec.some() : INTERNAL_ERROR;
+                    allInteractionUses.add(exec.get());
+                }
+                if (useCache) {
+                    // Store the result
+                    allInteractionUsesCache = allInteractionUses;
+                }
+            }
+            Collections.sort(allInteractionUses, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+            allOrderedInteractionUses = Sets.newLinkedHashSet(allInteractionUses);
+            if (useCache) {
+                // Store the result
+                allOrderedInteractionUsesCache = allOrderedInteractionUses;
+            }
+        }
+        return allOrderedInteractionUses;
     }
 
     /**
@@ -348,14 +584,36 @@ public class SequenceDiagram extends AbstractSequenceElement {
      * @return all combined fragments on the given diagram.
      */
     public Set<CombinedFragment> getAllCombinedFragments() {
-        List<CombinedFragment> result = Lists.newArrayList();
-        for (Node node : Iterables.filter(Iterables.filter(getNotationDiagram().getChildren(), Node.class), CombinedFragment.notationPredicate())) {
-            Option<CombinedFragment> exec = ISequenceElementAccessor.getCombinedFragment(node);
-            assert exec.some() : INTERNAL_ERROR;
-            result.add(exec.get());
+        List<CombinedFragment> allCombinedFragments = null;
+        LinkedHashSet<CombinedFragment> allOrderedCombinedFragments = null;
+        if (useCache) {
+            // Initialize from cache
+            if (allCombinedFragmentsCache != null) {
+                allCombinedFragments = Lists.newArrayList(allCombinedFragmentsCache);
+            }
+            allOrderedCombinedFragments = allOrderedCombinedFragmentsCache;
         }
-        Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-        return Sets.newLinkedHashSet(result);
+        if (allOrderedCombinedFragments == null) {
+            if (allCombinedFragments == null) {
+                allCombinedFragments = Lists.newArrayList();
+                for (Node node : Iterables.filter(Iterables.filter(getNotationDiagram().getChildren(), Node.class), CombinedFragment.notationPredicate())) {
+                    Option<CombinedFragment> exec = ISequenceElementAccessor.getCombinedFragment(node);
+                    assert exec.some() : INTERNAL_ERROR;
+                    allCombinedFragments.add(exec.get());
+                }
+                if (useCache) {
+                    // Store the result
+                    allCombinedFragmentsCache = allCombinedFragments;
+                }
+            }
+            Collections.sort(allCombinedFragments, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+            allOrderedCombinedFragments = Sets.newLinkedHashSet(allCombinedFragments);
+            if (useCache) {
+                // Store the result
+                allOrderedCombinedFragmentsCache = allOrderedCombinedFragments;
+            }
+        }
+        return allOrderedCombinedFragments;
     }
 
     /**
@@ -364,14 +622,36 @@ public class SequenceDiagram extends AbstractSequenceElement {
      * @return all operands on the given diagram.
      */
     public Set<Operand> getAllOperands() {
-        List<Operand> result = Lists.newArrayList();
-        for (Node node : Iterables.filter(Iterables.filter(AllContents.of(getNotationDiagram()), Node.class), Operand.notationPredicate())) {
-            Option<Operand> exec = ISequenceElementAccessor.getOperand(node);
-            assert exec.some() : INTERNAL_ERROR;
-            result.add(exec.get());
+        List<Operand> allOperands = null;
+        LinkedHashSet<Operand> allOrderedOperands = null;
+        if (useCache) {
+            // Initialize from cache
+            if (allOperandsCache != null) {
+                allOperands = Lists.newArrayList(allOperandsCache);
+            }
+            allOrderedOperands = allOrderedOperandsCache;
         }
-        Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-        return Sets.newLinkedHashSet(result);
+        if (allOrderedOperands == null) {
+            if (allOperands == null) {
+                allOperands = Lists.newArrayList();
+                for (Node node : Iterables.filter(Iterables.filter(AllContents.of(getNotationDiagram()), Node.class), Operand.notationPredicate())) {
+                    Option<Operand> exec = ISequenceElementAccessor.getOperand(node);
+                    assert exec.some() : INTERNAL_ERROR;
+                    allOperands.add(exec.get());
+                }
+                if (useCache) {
+                    // Store the result
+                    allOperandsCache = allOperands;
+                }
+            }
+            Collections.sort(allOperands, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+            allOrderedOperands = Sets.newLinkedHashSet(allOperands);
+            if (useCache) {
+                // Store the result
+                allOrderedOperandsCache = allOrderedOperands;
+            }
+        }
+        return allOrderedOperands;
     }
 
     /**
@@ -380,10 +660,21 @@ public class SequenceDiagram extends AbstractSequenceElement {
      * @return all endOfLifes on the given diagram.
      */
     public Set<EndOfLife> getAllEndOfLifes() {
-        Set<EndOfLife> allEndOfLifes = new HashSet<EndOfLife>();
-        for (Lifeline lifeline : getAllLifelines()) {
-            if (lifeline.getEndOfLife().some()) {
-                allEndOfLifes.add(lifeline.getEndOfLife().get());
+        Set<EndOfLife> allEndOfLifes = null;
+        if (useCache) {
+            // Initialize from cache
+            allEndOfLifes = allEndOfLifesCache;
+        }
+        if (allEndOfLifes == null) {
+            allEndOfLifes = new HashSet<EndOfLife>();
+            for (Lifeline lifeline : getAllLifelines()) {
+                if (lifeline.getEndOfLife().some()) {
+                    allEndOfLifes.add(lifeline.getEndOfLife().get());
+                }
+            }
+            if (useCache) {
+                // Store the result
+                allEndOfLifesCache = allEndOfLifes;
             }
         }
         return allEndOfLifes;
@@ -396,11 +687,23 @@ public class SequenceDiagram extends AbstractSequenceElement {
      * @return all sequence events on the given diagram.
      */
     public Set<ISequenceEvent> getAllOrderedDelimitedSequenceEvents() {
-        List<ISequenceEvent> result = Lists.newArrayList();
-        Iterables.addAll(result, getAllDelimitedSequenceEvents());
+        Set<ISequenceEvent> allOrderedDelimitedSequenceEvents = null;
+        if (useCache) {
+            // Initialize from cache
+            allOrderedDelimitedSequenceEvents = allOrderedDelimitedSequenceEventsCache;
+        }
+        if (allOrderedDelimitedSequenceEvents == null) {
+            List<ISequenceEvent> result = Lists.newArrayList();
+            Iterables.addAll(result, getAllDelimitedSequenceEvents());
 
-        Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
-        return Sets.newLinkedHashSet(result);
+            Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+            allOrderedDelimitedSequenceEvents = Sets.newLinkedHashSet(result);
+            if (useCache) {
+                // Store the result
+                allOrderedDelimitedSequenceEventsCache = allOrderedDelimitedSequenceEvents;
+            }
+        }
+        return allOrderedDelimitedSequenceEvents;
     }
 
     /**
@@ -457,6 +760,53 @@ public class SequenceDiagram extends AbstractSequenceElement {
      */
     public Rectangle getProperLogicalBounds() {
         return new Rectangle(0, 0, 0, 0);
+    }
+
+    /**
+     * Enable/Disable the cache mode.
+     * 
+     * @param newStatus
+     *            the new status for the cache mode
+     */
+    public void useCache(boolean newStatus) {
+        this.useCache = newStatus;
+    }
+
+    /**
+     * Clear all the caches.
+     */
+    public void clearAllCaches() {
+        this.allAbstractNodeEventsCache = null;
+        this.allCombinedFragmentsCache = null;
+        this.allEndOfLifesCache = null;
+        this.allExecutionsCache = null;
+        this.allFramesCache = null;
+        this.allInstanceRolesCache = null;
+        this.allInteractionUsesCache = null;
+        this.allLifelinesCache = null;
+        this.allLostMessageEndCache = null;
+        this.allMessagesCache = null;
+        this.allObservationPointsCache = null;
+        this.allOperandsCache = null;
+        this.allStatesCache = null;
+        clearOrderedCaches();
+    }
+
+    /**
+     * Clear all the ordered caches. The order has been changed and it must be
+     * computed again.
+     */
+    public void clearOrderedCaches() {
+        this.allOrderedAbstractNodeEventsCache = null;
+        this.allOrderedCombinedFragmentsCache = null;
+        this.allOrderedDelimitedSequenceEventsCache = null;
+        this.allOrderedExecutionsCache = null;
+        this.allOrderedFramesCache = null;
+        this.allOrderedInteractionUsesCache = null;
+        this.allOrderedLifelinesCache = null;
+        this.allOrderedMessagesCache = null;
+        this.allOrderedOperandsCache = null;
+        this.allOrderedStatesCache = null;
     }
 
 }

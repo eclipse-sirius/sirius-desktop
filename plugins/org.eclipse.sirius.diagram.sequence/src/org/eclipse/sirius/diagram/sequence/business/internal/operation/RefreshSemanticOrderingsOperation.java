@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,7 +51,7 @@ import com.google.common.collect.Maps;
  * 
  * @author pcdavid, smonnier
  */
-public class RefreshSemanticOrderingsOperation extends AbstractModelChangeOperation<Void> {
+public class RefreshSemanticOrderingsOperation extends AbstractModelChangeOperation<Boolean> {
     /**
      * The name of the variable used to pass event ends to sort to
      * user-specified expressions.
@@ -75,27 +75,28 @@ public class RefreshSemanticOrderingsOperation extends AbstractModelChangeOperat
      * {@inheritDoc}
      */
     @Override
-    public Void execute() {
+    public Boolean execute() {
+        boolean changed = false;
         EventEndsOrdering semanticOrdering = sequenceDDiagram.getSemanticOrdering();
         if (semanticOrdering != null) {
-            refreshGlobalOrdering(semanticOrdering);
+            changed = refreshGlobalOrdering(semanticOrdering) || changed;
         }
 
         InstanceRolesOrdering irSemanticOrdering = sequenceDDiagram.getInstanceRoleSemanticOrdering();
         if (semanticOrdering != null) {
-            refreshGlobalOrdering(irSemanticOrdering);
+            changed = refreshGlobalOrdering(irSemanticOrdering) || changed;
         }
-        return null;
+        return changed;
     }
 
     /**
      * Refreshes the semantic ordering of all the events in the diagram.
-     * <p>
-     * {@inheritDoc}
+     * 
+     * @return true if there is changes during this refresh, false otherwise.
      */
-    private void refreshGlobalOrdering(EventEndsOrdering semanticOrdering) {
+    private boolean refreshGlobalOrdering(EventEndsOrdering semanticOrdering) {
         Iterable<? extends EventEnd> allEnds = RefreshOrderingHelper.getAllEventEnds(sequenceDDiagram);
-        RefreshOrderingHelper.updateIfNeeded(semanticOrdering.getEventEnds(), computeEventEndsOrdering(semanticOrdering, allEnds));
+        return RefreshOrderingHelper.updateIfNeeded(semanticOrdering.getEventEnds(), computeEventEndsOrdering(semanticOrdering, allEnds));
     }
 
     private List<EventEnd> computeEventEndsOrdering(EventEndsOrdering semanticOrdering, Iterable<? extends EventEnd> allEnds) {
@@ -124,10 +125,12 @@ public class RefreshSemanticOrderingsOperation extends AbstractModelChangeOperat
 
     /**
      * Refreshes the semantic ordering of all the instance roles in the diagram.
+     * 
+     * @return true if there is changes during this refresh, false otherwise.
      */
-    private void refreshGlobalOrdering(InstanceRolesOrdering semanticOrdering) {
+    private boolean refreshGlobalOrdering(InstanceRolesOrdering semanticOrdering) {
         Iterable<? extends DNode> allInstanceRoles = Iterables.filter(sequenceDDiagram.getNodes(), InstanceRole.viewpointElementPredicate());
-        RefreshOrderingHelper.updateIfNeeded(semanticOrdering.getSemanticInstanceRoles(), computeInstanceRolesOrdering(semanticOrdering, allInstanceRoles));
+        return RefreshOrderingHelper.updateIfNeeded(semanticOrdering.getSemanticInstanceRoles(), computeInstanceRolesOrdering(semanticOrdering, allInstanceRoles));
     }
 
     private List<EObject> computeInstanceRolesOrdering(InstanceRolesOrdering semanticOrdering, Iterable<? extends DNode> allInstanceRoles) {
