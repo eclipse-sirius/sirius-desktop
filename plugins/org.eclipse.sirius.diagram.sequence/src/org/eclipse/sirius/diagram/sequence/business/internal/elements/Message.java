@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -114,8 +114,7 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
     }
 
     /**
-     * Predicate to check whether a Sirius DDiagramElement represents a
-     * message.
+     * Predicate to check whether a Sirius DDiagramElement represents a message.
      */
     private static enum SiriusElementPredicate implements Predicate<DDiagramElement> {
         INSTANCE;
@@ -146,11 +145,11 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
     }
 
     /**
-     * Returns a predicate to check whether a Sirius DDiagramElement
-     * represents a message.
+     * Returns a predicate to check whether a Sirius DDiagramElement represents
+     * a message.
      * 
-     * @return a predicate to check whether a Sirius DDiagramElement
-     *         represents a message.
+     * @return a predicate to check whether a Sirius DDiagramElement represents
+     *         a message.
      */
     public static Predicate<DDiagramElement> viewpointElementPredicate() {
         return SiriusElementPredicate.INSTANCE;
@@ -293,10 +292,10 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
      */
     public Rectangle getProperLogicalBounds() {
         Range range = getVerticalRange();
-        
+
         ISequenceNode srcElement = getSourceElement();
         ISequenceNode tgtElement = getTargetElement();
-        
+
         Rectangle srcLogicalBounds = srcElement.getProperLogicalBounds().getCopy();
         Rectangle tgtLogicalBounds = tgtElement.getProperLogicalBounds().getCopy();
 
@@ -315,11 +314,11 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
             srcX = srcLogicalBounds.getLeft().x;
             tgtX = tgtLogicalBounds.getRight().x;
         }
-        
+
         if (srcElement instanceof Lifeline) {
             srcX = srcLogicalBounds.getCenter().x;
         }
-        
+
         if (tgtElement instanceof Lifeline) {
             tgtX = tgtLogicalBounds.getCenter().x;
         }
@@ -401,14 +400,15 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
     public Option<Operand> getParentOperand() {
         Option<Lifeline> sourceLifeline = getSourceLifeline();
         Option<Operand> sourceParentOperand = Options.newNone();
+        Range verticalRange = getVerticalRange();
         if (sourceLifeline.some()) {
-            sourceParentOperand = sourceLifeline.get().getParentOperand(getVerticalRange());
+            sourceParentOperand = sourceLifeline.get().getParentOperand(verticalRange);
         }
 
         Option<Lifeline> targetLifeline = getTargetLifeline();
         Option<Operand> targetParentOperand = Options.newNone();
         if (targetLifeline.some()) {
-            targetParentOperand = targetLifeline.get().getParentOperand(getVerticalRange());
+            targetParentOperand = targetLifeline.get().getParentOperand(verticalRange);
         }
 
         boolean noOperand = !sourceParentOperand.some() && !targetParentOperand.some();

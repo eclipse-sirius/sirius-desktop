@@ -146,8 +146,9 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
         for (Lifeline lifeline : coveredLifelines) {
             EventFinder finder = new EventFinder(lifeline);
             finder.setEventsToIgnore(Predicates.equalTo((ISequenceEvent) this));
-            ISequenceEvent localParent = finder.findMostSpecificEvent(this.getVerticalRange());
-            if (localParent != null && localParent.getVerticalRange().includes(this.getVerticalRange())) {
+            Range verticalRange = this.getVerticalRange();
+            ISequenceEvent localParent = finder.findMostSpecificEvent(verticalRange);
+            if (localParent != null && localParent.getVerticalRange().includes(verticalRange)) {
                 parentEvents.add(localParent);
             }
         }
