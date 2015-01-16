@@ -19,8 +19,6 @@ import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEdi
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
 /**
  * Test the Palette View Mangement. - Test the view Palette with representation
@@ -45,6 +43,8 @@ public class PaletteViewManagementTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String REPRESENTATION_NAME_2 = "root package entities Archetype";
 
     private static final String VIEW_NAME_PALETTE = "Palette";
+
+    private SWTBotView paletteView;
 
     /**
      * {@inheritDoc}
@@ -200,12 +200,7 @@ public class PaletteViewManagementTest extends AbstractSiriusSwtBotGefTestCase {
      */
     private void openView(String category, String viewName) {
         SWTBotUtils.waitAllUiEvents();
-        bot.menu("Window").menu("Show View").menu("Other...").click();
-        bot.shell("Show View").activate();
-        SWTBotTree tree = bot.tree();
-        SWTBotTreeItem expandNode = tree.expandNode(category);
-        expandNode.select(viewName).click();
-        bot.button("OK").click();
+        paletteView = designerViews.openViewByAPI("org.eclipse.gef.ui.palette_view", VIEW_NAME_PALETTE);
     }
 
     /**
@@ -215,8 +210,7 @@ public class PaletteViewManagementTest extends AbstractSiriusSwtBotGefTestCase {
      *            the view name
      */
     private void closeView(String viewName) {
-        SWTBotView view = bot.viewByTitle(VIEW_NAME_PALETTE);
-        view.close();
+        paletteView.close();
     }
 
     /**
