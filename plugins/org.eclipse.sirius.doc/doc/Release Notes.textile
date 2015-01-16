@@ -45,6 +45,7 @@ h4. Changes in @org.eclipse.sirius.common@
 * @org.eclipse.sirius.common.tools.api.resource.ResourceSetSync@ has a new state @CHANGES_CANCELED@ used to define the state where the user canceled its changes.
 * The @org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer.enableResolve()@  and @disableResolve()@  methods has been moved to @SiriusCrossReferenceAdapter.enableResolveProxy()@  and @disableResolveProxy()@.
 * The @org.eclipse.sirius.common.tools.api.resource.ImageFileFormat@ class has been added (it was in @org.eclipse.sirius.ext.swt@ before).
+* The interface @org.eclipse.sirius.business.api.migration.IMigrationParticipant@ exposes a new method @postXMLEndElement([..])@ which is called during a migration operation. This method should be overrided by participants which have to hook the loading process after each end of XML tag. The  corresponding abstract class @org.eclipse.sirius.business.api.migration.AbstractMigrationParticipant@ provides a default NO-OP implementation.
 
 h4. Changes in @org.eclipse.sirius.ecore.extender@
 

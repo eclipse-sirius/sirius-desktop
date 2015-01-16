@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.xml.type.AnyType;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.osgi.framework.Version;
+import org.xml.sax.Attributes;
 
 /**
  * Abstract {@link IMigrationParticipant} implementation providing:
@@ -153,6 +154,14 @@ public abstract class AbstractMigrationParticipant implements IMigrationParticip
     @Override
     public EObject updateCreatedObject(EObject newObject, String loadedVersion) {
         return newObject;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void postXMLEndElement(Object doneObject, Attributes xmlAttributes, String uri, String localName, String qName, String loadedVersion) {
+        // nothing to do by default.
     }
 
 }

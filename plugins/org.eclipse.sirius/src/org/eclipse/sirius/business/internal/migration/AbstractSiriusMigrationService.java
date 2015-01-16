@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,6 +33,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.osgi.framework.Version;
+import org.xml.sax.Attributes;
 
 /**
  * Abstract migration service. Provides services to load and delegate to
@@ -42,6 +43,13 @@ import org.osgi.framework.Version;
  * 
  */
 public abstract class AbstractSiriusMigrationService {
+
+    /**
+     * This option is passed during a resource load if a migration should
+     * be done. The value contains a string representation of the loaded
+     * version.
+     */
+    public static final String OPTION_RESOURCE_MIGRATION_LOADEDVERSION = "RESOURCE_MIGRATION_LOADEDVERSION";
 
     // This migration way was introduced with 6.5.0.201208161001 version
     // for both VSM and representations files.
@@ -295,4 +303,35 @@ public abstract class AbstractSiriusMigrationService {
         }
         return returnedValue;
     }
+
+    /**
+     * Called after the processing of an XML end tag. This method is useful for
+     * migration logic which needs to access XML Attributes which are not mapped
+     * with the Ecore model in any way.
+     * 
+     * @param doneObject
+     *            the current Object in the parsing stack.
+     * @param xmlAttributes
+     *            the xml attributes of the tag which just got closed.
+     * @param uri
+     *            The Namespace URI, or the empty string if the element has no
+     *            Namespace URI or if Namespace processing is not being
+     *            performed.
+     * @param localName
+     *            the local name (without prefix), or the empty string if
+     *            Namespace processing is not being performed.
+     * @param qName
+     *            the qualified XML name (with prefix), or the empty string if
+     *            qualified names are not available.
+     * @param loadedVersion
+     *            the version of current loading model
+     * 
+     */
+    public void postXMLEndElement(Object doneObject, Attributes xmlAttributes, String uri, String localName, String qName, String loadedVersion) {
+        for (IMigrationParticipant contribution : delegatesParticipants) {
+            contribution.postXMLEndElement(doneObject, xmlAttributes, uri, localName, qName, loadedVersion);
+        }
+
+    }
+
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLParserPoolImpl;
+import org.eclipse.sirius.business.internal.migration.AbstractSiriusMigrationService;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileExtendedMetaData;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileResourceHandler;
@@ -108,7 +109,7 @@ public class AirDResourceFactory extends XMIResourceFactoryImpl {
             resourceHandler = new RepresentationsFileResourceHandler(loadedVersion);
         }
         final XMIResource resource = doCreateAirdResourceImpl(uri);
-        setLoadOptions(resource, migrationIsNeeded);
+        setLoadOptions(resource, migrationIsNeeded, loadedVersion);
         setSaveOptions(resource, migrationIsNeeded);
 
         if (!resource.getEncoding().equals(XMI_ENCODING)) {
@@ -139,7 +140,7 @@ public class AirDResourceFactory extends XMIResourceFactoryImpl {
      *            the resource being loaded
      * @param migrationIsNeeded
      */
-    private void setLoadOptions(XMIResource resource, boolean migrationIsNeeded) {
+    private void setLoadOptions(XMIResource resource, boolean migrationIsNeeded, String loadedVersion) {
 
         final Map<Object, Object> options = new HashMap<Object, Object>();
         /* default load options. */
@@ -155,6 +156,11 @@ public class AirDResourceFactory extends XMIResourceFactoryImpl {
         if (migrationIsNeeded) {
             options.put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
             options.put(XMLResource.OPTION_RESOURCE_HANDLER, resourceHandler);
+            /**
+             * This option is passed so that the resource can decide to adapt
+             * the load mechanism depending on the loaded version.
+             */
+            options.put(AbstractSiriusMigrationService.OPTION_RESOURCE_MIGRATION_LOADEDVERSION, loadedVersion);
         }
 
         options.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);

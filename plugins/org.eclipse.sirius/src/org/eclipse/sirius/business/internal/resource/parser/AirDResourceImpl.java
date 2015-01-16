@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,9 +17,12 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.xmi.XMLHelper;
+import org.eclipse.emf.ecore.xmi.XMLLoad;
 import org.eclipse.gmf.runtime.emf.core.resources.GMFResource;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;
 import org.eclipse.sirius.business.api.session.resource.DResource;
+import org.eclipse.sirius.business.internal.migration.AbstractSiriusMigrationService;
+import org.eclipse.sirius.business.internal.migration.AirdResourceXMILoad;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.ext.base.Option;
@@ -119,8 +122,19 @@ public class AirDResourceImpl extends GMFResource implements DResource, AirdReso
 
     @Override
     protected XMLHelper createXMLHelper() {
-
         return new RepresentationsFileXMIHelper(this);
+    }
+
+    @Override
+    protected XMLLoad createXMLLoad(Map<?, ?> options) {
+        if (options != null) {
+            Object loadedVersion = options.get(AbstractSiriusMigrationService.OPTION_RESOURCE_MIGRATION_LOADEDVERSION);
+            if (loadedVersion instanceof String) {
+                return new AirdResourceXMILoad((String) loadedVersion, createXMLHelper());
+            }
+        }
+        return createXMLLoad();
+
     }
 
     /**
@@ -138,4 +152,5 @@ public class AirDResourceImpl extends GMFResource implements DResource, AirdReso
             return super.getEObject(uriFragment);
         }
     }
+
 }
