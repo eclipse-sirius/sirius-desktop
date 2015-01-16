@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -160,8 +160,9 @@ public class FrameCreationValidator extends AbstractSequenceInteractionValidator
             SortedSet<ISequenceEvent> overlapped = Sets.newTreeSet(new RangeComparator());
             overlapped.addAll(sequenceEventsInCreationRange.values());
             for (ISequenceEvent ise : Iterables.filter(overlapped, Predicates.not(Predicates.in(localParents)))) {
-                if (ise.getVerticalRange().getLowerBound() >= creationRange.getLowerBound()) {
-                    Range newExpansionZone = new Range(ise.getVerticalRange().getLowerBound() - 1, creationRange.getUpperBound());
+                int lowerBound = ise.getVerticalRange().getLowerBound();
+                if (lowerBound >= creationRange.getLowerBound()) {
+                    Range newExpansionZone = new Range(lowerBound - 1, creationRange.getUpperBound());
                     expansionZone = expansionZone.union(newExpansionZone);
                     break;
                 }
