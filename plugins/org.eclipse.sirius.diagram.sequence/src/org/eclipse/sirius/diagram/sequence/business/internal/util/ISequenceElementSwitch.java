@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -66,9 +66,12 @@ public class ISequenceElementSwitch<T> {
         if (element.getNotationView().getElement() instanceof DDiagramElement) {
             dde = (DDiagramElement) element.getNotationView().getElement();
         }
-        if (dde != null && dde.getDiagramElementMapping() != null) {
-            DiagramElementMapping mappingToCheck = new DiagramElementMappingQuery(dde.getDiagramElementMapping()).getRootMapping();
-            return doSwitch(mappingToCheck, element);
+        if (dde != null) {
+            DiagramElementMapping mapping = dde.getDiagramElementMapping();
+            if (mapping != null) {
+                DiagramElementMapping mappingToCheck = new DiagramElementMappingQuery(mapping).getRootMapping();
+                return doSwitch(mappingToCheck, element);
+            }
         }
         return null;
     }

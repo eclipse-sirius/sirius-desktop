@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.profiler.ProfilerTask;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.EventFinder;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.ParentOperandFinder;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
@@ -91,17 +92,20 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
         Collection<Lifeline> coveredLifelines = Lists.newArrayList();
 
         EObject element = getNotationNode().getElement();
-        if (element instanceof DDiagramElement && ((DDiagramElement) element).getDiagramElementMapping() instanceof FrameMapping) {
+        if (element instanceof DDiagramElement) {
             DDiagramElement dde = (DDiagramElement) element;
-            FrameMapping mapping = (FrameMapping) dde.getDiagramElementMapping();
-            EObject semanticInteractionUse = dde.getTarget();
-            IInterpreter interpreter = InterpreterUtil.getInterpreter(semanticInteractionUse);
+            DiagramElementMapping diagramElementMapping = dde.getDiagramElementMapping();
+            if (diagramElementMapping instanceof FrameMapping) {
+                FrameMapping mapping = (FrameMapping) diagramElementMapping;
+                EObject semanticInteractionUse = dde.getTarget();
+                IInterpreter interpreter = InterpreterUtil.getInterpreter(semanticInteractionUse);
 
-            if (interpreter != null && !StringUtil.isEmpty(mapping.getCoveredLifelinesExpression())) {
-                try {
-                    semLifelines = interpreter.evaluateCollection(semanticInteractionUse, mapping.getCoveredLifelinesExpression());
-                } catch (final EvaluationException e) {
-                    RuntimeLoggerManager.INSTANCE.error(mapping, DescriptionPackage.eINSTANCE.getFrameMapping_CoveredLifelinesExpression(), e);
+                if (interpreter != null && !StringUtil.isEmpty(mapping.getCoveredLifelinesExpression())) {
+                    try {
+                        semLifelines = interpreter.evaluateCollection(semanticInteractionUse, mapping.getCoveredLifelinesExpression());
+                    } catch (final EvaluationException e) {
+                        RuntimeLoggerManager.INSTANCE.error(mapping, DescriptionPackage.eINSTANCE.getFrameMapping_CoveredLifelinesExpression(), e);
+                    }
                 }
             }
         }
