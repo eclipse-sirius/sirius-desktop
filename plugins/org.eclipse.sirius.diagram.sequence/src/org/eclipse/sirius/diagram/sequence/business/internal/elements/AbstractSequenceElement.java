@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -61,12 +61,15 @@ public abstract class AbstractSequenceElement extends AdapterImpl implements ISe
      */
     protected static final boolean isSequenceDiagramElement(DDiagramElement element, EClass mappingType) {
         Preconditions.checkNotNull(mappingType);
-        if (element == null || element.getDiagramElementMapping() == null) {
-            return false;
-        } else {
-            DiagramElementMapping mappingToCheck = new DiagramElementMappingQuery(element.getDiagramElementMapping()).getRootMapping();
-            return mappingType.isInstance(mappingToCheck) && SequenceDiagram.viewpointElementPredicate().apply(element.getParentDiagram());
+        boolean result = false;
+        if (element != null) {
+            DiagramElementMapping mapping = element.getDiagramElementMapping();
+            if (mapping != null) {
+                DiagramElementMapping mappingToCheck = new DiagramElementMappingQuery(mapping).getRootMapping();
+                result = mappingType.isInstance(mappingToCheck) && SequenceDiagram.viewpointElementPredicate().apply(element.getParentDiagram());
+            }
         }
+        return result;
     }
 
     /**
