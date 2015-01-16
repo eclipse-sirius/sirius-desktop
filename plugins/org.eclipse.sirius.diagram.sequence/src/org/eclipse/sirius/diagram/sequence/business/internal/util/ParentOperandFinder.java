@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.sequence.business.internal.util;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
@@ -33,6 +34,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.Maps;
 
 /**
  * .
@@ -106,11 +108,20 @@ public final class ParentOperandFinder {
     public Option<Operand> getParentOperand(final Range verticalRange) {
         SequenceDiagram diagram = event.getDiagram();
         Set<Operand> allOperands = diagram.getAllOperands();
+        // Map to store the result of the covered lifelines of a
+        // CombinedFragment to avoid to make this call for each Operand of the
+        // same CombinedFragment.
+        final Map<CombinedFragment, Collection<Lifeline>> combinedFragmentToCoveredLifelines = Maps.newHashMap();
 
         Predicate<Operand> coveredLifeline = new Predicate<Operand>() {
             // Filter the operands that cover the execution parent lifeline
             public boolean apply(Operand input) {
-                Collection<Lifeline> computeCoveredLifelines = input.computeCoveredLifelines();
+                CombinedFragment parentCombinedFragment = input.getCombinedFragment();
+                Collection<Lifeline> computeCoveredLifelines = combinedFragmentToCoveredLifelines.get(parentCombinedFragment);
+                if (computeCoveredLifelines == null) {
+                    computeCoveredLifelines = parentCombinedFragment.computeCoveredLifelines();
+                    combinedFragmentToCoveredLifelines.put(parentCombinedFragment, computeCoveredLifelines);
+                }
                 return computeCoveredLifelines != null && computeCoveredLifelines.contains(event.getLifeline().get());
             }
         };
@@ -125,8 +136,7 @@ public final class ParentOperandFinder {
         };
 
         Operand deepestCoveringOperand = null;
-
-        for (Operand operand : Iterables.filter(allOperands, Predicates.and(coveredLifeline, includingExecutionRange))) {
+        for (Operand operand : Iterables.filter(allOperands, Predicates.and(includingExecutionRange, coveredLifeline))) {
             // Find the deepest operand among the filtered ones
             if (deepestCoveringOperand == null || rangeFunction.apply(deepestCoveringOperand).includes(rangeFunction.apply(operand))) {
                 deepestCoveringOperand = operand;
