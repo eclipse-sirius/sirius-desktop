@@ -21,6 +21,8 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDi
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.RefreshGraphicalOrderingOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.RefreshSemanticOrderingsOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.SynchronizeGraphicalOrderingOperation;
+import org.eclipse.sirius.diagram.sequence.business.internal.ordering.RefreshOrderingHelper;
+import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.ui.tools.api.profiler.SiriusTasks;
 
@@ -72,11 +74,25 @@ public class RefreshLayoutCommand extends RecordingCommand {
              * Everything has been committed, so we should be in a stable state
              * where it is safe to refresh both orderings.
              */
-            AbstractModelChangeOperation<Boolean> refreshSemanticOrderingOperation = new RefreshSemanticOrderingsOperation(sequenceDDiagram);
+
+            // Compute only once (and not three times) the event ends.
+            final Iterable<? extends EventEnd> allEventEnds = RefreshOrderingHelper.getAllEventEnds(sequenceDDiagram);
+
+            AbstractModelChangeOperation<Boolean> refreshSemanticOrderingOperation = new RefreshSemanticOrderingsOperation(sequenceDDiagram) {
+                @Override
+                protected Iterable<? extends EventEnd> getAllEventEnds() {
+                    return allEventEnds;
+                }
+            };
             if (refreshSemanticOrderingOperation.execute()) {
                 sequenceDiagram.clearOrderedCaches();
             }
-            AbstractModelChangeOperation<Boolean> refreshGraphicalOrderingOperation = new RefreshGraphicalOrderingOperation(sequenceDiagram);
+            AbstractModelChangeOperation<Boolean> refreshGraphicalOrderingOperation = new RefreshGraphicalOrderingOperation(sequenceDiagram) {
+                @Override
+                protected Iterable<? extends EventEnd> getAllEventEnds() {
+                    return allEventEnds;
+                }
+            };
             if (refreshGraphicalOrderingOperation.execute()) {
                 sequenceDiagram.clearOrderedCaches();
             }
